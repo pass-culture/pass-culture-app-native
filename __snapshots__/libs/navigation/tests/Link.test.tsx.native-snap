@@ -7,7 +7,6 @@ exports[`Link enhanced should match snapshot 1`] = `
       "birthday": "01/01/2003",
       "email": "test@test.com",
       "isNewsletterChecked": true,
-      "password": "user@AZERTY123",
       "postalCode": "93000",
     }
   }
