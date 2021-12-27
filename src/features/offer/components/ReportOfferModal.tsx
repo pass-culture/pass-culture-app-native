@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { useReportOfferModalContent } from 'features/offer/components/useReportOfferModalContent'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
-import { CloseDeprecated as Close } from 'ui/svg/icons/Close_deprecated'
+import { Close } from 'ui/svg/icons/Close'
 
 enum ReportSteps {
   REPORT_OFFER_DESCRIPTION = 0,

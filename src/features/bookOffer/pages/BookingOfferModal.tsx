@@ -4,7 +4,7 @@ import React, { useEffect } from 'react'
 import { analytics } from 'libs/analytics'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
-import { CloseDeprecated as Close } from 'ui/svg/icons/Close_deprecated'
+import { Close } from 'ui/svg/icons/Close'
 
 import { useModalContent } from '../services/useModalContent'
 

@@ -8,7 +8,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { CloseDeprecated as Close } from 'ui/svg/icons/Close_deprecated'
+import { Close } from 'ui/svg/icons/Close'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { ColorsEnum, Typo, Spacer, getSpacing } from 'ui/theme'
 

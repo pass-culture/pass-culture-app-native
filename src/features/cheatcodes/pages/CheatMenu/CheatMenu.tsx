@@ -7,7 +7,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { ArrowPreviousDeprecated as ArrowPrevious } from 'ui/svg/icons/ArrowPrevious_deprecated'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const CheatMenu: React.FC = () => {

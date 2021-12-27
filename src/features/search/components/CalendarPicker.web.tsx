@@ -20,7 +20,7 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPreviousDeprecated as ArrowPrevious } from 'ui/svg/icons/ArrowPrevious_deprecated'
-import { CloseDeprecated as Close } from 'ui/svg/icons/Close_deprecated'
+import { Close } from 'ui/svg/icons/Close'
 import { getSpacing } from 'ui/theme'
 
 import { Props } from './CalendarPicker.d'
