@@ -13,9 +13,10 @@ import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import { accessibilityAndTestId } from 'tests/utils'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
-import { ArrowPreviousDeprecated as ArrowPrevious } from 'ui/svg/icons/ArrowPrevious_deprecated'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { MagnifyingGlassDeprecated } from 'ui/svg/icons/MagnifyingGlass_deprecated'
+import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
+import { getSpacing } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 const LeftIcon: React.FC<{ onPressArrowBack: () => void }> = ({ onPressArrowBack }) => {
@@ -25,10 +26,10 @@ const LeftIcon: React.FC<{ onPressArrowBack: () => void }> = ({ onPressArrowBack
       <TouchableOpacity
         onPress={onPressArrowBack}
         {...accessibilityAndTestId(t`Revenir en arrière`)}>
-        <ArrowPrevious />
+        <ArrowPrevious size={getSpacing(5)} />
       </TouchableOpacity>
     )
-  return <MagnifyingGlassDeprecated />
+  return <MagnifyingGlass size={getSpacing(5)} />
 }
 
 const RightIcon: React.FC<{ currentValue: string; onPress: () => void }> = (props) =>

@@ -30,7 +30,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
   return (
     <StyledInputContainer inputHeight={props.inputHeight} isFocus={isFocus}>
       {!!LeftIcon && <LeftIcon />}
-      <Spacer.Row numberOfSpaces={2} />
+      <Spacer.Row numberOfSpaces={3} />
       <BaseTextInput
         {...nativeProps}
         ref={forwardedRef}
