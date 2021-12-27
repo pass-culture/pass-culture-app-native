@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { BaseTextInput } from './BaseTextInput'
@@ -43,7 +43,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
         {!!LeftIcon && (
           <React.Fragment>
             <LeftIcon />
-            <Spacer.Row numberOfSpaces={2} />
+            <Spacer.Row numberOfSpaces={1} />
           </React.Fragment>
         )}
         <BaseTextInput
@@ -60,7 +60,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           <RightIconContainer
             onPress={onPressRightIcon}
             {...accessibilityAndTestId(t`Réinitialiser la recherche`)}>
-            <Invalidate size={24} color={ColorsEnum.GREY_DARK} />
+            <Invalidate size={20} color={ColorsEnum.GREY_DARK} />
           </RightIconContainer>
         )}
       </StyledInputContainer>
@@ -72,4 +72,4 @@ export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(WithRefSear
 
 const RightIconContainer = styled.TouchableOpacity.attrs(() => ({
   activeOpacity: ACTIVE_OPACITY,
-}))({})
+}))({ position: 'absolute', right: getSpacing(1), padding: getSpacing(2) })

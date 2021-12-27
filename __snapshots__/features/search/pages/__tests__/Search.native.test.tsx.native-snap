@@ -110,11 +110,11 @@ exports[`Search component should render correctly 1`] = `
         </Text>
       </View>
       <View
-        numberOfSpaces={2}
+        numberOfSpaces={1}
         style={
           Array [
             Object {
-              "width": 8,
+              "width": 4,
             },
           ]
         }
