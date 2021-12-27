@@ -14,7 +14,6 @@ type Props = {
   title: string
   visible: boolean
   titleNumberOfLines?: number
-  disableBackdropTap?: boolean
   shouldDisplayOverlay?: boolean
   scrollEnabled?: boolean
   onBackdropPress?: () => void
@@ -34,7 +33,6 @@ export const AppModal: FunctionComponent<Props> = ({
   onRightIconPress,
   children,
   titleNumberOfLines,
-  disableBackdropTap,
   shouldDisplayOverlay = true,
   onBackdropPress,
   scrollEnabled = true,
@@ -64,13 +62,6 @@ export const AppModal: FunctionComponent<Props> = ({
       setKeyboardHeight(0)
     },
   })
-
-  function handleOnBackdropPress() {
-    if (disableBackdropTap) {
-      return undefined
-    }
-    return onBackdropPress ?? onLeftIconPress ?? onRightIconPress
-  }
 
   const scrollViewPaddingBottom = keyboardHeight || bottom
   const modalHeight = useMemo(() => {
@@ -108,7 +99,7 @@ export const AppModal: FunctionComponent<Props> = ({
       hasBackdrop={shouldDisplayOverlay}
       backdropColor={UniqueColors.GREY_OVERLAY}
       isVisible={visible}
-      onBackdropPress={handleOnBackdropPress()}
+      onBackdropPress={onBackdropPress ?? onLeftIconPress ?? onRightIconPress}
       testID="modal"
       deviceHeight={windowHeight}
       deviceWidth={windowWidth}>
