@@ -15,7 +15,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { RadioButton } from 'ui/components/RadioButton'
 import { Separator } from 'ui/components/Separator'
-import { Invalidate } from 'ui/svg/icons/Invalidate_deprecated'
+import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const SelectSchool = withEduConnectErrorBoundary(() => {
@@ -83,6 +83,7 @@ export const SelectSchool = withEduConnectErrorBoundary(() => {
           onPress={() => {
             setError(new EduConnectError(EduConnectErrorMessageEnum.UserNotWhitelisted))
           }}
+          iconSize={24}
         />
       </BottomContainer>
       <Spacer.Column numberOfSpaces={4} />
