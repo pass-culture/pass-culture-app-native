@@ -73,7 +73,6 @@ import { Lock } from 'ui/svg/icons/Lock'
 import { Logo } from 'ui/svg/icons/Logo'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
-import { MagnifyingGlassDeprecated } from 'ui/svg/icons/MagnifyingGlass_deprecated'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { OfferDigital } from 'ui/svg/icons/OfferDigital'
@@ -175,7 +174,6 @@ export const Icons: FunctionComponent = () => {
       <Icon name="LocationPointerNotFilled" component={LocationPointerNotFilled} isNew />
       <Icon name="Lock" component={Lock} isNew />
       <Icon name="Logo" component={Logo} />
-      <Icon name="MagnifyingGlassDeprecated" component={MagnifyingGlassDeprecated} />
       <Icon name="MagnifyingGlass" component={MagnifyingGlass} isNew />
       <Icon name="NoOffer" component={NoOffer} />
       <Icon name="OfferDigital" component={OfferDigital} isNew />

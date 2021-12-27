@@ -58,7 +58,7 @@ import CategoryIcon from 'ui/svg/icons/categories/bicolor'
 import { CheckDeprecated } from 'ui/svg/icons/Check_deprecated'
 import { Close } from 'ui/svg/icons/Close'
 import { CloseDeprecated } from 'ui/svg/icons/Close_deprecated'
-import { MagnifyingGlassDeprecated } from 'ui/svg/icons/MagnifyingGlass_deprecated'
+import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -427,7 +427,7 @@ export const AppComponents: FunctionComponent = () => {
 
       {/* Search components */}
       <AccordionItem title="Search components">
-        <SearchInput LeftIcon={() => <MagnifyingGlassDeprecated />} placeholder="with left icon" />
+        <SearchInput LeftIcon={() => <MagnifyingGlass />} placeholder="with left icon" />
         <Spacer.Column numberOfSpaces={4} />
         <Center>
           <Slider values={[0, 75]} max={300} showValues formatValues={(n) => `${n} €`} />
