@@ -57,6 +57,7 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import CategoryIcon from 'ui/svg/icons/categories/bicolor'
 import { CheckDeprecated } from 'ui/svg/icons/Check_deprecated'
 import { Close } from 'ui/svg/icons/Close'
+import { CloseDeprecated } from 'ui/svg/icons/Close_deprecated'
 import { MagnifyingGlassDeprecated } from 'ui/svg/icons/MagnifyingGlass_deprecated'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -143,11 +144,11 @@ export const AppComponents: FunctionComponent = () => {
           title="Longpress to see"
           onPress={onButtonPress}
           onLongPress={onTriggerFakeLoading}
-          icon={Close}
+          icon={CloseDeprecated}
           isLoading={buttonIsLoading}
         />
         <Spacer.Column numberOfSpaces={1} />
-        <ButtonPrimary title="Disabled" onPress={onButtonPress} icon={Close} disabled />
+        <ButtonPrimary title="Disabled" onPress={onButtonPress} icon={CloseDeprecated} disabled />
         <Spacer.Column numberOfSpaces={2} />
         {/* Buttons: White Primary */}
         <Typo.Title4>Button - White Primary Secondary</Typo.Title4>
@@ -156,22 +157,27 @@ export const AppComponents: FunctionComponent = () => {
           title="White button"
           onPress={onTriggerFakeLoading}
           isLoading={buttonIsLoading}
-          icon={Close}
+          icon={CloseDeprecated}
         />
         <Spacer.Column numberOfSpaces={1} />
-        <ButtonPrimaryWhite title="Disabled" onPress={onButtonPress} icon={Close} disabled />
+        <ButtonPrimaryWhite
+          title="Disabled"
+          onPress={onButtonPress}
+          icon={CloseDeprecated}
+          disabled
+        />
         <Spacer.Column numberOfSpaces={2} />
         {/* Buttons: Secondary */}
         <Typo.Title4>Button - Theme Secondary</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
         <ButtonSecondary
           title="Triggers all active buttons"
-          icon={Close}
+          icon={CloseDeprecated}
           isLoading={buttonIsLoading}
           onPress={onTriggerFakeLoading}
         />
         <Spacer.Column numberOfSpaces={1} />
-        <ButtonSecondary title="Disabled" icon={Close} disabled onPress={onButtonPress} />
+        <ButtonSecondary title="Disabled" icon={CloseDeprecated} disabled onPress={onButtonPress} />
         <Spacer.Column numberOfSpaces={2} />
         {/* Buttons: Tertiary */}
         <Typo.Title4>Button - Theme Tertiary</Typo.Title4>
@@ -187,7 +193,7 @@ export const AppComponents: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={1} />
         <ButtonTertiaryWhite
           title="White tertiary button"
-          icon={Close}
+          icon={CloseDeprecated}
           isLoading={buttonIsLoading}
           onPress={onTriggerFakeLoading}
         />
@@ -197,13 +203,22 @@ export const AppComponents: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={1} />
         <ButtonQuaternary
           title="Triggers all active buttons"
-          icon={Close}
+          icon={CloseDeprecated}
           isLoading={buttonIsLoading}
           onPress={onTriggerFakeLoading}
         />
         <Spacer.Column numberOfSpaces={1} />
-        <ButtonQuaternary title="Se connecter" onPress={onButtonPress} icon={Close} disabled />
-        <ButtonQuaternaryBlack title="Se connecter" onPress={onButtonPress} icon={Close} />
+        <ButtonQuaternary
+          title="Se connecter"
+          onPress={onButtonPress}
+          icon={CloseDeprecated}
+          disabled
+        />
+        <ButtonQuaternaryBlack
+          title="Se connecter"
+          onPress={onButtonPress}
+          icon={CloseDeprecated}
+        />
         {/* Buttons: With linear gradient */}
         <Typo.Title4>Button - With linear gradient</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
@@ -296,7 +311,7 @@ export const AppComponents: FunctionComponent = () => {
           leftIcon={ArrowPrevious}
           onLeftIconPress={hideBasicModal}
           rightIconAccessibilityLabel="rightIconButton"
-          rightIcon={Close}
+          rightIcon={CloseDeprecated}
           onRightIconPress={hideBasicModal}>
           <Text>A simple content</Text>
         </AppModal>
@@ -310,7 +325,7 @@ export const AppComponents: FunctionComponent = () => {
           leftIcon={ArrowPrevious}
           onLeftIconPress={() => null}
           rightIconAccessibilityLabel="Revenir à l'accueil"
-          rightIcon={Close}
+          rightIcon={CloseDeprecated}
           onRightIconPress={() => null}
         />
       </AccordionItem>
@@ -361,7 +376,7 @@ export const AppComponents: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={1} />
         <InputRule
           title={'12 Caractères'}
-          icon={inputText.length >= 12 ? CheckDeprecated : Close}
+          icon={inputText.length >= 12 ? CheckDeprecated : CloseDeprecated}
           color={inputText.length >= 12 ? ColorsEnum.GREEN_VALID : ColorsEnum.ERROR}
           iconSize={16}
         />
@@ -459,14 +474,14 @@ export const AppComponents: FunctionComponent = () => {
           <Text> Progress bars </Text>
           <Spacer.Column numberOfSpaces={3} />
           <View>
-            <ProgressBar progress={0} color={ColorsEnum.GREEN_VALID} icon={Close} />
-            <ProgressBar progress={0.3} color={ColorsEnum.PRIMARY_DARK} icon={Close} />
-            <ProgressBar progress={1} color={ColorsEnum.SECONDARY} icon={Close} />
+            <ProgressBar progress={0} color={ColorsEnum.GREEN_VALID} icon={CloseDeprecated} />
+            <ProgressBar progress={0.3} color={ColorsEnum.PRIMARY_DARK} icon={CloseDeprecated} />
+            <ProgressBar progress={1} color={ColorsEnum.SECONDARY} icon={CloseDeprecated} />
           </View>
           <Spacer.Column numberOfSpaces={1} />
           <View>
-            <ProgressBar progress={0.5} color={ColorsEnum.PRIMARY} icon={Close} />
-            <ProgressBar progress={1} color={ColorsEnum.TERTIARY} icon={Close} />
+            <ProgressBar progress={0.5} color={ColorsEnum.PRIMARY} icon={CloseDeprecated} />
+            <ProgressBar progress={1} color={ColorsEnum.TERTIARY} icon={CloseDeprecated} />
           </View>
         </GreyView>
         <Spacer.Column numberOfSpaces={4} />
@@ -475,14 +490,19 @@ export const AppComponents: FunctionComponent = () => {
           <SectionRow
             type="navigable"
             title="navigable"
-            icon={Close}
+            icon={CloseDeprecated}
             onPress={() => Alert.alert('gooo !!!')}
           />
-          <SectionRow type="clickable" title="with CTA" icon={Close} cta={<ExampleSwitch />} />
+          <SectionRow
+            type="clickable"
+            title="with CTA"
+            icon={CloseDeprecated}
+            cta={<ExampleSwitch />}
+          />
           <SectionRow
             type="clickable"
             title="just clickable"
-            icon={Close}
+            icon={CloseDeprecated}
             onPress={() => Alert.alert('clicked')}
           />
         </View>

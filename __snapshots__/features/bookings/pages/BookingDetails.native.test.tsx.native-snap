@@ -524,7 +524,7 @@ exports[`BookingDetails should render correctly 1`] = `
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
                     "lineHeight": 20,
-                    "marginLeft": 8,
+                    "marginLeft": 12,
                     "maxWidth": "100%",
                   },
                 ]
@@ -1523,6 +1523,7 @@ exports[`BookingDetails should render correctly 1`] = `
                 >
                   <Text
                     adjustsFontSizeToFit={false}
+                    iconSize={18}
                     numberOfLines={1}
                     style={
                       Array [
@@ -1532,6 +1533,7 @@ exports[`BookingDetails should render correctly 1`] = `
                           "fontSize": 15,
                           "lineHeight": 20,
                           "marginLeft": 0,
+                          "marginRight": 18,
                           "maxWidth": "100%",
                         },
                       ]

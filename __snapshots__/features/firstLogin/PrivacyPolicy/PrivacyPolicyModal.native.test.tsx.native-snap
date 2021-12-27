@@ -340,9 +340,9 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
               testID="Politique des cookies"
             >
               <View
-                height={16}
+                height={18}
                 testID="button-icon"
-                width={15}
+                width={18}
               >
                 <Text>
                   button-icon-SVG-Mock
@@ -351,6 +351,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
               <Text
                 adjustsFontSizeToFit={false}
                 icon={[Function]}
+                iconSize={18}
                 numberOfLines={1}
                 style={
                   Array [
@@ -359,7 +360,8 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 12,
                       "lineHeight": 20,
-                      "marginLeft": 8,
+                      "marginLeft": 12,
+                      "marginRight": 18,
                       "maxWidth": "100%",
                     },
                   ]

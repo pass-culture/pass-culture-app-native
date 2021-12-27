@@ -15,7 +15,7 @@ import FilterSwitch from 'ui/components/FilterSwitch'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
-import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
+import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { ProfileContainer } from '../components/reusables'
@@ -76,7 +76,7 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
             <Spacer.Row numberOfSpaces={1} />
             <ButtonTertiary
               title={cookieButtonText}
-              icon={ExternalLinkSite}
+              icon={ExternalSite}
               onPress={openCookiesPolicyExternalUrl}
               textSize={12}
               inline

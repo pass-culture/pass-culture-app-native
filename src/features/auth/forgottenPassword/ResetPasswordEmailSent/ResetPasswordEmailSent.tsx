@@ -12,8 +12,8 @@ import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { Close } from 'ui/svg/icons/Close'
-import { ExternalSiteDeprecated } from 'ui/svg/icons/ExternalSite_deprecated'
+import { CloseDeprecated as Close } from 'ui/svg/icons/Close_deprecated'
+import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { padding, Spacer, Typo } from 'ui/theme'
 
 type Props = StackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>
@@ -45,7 +45,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
           <ButtonTertiary
             title={t`Consulter l'article d'aide`}
             onPress={() => openUrl(env.FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED)}
-            icon={ExternalSiteDeprecated}
+            icon={ExternalSite}
           />
         </Description>
         <Spacer.Column numberOfSpaces={3} />

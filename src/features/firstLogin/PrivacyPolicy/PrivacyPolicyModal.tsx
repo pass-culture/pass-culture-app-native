@@ -8,8 +8,8 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { Close } from 'ui/svg/icons/Close'
-import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
+import { CloseDeprecated as Close } from 'ui/svg/icons/Close_deprecated'
+import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { ColorsEnum, Typo, Spacer, getSpacing } from 'ui/theme'
 
 export interface Props {
@@ -49,7 +49,7 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
       <ButtonTertiary
         title={cookieButtonText}
         onPress={openCookiesPolicyExternalUrl}
-        icon={ExternalLinkSite}
+        icon={ExternalSite}
         textSize={12}
       />
       <SubDescription>

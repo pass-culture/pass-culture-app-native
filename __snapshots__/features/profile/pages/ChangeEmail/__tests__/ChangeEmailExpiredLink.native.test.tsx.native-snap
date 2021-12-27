@@ -281,7 +281,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 8,
+                "marginLeft": 12,
                 "maxWidth": "100%",
               },
             ]
@@ -588,7 +588,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 8,
+                "marginLeft": 12,
                 "maxWidth": "100%",
               },
             ]
