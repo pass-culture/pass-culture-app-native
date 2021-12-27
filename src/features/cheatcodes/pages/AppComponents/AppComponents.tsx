@@ -21,7 +21,7 @@ import { MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
 import { useUtmParams } from 'libs/utm'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { Badge } from 'ui/components/Badge'
-import { Banner, BannerType } from 'ui/components/Banner'
+import { Banner } from 'ui/components/Banner'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -433,7 +433,7 @@ export const AppComponents: FunctionComponent = () => {
       {/* Banner components */}
       <AccordionItem title="Banners">
         <AlignedText>
-          <Banner title="Je suis une bannière" type={BannerType.INFO} />
+          <Banner title="Je suis une bannière" />
         </AlignedText>
       </AccordionItem>
 
