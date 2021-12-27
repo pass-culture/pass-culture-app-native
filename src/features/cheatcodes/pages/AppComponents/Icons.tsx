@@ -84,7 +84,7 @@ import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Profile } from 'ui/svg/icons/Profile'
 import { ProfileDeprecated } from 'ui/svg/icons/Profile_deprecated'
-import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
+import { ProfileDeletionDeprecated } from 'ui/svg/icons/ProfileDeletion_deprecated'
 import { Quote } from 'ui/svg/icons/Quote'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { SadFace } from 'ui/svg/icons/SadFace'
@@ -185,7 +185,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="PhoneFilled" component={PhoneFilled} />
       <Icon name="PlainArrowPrevious" component={PlainArrowPrevious} isNew />
       <Icon name="ProfileDeprecated" component={ProfileDeprecated} />
-      <Icon name="ProfileDeletion" component={ProfileDeletion} />
+      <Icon name="ProfileDeletionDeprecated" component={ProfileDeletionDeprecated} />
       <Icon name="Quote" component={Quote} isNew />
       <Icon name="RequestSent" component={RequestSent} />
       <Icon name="SignOut" component={SignOut} />

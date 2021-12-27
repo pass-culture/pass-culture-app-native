@@ -12,7 +12,7 @@ import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
+import { ProfileDeletionDeprecated } from 'ui/svg/icons/ProfileDeletion_deprecated'
 import { getSpacing, SECTION_ROW_ICON_SIZE, Spacer } from 'ui/theme'
 
 export function LegalNotices() {
@@ -45,7 +45,7 @@ export function LegalNotices() {
               title={t`Suppression du compte`}
               type="clickable"
               onPress={() => navigate('ConfirmDeleteProfile')}
-              icon={ProfileDeletion}
+              icon={ProfileDeletionDeprecated}
               style={styles.row}
             />
           </React.Fragment>
