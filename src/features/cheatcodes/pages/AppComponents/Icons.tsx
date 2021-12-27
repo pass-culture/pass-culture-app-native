@@ -182,7 +182,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="ProfileDeletion" component={ProfileDeletion} isNew />
       <Icon name="Quote" component={Quote} isNew />
       <Icon name="RequestSent" component={RequestSent} />
-      <Icon name="SignOut" component={SignOut} />
+      <Icon name="SignOut" component={SignOut} isNew />
       <Icon name="Sun" component={Sun} isNew />
       <Icon name="UserCircle" component={UserCircle} />
       <Icon name="Validate" component={Validate} />

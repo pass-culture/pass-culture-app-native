@@ -221,7 +221,7 @@ export const Profile: React.FC = () => {
         </ProfileSection>
         {!!isLoggedIn && (
           <ProfileSection>
-            <SectionRow
+            <SignOutRow
               title={t`Déconnexion`}
               {...accessibilityAndTestId(t`Déconnexion`)}
               onPress={() => {
@@ -229,7 +229,6 @@ export const Profile: React.FC = () => {
               }}
               type="clickable"
               icon={SignOut}
-              style={styles.logoutRow}
             />
           </ProfileSection>
         )}
@@ -255,9 +254,6 @@ const styles = StyleSheet.create({
   row: {
     paddingVertical: getSpacing(4),
   },
-  logoutRow: {
-    marginTop: getSpacing(2),
-  },
 })
 
 const ProfileSection = styled(Section).attrs({
@@ -268,6 +264,10 @@ const Row = styled(SectionRow).attrs({
   style: styles.row,
   iconSize: SECTION_ROW_ICON_SIZE,
 })``
+
+const SignOutRow = styled(Row)({
+  marginTop: getSpacing(2),
+})
 
 const LogoMinistereContainer = styled.View({
   width: getSpacing(40),
