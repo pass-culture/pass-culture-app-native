@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Typo, Spacer } from 'ui/theme'
 
 type Props = {
   title: string
@@ -17,6 +17,7 @@ export const InputRule: FunctionComponent<Props> = (props) => {
   return (
     <StyledView>
       <Icon testID={`rule-icon-${props.testIdSuffix}`} color={props.color} size={props.iconSize} />
+      <Spacer.Row numberOfSpaces={1} />
       <StyledTypoCaption color={props.color}>{props.title}</StyledTypoCaption>
     </StyledView>
   )

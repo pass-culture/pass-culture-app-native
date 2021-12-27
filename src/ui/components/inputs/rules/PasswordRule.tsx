@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
 
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
-import { CheckDeprecated as Check } from 'ui/svg/icons/Check_deprecated'
-import { CloseDeprecated as Close } from 'ui/svg/icons/Close_deprecated'
+import { Check } from 'ui/svg/icons/Check'
+import { Close } from 'ui/svg/icons/Close'
 import { ColorsEnum } from 'ui/theme'
 
 type Props = {
@@ -15,7 +15,7 @@ export const PasswordRule: FunctionComponent<Props> = ({ title, isValidated }) =
     <InputRule
       title={title}
       icon={isValidated ? Check : Close}
-      iconSize={16}
+      iconSize={10}
       testIdSuffix={isValidated ? 'check' : 'close'}
       color={isValidated ? ColorsEnum.GREEN_VALID : ColorsEnum.ERROR}
     />
