@@ -2,12 +2,12 @@ import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { WarningDeprecated } from 'ui/svg/icons/Warning_deprecated'
+import { Error } from 'ui/svg/icons/Error'
 import { ColorsEnum, Spacer, getSpacing, Typo } from 'ui/theme'
 
 export const Banner: React.FC<{ title: string }> = ({ title }) => (
   <Background>
-    <WarningDeprecated size={32} color={ColorsEnum.BLACK} />
+    <Error size={24} color={ColorsEnum.BLACK} />
     <Spacer.Row numberOfSpaces={3} />
     <TextContainer>
       <Typo.Caption color={ColorsEnum.BLACK}>{title}</Typo.Caption>

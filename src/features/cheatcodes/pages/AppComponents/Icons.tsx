@@ -93,7 +93,6 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { Validate } from 'ui/svg/icons/Validate'
 import { Warning } from 'ui/svg/icons/Warning'
-import { WarningDeprecated } from 'ui/svg/icons/Warning_deprecated'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
 const ICON_SIZE = getSpacing(8)
@@ -103,16 +102,12 @@ export const Icons: FunctionComponent = () => {
     <React.Fragment>
       <SocialNetworkIcons />
       <Spacer.Column numberOfSpaces={4} />
-
       <CategoryIcons />
       <Spacer.Column numberOfSpaces={4} />
-
       <VenueTypesIcons />
       <Spacer.Column numberOfSpaces={4} />
-
       <IdentityCheckIcons />
       <Spacer.Column numberOfSpaces={4} />
-
       <Icon name="BicolorAroundMe" component={BicolorAroundMe} isNew />
       <Icon name="BicolorBookings" component={BicolorBookings} isNew />
       <Icon name="BicolorConfidentiality" component={BicolorConfidentiality} />
@@ -193,11 +188,10 @@ export const Icons: FunctionComponent = () => {
       <Icon name="Sun" component={Sun} isNew />
       <Icon name="UserCircle" component={UserCircle} />
       <Icon name="Validate" component={Validate} />
-      <Icon name="WarningDeprecated" component={WarningDeprecated} />
-      <Icon name="Warning" component={Warning} isNew />
-      <Icon name="HappyFace" component={HappyFace} />
       <Icon name="SadFace" component={SadFace} />
+      <Icon name="HappyFace" component={HappyFace} />
       <Icon name="HappyFaceStars" component={HappyFaceStars} />
+      <Icon name="Warning" component={Warning} isNew />
       <AlignedText>
         <TicketBooked width={ICON_SIZE} height={ICON_SIZE} />
         <Text> - TicketBooked </Text>
