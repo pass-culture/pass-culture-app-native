@@ -289,6 +289,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
               "fontSize": "15px",
               "lineHeight": "20px",
               "marginLeft": "12px",
+              "marginRight": "24px",
               "maxWidth": "100%",
             }
           }

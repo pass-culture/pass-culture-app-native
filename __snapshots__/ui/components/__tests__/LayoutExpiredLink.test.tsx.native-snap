@@ -213,9 +213,9 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         testID="Consulter l'article d'aide"
       >
         <View
-          height={32}
+          height={24}
           testID="button-icon"
-          width={32}
+          width={24}
         >
           <Text>
             button-icon-SVG-Mock
@@ -224,6 +224,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         <Text
           adjustsFontSizeToFit={false}
           icon={[Function]}
+          iconSize={24}
           numberOfLines={1}
           style={
             Array [
@@ -233,6 +234,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
                 "fontSize": 15,
                 "lineHeight": 20,
                 "marginLeft": 12,
+                "marginRight": 24,
                 "maxWidth": "100%",
               },
             ]
