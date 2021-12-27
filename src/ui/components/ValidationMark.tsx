@@ -1,5 +1,6 @@
 import React from 'react'
 
+// TODO(antoinewg): replace this icon along with Validate
 import { Invalidate } from 'ui/svg/icons/Invalidate_deprecated'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'

@@ -12,7 +12,9 @@ type CustomTextInputProps = {
 type CustomSearchInputProps = {
   inputHeight?: 'small' | 'tall'
   LeftIcon?: React.FC
-  RightIcon?: React.FC
+  label?: string
+  accessibilityLabel?: string
+  onPressRightIcon?: () => void
 }
 
 export type RNTextInputProps = Pick<
@@ -61,8 +63,8 @@ export function getCustomTextInputProps(props: TextInputProps): CustomTextInputP
 }
 
 export function getCustomSearchInputProps(props: SearchInputProps): CustomSearchInputProps {
-  const { inputHeight, LeftIcon, RightIcon } = props
-  return { inputHeight, LeftIcon, RightIcon }
+  const { inputHeight, LeftIcon, label, accessibilityLabel, onPressRightIcon } = props
+  return { inputHeight, LeftIcon, label, accessibilityLabel, onPressRightIcon }
 }
 
 export function getRNTextInputProps(props: TextInputProps): RNTextInputProps {

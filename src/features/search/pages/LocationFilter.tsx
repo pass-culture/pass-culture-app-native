@@ -104,9 +104,6 @@ const Container = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.white,
 }))
 
-const contentContainerStyle: ViewStyle = {
-  flexGrow: 1,
-  paddingLeft: getSpacing(2),
-}
+const contentContainerStyle: ViewStyle = { flexGrow: 1 }
 
 const BannerContainer = styled.View({ marginHorizontal: getSpacing(6) })

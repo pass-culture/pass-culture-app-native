@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import debounce from 'lodash.debounce'
 import React, { useEffect, useRef, useState } from 'react'
-import { Keyboard, Platform, TouchableOpacity } from 'react-native'
+import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
@@ -15,13 +15,11 @@ import { eventMonitoring } from 'libs/monitoring'
 import { useAddresses } from 'libs/place'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { TextInput } from 'ui/components/inputs/TextInput'
+import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spinner } from 'ui/components/Spinner'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
-import { Invalidate } from 'ui/svg/icons/Invalidate_deprecated'
 import { Spacer } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 const snackbarMessage = t`Nous avons eu un problème pour trouver l'adresse associée à ton code postal. Réessaie plus tard.`
 const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.fr/search'
@@ -73,15 +71,6 @@ export const SetAddress = () => {
     debouncedSetQuery('')
   }
 
-  const RightIcon = () => (
-    <TouchableOpacity
-      activeOpacity={ACTIVE_OPACITY}
-      onPress={resetSearch}
-      {...accessibilityAndTestId(t`Réinitialiser la recherche`)}>
-      <Invalidate />
-    </TouchableOpacity>
-  )
-
   // The button is enabled only when the user has selected an address
   // if suggested addresses are available. Otherwise, if the user has
   // typed something and either the FF doesn't allow suggested addresses
@@ -110,15 +99,15 @@ export const SetAddress = () => {
         <React.Fragment>
           <CenteredTitle title={t`Quelle est ton adresse\u00a0?`} />
           <Spacer.Column numberOfSpaces={5} />
-          <TextInput
+          <SearchInput
             autoFocus
             onChangeText={onChangeAddress}
             value={query}
             label={label}
             placeholder={t`Ex\u00a0: 34 avenue de l'Opéra`}
             textContentType="addressState"
-            RightIcon={() => (query.length > 0 ? <RightIcon /> : null)}
-            {...accessibilityAndTestId(t`Entrée pour l'adresse`)}
+            accessibilityLabel={t`Entrée pour l'adresse`}
+            onPressRightIcon={resetSearch}
           />
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>

@@ -49,7 +49,7 @@ const Container = styled.TouchableOpacity.attrs(() => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
-  marginHorizontal: getSpacing(6),
+  marginHorizontal: getSpacing(4),
 })
 
 const FirstPart = styled.View({
