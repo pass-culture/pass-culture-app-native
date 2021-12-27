@@ -246,13 +246,28 @@ exports[`<SetAddress/> should render correctly 1`] = `
                 ]
               }
             >
+              <View
+                numberOfSpaces={1}
+                style={
+                  Array [
+                    Object {
+                      "width": 4,
+                    },
+                  ]
+                }
+              />
               <TextInput
+                accessibilityLabel="Entrée pour l'adresse"
+                accessible={true}
+                autoCorrect={false}
                 editable={true}
                 onBlur={[Function]}
                 onChangeText={[Function]}
                 onFocus={[Function]}
                 placeholder="Ex : 34 avenue de l'Opéra"
                 placeholderTextColor="#626262"
+                returnKeyType="search"
+                selectionColor="#626262"
                 style={
                   Array [
                     Object {
@@ -270,18 +285,9 @@ exports[`<SetAddress/> should render correctly 1`] = `
                     },
                   ]
                 }
+                testID="Entrée pour l'adresse"
                 textContentType="addressState"
                 value=""
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "position": "absolute",
-                      "right": 4,
-                    },
-                  ]
-                }
               />
             </View>
             <View

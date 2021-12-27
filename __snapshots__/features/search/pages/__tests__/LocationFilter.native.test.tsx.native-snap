@@ -28,7 +28,6 @@ exports[`LocationFilter component should render correctly 1`] = `
     contentContainerStyle={
       Object {
         "flexGrow": 1,
-        "paddingLeft": 8,
       }
     }
   >
@@ -150,7 +149,7 @@ exports[`LocationFilter component should render correctly 1`] = `
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
-            "marginHorizontal": 24,
+            "marginHorizontal": 16,
             "opacity": 1,
           }
         }
@@ -276,7 +275,7 @@ exports[`LocationFilter component should render correctly 1`] = `
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
-            "marginHorizontal": 24,
+            "marginHorizontal": 16,
             "opacity": 1,
           }
         }
@@ -403,7 +402,7 @@ exports[`LocationFilter component should render correctly 1`] = `
             "alignItems": "center",
             "display": "flex",
             "flexDirection": "row",
-            "marginHorizontal": 24,
+            "marginHorizontal": 16,
             "opacity": 1,
           }
         }

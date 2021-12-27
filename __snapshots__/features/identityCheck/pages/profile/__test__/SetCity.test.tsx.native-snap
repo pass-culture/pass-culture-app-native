@@ -246,7 +246,20 @@ exports[`<SetCity/> should render correctly 1`] = `
                 ]
               }
             >
+              <View
+                numberOfSpaces={1}
+                style={
+                  Array [
+                    Object {
+                      "width": 4,
+                    },
+                  ]
+                }
+              />
               <TextInput
+                accessibilityLabel="Entrée pour le code postal"
+                accessible={true}
+                autoCorrect={false}
                 editable={true}
                 keyboardType="number-pad"
                 onBlur={[Function]}
@@ -254,6 +267,8 @@ exports[`<SetCity/> should render correctly 1`] = `
                 onFocus={[Function]}
                 placeholder="Ex : 75017"
                 placeholderTextColor="#626262"
+                returnKeyType="search"
+                selectionColor="#626262"
                 style={
                   Array [
                     Object {
@@ -271,18 +286,9 @@ exports[`<SetCity/> should render correctly 1`] = `
                     },
                   ]
                 }
+                testID="Entrée pour le code postal"
                 textContentType="postalCode"
                 value=""
-              />
-              <View
-                style={
-                  Array [
-                    Object {
-                      "position": "absolute",
-                      "right": 4,
-                    },
-                  ]
-                }
               />
             </View>
             <View

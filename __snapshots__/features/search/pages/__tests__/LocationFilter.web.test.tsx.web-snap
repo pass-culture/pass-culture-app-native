@@ -19,7 +19,7 @@ Object {
         >
           <div
             class="css-view-1dbjc4n"
-            style="flex-grow: 1; padding-left: 8px;"
+            style="flex-grow: 1;"
           >
             <div
               class="css-view-1dbjc4n"
@@ -72,7 +72,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="locationChoice-pickPlace"
-              style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+              style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 16px; margin-left: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
               tabindex="0"
             >
               <div
@@ -134,7 +134,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="locationChoice-aroundMe"
-              style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+              style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 16px; margin-left: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
               tabindex="0"
             >
               <div
@@ -189,7 +189,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="locationChoice-everywhere"
-              style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+              style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 16px; margin-left: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
               tabindex="0"
             >
               <div
@@ -321,7 +321,7 @@ Object {
       >
         <div
           class="css-view-1dbjc4n"
-          style="flex-grow: 1; padding-left: 8px;"
+          style="flex-grow: 1;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -374,7 +374,7 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="locationChoice-pickPlace"
-            style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 16px; margin-left: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
             tabindex="0"
           >
             <div
@@ -436,7 +436,7 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="locationChoice-aroundMe"
-            style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 16px; margin-left: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
             tabindex="0"
           >
             <div
@@ -491,7 +491,7 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="locationChoice-everywhere"
-            style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 24px; margin-left: 24px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 16px; margin-left: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
             tabindex="0"
           >
             <div

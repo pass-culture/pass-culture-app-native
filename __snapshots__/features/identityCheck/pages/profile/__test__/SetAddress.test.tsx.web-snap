@@ -289,12 +289,23 @@ exports[`<SetAddress/> should render correctly 1`] = `
                 }
               }
             >
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "width": "4px",
+                  }
+                }
+              />
               <input
+                aria-label="Entrée pour l'adresse"
                 autoCapitalize="sentences"
                 autoComplete="on"
-                autoCorrect="on"
+                autoCorrect="off"
                 className="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
+                data-testid="Entrée pour l'adresse"
                 dir="auto"
+                enterKeyHint="search"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -302,7 +313,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                 onSelect={[Function]}
                 placeholder="Ex : 34 avenue de l'Opéra"
                 readOnly={false}
-                spellCheck={true}
+                spellCheck={false}
                 style={
                   Object {
                     "WebkitBoxFlex": 1,
@@ -327,15 +338,6 @@ exports[`<SetAddress/> should render correctly 1`] = `
                 }
                 type="text"
                 value=""
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "position": "absolute",
-                    "right": "4px",
-                  }
-                }
               />
             </div>
             <div
