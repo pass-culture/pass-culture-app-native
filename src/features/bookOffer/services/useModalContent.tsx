@@ -8,7 +8,7 @@ import { BookingEventChoices } from 'features/bookOffer/components/BookingEventC
 import { getOfferPrice } from 'features/offer/services/getOfferPrice'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { ArrowPreviousDeprecated as ArrowPrevious } from 'ui/svg/icons/ArrowPrevious_deprecated'
 
 import { BookingImpossible } from '../components/BookingImpossible'
 import { useBooking, useBookingOffer } from '../pages/BookingOfferWrapper'

@@ -22,7 +22,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { ArrowPreviousDeprecated as ArrowPrevious } from 'ui/svg/icons/ArrowPrevious_deprecated'
 import { ColorsEnum, padding, Spacer } from 'ui/theme'
 
 const BadDeeplink = WEBAPP_NATIVE_REDIRECTION_URL + '/unknown'

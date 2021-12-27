@@ -53,7 +53,7 @@ import { SlantTag } from 'ui/components/SlantTag'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { StepDots } from 'ui/components/StepDots'
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { ArrowPreviousDeprecated } from 'ui/svg/icons/ArrowPrevious_deprecated'
 import CategoryIcon from 'ui/svg/icons/categories/bicolor'
 import { CheckDeprecated } from 'ui/svg/icons/Check_deprecated'
 import { Close } from 'ui/svg/icons/Close'
@@ -114,7 +114,7 @@ export const AppComponents: FunctionComponent = () => {
       <ModalHeader
         title="App components"
         leftIconAccessibilityLabel={'Revenir en arrière'}
-        leftIcon={ArrowPrevious}
+        leftIcon={ArrowPreviousDeprecated}
         onLeftIconPress={goBack}
         rightIconAccessibilityLabel={undefined}
         rightIcon={undefined}
@@ -308,7 +308,7 @@ export const AppComponents: FunctionComponent = () => {
           title="a basic modal"
           visible={basicModalVisible}
           leftIconAccessibilityLabel="leftIconButton"
-          leftIcon={ArrowPrevious}
+          leftIcon={ArrowPreviousDeprecated}
           onLeftIconPress={hideBasicModal}
           rightIconAccessibilityLabel="rightIconButton"
           rightIcon={CloseDeprecated}
@@ -322,7 +322,7 @@ export const AppComponents: FunctionComponent = () => {
         <ModalHeader
           title="My modal header"
           leftIconAccessibilityLabel="Revenir en arrière"
-          leftIcon={ArrowPrevious}
+          leftIcon={ArrowPreviousDeprecated}
           onLeftIconPress={() => null}
           rightIconAccessibilityLabel="Revenir à l'accueil"
           rightIcon={CloseDeprecated}

@@ -19,7 +19,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { ArrowPreviousDeprecated as ArrowPrevious } from 'ui/svg/icons/ArrowPrevious_deprecated'
 import { CloseDeprecated as Close } from 'ui/svg/icons/Close_deprecated'
 import { getSpacing } from 'ui/theme'
 

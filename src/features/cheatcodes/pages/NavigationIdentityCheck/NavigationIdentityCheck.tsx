@@ -15,7 +15,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { ScreenError } from 'libs/monitoring/errors'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { ArrowPreviousDeprecated as ArrowPrevious } from 'ui/svg/icons/ArrowPrevious_deprecated'
 import { padding, Spacer } from 'ui/theme'
 
 export function NavigationIdentityCheck(): JSX.Element {

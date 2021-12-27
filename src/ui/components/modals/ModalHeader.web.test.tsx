@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { fireEvent, render } from 'tests/utils/web'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { ArrowPreviousDeprecated as ArrowPrevious } from 'ui/svg/icons/ArrowPrevious_deprecated'
 import { CloseDeprecated as Close } from 'ui/svg/icons/Close_deprecated'
 
 import { ModalHeader } from './ModalHeader'

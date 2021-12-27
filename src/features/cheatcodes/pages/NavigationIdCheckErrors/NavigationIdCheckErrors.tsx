@@ -22,7 +22,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { ArrowPreviousDeprecated as ArrowPrevious } from 'ui/svg/icons/ArrowPrevious_deprecated'
 import { padding, Spacer } from 'ui/theme'
 
 const ThrowError = ({ error }: { error: Error | null | undefined }) => {

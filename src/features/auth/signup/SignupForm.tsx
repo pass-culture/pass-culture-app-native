@@ -16,7 +16,7 @@ import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { StepDots } from 'ui/components/StepDots'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { ArrowPreviousDeprecated as ArrowPrevious } from 'ui/svg/icons/ArrowPrevious_deprecated'
 import { CloseDeprecated as Close } from 'ui/svg/icons/Close_deprecated'
 import { Spacer } from 'ui/theme'
 

@@ -11,7 +11,7 @@ import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
 import { SocialNetworkIconsMap, SocialNetwork } from 'ui/components/socials/types'
 import { Again } from 'ui/svg/icons/Again'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { ArrowPreviousDeprecated } from 'ui/svg/icons/ArrowPrevious_deprecated'
 import { Bell } from 'ui/svg/icons/Bell'
 import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
@@ -133,7 +133,7 @@ export const Icons: FunctionComponent = () => {
       </AlignedText>
       <Icon name="Again" component={Again} isNew />
       <Icon name="ArrowNext" component={ArrowNext} />
-      <Icon name="ArrowPrevious" component={ArrowPrevious} />
+      <Icon name="ArrowPreviousDeprecated" component={ArrowPreviousDeprecated} />
       <Icon name="Bell" component={Bell} isNew />
       <Icon name="Booking" component={Booking} isNew />
       <Icon name="Calendar" component={Calendar} isNew />

@@ -22,7 +22,7 @@ import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { ArrowPreviousDeprecated as ArrowPrevious } from 'ui/svg/icons/ArrowPrevious_deprecated'
 import { CloseDeprecated as Close } from 'ui/svg/icons/Close_deprecated'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
