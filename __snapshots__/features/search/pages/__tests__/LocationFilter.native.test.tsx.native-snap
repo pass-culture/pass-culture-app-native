@@ -71,24 +71,16 @@ exports[`LocationFilter component should render correctly 1`] = `
                 "borderRadius": 4,
                 "display": "flex",
                 "flexDirection": "row",
+                "paddingLeft": 12,
+                "paddingRight": 20,
                 "paddingVertical": 16,
               },
             ]
           }
         >
           <View
-            numberOfSpaces={3}
-            style={
-              Array [
-                Object {
-                  "width": 12,
-                },
-              ]
-            }
-          />
-          <View
-            height={32}
-            width={32}
+            height={24}
+            width={24}
           >
             <Text>
               undefined-SVG-Mock
@@ -129,16 +121,6 @@ exports[`LocationFilter component should render correctly 1`] = `
               Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation
             </Text>
           </View>
-          <View
-            numberOfSpaces={5}
-            style={
-              Array [
-                Object {
-                  "width": 20,
-                },
-              ]
-            }
-          />
         </View>
       </View>
       <View

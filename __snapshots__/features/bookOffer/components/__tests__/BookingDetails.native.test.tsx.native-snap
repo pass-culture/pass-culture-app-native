@@ -19,24 +19,16 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
           "borderRadius": 4,
           "display": "flex",
           "flexDirection": "row",
+          "paddingLeft": 12,
+          "paddingRight": 20,
           "paddingVertical": 16,
         },
       ]
     }
   >
     <View
-      numberOfSpaces={3}
-      style={
-        Array [
-          Object {
-            "width": 12,
-          },
-        ]
-      }
-    />
-    <View
-      height={32}
-      width={32}
+      height={24}
+      width={24}
     >
       <Text>
         undefined-SVG-Mock
@@ -77,16 +69,6 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
         Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente.
       </Text>
     </View>
-    <View
-      numberOfSpaces={5}
-      style={
-        Array [
-          Object {
-            "width": 20,
-          },
-        ]
-      }
-    />
   </View>
   <View
     numberOfSpaces={4}
@@ -564,24 +546,16 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
           "borderRadius": 4,
           "display": "flex",
           "flexDirection": "row",
+          "paddingLeft": 12,
+          "paddingRight": 20,
           "paddingVertical": 16,
         },
       ]
     }
   >
     <View
-      numberOfSpaces={3}
-      style={
-        Array [
-          Object {
-            "width": 12,
-          },
-        ]
-      }
-    />
-    <View
-      height={32}
-      width={32}
+      height={24}
+      width={24}
     >
       <Text>
         undefined-SVG-Mock
@@ -622,16 +596,6 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
         Les réservations effectuées sur le pass Culture sont destinées à un usage strictement personnel et ne peuvent faire l’objet de revente.
       </Text>
     </View>
-    <View
-      numberOfSpaces={5}
-      style={
-        Array [
-          Object {
-            "width": 20,
-          },
-        ]
-      }
-    />
   </View>
   <View
     numberOfSpaces={4}

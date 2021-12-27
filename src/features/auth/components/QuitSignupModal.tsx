@@ -10,7 +10,7 @@ import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { AppFullPageModal } from 'ui/components/modals/AppFullPageModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
-import { WarningDeprecated } from 'ui/svg/icons/Warning_deprecated'
+import { Error } from 'ui/svg/icons/Error'
 import { ColorsEnum, Typo } from 'ui/theme'
 
 interface Props {
@@ -36,7 +36,7 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
 
   return (
     <AppFullPageModal visible={visible} testIdSuffix={testIdSuffix}>
-      <GenericInfoPage title={title} icon={WarningDeprecated} flex={false}>
+      <GenericInfoPage title={title} icon={Error} flex={false}>
         <StyledBody>{description}</StyledBody>
         <Spacer.Column numberOfSpaces={8} />
         <ButtonPrimaryWhite title={t`Continuer l'inscription`} onPress={resume} />

@@ -193,9 +193,9 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +             }
 +           >
 +             <View
-+               height={24}
++               height={16}
 +               testID=\\"rule-icon-warn\\"
-+               width={24}
++               width={16}
 +             >
 +               <Text>
 +                 rule-icon-warn-SVG-Mock
@@ -429,9 +429,9 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +             }
 +           >
 +             <View
-+               height={24}
++               height={16}
 +               testID=\\"rule-icon-warn\\"
-+               width={24}
++               width={16}
 +             >
 +               <Text>
 +                 rule-icon-warn-SVG-Mock
@@ -665,9 +665,9 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 +             }
 +           >
 +             <View
-+               height={24}
++               height={16}
 +               testID=\\"rule-icon-warn\\"
-+               width={24}
++               width={16}
 +             >
 +               <Text>
 +                 rule-icon-warn-SVG-Mock
