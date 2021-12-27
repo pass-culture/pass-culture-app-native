@@ -216,7 +216,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 8,
+                "marginLeft": 12,
                 "maxWidth": "100%",
               },
             ]

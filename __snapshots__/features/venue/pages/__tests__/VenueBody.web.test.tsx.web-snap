@@ -779,7 +779,7 @@ Object {
                 <div
                   class="css-text-901oao css-textOneLine-vcwn7f"
                   dir="auto"
-                  style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
+                  style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 12px; max-width: 100%;"
                 >
                   Voir l'itinéraire
                 </div>
@@ -2071,7 +2071,7 @@ Object {
               <div
                 class="css-text-901oao css-textOneLine-vcwn7f"
                 dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 12px; max-width: 100%;"
               >
                 Voir l'itinéraire
               </div>

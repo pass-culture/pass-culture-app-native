@@ -13,7 +13,7 @@ import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import { InputError } from 'ui/components/inputs/InputError'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
-import { EmailDeprecated as Email } from 'ui/svg/icons/Email_deprecated'
+import { Email } from 'ui/svg/icons/Email'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 import { useAppSettings } from '../../settings'

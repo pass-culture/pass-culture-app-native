@@ -16,6 +16,7 @@ export const ButtonTertiary: FunctionComponent<BaseButtonProps> = (props) => {
   return (
     <AppButton
       {...props}
+      iconSize={18}
       loadingIconColor={loadingIconColor}
       backgroundColor={backgroundColor}
       iconColor={iconColor}

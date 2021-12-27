@@ -213,7 +213,7 @@ Array [
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 12,
                   "lineHeight": 16,
-                  "marginLeft": 8,
+                  "marginLeft": 12,
                   "marginRight": 16,
                   "maxWidth": "100%",
                 },
