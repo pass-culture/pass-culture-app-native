@@ -4,7 +4,6 @@ import { TextInput as RNTextInput, ViewStyle } from 'react-native'
 type CustomTextInputProps = {
   isError?: boolean
   label?: string
-  RightIcon?: React.FC
   disabled?: boolean
   containerStyle?: ViewStyle
 }
@@ -12,7 +11,9 @@ type CustomTextInputProps = {
 type CustomSearchInputProps = {
   inputHeight?: 'small' | 'tall'
   LeftIcon?: React.FC
-  RightIcon?: React.FC
+  label?: string
+  accessibilityLabel?: string
+  onPressRightIcon?: () => void
 }
 
 export type RNTextInputProps = Pick<
@@ -54,15 +55,14 @@ export function getCustomTextInputProps(props: TextInputProps): CustomTextInputP
   return {
     isError: props.isError,
     label: props.label,
-    RightIcon: props.RightIcon,
     disabled: props.disabled,
     containerStyle: props.containerStyle,
   }
 }
 
 export function getCustomSearchInputProps(props: SearchInputProps): CustomSearchInputProps {
-  const { inputHeight, LeftIcon, RightIcon } = props
-  return { inputHeight, LeftIcon, RightIcon }
+  const { inputHeight, LeftIcon, label, accessibilityLabel, onPressRightIcon } = props
+  return { inputHeight, LeftIcon, label, accessibilityLabel, onPressRightIcon }
 }
 
 export function getRNTextInputProps(props: TextInputProps): RNTextInputProps {

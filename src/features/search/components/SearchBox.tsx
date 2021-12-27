@@ -14,10 +14,8 @@ import { analytics } from 'libs/analytics'
 import { accessibilityAndTestId } from 'tests/utils'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { getSpacing } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 const LeftIcon: React.FC<{ onPressArrowBack: () => void }> = ({ onPressArrowBack }) => {
   const { searchState } = useSearch()
@@ -31,16 +29,6 @@ const LeftIcon: React.FC<{ onPressArrowBack: () => void }> = ({ onPressArrowBack
     )
   return <MagnifyingGlass size={getSpacing(5)} />
 }
-
-const RightIcon: React.FC<{ currentValue: string; onPress: () => void }> = (props) =>
-  props.currentValue.length > 0 ? (
-    <TouchableOpacity
-      activeOpacity={ACTIVE_OPACITY}
-      onPress={props.onPress}
-      {...accessibilityAndTestId(t`Réinitialiser la recherche`)}>
-      <Invalidate size={24} />
-    </TouchableOpacity>
-  ) : null
 
 export const SearchBox: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -90,8 +78,9 @@ export const SearchBox: React.FC = () => {
       autoFocus={false}
       inputHeight="tall"
       LeftIcon={() => <LeftIcon onPressArrowBack={onPressArrowBack} />}
-      RightIcon={() => <RightIcon currentValue={query} onPress={resetSearch} />}
       onSubmitEditing={onSubmitQuery}
+      accessibilityLabel={t`Barre de recherche des offres`}
+      onPressRightIcon={resetSearch}
     />
   )
 }

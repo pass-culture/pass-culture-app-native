@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import debounce from 'lodash.debounce'
 import React, { useEffect, useRef, useState } from 'react'
-import { Keyboard, Platform, TouchableOpacity } from 'react-native'
+import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
@@ -16,13 +16,11 @@ import { useCities } from 'libs/place/useCities'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
-import { TextInput } from 'ui/components/inputs/TextInput'
+import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spinner } from 'ui/components/Spinner'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
-import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Spacer } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 const keyExtractor = ({ name, code, postalCode }: SuggestedCity) => `${name}-${code}-${postalCode}`
 
@@ -72,15 +70,6 @@ export const SetCity = () => {
     setDebouncedPostalCode('')
   }
 
-  const RightIcon = () => (
-    <TouchableOpacity
-      activeOpacity={ACTIVE_OPACITY}
-      onPress={resetSearch}
-      {...accessibilityAndTestId(t`Réinitialiser la recherche`)}>
-      <Invalidate />
-    </TouchableOpacity>
-  )
-
   const submitCity = () => {
     if (selectedCity === null) return
     dispatch({ type: 'SET_CITY', payload: selectedCity })
@@ -98,16 +87,16 @@ export const SetCity = () => {
         <React.Fragment>
           <CenteredTitle title={t`Dans quelle ville résides-tu\u00a0?`} />
           <Spacer.Column numberOfSpaces={5} />
-          <TextInput
+          <SearchInput
             autoFocus
             onChangeText={onChangePostalCode}
             value={query}
             label={t`Indique ton code postal et choisis ta ville`}
             placeholder={t`Ex\u00a0: 75017`}
             textContentType="postalCode"
+            accessibilityLabel={t`Entrée pour le code postal`}
+            onPressRightIcon={resetSearch}
             keyboardType="number-pad"
-            RightIcon={() => (query.length > 0 ? <RightIcon /> : null)}
-            {...accessibilityAndTestId(t`Entrée pour le code postal`)}
           />
           {!!errorMessage && <InputError messageId={errorMessage} numberOfSpacesTop={2} visible />}
           <Spacer.Column numberOfSpaces={2} />

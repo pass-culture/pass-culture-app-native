@@ -289,12 +289,23 @@ exports[`<SetCity/> should render correctly 1`] = `
                 }
               }
             >
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "width": "4px",
+                  }
+                }
+              />
               <input
+                aria-label="Entrée pour le code postal"
                 autoCapitalize="sentences"
                 autoComplete="on"
-                autoCorrect="on"
+                autoCorrect="off"
                 className="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
+                data-testid="Entrée pour le code postal"
                 dir="auto"
+                enterKeyHint="search"
                 inputMode="numeric"
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -303,7 +314,7 @@ exports[`<SetCity/> should render correctly 1`] = `
                 onSelect={[Function]}
                 placeholder="Ex : 75017"
                 readOnly={false}
-                spellCheck={true}
+                spellCheck={false}
                 style={
                   Object {
                     "WebkitBoxFlex": 1,
@@ -327,15 +338,6 @@ exports[`<SetCity/> should render correctly 1`] = `
                   }
                 }
                 value=""
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "position": "absolute",
-                    "right": "4px",
-                  }
-                }
               />
             </div>
             <div

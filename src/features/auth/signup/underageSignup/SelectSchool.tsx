@@ -83,6 +83,7 @@ export const SelectSchool = withEduConnectErrorBoundary(() => {
           onPress={() => {
             setError(new EduConnectError(EduConnectErrorMessageEnum.UserNotWhitelisted))
           }}
+          iconSize={24}
         />
       </BottomContainer>
       <Spacer.Column numberOfSpaces={4} />
