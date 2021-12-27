@@ -5,6 +5,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { IconInterface } from './types'
 
+// TODO(antoinewg): add icon to new format and check design
 export function DuoPerson({
   size = 32,
   color = ColorsEnum.BLACK,
