@@ -9,7 +9,7 @@ import { ReactTestInstance } from 'react-test-renderer'
 
 import { ThemeProvider } from 'libs/styled/ThemeProvider'
 import { messages } from 'locales/fr/messages'
-import { theme } from 'theme'
+import { computedTheme } from 'tests/computedTheme'
 
 i18n.load({
   fr: messages,
@@ -76,16 +76,9 @@ export function simulateWebviewMessage(webview: ReactTestInstance, message: stri
   })
 }
 
-const computedTheme = {
-  isMobile: true,
-  isTablet: false,
-  isDesktop: false,
-  appContentWidth: 960,
-}
-
 const DefaultWrapper: React.FC = ({ children }) => {
   return (
-    <ThemeProvider theme={{ ...theme, ...computedTheme }}>
+    <ThemeProvider theme={computedTheme}>
       <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
         {children}
       </I18nProvider>
