@@ -8,7 +8,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { AccountLocked } from 'ui/svg/icons/AccountLocked'
-import { Email } from 'ui/svg/icons/Email'
+import { EmailDeprecated as Email } from 'ui/svg/icons/Email_deprecated'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 export function PhoneValidationTooManyAttempts() {

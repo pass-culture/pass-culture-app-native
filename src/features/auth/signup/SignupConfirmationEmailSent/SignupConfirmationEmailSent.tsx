@@ -19,7 +19,7 @@ import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
-import { Email } from 'ui/svg/icons/Email'
+import { EmailDeprecated as Email } from 'ui/svg/icons/Email_deprecated'
 import { Spacer, Typo } from 'ui/theme'
 
 type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>

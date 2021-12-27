@@ -39,7 +39,7 @@ import { Duo } from 'ui/svg/icons/Duo'
 import { DuoBold } from 'ui/svg/icons/DuoBold'
 import { DuoPerson } from 'ui/svg/icons/DuoPerson'
 import { EditPen } from 'ui/svg/icons/EditPen'
-import { Email } from 'ui/svg/icons/Email'
+import { EmailDeprecated } from 'ui/svg/icons/Email_deprecated'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Error } from 'ui/svg/icons/Error'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
@@ -149,7 +149,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="DuoBold" component={DuoBold} />
       <Icon name="DuoPerson" component={DuoPerson} />
       <Icon name="EditPen" component={EditPen} isNew />
-      <Icon name="Email" component={Email} />
+      <Icon name="EmailDeprecated" component={EmailDeprecated} />
       <Icon name="EmailFilled" component={EmailFilled} />
       <Icon name="Error" component={Error} isNew />
       <Icon name="ExternalSite" component={ExternalSite} isNew />
