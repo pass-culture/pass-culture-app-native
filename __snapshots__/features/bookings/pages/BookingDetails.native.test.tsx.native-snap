@@ -768,7 +768,6 @@ exports[`BookingDetails should render correctly 1`] = `
           style={
             Array [
               Object {
-                "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
                 "justifyContent": "center",
@@ -781,12 +780,13 @@ exports[`BookingDetails should render correctly 1`] = `
             style={
               Array [
                 Object {
-                  "alignItems": "flex-end",
+                  "alignItems": "flex-start",
                   "flexBasis": 0,
                   "flexDirection": "row",
                   "flexGrow": 0.1,
                   "flexShrink": 1,
                   "justifyContent": "flex-start",
+                  "paddingTop": 2,
                 },
               ]
             }
@@ -821,8 +821,7 @@ exports[`BookingDetails should render correctly 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 0.8,
                   "flexShrink": 1,
-                  "justifyContent": "center",
-                  "marginTop": 5,
+                  "justifyContent": "flex-start",
                   "paddingLeft": 12,
                   "paddingRight": 12,
                   "zIndex": 1,
@@ -857,6 +856,7 @@ exports[`BookingDetails should render correctly 1`] = `
                   "flexGrow": 0.1,
                   "flexShrink": 1,
                   "justifyContent": "flex-end",
+                  "paddingTop": 2,
                 },
               ]
             }
@@ -883,9 +883,9 @@ exports[`BookingDetails should render correctly 1`] = `
               testID="Ne pas annuler"
             >
               <View
-                height={32}
+                height={18}
                 testID="rightIcon"
-                width={32}
+                width={18}
               >
                 <Text>
                   rightIcon-SVG-Mock
@@ -1221,7 +1221,6 @@ exports[`BookingDetails should render correctly 1`] = `
           style={
             Array [
               Object {
-                "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
                 "justifyContent": "center",
@@ -1234,12 +1233,13 @@ exports[`BookingDetails should render correctly 1`] = `
             style={
               Array [
                 Object {
-                  "alignItems": "flex-end",
+                  "alignItems": "flex-start",
                   "flexBasis": 0,
                   "flexDirection": "row",
                   "flexGrow": 0.1,
                   "flexShrink": 1,
                   "justifyContent": "flex-start",
+                  "paddingTop": 2,
                 },
               ]
             }
@@ -1274,8 +1274,7 @@ exports[`BookingDetails should render correctly 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 0.8,
                   "flexShrink": 1,
-                  "justifyContent": "center",
-                  "marginTop": 5,
+                  "justifyContent": "flex-start",
                   "paddingLeft": 12,
                   "paddingRight": 12,
                   "zIndex": 1,
@@ -1310,6 +1309,7 @@ exports[`BookingDetails should render correctly 1`] = `
                   "flexGrow": 0.1,
                   "flexShrink": 1,
                   "justifyContent": "flex-end",
+                  "paddingTop": 2,
                 },
               ]
             }
@@ -1336,9 +1336,9 @@ exports[`BookingDetails should render correctly 1`] = `
               testID="Ne pas archiver"
             >
               <View
-                height={32}
+                height={18}
                 testID="rightIcon"
-                width={32}
+                width={18}
               >
                 <Text>
                   rightIcon-SVG-Mock

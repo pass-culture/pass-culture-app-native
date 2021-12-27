@@ -130,7 +130,6 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
         style={
           Array [
             Object {
-              "alignItems": "flex-start",
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "center",
@@ -143,12 +142,13 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
           style={
             Array [
               Object {
-                "alignItems": "flex-end",
+                "alignItems": "flex-start",
                 "flexBasis": 0,
                 "flexDirection": "row",
                 "flexGrow": 0.1,
                 "flexShrink": 1,
                 "justifyContent": "flex-start",
+                "paddingTop": 2,
               },
             ]
           }
@@ -175,9 +175,9 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
             testID="leftIconButton"
           >
             <View
-              height={32}
+              height={18}
               testID="leftIcon"
-              width={32}
+              width={18}
             >
               <Text>
                 leftIcon-SVG-Mock
@@ -193,8 +193,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                 "flexBasis": 0,
                 "flexGrow": 0.8,
                 "flexShrink": 1,
-                "justifyContent": "center",
-                "marginTop": 5,
+                "justifyContent": "flex-start",
                 "paddingLeft": 12,
                 "paddingRight": 12,
                 "zIndex": 1,
@@ -229,6 +228,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                 "flexGrow": 0.1,
                 "flexShrink": 1,
                 "justifyContent": "flex-end",
+                "paddingTop": 2,
               },
             ]
           }
@@ -255,9 +255,9 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
             testID="Fermer la modale"
           >
             <View
-              height={32}
+              height={18}
               testID="rightIcon"
-              width={32}
+              width={18}
             >
               <Text>
                 rightIcon-SVG-Mock
@@ -447,7 +447,6 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
         style={
           Array [
             Object {
-              "alignItems": "flex-start",
               "display": "flex",
               "flexDirection": "row",
               "justifyContent": "center",
@@ -460,12 +459,13 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
           style={
             Array [
               Object {
-                "alignItems": "flex-end",
+                "alignItems": "flex-start",
                 "flexBasis": 0,
                 "flexDirection": "row",
                 "flexGrow": 0.1,
                 "flexShrink": 1,
                 "justifyContent": "flex-start",
+                "paddingTop": 2,
               },
             ]
           }
@@ -492,9 +492,9 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
             testID="leftIconButton"
           >
             <View
-              height={32}
+              height={18}
               testID="leftIcon"
-              width={32}
+              width={18}
             >
               <Text>
                 leftIcon-SVG-Mock
@@ -510,8 +510,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
                 "flexBasis": 0,
                 "flexGrow": 0.8,
                 "flexShrink": 1,
-                "justifyContent": "center",
-                "marginTop": 5,
+                "justifyContent": "flex-start",
                 "paddingLeft": 12,
                 "paddingRight": 12,
                 "zIndex": 1,
@@ -546,6 +545,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
                 "flexGrow": 0.1,
                 "flexShrink": 1,
                 "justifyContent": "flex-end",
+                "paddingTop": 2,
               },
             ]
           }
@@ -572,9 +572,9 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
             testID="Fermer la modale"
           >
             <View
-              height={32}
+              height={18}
               testID="rightIcon"
-              width={32}
+              width={18}
             >
               <Text>
                 rightIcon-SVG-Mock

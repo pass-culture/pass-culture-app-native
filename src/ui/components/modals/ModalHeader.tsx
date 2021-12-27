@@ -34,7 +34,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
         <LeftHeaderAction
           onPress={onLeftIconPress}
           {...accessibilityAndTestId(leftIconAccessibilityLabel)}>
-          {!!LeftIcon && <LeftIcon size={32} testID="leftIcon" />}
+          {!!LeftIcon && <LeftIcon size={18} testID="leftIcon" />}
         </LeftHeaderAction>
       </LeftHeaderActionContainer>
       <TitleContainer>
@@ -44,7 +44,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
         <RightHeaderAction
           onPress={onRightIconPress}
           {...accessibilityAndTestId(rightIconAccessibilityLabel)}>
-          {!!RightIcon && <RightIcon size={32} testID="rightIcon" />}
+          {!!RightIcon && <RightIcon size={18} testID="rightIcon" />}
         </RightHeaderAction>
       </RightHeaderActionContainer>
     </HeaderContainer>
@@ -56,20 +56,19 @@ const HeaderContainer = styled.View({
   width: '100%',
   flexDirection: 'row',
   justifyContent: 'center',
-  alignItems: 'flex-start',
 })
 
 const TitleContainer = styled.View({
-  justifyContent: 'center',
+  justifyContent: 'flex-start',
   alignItems: 'center',
   paddingRight: getSpacing(3),
   paddingLeft: getSpacing(3),
   flex: 0.8,
   zIndex: ZIndex.MODAL_HEADER,
-  marginTop: 5,
 })
 
 const RightHeaderActionContainer = styled.View({
+  paddingTop: getSpacing(0.5),
   flexDirection: 'row',
   flex: 0.1,
   alignItems: 'flex-start',
@@ -78,8 +77,9 @@ const RightHeaderActionContainer = styled.View({
 
 const LeftHeaderActionContainer = styled.View({
   flexDirection: 'row',
+  paddingTop: getSpacing(0.5),
   flex: 0.1,
-  alignItems: 'flex-end',
+  alignItems: 'flex-start',
   justifyContent: 'flex-start',
 })
 

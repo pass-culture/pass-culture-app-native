@@ -494,7 +494,6 @@ Array [
           style={
             Array [
               Object {
-                "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "row",
                 "justifyContent": "center",
@@ -507,12 +506,13 @@ Array [
             style={
               Array [
                 Object {
-                  "alignItems": "flex-end",
+                  "alignItems": "flex-start",
                   "flexBasis": 0,
                   "flexDirection": "row",
                   "flexGrow": 0.1,
                   "flexShrink": 1,
                   "justifyContent": "flex-start",
+                  "paddingTop": 2,
                 },
               ]
             }
@@ -547,8 +547,7 @@ Array [
                   "flexBasis": 0,
                   "flexGrow": 0.8,
                   "flexShrink": 1,
-                  "justifyContent": "center",
-                  "marginTop": 5,
+                  "justifyContent": "flex-start",
                   "paddingLeft": 12,
                   "paddingRight": 12,
                   "zIndex": 1,
@@ -583,6 +582,7 @@ Array [
                   "flexGrow": 0.1,
                   "flexShrink": 1,
                   "justifyContent": "flex-end",
+                  "paddingTop": 2,
                 },
               ]
             }
@@ -609,9 +609,9 @@ Array [
               testID="Fermer la modale"
             >
               <View
-                height={32}
+                height={18}
                 testID="rightIcon"
-                width={32}
+                width={18}
               >
                 <Text>
                   rightIcon-SVG-Mock

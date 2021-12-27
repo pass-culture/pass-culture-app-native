@@ -311,7 +311,7 @@ export const AppComponents: FunctionComponent = () => {
           leftIcon={ArrowPrevious}
           onLeftIconPress={hideBasicModal}
           rightIconAccessibilityLabel="rightIconButton"
-          rightIcon={CloseDeprecated}
+          rightIcon={Close}
           onRightIconPress={hideBasicModal}>
           <Text>A simple content</Text>
         </AppModal>
@@ -325,7 +325,7 @@ export const AppComponents: FunctionComponent = () => {
           leftIcon={ArrowPrevious}
           onLeftIconPress={() => null}
           rightIconAccessibilityLabel="Revenir à l'accueil"
-          rightIcon={CloseDeprecated}
+          rightIcon={Close}
           onRightIconPress={() => null}
         />
       </AccordionItem>
