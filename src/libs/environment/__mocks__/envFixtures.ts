@@ -54,8 +54,6 @@ export const env: Environment = {
   SIGNIN_PASSWORD: '',
   SIGNUP_DATE: '',
   SIGNUP_POSTAL_CODE: '',
-  SIGNUP_RANDOM_EMAIL: false,
-  SIGNUP_RANDOM_PASSWORD: false,
   SITE_KEY: 'SITE_KEY',
   SUPPORT_EMAIL_ADDRESS: 'support@test.passculture.app',
   TMX_FPSERVER: 'test.pc',

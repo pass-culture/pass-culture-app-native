@@ -3,8 +3,6 @@ import React, { FunctionComponent, useRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
-import { env } from 'libs/environment'
-import { randomAlphaString } from 'libs/random'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { CheckboxInput } from 'ui/components/inputs/CheckboxInput'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
@@ -16,14 +14,8 @@ import { padding, Spacer, Typo } from 'ui/theme'
 
 import { PreValidationSignupStepProps } from '../types'
 
-let INITIAL_EMAIL = ''
-
-if (__DEV__ && env.SIGNUP_RANDOM_EMAIL) {
-  INITIAL_EMAIL = `${randomAlphaString()}@${randomAlphaString()}.com`
-}
-
 export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props) => {
-  const [email, setEmail] = useState(INITIAL_EMAIL)
+  const [email, setEmail] = useState('')
   const [hasError, setHasError] = useState(false)
   const [isNewsletterChecked, setIsNewsletterChecked] = useState(false)
 

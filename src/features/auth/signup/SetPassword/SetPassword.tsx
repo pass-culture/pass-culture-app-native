@@ -7,20 +7,12 @@ import {
   PasswordSecurityRules,
 } from 'features/auth/components/PasswordSecurityRules'
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
-import { env } from 'libs/environment'
-import { randomPassword } from 'libs/random'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { Spacer } from 'ui/theme'
 
-let INITIAL_PASSWORD = ''
-
-if (__DEV__ && env.SIGNUP_RANDOM_PASSWORD) {
-  INITIAL_PASSWORD = randomPassword()
-}
-
 export const SetPassword: FunctionComponent<PreValidationSignupStepProps> = (props) => {
-  const [password, setPassword] = useState(INITIAL_PASSWORD)
+  const [password, setPassword] = useState('')
   const disabled = !isPasswordCorrect(password)
 
   const passwordInput = useRef<RNTextInput | null>(null)
