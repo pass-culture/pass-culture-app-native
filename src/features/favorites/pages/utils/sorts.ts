@@ -2,35 +2,22 @@ import { FavoriteResponse } from 'api/gen'
 import { GeoCoordinates } from 'libs/geolocation'
 import { computeDistanceInMeters } from 'libs/parsers'
 
+function getOfferPrice({ offer }: FavoriteResponse): number | null {
+  return offer.startPrice ?? offer.price ?? null
+}
+
 export function sortByAscendingPrice(a: FavoriteResponse, b: FavoriteResponse) {
-  let aPrice
-  let bPrice
-  if (a.offer.startPrice !== null) {
-    aPrice = a.offer.startPrice
-  } else if (a.offer.price !== null) {
-    aPrice = a.offer.price
-  }
-  if (b.offer.startPrice !== null) {
-    bPrice = b.offer.startPrice
-  } else if (b.offer.price !== null) {
-    bPrice = b.offer.price
-  }
-  if (a.offer.isExpired && b.offer.isExpired) {
-    return 0
-  } else if (!a.offer.isExpired && b.offer.isExpired) {
-    return -1
-  } else if (a.offer.isExpired && !b.offer.isExpired) {
-    return 1
-  } else if (bPrice === undefined && aPrice === undefined) {
-    return 0
-  } else if (aPrice === undefined && bPrice !== undefined) {
-    return 1
-  } else if (aPrice !== undefined && bPrice === undefined) {
-    return -1
-  } else if (aPrice !== undefined && bPrice !== undefined) {
-    return aPrice < bPrice ? -1 : 1
-  }
-  return 0
+  // If only offer is expired, we rank it last.
+  if (a.offer.isExpired && !b.offer.isExpired) return 1
+  if (!a.offer.isExpired && b.offer.isExpired) return -1
+
+  const aPrice = getOfferPrice(a)
+  const bPrice = getOfferPrice(b)
+
+  if (aPrice === null && bPrice === null) return 0
+  if (!aPrice) return 1
+  if (!bPrice) return -1
+  return aPrice - bPrice
 }
 
 export function sortByIdDesc(a: FavoriteResponse, b: FavoriteResponse) {
@@ -39,28 +26,21 @@ export function sortByIdDesc(a: FavoriteResponse, b: FavoriteResponse) {
 
 export function sortByDistanceAroundMe(position: GeoCoordinates | null) {
   return (a: FavoriteResponse, b: FavoriteResponse) => {
-    const aOffer = a.offer
-    const bOffer = b.offer
-    let aCoordinate
-    let bCoordinate
-    if (position === null) {
-      return 0
-    }
-    if (aOffer.coordinates?.latitude && aOffer.coordinates?.longitude) {
+    if (position === null) return 0
+
+    let aCoordinate, bCoordinate
+    if (a.offer.coordinates?.latitude && a.offer.coordinates?.longitude) {
       aCoordinate = a.offer.coordinates
     }
-    if (bOffer.coordinates?.latitude && bOffer.coordinates?.longitude) {
+    if (b.offer.coordinates?.latitude && b.offer.coordinates?.longitude) {
       bCoordinate = b.offer.coordinates
     }
-    if (!aCoordinate && !bCoordinate) {
-      return -1
-    } else if (aCoordinate && !bCoordinate) {
-      return -1
-    } else if (!aCoordinate && bCoordinate) {
-      return 1
-    } else if (
-      aCoordinate &&
-      bCoordinate &&
+
+    if (!aCoordinate && !bCoordinate) return 0
+    if (!aCoordinate) return 1
+    if (!bCoordinate) return -1
+
+    if (
       aCoordinate.latitude &&
       aCoordinate.longitude &&
       bCoordinate.latitude &&
@@ -78,8 +58,9 @@ export function sortByDistanceAroundMe(position: GeoCoordinates | null) {
         position.latitude,
         position.longitude
       )
-      return distanceToOfferA < distanceToOfferB ? -1 : 1
+      return distanceToOfferA - distanceToOfferB
     }
+
     return 0
   }
 }

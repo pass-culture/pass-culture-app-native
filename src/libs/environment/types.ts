@@ -50,8 +50,6 @@ export interface Environment {
   SIGNIN_PASSWORD: string
   SIGNUP_DATE: string
   SIGNUP_POSTAL_CODE: string
-  SIGNUP_RANDOM_EMAIL: boolean
-  SIGNUP_RANDOM_PASSWORD: boolean
   SITE_KEY: string
   SUPPORT_EMAIL_ADDRESS: string
   TMX_FPSERVER: string

@@ -33,100 +33,105 @@ export const parseOfferId = (offerId: string): number | null => {
   return dehumanizeId(offerId)
 }
 
-export const processHomepageEntry = (homepage: HomepageEntry): ProcessedModule[] => {
-  const {
-    fields: { modules },
-  } = homepage
-  const processedModules = modules.map((module) => {
-    const {
-      fields,
-      sys: { id: moduleId },
-    } = module
-    if (!fields || !hasAtLeastOneField(fields)) return
+const buildAlgoliaModule = (
+  fields: AlgoliaFields,
+  moduleId: string
+): Offers | OffersWithCover | undefined => {
+  const { algoliaParameters, displayParameters, cover, additionalAlgoliaParameters = [] } = fields
+  const search = buildSearchParams(algoliaParameters, additionalAlgoliaParameters)
+  if (search.length === 0) return
 
-    const contentType = getContentType(module)
-    if (contentType === 'algolia') {
-      const {
-        algoliaParameters,
-        displayParameters,
-        cover,
-        additionalAlgoliaParameters = [],
-      } = fields as AlgoliaFields
-      const search = buildSearchParams(algoliaParameters, additionalAlgoliaParameters)
-      if (search.length === 0) return
+  const { fields: display } = displayParameters
 
-      const { fields: display } = displayParameters
-
-      if (cover && hasAtLeastOneField(cover)) {
-        return new OffersWithCover({
-          search,
-          cover: buildImageUrl(cover.fields.image),
-          display,
-          moduleId,
-        })
-      }
-      return new Offers({ search, display, moduleId })
-    }
-
-    if (contentType === 'recommendation') {
-      const { displayParameters } = fields as RecommendationFields
-      const { fields: display } = displayParameters
-      return new RecommendationPane({ display })
-    }
-
-    if (contentType === 'exclusivity') {
-      const { alt, offerId, image, displayParameters } = fields as ExclusivityFields
-      const { fields: display = undefined } = displayParameters || {}
-      const id = parseOfferId(offerId)
-      if (typeof id !== 'number') return
-
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      return new ExclusivityPane({ alt, image: buildImageUrl(image)!, id, moduleId, display })
-    }
-
-    if (contentType === 'venuesPlaylist') {
-      const { venuesSearchParameters, displayParameters } = fields as VenuesFields
-      const search = buildSearchVenuesParams(venuesSearchParameters)
-      if (search.length === 0) return
-
-      const { fields: display } = displayParameters
-      return new VenuesModule({ display, search, moduleId })
-    }
-
-    if (contentType === CONTENT_TYPES.BUSINESS) {
-      const { title, firstLine, secondLine, leftIcon, url, image, targetNotConnectedUsersOnly } =
-        fields as BusinessFields
-
-      return new BusinessPane({
-        title,
-        firstLine,
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        image: buildImageUrl(image)!,
-        secondLine,
-        leftIcon: (leftIcon && buildImageUrl(leftIcon)) || undefined,
-        url,
-        moduleId,
-        targetNotConnectedUsersOnly,
-      })
-    }
-
-    return
-  })
-
-  return processedModules.filter(Boolean) as ProcessedModule[]
+  if (cover && hasAtLeastOneField(cover)) {
+    return new OffersWithCover({
+      search,
+      cover: buildImageUrl(cover.fields.image),
+      display,
+      moduleId,
+    })
+  }
+  return new Offers({ search, display, moduleId })
 }
+
+const buildRecommendation = (fields: RecommendationFields): RecommendationPane => {
+  const { fields: display } = fields.displayParameters
+  return new RecommendationPane({ display })
+}
+
+const buildExclusivity = (
+  fields: ExclusivityFields,
+  moduleId: string
+): ExclusivityPane | undefined => {
+  const { alt, offerId, image, displayParameters } = fields
+  const { fields: display = undefined } = displayParameters || {}
+  const id = parseOfferId(offerId)
+  if (typeof id !== 'number') return
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  return new ExclusivityPane({ alt, image: buildImageUrl(image)!, id, moduleId, display })
+}
+
+const buildVenuesPlaylist = (fields: VenuesFields, moduleId: string): VenuesModule | undefined => {
+  const { venuesSearchParameters, displayParameters } = fields
+  const search = buildSearchVenuesParams(venuesSearchParameters)
+  if (search.length === 0) return
+
+  const { fields: display } = displayParameters
+  return new VenuesModule({ display, search, moduleId })
+}
+
+const buildBusiness = (fields: BusinessFields, moduleId: string): BusinessPane | undefined => {
+  const { title, firstLine, secondLine, leftIcon, url, image, targetNotConnectedUsersOnly } = fields
+
+  return new BusinessPane({
+    title,
+    firstLine,
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    image: buildImageUrl(image)!,
+    secondLine,
+    leftIcon: (leftIcon && buildImageUrl(leftIcon)) || undefined,
+    url,
+    moduleId,
+    targetNotConnectedUsersOnly,
+  })
+}
+
+const getModuleId = (module: HomepageModule): string => module.sys.id
+
+export const processHomepageEntry = (homepage: HomepageEntry): ProcessedModule[] =>
+  homepage.fields.modules
+    .map((module) => {
+      const { fields } = module
+      if (!fields || !hasAtLeastOneField(fields)) return
+
+      const contentType = getContentType(module)
+      const moduleId = getModuleId(module)
+
+      switch (contentType) {
+        case CONTENT_TYPES.ALGOLIA:
+          return buildAlgoliaModule(fields as AlgoliaFields, moduleId)
+        case CONTENT_TYPES.RECOMMENDATION:
+          return buildRecommendation(fields as RecommendationFields)
+        case CONTENT_TYPES.EXCLUSIVITY:
+          return buildExclusivity(fields as ExclusivityFields, moduleId)
+        case CONTENT_TYPES.VENUES_PLAYLIST:
+          return buildVenuesPlaylist(fields as VenuesFields, moduleId)
+        case CONTENT_TYPES.BUSINESS:
+          return buildBusiness(fields as BusinessFields, moduleId)
+        default:
+          return
+      }
+    })
+    .filter(Boolean) as ProcessedModule[]
 
 export const buildSearchParams = (
-  params: AlgoliaParameters,
+  firstParams: AlgoliaParameters,
   additionalParams: AlgoliaParameters[]
-): SearchParametersFields[] => {
-  const allParams = [params, ...additionalParams]
-  const publishedAdditionalSearchParams = allParams
+): SearchParametersFields[] =>
+  [firstParams, ...additionalParams]
     .filter((params) => params.fields && hasAtLeastOneField(params.fields))
     .map(({ fields }) => fields)
-
-  return publishedAdditionalSearchParams
-}
 
 const buildSearchVenuesParams = (
   params: VenuesSearchParameters[]
