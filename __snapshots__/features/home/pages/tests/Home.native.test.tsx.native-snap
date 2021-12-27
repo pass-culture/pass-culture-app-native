@@ -86,7 +86,7 @@ exports[`Home component should render correctly without login modal 1`] = `
             >
               <View
                 height={294}
-                width={754}
+                width={964}
               >
                 <Text>
                   undefined-SVG-Mock

@@ -366,15 +366,15 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                   Array [
                                     Object {
                                       "height": 312,
-                                      "width": 750,
+                                      "width": 960,
                                     },
                                   ]
                                 }
-                                width={750}
+                                width={960}
                               />
                               <View
                                 height={8}
-                                width={750}
+                                width={960}
                               >
                                 <Text>
                                   undefined-SVG-Mock
@@ -408,7 +408,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                     "aspectRatio": 0.6666666666666666,
                                     "borderRadius": 8,
                                     "height": 296,
-                                    "maxWidth": 702,
+                                    "maxWidth": 912,
                                     "width": 197,
                                   },
                                 ]
@@ -425,7 +425,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                       "aspectRatio": 0.6666666666666666,
                                       "borderRadius": 8,
                                       "height": 296,
-                                      "maxWidth": 702,
+                                      "maxWidth": 912,
                                       "width": 197,
                                     },
                                   ]
@@ -2047,7 +2047,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       "height": 428,
                                       "justifyContent": "center",
                                       "maxHeight": 650,
-                                      "maxWidth": 750,
+                                      "maxWidth": 960,
                                       "paddingBottom": 20,
                                       "paddingLeft": 20,
                                       "paddingRight": 20,
@@ -2795,15 +2795,15 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                   Array [
                                     Object {
                                       "height": 312,
-                                      "width": 750,
+                                      "width": 960,
                                     },
                                   ]
                                 }
-                                width={750}
+                                width={960}
                               />
                               <View
                                 height={8}
-                                width={750}
+                                width={960}
                               >
                                 <Text>
                                   undefined-SVG-Mock
@@ -2837,7 +2837,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                     "aspectRatio": 0.6666666666666666,
                                     "borderRadius": 8,
                                     "height": 296,
-                                    "maxWidth": 702,
+                                    "maxWidth": 912,
                                     "width": 197,
                                   },
                                 ]
@@ -2854,7 +2854,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                       "aspectRatio": 0.6666666666666666,
                                       "borderRadius": 8,
                                       "height": 296,
-                                      "maxWidth": 702,
+                                      "maxWidth": 912,
                                       "width": 197,
                                     },
                                   ]
@@ -4908,7 +4908,7 @@ Tous les détails du film sur AlloCiné: http://www.allocine.fr/film/fichefilm_g
                                       "height": 428,
                                       "justifyContent": "center",
                                       "maxHeight": 650,
-                                      "maxWidth": 750,
+                                      "maxWidth": 960,
                                       "paddingBottom": 20,
                                       "paddingLeft": 20,
                                       "paddingRight": 20,

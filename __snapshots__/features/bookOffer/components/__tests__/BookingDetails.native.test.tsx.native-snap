@@ -87,7 +87,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
           "alignItems": "center",
           "flexDirection": "row",
           "paddingVertical": 2,
-          "width": 654,
+          "width": 864,
         },
       ]
     }
@@ -157,7 +157,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
           "alignItems": "center",
           "flexDirection": "row",
           "paddingVertical": 2,
-          "width": 654,
+          "width": 864,
         },
       ]
     }
@@ -227,7 +227,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
           "alignItems": "center",
           "flexDirection": "row",
           "paddingVertical": 2,
-          "width": 654,
+          "width": 864,
         },
       ]
     }
@@ -312,7 +312,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
           "alignItems": "center",
           "flexDirection": "row",
           "paddingVertical": 2,
-          "width": 654,
+          "width": 864,
         },
       ]
     }
@@ -614,7 +614,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
           "alignItems": "center",
           "flexDirection": "row",
           "paddingVertical": 2,
-          "width": 654,
+          "width": 864,
         },
       ]
     }
@@ -684,7 +684,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
           "alignItems": "center",
           "flexDirection": "row",
           "paddingVertical": 2,
-          "width": 654,
+          "width": 864,
         },
       ]
     }
@@ -754,7 +754,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
           "alignItems": "center",
           "flexDirection": "row",
           "paddingVertical": 2,
-          "width": 654,
+          "width": 864,
         },
       ]
     }
@@ -839,7 +839,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
           "alignItems": "center",
           "flexDirection": "row",
           "paddingVertical": 2,
-          "width": 654,
+          "width": 864,
         },
       ]
     }

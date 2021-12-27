@@ -31,7 +31,7 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
         "flexShrink": 1,
         "height": "100%",
         "maxHeight": "100%",
-        "maxWidth": 750,
+        "maxWidth": 960,
         "opacity": 1,
         "paddingBottom": 0,
         "position": "absolute",

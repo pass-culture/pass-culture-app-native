@@ -52,7 +52,7 @@ exports[`BookingDetails should render correctly 1`] = `
           <View
             height={296}
             testID="BackgroundPlaceholder"
-            width={750}
+            width={960}
           >
             <Text>
               BackgroundPlaceholder-SVG-Mock
@@ -60,7 +60,7 @@ exports[`BookingDetails should render correctly 1`] = `
           </View>
           <View
             height={8}
-            width={750}
+            width={960}
           >
             <Text>
               undefined-SVG-Mock
@@ -753,7 +753,7 @@ exports[`BookingDetails should render correctly 1`] = `
               "height": 428,
               "justifyContent": "center",
               "maxHeight": 650,
-              "maxWidth": 750,
+              "maxWidth": 960,
               "paddingBottom": 20,
               "paddingLeft": 20,
               "paddingRight": 20,
@@ -1206,7 +1206,7 @@ exports[`BookingDetails should render correctly 1`] = `
               "height": 428,
               "justifyContent": "center",
               "maxHeight": 650,
-              "maxWidth": 750,
+              "maxWidth": 960,
               "paddingBottom": 20,
               "paddingLeft": 20,
               "paddingRight": 20,

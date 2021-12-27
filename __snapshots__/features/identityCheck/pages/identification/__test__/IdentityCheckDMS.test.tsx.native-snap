@@ -396,7 +396,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                       Object {
                         "activeOpacity": 0.7,
                         "appBarHeight": 64,
-                        "appContentWidth": 750,
+                        "appContentWidth": 960,
                         "borderRadius": Object {
                           "button": 24,
                           "checkbox": 4,
@@ -536,11 +536,8 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                           "regular": "Montserrat-Regular",
                           "semiBold": "Montserrat-SemiBold",
                         },
-                        "isDesktop": false,
                         "isDesktopViewport": false,
-                        "isMobile": true,
                         "isMobileViewport": true,
-                        "isTablet": false,
                         "isTabletViewport": false,
                         "isTouch": true,
                         "navTopHeight": 80,
