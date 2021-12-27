@@ -31,6 +31,7 @@ import { Calendar } from 'ui/svg/icons/Calendar'
 import { Check } from 'ui/svg/icons/Check'
 import { CheckDeprecated } from 'ui/svg/icons/Check_deprecated'
 import { Clock } from 'ui/svg/icons/Clock'
+import { Close } from 'ui/svg/icons/Close'
 import { CloseDeprecated } from 'ui/svg/icons/Close_deprecated'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
@@ -143,6 +144,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="Check" component={Check} isNew />
       <Icon name="CheckDeprecated" component={CheckDeprecated} />
       <Icon name="Clock" component={Clock} isNew />
+      <Icon name="Close" component={Close} isNew />
       <Icon name="CloseDeprecated" component={CloseDeprecated} />
       <Icon name="Confidentiality" component={Confidentiality} isNew />
       <Icon name="Digital" component={Digital} />
