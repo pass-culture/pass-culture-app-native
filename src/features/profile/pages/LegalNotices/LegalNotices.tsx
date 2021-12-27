@@ -11,9 +11,9 @@ import { env } from 'libs/environment'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
-import { ExternalSiteDeprecated } from 'ui/svg/icons/ExternalSite_deprecated'
+import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, SECTION_ROW_ICON_SIZE, Spacer } from 'ui/theme'
 
 export function LegalNotices() {
   const { data: user } = useUserProfileInfo()
@@ -27,7 +27,7 @@ export function LegalNotices() {
           title={t`Conditions Générales d’Utilisation`}
           type="clickable"
           onPress={() => openUrl(env.CGU_LINK)}
-          icon={ExternalSiteDeprecated}
+          icon={ExternalSite}
           style={styles.row}
         />
         <Separator />
@@ -35,7 +35,7 @@ export function LegalNotices() {
           title={t`Charte de protection des données personnelles`}
           type="clickable"
           onPress={() => openUrl(env.DATA_PRIVACY_CHART_LINK)}
-          icon={ExternalSiteDeprecated}
+          icon={ExternalSite}
           style={styles.row}
         />
         {!!user && (
@@ -72,4 +72,5 @@ const Container = styled.View(({ theme }) => ({
 
 const Row = styled(SectionRow).attrs({
   style: styles.row,
+  iconSize: SECTION_ROW_ICON_SIZE,
 })``

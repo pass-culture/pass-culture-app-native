@@ -46,7 +46,6 @@ import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Error } from 'ui/svg/icons/Error'
 import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { ExternalSiteDeprecated } from 'ui/svg/icons/ExternalSite_deprecated'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
@@ -155,7 +154,6 @@ export const Icons: FunctionComponent = () => {
       <Icon name="ExternalLinkSite" component={ExternalLinkSite} />
       <Icon name="ExternalSite" component={ExternalSite} isNew />
       <Icon name="ExternalSiteFilled" component={ExternalSiteFilled} isNew />
-      <Icon name="ExternalSiteDeprecated" component={ExternalSiteDeprecated} />
       <Icon name="Eye" component={Eye} />
       <Icon name="EyeSlash" component={EyeSlash} />
       <Icon name="Favorite" component={Favorite} />
