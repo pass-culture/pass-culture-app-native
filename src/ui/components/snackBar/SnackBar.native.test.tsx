@@ -2,7 +2,7 @@ import React from 'react'
 import * as RN from 'react-native'
 
 import { fireEvent, render, waitFor } from 'tests/utils'
-import { CheckDeprecated as Check } from 'ui/svg/icons/Check_deprecated'
+import { Check } from 'ui/svg/icons/Check'
 import { ColorsEnum } from 'ui/theme'
 
 import { SnackBar, SnackBarProps } from './SnackBar'

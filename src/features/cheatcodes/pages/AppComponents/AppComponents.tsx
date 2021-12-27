@@ -55,7 +55,7 @@ import { StepDots } from 'ui/components/StepDots'
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import CategoryIcon from 'ui/svg/icons/categories/bicolor'
-import { CheckDeprecated } from 'ui/svg/icons/Check_deprecated'
+import { Check } from 'ui/svg/icons/Check'
 import { Close } from 'ui/svg/icons/Close'
 import { CloseDeprecated } from 'ui/svg/icons/Close_deprecated'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
@@ -376,7 +376,7 @@ export const AppComponents: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={1} />
         <InputRule
           title={'12 Caractères'}
-          icon={inputText.length >= 12 ? CheckDeprecated : CloseDeprecated}
+          icon={inputText.length >= 12 ? Check : Close}
           color={inputText.length >= 12 ? ColorsEnum.GREEN_VALID : ColorsEnum.ERROR}
           iconSize={16}
         />
