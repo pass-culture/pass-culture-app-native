@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { useCreditForOffer } from 'features/offer/services/useHasEnoughCredit'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { DuoPerson } from 'ui/svg/icons/DuoPerson'
-import { ProfileDeprecated } from 'ui/svg/icons/Profile_deprecated'
+import { Profile } from 'ui/svg/icons/Profile'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
@@ -29,7 +29,7 @@ export const BookDuoChoice: React.FC = () => {
           : t`crédit insuffisant`,
       title: quantity === 1 ? t`Solo` : t`Duo`,
       selected: bookingState.quantity === quantity,
-      icon: quantity === 1 ? ProfileDeprecated : DuoPerson,
+      icon: quantity === 1 ? Profile : DuoPerson,
       onPress: () => dispatch({ type: 'SELECT_QUANTITY', payload: quantity }),
       hasEnoughCredit: enoughCredit,
     }
