@@ -15,6 +15,7 @@ export interface BaseButtonProps {
   buttonHeight?: 'small' | 'tall'
   disabled?: boolean
   icon?: FunctionComponent<IconInterface>
+  iconSize?: number
   inline?: boolean
   isLoading?: boolean
   onLongPress?: ((e: GestureResponderEvent) => void) | (() => void)
@@ -33,7 +34,6 @@ interface AppButtonProps extends BaseButtonProps {
   backgroundColor?: ColorsEnum
   borderColor?: ColorsEnum
   iconColor?: ColorsEnum
-  iconSize?: number
   inline?: boolean
   inlineHeight?: number
   loadingIconColor: ColorsEnum

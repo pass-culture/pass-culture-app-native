@@ -46,7 +46,6 @@ import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Error } from 'ui/svg/icons/Error'
 import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { ExternalSiteDeprecated } from 'ui/svg/icons/ExternalSite_deprecated'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
@@ -84,7 +83,6 @@ import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Profile } from 'ui/svg/icons/Profile'
-import { ProfileDeprecated } from 'ui/svg/icons/Profile_deprecated'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Quote } from 'ui/svg/icons/Quote'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
@@ -155,7 +153,6 @@ export const Icons: FunctionComponent = () => {
       <Icon name="ExternalLinkSite" component={ExternalLinkSite} />
       <Icon name="ExternalSite" component={ExternalSite} isNew />
       <Icon name="ExternalSiteFilled" component={ExternalSiteFilled} isNew />
-      <Icon name="ExternalSiteDeprecated" component={ExternalSiteDeprecated} />
       <Icon name="Eye" component={Eye} />
       <Icon name="EyeSlash" component={EyeSlash} />
       <Icon name="Favorite" component={Favorite} />
@@ -186,8 +183,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="OrderPrice" component={OrderPrice} isNew />
       <Icon name="PhoneFilled" component={PhoneFilled} />
       <Icon name="PlainArrowPrevious" component={PlainArrowPrevious} isNew />
-      <Icon name="ProfileDeprecated" component={ProfileDeprecated} />
-      <Icon name="ProfileDeletion" component={ProfileDeletion} />
+      <Icon name="ProfileDeletion" component={ProfileDeletion} isNew />
       <Icon name="Quote" component={Quote} isNew />
       <Icon name="RequestSent" component={RequestSent} />
       <Icon name="SignOut" component={SignOut} />
