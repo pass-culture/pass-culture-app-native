@@ -13,7 +13,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { ProgressBar } from 'ui/components/snackBar/ProgressBar'
-import { CloseDeprecated as Close } from 'ui/svg/icons/Close_deprecated'
+import { Close } from 'ui/svg/icons/Close'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { ColorsEnum } from 'ui/theme'
@@ -118,7 +118,7 @@ const _SnackBar = (props: SnackBarProps) => {
             testID="snackbar-close"
             onPress={onClose}
             activeOpacity={ACTIVE_OPACITY}>
-            <Close size={28} color={props.color} />
+            <Close size={20} color={props.color} />
           </TouchableOpacity>
         </SnackBarContainer>
         {renderProgressBar()}

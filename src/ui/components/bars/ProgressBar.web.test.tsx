@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { render } from 'tests/utils/web'
-import { CloseDeprecated as Close } from 'ui/svg/icons/Close_deprecated'
+import { Close } from 'ui/svg/icons/Close'
 import { ColorsEnum } from 'ui/theme'
 
 import { ProgressBar } from './ProgressBar'
