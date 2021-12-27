@@ -35,12 +35,8 @@ Object {
             >
               <div
                 class="css-view-1dbjc4n"
-                style="align-items: center; background-color: rgb(245, 245, 245); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: flex; flex-direction: row; padding-top: 16px; padding-bottom: 16px;"
+                style="align-items: center; background-color: rgb(245, 245, 245); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: flex; flex-direction: row; padding: 16px 20px 16px 12px;"
               >
-                <div
-                  class="css-view-1dbjc4n"
-                  style="width: 12px;"
-                />
                 <div
                   class="css-view-1dbjc4n"
                 >
@@ -67,10 +63,6 @@ Object {
                     Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation
                   </div>
                 </div>
-                <div
-                  class="css-view-1dbjc4n"
-                  style="width: 20px;"
-                />
               </div>
             </div>
             <div
@@ -345,12 +337,8 @@ Object {
           >
             <div
               class="css-view-1dbjc4n"
-              style="align-items: center; background-color: rgb(245, 245, 245); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: flex; flex-direction: row; padding-top: 16px; padding-bottom: 16px;"
+              style="align-items: center; background-color: rgb(245, 245, 245); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: flex; flex-direction: row; padding: 16px 20px 16px 12px;"
             >
-              <div
-                class="css-view-1dbjc4n"
-                style="width: 12px;"
-              />
               <div
                 class="css-view-1dbjc4n"
               >
@@ -377,10 +365,6 @@ Object {
                   Seules les sorties et offres physiques seront affichées pour une recherche avec une localisation
                 </div>
               </div>
-              <div
-                class="css-view-1dbjc4n"
-                style="width: 20px;"
-              />
             </div>
           </div>
           <div
