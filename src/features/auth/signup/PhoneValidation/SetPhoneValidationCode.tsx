@@ -36,7 +36,7 @@ import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { Close } from 'ui/svg/icons/Close'
+import { CloseDeprecated as Close } from 'ui/svg/icons/Close_deprecated'
 import { EmailDeprecated as Email } from 'ui/svg/icons/Email_deprecated'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 

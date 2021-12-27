@@ -19,7 +19,7 @@ import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { Close } from 'ui/svg/icons/Close'
+import { CloseDeprecated as Close } from 'ui/svg/icons/Close_deprecated'
 import { Spacer } from 'ui/theme'
 
 export const ReinitializePassword = () => {

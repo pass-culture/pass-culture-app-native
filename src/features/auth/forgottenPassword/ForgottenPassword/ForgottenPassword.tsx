@@ -20,7 +20,7 @@ import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { InputError } from 'ui/components/inputs/InputError'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { Close } from 'ui/svg/icons/Close'
+import { CloseDeprecated as Close } from 'ui/svg/icons/Close_deprecated'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const ForgottenPassword: FunctionComponent = () => {

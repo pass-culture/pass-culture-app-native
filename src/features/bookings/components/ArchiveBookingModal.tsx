@@ -10,7 +10,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { Close } from 'ui/svg/icons/Close'
+import { CloseDeprecated as Close } from 'ui/svg/icons/Close_deprecated'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export interface ArchiveBookingModalProps {

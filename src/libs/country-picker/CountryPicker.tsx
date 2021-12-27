@@ -13,7 +13,7 @@ import { accessibilityAndTestId } from 'tests/utils'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { ArrowDown } from 'ui/svg/icons/ArrowDown'
-import { Close } from 'ui/svg/icons/Close'
+import { CloseDeprecated as Close } from 'ui/svg/icons/Close_deprecated'
 import { getSpacing, Typo } from 'ui/theme'
 
 import { ALLOWED_COUNTRY_CODES, FLAG_TYPE } from './constants'
