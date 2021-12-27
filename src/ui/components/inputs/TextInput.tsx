@@ -1,9 +1,7 @@
 import React, { forwardRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
-import styled from 'styled-components/native'
 
-import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
 import { StyledInputContainer } from './StyledInputContainer'
@@ -13,11 +11,9 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
   props,
   forwardedRef
 ) => {
+  const [isFocus, setIsFocus] = useState(false)
   const nativeProps = getRNTextInputProps(props)
   const customProps = getCustomTextInputProps(props)
-  const { RightIcon = () => <Invalidate size={24} /> } = customProps
-
-  const [isFocus, setIsFocus] = useState(false)
 
   function onFocus() {
     setIsFocus(true)
@@ -45,16 +41,9 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
         isInputDisabled={customProps.disabled}
         style={customProps.containerStyle}>
         <BaseTextInput {...nativeProps} ref={forwardedRef} onFocus={onFocus} onBlur={onBlur} />
-        {!!customProps.RightIcon && (
-          <RightIconContainer>
-            <RightIcon />
-          </RightIconContainer>
-        )}
       </StyledInputContainer>
     </React.Fragment>
   )
 }
 
 export const TextInput = forwardRef<RNTextInput, TextInputProps>(WithRefTextInput)
-
-const RightIconContainer = styled.View({ position: 'absolute', right: getSpacing(1) })
