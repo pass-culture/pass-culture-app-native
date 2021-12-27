@@ -3,7 +3,7 @@ import React, { forwardRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
 import { accessibilityAndTestId } from 'tests/utils'
-import { Invalidate } from 'ui/svg/icons/Invalidate'
+import { Invalidate } from 'ui/svg/icons/Invalidate_deprecated'
 import { ColorsEnum, Spacer } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'

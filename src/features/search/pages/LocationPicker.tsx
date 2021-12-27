@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
-import { Invalidate } from 'ui/svg/icons/Invalidate'
+import { Invalidate } from 'ui/svg/icons/Invalidate_deprecated'
 import { getSpacing, Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Invalidate } from 'ui/svg/icons/Invalidate'
+import { Invalidate } from 'ui/svg/icons/Invalidate_deprecated'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
 

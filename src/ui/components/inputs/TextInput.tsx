@@ -2,7 +2,7 @@ import React, { forwardRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Invalidate } from 'ui/svg/icons/Invalidate'
+import { Invalidate } from 'ui/svg/icons/Invalidate_deprecated'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
