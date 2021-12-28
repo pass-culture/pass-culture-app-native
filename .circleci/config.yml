@@ -59,6 +59,20 @@ commands:
           paths:
             - node_modules
 
+  unit_test_native:
+    description: Unit Tests Native
+    steps:
+      - restore_cache:
+          name: Restore Tests cache
+          keys:
+            - jest-cache-{{ checksum "yarn.lock" }}-{{ arch }}
+      - run: yarn test:unit:ci
+      - save_cache:
+          name: Save Tests cache
+          key: jest-cache-{{ checksum "yarn.lock" }}-{{ arch }}
+          paths:
+            - .jest
+
   install_ruby_modules:
     description: Install Ruby Dependencies
     steps:
@@ -312,9 +326,7 @@ jobs:
     steps:
       - checkout
       - install_node_modules
-      - run:
-          name: Unit Tests Native
-          command: yarn test:unit:ci
+      - unit_test_native
       - sonarcloud-scanner
 
   test-web:
