@@ -24,7 +24,7 @@ export const ButtonWithLinearGradient: React.FC<Props> = ({
   <Container onPress={onPress} disabled={isDisabled} {...accessibilityAndTestId(wording)}>
     {isDisabled ? <DisabledRectangle /> : <Rectangle height={getSpacing(12)} size="100%" />}
     <LegendContainer>
-      {!!isExternal && <ExternalSite size={24} color={ColorsEnum.WHITE} />}
+      {!!isExternal && <ExternalSite size={20} color={ColorsEnum.WHITE} />}
       <Title adjustsFontSizeToFit numberOfLines={1}>
         {wording}
       </Title>

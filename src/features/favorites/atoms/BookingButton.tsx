@@ -86,7 +86,7 @@ const BookExternallyButton = ({
       title={t`Réserver`}
       onPress={() => url && openUrl(url, { analyticsData: { offerId } })}
       icon={ExternalSite}
-      iconSize={22}
+      iconSize={20}
       buttonHeight="tall"
     />
   ) : null
