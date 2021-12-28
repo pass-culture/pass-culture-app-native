@@ -248,7 +248,6 @@
     "metro-react-native-babel-preset": "^0.66.2",
     "mini-css-extract-plugin": "^1.5.0",
     "mockdate": "^3.0.2",
-    "modal-enhanced-react-native-web": "^0.2.0",
     "msw": "^0.21.3",
     "optimize-css-assets-webpack-plugin": "^5.0.4",
     "pnp-webpack-plugin": "^1.6.4",

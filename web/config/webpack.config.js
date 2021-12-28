@@ -298,7 +298,6 @@ module.exports = function (webpackEnv) {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
-        'react-native-modal': 'modal-enhanced-react-native-web',
         'react-native-svg': 'react-native-svg-web',
         'react-native-linear-gradient': 'react-native-web-linear-gradient',
 

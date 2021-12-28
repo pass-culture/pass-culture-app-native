@@ -16,7 +16,6 @@ module.exports = {
   moduleNameMapper: {
     ...base.moduleNameMapper,
     '^react-native$': 'react-native-web',
-    '^react-native-modal$': 'modal-enhanced-react-native-web',
     '^react-native-svg$': 'react-native-svg-web',
     '^react-native-linear-gradient$': 'react-native-web-linear-gradient',
     '\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':

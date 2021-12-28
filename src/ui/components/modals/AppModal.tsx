@@ -20,7 +20,7 @@ type Props = {
   onBackdropPress?: () => void
 } & ModalIconProps
 
-// Without this, modal-enhanced-react-native-web recompute the margin with arbitraty values
+// Without this, the margin is recomputed with arbitraty values
 const modalStyles = { margin: 'auto' }
 
 export const AppModal: FunctionComponent<Props> = ({
