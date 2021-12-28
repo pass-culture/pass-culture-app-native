@@ -29,7 +29,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
 }) => {
   const TitleComponent = boldTitle ? BoldTitle : Title
   return (
-    <HeaderContainer onLayout={onLayout}>
+    <HeaderContainer onLayout={onLayout} testID="modalHeader">
       <LeftHeaderActionContainer>
         <LeftHeaderAction
           onPress={onLeftIconPress}

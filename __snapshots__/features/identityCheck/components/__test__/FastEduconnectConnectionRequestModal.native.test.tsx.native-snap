@@ -128,6 +128,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
           },
         ]
       }
+      testID="modalContainer"
     >
       <View
         onLayout={[Function]}
@@ -141,6 +142,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
             },
           ]
         }
+        testID="modalHeader"
       >
         <View
           style={
@@ -284,6 +286,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
         <RCTScrollView
           onContentSizeChange={[Function]}
           scrollEnabled={true}
+          testID="modalScrollView"
         >
           <View>
             <Text
@@ -922,6 +925,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
           },
         ]
       }
+      testID="modalContainer"
     >
       <View
         onLayout={[Function]}
@@ -935,6 +939,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
             },
           ]
         }
+        testID="modalHeader"
       >
         <View
           style={
@@ -1078,6 +1083,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
         <RCTScrollView
           onContentSizeChange={[Function]}
           scrollEnabled={true}
+          testID="modalScrollView"
         >
           <View>
             <Text

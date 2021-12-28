@@ -2058,6 +2058,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     },
                                   ]
                                 }
+                                testID="modalContainer"
                               >
                                 <View
                                   onLayout={[Function]}
@@ -2071,6 +2072,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       },
                                     ]
                                   }
+                                  testID="modalHeader"
                                 >
                                   <View
                                     style={
@@ -2210,6 +2212,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   <RCTScrollView
                                     onContentSizeChange={[Function]}
                                     scrollEnabled={true}
+                                    testID="modalScrollView"
                                   >
                                     <View>
                                       <View
@@ -4921,6 +4924,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     },
                                   ]
                                 }
+                                testID="modalContainer"
                               >
                                 <View
                                   onLayout={[Function]}
@@ -4934,6 +4938,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       },
                                     ]
                                   }
+                                  testID="modalHeader"
                                 >
                                   <View
                                     style={
@@ -5073,6 +5078,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   <RCTScrollView
                                     onContentSizeChange={[Function]}
                                     scrollEnabled={true}
+                                    testID="modalScrollView"
                                   >
                                     <View>
                                       <View

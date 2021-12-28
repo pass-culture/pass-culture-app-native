@@ -103,7 +103,7 @@ export const AppModal: FunctionComponent<Props> = ({
       testID="modal"
       deviceHeight={windowHeight}
       deviceWidth={windowWidth}>
-      <ModalContainer height={modalHeight}>
+      <ModalContainer height={modalHeight} testID="modalContainer">
         <ModalHeader
           title={title}
           numberOfLines={titleNumberOfLines}
@@ -115,7 +115,8 @@ export const AppModal: FunctionComponent<Props> = ({
           <ScrollView
             ref={scrollViewRef}
             scrollEnabled={scrollEnabled}
-            onContentSizeChange={updateScrollViewContentHeight}>
+            onContentSizeChange={updateScrollViewContentHeight}
+            testID="modalScrollView">
             {children}
           </ScrollView>
         </ScrollViewContainer>

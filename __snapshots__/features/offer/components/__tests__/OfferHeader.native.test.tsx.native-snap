@@ -556,6 +556,7 @@ Array [
             },
           ]
         }
+        testID="modalContainer"
       >
         <View
           onLayout={[Function]}
@@ -569,6 +570,7 @@ Array [
               },
             ]
           }
+          testID="modalHeader"
         >
           <View
             style={
@@ -708,6 +710,7 @@ Array [
           <RCTScrollView
             onContentSizeChange={[Function]}
             scrollEnabled={true}
+            testID="modalScrollView"
           >
             <View>
               <Text
