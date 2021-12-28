@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useRef, useState, useMemo, useCallback } from 'react'
 import { LayoutChangeEvent, ScrollView, useWindowDimensions } from 'react-native'
-import RNModal from 'react-native-modal'
+import { ReactNativeModal } from 'react-native-modal'
 import styled from 'styled-components/native'
 
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
@@ -146,7 +146,7 @@ const ScrollViewContainer = styled.View<{ paddingBottom: number }>(({ paddingBot
 
 const MODAL_PADDING = getSpacing(5)
 // @ts-ignore Argument of type 'typeof ReactNativeModal' is not assignable to parameter of type 'Any<StyledComponent>'
-const StyledModal = styled(RNModal)<{ height: number }>(({ theme }) => {
+const StyledModal = styled(ReactNativeModal)<{ height: number }>(({ theme }) => {
   const { isDesktopViewport } = theme
   return {
     position: 'absolute',
