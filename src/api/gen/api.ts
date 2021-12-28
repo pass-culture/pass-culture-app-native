@@ -11,21 +11,21 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the file manually.
  */
-import url from "url";
+import url from "url"
 
-import { getAuthenticationHeaders, handleGeneratedApiResponse, safeFetch } from "api/apiHelpers";
+import { getAuthenticationHeaders, handleGeneratedApiResponse, safeFetch } from "api/apiHelpers"
 import { EmptyResponse } from 'libs/fetch'
 
-import { Configuration } from "./configuration";
+import { Configuration } from "./configuration"
 
-const BASE_PATH = "/".replace(/\/+$/, "");
+const BASE_PATH = "/".replace(/\/+$/, "")
 
 /**
  * @export
  * @interface FetchAPI
  */
 export interface FetchAPI {
-  (url: string, init?: any): Promise<Response>;
+  (url: string, init?: any): Promise<Response>
 }
 
 /**
@@ -33,8 +33,8 @@ export interface FetchAPI {
  * @interface FetchArgs
  */
 export interface FetchArgs {
-  url: string;
-  options: any;
+  url: string
+  options: any
 }
 
 /**
@@ -42,14 +42,14 @@ export interface FetchArgs {
  * @class BaseAPI
  */
 export class BaseAPI {
-  protected configuration?: Configuration;
+  protected configuration?: Configuration
   constructor(configuration?: Configuration, protected basePath: string = BASE_PATH) {
     if (configuration) {
-      this.configuration = configuration;
-      this.basePath = configuration.basePath || this.basePath;
+      this.configuration = configuration
+      this.basePath = configuration.basePath || this.basePath
     }
   }
-};
+}
 
 /**
  * @export
@@ -59,7 +59,7 @@ export class BaseAPI {
 export class RequiredError extends Error {
   name = "RequiredError"
   constructor(public field: string, msg?: string) {
-    super(msg);
+    super(msg)
   }
 }
 
@@ -2725,23 +2725,23 @@ const DefaultApiFetchParamCreator = function () {
     async deletenativev1mefavoritesfavoriteId(favorite_id: number, options: any = {}): Promise<FetchArgs> {
       // verify required parameter 'favorite_id' is not null or undefined
       if (favorite_id === null || favorite_id === undefined) {
-        throw new RequiredError('favorite_id','Required parameter favorite_id was null or undefined when calling deletenativev1mefavoritesfavoriteId.');
+        throw new RequiredError('favorite_id','Required parameter favorite_id was null or undefined when calling deletenativev1mefavoritesfavoriteId.')
       }
       const localVarPath = `/native/v1/me/favorites/{favorite_id}`
-        .replace(`{${"favorite_id"}}`, encodeURIComponent(String(favorite_id)));
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+        .replace(`{${"favorite_id"}}`, encodeURIComponent(String(favorite_id)))
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -2750,20 +2750,20 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async getnativev1bookings(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/bookings`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/bookings`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -2772,20 +2772,20 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async getnativev1idCheckToken(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/id_check_token`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/id_check_token`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -2794,20 +2794,20 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async getnativev1me(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/me`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/me`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -2816,20 +2816,20 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async getnativev1mefavorites(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/me/favorites`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/me/favorites`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -2838,20 +2838,20 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async getnativev1mefavoritescount(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/me/favorites/count`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/me/favorites/count`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -2863,22 +2863,22 @@ const DefaultApiFetchParamCreator = function () {
     async getnativev1offerofferId(offer_id: number, options: any = {}): Promise<FetchArgs> {
       // verify required parameter 'offer_id' is not null or undefined
       if (offer_id === null || offer_id === undefined) {
-        throw new RequiredError('offer_id','Required parameter offer_id was null or undefined when calling getnativev1offerofferId.');
+        throw new RequiredError('offer_id','Required parameter offer_id was null or undefined when calling getnativev1offerofferId.')
       }
       const localVarPath = `/native/v1/offer/{offer_id}`
-        .replace(`{${"offer_id"}}`, encodeURIComponent(String(offer_id)));
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+        .replace(`{${"offer_id"}}`, encodeURIComponent(String(offer_id)))
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -2887,20 +2887,20 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async getnativev1offerreportreasons(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/offer/report/reasons`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/offer/report/reasons`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -2909,20 +2909,20 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async getnativev1offersreports(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/offers/reports`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/offers/reports`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -2931,20 +2931,20 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async getnativev1profiletokenExpiration(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/profile/token_expiration`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/profile/token_expiration`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -2953,19 +2953,19 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async getnativev1settings(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/settings`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      const localVarPath = `/native/v1/settings`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -2974,19 +2974,19 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async getnativev1subcategories(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/subcategories`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      const localVarPath = `/native/v1/subcategories`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -2995,20 +2995,20 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async getnativev1subscriptionnextStep(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/subscription/next_step`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/subscription/next_step`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3017,19 +3017,19 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async getnativev1subscriptionprofileOptions(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/subscription/profile_options`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      const localVarPath = `/native/v1/subscription/profile_options`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3038,20 +3038,20 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async getnativev1userProfilingsessionId(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/user_profiling/session_id`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/user_profiling/session_id`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3063,22 +3063,22 @@ const DefaultApiFetchParamCreator = function () {
     async getnativev1venuevenueId(venue_id: number, options: any = {}): Promise<FetchArgs> {
       // verify required parameter 'venue_id' is not null or undefined
       if (venue_id === null || venue_id === undefined) {
-        throw new RequiredError('venue_id','Required parameter venue_id was null or undefined when calling getnativev1venuevenueId.');
+        throw new RequiredError('venue_id','Required parameter venue_id was null or undefined when calling getnativev1venuevenueId.')
       }
       const localVarPath = `/native/v1/venue/{venue_id}`
-        .replace(`{${"venue_id"}}`, encodeURIComponent(String(venue_id)));
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+        .replace(`{${"venue_id"}}`, encodeURIComponent(String(venue_id)))
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3088,23 +3088,23 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async patchnativev1beneficiaryInformation(body?: BeneficiaryInformationUpdateRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/beneficiary_information`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/beneficiary_information`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-      const needsSerialization = (<any>"BeneficiaryInformationUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"BeneficiaryInformationUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3114,22 +3114,22 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1account(body?: AccountRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/account`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      const localVarPath = `/native/v1/account`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-      const needsSerialization = (<any>"AccountRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"AccountRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3138,20 +3138,20 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1accounthasCompletedIdCheck(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/account/has_completed_id_check`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/account/has_completed_id_check`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3160,20 +3160,20 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1accountsuspend(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/account/suspend`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/account/suspend`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3183,23 +3183,23 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1bookings(body?: BookOfferRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/bookings`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/bookings`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-      const needsSerialization = (<any>"BookOfferRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"BookOfferRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3211,23 +3211,23 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1bookingsbookingIdcancel(booking_id: number, options: any = {}): Promise<FetchArgs> {
       // verify required parameter 'booking_id' is not null or undefined
       if (booking_id === null || booking_id === undefined) {
-        throw new RequiredError('booking_id','Required parameter booking_id was null or undefined when calling postnativev1bookingsbookingIdcancel.');
+        throw new RequiredError('booking_id','Required parameter booking_id was null or undefined when calling postnativev1bookingsbookingIdcancel.')
       }
       const localVarPath = `/native/v1/bookings/{booking_id}/cancel`
-        .replace(`{${"booking_id"}}`, encodeURIComponent(String(booking_id)));
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+        .replace(`{${"booking_id"}}`, encodeURIComponent(String(booking_id)))
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3240,26 +3240,26 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1bookingsbookingIdtoggleDisplay(booking_id: number, body?: BookingDisplayStatusRequest, options: any = {}): Promise<FetchArgs> {
       // verify required parameter 'booking_id' is not null or undefined
       if (booking_id === null || booking_id === undefined) {
-        throw new RequiredError('booking_id','Required parameter booking_id was null or undefined when calling postnativev1bookingsbookingIdtoggleDisplay.');
+        throw new RequiredError('booking_id','Required parameter booking_id was null or undefined when calling postnativev1bookingsbookingIdtoggleDisplay.')
       }
       const localVarPath = `/native/v1/bookings/{booking_id}/toggle_display`
-        .replace(`{${"booking_id"}}`, encodeURIComponent(String(booking_id)));
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+        .replace(`{${"booking_id"}}`, encodeURIComponent(String(booking_id)))
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-      const needsSerialization = (<any>"BookingDisplayStatusRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"BookingDisplayStatusRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3269,23 +3269,23 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1changePassword(body?: ChangePasswordRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/change_password`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/change_password`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-      const needsSerialization = (<any>"ChangePasswordRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"ChangePasswordRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3294,20 +3294,20 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1identityDocument(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/identity_document`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/identity_document`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3317,23 +3317,23 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1meculturalSurvey(body?: CulturalSurveyRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/me/cultural_survey`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/me/cultural_survey`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-      const needsSerialization = (<any>"CulturalSurveyRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"CulturalSurveyRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3343,23 +3343,23 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1mefavorites(body?: FavoriteRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/me/favorites`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/me/favorites`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-      const needsSerialization = (<any>"FavoriteRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"FavoriteRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3372,26 +3372,26 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1offerofferIdreport(offer_id: number, body?: OfferReportRequest, options: any = {}): Promise<FetchArgs> {
       // verify required parameter 'offer_id' is not null or undefined
       if (offer_id === null || offer_id === undefined) {
-        throw new RequiredError('offer_id','Required parameter offer_id was null or undefined when calling postnativev1offerofferIdreport.');
+        throw new RequiredError('offer_id','Required parameter offer_id was null or undefined when calling postnativev1offerofferIdreport.')
       }
       const localVarPath = `/native/v1/offer/{offer_id}/report`
-        .replace(`{${"offer_id"}}`, encodeURIComponent(String(offer_id)));
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+        .replace(`{${"offer_id"}}`, encodeURIComponent(String(offer_id)))
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-      const needsSerialization = (<any>"OfferReportRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"OfferReportRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3401,23 +3401,23 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1profile(body?: UserProfileUpdateRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/profile`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/profile`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-      const needsSerialization = (<any>"UserProfileUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"UserProfileUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3427,23 +3427,23 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1profileupdateEmail(body?: UserProfileEmailUpdate, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/profile/update_email`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/profile/update_email`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-      const needsSerialization = (<any>"UserProfileEmailUpdate" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"UserProfileEmailUpdate" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3452,19 +3452,19 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1refreshAccessToken(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/refresh_access_token`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      const localVarPath = `/native/v1/refresh_access_token`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3474,22 +3474,22 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1requestPasswordReset(body?: RequestPasswordResetRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/request_password_reset`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      const localVarPath = `/native/v1/request_password_reset`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-      const needsSerialization = (<any>"RequestPasswordResetRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"RequestPasswordResetRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3499,22 +3499,22 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1resendEmailValidation(body?: ResendEmailValidationRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/resend_email_validation`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      const localVarPath = `/native/v1/resend_email_validation`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-      const needsSerialization = (<any>"ResendEmailValidationRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"ResendEmailValidationRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3524,22 +3524,22 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1resetPassword(body?: ResetPasswordRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/reset_password`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      const localVarPath = `/native/v1/reset_password`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-      const needsSerialization = (<any>"ResetPasswordRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"ResetPasswordRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3548,20 +3548,20 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1resetRecreditAmountToShow(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/reset_recredit_amount_to_show`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/reset_recredit_amount_to_show`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3573,23 +3573,23 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1sendOfferLinkByPushofferId(offer_id: number, options: any = {}): Promise<FetchArgs> {
       // verify required parameter 'offer_id' is not null or undefined
       if (offer_id === null || offer_id === undefined) {
-        throw new RequiredError('offer_id','Required parameter offer_id was null or undefined when calling postnativev1sendOfferLinkByPushofferId.');
+        throw new RequiredError('offer_id','Required parameter offer_id was null or undefined when calling postnativev1sendOfferLinkByPushofferId.')
       }
       const localVarPath = `/native/v1/send_offer_link_by_push/{offer_id}`
-        .replace(`{${"offer_id"}}`, encodeURIComponent(String(offer_id)));
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+        .replace(`{${"offer_id"}}`, encodeURIComponent(String(offer_id)))
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * give them webapp link.
@@ -3601,23 +3601,23 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1sendOfferWebappLinkByEmailofferId(offer_id: number, options: any = {}): Promise<FetchArgs> {
       // verify required parameter 'offer_id' is not null or undefined
       if (offer_id === null || offer_id === undefined) {
-        throw new RequiredError('offer_id','Required parameter offer_id was null or undefined when calling postnativev1sendOfferWebappLinkByEmailofferId.');
+        throw new RequiredError('offer_id','Required parameter offer_id was null or undefined when calling postnativev1sendOfferWebappLinkByEmailofferId.')
       }
       const localVarPath = `/native/v1/send_offer_webapp_link_by_email/{offer_id}`
-        .replace(`{${"offer_id"}}`, encodeURIComponent(String(offer_id)));
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+        .replace(`{${"offer_id"}}`, encodeURIComponent(String(offer_id)))
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3627,23 +3627,23 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1sendPhoneValidationCode(body?: SendPhoneValidationRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/send_phone_validation_code`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/send_phone_validation_code`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-      const needsSerialization = (<any>"SendPhoneValidationRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"SendPhoneValidationRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3653,22 +3653,22 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1signin(body?: SigninRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/signin`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      const localVarPath = `/native/v1/signin`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-      const needsSerialization = (<any>"SigninRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"SigninRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3677,20 +3677,20 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1subscriptionhonorStatement(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/subscription/honor_statement`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/subscription/honor_statement`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3700,23 +3700,23 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1subscriptionprofile(body?: ProfileUpdateRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/subscription/profile`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/subscription/profile`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-      const needsSerialization = (<any>"ProfileUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"ProfileUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3726,23 +3726,23 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1ubbleIdentification(body?: IdentificationSessionRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/ubble_identification`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/ubble_identification`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-      const needsSerialization = (<any>"IdentificationSessionRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"IdentificationSessionRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3752,23 +3752,23 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1userProfiling(body?: UserProfilingFraudRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/user_profiling`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/user_profiling`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-      const needsSerialization = (<any>"UserProfilingFraudRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"UserProfilingFraudRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3778,22 +3778,22 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1validateEmail(body?: ValidateEmailRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/validate_email`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      const localVarPath = `/native/v1/validate_email`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-      const needsSerialization = (<any>"ValidateEmailRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"ValidateEmailRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3803,23 +3803,23 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async postnativev1validatePhoneNumber(body?: ValidatePhoneNumberRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/validate_phone_number`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
+      const localVarPath = `/native/v1/validate_phone_number`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
       // authentication JWTAuth required
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-      const needsSerialization = (<any>"ValidatePhoneNumberRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"ValidatePhoneNumberRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
     /**
      * 
@@ -3829,25 +3829,25 @@ const DefaultApiFetchParamCreator = function () {
      * @throws {RequiredError}
      */
     async putnativev1profilevalidateEmail(body?: ChangeBeneficiaryEmailBody, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/profile/validate_email`;
-      const localVarUrlObj = url.parse(localVarPath, true);
-      const localVarRequestOptions = Object.assign({ method: 'PUT' }, options);
-      const localVarHeaderParameter = await getAuthenticationHeaders();
-      const localVarQueryParameter = {} as any;
-      localVarHeaderParameter['Content-Type'] = 'application/json';
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      const localVarPath = `/native/v1/profile/validate_email`
+      const localVarUrlObj = url.parse(localVarPath, true)
+      const localVarRequestOptions = Object.assign({ method: 'PUT' }, options)
+      const localVarHeaderParameter = await getAuthenticationHeaders()
+      const localVarQueryParameter = {} as any
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null;
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-      const needsSerialization = (<any>"ChangeBeneficiaryEmailBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      localVarUrlObj.search = null
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization = (<any>"ChangeBeneficiaryEmailBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
         url: url.format(localVarUrlObj),
         options: localVarRequestOptions,
-      };
+      }
     },
   }
-};
+}
 
 /**
  * DefaultApi - functional programming interface
@@ -3862,7 +3862,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async deletenativev1mefavoritesfavoriteId(basePath: string, favorite_id: number, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().deletenativev1mefavoritesfavoriteId(favorite_id, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().deletenativev1mefavoritesfavoriteId(favorite_id, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3873,7 +3873,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1bookings(basePath: string, options?: any): Promise<BookingsResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1bookings(options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1bookings(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3884,7 +3884,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1idCheckToken(basePath: string, options?: any): Promise<GetIdCheckTokenResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1idCheckToken(options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1idCheckToken(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3895,7 +3895,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1me(basePath: string, options?: any): Promise<UserProfileResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1me(options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1me(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3906,7 +3906,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1mefavorites(basePath: string, options?: any): Promise<PaginatedFavoritesResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1mefavorites(options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1mefavorites(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3917,7 +3917,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1mefavoritescount(basePath: string, options?: any): Promise<FavoritesCountResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1mefavoritescount(options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1mefavoritescount(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3929,7 +3929,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1offerofferId(basePath: string, offer_id: number, options?: any): Promise<OfferResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1offerofferId(offer_id, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1offerofferId(offer_id, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3940,7 +3940,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1offerreportreasons(basePath: string, options?: any): Promise<OfferReportReasons> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1offerreportreasons(options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1offerreportreasons(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3951,7 +3951,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1offersreports(basePath: string, options?: any): Promise<UserReportedOffersResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1offersreports(options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1offersreports(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3962,7 +3962,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1profiletokenExpiration(basePath: string, options?: any): Promise<UpdateEmailTokenExpiration> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1profiletokenExpiration(options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1profiletokenExpiration(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3973,7 +3973,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1settings(basePath: string, options?: any): Promise<SettingsResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1settings(options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1settings(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3984,7 +3984,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1subcategories(basePath: string, options?: any): Promise<SubcategoriesResponseModel> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1subcategories(options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1subcategories(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3995,7 +3995,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1subscriptionnextStep(basePath: string, options?: any): Promise<NextSubscriptionStepResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1subscriptionnextStep(options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1subscriptionnextStep(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4006,7 +4006,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1subscriptionprofileOptions(basePath: string, options?: any): Promise<ProfileOptionsResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1subscriptionprofileOptions(options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1subscriptionprofileOptions(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4017,7 +4017,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1userProfilingsessionId(basePath: string, options?: any): Promise<UserProfilingSessionIdResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1userProfilingsessionId(options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1userProfilingsessionId(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4029,7 +4029,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1venuevenueId(basePath: string, venue_id: number, options?: any): Promise<VenueResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1venuevenueId(venue_id, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1venuevenueId(venue_id, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4041,7 +4041,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async patchnativev1beneficiaryInformation(basePath: string, body?: BeneficiaryInformationUpdateRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().patchnativev1beneficiaryInformation(body, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().patchnativev1beneficiaryInformation(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4053,7 +4053,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1account(basePath: string, body?: AccountRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1account(body, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1account(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4064,7 +4064,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1accounthasCompletedIdCheck(basePath: string, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1accounthasCompletedIdCheck(options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1accounthasCompletedIdCheck(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4075,7 +4075,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1accountsuspend(basePath: string, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1accountsuspend(options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1accountsuspend(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4087,7 +4087,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1bookings(basePath: string, body?: BookOfferRequest, options?: any): Promise<BookOfferResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1bookings(body, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1bookings(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4099,7 +4099,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1bookingsbookingIdcancel(basePath: string, booking_id: number, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1bookingsbookingIdcancel(booking_id, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1bookingsbookingIdcancel(booking_id, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4112,7 +4112,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1bookingsbookingIdtoggleDisplay(basePath: string, booking_id: number, body?: BookingDisplayStatusRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1bookingsbookingIdtoggleDisplay(booking_id, body, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1bookingsbookingIdtoggleDisplay(booking_id, body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4124,7 +4124,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1changePassword(basePath: string, body?: ChangePasswordRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1changePassword(body, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1changePassword(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4135,7 +4135,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1identityDocument(basePath: string, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1identityDocument(options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1identityDocument(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4147,7 +4147,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1meculturalSurvey(basePath: string, body?: CulturalSurveyRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1meculturalSurvey(body, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1meculturalSurvey(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4159,7 +4159,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1mefavorites(basePath: string, body?: FavoriteRequest, options?: any): Promise<FavoriteResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1mefavorites(body, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1mefavorites(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4172,7 +4172,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1offerofferIdreport(basePath: string, offer_id: number, body?: OfferReportRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1offerofferIdreport(offer_id, body, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1offerofferIdreport(offer_id, body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4184,7 +4184,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1profile(basePath: string, body?: UserProfileUpdateRequest, options?: any): Promise<UserProfileResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1profile(body, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1profile(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4196,7 +4196,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1profileupdateEmail(basePath: string, body?: UserProfileEmailUpdate, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1profileupdateEmail(body, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1profileupdateEmail(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4207,7 +4207,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1refreshAccessToken(basePath: string, options?: any): Promise<RefreshResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1refreshAccessToken(options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1refreshAccessToken(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4219,7 +4219,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1requestPasswordReset(basePath: string, body?: RequestPasswordResetRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1requestPasswordReset(body, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1requestPasswordReset(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4231,7 +4231,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1resendEmailValidation(basePath: string, body?: ResendEmailValidationRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1resendEmailValidation(body, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1resendEmailValidation(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4243,7 +4243,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1resetPassword(basePath: string, body?: ResetPasswordRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1resetPassword(body, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1resetPassword(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4254,7 +4254,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1resetRecreditAmountToShow(basePath: string, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1resetRecreditAmountToShow(options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1resetRecreditAmountToShow(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4266,7 +4266,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1sendOfferLinkByPushofferId(basePath: string, offer_id: number, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1sendOfferLinkByPushofferId(offer_id, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1sendOfferLinkByPushofferId(offer_id, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4278,7 +4278,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1sendOfferWebappLinkByEmailofferId(basePath: string, offer_id: number, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1sendOfferWebappLinkByEmailofferId(offer_id, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1sendOfferWebappLinkByEmailofferId(offer_id, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4290,7 +4290,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1sendPhoneValidationCode(basePath: string, body?: SendPhoneValidationRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1sendPhoneValidationCode(body, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1sendPhoneValidationCode(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4302,7 +4302,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1signin(basePath: string, body?: SigninRequest, options?: any): Promise<SigninResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1signin(body, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1signin(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4313,7 +4313,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1subscriptionhonorStatement(basePath: string, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1subscriptionhonorStatement(options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1subscriptionhonorStatement(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4325,7 +4325,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1subscriptionprofile(basePath: string, body?: ProfileUpdateRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1subscriptionprofile(body, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1subscriptionprofile(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4337,7 +4337,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1ubbleIdentification(basePath: string, body?: IdentificationSessionRequest, options?: any): Promise<IdentificationSessionResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1ubbleIdentification(body, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1ubbleIdentification(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4349,7 +4349,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1userProfiling(basePath: string, body?: UserProfilingFraudRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1userProfiling(body, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1userProfiling(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4361,7 +4361,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1validateEmail(basePath: string, body?: ValidateEmailRequest, options?: any): Promise<ValidateEmailResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1validateEmail(body, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1validateEmail(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4373,7 +4373,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1validatePhoneNumber(basePath: string, body?: ValidatePhoneNumberRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1validatePhoneNumber(body, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1validatePhoneNumber(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4385,12 +4385,12 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async putnativev1profilevalidateEmail(basePath: string, body?: ChangeBeneficiaryEmailBody, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().putnativev1profilevalidateEmail(body, options);
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().putnativev1profilevalidateEmail(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
   }
-};
+}
 
 /**
  * DefaultApi - object-oriented interface
