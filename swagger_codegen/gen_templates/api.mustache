@@ -93,45 +93,14 @@ const {{classname}}FetchParamCreator = function () {
         encodeURIComponent(String({{paramName}}))
       ){{/pathParams}}
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: '{{httpMethod}}' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
   {{#authMethods}}
       // authentication {{name}} required
-      {{#isApiKey}}
-      {{#isKeyInHeader}}
-      if (configuration && configuration.apiKey) {
-        const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-          ? configuration.apiKey("{{keyParamName}}")
-          : configuration.apiKey
-        localVarHeaderParameter["{{keyParamName}}"] = localVarApiKeyValue
-      }
-      {{/isKeyInHeader}}
-      {{#isKeyInQuery}}
-      if (configuration && configuration.apiKey) {
-        const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-          ? configuration.apiKey("{{keyParamName}}")
-          : configuration.apiKey
-        localVarQueryParameter["{{keyParamName}}"] = localVarApiKeyValue
-      }
-      {{/isKeyInQuery}}
-      {{/isApiKey}}
-      {{#isBasic}}
-      // http basic authentication required
-      if (configuration && (configuration.username || configuration.password)) {
-        localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password)
-      }
-      {{/isBasic}}
-      {{#isOAuth}}
-      // oauth required
-      if (configuration && configuration.accessToken) {
-        const localVarAccessTokenValue = typeof configuration.accessToken === 'function'
-          ? configuration.accessToken("{{name}}", [{{#scopes}}"{{{scope}}}"{{^@last}}, {{/@last}}{{/scopes}}])
-          : configuration.accessToken
-        localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue
-      }
-      {{/isOAuth}}
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
   {{/authMethods}}
+      const localVarRequestOptions = Object.assign({ method: '{{httpMethod}}' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
   {{#queryParams}}
       {{^isListContainer}}
       if ({{paramName}} !== undefined) {

@@ -2387,10 +2387,12 @@ const DefaultApiFetchParamCreator = function () {
         encodeURIComponent(String(favorite_id))
       )
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'DELETE' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
         localVarUrlObj.query,
@@ -2413,10 +2415,12 @@ const DefaultApiFetchParamCreator = function () {
     async getnativev1bookings(options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/bookings`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
         localVarUrlObj.query,
@@ -2439,10 +2443,12 @@ const DefaultApiFetchParamCreator = function () {
     async getnativev1idCheckToken(options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/id_check_token`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
         localVarUrlObj.query,
@@ -2465,10 +2471,12 @@ const DefaultApiFetchParamCreator = function () {
     async getnativev1me(options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/me`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
         localVarUrlObj.query,
@@ -2491,10 +2499,12 @@ const DefaultApiFetchParamCreator = function () {
     async getnativev1mefavorites(options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/me/favorites`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
         localVarUrlObj.query,
@@ -2517,10 +2527,12 @@ const DefaultApiFetchParamCreator = function () {
     async getnativev1mefavoritescount(options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/me/favorites/count`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
         localVarUrlObj.query,
@@ -2554,8 +2566,9 @@ const DefaultApiFetchParamCreator = function () {
         encodeURIComponent(String(offer_id))
       )
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
@@ -2579,10 +2592,12 @@ const DefaultApiFetchParamCreator = function () {
     async getnativev1offerreportreasons(options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/offer/report/reasons`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
         localVarUrlObj.query,
@@ -2605,10 +2620,12 @@ const DefaultApiFetchParamCreator = function () {
     async getnativev1offersreports(options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/offers/reports`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
         localVarUrlObj.query,
@@ -2631,10 +2648,12 @@ const DefaultApiFetchParamCreator = function () {
     async getnativev1profiletokenExpiration(options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/profile/token_expiration`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
         localVarUrlObj.query,
@@ -2657,8 +2676,9 @@ const DefaultApiFetchParamCreator = function () {
     async getnativev1settings(options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/settings`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
@@ -2682,8 +2702,9 @@ const DefaultApiFetchParamCreator = function () {
     async getnativev1subcategories(options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/subcategories`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
@@ -2707,10 +2728,12 @@ const DefaultApiFetchParamCreator = function () {
     async getnativev1subscriptionnextStep(options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/subscription/next_step`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
         localVarUrlObj.query,
@@ -2733,8 +2756,9 @@ const DefaultApiFetchParamCreator = function () {
     async getnativev1subscriptionprofileOptions(options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/subscription/profile_options`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
@@ -2758,10 +2782,12 @@ const DefaultApiFetchParamCreator = function () {
     async getnativev1userProfilingsessionId(options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/user_profiling/session_id`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
         localVarUrlObj.query,
@@ -2795,8 +2821,9 @@ const DefaultApiFetchParamCreator = function () {
         encodeURIComponent(String(venue_id))
       )
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
@@ -2821,10 +2848,12 @@ const DefaultApiFetchParamCreator = function () {
     async patchnativev1beneficiaryInformation(body?: BeneficiaryInformationUpdateRequest, options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/beneficiary_information`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'PATCH' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarUrlObj.query = Object.assign(
         {},
@@ -2851,8 +2880,9 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1account(body?: AccountRequest, options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/account`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarUrlObj.query = Object.assign(
@@ -2879,10 +2909,12 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1accounthasCompletedIdCheck(options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/account/has_completed_id_check`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
         localVarUrlObj.query,
@@ -2905,10 +2937,12 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1accountsuspend(options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/account/suspend`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
         localVarUrlObj.query,
@@ -2932,10 +2966,12 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1bookings(body?: BookOfferRequest, options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/bookings`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarUrlObj.query = Object.assign(
         {},
@@ -2972,10 +3008,12 @@ const DefaultApiFetchParamCreator = function () {
         encodeURIComponent(String(booking_id))
       )
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
         localVarUrlObj.query,
@@ -3010,10 +3048,12 @@ const DefaultApiFetchParamCreator = function () {
         encodeURIComponent(String(booking_id))
       )
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarUrlObj.query = Object.assign(
         {},
@@ -3040,10 +3080,12 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1changePassword(body?: ChangePasswordRequest, options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/change_password`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarUrlObj.query = Object.assign(
         {},
@@ -3069,10 +3111,12 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1identityDocument(options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/identity_document`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
         localVarUrlObj.query,
@@ -3096,10 +3140,12 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1meculturalSurvey(body?: CulturalSurveyRequest, options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/me/cultural_survey`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarUrlObj.query = Object.assign(
         {},
@@ -3126,10 +3172,12 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1mefavorites(body?: FavoriteRequest, options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/me/favorites`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarUrlObj.query = Object.assign(
         {},
@@ -3167,10 +3215,12 @@ const DefaultApiFetchParamCreator = function () {
         encodeURIComponent(String(offer_id))
       )
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarUrlObj.query = Object.assign(
         {},
@@ -3197,10 +3247,12 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1profile(body?: UserProfileUpdateRequest, options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/profile`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarUrlObj.query = Object.assign(
         {},
@@ -3227,10 +3279,12 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1profileupdateEmail(body?: UserProfileEmailUpdate, options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/profile/update_email`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarUrlObj.query = Object.assign(
         {},
@@ -3256,8 +3310,9 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1refreshAccessToken(options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/refresh_access_token`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
@@ -3282,8 +3337,9 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1requestPasswordReset(body?: RequestPasswordResetRequest, options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/request_password_reset`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarUrlObj.query = Object.assign(
@@ -3311,8 +3367,9 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1resendEmailValidation(body?: ResendEmailValidationRequest, options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/resend_email_validation`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarUrlObj.query = Object.assign(
@@ -3340,8 +3397,9 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1resetPassword(body?: ResetPasswordRequest, options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/reset_password`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarUrlObj.query = Object.assign(
@@ -3368,10 +3426,12 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1resetRecreditAmountToShow(options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/reset_recredit_amount_to_show`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
         localVarUrlObj.query,
@@ -3405,10 +3465,12 @@ const DefaultApiFetchParamCreator = function () {
         encodeURIComponent(String(offer_id))
       )
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
         localVarUrlObj.query,
@@ -3442,10 +3504,12 @@ const DefaultApiFetchParamCreator = function () {
         encodeURIComponent(String(offer_id))
       )
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
         localVarUrlObj.query,
@@ -3469,10 +3533,12 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1sendPhoneValidationCode(body?: SendPhoneValidationRequest, options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/send_phone_validation_code`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarUrlObj.query = Object.assign(
         {},
@@ -3499,8 +3565,9 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1signin(body?: SigninRequest, options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/signin`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarUrlObj.query = Object.assign(
@@ -3527,10 +3594,12 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1subscriptionhonorStatement(options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/subscription/honor_statement`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarUrlObj.query = Object.assign(
         {},
         localVarUrlObj.query,
@@ -3554,10 +3623,12 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1subscriptionprofile(body?: ProfileUpdateRequest, options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/subscription/profile`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarUrlObj.query = Object.assign(
         {},
@@ -3584,10 +3655,12 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1ubbleIdentification(body?: IdentificationSessionRequest, options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/ubble_identification`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarUrlObj.query = Object.assign(
         {},
@@ -3614,10 +3687,12 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1userProfiling(body?: UserProfilingFraudRequest, options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/user_profiling`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarUrlObj.query = Object.assign(
         {},
@@ -3644,8 +3719,9 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1validateEmail(body?: ValidateEmailRequest, options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/validate_email`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarUrlObj.query = Object.assign(
@@ -3673,10 +3749,12 @@ const DefaultApiFetchParamCreator = function () {
     async postnativev1validatePhoneNumber(body?: ValidatePhoneNumberRequest, options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/validate_phone_number`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
-      const localVarQueryParameter = {} as any
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarUrlObj.query = Object.assign(
         {},
@@ -3703,8 +3781,9 @@ const DefaultApiFetchParamCreator = function () {
     async putnativev1profilevalidateEmail(body?: ChangeBeneficiaryEmailBody, options: any = {}): Promise<FetchArgs> {
       const localVarPath = `/native/v1/profile/validate_email`
       const localVarUrlObj = url.parse(localVarPath, true)
-      const localVarRequestOptions = Object.assign({ method: 'PUT' }, options)
-      const localVarHeaderParameter = await getAuthenticationHeaders()
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      const localVarRequestOptions = Object.assign({ method: 'PUT' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
       localVarUrlObj.query = Object.assign(
