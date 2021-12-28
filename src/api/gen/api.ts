@@ -21,17 +21,6 @@ import { Configuration } from "./configuration";
 const BASE_PATH = "/".replace(/\/+$/, "");
 
 /**
- *
- * @export
- */
-export const COLLECTION_FORMATS = {
-    csv: ",",
-    ssv: " ",
-    tsv: "\t",
-    pipes: "|",
-};
-
-/**
  * @export
  * @interface FetchAPI
  */
@@ -529,12 +518,6 @@ export interface BookingVenueResponse {
      * @type {string}
      * @memberof BookingVenueResponse
      */
-    postalCode?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof BookingVenueResponse
-     */
     city?: string | null;
     /**
      * 
@@ -554,6 +537,12 @@ export interface BookingVenueResponse {
      * @memberof BookingVenueResponse
      */
     name: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BookingVenueResponse
+     */
+    postalCode?: string | null;
     /**
      * 
      * @type {string}
@@ -2650,9 +2639,8 @@ export enum VenueTypeCodeKey {
 }
 /**
  * DefaultApi - fetch parameter creator
- * @export
  */
-export const DefaultApiFetchParamCreator = function (configuration?: Configuration) {
+const DefaultApiFetchParamCreator = function () {
     return {
         /**
          * 
@@ -3790,9 +3778,8 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
 
 /**
  * DefaultApi - functional programming interface
- * @export
  */
-export const DefaultApiFp = function(api: DefaultApi, configuration?: Configuration) {
+const DefaultApiFp = function(api: DefaultApi, configuration?: Configuration) {
     return {
         /**
          * 

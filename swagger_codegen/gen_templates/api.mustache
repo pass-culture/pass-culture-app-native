@@ -12,17 +12,6 @@ import { Configuration } from "./configuration";
 const BASE_PATH = "{{{basePath}}}".replace(/\/+$/, "");
 
 /**
- *
- * @export
- */
-export const COLLECTION_FORMATS = {
-    csv: ",",
-    ssv: " ",
-    tsv: "\t",
-    pipes: "|",
-};
-
-/**
  * @export
  * @interface FetchAPI
  */
@@ -73,9 +62,8 @@ export class RequiredError extends Error {
 /**
  * {{classname}} - fetch parameter creator{{#description}}
  * {{&description}}{{/description}}
- * @export
  */
-export const {{classname}}FetchParamCreator = function (configuration?: Configuration) {
+const {{classname}}FetchParamCreator = function () {
     return {
     {{#operation}}
         /**
@@ -144,16 +132,6 @@ export const {{classname}}FetchParamCreator = function (configuration?: Configur
             {{/isOAuth}}
     {{/authMethods}}
     {{#queryParams}}
-            {{#isListContainer}}
-            if ({{paramName}}) {
-            {{#isCollectionFormatMulti}}
-                localVarQueryParameter['{{baseName}}'] = {{paramName}};
-            {{/isCollectionFormatMulti}}
-            {{^isCollectionFormatMulti}}
-                localVarQueryParameter['{{baseName}}'] = {{paramName}}.join(COLLECTION_FORMATS["{{collectionFormat}}"]);
-            {{/isCollectionFormatMulti}}
-            }
-            {{/isListContainer}}
             {{^isListContainer}}
             if ({{paramName}} !== undefined) {
                 {{#isDateTime}}
@@ -235,9 +213,8 @@ export const {{classname}}FetchParamCreator = function (configuration?: Configur
 /**
  * {{classname}} - functional programming interface{{#description}}
  * {{{description}}}{{/description}}
- * @export
  */
-export const {{classname}}Fp = function(api: {{classname}}, configuration?: Configuration) {
+const {{classname}}Fp = function(api: {{classname}}, configuration?: Configuration) {
     return {
     {{#operation}}
         /**
