@@ -314,8 +314,12 @@ jobs:
       - install_node_modules
       - run:
           name: Unit Tests Native
-          command: yarn test:unit:ci
+
+          command: |
+            TEST=$(circleci tests glob **/__tests__/*.ts* | circleci tests split)
+            yarn test:unit:ci TEST
       - sonarcloud-scanner
+    parallelism: 4
 
   test-web:
     executor: node
