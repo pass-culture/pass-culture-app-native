@@ -96,9 +96,6 @@ const {{classname}}FetchParamCreator = function () {
       const localVarRequestOptions = Object.assign({ method: '{{httpMethod}}' }, options)
       const localVarHeaderParameter = await getAuthenticationHeaders()
       const localVarQueryParameter = {} as any
-  {{#hasFormParams}}
-      const localVarFormParams = new url.URLSearchParams()
-  {{/hasFormParams}}
   {{#authMethods}}
       // authentication {{name}} required
       {{#isApiKey}}
@@ -183,9 +180,6 @@ const {{classname}}FetchParamCreator = function () {
       }
       {{/isListContainer}}
   {{/formParams}}
-  {{#hasFormParams}}
-      localVarHeaderParameter['Content-Type'] = 'application/x-www-form-urlencoded'
-  {{/hasFormParams}}
   {{#bodyParam}}
       {{^consumes}}
       localVarHeaderParameter['Content-Type'] = 'application/json'
@@ -203,9 +197,6 @@ const {{classname}}FetchParamCreator = function () {
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-  {{#hasFormParams}}
-      localVarRequestOptions.body = localVarFormParams.toString()
-  {{/hasFormParams}}
   {{#bodyParam}}
       const needsSerialization = (<any>"{{dataType}}" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify({{paramName}} || {}) : ({{paramName}} || "")
