@@ -118,7 +118,8 @@ export interface AccountRequest {
    * @memberof AccountRequest
    */
   token: string
-}/**
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -133,7 +134,8 @@ export enum ActivityEnum {
   Volontaire = 'Volontaire',
   Inactif = 'Inactif',
   Chmeur = 'Chômeur',
-}/**
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -179,7 +181,8 @@ export interface ActivityResponseModel {
    * @memberof ActivityResponseModel
    */
   label: string
-}/**
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -237,7 +240,8 @@ export interface BeneficiaryInformationUpdateRequest {
    * @memberof BeneficiaryInformationUpdateRequest
    */
   postalCode: string
-}/**
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -298,7 +302,8 @@ export interface BookingActivationCodeResponse {
    * @memberof BookingActivationCodeResponse
    */
   expirationDate?: Date | null
-}/**
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -580,7 +585,8 @@ export interface BookingsResponse {
    * @memberof BookingsResponse
    */
   ongoing_bookings: Array<BookingReponse>
-}/**
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -614,7 +620,8 @@ export interface CallToActionMessage {
    * @memberof CallToActionMessage
    */
   callToActionTitle?: string | null
-}/**
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -754,7 +761,8 @@ export interface DepositAmountsByAge {
    * @memberof DepositAmountsByAge
    */
   age_18?: number
-}/**
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -787,7 +795,8 @@ export interface DomainsCredit {
    * @memberof DomainsCredit
    */
   physical?: Credit | null
-}/**
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -795,7 +804,8 @@ export interface DomainsCredit {
 export enum EligibilityCheckMethods {
   Jouve = 'jouve',
   Educonnect = 'educonnect',
-}/**
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -803,7 +813,8 @@ export enum EligibilityCheckMethods {
 export enum EligibilityType {
   Underage = 'underage',
   Age18 = 'age-18',
-}/**
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -986,7 +997,8 @@ export interface GetIdCheckTokenResponse {
    * @memberof GetIdCheckTokenResponse
    */
   token_timestamp?: Date | null
-}/**
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -1049,7 +1061,8 @@ export interface IdentificationSessionResponse {
    * @memberof IdentificationSessionResponse
    */
   identificationUrl: string
-}/**
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -1058,7 +1071,8 @@ export enum IdentityCheckMethod {
   Educonnect = 'educonnect',
   Jouve = 'jouve',
   Ubble = 'ubble',
-}/**
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -1546,7 +1560,8 @@ export interface OfferVenueResponse {
    * @memberof OfferVenueResponse
    */
   publicName?: string | null
-}/**
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -1580,7 +1595,8 @@ export interface PaginatedFavoritesResponse {
    * @memberof PaginatedFavoritesResponse
    */
   page: number
-}/**
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -1666,7 +1682,8 @@ export interface ProfileUpdateRequest {
    * @memberof ProfileUpdateRequest
    */
   schoolTypeId?: SchoolTypesIdEnum | null
-}/**
+}
+/**
  * Describe possible reason codes to used when reporting an offer.  The whole meta part is only consumed by the api client, it has no meaning inside the whole API code.  Note: when adding a new enum symbol, do not forget to update the meta method.
  * @export
  * @enum {string}
@@ -1809,7 +1826,8 @@ export interface SchoolTypeResponseModel {
    * @memberof SchoolTypeResponseModel
    */
   label: string
-}/**
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -1824,7 +1842,8 @@ export enum SchoolTypesIdEnum {
   PRIVATESECONDARYSCHOOL = 'PRIVATE_SECONDARY_SCHOOL',
   PUBLICHIGHSCHOOL = 'PUBLIC_HIGH_SCHOOL',
   PUBLICSECONDARYSCHOOL = 'PUBLIC_SECONDARY_SCHOOL',
-}/**
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -2041,7 +2060,8 @@ export interface SubcategoriesResponseModel {
    * @memberof SubcategoriesResponseModel
    */
   subcategories: Array<SubcategoryResponseModel>
-}/**
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -2198,7 +2218,8 @@ export interface SubscriptionMessage {
    * @memberof SubscriptionMessage
    */
   userMessage: string
-}/**
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -2470,7 +2491,8 @@ export interface UserReportedOffersResponse {
    * @memberof UserReportedOffersResponse
    */
   reportedOffers: Array<ReportedOffer>
-}/**
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -2685,7 +2707,8 @@ export interface VenueResponse {
    * @memberof VenueResponse
    */
   withdrawalDetails?: string | null
-}/**
+}
+/**
  * An enumeration.
  * @export
  * @enum {string}
