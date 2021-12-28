@@ -132,7 +132,7 @@ export enum ActivityEnum {
   Alternant = 'Alternant',
   Volontaire = 'Volontaire',
   Inactif = 'Inactif',
-  Chmeur = 'Chômeur'
+  Chmeur = 'Chômeur',
 }/**
  * An enumeration.
  * @export
@@ -147,7 +147,7 @@ export enum ActivityIdEnum {
   APPRENTICESTUDENT = 'APPRENTICE_STUDENT',
   VOLUNTEER = 'VOLUNTEER',
   INACTIVE = 'INACTIVE',
-  UNEMPLOYED = 'UNEMPLOYED'
+  UNEMPLOYED = 'UNEMPLOYED',
 }
 /**
  * 
@@ -187,7 +187,7 @@ export interface ActivityResponseModel {
 export enum AgentType {
   BrowserComputer = 'browser_computer',
   BrowserMobile = 'browser_mobile',
-  AgentMobile = 'agent_mobile'
+  AgentMobile = 'agent_mobile',
 }
 /**
  * 
@@ -246,7 +246,7 @@ export enum BeneficiaryValidationStep {
   PhoneValidation = 'phone-validation',
   IdCheck = 'id-check',
   BeneficiaryInformation = 'beneficiary-information',
-  HonorStatement = 'honor-statement'
+  HonorStatement = 'honor-statement',
 }
 /**
  * 
@@ -308,7 +308,7 @@ export enum BookingCancellationReasons {
   BENEFICIARY = 'BENEFICIARY',
   EXPIRED = 'EXPIRED',
   FRAUD = 'FRAUD',
-  REFUSEDBYINSTITUTE = 'REFUSED_BY_INSTITUTE'
+  REFUSEDBYINSTITUTE = 'REFUSED_BY_INSTITUTE',
 }
 /**
  * 
@@ -588,7 +588,7 @@ export interface BookingsResponse {
 export enum CallToActionIcon {
   EMAIL = 'EMAIL',
   RETRY = 'RETRY',
-  EXTERNAL = 'EXTERNAL'
+  EXTERNAL = 'EXTERNAL',
 }
 /**
  * 
@@ -633,7 +633,7 @@ export enum CategoryIdEnum {
   MUSIQUELIVE = 'MUSIQUE_LIVE',
   PRATIQUEART = 'PRATIQUE_ART',
   SPECTACLE = 'SPECTACLE',
-  TECHNIQUE = 'TECHNIQUE'
+  TECHNIQUE = 'TECHNIQUE',
 }
 /**
  * 
@@ -761,7 +761,7 @@ export interface DepositAmountsByAge {
  */
 export enum DepositType {
   _1517 = 'GRANT_15_17',
-  _18 = 'GRANT_18'
+  _18 = 'GRANT_18',
 }
 /**
  * 
@@ -794,7 +794,7 @@ export interface DomainsCredit {
  */
 export enum EligibilityCheckMethods {
   Jouve = 'jouve',
-  Educonnect = 'educonnect'
+  Educonnect = 'educonnect',
 }/**
  * An enumeration.
  * @export
@@ -802,7 +802,7 @@ export enum EligibilityCheckMethods {
  */
 export enum EligibilityType {
   Underage = 'underage',
-  Age18 = 'age-18'
+  Age18 = 'age-18',
 }/**
  * An enumeration.
  * @export
@@ -811,7 +811,7 @@ export enum EligibilityType {
 export enum ExpenseDomain {
   All = 'all',
   Digital = 'digital',
-  Physical = 'physical'
+  Physical = 'physical',
 }
 /**
  * 
@@ -1003,7 +1003,7 @@ export enum HomepageLabelNameEnum {
   PRESSE = 'PRESSE',
   SPECTACLE = 'SPECTACLE',
   MATERIEL = 'MATERIEL',
-  NONE = 'NONE'
+  NONE = 'NONE',
 }
 /**
  * 
@@ -1057,7 +1057,7 @@ export interface IdentificationSessionResponse {
 export enum IdentityCheckMethod {
   Educonnect = 'educonnect',
   Jouve = 'jouve',
-  Ubble = 'ubble'
+  Ubble = 'ubble',
 }/**
  * An enumeration.
  * @export
@@ -1065,7 +1065,7 @@ export enum IdentityCheckMethod {
  */
 export enum MaintenancePageType {
   WithDms = 'with-dms',
-  WithoutDms = 'without-dms'
+  WithoutDms = 'without-dms',
 }
 /**
  * 
@@ -1554,7 +1554,7 @@ export interface OfferVenueResponse {
 export enum OnlineOfflinePlatformChoicesEnum {
   OFFLINE = 'OFFLINE',
   ONLINE = 'ONLINE',
-  ONLINEOROFFLINE = 'ONLINE_OR_OFFLINE'
+  ONLINEOROFFLINE = 'ONLINE_OR_OFFLINE',
 }
 /**
  * 
@@ -1591,7 +1591,7 @@ export enum PopOverIcon {
   WARNING = 'WARNING',
   CLOCK = 'CLOCK',
   FILE = 'FILE',
-  MAGNIFYINGGLASS = 'MAGNIFYING_GLASS'
+  MAGNIFYINGGLASS = 'MAGNIFYING_GLASS',
 }
 /**
  * 
@@ -1675,7 +1675,7 @@ export enum Reason {
   IMPROPER = 'IMPROPER',
   PRICETOOHIGH = 'PRICE_TOO_HIGH',
   INAPPROPRIATE = 'INAPPROPRIATE',
-  OTHER = 'OTHER'
+  OTHER = 'OTHER',
 }
 /**
  * 
@@ -1823,7 +1823,7 @@ export enum SchoolTypesIdEnum {
   PRIVATEHIGHSCHOOL = 'PRIVATE_HIGH_SCHOOL',
   PRIVATESECONDARYSCHOOL = 'PRIVATE_SECONDARY_SCHOOL',
   PUBLICHIGHSCHOOL = 'PUBLIC_HIGH_SCHOOL',
-  PUBLICSECONDARYSCHOOL = 'PUBLIC_SECONDARY_SCHOOL'
+  PUBLICSECONDARYSCHOOL = 'PUBLIC_SECONDARY_SCHOOL',
 }/**
  * An enumeration.
  * @export
@@ -1842,7 +1842,7 @@ export enum SearchGroupNameEnum {
   SPECTACLE = 'SPECTACLE',
   INSTRUMENT = 'INSTRUMENT',
   MATERIEL = 'MATERIEL',
-  NONE = 'NONE'
+  NONE = 'NONE',
 }
 /**
  * 
@@ -2117,7 +2117,7 @@ export enum SubcategoryIdEnum {
   VISITEGUIDEE = 'VISITE_GUIDEE',
   VISITEVIRTUELLE = 'VISITE_VIRTUELLE',
   VISITE = 'VISITE',
-  VOD = 'VOD'
+  VOD = 'VOD',
 }
 /**
  * 
@@ -2210,7 +2210,7 @@ export enum SubscriptionStep {
   ProfileCompletion = 'profile-completion',
   IdentityCheck = 'identity-check',
   UserProfiling = 'user-profiling',
-  HonorStatement = 'honor-statement'
+  HonorStatement = 'honor-statement',
 }
 /**
  * 
@@ -2480,7 +2480,7 @@ export enum UserRole {
   BENEFICIARY = 'BENEFICIARY',
   PRO = 'PRO',
   JOUVE = 'JOUVE',
-  UNDERAGEBENEFICIARY = 'UNDERAGE_BENEFICIARY'
+  UNDERAGEBENEFICIARY = 'UNDERAGE_BENEFICIARY',
 }
 /**
  * 
@@ -2708,7 +2708,7 @@ export enum VenueTypeCodeKey {
   MOVIE = 'MOVIE',
   PERFORMINGARTS = 'PERFORMING_ARTS',
   CREATIVEARTSSTORE = 'CREATIVE_ARTS_STORE',
-  OTHER = 'OTHER'
+  OTHER = 'OTHER',
 }
 /**
  * DefaultApi - fetch parameter creator
