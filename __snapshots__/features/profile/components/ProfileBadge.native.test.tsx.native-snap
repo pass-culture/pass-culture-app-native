@@ -275,7 +275,6 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
               "fontSize": 12,
               "lineHeight": 20,
               "marginLeft": 12,
-              "marginRight": 16,
               "maxWidth": "100%",
             },
           ]

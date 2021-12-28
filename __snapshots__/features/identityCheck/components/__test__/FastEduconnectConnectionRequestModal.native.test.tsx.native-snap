@@ -359,7 +359,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                       "fontSize": 12,
                       "lineHeight": 20,
                       "marginLeft": 12,
-                      "marginRight": 16,
                       "maxWidth": "100%",
                     },
                   ]
@@ -1154,7 +1153,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                       "fontSize": 12,
                       "lineHeight": 20,
                       "marginLeft": 12,
-                      "marginRight": 16,
                       "maxWidth": "100%",
                     },
                   ]

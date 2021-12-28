@@ -392,7 +392,6 @@ Array [
                               "fontSize": 12,
                               "lineHeight": 20,
                               "marginLeft": 12,
-                              "marginRight": 16,
                               "maxWidth": "100%",
                             },
                           ]
