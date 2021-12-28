@@ -2368,7 +2368,6 @@ export enum VenueTypeCodeKey {
 const DefaultApiFetchParamCreator = function () {
   return {
     /**
-     * 
      * @summary delete_favorite <DELETE>
      * @param {number} favorite_id 
      * @param {*} [options] Override http request option.
@@ -2396,7 +2395,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary get_bookings <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2418,7 +2416,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary get_id_check_token <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2440,7 +2437,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary get_user_profile <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2462,7 +2458,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary get_favorites <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2484,7 +2479,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary get_favorites_count <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2506,7 +2500,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary get_offer <GET>
      * @param {number} offer_id 
      * @param {*} [options] Override http request option.
@@ -2533,7 +2526,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary report_offer_reasons <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2555,7 +2547,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary user_reported_offers <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2577,7 +2568,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary get_email_update_token_expiration_date <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2599,7 +2589,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary get_settings <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2620,7 +2609,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary get_subcategories <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2641,7 +2629,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary next_subscription_step <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2663,7 +2650,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary get_profile_options <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2684,7 +2670,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary Generate a unique hash which will be used as an identifier for user profiling
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2706,7 +2691,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary get_venue <GET>
      * @param {number} venue_id 
      * @param {*} [options] Override http request option.
@@ -2733,7 +2717,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary update_beneficiary_mandatory_information <PATCH>
      * @param {BeneficiaryInformationUpdateRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -2759,7 +2742,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary create_account <POST>
      * @param {AccountRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -2784,7 +2766,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary has_completed_id_check <POST>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2806,7 +2787,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary suspend_account <POST>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2828,7 +2808,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary book_offer <POST>
      * @param {BookOfferRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -2854,7 +2833,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary cancel_booking <POST>
      * @param {number} booking_id 
      * @param {*} [options] Override http request option.
@@ -2882,7 +2860,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary flag_booking_as_used <POST>
      * @param {number} booking_id 
      * @param {BookingDisplayStatusRequest} [body] 
@@ -2914,7 +2891,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary change_password <POST>
      * @param {ChangePasswordRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -2940,7 +2916,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary upload_identity_document <POST>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2962,7 +2937,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary update_cultural_survey <POST>
      * @param {CulturalSurveyRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -2988,7 +2962,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary create_favorite <POST>
      * @param {FavoriteRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -3014,7 +2987,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary report_offer <POST>
      * @param {number} offer_id 
      * @param {OfferReportRequest} [body] 
@@ -3046,7 +3018,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary update_user_profile <POST>
      * @param {UserProfileUpdateRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -3072,7 +3043,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary update_user_email <POST>
      * @param {UserProfileEmailUpdate} [body] 
      * @param {*} [options] Override http request option.
@@ -3098,7 +3068,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary refresh <POST>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3119,7 +3088,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary request_password_reset <POST>
      * @param {RequestPasswordResetRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -3144,7 +3112,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary resend_email_validation <POST>
      * @param {ResendEmailValidationRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -3169,7 +3136,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary reset_password <POST>
      * @param {ResetPasswordRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -3194,7 +3160,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary reset_recredit_amount_to_show <POST>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3216,7 +3181,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary send_offer_link_by_push <POST>
      * @param {number} offer_id 
      * @param {*} [options] Override http request option.
@@ -3244,7 +3208,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * give them webapp link.
      * @summary On iOS native app, users cannot book numeric offers with price > 0, so
      * @param {number} offer_id 
      * @param {*} [options] Override http request option.
@@ -3272,7 +3235,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary send_phone_validation_code <POST>
      * @param {SendPhoneValidationRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -3298,7 +3260,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary signin <POST>
      * @param {SigninRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -3323,7 +3284,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary create_honor_statement_fraud_check <POST>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3345,7 +3305,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary update_profile <POST>
      * @param {ProfileUpdateRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -3371,7 +3330,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary start_identification_session <POST>
      * @param {IdentificationSessionRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -3397,7 +3355,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary profiling_fraud_score <POST>
      * @param {UserProfilingFraudRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -3423,7 +3380,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary validate_email <POST>
      * @param {ValidateEmailRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -3448,7 +3404,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary validate_phone_number <POST>
      * @param {ValidatePhoneNumberRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -3474,7 +3429,6 @@ const DefaultApiFetchParamCreator = function () {
       }
     },
     /**
-     * 
      * @summary validate_user_email <PUT>
      * @param {ChangeBeneficiaryEmailBody} [body] 
      * @param {*} [options] Override http request option.
