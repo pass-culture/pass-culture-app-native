@@ -25,21 +25,6 @@ export async function getAuthenticationHeaders(options?: RequestInit): Promise<H
   return accessToken ? { Authorization: `Bearer ${accessToken}` } : {}
 }
 
-// HOT FIX waiting for a better strategy
-const NotAuthenticatedCalls = [
-  'native/v1/account',
-  'native/v1/refresh_access_token',
-  'native/v1/request_password_reset',
-  'native/v1/resend_email_validation',
-  'native/v1/reset_password',
-  'native/v1/settings',
-  'native/v1/signin',
-  'native/v1/subcategories',
-  'native/v1/validate_email',
-  'native/v1/offer',
-  'native/v1/venue',
-]
-
 // At the moment, we can't Promise.reject inside of safeFetch and expect
 // the wrapping AsyncBoundary to catch it. As a result, we resolve a fake
 // response that we then catch to redirect to the login page.
@@ -73,11 +58,8 @@ export const safeFetch = async (
     },
   }
 
-  // dont ask a new token for this specific api call
-  for (const apiRoute of NotAuthenticatedCalls) {
-    if (url.includes(apiRoute)) {
-      return await fetch(url, runtimeOptions)
-    }
+  if (options.credentials === 'omit') {
+    return await fetch(url, runtimeOptions)
   }
 
   // @ts-expect-error

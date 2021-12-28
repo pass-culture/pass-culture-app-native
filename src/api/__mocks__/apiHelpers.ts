@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { t } from '@lingui/macro'
 import { getUniqueId } from 'react-native-device-info'
 
 import { navigateFromRef } from 'features/navigation/navigationRef'
@@ -11,33 +10,26 @@ import { storage } from 'libs/storage'
 import Package from '../../../package.json'
 import { DefaultApi } from '../gen'
 
-export function navigateToLogin() {
+function navigateToLogin() {
   navigateFromRef('Login')
 }
 
 export async function getAuthenticationHeaders(options?: RequestInit): Promise<Headers> {
+  if (options && options.credentials === 'omit') return {}
+
   const accessToken = await storage.readString('access_token')
-  const shouldAuthenticate = accessToken && (!options || options.credentials !== 'omit')
-  if (shouldAuthenticate) {
-    return { Authorization: `Bearer ${accessToken}` }
-  }
-  return {}
+  return accessToken ? { Authorization: `Bearer ${accessToken}` } : {}
 }
 
-// HOT FIX waiting for a better strategy
-const NotAuthenticatedCalls = [
-  'native/v1/account',
-  'native/v1/refresh_access_token',
-  'native/v1/request_password_reset',
-  'native/v1/resend_email_validation',
-  'native/v1/reset_password',
-  'native/v1/settings',
-  'native/v1/signin',
-  'native/v1/subcategories',
-  'native/v1/validate_email',
-  'native/v1/offer',
-  'native/v1/venue',
-]
+// At the moment, we can't Promise.reject inside of safeFetch and expect
+// the wrapping AsyncBoundary to catch it. As a result, we resolve a fake
+// response that we then catch to redirect to the login page.
+// this happens when there is a problem retrieving or refreshing
+// the access token.
+const NeedsAuthenticationResponse = {
+  status: 401,
+  statusText: 'NeedsAuthenticationResponse',
+} as Response
 
 /**
  * For each http calls to the api, retrieves the access token and fetchs.
@@ -62,11 +54,8 @@ export const safeFetch = async (
     },
   }
 
-  // dont ask a new token for this specific api call
-  for (const apiRoute of NotAuthenticatedCalls) {
-    if (url.includes(apiRoute)) {
-      return await fetch(url, runtimeOptions)
-    }
+  if (options.credentials === 'omit') {
+    return await fetch(url, runtimeOptions)
   }
 
   // @ts-expect-error
@@ -75,10 +64,11 @@ export const safeFetch = async (
   const tokenContent = decodeAccessToken(token)
 
   if (!tokenContent) {
-    return Promise.reject(navigateToLogin())
+    return Promise.resolve(NeedsAuthenticationResponse)
   }
 
-  if (tokenContent.exp * 1000 <= new Date().getTime()) {
+  // If the token is expired, we refresh it before calling the backend
+  if (tokenContent && tokenContent.exp * 1000 <= new Date().getTime()) {
     try {
       const newAccessToken = await refreshAccessToken(api)
 
@@ -90,7 +80,10 @@ export const safeFetch = async (
         },
       }
     } catch (error) {
-      return Promise.reject(navigateToLogin())
+      // Here we are supposed to be logged-in (calling an authenticated endpoint)
+      // But the access token is expired and cannot be refreshed.
+      // In this case, we cleared the access token and we need to login again
+      return Promise.resolve(NeedsAuthenticationResponse)
     }
   }
 
@@ -135,6 +128,13 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
     return {}
   }
 
+  // We are not suppose to have side-effects in this function but this is a special case
+  // where the access token is corrupted and we need to recreate it by logging-in again
+  if (response.status === 401 && response.statusText === 'NeedsAuthenticationResponse') {
+    navigateToLogin()
+    return {}
+  }
+
   if (!response.ok) {
     throw new ApiError(
       response.status,
@@ -166,7 +166,7 @@ export class ApiError extends Error {
 }
 
 export function extractApiErrorMessage(error: unknown) {
-  let message = t`Une erreur est survenue`
+  let message = 'Une erreur est survenue'
   if (isApiError(error)) {
     const { content } = error as { content: { code: string; message: string } }
     if (content && content.code && content.message) {
