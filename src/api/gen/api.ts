@@ -2366,7 +2366,7 @@ export enum VenueTypeCodeKey {
 /**
  * DefaultApi - fetch parameter creator
  */
-const DefaultApiFetchParamCreator = function () {
+export const DefaultApiFetchParamCreator = function (configuration?: Configuration) {
   return {
     /**
      * @summary delete_favorite <DELETE>
@@ -3532,7 +3532,7 @@ const DefaultApiFetchParamCreator = function () {
 /**
  * DefaultApi - functional programming interface
  */
-const DefaultApiFp = function(api: DefaultApi) {
+export const DefaultApiFp = function(api: DefaultApi, configuration?: Configuration) {
   return {
     /**
      * 
@@ -3542,7 +3542,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async deletenativev1mefavoritesfavoriteId(basePath: string, favorite_id: number, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().deletenativev1mefavoritesfavoriteId(favorite_id, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).deletenativev1mefavoritesfavoriteId(favorite_id, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3553,7 +3553,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1bookings(basePath: string, options?: any): Promise<BookingsResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1bookings(options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1bookings(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3564,7 +3564,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1idCheckToken(basePath: string, options?: any): Promise<GetIdCheckTokenResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1idCheckToken(options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1idCheckToken(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3575,7 +3575,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1me(basePath: string, options?: any): Promise<UserProfileResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1me(options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1me(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3586,7 +3586,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1mefavorites(basePath: string, options?: any): Promise<PaginatedFavoritesResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1mefavorites(options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1mefavorites(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3597,7 +3597,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1mefavoritescount(basePath: string, options?: any): Promise<FavoritesCountResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1mefavoritescount(options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1mefavoritescount(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3609,7 +3609,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1offerofferId(basePath: string, offer_id: number, options?: any): Promise<OfferResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1offerofferId(offer_id, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1offerofferId(offer_id, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3620,7 +3620,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1offerreportreasons(basePath: string, options?: any): Promise<OfferReportReasons> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1offerreportreasons(options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1offerreportreasons(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3631,7 +3631,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1offersreports(basePath: string, options?: any): Promise<UserReportedOffersResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1offersreports(options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1offersreports(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3642,7 +3642,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1profiletokenExpiration(basePath: string, options?: any): Promise<UpdateEmailTokenExpiration> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1profiletokenExpiration(options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1profiletokenExpiration(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3653,7 +3653,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1settings(basePath: string, options?: any): Promise<SettingsResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1settings(options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1settings(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3664,7 +3664,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1subcategories(basePath: string, options?: any): Promise<SubcategoriesResponseModel> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1subcategories(options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1subcategories(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3675,7 +3675,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1subscriptionnextStep(basePath: string, options?: any): Promise<NextSubscriptionStepResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1subscriptionnextStep(options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1subscriptionnextStep(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3686,7 +3686,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1subscriptionprofileOptions(basePath: string, options?: any): Promise<ProfileOptionsResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1subscriptionprofileOptions(options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1subscriptionprofileOptions(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3697,7 +3697,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1userProfilingsessionId(basePath: string, options?: any): Promise<UserProfilingSessionIdResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1userProfilingsessionId(options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1userProfilingsessionId(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3709,7 +3709,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async getnativev1venuevenueId(basePath: string, venue_id: number, options?: any): Promise<VenueResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1venuevenueId(venue_id, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1venuevenueId(venue_id, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3721,7 +3721,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async patchnativev1beneficiaryInformation(basePath: string, body?: BeneficiaryInformationUpdateRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().patchnativev1beneficiaryInformation(body, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).patchnativev1beneficiaryInformation(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3733,7 +3733,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1account(basePath: string, body?: AccountRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1account(body, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1account(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3744,7 +3744,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1accounthasCompletedIdCheck(basePath: string, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1accounthasCompletedIdCheck(options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1accounthasCompletedIdCheck(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3755,7 +3755,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1accountsuspend(basePath: string, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1accountsuspend(options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1accountsuspend(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3767,7 +3767,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1bookings(basePath: string, body?: BookOfferRequest, options?: any): Promise<BookOfferResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1bookings(body, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1bookings(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3779,7 +3779,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1bookingsbookingIdcancel(basePath: string, booking_id: number, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1bookingsbookingIdcancel(booking_id, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1bookingsbookingIdcancel(booking_id, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3792,7 +3792,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1bookingsbookingIdtoggleDisplay(basePath: string, booking_id: number, body?: BookingDisplayStatusRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1bookingsbookingIdtoggleDisplay(booking_id, body, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1bookingsbookingIdtoggleDisplay(booking_id, body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3804,7 +3804,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1changePassword(basePath: string, body?: ChangePasswordRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1changePassword(body, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1changePassword(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3815,7 +3815,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1identityDocument(basePath: string, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1identityDocument(options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1identityDocument(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3827,7 +3827,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1meculturalSurvey(basePath: string, body?: CulturalSurveyRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1meculturalSurvey(body, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1meculturalSurvey(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3839,7 +3839,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1mefavorites(basePath: string, body?: FavoriteRequest, options?: any): Promise<FavoriteResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1mefavorites(body, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1mefavorites(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3852,7 +3852,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1offerofferIdreport(basePath: string, offer_id: number, body?: OfferReportRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1offerofferIdreport(offer_id, body, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1offerofferIdreport(offer_id, body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3864,7 +3864,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1profile(basePath: string, body?: UserProfileUpdateRequest, options?: any): Promise<UserProfileResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1profile(body, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1profile(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3876,7 +3876,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1profileupdateEmail(basePath: string, body?: UserProfileEmailUpdate, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1profileupdateEmail(body, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1profileupdateEmail(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3887,7 +3887,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1refreshAccessToken(basePath: string, options?: any): Promise<RefreshResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1refreshAccessToken(options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1refreshAccessToken(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3899,7 +3899,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1requestPasswordReset(basePath: string, body?: RequestPasswordResetRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1requestPasswordReset(body, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1requestPasswordReset(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3911,7 +3911,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1resendEmailValidation(basePath: string, body?: ResendEmailValidationRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1resendEmailValidation(body, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1resendEmailValidation(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3923,7 +3923,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1resetPassword(basePath: string, body?: ResetPasswordRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1resetPassword(body, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1resetPassword(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3934,7 +3934,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1resetRecreditAmountToShow(basePath: string, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1resetRecreditAmountToShow(options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1resetRecreditAmountToShow(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3946,7 +3946,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1sendOfferLinkByPushofferId(basePath: string, offer_id: number, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1sendOfferLinkByPushofferId(offer_id, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1sendOfferLinkByPushofferId(offer_id, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3958,7 +3958,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1sendOfferWebappLinkByEmailofferId(basePath: string, offer_id: number, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1sendOfferWebappLinkByEmailofferId(offer_id, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1sendOfferWebappLinkByEmailofferId(offer_id, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3970,7 +3970,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1sendPhoneValidationCode(basePath: string, body?: SendPhoneValidationRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1sendPhoneValidationCode(body, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1sendPhoneValidationCode(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3982,7 +3982,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1signin(basePath: string, body?: SigninRequest, options?: any): Promise<SigninResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1signin(body, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1signin(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3993,7 +3993,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1subscriptionhonorStatement(basePath: string, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1subscriptionhonorStatement(options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1subscriptionhonorStatement(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4005,7 +4005,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1subscriptionprofile(basePath: string, body?: ProfileUpdateRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1subscriptionprofile(body, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1subscriptionprofile(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4017,7 +4017,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1ubbleIdentification(basePath: string, body?: IdentificationSessionRequest, options?: any): Promise<IdentificationSessionResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1ubbleIdentification(body, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1ubbleIdentification(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4029,7 +4029,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1userProfiling(basePath: string, body?: UserProfilingFraudRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1userProfiling(body, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1userProfiling(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4041,7 +4041,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1validateEmail(basePath: string, body?: ValidateEmailRequest, options?: any): Promise<ValidateEmailResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1validateEmail(body, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1validateEmail(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4053,7 +4053,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async postnativev1validatePhoneNumber(basePath: string, body?: ValidatePhoneNumberRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1validatePhoneNumber(body, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1validatePhoneNumber(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4065,7 +4065,7 @@ const DefaultApiFp = function(api: DefaultApi) {
      * @throws {RequiredError}
      */
     async putnativev1profilevalidateEmail(basePath: string, body?: ChangeBeneficiaryEmailBody, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator().putnativev1profilevalidateEmail(body, options)
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).putnativev1profilevalidateEmail(body, options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -4088,7 +4088,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async deletenativev1mefavoritesfavoriteId(favorite_id: number, options?: any) {
-    return DefaultApiFp(this).deletenativev1mefavoritesfavoriteId(this.basePath, favorite_id, options)
+    return DefaultApiFp(this, this.configuration).deletenativev1mefavoritesfavoriteId(this.basePath, favorite_id, options)
   }
   /**
     * 
@@ -4098,7 +4098,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getnativev1bookings(options?: any) {
-    return DefaultApiFp(this).getnativev1bookings(this.basePath, options)
+    return DefaultApiFp(this, this.configuration).getnativev1bookings(this.basePath, options)
   }
   /**
     * 
@@ -4108,7 +4108,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getnativev1idCheckToken(options?: any) {
-    return DefaultApiFp(this).getnativev1idCheckToken(this.basePath, options)
+    return DefaultApiFp(this, this.configuration).getnativev1idCheckToken(this.basePath, options)
   }
   /**
     * 
@@ -4118,7 +4118,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getnativev1me(options?: any) {
-    return DefaultApiFp(this).getnativev1me(this.basePath, options)
+    return DefaultApiFp(this, this.configuration).getnativev1me(this.basePath, options)
   }
   /**
     * 
@@ -4128,7 +4128,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getnativev1mefavorites(options?: any) {
-    return DefaultApiFp(this).getnativev1mefavorites(this.basePath, options)
+    return DefaultApiFp(this, this.configuration).getnativev1mefavorites(this.basePath, options)
   }
   /**
     * 
@@ -4138,7 +4138,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getnativev1mefavoritescount(options?: any) {
-    return DefaultApiFp(this).getnativev1mefavoritescount(this.basePath, options)
+    return DefaultApiFp(this, this.configuration).getnativev1mefavoritescount(this.basePath, options)
   }
   /**
     * 
@@ -4149,7 +4149,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getnativev1offerofferId(offer_id: number, options?: any) {
-    return DefaultApiFp(this).getnativev1offerofferId(this.basePath, offer_id, options)
+    return DefaultApiFp(this, this.configuration).getnativev1offerofferId(this.basePath, offer_id, options)
   }
   /**
     * 
@@ -4159,7 +4159,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getnativev1offerreportreasons(options?: any) {
-    return DefaultApiFp(this).getnativev1offerreportreasons(this.basePath, options)
+    return DefaultApiFp(this, this.configuration).getnativev1offerreportreasons(this.basePath, options)
   }
   /**
     * 
@@ -4169,7 +4169,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getnativev1offersreports(options?: any) {
-    return DefaultApiFp(this).getnativev1offersreports(this.basePath, options)
+    return DefaultApiFp(this, this.configuration).getnativev1offersreports(this.basePath, options)
   }
   /**
     * 
@@ -4179,7 +4179,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getnativev1profiletokenExpiration(options?: any) {
-    return DefaultApiFp(this).getnativev1profiletokenExpiration(this.basePath, options)
+    return DefaultApiFp(this, this.configuration).getnativev1profiletokenExpiration(this.basePath, options)
   }
   /**
     * 
@@ -4189,7 +4189,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getnativev1settings(options?: any) {
-    return DefaultApiFp(this).getnativev1settings(this.basePath, options)
+    return DefaultApiFp(this, this.configuration).getnativev1settings(this.basePath, options)
   }
   /**
     * 
@@ -4199,7 +4199,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getnativev1subcategories(options?: any) {
-    return DefaultApiFp(this).getnativev1subcategories(this.basePath, options)
+    return DefaultApiFp(this, this.configuration).getnativev1subcategories(this.basePath, options)
   }
   /**
     * 
@@ -4209,7 +4209,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getnativev1subscriptionnextStep(options?: any) {
-    return DefaultApiFp(this).getnativev1subscriptionnextStep(this.basePath, options)
+    return DefaultApiFp(this, this.configuration).getnativev1subscriptionnextStep(this.basePath, options)
   }
   /**
     * 
@@ -4219,7 +4219,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getnativev1subscriptionprofileOptions(options?: any) {
-    return DefaultApiFp(this).getnativev1subscriptionprofileOptions(this.basePath, options)
+    return DefaultApiFp(this, this.configuration).getnativev1subscriptionprofileOptions(this.basePath, options)
   }
   /**
     * 
@@ -4229,7 +4229,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getnativev1userProfilingsessionId(options?: any) {
-    return DefaultApiFp(this).getnativev1userProfilingsessionId(this.basePath, options)
+    return DefaultApiFp(this, this.configuration).getnativev1userProfilingsessionId(this.basePath, options)
   }
   /**
     * 
@@ -4240,7 +4240,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async getnativev1venuevenueId(venue_id: number, options?: any) {
-    return DefaultApiFp(this).getnativev1venuevenueId(this.basePath, venue_id, options)
+    return DefaultApiFp(this, this.configuration).getnativev1venuevenueId(this.basePath, venue_id, options)
   }
   /**
     * 
@@ -4251,7 +4251,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async patchnativev1beneficiaryInformation(body?: BeneficiaryInformationUpdateRequest, options?: any) {
-    return DefaultApiFp(this).patchnativev1beneficiaryInformation(this.basePath, body, options)
+    return DefaultApiFp(this, this.configuration).patchnativev1beneficiaryInformation(this.basePath, body, options)
   }
   /**
     * 
@@ -4262,7 +4262,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1account(body?: AccountRequest, options?: any) {
-    return DefaultApiFp(this).postnativev1account(this.basePath, body, options)
+    return DefaultApiFp(this, this.configuration).postnativev1account(this.basePath, body, options)
   }
   /**
     * 
@@ -4272,7 +4272,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1accounthasCompletedIdCheck(options?: any) {
-    return DefaultApiFp(this).postnativev1accounthasCompletedIdCheck(this.basePath, options)
+    return DefaultApiFp(this, this.configuration).postnativev1accounthasCompletedIdCheck(this.basePath, options)
   }
   /**
     * 
@@ -4282,7 +4282,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1accountsuspend(options?: any) {
-    return DefaultApiFp(this).postnativev1accountsuspend(this.basePath, options)
+    return DefaultApiFp(this, this.configuration).postnativev1accountsuspend(this.basePath, options)
   }
   /**
     * 
@@ -4293,7 +4293,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1bookings(body?: BookOfferRequest, options?: any) {
-    return DefaultApiFp(this).postnativev1bookings(this.basePath, body, options)
+    return DefaultApiFp(this, this.configuration).postnativev1bookings(this.basePath, body, options)
   }
   /**
     * 
@@ -4304,7 +4304,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1bookingsbookingIdcancel(booking_id: number, options?: any) {
-    return DefaultApiFp(this).postnativev1bookingsbookingIdcancel(this.basePath, booking_id, options)
+    return DefaultApiFp(this, this.configuration).postnativev1bookingsbookingIdcancel(this.basePath, booking_id, options)
   }
   /**
     * 
@@ -4316,7 +4316,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1bookingsbookingIdtoggleDisplay(booking_id: number, body?: BookingDisplayStatusRequest, options?: any) {
-    return DefaultApiFp(this).postnativev1bookingsbookingIdtoggleDisplay(this.basePath, booking_id, body, options)
+    return DefaultApiFp(this, this.configuration).postnativev1bookingsbookingIdtoggleDisplay(this.basePath, booking_id, body, options)
   }
   /**
     * 
@@ -4327,7 +4327,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1changePassword(body?: ChangePasswordRequest, options?: any) {
-    return DefaultApiFp(this).postnativev1changePassword(this.basePath, body, options)
+    return DefaultApiFp(this, this.configuration).postnativev1changePassword(this.basePath, body, options)
   }
   /**
     * 
@@ -4337,7 +4337,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1identityDocument(options?: any) {
-    return DefaultApiFp(this).postnativev1identityDocument(this.basePath, options)
+    return DefaultApiFp(this, this.configuration).postnativev1identityDocument(this.basePath, options)
   }
   /**
     * 
@@ -4348,7 +4348,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1meculturalSurvey(body?: CulturalSurveyRequest, options?: any) {
-    return DefaultApiFp(this).postnativev1meculturalSurvey(this.basePath, body, options)
+    return DefaultApiFp(this, this.configuration).postnativev1meculturalSurvey(this.basePath, body, options)
   }
   /**
     * 
@@ -4359,7 +4359,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1mefavorites(body?: FavoriteRequest, options?: any) {
-    return DefaultApiFp(this).postnativev1mefavorites(this.basePath, body, options)
+    return DefaultApiFp(this, this.configuration).postnativev1mefavorites(this.basePath, body, options)
   }
   /**
     * 
@@ -4371,7 +4371,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1offerofferIdreport(offer_id: number, body?: OfferReportRequest, options?: any) {
-    return DefaultApiFp(this).postnativev1offerofferIdreport(this.basePath, offer_id, body, options)
+    return DefaultApiFp(this, this.configuration).postnativev1offerofferIdreport(this.basePath, offer_id, body, options)
   }
   /**
     * 
@@ -4382,7 +4382,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1profile(body?: UserProfileUpdateRequest, options?: any) {
-    return DefaultApiFp(this).postnativev1profile(this.basePath, body, options)
+    return DefaultApiFp(this, this.configuration).postnativev1profile(this.basePath, body, options)
   }
   /**
     * 
@@ -4393,7 +4393,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1profileupdateEmail(body?: UserProfileEmailUpdate, options?: any) {
-    return DefaultApiFp(this).postnativev1profileupdateEmail(this.basePath, body, options)
+    return DefaultApiFp(this, this.configuration).postnativev1profileupdateEmail(this.basePath, body, options)
   }
   /**
     * 
@@ -4403,7 +4403,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1refreshAccessToken(options?: any) {
-    return DefaultApiFp(this).postnativev1refreshAccessToken(this.basePath, options)
+    return DefaultApiFp(this, this.configuration).postnativev1refreshAccessToken(this.basePath, options)
   }
   /**
     * 
@@ -4414,7 +4414,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1requestPasswordReset(body?: RequestPasswordResetRequest, options?: any) {
-    return DefaultApiFp(this).postnativev1requestPasswordReset(this.basePath, body, options)
+    return DefaultApiFp(this, this.configuration).postnativev1requestPasswordReset(this.basePath, body, options)
   }
   /**
     * 
@@ -4425,7 +4425,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1resendEmailValidation(body?: ResendEmailValidationRequest, options?: any) {
-    return DefaultApiFp(this).postnativev1resendEmailValidation(this.basePath, body, options)
+    return DefaultApiFp(this, this.configuration).postnativev1resendEmailValidation(this.basePath, body, options)
   }
   /**
     * 
@@ -4436,7 +4436,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1resetPassword(body?: ResetPasswordRequest, options?: any) {
-    return DefaultApiFp(this).postnativev1resetPassword(this.basePath, body, options)
+    return DefaultApiFp(this, this.configuration).postnativev1resetPassword(this.basePath, body, options)
   }
   /**
     * 
@@ -4446,7 +4446,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1resetRecreditAmountToShow(options?: any) {
-    return DefaultApiFp(this).postnativev1resetRecreditAmountToShow(this.basePath, options)
+    return DefaultApiFp(this, this.configuration).postnativev1resetRecreditAmountToShow(this.basePath, options)
   }
   /**
     * 
@@ -4457,7 +4457,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1sendOfferLinkByPushofferId(offer_id: number, options?: any) {
-    return DefaultApiFp(this).postnativev1sendOfferLinkByPushofferId(this.basePath, offer_id, options)
+    return DefaultApiFp(this, this.configuration).postnativev1sendOfferLinkByPushofferId(this.basePath, offer_id, options)
   }
   /**
     * give them webapp link.
@@ -4468,7 +4468,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1sendOfferWebappLinkByEmailofferId(offer_id: number, options?: any) {
-    return DefaultApiFp(this).postnativev1sendOfferWebappLinkByEmailofferId(this.basePath, offer_id, options)
+    return DefaultApiFp(this, this.configuration).postnativev1sendOfferWebappLinkByEmailofferId(this.basePath, offer_id, options)
   }
   /**
     * 
@@ -4479,7 +4479,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1sendPhoneValidationCode(body?: SendPhoneValidationRequest, options?: any) {
-    return DefaultApiFp(this).postnativev1sendPhoneValidationCode(this.basePath, body, options)
+    return DefaultApiFp(this, this.configuration).postnativev1sendPhoneValidationCode(this.basePath, body, options)
   }
   /**
     * 
@@ -4490,7 +4490,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1signin(body?: SigninRequest, options?: any) {
-    return DefaultApiFp(this).postnativev1signin(this.basePath, body, options)
+    return DefaultApiFp(this, this.configuration).postnativev1signin(this.basePath, body, options)
   }
   /**
     * 
@@ -4500,7 +4500,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1subscriptionhonorStatement(options?: any) {
-    return DefaultApiFp(this).postnativev1subscriptionhonorStatement(this.basePath, options)
+    return DefaultApiFp(this, this.configuration).postnativev1subscriptionhonorStatement(this.basePath, options)
   }
   /**
     * 
@@ -4511,7 +4511,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1subscriptionprofile(body?: ProfileUpdateRequest, options?: any) {
-    return DefaultApiFp(this).postnativev1subscriptionprofile(this.basePath, body, options)
+    return DefaultApiFp(this, this.configuration).postnativev1subscriptionprofile(this.basePath, body, options)
   }
   /**
     * 
@@ -4522,7 +4522,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1ubbleIdentification(body?: IdentificationSessionRequest, options?: any) {
-    return DefaultApiFp(this).postnativev1ubbleIdentification(this.basePath, body, options)
+    return DefaultApiFp(this, this.configuration).postnativev1ubbleIdentification(this.basePath, body, options)
   }
   /**
     * 
@@ -4533,7 +4533,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1userProfiling(body?: UserProfilingFraudRequest, options?: any) {
-    return DefaultApiFp(this).postnativev1userProfiling(this.basePath, body, options)
+    return DefaultApiFp(this, this.configuration).postnativev1userProfiling(this.basePath, body, options)
   }
   /**
     * 
@@ -4544,7 +4544,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1validateEmail(body?: ValidateEmailRequest, options?: any) {
-    return DefaultApiFp(this).postnativev1validateEmail(this.basePath, body, options)
+    return DefaultApiFp(this, this.configuration).postnativev1validateEmail(this.basePath, body, options)
   }
   /**
     * 
@@ -4555,7 +4555,7 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async postnativev1validatePhoneNumber(body?: ValidatePhoneNumberRequest, options?: any) {
-    return DefaultApiFp(this).postnativev1validatePhoneNumber(this.basePath, body, options)
+    return DefaultApiFp(this, this.configuration).postnativev1validatePhoneNumber(this.basePath, body, options)
   }
   /**
     * 
@@ -4566,6 +4566,6 @@ export class DefaultApi extends BaseAPI {
     * @memberof DefaultApi
     */
   public async putnativev1profilevalidateEmail(body?: ChangeBeneficiaryEmailBody, options?: any) {
-    return DefaultApiFp(this).putnativev1profilevalidateEmail(this.basePath, body, options)
+    return DefaultApiFp(this, this.configuration).putnativev1profilevalidateEmail(this.basePath, body, options)
   }
 }
