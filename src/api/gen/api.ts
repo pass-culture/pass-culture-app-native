@@ -65,7 +65,6 @@ export class RequiredError extends Error {
 
 
 /**
- * 
  * @export
  * @interface AccountRequest
  */
@@ -144,7 +143,6 @@ export enum ActivityIdEnum {
   UNEMPLOYED = 'UNEMPLOYED',
 }
 /**
- * 
  * @export
  * @interface ActivityResponseModel
  */
@@ -181,7 +179,6 @@ export enum AgentType {
   AgentMobile = 'agent_mobile',
 }
 /**
- * 
  * @export
  * @interface BeneficiaryInformationUpdateRequest
  */
@@ -234,7 +231,6 @@ export enum BeneficiaryValidationStep {
   HonorStatement = 'honor-statement',
 }
 /**
- * 
  * @export
  * @interface BookOfferRequest
  */
@@ -251,7 +247,6 @@ export interface BookOfferRequest {
   stockId: number
 }
 /**
- * 
  * @export
  * @interface BookOfferResponse
  */
@@ -263,7 +258,6 @@ export interface BookOfferResponse {
   bookingId: number
 }
 /**
- * 
  * @export
  * @interface BookingActivationCodeResponse
  */
@@ -292,7 +286,6 @@ export enum BookingCancellationReasons {
   REFUSEDBYINSTITUTE = 'REFUSED_BY_INSTITUTE',
 }
 /**
- * 
  * @export
  * @interface BookingDisplayStatusRequest
  */
@@ -304,7 +297,6 @@ export interface BookingDisplayStatusRequest {
   ended: boolean
 }
 /**
- * 
  * @export
  * @interface BookingOfferExtraData
  */
@@ -316,7 +308,6 @@ export interface BookingOfferExtraData {
   isbn?: string | null
 }
 /**
- * 
  * @export
  * @interface BookingOfferResponse
  */
@@ -373,7 +364,6 @@ export interface BookingOfferResponse {
   withdrawalDetails?: string | null
 }
 /**
- * 
  * @export
  * @interface BookingReponse
  */
@@ -445,7 +435,6 @@ export interface BookingReponse {
   totalAmount: number
 }
 /**
- * 
  * @export
  * @interface BookingStockResponse
  */
@@ -467,7 +456,6 @@ export interface BookingStockResponse {
   offer: BookingOfferResponse
 }
 /**
- * 
  * @export
  * @interface BookingVenueResponse
  */
@@ -509,7 +497,6 @@ export interface BookingVenueResponse {
   publicName?: string | null
 }
 /**
- * 
  * @export
  * @interface BookingsResponse
  */
@@ -536,7 +523,6 @@ export enum CallToActionIcon {
   EXTERNAL = 'EXTERNAL',
 }
 /**
- * 
  * @export
  * @interface CallToActionMessage
  */
@@ -579,7 +565,6 @@ export enum CategoryIdEnum {
   TECHNIQUE = 'TECHNIQUE',
 }
 /**
- * 
  * @export
  * @interface ChangeBeneficiaryEmailBody
  */
@@ -591,7 +576,6 @@ export interface ChangeBeneficiaryEmailBody {
   token: string
 }
 /**
- * 
  * @export
  * @interface ChangePasswordRequest
  */
@@ -608,7 +592,6 @@ export interface ChangePasswordRequest {
   newPassword: string
 }
 /**
- * 
  * @export
  * @interface Coordinates
  */
@@ -625,7 +608,6 @@ export interface Coordinates {
   longitude?: number | null
 }
 /**
- * 
  * @export
  * @interface Credit
  */
@@ -642,7 +624,6 @@ export interface Credit {
   remaining: number
 }
 /**
- * 
  * @export
  * @interface CulturalSurveyRequest
  */
@@ -659,7 +640,6 @@ export interface CulturalSurveyRequest {
   needsToFillCulturalSurvey: boolean
 }
 /**
- * 
  * @export
  * @interface DepositAmountsByAge
  */
@@ -695,7 +675,6 @@ export enum DepositType {
   _18 = 'GRANT_18',
 }
 /**
- * 
  * @export
  * @interface DomainsCredit
  */
@@ -745,7 +724,6 @@ export enum ExpenseDomain {
   Physical = 'physical',
 }
 /**
- * 
  * @export
  * @interface FavoriteMediationResponse
  */
@@ -762,7 +740,6 @@ export interface FavoriteMediationResponse {
   url: string
 }
 /**
- * 
  * @export
  * @interface FavoriteOfferResponse
  */
@@ -839,7 +816,6 @@ export interface FavoriteOfferResponse {
   subcategoryId: SubcategoryIdEnum
 }
 /**
- * 
  * @export
  * @interface FavoriteRequest
  */
@@ -851,7 +827,6 @@ export interface FavoriteRequest {
   offerId: number
 }
 /**
- * 
  * @export
  * @interface FavoriteResponse
  */
@@ -868,7 +843,6 @@ export interface FavoriteResponse {
   offer: FavoriteOfferResponse
 }
 /**
- * 
  * @export
  * @interface FavoritesCountResponse
  */
@@ -880,7 +854,6 @@ export interface FavoritesCountResponse {
   count: number
 }
 /**
- * 
  * @export
  * @interface GetIdCheckTokenResponse
  */
@@ -916,7 +889,6 @@ export enum HomepageLabelNameEnum {
   NONE = 'NONE',
 }
 /**
- * 
  * @export
  * @interface HomepageLabelResponseModel
  */
@@ -933,7 +905,6 @@ export interface HomepageLabelResponseModel {
   value?: string | null
 }
 /**
- * 
  * @export
  * @interface IdentificationSessionRequest
  */
@@ -945,7 +916,6 @@ export interface IdentificationSessionRequest {
   redirectUrl: string
 }
 /**
- * 
  * @export
  * @interface IdentificationSessionResponse
  */
@@ -976,7 +946,6 @@ export enum MaintenancePageType {
   WithoutDms = 'without-dms',
 }
 /**
- * 
  * @export
  * @interface NextSubscriptionStepResponse
  */
@@ -1003,7 +972,6 @@ export interface NextSubscriptionStepResponse {
   nextSubscriptionStep?: SubscriptionStep | null
 }
 /**
- * 
  * @export
  * @interface NotificationSubscriptions
  */
@@ -1020,7 +988,6 @@ export interface NotificationSubscriptions {
   marketingPush: boolean
 }
 /**
- * 
  * @export
  * @interface OfferAccessibilityResponse
  */
@@ -1047,7 +1014,6 @@ export interface OfferAccessibilityResponse {
   visualDisability?: boolean | null
 }
 /**
- * 
  * @export
  * @interface OfferExtraData
  */
@@ -1109,7 +1075,6 @@ export interface OfferExtraData {
   visa?: string | null
 }
 /**
- * 
  * @export
  * @interface OfferImageResponse
  */
@@ -1126,7 +1091,6 @@ export interface OfferImageResponse {
   url: string
 }
 /**
- * 
  * @export
  * @interface OfferOffererResponse
  */
@@ -1138,7 +1102,6 @@ export interface OfferOffererResponse {
   name: string
 }
 /**
- * 
  * @export
  * @interface OfferReportReasons
  */
@@ -1150,7 +1113,6 @@ export interface OfferReportReasons {
   reasons: { [key: string]: ReasonMeta; }
 }
 /**
- * 
  * @export
  * @interface OfferReportRequest
  */
@@ -1167,7 +1129,6 @@ export interface OfferReportRequest {
   reason: string
 }
 /**
- * 
  * @export
  * @interface OfferResponse
  */
@@ -1269,7 +1230,6 @@ export interface OfferResponse {
   withdrawalDetails?: string | null
 }
 /**
- * 
  * @export
  * @interface OfferStockActivationCodeResponse
  */
@@ -1281,7 +1241,6 @@ export interface OfferStockActivationCodeResponse {
   expirationDate?: Date | null
 }
 /**
- * 
  * @export
  * @interface OfferStockResponse
  */
@@ -1338,7 +1297,6 @@ export interface OfferStockResponse {
   price: number
 }
 /**
- * 
  * @export
  * @interface OfferVenueResponse
  */
@@ -1400,7 +1358,6 @@ export enum OnlineOfflinePlatformChoicesEnum {
   ONLINEOROFFLINE = 'ONLINE_OR_OFFLINE',
 }
 /**
- * 
  * @export
  * @interface PaginatedFavoritesResponse
  */
@@ -1435,7 +1392,6 @@ export enum PopOverIcon {
   MAGNIFYINGGLASS = 'MAGNIFYING_GLASS',
 }
 /**
- * 
  * @export
  * @interface ProfileOptionsResponse
  */
@@ -1452,7 +1408,6 @@ export interface ProfileOptionsResponse {
   school_types: Array<SchoolTypeResponseModel>
 }
 /**
- * 
  * @export
  * @interface ProfileUpdateRequest
  */
@@ -1510,7 +1465,6 @@ export enum Reason {
   OTHER = 'OTHER',
 }
 /**
- * 
  * @export
  * @interface ReasonMeta
  */
@@ -1527,7 +1481,6 @@ export interface ReasonMeta {
   title: string
 }
 /**
- * 
  * @export
  * @interface RefreshResponse
  */
@@ -1539,7 +1492,6 @@ export interface RefreshResponse {
   accessToken: string
 }
 /**
- * 
  * @export
  * @interface ReportedOffer
  */
@@ -1561,7 +1513,6 @@ export interface ReportedOffer {
   reportedAt: Date
 }
 /**
- * 
  * @export
  * @interface RequestPasswordResetRequest
  */
@@ -1578,7 +1529,6 @@ export interface RequestPasswordResetRequest {
   token?: string | null
 }
 /**
- * 
  * @export
  * @interface ResendEmailValidationRequest
  */
@@ -1590,7 +1540,6 @@ export interface ResendEmailValidationRequest {
   email: string
 }
 /**
- * 
  * @export
  * @interface ResetPasswordRequest
  */
@@ -1607,7 +1556,6 @@ export interface ResetPasswordRequest {
   resetPasswordToken: string
 }
 /**
- * 
  * @export
  * @interface SchoolTypeResponseModel
  */
@@ -1665,7 +1613,6 @@ export enum SearchGroupNameEnum {
   NONE = 'NONE',
 }
 /**
- * 
  * @export
  * @interface SearchGroupResponseModel
  */
@@ -1682,7 +1629,6 @@ export interface SearchGroupResponseModel {
   value?: string | null
 }
 /**
- * 
  * @export
  * @interface SendPhoneValidationRequest
  */
@@ -1694,7 +1640,6 @@ export interface SendPhoneValidationRequest {
   phoneNumber?: string | null
 }
 /**
- * 
  * @export
  * @interface SettingsResponse
  */
@@ -1781,7 +1726,6 @@ export interface SettingsResponse {
   objectStorageUrl: string
 }
 /**
- * 
  * @export
  * @interface SigninRequest
  */
@@ -1798,7 +1742,6 @@ export interface SigninRequest {
   password: string
 }
 /**
- * 
  * @export
  * @interface SigninResponse
  */
@@ -1815,7 +1758,6 @@ export interface SigninResponse {
   refreshToken: string
 }
 /**
- * 
  * @export
  * @interface SubcategoriesResponseModel
  */
@@ -1915,7 +1857,6 @@ export enum SubcategoryIdEnum {
   VOD = 'VOD',
 }
 /**
- * 
  * @export
  * @interface SubcategoryResponseModel
  */
@@ -1957,7 +1898,6 @@ export interface SubcategoryResponseModel {
   searchGroupName: SearchGroupNameEnum
 }
 /**
- * 
  * @export
  * @interface SubscriptionMessage
  */
@@ -1998,7 +1938,6 @@ export enum SubscriptionStep {
   HonorStatement = 'honor-statement',
 }
 /**
- * 
  * @export
  * @interface UpdateEmailTokenExpiration
  */
@@ -2010,7 +1949,6 @@ export interface UpdateEmailTokenExpiration {
   expiration?: Date | null
 }
 /**
- * 
  * @export
  * @interface UserProfileEmailUpdate
  */
@@ -2027,7 +1965,6 @@ export interface UserProfileEmailUpdate {
   password: string
 }
 /**
- * 
  * @export
  * @interface UserProfileResponse
  */
@@ -2164,7 +2101,6 @@ export interface UserProfileResponse {
   subscriptions: NotificationSubscriptions
 }
 /**
- * 
  * @export
  * @interface UserProfileUpdateRequest
  */
@@ -2176,7 +2112,6 @@ export interface UserProfileUpdateRequest {
   subscriptions?: NotificationSubscriptions | null
 }
 /**
- * 
  * @export
  * @interface UserProfilingFraudRequest
  */
@@ -2198,7 +2133,6 @@ export interface UserProfilingFraudRequest {
   session_id?: string | null
 }
 /**
- * 
  * @export
  * @interface UserProfilingSessionIdResponse
  */
@@ -2210,7 +2144,6 @@ export interface UserProfilingSessionIdResponse {
   sessionId: string
 }
 /**
- * 
  * @export
  * @interface UserReportedOffersResponse
  */
@@ -2234,7 +2167,6 @@ export enum UserRole {
   UNDERAGEBENEFICIARY = 'UNDERAGE_BENEFICIARY',
 }
 /**
- * 
  * @export
  * @interface ValidateEmailRequest
  */
@@ -2246,7 +2178,6 @@ export interface ValidateEmailRequest {
   emailValidationToken: string
 }
 /**
- * 
  * @export
  * @interface ValidateEmailResponse
  */
@@ -2263,7 +2194,6 @@ export interface ValidateEmailResponse {
   refreshToken: string
 }
 /**
- * 
  * @export
  * @interface ValidatePhoneNumberRequest
  */
@@ -2275,7 +2205,6 @@ export interface ValidatePhoneNumberRequest {
   code: string
 }
 /**
- * 
  * @export
  * @interface VenueAccessibilityModel
  */
@@ -2302,7 +2231,6 @@ export interface VenueAccessibilityModel {
   visualDisability?: boolean | null
 }
 /**
- * 
  * @export
  * @interface VenueContactModel
  */
@@ -2329,7 +2257,6 @@ export interface VenueContactModel {
   website?: string
 }
 /**
- * 
  * @export
  * @interface VenueResponse
  */
