@@ -289,7 +289,11 @@ msgstr "Autres"
 msgid "Avant dernier jour pour retirer"
 msgstr "Avant dernier jour pour retirer"
 
-#: src/ui/components/inputs/SearchInput.tsx
+#: src/features/search/pages/LocationPicker.tsx
+msgid "Barre de recherche des lieux"
+msgstr "Barre de recherche des lieux"
+
+#: src/features/search/components/SearchBox.tsx
 msgid "Barre de recherche des offres"
 msgstr "Barre de recherche des offres"
 
@@ -1394,6 +1398,10 @@ msgstr "Le réglage est sauvegardé"
 msgid "Le token reCAPTCHA a expiré, tu peux réessayer."
 msgstr "Le token reCAPTCHA a expiré, tu peux réessayer."
 
+#: src/features/bookings/helpers.ts
+msgid "Le {day}"
+msgstr "Le {day}"
+
 #: src/features/bookOffer/components/BookingImpossible.tsx
 msgid "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
 msgstr "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
@@ -2161,9 +2169,7 @@ msgstr "Réglages de notifications"
 msgid "Réinitialiser"
 msgstr "Réinitialiser"
 
-#: src/features/identityCheck/pages/profile/SetAddress.tsx
-#: src/features/identityCheck/pages/profile/SetCity.tsx
-#: src/features/search/components/SearchBox.tsx
+#: src/ui/components/inputs/SearchInput.tsx
 msgid "Réinitialiser la recherche"
 msgstr "Réinitialiser la recherche"
 
@@ -3054,10 +3060,6 @@ msgstr "l'un des 21 établissements de test"
 msgid "last update"
 msgstr "Dossier mis à jour le : {day} à {hour}"
 
-#: src/features/bookings/helpers.ts
-msgid "le jour"
-msgstr "Le {day}"
-
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
 #: src/features/profile/pages/ChangePassword/ChangePassword.tsx
 msgid "les mots de passe ne concordent pas"
@@ -3186,10 +3188,6 @@ msgstr "voir moins"
 msgid "voir plus"
 msgstr "voir plus"
 
-#: src/features/bookings/helpers.ts
-msgid "withdraw before date"
-msgstr "À retirer avant le {dateLimit}"
-
 #: src/features/bookings/pages/EndedBookingsSection.tsx
 msgid "{0, plural, one {Réservation terminée} other {Réservations terminées}}"
 msgstr "{0, plural, one {Réservation terminée} other {Réservations terminées}}"
@@ -3229,6 +3227,10 @@ msgstr "À activer"
 #: src/features/offer/components/OfferIconCaptions.tsx
 msgid "À deux !"
 msgstr "À deux !"
+
+#: src/features/bookings/helpers.ts
+msgid "À retirer avant le {dateLimit}"
+msgstr "À retirer avant le {dateLimit}"
 
 #: src/features/auth/signup/underageSignup/SelectSchool.tsx
 msgid "Établissements partenaires"

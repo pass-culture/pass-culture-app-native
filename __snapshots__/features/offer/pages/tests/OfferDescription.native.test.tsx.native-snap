@@ -359,7 +359,7 @@ exports[`<OfferDescription /> should render 1`] = `
                                   "Depuis de nombreuses années, Christine vit sous un pont, isolée de toute famille et amis. Par une nuit comme il n’en existe que dans les contes, un jeune garçon de 8 ans fait irruption devant son abri. Suli ne parle pas français, il est perdu, séparé de sa mère…
 Tous les détails du film sur AlloCiné: ",
                                   <ExternalLink
-                                    url="http://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html"
+                                    url="https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html"
                                   />,
                                 ],
                               },
@@ -488,7 +488,7 @@ Tous les détails du film sur AlloCiné:
                                       </View>
                                       
                                     </Text>
-                                     http://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html
+                                     https://www.allocine.fr/film/fichefilm_gen_cfilm=199293.html
                                   </Text>
                                 </Text>
                               </View>

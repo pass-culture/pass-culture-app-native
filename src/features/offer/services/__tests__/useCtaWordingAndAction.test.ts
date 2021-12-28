@@ -25,12 +25,12 @@ jest.mock('features/home/api', () => ({
 describe('getCtaWordingAndAction', () => {
   describe('Non Beneficiary', () => {
     it.each`
-      isEvent  | url                     | bookedOffers                 | expected                      | disabled | isExternal
-      ${true}  | ${undefined}            | ${{}}                        | ${undefined}                  | ${true}  | ${undefined}
-      ${true}  | ${'http://url-externe'} | ${{}}                        | ${'Accéder à la billetterie'} | ${false} | ${true}
-      ${false} | ${undefined}            | ${{}}                        | ${undefined}                  | ${true}  | ${undefined}
-      ${false} | ${'http://url-externe'} | ${{}}                        | ${"Accéder à l'offre"}        | ${false} | ${true}
-      ${false} | ${undefined}            | ${{ [baseOffer.id]: 31652 }} | ${'Voir ma réservation'}      | ${false} | ${true}
+      isEvent  | url                      | bookedOffers                 | expected                      | disabled | isExternal
+      ${true}  | ${undefined}             | ${{}}                        | ${undefined}                  | ${true}  | ${undefined}
+      ${true}  | ${'https://url-externe'} | ${{}}                        | ${'Accéder à la billetterie'} | ${false} | ${true}
+      ${false} | ${undefined}             | ${{}}                        | ${undefined}                  | ${true}  | ${undefined}
+      ${false} | ${'https://url-externe'} | ${{}}                        | ${"Accéder à l'offre"}        | ${false} | ${true}
+      ${false} | ${undefined}             | ${{ [baseOffer.id]: 31652 }} | ${'Voir ma réservation'}      | ${false} | ${true}
     `(
       'CTA(disabled=$disabled) = "$expected" for isEvent=$isEvent and url=$url',
       ({ disabled, expected, isEvent, url, bookedOffers, isExternal }) => {
@@ -57,12 +57,12 @@ describe('getCtaWordingAndAction', () => {
   // same as non beneficiary use cases, beneficiary users should not be able to book educational offers
   describe('educational offer', () => {
     it.each`
-      isEvent  | url                     | bookedOffers                 | expected                      | disabled | isExternal
-      ${true}  | ${undefined}            | ${{}}                        | ${undefined}                  | ${true}  | ${undefined}
-      ${true}  | ${'http://url-externe'} | ${{}}                        | ${'Accéder à la billetterie'} | ${false} | ${true}
-      ${false} | ${undefined}            | ${{}}                        | ${undefined}                  | ${true}  | ${undefined}
-      ${false} | ${'http://url-externe'} | ${{}}                        | ${"Accéder à l'offre"}        | ${false} | ${true}
-      ${false} | ${undefined}            | ${{ [baseOffer.id]: 31652 }} | ${'Voir ma réservation'}      | ${false} | ${true}
+      isEvent  | url                      | bookedOffers                 | expected                      | disabled | isExternal
+      ${true}  | ${undefined}             | ${{}}                        | ${undefined}                  | ${true}  | ${undefined}
+      ${true}  | ${'https://url-externe'} | ${{}}                        | ${'Accéder à la billetterie'} | ${false} | ${true}
+      ${false} | ${undefined}             | ${{}}                        | ${undefined}                  | ${true}  | ${undefined}
+      ${false} | ${'https://url-externe'} | ${{}}                        | ${"Accéder à l'offre"}        | ${false} | ${true}
+      ${false} | ${undefined}             | ${{ [baseOffer.id]: 31652 }} | ${'Voir ma réservation'}      | ${false} | ${true}
     `(
       'CTA(disabled=$disabled) = "$expected" for isEvent=$isEvent and url=$url',
       ({ disabled, expected, isEvent, url, bookedOffers, isExternal }) => {
@@ -242,7 +242,7 @@ describe('getCtaWordingAndAction', () => {
 
   describe('CTA - Analytics', () => {
     it('logs event ClickBookOffer when we click CTA "Réserver" (beneficiary user)', () => {
-      const offer = buildOffer({ externalTicketOfficeUrl: 'http://www.google.com' })
+      const offer = buildOffer({ externalTicketOfficeUrl: 'https://www.google.com' })
       const subcategory = buildSubcategory({ isEvent: false })
 
       const { onPress } =

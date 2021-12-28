@@ -11,7 +11,7 @@ jest.mock('libs/eduConnectClient')
 jest.mock('@pass-culture/id-check')
 
 server.use(
-  rest.get('http://login/?redirect=false', async (req, res, ctx) =>
+  rest.get('https://login/?redirect=false', async (req, res, ctx) =>
     res(ctx.status(200), ctx.json({}))
   )
 )

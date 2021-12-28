@@ -13,7 +13,7 @@ export const mockDefaultSettings: SettingsResponse = {
   enableIdCheckRetention: false,
   enableNativeIdCheckVerboseDebugging: false,
   idCheckAddressAutocompletion: true,
-  objectStorageUrl: 'http://localhost-storage',
+  objectStorageUrl: 'https://localhost-storage',
   isWebappV2Enabled: false,
   enableNativeEacIndividual: false,
   enableUnderageGeneralisation: false,
