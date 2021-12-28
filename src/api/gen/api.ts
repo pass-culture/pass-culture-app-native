@@ -12,8 +12,6 @@
  * Do not edit the file manually.
  */
 
-import url from 'url'
-
 import { getAuthenticationHeaders, handleGeneratedApiResponse, safeFetch } from 'api/apiHelpers'
 import { EmptyResponse } from 'libs/fetch'
 
@@ -2382,22 +2380,18 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter favorite_id was null or undefined when calling deletenativev1mefavoritesfavoriteId.'
         )
       }
-      const localVarPath = `/native/v1/me/favorites/{favorite_id}`.replace(
+      const pathname = `/native/v1/me/favorites/{favorite_id}`.replace(
         `{${'favorite_id'}}`,
         encodeURIComponent(String(favorite_id))
       )
-      const localVarUrlObj = url.parse(localVarPath, true)
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'DELETE' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2407,19 +2401,15 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getnativev1bookings(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/bookings`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/bookings`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2429,19 +2419,15 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getnativev1idCheckToken(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/id_check_token`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/id_check_token`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2451,19 +2437,15 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getnativev1me(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/me`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/me`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2473,19 +2455,15 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getnativev1mefavorites(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/me/favorites`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/me/favorites`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2495,19 +2473,15 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getnativev1mefavoritescount(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/me/favorites/count`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/me/favorites/count`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2525,20 +2499,16 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter offer_id was null or undefined when calling getnativev1offerofferId.'
         )
       }
-      const localVarPath = `/native/v1/offer/{offer_id}`.replace(
+      const pathname = `/native/v1/offer/{offer_id}`.replace(
         `{${'offer_id'}}`,
         encodeURIComponent(String(offer_id))
       )
-      const localVarUrlObj = url.parse(localVarPath, true)
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2548,19 +2518,15 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getnativev1offerreportreasons(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/offer/report/reasons`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/offer/report/reasons`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2570,19 +2536,15 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getnativev1offersreports(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/offers/reports`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/offers/reports`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2592,19 +2554,15 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getnativev1profiletokenExpiration(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/profile/token_expiration`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/profile/token_expiration`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2614,17 +2572,13 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getnativev1settings(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/settings`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/settings`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2634,17 +2588,13 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getnativev1subcategories(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/subcategories`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/subcategories`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2654,19 +2604,15 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getnativev1subscriptionnextStep(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/subscription/next_step`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/subscription/next_step`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2676,17 +2622,13 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getnativev1subscriptionprofileOptions(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/subscription/profile_options`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/subscription/profile_options`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2696,19 +2638,15 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async getnativev1userProfilingsessionId(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/user_profiling/session_id`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/user_profiling/session_id`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2726,20 +2664,16 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter venue_id was null or undefined when calling getnativev1venuevenueId.'
         )
       }
-      const localVarPath = `/native/v1/venue/{venue_id}`.replace(
+      const pathname = `/native/v1/venue/{venue_id}`.replace(
         `{${'venue_id'}}`,
         encodeURIComponent(String(venue_id))
       )
-      const localVarUrlObj = url.parse(localVarPath, true)
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2750,22 +2684,18 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async patchnativev1beneficiaryInformation(body?: BeneficiaryInformationUpdateRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/beneficiary_information`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/beneficiary_information`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'PATCH' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"BeneficiaryInformationUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2776,20 +2706,16 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1account(body?: AccountRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/account`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/account`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"AccountRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2799,19 +2725,15 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1accounthasCompletedIdCheck(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/account/has_completed_id_check`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/account/has_completed_id_check`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2821,19 +2743,15 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1accountsuspend(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/account/suspend`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/account/suspend`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2844,22 +2762,18 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1bookings(body?: BookOfferRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/bookings`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/bookings`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"BookOfferRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2877,22 +2791,18 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter booking_id was null or undefined when calling postnativev1bookingsbookingIdcancel.'
         )
       }
-      const localVarPath = `/native/v1/bookings/{booking_id}/cancel`.replace(
+      const pathname = `/native/v1/bookings/{booking_id}/cancel`.replace(
         `{${'booking_id'}}`,
         encodeURIComponent(String(booking_id))
       )
-      const localVarUrlObj = url.parse(localVarPath, true)
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2911,25 +2821,21 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter booking_id was null or undefined when calling postnativev1bookingsbookingIdtoggleDisplay.'
         )
       }
-      const localVarPath = `/native/v1/bookings/{booking_id}/toggle_display`.replace(
+      const pathname = `/native/v1/bookings/{booking_id}/toggle_display`.replace(
         `{${'booking_id'}}`,
         encodeURIComponent(String(booking_id))
       )
-      const localVarUrlObj = url.parse(localVarPath, true)
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"BookingDisplayStatusRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2940,22 +2846,18 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1changePassword(body?: ChangePasswordRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/change_password`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/change_password`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"ChangePasswordRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2965,19 +2867,15 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1identityDocument(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/identity_document`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/identity_document`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -2988,22 +2886,18 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1meculturalSurvey(body?: CulturalSurveyRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/me/cultural_survey`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/me/cultural_survey`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"CulturalSurveyRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -3014,22 +2908,18 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1mefavorites(body?: FavoriteRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/me/favorites`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/me/favorites`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"FavoriteRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -3048,25 +2938,21 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter offer_id was null or undefined when calling postnativev1offerofferIdreport.'
         )
       }
-      const localVarPath = `/native/v1/offer/{offer_id}/report`.replace(
+      const pathname = `/native/v1/offer/{offer_id}/report`.replace(
         `{${'offer_id'}}`,
         encodeURIComponent(String(offer_id))
       )
-      const localVarUrlObj = url.parse(localVarPath, true)
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"OfferReportRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -3077,22 +2963,18 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1profile(body?: UserProfileUpdateRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/profile`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/profile`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"UserProfileUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -3103,22 +2985,18 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1profileupdateEmail(body?: UserProfileEmailUpdate, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/profile/update_email`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/profile/update_email`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"UserProfileEmailUpdate" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -3128,17 +3006,13 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1refreshAccessToken(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/refresh_access_token`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/refresh_access_token`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -3149,20 +3023,16 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1requestPasswordReset(body?: RequestPasswordResetRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/request_password_reset`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/request_password_reset`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"RequestPasswordResetRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -3173,20 +3043,16 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1resendEmailValidation(body?: ResendEmailValidationRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/resend_email_validation`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/resend_email_validation`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"ResendEmailValidationRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -3197,20 +3063,16 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1resetPassword(body?: ResetPasswordRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/reset_password`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/reset_password`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"ResetPasswordRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -3220,19 +3082,15 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1resetRecreditAmountToShow(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/reset_recredit_amount_to_show`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/reset_recredit_amount_to_show`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -3250,22 +3108,18 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter offer_id was null or undefined when calling postnativev1sendOfferLinkByPushofferId.'
         )
       }
-      const localVarPath = `/native/v1/send_offer_link_by_push/{offer_id}`.replace(
+      const pathname = `/native/v1/send_offer_link_by_push/{offer_id}`.replace(
         `{${'offer_id'}}`,
         encodeURIComponent(String(offer_id))
       )
-      const localVarUrlObj = url.parse(localVarPath, true)
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -3283,22 +3137,18 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
           'Required parameter offer_id was null or undefined when calling postnativev1sendOfferWebappLinkByEmailofferId.'
         )
       }
-      const localVarPath = `/native/v1/send_offer_webapp_link_by_email/{offer_id}`.replace(
+      const pathname = `/native/v1/send_offer_webapp_link_by_email/{offer_id}`.replace(
         `{${'offer_id'}}`,
         encodeURIComponent(String(offer_id))
       )
-      const localVarUrlObj = url.parse(localVarPath, true)
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -3309,22 +3159,18 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1sendPhoneValidationCode(body?: SendPhoneValidationRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/send_phone_validation_code`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/send_phone_validation_code`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"SendPhoneValidationRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -3335,20 +3181,16 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1signin(body?: SigninRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/signin`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/signin`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"SigninRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -3358,19 +3200,15 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1subscriptionhonorStatement(options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/subscription/honor_statement`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/subscription/honor_statement`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -3381,22 +3219,18 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1subscriptionprofile(body?: ProfileUpdateRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/subscription/profile`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/subscription/profile`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"ProfileUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -3407,22 +3241,18 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1ubbleIdentification(body?: IdentificationSessionRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/ubble_identification`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/ubble_identification`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"IdentificationSessionRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -3433,22 +3263,18 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1userProfiling(body?: UserProfilingFraudRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/user_profiling`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/user_profiling`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"UserProfilingFraudRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -3459,20 +3285,16 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1validateEmail(body?: ValidateEmailRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/validate_email`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/validate_email`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"ValidateEmailRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -3483,22 +3305,18 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async postnativev1validatePhoneNumber(body?: ValidatePhoneNumberRequest, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/validate_phone_number`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/validate_phone_number`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"ValidatePhoneNumberRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
@@ -3509,20 +3327,16 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      * @throws {RequiredError}
      */
     async putnativev1profilevalidateEmail(body?: ChangeBeneficiaryEmailBody, options: any = {}): Promise<FetchArgs> {
-      const localVarPath = `/native/v1/profile/validate_email`
-      const localVarUrlObj = url.parse(localVarPath, true)
+      const pathname = `/native/v1/profile/validate_email`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'PUT' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"ChangeBeneficiaryEmailBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },

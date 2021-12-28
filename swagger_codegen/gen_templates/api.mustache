@@ -2,8 +2,6 @@
 // tslint:disable
 {{>licenseInfo}}
 
-import url from 'url'
-
 import { getAuthenticationHeaders, handleGeneratedApiResponse, safeFetch } from 'api/apiHelpers'
 import { EmptyResponse } from 'libs/fetch'
 
@@ -88,11 +86,10 @@ export const {{classname}}FetchParamCreator = function (configuration?: Configur
       }
   {{/required}}
   {{/allParams}}
-      const localVarPath = `{{{path}}}`{{#pathParams}}.replace(
+      const pathname = `{{{path}}}`{{#pathParams}}.replace(
         `{${'{{baseName}}'}}`,
         encodeURIComponent(String({{paramName}}))
       ){{/pathParams}}
-      const localVarUrlObj = url.parse(localVarPath, true)
       let secureOptions = Object.assign(options, { credentials: 'omit' })
   {{#authMethods}}
       // authentication {{name}} required
@@ -139,16 +136,13 @@ export const {{classname}}FetchParamCreator = function (configuration?: Configur
       localVarHeaderParameter['Content-Type'] = '{{{mediaType}}}'
       {{/consumes.0}}
   {{/bodyParam}}
-      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
-      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-      localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
   {{#bodyParam}}
       const needsSerialization = (<any>"{{dataType}}" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify({{paramName}} || {}) : ({{paramName}} || "")
   {{/bodyParam}}
       return {
-        url: url.format(localVarUrlObj),
+        url: pathname,
         options: localVarRequestOptions,
       }
     },
