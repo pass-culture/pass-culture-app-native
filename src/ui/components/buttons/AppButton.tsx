@@ -183,5 +183,4 @@ const Title = styled(Typo.ButtonText)<TitleProps>((props) => ({
   fontSize: props.textSize,
   lineHeight: props.textLineHeight,
   marginLeft: props.icon ? getSpacing(3) : 0,
-  marginRight: props.iconSize,
 }))

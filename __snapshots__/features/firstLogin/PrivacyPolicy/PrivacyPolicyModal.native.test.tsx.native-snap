@@ -361,7 +361,6 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                       "fontSize": 12,
                       "lineHeight": 20,
                       "marginLeft": 12,
-                      "marginRight": 18,
                       "maxWidth": "100%",
                     },
                   ]

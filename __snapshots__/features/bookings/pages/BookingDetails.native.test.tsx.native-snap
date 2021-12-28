@@ -1533,7 +1533,6 @@ exports[`BookingDetails should render correctly 1`] = `
                           "fontSize": 15,
                           "lineHeight": 20,
                           "marginLeft": 0,
-                          "marginRight": 18,
                           "maxWidth": "100%",
                         },
                       ]

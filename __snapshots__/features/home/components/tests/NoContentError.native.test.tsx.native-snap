@@ -193,7 +193,6 @@ exports[`NoContentError should render correctly 1`] = `
                 "fontSize": 15,
                 "lineHeight": 20,
                 "marginLeft": 12,
-                "marginRight": 22,
                 "maxWidth": "100%",
               },
             ]

@@ -55,7 +55,6 @@ Array [
               "fontSize": 15,
               "lineHeight": 20,
               "marginLeft": 0,
-              "marginRight": 18,
               "maxWidth": "100%",
             },
           ]
@@ -752,7 +751,6 @@ exports[`SetBirthday Page should render properly 1`] = `
             "fontSize": 15,
             "lineHeight": 20,
             "marginLeft": 0,
-            "marginRight": 18,
             "maxWidth": "100%",
           },
         ]

@@ -464,9 +464,9 @@ exports[`CheatCodes component should render correctly 1`] = `
       />
       <Text>
         <View
-          height={16}
+          height={14}
           testID="externalSiteIcon"
-          width={15}
+          width={14}
         >
           <Text>
             externalSiteIcon-SVG-Mock

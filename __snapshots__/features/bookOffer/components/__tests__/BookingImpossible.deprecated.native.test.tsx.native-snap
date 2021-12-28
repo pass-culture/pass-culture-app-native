@@ -191,7 +191,6 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
             "fontSize": 15,
             "lineHeight": 20,
             "marginLeft": 0,
-            "marginRight": 18,
             "maxWidth": "100%",
           },
         ]

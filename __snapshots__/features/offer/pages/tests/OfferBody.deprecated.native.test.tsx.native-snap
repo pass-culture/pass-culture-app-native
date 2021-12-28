@@ -816,9 +816,9 @@ Tous les détails du film sur AlloCiné:
                                 />
                                 <Text>
                                   <View
-                                    height={16}
+                                    height={14}
                                     testID="externalSiteIcon"
-                                    width={15}
+                                    width={14}
                                   >
                                     <Text>
                                       externalSiteIcon-SVG-Mock
@@ -1135,9 +1135,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   />
                                   <Text>
                                     <View
-                                      height={16}
+                                      height={14}
                                       testID="externalSiteIcon"
-                                      width={15}
+                                      width={14}
                                     >
                                       <Text>
                                         externalSiteIcon-SVG-Mock
@@ -3319,9 +3319,9 @@ Tous les détails du film sur AlloCiné:
                                 />
                                 <Text>
                                   <View
-                                    height={16}
+                                    height={14}
                                     testID="externalSiteIcon"
-                                    width={15}
+                                    width={14}
                                   >
                                     <Text>
                                       externalSiteIcon-SVG-Mock
@@ -3996,9 +3996,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   />
                                   <Text>
                                     <View
-                                      height={16}
+                                      height={14}
                                       testID="externalSiteIcon"
-                                      width={15}
+                                      width={14}
                                     >
                                       <Text>
                                         externalSiteIcon-SVG-Mock

@@ -609,9 +609,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                 />
                 <Text>
                   <View
-                    height={16}
+                    height={14}
                     testID="externalSiteIcon"
-                    width={15}
+                    width={14}
                   >
                     <Text>
                       externalSiteIcon-SVG-Mock
@@ -2157,9 +2157,9 @@ exports[`<Venue /> should match snapshot 1`] = `
               />
               <Text>
                 <View
-                  height={16}
+                  height={14}
                   testID="externalSiteIcon"
-                  width={15}
+                  width={14}
                 >
                   <Text>
                     externalSiteIcon-SVG-Mock

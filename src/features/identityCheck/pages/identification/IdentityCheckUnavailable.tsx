@@ -9,7 +9,7 @@ import { env } from 'libs/environment'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
+import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -32,7 +32,8 @@ Nous reviendrons vers toi d’ici quelques jours.`}</StyledBody>
           <ButtonPrimaryWhite
             title={t`Transmettre un dossier`}
             onPress={() => openUrl(env.DSM_URL)}
-            icon={ExternalLinkSite}
+            iconSize={20}
+            icon={ExternalSite}
           />
           <Spacer.Column numberOfSpaces={4} />
         </React.Fragment>
