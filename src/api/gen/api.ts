@@ -11,14 +11,14 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the file manually.
  */
-import url from "url"
+import url from 'url'
 
-import { getAuthenticationHeaders, handleGeneratedApiResponse, safeFetch } from "api/apiHelpers"
+import { getAuthenticationHeaders, handleGeneratedApiResponse, safeFetch } from 'api/apiHelpers'
 import { EmptyResponse } from 'libs/fetch'
 
-import { Configuration } from "./configuration"
+import { Configuration } from './configuration'
 
-const BASE_PATH = "/".replace(/\/+$/, "")
+const BASE_PATH = '/'.replace(/\/+$/, '')
 
 /**
  * @export
@@ -57,7 +57,7 @@ export class BaseAPI {
  * @extends {Error}
  */
 export class RequiredError extends Error {
-  name = "RequiredError"
+  name = 'RequiredError'
   constructor(public field: string, msg?: string) {
     super(msg)
   }

@@ -2,14 +2,14 @@
 // tslint:disable
 {{>licenseInfo}}
 
-import url from "url"
+import url from 'url'
 
-import { getAuthenticationHeaders, handleGeneratedApiResponse, safeFetch } from "api/apiHelpers"
+import { getAuthenticationHeaders, handleGeneratedApiResponse, safeFetch } from 'api/apiHelpers'
 import { EmptyResponse } from 'libs/fetch'
 
-import { Configuration } from "./configuration"
+import { Configuration } from './configuration'
 
-const BASE_PATH = "{{{basePath}}}".replace(/\/+$/, "")
+const BASE_PATH = '{{{basePath}}}'.replace(/\/+$/, '')
 
 /**
  * @export
@@ -48,7 +48,7 @@ export class BaseAPI {
  * @extends {Error}
  */
 export class RequiredError extends Error {
-  name = "RequiredError"
+  name = 'RequiredError'
   constructor(public field: string, msg?: string) {
     super(msg)
   }
