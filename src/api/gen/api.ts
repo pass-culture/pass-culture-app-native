@@ -25,7 +25,7 @@ const BASE_PATH = "/".replace(/\/+$/, "");
  * @interface FetchAPI
  */
 export interface FetchAPI {
-    (url: string, init?: any): Promise<Response>;
+  (url: string, init?: any): Promise<Response>;
 }
 
 /**
@@ -33,8 +33,8 @@ export interface FetchAPI {
  * @interface FetchArgs
  */
 export interface FetchArgs {
-    url: string;
-    options: any;
+  url: string;
+  options: any;
 }
 
 /**
@@ -42,13 +42,13 @@ export interface FetchArgs {
  * @class BaseAPI
  */
 export class BaseAPI {
-    protected configuration?: Configuration;
-    constructor(configuration?: Configuration, protected basePath: string = BASE_PATH) {
-        if (configuration) {
-            this.configuration = configuration;
-            this.basePath = configuration.basePath || this.basePath;
-        }
+  protected configuration?: Configuration;
+  constructor(configuration?: Configuration, protected basePath: string = BASE_PATH) {
+    if (configuration) {
+      this.configuration = configuration;
+      this.basePath = configuration.basePath || this.basePath;
     }
+  }
 };
 
 /**
@@ -57,11 +57,12 @@ export class BaseAPI {
  * @extends {Error}
  */
 export class RequiredError extends Error {
-    name = "RequiredError"
-    constructor(public field: string, msg?: string) {
-        super(msg);
-    }
+  name = "RequiredError"
+  constructor(public field: string, msg?: string) {
+    super(msg);
+  }
 }
+
 
 /**
  * 
@@ -69,4254 +70,4326 @@ export class RequiredError extends Error {
  * @interface AccountRequest
  */
 export interface AccountRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof AccountRequest
-     */
-    appsFlyerPlatform?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof AccountRequest
-     */
-    appsFlyerUserId?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof AccountRequest
-     */
-    birthdate: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof AccountRequest
-     */
-    email: string;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof AccountRequest
-     */
-    marketingEmailSubscription?: boolean | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof AccountRequest
-     */
-    password: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof AccountRequest
-     */
-    postalCode?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof AccountRequest
-     */
-    token: string;
+  /**
+   * 
+   * @type {string}
+   * @memberof AccountRequest
+   */
+  appsFlyerPlatform?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof AccountRequest
+   */
+  appsFlyerUserId?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof AccountRequest
+   */
+  birthdate: string
+  /**
+   * 
+   * @type {string}
+   * @memberof AccountRequest
+   */
+  email: string
+  /**
+   * 
+   * @type {boolean}
+   * @memberof AccountRequest
+   */
+  marketingEmailSubscription?: boolean | null
+  /**
+   * 
+   * @type {string}
+   * @memberof AccountRequest
+   */
+  password: string
+  /**
+   * 
+   * @type {string}
+   * @memberof AccountRequest
+   */
+  postalCode?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof AccountRequest
+   */
+  token: string
 }/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum ActivityEnum {
-    Collgien = 'Collégien',
-    Lycen = 'Lycéen',
-    Tudiant = 'Étudiant',
-    Employ = 'Employé',
-    Apprenti = 'Apprenti',
-    Alternant = 'Alternant',
-    Volontaire = 'Volontaire',
-    Inactif = 'Inactif',
-    Chmeur = 'Chômeur'
+  Collgien = 'Collégien',
+  Lycen = 'Lycéen',
+  Tudiant = 'Étudiant',
+  Employ = 'Employé',
+  Apprenti = 'Apprenti',
+  Alternant = 'Alternant',
+  Volontaire = 'Volontaire',
+  Inactif = 'Inactif',
+  Chmeur = 'Chômeur'
 }/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum ActivityIdEnum {
-    MIDDLESCHOOLSTUDENT = 'MIDDLE_SCHOOL_STUDENT',
-    HIGHSCHOOLSTUDENT = 'HIGH_SCHOOL_STUDENT',
-    STUDENT = 'STUDENT',
-    EMPLOYEE = 'EMPLOYEE',
-    APPRENTICE = 'APPRENTICE',
-    APPRENTICESTUDENT = 'APPRENTICE_STUDENT',
-    VOLUNTEER = 'VOLUNTEER',
-    INACTIVE = 'INACTIVE',
-    UNEMPLOYED = 'UNEMPLOYED'
-}/**
+  MIDDLESCHOOLSTUDENT = 'MIDDLE_SCHOOL_STUDENT',
+  HIGHSCHOOLSTUDENT = 'HIGH_SCHOOL_STUDENT',
+  STUDENT = 'STUDENT',
+  EMPLOYEE = 'EMPLOYEE',
+  APPRENTICE = 'APPRENTICE',
+  APPRENTICESTUDENT = 'APPRENTICE_STUDENT',
+  VOLUNTEER = 'VOLUNTEER',
+  INACTIVE = 'INACTIVE',
+  UNEMPLOYED = 'UNEMPLOYED'
+}
+/**
  * 
  * @export
  * @interface ActivityResponseModel
  */
 export interface ActivityResponseModel {
-    /**
-     * 
-     * @type {Array<SchoolTypesIdEnum>}
-     * @memberof ActivityResponseModel
-     */
-    associatedSchoolTypesIds?: Array<SchoolTypesIdEnum> | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ActivityResponseModel
-     */
-    description?: string | null;
-    /**
-     * 
-     * @type {ActivityIdEnum}
-     * @memberof ActivityResponseModel
-     */
-    id: ActivityIdEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof ActivityResponseModel
-     */
-    label: string;
+  /**
+   * 
+   * @type {Array<SchoolTypesIdEnum>}
+   * @memberof ActivityResponseModel
+   */
+  associatedSchoolTypesIds?: Array<SchoolTypesIdEnum> | null
+  /**
+   * 
+   * @type {string}
+   * @memberof ActivityResponseModel
+   */
+  description?: string | null
+  /**
+   * 
+   * @type {ActivityIdEnum}
+   * @memberof ActivityResponseModel
+   */
+  id: ActivityIdEnum
+  /**
+   * 
+   * @type {string}
+   * @memberof ActivityResponseModel
+   */
+  label: string
 }/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum AgentType {
-    BrowserComputer = 'browser_computer',
-    BrowserMobile = 'browser_mobile',
-    AgentMobile = 'agent_mobile'
-}/**
+  BrowserComputer = 'browser_computer',
+  BrowserMobile = 'browser_mobile',
+  AgentMobile = 'agent_mobile'
+}
+/**
  * 
  * @export
  * @interface BeneficiaryInformationUpdateRequest
  */
 export interface BeneficiaryInformationUpdateRequest {
-    /**
-     * 
-     * @type {ActivityEnum}
-     * @memberof BeneficiaryInformationUpdateRequest
-     */
-    activity: ActivityEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof BeneficiaryInformationUpdateRequest
-     */
-    address?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof BeneficiaryInformationUpdateRequest
-     */
-    city: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BeneficiaryInformationUpdateRequest
-     */
-    firstName?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof BeneficiaryInformationUpdateRequest
-     */
-    lastName?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof BeneficiaryInformationUpdateRequest
-     */
-    phone?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof BeneficiaryInformationUpdateRequest
-     */
-    postalCode: string;
+  /**
+   * 
+   * @type {ActivityEnum}
+   * @memberof BeneficiaryInformationUpdateRequest
+   */
+  activity: ActivityEnum
+  /**
+   * 
+   * @type {string}
+   * @memberof BeneficiaryInformationUpdateRequest
+   */
+  address?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof BeneficiaryInformationUpdateRequest
+   */
+  city: string
+  /**
+   * 
+   * @type {string}
+   * @memberof BeneficiaryInformationUpdateRequest
+   */
+  firstName?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof BeneficiaryInformationUpdateRequest
+   */
+  lastName?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof BeneficiaryInformationUpdateRequest
+   */
+  phone?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof BeneficiaryInformationUpdateRequest
+   */
+  postalCode: string
 }/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum BeneficiaryValidationStep {
-    PhoneValidation = 'phone-validation',
-    IdCheck = 'id-check',
-    BeneficiaryInformation = 'beneficiary-information',
-    HonorStatement = 'honor-statement'
-}/**
+  PhoneValidation = 'phone-validation',
+  IdCheck = 'id-check',
+  BeneficiaryInformation = 'beneficiary-information',
+  HonorStatement = 'honor-statement'
+}
+/**
  * 
  * @export
  * @interface BookOfferRequest
  */
 export interface BookOfferRequest {
-    /**
-     * 
-     * @type {number}
-     * @memberof BookOfferRequest
-     */
-    quantity: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof BookOfferRequest
-     */
-    stockId: number;
-}/**
+  /**
+   * 
+   * @type {number}
+   * @memberof BookOfferRequest
+   */
+  quantity: number
+  /**
+   * 
+   * @type {number}
+   * @memberof BookOfferRequest
+   */
+  stockId: number
+}
+/**
  * 
  * @export
  * @interface BookOfferResponse
  */
 export interface BookOfferResponse {
-    /**
-     * 
-     * @type {number}
-     * @memberof BookOfferResponse
-     */
-    bookingId: number;
-}/**
+  /**
+   * 
+   * @type {number}
+   * @memberof BookOfferResponse
+   */
+  bookingId: number
+}
+/**
  * 
  * @export
  * @interface BookingActivationCodeResponse
  */
 export interface BookingActivationCodeResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof BookingActivationCodeResponse
-     */
-    code: string;
-    /**
-     * 
-     * @type {Date}
-     * @memberof BookingActivationCodeResponse
-     */
-    expirationDate?: Date | null;
+  /**
+   * 
+   * @type {string}
+   * @memberof BookingActivationCodeResponse
+   */
+  code: string
+  /**
+   * 
+   * @type {Date}
+   * @memberof BookingActivationCodeResponse
+   */
+  expirationDate?: Date | null
 }/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum BookingCancellationReasons {
-    OFFERER = 'OFFERER',
-    BENEFICIARY = 'BENEFICIARY',
-    EXPIRED = 'EXPIRED',
-    FRAUD = 'FRAUD',
-    REFUSEDBYINSTITUTE = 'REFUSED_BY_INSTITUTE'
-}/**
+  OFFERER = 'OFFERER',
+  BENEFICIARY = 'BENEFICIARY',
+  EXPIRED = 'EXPIRED',
+  FRAUD = 'FRAUD',
+  REFUSEDBYINSTITUTE = 'REFUSED_BY_INSTITUTE'
+}
+/**
  * 
  * @export
  * @interface BookingDisplayStatusRequest
  */
 export interface BookingDisplayStatusRequest {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof BookingDisplayStatusRequest
-     */
-    ended: boolean;
-}/**
+  /**
+   * 
+   * @type {boolean}
+   * @memberof BookingDisplayStatusRequest
+   */
+  ended: boolean
+}
+/**
  * 
  * @export
  * @interface BookingOfferExtraData
  */
 export interface BookingOfferExtraData {
-    /**
-     * 
-     * @type {string}
-     * @memberof BookingOfferExtraData
-     */
-    isbn?: string | null;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof BookingOfferExtraData
+   */
+  isbn?: string | null
+}
+/**
  * 
  * @export
  * @interface BookingOfferResponse
  */
 export interface BookingOfferResponse {
-    /**
-     * 
-     * @type {BookingOfferExtraData}
-     * @memberof BookingOfferResponse
-     */
-    extraData?: BookingOfferExtraData | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof BookingOfferResponse
-     */
-    id: number;
-    /**
-     * 
-     * @type {OfferImageResponse}
-     * @memberof BookingOfferResponse
-     */
-    image?: OfferImageResponse | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof BookingOfferResponse
-     */
-    isDigital: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof BookingOfferResponse
-     */
-    isPermanent: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof BookingOfferResponse
-     */
-    name: string;
-    /**
-     * 
-     * @type {SubcategoryIdEnum}
-     * @memberof BookingOfferResponse
-     */
-    subcategoryId: SubcategoryIdEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof BookingOfferResponse
-     */
-    url?: string | null;
-    /**
-     * 
-     * @type {BookingVenueResponse}
-     * @memberof BookingOfferResponse
-     */
-    venue: BookingVenueResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof BookingOfferResponse
-     */
-    withdrawalDetails?: string | null;
-}/**
+  /**
+   * 
+   * @type {BookingOfferExtraData}
+   * @memberof BookingOfferResponse
+   */
+  extraData?: BookingOfferExtraData | null
+  /**
+   * 
+   * @type {number}
+   * @memberof BookingOfferResponse
+   */
+  id: number
+  /**
+   * 
+   * @type {OfferImageResponse}
+   * @memberof BookingOfferResponse
+   */
+  image?: OfferImageResponse | null
+  /**
+   * 
+   * @type {boolean}
+   * @memberof BookingOfferResponse
+   */
+  isDigital: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof BookingOfferResponse
+   */
+  isPermanent: boolean
+  /**
+   * 
+   * @type {string}
+   * @memberof BookingOfferResponse
+   */
+  name: string
+  /**
+   * 
+   * @type {SubcategoryIdEnum}
+   * @memberof BookingOfferResponse
+   */
+  subcategoryId: SubcategoryIdEnum
+  /**
+   * 
+   * @type {string}
+   * @memberof BookingOfferResponse
+   */
+  url?: string | null
+  /**
+   * 
+   * @type {BookingVenueResponse}
+   * @memberof BookingOfferResponse
+   */
+  venue: BookingVenueResponse
+  /**
+   * 
+   * @type {string}
+   * @memberof BookingOfferResponse
+   */
+  withdrawalDetails?: string | null
+}
+/**
  * 
  * @export
  * @interface BookingReponse
  */
 export interface BookingReponse {
-    /**
-     * 
-     * @type {BookingActivationCodeResponse}
-     * @memberof BookingReponse
-     */
-    activationCode?: BookingActivationCodeResponse | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof BookingReponse
-     */
-    cancellationDate?: Date | null;
-    /**
-     * 
-     * @type {BookingCancellationReasons}
-     * @memberof BookingReponse
-     */
-    cancellationReason?: BookingCancellationReasons | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof BookingReponse
-     */
-    completedUrl?: string | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof BookingReponse
-     */
-    confirmationDate?: Date | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof BookingReponse
-     */
-    dateUsed?: Date | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof BookingReponse
-     */
-    expirationDate?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof BookingReponse
-     */
-    id: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof BookingReponse
-     */
-    qrCodeData?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof BookingReponse
-     */
-    quantity: number;
-    /**
-     * 
-     * @type {BookingStockResponse}
-     * @memberof BookingReponse
-     */
-    stock: BookingStockResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof BookingReponse
-     */
-    token: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof BookingReponse
-     */
-    totalAmount: number;
-}/**
+  /**
+   * 
+   * @type {BookingActivationCodeResponse}
+   * @memberof BookingReponse
+   */
+  activationCode?: BookingActivationCodeResponse | null
+  /**
+   * 
+   * @type {Date}
+   * @memberof BookingReponse
+   */
+  cancellationDate?: Date | null
+  /**
+   * 
+   * @type {BookingCancellationReasons}
+   * @memberof BookingReponse
+   */
+  cancellationReason?: BookingCancellationReasons | null
+  /**
+   * 
+   * @type {string}
+   * @memberof BookingReponse
+   */
+  completedUrl?: string | null
+  /**
+   * 
+   * @type {Date}
+   * @memberof BookingReponse
+   */
+  confirmationDate?: Date | null
+  /**
+   * 
+   * @type {Date}
+   * @memberof BookingReponse
+   */
+  dateUsed?: Date | null
+  /**
+   * 
+   * @type {Date}
+   * @memberof BookingReponse
+   */
+  expirationDate?: Date | null
+  /**
+   * 
+   * @type {number}
+   * @memberof BookingReponse
+   */
+  id: number
+  /**
+   * 
+   * @type {string}
+   * @memberof BookingReponse
+   */
+  qrCodeData?: string | null
+  /**
+   * 
+   * @type {number}
+   * @memberof BookingReponse
+   */
+  quantity: number
+  /**
+   * 
+   * @type {BookingStockResponse}
+   * @memberof BookingReponse
+   */
+  stock: BookingStockResponse
+  /**
+   * 
+   * @type {string}
+   * @memberof BookingReponse
+   */
+  token: string
+  /**
+   * 
+   * @type {number}
+   * @memberof BookingReponse
+   */
+  totalAmount: number
+}
+/**
  * 
  * @export
  * @interface BookingStockResponse
  */
 export interface BookingStockResponse {
-    /**
-     * 
-     * @type {Date}
-     * @memberof BookingStockResponse
-     */
-    beginningDatetime?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof BookingStockResponse
-     */
-    id: number;
-    /**
-     * 
-     * @type {BookingOfferResponse}
-     * @memberof BookingStockResponse
-     */
-    offer: BookingOfferResponse;
-}/**
+  /**
+   * 
+   * @type {Date}
+   * @memberof BookingStockResponse
+   */
+  beginningDatetime?: Date | null
+  /**
+   * 
+   * @type {number}
+   * @memberof BookingStockResponse
+   */
+  id: number
+  /**
+   * 
+   * @type {BookingOfferResponse}
+   * @memberof BookingStockResponse
+   */
+  offer: BookingOfferResponse
+}
+/**
  * 
  * @export
  * @interface BookingVenueResponse
  */
 export interface BookingVenueResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof BookingVenueResponse
-     */
-    address?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof BookingVenueResponse
-     */
-    city?: string | null;
-    /**
-     * 
-     * @type {Coordinates}
-     * @memberof BookingVenueResponse
-     */
-    coordinates: Coordinates;
-    /**
-     * 
-     * @type {number}
-     * @memberof BookingVenueResponse
-     */
-    id: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof BookingVenueResponse
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof BookingVenueResponse
-     */
-    postalCode?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof BookingVenueResponse
-     */
-    publicName?: string | null;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof BookingVenueResponse
+   */
+  address?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof BookingVenueResponse
+   */
+  city?: string | null
+  /**
+   * 
+   * @type {Coordinates}
+   * @memberof BookingVenueResponse
+   */
+  coordinates: Coordinates
+  /**
+   * 
+   * @type {number}
+   * @memberof BookingVenueResponse
+   */
+  id: number
+  /**
+   * 
+   * @type {string}
+   * @memberof BookingVenueResponse
+   */
+  name: string
+  /**
+   * 
+   * @type {string}
+   * @memberof BookingVenueResponse
+   */
+  postalCode?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof BookingVenueResponse
+   */
+  publicName?: string | null
+}
+/**
  * 
  * @export
  * @interface BookingsResponse
  */
 export interface BookingsResponse {
-    /**
-     * 
-     * @type {Array<BookingReponse>}
-     * @memberof BookingsResponse
-     */
-    ended_bookings: Array<BookingReponse>;
-    /**
-     * 
-     * @type {Array<BookingReponse>}
-     * @memberof BookingsResponse
-     */
-    ongoing_bookings: Array<BookingReponse>;
+  /**
+   * 
+   * @type {Array<BookingReponse>}
+   * @memberof BookingsResponse
+   */
+  ended_bookings: Array<BookingReponse>
+  /**
+   * 
+   * @type {Array<BookingReponse>}
+   * @memberof BookingsResponse
+   */
+  ongoing_bookings: Array<BookingReponse>
 }/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum CallToActionIcon {
-    EMAIL = 'EMAIL',
-    RETRY = 'RETRY',
-    EXTERNAL = 'EXTERNAL'
-}/**
+  EMAIL = 'EMAIL',
+  RETRY = 'RETRY',
+  EXTERNAL = 'EXTERNAL'
+}
+/**
  * 
  * @export
  * @interface CallToActionMessage
  */
 export interface CallToActionMessage {
-    /**
-     * 
-     * @type {CallToActionIcon}
-     * @memberof CallToActionMessage
-     */
-    callToActionIcon?: CallToActionIcon | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CallToActionMessage
-     */
-    callToActionLink?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof CallToActionMessage
-     */
-    callToActionTitle?: string | null;
+  /**
+   * 
+   * @type {CallToActionIcon}
+   * @memberof CallToActionMessage
+   */
+  callToActionIcon?: CallToActionIcon | null
+  /**
+   * 
+   * @type {string}
+   * @memberof CallToActionMessage
+   */
+  callToActionLink?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof CallToActionMessage
+   */
+  callToActionTitle?: string | null
 }/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum CategoryIdEnum {
-    BEAUXARTS = 'BEAUX_ARTS',
-    CINEMA = 'CINEMA',
-    CONFERENCE = 'CONFERENCE',
-    FILM = 'FILM',
-    INSTRUMENT = 'INSTRUMENT',
-    JEU = 'JEU',
-    LIVRE = 'LIVRE',
-    MEDIA = 'MEDIA',
-    MUSEE = 'MUSEE',
-    MUSIQUEENREGISTREE = 'MUSIQUE_ENREGISTREE',
-    MUSIQUELIVE = 'MUSIQUE_LIVE',
-    PRATIQUEART = 'PRATIQUE_ART',
-    SPECTACLE = 'SPECTACLE',
-    TECHNIQUE = 'TECHNIQUE'
-}/**
+  BEAUXARTS = 'BEAUX_ARTS',
+  CINEMA = 'CINEMA',
+  CONFERENCE = 'CONFERENCE',
+  FILM = 'FILM',
+  INSTRUMENT = 'INSTRUMENT',
+  JEU = 'JEU',
+  LIVRE = 'LIVRE',
+  MEDIA = 'MEDIA',
+  MUSEE = 'MUSEE',
+  MUSIQUEENREGISTREE = 'MUSIQUE_ENREGISTREE',
+  MUSIQUELIVE = 'MUSIQUE_LIVE',
+  PRATIQUEART = 'PRATIQUE_ART',
+  SPECTACLE = 'SPECTACLE',
+  TECHNIQUE = 'TECHNIQUE'
+}
+/**
  * 
  * @export
  * @interface ChangeBeneficiaryEmailBody
  */
 export interface ChangeBeneficiaryEmailBody {
-    /**
-     * 
-     * @type {string}
-     * @memberof ChangeBeneficiaryEmailBody
-     */
-    token: string;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof ChangeBeneficiaryEmailBody
+   */
+  token: string
+}
+/**
  * 
  * @export
  * @interface ChangePasswordRequest
  */
 export interface ChangePasswordRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof ChangePasswordRequest
-     */
-    currentPassword: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ChangePasswordRequest
-     */
-    newPassword: string;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof ChangePasswordRequest
+   */
+  currentPassword: string
+  /**
+   * 
+   * @type {string}
+   * @memberof ChangePasswordRequest
+   */
+  newPassword: string
+}
+/**
  * 
  * @export
  * @interface Coordinates
  */
 export interface Coordinates {
-    /**
-     * 
-     * @type {number}
-     * @memberof Coordinates
-     */
-    latitude?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof Coordinates
-     */
-    longitude?: number | null;
-}/**
+  /**
+   * 
+   * @type {number}
+   * @memberof Coordinates
+   */
+  latitude?: number | null
+  /**
+   * 
+   * @type {number}
+   * @memberof Coordinates
+   */
+  longitude?: number | null
+}
+/**
  * 
  * @export
  * @interface Credit
  */
 export interface Credit {
-    /**
-     * 
-     * @type {number}
-     * @memberof Credit
-     */
-    initial: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof Credit
-     */
-    remaining: number;
-}/**
+  /**
+   * 
+   * @type {number}
+   * @memberof Credit
+   */
+  initial: number
+  /**
+   * 
+   * @type {number}
+   * @memberof Credit
+   */
+  remaining: number
+}
+/**
  * 
  * @export
  * @interface CulturalSurveyRequest
  */
 export interface CulturalSurveyRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof CulturalSurveyRequest
-     */
-    culturalSurveyId?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof CulturalSurveyRequest
-     */
-    needsToFillCulturalSurvey: boolean;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof CulturalSurveyRequest
+   */
+  culturalSurveyId?: string | null
+  /**
+   * 
+   * @type {boolean}
+   * @memberof CulturalSurveyRequest
+   */
+  needsToFillCulturalSurvey: boolean
+}
+/**
  * 
  * @export
  * @interface DepositAmountsByAge
  */
 export interface DepositAmountsByAge {
-    /**
-     * 
-     * @type {number}
-     * @memberof DepositAmountsByAge
-     */
-    age_15?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof DepositAmountsByAge
-     */
-    age_16?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof DepositAmountsByAge
-     */
-    age_17?: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof DepositAmountsByAge
-     */
-    age_18?: number;
+  /**
+   * 
+   * @type {number}
+   * @memberof DepositAmountsByAge
+   */
+  age_15?: number
+  /**
+   * 
+   * @type {number}
+   * @memberof DepositAmountsByAge
+   */
+  age_16?: number
+  /**
+   * 
+   * @type {number}
+   * @memberof DepositAmountsByAge
+   */
+  age_17?: number
+  /**
+   * 
+   * @type {number}
+   * @memberof DepositAmountsByAge
+   */
+  age_18?: number
 }/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum DepositType {
-    _1517 = 'GRANT_15_17',
-    _18 = 'GRANT_18'
-}/**
+  _1517 = 'GRANT_15_17',
+  _18 = 'GRANT_18'
+}
+/**
  * 
  * @export
  * @interface DomainsCredit
  */
 export interface DomainsCredit {
-    /**
-     * 
-     * @type {Credit}
-     * @memberof DomainsCredit
-     */
-    all: Credit;
-    /**
-     * 
-     * @type {Credit}
-     * @memberof DomainsCredit
-     */
-    digital?: Credit | null;
-    /**
-     * 
-     * @type {Credit}
-     * @memberof DomainsCredit
-     */
-    physical?: Credit | null;
+  /**
+   * 
+   * @type {Credit}
+   * @memberof DomainsCredit
+   */
+  all: Credit
+  /**
+   * 
+   * @type {Credit}
+   * @memberof DomainsCredit
+   */
+  digital?: Credit | null
+  /**
+   * 
+   * @type {Credit}
+   * @memberof DomainsCredit
+   */
+  physical?: Credit | null
 }/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum EligibilityCheckMethods {
-    Jouve = 'jouve',
-    Educonnect = 'educonnect'
+  Jouve = 'jouve',
+  Educonnect = 'educonnect'
 }/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum EligibilityType {
-    Underage = 'underage',
-    Age18 = 'age-18'
+  Underage = 'underage',
+  Age18 = 'age-18'
 }/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum ExpenseDomain {
-    All = 'all',
-    Digital = 'digital',
-    Physical = 'physical'
-}/**
+  All = 'all',
+  Digital = 'digital',
+  Physical = 'physical'
+}
+/**
  * 
  * @export
  * @interface FavoriteMediationResponse
  */
 export interface FavoriteMediationResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof FavoriteMediationResponse
-     */
-    credit?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof FavoriteMediationResponse
-     */
-    url: string;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof FavoriteMediationResponse
+   */
+  credit?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof FavoriteMediationResponse
+   */
+  url: string
+}
+/**
  * 
  * @export
  * @interface FavoriteOfferResponse
  */
 export interface FavoriteOfferResponse {
-    /**
-     * 
-     * @type {Coordinates}
-     * @memberof FavoriteOfferResponse
-     */
-    coordinates: Coordinates;
-    /**
-     * 
-     * @type {Date}
-     * @memberof FavoriteOfferResponse
-     */
-    date?: Date | null;
-    /**
-     * 
-     * @type {Array<ExpenseDomain>}
-     * @memberof FavoriteOfferResponse
-     */
-    expenseDomains: Array<ExpenseDomain>;
-    /**
-     * 
-     * @type {string}
-     * @memberof FavoriteOfferResponse
-     */
-    externalTicketOfficeUrl?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof FavoriteOfferResponse
-     */
-    id: number;
-    /**
-     * 
-     * @type {FavoriteMediationResponse}
-     * @memberof FavoriteOfferResponse
-     */
-    image?: FavoriteMediationResponse | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof FavoriteOfferResponse
-     */
-    isExpired?: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof FavoriteOfferResponse
-     */
-    isReleased: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof FavoriteOfferResponse
-     */
-    isSoldOut?: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof FavoriteOfferResponse
-     */
-    name: string;
-    /**
-     * 
-     * @type {number}
-     * @memberof FavoriteOfferResponse
-     */
-    price?: number | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof FavoriteOfferResponse
-     */
-    startDate?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof FavoriteOfferResponse
-     */
-    startPrice?: number | null;
-    /**
-     * 
-     * @type {SubcategoryIdEnum}
-     * @memberof FavoriteOfferResponse
-     */
-    subcategoryId: SubcategoryIdEnum;
-}/**
+  /**
+   * 
+   * @type {Coordinates}
+   * @memberof FavoriteOfferResponse
+   */
+  coordinates: Coordinates
+  /**
+   * 
+   * @type {Date}
+   * @memberof FavoriteOfferResponse
+   */
+  date?: Date | null
+  /**
+   * 
+   * @type {Array<ExpenseDomain>}
+   * @memberof FavoriteOfferResponse
+   */
+  expenseDomains: Array<ExpenseDomain>
+  /**
+   * 
+   * @type {string}
+   * @memberof FavoriteOfferResponse
+   */
+  externalTicketOfficeUrl?: string | null
+  /**
+   * 
+   * @type {number}
+   * @memberof FavoriteOfferResponse
+   */
+  id: number
+  /**
+   * 
+   * @type {FavoriteMediationResponse}
+   * @memberof FavoriteOfferResponse
+   */
+  image?: FavoriteMediationResponse | null
+  /**
+   * 
+   * @type {boolean}
+   * @memberof FavoriteOfferResponse
+   */
+  isExpired?: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof FavoriteOfferResponse
+   */
+  isReleased: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof FavoriteOfferResponse
+   */
+  isSoldOut?: boolean
+  /**
+   * 
+   * @type {string}
+   * @memberof FavoriteOfferResponse
+   */
+  name: string
+  /**
+   * 
+   * @type {number}
+   * @memberof FavoriteOfferResponse
+   */
+  price?: number | null
+  /**
+   * 
+   * @type {Date}
+   * @memberof FavoriteOfferResponse
+   */
+  startDate?: Date | null
+  /**
+   * 
+   * @type {number}
+   * @memberof FavoriteOfferResponse
+   */
+  startPrice?: number | null
+  /**
+   * 
+   * @type {SubcategoryIdEnum}
+   * @memberof FavoriteOfferResponse
+   */
+  subcategoryId: SubcategoryIdEnum
+}
+/**
  * 
  * @export
  * @interface FavoriteRequest
  */
 export interface FavoriteRequest {
-    /**
-     * 
-     * @type {number}
-     * @memberof FavoriteRequest
-     */
-    offerId: number;
-}/**
+  /**
+   * 
+   * @type {number}
+   * @memberof FavoriteRequest
+   */
+  offerId: number
+}
+/**
  * 
  * @export
  * @interface FavoriteResponse
  */
 export interface FavoriteResponse {
-    /**
-     * 
-     * @type {number}
-     * @memberof FavoriteResponse
-     */
-    id: number;
-    /**
-     * 
-     * @type {FavoriteOfferResponse}
-     * @memberof FavoriteResponse
-     */
-    offer: FavoriteOfferResponse;
-}/**
+  /**
+   * 
+   * @type {number}
+   * @memberof FavoriteResponse
+   */
+  id: number
+  /**
+   * 
+   * @type {FavoriteOfferResponse}
+   * @memberof FavoriteResponse
+   */
+  offer: FavoriteOfferResponse
+}
+/**
  * 
  * @export
  * @interface FavoritesCountResponse
  */
 export interface FavoritesCountResponse {
-    /**
-     * 
-     * @type {number}
-     * @memberof FavoritesCountResponse
-     */
-    count: number;
-}/**
+  /**
+   * 
+   * @type {number}
+   * @memberof FavoritesCountResponse
+   */
+  count: number
+}
+/**
  * 
  * @export
  * @interface GetIdCheckTokenResponse
  */
 export interface GetIdCheckTokenResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof GetIdCheckTokenResponse
-     */
-    token?: string | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof GetIdCheckTokenResponse
-     */
-    token_timestamp?: Date | null;
+  /**
+   * 
+   * @type {string}
+   * @memberof GetIdCheckTokenResponse
+   */
+  token?: string | null
+  /**
+   * 
+   * @type {Date}
+   * @memberof GetIdCheckTokenResponse
+   */
+  token_timestamp?: Date | null
 }/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum HomepageLabelNameEnum {
-    FILM = 'FILM',
-    CINEMA = 'CINEMA',
-    CONFERENCE = 'CONFERENCE',
-    JEU = 'JEU',
-    LIVRE = 'LIVRE',
-    VISITE = 'VISITE',
-    MUSIQUE = 'MUSIQUE',
-    COURS = 'COURS',
-    PRESSE = 'PRESSE',
-    SPECTACLE = 'SPECTACLE',
-    MATERIEL = 'MATERIEL',
-    NONE = 'NONE'
-}/**
+  FILM = 'FILM',
+  CINEMA = 'CINEMA',
+  CONFERENCE = 'CONFERENCE',
+  JEU = 'JEU',
+  LIVRE = 'LIVRE',
+  VISITE = 'VISITE',
+  MUSIQUE = 'MUSIQUE',
+  COURS = 'COURS',
+  PRESSE = 'PRESSE',
+  SPECTACLE = 'SPECTACLE',
+  MATERIEL = 'MATERIEL',
+  NONE = 'NONE'
+}
+/**
  * 
  * @export
  * @interface HomepageLabelResponseModel
  */
 export interface HomepageLabelResponseModel {
-    /**
-     * 
-     * @type {HomepageLabelNameEnum}
-     * @memberof HomepageLabelResponseModel
-     */
-    name: HomepageLabelNameEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof HomepageLabelResponseModel
-     */
-    value?: string | null;
-}/**
+  /**
+   * 
+   * @type {HomepageLabelNameEnum}
+   * @memberof HomepageLabelResponseModel
+   */
+  name: HomepageLabelNameEnum
+  /**
+   * 
+   * @type {string}
+   * @memberof HomepageLabelResponseModel
+   */
+  value?: string | null
+}
+/**
  * 
  * @export
  * @interface IdentificationSessionRequest
  */
 export interface IdentificationSessionRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof IdentificationSessionRequest
-     */
-    redirectUrl: string;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof IdentificationSessionRequest
+   */
+  redirectUrl: string
+}
+/**
  * 
  * @export
  * @interface IdentificationSessionResponse
  */
 export interface IdentificationSessionResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof IdentificationSessionResponse
-     */
-    identificationUrl: string;
+  /**
+   * 
+   * @type {string}
+   * @memberof IdentificationSessionResponse
+   */
+  identificationUrl: string
 }/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum IdentityCheckMethod {
-    Educonnect = 'educonnect',
-    Jouve = 'jouve',
-    Ubble = 'ubble'
+  Educonnect = 'educonnect',
+  Jouve = 'jouve',
+  Ubble = 'ubble'
 }/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum MaintenancePageType {
-    WithDms = 'with-dms',
-    WithoutDms = 'without-dms'
-}/**
+  WithDms = 'with-dms',
+  WithoutDms = 'without-dms'
+}
+/**
  * 
  * @export
  * @interface NextSubscriptionStepResponse
  */
 export interface NextSubscriptionStepResponse {
-    /**
-     * 
-     * @type {Array<IdentityCheckMethod>}
-     * @memberof NextSubscriptionStepResponse
-     */
-    allowedIdentityCheckMethods: Array<IdentityCheckMethod>;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof NextSubscriptionStepResponse
-     */
-    hasIdentityCheckPending: boolean;
-    /**
-     * 
-     * @type {MaintenancePageType}
-     * @memberof NextSubscriptionStepResponse
-     */
-    maintenancePageType?: MaintenancePageType | null;
-    /**
-     * 
-     * @type {SubscriptionStep}
-     * @memberof NextSubscriptionStepResponse
-     */
-    nextSubscriptionStep?: SubscriptionStep | null;
-}/**
+  /**
+   * 
+   * @type {Array<IdentityCheckMethod>}
+   * @memberof NextSubscriptionStepResponse
+   */
+  allowedIdentityCheckMethods: Array<IdentityCheckMethod>
+  /**
+   * 
+   * @type {boolean}
+   * @memberof NextSubscriptionStepResponse
+   */
+  hasIdentityCheckPending: boolean
+  /**
+   * 
+   * @type {MaintenancePageType}
+   * @memberof NextSubscriptionStepResponse
+   */
+  maintenancePageType?: MaintenancePageType | null
+  /**
+   * 
+   * @type {SubscriptionStep}
+   * @memberof NextSubscriptionStepResponse
+   */
+  nextSubscriptionStep?: SubscriptionStep | null
+}
+/**
  * 
  * @export
  * @interface NotificationSubscriptions
  */
 export interface NotificationSubscriptions {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof NotificationSubscriptions
-     */
-    marketingEmail: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof NotificationSubscriptions
-     */
-    marketingPush: boolean;
-}/**
+  /**
+   * 
+   * @type {boolean}
+   * @memberof NotificationSubscriptions
+   */
+  marketingEmail: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof NotificationSubscriptions
+   */
+  marketingPush: boolean
+}
+/**
  * 
  * @export
  * @interface OfferAccessibilityResponse
  */
 export interface OfferAccessibilityResponse {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof OfferAccessibilityResponse
-     */
-    audioDisability?: boolean | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof OfferAccessibilityResponse
-     */
-    mentalDisability?: boolean | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof OfferAccessibilityResponse
-     */
-    motorDisability?: boolean | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof OfferAccessibilityResponse
-     */
-    visualDisability?: boolean | null;
-}/**
+  /**
+   * 
+   * @type {boolean}
+   * @memberof OfferAccessibilityResponse
+   */
+  audioDisability?: boolean | null
+  /**
+   * 
+   * @type {boolean}
+   * @memberof OfferAccessibilityResponse
+   */
+  mentalDisability?: boolean | null
+  /**
+   * 
+   * @type {boolean}
+   * @memberof OfferAccessibilityResponse
+   */
+  motorDisability?: boolean | null
+  /**
+   * 
+   * @type {boolean}
+   * @memberof OfferAccessibilityResponse
+   */
+  visualDisability?: boolean | null
+}
+/**
  * 
  * @export
  * @interface OfferExtraData
  */
 export interface OfferExtraData {
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferExtraData
-     */
-    author?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OfferExtraData
-     */
-    durationMinutes?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferExtraData
-     */
-    isbn?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferExtraData
-     */
-    musicSubType?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferExtraData
-     */
-    musicType?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferExtraData
-     */
-    performer?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferExtraData
-     */
-    showSubType?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferExtraData
-     */
-    showType?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferExtraData
-     */
-    speaker?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferExtraData
-     */
-    stageDirector?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferExtraData
-     */
-    visa?: string | null;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferExtraData
+   */
+  author?: string | null
+  /**
+   * 
+   * @type {number}
+   * @memberof OfferExtraData
+   */
+  durationMinutes?: number | null
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferExtraData
+   */
+  isbn?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferExtraData
+   */
+  musicSubType?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferExtraData
+   */
+  musicType?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferExtraData
+   */
+  performer?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferExtraData
+   */
+  showSubType?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferExtraData
+   */
+  showType?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferExtraData
+   */
+  speaker?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferExtraData
+   */
+  stageDirector?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferExtraData
+   */
+  visa?: string | null
+}
+/**
  * 
  * @export
  * @interface OfferImageResponse
  */
 export interface OfferImageResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferImageResponse
-     */
-    credit?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferImageResponse
-     */
-    url: string;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferImageResponse
+   */
+  credit?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferImageResponse
+   */
+  url: string
+}
+/**
  * 
  * @export
  * @interface OfferOffererResponse
  */
 export interface OfferOffererResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferOffererResponse
-     */
-    name: string;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferOffererResponse
+   */
+  name: string
+}
+/**
  * 
  * @export
  * @interface OfferReportReasons
  */
 export interface OfferReportReasons {
-    /**
-     * 
-     * @type {{ [key: string]: ReasonMeta; }}
-     * @memberof OfferReportReasons
-     */
-    reasons: { [key: string]: ReasonMeta; };
-}/**
+  /**
+   * 
+   * @type {{ [key: string]: ReasonMeta; }}
+   * @memberof OfferReportReasons
+   */
+  reasons: { [key: string]: ReasonMeta; }
+}
+/**
  * 
  * @export
  * @interface OfferReportRequest
  */
 export interface OfferReportRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferReportRequest
-     */
-    customReason?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferReportRequest
-     */
-    reason: string;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferReportRequest
+   */
+  customReason?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferReportRequest
+   */
+  reason: string
+}
+/**
  * 
  * @export
  * @interface OfferResponse
  */
 export interface OfferResponse {
-    /**
-     * 
-     * @type {OfferAccessibilityResponse}
-     * @memberof OfferResponse
-     */
-    accessibility: OfferAccessibilityResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferResponse
-     */
-    description?: string | null;
-    /**
-     * 
-     * @type {Array<ExpenseDomain>}
-     * @memberof OfferResponse
-     */
-    expenseDomains: Array<ExpenseDomain>;
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferResponse
-     */
-    externalTicketOfficeUrl?: string | null;
-    /**
-     * 
-     * @type {OfferExtraData}
-     * @memberof OfferResponse
-     */
-    extraData?: OfferExtraData | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OfferResponse
-     */
-    id: number;
-    /**
-     * 
-     * @type {OfferImageResponse}
-     * @memberof OfferResponse
-     */
-    image?: OfferImageResponse | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof OfferResponse
-     */
-    isDigital: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof OfferResponse
-     */
-    isDuo: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof OfferResponse
-     */
-    isEducational: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof OfferResponse
-     */
-    isExpired: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof OfferResponse
-     */
-    isForbiddenToUnderage: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof OfferResponse
-     */
-    isReleased: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof OfferResponse
-     */
-    isSoldOut: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferResponse
-     */
-    name: string;
-    /**
-     * 
-     * @type {Array<OfferStockResponse>}
-     * @memberof OfferResponse
-     */
-    stocks: Array<OfferStockResponse>;
-    /**
-     * 
-     * @type {SubcategoryIdEnum}
-     * @memberof OfferResponse
-     */
-    subcategoryId: SubcategoryIdEnum;
-    /**
-     * 
-     * @type {OfferVenueResponse}
-     * @memberof OfferResponse
-     */
-    venue: OfferVenueResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferResponse
-     */
-    withdrawalDetails?: string | null;
-}/**
+  /**
+   * 
+   * @type {OfferAccessibilityResponse}
+   * @memberof OfferResponse
+   */
+  accessibility: OfferAccessibilityResponse
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferResponse
+   */
+  description?: string | null
+  /**
+   * 
+   * @type {Array<ExpenseDomain>}
+   * @memberof OfferResponse
+   */
+  expenseDomains: Array<ExpenseDomain>
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferResponse
+   */
+  externalTicketOfficeUrl?: string | null
+  /**
+   * 
+   * @type {OfferExtraData}
+   * @memberof OfferResponse
+   */
+  extraData?: OfferExtraData | null
+  /**
+   * 
+   * @type {number}
+   * @memberof OfferResponse
+   */
+  id: number
+  /**
+   * 
+   * @type {OfferImageResponse}
+   * @memberof OfferResponse
+   */
+  image?: OfferImageResponse | null
+  /**
+   * 
+   * @type {boolean}
+   * @memberof OfferResponse
+   */
+  isDigital: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof OfferResponse
+   */
+  isDuo: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof OfferResponse
+   */
+  isEducational: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof OfferResponse
+   */
+  isExpired: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof OfferResponse
+   */
+  isForbiddenToUnderage: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof OfferResponse
+   */
+  isReleased: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof OfferResponse
+   */
+  isSoldOut: boolean
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferResponse
+   */
+  name: string
+  /**
+   * 
+   * @type {Array<OfferStockResponse>}
+   * @memberof OfferResponse
+   */
+  stocks: Array<OfferStockResponse>
+  /**
+   * 
+   * @type {SubcategoryIdEnum}
+   * @memberof OfferResponse
+   */
+  subcategoryId: SubcategoryIdEnum
+  /**
+   * 
+   * @type {OfferVenueResponse}
+   * @memberof OfferResponse
+   */
+  venue: OfferVenueResponse
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferResponse
+   */
+  withdrawalDetails?: string | null
+}
+/**
  * 
  * @export
  * @interface OfferStockActivationCodeResponse
  */
 export interface OfferStockActivationCodeResponse {
-    /**
-     * 
-     * @type {Date}
-     * @memberof OfferStockActivationCodeResponse
-     */
-    expirationDate?: Date | null;
-}/**
+  /**
+   * 
+   * @type {Date}
+   * @memberof OfferStockActivationCodeResponse
+   */
+  expirationDate?: Date | null
+}
+/**
  * 
  * @export
  * @interface OfferStockResponse
  */
 export interface OfferStockResponse {
-    /**
-     * 
-     * @type {OfferStockActivationCodeResponse}
-     * @memberof OfferStockResponse
-     */
-    activationCode?: OfferStockActivationCodeResponse | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof OfferStockResponse
-     */
-    beginningDatetime?: Date | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof OfferStockResponse
-     */
-    bookingLimitDatetime?: Date | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof OfferStockResponse
-     */
-    cancellationLimitDatetime?: Date | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof OfferStockResponse
-     */
-    id: number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof OfferStockResponse
-     */
-    isBookable: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof OfferStockResponse
-     */
-    isExpired: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof OfferStockResponse
-     */
-    isForbiddenToUnderage: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof OfferStockResponse
-     */
-    isSoldOut: boolean;
-    /**
-     * 
-     * @type {number}
-     * @memberof OfferStockResponse
-     */
-    price: number;
-}/**
+  /**
+   * 
+   * @type {OfferStockActivationCodeResponse}
+   * @memberof OfferStockResponse
+   */
+  activationCode?: OfferStockActivationCodeResponse | null
+  /**
+   * 
+   * @type {Date}
+   * @memberof OfferStockResponse
+   */
+  beginningDatetime?: Date | null
+  /**
+   * 
+   * @type {Date}
+   * @memberof OfferStockResponse
+   */
+  bookingLimitDatetime?: Date | null
+  /**
+   * 
+   * @type {Date}
+   * @memberof OfferStockResponse
+   */
+  cancellationLimitDatetime?: Date | null
+  /**
+   * 
+   * @type {number}
+   * @memberof OfferStockResponse
+   */
+  id: number
+  /**
+   * 
+   * @type {boolean}
+   * @memberof OfferStockResponse
+   */
+  isBookable: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof OfferStockResponse
+   */
+  isExpired: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof OfferStockResponse
+   */
+  isForbiddenToUnderage: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof OfferStockResponse
+   */
+  isSoldOut: boolean
+  /**
+   * 
+   * @type {number}
+   * @memberof OfferStockResponse
+   */
+  price: number
+}
+/**
  * 
  * @export
  * @interface OfferVenueResponse
  */
 export interface OfferVenueResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferVenueResponse
-     */
-    address?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferVenueResponse
-     */
-    city?: string | null;
-    /**
-     * 
-     * @type {Coordinates}
-     * @memberof OfferVenueResponse
-     */
-    coordinates: Coordinates;
-    /**
-     * 
-     * @type {number}
-     * @memberof OfferVenueResponse
-     */
-    id: number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof OfferVenueResponse
-     */
-    isPermanent: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferVenueResponse
-     */
-    name: string;
-    /**
-     * 
-     * @type {OfferOffererResponse}
-     * @memberof OfferVenueResponse
-     */
-    offerer: OfferOffererResponse;
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferVenueResponse
-     */
-    postalCode?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof OfferVenueResponse
-     */
-    publicName?: string | null;
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferVenueResponse
+   */
+  address?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferVenueResponse
+   */
+  city?: string | null
+  /**
+   * 
+   * @type {Coordinates}
+   * @memberof OfferVenueResponse
+   */
+  coordinates: Coordinates
+  /**
+   * 
+   * @type {number}
+   * @memberof OfferVenueResponse
+   */
+  id: number
+  /**
+   * 
+   * @type {boolean}
+   * @memberof OfferVenueResponse
+   */
+  isPermanent: boolean
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferVenueResponse
+   */
+  name: string
+  /**
+   * 
+   * @type {OfferOffererResponse}
+   * @memberof OfferVenueResponse
+   */
+  offerer: OfferOffererResponse
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferVenueResponse
+   */
+  postalCode?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof OfferVenueResponse
+   */
+  publicName?: string | null
 }/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum OnlineOfflinePlatformChoicesEnum {
-    OFFLINE = 'OFFLINE',
-    ONLINE = 'ONLINE',
-    ONLINEOROFFLINE = 'ONLINE_OR_OFFLINE'
-}/**
+  OFFLINE = 'OFFLINE',
+  ONLINE = 'ONLINE',
+  ONLINEOROFFLINE = 'ONLINE_OR_OFFLINE'
+}
+/**
  * 
  * @export
  * @interface PaginatedFavoritesResponse
  */
 export interface PaginatedFavoritesResponse {
-    /**
-     * 
-     * @type {Array<FavoriteResponse>}
-     * @memberof PaginatedFavoritesResponse
-     */
-    favorites: Array<FavoriteResponse>;
-    /**
-     * 
-     * @type {number}
-     * @memberof PaginatedFavoritesResponse
-     */
-    nbFavorites: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PaginatedFavoritesResponse
-     */
-    page: number;
+  /**
+   * 
+   * @type {Array<FavoriteResponse>}
+   * @memberof PaginatedFavoritesResponse
+   */
+  favorites: Array<FavoriteResponse>
+  /**
+   * 
+   * @type {number}
+   * @memberof PaginatedFavoritesResponse
+   */
+  nbFavorites: number
+  /**
+   * 
+   * @type {number}
+   * @memberof PaginatedFavoritesResponse
+   */
+  page: number
 }/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum PopOverIcon {
-    INFO = 'INFO',
-    ERROR = 'ERROR',
-    WARNING = 'WARNING',
-    CLOCK = 'CLOCK',
-    FILE = 'FILE',
-    MAGNIFYINGGLASS = 'MAGNIFYING_GLASS'
-}/**
+  INFO = 'INFO',
+  ERROR = 'ERROR',
+  WARNING = 'WARNING',
+  CLOCK = 'CLOCK',
+  FILE = 'FILE',
+  MAGNIFYINGGLASS = 'MAGNIFYING_GLASS'
+}
+/**
  * 
  * @export
  * @interface ProfileOptionsResponse
  */
 export interface ProfileOptionsResponse {
-    /**
-     * 
-     * @type {Array<ActivityResponseModel>}
-     * @memberof ProfileOptionsResponse
-     */
-    activities: Array<ActivityResponseModel>;
-    /**
-     * 
-     * @type {Array<SchoolTypeResponseModel>}
-     * @memberof ProfileOptionsResponse
-     */
-    school_types: Array<SchoolTypeResponseModel>;
-}/**
+  /**
+   * 
+   * @type {Array<ActivityResponseModel>}
+   * @memberof ProfileOptionsResponse
+   */
+  activities: Array<ActivityResponseModel>
+  /**
+   * 
+   * @type {Array<SchoolTypeResponseModel>}
+   * @memberof ProfileOptionsResponse
+   */
+  school_types: Array<SchoolTypeResponseModel>
+}
+/**
  * 
  * @export
  * @interface ProfileUpdateRequest
  */
 export interface ProfileUpdateRequest {
-    /**
-     * 
-     * @type {ActivityEnum}
-     * @memberof ProfileUpdateRequest
-     */
-    activity?: ActivityEnum | null;
-    /**
-     * 
-     * @type {ActivityIdEnum}
-     * @memberof ProfileUpdateRequest
-     */
-    activityId?: ActivityIdEnum | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ProfileUpdateRequest
-     */
-    address?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof ProfileUpdateRequest
-     */
-    city: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ProfileUpdateRequest
-     */
-    firstName: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ProfileUpdateRequest
-     */
-    lastName: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ProfileUpdateRequest
-     */
-    postalCode: string;
-    /**
-     * 
-     * @type {SchoolTypesIdEnum}
-     * @memberof ProfileUpdateRequest
-     */
-    schoolTypeId?: SchoolTypesIdEnum | null;
+  /**
+   * 
+   * @type {ActivityEnum}
+   * @memberof ProfileUpdateRequest
+   */
+  activity?: ActivityEnum | null
+  /**
+   * 
+   * @type {ActivityIdEnum}
+   * @memberof ProfileUpdateRequest
+   */
+  activityId?: ActivityIdEnum | null
+  /**
+   * 
+   * @type {string}
+   * @memberof ProfileUpdateRequest
+   */
+  address?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof ProfileUpdateRequest
+   */
+  city: string
+  /**
+   * 
+   * @type {string}
+   * @memberof ProfileUpdateRequest
+   */
+  firstName: string
+  /**
+   * 
+   * @type {string}
+   * @memberof ProfileUpdateRequest
+   */
+  lastName: string
+  /**
+   * 
+   * @type {string}
+   * @memberof ProfileUpdateRequest
+   */
+  postalCode: string
+  /**
+   * 
+   * @type {SchoolTypesIdEnum}
+   * @memberof ProfileUpdateRequest
+   */
+  schoolTypeId?: SchoolTypesIdEnum | null
 }/**
  * Describe possible reason codes to used when reporting an offer.  The whole meta part is only consumed by the api client, it has no meaning inside the whole API code.  Note: when adding a new enum symbol, do not forget to update the meta method.
  * @export
  * @enum {string}
  */
 export enum Reason {
-    IMPROPER = 'IMPROPER',
-    PRICETOOHIGH = 'PRICE_TOO_HIGH',
-    INAPPROPRIATE = 'INAPPROPRIATE',
-    OTHER = 'OTHER'
-}/**
+  IMPROPER = 'IMPROPER',
+  PRICETOOHIGH = 'PRICE_TOO_HIGH',
+  INAPPROPRIATE = 'INAPPROPRIATE',
+  OTHER = 'OTHER'
+}
+/**
  * 
  * @export
  * @interface ReasonMeta
  */
 export interface ReasonMeta {
-    /**
-     * 
-     * @type {string}
-     * @memberof ReasonMeta
-     */
-    description: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ReasonMeta
-     */
-    title: string;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof ReasonMeta
+   */
+  description: string
+  /**
+   * 
+   * @type {string}
+   * @memberof ReasonMeta
+   */
+  title: string
+}
+/**
  * 
  * @export
  * @interface RefreshResponse
  */
 export interface RefreshResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof RefreshResponse
-     */
-    accessToken: string;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof RefreshResponse
+   */
+  accessToken: string
+}
+/**
  * 
  * @export
  * @interface ReportedOffer
  */
 export interface ReportedOffer {
-    /**
-     * 
-     * @type {number}
-     * @memberof ReportedOffer
-     */
-    offerId: number;
-    /**
-     * 
-     * @type {Reason}
-     * @memberof ReportedOffer
-     */
-    reason: Reason;
-    /**
-     * 
-     * @type {Date}
-     * @memberof ReportedOffer
-     */
-    reportedAt: Date;
-}/**
+  /**
+   * 
+   * @type {number}
+   * @memberof ReportedOffer
+   */
+  offerId: number
+  /**
+   * 
+   * @type {Reason}
+   * @memberof ReportedOffer
+   */
+  reason: Reason
+  /**
+   * 
+   * @type {Date}
+   * @memberof ReportedOffer
+   */
+  reportedAt: Date
+}
+/**
  * 
  * @export
  * @interface RequestPasswordResetRequest
  */
 export interface RequestPasswordResetRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof RequestPasswordResetRequest
-     */
-    email: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof RequestPasswordResetRequest
-     */
-    token?: string | null;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof RequestPasswordResetRequest
+   */
+  email: string
+  /**
+   * 
+   * @type {string}
+   * @memberof RequestPasswordResetRequest
+   */
+  token?: string | null
+}
+/**
  * 
  * @export
  * @interface ResendEmailValidationRequest
  */
 export interface ResendEmailValidationRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof ResendEmailValidationRequest
-     */
-    email: string;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof ResendEmailValidationRequest
+   */
+  email: string
+}
+/**
  * 
  * @export
  * @interface ResetPasswordRequest
  */
 export interface ResetPasswordRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof ResetPasswordRequest
-     */
-    newPassword: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ResetPasswordRequest
-     */
-    resetPasswordToken: string;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof ResetPasswordRequest
+   */
+  newPassword: string
+  /**
+   * 
+   * @type {string}
+   * @memberof ResetPasswordRequest
+   */
+  resetPasswordToken: string
+}
+/**
  * 
  * @export
  * @interface SchoolTypeResponseModel
  */
 export interface SchoolTypeResponseModel {
-    /**
-     * 
-     * @type {string}
-     * @memberof SchoolTypeResponseModel
-     */
-    description?: string | null;
-    /**
-     * 
-     * @type {SchoolTypesIdEnum}
-     * @memberof SchoolTypeResponseModel
-     */
-    id: SchoolTypesIdEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof SchoolTypeResponseModel
-     */
-    label: string;
+  /**
+   * 
+   * @type {string}
+   * @memberof SchoolTypeResponseModel
+   */
+  description?: string | null
+  /**
+   * 
+   * @type {SchoolTypesIdEnum}
+   * @memberof SchoolTypeResponseModel
+   */
+  id: SchoolTypesIdEnum
+  /**
+   * 
+   * @type {string}
+   * @memberof SchoolTypeResponseModel
+   */
+  label: string
 }/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum SchoolTypesIdEnum {
-    AGRICULTURALHIGHSCHOOL = 'AGRICULTURAL_HIGH_SCHOOL',
-    APPRENTICEFORMATIONCENTER = 'APPRENTICE_FORMATION_CENTER',
-    MILITARYHIGHSCHOOL = 'MILITARY_HIGH_SCHOOL',
-    HOMEORREMOTESCHOOLING = 'HOME_OR_REMOTE_SCHOOLING',
-    NAVALHIGHSCHOOL = 'NAVAL_HIGH_SCHOOL',
-    PRIVATEHIGHSCHOOL = 'PRIVATE_HIGH_SCHOOL',
-    PRIVATESECONDARYSCHOOL = 'PRIVATE_SECONDARY_SCHOOL',
-    PUBLICHIGHSCHOOL = 'PUBLIC_HIGH_SCHOOL',
-    PUBLICSECONDARYSCHOOL = 'PUBLIC_SECONDARY_SCHOOL'
+  AGRICULTURALHIGHSCHOOL = 'AGRICULTURAL_HIGH_SCHOOL',
+  APPRENTICEFORMATIONCENTER = 'APPRENTICE_FORMATION_CENTER',
+  MILITARYHIGHSCHOOL = 'MILITARY_HIGH_SCHOOL',
+  HOMEORREMOTESCHOOLING = 'HOME_OR_REMOTE_SCHOOLING',
+  NAVALHIGHSCHOOL = 'NAVAL_HIGH_SCHOOL',
+  PRIVATEHIGHSCHOOL = 'PRIVATE_HIGH_SCHOOL',
+  PRIVATESECONDARYSCHOOL = 'PRIVATE_SECONDARY_SCHOOL',
+  PUBLICHIGHSCHOOL = 'PUBLIC_HIGH_SCHOOL',
+  PUBLICSECONDARYSCHOOL = 'PUBLIC_SECONDARY_SCHOOL'
 }/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum SearchGroupNameEnum {
-    FILM = 'FILM',
-    CINEMA = 'CINEMA',
-    CONFERENCE = 'CONFERENCE',
-    JEU = 'JEU',
-    LIVRE = 'LIVRE',
-    VISITE = 'VISITE',
-    MUSIQUE = 'MUSIQUE',
-    COURS = 'COURS',
-    PRESSE = 'PRESSE',
-    SPECTACLE = 'SPECTACLE',
-    INSTRUMENT = 'INSTRUMENT',
-    MATERIEL = 'MATERIEL',
-    NONE = 'NONE'
-}/**
+  FILM = 'FILM',
+  CINEMA = 'CINEMA',
+  CONFERENCE = 'CONFERENCE',
+  JEU = 'JEU',
+  LIVRE = 'LIVRE',
+  VISITE = 'VISITE',
+  MUSIQUE = 'MUSIQUE',
+  COURS = 'COURS',
+  PRESSE = 'PRESSE',
+  SPECTACLE = 'SPECTACLE',
+  INSTRUMENT = 'INSTRUMENT',
+  MATERIEL = 'MATERIEL',
+  NONE = 'NONE'
+}
+/**
  * 
  * @export
  * @interface SearchGroupResponseModel
  */
 export interface SearchGroupResponseModel {
-    /**
-     * 
-     * @type {SearchGroupNameEnum}
-     * @memberof SearchGroupResponseModel
-     */
-    name: SearchGroupNameEnum;
-    /**
-     * 
-     * @type {string}
-     * @memberof SearchGroupResponseModel
-     */
-    value?: string | null;
-}/**
+  /**
+   * 
+   * @type {SearchGroupNameEnum}
+   * @memberof SearchGroupResponseModel
+   */
+  name: SearchGroupNameEnum
+  /**
+   * 
+   * @type {string}
+   * @memberof SearchGroupResponseModel
+   */
+  value?: string | null
+}
+/**
  * 
  * @export
  * @interface SendPhoneValidationRequest
  */
 export interface SendPhoneValidationRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof SendPhoneValidationRequest
-     */
-    phoneNumber?: string | null;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof SendPhoneValidationRequest
+   */
+  phoneNumber?: string | null
+}
+/**
  * 
  * @export
  * @interface SettingsResponse
  */
 export interface SettingsResponse {
-    /**
-     * 
-     * @type {number}
-     * @memberof SettingsResponse
-     */
-    accountCreationMinimumAge: number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SettingsResponse
-     */
-    allowIdCheckRegistration: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SettingsResponse
-     */
-    autoActivateDigitalBookings: boolean;
-    /**
-     * 
-     * @type {number}
-     * @memberof SettingsResponse
-     */
-    depositAmount: number;
-    /**
-     * 
-     * @type {DepositAmountsByAge}
-     * @memberof SettingsResponse
-     */
-    depositAmountsByAge?: DepositAmountsByAge;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SettingsResponse
-     */
-    displayDmsRedirection: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SettingsResponse
-     */
-    enableCulturalSurvey: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SettingsResponse
-     */
-    enableIdCheckRetention: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SettingsResponse
-     */
-    enableNativeEacIndividual: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SettingsResponse
-     */
-    enableNativeIdCheckVerboseDebugging: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SettingsResponse
-     */
-    enablePhoneValidation: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SettingsResponse
-     */
-    enableUnderageGeneralisation: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SettingsResponse
-     */
-    idCheckAddressAutocompletion: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SettingsResponse
-     */
-    isRecaptchaEnabled: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SettingsResponse
-     */
-    isWebappV2Enabled: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof SettingsResponse
-     */
-    objectStorageUrl: string;
-}/**
+  /**
+   * 
+   * @type {number}
+   * @memberof SettingsResponse
+   */
+  accountCreationMinimumAge: number
+  /**
+   * 
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+  allowIdCheckRegistration: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+  autoActivateDigitalBookings: boolean
+  /**
+   * 
+   * @type {number}
+   * @memberof SettingsResponse
+   */
+  depositAmount: number
+  /**
+   * 
+   * @type {DepositAmountsByAge}
+   * @memberof SettingsResponse
+   */
+  depositAmountsByAge?: DepositAmountsByAge
+  /**
+   * 
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+  displayDmsRedirection: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+  enableCulturalSurvey: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+  enableIdCheckRetention: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+  enableNativeEacIndividual: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+  enableNativeIdCheckVerboseDebugging: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+  enablePhoneValidation: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+  enableUnderageGeneralisation: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+  idCheckAddressAutocompletion: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+  isRecaptchaEnabled: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+  isWebappV2Enabled: boolean
+  /**
+   * 
+   * @type {string}
+   * @memberof SettingsResponse
+   */
+  objectStorageUrl: string
+}
+/**
  * 
  * @export
  * @interface SigninRequest
  */
 export interface SigninRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof SigninRequest
-     */
-    identifier: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SigninRequest
-     */
-    password: string;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof SigninRequest
+   */
+  identifier: string
+  /**
+   * 
+   * @type {string}
+   * @memberof SigninRequest
+   */
+  password: string
+}
+/**
  * 
  * @export
  * @interface SigninResponse
  */
 export interface SigninResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof SigninResponse
-     */
-    accessToken: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof SigninResponse
-     */
-    refreshToken: string;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof SigninResponse
+   */
+  accessToken: string
+  /**
+   * 
+   * @type {string}
+   * @memberof SigninResponse
+   */
+  refreshToken: string
+}
+/**
  * 
  * @export
  * @interface SubcategoriesResponseModel
  */
 export interface SubcategoriesResponseModel {
-    /**
-     * 
-     * @type {Array<HomepageLabelResponseModel>}
-     * @memberof SubcategoriesResponseModel
-     */
-    homepageLabels: Array<HomepageLabelResponseModel>;
-    /**
-     * 
-     * @type {Array<SearchGroupResponseModel>}
-     * @memberof SubcategoriesResponseModel
-     */
-    searchGroups: Array<SearchGroupResponseModel>;
-    /**
-     * 
-     * @type {Array<SubcategoryResponseModel>}
-     * @memberof SubcategoriesResponseModel
-     */
-    subcategories: Array<SubcategoryResponseModel>;
+  /**
+   * 
+   * @type {Array<HomepageLabelResponseModel>}
+   * @memberof SubcategoriesResponseModel
+   */
+  homepageLabels: Array<HomepageLabelResponseModel>
+  /**
+   * 
+   * @type {Array<SearchGroupResponseModel>}
+   * @memberof SubcategoriesResponseModel
+   */
+  searchGroups: Array<SearchGroupResponseModel>
+  /**
+   * 
+   * @type {Array<SubcategoryResponseModel>}
+   * @memberof SubcategoriesResponseModel
+   */
+  subcategories: Array<SubcategoryResponseModel>
 }/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum SubcategoryIdEnum {
-    ABOBIBLIOTHEQUE = 'ABO_BIBLIOTHEQUE',
-    ABOCONCERT = 'ABO_CONCERT',
-    ABOJEUVIDEO = 'ABO_JEU_VIDEO',
-    ABOLIVRENUMERIQUE = 'ABO_LIVRE_NUMERIQUE',
-    ABOLUDOTHEQUE = 'ABO_LUDOTHEQUE',
-    ABOMEDIATHEQUE = 'ABO_MEDIATHEQUE',
-    ABOMUSEE = 'ABO_MUSEE',
-    ABOPLATEFORMEMUSIQUE = 'ABO_PLATEFORME_MUSIQUE',
-    ABOPLATEFORMEVIDEO = 'ABO_PLATEFORME_VIDEO',
-    ABOPRATIQUEART = 'ABO_PRATIQUE_ART',
-    ABOPRESSEENLIGNE = 'ABO_PRESSE_EN_LIGNE',
-    ABOSPECTACLE = 'ABO_SPECTACLE',
-    ACHATINSTRUMENT = 'ACHAT_INSTRUMENT',
-    ACTIVATIONEVENT = 'ACTIVATION_EVENT',
-    ACTIVATIONTHING = 'ACTIVATION_THING',
-    APPCULTURELLE = 'APP_CULTURELLE',
-    ATELIERPRATIQUEART = 'ATELIER_PRATIQUE_ART',
-    AUTRESUPPORTNUMERIQUE = 'AUTRE_SUPPORT_NUMERIQUE',
-    BONACHATINSTRUMENT = 'BON_ACHAT_INSTRUMENT',
-    CAPTATIONMUSIQUE = 'CAPTATION_MUSIQUE',
-    CARTECINEILLIMITE = 'CARTE_CINE_ILLIMITE',
-    CARTECINEMULTISEANCES = 'CARTE_CINE_MULTISEANCES',
-    CARTEMUSEE = 'CARTE_MUSEE',
-    CINEPLEINAIR = 'CINE_PLEIN_AIR',
-    CINEVENTEDISTANCE = 'CINE_VENTE_DISTANCE',
-    CONCERT = 'CONCERT',
-    CONCOURS = 'CONCOURS',
-    CONFERENCE = 'CONFERENCE',
-    DECOUVERTEMETIERS = 'DECOUVERTE_METIERS',
-    ESCAPEGAME = 'ESCAPE_GAME',
-    EVENEMENTCINE = 'EVENEMENT_CINE',
-    EVENEMENTJEU = 'EVENEMENT_JEU',
-    EVENEMENTMUSIQUE = 'EVENEMENT_MUSIQUE',
-    EVENEMENTPATRIMOINE = 'EVENEMENT_PATRIMOINE',
-    FESTIVALCINE = 'FESTIVAL_CINE',
-    FESTIVALLIVRE = 'FESTIVAL_LIVRE',
-    FESTIVALMUSIQUE = 'FESTIVAL_MUSIQUE',
-    FESTIVALSPECTACLE = 'FESTIVAL_SPECTACLE',
-    JEUENLIGNE = 'JEU_EN_LIGNE',
-    JEUSUPPORTPHYSIQUE = 'JEU_SUPPORT_PHYSIQUE',
-    LIVESTREAMEVENEMENT = 'LIVESTREAM_EVENEMENT',
-    LIVESTREAMMUSIQUE = 'LIVESTREAM_MUSIQUE',
-    LIVESTREAMPRATIQUEARTISTIQUE = 'LIVESTREAM_PRATIQUE_ARTISTIQUE',
-    LIVREAUDIOPHYSIQUE = 'LIVRE_AUDIO_PHYSIQUE',
-    LIVRENUMERIQUE = 'LIVRE_NUMERIQUE',
-    LIVREPAPIER = 'LIVRE_PAPIER',
-    LOCATIONINSTRUMENT = 'LOCATION_INSTRUMENT',
-    MATERIELARTCREATIF = 'MATERIEL_ART_CREATIF',
-    MUSEEVENTEDISTANCE = 'MUSEE_VENTE_DISTANCE',
-    OEUVREART = 'OEUVRE_ART',
-    PARTITION = 'PARTITION',
-    PLATEFORMEPRATIQUEARTISTIQUE = 'PLATEFORME_PRATIQUE_ARTISTIQUE',
-    PRATIQUEARTVENTEDISTANCE = 'PRATIQUE_ART_VENTE_DISTANCE',
-    PODCAST = 'PODCAST',
-    RENCONTREENLIGNE = 'RENCONTRE_EN_LIGNE',
-    RENCONTREJEU = 'RENCONTRE_JEU',
-    RENCONTRE = 'RENCONTRE',
-    SALON = 'SALON',
-    SEANCECINE = 'SEANCE_CINE',
-    SEANCEESSAIPRATIQUEART = 'SEANCE_ESSAI_PRATIQUE_ART',
-    SPECTACLEENREGISTRE = 'SPECTACLE_ENREGISTRE',
-    SPECTACLEREPRESENTATION = 'SPECTACLE_REPRESENTATION',
-    SPECTACLEVENTEDISTANCE = 'SPECTACLE_VENTE_DISTANCE',
-    SUPPORTPHYSIQUEFILM = 'SUPPORT_PHYSIQUE_FILM',
-    SUPPORTPHYSIQUEMUSIQUE = 'SUPPORT_PHYSIQUE_MUSIQUE',
-    TELECHARGEMENTLIVREAUDIO = 'TELECHARGEMENT_LIVRE_AUDIO',
-    TELECHARGEMENTMUSIQUE = 'TELECHARGEMENT_MUSIQUE',
-    VISITEGUIDEE = 'VISITE_GUIDEE',
-    VISITEVIRTUELLE = 'VISITE_VIRTUELLE',
-    VISITE = 'VISITE',
-    VOD = 'VOD'
-}/**
+  ABOBIBLIOTHEQUE = 'ABO_BIBLIOTHEQUE',
+  ABOCONCERT = 'ABO_CONCERT',
+  ABOJEUVIDEO = 'ABO_JEU_VIDEO',
+  ABOLIVRENUMERIQUE = 'ABO_LIVRE_NUMERIQUE',
+  ABOLUDOTHEQUE = 'ABO_LUDOTHEQUE',
+  ABOMEDIATHEQUE = 'ABO_MEDIATHEQUE',
+  ABOMUSEE = 'ABO_MUSEE',
+  ABOPLATEFORMEMUSIQUE = 'ABO_PLATEFORME_MUSIQUE',
+  ABOPLATEFORMEVIDEO = 'ABO_PLATEFORME_VIDEO',
+  ABOPRATIQUEART = 'ABO_PRATIQUE_ART',
+  ABOPRESSEENLIGNE = 'ABO_PRESSE_EN_LIGNE',
+  ABOSPECTACLE = 'ABO_SPECTACLE',
+  ACHATINSTRUMENT = 'ACHAT_INSTRUMENT',
+  ACTIVATIONEVENT = 'ACTIVATION_EVENT',
+  ACTIVATIONTHING = 'ACTIVATION_THING',
+  APPCULTURELLE = 'APP_CULTURELLE',
+  ATELIERPRATIQUEART = 'ATELIER_PRATIQUE_ART',
+  AUTRESUPPORTNUMERIQUE = 'AUTRE_SUPPORT_NUMERIQUE',
+  BONACHATINSTRUMENT = 'BON_ACHAT_INSTRUMENT',
+  CAPTATIONMUSIQUE = 'CAPTATION_MUSIQUE',
+  CARTECINEILLIMITE = 'CARTE_CINE_ILLIMITE',
+  CARTECINEMULTISEANCES = 'CARTE_CINE_MULTISEANCES',
+  CARTEMUSEE = 'CARTE_MUSEE',
+  CINEPLEINAIR = 'CINE_PLEIN_AIR',
+  CINEVENTEDISTANCE = 'CINE_VENTE_DISTANCE',
+  CONCERT = 'CONCERT',
+  CONCOURS = 'CONCOURS',
+  CONFERENCE = 'CONFERENCE',
+  DECOUVERTEMETIERS = 'DECOUVERTE_METIERS',
+  ESCAPEGAME = 'ESCAPE_GAME',
+  EVENEMENTCINE = 'EVENEMENT_CINE',
+  EVENEMENTJEU = 'EVENEMENT_JEU',
+  EVENEMENTMUSIQUE = 'EVENEMENT_MUSIQUE',
+  EVENEMENTPATRIMOINE = 'EVENEMENT_PATRIMOINE',
+  FESTIVALCINE = 'FESTIVAL_CINE',
+  FESTIVALLIVRE = 'FESTIVAL_LIVRE',
+  FESTIVALMUSIQUE = 'FESTIVAL_MUSIQUE',
+  FESTIVALSPECTACLE = 'FESTIVAL_SPECTACLE',
+  JEUENLIGNE = 'JEU_EN_LIGNE',
+  JEUSUPPORTPHYSIQUE = 'JEU_SUPPORT_PHYSIQUE',
+  LIVESTREAMEVENEMENT = 'LIVESTREAM_EVENEMENT',
+  LIVESTREAMMUSIQUE = 'LIVESTREAM_MUSIQUE',
+  LIVESTREAMPRATIQUEARTISTIQUE = 'LIVESTREAM_PRATIQUE_ARTISTIQUE',
+  LIVREAUDIOPHYSIQUE = 'LIVRE_AUDIO_PHYSIQUE',
+  LIVRENUMERIQUE = 'LIVRE_NUMERIQUE',
+  LIVREPAPIER = 'LIVRE_PAPIER',
+  LOCATIONINSTRUMENT = 'LOCATION_INSTRUMENT',
+  MATERIELARTCREATIF = 'MATERIEL_ART_CREATIF',
+  MUSEEVENTEDISTANCE = 'MUSEE_VENTE_DISTANCE',
+  OEUVREART = 'OEUVRE_ART',
+  PARTITION = 'PARTITION',
+  PLATEFORMEPRATIQUEARTISTIQUE = 'PLATEFORME_PRATIQUE_ARTISTIQUE',
+  PRATIQUEARTVENTEDISTANCE = 'PRATIQUE_ART_VENTE_DISTANCE',
+  PODCAST = 'PODCAST',
+  RENCONTREENLIGNE = 'RENCONTRE_EN_LIGNE',
+  RENCONTREJEU = 'RENCONTRE_JEU',
+  RENCONTRE = 'RENCONTRE',
+  SALON = 'SALON',
+  SEANCECINE = 'SEANCE_CINE',
+  SEANCEESSAIPRATIQUEART = 'SEANCE_ESSAI_PRATIQUE_ART',
+  SPECTACLEENREGISTRE = 'SPECTACLE_ENREGISTRE',
+  SPECTACLEREPRESENTATION = 'SPECTACLE_REPRESENTATION',
+  SPECTACLEVENTEDISTANCE = 'SPECTACLE_VENTE_DISTANCE',
+  SUPPORTPHYSIQUEFILM = 'SUPPORT_PHYSIQUE_FILM',
+  SUPPORTPHYSIQUEMUSIQUE = 'SUPPORT_PHYSIQUE_MUSIQUE',
+  TELECHARGEMENTLIVREAUDIO = 'TELECHARGEMENT_LIVRE_AUDIO',
+  TELECHARGEMENTMUSIQUE = 'TELECHARGEMENT_MUSIQUE',
+  VISITEGUIDEE = 'VISITE_GUIDEE',
+  VISITEVIRTUELLE = 'VISITE_VIRTUELLE',
+  VISITE = 'VISITE',
+  VOD = 'VOD'
+}
+/**
  * 
  * @export
  * @interface SubcategoryResponseModel
  */
 export interface SubcategoryResponseModel {
-    /**
-     * 
-     * @type {string}
-     * @memberof SubcategoryResponseModel
-     */
-    appLabel: string;
-    /**
-     * 
-     * @type {CategoryIdEnum}
-     * @memberof SubcategoryResponseModel
-     */
-    categoryId: CategoryIdEnum;
-    /**
-     * 
-     * @type {HomepageLabelNameEnum}
-     * @memberof SubcategoryResponseModel
-     */
-    homepageLabelName: HomepageLabelNameEnum;
-    /**
-     * 
-     * @type {SubcategoryIdEnum}
-     * @memberof SubcategoryResponseModel
-     */
-    id: SubcategoryIdEnum;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof SubcategoryResponseModel
-     */
-    isEvent: boolean;
-    /**
-     * 
-     * @type {OnlineOfflinePlatformChoicesEnum}
-     * @memberof SubcategoryResponseModel
-     */
-    onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum;
-    /**
-     * 
-     * @type {SearchGroupNameEnum}
-     * @memberof SubcategoryResponseModel
-     */
-    searchGroupName: SearchGroupNameEnum;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof SubcategoryResponseModel
+   */
+  appLabel: string
+  /**
+   * 
+   * @type {CategoryIdEnum}
+   * @memberof SubcategoryResponseModel
+   */
+  categoryId: CategoryIdEnum
+  /**
+   * 
+   * @type {HomepageLabelNameEnum}
+   * @memberof SubcategoryResponseModel
+   */
+  homepageLabelName: HomepageLabelNameEnum
+  /**
+   * 
+   * @type {SubcategoryIdEnum}
+   * @memberof SubcategoryResponseModel
+   */
+  id: SubcategoryIdEnum
+  /**
+   * 
+   * @type {boolean}
+   * @memberof SubcategoryResponseModel
+   */
+  isEvent: boolean
+  /**
+   * 
+   * @type {OnlineOfflinePlatformChoicesEnum}
+   * @memberof SubcategoryResponseModel
+   */
+  onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum
+  /**
+   * 
+   * @type {SearchGroupNameEnum}
+   * @memberof SubcategoryResponseModel
+   */
+  searchGroupName: SearchGroupNameEnum
+}
+/**
  * 
  * @export
  * @interface SubscriptionMessage
  */
 export interface SubscriptionMessage {
-    /**
-     * 
-     * @type {CallToActionMessage}
-     * @memberof SubscriptionMessage
-     */
-    callToAction?: CallToActionMessage | null;
-    /**
-     * 
-     * @type {PopOverIcon}
-     * @memberof SubscriptionMessage
-     */
-    popOverIcon?: PopOverIcon | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof SubscriptionMessage
-     */
-    updatedAt: Date;
-    /**
-     * 
-     * @type {string}
-     * @memberof SubscriptionMessage
-     */
-    userMessage: string;
+  /**
+   * 
+   * @type {CallToActionMessage}
+   * @memberof SubscriptionMessage
+   */
+  callToAction?: CallToActionMessage | null
+  /**
+   * 
+   * @type {PopOverIcon}
+   * @memberof SubscriptionMessage
+   */
+  popOverIcon?: PopOverIcon | null
+  /**
+   * 
+   * @type {Date}
+   * @memberof SubscriptionMessage
+   */
+  updatedAt: Date
+  /**
+   * 
+   * @type {string}
+   * @memberof SubscriptionMessage
+   */
+  userMessage: string
 }/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum SubscriptionStep {
-    EmailValidation = 'email-validation',
-    Maintenance = 'maintenance',
-    PhoneValidation = 'phone-validation',
-    ProfileCompletion = 'profile-completion',
-    IdentityCheck = 'identity-check',
-    UserProfiling = 'user-profiling',
-    HonorStatement = 'honor-statement'
-}/**
+  EmailValidation = 'email-validation',
+  Maintenance = 'maintenance',
+  PhoneValidation = 'phone-validation',
+  ProfileCompletion = 'profile-completion',
+  IdentityCheck = 'identity-check',
+  UserProfiling = 'user-profiling',
+  HonorStatement = 'honor-statement'
+}
+/**
  * 
  * @export
  * @interface UpdateEmailTokenExpiration
  */
 export interface UpdateEmailTokenExpiration {
-    /**
-     * 
-     * @type {Date}
-     * @memberof UpdateEmailTokenExpiration
-     */
-    expiration?: Date | null;
-}/**
+  /**
+   * 
+   * @type {Date}
+   * @memberof UpdateEmailTokenExpiration
+   */
+  expiration?: Date | null
+}
+/**
  * 
  * @export
  * @interface UserProfileEmailUpdate
  */
 export interface UserProfileEmailUpdate {
-    /**
-     * 
-     * @type {string}
-     * @memberof UserProfileEmailUpdate
-     */
-    email: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserProfileEmailUpdate
-     */
-    password: string;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof UserProfileEmailUpdate
+   */
+  email: string
+  /**
+   * 
+   * @type {string}
+   * @memberof UserProfileEmailUpdate
+   */
+  password: string
+}
+/**
  * 
  * @export
  * @interface UserProfileResponse
  */
 export interface UserProfileResponse {
-    /**
-     * 
-     * @type {Array<EligibilityCheckMethods>}
-     * @memberof UserProfileResponse
-     */
-    allowedEligibilityCheckMethods?: Array<EligibilityCheckMethods> | null;
-    /**
-     * 
-     * @type {{ [key: string]: number; }}
-     * @memberof UserProfileResponse
-     */
-    bookedOffers: { [key: string]: number; };
-    /**
-     * 
-     * @type {string}
-     * @memberof UserProfileResponse
-     */
-    dateOfBirth?: string | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof UserProfileResponse
-     */
-    depositExpirationDate?: Date | null;
-    /**
-     * 
-     * @type {DepositType}
-     * @memberof UserProfileResponse
-     */
-    depositType?: DepositType | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UserProfileResponse
-     */
-    depositVersion?: number | null;
-    /**
-     * 
-     * @type {DomainsCredit}
-     * @memberof UserProfileResponse
-     */
-    domainsCredit?: DomainsCredit | null;
-    /**
-     * 
-     * @type {EligibilityType}
-     * @memberof UserProfileResponse
-     */
-    eligibility?: EligibilityType | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof UserProfileResponse
-     */
-    eligibilityEndDatetime?: Date | null;
-    /**
-     * 
-     * @type {Date}
-     * @memberof UserProfileResponse
-     */
-    eligibilityStartDatetime?: Date | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserProfileResponse
-     */
-    email: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserProfileResponse
-     */
-    firstName?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserProfileResponse
-     */
-    hasCompletedIdCheck?: boolean | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UserProfileResponse
-     */
-    id: number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserProfileResponse
-     */
-    isBeneficiary: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserProfileResponse
-     */
-    isEligibleForBeneficiaryUpgrade: boolean;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserProfileResponse
-     */
-    lastName?: string | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserProfileResponse
-     */
-    needsToFillCulturalSurvey: boolean;
-    /**
-     * 
-     * @type {BeneficiaryValidationStep}
-     * @memberof UserProfileResponse
-     */
-    nextBeneficiaryValidationStep?: BeneficiaryValidationStep | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserProfileResponse
-     */
-    phoneNumber?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserProfileResponse
-     */
-    pseudo?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof UserProfileResponse
-     */
-    recreditAmountToShow?: number | null;
-    /**
-     * 
-     * @type {Array<UserRole>}
-     * @memberof UserProfileResponse
-     */
-    roles: Array<UserRole>;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof UserProfileResponse
-     */
-    showEligibleCard: boolean;
-    /**
-     * 
-     * @type {SubscriptionMessage}
-     * @memberof UserProfileResponse
-     */
-    subscriptionMessage?: SubscriptionMessage | null;
-    /**
-     * 
-     * @type {NotificationSubscriptions}
-     * @memberof UserProfileResponse
-     */
-    subscriptions: NotificationSubscriptions;
-}/**
+  /**
+   * 
+   * @type {Array<EligibilityCheckMethods>}
+   * @memberof UserProfileResponse
+   */
+  allowedEligibilityCheckMethods?: Array<EligibilityCheckMethods> | null
+  /**
+   * 
+   * @type {{ [key: string]: number; }}
+   * @memberof UserProfileResponse
+   */
+  bookedOffers: { [key: string]: number; }
+  /**
+   * 
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  dateOfBirth?: string | null
+  /**
+   * 
+   * @type {Date}
+   * @memberof UserProfileResponse
+   */
+  depositExpirationDate?: Date | null
+  /**
+   * 
+   * @type {DepositType}
+   * @memberof UserProfileResponse
+   */
+  depositType?: DepositType | null
+  /**
+   * 
+   * @type {number}
+   * @memberof UserProfileResponse
+   */
+  depositVersion?: number | null
+  /**
+   * 
+   * @type {DomainsCredit}
+   * @memberof UserProfileResponse
+   */
+  domainsCredit?: DomainsCredit | null
+  /**
+   * 
+   * @type {EligibilityType}
+   * @memberof UserProfileResponse
+   */
+  eligibility?: EligibilityType | null
+  /**
+   * 
+   * @type {Date}
+   * @memberof UserProfileResponse
+   */
+  eligibilityEndDatetime?: Date | null
+  /**
+   * 
+   * @type {Date}
+   * @memberof UserProfileResponse
+   */
+  eligibilityStartDatetime?: Date | null
+  /**
+   * 
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  email: string
+  /**
+   * 
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  firstName?: string | null
+  /**
+   * 
+   * @type {boolean}
+   * @memberof UserProfileResponse
+   */
+  hasCompletedIdCheck?: boolean | null
+  /**
+   * 
+   * @type {number}
+   * @memberof UserProfileResponse
+   */
+  id: number
+  /**
+   * 
+   * @type {boolean}
+   * @memberof UserProfileResponse
+   */
+  isBeneficiary: boolean
+  /**
+   * 
+   * @type {boolean}
+   * @memberof UserProfileResponse
+   */
+  isEligibleForBeneficiaryUpgrade: boolean
+  /**
+   * 
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  lastName?: string | null
+  /**
+   * 
+   * @type {boolean}
+   * @memberof UserProfileResponse
+   */
+  needsToFillCulturalSurvey: boolean
+  /**
+   * 
+   * @type {BeneficiaryValidationStep}
+   * @memberof UserProfileResponse
+   */
+  nextBeneficiaryValidationStep?: BeneficiaryValidationStep | null
+  /**
+   * 
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  phoneNumber?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof UserProfileResponse
+   */
+  pseudo?: string | null
+  /**
+   * 
+   * @type {number}
+   * @memberof UserProfileResponse
+   */
+  recreditAmountToShow?: number | null
+  /**
+   * 
+   * @type {Array<UserRole>}
+   * @memberof UserProfileResponse
+   */
+  roles: Array<UserRole>
+  /**
+   * 
+   * @type {boolean}
+   * @memberof UserProfileResponse
+   */
+  showEligibleCard: boolean
+  /**
+   * 
+   * @type {SubscriptionMessage}
+   * @memberof UserProfileResponse
+   */
+  subscriptionMessage?: SubscriptionMessage | null
+  /**
+   * 
+   * @type {NotificationSubscriptions}
+   * @memberof UserProfileResponse
+   */
+  subscriptions: NotificationSubscriptions
+}
+/**
  * 
  * @export
  * @interface UserProfileUpdateRequest
  */
 export interface UserProfileUpdateRequest {
-    /**
-     * 
-     * @type {NotificationSubscriptions}
-     * @memberof UserProfileUpdateRequest
-     */
-    subscriptions?: NotificationSubscriptions | null;
-}/**
+  /**
+   * 
+   * @type {NotificationSubscriptions}
+   * @memberof UserProfileUpdateRequest
+   */
+  subscriptions?: NotificationSubscriptions | null
+}
+/**
  * 
  * @export
  * @interface UserProfilingFraudRequest
  */
 export interface UserProfilingFraudRequest {
-    /**
-     * 
-     * @type {AgentType}
-     * @memberof UserProfilingFraudRequest
-     */
-    agentType?: AgentType | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserProfilingFraudRequest
-     */
-    sessionId?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof UserProfilingFraudRequest
-     */
-    session_id?: string | null;
-}/**
+  /**
+   * 
+   * @type {AgentType}
+   * @memberof UserProfilingFraudRequest
+   */
+  agentType?: AgentType | null
+  /**
+   * 
+   * @type {string}
+   * @memberof UserProfilingFraudRequest
+   */
+  sessionId?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof UserProfilingFraudRequest
+   */
+  session_id?: string | null
+}
+/**
  * 
  * @export
  * @interface UserProfilingSessionIdResponse
  */
 export interface UserProfilingSessionIdResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof UserProfilingSessionIdResponse
-     */
-    sessionId: string;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof UserProfilingSessionIdResponse
+   */
+  sessionId: string
+}
+/**
  * 
  * @export
  * @interface UserReportedOffersResponse
  */
 export interface UserReportedOffersResponse {
-    /**
-     * 
-     * @type {Array<ReportedOffer>}
-     * @memberof UserReportedOffersResponse
-     */
-    reportedOffers: Array<ReportedOffer>;
+  /**
+   * 
+   * @type {Array<ReportedOffer>}
+   * @memberof UserReportedOffersResponse
+   */
+  reportedOffers: Array<ReportedOffer>
 }/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum UserRole {
-    ADMIN = 'ADMIN',
-    BENEFICIARY = 'BENEFICIARY',
-    PRO = 'PRO',
-    JOUVE = 'JOUVE',
-    UNDERAGEBENEFICIARY = 'UNDERAGE_BENEFICIARY'
-}/**
+  ADMIN = 'ADMIN',
+  BENEFICIARY = 'BENEFICIARY',
+  PRO = 'PRO',
+  JOUVE = 'JOUVE',
+  UNDERAGEBENEFICIARY = 'UNDERAGE_BENEFICIARY'
+}
+/**
  * 
  * @export
  * @interface ValidateEmailRequest
  */
 export interface ValidateEmailRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof ValidateEmailRequest
-     */
-    emailValidationToken: string;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof ValidateEmailRequest
+   */
+  emailValidationToken: string
+}
+/**
  * 
  * @export
  * @interface ValidateEmailResponse
  */
 export interface ValidateEmailResponse {
-    /**
-     * 
-     * @type {string}
-     * @memberof ValidateEmailResponse
-     */
-    accessToken: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof ValidateEmailResponse
-     */
-    refreshToken: string;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof ValidateEmailResponse
+   */
+  accessToken: string
+  /**
+   * 
+   * @type {string}
+   * @memberof ValidateEmailResponse
+   */
+  refreshToken: string
+}
+/**
  * 
  * @export
  * @interface ValidatePhoneNumberRequest
  */
 export interface ValidatePhoneNumberRequest {
-    /**
-     * 
-     * @type {string}
-     * @memberof ValidatePhoneNumberRequest
-     */
-    code: string;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof ValidatePhoneNumberRequest
+   */
+  code: string
+}
+/**
  * 
  * @export
  * @interface VenueAccessibilityModel
  */
 export interface VenueAccessibilityModel {
-    /**
-     * 
-     * @type {boolean}
-     * @memberof VenueAccessibilityModel
-     */
-    audioDisability?: boolean | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof VenueAccessibilityModel
-     */
-    mentalDisability?: boolean | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof VenueAccessibilityModel
-     */
-    motorDisability?: boolean | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof VenueAccessibilityModel
-     */
-    visualDisability?: boolean | null;
-}/**
+  /**
+   * 
+   * @type {boolean}
+   * @memberof VenueAccessibilityModel
+   */
+  audioDisability?: boolean | null
+  /**
+   * 
+   * @type {boolean}
+   * @memberof VenueAccessibilityModel
+   */
+  mentalDisability?: boolean | null
+  /**
+   * 
+   * @type {boolean}
+   * @memberof VenueAccessibilityModel
+   */
+  motorDisability?: boolean | null
+  /**
+   * 
+   * @type {boolean}
+   * @memberof VenueAccessibilityModel
+   */
+  visualDisability?: boolean | null
+}
+/**
  * 
  * @export
  * @interface VenueContactModel
  */
 export interface VenueContactModel {
-    /**
-     * 
-     * @type {string}
-     * @memberof VenueContactModel
-     */
-    email?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof VenueContactModel
-     */
-    phoneNumber?: string;
-    /**
-     * 
-     * @type {{ [key: string]: string; }}
-     * @memberof VenueContactModel
-     */
-    socialMedias?: { [key: string]: string; };
-    /**
-     * 
-     * @type {string}
-     * @memberof VenueContactModel
-     */
-    website?: string;
-}/**
+  /**
+   * 
+   * @type {string}
+   * @memberof VenueContactModel
+   */
+  email?: string
+  /**
+   * 
+   * @type {string}
+   * @memberof VenueContactModel
+   */
+  phoneNumber?: string
+  /**
+   * 
+   * @type {{ [key: string]: string; }}
+   * @memberof VenueContactModel
+   */
+  socialMedias?: { [key: string]: string; }
+  /**
+   * 
+   * @type {string}
+   * @memberof VenueContactModel
+   */
+  website?: string
+}
+/**
  * 
  * @export
  * @interface VenueResponse
  */
 export interface VenueResponse {
-    /**
-     * 
-     * @type {VenueAccessibilityModel}
-     * @memberof VenueResponse
-     */
-    accessibility: VenueAccessibilityModel;
-    /**
-     * 
-     * @type {string}
-     * @memberof VenueResponse
-     */
-    address?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof VenueResponse
-     */
-    city?: string | null;
-    /**
-     * 
-     * @type {VenueContactModel}
-     * @memberof VenueResponse
-     */
-    contact?: VenueContactModel | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof VenueResponse
-     */
-    description?: string | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof VenueResponse
-     */
-    id: number;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof VenueResponse
-     */
-    isPermanent?: boolean | null;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof VenueResponse
-     */
-    isVirtual: boolean;
-    /**
-     * 
-     * @type {number}
-     * @memberof VenueResponse
-     */
-    latitude?: number | null;
-    /**
-     * 
-     * @type {number}
-     * @memberof VenueResponse
-     */
-    longitude?: number | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof VenueResponse
-     */
-    name: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof VenueResponse
-     */
-    postalCode?: string | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof VenueResponse
-     */
-    publicName?: string | null;
-    /**
-     * 
-     * @type {VenueTypeCodeKey}
-     * @memberof VenueResponse
-     */
-    venueTypeCode?: VenueTypeCodeKey | null;
-    /**
-     * 
-     * @type {string}
-     * @memberof VenueResponse
-     */
-    withdrawalDetails?: string | null;
+  /**
+   * 
+   * @type {VenueAccessibilityModel}
+   * @memberof VenueResponse
+   */
+  accessibility: VenueAccessibilityModel
+  /**
+   * 
+   * @type {string}
+   * @memberof VenueResponse
+   */
+  address?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof VenueResponse
+   */
+  city?: string | null
+  /**
+   * 
+   * @type {VenueContactModel}
+   * @memberof VenueResponse
+   */
+  contact?: VenueContactModel | null
+  /**
+   * 
+   * @type {string}
+   * @memberof VenueResponse
+   */
+  description?: string | null
+  /**
+   * 
+   * @type {number}
+   * @memberof VenueResponse
+   */
+  id: number
+  /**
+   * 
+   * @type {boolean}
+   * @memberof VenueResponse
+   */
+  isPermanent?: boolean | null
+  /**
+   * 
+   * @type {boolean}
+   * @memberof VenueResponse
+   */
+  isVirtual: boolean
+  /**
+   * 
+   * @type {number}
+   * @memberof VenueResponse
+   */
+  latitude?: number | null
+  /**
+   * 
+   * @type {number}
+   * @memberof VenueResponse
+   */
+  longitude?: number | null
+  /**
+   * 
+   * @type {string}
+   * @memberof VenueResponse
+   */
+  name: string
+  /**
+   * 
+   * @type {string}
+   * @memberof VenueResponse
+   */
+  postalCode?: string | null
+  /**
+   * 
+   * @type {string}
+   * @memberof VenueResponse
+   */
+  publicName?: string | null
+  /**
+   * 
+   * @type {VenueTypeCodeKey}
+   * @memberof VenueResponse
+   */
+  venueTypeCode?: VenueTypeCodeKey | null
+  /**
+   * 
+   * @type {string}
+   * @memberof VenueResponse
+   */
+  withdrawalDetails?: string | null
 }/**
  * An enumeration.
  * @export
  * @enum {string}
  */
 export enum VenueTypeCodeKey {
-    VISUALARTS = 'VISUAL_ARTS',
-    CULTURALCENTRE = 'CULTURAL_CENTRE',
-    ARTISTICCOURSE = 'ARTISTIC_COURSE',
-    SCIENTIFICCULTURE = 'SCIENTIFIC_CULTURE',
-    FESTIVAL = 'FESTIVAL',
-    GAMES = 'GAMES',
-    BOOKSTORE = 'BOOKSTORE',
-    LIBRARY = 'LIBRARY',
-    MUSEUM = 'MUSEUM',
-    RECORDSTORE = 'RECORD_STORE',
-    MUSICALINSTRUMENTSTORE = 'MUSICAL_INSTRUMENT_STORE',
-    CONCERTHALL = 'CONCERT_HALL',
-    DIGITAL = 'DIGITAL',
-    PATRIMONYTOURISM = 'PATRIMONY_TOURISM',
-    MOVIE = 'MOVIE',
-    PERFORMINGARTS = 'PERFORMING_ARTS',
-    CREATIVEARTSSTORE = 'CREATIVE_ARTS_STORE',
-    OTHER = 'OTHER'
+  VISUALARTS = 'VISUAL_ARTS',
+  CULTURALCENTRE = 'CULTURAL_CENTRE',
+  ARTISTICCOURSE = 'ARTISTIC_COURSE',
+  SCIENTIFICCULTURE = 'SCIENTIFIC_CULTURE',
+  FESTIVAL = 'FESTIVAL',
+  GAMES = 'GAMES',
+  BOOKSTORE = 'BOOKSTORE',
+  LIBRARY = 'LIBRARY',
+  MUSEUM = 'MUSEUM',
+  RECORDSTORE = 'RECORD_STORE',
+  MUSICALINSTRUMENTSTORE = 'MUSICAL_INSTRUMENT_STORE',
+  CONCERTHALL = 'CONCERT_HALL',
+  DIGITAL = 'DIGITAL',
+  PATRIMONYTOURISM = 'PATRIMONY_TOURISM',
+  MOVIE = 'MOVIE',
+  PERFORMINGARTS = 'PERFORMING_ARTS',
+  CREATIVEARTSSTORE = 'CREATIVE_ARTS_STORE',
+  OTHER = 'OTHER'
 }
 /**
  * DefaultApi - fetch parameter creator
  */
 const DefaultApiFetchParamCreator = function () {
-    return {
-        /**
-         * 
-         * @summary delete_favorite <DELETE>
-         * @param {number} favorite_id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async deletenativev1mefavoritesfavoriteId(favorite_id: number, options: any = {}): Promise<FetchArgs> {
-            // verify required parameter 'favorite_id' is not null or undefined
-            if (favorite_id === null || favorite_id === undefined) {
-                throw new RequiredError('favorite_id','Required parameter favorite_id was null or undefined when calling deletenativev1mefavoritesfavoriteId.');
-            }
-            const localVarPath = `/native/v1/me/favorites/{favorite_id}`
-                .replace(`{${"favorite_id"}}`, encodeURIComponent(String(favorite_id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary get_bookings <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1bookings(options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/bookings`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary get_id_check_token <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1idCheckToken(options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/id_check_token`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary get_user_profile <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1me(options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/me`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary get_favorites <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1mefavorites(options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/me/favorites`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary get_favorites_count <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1mefavoritescount(options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/me/favorites/count`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary get_offer <GET>
-         * @param {number} offer_id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1offerofferId(offer_id: number, options: any = {}): Promise<FetchArgs> {
-            // verify required parameter 'offer_id' is not null or undefined
-            if (offer_id === null || offer_id === undefined) {
-                throw new RequiredError('offer_id','Required parameter offer_id was null or undefined when calling getnativev1offerofferId.');
-            }
-            const localVarPath = `/native/v1/offer/{offer_id}`
-                .replace(`{${"offer_id"}}`, encodeURIComponent(String(offer_id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary report_offer_reasons <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1offerreportreasons(options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/offer/report/reasons`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary user_reported_offers <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1offersreports(options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/offers/reports`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary get_email_update_token_expiration_date <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1profiletokenExpiration(options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/profile/token_expiration`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary get_settings <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1settings(options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/settings`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary get_subcategories <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1subcategories(options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/subcategories`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary next_subscription_step <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1subscriptionnextStep(options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/subscription/next_step`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary get_profile_options <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1subscriptionprofileOptions(options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/subscription/profile_options`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary Generate a unique hash which will be used as an identifier for user profiling
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1userProfilingsessionId(options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/user_profiling/session_id`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary get_venue <GET>
-         * @param {number} venue_id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1venuevenueId(venue_id: number, options: any = {}): Promise<FetchArgs> {
-            // verify required parameter 'venue_id' is not null or undefined
-            if (venue_id === null || venue_id === undefined) {
-                throw new RequiredError('venue_id','Required parameter venue_id was null or undefined when calling getnativev1venuevenueId.');
-            }
-            const localVarPath = `/native/v1/venue/{venue_id}`
-                .replace(`{${"venue_id"}}`, encodeURIComponent(String(venue_id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary update_beneficiary_mandatory_information <PATCH>
-         * @param {BeneficiaryInformationUpdateRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async patchnativev1beneficiaryInformation(body?: BeneficiaryInformationUpdateRequest, options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/beneficiary_information`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"BeneficiaryInformationUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary create_account <POST>
-         * @param {AccountRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1account(body?: AccountRequest, options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/account`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"AccountRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary has_completed_id_check <POST>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1accounthasCompletedIdCheck(options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/account/has_completed_id_check`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary suspend_account <POST>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1accountsuspend(options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/account/suspend`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary book_offer <POST>
-         * @param {BookOfferRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1bookings(body?: BookOfferRequest, options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/bookings`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"BookOfferRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary cancel_booking <POST>
-         * @param {number} booking_id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1bookingsbookingIdcancel(booking_id: number, options: any = {}): Promise<FetchArgs> {
-            // verify required parameter 'booking_id' is not null or undefined
-            if (booking_id === null || booking_id === undefined) {
-                throw new RequiredError('booking_id','Required parameter booking_id was null or undefined when calling postnativev1bookingsbookingIdcancel.');
-            }
-            const localVarPath = `/native/v1/bookings/{booking_id}/cancel`
-                .replace(`{${"booking_id"}}`, encodeURIComponent(String(booking_id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary flag_booking_as_used <POST>
-         * @param {number} booking_id 
-         * @param {BookingDisplayStatusRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1bookingsbookingIdtoggleDisplay(booking_id: number, body?: BookingDisplayStatusRequest, options: any = {}): Promise<FetchArgs> {
-            // verify required parameter 'booking_id' is not null or undefined
-            if (booking_id === null || booking_id === undefined) {
-                throw new RequiredError('booking_id','Required parameter booking_id was null or undefined when calling postnativev1bookingsbookingIdtoggleDisplay.');
-            }
-            const localVarPath = `/native/v1/bookings/{booking_id}/toggle_display`
-                .replace(`{${"booking_id"}}`, encodeURIComponent(String(booking_id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"BookingDisplayStatusRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary change_password <POST>
-         * @param {ChangePasswordRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1changePassword(body?: ChangePasswordRequest, options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/change_password`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"ChangePasswordRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary upload_identity_document <POST>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1identityDocument(options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/identity_document`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary update_cultural_survey <POST>
-         * @param {CulturalSurveyRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1meculturalSurvey(body?: CulturalSurveyRequest, options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/me/cultural_survey`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"CulturalSurveyRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary create_favorite <POST>
-         * @param {FavoriteRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1mefavorites(body?: FavoriteRequest, options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/me/favorites`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"FavoriteRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary report_offer <POST>
-         * @param {number} offer_id 
-         * @param {OfferReportRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1offerofferIdreport(offer_id: number, body?: OfferReportRequest, options: any = {}): Promise<FetchArgs> {
-            // verify required parameter 'offer_id' is not null or undefined
-            if (offer_id === null || offer_id === undefined) {
-                throw new RequiredError('offer_id','Required parameter offer_id was null or undefined when calling postnativev1offerofferIdreport.');
-            }
-            const localVarPath = `/native/v1/offer/{offer_id}/report`
-                .replace(`{${"offer_id"}}`, encodeURIComponent(String(offer_id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"OfferReportRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary update_user_profile <POST>
-         * @param {UserProfileUpdateRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1profile(body?: UserProfileUpdateRequest, options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/profile`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"UserProfileUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary update_user_email <POST>
-         * @param {UserProfileEmailUpdate} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1profileupdateEmail(body?: UserProfileEmailUpdate, options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/profile/update_email`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"UserProfileEmailUpdate" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary refresh <POST>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1refreshAccessToken(options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/refresh_access_token`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary request_password_reset <POST>
-         * @param {RequestPasswordResetRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1requestPasswordReset(body?: RequestPasswordResetRequest, options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/request_password_reset`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"RequestPasswordResetRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary resend_email_validation <POST>
-         * @param {ResendEmailValidationRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1resendEmailValidation(body?: ResendEmailValidationRequest, options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/resend_email_validation`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"ResendEmailValidationRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary reset_password <POST>
-         * @param {ResetPasswordRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1resetPassword(body?: ResetPasswordRequest, options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/reset_password`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"ResetPasswordRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary reset_recredit_amount_to_show <POST>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1resetRecreditAmountToShow(options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/reset_recredit_amount_to_show`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary send_offer_link_by_push <POST>
-         * @param {number} offer_id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1sendOfferLinkByPushofferId(offer_id: number, options: any = {}): Promise<FetchArgs> {
-            // verify required parameter 'offer_id' is not null or undefined
-            if (offer_id === null || offer_id === undefined) {
-                throw new RequiredError('offer_id','Required parameter offer_id was null or undefined when calling postnativev1sendOfferLinkByPushofferId.');
-            }
-            const localVarPath = `/native/v1/send_offer_link_by_push/{offer_id}`
-                .replace(`{${"offer_id"}}`, encodeURIComponent(String(offer_id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * give them webapp link.
-         * @summary On iOS native app, users cannot book numeric offers with price > 0, so
-         * @param {number} offer_id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1sendOfferWebappLinkByEmailofferId(offer_id: number, options: any = {}): Promise<FetchArgs> {
-            // verify required parameter 'offer_id' is not null or undefined
-            if (offer_id === null || offer_id === undefined) {
-                throw new RequiredError('offer_id','Required parameter offer_id was null or undefined when calling postnativev1sendOfferWebappLinkByEmailofferId.');
-            }
-            const localVarPath = `/native/v1/send_offer_webapp_link_by_email/{offer_id}`
-                .replace(`{${"offer_id"}}`, encodeURIComponent(String(offer_id)));
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary send_phone_validation_code <POST>
-         * @param {SendPhoneValidationRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1sendPhoneValidationCode(body?: SendPhoneValidationRequest, options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/send_phone_validation_code`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"SendPhoneValidationRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary signin <POST>
-         * @param {SigninRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1signin(body?: SigninRequest, options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/signin`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"SigninRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary create_honor_statement_fraud_check <POST>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1subscriptionhonorStatement(options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/subscription/honor_statement`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary update_profile <POST>
-         * @param {ProfileUpdateRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1subscriptionprofile(body?: ProfileUpdateRequest, options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/subscription/profile`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"ProfileUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary start_identification_session <POST>
-         * @param {IdentificationSessionRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1ubbleIdentification(body?: IdentificationSessionRequest, options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/ubble_identification`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"IdentificationSessionRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary profiling_fraud_score <POST>
-         * @param {UserProfilingFraudRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1userProfiling(body?: UserProfilingFraudRequest, options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/user_profiling`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"UserProfilingFraudRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary validate_email <POST>
-         * @param {ValidateEmailRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1validateEmail(body?: ValidateEmailRequest, options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/validate_email`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"ValidateEmailRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary validate_phone_number <POST>
-         * @param {ValidatePhoneNumberRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1validatePhoneNumber(body?: ValidatePhoneNumberRequest, options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/validate_phone_number`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            // authentication JWTAuth required
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"ValidatePhoneNumberRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 
-         * @summary validate_user_email <PUT>
-         * @param {ChangeBeneficiaryEmailBody} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async putnativev1profilevalidateEmail(body?: ChangeBeneficiaryEmailBody, options: any = {}): Promise<FetchArgs> {
-            const localVarPath = `/native/v1/profile/validate_email`;
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: 'PUT' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-            const needsSerialization = (<any>"ChangeBeneficiaryEmailBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
+  return {
+    /**
+     * 
+     * @summary delete_favorite <DELETE>
+     * @param {number} favorite_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deletenativev1mefavoritesfavoriteId(favorite_id: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'favorite_id' is not null or undefined
+      if (favorite_id === null || favorite_id === undefined) {
+        throw new RequiredError('favorite_id','Required parameter favorite_id was null or undefined when calling deletenativev1mefavoritesfavoriteId.');
+      }
+      const localVarPath = `/native/v1/me/favorites/{favorite_id}`
+        .replace(`{${"favorite_id"}}`, encodeURIComponent(String(favorite_id)));
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary get_bookings <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1bookings(options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/bookings`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary get_id_check_token <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1idCheckToken(options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/id_check_token`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary get_user_profile <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1me(options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/me`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary get_favorites <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1mefavorites(options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/me/favorites`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary get_favorites_count <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1mefavoritescount(options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/me/favorites/count`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary get_offer <GET>
+     * @param {number} offer_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1offerofferId(offer_id: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'offer_id' is not null or undefined
+      if (offer_id === null || offer_id === undefined) {
+        throw new RequiredError('offer_id','Required parameter offer_id was null or undefined when calling getnativev1offerofferId.');
+      }
+      const localVarPath = `/native/v1/offer/{offer_id}`
+        .replace(`{${"offer_id"}}`, encodeURIComponent(String(offer_id)));
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary report_offer_reasons <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1offerreportreasons(options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/offer/report/reasons`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary user_reported_offers <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1offersreports(options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/offers/reports`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary get_email_update_token_expiration_date <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1profiletokenExpiration(options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/profile/token_expiration`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary get_settings <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1settings(options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/settings`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary get_subcategories <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1subcategories(options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/subcategories`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary next_subscription_step <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1subscriptionnextStep(options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/subscription/next_step`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary get_profile_options <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1subscriptionprofileOptions(options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/subscription/profile_options`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary Generate a unique hash which will be used as an identifier for user profiling
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1userProfilingsessionId(options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/user_profiling/session_id`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary get_venue <GET>
+     * @param {number} venue_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1venuevenueId(venue_id: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'venue_id' is not null or undefined
+      if (venue_id === null || venue_id === undefined) {
+        throw new RequiredError('venue_id','Required parameter venue_id was null or undefined when calling getnativev1venuevenueId.');
+      }
+      const localVarPath = `/native/v1/venue/{venue_id}`
+        .replace(`{${"venue_id"}}`, encodeURIComponent(String(venue_id)));
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary update_beneficiary_mandatory_information <PATCH>
+     * @param {BeneficiaryInformationUpdateRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async patchnativev1beneficiaryInformation(body?: BeneficiaryInformationUpdateRequest, options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/beneficiary_information`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization = (<any>"BeneficiaryInformationUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary create_account <POST>
+     * @param {AccountRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1account(body?: AccountRequest, options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/account`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization = (<any>"AccountRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary has_completed_id_check <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1accounthasCompletedIdCheck(options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/account/has_completed_id_check`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary suspend_account <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1accountsuspend(options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/account/suspend`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary book_offer <POST>
+     * @param {BookOfferRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1bookings(body?: BookOfferRequest, options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/bookings`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization = (<any>"BookOfferRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary cancel_booking <POST>
+     * @param {number} booking_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1bookingsbookingIdcancel(booking_id: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'booking_id' is not null or undefined
+      if (booking_id === null || booking_id === undefined) {
+        throw new RequiredError('booking_id','Required parameter booking_id was null or undefined when calling postnativev1bookingsbookingIdcancel.');
+      }
+      const localVarPath = `/native/v1/bookings/{booking_id}/cancel`
+        .replace(`{${"booking_id"}}`, encodeURIComponent(String(booking_id)));
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary flag_booking_as_used <POST>
+     * @param {number} booking_id 
+     * @param {BookingDisplayStatusRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1bookingsbookingIdtoggleDisplay(booking_id: number, body?: BookingDisplayStatusRequest, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'booking_id' is not null or undefined
+      if (booking_id === null || booking_id === undefined) {
+        throw new RequiredError('booking_id','Required parameter booking_id was null or undefined when calling postnativev1bookingsbookingIdtoggleDisplay.');
+      }
+      const localVarPath = `/native/v1/bookings/{booking_id}/toggle_display`
+        .replace(`{${"booking_id"}}`, encodeURIComponent(String(booking_id)));
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization = (<any>"BookingDisplayStatusRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary change_password <POST>
+     * @param {ChangePasswordRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1changePassword(body?: ChangePasswordRequest, options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/change_password`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization = (<any>"ChangePasswordRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary upload_identity_document <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1identityDocument(options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/identity_document`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary update_cultural_survey <POST>
+     * @param {CulturalSurveyRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1meculturalSurvey(body?: CulturalSurveyRequest, options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/me/cultural_survey`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization = (<any>"CulturalSurveyRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary create_favorite <POST>
+     * @param {FavoriteRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1mefavorites(body?: FavoriteRequest, options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/me/favorites`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization = (<any>"FavoriteRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary report_offer <POST>
+     * @param {number} offer_id 
+     * @param {OfferReportRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1offerofferIdreport(offer_id: number, body?: OfferReportRequest, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'offer_id' is not null or undefined
+      if (offer_id === null || offer_id === undefined) {
+        throw new RequiredError('offer_id','Required parameter offer_id was null or undefined when calling postnativev1offerofferIdreport.');
+      }
+      const localVarPath = `/native/v1/offer/{offer_id}/report`
+        .replace(`{${"offer_id"}}`, encodeURIComponent(String(offer_id)));
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization = (<any>"OfferReportRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary update_user_profile <POST>
+     * @param {UserProfileUpdateRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1profile(body?: UserProfileUpdateRequest, options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/profile`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization = (<any>"UserProfileUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary update_user_email <POST>
+     * @param {UserProfileEmailUpdate} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1profileupdateEmail(body?: UserProfileEmailUpdate, options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/profile/update_email`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization = (<any>"UserProfileEmailUpdate" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary refresh <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1refreshAccessToken(options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/refresh_access_token`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary request_password_reset <POST>
+     * @param {RequestPasswordResetRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1requestPasswordReset(body?: RequestPasswordResetRequest, options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/request_password_reset`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization = (<any>"RequestPasswordResetRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary resend_email_validation <POST>
+     * @param {ResendEmailValidationRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1resendEmailValidation(body?: ResendEmailValidationRequest, options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/resend_email_validation`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization = (<any>"ResendEmailValidationRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary reset_password <POST>
+     * @param {ResetPasswordRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1resetPassword(body?: ResetPasswordRequest, options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/reset_password`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization = (<any>"ResetPasswordRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary reset_recredit_amount_to_show <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1resetRecreditAmountToShow(options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/reset_recredit_amount_to_show`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary send_offer_link_by_push <POST>
+     * @param {number} offer_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1sendOfferLinkByPushofferId(offer_id: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'offer_id' is not null or undefined
+      if (offer_id === null || offer_id === undefined) {
+        throw new RequiredError('offer_id','Required parameter offer_id was null or undefined when calling postnativev1sendOfferLinkByPushofferId.');
+      }
+      const localVarPath = `/native/v1/send_offer_link_by_push/{offer_id}`
+        .replace(`{${"offer_id"}}`, encodeURIComponent(String(offer_id)));
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * give them webapp link.
+     * @summary On iOS native app, users cannot book numeric offers with price > 0, so
+     * @param {number} offer_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1sendOfferWebappLinkByEmailofferId(offer_id: number, options: any = {}): Promise<FetchArgs> {
+      // verify required parameter 'offer_id' is not null or undefined
+      if (offer_id === null || offer_id === undefined) {
+        throw new RequiredError('offer_id','Required parameter offer_id was null or undefined when calling postnativev1sendOfferWebappLinkByEmailofferId.');
+      }
+      const localVarPath = `/native/v1/send_offer_webapp_link_by_email/{offer_id}`
+        .replace(`{${"offer_id"}}`, encodeURIComponent(String(offer_id)));
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary send_phone_validation_code <POST>
+     * @param {SendPhoneValidationRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1sendPhoneValidationCode(body?: SendPhoneValidationRequest, options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/send_phone_validation_code`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization = (<any>"SendPhoneValidationRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary signin <POST>
+     * @param {SigninRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1signin(body?: SigninRequest, options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/signin`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization = (<any>"SigninRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary create_honor_statement_fraud_check <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1subscriptionhonorStatement(options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/subscription/honor_statement`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary update_profile <POST>
+     * @param {ProfileUpdateRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1subscriptionprofile(body?: ProfileUpdateRequest, options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/subscription/profile`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization = (<any>"ProfileUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary start_identification_session <POST>
+     * @param {IdentificationSessionRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1ubbleIdentification(body?: IdentificationSessionRequest, options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/ubble_identification`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization = (<any>"IdentificationSessionRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary profiling_fraud_score <POST>
+     * @param {UserProfilingFraudRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1userProfiling(body?: UserProfilingFraudRequest, options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/user_profiling`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization = (<any>"UserProfilingFraudRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary validate_email <POST>
+     * @param {ValidateEmailRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1validateEmail(body?: ValidateEmailRequest, options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/validate_email`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization = (<any>"ValidateEmailRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary validate_phone_number <POST>
+     * @param {ValidatePhoneNumberRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1validatePhoneNumber(body?: ValidatePhoneNumberRequest, options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/validate_phone_number`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      // authentication JWTAuth required
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization = (<any>"ValidatePhoneNumberRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+    /**
+     * 
+     * @summary validate_user_email <PUT>
+     * @param {ChangeBeneficiaryEmailBody} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async putnativev1profilevalidateEmail(body?: ChangeBeneficiaryEmailBody, options: any = {}): Promise<FetchArgs> {
+      const localVarPath = `/native/v1/profile/validate_email`;
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: 'PUT' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+      const needsSerialization = (<any>"ChangeBeneficiaryEmailBody" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "");
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  }
 };
 
 /**
  * DefaultApi - functional programming interface
  */
-const DefaultApiFp = function(api: DefaultApi, configuration?: Configuration) {
-    return {
-        /**
-         * 
-         * @summary delete_favorite <DELETE>
-         * @param {number} favorite_id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async deletenativev1mefavoritesfavoriteId(basePath: string, favorite_id: number, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).deletenativev1mefavoritesfavoriteId(favorite_id, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary get_bookings <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1bookings(basePath: string, options?: any): Promise<BookingsResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1bookings(options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary get_id_check_token <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1idCheckToken(basePath: string, options?: any): Promise<GetIdCheckTokenResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1idCheckToken(options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary get_user_profile <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1me(basePath: string, options?: any): Promise<UserProfileResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1me(options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary get_favorites <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1mefavorites(basePath: string, options?: any): Promise<PaginatedFavoritesResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1mefavorites(options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary get_favorites_count <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1mefavoritescount(basePath: string, options?: any): Promise<FavoritesCountResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1mefavoritescount(options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary get_offer <GET>
-         * @param {number} offer_id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1offerofferId(basePath: string, offer_id: number, options?: any): Promise<OfferResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1offerofferId(offer_id, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary report_offer_reasons <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1offerreportreasons(basePath: string, options?: any): Promise<OfferReportReasons> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1offerreportreasons(options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary user_reported_offers <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1offersreports(basePath: string, options?: any): Promise<UserReportedOffersResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1offersreports(options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary get_email_update_token_expiration_date <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1profiletokenExpiration(basePath: string, options?: any): Promise<UpdateEmailTokenExpiration> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1profiletokenExpiration(options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary get_settings <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1settings(basePath: string, options?: any): Promise<SettingsResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1settings(options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary get_subcategories <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1subcategories(basePath: string, options?: any): Promise<SubcategoriesResponseModel> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1subcategories(options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary next_subscription_step <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1subscriptionnextStep(basePath: string, options?: any): Promise<NextSubscriptionStepResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1subscriptionnextStep(options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary get_profile_options <GET>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1subscriptionprofileOptions(basePath: string, options?: any): Promise<ProfileOptionsResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1subscriptionprofileOptions(options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary Generate a unique hash which will be used as an identifier for user profiling
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1userProfilingsessionId(basePath: string, options?: any): Promise<UserProfilingSessionIdResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1userProfilingsessionId(options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary get_venue <GET>
-         * @param {number} venue_id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async getnativev1venuevenueId(basePath: string, venue_id: number, options?: any): Promise<VenueResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1venuevenueId(venue_id, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary update_beneficiary_mandatory_information <PATCH>
-         * @param {BeneficiaryInformationUpdateRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async patchnativev1beneficiaryInformation(basePath: string, body?: BeneficiaryInformationUpdateRequest, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).patchnativev1beneficiaryInformation(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary create_account <POST>
-         * @param {AccountRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1account(basePath: string, body?: AccountRequest, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1account(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary has_completed_id_check <POST>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1accounthasCompletedIdCheck(basePath: string, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1accounthasCompletedIdCheck(options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary suspend_account <POST>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1accountsuspend(basePath: string, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1accountsuspend(options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary book_offer <POST>
-         * @param {BookOfferRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1bookings(basePath: string, body?: BookOfferRequest, options?: any): Promise<BookOfferResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1bookings(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary cancel_booking <POST>
-         * @param {number} booking_id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1bookingsbookingIdcancel(basePath: string, booking_id: number, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1bookingsbookingIdcancel(booking_id, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary flag_booking_as_used <POST>
-         * @param {number} booking_id 
-         * @param {BookingDisplayStatusRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1bookingsbookingIdtoggleDisplay(basePath: string, booking_id: number, body?: BookingDisplayStatusRequest, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1bookingsbookingIdtoggleDisplay(booking_id, body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary change_password <POST>
-         * @param {ChangePasswordRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1changePassword(basePath: string, body?: ChangePasswordRequest, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1changePassword(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary upload_identity_document <POST>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1identityDocument(basePath: string, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1identityDocument(options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary update_cultural_survey <POST>
-         * @param {CulturalSurveyRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1meculturalSurvey(basePath: string, body?: CulturalSurveyRequest, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1meculturalSurvey(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary create_favorite <POST>
-         * @param {FavoriteRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1mefavorites(basePath: string, body?: FavoriteRequest, options?: any): Promise<FavoriteResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1mefavorites(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary report_offer <POST>
-         * @param {number} offer_id 
-         * @param {OfferReportRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1offerofferIdreport(basePath: string, offer_id: number, body?: OfferReportRequest, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1offerofferIdreport(offer_id, body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary update_user_profile <POST>
-         * @param {UserProfileUpdateRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1profile(basePath: string, body?: UserProfileUpdateRequest, options?: any): Promise<UserProfileResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1profile(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary update_user_email <POST>
-         * @param {UserProfileEmailUpdate} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1profileupdateEmail(basePath: string, body?: UserProfileEmailUpdate, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1profileupdateEmail(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary refresh <POST>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1refreshAccessToken(basePath: string, options?: any): Promise<RefreshResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1refreshAccessToken(options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary request_password_reset <POST>
-         * @param {RequestPasswordResetRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1requestPasswordReset(basePath: string, body?: RequestPasswordResetRequest, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1requestPasswordReset(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary resend_email_validation <POST>
-         * @param {ResendEmailValidationRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1resendEmailValidation(basePath: string, body?: ResendEmailValidationRequest, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1resendEmailValidation(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary reset_password <POST>
-         * @param {ResetPasswordRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1resetPassword(basePath: string, body?: ResetPasswordRequest, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1resetPassword(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary reset_recredit_amount_to_show <POST>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1resetRecreditAmountToShow(basePath: string, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1resetRecreditAmountToShow(options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary send_offer_link_by_push <POST>
-         * @param {number} offer_id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1sendOfferLinkByPushofferId(basePath: string, offer_id: number, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1sendOfferLinkByPushofferId(offer_id, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * give them webapp link.
-         * @summary On iOS native app, users cannot book numeric offers with price > 0, so
-         * @param {number} offer_id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1sendOfferWebappLinkByEmailofferId(basePath: string, offer_id: number, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1sendOfferWebappLinkByEmailofferId(offer_id, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary send_phone_validation_code <POST>
-         * @param {SendPhoneValidationRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1sendPhoneValidationCode(basePath: string, body?: SendPhoneValidationRequest, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1sendPhoneValidationCode(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary signin <POST>
-         * @param {SigninRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1signin(basePath: string, body?: SigninRequest, options?: any): Promise<SigninResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1signin(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary create_honor_statement_fraud_check <POST>
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1subscriptionhonorStatement(basePath: string, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1subscriptionhonorStatement(options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary update_profile <POST>
-         * @param {ProfileUpdateRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1subscriptionprofile(basePath: string, body?: ProfileUpdateRequest, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1subscriptionprofile(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary start_identification_session <POST>
-         * @param {IdentificationSessionRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1ubbleIdentification(basePath: string, body?: IdentificationSessionRequest, options?: any): Promise<IdentificationSessionResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1ubbleIdentification(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary profiling_fraud_score <POST>
-         * @param {UserProfilingFraudRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1userProfiling(basePath: string, body?: UserProfilingFraudRequest, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1userProfiling(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary validate_email <POST>
-         * @param {ValidateEmailRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1validateEmail(basePath: string, body?: ValidateEmailRequest, options?: any): Promise<ValidateEmailResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1validateEmail(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary validate_phone_number <POST>
-         * @param {ValidatePhoneNumberRequest} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async postnativev1validatePhoneNumber(basePath: string, body?: ValidatePhoneNumberRequest, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1validatePhoneNumber(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-        /**
-         * 
-         * @summary validate_user_email <PUT>
-         * @param {ChangeBeneficiaryEmailBody} [body] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async putnativev1profilevalidateEmail(basePath: string, body?: ChangeBeneficiaryEmailBody, options?: any): Promise<EmptyResponse> {
-            const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).putnativev1profilevalidateEmail(body, options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-    }
+const DefaultApiFp = function(api: DefaultApi) {
+  return {
+    /**
+     * 
+     * @summary delete_favorite <DELETE>
+     * @param {number} favorite_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deletenativev1mefavoritesfavoriteId(basePath: string, favorite_id: number, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().deletenativev1mefavoritesfavoriteId(favorite_id, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_bookings <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1bookings(basePath: string, options?: any): Promise<BookingsResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1bookings(options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_id_check_token <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1idCheckToken(basePath: string, options?: any): Promise<GetIdCheckTokenResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1idCheckToken(options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_user_profile <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1me(basePath: string, options?: any): Promise<UserProfileResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1me(options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_favorites <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1mefavorites(basePath: string, options?: any): Promise<PaginatedFavoritesResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1mefavorites(options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_favorites_count <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1mefavoritescount(basePath: string, options?: any): Promise<FavoritesCountResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1mefavoritescount(options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_offer <GET>
+     * @param {number} offer_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1offerofferId(basePath: string, offer_id: number, options?: any): Promise<OfferResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1offerofferId(offer_id, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary report_offer_reasons <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1offerreportreasons(basePath: string, options?: any): Promise<OfferReportReasons> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1offerreportreasons(options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary user_reported_offers <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1offersreports(basePath: string, options?: any): Promise<UserReportedOffersResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1offersreports(options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_email_update_token_expiration_date <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1profiletokenExpiration(basePath: string, options?: any): Promise<UpdateEmailTokenExpiration> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1profiletokenExpiration(options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_settings <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1settings(basePath: string, options?: any): Promise<SettingsResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1settings(options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_subcategories <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1subcategories(basePath: string, options?: any): Promise<SubcategoriesResponseModel> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1subcategories(options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary next_subscription_step <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1subscriptionnextStep(basePath: string, options?: any): Promise<NextSubscriptionStepResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1subscriptionnextStep(options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_profile_options <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1subscriptionprofileOptions(basePath: string, options?: any): Promise<ProfileOptionsResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1subscriptionprofileOptions(options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary Generate a unique hash which will be used as an identifier for user profiling
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1userProfilingsessionId(basePath: string, options?: any): Promise<UserProfilingSessionIdResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1userProfilingsessionId(options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary get_venue <GET>
+     * @param {number} venue_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1venuevenueId(basePath: string, venue_id: number, options?: any): Promise<VenueResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().getnativev1venuevenueId(venue_id, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary update_beneficiary_mandatory_information <PATCH>
+     * @param {BeneficiaryInformationUpdateRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async patchnativev1beneficiaryInformation(basePath: string, body?: BeneficiaryInformationUpdateRequest, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().patchnativev1beneficiaryInformation(body, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary create_account <POST>
+     * @param {AccountRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1account(basePath: string, body?: AccountRequest, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1account(body, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary has_completed_id_check <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1accounthasCompletedIdCheck(basePath: string, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1accounthasCompletedIdCheck(options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary suspend_account <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1accountsuspend(basePath: string, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1accountsuspend(options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary book_offer <POST>
+     * @param {BookOfferRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1bookings(basePath: string, body?: BookOfferRequest, options?: any): Promise<BookOfferResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1bookings(body, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary cancel_booking <POST>
+     * @param {number} booking_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1bookingsbookingIdcancel(basePath: string, booking_id: number, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1bookingsbookingIdcancel(booking_id, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary flag_booking_as_used <POST>
+     * @param {number} booking_id 
+     * @param {BookingDisplayStatusRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1bookingsbookingIdtoggleDisplay(basePath: string, booking_id: number, body?: BookingDisplayStatusRequest, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1bookingsbookingIdtoggleDisplay(booking_id, body, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary change_password <POST>
+     * @param {ChangePasswordRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1changePassword(basePath: string, body?: ChangePasswordRequest, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1changePassword(body, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary upload_identity_document <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1identityDocument(basePath: string, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1identityDocument(options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary update_cultural_survey <POST>
+     * @param {CulturalSurveyRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1meculturalSurvey(basePath: string, body?: CulturalSurveyRequest, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1meculturalSurvey(body, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary create_favorite <POST>
+     * @param {FavoriteRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1mefavorites(basePath: string, body?: FavoriteRequest, options?: any): Promise<FavoriteResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1mefavorites(body, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary report_offer <POST>
+     * @param {number} offer_id 
+     * @param {OfferReportRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1offerofferIdreport(basePath: string, offer_id: number, body?: OfferReportRequest, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1offerofferIdreport(offer_id, body, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary update_user_profile <POST>
+     * @param {UserProfileUpdateRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1profile(basePath: string, body?: UserProfileUpdateRequest, options?: any): Promise<UserProfileResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1profile(body, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary update_user_email <POST>
+     * @param {UserProfileEmailUpdate} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1profileupdateEmail(basePath: string, body?: UserProfileEmailUpdate, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1profileupdateEmail(body, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary refresh <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1refreshAccessToken(basePath: string, options?: any): Promise<RefreshResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1refreshAccessToken(options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary request_password_reset <POST>
+     * @param {RequestPasswordResetRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1requestPasswordReset(basePath: string, body?: RequestPasswordResetRequest, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1requestPasswordReset(body, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary resend_email_validation <POST>
+     * @param {ResendEmailValidationRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1resendEmailValidation(basePath: string, body?: ResendEmailValidationRequest, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1resendEmailValidation(body, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary reset_password <POST>
+     * @param {ResetPasswordRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1resetPassword(basePath: string, body?: ResetPasswordRequest, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1resetPassword(body, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary reset_recredit_amount_to_show <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1resetRecreditAmountToShow(basePath: string, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1resetRecreditAmountToShow(options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary send_offer_link_by_push <POST>
+     * @param {number} offer_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1sendOfferLinkByPushofferId(basePath: string, offer_id: number, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1sendOfferLinkByPushofferId(offer_id, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * give them webapp link.
+     * @summary On iOS native app, users cannot book numeric offers with price > 0, so
+     * @param {number} offer_id 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1sendOfferWebappLinkByEmailofferId(basePath: string, offer_id: number, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1sendOfferWebappLinkByEmailofferId(offer_id, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary send_phone_validation_code <POST>
+     * @param {SendPhoneValidationRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1sendPhoneValidationCode(basePath: string, body?: SendPhoneValidationRequest, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1sendPhoneValidationCode(body, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary signin <POST>
+     * @param {SigninRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1signin(basePath: string, body?: SigninRequest, options?: any): Promise<SigninResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1signin(body, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary create_honor_statement_fraud_check <POST>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1subscriptionhonorStatement(basePath: string, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1subscriptionhonorStatement(options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary update_profile <POST>
+     * @param {ProfileUpdateRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1subscriptionprofile(basePath: string, body?: ProfileUpdateRequest, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1subscriptionprofile(body, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary start_identification_session <POST>
+     * @param {IdentificationSessionRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1ubbleIdentification(basePath: string, body?: IdentificationSessionRequest, options?: any): Promise<IdentificationSessionResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1ubbleIdentification(body, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary profiling_fraud_score <POST>
+     * @param {UserProfilingFraudRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1userProfiling(basePath: string, body?: UserProfilingFraudRequest, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1userProfiling(body, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary validate_email <POST>
+     * @param {ValidateEmailRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1validateEmail(basePath: string, body?: ValidateEmailRequest, options?: any): Promise<ValidateEmailResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1validateEmail(body, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary validate_phone_number <POST>
+     * @param {ValidatePhoneNumberRequest} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postnativev1validatePhoneNumber(basePath: string, body?: ValidatePhoneNumberRequest, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().postnativev1validatePhoneNumber(body, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
+     * @summary validate_user_email <PUT>
+     * @param {ChangeBeneficiaryEmailBody} [body] 
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async putnativev1profilevalidateEmail(basePath: string, body?: ChangeBeneficiaryEmailBody, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator().putnativev1profilevalidateEmail(body, options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+  }
 };
 
 /**
@@ -4326,539 +4399,493 @@ const DefaultApiFp = function(api: DefaultApi, configuration?: Configuration) {
  * @extends {BaseAPI}
  */
 export class DefaultApi extends BaseAPI {
-    /**
-     * 
-     * @summary delete_favorite <DELETE>
-     * @param {number} favorite_id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async deletenativev1mefavoritesfavoriteId(favorite_id: number, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.deletenativev1mefavoritesfavoriteId(this.basePath, favorite_id, options)
-    }
-    /**
-     * 
-     * @summary get_bookings <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async getnativev1bookings(options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.getnativev1bookings(this.basePath, options)
-    }
-    /**
-     * 
-     * @summary get_id_check_token <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async getnativev1idCheckToken(options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.getnativev1idCheckToken(this.basePath, options)
-    }
-    /**
-     * 
-     * @summary get_user_profile <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async getnativev1me(options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.getnativev1me(this.basePath, options)
-    }
-    /**
-     * 
-     * @summary get_favorites <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async getnativev1mefavorites(options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.getnativev1mefavorites(this.basePath, options)
-    }
-    /**
-     * 
-     * @summary get_favorites_count <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async getnativev1mefavoritescount(options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.getnativev1mefavoritescount(this.basePath, options)
-    }
-    /**
-     * 
-     * @summary get_offer <GET>
-     * @param {number} offer_id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async getnativev1offerofferId(offer_id: number, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.getnativev1offerofferId(this.basePath, offer_id, options)
-    }
-    /**
-     * 
-     * @summary report_offer_reasons <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async getnativev1offerreportreasons(options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.getnativev1offerreportreasons(this.basePath, options)
-    }
-    /**
-     * 
-     * @summary user_reported_offers <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async getnativev1offersreports(options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.getnativev1offersreports(this.basePath, options)
-    }
-    /**
-     * 
-     * @summary get_email_update_token_expiration_date <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async getnativev1profiletokenExpiration(options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.getnativev1profiletokenExpiration(this.basePath, options)
-    }
-    /**
-     * 
-     * @summary get_settings <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async getnativev1settings(options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.getnativev1settings(this.basePath, options)
-    }
-    /**
-     * 
-     * @summary get_subcategories <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async getnativev1subcategories(options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.getnativev1subcategories(this.basePath, options)
-    }
-    /**
-     * 
-     * @summary next_subscription_step <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async getnativev1subscriptionnextStep(options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.getnativev1subscriptionnextStep(this.basePath, options)
-    }
-    /**
-     * 
-     * @summary get_profile_options <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async getnativev1subscriptionprofileOptions(options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.getnativev1subscriptionprofileOptions(this.basePath, options)
-    }
-    /**
-     * 
-     * @summary Generate a unique hash which will be used as an identifier for user profiling
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async getnativev1userProfilingsessionId(options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.getnativev1userProfilingsessionId(this.basePath, options)
-    }
-    /**
-     * 
-     * @summary get_venue <GET>
-     * @param {number} venue_id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async getnativev1venuevenueId(venue_id: number, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.getnativev1venuevenueId(this.basePath, venue_id, options)
-    }
-    /**
-     * 
-     * @summary update_beneficiary_mandatory_information <PATCH>
-     * @param {BeneficiaryInformationUpdateRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async patchnativev1beneficiaryInformation(body?: BeneficiaryInformationUpdateRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.patchnativev1beneficiaryInformation(this.basePath, body, options)
-    }
-    /**
-     * 
-     * @summary create_account <POST>
-     * @param {AccountRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1account(body?: AccountRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1account(this.basePath, body, options)
-    }
-    /**
-     * 
-     * @summary has_completed_id_check <POST>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1accounthasCompletedIdCheck(options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1accounthasCompletedIdCheck(this.basePath, options)
-    }
-    /**
-     * 
-     * @summary suspend_account <POST>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1accountsuspend(options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1accountsuspend(this.basePath, options)
-    }
-    /**
-     * 
-     * @summary book_offer <POST>
-     * @param {BookOfferRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1bookings(body?: BookOfferRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1bookings(this.basePath, body, options)
-    }
-    /**
-     * 
-     * @summary cancel_booking <POST>
-     * @param {number} booking_id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1bookingsbookingIdcancel(booking_id: number, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1bookingsbookingIdcancel(this.basePath, booking_id, options)
-    }
-    /**
-     * 
-     * @summary flag_booking_as_used <POST>
-     * @param {number} booking_id 
-     * @param {BookingDisplayStatusRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1bookingsbookingIdtoggleDisplay(booking_id: number, body?: BookingDisplayStatusRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1bookingsbookingIdtoggleDisplay(this.basePath, booking_id, body, options)
-    }
-    /**
-     * 
-     * @summary change_password <POST>
-     * @param {ChangePasswordRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1changePassword(body?: ChangePasswordRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1changePassword(this.basePath, body, options)
-    }
-    /**
-     * 
-     * @summary upload_identity_document <POST>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1identityDocument(options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1identityDocument(this.basePath, options)
-    }
-    /**
-     * 
-     * @summary update_cultural_survey <POST>
-     * @param {CulturalSurveyRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1meculturalSurvey(body?: CulturalSurveyRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1meculturalSurvey(this.basePath, body, options)
-    }
-    /**
-     * 
-     * @summary create_favorite <POST>
-     * @param {FavoriteRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1mefavorites(body?: FavoriteRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1mefavorites(this.basePath, body, options)
-    }
-    /**
-     * 
-     * @summary report_offer <POST>
-     * @param {number} offer_id 
-     * @param {OfferReportRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1offerofferIdreport(offer_id: number, body?: OfferReportRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1offerofferIdreport(this.basePath, offer_id, body, options)
-    }
-    /**
-     * 
-     * @summary update_user_profile <POST>
-     * @param {UserProfileUpdateRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1profile(body?: UserProfileUpdateRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1profile(this.basePath, body, options)
-    }
-    /**
-     * 
-     * @summary update_user_email <POST>
-     * @param {UserProfileEmailUpdate} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1profileupdateEmail(body?: UserProfileEmailUpdate, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1profileupdateEmail(this.basePath, body, options)
-    }
-    /**
-     * 
-     * @summary refresh <POST>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1refreshAccessToken(options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1refreshAccessToken(this.basePath, options)
-    }
-    /**
-     * 
-     * @summary request_password_reset <POST>
-     * @param {RequestPasswordResetRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1requestPasswordReset(body?: RequestPasswordResetRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1requestPasswordReset(this.basePath, body, options)
-    }
-    /**
-     * 
-     * @summary resend_email_validation <POST>
-     * @param {ResendEmailValidationRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1resendEmailValidation(body?: ResendEmailValidationRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1resendEmailValidation(this.basePath, body, options)
-    }
-    /**
-     * 
-     * @summary reset_password <POST>
-     * @param {ResetPasswordRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1resetPassword(body?: ResetPasswordRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1resetPassword(this.basePath, body, options)
-    }
-    /**
-     * 
-     * @summary reset_recredit_amount_to_show <POST>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1resetRecreditAmountToShow(options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1resetRecreditAmountToShow(this.basePath, options)
-    }
-    /**
-     * 
-     * @summary send_offer_link_by_push <POST>
-     * @param {number} offer_id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1sendOfferLinkByPushofferId(offer_id: number, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1sendOfferLinkByPushofferId(this.basePath, offer_id, options)
-    }
-    /**
-     * give them webapp link.
-     * @summary On iOS native app, users cannot book numeric offers with price > 0, so
-     * @param {number} offer_id 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1sendOfferWebappLinkByEmailofferId(offer_id: number, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1sendOfferWebappLinkByEmailofferId(this.basePath, offer_id, options)
-    }
-    /**
-     * 
-     * @summary send_phone_validation_code <POST>
-     * @param {SendPhoneValidationRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1sendPhoneValidationCode(body?: SendPhoneValidationRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1sendPhoneValidationCode(this.basePath, body, options)
-    }
-    /**
-     * 
-     * @summary signin <POST>
-     * @param {SigninRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1signin(body?: SigninRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1signin(this.basePath, body, options)
-    }
-    /**
-     * 
-     * @summary create_honor_statement_fraud_check <POST>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1subscriptionhonorStatement(options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1subscriptionhonorStatement(this.basePath, options)
-    }
-    /**
-     * 
-     * @summary update_profile <POST>
-     * @param {ProfileUpdateRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1subscriptionprofile(body?: ProfileUpdateRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1subscriptionprofile(this.basePath, body, options)
-    }
-    /**
-     * 
-     * @summary start_identification_session <POST>
-     * @param {IdentificationSessionRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1ubbleIdentification(body?: IdentificationSessionRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1ubbleIdentification(this.basePath, body, options)
-    }
-    /**
-     * 
-     * @summary profiling_fraud_score <POST>
-     * @param {UserProfilingFraudRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1userProfiling(body?: UserProfilingFraudRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1userProfiling(this.basePath, body, options)
-    }
-    /**
-     * 
-     * @summary validate_email <POST>
-     * @param {ValidateEmailRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1validateEmail(body?: ValidateEmailRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1validateEmail(this.basePath, body, options)
-    }
-    /**
-     * 
-     * @summary validate_phone_number <POST>
-     * @param {ValidatePhoneNumberRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async postnativev1validatePhoneNumber(body?: ValidatePhoneNumberRequest, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.postnativev1validatePhoneNumber(this.basePath, body, options)
-    }
-    /**
-     * 
-     * @summary validate_user_email <PUT>
-     * @param {ChangeBeneficiaryEmailBody} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof DefaultApi
-     */
-    public async putnativev1profilevalidateEmail(body?: ChangeBeneficiaryEmailBody, options?: any) {
-        const functionalApi = DefaultApiFp(this, this.configuration)
-        return functionalApi.putnativev1profilevalidateEmail(this.basePath, body, options)
-    }
+  /**
+    * 
+    * @summary delete_favorite <DELETE>
+    * @param {number} favorite_id 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async deletenativev1mefavoritesfavoriteId(favorite_id: number, options?: any) {
+    return DefaultApiFp(this).deletenativev1mefavoritesfavoriteId(this.basePath, favorite_id, options)
+  }
+  /**
+    * 
+    * @summary get_bookings <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getnativev1bookings(options?: any) {
+    return DefaultApiFp(this).getnativev1bookings(this.basePath, options)
+  }
+  /**
+    * 
+    * @summary get_id_check_token <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getnativev1idCheckToken(options?: any) {
+    return DefaultApiFp(this).getnativev1idCheckToken(this.basePath, options)
+  }
+  /**
+    * 
+    * @summary get_user_profile <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getnativev1me(options?: any) {
+    return DefaultApiFp(this).getnativev1me(this.basePath, options)
+  }
+  /**
+    * 
+    * @summary get_favorites <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getnativev1mefavorites(options?: any) {
+    return DefaultApiFp(this).getnativev1mefavorites(this.basePath, options)
+  }
+  /**
+    * 
+    * @summary get_favorites_count <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getnativev1mefavoritescount(options?: any) {
+    return DefaultApiFp(this).getnativev1mefavoritescount(this.basePath, options)
+  }
+  /**
+    * 
+    * @summary get_offer <GET>
+    * @param {number} offer_id 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getnativev1offerofferId(offer_id: number, options?: any) {
+    return DefaultApiFp(this).getnativev1offerofferId(this.basePath, offer_id, options)
+  }
+  /**
+    * 
+    * @summary report_offer_reasons <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getnativev1offerreportreasons(options?: any) {
+    return DefaultApiFp(this).getnativev1offerreportreasons(this.basePath, options)
+  }
+  /**
+    * 
+    * @summary user_reported_offers <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getnativev1offersreports(options?: any) {
+    return DefaultApiFp(this).getnativev1offersreports(this.basePath, options)
+  }
+  /**
+    * 
+    * @summary get_email_update_token_expiration_date <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getnativev1profiletokenExpiration(options?: any) {
+    return DefaultApiFp(this).getnativev1profiletokenExpiration(this.basePath, options)
+  }
+  /**
+    * 
+    * @summary get_settings <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getnativev1settings(options?: any) {
+    return DefaultApiFp(this).getnativev1settings(this.basePath, options)
+  }
+  /**
+    * 
+    * @summary get_subcategories <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getnativev1subcategories(options?: any) {
+    return DefaultApiFp(this).getnativev1subcategories(this.basePath, options)
+  }
+  /**
+    * 
+    * @summary next_subscription_step <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getnativev1subscriptionnextStep(options?: any) {
+    return DefaultApiFp(this).getnativev1subscriptionnextStep(this.basePath, options)
+  }
+  /**
+    * 
+    * @summary get_profile_options <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getnativev1subscriptionprofileOptions(options?: any) {
+    return DefaultApiFp(this).getnativev1subscriptionprofileOptions(this.basePath, options)
+  }
+  /**
+    * 
+    * @summary Generate a unique hash which will be used as an identifier for user profiling
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getnativev1userProfilingsessionId(options?: any) {
+    return DefaultApiFp(this).getnativev1userProfilingsessionId(this.basePath, options)
+  }
+  /**
+    * 
+    * @summary get_venue <GET>
+    * @param {number} venue_id 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getnativev1venuevenueId(venue_id: number, options?: any) {
+    return DefaultApiFp(this).getnativev1venuevenueId(this.basePath, venue_id, options)
+  }
+  /**
+    * 
+    * @summary update_beneficiary_mandatory_information <PATCH>
+    * @param {BeneficiaryInformationUpdateRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async patchnativev1beneficiaryInformation(body?: BeneficiaryInformationUpdateRequest, options?: any) {
+    return DefaultApiFp(this).patchnativev1beneficiaryInformation(this.basePath, body, options)
+  }
+  /**
+    * 
+    * @summary create_account <POST>
+    * @param {AccountRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1account(body?: AccountRequest, options?: any) {
+    return DefaultApiFp(this).postnativev1account(this.basePath, body, options)
+  }
+  /**
+    * 
+    * @summary has_completed_id_check <POST>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1accounthasCompletedIdCheck(options?: any) {
+    return DefaultApiFp(this).postnativev1accounthasCompletedIdCheck(this.basePath, options)
+  }
+  /**
+    * 
+    * @summary suspend_account <POST>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1accountsuspend(options?: any) {
+    return DefaultApiFp(this).postnativev1accountsuspend(this.basePath, options)
+  }
+  /**
+    * 
+    * @summary book_offer <POST>
+    * @param {BookOfferRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1bookings(body?: BookOfferRequest, options?: any) {
+    return DefaultApiFp(this).postnativev1bookings(this.basePath, body, options)
+  }
+  /**
+    * 
+    * @summary cancel_booking <POST>
+    * @param {number} booking_id 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1bookingsbookingIdcancel(booking_id: number, options?: any) {
+    return DefaultApiFp(this).postnativev1bookingsbookingIdcancel(this.basePath, booking_id, options)
+  }
+  /**
+    * 
+    * @summary flag_booking_as_used <POST>
+    * @param {number} booking_id 
+    * @param {BookingDisplayStatusRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1bookingsbookingIdtoggleDisplay(booking_id: number, body?: BookingDisplayStatusRequest, options?: any) {
+    return DefaultApiFp(this).postnativev1bookingsbookingIdtoggleDisplay(this.basePath, booking_id, body, options)
+  }
+  /**
+    * 
+    * @summary change_password <POST>
+    * @param {ChangePasswordRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1changePassword(body?: ChangePasswordRequest, options?: any) {
+    return DefaultApiFp(this).postnativev1changePassword(this.basePath, body, options)
+  }
+  /**
+    * 
+    * @summary upload_identity_document <POST>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1identityDocument(options?: any) {
+    return DefaultApiFp(this).postnativev1identityDocument(this.basePath, options)
+  }
+  /**
+    * 
+    * @summary update_cultural_survey <POST>
+    * @param {CulturalSurveyRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1meculturalSurvey(body?: CulturalSurveyRequest, options?: any) {
+    return DefaultApiFp(this).postnativev1meculturalSurvey(this.basePath, body, options)
+  }
+  /**
+    * 
+    * @summary create_favorite <POST>
+    * @param {FavoriteRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1mefavorites(body?: FavoriteRequest, options?: any) {
+    return DefaultApiFp(this).postnativev1mefavorites(this.basePath, body, options)
+  }
+  /**
+    * 
+    * @summary report_offer <POST>
+    * @param {number} offer_id 
+    * @param {OfferReportRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1offerofferIdreport(offer_id: number, body?: OfferReportRequest, options?: any) {
+    return DefaultApiFp(this).postnativev1offerofferIdreport(this.basePath, offer_id, body, options)
+  }
+  /**
+    * 
+    * @summary update_user_profile <POST>
+    * @param {UserProfileUpdateRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1profile(body?: UserProfileUpdateRequest, options?: any) {
+    return DefaultApiFp(this).postnativev1profile(this.basePath, body, options)
+  }
+  /**
+    * 
+    * @summary update_user_email <POST>
+    * @param {UserProfileEmailUpdate} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1profileupdateEmail(body?: UserProfileEmailUpdate, options?: any) {
+    return DefaultApiFp(this).postnativev1profileupdateEmail(this.basePath, body, options)
+  }
+  /**
+    * 
+    * @summary refresh <POST>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1refreshAccessToken(options?: any) {
+    return DefaultApiFp(this).postnativev1refreshAccessToken(this.basePath, options)
+  }
+  /**
+    * 
+    * @summary request_password_reset <POST>
+    * @param {RequestPasswordResetRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1requestPasswordReset(body?: RequestPasswordResetRequest, options?: any) {
+    return DefaultApiFp(this).postnativev1requestPasswordReset(this.basePath, body, options)
+  }
+  /**
+    * 
+    * @summary resend_email_validation <POST>
+    * @param {ResendEmailValidationRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1resendEmailValidation(body?: ResendEmailValidationRequest, options?: any) {
+    return DefaultApiFp(this).postnativev1resendEmailValidation(this.basePath, body, options)
+  }
+  /**
+    * 
+    * @summary reset_password <POST>
+    * @param {ResetPasswordRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1resetPassword(body?: ResetPasswordRequest, options?: any) {
+    return DefaultApiFp(this).postnativev1resetPassword(this.basePath, body, options)
+  }
+  /**
+    * 
+    * @summary reset_recredit_amount_to_show <POST>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1resetRecreditAmountToShow(options?: any) {
+    return DefaultApiFp(this).postnativev1resetRecreditAmountToShow(this.basePath, options)
+  }
+  /**
+    * 
+    * @summary send_offer_link_by_push <POST>
+    * @param {number} offer_id 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1sendOfferLinkByPushofferId(offer_id: number, options?: any) {
+    return DefaultApiFp(this).postnativev1sendOfferLinkByPushofferId(this.basePath, offer_id, options)
+  }
+  /**
+    * give them webapp link.
+    * @summary On iOS native app, users cannot book numeric offers with price > 0, so
+    * @param {number} offer_id 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1sendOfferWebappLinkByEmailofferId(offer_id: number, options?: any) {
+    return DefaultApiFp(this).postnativev1sendOfferWebappLinkByEmailofferId(this.basePath, offer_id, options)
+  }
+  /**
+    * 
+    * @summary send_phone_validation_code <POST>
+    * @param {SendPhoneValidationRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1sendPhoneValidationCode(body?: SendPhoneValidationRequest, options?: any) {
+    return DefaultApiFp(this).postnativev1sendPhoneValidationCode(this.basePath, body, options)
+  }
+  /**
+    * 
+    * @summary signin <POST>
+    * @param {SigninRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1signin(body?: SigninRequest, options?: any) {
+    return DefaultApiFp(this).postnativev1signin(this.basePath, body, options)
+  }
+  /**
+    * 
+    * @summary create_honor_statement_fraud_check <POST>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1subscriptionhonorStatement(options?: any) {
+    return DefaultApiFp(this).postnativev1subscriptionhonorStatement(this.basePath, options)
+  }
+  /**
+    * 
+    * @summary update_profile <POST>
+    * @param {ProfileUpdateRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1subscriptionprofile(body?: ProfileUpdateRequest, options?: any) {
+    return DefaultApiFp(this).postnativev1subscriptionprofile(this.basePath, body, options)
+  }
+  /**
+    * 
+    * @summary start_identification_session <POST>
+    * @param {IdentificationSessionRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1ubbleIdentification(body?: IdentificationSessionRequest, options?: any) {
+    return DefaultApiFp(this).postnativev1ubbleIdentification(this.basePath, body, options)
+  }
+  /**
+    * 
+    * @summary profiling_fraud_score <POST>
+    * @param {UserProfilingFraudRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1userProfiling(body?: UserProfilingFraudRequest, options?: any) {
+    return DefaultApiFp(this).postnativev1userProfiling(this.basePath, body, options)
+  }
+  /**
+    * 
+    * @summary validate_email <POST>
+    * @param {ValidateEmailRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1validateEmail(body?: ValidateEmailRequest, options?: any) {
+    return DefaultApiFp(this).postnativev1validateEmail(this.basePath, body, options)
+  }
+  /**
+    * 
+    * @summary validate_phone_number <POST>
+    * @param {ValidatePhoneNumberRequest} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async postnativev1validatePhoneNumber(body?: ValidatePhoneNumberRequest, options?: any) {
+    return DefaultApiFp(this).postnativev1validatePhoneNumber(this.basePath, body, options)
+  }
+  /**
+    * 
+    * @summary validate_user_email <PUT>
+    * @param {ChangeBeneficiaryEmailBody} [body] 
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async putnativev1profilevalidateEmail(body?: ChangeBeneficiaryEmailBody, options?: any) {
+    return DefaultApiFp(this).putnativev1profilevalidateEmail(this.basePath, body, options)
+  }
 }

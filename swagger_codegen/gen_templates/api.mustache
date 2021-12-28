@@ -16,7 +16,7 @@ const BASE_PATH = "{{{basePath}}}".replace(/\/+$/, "");
  * @interface FetchAPI
  */
 export interface FetchAPI {
-    (url: string, init?: any): Promise<Response>;
+  (url: string, init?: any): Promise<Response>;
 }
 
 /**
@@ -24,8 +24,8 @@ export interface FetchAPI {
  * @interface FetchArgs
  */
 export interface FetchArgs {
-    url: string;
-    options: any;
+  url: string;
+  options: any;
 }
 
 /**
@@ -33,13 +33,13 @@ export interface FetchArgs {
  * @class BaseAPI
  */
 export class BaseAPI {
-    protected configuration?: Configuration;
-    constructor(configuration?: Configuration, protected basePath: string = BASE_PATH) {
-        if (configuration) {
-            this.configuration = configuration;
-            this.basePath = configuration.basePath || this.basePath;
-        }
+  protected configuration?: Configuration;
+  constructor(configuration?: Configuration, protected basePath: string = BASE_PATH) {
+    if (configuration) {
+      this.configuration = configuration;
+      this.basePath = configuration.basePath || this.basePath;
     }
+  }
 };
 
 /**
@@ -48,10 +48,10 @@ export class BaseAPI {
  * @extends {Error}
  */
 export class RequiredError extends Error {
-    name = "RequiredError"
-    constructor(public field: string, msg?: string) {
-        super(msg);
-    }
+  name = "RequiredError"
+  constructor(public field: string, msg?: string) {
+    super(msg);
+  }
 }
 
 {{#models}}
@@ -64,177 +64,177 @@ export class RequiredError extends Error {
  * {{&description}}{{/description}}
  */
 const {{classname}}FetchParamCreator = function () {
-    return {
-    {{#operation}}
-        /**
-         * {{&notes}}
-         {{#summary}}
-         * @summary {{&summary}}
-         {{/summary}}
-         {{#allParams}}
-         * @param {{=<% %>=}}{<%&dataType%>}<%={{ }}=%> {{^required}}[{{/required}}{{paramName}}{{^required}}]{{/required}} {{description}}
-         {{/allParams}}
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async {{nickname}}({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/allParams}}options: any = {}): Promise<FetchArgs> {
-    {{#allParams}}
-    {{#required}}
-            // verify required parameter '{{paramName}}' is not null or undefined
-            if ({{paramName}} === null || {{paramName}} === undefined) {
-                throw new RequiredError('{{paramName}}','Required parameter {{paramName}} was null or undefined when calling {{nickname}}.');
-            }
-    {{/required}}
-    {{/allParams}}
-            const localVarPath = `{{{path}}}`{{#pathParams}}
-                .replace(`{${"{{baseName}}"}}`, encodeURIComponent(String({{paramName}}))){{/pathParams}};
-            const localVarUrlObj = url.parse(localVarPath, true);
-            const localVarRequestOptions = Object.assign({ method: '{{httpMethod}}' }, options);
-            const localVarHeaderParameter = await getAuthenticationHeaders();
-            const localVarQueryParameter = {} as any;
-    {{#hasFormParams}}
-            const localVarFormParams = new url.URLSearchParams();
-    {{/hasFormParams}}
-    {{#authMethods}}
-            // authentication {{name}} required
-            {{#isApiKey}}
-            {{#isKeyInHeader}}
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-					? configuration.apiKey("{{keyParamName}}")
-					: configuration.apiKey;
-                localVarHeaderParameter["{{keyParamName}}"] = localVarApiKeyValue;
-            }
-            {{/isKeyInHeader}}
-            {{#isKeyInQuery}}
-            if (configuration && configuration.apiKey) {
-                const localVarApiKeyValue = typeof configuration.apiKey === 'function'
-					? configuration.apiKey("{{keyParamName}}")
-					: configuration.apiKey;
-                localVarQueryParameter["{{keyParamName}}"] = localVarApiKeyValue;
-            }
-            {{/isKeyInQuery}}
-            {{/isApiKey}}
-            {{#isBasic}}
-            // http basic authentication required
-            if (configuration && (configuration.username || configuration.password)) {
-                localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
-            }
-            {{/isBasic}}
-            {{#isOAuth}}
-            // oauth required
-            if (configuration && configuration.accessToken) {
-				const localVarAccessTokenValue = typeof configuration.accessToken === 'function'
-					? configuration.accessToken("{{name}}", [{{#scopes}}"{{{scope}}}"{{^@last}}, {{/@last}}{{/scopes}}])
-					: configuration.accessToken;
-                localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
-            }
-            {{/isOAuth}}
-    {{/authMethods}}
-    {{#queryParams}}
-            {{^isListContainer}}
-            if ({{paramName}} !== undefined) {
-                {{#isDateTime}}
-                localVarQueryParameter['{{baseName}}'] = ({{paramName}} as any).toISOString();
-                {{/isDateTime}}
-                {{^isDateTime}}
-                {{#isDate}}
-                localVarQueryParameter['{{baseName}}'] = ({{paramName}} as any).toISOString();
-                {{/isDate}}
-                {{^isDate}}
-                localVarQueryParameter['{{baseName}}'] = {{paramName}};
-                {{/isDate}}
-                {{/isDateTime}}
-            }
-            {{/isListContainer}}
-    {{/queryParams}}
-    {{#headerParams}}
-            {{#isListContainer}}
-            if ({{paramName}}) {
-                localVarHeaderParameter['{{baseName}}'] = {{paramName}}.join(COLLECTION_FORMATS["{{collectionFormat}}"]));
-            }
-            {{/isListContainer}}
-            {{^isListContainer}}
-            if ({{paramName}} !== undefined && {{paramName}} !== null) {
-                localVarHeaderParameter['{{baseName}}'] = String({{paramName}});
-            }
-            {{/isListContainer}}
-    {{/headerParams}}
-    {{#formParams}}
-            {{#isListContainer}}
-            if ({{paramName}}) {
-            {{#isCollectionFormatMulti}}
-                {{paramName}}.forEach((element) => {
-                    localVarFormParams.append('{{baseName}}', element as any);
-                })
-            {{/isCollectionFormatMulti}}
-            {{^isCollectionFormatMulti}}
-                    localVarFormParams.set('{{baseName}}', {{paramName}}.join(COLLECTION_FORMATS["{{collectionFormat}}"]));
-            {{/isCollectionFormatMulti}}
-            }
-            {{/isListContainer}}
-            {{^isListContainer}}
-            if ({{paramName}} !== undefined) {
-                localVarFormParams.set('{{baseName}}', {{paramName}} as any);
-            }
-            {{/isListContainer}}
-    {{/formParams}}
-    {{#hasFormParams}}
-            localVarHeaderParameter['Content-Type'] = 'application/x-www-form-urlencoded';
-    {{/hasFormParams}}
-    {{#bodyParam}}
-            {{^consumes}}
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-            {{/consumes}}
-            {{#consumes.0}}
-            localVarHeaderParameter['Content-Type'] = '{{{mediaType}}}';
-            {{/consumes.0}}
-    {{/bodyParam}}
-            localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
-            // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
-            localVarUrlObj.search = null;
-            localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
-    {{#hasFormParams}}
-            localVarRequestOptions.body = localVarFormParams.toString();
-    {{/hasFormParams}}
-    {{#bodyParam}}
-            const needsSerialization = (<any>"{{dataType}}" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
-            localVarRequestOptions.body =  needsSerialization ? JSON.stringify({{paramName}} || {}) : ({{paramName}} || "");
-    {{/bodyParam}}
-            return {
-                url: url.format(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    {{/operation}}
-    }
+  return {
+  {{#operation}}
+    /**
+     * {{&notes}}
+     {{#summary}}
+     * @summary {{&summary}}
+     {{/summary}}
+     {{#allParams}}
+     * @param {{=<% %>=}}{<%&dataType%>}<%={{ }}=%> {{^required}}[{{/required}}{{paramName}}{{^required}}]{{/required}} {{description}}
+     {{/allParams}}
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async {{nickname}}({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/allParams}}options: any = {}): Promise<FetchArgs> {
+  {{#allParams}}
+  {{#required}}
+      // verify required parameter '{{paramName}}' is not null or undefined
+      if ({{paramName}} === null || {{paramName}} === undefined) {
+        throw new RequiredError('{{paramName}}','Required parameter {{paramName}} was null or undefined when calling {{nickname}}.');
+      }
+  {{/required}}
+  {{/allParams}}
+      const localVarPath = `{{{path}}}`{{#pathParams}}
+        .replace(`{${"{{baseName}}"}}`, encodeURIComponent(String({{paramName}}))){{/pathParams}};
+      const localVarUrlObj = url.parse(localVarPath, true);
+      const localVarRequestOptions = Object.assign({ method: '{{httpMethod}}' }, options);
+      const localVarHeaderParameter = await getAuthenticationHeaders();
+      const localVarQueryParameter = {} as any;
+  {{#hasFormParams}}
+      const localVarFormParams = new url.URLSearchParams();
+  {{/hasFormParams}}
+  {{#authMethods}}
+      // authentication {{name}} required
+      {{#isApiKey}}
+      {{#isKeyInHeader}}
+      if (configuration && configuration.apiKey) {
+        const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+          ? configuration.apiKey("{{keyParamName}}")
+          : configuration.apiKey;
+        localVarHeaderParameter["{{keyParamName}}"] = localVarApiKeyValue;
+      }
+      {{/isKeyInHeader}}
+      {{#isKeyInQuery}}
+      if (configuration && configuration.apiKey) {
+        const localVarApiKeyValue = typeof configuration.apiKey === 'function'
+          ? configuration.apiKey("{{keyParamName}}")
+          : configuration.apiKey;
+        localVarQueryParameter["{{keyParamName}}"] = localVarApiKeyValue;
+      }
+      {{/isKeyInQuery}}
+      {{/isApiKey}}
+      {{#isBasic}}
+      // http basic authentication required
+      if (configuration && (configuration.username || configuration.password)) {
+        localVarHeaderParameter["Authorization"] = "Basic " + btoa(configuration.username + ":" + configuration.password);
+      }
+      {{/isBasic}}
+      {{#isOAuth}}
+      // oauth required
+      if (configuration && configuration.accessToken) {
+        const localVarAccessTokenValue = typeof configuration.accessToken === 'function'
+          ? configuration.accessToken("{{name}}", [{{#scopes}}"{{{scope}}}"{{^@last}}, {{/@last}}{{/scopes}}])
+          : configuration.accessToken;
+        localVarHeaderParameter["Authorization"] = "Bearer " + localVarAccessTokenValue;
+      }
+      {{/isOAuth}}
+  {{/authMethods}}
+  {{#queryParams}}
+      {{^isListContainer}}
+      if ({{paramName}} !== undefined) {
+        {{#isDateTime}}
+        localVarQueryParameter['{{baseName}}'] = ({{paramName}} as any).toISOString();
+        {{/isDateTime}}
+        {{^isDateTime}}
+        {{#isDate}}
+        localVarQueryParameter['{{baseName}}'] = ({{paramName}} as any).toISOString();
+        {{/isDate}}
+        {{^isDate}}
+        localVarQueryParameter['{{baseName}}'] = {{paramName}};
+        {{/isDate}}
+        {{/isDateTime}}
+      }
+      {{/isListContainer}}
+  {{/queryParams}}
+  {{#headerParams}}
+      {{#isListContainer}}
+      if ({{paramName}}) {
+        localVarHeaderParameter['{{baseName}}'] = {{paramName}}.join(COLLECTION_FORMATS["{{collectionFormat}}"]));
+      }
+      {{/isListContainer}}
+      {{^isListContainer}}
+      if ({{paramName}} !== undefined && {{paramName}} !== null) {
+        localVarHeaderParameter['{{baseName}}'] = String({{paramName}});
+      }
+      {{/isListContainer}}
+  {{/headerParams}}
+  {{#formParams}}
+      {{#isListContainer}}
+      if ({{paramName}}) {
+      {{#isCollectionFormatMulti}}
+        {{paramName}}.forEach((element) => {
+          localVarFormParams.append('{{baseName}}', element as any);
+        })
+      {{/isCollectionFormatMulti}}
+      {{^isCollectionFormatMulti}}
+          localVarFormParams.set('{{baseName}}', {{paramName}}.join(COLLECTION_FORMATS["{{collectionFormat}}"]));
+      {{/isCollectionFormatMulti}}
+      }
+      {{/isListContainer}}
+      {{^isListContainer}}
+      if ({{paramName}} !== undefined) {
+        localVarFormParams.set('{{baseName}}', {{paramName}} as any);
+      }
+      {{/isListContainer}}
+  {{/formParams}}
+  {{#hasFormParams}}
+      localVarHeaderParameter['Content-Type'] = 'application/x-www-form-urlencoded';
+  {{/hasFormParams}}
+  {{#bodyParam}}
+      {{^consumes}}
+      localVarHeaderParameter['Content-Type'] = 'application/json';
+      {{/consumes}}
+      {{#consumes.0}}
+      localVarHeaderParameter['Content-Type'] = '{{{mediaType}}}';
+      {{/consumes.0}}
+  {{/bodyParam}}
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, localVarQueryParameter, options.query);
+      // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
+      localVarUrlObj.search = null;
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+  {{#hasFormParams}}
+      localVarRequestOptions.body = localVarFormParams.toString();
+  {{/hasFormParams}}
+  {{#bodyParam}}
+      const needsSerialization = (<any>"{{dataType}}" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json';
+      localVarRequestOptions.body =  needsSerialization ? JSON.stringify({{paramName}} || {}) : ({{paramName}} || "");
+  {{/bodyParam}}
+      return {
+        url: url.format(localVarUrlObj),
+        options: localVarRequestOptions,
+      };
+    },
+  {{/operation}}
+  }
 };
 
 /**
  * {{classname}} - functional programming interface{{#description}}
  * {{{description}}}{{/description}}
  */
-const {{classname}}Fp = function(api: {{classname}}, configuration?: Configuration) {
-    return {
-    {{#operation}}
-        /**
-         * {{&notes}}
-         {{#summary}}
-         * @summary {{&summary}}
-         {{/summary}}
-         {{#allParams}}
-         * @param {{=<% %>=}}{<%&dataType%>}<%={{ }}=%> {{^required}}[{{/required}}{{paramName}}{{^required}}]{{/required}} {{description}}
-         {{/allParams}}
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async {{nickname}}(basePath: string, {{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/allParams}}options?: any): Promise<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}EmptyResponse{{/returnType}}> {
-            const localVarFetchArgs = await {{classname}}FetchParamCreator(configuration).{{nickname}}({{#allParams}}{{paramName}}, {{/allParams}}options);
-            const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-            return handleGeneratedApiResponse(response)
-        },
-    {{/operation}}
-    }
+const {{classname}}Fp = function(api: {{classname}}) {
+  return {
+  {{#operation}}
+    /**
+     * {{&notes}}
+     {{#summary}}
+     * @summary {{&summary}}
+     {{/summary}}
+     {{#allParams}}
+     * @param {{=<% %>=}}{<%&dataType%>}<%={{ }}=%> {{^required}}[{{/required}}{{paramName}}{{^required}}]{{/required}} {{description}}
+     {{/allParams}}
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async {{nickname}}(basePath: string, {{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/allParams}}options?: any): Promise<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}EmptyResponse{{/returnType}}> {
+      const localVarFetchArgs = await {{classname}}FetchParamCreator().{{nickname}}({{#allParams}}{{paramName}}, {{/allParams}}options);
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+  {{/operation}}
+  }
 };
 
 {{#withInterfaces}}
@@ -246,19 +246,19 @@ const {{classname}}Fp = function(api: {{classname}}, configuration?: Configurati
  */
 export interface {{classname}}Interface {
 {{#operation}}
-    /**
-     * {{&notes}}
-     {{#summary}}
-     * @summary {{&summary}}
-     {{/summary}}
-     {{#allParams}}
-     * @param {{=<% %>=}}{<%&dataType%>}<%={{ }}=%> {{^required}}[{{/required}}{{paramName}}{{^required}}]{{/required}} {{description}}
-     {{/allParams}}
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof {{classname}}Interface
-     */
-    {{nickname}}({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/allParams}}options?: any): Promise<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}{}{{/returnType}}>;
+  /**
+   * {{&notes}}
+   {{#summary}}
+   * @summary {{&summary}}
+   {{/summary}}
+   {{#allParams}}
+   * @param {{=<% %>=}}{<%&dataType%>}<%={{ }}=%> {{^required}}[{{/required}}{{paramName}}{{^required}}]{{/required}} {{description}}
+   {{/allParams}}
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof {{classname}}Interface
+   */
+  {{nickname}}({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/allParams}}options?: any): Promise<{{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}{}{{/returnType}}>;
 
 {{/operation}}
 }
@@ -277,23 +277,22 @@ export class {{classname}} extends BaseAPI implements {{classname}}Interface {
 {{^withInterfaces}}
 export class {{classname}} extends BaseAPI {
 {{/withInterfaces}}
-    {{#operation}}
-    /**
-     * {{&notes}}
-     {{#summary}}
-     * @summary {{&summary}}
-     {{/summary}}
-     {{#allParams}}
-     * @param {{=<% %>=}}{<%&dataType%>}<%={{ }}=%> {{^required}}[{{/required}}{{paramName}}{{^required}}]{{/required}} {{description}}
-     {{/allParams}}
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof {{classname}}
-     */
-    public async {{nickname}}({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/allParams}}options?: any) {
-        const functionalApi = {{classname}}Fp(this, this.configuration)
-        return functionalApi.{{nickname}}(this.basePath, {{#allParams}}{{paramName}}, {{/allParams}}options)
-    }
-    {{/operation}}
+  {{#operation}}
+  /**
+    * {{&notes}}
+    {{#summary}}
+    * @summary {{&summary}}
+    {{/summary}}
+    {{#allParams}}
+    * @param {{=<% %>=}}{<%&dataType%>}<%={{ }}=%> {{^required}}[{{/required}}{{paramName}}{{^required}}]{{/required}} {{description}}
+    {{/allParams}}
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof {{classname}}
+    */
+  public async {{nickname}}({{#allParams}}{{paramName}}{{^required}}?{{/required}}: {{{dataType}}}, {{/allParams}}options?: any) {
+    return {{classname}}Fp(this).{{nickname}}(this.basePath, {{#allParams}}{{paramName}}, {{/allParams}}options)
+  }
+  {{/operation}}
 }
 {{/operations}}{{/apis}}{{/apiInfo}}
