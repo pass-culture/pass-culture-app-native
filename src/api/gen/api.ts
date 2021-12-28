@@ -11,6 +11,7 @@
  * https://github.com/swagger-api/swagger-codegen.git
  * Do not edit the file manually.
  */
+
 import url from 'url'
 
 import { getAuthenticationHeaders, handleGeneratedApiResponse, safeFetch } from 'api/apiHelpers'
@@ -62,7 +63,6 @@ export class RequiredError extends Error {
     super(msg)
   }
 }
-
 
 /**
  * @export
@@ -2362,6 +2362,7 @@ export enum VenueTypeCodeKey {
   CREATIVEARTSSTORE = 'CREATIVE_ARTS_STORE',
   OTHER = 'OTHER',
 }
+
 /**
  * DefaultApi - fetch parameter creator
  */
