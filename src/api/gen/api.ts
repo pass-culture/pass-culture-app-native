@@ -71,49 +71,41 @@ export class RequiredError extends Error {
  */
 export interface AccountRequest {
   /**
-   * 
    * @type {string}
    * @memberof AccountRequest
    */
   appsFlyerPlatform?: string | null
   /**
-   * 
    * @type {string}
    * @memberof AccountRequest
    */
   appsFlyerUserId?: string | null
   /**
-   * 
    * @type {string}
    * @memberof AccountRequest
    */
   birthdate: string
   /**
-   * 
    * @type {string}
    * @memberof AccountRequest
    */
   email: string
   /**
-   * 
    * @type {boolean}
    * @memberof AccountRequest
    */
   marketingEmailSubscription?: boolean | null
   /**
-   * 
    * @type {string}
    * @memberof AccountRequest
    */
   password: string
   /**
-   * 
    * @type {string}
    * @memberof AccountRequest
    */
   postalCode?: string | null
   /**
-   * 
    * @type {string}
    * @memberof AccountRequest
    */
@@ -158,25 +150,21 @@ export enum ActivityIdEnum {
  */
 export interface ActivityResponseModel {
   /**
-   * 
    * @type {Array<SchoolTypesIdEnum>}
    * @memberof ActivityResponseModel
    */
   associatedSchoolTypesIds?: Array<SchoolTypesIdEnum> | null
   /**
-   * 
    * @type {string}
    * @memberof ActivityResponseModel
    */
   description?: string | null
   /**
-   * 
    * @type {ActivityIdEnum}
    * @memberof ActivityResponseModel
    */
   id: ActivityIdEnum
   /**
-   * 
    * @type {string}
    * @memberof ActivityResponseModel
    */
@@ -199,43 +187,36 @@ export enum AgentType {
  */
 export interface BeneficiaryInformationUpdateRequest {
   /**
-   * 
    * @type {ActivityEnum}
    * @memberof BeneficiaryInformationUpdateRequest
    */
   activity: ActivityEnum
   /**
-   * 
    * @type {string}
    * @memberof BeneficiaryInformationUpdateRequest
    */
   address?: string | null
   /**
-   * 
    * @type {string}
    * @memberof BeneficiaryInformationUpdateRequest
    */
   city: string
   /**
-   * 
    * @type {string}
    * @memberof BeneficiaryInformationUpdateRequest
    */
   firstName?: string | null
   /**
-   * 
    * @type {string}
    * @memberof BeneficiaryInformationUpdateRequest
    */
   lastName?: string | null
   /**
-   * 
    * @type {string}
    * @memberof BeneficiaryInformationUpdateRequest
    */
   phone?: string | null
   /**
-   * 
    * @type {string}
    * @memberof BeneficiaryInformationUpdateRequest
    */
@@ -259,13 +240,11 @@ export enum BeneficiaryValidationStep {
  */
 export interface BookOfferRequest {
   /**
-   * 
    * @type {number}
    * @memberof BookOfferRequest
    */
   quantity: number
   /**
-   * 
    * @type {number}
    * @memberof BookOfferRequest
    */
@@ -278,7 +257,6 @@ export interface BookOfferRequest {
  */
 export interface BookOfferResponse {
   /**
-   * 
    * @type {number}
    * @memberof BookOfferResponse
    */
@@ -291,13 +269,11 @@ export interface BookOfferResponse {
  */
 export interface BookingActivationCodeResponse {
   /**
-   * 
    * @type {string}
    * @memberof BookingActivationCodeResponse
    */
   code: string
   /**
-   * 
    * @type {Date}
    * @memberof BookingActivationCodeResponse
    */
@@ -322,7 +298,6 @@ export enum BookingCancellationReasons {
  */
 export interface BookingDisplayStatusRequest {
   /**
-   * 
    * @type {boolean}
    * @memberof BookingDisplayStatusRequest
    */
@@ -335,7 +310,6 @@ export interface BookingDisplayStatusRequest {
  */
 export interface BookingOfferExtraData {
   /**
-   * 
    * @type {string}
    * @memberof BookingOfferExtraData
    */
@@ -348,61 +322,51 @@ export interface BookingOfferExtraData {
  */
 export interface BookingOfferResponse {
   /**
-   * 
    * @type {BookingOfferExtraData}
    * @memberof BookingOfferResponse
    */
   extraData?: BookingOfferExtraData | null
   /**
-   * 
    * @type {number}
    * @memberof BookingOfferResponse
    */
   id: number
   /**
-   * 
    * @type {OfferImageResponse}
    * @memberof BookingOfferResponse
    */
   image?: OfferImageResponse | null
   /**
-   * 
    * @type {boolean}
    * @memberof BookingOfferResponse
    */
   isDigital: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof BookingOfferResponse
    */
   isPermanent: boolean
   /**
-   * 
    * @type {string}
    * @memberof BookingOfferResponse
    */
   name: string
   /**
-   * 
    * @type {SubcategoryIdEnum}
    * @memberof BookingOfferResponse
    */
   subcategoryId: SubcategoryIdEnum
   /**
-   * 
    * @type {string}
    * @memberof BookingOfferResponse
    */
   url?: string | null
   /**
-   * 
    * @type {BookingVenueResponse}
    * @memberof BookingOfferResponse
    */
   venue: BookingVenueResponse
   /**
-   * 
    * @type {string}
    * @memberof BookingOfferResponse
    */
@@ -415,79 +379,66 @@ export interface BookingOfferResponse {
  */
 export interface BookingReponse {
   /**
-   * 
    * @type {BookingActivationCodeResponse}
    * @memberof BookingReponse
    */
   activationCode?: BookingActivationCodeResponse | null
   /**
-   * 
    * @type {Date}
    * @memberof BookingReponse
    */
   cancellationDate?: Date | null
   /**
-   * 
    * @type {BookingCancellationReasons}
    * @memberof BookingReponse
    */
   cancellationReason?: BookingCancellationReasons | null
   /**
-   * 
    * @type {string}
    * @memberof BookingReponse
    */
   completedUrl?: string | null
   /**
-   * 
    * @type {Date}
    * @memberof BookingReponse
    */
   confirmationDate?: Date | null
   /**
-   * 
    * @type {Date}
    * @memberof BookingReponse
    */
   dateUsed?: Date | null
   /**
-   * 
    * @type {Date}
    * @memberof BookingReponse
    */
   expirationDate?: Date | null
   /**
-   * 
    * @type {number}
    * @memberof BookingReponse
    */
   id: number
   /**
-   * 
    * @type {string}
    * @memberof BookingReponse
    */
   qrCodeData?: string | null
   /**
-   * 
    * @type {number}
    * @memberof BookingReponse
    */
   quantity: number
   /**
-   * 
    * @type {BookingStockResponse}
    * @memberof BookingReponse
    */
   stock: BookingStockResponse
   /**
-   * 
    * @type {string}
    * @memberof BookingReponse
    */
   token: string
   /**
-   * 
    * @type {number}
    * @memberof BookingReponse
    */
@@ -500,19 +451,16 @@ export interface BookingReponse {
  */
 export interface BookingStockResponse {
   /**
-   * 
    * @type {Date}
    * @memberof BookingStockResponse
    */
   beginningDatetime?: Date | null
   /**
-   * 
    * @type {number}
    * @memberof BookingStockResponse
    */
   id: number
   /**
-   * 
    * @type {BookingOfferResponse}
    * @memberof BookingStockResponse
    */
@@ -525,43 +473,36 @@ export interface BookingStockResponse {
  */
 export interface BookingVenueResponse {
   /**
-   * 
    * @type {string}
    * @memberof BookingVenueResponse
    */
   address?: string | null
   /**
-   * 
    * @type {string}
    * @memberof BookingVenueResponse
    */
   city?: string | null
   /**
-   * 
    * @type {Coordinates}
    * @memberof BookingVenueResponse
    */
   coordinates: Coordinates
   /**
-   * 
    * @type {number}
    * @memberof BookingVenueResponse
    */
   id: number
   /**
-   * 
    * @type {string}
    * @memberof BookingVenueResponse
    */
   name: string
   /**
-   * 
    * @type {string}
    * @memberof BookingVenueResponse
    */
   postalCode?: string | null
   /**
-   * 
    * @type {string}
    * @memberof BookingVenueResponse
    */
@@ -574,13 +515,11 @@ export interface BookingVenueResponse {
  */
 export interface BookingsResponse {
   /**
-   * 
    * @type {Array<BookingReponse>}
    * @memberof BookingsResponse
    */
   ended_bookings: Array<BookingReponse>
   /**
-   * 
    * @type {Array<BookingReponse>}
    * @memberof BookingsResponse
    */
@@ -603,19 +542,16 @@ export enum CallToActionIcon {
  */
 export interface CallToActionMessage {
   /**
-   * 
    * @type {CallToActionIcon}
    * @memberof CallToActionMessage
    */
   callToActionIcon?: CallToActionIcon | null
   /**
-   * 
    * @type {string}
    * @memberof CallToActionMessage
    */
   callToActionLink?: string | null
   /**
-   * 
    * @type {string}
    * @memberof CallToActionMessage
    */
@@ -649,7 +585,6 @@ export enum CategoryIdEnum {
  */
 export interface ChangeBeneficiaryEmailBody {
   /**
-   * 
    * @type {string}
    * @memberof ChangeBeneficiaryEmailBody
    */
@@ -662,13 +597,11 @@ export interface ChangeBeneficiaryEmailBody {
  */
 export interface ChangePasswordRequest {
   /**
-   * 
    * @type {string}
    * @memberof ChangePasswordRequest
    */
   currentPassword: string
   /**
-   * 
    * @type {string}
    * @memberof ChangePasswordRequest
    */
@@ -681,13 +614,11 @@ export interface ChangePasswordRequest {
  */
 export interface Coordinates {
   /**
-   * 
    * @type {number}
    * @memberof Coordinates
    */
   latitude?: number | null
   /**
-   * 
    * @type {number}
    * @memberof Coordinates
    */
@@ -700,13 +631,11 @@ export interface Coordinates {
  */
 export interface Credit {
   /**
-   * 
    * @type {number}
    * @memberof Credit
    */
   initial: number
   /**
-   * 
    * @type {number}
    * @memberof Credit
    */
@@ -719,13 +648,11 @@ export interface Credit {
  */
 export interface CulturalSurveyRequest {
   /**
-   * 
    * @type {string}
    * @memberof CulturalSurveyRequest
    */
   culturalSurveyId?: string | null
   /**
-   * 
    * @type {boolean}
    * @memberof CulturalSurveyRequest
    */
@@ -738,25 +665,21 @@ export interface CulturalSurveyRequest {
  */
 export interface DepositAmountsByAge {
   /**
-   * 
    * @type {number}
    * @memberof DepositAmountsByAge
    */
   age_15?: number
   /**
-   * 
    * @type {number}
    * @memberof DepositAmountsByAge
    */
   age_16?: number
   /**
-   * 
    * @type {number}
    * @memberof DepositAmountsByAge
    */
   age_17?: number
   /**
-   * 
    * @type {number}
    * @memberof DepositAmountsByAge
    */
@@ -778,19 +701,16 @@ export enum DepositType {
  */
 export interface DomainsCredit {
   /**
-   * 
    * @type {Credit}
    * @memberof DomainsCredit
    */
   all: Credit
   /**
-   * 
    * @type {Credit}
    * @memberof DomainsCredit
    */
   digital?: Credit | null
   /**
-   * 
    * @type {Credit}
    * @memberof DomainsCredit
    */
@@ -831,13 +751,11 @@ export enum ExpenseDomain {
  */
 export interface FavoriteMediationResponse {
   /**
-   * 
    * @type {string}
    * @memberof FavoriteMediationResponse
    */
   credit?: string | null
   /**
-   * 
    * @type {string}
    * @memberof FavoriteMediationResponse
    */
@@ -850,85 +768,71 @@ export interface FavoriteMediationResponse {
  */
 export interface FavoriteOfferResponse {
   /**
-   * 
    * @type {Coordinates}
    * @memberof FavoriteOfferResponse
    */
   coordinates: Coordinates
   /**
-   * 
    * @type {Date}
    * @memberof FavoriteOfferResponse
    */
   date?: Date | null
   /**
-   * 
    * @type {Array<ExpenseDomain>}
    * @memberof FavoriteOfferResponse
    */
   expenseDomains: Array<ExpenseDomain>
   /**
-   * 
    * @type {string}
    * @memberof FavoriteOfferResponse
    */
   externalTicketOfficeUrl?: string | null
   /**
-   * 
    * @type {number}
    * @memberof FavoriteOfferResponse
    */
   id: number
   /**
-   * 
    * @type {FavoriteMediationResponse}
    * @memberof FavoriteOfferResponse
    */
   image?: FavoriteMediationResponse | null
   /**
-   * 
    * @type {boolean}
    * @memberof FavoriteOfferResponse
    */
   isExpired?: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof FavoriteOfferResponse
    */
   isReleased: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof FavoriteOfferResponse
    */
   isSoldOut?: boolean
   /**
-   * 
    * @type {string}
    * @memberof FavoriteOfferResponse
    */
   name: string
   /**
-   * 
    * @type {number}
    * @memberof FavoriteOfferResponse
    */
   price?: number | null
   /**
-   * 
    * @type {Date}
    * @memberof FavoriteOfferResponse
    */
   startDate?: Date | null
   /**
-   * 
    * @type {number}
    * @memberof FavoriteOfferResponse
    */
   startPrice?: number | null
   /**
-   * 
    * @type {SubcategoryIdEnum}
    * @memberof FavoriteOfferResponse
    */
@@ -941,7 +845,6 @@ export interface FavoriteOfferResponse {
  */
 export interface FavoriteRequest {
   /**
-   * 
    * @type {number}
    * @memberof FavoriteRequest
    */
@@ -954,13 +857,11 @@ export interface FavoriteRequest {
  */
 export interface FavoriteResponse {
   /**
-   * 
    * @type {number}
    * @memberof FavoriteResponse
    */
   id: number
   /**
-   * 
    * @type {FavoriteOfferResponse}
    * @memberof FavoriteResponse
    */
@@ -973,7 +874,6 @@ export interface FavoriteResponse {
  */
 export interface FavoritesCountResponse {
   /**
-   * 
    * @type {number}
    * @memberof FavoritesCountResponse
    */
@@ -986,13 +886,11 @@ export interface FavoritesCountResponse {
  */
 export interface GetIdCheckTokenResponse {
   /**
-   * 
    * @type {string}
    * @memberof GetIdCheckTokenResponse
    */
   token?: string | null
   /**
-   * 
    * @type {Date}
    * @memberof GetIdCheckTokenResponse
    */
@@ -1024,13 +922,11 @@ export enum HomepageLabelNameEnum {
  */
 export interface HomepageLabelResponseModel {
   /**
-   * 
    * @type {HomepageLabelNameEnum}
    * @memberof HomepageLabelResponseModel
    */
   name: HomepageLabelNameEnum
   /**
-   * 
    * @type {string}
    * @memberof HomepageLabelResponseModel
    */
@@ -1043,7 +939,6 @@ export interface HomepageLabelResponseModel {
  */
 export interface IdentificationSessionRequest {
   /**
-   * 
    * @type {string}
    * @memberof IdentificationSessionRequest
    */
@@ -1056,7 +951,6 @@ export interface IdentificationSessionRequest {
  */
 export interface IdentificationSessionResponse {
   /**
-   * 
    * @type {string}
    * @memberof IdentificationSessionResponse
    */
@@ -1088,25 +982,21 @@ export enum MaintenancePageType {
  */
 export interface NextSubscriptionStepResponse {
   /**
-   * 
    * @type {Array<IdentityCheckMethod>}
    * @memberof NextSubscriptionStepResponse
    */
   allowedIdentityCheckMethods: Array<IdentityCheckMethod>
   /**
-   * 
    * @type {boolean}
    * @memberof NextSubscriptionStepResponse
    */
   hasIdentityCheckPending: boolean
   /**
-   * 
    * @type {MaintenancePageType}
    * @memberof NextSubscriptionStepResponse
    */
   maintenancePageType?: MaintenancePageType | null
   /**
-   * 
    * @type {SubscriptionStep}
    * @memberof NextSubscriptionStepResponse
    */
@@ -1119,13 +1009,11 @@ export interface NextSubscriptionStepResponse {
  */
 export interface NotificationSubscriptions {
   /**
-   * 
    * @type {boolean}
    * @memberof NotificationSubscriptions
    */
   marketingEmail: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof NotificationSubscriptions
    */
@@ -1138,25 +1026,21 @@ export interface NotificationSubscriptions {
  */
 export interface OfferAccessibilityResponse {
   /**
-   * 
    * @type {boolean}
    * @memberof OfferAccessibilityResponse
    */
   audioDisability?: boolean | null
   /**
-   * 
    * @type {boolean}
    * @memberof OfferAccessibilityResponse
    */
   mentalDisability?: boolean | null
   /**
-   * 
    * @type {boolean}
    * @memberof OfferAccessibilityResponse
    */
   motorDisability?: boolean | null
   /**
-   * 
    * @type {boolean}
    * @memberof OfferAccessibilityResponse
    */
@@ -1169,67 +1053,56 @@ export interface OfferAccessibilityResponse {
  */
 export interface OfferExtraData {
   /**
-   * 
    * @type {string}
    * @memberof OfferExtraData
    */
   author?: string | null
   /**
-   * 
    * @type {number}
    * @memberof OfferExtraData
    */
   durationMinutes?: number | null
   /**
-   * 
    * @type {string}
    * @memberof OfferExtraData
    */
   isbn?: string | null
   /**
-   * 
    * @type {string}
    * @memberof OfferExtraData
    */
   musicSubType?: string | null
   /**
-   * 
    * @type {string}
    * @memberof OfferExtraData
    */
   musicType?: string | null
   /**
-   * 
    * @type {string}
    * @memberof OfferExtraData
    */
   performer?: string | null
   /**
-   * 
    * @type {string}
    * @memberof OfferExtraData
    */
   showSubType?: string | null
   /**
-   * 
    * @type {string}
    * @memberof OfferExtraData
    */
   showType?: string | null
   /**
-   * 
    * @type {string}
    * @memberof OfferExtraData
    */
   speaker?: string | null
   /**
-   * 
    * @type {string}
    * @memberof OfferExtraData
    */
   stageDirector?: string | null
   /**
-   * 
    * @type {string}
    * @memberof OfferExtraData
    */
@@ -1242,13 +1115,11 @@ export interface OfferExtraData {
  */
 export interface OfferImageResponse {
   /**
-   * 
    * @type {string}
    * @memberof OfferImageResponse
    */
   credit?: string | null
   /**
-   * 
    * @type {string}
    * @memberof OfferImageResponse
    */
@@ -1261,7 +1132,6 @@ export interface OfferImageResponse {
  */
 export interface OfferOffererResponse {
   /**
-   * 
    * @type {string}
    * @memberof OfferOffererResponse
    */
@@ -1274,7 +1144,6 @@ export interface OfferOffererResponse {
  */
 export interface OfferReportReasons {
   /**
-   * 
    * @type {{ [key: string]: ReasonMeta; }}
    * @memberof OfferReportReasons
    */
@@ -1287,13 +1156,11 @@ export interface OfferReportReasons {
  */
 export interface OfferReportRequest {
   /**
-   * 
    * @type {string}
    * @memberof OfferReportRequest
    */
   customReason?: string | null
   /**
-   * 
    * @type {string}
    * @memberof OfferReportRequest
    */
@@ -1306,115 +1173,96 @@ export interface OfferReportRequest {
  */
 export interface OfferResponse {
   /**
-   * 
    * @type {OfferAccessibilityResponse}
    * @memberof OfferResponse
    */
   accessibility: OfferAccessibilityResponse
   /**
-   * 
    * @type {string}
    * @memberof OfferResponse
    */
   description?: string | null
   /**
-   * 
    * @type {Array<ExpenseDomain>}
    * @memberof OfferResponse
    */
   expenseDomains: Array<ExpenseDomain>
   /**
-   * 
    * @type {string}
    * @memberof OfferResponse
    */
   externalTicketOfficeUrl?: string | null
   /**
-   * 
    * @type {OfferExtraData}
    * @memberof OfferResponse
    */
   extraData?: OfferExtraData | null
   /**
-   * 
    * @type {number}
    * @memberof OfferResponse
    */
   id: number
   /**
-   * 
    * @type {OfferImageResponse}
    * @memberof OfferResponse
    */
   image?: OfferImageResponse | null
   /**
-   * 
    * @type {boolean}
    * @memberof OfferResponse
    */
   isDigital: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof OfferResponse
    */
   isDuo: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof OfferResponse
    */
   isEducational: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof OfferResponse
    */
   isExpired: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof OfferResponse
    */
   isForbiddenToUnderage: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof OfferResponse
    */
   isReleased: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof OfferResponse
    */
   isSoldOut: boolean
   /**
-   * 
    * @type {string}
    * @memberof OfferResponse
    */
   name: string
   /**
-   * 
    * @type {Array<OfferStockResponse>}
    * @memberof OfferResponse
    */
   stocks: Array<OfferStockResponse>
   /**
-   * 
    * @type {SubcategoryIdEnum}
    * @memberof OfferResponse
    */
   subcategoryId: SubcategoryIdEnum
   /**
-   * 
    * @type {OfferVenueResponse}
    * @memberof OfferResponse
    */
   venue: OfferVenueResponse
   /**
-   * 
    * @type {string}
    * @memberof OfferResponse
    */
@@ -1427,7 +1275,6 @@ export interface OfferResponse {
  */
 export interface OfferStockActivationCodeResponse {
   /**
-   * 
    * @type {Date}
    * @memberof OfferStockActivationCodeResponse
    */
@@ -1440,61 +1287,51 @@ export interface OfferStockActivationCodeResponse {
  */
 export interface OfferStockResponse {
   /**
-   * 
    * @type {OfferStockActivationCodeResponse}
    * @memberof OfferStockResponse
    */
   activationCode?: OfferStockActivationCodeResponse | null
   /**
-   * 
    * @type {Date}
    * @memberof OfferStockResponse
    */
   beginningDatetime?: Date | null
   /**
-   * 
    * @type {Date}
    * @memberof OfferStockResponse
    */
   bookingLimitDatetime?: Date | null
   /**
-   * 
    * @type {Date}
    * @memberof OfferStockResponse
    */
   cancellationLimitDatetime?: Date | null
   /**
-   * 
    * @type {number}
    * @memberof OfferStockResponse
    */
   id: number
   /**
-   * 
    * @type {boolean}
    * @memberof OfferStockResponse
    */
   isBookable: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof OfferStockResponse
    */
   isExpired: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof OfferStockResponse
    */
   isForbiddenToUnderage: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof OfferStockResponse
    */
   isSoldOut: boolean
   /**
-   * 
    * @type {number}
    * @memberof OfferStockResponse
    */
@@ -1507,55 +1344,46 @@ export interface OfferStockResponse {
  */
 export interface OfferVenueResponse {
   /**
-   * 
    * @type {string}
    * @memberof OfferVenueResponse
    */
   address?: string | null
   /**
-   * 
    * @type {string}
    * @memberof OfferVenueResponse
    */
   city?: string | null
   /**
-   * 
    * @type {Coordinates}
    * @memberof OfferVenueResponse
    */
   coordinates: Coordinates
   /**
-   * 
    * @type {number}
    * @memberof OfferVenueResponse
    */
   id: number
   /**
-   * 
    * @type {boolean}
    * @memberof OfferVenueResponse
    */
   isPermanent: boolean
   /**
-   * 
    * @type {string}
    * @memberof OfferVenueResponse
    */
   name: string
   /**
-   * 
    * @type {OfferOffererResponse}
    * @memberof OfferVenueResponse
    */
   offerer: OfferOffererResponse
   /**
-   * 
    * @type {string}
    * @memberof OfferVenueResponse
    */
   postalCode?: string | null
   /**
-   * 
    * @type {string}
    * @memberof OfferVenueResponse
    */
@@ -1578,19 +1406,16 @@ export enum OnlineOfflinePlatformChoicesEnum {
  */
 export interface PaginatedFavoritesResponse {
   /**
-   * 
    * @type {Array<FavoriteResponse>}
    * @memberof PaginatedFavoritesResponse
    */
   favorites: Array<FavoriteResponse>
   /**
-   * 
    * @type {number}
    * @memberof PaginatedFavoritesResponse
    */
   nbFavorites: number
   /**
-   * 
    * @type {number}
    * @memberof PaginatedFavoritesResponse
    */
@@ -1616,13 +1441,11 @@ export enum PopOverIcon {
  */
 export interface ProfileOptionsResponse {
   /**
-   * 
    * @type {Array<ActivityResponseModel>}
    * @memberof ProfileOptionsResponse
    */
   activities: Array<ActivityResponseModel>
   /**
-   * 
    * @type {Array<SchoolTypeResponseModel>}
    * @memberof ProfileOptionsResponse
    */
@@ -1635,49 +1458,41 @@ export interface ProfileOptionsResponse {
  */
 export interface ProfileUpdateRequest {
   /**
-   * 
    * @type {ActivityEnum}
    * @memberof ProfileUpdateRequest
    */
   activity?: ActivityEnum | null
   /**
-   * 
    * @type {ActivityIdEnum}
    * @memberof ProfileUpdateRequest
    */
   activityId?: ActivityIdEnum | null
   /**
-   * 
    * @type {string}
    * @memberof ProfileUpdateRequest
    */
   address?: string | null
   /**
-   * 
    * @type {string}
    * @memberof ProfileUpdateRequest
    */
   city: string
   /**
-   * 
    * @type {string}
    * @memberof ProfileUpdateRequest
    */
   firstName: string
   /**
-   * 
    * @type {string}
    * @memberof ProfileUpdateRequest
    */
   lastName: string
   /**
-   * 
    * @type {string}
    * @memberof ProfileUpdateRequest
    */
   postalCode: string
   /**
-   * 
    * @type {SchoolTypesIdEnum}
    * @memberof ProfileUpdateRequest
    */
@@ -1701,13 +1516,11 @@ export enum Reason {
  */
 export interface ReasonMeta {
   /**
-   * 
    * @type {string}
    * @memberof ReasonMeta
    */
   description: string
   /**
-   * 
    * @type {string}
    * @memberof ReasonMeta
    */
@@ -1720,7 +1533,6 @@ export interface ReasonMeta {
  */
 export interface RefreshResponse {
   /**
-   * 
    * @type {string}
    * @memberof RefreshResponse
    */
@@ -1733,19 +1545,16 @@ export interface RefreshResponse {
  */
 export interface ReportedOffer {
   /**
-   * 
    * @type {number}
    * @memberof ReportedOffer
    */
   offerId: number
   /**
-   * 
    * @type {Reason}
    * @memberof ReportedOffer
    */
   reason: Reason
   /**
-   * 
    * @type {Date}
    * @memberof ReportedOffer
    */
@@ -1758,13 +1567,11 @@ export interface ReportedOffer {
  */
 export interface RequestPasswordResetRequest {
   /**
-   * 
    * @type {string}
    * @memberof RequestPasswordResetRequest
    */
   email: string
   /**
-   * 
    * @type {string}
    * @memberof RequestPasswordResetRequest
    */
@@ -1777,7 +1584,6 @@ export interface RequestPasswordResetRequest {
  */
 export interface ResendEmailValidationRequest {
   /**
-   * 
    * @type {string}
    * @memberof ResendEmailValidationRequest
    */
@@ -1790,13 +1596,11 @@ export interface ResendEmailValidationRequest {
  */
 export interface ResetPasswordRequest {
   /**
-   * 
    * @type {string}
    * @memberof ResetPasswordRequest
    */
   newPassword: string
   /**
-   * 
    * @type {string}
    * @memberof ResetPasswordRequest
    */
@@ -1809,19 +1613,16 @@ export interface ResetPasswordRequest {
  */
 export interface SchoolTypeResponseModel {
   /**
-   * 
    * @type {string}
    * @memberof SchoolTypeResponseModel
    */
   description?: string | null
   /**
-   * 
    * @type {SchoolTypesIdEnum}
    * @memberof SchoolTypeResponseModel
    */
   id: SchoolTypesIdEnum
   /**
-   * 
    * @type {string}
    * @memberof SchoolTypeResponseModel
    */
@@ -1870,13 +1671,11 @@ export enum SearchGroupNameEnum {
  */
 export interface SearchGroupResponseModel {
   /**
-   * 
    * @type {SearchGroupNameEnum}
    * @memberof SearchGroupResponseModel
    */
   name: SearchGroupNameEnum
   /**
-   * 
    * @type {string}
    * @memberof SearchGroupResponseModel
    */
@@ -1889,7 +1688,6 @@ export interface SearchGroupResponseModel {
  */
 export interface SendPhoneValidationRequest {
   /**
-   * 
    * @type {string}
    * @memberof SendPhoneValidationRequest
    */
@@ -1902,97 +1700,81 @@ export interface SendPhoneValidationRequest {
  */
 export interface SettingsResponse {
   /**
-   * 
    * @type {number}
    * @memberof SettingsResponse
    */
   accountCreationMinimumAge: number
   /**
-   * 
    * @type {boolean}
    * @memberof SettingsResponse
    */
   allowIdCheckRegistration: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof SettingsResponse
    */
   autoActivateDigitalBookings: boolean
   /**
-   * 
    * @type {number}
    * @memberof SettingsResponse
    */
   depositAmount: number
   /**
-   * 
    * @type {DepositAmountsByAge}
    * @memberof SettingsResponse
    */
   depositAmountsByAge?: DepositAmountsByAge
   /**
-   * 
    * @type {boolean}
    * @memberof SettingsResponse
    */
   displayDmsRedirection: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof SettingsResponse
    */
   enableCulturalSurvey: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof SettingsResponse
    */
   enableIdCheckRetention: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof SettingsResponse
    */
   enableNativeEacIndividual: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof SettingsResponse
    */
   enableNativeIdCheckVerboseDebugging: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof SettingsResponse
    */
   enablePhoneValidation: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof SettingsResponse
    */
   enableUnderageGeneralisation: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof SettingsResponse
    */
   idCheckAddressAutocompletion: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof SettingsResponse
    */
   isRecaptchaEnabled: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof SettingsResponse
    */
   isWebappV2Enabled: boolean
   /**
-   * 
    * @type {string}
    * @memberof SettingsResponse
    */
@@ -2005,13 +1787,11 @@ export interface SettingsResponse {
  */
 export interface SigninRequest {
   /**
-   * 
    * @type {string}
    * @memberof SigninRequest
    */
   identifier: string
   /**
-   * 
    * @type {string}
    * @memberof SigninRequest
    */
@@ -2024,13 +1804,11 @@ export interface SigninRequest {
  */
 export interface SigninResponse {
   /**
-   * 
    * @type {string}
    * @memberof SigninResponse
    */
   accessToken: string
   /**
-   * 
    * @type {string}
    * @memberof SigninResponse
    */
@@ -2043,19 +1821,16 @@ export interface SigninResponse {
  */
 export interface SubcategoriesResponseModel {
   /**
-   * 
    * @type {Array<HomepageLabelResponseModel>}
    * @memberof SubcategoriesResponseModel
    */
   homepageLabels: Array<HomepageLabelResponseModel>
   /**
-   * 
    * @type {Array<SearchGroupResponseModel>}
    * @memberof SubcategoriesResponseModel
    */
   searchGroups: Array<SearchGroupResponseModel>
   /**
-   * 
    * @type {Array<SubcategoryResponseModel>}
    * @memberof SubcategoriesResponseModel
    */
@@ -2146,43 +1921,36 @@ export enum SubcategoryIdEnum {
  */
 export interface SubcategoryResponseModel {
   /**
-   * 
    * @type {string}
    * @memberof SubcategoryResponseModel
    */
   appLabel: string
   /**
-   * 
    * @type {CategoryIdEnum}
    * @memberof SubcategoryResponseModel
    */
   categoryId: CategoryIdEnum
   /**
-   * 
    * @type {HomepageLabelNameEnum}
    * @memberof SubcategoryResponseModel
    */
   homepageLabelName: HomepageLabelNameEnum
   /**
-   * 
    * @type {SubcategoryIdEnum}
    * @memberof SubcategoryResponseModel
    */
   id: SubcategoryIdEnum
   /**
-   * 
    * @type {boolean}
    * @memberof SubcategoryResponseModel
    */
   isEvent: boolean
   /**
-   * 
    * @type {OnlineOfflinePlatformChoicesEnum}
    * @memberof SubcategoryResponseModel
    */
   onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum
   /**
-   * 
    * @type {SearchGroupNameEnum}
    * @memberof SubcategoryResponseModel
    */
@@ -2195,25 +1963,21 @@ export interface SubcategoryResponseModel {
  */
 export interface SubscriptionMessage {
   /**
-   * 
    * @type {CallToActionMessage}
    * @memberof SubscriptionMessage
    */
   callToAction?: CallToActionMessage | null
   /**
-   * 
    * @type {PopOverIcon}
    * @memberof SubscriptionMessage
    */
   popOverIcon?: PopOverIcon | null
   /**
-   * 
    * @type {Date}
    * @memberof SubscriptionMessage
    */
   updatedAt: Date
   /**
-   * 
    * @type {string}
    * @memberof SubscriptionMessage
    */
@@ -2240,7 +2004,6 @@ export enum SubscriptionStep {
  */
 export interface UpdateEmailTokenExpiration {
   /**
-   * 
    * @type {Date}
    * @memberof UpdateEmailTokenExpiration
    */
@@ -2253,13 +2016,11 @@ export interface UpdateEmailTokenExpiration {
  */
 export interface UserProfileEmailUpdate {
   /**
-   * 
    * @type {string}
    * @memberof UserProfileEmailUpdate
    */
   email: string
   /**
-   * 
    * @type {string}
    * @memberof UserProfileEmailUpdate
    */
@@ -2272,157 +2033,131 @@ export interface UserProfileEmailUpdate {
  */
 export interface UserProfileResponse {
   /**
-   * 
    * @type {Array<EligibilityCheckMethods>}
    * @memberof UserProfileResponse
    */
   allowedEligibilityCheckMethods?: Array<EligibilityCheckMethods> | null
   /**
-   * 
    * @type {{ [key: string]: number; }}
    * @memberof UserProfileResponse
    */
   bookedOffers: { [key: string]: number; }
   /**
-   * 
    * @type {string}
    * @memberof UserProfileResponse
    */
   dateOfBirth?: string | null
   /**
-   * 
    * @type {Date}
    * @memberof UserProfileResponse
    */
   depositExpirationDate?: Date | null
   /**
-   * 
    * @type {DepositType}
    * @memberof UserProfileResponse
    */
   depositType?: DepositType | null
   /**
-   * 
    * @type {number}
    * @memberof UserProfileResponse
    */
   depositVersion?: number | null
   /**
-   * 
    * @type {DomainsCredit}
    * @memberof UserProfileResponse
    */
   domainsCredit?: DomainsCredit | null
   /**
-   * 
    * @type {EligibilityType}
    * @memberof UserProfileResponse
    */
   eligibility?: EligibilityType | null
   /**
-   * 
    * @type {Date}
    * @memberof UserProfileResponse
    */
   eligibilityEndDatetime?: Date | null
   /**
-   * 
    * @type {Date}
    * @memberof UserProfileResponse
    */
   eligibilityStartDatetime?: Date | null
   /**
-   * 
    * @type {string}
    * @memberof UserProfileResponse
    */
   email: string
   /**
-   * 
    * @type {string}
    * @memberof UserProfileResponse
    */
   firstName?: string | null
   /**
-   * 
    * @type {boolean}
    * @memberof UserProfileResponse
    */
   hasCompletedIdCheck?: boolean | null
   /**
-   * 
    * @type {number}
    * @memberof UserProfileResponse
    */
   id: number
   /**
-   * 
    * @type {boolean}
    * @memberof UserProfileResponse
    */
   isBeneficiary: boolean
   /**
-   * 
    * @type {boolean}
    * @memberof UserProfileResponse
    */
   isEligibleForBeneficiaryUpgrade: boolean
   /**
-   * 
    * @type {string}
    * @memberof UserProfileResponse
    */
   lastName?: string | null
   /**
-   * 
    * @type {boolean}
    * @memberof UserProfileResponse
    */
   needsToFillCulturalSurvey: boolean
   /**
-   * 
    * @type {BeneficiaryValidationStep}
    * @memberof UserProfileResponse
    */
   nextBeneficiaryValidationStep?: BeneficiaryValidationStep | null
   /**
-   * 
    * @type {string}
    * @memberof UserProfileResponse
    */
   phoneNumber?: string | null
   /**
-   * 
    * @type {string}
    * @memberof UserProfileResponse
    */
   pseudo?: string | null
   /**
-   * 
    * @type {number}
    * @memberof UserProfileResponse
    */
   recreditAmountToShow?: number | null
   /**
-   * 
    * @type {Array<UserRole>}
    * @memberof UserProfileResponse
    */
   roles: Array<UserRole>
   /**
-   * 
    * @type {boolean}
    * @memberof UserProfileResponse
    */
   showEligibleCard: boolean
   /**
-   * 
    * @type {SubscriptionMessage}
    * @memberof UserProfileResponse
    */
   subscriptionMessage?: SubscriptionMessage | null
   /**
-   * 
    * @type {NotificationSubscriptions}
    * @memberof UserProfileResponse
    */
@@ -2435,7 +2170,6 @@ export interface UserProfileResponse {
  */
 export interface UserProfileUpdateRequest {
   /**
-   * 
    * @type {NotificationSubscriptions}
    * @memberof UserProfileUpdateRequest
    */
@@ -2448,19 +2182,16 @@ export interface UserProfileUpdateRequest {
  */
 export interface UserProfilingFraudRequest {
   /**
-   * 
    * @type {AgentType}
    * @memberof UserProfilingFraudRequest
    */
   agentType?: AgentType | null
   /**
-   * 
    * @type {string}
    * @memberof UserProfilingFraudRequest
    */
   sessionId?: string | null
   /**
-   * 
    * @type {string}
    * @memberof UserProfilingFraudRequest
    */
@@ -2473,7 +2204,6 @@ export interface UserProfilingFraudRequest {
  */
 export interface UserProfilingSessionIdResponse {
   /**
-   * 
    * @type {string}
    * @memberof UserProfilingSessionIdResponse
    */
@@ -2486,7 +2216,6 @@ export interface UserProfilingSessionIdResponse {
  */
 export interface UserReportedOffersResponse {
   /**
-   * 
    * @type {Array<ReportedOffer>}
    * @memberof UserReportedOffersResponse
    */
@@ -2511,7 +2240,6 @@ export enum UserRole {
  */
 export interface ValidateEmailRequest {
   /**
-   * 
    * @type {string}
    * @memberof ValidateEmailRequest
    */
@@ -2524,13 +2252,11 @@ export interface ValidateEmailRequest {
  */
 export interface ValidateEmailResponse {
   /**
-   * 
    * @type {string}
    * @memberof ValidateEmailResponse
    */
   accessToken: string
   /**
-   * 
    * @type {string}
    * @memberof ValidateEmailResponse
    */
@@ -2543,7 +2269,6 @@ export interface ValidateEmailResponse {
  */
 export interface ValidatePhoneNumberRequest {
   /**
-   * 
    * @type {string}
    * @memberof ValidatePhoneNumberRequest
    */
@@ -2556,25 +2281,21 @@ export interface ValidatePhoneNumberRequest {
  */
 export interface VenueAccessibilityModel {
   /**
-   * 
    * @type {boolean}
    * @memberof VenueAccessibilityModel
    */
   audioDisability?: boolean | null
   /**
-   * 
    * @type {boolean}
    * @memberof VenueAccessibilityModel
    */
   mentalDisability?: boolean | null
   /**
-   * 
    * @type {boolean}
    * @memberof VenueAccessibilityModel
    */
   motorDisability?: boolean | null
   /**
-   * 
    * @type {boolean}
    * @memberof VenueAccessibilityModel
    */
@@ -2587,25 +2308,21 @@ export interface VenueAccessibilityModel {
  */
 export interface VenueContactModel {
   /**
-   * 
    * @type {string}
    * @memberof VenueContactModel
    */
   email?: string
   /**
-   * 
    * @type {string}
    * @memberof VenueContactModel
    */
   phoneNumber?: string
   /**
-   * 
    * @type {{ [key: string]: string; }}
    * @memberof VenueContactModel
    */
   socialMedias?: { [key: string]: string; }
   /**
-   * 
    * @type {string}
    * @memberof VenueContactModel
    */
@@ -2618,91 +2335,76 @@ export interface VenueContactModel {
  */
 export interface VenueResponse {
   /**
-   * 
    * @type {VenueAccessibilityModel}
    * @memberof VenueResponse
    */
   accessibility: VenueAccessibilityModel
   /**
-   * 
    * @type {string}
    * @memberof VenueResponse
    */
   address?: string | null
   /**
-   * 
    * @type {string}
    * @memberof VenueResponse
    */
   city?: string | null
   /**
-   * 
    * @type {VenueContactModel}
    * @memberof VenueResponse
    */
   contact?: VenueContactModel | null
   /**
-   * 
    * @type {string}
    * @memberof VenueResponse
    */
   description?: string | null
   /**
-   * 
    * @type {number}
    * @memberof VenueResponse
    */
   id: number
   /**
-   * 
    * @type {boolean}
    * @memberof VenueResponse
    */
   isPermanent?: boolean | null
   /**
-   * 
    * @type {boolean}
    * @memberof VenueResponse
    */
   isVirtual: boolean
   /**
-   * 
    * @type {number}
    * @memberof VenueResponse
    */
   latitude?: number | null
   /**
-   * 
    * @type {number}
    * @memberof VenueResponse
    */
   longitude?: number | null
   /**
-   * 
    * @type {string}
    * @memberof VenueResponse
    */
   name: string
   /**
-   * 
    * @type {string}
    * @memberof VenueResponse
    */
   postalCode?: string | null
   /**
-   * 
    * @type {string}
    * @memberof VenueResponse
    */
   publicName?: string | null
   /**
-   * 
    * @type {VenueTypeCodeKey}
    * @memberof VenueResponse
    */
   venueTypeCode?: VenueTypeCodeKey | null
   /**
-   * 
    * @type {string}
    * @memberof VenueResponse
    */
