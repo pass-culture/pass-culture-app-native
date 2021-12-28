@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
-import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
+import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
@@ -24,7 +24,7 @@ export const ButtonWithLinearGradient: React.FC<Props> = ({
   <Container onPress={onPress} disabled={isDisabled} {...accessibilityAndTestId(wording)}>
     {isDisabled ? <DisabledRectangle /> : <Rectangle height={getSpacing(12)} size="100%" />}
     <LegendContainer>
-      {!!isExternal && <ExternalLinkSite color={ColorsEnum.WHITE} />}
+      {!!isExternal && <ExternalSite size={24} color={ColorsEnum.WHITE} />}
       <Title adjustsFontSizeToFit numberOfLines={1}>
         {wording}
       </Title>

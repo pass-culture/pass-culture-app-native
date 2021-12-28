@@ -6,7 +6,7 @@ import { openUrl } from 'features/navigation/helpers'
 import { hasEnoughCredit } from 'features/offer/services/useHasEnoughCredit'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ExternalLinkSite } from 'ui/svg/icons/ExternalLinkSite'
+import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 
 interface Props {
   offer: FavoriteOfferResponse
@@ -85,7 +85,8 @@ const BookExternallyButton = ({
     <ButtonPrimary
       title={t`Réserver`}
       onPress={() => url && openUrl(url, { analyticsData: { offerId } })}
-      icon={ExternalLinkSite}
+      icon={ExternalSite}
+      iconSize={22}
       buttonHeight="tall"
     />
   ) : null
