@@ -549,7 +549,7 @@ Array [
               "height": 428,
               "justifyContent": "center",
               "maxHeight": 650,
-              "maxWidth": 750,
+              "maxWidth": 960,
               "paddingBottom": 20,
               "paddingLeft": 20,
               "paddingRight": 20,

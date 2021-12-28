@@ -4,6 +4,14 @@ import { DefaultTheme, ThemeProvider as DefaultThemeProvider } from 'styled-comp
 
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 
+export type ComputedTheme = DefaultTheme & {
+  isMobileViewport?: boolean
+  isTabletViewport?: boolean
+  isDesktopViewport?: boolean
+  showTabBar: boolean
+  appContentWidth: number
+}
+
 export const ThemeProvider: React.FC<{ theme: DefaultTheme }> = ({ children, theme }) => {
   const { width: windowWidth } = useWindowDimensions()
   const tabletMinWidth = theme.breakpoints.md
@@ -15,7 +23,7 @@ export const ThemeProvider: React.FC<{ theme: DefaultTheme }> = ({ children, the
   const showTabBar = theme.isTouch || !!isMobileViewport
   const appContentWidth = Math.min(desktopMinWidth, windowWidth)
 
-  const computedTheme = useMemo(
+  const computedTheme = useMemo<ComputedTheme>(
     () => ({
       ...theme,
       isMobileViewport,

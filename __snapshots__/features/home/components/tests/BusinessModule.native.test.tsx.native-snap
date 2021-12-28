@@ -55,16 +55,16 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
         style={
           Array [
             Object {
-              "height": 234,
+              "height": 304,
               "justifyContent": "center",
               "maxHeight": 144,
-              "width": 702,
+              "width": 912,
             },
           ]
         }
       >
         <Image
-          height={234}
+          height={304}
           source={
             Object {
               "uri": "https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg",
@@ -87,7 +87,7 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
             ]
           }
           testID="imageBusiness"
-          width={702}
+          width={912}
         />
         <View
           style={
@@ -259,16 +259,16 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
         style={
           Array [
             Object {
-              "height": 234,
+              "height": 304,
               "justifyContent": "center",
               "maxHeight": 144,
-              "width": 702,
+              "width": 912,
             },
           ]
         }
       >
         <Image
-          height={234}
+          height={304}
           source={
             Object {
               "uri": "https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg",
@@ -291,7 +291,7 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
             ]
           }
           testID="imageBusiness"
-          width={702}
+          width={912}
         />
         <View
           style={

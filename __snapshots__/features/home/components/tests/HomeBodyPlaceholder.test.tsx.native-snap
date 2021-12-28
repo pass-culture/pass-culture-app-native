@@ -2331,19 +2331,19 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
   >
     <View
       borderRadius={8}
-      height={234}
+      height={304}
       style={
         Array [
           Object {
             "backgroundColor": "#DDDDDD",
             "borderRadius": 8,
-            "height": 234,
+            "height": 304,
             "overflow": "hidden",
-            "width": 702,
+            "width": 912,
           },
         ]
       }
-      width={702}
+      width={912}
     >
       <BVLinearGradient
         collapsable={false}
@@ -2379,7 +2379,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             "top": 0,
             "transform": Array [
               Object {
-                "translateX": -877.5,
+                "translateX": -1140,
               },
             ],
           }

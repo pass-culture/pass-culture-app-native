@@ -53,15 +53,15 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
             Array [
               Object {
                 "height": 312,
-                "width": 750,
+                "width": 960,
               },
             ]
           }
-          width={750}
+          width={960}
         />
         <View
           height={8}
-          width={750}
+          width={960}
         >
           <Text>
             undefined-SVG-Mock
@@ -95,7 +95,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
               "aspectRatio": 0.6666666666666666,
               "borderRadius": 8,
               "height": 296,
-              "maxWidth": 702,
+              "maxWidth": 912,
               "width": 197,
             },
           ]
@@ -112,7 +112,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                 "aspectRatio": 0.6666666666666666,
                 "borderRadius": 8,
                 "height": 296,
-                "maxWidth": 702,
+                "maxWidth": 912,
                 "width": 197,
               },
             ]
@@ -1221,7 +1221,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                 "height": 428,
                 "justifyContent": "center",
                 "maxHeight": 650,
-                "maxWidth": 750,
+                "maxWidth": 960,
                 "paddingBottom": 20,
                 "paddingLeft": 20,
                 "paddingRight": 20,

@@ -365,7 +365,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
           </Text>
         </View>
         <View
-          parentWidth={231.33333333333334}
+          parentWidth={301.3333333333333}
           style={
             Array [
               Object {
@@ -375,10 +375,10 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
                 "position": "absolute",
                 "transform": Array [
                   Object {
-                    "rotate": "-18.924644416051237deg",
+                    "rotate": "-14.774550275046582deg",
                   },
                 ],
-                "width": 255.33333333333334,
+                "width": 325.3333333333333,
               },
             ]
           }
@@ -496,7 +496,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
           </Text>
         </View>
         <View
-          parentWidth={231.33333333333334}
+          parentWidth={301.3333333333333}
           style={
             Array [
               Object {
@@ -506,10 +506,10 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
                 "position": "absolute",
                 "transform": Array [
                   Object {
-                    "rotate": "-18.924644416051237deg",
+                    "rotate": "-14.774550275046582deg",
                   },
                 ],
-                "width": 255.33333333333334,
+                "width": 325.3333333333333,
               },
             ]
           }

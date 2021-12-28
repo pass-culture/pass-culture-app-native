@@ -1719,10 +1719,10 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           "borderBottomRightRadius": "8px",
           "borderTopLeftRadius": "8px",
           "borderTopRightRadius": "8px",
-          "height": "-16px",
+          "height": "304px",
           "overflowX": "hidden",
           "overflowY": "hidden",
-          "width": "-48px",
+          "width": "912px",
         }
       }
     >
@@ -1731,7 +1731,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
         id="animatedComponent"
         style={
           Object {
-            "WebkitTransform": "translateX(60px)",
+            "WebkitTransform": "translateX(-1140px)",
             "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
             "borderBottomLeftRadius": "8px",
             "borderBottomRightRadius": "8px",
@@ -1742,7 +1742,7 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
             "position": "absolute",
             "right": "0px",
             "top": "0px",
-            "transform": "translateX(60px)",
+            "transform": "translateX(-1140px)",
           }
         }
       />

@@ -62,7 +62,7 @@ exports[`ExclusivityModule component should render correctly 1`] = `
             Array [
               Object {
                 "borderRadius": 8,
-                "height": 585,
+                "height": 760,
                 "maxHeight": 360,
               },
             ],
