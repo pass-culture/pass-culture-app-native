@@ -2392,13 +2392,7 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'DELETE' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -2420,13 +2414,7 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -2448,13 +2436,7 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -2476,13 +2458,7 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -2504,13 +2480,7 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -2532,13 +2502,7 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -2569,13 +2533,7 @@ const DefaultApiFetchParamCreator = function () {
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -2597,13 +2555,7 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -2625,13 +2577,7 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -2653,13 +2599,7 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -2679,13 +2619,7 @@ const DefaultApiFetchParamCreator = function () {
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -2705,13 +2639,7 @@ const DefaultApiFetchParamCreator = function () {
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -2733,13 +2661,7 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -2759,13 +2681,7 @@ const DefaultApiFetchParamCreator = function () {
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -2787,13 +2703,7 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -2824,13 +2734,7 @@ const DefaultApiFetchParamCreator = function () {
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -2853,14 +2757,8 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'PATCH' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -2883,14 +2781,8 @@ const DefaultApiFetchParamCreator = function () {
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -2914,13 +2806,7 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -2942,13 +2828,7 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -2971,14 +2851,8 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3013,13 +2887,7 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3053,14 +2921,8 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3085,14 +2947,8 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3116,13 +2972,7 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3145,14 +2995,8 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3177,14 +3021,8 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3220,14 +3058,8 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3252,14 +3084,8 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3284,14 +3110,8 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3313,13 +3133,7 @@ const DefaultApiFetchParamCreator = function () {
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3340,14 +3154,8 @@ const DefaultApiFetchParamCreator = function () {
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3370,14 +3178,8 @@ const DefaultApiFetchParamCreator = function () {
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3400,14 +3202,8 @@ const DefaultApiFetchParamCreator = function () {
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3431,13 +3227,7 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3470,13 +3260,7 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3509,13 +3293,7 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3538,14 +3316,8 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3568,14 +3340,8 @@ const DefaultApiFetchParamCreator = function () {
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3599,13 +3365,7 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3628,14 +3388,8 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3660,14 +3414,8 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3692,14 +3440,8 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3722,14 +3464,8 @@ const DefaultApiFetchParamCreator = function () {
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3754,14 +3490,8 @@ const DefaultApiFetchParamCreator = function () {
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
       const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
@@ -3784,14 +3514,8 @@ const DefaultApiFetchParamCreator = function () {
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       const localVarRequestOptions = Object.assign({ method: 'PUT' }, secureOptions)
       const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      const localVarQueryParameter = {} as any
       localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarUrlObj.query = Object.assign(
-        {},
-        localVarUrlObj.query,
-        localVarQueryParameter,
-        options.query
-      )
+      localVarUrlObj.query = Object.assign({}, localVarUrlObj.query, options.query)
       // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
       localVarUrlObj.search = null
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
