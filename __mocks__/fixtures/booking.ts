@@ -6,7 +6,7 @@ export const mockedBookingOfferResponse: BookingOfferResponse = {
   isPermanent: true,
   name: 'mockedBookingName',
   venue: { name: 'venueName', id: 3131, coordinates: {} },
-  subcategoryId: SubcategoryIdEnum.ABOCONCERT,
+  subcategoryId: SubcategoryIdEnum.ABO_CONCERT,
 }
 
 export const mockedBookingApi = {

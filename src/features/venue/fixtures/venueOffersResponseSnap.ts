@@ -11,7 +11,7 @@ export const VenueOffersResponseSnap: SearchHit[] = [
       isDuo: true,
       name: 'Titane - VF',
       prices: [0, 0, 0],
-      subcategoryId: SubcategoryIdEnum.CINEPLEINAIR,
+      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
       thumbUrl:
         'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG',
     },
@@ -25,7 +25,7 @@ export const VenueOffersResponseSnap: SearchHit[] = [
       isDuo: true,
       name: 'Bac Nord - VF',
       prices: [0, 0, 0],
-      subcategoryId: SubcategoryIdEnum.CINEPLEINAIR,
+      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
       thumbUrl:
         'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG',
     },
@@ -39,7 +39,7 @@ export const VenueOffersResponseSnap: SearchHit[] = [
       isDuo: true,
       name: 'Black Widow - VF',
       prices: [0, 0, 0],
-      subcategoryId: SubcategoryIdEnum.CINEPLEINAIR,
+      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
       thumbUrl:
         'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA',
     },

@@ -9,7 +9,7 @@ export const mockOffer: OfferResponse = {
     visualDisability: null,
   },
   description: null,
-  expenseDomains: [ExpenseDomain.All],
+  expenseDomains: [ExpenseDomain.all],
   isForbiddenToUnderage: false,
   externalTicketOfficeUrl: null,
   extraData: {
@@ -32,7 +32,7 @@ export const mockOffer: OfferResponse = {
   isDuo: true,
   isEducational: false,
   name: 'Je ne sais pas ce que je dis',
-  subcategoryId: SubcategoryIdEnum.EVENEMENTPATRIMOINE,
+  subcategoryId: SubcategoryIdEnum.EVENEMENT_PATRIMOINE,
   stocks: [
     {
       id: 148409,
@@ -100,7 +100,7 @@ export const mockDigitalOffer: OfferResponse = {
     visualDisability: null,
   },
   description: null,
-  expenseDomains: [ExpenseDomain.All],
+  expenseDomains: [ExpenseDomain.all],
   isForbiddenToUnderage: false,
   externalTicketOfficeUrl: null,
   extraData: {
@@ -123,7 +123,7 @@ export const mockDigitalOffer: OfferResponse = {
   isDuo: true,
   isEducational: false,
   name: 'Je ne sais pas ce que je dis',
-  subcategoryId: SubcategoryIdEnum.JEUSUPPORTPHYSIQUE,
+  subcategoryId: SubcategoryIdEnum.JEU_SUPPORT_PHYSIQUE,
   stocks: [
     {
       id: 148401,

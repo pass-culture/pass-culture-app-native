@@ -15,7 +15,7 @@ const venueId = 34
 
 const props = {
   categoryLabel: HomepageLabelNameEnum.MUSIQUE,
-  categoryId: CategoryIdEnum.MUSIQUELIVE,
+  categoryId: CategoryIdEnum.MUSIQUE_LIVE,
   subcategoryId: offer.subcategoryId,
   expenseDomains: [],
   date: 'Dès le 12 mars 2020',

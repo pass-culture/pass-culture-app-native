@@ -12,10 +12,10 @@ const activities = SchoolTypesSnap.activities
 describe('mapSchoolTypeIdToLabel', () => {
   it('should return the associated label and description', () => {
     expect(
-      mapSchoolTypeIdToLabelAndDescription(SchoolTypesIdEnum.AGRICULTURALHIGHSCHOOL, schoolTypes)
+      mapSchoolTypeIdToLabelAndDescription(SchoolTypesIdEnum.AGRICULTURAL_HIGH_SCHOOL, schoolTypes)
     ).toEqual({ description: null, label: 'Lycée agricole' })
     expect(
-      mapSchoolTypeIdToLabelAndDescription(SchoolTypesIdEnum.HOMEORREMOTESCHOOLING, schoolTypes)
+      mapSchoolTypeIdToLabelAndDescription(SchoolTypesIdEnum.HOME_OR_REMOTE_SCHOOLING, schoolTypes)
     ).toEqual({
       description: 'À domicile, CNED, institut de santé, etc.',
       label: 'Accompagnement spécialisé',
@@ -25,7 +25,7 @@ describe('mapSchoolTypeIdToLabel', () => {
 
 describe('getSchoolTypesIdsFromActivity', () => {
   it('should return the associated types ids', () => {
-    expect(getSchoolTypesIdsFromActivity(ActivityIdEnum.HIGHSCHOOLSTUDENT, activities)).toEqual([
+    expect(getSchoolTypesIdsFromActivity(ActivityIdEnum.HIGH_SCHOOL_STUDENT, activities)).toEqual([
       'AGRICULTURAL_HIGH_SCHOOL',
       'MILITARY_HIGH_SCHOOL',
       'NAVAL_HIGH_SCHOOL',
@@ -42,7 +42,7 @@ describe('getSchoolTypesIdsFromActivity', () => {
 
 describe('activityHasSchoolTypes', () => {
   it('should return true for MIDDLE_SCHOOL', () => {
-    expect(activityHasSchoolTypes(ActivityIdEnum.MIDDLESCHOOLSTUDENT, activities)).toEqual(true)
+    expect(activityHasSchoolTypes(ActivityIdEnum.MIDDLE_SCHOOL_STUDENT, activities)).toEqual(true)
   })
   it('should return false for APPRENTICE', () => {
     expect(activityHasSchoolTypes(ActivityIdEnum.APPRENTICE, activities)).toEqual(false)

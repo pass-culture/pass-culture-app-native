@@ -105,7 +105,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
             ctx.json({
               email: 'email@domain.ext',
               firstName: 'Jean',
-              eligibility: EligibilityType.Underage,
+              eligibility: EligibilityType.underage,
               isEligibleForBeneficiaryUpgrade: true,
             })
           )

@@ -32,8 +32,8 @@ export function useIdentificationUrl() {
         if (error === 'IDCHECK_ALREADY_PROCESSED') {
           navigate('IdentityCheckPending')
         } else {
-          const shouldEnableDMS = subscription?.maintenancePageType === MaintenancePageType.WithDms
-          navigate('IdentityCheckUnavailable', { withDMS: shouldEnableDMS })
+          const withDMS = subscription?.maintenancePageType === MaintenancePageType['with-dms']
+          navigate('IdentityCheckUnavailable', { withDMS })
         }
       }
     }

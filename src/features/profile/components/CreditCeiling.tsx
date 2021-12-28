@@ -22,17 +22,17 @@ type CreditCeilingProps = {
 }
 
 const CreditCeilingMapWithPhysical = {
-  [ExpenseDomain.All]: {
+  [ExpenseDomain.all]: {
     label: 'en sorties (concerts...)',
     color: ColorsEnum.ACCENT,
     icon: OfferEvent,
   },
-  [ExpenseDomain.Physical]: {
+  [ExpenseDomain.physical]: {
     label: 'en offres physiques (livres...)',
     color: ColorsEnum.SECONDARY,
     icon: OfferPhysical,
   },
-  [ExpenseDomain.Digital]: {
+  [ExpenseDomain.digital]: {
     label: 'en offres numériques (streaming...)',
     color: ColorsEnum.PRIMARY,
     icon: OfferDigital,
@@ -40,21 +40,21 @@ const CreditCeilingMapWithPhysical = {
 }
 
 const CreditCeilingMapWithoutPhysical = {
-  [ExpenseDomain.All]: {
+  [ExpenseDomain.all]: {
     label: 'en sorties & biens physiques (concerts, livres...)',
     color: ColorsEnum.PRIMARY,
     icon: Offers,
   },
-  [ExpenseDomain.Digital]: {
+  [ExpenseDomain.digital]: {
     label: 'en offres numériques (streaming...)',
     color: ColorsEnum.SECONDARY,
     icon: OfferDigital,
   },
-  [ExpenseDomain.Physical]: null,
+  [ExpenseDomain.physical]: null,
 }
 
 const underageBeneficiaryCeilingConfig = {
-  ...CreditCeilingMapWithoutPhysical[ExpenseDomain.All],
+  ...CreditCeilingMapWithoutPhysical[ExpenseDomain.all],
   icon: BicolorLogo,
 }
 

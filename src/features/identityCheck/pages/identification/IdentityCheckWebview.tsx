@@ -24,13 +24,13 @@ export const IdentityCheckWebview: React.FC = () => {
     const status = parsedUrlParams['status']
     if (status === 'aborted') {
       analytics.logIdentityCheckAbort({
-        method: IdentityCheckMethod.Ubble,
+        method: IdentityCheckMethod.ubble,
         reason: parsedUrlParams['return_reason'] || null,
         errorType: parsedUrlParams['error_type'] || null,
       })
       navigateToHome()
     } else if (url.includes(REDIRECT_URL_UBBLE)) {
-      analytics.logIdentityCheckSuccess({ method: IdentityCheckMethod.Ubble })
+      analytics.logIdentityCheckSuccess({ method: IdentityCheckMethod.ubble })
       navigateToNextScreen()
     }
   }

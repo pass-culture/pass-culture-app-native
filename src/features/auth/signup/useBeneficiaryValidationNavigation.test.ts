@@ -22,7 +22,7 @@ jest.mock('features/home/api')
 jest.mock('features/profile/utils')
 jest.mock('libs/firestore/ubbleLoad', () => ({ useIsUnderUbbleLoadThreshold: jest.fn(() => true) }))
 
-const allowedIdentityCheckMethods = [IdentityCheckMethod.Jouve]
+const allowedIdentityCheckMethods = [IdentityCheckMethod.jouve]
 
 describe('useBeneficiaryValidationNavigation', () => {
   it('should navigate to home if nextStep is null', async () => {
@@ -37,7 +37,7 @@ describe('useBeneficiaryValidationNavigation', () => {
   it('should navigate to PhoneValidation if nextStep is phone-validation', async () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
-      nextSubscriptionStep: SubscriptionStep.PhoneValidation,
+      nextSubscriptionStep: SubscriptionStep['phone-validation'],
       hasIdentityCheckPending: false,
     })
     const { result } = renderHook(useBeneficiaryValidationNavigation)
@@ -51,7 +51,7 @@ describe('useBeneficiaryValidationNavigation', () => {
   it('should navigate to IdCheck if nextStep is IdentityCheck', async () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
-      nextSubscriptionStep: SubscriptionStep.IdentityCheck,
+      nextSubscriptionStep: SubscriptionStep['identity-check'],
       hasIdentityCheckPending: false,
     })
     const { result } = renderHook(useBeneficiaryValidationNavigation)
@@ -65,7 +65,7 @@ describe('useBeneficiaryValidationNavigation', () => {
   it('should set UserProfilingError if nextStep is user-profiling', async () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
-      nextSubscriptionStep: SubscriptionStep.UserProfiling,
+      nextSubscriptionStep: SubscriptionStep['user-profiling'],
       hasIdentityCheckPending: false,
     })
 
@@ -75,7 +75,7 @@ describe('useBeneficiaryValidationNavigation', () => {
 
     await waitForExpect(() => {
       expect(setError).toBeCalledWith(
-        new UserProfilingError('SubscriptionStep.UserProfiling', UserProfiling)
+        new UserProfilingError("SubscriptionStep['user-profiling']", UserProfiling)
       )
     })
   })
@@ -83,7 +83,7 @@ describe('useBeneficiaryValidationNavigation', () => {
   it('should navigate to IdentityCheckStepper if nextStep is ProfileCompletion', async () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
-      nextSubscriptionStep: SubscriptionStep.ProfileCompletion,
+      nextSubscriptionStep: SubscriptionStep['profile-completion'],
       hasIdentityCheckPending: false,
     })
     const { result } = renderHook(useBeneficiaryValidationNavigation)
@@ -97,7 +97,7 @@ describe('useBeneficiaryValidationNavigation', () => {
   it('should navigate to IdentityCheckStepper if nextStep is HonorStatement', async () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
-      nextSubscriptionStep: SubscriptionStep.HonorStatement,
+      nextSubscriptionStep: SubscriptionStep['honor-statement'],
       hasIdentityCheckPending: false,
     })
     const { result } = renderHook(useBeneficiaryValidationNavigation)
@@ -111,8 +111,8 @@ describe('useBeneficiaryValidationNavigation', () => {
   it('should navigate to IdentityCheckUnavailable if nextStep is Maintenance and maintenancePageType is withDMS', async () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
-      nextSubscriptionStep: SubscriptionStep.Maintenance,
-      maintenancePageType: MaintenancePageType.WithDms,
+      nextSubscriptionStep: SubscriptionStep.maintenance,
+      maintenancePageType: MaintenancePageType['with-dms'],
       hasIdentityCheckPending: false,
     })
 
@@ -127,8 +127,8 @@ describe('useBeneficiaryValidationNavigation', () => {
 it('should navigate to IdentityCheckUnavailable if nextStep is Maintenance and maintenancePageType is not withDMS', async () => {
   mockNextStepRequest({
     allowedIdentityCheckMethods,
-    nextSubscriptionStep: SubscriptionStep.Maintenance,
-    maintenancePageType: MaintenancePageType.WithoutDms,
+    nextSubscriptionStep: SubscriptionStep.maintenance,
+    maintenancePageType: MaintenancePageType['without-dms'],
     hasIdentityCheckPending: false,
   })
 

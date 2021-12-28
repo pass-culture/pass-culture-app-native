@@ -11,7 +11,7 @@ describe('CreditCeiling', () => {
       <CreditCeiling
         amount={155}
         initial={200}
-        domain={ExpenseDomain.Physical}
+        domain={ExpenseDomain.physical}
         hasPhysicalCeiling={true}
         isUserUnderageBeneficiary={false}
       />
@@ -24,7 +24,7 @@ describe('CreditCeiling', () => {
       <CreditCeiling
         amount={155}
         initial={-1}
-        domain={ExpenseDomain.Physical}
+        domain={ExpenseDomain.physical}
         hasPhysicalCeiling={true}
         isUserUnderageBeneficiary={false}
       />
@@ -37,7 +37,7 @@ describe('CreditCeiling', () => {
       <CreditCeiling
         amount={0}
         initial={200}
-        domain={ExpenseDomain.Physical}
+        domain={ExpenseDomain.physical}
         hasPhysicalCeiling={true}
         isUserUnderageBeneficiary={false}
       />

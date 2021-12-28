@@ -25,7 +25,7 @@ const defaultProps = {
   error: new UserProfilingError('UserProfilingError', UserProfiling),
   resetErrorBoundary,
 }
-const allowedIdentityCheckMethods = [IdentityCheckMethod.Jouve]
+const allowedIdentityCheckMethods = [IdentityCheckMethod.jouve]
 
 describe('<UserProfiling />', () => {
   beforeEach(jest.clearAllMocks)
@@ -35,7 +35,7 @@ describe('<UserProfiling />', () => {
     jest.useFakeTimers()
     mockBackend({
       allowedIdentityCheckMethods,
-      nextSubscriptionStep: SubscriptionStep.UserProfiling,
+      nextSubscriptionStep: SubscriptionStep['user-profiling'],
       hasIdentityCheckPending: false,
     })
 
@@ -51,7 +51,7 @@ describe('<UserProfiling />', () => {
     jest.useFakeTimers()
     mockBackend({
       allowedIdentityCheckMethods,
-      nextSubscriptionStep: SubscriptionStep.IdentityCheck,
+      nextSubscriptionStep: SubscriptionStep['identity-check'],
       hasIdentityCheckPending: false,
     })
 

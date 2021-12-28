@@ -213,7 +213,7 @@ describe('getCtaWordingAndAction', () => {
       `(
         'CTA(disabled=$disabled) = "$expected" for isEvent=$isEvent, isDigital=$isDigital, isForbiddenToUnderage=$isForbiddenToUnderage, category=$category and price=$price',
         ({ isEvent, expected, disabled, isDigital, category, price, isForbiddenToUnderage }) => {
-          mockedUser.roles = [UserRole.UNDERAGEBENEFICIARY]
+          mockedUser.roles = [UserRole.UNDERAGE_BENEFICIARY]
           const { wording, onPress } = getCta(
             {
               isDigital,

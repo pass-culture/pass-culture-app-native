@@ -103,7 +103,7 @@ describe('BookingDetails', () => {
 
     it('should display EAN code if offer is a book (digital or physical)', async () => {
       const booking = bookingsSnap.ongoing_bookings[0]
-      booking.stock.offer.subcategoryId = SubcategoryIdEnum.LIVREPAPIER
+      booking.stock.offer.subcategoryId = SubcategoryIdEnum.LIVRE_PAPIER
       const { getByText } = renderBookingDetails(booking)
       getByText('123456789')
     })

@@ -261,14 +261,14 @@ export const AppComponents: FunctionComponent = () => {
         <Hero imageUrl={undefined} type="offer" categoryId={CategoryIdEnum.CINEMA} />
         <Typo.Title4>Default Hero - Venue</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
-        <Hero imageUrl={undefined} type="venue" venueType={VenueTypeCodeKey.ARTISTICCOURSE} />
+        <Hero imageUrl={undefined} type="venue" venueType={VenueTypeCodeKey.ARTISTIC_COURSE} />
         <Spacer.Column numberOfSpaces={4} />
         <Typo.Title4>Landscape Hero - Venue with image</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
         <Hero
           imageUrl="https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg"
           type="venue"
-          venueType={VenueTypeCodeKey.ARTISTICCOURSE}
+          venueType={VenueTypeCodeKey.ARTISTIC_COURSE}
         />
       </AccordionItem>
 

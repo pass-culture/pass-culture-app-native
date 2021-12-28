@@ -30,10 +30,10 @@ const favorite: FavoriteResponse = {
   offer: {
     coordinates: { latitude: 48.9263, longitude: 2.49008 },
     date: null,
-    expenseDomains: [ExpenseDomain.All],
+    expenseDomains: [ExpenseDomain.all],
     externalTicketOfficeUrl: 'https://externalbooking.test.com',
     id: 146105,
-    subcategoryId: SubcategoryIdEnum.TELECHARGEMENTMUSIQUE,
+    subcategoryId: SubcategoryIdEnum.TELECHARGEMENT_MUSIQUE,
     image: {
       credit: null,
       url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWMA',
@@ -50,7 +50,7 @@ const favorite: FavoriteResponse = {
 const user: UserProfileResponse = {
   isBeneficiary: true,
   bookedOffers: {},
-  domainsCredit: { [ExpenseDomain.All]: { initial: 500, remaining: 300 } },
+  domainsCredit: { [ExpenseDomain.all]: { initial: 500, remaining: 300 } },
 } as UserProfileResponse
 const onInAppBooking = jest.fn()
 

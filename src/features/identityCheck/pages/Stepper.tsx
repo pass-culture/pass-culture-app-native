@@ -41,9 +41,9 @@ export const IdentityCheckStepper = () => {
 
   useEffect(() => {
     const showMaintenance = () => {
-      if (subscription?.nextSubscriptionStep === SubscriptionStep.Maintenance) {
+      if (subscription?.nextSubscriptionStep === SubscriptionStep.maintenance) {
         navigate('IdentityCheckUnavailable', {
-          withDMS: subscription?.maintenancePageType === MaintenancePageType.WithDms,
+          withDMS: subscription?.maintenancePageType === MaintenancePageType['with-dms'],
         })
       }
     }

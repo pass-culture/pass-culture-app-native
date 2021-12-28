@@ -103,7 +103,7 @@ export function useAddFavorite({ onSuccess, onError }: AddFavorite) {
           {
             id: Math.random(),
             // Using a random subcategory so that it doesn't crash
-            offer: { id: offerId, subcategoryId: SubcategoryIdEnum.ABOBIBLIOTHEQUE },
+            offer: { id: offerId, subcategoryId: SubcategoryIdEnum.ABO_BIBLIOTHEQUE },
           },
         ]
 

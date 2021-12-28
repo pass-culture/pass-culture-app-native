@@ -15,14 +15,14 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
       offer: {
         id: 146193,
         name: 'Spectacle une seule date',
-        expenseDomains: [ExpenseDomain.All],
+        expenseDomains: [ExpenseDomain.all],
         externalTicketOfficeUrl: null,
         image: null,
         coordinates: {
           latitude: 48.12108,
           longitude: -1.17896,
         },
-        subcategoryId: SubcategoryIdEnum.SPECTACLEENREGISTRE,
+        subcategoryId: SubcategoryIdEnum.SPECTACLE_ENREGISTRE,
         price: 0,
         startPrice: null,
         date: new Date('2021-03-28T15:45:00'),
@@ -35,7 +35,7 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
       offer: {
         id: 146112,
         name: 'Je ne sais pas ce que je dis',
-        expenseDomains: [ExpenseDomain.All],
+        expenseDomains: [ExpenseDomain.all],
         externalTicketOfficeUrl: null,
         image: {
           credit: null,
@@ -58,13 +58,13 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
       offer: {
         id: 146099,
         name: 'Un lit sous une rivière',
-        expenseDomains: [ExpenseDomain.All],
+        expenseDomains: [ExpenseDomain.all],
         externalTicketOfficeUrl: null,
         image: {
           credit: null,
           url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWJQ',
         },
-        subcategoryId: SubcategoryIdEnum.SPECTACLEENREGISTRE,
+        subcategoryId: SubcategoryIdEnum.SPECTACLE_ENREGISTRE,
         coordinates: {
           latitude: 48.94538,
           longitude: 2.5029,
@@ -81,13 +81,13 @@ export const paginatedFavoritesResponseSnap: PaginatedFavoritesResponse = {
       offer: {
         id: 146105,
         name: 'Un lit sous une rivière',
-        expenseDomains: [ExpenseDomain.All],
+        expenseDomains: [ExpenseDomain.all],
         externalTicketOfficeUrl: null,
         image: {
           credit: null,
           url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWMA',
         },
-        subcategoryId: SubcategoryIdEnum.SPECTACLEENREGISTRE,
+        subcategoryId: SubcategoryIdEnum.SPECTACLE_ENREGISTRE,
         coordinates: {
           latitude: 48.9263,
           longitude: 2.49008,
@@ -107,14 +107,14 @@ export const addFavoriteJsonResponseSnap: FavoriteResponse = {
   offer: {
     id: 10000,
     name: 'Spectacle de test',
-    expenseDomains: [ExpenseDomain.All],
+    expenseDomains: [ExpenseDomain.all],
     externalTicketOfficeUrl: null,
     image: null,
     coordinates: {
       latitude: 48.12108,
       longitude: -1.17896,
     },
-    subcategoryId: SubcategoryIdEnum.SPECTACLEENREGISTRE,
+    subcategoryId: SubcategoryIdEnum.SPECTACLE_ENREGISTRE,
     price: 0,
     startPrice: null,
     date: new Date('2021-04-01T12:00:00'),

@@ -114,15 +114,15 @@ export interface AccountRequest {
  * @enum {string}
  */
 export enum ActivityEnum {
-  Collgien = 'Collégien',
-  Lycen = 'Lycéen',
-  Tudiant = 'Étudiant',
-  Employ = 'Employé',
-  Apprenti = 'Apprenti',
-  Alternant = 'Alternant',
-  Volontaire = 'Volontaire',
-  Inactif = 'Inactif',
-  Chmeur = 'Chômeur',
+  'Collégien' = 'Collégien',
+  'Lycéen' = 'Lycéen',
+  'Étudiant' = 'Étudiant',
+  'Employé' = 'Employé',
+  'Apprenti' = 'Apprenti',
+  'Alternant' = 'Alternant',
+  'Volontaire' = 'Volontaire',
+  'Inactif' = 'Inactif',
+  'Chômeur' = 'Chômeur',
 }
 /**
  * An enumeration.
@@ -130,15 +130,15 @@ export enum ActivityEnum {
  * @enum {string}
  */
 export enum ActivityIdEnum {
-  MIDDLESCHOOLSTUDENT = 'MIDDLE_SCHOOL_STUDENT',
-  HIGHSCHOOLSTUDENT = 'HIGH_SCHOOL_STUDENT',
-  STUDENT = 'STUDENT',
-  EMPLOYEE = 'EMPLOYEE',
-  APPRENTICE = 'APPRENTICE',
-  APPRENTICESTUDENT = 'APPRENTICE_STUDENT',
-  VOLUNTEER = 'VOLUNTEER',
-  INACTIVE = 'INACTIVE',
-  UNEMPLOYED = 'UNEMPLOYED',
+  'MIDDLE_SCHOOL_STUDENT' = 'MIDDLE_SCHOOL_STUDENT',
+  'HIGH_SCHOOL_STUDENT' = 'HIGH_SCHOOL_STUDENT',
+  'STUDENT' = 'STUDENT',
+  'EMPLOYEE' = 'EMPLOYEE',
+  'APPRENTICE' = 'APPRENTICE',
+  'APPRENTICE_STUDENT' = 'APPRENTICE_STUDENT',
+  'VOLUNTEER' = 'VOLUNTEER',
+  'INACTIVE' = 'INACTIVE',
+  'UNEMPLOYED' = 'UNEMPLOYED',
 }
 /**
  * @export
@@ -172,9 +172,9 @@ export interface ActivityResponseModel {
  * @enum {string}
  */
 export enum AgentType {
-  BrowserComputer = 'browser_computer',
-  BrowserMobile = 'browser_mobile',
-  AgentMobile = 'agent_mobile',
+  'browser_computer' = 'browser_computer',
+  'browser_mobile' = 'browser_mobile',
+  'agent_mobile' = 'agent_mobile',
 }
 /**
  * @export
@@ -223,10 +223,10 @@ export interface BeneficiaryInformationUpdateRequest {
  * @enum {string}
  */
 export enum BeneficiaryValidationStep {
-  PhoneValidation = 'phone-validation',
-  IdCheck = 'id-check',
-  BeneficiaryInformation = 'beneficiary-information',
-  HonorStatement = 'honor-statement',
+  'phone-validation' = 'phone-validation',
+  'id-check' = 'id-check',
+  'beneficiary-information' = 'beneficiary-information',
+  'honor-statement' = 'honor-statement',
 }
 /**
  * @export
@@ -277,11 +277,11 @@ export interface BookingActivationCodeResponse {
  * @enum {string}
  */
 export enum BookingCancellationReasons {
-  OFFERER = 'OFFERER',
-  BENEFICIARY = 'BENEFICIARY',
-  EXPIRED = 'EXPIRED',
-  FRAUD = 'FRAUD',
-  REFUSEDBYINSTITUTE = 'REFUSED_BY_INSTITUTE',
+  'OFFERER' = 'OFFERER',
+  'BENEFICIARY' = 'BENEFICIARY',
+  'EXPIRED' = 'EXPIRED',
+  'FRAUD' = 'FRAUD',
+  'REFUSED_BY_INSTITUTE' = 'REFUSED_BY_INSTITUTE',
 }
 /**
  * @export
@@ -516,9 +516,9 @@ export interface BookingsResponse {
  * @enum {string}
  */
 export enum CallToActionIcon {
-  EMAIL = 'EMAIL',
-  RETRY = 'RETRY',
-  EXTERNAL = 'EXTERNAL',
+  'EMAIL' = 'EMAIL',
+  'RETRY' = 'RETRY',
+  'EXTERNAL' = 'EXTERNAL',
 }
 /**
  * @export
@@ -547,20 +547,20 @@ export interface CallToActionMessage {
  * @enum {string}
  */
 export enum CategoryIdEnum {
-  BEAUXARTS = 'BEAUX_ARTS',
-  CINEMA = 'CINEMA',
-  CONFERENCE = 'CONFERENCE',
-  FILM = 'FILM',
-  INSTRUMENT = 'INSTRUMENT',
-  JEU = 'JEU',
-  LIVRE = 'LIVRE',
-  MEDIA = 'MEDIA',
-  MUSEE = 'MUSEE',
-  MUSIQUEENREGISTREE = 'MUSIQUE_ENREGISTREE',
-  MUSIQUELIVE = 'MUSIQUE_LIVE',
-  PRATIQUEART = 'PRATIQUE_ART',
-  SPECTACLE = 'SPECTACLE',
-  TECHNIQUE = 'TECHNIQUE',
+  'BEAUX_ARTS' = 'BEAUX_ARTS',
+  'CINEMA' = 'CINEMA',
+  'CONFERENCE' = 'CONFERENCE',
+  'FILM' = 'FILM',
+  'INSTRUMENT' = 'INSTRUMENT',
+  'JEU' = 'JEU',
+  'LIVRE' = 'LIVRE',
+  'MEDIA' = 'MEDIA',
+  'MUSEE' = 'MUSEE',
+  'MUSIQUE_ENREGISTREE' = 'MUSIQUE_ENREGISTREE',
+  'MUSIQUE_LIVE' = 'MUSIQUE_LIVE',
+  'PRATIQUE_ART' = 'PRATIQUE_ART',
+  'SPECTACLE' = 'SPECTACLE',
+  'TECHNIQUE' = 'TECHNIQUE',
 }
 /**
  * @export
@@ -669,8 +669,8 @@ export interface DepositAmountsByAge {
  * @enum {string}
  */
 export enum DepositType {
-  _1517 = 'GRANT_15_17',
-  _18 = 'GRANT_18',
+  'GRANT_15_17' = 'GRANT_15_17',
+  'GRANT_18' = 'GRANT_18',
 }
 /**
  * @export
@@ -699,8 +699,8 @@ export interface DomainsCredit {
  * @enum {string}
  */
 export enum EligibilityCheckMethods {
-  Jouve = 'jouve',
-  Educonnect = 'educonnect',
+  'jouve' = 'jouve',
+  'educonnect' = 'educonnect',
 }
 /**
  * An enumeration.
@@ -708,8 +708,8 @@ export enum EligibilityCheckMethods {
  * @enum {string}
  */
 export enum EligibilityType {
-  Underage = 'underage',
-  Age18 = 'age-18',
+  'underage' = 'underage',
+  'age-18' = 'age-18',
 }
 /**
  * An enumeration.
@@ -717,9 +717,9 @@ export enum EligibilityType {
  * @enum {string}
  */
 export enum ExpenseDomain {
-  All = 'all',
-  Digital = 'digital',
-  Physical = 'physical',
+  'all' = 'all',
+  'digital' = 'digital',
+  'physical' = 'physical',
 }
 /**
  * @export
@@ -873,18 +873,18 @@ export interface GetIdCheckTokenResponse {
  * @enum {string}
  */
 export enum HomepageLabelNameEnum {
-  FILM = 'FILM',
-  CINEMA = 'CINEMA',
-  CONFERENCE = 'CONFERENCE',
-  JEU = 'JEU',
-  LIVRE = 'LIVRE',
-  VISITE = 'VISITE',
-  MUSIQUE = 'MUSIQUE',
-  COURS = 'COURS',
-  PRESSE = 'PRESSE',
-  SPECTACLE = 'SPECTACLE',
-  MATERIEL = 'MATERIEL',
-  NONE = 'NONE',
+  'FILM' = 'FILM',
+  'CINEMA' = 'CINEMA',
+  'CONFERENCE' = 'CONFERENCE',
+  'JEU' = 'JEU',
+  'LIVRE' = 'LIVRE',
+  'VISITE' = 'VISITE',
+  'MUSIQUE' = 'MUSIQUE',
+  'COURS' = 'COURS',
+  'PRESSE' = 'PRESSE',
+  'SPECTACLE' = 'SPECTACLE',
+  'MATERIEL' = 'MATERIEL',
+  'NONE' = 'NONE',
 }
 /**
  * @export
@@ -930,9 +930,9 @@ export interface IdentificationSessionResponse {
  * @enum {string}
  */
 export enum IdentityCheckMethod {
-  Educonnect = 'educonnect',
-  Jouve = 'jouve',
-  Ubble = 'ubble',
+  'educonnect' = 'educonnect',
+  'jouve' = 'jouve',
+  'ubble' = 'ubble',
 }
 /**
  * An enumeration.
@@ -940,8 +940,8 @@ export enum IdentityCheckMethod {
  * @enum {string}
  */
 export enum MaintenancePageType {
-  WithDms = 'with-dms',
-  WithoutDms = 'without-dms',
+  'with-dms' = 'with-dms',
+  'without-dms' = 'without-dms',
 }
 /**
  * @export
@@ -1351,9 +1351,9 @@ export interface OfferVenueResponse {
  * @enum {string}
  */
 export enum OnlineOfflinePlatformChoicesEnum {
-  OFFLINE = 'OFFLINE',
-  ONLINE = 'ONLINE',
-  ONLINEOROFFLINE = 'ONLINE_OR_OFFLINE',
+  'OFFLINE' = 'OFFLINE',
+  'ONLINE' = 'ONLINE',
+  'ONLINE_OR_OFFLINE' = 'ONLINE_OR_OFFLINE',
 }
 /**
  * @export
@@ -1382,12 +1382,12 @@ export interface PaginatedFavoritesResponse {
  * @enum {string}
  */
 export enum PopOverIcon {
-  INFO = 'INFO',
-  ERROR = 'ERROR',
-  WARNING = 'WARNING',
-  CLOCK = 'CLOCK',
-  FILE = 'FILE',
-  MAGNIFYINGGLASS = 'MAGNIFYING_GLASS',
+  'INFO' = 'INFO',
+  'ERROR' = 'ERROR',
+  'WARNING' = 'WARNING',
+  'CLOCK' = 'CLOCK',
+  'FILE' = 'FILE',
+  'MAGNIFYING_GLASS' = 'MAGNIFYING_GLASS',
 }
 /**
  * @export
@@ -1457,10 +1457,10 @@ export interface ProfileUpdateRequest {
  * @enum {string}
  */
 export enum Reason {
-  IMPROPER = 'IMPROPER',
-  PRICETOOHIGH = 'PRICE_TOO_HIGH',
-  INAPPROPRIATE = 'INAPPROPRIATE',
-  OTHER = 'OTHER',
+  'IMPROPER' = 'IMPROPER',
+  'PRICE_TOO_HIGH' = 'PRICE_TOO_HIGH',
+  'INAPPROPRIATE' = 'INAPPROPRIATE',
+  'OTHER' = 'OTHER',
 }
 /**
  * @export
@@ -1580,15 +1580,15 @@ export interface SchoolTypeResponseModel {
  * @enum {string}
  */
 export enum SchoolTypesIdEnum {
-  AGRICULTURALHIGHSCHOOL = 'AGRICULTURAL_HIGH_SCHOOL',
-  APPRENTICEFORMATIONCENTER = 'APPRENTICE_FORMATION_CENTER',
-  MILITARYHIGHSCHOOL = 'MILITARY_HIGH_SCHOOL',
-  HOMEORREMOTESCHOOLING = 'HOME_OR_REMOTE_SCHOOLING',
-  NAVALHIGHSCHOOL = 'NAVAL_HIGH_SCHOOL',
-  PRIVATEHIGHSCHOOL = 'PRIVATE_HIGH_SCHOOL',
-  PRIVATESECONDARYSCHOOL = 'PRIVATE_SECONDARY_SCHOOL',
-  PUBLICHIGHSCHOOL = 'PUBLIC_HIGH_SCHOOL',
-  PUBLICSECONDARYSCHOOL = 'PUBLIC_SECONDARY_SCHOOL',
+  'AGRICULTURAL_HIGH_SCHOOL' = 'AGRICULTURAL_HIGH_SCHOOL',
+  'APPRENTICE_FORMATION_CENTER' = 'APPRENTICE_FORMATION_CENTER',
+  'MILITARY_HIGH_SCHOOL' = 'MILITARY_HIGH_SCHOOL',
+  'HOME_OR_REMOTE_SCHOOLING' = 'HOME_OR_REMOTE_SCHOOLING',
+  'NAVAL_HIGH_SCHOOL' = 'NAVAL_HIGH_SCHOOL',
+  'PRIVATE_HIGH_SCHOOL' = 'PRIVATE_HIGH_SCHOOL',
+  'PRIVATE_SECONDARY_SCHOOL' = 'PRIVATE_SECONDARY_SCHOOL',
+  'PUBLIC_HIGH_SCHOOL' = 'PUBLIC_HIGH_SCHOOL',
+  'PUBLIC_SECONDARY_SCHOOL' = 'PUBLIC_SECONDARY_SCHOOL',
 }
 /**
  * An enumeration.
@@ -1596,19 +1596,19 @@ export enum SchoolTypesIdEnum {
  * @enum {string}
  */
 export enum SearchGroupNameEnum {
-  FILM = 'FILM',
-  CINEMA = 'CINEMA',
-  CONFERENCE = 'CONFERENCE',
-  JEU = 'JEU',
-  LIVRE = 'LIVRE',
-  VISITE = 'VISITE',
-  MUSIQUE = 'MUSIQUE',
-  COURS = 'COURS',
-  PRESSE = 'PRESSE',
-  SPECTACLE = 'SPECTACLE',
-  INSTRUMENT = 'INSTRUMENT',
-  MATERIEL = 'MATERIEL',
-  NONE = 'NONE',
+  'FILM' = 'FILM',
+  'CINEMA' = 'CINEMA',
+  'CONFERENCE' = 'CONFERENCE',
+  'JEU' = 'JEU',
+  'LIVRE' = 'LIVRE',
+  'VISITE' = 'VISITE',
+  'MUSIQUE' = 'MUSIQUE',
+  'COURS' = 'COURS',
+  'PRESSE' = 'PRESSE',
+  'SPECTACLE' = 'SPECTACLE',
+  'INSTRUMENT' = 'INSTRUMENT',
+  'MATERIEL' = 'MATERIEL',
+  'NONE' = 'NONE',
 }
 /**
  * @export
@@ -1782,77 +1782,77 @@ export interface SubcategoriesResponseModel {
  * @enum {string}
  */
 export enum SubcategoryIdEnum {
-  ABOBIBLIOTHEQUE = 'ABO_BIBLIOTHEQUE',
-  ABOCONCERT = 'ABO_CONCERT',
-  ABOJEUVIDEO = 'ABO_JEU_VIDEO',
-  ABOLIVRENUMERIQUE = 'ABO_LIVRE_NUMERIQUE',
-  ABOLUDOTHEQUE = 'ABO_LUDOTHEQUE',
-  ABOMEDIATHEQUE = 'ABO_MEDIATHEQUE',
-  ABOMUSEE = 'ABO_MUSEE',
-  ABOPLATEFORMEMUSIQUE = 'ABO_PLATEFORME_MUSIQUE',
-  ABOPLATEFORMEVIDEO = 'ABO_PLATEFORME_VIDEO',
-  ABOPRATIQUEART = 'ABO_PRATIQUE_ART',
-  ABOPRESSEENLIGNE = 'ABO_PRESSE_EN_LIGNE',
-  ABOSPECTACLE = 'ABO_SPECTACLE',
-  ACHATINSTRUMENT = 'ACHAT_INSTRUMENT',
-  ACTIVATIONEVENT = 'ACTIVATION_EVENT',
-  ACTIVATIONTHING = 'ACTIVATION_THING',
-  APPCULTURELLE = 'APP_CULTURELLE',
-  ATELIERPRATIQUEART = 'ATELIER_PRATIQUE_ART',
-  AUTRESUPPORTNUMERIQUE = 'AUTRE_SUPPORT_NUMERIQUE',
-  BONACHATINSTRUMENT = 'BON_ACHAT_INSTRUMENT',
-  CAPTATIONMUSIQUE = 'CAPTATION_MUSIQUE',
-  CARTECINEILLIMITE = 'CARTE_CINE_ILLIMITE',
-  CARTECINEMULTISEANCES = 'CARTE_CINE_MULTISEANCES',
-  CARTEMUSEE = 'CARTE_MUSEE',
-  CINEPLEINAIR = 'CINE_PLEIN_AIR',
-  CINEVENTEDISTANCE = 'CINE_VENTE_DISTANCE',
-  CONCERT = 'CONCERT',
-  CONCOURS = 'CONCOURS',
-  CONFERENCE = 'CONFERENCE',
-  DECOUVERTEMETIERS = 'DECOUVERTE_METIERS',
-  ESCAPEGAME = 'ESCAPE_GAME',
-  EVENEMENTCINE = 'EVENEMENT_CINE',
-  EVENEMENTJEU = 'EVENEMENT_JEU',
-  EVENEMENTMUSIQUE = 'EVENEMENT_MUSIQUE',
-  EVENEMENTPATRIMOINE = 'EVENEMENT_PATRIMOINE',
-  FESTIVALCINE = 'FESTIVAL_CINE',
-  FESTIVALLIVRE = 'FESTIVAL_LIVRE',
-  FESTIVALMUSIQUE = 'FESTIVAL_MUSIQUE',
-  FESTIVALSPECTACLE = 'FESTIVAL_SPECTACLE',
-  JEUENLIGNE = 'JEU_EN_LIGNE',
-  JEUSUPPORTPHYSIQUE = 'JEU_SUPPORT_PHYSIQUE',
-  LIVESTREAMEVENEMENT = 'LIVESTREAM_EVENEMENT',
-  LIVESTREAMMUSIQUE = 'LIVESTREAM_MUSIQUE',
-  LIVESTREAMPRATIQUEARTISTIQUE = 'LIVESTREAM_PRATIQUE_ARTISTIQUE',
-  LIVREAUDIOPHYSIQUE = 'LIVRE_AUDIO_PHYSIQUE',
-  LIVRENUMERIQUE = 'LIVRE_NUMERIQUE',
-  LIVREPAPIER = 'LIVRE_PAPIER',
-  LOCATIONINSTRUMENT = 'LOCATION_INSTRUMENT',
-  MATERIELARTCREATIF = 'MATERIEL_ART_CREATIF',
-  MUSEEVENTEDISTANCE = 'MUSEE_VENTE_DISTANCE',
-  OEUVREART = 'OEUVRE_ART',
-  PARTITION = 'PARTITION',
-  PLATEFORMEPRATIQUEARTISTIQUE = 'PLATEFORME_PRATIQUE_ARTISTIQUE',
-  PRATIQUEARTVENTEDISTANCE = 'PRATIQUE_ART_VENTE_DISTANCE',
-  PODCAST = 'PODCAST',
-  RENCONTREENLIGNE = 'RENCONTRE_EN_LIGNE',
-  RENCONTREJEU = 'RENCONTRE_JEU',
-  RENCONTRE = 'RENCONTRE',
-  SALON = 'SALON',
-  SEANCECINE = 'SEANCE_CINE',
-  SEANCEESSAIPRATIQUEART = 'SEANCE_ESSAI_PRATIQUE_ART',
-  SPECTACLEENREGISTRE = 'SPECTACLE_ENREGISTRE',
-  SPECTACLEREPRESENTATION = 'SPECTACLE_REPRESENTATION',
-  SPECTACLEVENTEDISTANCE = 'SPECTACLE_VENTE_DISTANCE',
-  SUPPORTPHYSIQUEFILM = 'SUPPORT_PHYSIQUE_FILM',
-  SUPPORTPHYSIQUEMUSIQUE = 'SUPPORT_PHYSIQUE_MUSIQUE',
-  TELECHARGEMENTLIVREAUDIO = 'TELECHARGEMENT_LIVRE_AUDIO',
-  TELECHARGEMENTMUSIQUE = 'TELECHARGEMENT_MUSIQUE',
-  VISITEGUIDEE = 'VISITE_GUIDEE',
-  VISITEVIRTUELLE = 'VISITE_VIRTUELLE',
-  VISITE = 'VISITE',
-  VOD = 'VOD',
+  'ABO_BIBLIOTHEQUE' = 'ABO_BIBLIOTHEQUE',
+  'ABO_CONCERT' = 'ABO_CONCERT',
+  'ABO_JEU_VIDEO' = 'ABO_JEU_VIDEO',
+  'ABO_LIVRE_NUMERIQUE' = 'ABO_LIVRE_NUMERIQUE',
+  'ABO_LUDOTHEQUE' = 'ABO_LUDOTHEQUE',
+  'ABO_MEDIATHEQUE' = 'ABO_MEDIATHEQUE',
+  'ABO_MUSEE' = 'ABO_MUSEE',
+  'ABO_PLATEFORME_MUSIQUE' = 'ABO_PLATEFORME_MUSIQUE',
+  'ABO_PLATEFORME_VIDEO' = 'ABO_PLATEFORME_VIDEO',
+  'ABO_PRATIQUE_ART' = 'ABO_PRATIQUE_ART',
+  'ABO_PRESSE_EN_LIGNE' = 'ABO_PRESSE_EN_LIGNE',
+  'ABO_SPECTACLE' = 'ABO_SPECTACLE',
+  'ACHAT_INSTRUMENT' = 'ACHAT_INSTRUMENT',
+  'ACTIVATION_EVENT' = 'ACTIVATION_EVENT',
+  'ACTIVATION_THING' = 'ACTIVATION_THING',
+  'APP_CULTURELLE' = 'APP_CULTURELLE',
+  'ATELIER_PRATIQUE_ART' = 'ATELIER_PRATIQUE_ART',
+  'AUTRE_SUPPORT_NUMERIQUE' = 'AUTRE_SUPPORT_NUMERIQUE',
+  'BON_ACHAT_INSTRUMENT' = 'BON_ACHAT_INSTRUMENT',
+  'CAPTATION_MUSIQUE' = 'CAPTATION_MUSIQUE',
+  'CARTE_CINE_ILLIMITE' = 'CARTE_CINE_ILLIMITE',
+  'CARTE_CINE_MULTISEANCES' = 'CARTE_CINE_MULTISEANCES',
+  'CARTE_MUSEE' = 'CARTE_MUSEE',
+  'CINE_PLEIN_AIR' = 'CINE_PLEIN_AIR',
+  'CINE_VENTE_DISTANCE' = 'CINE_VENTE_DISTANCE',
+  'CONCERT' = 'CONCERT',
+  'CONCOURS' = 'CONCOURS',
+  'CONFERENCE' = 'CONFERENCE',
+  'DECOUVERTE_METIERS' = 'DECOUVERTE_METIERS',
+  'ESCAPE_GAME' = 'ESCAPE_GAME',
+  'EVENEMENT_CINE' = 'EVENEMENT_CINE',
+  'EVENEMENT_JEU' = 'EVENEMENT_JEU',
+  'EVENEMENT_MUSIQUE' = 'EVENEMENT_MUSIQUE',
+  'EVENEMENT_PATRIMOINE' = 'EVENEMENT_PATRIMOINE',
+  'FESTIVAL_CINE' = 'FESTIVAL_CINE',
+  'FESTIVAL_LIVRE' = 'FESTIVAL_LIVRE',
+  'FESTIVAL_MUSIQUE' = 'FESTIVAL_MUSIQUE',
+  'FESTIVAL_SPECTACLE' = 'FESTIVAL_SPECTACLE',
+  'JEU_EN_LIGNE' = 'JEU_EN_LIGNE',
+  'JEU_SUPPORT_PHYSIQUE' = 'JEU_SUPPORT_PHYSIQUE',
+  'LIVESTREAM_EVENEMENT' = 'LIVESTREAM_EVENEMENT',
+  'LIVESTREAM_MUSIQUE' = 'LIVESTREAM_MUSIQUE',
+  'LIVESTREAM_PRATIQUE_ARTISTIQUE' = 'LIVESTREAM_PRATIQUE_ARTISTIQUE',
+  'LIVRE_AUDIO_PHYSIQUE' = 'LIVRE_AUDIO_PHYSIQUE',
+  'LIVRE_NUMERIQUE' = 'LIVRE_NUMERIQUE',
+  'LIVRE_PAPIER' = 'LIVRE_PAPIER',
+  'LOCATION_INSTRUMENT' = 'LOCATION_INSTRUMENT',
+  'MATERIEL_ART_CREATIF' = 'MATERIEL_ART_CREATIF',
+  'MUSEE_VENTE_DISTANCE' = 'MUSEE_VENTE_DISTANCE',
+  'OEUVRE_ART' = 'OEUVRE_ART',
+  'PARTITION' = 'PARTITION',
+  'PLATEFORME_PRATIQUE_ARTISTIQUE' = 'PLATEFORME_PRATIQUE_ARTISTIQUE',
+  'PRATIQUE_ART_VENTE_DISTANCE' = 'PRATIQUE_ART_VENTE_DISTANCE',
+  'PODCAST' = 'PODCAST',
+  'RENCONTRE_EN_LIGNE' = 'RENCONTRE_EN_LIGNE',
+  'RENCONTRE_JEU' = 'RENCONTRE_JEU',
+  'RENCONTRE' = 'RENCONTRE',
+  'SALON' = 'SALON',
+  'SEANCE_CINE' = 'SEANCE_CINE',
+  'SEANCE_ESSAI_PRATIQUE_ART' = 'SEANCE_ESSAI_PRATIQUE_ART',
+  'SPECTACLE_ENREGISTRE' = 'SPECTACLE_ENREGISTRE',
+  'SPECTACLE_REPRESENTATION' = 'SPECTACLE_REPRESENTATION',
+  'SPECTACLE_VENTE_DISTANCE' = 'SPECTACLE_VENTE_DISTANCE',
+  'SUPPORT_PHYSIQUE_FILM' = 'SUPPORT_PHYSIQUE_FILM',
+  'SUPPORT_PHYSIQUE_MUSIQUE' = 'SUPPORT_PHYSIQUE_MUSIQUE',
+  'TELECHARGEMENT_LIVRE_AUDIO' = 'TELECHARGEMENT_LIVRE_AUDIO',
+  'TELECHARGEMENT_MUSIQUE' = 'TELECHARGEMENT_MUSIQUE',
+  'VISITE_GUIDEE' = 'VISITE_GUIDEE',
+  'VISITE_VIRTUELLE' = 'VISITE_VIRTUELLE',
+  'VISITE' = 'VISITE',
+  'VOD' = 'VOD',
 }
 /**
  * @export
@@ -1927,13 +1927,13 @@ export interface SubscriptionMessage {
  * @enum {string}
  */
 export enum SubscriptionStep {
-  EmailValidation = 'email-validation',
-  Maintenance = 'maintenance',
-  PhoneValidation = 'phone-validation',
-  ProfileCompletion = 'profile-completion',
-  IdentityCheck = 'identity-check',
-  UserProfiling = 'user-profiling',
-  HonorStatement = 'honor-statement',
+  'email-validation' = 'email-validation',
+  'maintenance' = 'maintenance',
+  'phone-validation' = 'phone-validation',
+  'profile-completion' = 'profile-completion',
+  'identity-check' = 'identity-check',
+  'user-profiling' = 'user-profiling',
+  'honor-statement' = 'honor-statement',
 }
 /**
  * @export
@@ -2158,11 +2158,11 @@ export interface UserReportedOffersResponse {
  * @enum {string}
  */
 export enum UserRole {
-  ADMIN = 'ADMIN',
-  BENEFICIARY = 'BENEFICIARY',
-  PRO = 'PRO',
-  JOUVE = 'JOUVE',
-  UNDERAGEBENEFICIARY = 'UNDERAGE_BENEFICIARY',
+  'ADMIN' = 'ADMIN',
+  'BENEFICIARY' = 'BENEFICIARY',
+  'PRO' = 'PRO',
+  'JOUVE' = 'JOUVE',
+  'UNDERAGE_BENEFICIARY' = 'UNDERAGE_BENEFICIARY',
 }
 /**
  * @export
@@ -2341,24 +2341,24 @@ export interface VenueResponse {
  * @enum {string}
  */
 export enum VenueTypeCodeKey {
-  VISUALARTS = 'VISUAL_ARTS',
-  CULTURALCENTRE = 'CULTURAL_CENTRE',
-  ARTISTICCOURSE = 'ARTISTIC_COURSE',
-  SCIENTIFICCULTURE = 'SCIENTIFIC_CULTURE',
-  FESTIVAL = 'FESTIVAL',
-  GAMES = 'GAMES',
-  BOOKSTORE = 'BOOKSTORE',
-  LIBRARY = 'LIBRARY',
-  MUSEUM = 'MUSEUM',
-  RECORDSTORE = 'RECORD_STORE',
-  MUSICALINSTRUMENTSTORE = 'MUSICAL_INSTRUMENT_STORE',
-  CONCERTHALL = 'CONCERT_HALL',
-  DIGITAL = 'DIGITAL',
-  PATRIMONYTOURISM = 'PATRIMONY_TOURISM',
-  MOVIE = 'MOVIE',
-  PERFORMINGARTS = 'PERFORMING_ARTS',
-  CREATIVEARTSSTORE = 'CREATIVE_ARTS_STORE',
-  OTHER = 'OTHER',
+  'VISUAL_ARTS' = 'VISUAL_ARTS',
+  'CULTURAL_CENTRE' = 'CULTURAL_CENTRE',
+  'ARTISTIC_COURSE' = 'ARTISTIC_COURSE',
+  'SCIENTIFIC_CULTURE' = 'SCIENTIFIC_CULTURE',
+  'FESTIVAL' = 'FESTIVAL',
+  'GAMES' = 'GAMES',
+  'BOOKSTORE' = 'BOOKSTORE',
+  'LIBRARY' = 'LIBRARY',
+  'MUSEUM' = 'MUSEUM',
+  'RECORD_STORE' = 'RECORD_STORE',
+  'MUSICAL_INSTRUMENT_STORE' = 'MUSICAL_INSTRUMENT_STORE',
+  'CONCERT_HALL' = 'CONCERT_HALL',
+  'DIGITAL' = 'DIGITAL',
+  'PATRIMONY_TOURISM' = 'PATRIMONY_TOURISM',
+  'MOVIE' = 'MOVIE',
+  'PERFORMING_ARTS' = 'PERFORMING_ARTS',
+  'CREATIVE_ARTS_STORE' = 'CREATIVE_ARTS_STORE',
+  'OTHER' = 'OTHER',
 }
 
 /**
