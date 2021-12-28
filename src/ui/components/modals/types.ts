@@ -24,8 +24,5 @@ type UndefinedRightIconProps = {
 }
 
 export type ModalLeftIconProps = DefinedLeftIconProps | UndefinedLeftIconProps
-export type ModalIconProps =
-  | (DefinedLeftIconProps & DefinedRightIconProps)
-  | (DefinedLeftIconProps & UndefinedRightIconProps)
-  | (UndefinedLeftIconProps & DefinedRightIconProps)
-  | (UndefinedLeftIconProps & UndefinedRightIconProps)
+type ModalRightIconProps = DefinedRightIconProps | UndefinedRightIconProps
+export type ModalIconProps = ModalLeftIconProps & ModalRightIconProps
