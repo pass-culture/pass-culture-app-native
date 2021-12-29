@@ -1,4 +1,5 @@
 import { t } from '@lingui/macro'
+import { noop } from 'lodash'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
@@ -34,7 +35,7 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
     <AppModal
       visible={visible}
       title={t`Respect de ta vie privée`}
-      disableBackdropTap={disableBackdropTap}
+      onBackdropPress={disableBackdropTap ? noop : undefined}
       leftIconAccessibilityLabel={undefined}
       leftIcon={undefined}
       onLeftIconPress={undefined}
