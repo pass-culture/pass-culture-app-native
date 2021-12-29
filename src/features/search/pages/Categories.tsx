@@ -62,7 +62,7 @@ export const Categories: React.FC = () => {
                 {searchGroupLabelMapping[searchGroup]}
               </Typo.ButtonText>
               <Spacer.Flex />
-              {!!isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(8)} />}
+              {!!isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(6)} />}
             </LabelContainer>
           )
         })}

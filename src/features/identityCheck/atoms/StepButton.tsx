@@ -32,7 +32,7 @@ export const StepButton = ({ step, state, onPress }: Props) => {
       <Typo.ButtonText>{label}</Typo.ButtonText>
       <CompletionContainer>
         <Validate
-          size={getSpacing(6)}
+          size={getSpacing(5)}
           color={state === 'completed' ? ColorsEnum.GREEN_LIGHT : ColorsEnum.TRANSPARENT}
           {...accessibilityAndTestId(state === 'completed' ? 'StepCompleted' : 'StepNotCompleted')}
         />

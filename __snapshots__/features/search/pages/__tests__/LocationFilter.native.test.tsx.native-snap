@@ -491,9 +491,9 @@ exports[`LocationFilter component should render correctly 1`] = `
           }
         >
           <View
-            height={32}
+            height={24}
             testID="validateIcon"
-            width={32}
+            width={24}
           >
             <Text>
               validateIcon-SVG-Mock

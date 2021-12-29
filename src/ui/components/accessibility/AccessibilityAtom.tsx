@@ -37,7 +37,7 @@ export const AccessibilityAtom: React.FC<Props> = ({
         <ValidationContainer>
           <ValidationMark
             isValid={isAccessible}
-            size={getSpacing(8)}
+            size={getSpacing(6)}
             invalidTestID="invalidTestId"
             validtestID="validTestId"
           />
@@ -72,5 +72,5 @@ const Text = styled(Typo.Caption)({ textAlign: 'center', paddingHorizontal: 1 })
 
 const ValidationContainer = styled.View({
   position: 'absolute',
-  bottom: -getSpacing(4),
+  bottom: -getSpacing(3),
 })

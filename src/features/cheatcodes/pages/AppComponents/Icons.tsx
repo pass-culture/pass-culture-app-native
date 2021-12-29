@@ -62,7 +62,6 @@ import { Info } from 'ui/svg/icons/Info'
 import { InfoFraud } from 'ui/svg/icons/InfoFraud'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { Invalidate as InvalidateDeprecated } from 'ui/svg/icons/Invalidate_deprecated'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
@@ -165,7 +164,6 @@ export const Icons: FunctionComponent = () => {
       <Icon name="InfoFraud" component={InfoFraud} isNew />
       <Icon name="InfoPlain" component={InfoPlain} isNew />
       <Icon name="Invalidate" component={Invalidate} isNew />
-      <Icon name="InvalidateDeprecated" component={InvalidateDeprecated} />
       <Icon name="LegalNotices" component={LegalNotices} isNew />
       <Icon name="LifeBuoy" component={LifeBuoy} isNew />
       <Icon name="LocationBuilding" component={LocationBuilding} isNew />
@@ -189,7 +187,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="Share" component={Share} isNew />
       <Icon name="Sun" component={Sun} isNew />
       <Icon name="UserCircle" component={UserCircle} />
-      <Icon name="Validate" component={Validate} />
+      <Icon name="Validate" component={Validate} isNew />
       <Icon name="SadFace" component={SadFace} />
       <Icon name="HappyFace" component={HappyFace} />
       <Icon name="HappyFaceStars" component={HappyFaceStars} />

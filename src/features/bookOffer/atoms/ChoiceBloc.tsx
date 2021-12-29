@@ -43,7 +43,7 @@ export const ChoiceBloc: React.FC<Props> = ({ selected, onPress, testID, childre
       <ChoiceContent selected={selected} disabled={disabled}>
         {selected ? (
           <IconContainer>
-            <Validate color={ColorsEnum.WHITE} size={getSpacing(6)} />
+            <Validate color={ColorsEnum.WHITE} size={getSpacing(4.5)} />
           </IconContainer>
         ) : (
           <Spacer.Row numberOfSpaces={5} />

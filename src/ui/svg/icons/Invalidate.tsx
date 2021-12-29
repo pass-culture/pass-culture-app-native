@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Svg, { Path } from 'react-native-svg'
+import Svg, { Circle, Path } from 'react-native-svg'
 
 import { ColorsEnum } from 'ui/theme'
 
@@ -11,6 +11,7 @@ export const Invalidate: React.FunctionComponent<IconInterface> = ({
   testID,
 }) => (
   <Svg width={size} height={size} viewBox="0 0 48 49" testID={testID} fill={color}>
+    <Circle r={10} cx={24} cy={24} fill={ColorsEnum.WHITE} />
     <Path
       fillRule="evenodd"
       clipRule="evenodd"

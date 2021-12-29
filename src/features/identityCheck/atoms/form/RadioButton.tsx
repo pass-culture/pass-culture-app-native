@@ -22,7 +22,7 @@ export const RadioButton = ({ name, description, selected, onPress }: Props) => 
     </TextContainer>
     {selected ? (
       <IconContainer>
-        <Validate color={ColorsEnum.PRIMARY} />
+        <Validate color={ColorsEnum.PRIMARY} size={24} />
       </IconContainer>
     ) : null}
   </Label>

@@ -15,7 +15,7 @@ export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) =>
   <TouchableOpacity selected={selected} onPress={onPress}>
     {selected ? (
       <IconContainer>
-        <Validate color={ColorsEnum.WHITE} size={getSpacing(6)} />
+        <Validate color={ColorsEnum.WHITE} size={getSpacing(4.5)} />
       </IconContainer>
     ) : (
       <Spacer.Row numberOfSpaces={5} />

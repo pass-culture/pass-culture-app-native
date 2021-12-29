@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Validate } from 'ui/svg/icons/Validate'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface RadioButtonProps {
   id: string
@@ -27,7 +27,9 @@ export function RadioButton(props: RadioButtonProps) {
         </Spacer.Flex>
 
         <Spacer.Flex flex={0.1}>
-          {props.selectedValue === props.id && <Validate color={ColorsEnum.PRIMARY} />}
+          {props.selectedValue === props.id && (
+            <Validate color={ColorsEnum.PRIMARY} size={getSpacing(6)} />
+          )}
         </Spacer.Flex>
       </PressableContainer>
     </React.Fragment>

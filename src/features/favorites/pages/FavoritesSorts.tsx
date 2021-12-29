@@ -89,7 +89,7 @@ export const FavoritesSorts: React.FC = () => {
                   {label}
                 </Typo.ButtonText>
                 <Spacer.Flex />
-                {!!isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(8)} />}
+                {!!isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(6)} />}
               </LabelContainer>
               {sortBy === 'AROUND_ME' && positionError ? (
                 <InputError visible messageId={positionError.message} numberOfSpacesTop={1} />

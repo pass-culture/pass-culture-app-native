@@ -160,8 +160,8 @@ exports[`FavoritesSorts component should render correctly 1`] = `
           }
         />
         <View
-          height={32}
-          width={32}
+          height={24}
+          width={24}
         >
           <Text>
             undefined-SVG-Mock

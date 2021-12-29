@@ -13,7 +13,7 @@ interface Props {
   selected: boolean
 }
 
-const ICON_SIZE = getSpacing(8)
+const ICON_SIZE = getSpacing(6)
 
 export const AddressOption = ({ optionKey, label, onPressOption, selected }: Props) => {
   return (

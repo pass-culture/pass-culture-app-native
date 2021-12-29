@@ -31,8 +31,8 @@ exports[`Categories component should match diff snapshot when new category is se
             }
           />
 +         <View
-+           height={32}
-+           width={32}
++           height={24}
++           width={24}
 +         >
 +           <Text>
 +             undefined-SVG-Mock
@@ -69,8 +69,8 @@ exports[`Categories component should match diff snapshot when new category is se
             }
           />
 -         <View
--           height={32}
--           width={32}
+-           height={24}
+-           width={24}
 -         >
 -           <Text>
 -             undefined-SVG-Mock
@@ -204,8 +204,8 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <View
-          height={32}
-          width={32}
+          height={24}
+          width={24}
         >
           <Text>
             undefined-SVG-Mock

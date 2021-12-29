@@ -17,7 +17,7 @@ export const DateFilter: React.FC<Props> = ({ text, onPress, isSelected }: Props
   return (
     <ButtonContainer onPress={onPress} activeOpacity={ACTIVE_OPACITY}>
       <Typo.ButtonText color={color}>{text}</Typo.ButtonText>
-      {!!isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(8)} />}
+      {!!isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(6)} />}
     </ButtonContainer>
   )
 }

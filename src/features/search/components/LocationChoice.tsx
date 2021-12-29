@@ -35,7 +35,9 @@ export const LocationChoice: React.FC<Props> = (props) => {
         </TextContainer>
       </FirstPart>
       <SecondPart>
-        {!!isSelected && <Validate color={ColorsEnum.PRIMARY} testID="validateIcon" />}
+        {!!isSelected && (
+          <Validate color={ColorsEnum.PRIMARY} testID="validateIcon" size={getSpacing(6)} />
+        )}
         {!!arrowNext && <ArrowNext />}
         {!isSelected && !arrowNext ? <Spacer.Row numberOfSpaces={8} /> : null}
       </SecondPart>
