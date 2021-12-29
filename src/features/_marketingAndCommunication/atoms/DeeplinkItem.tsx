@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { GeneratedDeeplink } from 'features/_marketingAndCommunication/components/DeeplinksGeneratorForm'
 import { openUrl } from 'features/navigation/helpers'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { Share } from 'ui/svg/icons/Share'
+import { ShareDeprecated as Share } from 'ui/svg/icons/Share_deprecated'
 import { ColorsEnum, getSpacing, getSpacingString, Spacer } from 'ui/theme'
 
 interface Props {

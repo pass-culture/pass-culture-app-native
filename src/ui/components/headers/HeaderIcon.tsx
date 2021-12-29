@@ -7,7 +7,7 @@ import { AnimatedIcon } from 'ui/components/AnimatedIcon'
 import { ArrowPreviousDeprecated as ArrowPrevious } from 'ui/svg/icons/ArrowPrevious_deprecated'
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
-import { Share } from 'ui/svg/icons/Share'
+import { ShareDeprecated as Share } from 'ui/svg/icons/Share_deprecated'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing } from 'ui/theme'
 
