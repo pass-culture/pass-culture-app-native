@@ -86,6 +86,7 @@ import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Quote } from 'ui/svg/icons/Quote'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { SadFace } from 'ui/svg/icons/SadFace'
+import { Share } from 'ui/svg/icons/Share'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { Sun } from 'ui/svg/icons/Sun'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
@@ -185,6 +186,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="Quote" component={Quote} isNew />
       <Icon name="RequestSent" component={RequestSent} />
       <Icon name="SignOut" component={SignOut} isNew />
+      <Icon name="Share" component={Share} isNew />
       <Icon name="Sun" component={Sun} isNew />
       <Icon name="UserCircle" component={UserCircle} />
       <Icon name="Validate" component={Validate} />
