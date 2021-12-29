@@ -244,7 +244,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         </Text>
       </View>
       <View
-        accessibilityLabel="Contacter le support"
+        accessibilityLabel="button-icon"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -277,9 +277,9 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         testID="Contacter le support"
       >
         <View
-          height={20}
+          height={18}
           testID="button-icon"
-          width={20}
+          width={18}
         >
           <Text>
             button-icon-SVG-Mock
@@ -288,6 +288,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         <Text
           adjustsFontSizeToFit={false}
           icon={[Function]}
+          iconSize={18}
           numberOfLines={1}
           style={
             Array [
@@ -380,7 +381,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         }
       />
       <View
-        accessibilityLabel="Retourner à l'accueil"
+        accessibilityLabel="button-icon"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -413,9 +414,9 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         testID="Retourner à l'accueil"
       >
         <View
-          height={20}
+          height={18}
           testID="button-icon"
-          width={20}
+          width={18}
         >
           <Text>
             button-icon-SVG-Mock
@@ -424,6 +425,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         <Text
           adjustsFontSizeToFit={false}
           icon={[Function]}
+          iconSize={18}
           numberOfLines={1}
           style={
             Array [

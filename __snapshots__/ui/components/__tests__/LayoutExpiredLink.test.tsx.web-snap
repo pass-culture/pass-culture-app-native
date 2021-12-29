@@ -297,7 +297,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         </div>
       </div>
       <div
-        aria-label="Contacter le support"
+        aria-label="button-icon"
         className="css-view-1dbjc4n"
         data-testid="Contacter le support"
         onClick={[Function]}
@@ -466,7 +466,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         }
       />
       <div
-        aria-label="Retourner à l'accueil"
+        aria-label="button-icon"
         className="css-view-1dbjc4n"
         data-testid="Retourner à l'accueil"
         onClick={[Function]}

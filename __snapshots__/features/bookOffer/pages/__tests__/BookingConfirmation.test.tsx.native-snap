@@ -261,6 +261,7 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       >
         <Text
           adjustsFontSizeToFit={false}
+          iconSize={18}
           numberOfLines={1}
           style={
             Array [

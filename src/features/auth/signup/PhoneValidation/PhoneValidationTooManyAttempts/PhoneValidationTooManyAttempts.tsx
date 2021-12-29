@@ -8,7 +8,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { AccountLocked } from 'ui/svg/icons/AccountLocked'
-import { EmailDeprecated as Email } from 'ui/svg/icons/Email_deprecated'
+import { Email } from 'ui/svg/icons/Email'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 export function PhoneValidationTooManyAttempts() {
@@ -22,7 +22,6 @@ export function PhoneValidationTooManyAttempts() {
         title={t`Contacter le support`}
         icon={Email}
         onPress={contactSupport.forPhoneNumberConfirmation}
-        inline
       />
       <Spacer.Column numberOfSpaces={15} />
       <ButtonPrimaryWhite title={t`Retourner à l'accueil`} onPress={navigateToHome} />

@@ -229,7 +229,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
         }
       />
       <View
-        accessibilityLabel="Retourner à l'accueil"
+        accessibilityLabel="button-icon"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -262,9 +262,9 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
         testID="Retourner à l'accueil"
       >
         <View
-          height={20}
+          height={18}
           testID="button-icon"
-          width={20}
+          width={18}
         >
           <Text>
             button-icon-SVG-Mock
@@ -273,6 +273,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
         <Text
           adjustsFontSizeToFit={false}
           icon={[Function]}
+          iconSize={18}
           numberOfLines={1}
           style={
             Array [
@@ -536,7 +537,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
         }
       />
       <View
-        accessibilityLabel="Retourner à l'accueil"
+        accessibilityLabel="button-icon"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -569,9 +570,9 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
         testID="Retourner à l'accueil"
       >
         <View
-          height={20}
+          height={18}
           testID="button-icon"
-          width={20}
+          width={18}
         >
           <Text>
             button-icon-SVG-Mock
@@ -580,6 +581,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
         <Text
           adjustsFontSizeToFit={false}
           icon={[Function]}
+          iconSize={18}
           numberOfLines={1}
           style={
             Array [
