@@ -53,12 +53,11 @@ describe('<BookingImpossible />', () => {
         favorites: [{ offer: { id: 20 } }],
       })
     }
+
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    const { queryByText } = render(reactQueryProviderHOC(<BookingImpossible />, setup))
-    const addToFavoriteButton = queryByText('Mettre en favoris')
-    const backToOfferbutton = queryByText("Retourner à l'offre")
-    expect(addToFavoriteButton).toBeFalsy()
-    expect(backToOfferbutton).toBeFalsy()
+    const renderAPI = render(reactQueryProviderHOC(<BookingImpossible />, setup))
+
+    expect(renderAPI).toMatchSnapshot()
   })
 
   it('should have the correct wording when offer is favorite', async () => {

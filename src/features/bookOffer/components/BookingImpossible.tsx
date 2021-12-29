@@ -1,9 +1,11 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { useNotifyWebappLinkSent } from 'features/bookOffer/services/useNotifyWebappLinkSent'
 import { useAddFavorite, useFavorite } from 'features/favorites/pages/useFavorites'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
@@ -17,6 +19,7 @@ export const BookingImpossible: React.FC = () => {
   const { bookingState, dismissModal } = useBooking()
   const { offerId } = bookingState
   const favorite = useFavorite({ offerId })
+  const { navigate } = useNavigation<UseNavigationType>()
   const { showErrorSnackBar } = useSnackBarContext()
   const { mutate: notifyWebappLinkSent } = useNotifyWebappLinkSent({ offerId })
 
@@ -48,6 +51,13 @@ export const BookingImpossible: React.FC = () => {
     dismissModal()
   }
 
+  const navigateToOffer = () => {
+    const from = 'bookingimpossible'
+    analytics.logConsultOffer({ offerId, from })
+    navigate('Offer', { id: offerId, from })
+    dismissModal()
+  }
+
   return (
     <Container>
       <SadFace size={getSpacing(17)} color={ColorsEnum.GREY_DARK} />
@@ -57,24 +67,25 @@ export const BookingImpossible: React.FC = () => {
         {t`Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application.`}
       </Content>
       <Spacer.Column numberOfSpaces={6} />
-      {!favorite ? (
-        <Content>
-          {t`Mets cette offre en favoris\u00a0: tu recevras une notification avec un lien pour la réserver sur notre application web\u00a0!`}
-        </Content>
-      ) : (
-        <Content>{t`Rends-toi vite sur le site pass Culture afin de la réserver`}</Content>
-      )}
 
-      <Spacer.Column numberOfSpaces={6} />
-
-      {!favorite && (
+      {favorite ? (
         <React.Fragment>
+          <Content>{t`Rends-toi vite sur le site pass Culture afin de la réserver`}</Content>
+          <Spacer.Column numberOfSpaces={6} />
+          <ButtonPrimary title={t`Voir le détail de l'offre`} onPress={navigateToOffer} />
+        </React.Fragment>
+      ) : (
+        <React.Fragment>
+          <Content>
+            {t`Mets cette offre en favoris\u00a0: tu recevras une notification avec un lien pour la réserver sur notre application web\u00a0!`}
+          </Content>
+          <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary title={t`Mettre en favoris`} onPress={addToFavourite} />
           <Spacer.Column numberOfSpaces={4} />
           <ButtonTertiary title={t`Retourner à l'offre`} onPress={dismissModal} />
-          <Spacer.Column numberOfSpaces={4} />
         </React.Fragment>
       )}
+      <Spacer.Column numberOfSpaces={4} />
     </Container>
   )
 }
