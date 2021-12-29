@@ -145,7 +145,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="EditPen" component={EditPen} isNew />
       <Icon name="Email" component={Email} isNew />
       <Icon name="EmailDeprecated" component={EmailDeprecated} />
-      <Icon name="EmailFilled" component={EmailFilled} />
+      <Icon name="EmailFilled" component={EmailFilled} isNew />
       <Icon name="Error" component={Error} isNew />
       <Icon name="ExternalSite" component={ExternalSite} isNew />
       <Icon name="ExternalSiteFilled" component={ExternalSiteFilled} isNew />
