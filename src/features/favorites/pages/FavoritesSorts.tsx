@@ -11,7 +11,7 @@ import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { InputError } from 'ui/components/inputs/InputError'
-import { Validate } from 'ui/svg/icons/Validate'
+import { ValidateDeprecated as Validate } from 'ui/svg/icons/Validate_deprecated'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 

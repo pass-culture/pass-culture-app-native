@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { Validate } from 'ui/svg/icons/Validate'
+import { ValidateDeprecated as Validate } from 'ui/svg/icons/Validate_deprecated'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'

@@ -5,7 +5,11 @@ import { ColorsEnum } from 'ui/theme'
 
 import { IconInterface } from './types'
 
-export const Validate = ({ color = ColorsEnum.GREEN_VALID, size = 32, testID }: IconInterface) => {
+export const ValidateDeprecated = ({
+  color = ColorsEnum.GREEN_VALID,
+  size = 32,
+  testID,
+}: IconInterface) => {
   const fillColor = color === ColorsEnum.WHITE ? ColorsEnum.PRIMARY : ColorsEnum.WHITE
   return (
     <Svg width={size} height={size} testID={testID} viewBox="0 0 38 38">

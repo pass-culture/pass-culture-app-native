@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { StepConfig } from 'features/identityCheck/types'
 import { accessibilityAndTestId } from 'tests/utils'
-import { Validate } from 'ui/svg/icons/Validate'
+import { ValidateDeprecated as Validate } from 'ui/svg/icons/Validate_deprecated'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'

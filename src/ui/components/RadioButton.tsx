@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Validate } from 'ui/svg/icons/Validate'
+import { ValidateDeprecated as Validate } from 'ui/svg/icons/Validate_deprecated'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 interface RadioButtonProps {
