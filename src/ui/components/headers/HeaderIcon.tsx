@@ -4,10 +4,10 @@ import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
 import { AnimatedIcon } from 'ui/components/AnimatedIcon'
-import { ArrowPreviousDeprecated as ArrowPrevious } from 'ui/svg/icons/ArrowPrevious_deprecated'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
-import { ShareDeprecated as Share } from 'ui/svg/icons/Share_deprecated'
+import { Share } from 'ui/svg/icons/Share'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing } from 'ui/theme'
 
@@ -48,7 +48,7 @@ export const HeaderIcon = (props: HeaderIconProps) => {
         }}>
         <AnimatedIcon
           Icon={Icon}
-          size={getSpacing(8)}
+          size={getSpacing(6)}
           initialColor={props.initialColor || ColorsEnum.BLACK}
           testID={`icon-${props.iconName}`}
           transition={props.animationState.transition}
