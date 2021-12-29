@@ -4,6 +4,7 @@ import { TextProps, TextStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { navigateToHome } from 'features/navigation/helpers'
+import { analytics } from 'libs/analytics'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
@@ -49,6 +50,7 @@ export const NotEligibleEduConnect = ({
 
   const onAbandon = () => {
     navigateToHome()
+    analytics.logBackToHomeFromEduconnectError({ fromError: message })
     // if we reset too fast, it will rerun the failed query, this as no effect on the UI but that's not desired.
     const beforeResetDelayInMs = 300
     timer.current = globalThis.setTimeout(resetErrorBoundary, beforeResetDelayInMs)

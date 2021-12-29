@@ -9,6 +9,7 @@ export const analytics: typeof actualAnalytics = {
   setDefaultEventParameters: jest.fn(),
   logAllModulesSeen: jest.fn(),
   logAllTilesSeen: jest.fn(),
+  logBackToHomeFromEduconnectError: jest.fn(),
   logBookingConfirmation: jest.fn(),
   logBookingDetailsScrolledToBottom: jest.fn(),
   logBookingError: jest.fn(),
