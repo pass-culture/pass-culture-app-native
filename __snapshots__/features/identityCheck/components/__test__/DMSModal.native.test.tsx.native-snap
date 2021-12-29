@@ -124,6 +124,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
           },
         ]
       }
+      testID="modalContainer"
     >
       <View
         onLayout={[Function]}
@@ -137,6 +138,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
             },
           ]
         }
+        testID="modalHeader"
       >
         <View
           style={
@@ -280,6 +282,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
         <RCTScrollView
           onContentSizeChange={[Function]}
           scrollEnabled={true}
+          testID="modalScrollView"
         >
           <View>
             <Text

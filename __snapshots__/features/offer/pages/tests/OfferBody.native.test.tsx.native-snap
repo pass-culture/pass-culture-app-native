@@ -1230,6 +1230,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
               },
             ]
           }
+          testID="modalContainer"
         >
           <View
             onLayout={[Function]}
@@ -1243,6 +1244,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                 },
               ]
             }
+            testID="modalHeader"
           >
             <View
               style={
@@ -1382,6 +1384,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
             <RCTScrollView
               onContentSizeChange={[Function]}
               scrollEnabled={true}
+              testID="modalScrollView"
             >
               <View>
                 <View

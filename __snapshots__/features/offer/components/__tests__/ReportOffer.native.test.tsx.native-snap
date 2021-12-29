@@ -124,6 +124,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
           },
         ]
       }
+      testID="modalContainer"
     >
       <View
         onLayout={[Function]}
@@ -137,6 +138,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
             },
           ]
         }
+        testID="modalHeader"
       >
         <View
           style={
@@ -290,6 +292,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
         <RCTScrollView
           onContentSizeChange={[Function]}
           scrollEnabled={true}
+          testID="modalScrollView"
         >
           <View>
             <View
@@ -441,6 +444,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
           },
         ]
       }
+      testID="modalContainer"
     >
       <View
         onLayout={[Function]}
@@ -454,6 +458,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
             },
           ]
         }
+        testID="modalHeader"
       >
         <View
           style={
@@ -607,6 +612,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
         <RCTScrollView
           onContentSizeChange={[Function]}
           scrollEnabled={true}
+          testID="modalScrollView"
         >
           <View>
             <View

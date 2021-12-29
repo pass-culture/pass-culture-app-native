@@ -3,7 +3,9 @@
 exports[`ForceUpdate display logic should display force update page when global variable is set 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body>
+  "baseElement": <body
+    tabindex="-1"
+  >
     <div>
       <div
         class="css-view-1dbjc4n"

@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useRef, useState, useMemo, useCallback } from 'react'
 import { LayoutChangeEvent, ScrollView, useWindowDimensions } from 'react-native'
-import RNModal from 'react-native-modal'
+import { ReactNativeModal } from 'react-native-modal'
 import styled from 'styled-components/native'
 
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
@@ -14,13 +14,12 @@ type Props = {
   title: string
   visible: boolean
   titleNumberOfLines?: number
-  disableBackdropTap?: boolean
   shouldDisplayOverlay?: boolean
   scrollEnabled?: boolean
   onBackdropPress?: () => void
 } & ModalIconProps
 
-// Without this, modal-enhanced-react-native-web recompute the margin with arbitraty values
+// Without this, the margin is recomputed with arbitraty values
 const modalStyles = { margin: 'auto' }
 
 export const AppModal: FunctionComponent<Props> = ({
@@ -34,7 +33,6 @@ export const AppModal: FunctionComponent<Props> = ({
   onRightIconPress,
   children,
   titleNumberOfLines,
-  disableBackdropTap,
   shouldDisplayOverlay = true,
   onBackdropPress,
   scrollEnabled = true,
@@ -64,13 +62,6 @@ export const AppModal: FunctionComponent<Props> = ({
       setKeyboardHeight(0)
     },
   })
-
-  function handleOnBackdropPress() {
-    if (disableBackdropTap) {
-      return undefined
-    }
-    return onBackdropPress ?? onLeftIconPress ?? onRightIconPress
-  }
 
   const scrollViewPaddingBottom = keyboardHeight || bottom
   const modalHeight = useMemo(() => {
@@ -108,11 +99,11 @@ export const AppModal: FunctionComponent<Props> = ({
       hasBackdrop={shouldDisplayOverlay}
       backdropColor={UniqueColors.GREY_OVERLAY}
       isVisible={visible}
-      onBackdropPress={handleOnBackdropPress()}
+      onBackdropPress={onBackdropPress ?? onLeftIconPress ?? onRightIconPress}
       testID="modal"
       deviceHeight={windowHeight}
       deviceWidth={windowWidth}>
-      <ModalContainer height={modalHeight}>
+      <ModalContainer height={modalHeight} testID="modalContainer">
         <ModalHeader
           title={title}
           numberOfLines={titleNumberOfLines}
@@ -124,7 +115,8 @@ export const AppModal: FunctionComponent<Props> = ({
           <ScrollView
             ref={scrollViewRef}
             scrollEnabled={scrollEnabled}
-            onContentSizeChange={updateScrollViewContentHeight}>
+            onContentSizeChange={updateScrollViewContentHeight}
+            testID="modalScrollView">
             {children}
           </ScrollView>
         </ScrollViewContainer>
@@ -146,7 +138,7 @@ const ScrollViewContainer = styled.View<{ paddingBottom: number }>(({ paddingBot
 
 const MODAL_PADDING = getSpacing(5)
 // @ts-ignore Argument of type 'typeof ReactNativeModal' is not assignable to parameter of type 'Any<StyledComponent>'
-const StyledModal = styled(RNModal)<{ height: number }>(({ theme }) => {
+const StyledModal = styled(ReactNativeModal)<{ height: number }>(({ theme }) => {
   const { isDesktopViewport } = theme
   return {
     position: 'absolute',
