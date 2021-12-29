@@ -5,7 +5,7 @@ import { ShouldStartLoadRequest } from 'react-native-webview/lib/WebViewTypes'
 import styled from 'styled-components/native'
 import { v1 as uuidv1 } from 'uuid'
 
-import { useWebAppUrl } from 'libs/environment'
+import { WEBAPP_V2_URL } from 'libs/environment'
 
 import { reCaptchaWebviewHTML } from './webviewHTML'
 
@@ -29,7 +29,6 @@ type Props = {
 }
 
 export const ReCaptcha: React.FC<Props> = (props) => {
-  const webAppUrl = useWebAppUrl()
   const webViewRef = useRef<WebView>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [keyToReCreateWebViewFromScratch, setKeyToReCreateWebViewFromScratch] = useState<
@@ -38,7 +37,7 @@ export const ReCaptcha: React.FC<Props> = (props) => {
 
   const webviewSource = {
     html: reCaptchaWebviewHTML,
-    baseUrl: webAppUrl,
+    baseUrl: WEBAPP_V2_URL,
   }
 
   useEffect(() => {

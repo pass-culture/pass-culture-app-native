@@ -1,4 +1,3 @@
-import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks/utils'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
@@ -33,15 +32,8 @@ describe('getScreenFromDeeplink()', () => {
   })
 
   it('should also work with a different accepted prefix', () => {
-    let prefix = WEBAPP_NATIVE_REDIRECTION_URL
-    let url = getFullUrl(getScreenPath(...homeNavConfig), prefix)
-    let screenFromDeeplink = getScreenFromDeeplink(url)
-    expect(screenFromDeeplink.screen).toEqual('TabNavigator')
-    expect(screenFromDeeplink.params).toEqual({ screen: 'Home', params: undefined })
-
-    prefix = ''
-    url = getFullUrl(getScreenPath(...homeNavConfig), '')
-    screenFromDeeplink = getScreenFromDeeplink(url)
+    const url = getFullUrl(getScreenPath(...homeNavConfig), '')
+    const screenFromDeeplink = getScreenFromDeeplink(url)
     expect(screenFromDeeplink.screen).toEqual('TabNavigator')
     expect(screenFromDeeplink.params).toEqual({ screen: 'Home', params: undefined })
   })

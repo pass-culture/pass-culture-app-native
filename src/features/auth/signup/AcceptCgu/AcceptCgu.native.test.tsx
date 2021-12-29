@@ -7,7 +7,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { AuthContext } from 'features/auth/AuthContext'
 import { contactSupport } from 'features/auth/support.services'
 import { env } from 'libs/environment'
-import { MonitoringError } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { simulateWebviewMessage, fireEvent, render, superFlushWithAct, waitFor } from 'tests/utils'
 
@@ -141,7 +141,11 @@ describe('<AcceptCgu/>', () => {
       expect(
         renderAPI.queryByText("Un problème est survenu pendant l'inscription, réessaie plus tard.")
       ).toBeTruthy()
-      expect(MonitoringError).toHaveBeenNthCalledWith(1, 'someError', 'AcceptCguOnReCaptchaError')
+      expect(captureMonitoringError).toHaveBeenNthCalledWith(
+        1,
+        'someError',
+        'AcceptCguOnReCaptchaError'
+      )
       expect(props.signUp).not.toBeCalled()
       expect(renderAPI.queryByTestId('button-isloading-icon')).toBeFalsy()
     })

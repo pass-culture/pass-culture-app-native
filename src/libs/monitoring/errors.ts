@@ -34,6 +34,12 @@ export class MonitoringError extends Error {
 
 MonitoringError.prototype.name = 'MonitoringError'
 
+export const captureMonitoringError = (message: string, name?: string) => {
+  class CaptureError extends Error {}
+  CaptureError.prototype.name = name || 'MonitoringError'
+  eventMonitoring.captureException(new CaptureError(message))
+}
+
 export class AsyncError extends MonitoringError {
   retry?: () => Promise<unknown> | (() => void)
   constructor(

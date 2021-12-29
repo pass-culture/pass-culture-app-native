@@ -9,7 +9,7 @@ import { ApiError } from 'api/apiHelpers'
 import { useAppSettings } from 'features/auth/settings'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { MonitoringError } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -53,7 +53,7 @@ export const ForgottenPassword: FunctionComponent = () => {
     } catch (error) {
       setErrorMessage(t`Un problème est survenu pendant la réinitialisation, réessaie plus tard.`)
       if (error instanceof ApiError) {
-        new MonitoringError(error.message, 'ForgottenPasswordRequestResetError')
+        captureMonitoringError(error.message, 'ForgottenPasswordRequestResetError')
       }
     } finally {
       setIsFetching(false)
@@ -95,7 +95,7 @@ export const ForgottenPassword: FunctionComponent = () => {
   function onReCaptchaError(error: string) {
     setIsDoingReCaptchaChallenge(false)
     setErrorMessage(t`Un problème est survenu pendant la réinitialisation, réessaie plus tard.`)
-    new MonitoringError(error, 'ForgottenPasswordOnRecaptchaError')
+    captureMonitoringError(error, 'ForgottenPasswordOnRecaptchaError')
   }
 
   function onReCaptchaExpire() {

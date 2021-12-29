@@ -3,7 +3,7 @@ import { t } from '@lingui/macro'
 import { env } from 'libs/environment'
 import { firestoreRemoteStore } from 'libs/firestore/client'
 import { RemoteStoreCollections, RemoteStoreDocuments } from 'libs/firestore/types'
-import { MonitoringError } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring'
 
 export enum MAINTENANCE {
   UNKNOWN = 'UNKNOWN',
@@ -60,6 +60,6 @@ export const maintenanceStatusListener = (onMaintenanceChange: OnMaintenanceChan
         onMaintenanceChange(maintenance)
       },
       (error) => {
-        new MonitoringError(error.message, 'firestore_not_available')
+        captureMonitoringError(error.message, 'firestore_not_available')
       }
     )

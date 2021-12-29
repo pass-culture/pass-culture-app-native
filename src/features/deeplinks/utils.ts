@@ -4,7 +4,6 @@ import { env } from 'libs/environment'
 
 import { DeeplinkEvent } from './types'
 
-export const WEBAPP_NATIVE_REDIRECTION_URL = `https://${env.WEBAPP_NATIVE_REDIRECTION_DOMAIN}`
 export const FIREBASE_DYNAMIC_LINK_URL = `https://${env.FIREBASE_DYNAMIC_LINK_DOMAIN}`
 
 /**
@@ -21,26 +20,19 @@ export function getLongDynamicLinkURI() {
  */
 export function generateLongFirebaseDynamicLink(
   deepLink: string,
-  deepLinkParams?: string | Record<string, unknown>
+  deepLinkParams?: Record<string, string>
 ) {
   let params = ''
-  if (typeof deepLinkParams !== 'undefined') {
-    if (typeof deepLinkParams === 'string') {
-      // TODO(antoinewg): ofl won't be necessary once the webapp supports the deeplinks (ie: after the webapp's migration)
-      // For now, we make sure we have an ofl so that when opened from a browser, the link redirects to the current webapp.
-      params = `&ofl=${deepLinkParams}`
-    } else if (deepLinkParams) {
-      Object.entries(deepLinkParams as Record<string, unknown>).forEach(([key, value]) => {
-        params += `&${key}=${value}`
-      })
-    }
+  if (deepLinkParams) {
+    Object.entries(deepLinkParams).forEach(([key, value]) => {
+      params += `&${key}=${value}`
+    })
   }
   return `${FIREBASE_DYNAMIC_LINK_URL}/?link=${encodeURIComponent(
     deepLink
   )}&${getLongDynamicLinkURI()}${params}`
 }
 
-export const isUniversalLink = (url: string) => url.startsWith(WEBAPP_NATIVE_REDIRECTION_URL)
 export const isFirebaseDynamicLink = (url: string) => url.startsWith(FIREBASE_DYNAMIC_LINK_URL)
 export const isFirebaseLongDynamicLink = (url: string) =>
   isFirebaseDynamicLink(url) && url.includes('?link=')
@@ -61,11 +53,6 @@ export const resolveHandler =
     listenShortLinks?: boolean // This option should not be passed when using resolveHandler into the ios listener
   ) =>
   (event: DeeplinkEvent) => {
-    if (isUniversalLink(event.url)) {
-      // Universal links: https://app.passculture-{env}.beta.gouv.fr/<routeName>
-      return handleDeeplinkUrl(event)
-    }
-
     // Long Firebase Dynamic Links: https://passcultureapp{env}.page.link/?link=https://app.passculture-{env}.beta.gouv.fr/<routeName>?param=214906&apn=app.passculture.testing&isi=1557887412&ibi=app.passculture.test&efr=1
     if (isFirebaseLongDynamicLink(event.url)) {
       return handleDeeplinkUrl({ url: extractUniversalLinkFromLongFirebaseDynamicLink(event) })

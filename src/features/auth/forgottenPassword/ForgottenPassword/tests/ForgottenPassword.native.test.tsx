@@ -4,7 +4,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigate, replace } from '__mocks__/@react-navigation/native'
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword'
-import { MonitoringError } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { requestPasswordResetFail, requestPasswordResetSuccess, server } from 'tests/server'
 import { simulateWebviewMessage, superFlushWithAct, fireEvent, render } from 'tests/utils'
@@ -110,7 +110,7 @@ describe('<ForgottenPassword />', () => {
           'Un problème est survenu pendant la réinitialisation, réessaie plus tard.'
         )
       ).toBeTruthy()
-      expect(MonitoringError).toHaveBeenNthCalledWith(
+      expect(captureMonitoringError).toHaveBeenNthCalledWith(
         1,
         'someError',
         'ForgottenPasswordOnRecaptchaError'
@@ -137,7 +137,7 @@ describe('<ForgottenPassword />', () => {
           'Un problème est survenu pendant la réinitialisation, réessaie plus tard.'
         )
       ).toBeTruthy()
-      expect(MonitoringError).toHaveBeenNthCalledWith(
+      expect(captureMonitoringError).toHaveBeenNthCalledWith(
         1,
         'Échec de la requête https://localhost/native/v1/request_password_reset, code: 400',
         'ForgottenPasswordRequestResetError'

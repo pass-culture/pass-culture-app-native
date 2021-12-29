@@ -1,6 +1,5 @@
 import { LinkingOptions } from '@react-navigation/native'
 
-import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { rootScreensConfig } from 'features/navigation/RootNavigator/screens'
 import { WEBAPP_V2_URL, EMAIL_PROVIDER_CUSTOM_URL } from 'libs/environment'
@@ -20,7 +19,6 @@ export const linking: RequireField<
   prefixes: [
     // must NOT be empty
     WEBAPP_V2_URL,
-    WEBAPP_NATIVE_REDIRECTION_URL,
     PASS_CULTURE_PREFIX_URL,
     EMAIL_PROVIDER_CUSTOM_URL,
   ],

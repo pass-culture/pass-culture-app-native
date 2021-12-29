@@ -3,7 +3,7 @@ import appsFlyer from 'react-native-appsflyer'
 
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
-import { MonitoringError } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring'
 import { useTrackingConsent } from 'libs/trackingConsent'
 
 import { CampaignEvents } from './events'
@@ -50,7 +50,10 @@ async function getUserId(): Promise<string | undefined> {
   if (__DEV__) return 'devAppsFlyerUserId'
   const appsFlyerUserIdPromise: Promise<string | undefined> = new Promise((resolve, reject) => {
     const getAppsFlyerUIDCallback = (error: Error, uid: string) => {
-      error && new MonitoringError(error.message, 'AppsFlyer_getUID') && reject(error)
+      if (error) {
+        captureMonitoringError(error.message, 'AppsFlyer_getUID')
+        reject(error)
+      }
       resolve(uid)
     }
     appsFlyer.getAppsFlyerUID(getAppsFlyerUIDCallback)

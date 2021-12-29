@@ -6,7 +6,6 @@
 	<string>development</string>
 	<key>com.apple.developer.associated-domains</key>
 	<array>
-		<string>applinks:$(WEBAPP_NATIVE_REDIRECTION_DOMAIN)</string>
 		<string>applinks:$(WEBAPP_V2_DOMAIN)</string>
 		<string>applinks:$(EMAIL_PROVIDER_CUSTOM_DOMAIN)</string>
 		<string>applinks:$(FIREBASE_DYNAMIC_LINK_DOMAIN)</string>

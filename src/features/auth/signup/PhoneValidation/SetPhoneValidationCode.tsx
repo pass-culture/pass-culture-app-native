@@ -21,7 +21,7 @@ import { RootStackParamList, UseNavigationType } from 'features/navigation/RootN
 import { useGoBack } from 'features/navigation/useGoBack'
 import { currentTimestamp } from 'libs/dates'
 import { env } from 'libs/environment'
-import { eventMonitoring, MonitoringError } from 'libs/monitoring'
+import { eventMonitoring, captureMonitoringError } from 'libs/monitoring'
 // eslint-disable-next-line no-restricted-imports
 import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
 import { storage } from 'libs/storage'
@@ -167,7 +167,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
           const errorMessage = `Request info : ${JSON.stringify({
             code,
           })}`
-          new MonitoringError(errorMessage, 'validatePhoneNumber')
+          captureMonitoringError(errorMessage, 'validatePhoneNumber')
         }
         validatePhoneNumber(code)
       }

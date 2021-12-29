@@ -8,11 +8,9 @@ import styled from 'styled-components/native'
 import { useSignIn } from 'features/auth/api'
 import { CheatCodesButton } from 'features/cheatcodes/components/CheatCodesButton'
 import { useSomeVenueId } from 'features/cheatcodes/pages/Navigation/useSomeVenueId'
-import { WEBAPP_NATIVE_REDIRECTION_URL } from 'features/deeplinks'
 import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 import { NoContentError } from 'features/home/components/NoContentError'
 import { Maintenance } from 'features/maintenance/Maintenance'
-import { openUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
@@ -25,8 +23,6 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, padding, Spacer } from 'ui/theme'
 
-const BadDeeplink = WEBAPP_NATIVE_REDIRECTION_URL + '/unknown'
-const LoginDeeplink = WEBAPP_NATIVE_REDIRECTION_URL + '/login'
 const MAX_ASYNC_TEST_REQ_COUNT = 3
 const EIFFEL_TOWER_COORDINATES = { lat: 48.8584, lng: 2.2945 }
 
@@ -193,18 +189,9 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
-            title={'Mauvais deeplink unknown'}
-            onPress={() => openUrl(BadDeeplink)}
-          />
-        </Row>
-        <Row half>
-          <NavigationButton
             title={'Confirm delete profile'}
             onPress={() => navigate('ConfirmDeleteProfile')}
           />
-        </Row>
-        <Row>
-          <CenteredText>{BadDeeplink}</CenteredText>
         </Row>
         <Row half>
           <NavigationButton
@@ -227,9 +214,6 @@ export function Navigation(): JSX.Element {
             disabled={isFetching || asyncTestReqCount >= MAX_ASYNC_TEST_REQ_COUNT}
             onPress={() => errorAsyncQuery()}
           />
-        </Row>
-        <Row half>
-          <NavigationButton title={'Universal Link'} onPress={() => openUrl(LoginDeeplink)} />
         </Row>
         <Row half>
           <NavigationButton

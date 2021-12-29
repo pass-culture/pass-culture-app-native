@@ -6,7 +6,7 @@ import { CardContent, Paragraphe } from 'features/auth/components/signupComponen
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
 import { contactSupport } from 'features/auth/support.services'
 import { env } from 'libs/environment'
-import { MonitoringError } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
@@ -62,7 +62,7 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
   function onReCaptchaError(error: string) {
     setIsDoingReCaptchaChallenge(false)
     setErrorMessage(t`Un problème est survenu pendant l'inscription, réessaie plus tard.`)
-    new MonitoringError(error, 'AcceptCguOnReCaptchaError')
+    captureMonitoringError(error, 'AcceptCguOnReCaptchaError')
   }
 
   function onReCaptchaExpire() {
