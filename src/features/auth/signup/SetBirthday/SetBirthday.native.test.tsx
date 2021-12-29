@@ -54,6 +54,7 @@ describe('SetBirthday Page', () => {
   it('should show the correct deposit amount', async () => {
     const component = render(<SetBirthday {...props} />)
     fireEvent.press(component.getByTestId('Pourquoi\u00a0?'))
+
     expect(component.queryByText(/une aide financière de/)).toBeTruthy()
     expect(component.queryByText(new RegExp('300' + '\u00a0' + '€'))).toBeTruthy()
   })

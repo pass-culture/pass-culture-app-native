@@ -51,7 +51,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
     isTooOld: false,
   })
   const { data: settings } = useAppSettings()
-  const deposit = useDepositAmountsByAge().eighteenYearsOldDeposit.replace(' ', '\u00a0')
+  const { eighteenYearsOldDeposit, fifteenYearsOldDeposit } = useDepositAmountsByAge()
 
   const now = new Date()
   const youngestAge = settings?.accountCreationMinimumAge ?? DEFAULT_YOUNGEST_AGE
@@ -118,15 +118,18 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
   const financialHelpMessage = displayPostGeneralisationMessage
     ? t({
         id: 'postGeneralisationFinancialHelpMessage',
-        values: { deposit },
+        values: {
+          deposit15: fifteenYearsOldDeposit.replace(' ', '\u00a0'),
+          deposit18: eighteenYearsOldDeposit.replace(' ', '\u00a0'),
+        },
         message:
-          'Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de 20\u00a0€ à\u00a0{deposit}\u00a0offerte par le Gouvernement.',
+          'Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de {deposit15} à\u00a0{deposit18}\u00a0offerte par le Gouvernement.',
       }) +
       '\n' +
       '\n'
     : t({
         id: 'preGeneralisationFinancialHelpMessage',
-        values: { deposit },
+        values: { deposit: eighteenYearsOldDeposit.replace(' ', '\u00a0') },
         message:
           'Si tu as 18 ans, tu es éligible à une aide financière de\u00a0{deposit}\u00a0offerte par le Gouvernement.',
       }) +
