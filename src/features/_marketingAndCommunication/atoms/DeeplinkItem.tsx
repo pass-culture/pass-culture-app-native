@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { GeneratedDeeplink } from 'features/_marketingAndCommunication/components/DeeplinksGeneratorForm'
 import { openUrl } from 'features/navigation/helpers'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { ShareDeprecated as Share } from 'ui/svg/icons/Share_deprecated'
+import { Share } from 'ui/svg/icons/Share'
 import { ColorsEnum, getSpacing, getSpacingString, Spacer } from 'ui/theme'
 
 interface Props {
@@ -59,7 +59,7 @@ export const DeeplinkItem = ({ deeplink, color, before }: Props) => {
             accessibilityLabel={t`Copier`}
             accessible
             testID="copy-universalLink">
-            <Share color={color} />
+            <Share color={color} size={24} />
           </TouchableOpacity>
         </Spacer.Flex>
       </Container>
@@ -79,7 +79,7 @@ export const DeeplinkItem = ({ deeplink, color, before }: Props) => {
             accessibilityLabel={t`Copier dans le press-papier`}
             accessible
             testID="copy-firebaselink">
-            <Share color={color} />
+            <Share color={color} size={24} />
           </TouchableOpacity>
         </Spacer.Flex>
       </Container>
