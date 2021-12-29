@@ -92,6 +92,7 @@ import { Sun } from 'ui/svg/icons/Sun'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { IconInterface } from 'ui/svg/icons/types'
 import { UserCircle } from 'ui/svg/icons/UserCircle'
+import { Validate } from 'ui/svg/icons/Validate'
 import { ValidateDeprecated } from 'ui/svg/icons/Validate_deprecated'
 import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
@@ -189,6 +190,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="Share" component={Share} isNew />
       <Icon name="Sun" component={Sun} isNew />
       <Icon name="UserCircle" component={UserCircle} />
+      <Icon name="Validate" component={Validate} isNew />
       <Icon name="ValidateDeprecated" component={ValidateDeprecated} />
       <Icon name="SadFace" component={SadFace} />
       <Icon name="HappyFace" component={HappyFace} />
