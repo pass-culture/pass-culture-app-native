@@ -13,7 +13,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { CountryPicker, METROPOLITAN_FRANCE } from 'libs/country-picker'
 import { currentTimestamp } from 'libs/dates'
 import { useSafeState } from 'libs/hooks'
-import { MonitoringError } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring'
 import { storage } from 'libs/storage'
 import { TIMER_NOT_INITIALIZED, useTimer } from 'libs/timer'
 import { accessibilityAndTestId } from 'tests/utils'
@@ -98,7 +98,7 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
         const errorMessage = `Request info : ${JSON.stringify({
           phoneNumber: phoneNumberWithPrefix,
         })}`
-        new MonitoringError(errorMessage, 'sendPhoneValidationCode')
+        captureMonitoringError(errorMessage, 'sendPhoneValidationCode')
       }
       sendPhoneValidationCode(phoneNumberWithPrefix)
     }

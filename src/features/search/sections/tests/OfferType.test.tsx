@@ -18,7 +18,7 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 describe('OfferType component', () => {
   it('should render all offer types', () => {
     const { queryByText } = render(<OfferType />)
-    OFFER_TYPES.map(([, label]) => {
+    OFFER_TYPES.forEach(([, label]) => {
       expect(queryByText(label)).toBeTruthy()
     })
   })
@@ -42,7 +42,7 @@ describe('OfferType component', () => {
     ${true}   | ${false} | ${true}  | ${2}
     ${true}   | ${true}  | ${true}  | ${3}
   `(
-    'should have the indicator $count in the title (isDigital=$isDigital | isEvent=$isEvent | isThing=$isThing)',
+    'should have the indicator $count in the title (isDigital=$isDigital | isEvent=$isEvent | isThing=$isThing)',
     ({ isDigital, isEvent, isThing, count }) => {
       mockSearchState = {
         ...initialSearchState,

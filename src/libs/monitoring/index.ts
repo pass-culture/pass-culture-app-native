@@ -1,2 +1,8 @@
-export { MonitoringError, AsyncError, OfferNotFoundError, ScreenError } from './errors'
+export {
+  MonitoringError,
+  AsyncError,
+  OfferNotFoundError,
+  ScreenError,
+  captureMonitoringError,
+} from './errors'
 export { eventMonitoring } from './services'
