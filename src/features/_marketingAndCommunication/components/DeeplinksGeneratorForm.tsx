@@ -14,11 +14,7 @@ import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { isTabScreen } from 'features/navigation/TabBar/routes'
-import { humanizeId } from 'features/offer/services/dehumanizeId'
-import { getOfferUrl } from 'features/offer/services/useShareOffer'
-import { getVenueUrl } from 'features/venue/services/useShareVenue'
-import { env, useWebAppUrl, WEBAPP_V2_URL } from 'libs/environment'
-import { MonitoringError } from 'libs/monitoring'
+import { env } from 'libs/environment'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
@@ -38,28 +34,11 @@ interface Props {
   onCreate: (generatedDeeplink: GeneratedDeeplink) => void
 }
 
-function getWebappOfferUrl(offerId: number, webAppUrl: string) {
-  if (webAppUrl === WEBAPP_V2_URL) return getOfferUrl(offerId)
-  if (webAppUrl === env.WEBAPP_URL) return `${webAppUrl}/accueil/details/${humanizeId(offerId)}`
-  throw new MonitoringError(
-    `webAppUrl=${webAppUrl} should be equal to WEBAPP_V2_URL=${WEBAPP_V2_URL} or env.WEBAPP_URL=${env.WEBAPP_URL}`
-  )
-}
-
-function getWebappVenueUrl(venueId: number, webAppUrl: string) {
-  if (webAppUrl === WEBAPP_V2_URL) return getVenueUrl(venueId)
-  if (webAppUrl === env.WEBAPP_URL) return `${webAppUrl}/${getScreenPath('Venue', { id: venueId })}`
-  throw new MonitoringError(
-    `webAppUrl=${webAppUrl} should be equal to WEBAPP_V2_URL=${WEBAPP_V2_URL} or env.WEBAPP_URL=${env.WEBAPP_URL}`
-  )
-}
-
 export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
   const [selectedScreen, setSelectedScreen] = useState<ScreensUsedByMarketing>('Offer')
   const [screenParams, setScreenParams] = useState<Record<string, string>>({})
 
   const { showErrorSnackBar } = useSnackBarContext()
-  const oflBaseUrl = useWebAppUrl()
 
   const renderScreenItem = (screenName: ScreensUsedByMarketing) => {
     return (
@@ -139,17 +118,6 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
 
     const { appParams, marketingParams, fdlParams } = extractParams(screenParams)
     const appAndMarketingParams = { ...appParams, ...marketingParams }
-
-    // TODO: remove this block when settings.isWebappV2Enabled in production
-    if (oflBaseUrl?.includes(env.WEBAPP_V2_DOMAIN)) {
-      if (selectedScreen === 'Offer') {
-        const offerId = Number(appParams.id)
-        fdlParams.ofl = getWebappOfferUrl(offerId, oflBaseUrl)
-      } else if (selectedScreen === 'Venue') {
-        const venueId = Number(appParams.id)
-        fdlParams.ofl = getWebappVenueUrl(venueId, oflBaseUrl)
-      }
-    }
 
     let screenPath = getScreenPath(selectedScreen, appAndMarketingParams)
     if (isTabScreen(selectedScreen)) {

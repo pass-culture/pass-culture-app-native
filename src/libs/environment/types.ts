@@ -56,6 +56,5 @@ export interface Environment {
   TMX_ORGID: string
   URL_PREFIX: string
   WEBAPP_NATIVE_REDIRECTION_DOMAIN: string
-  WEBAPP_URL: string
   WEBAPP_V2_DOMAIN: string
 }

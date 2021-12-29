@@ -21,19 +21,13 @@ export function getLongDynamicLinkURI() {
  */
 export function generateLongFirebaseDynamicLink(
   deepLink: string,
-  deepLinkParams?: string | Record<string, unknown>
+  deepLinkParams?: Record<string, string>
 ) {
   let params = ''
-  if (typeof deepLinkParams !== 'undefined') {
-    if (typeof deepLinkParams === 'string') {
-      // TODO(antoinewg): ofl won't be necessary once the webapp supports the deeplinks (ie: after the webapp's migration)
-      // For now, we make sure we have an ofl so that when opened from a browser, the link redirects to the current webapp.
-      params = `&ofl=${deepLinkParams}`
-    } else if (deepLinkParams) {
-      Object.entries(deepLinkParams as Record<string, unknown>).forEach(([key, value]) => {
-        params += `&${key}=${value}`
-      })
-    }
+  if (deepLinkParams) {
+    Object.entries(deepLinkParams).forEach(([key, value]) => {
+      params += `&${key}=${value}`
+    })
   }
   return `${FIREBASE_DYNAMIC_LINK_URL}/?link=${encodeURIComponent(
     deepLink
