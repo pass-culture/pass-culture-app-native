@@ -7,6 +7,7 @@ import { IdentityCheckMethod } from 'api/gen'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { openUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
@@ -30,6 +31,25 @@ export const FastEduconnectConnectionRequestModal: React.FC<
   const { dispatch } = useIdentityCheckContext()
   const { navigate } = useNavigation<UseNavigationType>()
 
+  const onModalRightIconPress = () => {
+    analytics.logQuitAuthenticationMethodSelection()
+    hideModal()
+  }
+
+  const onPressEduConnect = () => {
+    analytics.logChooseEduConnectMethod()
+    hideModal()
+    dispatch({ type: 'SET_METHOD', payload: IdentityCheckMethod.Educonnect })
+    navigate('IdentityCheckEduConnect')
+  }
+
+  const onPressManualIdentification = () => {
+    analytics.logChooseUbbleMethod()
+    hideModal()
+    dispatch({ type: 'SET_METHOD', payload: IdentityCheckMethod.Ubble })
+    navigate('IdentityCheckStart')
+  }
+
   return (
     <AppModal
       title={t`Identifie-toi en 2 minutes`}
@@ -39,7 +59,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
       onLeftIconPress={undefined}
       rightIconAccessibilityLabel={t`Fermer la modale de propositions d'identifications avec ÉduConnect ou Démarches Simplifiées`}
       rightIcon={Close}
-      onRightIconPress={hideModal}>
+      onRightIconPress={onModalRightIconPress}>
       <MainContent color={colors.greyDark}>
         {t`Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n'as pas d'identifiants ÉduConnect rapproche toi de ton établissement. `}
       </MainContent>
@@ -50,25 +70,14 @@ export const FastEduconnectConnectionRequestModal: React.FC<
         title={t`C’est quoi ÉduConnect\u00a0?`}
       />
 
-      <ButtonPrimary
-        title={t`Identification avec ÉduConnect`}
-        onPress={() => {
-          hideModal()
-          dispatch({ type: 'SET_METHOD', payload: IdentityCheckMethod.Educonnect })
-          navigate('IdentityCheckEduConnect')
-        }}
-      />
+      <ButtonPrimary title={t`Identification avec ÉduConnect`} onPress={onPressEduConnect} />
 
       <OrSeparator />
 
       <ButtonTertiaryBlack
         icon={(props) => <EditPen {...props} size={getSpacing(5)} />}
         title={t`Identification manuelle`}
-        onPress={() => {
-          hideModal()
-          dispatch({ type: 'SET_METHOD', payload: IdentityCheckMethod.Ubble })
-          navigate('IdentityCheckStart')
-        }}
+        onPress={onPressManualIdentification}
       />
       <DurationInfoText color={colors.greyDark}>{t`Environ 3 heures`}</DurationInfoText>
     </AppModal>
