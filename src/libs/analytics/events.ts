@@ -3,6 +3,7 @@ export enum AnalyticsEvent {
   ACCESS_EXTERNAL_OFFER = 'AccessExternalOffer',
   ALL_MODULES_SEEN = 'AllModulesSeen',
   ALL_TILES_SEEN = 'AllTilesSeen',
+  BACK_TO_HOME_FROM_EDUCONNECT_ERROR = 'BackToHomeFromEduconnectError',
   BOOKING_CONFIRMATION = 'BookingConfirmation',
   BOOKING_ERROR = 'BookingError',
   BOOKING_IMPOSSIBLE_IOS = 'BookingImpossibleiOS',

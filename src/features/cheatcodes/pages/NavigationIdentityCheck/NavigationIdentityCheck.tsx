@@ -84,6 +84,10 @@ export function NavigationIdentityCheck(): JSX.Element {
           title={'UserNotWhitelisted Error'}
           onPress={() => trigger(EduConnectErrorMessageEnum.UserNotWhitelisted)}
         />
+        <LinkToComponent
+          title={'Generic Error'}
+          onPress={() => trigger(EduConnectErrorMessageEnum.GenericError)}
+        />
         <Row half>
           <NavigationButton
             title={'Identifie-toi en 2 minutes'}

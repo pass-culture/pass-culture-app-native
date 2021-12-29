@@ -53,6 +53,8 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.ALL_MODULES_SEEN, { numberOfModules }),
   logAllTilesSeen: (moduleName: string, numberOfTiles: number) =>
     analyticsProvider.logEvent(AnalyticsEvent.ALL_TILES_SEEN, { moduleName, numberOfTiles }),
+  logBackToHomeFromEduconnectError: (params: { fromError: string }) =>
+    analyticsProvider.logEvent(AnalyticsEvent.BACK_TO_HOME_FROM_EDUCONNECT_ERROR, params),
   logConsultHome: (params: { entryId: string }) =>
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_HOME, params),
   logConsultOffer: (params: {
