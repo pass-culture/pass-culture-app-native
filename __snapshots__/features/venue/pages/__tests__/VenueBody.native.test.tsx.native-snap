@@ -2335,16 +2335,16 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "bottom": -16,
+                      "bottom": -12,
                       "position": "absolute",
                     },
                   ]
                 }
               >
                 <View
-                  height={32}
+                  height={24}
                   testID="validTestId"
-                  width={32}
+                  width={24}
                 >
                   <Text>
                     validTestId-SVG-Mock
@@ -2468,16 +2468,17 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "bottom": -16,
+                      "bottom": -12,
                       "position": "absolute",
                     },
                   ]
                 }
               >
                 <View
-                  height={32}
+                  fill="#626262"
+                  height={24}
                   testID="invalidTestId"
-                  width={32}
+                  width={24}
                 >
                   <Text>
                     invalidTestId-SVG-Mock
@@ -2633,16 +2634,17 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "bottom": -16,
+                      "bottom": -12,
                       "position": "absolute",
                     },
                   ]
                 }
               >
                 <View
-                  height={32}
+                  fill="#626262"
+                  height={24}
                   testID="invalidTestId"
-                  width={32}
+                  width={24}
                 >
                   <Text>
                     invalidTestId-SVG-Mock
@@ -2766,16 +2768,17 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "bottom": -16,
+                      "bottom": -12,
                       "position": "absolute",
                     },
                   ]
                 }
               >
                 <View
-                  height={32}
+                  fill="#626262"
+                  height={24}
                   testID="invalidTestId"
-                  width={32}
+                  width={24}
                 >
                   <Text>
                     invalidTestId-SVG-Mock

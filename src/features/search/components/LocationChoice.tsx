@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { LocationType } from 'features/search/enums'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { ValidateDeprecated as Validate } from 'ui/svg/icons/Validate_deprecated'
+import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo, ColorsEnum } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
@@ -35,7 +35,9 @@ export const LocationChoice: React.FC<Props> = (props) => {
         </TextContainer>
       </FirstPart>
       <SecondPart>
-        {!!isSelected && <Validate color={ColorsEnum.PRIMARY} testID="validateIcon" />}
+        {!!isSelected && (
+          <Validate color={ColorsEnum.PRIMARY} testID="validateIcon" size={getSpacing(6)} />
+        )}
         {!!arrowNext && <ArrowNext />}
         {!isSelected && !arrowNext ? <Spacer.Row numberOfSpaces={8} /> : null}
       </SecondPart>

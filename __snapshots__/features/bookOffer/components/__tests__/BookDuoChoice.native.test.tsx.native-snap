@@ -98,8 +98,8 @@ Array [
           }
         >
           <View
-            height={24}
-            width={24}
+            height={18}
+            width={18}
           >
             <Text>
               undefined-SVG-Mock

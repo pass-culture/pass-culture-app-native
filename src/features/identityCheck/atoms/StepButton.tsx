@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { StepConfig } from 'features/identityCheck/types'
 import { accessibilityAndTestId } from 'tests/utils'
-import { ValidateDeprecated as Validate } from 'ui/svg/icons/Validate_deprecated'
+import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
@@ -32,7 +32,7 @@ export const StepButton = ({ step, state, onPress }: Props) => {
       <Typo.ButtonText>{label}</Typo.ButtonText>
       <CompletionContainer>
         <Validate
-          size={getSpacing(6)}
+          size={getSpacing(5)}
           color={state === 'completed' ? ColorsEnum.GREEN_LIGHT : ColorsEnum.TRANSPARENT}
           {...accessibilityAndTestId(state === 'completed' ? 'StepCompleted' : 'StepNotCompleted')}
         />

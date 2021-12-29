@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Separator } from 'ui/components/Separator'
-import { ValidateDeprecated as Validate } from 'ui/svg/icons/Validate_deprecated'
+import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
@@ -13,7 +13,7 @@ interface Props {
   selected: boolean
 }
 
-const ICON_SIZE = getSpacing(8)
+const ICON_SIZE = getSpacing(6)
 
 export const AddressOption = ({ optionKey, label, onPressOption, selected }: Props) => {
   return (

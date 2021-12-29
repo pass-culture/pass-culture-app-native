@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ValidateDeprecated as Validate } from 'ui/svg/icons/Validate_deprecated'
+import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
@@ -17,7 +17,7 @@ export const DateFilter: React.FC<Props> = ({ text, onPress, isSelected }: Props
   return (
     <ButtonContainer onPress={onPress} activeOpacity={ACTIVE_OPACITY}>
       <Typo.ButtonText color={color}>{text}</Typo.ButtonText>
-      {!!isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(8)} />}
+      {!!isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(6)} />}
     </ButtonContainer>
   )
 }

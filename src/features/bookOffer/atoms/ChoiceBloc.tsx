@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { ValidateDeprecated as Validate } from 'ui/svg/icons/Validate_deprecated'
+import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
@@ -43,7 +43,7 @@ export const ChoiceBloc: React.FC<Props> = ({ selected, onPress, testID, childre
       <ChoiceContent selected={selected} disabled={disabled}>
         {selected ? (
           <IconContainer>
-            <Validate color={ColorsEnum.WHITE} size={getSpacing(6)} />
+            <Validate color={ColorsEnum.WHITE} size={getSpacing(4.5)} />
           </IconContainer>
         ) : (
           <Spacer.Row numberOfSpaces={5} />

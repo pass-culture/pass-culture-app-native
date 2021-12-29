@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ValidateDeprecated as Validate } from 'ui/svg/icons/Validate_deprecated'
+import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
@@ -15,7 +15,7 @@ export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) =>
   <TouchableOpacity selected={selected} onPress={onPress}>
     {selected ? (
       <IconContainer>
-        <Validate color={ColorsEnum.WHITE} size={getSpacing(6)} />
+        <Validate color={ColorsEnum.WHITE} size={getSpacing(4.5)} />
       </IconContainer>
     ) : (
       <Spacer.Row numberOfSpaces={5} />

@@ -10,7 +10,7 @@ import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { ValidateDeprecated as Validate } from 'ui/svg/icons/Validate_deprecated'
+import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
@@ -62,7 +62,7 @@ export const Categories: React.FC = () => {
                 {searchGroupLabelMapping[searchGroup]}
               </Typo.ButtonText>
               <Spacer.Flex />
-              {!!isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(8)} />}
+              {!!isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(6)} />}
             </LabelContainer>
           )
         })}

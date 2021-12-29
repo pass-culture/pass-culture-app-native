@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ValidateDeprecated as Validate } from 'ui/svg/icons/Validate_deprecated'
+import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
@@ -22,7 +22,7 @@ export const RadioButton = ({ name, description, selected, onPress }: Props) => 
     </TextContainer>
     {selected ? (
       <IconContainer>
-        <Validate color={ColorsEnum.PRIMARY} />
+        <Validate color={ColorsEnum.PRIMARY} size={24} />
       </IconContainer>
     ) : null}
   </Label>
