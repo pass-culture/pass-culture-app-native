@@ -2703,7 +2703,6 @@ msgstr "Un problème est survenu pendant la réinitialisation, réessaie plus ta
 msgid "Une demande a été envoyée à ta nouvelle adresse. Tu as 24h pour la valider. Pense à vérifier tes spams."
 msgstr "Une demande a été envoyée à ta nouvelle adresse. Tu as 24h pour la valider. Pense à vérifier tes spams."
 
-#: src/api/__mocks__/apiHelpers.ts
 #: src/api/apiHelpers.ts
 #: src/features/profile/pages/NotificationSettings.tsx
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
@@ -3112,7 +3111,7 @@ msgstr "passeport"
 
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 msgid "postGeneralisationFinancialHelpMessage"
-msgstr "Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de 20 € à {deposit} offerte par le Gouvernement."
+msgstr "Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de {deposit15} à {deposit18} offerte par le Gouvernement."
 
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 msgid "preGeneralisationFinancialHelpMessage"
