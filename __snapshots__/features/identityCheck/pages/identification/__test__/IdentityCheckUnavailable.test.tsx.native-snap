@@ -197,9 +197,9 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
         testID="Retourner à l'accueil"
       >
         <View
-          height={17}
+          height={18}
           testID="button-icon"
-          width={17}
+          width={18}
         >
           <Text>
             button-icon-SVG-Mock
@@ -208,6 +208,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
         <Text
           adjustsFontSizeToFit={false}
           icon={[Function]}
+          iconSize={18}
           numberOfLines={1}
           style={
             Array [

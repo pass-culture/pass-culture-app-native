@@ -10,8 +10,7 @@ import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { SadFace } from 'ui/svg/icons/SadFace'
-import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 type Props = {
   renderResendEmailButton?: () => React.ReactNode
@@ -54,8 +53,9 @@ export function LayoutExpiredLink({
       {!!contactSupport && (
         <ButtonTertiaryWhite
           title={t`Contacter le support`}
+          {...accessibilityAndTestId('button-icon')}
           onPress={contactSupport}
-          icon={EmailFilledIcon}
+          icon={EmailFilled}
         />
       )}
 
@@ -69,8 +69,9 @@ export function LayoutExpiredLink({
 
       <ButtonTertiaryWhite
         title={t`Retourner à l'accueil`}
+        {...accessibilityAndTestId('button-icon')}
         onPress={navigateToHome}
-        icon={PlainArrowPreviousIcon}
+        icon={PlainArrowPrevious}
       />
     </GenericInfoPage>
   )
@@ -81,15 +82,3 @@ const StyledBody = styled(Typo.Body).attrs({
 })({
   textAlign: 'center',
 })
-
-const EmailFilledIcon: React.FC<IconInterface> = ({ color }) => (
-  <EmailFilled {...accessibilityAndTestId('button-icon')} color={color} size={getSpacing(5)} />
-)
-
-const PlainArrowPreviousIcon: React.FC<IconInterface> = ({ color }) => (
-  <PlainArrowPrevious
-    {...accessibilityAndTestId('button-icon')}
-    color={color}
-    size={getSpacing(5)}
-  />
-)
