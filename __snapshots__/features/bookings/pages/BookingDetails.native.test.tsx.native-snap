@@ -1646,12 +1646,12 @@ exports[`BookingDetails should render correctly 1`] = `
             testID="headerIconRoundContainer"
           >
             <View
-              size={32}
+              size={24}
               style={
                 Array [
                   Object {
-                    "height": 32,
-                    "width": 32,
+                    "height": 24,
+                    "width": 24,
                   },
                 ]
               }
@@ -1668,9 +1668,9 @@ exports[`BookingDetails should render correctly 1`] = `
                 testID="initial-icon-container"
               >
                 <View
-                  height={32}
+                  height={24}
                   testID="icon-back"
-                  width={32}
+                  width={24}
                 >
                   <Text>
                     icon-back-SVG-Mock
@@ -1689,9 +1689,9 @@ exports[`BookingDetails should render correctly 1`] = `
                 testID="final-icon-container"
               >
                 <View
-                  height={32}
+                  height={24}
                   testID="final-icon-back"
-                  width={32}
+                  width={24}
                 >
                   <Text>
                     final-icon-back-SVG-Mock

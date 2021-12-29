@@ -59,7 +59,7 @@ export const DeeplinkItem = ({ deeplink, color, before }: Props) => {
             accessibilityLabel={t`Copier`}
             accessible
             testID="copy-universalLink">
-            <Share color={color} />
+            <Share color={color} size={24} />
           </TouchableOpacity>
         </Spacer.Flex>
       </Container>
@@ -79,7 +79,7 @@ export const DeeplinkItem = ({ deeplink, color, before }: Props) => {
             accessibilityLabel={t`Copier dans le press-papier`}
             accessible
             testID="copy-firebaselink">
-            <Share color={color} />
+            <Share color={color} size={24} />
           </TouchableOpacity>
         </Spacer.Flex>
       </Container>

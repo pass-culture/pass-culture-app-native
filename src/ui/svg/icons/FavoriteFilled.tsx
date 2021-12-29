@@ -5,21 +5,17 @@ import { ColorsEnum } from 'ui/theme'
 
 import { IconInterface } from './types'
 
-export function FavoriteFilled({
+export const FavoriteFilled: React.FunctionComponent<IconInterface> = ({
   size = 32,
-  color = ColorsEnum.PRIMARY,
+  color = ColorsEnum.BLACK,
   testID,
-}: IconInterface): JSX.Element {
-  return (
-    <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID}>
-      <Path
-        d="M28.95 33.667c-1.441.967-2.948 1.86-4.569 2.473a.75.75 0 01-.415.034l-.102-.029-.057-.02c-6-2.29-10.782-7.05-13.113-13.057a7.308 7.308 0 0113.357-5.87l.065.132.066-.131a7.308 7.308 0 016.25-3.945l.242-.004a7.308 7.308 0 016.86 9.831 22.79 22.79 0 01-4.04 6.697c-.891.88-1.58 1.53-2.069 1.947-.522.446-1.347 1.094-2.475 1.942z"
-        fill={color}
-        fillRule="evenodd"
-        strokeWidth="1"
-        stroke="none"
-        transform="translate(-313 -16) translate(313 16)"
-      />
-    </Svg>
-  )
-}
+}: IconInterface) => (
+  <Svg width={size} height={size} viewBox="0 0 48 49" testID={testID}>
+    <Path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      fill={color}
+      d="M46 19.5215C46 13.4385 41.0762 8.5 35 8.5C28.9238 8.5 24 13.4385 24 19.5215C24 13.4385 19.0762 8.5 13 8.5C6.92381 8.5 2 13.4385 2 19.5215C2 30.7549 14.5714 41.3525 23.9267 44.5C33.4976 41.3411 46 30.7954 46 19.5215ZM11.4296 16.0182C11.8944 15.7199 12.0292 15.1012 11.7309 14.6365C11.4325 14.1717 10.8138 14.0369 10.3491 14.3353C8.37228 15.6045 6.91921 17.6282 6.41156 19.9972C6.29585 20.5373 6.63981 21.0688 7.17984 21.1846C7.71986 21.3003 8.25145 20.9563 8.36717 20.4163C8.75953 18.5853 9.88645 17.009 11.4296 16.0182Z"
+    />
+  </Svg>
+)

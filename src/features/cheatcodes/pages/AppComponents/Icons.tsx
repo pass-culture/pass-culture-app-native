@@ -48,6 +48,7 @@ import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 import { Favorite } from 'ui/svg/icons/Favorite'
+import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
 import { Flag } from 'ui/svg/icons/Flag'
 import { Flash } from 'ui/svg/icons/Flash'
 import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
@@ -85,6 +86,7 @@ import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Quote } from 'ui/svg/icons/Quote'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { SadFace } from 'ui/svg/icons/SadFace'
+import { Share } from 'ui/svg/icons/Share'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { Sun } from 'ui/svg/icons/Sun'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
@@ -151,7 +153,8 @@ export const Icons: FunctionComponent = () => {
       <Icon name="ExternalSiteFilled" component={ExternalSiteFilled} isNew />
       <Icon name="Eye" component={Eye} />
       <Icon name="EyeSlash" component={EyeSlash} />
-      <Icon name="Favorite" component={Favorite} />
+      <Icon name="Favorite" component={Favorite} isNew />
+      <Icon name="FavoriteFilled" component={FavoriteFilled} isNew />
       <Icon name="Flag" component={Flag} />
       <Icon name="Flash" component={Flash} isNew />
       <Icon name="HandicapVisual" component={HandicapVisual} />
@@ -183,6 +186,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="Quote" component={Quote} isNew />
       <Icon name="RequestSent" component={RequestSent} />
       <Icon name="SignOut" component={SignOut} isNew />
+      <Icon name="Share" component={Share} isNew />
       <Icon name="Sun" component={Sun} isNew />
       <Icon name="UserCircle" component={UserCircle} />
       <Icon name="Validate" component={Validate} />

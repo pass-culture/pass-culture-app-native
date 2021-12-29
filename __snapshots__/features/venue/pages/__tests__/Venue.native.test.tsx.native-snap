@@ -3255,12 +3255,12 @@ exports[`<Venue /> should match snapshot 1`] = `
           testID="headerIconRoundContainer"
         >
           <View
-            size={32}
+            size={24}
             style={
               Array [
                 Object {
-                  "height": 32,
-                  "width": 32,
+                  "height": 24,
+                  "width": 24,
                 },
               ]
             }
@@ -3277,9 +3277,9 @@ exports[`<Venue /> should match snapshot 1`] = `
               testID="initial-icon-container"
             >
               <View
-                height={32}
+                height={24}
                 testID="icon-back"
-                width={32}
+                width={24}
               >
                 <Text>
                   icon-back-SVG-Mock
@@ -3298,9 +3298,9 @@ exports[`<Venue /> should match snapshot 1`] = `
               testID="final-icon-container"
             >
               <View
-                height={32}
+                height={24}
                 testID="final-icon-back"
-                width={32}
+                width={24}
               >
                 <Text>
                   final-icon-back-SVG-Mock
@@ -3402,12 +3402,12 @@ exports[`<Venue /> should match snapshot 1`] = `
           testID="headerIconRoundContainer"
         >
           <View
-            size={32}
+            size={24}
             style={
               Array [
                 Object {
-                  "height": 32,
-                  "width": 32,
+                  "height": 24,
+                  "width": 24,
                 },
               ]
             }
@@ -3425,9 +3425,9 @@ exports[`<Venue /> should match snapshot 1`] = `
             >
               <View
                 fill="#151515"
-                height={32}
+                height={24}
                 testID="icon-share"
-                width={32}
+                width={24}
               >
                 <Text>
                   icon-share-SVG-Mock
@@ -3447,9 +3447,9 @@ exports[`<Venue /> should match snapshot 1`] = `
             >
               <View
                 fill="#ffffff"
-                height={32}
+                height={24}
                 testID="final-icon-share"
-                width={32}
+                width={24}
               >
                 <Text>
                   final-icon-share-SVG-Mock
