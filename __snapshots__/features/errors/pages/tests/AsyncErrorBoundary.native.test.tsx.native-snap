@@ -85,8 +85,8 @@ exports[`AsyncErrorBoundary component should render 1`] = `
     testID="backArrow"
   >
     <View
-      height={40}
-      width={40}
+      height={28}
+      width={28}
     >
       <Text>
         undefined-SVG-Mock
