@@ -5,7 +5,7 @@ import { ReportOfferDescription } from 'features/offer/components/ReportOfferDes
 import { ReportOfferOtherReason } from 'features/offer/components/ReportOfferOtherReason'
 import { ReportOfferReason } from 'features/offer/components/ReportOfferReason'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
-import { ArrowPreviousDeprecated as ArrowPrevious } from 'ui/svg/icons/ArrowPrevious_deprecated'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 
 export enum ReportSteps {
   REPORT_OFFER_DESCRIPTION = 0,

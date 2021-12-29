@@ -11,7 +11,7 @@ import { ScreenError } from 'libs/monitoring/errors'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { Background } from 'ui/svg/Background'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
-import { ArrowPreviousDeprecated as ArrowPrevious } from 'ui/svg/icons/ArrowPrevious_deprecated'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -105,7 +105,7 @@ export const AsyncErrorBoundary = (props: AsyncFallbackProps) => {
       header={
         !!canGoBack() && (
           <HeaderContainer onPress={goBack} top={top + getSpacing(3.5)} testID="backArrow">
-            <ArrowPrevious color={ColorsEnum.WHITE} size={getSpacing(10)} />
+            <ArrowPrevious color={ColorsEnum.WHITE} size={getSpacing(7)} />
           </HeaderContainer>
         )
       }
