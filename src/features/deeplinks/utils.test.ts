@@ -1,7 +1,6 @@
 import { env } from 'libs/environment'
 
 import {
-  WEBAPP_NATIVE_REDIRECTION_URL,
   FIREBASE_DYNAMIC_LINK_URL,
   getLongDynamicLinkURI,
   generateLongFirebaseDynamicLink,
@@ -13,10 +12,6 @@ import {
 
 describe('Formatting deeplink url', () => {
   afterAll(() => jest.resetAllMocks())
-
-  it('should format properly the universal link', () => {
-    expect(WEBAPP_NATIVE_REDIRECTION_URL).toEqual(`https://${env.WEBAPP_NATIVE_REDIRECTION_DOMAIN}`)
-  })
 
   describe('getLongDynamicLinkURI', () => {
     it('should create the right URI for Firebase Dynamic Links', () => {
@@ -94,16 +89,6 @@ describe('Formatting deeplink url', () => {
   })
 
   describe('handleLinks', () => {
-    it('should forward deeplink event for universal link', () => {
-      const url = WEBAPP_NATIVE_REDIRECTION_URL + '/home'
-      const deeplinkEvent = { url }
-      const handleDeeplinkUrl = jest.fn()
-
-      const handler = resolveHandler(handleDeeplinkUrl)
-      handler(deeplinkEvent)
-
-      expect(handleDeeplinkUrl).toBeCalledWith(deeplinkEvent)
-    })
     it('should extract universal link for firebase long dynamic link', () => {
       const url = FIREBASE_DYNAMIC_LINK_URL + '/?link=https://a.link'
       const handleDeeplinkUrl = jest.fn()
@@ -113,6 +98,7 @@ describe('Formatting deeplink url', () => {
 
       expect(handleDeeplinkUrl).toBeCalledWith({ url: 'https://a.link' })
     })
+
     it.each([undefined, false])(
       'should do anything for firebase short dynamic link (listenShortLinks=%s)',
       (listenShortLinks) => {
@@ -125,6 +111,7 @@ describe('Formatting deeplink url', () => {
         expect(handleDeeplinkUrl).not.toBeCalled()
       }
     )
+
     it('should handle firebase short dynamic link when listenShortLinks=true', () => {
       const url = FIREBASE_DYNAMIC_LINK_URL + '/home'
       const handleDeeplinkUrl = jest.fn()

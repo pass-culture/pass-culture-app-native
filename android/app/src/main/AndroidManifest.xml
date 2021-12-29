@@ -16,7 +16,6 @@
         <action android:name="android.intent.action.VIEW" />
         <category android:name="android.intent.category.DEFAULT" />
         <category android:name="android.intent.category.BROWSABLE" />
-        <data android:scheme="https" android:host="@string/WEBAPP_NATIVE_REDIRECTION_DOMAIN" />
         <data android:scheme="https" android:host="@string/WEBAPP_V2_DOMAIN" />
         <data android:scheme="https" android:host="@string/EMAIL_PROVIDER_CUSTOM_DOMAIN" />
       </intent-filter>
