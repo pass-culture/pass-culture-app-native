@@ -257,8 +257,8 @@ Array [
       testID="Voir l'itinéraire"
     >
       <View
-        height={24}
-        width={24}
+        height={20}
+        width={20}
       >
         <Text>
           undefined-SVG-Mock

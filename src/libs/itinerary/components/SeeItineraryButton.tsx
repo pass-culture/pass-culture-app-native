@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { LocationPointerDeprecated as LocationPointer } from 'ui/svg/icons/LocationPointer_deprecated'
+import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { ColorsEnum } from 'ui/theme'
 
 interface Props {
@@ -23,7 +23,7 @@ export function SeeItineraryButton(props: Props) {
   )
 }
 
-const icon = () => <LocationPointer color={ColorsEnum.BLACK} size={24} />
+const icon = () => <LocationPointer color={ColorsEnum.BLACK} size={20} />
 
 const Container = styled.View({
   alignItems: 'flex-start',

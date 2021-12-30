@@ -17,8 +17,8 @@ import { ContactBlock } from 'ui/components/contact/ContactBlock'
 import { Hero } from 'ui/components/hero/Hero'
 import { PartialAccordionDescription } from 'ui/components/PartialAccordionDescription'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
-import { LocationPointerDeprecated as LocationPointer } from 'ui/svg/icons/LocationPointer_deprecated'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { LocationPointer } from 'ui/svg/icons/LocationPointer'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useVenue } from '../api/useVenue'
 
@@ -73,7 +73,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       <MarginContainer>
         <VenueAddressContainer>
           <IconContainer>
-            <LocationPointer size={getSpacing(4)} />
+            <LocationPointer size={getSpacing(4.5)} color={ColorsEnum.PRIMARY} />
           </IconContainer>
           <StyledText numberOfLines={1}>{venueAddress}</StyledText>
         </VenueAddressContainer>
