@@ -10,6 +10,7 @@ import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
 import { SocialNetworkIconsMap, SocialNetwork } from 'ui/components/socials/types'
 import { Again } from 'ui/svg/icons/Again'
+import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowNextDeprecated } from 'ui/svg/icons/ArrowNext_deprecated'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ArrowPreviousDeprecated } from 'ui/svg/icons/ArrowPrevious_deprecated'
@@ -129,6 +130,7 @@ export const Icons: FunctionComponent = () => {
         <Text> - BicolorSelector </Text>
       </AlignedText>
       <Icon name="Again" component={Again} isNew />
+      <Icon name="ArrowNext" component={ArrowNext} isNew />
       <Icon name="ArrowNextDeprecated" component={ArrowNextDeprecated} />
       <Icon name="ArrowPrevious" component={ArrowPrevious} isNew />
       <Icon name="ArrowPreviousDeprecated" component={ArrowPreviousDeprecated} />
