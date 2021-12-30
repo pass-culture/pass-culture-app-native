@@ -12,7 +12,7 @@ import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { QueryKeys } from 'libs/queryKeys'
 import { Spacer } from 'ui/components/spacer/Spacer'
-import { ArrowNext } from 'ui/svg/icons/ArrowNext'
+import { ArrowNextDeprecated as ArrowNext } from 'ui/svg/icons/ArrowNext_deprecated'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { Typo, ColorsEnum, getSpacing } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'

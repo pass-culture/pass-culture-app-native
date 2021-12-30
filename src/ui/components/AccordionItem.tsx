@@ -16,7 +16,7 @@ import styled from 'styled-components/native'
 import { useFunctionOnce } from 'libs/hooks'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-import { ArrowNext } from '../svg/icons/ArrowNext'
+import { ArrowNextDeprecated as ArrowNext } from '../svg/icons/ArrowNext_deprecated'
 import { getSpacing, Typo } from '../theme'
 
 interface IAccordionItemProps {

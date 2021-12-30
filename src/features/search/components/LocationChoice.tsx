@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { LocationType } from 'features/search/enums'
-import { ArrowNext } from 'ui/svg/icons/ArrowNext'
+import { ArrowNextDeprecated as ArrowNext } from 'ui/svg/icons/ArrowNext_deprecated'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo, ColorsEnum } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'

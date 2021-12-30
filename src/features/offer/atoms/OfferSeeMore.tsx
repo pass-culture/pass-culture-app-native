@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { ArrowNext } from 'ui/svg/icons/ArrowNext'
+import { ArrowNextDeprecated as ArrowNext } from 'ui/svg/icons/ArrowNext_deprecated'
 import { getSpacing, Spacer } from 'ui/theme'
 
 interface Props {

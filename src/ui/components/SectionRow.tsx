@@ -3,7 +3,7 @@ import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
-import { ArrowNext } from 'ui/svg/icons/ArrowNext'
+import { ArrowNextDeprecated as ArrowNext } from 'ui/svg/icons/ArrowNext_deprecated'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Typo, Spacer } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'

@@ -10,7 +10,7 @@ import { LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
-import { ArrowNext } from 'ui/svg/icons/ArrowNext'
+import { ArrowNextDeprecated as ArrowNext } from 'ui/svg/icons/ArrowNext_deprecated'
 import { Typo, Spacer, ColorsEnum, getSpacing } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 

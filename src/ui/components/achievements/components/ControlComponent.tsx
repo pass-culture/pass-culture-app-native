@@ -2,7 +2,7 @@ import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ArrowNext } from 'ui/svg/icons/ArrowNext'
+import { ArrowNextDeprecated as ArrowNext } from 'ui/svg/icons/ArrowNext_deprecated'
 import { ArrowPreviousDeprecated as ArrowPrevious } from 'ui/svg/icons/ArrowPrevious_deprecated'
 
 export type ControlComponentProps = {

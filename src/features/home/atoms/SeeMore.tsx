@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ArrowNext } from 'ui/svg/icons/ArrowNext'
+import { ArrowNextDeprecated as ArrowNext } from 'ui/svg/icons/ArrowNext_deprecated'
 import { ColorsEnum, getSpacing, Spacer, Typo, getShadow } from 'ui/theme'
 
 interface SeeMoreProps {
