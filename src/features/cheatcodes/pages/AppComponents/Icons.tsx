@@ -110,7 +110,7 @@ export const Icons: FunctionComponent = () => {
       <Spacer.Column numberOfSpaces={4} />
       <Icon name="BicolorAroundMe" component={BicolorAroundMe} isNew />
       <Icon name="BicolorBookings" component={BicolorBookings} isNew />
-      <Icon name="BicolorConfidentiality" component={BicolorConfidentiality} />
+      <Icon name="BicolorConfidentiality" component={BicolorConfidentiality} isNew />
       <Icon name="BicolorEverywhere" component={BicolorEverywhere} isNew />
       <Icon name="BicolorFavorite" component={BicolorFavorite} isNew />
       <Icon
@@ -118,7 +118,7 @@ export const Icons: FunctionComponent = () => {
         component={BicolorIdCardWithMagnifyingGlass}
         isNew
       />
-      <Icon name="BicolorLock" component={BicolorLock} />
+      <Icon name="BicolorLock" component={BicolorLock} isNew />
       <Icon name="BicolorLocationPointer" component={BicolorLocationPointer} isNew />
       <Icon name="BicolorLocationBuilding" component={BicolorLocationBuilding} isNew />
       <Icon name="BicolorLogo" component={BicolorLogo} isNew />

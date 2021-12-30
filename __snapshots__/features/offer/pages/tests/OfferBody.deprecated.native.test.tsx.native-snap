@@ -2260,8 +2260,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                           }
                                         >
                                           <View
-                                            height={36}
-                                            width={36}
+                                            height={24}
+                                            width={24}
                                           >
                                             <Text>
                                               undefined-SVG-Mock
@@ -2316,8 +2316,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                           }
                                         >
                                           <View
-                                            height={36}
-                                            width={36}
+                                            height={24}
+                                            width={24}
                                           >
                                             <Text>
                                               undefined-SVG-Mock
@@ -5126,8 +5126,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                           }
                                         >
                                           <View
-                                            height={36}
-                                            width={36}
+                                            height={24}
+                                            width={24}
                                           >
                                             <Text>
                                               undefined-SVG-Mock
@@ -5182,8 +5182,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                           }
                                         >
                                           <View
-                                            height={36}
-                                            width={36}
+                                            height={24}
+                                            width={24}
                                           >
                                             <Text>
                                               undefined-SVG-Mock
