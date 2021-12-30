@@ -2082,8 +2082,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           testID="accordionArrow"
         >
           <View
-            height={24}
-            width={24}
+            height={18}
+            width={18}
           >
             <Text>
               undefined-SVG-Mock
@@ -2239,8 +2239,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           testID="accordionArrow"
         >
           <View
-            height={24}
-            width={24}
+            height={18}
+            width={18}
           >
             <Text>
               undefined-SVG-Mock
@@ -2923,8 +2923,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           testID="accordionArrow"
         >
           <View
-            height={24}
-            width={24}
+            height={18}
+            width={18}
           >
             <Text>
               undefined-SVG-Mock
