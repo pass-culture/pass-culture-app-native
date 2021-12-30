@@ -3,12 +3,14 @@ import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { navigateToHome, openUrl } from 'features/navigation/helpers'
+import { DMSModal } from 'features/identityCheck/components/DMSModal'
+import { navigateToHome } from 'features/navigation/helpers'
 import { UseRouteType } from 'features/navigation/RootNavigator'
-import { env } from 'libs/environment'
+import { analytics } from 'libs/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
+import { useModal } from 'ui/components/modals/useModal'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
@@ -16,6 +18,13 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function IdentityCheckUnavailable() {
   const { params } = useRoute<UseRouteType<'IdentityCheckUnavailable'>>()
+
+  const { visible, showModal, hideModal } = useModal(false)
+
+  const showDMSModal = () => {
+    analytics.logStartDMSTransmission()
+    showModal()
+  }
   return (
     <GenericInfoPage
       title={t`Victime de notre succès\u00a0!`}
@@ -31,7 +40,7 @@ Nous reviendrons vers toi d’ici quelques jours.`}</StyledBody>
           <Spacer.Column numberOfSpaces={8} />
           <ButtonPrimaryWhite
             title={t`Transmettre un dossier`}
-            onPress={() => openUrl(env.DSM_URL)}
+            onPress={showDMSModal}
             iconSize={20}
             icon={ExternalSite}
           />
@@ -43,6 +52,7 @@ Nous reviendrons vers toi d’ici quelques jours.`}</StyledBody>
         onPress={navigateToHome}
         icon={PlainArrowPrevious}
       />
+      <DMSModal visible={visible} hideModal={hideModal} />
     </GenericInfoPage>
   )
 }
