@@ -45,8 +45,8 @@ jest.mock('features/home/api')
 jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
 
 let mockNextSubscriptionStep: NextSubscriptionStepResponse = {
-  allowedIdentityCheckMethods: [IdentityCheckMethod.Ubble],
-  nextSubscriptionStep: SubscriptionStep.IdentityCheck,
+  allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
+  nextSubscriptionStep: SubscriptionStep['identity-check'],
   hasIdentityCheckPending: false,
 }
 
@@ -69,8 +69,8 @@ describe('<NonBeneficiaryHeader/>', () => {
   describe('<EligibilityBanner/>', () => {
     beforeEach(() => {
       mockNextSubscriptionStep = {
-        allowedIdentityCheckMethods: [IdentityCheckMethod.Ubble],
-        nextSubscriptionStep: SubscriptionStep.IdentityCheck,
+        allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
+        nextSubscriptionStep: SubscriptionStep['identity-check'],
         hasIdentityCheckPending: false,
       }
     })
@@ -157,7 +157,7 @@ describe('<NonBeneficiaryHeader/>', () => {
 
     it('should not display eligibility banner if nextSubscriptionStep is null', () => {
       mockNextSubscriptionStep = {
-        allowedIdentityCheckMethods: [IdentityCheckMethod.Ubble],
+        allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
         nextSubscriptionStep: null,
         hasIdentityCheckPending: false,
       }
@@ -175,7 +175,7 @@ describe('<NonBeneficiaryHeader/>', () => {
   describe('<IdentityCheckPendingBadge/>', () => {
     it('should display identity check pending badge if hasIdentityCheckPending is true and SubscriptionStep is null', async () => {
       mockNextSubscriptionStep = {
-        allowedIdentityCheckMethods: [IdentityCheckMethod.Ubble],
+        allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
         nextSubscriptionStep: null,
         hasIdentityCheckPending: true,
       }
@@ -197,7 +197,7 @@ describe('<NonBeneficiaryHeader/>', () => {
   describe('<SubscriptionMessageBadge/>', () => {
     it.skip('should render the subscription message if hasIdentityCheckPendingis false and SubscriptionStep is null', () => {
       mockNextSubscriptionStep = {
-        allowedIdentityCheckMethods: [IdentityCheckMethod.Ubble],
+        allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
         nextSubscriptionStep: null,
         hasIdentityCheckPending: false,
       }

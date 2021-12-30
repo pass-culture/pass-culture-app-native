@@ -16,7 +16,7 @@ const offerId = 116656
 const props = {
   analyticsFrom: 'home' as Referrals,
   categoryLabel: HomepageLabelNameEnum.MUSIQUE,
-  categoryId: CategoryIdEnum.MUSIQUELIVE,
+  categoryId: CategoryIdEnum.MUSIQUE_LIVE,
   subcategoryId: offer.subcategoryId,
   expenseDomains: [],
   distance: '1,2km',

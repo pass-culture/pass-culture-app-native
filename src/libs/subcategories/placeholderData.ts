@@ -10,7 +10,7 @@ import {
 export const placeholderData: SubcategoriesResponseModel = {
   subcategories: [
     {
-      id: SubcategoryIdEnum.ABOBIBLIOTHEQUE,
+      id: SubcategoryIdEnum.ABO_BIBLIOTHEQUE,
       categoryId: CategoryIdEnum.LIVRE,
       appLabel: 'Abonnement (bibliothèques, médiathèques...)',
       searchGroupName: SearchGroupNameEnum.LIVRE,
@@ -19,8 +19,8 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.ABOCONCERT,
-      categoryId: CategoryIdEnum.MUSIQUELIVE,
+      id: SubcategoryIdEnum.ABO_CONCERT,
+      categoryId: CategoryIdEnum.MUSIQUE_LIVE,
       appLabel: 'Abonnement concert',
       searchGroupName: SearchGroupNameEnum.MUSIQUE,
       homepageLabelName: HomepageLabelNameEnum.MUSIQUE,
@@ -28,7 +28,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.ABOJEUVIDEO,
+      id: SubcategoryIdEnum.ABO_JEU_VIDEO,
       categoryId: CategoryIdEnum.JEU,
       appLabel: 'Abonnement jeux vidéos',
       searchGroupName: SearchGroupNameEnum.JEU,
@@ -37,7 +37,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINE,
     },
     {
-      id: SubcategoryIdEnum.ABOLIVRENUMERIQUE,
+      id: SubcategoryIdEnum.ABO_LIVRE_NUMERIQUE,
       categoryId: CategoryIdEnum.LIVRE,
       appLabel: 'Abonnement livres numériques',
       searchGroupName: SearchGroupNameEnum.LIVRE,
@@ -46,7 +46,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINE,
     },
     {
-      id: SubcategoryIdEnum.ABOLUDOTHEQUE,
+      id: SubcategoryIdEnum.ABO_LUDOTHEQUE,
       categoryId: CategoryIdEnum.JEU,
       appLabel: 'Abonnement ludothèque',
       searchGroupName: SearchGroupNameEnum.JEU,
@@ -55,7 +55,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.ABOMEDIATHEQUE,
+      id: SubcategoryIdEnum.ABO_MEDIATHEQUE,
       categoryId: CategoryIdEnum.FILM,
       appLabel: 'Abonnement médiathèque',
       searchGroupName: SearchGroupNameEnum.FILM,
@@ -64,7 +64,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.ABOMUSEE,
+      id: SubcategoryIdEnum.ABO_MUSEE,
       categoryId: CategoryIdEnum.MUSEE,
       appLabel: 'Entrée libre ou abonnement musée',
       searchGroupName: SearchGroupNameEnum.VISITE,
@@ -73,8 +73,8 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.ABOPLATEFORMEMUSIQUE,
-      categoryId: CategoryIdEnum.MUSIQUEENREGISTREE,
+      id: SubcategoryIdEnum.ABO_PLATEFORME_MUSIQUE,
+      categoryId: CategoryIdEnum.MUSIQUE_ENREGISTREE,
       appLabel: 'Abonnement plateforme musicale',
       searchGroupName: SearchGroupNameEnum.MUSIQUE,
       homepageLabelName: HomepageLabelNameEnum.MUSIQUE,
@@ -82,7 +82,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINE,
     },
     {
-      id: SubcategoryIdEnum.ABOPLATEFORMEVIDEO,
+      id: SubcategoryIdEnum.ABO_PLATEFORME_VIDEO,
       categoryId: CategoryIdEnum.FILM,
       appLabel: 'Abonnement plateforme streaming',
       searchGroupName: SearchGroupNameEnum.FILM,
@@ -91,8 +91,8 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINE,
     },
     {
-      id: SubcategoryIdEnum.ABOPRATIQUEART,
-      categoryId: CategoryIdEnum.PRATIQUEART,
+      id: SubcategoryIdEnum.ABO_PRATIQUE_ART,
+      categoryId: CategoryIdEnum.PRATIQUE_ART,
       appLabel: 'Abonnement pratique artistique',
       searchGroupName: SearchGroupNameEnum.COURS,
       homepageLabelName: HomepageLabelNameEnum.COURS,
@@ -100,7 +100,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.ABOPRESSEENLIGNE,
+      id: SubcategoryIdEnum.ABO_PRESSE_EN_LIGNE,
       categoryId: CategoryIdEnum.MEDIA,
       appLabel: 'Abonnement presse en ligne',
       searchGroupName: SearchGroupNameEnum.PRESSE,
@@ -109,7 +109,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINE,
     },
     {
-      id: SubcategoryIdEnum.ABOSPECTACLE,
+      id: SubcategoryIdEnum.ABO_SPECTACLE,
       categoryId: CategoryIdEnum.SPECTACLE,
       appLabel: 'Abonnement spectacle',
       searchGroupName: SearchGroupNameEnum.SPECTACLE,
@@ -118,7 +118,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.ACHATINSTRUMENT,
+      id: SubcategoryIdEnum.ACHAT_INSTRUMENT,
       categoryId: CategoryIdEnum.INSTRUMENT,
       appLabel: 'Achat instrument',
       searchGroupName: SearchGroupNameEnum.INSTRUMENT,
@@ -127,25 +127,25 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.ACTIVATIONEVENT,
+      id: SubcategoryIdEnum.ACTIVATION_EVENT,
       categoryId: CategoryIdEnum.TECHNIQUE,
       appLabel: "Catégorie technique d'événement d'activation ",
       searchGroupName: SearchGroupNameEnum.NONE,
       homepageLabelName: HomepageLabelNameEnum.NONE,
       isEvent: true,
-      onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINEOROFFLINE,
+      onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINE_OR_OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.ACTIVATIONTHING,
+      id: SubcategoryIdEnum.ACTIVATION_THING,
       categoryId: CategoryIdEnum.TECHNIQUE,
       appLabel: "Catégorie technique de thing d'activation",
       searchGroupName: SearchGroupNameEnum.NONE,
       homepageLabelName: HomepageLabelNameEnum.NONE,
       isEvent: false,
-      onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINEOROFFLINE,
+      onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINE_OR_OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.APPCULTURELLE,
+      id: SubcategoryIdEnum.APP_CULTURELLE,
       categoryId: CategoryIdEnum.MEDIA,
       appLabel: 'Application culturelle',
       searchGroupName: SearchGroupNameEnum.PRESSE,
@@ -154,8 +154,8 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINE,
     },
     {
-      id: SubcategoryIdEnum.ATELIERPRATIQUEART,
-      categoryId: CategoryIdEnum.PRATIQUEART,
+      id: SubcategoryIdEnum.ATELIER_PRATIQUE_ART,
+      categoryId: CategoryIdEnum.PRATIQUE_ART,
       appLabel: 'Atelier, stage de pratique artistique',
       searchGroupName: SearchGroupNameEnum.COURS,
       homepageLabelName: HomepageLabelNameEnum.COURS,
@@ -163,7 +163,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.AUTRESUPPORTNUMERIQUE,
+      id: SubcategoryIdEnum.AUTRE_SUPPORT_NUMERIQUE,
       categoryId: CategoryIdEnum.FILM,
       appLabel: 'Autre support numérique',
       searchGroupName: SearchGroupNameEnum.FILM,
@@ -172,7 +172,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINE,
     },
     {
-      id: SubcategoryIdEnum.BONACHATINSTRUMENT,
+      id: SubcategoryIdEnum.BON_ACHAT_INSTRUMENT,
       categoryId: CategoryIdEnum.INSTRUMENT,
       appLabel: "Bon d'achat instrument",
       searchGroupName: SearchGroupNameEnum.INSTRUMENT,
@@ -181,8 +181,8 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.CAPTATIONMUSIQUE,
-      categoryId: CategoryIdEnum.MUSIQUEENREGISTREE,
+      id: SubcategoryIdEnum.CAPTATION_MUSIQUE,
+      categoryId: CategoryIdEnum.MUSIQUE_ENREGISTREE,
       appLabel: 'Captation musicale',
       searchGroupName: SearchGroupNameEnum.MUSIQUE,
       homepageLabelName: HomepageLabelNameEnum.MUSIQUE,
@@ -190,7 +190,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.CARTECINEILLIMITE,
+      id: SubcategoryIdEnum.CARTE_CINE_ILLIMITE,
       categoryId: CategoryIdEnum.CINEMA,
       appLabel: 'Carte cinéma illimité',
       searchGroupName: SearchGroupNameEnum.CINEMA,
@@ -199,7 +199,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.CARTECINEMULTISEANCES,
+      id: SubcategoryIdEnum.CARTE_CINE_MULTISEANCES,
       categoryId: CategoryIdEnum.CINEMA,
       appLabel: 'Carte cinéma multi-séances',
       searchGroupName: SearchGroupNameEnum.CINEMA,
@@ -208,7 +208,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.CARTEMUSEE,
+      id: SubcategoryIdEnum.CARTE_MUSEE,
       categoryId: CategoryIdEnum.MUSEE,
       appLabel: 'Cartes musées, patrimoine...',
       searchGroupName: SearchGroupNameEnum.VISITE,
@@ -217,7 +217,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.CINEPLEINAIR,
+      id: SubcategoryIdEnum.CINE_PLEIN_AIR,
       categoryId: CategoryIdEnum.CINEMA,
       appLabel: 'Cinéma plein air',
       searchGroupName: SearchGroupNameEnum.CINEMA,
@@ -226,7 +226,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.CINEVENTEDISTANCE,
+      id: SubcategoryIdEnum.CINE_VENTE_DISTANCE,
       categoryId: CategoryIdEnum.CINEMA,
       appLabel: 'Cinéma',
       searchGroupName: SearchGroupNameEnum.CINEMA,
@@ -236,7 +236,7 @@ export const placeholderData: SubcategoriesResponseModel = {
     },
     {
       id: SubcategoryIdEnum.CONCERT,
-      categoryId: CategoryIdEnum.MUSIQUELIVE,
+      categoryId: CategoryIdEnum.MUSIQUE_LIVE,
       appLabel: 'Concert',
       searchGroupName: SearchGroupNameEnum.MUSIQUE,
       homepageLabelName: HomepageLabelNameEnum.MUSIQUE,
@@ -262,7 +262,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.DECOUVERTEMETIERS,
+      id: SubcategoryIdEnum.DECOUVERTE_METIERS,
       categoryId: CategoryIdEnum.CONFERENCE,
       appLabel: 'Découverte des métiers',
       searchGroupName: SearchGroupNameEnum.CONFERENCE,
@@ -271,7 +271,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.ESCAPEGAME,
+      id: SubcategoryIdEnum.ESCAPE_GAME,
       categoryId: CategoryIdEnum.JEU,
       appLabel: 'Escape game',
       searchGroupName: SearchGroupNameEnum.JEU,
@@ -280,7 +280,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.EVENEMENTCINE,
+      id: SubcategoryIdEnum.EVENEMENT_CINE,
       categoryId: CategoryIdEnum.CINEMA,
       appLabel: 'Événement cinéma',
       searchGroupName: SearchGroupNameEnum.CINEMA,
@@ -289,7 +289,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.EVENEMENTJEU,
+      id: SubcategoryIdEnum.EVENEMENT_JEU,
       categoryId: CategoryIdEnum.JEU,
       appLabel: 'Événements - jeux',
       searchGroupName: SearchGroupNameEnum.JEU,
@@ -298,8 +298,8 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.EVENEMENTMUSIQUE,
-      categoryId: CategoryIdEnum.MUSIQUELIVE,
+      id: SubcategoryIdEnum.EVENEMENT_MUSIQUE,
+      categoryId: CategoryIdEnum.MUSIQUE_LIVE,
       appLabel: "Autre type d'événement musical",
       searchGroupName: SearchGroupNameEnum.MUSIQUE,
       homepageLabelName: HomepageLabelNameEnum.MUSIQUE,
@@ -307,7 +307,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.EVENEMENTPATRIMOINE,
+      id: SubcategoryIdEnum.EVENEMENT_PATRIMOINE,
       categoryId: CategoryIdEnum.MUSEE,
       appLabel: 'Événement et atelier patrimoine',
       searchGroupName: SearchGroupNameEnum.VISITE,
@@ -316,7 +316,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.FESTIVALCINE,
+      id: SubcategoryIdEnum.FESTIVAL_CINE,
       categoryId: CategoryIdEnum.CINEMA,
       appLabel: 'Festival de cinéma',
       searchGroupName: SearchGroupNameEnum.CINEMA,
@@ -325,7 +325,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.FESTIVALLIVRE,
+      id: SubcategoryIdEnum.FESTIVAL_LIVRE,
       categoryId: CategoryIdEnum.LIVRE,
       appLabel: 'Festival et salon du livre',
       searchGroupName: SearchGroupNameEnum.LIVRE,
@@ -334,8 +334,8 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.FESTIVALMUSIQUE,
-      categoryId: CategoryIdEnum.MUSIQUELIVE,
+      id: SubcategoryIdEnum.FESTIVAL_MUSIQUE,
+      categoryId: CategoryIdEnum.MUSIQUE_LIVE,
       appLabel: 'Festival de musique',
       searchGroupName: SearchGroupNameEnum.MUSIQUE,
       homepageLabelName: HomepageLabelNameEnum.MUSIQUE,
@@ -343,7 +343,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.FESTIVALSPECTACLE,
+      id: SubcategoryIdEnum.FESTIVAL_SPECTACLE,
       categoryId: CategoryIdEnum.SPECTACLE,
       appLabel: 'Festival',
       searchGroupName: SearchGroupNameEnum.SPECTACLE,
@@ -352,7 +352,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.JEUENLIGNE,
+      id: SubcategoryIdEnum.JEU_EN_LIGNE,
       categoryId: CategoryIdEnum.JEU,
       appLabel: 'Jeux en ligne',
       searchGroupName: SearchGroupNameEnum.JEU,
@@ -361,16 +361,16 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINE,
     },
     {
-      id: SubcategoryIdEnum.JEUSUPPORTPHYSIQUE,
+      id: SubcategoryIdEnum.JEU_SUPPORT_PHYSIQUE,
       categoryId: CategoryIdEnum.TECHNIQUE,
       appLabel: 'Catégorie technique Jeu support physique',
       searchGroupName: SearchGroupNameEnum.NONE,
       homepageLabelName: HomepageLabelNameEnum.NONE,
       isEvent: false,
-      onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINEOROFFLINE,
+      onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINE_OR_OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.LIVESTREAMEVENEMENT,
+      id: SubcategoryIdEnum.LIVESTREAM_EVENEMENT,
       categoryId: CategoryIdEnum.SPECTACLE,
       appLabel: "Live stream d'événement",
       searchGroupName: SearchGroupNameEnum.SPECTACLE,
@@ -379,8 +379,8 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINE,
     },
     {
-      id: SubcategoryIdEnum.LIVESTREAMMUSIQUE,
-      categoryId: CategoryIdEnum.MUSIQUELIVE,
+      id: SubcategoryIdEnum.LIVESTREAM_MUSIQUE,
+      categoryId: CategoryIdEnum.MUSIQUE_LIVE,
       appLabel: 'Live stream musical',
       searchGroupName: SearchGroupNameEnum.MUSIQUE,
       homepageLabelName: HomepageLabelNameEnum.MUSIQUE,
@@ -388,7 +388,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINE,
     },
     {
-      id: SubcategoryIdEnum.LIVREAUDIOPHYSIQUE,
+      id: SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE,
       categoryId: CategoryIdEnum.LIVRE,
       appLabel: 'Livre audio sur support physique',
       searchGroupName: SearchGroupNameEnum.LIVRE,
@@ -397,7 +397,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.LIVRENUMERIQUE,
+      id: SubcategoryIdEnum.LIVRE_NUMERIQUE,
       categoryId: CategoryIdEnum.LIVRE,
       appLabel: 'Livre numérique, e-book',
       searchGroupName: SearchGroupNameEnum.LIVRE,
@@ -406,7 +406,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINE,
     },
     {
-      id: SubcategoryIdEnum.LIVREPAPIER,
+      id: SubcategoryIdEnum.LIVRE_PAPIER,
       categoryId: CategoryIdEnum.LIVRE,
       appLabel: 'Livre',
       searchGroupName: SearchGroupNameEnum.LIVRE,
@@ -415,7 +415,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.LOCATIONINSTRUMENT,
+      id: SubcategoryIdEnum.LOCATION_INSTRUMENT,
       categoryId: CategoryIdEnum.INSTRUMENT,
       appLabel: 'Location instrument',
       searchGroupName: SearchGroupNameEnum.INSTRUMENT,
@@ -424,8 +424,8 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.MATERIELARTCREATIF,
-      categoryId: CategoryIdEnum.BEAUXARTS,
+      id: SubcategoryIdEnum.MATERIEL_ART_CREATIF,
+      categoryId: CategoryIdEnum.BEAUX_ARTS,
       appLabel: 'Matériel arts créatifs',
       searchGroupName: SearchGroupNameEnum.MATERIEL,
       homepageLabelName: HomepageLabelNameEnum.MATERIEL,
@@ -433,7 +433,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.MUSEEVENTEDISTANCE,
+      id: SubcategoryIdEnum.MUSEE_VENTE_DISTANCE,
       categoryId: CategoryIdEnum.MUSEE,
       appLabel: 'Musée vente à distance',
       searchGroupName: SearchGroupNameEnum.VISITE,
@@ -442,13 +442,13 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINE,
     },
     {
-      id: SubcategoryIdEnum.OEUVREART,
+      id: SubcategoryIdEnum.OEUVRE_ART,
       categoryId: CategoryIdEnum.TECHNIQUE,
       appLabel: "Catégorie technique d'oeuvre d'art",
       searchGroupName: SearchGroupNameEnum.NONE,
       homepageLabelName: HomepageLabelNameEnum.NONE,
       isEvent: false,
-      onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINEOROFFLINE,
+      onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINE_OR_OFFLINE,
     },
     {
       id: SubcategoryIdEnum.PARTITION,
@@ -469,7 +469,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINE,
     },
     {
-      id: SubcategoryIdEnum.RENCONTREJEU,
+      id: SubcategoryIdEnum.RENCONTRE_JEU,
       categoryId: CategoryIdEnum.JEU,
       appLabel: 'Rencontres - jeux',
       searchGroupName: SearchGroupNameEnum.JEU,
@@ -496,7 +496,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.SEANCECINE,
+      id: SubcategoryIdEnum.SEANCE_CINE,
       categoryId: CategoryIdEnum.CINEMA,
       appLabel: 'Séance de cinéma',
       searchGroupName: SearchGroupNameEnum.CINEMA,
@@ -505,8 +505,8 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.SEANCEESSAIPRATIQUEART,
-      categoryId: CategoryIdEnum.PRATIQUEART,
+      id: SubcategoryIdEnum.SEANCE_ESSAI_PRATIQUE_ART,
+      categoryId: CategoryIdEnum.PRATIQUE_ART,
       appLabel: "Séance d'essai",
       searchGroupName: SearchGroupNameEnum.COURS,
       homepageLabelName: HomepageLabelNameEnum.COURS,
@@ -514,7 +514,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.SPECTACLEENREGISTRE,
+      id: SubcategoryIdEnum.SPECTACLE_ENREGISTRE,
       categoryId: CategoryIdEnum.SPECTACLE,
       appLabel: 'Spectacle enregistré',
       searchGroupName: SearchGroupNameEnum.SPECTACLE,
@@ -523,7 +523,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINE,
     },
     {
-      id: SubcategoryIdEnum.SPECTACLEREPRESENTATION,
+      id: SubcategoryIdEnum.SPECTACLE_REPRESENTATION,
       categoryId: CategoryIdEnum.SPECTACLE,
       appLabel: 'Spectacle, représentation',
       searchGroupName: SearchGroupNameEnum.SPECTACLE,
@@ -532,7 +532,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.SUPPORTPHYSIQUEFILM,
+      id: SubcategoryIdEnum.SUPPORT_PHYSIQUE_FILM,
       categoryId: CategoryIdEnum.FILM,
       appLabel: 'Support physique (DVD, Blu-ray...)',
       searchGroupName: SearchGroupNameEnum.FILM,
@@ -541,8 +541,8 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.SUPPORTPHYSIQUEMUSIQUE,
-      categoryId: CategoryIdEnum.MUSIQUEENREGISTREE,
+      id: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE,
+      categoryId: CategoryIdEnum.MUSIQUE_ENREGISTREE,
       appLabel: 'Support physique (CD, vinyle...)',
       searchGroupName: SearchGroupNameEnum.MUSIQUE,
       homepageLabelName: HomepageLabelNameEnum.MUSIQUE,
@@ -550,7 +550,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.TELECHARGEMENTLIVREAUDIO,
+      id: SubcategoryIdEnum.TELECHARGEMENT_LIVRE_AUDIO,
       categoryId: CategoryIdEnum.LIVRE,
       appLabel: 'Livre audio à télécharger',
       searchGroupName: SearchGroupNameEnum.LIVRE,
@@ -559,8 +559,8 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINE,
     },
     {
-      id: SubcategoryIdEnum.TELECHARGEMENTMUSIQUE,
-      categoryId: CategoryIdEnum.MUSIQUEENREGISTREE,
+      id: SubcategoryIdEnum.TELECHARGEMENT_MUSIQUE,
+      categoryId: CategoryIdEnum.MUSIQUE_ENREGISTREE,
       appLabel: 'Téléchargement de musique',
       searchGroupName: SearchGroupNameEnum.MUSIQUE,
       homepageLabelName: HomepageLabelNameEnum.MUSIQUE,
@@ -568,7 +568,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINE,
     },
     {
-      id: SubcategoryIdEnum.VISITEGUIDEE,
+      id: SubcategoryIdEnum.VISITE_GUIDEE,
       categoryId: CategoryIdEnum.MUSEE,
       appLabel: 'Visite guidée',
       searchGroupName: SearchGroupNameEnum.VISITE,
@@ -577,7 +577,7 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
-      id: SubcategoryIdEnum.VISITEVIRTUELLE,
+      id: SubcategoryIdEnum.VISITE_VIRTUELLE,
       categoryId: CategoryIdEnum.MUSEE,
       appLabel: 'Visite virtuelle',
       searchGroupName: SearchGroupNameEnum.VISITE,

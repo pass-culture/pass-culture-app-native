@@ -37,6 +37,6 @@ export const beneficiaryUser: UserProfileResponse = {
 export const underageBeneficiaryUser: UserProfileResponse = {
   ...beneficiaryUser,
   isBeneficiary: false,
-  roles: [UserRole.UNDERAGEBENEFICIARY],
+  roles: [UserRole.UNDERAGE_BENEFICIARY],
   isEligibleForBeneficiaryUpgrade: false,
 }

@@ -26,7 +26,7 @@ export const Status = () => {
   // TODO PC-12410 : déléguer la responsabilité au back de faire cette filtration, remplacer filteredActivities par activities
   const filteredActivities = isUserUnderage
     ? activities
-    : activities?.filter((activity) => activity.id !== ActivityIdEnum.MIDDLESCHOOLSTUDENT)
+    : activities?.filter((activity) => activity.id !== ActivityIdEnum.MIDDLE_SCHOOL_STUDENT)
 
   // TODO PC-12410 : déléguer la responsabilité au back de vider l'array de school_types associé à l'activity (le statut)
   const hasSchoolTypes =

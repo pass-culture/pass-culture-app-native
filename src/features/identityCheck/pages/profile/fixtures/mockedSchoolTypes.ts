@@ -4,26 +4,26 @@ export const SchoolTypesSnap: ProfileOptionsResponse = {
   activities: [
     {
       associatedSchoolTypesIds: [
-        SchoolTypesIdEnum.PRIVATESECONDARYSCHOOL,
-        SchoolTypesIdEnum.PUBLICSECONDARYSCHOOL,
-        SchoolTypesIdEnum.HOMEORREMOTESCHOOLING,
+        SchoolTypesIdEnum.PRIVATE_SECONDARY_SCHOOL,
+        SchoolTypesIdEnum.PUBLIC_SECONDARY_SCHOOL,
+        SchoolTypesIdEnum.HOME_OR_REMOTE_SCHOOLING,
       ],
       description: null,
-      id: ActivityIdEnum.MIDDLESCHOOLSTUDENT,
+      id: ActivityIdEnum.MIDDLE_SCHOOL_STUDENT,
       label: 'Collégien',
     },
     {
       associatedSchoolTypesIds: [
-        SchoolTypesIdEnum.AGRICULTURALHIGHSCHOOL,
-        SchoolTypesIdEnum.MILITARYHIGHSCHOOL,
-        SchoolTypesIdEnum.NAVALHIGHSCHOOL,
-        SchoolTypesIdEnum.PRIVATEHIGHSCHOOL,
-        SchoolTypesIdEnum.PUBLICHIGHSCHOOL,
-        SchoolTypesIdEnum.HOMEORREMOTESCHOOLING,
-        SchoolTypesIdEnum.APPRENTICEFORMATIONCENTER,
+        SchoolTypesIdEnum.AGRICULTURAL_HIGH_SCHOOL,
+        SchoolTypesIdEnum.MILITARY_HIGH_SCHOOL,
+        SchoolTypesIdEnum.NAVAL_HIGH_SCHOOL,
+        SchoolTypesIdEnum.PRIVATE_HIGH_SCHOOL,
+        SchoolTypesIdEnum.PUBLIC_HIGH_SCHOOL,
+        SchoolTypesIdEnum.HOME_OR_REMOTE_SCHOOLING,
+        SchoolTypesIdEnum.APPRENTICE_FORMATION_CENTER,
       ],
       description: null,
-      id: ActivityIdEnum.HIGHSCHOOLSTUDENT,
+      id: ActivityIdEnum.HIGH_SCHOOL_STUDENT,
       label: 'Lycéen',
     },
     {
@@ -47,7 +47,7 @@ export const SchoolTypesSnap: ProfileOptionsResponse = {
     {
       associatedSchoolTypesIds: [],
       description: null,
-      id: ActivityIdEnum.APPRENTICESTUDENT,
+      id: ActivityIdEnum.APPRENTICE_STUDENT,
       label: 'Alternant',
     },
     {
@@ -70,12 +70,12 @@ export const SchoolTypesSnap: ProfileOptionsResponse = {
     },
   ],
   school_types: [
-    { id: SchoolTypesIdEnum.AGRICULTURALHIGHSCHOOL, label: 'Lycée agricole', description: null },
-    { id: SchoolTypesIdEnum.APPRENTICEFORMATIONCENTER, label: "Centre de formation d'apprentis" },
-    { id: SchoolTypesIdEnum.PRIVATESECONDARYSCHOOL, label: 'Collège privé' },
-    { id: SchoolTypesIdEnum.PUBLICSECONDARYSCHOOL, label: 'Collège public' },
+    { id: SchoolTypesIdEnum.AGRICULTURAL_HIGH_SCHOOL, label: 'Lycée agricole', description: null },
+    { id: SchoolTypesIdEnum.APPRENTICE_FORMATION_CENTER, label: "Centre de formation d'apprentis" },
+    { id: SchoolTypesIdEnum.PRIVATE_SECONDARY_SCHOOL, label: 'Collège privé' },
+    { id: SchoolTypesIdEnum.PUBLIC_SECONDARY_SCHOOL, label: 'Collège public' },
     {
-      id: SchoolTypesIdEnum.HOMEORREMOTESCHOOLING,
+      id: SchoolTypesIdEnum.HOME_OR_REMOTE_SCHOOLING,
       description: 'À domicile, CNED, institut de santé, etc.',
       label: 'Accompagnement spécialisé',
     },

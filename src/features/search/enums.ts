@@ -88,25 +88,25 @@ export const VENUE_TYPE_CRITERIA: VenueTypeCriteria = {
     label: 'Tous les types de lieu',
     facetFilter: '',
   },
-  [VenueTypeCodeKey.ARTISTICCOURSE]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.ARTISTICCOURSE],
-    facetFilter: VenueTypeCodeKey.ARTISTICCOURSE,
+  [VenueTypeCodeKey.ARTISTIC_COURSE]: {
+    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.ARTISTIC_COURSE],
+    facetFilter: VenueTypeCodeKey.ARTISTIC_COURSE,
   },
   [VenueTypeCodeKey.BOOKSTORE]: {
     label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.BOOKSTORE],
     facetFilter: VenueTypeCodeKey.BOOKSTORE,
   },
-  [VenueTypeCodeKey.CONCERTHALL]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.CONCERTHALL],
-    facetFilter: VenueTypeCodeKey.CONCERTHALL,
+  [VenueTypeCodeKey.CONCERT_HALL]: {
+    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.CONCERT_HALL],
+    facetFilter: VenueTypeCodeKey.CONCERT_HALL,
   },
-  [VenueTypeCodeKey.CREATIVEARTSSTORE]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.CREATIVEARTSSTORE],
-    facetFilter: VenueTypeCodeKey.CREATIVEARTSSTORE,
+  [VenueTypeCodeKey.CREATIVE_ARTS_STORE]: {
+    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.CREATIVE_ARTS_STORE],
+    facetFilter: VenueTypeCodeKey.CREATIVE_ARTS_STORE,
   },
-  [VenueTypeCodeKey.CULTURALCENTRE]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.CULTURALCENTRE],
-    facetFilter: VenueTypeCodeKey.CULTURALCENTRE,
+  [VenueTypeCodeKey.CULTURAL_CENTRE]: {
+    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.CULTURAL_CENTRE],
+    facetFilter: VenueTypeCodeKey.CULTURAL_CENTRE,
   },
   [VenueTypeCodeKey.DIGITAL]: {
     label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.DIGITAL],
@@ -128,9 +128,9 @@ export const VENUE_TYPE_CRITERIA: VenueTypeCriteria = {
     label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.MUSEUM],
     facetFilter: VenueTypeCodeKey.MUSEUM,
   },
-  [VenueTypeCodeKey.MUSICALINSTRUMENTSTORE]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.MUSICALINSTRUMENTSTORE],
-    facetFilter: VenueTypeCodeKey.MUSICALINSTRUMENTSTORE,
+  [VenueTypeCodeKey.MUSICAL_INSTRUMENT_STORE]: {
+    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.MUSICAL_INSTRUMENT_STORE],
+    facetFilter: VenueTypeCodeKey.MUSICAL_INSTRUMENT_STORE,
   },
   [VenueTypeCodeKey.MOVIE]: {
     label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.MOVIE],
@@ -140,24 +140,24 @@ export const VENUE_TYPE_CRITERIA: VenueTypeCriteria = {
     label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.OTHER],
     facetFilter: VenueTypeCodeKey.OTHER,
   },
-  [VenueTypeCodeKey.PATRIMONYTOURISM]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.PATRIMONYTOURISM],
-    facetFilter: VenueTypeCodeKey.PATRIMONYTOURISM,
+  [VenueTypeCodeKey.PATRIMONY_TOURISM]: {
+    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.PATRIMONY_TOURISM],
+    facetFilter: VenueTypeCodeKey.PATRIMONY_TOURISM,
   },
-  [VenueTypeCodeKey.PERFORMINGARTS]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.PERFORMINGARTS],
-    facetFilter: VenueTypeCodeKey.PERFORMINGARTS,
+  [VenueTypeCodeKey.PERFORMING_ARTS]: {
+    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.PERFORMING_ARTS],
+    facetFilter: VenueTypeCodeKey.PERFORMING_ARTS,
   },
-  [VenueTypeCodeKey.RECORDSTORE]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.RECORDSTORE],
-    facetFilter: VenueTypeCodeKey.RECORDSTORE,
+  [VenueTypeCodeKey.RECORD_STORE]: {
+    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.RECORD_STORE],
+    facetFilter: VenueTypeCodeKey.RECORD_STORE,
   },
-  [VenueTypeCodeKey.SCIENTIFICCULTURE]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.SCIENTIFICCULTURE],
-    facetFilter: VenueTypeCodeKey.SCIENTIFICCULTURE,
+  [VenueTypeCodeKey.SCIENTIFIC_CULTURE]: {
+    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.SCIENTIFIC_CULTURE],
+    facetFilter: VenueTypeCodeKey.SCIENTIFIC_CULTURE,
   },
-  [VenueTypeCodeKey.VISUALARTS]: {
-    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.VISUALARTS],
-    facetFilter: VenueTypeCodeKey.VISUALARTS,
+  [VenueTypeCodeKey.VISUAL_ARTS]: {
+    label: MAP_VENUE_TYPE_TO_LABEL[VenueTypeCodeKey.VISUAL_ARTS],
+    facetFilter: VenueTypeCodeKey.VISUAL_ARTS,
   },
 }

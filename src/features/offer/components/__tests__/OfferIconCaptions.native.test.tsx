@@ -183,7 +183,7 @@ async function renderOfferIconCaptions({
         stocks={stocks ?? defaultBookableStocks}
         isDuo={isDuo}
         label="Abonnements concerts"
-        categoryId={CategoryIdEnum.MUSIQUELIVE}
+        categoryId={CategoryIdEnum.MUSIQUE_LIVE}
       />,
       setup
     )

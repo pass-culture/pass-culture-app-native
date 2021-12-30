@@ -67,7 +67,7 @@ export const IdCheckV2 = function IdCheckV2(props: ScreenNavigationProp<'IdCheck
 
         shouldUseEduConnect =
           !!updatedSettings?.enableNativeEacIndividual &&
-          eligibilityCheckMethods?.includes(EligibilityCheckMethods.Educonnect)
+          eligibilityCheckMethods?.includes(EligibilityCheckMethods.educonnect)
 
         setContextValue({
           onAbandon,

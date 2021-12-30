@@ -39,14 +39,14 @@ export const FastEduconnectConnectionRequestModal: React.FC<
   const onPressEduConnect = () => {
     analytics.logChooseEduConnectMethod()
     hideModal()
-    dispatch({ type: 'SET_METHOD', payload: IdentityCheckMethod.Educonnect })
+    dispatch({ type: 'SET_METHOD', payload: IdentityCheckMethod.educonnect })
     navigate('IdentityCheckEduConnect')
   }
 
   const onPressManualIdentification = () => {
     analytics.logChooseUbbleMethod()
     hideModal()
-    dispatch({ type: 'SET_METHOD', payload: IdentityCheckMethod.Ubble })
+    dispatch({ type: 'SET_METHOD', payload: IdentityCheckMethod.ubble })
     navigate('IdentityCheckStart')
   }
 

@@ -26,16 +26,16 @@ describe('hasEnoughCredit', () => {
   it.each`
     domains                | price | domainsCredit                                 | enoughCredit
     ${[]}                  | ${0}  | ${{}}                                         | ${true}
-    ${[ExpenseDomain.All]} | ${0}  | ${{}}                                         | ${true}
-    ${[ExpenseDomain.All]} | ${0}  | ${{ all: { initial: 10000, remaining: 10 } }} | ${true}
-    ${[ExpenseDomain.All]} | ${0}  | ${{ all: { initial: 10000, remaining: 0 } }}  | ${true}
+    ${[ExpenseDomain.all]} | ${0}  | ${{}}                                         | ${true}
+    ${[ExpenseDomain.all]} | ${0}  | ${{ all: { initial: 10000, remaining: 10 } }} | ${true}
+    ${[ExpenseDomain.all]} | ${0}  | ${{ all: { initial: 10000, remaining: 0 } }}  | ${true}
   `('any user can book free offers', ({ domains, price, domainsCredit, enoughCredit }) => {
     expect(hasEnoughCredit(domains, price, domainsCredit)).toEqual(enoughCredit)
   })
 
   it('should return true if the price is falsy', () => {
-    const domainsCredit = { [ExpenseDomain.All]: { initial: 50000, remaining: 5000 } }
-    const domains = [ExpenseDomain.All]
+    const domainsCredit = { [ExpenseDomain.all]: { initial: 50000, remaining: 5000 } }
+    const domains = [ExpenseDomain.all]
 
     expect(hasEnoughCredit(domains, null, domainsCredit)).toBeTruthy()
     expect(hasEnoughCredit(domains, undefined, domainsCredit)).toBeTruthy()
@@ -44,7 +44,7 @@ describe('hasEnoughCredit', () => {
 
   it('should return false if domainsCredit is falsy', () => {
     const price = 100
-    const domains = [ExpenseDomain.All]
+    const domains = [ExpenseDomain.all]
 
     expect(hasEnoughCredit(domains, price, null)).toBeFalsy()
     expect(hasEnoughCredit(domains, price, undefined)).toBeFalsy()
@@ -52,20 +52,20 @@ describe('hasEnoughCredit', () => {
 
   it('should be bookable if it respects all the domains remaining credit - before generalisation', () => {
     const domainsCredit = {
-      [ExpenseDomain.All]: { initial: 50000, remaining: 5000 },
-      [ExpenseDomain.Digital]: { initial: 20000, remaining: 2000 },
-      [ExpenseDomain.Physical]: { initial: 20000, remaining: 1000 },
+      [ExpenseDomain.all]: { initial: 50000, remaining: 5000 },
+      [ExpenseDomain.digital]: { initial: 20000, remaining: 2000 },
+      [ExpenseDomain.physical]: { initial: 20000, remaining: 1000 },
     }
 
-    let domains = [ExpenseDomain.All]
+    let domains = [ExpenseDomain.all]
     expect(hasEnoughCredit(domains, 5000, domainsCredit)).toBeTruthy()
     expect(hasEnoughCredit(domains, 6000, domainsCredit)).toBeFalsy()
 
-    domains = [ExpenseDomain.All, ExpenseDomain.Digital]
+    domains = [ExpenseDomain.all, ExpenseDomain.digital]
     expect(hasEnoughCredit(domains, 5000, domainsCredit)).toBeFalsy()
     expect(hasEnoughCredit(domains, 2000, domainsCredit)).toBeTruthy()
 
-    domains = [ExpenseDomain.All, ExpenseDomain.Digital, ExpenseDomain.Physical]
+    domains = [ExpenseDomain.all, ExpenseDomain.digital, ExpenseDomain.physical]
     expect(hasEnoughCredit(domains, 5000, domainsCredit)).toBeFalsy()
     expect(hasEnoughCredit(domains, 2000, domainsCredit)).toBeFalsy()
     expect(hasEnoughCredit(domains, 1000, domainsCredit)).toBeTruthy()
@@ -73,20 +73,20 @@ describe('hasEnoughCredit', () => {
 
   it('should be bookable if it respects all the domains remaining credit - after generalisation', () => {
     const domainsCredit = {
-      [ExpenseDomain.All]: { initial: 30000, remaining: 3000 },
-      [ExpenseDomain.Digital]: { initial: 10000, remaining: 1000 },
-      [ExpenseDomain.Physical]: null,
+      [ExpenseDomain.all]: { initial: 30000, remaining: 3000 },
+      [ExpenseDomain.digital]: { initial: 10000, remaining: 1000 },
+      [ExpenseDomain.physical]: null,
     }
 
-    let domains = [ExpenseDomain.All]
+    let domains = [ExpenseDomain.all]
     expect(hasEnoughCredit(domains, 3000, domainsCredit)).toBeTruthy()
     expect(hasEnoughCredit(domains, 5000, domainsCredit)).toBeFalsy()
 
-    domains = [ExpenseDomain.All, ExpenseDomain.Digital]
+    domains = [ExpenseDomain.all, ExpenseDomain.digital]
     expect(hasEnoughCredit(domains, 3000, domainsCredit)).toBeFalsy()
     expect(hasEnoughCredit(domains, 1000, domainsCredit)).toBeTruthy()
 
-    domains = [ExpenseDomain.All, ExpenseDomain.Digital, ExpenseDomain.Physical]
+    domains = [ExpenseDomain.all, ExpenseDomain.digital, ExpenseDomain.physical]
     expect(hasEnoughCredit(domains, 3000, domainsCredit)).toBeFalsy()
     expect(hasEnoughCredit(domains, 1000, domainsCredit)).toBeTruthy()
   })

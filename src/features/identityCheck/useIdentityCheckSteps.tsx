@@ -34,7 +34,7 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
       icon: IdCardIcon,
       label: t`Identification`,
       screens:
-        identification.method === IdentityCheckMethod.Educonnect
+        identification.method === IdentityCheckMethod.educonnect
           ? [
               'IdentityCheckEduConnect',
               'IdentityCheckEduConnectForm',

@@ -48,7 +48,7 @@ describe('<BookingInformations />', () => {
     // @ts-expect-error mock is not real type
     mockedUseBookingOffer.mockReturnValueOnce({
       isDigital: false,
-      subcategoryId: SubcategoryIdEnum.CINEPLEINAIR,
+      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
       name: 'mon nom',
       stocks: [],
       venue: mockOffer.venue,
@@ -61,7 +61,7 @@ describe('<BookingInformations />', () => {
     // @ts-expect-error mock is not real type
     mockedUseBookingOffer.mockReturnValueOnce({
       isDigital: false,
-      subcategoryId: SubcategoryIdEnum.CINEPLEINAIR,
+      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
       name: 'mon nom',
       stocks: [],
       venue: mockOffer.venue,
@@ -80,7 +80,7 @@ describe('<BookingInformations />', () => {
     // @ts-expect-error mock is not real type
     mockedUseBookingOffer.mockReturnValueOnce({
       isDigital: false,
-      subcategoryId: SubcategoryIdEnum.CINEPLEINAIR,
+      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
       name: 'mon nom',
       stocks: [],
       venue: mockOffer.venue,
@@ -100,7 +100,7 @@ describe('<BookingInformations />', () => {
       isDigital: false,
       name: 'mon nom',
       stocks: [],
-      subcategoryId: SubcategoryIdEnum.CARTECINEILLIMITE,
+      subcategoryId: SubcategoryIdEnum.CARTE_CINE_ILLIMITE,
       venue: mockOffer.venue,
     })
     const myComponent = render(<BookingInformations />)
@@ -111,7 +111,7 @@ describe('<BookingInformations />', () => {
     // @ts-expect-error mock is not real type
     mockedUseBookingOffer.mockReturnValueOnce({
       isDigital: true,
-      subcategoryId: SubcategoryIdEnum.CARTECINEILLIMITE,
+      subcategoryId: SubcategoryIdEnum.CARTE_CINE_ILLIMITE,
       name: 'mon nom',
       stocks: [],
       venue: mockOffer.venue,
@@ -124,7 +124,7 @@ describe('<BookingInformations />', () => {
     // @ts-expect-error mock is not real type
     mockedUseBookingOffer.mockReturnValueOnce({
       isDigital: true,
-      subcategoryId: SubcategoryIdEnum.CARTECINEILLIMITE,
+      subcategoryId: SubcategoryIdEnum.CARTE_CINE_ILLIMITE,
       name: 'mon nom',
       stocks: [],
       venue: mockOffer.venue,

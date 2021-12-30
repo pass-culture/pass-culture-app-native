@@ -50,7 +50,7 @@ describe('<IdentityCheckEnd/>', () => {
     fireEvent.press(getByText('Identification avec ÉduConnect'))
     expect(hideModalMock).toHaveBeenCalled()
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-      payload: IdentityCheckMethod.Educonnect,
+      payload: IdentityCheckMethod.educonnect,
       type: 'SET_METHOD',
     })
     expect(navigate).toHaveBeenNthCalledWith(1, 'IdentityCheckEduConnect')
@@ -63,7 +63,7 @@ describe('<IdentityCheckEnd/>', () => {
     fireEvent.press(getByText('Identification manuelle'))
     expect(hideModalMock).toHaveBeenCalled()
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-      payload: IdentityCheckMethod.Ubble,
+      payload: IdentityCheckMethod.ubble,
       type: 'SET_METHOD',
     })
     expect(navigate).toHaveBeenNthCalledWith(1, 'IdentityCheckStart')

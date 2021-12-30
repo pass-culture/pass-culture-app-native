@@ -10,9 +10,11 @@ import { eventMonitoring } from 'libs/monitoring'
 const getIdentityCheckStep = (
   subscriptionStep: SubscriptionStep | null
 ): IdentityCheckStep | null => {
-  if (subscriptionStep === SubscriptionStep.ProfileCompletion) return IdentityCheckStep.PROFILE
-  if (subscriptionStep === SubscriptionStep.IdentityCheck) return IdentityCheckStep.IDENTIFICATION
-  if (subscriptionStep === SubscriptionStep.HonorStatement) return IdentityCheckStep.CONFIRMATION
+  if (subscriptionStep === SubscriptionStep['profile-completion']) return IdentityCheckStep.PROFILE
+  if (subscriptionStep === SubscriptionStep['identity-check'])
+    return IdentityCheckStep.IDENTIFICATION
+  if (subscriptionStep === SubscriptionStep['honor-statement'])
+    return IdentityCheckStep.CONFIRMATION
   return null
 }
 

@@ -31,12 +31,12 @@ export const computeCredit = (domainsCredit?: DomainsCredit | null) => {
 
 export function isUserUnderageBeneficiary(user: UserProfileResponse | undefined): boolean {
   if (!user) return false
-  const hasUserUnderageRole = user.roles?.find((role) => role === UserRole.UNDERAGEBENEFICIARY)
+  const hasUserUnderageRole = user.roles?.find((role) => role === UserRole.UNDERAGE_BENEFICIARY)
   return !!hasUserUnderageRole
 }
 
 export const isUserUnderage = (user?: UserProfileResponse) =>
-  user?.eligibility === EligibilityType.Underage
+  user?.eligibility === EligibilityType.underage
 
 export const useIsUserUnderage = () => {
   const { data: user } = useUserProfileInfo()

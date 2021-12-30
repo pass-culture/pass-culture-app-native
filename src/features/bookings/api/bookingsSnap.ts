@@ -21,7 +21,7 @@ export const bookingsSnap: BookingsResponse = {
           extraData: null,
           isPermanent: false,
           isDigital: true,
-          subcategoryId: SubcategoryIdEnum.EVENEMENTPATRIMOINE,
+          subcategoryId: SubcategoryIdEnum.EVENEMENT_PATRIMOINE,
           venue: {
             id: 2185,
             city: 'Drancy',
@@ -59,7 +59,7 @@ export const bookingsSnap: BookingsResponse = {
           },
           isPermanent: false,
           isDigital: true,
-          subcategoryId: SubcategoryIdEnum.EVENEMENTPATRIMOINE,
+          subcategoryId: SubcategoryIdEnum.EVENEMENT_PATRIMOINE,
           venue: {
             id: 2185,
             city: 'Drancy',

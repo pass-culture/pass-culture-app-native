@@ -39,7 +39,7 @@ describe('useModalContent', () => {
   it('iOS - does not show BookingImpossible if the digital offer is CINEMA', () => {
     mockOffer = baseOffer
     mockOffer.isDigital = true
-    mockOffer.subcategoryId = SubcategoryIdEnum.CARTECINEILLIMITE
+    mockOffer.subcategoryId = SubcategoryIdEnum.CARTE_CINE_ILLIMITE
     Platform.OS = 'ios'
     mockOffer.stocks = [baseStock]
 
@@ -71,7 +71,7 @@ describe('useModalContent', () => {
   it('iOS - shows BookingImpossible if the digital offer is not free', () => {
     mockOffer = baseOffer
     mockOffer.isDigital = true
-    mockOffer.subcategoryId = SubcategoryIdEnum.CARTEMUSEE
+    mockOffer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
     Platform.OS = 'ios'
     mockOffer.stocks = [baseStock]
 
@@ -86,7 +86,7 @@ describe('useModalContent', () => {
   it('iOS - shows BookingDetails if the digital offer is free', () => {
     mockOffer = baseOffer
     mockOffer.isDigital = true
-    mockOffer.subcategoryId = SubcategoryIdEnum.CARTEMUSEE
+    mockOffer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
     Platform.OS = 'ios'
     mockOffer.stocks = [{ ...baseStock, price: 0 }]
 
@@ -101,7 +101,7 @@ describe('useModalContent', () => {
   it('iOS - shows BookingDetails if the offer is a physical good', () => {
     mockOffer = baseOffer
     mockOffer.isDigital = false
-    mockOffer.subcategoryId = SubcategoryIdEnum.CARTEMUSEE
+    mockOffer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
 
     const { result } = renderHook(useModalContent)
 
@@ -113,7 +113,7 @@ describe('useModalContent', () => {
 
   it('shows the first step if the offer is an event', () => {
     mockOffer = baseOffer
-    mockOffer.subcategoryId = SubcategoryIdEnum.CINEPLEINAIR
+    mockOffer.subcategoryId = SubcategoryIdEnum.CINE_PLEIN_AIR
 
     const { result } = renderHook(useModalContent)
 
@@ -125,7 +125,7 @@ describe('useModalContent', () => {
 
   it('shows the confirmation step if the offer is an event', () => {
     mockOffer = baseOffer
-    mockOffer.subcategoryId = SubcategoryIdEnum.CINEPLEINAIR
+    mockOffer.subcategoryId = SubcategoryIdEnum.CINE_PLEIN_AIR
     mockStep = Step.CONFIRMATION
 
     const { result } = renderHook(useModalContent)

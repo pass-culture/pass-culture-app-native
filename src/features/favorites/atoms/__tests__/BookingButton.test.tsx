@@ -34,14 +34,14 @@ const credit: Credit = { amount: 100, isExpired: false }
 const offer: FavoriteOfferResponse = {
   coordinates: { latitude: 48.9263, longitude: 2.49008 },
   date: null,
-  expenseDomains: [ExpenseDomain.All],
+  expenseDomains: [ExpenseDomain.all],
   externalTicketOfficeUrl: 'https://externalbooking.test.com',
   id: 146105,
   image: {
     credit: null,
     url: 'https://storage.gra.cloud.ovh.net/v1/AUTH_688df1e25bd84a48a3804e7fa8938085/storage-pc-dev/thumbs/mediations/CWMA',
   },
-  subcategoryId: SubcategoryIdEnum.TELECHARGEMENTMUSIQUE,
+  subcategoryId: SubcategoryIdEnum.TELECHARGEMENT_MUSIQUE,
   name: 'Un lit sous une rivière',
   price: null,
   startDate: new Date('2021-03-04T20:00:00'),
@@ -53,7 +53,7 @@ const offer: FavoriteOfferResponse = {
 const user: UserProfileResponse = {
   isBeneficiary: true,
   bookedOffers: {},
-  domainsCredit: { [ExpenseDomain.All]: { initial: 500, remaining: 300 } },
+  domainsCredit: { [ExpenseDomain.all]: { initial: 500, remaining: 300 } },
 } as UserProfileResponse
 const onInAppBooking = jest.fn()
 
@@ -205,7 +205,7 @@ function getUser(params?: {
   return {
     isBeneficiary,
     bookedOffers: isBookedOffer ? { [offer.id]: 666 } : {},
-    domainsCredit: { [ExpenseDomain.All]: { initial: 500, remaining: remainingCredit } },
+    domainsCredit: { [ExpenseDomain.all]: { initial: 500, remaining: remainingCredit } },
   }
 }
 

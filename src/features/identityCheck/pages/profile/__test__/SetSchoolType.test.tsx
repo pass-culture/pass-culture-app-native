@@ -27,7 +27,7 @@ describe('<SetSchoolType />', () => {
     mockUseIdentityCheckContext.mockImplementationOnce(() => ({
       dispatch: jest.fn(),
       ...mockState,
-      profile: { ...mockState.profile, status: ActivityIdEnum.MIDDLESCHOOLSTUDENT },
+      profile: { ...mockState.profile, status: ActivityIdEnum.MIDDLE_SCHOOL_STUDENT },
     }))
 
     const renderAPI = render(<SetSchoolType />)
@@ -38,7 +38,7 @@ describe('<SetSchoolType />', () => {
     mockUseIdentityCheckContext.mockImplementationOnce(() => ({
       dispatch: jest.fn(),
       ...mockState,
-      profile: { ...mockState.profile, status: ActivityIdEnum.HIGHSCHOOLSTUDENT },
+      profile: { ...mockState.profile, status: ActivityIdEnum.HIGH_SCHOOL_STUDENT },
     }))
 
     const renderAPI = render(<SetSchoolType />)

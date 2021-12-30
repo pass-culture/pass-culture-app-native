@@ -38,13 +38,13 @@ export const IdentityCheckWebview: React.FC = () => {
         identificationUrl,
         events: {
           onComplete({ redirectUrl }: CompleteEvent) {
-            analytics.logIdentityCheckSuccess({ method: IdentityCheckMethod.Ubble })
+            analytics.logIdentityCheckSuccess({ method: IdentityCheckMethod.ubble })
             ubbleIDV.destroy()
             if (redirectUrl.includes(REDIRECT_URL_UBBLE)) navigateToNextScreen()
           },
           onAbort({ redirectUrl, returnReason: reason }: AbortEvent) {
             analytics.logIdentityCheckAbort({
-              method: IdentityCheckMethod.Ubble,
+              method: IdentityCheckMethod.ubble,
               reason,
               errorType: new URL(redirectUrl).searchParams.get('error_type') || null,
             })
