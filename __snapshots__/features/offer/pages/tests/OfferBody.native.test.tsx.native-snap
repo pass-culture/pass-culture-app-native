@@ -1432,8 +1432,8 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                     }
                   >
                     <View
-                      height={36}
-                      width={36}
+                      height={24}
+                      width={24}
                     >
                       <Text>
                         undefined-SVG-Mock
@@ -1488,8 +1488,8 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                     }
                   >
                     <View
-                      height={36}
-                      width={36}
+                      height={24}
+                      width={24}
                     >
                       <Text>
                         undefined-SVG-Mock

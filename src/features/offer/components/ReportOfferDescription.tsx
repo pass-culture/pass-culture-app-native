@@ -44,7 +44,7 @@ const InformationComponent: FunctionComponent<{
 }> = ({ Icon, text }) => {
   return (
     <InfoContainer>
-      <Icon size={36} />
+      <Icon size={24} />
       <Spacer.Row numberOfSpaces={3.75} />
       <Info>{text}</Info>
     </InfoContainer>
