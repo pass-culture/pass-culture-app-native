@@ -18,8 +18,8 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
-import { ArrowNextDeprecated as ArrowNext } from 'ui/svg/icons/ArrowNext_deprecated'
-import { ArrowPreviousDeprecated as ArrowPrevious } from 'ui/svg/icons/ArrowPrevious_deprecated'
+import { ArrowNext } from 'ui/svg/icons/ArrowNext'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing } from 'ui/theme'
 
@@ -29,8 +29,8 @@ LocaleConfig.locales['fr'] = { monthNames, monthNamesShort, dayNames, dayNamesSh
 LocaleConfig.defaultLocale = 'fr'
 
 function renderArrow(direction: 'left' | 'right') {
-  if (direction === 'left') return <ArrowPrevious />
-  if (direction === 'right') return <ArrowNext />
+  if (direction === 'left') return <ArrowPrevious size={24} />
+  if (direction === 'right') return <ArrowNext size={24} />
   return <React.Fragment />
 }
 
