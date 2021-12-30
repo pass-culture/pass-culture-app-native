@@ -178,7 +178,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="OfferPhysical" component={OfferPhysical} isNew />
       <Icon name="Offers" component={Offers} isNew />
       <Icon name="OrderPrice" component={OrderPrice} isNew />
-      <Icon name="PhoneFilled" component={PhoneFilled} />
+      <Icon name="PhoneFilled" component={PhoneFilled} isNew />
       <Icon name="PlainArrowPrevious" component={PlainArrowPrevious} isNew />
       <Icon name="ProfileDeletion" component={ProfileDeletion} isNew />
       <Icon name="Quote" component={Quote} isNew />
