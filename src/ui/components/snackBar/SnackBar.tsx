@@ -162,7 +162,7 @@ const SnackBarContainer = styled.View<{ isVisible: boolean; marginTop: number }>
 
 const Text = styled(Typo.Body)<{ color: string }>((props) => ({
   color: props.color,
-  marginLeft: getSpacing(3),
+  marginHorizontal: getSpacing(3),
   flexGrow: 0,
   flexWrap: 'wrap',
 }))
