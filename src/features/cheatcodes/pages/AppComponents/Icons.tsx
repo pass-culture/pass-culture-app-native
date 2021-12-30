@@ -65,6 +65,7 @@ import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
+import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { LocationPointerDeprecated } from 'ui/svg/icons/LocationPointer_deprecated'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
 import { Lock } from 'ui/svg/icons/Lock'
@@ -167,6 +168,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="LegalNotices" component={LegalNotices} isNew />
       <Icon name="LifeBuoy" component={LifeBuoy} isNew />
       <Icon name="LocationBuilding" component={LocationBuilding} isNew />
+      <Icon name="LocationPointer" component={LocationPointer} isNew />
       <Icon name="LocationPointerDeprecated" component={LocationPointerDeprecated} />
       <Icon name="LocationPointerNotFilled" component={LocationPointerNotFilled} isNew />
       <Icon name="Lock" component={Lock} isNew />
