@@ -16,7 +16,7 @@ import styled from 'styled-components/native'
 import { useFunctionOnce } from 'libs/hooks'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-import { ArrowNextDeprecated as ArrowNext } from '../svg/icons/ArrowNext_deprecated'
+import { ArrowNext } from '../svg/icons/ArrowNext'
 import { getSpacing, Typo } from '../theme'
 
 interface IAccordionItemProps {
@@ -90,7 +90,7 @@ export const AccordionItem = ({
         <View style={[styles.titleContainer, titleStyle]}>
           <Title>{title}</Title>
           <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }} testID="accordionArrow">
-            <ArrowNext size={getSpacing(6)} />
+            <ArrowNext size={getSpacing(4.5)} />
           </Animated.View>
         </View>
       </TouchableWithoutFeedback>
