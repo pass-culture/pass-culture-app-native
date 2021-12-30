@@ -139,7 +139,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="Clock" component={Clock} isNew />
       <Icon name="Close" component={Close} isNew />
       <Icon name="Confidentiality" component={Confidentiality} isNew />
-      <Icon name="Digital" component={Digital} />
+      <Icon name="Digital" component={Digital} isNew />
       <Icon name="Duo" component={Duo} isNew />
       <Icon name="DuoBold" component={DuoBold} />
       <Icon name="DuoPerson" component={DuoPerson} />
@@ -167,7 +167,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="LegalNotices" component={LegalNotices} isNew />
       <Icon name="LifeBuoy" component={LifeBuoy} isNew />
       <Icon name="LocationBuilding" component={LocationBuilding} isNew />
-      <Icon name="LocationPointer" component={LocationPointer} />
+      <Icon name="LocationPointer" component={LocationPointer} isNew />
       <Icon name="LocationPointerNotFilled" component={LocationPointerNotFilled} isNew />
       <Icon name="Lock" component={Lock} isNew />
       <Icon name="Logo" component={Logo} />
@@ -178,7 +178,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="OfferPhysical" component={OfferPhysical} isNew />
       <Icon name="Offers" component={Offers} isNew />
       <Icon name="OrderPrice" component={OrderPrice} isNew />
-      <Icon name="PhoneFilled" component={PhoneFilled} />
+      <Icon name="PhoneFilled" component={PhoneFilled} isNew />
       <Icon name="PlainArrowPrevious" component={PlainArrowPrevious} isNew />
       <Icon name="ProfileDeletion" component={ProfileDeletion} isNew />
       <Icon name="Quote" component={Quote} isNew />

@@ -494,8 +494,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                 }
                               >
                                 <View
-                                  height={16}
-                                  width={16}
+                                  height={18}
+                                  width={18}
                                 >
                                   <Text>
                                     undefined-SVG-Mock
@@ -2928,8 +2928,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 }
                               >
                                 <View
-                                  height={16}
-                                  width={16}
+                                  height={18}
+                                  width={18}
                                 >
                                   <Text>
                                     undefined-SVG-Mock
@@ -3823,8 +3823,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 testID="Voir l'itinéraire"
                               >
                                 <View
-                                  height={24}
-                                  width={24}
+                                  height={20}
+                                  width={20}
                                 >
                                   <Text>
                                     undefined-SVG-Mock

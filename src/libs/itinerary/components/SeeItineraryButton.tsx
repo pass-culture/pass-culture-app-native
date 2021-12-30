@@ -23,7 +23,7 @@ export function SeeItineraryButton(props: Props) {
   )
 }
 
-const icon = () => <LocationPointer color={ColorsEnum.BLACK} size={24} />
+const icon = () => <LocationPointer color={ColorsEnum.BLACK} size={20} />
 
 const Container = styled.View({
   alignItems: 'flex-start',

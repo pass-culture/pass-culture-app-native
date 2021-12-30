@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { OfferVenueResponse } from 'api/gen'
 import { Digital } from 'ui/svg/icons/Digital'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
-import { getSpacing, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 
 type Props = {
   venue: OfferVenueResponse
@@ -23,7 +23,11 @@ export const LocationCaption: FunctionComponent<Props> = ({ venue, isDigital }: 
     <LocationContainer>
       <StyledView>
         <IconContainer>
-          {isDigital ? <Digital size={getSpacing(4)} /> : <LocationPointer size={getSpacing(4)} />}
+          {isDigital ? (
+            <Digital size={getSpacing(4.5)} color={ColorsEnum.PRIMARY} />
+          ) : (
+            <LocationPointer size={getSpacing(4.5)} color={ColorsEnum.PRIMARY} />
+          )}
         </IconContainer>
         {!!locationName && <StyledText numberOfLines={1}>{`${locationName}, `}</StyledText>}
       </StyledView>
