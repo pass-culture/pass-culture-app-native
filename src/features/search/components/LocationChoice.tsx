@@ -38,7 +38,7 @@ export const LocationChoice: React.FC<Props> = (props) => {
         {!!isSelected && (
           <Validate color={ColorsEnum.PRIMARY} testID="validateIcon" size={getSpacing(6)} />
         )}
-        {!!arrowNext && <ArrowNext />}
+        {!!arrowNext && <ArrowNext size={getSpacing(6)} />}
         {!isSelected && !arrowNext ? <Spacer.Row numberOfSpaces={8} /> : null}
       </SecondPart>
     </Container>

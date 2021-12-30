@@ -31,7 +31,7 @@ export const OfferSeeMore: React.FC<Props> = ({ id, longWording = false }) => {
         title={longWording ? t`Voir plus d'informations` : t`voir plus`}
       />
       <Spacer.Row numberOfSpaces={1} />
-      <ArrowNext size={getSpacing(6)} />
+      <ArrowNext size={getSpacing(4.5)} />
     </Container>
   )
 }

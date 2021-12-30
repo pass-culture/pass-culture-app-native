@@ -79,9 +79,9 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
       testID="Revenir en arrière"
     >
       <View
-        height={32}
+        height={24}
         testID="icon-back"
-        width={32}
+        width={24}
       >
         <Text>
           icon-back-SVG-Mock
@@ -802,9 +802,9 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
       testID="Revenir en arrière"
     >
       <View
-        height={32}
+        height={24}
         testID="icon-back"
-        width={32}
+        width={24}
       >
         <Text>
           icon-back-SVG-Mock

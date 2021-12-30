@@ -90,7 +90,7 @@ export const AccordionItem = ({
         <View style={[styles.titleContainer, titleStyle]}>
           <Title>{title}</Title>
           <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }} testID="accordionArrow">
-            <ArrowNext size={getSpacing(6)} />
+            <ArrowNext size={getSpacing(4.5)} />
           </Animated.View>
         </View>
       </TouchableWithoutFeedback>

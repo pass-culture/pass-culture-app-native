@@ -3,7 +3,7 @@ import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { ArrowPreviousDeprecated as ArrowPrevious } from 'ui/svg/icons/ArrowPrevious_deprecated'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 
 export type ControlComponentProps = {
   onPress: () => void
@@ -23,9 +23,9 @@ export const ControlComponent = ({ onPress, title, type }: ControlComponentProps
       type={type}
       testID="controlButton">
       {type === 'prev' ? (
-        <ArrowPrevious testID="arrowPrevious" />
+        <ArrowPrevious size={24} testID="arrowPrevious" />
       ) : (
-        <ArrowNext testID="arrowNext" />
+        <ArrowNext size={24} testID="arrowNext" />
       )}
     </StyledTouchableOpacity>
   )

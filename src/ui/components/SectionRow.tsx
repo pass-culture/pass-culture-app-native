@@ -55,7 +55,7 @@ export function SectionRow(props: SectionRowProps) {
         <TitleContainer>{title}</TitleContainer>
         <CTAContainer>
           {props.type == 'navigable' ? (
-            <ArrowNext size={props.ctaIconSize || 24} testID="section-row-navigable-icon" />
+            <ArrowNext size={props.ctaIconSize || 20} testID="section-row-navigable-icon" />
           ) : (
             props.cta
           )}

@@ -1325,9 +1325,9 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                   testID="controlButton"
                 >
                   <View
-                    height={32}
+                    height={24}
                     testID="arrowNext"
-                    width={32}
+                    width={24}
                   >
                     <Text>
                       arrowNext-SVG-Mock

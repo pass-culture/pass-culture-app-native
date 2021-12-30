@@ -8,7 +8,7 @@ import { OfferStatus } from 'features/bookOffer/services/utils'
 import { analytics } from 'libs/analytics'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { ArrowPreviousDeprecated as ArrowPrevious } from 'ui/svg/icons/ArrowPrevious_deprecated'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
@@ -26,8 +26,8 @@ LocaleConfig.locales['fr'] = {
 LocaleConfig.defaultLocale = 'fr'
 
 const renderArrow = (direction: string) => {
-  if (direction === 'left') return <ArrowPrevious />
-  if (direction === 'right') return <ArrowNext />
+  if (direction === 'left') return <ArrowPrevious size={24} />
+  if (direction === 'right') return <ArrowNext size={24} />
   return <React.Fragment />
 }
 

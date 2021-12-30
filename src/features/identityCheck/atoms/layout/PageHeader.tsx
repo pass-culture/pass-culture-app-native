@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { accessibilityAndTestId } from 'tests/utils'
-import { ArrowPreviousDeprecated as ArrowPrevious } from 'ui/svg/icons/ArrowPrevious_deprecated'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
@@ -44,7 +44,7 @@ const BackIcon: React.FC<BackButtonProps> = (props) => {
     <StyledTouchableOpacity
       onPress={props.onGoBack ?? goBack}
       {...accessibilityAndTestId(t`Revenir en arrière`)}>
-      <ArrowPrevious color={ColorsEnum.WHITE} testID="icon-back" />
+      <ArrowPrevious color={ColorsEnum.WHITE} size={24} testID="icon-back" />
     </StyledTouchableOpacity>
   )
 }

@@ -83,7 +83,7 @@ export const WhereSection: React.FC<Props> = ({
             <Spacer.Row numberOfSpaces={2} />
             <StyledVenueName numberOfLines={1}>{venue.publicName || venue.name}</StyledVenueName>
             <Spacer.Flex />
-            <ArrowNext size={getSpacing(6)} />
+            <ArrowNext size={getSpacing(5)} />
           </VenueNameContainer>
         </React.Fragment>
       ) : null}

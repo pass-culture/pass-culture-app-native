@@ -18,7 +18,7 @@ export const SeeMore: React.FC<SeeMoreProps> = ({ height, width, onPress }) => (
       <Row>
         <Spacer.Row numberOfSpaces={16} />
         <RoundContainer onPress={onPress}>
-          <ArrowNext size={56} color={ColorsEnum.PRIMARY} testID={'arrow-next'} />
+          <ArrowNext size={40} color={ColorsEnum.PRIMARY} testID={'arrow-next'} />
         </RoundContainer>
         <Spacer.Row numberOfSpaces={16} />
       </Row>

@@ -36,7 +36,7 @@ export const Location: React.FC = () => {
         <Spacer.Row numberOfSpaces={2} />
         <Label numberOfLines={2}>{label}</Label>
         <Spacer.Flex />
-        <ArrowNext size={getSpacing(6)} />
+        <ArrowNext size={getSpacing(5)} />
       </LocationContentContainer>
       {locationType === LocationType.AROUND_ME ? (
         <React.Fragment>

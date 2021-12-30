@@ -1634,9 +1634,9 @@ exports[`<VenueBody /> should render correctly 1`] = `
                       }
                     >
                       <View
-                        height={56}
+                        height={40}
                         testID="arrow-next"
-                        width={56}
+                        width={40}
                       >
                         <Text>
                           arrow-next-SVG-Mock
@@ -2070,8 +2070,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
         testID="accordionArrow"
       >
         <View
-          height={24}
-          width={24}
+          height={18}
+          width={18}
         >
           <Text>
             undefined-SVG-Mock
@@ -2227,8 +2227,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
         testID="accordionArrow"
       >
         <View
-          height={24}
-          width={24}
+          height={18}
+          width={18}
         >
           <Text>
             undefined-SVG-Mock
@@ -2911,8 +2911,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
         testID="accordionArrow"
       >
         <View
-          height={24}
-          width={24}
+          height={18}
+          width={18}
         >
           <Text>
             undefined-SVG-Mock

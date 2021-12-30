@@ -1,5 +1,5 @@
 import * as React from 'react'
-import Svg, { Path, G } from 'react-native-svg'
+import Svg, { Path } from 'react-native-svg'
 
 import { ColorsEnum } from 'ui/theme'
 
@@ -10,18 +10,12 @@ export const ArrowNext: React.FunctionComponent<IconInterface> = ({
   color = ColorsEnum.BLACK,
   testID,
 }) => (
-  <Svg width={size} height={size} viewBox="0 0 52 53" testID={testID}>
-    <G fill="none" fillRule="evenodd">
-      <G fill={color}>
-        <G>
-          <G>
-            <Path
-              d="M14.528 31.633c-.49.45-1.265.431-1.732-.041-.466-.472-.447-1.22.042-1.669l8.636-7.928c2.838-2.605 7.297-2.605 10.135 0l8.636 7.928c.49.45.509 1.197.042 1.669-.466.472-1.241.49-1.731.04l-8.636-7.927c-1.892-1.737-4.865-1.737-6.757 0l-8.635 7.928z"
-              transform="translate(-250 -1064) translate(250 1065) rotate(90 26.542 26)"
-            />
-          </G>
-        </G>
-      </G>
-    </G>
+  <Svg width={size} height={size} viewBox="0 0 48 49" testID={testID}>
+    <Path
+      fill={color}
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M14.865 4.84239C14.4698 5.23124 14.4648 5.86662 14.854 6.26155L32.2064 23.774C32.6425 24.2166 32.636 24.9387 32.2109 25.3646L32.2096 25.366L14.832 42.8431C14.441 43.2363 14.4431 43.8717 14.8365 44.2623C15.23 44.6529 15.8658 44.6509 16.2567 44.2577L33.633 26.782C34.8444 25.5676 34.8382 23.5844 33.6376 22.3658L16.2852 4.85341C15.896 4.45848 15.2602 4.45355 14.865 4.84239Z"
+    />
   </Svg>
 )
