@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { LocationPointer } from 'ui/svg/icons/LocationPointer'
+import { LocationPointerDeprecated as LocationPointer } from 'ui/svg/icons/LocationPointer_deprecated'
 import { ColorsEnum } from 'ui/theme'
 
 interface Props {

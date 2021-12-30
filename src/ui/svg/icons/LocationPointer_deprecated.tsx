@@ -5,7 +5,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { IconInterface } from './types'
 
-export const LocationPointer: React.FunctionComponent<IconInterface> = ({
+export const LocationPointerDeprecated: React.FunctionComponent<IconInterface> = ({
   size = 32,
   color = ColorsEnum.PRIMARY,
   testID,
