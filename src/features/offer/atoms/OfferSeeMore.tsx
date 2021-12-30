@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { ArrowNextDeprecated as ArrowNext } from 'ui/svg/icons/ArrowNext_deprecated'
+import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { getSpacing, Spacer } from 'ui/theme'
 
 interface Props {
@@ -31,7 +31,7 @@ export const OfferSeeMore: React.FC<Props> = ({ id, longWording = false }) => {
         title={longWording ? t`Voir plus d'informations` : t`voir plus`}
       />
       <Spacer.Row numberOfSpaces={1} />
-      <ArrowNext size={getSpacing(6)} />
+      <ArrowNext size={getSpacing(4.5)} />
     </Container>
   )
 }

@@ -1634,9 +1634,9 @@ exports[`<VenueBody /> should render correctly 1`] = `
                       }
                     >
                       <View
-                        height={56}
+                        height={40}
                         testID="arrow-next"
-                        width={56}
+                        width={40}
                       >
                         <Text>
                           arrow-next-SVG-Mock

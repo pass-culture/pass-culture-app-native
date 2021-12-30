@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ArrowNextDeprecated as ArrowNext } from 'ui/svg/icons/ArrowNext_deprecated'
+import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ColorsEnum, getSpacing, Spacer, Typo, getShadow } from 'ui/theme'
 
 interface SeeMoreProps {
@@ -18,7 +18,7 @@ export const SeeMore: React.FC<SeeMoreProps> = ({ height, width, onPress }) => (
       <Row>
         <Spacer.Row numberOfSpaces={16} />
         <RoundContainer onPress={onPress}>
-          <ArrowNext size={56} color={ColorsEnum.PRIMARY} testID={'arrow-next'} />
+          <ArrowNext size={40} color={ColorsEnum.PRIMARY} testID={'arrow-next'} />
         </RoundContainer>
         <Spacer.Row numberOfSpaces={16} />
       </Row>

@@ -10,7 +10,7 @@ import { LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
-import { ArrowNextDeprecated as ArrowNext } from 'ui/svg/icons/ArrowNext_deprecated'
+import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Typo, Spacer, ColorsEnum, getSpacing } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
@@ -36,7 +36,7 @@ export const Location: React.FC = () => {
         <Spacer.Row numberOfSpaces={2} />
         <Label numberOfLines={2}>{label}</Label>
         <Spacer.Flex />
-        <ArrowNext size={getSpacing(6)} />
+        <ArrowNext size={getSpacing(5)} />
       </LocationContentContainer>
       {locationType === LocationType.AROUND_ME ? (
         <React.Fragment>

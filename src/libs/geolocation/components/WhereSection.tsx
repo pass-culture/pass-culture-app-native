@@ -12,7 +12,7 @@ import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { QueryKeys } from 'libs/queryKeys'
 import { Spacer } from 'ui/components/spacer/Spacer'
-import { ArrowNextDeprecated as ArrowNext } from 'ui/svg/icons/ArrowNext_deprecated'
+import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { Typo, ColorsEnum, getSpacing } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
@@ -83,7 +83,7 @@ export const WhereSection: React.FC<Props> = ({
             <Spacer.Row numberOfSpaces={2} />
             <StyledVenueName numberOfLines={1}>{venue.publicName || venue.name}</StyledVenueName>
             <Spacer.Flex />
-            <ArrowNext size={getSpacing(6)} />
+            <ArrowNext size={getSpacing(5)} />
           </VenueNameContainer>
         </React.Fragment>
       ) : null}
