@@ -140,7 +140,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="Clock" component={Clock} isNew />
       <Icon name="Close" component={Close} isNew />
       <Icon name="Confidentiality" component={Confidentiality} isNew />
-      <Icon name="Digital" component={Digital} />
+      <Icon name="Digital" component={Digital} isNew />
       <Icon name="Duo" component={Duo} isNew />
       <Icon name="DuoBold" component={DuoBold} />
       <Icon name="DuoPerson" component={DuoPerson} />
