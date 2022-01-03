@@ -30,7 +30,6 @@ module.exports = {
       '|@react-native-firebase/remote-config' +
       '|@sentry/react-native' +
       '|react-native-geolocation-service' +
-      '|@pass-culture/id-check' +
       '|@pass-culture/react-native-profiling' +
       '/(?!(lib)))',
   ],
