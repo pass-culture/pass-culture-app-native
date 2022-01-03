@@ -123,9 +123,7 @@ export function requestPasswordResetFail() {
 
 export function requestSettingsSuccess(
   settingsResponse: SettingsResponse = {
-    depositAmount: 30000,
     isRecaptchaEnabled: true,
-    allowIdCheckRegistration: true,
     autoActivateDigitalBookings: false,
     enableNativeIdCheckVerboseDebugging: false,
     enablePhoneValidation: false,
@@ -135,7 +133,6 @@ export function requestSettingsSuccess(
     displayDmsRedirection: true,
     idCheckAddressAutocompletion: true,
     isWebappV2Enabled: false,
-    enableCulturalSurvey: false,
     enableNativeEacIndividual: false,
     accountCreationMinimumAge: 15,
   }

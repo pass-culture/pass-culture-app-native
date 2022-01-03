@@ -1651,17 +1651,7 @@ export interface SettingsResponse {
    * @type {boolean}
    * @memberof SettingsResponse
    */
-  allowIdCheckRegistration: boolean
-  /**
-   * @type {boolean}
-   * @memberof SettingsResponse
-   */
   autoActivateDigitalBookings: boolean
-  /**
-   * @type {number}
-   * @memberof SettingsResponse
-   */
-  depositAmount: number
   /**
    * @type {DepositAmountsByAge}
    * @memberof SettingsResponse
@@ -1672,11 +1662,6 @@ export interface SettingsResponse {
    * @memberof SettingsResponse
    */
   displayDmsRedirection: boolean
-  /**
-   * @type {boolean}
-   * @memberof SettingsResponse
-   */
-  enableCulturalSurvey: boolean
   /**
    * @type {boolean}
    * @memberof SettingsResponse

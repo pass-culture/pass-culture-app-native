@@ -4,9 +4,7 @@ import { SettingsResponse } from 'api/gen'
 import { useAppSettings as actualUseAppSettings } from 'features/auth/settings'
 
 export const mockDefaultSettings: SettingsResponse = {
-  depositAmount: 30000,
   isRecaptchaEnabled: true,
-  allowIdCheckRegistration: true,
   enablePhoneValidation: true,
   displayDmsRedirection: true,
   autoActivateDigitalBookings: true,
@@ -17,7 +15,6 @@ export const mockDefaultSettings: SettingsResponse = {
   isWebappV2Enabled: false,
   enableNativeEacIndividual: false,
   enableUnderageGeneralisation: false,
-  enableCulturalSurvey: false,
   accountCreationMinimumAge: 15,
 }
 
