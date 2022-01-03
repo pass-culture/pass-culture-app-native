@@ -130,7 +130,6 @@ const LoggedInQueryKeys: QueryKeys[] = [
   QueryKeys.BOOKINGS,
   QueryKeys.FAVORITES,
   QueryKeys.FAVORITES_COUNT,
-  QueryKeys.ID_CHECK_TOKEN,
   QueryKeys.RECOMMENDATION_HITS,
   QueryKeys.RECOMMENDATION_OFFER_IDS,
   QueryKeys.REPORTED_OFFERS,

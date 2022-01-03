@@ -13,7 +13,6 @@ import { ResetPasswordExpiredLink } from 'features/auth/forgottenPassword/ResetP
 import { Login } from 'features/auth/login/Login'
 import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/signup/AfterSignupEmailValidationBuffer'
-import { IdCheckV2 } from 'features/auth/signup/IdCheckV2'
 import { PhoneValidationTooManyAttempts } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts'
 import { PhoneValidationTooManySMSSent } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent'
 import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNumber'

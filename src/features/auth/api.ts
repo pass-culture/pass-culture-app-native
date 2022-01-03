@@ -86,10 +86,6 @@ export function useSignUp(): (data: appAccountRequest) => Promise<SignUpResponse
   }
 }
 
-export function useNotifyIdCheckCompleted(options = {}) {
-  return useMutation(() => api.postnativev1accounthasCompletedIdCheck(), options)
-}
-
 export function useAccountSuspend(onSuccess: () => void, onError: (error: unknown) => void) {
   return useMutation(() => api.postnativev1accountsuspend(), {
     onSuccess,

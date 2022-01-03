@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { t } from '@lingui/macro'
-import { IdCheckError } from '@pass-culture/id-check'
 
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { Headers, FailedToRefreshAccessTokenError } from 'libs/fetch'
@@ -169,7 +168,6 @@ export class ApiError extends Error {
     this.statusCode = statusCode
   }
 }
-IdCheckError.prototype.name = 'ApiError'
 
 export function extractApiErrorMessage(error: unknown) {
   let message = t`Une erreur est survenue`
