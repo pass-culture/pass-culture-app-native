@@ -1,4 +1,3 @@
-import { LocalStorageService } from '@pass-culture/id-check'
 import React, { memo, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { useQueryClient } from 'react-query'
 
@@ -102,12 +101,6 @@ export function useLoginRoutine() {
   }
 
   return loginRoutine
-}
-
-export function signOutFromIdCheck() {
-  LocalStorageService.resetCurrentUser()
-  LocalStorageService.resetProfile()
-  LocalStorageService.resetLicenceToken()
 }
 
 export function useLogoutRoutine(): () => Promise<void> {

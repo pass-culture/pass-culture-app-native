@@ -5,7 +5,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Platform, NativeScrollEvent, StyleSheet, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { signOutFromIdCheck, useAuthContext, useLogoutRoutine } from 'features/auth/AuthContext'
+import { useAuthContext, useLogoutRoutine } from 'features/auth/AuthContext'
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
 import { useUserProfileInfo } from 'features/home/api'
 import { openUrl } from 'features/navigation/helpers'
@@ -224,9 +224,7 @@ export const Profile: React.FC = () => {
             <SignOutRow
               title={t`Déconnexion`}
               {...accessibilityAndTestId(t`Déconnexion`)}
-              onPress={() => {
-                signOut().finally(signOutFromIdCheck)
-              }}
+              onPress={signOut}
               type="clickable"
               icon={SignOut}
             />
