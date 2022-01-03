@@ -433,8 +433,8 @@ msgid "Choisis ton statut"
 msgstr "Choisis ton statut"
 
 #: src/features/search/components/CalendarPicker.web.tsx
-msgid "Choisis une date valide :)"
-msgstr "Choisis une date valide :)"
+msgid "Choisis une date dans le futur"
+msgstr "Choisis une date dans le futur"
 
 #: src/libs/itinerary/useItinerary.ts
 msgid "Choisissez l'application pour vous rendre sur le lieu de l'offre :"

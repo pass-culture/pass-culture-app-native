@@ -183,11 +183,14 @@ export const CalendarPicker: React.FC<Props> = ({
           adjustsFontSizeToFit={true}
         />
         {isMobileDateInvalid ? (
-          <InputError
-            visible
-            messageId={t`Choisis une date valide\u00a0:)`}
-            numberOfSpacesTop={1}
-          />
+          <React.Fragment>
+            <InputError
+              visible
+              messageId={t`Choisis une date dans le futur`}
+              numberOfSpacesTop={2}
+            />
+            <Spacer.Column numberOfSpaces={1} />
+          </React.Fragment>
         ) : (
           <Spacer.Column numberOfSpaces={7} />
         )}
