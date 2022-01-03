@@ -98,7 +98,7 @@ describe('<BookingImpossible />', () => {
     await waitForExpect(() => {
       expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledTimes(1)
       expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
-        from: 'BookingImpossible',
+        from: 'bookingimpossible',
         offerId: 20,
       })
       expect(mockDismissModal).toHaveBeenCalledTimes(1)

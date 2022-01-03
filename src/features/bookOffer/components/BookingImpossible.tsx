@@ -30,7 +30,7 @@ export const BookingImpossible: React.FC = () => {
     onSuccess: () => {
       if (typeof offerId == 'undefined') return
 
-      analytics.logHasAddedOfferToFavorites({ from: 'BookingImpossible', offerId })
+      analytics.logHasAddedOfferToFavorites({ from: 'bookingimpossible', offerId })
       notifyWebappLinkSent()
     },
     onError: () => {

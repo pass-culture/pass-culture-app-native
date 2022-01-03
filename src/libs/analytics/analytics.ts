@@ -115,7 +115,7 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.OFFER_SEEN_DURATION, { offerId, duration }),
   logHasAddedOfferToFavorites: (params: {
     offerId: number
-    from?: Referrals | 'BookingImpossible'
+    from?: Referrals
     moduleName?: string
   }) => analyticsProvider.logEvent(AnalyticsEvent.HAS_ADDED_OFFER_TO_FAVORITES, params),
   logConsultWhyAnniversary: () =>
