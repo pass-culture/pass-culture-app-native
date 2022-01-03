@@ -1,4 +1,3 @@
-import { LocalStorageService } from '@pass-culture/id-check'
 import React, { memo, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { useQueryClient } from 'react-query'
 
@@ -104,12 +103,6 @@ export function useLoginRoutine() {
   return loginRoutine
 }
 
-export function signOutFromIdCheck() {
-  LocalStorageService.resetCurrentUser()
-  LocalStorageService.resetProfile()
-  LocalStorageService.resetLicenceToken()
-}
-
 export function useLogoutRoutine(): () => Promise<void> {
   const queryClient = useQueryClient()
   const { setIsLoggedIn } = useAuthContext()
@@ -137,7 +130,6 @@ const LoggedInQueryKeys: QueryKeys[] = [
   QueryKeys.BOOKINGS,
   QueryKeys.FAVORITES,
   QueryKeys.FAVORITES_COUNT,
-  QueryKeys.ID_CHECK_TOKEN,
   QueryKeys.RECOMMENDATION_HITS,
   QueryKeys.RECOMMENDATION_OFFER_IDS,
   QueryKeys.REPORTED_OFFERS,

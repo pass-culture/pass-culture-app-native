@@ -1,4 +1,3 @@
-import { IdCheckRootStackParamList } from '@pass-culture/id-check'
 import { getStateFromPath, PathConfig, RouteProp, ParamListBase } from '@react-navigation/native'
 import { StackNavigationProp } from '@react-navigation/stack'
 import { ComponentType } from 'react'
@@ -46,6 +45,7 @@ export type IdentityCheckRootStackParamList = {
   UnderageAccountCreated: undefined
   // Errors
   EduConnectErrors: { code?: string; logoutUrl?: string }
+  EduConnectErrorsPage: { code?: string; logoutUrl?: string }
 }
 
 /**
@@ -80,12 +80,10 @@ export type RootStackParamList = {
   EndedBookings: undefined
   ForgottenPassword: undefined
   FavoritesSorts: undefined
-  IdCheckTooManyAttempts: undefined
   Login?: {
     preventCancellation?: boolean
   }
   Navigation: undefined
-  NavigationIdCheckErrors: undefined
   NavigationNotScreensPages: undefined
   NotificationSettings: undefined
   Offer: {
@@ -124,8 +122,7 @@ export type RootStackParamList = {
   UserProfiling: undefined
   Venue: { id: number }
   DeeplinksGenerator: undefined
-} & IdCheckRootStackParamList &
-  IdentityCheckRootStackParamList
+} & IdentityCheckRootStackParamList
 
 export type AllNavParamList = RootStackParamList & TabParamList
 

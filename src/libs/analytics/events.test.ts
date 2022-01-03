@@ -1,6 +1,6 @@
-import { AnalyticsEvent, IdCheckAnalyticsEvent, validateAnalyticsEvent } from './events'
+import { AnalyticsEvent, validateAnalyticsEvent } from './events'
 
-const analyticsMembers = [...Object.values(AnalyticsEvent), ...Object.values(IdCheckAnalyticsEvent)]
+const analyticsMembers = [...Object.values(AnalyticsEvent)]
 
 describe('AnalyticsEvent', () => {
   it('actual members should respect Firebase naming rules', () => {

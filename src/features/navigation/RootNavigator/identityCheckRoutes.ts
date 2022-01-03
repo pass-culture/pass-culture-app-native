@@ -184,4 +184,13 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     path: 'educonnect/erreur',
     options: { title: t`Erreur` },
   },
+  // This route is hardcoded in the backend
+  // https://github.com/pass-culture/pass-culture-main/blob/master/api/src/pcapi/routes/saml/educonnect.py#L28
+  // TODO(anoukhello): delete this route once the backend redirects to `educonnect/erreur`
+  {
+    name: 'EduConnectErrorsPage',
+    component: EduConnectErrors,
+    hoc: withEduConnectErrorBoundary,
+    path: 'idcheck/educonnect/erreur',
+  },
 ]

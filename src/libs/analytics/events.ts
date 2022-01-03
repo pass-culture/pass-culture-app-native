@@ -44,7 +44,6 @@ export enum AnalyticsEvent {
   HAS_REFUSED_COOKIE = 'HasRefusedCookie',
   HAS_SKIPPED_TUTORIAL = 'HasSkippedTutorial',
   HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT = 'HelpCenterContactSignUpConfirmation',
-  ID_CHECK = 'IdCheck',
   IDENTITY_CHECK_STEP = 'IdentityCheckStep',
   IDENTITY_CHECK_ABORT = 'IdentityCheckAbort',
   IDENTITY_CHECK_SUCCESS = 'IdentityCheckSuccess',
@@ -84,32 +83,6 @@ export enum AnalyticsEvent {
   VENUE_CONTACT = 'VenueContact',
   VENUE_SEE_ALL_OFFERS_CLICKED = 'VenueSeeAllOffersClicked',
   VENUE_SEE_MORE_CLICKED = 'VenueSeeMoreClicked',
-}
-
-export enum IdCheckAnalyticsEvent {
-  CANCEL_SIGN_UP = 'IdCheck_CancelSignUp',
-  IDENTITY_ERROR = 'IdCheck_IdentityError',
-  ID_VALID = 'IdCheck_IDValid',
-  INVALID_AGE = 'IdCheck_InvalidAge',
-  INVALID_DATE = 'IdCheck_InvalidDate',
-  INVALID_DOCUMENT = 'IdCheck_InvalidDocument',
-  INVALID_TWICE = 'IdCheck_InvalidTwice',
-  PROCESS_COMPLETED = 'IdCheck_ProcessCompleted',
-  WRONG_SIDE_DOCUMENT = 'IdCheck_WrongSideDocument',
-  MISSING_DOCUMENT = 'IdCheck_MissingDocument',
-  EXTERNAL_LINK = 'IdCheck_ExternalLink',
-  HAS_VALID_SESSION = 'IdCheck_HasValidSession',
-  START_CHECK_TOKENS = 'IdCheck_StartCheckTokens',
-  END_CHECK_TOKENS = 'IdCheck_EndCheckTokens',
-  FILE_SIZE_EXCEEDED = 'IdCheck_FileSizeExceeded',
-  PERMISSION_BLOCKED = 'IdCheck_PermissionsBlocked',
-  CALMERA_UNAVAILABLE = 'IdCheck_CameraUnavailable',
-  GET_JOUVE_TOKEN = 'IdCheck_GetJouveToken',
-  GET_LICENCE_TOKEN = 'IdCheck_GetLicenceToken',
-  ID_DOCUMENT_ACQUISITION_TYPE = 'IdCheck_IdDocumentAcquisitionType',
-  START_DMS_TRANSMISSION = 'StartDmsTransmission',
-  TAKE_ID_CHECK_PICTURE = 'TakeIdCheckPicture',
-  CONFIRM_ID_CHECK_PICTURE = 'ConfirmIdCheckPicture',
 }
 
 const RESERVED_PREFIXES = ['firebase_', 'google_', 'ga_']

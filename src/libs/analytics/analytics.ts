@@ -1,4 +1,3 @@
-import { IdCheckAnalyticsInterface } from '@pass-culture/id-check'
 import { useEffect } from 'react'
 import { Platform } from 'react-native'
 
@@ -7,7 +6,7 @@ import { IdentityCheckStep } from 'features/identityCheck/types'
 import { Referrals } from 'features/navigation/RootNavigator'
 import { useUtmParams } from 'libs/utm'
 
-import { AnalyticsEvent, IdCheckAnalyticsEvent } from './events'
+import { AnalyticsEvent } from './events'
 import { analyticsProvider } from './provider'
 import { LoginRoutineMethod } from './types'
 
@@ -146,7 +145,6 @@ export const analytics = {
   logOpenLocationSettings: () => analyticsProvider.logEvent(AnalyticsEvent.OPEN_LOCATION_SETTINGS),
   logOpenNotificationSettings: () =>
     analyticsProvider.logEvent(AnalyticsEvent.OPEN_NOTIFICATION_SETTINGS),
-  logIdCheck: (from: 'Profile') => analyticsProvider.logEvent(AnalyticsEvent.ID_CHECK, { from }),
   logProblemWithLink: (url: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.DEEP_LINK_IMPORTER, {
       url: urlWithValueMaxLength(url),
@@ -233,132 +231,4 @@ export const analytics = {
   logQuitAuthenticationMethodSelection: () =>
     analyticsProvider.logEvent(AnalyticsEvent.QUIT_AUTHENTICATION_METHOD_SELECTION),
   useInit,
-}
-
-export const idCheckAnalytics: IdCheckAnalyticsInterface = {
-  cancelSignUp({ pageName }: { pageName: string }) {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.CANCEL_SIGN_UP, {
-      pageName,
-    })
-  },
-  identityError() {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.IDENTITY_ERROR)
-  },
-  idValid() {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.ID_VALID)
-  },
-  invalidAge() {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.INVALID_AGE)
-  },
-  invalidDate() {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.INVALID_DATE)
-  },
-  invalidDocument() {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.INVALID_DOCUMENT)
-  },
-  invalidTwice() {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.INVALID_TWICE)
-  },
-  processCompleted() {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.PROCESS_COMPLETED)
-  },
-  wrongSideDocument() {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.WRONG_SIDE_DOCUMENT)
-  },
-  missingDocument() {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.MISSING_DOCUMENT)
-  },
-  externalLink({ href, canOpen }: { href: string; canOpen?: boolean }) {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.EXTERNAL_LINK, {
-      href: href.slice(0, STRING_VALUE_MAX_LENGTH),
-      canOpen: canOpen ? 'true' : 'false',
-    })
-  },
-  hasValidSession({
-    valid,
-    accessToken,
-    accessTokenExpiresAt,
-  }: {
-    valid: boolean
-    accessToken: string | undefined
-    accessTokenExpiresAt: string | undefined
-  }) {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.HAS_VALID_SESSION, {
-      valid,
-      accessToken,
-      accessTokenExpiresAt,
-    })
-  },
-  startCheckTokens() {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.START_CHECK_TOKENS)
-  },
-  endCheckTokens() {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.END_CHECK_TOKENS)
-  },
-  fileSizeExceeded() {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.FILE_SIZE_EXCEEDED)
-  },
-  permissionsBlocked() {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.PERMISSION_BLOCKED)
-  },
-  cameraUnavailable() {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.CALMERA_UNAVAILABLE)
-  },
-  getJouveToken({
-    appIsAllowedToRenewLicenceToken,
-    isLocalLicenceToken,
-    licenceToken,
-    licenceTokenExpirationTimestamp,
-    success,
-    accessToken,
-    accessTokenExpiresAt,
-  }: {
-    appIsAllowedToRenewLicenceToken: boolean
-    isLocalLicenceToken: boolean
-    licenceToken: string
-    licenceTokenExpirationTimestamp: string | null | undefined
-    success: boolean
-    accessToken: string | undefined
-    accessTokenExpiresAt: string | undefined
-  }) {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.GET_JOUVE_TOKEN, {
-      appIsAllowedToRenewLicenceToken,
-      isLocalLicenceToken,
-      licenceToken,
-      licenceTokenExpirationTimestamp,
-      success,
-      accessToken,
-      accessTokenExpiresAt,
-    })
-  },
-  getLicenceToken({
-    isError,
-    errorCode,
-    licenceToken,
-    licenceTokenExpirationTimestamp,
-  }: {
-    isError: boolean
-    errorCode: string | undefined
-    licenceToken: string | null | undefined
-    licenceTokenExpirationTimestamp: string | null | undefined
-  }) {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.GET_LICENCE_TOKEN, {
-      isError,
-      errorCode,
-      licenceToken,
-      licenceTokenExpirationTimestamp,
-    })
-  },
-  idDocumentAcquisitionType(type: 'Camera' | 'ImageLibrary') {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.ID_DOCUMENT_ACQUISITION_TYPE, { type })
-  },
-  startDmsTransmission() {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.START_DMS_TRANSMISSION)
-  },
-  takeIdCheckPicture() {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.TAKE_ID_CHECK_PICTURE)
-  },
-  confirmIdCheckPicture() {
-    analyticsProvider.logEvent(IdCheckAnalyticsEvent.CONFIRM_ID_CHECK_PICTURE)
-  },
 }

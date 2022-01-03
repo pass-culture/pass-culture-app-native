@@ -26,7 +26,6 @@ import { AutoImmediate, NextRestart } from 'libs/codepush/options'
 import { env } from 'libs/environment'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { activate } from 'libs/i18n'
-import { IdCheckContextProvider } from 'libs/idCheck/IdCheckContextProvider'
 import { eventMonitoring } from 'libs/monitoring'
 import { useStartBatchNotification } from 'libs/notifications'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
@@ -74,13 +73,11 @@ const App: FunctionComponent = function () {
                       <I18nProvider i18n={i18n}>
                         <SnackBarProvider>
                           <IdentityCheckContextProvider>
-                            <IdCheckContextProvider>
-                              <SplashScreenProvider>
-                                <ScreenErrorProvider>
-                                  <AppNavigationContainer />
-                                </ScreenErrorProvider>
-                              </SplashScreenProvider>
-                            </IdCheckContextProvider>
+                            <SplashScreenProvider>
+                              <ScreenErrorProvider>
+                                <AppNavigationContainer />
+                              </ScreenErrorProvider>
+                            </SplashScreenProvider>
                           </IdentityCheckContextProvider>
                         </SnackBarProvider>
                       </I18nProvider>

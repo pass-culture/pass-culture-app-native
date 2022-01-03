@@ -1,11 +1,9 @@
-import { initialRouteName as idCheckInitialRouteName } from '@pass-culture/id-check'
 import { useNavigation } from '@react-navigation/native'
 import React, { useState, createElement } from 'react'
 import { Alert, ScrollView } from 'react-native'
 import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
-import { useSignIn } from 'features/auth/api'
 import { CheatCodesButton } from 'features/cheatcodes/components/CheatCodesButton'
 import { useSomeVenueId } from 'features/cheatcodes/pages/Navigation/useSomeVenueId'
 import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
@@ -19,7 +17,6 @@ import { ScreenError } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, padding, Spacer } from 'ui/theme'
 
@@ -37,8 +34,6 @@ export function Navigation(): JSX.Element {
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
   const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)
   const distanceToEiffelTower = useDistance(EIFFEL_TOWER_COORDINATES)
-  const { showErrorSnackBar } = useSnackBarContext()
-  const signIn = useSignIn()
   const venueId = useSomeVenueId()
   const { refetch: errorAsyncQuery, isFetching } = useQuery(
     QueryKeys.ERROR_ASYNC,
@@ -53,25 +48,6 @@ export function Navigation(): JSX.Element {
     setAsyncTestReqCount((v) => ++v)
     if (asyncTestReqCount <= MAX_ASYNC_TEST_REQ_COUNT) {
       throw new AsyncError('NETWORK_REQUEST_FAILED', errorAsyncQuery)
-    }
-  }
-
-  async function onIdCheckV2() {
-    const email = 'pctest.jeune93.has-booked-some.v2@example.com'
-    const password = 'user@AZERTY123'
-    try {
-      const signInResponse = await signIn({ identifier: email, password })
-      if (signInResponse.isSuccess) {
-        navigate(idCheckInitialRouteName)
-      } else {
-        showErrorSnackBar({
-          message: `Échec du quick sign in pour l'utilisateur "${email}"`,
-          timeout: SNACK_BAR_TIME_OUT,
-        })
-      }
-    } catch (error) {
-      if (error instanceof Error)
-        showErrorSnackBar({ message: error.message, timeout: SNACK_BAR_TIME_OUT })
     }
   }
 
@@ -266,16 +242,7 @@ export function Navigation(): JSX.Element {
           />
         </Row>
         <Row half>
-          <NavigationButton title={`Id Check V2`} onPress={onIdCheckV2} />
-        </Row>
-        <Row half>
           <NavigationButton title={`PhoneValidation`} onPress={() => navigate('SetPhoneNumber')} />
-        </Row>
-        <Row half>
-          <NavigationButton
-            title={`Id Check V2 errors`}
-            onPress={() => navigate('NavigationIdCheckErrors')}
-          />
         </Row>
         <Row half>
           <NavigationButton
@@ -300,9 +267,6 @@ export function Navigation(): JSX.Element {
             title={`Offre inexistante`}
             onPress={() => navigate('Offer', { id: 0, from: 'search' })}
           />
-        </Row>
-        <Row half>
-          <NavigationButton title={`EduConnect`} onPress={() => navigate('EduConnect')} />
         </Row>
         <Row half>
           <NavigationButton

@@ -38,7 +38,6 @@ export interface Environment {
   FIREBASE_MESSAGINGSENDERID: string
   FIREBASE_PROJECTID: string
   FIREBASE_STORAGEBUCKET: string
-  ID_CHECK_API_URL: string
   IOS_APP_ID: string
   IOS_APP_STORE_ID: string
   PRIVACY_POLICY_LINK: string

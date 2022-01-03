@@ -20,7 +20,6 @@ import { AppWebHead } from 'libs/appWebHead'
 import { env } from 'libs/environment'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { activate } from 'libs/i18n'
-import { IdCheckContextProvider } from 'libs/idCheck/IdCheckContextProvider'
 import { eventMonitoring } from 'libs/monitoring'
 import { useStartBatchNotification } from 'libs/notifications'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
@@ -60,14 +59,12 @@ export function App() {
                         <I18nProvider i18n={i18n}>
                           <SnackBarProvider>
                             <IdentityCheckContextProvider>
-                              <IdCheckContextProvider>
-                                <AppWebHead />
-                                <ScreenErrorProvider>
-                                  <Suspense fallback={<LoadingPage />}>
-                                    <AppNavigationContainer />
-                                  </Suspense>
-                                </ScreenErrorProvider>
-                              </IdCheckContextProvider>
+                              <AppWebHead />
+                              <ScreenErrorProvider>
+                                <Suspense fallback={<LoadingPage />}>
+                                  <AppNavigationContainer />
+                                </Suspense>
+                              </ScreenErrorProvider>
                             </IdentityCheckContextProvider>
                           </SnackBarProvider>
                         </I18nProvider>

@@ -1,9 +1,4 @@
 import { t } from '@lingui/macro'
-import {
-  routes as idCheckRoutes,
-  initialRouteName as idCheckInitialRouteName,
-  withAsyncErrorBoundary as withIdCheckAsyncErrorBoundary,
-} from '@pass-culture/id-check'
 
 import { DeeplinksGenerator } from 'features/_marketingAndCommunication/pages/DeeplinksGenerator'
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
@@ -13,7 +8,6 @@ import { ResetPasswordExpiredLink } from 'features/auth/forgottenPassword/ResetP
 import { Login } from 'features/auth/login/Login'
 import { AccountCreated } from 'features/auth/signup/AccountCreated'
 import { AfterSignupEmailValidationBuffer } from 'features/auth/signup/AfterSignupEmailValidationBuffer'
-import { IdCheckV2 } from 'features/auth/signup/IdCheckV2'
 import { PhoneValidationTooManyAttempts } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts'
 import { PhoneValidationTooManySMSSent } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent'
 import { SetPhoneNumber } from 'features/auth/signup/PhoneValidation/SetPhoneNumber'
@@ -32,15 +26,13 @@ import { AppComponents } from 'features/cheatcodes/pages/AppComponents/AppCompon
 import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes/CheatCodes'
 import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
-import { NavigationIdCheckErrors } from 'features/cheatcodes/pages/NavigationIdCheckErrors'
 import { NavigationNotScreensPages } from 'features/cheatcodes/pages/NavigationNotScreensPages'
 import { DeeplinkImporter } from 'features/deeplinks/pages/DeeplinkImporter'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
+import { withAsyncErrorBoundary } from 'features/errors'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
-import { withEduConnectErrorBoundary } from 'features/identityCheck/errors/eduConnect/EduConnectErrorBoundary'
-import { EduConnectErrors } from 'features/identityCheck/pages/errors/EduConnectErrors'
 import { PageNotFound } from 'features/navigation/PageNotFound'
 import { identityCheckRoutes } from 'features/navigation/RootNavigator/identityCheckRoutes'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
@@ -67,23 +59,6 @@ import { Venue } from 'features/venue'
 import { Route } from './types'
 
 export const routes: Route[] = [
-  // This mapping replaces the components from id-check by components defined inside this repo
-  // in order to progressively deprecate @pass-culture/id-check
-  ...([
-    ...idCheckRoutes.filter(
-      (idCheckRoute) =>
-        ![idCheckInitialRouteName, 'Validation', 'EduConnectErrorsPage'].includes(idCheckRoute.name)
-    ),
-    { name: idCheckInitialRouteName, component: IdCheckV2, path: 'idcheck' },
-    // This route is hardcoded in the backend
-    // https://github.com/pass-culture/pass-culture-main/blob/master/api/src/pcapi/routes/saml/educonnect.py#L28
-    {
-      name: 'EduConnectErrorsPage',
-      component: EduConnectErrors,
-      hoc: withEduConnectErrorBoundary,
-      path: 'idcheck/educonnect/erreur',
-    },
-  ] as Route[]),
   ...identityCheckRoutes,
   {
     name: 'Offer',
@@ -256,15 +231,9 @@ export const routes: Route[] = [
     path: 'cheat-navigation',
   },
   {
-    name: 'NavigationIdCheckErrors',
-    component: NavigationIdCheckErrors,
-    hoc: withIdCheckAsyncErrorBoundary,
-    path: 'cheat-navigation-id-check-errors',
-  },
-  {
     name: 'NavigationNotScreensPages',
     component: NavigationNotScreensPages,
-    hoc: withIdCheckAsyncErrorBoundary,
+    hoc: withAsyncErrorBoundary,
     path: 'cheat-navigation-not-screens-pages',
   },
   {

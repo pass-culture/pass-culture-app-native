@@ -12,7 +12,11 @@ interface IIdentityCheckContext extends IdentityCheckState {
 
 const IdentityCheckContext = React.createContext<IIdentityCheckContext | null>(null)
 
-export const IdentityCheckContextProvider = ({ children }: { children: JSX.Element }) => {
+export const IdentityCheckContextProvider = ({
+  children,
+}: {
+  children: JSX.Element | JSX.Element[]
+}) => {
   const [identityCheckState, dispatch] = useReducer(identityCheckReducer, initialIdentityCheckState)
 
   const value = useMemo(() => ({ ...identityCheckState, dispatch }), [identityCheckState, dispatch])
