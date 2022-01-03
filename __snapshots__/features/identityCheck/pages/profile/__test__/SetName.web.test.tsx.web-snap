@@ -58,7 +58,7 @@ Object {
             >
               <div
                 class="css-view-1dbjc4n"
-                style="max-height: 100%; max-width: 500px; padding-bottom: 24px; width: 100%;"
+                style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -251,7 +251,7 @@ Object {
           >
             <div
               class="css-view-1dbjc4n"
-              style="max-height: 100%; max-width: 500px; padding-bottom: 24px; width: 100%;"
+              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
             >
               <div
                 class="css-view-1dbjc4n"
