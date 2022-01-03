@@ -346,6 +346,7 @@ Object {
                       />
                       <span
                         class="css-text-901oao css-textHasAncestor-16my406"
+                        style="white-space: nowrap;"
                       >
                         <div
                           class="css-view-1dbjc4n"
@@ -855,6 +856,7 @@ Object {
                     />
                     <span
                       class="css-text-901oao css-textHasAncestor-16my406"
+                      style="white-space: nowrap;"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -1808,6 +1810,7 @@ Object {
                     />
                     <span
                       class="css-text-901oao css-textHasAncestor-16my406"
+                      style="white-space: nowrap;"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -2317,6 +2320,7 @@ Object {
                   />
                   <span
                     class="css-text-901oao css-textHasAncestor-16my406"
+                    style="white-space: nowrap;"
                   >
                     <div
                       class="css-view-1dbjc4n"
