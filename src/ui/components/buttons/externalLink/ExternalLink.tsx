@@ -14,9 +14,7 @@ interface Props {
 }
 
 export const ExternalLink: React.FC<Props> = ({ url, text, color, testID }) => {
-  text = text || url
-
-  const [firstWord, remainingWords] = extractExternalLinkParts(text)
+  const [firstWord, remainingWords] = extractExternalLinkParts(text || url)
 
   return (
     <Typo.ButtonText color={color} onPress={() => openUrl(url)} testID={testID}>
