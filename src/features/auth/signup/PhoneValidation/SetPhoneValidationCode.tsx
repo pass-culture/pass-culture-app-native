@@ -268,16 +268,16 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
           <Separator color={ColorsEnum.GREY_MEDIUM} />
           <Spacer.Column numberOfSpaces={4} />
           <HelpRow>
-            <Typo.Caption color={ColorsEnum.GREY_DARK}>
-              {t`Si tu n’arrives pas à récupérer ton code tu peux`}
-              <Spacer.Row numberOfSpaces={1} />
+            <HelpBlock color={ColorsEnum.GREY_DARK}>
+              {t`Si tu n’arrives pas à valider ton code tu peux`}
+              {appContentWidth <= 320 ? <Break /> : <Spacer.Row numberOfSpaces={1} />}
               <ButtonQuaternary
                 title={t`Contacter le support`}
                 icon={Email}
                 onPress={contactSupport.forPhoneNumberConfirmation}
                 inline
               />
-            </Typo.Caption>
+            </HelpBlock>
           </HelpRow>
         </ModalContent>
       </BottomContentPage>
@@ -338,4 +338,10 @@ const HelpRow = styled.View({
 
 const RetryButton = styled(ButtonTertiary)({
   height: '100%',
+})
+
+const HelpBlock = styled(Typo.Caption)({
+  display: 'flex',
+  alignItems: 'center',
+  flexWrap: 'wrap',
 })
