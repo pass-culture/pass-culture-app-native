@@ -6,7 +6,7 @@ import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 export type ParsedDescription = Array<string | React.ReactNode>
 
 const externalUrlRegex = new RegExp(
-  /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/,
+  /((?<=^|\s)|https?:\/\/)[a-z]([-a-z0-9@:%._+~#=]*[a-z0-9])?\.[a-z0-9]{1,6}([/?#]\S*)?(?=\s|$)/,
   'gi'
 )
 
@@ -31,17 +31,25 @@ export const customFindUrlChunks = ({ textToHighlight }: FindChunksArgs): Chunk[
   return chunks
 }
 
+const normalizeURL = (partialURL: string): string => {
+  if (partialURL.startsWith('http://')) return partialURL
+  if (partialURL.startsWith('https://')) return partialURL
+  return `http://${partialURL}`
+}
+
 export const highlightLinks = (description: string): ParsedDescription => {
   const chunks = findAll({
     searchWords: [],
     findChunks: customFindUrlChunks,
     textToHighlight: description,
   })
-  return chunks.map(({ start, end, highlight }, index) =>
-    highlight ? (
-      <ExternalLink key={`external-link-${index}`} url={description.slice(start, end)} />
+
+  return chunks.map(({ start, end, highlight }, index) => {
+    const url = normalizeURL(description.slice(start, end))
+    return highlight ? (
+      <ExternalLink key={`external-link-${index}`} url={url} />
     ) : (
       description.slice(start, end)
     )
-  )
+  })
 }

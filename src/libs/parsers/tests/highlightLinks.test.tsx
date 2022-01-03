@@ -9,7 +9,7 @@ const description1WithoutUrl = `PRESSE / ILS EN PARLENT !
 « Irrésistible ! » Elle
 « Intelligent et revigorant » Le Parisien
 « Hilarant » Vanity Fair 
-Voir plus de critiques en suivant le lien suivant : `
+Voir plus de critiques en suivant le lien suivant :`
 
 const description1 = description1WithoutUrl + 'https://fauxliencritique.com/'
 
@@ -40,13 +40,118 @@ describe('customFindUrlChunks', () => {
 })
 
 describe('highlightLinks', () => {
-  it('transforms a description into an array of strings or <ExternalLink/>', () => {
-    const parsedDescription = highlightLinks(description1)
-    expect(parsedDescription.length).toBe(2)
-    expect(parsedDescription[0]).toEqual(description1WithoutUrl)
-    expect(typeof parsedDescription[1]).toBe('object')
-    expect(JSON.stringify(parsedDescription[1])).toBe(
-      JSON.stringify(<ExternalLink key="external-link-1" url="https://fauxliencritique.com/" />)
-    )
+  describe('transforms a description into an array of strings or <ExternalLink/>', () => {
+    describe('composition', () => {
+      describe('protocol', () => {
+        it('without protocol', () => {
+          const parsedDescription = highlightLinks('perdu.com')
+
+          expect(parsedDescription).toEqual([
+            <ExternalLink key="external-link-0" url="http://perdu.com" />,
+          ])
+        })
+
+        it('with http protocol', () => {
+          const parsedDescription = highlightLinks('http://penofchaos.com/')
+
+          expect(parsedDescription).toEqual([
+            <ExternalLink key="external-link-0" url="http://penofchaos.com/" />,
+          ])
+        })
+
+        it('with https protocol', () => {
+          const parsedDescription = highlightLinks('https://kaamelott.com')
+
+          expect(parsedDescription).toEqual([
+            <ExternalLink key="external-link-0" url="https://kaamelott.com" />,
+          ])
+        })
+      })
+
+      it('with subdomain', () => {
+        const parsedDescription = highlightLinks('www.penofchaos.com')
+
+        expect(parsedDescription).toEqual([
+          <ExternalLink key="external-link-0" url="http://www.penofchaos.com" />,
+        ])
+      })
+
+      it('with path', () => {
+        const parsedDescription = highlightLinks('httpstat.us/418')
+
+        expect(parsedDescription).toEqual([
+          <ExternalLink key="external-link-0" url="http://httpstat.us/418" />,
+        ])
+      })
+
+      it('with query params', () => {
+        const parsedDescription = highlightLinks('httpstat.us/200?sleep=500')
+
+        expect(parsedDescription).toEqual([
+          <ExternalLink key="external-link-0" url="http://httpstat.us/200?sleep=500" />,
+        ])
+      })
+
+      it('with hash', () => {
+        const parsedDescription = highlightLinks('httpstat.us#anchor')
+
+        expect(parsedDescription).toEqual([
+          <ExternalLink key="external-link-0" url="http://httpstat.us#anchor" />,
+        ])
+      })
+    })
+
+    describe('position', () => {
+      describe('without protocol', () => {
+        it('must be preceded by space', () => {
+          const parsedDescription = highlightLinks(
+            `${description1WithoutUrl} www.penofchaos.com/warham/donjon.htm`
+          )
+
+          expect(parsedDescription).toEqual([
+            `${description1WithoutUrl} `,
+            <ExternalLink
+              key="external-link-1"
+              url="http://www.penofchaos.com/warham/donjon.htm"
+            />,
+          ])
+        })
+
+        it('is not recognized without a previous space', () => {
+          const description = `${description1WithoutUrl}www.penofchaos.com/warham/donjon.htm`
+
+          const parsedDescription = highlightLinks(description)
+
+          expect(parsedDescription).toEqual([description])
+        })
+      })
+
+      describe('with protocol', () => {
+        it('can begin without space', () => {
+          const parsedDescription = highlightLinks(
+            `${description1WithoutUrl}http://www.penofchaos.com/warham/donjon.htm`
+          )
+
+          expect(parsedDescription).toEqual([
+            description1WithoutUrl,
+            <ExternalLink
+              key="external-link-1"
+              url="http://www.penofchaos.com/warham/donjon.htm"
+            />,
+          ])
+        })
+      })
+
+      it('must be followed by space', () => {
+        const parsedDescription = highlightLinks(
+          `www.penofchaos.com/warham/donjon.htm ${description1WithoutUrl}`
+        )
+
+        expect(parsedDescription).toEqual([
+          <ExternalLink key="external-link-0" url="http://www.penofchaos.com/warham/donjon.htm" />,
+          ` ${description1WithoutUrl}`,
+        ])
+      })
+    })
   })
 })
