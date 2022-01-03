@@ -255,7 +255,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
           <HelpRow>
             <Typo.Body>{t`Tu n'as pas reçu le sms\u00a0?`}</Typo.Body>
             {/* force button to wrap on small screen, otherwise timer will "unwrap" when timer is under 10 seconds */}
-            {appContentWidth <= 320 ? <Break /> : null}
+            {appContentWidth <= 320 ? <Break /> : <Spacer.Row numberOfSpaces={1} />}
             <RetryButton
               title={getRetryButtonTitle()}
               testId={'Réessayer'}
