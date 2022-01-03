@@ -4,7 +4,6 @@ import React, { useEffect } from 'react'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
-import { getSpacing } from 'ui/theme'
 
 export const IdentityCheckEnd = () => {
   const { navigateToNextScreen } = useIdentityCheckNavigation()
@@ -15,10 +14,6 @@ export const IdentityCheckEnd = () => {
   }, [])
 
   return (
-    <GenericInfoPage
-      title={t`Ta pièce d’identité a bien été transmise\u00a0!`}
-      icon={EmailSent}
-      iconSize={getSpacing(42)}
-    />
+    <GenericInfoPage title={t`Ta pièce d’identité a bien été transmise\u00a0!`} icon={EmailSent} />
   )
 }

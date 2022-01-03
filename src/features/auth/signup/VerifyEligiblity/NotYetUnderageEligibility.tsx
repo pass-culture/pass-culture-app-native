@@ -9,16 +9,13 @@ import { formatToReadableFrenchDate } from 'libs/dates'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { Calendar } from 'ui/svg/icons/Calendar'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 type Props = StackScreenProps<RootStackParamList, 'NotYetUnderageEligibility'>
 
 export const NotYetUnderageEligibility: FunctionComponent<Props> = (props) => {
   return (
-    <GenericInfoPage
-      title={t`C'est pour bientôt\u00a0! `}
-      icon={Calendar}
-      iconSize={getSpacing(30)}>
+    <GenericInfoPage title={t`C'est pour bientôt\u00a0! `} icon={Calendar}>
       <StyledBody>
         {t({
           id: 'reviens a partir du',
@@ -29,7 +26,7 @@ export const NotYetUnderageEligibility: FunctionComponent<Props> = (props) => {
             'Reviens à partir du {formatedDate} pour poursuivre ton inscription et bénéficier des offres du pass Culture.',
         })}
       </StyledBody>
-      <Spacer.Column numberOfSpaces={30} />
+      <Spacer.Column numberOfSpaces={24} />
       <ButtonPrimaryWhite title={t`Retourner à l'accueil`} onPress={navigateToHome} />
     </GenericInfoPage>
   )

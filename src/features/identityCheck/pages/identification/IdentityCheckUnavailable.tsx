@@ -14,7 +14,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 export function IdentityCheckUnavailable() {
   const { params } = useRoute<UseRouteType<'IdentityCheckUnavailable'>>()
@@ -26,9 +26,7 @@ export function IdentityCheckUnavailable() {
     showModal()
   }
   return (
-    <GenericInfoPage
-      title={t`Victime de notre succès\u00a0!`}
-      icon={({ color }) => <HappyFace size={getSpacing(30)} color={color} />}>
+    <GenericInfoPage title={t`Victime de notre succès\u00a0!`} icon={HappyFace}>
       <StyledBody>{t`Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés.`}</StyledBody>
       <Spacer.Column numberOfSpaces={5} />
       <StyledBody>{t`Nous reviendrons vers toi dès que le service sera rétabli.`}</StyledBody>

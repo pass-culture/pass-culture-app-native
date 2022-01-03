@@ -13,7 +13,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 export function BookingConfirmation() {
   const { params } = useRoute<UseRouteType<'BookingConfirmation'>>()
@@ -46,10 +46,7 @@ export function BookingConfirmation() {
   useShowReview()
 
   return (
-    <GenericInfoPage
-      title={t`Réservation confirmée\u00a0!`}
-      icon={TicketBooked}
-      iconSize={getSpacing(65)}>
+    <GenericInfoPage title={t`Réservation confirmée\u00a0!`} icon={TicketBooked}>
       <StyledBody>
         {t({
           id: 'credit left to spend',

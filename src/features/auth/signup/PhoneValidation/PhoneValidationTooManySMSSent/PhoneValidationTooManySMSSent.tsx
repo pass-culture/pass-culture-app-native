@@ -14,8 +14,7 @@ export function PhoneValidationTooManySMSSent() {
       <StyledBody>
         {t`Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures\u00a0!`}
       </StyledBody>
-
-      <Spacer.Column numberOfSpaces={22} />
+      <Spacer.Column numberOfSpaces={18} />
       <ButtonPrimaryWhite title={t`Retourner à l'accueil`} onPress={navigateToHome} />
     </GenericInfoPage>
   )

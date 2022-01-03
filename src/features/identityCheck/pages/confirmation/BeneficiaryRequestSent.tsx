@@ -11,7 +11,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 export function BeneficiaryRequestSent() {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -42,7 +42,7 @@ export function BeneficiaryRequestSent() {
   const message = inTheMeantime.length ? `${body} ${inTheMeantime}` : body
 
   return (
-    <GenericInfoPage title={t`Demande envoyée\u00a0!`} icon={RequestSent} iconSize={getSpacing(42)}>
+    <GenericInfoPage title={t`Demande envoyée\u00a0!`} icon={RequestSent}>
       <StyledBody>{t`Nous étudions ton dossier...`}</StyledBody>
       <StyledBody>{message}</StyledBody>
       <Spacer.Column numberOfSpaces={15} />
