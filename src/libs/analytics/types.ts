@@ -1,4 +1,4 @@
-import { AnalyticsEvent, IdCheckAnalyticsEvent } from 'libs/analytics/events'
+import { AnalyticsEvent } from 'libs/analytics/events'
 
 type AnalyticsParam = Record<string, unknown>
 
@@ -11,8 +11,5 @@ export interface AnalyticsProvider {
   setUserId: (userId: number) => Promise<void> | void
   logScreenView: (screenName: string) => Promise<void> | void
   logLogin: ({ method }: { method: LoginRoutineMethod }) => Promise<void> | void
-  logEvent: <P extends AnalyticsParam>(
-    name: AnalyticsEvent | IdCheckAnalyticsEvent,
-    params?: P
-  ) => Promise<void> | void
+  logEvent: <P extends AnalyticsParam>(name: AnalyticsEvent, params?: P) => Promise<void> | void
 }

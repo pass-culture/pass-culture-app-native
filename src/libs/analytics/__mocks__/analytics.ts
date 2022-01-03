@@ -1,7 +1,4 @@
-import {
-  analytics as actualAnalytics,
-  idCheckAnalytics as actualIdCheckAnalytics,
-} from '../analytics'
+import { analytics as actualAnalytics } from '../analytics'
 
 export const analytics: typeof actualAnalytics = {
   disableCollection: jest.fn(),
@@ -50,7 +47,6 @@ export const analytics: typeof actualAnalytics = {
   logHasRefusedCookie: jest.fn(),
   logHasSkippedTutorial: jest.fn(),
   logHelpCenterContactSignupConfirmationEmailSent: jest.fn(),
-  logIdCheck: jest.fn(),
   logIdentityCheckStep: jest.fn(),
   logIdentityCheckAbort: jest.fn(),
   logIdentityCheckSuccess: jest.fn(),
@@ -94,30 +90,4 @@ export const analytics: typeof actualAnalytics = {
   logSaveNewMail: jest.fn(),
   useInit: jest.fn(),
   logErrorSavingNewEmail: jest.fn(),
-}
-
-export const idCheckAnalytics: typeof actualIdCheckAnalytics = {
-  cameraUnavailable: jest.fn(),
-  cancelSignUp: jest.fn(),
-  endCheckTokens: jest.fn(),
-  externalLink: jest.fn(),
-  fileSizeExceeded: jest.fn(),
-  getJouveToken: jest.fn(),
-  getLicenceToken: jest.fn(),
-  hasValidSession: jest.fn(),
-  idDocumentAcquisitionType: jest.fn(),
-  identityError: jest.fn(),
-  idValid: jest.fn(),
-  invalidAge: jest.fn(),
-  invalidDate: jest.fn(),
-  invalidDocument: jest.fn(),
-  invalidTwice: jest.fn(),
-  missingDocument: jest.fn(),
-  permissionsBlocked: jest.fn(),
-  processCompleted: jest.fn(),
-  startCheckTokens: jest.fn(),
-  wrongSideDocument: jest.fn(),
-  startDmsTransmission: jest.fn(),
-  takeIdCheckPicture: jest.fn(),
-  confirmIdCheckPicture: jest.fn(),
 }
