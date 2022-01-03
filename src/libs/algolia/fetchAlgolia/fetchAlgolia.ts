@@ -21,7 +21,6 @@ import { buildNumericFilters } from '../fetchAlgolia/fetchAlgolia.numericFilters
 // see SearchHit
 export const attributesToRetrieve = [
   'offer.dates',
-  'offer.description',
   'offer.isDigital',
   'offer.isDuo',
   'offer.isEducational',
@@ -29,7 +28,6 @@ export const attributesToRetrieve = [
   'offer.prices',
   'offer.subcategoryId',
   'offer.thumbUrl',
-  'offer.isForbiddenToUnderage',
   'objectID',
   '_geoloc',
 ]

@@ -21,8 +21,8 @@ export interface SearchHit {
     subcategoryId: SubcategoryIdEnum
     thumbUrl?: AlgoliaHit['offer']['thumbUrl']
   }
-  _geoloc: AlgoliaHit['_geoloc']
   objectID: AlgoliaHit['objectID']
+  _geoloc: AlgoliaHit['_geoloc']
 }
 
 export type Geoloc = AlgoliaGeoloc
