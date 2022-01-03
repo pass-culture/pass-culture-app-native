@@ -6,11 +6,9 @@ import { NextSubscriptionStepResponse, SubscriptionStep, MaintenancePageType } f
 import { UserProfiling } from 'features/auth/signup/UserProfiling'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { useSetIdCheckNavigationContext } from 'features/navigation/useSetIdCheckNavigationContext'
 import { UserProfilingError } from 'libs/monitoring/errors'
 
 export const useBeneficiaryValidationNavigation = (setError: (error: Error) => void) => {
-  useSetIdCheckNavigationContext()
   const navigateToNextStep = useNavigateToNextSubscriptionStep(setError)
 
   const navigateToNextBeneficiaryValidationStep = useCallback(() => {

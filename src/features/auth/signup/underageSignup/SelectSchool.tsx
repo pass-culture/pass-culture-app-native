@@ -7,7 +7,6 @@ import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBene
 import { withEduConnectErrorBoundary } from 'features/identityCheck/errors/eduConnect/EduConnectErrorBoundary'
 import { EduConnectError } from 'features/identityCheck/errors/eduConnect/types'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData'
-import { useSetIdCheckNavigationContext } from 'features/navigation/useSetIdCheckNavigationContext'
 import { analytics } from 'libs/analytics'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -26,7 +25,6 @@ export const SelectSchool = withEduConnectErrorBoundary(() => {
   })
   const [error, setError] = useState<Error | null>(null)
   const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation(setError)
-  useSetIdCheckNavigationContext()
 
   const renderItem = (item: School, academy: string) => {
     return (

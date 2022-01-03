@@ -48,7 +48,7 @@ describe('useBeneficiaryValidationNavigation', () => {
     })
   })
 
-  it('should navigate to IdCheck if nextStep is IdentityCheck', async () => {
+  it('should navigate to stepper if nextStep is IdentityCheck', async () => {
     mockNextStepRequest({
       allowedIdentityCheckMethods,
       nextSubscriptionStep: SubscriptionStep['identity-check'],

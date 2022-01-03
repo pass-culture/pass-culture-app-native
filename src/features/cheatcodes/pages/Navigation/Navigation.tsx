@@ -246,12 +246,6 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
-            title={`Id Check V2 errors`}
-            onPress={() => navigate('NavigationIdCheckErrors')}
-          />
-        </Row>
-        <Row half>
-          <NavigationButton
             title={`Pages non écrans`}
             onPress={() => navigate('NavigationNotScreensPages')}
           />
@@ -273,9 +267,6 @@ export function Navigation(): JSX.Element {
             title={`Offre inexistante`}
             onPress={() => navigate('Offer', { id: 0, from: 'search' })}
           />
-        </Row>
-        <Row half>
-          <NavigationButton title={`EduConnect`} onPress={() => navigate('EduConnect')} />
         </Row>
         <Row half>
           <NavigationButton
