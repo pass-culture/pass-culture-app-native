@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 set -e
 
-docker run --rm -v "${PWD}:/local" "swaggerapi/swagger-codegen-cli-v3:${SWAGGER_CODEGEN_CLI_VERSION:-'latest'}" generate \
+docker run \
+    --network="host" \
+    --rm \
+    --volume "${PWD}:/local" \
+    "swaggerapi/swagger-codegen-cli-v3:${SWAGGER_CODEGEN_CLI_VERSION:-'latest'}" generate \
         -i https://backend.testing.passculture.team/native/v1/openapi.json `# schema location` \
         -l typescript-fetch `# client type` \
         -c /local/swagger_codegen/swagger_codegen_config.json `# swagger codegen config` \
