@@ -9,7 +9,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
-export const DMSInformation = () => {
+export const DMSInformationWeb = () => {
   const { visible, showModal, hideModal } = useModal(false)
 
   const showDMSModal = () => {

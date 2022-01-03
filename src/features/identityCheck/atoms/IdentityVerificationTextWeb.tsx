@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-export const IdentityVerificationText = () => (
+export const IdentityVerificationTextWeb = () => (
   <Container>
     <Title>{t`Vérifie ton identité sur ton smartphone`}</Title>
     <Spacer.Column numberOfSpaces={6} />
@@ -20,8 +20,6 @@ export const IdentityVerificationText = () => (
 
 const Container = styled.View({ marginHorizontal: getSpacing(2) })
 const Title = styled(Typo.Title4)({ textAlign: 'center' })
-const Body = styled(Typo.Body).attrs({
-  color: ColorsEnum.GREY_DARK,
-})({
+const Body = styled(Typo.Body).attrs({ color: ColorsEnum.GREY_DARK })({
   textAlign: 'center',
 })

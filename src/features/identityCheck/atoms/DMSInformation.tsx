@@ -27,6 +27,7 @@ export const DMSInformation = () => {
           title={t`Transmettre un document`}
           onPress={showDMSModal}
           icon={Plus}
+          justifyContent="flex-start"
         />
       </Background>
       <DMSModal visible={visible} hideModal={hideModal} />
