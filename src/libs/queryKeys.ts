@@ -8,7 +8,6 @@ export enum QueryKeys {
   ERROR_ASYNC = 'errorAsync',
   FAVORITES = 'favorites',
   FAVORITES_COUNT = 'favoritesCount',
-  FIRESTORE_UBBLE_LOAD = 'firestoreUbbleLoad',
   HOMEPAGE_MODULES = 'homepageModules',
   NEXT_SUBSCRIPTION_STEP = 'nextSubscriptionStep',
   OFFER = 'offer',
