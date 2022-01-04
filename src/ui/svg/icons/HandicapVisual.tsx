@@ -7,7 +7,7 @@ import { IconInterface } from './types'
 
 export const HandicapVisual = ({ color = ColorsEnum.BLACK, size = 32, testID }: IconInterface) => {
   return (
-    <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID} fill={color}>
+    <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID} fill={color} aria-hidden>
       <Path
         fillRule="evenodd"
         clipRule="evenodd"
