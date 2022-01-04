@@ -67,8 +67,8 @@ exports[`NoContentError should render correctly 1`] = `
       }
     />
     <View
-      height={156}
-      width={200}
+      height={109.2}
+      width={140}
     >
       <Text>
         undefined-SVG-Mock
