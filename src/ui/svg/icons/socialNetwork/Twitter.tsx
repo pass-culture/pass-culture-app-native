@@ -10,7 +10,7 @@ export const Twitter: React.FunctionComponent<IconInterface> = ({
   color: _color = ColorsEnum.BLACK,
   testID,
 }) => (
-  <Svg width={size} height={size} viewBox="0 0 24 24" testID={testID}>
+  <Svg width={size} height={size} viewBox="0 0 24 24" testID={testID} aria-hidden>
     <G fill="none" fillRule="evenodd">
       <G fillRule="nonzero">
         <G>

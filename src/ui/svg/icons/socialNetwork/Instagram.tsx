@@ -14,7 +14,7 @@ export const Instagram = ({
   testID,
 }: IconInterface) => {
   return (
-    <Svg width={size} height={size} testID={testID} viewBox="0 0 24 24">
+    <Svg width={size} height={size} testID={testID} viewBox="0 0 24 24" aria-hidden>
       <Defs>
         <RadialGradient
           id={RADIAL_GRADIENT_1_ID}

@@ -10,7 +10,7 @@ export const Bell: React.FunctionComponent<IconInterface> = ({
   color = ColorsEnum.BLACK,
   testID,
 }) => (
-  <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID}>
+  <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID} aria-hidden>
     <Path
       fill={color}
       fillRule="evenodd"
