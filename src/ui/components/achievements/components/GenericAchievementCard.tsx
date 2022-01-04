@@ -140,13 +140,6 @@ Those props are provided by the GenericAchievementCard and must be passed down t
           </FlexContainer>
         )}
       </BottomButtonsContainer>
-      <Spacer.Flex
-        flex={
-          !props.lastIndex
-            ? grid({ default: 1, sm: 0.5 }, 'height')
-            : grid({ default: 1.5, sm: 2 }, 'height')
-        }
-      />
     </GenericCardContainer>
   )
 }
@@ -159,6 +152,7 @@ const FlexContainer = styled.View<{ marginTop: number }>((props) => ({
 const BottomButtonsContainer = styled.View({
   flex: 1,
   justifyContent: 'flex-end',
+  paddingBottom: getSpacing(10),
 })
 
 const InvisibleButtonHeight = styled.View({
