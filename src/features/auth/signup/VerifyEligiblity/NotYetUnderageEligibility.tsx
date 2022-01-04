@@ -23,9 +23,7 @@ export const NotYetUnderageEligibility: FunctionComponent<Props> = (props) => {
         {t({
           id: 'reviens a partir du',
           values: {
-            formatedDate: formatToReadableFrenchDate(
-              new Date(props.route.params.eligibilityStartDatetime)
-            ),
+            formatedDate: formatToReadableFrenchDate(props.route.params.eligibilityStartDatetime),
           },
           message:
             'Reviens à partir du {formatedDate} pour poursuivre ton inscription et bénéficier des offres du pass Culture.',

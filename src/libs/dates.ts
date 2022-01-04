@@ -60,9 +60,12 @@ export const formatToSlashedFrenchDate = (ISODate: string) => {
   return `${day}/${month}/${year}`
 }
 
-export const formatToReadableFrenchDate = (date: Date) => {
-  const monthOrder = date.getMonth()
-  const day = ('0' + date.getDate()).slice(-2)
+export const formatToReadableFrenchDate = (date: Date | string) => {
+  const formattedDate = new Date(date)
+  // @ts-ignore isNan works with empty dates
+  if (isNaN(formattedDate)) return ''
+  const monthOrder = formattedDate.getMonth()
+  const day = ('0' + formattedDate.getDate()).slice(-2)
   const month = monthNames[monthOrder].toLowerCase()
   return `${day} ${month}`
 }
