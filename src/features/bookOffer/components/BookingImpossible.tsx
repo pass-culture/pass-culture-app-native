@@ -52,10 +52,11 @@ export const BookingImpossible: React.FC = () => {
   }
 
   const navigateToOffer = () => {
+    dismissModal()
+
     const from = 'bookingimpossible'
     analytics.logConsultOffer({ offerId, from })
     navigate('Offer', { id: offerId, from })
-    dismissModal()
   }
 
   return (
