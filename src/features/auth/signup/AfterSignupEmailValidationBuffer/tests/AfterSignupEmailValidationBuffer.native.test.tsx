@@ -156,7 +156,7 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
 
       await waitFor(() => {
         expect(navigate).toHaveBeenCalledWith('NotYetUnderageEligibility', {
-          eligibilityStartDatetime: 'Wed Dec 01 2021 00:00:00 GMT+0000 (GMT)',
+          eligibilityStartDatetime: '2021-12-01T00:00:00Z',
         })
       })
     })

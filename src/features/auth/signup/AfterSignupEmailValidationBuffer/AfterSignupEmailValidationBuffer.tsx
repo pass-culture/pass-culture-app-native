@@ -61,11 +61,9 @@ export function AfterSignupEmailValidationBuffer() {
         delayedNavigate(nextScreen)
         return
       }
-      const eligibilityStartDatetime =
-        user.eligibilityStartDatetime && new Date(user.eligibilityStartDatetime)
-      if (eligibilityStartDatetime && eligibilityStartDatetime >= new Date()) {
+      if (user.eligibilityStartDatetime && new Date(user.eligibilityStartDatetime) >= new Date()) {
         delayedNavigate('NotYetUnderageEligibility', {
-          eligibilityStartDatetime: eligibilityStartDatetime.toString(),
+          eligibilityStartDatetime: user.eligibilityStartDatetime.toString(),
         })
         return
       }
