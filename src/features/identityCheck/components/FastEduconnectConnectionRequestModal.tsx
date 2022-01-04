@@ -9,6 +9,7 @@ import { openUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
+import { useUbbleETAMessage } from 'libs/firestore/ubbleETAMessage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -30,6 +31,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
   const { colors } = useTheme()
   const { dispatch } = useIdentityCheckContext()
   const { navigate } = useNavigation<UseNavigationType>()
+  const { data: ubbleETAMessage } = useUbbleETAMessage()
 
   const onModalRightIconPress = () => {
     analytics.logQuitAuthenticationMethodSelection()
@@ -79,7 +81,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
         title={t`Identification manuelle`}
         onPress={onPressManualIdentification}
       />
-      <DurationInfoText color={colors.greyDark}>{t`Environ 3 heures`}</DurationInfoText>
+      <DurationInfoText color={colors.greyDark}>{ubbleETAMessage}</DurationInfoText>
     </AppModal>
   )
 }

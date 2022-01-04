@@ -2,7 +2,7 @@
 const onSnapshot = jest.fn().mockReturnValue(() => {})
 const get = jest.fn().mockResolvedValue({
   data: jest.fn(() => ({
-    load_percent: 34,
+    etaMessage: 'Environ 1 heure',
   })),
 })
 const doc = jest.fn().mockReturnValue({ onSnapshot, get })
