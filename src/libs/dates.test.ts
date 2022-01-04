@@ -19,6 +19,11 @@ describe('formatToReadableFrenchDate()', () => {
     expect(formatToReadableFrenchDate(new Date('2019-12-01T00:00:00Z'))).toEqual('01 décembre')
     expect(formatToReadableFrenchDate(new Date('2019-03-12T00:00:00Z'))).toEqual('12 mars')
   })
+  it('should return formated translated and readable date when string provided', () => {
+    expect(formatToReadableFrenchDate('2019-12-01T00:00:00Z')).toEqual('01 décembre')
+    expect(formatToReadableFrenchDate('2019-03-12T00:00:00Z')).toEqual('12 mars')
+    expect(formatToReadableFrenchDate('no a date')).toEqual('')
+  })
 })
 
 describe('isTimestampExpired()', () => {

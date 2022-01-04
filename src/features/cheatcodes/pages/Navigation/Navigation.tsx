@@ -146,7 +146,7 @@ export function Navigation(): JSX.Element {
             title={"C'est pour bientôt"}
             onPress={() =>
               navigate('NotYetUnderageEligibility', {
-                eligibilityStartDatetime: new Date('2019-12-01T00:00:00Z'),
+                eligibilityStartDatetime: new Date('2019-12-01T00:00:00Z').toString(),
               })
             }
           />
