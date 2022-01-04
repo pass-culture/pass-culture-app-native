@@ -14,10 +14,9 @@ describe('Support services', () => {
   Object.keys(contactSupport).forEach((key) => {
     it(`${key} should open external url for contacting support with analytics`, async () => {
       const method = key as keyof typeof contactSupport
-      const email = 'test@test.com'
       mockedOpenUrl.mockResolvedValueOnce(undefined)
 
-      contactSupport[method](email)
+      contactSupport[method]()
       await waitForExpect(() => {
         expect(openUrl).toBeCalled()
         expect(analytics.logMailTo).toBeCalledWith(key)

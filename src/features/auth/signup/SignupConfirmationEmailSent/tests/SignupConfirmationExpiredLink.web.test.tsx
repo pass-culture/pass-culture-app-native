@@ -4,7 +4,6 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { contactSupport } from 'features/auth/support.services'
 import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
@@ -42,18 +41,6 @@ describe('<SignupConfirmationExpiredLink/>', () => {
 
     await waitForExpect(() => {
       expect(navigateToHome).toBeCalledTimes(1)
-    })
-  })
-
-  it.skip('should contact support WHEN contact support button is clicked', async () => {
-    const { findByText } = renderSignupConfirmationExpiredLink()
-
-    const button = await findByText('Contacter le support')
-    fireEvent.click(button)
-
-    await waitForExpect(() => {
-      expect(contactSupport.forSignupConfirmationExpiredLink).toBeCalledTimes(1)
-      expect(contactSupport.forSignupConfirmationExpiredLink).toBeCalledWith('test@email.com')
     })
   })
 
