@@ -5,7 +5,11 @@ import type { CountryCode } from 'react-native-country-picker-modal'
 
 import { TabParamList, TabRouteName } from '../TabBar/types'
 
-export type Referrals = Lowercase<keyof AllNavParamList> | 'deeplink' | 'exclusivity'
+export type Referrals =
+  | Lowercase<keyof AllNavParamList>
+  | 'deeplink'
+  | 'exclusivity'
+  | 'bookingimpossible'
 
 export type IdentityCheckRootStackParamList = {
   NavigationIdentityCheck: undefined

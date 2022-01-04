@@ -2834,6 +2834,10 @@ msgstr "Voici les 3 étapes que tu vas devoir suivre."
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
 
+#: src/features/bookOffer/components/BookingImpossible.tsx
+msgid "Voir le détail de l'offre"
+msgstr "Voir le détail de l'offre"
+
 #: src/features/bookings/pages/BookingDetails.tsx
 msgid "Voir le détail de l’offre"
 msgstr "Voir le détail de l’offre"

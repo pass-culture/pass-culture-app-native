@@ -29,17 +29,11 @@ jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
 
 describe('<BookingImpossible />', () => {
   it('should call notifyWebappLinkSent when adding to favorites', async () => {
-    const useMutationAddFavoriteCallbacks: {
-      onError: (error: unknown) => void
-      onSuccess: () => void
-    } = {
+    const useMutationAddFavoriteCallbacks: Parameters<typeof useMutationFactory>[0] = {
       onSuccess: () => {},
       onError: () => {},
     }
-    const useMutationNotifyWebappLinkSentCallbacks: {
-      onError: (error: unknown) => void
-      onSuccess: () => void
-    } = {
+    const useMutationNotifyWebappLinkSentCallbacks: Parameters<typeof useMutationFactory>[0] = {
       onSuccess: () => {},
       onError: () => {},
     }
