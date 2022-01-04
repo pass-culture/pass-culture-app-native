@@ -12,7 +12,13 @@ export function LogoPassCulture({
   testID,
 }: RectangleIconInterface) {
   return (
-    <Svg width={width} height={height} viewBox="0 0 107 36" testID={testID}>
+    <Svg
+      width={width}
+      height={height}
+      viewBox="0 0 107 36"
+      testID={testID}
+      accessibilityLabel="pass culture"
+      accessibilityRole="image">
       <G fill="none" fillRule="evenodd">
         <G fill={color} fillRule="nonzero">
           <Path
