@@ -9,7 +9,6 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { AppFullPageModal } from 'ui/components/modals/AppFullPageModal'
-import { Spacer } from 'ui/components/spacer/Spacer'
 import { Error } from 'ui/svg/icons/Error'
 import { Typo } from 'ui/theme'
 
@@ -42,12 +41,23 @@ export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
 
   return (
     <AppFullPageModal visible={visible} testIdSuffix={testIdSuffix}>
-      <GenericInfoPage title={title} icon={Error} flex={false}>
+      <GenericInfoPage
+        title={title}
+        icon={Error}
+        flex={false}
+        buttons={[
+          <ButtonPrimaryWhite
+            key={1}
+            title={t`Continuer la vérification`}
+            onPress={continueIdentityCheck}
+          />,
+          <ButtonTertiaryWhite
+            key={2}
+            title={t`Abandonner la vérification`}
+            onPress={quitIdentityCheck}
+          />,
+        ]}>
         <StyledBody>{description}</StyledBody>
-        <Spacer.Column numberOfSpaces={8} />
-        <ButtonPrimaryWhite title={t`Continuer la vérification`} onPress={continueIdentityCheck} />
-        <Spacer.Column numberOfSpaces={4} />
-        <ButtonTertiaryWhite title={t`Abandonner la vérification`} onPress={quitIdentityCheck} />
       </GenericInfoPage>
     </AppFullPageModal>
   )

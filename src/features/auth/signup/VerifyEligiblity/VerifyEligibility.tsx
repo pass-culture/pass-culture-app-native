@@ -9,7 +9,7 @@ import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, Typo } from 'ui/theme'
 
 export const VerifyEligibility: FunctionComponent = () => {
   const [error, setError] = useState<Error | undefined>()
@@ -20,7 +20,22 @@ export const VerifyEligibility: FunctionComponent = () => {
   }
 
   return (
-    <GenericInfoPage title={t`Vérifie ton identité`} icon={HappyFace}>
+    <GenericInfoPage
+      title={t`Vérifie ton identité`}
+      icon={HappyFace}
+      buttons={[
+        <ButtonPrimaryWhite
+          key={1}
+          title={t`Vérifier mon identité`}
+          onPress={navigateToNextBeneficiaryValidationStep}
+        />,
+        <ButtonTertiaryWhite
+          key={2}
+          icon={PlainArrowPrevious}
+          title={t`Retourner à l'accueil`}
+          onPress={navigateToHome}
+        />,
+      ]}>
       <StyledBody>
         {t({
           id: 'need verify identity',
@@ -28,17 +43,6 @@ export const VerifyEligibility: FunctionComponent = () => {
             'Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière du Gouvernement. \n\n Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.',
         })}
       </StyledBody>
-      <Spacer.Column numberOfSpaces={8} />
-      <ButtonPrimaryWhite
-        title={t`Vérifier mon identité`}
-        onPress={navigateToNextBeneficiaryValidationStep}
-      />
-      <Spacer.Column numberOfSpaces={4} />
-      <ButtonTertiaryWhite
-        icon={PlainArrowPrevious}
-        title={t`Retourner à l'accueil`}
-        onPress={navigateToHome}
-      />
     </GenericInfoPage>
   )
 }

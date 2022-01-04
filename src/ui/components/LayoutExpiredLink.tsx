@@ -10,7 +10,7 @@ import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { SadFace } from 'ui/svg/icons/SadFace'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
   renderResendEmailButton?: () => React.ReactNode
@@ -26,7 +26,19 @@ export function LayoutExpiredLink({
   customBodyText,
 }: Props) {
   return (
-    <GenericInfoPage title={t`Oups\u00a0!`} icon={SadFace}>
+    <GenericInfoPage
+      title={t`Oups\u00a0!`}
+      icon={SadFace}
+      buttons={[
+        renderResendEmailButton && renderResendEmailButton(),
+        <ButtonTertiaryWhite
+          key={1}
+          title={t`Retourner à l'accueil`}
+          {...accessibilityAndTestId('button-icon')}
+          onPress={navigateToHome}
+          icon={PlainArrowPrevious}
+        />,
+      ].filter(Boolean)}>
       <StyledBody>{t`Le lien est expiré\u00a0!`}</StyledBody>
       <StyledBody>
         {customBodyText ||
@@ -58,27 +70,11 @@ export function LayoutExpiredLink({
           icon={EmailFilled}
         />
       )}
-
-      <Spacer.Column numberOfSpaces={8} />
-      {renderResendEmailButton ? (
-        <React.Fragment>
-          {renderResendEmailButton()}
-          <Spacer.Column numberOfSpaces={2} />
-        </React.Fragment>
-      ) : null}
-
-      <ButtonTertiaryWhite
-        title={t`Retourner à l'accueil`}
-        {...accessibilityAndTestId('button-icon')}
-        onPress={navigateToHome}
-        icon={PlainArrowPrevious}
-      />
     </GenericInfoPage>
   )
 }
 
-const StyledBody = styled(Typo.Body).attrs({
-  color: ColorsEnum.WHITE,
-})({
+const StyledBody = styled(Typo.Body)(({ color, theme }) => ({
+  color: color ?? theme.colors.white,
   textAlign: 'center',
-})
+}))

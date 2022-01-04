@@ -67,6 +67,18 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
       }
     />
     <View
+      flex={1}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
       height={167}
       width={167}
     >
@@ -85,17 +97,17 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
       }
     />
     <Text
-      color="#ffffff"
       fontSize={24}
       style={
         Array [
           Object {
-            "color": "#ffffff",
+            "color": "#151515",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 24,
             "lineHeight": 28,
           },
           Object {
+            "color": "#ffffff",
             "textAlign": "center",
           },
         ]
@@ -141,57 +153,72 @@ Pour des questions de performance et de sécurité merci de télécharger la der
       }
     />
     <View
-      accessibilityLabel="Télécharger la dernière version"
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      nativeID="animatedComponent"
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#ffffff",
-          "borderRadius": 24,
-          "borderWidth": 0,
-          "flexDirection": "row",
-          "height": 40,
-          "justifyContent": "center",
-          "maxWidth": 500,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 2,
-          "paddingRight": 2,
-          "paddingTop": 2,
-          "width": "100%",
-        }
+        Array [
+          Object {
+            "alignSelf": "stretch",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "flex-end",
+            "marginBottom": 32,
+          },
+        ]
       }
-      testID="Télécharger la dernière version"
     >
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
+      <View
+        accessibilityLabel="Télécharger la dernière version"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        nativeID="animatedComponent"
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
-          Array [
-            Object {
-              "color": "#eb0055",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 0,
-              "maxWidth": "100%",
-            },
-          ]
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderRadius": 24,
+            "borderWidth": 0,
+            "flexDirection": "row",
+            "height": 40,
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 2,
+            "paddingRight": 2,
+            "paddingTop": 2,
+            "width": "100%",
+          }
         }
-        textColor="#eb0055"
+        testID="Télécharger la dernière version"
       >
-        Télécharger la dernière version
-      </Text>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#eb0055",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+          textColor="#eb0055"
+        >
+          Télécharger la dernière version
+        </Text>
+      </View>
     </View>
     <View
       customHeight={8}

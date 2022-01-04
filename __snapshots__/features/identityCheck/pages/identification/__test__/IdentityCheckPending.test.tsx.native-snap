@@ -67,6 +67,18 @@ exports[`<IdentityCheckPending/> should render correctly 1`] = `
       }
     />
     <View
+      flex={1}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
       height={140}
       width={140}
     >
@@ -85,17 +97,17 @@ exports[`<IdentityCheckPending/> should render correctly 1`] = `
       }
     />
     <Text
-      color="#ffffff"
       fontSize={24}
       style={
         Array [
           Object {
-            "color": "#ffffff",
+            "color": "#151515",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 24,
             "lineHeight": 28,
           },
           Object {
+            "color": "#ffffff",
             "textAlign": "center",
           },
         ]
@@ -114,7 +126,6 @@ exports[`<IdentityCheckPending/> should render correctly 1`] = `
       }
     />
     <Text
-      color="#ffffff"
       style={
         Array [
           Object {
@@ -140,7 +151,6 @@ exports[`<IdentityCheckPending/> should render correctly 1`] = `
       }
     />
     <Text
-      color="#ffffff"
       style={
         Array [
           Object {
@@ -166,57 +176,72 @@ exports[`<IdentityCheckPending/> should render correctly 1`] = `
       }
     />
     <View
-      accessibilityLabel="Retourner à l'accueil"
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      nativeID="animatedComponent"
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#ffffff",
-          "borderRadius": 24,
-          "borderWidth": 0,
-          "flexDirection": "row",
-          "height": 40,
-          "justifyContent": "center",
-          "maxWidth": 500,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 2,
-          "paddingRight": 2,
-          "paddingTop": 2,
-          "width": "100%",
-        }
+        Array [
+          Object {
+            "alignSelf": "stretch",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "flex-end",
+            "marginBottom": 32,
+          },
+        ]
       }
-      testID="Retourner à l'accueil"
     >
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
+      <View
+        accessibilityLabel="Retourner à l'accueil"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        nativeID="animatedComponent"
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
         style={
-          Array [
-            Object {
-              "color": "#eb0055",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 0,
-              "maxWidth": "100%",
-            },
-          ]
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderRadius": 24,
+            "borderWidth": 0,
+            "flexDirection": "row",
+            "height": 40,
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 2,
+            "paddingRight": 2,
+            "paddingTop": 2,
+            "width": "100%",
+          }
         }
-        textColor="#eb0055"
+        testID="Retourner à l'accueil"
       >
-        Retourner à l'accueil
-      </Text>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#eb0055",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+          textColor="#eb0055"
+        >
+          Retourner à l'accueil
+        </Text>
+      </View>
     </View>
     <View
       customHeight={8}

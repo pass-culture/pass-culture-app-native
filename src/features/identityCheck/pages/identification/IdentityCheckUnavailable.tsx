@@ -14,7 +14,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export function IdentityCheckUnavailable() {
   const { params } = useRoute<UseRouteType<'IdentityCheckUnavailable'>>()
@@ -26,37 +26,40 @@ export function IdentityCheckUnavailable() {
     showModal()
   }
   return (
-    <GenericInfoPage title={t`Victime de notre succès\u00a0!`} icon={HappyFace}>
-      <StyledBody>{t`Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés.`}</StyledBody>
-      <Spacer.Column numberOfSpaces={5} />
-      <StyledBody>{t`Nous reviendrons vers toi dès que le service sera rétabli.`}</StyledBody>
-      <Spacer.Column numberOfSpaces={6} />
-      {!!params?.withDMS && (
-        <React.Fragment>
-          <StyledBody>{t`Tu peux nous transmettre ton dossier via la plateforme Démarches Simplifiées.
-Nous reviendrons vers toi d’ici quelques jours.`}</StyledBody>
-          <Spacer.Column numberOfSpaces={8} />
+    <GenericInfoPage
+      title={t`Victime de notre succès\u00a0!`}
+      icon={HappyFace}
+      buttons={[
+        !!params?.withDMS && (
           <ButtonPrimaryWhite
+            key={1}
             title={t`Transmettre un dossier`}
             onPress={showDMSModal}
             iconSize={20}
             icon={ExternalSite}
           />
-          <Spacer.Column numberOfSpaces={4} />
-        </React.Fragment>
+        ),
+        <ButtonTertiaryWhite
+          key={2}
+          title={t`Retourner à l'accueil`}
+          onPress={navigateToHome}
+          icon={PlainArrowPrevious}
+        />,
+      ].filter(Boolean)}>
+      <StyledBody>{t`Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés.`}</StyledBody>
+      <Spacer.Column numberOfSpaces={5} />
+      <StyledBody>{t`Nous reviendrons vers toi dès que le service sera rétabli.`}</StyledBody>
+      <Spacer.Column numberOfSpaces={6} />
+      {!!params?.withDMS && (
+        <StyledBody>{t`Tu peux nous transmettre ton dossier via la plateforme Démarches Simplifiées.
+Nous reviendrons vers toi d’ici quelques jours.`}</StyledBody>
       )}
-      <ButtonTertiaryWhite
-        title={t`Retourner à l'accueil`}
-        onPress={navigateToHome}
-        icon={PlainArrowPrevious}
-      />
       <DMSModal visible={visible} hideModal={hideModal} />
     </GenericInfoPage>
   )
 }
 
-const StyledBody = styled(Typo.Body).attrs({
-  color: ColorsEnum.WHITE,
-})({
+const StyledBody = styled(Typo.Body)(({ color, theme }) => ({
+  color: color ?? theme.colors.white,
   textAlign: 'center',
-})
+}))

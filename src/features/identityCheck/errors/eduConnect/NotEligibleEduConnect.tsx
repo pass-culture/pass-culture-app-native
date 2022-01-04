@@ -12,7 +12,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { getSpacing, getSpacingString, Spacer, Typo } from 'ui/theme'
+import { getSpacing, getSpacingString, Typo } from 'ui/theme'
 import { useGrid } from 'ui/theme/grid'
 
 import { useNotEligibleEduConnectErrorData } from '../hooks/useNotEligibleEduConnectErrorData'
@@ -61,11 +61,27 @@ export const NotEligibleEduConnect = ({
   }
 
   return (
-    <GenericInfoPage title={title} icon={Icon}>
+    <GenericInfoPage
+      title={title}
+      icon={Icon}
+      buttons={[
+        <ButtonPrimaryWhite
+          key={1}
+          title={primaryButtonText ?? "Retourner à l'accueil"}
+          onPress={onPrimaryButtonPress ?? onAbandon}
+        />,
+        !!tertiaryButtonVisible && (
+          <ButtonTertiaryWhite
+            key={2}
+            icon={PlainArrowPrevious}
+            title={t`Retourner à l'accueil`}
+            onPress={onAbandon}
+          />
+        ),
+      ].filter(Boolean)}>
       <Helmet>
         <title>{title}</title>
       </Helmet>
-
       <Body
         textAlign={descriptionAlignment}
         color={colors.white}
@@ -73,22 +89,6 @@ export const NotEligibleEduConnect = ({
         isSmallScreen={!!isSmallScreen}>
         {description}
       </Body>
-      <Spacer.Column numberOfSpaces={12} />
-      <ButtonPrimaryWhite
-        title={primaryButtonText ?? "Retourner à l'accueil"}
-        onPress={onPrimaryButtonPress ?? onAbandon}
-      />
-
-      {!!tertiaryButtonVisible && (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
-          <ButtonTertiaryWhite
-            icon={PlainArrowPrevious}
-            title={t`Retourner à l'accueil`}
-            onPress={onAbandon}
-          />
-        </React.Fragment>
-      )}
     </GenericInfoPage>
   )
 }

@@ -6,20 +6,22 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { PageNotFoundIcon } from 'ui/svg/icons/PageNotFoundIcon'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const PageNotFound: React.FC = () => {
   return (
-    <GenericInfoPage title={t`Page introuvable\u00a0!`} icon={PageNotFoundIcon}>
+    <GenericInfoPage
+      title={t`Page introuvable\u00a0!`}
+      icon={PageNotFoundIcon}
+      buttons={[
+        <ButtonPrimaryWhite key={1} title={t`Retourner à l'accueil`} onPress={navigateToHome} />,
+      ]}>
       <StyledBody>{t`Il est possible que cette page soit désactivée ou n'existe pas.`}</StyledBody>
-      <Spacer.Column numberOfSpaces={12} />
-      <ButtonPrimaryWhite title={t`Retourner à l'accueil`} onPress={navigateToHome} />
     </GenericInfoPage>
   )
 }
 
-const StyledBody = styled(Typo.Body).attrs({
-  color: ColorsEnum.WHITE,
-})({
+const StyledBody = styled(Typo.Body)(({ color, theme }) => ({
+  color: color ?? theme.colors.white,
   textAlign: 'center',
-})
+}))
