@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text } from 'react-native'
+import styled from 'styled-components/native'
 
 import { openUrl } from 'features/navigation/helpers'
 import { extractExternalLinkParts } from 'ui/components/buttons/externalLink/ExternalLink.service'
@@ -27,3 +27,7 @@ export const ExternalLink: React.FC<Props> = ({ url, text, color, testID }) => {
     </Typo.ButtonText>
   )
 }
+
+const Text = styled.Text({
+  whiteSpace: 'nowrap',
+})
