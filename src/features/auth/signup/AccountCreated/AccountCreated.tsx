@@ -41,7 +41,7 @@ export function AccountCreated() {
           {t`Aide-nous à en savoir plus sur tes pratiques culturelles\u00a0! Ta sélection n'aura pas d'impact sur les offres proposées.`}
         </StyledBody>
       )}
-      <Spacer.Column numberOfSpaces={15} />
+      <Spacer.Column numberOfSpaces={12} />
       <ButtonPrimaryWhite title={t`On y va\u00a0!`} onPress={onPress} />
     </GenericInfoPage>
   )

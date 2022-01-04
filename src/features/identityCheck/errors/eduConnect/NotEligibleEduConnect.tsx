@@ -61,7 +61,7 @@ export const NotEligibleEduConnect = ({
   }
 
   return (
-    <GenericInfoPage title={title} icon={Icon} iconSize={getSpacing(30)}>
+    <GenericInfoPage title={title} icon={Icon}>
       <Helmet>
         <title>{title}</title>
       </Helmet>

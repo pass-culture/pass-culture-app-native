@@ -6,7 +6,7 @@ import { Helmet } from 'libs/react-helmet/Helmet'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { LogoPassCulture as LogoPassCultureOriginal } from 'ui/svg/icons/LogoPassCulture'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 type MaintenanceProps = {
   message?: string
@@ -18,10 +18,7 @@ export const Maintenance: React.FC<MaintenanceProps> = (props) => {
       <Helmet>
         <title>{t`Maintenance`}</title>
       </Helmet>
-      <GenericInfoPage
-        title={t`Maintenance en cours`}
-        icon={MaintenanceCone}
-        iconSize={getSpacing(40)}>
+      <GenericInfoPage title={t`Maintenance en cours`} icon={MaintenanceCone}>
         <Spacer.Column numberOfSpaces={6} />
         <StyledBody>
           {props.message

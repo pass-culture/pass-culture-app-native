@@ -40,422 +40,423 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       </Text>
     </View>
   </View>
-  <RCTScrollView
-    bounces={false}
-    contentContainerStyle={
-      Object {
-        "alignItems": "center",
-        "flexDirection": "column",
-        "flexGrow": 1,
-        "justifyContent": "center",
-        "maxWidth": 360,
-        "paddingHorizontal": 16,
-      }
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexBasis": 0,
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "center",
+          "maxWidth": 360,
+          "paddingHorizontal": 16,
+        },
+      ]
     }
   >
-    <View>
-      <View
-        numberOfSpaces={18}
-        style={
-          Array [
-            Object {
-              "height": 72,
-            },
-          ]
+    <View
+      numberOfSpaces={9}
+      style={
+        Array [
+          Object {
+            "height": 36,
+          },
+        ]
+      }
+    />
+    <View
+      height={140}
+      width={140}
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={9}
+      style={
+        Array [
+          Object {
+            "height": 36,
+          },
+        ]
+      }
+    />
+    <Text
+      color="#ffffff"
+      fontSize={24}
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 24,
+            "lineHeight": 28,
+          },
+          Object {
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Oups !
+    </Text>
+    <View
+      numberOfSpaces={5}
+      style={
+        Array [
+          Object {
+            "height": 20,
+          },
+        ]
+      }
+    />
+    <Text
+      color="#ffffff"
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Le lien est expiré !
+    </Text>
+    <Text
+      color="#ffffff"
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien.
+    </Text>
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <Text
+      color="#ffffff"
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Si tu as besoin d’aide n’hésite pas à :
+    </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityLabel="Consulter l'article d'aide"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      nativeID="animatedComponent"
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 24,
+          "borderWidth": 0,
+          "flexDirection": "row",
+          "height": 40,
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "width": "100%",
         }
-      />
+      }
+      testID="Consulter l'article d'aide"
+    >
       <View
-        height={100}
-        width={100}
+        height={18}
+        testID="button-icon"
+        width={18}
       >
         <Text>
-          undefined-SVG-Mock
+          button-icon-SVG-Mock
         </Text>
       </View>
-      <View
-        numberOfSpaces={9}
-        style={
-          Array [
-            Object {
-              "height": 36,
-            },
-          ]
-        }
-      />
       <Text
-        color="#ffffff"
-        fontSize={24}
+        adjustsFontSizeToFit={false}
+        icon={[Function]}
+        iconSize={18}
+        numberOfLines={1}
         style={
           Array [
             Object {
               "color": "#ffffff",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 24,
-              "lineHeight": 28,
-            },
-            Object {
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Oups !
-      </Text>
-      <View
-        numberOfSpaces={5}
-        style={
-          Array [
-            Object {
-              "height": 20,
-            },
-          ]
-        }
-      />
-      <Text
-        color="#ffffff"
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Regular",
+              "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
-              "textAlign": "center",
+              "marginLeft": 12,
+              "maxWidth": "100%",
             },
           ]
         }
+        textColor="#ffffff"
       >
-        Le lien est expiré !
+        Consulter l'article d'aide
       </Text>
-      <Text
-        color="#ffffff"
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien.
-      </Text>
-      <View
-        numberOfSpaces={6}
-        style={
-          Array [
-            Object {
-              "height": 24,
-            },
-          ]
-        }
-      />
-      <Text
-        color="#ffffff"
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Si tu as besoin d’aide n’hésite pas à :
-      </Text>
-      <View
-        numberOfSpaces={2}
-        style={
-          Array [
-            Object {
-              "height": 8,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityLabel="Consulter l'article d'aide"
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "borderRadius": 24,
-            "borderWidth": 0,
-            "flexDirection": "row",
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
-            "paddingTop": 2,
-            "width": "100%",
-          }
-        }
-        testID="Consulter l'article d'aide"
-      >
-        <View
-          height={18}
-          testID="button-icon"
-          width={18}
-        >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
-        </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          icon={[Function]}
-          iconSize={18}
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 12,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-          textColor="#ffffff"
-        >
-          Consulter l'article d'aide
-        </Text>
-      </View>
-      <View
-        accessibilityLabel="button-icon"
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "borderRadius": 24,
-            "borderWidth": 0,
-            "flexDirection": "row",
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
-            "paddingTop": 2,
-            "width": "100%",
-          }
-        }
-        testID="Contacter le support"
-      >
-        <View
-          height={18}
-          testID="button-icon"
-          width={18}
-        >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
-        </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          icon={[Function]}
-          iconSize={18}
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 12,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-          textColor="#ffffff"
-        >
-          Contacter le support
-        </Text>
-      </View>
-      <View
-        numberOfSpaces={8}
-        style={
-          Array [
-            Object {
-              "height": 32,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityLabel="Renvoyer l'email"
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderRadius": 24,
-            "borderWidth": 0,
-            "flexDirection": "row",
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
-            "paddingTop": 2,
-            "width": "100%",
-          }
-        }
-        testID="Renvoyer l'email"
-      >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#eb0055",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 0,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-          textColor="#eb0055"
-        >
-          Renvoyer l'email
-        </Text>
-      </View>
-      <View
-        numberOfSpaces={2}
-        style={
-          Array [
-            Object {
-              "height": 8,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityLabel="button-icon"
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "borderRadius": 24,
-            "borderWidth": 0,
-            "flexDirection": "row",
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
-            "paddingTop": 2,
-            "width": "100%",
-          }
-        }
-        testID="Retourner à l'accueil"
-      >
-        <View
-          height={18}
-          testID="button-icon"
-          width={18}
-        >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
-        </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          icon={[Function]}
-          iconSize={18}
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 12,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-          textColor="#ffffff"
-        >
-          Retourner à l'accueil
-        </Text>
-      </View>
-      <View
-        customHeight={8}
-        enable={true}
-        style={
-          Array [
-            Object {
-              "height": 8,
-            },
-          ]
-        }
-      />
     </View>
-  </RCTScrollView>
+    <View
+      accessibilityLabel="button-icon"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      nativeID="animatedComponent"
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 24,
+          "borderWidth": 0,
+          "flexDirection": "row",
+          "height": 40,
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "width": "100%",
+        }
+      }
+      testID="Contacter le support"
+    >
+      <View
+        height={18}
+        testID="button-icon"
+        width={18}
+      >
+        <Text>
+          button-icon-SVG-Mock
+        </Text>
+      </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        icon={[Function]}
+        iconSize={18}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 12,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+        textColor="#ffffff"
+      >
+        Contacter le support
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={8}
+      style={
+        Array [
+          Object {
+            "height": 32,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityLabel="Renvoyer l'email"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      nativeID="animatedComponent"
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderRadius": 24,
+          "borderWidth": 0,
+          "flexDirection": "row",
+          "height": 40,
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "width": "100%",
+        }
+      }
+      testID="Renvoyer l'email"
+    >
+      <Text
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#eb0055",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 0,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+        textColor="#eb0055"
+      >
+        Renvoyer l'email
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityLabel="button-icon"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      nativeID="animatedComponent"
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderRadius": 24,
+          "borderWidth": 0,
+          "flexDirection": "row",
+          "height": 40,
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "width": "100%",
+        }
+      }
+      testID="Retourner à l'accueil"
+    >
+      <View
+        height={18}
+        testID="button-icon"
+        width={18}
+      >
+        <Text>
+          button-icon-SVG-Mock
+        </Text>
+      </View>
+      <Text
+        adjustsFontSizeToFit={false}
+        icon={[Function]}
+        iconSize={18}
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "marginLeft": 12,
+              "maxWidth": "100%",
+            },
+          ]
+        }
+        textColor="#ffffff"
+      >
+        Retourner à l'accueil
+      </Text>
+    </View>
+    <View
+      customHeight={8}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+  </View>
 </View>
 `;

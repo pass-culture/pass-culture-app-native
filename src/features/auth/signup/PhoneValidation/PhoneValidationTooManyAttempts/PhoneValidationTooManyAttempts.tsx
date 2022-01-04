@@ -23,7 +23,7 @@ export function PhoneValidationTooManyAttempts() {
         icon={Email}
         onPress={contactSupport.forPhoneNumberConfirmation}
       />
-      <Spacer.Column numberOfSpaces={15} />
+      <Spacer.Column numberOfSpaces={12} />
       <ButtonPrimaryWhite title={t`Retourner à l'accueil`} onPress={navigateToHome} />
     </GenericInfoPage>
   )

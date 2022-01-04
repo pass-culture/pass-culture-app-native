@@ -66,232 +66,233 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
         </Text>
       </View>
     </View>
-    <RCTScrollView
-      bounces={false}
-      contentContainerStyle={
-        Object {
-          "alignItems": "center",
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "justifyContent": "center",
-          "maxWidth": 360,
-          "paddingHorizontal": 16,
-        }
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexBasis": 0,
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "maxWidth": 360,
+            "paddingHorizontal": 16,
+          },
+        ]
       }
     >
-      <View>
-        <View
-          numberOfSpaces={18}
-          style={
-            Array [
-              Object {
-                "height": 72,
-              },
-            ]
-          }
-        />
-        <View
-          height={100}
-          width={100}
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
-        <View
-          numberOfSpaces={9}
-          style={
-            Array [
-              Object {
-                "height": 36,
-              },
-            ]
-          }
-        />
-        <Text
-          color="#ffffff"
-          fontSize={24}
-          style={
-            Array [
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 24,
-                "lineHeight": 28,
-              },
-              Object {
-                "textAlign": "center",
-              },
-            ]
-          }
-        >
-          Veux-tu abandonner la vérification d'identité ?
+      <View
+        numberOfSpaces={9}
+        style={
+          Array [
+            Object {
+              "height": 36,
+            },
+          ]
+        }
+      />
+      <View
+        height={140}
+        width={140}
+      >
+        <Text>
+          undefined-SVG-Mock
         </Text>
-        <View
-          numberOfSpaces={5}
-          style={
-            Array [
-              Object {
-                "height": 20,
-              },
-            ]
+      </View>
+      <View
+        numberOfSpaces={9}
+        style={
+          Array [
+            Object {
+              "height": 36,
+            },
+          ]
+        }
+      />
+      <Text
+        color="#ffffff"
+        fontSize={24}
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 24,
+              "lineHeight": 28,
+            },
+            Object {
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Veux-tu abandonner la vérification d'identité ?
+      </Text>
+      <View
+        numberOfSpaces={5}
+        style={
+          Array [
+            Object {
+              "height": 20,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Les informations que tu as renseignées ne seront pas enregistrées.
+      </Text>
+      <View
+        numberOfSpaces={8}
+        style={
+          Array [
+            Object {
+              "height": 32,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="Continuer la vérification"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        nativeID="animatedComponent"
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderRadius": 24,
+            "borderWidth": 0,
+            "flexDirection": "row",
+            "height": 40,
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 2,
+            "paddingRight": 2,
+            "paddingTop": 2,
+            "width": "100%",
           }
-        />
+        }
+        testID="Continuer la vérification"
+      >
         <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
           style={
             Array [
               Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Regular",
+                "color": "#eb0055",
+                "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "textAlign": "center",
+                "marginLeft": 0,
+                "maxWidth": "100%",
               },
             ]
           }
+          textColor="#eb0055"
         >
-          Les informations que tu as renseignées ne seront pas enregistrées.
+          Continuer la vérification
         </Text>
-        <View
-          numberOfSpaces={8}
-          style={
-            Array [
-              Object {
-                "height": 32,
-              },
-            ]
-          }
-        />
-        <View
-          accessibilityLabel="Continuer la vérification"
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          nativeID="animatedComponent"
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "#ffffff",
-              "borderRadius": 24,
-              "borderWidth": 0,
-              "flexDirection": "row",
-              "height": 40,
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "opacity": 1,
-              "paddingBottom": 2,
-              "paddingLeft": 2,
-              "paddingRight": 2,
-              "paddingTop": 2,
-              "width": "100%",
-            }
-          }
-          testID="Continuer la vérification"
-        >
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
-            style={
-              Array [
-                Object {
-                  "color": "#eb0055",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                  "marginLeft": 0,
-                  "maxWidth": "100%",
-                },
-              ]
-            }
-            textColor="#eb0055"
-          >
-            Continuer la vérification
-          </Text>
-        </View>
-        <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "height": 16,
-              },
-            ]
-          }
-        />
-        <View
-          accessibilityLabel="Abandonner la vérification"
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          nativeID="animatedComponent"
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "alignItems": "center",
-              "backgroundColor": "transparent",
-              "borderRadius": 24,
-              "borderWidth": 0,
-              "flexDirection": "row",
-              "height": 40,
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "opacity": 1,
-              "paddingBottom": 2,
-              "paddingLeft": 2,
-              "paddingRight": 2,
-              "paddingTop": 2,
-              "width": "100%",
-            }
-          }
-          testID="Abandonner la vérification"
-        >
-          <Text
-            adjustsFontSizeToFit={false}
-            iconSize={18}
-            numberOfLines={1}
-            style={
-              Array [
-                Object {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                  "marginLeft": 0,
-                  "maxWidth": "100%",
-                },
-              ]
-            }
-            textColor="#ffffff"
-          >
-            Abandonner la vérification
-          </Text>
-        </View>
-        <View
-          customHeight={8}
-          enable={true}
-          style={
-            Array [
-              Object {
-                "height": 8,
-              },
-            ]
-          }
-        />
       </View>
-    </RCTScrollView>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="Abandonner la vérification"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        nativeID="animatedComponent"
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "borderRadius": 24,
+            "borderWidth": 0,
+            "flexDirection": "row",
+            "height": 40,
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 2,
+            "paddingRight": 2,
+            "paddingTop": 2,
+            "width": "100%",
+          }
+        }
+        testID="Abandonner la vérification"
+      >
+        <Text
+          adjustsFontSizeToFit={false}
+          iconSize={18}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+          textColor="#ffffff"
+        >
+          Abandonner la vérification
+        </Text>
+      </View>
+      <View
+        customHeight={8}
+        enable={true}
+        style={
+          Array [
+            Object {
+              "height": 8,
+            },
+          ]
+        }
+      />
+    </View>
   </View>
 </Modal>
 `;

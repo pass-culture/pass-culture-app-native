@@ -50,30 +50,34 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
   </div>
   <div
     className="css-view-1dbjc4n"
-    onScroll={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
-    onWheel={[Function]}
     style={
       Object {
+        "WebkitAlignItems": "center",
+        "WebkitBoxAlign": "center",
         "WebkitBoxDirection": "normal",
         "WebkitBoxFlex": 1,
         "WebkitBoxOrient": "vertical",
+        "WebkitBoxPack": "center",
+        "WebkitFlexBasis": "0px",
         "WebkitFlexDirection": "column",
         "WebkitFlexGrow": 1,
         "WebkitFlexShrink": 1,
-        "WebkitOverflowScrolling": "touch",
-        "WebkitTransform": "translateZ(0px)",
+        "WebkitJustifyContent": "center",
+        "alignItems": "center",
+        "flexBasis": "0px",
         "flexDirection": "column",
         "flexGrow": 1,
         "flexShrink": 1,
+        "justifyContent": "center",
+        "maxWidth": "360px",
+        "msFlexAlign": "center",
         "msFlexDirection": "column",
         "msFlexNegative": 1,
+        "msFlexPack": "center",
         "msFlexPositive": 1,
-        "overflowX": "hidden",
-        "overflowY": "auto",
-        "transform": "translateZ(0px)",
+        "msFlexPreferredSize": "0px",
+        "paddingLeft": "16px",
+        "paddingRight": "16px",
       }
     }
   >
@@ -81,128 +85,100 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
       className="css-view-1dbjc4n"
       style={
         Object {
-          "WebkitAlignItems": "center",
-          "WebkitBoxAlign": "center",
-          "WebkitBoxDirection": "normal",
-          "WebkitBoxFlex": 1,
-          "WebkitBoxOrient": "vertical",
-          "WebkitBoxPack": "center",
-          "WebkitFlexDirection": "column",
-          "WebkitFlexGrow": 1,
-          "WebkitJustifyContent": "center",
-          "alignItems": "center",
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "justifyContent": "center",
-          "maxWidth": "360px",
-          "msFlexAlign": "center",
-          "msFlexDirection": "column",
-          "msFlexPack": "center",
-          "msFlexPositive": 1,
-          "paddingLeft": "16px",
-          "paddingRight": "16px",
+          "height": "36px",
+        }
+      }
+    />
+    <div
+      className="css-view-1dbjc4n"
+    >
+      <div
+        className="css-text-901oao"
+        dir="auto"
+      >
+        undefined-SVG-Mock
+      </div>
+    </div>
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "height": "36px",
+        }
+      }
+    />
+    <div
+      className="css-text-901oao"
+      dir="auto"
+      style={
+        Object {
+          "color": "rgba(255,255,255,1.00)",
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": "22px",
+          "lineHeight": "28px",
+          "textAlign": "center",
         }
       }
     >
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "72px",
-          }
-        }
-      />
-      <div
-        className="css-view-1dbjc4n"
-      >
-        <div
-          className="css-text-901oao"
-          dir="auto"
-        >
-          undefined-SVG-Mock
-        </div>
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "36px",
-          }
-        }
-      />
-      <div
-        className="css-text-901oao"
-        dir="auto"
-        style={
-          Object {
-            "color": "rgba(255,255,255,1.00)",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": "22px",
-            "lineHeight": "28px",
-            "textAlign": "center",
-          }
-        }
-      >
-        Maintenance en cours
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "20px",
-          }
-        }
-      />
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "24px",
-          }
-        }
-      />
-      <div
-        className="css-text-901oao"
-        dir="auto"
-        style={
-          Object {
-            "color": "rgba(255,255,255,1.00)",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": "15px",
-            "lineHeight": "20px",
-            "textAlign": "center",
-          }
-        }
-      >
-        C'est tout cassé ! Reviens plus tard
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "96px",
-          }
-        }
-      />
-      <div
-        className="css-view-1dbjc4n"
-      >
-        <div
-          className="css-text-901oao"
-          dir="auto"
-        >
-          undefined-SVG-Mock
-        </div>
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "8px",
-          }
-        }
-      />
+      Maintenance en cours
     </div>
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "height": "20px",
+        }
+      }
+    />
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "height": "24px",
+        }
+      }
+    />
+    <div
+      className="css-text-901oao"
+      dir="auto"
+      style={
+        Object {
+          "color": "rgba(255,255,255,1.00)",
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": "15px",
+          "lineHeight": "20px",
+          "textAlign": "center",
+        }
+      }
+    >
+      C'est tout cassé ! Reviens plus tard
+    </div>
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "height": "96px",
+        }
+      }
+    />
+    <div
+      className="css-view-1dbjc4n"
+    >
+      <div
+        className="css-text-901oao"
+        dir="auto"
+      >
+        undefined-SVG-Mock
+      </div>
+    </div>
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "height": "8px",
+        }
+      }
+    />
   </div>
 </div>
 `;
@@ -257,30 +233,34 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
   </div>
   <div
     className="css-view-1dbjc4n"
-    onScroll={[Function]}
-    onTouchEnd={[Function]}
-    onTouchMove={[Function]}
-    onTouchStart={[Function]}
-    onWheel={[Function]}
     style={
       Object {
+        "WebkitAlignItems": "center",
+        "WebkitBoxAlign": "center",
         "WebkitBoxDirection": "normal",
         "WebkitBoxFlex": 1,
         "WebkitBoxOrient": "vertical",
+        "WebkitBoxPack": "center",
+        "WebkitFlexBasis": "0px",
         "WebkitFlexDirection": "column",
         "WebkitFlexGrow": 1,
         "WebkitFlexShrink": 1,
-        "WebkitOverflowScrolling": "touch",
-        "WebkitTransform": "translateZ(0px)",
+        "WebkitJustifyContent": "center",
+        "alignItems": "center",
+        "flexBasis": "0px",
         "flexDirection": "column",
         "flexGrow": 1,
         "flexShrink": 1,
+        "justifyContent": "center",
+        "maxWidth": "360px",
+        "msFlexAlign": "center",
         "msFlexDirection": "column",
         "msFlexNegative": 1,
+        "msFlexPack": "center",
         "msFlexPositive": 1,
-        "overflowX": "hidden",
-        "overflowY": "auto",
-        "transform": "translateZ(0px)",
+        "msFlexPreferredSize": "0px",
+        "paddingLeft": "16px",
+        "paddingRight": "16px",
       }
     }
   >
@@ -288,128 +268,100 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
       className="css-view-1dbjc4n"
       style={
         Object {
-          "WebkitAlignItems": "center",
-          "WebkitBoxAlign": "center",
-          "WebkitBoxDirection": "normal",
-          "WebkitBoxFlex": 1,
-          "WebkitBoxOrient": "vertical",
-          "WebkitBoxPack": "center",
-          "WebkitFlexDirection": "column",
-          "WebkitFlexGrow": 1,
-          "WebkitJustifyContent": "center",
-          "alignItems": "center",
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "justifyContent": "center",
-          "maxWidth": "360px",
-          "msFlexAlign": "center",
-          "msFlexDirection": "column",
-          "msFlexPack": "center",
-          "msFlexPositive": 1,
-          "paddingLeft": "16px",
-          "paddingRight": "16px",
+          "height": "36px",
+        }
+      }
+    />
+    <div
+      className="css-view-1dbjc4n"
+    >
+      <div
+        className="css-text-901oao"
+        dir="auto"
+      >
+        undefined-SVG-Mock
+      </div>
+    </div>
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "height": "36px",
+        }
+      }
+    />
+    <div
+      className="css-text-901oao"
+      dir="auto"
+      style={
+        Object {
+          "color": "rgba(255,255,255,1.00)",
+          "fontFamily": "Montserrat-Medium",
+          "fontSize": "22px",
+          "lineHeight": "28px",
+          "textAlign": "center",
         }
       }
     >
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "72px",
-          }
-        }
-      />
-      <div
-        className="css-view-1dbjc4n"
-      >
-        <div
-          className="css-text-901oao"
-          dir="auto"
-        >
-          undefined-SVG-Mock
-        </div>
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "36px",
-          }
-        }
-      />
-      <div
-        className="css-text-901oao"
-        dir="auto"
-        style={
-          Object {
-            "color": "rgba(255,255,255,1.00)",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": "22px",
-            "lineHeight": "28px",
-            "textAlign": "center",
-          }
-        }
-      >
-        Maintenance en cours
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "20px",
-          }
-        }
-      />
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "24px",
-          }
-        }
-      />
-      <div
-        className="css-text-901oao"
-        dir="auto"
-        style={
-          Object {
-            "color": "rgba(255,255,255,1.00)",
-            "fontFamily": "Montserrat-Regular",
-            "fontSize": "15px",
-            "lineHeight": "20px",
-            "textAlign": "center",
-          }
-        }
-      >
-        L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "96px",
-          }
-        }
-      />
-      <div
-        className="css-view-1dbjc4n"
-      >
-        <div
-          className="css-text-901oao"
-          dir="auto"
-        >
-          undefined-SVG-Mock
-        </div>
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "8px",
-          }
-        }
-      />
+      Maintenance en cours
     </div>
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "height": "20px",
+        }
+      }
+    />
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "height": "24px",
+        }
+      }
+    />
+    <div
+      className="css-text-901oao"
+      dir="auto"
+      style={
+        Object {
+          "color": "rgba(255,255,255,1.00)",
+          "fontFamily": "Montserrat-Regular",
+          "fontSize": "15px",
+          "lineHeight": "20px",
+          "textAlign": "center",
+        }
+      }
+    >
+      L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !
+    </div>
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "height": "96px",
+        }
+      }
+    />
+    <div
+      className="css-view-1dbjc4n"
+    >
+      <div
+        className="css-text-901oao"
+        dir="auto"
+      >
+        undefined-SVG-Mock
+      </div>
+    </div>
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "height": "8px",
+        }
+      }
+    />
   </div>
 </div>
 `;

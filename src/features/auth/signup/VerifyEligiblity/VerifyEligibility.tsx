@@ -9,7 +9,7 @@ import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 export const VerifyEligibility: FunctionComponent = () => {
   const [error, setError] = useState<Error | undefined>()
@@ -20,7 +20,7 @@ export const VerifyEligibility: FunctionComponent = () => {
   }
 
   return (
-    <GenericInfoPage title={t`Vérifie ton identité`} icon={HappyFace} iconSize={getSpacing(30)}>
+    <GenericInfoPage title={t`Vérifie ton identité`} icon={HappyFace}>
       <StyledBody>
         {t({
           id: 'need verify identity',

@@ -1,5 +1,4 @@
 import React, { useMemo, FunctionComponent } from 'react'
-import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
@@ -13,25 +12,21 @@ type Props = {
   noIndex?: boolean
   flex?: boolean
   animation?: AnimationObject
-  animationSize?: number
   icon?: FunctionComponent<IconInterface>
-  iconSize?: number
   title: string
-  spacingMatrix?: Partial<SpacingMatrix>
 }
 
-export const GenericInfoPage: FunctionComponent<Props> = (props) => {
-  const {
-    noIndex = true,
-    animation,
-    animationSize = getSpacing(45),
-    icon: Icon,
-    iconSize = getSpacing(25),
-    title,
-    flex = true,
-  } = props
-  const spacingMatrix: SpacingMatrix = Object.assign(defaultSpacingMatrix, props.spacingMatrix)
+const ANIMATION_SIZEE = getSpacing(45)
+const ICON_SIZE = getSpacing(35)
 
+export const GenericInfoPage: FunctionComponent<Props> = ({
+  children,
+  noIndex = true,
+  animation,
+  icon: Icon,
+  title,
+  flex = true,
+}) => {
   const Wrapper = useMemo(() => (flex ? Container : React.Fragment), [flex])
   return (
     <Wrapper>
@@ -41,58 +36,41 @@ export const GenericInfoPage: FunctionComponent<Props> = (props) => {
         </Helmet>
       )}
       <Background />
-      <ScrollView bounces={false} contentContainerStyle={scrollViewContentContainerStyle}>
+      <Content>
         <Spacer.Column numberOfSpaces={spacingMatrix.top} />
         {Icon ? (
           <React.Fragment>
-            <Icon color={ColorsEnum.WHITE} size={iconSize} />
+            <Icon color={ColorsEnum.WHITE} size={ICON_SIZE} />
             <Spacer.Column numberOfSpaces={spacingMatrix.afterIcon} />
           </React.Fragment>
         ) : (
           !!animation && (
             <React.Fragment>
-              <StyledLottieView source={animation} autoPlay loop={false} size={animationSize} />
+              <StyledLottieView source={animation} autoPlay loop={false} size={ANIMATION_SIZEE} />
               <Spacer.Column numberOfSpaces={spacingMatrix.afterLottieAnimation} />
             </React.Fragment>
           )
         )}
         <StyledTitle2>{title}</StyledTitle2>
         <Spacer.Column numberOfSpaces={spacingMatrix.afterTitle} />
-        {props.children}
+        {children}
         <Spacer.BottomScreen />
-      </ScrollView>
+      </Content>
     </Wrapper>
   )
 }
 
-GenericInfoPage.defaultProps = {
-  animationSize: getSpacing(45),
-  iconSize: getSpacing(25),
-  flex: true,
-}
-
-const defaultSpacingMatrix = {
-  top: 18,
+const spacingMatrix = {
+  top: 9,
   afterIcon: 9,
   afterLottieAnimation: 9,
   afterTitle: 5,
 }
 
-type SpacingMatrix = typeof defaultSpacingMatrix
-
 const Container = styled.View({
   flex: 1,
   alignItems: 'center',
 })
-
-const scrollViewContentContainerStyle: ViewStyle = {
-  flexDirection: 'column',
-  flexGrow: 1,
-  justifyContent: 'center',
-  alignItems: 'center',
-  paddingHorizontal: getSpacing(4),
-  maxWidth: getSpacing(90),
-}
 
 const StyledLottieView = styled(LottieView)((props: { size: number }) => ({
   width: props.size,
@@ -103,4 +81,13 @@ const StyledTitle2 = styled(Typo.Title2).attrs({
   color: ColorsEnum.WHITE,
 })({
   textAlign: 'center',
+})
+
+const Content = styled.View({
+  flexDirection: 'column',
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+  paddingHorizontal: getSpacing(4),
+  maxWidth: getSpacing(90),
 })
