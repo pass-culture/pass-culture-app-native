@@ -49,7 +49,6 @@ export function SignupConfirmationExpiredLink(props: Props) {
     <LayoutExpiredLink
       renderResendEmailButton={renderResendEmailButton}
       urlFAQ={env.FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED}
-      // contactSupport={() => contactSupport.forSignupConfirmationExpiredLink(props.route.params.email)}
     />
   )
 }

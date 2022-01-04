@@ -172,13 +172,8 @@ export const analytics = {
     }),
   logMailTo: (
     reason:
-      | 'forChangeEmailExpiredLink'
       | 'forGenericQuestion'
       | 'forSignupConfirmationEmailNotReceived'
-      | 'forSignupConfirmationExpiredLink'
-      | 'forResetPasswordEmailNotReceived'
-      | 'forResetPasswordExpiredLink'
-      | 'forAccountDeletion'
       | 'forPhoneNumberConfirmation'
   ) => analyticsProvider.logEvent(AnalyticsEvent.MAIL_TO, { reason }),
   logCampaignTrackerEnabled: () =>
