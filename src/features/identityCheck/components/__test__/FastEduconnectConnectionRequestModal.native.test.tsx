@@ -16,6 +16,9 @@ jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => (
     ...mockState,
   })),
 }))
+jest.mock('libs/firestore/ubbleETAMessage', () => ({
+  useUbbleETAMessage: jest.fn(() => ({ data: 'Environ 3 heures' })),
+}))
 
 describe('<IdentityCheckEnd/>', () => {
   it('should render correctly if modal visible', () => {
