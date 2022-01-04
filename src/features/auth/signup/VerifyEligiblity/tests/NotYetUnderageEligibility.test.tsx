@@ -10,7 +10,7 @@ import { NotYetUnderageEligibility } from '../NotYetUnderageEligibility'
 jest.mock('features/navigation/helpers')
 
 const navigationProps = {
-  route: { params: { eligibilityStartDatetime: new Date('2019-12-01T00:00:00Z') } },
+  route: { params: { eligibilityStartDatetime: '2019-12-01T00:00:00Z' } },
 } as StackScreenProps<RootStackParamList, 'NotYetUnderageEligibility'>
 
 describe('<NotYetUnderageEligibility />', () => {
