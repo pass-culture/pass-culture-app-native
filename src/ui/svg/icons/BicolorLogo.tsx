@@ -17,7 +17,7 @@ const NotMemoizedBicolorLogo: React.FC<BicolorIconInterface> = ({
   const primaryColor = color || ColorsEnum.PRIMARY
   const secondaryColor = color2 || color || ColorsEnum.SECONDARY
   return (
-    <Svg width={size} height={size} viewBox="0 0 26 26" testID={testID}>
+    <Svg width={size} height={size} viewBox="0 0 26 26" testID={testID} aria-hidden>
       <Defs>
         <LinearGradient id={gradientId} x1="-42.969%" x2="153.672%" y1="52.422%" y2="52.422%">
           <Stop offset="0%" stopColor={primaryColor} />

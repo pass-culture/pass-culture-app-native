@@ -21,7 +21,8 @@ export const Pastille: React.FunctionComponent<RectangleIconInterface> = ({
       height={height}
       viewBox={`0 0 ${width} ${height}`}
       style={style}
-      testID={testID}>
+      testID={testID}
+      aria-hidden>
       <Defs>
         <LinearGradient id={gradientId} x1="-41.961%" x2="126.229%" y1="-1.762%" y2="116.717%">
           <Stop offset="0%" stopColor="#EB0055" />
