@@ -40,180 +40,181 @@ exports[`NoContentError should render correctly 1`] = `
       </Text>
     </View>
   </View>
-  <RCTScrollView
-    bounces={false}
-    contentContainerStyle={
-      Object {
-        "alignItems": "center",
-        "flexDirection": "column",
-        "flexGrow": 1,
-        "justifyContent": "center",
-        "maxWidth": 360,
-        "paddingHorizontal": 16,
-      }
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexBasis": 0,
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "center",
+          "maxWidth": 360,
+          "paddingHorizontal": 16,
+        },
+      ]
     }
   >
-    <View>
-      <View
-        numberOfSpaces={18}
-        style={
-          Array [
-            Object {
-              "height": 72,
-            },
-          ]
+    <View
+      numberOfSpaces={9}
+      style={
+        Array [
+          Object {
+            "height": 36,
+          },
+        ]
+      }
+    />
+    <View
+      height={156}
+      width={200}
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={9}
+      style={
+        Array [
+          Object {
+            "height": 36,
+          },
+        ]
+      }
+    />
+    <Text
+      color="#ffffff"
+      fontSize={24}
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 24,
+            "lineHeight": 28,
+          },
+          Object {
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Oups !
+    </Text>
+    <View
+      numberOfSpaces={5}
+      style={
+        Array [
+          Object {
+            "height": 20,
+          },
+        ]
+      }
+    />
+    <Text
+      color="#ffffff"
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Une erreur s’est produite pendant le chargement de nos recommandations.
+    </Text>
+    <View
+      numberOfSpaces={4}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityLabel="Rechercher une offre"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      nativeID="animatedComponent"
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "transparent",
+          "borderColor": "#ffffff",
+          "borderRadius": 24,
+          "borderWidth": 2,
+          "flexDirection": "row",
+          "height": 40,
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 24,
+          "paddingRight": 24,
+          "paddingTop": 2,
+          "width": "auto",
         }
-      />
+      }
+      testID="Rechercher une offre"
+    >
       <View
-        height={156}
-        width={200}
+        height={22}
+        testID="button-icon"
+        width={22}
       >
         <Text>
-          undefined-SVG-Mock
+          button-icon-SVG-Mock
         </Text>
       </View>
-      <View
-        numberOfSpaces={9}
-        style={
-          Array [
-            Object {
-              "height": 36,
-            },
-          ]
-        }
-      />
       <Text
-        color="#ffffff"
-        fontSize={24}
+        adjustsFontSizeToFit={false}
+        icon={[Function]}
+        iconSize={22}
+        numberOfLines={1}
         style={
           Array [
             Object {
               "color": "#ffffff",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 24,
-              "lineHeight": 28,
-            },
-            Object {
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Oups !
-      </Text>
-      <View
-        numberOfSpaces={5}
-        style={
-          Array [
-            Object {
-              "height": 20,
-            },
-          ]
-        }
-      />
-      <Text
-        color="#ffffff"
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Regular",
+              "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
-              "textAlign": "center",
+              "marginLeft": 12,
+              "maxWidth": "100%",
             },
           ]
         }
+        textColor="#ffffff"
       >
-        Une erreur s’est produite pendant le chargement de nos recommandations.
+        Rechercher une offre
       </Text>
-      <View
-        numberOfSpaces={4}
-        style={
-          Array [
-            Object {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityLabel="Rechercher une offre"
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "transparent",
-            "borderColor": "#ffffff",
-            "borderRadius": 24,
-            "borderWidth": 2,
-            "flexDirection": "row",
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 24,
-            "paddingRight": 24,
-            "paddingTop": 2,
-            "width": "auto",
-          }
-        }
-        testID="Rechercher une offre"
-      >
-        <View
-          height={22}
-          testID="button-icon"
-          width={22}
-        >
-          <Text>
-            button-icon-SVG-Mock
-          </Text>
-        </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          icon={[Function]}
-          iconSize={22}
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 12,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-          textColor="#ffffff"
-        >
-          Rechercher une offre
-        </Text>
-      </View>
-      <View
-        customHeight={8}
-        enable={true}
-        style={
-          Array [
-            Object {
-              "height": 8,
-            },
-          ]
-        }
-      />
     </View>
-  </RCTScrollView>
+    <View
+      customHeight={8}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+  </View>
 </View>
 `;

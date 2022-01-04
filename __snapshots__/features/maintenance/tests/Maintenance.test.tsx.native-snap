@@ -40,134 +40,135 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
       </Text>
     </View>
   </View>
-  <RCTScrollView
-    bounces={false}
-    contentContainerStyle={
-      Object {
-        "alignItems": "center",
-        "flexDirection": "column",
-        "flexGrow": 1,
-        "justifyContent": "center",
-        "maxWidth": 360,
-        "paddingHorizontal": 16,
-      }
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexBasis": 0,
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "center",
+          "maxWidth": 360,
+          "paddingHorizontal": 16,
+        },
+      ]
     }
   >
-    <View>
-      <View
-        numberOfSpaces={18}
-        style={
-          Array [
-            Object {
-              "height": 72,
-            },
-          ]
-        }
-      />
-      <View
-        height={124}
-        width={197}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-      <View
-        numberOfSpaces={9}
-        style={
-          Array [
-            Object {
-              "height": 36,
-            },
-          ]
-        }
-      />
-      <Text
-        color="#ffffff"
-        fontSize={24}
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 24,
-              "lineHeight": 28,
-            },
-            Object {
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Maintenance en cours
+    <View
+      numberOfSpaces={9}
+      style={
+        Array [
+          Object {
+            "height": 36,
+          },
+        ]
+      }
+    />
+    <View
+      height={124}
+      width={197}
+    >
+      <Text>
+        undefined-SVG-Mock
       </Text>
-      <View
-        numberOfSpaces={5}
-        style={
-          Array [
-            Object {
-              "height": 20,
-            },
-          ]
-        }
-      />
-      <View
-        numberOfSpaces={6}
-        style={
-          Array [
-            Object {
-              "height": 24,
-            },
-          ]
-        }
-      />
-      <Text
-        color="#ffffff"
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        C'est tout cassé ! Reviens plus tard
-      </Text>
-      <View
-        numberOfSpaces={24}
-        style={
-          Array [
-            Object {
-              "height": 96,
-            },
-          ]
-        }
-      />
-      <View
-        height={36}
-        width={107}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-      <View
-        customHeight={8}
-        enable={true}
-        style={
-          Array [
-            Object {
-              "height": 8,
-            },
-          ]
-        }
-      />
     </View>
-  </RCTScrollView>
+    <View
+      numberOfSpaces={9}
+      style={
+        Array [
+          Object {
+            "height": 36,
+          },
+        ]
+      }
+    />
+    <Text
+      color="#ffffff"
+      fontSize={24}
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 24,
+            "lineHeight": 28,
+          },
+          Object {
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Maintenance en cours
+    </Text>
+    <View
+      numberOfSpaces={5}
+      style={
+        Array [
+          Object {
+            "height": 20,
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <Text
+      color="#ffffff"
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      C'est tout cassé ! Reviens plus tard
+    </Text>
+    <View
+      numberOfSpaces={24}
+      style={
+        Array [
+          Object {
+            "height": 96,
+          },
+        ]
+      }
+    />
+    <View
+      height={36}
+      width={107}
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+    <View
+      customHeight={8}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+  </View>
 </View>
 `;
 
@@ -211,133 +212,134 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
       </Text>
     </View>
   </View>
-  <RCTScrollView
-    bounces={false}
-    contentContainerStyle={
-      Object {
-        "alignItems": "center",
-        "flexDirection": "column",
-        "flexGrow": 1,
-        "justifyContent": "center",
-        "maxWidth": 360,
-        "paddingHorizontal": 16,
-      }
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexBasis": 0,
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "center",
+          "maxWidth": 360,
+          "paddingHorizontal": 16,
+        },
+      ]
     }
   >
-    <View>
-      <View
-        numberOfSpaces={18}
-        style={
-          Array [
-            Object {
-              "height": 72,
-            },
-          ]
-        }
-      />
-      <View
-        height={124}
-        width={197}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-      <View
-        numberOfSpaces={9}
-        style={
-          Array [
-            Object {
-              "height": 36,
-            },
-          ]
-        }
-      />
-      <Text
-        color="#ffffff"
-        fontSize={24}
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 24,
-              "lineHeight": 28,
-            },
-            Object {
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Maintenance en cours
+    <View
+      numberOfSpaces={9}
+      style={
+        Array [
+          Object {
+            "height": 36,
+          },
+        ]
+      }
+    />
+    <View
+      height={124}
+      width={197}
+    >
+      <Text>
+        undefined-SVG-Mock
       </Text>
-      <View
-        numberOfSpaces={5}
-        style={
-          Array [
-            Object {
-              "height": 20,
-            },
-          ]
-        }
-      />
-      <View
-        numberOfSpaces={6}
-        style={
-          Array [
-            Object {
-              "height": 24,
-            },
-          ]
-        }
-      />
-      <Text
-        color="#ffffff"
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !
-      </Text>
-      <View
-        numberOfSpaces={24}
-        style={
-          Array [
-            Object {
-              "height": 96,
-            },
-          ]
-        }
-      />
-      <View
-        height={36}
-        width={107}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-      <View
-        customHeight={8}
-        enable={true}
-        style={
-          Array [
-            Object {
-              "height": 8,
-            },
-          ]
-        }
-      />
     </View>
-  </RCTScrollView>
+    <View
+      numberOfSpaces={9}
+      style={
+        Array [
+          Object {
+            "height": 36,
+          },
+        ]
+      }
+    />
+    <Text
+      color="#ffffff"
+      fontSize={24}
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 24,
+            "lineHeight": 28,
+          },
+          Object {
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Maintenance en cours
+    </Text>
+    <View
+      numberOfSpaces={5}
+      style={
+        Array [
+          Object {
+            "height": 20,
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <Text
+      color="#ffffff"
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !
+    </Text>
+    <View
+      numberOfSpaces={24}
+      style={
+        Array [
+          Object {
+            "height": 96,
+          },
+        ]
+      }
+    />
+    <View
+      height={36}
+      width={107}
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+    <View
+      customHeight={8}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+  </View>
 </View>
 `;

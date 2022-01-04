@@ -40,168 +40,169 @@ exports[`<NotYetUnderageEligibility /> should render properly 1`] = `
       </Text>
     </View>
   </View>
-  <RCTScrollView
-    bounces={false}
-    contentContainerStyle={
-      Object {
-        "alignItems": "center",
-        "flexDirection": "column",
-        "flexGrow": 1,
-        "justifyContent": "center",
-        "maxWidth": 360,
-        "paddingHorizontal": 16,
-      }
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexBasis": 0,
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "center",
+          "maxWidth": 360,
+          "paddingHorizontal": 16,
+        },
+      ]
     }
   >
-    <View>
-      <View
-        numberOfSpaces={18}
-        style={
-          Array [
-            Object {
-              "height": 72,
-            },
-          ]
-        }
-      />
-      <View
-        height={120}
-        width={120}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-      <View
-        numberOfSpaces={9}
-        style={
-          Array [
-            Object {
-              "height": 36,
-            },
-          ]
-        }
-      />
-      <Text
-        color="#ffffff"
-        fontSize={24}
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 24,
-              "lineHeight": 28,
-            },
-            Object {
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        C'est pour bientôt !
+    <View
+      numberOfSpaces={9}
+      style={
+        Array [
+          Object {
+            "height": 36,
+          },
+        ]
+      }
+    />
+    <View
+      height={140}
+      width={140}
+    >
+      <Text>
+        undefined-SVG-Mock
       </Text>
-      <View
-        numberOfSpaces={5}
-        style={
-          Array [
-            Object {
-              "height": 20,
-            },
-          ]
+    </View>
+    <View
+      numberOfSpaces={9}
+      style={
+        Array [
+          Object {
+            "height": 36,
+          },
+        ]
+      }
+    />
+    <Text
+      color="#ffffff"
+      fontSize={24}
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 24,
+            "lineHeight": 28,
+          },
+          Object {
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      C'est pour bientôt !
+    </Text>
+    <View
+      numberOfSpaces={5}
+      style={
+        Array [
+          Object {
+            "height": 20,
+          },
+        ]
+      }
+    />
+    <Text
+      color="#ffffff"
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Reviens à partir du 01 décembre pour poursuivre ton inscription et bénéficier des offres du pass Culture.
+    </Text>
+    <View
+      numberOfSpaces={24}
+      style={
+        Array [
+          Object {
+            "height": 96,
+          },
+        ]
+      }
+    />
+    <View
+      accessibilityLabel="Retourner à l'accueil"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      nativeID="animatedComponent"
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "borderRadius": 24,
+          "borderWidth": 0,
+          "flexDirection": "row",
+          "height": 40,
+          "justifyContent": "center",
+          "maxWidth": 500,
+          "opacity": 1,
+          "paddingBottom": 2,
+          "paddingLeft": 2,
+          "paddingRight": 2,
+          "paddingTop": 2,
+          "width": "100%",
         }
-      />
+      }
+      testID="Retourner à l'accueil"
+    >
       <Text
-        color="#ffffff"
+        adjustsFontSizeToFit={false}
+        numberOfLines={1}
         style={
           Array [
             Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Regular",
+              "color": "#eb0055",
+              "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
-              "textAlign": "center",
+              "marginLeft": 0,
+              "maxWidth": "100%",
             },
           ]
         }
+        textColor="#eb0055"
       >
-        Reviens à partir du 01 décembre pour poursuivre ton inscription et bénéficier des offres du pass Culture.
+        Retourner à l'accueil
       </Text>
-      <View
-        numberOfSpaces={30}
-        style={
-          Array [
-            Object {
-              "height": 120,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityLabel="Retourner à l'accueil"
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "backgroundColor": "#ffffff",
-            "borderRadius": 24,
-            "borderWidth": 0,
-            "flexDirection": "row",
-            "height": 40,
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "opacity": 1,
-            "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
-            "paddingTop": 2,
-            "width": "100%",
-          }
-        }
-        testID="Retourner à l'accueil"
-      >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            Array [
-              Object {
-                "color": "#eb0055",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-                "marginLeft": 0,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-          textColor="#eb0055"
-        >
-          Retourner à l'accueil
-        </Text>
-      </View>
-      <View
-        customHeight={8}
-        enable={true}
-        style={
-          Array [
-            Object {
-              "height": 8,
-            },
-          ]
-        }
-      />
     </View>
-  </RCTScrollView>
+    <View
+      customHeight={8}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+  </View>
 </View>
 `;
