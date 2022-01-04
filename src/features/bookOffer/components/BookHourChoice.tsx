@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { debounce } from 'lodash'
+import debounce from 'lodash/debounce'
 import React, { useMemo, useRef } from 'react'
 import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
