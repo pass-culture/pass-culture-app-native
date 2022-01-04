@@ -22,7 +22,13 @@ export const BicolorIdCardWithMagnifyingGlass: React.FC<BicolorIconInterface> = 
   const height = (size as number) / ratio
 
   return (
-    <Svg width={width} height={height} viewBox="0 0 155 124" fill="none" testID={testID}>
+    <Svg
+      width={width}
+      height={height}
+      viewBox="0 0 155 124"
+      fill="none"
+      testID={testID}
+      aria-hidden>
       <Path
         fillRule="evenodd"
         clipRule="evenodd"

@@ -7,7 +7,7 @@ import { IconInterface } from './types'
 
 export function RequestSent({ size = 32, color = ColorsEnum.BLACK, testID }: IconInterface) {
   return (
-    <Svg width={size} height={size} viewBox="0 0 157 165" testID={testID}>
+    <Svg width={size} height={size} viewBox="0 0 157 165" testID={testID} aria-hidden>
       <G fill="none" fillRule="evenodd">
         <G fill={color}>
           <Path

@@ -6,7 +6,7 @@ import { ColorsEnum } from 'ui/theme/colors'
 
 export function OfferEvent({ size = 32, testID, color = ColorsEnum.BLACK }: IconInterface) {
   return (
-    <Svg width={size} height={size} testID={testID} viewBox="0 0 48 48">
+    <Svg width={size} height={size} testID={testID} viewBox="0 0 48 48" aria-hidden>
       <Path
         fillRule="evenodd"
         clipRule="evenodd"

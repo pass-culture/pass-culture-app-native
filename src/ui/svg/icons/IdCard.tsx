@@ -17,7 +17,7 @@ export const IdCard: React.FunctionComponent<IconInterface> = ({
   const fill = color2 ? fillBicolor : color
 
   return (
-    <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID}>
+    <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID} aria-hidden>
       {!!color2 && <BicolorGradient id={id} color1={color} color2={color2} />}
       <Path
         fill={fill}
