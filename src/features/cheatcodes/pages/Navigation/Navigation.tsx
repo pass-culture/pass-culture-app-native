@@ -219,6 +219,12 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
+            title={'Tu es en paysage !'}
+            onPress={() => navigate('LandscapePositionPage')}
+          />
+        </Row>
+        <Row half>
+          <NavigationButton
             title={`Maintenance Page`}
             onPress={() =>
               setScreenError(

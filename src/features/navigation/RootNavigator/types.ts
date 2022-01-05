@@ -125,6 +125,7 @@ export type RootStackParamList = {
   PageNotFound: undefined
   UserProfiling: undefined
   Venue: { id: number }
+  LandscapePositionPage: undefined
   DeeplinksGenerator: undefined
 } & IdentityCheckRootStackParamList
 

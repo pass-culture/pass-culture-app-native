@@ -826,10 +826,6 @@ msgstr "Email création de compte envoyé"
 msgid "Email création de compte expiré"
 msgstr "Email création de compte expiré"
 
-#: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx
-msgid "Email enregistré. Tu seras averti lors du retour du service."
-msgstr "Email enregistré. Tu seras averti lors du retour du service."
-
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Email modification mot de passe envoyé"
 msgstr "Email modification mot de passe envoyé"
@@ -930,10 +926,6 @@ msgstr "Envie de tout envie de lien ?"
 msgid "Environ 10 jours"
 msgstr "Environ 10 jours"
 
-#: src/features/identityCheck/components/FastEduconnectConnectionRequestModal.tsx
-msgid "Environ 3 heures"
-msgstr "Environ 3 heures"
-
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Erreur"
 msgstr "Erreur"
@@ -980,7 +972,6 @@ msgstr "Fais-tu partie de la phase de test ?"
 msgid "Favoris"
 msgstr "Favoris"
 
-#: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx
 #: src/features/bookOffer/pages/BookingOfferModal.tsx
 #: src/features/offer/components/ReportOfferModal.tsx
 #: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx
@@ -1768,7 +1759,6 @@ msgstr "On y va !"
 msgid "Oups, cette offre n’est plus disponible !"
 msgstr "Oups, cette offre n’est plus disponible !"
 
-#: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
 #: src/features/home/components/NoContentError.tsx
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
@@ -1871,6 +1861,10 @@ msgstr "Patrimoine et tourisme"
 #: src/features/bookings/helpers.ts
 msgid "Permanent"
 msgstr "Permanent"
+
+#: src/features/landscapePosition/LandscapePositionPage.tsx
+msgid "Place ton téléphone ou ta tablette à la verticale pour afficher l’application."
+msgstr "Place ton téléphone ou ta tablette à la verticale pour afficher l’application."
 
 #: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
 msgid "Place-toi dans un lieu bien éclairé"
@@ -2013,10 +2007,6 @@ msgstr "Qui est-ce ?"
 #: src/features/search/sections/titles.ts
 msgid "Rayon"
 msgstr "Rayon"
-
-#: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx
-msgid "Recevoir une alerte"
-msgstr "Recevoir une alerte"
 
 #: src/features/navigation/RootNavigator/routes.ts
 #: src/features/navigation/RootNavigator/routes.ts
@@ -2463,6 +2453,11 @@ msgstr "Ton prénom ne doit pas contenir de chiffres ou de caractères spéciaux
 msgid "Ton signalement a bien été pris en compte"
 msgstr "Ton signalement a bien été pris en compte"
 
+#: src/features/landscapePosition/LandscapePositionPage.tsx
+#: src/features/landscapePosition/LandscapePositionPage.tsx
+msgid "Tourne-moi"
+msgstr "Tourne-moi"
+
 #: src/ui/components/achievements/components/GenericAchievement.tsx
 msgid "Tout passer"
 msgstr "Tout passer"
@@ -2766,7 +2761,6 @@ msgid "VISA"
 msgstr "VISA"
 
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
-#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Validation de l'identification"
 msgstr "Validation de l'identification"
 
@@ -2882,10 +2876,6 @@ msgstr "Vous devez d'abord générer un lien"
 #: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
 msgid "Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés."
 msgstr "Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés."
-
-#: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx
-msgid "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300 €. Tu recevras une alerte par mail pour commencer ta demande des 300 € dès que le service sera de nouveau disponible !"
-msgstr "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300 €. Tu recevras une alerte par mail pour commencer ta demande des 300 € dès que le service sera de nouveau disponible !"
 
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Vérification d'identité"
