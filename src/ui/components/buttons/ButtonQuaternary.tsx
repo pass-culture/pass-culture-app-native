@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 
 import { AppButton, BaseButtonProps } from 'ui/components/buttons/AppButton'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum, getSpacing } from 'ui/theme'
 
 export const ButtonQuaternary: FunctionComponent<BaseButtonProps> = (props) => {
   let textColor = ColorsEnum.PRIMARY
@@ -20,8 +20,9 @@ export const ButtonQuaternary: FunctionComponent<BaseButtonProps> = (props) => {
       backgroundColor={backgroundColor}
       iconColor={iconColor}
       textColor={textColor}
-      iconSize={24}
-      textSize={12}
+      iconSize={getSpacing(4)}
+      inlineHeight={getSpacing(5)}
+      textSize={getSpacing(3)}
     />
   )
 }
