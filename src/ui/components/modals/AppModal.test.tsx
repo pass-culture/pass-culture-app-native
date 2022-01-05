@@ -1,8 +1,4 @@
-import React, { FunctionComponent } from 'react'
-import { ThemeProvider } from 'styled-components/native'
-
-import { ComputedTheme } from 'libs/styled/ThemeProvider'
-import { computedTheme } from 'tests/computedTheme'
+import React from 'react'
 
 import {
   defaultProps,
@@ -137,38 +133,16 @@ describe('<AppModal />', () => {
   })
 
   test('on big screen', () => {
-    const renderAPI = render(
-      <AppModal {...defaultProps} />,
-      withCustomTheme({
-        isDesktopViewport: true,
-      })
-    )
+    const renderAPI = render(<AppModal {...defaultProps} />, {
+      theme: { isDesktopViewport: true },
+    })
     expect(renderAPI).toMatchSnapshot()
   })
 
   test('on small screen', () => {
-    const renderAPI = render(
-      <AppModal {...defaultProps} />,
-      withCustomTheme({
-        isDesktopViewport: false,
-        appContentWidth: 400,
-      })
-    )
+    const renderAPI = render(<AppModal {...defaultProps} />, {
+      theme: { isDesktopViewport: false, appContentWidth: 400 },
+    })
     expect(renderAPI).toMatchSnapshot()
   })
 })
-
-function withCustomTheme(customTheme: Partial<ComputedTheme>) {
-  const Wrapper: FunctionComponent = ({ children }) => (
-    <ThemeProvider
-      theme={{
-        ...computedTheme,
-        ...customTheme,
-      }}>
-      {children}
-    </ThemeProvider>
-  )
-  return {
-    wrapper: Wrapper,
-  }
-}

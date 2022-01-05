@@ -2,11 +2,12 @@ import { i18n } from '@lingui/core'
 import { I18nProvider } from '@lingui/react'
 // eslint-disable-next-line no-restricted-imports
 import { act, render, RenderOptions } from '@testing-library/react'
+import deepmerge from 'deepmerge'
 import flushPromises from 'flush-promises'
 import { fr } from 'make-plural/plurals'
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { ReactTestInstance } from 'react-test-renderer'
-import { ThemeProvider } from 'styled-components/native'
+import { ThemeProvider, DefaultTheme } from 'styled-components/native'
 
 import { messages } from 'locales/fr/messages'
 import { computedTheme } from 'tests/computedTheme'
@@ -76,9 +77,14 @@ export function simulateWebviewMessage(webview: ReactTestInstance, message: stri
   })
 }
 
-const DefaultWrapper: React.FC = ({ children }) => {
+type PropsWithTheme = {
+  theme?: Partial<DefaultTheme>
+  children?: ReactNode
+}
+
+const DefaultWrapper = ({ children, theme }: PropsWithTheme) => {
   return (
-    <ThemeProvider theme={computedTheme}>
+    <ThemeProvider theme={deepmerge(computedTheme, theme || {})}>
       <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
         {children}
       </I18nProvider>
@@ -86,17 +92,22 @@ const DefaultWrapper: React.FC = ({ children }) => {
   )
 }
 
+type CustomRenderOptions = {
+  theme?: Partial<DefaultTheme>
+} & RenderOptions
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function customRender(ui: React.ReactElement<any>, options?: RenderOptions) {
-  const { wrapper: Wrapper, ...restOfOptions } = options || {}
+function customRender(ui: React.ReactElement<any>, options?: CustomRenderOptions) {
+  const { wrapper: Wrapper, theme, ...restOfOptions } = options || {}
+
   return render(ui, {
     wrapper: Wrapper
       ? ({ children }) => (
-          <DefaultWrapper>
+          <DefaultWrapper theme={theme}>
             <Wrapper>{children}</Wrapper>
           </DefaultWrapper>
         )
-      : DefaultWrapper,
+      : ({ children }) => <DefaultWrapper theme={theme}>{children}</DefaultWrapper>,
     ...restOfOptions,
   })
 }

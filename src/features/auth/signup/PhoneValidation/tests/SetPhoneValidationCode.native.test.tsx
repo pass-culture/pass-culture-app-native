@@ -26,6 +26,9 @@ import {
 } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
 
+// eslint-disable-next-line local-rules/no-allow-console
+// allowConsole({ error: true })
+
 jest.mock('react-query')
 jest.mock('features/auth/settings')
 jest.mock('features/auth/signup/useBeneficiaryValidationNavigation')
@@ -113,10 +116,8 @@ describe('SetPhoneValidationCode', () => {
     it('should enable continue button if input is valid and complete', async () => {
       const { getByTestId } = renderModalWithFilledCodeInput('123456')
       const continueButton = getByTestId('Continuer')
-
-      await waitForExpect(() => {
-        expect(continueButton.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
-      })
+      await act(flushAllPromises)
+      expect(continueButton.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
     })
 
     it.each([
@@ -125,10 +126,8 @@ describe('SetPhoneValidationCode', () => {
     ])('should not enable continue button when "%s"', async (_reason, codeTyped) => {
       const { getByTestId } = renderModalWithFilledCodeInput(codeTyped)
       const continueButton = getByTestId('Continuer')
-
-      await waitForExpect(() => {
-        expect(continueButton.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
-      })
+      await act(flushAllPromises)
+      expect(continueButton.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
     })
 
     it('should display input error message if validate phone number request fails', async () => {

@@ -66,7 +66,11 @@ export const IdentityCheckHonor = () => {
             text={t`Je déclare que l'ensemble des informations que j’ai renseignées sont correctes.`}
             description={t`Des contrôles aléatoires seront effectués et un justificatif de domicile devra être fourni. En cas de fraude, des poursuites judiciaires pourraient être engagées.`}
           />
-          {theme.isMobileViewport ? <Spacer.Flex /> : <Spacer.Column numberOfSpaces={10} />}
+          {theme.isMobileViewport ? (
+            <Spacer.Flex flex={2} />
+          ) : (
+            <Spacer.Column numberOfSpaces={10} />
+          )}
           <ButtonContainer>
             <ButtonPrimary
               onPress={postHonorStatement}

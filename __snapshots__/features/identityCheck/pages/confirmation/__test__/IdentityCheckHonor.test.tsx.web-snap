@@ -342,15 +342,15 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                 className="css-view-1dbjc4n"
                 style={
                   Object {
-                    "WebkitBoxFlex": 1,
+                    "WebkitBoxFlex": 2,
                     "WebkitFlexBasis": "0px",
-                    "WebkitFlexGrow": 1,
+                    "WebkitFlexGrow": 2,
                     "WebkitFlexShrink": 1,
                     "flexBasis": "0px",
-                    "flexGrow": 1,
+                    "flexGrow": 2,
                     "flexShrink": 1,
                     "msFlexNegative": 1,
-                    "msFlexPositive": 1,
+                    "msFlexPositive": 2,
                     "msFlexPreferredSize": "0px",
                   }
                 }

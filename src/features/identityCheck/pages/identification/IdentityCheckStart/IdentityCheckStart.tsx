@@ -1,9 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import styled from 'styled-components/native'
 
-import { DMSInformation } from 'features/identityCheck/atoms/DMSInformation'
-import { IdentityVerificationText } from 'features/identityCheck/atoms/IdentityVerificationText'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { SomeAdviceBeforeIdentityCheckModal } from 'features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
@@ -12,8 +9,8 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useModal } from 'ui/components/modals/useModal'
-import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
-import { Spacer, getSpacing } from 'ui/theme'
+
+import { IdentityCheckStartContent } from './IdentityCheckStartContent'
 
 export const IdentityCheckStart = () => {
   const { visible, showModal, hideModal } = useModal(false)
@@ -36,18 +33,7 @@ export const IdentityCheckStart = () => {
       <PageWithHeader
         title={t`Identification`}
         onGoBack={onGoBack}
-        scrollChildren={
-          <Container>
-            <Spacer.Column numberOfSpaces={10} />
-            <BicolorIdCardWithMagnifyingGlass size={getSpacing(36)} />
-            <Spacer.Column numberOfSpaces={6} />
-            <IdentityVerificationText />
-            <Spacer.Column numberOfSpaces={6} />
-            <Spacer.Flex />
-            <DMSInformation />
-            <Spacer.Column numberOfSpaces={2} />
-          </Container>
-        }
+        scrollChildren={<IdentityCheckStartContent />}
         fixedBottomChildren={
           <ButtonPrimary onPress={showModal} title={t`Commencer la vérification`} />
         }
@@ -60,5 +46,3 @@ export const IdentityCheckStart = () => {
     </React.Fragment>
   )
 }
-
-const Container = styled.View({ height: '100%', alignItems: 'center' })
