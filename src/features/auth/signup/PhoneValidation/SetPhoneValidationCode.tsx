@@ -37,7 +37,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
-import { EmailDeprecated as Email } from 'ui/svg/icons/Email_deprecated'
+import { Email } from 'ui/svg/icons/Email'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 const CODE_INPUT_LENGTH = 6
@@ -268,16 +268,16 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
           <Separator color={ColorsEnum.GREY_MEDIUM} />
           <Spacer.Column numberOfSpaces={4} />
           <HelpRow>
-            <HelpBlock color={ColorsEnum.GREY_DARK}>
+            <Typo.Caption color={ColorsEnum.GREY_DARK}>
               {t`Si tu n’arrives pas à valider ton code tu peux`}
-              {appContentWidth <= 320 ? <Break /> : <Spacer.Row numberOfSpaces={1} />}
-              <ButtonQuaternary
-                title={t`Contacter le support`}
-                icon={Email}
-                onPress={contactSupport.forPhoneNumberConfirmation}
-                inline
-              />
-            </HelpBlock>
+            </Typo.Caption>
+            {appContentWidth <= 320 ? <Break /> : <Spacer.Row numberOfSpaces={1} />}
+            <ButtonQuaternary
+              title={t`Contacter le support`}
+              icon={Email}
+              onPress={contactSupport.forPhoneNumberConfirmation}
+              inline
+            />
           </HelpRow>
         </ModalContent>
       </BottomContentPage>
@@ -338,10 +338,4 @@ const HelpRow = styled.View({
 
 const RetryButton = styled(ButtonTertiary)({
   height: '100%',
-})
-
-const HelpBlock = styled(Typo.Caption)({
-  display: 'flex',
-  alignItems: 'center',
-  flexWrap: 'wrap',
 })
