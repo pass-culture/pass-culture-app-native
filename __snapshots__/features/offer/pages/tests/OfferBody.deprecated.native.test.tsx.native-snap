@@ -1299,8 +1299,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     />
                                     <View
-                                      height={48}
-                                      width={48}
+                                      fill="#151515"
+                                      height={32}
+                                      width={32}
                                     >
                                       <Text>
                                         undefined-SVG-Mock
@@ -1433,8 +1434,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     />
                                     <View
-                                      height={48}
-                                      width={48}
+                                      fill="#151515"
+                                      height={32}
+                                      width={32}
                                     >
                                       <Text>
                                         undefined-SVG-Mock
@@ -1598,8 +1600,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     />
                                     <View
-                                      height={48}
-                                      width={48}
+                                      fill="#151515"
+                                      height={32}
+                                      width={32}
                                     >
                                       <Text>
                                         undefined-SVG-Mock
@@ -1732,8 +1735,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     />
                                     <View
-                                      height={48}
-                                      width={48}
+                                      fill="#151515"
+                                      height={32}
+                                      width={32}
                                     >
                                       <Text>
                                         undefined-SVG-Mock
@@ -4165,8 +4169,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     />
                                     <View
-                                      height={48}
-                                      width={48}
+                                      fill="#151515"
+                                      height={32}
+                                      width={32}
                                     >
                                       <Text>
                                         undefined-SVG-Mock
@@ -4299,8 +4304,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     />
                                     <View
-                                      height={48}
-                                      width={48}
+                                      fill="#151515"
+                                      height={32}
+                                      width={32}
                                     >
                                       <Text>
                                         undefined-SVG-Mock
@@ -4464,8 +4470,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     />
                                     <View
-                                      height={48}
-                                      width={48}
+                                      fill="#151515"
+                                      height={32}
+                                      width={32}
                                     >
                                       <Text>
                                         undefined-SVG-Mock
@@ -4598,8 +4605,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     />
                                     <View
-                                      height={48}
-                                      width={48}
+                                      fill="#151515"
+                                      height={32}
+                                      width={32}
                                     >
                                       <Text>
                                         undefined-SVG-Mock

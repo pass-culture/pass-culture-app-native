@@ -2325,8 +2325,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 />
                 <View
-                  height={48}
-                  width={48}
+                  fill="#151515"
+                  height={32}
+                  width={32}
                 >
                   <Text>
                     undefined-SVG-Mock
@@ -2458,8 +2459,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 />
                 <View
-                  height={48}
-                  width={48}
+                  fill="#151515"
+                  height={32}
+                  width={32}
                 >
                   <Text>
                     undefined-SVG-Mock
@@ -2624,8 +2626,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 />
                 <View
-                  height={48}
-                  width={48}
+                  fill="#151515"
+                  height={32}
+                  width={32}
                 >
                   <Text>
                     undefined-SVG-Mock
@@ -2758,8 +2761,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 />
                 <View
-                  height={48}
-                  width={48}
+                  fill="#151515"
+                  height={32}
+                  width={32}
                 >
                   <Text>
                     undefined-SVG-Mock

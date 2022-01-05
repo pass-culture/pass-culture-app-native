@@ -32,7 +32,7 @@ export const AccessibilityAtom: React.FC<Props> = ({
     <Container rightSpacingValue={rightSpacingValue} testID="accessibilityAtomContainer">
       <Frame testID="accessibilityFrame">
         <Spacer.Flex />
-        <Icon size={getSpacing(12)} />
+        <Icon size={getSpacing(8)} />
         <Spacer.Flex />
         <ValidationContainer>
           <ValidationMark
