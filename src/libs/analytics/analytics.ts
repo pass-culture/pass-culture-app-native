@@ -210,8 +210,6 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.VENUE_SEE_MORE_CLICKED, { venueId }),
   logChooseLocation: (params: { type: 'place' } | { type: 'venue'; venueId: number }) =>
     analyticsProvider.logEvent(AnalyticsEvent.CHOOSE_LOCATION, params),
-  logSelectSchool: (params: { name: string; city: string; academy: string }) =>
-    analyticsProvider.logEvent(AnalyticsEvent.SELECT_SCHOOL, params),
   logSaveNewMail: () => analyticsProvider.logEvent(AnalyticsEvent.SAVE_NEW_MAIL),
   logModifyMail: () => analyticsProvider.logEvent(AnalyticsEvent.MODIFY_MAIL),
   logSendActivationMailAgain: (numberOfTimes: number) =>

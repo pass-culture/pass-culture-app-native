@@ -1,15 +1,12 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React, { memo, PropsWithChildren, useState } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SubscriptionMessage } from 'api/gen'
 import { useDepositAmountsByAge } from 'features/auth/api'
-import { useAppSettings } from 'features/auth/settings'
 import { useNextSubscriptionStep } from 'features/auth/signup/nextSubscriptionStep'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { IdentityCheckPendingBadge } from 'features/profile/components/IdentityCheckPendingBadge'
 import { SubscriptionMessageBadge } from 'features/profile/components/SubscriptionMessageBadge'
 import { YoungerBadge } from 'features/profile/components/YoungerBadge'
@@ -32,20 +29,14 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
   const [error, setError] = useState<Error | undefined>()
   const today = new Date()
   const depositAmount = useDepositAmountsByAge().eighteenYearsOldDeposit
-  const { data: settings } = useAppSettings()
   const { data: subscription } = useNextSubscriptionStep()
-
-  const { navigate } = useNavigation<UseNavigationType>()
 
   const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation(setError)
   const isUserUnderage = useIsUserUnderage()
 
   function onBannerPress() {
-    if (!isUserUnderage || settings?.enableUnderageGeneralisation) {
-      navigateToNextBeneficiaryValidationStep()
-      return
-    }
-    navigate('SelectSchoolHome')
+    navigateToNextBeneficiaryValidationStep()
+    return
   }
 
   const deposit = depositAmount.replace(' ', '')

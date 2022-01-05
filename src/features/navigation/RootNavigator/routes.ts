@@ -15,8 +15,6 @@ import { SetPhoneValidationCode } from 'features/auth/signup/PhoneValidation/Set
 import { SignupConfirmationEmailSent } from 'features/auth/signup/SignupConfirmationEmailSent'
 import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfirmationExpiredLink'
 import { SignupForm } from 'features/auth/signup/SignupForm'
-import { SelectSchool } from 'features/auth/signup/underageSignup/SelectSchool'
-import { SelectSchoolHome } from 'features/auth/signup/underageSignup/SelectSchoolHome'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligiblity'
 import { NotYetUnderageEligibility } from 'features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails'
@@ -292,18 +290,6 @@ export const routes: Route[] = [
     component: SearchFilter,
     path: 'recherche/filtres',
     options: { title: t`Recherche - filtres` },
-  },
-  {
-    name: 'SelectSchool',
-    component: SelectSchool,
-    path: 'creation-compte/etablissement-scolaire',
-    options: { title: t`Etablissement scolaire - Sélection` },
-  },
-  {
-    name: 'SelectSchoolHome',
-    component: SelectSchoolHome,
-    path: 'creation-compte/etablissement-scolaire-home',
-    options: { title: t`Etablissement scolaire - Accueil` },
   },
   {
     name: 'SignupForm',

@@ -3,7 +3,7 @@ import { rest } from 'msw'
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { EligibilityType, UserProfileResponse } from 'api/gen'
+import { UserProfileResponse } from 'api/gen'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import * as datesLib from 'libs/dates'
 import { env } from 'libs/environment'
@@ -96,26 +96,6 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
         expect(navigate).toHaveBeenCalledWith('VerifyEligibility')
       })
       loginRoutine.mockRestore()
-    })
-    it('should redirect to SelectSchoolHome when isEligibleForBeneficiaryUpgrade and user is underage', async () => {
-      server.use(
-        rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
-          res.once(
-            ctx.status(200),
-            ctx.json({
-              email: 'email@domain.ext',
-              firstName: 'Jean',
-              eligibility: EligibilityType.underage,
-              isEligibleForBeneficiaryUpgrade: true,
-            })
-          )
-        )
-      )
-      renderPage()
-
-      await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('SelectSchoolHome')
-      })
     })
     it('should redirect to AccountCreated when not isEligibleForBeneficiaryUpgrade and user is not future eligible', async () => {
       server.use(
