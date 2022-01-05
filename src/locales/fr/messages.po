@@ -2236,8 +2236,8 @@ msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
 
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
-msgid "Si tu n’arrives pas à récupérer ton code tu peux"
-msgstr "Si tu n’arrives pas à récupérer ton code tu peux"
+msgid "Si tu n’arrives pas à valider ton code tu peux"
+msgstr "Si tu n’arrives pas à valider ton code tu peux"
 
 #: src/features/identityCheck/atoms/DMSInformation.tsx
 msgid "Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées"
