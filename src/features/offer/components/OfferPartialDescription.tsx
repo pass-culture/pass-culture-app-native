@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { highlightLinks } from 'libs/parsers/highlightLinks'
@@ -18,6 +19,20 @@ export const OfferPartialDescription: React.FC<Props> = ({ id, description = '' 
   const { extraData = {}, image } = offerResponse || {}
   const contentOfferDescription = getContentFromOffer(extraData, description, image?.credit)
 
+  const shouldDisplaySeeMoreButtonOnThisPlatform = Platform.OS !== 'web'
+  const maxDisplayedDescriptionLines = shouldDisplaySeeMoreButtonOnThisPlatform ? 8 : undefined
+  const [isLongerThanMaximumLines, setIsLongerThanMaximumLines] = useState(
+    shouldDisplaySeeMoreButtonOnThisPlatform
+  )
+  const setLinesDisplayed = (linesDisplayed: number): void => {
+    if (typeof maxDisplayedDescriptionLines === 'undefined') return
+
+    setIsLongerThanMaximumLines(linesDisplayed >= maxDisplayedDescriptionLines)
+  }
+  const shouldDisplaySeeMoreButton = shouldDisplaySeeMoreButtonOnThisPlatform
+    ? contentOfferDescription.length > 0 && isLongerThanMaximumLines
+    : contentOfferDescription.filter(({ key }) => key !== 'description').length > 0
+
   if (contentOfferDescription.length === 0) return null
 
   return (
@@ -25,13 +40,18 @@ export const OfferPartialDescription: React.FC<Props> = ({ id, description = '' 
       <Spacer.Column numberOfSpaces={4} />
       {!!description && (
         <React.Fragment>
-          <TypoDescription testID="offerPartialDescriptionBody" numberOfLines={8}>
+          <TypoDescription
+            testID="offerPartialDescriptionBody"
+            numberOfLines={maxDisplayedDescriptionLines}
+            onTextLayout={({ nativeEvent }) => {
+              setLinesDisplayed(nativeEvent.lines.length)
+            }}>
             {highlightLinks(description)}
           </TypoDescription>
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}
-      {contentOfferDescription.length > 0 && (
+      {!!shouldDisplaySeeMoreButton && (
         <OfferSeeMoreContainer testID="offerSeeMoreContainer" description={description}>
           <OfferSeeMore id={id} longWording={!description} />
         </OfferSeeMoreContainer>

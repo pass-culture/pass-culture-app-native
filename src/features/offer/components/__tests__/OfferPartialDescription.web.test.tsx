@@ -67,18 +67,6 @@ describe('OfferPartialDescription', () => {
       expect(queryByTestId('offerSeeMoreContainer')).toBeTruthy()
     })
     describe('should be rendered', () => {
-      it('when there is description on the description page', () => {
-        const { queryByTestId } = renderOfferDescription({
-          ...defaultParams,
-          setup: (queryClient) => {
-            queryClient.setQueryData(['offer', offerId], {
-              image: {},
-              extraData: {},
-            })
-          },
-        })
-        expect(queryByTestId('offerSeeMoreContainer')).toBeTruthy()
-      })
       it('when there is image on the description page', () => {
         const { queryByTestId } = renderOfferDescription({
           ...defaultParams,
@@ -106,12 +94,26 @@ describe('OfferPartialDescription', () => {
         expect(queryByTestId('offerSeeMoreContainer')).toBeTruthy()
       })
     })
-    it("shouldn't be rendered when there is no content on the description page", () => {
-      const { queryByTestId } = renderOfferDescription({
-        description: undefined,
-        setup: setupWithNoDataInDescriptionPage,
+    describe("shouldn't be rendered", () => {
+      it('when there is no content on the description page', () => {
+        const { queryByTestId } = renderOfferDescription({
+          description: undefined,
+          setup: setupWithNoDataInDescriptionPage,
+        })
+        expect(queryByTestId('offerSeeMoreContainer')).toBeFalsy()
       })
-      expect(queryByTestId('offerSeeMoreContainer')).toBeFalsy()
+      it('when there is only description on the description page', () => {
+        const { queryByTestId } = renderOfferDescription({
+          ...defaultParams,
+          setup: (queryClient) => {
+            queryClient.setQueryData(['offer', offerId], {
+              image: {},
+              extraData: {},
+            })
+          },
+        })
+        expect(queryByTestId('offerSeeMoreContainer')).toBeFalsy()
+      })
     })
   })
 })

@@ -775,6 +775,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                             />
                             <Text
                               numberOfLines={8}
+                              onTextLayout={[Function]}
                               style={
                                 Array [
                                   Object {
@@ -3296,6 +3297,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                             />
                             <Text
                               numberOfLines={8}
+                              onTextLayout={[Function]}
                               style={
                                 Array [
                                   Object {
