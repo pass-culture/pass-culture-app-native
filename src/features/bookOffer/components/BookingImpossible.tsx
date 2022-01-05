@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
+import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { useNotifyWebappLinkSent } from 'features/bookOffer/services/useNotifyWebappLinkSent'
 import { useAddFavorite, useFavorite } from 'features/favorites/pages/useFavorites'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -13,28 +14,24 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { useBooking } from '../pages/BookingOfferWrapper'
-
 export const BookingImpossible: React.FC = () => {
   const { bookingState, dismissModal } = useBooking()
   const { offerId } = bookingState
   const favorite = useFavorite({ offerId })
   const { navigate } = useNavigation<UseNavigationType>()
   const { showErrorSnackBar } = useSnackBarContext()
-  const { mutate: notifyWebappLinkSent } = useNotifyWebappLinkSent({ offerId })
+  const { mutate: notifyWebappLinkSent } = useNotifyWebappLinkSent()
 
   useEffect(() => {
     if (typeof offerId == 'undefined') return
-
     analytics.logBookingImpossibleiOS(offerId)
   }, [offerId])
 
   const { mutate: addFavorite } = useAddFavorite({
     onSuccess: () => {
       if (typeof offerId == 'undefined') return
-
       analytics.logHasAddedOfferToFavorites({ from: 'bookingimpossible', offerId })
-      notifyWebappLinkSent()
+      notifyWebappLinkSent(offerId)
     },
     onError: () => {
       showErrorSnackBar({

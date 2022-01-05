@@ -109,6 +109,7 @@
     "lodash.flatten": "^4.4.0",
     "lodash.groupby": "^4.6.0",
     "lodash.isequal": "^4.5.0",
+    "lodash.noop": "^3.0.1",
     "lodash.omit": "^4.5.0",
     "lodash.shuffle": "^4.2.0",
     "lodash.uniqby": "^4.7.0",
