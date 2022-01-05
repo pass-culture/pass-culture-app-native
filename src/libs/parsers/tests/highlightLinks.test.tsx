@@ -21,14 +21,16 @@ some text here as well https://www.google.com/?key=valeu&key2=value2 Lorem ipsum
 https://www.google.com/`
 
 describe('customFindUrlChunks', () => {
-  it('finds url chunks and mark them as highlited', () => {
+  it('finds url chunk and mark it as highlited', () => {
     const highlightedChunks1 = customFindUrlChunks({
       textToHighlight: description1,
       searchWords: [],
     })
     expect(highlightedChunks1.length).toBe(1)
     expect(description1.slice(0, highlightedChunks1[0].start)).toBe(description1WithoutUrl)
+  })
 
+  it('finds url chunks and mark them as highlited', () => {
     const highlightedChunks2 = customFindUrlChunks({
       textToHighlight: description2,
       searchWords: [],
