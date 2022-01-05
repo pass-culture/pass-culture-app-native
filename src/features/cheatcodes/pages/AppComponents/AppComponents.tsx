@@ -57,7 +57,7 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import CategoryIcon from 'ui/svg/icons/categories/bicolor'
 import { Check } from 'ui/svg/icons/Check'
 import { Close } from 'ui/svg/icons/Close'
-import { EmailDeprecated } from 'ui/svg/icons/Email_deprecated'
+import { Email } from 'ui/svg/icons/Email'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -144,11 +144,11 @@ export const AppComponents: FunctionComponent = () => {
           title="Longpress to see"
           onPress={onButtonPress}
           onLongPress={onTriggerFakeLoading}
-          icon={EmailDeprecated}
+          icon={Email}
           isLoading={buttonIsLoading}
         />
         <Spacer.Column numberOfSpaces={1} />
-        <ButtonPrimary title="Disabled" onPress={onButtonPress} icon={EmailDeprecated} disabled />
+        <ButtonPrimary title="Disabled" onPress={onButtonPress} icon={Email} disabled />
         <Spacer.Column numberOfSpaces={2} />
         {/* Buttons: White Primary */}
         <Typo.Title4>Button - White Primary Secondary</Typo.Title4>
@@ -157,27 +157,22 @@ export const AppComponents: FunctionComponent = () => {
           title="White button"
           onPress={onTriggerFakeLoading}
           isLoading={buttonIsLoading}
-          icon={EmailDeprecated}
+          icon={Email}
         />
         <Spacer.Column numberOfSpaces={1} />
-        <ButtonPrimaryWhite
-          title="Disabled"
-          onPress={onButtonPress}
-          icon={EmailDeprecated}
-          disabled
-        />
+        <ButtonPrimaryWhite title="Disabled" onPress={onButtonPress} icon={Email} disabled />
         <Spacer.Column numberOfSpaces={2} />
         {/* Buttons: Secondary */}
         <Typo.Title4>Button - Theme Secondary</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
         <ButtonSecondary
           title="Triggers all active buttons"
-          icon={EmailDeprecated}
+          icon={Email}
           isLoading={buttonIsLoading}
           onPress={onTriggerFakeLoading}
         />
         <Spacer.Column numberOfSpaces={1} />
-        <ButtonSecondary title="Disabled" icon={EmailDeprecated} disabled onPress={onButtonPress} />
+        <ButtonSecondary title="Disabled" icon={Email} disabled onPress={onButtonPress} />
         <Spacer.Column numberOfSpaces={2} />
         {/* Buttons: Tertiary */}
         <Typo.Title4>Button - Theme Tertiary</Typo.Title4>
@@ -193,7 +188,7 @@ export const AppComponents: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={1} />
         <ButtonTertiaryWhite
           title="White tertiary button"
-          icon={EmailDeprecated}
+          icon={Email}
           isLoading={buttonIsLoading}
           onPress={onTriggerFakeLoading}
         />
@@ -203,22 +198,13 @@ export const AppComponents: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={1} />
         <ButtonQuaternary
           title="Triggers all active buttons"
-          icon={EmailDeprecated}
+          icon={Email}
           isLoading={buttonIsLoading}
           onPress={onTriggerFakeLoading}
         />
         <Spacer.Column numberOfSpaces={1} />
-        <ButtonQuaternary
-          title="Se connecter"
-          onPress={onButtonPress}
-          icon={EmailDeprecated}
-          disabled
-        />
-        <ButtonQuaternaryBlack
-          title="Se connecter"
-          onPress={onButtonPress}
-          icon={EmailDeprecated}
-        />
+        <ButtonQuaternary title="Se connecter" onPress={onButtonPress} icon={Email} disabled />
+        <ButtonQuaternaryBlack title="Se connecter" onPress={onButtonPress} icon={Email} />
         {/* Buttons: With linear gradient */}
         <Typo.Title4>Button - With linear gradient</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
@@ -474,14 +460,14 @@ export const AppComponents: FunctionComponent = () => {
           <Text> Progress bars </Text>
           <Spacer.Column numberOfSpaces={3} />
           <View>
-            <ProgressBar progress={0} color={ColorsEnum.GREEN_VALID} icon={EmailDeprecated} />
-            <ProgressBar progress={0.3} color={ColorsEnum.PRIMARY_DARK} icon={EmailDeprecated} />
-            <ProgressBar progress={1} color={ColorsEnum.SECONDARY} icon={EmailDeprecated} />
+            <ProgressBar progress={0} color={ColorsEnum.GREEN_VALID} icon={Email} />
+            <ProgressBar progress={0.3} color={ColorsEnum.PRIMARY_DARK} icon={Email} />
+            <ProgressBar progress={1} color={ColorsEnum.SECONDARY} icon={Email} />
           </View>
           <Spacer.Column numberOfSpaces={1} />
           <View>
-            <ProgressBar progress={0.5} color={ColorsEnum.PRIMARY} icon={EmailDeprecated} />
-            <ProgressBar progress={1} color={ColorsEnum.TERTIARY} icon={EmailDeprecated} />
+            <ProgressBar progress={0.5} color={ColorsEnum.PRIMARY} icon={Email} />
+            <ProgressBar progress={1} color={ColorsEnum.TERTIARY} icon={Email} />
           </View>
         </GreyView>
         <Spacer.Column numberOfSpaces={4} />
@@ -490,19 +476,14 @@ export const AppComponents: FunctionComponent = () => {
           <SectionRow
             type="navigable"
             title="navigable"
-            icon={EmailDeprecated}
+            icon={Email}
             onPress={() => Alert.alert('gooo !!!')}
           />
-          <SectionRow
-            type="clickable"
-            title="with CTA"
-            icon={EmailDeprecated}
-            cta={<ExampleSwitch />}
-          />
+          <SectionRow type="clickable" title="with CTA" icon={Email} cta={<ExampleSwitch />} />
           <SectionRow
             type="clickable"
             title="just clickable"
-            icon={EmailDeprecated}
+            icon={Email}
             onPress={() => Alert.alert('clicked')}
           />
         </View>
