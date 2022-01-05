@@ -73,7 +73,6 @@ export enum AnalyticsEvent {
   SEARCH_SCROLL_TO_PAGE = 'SearchScrollToPage',
   SEE_MORE_CLICKED = 'SeeMoreClicked',
   SEE_MY_BOOKING = 'SeeMyBooking',
-  SELECT_SCHOOL = 'SelectSchool',
   SEND_ACTIVATION_MAIL_AGAIN = 'SendActivationMailAgain',
   SHARE_OFFER = 'Share',
   SHARE_VENUE = 'ShareVenue',

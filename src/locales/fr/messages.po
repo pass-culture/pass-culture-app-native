@@ -91,10 +91,6 @@ msgstr "Abandonner l'inscription"
 msgid "Abandonner la vérification"
 msgstr "Abandonner la vérification"
 
-#: src/features/auth/signup/underageSignup/SelectSchool.tsx
-msgid "Académie de {academy}"
-msgstr "Académie de {academy}"
-
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Accepter et s’inscrire"
 msgstr "Accepter et s’inscrire"
@@ -602,7 +598,6 @@ msgstr "Contacter le support"
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
 #: src/features/auth/signup/SetPassword/SetPassword.tsx
-#: src/features/auth/signup/underageSignup/SelectSchool.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
@@ -826,10 +821,6 @@ msgstr "Email création de compte envoyé"
 msgid "Email création de compte expiré"
 msgstr "Email création de compte expiré"
 
-#: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx
-msgid "Email enregistré. Tu seras averti lors du retour du service."
-msgstr "Email enregistré. Tu seras averti lors du retour du service."
-
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Email modification mot de passe envoyé"
 msgstr "Email modification mot de passe envoyé"
@@ -930,10 +921,6 @@ msgstr "Envie de tout envie de lien ?"
 msgid "Environ 10 jours"
 msgstr "Environ 10 jours"
 
-#: src/features/identityCheck/components/FastEduconnectConnectionRequestModal.tsx
-msgid "Environ 3 heures"
-msgstr "Environ 3 heures"
-
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Erreur"
 msgstr "Erreur"
@@ -945,14 +932,6 @@ msgstr "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
 #: src/features/profile/pages/ConfirmDeleteProfile.tsx
 msgid "Es-tu sûr de vouloir supprimer ton compte ?"
 msgstr "Es-tu sûr de vouloir supprimer ton compte ?"
-
-#: src/features/navigation/RootNavigator/routes.ts
-msgid "Etablissement scolaire - Accueil"
-msgstr "Etablissement scolaire - Accueil"
-
-#: src/features/navigation/RootNavigator/routes.ts
-msgid "Etablissement scolaire - Sélection"
-msgstr "Etablissement scolaire - Sélection"
 
 #: src/features/bookings/components/NoBookingsView.tsx
 #: src/features/favorites/components/NoFavoritesResult.tsx
@@ -971,16 +950,11 @@ msgstr "Ex : 75017"
 msgid "Faire une nouvelle demande"
 msgstr "Faire une nouvelle demande"
 
-#: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
-msgid "Fais-tu partie de la phase de test ?"
-msgstr "Fais-tu partie de la phase de test ?"
-
 #: src/features/navigation/TabBar/routes.ts
 #: src/features/navigation/TabBar/routes.ts
 msgid "Favoris"
 msgstr "Favoris"
 
-#: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx
 #: src/features/bookOffer/pages/BookingOfferModal.tsx
 #: src/features/offer/components/ReportOfferModal.tsx
 #: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx
@@ -1237,10 +1211,6 @@ msgstr "Je déclare que l'ensemble des informations que j’ai renseignées sont
 #: src/features/identityCheck/pages/confirmation/UnderageAccountCreated.tsx
 msgid "Je découvre les offres"
 msgstr "Je découvre les offres"
-
-#: src/features/auth/signup/underageSignup/SelectSchool.tsx
-msgid "Je ne vois pas mon établissement"
-msgstr "Je ne vois pas mon établissement"
 
 #: src/features/identityCheck/components/DMSModal.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckDMS.tsx
@@ -1768,7 +1738,6 @@ msgstr "On y va !"
 msgid "Oups, cette offre n’est plus disponible !"
 msgstr "Oups, cette offre n’est plus disponible !"
 
-#: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
 #: src/features/home/components/NoContentError.tsx
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
@@ -2014,10 +1983,6 @@ msgstr "Qui est-ce ?"
 msgid "Rayon"
 msgstr "Rayon"
 
-#: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx
-msgid "Recevoir une alerte"
-msgstr "Recevoir une alerte"
-
 #: src/features/navigation/RootNavigator/routes.ts
 #: src/features/navigation/RootNavigator/routes.ts
 #: src/features/navigation/TabBar/routes.ts
@@ -2089,7 +2054,6 @@ msgstr "Retourner l'accueil"
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
 #: src/features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility.tsx
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
-#: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 #: src/features/identityCheck/errors/eduConnect/NotEligibleEduConnect.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckPending.tsx
@@ -2270,10 +2234,6 @@ msgstr "Seules les sorties seront affichées"
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Si tu as besoin d’aide n’hésite pas à :"
 msgstr "Si tu as besoin d’aide n’hésite pas à :"
-
-#: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
-msgid "Si tu es élève dans"
-msgstr "Si tu es élève dans"
 
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 msgid "Si tu n’arrives pas à récupérer ton code tu peux"
@@ -2641,10 +2601,6 @@ msgstr "Tu peux toujours réserver les offres gratuites exclusives au pass Cultu
 msgid "Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n'as pas d'identifiants ÉduConnect rapproche toi de ton établissement."
 msgstr "Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n'as pas d'identifiants ÉduConnect rapproche toi de ton établissement."
 
-#: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
-msgid "Tu pourras ainsi nous aider à améliorer l’application."
-msgstr "Tu pourras ainsi nous aider à améliorer l’application."
-
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 msgid "Tu pourras modifier tes paramètres de confidentialité dans ton profil."
 msgstr "Tu pourras modifier tes paramètres de confidentialité dans ton profil."
@@ -2766,7 +2722,6 @@ msgid "VISA"
 msgstr "VISA"
 
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
-#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Validation de l'identification"
 msgstr "Validation de l'identification"
 
@@ -2846,10 +2801,6 @@ msgstr "Voir le détail de l’offre"
 msgid "Voir les disponibilités"
 msgstr "Voir les disponibilités"
 
-#: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
-msgid "Voir les établissements partenaires"
-msgstr "Voir les établissements partenaires"
-
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 #: src/features/offer/services/useCtaWordingAndAction.ts
 msgid "Voir ma réservation"
@@ -2867,10 +2818,6 @@ msgstr "Voir plus d’offres de la sélection"
 msgid "Voir toutes les offres"
 msgstr "Voir toutes les offres"
 
-#: src/features/auth/signup/underageSignup/SelectSchool.tsx
-msgid "Vois-tu ton établissement ?"
-msgstr "Vois-tu ton établissement ?"
-
 #: src/features/_marketingAndCommunication/components/DeeplinksResult.tsx
 msgid "Votre lien"
 msgstr "Votre lien"
@@ -2882,10 +2829,6 @@ msgstr "Vous devez d'abord générer un lien"
 #: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
 msgid "Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés."
 msgstr "Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés."
-
-#: src/features/auth/signup/idCheck/DenyAccessToIdCheck.tsx
-msgid "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300 €. Tu recevras une alerte par mail pour commencer ta demande des 300 € dès que le service sera de nouveau disponible !"
-msgstr "Vous êtes actuellement très nombreux à vouloir effectuer votre demande des 300 €. Tu recevras une alerte par mail pour commencer ta demande des 300 € dès que le service sera de nouveau disponible !"
 
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Vérification d'identité"
@@ -2995,10 +2938,6 @@ msgstr "Patience ! Reviens à partir du {date} pour continuer ton inscription e
 msgid "de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application."
 msgstr "de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application."
 
-#: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
-msgid "des académies de Rennes ou de Versailles, tu fais partie de la phase de test du pass Culture 15-17 ans."
-msgstr "des académies de Rennes ou de Versailles, tu fais partie de la phase de test du pass Culture 15-17 ans."
-
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "durée"
 msgstr "durée"
@@ -3054,10 +2993,6 @@ msgstr "intervenant"
 #: src/features/bookings/components/EndedBookingItem.tsx
 msgid "jour de fin de résa"
 msgstr "le {date}"
-
-#: src/features/auth/signup/underageSignup/SelectSchoolHome.tsx
-msgid "l'un des 21 établissements de test"
-msgstr "l'un des 21 établissements de test"
 
 #: src/features/profile/components/SubscriptionMessageBadge.tsx
 msgid "last update"
@@ -3234,10 +3169,6 @@ msgstr "À deux !"
 #: src/features/bookings/helpers.ts
 msgid "À retirer avant le {dateLimit}"
 msgstr "À retirer avant le {dateLimit}"
-
-#: src/features/auth/signup/underageSignup/SelectSchool.tsx
-msgid "Établissements partenaires"
-msgstr "Établissements partenaires"
 
 #: src/features/profile/components/NonBeneficiaryHeader.tsx
 msgid "à dépenser dans l'application"

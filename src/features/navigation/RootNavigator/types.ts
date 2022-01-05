@@ -105,8 +105,6 @@ export type RootStackParamList = {
   PersonalData: undefined
   SearchCategories: undefined
   SearchFilter: undefined
-  SelectSchool: undefined
-  SelectSchoolHome: undefined
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
   TabNavigator: {

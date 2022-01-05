@@ -6,16 +6,13 @@ import { api } from 'api/api'
 import { ValidateEmailResponse } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/AuthContext'
 import { useValidateEmailMutation } from 'features/auth/mutations'
-import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { isUserUnderage } from 'features/profile/utils'
 import { isTimestampExpired } from 'libs/dates'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export function AfterSignupEmailValidationBuffer() {
-  const { data: settings, isSuccess } = useAppSettings()
   const { showInfoSnackBar } = useSnackBarContext()
 
   const { navigate } = useNavigation<UseNavigationType>()
@@ -26,9 +23,7 @@ export function AfterSignupEmailValidationBuffer() {
   }
   const { params } = useRoute<UseRouteType<'AfterSignupEmailValidationBuffer'>>()
 
-  useEffect(() => {
-    isSuccess && beforeEmailValidation()
-  }, [isSuccess])
+  useEffect(beforeEmailValidation, [])
 
   const loginRoutine = useLoginRoutine()
 
@@ -54,11 +49,7 @@ export function AfterSignupEmailValidationBuffer() {
       const user = await api.getnativev1me()
 
       if (user.isEligibleForBeneficiaryUpgrade) {
-        const nextScreen =
-          isUserUnderage(user) && !settings?.enableUnderageGeneralisation
-            ? 'SelectSchoolHome'
-            : 'VerifyEligibility'
-        delayedNavigate(nextScreen)
+        delayedNavigate('VerifyEligibility')
         return
       }
       if (user.eligibilityStartDatetime && new Date(user.eligibilityStartDatetime) >= new Date()) {

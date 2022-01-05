@@ -279,18 +279,6 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
-            title={`Accueil sélection établissement`}
-            onPress={() => navigate('SelectSchoolHome')}
-          />
-        </Row>
-        <Row half>
-          <NavigationButton
-            title={`Sélection établissement`}
-            onPress={() => navigate('SelectSchool')}
-          />
-        </Row>
-        <Row half>
-          <NavigationButton
             title={'Change e-mail lien expiré'}
             onPress={() => navigate('ChangeEmailExpiredLink')}
           />

@@ -111,26 +111,6 @@ describe('<NonBeneficiaryHeader/>', () => {
       getByTestId('eligibility-banner-container')
     })
 
-    it('should navigate to SelectSchoolHome for 15-17 years old users if user has not completed identity check', async () => {
-      mockedUseIsUserUnderage.mockReturnValueOnce(true)
-      const today = '2021-02-30T00:00:00Z'
-      mockdate.set(new Date(today))
-      const { getByTestId } = render(
-        <NonBeneficiaryHeader
-          eligibilityStartDatetime="2021-02-30T00:00Z"
-          eligibilityEndDatetime="2022-02-30T00:00Z"
-          isEligibleForBeneficiaryUpgrade={true}
-        />
-      )
-
-      const banner = getByTestId('eligibility-banner')
-      fireEvent.click(banner)
-
-      await waitForExpect(() => {
-        expect(mockedNavigate).toHaveBeenCalledWith('SelectSchoolHome')
-      })
-    })
-
     it('should display correct depositAmount', () => {
       const { queryByText } = render(
         <NonBeneficiaryHeader
