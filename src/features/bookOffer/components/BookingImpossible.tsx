@@ -52,11 +52,15 @@ export const BookingImpossible: React.FC = () => {
   }
 
   const navigateToOffer = () => {
-    dismissModal()
-
     const from = 'bookingimpossible'
     analytics.logConsultOffer({ offerId, from })
     navigate('Offer', { id: offerId, from })
+  }
+
+  const dismissModalThenNavigateToOffer = () => {
+    dismissModal()
+
+    setTimeout(navigateToOffer, 0)
   }
 
   return (
@@ -73,7 +77,10 @@ export const BookingImpossible: React.FC = () => {
         <React.Fragment>
           <Content>{t`Rends-toi vite sur le site pass Culture afin de la réserver`}</Content>
           <Spacer.Column numberOfSpaces={6} />
-          <ButtonPrimary title={t`Voir le détail de l'offre`} onPress={navigateToOffer} />
+          <ButtonPrimary
+            title={t`Voir le détail de l'offre`}
+            onPress={dismissModalThenNavigateToOffer}
+          />
         </React.Fragment>
       ) : (
         <React.Fragment>
