@@ -9,9 +9,19 @@ export function EyeSlash({
   size = 32,
   color = ColorsEnum.BLACK,
   testID,
+  accessibilityLabel,
+  accessibilityRole,
 }: IconInterface): JSX.Element {
   return (
-    <Svg width={size} height={size} testID={testID} fill={color} viewBox="0 0 48 48" aria-hidden>
+    <Svg
+      width={size}
+      height={size}
+      testID={testID}
+      fill={color}
+      viewBox="0 0 48 48"
+      accessibilityLabel={accessibilityLabel}
+      accessibilityRole={accessibilityRole}
+      aria-hidden={accessibilityLabel || accessibilityRole ? false : true}>
       <Path
         fillRule="evenodd"
         clipRule="evenodd"

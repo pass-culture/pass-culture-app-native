@@ -10,7 +10,13 @@ export const Email: React.FunctionComponent<IconInterface> = ({
   color = ColorsEnum.BLACK,
   testID,
 }) => (
-  <Svg width={size} height={size} viewBox="0 0 48 49" testID={testID} aria-hidden>
+  <Svg
+    width={size}
+    height={size}
+    viewBox="0 0 48 49"
+    testID={testID}
+    accessibilityLabel="ouvrir la boîte e-mail"
+    accessibilityRole="image">
     <Path
       fill={color}
       fillRule="evenodd"

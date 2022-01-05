@@ -1,9 +1,10 @@
-import { ViewStyle } from 'react-native'
+import { AccessibilityRole, ViewStyle } from 'react-native'
 
 import { ColorsEnum, UniqueColors } from 'ui/theme'
 
 interface IconSharedProperties {
   accessibilityLabel?: string
+  accessibilityRole?: AccessibilityRole
   accessible?: boolean
   color?: ColorsEnum | UniqueColors
   testID?: string
