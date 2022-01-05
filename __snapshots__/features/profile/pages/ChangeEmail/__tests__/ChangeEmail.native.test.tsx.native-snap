@@ -409,9 +409,10 @@ Array [
                 testID="Basculer l'affichage du mot de passe"
               >
                 <View
-                  height="100%"
+                  fill="#151515"
+                  height={24}
                   testID="eye-slash"
-                  width="100%"
+                  width={24}
                 >
                   <Text>
                     eye-slash-SVG-Mock
@@ -1022,9 +1023,10 @@ Array [
                 testID="Basculer l'affichage du mot de passe"
               >
                 <View
-                  height="100%"
+                  fill="#151515"
+                  height={24}
                   testID="eye-slash"
-                  width="100%"
+                  width={24}
                 >
                   <Text>
                     eye-slash-SVG-Mock

@@ -146,8 +146,8 @@ export const Icons: FunctionComponent = () => {
       <Icon name="Error" component={Error} isNew />
       <Icon name="ExternalSite" component={ExternalSite} isNew />
       <Icon name="ExternalSiteFilled" component={ExternalSiteFilled} isNew />
-      <Icon name="Eye" component={Eye} />
-      <Icon name="EyeSlash" component={EyeSlash} />
+      <Icon name="Eye" component={Eye} isNew />
+      <Icon name="EyeSlash" component={EyeSlash} isNew />
       <Icon name="Favorite" component={Favorite} isNew />
       <Icon name="FavoriteFilled" component={FavoriteFilled} isNew />
       <Icon name="Flag" component={Flag} />

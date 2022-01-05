@@ -11,7 +11,7 @@ import { accessibilityAndTestId } from 'tests/utils'
 import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
 import { StyledInputContainer } from './StyledInputContainer'
@@ -64,9 +64,9 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
           {...accessibilityAndTestId(t`Basculer l'affichage du mot de passe`)}
           onPress={togglePasswordDisplay}>
           {shouldHidePassword ? (
-            <EyeSlash {...accessibilityAndTestId('eye-slash')} size="100%" />
+            <EyeSlash {...accessibilityAndTestId('eye-slash')} size={getSpacing(6)} />
           ) : (
-            <Eye {...accessibilityAndTestId('eye')} size="100%" />
+            <Eye {...accessibilityAndTestId('eye')} size={getSpacing(6)} />
           )}
         </IconTouchableOpacity>
       </StyledInputContainer>
