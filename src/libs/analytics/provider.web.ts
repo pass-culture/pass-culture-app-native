@@ -1,4 +1,7 @@
+import { AgentType } from 'api/gen'
 import { getFirebaseApp } from 'libs/firebase'
+// eslint-disable-next-line no-restricted-imports
+import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
 
 import { AnalyticsProvider } from './types'
 
@@ -33,6 +36,9 @@ export const analyticsProvider: AnalyticsProvider = {
       acc[key] = typeof params[key] === 'number' ? (params[key] as number).toString() : params[key]
       return acc
     }, {})
+    newParams['agentType'] = isDesktopDeviceDetectOnWeb
+      ? AgentType.browser_computer
+      : AgentType.browser_mobile
     return firebaseAnalytics.logEvent(name as string, newParams)
   },
 }

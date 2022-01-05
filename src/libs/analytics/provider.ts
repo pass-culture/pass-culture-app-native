@@ -1,5 +1,7 @@
 import firebaseAnalyticsModule from '@react-native-firebase/analytics'
 
+import { AgentType } from 'api/gen'
+
 import { AnalyticsProvider } from './types'
 
 const firebaseAnalytics = firebaseAnalyticsModule()
@@ -32,6 +34,7 @@ export const analyticsProvider: AnalyticsProvider = {
       acc[key] = typeof params[key] === 'number' ? (params[key] as number).toString() : params[key]
       return acc
     }, {})
+    newParams['agentType'] = AgentType.agent_mobile
     return firebaseAnalytics.logEvent(name, newParams)
   },
 }
