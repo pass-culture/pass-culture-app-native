@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { IconInterface } from 'ui/svg/icons/types'
+import { PhoneError } from 'ui/svg/PhoneError'
 import { ColorsEnum, getSpacing } from 'ui/theme'
 
 export const Illustrations: FunctionComponent = () => {
@@ -12,6 +13,7 @@ export const Illustrations: FunctionComponent = () => {
     <React.Fragment>
       <Illustration name="BicolorPhonePending" component={BicolorPhonePending} isNew />
       <Illustration name="BrokenConnection" component={BrokenConnection} isNew />
+      <Illustration name="PhoneError" component={PhoneError} isNew />
     </React.Fragment>
   )
 }

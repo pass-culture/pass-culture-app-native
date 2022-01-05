@@ -1,0 +1,130 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`PhoneError should render component correctly 1`] = `
+<RNSVGSvgView
+  align="xMidYMid"
+  bbHeight={156}
+  bbWidth={200}
+  fill="none"
+  focusable={false}
+  height={156}
+  meetOrSlice={0}
+  minX={0}
+  minY={0}
+  style={
+    Array [
+      Object {
+        "backgroundColor": "transparent",
+        "borderWidth": 0,
+      },
+      Object {
+        "flex": 0,
+        "height": 156,
+        "width": 200,
+      },
+    ]
+  }
+  vbHeight={156}
+  vbWidth={200}
+  width={200}
+>
+  <RNSVGGroup
+    fill={null}
+    propList={
+      Array [
+        "fill",
+      ]
+    }
+  >
+    <RNSVGPath
+      d="M91 56H33a8 8 0 00-8 8v55a8 8 0 008 8h47.5"
+      propList={
+        Array [
+          "stroke",
+          "strokeWidth",
+          "strokeDasharray",
+          "strokeLinecap",
+          "strokeLinejoin",
+        ]
+      }
+      stroke={4294967295}
+      strokeDasharray={
+        Array [
+          "6",
+          "10",
+        ]
+      }
+      strokeLinecap={1}
+      strokeLinejoin={1}
+      strokeWidth={4}
+    />
+    <RNSVGPath
+      d="M46 71L46 126"
+      propList={
+        Array [
+          "stroke",
+          "strokeWidth",
+          "strokeDasharray",
+          "strokeLinecap",
+        ]
+      }
+      stroke={4294967295}
+      strokeDasharray={
+        Array [
+          "6",
+          "10",
+        ]
+      }
+      strokeLinecap={1}
+      strokeWidth={4}
+    />
+    <RNSVGPath
+      d="M60 47.365c3.573-21.2 21.816-18.127 27.732-17.13M86.923 23l5.16 7.251a1 1 0 01-.235 1.395l-7.251 5.16"
+      propList={
+        Array [
+          "stroke",
+          "strokeWidth",
+          "strokeLinecap",
+        ]
+      }
+      stroke={4294967295}
+      strokeLinecap={1}
+      strokeWidth={4}
+    />
+    <RNSVGPath
+      d="M154.531 40.664l-50.387-7.88M157.977 122.175l-66.196-10.353M101.362 50.568l-11.435 73.111a6 6 0 005.001 6.855l38.532 6.026m-30.012-99.33l2.55-16.302a6 6 0 016.855-5l55.327 8.652a6 6 0 015.001 6.856l-16.07 102.75a6.001 6.001 0 01-6.856 5.001l-2.47-.386"
+      propList={
+        Array [
+          "stroke",
+          "strokeWidth",
+          "strokeLinecap",
+        ]
+      }
+      stroke={4294967295}
+      strokeLinecap={1}
+      strokeWidth={4.6}
+    />
+    <RNSVGCircle
+      cx={139.125}
+      cy={29.1463}
+      fill={4294967295}
+      matrix={
+        Array [
+          0.9879868527780424,
+          0.15453795241861723,
+          -0.15453795241861723,
+          0.9879868527780424,
+          6.175492268447869,
+          -21.149957441308942,
+        ]
+      }
+      propList={
+        Array [
+          "fill",
+        ]
+      }
+      r={3}
+    />
+  </RNSVGGroup>
+</RNSVGSvgView>
+`;
