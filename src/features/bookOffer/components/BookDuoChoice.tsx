@@ -3,16 +3,19 @@ import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
+import { DuoChoice } from 'features/bookOffer/atoms/DuoChoice'
+import {
+  useBooking,
+  useBookingOffer,
+  useBookingStock,
+} from 'features/bookOffer/pages/BookingOfferWrapper'
+import { Step } from 'features/bookOffer/pages/reducer'
 import { useCreditForOffer } from 'features/offer/services/useHasEnoughCredit'
 import { formatToFrenchDecimal } from 'libs/parsers'
-import { DuoPerson } from 'ui/svg/icons/DuoPerson'
 import { Profile } from 'ui/svg/icons/Profile'
+import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
-
-import { DuoChoice } from '../atoms/DuoChoice'
-import { useBooking, useBookingOffer, useBookingStock } from '../pages/BookingOfferWrapper'
-import { Step } from '../pages/reducer'
 
 export const BookDuoChoice: React.FC = () => {
   const { bookingState, dispatch } = useBooking()
@@ -59,8 +62,17 @@ export const BookDuoChoice: React.FC = () => {
   )
 }
 
+const DuoPerson = (props: IconInterface): JSX.Element => (
+  <DuoPersonContainer>
+    <Profile {...props} />
+    <Profile {...props} />
+  </DuoPersonContainer>
+)
+
 const DuoChoiceContainer = styled.View({
   flexDirection: 'row',
   flexWrap: 'wrap',
   marginHorizontal: -getSpacing(2),
 })
+
+const DuoPersonContainer = styled.View({ flexDirection: 'row' })
