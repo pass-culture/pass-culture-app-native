@@ -54,7 +54,6 @@ import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
-import { HappyFaceStars } from 'ui/svg/icons/HappyFaceStars'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Info } from 'ui/svg/icons/Info'
 import { InfoFraud } from 'ui/svg/icons/InfoFraud'
@@ -184,7 +183,6 @@ export const Icons: FunctionComponent = () => {
       <Icon name="Validate" component={Validate} isNew />
       <Icon name="SadFace" component={SadFace} />
       <Icon name="HappyFace" component={HappyFace} />
-      <Icon name="HappyFaceStars" component={HappyFaceStars} />
       <Icon name="Warning" component={Warning} isNew />
       <AlignedText>
         <TicketBooked width={ICON_SIZE} height={ICON_SIZE} />
