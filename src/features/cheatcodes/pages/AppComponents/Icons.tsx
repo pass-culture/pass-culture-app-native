@@ -54,7 +54,6 @@ import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
-import { HappyFaceStars } from 'ui/svg/icons/HappyFaceStars'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Info } from 'ui/svg/icons/Info'
 import { InfoFraud } from 'ui/svg/icons/InfoFraud'
@@ -88,7 +87,6 @@ import { SignOut } from 'ui/svg/icons/SignOut'
 import { Sun } from 'ui/svg/icons/Sun'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { IconInterface } from 'ui/svg/icons/types'
-import { UserCircle } from 'ui/svg/icons/UserCircle'
 import { Validate } from 'ui/svg/icons/Validate'
 import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
@@ -182,11 +180,9 @@ export const Icons: FunctionComponent = () => {
       <Icon name="SignOut" component={SignOut} isNew />
       <Icon name="Share" component={Share} isNew />
       <Icon name="Sun" component={Sun} isNew />
-      <Icon name="UserCircle" component={UserCircle} />
       <Icon name="Validate" component={Validate} isNew />
       <Icon name="SadFace" component={SadFace} />
       <Icon name="HappyFace" component={HappyFace} />
-      <Icon name="HappyFaceStars" component={HappyFaceStars} />
       <Icon name="Warning" component={Warning} isNew />
       <AlignedText>
         <TicketBooked width={ICON_SIZE} height={ICON_SIZE} />
