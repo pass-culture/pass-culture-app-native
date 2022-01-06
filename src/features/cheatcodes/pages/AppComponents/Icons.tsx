@@ -152,10 +152,10 @@ export const Icons: FunctionComponent = () => {
       <Icon name="FavoriteFilled" component={FavoriteFilled} isNew />
       <Icon name="Flag" component={Flag} />
       <Icon name="Flash" component={Flash} isNew />
-      <Icon name="HandicapVisual" component={HandicapVisual} />
-      <Icon name="HandicapMental" component={HandicapMental} />
-      <Icon name="HandicapMotor" component={HandicapMotor} />
-      <Icon name="HandicapAudio" component={HandicapAudio} />
+      <Icon name="HandicapVisual" component={HandicapVisual} isNew />
+      <Icon name="HandicapMental" component={HandicapMental} isNew />
+      <Icon name="HandicapMotor" component={HandicapMotor} isNew />
+      <Icon name="HandicapAudio" component={HandicapAudio} isNew />
       <Icon name="Info" component={Info} isNew />
       <Icon name="InfoFraud" component={InfoFraud} isNew />
       <Icon name="InfoPlain" component={InfoPlain} isNew />
