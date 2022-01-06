@@ -150,7 +150,6 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                 "flexGrow": 0.1,
                 "flexShrink": 1,
                 "justifyContent": "flex-start",
-                "paddingTop": 2,
               },
             ]
           }
@@ -170,16 +169,20 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
             onStartShouldSetResponder={[Function]}
             style={
               Object {
-                "marginLeft": -5,
+                "marginLeft": -8,
                 "opacity": 1,
+                "paddingBottom": 4,
+                "paddingLeft": 4,
+                "paddingRight": 4,
+                "paddingTop": 4,
               }
             }
             testID="leftIconButton"
           >
             <View
-              height={18}
+              height={20}
               testID="leftIcon"
-              width={18}
+              width={20}
             >
               <Text>
                 leftIcon-SVG-Mock
@@ -191,11 +194,10 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
           style={
             Array [
               Object {
-                "alignItems": "center",
                 "flexBasis": 0,
                 "flexGrow": 0.8,
                 "flexShrink": 1,
-                "justifyContent": "flex-start",
+                "justifyContent": "center",
                 "paddingLeft": 12,
                 "paddingRight": 12,
                 "zIndex": 1,
@@ -230,7 +232,6 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                 "flexGrow": 0.1,
                 "flexShrink": 1,
                 "justifyContent": "flex-end",
-                "paddingTop": 2,
               },
             ]
           }
@@ -250,16 +251,20 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
             onStartShouldSetResponder={[Function]}
             style={
               Object {
-                "marginRight": -5,
+                "marginRight": -8,
                 "opacity": 1,
+                "paddingBottom": 4,
+                "paddingLeft": 4,
+                "paddingRight": 4,
+                "paddingTop": 4,
               }
             }
             testID="Fermer la modale"
           >
             <View
-              height={18}
+              height={20}
               testID="rightIcon"
-              width={18}
+              width={20}
             >
               <Text>
                 rightIcon-SVG-Mock
@@ -470,7 +475,6 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
                 "flexGrow": 0.1,
                 "flexShrink": 1,
                 "justifyContent": "flex-start",
-                "paddingTop": 2,
               },
             ]
           }
@@ -490,16 +494,20 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
             onStartShouldSetResponder={[Function]}
             style={
               Object {
-                "marginLeft": -5,
+                "marginLeft": -8,
                 "opacity": 1,
+                "paddingBottom": 4,
+                "paddingLeft": 4,
+                "paddingRight": 4,
+                "paddingTop": 4,
               }
             }
             testID="leftIconButton"
           >
             <View
-              height={18}
+              height={20}
               testID="leftIcon"
-              width={18}
+              width={20}
             >
               <Text>
                 leftIcon-SVG-Mock
@@ -511,11 +519,10 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
           style={
             Array [
               Object {
-                "alignItems": "center",
                 "flexBasis": 0,
                 "flexGrow": 0.8,
                 "flexShrink": 1,
-                "justifyContent": "flex-start",
+                "justifyContent": "center",
                 "paddingLeft": 12,
                 "paddingRight": 12,
                 "zIndex": 1,
@@ -550,7 +557,6 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
                 "flexGrow": 0.1,
                 "flexShrink": 1,
                 "justifyContent": "flex-end",
-                "paddingTop": 2,
               },
             ]
           }
@@ -570,16 +576,20 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
             onStartShouldSetResponder={[Function]}
             style={
               Object {
-                "marginRight": -5,
+                "marginRight": -8,
                 "opacity": 1,
+                "paddingBottom": 4,
+                "paddingLeft": 4,
+                "paddingRight": 4,
+                "paddingTop": 4,
               }
             }
             testID="Fermer la modale"
           >
             <View
-              height={18}
+              height={20}
               testID="rightIcon"
-              width={18}
+              width={20}
             >
               <Text>
                 rightIcon-SVG-Mock
