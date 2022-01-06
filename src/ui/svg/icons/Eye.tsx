@@ -5,23 +5,9 @@ import { ColorsEnum } from 'ui/theme'
 
 import { IconInterface } from './types'
 
-export function Eye({
-  size = 32,
-  color = ColorsEnum.BLACK,
-  testID,
-  accessibilityLabel,
-  accessibilityRole,
-}: IconInterface): JSX.Element {
+export function Eye({ size = 32, color = ColorsEnum.BLACK, testID }: IconInterface): JSX.Element {
   return (
-    <Svg
-      width={size}
-      height={size}
-      testID={testID}
-      fill={color}
-      viewBox="0 0 48 48"
-      accessibilityLabel={accessibilityLabel}
-      accessibilityRole={accessibilityRole}
-      aria-hidden={accessibilityLabel || accessibilityRole ? false : true}>
+    <Svg width={size} height={size} testID={testID} fill={color} viewBox="0 0 48 48" aria-hidden>
       <Path
         fillRule="evenodd"
         clipRule="evenodd"
