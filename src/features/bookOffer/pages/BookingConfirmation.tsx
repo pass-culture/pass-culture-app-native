@@ -46,7 +46,17 @@ export function BookingConfirmation() {
   useShowReview()
 
   return (
-    <GenericInfoPage title={t`Réservation confirmée\u00a0!`} icon={TicketBooked}>
+    <GenericInfoPage
+      title={t`Réservation confirmée\u00a0!`}
+      icon={TicketBooked}
+      buttons={[
+        <ButtonPrimaryWhite
+          key={1}
+          title={t`Voir ma réservation`}
+          onPress={displayBookingDetails}
+        />,
+        <ButtonTertiaryWhite key={2} title={t`Retourner à l'accueil`} onPress={navigateToHome} />,
+      ]}>
       <StyledBody>
         {t({
           id: 'credit left to spend',
@@ -58,10 +68,6 @@ export function BookingConfirmation() {
       <StyledBody>
         {t`Tu peux retrouver toutes les informations concernant ta réservation sur l’application`}
       </StyledBody>
-      <Spacer.Column numberOfSpaces={8} />
-      <ButtonPrimaryWhite title={t`Voir ma réservation`} onPress={displayBookingDetails} />
-      <Spacer.Column numberOfSpaces={4} />
-      <ButtonTertiaryWhite title={t`Retourner à l'accueil`} onPress={navigateToHome} />
     </GenericInfoPage>
   )
 }

@@ -11,7 +11,7 @@ import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, Typo } from 'ui/theme'
 
 export function AccountCreated() {
   const { data: user } = useUserProfileInfo()
@@ -35,14 +35,13 @@ export function AccountCreated() {
   return (
     <GenericInfoPage
       title={t`Ton compte a été activé\u00a0!`}
-      animation={IlluminatedSmileyAnimation}>
+      animation={IlluminatedSmileyAnimation}
+      buttons={[<ButtonPrimaryWhite key={1} title={t`On y va\u00a0!`} onPress={onPress} />]}>
       {!!shouldNavigateToCulturalSurvey && (
         <StyledBody>
           {t`Aide-nous à en savoir plus sur tes pratiques culturelles\u00a0! Ta sélection n'aura pas d'impact sur les offres proposées.`}
         </StyledBody>
       )}
-      <Spacer.Column numberOfSpaces={12} />
-      <ButtonPrimaryWhite title={t`On y va\u00a0!`} onPress={onPress} />
     </GenericInfoPage>
   )
 }

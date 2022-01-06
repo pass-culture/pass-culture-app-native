@@ -10,7 +10,7 @@ import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, Typo } from 'ui/theme'
 
 export const VenueNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   const timer = useRef<number>()
@@ -39,10 +39,13 @@ export const VenueNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
         <title>{t`Lieu introuvable | Pass Culture`}</title>
         <meta name="robots" content="noindex" />
       </Helmet>
-      <GenericInfoPage title={t`Lieu introuvable\u00a0!`} icon={NoOffer}>
+      <GenericInfoPage
+        title={t`Lieu introuvable\u00a0!`}
+        icon={NoOffer}
+        buttons={[
+          <ButtonPrimaryWhite key={1} title={t`Retourner à l'accueil`} onPress={onPress} />,
+        ]}>
         <StyledBody>{t`Il est possible que ce lieu soit désactivé ou n'existe pas.`}</StyledBody>
-        <Spacer.Column numberOfSpaces={12} />
-        <ButtonPrimaryWhite title={t`Retourner à l'accueil`} onPress={onPress} />
       </GenericInfoPage>
     </React.Fragment>
   )

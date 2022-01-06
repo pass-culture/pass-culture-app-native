@@ -6,23 +6,24 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { ProfileDeletionLight } from 'ui/svg/icons/ProfileDeletionLight'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export function DeleteProfileSuccess() {
   return (
-    <GenericInfoPage title={t`Compte désactivé`} icon={ProfileDeletionLight}>
+    <GenericInfoPage
+      title={t`Compte désactivé`}
+      icon={ProfileDeletionLight}
+      buttons={[
+        <ButtonPrimaryWhite key={1} title={t`Retourner à l'accueil`} onPress={navigateToHome} />,
+      ]}>
       <StyledBody>{t`Tu as 30 jours pour te rétracter par e-mail à\u00a0: support@passculture.app`}</StyledBody>
       <Spacer.Column numberOfSpaces={4} />
-
       <StyledBody>{t`Une fois ce délai écoulé, ton compte pass Culture sera définitivement supprimé.`}</StyledBody>
-      <Spacer.Column numberOfSpaces={15} />
-      <ButtonPrimaryWhite title={t`Retourner à l'accueil`} onPress={navigateToHome} />
     </GenericInfoPage>
   )
 }
 
-const StyledBody = styled(Typo.Body).attrs({
-  color: ColorsEnum.WHITE,
-})({
+const StyledBody = styled(Typo.Body)(({ color, theme }) => ({
+  color: color ?? theme.colors.white,
   textAlign: 'center',
-})
+}))

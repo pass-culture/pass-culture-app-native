@@ -1,5 +1,5 @@
-import React, { useMemo, FunctionComponent } from 'react'
-import styled from 'styled-components/native'
+import React, { ReactNode, useMemo, FunctionComponent } from 'react'
+import styled, { useTheme } from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
 import { Helmet } from 'libs/react-helmet/Helmet'
@@ -14,9 +14,10 @@ type Props = {
   animation?: AnimationObject
   icon?: FunctionComponent<IconInterface>
   title: string
+  buttons?: Array<ReactNode>
 }
 
-const ANIMATION_SIZEE = getSpacing(45)
+const ANIMATION_SIZE = getSpacing(45)
 const ICON_SIZE = getSpacing(35)
 
 export const GenericInfoPage: FunctionComponent<Props> = ({
@@ -26,7 +27,9 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
   icon: Icon,
   title,
   flex = true,
+  buttons,
 }) => {
+  const { isTouch } = useTheme()
   const Wrapper = useMemo(() => (flex ? Container : React.Fragment), [flex])
   return (
     <Wrapper>
@@ -38,6 +41,7 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
       <Background />
       <Content>
         <Spacer.Column numberOfSpaces={spacingMatrix.top} />
+        {!!isTouch && <Spacer.Flex flex={1} />}
         {Icon ? (
           <React.Fragment>
             <Icon color={ColorsEnum.WHITE} size={ICON_SIZE} />
@@ -46,7 +50,7 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
         ) : (
           !!animation && (
             <React.Fragment>
-              <StyledLottieView source={animation} autoPlay loop={false} size={ANIMATION_SIZEE} />
+              <StyledLottieView source={animation} autoPlay loop={false} size={ANIMATION_SIZE} />
               <Spacer.Column numberOfSpaces={spacingMatrix.afterLottieAnimation} />
             </React.Fragment>
           )
@@ -54,6 +58,17 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
         <StyledTitle2>{title}</StyledTitle2>
         <Spacer.Column numberOfSpaces={spacingMatrix.afterTitle} />
         {children}
+        {!!isTouch && <Spacer.Column numberOfSpaces={12} />}
+        {!!buttons && (
+          <BottomContainer>
+            {buttons.map((button, index) => (
+              <React.Fragment key={index}>
+                {index !== 0 && <Spacer.Column numberOfSpaces={4} />}
+                {button}
+              </React.Fragment>
+            ))}
+          </BottomContainer>
+        )}
         <Spacer.BottomScreen />
       </Content>
     </Wrapper>
@@ -77,11 +92,10 @@ const StyledLottieView = styled(LottieView)((props: { size: number }) => ({
   height: props.size,
 }))
 
-const StyledTitle2 = styled(Typo.Title2).attrs({
-  color: ColorsEnum.WHITE,
-})({
+const StyledTitle2 = styled(Typo.Title2)(({ color, theme }) => ({
+  color: color ?? theme.colors.white,
   textAlign: 'center',
-})
+}))
 
 const Content = styled.View({
   flexDirection: 'column',
@@ -91,3 +105,17 @@ const Content = styled.View({
   paddingHorizontal: getSpacing(4),
   maxWidth: getSpacing(90),
 })
+
+const BottomContainer = styled.View(({ theme }) => ({
+  flex: 1,
+  alignSelf: 'stretch',
+  ...(theme.isTouch
+    ? {
+        justifyContent: 'flex-end',
+        marginBottom: getSpacing(8),
+      }
+    : {
+        marginTop: getSpacing(8),
+        maxHeight: getSpacing(24),
+      }),
+}))

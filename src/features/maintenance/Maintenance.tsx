@@ -6,7 +6,7 @@ import { Helmet } from 'libs/react-helmet/Helmet'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { LogoPassCulture as LogoPassCultureOriginal } from 'ui/svg/icons/LogoPassCulture'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 type MaintenanceProps = {
   message?: string
@@ -32,11 +32,10 @@ export const Maintenance: React.FC<MaintenanceProps> = (props) => {
   )
 }
 
-const StyledBody = styled(Typo.Body).attrs({
-  color: ColorsEnum.WHITE,
-})({
+const StyledBody = styled(Typo.Body)(({ color, theme }) => ({
+  color: color ?? theme.colors.white,
   textAlign: 'center',
-})
+}))
 
 const LogoPassCulture = styled(LogoPassCultureOriginal)({
   alignItems: 'flex-end',

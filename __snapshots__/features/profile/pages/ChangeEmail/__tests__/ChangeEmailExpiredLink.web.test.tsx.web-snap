@@ -79,51 +79,52 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
           />
           <div
             class="css-view-1dbjc4n"
-            style="height: 32px;"
-          />
-          <div
-            aria-label="Faire une nouvelle demande"
-            class="css-view-1dbjc4n"
-            data-testid="Faire une nouvelle demande"
-            style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-            tabindex="0"
+            style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
           >
             <div
-              class="css-text-901oao css-textOneLine-vcwn7f"
-              dir="auto"
-              style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
-            >
-              Faire une nouvelle demande
-            </div>
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="height: 8px;"
-          />
-          <div
-            aria-label="button-icon"
-            class="css-view-1dbjc4n"
-            data-testid="Retourner à l'accueil"
-            style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-            tabindex="0"
-          >
-            <div
+              aria-label="Faire une nouvelle demande"
               class="css-view-1dbjc4n"
-              data-testid="button-icon"
+              data-testid="Faire une nouvelle demande"
+              style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+              tabindex="0"
             >
               <div
-                class="css-text-901oao"
+                class="css-text-901oao css-textOneLine-vcwn7f"
                 dir="auto"
+                style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
               >
-                button-icon-SVG-Mock
+                Faire une nouvelle demande
               </div>
             </div>
             <div
-              class="css-text-901oao css-textOneLine-vcwn7f"
-              dir="auto"
-              style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 12px; max-width: 100%;"
+              class="css-view-1dbjc4n"
+              style="height: 16px;"
+            />
+            <div
+              aria-label="button-icon"
+              class="css-view-1dbjc4n"
+              data-testid="Retourner à l'accueil"
+              style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+              tabindex="0"
             >
-              Retourner à l'accueil
+              <div
+                class="css-view-1dbjc4n"
+                data-testid="button-icon"
+              >
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                >
+                  button-icon-SVG-Mock
+                </div>
+              </div>
+              <div
+                class="css-text-901oao css-textOneLine-vcwn7f"
+                dir="auto"
+                style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 12px; max-width: 100%;"
+              >
+                Retourner à l'accueil
+              </div>
             </div>
           </div>
           <div
@@ -209,51 +210,52 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
         />
         <div
           class="css-view-1dbjc4n"
-          style="height: 32px;"
-        />
-        <div
-          aria-label="Faire une nouvelle demande"
-          class="css-view-1dbjc4n"
-          data-testid="Faire une nouvelle demande"
-          style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-          tabindex="0"
+          style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
         >
           <div
-            class="css-text-901oao css-textOneLine-vcwn7f"
-            dir="auto"
-            style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
-          >
-            Faire une nouvelle demande
-          </div>
-        </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="height: 8px;"
-        />
-        <div
-          aria-label="button-icon"
-          class="css-view-1dbjc4n"
-          data-testid="Retourner à l'accueil"
-          style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-          tabindex="0"
-        >
-          <div
+            aria-label="Faire une nouvelle demande"
             class="css-view-1dbjc4n"
-            data-testid="button-icon"
+            data-testid="Faire une nouvelle demande"
+            style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+            tabindex="0"
           >
             <div
-              class="css-text-901oao"
+              class="css-text-901oao css-textOneLine-vcwn7f"
               dir="auto"
+              style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
             >
-              button-icon-SVG-Mock
+              Faire une nouvelle demande
             </div>
           </div>
           <div
-            class="css-text-901oao css-textOneLine-vcwn7f"
-            dir="auto"
-            style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 12px; max-width: 100%;"
+            class="css-view-1dbjc4n"
+            style="height: 16px;"
+          />
+          <div
+            aria-label="button-icon"
+            class="css-view-1dbjc4n"
+            data-testid="Retourner à l'accueil"
+            style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+            tabindex="0"
           >
-            Retourner à l'accueil
+            <div
+              class="css-view-1dbjc4n"
+              data-testid="button-icon"
+            >
+              <div
+                class="css-text-901oao"
+                dir="auto"
+              >
+                button-icon-SVG-Mock
+              </div>
+            </div>
+            <div
+              class="css-text-901oao css-textOneLine-vcwn7f"
+              dir="auto"
+              style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 12px; max-width: 100%;"
+            >
+              Retourner à l'accueil
+            </div>
           </div>
         </div>
         <div
@@ -396,51 +398,52 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
           />
           <div
             class="css-view-1dbjc4n"
-            style="height: 32px;"
-          />
-          <div
-            aria-label="Se connecter"
-            class="css-view-1dbjc4n"
-            data-testid="Se connecter"
-            style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-            tabindex="0"
+            style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
           >
             <div
-              class="css-text-901oao css-textOneLine-vcwn7f"
-              dir="auto"
-              style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
-            >
-              Se connecter
-            </div>
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="height: 8px;"
-          />
-          <div
-            aria-label="button-icon"
-            class="css-view-1dbjc4n"
-            data-testid="Retourner à l'accueil"
-            style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-            tabindex="0"
-          >
-            <div
+              aria-label="Se connecter"
               class="css-view-1dbjc4n"
-              data-testid="button-icon"
+              data-testid="Se connecter"
+              style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+              tabindex="0"
             >
               <div
-                class="css-text-901oao"
+                class="css-text-901oao css-textOneLine-vcwn7f"
                 dir="auto"
+                style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
               >
-                button-icon-SVG-Mock
+                Se connecter
               </div>
             </div>
             <div
-              class="css-text-901oao css-textOneLine-vcwn7f"
-              dir="auto"
-              style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 12px; max-width: 100%;"
+              class="css-view-1dbjc4n"
+              style="height: 16px;"
+            />
+            <div
+              aria-label="button-icon"
+              class="css-view-1dbjc4n"
+              data-testid="Retourner à l'accueil"
+              style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+              tabindex="0"
             >
-              Retourner à l'accueil
+              <div
+                class="css-view-1dbjc4n"
+                data-testid="button-icon"
+              >
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                >
+                  button-icon-SVG-Mock
+                </div>
+              </div>
+              <div
+                class="css-text-901oao css-textOneLine-vcwn7f"
+                dir="auto"
+                style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 12px; max-width: 100%;"
+              >
+                Retourner à l'accueil
+              </div>
             </div>
           </div>
           <div
@@ -526,51 +529,52 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
         />
         <div
           class="css-view-1dbjc4n"
-          style="height: 32px;"
-        />
-        <div
-          aria-label="Se connecter"
-          class="css-view-1dbjc4n"
-          data-testid="Se connecter"
-          style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-          tabindex="0"
+          style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
         >
           <div
-            class="css-text-901oao css-textOneLine-vcwn7f"
-            dir="auto"
-            style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
-          >
-            Se connecter
-          </div>
-        </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="height: 8px;"
-        />
-        <div
-          aria-label="button-icon"
-          class="css-view-1dbjc4n"
-          data-testid="Retourner à l'accueil"
-          style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-          tabindex="0"
-        >
-          <div
+            aria-label="Se connecter"
             class="css-view-1dbjc4n"
-            data-testid="button-icon"
+            data-testid="Se connecter"
+            style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+            tabindex="0"
           >
             <div
-              class="css-text-901oao"
+              class="css-text-901oao css-textOneLine-vcwn7f"
               dir="auto"
+              style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
             >
-              button-icon-SVG-Mock
+              Se connecter
             </div>
           </div>
           <div
-            class="css-text-901oao css-textOneLine-vcwn7f"
-            dir="auto"
-            style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 12px; max-width: 100%;"
+            class="css-view-1dbjc4n"
+            style="height: 16px;"
+          />
+          <div
+            aria-label="button-icon"
+            class="css-view-1dbjc4n"
+            data-testid="Retourner à l'accueil"
+            style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+            tabindex="0"
           >
-            Retourner à l'accueil
+            <div
+              class="css-view-1dbjc4n"
+              data-testid="button-icon"
+            >
+              <div
+                class="css-text-901oao"
+                dir="auto"
+              >
+                button-icon-SVG-Mock
+              </div>
+            </div>
+            <div
+              class="css-text-901oao css-textOneLine-vcwn7f"
+              dir="auto"
+              style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 12px; max-width: 100%;"
+            >
+              Retourner à l'accueil
+            </div>
           </div>
         </div>
         <div

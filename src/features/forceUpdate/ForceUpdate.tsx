@@ -9,7 +9,7 @@ import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { Star } from 'ui/svg/icons/Star'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, Typo } from 'ui/theme'
 
 const ANDROID_STORE_LINK = `https://play.google.com/store/apps/details?id=${env.ANDROID_APP_ID}`
 const IOS_STORE_LINK = `https://apps.apple.com/fr/app/pass-culture/id${env.IOS_APP_STORE_ID}`
@@ -48,10 +48,11 @@ export const ForceUpdate = () => {
       <Helmet>
         <title>{title}</title>
       </Helmet>
-      <GenericInfoPage title={title} icon={Star}>
+      <GenericInfoPage
+        title={title}
+        icon={Star}
+        buttons={[<ButtonPrimaryWhite key={buttonText} title={buttonText} onPress={onPress} />]}>
         <StyledBody>{description}</StyledBody>
-        <Spacer.Column numberOfSpaces={12} />
-        <ButtonPrimaryWhite title={buttonText} onPress={onPress} />
       </GenericInfoPage>
     </React.Fragment>
   )

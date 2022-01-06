@@ -149,158 +149,174 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       className="css-view-1dbjc4n"
       style={
         Object {
-          "height": "60px",
+          "WebkitAlignSelf": "stretch",
+          "WebkitBoxFlex": 1,
+          "WebkitFlexBasis": "0px",
+          "WebkitFlexGrow": 1,
+          "WebkitFlexShrink": 1,
+          "alignSelf": "stretch",
+          "flexBasis": "0px",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "marginTop": "32px",
+          "maxHeight": "96px",
+          "msFlexItemAlign": "stretch",
+          "msFlexNegative": 1,
+          "msFlexPositive": 1,
+          "msFlexPreferredSize": "0px",
+          "msGridRowAlign": "stretch",
         }
       }
-    />
-    <div
-      aria-label="Supprimer mon compte"
-      className="css-view-1dbjc4n"
-      data-testid="Supprimer mon compte"
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onKeyDown={[Function]}
-      style={
-        Object {
-          "MozTransitionProperty": "opacity",
-          "MozUserSelect": "none",
-          "WebkitAlignItems": "center",
-          "WebkitBoxAlign": "center",
-          "WebkitBoxDirection": "normal",
-          "WebkitBoxOrient": "horizontal",
-          "WebkitBoxPack": "center",
-          "WebkitFlexDirection": "row",
-          "WebkitJustifyContent": "center",
-          "WebkitTransitionDuration": "0s",
-          "WebkitTransitionProperty": "opacity",
-          "WebkitUserSelect": "none",
-          "alignItems": "center",
-          "backgroundColor": "rgba(255,255,255,1.00)",
-          "borderBottomLeftRadius": "24px",
-          "borderBottomRightRadius": "24px",
-          "borderBottomWidth": "0px",
-          "borderLeftWidth": "0px",
-          "borderRightWidth": "0px",
-          "borderTopLeftRadius": "24px",
-          "borderTopRightRadius": "24px",
-          "borderTopWidth": "0px",
-          "cursor": "pointer",
-          "flexDirection": "row",
-          "height": "40px",
-          "justifyContent": "center",
-          "maxWidth": "500px",
-          "msFlexAlign": "center",
-          "msFlexDirection": "row",
-          "msFlexPack": "center",
-          "msTouchAction": "manipulation",
-          "msUserSelect": "none",
-          "paddingBottom": "2px",
-          "paddingLeft": "2px",
-          "paddingRight": "2px",
-          "paddingTop": "2px",
-          "touchAction": "manipulation",
-          "transitionDuration": "0s",
-          "transitionProperty": "opacity",
-          "userSelect": "none",
-          "width": "100%",
-        }
-      }
-      tabIndex="0"
     >
       <div
-        className="css-text-901oao css-textOneLine-vcwn7f"
-        dir="auto"
+        aria-label="Supprimer mon compte"
+        className="css-view-1dbjc4n"
+        data-testid="Supprimer mon compte"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onKeyDown={[Function]}
         style={
           Object {
-            "color": "rgba(235,0,85,1.00)",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": "15px",
-            "lineHeight": "20px",
-            "marginLeft": "0px",
-            "maxWidth": "100%",
+            "MozTransitionProperty": "opacity",
+            "MozUserSelect": "none",
+            "WebkitAlignItems": "center",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitBoxPack": "center",
+            "WebkitFlexDirection": "row",
+            "WebkitJustifyContent": "center",
+            "WebkitTransitionDuration": "0s",
+            "WebkitTransitionProperty": "opacity",
+            "WebkitUserSelect": "none",
+            "alignItems": "center",
+            "backgroundColor": "rgba(255,255,255,1.00)",
+            "borderBottomLeftRadius": "24px",
+            "borderBottomRightRadius": "24px",
+            "borderBottomWidth": "0px",
+            "borderLeftWidth": "0px",
+            "borderRightWidth": "0px",
+            "borderTopLeftRadius": "24px",
+            "borderTopRightRadius": "24px",
+            "borderTopWidth": "0px",
+            "cursor": "pointer",
+            "flexDirection": "row",
+            "height": "40px",
+            "justifyContent": "center",
+            "maxWidth": "500px",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexPack": "center",
+            "msTouchAction": "manipulation",
+            "msUserSelect": "none",
+            "paddingBottom": "2px",
+            "paddingLeft": "2px",
+            "paddingRight": "2px",
+            "paddingTop": "2px",
+            "touchAction": "manipulation",
+            "transitionDuration": "0s",
+            "transitionProperty": "opacity",
+            "userSelect": "none",
+            "width": "100%",
           }
         }
+        tabIndex="0"
       >
-        Supprimer mon compte
+        <div
+          className="css-text-901oao css-textOneLine-vcwn7f"
+          dir="auto"
+          style={
+            Object {
+              "color": "rgba(235,0,85,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginLeft": "0px",
+              "maxWidth": "100%",
+            }
+          }
+        >
+          Supprimer mon compte
+        </div>
       </div>
-    </div>
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "height": "16px",
-        }
-      }
-    />
-    <div
-      aria-label="Abandonner"
-      className="css-view-1dbjc4n"
-      data-testid="Abandonner"
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onKeyDown={[Function]}
-      style={
-        Object {
-          "MozTransitionProperty": "opacity",
-          "MozUserSelect": "none",
-          "WebkitAlignItems": "center",
-          "WebkitBoxAlign": "center",
-          "WebkitBoxDirection": "normal",
-          "WebkitBoxOrient": "horizontal",
-          "WebkitBoxPack": "center",
-          "WebkitFlexDirection": "row",
-          "WebkitJustifyContent": "center",
-          "WebkitTransitionDuration": "0s",
-          "WebkitTransitionProperty": "opacity",
-          "WebkitUserSelect": "none",
-          "alignItems": "center",
-          "backgroundColor": "rgba(0,0,0,0.00)",
-          "borderBottomLeftRadius": "24px",
-          "borderBottomRightRadius": "24px",
-          "borderBottomWidth": "0px",
-          "borderLeftWidth": "0px",
-          "borderRightWidth": "0px",
-          "borderTopLeftRadius": "24px",
-          "borderTopRightRadius": "24px",
-          "borderTopWidth": "0px",
-          "cursor": "pointer",
-          "flexDirection": "row",
-          "height": "40px",
-          "justifyContent": "center",
-          "maxWidth": "500px",
-          "msFlexAlign": "center",
-          "msFlexDirection": "row",
-          "msFlexPack": "center",
-          "msTouchAction": "manipulation",
-          "msUserSelect": "none",
-          "paddingBottom": "2px",
-          "paddingLeft": "2px",
-          "paddingRight": "2px",
-          "paddingTop": "2px",
-          "touchAction": "manipulation",
-          "transitionDuration": "0s",
-          "transitionProperty": "opacity",
-          "userSelect": "none",
-          "width": "100%",
-        }
-      }
-      tabIndex="0"
-    >
       <div
-        className="css-text-901oao css-textOneLine-vcwn7f"
-        dir="auto"
+        className="css-view-1dbjc4n"
         style={
           Object {
-            "color": "rgba(255,255,255,1.00)",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": "15px",
-            "lineHeight": "20px",
-            "marginLeft": "0px",
-            "maxWidth": "100%",
+            "height": "16px",
           }
         }
+      />
+      <div
+        aria-label="Abandonner"
+        className="css-view-1dbjc4n"
+        data-testid="Abandonner"
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onKeyDown={[Function]}
+        style={
+          Object {
+            "MozTransitionProperty": "opacity",
+            "MozUserSelect": "none",
+            "WebkitAlignItems": "center",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitBoxPack": "center",
+            "WebkitFlexDirection": "row",
+            "WebkitJustifyContent": "center",
+            "WebkitTransitionDuration": "0s",
+            "WebkitTransitionProperty": "opacity",
+            "WebkitUserSelect": "none",
+            "alignItems": "center",
+            "backgroundColor": "rgba(0,0,0,0.00)",
+            "borderBottomLeftRadius": "24px",
+            "borderBottomRightRadius": "24px",
+            "borderBottomWidth": "0px",
+            "borderLeftWidth": "0px",
+            "borderRightWidth": "0px",
+            "borderTopLeftRadius": "24px",
+            "borderTopRightRadius": "24px",
+            "borderTopWidth": "0px",
+            "cursor": "pointer",
+            "flexDirection": "row",
+            "height": "40px",
+            "justifyContent": "center",
+            "maxWidth": "500px",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexPack": "center",
+            "msTouchAction": "manipulation",
+            "msUserSelect": "none",
+            "paddingBottom": "2px",
+            "paddingLeft": "2px",
+            "paddingRight": "2px",
+            "paddingTop": "2px",
+            "touchAction": "manipulation",
+            "transitionDuration": "0s",
+            "transitionProperty": "opacity",
+            "userSelect": "none",
+            "width": "100%",
+          }
+        }
+        tabIndex="0"
       >
-        Abandonner
+        <div
+          className="css-text-901oao css-textOneLine-vcwn7f"
+          dir="auto"
+          style={
+            Object {
+              "color": "rgba(255,255,255,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginLeft": "0px",
+              "maxWidth": "100%",
+            }
+          }
+        >
+          Abandonner
+        </div>
       </div>
     </div>
     <div

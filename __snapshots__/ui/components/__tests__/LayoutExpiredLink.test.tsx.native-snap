@@ -67,6 +67,18 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       }
     />
     <View
+      flex={1}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
       height={140}
       width={140}
     >
@@ -85,17 +97,17 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       }
     />
     <Text
-      color="#ffffff"
       fontSize={24}
       style={
         Array [
           Object {
-            "color": "#ffffff",
+            "color": "#151515",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 24,
             "lineHeight": 28,
           },
           Object {
+            "color": "#ffffff",
             "textAlign": "center",
           },
         ]
@@ -114,7 +126,6 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       }
     />
     <Text
-      color="#ffffff"
       style={
         Array [
           Object {
@@ -130,7 +141,6 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       Le lien est expiré !
     </Text>
     <Text
-      color="#ffffff"
       style={
         Array [
           Object {
@@ -156,7 +166,6 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       }
     />
     <Text
-      color="#ffffff"
       style={
         Array [
           Object {
@@ -310,141 +319,156 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       </Text>
     </View>
     <View
-      numberOfSpaces={8}
+      numberOfSpaces={12}
       style={
         Array [
           Object {
-            "height": 32,
+            "height": 48,
           },
         ]
       }
     />
     <View
-      accessibilityLabel="Renvoyer l'email"
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      nativeID="animatedComponent"
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "#ffffff",
-          "borderRadius": 24,
-          "borderWidth": 0,
-          "flexDirection": "row",
-          "height": 40,
-          "justifyContent": "center",
-          "maxWidth": 500,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 2,
-          "paddingRight": 2,
-          "paddingTop": 2,
-          "width": "100%",
-        }
-      }
-      testID="Renvoyer l'email"
-    >
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
-        style={
-          Array [
-            Object {
-              "color": "#eb0055",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 0,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-        textColor="#eb0055"
-      >
-        Renvoyer l'email
-      </Text>
-    </View>
-    <View
-      numberOfSpaces={2}
       style={
         Array [
           Object {
-            "height": 8,
+            "alignSelf": "stretch",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "flex-end",
+            "marginBottom": 32,
           },
         ]
       }
-    />
-    <View
-      accessibilityLabel="button-icon"
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      nativeID="animatedComponent"
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "transparent",
-          "borderRadius": 24,
-          "borderWidth": 0,
-          "flexDirection": "row",
-          "height": 40,
-          "justifyContent": "center",
-          "maxWidth": 500,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 2,
-          "paddingRight": 2,
-          "paddingTop": 2,
-          "width": "100%",
-        }
-      }
-      testID="Retourner à l'accueil"
     >
       <View
-        height={18}
-        testID="button-icon"
-        width={18}
+        accessibilityLabel="Renvoyer l'email"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        nativeID="animatedComponent"
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderRadius": 24,
+            "borderWidth": 0,
+            "flexDirection": "row",
+            "height": 40,
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 2,
+            "paddingRight": 2,
+            "paddingTop": 2,
+            "width": "100%",
+          }
+        }
+        testID="Renvoyer l'email"
       >
-        <Text>
-          button-icon-SVG-Mock
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#eb0055",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 0,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+          textColor="#eb0055"
+        >
+          Renvoyer l'email
         </Text>
       </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        icon={[Function]}
-        iconSize={18}
-        numberOfLines={1}
+      <View
+        numberOfSpaces={4}
         style={
           Array [
             Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 12,
-              "maxWidth": "100%",
+              "height": 16,
             },
           ]
         }
-        textColor="#ffffff"
+      />
+      <View
+        accessibilityLabel="button-icon"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        nativeID="animatedComponent"
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "borderRadius": 24,
+            "borderWidth": 0,
+            "flexDirection": "row",
+            "height": 40,
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 2,
+            "paddingRight": 2,
+            "paddingTop": 2,
+            "width": "100%",
+          }
+        }
+        testID="Retourner à l'accueil"
       >
-        Retourner à l'accueil
-      </Text>
+        <View
+          height={18}
+          testID="button-icon"
+          width={18}
+        >
+          <Text>
+            button-icon-SVG-Mock
+          </Text>
+        </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          icon={[Function]}
+          iconSize={18}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 12,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+          textColor="#ffffff"
+        >
+          Retourner à l'accueil
+        </Text>
+      </View>
     </View>
     <View
       customHeight={8}

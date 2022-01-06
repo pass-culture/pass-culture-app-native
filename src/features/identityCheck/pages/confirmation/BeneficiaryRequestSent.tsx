@@ -11,7 +11,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export function BeneficiaryRequestSent() {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -42,17 +42,17 @@ export function BeneficiaryRequestSent() {
   const message = inTheMeantime.length ? `${body} ${inTheMeantime}` : body
 
   return (
-    <GenericInfoPage title={t`Demande envoyée\u00a0!`} icon={RequestSent}>
+    <GenericInfoPage
+      title={t`Demande envoyée\u00a0!`}
+      icon={RequestSent}
+      buttons={[<ButtonPrimaryWhite key={1} title={t`On y va\u00a0!`} onPress={onPress} />]}>
       <StyledBody>{t`Nous étudions ton dossier...`}</StyledBody>
       <StyledBody>{message}</StyledBody>
-      <Spacer.Column numberOfSpaces={15} />
-      <ButtonPrimaryWhite title={t`On y va\u00a0!`} onPress={onPress} />
     </GenericInfoPage>
   )
 }
 
-const StyledBody = styled(Typo.Body).attrs({
-  color: ColorsEnum.WHITE,
-})({
+const StyledBody = styled(Typo.Body)(({ color, theme }) => ({
+  color: color ?? theme.colors.white,
   textAlign: 'center',
-})
+}))

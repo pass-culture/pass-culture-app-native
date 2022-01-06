@@ -11,7 +11,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, Typo } from 'ui/theme'
 
 export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   const timer = useRef<number>()
@@ -40,12 +40,14 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
       <Helmet>
         <title>{t`Réservation introuvable | Pass Culture`}</title>
       </Helmet>
-      <GenericInfoPage title={t`Réservation introuvable\u00a0!`} icon={NoBookings}>
+      <GenericInfoPage
+        title={t`Réservation introuvable\u00a0!`}
+        icon={NoBookings}
+        buttons={[
+          <ButtonPrimaryWhite key={1} title={t`Mes réservations terminées`} onPress={onPress} />,
+          <ButtonTertiaryWhite key={2} title={t`Retourner l'accueil`} onPress={navigateToHome} />,
+        ]}>
         <StyledBody>{t`Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N'hésite pas à retrouver la liste de tes réservations terminées et annulées pour t'en assurer.`}</StyledBody>
-        <Spacer.Column numberOfSpaces={12} />
-        <ButtonPrimaryWhite title={t`Mes réservations terminées`} onPress={onPress} />
-        <Spacer.Column numberOfSpaces={4} />
-        <ButtonTertiaryWhite title={t`Retourner l'accueil`} onPress={navigateToHome} />
       </GenericInfoPage>
     </React.Fragment>
   )

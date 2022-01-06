@@ -9,22 +9,25 @@ import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { AccountLocked } from 'ui/svg/icons/AccountLocked'
 import { Email } from 'ui/svg/icons/Email'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, Typo } from 'ui/theme'
 
 export function PhoneValidationTooManyAttempts() {
   return (
-    <GenericInfoPage title={t`Trop de tentatives\u00a0!`} icon={AccountLocked}>
+    <GenericInfoPage
+      title={t`Trop de tentatives\u00a0!`}
+      icon={AccountLocked}
+      buttons={[
+        <ButtonTertiaryWhite
+          key={1}
+          title={t`Contacter le support`}
+          icon={Email}
+          onPress={contactSupport.forPhoneNumberConfirmation}
+        />,
+        <ButtonPrimaryWhite key={2} title={t`Retourner à l'accueil`} onPress={navigateToHome} />,
+      ]}>
       <StyledBody>
         {t`Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux\u00a0:`}
       </StyledBody>
-      <Spacer.Column numberOfSpaces={7} />
-      <ButtonTertiaryWhite
-        title={t`Contacter le support`}
-        icon={Email}
-        onPress={contactSupport.forPhoneNumberConfirmation}
-      />
-      <Spacer.Column numberOfSpaces={12} />
-      <ButtonPrimaryWhite title={t`Retourner à l'accueil`} onPress={navigateToHome} />
     </GenericInfoPage>
   )
 }

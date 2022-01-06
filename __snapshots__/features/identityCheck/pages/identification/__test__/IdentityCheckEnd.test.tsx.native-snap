@@ -67,6 +67,18 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
       }
     />
     <View
+      flex={1}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
       height={140}
       width={140}
     >
@@ -85,17 +97,17 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
       }
     />
     <Text
-      color="#ffffff"
       fontSize={24}
       style={
         Array [
           Object {
-            "color": "#ffffff",
+            "color": "#151515",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 24,
             "lineHeight": 28,
           },
           Object {
+            "color": "#ffffff",
             "textAlign": "center",
           },
         ]
@@ -109,6 +121,16 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
         Array [
           Object {
             "height": 20,
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={12}
+      style={
+        Array [
+          Object {
+            "height": 48,
           },
         ]
       }

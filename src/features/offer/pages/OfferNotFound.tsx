@@ -10,7 +10,7 @@ import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   const timer = useRef<number>()
@@ -38,17 +38,19 @@ export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
       <Helmet>
         <title>{t`Offre introuvable | Pass Culture`}</title>
       </Helmet>
-      <GenericInfoPage title={t`Offre introuvable\u00a0!`} icon={NoOffer}>
+      <GenericInfoPage
+        title={t`Offre introuvable\u00a0!`}
+        icon={NoOffer}
+        buttons={[
+          <ButtonPrimaryWhite key={1} title={t`Retourner à l'accueil`} onPress={onPress} />,
+        ]}>
         <StyledBody>{t`Il est possible que cette offre soit désactivée ou n'existe pas.`}</StyledBody>
-        <Spacer.Column numberOfSpaces={12} />
-        <ButtonPrimaryWhite title={t`Retourner à l'accueil`} onPress={onPress} />
       </GenericInfoPage>
     </React.Fragment>
   )
 }
 
-const StyledBody = styled(Typo.Body).attrs({
-  color: ColorsEnum.WHITE,
-})({
+const StyledBody = styled(Typo.Body)(({ color, theme }) => ({
+  color: color ?? theme.colors.white,
   textAlign: 'center',
-})
+}))

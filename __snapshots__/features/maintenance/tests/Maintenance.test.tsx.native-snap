@@ -67,6 +67,18 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
       }
     />
     <View
+      flex={1}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
       height={124}
       width={197}
     >
@@ -85,17 +97,17 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
       }
     />
     <Text
-      color="#ffffff"
       fontSize={24}
       style={
         Array [
           Object {
-            "color": "#ffffff",
+            "color": "#151515",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 24,
             "lineHeight": 28,
           },
           Object {
+            "color": "#ffffff",
             "textAlign": "center",
           },
         ]
@@ -124,7 +136,6 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
       }
     />
     <Text
-      color="#ffffff"
       style={
         Array [
           Object {
@@ -157,6 +168,16 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
         undefined-SVG-Mock
       </Text>
     </View>
+    <View
+      numberOfSpaces={12}
+      style={
+        Array [
+          Object {
+            "height": 48,
+          },
+        ]
+      }
+    />
     <View
       customHeight={8}
       enable={true}
@@ -239,6 +260,18 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
       }
     />
     <View
+      flex={1}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
       height={124}
       width={197}
     >
@@ -257,17 +290,17 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
       }
     />
     <Text
-      color="#ffffff"
       fontSize={24}
       style={
         Array [
           Object {
-            "color": "#ffffff",
+            "color": "#151515",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 24,
             "lineHeight": 28,
           },
           Object {
+            "color": "#ffffff",
             "textAlign": "center",
           },
         ]
@@ -296,7 +329,6 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
       }
     />
     <Text
-      color="#ffffff"
       style={
         Array [
           Object {
@@ -329,6 +361,16 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
         undefined-SVG-Mock
       </Text>
     </View>
+    <View
+      numberOfSpaces={12}
+      style={
+        Array [
+          Object {
+            "height": 48,
+          },
+        ]
+      }
+    />
     <View
       customHeight={8}
       enable={true}
