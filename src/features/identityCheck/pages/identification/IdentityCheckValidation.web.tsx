@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect, useRoute } from '@react-navigation/native'
+import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
 import moment from 'moment'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
@@ -8,17 +8,16 @@ import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckStep } from 'features/identityCheck/types'
-import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
-import { UseRouteType } from 'features/navigation/RootNavigator'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 export function IdentityCheckValidation() {
   const { params } = useRoute<UseRouteType<'IdentityCheckValidation'>>()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const { dispatch, identification } = useIdentityCheckContext()
-  const { navigateToNextScreen } = useIdentityCheckNavigation()
 
   const birthDate = identification.birthDate
     ? moment(identification.birthDate, 'YYYY-MM-DD').format('DD/MM/YYYY')
@@ -26,7 +25,10 @@ export function IdentityCheckValidation() {
 
   const navigateToNextEduConnectStep = () => {
     dispatch({ type: 'SET_STEP', payload: IdentityCheckStep.CONFIRMATION })
-    navigateToNextScreen()
+    // in web context, we are redirected to this page after educonnect login in a new tab.
+    // Therefore, the identity check context loses the state before educonnect login and we
+    // cannot use navigateToNextScreen here. We need to navigated explicitely to next page.
+    navigate('IdentityCheckStepper')
   }
 
   useFocusEffect(
