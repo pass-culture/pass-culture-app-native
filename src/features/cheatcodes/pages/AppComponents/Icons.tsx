@@ -36,7 +36,6 @@ import { Confirmation } from 'ui/svg/icons/Confirmation'
 import { Digital } from 'ui/svg/icons/Digital'
 import { Duo } from 'ui/svg/icons/Duo'
 import { DuoBold } from 'ui/svg/icons/DuoBold'
-import { DuoPerson } from 'ui/svg/icons/DuoPerson'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
@@ -137,7 +136,6 @@ export const Icons: FunctionComponent = () => {
       <Icon name="Digital" component={Digital} isNew />
       <Icon name="Duo" component={Duo} isNew />
       <Icon name="DuoBold" component={DuoBold} />
-      <Icon name="DuoPerson" component={DuoPerson} />
       <Icon name="EditPen" component={EditPen} isNew />
       <Icon name="Email" component={Email} isNew />
       <Icon name="EmailFilled" component={EmailFilled} isNew />

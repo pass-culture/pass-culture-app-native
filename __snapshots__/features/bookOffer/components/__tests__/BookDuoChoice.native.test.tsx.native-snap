@@ -231,12 +231,32 @@ Array [
           }
         >
           <View
-            height={28}
-            width={28}
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                },
+              ]
+            }
           >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
+            <View
+              fill="#151515"
+              height={28}
+              width={28}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+            <View
+              fill="#151515"
+              height={28}
+              width={28}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
           </View>
           <Text
             color="#151515"

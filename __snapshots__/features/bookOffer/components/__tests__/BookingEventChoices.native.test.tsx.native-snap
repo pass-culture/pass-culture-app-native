@@ -455,12 +455,32 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
           }
         >
           <View
-            height={28}
-            width={28}
+            style={
+              Array [
+                Object {
+                  "flexDirection": "row",
+                },
+              ]
+            }
           >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
+            <View
+              fill="#626262"
+              height={28}
+              width={28}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+            <View
+              fill="#626262"
+              height={28}
+              width={28}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
           </View>
           <Text
             color="#626262"

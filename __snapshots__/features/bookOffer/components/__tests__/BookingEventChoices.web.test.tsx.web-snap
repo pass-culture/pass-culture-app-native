@@ -188,12 +188,27 @@ Object {
               >
                 <div
                   class="css-view-1dbjc4n"
+                  style="flex-direction: row;"
                 >
                   <div
-                    class="css-text-901oao"
-                    dir="auto"
+                    class="css-view-1dbjc4n"
                   >
-                    undefined-SVG-Mock
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
                   </div>
                 </div>
                 <div
@@ -425,12 +440,27 @@ Object {
             >
               <div
                 class="css-view-1dbjc4n"
+                style="flex-direction: row;"
               >
                 <div
-                  class="css-text-901oao"
-                  dir="auto"
+                  class="css-view-1dbjc4n"
                 >
-                  undefined-SVG-Mock
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
                 </div>
               </div>
               <div
