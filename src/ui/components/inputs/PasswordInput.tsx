@@ -83,4 +83,5 @@ const StyledBaseTextInput = styled(BaseTextInput)({
 const IconTouchableOpacity = styled.TouchableOpacity({
   flex: 0.1,
   maxWidth: 60,
+  alignItems: 'flex-end',
 })
