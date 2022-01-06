@@ -10,10 +10,10 @@ import { useUserProfileInfo } from 'features/home/api'
 import { useSubcategory } from 'libs/subcategories'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Calendar } from 'ui/svg/icons/Calendar'
-import { DuoBold } from 'ui/svg/icons/DuoBold'
+import { Duo } from 'ui/svg/icons/Duo'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { Profile } from 'ui/svg/icons/Profile'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 type BookingPropertiesSectionProps = {
   booking: Booking
@@ -50,7 +50,11 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
             <TitleNameContainer>
               <Title>{title}</Title>
               <Spacer.Row numberOfSpaces={2} />
-              {!!properties.isDuo && <DuoBold testID="duo-icon" />}
+              {!!properties.isDuo && (
+                <IconDuoContainer>
+                  <Duo testID="duo-icon" size={getSpacing(8)} />
+                </IconDuoContainer>
+              )}
             </TitleNameContainer>
           )}
           type={'clickable'}
@@ -84,6 +88,12 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
 const TitleNameContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
+})
+
+const IconDuoContainer = styled.View({
+  // the Duo icon is wide so we increase the size and remove the margin
+  // so that it has the same size as the text
+  marginVertical: -getSpacing(1.5),
 })
 
 const Title = styled(Typo.Body)``
