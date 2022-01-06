@@ -1282,6 +1282,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                           "borderColor": "#c7c7cc",
                                           "borderRadius": 8,
                                           "borderWidth": 1,
+                                          "minHeight": 64,
                                         },
                                       ]
                                     }
@@ -1417,6 +1418,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                           "borderColor": "#c7c7cc",
                                           "borderRadius": 8,
                                           "borderWidth": 1,
+                                          "minHeight": 64,
                                         },
                                       ]
                                     }
@@ -1583,6 +1585,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                           "borderColor": "#c7c7cc",
                                           "borderRadius": 8,
                                           "borderWidth": 1,
+                                          "minHeight": 64,
                                         },
                                       ]
                                     }
@@ -1718,6 +1721,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                           "borderColor": "#c7c7cc",
                                           "borderRadius": 8,
                                           "borderWidth": 1,
+                                          "minHeight": 64,
                                         },
                                       ]
                                     }
@@ -4152,6 +4156,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                           "borderColor": "#c7c7cc",
                                           "borderRadius": 8,
                                           "borderWidth": 1,
+                                          "minHeight": 64,
                                         },
                                       ]
                                     }
@@ -4287,6 +4292,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                           "borderColor": "#c7c7cc",
                                           "borderRadius": 8,
                                           "borderWidth": 1,
+                                          "minHeight": 64,
                                         },
                                       ]
                                     }
@@ -4453,6 +4459,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                           "borderColor": "#c7c7cc",
                                           "borderRadius": 8,
                                           "borderWidth": 1,
+                                          "minHeight": 64,
                                         },
                                       ]
                                     }
@@ -4588,6 +4595,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                           "borderColor": "#c7c7cc",
                                           "borderRadius": 8,
                                           "borderWidth": 1,
+                                          "minHeight": 64,
                                         },
                                       ]
                                     }
