@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { PhoneError } from 'ui/svg/PhoneError'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export const LandscapePositionPage: React.FC = () => {
   return (
@@ -23,8 +23,7 @@ export const LandscapePositionPage: React.FC = () => {
   )
 }
 
-const StyledBody = styled(Typo.Body).attrs({
-  color: ColorsEnum.WHITE,
-})({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
   textAlign: 'center',
-})
+}))
