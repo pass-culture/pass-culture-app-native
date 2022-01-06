@@ -5,17 +5,20 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum } from 'ui/theme'
 
 type Props = Omit<IconInterface, 'color'> & {
+  'aria-label'?: string
   borderColor?: ColorsEnum
   fillColor?: ColorsEnum
 }
 
 export const Dot: React.FC<Props> = ({
+  'aria-label': ariaLabel,
   size = 8,
   borderColor = ColorsEnum.BLACK,
   fillColor = ColorsEnum.BLACK,
   testID,
 }) => (
   <Svg
+    aria-label={ariaLabel}
     width={size}
     height={size}
     viewBox="0 0 9 9"
