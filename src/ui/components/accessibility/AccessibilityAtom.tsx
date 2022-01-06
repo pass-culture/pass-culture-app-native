@@ -55,6 +55,7 @@ const Frame = styled.View({
   borderColor: ColorsEnum.GREY_MEDIUM,
   borderRadius: BorderRadiusEnum.BORDER_RADIUS,
   borderWidth: 1,
+  minHeight: getSpacing(16),
 })
 
 const Container = styled.View<{ rightSpacingValue: number }>(({ rightSpacingValue }) => ({

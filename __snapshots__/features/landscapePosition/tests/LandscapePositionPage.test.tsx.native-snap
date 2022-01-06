@@ -67,6 +67,18 @@ exports[`<LandscapePositionPage /> should match snapshot with default message 1`
       }
     />
     <View
+      flex={1}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
       fill="none"
       height={109.2}
       width={140}
@@ -86,17 +98,17 @@ exports[`<LandscapePositionPage /> should match snapshot with default message 1`
       }
     />
     <Text
-      color="#ffffff"
       fontSize={24}
       style={
         Array [
           Object {
-            "color": "#ffffff",
+            "color": "#151515",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 24,
             "lineHeight": 28,
           },
           Object {
+            "color": "#ffffff",
             "textAlign": "center",
           },
         ]
@@ -140,6 +152,16 @@ exports[`<LandscapePositionPage /> should match snapshot with default message 1`
     >
       Place ton téléphone ou ta tablette à la verticale pour afficher l’application.
     </Text>
+    <View
+      numberOfSpaces={12}
+      style={
+        Array [
+          Object {
+            "height": 48,
+          },
+        ]
+      }
+    />
     <View
       customHeight={8}
       enable={true}

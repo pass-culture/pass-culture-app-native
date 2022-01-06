@@ -2296,6 +2296,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                     "borderColor": "#c7c7cc",
                     "borderRadius": 8,
                     "borderWidth": 1,
+                    "minHeight": 64,
                   },
                 ]
               }
@@ -2430,6 +2431,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                     "borderColor": "#c7c7cc",
                     "borderRadius": 8,
                     "borderWidth": 1,
+                    "minHeight": 64,
                   },
                 ]
               }
@@ -2597,6 +2599,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                     "borderColor": "#c7c7cc",
                     "borderRadius": 8,
                     "borderWidth": 1,
+                    "minHeight": 64,
                   },
                 ]
               }
@@ -2732,6 +2735,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                     "borderColor": "#c7c7cc",
                     "borderRadius": 8,
                     "borderWidth": 1,
+                    "minHeight": 64,
                   },
                 ]
               }
