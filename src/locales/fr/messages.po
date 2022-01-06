@@ -1841,6 +1841,10 @@ msgstr "Patrimoine et tourisme"
 msgid "Permanent"
 msgstr "Permanent"
 
+#: src/features/landscapePosition/LandscapePositionPage.tsx
+msgid "Place ton téléphone ou ta tablette à la verticale pour afficher l’application."
+msgstr "Place ton téléphone ou ta tablette à la verticale pour afficher l’application."
+
 #: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
 msgid "Place-toi dans un lieu bien éclairé"
 msgstr "Place-toi dans un lieu bien éclairé"
@@ -2422,6 +2426,11 @@ msgstr "Ton prénom ne doit pas contenir de chiffres ou de caractères spéciaux
 #: src/features/offer/components/ReportOfferReason.tsx
 msgid "Ton signalement a bien été pris en compte"
 msgstr "Ton signalement a bien été pris en compte"
+
+#: src/features/landscapePosition/LandscapePositionPage.tsx
+#: src/features/landscapePosition/LandscapePositionPage.tsx
+msgid "Tourne-moi"
+msgstr "Tourne-moi"
 
 #: src/ui/components/achievements/components/GenericAchievement.tsx
 msgid "Tout passer"

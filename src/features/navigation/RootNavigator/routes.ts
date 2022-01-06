@@ -31,6 +31,7 @@ import { withAsyncErrorBoundary } from 'features/errors'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
+import { LandscapePositionPage } from 'features/landscapePosition/LandscapePositionPage'
 import { PageNotFound } from 'features/navigation/PageNotFound'
 import { identityCheckRoutes } from 'features/navigation/RootNavigator/identityCheckRoutes'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
@@ -316,6 +317,11 @@ export const routes: Route[] = [
     component: SetPhoneNumber,
     path: 'creation-compte/telephone',
     options: { title: t`Téléphone - Formulaire` },
+  },
+  {
+    name: 'LandscapePositionPage',
+    component: LandscapePositionPage,
+    path: 'position-paysage',
   },
   {
     name: 'SetPhoneValidationCode',

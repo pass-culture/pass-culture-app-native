@@ -1,0 +1,156 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<LandscapePositionPage /> should match snapshot with default message 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
+  <View
+    height="100%"
+    style={
+      Array [
+        Object {
+          "bottom": 0,
+          "height": "100%",
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "width": "100%",
+          "zIndex": -1,
+        },
+      ]
+    }
+    width="100%"
+  >
+    <View
+      height="100%"
+      width="100%"
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexBasis": 0,
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "center",
+          "maxWidth": 360,
+          "paddingHorizontal": 16,
+        },
+      ]
+    }
+  >
+    <View
+      numberOfSpaces={9}
+      style={
+        Array [
+          Object {
+            "height": 36,
+          },
+        ]
+      }
+    />
+    <View
+      fill="none"
+      height={109.2}
+      width={140}
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+    <View
+      numberOfSpaces={9}
+      style={
+        Array [
+          Object {
+            "height": 36,
+          },
+        ]
+      }
+    />
+    <Text
+      color="#ffffff"
+      fontSize={24}
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 24,
+            "lineHeight": 28,
+          },
+          Object {
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Tourne-moi
+    </Text>
+    <View
+      numberOfSpaces={5}
+      style={
+        Array [
+          Object {
+            "height": 20,
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <Text
+      color="#ffffff"
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Place ton téléphone ou ta tablette à la verticale pour afficher l’application.
+    </Text>
+    <View
+      customHeight={8}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;
