@@ -77,7 +77,9 @@ export const ForgottenPassword: FunctionComponent = () => {
 
   function openReCaptchaChallenge() {
     if (!isEmailValid(email)) {
-      setErrorMessage(t`Format de l'e-mail incorrect`)
+      setErrorMessage(
+        t`L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr`
+      )
       return
     }
     if (!networkInfo.isConnected) {
@@ -142,7 +144,7 @@ export const ForgottenPassword: FunctionComponent = () => {
             onEmailChange={onEmailChange}
             autoFocus={true}
           />
-          {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={1} />}
+          {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={2} />}
         </InputContainer>
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary

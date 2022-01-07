@@ -51,8 +51,8 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
         />
         <InputError
           visible={hasError}
-          messageId={t`Format de l'e-mail incorrect`}
-          numberOfSpacesTop={1}
+          messageId={t`L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr`}
+          numberOfSpacesTop={2}
         />
       </InputContainer>
       <Spacer.Column numberOfSpaces={4} />

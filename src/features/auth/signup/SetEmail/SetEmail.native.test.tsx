@@ -41,7 +41,11 @@ describe('<SetEmail />', () => {
       marketingEmailSubscription: false,
     })
 
-    expect(queryByText("Format de l'e-mail incorrect")).toBeFalsy()
+    expect(
+      queryByText(
+        "L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr"
+      )
+    ).toBeFalsy()
   })
 
   it('should reject email', () => {
@@ -53,6 +57,10 @@ describe('<SetEmail />', () => {
     const continueButton = getByText('Continuer')
     fireEvent.press(continueButton)
 
-    expect(queryByText("Format de l'e-mail incorrect")).toBeTruthy()
+    expect(
+      queryByText(
+        "L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr"
+      )
+    ).toBeTruthy()
   })
 })

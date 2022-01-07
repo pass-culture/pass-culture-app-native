@@ -12,7 +12,8 @@ export function useValidateEmail(email: string): string | null {
   const isCurrentUserEmail = useIsCurrentUserEmail(email)
 
   if (email.length === 0) return null
-  if (!isEmailValid(email)) return t`Format de l'e-mail incorrect`
+  if (!isEmailValid(email))
+    return t`L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr`
   if (isCurrentUserEmail) return t`L'e-mail saisi est identique à votre e-mail actuel`
   return null
 }

@@ -1002,12 +1002,6 @@ msgstr "Filtrer"
 msgid "Fin du parcours"
 msgstr "Fin du parcours"
 
-#: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
-#: src/features/auth/signup/SetEmail/SetEmail.tsx
-#: src/features/profile/pages/ChangeEmail/utils/useValidateEmail.ts
-msgid "Format de l'e-mail incorrect"
-msgstr "Format de l'e-mail incorrect"
-
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx
 msgid "Format du lien incorrect"
 msgstr "Format du lien incorrect"
@@ -1267,6 +1261,12 @@ msgstr "L'application pass Culture utilise des traceurs susceptibles de réalise
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
 msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
+
+#: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
+#: src/features/auth/signup/SetEmail/SetEmail.tsx
+#: src/features/profile/pages/ChangeEmail/utils/useValidateEmail.ts
+msgid "L'e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr"
+msgstr "L'e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr"
 
 #: src/features/profile/pages/ChangeEmail/utils/useValidateEmail.ts
 msgid "L'e-mail saisi est identique à votre e-mail actuel"

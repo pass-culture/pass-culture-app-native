@@ -160,7 +160,7 @@ describe('<ForgottenPassword />', () => {
       fireEvent.press(continueButton)
 
       expect(isEmailValid).toReturnWith(true)
-      expect(queryByText("Format de l'e-mail incorrect")).toBeFalsy()
+      expect(queryByText("L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr")).toBeFalsy()
     })
 
     it('should display invalid email format when email format is valid', () => {
@@ -172,7 +172,7 @@ describe('<ForgottenPassword />', () => {
       const continueButton = getByText('Valider')
       fireEvent.press(continueButton)
 
-      expect(queryByText("Format de l'e-mail incorrect")).toBeTruthy()
+      expect(queryByText("L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr")).toBeTruthy()
     })
   })
 })
