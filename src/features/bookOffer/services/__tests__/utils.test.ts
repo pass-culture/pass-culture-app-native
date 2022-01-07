@@ -37,7 +37,7 @@ describe('formatHour()', () => {
     ${'2021-03-09T09:17:59.760Z'}   | ${'9:17'}
   `(
     'should format Date $date to string "$expected"',
-    ({ date, expected }: { date: Date; expected: string }) => {
+    ({ date, expected }: { date: string; expected: string }) => {
       expect(formatHour(date)).toEqual(expected)
     }
   )

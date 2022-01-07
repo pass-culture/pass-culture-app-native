@@ -36,9 +36,9 @@ export const mockOffer: OfferResponse = {
   stocks: [
     {
       id: 148409,
-      beginningDatetime: new Date('2021-03-02T20:00:00'),
-      bookingLimitDatetime: new Date('2021-03-02T20:00:00'),
-      cancellationLimitDatetime: new Date('2021-03-08T12:14:57.081907'),
+      beginningDatetime: '2021-03-02T20:00:00',
+      bookingLimitDatetime: '2021-03-02T20:00:00',
+      cancellationLimitDatetime: '2021-03-08T12:14:57.081907',
       isBookable: true,
       price: 2400,
       isExpired: false,
@@ -47,9 +47,9 @@ export const mockOffer: OfferResponse = {
     },
     {
       id: 148411,
-      beginningDatetime: new Date('2021-03-02T10:00:00'),
-      bookingLimitDatetime: new Date('2021-03-02T10:00:00'),
-      cancellationLimitDatetime: new Date('2021-03-08T12:14:57.081907'),
+      beginningDatetime: '2021-03-02T10:00:00',
+      bookingLimitDatetime: '2021-03-02T10:00:00',
+      cancellationLimitDatetime: '2021-03-08T12:14:57.081907',
       isBookable: false,
       price: 2400,
       isExpired: false,
@@ -58,9 +58,9 @@ export const mockOffer: OfferResponse = {
     },
     {
       id: 148410,
-      beginningDatetime: new Date('2021-03-17T20:00:00'),
-      bookingLimitDatetime: new Date('2021-03-17T20:00:00'),
-      cancellationLimitDatetime: new Date('2021-03-10T12:14:57.082005'),
+      beginningDatetime: '2021-03-17T20:00:00',
+      bookingLimitDatetime: '2021-03-17T20:00:00',
+      cancellationLimitDatetime: '2021-03-10T12:14:57.082005',
       isBookable: true,
       price: 2700,
       isExpired: false,
@@ -127,9 +127,9 @@ export const mockDigitalOffer: OfferResponse = {
   stocks: [
     {
       id: 148401,
-      beginningDatetime: new Date('2021-03-02T20:00:00'),
-      bookingLimitDatetime: new Date('2021-03-02T20:00:00'),
-      cancellationLimitDatetime: new Date('2021-03-08T12:14:57.081907'),
+      beginningDatetime: '2021-03-02T20:00:00',
+      bookingLimitDatetime: '2021-03-02T20:00:00',
+      cancellationLimitDatetime: '2021-03-08T12:14:57.081907',
       isBookable: true,
       price: 2400,
       isExpired: false,

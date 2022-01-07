@@ -10,8 +10,8 @@ import { render, RenderAPI } from 'tests/utils'
 import { CancellationDetails, formatDate } from '../CancellationDetails'
 
 mockdate.set(new Date('2021-01-04T00:00:00Z'))
-const pastDate = new Date('2021-01-02T00:00:00')
-const futureDate = new Date('2021-01-06T00:00:00')
+const pastDate = '2021-01-02T00:00:00'
+const futureDate = '2021-01-06T00:00:00'
 
 describe('formatDate()', () => {
   it.each`
@@ -22,7 +22,7 @@ describe('formatDate()', () => {
     ${new Date(2021, 11, 16, 9, 3)}  | ${'16 décembre 2021, 09h03'}
   `(
     'should format Date $limitDate to string "$expected"',
-    ({ limitDate, expected }: { limitDate: Date; expected: string }) => {
+    ({ limitDate, expected }: { limitDate: string; expected: string }) => {
       expect(formatDate(limitDate)).toEqual(expected)
     }
   )
@@ -83,7 +83,7 @@ describe('<CancellationDetails /> when autoActivateDigitalBookings = true and is
         mockStock = {
           ...notExpiredStock,
           cancellationLimitDatetime,
-          activationCode: { expirationDate: new Date('2030-02-05T00:00:00Z') },
+          activationCode: { expirationDate: '2030-02-05T00:00:00Z' },
         }
         mockOffer = { ...mockOffer, isDigital: true } as unknown as OfferResponse
         mockSettings = { autoActivateDigitalBookings: true }

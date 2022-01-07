@@ -42,6 +42,7 @@ export const decomposeDate = (timestamp: number) => {
   return { day, month, year }
 }
 
+// a-t-on encore besoin du type Date ?
 export const formatToFrenchDate = (
   date: Date | number | string | { day: number; month: string; year: number }
 ) => {
@@ -71,7 +72,7 @@ export const formatDates = (timestamps?: number[]): string | undefined => {
   return `Dès le ${formatToFrenchDate(uniques[0])}`
 }
 
-export const formatDatePeriod = (dates: Date[] | undefined): string | undefined => {
+export const formatDatePeriod = (dates: string[] | undefined): string | undefined => {
   const timestamps = getUniqueSortedTimestamps(dates?.map((date) => new Date(date).getTime()))
   if (timestamps.length === 0) return
   if (timestamps.length === 1) return formatToFrenchDate(timestamps[0])

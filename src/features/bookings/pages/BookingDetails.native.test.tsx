@@ -196,7 +196,7 @@ describe('BookingDetails', () => {
       const booking = { ...bookingsSnap.ongoing_bookings[0] }
       const date = new Date()
       date.setDate(date.getDate() + 1)
-      booking.confirmationDate = date
+      booking.confirmationDate = date.toISOString()
       const { getAllByTestId } = renderBookingDetails(booking)
       fireEvent.press(getAllByTestId('Annuler ma réservation')[0])
 

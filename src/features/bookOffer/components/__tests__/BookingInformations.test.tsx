@@ -68,9 +68,9 @@ describe('<BookingInformations />', () => {
     })
     // @ts-expect-error mock is not real type
     mockedUseBookingStock.mockReturnValueOnce({
-      beginningDatetime: new Date('2020-12-01T00:00:00Z'),
+      beginningDatetime: '2020-12-01T00:00:00Z',
       price: 0,
-      activationCode: { expirationDate: new Date('2020-12-01T00:00:00Z') },
+      activationCode: { expirationDate: '2020-12-01T00:00:00Z' },
     })
     const myComponent = render(<BookingInformations />)
     expect(myComponent).toMatchSnapshot()
@@ -131,7 +131,7 @@ describe('<BookingInformations />', () => {
     })
     // @ts-expect-error mock is not real type
     mockedUseBookingStock.mockReturnValueOnce({
-      beginningDatetime: new Date('2020-12-01T00:00:00Z'),
+      beginningDatetime: '2020-12-01T00:00:00Z',
       price: 0,
     })
     const myComponent = render(<BookingInformations />)

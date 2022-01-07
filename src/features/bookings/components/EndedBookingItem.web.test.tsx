@@ -21,7 +21,7 @@ describe('EndedBookingItem', () => {
   it('should display "Utilisé" and dateUsed labels if booking was used', () => {
     const { queryByText } = renderEndedBookingItem({
       ...bookingsSnap.ended_bookings[0],
-      dateUsed: new Date('2021-03-16T23:01:37.925926'),
+      dateUsed: '2021-03-16T23:01:37.925926',
     })
     expect(queryByText('Utilisé')).toBeTruthy()
     expect(queryByText('le 16/03/2021')).toBeTruthy()

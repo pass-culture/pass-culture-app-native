@@ -40,7 +40,7 @@ const favorite: FavoriteResponse = {
     },
     name: 'Un lit sous une rivière',
     price: null,
-    startDate: new Date('2021-03-04T20:00:00'),
+    startDate: '2021-03-04T20:00:00',
     startPrice: 270,
     isSoldOut: false,
     isExpired: false,

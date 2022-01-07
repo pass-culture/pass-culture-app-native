@@ -13,7 +13,7 @@ type SubscriptionMessageBadgeProps = {
   subscriptionMessage?: SubscriptionMessage | null
 }
 
-const formatDateToLastUpdatedAtMessage = (lastUpdatedDate: Date | undefined) =>
+const formatDateToLastUpdatedAtMessage = (lastUpdatedDate: string | undefined) =>
   lastUpdatedDate
     ? t({
         id: 'last update',

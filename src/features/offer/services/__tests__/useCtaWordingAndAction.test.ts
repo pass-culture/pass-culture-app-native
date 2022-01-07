@@ -221,7 +221,7 @@ describe('getCtaWordingAndAction', () => {
               stocks: [
                 {
                   id: 118929,
-                  beginningDatetime: new Date('2021-01-04T13:30:00'),
+                  beginningDatetime: '2021-01-04T13:30:00',
                   isBookable: true,
                   isExpired: false,
                   isSoldOut: false,

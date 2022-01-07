@@ -518,7 +518,7 @@ export const AppComponents: FunctionComponent = () => {
               },
               popOverIcon: popOverIconString as PopOverIcon,
               userMessage: `Ceci est un très long message pour montrer que le texte est adaptatif est que ça ne posera aucun problème. Je suis sûr qu'on peut le rendre encore un peu plus long sans difficulté si on se creuse un peu les méninges`,
-              updatedAt: new Date(`2021-10-25T13:24Z`),
+              updatedAt: `2021-10-25T13:24Z`,
             }}
           />
         </View>

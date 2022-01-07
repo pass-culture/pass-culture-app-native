@@ -1,3 +1,6 @@
 {
-  "modelPropertyNaming": "original"
+  "modelPropertyNaming": "original",
+  "typeMappings": {
+    "DateTime": "string"
+  }
 }

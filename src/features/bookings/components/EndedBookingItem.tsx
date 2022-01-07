@@ -88,7 +88,7 @@ const DateLabel = styled(Typo.Caption)({
 
 function getEndedBookingReason(
   cancellationReason?: BookingCancellationReasons | null,
-  dateUsed?: Date | null
+  dateUsed?: string | null
 ) {
   if (dateUsed)
     return (
@@ -103,12 +103,12 @@ function getEndedBookingReason(
   )
 }
 
-function getEndedBookingDateLabel(cancellationDate?: Date | null, dateUsed?: Date | null) {
+function getEndedBookingDateLabel(cancellationDate?: string | null, dateUsed?: string | null) {
   const endDate = dateUsed ?? cancellationDate
   if (endDate) {
     return t({
       id: 'jour de fin de résa',
-      values: { date: formatToSlashedFrenchDate(new Date(endDate).toISOString()) },
+      values: { date: formatToSlashedFrenchDate(endDate) },
       message: 'le {date}',
     })
   }

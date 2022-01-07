@@ -24,7 +24,7 @@ export const offerResponseSnap: OfferResponse = {
   stocks: [
     {
       id: 118929,
-      beginningDatetime: new Date('2021-01-04T13:30:00'),
+      beginningDatetime: '2021-01-04T13:30:00',
       price: 500,
       isBookable: true,
       isExpired: false,
@@ -33,7 +33,7 @@ export const offerResponseSnap: OfferResponse = {
     },
     {
       id: 118928,
-      beginningDatetime: new Date('2021-01-03T18:00:00'),
+      beginningDatetime: '2021-01-03T18:00:00',
       price: 500,
       isBookable: true,
       isExpired: false,

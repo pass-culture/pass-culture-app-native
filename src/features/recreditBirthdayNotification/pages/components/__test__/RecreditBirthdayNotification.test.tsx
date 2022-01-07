@@ -22,7 +22,6 @@ jest.mock('features/home/api', () => ({
             remaining: 5000,
           },
         },
-        depositExpirationDate: new Date(),
       } as UserProfileResponse,
     }
   }),

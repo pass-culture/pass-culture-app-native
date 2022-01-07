@@ -27,7 +27,7 @@ describe('Home component', () => {
       email: 'email@domain.ext',
       firstName: 'Jean',
       isBeneficiary: true,
-      depositExpirationDate: new Date('2023-02-16T17:16:04.735235'),
+      depositExpirationDate: '2023-02-16T17:16:04.735235',
       domainsCredit: {
         all: { initial: 50000, remaining: 49600 },
         physical: { initial: 20000, remaining: 0 },
@@ -61,7 +61,7 @@ describe('Home component', () => {
 
   it('should show the available credit to the user - expired', () => {
     // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    mockUserProfileInfo!.depositExpirationDate = new Date('2020-02-16T17:16:04.735235')
+    mockUserProfileInfo!.depositExpirationDate = '2020-02-16T17:16:04.735235'
     const { queryByText, getByText } = render(<Home />)
     expect(getByText('Ton crédit est expiré')).toBeTruthy()
     expect(queryByText('Tu as 496\u00a0€ sur ton pass')).toBeFalsy()

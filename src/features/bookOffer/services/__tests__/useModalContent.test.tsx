@@ -50,8 +50,8 @@ describe('useModalContent', () => {
         stocks={
           Array [
             Object {
-              "beginningDatetime": 2021-01-01T13:30:00.000Z,
-              "bookingLimitDatetime": 2021-01-05T13:30:00.000Z,
+              "beginningDatetime": "2021-01-01T13:30:00",
+              "bookingLimitDatetime": "2021-01-05T13:30:00",
               "id": 118929,
               "isBookable": true,
               "isExpired": false,

@@ -15,7 +15,7 @@ const user: UserProfileResponse = {
   firstName: 'Jean',
   isBeneficiary: true,
   dateOfBirth: '2003-01-01',
-  depositExpirationDate: new Date('2023-02-09T11:17:14.786670'),
+  depositExpirationDate: '2023-02-09T11:17:14.786670',
   domainsCredit: {
     all: { initial: 50000, remaining: 40000 },
     physical: { initial: 30000, remaining: 10000 },
@@ -35,7 +35,7 @@ const user: UserProfileResponse = {
 
 const exBeneficiaryUser: UserProfileResponse = {
   ...user,
-  depositExpirationDate: new Date('2020-01-01T03:04:05'),
+  depositExpirationDate: '2020-01-01T03:04:05',
 }
 
 const notBeneficiaryUser = {
@@ -44,7 +44,7 @@ const notBeneficiaryUser = {
 }
 const exUnderageBeneficiaryUser: UserProfileResponse = {
   ...user,
-  depositExpirationDate: new Date('2020-01-01T03:04:05'),
+  depositExpirationDate: '2020-01-01T03:04:05',
   isEligibleForBeneficiaryUpgrade: true,
 }
 
@@ -54,7 +54,7 @@ const mockedisUserUnderageBeneficiary = mocked(isUserUnderageBeneficiary, true)
 
 describe('ProfileHeader', () => {
   beforeEach(() => {
-    mockdate.set(new Date('2021-07-01T00:00:00Z'))
+    mockdate.set('2021-07-01T00:00:00Z')
   })
 
   it('should display the LoggedOutHeader if no user', () => {
