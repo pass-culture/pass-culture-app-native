@@ -285,11 +285,12 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                 </Text>
               </View>
               <View
+                flex={2}
                 style={
                   Array [
                     Object {
                       "flexBasis": 0,
-                      "flexGrow": 1,
+                      "flexGrow": 2,
                       "flexShrink": 1,
                     },
                   ]

@@ -42,8 +42,10 @@ const ChildrenContainer = styled.View({
   alignItems: 'center',
 })
 
-const CenteredWebContainer = styled.View({
-  ...(Platform.OS === 'web' ? { maxHeight: '100%', paddingBottom: getSpacing(6) } : { flex: 1 }),
+const CenteredWebContainer = styled.View(({ theme }) => ({
+  ...(Platform.OS === 'web' && !theme.isMobileViewport
+    ? { maxHeight: '100%', paddingBottom: getSpacing(6) }
+    : { flex: 1 }),
   width: '100%',
   maxWidth: getSpacing(125),
-})
+}))

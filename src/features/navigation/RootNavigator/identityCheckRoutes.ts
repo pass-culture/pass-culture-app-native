@@ -12,7 +12,7 @@ import { IdentityCheckEduConnect } from 'features/identityCheck/pages/identifica
 import { IdentityCheckEduConnectForm } from 'features/identityCheck/pages/identification/IdentityCheckEduConnectForm'
 import { IdentityCheckEnd } from 'features/identityCheck/pages/identification/IdentityCheckEnd'
 import { IdentityCheckPending } from 'features/identityCheck/pages/identification/IdentityCheckPending'
-import { IdentityCheckStart } from 'features/identityCheck/pages/identification/IdentityCheckStart'
+import { IdentityCheckStart } from 'features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStart'
 import { IdentityCheckUnavailable } from 'features/identityCheck/pages/identification/IdentityCheckUnavailable'
 import { IdentityCheckValidation } from 'features/identityCheck/pages/identification/IdentityCheckValidation'
 import { IdentityCheckWebview } from 'features/identityCheck/pages/identification/IdentityCheckWebview'

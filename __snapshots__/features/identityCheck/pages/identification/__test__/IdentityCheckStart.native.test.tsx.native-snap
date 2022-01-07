@@ -206,86 +206,76 @@ Array [
                       ]
                     }
                   />
-                  <View
+                  <Text
                     style={
                       Array [
                         Object {
-                          "marginHorizontal": 8,
+                          "color": "#151515",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 18,
+                          "lineHeight": 22,
+                          "textAlign": "center",
                         },
                       ]
                     }
                   >
+                    Vérification de l'identité
+                  </Text>
+                  <View
+                    numberOfSpaces={6}
+                    style={
+                      Array [
+                        Object {
+                          "height": 24,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#626262",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    Prends une photo de ta
                     <Text
                       style={
                         Array [
                           Object {
                             "color": "#151515",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 18,
-                            "lineHeight": 22,
-                            "textAlign": "center",
-                          },
-                        ]
-                      }
-                    >
-                      Vérification de l'identité
-                    </Text>
-                    <View
-                      numberOfSpaces={6}
-                      style={
-                        Array [
-                          Object {
-                            "height": 24,
-                          },
-                        ]
-                      }
-                    />
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "color": "#151515",
-                            "fontFamily": "Montserrat-Regular",
+                            "fontFamily": "Montserrat-Bold",
                             "fontSize": 15,
                             "lineHeight": 20,
-                            "textAlign": "center",
                           },
                         ]
                       }
                     >
-                      Prends une photo de ta
-                      <Text
-                        style={
-                          Array [
-                            Object {
-                              "color": "#151515",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
-                            },
-                          ]
-                        }
-                      >
-                         carte d'identité 
-                      </Text>
-                      ou de ton
-                      <Text
-                        style={
-                          Array [
-                            Object {
-                              "color": "#151515",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
-                            },
-                          ]
-                        }
-                      >
-                         passeport 
-                      </Text>
-                      en cours de validité pour accéder à ton pass Culture.
+                       carte d'identité 
                     </Text>
-                  </View>
+                    ou de ton
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "color": "#151515",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                       passeport 
+                    </Text>
+                    en cours de validité pour accéder à ton pass Culture.
+                  </Text>
                   <View
                     numberOfSpaces={6}
                     style={
@@ -357,12 +347,12 @@ Array [
                           "borderWidth": 0,
                           "flexDirection": "row",
                           "height": 40,
-                          "justifyContent": "center",
+                          "justifyContent": "flex-start",
                           "maxWidth": 500,
                           "opacity": 1,
                           "paddingBottom": 2,
-                          "paddingLeft": 2,
-                          "paddingRight": 2,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
                           "paddingTop": 2,
                           "width": "100%",
                         }
