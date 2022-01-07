@@ -137,7 +137,6 @@ exports[`<LandscapePositionPage /> should match snapshot with default message 1`
       }
     />
     <Text
-      color="#ffffff"
       style={
         Array [
           Object {
