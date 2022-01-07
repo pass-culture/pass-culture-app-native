@@ -3,7 +3,7 @@ import { QueryClient } from 'react-query'
 
 import { offerResponseSnap } from 'features/offer/api/snaps/offerResponseSnap'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render } from 'tests/utils/web'
+import { CustomRenderOptions, render } from 'tests/utils/web'
 
 import { OfferPartialDescription } from '../OfferPartialDescription'
 
@@ -18,10 +18,12 @@ const defaultSetup: Setup = (queryClient) => {
 type Params = {
   description?: string
   setup: Setup
+  options?: CustomRenderOptions
 }
 const defaultParams: Params = {
   description: defaultDescription,
   setup: defaultSetup,
+  options: undefined,
 }
 
 describe('OfferPartialDescription', () => {
@@ -67,6 +69,25 @@ describe('OfferPartialDescription', () => {
       expect(queryByTestId('offerSeeMoreContainer')).toBeTruthy()
     })
     describe('should be rendered', () => {
+      it('on phone when the description is ellipsed', () => {
+        const { queryByTestId } = renderOfferDescription({
+          ...defaultParams,
+          setup: (queryClient) => {
+            queryClient.setQueryData(['offer', offerId], {
+              image: {},
+              extraData: {},
+            })
+          },
+          options: {
+            theme: {
+              isMobileViewport: true,
+              isTabletViewport: false,
+              isDesktopViewport: false,
+            },
+          },
+        })
+        expect(queryByTestId('offerSeeMoreContainer')).toBeTruthy()
+      })
       it('when there is image on the description page', () => {
         const { queryByTestId } = renderOfferDescription({
           ...defaultParams,
@@ -102,7 +123,7 @@ describe('OfferPartialDescription', () => {
         })
         expect(queryByTestId('offerSeeMoreContainer')).toBeFalsy()
       })
-      it('when there is only description on the description page', () => {
+      it('on desktop when there is only description on the description page', () => {
         const { queryByTestId } = renderOfferDescription({
           ...defaultParams,
           setup: (queryClient) => {
@@ -111,6 +132,13 @@ describe('OfferPartialDescription', () => {
               extraData: {},
             })
           },
+          options: {
+            theme: {
+              isMobileViewport: false,
+              isTabletViewport: false,
+              isDesktopViewport: true,
+            },
+          },
         })
         expect(queryByTestId('offerSeeMoreContainer')).toBeFalsy()
       })
@@ -118,10 +146,14 @@ describe('OfferPartialDescription', () => {
   })
 })
 
-const renderOfferDescription = ({ description, setup }: Params) => {
+const renderOfferDescription = ({ description, setup, options }: Params) => {
   const wrapper = render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
-    reactQueryProviderHOC(<OfferPartialDescription id={offerId} description={description} />, setup)
+    reactQueryProviderHOC(
+      <OfferPartialDescription id={offerId} description={description} />,
+      setup
+    ),
+    options
   )
   return wrapper
 }
