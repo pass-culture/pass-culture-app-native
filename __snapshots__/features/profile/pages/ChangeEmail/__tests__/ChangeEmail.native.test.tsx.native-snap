@@ -187,20 +187,33 @@ Array [
               ]
             }
           >
-            <Text
+            <View
               style={
                 Array [
                   Object {
-                    "color": "#151515",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "alignItems": "flex-end",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "width": "100%",
                   },
                 ]
               }
             >
-              Nouvel e-mail
-            </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Nouvel e-mail
+              </Text>
+            </View>
             <View
               numberOfSpaces={2}
               style={
@@ -781,20 +794,33 @@ Array [
               ]
             }
           >
-            <Text
+            <View
               style={
                 Array [
                   Object {
-                    "color": "#151515",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "alignItems": "flex-end",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "width": "100%",
                   },
                 ]
               }
             >
-              Nouvel e-mail
-            </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#151515",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Nouvel e-mail
+              </Text>
+            </View>
             <View
               numberOfSpaces={2}
               style={

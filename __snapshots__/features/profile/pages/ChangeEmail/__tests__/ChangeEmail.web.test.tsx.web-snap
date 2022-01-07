@@ -53,11 +53,16 @@ Object {
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
                 <div
-                  class="css-text-901oao"
-                  dir="auto"
-                  style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                  class="css-view-1dbjc4n"
+                  style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                 >
-                  Nouvel e-mail
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                  >
+                    Nouvel e-mail
+                  </div>
                 </div>
                 <div
                   class="css-view-1dbjc4n"
@@ -284,11 +289,16 @@ Object {
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
               <div
-                class="css-text-901oao"
-                dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                class="css-view-1dbjc4n"
+                style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
               >
-                Nouvel e-mail
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                  style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                >
+                  Nouvel e-mail
+                </div>
               </div>
               <div
                 class="css-view-1dbjc4n"

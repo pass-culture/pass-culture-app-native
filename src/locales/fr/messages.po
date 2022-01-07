@@ -1679,6 +1679,10 @@ msgstr "Nouvel e-mail"
 msgid "Numéro de téléphone"
 msgstr "Numéro de téléphone"
 
+#: src/ui/components/inputs/RequiredLabel.tsx
+msgid "Obligatoire"
+msgstr "Obligatoire"
+
 #: src/libs/monitoring/errors.ts
 msgid "Offer {offerId} could not be retrieved"
 msgstr "Offer {offerId} could not be retrieved"

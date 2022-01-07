@@ -4,6 +4,8 @@ import { TextInput as RNTextInput } from 'react-native'
 
 import { accessibilityAndTestId } from 'tests/utils'
 import { InputContainer } from 'ui/components/inputs/InputContainer'
+import { LabelContainer } from 'ui/components/inputs/LabelContainer'
+import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { TextInputProps } from 'ui/components/inputs/types'
 import { Spacer, Typo } from 'ui/theme'
@@ -12,14 +14,19 @@ interface Props extends TextInputProps {
   label: string
   email: string
   onEmailChange: (email: string) => void
+  isRequiredField?: boolean
 }
 
 const withRefEmailInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
-  { label, email, onEmailChange, ...inputProps },
+  { label, email, onEmailChange, isRequiredField = false, ...inputProps },
   forwardedRef
 ) => (
   <InputContainer>
-    <Typo.Body>{label}</Typo.Body>
+    <LabelContainer>
+      <Typo.Body>{label}</Typo.Body>
+      {!!isRequiredField && <RequiredLabel />}
+    </LabelContainer>
+
     <Spacer.Column numberOfSpaces={2} />
     <TextInput
       autoCapitalize="none"

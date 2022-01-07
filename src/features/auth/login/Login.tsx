@@ -142,6 +142,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           email={email}
           onEmailChange={setEmail}
           isError={!!errorMessage}
+          isRequiredField
         />
       </InputContainer>
       <Spacer.Column numberOfSpaces={6} />
