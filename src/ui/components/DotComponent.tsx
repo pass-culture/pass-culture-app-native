@@ -29,36 +29,23 @@ type DotComponentProps = SwiperProps & {
   onPress?: () => void
 }
 
-const WHITESPACE = '\u00a0'
-
-const STATUS = {
-  IN_PROGRESS: WHITESPACE + t`en cours`,
-  DONE: WHITESPACE + t`réalisée`,
-  TODO: WHITESPACE + t`à faire`,
-}
-
 export const DotComponent: FunctionComponent<DotComponentProps> = (props) => {
   const { borderColor, fillColor } = getDotColors(props.index, props.activeIndex)
-  let status = STATUS.TODO
+  const step = props.index + 1
+  const totalSteps = props.numberOfSteps
+
+  let status = t`à faire`
   if (props.isActive) {
-    status = STATUS.IN_PROGRESS
+    status = t`en cours`
   } else if (props.index < props.activeIndex) {
-    status = STATUS.DONE
+    status = t`réalisée`
   }
-  const ariaLabel =
-    t`Étape` +
-    WHITESPACE +
-    (props.index + 1) +
-    WHITESPACE +
-    t`sur` +
-    WHITESPACE +
-    props.numberOfSteps +
-    status
+
   return (
     <TouchableWithoutFeedback onPress={props.onPress} testID="button">
       <DotContainer>
         <Dot
-          aria-label={ariaLabel}
+          aria-label={t`Étape ${step} sur ${totalSteps} ${status}`}
           borderColor={borderColor}
           fillColor={fillColor}
           size={props.isActive ? CURRENT_STEP_SIZE : DEFAULT_SIZE}

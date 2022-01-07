@@ -465,7 +465,8 @@ msgstr "Code postal - Formulaire"
 msgid "Colle ton lien ici ..."
 msgstr "Colle ton lien ici ..."
 
-#: src/features/identityCheck/pages/identification/IdentityCheckStart.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStart.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStart.web.tsx
 msgid "Commencer la vérification"
 msgstr "Commencer la vérification"
 
@@ -917,7 +918,7 @@ msgstr "Entrée pour le prénom"
 msgid "Envie de tout envie de lien ?"
 msgstr "Envie de tout envie de lien ?"
 
-#: src/features/identityCheck/atoms/DMSInformation.web.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContentDesktop.tsx
 msgid "Environ 10 jours"
 msgstr "Environ 10 jours"
 
@@ -1011,7 +1012,7 @@ msgstr "Format de l'e-mail incorrect"
 msgid "Format du lien incorrect"
 msgstr "Format du lien incorrect"
 
-#: src/features/identityCheck/atoms/IdentityVerificationText.web.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContentDesktop.tsx
 msgid "Gagne du temps en vérifiant ton identité directement sur ton smartphone ! Sinon tu peux passer par le site Démarches-Simplifiées mais le traitement sera plus long."
 msgstr "Gagne du temps en vérifiant ton identité directement sur ton smartphone ! Sinon tu peux passer par le site Démarches-Simplifiées mais le traitement sera plus long."
 
@@ -1077,8 +1078,8 @@ msgstr "ISBN"
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnect.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnect.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckStart.tsx
-#: src/features/identityCheck/pages/identification/IdentityCheckStart.web.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStart.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStart.web.tsx
 #: src/features/identityCheck/useIdentityCheckSteps.tsx
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
@@ -1099,7 +1100,7 @@ msgstr "Identification avec ÉduConnect"
 msgid "Identification manuelle"
 msgstr "Identification manuelle"
 
-#: src/features/identityCheck/atoms/DMSInformation.web.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContentDesktop.tsx
 msgid "Identification par le site Démarches-Simplifiées"
 msgstr "Identification par le site Démarches-Simplifiées"
 
@@ -1898,11 +1899,11 @@ msgstr "Pourquoi ?"
 msgid "Pratique artistiques"
 msgstr "Pratique artistiques"
 
-#: src/features/identityCheck/atoms/IdentityVerificationText.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
 msgid "Prends une photo de ta"
 msgstr "Prends une photo de ta"
 
-#: src/features/identityCheck/atoms/IdentityVerificationText.web.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContentDesktop.tsx
 msgid "Prends une photo de ta carte d'identité ou de ton passeport en cours de validité pour accéder à ton pass Culture."
 msgstr "Prends une photo de ta carte d'identité ou de ton passeport en cours de validité pour accéder à ton pass Culture."
 
@@ -2243,7 +2244,7 @@ msgstr "Si tu as besoin d’aide n’hésite pas à :"
 msgid "Si tu n’arrives pas à valider ton code tu peux"
 msgstr "Si tu n’arrives pas à valider ton code tu peux"
 
-#: src/features/identityCheck/atoms/DMSInformation.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
 msgid "Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées"
 msgstr "Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées"
 
@@ -2449,8 +2450,8 @@ msgstr "Toute la culture à portée de main"
 msgid "Toutes les catégories"
 msgstr "Toutes les catégories"
 
-#: src/features/identityCheck/atoms/DMSInformation.tsx
 #: src/features/identityCheck/components/DMSModal.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
 msgid "Transmettre un document"
 msgstr "Transmettre un document"
 
@@ -2532,7 +2533,7 @@ msgstr "Tu es sur le point d'annuler"
 msgid "Tu es sur le point d'archiver"
 msgstr "Tu es sur le point d'archiver"
 
-#: src/features/identityCheck/atoms/DMSInformation.web.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContentDesktop.tsx
 msgid "Tu n'as pas de smartphone ?"
 msgstr "Tu n'as pas de smartphone ?"
 
@@ -2843,11 +2844,11 @@ msgstr "Vous êtes actuellement très nombreux à vouloir créer un compte, notr
 msgid "Vérification d'identité"
 msgstr "Vérification d'identité"
 
-#: src/features/identityCheck/atoms/IdentityVerificationText.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
 msgid "Vérification de l'identité"
 msgstr "Vérification de l'identité"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckStart.web.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContentDesktop.tsx
 msgid "Vérification par smartphone"
 msgstr "Vérification par smartphone"
 
@@ -2859,7 +2860,7 @@ msgstr "Vérification éligibilité"
 msgid "Vérifie ton identité"
 msgstr "Vérifie ton identité"
 
-#: src/features/identityCheck/atoms/IdentityVerificationText.web.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContentDesktop.tsx
 msgid "Vérifie ton identité sur ton smartphone"
 msgstr "Vérifie ton identité sur ton smartphone"
 
@@ -2901,7 +2902,7 @@ msgstr "Pour tes {age} ans, le Gouvernement vient d'ajouter {creditedAmount} à 
 msgid "c'est..."
 msgstr "c'est..."
 
-#: src/features/identityCheck/atoms/IdentityVerificationText.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
 msgid "carte d'identité"
 msgstr "carte d'identité"
 
@@ -2959,7 +2960,7 @@ msgstr "Tu es éligible jusqu'au {deadline}"
 msgid "en cours"
 msgstr "en cours"
 
-#: src/features/identityCheck/atoms/IdentityVerificationText.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
 msgid "en cours de validité pour accéder à ton pass Culture."
 msgstr "en cours de validité pour accéder à ton pass Culture."
 
@@ -3049,7 +3050,7 @@ msgstr "offerId is undefined"
 msgid "ou"
 msgstr "ou"
 
-#: src/features/identityCheck/atoms/IdentityVerificationText.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
 msgid "ou de ton"
 msgstr "ou de ton"
 
@@ -3057,7 +3058,7 @@ msgstr "ou de ton"
 msgid "page-introuvable"
 msgstr "page-introuvable"
 
-#: src/features/identityCheck/atoms/IdentityVerificationText.tsx
+#: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
 msgid "passeport"
 msgstr "passeport"
 
@@ -3117,10 +3118,6 @@ msgstr "spécialité"
 #: src/features/favorites/atoms/Favorite.tsx
 msgid "starting from date"
 msgstr "Dès le {date}"
-
-#: src/ui/components/DotComponent.tsx
-msgid "sur"
-msgstr "sur"
 
 #: src/ui/components/inputs/EmailInput.tsx
 msgid "tonadresse@email.com"
@@ -3192,8 +3189,8 @@ msgid "À retirer avant le {dateLimit}"
 msgstr "À retirer avant le {dateLimit}"
 
 #: src/ui/components/DotComponent.tsx
-msgid "Étape"
-msgstr "Étape"
+msgid "Étape {step} sur {totalSteps} {status}"
+msgstr "Étape {step} sur {totalSteps} {status}"
 
 #: src/features/profile/components/NonBeneficiaryHeader.tsx
 msgid "à dépenser dans l'application"
