@@ -26,8 +26,8 @@ LocaleConfig.locales['fr'] = {
 LocaleConfig.defaultLocale = 'fr'
 
 const renderArrow = (direction: string) => {
-  if (direction === 'left') return <ArrowPrevious size={24} />
-  if (direction === 'right') return <ArrowNext size={24} />
+  if (direction === 'left') return <ArrowPrevious size={getSpacing(5)} />
+  if (direction === 'right') return <ArrowNext size={getSpacing(5)} />
   return <React.Fragment />
 }
 
