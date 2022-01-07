@@ -9,6 +9,8 @@ import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
 import { InputContainer } from 'ui/components/inputs/InputContainer'
+import { LabelContainer } from 'ui/components/inputs/LabelContainer'
+import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -44,7 +46,10 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
     <InputContainer>
       {!!customProps.label && (
         <React.Fragment>
-          <Typo.Body>{customProps.label}</Typo.Body>
+          <LabelContainer>
+            <Typo.Body>{customProps.label}</Typo.Body>
+            {!!customProps.isRequiredField && <RequiredLabel />}
+          </LabelContainer>
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}
@@ -58,7 +63,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
           onBlur={onBlur}
           secureTextEntry={shouldHidePassword}
           ref={forwardedRef}
-          {...accessibilityAndTestId('Entrée pour le mot de passe')}
+          {...accessibilityAndTestId(t`Entrée pour le mot de passe`)}
         />
         <IconTouchableOpacity
           {...accessibilityAndTestId(t`Basculer l'affichage du mot de passe`)}

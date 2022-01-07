@@ -8,7 +8,6 @@ import { CheckboxInput } from 'ui/components/inputs/CheckboxInput'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
 import { EmailInput } from 'ui/components/inputs/EmailInput'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
-import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { InputError } from 'ui/components/inputs/InputError'
 import { padding, Spacer, Typo } from 'ui/theme'
 
@@ -40,21 +39,19 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
 
   return (
     <React.Fragment>
-      <InputContainer>
-        <EmailInput
-          label={t`Adresse e-mail`}
-          email={email}
-          onEmailChange={onEmailChange}
-          autoFocus={true}
-          onSubmitEditing={validateEmail}
-          ref={emailInput}
-        />
-        <InputError
-          visible={hasError}
-          messageId={t`L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr`}
-          numberOfSpacesTop={2}
-        />
-      </InputContainer>
+      <EmailInput
+        label={t`Adresse e-mail`}
+        email={email}
+        onEmailChange={onEmailChange}
+        autoFocus={true}
+        onSubmitEditing={validateEmail}
+        ref={emailInput}
+      />
+      <InputError
+        visible={hasError}
+        messageId={t`L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr`}
+        numberOfSpacesTop={2}
+      />
       <Spacer.Column numberOfSpaces={4} />
       <StyledCheckBox
         onPress={() =>

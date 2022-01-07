@@ -22,7 +22,6 @@ import { useSafeState } from 'libs/hooks'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { EmailInput } from 'ui/components/inputs/EmailInput'
-import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
@@ -114,37 +113,36 @@ export function ChangeEmail() {
         <ChangeEmailDisclaimer />
         <Spacer.Column numberOfSpaces={4} />
         <CenteredContainer>
-          <InputContainer>
-            <EmailInput
-              label={t`Nouvel e-mail`}
-              email={email}
-              onEmailChange={setEmail}
-              disabled={hasCurrentEmailChange}
-            />
-            {!!emailErrorMessage && (
-              <InputError visible messageId={emailErrorMessage} numberOfSpacesTop={2} />
-            )}
-          </InputContainer>
+          <EmailInput
+            label={t`Nouvel e-mail`}
+            email={email}
+            onEmailChange={setEmail}
+            disabled={hasCurrentEmailChange}
+            isRequiredField
+          />
+          {!!emailErrorMessage && (
+            <InputError visible messageId={emailErrorMessage} numberOfSpacesTop={2} />
+          )}
           <Spacer.Column numberOfSpaces={4} />
-          <InputContainer>
-            <PasswordInput
-              label={t`Mot de passe`}
-              value={password}
-              onChangeText={setPassword}
-              placeholder={t`Ton mot de passe`}
-              textContentType="password"
-              disabled={hasCurrentEmailChange}
-            />
-            {!!passwordErrorMessage && (
-              <InputError visible messageId={passwordErrorMessage} numberOfSpacesTop={2} />
-            )}
-          </InputContainer>
+          <PasswordInput
+            label={t`Mot de passe`}
+            value={password}
+            onChangeText={setPassword}
+            placeholder={t`Ton mot de passe`}
+            textContentType="password"
+            disabled={hasCurrentEmailChange}
+            isRequiredField
+          />
+          {!!passwordErrorMessage && (
+            <InputError visible messageId={passwordErrorMessage} numberOfSpacesTop={2} />
+          )}
 
           {theme.isDesktopViewport ? (
             <Spacer.Column numberOfSpaces={10} />
           ) : (
             <Spacer.Flex flex={1} />
           )}
+
           {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
           <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
             <ButtonPrimary

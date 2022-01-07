@@ -50,42 +50,44 @@ Object {
             >
               <div
                 class="css-view-1dbjc4n"
-                style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
+                style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
               >
                 <div
-                  class="css-view-1dbjc4n"
-                  style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
+                  class="css-text-901oao"
+                  dir="auto"
+                  style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                 >
-                  <div
-                    class="css-text-901oao"
-                    dir="auto"
-                    style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
-                  >
-                    Nouvel e-mail
-                  </div>
+                  Nouvel e-mail
                 </div>
                 <div
-                  class="css-view-1dbjc4n"
-                  style="height: 8px;"
+                  class="css-text-901oao"
+                  dir="auto"
+                  style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                >
+                  Obligatoire
+                </div>
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="height: 8px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+              >
+                <input
+                  autocapitalize="none"
+                  autocomplete="on"
+                  autocorrect="on"
+                  class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
+                  dir="auto"
+                  maxlength="120"
+                  placeholder="tonadresse@email.com"
+                  spellcheck="true"
+                  style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
+                  type="email"
+                  value=""
                 />
-                <div
-                  class="css-view-1dbjc4n"
-                  style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
-                >
-                  <input
-                    autocapitalize="none"
-                    autocomplete="on"
-                    autocorrect="on"
-                    class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
-                    dir="auto"
-                    maxlength="120"
-                    placeholder="tonadresse@email.com"
-                    spellcheck="true"
-                    style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
-                    type="email"
-                    value=""
-                  />
-                </div>
               </div>
             </div>
             <div
@@ -98,7 +100,7 @@ Object {
             >
               <div
                 class="css-view-1dbjc4n"
-                style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
+                style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
               >
                 <div
                   class="css-text-901oao"
@@ -108,43 +110,50 @@ Object {
                   Mot de passe
                 </div>
                 <div
-                  class="css-view-1dbjc4n"
-                  style="height: 8px;"
+                  class="css-text-901oao"
+                  dir="auto"
+                  style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                >
+                  Obligatoire
+                </div>
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="height: 8px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+              >
+                <input
+                  aria-label="Entrée pour le mot de passe"
+                  autocapitalize="sentences"
+                  autocomplete="on"
+                  autocorrect="on"
+                  class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
+                  data-testid="Entrée pour le mot de passe"
+                  dir="auto"
+                  placeholder="Ton mot de passe"
+                  spellcheck="true"
+                  style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
+                  type="password"
+                  value=""
                 />
                 <div
+                  aria-label="Basculer l'affichage du mot de passe"
                   class="css-view-1dbjc4n"
-                  style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+                  data-testid="Basculer l'affichage du mot de passe"
+                  style="align-items: flex-end; cursor: pointer; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; max-width: 60px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                  tabindex="0"
                 >
-                  <input
-                    aria-label="Entrée pour le mot de passe"
-                    autocapitalize="sentences"
-                    autocomplete="on"
-                    autocorrect="on"
-                    class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
-                    data-testid="Entrée pour le mot de passe"
-                    dir="auto"
-                    placeholder="Ton mot de passe"
-                    spellcheck="true"
-                    style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
-                    type="password"
-                    value=""
-                  />
                   <div
-                    aria-label="Basculer l'affichage du mot de passe"
                     class="css-view-1dbjc4n"
-                    data-testid="Basculer l'affichage du mot de passe"
-                    style="align-items: flex-end; cursor: pointer; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; max-width: 60px; transition-duration: 0s; transition-property: opacity; user-select: none;"
-                    tabindex="0"
                   >
                     <div
-                      class="css-view-1dbjc4n"
+                      class="css-text-901oao"
+                      dir="auto"
                     >
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                      >
-                        undefined-SVG-Mock
-                      </div>
+                      undefined-SVG-Mock
                     </div>
                   </div>
                 </div>
@@ -286,42 +295,44 @@ Object {
           >
             <div
               class="css-view-1dbjc4n"
-              style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
+              style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
             >
               <div
-                class="css-view-1dbjc4n"
-                style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
+                class="css-text-901oao"
+                dir="auto"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
               >
-                <div
-                  class="css-text-901oao"
-                  dir="auto"
-                  style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
-                >
-                  Nouvel e-mail
-                </div>
+                Nouvel e-mail
               </div>
               <div
-                class="css-view-1dbjc4n"
-                style="height: 8px;"
+                class="css-text-901oao"
+                dir="auto"
+                style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              >
+                Obligatoire
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="height: 8px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+            >
+              <input
+                autocapitalize="none"
+                autocomplete="on"
+                autocorrect="on"
+                class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
+                dir="auto"
+                maxlength="120"
+                placeholder="tonadresse@email.com"
+                spellcheck="true"
+                style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
+                type="email"
+                value=""
               />
-              <div
-                class="css-view-1dbjc4n"
-                style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
-              >
-                <input
-                  autocapitalize="none"
-                  autocomplete="on"
-                  autocorrect="on"
-                  class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
-                  dir="auto"
-                  maxlength="120"
-                  placeholder="tonadresse@email.com"
-                  spellcheck="true"
-                  style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
-                  type="email"
-                  value=""
-                />
-              </div>
             </div>
           </div>
           <div
@@ -334,7 +345,7 @@ Object {
           >
             <div
               class="css-view-1dbjc4n"
-              style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
+              style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
             >
               <div
                 class="css-text-901oao"
@@ -344,43 +355,50 @@ Object {
                 Mot de passe
               </div>
               <div
-                class="css-view-1dbjc4n"
-                style="height: 8px;"
+                class="css-text-901oao"
+                dir="auto"
+                style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              >
+                Obligatoire
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="height: 8px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+            >
+              <input
+                aria-label="Entrée pour le mot de passe"
+                autocapitalize="sentences"
+                autocomplete="on"
+                autocorrect="on"
+                class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
+                data-testid="Entrée pour le mot de passe"
+                dir="auto"
+                placeholder="Ton mot de passe"
+                spellcheck="true"
+                style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
+                type="password"
+                value=""
               />
               <div
+                aria-label="Basculer l'affichage du mot de passe"
                 class="css-view-1dbjc4n"
-                style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+                data-testid="Basculer l'affichage du mot de passe"
+                style="align-items: flex-end; cursor: pointer; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; max-width: 60px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                tabindex="0"
               >
-                <input
-                  aria-label="Entrée pour le mot de passe"
-                  autocapitalize="sentences"
-                  autocomplete="on"
-                  autocorrect="on"
-                  class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
-                  data-testid="Entrée pour le mot de passe"
-                  dir="auto"
-                  placeholder="Ton mot de passe"
-                  spellcheck="true"
-                  style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
-                  type="password"
-                  value=""
-                />
                 <div
-                  aria-label="Basculer l'affichage du mot de passe"
                   class="css-view-1dbjc4n"
-                  data-testid="Basculer l'affichage du mot de passe"
-                  style="align-items: flex-end; cursor: pointer; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; max-width: 60px; transition-duration: 0s; transition-property: opacity; user-select: none;"
-                  tabindex="0"
                 >
                   <div
-                    class="css-view-1dbjc4n"
+                    class="css-text-901oao"
+                    dir="auto"
                   >
-                    <div
-                      class="css-text-901oao"
-                      dir="auto"
-                    >
-                      undefined-SVG-Mock
-                    </div>
+                    undefined-SVG-Mock
                   </div>
                 </div>
               </div>

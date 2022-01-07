@@ -18,7 +18,6 @@ import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { EmailInput } from 'ui/components/inputs/EmailInput'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
-import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
@@ -136,15 +135,13 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       />
       {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={5} />}
       <Spacer.Column numberOfSpaces={7} />
-      <InputContainer>
-        <EmailInput
-          label={t`Adresse e-mail`}
-          email={email}
-          onEmailChange={setEmail}
-          isError={!!errorMessage}
-          isRequiredField
-        />
-      </InputContainer>
+      <EmailInput
+        label={t`Adresse e-mail`}
+        email={email}
+        onEmailChange={setEmail}
+        isError={!!errorMessage}
+        isRequiredField
+      />
       <Spacer.Column numberOfSpaces={6} />
       <PasswordInput
         label={t`Mot de passe`}
@@ -154,6 +151,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         isError={!!errorMessage}
         textContentType="password"
         onSubmitEditing={onSubmit}
+        isRequiredField
       />
       <Spacer.Column numberOfSpaces={7} />
       <ForgottenPasswordContainer>

@@ -22,12 +22,15 @@ const withRefEmailInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
   forwardedRef
 ) => (
   <InputContainer>
-    <LabelContainer>
-      <Typo.Body>{label}</Typo.Body>
-      {!!isRequiredField && <RequiredLabel />}
-    </LabelContainer>
-
-    <Spacer.Column numberOfSpaces={2} />
+    {!!label && (
+      <React.Fragment>
+        <LabelContainer>
+          <Typo.Body>{label}</Typo.Body>
+          {!!isRequiredField && <RequiredLabel />}
+        </LabelContainer>
+        <Spacer.Column numberOfSpaces={2} />
+      </React.Fragment>
+    )}
     <TextInput
       autoCapitalize="none"
       keyboardType="email-address"

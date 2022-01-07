@@ -98,6 +98,7 @@ export function ChangePassword() {
           autoFocus={true}
           onChangeText={setCurrentPassword}
           placeholder={t`Ton mot de passe actuel`}
+          isRequiredField
         />
         <InputError
           visible={hasError}
@@ -110,6 +111,7 @@ export function ChangePassword() {
           value={newPassword}
           onChangeText={updateNewPassword}
           placeholder={t`Ton nouveau mot de passe`}
+          isRequiredField
         />
         {!!(shouldDisplayPasswordRules && newPassword.length > 0) && (
           <React.Fragment>
@@ -126,6 +128,7 @@ export function ChangePassword() {
           onFocus={() => {
             setTimeout(() => scrollRef?.current?.scrollToEnd({ animated: true }), 60)
           }}
+          isRequiredField
         />
         <InputError
           visible={displayNotMatchingError}

@@ -33,20 +33,20 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -380,11 +376,11 @@
-                          \\"paddingTop\\": 0,
-                        },
-                      ]
-                    }
-                    textContentType=\\"emailAddress\\"
--                   value=\\"\\"
-+                   value=\\"email@gmail.com\\"
-                  />
-                </View>
+@@ -367,11 +363,11 @@
+                        \\"paddingTop\\": 0,
+                      },
+                    ]
+                  }
+                  textContentType=\\"emailAddress\\"
+-                 value=\\"\\"
++                 value=\\"email@gmail.com\\"
+                />
               </View>
             </View>
             <View
-@@ -498,18 +494,16 @@
+              numberOfSpaces={6}
+@@ -511,18 +507,16 @@
                       },
                     ]
                   }
@@ -66,7 +66,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -561,13 +555,11 @@
+@@ -574,13 +568,11 @@
                 ]
               }
             >
@@ -80,7 +80,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -606,24 +598,22 @@
+@@ -619,24 +611,22 @@
               }
             />
             <View
@@ -107,7 +107,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -642,20 +632,20 @@
+@@ -655,20 +645,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -240,42 +240,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 Array [
                   Object {
                     \\"height\\": 28,
-@@ -322,19 +377,19 @@
-                      },
-                    ]
-                  }
-                />
-                <View
--                 borderColor=\\"#c7c7cc\\"
-+                 borderColor=\\"#b60025\\"
-                  height=\\"small\\"
-                  isInputDisabled={false}
-                  style={
-                    Array [
-                      Object {
-                        \\"alignItems\\": \\"center\\",
-                        \\"backgroundColor\\": \\"#ffffff\\",
--                       \\"borderColor\\": \\"#c7c7cc\\",
-+                       \\"borderColor\\": \\"#b60025\\",
-                        \\"borderRadius\\": 22,
-                        \\"borderStyle\\": \\"solid\\",
-                        \\"borderWidth\\": 1,
-                        \\"flexDirection\\": \\"row\\",
-                        \\"height\\": 40,
-@@ -380,11 +435,11 @@
-                          \\"paddingTop\\": 0,
-                        },
-                      ]
-                    }
-                    textContentType=\\"emailAddress\\"
--                   value=\\"\\"
-+                   value=\\"email@gmail.com\\"
-                  />
-                </View>
-              </View>
-            </View>
-            <View
-@@ -433,19 +488,19 @@
+@@ -309,19 +364,19 @@
                     },
                   ]
                 }
@@ -297,7 +262,42 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -498,18 +553,16 @@
+@@ -367,11 +422,11 @@
+                        \\"paddingTop\\": 0,
+                      },
+                    ]
+                  }
+                  textContentType=\\"emailAddress\\"
+-                 value=\\"\\"
++                 value=\\"email@gmail.com\\"
+                />
+              </View>
+            </View>
+            <View
+              numberOfSpaces={6}
+@@ -446,19 +501,19 @@
+                    },
+                  ]
+                }
+              />
+              <View
+-               borderColor=\\"#c7c7cc\\"
++               borderColor=\\"#b60025\\"
+                height=\\"small\\"
+                isInputDisabled={false}
+                style={
+                  Array [
+                    Object {
+                      \\"alignItems\\": \\"center\\",
+                      \\"backgroundColor\\": \\"#ffffff\\",
+-                     \\"borderColor\\": \\"#c7c7cc\\",
++                     \\"borderColor\\": \\"#b60025\\",
+                      \\"borderRadius\\": 22,
+                      \\"borderStyle\\": \\"solid\\",
+                      \\"borderWidth\\": 1,
+                      \\"flexDirection\\": \\"row\\",
+                      \\"height\\": 40,
+@@ -511,18 +566,16 @@
                       },
                     ]
                   }
@@ -317,7 +317,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -561,13 +614,11 @@
+@@ -574,13 +627,11 @@
                 ]
               }
             >
@@ -331,7 +331,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -606,24 +657,22 @@
+@@ -619,24 +670,22 @@
               }
             />
             <View
@@ -358,7 +358,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -642,20 +691,20 @@
+@@ -655,20 +704,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -491,42 +491,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 Array [
                   Object {
                     \\"height\\": 28,
-@@ -322,19 +377,19 @@
-                      },
-                    ]
-                  }
-                />
-                <View
--                 borderColor=\\"#c7c7cc\\"
-+                 borderColor=\\"#b60025\\"
-                  height=\\"small\\"
-                  isInputDisabled={false}
-                  style={
-                    Array [
-                      Object {
-                        \\"alignItems\\": \\"center\\",
-                        \\"backgroundColor\\": \\"#ffffff\\",
--                       \\"borderColor\\": \\"#c7c7cc\\",
-+                       \\"borderColor\\": \\"#b60025\\",
-                        \\"borderRadius\\": 22,
-                        \\"borderStyle\\": \\"solid\\",
-                        \\"borderWidth\\": 1,
-                        \\"flexDirection\\": \\"row\\",
-                        \\"height\\": 40,
-@@ -380,11 +435,11 @@
-                          \\"paddingTop\\": 0,
-                        },
-                      ]
-                    }
-                    textContentType=\\"emailAddress\\"
--                   value=\\"\\"
-+                   value=\\"email@gmail.com\\"
-                  />
-                </View>
-              </View>
-            </View>
-            <View
-@@ -433,19 +488,19 @@
+@@ -309,19 +364,19 @@
                     },
                   ]
                 }
@@ -548,7 +513,42 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -498,18 +553,16 @@
+@@ -367,11 +422,11 @@
+                        \\"paddingTop\\": 0,
+                      },
+                    ]
+                  }
+                  textContentType=\\"emailAddress\\"
+-                 value=\\"\\"
++                 value=\\"email@gmail.com\\"
+                />
+              </View>
+            </View>
+            <View
+              numberOfSpaces={6}
+@@ -446,19 +501,19 @@
+                    },
+                  ]
+                }
+              />
+              <View
+-               borderColor=\\"#c7c7cc\\"
++               borderColor=\\"#b60025\\"
+                height=\\"small\\"
+                isInputDisabled={false}
+                style={
+                  Array [
+                    Object {
+                      \\"alignItems\\": \\"center\\",
+                      \\"backgroundColor\\": \\"#ffffff\\",
+-                     \\"borderColor\\": \\"#c7c7cc\\",
++                     \\"borderColor\\": \\"#b60025\\",
+                      \\"borderRadius\\": 22,
+                      \\"borderStyle\\": \\"solid\\",
+                      \\"borderWidth\\": 1,
+                      \\"flexDirection\\": \\"row\\",
+                      \\"height\\": 40,
+@@ -511,18 +566,16 @@
                       },
                     ]
                   }
@@ -568,7 +568,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -561,13 +614,11 @@
+@@ -574,13 +627,11 @@
                 ]
               }
             >
@@ -582,7 +582,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -606,24 +657,22 @@
+@@ -619,24 +670,22 @@
               }
             />
             <View
@@ -609,7 +609,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -642,20 +691,20 @@
+@@ -655,20 +704,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -742,42 +742,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                 Array [
                   Object {
                     \\"height\\": 28,
-@@ -322,19 +377,19 @@
-                      },
-                    ]
-                  }
-                />
-                <View
--                 borderColor=\\"#c7c7cc\\"
-+                 borderColor=\\"#b60025\\"
-                  height=\\"small\\"
-                  isInputDisabled={false}
-                  style={
-                    Array [
-                      Object {
-                        \\"alignItems\\": \\"center\\",
-                        \\"backgroundColor\\": \\"#ffffff\\",
--                       \\"borderColor\\": \\"#c7c7cc\\",
-+                       \\"borderColor\\": \\"#b60025\\",
-                        \\"borderRadius\\": 22,
-                        \\"borderStyle\\": \\"solid\\",
-                        \\"borderWidth\\": 1,
-                        \\"flexDirection\\": \\"row\\",
-                        \\"height\\": 40,
-@@ -380,11 +435,11 @@
-                          \\"paddingTop\\": 0,
-                        },
-                      ]
-                    }
-                    textContentType=\\"emailAddress\\"
--                   value=\\"\\"
-+                   value=\\"email@gmail.com\\"
-                  />
-                </View>
-              </View>
-            </View>
-            <View
-@@ -433,19 +488,19 @@
+@@ -309,19 +364,19 @@
                     },
                   ]
                 }
@@ -799,7 +764,42 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -498,18 +553,16 @@
+@@ -367,11 +422,11 @@
+                        \\"paddingTop\\": 0,
+                      },
+                    ]
+                  }
+                  textContentType=\\"emailAddress\\"
+-                 value=\\"\\"
++                 value=\\"email@gmail.com\\"
+                />
+              </View>
+            </View>
+            <View
+              numberOfSpaces={6}
+@@ -446,19 +501,19 @@
+                    },
+                  ]
+                }
+              />
+              <View
+-               borderColor=\\"#c7c7cc\\"
++               borderColor=\\"#b60025\\"
+                height=\\"small\\"
+                isInputDisabled={false}
+                style={
+                  Array [
+                    Object {
+                      \\"alignItems\\": \\"center\\",
+                      \\"backgroundColor\\": \\"#ffffff\\",
+-                     \\"borderColor\\": \\"#c7c7cc\\",
++                     \\"borderColor\\": \\"#b60025\\",
+                      \\"borderRadius\\": 22,
+                      \\"borderStyle\\": \\"solid\\",
+                      \\"borderWidth\\": 1,
+                      \\"flexDirection\\": \\"row\\",
+                      \\"height\\": 40,
+@@ -511,18 +566,16 @@
                       },
                     ]
                   }
@@ -819,7 +819,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -561,13 +614,11 @@
+@@ -574,13 +627,11 @@
                 ]
               }
             >
@@ -833,7 +833,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -606,24 +657,22 @@
+@@ -619,24 +670,22 @@
               }
             />
             <View
@@ -860,7 +860,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -642,20 +691,20 @@
+@@ -655,20 +704,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={

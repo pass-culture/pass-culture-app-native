@@ -6,6 +6,7 @@ type CustomTextInputProps = {
   label?: string
   disabled?: boolean
   containerStyle?: ViewStyle
+  isRequiredField?: boolean
 }
 
 type CustomSearchInputProps = {
@@ -57,6 +58,7 @@ export function getCustomTextInputProps(props: TextInputProps): CustomTextInputP
     label: props.label,
     disabled: props.disabled,
     containerStyle: props.containerStyle,
+    isRequiredField: props.isRequiredField,
   }
 }
 
