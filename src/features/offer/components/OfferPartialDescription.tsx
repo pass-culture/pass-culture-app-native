@@ -23,20 +23,18 @@ export const useShouldDisplaySeeMoreButton = (
   setLinesDisplayed: (linesDisplayed: number) => void
 } => {
   const theme = useTheme()
-  const shouldDisplaySeeMoreButtonOnThisPlatform =
-    Platform.OS !== 'web' || theme.isDesktopViewport === false
-  const maxDisplayedDescriptionLines = shouldDisplaySeeMoreButtonOnThisPlatform
+  const shouldTruncateDescription = !(Platform.OS === 'web' && theme.isDesktopViewport === true)
+  const maxDisplayedDescriptionLines = shouldTruncateDescription
     ? maxTheoricalDisplayedDescriptionLines
     : undefined
-  const [isLongerThanMaximumLines, setIsLongerThanMaximumLines] = useState(
-    shouldDisplaySeeMoreButtonOnThisPlatform
-  )
+  const [isLongerThanMaximumLines, setIsLongerThanMaximumLines] =
+    useState(shouldTruncateDescription)
   const setLinesDisplayed = (linesDisplayed: number): void => {
     if (typeof maxDisplayedDescriptionLines === 'undefined') return
 
     setIsLongerThanMaximumLines(linesDisplayed >= maxDisplayedDescriptionLines)
   }
-  const shouldDisplaySeeMoreButton = shouldDisplaySeeMoreButtonOnThisPlatform
+  const shouldDisplaySeeMoreButton = shouldTruncateDescription
     ? contentOfferDescription.length > 0 && isLongerThanMaximumLines
     : contentOfferDescription.filter(({ key }) => key !== 'description').length > 0
 
