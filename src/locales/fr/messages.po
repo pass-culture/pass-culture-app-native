@@ -2955,6 +2955,10 @@ msgstr "durée"
 msgid "elibility deadline"
 msgstr "Tu es éligible jusqu'au {deadline}"
 
+#: src/ui/components/DotComponent.tsx
+msgid "en cours"
+msgstr "en cours"
+
 #: src/features/identityCheck/atoms/IdentityVerificationText.tsx
 msgid "en cours de validité pour accéder à ton pass Culture."
 msgstr "en cours de validité pour accéder à ton pass Culture."
@@ -3089,6 +3093,10 @@ msgstr "{price} seront recrédités sur ton pass Culture."
 msgid "reviens a partir du"
 msgstr "Reviens à partir du {formatedDate} pour poursuivre ton inscription et bénéficier des offres du pass Culture."
 
+#: src/ui/components/DotComponent.tsx
+msgid "réalisée"
+msgstr "réalisée"
+
 #: src/features/bookOffer/components/CancellationDetails.tsx
 msgid "réservation annulable jusqu'au"
 msgstr "Cette réservation peut être annulée jusqu’au {date}"
@@ -3109,6 +3117,10 @@ msgstr "spécialité"
 #: src/features/favorites/atoms/Favorite.tsx
 msgid "starting from date"
 msgstr "Dès le {date}"
+
+#: src/ui/components/DotComponent.tsx
+msgid "sur"
+msgstr "sur"
 
 #: src/ui/components/inputs/EmailInput.tsx
 msgid "tonadresse@email.com"
@@ -3179,9 +3191,17 @@ msgstr "À deux !"
 msgid "À retirer avant le {dateLimit}"
 msgstr "À retirer avant le {dateLimit}"
 
+#: src/ui/components/DotComponent.tsx
+msgid "Étape"
+msgstr "Étape"
+
 #: src/features/profile/components/NonBeneficiaryHeader.tsx
 msgid "à dépenser dans l'application"
 msgstr "à dépenser dans l'application"
+
+#: src/ui/components/DotComponent.tsx
+msgid "à faire"
+msgstr "à faire"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/ThirdCard.tsx
 msgid "à portée de main !"

@@ -19,6 +19,7 @@ export const StepDots: FunctionComponent<Props> = (props) => {
             key={index}
             index={index}
             activeIndex={currentStepIndex}
+            numberOfSteps={props.numberOfSteps}
             isActive={index === currentStepIndex}
             onPress={undefined}
           />

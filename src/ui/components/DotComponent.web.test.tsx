@@ -19,6 +19,7 @@ describe('<DotComponent />', () => {
       index: 1,
       isActive: true,
       onPress,
+      numberOfSteps: 1,
     })
     expect(renderAPI).toMatchSnapshot()
   })
@@ -29,6 +30,7 @@ describe('<DotComponent />', () => {
       index: 1,
       isActive: true,
       onPress,
+      numberOfSteps: 1,
     })
     fireEvent.click(getByTestId('button'))
     expect(onPress).toHaveBeenCalled()
@@ -59,6 +61,7 @@ function renderDotComponent(
     index: 1,
     isActive: false,
     onPress: jest.fn(),
+    numberOfSteps: 1,
   }
 ) {
   return render(<DotComponent {...props} />)

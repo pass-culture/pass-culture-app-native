@@ -22,17 +22,12 @@ import { AchievementCardKeyProps } from './GenericAchievementCard'
 type DotComponentPropsForSwiper = {
   index: number
   activeIndex: number
+  numberOfSteps: number
   isActive: boolean
   onPress?: () => void
 }
 
 const DotComponentForSwiper: React.ComponentType<DotComponentPropsForSwiper> = DotComponent
-
-const controlProps: SwiperControlsProps = {
-  DotComponent: DotComponentForSwiper,
-  PrevComponent: ControlComponent,
-  NextComponent: ControlComponent,
-}
 
 export type Props = {
   screenName: ScreenNames
@@ -72,6 +67,14 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
       analytics.logHasSkippedTutorial(`${props.screenName}${index + 1}`)
     }
     navigation.reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
+  }
+
+  const controlProps: SwiperControlsProps = {
+    DotComponent: function DotComponent(props: DotComponentPropsForSwiper) {
+      return <DotComponentForSwiper {...props} numberOfSteps={cards.length} />
+    },
+    PrevComponent: ControlComponent,
+    NextComponent: ControlComponent,
   }
 
   return (
