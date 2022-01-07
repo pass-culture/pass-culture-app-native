@@ -10,7 +10,7 @@ export const Invalidate: React.FunctionComponent<IconInterface> = ({
   color = ColorsEnum.BLACK,
   testID,
 }) => (
-  <Svg width={size} height={size} viewBox="0 0 48 49" testID={testID} fill={color}>
+  <Svg width={size} height={size} viewBox="0 0 48 49" testID={testID} fill={color} aria-hidden>
     <Circle r={10} cx={24} cy={24} fill={ColorsEnum.WHITE} />
     <Path
       fillRule="evenodd"

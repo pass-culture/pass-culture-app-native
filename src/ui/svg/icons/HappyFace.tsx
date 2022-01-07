@@ -7,7 +7,7 @@ import { IconInterface } from './types'
 
 export function HappyFace({ size = 32, color = ColorsEnum.BLACK, testID }: IconInterface) {
   return (
-    <Svg width={size} height={size} viewBox="0 0 70 69" testID={testID}>
+    <Svg width={size} height={size} viewBox="0 0 70 69" testID={testID} aria-hidden>
       <Path
         fill={color}
         fillRule="evenodd"

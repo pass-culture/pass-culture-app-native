@@ -2,6 +2,7 @@
 
 exports[`BicolorConfidentiality should render component correctly 1`] = `
 <svg
+  aria-hidden={true}
   height={32}
   viewBox="0 0 48 48"
   width={32}

@@ -11,7 +11,7 @@ export function MuseumIcon({
   testID,
 }: IconInterface): JSX.Element {
   return (
-    <Svg width={size} height={size} testID={testID} fill={color} viewBox="0 0 96 96">
+    <Svg width={size} height={size} testID={testID} fill={color} viewBox="0 0 96 96" aria-hidden>
       <Path
         fillRule="evenodd"
         clipRule="evenodd"

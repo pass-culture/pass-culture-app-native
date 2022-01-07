@@ -63,11 +63,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
         <IconTouchableOpacity
           {...accessibilityAndTestId(t`Basculer l'affichage du mot de passe`)}
           onPress={togglePasswordDisplay}>
-          {shouldHidePassword ? (
-            <EyeSlash {...accessibilityAndTestId('eye-slash')} size={getSpacing(6)} />
-          ) : (
-            <Eye {...accessibilityAndTestId('eye')} size={getSpacing(6)} />
-          )}
+          {shouldHidePassword ? <EyeSlash size={getSpacing(6)} /> : <Eye size={getSpacing(6)} />}
         </IconTouchableOpacity>
       </StyledInputContainer>
     </InputContainer>

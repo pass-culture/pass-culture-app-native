@@ -14,7 +14,7 @@ export const JeuxVideo: React.FunctionComponent<IconInterface> = ({
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
 
   return (
-    <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID}>
+    <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID} aria-hidden>
       <Defs>
         <LinearGradient id={gradientId} x1="0%" x2="100%" y1="18.569%" y2="81.431%">
           <Stop offset="0%" stopColor={color ?? ColorsEnum.PRIMARY} />

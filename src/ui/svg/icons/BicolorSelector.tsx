@@ -10,8 +10,6 @@ import { RectangleIconInterface } from './types'
 const OWN_STYLE = { marginTop: -getSpacing(1 / 4) }
 
 export const BicolorSelector: React.FC<RectangleIconInterface> = ({
-  accessible,
-  accessibilityLabel,
   color,
   width,
   height,
@@ -29,8 +27,7 @@ export const BicolorSelector: React.FC<RectangleIconInterface> = ({
       preserveAspectRatio="none"
       style={{ ...style, ...OWN_STYLE }}
       testID={testID}
-      accessible={accessible}
-      accessibilityLabel={accessibilityLabel}>
+      aria-hidden>
       <Defs>
         <LinearGradient id={gradientId} x1="-42.969%" x2="153.672%" y1="52.422%" y2="52.422%">
           <Stop offset="0%" stopColor={primaryColor} />

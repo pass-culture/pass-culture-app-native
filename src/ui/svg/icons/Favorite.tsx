@@ -10,7 +10,7 @@ export const Favorite: React.FunctionComponent<IconInterface> = ({
   color = ColorsEnum.BLACK,
   testID,
 }: IconInterface) => (
-  <Svg width={size} height={size} viewBox="0 0 48 49" testID={testID}>
+  <Svg width={size} height={size} viewBox="0 0 48 49" testID={testID} aria-hidden>
     <Path
       fillRule="evenodd"
       clipRule="evenodd"

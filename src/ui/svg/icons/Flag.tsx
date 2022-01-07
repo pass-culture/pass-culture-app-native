@@ -7,7 +7,7 @@ import { IconInterface } from './types'
 
 export function Flag({ size = 32, color = ColorsEnum.BLACK }: IconInterface): JSX.Element {
   return (
-    <Svg width={size} height={size} viewBox="0 0 25 24">
+    <Svg width={size} height={size} viewBox="0 0 25 24" aria-hidden>
       <G fill="none" fillRule="evenodd">
         <G fill={color} fillRule="nonzero">
           <G>

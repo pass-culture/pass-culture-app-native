@@ -10,7 +10,7 @@ export const Share: React.FunctionComponent<IconInterface> = ({
   color = ColorsEnum.BLACK,
   testID,
 }) => (
-  <Svg width={size} height={size} testID={testID} fill={color} viewBox="0 0 48 49">
+  <Svg width={size} height={size} testID={testID} fill={color} viewBox="0 0 48 49" aria-hidden>
     <Path
       fill={color}
       fillRule="evenodd"

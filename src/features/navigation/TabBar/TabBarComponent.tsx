@@ -26,7 +26,7 @@ export const TabBarComponent: React.FC<Props> = ({ isSelected, BicolorIcon, onPr
         <BicolorSelector
           width={SELECTOR_WIDTH}
           height={SELECTOR_HEIGHT}
-          {...accessibilityAndTestId(`${tabName} tab selected`)}
+          testID={`${tabName} tab selected`}
         />
       )}
       <Spacer.Flex />

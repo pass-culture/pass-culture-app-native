@@ -15,7 +15,7 @@ const NotMemoizedBicolorConfidentiality: React.FC<BicolorIconInterface> = ({
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
 
   return (
-    <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID}>
+    <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID} aria-hidden>
       <Defs>
         <LinearGradient id={gradientId} x1="16.056%" x2="83.944%" y1="0%" y2="100%">
           <Stop offset="0%" stopColor={color} />

@@ -7,7 +7,7 @@ import { IconInterface } from './types'
 
 export const NoOffer = ({ color = ColorsEnum.GREY_MEDIUM, size = 32, testID }: IconInterface) => {
   return (
-    <Svg width={size} height={size} testID={testID} viewBox="0 0 156 156">
+    <Svg width={size} height={size} testID={testID} viewBox="0 0 156 156" aria-hidden>
       <G fill="none" fillRule="evenodd">
         <G fill={color}>
           <Path

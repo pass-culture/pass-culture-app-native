@@ -412,11 +412,10 @@ Array [
                 <View
                   fill="#151515"
                   height={24}
-                  testID="eye-slash"
                   width={24}
                 >
                   <Text>
-                    eye-slash-SVG-Mock
+                    undefined-SVG-Mock
                   </Text>
                 </View>
               </View>
@@ -1027,11 +1026,10 @@ Array [
                 <View
                   fill="#151515"
                   height={24}
-                  testID="eye-slash"
                   width={24}
                 >
                   <Text>
-                    eye-slash-SVG-Mock
+                    undefined-SVG-Mock
                   </Text>
                 </View>
               </View>

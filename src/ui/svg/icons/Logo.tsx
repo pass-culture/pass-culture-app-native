@@ -10,7 +10,7 @@ export const Logo: React.FunctionComponent<IconInterface> = ({
   color = ColorsEnum.BLACK,
   testID,
 }) => (
-  <Svg width={size} height={size} viewBox="0 0 32 32" testID={testID}>
+  <Svg width={size} height={size} viewBox="0 0 32 32" testID={testID} aria-hidden>
     <G fill="none" fillRule="evenodd">
       <G fill={color}>
         <G>

@@ -16,8 +16,10 @@ describe('<PasswordInput />', () => {
     const instance = render(<PasswordInput />)
     const hiddenSnapshot = instance.toJSON()
 
-    const eyeSlashIcon = instance.getByTestId('eye-slash')
-    fireEvent.press(eyeSlashIcon)
+    const switchPasswordVisibilityButton = instance.getByTestId(
+      "Basculer l'affichage du mot de passe"
+    )
+    fireEvent.press(switchPasswordVisibilityButton)
 
     const displayPasswordSnapshot = instance.toJSON()
 
@@ -27,13 +29,14 @@ describe('<PasswordInput />', () => {
   it('should render correctly when password is hidden after it was displayed', () => {
     const instance = render(<PasswordInput />)
 
-    const eyeSlashIcon = instance.getByTestId('eye-slash')
-    fireEvent.press(eyeSlashIcon)
+    const switchPasswordVisibilityButton = instance.getByTestId(
+      "Basculer l'affichage du mot de passe"
+    )
+    fireEvent.press(switchPasswordVisibilityButton)
 
     const displayPasswordSnapshot = instance.toJSON()
 
-    const eyeIcon = instance.getByTestId('eye')
-    fireEvent.press(eyeIcon)
+    fireEvent.press(switchPasswordVisibilityButton)
 
     const hiddenPasswordSnapshot = instance.toJSON()
 

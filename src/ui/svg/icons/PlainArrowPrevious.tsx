@@ -10,7 +10,7 @@ export const PlainArrowPrevious: React.FunctionComponent<IconInterface> = ({
   color = ColorsEnum.BLACK,
   testID,
 }) => (
-  <Svg width={size} height={size} viewBox="0 0 19 18" testID={testID}>
+  <Svg width={size} height={size} viewBox="0 0 19 18" testID={testID} aria-hidden>
     <Path
       fillRule="evenodd"
       clipRule="evenodd"
