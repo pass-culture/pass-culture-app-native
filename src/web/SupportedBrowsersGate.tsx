@@ -5,6 +5,10 @@ import { StyleSheet, ScrollView, View, Text, TouchableOpacity } from 'react-nati
 
 const browserVersion = Number(DeviceDetect.browserVersion)
 
+const isFacebookMessenger = !!(
+  navigator?.userAgent?.match?.(/(iPod|iPhone|iPad)/) && navigator?.userAgent?.match?.(/FBAV/i)
+)
+
 export const SupportedBrowsersGate: React.FC = ({ children }) => {
   const [shouldDisplayApp, setShouldDisplayApp] = React.useState(() => isBrowserSupported())
 
@@ -19,6 +23,7 @@ const supportedBrowsers: Array<{
   active: boolean
   version: number
 }> = [
+  { message: 'Facebook Messenger', active: isFacebookMessenger, version: 1 },
   { message: 'Chrome', active: DeviceDetect.isChrome, version: 50 },
   { message: 'Safari sur iOS', active: DeviceDetect.isMobileSafari, version: 12 },
   { message: 'Safari sur macOS', active: DeviceDetect.isSafari, version: 10 },
