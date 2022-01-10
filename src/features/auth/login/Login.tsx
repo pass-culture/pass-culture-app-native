@@ -16,6 +16,7 @@ import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { isEmailValid } from 'ui/components/inputs/emailCheck'
 import { EmailInput } from 'ui/components/inputs/EmailInput'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -42,6 +43,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const [password, setPassword] = useSafeState(INITIAL_PASSWORD)
   const [isLoading, setIsLoading] = useSafeState(false)
   const [errorMessage, setErrorMessage] = useSafeState<string | null>(null)
+  const [hasEmailError, setHasEmailError] = useSafeState(false)
   const signIn = useSignIn()
   const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password) || isLoading
 
@@ -49,14 +51,26 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavConfig)
 
+  function onEmailChange(email: string) {
+    if (hasEmailError) {
+      setIsLoading(false)
+      setHasEmailError(false)
+    }
+    setEmail(email)
+  }
+
   async function handleSignin() {
     setIsLoading(true)
     setErrorMessage(null)
-    const signinResponse = await signIn({ identifier: email, password })
-    if (signinResponse.isSuccess) {
-      handleSigninSuccess()
+    if (!isEmailValid(email)) {
+      setHasEmailError(true)
     } else {
-      handleSigninFailure(signinResponse)
+      const signinResponse = await signIn({ identifier: email, password })
+      if (signinResponse.isSuccess) {
+        handleSigninSuccess()
+      } else {
+        handleSigninFailure(signinResponse)
+      }
     }
   }
 
@@ -84,17 +98,18 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
 
   function handleSigninFailure(response: SignInResponseFailure) {
     const failureCode = response.content?.code
+    const statusCode = response.statusCode
     if (failureCode === 'EMAIL_NOT_VALIDATED') {
       navigate('SignupConfirmationEmailSent', { email })
     } else if (failureCode === 'NETWORK_REQUEST_FAILED') {
       setIsLoading(false)
       setErrorMessage(t`Erreur réseau. Tu peux réessayer une fois la connexion réétablie.`)
-    } else if (response.statusCode === 429 || failureCode === 'TOO_MANY_ATTEMPTS') {
+    } else if (statusCode === 429 || failureCode === 'TOO_MANY_ATTEMPTS') {
       setIsLoading(false)
       setErrorMessage(t`Nombre de tentatives dépassé. Réessaye dans 1 minute.`)
     } else {
       setIsLoading(false)
-      setErrorMessage(t`E-mail ou mot de passe incorrect.`)
+      setErrorMessage(t`E-mail ou mot de passe incorrect`)
     }
   }
 
@@ -133,14 +148,21 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         onLeftIconPress={goBack}
         {...rightIconProps}
       />
-      {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={5} />}
+      {!!errorMessage && (
+        <InputError visible messageId={errorMessage} numberOfSpacesTop={5} centered />
+      )}
       <Spacer.Column numberOfSpaces={7} />
       <EmailInput
         label={t`Adresse e-mail`}
         email={email}
-        onEmailChange={setEmail}
-        isError={!!errorMessage}
+        onEmailChange={onEmailChange}
+        isError={hasEmailError || !!errorMessage}
         isRequiredField
+      />
+      <InputError
+        visible={hasEmailError}
+        messageId={t`L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr`}
+        numberOfSpacesTop={2}
       />
       <Spacer.Column numberOfSpaces={6} />
       <PasswordInput

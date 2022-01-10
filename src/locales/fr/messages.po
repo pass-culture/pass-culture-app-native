@@ -807,8 +807,8 @@ msgid "E-mail envoyé ! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le
 msgstr "E-mail envoyé ! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams."
 
 #: src/features/auth/login/Login.tsx
-msgid "E-mail ou mot de passe incorrect."
-msgstr "E-mail ou mot de passe incorrect."
+msgid "E-mail ou mot de passe incorrect"
+msgstr "E-mail ou mot de passe incorrect"
 
 #: src/features/bookings/components/BookingDetailsTicketContent.tsx
 msgid "EAN"
@@ -1267,6 +1267,7 @@ msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes
 msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
+#: src/features/auth/login/Login.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
 #: src/features/profile/pages/ChangeEmail/utils/useValidateEmail.ts
 msgid "L'e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr"
@@ -1398,6 +1399,11 @@ msgstr "Les informations que tu as renseignées ne seront pas enregistrées."
 #: src/features/identityCheck/pages/confirmation/IdentityCheckHonor.tsx
 msgid "Les informations que tu as renseignées sont-elles correctes ?"
 msgstr "Les informations que tu as renseignées sont-elles correctes ?"
+
+#: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
+#: src/features/profile/pages/ChangePassword/ChangePassword.tsx
+msgid "Les mots de passe ne concordent pas"
+msgstr "Les mots de passe ne concordent pas"
 
 #: src/libs/geolocation/enums.ts
 msgid "Les réglages de ton téléphone ne nous permettent pas d’utiliser la géolocalisation"
@@ -3019,11 +3025,6 @@ msgstr "le {date}"
 #: src/features/profile/components/SubscriptionMessageBadge.tsx
 msgid "last update"
 msgstr "Dossier mis à jour le : {day} à {hour}"
-
-#: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
-#: src/features/profile/pages/ChangePassword/ChangePassword.tsx
-msgid "les mots de passe ne concordent pas"
-msgstr "les mots de passe ne concordent pas"
 
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "metteur en scène"

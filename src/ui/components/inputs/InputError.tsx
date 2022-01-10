@@ -9,6 +9,7 @@ interface Props {
   messageId: string
   visible: boolean
   numberOfSpacesTop: number
+  centered?: boolean
 }
 
 export const InputError: FC<Props> = (props) => {
@@ -21,6 +22,7 @@ export const InputError: FC<Props> = (props) => {
         icon={Error}
         testIdSuffix="warn"
         iconSize={16}
+        centered={props.centered}
       />
     </Fragment>
   ) : null

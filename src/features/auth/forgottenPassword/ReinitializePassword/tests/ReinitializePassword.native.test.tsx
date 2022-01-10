@@ -43,7 +43,7 @@ describe('ReinitializePassword Page', () => {
     fireEvent.changeText(passwordInput, '123456')
     fireEvent.changeText(confirmationInput, '123456--')
 
-    const notMatchingErrorText = getByText('les mots de passe ne concordent pas')
+    const notMatchingErrorText = getByText('Les mots de passe ne concordent pas')
 
     await waitForExpect(async () => {
       const color = notMatchingErrorText.props.style[0].color

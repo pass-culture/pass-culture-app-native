@@ -114,10 +114,7 @@ export function ChangePassword() {
           isRequiredField
         />
         {!!(shouldDisplayPasswordRules && newPassword.length > 0) && (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={2} />
-            <PasswordSecurityRules password={newPassword} />
-          </React.Fragment>
+          <PasswordSecurityRules password={newPassword} />
         )}
         <Spacer.Column numberOfSpaces={5} />
         <PasswordInput
@@ -132,7 +129,7 @@ export function ChangePassword() {
         />
         <InputError
           visible={displayNotMatchingError}
-          messageId={t`les mots de passe ne concordent pas`}
+          messageId={t`Les mots de passe ne concordent pas`}
           numberOfSpacesTop={2}
         />
         {theme.isDesktopViewport ? <Spacer.Column numberOfSpaces={10} /> : <Spacer.Flex flex={1} />}

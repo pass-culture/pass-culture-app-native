@@ -165,7 +165,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -230,15 +226,74 @@
+@@ -230,13 +226,75 @@
                     width={20}
                   >
                     <Text>
@@ -174,7 +174,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +                 </View>
                 </View>
               </View>
-            </View>
++           </View>
 +           <View
 +             numberOfSpaces={5}
 +             style={
@@ -187,6 +187,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +             testID=\\"input-error-top-spacer\\"
 +           />
 +           <View
++             centered={true}
 +             style={
 +               Array [
 +                 Object {
@@ -206,7 +207,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +                 rule-icon-warn-SVG-Mock
 +               </Text>
               </View>
-              <View
++             <View
 +               numberOfSpaces={1}
 +               style={
 +                 Array [
@@ -217,6 +218,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +               }
 +             />
 +             <Text
++               centered={true}
 +               color=\\"#b60025\\"
 +               style={
 +                 Array [
@@ -227,20 +229,19 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +                     \\"fontSize\\": 12,
 +                     \\"lineHeight\\": 16,
 +                     \\"paddingLeft\\": 4,
++                     \\"textAlign\\": \\"center\\",
 +                   },
 +                 ]
 +               }
 +             >
 +               Erreur réseau. Tu peux réessayer une fois la connexion réétablie.
 +             </Text>
-+           </View>
-+           <View
+            </View>
+            <View
               numberOfSpaces={7}
               style={
                 Array [
-                  Object {
-                    \\"height\\": 28,
-@@ -309,19 +364,19 @@
+@@ -309,19 +367,19 @@
                     },
                   ]
                 }
@@ -262,7 +263,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -367,11 +422,11 @@
+@@ -367,11 +425,11 @@
                         \\"paddingTop\\": 0,
                       },
                     ]
@@ -275,7 +276,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
             </View>
             <View
               numberOfSpaces={6}
-@@ -446,19 +501,19 @@
+@@ -446,19 +504,19 @@
                     },
                   ]
                 }
@@ -297,7 +298,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -511,18 +566,16 @@
+@@ -511,18 +569,16 @@
                       },
                     ]
                   }
@@ -317,7 +318,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -574,13 +627,11 @@
+@@ -574,13 +630,11 @@
                 ]
               }
             >
@@ -331,7 +332,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -619,24 +670,22 @@
+@@ -619,24 +673,22 @@
               }
             />
             <View
@@ -358,7 +359,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -655,20 +704,20 @@
+@@ -655,20 +707,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -667,7 +668,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -230,15 +226,74 @@
+@@ -230,13 +226,75 @@
                     width={20}
                   >
                     <Text>
@@ -676,7 +677,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 +                 </View>
                 </View>
               </View>
-            </View>
++           </View>
 +           <View
 +             numberOfSpaces={5}
 +             style={
@@ -689,6 +690,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 +             testID=\\"input-error-top-spacer\\"
 +           />
 +           <View
++             centered={true}
 +             style={
 +               Array [
 +                 Object {
@@ -708,7 +710,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 +                 rule-icon-warn-SVG-Mock
 +               </Text>
               </View>
-              <View
++             <View
 +               numberOfSpaces={1}
 +               style={
 +                 Array [
@@ -719,6 +721,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 +               }
 +             />
 +             <Text
++               centered={true}
 +               color=\\"#b60025\\"
 +               style={
 +                 Array [
@@ -729,20 +732,19 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 +                     \\"fontSize\\": 12,
 +                     \\"lineHeight\\": 16,
 +                     \\"paddingLeft\\": 4,
++                     \\"textAlign\\": \\"center\\",
 +                   },
 +                 ]
 +               }
 +             >
 +               Nombre de tentatives dépassé. Réessaye dans 1 minute.
 +             </Text>
-+           </View>
-+           <View
+            </View>
+            <View
               numberOfSpaces={7}
               style={
                 Array [
-                  Object {
-                    \\"height\\": 28,
-@@ -309,19 +364,19 @@
+@@ -309,19 +367,19 @@
                     },
                   ]
                 }
@@ -764,7 +766,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -367,11 +422,11 @@
+@@ -367,11 +425,11 @@
                         \\"paddingTop\\": 0,
                       },
                     ]
@@ -777,7 +779,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
             </View>
             <View
               numberOfSpaces={6}
-@@ -446,19 +501,19 @@
+@@ -446,19 +504,19 @@
                     },
                   ]
                 }
@@ -799,7 +801,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -511,18 +566,16 @@
+@@ -511,18 +569,16 @@
                       },
                     ]
                   }
@@ -819,7 +821,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -574,13 +627,11 @@
+@@ -574,13 +630,11 @@
                 ]
               }
             >
@@ -833,7 +835,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -619,24 +670,22 @@
+@@ -619,24 +673,22 @@
               }
             />
             <View
@@ -860,7 +862,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -655,20 +704,20 @@
+@@ -655,20 +707,20 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
