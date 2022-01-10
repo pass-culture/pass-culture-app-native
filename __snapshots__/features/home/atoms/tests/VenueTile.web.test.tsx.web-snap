@@ -46,7 +46,7 @@ Object {
               style="width: 4px;"
             />
             <div
-              class="css-text-901oao css-textOneLine-vcwn7f"
+              class="css-text-901oao css-textMultiLine-cens5h"
               dir="auto"
               style="color: rgb(98, 98, 98); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
             >
@@ -104,7 +104,7 @@ Object {
             style="width: 4px;"
           />
           <div
-            class="css-text-901oao css-textOneLine-vcwn7f"
+            class="css-text-901oao css-textMultiLine-cens5h"
             dir="auto"
             style="color: rgb(98, 98, 98); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
           >

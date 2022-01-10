@@ -1,18 +1,13 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import { ViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ColorsEnum, Typo, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
-interface OrSeparatorProps extends ViewProps {
-  lineColor?: ColorsEnum
-}
-
-export const OrSeparator: React.FC<OrSeparatorProps> = ({ lineColor, ...props }) => {
+export function OrSeparator() {
   return (
-    <Container {...props}>
-      <Line color={lineColor} />
+    <Container>
+      <Line />
       <TextContainer>
         <OrText>{t`ou`}</OrText>
       </TextContainer>
@@ -28,15 +23,13 @@ const Container = styled.View({
   alignSelf: 'stretch',
 })
 
-const Line = styled.View.attrs<{ color?: ColorsEnum }>((props) => props)<{ color?: ColorsEnum }>(
-  ({ color }) => ({
-    position: 'absolute',
-    left: 0,
-    right: 0,
-    height: 1,
-    backgroundColor: color ?? ColorsEnum.GREY_MEDIUM,
-  })
-)
+const Line = styled.View(({ theme }) => ({
+  position: 'absolute',
+  left: 0,
+  right: 0,
+  height: 1,
+  backgroundColor: theme.colors.greyMedium,
+}))
 
 const TextContainer = styled.View(({ theme }) => ({
   paddingHorizontal: 10,

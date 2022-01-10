@@ -60,11 +60,12 @@ exports[`VenueCaption component should render correctly 1`] = `
       }
     />
     <div
-      className="css-text-901oao css-textOneLine-vcwn7f"
+      className="css-text-901oao css-textMultiLine-cens5h"
       dir="auto"
       style={
         Object {
           "WebkitFlexShrink": 1,
+          "WebkitLineClamp": 1,
           "color": "rgba(98,98,98,1.00)",
           "flexShrink": 1,
           "fontFamily": "Montserrat-SemiBold",

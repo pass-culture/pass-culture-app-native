@@ -39,12 +39,10 @@ Object {
                   />
                   <div
                     class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                    id="animatedComponent"
                     style="flex: 1;"
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      id="animatedComponent"
                       style="flex: 1;"
                     >
                       <div
@@ -138,7 +136,7 @@ Object {
                                     </div>
                                   </div>
                                   <div
-                                    class="css-text-901oao css-textOneLine-vcwn7f"
+                                    class="css-text-901oao css-textMultiLine-cens5h"
                                     dir="auto"
                                     style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
                                   >
@@ -158,25 +156,21 @@ Object {
                           </div>
                           <div
                             class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                            id="animatedComponent"
                           >
                             <div
                               class="css-view-1dbjc4n r-pointerEvents-12vffkv"
                             >
                               <div
                                 class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                                id="animatedComponent"
                                 style="bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; z-index: 0;"
                               >
                                 <div
                                   class="css-view-1dbjc4n"
-                                  id="animatedComponent"
                                   style="background-color: rgb(255, 255, 255); border-bottom-color: rgba(216,216,216,1.00); border-bottom-width: 1px; box-shadow: 0px 0px 0px rgba(216,216,216,1.00); flex: 1;"
                                 />
                               </div>
                               <div
                                 class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                                id="animatedComponent"
                                 style="height: 80px;"
                               >
                                 <div
@@ -189,19 +183,16 @@ Object {
                                 >
                                   <div
                                     class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                                    id="animatedComponent"
                                     style="align-items: flex-start; justify-content: center; margin-left: 16px;"
                                   />
                                   <div
                                     class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                                    id="animatedComponent"
                                     style="justify-content: center; margin-right: 16px; margin-left: 16px; max-width: -32px;"
                                   >
                                     <h1
                                       aria-level="1"
-                                      class="css-reset-4rbku5 css-text-901oao css-textOneLine-vcwn7f"
+                                      class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
                                       dir="auto"
-                                      id="animatedComponent"
                                       role="heading"
                                       style="color: rgb(28, 28, 30); font-size: 18px; font-weight: 500;"
                                     >
@@ -210,7 +201,6 @@ Object {
                                   </div>
                                   <div
                                     class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                                    id="animatedComponent"
                                     style="align-items: flex-end; flex-basis: 0px; flex-grow: 1; justify-content: center; margin-right: 16px;"
                                   />
                                 </div>
@@ -271,12 +261,10 @@ Object {
                 />
                 <div
                   class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                  id="animatedComponent"
                   style="flex: 1;"
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    id="animatedComponent"
                     style="flex: 1;"
                   >
                     <div
@@ -370,7 +358,7 @@ Object {
                                   </div>
                                 </div>
                                 <div
-                                  class="css-text-901oao css-textOneLine-vcwn7f"
+                                  class="css-text-901oao css-textMultiLine-cens5h"
                                   dir="auto"
                                   style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
                                 >
@@ -390,25 +378,21 @@ Object {
                         </div>
                         <div
                           class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                          id="animatedComponent"
                         >
                           <div
                             class="css-view-1dbjc4n r-pointerEvents-12vffkv"
                           >
                             <div
                               class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                              id="animatedComponent"
                               style="bottom: 0px; left: 0px; position: absolute; right: 0px; top: 0px; z-index: 0;"
                             >
                               <div
                                 class="css-view-1dbjc4n"
-                                id="animatedComponent"
                                 style="background-color: rgb(255, 255, 255); border-bottom-color: rgba(216,216,216,1.00); border-bottom-width: 1px; box-shadow: 0px 0px 0px rgba(216,216,216,1.00); flex: 1;"
                               />
                             </div>
                             <div
                               class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                              id="animatedComponent"
                               style="height: 80px;"
                             >
                               <div
@@ -421,19 +405,16 @@ Object {
                               >
                                 <div
                                   class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                                  id="animatedComponent"
                                   style="align-items: flex-start; justify-content: center; margin-left: 16px;"
                                 />
                                 <div
                                   class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                                  id="animatedComponent"
                                   style="justify-content: center; margin-right: 16px; margin-left: 16px; max-width: -32px;"
                                 >
                                   <h1
                                     aria-level="1"
-                                    class="css-reset-4rbku5 css-text-901oao css-textOneLine-vcwn7f"
+                                    class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
                                     dir="auto"
-                                    id="animatedComponent"
                                     role="heading"
                                     style="color: rgb(28, 28, 30); font-size: 18px; font-weight: 500;"
                                   >
@@ -442,7 +423,6 @@ Object {
                                 </div>
                                 <div
                                   class="css-view-1dbjc4n r-pointerEvents-12vffkv"
-                                  id="animatedComponent"
                                   style="align-items: flex-end; flex-basis: 0px; flex-grow: 1; justify-content: center; margin-right: 16px;"
                                 />
                               </div>

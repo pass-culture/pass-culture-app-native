@@ -102,11 +102,12 @@ Array [
       }
     />
     <div
-      className="css-text-901oao css-textOneLine-vcwn7f"
+      className="css-text-901oao css-textMultiLine-cens5h"
       dir="auto"
       style={
         Object {
           "WebkitFlexShrink": 1,
+          "WebkitLineClamp": 1,
           "color": "rgba(21,21,21,1.00)",
           "flexShrink": 1,
           "fontFamily": "Montserrat-Bold",
@@ -295,10 +296,11 @@ Array [
         </div>
       </div>
       <div
-        className="css-text-901oao css-textOneLine-vcwn7f"
+        className="css-text-901oao css-textMultiLine-cens5h"
         dir="auto"
         style={
           Object {
+            "WebkitLineClamp": 1,
             "color": "rgba(21,21,21,1.00)",
             "fontFamily": "Montserrat-Bold",
             "fontSize": "15px",
@@ -328,7 +330,7 @@ exports[`WhereSection should render correctly 2`] = `
 - First value
 + Second value
 
-@@ -28,10 +28,134 @@
+@@ -28,10 +28,135 @@
           \\"height\\": \\"16px\\",
         }
       }
@@ -403,11 +405,12 @@ exports[`WhereSection should render correctly 2`] = `
 +       }
 +     />
 +     <div
-+       className=\\"css-text-901oao css-textOneLine-vcwn7f\\"
++       className=\\"css-text-901oao css-textMultiLine-cens5h\\"
 +       dir=\\"auto\\"
 +       style={
 +         Object {
 +           \\"WebkitFlexShrink\\": 1,
++           \\"WebkitLineClamp\\": 1,
 +           \\"color\\": \\"rgba(21,21,21,1.00)\\",
 +           \\"flexShrink\\": 1,
 +           \\"fontFamily\\": \\"Montserrat-Bold\\",

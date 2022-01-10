@@ -31,7 +31,6 @@ Object {
               >
                 <div
                   class="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style="flex-direction: row; height: 0px; left: 0px; position: absolute; top: 0px; transform: translateX(0px) translateY(0px); width: 0px;"
                 >
                   <div
@@ -98,7 +97,6 @@ Object {
             >
               <div
                 class="css-view-1dbjc4n"
-                id="animatedComponent"
                 style="flex-direction: row; height: 0px; left: 0px; position: absolute; top: 0px; transform: translateX(0px) translateY(0px); width: 0px;"
               >
                 <div

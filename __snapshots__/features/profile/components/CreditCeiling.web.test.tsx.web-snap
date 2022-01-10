@@ -36,7 +36,6 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="progress-bar"
-              id="animatedComponent"
               style="background-color: rgb(50, 0, 150); flex-basis: 0px; flex-grow: 0.78; flex-shrink: 1; left: 0px; opacity: 1; position: relative;"
             />
           </div>
@@ -94,7 +93,6 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="progress-bar"
-            id="animatedComponent"
             style="background-color: rgb(50, 0, 150); flex-basis: 0px; flex-grow: 0.78; flex-shrink: 1; left: 0px; opacity: 1; position: relative;"
           />
         </div>

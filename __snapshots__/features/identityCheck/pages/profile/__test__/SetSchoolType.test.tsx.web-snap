@@ -952,10 +952,11 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
               tabIndex="0"
             >
               <div
-                className="css-text-901oao css-textOneLine-vcwn7f"
+                className="css-text-901oao css-textMultiLine-cens5h"
                 dir="auto"
                 style={
                   Object {
+                    "WebkitLineClamp": 1,
                     "color": "rgba(98,98,98,1.00)",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": "15px",
@@ -1634,10 +1635,11 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
               tabIndex="0"
             >
               <div
-                className="css-text-901oao css-textOneLine-vcwn7f"
+                className="css-text-901oao css-textMultiLine-cens5h"
                 dir="auto"
                 style={
                   Object {
+                    "WebkitLineClamp": 1,
                     "color": "rgba(98,98,98,1.00)",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": "15px",
