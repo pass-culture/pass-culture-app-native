@@ -4,7 +4,9 @@ import styled from 'styled-components/native'
 
 import { Typo } from 'ui/theme'
 
-export const RequiredLabel = () => <Label>{t`Obligatoire`}</Label>
+export function RequiredLabel() {
+  return <Label>{t`Obligatoire`}</Label>
+}
 
 const Label = styled(Typo.Caption)(({ theme, color }) => ({
   color: color ?? theme.colors.greyDark,

@@ -100,13 +100,12 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
 
   function handleSigninFailure(response: SignInResponseFailure) {
     const failureCode = response.content?.code
-    const statusCode = response.statusCode
     if (failureCode === 'EMAIL_NOT_VALIDATED') {
       navigate('SignupConfirmationEmailSent', { email })
     } else if (failureCode === 'NETWORK_REQUEST_FAILED') {
       setIsLoading(false)
       setErrorMessage(t`Erreur réseau. Tu peux réessayer une fois la connexion réétablie`)
-    } else if (statusCode === 429 || failureCode === 'TOO_MANY_ATTEMPTS') {
+    } else if (response.statusCode === 429 || failureCode === 'TOO_MANY_ATTEMPTS') {
       setIsLoading(false)
       setErrorMessage(t`Nombre de tentatives dépassé. Réessaye dans 1 minute`)
     } else {

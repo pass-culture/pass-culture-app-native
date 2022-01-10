@@ -213,6 +213,29 @@ describe('<Login/>', () => {
     })
   })
 
+  it('should show email error message WHEN signin has failed because of invalid e-mail format', async () => {
+    const renderAPI = renderLogin()
+    const notErrorSnapshot = renderAPI.toJSON()
+    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(emailInput, 'not_valid_email@gmail')
+    fireEvent.changeText(passwordInput, 'mypassword')
+
+    fireEvent.press(renderAPI.getByText('Se connecter'))
+    await superFlushWithAct()
+
+    await waitForExpect(() => {
+      expect(
+        renderAPI.getByText(
+          "L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr"
+        )
+      ).toBeTruthy()
+      const errorSnapshot = renderAPI.toJSON()
+      expect(notErrorSnapshot).toMatchDiffSnapshot(errorSnapshot)
+    })
+    expect(navigate).not.toBeCalled()
+  })
+
   it('should show error message and error inputs WHEN signin has failed because of wrong credentials', async () => {
     simulateSigninWrongCredentials()
     const renderAPI = renderLogin()
