@@ -1,7 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { StyleSheet } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
@@ -28,7 +27,6 @@ export function LegalNotices() {
           type="clickable"
           onPress={() => openUrl(env.CGU_LINK)}
           icon={ExternalSite}
-          style={styles.row}
         />
         <Separator />
         <Row
@@ -36,7 +34,6 @@ export function LegalNotices() {
           type="clickable"
           onPress={() => openUrl(env.DATA_PRIVACY_CHART_LINK)}
           icon={ExternalSite}
-          style={styles.row}
         />
         {!!user && (
           <React.Fragment>
@@ -46,7 +43,6 @@ export function LegalNotices() {
               type="clickable"
               onPress={() => navigate('ConfirmDeleteProfile')}
               icon={ProfileDeletion}
-              style={styles.row}
             />
           </React.Fragment>
         )}
@@ -57,12 +53,6 @@ export function LegalNotices() {
   )
 }
 
-const styles = StyleSheet.create({
-  row: {
-    paddingVertical: getSpacing(4),
-  },
-})
-
 const Container = styled.View(({ theme }) => ({
   flex: 1,
   backgroundColor: theme.colors.white,
@@ -70,7 +60,6 @@ const Container = styled.View(({ theme }) => ({
   paddingHorizontal: getSpacing(4),
 }))
 
-const Row = styled(SectionRow).attrs({
-  style: styles.row,
-  iconSize: SECTION_ROW_ICON_SIZE,
-})``
+const Row = styled(SectionRow).attrs({ iconSize: SECTION_ROW_ICON_SIZE })({
+  paddingVertical: getSpacing(4),
+})

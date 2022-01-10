@@ -1,0 +1,478 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LegalNotices should render correctly 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="css-view-1dbjc4n"
+        style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; padding-right: 16px; padding-left: 16px;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 16px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 56px;"
+        />
+        <div
+          aria-label="Conditions Générales d’Utilisation"
+          class="css-view-1dbjc4n"
+          data-testid="Conditions Générales d’Utilisation"
+          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+          tabindex="0"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+            >
+              <div
+                class="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="width: 8px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; text-align: left;"
+            >
+              <div
+                class="css-text-901oao css-textMultiLine-cens5h"
+                dir="auto"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+              >
+                Conditions Générales d’Utilisation
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: flex-end;"
+            />
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="background-color: rgb(245, 245, 245); height: 1px; width: 100%;"
+        />
+        <div
+          aria-label="Charte de protection des données personnelles"
+          class="css-view-1dbjc4n"
+          data-testid="Charte de protection des données personnelles"
+          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+          tabindex="0"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+            >
+              <div
+                class="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="width: 8px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; text-align: left;"
+            >
+              <div
+                class="css-text-901oao css-textMultiLine-cens5h"
+                dir="auto"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+              >
+                Charte de protection des données personnelles
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: flex-end;"
+            />
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="background-color: rgb(245, 245, 245); height: 1px; width: 100%;"
+        />
+        <div
+          aria-label="Suppression du compte"
+          class="css-view-1dbjc4n"
+          data-testid="Suppression du compte"
+          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+          tabindex="0"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+            >
+              <div
+                class="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="width: 8px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; text-align: left;"
+            >
+              <div
+                class="css-text-901oao css-textMultiLine-cens5h"
+                dir="auto"
+                style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+              >
+                Suppression du compte
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: flex-end;"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="background-color: rgb(235, 0, 85); position: absolute; top: 0px; width: 100%;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 16px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 8px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+          style="align-items: center; flex-direction: row; justify-content: space-between;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
+          >
+            <div
+              aria-label="Revenir en arrière"
+              class="css-view-1dbjc4n"
+              data-testid="Revenir en arrière"
+              style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+              tabindex="0"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                data-testid="icon-back"
+              >
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                >
+                  icon-back-SVG-Mock
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="css-text-901oao css-textOneLine-vcwn7f"
+            dir="auto"
+            style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
+          >
+            Mentions légales
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-end; padding-left: 12px; padding-right: 12px;"
+          />
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 8px;"
+        />
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="css-view-1dbjc4n"
+      style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; padding-right: 16px; padding-left: 16px;"
+    >
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 16px;"
+      />
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 56px;"
+      />
+      <div
+        aria-label="Conditions Générales d’Utilisation"
+        class="css-view-1dbjc4n"
+        data-testid="Conditions Générales d’Utilisation"
+        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+        tabindex="0"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+            >
+              undefined-SVG-Mock
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="width: 8px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; text-align: left;"
+          >
+            <div
+              class="css-text-901oao css-textMultiLine-cens5h"
+              dir="auto"
+              style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+            >
+              Conditions Générales d’Utilisation
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="align-items: flex-end;"
+          />
+        </div>
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="background-color: rgb(245, 245, 245); height: 1px; width: 100%;"
+      />
+      <div
+        aria-label="Charte de protection des données personnelles"
+        class="css-view-1dbjc4n"
+        data-testid="Charte de protection des données personnelles"
+        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+        tabindex="0"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+            >
+              undefined-SVG-Mock
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="width: 8px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; text-align: left;"
+          >
+            <div
+              class="css-text-901oao css-textMultiLine-cens5h"
+              dir="auto"
+              style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+            >
+              Charte de protection des données personnelles
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="align-items: flex-end;"
+          />
+        </div>
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="background-color: rgb(245, 245, 245); height: 1px; width: 100%;"
+      />
+      <div
+        aria-label="Suppression du compte"
+        class="css-view-1dbjc4n"
+        data-testid="Suppression du compte"
+        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+        tabindex="0"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+            >
+              undefined-SVG-Mock
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="width: 8px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; text-align: left;"
+          >
+            <div
+              class="css-text-901oao css-textMultiLine-cens5h"
+              dir="auto"
+              style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+            >
+              Suppression du compte
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="align-items: flex-end;"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class="css-view-1dbjc4n"
+      style="background-color: rgb(235, 0, 85); position: absolute; top: 0px; width: 100%;"
+    >
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 16px;"
+      />
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 8px;"
+      />
+      <div
+        class="css-view-1dbjc4n"
+        style="align-items: center; flex-direction: row; justify-content: space-between;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-start; padding-left: 12px; padding-right: 12px;"
+        >
+          <div
+            aria-label="Revenir en arrière"
+            class="css-view-1dbjc4n"
+            data-testid="Revenir en arrière"
+            style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            tabindex="0"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              data-testid="icon-back"
+            >
+              <div
+                class="css-text-901oao"
+                dir="auto"
+              >
+                icon-back-SVG-Mock
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-text-901oao css-textOneLine-vcwn7f"
+          dir="auto"
+          style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
+        >
+          Mentions légales
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-end; padding-left: 12px; padding-right: 12px;"
+        />
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 8px;"
+      />
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

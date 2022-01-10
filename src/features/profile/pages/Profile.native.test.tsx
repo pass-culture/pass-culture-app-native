@@ -96,6 +96,11 @@ describe('Profile component', () => {
     cleanup()
   })
 
+  it('should render correctly', async () => {
+    const renderAPI = await renderProfile()
+    expect(renderAPI).toMatchSnapshot()
+  })
+
   describe('user settings section', () => {
     it('should navigate when the personal data row is clicked', async () => {
       const { getByTestId } = await renderProfile()

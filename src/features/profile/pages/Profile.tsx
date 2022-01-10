@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { Platform, NativeScrollEvent, StyleSheet, ScrollView } from 'react-native'
+import { Platform, NativeScrollEvent, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 import { useTheme } from 'styled-components/native'
 
@@ -114,8 +114,7 @@ export const Profile: React.FC = () => {
       <ProfileHeader user={user} />
       <ProfileContainer>
         <Spacer.Column numberOfSpaces={getSpacing(1)} />
-        <ProfileSection
-          title={isLoggedIn ? t`Paramètres du compte` : t`Paramètres de l'application`}>
+        <Section title={isLoggedIn ? t`Paramètres du compte` : t`Paramètres de l'application`}>
           {!!isLoggedIn && (
             <React.Fragment>
               <Row
@@ -123,31 +122,27 @@ export const Profile: React.FC = () => {
                 type="navigable"
                 onPress={() => navigate('PersonalData')}
                 icon={ProfileIcon}
-                style={styles.row}
               />
               <Row
                 title={t`Mot de passe`}
                 type="navigable"
                 onPress={() => navigate('ChangePassword')}
                 icon={Lock}
-                style={styles.row}
               />
             </React.Fragment>
           )}
-          <SectionRow
+          <Row
             type="navigable"
             title={t`Notifications`}
             icon={Bell}
-            iconSize={SECTION_ROW_ICON_SIZE}
             onPress={() => navigate('NotificationSettings')}
-            style={styles.row}
           />
           <SectionRow
             type="clickable"
             title={t`Géolocalisation`}
             icon={LocationPointerNotFilled}
             iconSize={SECTION_ROW_ICON_SIZE}
-            style={styles.row}
+            style={{ paddingVertical }}
             cta={
               <FilterSwitchLabelContainer>
                 {!isMobileViewport && <StyledCaption>{t`Partager ma position`}</StyledCaption>}
@@ -165,21 +160,19 @@ export const Profile: React.FC = () => {
           {!!positionError && (
             <InputError visible messageId={positionError.message} numberOfSpacesTop={1} />
           )}
-        </ProfileSection>
-        <ProfileSection title={t`Aides`}>
+        </Section>
+        <Section title={t`Aides`}>
           <Row
             title={t`Comment ça marche\u00a0?`}
             type="navigable"
             onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
             icon={LifeBuoy}
-            style={styles.row}
           />
           <Row
             title={t`Questions fréquentes`}
             type="clickable"
             onPress={() => openUrl(env.FAQ_LINK)}
             icon={ExternalSite}
-            style={styles.row}
           />
           {Platform.OS !== 'web' && (
             <Row
@@ -187,34 +180,30 @@ export const Profile: React.FC = () => {
               type="navigable"
               onPress={() => navigate('DeeplinkImporter')}
               icon={LifeBuoy}
-              style={styles.row}
             />
           )}
-        </ProfileSection>
-        <ProfileSection title={t`Autres`}>
+        </Section>
+        <Section title={t`Autres`}>
           <Row
             title={t`Accessibilité`}
             type="clickable"
             onPress={() => openUrl(env.ACCESSIBILITY_LINK)}
             icon={ExternalSite}
-            style={styles.row}
           />
           <Row
             title={t`Mentions légales`}
             type="navigable"
             onPress={() => navigate('LegalNotices')}
             icon={LegalNotices}
-            style={styles.row}
           />
           <Row
             title={t`Confidentialité`}
             type="navigable"
             onPress={() => navigate('ConsentSettings')}
             icon={Confidentiality}
-            style={styles.row}
           />
-        </ProfileSection>
-        <ProfileSection title={t`Suivre pass Culture`}>
+        </Section>
+        <Section title={t`Suivre pass Culture`}>
           <NetworkRow>
             <NetworkRowContainer>
               <SocialNetworkCard network="instagram" />
@@ -223,9 +212,9 @@ export const Profile: React.FC = () => {
               <SocialNetworkCard network="facebook" />
             </NetworkRowContainer>
           </NetworkRow>
-        </ProfileSection>
+        </Section>
         {!!isLoggedIn && (
-          <ProfileSection>
+          <Section>
             <SignOutRow
               title={t`Déconnexion`}
               {...accessibilityAndTestId(t`Déconnexion`)}
@@ -233,9 +222,9 @@ export const Profile: React.FC = () => {
               type="clickable"
               icon={SignOut}
             />
-          </ProfileSection>
+          </Section>
         )}
-        <ProfileSection>
+        <Section>
           <Spacer.Column numberOfSpaces={4} />
           <StyledCaption>{t`Version` + `\u00a0${Package.version}`}</StyledCaption>
           <Spacer.Column numberOfSpaces={4} />
@@ -243,34 +232,27 @@ export const Profile: React.FC = () => {
             <LogoMinistere />
           </LogoMinistereContainer>
           <Spacer.Column numberOfSpaces={4} />
-        </ProfileSection>
+        </Section>
         <Spacer.TabBar />
       </ProfileContainer>
     </ScrollView>
   )
 }
 
-const styles = StyleSheet.create({
-  section: {
-    marginBottom: getSpacing(2),
-  },
-  row: {
-    paddingVertical: getSpacing(4),
-  },
+const paddingVertical = getSpacing(4)
+
+const Row = styled(SectionRow).attrs({ iconSize: SECTION_ROW_ICON_SIZE })({
+  paddingVertical,
 })
 
-const ProfileSection = styled(Section).attrs({
-  style: styles.section,
-})``
-
-const Row = styled(SectionRow).attrs({
-  style: styles.row,
-  iconSize: SECTION_ROW_ICON_SIZE,
-})``
-
-const SignOutRow = styled(Row)({
-  marginTop: getSpacing(2),
+const FilterSwitchLabelContainer = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
 })
+
+const StyledCaption = styled(Typo.Caption)(({ theme, color }) => ({
+  color: color ?? theme.colors.greyDark,
+}))
 
 const LogoMinistereContainer = styled.View({
   width: getSpacing(40),
@@ -285,15 +267,10 @@ const NetworkRow = styled.View({
 
 const NetworkRowContainer = styled.View({
   flexDirection: 'row',
-  paddingVertical: getSpacing(4),
+  paddingVertical,
   justifyContent: 'space-between',
 })
 
-const FilterSwitchLabelContainer = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
+const SignOutRow = styled(SectionRow).attrs({ iconSize: SECTION_ROW_ICON_SIZE })({
+  marginTop: getSpacing(4),
 })
-
-const StyledCaption = styled(Typo.Caption)(({ theme, color }) => ({
-  color: color ?? theme.colors.greyDark,
-}))
