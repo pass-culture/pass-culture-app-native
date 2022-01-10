@@ -5,9 +5,18 @@ import { EduConnectError } from 'features/identityCheck/errors/eduConnect/types'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 
+const allowedDomains = [
+  'https://educonnect.education.gouv.fr',
+  // environnement hors production
+  'https://pr4.educonnect.phm.education.gouv.fr',
+]
+
 export const EduConnectErrors = withEduConnectErrorBoundary(() => {
   const { params } = useRoute<UseRouteType<'EduConnectErrors'>>()
-  params.logoutUrl && globalThis.window.open(params.logoutUrl)
+  const logoutUrl = params.logoutUrl
+  if (logoutUrl && allowedDomains.find((domain) => new RegExp(`^${domain}`, 'i').test(logoutUrl))) {
+    globalThis.window.open(logoutUrl)
+  }
 
   if (params?.code === 'UserAgeNotValid18YearsOld') {
     throw new EduConnectError(EduConnectErrorMessageEnum.UserAgeNotValid18YearsOld)
