@@ -13,7 +13,7 @@ exports[`OfferCaption component should render correctly 1`] = `
   }
 >
   <Text
-    numberOfLines={1}
+    numberOfLines={2}
     style={
       Array [
         Object {

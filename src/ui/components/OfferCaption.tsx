@@ -19,7 +19,7 @@ export const OfferCaption = (props: OfferCaptionProps) => {
 
   return (
     <CaptionContainer imageWidth={imageWidth}>
-      <Typo.Caption numberOfLines={1}>{name}</Typo.Caption>
+      <Typo.Caption numberOfLines={2}>{name}</Typo.Caption>
       {!!date && (
         <Typo.Caption numberOfLines={1} color={ColorsEnum.GREY_DARK}>
           {date}

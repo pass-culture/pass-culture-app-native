@@ -1006,7 +1006,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     }
                   >
                     <Text
-                      numberOfLines={1}
+                      numberOfLines={2}
                       style={
                         Array [
                           Object {
@@ -1230,7 +1230,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     }
                   >
                     <Text
-                      numberOfLines={1}
+                      numberOfLines={2}
                       style={
                         Array [
                           Object {
@@ -1454,7 +1454,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     }
                   >
                     <Text
-                      numberOfLines={1}
+                      numberOfLines={2}
                       style={
                         Array [
                           Object {

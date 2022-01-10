@@ -352,10 +352,11 @@ Array [
                 }
               >
                 <div
-                  className="css-text-901oao css-textOneLine-vcwn7f"
+                  className="css-text-901oao css-textMultiLine-cens5h"
                   dir="auto"
                   style={
                     Object {
+                      "WebkitLineClamp": 2,
                       "color": "rgba(21,21,21,1.00)",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": "12px",
@@ -535,10 +536,11 @@ Array [
                 }
               >
                 <div
-                  className="css-text-901oao css-textOneLine-vcwn7f"
+                  className="css-text-901oao css-textMultiLine-cens5h"
                   dir="auto"
                   style={
                     Object {
+                      "WebkitLineClamp": 2,
                       "color": "rgba(21,21,21,1.00)",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": "12px",
@@ -718,10 +720,11 @@ Array [
                 }
               >
                 <div
-                  className="css-text-901oao css-textOneLine-vcwn7f"
+                  className="css-text-901oao css-textMultiLine-cens5h"
                   dir="auto"
                   style={
                     Object {
+                      "WebkitLineClamp": 2,
                       "color": "rgba(21,21,21,1.00)",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": "12px",
