@@ -42,6 +42,7 @@ commands:
             echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
             echo 'nvm install 12.22.8 &> /dev/null' >> $BASH_ENV
             echo 'nvm alias default 12.22.8 &> /dev/null' >> $BASH_ENV
+            source $BASH_ENV
 
   install_node_modules:
     description: Install Node Dependencies
