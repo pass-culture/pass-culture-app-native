@@ -1,6 +1,5 @@
-import React, { useState } from 'react'
-import { Platform } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import React from 'react'
+import styled from 'styled-components/native'
 
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -9,36 +8,11 @@ import { useOffer } from '../api/useOffer'
 import { OfferSeeMore } from '../atoms/OfferSeeMore'
 import { getContentFromOffer } from '../pages/OfferDescription'
 
+import { useShouldDisplaySeeMoreButton } from './useShouldDisplaySeeMoreButton'
+
 interface Props {
   id: number
   description?: string
-}
-
-export const useShouldDisplaySeeMoreButton = (
-  maxTheoricalDisplayedDescriptionLines: number,
-  contentOfferDescription: ReturnType<typeof getContentFromOffer>
-): {
-  shouldDisplaySeeMoreButton: boolean
-  maxDisplayedDescriptionLines?: number
-  setLinesDisplayed: (linesDisplayed: number) => void
-} => {
-  const theme = useTheme()
-  const shouldTruncateDescription = !(Platform.OS === 'web' && theme.isDesktopViewport === true)
-  const maxDisplayedDescriptionLines = shouldTruncateDescription
-    ? maxTheoricalDisplayedDescriptionLines
-    : undefined
-  const [isLongerThanMaximumLines, setIsLongerThanMaximumLines] =
-    useState(shouldTruncateDescription)
-  const setLinesDisplayed = (linesDisplayed: number): void => {
-    if (typeof maxDisplayedDescriptionLines === 'undefined') return
-
-    setIsLongerThanMaximumLines(linesDisplayed >= maxDisplayedDescriptionLines)
-  }
-  const shouldDisplaySeeMoreButton = shouldTruncateDescription
-    ? contentOfferDescription.length > 0 && isLongerThanMaximumLines
-    : contentOfferDescription.filter(({ key }) => key !== 'description').length > 0
-
-  return { shouldDisplaySeeMoreButton, maxDisplayedDescriptionLines, setLinesDisplayed }
 }
 
 export const OfferPartialDescription: React.FC<Props> = ({ id, description = '' }) => {
