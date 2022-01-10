@@ -11,6 +11,7 @@ interface OrSeparatorProps extends ViewProps {
 
 export const OrSeparator: React.FC<OrSeparatorProps> = ({ lineColor, ...props }) => {
   return (
+    // @ts-ignore TODO: fix when https://github.com/necolas/react-native-web/issues/2189#issuecomment-1008886405 is resolved
     <Container {...props}>
       <Line color={lineColor} />
       <TextContainer>
@@ -29,12 +30,12 @@ const Container = styled.View({
 })
 
 const Line = styled.View.attrs<{ color?: ColorsEnum }>((props) => props)<{ color?: ColorsEnum }>(
-  ({ color }) => ({
+  ({ color, theme }) => ({
     position: 'absolute',
     left: 0,
     right: 0,
     height: 1,
-    backgroundColor: color ?? ColorsEnum.GREY_MEDIUM,
+    backgroundColor: color ?? theme.colors.greyMedium,
   })
 )
 
