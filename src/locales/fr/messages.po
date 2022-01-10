@@ -931,8 +931,8 @@ msgid "Erreur"
 msgstr "Erreur"
 
 #: src/features/auth/login/Login.tsx
-msgid "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
-msgstr "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
+msgid "Erreur réseau. Tu peux réessayer une fois la connexion réétablie"
+msgstr "Erreur réseau. Tu peux réessayer une fois la connexion réétablie"
 
 #: src/features/profile/pages/ConfirmDeleteProfile.tsx
 msgid "Es-tu sûr de vouloir supprimer ton compte ?"
@@ -1135,8 +1135,8 @@ msgid "Il y a déjà une demande de crédit pass Culture en cours sur ton compte
 msgstr "Il y a déjà une demande de crédit pass Culture en cours sur ton compte."
 
 #: src/features/auth/login/Login.tsx
-msgid "Il y a eu un problème. Tu peux réessayer plus tard."
-msgstr "Il y a eu un problème. Tu peux réessayer plus tard."
+msgid "Il y a eu un problème. Tu peux réessayer plus tard"
+msgstr "Il y a eu un problème. Tu peux réessayer plus tard"
 
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx
 msgid "Importer le lien"
@@ -1620,8 +1620,8 @@ msgid "Nombre de place"
 msgstr "Nombre de place"
 
 #: src/features/auth/login/Login.tsx
-msgid "Nombre de tentatives dépassé. Réessaye dans 1 minute."
-msgstr "Nombre de tentatives dépassé. Réessaye dans 1 minute."
+msgid "Nombre de tentatives dépassé. Réessaye dans 1 minute"
+msgstr "Nombre de tentatives dépassé. Réessaye dans 1 minute"
 
 #: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
 msgid "Nos conseils :"

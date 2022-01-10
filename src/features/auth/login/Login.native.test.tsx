@@ -226,7 +226,7 @@ describe('<Login/>', () => {
     await superFlushWithAct()
 
     await waitForExpect(() => {
-      expect(renderAPI.getByText('E-mail ou mot de passe incorrect.')).toBeTruthy()
+      expect(renderAPI.getByText('E-mail ou mot de passe incorrect')).toBeTruthy()
       const errorSnapshot = renderAPI.toJSON()
       expect(notErrorSnapshot).toMatchDiffSnapshot(errorSnapshot)
     })
@@ -247,7 +247,7 @@ describe('<Login/>', () => {
 
     await waitForExpect(() => {
       expect(
-        renderAPI.queryByText('Erreur réseau. Tu peux réessayer une fois la connexion réétablie.')
+        renderAPI.queryByText('Erreur réseau. Tu peux réessayer une fois la connexion réétablie')
       ).toBeTruthy()
     })
     const errorSnapshot = renderAPI.toJSON()
@@ -270,7 +270,7 @@ describe('<Login/>', () => {
 
     await waitForExpect(() => {
       expect(
-        renderAPI.queryByText('Nombre de tentatives dépassé. Réessaye dans 1 minute.')
+        renderAPI.queryByText('Nombre de tentatives dépassé. Réessaye dans 1 minute')
       ).toBeTruthy()
     })
     const errorSnapshot = renderAPI.toJSON()
