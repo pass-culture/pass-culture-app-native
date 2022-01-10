@@ -4,6 +4,7 @@ import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Platform, NativeScrollEvent, StyleSheet, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
+import { useTheme } from 'styled-components/native'
 
 import { useAuthContext, useLogoutRoutine } from 'features/auth/AuthContext'
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
@@ -31,7 +32,7 @@ import { Lock } from 'ui/svg/icons/Lock'
 import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
-import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 import Package from '../../../../package.json'
@@ -41,6 +42,7 @@ import { ProfileContainer } from '../components/reusables'
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 
 export const Profile: React.FC = () => {
+  const { isMobileViewport } = useTheme()
   const { dispatch: favoritesDispatch } = useFavoritesState()
   const { navigate } = useNavigation<UseNavigationType>()
   const { data: user } = useUserProfileInfo()
@@ -147,14 +149,17 @@ export const Profile: React.FC = () => {
             iconSize={SECTION_ROW_ICON_SIZE}
             style={styles.row}
             cta={
-              <FilterSwitch
-                active={isGeolocSwitchActive}
-                accessibilityLabel={t`Interrupteur géolocalisation`}
-                toggle={() => {
-                  switchGeolocation()
-                  debouncedLogLocationToggle(!isGeolocSwitchActive)
-                }}
-              />
+              <FilterSwitchLabelContainer>
+                {!isMobileViewport && <StyledCaption>{t`Partager ma position`}</StyledCaption>}
+                <FilterSwitch
+                  active={isGeolocSwitchActive}
+                  accessibilityLabel={t`Interrupteur géolocalisation`}
+                  toggle={() => {
+                    switchGeolocation()
+                    debouncedLogLocationToggle(!isGeolocSwitchActive)
+                  }}
+                />
+              </FilterSwitchLabelContainer>
             }
           />
           {!!positionError && (
@@ -232,7 +237,7 @@ export const Profile: React.FC = () => {
         )}
         <ProfileSection>
           <Spacer.Column numberOfSpaces={4} />
-          <Version>{t`Version` + `\u00a0${Package.version}`}</Version>
+          <StyledCaption>{t`Version` + `\u00a0${Package.version}`}</StyledCaption>
           <Spacer.Column numberOfSpaces={4} />
           <LogoMinistereContainer>
             <LogoMinistere />
@@ -284,9 +289,11 @@ const NetworkRowContainer = styled.View({
   justifyContent: 'space-between',
 })
 
-const Version = styled.Text({
-  fontFamily: 'Montserrat-Medium',
-  fontSize: 12,
-  lineHeight: '16px',
-  color: ColorsEnum.GREY_DARK,
+const FilterSwitchLabelContainer = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
 })
+
+const StyledCaption = styled(Typo.Caption)(({ theme, color }) => ({
+  color: color ?? theme.colors.greyDark,
+}))

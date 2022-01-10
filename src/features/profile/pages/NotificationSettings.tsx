@@ -177,27 +177,25 @@ export function NotificationSettings() {
         </Line>
         <Separator />
         {Platform.OS === 'ios' && (
-          <React.Fragment>
-            <Line>
-              <SettingExplanation>
-                {t`Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil.`}
-              </SettingExplanation>
-              <Spacer.Column numberOfSpaces={4} />
-              <SectionRow
-                type="clickable"
-                title={t`Autoriser les notifications marketing`}
-                cta={
-                  <FilterSwitch
-                    active={pushSwitchEnabled}
-                    accessibilityLabel={t`Interrupteur push notifications`}
-                    toggle={togglePush}
-                    disabled={!isLoggedIn}
-                  />
-                }
-              />
-              <Spacer.Column numberOfSpaces={3} />
-            </Line>
-          </React.Fragment>
+          <Line>
+            <SettingExplanation>
+              {t`Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil.`}
+            </SettingExplanation>
+            <Spacer.Column numberOfSpaces={4} />
+            <SectionRow
+              type="clickable"
+              title={t`Autoriser les notifications marketing`}
+              cta={
+                <FilterSwitch
+                  active={pushSwitchEnabled}
+                  accessibilityLabel={t`Interrupteur push notifications`}
+                  toggle={togglePush}
+                  disabled={!isLoggedIn}
+                />
+              }
+            />
+            <Spacer.Column numberOfSpaces={3} />
+          </Line>
         )}
         <Spacer.Flex flex={1} />
         {!!isLoggedIn && (
