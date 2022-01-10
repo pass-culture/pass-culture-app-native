@@ -131,14 +131,6 @@ exports[`<LandscapePositionPage /> should match snapshot with default message 1`
       }
     />
     <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "height": "24px",
-        }
-      }
-    />
-    <div
       className="css-text-901oao"
       dir="auto"
       style={

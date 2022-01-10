@@ -126,16 +126,6 @@ exports[`<LandscapePositionPage /> should match snapshot with default message 1`
         ]
       }
     />
-    <View
-      numberOfSpaces={6}
-      style={
-        Array [
-          Object {
-            "height": 24,
-          },
-        ]
-      }
-    />
     <Text
       style={
         Array [
