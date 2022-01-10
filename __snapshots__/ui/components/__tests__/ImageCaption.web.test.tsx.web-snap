@@ -14,7 +14,7 @@ Object {
           style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
         >
           <div
-            class="css-text-901oao css-textOneLine-vcwn7f"
+            class="css-text-901oao css-textMultiLine-cens5h"
             data-testid="categoryImageCaption"
             dir="auto"
             style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
@@ -52,7 +52,7 @@ Object {
         style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
       >
         <div
-          class="css-text-901oao css-textOneLine-vcwn7f"
+          class="css-text-901oao css-textMultiLine-cens5h"
           data-testid="categoryImageCaption"
           dir="auto"
           style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"

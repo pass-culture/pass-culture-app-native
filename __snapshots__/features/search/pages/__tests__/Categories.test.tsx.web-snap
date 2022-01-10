@@ -1490,10 +1490,11 @@ exports[`Categories component should render correctly 1`] = `
         </div>
       </div>
       <div
-        className="css-text-901oao css-textOneLine-vcwn7f"
+        className="css-text-901oao css-textMultiLine-cens5h"
         dir="auto"
         style={
           Object {
+            "WebkitLineClamp": 1,
             "color": "rgba(255,255,255,1.00)",
             "fontFamily": "Montserrat-Regular",
             "fontSize": "15px",

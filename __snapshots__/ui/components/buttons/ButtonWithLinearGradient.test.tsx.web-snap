@@ -66,10 +66,11 @@ exports[`< ButtonWithLinearGradient /> should render disabled 1`] = `
     }
   >
     <div
-      className="css-text-901oao css-textOneLine-vcwn7f"
+      className="css-text-901oao css-textMultiLine-cens5h"
       dir="auto"
       style={
         Object {
+          "WebkitLineClamp": 1,
           "color": "rgba(255,255,255,1.00)",
           "fontFamily": "Montserrat-Bold",
           "fontSize": "15px",
@@ -155,10 +156,11 @@ exports[`< ButtonWithLinearGradient /> should render not disabled 1`] = `
     }
   >
     <div
-      className="css-text-901oao css-textOneLine-vcwn7f"
+      className="css-text-901oao css-textMultiLine-cens5h"
       dir="auto"
       style={
         Object {
+          "WebkitLineClamp": 1,
           "color": "rgba(255,255,255,1.00)",
           "fontFamily": "Montserrat-Bold",
           "fontSize": "15px",

@@ -246,7 +246,7 @@ Object {
           tabindex="0"
         >
           <div
-            class="css-text-901oao css-textOneLine-vcwn7f"
+            class="css-text-901oao css-textMultiLine-cens5h"
             dir="auto"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
           >
@@ -498,7 +498,7 @@ Object {
         tabindex="0"
       >
         <div
-          class="css-text-901oao css-textOneLine-vcwn7f"
+          class="css-text-901oao css-textMultiLine-cens5h"
           dir="auto"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
         >

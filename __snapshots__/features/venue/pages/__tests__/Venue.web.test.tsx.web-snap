@@ -203,7 +203,7 @@ Object {
                   </div>
                 </div>
                 <div
-                  class="css-text-901oao css-textOneLine-vcwn7f"
+                  class="css-text-901oao css-textMultiLine-cens5h"
                   dir="auto"
                   style="color: rgb(21, 21, 21); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-transform: capitalize;"
                 >
@@ -322,7 +322,6 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="accordionBody"
-                id="animatedComponent"
                 style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
               >
                 <div
@@ -483,7 +482,7 @@ Object {
                               style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                             >
                               <div
-                                class="css-text-901oao css-textOneLine-vcwn7f"
+                                class="css-text-901oao css-textMultiLine-cens5h"
                                 data-testid="categoryImageCaption"
                                 dir="auto"
                                 style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
@@ -505,7 +504,7 @@ Object {
                             Titane - VF
                           </div>
                           <div
-                            class="css-text-901oao css-textOneLine-vcwn7f"
+                            class="css-text-901oao css-textMultiLine-cens5h"
                             dir="auto"
                             style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                           >
@@ -550,7 +549,7 @@ Object {
                               style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                             >
                               <div
-                                class="css-text-901oao css-textOneLine-vcwn7f"
+                                class="css-text-901oao css-textMultiLine-cens5h"
                                 data-testid="categoryImageCaption"
                                 dir="auto"
                                 style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
@@ -572,7 +571,7 @@ Object {
                             Bac Nord - VF
                           </div>
                           <div
-                            class="css-text-901oao css-textOneLine-vcwn7f"
+                            class="css-text-901oao css-textMultiLine-cens5h"
                             dir="auto"
                             style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                           >
@@ -617,7 +616,7 @@ Object {
                               style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                             >
                               <div
-                                class="css-text-901oao css-textOneLine-vcwn7f"
+                                class="css-text-901oao css-textMultiLine-cens5h"
                                 data-testid="categoryImageCaption"
                                 dir="auto"
                                 style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
@@ -639,7 +638,7 @@ Object {
                             Black Widow - VF
                           </div>
                           <div
-                            class="css-text-901oao css-textOneLine-vcwn7f"
+                            class="css-text-901oao css-textMultiLine-cens5h"
                             dir="auto"
                             style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                           >
@@ -694,7 +693,7 @@ Object {
                   style="align-items: center; flex-direction: row; position: absolute;"
                 >
                   <div
-                    class="css-text-901oao css-textOneLine-vcwn7f"
+                    class="css-text-901oao css-textMultiLine-cens5h"
                     dir="auto"
                     style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 20px 20px 20px 20px;"
                   >
@@ -782,7 +781,7 @@ Object {
                     </div>
                   </div>
                   <div
-                    class="css-text-901oao css-textOneLine-vcwn7f"
+                    class="css-text-901oao css-textMultiLine-cens5h"
                     dir="auto"
                     style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 12px; max-width: 100%;"
                   >
@@ -814,7 +813,6 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="accordionArrow"
-                id="animatedComponent"
                 style="transform: rotateZ(1.5707963267948966rad);"
               >
                 <div
@@ -832,7 +830,6 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="accordionBody"
-              id="animatedComponent"
               style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
             >
               <div
@@ -895,7 +892,6 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="accordionArrow"
-                id="animatedComponent"
                 style="transform: rotateZ(1.5707963267948966rad);"
               >
                 <div
@@ -913,7 +909,6 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="accordionBody"
-              id="animatedComponent"
               style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
             >
               <div
@@ -1241,7 +1236,6 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="accordionArrow"
-                id="animatedComponent"
                 style="transform: rotateZ(1.5707963267948966rad);"
               >
                 <div
@@ -1259,7 +1253,6 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="accordionBody"
-              id="animatedComponent"
               style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
             >
               <div
@@ -1302,7 +1295,6 @@ Object {
         </div>
         <div
           class="css-view-1dbjc4n"
-          id="animatedComponent"
           style="background-color: rgba(255, 255, 255, 0); height: 80px; position: absolute; top: 0px; width: 100%;"
         >
           <div
@@ -1331,7 +1323,6 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="headerIconRoundContainer"
-                id="animatedComponent"
                 style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
               >
                 <div
@@ -1341,7 +1332,6 @@ Object {
                   <div
                     class="css-view-1dbjc4n"
                     data-testid="initial-icon-container"
-                    id="animatedComponent"
                     style="opacity: 1; position: absolute;"
                   >
                     <div
@@ -1359,7 +1349,6 @@ Object {
                   <div
                     class="css-view-1dbjc4n"
                     data-testid="final-icon-container"
-                    id="animatedComponent"
                     style="opacity: 0; position: absolute;"
                   >
                     <div
@@ -1382,10 +1371,9 @@ Object {
               style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
             />
             <div
-              class="css-text-901oao css-textOneLine-vcwn7f"
+              class="css-text-901oao css-textMultiLine-cens5h"
               data-testid="venueHeaderName"
               dir="auto"
-              id="animatedComponent"
               style="flex-shrink: 1; opacity: 0; text-align: center;"
             >
               <span
@@ -1409,7 +1397,6 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="headerIconRoundContainer"
-                id="animatedComponent"
                 style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
               >
                 <div
@@ -1419,7 +1406,6 @@ Object {
                   <div
                     class="css-view-1dbjc4n"
                     data-testid="initial-icon-container"
-                    id="animatedComponent"
                     style="opacity: 1; position: absolute;"
                   >
                     <div
@@ -1437,7 +1423,6 @@ Object {
                   <div
                     class="css-view-1dbjc4n"
                     data-testid="final-icon-container"
-                    id="animatedComponent"
                     style="opacity: 0; position: absolute;"
                   >
                     <div
@@ -1667,7 +1652,7 @@ Object {
                 </div>
               </div>
               <div
-                class="css-text-901oao css-textOneLine-vcwn7f"
+                class="css-text-901oao css-textMultiLine-cens5h"
                 dir="auto"
                 style="color: rgb(21, 21, 21); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-transform: capitalize;"
               >
@@ -1786,7 +1771,6 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="accordionBody"
-              id="animatedComponent"
               style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
             >
               <div
@@ -1947,7 +1931,7 @@ Object {
                             style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                           >
                             <div
-                              class="css-text-901oao css-textOneLine-vcwn7f"
+                              class="css-text-901oao css-textMultiLine-cens5h"
                               data-testid="categoryImageCaption"
                               dir="auto"
                               style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
@@ -1969,7 +1953,7 @@ Object {
                           Titane - VF
                         </div>
                         <div
-                          class="css-text-901oao css-textOneLine-vcwn7f"
+                          class="css-text-901oao css-textMultiLine-cens5h"
                           dir="auto"
                           style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
@@ -2014,7 +1998,7 @@ Object {
                             style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                           >
                             <div
-                              class="css-text-901oao css-textOneLine-vcwn7f"
+                              class="css-text-901oao css-textMultiLine-cens5h"
                               data-testid="categoryImageCaption"
                               dir="auto"
                               style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
@@ -2036,7 +2020,7 @@ Object {
                           Bac Nord - VF
                         </div>
                         <div
-                          class="css-text-901oao css-textOneLine-vcwn7f"
+                          class="css-text-901oao css-textMultiLine-cens5h"
                           dir="auto"
                           style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
@@ -2081,7 +2065,7 @@ Object {
                             style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                           >
                             <div
-                              class="css-text-901oao css-textOneLine-vcwn7f"
+                              class="css-text-901oao css-textMultiLine-cens5h"
                               data-testid="categoryImageCaption"
                               dir="auto"
                               style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
@@ -2103,7 +2087,7 @@ Object {
                           Black Widow - VF
                         </div>
                         <div
-                          class="css-text-901oao css-textOneLine-vcwn7f"
+                          class="css-text-901oao css-textMultiLine-cens5h"
                           dir="auto"
                           style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
@@ -2158,7 +2142,7 @@ Object {
                 style="align-items: center; flex-direction: row; position: absolute;"
               >
                 <div
-                  class="css-text-901oao css-textOneLine-vcwn7f"
+                  class="css-text-901oao css-textMultiLine-cens5h"
                   dir="auto"
                   style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 20px 20px 20px 20px;"
                 >
@@ -2246,7 +2230,7 @@ Object {
                   </div>
                 </div>
                 <div
-                  class="css-text-901oao css-textOneLine-vcwn7f"
+                  class="css-text-901oao css-textMultiLine-cens5h"
                   dir="auto"
                   style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 12px; max-width: 100%;"
                 >
@@ -2278,7 +2262,6 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="accordionArrow"
-              id="animatedComponent"
               style="transform: rotateZ(1.5707963267948966rad);"
             >
               <div
@@ -2296,7 +2279,6 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="accordionBody"
-            id="animatedComponent"
             style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
           >
             <div
@@ -2359,7 +2341,6 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="accordionArrow"
-              id="animatedComponent"
               style="transform: rotateZ(1.5707963267948966rad);"
             >
               <div
@@ -2377,7 +2358,6 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="accordionBody"
-            id="animatedComponent"
             style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
           >
             <div
@@ -2705,7 +2685,6 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="accordionArrow"
-              id="animatedComponent"
               style="transform: rotateZ(1.5707963267948966rad);"
             >
               <div
@@ -2723,7 +2702,6 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="accordionBody"
-            id="animatedComponent"
             style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
           >
             <div
@@ -2766,7 +2744,6 @@ Object {
       </div>
       <div
         class="css-view-1dbjc4n"
-        id="animatedComponent"
         style="background-color: rgba(255, 255, 255, 0); height: 80px; position: absolute; top: 0px; width: 100%;"
       >
         <div
@@ -2795,7 +2772,6 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="headerIconRoundContainer"
-              id="animatedComponent"
               style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
             >
               <div
@@ -2805,7 +2781,6 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="initial-icon-container"
-                  id="animatedComponent"
                   style="opacity: 1; position: absolute;"
                 >
                   <div
@@ -2823,7 +2798,6 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="final-icon-container"
-                  id="animatedComponent"
                   style="opacity: 0; position: absolute;"
                 >
                   <div
@@ -2846,10 +2820,9 @@ Object {
             style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           />
           <div
-            class="css-text-901oao css-textOneLine-vcwn7f"
+            class="css-text-901oao css-textMultiLine-cens5h"
             data-testid="venueHeaderName"
             dir="auto"
-            id="animatedComponent"
             style="flex-shrink: 1; opacity: 0; text-align: center;"
           >
             <span
@@ -2873,7 +2846,6 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="headerIconRoundContainer"
-              id="animatedComponent"
               style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
             >
               <div
@@ -2883,7 +2855,6 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="initial-icon-container"
-                  id="animatedComponent"
                   style="opacity: 1; position: absolute;"
                 >
                   <div
@@ -2901,7 +2872,6 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="final-icon-container"
-                  id="animatedComponent"
                   style="opacity: 0; position: absolute;"
                 >
                   <div

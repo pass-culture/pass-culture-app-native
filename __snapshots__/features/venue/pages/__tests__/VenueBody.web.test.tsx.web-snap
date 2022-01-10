@@ -199,7 +199,7 @@ Object {
                 </div>
               </div>
               <div
-                class="css-text-901oao css-textOneLine-vcwn7f"
+                class="css-text-901oao css-textMultiLine-cens5h"
                 dir="auto"
                 style="color: rgb(21, 21, 21); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-transform: capitalize;"
               >
@@ -318,7 +318,6 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="accordionBody"
-              id="animatedComponent"
               style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
             >
               <div
@@ -479,7 +478,7 @@ Object {
                             style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                           >
                             <div
-                              class="css-text-901oao css-textOneLine-vcwn7f"
+                              class="css-text-901oao css-textMultiLine-cens5h"
                               data-testid="categoryImageCaption"
                               dir="auto"
                               style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
@@ -501,7 +500,7 @@ Object {
                           Titane - VF
                         </div>
                         <div
-                          class="css-text-901oao css-textOneLine-vcwn7f"
+                          class="css-text-901oao css-textMultiLine-cens5h"
                           dir="auto"
                           style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
@@ -546,7 +545,7 @@ Object {
                             style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                           >
                             <div
-                              class="css-text-901oao css-textOneLine-vcwn7f"
+                              class="css-text-901oao css-textMultiLine-cens5h"
                               data-testid="categoryImageCaption"
                               dir="auto"
                               style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
@@ -568,7 +567,7 @@ Object {
                           Bac Nord - VF
                         </div>
                         <div
-                          class="css-text-901oao css-textOneLine-vcwn7f"
+                          class="css-text-901oao css-textMultiLine-cens5h"
                           dir="auto"
                           style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
@@ -613,7 +612,7 @@ Object {
                             style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                           >
                             <div
-                              class="css-text-901oao css-textOneLine-vcwn7f"
+                              class="css-text-901oao css-textMultiLine-cens5h"
                               data-testid="categoryImageCaption"
                               dir="auto"
                               style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
@@ -635,7 +634,7 @@ Object {
                           Black Widow - VF
                         </div>
                         <div
-                          class="css-text-901oao css-textOneLine-vcwn7f"
+                          class="css-text-901oao css-textMultiLine-cens5h"
                           dir="auto"
                           style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
@@ -690,7 +689,7 @@ Object {
                 style="align-items: center; flex-direction: row; position: absolute;"
               >
                 <div
-                  class="css-text-901oao css-textOneLine-vcwn7f"
+                  class="css-text-901oao css-textMultiLine-cens5h"
                   dir="auto"
                   style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 20px 20px 20px 20px;"
                 >
@@ -778,7 +777,7 @@ Object {
                   </div>
                 </div>
                 <div
-                  class="css-text-901oao css-textOneLine-vcwn7f"
+                  class="css-text-901oao css-textMultiLine-cens5h"
                   dir="auto"
                   style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 12px; max-width: 100%;"
                 >
@@ -810,7 +809,6 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="accordionArrow"
-              id="animatedComponent"
               style="transform: rotateZ(1.5707963267948966rad);"
             >
               <div
@@ -828,7 +826,6 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="accordionBody"
-            id="animatedComponent"
             style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
           >
             <div
@@ -891,7 +888,6 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="accordionArrow"
-              id="animatedComponent"
               style="transform: rotateZ(1.5707963267948966rad);"
             >
               <div
@@ -909,7 +905,6 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="accordionBody"
-            id="animatedComponent"
             style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
           >
             <div
@@ -1237,7 +1232,6 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="accordionArrow"
-              id="animatedComponent"
               style="transform: rotateZ(1.5707963267948966rad);"
             >
               <div
@@ -1255,7 +1249,6 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="accordionBody"
-            id="animatedComponent"
             style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
           >
             <div
@@ -1493,7 +1486,7 @@ Object {
               </div>
             </div>
             <div
-              class="css-text-901oao css-textOneLine-vcwn7f"
+              class="css-text-901oao css-textMultiLine-cens5h"
               dir="auto"
               style="color: rgb(21, 21, 21); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-transform: capitalize;"
             >
@@ -1612,7 +1605,6 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="accordionBody"
-            id="animatedComponent"
             style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
           >
             <div
@@ -1773,7 +1765,7 @@ Object {
                           style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                         >
                           <div
-                            class="css-text-901oao css-textOneLine-vcwn7f"
+                            class="css-text-901oao css-textMultiLine-cens5h"
                             data-testid="categoryImageCaption"
                             dir="auto"
                             style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
@@ -1795,7 +1787,7 @@ Object {
                         Titane - VF
                       </div>
                       <div
-                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        class="css-text-901oao css-textMultiLine-cens5h"
                         dir="auto"
                         style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
@@ -1840,7 +1832,7 @@ Object {
                           style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                         >
                           <div
-                            class="css-text-901oao css-textOneLine-vcwn7f"
+                            class="css-text-901oao css-textMultiLine-cens5h"
                             data-testid="categoryImageCaption"
                             dir="auto"
                             style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
@@ -1862,7 +1854,7 @@ Object {
                         Bac Nord - VF
                       </div>
                       <div
-                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        class="css-text-901oao css-textMultiLine-cens5h"
                         dir="auto"
                         style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
@@ -1907,7 +1899,7 @@ Object {
                           style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                         >
                           <div
-                            class="css-text-901oao css-textOneLine-vcwn7f"
+                            class="css-text-901oao css-textMultiLine-cens5h"
                             data-testid="categoryImageCaption"
                             dir="auto"
                             style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
@@ -1929,7 +1921,7 @@ Object {
                         Black Widow - VF
                       </div>
                       <div
-                        class="css-text-901oao css-textOneLine-vcwn7f"
+                        class="css-text-901oao css-textMultiLine-cens5h"
                         dir="auto"
                         style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
@@ -1984,7 +1976,7 @@ Object {
               style="align-items: center; flex-direction: row; position: absolute;"
             >
               <div
-                class="css-text-901oao css-textOneLine-vcwn7f"
+                class="css-text-901oao css-textMultiLine-cens5h"
                 dir="auto"
                 style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 20px 20px 20px 20px;"
               >
@@ -2072,7 +2064,7 @@ Object {
                 </div>
               </div>
               <div
-                class="css-text-901oao css-textOneLine-vcwn7f"
+                class="css-text-901oao css-textMultiLine-cens5h"
                 dir="auto"
                 style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 12px; max-width: 100%;"
               >
@@ -2104,7 +2096,6 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="accordionArrow"
-            id="animatedComponent"
             style="transform: rotateZ(1.5707963267948966rad);"
           >
             <div
@@ -2122,7 +2113,6 @@ Object {
         <div
           class="css-view-1dbjc4n"
           data-testid="accordionBody"
-          id="animatedComponent"
           style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
         >
           <div
@@ -2185,7 +2175,6 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="accordionArrow"
-            id="animatedComponent"
             style="transform: rotateZ(1.5707963267948966rad);"
           >
             <div
@@ -2203,7 +2192,6 @@ Object {
         <div
           class="css-view-1dbjc4n"
           data-testid="accordionBody"
-          id="animatedComponent"
           style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
         >
           <div
@@ -2531,7 +2519,6 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="accordionArrow"
-            id="animatedComponent"
             style="transform: rotateZ(1.5707963267948966rad);"
           >
             <div
@@ -2549,7 +2536,6 @@ Object {
         <div
           class="css-view-1dbjc4n"
           data-testid="accordionBody"
-          id="animatedComponent"
           style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
         >
           <div

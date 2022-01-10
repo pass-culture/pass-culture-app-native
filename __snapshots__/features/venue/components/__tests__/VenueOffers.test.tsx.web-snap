@@ -325,11 +325,12 @@ Array [
                     }
                   >
                     <div
-                      className="css-text-901oao css-textOneLine-vcwn7f"
+                      className="css-text-901oao css-textMultiLine-cens5h"
                       data-testid="categoryImageCaption"
                       dir="auto"
                       style={
                         Object {
+                          "WebkitLineClamp": 1,
                           "color": "rgba(255,255,255,1.00)",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": "12px",
@@ -367,10 +368,11 @@ Array [
                   Titane - VF
                 </div>
                 <div
-                  className="css-text-901oao css-textOneLine-vcwn7f"
+                  className="css-text-901oao css-textMultiLine-cens5h"
                   dir="auto"
                   style={
                     Object {
+                      "WebkitLineClamp": 1,
                       "color": "rgba(98,98,98,1.00)",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": "12px",
@@ -509,11 +511,12 @@ Array [
                     }
                   >
                     <div
-                      className="css-text-901oao css-textOneLine-vcwn7f"
+                      className="css-text-901oao css-textMultiLine-cens5h"
                       data-testid="categoryImageCaption"
                       dir="auto"
                       style={
                         Object {
+                          "WebkitLineClamp": 1,
                           "color": "rgba(255,255,255,1.00)",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": "12px",
@@ -551,10 +554,11 @@ Array [
                   Bac Nord - VF
                 </div>
                 <div
-                  className="css-text-901oao css-textOneLine-vcwn7f"
+                  className="css-text-901oao css-textMultiLine-cens5h"
                   dir="auto"
                   style={
                     Object {
+                      "WebkitLineClamp": 1,
                       "color": "rgba(98,98,98,1.00)",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": "12px",
@@ -693,11 +697,12 @@ Array [
                     }
                   >
                     <div
-                      className="css-text-901oao css-textOneLine-vcwn7f"
+                      className="css-text-901oao css-textMultiLine-cens5h"
                       data-testid="categoryImageCaption"
                       dir="auto"
                       style={
                         Object {
+                          "WebkitLineClamp": 1,
                           "color": "rgba(255,255,255,1.00)",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": "12px",
@@ -735,10 +740,11 @@ Array [
                   Black Widow - VF
                 </div>
                 <div
-                  className="css-text-901oao css-textOneLine-vcwn7f"
+                  className="css-text-901oao css-textMultiLine-cens5h"
                   dir="auto"
                   style={
                     Object {
+                      "WebkitLineClamp": 1,
                       "color": "rgba(98,98,98,1.00)",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": "12px",
@@ -858,10 +864,11 @@ Array [
         }
       >
         <div
-          className="css-text-901oao css-textOneLine-vcwn7f"
+          className="css-text-901oao css-textMultiLine-cens5h"
           dir="auto"
           style={
             Object {
+              "WebkitLineClamp": 1,
               "color": "rgba(255,255,255,1.00)",
               "fontFamily": "Montserrat-Bold",
               "fontSize": "15px",

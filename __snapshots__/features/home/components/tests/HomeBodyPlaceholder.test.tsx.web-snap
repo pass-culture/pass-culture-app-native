@@ -54,7 +54,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       >
         <div
           className="css-view-1dbjc4n"
-          id="animatedComponent"
           style={
             Object {
               "WebkitTransform": "translateX(-250px)",
@@ -155,7 +154,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-240px)",
@@ -200,7 +198,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-192.00000000000003px)",
@@ -245,7 +242,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-72px)",
@@ -315,7 +311,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-240px)",
@@ -360,7 +355,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-192.00000000000003px)",
@@ -405,7 +399,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-72px)",
@@ -475,7 +468,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-240px)",
@@ -520,7 +512,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-192.00000000000003px)",
@@ -565,7 +556,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-72px)",
@@ -635,7 +625,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-240px)",
@@ -680,7 +669,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-192.00000000000003px)",
@@ -725,7 +713,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-72px)",
@@ -816,7 +803,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       >
         <div
           className="css-view-1dbjc4n"
-          id="animatedComponent"
           style={
             Object {
               "WebkitTransform": "translateX(-250px)",
@@ -917,7 +903,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-180px)",
@@ -962,7 +947,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-144px)",
@@ -1007,7 +991,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-53.99999999999999px)",
@@ -1077,7 +1060,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-180px)",
@@ -1122,7 +1104,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-144px)",
@@ -1167,7 +1148,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-53.99999999999999px)",
@@ -1237,7 +1217,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-180px)",
@@ -1282,7 +1261,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-144px)",
@@ -1327,7 +1305,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-53.99999999999999px)",
@@ -1397,7 +1374,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-180px)",
@@ -1442,7 +1418,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-144px)",
@@ -1487,7 +1462,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-53.99999999999999px)",
@@ -1557,7 +1531,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-180px)",
@@ -1602,7 +1575,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-144px)",
@@ -1647,7 +1619,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-53.99999999999999px)",
@@ -1728,7 +1699,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
     >
       <div
         className="css-view-1dbjc4n"
-        id="animatedComponent"
         style={
           Object {
             "WebkitTransform": "translateX(-1140px)",
@@ -1806,7 +1776,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       >
         <div
           className="css-view-1dbjc4n"
-          id="animatedComponent"
           style={
             Object {
               "WebkitTransform": "translateX(-250px)",
@@ -1907,7 +1876,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-180px)",
@@ -1952,7 +1920,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-144px)",
@@ -1997,7 +1964,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-53.99999999999999px)",
@@ -2067,7 +2033,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-180px)",
@@ -2112,7 +2077,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-144px)",
@@ -2157,7 +2121,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-53.99999999999999px)",
@@ -2227,7 +2190,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-180px)",
@@ -2272,7 +2234,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-144px)",
@@ -2317,7 +2278,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-53.99999999999999px)",
@@ -2387,7 +2347,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-180px)",
@@ -2432,7 +2391,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-144px)",
@@ -2477,7 +2435,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-53.99999999999999px)",
@@ -2547,7 +2504,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-180px)",
@@ -2592,7 +2548,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-144px)",
@@ -2637,7 +2592,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-53.99999999999999px)",
@@ -2728,7 +2682,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
       >
         <div
           className="css-view-1dbjc4n"
-          id="animatedComponent"
           style={
             Object {
               "WebkitTransform": "translateX(-250px)",
@@ -2829,7 +2782,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-240px)",
@@ -2874,7 +2826,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-192.00000000000003px)",
@@ -2919,7 +2870,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-72px)",
@@ -2989,7 +2939,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-240px)",
@@ -3034,7 +2983,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-192.00000000000003px)",
@@ -3079,7 +3027,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-72px)",
@@ -3149,7 +3096,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-240px)",
@@ -3194,7 +3140,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-192.00000000000003px)",
@@ -3239,7 +3184,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-72px)",
@@ -3309,7 +3253,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-240px)",
@@ -3354,7 +3297,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-192.00000000000003px)",
@@ -3399,7 +3341,6 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               >
                 <div
                   className="css-view-1dbjc4n"
-                  id="animatedComponent"
                   style={
                     Object {
                       "WebkitTransform": "translateX(-72px)",
