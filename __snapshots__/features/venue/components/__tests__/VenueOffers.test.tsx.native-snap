@@ -372,7 +372,7 @@ Array [
                 }
               >
                 <Text
-                  numberOfLines={1}
+                  numberOfLines={2}
                   style={
                     Array [
                       Object {
@@ -596,7 +596,7 @@ Array [
                 }
               >
                 <Text
-                  numberOfLines={1}
+                  numberOfLines={2}
                   style={
                     Array [
                       Object {
@@ -820,7 +820,7 @@ Array [
                 }
               >
                 <Text
-                  numberOfLines={1}
+                  numberOfLines={2}
                   style={
                     Array [
                       Object {

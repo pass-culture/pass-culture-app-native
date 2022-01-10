@@ -37,7 +37,7 @@ const CaptionContainer = styled.View<{ maxWidth: number }>(({ maxWidth }) => ({
 }))
 
 const VenueName = styled(Typo.Caption).attrs({
-  numberOfLines: 1,
+  numberOfLines: 2,
 })({})
 
 const IconWithCaption = styled.View({

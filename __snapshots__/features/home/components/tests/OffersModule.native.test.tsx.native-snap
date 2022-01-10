@@ -361,7 +361,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
               }
             >
               <Text
-                numberOfLines={1}
+                numberOfLines={2}
                 style={
                   Array [
                     Object {
@@ -563,7 +563,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
               }
             >
               <Text
-                numberOfLines={1}
+                numberOfLines={2}
                 style={
                   Array [
                     Object {
@@ -765,7 +765,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
               }
             >
               <Text
-                numberOfLines={1}
+                numberOfLines={2}
                 style={
                   Array [
                     Object {
@@ -985,7 +985,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
               }
             >
               <Text
-                numberOfLines={1}
+                numberOfLines={2}
                 style={
                   Array [
                     Object {
