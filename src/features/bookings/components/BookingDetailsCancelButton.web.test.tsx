@@ -37,7 +37,7 @@ describe('<BookingDetailsCancelButton />', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     const date = new Date()
     date.setDate(date.getDate() + 1)
-    booking.confirmationDate = date
+    booking.confirmationDate = date.toISOString()
     const { getByTestId } = renderBookingDetailsCancelButton(booking)
     getByTestId('Annuler ma réservation')
   })
@@ -45,7 +45,7 @@ describe('<BookingDetailsCancelButton />', () => {
   it('should not display button if confirmation date is expired', async () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     booking.stock.offer.isPermanent = false
-    booking.confirmationDate = new Date('2020-03-15T23:01:37.925926')
+    booking.confirmationDate = '2020-03-15T23:01:37.925926'
     const { queryByTestId } = renderBookingDetailsCancelButton(booking)
     expect(queryByTestId('Annuler ma réservation')).toBeFalsy()
   })
@@ -54,7 +54,7 @@ describe('<BookingDetailsCancelButton />', () => {
     const booking = { ...bookingsSnap.ongoing_bookings[0] }
     const date = new Date()
     date.setDate(date.getDate() + 1)
-    booking.confirmationDate = date
+    booking.confirmationDate = date.toISOString()
     const onCancel = jest.fn()
     const { getByTestId } = renderBookingDetailsCancelButton(booking, {
       onCancel,

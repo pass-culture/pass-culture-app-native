@@ -14,7 +14,7 @@ export const formatToKeyDate = (dateString: Date | string) => {
   return `${year}-${month}-${day}`
 }
 
-export const formatHour = (dateString: Date | null | undefined): string => {
+export const formatHour = (dateString: string | null | undefined): string => {
   if (!dateString) return ''
   const date = new Date(dateString)
   const hours = date.getHours()

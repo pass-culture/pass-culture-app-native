@@ -53,7 +53,7 @@ let mockNextSubscriptionStep: NextSubscriptionStepResponse = {
 const mockedSubscriptionMessage = {
   callToActionMessage: null,
   popOverIcon: 'FILE',
-  updatedAt: new Date('2021-10-25T13:24Z'),
+  updatedAt: '2021-10-25T13:24Z',
   userMessage: 'Dossier déposé, nous sommes en train de le traiter',
 } as SubscriptionMessage
 

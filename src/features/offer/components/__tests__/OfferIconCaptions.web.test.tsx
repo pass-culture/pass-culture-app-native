@@ -15,7 +15,7 @@ const defaultBookableStocks: OfferResponse['stocks'] = [
   {
     id: 1,
     price: 2800,
-    beginningDatetime: new Date('2021-01-04T13:30:00'),
+    beginningDatetime: '2021-01-04T13:30:00',
     isBookable: true,
     isExpired: false,
     isForbiddenToUnderage: false,
@@ -26,7 +26,7 @@ const freeBookableStocks: OfferResponse['stocks'] = [
   {
     id: 1,
     price: 0,
-    beginningDatetime: new Date('2021-01-04T13:30:00'),
+    beginningDatetime: '2021-01-04T13:30:00',
     isBookable: true,
     isExpired: false,
     isForbiddenToUnderage: false,
@@ -37,7 +37,7 @@ const sevenEurosBookableStocks: OfferResponse['stocks'] = [
   {
     id: 1,
     price: 700,
-    beginningDatetime: new Date('2021-01-04T13:30:00'),
+    beginningDatetime: '2021-01-04T13:30:00',
     isBookable: true,
     isExpired: false,
     isForbiddenToUnderage: false,
@@ -48,7 +48,7 @@ const severalStocks: OfferResponse['stocks'] = [
   {
     id: 1,
     price: 700,
-    beginningDatetime: new Date('2021-01-04T13:30:00'),
+    beginningDatetime: '2021-01-04T13:30:00',
     isBookable: true,
     isExpired: false,
     isForbiddenToUnderage: false,
@@ -57,7 +57,7 @@ const severalStocks: OfferResponse['stocks'] = [
   {
     id: 2,
     price: 200,
-    beginningDatetime: new Date('2021-01-03T13:30:00'),
+    beginningDatetime: '2021-01-03T13:30:00',
     isBookable: false,
     isExpired: false,
     isForbiddenToUnderage: false,
@@ -68,7 +68,7 @@ const noBookableStocks: OfferResponse['stocks'] = [
   {
     id: 1,
     price: 700,
-    beginningDatetime: new Date('2021-01-04T13:30:00'),
+    beginningDatetime: '2021-01-04T13:30:00',
     isBookable: false,
     isExpired: false,
     isForbiddenToUnderage: false,
@@ -77,7 +77,7 @@ const noBookableStocks: OfferResponse['stocks'] = [
   {
     id: 2,
     price: 900,
-    beginningDatetime: new Date('2021-01-03T13:30:00'),
+    beginningDatetime: '2021-01-03T13:30:00',
     isBookable: false,
     isExpired: false,
     isSoldOut: false,

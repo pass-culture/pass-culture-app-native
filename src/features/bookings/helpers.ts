@@ -67,14 +67,14 @@ function getDateLabel(
   return ''
 }
 
-function getEventWithdrawLabel(beginning: Date | null | undefined): string {
+function getEventWithdrawLabel(beginning: string | null | undefined): string {
   if (!beginning) return ''
   if (isToday(new Date(beginning))) return t`Aujourd'hui`
   if (isTomorrow(new Date(beginning))) return t`Demain`
   return ''
 }
 
-function getPhysicalWithdrawLabel(expiration: Date | null | undefined): string {
+function getPhysicalWithdrawLabel(expiration: string | null | undefined): string {
   if (!expiration) return ''
   if (isToday(new Date(expiration))) return t`Dernier jour pour retirer`
   if (isTomorrow(new Date(expiration))) return t`Avant dernier jour pour retirer`

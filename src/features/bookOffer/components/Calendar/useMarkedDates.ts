@@ -34,7 +34,7 @@ export const useMarkedDates = (
 
   const groupedByDates = groupBy(
     stocks.filter(({ beginningDatetime: start }) => start !== undefined && start !== null),
-    (stock) => formatToKeyDate(stock.beginningDatetime as Date)
+    (stock) => formatToKeyDate(stock.beginningDatetime as string)
   )
 
   Object.entries(groupedByDates).forEach(([key, groupedStocks]) => {

@@ -6,7 +6,7 @@ import { useBookingOffer, useBookingStock } from 'features/bookOffer/pages/Booki
 import { formatToFrenchDate, formatToHour } from 'libs/parsers/formatDates'
 import { Spacer, Typo } from 'ui/theme'
 
-export const formatDate = (limitDate: Date): string => {
+export const formatDate = (limitDate: string): string => {
   const limit = new Date(limitDate)
   return `${formatToFrenchDate(limit)}, ${formatToHour(limit)}`
 }
@@ -25,7 +25,7 @@ export const CancellationDetails: React.FC = () => {
   let message = t`Cette réservation est annulable`
   if (limitDate) {
     message =
-      limitDate < new Date()
+      new Date(limitDate) < new Date()
         ? notCancellableMessage
         : t({
             id: "réservation annulable jusqu'au",

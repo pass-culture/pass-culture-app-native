@@ -37,7 +37,7 @@ let mockBookingState = {
 let mockBookingStock = {
   price: 2000,
   id: 148409,
-  beginningDatetime: new Date('2021-03-02T20:00:00'),
+  beginningDatetime: '2021-03-02T20:00:00',
 } as ReturnType<typeof useBookingStock>
 
 jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
@@ -104,7 +104,7 @@ describe('<BookingDetails />', () => {
     mockBookingStock = {
       price: 2000,
       id: 148409,
-      beginningDatetime: new Date('2021-03-02T20:00:00'),
+      beginningDatetime: '2021-03-02T20:00:00',
     } as ReturnType<typeof useBookingStock>
 
     const page = await renderBookingDetails(mockStocks)
@@ -114,7 +114,7 @@ describe('<BookingDetails />', () => {
     mockBookingStock = {
       price: 2000,
       id: 148409,
-      beginningDatetime: new Date('2021-03-02T20:00:00'),
+      beginningDatetime: '2021-03-02T20:00:00',
       isForbiddenToUnderage: true,
     } as ReturnType<typeof useBookingStock>
     mockedUseIsUserUnderage.mockReturnValueOnce(true)

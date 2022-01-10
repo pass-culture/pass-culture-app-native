@@ -266,10 +266,10 @@ export interface BookingActivationCodeResponse {
    */
   code: string
   /**
-   * @type {Date}
+   * @type {string}
    * @memberof BookingActivationCodeResponse
    */
-  expirationDate?: Date | null
+  expirationDate?: string | null
 }
 /**
  * An enumeration.
@@ -372,10 +372,10 @@ export interface BookingReponse {
    */
   activationCode?: BookingActivationCodeResponse | null
   /**
-   * @type {Date}
+   * @type {string}
    * @memberof BookingReponse
    */
-  cancellationDate?: Date | null
+  cancellationDate?: string | null
   /**
    * @type {BookingCancellationReasons}
    * @memberof BookingReponse
@@ -387,20 +387,20 @@ export interface BookingReponse {
    */
   completedUrl?: string | null
   /**
-   * @type {Date}
+   * @type {string}
    * @memberof BookingReponse
    */
-  confirmationDate?: Date | null
+  confirmationDate?: string | null
   /**
-   * @type {Date}
+   * @type {string}
    * @memberof BookingReponse
    */
-  dateUsed?: Date | null
+  dateUsed?: string | null
   /**
-   * @type {Date}
+   * @type {string}
    * @memberof BookingReponse
    */
-  expirationDate?: Date | null
+  expirationDate?: string | null
   /**
    * @type {number}
    * @memberof BookingReponse
@@ -438,10 +438,10 @@ export interface BookingReponse {
  */
 export interface BookingStockResponse {
   /**
-   * @type {Date}
+   * @type {string}
    * @memberof BookingStockResponse
    */
-  beginningDatetime?: Date | null
+  beginningDatetime?: string | null
   /**
    * @type {number}
    * @memberof BookingStockResponse
@@ -748,10 +748,10 @@ export interface FavoriteOfferResponse {
    */
   coordinates: Coordinates
   /**
-   * @type {Date}
+   * @type {string}
    * @memberof FavoriteOfferResponse
    */
-  date?: Date | null
+  date?: string | null
   /**
    * @type {Array<ExpenseDomain>}
    * @memberof FavoriteOfferResponse
@@ -798,10 +798,10 @@ export interface FavoriteOfferResponse {
    */
   price?: number | null
   /**
-   * @type {Date}
+   * @type {string}
    * @memberof FavoriteOfferResponse
    */
-  startDate?: Date | null
+  startDate?: string | null
   /**
    * @type {number}
    * @memberof FavoriteOfferResponse
@@ -862,10 +862,10 @@ export interface GetIdCheckTokenResponse {
    */
   token?: string | null
   /**
-   * @type {Date}
+   * @type {string}
    * @memberof GetIdCheckTokenResponse
    */
-  token_timestamp?: Date | null
+  token_timestamp?: string | null
 }
 /**
  * An enumeration.
@@ -1233,10 +1233,10 @@ export interface OfferResponse {
  */
 export interface OfferStockActivationCodeResponse {
   /**
-   * @type {Date}
+   * @type {string}
    * @memberof OfferStockActivationCodeResponse
    */
-  expirationDate?: Date | null
+  expirationDate?: string | null
 }
 /**
  * @export
@@ -1249,20 +1249,20 @@ export interface OfferStockResponse {
    */
   activationCode?: OfferStockActivationCodeResponse | null
   /**
-   * @type {Date}
+   * @type {string}
    * @memberof OfferStockResponse
    */
-  beginningDatetime?: Date | null
+  beginningDatetime?: string | null
   /**
-   * @type {Date}
+   * @type {string}
    * @memberof OfferStockResponse
    */
-  bookingLimitDatetime?: Date | null
+  bookingLimitDatetime?: string | null
   /**
-   * @type {Date}
+   * @type {string}
    * @memberof OfferStockResponse
    */
-  cancellationLimitDatetime?: Date | null
+  cancellationLimitDatetime?: string | null
   /**
    * @type {number}
    * @memberof OfferStockResponse
@@ -1505,10 +1505,10 @@ export interface ReportedOffer {
    */
   reason: Reason
   /**
-   * @type {Date}
+   * @type {string}
    * @memberof ReportedOffer
    */
-  reportedAt: Date
+  reportedAt: string
 }
 /**
  * @export
@@ -1896,10 +1896,10 @@ export interface SubscriptionMessage {
    */
   popOverIcon?: PopOverIcon | null
   /**
-   * @type {Date}
+   * @type {string}
    * @memberof SubscriptionMessage
    */
-  updatedAt: Date
+  updatedAt: string
   /**
    * @type {string}
    * @memberof SubscriptionMessage
@@ -1926,10 +1926,10 @@ export enum SubscriptionStep {
  */
 export interface UpdateEmailTokenExpiration {
   /**
-   * @type {Date}
+   * @type {string}
    * @memberof UpdateEmailTokenExpiration
    */
-  expiration?: Date | null
+  expiration?: string | null
 }
 /**
  * @export
@@ -1968,10 +1968,10 @@ export interface UserProfileResponse {
    */
   dateOfBirth?: string | null
   /**
-   * @type {Date}
+   * @type {string}
    * @memberof UserProfileResponse
    */
-  depositExpirationDate?: Date | null
+  depositExpirationDate?: string | null
   /**
    * @type {DepositType}
    * @memberof UserProfileResponse
@@ -1993,15 +1993,15 @@ export interface UserProfileResponse {
    */
   eligibility?: EligibilityType | null
   /**
-   * @type {Date}
+   * @type {string}
    * @memberof UserProfileResponse
    */
-  eligibilityEndDatetime?: Date | null
+  eligibilityEndDatetime?: string | null
   /**
-   * @type {Date}
+   * @type {string}
    * @memberof UserProfileResponse
    */
-  eligibilityStartDatetime?: Date | null
+  eligibilityStartDatetime?: string | null
   /**
    * @type {string}
    * @memberof UserProfileResponse

@@ -147,7 +147,7 @@ describe('useAddFavorite hook', () => {
         ...addFavoriteJsonResponseSnap,
         offer: {
           ...addFavoriteJsonResponseSnap.offer,
-          date: addFavoriteJsonResponseSnap.offer.date?.toISOString(),
+          date: addFavoriteJsonResponseSnap.offer.date,
         },
       })
       expect(onError).not.toBeCalled()
@@ -286,7 +286,7 @@ describe('useFavorite hook', () => {
         ...favorite,
         offer: {
           ...favorite.offer,
-          date: favorite.offer.date?.toISOString(),
+          date: favorite.offer.date,
         },
       })
     })

@@ -68,7 +68,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
         venue.name
       )
 
-  const dates = offer.stocks.reduce<Date[]>(
+  const dates = offer.stocks.reduce<string[]>(
     (accumulator, stock) =>
       stock.beginningDatetime ? [...accumulator, stock.beginningDatetime] : accumulator,
     []

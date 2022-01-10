@@ -4,9 +4,9 @@ export const bookingsSnap: BookingsResponse = {
   ended_bookings: [
     {
       id: 321,
-      cancellationDate: new Date('2021-03-15T23:01:37.925926'),
+      cancellationDate: '2021-03-15T23:01:37.925926',
       cancellationReason: BookingCancellationReasons.BENEFICIARY,
-      confirmationDate: new Date('2021-02-15T23:01:37.925926'),
+      confirmationDate: '2021-02-15T23:01:37.925926',
       dateUsed: null,
       expirationDate: null,
       totalAmount: 1900,
@@ -14,7 +14,7 @@ export const bookingsSnap: BookingsResponse = {
       quantity: 10,
       stock: {
         id: 150230,
-        beginningDatetime: new Date('2021-03-14T20:00:00'),
+        beginningDatetime: '2021-03-14T20:00:00',
         offer: {
           id: 147874,
           name: 'Avez-vous déjà vu ?',
@@ -41,7 +41,7 @@ export const bookingsSnap: BookingsResponse = {
       id: 123,
       cancellationDate: null,
       cancellationReason: null,
-      confirmationDate: new Date('2021-03-15T23:01:37.925926'),
+      confirmationDate: '2021-03-15T23:01:37.925926',
       dateUsed: null,
       expirationDate: null,
       totalAmount: 1900,
@@ -50,7 +50,7 @@ export const bookingsSnap: BookingsResponse = {
       qrCodeData: 'PASSCULTURE:v3;TOKEN:352UW4',
       stock: {
         id: 150230,
-        beginningDatetime: new Date('2021-03-15T20:00:00'),
+        beginningDatetime: '2021-03-15T20:00:00',
         offer: {
           id: 147874,
           name: 'Avez-vous déjà vu ?',

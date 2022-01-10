@@ -20,7 +20,7 @@ import { formatDate } from './CancellationDetails'
 
 const ExpirationDate: React.FC<{
   autoActivateDigitalBookings: boolean | undefined
-  expirationDate: Date | undefined | null
+  expirationDate: string | undefined | null
 }> = ({ autoActivateDigitalBookings, expirationDate }) => {
   if (!autoActivateDigitalBookings || !expirationDate) return <React.Fragment></React.Fragment>
 
