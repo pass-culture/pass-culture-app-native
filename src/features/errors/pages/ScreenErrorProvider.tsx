@@ -14,10 +14,6 @@ export const ScreenErrorProvider = ({ children }: { children?: JSX.Element | JSX
   const mustUpdateApp = useMustUpdateApp()
   const isLandscapePosition = useIsLandscapePosition()
 
-  if (isLandscapePosition) {
-    return <LandscapePositionPage />
-  }
-
   if (mustUpdateApp) {
     throw new ScreenError('Must update app', ForceUpdate)
   }
@@ -26,5 +22,10 @@ export const ScreenErrorProvider = ({ children }: { children?: JSX.Element | JSX
     throw new ScreenError('Under maintenance', MaintenanceErrorPage)
   }
 
-  return children ? <React.Fragment>{children}</React.Fragment> : null
+  return children ? (
+    <React.Fragment>
+      <LandscapePositionPage isVisible={isLandscapePosition} />
+      {children}
+    </React.Fragment>
+  ) : null
 }

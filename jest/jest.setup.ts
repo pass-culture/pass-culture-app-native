@@ -105,3 +105,5 @@ jest.mock('@bam.tech/react-native-batch', () =>
 )
 
 jest.mock('libs/react-native-batch', () => jest.requireActual('__mocks__/libs/react-native-batch'))
+
+jest.unmock('react-native-modal')

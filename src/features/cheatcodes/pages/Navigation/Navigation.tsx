@@ -8,6 +8,7 @@ import { CheatCodesButton } from 'features/cheatcodes/components/CheatCodesButto
 import { useSomeVenueId } from 'features/cheatcodes/pages/Navigation/useSomeVenueId'
 import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 import { NoContentError } from 'features/home/components/NoContentError'
+import { LandscapePositionPage } from 'features/landscapePosition/LandscapePositionPage'
 import { Maintenance } from 'features/maintenance/Maintenance'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -32,6 +33,7 @@ export function Navigation(): JSX.Element {
   const { goBack } = useGoBack('CheatMenu', undefined)
   const [renderedError, setRenderedError] = useState(undefined)
   const [screenError, setScreenError] = useState<ScreenError | undefined>(undefined)
+  const [isLandscapeVisible, setIsLandscapeVisible] = useState<boolean>(false)
   const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)
   const distanceToEiffelTower = useDistance(EIFFEL_TOWER_COORDINATES)
   const venueId = useSomeVenueId()
@@ -218,9 +220,10 @@ export function Navigation(): JSX.Element {
           />
         </Row>
         <Row half>
+          <LandscapePositionPage isVisible={isLandscapeVisible} />
           <NavigationButton
             title={'Tu es en paysage !'}
-            onPress={() => navigate('LandscapePositionPage')}
+            onPress={() => setIsLandscapeVisible(true)}
           />
         </Row>
         <Row half>
