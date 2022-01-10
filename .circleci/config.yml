@@ -40,7 +40,7 @@ commands:
             curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.5/install.sh | bash
             echo 'export NVM_DIR="$HOME/.nvm"' >> $BASH_ENV
             echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> $BASH_ENV
-            echo 'nvm install 12.16.3 &> /dev/null' >> $BASH_ENV
+            echo 'nvm install --default &> /dev/null' >> $BASH_ENV
             echo 'nvm use &> /dev/null' >> $BASH_ENV
 
   install_node_modules:
