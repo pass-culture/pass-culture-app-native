@@ -103,85 +103,11 @@ export const Icons: FunctionComponent = () => {
       <Spacer.Column numberOfSpaces={4} />
       <IdentityCheckIcons />
       <Spacer.Column numberOfSpaces={4} />
-      <Icon name="BicolorAroundMe" component={BicolorAroundMe} isNew />
-      <Icon name="BicolorBookings" component={BicolorBookings} isNew />
-      <Icon name="BicolorConfidentiality" component={BicolorConfidentiality} isNew />
-      <Icon name="BicolorEverywhere" component={BicolorEverywhere} isNew />
-      <Icon name="BicolorFavorite" component={BicolorFavorite} isNew />
-      <Icon
-        name="BicolorIdCardWithMagnifyingGlass"
-        component={BicolorIdCardWithMagnifyingGlass}
-        isNew
-      />
-      <Icon name="BicolorLock" component={BicolorLock} isNew />
-      <Icon name="BicolorLocationPointer" component={BicolorLocationPointer} isNew />
-      <Icon name="BicolorLocationBuilding" component={BicolorLocationBuilding} isNew />
-      <Icon name="BicolorLogo" component={BicolorLogo} isNew />
-      <Icon name="BicolorProfile" component={BicolorProfile} isNew />
-      <Icon name="BicolorSearch" component={BicolorSearch} isNew />
-      <AlignedText>
-        <BicolorSelector width={ICON_SIZE} height={getSpacing(1)} />
-        <Text> - BicolorSelector </Text>
-      </AlignedText>
-      <Icon name="Again" component={Again} isNew />
-      <Icon name="ArrowNext" component={ArrowNext} isNew />
-      <Icon name="ArrowPrevious" component={ArrowPrevious} isNew />
-      <Icon name="Bell" component={Bell} isNew />
-      <Icon name="Booking" component={Booking} isNew />
-      <Icon name="Calendar" component={Calendar} isNew />
-      <Icon name="Check" component={Check} isNew />
-      <Icon name="Clock" component={Clock} isNew />
-      <Icon name="Close" component={Close} isNew />
-      <Icon name="Confidentiality" component={Confidentiality} isNew />
-      <Icon name="Digital" component={Digital} isNew />
-      <Icon name="Duo" component={Duo} isNew />
-      <Icon name="EditPen" component={EditPen} isNew />
-      <Icon name="Email" component={Email} isNew />
-      <Icon name="EmailFilled" component={EmailFilled} isNew />
-      <Icon name="Error" component={Error} isNew />
-      <Icon name="ExternalSite" component={ExternalSite} isNew />
-      <Icon name="ExternalSiteFilled" component={ExternalSiteFilled} isNew />
-      <Icon name="Eye" component={Eye} isNew />
-      <Icon name="EyeSlash" component={EyeSlash} isNew />
-      <Icon name="Favorite" component={Favorite} isNew />
-      <Icon name="FavoriteFilled" component={FavoriteFilled} isNew />
-      <Icon name="Flag" component={Flag} />
-      <Icon name="Flash" component={Flash} isNew />
-      <Icon name="HandicapVisual" component={HandicapVisual} isNew />
-      <Icon name="HandicapMental" component={HandicapMental} isNew />
-      <Icon name="HandicapMotor" component={HandicapMotor} isNew />
-      <Icon name="HandicapAudio" component={HandicapAudio} isNew />
-      <Icon name="Info" component={Info} isNew />
-      <Icon name="InfoFraud" component={InfoFraud} isNew />
-      <Icon name="InfoPlain" component={InfoPlain} isNew />
-      <Icon name="Invalidate" component={Invalidate} isNew />
-      <Icon name="Key" component={Key} isNew />
-      <Icon name="LegalNotices" component={LegalNotices} isNew />
-      <Icon name="LifeBuoy" component={LifeBuoy} isNew />
-      <Icon name="LocationBuilding" component={LocationBuilding} isNew />
-      <Icon name="LocationPointer" component={LocationPointer} isNew />
-      <Icon name="LocationPointerNotFilled" component={LocationPointerNotFilled} isNew />
-      <Icon name="Lock" component={Lock} isNew />
-      <Icon name="Logo" component={Logo} />
-      <Icon name="MagnifyingGlass" component={MagnifyingGlass} isNew />
-      <Icon name="NoOffer" component={NoOffer} />
-      <Icon name="OfferDigital" component={OfferDigital} isNew />
-      <Icon name="OfferEvent" component={OfferEvent} isNew />
-      <Icon name="OfferPhysical" component={OfferPhysical} isNew />
-      <Icon name="Offers" component={Offers} isNew />
-      <Icon name="OrderPrice" component={OrderPrice} isNew />
-      <Icon name="PhoneFilled" component={PhoneFilled} isNew />
-      <Icon name="PlainArrowPrevious" component={PlainArrowPrevious} isNew />
-      <Icon name="ProfileDeletion" component={ProfileDeletion} isNew />
-      <Icon name="Quote" component={Quote} isNew />
-      <Icon name="RequestSent" component={RequestSent} />
-      <Icon name="SignOut" component={SignOut} isNew />
-      <Icon name="Share" component={Share} isNew />
-      <Icon name="Sun" component={Sun} isNew />
-      <Icon name="Validate" component={Validate} isNew />
-      <Icon name="SadFace" component={SadFace} />
-      <Icon name="HappyFace" component={HappyFace} />
-      <Icon name="Warning" component={Warning} isNew />
+      <SecondaryAndBiggerIcons />
+      <Spacer.Column numberOfSpaces={4} />
+      <TertiaryAndSmallerIcons />
+      <Spacer.Column numberOfSpaces={4} />
+      <Text> Icônes à uniformiser (conversion en illustrations) </Text>
       <AlignedText>
         <TicketBooked width={ICON_SIZE} height={ICON_SIZE} />
         <Text> - TicketBooked </Text>
@@ -260,6 +186,103 @@ const IdentityCheckIcons = () => {
       <Icon name="Profile" component={Profile} isNew />
       <Icon name="IdCard" component={IdCard} isNew />
       <Icon name="Confirmation" component={Confirmation} isNew />
+      <Text>{'\n'}</Text>
+    </React.Fragment>
+  )
+}
+
+const TertiaryAndSmallerIcons = () => {
+  return (
+    <React.Fragment>
+      <Text>{'Tertiary and smaller plain Icons ( <= 20x20 )'}</Text>
+      <Icon name="Again" component={Again} isNew />
+      <Icon name="Digital" component={Digital} isNew />
+      <Icon name="EditPen" component={EditPen} isNew />
+      <Icon name="EmailFilled" component={EmailFilled} isNew />
+      <Icon name="ExternalSiteFilled" component={ExternalSiteFilled} isNew />
+      <Icon name="InfoPlain" component={InfoPlain} isNew />
+      <Icon name="Invalidate" component={Invalidate} isNew />
+      <Icon name="Key" component={Key} isNew />
+      <Icon name="LocationPointer" component={LocationPointer} isNew />
+      <Icon name="PhoneFilled" component={PhoneFilled} isNew />
+      <Icon name="PlainArrowPrevious" component={PlainArrowPrevious} isNew />
+      <Icon name="Validate" component={Validate} isNew />
+      <Text>{'\n'}</Text>
+    </React.Fragment>
+  )
+}
+
+const SecondaryAndBiggerIcons = () => {
+  return (
+    <React.Fragment>
+      <Text>{'Secondary and bigger Icons ( > 20x20 )'}</Text>
+      <Icon name="BicolorAroundMe" component={BicolorAroundMe} isNew />
+      <Icon name="BicolorBookings" component={BicolorBookings} isNew />
+      <Icon name="BicolorConfidentiality" component={BicolorConfidentiality} isNew />
+      <Icon name="BicolorEverywhere" component={BicolorEverywhere} isNew />
+      <Icon name="BicolorFavorite" component={BicolorFavorite} isNew />
+      <Icon
+        name="BicolorIdCardWithMagnifyingGlass"
+        component={BicolorIdCardWithMagnifyingGlass}
+        isNew
+      />
+      <Icon name="BicolorLock" component={BicolorLock} isNew />
+      <Icon name="BicolorLocationPointer" component={BicolorLocationPointer} isNew />
+      <Icon name="BicolorLocationBuilding" component={BicolorLocationBuilding} isNew />
+      <Icon name="BicolorLogo" component={BicolorLogo} isNew />
+      <Icon name="BicolorProfile" component={BicolorProfile} isNew />
+      <Icon name="BicolorSearch" component={BicolorSearch} isNew />
+      <AlignedText>
+        <BicolorSelector width={ICON_SIZE} height={getSpacing(1)} />
+        <Text> - BicolorSelector </Text>
+      </AlignedText>
+      <Icon name="ArrowNext" component={ArrowNext} isNew />
+      <Icon name="ArrowPrevious" component={ArrowPrevious} isNew />
+      <Icon name="Bell" component={Bell} isNew />
+      <Icon name="Booking" component={Booking} isNew />
+      <Icon name="Calendar" component={Calendar} isNew />
+      <Icon name="Check" component={Check} isNew />
+      <Icon name="Clock" component={Clock} isNew />
+      <Icon name="Close" component={Close} isNew />
+      <Icon name="Confidentiality" component={Confidentiality} isNew />
+      <Icon name="Duo" component={Duo} isNew />
+      <Icon name="Email" component={Email} isNew />
+      <Icon name="Error" component={Error} isNew />
+      <Icon name="ExternalSite" component={ExternalSite} isNew />
+      <Icon name="Eye" component={Eye} isNew />
+      <Icon name="EyeSlash" component={EyeSlash} isNew />
+      <Icon name="Favorite" component={Favorite} isNew />
+      <Icon name="FavoriteFilled" component={FavoriteFilled} isNew />
+      <Icon name="Flag" component={Flag} />
+      <Icon name="Flash" component={Flash} isNew />
+      <Icon name="HandicapVisual" component={HandicapVisual} isNew />
+      <Icon name="HandicapMental" component={HandicapMental} isNew />
+      <Icon name="HandicapMotor" component={HandicapMotor} isNew />
+      <Icon name="HandicapAudio" component={HandicapAudio} isNew />
+      <Icon name="Info" component={Info} isNew />
+      <Icon name="InfoFraud" component={InfoFraud} isNew />
+      <Icon name="LegalNotices" component={LegalNotices} isNew />
+      <Icon name="LifeBuoy" component={LifeBuoy} isNew />
+      <Icon name="LocationBuilding" component={LocationBuilding} isNew />
+      <Icon name="LocationPointerNotFilled" component={LocationPointerNotFilled} isNew />
+      <Icon name="Lock" component={Lock} isNew />
+      <Icon name="Logo" component={Logo} />
+      <Icon name="MagnifyingGlass" component={MagnifyingGlass} isNew />
+      <Icon name="NoOffer" component={NoOffer} />
+      <Icon name="OfferDigital" component={OfferDigital} isNew />
+      <Icon name="OfferEvent" component={OfferEvent} isNew />
+      <Icon name="OfferPhysical" component={OfferPhysical} isNew />
+      <Icon name="Offers" component={Offers} isNew />
+      <Icon name="OrderPrice" component={OrderPrice} isNew />
+      <Icon name="ProfileDeletion" component={ProfileDeletion} isNew />
+      <Icon name="Quote" component={Quote} isNew />
+      <Icon name="RequestSent" component={RequestSent} />
+      <Icon name="SignOut" component={SignOut} isNew />
+      <Icon name="Share" component={Share} isNew />
+      <Icon name="Sun" component={Sun} isNew />
+      <Icon name="SadFace" component={SadFace} />
+      <Icon name="HappyFace" component={HappyFace} />
+      <Icon name="Warning" component={Warning} isNew />
       <Text>{'\n'}</Text>
     </React.Fragment>
   )
