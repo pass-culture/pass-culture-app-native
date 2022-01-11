@@ -1,0 +1,97 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SectionWithSwitch/> should display different if isDesktopViewport or with toggleLabel 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -21,16 +21,26 @@
+      style={
+        Object {
+          \\"WebkitAlignItems\\": \\"center\\",
+          \\"WebkitBoxAlign\\": \\"center\\",
+          \\"WebkitBoxDirection\\": \\"normal\\",
++         \\"WebkitBoxFlex\\": 1,
+          \\"WebkitBoxOrient\\": \\"horizontal\\",
++         \\"WebkitFlexBasis\\": \\"0px\\",
+          \\"WebkitFlexDirection\\": \\"row\\",
++         \\"WebkitFlexGrow\\": 1,
++         \\"WebkitFlexShrink\\": 1,
+          \\"alignItems\\": \\"center\\",
++         \\"flexBasis\\": \\"0px\\",
+          \\"flexDirection\\": \\"row\\",
++         \\"flexGrow\\": 1,
++         \\"flexShrink\\": 1,
+          \\"msFlexAlign\\": \\"center\\",
+          \\"msFlexDirection\\": \\"row\\",
++         \\"msFlexNegative\\": 1,
++         \\"msFlexPositive\\": 1,
++         \\"msFlexPreferredSize\\": \\"0px\\",
+        }
+      }
+    >
+      <div
+        className=\\"css-text-901oao\\""
+`;
+
+exports[`<SectionWithSwitch/> should display different if isDesktopViewport or with toggleLabel 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -21,16 +21,26 @@
+      style={
+        Object {
+          \\"WebkitAlignItems\\": \\"center\\",
+          \\"WebkitBoxAlign\\": \\"center\\",
+          \\"WebkitBoxDirection\\": \\"normal\\",
++         \\"WebkitBoxFlex\\": 1,
+          \\"WebkitBoxOrient\\": \\"horizontal\\",
++         \\"WebkitFlexBasis\\": \\"0px\\",
+          \\"WebkitFlexDirection\\": \\"row\\",
++         \\"WebkitFlexGrow\\": 1,
++         \\"WebkitFlexShrink\\": 1,
+          \\"alignItems\\": \\"center\\",
++         \\"flexBasis\\": \\"0px\\",
+          \\"flexDirection\\": \\"row\\",
++         \\"flexGrow\\": 1,
++         \\"flexShrink\\": 1,
+          \\"msFlexAlign\\": \\"center\\",
+          \\"msFlexDirection\\": \\"row\\",
++         \\"msFlexNegative\\": 1,
++         \\"msFlexPositive\\": 1,
++         \\"msFlexPreferredSize\\": \\"0px\\",
+        }
+      }
+    >
+      <div
+        className=\\"css-text-901oao\\"
+@@ -58,13 +68,27 @@
+          \\"WebkitFlexDirection\\": \\"row\\",
+          \\"alignItems\\": \\"center\\",
+          \\"flexDirection\\": \\"row\\",
+          \\"msFlexAlign\\": \\"center\\",
+          \\"msFlexDirection\\": \\"row\\",
++       }
++     }
++   >
++     <div
++       className=\\"css-text-901oao\\"
++       dir=\\"auto\\"
++       style={
++         Object {
++           \\"color\\": \\"rgba(98,98,98,1.00)\\",
++           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
++           \\"fontSize\\": \\"12px\\",
++           \\"lineHeight\\": \\"16px\\",
+          }
+        }
+      >
++       Partager ma position
++     </div>
+      <div
+        className=\\"css-view-1dbjc4n\\"
+        style={
+          Object {
+            \\"WebkitAlignItems\\": \\"center\\","
+`;
