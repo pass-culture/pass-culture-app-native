@@ -6,7 +6,7 @@ import { ColorsEnum } from 'ui/theme'
 import { IconInterface } from './types'
 
 export function EditPen({
-  size = 32,
+  size = 20,
   color = ColorsEnum.BLACK,
   testID,
 }: IconInterface): JSX.Element {

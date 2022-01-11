@@ -360,7 +360,6 @@ Array [
                       testID="Transmettre un document"
                     >
                       <View
-                        fill="#151515"
                         height={16}
                         testID="button-icon"
                         width={16}
@@ -745,9 +744,9 @@ Array [
                                 testID="Je suis de nationalité française"
                               >
                                 <View
-                                  height={32}
+                                  height={20}
                                   testID="button-icon"
-                                  width={32}
+                                  width={20}
                                 >
                                   <Text>
                                     button-icon-SVG-Mock
@@ -833,9 +832,9 @@ Array [
                                 testID="Je suis de nationalité étrangère"
                               >
                                 <View
-                                  height={32}
+                                  height={20}
                                   testID="button-icon"
-                                  width={32}
+                                  width={20}
                                 >
                                   <Text>
                                     button-icon-SVG-Mock

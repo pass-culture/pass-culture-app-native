@@ -6,19 +6,19 @@ import { ColorsEnum } from 'ui/theme'
 import { IconInterface } from './types'
 
 export const Validate: React.FunctionComponent<IconInterface> = ({
-  size = 32,
+  size = 20,
   color = ColorsEnum.BLACK,
   testID,
 }) => {
   const fillColor = color === ColorsEnum.WHITE ? ColorsEnum.PRIMARY : ColorsEnum.WHITE
   return (
-    <Svg width={size} height={size} viewBox="0 0 48 49" testID={testID}>
+    <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID}>
       <Circle r={10} cx={24} cy={24} fill={fillColor} />
       <Path
         fill={color}
         fillRule="evenodd"
         clipRule="evenodd"
-        d="M24 45.5C35.598 45.5 45 36.098 45 24.5C45 12.902 35.598 3.5 24 3.5C12.402 3.5 3 12.902 3 24.5C3 36.098 12.402 45.5 24 45.5ZM34.5064 19.5406C35.1603 18.8496 35.1651 17.7239 34.5173 17.0265C33.8694 16.329 32.8141 16.3239 32.1603 17.0149L21.1214 28.6818L15.8395 23.1019C15.1855 22.411 14.1302 22.4165 13.4825 23.1141C12.8348 23.8117 12.8399 24.9373 13.4939 25.6282L19.2034 31.6598C20.2638 32.7801 21.9792 32.7801 23.0396 31.6598L23.0399 31.6596L34.5064 19.5406Z"
+        d="M24 44C35.0457 44 44 35.0457 44 24C44 12.9543 35.0457 4 24 4C12.9543 4 4 12.9543 4 24C4 35.0457 12.9543 44 24 44ZM34.5064 19.0406C35.1603 18.3496 35.1651 17.2239 34.5173 16.5265C33.8694 15.829 32.8141 15.8239 32.1603 16.5149L21.1214 28.1818L15.8395 22.6019C15.1855 21.911 14.1302 21.9165 13.4825 22.6141C12.8348 23.3117 12.8399 24.4373 13.4939 25.1282L19.2034 31.1598C20.2638 32.2801 21.9792 32.2801 23.0396 31.1598L23.0399 31.1596L34.5064 19.0406Z"
       />
     </Svg>
   )

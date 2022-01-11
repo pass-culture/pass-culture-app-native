@@ -60,7 +60,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           <RightIconContainer
             onPress={onPressRightIcon}
             {...accessibilityAndTestId(t`Réinitialiser la recherche`)}>
-            <Invalidate size={20} color={ColorsEnum.GREY_DARK} />
+            <Invalidate color={ColorsEnum.GREY_DARK} />
           </RightIconContainer>
         )}
       </StyledInputContainer>

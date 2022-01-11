@@ -6,7 +6,7 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 import { ColorsEnum } from 'ui/theme'
 
 export const EmailFilled: React.FunctionComponent<AccessibleIcon> = ({
-  size = 32,
+  size = 20,
   color = ColorsEnum.BLACK,
   testID,
   accessibilityLabel,
