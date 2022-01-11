@@ -140,6 +140,7 @@ describe('OfferPartialDescription', () => {
             },
           },
         })
+
         expect(queryByTestId('offerSeeMoreContainer')).toBeFalsy()
       })
     })
