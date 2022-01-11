@@ -31,7 +31,7 @@ import { useStartBatchNotification } from 'libs/notifications'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { SplashScreenProvider } from 'libs/splashscreen'
-import { ThemeProvider } from 'libs/styled/ThemeProvider'
+import { ThemeProvider } from 'libs/styled'
 import { theme } from 'theme'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 

@@ -1,4 +1,4 @@
-import { ComputedTheme } from 'libs/styled/ThemeProvider'
+import { ComputedTheme } from 'libs/styled/native/types'
 import { theme } from 'theme'
 
 export const computedTheme: Readonly<ComputedTheme> = Object.freeze({
