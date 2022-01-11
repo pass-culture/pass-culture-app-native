@@ -57,6 +57,12 @@ describe('OfferPartialDescription', () => {
         extraData: {},
       })
     }
+    const setupWithImage = (queryClient: QueryClient): void => {
+      queryClient.setQueryData(['offer', offerId], {
+        image: offerResponseSnap.image,
+        extraData: {},
+      })
+    }
 
     it('should be rendered when there is some content on the description page', () => {
       const { queryByTestId } = renderOfferDescription(defaultParams)
@@ -96,12 +102,6 @@ describe('OfferPartialDescription', () => {
         expect(queryByTestId('offerSeeMoreContainer')).toBeTruthy()
       })
       it('when there is image on the description page', () => {
-        const setupWithImage = (queryClient: QueryClient): void => {
-          queryClient.setQueryData(['offer', offerId], {
-            image: offerResponseSnap.image,
-            extraData: {},
-          })
-        }
         const { queryByTestId } = renderOfferDescription({
           ...defaultParams,
           description: undefined,
