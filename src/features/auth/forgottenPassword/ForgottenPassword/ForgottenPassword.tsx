@@ -16,7 +16,6 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
 import { EmailInput } from 'ui/components/inputs/EmailInput'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
-import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { InputError } from 'ui/components/inputs/InputError'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -77,7 +76,9 @@ export const ForgottenPassword: FunctionComponent = () => {
 
   function openReCaptchaChallenge() {
     if (!isEmailValid(email)) {
-      setErrorMessage(t`Format de l'e-mail incorrect`)
+      setErrorMessage(
+        t`L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr`
+      )
       return
     }
     if (!networkInfo.isConnected) {
@@ -135,15 +136,13 @@ export const ForgottenPassword: FunctionComponent = () => {
           </Typo.Body>
         </CenteredText>
         <Spacer.Column numberOfSpaces={4} />
-        <InputContainer>
-          <EmailInput
-            label={t`Adresse e-mail`}
-            email={email}
-            onEmailChange={onEmailChange}
-            autoFocus={true}
-          />
-          {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={1} />}
-        </InputContainer>
+        <EmailInput
+          label={t`Adresse e-mail`}
+          email={email}
+          onEmailChange={onEmailChange}
+          autoFocus={true}
+        />
+        {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={2} />}
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary
           title={t`Valider`}
@@ -170,4 +169,5 @@ const ModalContent = styled.View({
 
 const CenteredText = styled.Text({
   textAlign: 'center',
+  maxWidth: getSpacing(125),
 })

@@ -807,8 +807,8 @@ msgid "E-mail envoyé ! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le
 msgstr "E-mail envoyé ! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams."
 
 #: src/features/auth/login/Login.tsx
-msgid "E-mail ou mot de passe incorrect."
-msgstr "E-mail ou mot de passe incorrect."
+msgid "E-mail ou mot de passe incorrect"
+msgstr "E-mail ou mot de passe incorrect"
 
 #: src/features/bookings/components/BookingDetailsTicketContent.tsx
 msgid "EAN"
@@ -902,6 +902,10 @@ msgstr "Entrée pour le jour de la date de naissance"
 msgid "Entrée pour le mois de la date de naissance"
 msgstr "Entrée pour le mois de la date de naissance"
 
+#: src/ui/components/inputs/PasswordInput.tsx
+msgid "Entrée pour le mot de passe"
+msgstr "Entrée pour le mot de passe"
+
 #: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Entrée pour le nom"
 msgstr "Entrée pour le nom"
@@ -927,8 +931,8 @@ msgid "Erreur"
 msgstr "Erreur"
 
 #: src/features/auth/login/Login.tsx
-msgid "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
-msgstr "Erreur réseau. Tu peux réessayer une fois la connexion réétablie."
+msgid "Erreur réseau. Tu peux réessayer une fois la connexion réétablie"
+msgstr "Erreur réseau. Tu peux réessayer une fois la connexion réétablie"
 
 #: src/features/profile/pages/ConfirmDeleteProfile.tsx
 msgid "Es-tu sûr de vouloir supprimer ton compte ?"
@@ -1001,12 +1005,6 @@ msgstr "Filtrer"
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Fin du parcours"
 msgstr "Fin du parcours"
-
-#: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
-#: src/features/auth/signup/SetEmail/SetEmail.tsx
-#: src/features/profile/pages/ChangeEmail/utils/useValidateEmail.ts
-msgid "Format de l'e-mail incorrect"
-msgstr "Format de l'e-mail incorrect"
 
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx
 msgid "Format du lien incorrect"
@@ -1137,8 +1135,8 @@ msgid "Il y a déjà une demande de crédit pass Culture en cours sur ton compte
 msgstr "Il y a déjà une demande de crédit pass Culture en cours sur ton compte."
 
 #: src/features/auth/login/Login.tsx
-msgid "Il y a eu un problème. Tu peux réessayer plus tard."
-msgstr "Il y a eu un problème. Tu peux réessayer plus tard."
+msgid "Il y a eu un problème. Tu peux réessayer plus tard"
+msgstr "Il y a eu un problème. Tu peux réessayer plus tard"
 
 #: src/features/deeplinks/pages/DeeplinkImporter.tsx
 msgid "Importer le lien"
@@ -1268,6 +1266,13 @@ msgstr "L'application pass Culture utilise des traceurs susceptibles de réalise
 msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
 
+#: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
+#: src/features/auth/login/Login.tsx
+#: src/features/auth/signup/SetEmail/SetEmail.tsx
+#: src/features/profile/pages/ChangeEmail/utils/useValidateEmail.ts
+msgid "L'e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr"
+msgstr "L'e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr"
+
 #: src/features/profile/pages/ChangeEmail/utils/useValidateEmail.ts
 msgid "L'e-mail saisi est identique à votre e-mail actuel"
 msgstr "L'e-mail saisi est identique à votre e-mail actuel"
@@ -1394,6 +1399,11 @@ msgstr "Les informations que tu as renseignées ne seront pas enregistrées."
 #: src/features/identityCheck/pages/confirmation/IdentityCheckHonor.tsx
 msgid "Les informations que tu as renseignées sont-elles correctes ?"
 msgstr "Les informations que tu as renseignées sont-elles correctes ?"
+
+#: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
+#: src/features/profile/pages/ChangePassword/ChangePassword.tsx
+msgid "Les mots de passe ne concordent pas"
+msgstr "Les mots de passe ne concordent pas"
 
 #: src/libs/geolocation/enums.ts
 msgid "Les réglages de ton téléphone ne nous permettent pas d’utiliser la géolocalisation"
@@ -1610,8 +1620,8 @@ msgid "Nombre de place"
 msgstr "Nombre de place"
 
 #: src/features/auth/login/Login.tsx
-msgid "Nombre de tentatives dépassé. Réessaye dans 1 minute."
-msgstr "Nombre de tentatives dépassé. Réessaye dans 1 minute."
+msgid "Nombre de tentatives dépassé. Réessaye dans 1 minute"
+msgstr "Nombre de tentatives dépassé. Réessaye dans 1 minute"
 
 #: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
 msgid "Nos conseils :"
@@ -1678,6 +1688,10 @@ msgstr "Nouvel e-mail"
 #: src/features/profile/pages/PersonalData.tsx
 msgid "Numéro de téléphone"
 msgstr "Numéro de téléphone"
+
+#: src/ui/components/inputs/RequiredLabel.tsx
+msgid "Obligatoire"
+msgstr "Obligatoire"
 
 #: src/libs/monitoring/errors.ts
 msgid "Offer {offerId} could not be retrieved"
@@ -3011,11 +3025,6 @@ msgstr "le {date}"
 #: src/features/profile/components/SubscriptionMessageBadge.tsx
 msgid "last update"
 msgstr "Dossier mis à jour le : {day} à {hour}"
-
-#: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
-#: src/features/profile/pages/ChangePassword/ChangePassword.tsx
-msgid "les mots de passe ne concordent pas"
-msgstr "les mots de passe ne concordent pas"
 
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "metteur en scène"

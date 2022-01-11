@@ -10,26 +10,32 @@ type Props = {
   iconSize: number
   color: ColorsEnum
   testIdSuffix?: string
+  centered?: boolean
 }
 
 export const InputRule: FunctionComponent<Props> = (props) => {
-  const Icon = props.icon
+  const { title, icon, iconSize, color, testIdSuffix, centered } = props
+  const Icon = icon
   return (
-    <StyledView>
-      <Icon testID={`rule-icon-${props.testIdSuffix}`} color={props.color} size={props.iconSize} />
+    <StyledView centered={centered}>
+      <Icon testID={`rule-icon-${testIdSuffix}`} color={color} size={iconSize} />
       <Spacer.Row numberOfSpaces={1} />
-      <StyledTypoCaption color={props.color}>{props.title}</StyledTypoCaption>
+      <StyledCaption color={color} centered={centered}>
+        {title}
+      </StyledCaption>
     </StyledView>
   )
 }
 
-const StyledView = styled.View({
+const StyledView = styled.View<{ centered?: boolean }>(({ centered }) => ({
   flexDirection: 'row',
-  alignItems: 'center',
   maxWidth: getSpacing(125),
-})
+  alignItems: 'center',
+  ...(centered ? {} : { width: '100%' }),
+}))
 
-const StyledTypoCaption = styled(Typo.Caption)({
+const StyledCaption = styled(Typo.Caption)<{ centered?: boolean }>(({ centered }) => ({
   paddingLeft: getSpacing(1),
   flexShrink: 1,
-})
+  ...(centered ? { textAlign: 'center' } : {}),
+}))

@@ -57,6 +57,7 @@ import { Info } from 'ui/svg/icons/Info'
 import { InfoFraud } from 'ui/svg/icons/InfoFraud'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
+import { Key } from 'ui/svg/icons/Key'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
@@ -154,6 +155,7 @@ export const Icons: FunctionComponent = () => {
       <Icon name="InfoFraud" component={InfoFraud} isNew />
       <Icon name="InfoPlain" component={InfoPlain} isNew />
       <Icon name="Invalidate" component={Invalidate} isNew />
+      <Icon name="Key" component={Key} isNew />
       <Icon name="LegalNotices" component={LegalNotices} isNew />
       <Icon name="LifeBuoy" component={LifeBuoy} isNew />
       <Icon name="LocationBuilding" component={LocationBuilding} isNew />

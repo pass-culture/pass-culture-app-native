@@ -87,6 +87,7 @@ export const ReinitializePassword = () => {
           onChangeText={setPassword}
           placeholder={t`Ton mot de passe`}
           onSubmitEditing={submitPassword}
+          isRequiredField
         />
         <PasswordSecurityRules password={password} />
         <Spacer.Column numberOfSpaces={6} />
@@ -96,11 +97,12 @@ export const ReinitializePassword = () => {
           onChangeText={setConfirmedPassword}
           placeholder={t`Confirmer le mot de passe`}
           onSubmitEditing={submitPassword}
+          isRequiredField
         />
         <Spacer.Column numberOfSpaces={2} />
         <InputError
           visible={displayNotMatchingError}
-          messageId={t`les mots de passe ne concordent pas`}
+          messageId={t`Les mots de passe ne concordent pas`}
           numberOfSpacesTop={0}
         />
         <Spacer.Column numberOfSpaces={6} />

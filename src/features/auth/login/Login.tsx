@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, memo } from 'react'
-import { Keyboard, TouchableOpacity } from 'react-native'
+import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
@@ -16,15 +16,17 @@ import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { isEmailValid } from 'ui/components/inputs/emailCheck'
 import { EmailInput } from 'ui/components/inputs/EmailInput'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
-import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { InputError } from 'ui/components/inputs/InputError'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Key } from 'ui/svg/icons/Key'
+import { getSpacing, Spacer } from 'ui/theme'
 
 let INITIAL_IDENTIFIER = ''
 let INITIAL_PASSWORD = ''
@@ -43,6 +45,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const [password, setPassword] = useSafeState(INITIAL_PASSWORD)
   const [isLoading, setIsLoading] = useSafeState(false)
   const [errorMessage, setErrorMessage] = useSafeState<string | null>(null)
+  const [hasEmailError, setHasEmailError] = useSafeState(false)
   const signIn = useSignIn()
   const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password) || isLoading
 
@@ -50,14 +53,26 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavConfig)
 
+  function onEmailChange(email: string) {
+    if (hasEmailError) {
+      setIsLoading(false)
+      setHasEmailError(false)
+    }
+    setEmail(email)
+  }
+
   async function handleSignin() {
     setIsLoading(true)
     setErrorMessage(null)
-    const signinResponse = await signIn({ identifier: email, password })
-    if (signinResponse.isSuccess) {
-      handleSigninSuccess()
+    if (!isEmailValid(email)) {
+      setHasEmailError(true)
     } else {
-      handleSigninFailure(signinResponse)
+      const signinResponse = await signIn({ identifier: email, password })
+      if (signinResponse.isSuccess) {
+        handleSigninSuccess()
+      } else {
+        handleSigninFailure(signinResponse)
+      }
     }
   }
 
@@ -79,7 +94,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         navigateToHome()
       }
     } catch {
-      setErrorMessage(t`Il y a eu un problème. Tu peux réessayer plus tard.`)
+      setErrorMessage(t`Il y a eu un problème. Tu peux réessayer plus tard`)
     }
   }
 
@@ -89,13 +104,13 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       navigate('SignupConfirmationEmailSent', { email })
     } else if (failureCode === 'NETWORK_REQUEST_FAILED') {
       setIsLoading(false)
-      setErrorMessage(t`Erreur réseau. Tu peux réessayer une fois la connexion réétablie.`)
+      setErrorMessage(t`Erreur réseau. Tu peux réessayer une fois la connexion réétablie`)
     } else if (response.statusCode === 429 || failureCode === 'TOO_MANY_ATTEMPTS') {
       setIsLoading(false)
-      setErrorMessage(t`Nombre de tentatives dépassé. Réessaye dans 1 minute.`)
+      setErrorMessage(t`Nombre de tentatives dépassé. Réessaye dans 1 minute`)
     } else {
       setIsLoading(false)
-      setErrorMessage(t`E-mail ou mot de passe incorrect.`)
+      setErrorMessage(t`E-mail ou mot de passe incorrect`)
     }
   }
 
@@ -134,16 +149,22 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         onLeftIconPress={goBack}
         {...rightIconProps}
       />
-      {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={5} />}
+      {!!errorMessage && (
+        <InputError visible messageId={errorMessage} numberOfSpacesTop={5} centered />
+      )}
       <Spacer.Column numberOfSpaces={7} />
-      <InputContainer>
-        <EmailInput
-          label={t`Adresse e-mail`}
-          email={email}
-          onEmailChange={setEmail}
-          isError={!!errorMessage}
-        />
-      </InputContainer>
+      <EmailInput
+        label={t`Adresse e-mail`}
+        email={email}
+        onEmailChange={onEmailChange}
+        isError={hasEmailError || !!errorMessage}
+        isRequiredField
+      />
+      <InputError
+        visible={hasEmailError}
+        messageId={t`L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr`}
+        numberOfSpacesTop={2}
+      />
       <Spacer.Column numberOfSpaces={6} />
       <PasswordInput
         label={t`Mot de passe`}
@@ -153,13 +174,18 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         isError={!!errorMessage}
         textContentType="password"
         onSubmitEditing={onSubmit}
+        isRequiredField
       />
       <Spacer.Column numberOfSpaces={7} />
       <ForgottenPasswordContainer>
-        <TouchableOpacity onPress={onForgottenPasswordClick}>
-          <Typo.ButtonText>{t`Mot de passe oublié\u00a0?`}</Typo.ButtonText>
-        </TouchableOpacity>
+        <ButtonTertiaryBlack
+          title={t`Mot de passe oublié\u00a0?`}
+          onPress={onForgottenPasswordClick}
+          icon={Key}
+          inline
+        />
       </ForgottenPasswordContainer>
+
       <Spacer.Column numberOfSpaces={8} />
       <ButtonPrimary
         title={t`Se connecter`}

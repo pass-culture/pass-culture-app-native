@@ -98,6 +98,7 @@ export function ChangePassword() {
           autoFocus={true}
           onChangeText={setCurrentPassword}
           placeholder={t`Ton mot de passe actuel`}
+          isRequiredField
         />
         <InputError
           visible={hasError}
@@ -110,12 +111,10 @@ export function ChangePassword() {
           value={newPassword}
           onChangeText={updateNewPassword}
           placeholder={t`Ton nouveau mot de passe`}
+          isRequiredField
         />
         {!!(shouldDisplayPasswordRules && newPassword.length > 0) && (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={2} />
-            <PasswordSecurityRules password={newPassword} />
-          </React.Fragment>
+          <PasswordSecurityRules password={newPassword} />
         )}
         <Spacer.Column numberOfSpaces={5} />
         <PasswordInput
@@ -126,10 +125,11 @@ export function ChangePassword() {
           onFocus={() => {
             setTimeout(() => scrollRef?.current?.scrollToEnd({ animated: true }), 60)
           }}
+          isRequiredField
         />
         <InputError
           visible={displayNotMatchingError}
-          messageId={t`les mots de passe ne concordent pas`}
+          messageId={t`Les mots de passe ne concordent pas`}
           numberOfSpacesTop={2}
         />
         {theme.isDesktopViewport ? <Spacer.Column numberOfSpaces={10} /> : <Spacer.Flex flex={1} />}
