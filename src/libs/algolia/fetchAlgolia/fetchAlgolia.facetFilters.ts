@@ -4,6 +4,7 @@ import { FACETS_ENUM } from 'libs/algolia/enums'
 import { FiltersArray, SearchParametersQuery } from 'libs/algolia/types'
 
 const underageFilter = [[`${FACETS_ENUM.OFFER_ID_FORBIDDEN_TO_UNDERAGE}:false`]]
+const defaultFilter = [[`${FACETS_ENUM.OFFER_IS_EDUCATIONAL}:false`]]
 
 export const buildFacetFilters = ({
   locationFilter,
@@ -21,7 +22,9 @@ export const buildFacetFilters = ({
 } => {
   if (offerCategories.length === 0 && offerTypes == null && offerIsDuo === false) return null
 
-  const facetFilters: FiltersArray = isUserUnderage ? [...underageFilter] : []
+  const facetFilters = [...defaultFilter]
+
+  if (isUserUnderage) facetFilters.push(...underageFilter)
 
   if (offerCategories.length > 0) {
     const categoriesPredicate = buildOfferCategoriesPredicate(offerCategories)
