@@ -122,6 +122,29 @@ describe('OfferPartialDescription', () => {
         })
         expect(queryByTestId('offerSeeMoreContainer')).toBeTruthy()
       })
+      it('when the description is small enough to be fully readable and there is image on the description page', () => {
+        const lines = [
+          { text: 'Combattant sans risque, vous devez agir ' },
+          { text: 'sans précaution. En effet, pour vous autres ' },
+          { text: 'hommes, les défaites ne sont que des ' },
+          { text: 'succès de moins. Dans cette partie si ' },
+          { text: 'inégale, notre fortune est de ne pas perdre, ' },
+          { text: 'et votre malheur de ne pas gagner.' },
+        ]
+        const description = lines.map(({ text }) => text).join(' ')
+        const { getByTestId, queryByTestId } = renderOfferDescription({
+          ...defaultParams,
+          description,
+          setup: setupWithImage,
+        })
+        const descriptionComponent = getByTestId('offerPartialDescriptionBody')
+
+        act(() => {
+          descriptionComponent.props.onTextLayout({ nativeEvent: { lines } })
+        })
+
+        expect(queryByTestId('offerSeeMoreContainer')).toBeTruthy()
+      })
     })
     describe("shouldn't be rendered", () => {
       it('when there is no content on the description page', () => {
