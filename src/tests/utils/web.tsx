@@ -7,7 +7,8 @@ import flushPromises from 'flush-promises'
 import { fr } from 'make-plural/plurals'
 import React, { ReactNode } from 'react'
 import { ReactTestInstance } from 'react-test-renderer'
-import { ThemeProvider, DefaultTheme } from 'styled-components/native'
+import { ThemeProvider as ThemeProviderWeb, DefaultTheme } from 'styled-components'
+import { ThemeProvider } from 'styled-components/native'
 
 import { messages } from 'locales/fr/messages'
 import { computedTheme } from 'tests/computedTheme'
@@ -84,11 +85,13 @@ type PropsWithTheme = {
 
 const DefaultWrapper = ({ children, theme }: PropsWithTheme) => {
   return (
-    <ThemeProvider theme={deepmerge(computedTheme, theme || {})}>
-      <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
-        {children}
-      </I18nProvider>
-    </ThemeProvider>
+    <ThemeProviderWeb theme={deepmerge(computedTheme, theme || {})}>
+      <ThemeProvider theme={deepmerge(computedTheme, theme || {})}>
+        <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
+          {children}
+        </I18nProvider>
+      </ThemeProvider>
+    </ThemeProviderWeb>
   )
 }
 
