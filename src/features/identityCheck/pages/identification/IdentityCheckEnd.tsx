@@ -1,11 +1,11 @@
 import { t } from '@lingui/macro'
 import React, { useEffect } from 'react'
 
+import { useNextSubscriptionStep } from 'features/auth/signup/nextSubscriptionStep'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
+import { navigateToHome } from 'features/navigation/helpers'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
-import { useNextSubscriptionStep } from 'features/auth/signup/nextSubscriptionStep'
-import { navigateToHome } from 'features/navigation/helpers'
 
 export const IdentityCheckEnd = () => {
   const { data: subscription } = useNextSubscriptionStep()
