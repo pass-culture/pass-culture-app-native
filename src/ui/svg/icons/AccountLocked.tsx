@@ -1,12 +1,12 @@
 import * as React from 'react'
 import Svg, { Path, G } from 'react-native-svg'
 
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum, STANDARD_ICON_SIZE } from 'ui/theme'
 
 import { BicolorIconInterface } from './types'
 
 export const AccountLocked: React.FunctionComponent<BicolorIconInterface> = ({
-  size = 32,
+  size = STANDARD_ICON_SIZE,
   color = ColorsEnum.PRIMARY,
   testID,
 }) => (

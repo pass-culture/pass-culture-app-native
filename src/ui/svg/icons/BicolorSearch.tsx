@@ -2,12 +2,12 @@ import * as React from 'react'
 import Svg, { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
 
 import { svgIdentifier } from 'ui/svg/utils'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum, STANDARD_ICON_SIZE } from 'ui/theme'
 
 import { BicolorIconInterface } from './types'
 
 const NotMemoizedBicolorSearch: React.FC<BicolorIconInterface> = ({
-  size = 32,
+  size = STANDARD_ICON_SIZE,
   color,
   color2,
   thin = false,

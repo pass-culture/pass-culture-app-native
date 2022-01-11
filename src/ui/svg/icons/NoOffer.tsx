@@ -1,11 +1,15 @@
 import * as React from 'react'
 import Svg, { Path, G } from 'react-native-svg'
 
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum, STANDARD_ICON_SIZE } from 'ui/theme'
 
 import { IconInterface } from './types'
 
-export const NoOffer = ({ color = ColorsEnum.GREY_MEDIUM, size = 32, testID }: IconInterface) => {
+export const NoOffer = ({
+  color = ColorsEnum.GREY_MEDIUM,
+  size = STANDARD_ICON_SIZE,
+  testID,
+}: IconInterface) => {
   return (
     <Svg width={size} height={size} testID={testID} viewBox="0 0 156 156" aria-hidden>
       <G fill="none" fillRule="evenodd">

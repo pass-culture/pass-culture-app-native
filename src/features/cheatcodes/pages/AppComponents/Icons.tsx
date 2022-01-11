@@ -141,18 +141,9 @@ interface IconProps {
 
 const Icon = ({ name, component: IconComponent, isNew = false }: IconProps) => (
   <AlignedText>
-    <IconComponent size={STANDARD_ICON_SIZE} />
+    <IconComponent size={!isNew ? STANDARD_ICON_SIZE : undefined} />
     <Text style={{ color: isNew ? ColorsEnum.BLACK : ColorsEnum.GREY_DARK }}>
-      {` - ${name} ${isNew ? '(new)' : ''}`}
-    </Text>
-  </AlignedText>
-)
-
-const SmallerIcon = ({ name, component: IconComponent, isNew = false }: IconProps) => (
-  <AlignedText>
-    <IconComponent />
-    <Text style={{ color: isNew ? ColorsEnum.BLACK : ColorsEnum.GREY_DARK }}>
-      {` - ${name} ${isNew ? '(new)' : ''}`}
+      {` - ${name} ${isNew ? '' : '(deprecated)'}`}
     </Text>
   </AlignedText>
 )
@@ -223,19 +214,19 @@ const TertiaryAndSmallerIcons = () => {
       <Text>
         {'Tertiary and smaller plain Icons ( <= 20x20 ) should have a standard size of 20'}
       </Text>
-      <SmallerIcon name="Again" component={Again} isNew />
-      <SmallerIcon name="Digital" component={Digital} isNew />
-      <SmallerIcon name="EditPen" component={EditPen} isNew />
-      <SmallerIcon name="EmailFilled" component={EmailFilled} isNew />
-      <SmallerIcon name="ExternalSiteFilled" component={ExternalSiteFilled} isNew />
-      <SmallerIcon name="InfoPlain" component={InfoPlain} isNew />
-      <SmallerIcon name="Invalidate" component={Invalidate} isNew />
-      <SmallerIcon name="Key" component={Key} isNew />
-      <SmallerIcon name="LocationPointer" component={LocationPointer} isNew />
-      <SmallerIcon name="PhoneFilled" component={PhoneFilled} isNew />
-      <SmallerIcon name="PlainArrowPrevious" component={PlainArrowPrevious} isNew />
-      <SmallerIcon name="Plus" component={Plus} isNew />
-      <SmallerIcon name="Validate" component={Validate} isNew />
+      <Icon name="Again" component={Again} isNew />
+      <Icon name="Digital" component={Digital} isNew />
+      <Icon name="EditPen" component={EditPen} isNew />
+      <Icon name="EmailFilled" component={EmailFilled} isNew />
+      <Icon name="ExternalSiteFilled" component={ExternalSiteFilled} isNew />
+      <Icon name="InfoPlain" component={InfoPlain} isNew />
+      <Icon name="Invalidate" component={Invalidate} isNew />
+      <Icon name="Key" component={Key} isNew />
+      <Icon name="LocationPointer" component={LocationPointer} isNew />
+      <Icon name="PhoneFilled" component={PhoneFilled} isNew />
+      <Icon name="PlainArrowPrevious" component={PlainArrowPrevious} isNew />
+      <Icon name="Plus" component={Plus} isNew />
+      <Icon name="Validate" component={Validate} isNew />
       <Text>{'\n'}</Text>
     </React.Fragment>
   )

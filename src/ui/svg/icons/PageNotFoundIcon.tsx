@@ -2,9 +2,12 @@ import * as React from 'react'
 import Svg, { Path } from 'react-native-svg'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum, STANDARD_ICON_SIZE } from 'ui/theme'
 
-function NotMemoizedPageNotFoundIcon({ size = 32, color = ColorsEnum.WHITE }: IconInterface) {
+function NotMemoizedPageNotFoundIcon({
+  size = STANDARD_ICON_SIZE,
+  color = ColorsEnum.WHITE,
+}: IconInterface) {
   return (
     <Svg width={size} height={size} viewBox="0 0 133 110" fill="none">
       <Path

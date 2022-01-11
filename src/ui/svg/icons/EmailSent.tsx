@@ -1,11 +1,15 @@
 import * as React from 'react'
 import Svg, { G, Path } from 'react-native-svg'
 
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum, STANDARD_ICON_SIZE } from 'ui/theme'
 
 import { IconInterface } from './types'
 
-export function EmailSent({ size = 32, color = ColorsEnum.WHITE, testID }: IconInterface) {
+export function EmailSent({
+  size = STANDARD_ICON_SIZE,
+  color = ColorsEnum.WHITE,
+  testID,
+}: IconInterface) {
   return (
     <Svg width={size} height={size} viewBox="0 0 148 87" testID={testID}>
       <G fill="none" fillRule="evenodd">

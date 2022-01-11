@@ -1,12 +1,12 @@
 import * as React from 'react'
 import Svg, { Path } from 'react-native-svg'
 
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum, SMALLER_ICON_SIZE } from 'ui/theme'
 
 import { IconInterface } from './types'
 
 export const PlainArrowPrevious: React.FunctionComponent<IconInterface> = ({
-  size = 20,
+  size = SMALLER_ICON_SIZE,
   color = ColorsEnum.BLACK,
   testID,
 }) => (

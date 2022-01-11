@@ -2,9 +2,14 @@ import React from 'react'
 import Svg, { Path } from 'react-native-svg'
 
 import { IconInterface } from 'ui/svg/icons/types'
+import { STANDARD_ICON_SIZE } from 'ui/theme'
 import { ColorsEnum } from 'ui/theme/colors'
 
-export function OfferDigital({ size = 32, testID, color = ColorsEnum.BLACK }: IconInterface) {
+export function OfferDigital({
+  size = STANDARD_ICON_SIZE,
+  testID,
+  color = ColorsEnum.BLACK,
+}: IconInterface) {
   return (
     <Svg width={size} height={size} testID={testID} viewBox="0 0 48 48" aria-hidden>
       <Path

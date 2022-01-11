@@ -1,11 +1,14 @@
 import * as React from 'react'
 import Svg, { G, Path } from 'react-native-svg'
 
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum, STANDARD_ICON_SIZE } from 'ui/theme'
 
 import { IconInterface } from './types'
 
-export function Flag({ size = 32, color = ColorsEnum.BLACK }: IconInterface): JSX.Element {
+export function Flag({
+  size = STANDARD_ICON_SIZE,
+  color = ColorsEnum.BLACK,
+}: IconInterface): JSX.Element {
   return (
     <Svg width={size} height={size} viewBox="0 0 25 24" aria-hidden>
       <G fill="none" fillRule="evenodd">
