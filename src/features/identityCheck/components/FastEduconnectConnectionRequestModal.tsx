@@ -68,7 +68,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
 
       <TextQuestion
         onPress={() => openUrl(env.FAQ_LINK_EDUCONNECT_URL)}
-        icon={(props) => <InfoPlain {...props} size={getSpacing(5)} />}
+        icon={InfoPlain}
         title={t`C’est quoi ÉduConnect\u00a0?`}
       />
 
@@ -77,7 +77,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
       <OrSeparator />
 
       <ButtonTertiaryBlack
-        icon={(props) => <EditPen {...props} size={getSpacing(5)} />}
+        icon={EditPen}
         title={t`Identification manuelle`}
         onPress={onPressManualIdentification}
       />

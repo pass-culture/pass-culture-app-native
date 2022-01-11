@@ -3,10 +3,10 @@ import { Path } from 'react-native-svg'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum, STANDARD_ICON_SIZE } from 'ui/theme'
 
 export const ExternalSite: React.FunctionComponent<AccessibleIcon> = ({
-  size = 32,
+  size = STANDARD_ICON_SIZE,
   color = ColorsEnum.BLACK,
   testID,
   accessibilityLabel,

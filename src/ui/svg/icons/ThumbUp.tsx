@@ -1,11 +1,15 @@
 import * as React from 'react'
 import Svg, { G, Path } from 'react-native-svg'
 
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum, STANDARD_ICON_SIZE } from 'ui/theme'
 
 import { IconInterface } from './types'
 
-export function ThumbUp({ size = 32, color = ColorsEnum.BLACK, testID }: IconInterface) {
+export function ThumbUp({
+  size = STANDARD_ICON_SIZE,
+  color = ColorsEnum.BLACK,
+  testID,
+}: IconInterface) {
   return (
     <Svg width={size} height={size} fill={color} viewBox="0 0 76 76" testID={testID}>
       <G fill="none" fillRule="evenodd">

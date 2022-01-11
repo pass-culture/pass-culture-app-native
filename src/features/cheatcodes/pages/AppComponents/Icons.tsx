@@ -76,6 +76,7 @@ import { Offers } from 'ui/svg/icons/Offers'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
+import { Plus } from 'ui/svg/icons/Plus'
 import { Profile } from 'ui/svg/icons/Profile'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Quote } from 'ui/svg/icons/Quote'
@@ -90,7 +91,7 @@ import { Validate } from 'ui/svg/icons/Validate'
 import { Warning } from 'ui/svg/icons/Warning'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
 
-const ICON_SIZE = getSpacing(8)
+const STANDARD_ICON_SIZE = getSpacing(8)
 
 export const Icons: FunctionComponent = () => {
   return (
@@ -109,15 +110,23 @@ export const Icons: FunctionComponent = () => {
       <Spacer.Column numberOfSpaces={4} />
       <Text> Icônes à uniformiser (conversion en illustrations) </Text>
       <AlignedText>
-        <TicketBooked width={ICON_SIZE} height={ICON_SIZE} />
+        <TicketBooked width={STANDARD_ICON_SIZE} height={STANDARD_ICON_SIZE} />
         <Text> - TicketBooked </Text>
       </AlignedText>
       <AlignedText>
-        <MaintenanceCone width={ICON_SIZE * 2} height={ICON_SIZE} color={ColorsEnum.BLACK} />
+        <MaintenanceCone
+          width={STANDARD_ICON_SIZE * 2}
+          height={STANDARD_ICON_SIZE}
+          color={ColorsEnum.BLACK}
+        />
         <Text> - MaintenanceCone </Text>
       </AlignedText>
       <AlignedText>
-        <LogoPassCulture width={ICON_SIZE * 2} height={ICON_SIZE} color={ColorsEnum.BLACK} />
+        <LogoPassCulture
+          width={STANDARD_ICON_SIZE * 2}
+          height={STANDARD_ICON_SIZE}
+          color={ColorsEnum.BLACK}
+        />
         <Text> - LogoPassCulture </Text>
       </AlignedText>
     </React.Fragment>
@@ -132,9 +141,9 @@ interface IconProps {
 
 const Icon = ({ name, component: IconComponent, isNew = false }: IconProps) => (
   <AlignedText>
-    <IconComponent size={ICON_SIZE} />
+    <IconComponent size={!isNew ? STANDARD_ICON_SIZE : undefined} />
     <Text style={{ color: isNew ? ColorsEnum.BLACK : ColorsEnum.GREY_DARK }}>
-      {` - ${name} ${isNew ? '(new)' : ''}`}
+      {` - ${name} ${isNew ? '' : '(deprecated)'}`}
     </Text>
   </AlignedText>
 )
@@ -151,8 +160,16 @@ const CategoryIcons = () => {
       <Text>{'Categories'}</Text>
       {Object.entries(CATEGORY_CRITERIA).map(([searchGroup, { icon: BicolorIcon }]) => (
         <AlignedText key={searchGroup}>
-          <BicolorIcon size={ICON_SIZE} color={ColorsEnum.PRIMARY} color2={ColorsEnum.PRIMARY} />
-          <BicolorIcon size={ICON_SIZE} color={ColorsEnum.PRIMARY} color2={ColorsEnum.SECONDARY} />
+          <BicolorIcon
+            size={STANDARD_ICON_SIZE}
+            color={ColorsEnum.PRIMARY}
+            color2={ColorsEnum.PRIMARY}
+          />
+          <BicolorIcon
+            size={STANDARD_ICON_SIZE}
+            color={ColorsEnum.PRIMARY}
+            color2={ColorsEnum.SECONDARY}
+          />
           <Text> - {searchGroupLabelMapping[searchGroup as SearchGroupNameEnum]} </Text>
         </AlignedText>
       ))}
@@ -169,7 +186,7 @@ const VenueTypesIcons = () => {
         const Icon = mapVenueTypeToIcon(venueType as VenueTypeCodeKey)
         return (
           <AlignedText key={venueType}>
-            <Icon size={ICON_SIZE} color={ColorsEnum.PRIMARY} />
+            <Icon size={STANDARD_ICON_SIZE} color={ColorsEnum.PRIMARY} />
             <Text> - {venueType} </Text>
           </AlignedText>
         )
@@ -194,7 +211,9 @@ const IdentityCheckIcons = () => {
 const TertiaryAndSmallerIcons = () => {
   return (
     <React.Fragment>
-      <Text>{'Tertiary and smaller plain Icons ( <= 20x20 )'}</Text>
+      <Text>
+        {'Tertiary and smaller plain Icons ( <= 20x20 ) should have a standard size of 20'}
+      </Text>
       <Icon name="Again" component={Again} isNew />
       <Icon name="Digital" component={Digital} isNew />
       <Icon name="EditPen" component={EditPen} isNew />
@@ -206,6 +225,7 @@ const TertiaryAndSmallerIcons = () => {
       <Icon name="LocationPointer" component={LocationPointer} isNew />
       <Icon name="PhoneFilled" component={PhoneFilled} isNew />
       <Icon name="PlainArrowPrevious" component={PlainArrowPrevious} isNew />
+      <Icon name="Plus" component={Plus} isNew />
       <Icon name="Validate" component={Validate} isNew />
       <Text>{'\n'}</Text>
     </React.Fragment>
@@ -215,7 +235,7 @@ const TertiaryAndSmallerIcons = () => {
 const SecondaryAndBiggerIcons = () => {
   return (
     <React.Fragment>
-      <Text>{'Secondary and bigger Icons ( > 20x20 )'}</Text>
+      <Text>{'Secondary and bigger Icons ( > 20x20 ) should have a standard size of 32'}</Text>
       <Icon name="BicolorAroundMe" component={BicolorAroundMe} isNew />
       <Icon name="BicolorBookings" component={BicolorBookings} isNew />
       <Icon name="BicolorConfidentiality" component={BicolorConfidentiality} isNew />
@@ -233,7 +253,7 @@ const SecondaryAndBiggerIcons = () => {
       <Icon name="BicolorProfile" component={BicolorProfile} isNew />
       <Icon name="BicolorSearch" component={BicolorSearch} isNew />
       <AlignedText>
-        <BicolorSelector width={ICON_SIZE} height={getSpacing(1)} />
+        <BicolorSelector width={STANDARD_ICON_SIZE} height={getSpacing(1)} />
         <Text> - BicolorSelector </Text>
       </AlignedText>
       <Icon name="ArrowNext" component={ArrowNext} isNew />

@@ -1,12 +1,12 @@
 import * as React from 'react'
 import Svg, { Path } from 'react-native-svg'
 
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum, STANDARD_ICON_SIZE } from 'ui/theme'
 
 import { IconInterface } from './types'
 
 export const PointerLocationNotFilledDisabled: React.FunctionComponent<IconInterface> = ({
-  size = 32,
+  size = STANDARD_ICON_SIZE,
   color = ColorsEnum.PRIMARY,
   testID,
 }) => (

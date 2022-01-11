@@ -349,9 +349,9 @@ exports[`<DMSModal/> should render correctly 1`] = `
               testID="Je suis de nationalité française"
             >
               <View
-                height={32}
+                height={20}
                 testID="button-icon"
-                width={32}
+                width={20}
               >
                 <Text>
                   button-icon-SVG-Mock
@@ -437,9 +437,9 @@ exports[`<DMSModal/> should render correctly 1`] = `
               testID="Je suis de nationalité étrangère"
             >
               <View
-                height={32}
+                height={20}
                 testID="button-icon"
-                width={32}
+                width={20}
               >
                 <Text>
                   button-icon-SVG-Mock
