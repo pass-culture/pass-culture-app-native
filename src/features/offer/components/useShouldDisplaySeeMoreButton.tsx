@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { Platform } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { getContentFromOffer } from '../pages/OfferDescription'
@@ -13,7 +12,7 @@ export const useShouldDisplaySeeMoreButton = (
   setLinesDisplayed: (linesDisplayed: number) => void
 } => {
   const theme = useTheme()
-  const shouldTruncateDescription = !(Platform.OS === 'web' && theme.isDesktopViewport)
+  const shouldTruncateDescription = theme.isDesktopViewport === false
   const maxDisplayedDescriptionLines = shouldTruncateDescription
     ? maxTheoricalDisplayedDescriptionLines
     : undefined
