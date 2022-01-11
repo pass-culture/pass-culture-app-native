@@ -126,12 +126,7 @@ describe('OfferPartialDescription', () => {
       it('on desktop when there is only description on the description page', () => {
         const { queryByTestId } = renderOfferDescription({
           ...defaultParams,
-          setup: (queryClient) => {
-            queryClient.setQueryData(['offer', offerId], {
-              image: {},
-              extraData: {},
-            })
-          },
+          setup: setupWithNoDataInDescriptionPage,
           options: {
             theme: {
               isMobileViewport: false,
