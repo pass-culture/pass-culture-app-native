@@ -8,17 +8,16 @@ import styled from 'styled-components/native'
 import { NotificationSubscriptions, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
+import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch'
 import { analytics } from 'libs/analytics'
 import { useAppStateChange } from 'libs/appState'
 import { PushNotificationsModal } from 'libs/notifications/components/PushNotificationsModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import FilterSwitch from 'ui/components/FilterSwitch'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { useModal } from 'ui/components/modals/useModal'
-import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 import { useUpdateProfileMutation } from '../api'
 import { ProfileContainer } from '../components/reusables'
@@ -149,53 +148,39 @@ export function NotificationSettings() {
       <Spacer.TopScreen />
       <ProfileContainer>
         <Spacer.Column numberOfSpaces={18} />
-        <Typo.Body color={ColorsEnum.BLACK}>
+        <Typo.Body>
           {isLoggedIn
             ? t`Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.`
             : t`Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture `}
         </Typo.Body>
         <Spacer.Column numberOfSpaces={4} />
         <Separator />
-        <Line>
-          <SettingExplanation>
-            {t`Je veux recevoir les recommandations personnalisées et meilleures offres du pass Culture.`}
-          </SettingExplanation>
-          <Spacer.Column numberOfSpaces={4} />
-          <SectionRow
-            type="clickable"
-            title={t`Autoriser l’envoi d’e\u2011mails`}
-            cta={
-              <FilterSwitch
-                active={allowEmails}
-                accessibilityLabel={t`Interrupteur autorisation d'envoi des emails`}
-                toggle={toggleEmails}
-                disabled={!isLoggedIn}
-              />
-            }
-          />
-          <Spacer.Column numberOfSpaces={3} />
-        </Line>
+        <Spacer.Column numberOfSpaces={4} />
+        <StyledCaption>
+          {t`Je veux recevoir les recommandations personnalisées et meilleures offres du pass Culture.`}
+        </StyledCaption>
+        <SectionWithSwitch
+          title={t`Autoriser l’envoi d’e\u2011mails`}
+          active={allowEmails}
+          accessibilityLabel={t`Interrupteur d'autorisation d'envoi des e-mails`}
+          toggle={toggleEmails}
+          disabled={!isLoggedIn}
+        />
         <Separator />
         {Platform.OS === 'ios' && (
-          <Line>
-            <SettingExplanation>
-              {t`Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil.`}
-            </SettingExplanation>
+          <React.Fragment>
             <Spacer.Column numberOfSpaces={4} />
-            <SectionRow
-              type="clickable"
+            <StyledCaption>
+              {t`Je veux être alerté des actualités et des meilleures offres du pass Culture directement sur mon appareil.`}
+            </StyledCaption>
+            <SectionWithSwitch
               title={t`Autoriser les notifications marketing`}
-              cta={
-                <FilterSwitch
-                  active={pushSwitchEnabled}
-                  accessibilityLabel={t`Interrupteur push notifications`}
-                  toggle={togglePush}
-                  disabled={!isLoggedIn}
-                />
-              }
+              active={pushSwitchEnabled}
+              accessibilityLabel={t`Interrupteur d'autorisation des notifications marketing`}
+              toggle={togglePush}
+              disabled={!isLoggedIn}
             />
-            <Spacer.Column numberOfSpaces={3} />
-          </Line>
+          </React.Fragment>
         )}
         <Spacer.Flex flex={1} />
         {!!isLoggedIn && (
@@ -222,16 +207,9 @@ const StyledButtonPrimary = styled(ButtonPrimary)({
   alignSelf: 'center',
 })
 
-const Line = styled.View({
-  paddingVertical: getSpacing(4),
-})
-
-const SettingExplanation = styled.Text({
-  fontFamily: 'Montserrat-Medium',
-  fontSize: 13,
-  lineHeight: '16px',
-  color: ColorsEnum.GREY_DARK,
-})
+const StyledCaption = styled(Typo.Caption)(({ theme, color }) => ({
+  color: color ?? theme.colors.greyDark,
+}))
 
 const getInitialSwitchesState = (
   subscriptions?: NotificationSubscriptions

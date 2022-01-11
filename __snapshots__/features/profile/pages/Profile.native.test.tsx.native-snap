@@ -149,7 +149,7 @@ exports[`Profile component should render correctly 1`] = `
                   style={
                     Array [
                       Object {
-                        "paddingVertical": 8,
+                        "paddingTop": 8,
                       },
                     ]
                   }
@@ -500,38 +500,29 @@ exports[`Profile component should render correctly 1`] = `
                     </View>
                   </View>
                   <View
-                    accessibilityLabel="Géolocalisation"
-                    accessible={true}
-                    collapsable={false}
-                    focusable={false}
-                    nativeID="animatedComponent"
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
                     style={
-                      Object {
-                        "opacity": 1,
-                      }
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "paddingVertical": 16,
+                        },
+                      ]
                     }
-                    testID="Géolocalisation"
                   >
                     <View
                       style={
                         Array [
                           Object {
                             "alignItems": "center",
+                            "flexBasis": 0,
                             "flexDirection": "row",
-                            "justifyContent": "space-between",
-                          },
-                          Object {
-                            "paddingVertical": 16,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
                           },
                         ]
                       }
+                      toggleLabel={true}
                     >
                       <View
                         height={24}
@@ -551,129 +542,105 @@ exports[`Profile component should render correctly 1`] = `
                           ]
                         }
                       />
-                      <View
+                      <Text
                         style={
                           Array [
                             Object {
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "textAlign": "left",
+                              "color": "#151515",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 15,
+                              "lineHeight": 20,
                             },
                           ]
                         }
                       >
-                        <Text
-                          numberOfLines={2}
-                          style={
-                            Array [
-                              Object {
-                                "color": "#151515",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 15,
-                                "lineHeight": 20,
-                              },
-                            ]
-                          }
-                        >
-                          Géolocalisation
-                        </Text>
-                      </View>
+                        Partager ma position
+                      </Text>
+                    </View>
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                          },
+                        ]
+                      }
+                    >
                       <View
                         style={
                           Array [
                             Object {
-                              "alignItems": "flex-end",
+                              "alignItems": "center",
+                              "flexDirection": "row",
                             },
                           ]
                         }
                       >
                         <View
-                          style={
-                            Array [
-                              Object {
-                                "alignItems": "center",
-                                "flexDirection": "row",
-                              },
-                            ]
+                          accessibilityLabel="Interrupteur géolocalisation"
+                          accessibilityState={
+                            Object {
+                              "disabled": false,
+                            }
                           }
+                          accessibilityValue={
+                            Object {
+                              "text": "true",
+                            }
+                          }
+                          accessible={true}
+                          collapsable={false}
+                          focusable={true}
+                          nativeID="animatedComponent"
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            Object {
+                              "opacity": 1,
+                            }
+                          }
+                          testID="Interrupteur géolocalisation"
                         >
                           <View
+                            backgroundColor="#15884f"
                             style={
                               Array [
                                 Object {
-                                  "alignItems": "center",
-                                  "flexDirection": "row",
+                                  "backgroundColor": "#15884f",
+                                  "borderRadius": 16,
+                                  "height": 32,
+                                  "justifyContent": "center",
+                                  "marginLeft": 20,
+                                  "width": 56,
                                 },
                               ]
                             }
                           >
                             <View
-                              accessibilityLabel="Interrupteur géolocalisation"
-                              accessibilityState={
-                                Object {
-                                  "disabled": false,
-                                }
-                              }
-                              accessibilityValue={
-                                Object {
-                                  "text": "true",
-                                }
-                              }
-                              accessible={true}
-                              collapsable={false}
-                              focusable={true}
-                              nativeID="animatedComponent"
-                              onClick={[Function]}
-                              onResponderGrant={[Function]}
-                              onResponderMove={[Function]}
-                              onResponderRelease={[Function]}
-                              onResponderTerminate={[Function]}
-                              onResponderTerminationRequest={[Function]}
-                              onStartShouldSetResponder={[Function]}
                               style={
                                 Object {
-                                  "opacity": 1,
+                                  "aspectRatio": 1,
+                                  "backgroundColor": "#ffffff",
+                                  "borderRadius": 28,
+                                  "height": 28,
+                                  "marginLeft": 26,
+                                  "shadowColor": "#151515",
+                                  "shadowOffset": Object {
+                                    "height": 2,
+                                    "width": 0,
+                                  },
+                                  "shadowOpacity": 0.2,
+                                  "shadowRadius": 2.5,
+                                  "width": 28,
                                 }
                               }
-                              testID="Interrupteur géolocalisation"
-                            >
-                              <View
-                                backgroundColor="#15884f"
-                                style={
-                                  Array [
-                                    Object {
-                                      "backgroundColor": "#15884f",
-                                      "borderRadius": 16,
-                                      "height": 32,
-                                      "justifyContent": "center",
-                                      "marginLeft": 20,
-                                      "width": 56,
-                                    },
-                                  ]
-                                }
-                              >
-                                <View
-                                  style={
-                                    Object {
-                                      "aspectRatio": 1,
-                                      "backgroundColor": "#ffffff",
-                                      "borderRadius": 28,
-                                      "height": 28,
-                                      "marginLeft": 26,
-                                      "shadowColor": "#151515",
-                                      "shadowOffset": Object {
-                                        "height": 2,
-                                        "width": 0,
-                                      },
-                                      "shadowOpacity": 0.2,
-                                      "shadowRadius": 2.5,
-                                      "width": 28,
-                                    }
-                                  }
-                                />
-                              </View>
-                            </View>
+                            />
                           </View>
                         </View>
                       </View>
@@ -684,7 +651,7 @@ exports[`Profile component should render correctly 1`] = `
                   style={
                     Array [
                       Object {
-                        "paddingVertical": 8,
+                        "paddingTop": 8,
                       },
                     ]
                   }
@@ -1028,7 +995,7 @@ exports[`Profile component should render correctly 1`] = `
                   style={
                     Array [
                       Object {
-                        "paddingVertical": 8,
+                        "paddingTop": 8,
                       },
                     ]
                   }
@@ -1372,7 +1339,7 @@ exports[`Profile component should render correctly 1`] = `
                   style={
                     Array [
                       Object {
-                        "paddingVertical": 8,
+                        "paddingTop": 8,
                       },
                     ]
                   }
@@ -1756,7 +1723,7 @@ exports[`Profile component should render correctly 1`] = `
                   style={
                     Array [
                       Object {
-                        "paddingVertical": 8,
+                        "paddingTop": 8,
                       },
                     ]
                   }
@@ -1880,7 +1847,7 @@ exports[`Profile component should render correctly 1`] = `
                   style={
                     Array [
                       Object {
-                        "paddingVertical": 8,
+                        "paddingTop": 8,
                       },
                     ]
                   }

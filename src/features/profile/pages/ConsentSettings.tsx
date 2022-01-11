@@ -6,17 +6,16 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { openUrl } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
+import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
-import FilterSwitch from 'ui/components/FilterSwitch'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 import { ProfileContainer } from '../components/reusables'
 
@@ -85,22 +84,13 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
         </MoreInformationContainer>
         <Spacer.Column numberOfSpaces={4} />
         <Separator />
-        <Line>
-          <SectionRow
-            numberOfLines={3}
-            type="clickable"
-            title={t`Autoriser l’utilisation de mes données de navigation`}
-            cta={
-              <FilterSwitch
-                active={isTrackingSwitchActive}
-                accessibilityLabel={t`Interrupteur données de navigation`}
-                toggle={toggleTrackingSwitch}
-              />
-            }
-          />
-          <Spacer.Column numberOfSpaces={3} />
-        </Line>
-        <Spacer.Flex flex={1} />
+        <SectionWithSwitch
+          title={t`Autoriser l’utilisation de mes données de navigation`}
+          active={isTrackingSwitchActive}
+          accessibilityLabel={t`Interrupteur données de navigation`}
+          toggle={toggleTrackingSwitch}
+        />
+        <Spacer.Flex />
         <StyledButtonPrimary
           title={t`Enregistrer`}
           onPress={save}
@@ -108,26 +98,21 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
         />
         <Spacer.Column numberOfSpaces={8} />
       </ProfileContainer>
-
       <PageHeader title={t`Paramètres de confidentialité`} onGoBack={route.params?.onGoBack} />
     </Container>
   )
 }
-
-const StyledButtonPrimary = styled(ButtonPrimary)({
-  alignSelf: 'center',
-})
 
 const Container = styled.View(({ theme }) => ({
   flex: 1,
   backgroundColor: theme.colors.white,
 }))
 
-const Line = styled.View({
-  paddingVertical: getSpacing(4),
-})
-
 const MoreInformationContainer = styled.View({
   flexDirection: 'row',
   flexWrap: 'wrap',
+})
+
+const StyledButtonPrimary = styled(ButtonPrimary)({
+  alignSelf: 'center',
 })

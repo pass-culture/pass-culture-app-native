@@ -21,7 +21,7 @@ export function Section(props: SectionProps) {
 }
 
 const Container = styled.View({
-  paddingVertical: getSpacing(2),
+  paddingTop: getSpacing(2),
 })
 
 const StyledCaption = styled(Typo.Caption)(({ theme, color }) => ({

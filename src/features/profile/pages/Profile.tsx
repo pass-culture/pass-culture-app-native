@@ -4,20 +4,19 @@ import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Platform, NativeScrollEvent, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
-import { useTheme } from 'styled-components/native'
 
 import { useAuthContext, useLogoutRoutine } from 'features/auth/AuthContext'
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
 import { useUserProfileInfo } from 'features/home/api'
 import { openUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch'
 import { SmartBanner } from 'features/smartBanner/SmartBanner'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { accessibilityAndTestId } from 'tests/utils'
-import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Section } from 'ui/components/Section'
 import { SectionRow } from 'ui/components/SectionRow'
@@ -42,7 +41,6 @@ import { ProfileContainer } from '../components/reusables'
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 
 export const Profile: React.FC = () => {
-  const { isMobileViewport } = useTheme()
   const { dispatch: favoritesDispatch } = useFavoritesState()
   const { navigate } = useNavigation<UseNavigationType>()
   const { data: user } = useUserProfileInfo()
@@ -137,25 +135,17 @@ export const Profile: React.FC = () => {
             icon={Bell}
             onPress={() => navigate('NotificationSettings')}
           />
-          <SectionRow
-            type="clickable"
-            title={t`Géolocalisation`}
+          <SectionWithSwitch
             icon={LocationPointerNotFilled}
             iconSize={SECTION_ROW_ICON_SIZE}
-            style={{ paddingVertical }}
-            cta={
-              <FilterSwitchLabelContainer>
-                {!isMobileViewport && <StyledCaption>{t`Partager ma position`}</StyledCaption>}
-                <FilterSwitch
-                  active={isGeolocSwitchActive}
-                  accessibilityLabel={t`Interrupteur géolocalisation`}
-                  toggle={() => {
-                    switchGeolocation()
-                    debouncedLogLocationToggle(!isGeolocSwitchActive)
-                  }}
-                />
-              </FilterSwitchLabelContainer>
-            }
+            title={t`Partager ma position`}
+            active={isGeolocSwitchActive}
+            accessibilityLabel={t`Interrupteur géolocalisation`}
+            toggle={() => {
+              switchGeolocation()
+              debouncedLogLocationToggle(!isGeolocSwitchActive)
+            }}
+            toggleLabel={t`Partager ma position`}
           />
           {!!positionError && (
             <InputError visible messageId={positionError.message} numberOfSpacesTop={1} />
@@ -243,11 +233,6 @@ const paddingVertical = getSpacing(4)
 
 const Row = styled(SectionRow).attrs({ iconSize: SECTION_ROW_ICON_SIZE })({
   paddingVertical,
-})
-
-const FilterSwitchLabelContainer = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
 })
 
 const StyledCaption = styled(Typo.Caption)(({ theme, color }) => ({
