@@ -8,6 +8,8 @@ import { render, fireEvent } from 'tests/utils/web'
 
 import { ExclusivityModule } from '../ExclusivityModule'
 
+jest.mock('features/search/utils/useMaxPrice', () => ({ useMaxPrice: jest.fn(() => 300) }))
+
 const props: ExclusivityPane = {
   alt: "Image d'Adèle",
   image: 'https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg',

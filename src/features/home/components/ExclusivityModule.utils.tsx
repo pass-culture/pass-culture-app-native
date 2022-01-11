@@ -1,14 +1,21 @@
 import { OfferResponse } from 'api/gen'
 import { ExclusivityPane } from 'features/home/contentful'
+import { getOfferPrice } from 'features/offer/services/getOfferPrice'
 import { GeoCoordinates } from 'libs/geolocation'
 import { computeDistanceInMeters } from 'libs/parsers'
+import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 
 export const shouldDisplayExcluOffer = (
   display: ExclusivityPane['display'],
   offer: OfferResponse | undefined,
-  userLocation: GeoCoordinates | null
+  userLocation: GeoCoordinates | null,
+  maxPrice: number
 ): boolean => {
   if (!offer) return false
+
+  const price = convertCentsToEuros(getOfferPrice(offer.stocks))
+  if (price > maxPrice) return false
+
   // Exclu module is not geolocated
   if (!display || !display.isGeolocated || !display.aroundRadius) return true
 
