@@ -8,6 +8,7 @@ import { shouldDisplayExcluOffer } from 'features/home/components/ExclusivityMod
 import { ExclusivityPane } from 'features/home/contentful'
 import { useExcluOffer } from 'features/home/pages/useExcluOffer'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { MARGIN_DP, LENGTH_XL, RATIO_EXCLU, Spacer, getSpacing } from 'ui/theme'
@@ -22,6 +23,7 @@ export const ExclusivityModule = ({
   const { navigate } = useNavigation<UseNavigationType>()
   const { data: offer } = useExcluOffer(id)
   const { position } = useGeolocation()
+  const maxPrice = useMaxPrice()
 
   const handlePressExclu = useCallback(() => {
     if (typeof id !== 'number') return
@@ -32,7 +34,7 @@ export const ExclusivityModule = ({
 
   const source = useMemo(() => ({ uri: image }), [image])
 
-  const shouldModuleBeDisplayed = shouldDisplayExcluOffer(display, offer, position)
+  const shouldModuleBeDisplayed = shouldDisplayExcluOffer(display, offer, position, maxPrice)
   if (!shouldModuleBeDisplayed) return <React.Fragment />
   return (
     <Row>

@@ -20,6 +20,7 @@ const mockStagedSearchState: SearchState = {
   ...initialSearchState,
   offerCategories: [SearchGroupNameEnum.CINEMA],
   locationFilter: { locationType: LocationType.VENUE, venue },
+  priceRange: [0, 20],
 }
 
 const mockDispatch = jest.fn()
@@ -54,6 +55,7 @@ describe('SearchBox component', () => {
         showResults: true,
         offerCategories: mockStagedSearchState.offerCategories,
         locationFilter: mockStagedSearchState.locationFilter,
+        priceRange: mockStagedSearchState.priceRange,
       })
     )
   })
