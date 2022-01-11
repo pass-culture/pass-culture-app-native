@@ -62,6 +62,7 @@ describe('fetchAlgolia', () => {
       page: 0,
       attributesToHighlight: [],
       attributesToRetrieve,
+      facetFilters: [['offer.isEducational:false']],
       numericFilters: [['offer.prices: 0 TO 300']],
     })
   })
@@ -75,6 +76,7 @@ describe('fetchAlgolia', () => {
       page: 0,
       attributesToHighlight: [],
       attributesToRetrieve,
+      facetFilters: [['offer.isEducational:false']],
       numericFilters: [['offer.prices: 0 TO 300']],
     })
   })
@@ -86,7 +88,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({ ...baseParams, query } as SearchParametersQuery, null, true)
 
       expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isForbiddenToUnderage:false']],
+        facetFilters: [['offer.isEducational:false'], ['offer.isForbiddenToUnderage:false']],
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve,
@@ -100,7 +102,11 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({ ...baseParams, query, offerCategories } as SearchParametersQuery, null, true)
 
       expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isForbiddenToUnderage:false'], ['offer.searchGroupName:LECON']],
+        facetFilters: [
+          ['offer.isEducational:false'],
+          ['offer.isForbiddenToUnderage:false'],
+          ['offer.searchGroupName:LECON'],
+        ],
         numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
@@ -119,6 +125,7 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
@@ -130,6 +137,7 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith('', {
         page: 0,
         attributesToHighlight: [],
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
@@ -155,6 +163,7 @@ describe('fetchAlgolia', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve,
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
       })
     })
@@ -175,6 +184,7 @@ describe('fetchAlgolia', () => {
         page: 0,
         attributesToHighlight: [],
         attributesToRetrieve,
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
       })
     })
@@ -196,6 +206,7 @@ describe('fetchAlgolia', () => {
         aroundRadius: 15000,
         page: 0,
         attributesToHighlight: [],
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
@@ -218,6 +229,7 @@ describe('fetchAlgolia', () => {
         aroundRadius: 1,
         page: 0,
         attributesToHighlight: [],
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
@@ -240,6 +252,7 @@ describe('fetchAlgolia', () => {
         aroundRadius: 'all',
         page: 0,
         attributesToHighlight: [],
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
@@ -256,6 +269,7 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
@@ -268,7 +282,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({ ...baseParams, query, offerCategories } as SearchParametersQuery, null, false)
 
       expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.searchGroupName:LECON']],
+        facetFilters: [['offer.isEducational:false'], ['offer.searchGroupName:LECON']],
         numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
@@ -283,7 +297,10 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({ ...baseParams, query, offerCategories } as SearchParametersQuery, null, false)
 
       expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.searchGroupName:SPECTACLE', 'offer.searchGroupName:LIVRE']],
+        facetFilters: [
+          ['offer.isEducational:false'],
+          ['offer.searchGroupName:SPECTACLE', 'offer.searchGroupName:LIVRE'],
+        ],
         numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
@@ -305,6 +322,7 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
@@ -321,7 +339,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({ ...baseParams, query, offerTypes } as SearchParametersQuery, null, false)
 
       expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isDigital:true']],
+        facetFilters: [['offer.isEducational:false'], ['offer.isDigital:true']],
         page: 0,
         attributesToHighlight: [],
         numericFilters: [['offer.prices: 0 TO 300']],
@@ -342,6 +360,7 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
@@ -358,7 +377,11 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({ ...baseParams, query, offerTypes } as SearchParametersQuery, null, false)
 
       expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isDigital:false'], ['offer.isThing:true']],
+        facetFilters: [
+          ['offer.isEducational:false'],
+          ['offer.isDigital:false'],
+          ['offer.isThing:true'],
+        ],
         numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
@@ -377,7 +400,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({ ...baseParams, query, offerTypes } as SearchParametersQuery, null, false)
 
       expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isEvent:true']],
+        facetFilters: [['offer.isEducational:false'], ['offer.isEvent:true']],
         numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
@@ -396,7 +419,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({ ...baseParams, query, offerTypes } as SearchParametersQuery, null, false)
 
       expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isThing:true']],
+        facetFilters: [['offer.isEducational:false'], ['offer.isThing:true']],
         numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
@@ -415,7 +438,10 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({ ...baseParams, query, offerTypes } as SearchParametersQuery, null, false)
 
       expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isDigital:true', 'offer.isEvent:true']],
+        facetFilters: [
+          ['offer.isEducational:false'],
+          ['offer.isDigital:true', 'offer.isEvent:true'],
+        ],
         numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
@@ -434,7 +460,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({ ...baseParams, query, offerTypes } as SearchParametersQuery, null, false)
 
       expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isDigital:false']],
+        facetFilters: [['offer.isEducational:false'], ['offer.isDigital:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
@@ -455,6 +481,7 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
@@ -473,6 +500,7 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
@@ -489,6 +517,7 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
@@ -501,7 +530,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({ ...baseParams, query, offerIsDuo } as SearchParametersQuery, null, false)
 
       expect(search).toHaveBeenCalledWith(query, {
-        facetFilters: [['offer.isDuo:true']],
+        facetFilters: [['offer.isEducational:false'], ['offer.isDuo:true']],
         numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,
         attributesToHighlight: [],
@@ -520,6 +549,7 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
@@ -533,6 +563,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({ ...baseParams, query, offerIsNew } as SearchParametersQuery, null, false)
 
       expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [
           ['offer.prices: 0 TO 300'],
           ['offer.stocksDateCreated: 1588762412 TO 1589453612'],
@@ -554,6 +585,7 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         attributesToHighlight: [],
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
@@ -571,6 +603,7 @@ describe('fetchAlgolia', () => {
       )
 
       expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices = 0']],
         page: 0,
         attributesToHighlight: [],
@@ -590,6 +623,7 @@ describe('fetchAlgolia', () => {
       )
 
       expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 50']],
         page: 0,
         attributesToHighlight: [],
@@ -621,6 +655,7 @@ describe('fetchAlgolia', () => {
         expect(mockGetFromDate).toHaveBeenCalledWith(selectedDate)
         expect(mockGetLastOfDate).toHaveBeenCalledWith(selectedDate)
         expect(search).toHaveBeenCalledWith(query, {
+          facetFilters: [['offer.isEducational:false']],
           numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123456789 TO 987654321`]],
           page: 0,
           attributesToHighlight: [],
@@ -649,6 +684,7 @@ describe('fetchAlgolia', () => {
         expect(mockGetFromDate).toHaveBeenCalledWith(selectedDate)
         expect(mock_WEEK_getLastFromDate).toHaveBeenCalledWith(selectedDate)
         expect(search).toHaveBeenCalledWith(query, {
+          facetFilters: [['offer.isEducational:false']],
           numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123456789 TO 987654321`]],
           page: 0,
           attributesToHighlight: [],
@@ -677,6 +713,7 @@ describe('fetchAlgolia', () => {
         expect(mock_WEEKEND_getFirstFromDate).toHaveBeenCalledWith(selectedDate)
         expect(mock_WEEK_getLastFromDate).toHaveBeenCalledWith(selectedDate)
         expect(search).toHaveBeenCalledWith(query, {
+          facetFilters: [['offer.isEducational:false']],
           numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123456789 TO 987654321`]],
           page: 0,
           attributesToHighlight: [],
@@ -705,6 +742,7 @@ describe('fetchAlgolia', () => {
         expect(mockGetFirstOfDate).toHaveBeenCalledWith(selectedDate)
         expect(mockGetLastOfDate).toHaveBeenCalledWith(selectedDate)
         expect(search).toHaveBeenCalledWith(query, {
+          facetFilters: [['offer.isEducational:false']],
           numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123456789 TO 987654321`]],
           page: 0,
           attributesToHighlight: [],
@@ -723,6 +761,7 @@ describe('fetchAlgolia', () => {
 
         expect(mockComputeTimeRangeFromHoursToSeconds).toHaveBeenCalledWith(timeRange)
         expect(search).toHaveBeenCalledWith('', {
+          facetFilters: [['offer.isEducational:false']],
           numericFilters: [['offer.prices: 0 TO 300'], [`offer.times: 64800 TO 79200`]],
           page: 0,
           attributesToHighlight: [],
@@ -752,6 +791,7 @@ describe('fetchAlgolia', () => {
 
         expect(mockGetAllFromTimeRangeAndDate).toHaveBeenCalledWith(selectedDate, timeRange)
         expect(search).toHaveBeenCalledWith(query, {
+          facetFilters: [['offer.isEducational:false']],
           numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123 TO 124`]],
           page: 0,
           attributesToHighlight: [],
@@ -783,6 +823,7 @@ describe('fetchAlgolia', () => {
 
         expect(mock_WEEK_getAllFromTimeRangeAndDate).toHaveBeenCalledWith(selectedDate, timeRange)
         expect(search).toHaveBeenCalledWith(query, {
+          facetFilters: [['offer.isEducational:false']],
           numericFilters: [
             ['offer.prices: 0 TO 300'],
             [`offer.dates: 123 TO 124`, `offer.dates: 225 TO 226`, `offer.dates: 327 TO 328`],
@@ -819,6 +860,7 @@ describe('fetchAlgolia', () => {
           timeRange
         )
         expect(search).toHaveBeenCalledWith(query, {
+          facetFilters: [['offer.isEducational:false']],
           numericFilters: [
             ['offer.prices: 0 TO 300'],
             [`offer.dates: 123 TO 124`, `offer.dates: 225 TO 226`],
@@ -849,6 +891,7 @@ describe('fetchAlgolia', () => {
 
         expect(mockGetAllFromTimeRangeAndDate).toHaveBeenCalledWith(selectedDate, timeRange)
         expect(search).toHaveBeenCalledWith(query, {
+          facetFilters: [['offer.isEducational:false']],
           numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 123 TO 124`]],
           page: 0,
           attributesToHighlight: [],
@@ -879,6 +922,7 @@ describe('fetchAlgolia', () => {
       )
 
       expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices = 0'], ['offer.dates: 123456789 TO 987654321']],
         page: 0,
         attributesToHighlight: [],
@@ -904,6 +948,7 @@ describe('fetchAlgolia', () => {
       )
 
       expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices = 0'], ['offer.times: 123456789 TO 987654321']],
         page: 0,
         attributesToHighlight: [],
@@ -933,6 +978,7 @@ describe('fetchAlgolia', () => {
       )
 
       expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [
           ['offer.prices = 0'],
           ['offer.dates: 123456789 TO 987654321', 'offer.dates: 123 TO 1234'],
@@ -968,6 +1014,7 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith(query, {
         page: page,
         facetFilters: [
+          ['offer.isEducational:false'],
           ['offer.searchGroupName:LECON', 'offer.searchGroupName:VISITE'],
           ['offer.isDigital:true'],
         ],
@@ -1007,6 +1054,7 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith(query, {
         page: 0,
         facetFilters: [
+          ['offer.isEducational:false'],
           ['offer.searchGroupName:PRATIQUE', 'offer.searchGroupName:SPECTACLE'],
           ['offer.isEvent:true'],
           ['offer.isDuo:true'],
@@ -1030,6 +1078,7 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith('', {
         page: 0,
         attributesToHighlight: [],
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
@@ -1043,6 +1092,7 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith('', {
         page: 0,
         facetFilters: [
+          ['offer.isEducational:false'],
           ['offer.tags:Semaine du 14 juillet', 'offer.tags:Offre cinema spéciale pass culture'],
         ],
         numericFilters: [['offer.prices: 0 TO 300']],
@@ -1061,6 +1111,7 @@ describe('fetchAlgolia', () => {
       expect(search).toHaveBeenCalledWith('', {
         page: 0,
         attributesToHighlight: [],
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
@@ -1075,6 +1126,7 @@ describe('fetchAlgolia', () => {
         hitsPerPage,
         page: 0,
         attributesToHighlight: [],
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300']],
         attributesToRetrieve,
       })
@@ -1094,6 +1146,7 @@ describe('fetchAlgolia', () => {
       )
 
       expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates >= 1596240000`]],
         page: 0,
         attributesToHighlight: [],
@@ -1109,6 +1162,7 @@ describe('fetchAlgolia', () => {
       fetchAlgolia({ ...baseParams, query, endingDatetime } as SearchParametersQuery, null, false)
 
       expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates <= 1596240000`]],
         page: 0,
         attributesToHighlight: [],
@@ -1130,6 +1184,7 @@ describe('fetchAlgolia', () => {
       )
 
       expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [['offer.isEducational:false']],
         numericFilters: [['offer.prices: 0 TO 300'], [`offer.dates: 1596240000 TO 1596326400`]],
         page: 0,
         attributesToHighlight: [],
@@ -1147,7 +1202,7 @@ describe('fetchAlgoliaHits', () => {
 
     expect(mockInitIndex).toHaveBeenCalledWith('algoliaOffersIndexName')
     expect(search).toHaveBeenCalledWith('', {
-      facetFilters: [['objectID:id1', 'objectID:id2']],
+      facetFilters: [['offer.isEducational:false'], ['objectID:id1', 'objectID:id2']],
       numericFilters: [['offer.prices: 0 TO 300']],
       attributesToRetrieve,
       attributesToHighlight: [],
@@ -1161,7 +1216,11 @@ describe('fetchAlgoliaHits', () => {
     fetchAlgoliaHits(queryIds, true)
 
     expect(search).toHaveBeenCalledWith('', {
-      facetFilters: [['offer.isForbiddenToUnderage:false'], ['objectID:id1', 'objectID:id2']],
+      facetFilters: [
+        ['offer.isEducational:false'],
+        ['offer.isForbiddenToUnderage:false'],
+        ['objectID:id1', 'objectID:id2'],
+      ],
       numericFilters: [['offer.prices: 0 TO 300']],
       attributesToRetrieve,
       attributesToHighlight: [],
