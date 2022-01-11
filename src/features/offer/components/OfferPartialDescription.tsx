@@ -8,6 +8,8 @@ import { useOffer } from '../api/useOffer'
 import { OfferSeeMore } from '../atoms/OfferSeeMore'
 import { getContentFromOffer } from '../pages/OfferDescription'
 
+import { useShouldDisplaySeeMoreButton } from './useShouldDisplaySeeMoreButton'
+
 interface Props {
   id: number
   description?: string
@@ -18,6 +20,10 @@ export const OfferPartialDescription: React.FC<Props> = ({ id, description = '' 
   const { extraData = {}, image } = offerResponse || {}
   const contentOfferDescription = getContentFromOffer(extraData, description, image?.credit)
 
+  const maxTheoricalDisplayedDescriptionLines = 8
+  const { shouldDisplaySeeMoreButton, maxDisplayedDescriptionLines, setLinesDisplayed } =
+    useShouldDisplaySeeMoreButton(maxTheoricalDisplayedDescriptionLines, contentOfferDescription)
+
   if (contentOfferDescription.length === 0) return null
 
   return (
@@ -25,13 +31,18 @@ export const OfferPartialDescription: React.FC<Props> = ({ id, description = '' 
       <Spacer.Column numberOfSpaces={4} />
       {!!description && (
         <React.Fragment>
-          <TypoDescription testID="offerPartialDescriptionBody" numberOfLines={8}>
+          <TypoDescription
+            testID="offerPartialDescriptionBody"
+            numberOfLines={maxDisplayedDescriptionLines}
+            onTextLayout={({ nativeEvent }) => {
+              setLinesDisplayed(nativeEvent.lines.length)
+            }}>
             {highlightLinks(description)}
           </TypoDescription>
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}
-      {contentOfferDescription.length > 0 && (
+      {!!shouldDisplaySeeMoreButton && (
         <OfferSeeMoreContainer testID="offerSeeMoreContainer" description={description}>
           <OfferSeeMore id={id} longWording={!description} />
         </OfferSeeMoreContainer>

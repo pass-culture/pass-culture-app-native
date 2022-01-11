@@ -97,7 +97,7 @@ const DefaultWrapper = ({ theme, children }: PropsWithTheme) => {
   )
 }
 
-type CustomRenderOptions = {
+export type CustomRenderOptions = {
   theme?: Partial<DefaultTheme>
 } & RenderOptions
 
