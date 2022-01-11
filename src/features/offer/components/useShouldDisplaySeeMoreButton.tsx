@@ -23,10 +23,11 @@ export const useShouldDisplaySeeMoreButton = (
       setIsLongerThanMaximumLines(linesDisplayed >= maxDisplayedDescriptionLines)
     }
   }
+  const hasDataToDisplayOnDescriptionPage =
+    contentOfferDescription.filter(({ key }) => key !== 'description').length > 0
   const shouldDisplaySeeMoreButton = shouldTruncateDescription
-    ? contentOfferDescription.filter(({ key }) => key !== 'description').length > 0 ||
-      isLongerThanMaximumLines
-    : contentOfferDescription.filter(({ key }) => key !== 'description').length > 0
+    ? hasDataToDisplayOnDescriptionPage || isLongerThanMaximumLines
+    : hasDataToDisplayOnDescriptionPage
 
   return { shouldDisplaySeeMoreButton, maxDisplayedDescriptionLines, setLinesDisplayed }
 }
