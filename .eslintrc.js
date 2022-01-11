@@ -47,7 +47,6 @@ module.exports = {
     'react/jsx-fragments': ['error', 'element'], // Otherwise `lingui extract` fails when using the shorthand syntax i.e. <></>
     'no-restricted-imports': [
       'error',
-      { name: 'styled-components', message: 'Use styled-components/native instead' },
       { name: 'lottie-react-native', message: 'use libs/lottie instead' },
       { name: 'react-content-loader', message: 'use react-content-loader/native instead' },
       { name: 'react-device-detect', message: 'use libs/react-device-detect instead' },

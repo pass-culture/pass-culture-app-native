@@ -1,18 +1,10 @@
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import { useWindowDimensions } from 'react-native'
-import { DefaultTheme, ThemeProvider as DefaultThemeProvider } from 'styled-components/native'
+import { DefaultTheme as DefaultThemeNative } from 'styled-components/native'
 
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 
-export type ComputedTheme = DefaultTheme & {
-  isMobileViewport?: boolean
-  isTabletViewport?: boolean
-  isDesktopViewport?: boolean
-  showTabBar: boolean
-  appContentWidth: number
-}
-
-export const ThemeProvider: React.FC<{ theme: DefaultTheme }> = ({ children, theme }) => {
+export function useComputedTheme<A extends DefaultThemeNative>(theme: A) {
   const { width: windowWidth } = useWindowDimensions()
   const tabletMinWidth = theme.breakpoints.md
   const desktopMinWidth = theme.breakpoints.lg
@@ -23,7 +15,7 @@ export const ThemeProvider: React.FC<{ theme: DefaultTheme }> = ({ children, the
   const showTabBar = theme.isTouch || !!isMobileViewport
   const appContentWidth = Math.min(desktopMinWidth, windowWidth)
 
-  const computedTheme = useMemo<ComputedTheme>(
+  return useMemo<A>(
     () => ({
       ...theme,
       isMobileViewport,
@@ -34,6 +26,4 @@ export const ThemeProvider: React.FC<{ theme: DefaultTheme }> = ({ children, the
     }),
     [isMobileViewport, isTabletViewport, isDesktopViewport, showTabBar, appContentWidth]
   )
-
-  return <DefaultThemeProvider theme={computedTheme}>{children}</DefaultThemeProvider>
 }
