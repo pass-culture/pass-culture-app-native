@@ -6,7 +6,7 @@ import { ButtonWithLinearGradient } from './ButtonWithLinearGradient'
 
 const onPress = jest.fn()
 
-describe('< ButtonWithLinearGradient />', () => {
+describe('<ButtonWithLinearGradient />', () => {
   it('should render not disabled', () => {
     const { toJSON, queryByText } = render(
       <ButtonWithLinearGradient wording="Wording to display" onPress={onPress} isDisabled={false} />
