@@ -63,7 +63,7 @@ export const BusinessModule = ({ module }: { module: BusinessPane }) => {
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />
-      <TouchableHighlight onPress={() => setShouldRedirect(true)}>
+      <TouchableHighlight onPress={() => setShouldRedirect(true)} disabled={!url}>
         <ImageContainer>
           <ImageBackground
             source={{ uri: image }}

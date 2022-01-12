@@ -52,6 +52,14 @@ describe('BusinessModule component', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
+  it('should disable click when no URL', () => {
+    const { toJSON } = renderModule({
+      ...props,
+      url: undefined,
+    })
+    expect(toJSON()).toMatchSnapshot()
+  })
+
   it('should log "BusinessBlockClicked" when clicking on the image', () => {
     const { getByTestId } = renderModule(props)
     fireEvent.press(getByTestId('imageBusiness'))
