@@ -1033,10 +1033,6 @@ msgstr "Générateur de lien"
 msgid "Générer le lien"
 msgstr "Générer le lien"
 
-#: src/features/profile/pages/Profile.tsx
-msgid "Géolocalisation"
-msgstr "Géolocalisation"
-
 #: src/ui/components/accessibility/AccessibilityAtom.service.ts
 msgid "Handicap auditif"
 msgstr "Handicap auditif"
@@ -1156,8 +1152,12 @@ msgid "Inscris-toi pour accéder à toutes les fonctionnalités de l’applicati
 msgstr "Inscris-toi pour accéder à toutes les fonctionnalités de l’application"
 
 #: src/features/profile/pages/NotificationSettings.tsx
-msgid "Interrupteur autorisation d'envoi des emails"
-msgstr "Interrupteur autorisation d'envoi des emails"
+msgid "Interrupteur d'autorisation d'envoi des e-mails"
+msgstr "Interrupteur d'autorisation d'envoi des e-mails"
+
+#: src/features/profile/pages/NotificationSettings.tsx
+msgid "Interrupteur d'autorisation des notifications marketing"
+msgstr "Interrupteur d'autorisation des notifications marketing"
 
 #: src/features/profile/pages/ConsentSettings.tsx
 msgid "Interrupteur données de navigation"
@@ -1186,10 +1186,6 @@ msgstr "Interrupteur filtre offres gratuites"
 #: src/features/profile/pages/Profile.tsx
 msgid "Interrupteur géolocalisation"
 msgstr "Interrupteur géolocalisation"
-
-#: src/features/profile/pages/NotificationSettings.tsx
-msgid "Interrupteur push notifications"
-msgstr "Interrupteur push notifications"
 
 #: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
 msgid "J'ai compris"
@@ -1827,6 +1823,11 @@ msgstr "Paramètres marketing"
 #: src/features/venue/components/VenueHeader.tsx
 msgid "Partager"
 msgstr "Partager"
+
+#: src/features/profile/pages/Profile.tsx
+#: src/features/profile/pages/Profile.tsx
+msgid "Partager ma position"
+msgstr "Partager ma position"
 
 #: src/features/search/components/locationChoice.utils.tsx
 msgid "Partout"
