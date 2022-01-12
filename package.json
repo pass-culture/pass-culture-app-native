@@ -153,7 +153,6 @@
     "react-native-webview": "^11.14.0",
     "react-query": "3.34.0",
     "react-test-renderer": "17.0.2",
-    "search-params": "^4.0.0",
     "styled-components": "^5.3.3",
     "uuid": "^8.3.2",
     "validate-date": "^2.0.0"

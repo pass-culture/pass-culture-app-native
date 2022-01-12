@@ -6,8 +6,6 @@ import {
   generateLongFirebaseDynamicLink,
   isFirebaseDynamicLink,
   isFirebaseLongDynamicLink,
-  extractUniversalLinkFromLongFirebaseDynamicLink,
-  resolveHandler,
 } from './utils'
 
 describe('Formatting deeplink url', () => {
@@ -77,50 +75,6 @@ describe('Formatting deeplink url', () => {
     it('should return false when the given link is not a firebase dynamic link', () => {
       const isLongDynamicLink = isFirebaseLongDynamicLink('https://www.not-google.fr/home')
       expect(isLongDynamicLink).toBe(false)
-    })
-  })
-
-  describe('extractUniversalLinkFromLongFirebaseDynamicLink', () => {
-    it('should convert long dynamic link to the injected universal link', () => {
-      const url = FIREBASE_DYNAMIC_LINK_URL + '/?link=https://a.link'
-      const extracted = extractUniversalLinkFromLongFirebaseDynamicLink({ url })
-      expect(extracted).toBe('https://a.link')
-    })
-  })
-
-  describe('handleLinks', () => {
-    it('should extract universal link for firebase long dynamic link', () => {
-      const url = FIREBASE_DYNAMIC_LINK_URL + '/?link=https://a.link'
-      const handleDeeplinkUrl = jest.fn()
-
-      const handler = resolveHandler(handleDeeplinkUrl)
-      handler({ url })
-
-      expect(handleDeeplinkUrl).toBeCalledWith({ url: 'https://a.link' })
-    })
-
-    it.each([undefined, false])(
-      'should do anything for firebase short dynamic link (listenShortLinks=%s)',
-      (listenShortLinks) => {
-        const url = FIREBASE_DYNAMIC_LINK_URL + '/home'
-        const handleDeeplinkUrl = jest.fn()
-
-        const handler = resolveHandler(handleDeeplinkUrl, listenShortLinks)
-        handler({ url })
-
-        expect(handleDeeplinkUrl).not.toBeCalled()
-      }
-    )
-
-    it('should handle firebase short dynamic link when listenShortLinks=true', () => {
-      const url = FIREBASE_DYNAMIC_LINK_URL + '/home'
-      const handleDeeplinkUrl = jest.fn()
-      const listenShortLinks = true
-
-      const handler = resolveHandler(handleDeeplinkUrl, listenShortLinks)
-      handler({ url })
-
-      expect(handleDeeplinkUrl).toBeCalledWith({ url: '/home' })
     })
   })
 })

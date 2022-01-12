@@ -4,7 +4,3 @@ export interface DeeplinkParts {
   screen: keyof RootStackParamList
   params: RouteParams<RootStackParamList, keyof RootStackParamList>
 }
-
-export interface DeeplinkEvent {
-  url: string
-}
