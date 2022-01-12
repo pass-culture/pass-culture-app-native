@@ -51,7 +51,9 @@ Object {
         />
         <div
           aria-disabled="true"
+          aria-label="distance depuis la localisation"
           class="css-view-1dbjc4n"
+          data-testid="iconLocation"
           style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: none;"
           tabindex="-1"
         >
@@ -65,13 +67,12 @@ Object {
             >
               <div
                 class="css-view-1dbjc4n"
-                data-testid="iconLocation"
               >
                 <div
                   class="css-text-901oao"
                   dir="auto"
                 >
-                  iconLocation-SVG-Mock
+                  undefined-SVG-Mock
                 </div>
               </div>
             </div>
@@ -81,7 +82,7 @@ Object {
             />
             <div
               class="css-text-901oao"
-              data-testid="caption-iconLocation"
+              data-testid="caption-undefined"
               dir="auto"
               style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
             >
@@ -143,7 +144,9 @@ Object {
       />
       <div
         aria-disabled="true"
+        aria-label="distance depuis la localisation"
         class="css-view-1dbjc4n"
+        data-testid="iconLocation"
         style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: none;"
         tabindex="-1"
       >
@@ -157,13 +160,12 @@ Object {
           >
             <div
               class="css-view-1dbjc4n"
-              data-testid="iconLocation"
             >
               <div
                 class="css-text-901oao"
                 dir="auto"
               >
-                iconLocation-SVG-Mock
+                undefined-SVG-Mock
               </div>
             </div>
           </div>
@@ -173,7 +175,7 @@ Object {
           />
           <div
             class="css-text-901oao"
-            data-testid="caption-iconLocation"
+            data-testid="caption-undefined"
             dir="auto"
             style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
           >

@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -6,7 +7,6 @@ import { IconWithCaption } from 'features/venue/atoms/IconWithCaption'
 import { VenueType } from 'features/venue/atoms/VenueType'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
-import { accessibilityAndTestId } from 'tests/utils'
 import { PointerLocationNotFilled } from 'ui/svg/icons/PointerLocationNotFilled'
 import { PointerLocationNotFilledDisabled } from 'ui/svg/icons/PointerLocationNotFilledDisabled'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
@@ -32,17 +32,21 @@ export const VenueIconCaptions: React.FC<Props> = ({ type, label, locationCoordi
       <Spacer.Row numberOfSpaces={6} />
       <VenueType type={type} label={label} />
       <Separator />
-      <ActiveGeolocationButton onPress={onPressActiveGeolocation} disabled={!!distanceToLocation}>
+      <ActiveGeolocationButton
+        onPress={onPressActiveGeolocation}
+        disabled={!!distanceToLocation}
+        testID="iconLocation"
+        accessibilityLabel={
+          distanceToLocation ? t`distance depuis la localisation` : t`activer la localisation`
+        }>
         {distanceToLocation ? (
           <IconWithCaption
-            {...accessibilityAndTestId('iconLocation')}
             Icon={PointerLocationNotFilled}
             caption={distanceToLocation}
             isDisabled={false}
           />
         ) : (
           <IconWithCaption
-            {...accessibilityAndTestId('iconLocation')}
             Icon={PointerLocationNotFilledDisabled}
             caption={'Géolocalisation désactivée'}
             isDisabled={true}

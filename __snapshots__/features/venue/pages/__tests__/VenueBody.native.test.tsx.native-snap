@@ -424,6 +424,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
         }
       />
       <View
+        accessibilityLabel="activer la localisation"
         accessibilityState={
           Object {
             "disabled": false,
@@ -448,6 +449,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
             "opacity": 1,
           }
         }
+        testID="iconLocation"
       >
         <View
           style={
@@ -476,11 +478,10 @@ exports[`<VenueBody /> should render correctly 1`] = `
             <View
               fill="#626262"
               height={40}
-              testID="iconLocation"
               width={40}
             >
               <Text>
-                iconLocation-SVG-Mock
+                undefined-SVG-Mock
               </Text>
             </View>
           </View>
@@ -507,7 +508,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 },
               ]
             }
-            testID="caption-iconLocation"
+            testID="caption-undefined"
           >
             Géolocalisation désactivée
           </Text>
