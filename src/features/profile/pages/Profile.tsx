@@ -11,6 +11,8 @@ import { useUserProfileInfo } from 'features/home/api'
 import { openUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch'
+import { ProfileHeader } from 'features/profile/components/ProfileHeader'
+import { ProfileContainer } from 'features/profile/components/reusables'
 import { SmartBanner } from 'features/smartBanner/SmartBanner'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { env } from 'libs/environment'
@@ -35,8 +37,6 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 import Package from '../../../../package.json'
-import { ProfileHeader } from '../components/ProfileHeader'
-import { ProfileContainer } from '../components/reusables'
 
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 

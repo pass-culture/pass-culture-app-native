@@ -16,9 +16,7 @@ describe('<PasswordInput />', () => {
     const instance = render(<PasswordInput />)
     const hiddenSnapshot = instance.toJSON()
 
-    const switchPasswordVisibilityButton = instance.getByTestId(
-      "Basculer l'affichage du mot de passe"
-    )
+    const switchPasswordVisibilityButton = instance.getByTestId('toggle-password-visibility')
     fireEvent.press(switchPasswordVisibilityButton)
 
     const displayPasswordSnapshot = instance.toJSON()
@@ -29,9 +27,7 @@ describe('<PasswordInput />', () => {
   it('should render correctly when password is hidden after it was displayed', () => {
     const instance = render(<PasswordInput />)
 
-    const switchPasswordVisibilityButton = instance.getByTestId(
-      "Basculer l'affichage du mot de passe"
-    )
+    const switchPasswordVisibilityButton = instance.getByTestId('toggle-password-visibility')
     fireEvent.press(switchPasswordVisibilityButton)
 
     const displayPasswordSnapshot = instance.toJSON()
