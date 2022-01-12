@@ -166,11 +166,11 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
       Une fois ce délai écoulé, ton compte pass Culture sera définitivement supprimé.
     </Text>
     <View
-      numberOfSpaces={12}
+      numberOfSpaces={30}
       style={
         Array [
           Object {
-            "height": 48,
+            "height": 120,
           },
         ]
       }

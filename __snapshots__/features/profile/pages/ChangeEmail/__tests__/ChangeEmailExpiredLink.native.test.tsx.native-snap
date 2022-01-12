@@ -168,11 +168,11 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
       }
     />
     <View
-      numberOfSpaces={12}
+      numberOfSpaces={30}
       style={
         Array [
           Object {
-            "height": 48,
+            "height": 120,
           },
         ]
       }
@@ -502,11 +502,11 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
       }
     />
     <View
-      numberOfSpaces={12}
+      numberOfSpaces={30}
       style={
         Array [
           Object {
-            "height": 48,
+            "height": 120,
           },
         ]
       }

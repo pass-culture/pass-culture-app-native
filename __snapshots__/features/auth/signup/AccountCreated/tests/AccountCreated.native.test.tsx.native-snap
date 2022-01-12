@@ -137,11 +137,11 @@ exports[`<AccountCreated /> should render correctly 1`] = `
       Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées.
     </Text>
     <View
-      numberOfSpaces={12}
+      numberOfSpaces={30}
       style={
         Array [
           Object {
-            "height": 48,
+            "height": 120,
           },
         ]
       }

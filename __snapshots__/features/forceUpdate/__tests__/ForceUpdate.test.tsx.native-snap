@@ -143,11 +143,11 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
 Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible.
     </Text>
     <View
-      numberOfSpaces={12}
+      numberOfSpaces={30}
       style={
         Array [
           Object {
-            "height": 48,
+            "height": 120,
           },
         ]
       }

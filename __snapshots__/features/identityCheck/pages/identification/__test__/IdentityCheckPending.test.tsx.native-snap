@@ -166,11 +166,11 @@ exports[`<IdentityCheckPending/> should render correctly 1`] = `
       Ton inscription est en cours de vérification. Tu recevras une notification dès que ton dossier sera validé.
     </Text>
     <View
-      numberOfSpaces={12}
+      numberOfSpaces={30}
       style={
         Array [
           Object {
-            "height": 48,
+            "height": 120,
           },
         ]
       }

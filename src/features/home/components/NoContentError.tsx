@@ -9,7 +9,7 @@ import { ButtonSecondaryWhite } from 'ui/components/buttons/ButtonSecondaryWhite
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 export const NoContentError = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -19,21 +19,26 @@ export const NoContentError = () => {
   }
 
   return (
-    <GenericInfoPage title={t`Oups\u00a0!`} icon={BrokenConnection}>
+    <GenericInfoPage
+      title={t`Oups\u00a0!`}
+      icon={BrokenConnection}
+      buttons={[
+        <SearchButton
+          key={1}
+          title={t`Rechercher une offre`}
+          icon={MagnifyingGlass}
+          onPress={navigateToSearchTab}
+        />,
+      ]}>
       <BodyText>{t`Une erreur s’est produite pendant le chargement de nos recommandations.`}</BodyText>
-      <Spacer.Column numberOfSpaces={4} />
-      <SearchButton
-        title={t`Rechercher une offre`}
-        icon={MagnifyingGlass}
-        onPress={navigateToSearchTab}
-      />
     </GenericInfoPage>
   )
 }
 
-const BodyText = styled(Typo.Body).attrs(({ theme }) => ({ color: theme.colors.white }))({
+const BodyText = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
   textAlign: 'center',
-})
+}))
 
 const SearchButton = styled(ButtonSecondaryWhite).attrs({
   iconSize: 22,

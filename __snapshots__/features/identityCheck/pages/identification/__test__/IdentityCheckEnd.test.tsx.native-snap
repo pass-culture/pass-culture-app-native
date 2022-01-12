@@ -126,11 +126,11 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
       }
     />
     <View
-      numberOfSpaces={12}
+      numberOfSpaces={30}
       style={
         Array [
           Object {
-            "height": 48,
+            "height": 120,
           },
         ]
       }

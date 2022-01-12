@@ -58,7 +58,7 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
         <StyledTitle2>{title}</StyledTitle2>
         <Spacer.Column numberOfSpaces={spacingMatrix.afterTitle} />
         {children}
-        {!!isTouch && <Spacer.Column numberOfSpaces={12} />}
+        {!!isTouch && <Spacer.Column numberOfSpaces={30} />}
         {!!buttons && (
           <BottomContainer>
             {buttons.map((button, index) => (
@@ -69,6 +69,7 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
             ))}
           </BottomContainer>
         )}
+
         <Spacer.BottomScreen />
       </Content>
     </Wrapper>

@@ -169,11 +169,11 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
       </Text>
     </View>
     <View
-      numberOfSpaces={12}
+      numberOfSpaces={30}
       style={
         Array [
           Object {
-            "height": 48,
+            "height": 120,
           },
         ]
       }
@@ -362,11 +362,11 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
       </Text>
     </View>
     <View
-      numberOfSpaces={12}
+      numberOfSpaces={30}
       style={
         Array [
           Object {
-            "height": 48,
+            "height": 120,
           },
         ]
       }
