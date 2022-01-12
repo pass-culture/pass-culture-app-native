@@ -787,6 +787,7 @@ Object {
               style="background-color: rgb(245, 245, 245); height: 8px;"
             />
             <div
+              aria-label="ouvrir la section"
               class="css-view-1dbjc4n"
               style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
               tabindex="0"
@@ -866,6 +867,7 @@ Object {
               style="background-color: rgb(245, 245, 245); height: 8px;"
             />
             <div
+              aria-label="ouvrir la section"
               class="css-view-1dbjc4n"
               style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
               tabindex="0"
@@ -911,7 +913,7 @@ Object {
                   <div
                     class="css-view-1dbjc4n"
                     data-testid="accessibilityAtomContainer"
-                    style="flex-direction: column; flex-shrink: 1; margin-right: 12px;"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -967,21 +969,14 @@ Object {
                         dir="auto"
                         style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                       >
-                        Handicap
-                      </div>
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                      >
-                        visuel
+                        Handicap visuel
                       </div>
                     </div>
                   </div>
                   <div
                     class="css-view-1dbjc4n"
                     data-testid="accessibilityAtomContainer"
-                    style="flex-direction: column; flex-shrink: 1; margin-right: 12px;"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -1037,35 +1032,14 @@ Object {
                         dir="auto"
                         style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                       >
-                        Handicap
-                      </div>
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                      >
-                        psychique
-                      </div>
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                      >
-                        ou
-                      </div>
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                      >
-                        cognitif
+                        Handicap psychique ou cognitif
                       </div>
                     </div>
                   </div>
                   <div
                     class="css-view-1dbjc4n"
                     data-testid="accessibilityAtomContainer"
-                    style="flex-direction: column; flex-shrink: 1; margin-right: 12px;"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -1121,21 +1095,14 @@ Object {
                         dir="auto"
                         style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                       >
-                        Handicap
-                      </div>
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                      >
-                        moteur
+                        Handicap moteur
                       </div>
                     </div>
                   </div>
                   <div
                     class="css-view-1dbjc4n"
                     data-testid="accessibilityAtomContainer"
-                    style="flex-direction: column; flex-shrink: 1; margin-right: 0px;"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px;"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -1191,14 +1158,7 @@ Object {
                         dir="auto"
                         style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                       >
-                        Handicap
-                      </div>
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                      >
-                        auditif
+                        Handicap auditif
                       </div>
                     </div>
                   </div>
@@ -1210,6 +1170,7 @@ Object {
               style="background-color: rgb(245, 245, 245); height: 8px;"
             />
             <div
+              aria-label="ouvrir la section"
               class="css-view-1dbjc4n"
               style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
               tabindex="0"
@@ -2224,6 +2185,7 @@ Object {
             style="background-color: rgb(245, 245, 245); height: 8px;"
           />
           <div
+            aria-label="ouvrir la section"
             class="css-view-1dbjc4n"
             style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
             tabindex="0"
@@ -2303,6 +2265,7 @@ Object {
             style="background-color: rgb(245, 245, 245); height: 8px;"
           />
           <div
+            aria-label="ouvrir la section"
             class="css-view-1dbjc4n"
             style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
             tabindex="0"
@@ -2348,7 +2311,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="accessibilityAtomContainer"
-                  style="flex-direction: column; flex-shrink: 1; margin-right: 12px;"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -2404,21 +2367,14 @@ Object {
                       dir="auto"
                       style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                     >
-                      Handicap
-                    </div>
-                    <div
-                      class="css-text-901oao"
-                      dir="auto"
-                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                    >
-                      visuel
+                      Handicap visuel
                     </div>
                   </div>
                 </div>
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="accessibilityAtomContainer"
-                  style="flex-direction: column; flex-shrink: 1; margin-right: 12px;"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -2474,35 +2430,14 @@ Object {
                       dir="auto"
                       style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                     >
-                      Handicap
-                    </div>
-                    <div
-                      class="css-text-901oao"
-                      dir="auto"
-                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                    >
-                      psychique
-                    </div>
-                    <div
-                      class="css-text-901oao"
-                      dir="auto"
-                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                    >
-                      ou
-                    </div>
-                    <div
-                      class="css-text-901oao"
-                      dir="auto"
-                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                    >
-                      cognitif
+                      Handicap psychique ou cognitif
                     </div>
                   </div>
                 </div>
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="accessibilityAtomContainer"
-                  style="flex-direction: column; flex-shrink: 1; margin-right: 12px;"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -2558,21 +2493,14 @@ Object {
                       dir="auto"
                       style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                     >
-                      Handicap
-                    </div>
-                    <div
-                      class="css-text-901oao"
-                      dir="auto"
-                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                    >
-                      moteur
+                      Handicap moteur
                     </div>
                   </div>
                 </div>
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="accessibilityAtomContainer"
-                  style="flex-direction: column; flex-shrink: 1; margin-right: 0px;"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -2628,14 +2556,7 @@ Object {
                       dir="auto"
                       style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                     >
-                      Handicap
-                    </div>
-                    <div
-                      class="css-text-901oao"
-                      dir="auto"
-                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                    >
-                      auditif
+                      Handicap auditif
                     </div>
                   </div>
                 </div>
@@ -2647,6 +2568,7 @@ Object {
             style="background-color: rgb(245, 245, 245); height: 8px;"
           />
           <div
+            aria-label="ouvrir la section"
             class="css-view-1dbjc4n"
             style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
             tabindex="0"

@@ -2027,6 +2027,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         }
       />
       <View
+        accessibilityLabel="ouvrir la section"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -2184,6 +2185,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         }
       />
       <View
+        accessibilityLabel="ouvrir la section"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -2292,7 +2294,8 @@ exports[`<Venue /> should match snapshot 1`] = `
               style={
                 Array [
                   Object {
-                    "flexDirection": "column",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
                     "flexShrink": 1,
                     "marginRight": 12,
                   },
@@ -2402,23 +2405,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     ]
                   }
                 >
-                  Handicap
-                </Text>
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#151515",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                        "paddingHorizontal": 1,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  visuel
+                  Handicap visuel
                 </Text>
               </View>
             </View>
@@ -2427,7 +2414,8 @@ exports[`<Venue /> should match snapshot 1`] = `
               style={
                 Array [
                   Object {
-                    "flexDirection": "column",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
                     "flexShrink": 1,
                     "marginRight": 12,
                   },
@@ -2538,55 +2526,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     ]
                   }
                 >
-                  Handicap
-                </Text>
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#151515",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                        "paddingHorizontal": 1,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  psychique
-                </Text>
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#151515",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                        "paddingHorizontal": 1,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  ou
-                </Text>
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#151515",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                        "paddingHorizontal": 1,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  cognitif
+                  Handicap psychique ou cognitif
                 </Text>
               </View>
             </View>
@@ -2595,7 +2535,8 @@ exports[`<Venue /> should match snapshot 1`] = `
               style={
                 Array [
                   Object {
-                    "flexDirection": "column",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
                     "flexShrink": 1,
                     "marginRight": 12,
                   },
@@ -2706,23 +2647,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     ]
                   }
                 >
-                  Handicap
-                </Text>
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#151515",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                        "paddingHorizontal": 1,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  moteur
+                  Handicap moteur
                 </Text>
               </View>
             </View>
@@ -2731,7 +2656,8 @@ exports[`<Venue /> should match snapshot 1`] = `
               style={
                 Array [
                   Object {
-                    "flexDirection": "column",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
                     "flexShrink": 1,
                     "marginRight": 0,
                   },
@@ -2842,23 +2768,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     ]
                   }
                 >
-                  Handicap
-                </Text>
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#151515",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                        "paddingHorizontal": 1,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  auditif
+                  Handicap auditif
                 </Text>
               </View>
             </View>
@@ -2876,6 +2786,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         }
       />
       <View
+        accessibilityLabel="ouvrir la section"
         accessible={true}
         focusable={true}
         onClick={[Function]}

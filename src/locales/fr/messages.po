@@ -293,10 +293,6 @@ msgstr "Barre de recherche des lieux"
 msgid "Barre de recherche des offres"
 msgstr "Barre de recherche des offres"
 
-#: src/ui/components/inputs/PasswordInput.tsx
-msgid "Basculer l'affichage du mot de passe"
-msgstr "Basculer l'affichage du mot de passe"
-
 #: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
 msgid "Besoin d'un lien ?"
 msgstr "Besoin d'un lien ?"
@@ -2897,6 +2893,14 @@ msgstr "À activer avant le {dateLimit}"
 msgid "activation message"
 msgstr "À activer avant le {date}"
 
+#: src/features/venue/components/VenueIconCaptions.tsx
+msgid "activer la localisation"
+msgstr "activer la localisation"
+
+#: src/ui/components/inputs/PasswordInput.tsx
+msgid "afficher le mot de passe"
+msgstr "afficher le mot de passe"
+
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "ainsi que notre"
 msgstr "ainsi que notre"
@@ -2916,6 +2920,10 @@ msgstr "Pour tes {age} ans, le Gouvernement vient d'ajouter {creditedAmount} à 
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 msgid "c'est..."
 msgstr "c'est..."
+
+#: src/ui/components/inputs/PasswordInput.tsx
+msgid "cacher le mot de passe"
+msgstr "cacher le mot de passe"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
 msgid "carte d'identité"
@@ -2963,6 +2971,10 @@ msgstr "Patience ! Reviens à partir du {date} pour continuer ton inscription e
 msgid "de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application."
 msgstr "de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application."
 
+#: src/features/venue/components/VenueIconCaptions.tsx
+msgid "distance depuis la localisation"
+msgstr "distance depuis la localisation"
+
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "durée"
 msgstr "durée"
@@ -2998,6 +3010,10 @@ msgstr "et si tu as..."
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "et si tu es..."
 msgstr "et si tu es..."
+
+#: src/ui/components/AccordionItem.tsx
+msgid "fermer la section"
+msgstr "fermer la section"
 
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "genre"
@@ -3063,6 +3079,10 @@ msgstr "ou"
 #: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
 msgid "ou de ton"
 msgstr "ou de ton"
+
+#: src/ui/components/AccordionItem.tsx
+msgid "ouvrir la section"
+msgstr "ouvrir la section"
 
 #: src/features/navigation/RootNavigator/linking/getPathFromState.ts
 msgid "page-introuvable"
