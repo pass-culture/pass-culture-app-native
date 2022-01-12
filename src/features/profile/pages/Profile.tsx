@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { Platform, NativeScrollEvent, ScrollView } from 'react-native'
+import { NativeScrollEvent, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext, useLogoutRoutine } from 'features/auth/AuthContext'
@@ -164,14 +164,6 @@ export const Profile: React.FC = () => {
             onPress={() => openUrl(env.FAQ_LINK)}
             icon={ExternalSite}
           />
-          {Platform.OS !== 'web' && (
-            <Row
-              title={t`Problèmes pour ouvrir un lien\u00a0?`}
-              type="navigable"
-              onPress={() => navigate('DeeplinkImporter')}
-              icon={LifeBuoy}
-            />
-          )}
         </Section>
         <Section title={t`Autres`}>
           <Row

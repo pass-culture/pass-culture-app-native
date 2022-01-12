@@ -33,7 +33,6 @@ export enum AnalyticsEvent {
   CONSULT_WHY_ANNIVERSARY = 'ConsultModalWhyAnniversary',
   CONSULT_WITHDRAWAL_MODALITIES = 'ConsultWithdrawalModalities',
   CONTINUE_IDENTITY_CHECK = 'ContinueIdentityCheck',
-  DEEP_LINK_IMPORTER = 'DeeplinkImporter',
   DISCOVER_OFFERS = 'DiscoverOffers',
   ERROR_SAVING_NEW_EMAIL = 'ErrorSavingNewMail',
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',

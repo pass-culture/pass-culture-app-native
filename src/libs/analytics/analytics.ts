@@ -145,10 +145,6 @@ export const analytics = {
   logOpenLocationSettings: () => analyticsProvider.logEvent(AnalyticsEvent.OPEN_LOCATION_SETTINGS),
   logOpenNotificationSettings: () =>
     analyticsProvider.logEvent(AnalyticsEvent.OPEN_NOTIFICATION_SETTINGS),
-  logProblemWithLink: (url: string) =>
-    analyticsProvider.logEvent(AnalyticsEvent.DEEP_LINK_IMPORTER, {
-      url: urlWithValueMaxLength(url),
-    }),
   logProfilScrolledToBottom: () =>
     analyticsProvider.logEvent(AnalyticsEvent.PROFIL_SCROLLED_TO_BOTTOM),
   logLocationToggle: (enabled: boolean) =>

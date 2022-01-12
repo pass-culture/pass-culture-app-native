@@ -25,7 +25,6 @@ import { CheatCodes } from 'features/cheatcodes/pages/CheatCodes/CheatCodes'
 import { CheatMenu } from 'features/cheatcodes/pages/CheatMenu'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
 import { NavigationNotScreensPages } from 'features/cheatcodes/pages/NavigationNotScreensPages'
-import { DeeplinkImporter } from 'features/deeplinks/pages/DeeplinkImporter'
 import { EighteenBirthday } from 'features/eighteenBirthday/pages/EighteenBirthday'
 import { withAsyncErrorBoundary } from 'features/errors'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
@@ -163,7 +162,6 @@ export const routes: Route[] = [
     options: { title: t`Questionnaire culturel` },
     secure: true,
   },
-  { name: 'DeeplinkImporter', component: DeeplinkImporter, path: 'importer-un-lien' },
   {
     name: 'EndedBookings',
     component: EndedBookings,

@@ -197,14 +197,6 @@ describe('Profile component', () => {
 
       expect(openUrl).toBeCalledWith(env.FAQ_LINK)
     })
-    it('should navigate when the how-import-deeplink row is clicked', async () => {
-      const { getByTestId } = await renderProfile()
-
-      const row = getByTestId('Problèmes pour ouvrir un lien\u00a0?')
-      fireEvent.press(row)
-
-      expect(mockNavigate).toBeCalledWith('DeeplinkImporter')
-    })
   })
 
   describe('other section', () => {
