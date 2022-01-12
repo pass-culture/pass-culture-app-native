@@ -167,11 +167,11 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
         Les informations que tu as renseignées ne seront pas enregistrées.
       </Text>
       <View
-        numberOfSpaces={12}
+        numberOfSpaces={30}
         style={
           Array [
             Object {
-              "height": 48,
+              "height": 120,
             },
           ]
         }

@@ -676,11 +676,11 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
       </View>
     </Modal>
     <View
-      numberOfSpaces={12}
+      numberOfSpaces={30}
       style={
         Array [
           Object {
-            "height": 48,
+            "height": 120,
           },
         ]
       }

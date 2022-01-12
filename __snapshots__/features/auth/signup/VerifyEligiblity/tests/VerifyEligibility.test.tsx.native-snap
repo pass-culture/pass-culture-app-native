@@ -144,11 +144,11 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
  Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.
     </Text>
     <View
-      numberOfSpaces={12}
+      numberOfSpaces={30}
       style={
         Array [
           Object {
-            "height": 48,
+            "height": 120,
           },
         ]
       }

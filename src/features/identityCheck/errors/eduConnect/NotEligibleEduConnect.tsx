@@ -7,17 +7,13 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
-import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { getSpacing, getSpacingString, Typo } from 'ui/theme'
-import { useGrid } from 'ui/theme/grid'
+import { Typo } from 'ui/theme'
 
 import { useNotEligibleEduConnectErrorData } from '../hooks/useNotEligibleEduConnectErrorData'
-
-const SMALL_HEIGHT = 576
 
 export const NotEligibleEduConnect = ({
   error: { message },
@@ -35,9 +31,6 @@ export const NotEligibleEduConnect = ({
     onPrimaryButtonPress,
   } = useNotEligibleEduConnectErrorData(message, setError)
   const { colors } = useTheme()
-  const isSmallScreen = useMediaQuery({ maxHeight: SMALL_HEIGHT })
-  const getGrid = useGrid()
-  const bodyFontSize = getSpacing(getGrid({ default: 3.75, sm: 3 }, 'height'))
 
   useEffect(
     () => () => {
@@ -82,11 +75,7 @@ export const NotEligibleEduConnect = ({
       <Helmet>
         <title>{title}</title>
       </Helmet>
-      <Body
-        textAlign={descriptionAlignment}
-        color={colors.white}
-        fontSize={bodyFontSize}
-        isSmallScreen={!!isSmallScreen}>
+      <Body textAlign={descriptionAlignment} color={colors.white}>
         {description}
       </Body>
     </GenericInfoPage>
@@ -94,15 +83,11 @@ export const NotEligibleEduConnect = ({
 }
 
 type TextBodyProps = TextProps & {
-  isSmallScreen: boolean
-  fontSize: number
   textAlign?: Exclude<TextStyle['textAlign'], 'auto'>
 }
 const Body = styled(Typo.Body).attrs<TextBodyProps>((props) => props)<TextBodyProps>(
-  ({ theme, isSmallScreen, fontSize, textAlign }) => ({
+  ({ theme, textAlign }) => ({
     ...theme.typography.body,
-    fontSize,
-    lineHeight: getSpacingString(isSmallScreen ? 4 : 5),
     textAlign,
   })
 )

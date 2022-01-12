@@ -168,11 +168,11 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       Tu peux retrouver toutes les informations concernant ta réservation sur l’application
     </Text>
     <View
-      numberOfSpaces={12}
+      numberOfSpaces={30}
       style={
         Array [
           Object {
-            "height": 48,
+            "height": 120,
           },
         ]
       }

@@ -126,7 +126,6 @@ exports[`NoContentError should render correctly 1`] = `
       }
     />
     <Text
-      color="#ffffff"
       style={
         Array [
           Object {
@@ -142,90 +141,95 @@ exports[`NoContentError should render correctly 1`] = `
       Une erreur s’est produite pendant le chargement de nos recommandations.
     </Text>
     <View
-      numberOfSpaces={4}
+      numberOfSpaces={30}
       style={
         Array [
           Object {
-            "height": 16,
+            "height": 120,
           },
         ]
       }
     />
     <View
-      accessibilityLabel="Rechercher une offre"
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      nativeID="animatedComponent"
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
       style={
-        Object {
-          "alignItems": "center",
-          "backgroundColor": "transparent",
-          "borderColor": "#ffffff",
-          "borderRadius": 24,
-          "borderWidth": 2,
-          "flexDirection": "row",
-          "height": 40,
-          "justifyContent": "center",
-          "maxWidth": 500,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 24,
-          "paddingRight": 24,
-          "paddingTop": 2,
-          "width": "auto",
-        }
+        Array [
+          Object {
+            "alignSelf": "stretch",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "flex-end",
+            "marginBottom": 32,
+          },
+        ]
       }
-      testID="Rechercher une offre"
     >
       <View
-        height={22}
-        testID="button-icon"
-        width={22}
+        accessibilityLabel="Rechercher une offre"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        nativeID="animatedComponent"
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "borderColor": "#ffffff",
+            "borderRadius": 24,
+            "borderWidth": 2,
+            "flexDirection": "row",
+            "height": 40,
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 2,
+            "width": "auto",
+          }
+        }
+        testID="Rechercher une offre"
       >
-        <Text>
-          button-icon-SVG-Mock
+        <View
+          height={22}
+          testID="button-icon"
+          width={22}
+        >
+          <Text>
+            button-icon-SVG-Mock
+          </Text>
+        </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          icon={[Function]}
+          iconSize={22}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 12,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+          textColor="#ffffff"
+        >
+          Rechercher une offre
         </Text>
       </View>
-      <Text
-        adjustsFontSizeToFit={false}
-        icon={[Function]}
-        iconSize={22}
-        numberOfLines={1}
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginLeft": 12,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-        textColor="#ffffff"
-      >
-        Rechercher une offre
-      </Text>
     </View>
-    <View
-      numberOfSpaces={12}
-      style={
-        Array [
-          Object {
-            "height": 48,
-          },
-        ]
-      }
-    />
     <View
       customHeight={8}
       enable={true}
