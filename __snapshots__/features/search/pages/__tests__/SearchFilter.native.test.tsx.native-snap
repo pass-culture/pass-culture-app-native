@@ -14,6 +14,7 @@ exports[`SearchFilter component should render correctly 1`] = `
   }
 >
   <RCTScrollView
+    scrollEnabled={true}
     style={
       Array [
         Object {
