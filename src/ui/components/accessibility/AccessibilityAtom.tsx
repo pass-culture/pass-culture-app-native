@@ -6,15 +6,6 @@ import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 import { getIconAndWording, HandicapCategory } from './AccessibilityAtom.service'
-
-const HandicapText: React.FC<{ wording: string }> = ({ wording }) => (
-  <TextContainer testID={wording}>
-    {wording.split(' ').map((word) => (
-      <Text key={word}>{word}</Text>
-    ))}
-  </TextContainer>
-)
-
 interface Props {
   handicap: HandicapCategory
   isAccessible: boolean
@@ -44,10 +35,18 @@ export const AccessibilityAtom: React.FC<Props> = ({
         </ValidationContainer>
       </Frame>
       <Spacer.Column numberOfSpaces={4} />
-      <HandicapText wording={wording} />
+      <TextContainer testID={wording}>
+        <Text>{wording}</Text>
+      </TextContainer>
     </Container>
   )
 }
+
+const Container = styled.View<{ rightSpacingValue: number }>(({ rightSpacingValue, theme }) => ({
+  flex: 1,
+  marginRight: rightSpacingValue,
+  alignItems: theme.isMobileViewport ? undefined : 'center',
+}))
 
 const Frame = styled.View({
   aspectRatio: '1',
@@ -57,12 +56,6 @@ const Frame = styled.View({
   borderWidth: 1,
   minHeight: getSpacing(16),
 })
-
-const Container = styled.View<{ rightSpacingValue: number }>(({ rightSpacingValue }) => ({
-  flexDirection: 'column',
-  flexShrink: 1,
-  marginRight: rightSpacingValue,
-}))
 
 const TextContainer = styled.View({
   marginHorizontal: -getSpacing(1),

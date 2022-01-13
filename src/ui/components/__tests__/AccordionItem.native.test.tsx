@@ -21,6 +21,8 @@ describe('AccordionItem', () => {
     const accordionBody = accordion.getByTestId('accordionBody')
     const accordionBodyContainer = accordion.getByTestId('accordionBodyContainer')
     expect(accordionBody.props.style).toEqual({ height: 0, overflow: 'hidden' })
+    expect(accordion.queryByLabelText('Ouvrir la section')).toBeTruthy()
+    expect(accordion.queryByLabelText('Fermer la section')).toBeFalsy()
 
     fireEvent(accordionBodyContainer, 'layout', { nativeEvent: { layout: { height: 30 } } })
 
@@ -30,6 +32,8 @@ describe('AccordionItem', () => {
     })
 
     expect(accordionBody.props.style).toEqual({ height: 30, overflow: 'hidden' })
+    expect(accordion.queryByLabelText('Fermer la section')).toBeTruthy()
+    expect(accordion.queryByLabelText('Ouvrir la section')).toBeFalsy()
   })
 
   it('correct arrow animation,', async () => {

@@ -35,7 +35,7 @@ const renderAccessibilityAtom = (
     />
   )
 
-const Row = styled.View({
+const Row = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  justifyContent: 'space-between',
-})
+  justifyContent: theme.isMobileViewport ? 'space-between' : 'space-around',
+}))

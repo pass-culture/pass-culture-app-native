@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import React, { MutableRefObject, useEffect, useRef, useState } from 'react'
 import {
   Platform,
@@ -86,7 +87,10 @@ export const AccordionItem = ({
 
   return (
     <React.Fragment>
-      <TouchableWithoutFeedback onPress={toggleListItem} onLayout={getPositionOfAccordionItem}>
+      <TouchableWithoutFeedback
+        onPress={toggleListItem}
+        onLayout={getPositionOfAccordionItem}
+        accessibilityLabel={open ? t`Fermer la section` : t`Ouvrir la section`}>
         <View style={[styles.titleContainer, titleStyle]}>
           <Title>{title}</Title>
           <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }} testID="accordionArrow">

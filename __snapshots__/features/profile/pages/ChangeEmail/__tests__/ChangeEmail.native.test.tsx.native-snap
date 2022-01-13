@@ -412,7 +412,7 @@ Array [
               value=""
             />
             <View
-              accessibilityLabel="Basculer l'affichage du mot de passe"
+              accessibilityLabel="Afficher le mot de passe"
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -434,7 +434,7 @@ Array [
                   "opacity": 1,
                 }
               }
-              testID="Basculer l'affichage du mot de passe"
+              testID="toggle-password-visibility"
             >
               <View
                 fill="#151515"
@@ -1052,7 +1052,7 @@ Array [
               value=""
             />
             <View
-              accessibilityLabel="Basculer l'affichage du mot de passe"
+              accessibilityLabel="Afficher le mot de passe"
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -1074,7 +1074,7 @@ Array [
                   "opacity": 1,
                 }
               }
-              testID="Basculer l'affichage du mot de passe"
+              testID="toggle-password-visibility"
             >
               <View
                 fill="#151515"

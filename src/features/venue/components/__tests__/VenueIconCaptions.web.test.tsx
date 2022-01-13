@@ -3,7 +3,7 @@ import React from 'react'
 import { VenueTypeCodeKey } from 'api/gen'
 import { GeolocPermissionState } from 'libs/geolocation'
 import { parseType } from 'libs/parsers'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render } from 'tests/utils/web'
 
 import { VenueIconCaptions } from '../VenueIconCaptions'
 
@@ -29,16 +29,28 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
 }))
 
 describe('<VenueIconCaptions />', () => {
-  it('should match snapshot', async () => {
+  it('should change accessibilityLabel when geolocation is active or not', async () => {
     mockDistance = '10 km'
-    const { toJSON } = render(
+    const { queryByLabelText, rerender } = render(
       <VenueIconCaptions
         label={typeLabel}
         type={VenueTypeCodeKey.MOVIE}
         locationCoordinates={locationCoordinates}
       />
     )
-    expect(toJSON()).toMatchSnapshot()
+    expect(queryByLabelText('Distance depuis la localisation')).toBeTruthy()
+    expect(queryByLabelText('Activer la localisation')).toBeFalsy()
+
+    mockDistance = null
+    rerender(
+      <VenueIconCaptions
+        label={typeLabel}
+        type={VenueTypeCodeKey.MOVIE}
+        locationCoordinates={locationCoordinates}
+      />
+    )
+    expect(queryByLabelText('Activer la localisation')).toBeTruthy()
+    expect(queryByLabelText('Distance depuis la localisation')).toBeFalsy()
   })
 
   it('should display a default label "Autre type de lieu" for venue type if type is null', async () => {
@@ -98,7 +110,7 @@ describe('<VenueIconCaptions />', () => {
         locationCoordinates={locationCoordinates}
       />
     )
-    fireEvent.press(getByTestId('iconLocation'))
+    fireEvent.click(getByTestId('iconLocation'))
     expect(mockShowGeolocPermissionModal).toHaveBeenCalledTimes(1)
   })
 })
