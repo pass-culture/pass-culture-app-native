@@ -16,7 +16,8 @@ export const customFindUrlChunks = ({ textToHighlight }: FindChunksArgs): Chunk[
   let match: RegExpExecArray | null
   while ((match = externalUrlRegex.exec(textToHighlight))) {
     const startWithSpace = /\s/.test(textToHighlight[match.index])
-    const start = startWithSpace ? match.index + 1 : match.index
+    const startIndexSpaceAdjustment = startWithSpace ? 1 : 0
+    const start = match.index + startIndexSpaceAdjustment
     const end = externalUrlRegex.lastIndex
     // We do not return zero-length matches
     if (end > start) {
