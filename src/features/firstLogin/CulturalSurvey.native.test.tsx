@@ -39,7 +39,6 @@ function mockUseCurrentRoute(name: string) {
 const DEFAULT_USER = {
   id: 1234,
   needsToFillCulturalSurvey: true,
-  isBeneficiary: true,
 } as UserProfileResponse
 beforeEach(() => {
   mockUserProfileInfo({ user: DEFAULT_USER, isLoading: false })
@@ -76,12 +75,6 @@ describe('<CulturalSurvey />', () => {
       user: { ...DEFAULT_USER, needsToFillCulturalSurvey: false },
       isLoading: false,
     })
-    await renderCulturalSurveyWithNavigation()
-    expect(navigate).toHaveBeenNthCalledWith(1, ...homeNavConfig)
-  })
-
-  it('should navigate to Home if user is not beneficiary', async () => {
-    mockUserProfileInfo({ user: { ...DEFAULT_USER, isBeneficiary: false }, isLoading: false })
     await renderCulturalSurveyWithNavigation()
     expect(navigate).toHaveBeenNthCalledWith(1, ...homeNavConfig)
   })
