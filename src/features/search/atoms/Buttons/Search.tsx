@@ -18,6 +18,11 @@ export const Search: React.FC = () => {
   }
 
   return (
-    <ButtonWithLinearGradient wording={SEARCH_CTA_WORDING} onPress={onPress} isDisabled={false} />
+    <ButtonWithLinearGradient
+      wording={SEARCH_CTA_WORDING}
+      onPress={onPress}
+      isDisabled={false}
+      type="submit"
+    />
   )
 }
