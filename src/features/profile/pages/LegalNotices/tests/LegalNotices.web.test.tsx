@@ -28,6 +28,11 @@ async function renderProfile() {
 }
 
 describe('LegalNotices', () => {
+  it('should render correctly', async () => {
+    const renderAPI = await renderProfile()
+    expect(renderAPI).toMatchSnapshot()
+  })
+
   it('should navigate when the cgu row is clicked', async () => {
     const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
     const { getByTestId } = await renderProfile()

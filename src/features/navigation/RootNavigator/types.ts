@@ -79,7 +79,6 @@ export type RootStackParamList = {
   BookingDetails: { id: number }
   ConsentSettings: { onGoBack?: () => void } | undefined
   CulturalSurvey: undefined
-  DeeplinkImporter: undefined
   DeleteProfileSuccess: undefined
   EndedBookings: undefined
   ForgottenPassword: undefined

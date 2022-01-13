@@ -1,32 +1,29 @@
 import React, { PropsWithChildren } from 'react'
-import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { Separator } from './Separator'
 
-interface SectionProps {
+type SectionProps = PropsWithChildren<{
   title?: string
-  style?: StyleProp<ViewStyle>
-}
+}>
 
-export function Section(props: PropsWithChildren<SectionProps>) {
+export function Section(props: SectionProps) {
   return (
-    <Container style={props.style}>
-      {!!props.title && <Title>{props.title}</Title>}
+    <Container>
+      {!!props.title && <StyledCaption>{props.title}</StyledCaption>}
+      <Spacer.Column numberOfSpaces={2} />
       <Separator />
       {props.children}
     </Container>
   )
 }
 
-const Container = styled(View)({
+const Container = styled.View({
   paddingTop: getSpacing(2),
 })
 
-const Title = styled(Typo.Body)({
-  fontSize: 12,
-  fontFamily: 'Montserrat-Medium',
-  paddingBottom: getSpacing(2),
-})
+const StyledCaption = styled(Typo.Caption)(({ theme, color }) => ({
+  color: color ?? theme.colors.greyDark,
+}))

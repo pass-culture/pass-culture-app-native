@@ -51,6 +51,7 @@ describe('NotificationSettings', () => {
       queryByText('Autoriser les notifications marketing')
     })
   })
+
   it('should only display the email switch on android', async () => {
     Platform.OS = 'android'
     const { queryByText } = await renderNotificationSettings('granted', {} as UserProfileResponse)
@@ -70,11 +71,12 @@ describe('NotificationSettings', () => {
         },
       } as UserProfileResponse)
       await superFlushWithAct(10)
-      const pushSwitch = getByTestId('Interrupteur push notifications')
+      const pushSwitch = getByTestId("Interrupteur d'autorisation des notifications marketing")
       await waitForExpect(() =>
         expect(pushSwitch.parent?.props.accessibilityValue.text).toBe('true')
       )
     })
+
     it.each<[PermissionStatus, boolean]>([
       ['unavailable', true],
       ['blocked', true],
@@ -91,7 +93,7 @@ describe('NotificationSettings', () => {
             marketingPush,
           },
         } as UserProfileResponse)
-        const pushSwitch = getByTestId('Interrupteur push notifications')
+        const pushSwitch = getByTestId("Interrupteur d'autorisation des notifications marketing")
         await superFlushWithAct(10)
         await waitForExpect(() =>
           expect(pushSwitch.parent?.props.accessibilityValue.text).toBe('false')
@@ -110,12 +112,12 @@ describe('NotificationSettings', () => {
       } as UserProfileResponse)
       await superFlushWithAct(10)
       await waitForExpect(() => {
-        const toggleSwitch = getByTestId('Interrupteur push notifications')
+        const toggleSwitch = getByTestId("Interrupteur d'autorisation des notifications marketing")
         fireEvent.press(toggleSwitch)
       })
       await superFlushWithAct(10)
       await waitForExpect(() => {
-        const toggleSwitch = getByTestId('Interrupteur push notifications')
+        const toggleSwitch = getByTestId("Interrupteur d'autorisation des notifications marketing")
         // expect activated
         expect(toggleSwitch.parent?.props.accessibilityValue.text).toBe('true')
         expect((toggleSwitch.children[0] as ReactTestInstance).props.backgroundColor).toEqual(
@@ -123,6 +125,7 @@ describe('NotificationSettings', () => {
         )
       })
     })
+
     it('should disable the switch when permission=="granted" and push previously allowed', async () => {
       const { getByTestId } = await renderNotificationSettings('granted', {
         subscriptions: {
@@ -132,12 +135,12 @@ describe('NotificationSettings', () => {
       } as UserProfileResponse)
       await superFlushWithAct(10)
       await waitForExpect(() => {
-        const toggleSwitch = getByTestId('Interrupteur push notifications')
+        const toggleSwitch = getByTestId("Interrupteur d'autorisation des notifications marketing")
         fireEvent.press(toggleSwitch)
       })
       await superFlushWithAct(10)
       await waitForExpect(() => {
-        const toggleSwitch = getByTestId('Interrupteur push notifications')
+        const toggleSwitch = getByTestId("Interrupteur d'autorisation des notifications marketing")
         // expect not activated
         expect(toggleSwitch.parent?.props.accessibilityValue.text).toBe('false')
         expect((toggleSwitch.children[0] as ReactTestInstance).props.backgroundColor).toEqual(
@@ -145,6 +148,7 @@ describe('NotificationSettings', () => {
         )
       })
     })
+
     it.each<PermissionStatus>(['unavailable', 'blocked', 'denied', 'limited'])(
       'should open the modal when permission!="granted" (==%s) and trying to allow',
       async (permission) => {
@@ -156,7 +160,9 @@ describe('NotificationSettings', () => {
         } as UserProfileResponse)
         await superFlushWithAct(10)
         await waitForExpect(() => {
-          const toggleSwitch = getByTestId('Interrupteur push notifications')
+          const toggleSwitch = getByTestId(
+            "Interrupteur d'autorisation des notifications marketing"
+          )
           fireEvent.press(toggleSwitch)
         })
         await superFlushWithAct(10)
@@ -184,6 +190,7 @@ describe('NotificationSettings', () => {
         expect(saveButton).toBeFalsy()
       })
     })
+
     it('should enable the save button when the email switch changed', async () => {
       mockApiUpdateProfile({
         subscriptions: {
@@ -204,7 +211,7 @@ describe('NotificationSettings', () => {
 
       await superFlushWithAct(10)
       await waitForExpect(() => {
-        const toggleSwitch = getByTestId("Interrupteur autorisation d'envoi des emails")
+        const toggleSwitch = getByTestId("Interrupteur d'autorisation d'envoi des e-mails")
         fireEvent.press(toggleSwitch)
       })
 
@@ -223,6 +230,7 @@ describe('NotificationSettings', () => {
         expect(saveButton?.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
       })
     })
+
     it('should enable the save button when the push switch changed and call analytics when pressed', async () => {
       Platform.OS = 'ios'
       mockApiUpdateProfile({
@@ -244,7 +252,7 @@ describe('NotificationSettings', () => {
 
       await superFlushWithAct(10)
       await waitForExpect(() => {
-        const toggleSwitch = getByTestId('Interrupteur push notifications')
+        const toggleSwitch = getByTestId("Interrupteur d'autorisation des notifications marketing")
         fireEvent.press(toggleSwitch)
       })
 

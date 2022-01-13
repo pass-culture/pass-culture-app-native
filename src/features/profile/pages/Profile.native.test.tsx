@@ -96,6 +96,11 @@ describe('Profile component', () => {
     cleanup()
   })
 
+  it('should render correctly', async () => {
+    const renderAPI = await renderProfile()
+    expect(renderAPI).toMatchSnapshot()
+  })
+
   describe('user settings section', () => {
     it('should navigate when the personal data row is clicked', async () => {
       const { getByTestId } = await renderProfile()
@@ -191,14 +196,6 @@ describe('Profile component', () => {
       fireEvent.press(row)
 
       expect(openUrl).toBeCalledWith(env.FAQ_LINK)
-    })
-    it('should navigate when the how-import-deeplink row is clicked', async () => {
-      const { getByTestId } = await renderProfile()
-
-      const row = getByTestId('Problèmes pour ouvrir un lien\u00a0?')
-      fireEvent.press(row)
-
-      expect(mockNavigate).toBeCalledWith('DeeplinkImporter')
     })
   })
 

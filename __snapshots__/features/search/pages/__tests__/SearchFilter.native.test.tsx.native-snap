@@ -2185,16 +2185,6 @@ exports[`SearchFilter component should render correctly 1`] = `
             </Text>
           </Text>
           <View
-            numberOfSpaces={7}
-            style={
-              Array [
-                Object {
-                  "width": 28,
-                },
-              ]
-            }
-          />
-          <View
             style={
               Array [
                 Object {
@@ -2339,16 +2329,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               Uniquement les offres duo
             </Text>
           </Text>
-          <View
-            numberOfSpaces={7}
-            style={
-              Array [
-                Object {
-                  "width": 28,
-                },
-              ]
-            }
-          />
           <View
             style={
               Array [
@@ -2495,16 +2475,6 @@ exports[`SearchFilter component should render correctly 1`] = `
             </Text>
           </Text>
           <View
-            numberOfSpaces={7}
-            style={
-              Array [
-                Object {
-                  "width": 28,
-                },
-              ]
-            }
-          />
-          <View
             style={
               Array [
                 Object {
@@ -2649,16 +2619,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               Date
             </Text>
           </Text>
-          <View
-            numberOfSpaces={7}
-            style={
-              Array [
-                Object {
-                  "width": 28,
-                },
-              ]
-            }
-          />
           <View
             style={
               Array [
@@ -2829,16 +2789,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               Heure
             </Text>
           </Text>
-          <View
-            numberOfSpaces={7}
-            style={
-              Array [
-                Object {
-                  "width": 28,
-                },
-              ]
-            }
-          />
           <View
             style={
               Array [

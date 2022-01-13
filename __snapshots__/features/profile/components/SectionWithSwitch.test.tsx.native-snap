@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SectionWithSwitch/> should display different if isDesktopViewport or with toggleLabel 1`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -12,11 +12,14 @@
+    <View
+      style={
+        Array [
+          Object {
+            \\"alignItems\\": \\"center\\",
++           \\"flexBasis\\": 0,
+            \\"flexDirection\\": \\"row\\",
++           \\"flexGrow\\": 1,
++           \\"flexShrink\\": 1,
+          },
+        ]
+      }
+      toggleLabel={false}
+    >"
+`;
+
+exports[`<SectionWithSwitch/> should display different if isDesktopViewport or with toggleLabel 2`] = `
+"Snapshot Diff:
+- First value
++ Second value
+
+@@ -12,15 +12,18 @@
+    <View
+      style={
+        Array [
+          Object {
+            \\"alignItems\\": \\"center\\",
++           \\"flexBasis\\": 0,
+            \\"flexDirection\\": \\"row\\",
++           \\"flexGrow\\": 1,
++           \\"flexShrink\\": 1,
+          },
+        ]
+      }
+-     toggleLabel={false}
++     toggleLabel={true}
+    >
+      <Text
+        style={
+          Array [
+            Object {
+@@ -43,10 +46,24 @@
+            \\"flexDirection\\": \\"row\\",
+          },
+        ]
+      }
+    >
++     <Text
++       style={
++         Array [
++           Object {
++             \\"color\\": \\"#626262\\",
++             \\"fontFamily\\": \\"Montserrat-SemiBold\\",
++             \\"fontSize\\": 12,
++             \\"lineHeight\\": 16,
++           },
++         ]
++       }
++     >
++       Partager ma position
++     </Text>
+      <View
+        style={
+          Array [
+            Object {
+              \\"alignItems\\": \\"center\\","
+`;

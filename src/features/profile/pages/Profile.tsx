@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { Platform, NativeScrollEvent, StyleSheet, ScrollView } from 'react-native'
+import { NativeScrollEvent, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext, useLogoutRoutine } from 'features/auth/AuthContext'
@@ -10,13 +10,13 @@ import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
 import { useUserProfileInfo } from 'features/home/api'
 import { openUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch'
 import { SmartBanner } from 'features/smartBanner/SmartBanner'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { accessibilityAndTestId } from 'tests/utils'
-import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Section } from 'ui/components/Section'
 import { SectionRow } from 'ui/components/SectionRow'
@@ -31,7 +31,7 @@ import { Lock } from 'ui/svg/icons/Lock'
 import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
-import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 import Package from '../../../../package.json'
@@ -112,8 +112,7 @@ export const Profile: React.FC = () => {
       <ProfileHeader user={user} />
       <ProfileContainer>
         <Spacer.Column numberOfSpaces={getSpacing(1)} />
-        <ProfileSection
-          title={isLoggedIn ? t`Paramètres du compte` : t`Paramètres de l'application`}>
+        <Section title={isLoggedIn ? t`Paramètres du compte` : t`Paramètres de l'application`}>
           {!!isLoggedIn && (
             <React.Fragment>
               <Row
@@ -121,95 +120,72 @@ export const Profile: React.FC = () => {
                 type="navigable"
                 onPress={() => navigate('PersonalData')}
                 icon={ProfileIcon}
-                style={styles.row}
               />
               <Row
                 title={t`Mot de passe`}
                 type="navigable"
                 onPress={() => navigate('ChangePassword')}
                 icon={Lock}
-                style={styles.row}
               />
             </React.Fragment>
           )}
-          <SectionRow
+          <Row
             type="navigable"
             title={t`Notifications`}
             icon={Bell}
-            iconSize={SECTION_ROW_ICON_SIZE}
             onPress={() => navigate('NotificationSettings')}
-            style={styles.row}
           />
-          <SectionRow
-            type="clickable"
-            title={t`Géolocalisation`}
+          <SectionWithSwitch
             icon={LocationPointerNotFilled}
             iconSize={SECTION_ROW_ICON_SIZE}
-            style={styles.row}
-            cta={
-              <FilterSwitch
-                active={isGeolocSwitchActive}
-                accessibilityLabel={t`Interrupteur géolocalisation`}
-                toggle={() => {
-                  switchGeolocation()
-                  debouncedLogLocationToggle(!isGeolocSwitchActive)
-                }}
-              />
-            }
+            title={t`Partager ma position`}
+            active={isGeolocSwitchActive}
+            accessibilityLabel={t`Interrupteur géolocalisation`}
+            toggle={() => {
+              switchGeolocation()
+              debouncedLogLocationToggle(!isGeolocSwitchActive)
+            }}
+            toggleLabel={t`Partager ma position`}
           />
           {!!positionError && (
             <InputError visible messageId={positionError.message} numberOfSpacesTop={1} />
           )}
-        </ProfileSection>
-        <ProfileSection title={t`Aides`}>
+        </Section>
+        <Section title={t`Aides`}>
           <Row
             title={t`Comment ça marche\u00a0?`}
             type="navigable"
             onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
             icon={LifeBuoy}
-            style={styles.row}
           />
           <Row
             title={t`Questions fréquentes`}
             type="clickable"
             onPress={() => openUrl(env.FAQ_LINK)}
             icon={ExternalSite}
-            style={styles.row}
           />
-          {Platform.OS !== 'web' && (
-            <Row
-              title={t`Problèmes pour ouvrir un lien\u00a0?`}
-              type="navigable"
-              onPress={() => navigate('DeeplinkImporter')}
-              icon={LifeBuoy}
-              style={styles.row}
-            />
-          )}
-        </ProfileSection>
-        <ProfileSection title={t`Autres`}>
+        </Section>
+        <Section title={t`Autres`}>
           <Row
             title={t`Accessibilité`}
             type="clickable"
             onPress={() => openUrl(env.ACCESSIBILITY_LINK)}
             icon={ExternalSite}
-            style={styles.row}
           />
           <Row
             title={t`Mentions légales`}
             type="navigable"
             onPress={() => navigate('LegalNotices')}
             icon={LegalNotices}
-            style={styles.row}
           />
           <Row
             title={t`Confidentialité`}
             type="navigable"
             onPress={() => navigate('ConsentSettings')}
             icon={Confidentiality}
-            style={styles.row}
           />
-        </ProfileSection>
-        <ProfileSection title={t`Suivre pass Culture`}>
+        </Section>
+        <Section title={t`Suivre pass Culture`}>
           <NetworkRow>
             <NetworkRowContainer>
               <SocialNetworkCard network="instagram" />
@@ -218,9 +194,9 @@ export const Profile: React.FC = () => {
               <SocialNetworkCard network="facebook" />
             </NetworkRowContainer>
           </NetworkRow>
-        </ProfileSection>
+        </Section>
         {!!isLoggedIn && (
-          <ProfileSection>
+          <Section>
             <SignOutRow
               title={t`Déconnexion`}
               {...accessibilityAndTestId(t`Déconnexion`)}
@@ -228,44 +204,32 @@ export const Profile: React.FC = () => {
               type="clickable"
               icon={SignOut}
             />
-          </ProfileSection>
+          </Section>
         )}
-        <ProfileSection>
+        <Section>
           <Spacer.Column numberOfSpaces={4} />
-          <Version>{t`Version` + `\u00a0${Package.version}`}</Version>
+          <StyledCaption>{t`Version` + `\u00a0${Package.version}`}</StyledCaption>
           <Spacer.Column numberOfSpaces={4} />
           <LogoMinistereContainer>
             <LogoMinistere />
           </LogoMinistereContainer>
           <Spacer.Column numberOfSpaces={4} />
-        </ProfileSection>
+        </Section>
         <Spacer.TabBar />
       </ProfileContainer>
     </ScrollView>
   )
 }
 
-const styles = StyleSheet.create({
-  section: {
-    marginBottom: getSpacing(2),
-  },
-  row: {
-    paddingVertical: getSpacing(4),
-  },
+const paddingVertical = getSpacing(4)
+
+const Row = styled(SectionRow).attrs({ iconSize: SECTION_ROW_ICON_SIZE })({
+  paddingVertical,
 })
 
-const ProfileSection = styled(Section).attrs({
-  style: styles.section,
-})``
-
-const Row = styled(SectionRow).attrs({
-  style: styles.row,
-  iconSize: SECTION_ROW_ICON_SIZE,
-})``
-
-const SignOutRow = styled(Row)({
-  marginTop: getSpacing(2),
-})
+const StyledCaption = styled(Typo.Caption)(({ theme, color }) => ({
+  color: color ?? theme.colors.greyDark,
+}))
 
 const LogoMinistereContainer = styled.View({
   width: getSpacing(40),
@@ -280,13 +244,10 @@ const NetworkRow = styled.View({
 
 const NetworkRowContainer = styled.View({
   flexDirection: 'row',
-  paddingVertical: getSpacing(4),
+  paddingVertical,
   justifyContent: 'space-between',
 })
 
-const Version = styled.Text({
-  fontFamily: 'Montserrat-Medium',
-  fontSize: 12,
-  lineHeight: '16px',
-  color: ColorsEnum.GREY_DARK,
+const SignOutRow = styled(SectionRow).attrs({ iconSize: SECTION_ROW_ICON_SIZE })({
+  marginTop: getSpacing(4),
 })

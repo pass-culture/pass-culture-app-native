@@ -37,7 +37,6 @@ export const InlineSection: React.FC<{
   <MarginHorizontalContainer testID={testID}>
     <InlineSectionTitleContainer>
       <StyledTitle numberOfLines={2}>{title}</StyledTitle>
-      <Spacer.Row numberOfSpaces={7} />
       {children}
     </InlineSectionTitleContainer>
     {!!subtitle && (
@@ -57,4 +56,6 @@ const InlineSectionTitleContainer = styled.View({
   alignItems: 'center',
 })
 
-const StyledTitle = styled(Typo.Title4)({ flex: 1 })
+const StyledTitle = styled(Typo.Title4)(({ theme }) => ({
+  flex: theme.isMobileViewport ? 1 : undefined,
+}))
