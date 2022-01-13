@@ -159,9 +159,9 @@ export const CalendarPicker: React.FC<Props> = ({
       ) : (
         <CalendarPickerWrapperDesktop>
           <RNCalendar
-            minDate={minDate}
+            minDate={minDate.toString()}
             style={RN_CALENDAR_STYLE}
-            current={selectedDate as unknown as LocaleConfig}
+            current={selectedDate.toString()}
             firstDay={1}
             enableSwipeMonths={true}
             renderHeader={(date) => <MonthHeader date={date as unknown as Date} />}

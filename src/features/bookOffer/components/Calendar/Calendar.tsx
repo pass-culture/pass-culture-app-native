@@ -40,7 +40,7 @@ const calendarHeaderStyle = {
       alignItems: 'center',
     },
   },
-} as Theme
+} as unknown as Theme
 
 interface Props {
   stocks: OfferStockResponse[]
@@ -76,7 +76,7 @@ export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit, offerId
   return (
     <RNCalendar
       style={RNCalendarTheme}
-      current={minDate as unknown as LocaleConfig}
+      current={minDate as unknown as string}
       firstDay={1}
       enableSwipeMonths={true}
       renderHeader={(date) => <MonthHeader date={date as unknown as Date} />}
@@ -84,7 +84,11 @@ export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit, offerId
       renderArrow={renderArrow}
       theme={calendarHeaderStyle}
       markedDates={markedDates}
-      dayComponent={({ date, marking = defaultMarking }: { date: DateData; marking: unknown }) => {
+      dayComponent={(props) => {
+        const { date, marking = defaultMarking } = props as unknown as {
+          date: DateData
+          marking: unknown
+        }
         // problem in the definition of marking in the library:
         // see https://www.uglydirtylittlestrawberry.co.uk/posts/wix-react-native-calendar-challenges/
         const { price, status, selected } = marking as unknown as Marking
