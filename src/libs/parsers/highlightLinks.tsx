@@ -6,7 +6,7 @@ import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 export type ParsedDescription = Array<string | React.ReactNode>
 
 const externalUrlRegex = new RegExp(
-  /((?<=^|\s)|https?:\/\/)[a-z]([-a-z0-9@:%._+~#=]*[a-z0-9])?\.[a-z0-9]{1,6}([/?#]\S*)?(?=\s|$)/,
+  /((^|\s)|https?:\/\/)[a-z]([-a-z0-9@:%._+~#=]*[a-z0-9])?\.[a-z0-9]{1,6}([/?#]\S*)?(?=\s|$)/,
   'gi'
 )
 
@@ -15,7 +15,7 @@ export const customFindUrlChunks = ({ textToHighlight }: FindChunksArgs): Chunk[
   const chunks = []
   let match: RegExpExecArray | null
   while ((match = externalUrlRegex.exec(textToHighlight))) {
-    const start = match.index
+    const start = textToHighlight[match.index] == ' ' ? match.index + 1 : match.index
     const end = externalUrlRegex.lastIndex
     // We do not return zero-length matches
     if (end > start) {
