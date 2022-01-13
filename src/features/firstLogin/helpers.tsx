@@ -17,7 +17,7 @@ import { LoadingPage } from 'ui/components/LoadingPage'
 
 export function shouldShowCulturalSurvey(user?: UserProfileResponse) {
   if (!user) return false
-  return user.isBeneficiary && user.needsToFillCulturalSurvey
+  return user.needsToFillCulturalSurvey
 }
 
 const FORM_ID = env.CULTURAL_SURVEY_TYPEFORM_ID
