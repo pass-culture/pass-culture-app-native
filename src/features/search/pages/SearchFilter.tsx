@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { LayoutChangeEvent, ScrollView } from 'react-native'
 import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
@@ -40,11 +40,12 @@ export const SearchFilter: React.FC = () => {
   const { searchState } = useStagedSearch()
   const { data: profile } = useUserProfileInfo()
   const { scrollViewRef, scrollToEnd } = useScrollToEndOnTimeOrDateActivation()
+  const [scrollEnabled, setScrollEnabled] = useState(true)
 
   return (
     <Container>
       <React.Fragment>
-        <StyledScrollView ref={scrollViewRef}>
+        <StyledScrollView ref={scrollViewRef} scrollEnabled={scrollEnabled}>
           <Spacer.TopScreen />
           <Spacer.Column numberOfSpaces={16} />
 
@@ -101,7 +102,7 @@ export const SearchFilter: React.FC = () => {
           {/* Date de l'offre */}
           {!!searchState.date && (
             <React.Fragment>
-              <Section.OfferDate />
+              <Section.OfferDate setScrollEnabled={setScrollEnabled} />
               <Separator marginVertical={getSpacing(6)} />
               <Spacer.Column numberOfSpaces={0} onLayout={scrollToEnd} />
             </React.Fragment>
@@ -138,7 +139,9 @@ const Container = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.white,
 }))
 
-const StyledScrollView = styled(ScrollView)({ flex: 1 })
+const StyledScrollView = styled(ScrollView)({
+  flex: 1,
+})
 const Separator = styled.View<{ marginVertical?: number }>(({ theme, marginVertical = 0 }) => ({
   width: theme.appContentWidth - getSpacing(2 * 6),
   height: 2,

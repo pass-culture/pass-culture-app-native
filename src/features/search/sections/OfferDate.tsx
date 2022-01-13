@@ -1,7 +1,8 @@
 import { t } from '@lingui/macro'
-import React, { useState } from 'react'
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
+import { Platform } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { DateFilter } from 'features/search/atoms/Buttons'
 import { CalendarPicker } from 'features/search/components'
@@ -13,10 +14,21 @@ import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
-export const OfferDate: React.FC = () => {
+type Props = {
+  setScrollEnabled?: ((setScrollEnabled: boolean) => void) | Dispatch<SetStateAction<boolean>>
+}
+
+export function OfferDate({ setScrollEnabled }: Props) {
   const { searchState, dispatch } = useStagedSearch()
   const [showTimePicker, setShowTimePicker] = useState<boolean>(false)
   const logUseFilter = useLogFilterOnce(SectionTitle.OfferDate)
+  const { isTouch } = useTheme()
+
+  useEffect(() => {
+    if (setScrollEnabled && isTouch && Platform.OS === 'web') {
+      setScrollEnabled(!showTimePicker)
+    }
+  }, [setScrollEnabled, showTimePicker])
 
   if (!searchState.date) return <React.Fragment />
 

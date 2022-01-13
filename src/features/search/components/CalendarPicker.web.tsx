@@ -205,6 +205,7 @@ const CalendarPickerWrapper = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'stretch',
   fontFamily: theme.fontFamily.regular,
+  userSelect: 'none',
 }))
 
 const CalendarPickerWrapperDesktop = styled.View(({ theme }) => ({
