@@ -37,7 +37,7 @@ export const VenueIconCaptions: React.FC<Props> = ({ type, label, locationCoordi
         disabled={!!distanceToLocation}
         testID="iconLocation"
         accessibilityLabel={
-          distanceToLocation ? t`distance depuis la localisation` : t`activer la localisation`
+          distanceToLocation ? t`Distance depuis la localisation` : t`Activer la localisation`
         }>
         {distanceToLocation ? (
           <IconWithCaption

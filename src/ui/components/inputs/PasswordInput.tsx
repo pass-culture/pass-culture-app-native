@@ -68,7 +68,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
         <IconTouchableOpacity
           testID="toggle-password-visibility"
           accessibilityLabel={
-            shouldHidePassword ? t`afficher le mot de passe` : t`cacher le mot de passe`
+            shouldHidePassword ? t`Afficher le mot de passe` : t`Cacher le mot de passe`
           }
           onPress={togglePasswordDisplay}>
           {shouldHidePassword ? <EyeSlash size={getSpacing(6)} /> : <Eye size={getSpacing(6)} />}

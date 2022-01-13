@@ -494,7 +494,7 @@ exports[`SearchFilter component should render correctly 1`] = `
         }
       />
       <View
-        accessibilityLabel="fermer la section"
+        accessibilityLabel="Fermer la section"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -1396,7 +1396,7 @@ exports[`SearchFilter component should render correctly 1`] = `
         }
       />
       <View
-        accessibilityLabel="fermer la section"
+        accessibilityLabel="Fermer la section"
         accessible={true}
         focusable={true}
         onClick={[Function]}

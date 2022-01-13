@@ -140,7 +140,7 @@ Object {
                   value=""
                 />
                 <div
-                  aria-label="afficher le mot de passe"
+                  aria-label="Afficher le mot de passe"
                   class="css-view-1dbjc4n"
                   data-testid="toggle-password-visibility"
                   style="align-items: flex-end; cursor: pointer; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; max-width: 60px; transition-duration: 0s; transition-property: opacity; user-select: none;"
@@ -385,7 +385,7 @@ Object {
                 value=""
               />
               <div
-                aria-label="afficher le mot de passe"
+                aria-label="Afficher le mot de passe"
                 class="css-view-1dbjc4n"
                 data-testid="toggle-password-visibility"
                 style="align-items: flex-end; cursor: pointer; flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1; max-width: 60px; transition-duration: 0s; transition-property: opacity; user-select: none;"

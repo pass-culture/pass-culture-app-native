@@ -268,7 +268,7 @@ Object {
               style="align-self: center; background-color: rgb(199, 199, 204); height: 92%; margin-right: 8px; margin-left: 8px; width: 1px;"
             />
             <div
-              aria-label="activer la localisation"
+              aria-label="Activer la localisation"
               class="css-view-1dbjc4n"
               data-testid="iconLocation"
               style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: none;"
@@ -783,7 +783,7 @@ Object {
             style="background-color: rgb(245, 245, 245); height: 8px;"
           />
           <div
-            aria-label="ouvrir la section"
+            aria-label="Ouvrir la section"
             class="css-view-1dbjc4n"
             style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
             tabindex="0"
@@ -863,7 +863,7 @@ Object {
             style="background-color: rgb(245, 245, 245); height: 8px;"
           />
           <div
-            aria-label="ouvrir la section"
+            aria-label="Ouvrir la section"
             class="css-view-1dbjc4n"
             style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
             tabindex="0"
@@ -1166,7 +1166,7 @@ Object {
             style="background-color: rgb(245, 245, 245); height: 8px;"
           />
           <div
-            aria-label="ouvrir la section"
+            aria-label="Ouvrir la section"
             class="css-view-1dbjc4n"
             style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
             tabindex="0"
@@ -1504,7 +1504,7 @@ Object {
             style="align-self: center; background-color: rgb(199, 199, 204); height: 92%; margin-right: 8px; margin-left: 8px; width: 1px;"
           />
           <div
-            aria-label="activer la localisation"
+            aria-label="Activer la localisation"
             class="css-view-1dbjc4n"
             data-testid="iconLocation"
             style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: none;"
@@ -2019,7 +2019,7 @@ Object {
           style="background-color: rgb(245, 245, 245); height: 8px;"
         />
         <div
-          aria-label="ouvrir la section"
+          aria-label="Ouvrir la section"
           class="css-view-1dbjc4n"
           style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
           tabindex="0"
@@ -2099,7 +2099,7 @@ Object {
           style="background-color: rgb(245, 245, 245); height: 8px;"
         />
         <div
-          aria-label="ouvrir la section"
+          aria-label="Ouvrir la section"
           class="css-view-1dbjc4n"
           style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
           tabindex="0"
@@ -2402,7 +2402,7 @@ Object {
           style="background-color: rgb(245, 245, 245); height: 8px;"
         />
         <div
-          aria-label="ouvrir la section"
+          aria-label="Ouvrir la section"
           class="css-view-1dbjc4n"
           style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
           tabindex="0"

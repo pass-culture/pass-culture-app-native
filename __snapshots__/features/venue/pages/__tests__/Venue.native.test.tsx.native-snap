@@ -436,7 +436,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           }
         />
         <View
-          accessibilityLabel="activer la localisation"
+          accessibilityLabel="Activer la localisation"
           accessibilityState={
             Object {
               "disabled": false,
@@ -2027,7 +2027,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         }
       />
       <View
-        accessibilityLabel="ouvrir la section"
+        accessibilityLabel="Ouvrir la section"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -2185,7 +2185,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         }
       />
       <View
-        accessibilityLabel="ouvrir la section"
+        accessibilityLabel="Ouvrir la section"
         accessible={true}
         focusable={true}
         onClick={[Function]}
@@ -2786,7 +2786,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         }
       />
       <View
-        accessibilityLabel="ouvrir la section"
+        accessibilityLabel="Ouvrir la section"
         accessible={true}
         focusable={true}
         onClick={[Function]}

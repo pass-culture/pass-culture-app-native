@@ -56,7 +56,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 +                 value=\\"mypassword\\"
                 />
                 <View
-                  accessibilityLabel=\\"afficher le mot de passe\\"
+                  accessibilityLabel=\\"Afficher le mot de passe\\"
                   accessible={true}
 -                 collapsable={false}
                   focusable={true}
@@ -272,7 +272,7 @@ exports[`<Login/> should show email error message WHEN signin has failed because
 +                 value=\\"mypassword\\"
                 />
                 <View
-                  accessibilityLabel=\\"afficher le mot de passe\\"
+                  accessibilityLabel=\\"Afficher le mot de passe\\"
                   accessible={true}
 -                 collapsable={false}
                   focusable={true}
@@ -488,7 +488,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +                 value=\\"mypassword\\"
                 />
                 <View
-                  accessibilityLabel=\\"afficher le mot de passe\\"
+                  accessibilityLabel=\\"Afficher le mot de passe\\"
                   accessible={true}
 -                 collapsable={false}
                   focusable={true}
@@ -740,7 +740,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +                 value=\\"mypassword\\"
                 />
                 <View
-                  accessibilityLabel=\\"afficher le mot de passe\\"
+                  accessibilityLabel=\\"Afficher le mot de passe\\"
                   accessible={true}
 -                 collapsable={false}
                   focusable={true}
@@ -992,7 +992,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 +                 value=\\"mypassword\\"
                 />
                 <View
-                  accessibilityLabel=\\"afficher le mot de passe\\"
+                  accessibilityLabel=\\"Afficher le mot de passe\\"
                   accessible={true}
 -                 collapsable={false}
                   focusable={true}

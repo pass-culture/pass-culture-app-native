@@ -1009,7 +1009,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             }
                           />
                           <View
-                            accessibilityLabel="ouvrir la section"
+                            accessibilityLabel="Ouvrir la section"
                             accessible={true}
                             focusable={true}
                             onClick={[Function]}
@@ -1163,7 +1163,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             }
                           />
                           <View
-                            accessibilityLabel="ouvrir la section"
+                            accessibilityLabel="Ouvrir la section"
                             accessible={true}
                             focusable={true}
                             onClick={[Function]}
@@ -3799,7 +3799,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             }
                           />
                           <View
-                            accessibilityLabel="ouvrir la section"
+                            accessibilityLabel="Ouvrir la section"
                             accessible={true}
                             focusable={true}
                             onClick={[Function]}
@@ -3953,7 +3953,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             }
                           />
                           <View
-                            accessibilityLabel="ouvrir la section"
+                            accessibilityLabel="Ouvrir la section"
                             accessible={true}
                             focusable={true}
                             onClick={[Function]}

@@ -90,7 +90,7 @@ export const AccordionItem = ({
       <TouchableWithoutFeedback
         onPress={toggleListItem}
         onLayout={getPositionOfAccordionItem}
-        accessibilityLabel={open ? t`fermer la section` : t`ouvrir la section`}>
+        accessibilityLabel={open ? t`Fermer la section` : t`Ouvrir la section`}>
         <View style={[styles.titleContainer, titleStyle]}>
           <Title>{title}</Title>
           <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }} testID="accordionArrow">
