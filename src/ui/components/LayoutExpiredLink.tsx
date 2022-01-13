@@ -58,7 +58,6 @@ export function LayoutExpiredLink({
           title={t`Consulter l'article d'aide`}
           onPress={() => openUrl(urlFAQ)}
           icon={ExternalSite}
-          iconSize={18}
         />
       )}
 
@@ -74,7 +73,7 @@ export function LayoutExpiredLink({
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ color, theme }) => ({
-  color: color ?? theme.colors.white,
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
   textAlign: 'center',
 }))

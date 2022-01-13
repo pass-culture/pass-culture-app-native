@@ -4,7 +4,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { AppButton } from 'ui/components/buttons/AppButton'
+import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
+import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { Background } from 'ui/svg/Background'
 import { CreateAccount } from 'ui/svg/icons/CreateAccount'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
@@ -36,21 +37,15 @@ export const NotConnectedFavorites = () => {
 
       <Row>
         <ButtonContainer>
-          <AppButton
+          <ButtonPrimaryWhite
             title={t`S'inscrire`}
             onPress={() => navigate('SignupForm')}
-            backgroundColor={ColorsEnum.WHITE}
-            textColor={ColorsEnum.PRIMARY}
-            loadingIconColor={ColorsEnum.WHITE}
             buttonHeight="tall"
           />
           <Spacer.Column numberOfSpaces={4} />
-          <AppButton
+          <ButtonTertiaryWhite
             title={t`Se connecter`}
             onPress={() => navigate('Login')}
-            backgroundColor={ColorsEnum.TRANSPARENT}
-            textColor={ColorsEnum.WHITE}
-            loadingIconColor={ColorsEnum.WHITE}
             buttonHeight="tall"
           />
         </ButtonContainer>

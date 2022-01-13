@@ -6,11 +6,11 @@ import styled from 'styled-components/native'
 import { useUserProfileInfo } from 'features/home/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
-import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
+import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
 import { EditPen } from 'ui/svg/icons/EditPen'
-import { getSpacing, getSpacingString, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { ProfileContainer } from '../components/reusables'
 
@@ -45,7 +45,7 @@ export function PersonalData() {
           <Spacer.Column numberOfSpaces={2} />
           <EmailContainer>
             <EmailText>{user?.email}</EmailText>
-            <EmailChangeButton title={t`Modifier`} icon={EditPen} inline onPress={onEmailChange} />
+            <ButtonQuaternary title={t`Modifier`} icon={EditPen} inline onPress={onEmailChange} />
           </EmailContainer>
         </Row>
         <Separator />
@@ -84,10 +84,3 @@ const EmailText = styled(Typo.Body)({
   flexShrink: 1,
   marginRight: getSpacing(2),
 })
-
-const EmailChangeButton = styled(ButtonPrimaryWhite).attrs({
-  textSize: getSpacing(3),
-  textLineHeight: getSpacingString(4),
-  iconSize: getSpacing(4),
-  inlineHeight: getSpacingString(8),
-})({})

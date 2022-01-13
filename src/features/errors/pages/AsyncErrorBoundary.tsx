@@ -8,11 +8,11 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AsyncError, MonitoringError, eventMonitoring } from 'libs/monitoring'
 import { ScreenError } from 'libs/monitoring/errors'
-import { AppButton } from 'ui/components/buttons/AppButton'
-import { Background } from 'ui/svg/Background'
+import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
+import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface AsyncFallbackProps extends FallbackProps {
@@ -54,44 +54,20 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
   }
 
   return (
-    <Container>
-      <Background />
-      <Spacer.TopScreen />
-      <Spacer.Flex />
-      {header}
-      <BrokenConnection color={ColorsEnum.WHITE} />
-      <Spacer.Column numberOfSpaces={2} />
-
-      <Typo.Title1 color={ColorsEnum.WHITE}>{t`Oups\u00a0!`}</Typo.Title1>
-      <Spacer.Column numberOfSpaces={4} />
-
-      <Row>
-        <TextContainer>
-          <CenteredText>
-            <Typo.Body color={ColorsEnum.WHITE}>
-              {t`Une erreur s'est produite pendant le chargement.`}
-            </Typo.Body>
-          </CenteredText>
-        </TextContainer>
-      </Row>
-
-      <Spacer.Column numberOfSpaces={8} />
-
-      <Row>
-        <ButtonContainer>
-          <AppButton
-            title={t`Réessayer`}
-            onPress={handleRetry}
-            textColor={ColorsEnum.WHITE}
-            borderColor={ColorsEnum.WHITE}
-            loadingIconColor={ColorsEnum.WHITE}
-            buttonHeight="tall"
-          />
-        </ButtonContainer>
-      </Row>
-      <Spacer.Flex />
-      <Spacer.BottomScreen />
-    </Container>
+    <GenericInfoPage
+      title={t`Oups\u00a0!`}
+      icon={BrokenConnection}
+      header={header}
+      buttons={[
+        <ButtonPrimaryWhite
+          key={1}
+          title={t`Réessayer`}
+          onPress={handleRetry}
+          buttonHeight="tall"
+        />,
+      ]}>
+      <StyledBody>{t`Une erreur s'est produite pendant le chargement.`}</StyledBody>
+    </GenericInfoPage>
   )
 }
 
@@ -113,26 +89,13 @@ export const AsyncErrorBoundary = (props: AsyncFallbackProps) => {
   )
 }
 
-const Container = styled.View({
-  flex: 1,
-  alignItems: 'center',
-})
-
-const Row = styled.View({ flexDirection: 'row' })
-
-const ButtonContainer = styled.View({
-  flex: 1,
-  minWidth: getSpacing(30),
-  maxWidth: getSpacing(44),
-})
-const TextContainer = styled.View({ maxWidth: getSpacing(88) })
-
-const CenteredText = styled.Text({
-  textAlign: 'center',
-})
-
 const HeaderContainer = styled.TouchableOpacity<{ top: number }>(({ top }) => ({
   position: 'absolute',
   top,
   left: getSpacing(6),
+}))
+
+const StyledBody = styled(Typo.Body)(({ color, theme }) => ({
+  color: color ?? theme.colors.white,
+  textAlign: 'center',
 }))

@@ -30,12 +30,11 @@ export function IdentityCheckUnavailable() {
       title={t`Victime de notre succès\u00a0!`}
       icon={HappyFace}
       buttons={[
-        !!params?.withDMS && (
+        !params?.withDMS && (
           <ButtonPrimaryWhite
             key={1}
             title={t`Transmettre un dossier`}
             onPress={showDMSModal}
-            iconSize={20}
             icon={ExternalSite}
           />
         ),

@@ -15,10 +15,9 @@ import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { formatToFrenchDate, getFavoriteDisplayPrice } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'
 import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
-import { AppButton } from 'ui/components/buttons/AppButton'
+import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { BookingButton } from './BookingButton'
 
@@ -153,13 +152,9 @@ export const Favorite: React.FC<Props> = (props) => {
       </Container>
       <ButtonsRow>
         <ButtonContainer>
-          <AppButton
+          <ButtonSecondary
             title={t`Supprimer`}
             onPress={onRemove}
-            textColor={ColorsEnum.BLACK}
-            borderColor={ColorsEnum.GREY_MEDIUM}
-            backgroundColor={ColorsEnum.WHITE}
-            loadingIconColor={ColorsEnum.PRIMARY}
             buttonHeight="tall"
             disabled={isLoading}
           />
@@ -176,9 +171,10 @@ export const Favorite: React.FC<Props> = (props) => {
 
 const imageWidth = getSpacing(16)
 
-const Container = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
-}))({ marginHorizontal: getSpacing(6) })
+const Container = styled.TouchableOpacity(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+  marginHorizontal: getSpacing(6),
+}))
 
 const columnPadding = 4
 const columnMargin = 2 * 6
@@ -202,15 +198,18 @@ const ButtonsRow = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(6),
 }))
 
-const Name = styled(Typo.ButtonText)({})
+const Name = Typo.ButtonText
 
-const Distance = styled(Typo.Body)({ textAlign: 'right', color: ColorsEnum.GREY_DARK })
+const Distance = styled(Typo.Body)(({ theme }) => ({
+  textAlign: 'right',
+  color: theme.colors.greyDark,
+}))
 
-const Body = styled(Typo.Body)({ color: ColorsEnum.GREY_DARK })
+const Body = styled(Typo.Body)(({ theme }) => ({ color: theme.colors.greyDark }))
 
-const Separator = styled.View({
+const Separator = styled.View(({ theme }) => ({
   height: 2,
-  backgroundColor: ColorsEnum.GREY_LIGHT,
+  backgroundColor: theme.colors.greyLight,
   marginHorizontal: getSpacing(6),
   marginVertical: getSpacing(4),
-})
+}))

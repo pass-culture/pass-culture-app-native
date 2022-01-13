@@ -2,7 +2,8 @@ import React from 'react'
 
 import { render } from 'tests/utils'
 import { Close } from 'ui/svg/icons/Close'
-import { ColorsEnum } from 'ui/theme'
+import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
+import { Typo } from 'ui/theme'
 
 import { AppButton } from './AppButton'
 
@@ -10,13 +11,22 @@ describe('AppButton Component', () => {
   describe('* Icon property', () => {
     it('should display icon when provided', () => {
       const { getByTestId } = render(
-        <AppButton title="Testing Disabled" loadingIconColor={ColorsEnum.BLACK} icon={Close} />
+        <AppButton
+          Title={Typo.ButtonText}
+          title="Testing Disabled"
+          loadingIndicator={InitialLoadingIndicator}
+          icon={Close}
+        />
       )
       getByTestId('button-icon')
     })
     it('should not display icon when not provided', () => {
       const { queryByTestId } = render(
-        <AppButton title="Testing Disabled" loadingIconColor={ColorsEnum.BLACK} />
+        <AppButton
+          title="Testing Disabled"
+          loadingIndicator={InitialLoadingIndicator}
+          Title={Typo.ButtonText}
+        />
       )
       const icon = queryByTestId('button-icon')
       expect(icon).toBeFalsy()
@@ -26,8 +36,9 @@ describe('AppButton Component', () => {
     it('should display right elements when isLoading equals true', () => {
       const { getByTestId, queryByTestId } = render(
         <AppButton
+          Title={Typo.ButtonText}
           title="Testing Disabled"
-          loadingIconColor={ColorsEnum.BLACK}
+          loadingIndicator={InitialLoadingIndicator}
           isLoading
           icon={Close}
         />
@@ -39,8 +50,9 @@ describe('AppButton Component', () => {
     it('should display right elements when isLoading equals false', () => {
       const { getByTestId, queryByTestId } = render(
         <AppButton
+          Title={Typo.ButtonText}
           title="Testing Disabled"
-          loadingIconColor={ColorsEnum.BLACK}
+          loadingIndicator={InitialLoadingIndicator}
           isLoading={false}
           icon={Close}
         />
@@ -55,8 +67,9 @@ describe('AppButton Component', () => {
     it('should disable handlers when disabled equals true', () => {
       const { getByTestId } = render(
         <AppButton
+          Title={Typo.ButtonText}
           title="Testing Disabled"
-          loadingIconColor={ColorsEnum.BLACK}
+          loadingIndicator={InitialLoadingIndicator}
           icon={Close}
           disabled
         />
@@ -71,7 +84,13 @@ describe('AppButton Component', () => {
   describe('* inline property', () => {
     it('should use inline css style when true', () => {
       const renderAPI = render(
-        <AppButton title="Testing inline" loadingIconColor={ColorsEnum.BLACK} icon={Close} inline />
+        <AppButton
+          Title={Typo.ButtonText}
+          title="Testing inline"
+          loadingIndicator={InitialLoadingIndicator}
+          icon={Close}
+          inline
+        />
       )
       expect(renderAPI).toMatchSnapshot()
     })

@@ -15,6 +15,7 @@ type Props = {
   icon?: FunctionComponent<IconInterface>
   title: string
   buttons?: Array<ReactNode>
+  header?: ReactNode
 }
 
 const ANIMATION_SIZE = getSpacing(45)
@@ -22,6 +23,7 @@ const ICON_SIZE = getSpacing(35)
 
 export const GenericInfoPage: FunctionComponent<Props> = ({
   children,
+  header,
   noIndex = true,
   animation,
   icon: Icon,
@@ -39,6 +41,7 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
         </Helmet>
       )}
       <Background />
+      {header}
       <Content>
         <Spacer.Column numberOfSpaces={spacingMatrix.top} />
         {!!isTouch && <Spacer.Flex flex={1} />}
@@ -69,7 +72,6 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
             ))}
           </BottomContainer>
         )}
-
         <Spacer.BottomScreen />
       </Content>
     </Wrapper>

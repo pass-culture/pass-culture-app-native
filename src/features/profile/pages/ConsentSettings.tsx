@@ -10,18 +10,17 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { ProfileContainer } from '../components/reusables'
 
 type Props = StackScreenProps<RootStackParamList, 'ConsentSettings'>
-const cookieButtonText = 'Politique des cookies'
 
 export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
   const { goBack } = useNavigation()
@@ -74,11 +73,10 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
           <Typo.Caption color={theme.colors.greyDark}>
             {t`Pour plus d'informations, nous t'invitons à consulter notre`}
             <Spacer.Row numberOfSpaces={1} />
-            <ButtonTertiary
-              title={cookieButtonText}
-              icon={ExternalSite}
+            <ButtonQuaternary
+              title={t`Politique des cookies`}
+              icon={ExternalSiteFilled}
               onPress={openCookiesPolicyExternalUrl}
-              textSize={12}
               inline
             />
           </Typo.Caption>

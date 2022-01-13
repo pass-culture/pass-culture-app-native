@@ -1,26 +1,41 @@
 import React, { FunctionComponent } from 'react'
+import styled from 'styled-components/native'
 
-import { AppButton, BaseButtonProps } from 'ui/components/buttons/AppButton'
-import { ColorsEnum } from 'ui/theme'
+import { AppButton, BaseButtonProps, TitleProps } from 'ui/components/buttons/AppButton'
+import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
+import { Typo } from 'ui/theme'
 
 export const ButtonTertiary: FunctionComponent<BaseButtonProps> = (props) => {
-  let textColor = ColorsEnum.PRIMARY
-  const backgroundColor = ColorsEnum.TRANSPARENT
-  const loadingIconColor = ColorsEnum.PRIMARY_DARK
-  let iconColor = ColorsEnum.PRIMARY
+  let Icon
 
-  if (props.disabled) {
-    textColor = iconColor = ColorsEnum.GREY_DARK
+  if (props.icon) {
+    Icon = styled(props.icon).attrs(({ theme }) => ({
+      color: props.disabled
+        ? theme.buttons.disabled.tertiary.iconColor
+        : theme.buttons.tertiary.iconColor,
+      size: theme.buttons.tertiary.iconSize,
+    }))``
   }
 
-  return (
-    <AppButton
-      {...props}
-      iconSize={18}
-      loadingIconColor={loadingIconColor}
-      backgroundColor={backgroundColor}
-      iconColor={iconColor}
-      textColor={textColor}
-    />
-  )
+  const LoadingIndicator = styled(InitialLoadingIndicator).attrs(({ theme }) => ({
+    color: theme.buttons.tertiary.loadingIconColor,
+    size: theme.buttons.tertiary.iconSize,
+  }))``
+
+  const Title = styled(Typo.ButtonText)<TitleProps>(({ theme }) => ({
+    maxWidth: '100%',
+    color: props.disabled
+      ? theme.buttons.disabled.tertiary.textColor
+      : theme.buttons.tertiary.textColor,
+    fontSize: props.textSize,
+    marginLeft: props.icon
+      ? theme.buttons.tertiary.marginLeftIcon
+      : theme.buttons.tertiary.marginLeft,
+  }))
+
+  return <Button {...props} loadingIndicator={LoadingIndicator} icon={Icon} Title={Title} />
 }
+
+const Button = styled(AppButton)(({ theme }) => ({
+  backgroundColor: theme.buttons.tertiary.backgroundColor,
+}))

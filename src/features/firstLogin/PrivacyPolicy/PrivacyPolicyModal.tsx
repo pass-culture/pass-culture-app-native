@@ -6,11 +6,11 @@ import styled from 'styled-components/native'
 import { openUrl } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
-import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { ColorsEnum, Typo, Spacer, getSpacing } from 'ui/theme'
 
 export interface Props {
@@ -19,8 +19,6 @@ export interface Props {
   onRefusal: () => void
   disableBackdropTap?: boolean
 }
-
-const cookieButtonText = 'Politique des cookies'
 
 export const PrivacyPolicyModal: FunctionComponent<Props> = ({
   visible,
@@ -47,11 +45,10 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
           {t`Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur "Autoriser", tu acceptes l'utilisation de ces services détaillés dans notre`}
         </Typo.Body>
       </Description>
-      <ButtonTertiary
-        title={cookieButtonText}
+      <ButtonQuaternary
+        title={t`Politique des cookies`}
         onPress={openCookiesPolicyExternalUrl}
-        icon={ExternalSite}
-        textSize={12}
+        icon={ExternalSiteFilled}
       />
       <SubDescription>
         <Typo.Caption color={ColorsEnum.GREY_DARK}>

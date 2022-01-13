@@ -1,12 +1,12 @@
 import * as React from 'react'
 import Svg, { Circle, Path } from 'react-native-svg'
 
-import { ColorsEnum, SMALLER_ICON_SIZE } from 'ui/theme'
+import { ColorsEnum, STANDARD_ICON_SIZE } from 'ui/theme'
 
 import { IconInterface } from './types'
 
 export const Validate: React.FunctionComponent<IconInterface> = ({
-  size = SMALLER_ICON_SIZE,
+  size = STANDARD_ICON_SIZE,
   color = ColorsEnum.BLACK,
   testID,
 }) => {

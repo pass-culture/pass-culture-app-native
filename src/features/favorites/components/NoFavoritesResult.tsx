@@ -3,9 +3,9 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useNavigateToSearchResults } from 'features/search/utils/useNavigateToSearchResults'
-import { AppButton } from 'ui/components/buttons/AppButton'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { EmptyFavorites } from 'ui/svg/icons/EmptyFavorites'
-import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT, Typo } from 'ui/theme'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const NoFavoritesResult = () => {
   const onPressExploreOffers = useNavigateToSearchResults({ from: 'favorites' })
@@ -22,12 +22,9 @@ export const NoFavoritesResult = () => {
       </Explanation>
       <Spacer.Column numberOfSpaces={6} />
       <ButtonContainer>
-        <AppButton
+        <ButtonPrimary
           title={t`Explorer les offres`}
           onPress={onPressExploreOffers}
-          textColor={ColorsEnum.WHITE}
-          backgroundColor={ColorsEnum.PRIMARY}
-          loadingIconColor={ColorsEnum.WHITE}
           buttonHeight="tall"
         />
       </ButtonContainer>
@@ -41,13 +38,13 @@ const IconContainer = styled.View({
   minHeight: 80,
 })
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flex: 1,
   justifyContent: 'center',
   alignItems: 'center',
-  marginBottom: TAB_BAR_COMP_HEIGHT,
+  marginBottom: theme.tabBarHeight,
   padding: getSpacing(4),
-})
+}))
 
 const ButtonContainer = styled.View({
   maxWidth: getSpacing(44),

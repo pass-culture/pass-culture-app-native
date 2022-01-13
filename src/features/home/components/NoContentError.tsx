@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { ButtonSecondaryWhite } from 'ui/components/buttons/ButtonSecondaryWhite'
+import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
@@ -40,9 +40,7 @@ const BodyText = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
 }))
 
-const SearchButton = styled(ButtonSecondaryWhite).attrs({
-  iconSize: 22,
-})({
+const SearchButton = styled(ButtonPrimaryWhite)({
   width: 'auto',
   paddingLeft: getSpacing(6),
   paddingRight: getSpacing(6),

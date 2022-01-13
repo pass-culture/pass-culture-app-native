@@ -56,7 +56,7 @@ export function NavigationNotScreensPages(): JSX.Element {
 
 const NavigationButton = styled(ButtonPrimary).attrs({
   textSize: 11.5,
-})({})
+})``
 
 const StyledContainer = styled.View({
   display: 'flex',

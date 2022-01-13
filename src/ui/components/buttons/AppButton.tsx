@@ -3,11 +3,9 @@ import { GestureResponderEvent, StyleProp, TouchableOpacity, ViewStyle } from 'r
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
-import { Logo } from 'ui/svg/icons/Logo'
+import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
-import { BorderRadiusEnum } from 'ui/theme/grid'
+import { getSpacing } from 'ui/theme'
 
 export interface BaseButtonProps {
   accessibilityLabel?: string
@@ -15,14 +13,15 @@ export interface BaseButtonProps {
   buttonHeight?: 'small' | 'tall'
   disabled?: boolean
   icon?: FunctionComponent<IconInterface>
-  iconSize?: number
+  loadingIndicator?: FunctionComponent<IconInterface>
+  // TODO : replace Title with "title" when available
   inline?: boolean
   isLoading?: boolean
   onLongPress?: ((e: GestureResponderEvent) => void) | (() => void)
   onPress?: ((e: GestureResponderEvent) => void) | (() => void)
   testId?: string
-  textLineHeight?: string
   textSize?: number
+  // TODO : replace title with "text" in all code base
   title: string
   fullWidth?: boolean
   justifyContent?: 'center' | 'flex-start'
@@ -31,13 +30,9 @@ export interface BaseButtonProps {
 }
 
 interface AppButtonProps extends BaseButtonProps {
-  backgroundColor?: ColorsEnum
-  borderColor?: ColorsEnum
-  iconColor?: ColorsEnum
   inline?: boolean
   inlineHeight?: number
-  loadingIconColor: ColorsEnum
-  textColor?: ColorsEnum
+  Title: FunctionComponent<any>
 }
 
 type Only<TestedType, StandardType> = TestedType &
@@ -45,38 +40,30 @@ type Only<TestedType, StandardType> = TestedType &
 
 const _AppButton = <T extends AppButtonProps>({
   icon: Icon,
+  Title,
   inline,
   disabled,
   isLoading,
   onPress,
   onLongPress,
-  loadingIconColor,
-  iconSize,
-  iconColor,
-  backgroundColor,
   fullWidth,
-  borderColor,
   buttonHeight,
   inlineHeight,
   accessibilityLabel,
   testId,
   title,
-  textColor,
-  textSize,
-  textLineHeight,
   adjustsFontSizeToFit,
   justifyContent,
   numberOfLines,
   style,
+  loadingIndicator: LoadingIndicator,
 }: Only<T, AppButtonProps>) => {
   const pressHandler = disabled || isLoading ? undefined : onPress
   const longPressHandler = disabled || isLoading ? undefined : onLongPress
   return (
     <StyledTouchableOpacity
       {...accessibilityAndTestId(accessibilityLabel || title, testId || title)}
-      backgroundColor={backgroundColor}
       fullWidth={fullWidth}
-      borderColor={borderColor}
       onPress={pressHandler}
       onLongPress={longPressHandler}
       buttonHeight={buttonHeight ?? 'small'}
@@ -86,27 +73,15 @@ const _AppButton = <T extends AppButtonProps>({
       numberOfLines={numberOfLines}
       style={style}>
       {isLoading ? (
-        <Logo
-          {...accessibilityAndTestId(undefined, 'button-isloading-icon')}
-          color={loadingIconColor}
-          size={iconSize}
-        />
+        // @ts-ignore check typing
+        <LoadingIndicator {...accessibilityAndTestId(undefined, 'button-isloading-icon')} />
       ) : (
         <Fragment>
-          {!!Icon && (
-            <Icon
-              {...accessibilityAndTestId(undefined, 'button-icon')}
-              color={iconColor}
-              size={iconSize}
-            />
-          )}
+          {!!Icon && <Icon {...accessibilityAndTestId(undefined, 'button-icon')} />}
+          {/* @ts-ignore fix typing */}
           <Title
-            textColor={textColor}
-            textSize={textSize}
-            textLineHeight={textLineHeight}
             adjustsFontSizeToFit={adjustsFontSizeToFit ?? false}
             icon={Icon}
-            iconSize={iconSize}
             numberOfLines={numberOfLines ?? 1}>
             {title}
           </Title>
@@ -116,12 +91,24 @@ const _AppButton = <T extends AppButtonProps>({
   )
 }
 
+const DefaultLoadingIndicator = styled(InitialLoadingIndicator).attrs(({ theme }) => ({
+  color: theme.icon.color,
+  size: theme.icon.size,
+}))``
+
+// TODO: remove export when unecessary props are removed
+export interface TitleProps {
+  icon?: React.FC<IconInterface>
+}
+
+_AppButton.defaultProps = {
+  loadingIndicator: DefaultLoadingIndicator,
+}
+
 // memo is used to avoid useless rendering while props remain unchanged
 export const AppButton = memo(_AppButton)
 
 interface StyledTouchableOpacityProps {
-  backgroundColor?: ColorsEnum
-  borderColor?: ColorsEnum
   buttonHeight: 'small' | 'tall'
   inline?: boolean
   inlineHeight?: number
@@ -130,27 +117,14 @@ interface StyledTouchableOpacityProps {
   numberOfLines?: number
 }
 
-const StyledTouchableOpacity = styled(TouchableOpacity).attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
-}))<StyledTouchableOpacityProps>(
-  ({
-    inline,
-    backgroundColor,
-    borderColor,
-    buttonHeight,
-    inlineHeight,
-    fullWidth,
-    justifyContent,
-    numberOfLines,
-  }) => ({
+const StyledTouchableOpacity = styled(TouchableOpacity)<StyledTouchableOpacityProps>(
+  ({ theme, inline, buttonHeight, inlineHeight, fullWidth, justifyContent, numberOfLines }) => ({
+    activeOpacity: theme.activeOpacity,
     flexDirection: 'row',
     justifyContent: justifyContent === 'flex-start' ? 'flex-start' : 'center',
     alignItems: 'center',
-    borderRadius: BorderRadiusEnum.BUTTON,
+    borderRadius: theme.borderRadius.button,
     padding: 2,
-    backgroundColor,
-    borderColor,
-    borderWidth: borderColor ? 2 : 0,
     height: buttonHeight === 'tall' ? getSpacing(12) : getSpacing(10),
     width: '100%',
     ...(fullWidth ? {} : { maxWidth: getSpacing(125) }),
@@ -168,19 +142,3 @@ const StyledTouchableOpacity = styled(TouchableOpacity).attrs(() => ({
     ...(numberOfLines ? { height: 'auto' } : {}),
   })
 )
-
-interface TitleProps {
-  textColor?: ColorsEnum
-  textSize?: number
-  textLineHeight?: string
-  icon?: React.FC<IconInterface>
-  iconSize?: number
-}
-
-const Title = styled(Typo.ButtonText)<TitleProps>((props) => ({
-  maxWidth: '100%',
-  color: props.textColor,
-  fontSize: props.textSize,
-  lineHeight: props.textLineHeight,
-  marginLeft: props.icon ? getSpacing(3) : 0,
-}))
