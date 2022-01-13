@@ -8,6 +8,7 @@ import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { IdentityCheckStep } from 'features/identityCheck/types'
+import { logoutFromEduConnectIfAllowed } from 'features/identityCheck/utils/logoutFromEduConnectIfAllowed'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
@@ -24,6 +25,8 @@ export function IdentityCheckValidation() {
     : ''
 
   const navigateToNextEduConnectStep = () => {
+    const logoutUrl = params.logoutUrl
+    logoutFromEduConnectIfAllowed(logoutUrl)
     dispatch({ type: 'SET_STEP', payload: IdentityCheckStep.CONFIRMATION })
     // in web context, we are redirected to this page after educonnect login in a new tab.
     // Therefore, the identity check context loses the state before educonnect login and we
