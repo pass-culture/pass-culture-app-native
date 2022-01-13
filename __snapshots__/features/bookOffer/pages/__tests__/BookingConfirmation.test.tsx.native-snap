@@ -67,7 +67,6 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       }
     />
     <View
-      flex={1}
       style={
         Array [
           Object {
@@ -168,11 +167,13 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       Tu peux retrouver toutes les informations concernant ta réservation sur l’application
     </Text>
     <View
-      numberOfSpaces={30}
+      flex={1.25}
       style={
         Array [
           Object {
-            "height": 120,
+            "flexBasis": 0,
+            "flexGrow": 1.25,
+            "flexShrink": 1,
           },
         ]
       }

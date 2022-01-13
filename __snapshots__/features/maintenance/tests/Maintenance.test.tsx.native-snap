@@ -67,7 +67,6 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
       }
     />
     <View
-      flex={1}
       style={
         Array [
           Object {
@@ -169,11 +168,13 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
       </Text>
     </View>
     <View
-      numberOfSpaces={30}
+      flex={1}
       style={
         Array [
           Object {
-            "height": 120,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
           },
         ]
       }
@@ -260,7 +261,6 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
       }
     />
     <View
-      flex={1}
       style={
         Array [
           Object {
@@ -362,11 +362,13 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
       </Text>
     </View>
     <View
-      numberOfSpaces={30}
+      flex={1}
       style={
         Array [
           Object {
-            "height": 120,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
           },
         ]
       }

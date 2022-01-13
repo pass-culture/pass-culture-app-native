@@ -67,7 +67,6 @@ exports[`<IdentityCheckPending/> should render correctly 1`] = `
       }
     />
     <View
-      flex={1}
       style={
         Array [
           Object {
@@ -166,11 +165,13 @@ exports[`<IdentityCheckPending/> should render correctly 1`] = `
       Ton inscription est en cours de vérification. Tu recevras une notification dès que ton dossier sera validé.
     </Text>
     <View
-      numberOfSpaces={30}
+      flex={1.25}
       style={
         Array [
           Object {
-            "height": 120,
+            "flexBasis": 0,
+            "flexGrow": 1.25,
+            "flexShrink": 1,
           },
         ]
       }

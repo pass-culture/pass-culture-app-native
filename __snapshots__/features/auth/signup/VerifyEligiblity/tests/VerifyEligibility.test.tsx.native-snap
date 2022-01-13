@@ -67,7 +67,6 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       }
     />
     <View
-      flex={1}
       style={
         Array [
           Object {
@@ -144,11 +143,13 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
  Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter ton inscription.
     </Text>
     <View
-      numberOfSpaces={30}
+      flex={1.25}
       style={
         Array [
           Object {
-            "height": 120,
+            "flexBasis": 0,
+            "flexGrow": 1.25,
+            "flexShrink": 1,
           },
         ]
       }

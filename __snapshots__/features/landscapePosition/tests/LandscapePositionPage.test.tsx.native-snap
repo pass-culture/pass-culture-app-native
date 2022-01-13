@@ -80,7 +80,6 @@ exports[`<LandscapePositionPage /> should match snapshot with default message 1`
         }
       />
       <View
-        flex={1}
         style={
           Array [
             Object {
@@ -155,11 +154,13 @@ exports[`<LandscapePositionPage /> should match snapshot with default message 1`
         Place ton téléphone ou ta tablette à la verticale pour afficher l’application.
       </Text>
       <View
-        numberOfSpaces={30}
+        flex={1}
         style={
           Array [
             Object {
-              "height": 120,
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             },
           ]
         }
