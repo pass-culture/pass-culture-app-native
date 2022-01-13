@@ -67,7 +67,6 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
       }
     />
     <View
-      flex={1}
       style={
         Array [
           Object {
@@ -126,11 +125,13 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
       }
     />
     <View
-      numberOfSpaces={30}
+      flex={1}
       style={
         Array [
           Object {
-            "height": 120,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
           },
         ]
       }

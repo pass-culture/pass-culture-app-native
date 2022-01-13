@@ -67,7 +67,6 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       }
     />
     <View
-      flex={1}
       style={
         Array [
           Object {
@@ -141,11 +140,13 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       Cela entraînera l'annulation de l'ensemble de tes réservations en cours, ainsi que la suppression définitive de ton crédit pass Culture si tu en bénéficies.
     </Text>
     <View
-      numberOfSpaces={30}
+      flex={1.25}
       style={
         Array [
           Object {
-            "height": 120,
+            "flexBasis": 0,
+            "flexGrow": 1.25,
+            "flexShrink": 1,
           },
         ]
       }

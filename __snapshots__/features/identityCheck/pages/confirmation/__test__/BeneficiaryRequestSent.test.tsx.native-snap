@@ -67,7 +67,6 @@ exports[`<BeneficiaryRequestSent /> should render correctly 1`] = `
       }
     />
     <View
-      flex={1}
       style={
         Array [
           Object {
@@ -156,11 +155,13 @@ exports[`<BeneficiaryRequestSent /> should render correctly 1`] = `
       Tu recevras un e-mail lorsque ta demande sera validée. En attendant, aide-nous à en savoir plus sur tes pratiques culturelles !
     </Text>
     <View
-      numberOfSpaces={30}
+      flex={1.25}
       style={
         Array [
           Object {
-            "height": 120,
+            "flexBasis": 0,
+            "flexGrow": 1.25,
+            "flexShrink": 1,
           },
         ]
       }

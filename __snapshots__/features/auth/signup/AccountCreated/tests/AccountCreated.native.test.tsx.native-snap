@@ -67,7 +67,6 @@ exports[`<AccountCreated /> should render correctly 1`] = `
       }
     />
     <View
-      flex={1}
       style={
         Array [
           Object {
@@ -137,11 +136,13 @@ exports[`<AccountCreated /> should render correctly 1`] = `
       Aide-nous à en savoir plus sur tes pratiques culturelles ! Ta sélection n'aura pas d'impact sur les offres proposées.
     </Text>
     <View
-      numberOfSpaces={30}
+      flex={1.25}
       style={
         Array [
           Object {
-            "height": 120,
+            "flexBasis": 0,
+            "flexGrow": 1.25,
+            "flexShrink": 1,
           },
         ]
       }
