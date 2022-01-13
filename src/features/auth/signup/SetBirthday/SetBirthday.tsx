@@ -2,8 +2,8 @@ import { t } from '@lingui/macro'
 import React, { FunctionComponent, useRef, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { useDepositAmountsByAge } from 'features/auth/api'
 import { useAppSettings } from 'features/auth/settings'
+import { BirthdayInformationModal } from 'features/auth/signup/SetBirthday/BirthdayInformationModal'
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
 import { analytics } from 'libs/analytics'
 import { dateDiffInFullYears } from 'libs/dates'
@@ -13,10 +13,8 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { DateInput, DateInputRef, DateValidation } from 'ui/components/inputs/DateInput'
 import { InputError } from 'ui/components/inputs/InputError'
-import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { useModal } from 'ui/components/modals/useModal'
-import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 let INITIAL_DATE: Date | null = null
 let INITIAL_DAY: string | undefined = undefined
@@ -51,18 +49,13 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
     isTooOld: false,
   })
   const { data: settings } = useAppSettings()
-  const { eighteenYearsOldDeposit, fifteenYearsOldDeposit } = useDepositAmountsByAge()
 
   const now = new Date()
   const youngestAge = settings?.accountCreationMinimumAge ?? DEFAULT_YOUNGEST_AGE
   const maxYear = now.getFullYear() - youngestAge
   const maxDate = new Date(maxYear, now.getMonth(), now.getDate())
 
-  const {
-    visible: informationModalVisible,
-    showModal: showInformationModal,
-    hideModal: hideInformationModal,
-  } = useModal(false)
+  const { visible, showModal: showInformationModal, hideModal } = useModal(false)
 
   const dateInputRef = useRef<DateInputRef>(null)
 
@@ -112,38 +105,6 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
     )
   }
 
-  const displayPostGeneralisationMessage =
-    settings?.enableNativeEacIndividual && settings.enableUnderageGeneralisation
-
-  const financialHelpMessage = displayPostGeneralisationMessage
-    ? t({
-        id: 'postGeneralisationFinancialHelpMessage',
-        values: {
-          deposit15: fifteenYearsOldDeposit.replace(' ', '\u00a0'),
-          deposit18: eighteenYearsOldDeposit.replace(' ', '\u00a0'),
-        },
-        message:
-          'Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de {deposit15} à\u00a0{deposit18}\u00a0offerte par le Gouvernement.',
-      }) +
-      '\n' +
-      '\n'
-    : t({
-        id: 'preGeneralisationFinancialHelpMessage',
-        values: { deposit: eighteenYearsOldDeposit.replace(' ', '\u00a0') },
-        message:
-          'Si tu as 18 ans, tu es éligible à une aide financière de\u00a0{deposit}\u00a0offerte par le Gouvernement.',
-      }) +
-      '\n' +
-      '\n'
-
-  const birthdayInformation =
-    t`Nous avons besoin de connaître ton âge.` +
-    ' ' +
-    financialHelpMessage +
-    t`Cette aide sera créditée directement sur ton compte pass Culture.`
-
-  const modalTitle = t`Pourquoi saisir ma date de naissance\u00a0?`
-
   return (
     <React.Fragment>
       <InnerContainer>
@@ -172,18 +133,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
         />
         <Spacer.Column numberOfSpaces={5} />
       </InnerContainer>
-      <AppInformationModal
-        title={modalTitle}
-        numberOfLinesTitle={3}
-        visible={informationModalVisible}
-        onCloseIconPress={hideInformationModal}
-        testIdSuffix="birthday-information">
-        <ModalChildrenContainer>
-          <BirthdayCake />
-          <Spacer.Column numberOfSpaces={2} />
-          <StyledBody>{birthdayInformation}</StyledBody>
-        </ModalChildrenContainer>
-      </AppInformationModal>
+      <BirthdayInformationModal settings={settings} visible={visible} hideModal={hideModal} />
     </React.Fragment>
   )
 }
@@ -193,17 +143,8 @@ const InnerContainer = styled.View({
   alignItems: 'center',
 })
 
-const StyledBody = styled(Typo.Body)({
-  textAlign: 'center',
-})
-
 const DateInputContainer = styled.View({
   alignItems: 'stretch',
   flexDirection: 'column',
   width: '100%',
-})
-
-const ModalChildrenContainer = styled.View({
-  paddingTop: getSpacing(5),
-  alignItems: 'center',
 })
