@@ -2,6 +2,7 @@ import uniqBy from 'lodash.uniqby'
 import { useEffect, useMemo } from 'react'
 import { useQuery } from 'react-query'
 
+import { useUserProfileInfo } from 'features/home/api'
 import { SearchParametersFields } from 'features/home/contentful'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { SearchState } from 'features/search/types'
@@ -37,6 +38,7 @@ export const useOfferModule = ({
   const transformHits = useTransformAlgoliaHits()
   const parseSearchParameters = useParseSearchParameters()
   const isUserUnderage = useIsUserUnderage()
+  const { data: user } = useUserProfileInfo()
 
   const parsedParameters = search.map(parseSearchParameters).filter(isSearchState)
 
@@ -48,7 +50,7 @@ export const useOfferModule = ({
   useEffect(() => {
     // When we enable or disable the geolocation, we want to refetch the home modules
     refetch()
-  }, [!!position])
+  }, [!!position, user?.isBeneficiary])
 
   return useMemo(() => {
     if (!data) return
