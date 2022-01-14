@@ -1,24 +1,16 @@
-import { t } from '@lingui/macro'
 import React, { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
-import { Platform, TextInput, TextInputProps } from 'react-native'
+import { Platform, TextInput } from 'react-native'
 import styled from 'styled-components/native'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import validateDate from 'validate-date'
 
-import { accessibilityAndTestId } from 'tests/utils'
-import { Spacer } from 'ui/components/spacer/Spacer'
-import { ColorsEnum, Typo } from 'ui/theme'
-import { ZIndex } from 'ui/theme/layers'
-
-interface ValidationBarProps {
-  testID?: string
-  backgroundColor?: ColorsEnum
-  isEmpty: boolean
-  isValid?: boolean
-  isFocused: boolean
-  onFocus: () => void
-}
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { MaskedTextInput } from 'react-native-mask-text'
+import { StyledInputContainer } from 'ui/components/inputs/StyledInputContainer'
+import { InputContainer } from 'ui/components/inputs/InputContainer'
+import { LabelContainer } from 'ui/components/inputs/LabelContainer'
+import { t } from '@lingui/macro'
 
 export interface DateValidation {
   isComplete: boolean
@@ -58,47 +50,6 @@ const YEAR_VALIDATOR = {
     parseInt(input) <= MAX_POSSIBLE_YEAR,
 }
 
-type DateInputLabelProps = {
-  value: string
-  isValid: boolean
-  hasFocus: boolean
-  onFocus: () => void
-  placeholder: string
-  accessibilityLabel: string
-}
-
-const DateInputLabel: React.FC<DateInputLabelProps> = ({
-  placeholder,
-  value,
-  isValid,
-  hasFocus,
-  onFocus,
-  accessibilityLabel,
-}) => {
-  const text = value?.trim?.()?.length ? value.trim() : placeholder
-  const color = value?.trim?.()?.length ? undefined : ColorsEnum.GREY_DARK
-  return (
-    <StyledTouchableOpacity {...accessibilityAndTestId(accessibilityLabel)} onPress={onFocus}>
-      <DateInputLabelText testID={'date-input-label-text'} numberOfLines={1} color={color}>
-        {text}
-      </DateInputLabelText>
-      <ValidationBar
-        testID={'date-input-validation-bar'}
-        isFocused={hasFocus}
-        isEmpty={!value?.length}
-        isValid={isValid}
-      />
-    </StyledTouchableOpacity>
-  )
-}
-
-const StyledTouchableOpacity = styled.TouchableOpacity({
-  flex: 1,
-  justifyContent: 'center',
-  width: '30%',
-  maxWidth: 130,
-})
-
 export const DateInputLabelText = styled(Typo.Body)({
   textAlign: 'center',
   fontSize: 18,
@@ -112,7 +63,6 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
   const inputRef = useRef<TextInput>(null)
   const initialValue = [initialDay ?? '', initialMonth ?? '', initialYear ?? ''].join('').trim()
   const [value, setValue] = useState(initialValue)
-  const [currentFocus, setCurrentFocus] = useState<'day' | 'month' | 'year'>()
 
   const dateParts = useMemo(() => {
     const day = value.substr(0, 2)
@@ -173,20 +123,6 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
     return nextDateValidation
   }, [isValidDate, date, dateParts])
 
-  const onSelectionChange: TextInputProps['onSelectionChange'] = ({
-    nativeEvent: {
-      selection: { start },
-    },
-  }) => {
-    if ([0, 1].includes(start)) {
-      setCurrentFocus('day')
-    } else if ([2, 3].includes(start)) {
-      setCurrentFocus('month')
-    } else {
-      setCurrentFocus('year')
-    }
-  }
-
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (Platform.OS !== 'web') {
@@ -207,109 +143,40 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
   }))
 
   return (
-    <Container>
-      <ValidationBarContainer>
-        <HiddenTextInput
-          ref={inputRef}
-          pointerEvents={'none'}
+    <InputContainer>
+      <LabelContainer>
+        <Typo.Body>{t`Date de naissance`}</Typo.Body>
+        <StyledCaption>{t`JJ/MM/AAAA`}</StyledCaption>
+      </LabelContainer>
+      <Spacer.Column numberOfSpaces={2} />
+      <StyledInputContainer>
+        <StyledMaskedTextInput
+          mask={'99/99/9999'}
           keyboardType={'number-pad'}
           onSubmitEditing={onSubmit}
           returnKeyType={'done'}
           onChangeText={setValue}
-          value={value}
+          placeholder={'03/03/2003'}
           autoFocus={true}
-          maxLength={8}
-          onBlur={() => setCurrentFocus(undefined)}
-          onSelectionChange={onSelectionChange}
-          selectionColor={'transparent'}
-          {...accessibilityAndTestId(t`Entrée pour la date de naissance`)}
         />
-        <DateInputLabel
-          accessibilityLabel={t`Entrée pour le jour de la date de naissance`}
-          placeholder={t`JJ`}
-          value={dateParts.day.value}
-          isValid={!dateValidation.isComplete ? dateParts.day.isValid : dateValidation.isValid}
-          hasFocus={currentFocus === 'day'}
-          onFocus={() => {
-            setCurrentFocus('day')
-            inputRef.current?.focus?.()
-            setValue('')
-          }}
-        />
-        <Spacer.Flex flex={0.25} />
-        <DateInputLabel
-          accessibilityLabel={t`Entrée pour le mois de la date de naissance`}
-          placeholder={t`MM`}
-          value={dateParts.month.value}
-          isValid={!dateValidation.isComplete ? dateParts.month.isValid : dateValidation.isValid}
-          hasFocus={currentFocus === 'month'}
-          onFocus={() => {
-            setCurrentFocus('month')
-            inputRef.current?.focus?.()
-            setValue(value.substr(0, 2))
-          }}
-        />
-        <Spacer.Flex flex={0.25} />
-        <DateInputLabel
-          accessibilityLabel={t`Entrée pour l'année jour de la date de naissance`}
-          placeholder={t`AAAA`}
-          value={dateParts.year.value}
-          isValid={!dateValidation.isComplete ? dateParts.year.isValid : dateValidation.isValid}
-          hasFocus={currentFocus === 'year'}
-          onFocus={() => {
-            setCurrentFocus('year')
-            inputRef.current?.focus?.()
-            setValue(value.substr(0, 4))
-          }}
-        />
-      </ValidationBarContainer>
-    </Container>
+      </StyledInputContainer>
+    </InputContainer>
   )
 }
 
 export const DateInput = forwardRef<DateInputRef, DateInputProps>(WithRefDateInput)
 
-const Container = styled.View({
-  flexDirection: 'column',
-  alignItems: 'stretch',
-  alignSelf: 'center',
-  position: 'relative',
-  width: '100%',
-  maxWidth: 300,
-})
-type ValidationBarPropsWithoutFocus = Omit<ValidationBarProps, 'onFocus' | 'width'>
-const ValidationBar = styled.View.attrs<ValidationBarPropsWithoutFocus>(
-  ({ isEmpty, isFocused, isValid }) => {
-    if (isValid) return { backgroundColor: ColorsEnum.GREEN_VALID }
-    if (isFocused) return { backgroundColor: ColorsEnum.PRIMARY }
-    if (isEmpty) return { backgroundColor: ColorsEnum.GREY_MEDIUM }
-    return { backgroundColor: ColorsEnum.ERROR }
-  }
-)<ValidationBarPropsWithoutFocus>(({ backgroundColor }) => ({
-  backgroundColor,
-  height: 5,
-  borderRadius: 22,
-  alignSelf: 'stretch',
+const StyledMaskedTextInput = styled(MaskedTextInput).attrs({
+  placeholderTextColor: ColorsEnum.GREY_DARK,
+})(({ theme }) => ({
+  flex: 1,
+  padding: 0,
+  color: theme.colors.black,
+  fontFamily: theme.fontFamily.regular,
+  fontSize: getSpacing(3.75),
+  height: '100%',
 }))
 
-const ValidationBarContainer = styled.View({
-  flexDirection: 'row',
-  position: 'relative',
-})
-
-const HiddenTextInput = styled(TextInput)({
-  fontSize: 1,
-  lineHeight: '22px',
-  textAlign: 'center',
-  position: 'absolute',
-  width: 1,
-  height: 1,
-  overflow: 'hidden',
-  zIndex: ZIndex.BACKGROUND,
-  opacity: 0.1,
-  ...Platform.select({
-    web: {
-      caretColor: 'transparent',
-    },
-  }),
-})
+const StyledCaption = styled(Typo.Caption)(({ theme, color }) => ({
+  color: color ?? theme.colors.greyDark,
+}))

@@ -15,6 +15,7 @@ import { DateInput, DateInputRef, DateValidation } from 'ui/components/inputs/Da
 import { InputError } from 'ui/components/inputs/InputError'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer } from 'ui/theme'
+import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 
 let INITIAL_DATE: Date | null = null
 let INITIAL_DAY: string | undefined = undefined
@@ -108,7 +109,11 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
   return (
     <React.Fragment>
       <InnerContainer>
-        <ButtonTertiary title={t`Pourquoi\u00a0?`} onPress={onPressWhy} />
+        <ButtonTertiary
+          icon={InfoPlain}
+          title={t`Pour quelle raison\u00a0?`}
+          onPress={onPressWhy}
+        />
         <Spacer.Column numberOfSpaces={8} />
         <DateInputContainer>
           <DateInput
