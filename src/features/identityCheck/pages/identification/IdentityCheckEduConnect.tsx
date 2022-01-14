@@ -45,7 +45,7 @@ export const IdentityCheckEduConnect = () => {
           <Spacer.Column numberOfSpaces={4} />
 
           <TextContent color={ColorsEnum.GREY_DARK}>
-            {t`Pour t'identifier, nous allons te demander de te connecter à ÉduConnect. Pense bien à avoir ton identifiant et ton mot de passe pour continuer. Si tu ne les as pas, contacte ton établissement pour les récupérer.`}
+            {t`Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect\u00a0! Si tu ne les as pas, contacte ton établissement pour les récupérer.`}
           </TextContent>
 
           <Spacer.Column numberOfSpaces={8} />
