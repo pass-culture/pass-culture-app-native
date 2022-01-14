@@ -14,8 +14,8 @@ import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { DateInput, DateInputRef, DateValidation } from 'ui/components/inputs/DateInput'
 import { InputError } from 'ui/components/inputs/InputError'
 import { useModal } from 'ui/components/modals/useModal'
-import { Spacer } from 'ui/theme'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
+import { Spacer } from 'ui/theme'
 
 let INITIAL_DATE: Date | null = null
 let INITIAL_DAY: string | undefined = undefined
@@ -49,6 +49,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
     isTooYoung: false,
     isTooOld: false,
   })
+
   const { data: settings } = useAppSettings()
 
   const now = new Date()
@@ -96,13 +97,17 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
       return (
         <InputError
           visible
-          messageId={t`Tu dois avoir\u00a0${youngestAge}\u00a0ans pour t'inscrire`}
+          messageId={t`Tu dois avoir au moins\u00a0${youngestAge}\u00a0ans pour t’inscrire au pass Culture.`}
           numberOfSpacesTop={5}
         />
       )
     }
     return (
-      <InputError visible messageId={t`La date choisie est incorrecte`} numberOfSpacesTop={5} />
+      <InputError
+        visible
+        messageId={t`La date n’existe pas. Exemple de résultat attendu\u00a0: 03/03/2003.`}
+        numberOfSpacesTop={5}
+      />
     )
   }
 

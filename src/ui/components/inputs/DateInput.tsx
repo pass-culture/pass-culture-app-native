@@ -1,16 +1,14 @@
+import { t } from '@lingui/macro'
+import moment from 'moment'
 import React, { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 import { Platform, TextInput } from 'react-native'
-import styled from 'styled-components/native'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
-import validateDate from 'validate-date'
-
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 import { MaskedTextInput } from 'react-native-mask-text'
-import { StyledInputContainer } from 'ui/components/inputs/StyledInputContainer'
+import styled from 'styled-components/native'
+
 import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
-import { t } from '@lingui/macro'
+import { StyledInputContainer } from 'ui/components/inputs/StyledInputContainer'
+import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export interface DateValidation {
   isComplete: boolean
@@ -34,27 +32,7 @@ export interface DateInputRef {
   clearFocuses: () => void
 }
 
-const MIN_POSSIBLE_YEAR = 1
-const MAX_POSSIBLE_YEAR = 9999
-
-const DAY_VALIDATOR = {
-  isValid: (input: string) => input.length === 2 && parseInt(input) >= 1 && parseInt(input) <= 31,
-}
-const MONTH_VALIDATOR = {
-  isValid: (input: string) => input.length === 2 && parseInt(input) >= 1 && parseInt(input) <= 12,
-}
-const YEAR_VALIDATOR = {
-  isValid: (input: string) =>
-    input.length === 4 &&
-    parseInt(input) >= MIN_POSSIBLE_YEAR &&
-    parseInt(input) <= MAX_POSSIBLE_YEAR,
-}
-
-export const DateInputLabelText = styled(Typo.Body)({
-  textAlign: 'center',
-  fontSize: 18,
-  lineHeight: '22px',
-})
+const MASK = '99/99/9999'
 
 const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputProps> = (
   { onSubmit, minDate, maxDate, initialDay, initialMonth, initialYear, ...props },
@@ -63,38 +41,25 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
   const inputRef = useRef<TextInput>(null)
   const initialValue = [initialDay ?? '', initialMonth ?? '', initialYear ?? ''].join('').trim()
   const [value, setValue] = useState(initialValue)
-
-  const dateParts = useMemo(() => {
-    const day = value.substr(0, 2)
-    const month = value.substr(2, 2)
-    const year = value.substr(4, 4)
-
-    return {
-      day: {
-        value: day,
-        isValid: DAY_VALIDATOR.isValid(day ?? ''),
-      },
-      month: {
-        value: month,
-        isValid: MONTH_VALIDATOR.isValid(month ?? ''),
-      },
-      year: {
-        value: year,
-        isValid: YEAR_VALIDATOR.isValid(year ?? ''),
-      },
-    }
-  }, [value])
+  const [hasFocus, setHasFocus] = useState(false)
 
   const date = useMemo(() => {
-    const { year, month, day } = dateParts
-    const dateStr = [year.value, month.value, day.value].join('-')
-    if (validateDate(dateStr, 'boolean')) {
-      return new Date(+year.value, +month.value - 1, +day.value)
-    }
+    if (!value?.length) return null
+    const dateStr = value.split('/').reverse().join('-')
+    if (moment(dateStr, 'YYYY-MM-DD', true).isValid()) return new Date(dateStr)
     return null
-  }, [dateParts])
+  }, [value])
 
-  const isValidDate = date instanceof Date && !isNaN(date.getTime())
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      if (Platform.OS !== 'web') {
+        if (inputRef.current) inputRef.current.focus()
+      }
+    }, 500)
+    return () => clearTimeout(timeout)
+  }, [])
+
+  const isValidDate = date instanceof Date
 
   const dateValidation: DateValidation = useMemo(() => {
     const nextDateValidation = {
@@ -111,8 +76,7 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
       nextDateValidation.isDateBelowMax = date <= maxDate
     }
 
-    nextDateValidation.isComplete =
-      dateParts.day.isValid && dateParts.month.isValid && dateParts.year.isValid
+    nextDateValidation.isComplete = value.length === MASK.length
 
     nextDateValidation.isValid =
       isValidDate &&
@@ -121,16 +85,7 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
       nextDateValidation.isDateBelowMax
 
     return nextDateValidation
-  }, [isValidDate, date, dateParts])
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      if (Platform.OS !== 'web') {
-        if (inputRef.current) inputRef.current.focus()
-      }
-    }, 500)
-    return () => clearTimeout(timeout)
-  }, [])
+  }, [isValidDate, date, value])
 
   useEffect(() => {
     props.onChangeValue?.(isValidDate && date ? date : null, dateValidation)
@@ -149,15 +104,21 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
         <StyledCaption>{t`JJ/MM/AAAA`}</StyledCaption>
       </LabelContainer>
       <Spacer.Column numberOfSpaces={2} />
-      <StyledInputContainer>
+      <StyledInputContainer
+        isFocus={hasFocus}
+        isError={
+          dateValidation.isDateAboveMin || dateValidation.isDateBelowMax || !dateValidation.isValid
+        }>
         <StyledMaskedTextInput
-          mask={'99/99/9999'}
+          mask={MASK}
           keyboardType={'number-pad'}
           onSubmitEditing={onSubmit}
           returnKeyType={'done'}
           onChangeText={setValue}
           placeholder={'03/03/2003'}
           autoFocus={true}
+          onFocus={() => setHasFocus(true)}
+          onBlur={() => setHasFocus(false)}
         />
       </StyledInputContainer>
     </InputContainer>
