@@ -99,7 +99,37 @@ Object {
                       dir="auto"
                       style="color: rgb(98, 98, 98); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
                     >
-                      Pour procéder à ton identification, nous allons te demander de te connecter à ÉduConnect. Muni toi de ton identifiant et de ton mot de passe ÉduConnect. Dès que tu as bien complété le parcours, reviens sur ce site pour terminer ton inscription et découvrir toutes les offres du pass Culture !
+                      Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer.
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 16px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="background-color: rgb(245, 245, 245); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: flex; flex-direction: row; padding: 16px 16px 16px 16px;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                      >
+                        <div
+                          class="css-text-901oao"
+                          dir="auto"
+                        >
+                          undefined-SVG-Mock
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="width: 8px;"
+                      />
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                        style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                      >
+                        Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur.
+                      </div>
                     </div>
                     <div
                       class="css-view-1dbjc4n"
@@ -248,7 +278,37 @@ Object {
                     dir="auto"
                     style="color: rgb(98, 98, 98); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
                   >
-                    Pour procéder à ton identification, nous allons te demander de te connecter à ÉduConnect. Muni toi de ton identifiant et de ton mot de passe ÉduConnect. Dès que tu as bien complété le parcours, reviens sur ce site pour terminer ton inscription et découvrir toutes les offres du pass Culture !
+                    Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer.
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="height: 16px;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="background-color: rgb(245, 245, 245); border-top-left-radius: 4px; border-top-right-radius: 4px; border-bottom-right-radius: 4px; border-bottom-left-radius: 4px; display: flex; flex-direction: row; padding: 16px 16px 16px 16px;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                      >
+                        undefined-SVG-Mock
+                      </div>
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="width: 8px;"
+                    />
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                      style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur.
+                    </div>
                   </div>
                   <div
                     class="css-view-1dbjc4n"

@@ -12,6 +12,7 @@ import { EduConnectErrorMessageEnum } from 'features/identityCheck/errors/hooks/
 import { eduConnectClient } from 'libs/eduConnectClient'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
+import { Info } from 'ui/svg/icons/Info'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const IdentityCheckEduConnectForm = () => {
@@ -68,8 +69,17 @@ export const IdentityCheckEduConnectForm = () => {
             <Spacer.Column numberOfSpaces={4} />
 
             <JustifiedText color={ColorsEnum.GREY_DARK}>
-              {t`Pour procéder à ton identification, nous allons te demander de te connecter à ÉduConnect. Muni toi de ton identifiant et de ton mot de passe ÉduConnect. Dès que tu as bien complété le parcours, reviens sur ce site pour terminer ton inscription et découvrir toutes les offres du pass Culture\u00a0!`}
+              {t`Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect\u00a0! Si tu ne les as pas, contacte ton établissement pour les récupérer.`}
             </JustifiedText>
+            <Spacer.Column numberOfSpaces={4} />
+            <HavingTroubleContainer>
+              <Info />
+              <Spacer.Row numberOfSpaces={2} />
+
+              <Typo.Caption color={ColorsEnum.GREY_DARK}>
+                {t`Un souci pour accéder à la page\u00a0? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur.`}
+              </Typo.Caption>
+            </HavingTroubleContainer>
 
             <Spacer.Column numberOfSpaces={8} />
           </React.Fragment>
@@ -95,3 +105,11 @@ const JustifiedText = styled(Typo.Body)({
 const JustifiedHeader = styled(Typo.ButtonText)({
   textAlign: 'center',
 })
+
+const HavingTroubleContainer = styled.View(({ theme }) => ({
+  display: 'flex',
+  flexDirection: 'row',
+  backgroundColor: theme.colors.greyLight,
+  padding: getSpacing(4),
+  borderRadius: theme.borderRadius.checkbox,
+}))
