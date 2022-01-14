@@ -109,10 +109,6 @@ msgstr "Accessibilité"
 msgid "Accueil"
 msgstr "Accueil"
 
-#: src/features/deeplinks/pages/DeeplinkImporter.tsx
-msgid "Accès aux liens"
-msgstr "Accès aux liens"
-
 #: src/features/bookings/components/BookingDetailsTicketContent.tsx
 #: src/features/offer/services/useCtaWordingAndAction.ts
 msgid "Accéder à l'offre"
@@ -461,10 +457,6 @@ msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgid "Code postal - Formulaire"
 msgstr "Code postal - Formulaire"
 
-#: src/features/deeplinks/pages/DeeplinkImporter.tsx
-msgid "Colle ton lien ici ..."
-msgstr "Colle ton lien ici ..."
-
 #: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStart.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStart.web.tsx
 msgid "Commencer la vérification"
@@ -621,10 +613,6 @@ msgstr "Continuer la vérification"
 #: src/features/auth/signup/SignupForm.tsx
 msgid "Continuer vers l'étape"
 msgstr "Continuer vers l'étape"
-
-#: src/features/deeplinks/pages/DeeplinkImporter.tsx
-msgid "Copie ici le lien qui t'a été envoyé par email et clique sur le bouton \"Importer le lien\""
-msgstr "Copie ici le lien qui t'a été envoyé par email et clique sur le bouton \"Importer le lien\""
 
 #: src/features/_marketingAndCommunication/atoms/DeeplinkItem.tsx
 msgid "Copier"
@@ -1006,10 +994,6 @@ msgstr "Filtrer"
 msgid "Fin du parcours"
 msgstr "Fin du parcours"
 
-#: src/features/deeplinks/pages/DeeplinkImporter.tsx
-msgid "Format du lien incorrect"
-msgstr "Format du lien incorrect"
-
 #: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContentDesktop.tsx
 msgid "Gagne du temps en vérifiant ton identité directement sur ton smartphone ! Sinon tu peux passer par le site Démarches-Simplifiées mais le traitement sera plus long."
 msgstr "Gagne du temps en vérifiant ton identité directement sur ton smartphone ! Sinon tu peux passer par le site Démarches-Simplifiées mais le traitement sera plus long."
@@ -1133,10 +1117,6 @@ msgstr "Il y a déjà une demande de crédit pass Culture en cours sur ton compt
 #: src/features/auth/login/Login.tsx
 msgid "Il y a eu un problème. Tu peux réessayer plus tard"
 msgstr "Il y a eu un problème. Tu peux réessayer plus tard"
-
-#: src/features/deeplinks/pages/DeeplinkImporter.tsx
-msgid "Importer le lien"
-msgstr "Importer le lien"
 
 #: src/features/identityCheck/pages/profile/SetCity.tsx
 msgid "Indique ton code postal et choisis ta ville"
@@ -1332,10 +1312,6 @@ msgstr "Le but du pass Culture est de renforcer tes pratiques culturelles, mais 
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Le lien est expiré !"
 msgstr "Le lien est expiré !"
-
-#: src/features/deeplinks/useDeeplinkUrlHandler.ts
-msgid "Le lien est incorrect"
-msgstr "Le lien est incorrect"
 
 #: src/features/_marketingAndCommunication/pages/DeeplinksGenerator.tsx
 msgid "Le lien {0} n'a pas été ajouté à l'historique: {1}"
@@ -1877,17 +1853,14 @@ msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exerc
 msgid "Pour plus d'informations, nous t'invitons à consulter notre"
 msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 
-#: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
-msgid "Pour procéder à ton identification, nous allons te demander de te connecter à ÉduConnect. Muni toi de ton identifiant et de ton mot de passe ÉduConnect. Dès que tu as bien complété le parcours, reviens sur ce site pour terminer ton inscription et découvrir toutes les offres du pass Culture !"
-msgstr "Pour procéder à ton identification, nous allons te demander de te connecter à ÉduConnect. Muni toi de ton identifiant et de ton mot de passe ÉduConnect. Dès que tu as bien complété le parcours, reviens sur ce site pour terminer ton inscription et découvrir toutes les offres du pass Culture !"
-
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 msgid "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
 msgstr "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
 
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnect.tsx
-msgid "Pour t'identifier, nous allons te demander de te connecter à ÉduConnect. Pense bien à avoir ton identifiant et ton mot de passe pour continuer. Si tu ne les as pas, contacte ton établissement pour les récupérer."
-msgstr "Pour t'identifier, nous allons te demander de te connecter à ÉduConnect. Pense bien à avoir ton identifiant et ton mot de passe pour continuer. Si tu ne les as pas, contacte ton établissement pour les récupérer."
+#: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
+msgid "Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer."
+msgstr "Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer."
 
 #: src/features/profile/components/BeneficiaryCeilings.tsx
 msgid "Pourquoi les biens numériques sont-ils limités ?"
@@ -1933,10 +1906,6 @@ msgstr "Prix croissant"
 #: src/features/navigation/helpers/openUrl.ts
 msgid "Problème technique ;("
 msgstr "Problème technique ;("
-
-#: src/features/profile/pages/Profile.tsx
-msgid "Problèmes pour ouvrir un lien ?"
-msgstr "Problèmes pour ouvrir un lien ?"
 
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
 #: src/features/identityCheck/pages/profile/SetCity.tsx
@@ -2110,7 +2079,6 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 #: src/features/auth/signup/SignupForm.tsx
 #: src/features/bookings/components/BookingDetailsHeader.tsx
-#: src/features/deeplinks/pages/DeeplinkImporter.tsx
 #: src/features/identityCheck/atoms/layout/PageHeader.tsx
 #: src/features/offer/components/OfferHeader.tsx
 #: src/features/search/components/SearchBox.tsx
@@ -2666,10 +2634,6 @@ msgstr "Téléphone"
 msgid "Téléphone - Formulaire"
 msgstr "Téléphone - Formulaire"
 
-#: src/features/deeplinks/pages/DeeplinkImporter.tsx
-msgid "Un lien ne fonctionne pas ?"
-msgstr "Un lien ne fonctionne pas ?"
-
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Un problème est survenu pendant l'inscription, réessaie plus tard."
@@ -2679,6 +2643,10 @@ msgstr "Un problème est survenu pendant l'inscription, réessaie plus tard."
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 msgid "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
 msgstr "Un problème est survenu pendant la réinitialisation, réessaie plus tard."
+
+#: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
+msgid "Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur."
+msgstr "Un souci pour accéder à la page ? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur."
 
 #: src/features/profile/pages/ChangeEmail/AlreadyChangedEmailDisclaimer.tsx
 msgid "Une demande a été envoyée à ta nouvelle adresse. Tu as 24h pour la valider. Pense à vérifier tes spams."

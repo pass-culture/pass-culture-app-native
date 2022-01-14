@@ -332,7 +332,7 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
                     }
                   }
                 >
-                  Pour t'identifier, nous allons te demander de te connecter à ÉduConnect. Pense bien à avoir ton identifiant et ton mot de passe pour continuer. Si tu ne les as pas, contacte ton établissement pour les récupérer.
+                  Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect ! Si tu ne les as pas, contacte ton établissement pour les récupérer.
                 </div>
                 <div
                   className="css-view-1dbjc4n"
