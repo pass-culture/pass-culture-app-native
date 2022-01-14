@@ -127,6 +127,10 @@ msgstr "Active la géolocalisation pour découvrir toutes les offres existantes 
 msgid "Activer la géolocalisation"
 msgstr "Activer la géolocalisation"
 
+#: src/features/venue/components/VenueIconCaptions.tsx
+msgid "Activer la localisation"
+msgstr "Activer la localisation"
+
 #: src/features/forceUpdate/ForceUpdate.tsx
 msgid "Actualiser la page"
 msgstr "Actualiser la page"
@@ -146,6 +150,10 @@ msgstr "Adresse - Formulaire"
 #: src/features/profile/pages/PersonalData.tsx
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
+
+#: src/ui/components/inputs/PasswordInput.tsx
+msgid "Afficher le mot de passe"
+msgstr "Afficher le mot de passe"
 
 #: src/features/search/atoms/Buttons/ShowResults.tsx
 msgid "Afficher les 999+ résultats"
@@ -326,6 +334,10 @@ msgstr "C'est pour bientôt !"
 #: src/features/auth/signup/SignupForm.tsx
 msgid "CGU & Données"
 msgstr "CGU & Données"
+
+#: src/ui/components/inputs/PasswordInput.tsx
+msgid "Cacher le mot de passe"
+msgstr "Cacher le mot de passe"
 
 #: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
 msgid "Cadre l’intégralité de ton document"
@@ -718,6 +730,10 @@ msgstr "Disquaire"
 msgid "Distance"
 msgstr "Distance"
 
+#: src/features/venue/components/VenueIconCaptions.tsx
+msgid "Distance depuis la localisation"
+msgstr "Distance depuis la localisation"
+
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Données personnelles"
 msgstr "Données personnelles"
@@ -970,6 +986,10 @@ msgstr "Fermer la modale et refuser la collecte des données"
 #: src/features/identityCheck/components/DMSModal.tsx
 msgid "Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
 msgstr "Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
+
+#: src/ui/components/AccordionItem.tsx
+msgid "Fermer la section"
+msgstr "Fermer la section"
 
 #: src/features/search/components/CalendarPicker.ios.tsx
 #: src/features/search/components/CalendarPicker.web.tsx
@@ -1395,8 +1415,8 @@ msgid "Lieu"
 msgstr "Lieu"
 
 #: src/features/venue/pages/VenueNotFound.tsx
-msgid "Lieu introuvable | Pass Culture"
-msgstr "Lieu introuvable | Pass Culture"
+msgid "Lieu introuvable | pass Culture"
+msgstr "Lieu introuvable | pass Culture"
 
 #: src/features/venue/pages/VenueNotFound.tsx
 msgid "Lieu introuvable !"
@@ -1676,8 +1696,8 @@ msgid "Offre expirée"
 msgstr "Offre expirée"
 
 #: src/features/offer/pages/OfferNotFound.tsx
-msgid "Offre introuvable | Pass Culture"
-msgstr "Offre introuvable | Pass Culture"
+msgid "Offre introuvable | pass Culture"
+msgstr "Offre introuvable | pass Culture"
 
 #: src/features/offer/pages/OfferNotFound.tsx
 msgid "Offre introuvable !"
@@ -1733,6 +1753,10 @@ msgstr "Oups !"
 #: src/libs/country-picker/CountryPicker.tsx
 msgid "Ouvrir la modale de choix de l'indicatif téléphonique"
 msgstr "Ouvrir la modale de choix de l'indicatif téléphonique"
+
+#: src/ui/components/AccordionItem.tsx
+msgid "Ouvrir la section"
+msgstr "Ouvrir la section"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
 msgid "Ouvrir un onglet ÉduConnect"
@@ -2138,8 +2162,8 @@ msgid "Réservation confirmée !"
 msgstr "Réservation confirmée !"
 
 #: src/features/bookings/pages/BookingNotFound.tsx
-msgid "Réservation introuvable | Pass Culture"
-msgstr "Réservation introuvable | Pass Culture"
+msgid "Réservation introuvable | pass Culture"
+msgstr "Réservation introuvable | pass Culture"
 
 #: src/features/bookings/pages/BookingNotFound.tsx
 msgid "Réservation introuvable !"
@@ -2850,8 +2874,8 @@ msgid "Vérifier mon identité"
 msgstr "Vérifier mon identité"
 
 #: src/libs/i18n.native.test.ts
-msgid "Welcome to Pass Culture"
-msgstr "Bienvenue à Pass Culture"
+msgid "Welcome to pass Culture"
+msgstr "Bienvenue à pass Culture"
 
 #: src/features/bookings/helpers.ts
 msgid "activate before date"
@@ -2860,14 +2884,6 @@ msgstr "À activer avant le {dateLimit}"
 #: src/features/bookOffer/components/BookingInformations.tsx
 msgid "activation message"
 msgstr "À activer avant le {date}"
-
-#: src/features/venue/components/VenueIconCaptions.tsx
-msgid "activer la localisation"
-msgstr "activer la localisation"
-
-#: src/ui/components/inputs/PasswordInput.tsx
-msgid "afficher le mot de passe"
-msgstr "afficher le mot de passe"
 
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "ainsi que notre"
@@ -2888,10 +2904,6 @@ msgstr "Pour tes {age} ans, le Gouvernement vient d'ajouter {creditedAmount} à 
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 msgid "c'est..."
 msgstr "c'est..."
-
-#: src/ui/components/inputs/PasswordInput.tsx
-msgid "cacher le mot de passe"
-msgstr "cacher le mot de passe"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
 msgid "carte d'identité"
@@ -2939,10 +2951,6 @@ msgstr "Patience ! Reviens à partir du {date} pour continuer ton inscription e
 msgid "de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application."
 msgstr "de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application."
 
-#: src/features/venue/components/VenueIconCaptions.tsx
-msgid "distance depuis la localisation"
-msgstr "distance depuis la localisation"
-
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "durée"
 msgstr "durée"
@@ -2978,10 +2986,6 @@ msgstr "et si tu as..."
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "et si tu es..."
 msgstr "et si tu es..."
-
-#: src/ui/components/AccordionItem.tsx
-msgid "fermer la section"
-msgstr "fermer la section"
 
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "genre"
@@ -3047,10 +3051,6 @@ msgstr "ou"
 #: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
 msgid "ou de ton"
 msgstr "ou de ton"
-
-#: src/ui/components/AccordionItem.tsx
-msgid "ouvrir la section"
-msgstr "ouvrir la section"
 
 #: src/features/navigation/RootNavigator/linking/getPathFromState.ts
 msgid "page-introuvable"
