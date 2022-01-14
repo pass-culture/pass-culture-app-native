@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
-import React, { FunctionComponent, useRef, useState } from 'react'
-import styled from 'styled-components/native'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
 import { BirthdayInformationModal } from 'features/auth/signup/SetBirthday/BirthdayInformationModal'
@@ -41,6 +41,7 @@ interface State {
 }
 
 export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (props) => {
+  const { isMobileViewport } = useTheme()
   const [wereBirthdayAnalyticsTriggered, setWereBirthdayAnalyticsTriggered] = useState(false)
   const [state, setState] = useState<State>({
     date: INITIAL_DATE,
@@ -49,7 +50,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
     isTooYoung: false,
     isTooOld: false,
   })
-
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const { data: settings } = useAppSettings()
 
   const now = new Date()
@@ -84,32 +85,26 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
     showInformationModal()
   }
 
-  function renderErrorMessages() {
-    if (!state.isDateComplete || state.isDateValid) {
-      return
-    }
-    if (state.isTooYoung && !state.isTooOld) {
-      if (!wereBirthdayAnalyticsTriggered && state.date) {
+  useEffect(() => {
+    if (!state.isDateComplete || state.isDateValid) return setErrorMessage(null)
+    if (state.date) {
+      if (state.isTooYoung && !wereBirthdayAnalyticsTriggered) {
         const age = dateDiffInFullYears(state.date, now)
         analytics.logSignUpTooYoung(age)
         setWereBirthdayAnalyticsTriggered(true)
+        return setErrorMessage(
+          t`Tu dois avoir au moins\u00a0${youngestAge}\u00a0ans pour t’inscrire au pass Culture`
+        )
       }
-      return (
-        <InputError
-          visible
-          messageId={t`Tu dois avoir au moins\u00a0${youngestAge}\u00a0ans pour t’inscrire au pass Culture.`}
-          numberOfSpacesTop={5}
-        />
-      )
+      if (state.isTooOld) {
+        const age = dateDiffInFullYears(state.date, now)
+        return setErrorMessage(
+          t`Euh... Il semblerait qu'il y ait une erreur. Tu as vraiment ${age} ans\u00a0?`
+        )
+      }
     }
-    return (
-      <InputError
-        visible
-        messageId={t`La date n’existe pas. Exemple de résultat attendu\u00a0: 03/03/2003.`}
-        numberOfSpacesTop={5}
-      />
-    )
-  }
+    return setErrorMessage(t`La date n’existe pas. Exemple de résultat attendu\u00a0: 03/03/2003.`)
+  }, [state])
 
   return (
     <React.Fragment>
@@ -119,7 +114,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
           title={t`Pour quelle raison\u00a0?`}
           onPress={onPressWhy}
         />
-        <Spacer.Column numberOfSpaces={8} />
+        <Spacer.Column numberOfSpaces={5} />
         <DateInputContainer>
           <DateInput
             autoFocus={true}
@@ -132,9 +127,13 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
             initialYear={INITIAL_YEAR}
             onSubmit={goToNextStep}
           />
-          {renderErrorMessages()}
+          {errorMessage ? (
+            <InputError visible messageId={errorMessage} numberOfSpacesTop={2} />
+          ) : (
+            <Spacer.Column numberOfSpaces={isMobileViewport ? 10 : 6} />
+          )}
         </DateInputContainer>
-        <Spacer.Column numberOfSpaces={14} />
+        <Spacer.Column numberOfSpaces={5} />
         <ButtonPrimary
           title={t`Continuer`}
           accessibilityLabel={props.accessibilityLabelForNextStep}

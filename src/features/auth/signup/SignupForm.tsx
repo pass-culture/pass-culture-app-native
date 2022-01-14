@@ -46,7 +46,7 @@ const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
   },
   {
     name: PreValidationSignupStep.Birthday,
-    headerTitle: t`Ta date de naissance`,
+    headerTitle: t`Date de naissance`,
     Component: SetBirthday,
   },
   {
