@@ -682,6 +682,7 @@ msgstr "Date"
 msgid "Date de l'offre"
 msgstr "Date de l'offre"
 
+#: src/features/auth/signup/SignupForm.tsx
 #: src/ui/components/inputs/DateInput.tsx
 msgid "Date de naissance"
 msgstr "Date de naissance"
@@ -921,6 +922,10 @@ msgstr "Erreur réseau. Tu peux réessayer une fois la connexion réétablie"
 #: src/features/profile/pages/ConfirmDeleteProfile.tsx
 msgid "Es-tu sûr de vouloir supprimer ton compte ?"
 msgstr "Es-tu sûr de vouloir supprimer ton compte ?"
+
+#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+msgid "Euh... Il semblerait qu’il y ait une erreur. As-tu réellement {age} ans ?"
+msgstr "Euh... Il semblerait qu’il y ait une erreur. As-tu réellement {age} ans ?"
 
 #: src/features/bookings/components/NoBookingsView.tsx
 #: src/features/favorites/components/NoFavoritesResult.tsx
@@ -1276,8 +1281,8 @@ msgid "La date de naissance enregistrée dans ÉduConnect semble indiquer que tu
 msgstr "La date de naissance enregistrée dans ÉduConnect semble indiquer que tu n'as pas l'âge requis pour obtenir l'aide du Gouvernement."
 
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "La date n’existe pas. Exemple de résultat attendu : 03/03/2003."
-msgstr "La date n’existe pas. Exemple de résultat attendu : 03/03/2003."
+msgid "La date n’existe pas. Exemple de résultat attendu : 03/03/2003"
+msgstr "La date n’existe pas. Exemple de résultat attendu : 03/03/2003"
 
 #: src/libs/geolocation/enums.ts
 msgid "La géolocalisation est désactivée sur l'application"
@@ -2296,7 +2301,6 @@ msgstr "Sélectionne ton statut"
 msgid "S’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect."
 msgstr "S’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect."
 
-#: src/features/auth/signup/SignupForm.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckValidation.web.tsx
 msgid "Ta date de naissance"
@@ -2497,8 +2501,8 @@ msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Dé
 msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture."
-msgstr "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture."
+msgid "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
+msgstr "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
 
 #: src/features/bookings/pages/BookingDetails.tsx
 msgid "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
@@ -2967,6 +2971,10 @@ msgstr "et si tu as..."
 msgid "et si tu es..."
 msgstr "et si tu es..."
 
+#: src/features/auth/signup/SetBirthday/BirthdayInformationModal.tsx
+msgid "financialHelpMessage"
+msgstr "Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de {deposit15} à {deposit18} offerte par le Gouvernement."
+
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "genre"
 msgstr "genre"
@@ -3039,14 +3047,6 @@ msgstr "page-introuvable"
 #: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
 msgid "passeport"
 msgstr "passeport"
-
-#: src/features/auth/signup/SetBirthday/BirthdayInformationModal.tsx
-msgid "postGeneralisationFinancialHelpMessage"
-msgstr "Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de {deposit15} à {deposit18} offerte par le Gouvernement."
-
-#: src/features/auth/signup/SetBirthday/BirthdayInformationModal.tsx
-msgid "preGeneralisationFinancialHelpMessage"
-msgstr "Si tu as 18 ans, tu es éligible à une aide financière de {deposit} offerte par le Gouvernement."
 
 #: src/features/bookOffer/components/BookingInformations.tsx
 msgid "prix duo"

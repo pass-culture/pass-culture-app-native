@@ -99,11 +99,11 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
       if (state.isTooOld) {
         const age = dateDiffInFullYears(state.date, now)
         return setErrorMessage(
-          t`Euh... Il semblerait qu'il y ait une erreur. Tu as vraiment ${age} ans\u00a0?`
+          t`Euh... Il semblerait qu’il y ait une erreur. As-tu réellement\u00a0${age}\u00a0ans\u00a0?`
         )
       }
     }
-    return setErrorMessage(t`La date n’existe pas. Exemple de résultat attendu\u00a0: 03/03/2003.`)
+    return setErrorMessage(t`La date n’existe pas. Exemple de résultat attendu\u00a0: 03/03/2003`)
   }, [state])
 
   return (
@@ -142,7 +142,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
         />
         <Spacer.Column numberOfSpaces={5} />
       </InnerContainer>
-      <BirthdayInformationModal settings={settings} visible={visible} hideModal={hideModal} />
+      <BirthdayInformationModal visible={visible} hideModal={hideModal} />
     </React.Fragment>
   )
 }
