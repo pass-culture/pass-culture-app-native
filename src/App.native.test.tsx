@@ -12,6 +12,9 @@ jest.mock('./libs/notifications', () => ({
 jest.mock('features/navigation/NavigationContainer/NavigationContainer', () => ({
   AppNavigationContainer: () => 'Placeholder for NavigationContainer',
 }))
+jest.mock('libs/i18n', () => ({
+  activate: jest.fn(),
+}))
 
 describe('<App /> with mocked RootNavigator', () => {
   it('should call startBatchNotification() to optin to notifications', async () => {

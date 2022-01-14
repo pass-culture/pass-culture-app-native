@@ -15,7 +15,7 @@ jest.mock('features/home/api', () => ({
     birthdate.setFullYear(birthdate.getFullYear() - 15)
     return {
       data: {
-        dateOfBirth: birthdate.toLocaleString(),
+        dateOfBirth: birthdate.toISOString(),
         recreditAmountToShow: 5000,
         domainsCredit: {
           all: {
