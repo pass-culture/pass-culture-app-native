@@ -36,7 +36,7 @@ export const VenueNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   return (
     <React.Fragment>
       <Helmet>
-        <title>{t`Lieu introuvable | Pass Culture`}</title>
+        <title>{t`Lieu introuvable | pass Culture`}</title>
         <meta name="robots" content="noindex" />
       </Helmet>
       <GenericInfoPage

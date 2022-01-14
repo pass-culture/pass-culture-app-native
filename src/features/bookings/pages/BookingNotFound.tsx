@@ -38,7 +38,7 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   return (
     <React.Fragment>
       <Helmet>
-        <title>{t`Réservation introuvable | Pass Culture`}</title>
+        <title>{t`Réservation introuvable | pass Culture`}</title>
       </Helmet>
       <GenericInfoPage
         title={t`Réservation introuvable\u00a0!`}

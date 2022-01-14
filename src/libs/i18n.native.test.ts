@@ -9,7 +9,7 @@ describe('i18n', () => {
       act(async () => {
         await activate('fr')
       })
-      expect(t`Welcome to Pass Culture`).toEqual('Bienvenue à Pass Culture')
+      expect(t`Welcome to pass Culture`).toEqual('Bienvenue à pass Culture')
     })
   })
 })

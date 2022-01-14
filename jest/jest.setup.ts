@@ -28,7 +28,7 @@ jest.mock('react-native/Libraries/Linking/Linking', () => ({
 
 jest.mock('react-native-device-info', () => ({
   getVersion: jest.fn().mockReturnValue('1.0'),
-  getApplicationName: jest.fn().mockReturnValue('Pass Culture App Native'),
+  getApplicationName: jest.fn().mockReturnValue('pass Culture App Native'),
   getUniqueId: jest.fn().mockReturnValue('ad7b7b5a169641e27cadbdb35adad9c4ca23099a'),
 }))
 

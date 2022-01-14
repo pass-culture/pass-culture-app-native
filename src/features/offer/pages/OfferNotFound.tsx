@@ -36,7 +36,7 @@ export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   return (
     <React.Fragment>
       <Helmet>
-        <title>{t`Offre introuvable | Pass Culture`}</title>
+        <title>{t`Offre introuvable | pass Culture`}</title>
       </Helmet>
       <GenericInfoPage
         title={t`Offre introuvable\u00a0!`}
