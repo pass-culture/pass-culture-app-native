@@ -21,7 +21,7 @@ jest.mock('features/auth/settings')
 describe('<BeneficiaryRequestSent />', () => {
   beforeEach(() => {
     mockedUseUserProfileInfo.mockReturnValue({
-      data: { isBeneficiary: true, needsToFillCulturalSurvey: true },
+      data: { needsToFillCulturalSurvey: true },
     } as UseQueryResult<UserProfileResponse>)
   })
 
@@ -40,21 +40,9 @@ describe('<BeneficiaryRequestSent />', () => {
     expect(navigate).toBeCalledWith('CulturalSurvey')
   })
 
-  it('should redirect to home page WHEN "On y va !" button is clicked and user is not beneficiary', () => {
-    mockedUseUserProfileInfo.mockReturnValue({
-      data: { isBeneficiary: false, needsToFillCulturalSurvey: true },
-    } as UseQueryResult<UserProfileResponse>)
-    const { getByText } = render(<BeneficiaryRequestSent />)
-
-    fireEvent.press(getByText('On y va\u00a0!'))
-
-    expect(navigateToHome).toBeCalledTimes(1)
-    expect(navigate).not.toBeCalledWith('CulturalSurvey')
-  })
-
   it('should redirect to home page WHEN "On y va !" button is clicked and user needs not to fill cultural survey', () => {
     mockedUseUserProfileInfo.mockReturnValue({
-      data: { isBeneficiary: true, needsToFillCulturalSurvey: false },
+      data: { needsToFillCulturalSurvey: false },
     } as UseQueryResult<UserProfileResponse>)
     const { getByText } = render(<BeneficiaryRequestSent />)
 
@@ -71,7 +59,7 @@ describe('<BeneficiaryRequestSent />', () => {
     } as UseQueryResult<SettingsResponse, unknown>)
 
     mockedUseUserProfileInfo.mockReturnValue({
-      data: { isBeneficiary: true, needsToFillCulturalSurvey: false },
+      data: { needsToFillCulturalSurvey: false },
     } as UseQueryResult<UserProfileResponse>)
 
     const { getByText } = render(<BeneficiaryRequestSent />)
@@ -86,7 +74,7 @@ describe('<BeneficiaryRequestSent />', () => {
       isLoading: false,
     } as UseQueryResult<SettingsResponse, unknown>)
     mockedUseUserProfileInfo.mockReturnValue({
-      data: { isBeneficiary: true, needsToFillCulturalSurvey: true },
+      data: { needsToFillCulturalSurvey: true },
     } as UseQueryResult<UserProfileResponse>)
     const { getByText } = render(<BeneficiaryRequestSent />)
     getByText(

@@ -37,7 +37,6 @@ describe('<Login/>', () => {
     mockMeApiCall({
       needsToFillCulturalSurvey: false,
       showEligibleCard: false,
-      isBeneficiary: true,
     } as UserProfileResponse)
     mockUsePreviousRoute.mockReturnValue(null)
     useRoute.mockImplementation(() => ({
@@ -69,33 +68,10 @@ describe('<Login/>', () => {
     })
   })
 
-  it('should redirect to home WHEN signin is successful, user needs to fill cultural survey but user is not beneficiary', async () => {
-    mockMeApiCall({
-      needsToFillCulturalSurvey: true,
-      showEligibleCard: false,
-      isBeneficiary: false,
-    } as UserProfileResponse)
-    const renderAPI = renderLogin()
-    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
-    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    fireEvent.changeText(passwordInput, 'mypassword')
-
-    fireEvent.press(renderAPI.getByText('Se connecter'))
-    await act(flushAllPromises)
-
-    await waitForExpect(() => {
-      expect(BatchUser.editor().setIdentifier).toHaveBeenCalledWith('111')
-      expect(analytics.setUserId).toHaveBeenCalledWith(111)
-      expect(navigateToHome).toBeCalledTimes(1)
-    })
-  })
-
   it('should redirect to Cultural Survey WHEN signin is successful and user needs to fill cultural survey', async () => {
     mockMeApiCall({
       needsToFillCulturalSurvey: true,
       showEligibleCard: false,
-      isBeneficiary: true,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
@@ -117,7 +93,6 @@ describe('<Login/>', () => {
     mockMeApiCall({
       needsToFillCulturalSurvey: false,
       showEligibleCard: true,
-      isBeneficiary: true,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
@@ -137,7 +112,6 @@ describe('<Login/>', () => {
     mockMeApiCall({
       needsToFillCulturalSurvey: true,
       showEligibleCard: true,
-      isBeneficiary: true,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
     const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
@@ -157,7 +131,6 @@ describe('<Login/>', () => {
     mockMeApiCall({
       needsToFillCulturalSurvey: true,
       showEligibleCard: true,
-      isBeneficiary: true,
       recreditAmountToShow: 3000,
     } as UserProfileResponse)
     const renderAPI = renderLogin()
@@ -178,7 +151,6 @@ describe('<Login/>', () => {
     mockMeApiCall({
       needsToFillCulturalSurvey: true,
       showEligibleCard: true,
-      isBeneficiary: true,
       recreditAmountToShow: null,
     } as UserProfileResponse)
     const renderAPI = renderLogin()

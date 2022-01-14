@@ -25,17 +25,16 @@ describe('useInitialScreen()', () => {
 
   // prettier-ignore : do not format the following "table" to keep it readable
   it.each`
-    hasSeenTutorials | hasSeenEligibleCard | isLogged | userProfile                                                                                                       | expectedScreen                    | expectedAnalyticsScreen
-    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false, isBeneficiary: true, recreditAmountToShow: null }} | ${'TabNavigator'}                 | ${'Home'}
-    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false, isBeneficiary: false, recreditAmountToShow: null }} | ${'TabNavigator'}                 | ${'Home'}
-    ${null}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false, isBeneficiary: true, recreditAmountToShow: null }}  | ${'CulturalSurvey'}               | ${'CulturalSurvey'}
-    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false, isBeneficiary: true, recreditAmountToShow: null }}  | ${'CulturalSurvey'}               | ${'CulturalSurvey'}
-    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: true, isBeneficiary: true, recreditAmountToShow: null }}   | ${'CulturalSurvey'}               | ${'CulturalSurvey'}
-    ${true}          | ${null}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: true, isBeneficiary: true, recreditAmountToShow: null }}   | ${'EighteenBirthday'}             | ${'EighteenBirthday'}
-    ${true}          | ${null}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: true, isBeneficiary: true, recreditAmountToShow: 3000 }}   | ${'RecreditBirthdayNotification'} | ${'RecreditBirthdayNotification'}
-    ${true}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false, isBeneficiary: true, recreditAmountToShow: null }}  | ${'TabNavigator'}                 | ${'Home'}
-    ${true}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: true, isBeneficiary: true, recreditAmountToShow: null }}  | ${'TabNavigator'}                 | ${'Home'}
-    ${null}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false, isBeneficiary: true, recreditAmountToShow: null }} | ${'FirstTutorial'}                | ${'FirstTutorial'}
+    hasSeenTutorials | hasSeenEligibleCard | isLogged | userProfile                                                                                  | expectedScreen                    | expectedAnalyticsScreen
+    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false, recreditAmountToShow: null }} | ${'TabNavigator'}                 | ${'Home'}
+    ${null}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false, recreditAmountToShow: null }}  | ${'CulturalSurvey'}               | ${'CulturalSurvey'}
+    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false, recreditAmountToShow: null }}  | ${'CulturalSurvey'}               | ${'CulturalSurvey'}
+    ${true}          | ${true}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: true, recreditAmountToShow: null }}   | ${'CulturalSurvey'}               | ${'CulturalSurvey'}
+    ${true}          | ${null}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: true, recreditAmountToShow: null }}   | ${'EighteenBirthday'}             | ${'EighteenBirthday'}
+    ${true}          | ${null}             | ${true}  | ${{ needsToFillCulturalSurvey: true, showEligibleCard: true, recreditAmountToShow: 3000 }}   | ${'RecreditBirthdayNotification'} | ${'RecreditBirthdayNotification'}
+    ${true}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: true, showEligibleCard: false, recreditAmountToShow: null }}  | ${'TabNavigator'}                 | ${'Home'}
+    ${true}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: true, recreditAmountToShow: null }}  | ${'TabNavigator'}                 | ${'Home'}
+    ${null}          | ${true}             | ${false} | ${{ needsToFillCulturalSurvey: false, showEligibleCard: false, recreditAmountToShow: null }} | ${'FirstTutorial'}                | ${'FirstTutorial'}
   `(
     `should return $expectedScreen when 
       - has_seen_tutorials = $hasSeenTutorials 
