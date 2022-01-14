@@ -6,7 +6,7 @@ import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 export type ParsedDescription = Array<string | React.ReactNode>
 
 const externalUrlRegex = new RegExp(
-  /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&//=]*)/,
+  /((^|\s)|https?:\/\/)[a-z]([-a-z0-9@:%._+~#=]*[a-z0-9])?\.[a-z0-9]{1,6}([/?#]\S*)?(\s|$)/,
   'gi'
 )
 
@@ -15,8 +15,12 @@ export const customFindUrlChunks = ({ textToHighlight }: FindChunksArgs): Chunk[
   const chunks = []
   let match: RegExpExecArray | null
   while ((match = externalUrlRegex.exec(textToHighlight))) {
-    const start = match.index
-    const end = externalUrlRegex.lastIndex
+    const startWithSpace = /\s/.test(textToHighlight[match.index])
+    const startIndexSpaceAdjustment = startWithSpace ? 1 : 0
+    const start = match.index + startIndexSpaceAdjustment
+    const endWithSpace = /\s/.test(textToHighlight[externalUrlRegex.lastIndex - 1])
+    const endIndexSpaceAdjustment = endWithSpace ? 1 : 0
+    const end = externalUrlRegex.lastIndex - endIndexSpaceAdjustment
     // We do not return zero-length matches
     if (end > start) {
       chunks.push({ highlight: false, start, end })
@@ -31,17 +35,25 @@ export const customFindUrlChunks = ({ textToHighlight }: FindChunksArgs): Chunk[
   return chunks
 }
 
+const normalizeURL = (partialURL: string): string => {
+  if (partialURL.startsWith('http://')) return partialURL
+  if (partialURL.startsWith('https://')) return partialURL
+  return `http://${partialURL}`
+}
+
 export const highlightLinks = (description: string): ParsedDescription => {
   const chunks = findAll({
     searchWords: [],
     findChunks: customFindUrlChunks,
     textToHighlight: description,
   })
-  return chunks.map(({ start, end, highlight }, index) =>
-    highlight ? (
-      <ExternalLink key={`external-link-${index}`} url={description.slice(start, end)} />
+
+  return chunks.map(({ start, end, highlight }, index) => {
+    const url = normalizeURL(description.slice(start, end))
+    return highlight ? (
+      <ExternalLink key={`external-link-${index}`} url={url} />
     ) : (
       description.slice(start, end)
     )
-  )
+  })
 }
