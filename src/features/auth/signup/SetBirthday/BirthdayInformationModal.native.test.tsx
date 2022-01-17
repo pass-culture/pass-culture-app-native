@@ -3,7 +3,6 @@ import React from 'react'
 import { BirthdayInformationModal } from 'features/auth/signup/SetBirthday/BirthdayInformationModal'
 import { render } from 'tests/utils'
 
-jest.mock('features/auth/settings')
 jest.mock('features/auth/api', () => {
   const originalModule = jest.requireActual('features/auth/api')
   return {

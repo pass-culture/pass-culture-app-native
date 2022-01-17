@@ -1,4 +1,5 @@
-import React, { FC, Fragment } from 'react'
+import React, { FC } from 'react'
+import styled from 'styled-components/native'
 
 import { Error } from 'ui/svg/icons/Error'
 import { ColorsEnum, Spacer } from 'ui/theme'
@@ -14,7 +15,7 @@ interface Props {
 
 export const InputError: FC<Props> = (props) => {
   return props.visible ? (
-    <Fragment>
+    <Container accessibilityRole="alert">
       <Spacer.Column testID="input-error-top-spacer" numberOfSpaces={props.numberOfSpacesTop} />
       <InputRule
         title={props.messageId}
@@ -24,6 +25,8 @@ export const InputError: FC<Props> = (props) => {
         iconSize={16}
         centered={props.centered}
       />
-    </Fragment>
+    </Container>
   ) : null
 }
+
+const Container = styled.View({ width: '100%' })

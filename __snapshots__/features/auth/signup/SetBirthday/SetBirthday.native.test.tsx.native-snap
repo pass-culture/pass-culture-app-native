@@ -191,6 +191,8 @@ exports[`<SetBirthday /> should render properly 1`] = `
         }
       >
         <TextInput
+          accessibilityLabel="Entrée pour la date de naissance"
+          accessible={true}
           autoFocus={true}
           keyboardType="number-pad"
           onBlur={[Function]}
@@ -217,6 +219,7 @@ exports[`<SetBirthday /> should render properly 1`] = `
               },
             ]
           }
+          testID="Entrée pour la date de naissance"
           value=""
         />
       </View>

@@ -883,6 +883,10 @@ msgstr "Entrée pour l'adresse"
 msgid "Entrée pour l'email"
 msgstr "Entrée pour l'email"
 
+#: src/ui/components/inputs/DateInput.tsx
+msgid "Entrée pour la date de naissance"
+msgstr "Entrée pour la date de naissance"
+
 #: src/features/identityCheck/pages/profile/SetCity.tsx
 msgid "Entrée pour le code postal"
 msgstr "Entrée pour le code postal"

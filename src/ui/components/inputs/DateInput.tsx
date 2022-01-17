@@ -5,6 +5,7 @@ import { Platform, TextInput } from 'react-native'
 import { MaskedTextInput } from 'react-native-mask-text'
 import styled from 'styled-components/native'
 
+import { accessibilityAndTestId } from 'tests/utils'
 import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import { StyledInputContainer } from 'ui/components/inputs/StyledInputContainer'
@@ -22,9 +23,6 @@ interface DateInputProps {
   onChangeValue?: (value: Date | null, dateValidation: DateValidation) => void
   minDate?: Date
   maxDate?: Date
-  initialDay?: string
-  initialMonth?: string
-  initialYear?: string
   onSubmit?: () => void
 }
 
@@ -35,12 +33,11 @@ export interface DateInputRef {
 const MASK = '99/99/9999'
 
 const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputProps> = (
-  { onSubmit, minDate, maxDate, initialDay, initialMonth, initialYear, ...props },
+  { onSubmit, minDate, maxDate, ...props },
   forwardedRef
 ) => {
   const inputRef = useRef<TextInput>(null)
-  const initialValue = [initialDay ?? '', initialMonth ?? '', initialYear ?? ''].join('').trim()
-  const [value, setValue] = useState(initialValue)
+  const [value, setValue] = useState('')
   const [hasFocus, setHasFocus] = useState(false)
 
   const date = useMemo(() => {
@@ -119,6 +116,7 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
           autoFocus={true}
           onFocus={() => setHasFocus(true)}
           onBlur={() => setHasFocus(false)}
+          {...accessibilityAndTestId(t`Entrée pour la date de naissance`)}
         />
       </StyledInputContainer>
     </InputContainer>

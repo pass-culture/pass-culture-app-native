@@ -18,15 +18,9 @@ import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Spacer } from 'ui/theme'
 
 let INITIAL_DATE: Date | null = null
-let INITIAL_DAY: string | undefined = undefined
-let INITIAL_MONTH: string | undefined = undefined
-let INITIAL_YEAR: string | undefined = undefined
 
 if (__DEV__ && env.SIGNUP_DATE) {
   INITIAL_DATE = new Date(env.SIGNUP_DATE) // '2003-01-01T00:00:00Z'
-  INITIAL_DAY = `${INITIAL_DATE.getDate()}`.padStart(2, '0')
-  INITIAL_MONTH = `${INITIAL_DATE.getMonth() + 1}`.padStart(2, '0')
-  INITIAL_YEAR = `${INITIAL_DATE.getFullYear()}`
 }
 
 const DEFAULT_YOUNGEST_AGE = 15
@@ -122,9 +116,6 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
             ref={dateInputRef}
             minDate={MIN_DATE}
             maxDate={maxDate}
-            initialDay={INITIAL_DAY}
-            initialMonth={INITIAL_MONTH}
-            initialYear={INITIAL_YEAR}
             onSubmit={goToNextStep}
           />
           {errorMessage ? (
