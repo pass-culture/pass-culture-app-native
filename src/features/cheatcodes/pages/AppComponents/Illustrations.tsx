@@ -6,11 +6,12 @@ import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { IconInterface } from 'ui/svg/icons/types'
 import { PhoneError } from 'ui/svg/PhoneError'
-import { ColorsEnum, getSpacing } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme'
 
 export const Illustrations: FunctionComponent = () => {
   return (
     <React.Fragment>
+      <Text>{'Illustration icons should have a standard size of 140'}</Text>
       <Illustration name="BicolorPhonePending" component={BicolorPhonePending} isNew />
       <Illustration name="BrokenConnection" component={BrokenConnection} isNew />
       <Illustration name="PhoneError" component={PhoneError} isNew />
@@ -26,7 +27,7 @@ interface IllustrationsProps {
 
 const Illustration = ({ name, component: IconComponent, isNew = false }: IllustrationsProps) => (
   <AlignedText>
-    <IconComponent size={getSpacing(20)} />
+    <IconComponent />
     <Text style={{ color: isNew ? ColorsEnum.BLACK : ColorsEnum.GREY_DARK }}>
       {` - ${name} ${isNew ? '(new)' : ''}`}
     </Text>

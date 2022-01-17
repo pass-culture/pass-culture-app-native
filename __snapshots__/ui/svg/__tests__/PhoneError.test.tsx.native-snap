@@ -3,11 +3,11 @@
 exports[`PhoneError should render component correctly 1`] = `
 <RNSVGSvgView
   align="xMidYMid"
-  bbHeight={156}
-  bbWidth={200}
+  bbHeight={109.2}
+  bbWidth={140}
   fill="none"
   focusable={false}
-  height={156}
+  height={109.2}
   meetOrSlice={0}
   minX={0}
   minY={0}
@@ -19,14 +19,14 @@ exports[`PhoneError should render component correctly 1`] = `
       },
       Object {
         "flex": 0,
-        "height": 156,
-        "width": 200,
+        "height": 109,
+        "width": 140,
       },
     ]
   }
   vbHeight={156}
   vbWidth={200}
-  width={200}
+  width={140}
 >
   <RNSVGGroup
     fill={null}
@@ -47,7 +47,7 @@ exports[`PhoneError should render component correctly 1`] = `
           "strokeLinejoin",
         ]
       }
-      stroke={4294967295}
+      stroke={4279571733}
       strokeDasharray={
         Array [
           "6",
@@ -68,7 +68,7 @@ exports[`PhoneError should render component correctly 1`] = `
           "strokeLinecap",
         ]
       }
-      stroke={4294967295}
+      stroke={4279571733}
       strokeDasharray={
         Array [
           "6",
@@ -87,7 +87,7 @@ exports[`PhoneError should render component correctly 1`] = `
           "strokeLinecap",
         ]
       }
-      stroke={4294967295}
+      stroke={4279571733}
       strokeLinecap={1}
       strokeWidth={4}
     />
@@ -100,14 +100,14 @@ exports[`PhoneError should render component correctly 1`] = `
           "strokeLinecap",
         ]
       }
-      stroke={4294967295}
+      stroke={4279571733}
       strokeLinecap={1}
       strokeWidth={4.6}
     />
     <RNSVGCircle
       cx={139.125}
       cy={29.1463}
-      fill={4294967295}
+      fill={4279571733}
       matrix={
         Array [
           0.9879868527780424,

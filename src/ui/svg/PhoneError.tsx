@@ -2,11 +2,11 @@ import * as React from 'react'
 import Svg, { Path, Circle } from 'react-native-svg'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum, ILLUSTRATION_ICON_SIZE } from 'ui/theme'
 
 export const PhoneError: React.FunctionComponent<IconInterface> = ({
-  size = 200,
-  color = ColorsEnum.WHITE,
+  size = ILLUSTRATION_ICON_SIZE,
+  color = ColorsEnum.BLACK,
   testID,
 }) => {
   const height = typeof size === 'string' ? size : (size * 156) / 200
