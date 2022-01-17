@@ -19,6 +19,8 @@ export const IdentityCheckEduConnectForm = () => {
   const [error, setError] = useState<EduConnectError | null>(null)
 
   const openEduConnect = useCallback(() => {
+    const windowReference = globalThis.window.open()
+
     async function setWebView() {
       try {
         const { getAccessToken, getLoginUrl } = eduConnectClient
@@ -32,8 +34,8 @@ export const IdentityCheckEduConnectForm = () => {
         })
         if (status === 204) {
           const finalURL = headers.get('educonnect-redirect')
-          if (finalURL) {
-            globalThis.window.open(finalURL, '_blank')
+          if (finalURL && windowReference) {
+            windowReference.location = finalURL
             return
           }
           setError(new EduConnectError(EduConnectErrorMessageEnum.GenericError))
