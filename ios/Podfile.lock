@@ -1,7 +1,7 @@
 PODS:
-  - AppsFlyerFramework (6.4.0):
-    - AppsFlyerFramework/Main (= 6.4.0)
-  - AppsFlyerFramework/Main (6.4.0)
+  - AppsFlyerFramework (6.4.4):
+    - AppsFlyerFramework/Main (= 6.4.4)
+  - AppsFlyerFramework/Main (6.4.4)
   - Base64 (1.1.2)
   - Batch (1.18.0)
   - BatchFirebaseDispatcher (2.0.0):
@@ -455,8 +455,8 @@ PODS:
   - React-jsinspector (0.66.3)
   - React-logger (0.66.3):
     - glog
-  - react-native-appsflyer (6.4.0):
-    - AppsFlyerFramework (= 6.4.0)
+  - react-native-appsflyer (6.4.40):
+    - AppsFlyerFramework (= 6.4.4)
     - React
   - react-native-config (1.4.5):
     - react-native-config/App (= 1.4.5)
@@ -940,7 +940,7 @@ CHECKOUT OPTIONS:
     :tag: 8.8.0
 
 SPEC CHECKSUMS:
-  AppsFlyerFramework: 9c37252d3edce38257afc065ad48a48c0f004000
+  AppsFlyerFramework: 6ea252ecb04cf443550576922cddb95b35c958ed
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   Batch: 6a98a347ee208f12954fedb1ac442d4a8fc4fea2
   BatchFirebaseDispatcher: 512b3998e96d8ab2926747f4425bb63168dd1a84
@@ -957,7 +957,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 98b29e3828f0a53651c363937a7f7d92a19f1ba2
   FirebaseCoreDiagnostics: 56fb7216d87e0e6ec2feddefa9d8a392fe8b2c18
   FirebaseDynamicLinks: cf76a46274569da2d4491548a39ef35f3c1a992d
-  FirebaseFirestore: d09c620ac1fe1570cb1e909f6f165d6b55bc4ee0
+  FirebaseFirestore: 7103ab89eff01c90ced62a65dc071e010eeec4a7
   FirebaseInstallations: 830327b45345ffc859eaa9c17bcd5ae893fd5425
   FirebasePerformance: 0c01a7a496657d7cea86d40c0b1725259d164c6c
   FirebaseRemoteConfig: f6365883d7950d784ee97bcdbbf1e442d4fa6119
@@ -1000,7 +1000,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 433a691aee158533a6a6ee9c86cb4a1684fa2853
   React-jsinspector: d9c8eb0b53f0da206fed56612b289fec84991157
   React-logger: e522e76fa3e9ec3e7d7115b49485cc065cf4ae06
-  react-native-appsflyer: 2ee2d2afdffbaa7cb67a87a1d576e09161c90c56
+  react-native-appsflyer: 530a07183bedd33e47c76ba2f5592d7b74caff1c
   react-native-config: 5e2fe7217716b5472ed7901477620b1370335d67
   react-native-flipper: 33bba1cad647f4d56403012993f201e10518b78c
   react-native-geolocation-service: 4030de78cdeb93ebef1fdc1971668bea6c0bc59b
