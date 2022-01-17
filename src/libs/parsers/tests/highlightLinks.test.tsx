@@ -124,6 +124,21 @@ describe('highlightLinks', () => {
 
           expect(parsedDescription).toEqual([description])
         })
+
+        it('can have one URL per line', () => {
+          const description = 'www.penofchaos.com/warham/donjon.htm\nperdu.com'
+
+          const parsedDescription = highlightLinks(description)
+
+          expect(parsedDescription).toEqual([
+            <ExternalLink
+              key="external-link-0"
+              url="http://www.penofchaos.com/warham/donjon.htm"
+            />,
+            '\n',
+            <ExternalLink key="external-link-2" url="http://perdu.com" />,
+          ])
+        })
       })
 
       describe('with protocol', () => {
