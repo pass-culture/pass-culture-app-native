@@ -13907,10 +13907,10 @@ react-native-animatable@1.3.3, react-native-animatable@^1.3.3:
   dependencies:
     prop-types "^15.7.2"
 
-react-native-appsflyer@^6.2.42:
-  version "6.4.0"
-  resolved "https://registry.yarnpkg.com/react-native-appsflyer/-/react-native-appsflyer-6.4.0.tgz#8003e02295e8853a1b8367af803948a66553c2bf"
-  integrity sha512-3wOrHGoerhIWp9cgHoKFvBefFzh2K0yTHE0ejPPKJpg8wclWncfkeK3HrZW5H/zqgNUwwfYsdieEXKxxs/NQBA==
+react-native-appsflyer@^6.4.40:
+  version "6.4.40"
+  resolved "https://registry.yarnpkg.com/react-native-appsflyer/-/react-native-appsflyer-6.4.40.tgz#76ef0bacf0cc09b6a6289079cdd745f27ecc234a"
+  integrity sha512-5sz/16IFMATlTzLSy1r06mketTCQfyLgBryb7/0aq54dYYM+fDrP/HegldvEljF5TP/ErWD+fWnqADchJKG4ZA==
 
 react-native-calendars@^1.1266.0:
   version "1.1271.0"
