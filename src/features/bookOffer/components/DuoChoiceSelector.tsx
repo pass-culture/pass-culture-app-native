@@ -36,7 +36,7 @@ export const DuoChoiceSelector: React.FC = () => {
   }
 
   return (
-    <DuoChoiceContainer>
+    <DuoChoiceContainer testID="DuoChoiceSelector">
       <DuoChoice {...getChoiceInfosForQuantity(1)} testID={`DuoChoice1`} />
       {!!isDuo && <DuoChoice {...getChoiceInfosForQuantity(2)} testID={`DuoChoice2`} />}
     </DuoChoiceContainer>

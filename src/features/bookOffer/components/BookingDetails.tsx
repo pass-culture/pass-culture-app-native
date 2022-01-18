@@ -6,6 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { isApiError } from 'api/apiHelpers'
 import { OfferStockResponse } from 'api/gen'
+import { DuoChoiceSelector } from 'features/bookOffer/components/DuoChoiceSelector'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
@@ -118,6 +119,17 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
       <CancellationDetails />
 
       <Spacer.Column numberOfSpaces={6} />
+
+      {!!offer?.isDuo && (
+        <React.Fragment>
+          <Separator />
+          <Spacer.Column numberOfSpaces={6} />
+
+          <DuoChoiceSelector />
+
+          <Spacer.Column numberOfSpaces={6} />
+        </React.Fragment>
+      )}
 
       <ButtonPrimary
         disabled={!isStockBookable}

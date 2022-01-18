@@ -242,6 +242,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
         },
       ]
     }
+    testID="DuoChoiceSelector"
   >
     <View
       accessibilityState={
