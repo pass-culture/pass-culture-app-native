@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
+import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { HappyFaceDeprecated } from 'ui/svg/icons/HappyFace_deprecated'
 import { SadFace } from 'ui/svg/icons/SadFace'
@@ -18,6 +19,7 @@ export const Illustrations: FunctionComponent = () => {
       <Text>{'Illustration icons should have a standard size of 140'}</Text>
       <Illustration name="BicolorPhonePending" component={BicolorPhonePending} isNew />
       <Illustration name="BrokenConnection" component={BrokenConnection} isNew />
+      <Illustration name="Error" component={ErrorIllustration} isNew />
       <Illustration name="HappyFaceDeprecated" component={HappyFaceDeprecated} />
       <Illustration name="HappyFace" component={HappyFace} isNew />
       <Illustration name="PhoneError" component={PhoneError} isNew />
