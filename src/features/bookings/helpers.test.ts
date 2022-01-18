@@ -210,23 +210,45 @@ describe('getBookingProperties', () => {
     })
   })
 
-  it('when duo', () => {
-    const booking = {
-      stock: { offer: { isDigital: true, isPermanent: true } },
-      quantity: 2,
-    } as Booking
+  describe('when duo', () => {
+    it('with an event', () => {
+      const booking = {
+        stock: { offer: { isDigital: true, isPermanent: true } },
+        quantity: 2,
+      } as Booking
 
-    const isEvent = true
+      const isEvent = true
 
-    const bookingProperties = getBookingProperties(booking, isEvent)
+      const bookingProperties = getBookingProperties(booking, isEvent)
 
-    expect(bookingProperties).toEqual({
-      isDuo: true,
-      isEvent: true,
-      isPhysical: false,
-      isDigital: true,
-      isPermanent: true,
-      hasActivationCode: false,
+      expect(bookingProperties).toEqual({
+        isDuo: true,
+        isEvent: true,
+        isPhysical: false,
+        isDigital: true,
+        isPermanent: true,
+        hasActivationCode: false,
+      })
+    })
+
+    it('with an non-event', () => {
+      const booking = {
+        stock: { offer: { isDigital: true, isPermanent: true } },
+        quantity: 2,
+      } as Booking
+
+      const isEvent = false
+
+      const bookingProperties = getBookingProperties(booking, isEvent)
+
+      expect(bookingProperties).toEqual({
+        isDuo: true,
+        isEvent: false,
+        isPhysical: true,
+        isDigital: true,
+        isPermanent: true,
+        hasActivationCode: false,
+      })
     })
   })
 })

@@ -28,7 +28,7 @@ export function getBookingProperties(booking: Booking, isEvent: boolean): Bookin
   const { offer } = stock
 
   return {
-    isDuo: isEvent && isDuoBooking(booking),
+    isDuo: isDuoBooking(booking),
     isEvent,
     isPhysical: !isEvent,
     isDigital: offer.isDigital,
