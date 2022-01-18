@@ -7,6 +7,7 @@ import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { HappyFaceDeprecated } from 'ui/svg/icons/HappyFace_deprecated'
+import { NoBookings } from 'ui/svg/icons/NoBookings'
 import { NoBookingsDeprecated } from 'ui/svg/icons/NoBookings_deprecated'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { SadFaceDeprecated } from 'ui/svg/icons/SadFace_deprecated'
@@ -24,6 +25,7 @@ export const Illustrations: FunctionComponent = () => {
       <Illustration name="HappyFaceDeprecated" component={HappyFaceDeprecated} />
       <Illustration name="HappyFace" component={HappyFace} isNew />
       <Illustration name="NoBookingsDeprecated" component={NoBookingsDeprecated} />
+      <Illustration name="NoBookings" component={NoBookings} isNew />
       <Illustration name="PhoneError" component={PhoneError} isNew />
       <Illustration name="SadFaceDeprecated" component={SadFaceDeprecated} />
       <Illustration name="SadFace" component={SadFace} isNew />
@@ -41,7 +43,7 @@ const Illustration = ({ name, component: IconComponent, isNew = false }: Illustr
   <AlignedText>
     <IconComponent />
     <Text style={{ color: isNew ? ColorsEnum.BLACK : ColorsEnum.GREY_DARK }}>
-      {` - ${name} ${isNew ? '(new)' : ''}`}
+      {` - ${name} ${isNew ? '' : '(deprecated)'}`}
     </Text>
   </AlignedText>
 )
