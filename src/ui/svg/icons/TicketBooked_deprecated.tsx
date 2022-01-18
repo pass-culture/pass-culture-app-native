@@ -5,7 +5,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { RectangleIconInterface } from './types'
 
-export const TicketBooked = ({
+export const TicketBookedDeprecated = ({
   color = ColorsEnum.BLACK,
   width = 232,
   height = 146,

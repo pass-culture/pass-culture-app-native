@@ -13,6 +13,7 @@ import { NoBookings } from 'ui/svg/icons/NoBookings'
 import { NoBookingsDeprecated } from 'ui/svg/icons/NoBookings_deprecated'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { SadFaceDeprecated } from 'ui/svg/icons/SadFace_deprecated'
+import { TicketBookedDeprecated } from 'ui/svg/icons/TicketBooked_deprecated'
 import { IconInterface } from 'ui/svg/icons/types'
 import { PhoneError } from 'ui/svg/PhoneError'
 import { ColorsEnum } from 'ui/theme'
@@ -33,6 +34,7 @@ export const Illustrations: FunctionComponent = () => {
       <Illustration name="PhoneError" component={PhoneError} isNew />
       <Illustration name="SadFaceDeprecated" component={SadFaceDeprecated} />
       <Illustration name="SadFace" component={SadFace} isNew />
+      <Illustration name="TicketBookedDeprecated" component={TicketBookedDeprecated} />
     </React.Fragment>
   )
 }
