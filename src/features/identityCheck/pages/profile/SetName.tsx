@@ -12,6 +12,7 @@ import { isNameValid } from 'ui/components/inputs/nameCheck'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer } from 'ui/theme'
+import { Form } from 'ui/web/form/Form'
 
 export const SetName = () => {
   const { dispatch, profile } = useIdentityCheckContext()
@@ -41,7 +42,7 @@ export const SetName = () => {
         </React.Fragment>
       }
       scrollChildren={
-        <React.Fragment>
+        <Form>
           <TextInput
             label={t`Prénom`}
             value={firstName}
@@ -70,7 +71,7 @@ export const SetName = () => {
             messageId={t`Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux.`}
             numberOfSpacesTop={2}
           />
-        </React.Fragment>
+        </Form>
       }
       fixedBottomChildren={
         <ButtonPrimary title={t`Continuer`} onPress={submitName} disabled={disabled} />

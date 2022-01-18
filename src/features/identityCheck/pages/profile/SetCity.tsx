@@ -21,6 +21,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { Spinner } from 'ui/components/Spinner'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer } from 'ui/theme'
+import { Form } from 'ui/web/form/Form'
 
 const keyExtractor = ({ name, code, postalCode }: SuggestedCity) => `${name}-${code}-${postalCode}`
 
@@ -84,7 +85,7 @@ export const SetCity = () => {
     <PageWithHeader
       title={t`Profil`}
       fixedTopChildren={
-        <React.Fragment>
+        <Form>
           <CenteredTitle title={t`Dans quelle ville résides-tu\u00a0?`} />
           <Spacer.Column numberOfSpaces={5} />
           <SearchInput
@@ -100,7 +101,7 @@ export const SetCity = () => {
           />
           {!!errorMessage && <InputError messageId={errorMessage} numberOfSpacesTop={2} visible />}
           <Spacer.Column numberOfSpaces={2} />
-        </React.Fragment>
+        </Form>
       }
       scrollChildren={
         <React.Fragment>

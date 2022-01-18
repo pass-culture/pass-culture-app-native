@@ -21,6 +21,7 @@ import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Close } from 'ui/svg/icons/Close'
 import { Spacer } from 'ui/theme'
+import { Form } from 'ui/web/form/Form'
 
 export const ReinitializePassword = () => {
   const route = useRoute<UseRouteType<'ReinitializePassword'>>()
@@ -80,38 +81,40 @@ export const ReinitializePassword = () => {
       />
       <BottomCardContentContainer>
         <Spacer.Column numberOfSpaces={6} />
-        <PasswordInput
-          label={t`Nouveau mot de passe`}
-          value={password}
-          autoFocus
-          onChangeText={setPassword}
-          placeholder={t`Ton mot de passe`}
-          onSubmitEditing={submitPassword}
-          isRequiredField
-        />
-        <PasswordSecurityRules password={password} />
-        <Spacer.Column numberOfSpaces={6} />
-        <PasswordInput
-          label={t`Confirmer le mot de passe`}
-          value={confirmedPassword}
-          onChangeText={setConfirmedPassword}
-          placeholder={t`Confirmer le mot de passe`}
-          onSubmitEditing={submitPassword}
-          isRequiredField
-        />
-        <Spacer.Column numberOfSpaces={2} />
-        <InputError
-          visible={displayNotMatchingError}
-          messageId={t`Les mots de passe ne concordent pas`}
-          numberOfSpacesTop={0}
-        />
-        <Spacer.Column numberOfSpaces={6} />
-        <ButtonPrimary
-          title={t`Continuer`}
-          onPress={submitPassword}
-          disabled={!allowSubmission || isLoading}
-          isLoading={isLoading}
-        />
+        <Form>
+          <PasswordInput
+            label={t`Nouveau mot de passe`}
+            value={password}
+            autoFocus
+            onChangeText={setPassword}
+            placeholder={t`Ton mot de passe`}
+            onSubmitEditing={submitPassword}
+            isRequiredField
+          />
+          <PasswordSecurityRules password={password} />
+          <Spacer.Column numberOfSpaces={6} />
+          <PasswordInput
+            label={t`Confirmer le mot de passe`}
+            value={confirmedPassword}
+            onChangeText={setConfirmedPassword}
+            placeholder={t`Confirmer le mot de passe`}
+            onSubmitEditing={submitPassword}
+            isRequiredField
+          />
+          <Spacer.Column numberOfSpaces={2} />
+          <InputError
+            visible={displayNotMatchingError}
+            messageId={t`Les mots de passe ne concordent pas`}
+            numberOfSpacesTop={0}
+          />
+          <Spacer.Column numberOfSpaces={6} />
+          <ButtonPrimary
+            title={t`Continuer`}
+            onPress={submitPassword}
+            disabled={!allowSubmission || isLoading}
+            isLoading={isLoading}
+          />
+        </Form>
       </BottomCardContentContainer>
     </BottomContentPage>
   )

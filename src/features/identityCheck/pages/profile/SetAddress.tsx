@@ -20,6 +20,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { Spinner } from 'ui/components/Spinner'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer } from 'ui/theme'
+import { Form } from 'ui/web/form/Form'
 
 const snackbarMessage = t`Nous avons eu un problème pour trouver l'adresse associée à ton code postal. Réessaie plus tard.`
 const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.fr/search'
@@ -96,7 +97,7 @@ export const SetAddress = () => {
     <PageWithHeader
       title={t`Profil`}
       fixedTopChildren={
-        <React.Fragment>
+        <Form>
           <CenteredTitle title={t`Quelle est ton adresse\u00a0?`} />
           <Spacer.Column numberOfSpaces={5} />
           <SearchInput
@@ -110,7 +111,7 @@ export const SetAddress = () => {
             onPressRightIcon={resetSearch}
           />
           <Spacer.Column numberOfSpaces={2} />
-        </React.Fragment>
+        </Form>
       }
       scrollChildren={
         <React.Fragment>
