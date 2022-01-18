@@ -245,6 +245,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                   }
                 />
                 <View
+                  paddingBottom={40}
                   style={
                     Array [
                       Object {

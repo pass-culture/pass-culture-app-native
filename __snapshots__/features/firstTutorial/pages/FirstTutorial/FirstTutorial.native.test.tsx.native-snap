@@ -318,6 +318,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                   }
                 />
                 <View
+                  paddingBottom={40}
                   style={
                     Array [
                       Object {
@@ -532,6 +533,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                   }
                 />
                 <View
+                  paddingBottom={40}
                   style={
                     Array [
                       Object {
@@ -701,6 +703,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                   }
                 />
                 <View
+                  paddingBottom={40}
                   style={
                     Array [
                       Object {
@@ -870,6 +873,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                   }
                 />
                 <View
+                  paddingBottom={40}
                   style={
                     Array [
                       Object {

@@ -129,6 +129,7 @@ exports[`FirstCard should render first card 1`] = `
     }
   />
   <View
+    paddingBottom={40}
     style={
       Array [
         Object {
