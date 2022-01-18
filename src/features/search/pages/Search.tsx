@@ -1,6 +1,5 @@
 import { useRoute } from '@react-navigation/native'
 import React, { useEffect, useRef, useState } from 'react'
-import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { SearchHeader, SearchLandingPage, SearchResults } from 'features/search/components'
@@ -54,13 +53,9 @@ export function Search() {
   }, [params])
 
   return (
-    <Container>
-      <Form>
-        <SearchHeader />
-        {showResults ? <SearchResults /> : <SearchLandingPage />}
-      </Form>
-    </Container>
+    <Form>
+      <SearchHeader />
+      {showResults ? <SearchResults /> : <SearchLandingPage />}
+    </Form>
   )
 }
-
-const Container = styled.View({ flex: 1 })

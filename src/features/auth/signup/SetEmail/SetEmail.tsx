@@ -10,6 +10,7 @@ import { EmailInput } from 'ui/components/inputs/EmailInput'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { InputError } from 'ui/components/inputs/InputError'
 import { padding, Spacer, Typo } from 'ui/theme'
+import { Form } from 'ui/web/form/Form'
 
 import { PreValidationSignupStepProps } from '../types'
 
@@ -38,7 +39,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
   }
 
   return (
-    <React.Fragment>
+    <Form>
       <EmailInput
         label={t`Adresse e-mail`}
         email={email}
@@ -69,7 +70,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
         disabled={shouldDisableValidateButton}
       />
       <Spacer.Column numberOfSpaces={5} />
-    </React.Fragment>
+    </Form>
   )
 }
 

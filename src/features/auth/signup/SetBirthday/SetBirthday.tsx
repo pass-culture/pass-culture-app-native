@@ -101,7 +101,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
   }, [state])
 
   return (
-    <React.Fragment>
+    <Form>
       <InnerContainer>
         <ButtonTertiary
           icon={InfoPlain}
@@ -134,7 +134,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
         <Spacer.Column numberOfSpaces={5} />
       </InnerContainer>
       <BirthdayInformationModal visible={visible} hideModal={hideModal} />
-    </React.Fragment>
+    </Form>
   )
 }
 

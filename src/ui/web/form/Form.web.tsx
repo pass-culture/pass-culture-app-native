@@ -7,9 +7,10 @@ type Props = {
 
 export function Form(props: Props) {
   // @ts-ignore TODO: fix when https://github.com/necolas/react-native-web/issues/2189#issuecomment-1008886405 is resolved
-  return <FormFlex accessibilityRole="form">{props.children}</FormFlex>
+  return <Container accessibilityRole="form">{props.children}</Container>
 }
 
-const FormFlex = styled.View({
-  flex: 1,
+const Container = styled.View({
+  width: '100%',
+  height: '100%',
 })
