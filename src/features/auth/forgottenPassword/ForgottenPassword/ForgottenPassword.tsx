@@ -21,6 +21,7 @@ import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Form } from 'ui/web/form/Form'
 
 export const ForgottenPassword: FunctionComponent = () => {
   const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
@@ -136,26 +137,28 @@ export const ForgottenPassword: FunctionComponent = () => {
           </Typo.Body>
         </CenteredText>
         <Spacer.Column numberOfSpaces={4} />
-        <EmailInput
-          label={t`Adresse e-mail`}
-          email={email}
-          onEmailChange={onEmailChange}
-          autoFocus={true}
-        />
-        {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={2} />}
-        <Spacer.Column numberOfSpaces={6} />
-        <ButtonPrimary
-          title={t`Valider`}
-          // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
-          // Cf. backend logic for token validation
-          onPress={
-            settings?.isRecaptchaEnabled
-              ? openReCaptchaChallenge
-              : () => requestPasswordReset('dummyToken')
-          }
-          isLoading={isDoingReCaptchaChallenge || isFetching || areSettingsLoading}
-          disabled={shouldDisableValidateButton}
-        />
+        <Form>
+          <EmailInput
+            label={t`Adresse e-mail`}
+            email={email}
+            onEmailChange={onEmailChange}
+            autoFocus={true}
+          />
+          {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={2} />}
+          <Spacer.Column numberOfSpaces={6} />
+          <ButtonPrimary
+            title={t`Valider`}
+            // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
+            // Cf. backend logic for token validation
+            onPress={
+              settings?.isRecaptchaEnabled
+                ? openReCaptchaChallenge
+                : () => requestPasswordReset('dummyToken')
+            }
+            isLoading={isDoingReCaptchaChallenge || isFetching || areSettingsLoading}
+            disabled={shouldDisableValidateButton}
+          />
+        </Form>
       </ModalContent>
     </BottomContentPage>
   )

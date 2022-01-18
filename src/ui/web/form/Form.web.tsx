@@ -1,6 +1,8 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components/native'
 
+import { getSpacing } from 'ui/theme'
+
 type Props = {
   children: ReactNode
 }
@@ -13,4 +15,5 @@ export function Form(props: Props) {
 const Container = styled.View({
   width: '100%',
   height: '100%',
+  maxWidth: getSpacing(125),
 })

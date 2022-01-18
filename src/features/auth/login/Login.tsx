@@ -27,6 +27,7 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Key } from 'ui/svg/icons/Key'
 import { getSpacing, Spacer } from 'ui/theme'
+import { Form } from 'ui/web/form/Form'
 
 let INITIAL_IDENTIFIER = ''
 let INITIAL_PASSWORD = ''
@@ -149,49 +150,51 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         onLeftIconPress={goBack}
         {...rightIconProps}
       />
-      {!!errorMessage && (
-        <InputError visible messageId={errorMessage} numberOfSpacesTop={5} centered />
-      )}
-      <Spacer.Column numberOfSpaces={7} />
-      <EmailInput
-        label={t`Adresse e-mail`}
-        email={email}
-        onEmailChange={onEmailChange}
-        isError={hasEmailError || !!errorMessage}
-        isRequiredField
-      />
-      <InputError
-        visible={hasEmailError}
-        messageId={t`L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr`}
-        numberOfSpacesTop={2}
-      />
-      <Spacer.Column numberOfSpaces={6} />
-      <PasswordInput
-        label={t`Mot de passe`}
-        value={password}
-        onChangeText={setPassword}
-        placeholder={t`Ton mot de passe`}
-        isError={!!errorMessage}
-        textContentType="password"
-        onSubmitEditing={onSubmit}
-        isRequiredField
-      />
-      <Spacer.Column numberOfSpaces={7} />
-      <ForgottenPasswordContainer>
-        <ButtonTertiaryBlack
-          title={t`Mot de passe oublié\u00a0?`}
-          onPress={onForgottenPasswordClick}
-          icon={Key}
-          inline
+      <Form>
+        {!!errorMessage && (
+          <InputError visible messageId={errorMessage} numberOfSpacesTop={5} centered />
+        )}
+        <Spacer.Column numberOfSpaces={7} />
+        <EmailInput
+          label={t`Adresse e-mail`}
+          email={email}
+          onEmailChange={onEmailChange}
+          isError={hasEmailError || !!errorMessage}
+          isRequiredField
         />
-      </ForgottenPasswordContainer>
+        <InputError
+          visible={hasEmailError}
+          messageId={t`L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr`}
+          numberOfSpacesTop={2}
+        />
+        <Spacer.Column numberOfSpaces={6} />
+        <PasswordInput
+          label={t`Mot de passe`}
+          value={password}
+          onChangeText={setPassword}
+          placeholder={t`Ton mot de passe`}
+          isError={!!errorMessage}
+          textContentType="password"
+          onSubmitEditing={onSubmit}
+          isRequiredField
+        />
+        <Spacer.Column numberOfSpaces={7} />
+        <ForgottenPasswordContainer>
+          <ButtonTertiaryBlack
+            title={t`Mot de passe oublié\u00a0?`}
+            onPress={onForgottenPasswordClick}
+            icon={Key}
+            inline
+          />
+        </ForgottenPasswordContainer>
 
-      <Spacer.Column numberOfSpaces={8} />
-      <ButtonPrimary
-        title={t`Se connecter`}
-        onPress={onSubmit}
-        disabled={shouldDisableLoginButton}
-      />
+        <Spacer.Column numberOfSpaces={8} />
+        <ButtonPrimary
+          title={t`Se connecter`}
+          onPress={onSubmit}
+          disabled={shouldDisableLoginButton}
+        />
+      </Form>
     </BottomContentPage>
   )
 })

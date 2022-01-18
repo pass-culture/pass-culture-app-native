@@ -19,6 +19,7 @@ import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEv
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
+import { Form } from 'ui/web/form/Form'
 
 export function ChangePassword() {
   const theme = useTheme()
@@ -92,51 +93,57 @@ export function ChangePassword() {
         contentContainerStyle={getScrollViewContentContainerStyle(keyboardHeight)}
         keyboardShouldPersistTaps="handled">
         <Spacer.Column numberOfSpaces={20} />
-        <PasswordInput
-          label={t`Mot de passe actuel`}
-          value={currentPassword}
-          autoFocus={true}
-          onChangeText={setCurrentPassword}
-          placeholder={t`Ton mot de passe actuel`}
-          isRequiredField
-        />
-        <InputError
-          visible={hasError}
-          messageId={t`Mot de passe incorrect`}
-          numberOfSpacesTop={0}
-        />
-        <Spacer.Column numberOfSpaces={7} />
-        <PasswordInput
-          label={t`Nouveau mot de passe`}
-          value={newPassword}
-          onChangeText={updateNewPassword}
-          placeholder={t`Ton nouveau mot de passe`}
-          isRequiredField
-        />
-        {!!(shouldDisplayPasswordRules && newPassword.length > 0) && (
-          <PasswordSecurityRules password={newPassword} />
-        )}
-        <Spacer.Column numberOfSpaces={5} />
-        <PasswordInput
-          label={t`Confirmer le mot de passe`}
-          value={confirmedPassword}
-          onChangeText={setConfirmedPassword}
-          placeholder={t`Confirmer le mot de passe`}
-          onFocus={() => {
-            setTimeout(() => scrollRef?.current?.scrollToEnd({ animated: true }), 60)
-          }}
-          isRequiredField
-        />
-        <InputError
-          visible={displayNotMatchingError}
-          messageId={t`Les mots de passe ne concordent pas`}
-          numberOfSpacesTop={2}
-        />
-        {theme.isDesktopViewport ? <Spacer.Column numberOfSpaces={10} /> : <Spacer.Flex flex={1} />}
-        {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
-        <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
-          <ButtonPrimary title={t`Enregistrer`} onPress={submitPassword} disabled={disabled} />
-        </ButtonContainer>
+        <Form>
+          <PasswordInput
+            label={t`Mot de passe actuel`}
+            value={currentPassword}
+            autoFocus={true}
+            onChangeText={setCurrentPassword}
+            placeholder={t`Ton mot de passe actuel`}
+            isRequiredField
+          />
+          <InputError
+            visible={hasError}
+            messageId={t`Mot de passe incorrect`}
+            numberOfSpacesTop={0}
+          />
+          <Spacer.Column numberOfSpaces={7} />
+          <PasswordInput
+            label={t`Nouveau mot de passe`}
+            value={newPassword}
+            onChangeText={updateNewPassword}
+            placeholder={t`Ton nouveau mot de passe`}
+            isRequiredField
+          />
+          {!!(shouldDisplayPasswordRules && newPassword.length > 0) && (
+            <PasswordSecurityRules password={newPassword} />
+          )}
+          <Spacer.Column numberOfSpaces={5} />
+          <PasswordInput
+            label={t`Confirmer le mot de passe`}
+            value={confirmedPassword}
+            onChangeText={setConfirmedPassword}
+            placeholder={t`Confirmer le mot de passe`}
+            onFocus={() => {
+              setTimeout(() => scrollRef?.current?.scrollToEnd({ animated: true }), 60)
+            }}
+            isRequiredField
+          />
+          <InputError
+            visible={displayNotMatchingError}
+            messageId={t`Les mots de passe ne concordent pas`}
+            numberOfSpacesTop={2}
+          />
+          {theme.isDesktopViewport ? (
+            <Spacer.Column numberOfSpaces={10} />
+          ) : (
+            <Spacer.Flex flex={1} />
+          )}
+          {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
+          <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
+            <ButtonPrimary title={t`Enregistrer`} onPress={submitPassword} disabled={disabled} />
+          </ButtonContainer>
+        </Form>
         <Spacer.Column numberOfSpaces={6} />
       </StyledScrollView>
 

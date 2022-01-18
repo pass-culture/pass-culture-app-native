@@ -1,11 +1,11 @@
 import { useRoute } from '@react-navigation/native'
 import React, { useEffect, useRef, useState } from 'react'
+import styled from 'styled-components/native'
 
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { SearchHeader, SearchLandingPage, SearchResults } from 'features/search/components'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useKeyboardAdjust } from 'ui/components/keyboard/useKeyboardAdjust'
-import { Form } from 'ui/web/form/Form'
 
 import { useSearchResults } from './useSearchResults'
 
@@ -53,9 +53,12 @@ export function Search() {
   }, [params])
 
   return (
-    <Form>
+    // TODO (LucasBeneston) Add flex <Form/>
+    <Container>
       <SearchHeader />
       {showResults ? <SearchResults /> : <SearchLandingPage />}
-    </Form>
+    </Container>
   )
 }
+
+const Container = styled.View({ flex: 1 })
