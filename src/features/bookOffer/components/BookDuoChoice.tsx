@@ -36,7 +36,7 @@ export const BookDuoChoice: React.FC = () => {
     }
   }
 
-  const changeQuantity = () => {
+  const updateBookingStepToDuo = () => {
     dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
   }
 
@@ -50,7 +50,7 @@ export const BookDuoChoice: React.FC = () => {
           {!!isDuo && <DuoChoice {...getChoiceInfosForQuantity(2)} testID={`DuoChoice2`} />}
         </DuoChoiceContainer>
       ) : (
-        <TouchableOpacity onPress={changeQuantity}>
+        <TouchableOpacity onPress={updateBookingStepToDuo}>
           <Typo.ButtonText>
             {bookingState.quantity && bookingState.quantity === 1 ? t`Solo` : t`Duo`}
           </Typo.ButtonText>
