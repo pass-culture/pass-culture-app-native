@@ -3,7 +3,11 @@ import mockdate from 'mockdate'
 import { SettingsResponse } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
 import { Booking } from 'features/bookings/components/types'
-import { getBookingLabelForActivationCode, getBookingLabels } from 'features/bookings/helpers'
+import {
+  getBookingLabelForActivationCode,
+  getBookingLabels,
+  getBookingProperties,
+} from 'features/bookings/helpers'
 
 describe('getBookingLabelForActivationCode', () => {
   it('should display the date in the label', () => {
@@ -141,6 +145,88 @@ describe('getBookingLabels', () => {
       dateLabel: 'À activer avant le 15 mars 2021',
       locationLabel: '',
       withdrawLabel: '',
+    })
+  })
+})
+
+describe('getBookingProperties', () => {
+  it('when an event booking is provided', () => {
+    const booking = {
+      stock: { offer: { isDigital: true, isPermanent: true } },
+      activationCode: null,
+    } as Booking
+
+    const isEvent = true
+
+    const bookingProperties = getBookingProperties(booking, isEvent)
+
+    expect(bookingProperties).toEqual({
+      isDuo: false,
+      isEvent: true,
+      isPhysical: false,
+      isDigital: true,
+      isPermanent: true,
+      hasActivationCode: false,
+    })
+  })
+
+  it('when a physical booking is provided', () => {
+    const booking = {
+      stock: { offer: { isDigital: true, isPermanent: true } },
+      activationCode: null,
+    } as Booking
+
+    const isEvent = false
+
+    const bookingProperties = getBookingProperties(booking, isEvent)
+
+    expect(bookingProperties).toEqual({
+      isDuo: false,
+      isEvent: false,
+      isPhysical: true,
+      isDigital: true,
+      isPermanent: true,
+      hasActivationCode: false,
+    })
+  })
+
+  it('when a booking with activation code is provided', () => {
+    const booking = {
+      stock: { offer: { isDigital: true, isPermanent: true } },
+      activationCode: { code: 'toto' },
+    } as Booking
+
+    const isEvent = false
+
+    const bookingProperties = getBookingProperties(booking, isEvent)
+
+    expect(bookingProperties).toEqual({
+      isDuo: false,
+      isEvent: false,
+      isPhysical: true,
+      isDigital: true,
+      isPermanent: true,
+      hasActivationCode: true,
+    })
+  })
+
+  it('when duo', () => {
+    const booking = {
+      stock: { offer: { isDigital: true, isPermanent: true } },
+      quantity: 2,
+    } as Booking
+
+    const isEvent = true
+
+    const bookingProperties = getBookingProperties(booking, isEvent)
+
+    expect(bookingProperties).toEqual({
+      isDuo: true,
+      isEvent: true,
+      isPhysical: false,
+      isDigital: true,
+      isPermanent: true,
+      hasActivationCode: false,
     })
   })
 })
