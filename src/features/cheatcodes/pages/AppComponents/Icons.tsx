@@ -83,7 +83,6 @@ import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { Share } from 'ui/svg/icons/Share'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { Sun } from 'ui/svg/icons/Sun'
-import { TicketBooked } from 'ui/svg/icons/TicketBooked_deprecated'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
 import { Warning } from 'ui/svg/icons/Warning'
@@ -107,10 +106,6 @@ export const Icons: FunctionComponent = () => {
       <TertiaryAndSmallerIcons />
       <Spacer.Column numberOfSpaces={4} />
       <Text> Icônes à uniformiser (conversion en illustrations) </Text>
-      <AlignedText>
-        <TicketBooked width={STANDARD_ICON_SIZE} height={STANDARD_ICON_SIZE} />
-        <Text> - TicketBooked </Text>
-      </AlignedText>
       <AlignedText>
         <MaintenanceCone
           width={STANDARD_ICON_SIZE * 2}
