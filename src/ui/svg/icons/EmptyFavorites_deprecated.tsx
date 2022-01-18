@@ -5,7 +5,7 @@ import { ColorsEnum } from 'ui/theme'
 
 import { IconInterface } from './types'
 
-export const EmptyFavorites: React.FunctionComponent<IconInterface> = ({
+export const EmptyFavoritesDeprecated: React.FunctionComponent<IconInterface> = ({
   size = 124,
   color = ColorsEnum.GREY_MEDIUM,
   testID,
