@@ -12,7 +12,7 @@ import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { useModal } from 'ui/components/modals/useModal'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { HappyFace } from 'ui/svg/icons/HappyFace'
+import { HappyFaceDeprecated as HappyFace } from 'ui/svg/icons/HappyFace_deprecated'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Spacer, Typo } from 'ui/theme'
 

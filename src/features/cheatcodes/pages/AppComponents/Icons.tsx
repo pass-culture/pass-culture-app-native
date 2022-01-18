@@ -51,7 +51,6 @@ import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
-import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Info } from 'ui/svg/icons/Info'
 import { InfoFraud } from 'ui/svg/icons/InfoFraud'
@@ -299,7 +298,6 @@ const SecondaryAndBiggerIcons = () => {
       <Icon name="SignOut" component={SignOut} isNew />
       <Icon name="Share" component={Share} isNew />
       <Icon name="Sun" component={Sun} isNew />
-      <Icon name="HappyFace" component={HappyFace} />
       <Icon name="Warning" component={Warning} isNew />
       <Text>{'\n'}</Text>
     </React.Fragment>

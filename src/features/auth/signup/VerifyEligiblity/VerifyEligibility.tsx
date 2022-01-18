@@ -7,7 +7,7 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { HappyFace } from 'ui/svg/icons/HappyFace'
+import { HappyFaceDeprecated as HappyFace } from 'ui/svg/icons/HappyFace_deprecated'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { ColorsEnum, Typo } from 'ui/theme'
 
