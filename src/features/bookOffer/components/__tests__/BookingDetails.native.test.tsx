@@ -6,7 +6,7 @@ import waitForExpect from 'wait-for-expect'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { OfferStockResponse } from 'api/gen'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
-import { useBookingStock } from 'features/bookOffer/pages/BookingOfferWrapper'
+import { useBookingOffer, useBookingStock } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { BookingState, initialBookingState } from 'features/bookOffer/pages/reducer'
 import { notExpiredStock } from 'features/offer/services/useCtaWordingAndAction.testsFixtures'
 import { useIsUserUnderage } from 'features/profile/utils'
@@ -43,8 +43,10 @@ let mockBookingStock = {
 jest.mock('features/bookOffer/pages/BookingOfferWrapper', () => ({
   useBooking: jest.fn(() => mockBookingState),
   useBookingStock: jest.fn(() => mockBookingStock),
-  useBookingOffer: jest.fn(() => mockOffer),
+  useBookingOffer: jest.fn(),
 }))
+const mockUseBookingOffer = mocked(useBookingOffer)
+mockUseBookingOffer.mockReturnValue({ ...mockOffer, isDuo: false })
 
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
