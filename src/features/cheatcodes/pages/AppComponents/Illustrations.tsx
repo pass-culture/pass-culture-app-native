@@ -4,7 +4,8 @@ import styled from 'styled-components/native'
 
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
-import { SadFaceDeprecated as SadFace } from 'ui/svg/icons/SadFace_deprecated'
+import { SadFace } from 'ui/svg/icons/SadFace'
+import { SadFaceDeprecated } from 'ui/svg/icons/SadFace_deprecated'
 import { IconInterface } from 'ui/svg/icons/types'
 import { PhoneError } from 'ui/svg/PhoneError'
 import { ColorsEnum } from 'ui/theme'
@@ -16,6 +17,7 @@ export const Illustrations: FunctionComponent = () => {
       <Illustration name="BicolorPhonePending" component={BicolorPhonePending} isNew />
       <Illustration name="BrokenConnection" component={BrokenConnection} isNew />
       <Illustration name="PhoneError" component={PhoneError} isNew />
+      <Illustration name="SadFaceDeprecated" component={SadFaceDeprecated} />
       <Illustration name="SadFace" component={SadFace} />
     </React.Fragment>
   )
