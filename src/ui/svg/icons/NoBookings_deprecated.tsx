@@ -5,7 +5,7 @@ import { ColorsEnum, STANDARD_ICON_SIZE } from 'ui/theme'
 
 import { IconInterface } from './types'
 
-export function NoBookings({
+export function NoBookingsDeprecated({
   size = STANDARD_ICON_SIZE,
   color = ColorsEnum.BLACK,
   testID,

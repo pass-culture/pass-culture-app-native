@@ -7,6 +7,7 @@ import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { HappyFaceDeprecated } from 'ui/svg/icons/HappyFace_deprecated'
+import { NoBookingsDeprecated } from 'ui/svg/icons/NoBookings_deprecated'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { SadFaceDeprecated } from 'ui/svg/icons/SadFace_deprecated'
 import { IconInterface } from 'ui/svg/icons/types'
@@ -22,6 +23,7 @@ export const Illustrations: FunctionComponent = () => {
       <Illustration name="Error" component={ErrorIllustration} isNew />
       <Illustration name="HappyFaceDeprecated" component={HappyFaceDeprecated} />
       <Illustration name="HappyFace" component={HappyFace} isNew />
+      <Illustration name="NoBookingsDeprecated" component={NoBookingsDeprecated} />
       <Illustration name="PhoneError" component={PhoneError} isNew />
       <Illustration name="SadFaceDeprecated" component={SadFaceDeprecated} />
       <Illustration name="SadFace" component={SadFace} isNew />

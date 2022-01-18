@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { EndedBookingsSection } from 'features/bookings/pages/EndedBookingsSection'
 import { useNavigateToSearchResults } from 'features/search/utils/useNavigateToSearchResults'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { NoBookings } from 'ui/svg/icons/NoBookings'
+import { NoBookingsDeprecated as NoBookings } from 'ui/svg/icons/NoBookings_deprecated'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export function NoBookingsView() {

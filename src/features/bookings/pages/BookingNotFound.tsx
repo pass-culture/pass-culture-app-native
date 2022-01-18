@@ -10,7 +10,7 @@ import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { NoBookings } from 'ui/svg/icons/NoBookings'
+import { NoBookingsDeprecated as NoBookings } from 'ui/svg/icons/NoBookings_deprecated'
 import { ColorsEnum, Typo } from 'ui/theme'
 
 export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
