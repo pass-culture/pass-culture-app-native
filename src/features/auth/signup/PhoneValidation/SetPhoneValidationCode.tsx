@@ -39,6 +39,7 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { Form } from 'ui/web/form/Form'
 
 const CODE_INPUT_LENGTH = 6
 const AGENT_TYPE = Platform.select({
@@ -218,39 +219,40 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
         />
         <ModalContent>
           <Spacer.Column numberOfSpaces={6} />
-
-          <Paragraphe>
-            <Typo.Body>{validationCodeInformation}</Typo.Body>
-          </Paragraphe>
-          <Spacer.Column numberOfSpaces={6} />
-          <CodeInputContainer>
-            <CodeInput
-              onChangeText={(text, rawText) => {
-                onChangeValue(rawText ?? '')
-              }}
-              placeholder={codeInputPlaceholder}
-              placeholderTextColor={ColorsEnum.GREY_DARK}
-              mask={codeInputMask}
-              maxLength={codeInputPlaceholder.length}
-              keyboardType="number-pad"
-              onSubmitEditing={validateCode}
-              {...accessibilityAndTestId(t`Entrée du code de confirmation`)}
+          <Form>
+            <Paragraphe>
+              <Typo.Body>{validationCodeInformation}</Typo.Body>
+            </Paragraphe>
+            <Spacer.Column numberOfSpaces={6} />
+            <CodeInputContainer>
+              <CodeInput
+                onChangeText={(text, rawText) => {
+                  onChangeValue(rawText ?? '')
+                }}
+                placeholder={codeInputPlaceholder}
+                placeholderTextColor={ColorsEnum.GREY_DARK}
+                mask={codeInputMask}
+                maxLength={codeInputPlaceholder.length}
+                keyboardType="number-pad"
+                onSubmitEditing={validateCode}
+                {...accessibilityAndTestId(t`Entrée du code de confirmation`)}
+              />
+            </CodeInputContainer>
+            {errorMessage ? (
+              <React.Fragment>
+                <InputError visible messageId={errorMessage} numberOfSpacesTop={3} />
+                <Spacer.Column numberOfSpaces={5} />
+              </React.Fragment>
+            ) : (
+              <Spacer.Column numberOfSpaces={8} />
+            )}
+            <ButtonPrimary
+              title={t`Continuer`}
+              disabled={!codeInputState.isValid}
+              onPress={validateCode}
+              isLoading={isLoading}
             />
-          </CodeInputContainer>
-          {errorMessage ? (
-            <React.Fragment>
-              <InputError visible messageId={errorMessage} numberOfSpacesTop={3} />
-              <Spacer.Column numberOfSpaces={5} />
-            </React.Fragment>
-          ) : (
-            <Spacer.Column numberOfSpaces={8} />
-          )}
-          <ButtonPrimary
-            title={t`Continuer`}
-            disabled={!codeInputState.isValid}
-            onPress={validateCode}
-            isLoading={isLoading}
-          />
+          </Form>
           <Spacer.Column numberOfSpaces={4} />
           <HelpRow>
             <Typo.Body>{t`Tu n'as pas reçu le sms\u00a0?`}</Typo.Body>
@@ -296,7 +298,7 @@ const codeInputMask = '999999'
 
 const CodeInput = styled(MaskedTextInput)({
   fontSize: 20,
-  marginLeft: getSpacing(2),
+  marginLeft: getSpacing(4),
   color: ColorsEnum.BLACK,
   textAlign: 'center',
   fontFamily: 'Montserrat-Regular',
@@ -305,6 +307,7 @@ const CodeInput = styled(MaskedTextInput)({
 
 const CodeInputContainer = styled.View({
   width: 240,
+  marginHorizontal: 'auto',
 })
 
 /** returns a formatted phone number like +33 X XX XX XX XX with unbreakable spaces
