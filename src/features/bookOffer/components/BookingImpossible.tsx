@@ -11,7 +11,7 @@ import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { SadFace } from 'ui/svg/icons/SadFace'
+import { SadFaceDeprecated as SadFace } from 'ui/svg/icons/SadFace_deprecated'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const BookingImpossible: React.FC = () => {

@@ -5,7 +5,7 @@ import { ColorsEnum, STANDARD_ICON_SIZE } from 'ui/theme'
 
 import { IconInterface } from './types'
 
-export function SadFace({
+export function SadFaceDeprecated({
   size = STANDARD_ICON_SIZE,
   color = ColorsEnum.BLACK,
   testID,

@@ -81,7 +81,6 @@ import { Profile } from 'ui/svg/icons/Profile'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Quote } from 'ui/svg/icons/Quote'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
-import { SadFace } from 'ui/svg/icons/SadFace'
 import { Share } from 'ui/svg/icons/Share'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { Sun } from 'ui/svg/icons/Sun'
@@ -300,7 +299,6 @@ const SecondaryAndBiggerIcons = () => {
       <Icon name="SignOut" component={SignOut} isNew />
       <Icon name="Share" component={Share} isNew />
       <Icon name="Sun" component={Sun} isNew />
-      <Icon name="SadFace" component={SadFace} />
       <Icon name="HappyFace" component={HappyFace} />
       <Icon name="Warning" component={Warning} isNew />
       <Text>{'\n'}</Text>
