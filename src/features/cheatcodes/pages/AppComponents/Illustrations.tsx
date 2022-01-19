@@ -3,6 +3,7 @@ import { Text, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
+import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { BicolorIdCardWithMagnifyingGlassDeprecated } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass_deprecated'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { EmptyFavorites } from 'ui/svg/icons/EmptyFavorites'
@@ -28,6 +29,11 @@ export const Illustrations: FunctionComponent = () => {
       <Illustration
         name="BicolorIdCardWithMagnifyingGlassDeprecated"
         component={BicolorIdCardWithMagnifyingGlassDeprecated}
+      />
+      <Illustration
+        name="BicolorIdCardWithMagnifyingGlass"
+        component={BicolorIdCardWithMagnifyingGlass}
+        isNew
       />
       <Illustration name="BrokenConnection" component={BrokenConnection} isNew />
       <Illustration name="ErrorIllustration" component={ErrorIllustration} isNew />
