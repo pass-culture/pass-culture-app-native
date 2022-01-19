@@ -11,7 +11,7 @@ export const SadFace: React.FunctionComponent<IconInterface> = ({
 }) => {
   const height = typeof size === 'string' ? size : (size * 156) / 200
   return (
-    <Svg width={size} height={height} viewBox="0 0 200 156" testID={testID}>
+    <Svg width={size} height={height} viewBox="0 0 200 156" testID={testID} aria-hidden>
       <Path
         fill={color}
         fillRule="evenodd"

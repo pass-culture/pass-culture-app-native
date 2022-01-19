@@ -2,6 +2,7 @@
 
 exports[`PhoneError should render component correctly 1`] = `
 <svg
+  aria-hidden={true}
   fill="none"
   height={109.2}
   viewBox="0 0 200 156"
