@@ -9,7 +9,7 @@ import { accessibilityAndTestId } from 'tests/utils'
 import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import { StyledInputContainer } from 'ui/components/inputs/StyledInputContainer'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export interface DateValidation {
   isComplete: boolean
@@ -48,7 +48,7 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
   }, [value])
 
   useEffect(() => {
-    const timeout = setTimeout(() => {
+    const timeout = globalThis.setTimeout(() => {
       if (Platform.OS !== 'web') {
         if (inputRef.current) inputRef.current.focus()
       }
@@ -108,12 +108,11 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
         }>
         <StyledMaskedTextInput
           mask={MASK}
-          keyboardType={'number-pad'}
+          keyboardType="number-pad"
           onSubmitEditing={onSubmit}
-          returnKeyType={'done'}
           onChangeText={setValue}
-          placeholder={'03/03/2003'}
-          autoFocus={true}
+          placeholder="03/03/2003"
+          autoFocus
           onFocus={() => setHasFocus(true)}
           onBlur={() => setHasFocus(false)}
           {...accessibilityAndTestId(t`Entrée pour la date de naissance`)}
@@ -125,17 +124,16 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
 
 export const DateInput = forwardRef<DateInputRef, DateInputProps>(WithRefDateInput)
 
-const StyledMaskedTextInput = styled(MaskedTextInput).attrs({
-  placeholderTextColor: ColorsEnum.GREY_DARK,
-})(({ theme }) => ({
+const StyledMaskedTextInput = styled(MaskedTextInput).attrs(({ theme }) => ({
+  placeholderTextColor: theme.colors.greyDark,
+}))(({ theme }) => ({
   flex: 1,
-  padding: 0,
   color: theme.colors.black,
   fontFamily: theme.fontFamily.regular,
   fontSize: getSpacing(3.75),
   height: '100%',
 }))
 
-const StyledCaption = styled(Typo.Caption)(({ theme, color }) => ({
-  color: color ?? theme.colors.greyDark,
+const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
 }))

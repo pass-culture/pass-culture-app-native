@@ -15,7 +15,7 @@ import { DateInput, DateInputRef, DateValidation } from 'ui/components/inputs/Da
 import { InputError } from 'ui/components/inputs/InputError'
 import { useModal } from 'ui/components/modals/useModal'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 let INITIAL_DATE: Date | null = null
 
@@ -121,7 +121,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
           {errorMessage ? (
             <InputError visible messageId={errorMessage} numberOfSpacesTop={2} />
           ) : (
-            <Spacer.Column numberOfSpaces={isMobileViewport ? 10 : 6} />
+            <Spacer.Column numberOfSpaces={getSpacing(isMobileViewport ? 2.5 : 1.5)} />
           )}
         </DateInputContainer>
         <Spacer.Column numberOfSpaces={5} />

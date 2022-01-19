@@ -201,7 +201,6 @@ exports[`<SetBirthday /> should render properly 1`] = `
           onSubmitEditing={[Function]}
           placeholder="03/03/2003"
           placeholderTextColor="#626262"
-          returnKeyType="done"
           style={
             Array [
               Object {
@@ -212,10 +211,6 @@ exports[`<SetBirthday /> should render properly 1`] = `
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 15,
                 "height": "100%",
-                "paddingBottom": 0,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 0,
               },
             ]
           }
