@@ -1,9 +1,9 @@
 import { t } from '@lingui/macro'
-import React, { FunctionComponent, useRef, useState } from 'react'
-import styled from 'styled-components/native'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import styled, { useTheme } from 'styled-components/native'
 
-import { useDepositAmountsByAge } from 'features/auth/api'
 import { useAppSettings } from 'features/auth/settings'
+import { BirthdayInformationModal } from 'features/auth/signup/SetBirthday/BirthdayInformationModal'
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
 import { analytics } from 'libs/analytics'
 import { dateDiffInFullYears } from 'libs/dates'
@@ -13,21 +13,14 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { DateInput, DateInputRef, DateValidation } from 'ui/components/inputs/DateInput'
 import { InputError } from 'ui/components/inputs/InputError'
-import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { useModal } from 'ui/components/modals/useModal'
-import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { InfoPlain } from 'ui/svg/icons/InfoPlain'
+import { getSpacing, Spacer } from 'ui/theme'
 
 let INITIAL_DATE: Date | null = null
-let INITIAL_DAY: string | undefined = undefined
-let INITIAL_MONTH: string | undefined = undefined
-let INITIAL_YEAR: string | undefined = undefined
 
 if (__DEV__ && env.SIGNUP_DATE) {
   INITIAL_DATE = new Date(env.SIGNUP_DATE) // '2003-01-01T00:00:00Z'
-  INITIAL_DAY = `${INITIAL_DATE.getDate()}`.padStart(2, '0')
-  INITIAL_MONTH = `${INITIAL_DATE.getMonth() + 1}`.padStart(2, '0')
-  INITIAL_YEAR = `${INITIAL_DATE.getFullYear()}`
 }
 
 const DEFAULT_YOUNGEST_AGE = 15
@@ -42,6 +35,7 @@ interface State {
 }
 
 export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (props) => {
+  const { isMobileViewport } = useTheme()
   const [wereBirthdayAnalyticsTriggered, setWereBirthdayAnalyticsTriggered] = useState(false)
   const [state, setState] = useState<State>({
     date: INITIAL_DATE,
@@ -50,19 +44,15 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
     isTooYoung: false,
     isTooOld: false,
   })
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const { data: settings } = useAppSettings()
-  const { eighteenYearsOldDeposit, fifteenYearsOldDeposit } = useDepositAmountsByAge()
 
   const now = new Date()
   const youngestAge = settings?.accountCreationMinimumAge ?? DEFAULT_YOUNGEST_AGE
   const maxYear = now.getFullYear() - youngestAge
   const maxDate = new Date(maxYear, now.getMonth(), now.getDate())
 
-  const {
-    visible: informationModalVisible,
-    showModal: showInformationModal,
-    hideModal: hideInformationModal,
-  } = useModal(false)
+  const { visible, showModal: showInformationModal, hideModal } = useModal(false)
 
   const dateInputRef = useRef<DateInputRef>(null)
 
@@ -89,66 +79,36 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
     showInformationModal()
   }
 
-  function renderErrorMessages() {
-    if (!state.isDateComplete || state.isDateValid) {
-      return
-    }
-    if (state.isTooYoung && !state.isTooOld) {
-      if (!wereBirthdayAnalyticsTriggered && state.date) {
+  useEffect(() => {
+    if (!state.isDateComplete || state.isDateValid) return setErrorMessage(null)
+    if (state.date) {
+      if (state.isTooYoung && !wereBirthdayAnalyticsTriggered) {
         const age = dateDiffInFullYears(state.date, now)
         analytics.logSignUpTooYoung(age)
         setWereBirthdayAnalyticsTriggered(true)
+        return setErrorMessage(
+          t`Tu dois avoir au moins\u00a0${youngestAge}\u00a0ans pour t’inscrire au pass Culture`
+        )
       }
-      return (
-        <InputError
-          visible
-          messageId={t`Tu dois avoir\u00a0${youngestAge}\u00a0ans pour t'inscrire`}
-          numberOfSpacesTop={5}
-        />
-      )
+      if (state.isTooOld) {
+        const age = dateDiffInFullYears(state.date, now)
+        return setErrorMessage(
+          t`Euh... Il semblerait qu’il y ait une erreur. As-tu réellement\u00a0${age}\u00a0ans\u00a0?`
+        )
+      }
     }
-    return (
-      <InputError visible messageId={t`La date choisie est incorrecte`} numberOfSpacesTop={5} />
-    )
-  }
-
-  const displayPostGeneralisationMessage =
-    settings?.enableNativeEacIndividual && settings.enableUnderageGeneralisation
-
-  const financialHelpMessage = displayPostGeneralisationMessage
-    ? t({
-        id: 'postGeneralisationFinancialHelpMessage',
-        values: {
-          deposit15: fifteenYearsOldDeposit.replace(' ', '\u00a0'),
-          deposit18: eighteenYearsOldDeposit.replace(' ', '\u00a0'),
-        },
-        message:
-          'Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de {deposit15} à\u00a0{deposit18}\u00a0offerte par le Gouvernement.',
-      }) +
-      '\n' +
-      '\n'
-    : t({
-        id: 'preGeneralisationFinancialHelpMessage',
-        values: { deposit: eighteenYearsOldDeposit.replace(' ', '\u00a0') },
-        message:
-          'Si tu as 18 ans, tu es éligible à une aide financière de\u00a0{deposit}\u00a0offerte par le Gouvernement.',
-      }) +
-      '\n' +
-      '\n'
-
-  const birthdayInformation =
-    t`Nous avons besoin de connaître ton âge.` +
-    ' ' +
-    financialHelpMessage +
-    t`Cette aide sera créditée directement sur ton compte pass Culture.`
-
-  const modalTitle = t`Pourquoi saisir ma date de naissance\u00a0?`
+    return setErrorMessage(t`La date n’existe pas. Exemple de résultat attendu\u00a0: 03/03/2003`)
+  }, [state])
 
   return (
     <React.Fragment>
       <InnerContainer>
-        <ButtonTertiary title={t`Pourquoi\u00a0?`} onPress={onPressWhy} />
-        <Spacer.Column numberOfSpaces={8} />
+        <ButtonTertiary
+          icon={InfoPlain}
+          title={t`Pour quelle raison\u00a0?`}
+          onPress={onPressWhy}
+        />
+        <Spacer.Column numberOfSpaces={5} />
         <DateInputContainer>
           <DateInput
             autoFocus={true}
@@ -156,14 +116,15 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
             ref={dateInputRef}
             minDate={MIN_DATE}
             maxDate={maxDate}
-            initialDay={INITIAL_DAY}
-            initialMonth={INITIAL_MONTH}
-            initialYear={INITIAL_YEAR}
             onSubmit={goToNextStep}
           />
-          {renderErrorMessages()}
+          {errorMessage ? (
+            <InputError visible messageId={errorMessage} numberOfSpacesTop={2} />
+          ) : (
+            <Spacer.Column numberOfSpaces={getSpacing(isMobileViewport ? 2.5 : 1.5)} />
+          )}
         </DateInputContainer>
-        <Spacer.Column numberOfSpaces={14} />
+        <Spacer.Column numberOfSpaces={5} />
         <ButtonPrimary
           title={t`Continuer`}
           accessibilityLabel={props.accessibilityLabelForNextStep}
@@ -172,18 +133,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
         />
         <Spacer.Column numberOfSpaces={5} />
       </InnerContainer>
-      <AppInformationModal
-        title={modalTitle}
-        numberOfLinesTitle={3}
-        visible={informationModalVisible}
-        onCloseIconPress={hideInformationModal}
-        testIdSuffix="birthday-information">
-        <ModalChildrenContainer>
-          <BirthdayCake />
-          <Spacer.Column numberOfSpaces={2} />
-          <StyledBody>{birthdayInformation}</StyledBody>
-        </ModalChildrenContainer>
-      </AppInformationModal>
+      <BirthdayInformationModal visible={visible} hideModal={hideModal} />
     </React.Fragment>
   )
 }
@@ -193,17 +143,8 @@ const InnerContainer = styled.View({
   alignItems: 'center',
 })
 
-const StyledBody = styled(Typo.Body)({
-  textAlign: 'center',
-})
-
 const DateInputContainer = styled.View({
   alignItems: 'stretch',
   flexDirection: 'column',
   width: '100%',
-})
-
-const ModalChildrenContainer = styled.View({
-  paddingTop: getSpacing(5),
-  alignItems: 'center',
 })

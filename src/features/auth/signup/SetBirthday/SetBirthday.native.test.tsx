@@ -1,12 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import { UseQueryResult } from 'react-query'
-import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
-import { SettingsResponse } from 'api/gen'
-import { mockDefaultSettings } from 'features/auth/__mocks__/settings'
-import { useAppSettings } from 'features/auth/settings'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, RenderAPI } from 'tests/utils'
 import { ColorsEnum } from 'ui/theme'
@@ -16,22 +11,8 @@ import { SetBirthday } from './SetBirthday'
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 
 jest.mock('features/auth/settings')
-jest.mock('features/auth/api', () => {
-  const originalModule = jest.requireActual('features/auth/api')
 
-  return {
-    ...originalModule,
-    useDepositAmountsByAge: jest.fn().mockReturnValue({
-      fifteenYearsOldDeposit: '20 €',
-      sixteenYearsOldDeposit: '30 €',
-      seventeenYearsOldDeposit: '30 €',
-      eighteenYearsOldDeposit: '300 €',
-    }),
-  }
-})
-const mockedUseAppSettings = mocked(useAppSettings)
-
-describe('SetBirthday Page', () => {
+describe('<SetBirthday />', () => {
   beforeEach(() => {
     mockdate.set(new Date('2020-12-01T00:00:00Z'))
     jest.useFakeTimers()
@@ -42,111 +23,91 @@ describe('SetBirthday Page', () => {
     expect(toJSON()).toMatchSnapshot()
   })
 
-  it('should keep disabled the button "Continuer" when the date is not complete', () => {
-    const renderAPI = render(<SetBirthday {...props} />)
+  describe('- error message -', () => {
+    it('should display the error message when the date is incorrect', async () => {
+      const renderAPI = render(<SetBirthday {...props} />)
 
-    changeDate(renderAPI, '1', '1', '1')
+      changeDate(renderAPI, '32/13/1889')
 
-    const button = renderAPI.getByTestId('Continuer')
-    expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
-  })
+      await waitForExpect(() => {
+        const message = renderAPI.queryByText(
+          'La date n’existe pas. Exemple de résultat attendu\u00a0: 03/03/2003'
+        )
+        expect(message).toBeTruthy()
+      })
+    })
 
-  it('should show the correct deposit amount', async () => {
-    const component = render(<SetBirthday {...props} />)
-    fireEvent.press(component.getByTestId('Pourquoi\u00a0?'))
+    it('should display the error message "date trop ancienne" when the date is too old', async () => {
+      const renderAPI = render(<SetBirthday {...props} />)
 
-    expect(component.queryByText(/une aide financière de/)).toBeTruthy()
-    expect(component.queryByText(new RegExp('300' + '\u00a0' + '€'))).toBeTruthy()
-  })
+      changeDate(renderAPI, '01/01/1889')
 
-  it('should show the correct deposit amount if generalisation is enabled', async () => {
-    const mockSettings = {
-      ...mockDefaultSettings,
-      enableUnderageGeneralisation: true,
-      enableNativeEacIndividual: true,
-    }
-    // eslint-disable-next-line local-rules/independant-mocks
-    mockedUseAppSettings.mockImplementation(
-      () =>
-        ({
-          data: mockSettings,
-        } as UseQueryResult<SettingsResponse, unknown>)
-    )
-    const component = render(<SetBirthday {...props} />)
-    fireEvent.press(component.getByTestId('Pourquoi\u00a0?'))
-    expect(component.queryByText(/une aide financière progressive allant de/)).toBeTruthy()
+      await waitForExpect(() => {
+        const message = renderAPI.queryByText(
+          'Euh... Il semblerait qu’il y ait une erreur. As-tu réellement\u00a0131\u00a0ans\u00a0?'
+        )
+        expect(message).toBeTruthy()
+      })
+    })
 
-    expect(component.queryByText(new RegExp('20' + '\u00a0' + '€'))).toBeTruthy()
-    // eslint-disable-next-line local-rules/independant-mocks
-    mockedUseAppSettings.mockImplementation(
-      () =>
-        ({ data: mockDefaultSettings, isLoading: false } as UseQueryResult<
-          SettingsResponse,
-          unknown
-        >)
-    )
-  })
+    it('should display the error message "tu dois avoir 15 ans" when the date is too young', () => {
+      const renderAPI = render(<SetBirthday {...props} />)
 
-  it('should display the error message "date incorrecte" when the date is too old', async () => {
-    const renderAPI = render(<SetBirthday {...props} />)
+      changeDate(renderAPI, '02/12/2005') // 15 years old - 1 day
 
-    changeDate(renderAPI, '31', '12', '1889')
-
-    await waitForExpect(() => {
-      const message = renderAPI.queryByText('La date choisie est incorrecte')
+      const message = renderAPI.queryByText(
+        'Tu dois avoir au moins\u00a015\u00a0ans pour t’inscrire au pass Culture'
+      )
       expect(message).toBeTruthy()
+    })
+
+    it('should not display the error message "tu dois avoir 15 ans" when the user is exactly 15yo', () => {
+      const renderAPI = render(<SetBirthday {...props} />)
+
+      changeDate(renderAPI, '01/12/2005') // 15 years old
+
+      const message = renderAPI.queryByText(
+        'Tu dois avoir au moins\u00a015\u00a0ans pour t’inscrire au pass Culture'
+      )
+      expect(message).toBeFalsy()
     })
   })
 
-  it('should display the error message "tu dois avoir 15 ans" when the date is too young', () => {
-    const renderAPI = render(<SetBirthday {...props} />)
+  describe('- navigation -', () => {
+    it('should open birthday information modal when clicking "Pour quelle raison ?" button', () => {
+      const { getByText } = render(<SetBirthday {...props} />)
 
-    changeDate(renderAPI, '02', '12', '2005') // 15 years old - 1 day
+      const whyBirthdayLink = getByText('Pour quelle raison\u00a0?')
+      fireEvent.press(whyBirthdayLink)
+      expect('Pourquoi saisir ma date de naissance\u00a0?').toBeTruthy()
+    })
 
-    const message = renderAPI.queryByText(
-      'Tu dois avoir' + '\u00a0' + 15 + '\u00a0' + "ans pour t'inscrire"
-    )
-    expect(message).toBeTruthy()
+    it('should keep disabled the button "Continuer" when the date is not complete', () => {
+      const renderAPI = render(<SetBirthday {...props} />)
+
+      changeDate(renderAPI, '03/03/200')
+
+      const button = renderAPI.getByTestId('Continuer')
+      expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
+    })
+
+    it('should call goToNextStep() when the date is not complete and press the button "Continuer"', () => {
+      const renderAPI = render(<SetBirthday {...props} />)
+
+      changeDate(renderAPI, '16/01/1995')
+
+      const continueButton = renderAPI.getByText('Continuer')
+      fireEvent.press(continueButton)
+
+      expect(props.goToNextStep).toBeCalledWith({ birthdate: '1995-01-16' })
+    })
   })
 
-  it('should not display the error message "tu dois avoir 15 ans" when the user is exactly 15yo', () => {
-    const renderAPI = render(<SetBirthday {...props} />)
-
-    changeDate(renderAPI, '01', '12', '2005') // 15 years old
-
-    const message = renderAPI.queryByText(
-      'Tu dois avoir' + '\u00a0' + 15 + '\u00a0' + "ans pour t'inscrire"
-    )
-    expect(message).toBeFalsy()
-  })
-
-  it('should call goToNextStep()', () => {
-    const renderAPI = render(<SetBirthday {...props} />)
-
-    changeDate(renderAPI, '16', '01', '1995')
-
-    const continueButton = renderAPI.getByText('Continuer')
-    fireEvent.press(continueButton)
-
-    expect(props.goToNextStep).toBeCalledWith({ birthdate: '1995-01-16' })
-  })
-
-  it('should display a information modal when clicking "Pourquoi" link', () => {
-    const { getByTestId, toJSON } = render(<SetBirthday {...props} />)
-
-    const whyBirthdayLink = getByTestId('Pourquoi\u00a0?')
-    fireEvent.press(whyBirthdayLink)
-
-    const birthdayModal = getByTestId('modal-birthday-information')
-    expect(birthdayModal.props.visible).toBeTruthy()
-    expect(toJSON()).toMatchSnapshot()
-  })
-
-  describe('SetBirthday - analytics', () => {
-    it('should log ConsultModalWhyAnniversary when clicking "Pourquoi" link', () => {
+  describe('- analytics -', () => {
+    it('should log ConsultModalWhyAnniversary when clicking "Pour quelle raison ?" link', () => {
       const { getByTestId } = render(<SetBirthday {...props} />)
 
-      const whyBirthdayLink = getByTestId('Pourquoi\u00a0?')
+      const whyBirthdayLink = getByTestId('Pour quelle raison\u00a0?')
       fireEvent.press(whyBirthdayLink)
 
       expect(analytics.logConsultWhyAnniversary).toHaveBeenCalledTimes(1)
@@ -155,20 +116,20 @@ describe('SetBirthday Page', () => {
     it('should not log SignUpTooYoung if the user is 15 years old or more', () => {
       const renderAPI = render(<SetBirthday {...props} />)
 
-      changeDate(renderAPI, '01', '12', '2005')
+      changeDate(renderAPI, '01/12/2005')
       expect(analytics.logSignUpTooYoung).not.toBeCalled()
     })
 
     it('should log SignUpTooYoung if the user is 14 years old or less', () => {
       const renderAPI = render(<SetBirthday {...props} />)
 
-      changeDate(renderAPI, '01', '12', '2006')
+      changeDate(renderAPI, '01/12/2006')
       expect(analytics.logSignUpTooYoung).toBeCalledTimes(1)
     })
   })
 })
 
-function changeDate(renderAPI: RenderAPI, dayStr: string, monthStr: string, yearStr: string) {
-  const dateInput = renderAPI.getByTestId('Entrée pour la date de naissance')
-  fireEvent.changeText(dateInput, [dayStr, monthStr, yearStr].join(''))
+function changeDate(renderAPI: RenderAPI, dateStr: string) {
+  const dateInput = renderAPI.getByPlaceholderText('03/03/2003')
+  fireEvent.changeText(dateInput, dateStr)
 }
