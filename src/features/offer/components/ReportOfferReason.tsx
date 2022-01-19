@@ -53,7 +53,7 @@ export const ReportOfferReason: FunctionComponent<Props> = (props) => {
   }
 
   return (
-    <Form>
+    <Form.MaxWidth>
       <Spacer.Column numberOfSpaces={3} />
       {reasonsForReporting.map((reason) =>
         reason.id !== 'OTHER' ? (
@@ -83,6 +83,6 @@ export const ReportOfferReason: FunctionComponent<Props> = (props) => {
         onPress={reportOffer}
         testId="report-button"
       />
-    </Form>
+    </Form.MaxWidth>
   )
 }

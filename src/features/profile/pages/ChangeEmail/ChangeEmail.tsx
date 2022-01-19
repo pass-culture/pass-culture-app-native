@@ -114,7 +114,7 @@ export function ChangeEmail() {
         <ChangeEmailDisclaimer />
         <Spacer.Column numberOfSpaces={4} />
         <CenteredContainer>
-          <Form>
+          <Form.MaxWidth>
             <EmailInput
               label={t`Nouvel e-mail`}
               email={email}
@@ -153,7 +153,7 @@ export function ChangeEmail() {
                 disabled={isSubmitButtonDisabled}
               />
             </ButtonContainer>
-          </Form>
+          </Form.MaxWidth>
           <Spacer.Column numberOfSpaces={6} />
         </CenteredContainer>
       </StyledScrollView>

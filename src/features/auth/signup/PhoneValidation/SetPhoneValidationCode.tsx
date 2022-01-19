@@ -219,7 +219,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
         />
         <ModalContent>
           <Spacer.Column numberOfSpaces={6} />
-          <Form>
+          <Form.MaxWidth>
             <Paragraphe>
               <Typo.Body>{validationCodeInformation}</Typo.Body>
             </Paragraphe>
@@ -252,7 +252,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
               onPress={validateCode}
               isLoading={isLoading}
             />
-          </Form>
+          </Form.MaxWidth>
           <Spacer.Column numberOfSpaces={4} />
           <HelpRow>
             <Typo.Body>{t`Tu n'as pas reçu le sms\u00a0?`}</Typo.Body>

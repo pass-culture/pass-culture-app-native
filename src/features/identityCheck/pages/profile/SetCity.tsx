@@ -85,7 +85,7 @@ export const SetCity = () => {
     <PageWithHeader
       title={t`Profil`}
       fixedTopChildren={
-        <Form>
+        <Form.MaxWidth>
           <CenteredTitle title={t`Dans quelle ville résides-tu\u00a0?`} />
           <Spacer.Column numberOfSpaces={5} />
           <SearchInput
@@ -101,7 +101,7 @@ export const SetCity = () => {
           />
           {!!errorMessage && <InputError messageId={errorMessage} numberOfSpacesTop={2} visible />}
           <Spacer.Column numberOfSpaces={2} />
-        </Form>
+        </Form.MaxWidth>
       }
       scrollChildren={
         <React.Fragment>

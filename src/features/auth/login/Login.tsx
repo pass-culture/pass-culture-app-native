@@ -150,7 +150,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         onLeftIconPress={goBack}
         {...rightIconProps}
       />
-      <Form>
+      <Form.MaxWidth>
         {!!errorMessage && (
           <InputError visible messageId={errorMessage} numberOfSpacesTop={5} centered />
         )}
@@ -194,7 +194,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           onPress={onSubmit}
           disabled={shouldDisableLoginButton}
         />
-      </Form>
+      </Form.MaxWidth>
     </BottomContentPage>
   )
 })

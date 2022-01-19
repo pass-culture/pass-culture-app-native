@@ -81,7 +81,7 @@ export const ReinitializePassword = () => {
       />
       <BottomCardContentContainer>
         <Spacer.Column numberOfSpaces={6} />
-        <Form>
+        <Form.MaxWidth>
           <PasswordInput
             label={t`Nouveau mot de passe`}
             value={password}
@@ -114,7 +114,7 @@ export const ReinitializePassword = () => {
             disabled={!allowSubmission || isLoading}
             isLoading={isLoading}
           />
-        </Form>
+        </Form.MaxWidth>
       </BottomCardContentContainer>
     </BottomContentPage>
   )

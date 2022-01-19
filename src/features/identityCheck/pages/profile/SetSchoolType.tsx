@@ -50,7 +50,7 @@ export const SetSchoolType = () => {
         </React.Fragment>
       }
       scrollChildren={
-        <Form>
+        <Form.MaxWidth>
           {hasData &&
             activitySchoolTypes.map((schoolTypeId) => {
               const { label, description } = mapSchoolTypeIdToLabelAndDescription(
@@ -67,7 +67,7 @@ export const SetSchoolType = () => {
                 />
               )
             })}
-        </Form>
+        </Form.MaxWidth>
       }
       fixedBottomChildren={
         <ButtonPrimary

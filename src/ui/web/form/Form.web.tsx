@@ -1,19 +1,27 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components/native'
 
-import { getSpacing } from 'ui/theme'
-
 type Props = {
   children: ReactNode
 }
 
-export function Form(props: Props) {
+function MaxWidth(props: Props) {
   // @ts-ignore TODO: fix when https://github.com/necolas/react-native-web/issues/2189#issuecomment-1008886405 is resolved
-  return <Container accessibilityRole="form">{props.children}</Container>
+  return <MaxWidthContainer accessibilityRole="form">{props.children}</MaxWidthContainer>
 }
 
-const Container = styled.View({
+function Flex(props: Props) {
+  // @ts-ignore TODO: fix when https://github.com/necolas/react-native-web/issues/2189#issuecomment-1008886405 is resolved
+  return <FlexContainer accessibilityRole="form">{props.children}</FlexContainer>
+}
+
+const MaxWidthContainer = styled.View(({ theme }) => ({
   width: '100%',
-  height: '100%',
-  maxWidth: getSpacing(125),
+  maxWidth: theme.desktopCenteredContentMaxWidth,
+}))
+
+const FlexContainer = styled.View({
+  flex: 1,
 })
+
+export const Form = { Flex, MaxWidth }

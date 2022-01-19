@@ -130,7 +130,7 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
           onRightIconPress={showQuitSignupModal}
         />
         <ModalContent>
-          <Form>
+          <Form.MaxWidth>
             <Paragraphe>
               <Typo.Body color={ColorsEnum.GREY_DARK}>
                 {t`Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro.`}
@@ -164,7 +164,7 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
               onPress={requestSendPhoneValidationCode}
               isLoading={isLoading}
             />
-          </Form>
+          </Form.MaxWidth>
         </ModalContent>
       </BottomContentPage>
       <QuitSignupModal

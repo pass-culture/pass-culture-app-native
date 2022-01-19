@@ -39,7 +39,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
   }
 
   return (
-    <Form>
+    <Form.MaxWidth>
       <EmailInput
         label={t`Adresse e-mail`}
         email={email}
@@ -70,7 +70,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
         disabled={shouldDisableValidateButton}
       />
       <Spacer.Column numberOfSpaces={5} />
-    </Form>
+    </Form.MaxWidth>
   )
 }
 

@@ -25,7 +25,7 @@ export const SetPassword: FunctionComponent<PreValidationSignupStepProps> = (pro
   }
 
   return (
-    <Form>
+    <Form.MaxWidth>
       <PasswordInput
         label={t`Mot de passe`}
         value={password}
@@ -44,6 +44,6 @@ export const SetPassword: FunctionComponent<PreValidationSignupStepProps> = (pro
         disabled={disabled}
       />
       <Spacer.Column numberOfSpaces={5} />
-    </Form>
+    </Form.MaxWidth>
   )
 }

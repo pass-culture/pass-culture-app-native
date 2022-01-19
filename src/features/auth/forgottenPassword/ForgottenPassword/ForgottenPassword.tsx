@@ -137,7 +137,7 @@ export const ForgottenPassword: FunctionComponent = () => {
           </Typo.Body>
         </CenteredText>
         <Spacer.Column numberOfSpaces={4} />
-        <Form>
+        <Form.MaxWidth>
           <EmailInput
             label={t`Adresse e-mail`}
             email={email}
@@ -158,7 +158,7 @@ export const ForgottenPassword: FunctionComponent = () => {
             isLoading={isDoingReCaptchaChallenge || isFetching || areSettingsLoading}
             disabled={shouldDisableValidateButton}
           />
-        </Form>
+        </Form.MaxWidth>
       </ModalContent>
     </BottomContentPage>
   )

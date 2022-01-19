@@ -290,7 +290,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                 role="form"
                 style={
                   Object {
-                    "height": "100%",
                     "maxWidth": "500px",
                     "width": "100%",
                   }
@@ -1313,7 +1312,6 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                 role="form"
                 style={
                   Object {
-                    "height": "100%",
                     "maxWidth": "500px",
                     "width": "100%",
                   }

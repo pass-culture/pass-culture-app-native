@@ -92,7 +92,7 @@ Object {
                     <form
                       class="css-view-1dbjc4n"
                       role="form"
-                      style="height: 100%; max-width: 500px; width: 100%;"
+                      style="max-width: 500px; width: 100%;"
                     >
                       <div
                         class="css-text-901oao"
@@ -291,7 +291,7 @@ Object {
                   <form
                     class="css-view-1dbjc4n"
                     role="form"
-                    style="height: 100%; max-width: 500px; width: 100%;"
+                    style="max-width: 500px; width: 100%;"
                   >
                     <div
                       class="css-text-901oao"

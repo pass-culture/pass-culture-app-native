@@ -97,7 +97,7 @@ export const SetAddress = () => {
     <PageWithHeader
       title={t`Profil`}
       fixedTopChildren={
-        <Form>
+        <Form.MaxWidth>
           <CenteredTitle title={t`Quelle est ton adresse\u00a0?`} />
           <Spacer.Column numberOfSpaces={5} />
           <SearchInput
@@ -111,7 +111,7 @@ export const SetAddress = () => {
             onPressRightIcon={resetSearch}
           />
           <Spacer.Column numberOfSpaces={2} />
-        </Form>
+        </Form.MaxWidth>
       }
       scrollChildren={
         <React.Fragment>

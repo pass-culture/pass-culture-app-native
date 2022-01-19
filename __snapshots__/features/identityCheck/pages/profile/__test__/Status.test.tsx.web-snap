@@ -290,7 +290,6 @@ exports[`<Status/> should render correctly 1`] = `
                 role="form"
                 style={
                   Object {
-                    "height": "100%",
                     "maxWidth": "500px",
                     "width": "100%",
                   }

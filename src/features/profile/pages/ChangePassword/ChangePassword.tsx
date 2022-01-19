@@ -93,7 +93,7 @@ export function ChangePassword() {
         contentContainerStyle={getScrollViewContentContainerStyle(keyboardHeight)}
         keyboardShouldPersistTaps="handled">
         <Spacer.Column numberOfSpaces={20} />
-        <Form>
+        <Form.MaxWidth>
           <PasswordInput
             label={t`Mot de passe actuel`}
             value={currentPassword}
@@ -143,7 +143,7 @@ export function ChangePassword() {
           <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
             <ButtonPrimary title={t`Enregistrer`} onPress={submitPassword} disabled={disabled} />
           </ButtonContainer>
-        </Form>
+        </Form.MaxWidth>
         <Spacer.Column numberOfSpaces={6} />
       </StyledScrollView>
 

@@ -6,6 +6,7 @@ import {
   BOTTOM_CONTENT_PAGE_OFFSET_TOP_HEIGHT_DESKTOP_TABLET,
   getSpacing,
   getSpacingString,
+  DESKTOP_CENTERED_CONTENT_MAX_WIDTH,
   TAB_BAR_COMP_HEIGHT,
 } from 'ui/theme'
 import { ACTIVE_OPACITY, ColorsEnum, UniqueColors } from 'ui/theme/colors'
@@ -26,6 +27,7 @@ interface Typography {
 export interface AppThemeType {
   appContentWidth: number
   appBarHeight: number
+  desktopCenteredContentMaxWidth: number
   navTopHeight: number
   tabBarHeight: number
   isMobileViewport?: boolean // computed dynamically in ThemeProvider.tsx
@@ -211,6 +213,7 @@ export const theme: AppThemeType = {
   appBarHeight: getSpacing(16),
   navTopHeight: getSpacing(20),
   tabBarHeight: TAB_BAR_COMP_HEIGHT,
+  desktopCenteredContentMaxWidth: DESKTOP_CENTERED_CONTENT_MAX_WIDTH,
   isTouch,
   showTabBar: true, // default value, the actual value is computed dynamically in ThemeProvider.tsx
   activeOpacity: ACTIVE_OPACITY,

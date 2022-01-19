@@ -42,7 +42,7 @@ export const SetName = () => {
         </React.Fragment>
       }
       scrollChildren={
-        <Form>
+        <Form.MaxWidth>
           <TextInput
             label={t`Prénom`}
             value={firstName}
@@ -71,7 +71,7 @@ export const SetName = () => {
             messageId={t`Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux.`}
             numberOfSpacesTop={2}
           />
-        </Form>
+        </Form.MaxWidth>
       }
       fixedBottomChildren={
         <ButtonPrimary title={t`Continuer`} onPress={submitName} disabled={disabled} />

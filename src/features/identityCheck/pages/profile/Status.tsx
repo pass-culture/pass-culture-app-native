@@ -57,7 +57,7 @@ export const Status = () => {
         </React.Fragment>
       }
       scrollChildren={
-        <Form>
+        <Form.MaxWidth>
           {filteredActivities &&
             filteredActivities.map((activity) => (
               <RadioButton
@@ -68,7 +68,7 @@ export const Status = () => {
                 onPress={() => setSelectedStatus(activity.id)}
               />
             ))}
-        </Form>
+        </Form.MaxWidth>
       }
       fixedBottomChildren={
         <ButtonPrimary
