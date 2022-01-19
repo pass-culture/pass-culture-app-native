@@ -4,5 +4,5 @@ export const BottomCardContentContainer = styled.View(({ theme }) => ({
   flexDirection: 'column',
   alignItems: 'flex-start',
   width: '100%',
-  maxWidth: theme.desktopCenteredContentMaxWidth,
+  maxWidth: theme.contentPage.maxWidth,
 }))

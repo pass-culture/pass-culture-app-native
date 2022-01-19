@@ -181,7 +181,7 @@ const ModalContent = styled.View(({ theme }) => ({
   paddingTop: getSpacing(7),
   alignItems: 'center',
   width: '100%',
-  maxWidth: theme.desktopCenteredContentMaxWidth,
+  maxWidth: theme.contentPage.maxWidth,
 }))
 
 const Paragraphe = styled.Text({

@@ -172,5 +172,5 @@ const ModalContent = styled.View({
 
 const CenteredText = styled.Text(({ theme }) => ({
   textAlign: 'center',
-  maxWidth: theme.desktopCenteredContentMaxWidth,
+  maxWidth: theme.contentPage.maxWidth,
 }))

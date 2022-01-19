@@ -83,5 +83,5 @@ const Container = styled(TouchableOpacity)(({ theme }) => ({
 const Content = styled.View(({ theme }) => ({
   width: '100%',
   alignItems: 'center',
-  maxWidth: theme.desktopCenteredContentMaxWidth,
+  maxWidth: theme.contentPage.maxWidth,
 }))

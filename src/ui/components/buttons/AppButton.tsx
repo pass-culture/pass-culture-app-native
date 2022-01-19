@@ -154,7 +154,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity).attrs(() => ({
     borderWidth: borderColor ? 2 : 0,
     height: buttonHeight === 'tall' ? getSpacing(12) : getSpacing(10),
     width: '100%',
-    ...(fullWidth ? {} : { maxWidth: theme.desktopCenteredContentMaxWidth }),
+    ...(fullWidth ? {} : { maxWidth: theme.buttons.maxWidth }),
     ...(inline
       ? {
           borderWidth: 0,

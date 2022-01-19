@@ -179,14 +179,14 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           isRequiredField
         />
         <Spacer.Column numberOfSpaces={7} />
-        <ForgottenPasswordContainer>
+        <ButtonContainer>
           <ButtonTertiaryBlack
             title={t`Mot de passe oublié\u00a0?`}
             onPress={onForgottenPasswordClick}
             icon={Key}
             inline
           />
-        </ForgottenPasswordContainer>
+        </ButtonContainer>
 
         <Spacer.Column numberOfSpaces={8} />
         <ButtonPrimary
@@ -199,9 +199,9 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   )
 })
 
-const ForgottenPasswordContainer = styled.View(({ theme }) => ({
+const ButtonContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   justifyContent: 'flex-end',
   width: '100%',
-  maxWidth: theme.desktopCenteredContentMaxWidth,
+  maxWidth: theme.buttons.maxWidth,
 }))

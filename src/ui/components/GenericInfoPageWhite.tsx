@@ -57,7 +57,7 @@ const Container = styled.View(({ theme }) => ({
   alignSelf: 'center',
   flex: 1,
   paddingHorizontal: getSpacing(5),
-  maxWidth: theme.desktopCenteredContentMaxWidth,
+  maxWidth: theme.contentPage.maxWidth,
 }))
 
 const StyledTitle = styled(Typo.Title1)({

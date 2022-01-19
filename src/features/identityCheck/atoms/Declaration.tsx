@@ -21,7 +21,7 @@ export const Declaration = ({ text, description }: { text: string; description: 
 
 const CenteredContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
-  maxWidth: theme.desktopCenteredContentMaxWidth,
+  maxWidth: theme.contentPage.maxWidth,
 }))
 
 const CenteredText = styled(Typo.Body)({ textAlign: 'center' })

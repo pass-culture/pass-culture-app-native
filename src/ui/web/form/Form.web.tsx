@@ -6,18 +6,18 @@ type Props = {
 }
 
 function MaxWidth(props: Props) {
-  // @ts-ignore TODO: fix when https://github.com/necolas/react-native-web/issues/2189#issuecomment-1008886405 is resolved
+  // @ts-ignore: typescript is not maintained by react-native-web
   return <MaxWidthContainer accessibilityRole="form">{props.children}</MaxWidthContainer>
 }
 
 function Flex(props: Props) {
-  // @ts-ignore TODO: fix when https://github.com/necolas/react-native-web/issues/2189#issuecomment-1008886405 is resolved
+  // @ts-ignore: typescript is not maintained by react-native-web
   return <FlexContainer accessibilityRole="form">{props.children}</FlexContainer>
 }
 
 const MaxWidthContainer = styled.View(({ theme }) => ({
   width: '100%',
-  maxWidth: theme.desktopCenteredContentMaxWidth,
+  maxWidth: theme.forms.maxWidth,
 }))
 
 const FlexContainer = styled.View({

@@ -47,5 +47,5 @@ const CenteredWebContainer = styled.View(({ theme }) => ({
     ? { maxHeight: '100%', paddingBottom: getSpacing(6) }
     : { flex: 1 }),
   width: '100%',
-  maxWidth: theme.desktopCenteredContentMaxWidth,
+  maxWidth: theme.contentPage.maxWidth,
 }))

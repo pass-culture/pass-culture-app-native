@@ -173,7 +173,7 @@ const ScreenUsableArea = styled.View(({ theme }) => ({
   alignItems: 'center',
   flexGrow: 1,
   width: '100%',
-  maxWidth: theme.desktopCenteredContentMaxWidth,
+  maxWidth: theme.contentPage.maxWidth,
   maxHeight: getSpacing(225),
 }))
 

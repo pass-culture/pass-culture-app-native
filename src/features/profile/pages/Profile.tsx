@@ -239,7 +239,7 @@ const LogoMinistereContainer = styled.View({
 const NetworkRow = styled.View(({ theme }) => ({
   width: '100%',
   margin: 'auto',
-  maxWidth: theme.desktopCenteredContentMaxWidth,
+  maxWidth: theme.contentPage.maxWidth,
 }))
 
 const NetworkRowContainer = styled.View({

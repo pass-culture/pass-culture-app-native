@@ -128,5 +128,5 @@ const Container = styled.View(({ theme }) => ({
   justifyContent: 'center',
   padding: getSpacing(5),
   width: '100%',
-  maxWidth: theme.desktopCenteredContentMaxWidth,
+  maxWidth: theme.contentPage.maxWidth,
 }))

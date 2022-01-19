@@ -94,7 +94,7 @@ const StyledBottomCardContainer = styled.ScrollView.attrs<{ customPaddingBottom:
       ...(theme.showTabBar
         ? {}
         : {
-            marginTop: theme.bottomContentPage.offsetTopHeightDesktopTablet,
+            marginTop: theme.contentPage.bottom.offsetTopHeightDesktopTablet,
             flexGrow: 1,
           }),
     },
@@ -113,9 +113,9 @@ const StyledBottomCardContainer = styled.ScrollView.attrs<{ customPaddingBottom:
 
 const SCALE_HEIGHT_RATIO = 1.75
 const BottomContentPageBackground = styled(Background).attrs(
-  ({ theme: { showTabBar, bottomContentPage } }) => ({
+  ({ theme: { showTabBar, contentPage } }) => ({
     height: showTabBar
       ? undefined
-      : bottomContentPage.offsetTopHeightDesktopTablet * SCALE_HEIGHT_RATIO,
+      : contentPage.bottom.offsetTopHeightDesktopTablet * SCALE_HEIGHT_RATIO,
   })
 )({})

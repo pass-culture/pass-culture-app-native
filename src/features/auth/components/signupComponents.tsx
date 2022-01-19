@@ -17,7 +17,7 @@ export const EmailSentModalContent = styled.View(({ theme }) => ({
   ...padding(4, 1),
   alignItems: 'center',
   width: '100%',
-  maxWidth: theme.desktopCenteredContentMaxWidth,
+  maxWidth: theme.contentPage.maxWidth,
 }))
 
 export const Description = styled.View({

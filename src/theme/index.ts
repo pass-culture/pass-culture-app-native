@@ -4,9 +4,9 @@ import { Platform } from 'react-native'
 import { isMobileDeviceDetectOnWeb, isTabletDeviceDetectOnWeb } from 'libs/react-device-detect'
 import {
   BOTTOM_CONTENT_PAGE_OFFSET_TOP_HEIGHT_DESKTOP_TABLET,
+  DESKTOP_CONTENT_MAX_WIDTH,
   getSpacing,
   getSpacingString,
-  DESKTOP_CENTERED_CONTENT_MAX_WIDTH,
   TAB_BAR_COMP_HEIGHT,
 } from 'ui/theme'
 import { ACTIVE_OPACITY, ColorsEnum, UniqueColors } from 'ui/theme/colors'
@@ -27,7 +27,6 @@ interface Typography {
 export interface AppThemeType {
   appContentWidth: number
   appBarHeight: number
-  desktopCenteredContentMaxWidth: number
   navTopHeight: number
   tabBarHeight: number
   isMobileViewport?: boolean // computed dynamically in ThemeProvider.tsx
@@ -36,6 +35,7 @@ export interface AppThemeType {
   isTouch: boolean
   showTabBar: boolean // computed dynamically in ThemeProvider.tsx
   activeOpacity: number
+  forms: { maxWidth: number }
   fontFamily: {
     medium: string
     black: string
@@ -109,10 +109,12 @@ export interface AppThemeType {
     headerNav: ZIndex
     snackbar: ZIndex
   }
-  bottomContentPage: {
-    offsetTopHeightDesktopTablet: number
+  contentPage: {
+    maxWidth: number
+    bottom: { offsetTopHeightDesktopTablet: number }
   }
   buttons: {
+    maxWidth: number
     loading: {
       primary: {
         backgroundColor: ColorsEnum
@@ -213,7 +215,6 @@ export const theme: AppThemeType = {
   appBarHeight: getSpacing(16),
   navTopHeight: getSpacing(20),
   tabBarHeight: TAB_BAR_COMP_HEIGHT,
-  desktopCenteredContentMaxWidth: DESKTOP_CENTERED_CONTENT_MAX_WIDTH,
   isTouch,
   showTabBar: true, // default value, the actual value is computed dynamically in ThemeProvider.tsx
   activeOpacity: ACTIVE_OPACITY,
@@ -224,6 +225,7 @@ export const theme: AppThemeType = {
     regular: 'Montserrat-Regular',
     semiBold: 'Montserrat-SemiBold',
   },
+  forms: { maxWidth: DESKTOP_CONTENT_MAX_WIDTH },
   typography: {
     hero: {
       fontFamily: 'Montserrat-Medium',
@@ -322,10 +324,12 @@ export const theme: AppThemeType = {
     headerNav: ZIndex.HEADER_NAV,
     snackbar: ZIndex.SNACKBAR,
   },
-  bottomContentPage: {
-    offsetTopHeightDesktopTablet: BOTTOM_CONTENT_PAGE_OFFSET_TOP_HEIGHT_DESKTOP_TABLET,
+  contentPage: {
+    maxWidth: DESKTOP_CONTENT_MAX_WIDTH,
+    bottom: { offsetTopHeightDesktopTablet: BOTTOM_CONTENT_PAGE_OFFSET_TOP_HEIGHT_DESKTOP_TABLET },
   },
   buttons: {
+    maxWidth: DESKTOP_CONTENT_MAX_WIDTH,
     loading: {
       primary: {
         backgroundColor: ColorsEnum.PRIMARY_DARK,

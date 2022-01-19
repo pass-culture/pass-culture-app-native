@@ -5,5 +5,5 @@ export const InputContainer = styled.View(({ theme }) => ({
   flexDirection: 'column',
   alignItems: 'flex-start',
   width: '100%',
-  maxWidth: theme.desktopCenteredContentMaxWidth,
+  maxWidth: theme.forms.maxWidth,
 }))

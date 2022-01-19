@@ -63,6 +63,6 @@ export const PasswordSecurityRules: FunctionComponent<Props> = ({ password }) =>
 const RulesContainer = styled.View(({ theme }) => ({
   alignItems: 'flex-start',
   width: '100%',
-  maxWidth: theme.desktopCenteredContentMaxWidth,
+  maxWidth: theme.forms.maxWidth,
   paddingTop: getSpacing(2),
 }))
