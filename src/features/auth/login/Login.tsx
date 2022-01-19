@@ -26,7 +26,7 @@ import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Key } from 'ui/svg/icons/Key'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 
 let INITIAL_IDENTIFIER = ''
@@ -199,9 +199,9 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   )
 })
 
-const ForgottenPasswordContainer = styled.View({
+const ForgottenPasswordContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   justifyContent: 'flex-end',
   width: '100%',
-  maxWidth: getSpacing(125),
-})
+  maxWidth: theme.desktopCenteredContentMaxWidth,
+}))

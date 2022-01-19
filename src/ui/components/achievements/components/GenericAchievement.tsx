@@ -168,14 +168,14 @@ const EntireScreen = styled.View({
   flexGrow: 1,
 })
 
-const ScreenUsableArea = styled.View({
+const ScreenUsableArea = styled.View(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   flexGrow: 1,
   width: '100%',
-  maxWidth: getSpacing(125),
+  maxWidth: theme.desktopCenteredContentMaxWidth,
   maxHeight: getSpacing(225),
-})
+}))
 
 const SkipButton = styled.View({
   alignSelf: 'flex-end',

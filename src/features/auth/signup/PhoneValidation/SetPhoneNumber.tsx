@@ -177,12 +177,12 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
   )
 })
 
-const ModalContent = styled.View({
+const ModalContent = styled.View(({ theme }) => ({
   paddingTop: getSpacing(7),
   alignItems: 'center',
   width: '100%',
-  maxWidth: getSpacing(125),
-})
+  maxWidth: theme.desktopCenteredContentMaxWidth,
+}))
 
 const Paragraphe = styled.Text({
   flexWrap: 'wrap',

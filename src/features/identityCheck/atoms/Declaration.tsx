@@ -19,9 +19,15 @@ export const Declaration = ({ text, description }: { text: string; description: 
   )
 }
 
-const CenteredContainer = styled.View({ alignItems: 'center', maxWidth: getSpacing(125) })
+const CenteredContainer = styled.View(({ theme }) => ({
+  alignItems: 'center',
+  maxWidth: theme.desktopCenteredContentMaxWidth,
+}))
+
 const CenteredText = styled(Typo.Body)({ textAlign: 'center' })
+
 const CenteredDescription = styled(Typo.Caption)({ textAlign: 'center' })
+
 const QuoteContainer = styled.View<{ reversed?: boolean }>(({ reversed = false }) => ({
   paddingVertical: getSpacing(4),
   transform: reversed ? 'rotate(180deg)' : undefined,

@@ -236,11 +236,11 @@ const LogoMinistereContainer = styled.View({
   height: getSpacing(28),
 })
 
-const NetworkRow = styled.View({
+const NetworkRow = styled.View(({ theme }) => ({
   width: '100%',
   margin: 'auto',
-  maxWidth: getSpacing(125),
-})
+  maxWidth: theme.desktopCenteredContentMaxWidth,
+}))
 
 const NetworkRowContainer = styled.View({
   flexDirection: 'row',

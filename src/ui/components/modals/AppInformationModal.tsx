@@ -80,8 +80,8 @@ const Container = styled(TouchableOpacity)(({ theme }) => ({
     : theme.breakpoints.sm - getSpacing(3),
 }))
 
-const Content = styled.View({
+const Content = styled.View(({ theme }) => ({
   width: '100%',
   alignItems: 'center',
-  maxWidth: getSpacing(125),
-})
+  maxWidth: theme.desktopCenteredContentMaxWidth,
+}))

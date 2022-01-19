@@ -142,6 +142,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity).attrs(() => ({
     fullWidth,
     justifyContent,
     numberOfLines,
+    theme,
   }) => ({
     flexDirection: 'row',
     justifyContent: justifyContent === 'flex-start' ? 'flex-start' : 'center',
@@ -153,7 +154,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity).attrs(() => ({
     borderWidth: borderColor ? 2 : 0,
     height: buttonHeight === 'tall' ? getSpacing(12) : getSpacing(10),
     width: '100%',
-    ...(fullWidth ? {} : { maxWidth: getSpacing(125) }),
+    ...(fullWidth ? {} : { maxWidth: theme.desktopCenteredContentMaxWidth }),
     ...(inline
       ? {
           borderWidth: 0,
