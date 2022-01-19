@@ -66,7 +66,11 @@ commands:
           name: Restore Tests cache
           keys:
             - jest-cache-{{ checksum "yarn.lock" }}-{{ arch }}
-      - run: yarn test:unit:ci
+      - run:
+          command: |
+            mkdir -p test-results/jest
+            TEST=$(circleci tests glob src/**/*.test.ts | circleci tests split --split-by=timings)
+            yarn test:unit:ci
       - save_cache:
           name: Save Tests cache
           key: jest-cache-{{ checksum "yarn.lock" }}-{{ arch }}
@@ -329,6 +333,7 @@ jobs:
       - install_node_modules
       - unit_test_native
       - sonarcloud-scanner
+    parallelism: 4
 
   test-web:
     executor: node
