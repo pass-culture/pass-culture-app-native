@@ -51,7 +51,6 @@ import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
-import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Info } from 'ui/svg/icons/Info'
 import { InfoFraud } from 'ui/svg/icons/InfoFraud'
@@ -81,11 +80,9 @@ import { Profile } from 'ui/svg/icons/Profile'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Quote } from 'ui/svg/icons/Quote'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
-import { SadFace } from 'ui/svg/icons/SadFace'
 import { Share } from 'ui/svg/icons/Share'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { Sun } from 'ui/svg/icons/Sun'
-import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
 import { Warning } from 'ui/svg/icons/Warning'
@@ -109,10 +106,6 @@ export const Icons: FunctionComponent = () => {
       <TertiaryAndSmallerIcons />
       <Spacer.Column numberOfSpaces={4} />
       <Text> Icônes à uniformiser (conversion en illustrations) </Text>
-      <AlignedText>
-        <TicketBooked width={STANDARD_ICON_SIZE} height={STANDARD_ICON_SIZE} />
-        <Text> - TicketBooked </Text>
-      </AlignedText>
       <AlignedText>
         <MaintenanceCone
           width={STANDARD_ICON_SIZE * 2}
@@ -300,8 +293,6 @@ const SecondaryAndBiggerIcons = () => {
       <Icon name="SignOut" component={SignOut} isNew />
       <Icon name="Share" component={Share} isNew />
       <Icon name="Sun" component={Sun} isNew />
-      <Icon name="SadFace" component={SadFace} />
-      <Icon name="HappyFace" component={HappyFace} />
       <Icon name="Warning" component={Warning} isNew />
       <Text>{'\n'}</Text>
     </React.Fragment>

@@ -3,6 +3,7 @@
 exports[`PhoneError should render component correctly 1`] = `
 <RNSVGSvgView
   align="xMidYMid"
+  aria-hidden={true}
   bbHeight={109.2}
   bbWidth={140}
   fill="none"

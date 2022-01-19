@@ -9,7 +9,7 @@ import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { SadFace } from 'ui/svg/icons/SadFace'
+import { SadFaceDeprecated as SadFace } from 'ui/svg/icons/SadFace_deprecated'
 import { Spacer, Typo } from 'ui/theme'
 
 type Props = {

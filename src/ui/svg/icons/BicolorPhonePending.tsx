@@ -18,7 +18,7 @@ export const BicolorPhonePending: React.FC<BicolorIconInterface> = ({
 
   const height = typeof size === 'string' ? size : (size * 156) / 200
   return (
-    <Svg width={size} height={height} viewBox="0 0 200 156" fill="none" testID={testID}>
+    <Svg width={size} height={height} viewBox="0 0 200 156" fill="none" testID={testID} aria-hidden>
       <Path
         fillRule="evenodd"
         clipRule="evenodd"

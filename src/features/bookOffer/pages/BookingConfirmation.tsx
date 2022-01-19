@@ -12,7 +12,7 @@ import { formatToFrenchDecimal } from 'libs/parsers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { TicketBooked } from 'ui/svg/icons/TicketBooked'
+import { TicketBookedDeprecated as TicketBooked } from 'ui/svg/icons/TicketBooked_deprecated'
 import { ColorsEnum, Spacer, Typo } from 'ui/theme'
 
 export function BookingConfirmation() {
