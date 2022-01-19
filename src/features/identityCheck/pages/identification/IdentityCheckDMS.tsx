@@ -9,7 +9,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { OrSeparator } from 'ui/components/OrSeparator'
-import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
+import { BicolorIdCardWithMagnifyingGlassDeprecated as BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass_deprecated'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
