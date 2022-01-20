@@ -73,6 +73,7 @@ const _AppButton = <T extends AppButtonProps>({
   const longPressHandler = disabled || isLoading ? undefined : onLongPress
   return (
     <StyledTouchableOpacity
+      accessibilityState={{ disabled }}
       {...accessibilityAndTestId(accessibilityLabel || title, testId || title)}
       backgroundColor={backgroundColor}
       fullWidth={fullWidth}
