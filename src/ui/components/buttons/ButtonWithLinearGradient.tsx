@@ -28,6 +28,7 @@ export const ButtonWithLinearGradient: React.FC<Props> = ({
       activeOpacity={activeOpacity}
       onPress={onPress}
       disabled={isDisabled}
+      accessibilityState={{ disabled: isDisabled }}
       {...accessibilityAndTestId(wording)}>
       {isDisabled ? <DisabledRectangle /> : <Rectangle height={getSpacing(12)} size="100%" />}
       <LegendContainer>
