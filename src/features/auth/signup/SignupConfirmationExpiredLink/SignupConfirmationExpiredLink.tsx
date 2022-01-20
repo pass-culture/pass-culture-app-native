@@ -39,7 +39,7 @@ export function SignupConfirmationExpiredLink(props: Props) {
 
   const renderResendEmailButton = () => (
     <ButtonPrimaryWhite
-      title={t`Renvoyer l'email`}
+      wording={t`Renvoyer l'email`}
       onPress={signupConfirmationExpiredLinkQuery}
       disabled={isFetching}
     />

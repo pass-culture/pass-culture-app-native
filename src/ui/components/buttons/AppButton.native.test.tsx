@@ -12,8 +12,8 @@ describe('AppButton Component', () => {
     it('should display icon when provided', () => {
       const { getByTestId } = render(
         <AppButton
-          Title={Typo.ButtonText}
-          title="Testing Disabled"
+          title={Typo.ButtonText}
+          wording="Testing Disabled"
           loadingIndicator={InitialLoadingIndicator}
           icon={Close}
         />
@@ -23,9 +23,9 @@ describe('AppButton Component', () => {
     it('should not display icon when not provided', () => {
       const { queryByTestId } = render(
         <AppButton
-          title="Testing Disabled"
+          wording="Testing Disabled"
           loadingIndicator={InitialLoadingIndicator}
-          Title={Typo.ButtonText}
+          title={Typo.ButtonText}
         />
       )
       const icon = queryByTestId('button-icon')
@@ -36,8 +36,8 @@ describe('AppButton Component', () => {
     it('should display right elements when isLoading equals true', () => {
       const { getByTestId, queryByTestId } = render(
         <AppButton
-          Title={Typo.ButtonText}
-          title="Testing Disabled"
+          title={Typo.ButtonText}
+          wording="Testing Disabled"
           loadingIndicator={InitialLoadingIndicator}
           isLoading
           icon={Close}
@@ -50,8 +50,8 @@ describe('AppButton Component', () => {
     it('should display right elements when isLoading equals false', () => {
       const { getByTestId, queryByTestId } = render(
         <AppButton
-          Title={Typo.ButtonText}
-          title="Testing Disabled"
+          title={Typo.ButtonText}
+          wording="Testing Disabled"
           loadingIndicator={InitialLoadingIndicator}
           isLoading={false}
           icon={Close}
@@ -67,8 +67,8 @@ describe('AppButton Component', () => {
     it('should disable handlers when disabled equals true', () => {
       const { getByTestId } = render(
         <AppButton
-          Title={Typo.ButtonText}
-          title="Testing Disabled"
+          title={Typo.ButtonText}
+          wording="Testing Disabled"
           loadingIndicator={InitialLoadingIndicator}
           icon={Close}
           disabled
@@ -85,8 +85,8 @@ describe('AppButton Component', () => {
     it('should use inline css style when true', () => {
       const renderAPI = render(
         <AppButton
-          Title={Typo.ButtonText}
-          title="Testing inline"
+          title={Typo.ButtonText}
+          wording="Testing inline"
           loadingIndicator={InitialLoadingIndicator}
           icon={Close}
           inline

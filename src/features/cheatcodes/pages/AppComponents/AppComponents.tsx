@@ -141,53 +141,53 @@ export const AppComponents: FunctionComponent = () => {
         <Typo.Title4>Button - Theme Primary</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
         <ButtonPrimary
-          title="Longpress to see"
+          wording="Longpress to see"
           onPress={onButtonPress}
           onLongPress={onTriggerFakeLoading}
           icon={Email}
           isLoading={buttonIsLoading}
         />
         <Spacer.Column numberOfSpaces={1} />
-        <ButtonPrimary title="Disabled" onPress={onButtonPress} icon={Email} disabled />
+        <ButtonPrimary wording="Disabled" onPress={onButtonPress} icon={Email} disabled />
         <Spacer.Column numberOfSpaces={2} />
         {/* Buttons: White Primary */}
         <Typo.Title4>Button - White Primary Secondary</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
         <ButtonPrimaryWhite
-          title="White button"
+          wording="White button"
           onPress={onTriggerFakeLoading}
           isLoading={buttonIsLoading}
           icon={Email}
         />
         <Spacer.Column numberOfSpaces={1} />
-        <ButtonPrimaryWhite title="Disabled" onPress={onButtonPress} icon={Email} disabled />
+        <ButtonPrimaryWhite wording="Disabled" onPress={onButtonPress} icon={Email} disabled />
         <Spacer.Column numberOfSpaces={2} />
         {/* Buttons: Secondary */}
         <Typo.Title4>Button - Theme Secondary</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
         <ButtonSecondary
-          title="Triggers all active buttons"
+          wording="Triggers all active buttons"
           icon={Email}
           isLoading={buttonIsLoading}
           onPress={onTriggerFakeLoading}
         />
         <Spacer.Column numberOfSpaces={1} />
-        <ButtonSecondary title="Disabled" icon={Email} disabled onPress={onButtonPress} />
+        <ButtonSecondary wording="Disabled" icon={Email} disabled onPress={onButtonPress} />
         <Spacer.Column numberOfSpaces={2} />
         {/* Buttons: Tertiary */}
         <Typo.Title4>Button - Theme Tertiary</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
         <ButtonTertiary
-          title="Triggers all active buttons"
+          wording="Triggers all active buttons"
           icon={Close}
           isLoading={buttonIsLoading}
           onPress={onTriggerFakeLoading}
         />
         <Spacer.Column numberOfSpaces={1} />
-        <ButtonTertiary title="Disabled" onPress={onButtonPress} icon={Close} disabled />
+        <ButtonTertiary wording="Disabled" onPress={onButtonPress} icon={Close} disabled />
         <Spacer.Column numberOfSpaces={1} />
         <ButtonTertiaryWhite
-          title="White tertiary button"
+          wording="White tertiary button"
           icon={Email}
           isLoading={buttonIsLoading}
           onPress={onTriggerFakeLoading}
@@ -197,14 +197,14 @@ export const AppComponents: FunctionComponent = () => {
         <Typo.Title4>Button - Theme Quaternary</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
         <ButtonQuaternary
-          title="Triggers all active buttons"
+          wording="Triggers all active buttons"
           icon={Email}
           isLoading={buttonIsLoading}
           onPress={onTriggerFakeLoading}
         />
         <Spacer.Column numberOfSpaces={1} />
-        <ButtonQuaternary title="Se connecter" onPress={onButtonPress} icon={Email} disabled />
-        <ButtonQuaternaryBlack title="Se connecter" onPress={onButtonPress} icon={Email} />
+        <ButtonQuaternary wording="Se connecter" onPress={onButtonPress} icon={Email} disabled />
+        <ButtonQuaternaryBlack wording="Se connecter" onPress={onButtonPress} icon={Email} />
         {/* Buttons: With linear gradient */}
         <Typo.Title4>Button - With linear gradient</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />

@@ -11,7 +11,7 @@ import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { ColorsEnum, Typo, Spacer, getSpacing } from 'ui/theme'
+import { Typo, Spacer, getSpacing } from 'ui/theme'
 
 export interface Props {
   visible: boolean
@@ -46,23 +46,27 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
         </Typo.Body>
       </Description>
       <ButtonQuaternary
-        title={t`Politique des cookies`}
+        wording={t`Politique des cookies`}
         onPress={openCookiesPolicyExternalUrl}
         icon={ExternalSiteFilled}
       />
       <SubDescription>
-        <Typo.Caption color={ColorsEnum.GREY_DARK}>
+        <Caption>
           {t`Tu pourras modifier tes paramètres de confidentialité dans ton profil.`}
-        </Typo.Caption>
+        </Caption>
       </SubDescription>
       <CallToActionsContainer>
-        <AcceptanceButton title={t`Autoriser`} onPress={onApproval} />
+        <AcceptanceButton wording={t`Autoriser`} onPress={onApproval} />
         <Spacer.Column numberOfSpaces={3} />
-        <RefusalButton title={t`Refuser`} onPress={onRefusal} />
+        <RefusalButton wording={t`Refuser`} onPress={onRefusal} />
       </CallToActionsContainer>
     </AppModal>
   )
 }
+
+const Caption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
 
 const CallToActionsContainer = styled.View(({ theme }) => ({
   flexDirection: theme.isDesktopViewport ? 'column' : 'column-reverse',

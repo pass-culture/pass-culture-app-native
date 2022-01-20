@@ -28,7 +28,7 @@ export const ButtonSecondary: FunctionComponent<BaseButtonProps> = (props) => {
       : theme.buttons.secondary.marginLeft,
   }))
 
-  return <Button {...props} icon={Icon} Title={Title} loadingIndicator={LoadingIndicator} />
+  return <Button {...props} icon={Icon} title={Title} loadingIndicator={LoadingIndicator} />
 }
 
 const Button = styled(AppButton)(({ theme, isLoading, disabled }) => ({

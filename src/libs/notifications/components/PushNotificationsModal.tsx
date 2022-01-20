@@ -6,7 +6,7 @@ import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
   onDismiss: () => void
@@ -26,11 +26,7 @@ export const PushNotificationsModal: React.FC<Props> = ({
     testIdSuffix="notifications-permission-modal">
     <React.Fragment>
       <Spacer.Column numberOfSpaces={5} />
-      <BicolorLocationPointer
-        size={85}
-        color={ColorsEnum.GREY_DARK}
-        color2={ColorsEnum.GREY_DARK}
-      />
+      <Icon />
       <Spacer.Column numberOfSpaces={10} />
       <InformationText>
         {t`Reste informé des actualités du pass Culture en activant les notifications.`}
@@ -42,7 +38,7 @@ export const PushNotificationsModal: React.FC<Props> = ({
       </InformationText>
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
-        title={t`Autoriser les notifications`}
+        wording={t`Autoriser les notifications`}
         onPress={() => {
           analytics.logOpenNotificationSettings()
           onRequestPermission()
@@ -51,6 +47,12 @@ export const PushNotificationsModal: React.FC<Props> = ({
     </React.Fragment>
   </AppInformationModal>
 )
+
+const Icon = styled(BicolorLocationPointer).attrs(({ theme }) => ({
+  size: getSpacing(21.25),
+  color: theme.colors.greyDark,
+  color2: theme.colors.greyDark,
+}))``
 
 const InformationText = styled(Typo.Body)({
   textAlign: 'center',

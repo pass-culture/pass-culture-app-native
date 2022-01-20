@@ -44,7 +44,7 @@ export function NavigationNotScreensPages(): JSX.Element {
       <StyledContainer>
         <Row half>
           <NavigationButton
-            title="BrowserNotSupportedPage"
+            wording="BrowserNotSupportedPage"
             onPress={() => setPage(Page.BrowserNotSupportedPage)}
           />
         </Row>
@@ -55,7 +55,7 @@ export function NavigationNotScreensPages(): JSX.Element {
 }
 
 const NavigationButton = styled(ButtonPrimary).attrs({
-  textSize: 11.5,
+  textSize: 11.5, // TODO: fix me because this will not work as the textSize was removed, either pass a title props with custom textSize or use an existing button with small text size
 })``
 
 const StyledContainer = styled.View({

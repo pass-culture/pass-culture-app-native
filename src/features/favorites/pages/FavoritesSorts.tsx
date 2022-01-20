@@ -13,7 +13,6 @@ import { PageHeader } from 'ui/components/headers/PageHeader'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export type FavoriteSortBy = 'RECENTLY_ADDED' | 'ASCENDING_PRICE' | 'AROUND_ME'
 const SORT_OPTIONS: Record<FavoriteSortBy, string> = {
@@ -101,7 +100,7 @@ export const FavoritesSorts: React.FC = () => {
 
       <PageHeader title={t`Trier`} />
       <ButtonContainer>
-        <StyledButtonPrimary title={t`Valider`} onPress={onValidation} />
+        <StyledButtonPrimary wording={t`Valider`} onPress={onValidation} />
       </ButtonContainer>
     </Container>
   )
@@ -118,13 +117,12 @@ const contentContainerStyle: ViewStyle = {
   paddingRight: getSpacing(3),
 }
 
-const LabelContainer = styled.TouchableOpacity.attrs({
-  activeOpacity: ACTIVE_OPACITY,
-})({
+const LabelContainer = styled.TouchableOpacity(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
   flexDirection: 'row',
   alignItems: 'center',
   marginBottom: getSpacing(4),
-})
+}))
 
 const TitleContainer = styled.View({
   flexDirection: 'row',

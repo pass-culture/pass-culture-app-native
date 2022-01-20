@@ -6,5 +6,5 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 
 export const OpenInboxButton = () => (
-  <ButtonPrimary title={t`Consulter mes e-mails`} onPress={openInbox} icon={ExternalSite} />
+  <ButtonPrimary wording={t`Consulter mes e-mails`} onPress={openInbox} icon={ExternalSite} />
 )

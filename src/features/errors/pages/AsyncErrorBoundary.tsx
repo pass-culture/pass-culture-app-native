@@ -11,8 +11,8 @@ import { ScreenError } from 'libs/monitoring/errors'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { ArrowPrevious as ArrowPreviousDefault } from 'ui/svg/icons/ArrowPrevious'
+import { getSpacing, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface AsyncFallbackProps extends FallbackProps {
@@ -61,7 +61,7 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
       buttons={[
         <ButtonPrimaryWhite
           key={1}
-          title={t`Réessayer`}
+          wording={t`Réessayer`}
           onPress={handleRetry}
           buttonHeight="tall"
         />,
@@ -81,7 +81,7 @@ export const AsyncErrorBoundary = (props: AsyncFallbackProps) => {
       header={
         !!canGoBack() && (
           <HeaderContainer onPress={goBack} top={top + getSpacing(3.5)} testID="backArrow">
-            <ArrowPrevious color={ColorsEnum.WHITE} size={getSpacing(7)} />
+            <ArrowPrevious />
           </HeaderContainer>
         )
       }
@@ -89,13 +89,18 @@ export const AsyncErrorBoundary = (props: AsyncFallbackProps) => {
   )
 }
 
+const ArrowPrevious = styled(ArrowPreviousDefault).attrs(({ theme }) => ({
+  color: theme.colors.white,
+  size: getSpacing(7),
+}))``
+
 const HeaderContainer = styled.TouchableOpacity<{ top: number }>(({ top }) => ({
   position: 'absolute',
   top,
   left: getSpacing(6),
 }))
 
-const StyledBody = styled(Typo.Body)(({ color, theme }) => ({
-  color: color ?? theme.colors.white,
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
   textAlign: 'center',
 }))

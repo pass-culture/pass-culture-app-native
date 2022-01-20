@@ -74,7 +74,7 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
             {t`Pour plus d'informations, nous t'invitons à consulter notre`}
             <Spacer.Row numberOfSpaces={1} />
             <ButtonQuaternary
-              title={t`Politique des cookies`}
+              wording={t`Politique des cookies`}
               icon={ExternalSiteFilled}
               onPress={openCookiesPolicyExternalUrl}
               inline
@@ -100,7 +100,7 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
         </Line>
         <Spacer.Flex flex={1} />
         <StyledButtonPrimary
-          title={t`Enregistrer`}
+          wording={t`Enregistrer`}
           onPress={save}
           disabled={isSaveButtonDisabled}
         />

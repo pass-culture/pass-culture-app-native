@@ -33,7 +33,7 @@ export const ButtonTertiaryBlack: FunctionComponent<BaseButtonProps> = (props) =
       {...props}
       loadingIndicator={LoadingIndicator}
       icon={Icon}
-      Title={Title}
+      title={Title}
       inlineHeight={20}
     />
   )

@@ -73,7 +73,7 @@ export const SetName = () => {
         </React.Fragment>
       }
       fixedBottomChildren={
-        <ButtonPrimary title={t`Continuer`} onPress={submitName} disabled={disabled} />
+        <ButtonPrimary wording={t`Continuer`} onPress={submitName} disabled={disabled} />
       }
     />
   )

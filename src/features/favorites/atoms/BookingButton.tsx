@@ -41,7 +41,7 @@ export const BookingButton: React.FC<Props> = (props) => {
   // User is an ex-beneficiary
   if (isUserExBeneficiary(props.user)) {
     if (isBookedOffer) {
-      return <ButtonPrimary title={t`Offre réservée`} buttonHeight="tall" disabled />
+      return <ButtonPrimary wording={t`Offre réservée`} buttonHeight="tall" disabled />
     }
     if (!props.offer.isReleased || props.offer.isExpired || props.offer.isSoldOut) {
       return null
@@ -56,22 +56,22 @@ export const BookingButton: React.FC<Props> = (props) => {
 
   // User is beneficiary
   if (isBookedOffer) {
-    return <ButtonPrimary title={t`Offre réservée`} buttonHeight="tall" disabled />
+    return <ButtonPrimary wording={t`Offre réservée`} buttonHeight="tall" disabled />
   }
   if (!props.offer.isReleased || props.offer.isExpired) {
-    return <ButtonPrimary title={t`Offre expirée`} buttonHeight="tall" disabled />
+    return <ButtonPrimary wording={t`Offre expirée`} buttonHeight="tall" disabled />
   }
   if (props.offer.isSoldOut) {
-    return <ButtonPrimary title={t`Offre épuisée`} buttonHeight="tall" disabled />
+    return <ButtonPrimary wording={t`Offre épuisée`} buttonHeight="tall" disabled />
   }
   if (!isFreeOffer && !doesUserHaveEnoughCredit) {
-    return <ButtonPrimary title={t`Crédit insuffisant`} buttonHeight="tall" disabled />
+    return <ButtonPrimary wording={t`Crédit insuffisant`} buttonHeight="tall" disabled />
   }
   return <BookInAppButton onPress={() => props.onInAppBooking(props.offer)} />
 }
 
 const BookInAppButton = ({ onPress }: { onPress: () => void }) => (
-  <ButtonPrimary title={t`Réserver`} onPress={onPress} buttonHeight="tall" />
+  <ButtonPrimary wording={t`Réserver`} onPress={onPress} buttonHeight="tall" />
 )
 
 const BookExternallyButton = ({
@@ -83,7 +83,7 @@ const BookExternallyButton = ({
 }) =>
   url ? (
     <ButtonPrimary
-      title={t`Réserver`}
+      wording={t`Réserver`}
       onPress={() => url && openUrl(url, { analyticsData: { offerId } })}
       icon={ExternalSite}
       buttonHeight="tall"

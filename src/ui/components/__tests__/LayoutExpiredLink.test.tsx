@@ -10,7 +10,7 @@ const url = 'https://passculture.zendesk.com/hc/fr/'
 const contactSupport = jest.fn()
 
 const renderResendEmailButton = () => (
-  <ButtonPrimaryWhite title="Renvoyer l'email" onPress={onResendEmail} disabled={isFetching} />
+  <ButtonPrimaryWhite wording="Renvoyer l'email" onPress={onResendEmail} disabled={isFetching} />
 )
 
 describe('<LayoutExpiredLink/>', () => {

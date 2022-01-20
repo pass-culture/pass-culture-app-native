@@ -71,7 +71,7 @@ export const SetSchoolType = () => {
       fixedBottomChildren={
         <ButtonPrimary
           onPress={onPressContinue}
-          title={!selectedSchoolTypeId ? t`Choisis ton statut` : t`Continuer`}
+          wording={!selectedSchoolTypeId ? t`Choisis ton statut` : t`Continuer`}
           disabled={!selectedSchoolTypeId}
         />
       }

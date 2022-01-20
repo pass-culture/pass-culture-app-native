@@ -47,10 +47,10 @@ export function ConfirmDeleteProfile() {
         <ButtonPrimaryWhite
           key={1}
           isLoading={isLoading}
-          title={t`Supprimer mon compte`}
+          wording={t`Supprimer mon compte`}
           onPress={notifyAccountSuspend}
         />,
-        <ButtonTertiaryWhite key={2} title={t`Abandonner`} onPress={goBack} />,
+        <ButtonTertiaryWhite key={2} wording={t`Abandonner`} onPress={goBack} />,
       ]}>
       <StyledBody>{t`Cela entraînera l'annulation de l'ensemble de tes réservations en cours, ainsi que la suppression définitive de ton crédit pass Culture si tu en bénéficies.`}</StyledBody>
     </GenericInfoPage>

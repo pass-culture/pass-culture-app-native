@@ -42,7 +42,7 @@ export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
         title={t`Offre introuvable\u00a0!`}
         icon={NoOffer}
         buttons={[
-          <ButtonPrimaryWhite key={1} title={t`Retourner à l'accueil`} onPress={onPress} />,
+          <ButtonPrimaryWhite key={1} wording={t`Retourner à l'accueil`} onPress={onPress} />,
         ]}>
         <StyledBody>{t`Il est possible que cette offre soit désactivée ou n'existe pas.`}</StyledBody>
       </GenericInfoPage>

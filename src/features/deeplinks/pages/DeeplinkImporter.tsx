@@ -14,7 +14,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const DeeplinkImporter: FunctionComponent = () => {
   const [url, setUrl] = useState('')
@@ -62,16 +62,20 @@ export const DeeplinkImporter: FunctionComponent = () => {
           />
         </StyledInput>
         <Spacer.Column numberOfSpaces={4} />
-        <Typo.Caption color={ColorsEnum.GREY_DARK}>
+        <Caption>
           {t`Copie ici le lien qui t'a été envoyé par email et clique sur le bouton "Importer le lien"`}
-        </Typo.Caption>
+        </Caption>
         <Spacer.Column numberOfSpaces={6} />
-        <ButtonPrimary title={t`Importer le lien`} onPress={resolveLink} isLoading={false} />
+        <ButtonPrimary wording={t`Importer le lien`} onPress={resolveLink} isLoading={false} />
         <Spacer.Column numberOfSpaces={3} />
       </ModalContent>
     </BottomContentPage>
   )
 }
+
+const Caption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
 
 const ModalContent = styled.View({
   paddingTop: getSpacing(7),

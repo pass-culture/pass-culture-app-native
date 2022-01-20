@@ -9,7 +9,7 @@ import { useIdentityCheckContext } from 'features/identityCheck/context/Identity
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export function IdentityCheckValidation() {
   const { dispatch, identification } = useIdentityCheckContext()
@@ -32,25 +32,32 @@ export function IdentityCheckValidation() {
       }
       scrollChildren={
         <BodyContainer>
-          <Typo.Body color={ColorsEnum.GREY_DARK}>{t`Ton prénom`}</Typo.Body>
+          <Body>{t`Ton prénom`}</Body>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.Title3 testID="validation-first-name">{identification.firstName}</Typo.Title3>
           <Spacer.Column numberOfSpaces={5} />
-          <Typo.Body color={ColorsEnum.GREY_DARK}>{t`Ton nom de famille`}</Typo.Body>
+          <Body>{t`Ton nom de famille`}</Body>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.Title3 testID="validation-name">{identification.lastName}</Typo.Title3>
           <Spacer.Column numberOfSpaces={5} />
-          <Typo.Body color={ColorsEnum.GREY_DARK}>{t`Ta date de naissance`}</Typo.Body>
+          <Body>{t`Ta date de naissance`}</Body>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.Title3 testID="validation-birth-date">{birthDate}</Typo.Title3>
         </BodyContainer>
       }
       fixedBottomChildren={
-        <ButtonPrimary title={t`Valider mes informations`} onPress={navigateToNextEduConnectStep} />
+        <ButtonPrimary
+          wording={t`Valider mes informations`}
+          onPress={navigateToNextEduConnectStep}
+        />
       }
     />
   )
 }
+
+const Body = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
 
 const BodyContainer = styled.View({
   alignItems: 'center',

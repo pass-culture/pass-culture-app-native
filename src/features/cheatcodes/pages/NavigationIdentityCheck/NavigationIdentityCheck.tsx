@@ -45,18 +45,18 @@ export function NavigationIdentityCheck(): JSX.Element {
         onRightIconPress={undefined}
       />
       <StyledContainer>
-        <LinkToComponent name="IdentityCheckStepper" title="Stepper" />
-        <LinkToComponent name="IdentityCheckStatus" title="Status" />
+        <LinkToComponent name="IdentityCheckStepper" wording="Stepper" />
+        <LinkToComponent name="IdentityCheckStatus" wording="Status" />
         <LinkToComponent name="IdentityCheckStart" />
         <LinkToComponent name="IdentityCheckUnavailable" />
         <LinkToComponent name="IdentityCheckPending" />
         <LinkToComponent name="SetName" />
-        <LinkToComponent name="IdentityCheckAddress" title="SetAddress" />
-        <LinkToComponent name="IdentityCheckCity" title="SetCity" />
+        <LinkToComponent name="IdentityCheckAddress" wording="SetAddress" />
+        <LinkToComponent name="IdentityCheckCity" wording="SetCity" />
         <LinkToComponent name="IdentityCheckEnd" />
         <LinkToComponent name="IdentityCheckHonor" />
         <LinkToComponent name="IdentityCheckEduConnectForm" />
-        <LinkToComponent name="IdentityCheckEduConnect" title={'EduConnect'} />
+        <LinkToComponent name="IdentityCheckEduConnect" wording="EduConnect" />
         <LinkToComponent name="IdentityCheckDMS" />
         <LinkToComponent
           name="IdentityCheckValidation"
@@ -67,29 +67,29 @@ export function NavigationIdentityCheck(): JSX.Element {
           }}
         />
         <LinkToComponent
-          title={'UserAgeNotValid Educonnect Error'}
+          wording={'UserAgeNotValid Educonnect Error'}
           onPress={() => trigger(EduConnectErrorMessageEnum.UserAgeNotValid)}
         />
         <LinkToComponent
-          title={'UserAgeNotValid18YearsOld Error'}
+          wording={'UserAgeNotValid18YearsOld Error'}
           onPress={() => trigger(EduConnectErrorMessageEnum.UserAgeNotValid18YearsOld)}
         />
         <LinkToComponent
-          title={'UserTypeNotStudent Error'}
+          wording={'UserTypeNotStudent Error'}
           onPress={() => trigger(EduConnectErrorMessageEnum.UserTypeNotStudent)}
         />
 
         <LinkToComponent
-          title={'UserNotWhitelisted Error'}
+          wording={'UserNotWhitelisted Error'}
           onPress={() => trigger(EduConnectErrorMessageEnum.UserNotWhitelisted)}
         />
         <LinkToComponent
-          title={'Generic Error'}
+          wording={'Generic Error'}
           onPress={() => trigger(EduConnectErrorMessageEnum.GenericError)}
         />
         <Row half>
           <NavigationButton
-            title={'Identifie-toi en 2 minutes'}
+            wording={'Identifie-toi en 2 minutes'}
             onPress={() => {
               setFastEduconnectConnectionRequestModalVisible(true)
             }}
@@ -108,14 +108,14 @@ export function NavigationIdentityCheck(): JSX.Element {
 interface LinkToComponentProps {
   name?: RootScreenNames
   onPress?: () => void
-  title?: string
+  wording?: string
   navigationParams?: RootStackParamList[RootScreenNames]
 }
 
 const LinkToComponent = ({
   name = 'NavigationIdentityCheck',
   onPress,
-  title,
+  wording,
   navigationParams,
 }: LinkToComponentProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -123,14 +123,14 @@ const LinkToComponent = ({
 
   return (
     <Row half>
-      <NavigationButton title={title ?? name} onPress={onPress ?? navigateToComponent} />
+      <NavigationButton wording={wording ?? name} onPress={onPress ?? navigateToComponent} />
     </Row>
   )
 }
 
 const NavigationButton = styled(ButtonPrimary).attrs({
-  textSize: 11.5,
-})({})
+  textSize: 11.5, // TODO: fix me because this will not work as the textSize was removed, either pass a title props with custom textSize or use an existing button with small text size
+})``
 
 const StyledContainer = styled.View({
   display: 'flex',

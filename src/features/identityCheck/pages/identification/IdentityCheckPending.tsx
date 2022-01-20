@@ -14,7 +14,7 @@ export function IdentityCheckPending() {
       title={t`Oups\u00a0!`}
       icon={IdCardError}
       buttons={[
-        <ButtonPrimaryWhite key={1} title={t`Retourner à l'accueil`} onPress={navigateToHome} />,
+        <ButtonPrimaryWhite key={1} wording={t`Retourner à l'accueil`} onPress={navigateToHome} />,
       ]}>
       <StyledBody>{t`Il y a déjà une demande de crédit pass Culture en cours sur ton compte.`}</StyledBody>
       <Spacer.Column numberOfSpaces={5} />
@@ -23,7 +23,7 @@ export function IdentityCheckPending() {
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ color, theme }) => ({
-  color: color ?? theme.colors.white,
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
   textAlign: 'center',
 }))

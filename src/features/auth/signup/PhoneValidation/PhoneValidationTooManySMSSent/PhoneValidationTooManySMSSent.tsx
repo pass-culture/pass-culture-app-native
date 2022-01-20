@@ -14,7 +14,7 @@ export function PhoneValidationTooManySMSSent() {
       title={t`Trop de tentatives\u00a0!`}
       icon={AccountLocked}
       buttons={[
-        <ButtonPrimaryWhite key={1} title={t`Retourner à l'accueil`} onPress={navigateToHome} />,
+        <ButtonPrimaryWhite key={1} wording={t`Retourner à l'accueil`} onPress={navigateToHome} />,
       ]}>
       <StyledBody>
         {t`Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures\u00a0!`}

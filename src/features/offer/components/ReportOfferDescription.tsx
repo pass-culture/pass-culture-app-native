@@ -30,7 +30,7 @@ export const ReportOfferDescription: FunctionComponent<Props> = ({ onPressReport
       />
       <Spacer.Column numberOfSpaces={13} />
       <ButtonPrimary
-        title={t`Signaler l'offre`}
+        wording={t`Signaler l'offre`}
         onPress={onPressReportOffer}
         testId={'go-to-reason-report-button'}
       />

@@ -72,7 +72,7 @@ export const Status = () => {
       fixedBottomChildren={
         <ButtonPrimary
           onPress={submitStatus}
-          title={!selectedStatus ? t`Choisis ton statut` : t`Continuer`}
+          wording={!selectedStatus ? t`Choisis ton statut` : t`Continuer`}
           disabled={!selectedStatus}
         />
       }

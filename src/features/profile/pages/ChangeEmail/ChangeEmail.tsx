@@ -146,7 +146,7 @@ export function ChangeEmail() {
           {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
           <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
             <ButtonPrimary
-              title={t`Enregistrer`}
+              wording={t`Enregistrer`}
               onPress={submitEmailChange}
               disabled={isSubmitButtonDisabled}
             />

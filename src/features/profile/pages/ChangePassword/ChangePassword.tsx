@@ -135,7 +135,7 @@ export function ChangePassword() {
         {theme.isDesktopViewport ? <Spacer.Column numberOfSpaces={10} /> : <Spacer.Flex flex={1} />}
         {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
         <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
-          <ButtonPrimary title={t`Enregistrer`} onPress={submitPassword} disabled={disabled} />
+          <ButtonPrimary wording={t`Enregistrer`} onPress={submitPassword} disabled={disabled} />
         </ButtonContainer>
         <Spacer.Column numberOfSpaces={6} />
       </StyledScrollView>

@@ -8,7 +8,7 @@ import { isUserExBeneficiary } from 'features/profile/utils'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { useSubcategory } from 'libs/subcategories'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 import { Booking } from './types'
 
@@ -30,7 +30,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   if (properties.hasActivationCode == true && props.activationCodeFeatureEnabled) {
     return (
       <ButtonSecondary
-        title={t`Terminer`}
+        wording={t`Terminer`}
         onPress={props.onTerminate}
         fullWidth={props.fullWidth}
       />
@@ -39,7 +39,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
 
   const renderButton = (
     <ButtonSecondary
-      title={t`Annuler ma réservation`}
+      wording={t`Annuler ma réservation`}
       onPress={props.onCancel}
       fullWidth={props.fullWidth}
     />
@@ -84,7 +84,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   return renderButton
 }
 
-const CancellationCaption = styled(Typo.Caption)({
+const CancellationCaption = styled(Typo.Caption)(({ theme }) => ({
   textAlign: 'center',
-  color: ColorsEnum.GREY_DARK,
-})
+  color: theme.colors.greyDark,
+}))

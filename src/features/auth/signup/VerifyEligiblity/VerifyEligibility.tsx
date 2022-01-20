@@ -9,7 +9,7 @@ import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { ColorsEnum, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const VerifyEligibility: FunctionComponent = () => {
   const [error, setError] = useState<Error | undefined>()
@@ -26,13 +26,13 @@ export const VerifyEligibility: FunctionComponent = () => {
       buttons={[
         <ButtonPrimaryWhite
           key={1}
-          title={t`Vérifier mon identité`}
+          wording={t`Vérifier mon identité`}
           onPress={navigateToNextBeneficiaryValidationStep}
         />,
         <ButtonTertiaryWhite
           key={2}
           icon={PlainArrowPrevious}
-          title={t`Retourner à l'accueil`}
+          wording={t`Retourner à l'accueil`}
           onPress={navigateToHome}
         />,
       ]}>
@@ -47,8 +47,7 @@ export const VerifyEligibility: FunctionComponent = () => {
   )
 }
 
-const StyledBody = styled(Typo.Body).attrs({
-  color: ColorsEnum.WHITE,
-})({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
   textAlign: 'center',
-})
+}))

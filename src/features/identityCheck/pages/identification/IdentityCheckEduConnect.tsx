@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
@@ -11,12 +11,13 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
-import { Spacer, Typo, ColorsEnum, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 export const IdentityCheckEduConnect = () => {
   const { navigateToNextScreen } = useIdentityCheckNavigation()
   const { dispatch } = useIdentityCheckContext()
   const { goBack } = useGoBack(...homeNavConfig)
+  const { colors } = useTheme()
 
   const onGoBack = () => {
     dispatch({ type: 'SET_METHOD', payload: null })
@@ -34,8 +35,8 @@ export const IdentityCheckEduConnect = () => {
           <Center>
             <Spacer.Column numberOfSpaces={10} />
             <BicolorIdCardWithMagnifyingGlass
-              color={ColorsEnum.SECONDARY}
-              color2={ColorsEnum.PRIMARY}
+              color={colors.secondary}
+              color2={colors.primary}
               size={getSpacing(36)}
             />
           </Center>
@@ -44,7 +45,7 @@ export const IdentityCheckEduConnect = () => {
 
           <Spacer.Column numberOfSpaces={4} />
 
-          <TextContent color={ColorsEnum.GREY_DARK}>
+          <TextContent color={colors.greyDark}>
             {t`Pour t'identifier, nous allons te demander de te connecter à ÉduConnect. Pense bien à avoir ton identifiant et ton mot de passe pour continuer. Si tu ne les as pas, contacte ton établissement pour les récupérer.`}
           </TextContent>
 
@@ -52,7 +53,7 @@ export const IdentityCheckEduConnect = () => {
         </Container>
       }
       fixedBottomChildren={
-        <ButtonPrimary title={`Connexion avec ÉduConnect`} onPress={navigateToNextScreen} />
+        <ButtonPrimary wording={`Connexion avec ÉduConnect`} onPress={navigateToNextScreen} />
       }
     />
   )

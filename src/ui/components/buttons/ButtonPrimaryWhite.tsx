@@ -28,7 +28,7 @@ export const ButtonPrimaryWhite: FunctionComponent<BaseButtonProps> = (props) =>
       : theme.buttons.primaryWhite.marginLeft,
   }))
 
-  return <Button {...props} loadingIndicator={LoadingIndicator} icon={Icon} Title={Title} />
+  return <Button {...props} loadingIndicator={LoadingIndicator} icon={Icon} title={Title} />
 }
 
 const Button = styled(AppButton)(({ theme }) => ({

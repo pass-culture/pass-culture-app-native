@@ -153,7 +153,7 @@ export const Favorite: React.FC<Props> = (props) => {
       <ButtonsRow>
         <ButtonContainer>
           <ButtonSecondary
-            title={t`Supprimer`}
+            wording={t`Supprimer`}
             onPress={onRemove}
             buttonHeight="tall"
             disabled={isLoading}

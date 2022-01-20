@@ -14,14 +14,14 @@ export const PageNotFound: React.FC = () => {
       title={t`Page introuvable\u00a0!`}
       icon={PageNotFoundIcon}
       buttons={[
-        <ButtonPrimaryWhite key={1} title={t`Retourner à l'accueil`} onPress={navigateToHome} />,
+        <ButtonPrimaryWhite key={1} wording={t`Retourner à l'accueil`} onPress={navigateToHome} />,
       ]}>
       <StyledBody>{t`Il est possible que cette page soit désactivée ou n'existe pas.`}</StyledBody>
     </GenericInfoPage>
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ color, theme }) => ({
-  color: color ?? theme.colors.white,
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
   textAlign: 'center',
 }))

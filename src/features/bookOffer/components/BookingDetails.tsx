@@ -13,7 +13,7 @@ import { formatToFrenchDecimal } from 'libs/parsers'
 import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { useBooking, useBookingOffer, useBookingStock } from '../pages/BookingOfferWrapper'
 import { useBookOfferMutation } from '../services/useBookOfferMutation'
@@ -117,7 +117,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
 
       <ButtonPrimary
         disabled={!isStockBookable}
-        title={t`Confirmer la réservation`}
+        wording={t`Confirmer la réservation`}
         onPress={onPressBookOffer}
       />
       {!!formattedPriceWithEuro && <Caption>{deductedAmount}</Caption>}
@@ -126,11 +126,12 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
 }
 
 const Container = styled.View({ width: '100%' })
-const Separator = styled.View({
+const Separator = styled.View(({ theme }) => ({
   height: 2,
-  backgroundColor: ColorsEnum.GREY_LIGHT,
-})
-const Caption = styled(Typo.Caption).attrs({ color: ColorsEnum.GREY_DARK })({
+  backgroundColor: theme.colors.greyLight,
+}))
+const Caption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
   marginTop: getSpacing(1),
   textAlign: 'center',
-})
+}))
