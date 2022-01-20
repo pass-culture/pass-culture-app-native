@@ -15,6 +15,7 @@ import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { MaintenanceConeDeprecated } from 'ui/svg/icons/MaintenanceCone_deprecated'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
 import { NoBookingsDeprecated } from 'ui/svg/icons/NoBookings_deprecated'
+import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { NoOfferDeprecated } from 'ui/svg/icons/NoOffer_deprecated'
 import { PhoneFlip } from 'ui/svg/icons/PhoneFlip'
 import { SadFace } from 'ui/svg/icons/SadFace'
@@ -59,6 +60,7 @@ export const Illustrations: FunctionComponent = () => {
       <Illustration name="NoBookingsDeprecated" component={NoBookingsDeprecated} />
       <Illustration name="NoBookings" component={NoBookings} isNew />
       <Illustration name="NoOfferDeprecated" component={NoOfferDeprecated} />
+      <Illustration name="NoOffer" component={NoOffer} isNew />
       <Illustration name="PhoneFlip" component={PhoneFlip} isNew />
       <Illustration name="SadFaceDeprecated" component={SadFaceDeprecated} />
       <Illustration name="SadFace" component={SadFace} isNew />
