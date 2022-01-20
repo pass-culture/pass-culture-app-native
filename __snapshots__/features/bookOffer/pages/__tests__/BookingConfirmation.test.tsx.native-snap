@@ -194,6 +194,11 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
     >
       <View
         accessibilityLabel="Voir ma réservation"
+        accessibilityState={
+          Object {
+            "disabled": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -257,6 +262,11 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       />
       <View
         accessibilityLabel="Retourner à l'accueil"
+        accessibilityState={
+          Object {
+            "disabled": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}

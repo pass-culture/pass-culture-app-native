@@ -267,6 +267,11 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                   >
                     <View
                       accessibilityLabel="Vérifier mon identité"
+                      accessibilityState={
+                        Object {
+                          "disabled": undefined,
+                        }
+                      }
                       accessible={true}
                       collapsable={false}
                       focusable={true}
@@ -332,6 +337,11 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                   >
                     <View
                       accessibilityLabel="Passer"
+                      accessibilityState={
+                        Object {
+                          "disabled": undefined,
+                        }
+                      }
                       accessible={true}
                       collapsable={false}
                       focusable={true}

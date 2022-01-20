@@ -626,6 +626,11 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
           >
             <View
               accessibilityLabel="Choisis ton statut"
+              accessibilityState={
+                Object {
+                  "disabled": true,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={false}
@@ -1137,6 +1142,11 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
           >
             <View
               accessibilityLabel="Choisis ton statut"
+              accessibilityState={
+                Object {
+                  "disabled": true,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={false}

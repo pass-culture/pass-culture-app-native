@@ -1945,6 +1945,11 @@ exports[`<Venue /> should match snapshot 1`] = `
         >
           <View
             accessibilityLabel="Voir l'itinéraire"
+            accessibilityState={
+              Object {
+                "disabled": undefined,
+              }
+            }
             accessible={true}
             focusable={true}
             onClick={[Function]}

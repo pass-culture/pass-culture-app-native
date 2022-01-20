@@ -59,6 +59,11 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
       >
         <View
           accessibilityLabel="Tout passer"
+          accessibilityState={
+            Object {
+              "disabled": undefined,
+            }
+          }
           accessible={true}
           collapsable={false}
           focusable={true}
@@ -340,6 +345,11 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                   >
                     <View
                       accessibilityLabel="Continuer"
+                      accessibilityState={
+                        Object {
+                          "disabled": undefined,
+                        }
+                      }
                       accessible={true}
                       collapsable={false}
                       focusable={true}

@@ -167,6 +167,11 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
     >
       <View
         accessibilityLabel="Supprimer mon compte"
+        accessibilityState={
+          Object {
+            "disabled": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -230,6 +235,11 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       />
       <View
         accessibilityLabel="Abandonner"
+        accessibilityState={
+          Object {
+            "disabled": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}

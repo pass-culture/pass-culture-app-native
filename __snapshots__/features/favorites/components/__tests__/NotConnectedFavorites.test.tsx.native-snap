@@ -168,6 +168,11 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
     >
       <View
         accessibilityLabel="S'inscrire"
+        accessibilityState={
+          Object {
+            "disabled": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -231,6 +236,11 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       />
       <View
         accessibilityLabel="Se connecter"
+        accessibilityState={
+          Object {
+            "disabled": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}

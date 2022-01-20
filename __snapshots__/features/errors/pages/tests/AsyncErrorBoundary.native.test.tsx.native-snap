@@ -216,6 +216,11 @@ exports[`AsyncErrorBoundary component should render 1`] = `
     >
       <View
         accessibilityLabel="Réessayer"
+        accessibilityState={
+          Object {
+            "disabled": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}

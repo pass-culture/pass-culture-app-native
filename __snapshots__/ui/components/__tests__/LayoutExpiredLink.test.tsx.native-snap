@@ -191,6 +191,11 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
     />
     <View
       accessibilityLabel="Consulter l'article d'aide"
+      accessibilityState={
+        Object {
+          "disabled": undefined,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -255,6 +260,11 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
     </View>
     <View
       accessibilityLabel="button-icon"
+      accessibilityState={
+        Object {
+          "disabled": undefined,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -345,6 +355,11 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
     >
       <View
         accessibilityLabel="Renvoyer l'email"
+        accessibilityState={
+          Object {
+            "disabled": false,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -408,6 +423,11 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       />
       <View
         accessibilityLabel="button-icon"
+        accessibilityState={
+          Object {
+            "disabled": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}

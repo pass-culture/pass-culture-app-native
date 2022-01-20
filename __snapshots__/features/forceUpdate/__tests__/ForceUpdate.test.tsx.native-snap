@@ -169,6 +169,11 @@ Pour des questions de performance et de sécurité merci de télécharger la der
     >
       <View
         accessibilityLabel="Télécharger la dernière version"
+        accessibilityState={
+          Object {
+            "disabled": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}

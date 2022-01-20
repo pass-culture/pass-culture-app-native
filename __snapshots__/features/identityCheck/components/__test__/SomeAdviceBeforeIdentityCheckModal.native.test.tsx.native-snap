@@ -435,6 +435,11 @@ exports[`<SomeAdviceBeforeIdentityCheckModal/> should render correctly 1`] = `
             </View>
             <View
               accessibilityLabel="J'ai compris"
+              accessibilityState={
+                Object {
+                  "disabled": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}

@@ -557,6 +557,11 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         >
           <View
             accessibilityLabel="Voir plus d'informations"
+            accessibilityState={
+              Object {
+                "disabled": undefined,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -930,6 +935,11 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
       >
         <View
           accessibilityLabel="Voir l'itinéraire"
+          accessibilityState={
+            Object {
+              "disabled": undefined,
+            }
+          }
           accessible={true}
           focusable={true}
           onClick={[Function]}
@@ -1046,6 +1056,11 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
       >
         <View
           accessibilityLabel="Signaler l'offre"
+          accessibilityState={
+            Object {
+              "disabled": false,
+            }
+          }
           accessible={true}
           focusable={true}
           onClick={[Function]}
@@ -1540,6 +1555,11 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                   />
                   <View
                     accessibilityLabel="Signaler l'offre"
+                    accessibilityState={
+                      Object {
+                        "disabled": undefined,
+                      }
+                    }
                     accessible={true}
                     focusable={true}
                     onClick={[Function]}

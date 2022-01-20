@@ -864,6 +864,11 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               >
                                 <View
                                   accessibilityLabel="voir plus"
+                                  accessibilityState={
+                                    Object {
+                                      "disabled": undefined,
+                                    }
+                                  }
                                   accessible={true}
                                   collapsable={false}
                                   focusable={true}
@@ -1793,6 +1798,11 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             >
                               <View
                                 accessibilityLabel="Signaler l'offre"
+                                accessibilityState={
+                                  Object {
+                                    "disabled": false,
+                                  }
+                                }
                                 accessible={true}
                                 focusable={true}
                                 onClick={[Function]}
@@ -2287,6 +2297,11 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         />
                                         <View
                                           accessibilityLabel="Signaler l'offre"
+                                          accessibilityState={
+                                            Object {
+                                              "disabled": undefined,
+                                            }
+                                          }
                                           accessible={true}
                                           focusable={true}
                                           onClick={[Function]}
@@ -3296,6 +3311,11 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               >
                                 <View
                                   accessibilityLabel="voir plus"
+                                  accessibilityState={
+                                    Object {
+                                      "disabled": undefined,
+                                    }
+                                  }
                                   accessible={true}
                                   collapsable={false}
                                   focusable={true}
@@ -3717,6 +3737,11 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             >
                               <View
                                 accessibilityLabel="Voir l'itinéraire"
+                                accessibilityState={
+                                  Object {
+                                    "disabled": undefined,
+                                  }
+                                }
                                 accessible={true}
                                 focusable={true}
                                 onClick={[Function]}
@@ -4583,6 +4608,11 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             >
                               <View
                                 accessibilityLabel="Signaler l'offre"
+                                accessibilityState={
+                                  Object {
+                                    "disabled": false,
+                                  }
+                                }
                                 accessible={true}
                                 focusable={true}
                                 onClick={[Function]}
@@ -5077,6 +5107,11 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         />
                                         <View
                                           accessibilityLabel="Signaler l'offre"
+                                          accessibilityState={
+                                            Object {
+                                              "disabled": undefined,
+                                            }
+                                          }
                                           accessible={true}
                                           focusable={true}
                                           onClick={[Function]}

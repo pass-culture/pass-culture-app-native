@@ -170,6 +170,11 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
     >
       <View
         accessibilityLabel="Vérifier mon identité"
+        accessibilityState={
+          Object {
+            "disabled": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -233,6 +238,11 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       />
       <View
         accessibilityLabel="Retourner à l'accueil"
+        accessibilityState={
+          Object {
+            "disabled": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}

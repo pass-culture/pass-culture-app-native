@@ -745,6 +745,11 @@ Array [
               </Text>
               <View
                 accessibilityLabel="S'inscrire"
+                accessibilityState={
+                  Object {
+                    "disabled": undefined,
+                  }
+                }
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}
@@ -806,6 +811,11 @@ Array [
               />
               <View
                 accessibilityLabel="Se connecter"
+                accessibilityState={
+                  Object {
+                    "disabled": undefined,
+                  }
+                }
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}

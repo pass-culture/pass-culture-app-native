@@ -151,6 +151,11 @@ exports[`ThirdCard should render third card 1`] = `
     >
       <View
         accessibilityLabel="Activer la géolocalisation"
+        accessibilityState={
+          Object {
+            "disabled": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -216,6 +221,11 @@ exports[`ThirdCard should render third card 1`] = `
     >
       <View
         accessibilityLabel="Passer"
+        accessibilityState={
+          Object {
+            "disabled": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={false}

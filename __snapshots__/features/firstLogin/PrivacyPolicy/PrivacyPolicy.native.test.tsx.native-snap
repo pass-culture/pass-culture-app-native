@@ -316,6 +316,11 @@ exports[`<PrivacyPolicy /> should render privacy policy 1`] = `
             </Text>
             <View
               accessibilityLabel="Politique des cookies"
+              accessibilityState={
+                Object {
+                  "disabled": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -419,6 +424,11 @@ exports[`<PrivacyPolicy /> should render privacy policy 1`] = `
             >
               <View
                 accessibilityLabel="Autoriser"
+                accessibilityState={
+                  Object {
+                    "disabled": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -482,6 +492,11 @@ exports[`<PrivacyPolicy /> should render privacy policy 1`] = `
               />
               <View
                 accessibilityLabel="Refuser"
+                accessibilityState={
+                  Object {
+                    "disabled": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}

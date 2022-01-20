@@ -307,6 +307,11 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
               >
                 <View
                   accessibilityLabel="Valider et continuer"
+                  accessibilityState={
+                    Object {
+                      "disabled": undefined,
+                    }
+                  }
                   accessible={true}
                   collapsable={false}
                   focusable={true}

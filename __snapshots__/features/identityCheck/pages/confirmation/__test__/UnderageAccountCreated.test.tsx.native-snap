@@ -268,6 +268,11 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
   >
     <View
       accessibilityLabel="Je découvre les offres"
+      accessibilityState={
+        Object {
+          "disabled": undefined,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}

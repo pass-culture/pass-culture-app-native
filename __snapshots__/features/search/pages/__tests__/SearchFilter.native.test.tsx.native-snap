@@ -3103,6 +3103,11 @@ exports[`SearchFilter component should render correctly 1`] = `
   >
     <View
       accessibilityLabel="Aucun résultat"
+      accessibilityState={
+        Object {
+          "disabled": true,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={false}

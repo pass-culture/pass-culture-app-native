@@ -312,6 +312,11 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
             </Text>
             <View
               accessibilityLabel="C’est quoi ÉduConnect ?"
+              accessibilityState={
+                Object {
+                  "disabled": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -379,6 +384,11 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
             </View>
             <View
               accessibilityLabel="Identification avec ÉduConnect"
+              accessibilityState={
+                Object {
+                  "disabled": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -485,6 +495,11 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
             </View>
             <View
               accessibilityLabel="Identification manuelle"
+              accessibilityState={
+                Object {
+                  "disabled": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -879,6 +894,11 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
             </Text>
             <View
               accessibilityLabel="C’est quoi ÉduConnect ?"
+              accessibilityState={
+                Object {
+                  "disabled": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -946,6 +966,11 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
             </View>
             <View
               accessibilityLabel="Identification avec ÉduConnect"
+              accessibilityState={
+                Object {
+                  "disabled": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -1052,6 +1077,11 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
             </View>
             <View
               accessibilityLabel="Identification manuelle"
+              accessibilityState={
+                Object {
+                  "disabled": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}

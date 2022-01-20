@@ -13,6 +13,11 @@ exports[`<SetBirthday /> should render properly 1`] = `
 >
   <View
     accessibilityLabel="Pour quelle raison ?"
+    accessibilityState={
+      Object {
+        "disabled": undefined,
+      }
+    }
     accessible={true}
     focusable={true}
     onClick={[Function]}
@@ -242,6 +247,11 @@ exports[`<SetBirthday /> should render properly 1`] = `
   />
   <View
     accessibilityLabel="Continuer"
+    accessibilityState={
+      Object {
+        "disabled": true,
+      }
+    }
     accessible={true}
     focusable={false}
     onClick={[Function]}

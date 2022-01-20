@@ -188,6 +188,11 @@ exports[`BookingDetails should render correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Accéder à l'offre"
+                    accessibilityState={
+                      Object {
+                        "disabled": undefined,
+                      }
+                    }
                     accessible={true}
                     collapsable={false}
                     focusable={true}
@@ -473,6 +478,11 @@ exports[`BookingDetails should render correctly 1`] = `
         >
           <View
             accessibilityLabel="Voir l'itinéraire"
+            accessibilityState={
+              Object {
+                "disabled": undefined,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -547,6 +557,11 @@ exports[`BookingDetails should render correctly 1`] = `
         />
         <View
           accessibilityLabel="Voir le détail de l’offre"
+          accessibilityState={
+            Object {
+              "disabled": undefined,
+            }
+          }
           accessible={true}
           collapsable={false}
           focusable={true}
@@ -965,6 +980,11 @@ exports[`BookingDetails should render correctly 1`] = `
                 />
                 <View
                   accessibilityLabel="Annuler ma réservation"
+                  accessibilityState={
+                    Object {
+                      "disabled": undefined,
+                    }
+                  }
                   accessible={true}
                   collapsable={false}
                   focusable={true}
@@ -1028,6 +1048,11 @@ exports[`BookingDetails should render correctly 1`] = `
                 />
                 <View
                   accessibilityLabel="Retourner à ma réservation"
+                  accessibilityState={
+                    Object {
+                      "disabled": undefined,
+                    }
+                  }
                   accessible={true}
                   collapsable={false}
                   focusable={true}
@@ -1443,6 +1468,11 @@ exports[`BookingDetails should render correctly 1`] = `
                 />
                 <View
                   accessibilityLabel="Terminer ma réservation"
+                  accessibilityState={
+                    Object {
+                      "disabled": false,
+                    }
+                  }
                   accessible={true}
                   collapsable={false}
                   focusable={true}
@@ -1506,6 +1536,11 @@ exports[`BookingDetails should render correctly 1`] = `
                 />
                 <View
                   accessibilityLabel="Retourner à ma réservation"
+                  accessibilityState={
+                    Object {
+                      "disabled": undefined,
+                    }
+                  }
                   accessible={true}
                   collapsable={false}
                   focusable={true}

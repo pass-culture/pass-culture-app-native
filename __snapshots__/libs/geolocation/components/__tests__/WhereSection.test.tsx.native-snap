@@ -224,6 +224,11 @@ Array [
   >
     <View
       accessibilityLabel="Voir l'itinéraire"
+      accessibilityState={
+        Object {
+          "disabled": undefined,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}

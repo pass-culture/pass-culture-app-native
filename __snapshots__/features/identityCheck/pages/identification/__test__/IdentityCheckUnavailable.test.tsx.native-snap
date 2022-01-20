@@ -494,6 +494,11 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
                 />
                 <View
                   accessibilityLabel="Je suis de nationalité française"
+                  accessibilityState={
+                    Object {
+                      "disabled": undefined,
+                    }
+                  }
                   accessible={true}
                   collapsable={false}
                   focusable={true}
@@ -582,6 +587,11 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
                 />
                 <View
                   accessibilityLabel="Je suis de nationalité étrangère"
+                  accessibilityState={
+                    Object {
+                      "disabled": undefined,
+                    }
+                  }
                   accessible={true}
                   collapsable={false}
                   focusable={true}
@@ -702,6 +712,11 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
     >
       <View
         accessibilityLabel="Retourner à l'accueil"
+        accessibilityState={
+          Object {
+            "disabled": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}

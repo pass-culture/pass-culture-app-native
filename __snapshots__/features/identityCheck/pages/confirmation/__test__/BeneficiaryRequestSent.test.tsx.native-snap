@@ -182,6 +182,11 @@ exports[`<BeneficiaryRequestSent /> should render correctly 1`] = `
     >
       <View
         accessibilityLabel="On y va !"
+        accessibilityState={
+          Object {
+            "disabled": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}

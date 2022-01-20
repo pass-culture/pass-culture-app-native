@@ -462,6 +462,11 @@ exports[`FavoritesSorts component should render correctly 1`] = `
   >
     <View
       accessibilityLabel="Valider"
+      accessibilityState={
+        Object {
+          "disabled": undefined,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}

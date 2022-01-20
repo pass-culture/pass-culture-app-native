@@ -192,6 +192,11 @@ exports[`<IdentityCheckPending/> should render correctly 1`] = `
     >
       <View
         accessibilityLabel="Retourner à l'accueil"
+        accessibilityState={
+          Object {
+            "disabled": undefined,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}

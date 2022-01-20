@@ -328,6 +328,11 @@ Array [
                     </Text>
                     <View
                       accessibilityLabel="Transmettre un document"
+                      accessibilityState={
+                        Object {
+                          "disabled": undefined,
+                        }
+                      }
                       accessible={true}
                       collapsable={false}
                       focusable={true}
@@ -712,6 +717,11 @@ Array [
                               />
                               <View
                                 accessibilityLabel="Je suis de nationalité française"
+                                accessibilityState={
+                                  Object {
+                                    "disabled": undefined,
+                                  }
+                                }
                                 accessible={true}
                                 collapsable={false}
                                 focusable={true}
@@ -800,6 +810,11 @@ Array [
                               />
                               <View
                                 accessibilityLabel="Je suis de nationalité étrangère"
+                                accessibilityState={
+                                  Object {
+                                    "disabled": undefined,
+                                  }
+                                }
                                 accessible={true}
                                 collapsable={false}
                                 focusable={true}
@@ -924,6 +939,11 @@ Array [
             >
               <View
                 accessibilityLabel="Commencer la vérification"
+                accessibilityState={
+                  Object {
+                    "disabled": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -1457,6 +1477,11 @@ Array [
               </View>
               <View
                 accessibilityLabel="J'ai compris"
+                accessibilityState={
+                  Object {
+                    "disabled": undefined,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}

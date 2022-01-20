@@ -353,6 +353,11 @@ exports[`<SetAddress/> should render correctly 1`] = `
           >
             <View
               accessibilityLabel="Continuer"
+              accessibilityState={
+                Object {
+                  "disabled": true,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={false}

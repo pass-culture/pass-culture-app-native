@@ -378,6 +378,11 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
           >
             <View
               accessibilityLabel="Valider mes informations"
+              accessibilityState={
+                Object {
+                  "disabled": undefined,
+                }
+              }
               accessible={true}
               collapsable={false}
               focusable={true}
