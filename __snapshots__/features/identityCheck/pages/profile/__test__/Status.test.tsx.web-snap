@@ -1113,9 +1113,11 @@ exports[`<Status/> should render correctly 1`] = `
             }
           >
             <div
+              aria-disabled={true}
               aria-label="Choisis ton statut"
               className="css-view-1dbjc4n"
               data-testid="Choisis ton statut"
+              disabled={true}
               onClick={[Function]}
               onContextMenu={[Function]}
               onKeyDown={[Function]}

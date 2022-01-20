@@ -448,9 +448,11 @@ exports[`<SetCity/> should render correctly 1`] = `
             }
           >
             <div
+              aria-disabled={true}
               aria-label="Continuer"
               className="css-view-1dbjc4n"
               data-testid="Continuer"
+              disabled={true}
               onClick={[Function]}
               onContextMenu={[Function]}
               onKeyDown={[Function]}

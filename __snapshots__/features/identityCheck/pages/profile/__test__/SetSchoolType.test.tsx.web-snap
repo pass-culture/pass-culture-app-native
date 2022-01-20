@@ -909,9 +909,11 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
             }
           >
             <div
+              aria-disabled={true}
               aria-label="Choisis ton statut"
               className="css-view-1dbjc4n"
               data-testid="Choisis ton statut"
+              disabled={true}
               onClick={[Function]}
               onContextMenu={[Function]}
               onKeyDown={[Function]}
@@ -1603,9 +1605,11 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
             }
           >
             <div
+              aria-disabled={true}
               aria-label="Choisis ton statut"
               className="css-view-1dbjc4n"
               data-testid="Choisis ton statut"
+              disabled={true}
               onClick={[Function]}
               onContextMenu={[Function]}
               onKeyDown={[Function]}
