@@ -6,7 +6,7 @@ import { ColorsEnum } from 'ui/theme/colors'
 import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 function NotMemoizedPageNotFoundIcon({
   size = STANDARD_ICON_SIZE,
-  color = ColorsEnum.WHITE,
+  color = ColorsEnum.BLACK,
 }: IconInterface) {
   return (
     <Svg width={size} height={size} viewBox="0 0 133 110" fill="none">
@@ -20,4 +20,4 @@ function NotMemoizedPageNotFoundIcon({
   )
 }
 
-export const PageNotFoundIcon = React.memo(NotMemoizedPageNotFoundIcon)
+export const PageNotFoundIconDeprecated = React.memo(NotMemoizedPageNotFoundIcon)
