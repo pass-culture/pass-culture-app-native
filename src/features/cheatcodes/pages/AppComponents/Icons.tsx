@@ -18,7 +18,6 @@ import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorConfidentiality } from 'ui/svg/icons/BicolorConfidentiality'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
-import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { BicolorLocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
@@ -234,11 +233,6 @@ const SecondaryAndBiggerIcons = () => {
       <Icon name="BicolorConfidentiality" component={BicolorConfidentiality} isNew />
       <Icon name="BicolorEverywhere" component={BicolorEverywhere} isNew />
       <Icon name="BicolorFavorite" component={BicolorFavorite} isNew />
-      <Icon
-        name="BicolorIdCardWithMagnifyingGlass"
-        component={BicolorIdCardWithMagnifyingGlass}
-        isNew
-      />
       <Icon name="BicolorLock" component={BicolorLock} isNew />
       <Icon name="BicolorLocationPointer" component={BicolorLocationPointer} isNew />
       <Icon name="BicolorLocationBuilding" component={BicolorLocationBuilding} isNew />

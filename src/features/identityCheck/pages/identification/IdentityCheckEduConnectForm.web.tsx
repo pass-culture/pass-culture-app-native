@@ -11,7 +11,7 @@ import { EduConnectError } from 'features/identityCheck/errors/eduConnect/types'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData'
 import { eduConnectClient } from 'libs/eduConnectClient'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
+import { BicolorIdCardWithMagnifyingGlassDeprecated as BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass_deprecated'
 import { Info } from 'ui/svg/icons/Info'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
 
