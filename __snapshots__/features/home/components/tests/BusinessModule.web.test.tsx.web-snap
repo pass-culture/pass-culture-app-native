@@ -82,21 +82,6 @@ Object {
                     secondLine
                   </div>
                 </div>
-                <div
-                  class="css-view-1dbjc4n"
-                  style="align-items: center; height: 56px; justify-content: center; width: 56px;"
-                >
-                  <div
-                    class="css-view-1dbjc4n"
-                  >
-                    <div
-                      class="css-text-901oao"
-                      dir="auto"
-                    >
-                      undefined-SVG-Mock
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -184,21 +169,6 @@ Object {
                   style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                 >
                   secondLine
-                </div>
-              </div>
-              <div
-                class="css-view-1dbjc4n"
-                style="align-items: center; height: 56px; justify-content: center; width: 56px;"
-              >
-                <div
-                  class="css-view-1dbjc4n"
-                >
-                  <div
-                    class="css-text-901oao"
-                    dir="auto"
-                  >
-                    undefined-SVG-Mock
-                  </div>
                 </div>
               </div>
             </div>
