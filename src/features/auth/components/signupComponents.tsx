@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 
-import { getSpacing, padding } from 'ui/theme'
+import { padding } from 'ui/theme'
 
 export const CardContent = styled.View({
   width: '100%',
@@ -13,12 +13,12 @@ export const Paragraphe = styled.Text({
   textAlign: 'center',
 })
 
-export const EmailSentModalContent = styled.View({
+export const EmailSentModalContent = styled.View(({ theme }) => ({
   ...padding(4, 1),
   alignItems: 'center',
   width: '100%',
-  maxWidth: getSpacing(125),
-})
+  maxWidth: theme.contentPage.maxWidth,
+}))
 
 export const Description = styled.View({
   alignItems: 'center',

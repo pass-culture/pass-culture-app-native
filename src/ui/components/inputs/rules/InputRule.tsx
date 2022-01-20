@@ -27,9 +27,9 @@ export const InputRule: FunctionComponent<Props> = (props) => {
   )
 }
 
-const StyledView = styled.View<{ centered?: boolean }>(({ centered }) => ({
+const StyledView = styled.View<{ centered?: boolean }>(({ centered, theme }) => ({
   flexDirection: 'row',
-  maxWidth: getSpacing(125),
+  maxWidth: theme.forms.maxWidth,
   alignItems: 'center',
   ...(centered ? {} : { width: '100%' }),
 }))

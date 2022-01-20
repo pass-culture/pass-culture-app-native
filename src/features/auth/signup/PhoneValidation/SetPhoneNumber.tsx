@@ -25,6 +25,7 @@ import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Close } from 'ui/svg/icons/Close'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { Form } from 'ui/web/form/Form'
 
 const TIMER = 60
 
@@ -129,39 +130,41 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
           onRightIconPress={showQuitSignupModal}
         />
         <ModalContent>
-          <Paragraphe>
-            <Typo.Body color={ColorsEnum.GREY_DARK}>
-              {t`Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro.`}
-            </Typo.Body>
-          </Paragraphe>
-          <Spacer.Column numberOfSpaces={8} />
-          <InputContainer>
-            <StyledCountryPicker initialCountry={INITIAL_COUNTRY} onSelect={setCountry} />
-            <StyledTextInput
-              autoCapitalize="none"
-              isError={false}
-              keyboardType="number-pad"
-              onChangeText={onChangeText}
-              placeholder={getPlaceholder(country.cca2)}
-              textContentType="telephoneNumber"
-              onSubmitEditing={requestSendPhoneValidationCode}
-              {...accessibilityAndTestId(t`Entrée pour le numéro de téléphone`)}
-            />
-          </InputContainer>
-          {invalidPhoneNumberMessage ? (
-            <React.Fragment>
-              <InputError visible messageId={invalidPhoneNumberMessage} numberOfSpacesTop={3} />
-              <Spacer.Column numberOfSpaces={5} />
-            </React.Fragment>
-          ) : (
+          <Form.MaxWidth>
+            <Paragraphe>
+              <Typo.Body color={ColorsEnum.GREY_DARK}>
+                {t`Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro.`}
+              </Typo.Body>
+            </Paragraphe>
             <Spacer.Column numberOfSpaces={8} />
-          )}
-          <ButtonPrimary
-            title={getButtonTitle()}
-            disabled={!isContinueButtonEnabled}
-            onPress={requestSendPhoneValidationCode}
-            isLoading={isLoading}
-          />
+            <InputContainer>
+              <StyledCountryPicker initialCountry={INITIAL_COUNTRY} onSelect={setCountry} />
+              <StyledTextInput
+                autoCapitalize="none"
+                isError={false}
+                keyboardType="number-pad"
+                onChangeText={onChangeText}
+                placeholder={getPlaceholder(country.cca2)}
+                textContentType="telephoneNumber"
+                onSubmitEditing={requestSendPhoneValidationCode}
+                {...accessibilityAndTestId(t`Entrée pour le numéro de téléphone`)}
+              />
+            </InputContainer>
+            {invalidPhoneNumberMessage ? (
+              <React.Fragment>
+                <InputError visible messageId={invalidPhoneNumberMessage} numberOfSpacesTop={3} />
+                <Spacer.Column numberOfSpaces={5} />
+              </React.Fragment>
+            ) : (
+              <Spacer.Column numberOfSpaces={8} />
+            )}
+            <ButtonPrimary
+              title={getButtonTitle()}
+              disabled={!isContinueButtonEnabled}
+              onPress={requestSendPhoneValidationCode}
+              isLoading={isLoading}
+            />
+          </Form.MaxWidth>
         </ModalContent>
       </BottomContentPage>
       <QuitSignupModal
@@ -174,12 +177,12 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
   )
 })
 
-const ModalContent = styled.View({
+const ModalContent = styled.View(({ theme }) => ({
   paddingTop: getSpacing(7),
   alignItems: 'center',
   width: '100%',
-  maxWidth: getSpacing(125),
-})
+  maxWidth: theme.contentPage.maxWidth,
+}))
 
 const Paragraphe = styled.Text({
   flexWrap: 'wrap',
@@ -187,13 +190,14 @@ const Paragraphe = styled.Text({
   textAlign: 'center',
 })
 
-const InputContainer = styled.View({
+const InputContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
   width: '100%',
   maxWidth: getSpacing(90),
-})
+  marginHorizontal: theme.isMobileViewport ? undefined : 'auto',
+}))
 
 const PICKER_WIDTH_DESKTOP = 30 // in %
 const PICKER_WIDTH_MOBILE = 35 // in %

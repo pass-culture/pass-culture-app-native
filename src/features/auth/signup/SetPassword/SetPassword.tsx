@@ -10,6 +10,7 @@ import { PreValidationSignupStepProps } from 'features/auth/signup/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { Spacer } from 'ui/theme'
+import { Form } from 'ui/web/form/Form'
 
 export const SetPassword: FunctionComponent<PreValidationSignupStepProps> = (props) => {
   const [password, setPassword] = useState('')
@@ -24,7 +25,7 @@ export const SetPassword: FunctionComponent<PreValidationSignupStepProps> = (pro
   }
 
   return (
-    <React.Fragment>
+    <Form.MaxWidth>
       <PasswordInput
         label={t`Mot de passe`}
         value={password}
@@ -43,6 +44,6 @@ export const SetPassword: FunctionComponent<PreValidationSignupStepProps> = (pro
         disabled={disabled}
       />
       <Spacer.Column numberOfSpaces={5} />
-    </React.Fragment>
+    </Form.MaxWidth>
   )
 }

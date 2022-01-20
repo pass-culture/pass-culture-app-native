@@ -200,99 +200,12 @@ exports[`<SetCity/> should render correctly 1`] = `
               }
             }
           >
-            <div
+            <form
               className="css-view-1dbjc4n"
+              role="form"
               style={
                 Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "alignItems": "center",
-                  "msFlexAlign": "center",
-                  "width": "100%",
-                }
-              }
-            >
-              <div
-                className="css-text-901oao"
-                dir="auto"
-                style={
-                  Object {
-                    "color": "rgba(21,21,21,1.00)",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": "18px",
-                    "lineHeight": "22px",
-                    "textAlign": "center",
-                  }
-                }
-              >
-                Dans quelle ville résides-tu ?
-              </div>
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "height": "20px",
-                }
-              }
-            />
-            <div
-              className="css-text-901oao"
-              dir="auto"
-              style={
-                Object {
-                  "color": "rgba(21,21,21,1.00)",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": "15px",
-                  "lineHeight": "20px",
-                }
-              }
-            >
-              Indique ton code postal et choisis ta ville
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "height": "8px",
-                }
-              }
-            />
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitAlignItems": "center",
-                  "WebkitBoxAlign": "center",
-                  "WebkitBoxDirection": "normal",
-                  "WebkitBoxOrient": "horizontal",
-                  "WebkitFlexDirection": "row",
-                  "alignItems": "center",
-                  "backgroundColor": "rgba(255,255,255,1.00)",
-                  "borderBottomColor": "rgba(199,199,204,1.00)",
-                  "borderBottomLeftRadius": "22px",
-                  "borderBottomRightRadius": "22px",
-                  "borderBottomStyle": "solid",
-                  "borderBottomWidth": "1px",
-                  "borderLeftColor": "rgba(199,199,204,1.00)",
-                  "borderLeftStyle": "solid",
-                  "borderLeftWidth": "1px",
-                  "borderRightColor": "rgba(199,199,204,1.00)",
-                  "borderRightStyle": "solid",
-                  "borderRightWidth": "1px",
-                  "borderTopColor": "rgba(199,199,204,1.00)",
-                  "borderTopLeftRadius": "22px",
-                  "borderTopRightRadius": "22px",
-                  "borderTopStyle": "solid",
-                  "borderTopWidth": "1px",
-                  "flexDirection": "row",
-                  "height": "40px",
-                  "msFlexAlign": "center",
-                  "msFlexDirection": "row",
-                  "paddingBottom": "4px",
-                  "paddingLeft": "16px",
-                  "paddingRight": "16px",
-                  "paddingTop": "4px",
+                  "maxWidth": "500px",
                   "width": "100%",
                 }
               }
@@ -301,61 +214,159 @@ exports[`<SetCity/> should render correctly 1`] = `
                 className="css-view-1dbjc4n"
                 style={
                   Object {
-                    "width": "4px",
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "alignItems": "center",
+                    "msFlexAlign": "center",
+                    "width": "100%",
                   }
                 }
-              />
-              <input
-                aria-label="Entrée pour le code postal"
-                autoCapitalize="sentences"
-                autoComplete="on"
-                autoCorrect="off"
-                className="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
-                data-testid="Entrée pour le code postal"
-                dir="auto"
-                enterKeyHint="search"
-                inputMode="numeric"
-                onBlur={[Function]}
-                onChange={[Function]}
-                onFocus={[Function]}
-                onKeyDown={[Function]}
-                onSelect={[Function]}
-                placeholder="Ex : 75017"
-                readOnly={false}
-                spellCheck={false}
+              >
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                  style={
+                    Object {
+                      "color": "rgba(21,21,21,1.00)",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": "18px",
+                      "lineHeight": "22px",
+                      "textAlign": "center",
+                    }
+                  }
+                >
+                  Dans quelle ville résides-tu ?
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
                 style={
                   Object {
-                    "WebkitBoxFlex": 1,
-                    "WebkitFlexBasis": "0px",
-                    "WebkitFlexGrow": 1,
-                    "WebkitFlexShrink": 1,
-                    "color": "rgba(21,21,21,1.00)",
-                    "flexBasis": "0px",
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": "15px",
-                    "height": "100%",
-                    "msFlexNegative": 1,
-                    "msFlexPositive": 1,
-                    "msFlexPreferredSize": "0px",
-                    "paddingBottom": "0px",
-                    "paddingLeft": "0px",
-                    "paddingRight": "0px",
-                    "paddingTop": "0px",
+                    "height": "20px",
                   }
                 }
-                value=""
               />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "height": "8px",
+              <div
+                className="css-text-901oao"
+                dir="auto"
+                style={
+                  Object {
+                    "color": "rgba(21,21,21,1.00)",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": "15px",
+                    "lineHeight": "20px",
+                  }
                 }
-              }
-            />
+              >
+                Indique ton code postal et choisis ta ville
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "height": "8px",
+                  }
+                }
+              />
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitFlexDirection": "row",
+                    "alignItems": "center",
+                    "backgroundColor": "rgba(255,255,255,1.00)",
+                    "borderBottomColor": "rgba(199,199,204,1.00)",
+                    "borderBottomLeftRadius": "22px",
+                    "borderBottomRightRadius": "22px",
+                    "borderBottomStyle": "solid",
+                    "borderBottomWidth": "1px",
+                    "borderLeftColor": "rgba(199,199,204,1.00)",
+                    "borderLeftStyle": "solid",
+                    "borderLeftWidth": "1px",
+                    "borderRightColor": "rgba(199,199,204,1.00)",
+                    "borderRightStyle": "solid",
+                    "borderRightWidth": "1px",
+                    "borderTopColor": "rgba(199,199,204,1.00)",
+                    "borderTopLeftRadius": "22px",
+                    "borderTopRightRadius": "22px",
+                    "borderTopStyle": "solid",
+                    "borderTopWidth": "1px",
+                    "flexDirection": "row",
+                    "height": "40px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "paddingBottom": "4px",
+                    "paddingLeft": "16px",
+                    "paddingRight": "16px",
+                    "paddingTop": "4px",
+                    "width": "100%",
+                  }
+                }
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "width": "4px",
+                    }
+                  }
+                />
+                <input
+                  aria-label="Entrée pour le code postal"
+                  autoCapitalize="sentences"
+                  autoComplete="on"
+                  autoCorrect="off"
+                  className="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
+                  data-testid="Entrée pour le code postal"
+                  dir="auto"
+                  enterKeyHint="search"
+                  inputMode="numeric"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  onSelect={[Function]}
+                  placeholder="Ex : 75017"
+                  readOnly={false}
+                  spellCheck={false}
+                  style={
+                    Object {
+                      "WebkitBoxFlex": 1,
+                      "WebkitFlexBasis": "0px",
+                      "WebkitFlexGrow": 1,
+                      "WebkitFlexShrink": 1,
+                      "color": "rgba(21,21,21,1.00)",
+                      "flexBasis": "0px",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": "15px",
+                      "height": "100%",
+                      "msFlexNegative": 1,
+                      "msFlexPositive": 1,
+                      "msFlexPreferredSize": "0px",
+                      "paddingBottom": "0px",
+                      "paddingLeft": "0px",
+                      "paddingRight": "0px",
+                      "paddingTop": "0px",
+                    }
+                  }
+                  value=""
+                />
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "height": "8px",
+                  }
+                }
+              />
+            </form>
           </div>
           <div
             className="css-view-1dbjc4n"

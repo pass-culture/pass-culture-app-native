@@ -13,6 +13,7 @@ import { useIsUserUnderage } from 'features/profile/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer } from 'ui/theme'
+import { Form } from 'ui/web/form/Form'
 
 export const Status = () => {
   const { activities } = useProfileOptions()
@@ -56,7 +57,7 @@ export const Status = () => {
         </React.Fragment>
       }
       scrollChildren={
-        <React.Fragment>
+        <Form.MaxWidth>
           {filteredActivities &&
             filteredActivities.map((activity) => (
               <RadioButton
@@ -67,7 +68,7 @@ export const Status = () => {
                 onPress={() => setSelectedStatus(activity.id)}
               />
             ))}
-        </React.Fragment>
+        </Form.MaxWidth>
       }
       fixedBottomChildren={
         <ButtonPrimary

@@ -15,6 +15,7 @@ import { useProfileOptions } from 'features/identityCheck/utils/useProfileOption
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer } from 'ui/theme'
+import { Form } from 'ui/web/form/Form'
 
 export const SetSchoolType = () => {
   const { schoolTypes, activities } = useProfileOptions()
@@ -49,7 +50,7 @@ export const SetSchoolType = () => {
         </React.Fragment>
       }
       scrollChildren={
-        <React.Fragment>
+        <Form.MaxWidth>
           {hasData &&
             activitySchoolTypes.map((schoolTypeId) => {
               const { label, description } = mapSchoolTypeIdToLabelAndDescription(
@@ -66,7 +67,7 @@ export const SetSchoolType = () => {
                 />
               )
             })}
-        </React.Fragment>
+        </Form.MaxWidth>
       }
       fixedBottomChildren={
         <ButtonPrimary

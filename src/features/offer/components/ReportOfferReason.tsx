@@ -12,6 +12,7 @@ import { RadioButton } from 'ui/components/RadioButton'
 import { SectionRow } from 'ui/components/SectionRow'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer } from 'ui/theme'
+import { Form } from 'ui/web/form/Form'
 
 interface Props {
   dismissModal: () => void
@@ -52,7 +53,7 @@ export const ReportOfferReason: FunctionComponent<Props> = (props) => {
   }
 
   return (
-    <React.Fragment>
+    <Form.MaxWidth>
       <Spacer.Column numberOfSpaces={3} />
       {reasonsForReporting.map((reason) =>
         reason.id !== 'OTHER' ? (
@@ -82,6 +83,6 @@ export const ReportOfferReason: FunctionComponent<Props> = (props) => {
         onPress={reportOffer}
         testId="report-button"
       />
-    </React.Fragment>
+    </Form.MaxWidth>
   )
 }

@@ -55,10 +55,10 @@ export function Search() {
 
   return (
     <Container>
-      <Form>
+      <Form.Flex>
         <SearchHeader />
         {showResults ? <SearchResults /> : <SearchLandingPage />}
-      </Form>
+      </Form.Flex>
     </Container>
   )
 }

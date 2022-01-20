@@ -53,12 +53,12 @@ export const GenericInfoPageWhite: React.FC<Props> = (props) => {
   )
 }
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   alignSelf: 'center',
   flex: 1,
   paddingHorizontal: getSpacing(5),
-  maxWidth: getSpacing(125),
-})
+  maxWidth: theme.contentPage.maxWidth,
+}))
 
 const StyledTitle = styled(Typo.Title1)({
   textAlign: 'center',

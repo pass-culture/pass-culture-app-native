@@ -5,11 +5,23 @@ type Props = {
   children: ReactNode
 }
 
-export function Form(props: Props) {
-  // @ts-ignore TODO: fix when https://github.com/necolas/react-native-web/issues/2189#issuecomment-1008886405 is resolved
-  return <FormFlex accessibilityRole="form">{props.children}</FormFlex>
+function MaxWidth(props: Props) {
+  // @ts-ignore: typescript is not maintained by react-native-web
+  return <MaxWidthContainer accessibilityRole="form">{props.children}</MaxWidthContainer>
 }
 
-const FormFlex = styled.View({
+function Flex(props: Props) {
+  // @ts-ignore: typescript is not maintained by react-native-web
+  return <FlexContainer accessibilityRole="form">{props.children}</FlexContainer>
+}
+
+const MaxWidthContainer = styled.View(({ theme }) => ({
+  width: '100%',
+  maxWidth: theme.forms.maxWidth,
+}))
+
+const FlexContainer = styled.View({
   flex: 1,
 })
+
+export const Form = { Flex, MaxWidth }

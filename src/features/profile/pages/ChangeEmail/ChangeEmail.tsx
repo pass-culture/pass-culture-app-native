@@ -28,6 +28,7 @@ import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEv
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
+import { Form } from 'ui/web/form/Form'
 
 export function ChangeEmail() {
   const theme = useTheme()
@@ -113,44 +114,46 @@ export function ChangeEmail() {
         <ChangeEmailDisclaimer />
         <Spacer.Column numberOfSpaces={4} />
         <CenteredContainer>
-          <EmailInput
-            label={t`Nouvel e-mail`}
-            email={email}
-            onEmailChange={setEmail}
-            disabled={hasCurrentEmailChange}
-            isRequiredField
-          />
-          {!!emailErrorMessage && (
-            <InputError visible messageId={emailErrorMessage} numberOfSpacesTop={2} />
-          )}
-          <Spacer.Column numberOfSpaces={4} />
-          <PasswordInput
-            label={t`Mot de passe`}
-            value={password}
-            onChangeText={setPassword}
-            placeholder={t`Ton mot de passe`}
-            textContentType="password"
-            disabled={hasCurrentEmailChange}
-            isRequiredField
-          />
-          {!!passwordErrorMessage && (
-            <InputError visible messageId={passwordErrorMessage} numberOfSpacesTop={2} />
-          )}
-
-          {theme.isDesktopViewport ? (
-            <Spacer.Column numberOfSpaces={10} />
-          ) : (
-            <Spacer.Flex flex={1} />
-          )}
-
-          {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
-          <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
-            <ButtonPrimary
-              title={t`Enregistrer`}
-              onPress={submitEmailChange}
-              disabled={isSubmitButtonDisabled}
+          <Form.MaxWidth>
+            <EmailInput
+              label={t`Nouvel e-mail`}
+              email={email}
+              onEmailChange={setEmail}
+              disabled={hasCurrentEmailChange}
+              isRequiredField
             />
-          </ButtonContainer>
+            {!!emailErrorMessage && (
+              <InputError visible messageId={emailErrorMessage} numberOfSpacesTop={2} />
+            )}
+            <Spacer.Column numberOfSpaces={4} />
+            <PasswordInput
+              label={t`Mot de passe`}
+              value={password}
+              onChangeText={setPassword}
+              placeholder={t`Ton mot de passe`}
+              textContentType="password"
+              disabled={hasCurrentEmailChange}
+              isRequiredField
+            />
+            {!!passwordErrorMessage && (
+              <InputError visible messageId={passwordErrorMessage} numberOfSpacesTop={2} />
+            )}
+
+            {theme.isDesktopViewport ? (
+              <Spacer.Column numberOfSpaces={10} />
+            ) : (
+              <Spacer.Flex flex={1} />
+            )}
+
+            {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
+            <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
+              <ButtonPrimary
+                title={t`Enregistrer`}
+                onPress={submitEmailChange}
+                disabled={isSubmitButtonDisabled}
+              />
+            </ButtonContainer>
+          </Form.MaxWidth>
           <Spacer.Column numberOfSpaces={6} />
         </CenteredContainer>
       </StyledScrollView>

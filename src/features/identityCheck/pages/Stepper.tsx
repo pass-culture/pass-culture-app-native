@@ -123,10 +123,10 @@ const CenteredContainer = styled.View({
   alignItems: 'center',
 })
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flex: 1,
   justifyContent: 'center',
   padding: getSpacing(5),
   width: '100%',
-  maxWidth: getSpacing(125),
-})
+  maxWidth: theme.contentPage.maxWidth,
+}))

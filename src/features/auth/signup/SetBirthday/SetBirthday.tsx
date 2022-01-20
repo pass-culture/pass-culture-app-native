@@ -16,6 +16,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { useModal } from 'ui/components/modals/useModal'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { getSpacing, Spacer } from 'ui/theme'
+import { Form } from 'ui/web/form/Form'
 
 let INITIAL_DATE: Date | null = null
 
@@ -101,7 +102,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
   }, [state])
 
   return (
-    <React.Fragment>
+    <Form.MaxWidth>
       <InnerContainer>
         <ButtonTertiary
           icon={InfoPlain}
@@ -134,7 +135,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
         <Spacer.Column numberOfSpaces={5} />
       </InnerContainer>
       <BirthdayInformationModal visible={visible} hideModal={hideModal} />
-    </React.Fragment>
+    </Form.MaxWidth>
   )
 }
 
