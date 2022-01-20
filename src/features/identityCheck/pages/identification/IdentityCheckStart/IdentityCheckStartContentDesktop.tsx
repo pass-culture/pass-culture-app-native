@@ -9,7 +9,8 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { useModal } from 'ui/components/modals/useModal'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+
 interface Props {
   showSomeAdviceBeforeIdentityCheckModal: () => void
 }
@@ -41,18 +42,18 @@ export function IdentityCheckStartContentDesktop({
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
         onPress={showSomeAdviceBeforeIdentityCheckModal}
-        title={t`Vérification par smartphone`}
+        wording={t`Vérification par smartphone`}
       />
       <Spacer.Column numberOfSpaces={8} />
       <DMSInformationContainer>
-        <Typo.Body color={ColorsEnum.GREY_DARK}>{t`Tu n'as pas de smartphone\u00a0?`}</Typo.Body>
+        <BodyGreyDark>{t`Tu n'as pas de smartphone\u00a0?`}</BodyGreyDark>
         <Spacer.Column numberOfSpaces={4} />
         <ButtonTertiaryBlack
-          title={t`Identification par le site Démarches-Simplifiées`}
+          wording={t`Identification par le site Démarches-Simplifiées`}
           onPress={showDMSModal}
           icon={ExternalSiteFilled}
         />
-        <Typo.Caption color={ColorsEnum.GREY_DARK}>{t`Environ 10 jours`}</Typo.Caption>
+        <Caption>{t`Environ 10 jours`}</Caption>
       </DMSInformationContainer>
       <DMSModal visible={visible} hideModal={hideModal} />
       <Spacer.Column numberOfSpaces={6} />
@@ -61,6 +62,14 @@ export function IdentityCheckStartContentDesktop({
 }
 
 const Title = styled(Typo.Title4)({ textAlign: 'center' })
+
+const BodyGreyDark = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
+
+const Caption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
 
 const Body = styled(Typo.Body)({ textAlign: 'center' })
 

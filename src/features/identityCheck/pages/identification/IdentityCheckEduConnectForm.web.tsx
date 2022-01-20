@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { ErrorTrigger } from 'features/identityCheck/atoms/ErrorTrigger'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
@@ -12,10 +12,11 @@ import { EduConnectErrorMessageEnum } from 'features/identityCheck/errors/hooks/
 import { eduConnectClient } from 'libs/eduConnectClient'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const IdentityCheckEduConnectForm = () => {
   const [error, setError] = useState<EduConnectError | null>(null)
+  const { colors } = useTheme()
 
   const openEduConnect = useCallback(() => {
     async function setWebView() {
@@ -64,10 +65,10 @@ export const IdentityCheckEduConnectForm = () => {
               <BicolorIdCardWithMagnifyingGlass size={getSpacing(33)} />
             </Center>
 
-            <JustifiedHeader color={ColorsEnum.GREY_DARK}>{t`Identification`}</JustifiedHeader>
+            <JustifiedHeader color={colors.greyDark}>{t`Identification`}</JustifiedHeader>
             <Spacer.Column numberOfSpaces={4} />
 
-            <JustifiedText color={ColorsEnum.GREY_DARK}>
+            <JustifiedText color={colors.greyDark}>
               {t`Pour procéder à ton identification, nous allons te demander de te connecter à ÉduConnect. Muni toi de ton identifiant et de ton mot de passe ÉduConnect. Dès que tu as bien complété le parcours, reviens sur ce site pour terminer ton inscription et découvrir toutes les offres du pass Culture\u00a0!`}
             </JustifiedText>
 
@@ -75,7 +76,7 @@ export const IdentityCheckEduConnectForm = () => {
           </React.Fragment>
         }
         fixedBottomChildren={
-          <ButtonPrimary title={t`Ouvrir un onglet ÉduConnect`} onPress={openEduConnect} />
+          <ButtonPrimary wording={t`Ouvrir un onglet ÉduConnect`} onPress={openEduConnect} />
         }
       />
       <ErrorTrigger error={error} />

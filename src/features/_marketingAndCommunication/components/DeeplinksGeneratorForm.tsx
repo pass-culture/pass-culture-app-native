@@ -189,7 +189,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
           <Warning color={ColorsEnum.ERROR} size={getSpacing(3.5)} />
           {t`Seulement les "ids" disposent de validation\u00a0!`}
         </Banner>
-        <ButtonPrimary title={t`Générer le lien`} disabled={disabled} onPress={onPress} />
+        <ButtonPrimary wording={t`Générer le lien`} disabled={disabled} onPress={onPress} />
       </BottomContainer>
     </React.Fragment>
   )

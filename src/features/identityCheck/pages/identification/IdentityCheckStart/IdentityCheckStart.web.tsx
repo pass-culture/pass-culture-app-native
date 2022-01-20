@@ -38,7 +38,7 @@ export const IdentityCheckStart = () => {
         }
         fixedBottomChildren={
           !!isMobileViewport && (
-            <ButtonPrimary onPress={showModal} title={t`Commencer la vérification`} />
+            <ButtonPrimary onPress={showModal} wording={t`Commencer la vérification`} />
           )
         }
       />

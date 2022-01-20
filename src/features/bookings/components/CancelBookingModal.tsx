@@ -80,9 +80,9 @@ export const CancelBookingModal: FunctionComponent<Props> = ({
           </React.Fragment>
         )}
         <Spacer.Column numberOfSpaces={8} />
-        <ButtonPrimary title={t`Annuler ma réservation`} onPress={confirmCancelBooking} />
+        <ButtonPrimary wording={t`Annuler ma réservation`} onPress={confirmCancelBooking} />
         <Spacer.Column numberOfSpaces={5} />
-        <ButtonPrimaryWhite title={t`Retourner à ma réservation`} onPress={dismissModal} />
+        <ButtonPrimaryWhite wording={t`Retourner à ma réservation`} onPress={dismissModal} />
         <Spacer.Column numberOfSpaces={1} />
       </ModalContent>
     </AppModal>

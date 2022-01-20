@@ -43,7 +43,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
           </CenteredText>
           <Spacer.Column numberOfSpaces={5} />
           <ButtonTertiary
-            title={t`Consulter l'article d'aide`}
+            wording={t`Consulter l'article d'aide`}
             onPress={() => openUrl(env.FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED)}
             icon={ExternalSite}
           />

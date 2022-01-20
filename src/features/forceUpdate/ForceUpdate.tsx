@@ -51,7 +51,7 @@ export const ForceUpdate = () => {
       <GenericInfoPage
         title={title}
         icon={Star}
-        buttons={[<ButtonPrimaryWhite key={buttonText} title={buttonText} onPress={onPress} />]}>
+        buttons={[<ButtonPrimaryWhite key={buttonText} wording={buttonText} onPress={onPress} />]}>
         <StyledBody>{description}</StyledBody>
       </GenericInfoPage>
     </React.Fragment>

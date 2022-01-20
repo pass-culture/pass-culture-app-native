@@ -11,7 +11,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { OrSeparator } from 'ui/components/OrSeparator'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const IdentityCheckDMS = () => {
   const theme = useTheme()
@@ -42,14 +42,14 @@ export const IdentityCheckDMS = () => {
           {theme.isMobileViewport ? <Spacer.Flex /> : <Spacer.Column numberOfSpaces={5} />}
           <ButtonContainer>
             <ButtonTertiaryBlack
-              title={t`Je suis de nationalité française`}
+              wording={t`Je suis de nationalité française`}
               onPress={openDMSFrenchCitizenURL}
               icon={ExternalSiteFilled}
             />
             <Caption>{t`Carte d’identité ou passeport.`}</Caption>
             <OrSeparator />
             <ButtonTertiaryBlack
-              title={t`Je suis de nationalité étrangère`}
+              wording={t`Je suis de nationalité étrangère`}
               onPress={openDMSForeignCitizenURL}
               icon={ExternalSiteFilled}
             />
@@ -62,7 +62,21 @@ export const IdentityCheckDMS = () => {
   )
 }
 
-const Container = styled.View({ height: '100%', alignItems: 'center' })
-const StyledBody = styled(Typo.Body).attrs({ color: ColorsEnum.GREY_DARK })({ textAlign: 'center' })
-const ButtonContainer = styled.View({ padding: getSpacing(10) })
-const Caption = styled(Typo.Caption).attrs({ color: ColorsEnum.GREY_DARK })({ textAlign: 'center' })
+const Container = styled.View({
+  height: '100%',
+  alignItems: 'center',
+})
+
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.greyDark,
+  textAlign: 'center',
+}))
+
+const ButtonContainer = styled.View({
+  padding: getSpacing(10),
+})
+
+const Caption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+  textAlign: 'center',
+}))

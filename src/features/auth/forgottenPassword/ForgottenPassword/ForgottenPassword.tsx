@@ -145,7 +145,7 @@ export const ForgottenPassword: FunctionComponent = () => {
         {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={2} />}
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary
-          title={t`Valider`}
+          wording={t`Valider`}
           // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
           // Cf. backend logic for token validation
           onPress={

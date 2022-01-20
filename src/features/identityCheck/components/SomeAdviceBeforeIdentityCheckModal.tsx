@@ -9,7 +9,7 @@ import { Flash } from 'ui/svg/icons/Flash'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Sun } from 'ui/svg/icons/Sun'
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -39,27 +39,34 @@ export const SomeAdviceBeforeIdentityCheckModal: FunctionComponent<Props> = ({
       </Typo.Body>
     </Description>
     <Instructions>
-      <Instruction title={t`Désactive ton flash`} Icon={Flash} />
-      <Instruction title={t`Place-toi dans un lieu bien éclairé`} Icon={Sun} />
-      <Instruction title={t`Cadre l’intégralité de ton document`} Icon={IdCard} />
+      <Instruction wording={t`Désactive ton flash`} Icon={Flash} />
+      <Instruction wording={t`Place-toi dans un lieu bien éclairé`} Icon={Sun} />
+      <Instruction wording={t`Cadre l’intégralité de ton document`} Icon={IdCard} />
     </Instructions>
-    <ButtonPrimary title={t`J'ai compris`} onPress={onPressContinue} />
+    <ButtonPrimary wording={t`J'ai compris`} onPress={onPressContinue} />
   </AppModal>
 )
 
 const Description = styled.Text({ textAlign: 'center' })
 
 interface InstructionProps {
-  title: string
+  wording: string
   Icon: React.FunctionComponent<IconInterface>
 }
 
-const Instruction = ({ title, Icon }: InstructionProps) => (
-  <InstructionContainer>
-    <Icon size={getSpacing(6)} color={ColorsEnum.SECONDARY} color2={ColorsEnum.PRIMARY} />
-    <Text>{title}</Text>
-  </InstructionContainer>
-)
+const Instruction = ({ wording, Icon }: InstructionProps) => {
+  const InstructionIcon = styled(Icon).attrs(({ theme }) => ({
+    size: getSpacing(6),
+    color: theme.colors.secondary,
+    color2: theme.colors.primary,
+  }))``
+  return (
+    <InstructionContainer>
+      <InstructionIcon />
+      <Text>{wording}</Text>
+    </InstructionContainer>
+  )
+}
 
 const InstructionContainer = styled.View({
   flexDirection: 'row',

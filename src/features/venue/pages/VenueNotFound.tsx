@@ -10,7 +10,7 @@ import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
-import { ColorsEnum, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const VenueNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   const timer = useRef<number>()
@@ -43,7 +43,7 @@ export const VenueNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
         title={t`Lieu introuvable\u00a0!`}
         icon={NoOffer}
         buttons={[
-          <ButtonPrimaryWhite key={1} title={t`Retourner à l'accueil`} onPress={onPress} />,
+          <ButtonPrimaryWhite key={1} wording={t`Retourner à l'accueil`} onPress={onPress} />,
         ]}>
         <StyledBody>{t`Il est possible que ce lieu soit désactivé ou n'existe pas.`}</StyledBody>
       </GenericInfoPage>
@@ -51,8 +51,7 @@ export const VenueNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   )
 }
 
-const StyledBody = styled(Typo.Body).attrs({
-  color: ColorsEnum.WHITE,
-})({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
   textAlign: 'center',
-})
+}))

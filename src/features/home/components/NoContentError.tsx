@@ -25,7 +25,7 @@ export const NoContentError = () => {
       buttons={[
         <SearchButton
           key={1}
-          title={t`Rechercher une offre`}
+          wording={t`Rechercher une offre`}
           icon={MagnifyingGlass}
           onPress={navigateToSearchTab}
         />,

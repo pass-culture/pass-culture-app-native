@@ -36,7 +36,7 @@ export function AccountCreated() {
     <GenericInfoPage
       title={t`Ton compte a été activé\u00a0!`}
       animation={IlluminatedSmileyAnimation}
-      buttons={[<ButtonPrimaryWhite key={1} title={t`On y va\u00a0!`} onPress={onPress} />]}>
+      buttons={[<ButtonPrimaryWhite key={1} wording={t`On y va\u00a0!`} onPress={onPress} />]}>
       {!!shouldNavigateToCulturalSurvey && (
         <StyledBody>
           {t`Aide-nous à en savoir plus sur tes pratiques culturelles\u00a0! Ta sélection n'aura pas d'impact sur les offres proposées.`}

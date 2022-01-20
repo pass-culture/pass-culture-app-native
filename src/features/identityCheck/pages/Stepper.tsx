@@ -17,7 +17,7 @@ import { analytics } from 'libs/analytics'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { useModal } from 'ui/components/modals/useModal'
 import { Background } from 'ui/svg/Background'
-import { Spacer, Typo, ColorsEnum, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 export const IdentityCheckStepper = () => {
   const theme = useTheme()
@@ -94,7 +94,7 @@ export const IdentityCheckStepper = () => {
             <Spacer.Flex flex={2} />
           )}
 
-          <ButtonTertiaryWhite title={t`Abandonner`} onPress={showQuitIdentityCheckModal} />
+          <ButtonTertiaryWhite wording={t`Abandonner`} onPress={showQuitIdentityCheckModal} />
         </Container>
       </CenteredContainer>
       <QuitIdentityCheckModal
@@ -110,13 +110,15 @@ export const IdentityCheckStepper = () => {
   )
 }
 
-const Title = styled(Typo.Title3).attrs({ color: ColorsEnum.WHITE })({
+const Title = styled(Typo.Title3)(({ theme }) => ({
+  color: theme.colors.white,
   textAlign: 'center',
-})
+}))
 
-const StyledBody = styled(Typo.Body).attrs({ color: ColorsEnum.WHITE })({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
   textAlign: 'center',
-})
+}))
 
 const CenteredContainer = styled.View({
   flex: 1,

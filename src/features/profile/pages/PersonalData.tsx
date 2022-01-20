@@ -45,7 +45,7 @@ export function PersonalData() {
           <Spacer.Column numberOfSpaces={2} />
           <EmailContainer>
             <EmailText>{user?.email}</EmailText>
-            <ButtonQuaternary title={t`Modifier`} icon={EditPen} inline onPress={onEmailChange} />
+            <ButtonQuaternary wording={t`Modifier`} icon={EditPen} inline onPress={onEmailChange} />
           </EmailContainer>
         </Row>
         <Separator />

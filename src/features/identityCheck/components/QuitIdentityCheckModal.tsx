@@ -48,12 +48,12 @@ export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
         buttons={[
           <ButtonPrimaryWhite
             key={1}
-            title={t`Continuer la vérification`}
+            wording={t`Continuer la vérification`}
             onPress={continueIdentityCheck}
           />,
           <ButtonTertiaryWhite
             key={2}
-            title={t`Abandonner la vérification`}
+            wording={t`Abandonner la vérification`}
             onPress={quitIdentityCheck}
           />,
         ]}>
@@ -63,7 +63,7 @@ export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ theme, color }) => ({
-  color: color ?? theme.colors.white,
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
   textAlign: 'center',
 }))

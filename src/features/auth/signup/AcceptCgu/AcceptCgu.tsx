@@ -122,13 +122,13 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
           </Typo.Body>
         </Paragraphe>
         <ButtonTertiary
-          title={t`Contacter le support`}
+          wording={t`Contacter le support`}
           onPress={contactSupport.forGenericQuestion}
           icon={Email}
         />
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary
-          title={t`Accepter et s’inscrire`}
+          wording={t`Accepter et s’inscrire`}
           accessibilityLabel={t`Accepter les conditions générales d'utilisation et la politique de confidentialité pour s’inscrire`}
           // Token needs to be a non-empty string even when ReCaptcha validation is deactivated
           // Cf. backend logic for token validation

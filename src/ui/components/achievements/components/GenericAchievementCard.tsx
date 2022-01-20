@@ -129,14 +129,14 @@ Those props are provided by the GenericAchievementCard and must be passed down t
       <BottomButtonsContainer>
         <Animatable.View ref={animatedButtonRef}>
           {props.activeIndex === props.index ? (
-            <ButtonPrimary title={props.buttonText} onPress={props.buttonCallback} />
+            <ButtonPrimary wording={props.buttonText} onPress={props.buttonCallback} />
           ) : (
             <InvisibleButtonHeight testID="invisible-button-height" />
           )}
         </Animatable.View>
         {!props.lastIndex && (
           <FlexContainer marginTop={getSpacing(grid({ default: 4, sm: 2 }, 'height'))}>
-            <ButtonPrimaryWhite title={t`Passer`} onPress={props.skip} />
+            <ButtonPrimaryWhite wording={t`Passer`} onPress={props.skip} />
           </FlexContainer>
         )}
       </BottomButtonsContainer>

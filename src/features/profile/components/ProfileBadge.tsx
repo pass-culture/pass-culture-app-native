@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { handleCallToActionLink } from 'features/profile/utils'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getSpacing, Typo, Spacer } from 'ui/theme'
+import { getSpacing, Typo, Spacer } from 'ui/theme'
 
 interface ProfileBadgeProps {
   message: string
@@ -29,7 +29,7 @@ const renderCallToAction = (
         icon={callToActionIcon || undefined}
         testId="call-to-action-button"
         onPress={() => handleCallToActionLink(callToActionLink)}
-        title={callToActionMessage}
+        wording={callToActionMessage}
         justifyContent="flex-start"
         numberOfLines={2}
       />
@@ -38,21 +38,20 @@ const renderCallToAction = (
 }
 
 export function ProfileBadge(props: ProfileBadgeProps) {
+  const { colors } = useTheme()
   const Icon = props.popOverIcon
 
   return (
     <Container testID={props.testID || 'profile-badge'}>
       {Icon && !props.callToActionIcon ? (
         <IconContainer>
-          <Icon size={getSpacing(8)} color={ColorsEnum.GREY_DARK} />
+          <Icon size={getSpacing(8)} color={colors.greyDark} />
         </IconContainer>
       ) : null}
       <TextContainer>
         <Typo.Caption
           color={
-            props.callToActionMessage && props.callToActionLink
-              ? ColorsEnum.GREY_DARK
-              : ColorsEnum.BLACK
+            props.callToActionMessage && props.callToActionLink ? colors.greyDark : colors.black
           }>
           {props.message}
         </Typo.Caption>
@@ -66,14 +65,14 @@ export function ProfileBadge(props: ProfileBadgeProps) {
   )
 }
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',
-  backgroundColor: ColorsEnum.GREY_LIGHT,
+  backgroundColor: theme.colors.greyLight,
   borderRadius: 6,
   padding: getSpacing(4),
-})
+}))
 
 const IconContainer = styled.View({
   paddingRight: getSpacing(4),

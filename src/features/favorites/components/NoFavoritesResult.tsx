@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { useNavigateToSearchResults } from 'features/search/utils/useNavigateToSearchResults'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { EmptyFavorites } from 'ui/svg/icons/EmptyFavorites'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const NoFavoritesResult = () => {
   const onPressExploreOffers = useNavigateToSearchResults({ from: 'favorites' })
@@ -15,15 +15,15 @@ export const NoFavoritesResult = () => {
       <Spacer.TabBar />
       <Spacer.Flex />
       <IconContainer>
-        <EmptyFavorites size={197} color={ColorsEnum.GREY_MEDIUM} />
+        <Icon />
       </IconContainer>
-      <Explanation color={ColorsEnum.GREY_DARK}>
+      <Explanation>
         {t`Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris\u00a0!`}
       </Explanation>
       <Spacer.Column numberOfSpaces={6} />
       <ButtonContainer>
         <ButtonPrimary
-          title={t`Explorer les offres`}
+          wording={t`Explorer les offres`}
           onPress={onPressExploreOffers}
           buttonHeight="tall"
         />
@@ -51,8 +51,14 @@ const ButtonContainer = styled.View({
   width: '100%',
 })
 
-const Explanation = styled(Typo.Body)({
+const Explanation = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.greyDark,
   flex: 1,
   flexGrow: 0,
   textAlign: 'center',
-})
+}))
+
+const Icon = styled(EmptyFavorites).attrs(({ theme }) => ({
+  size: getSpacing(49.25),
+  color: theme.colors.greyMedium,
+}))``

@@ -177,7 +177,7 @@ export const CalendarPicker: React.FC<Props> = ({
       <CalendarButtonWrapper>
         <ButtonPrimary
           testId={'validationButton'}
-          title={t`Valider la date`}
+          wording={t`Valider la date`}
           disabled={isMobileDateInvalid}
           onPress={onValidate}
           adjustsFontSizeToFit={true}

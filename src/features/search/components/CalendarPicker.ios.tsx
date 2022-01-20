@@ -51,7 +51,7 @@ export const CalendarPicker: React.FC<Props> = ({
         />
       </Container>
       <Spacer.Column numberOfSpaces={2} />
-      <ButtonPrimary title={t`Valider la date`} onPress={onValidate} />
+      <ButtonPrimary wording={t`Valider la date`} onPress={onValidate} />
     </AppModal>
   )
 }

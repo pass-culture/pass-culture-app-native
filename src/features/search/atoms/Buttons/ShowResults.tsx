@@ -27,7 +27,7 @@ export const ShowResults: React.FC = () => {
 
   return (
     <ButtonPrimary
-      title={formatNbHits(nbHits)}
+      wording={formatNbHits(nbHits)}
       disabled={nbHits === 0}
       onPress={commit}
       adjustsFontSizeToFit={true}

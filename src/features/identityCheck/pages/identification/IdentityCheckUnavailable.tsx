@@ -33,14 +33,14 @@ export function IdentityCheckUnavailable() {
         !params?.withDMS && (
           <ButtonPrimaryWhite
             key={1}
-            title={t`Transmettre un dossier`}
+            wording={t`Transmettre un dossier`}
             onPress={showDMSModal}
             icon={ExternalSite}
           />
         ),
         <ButtonTertiaryWhite
           key={2}
-          title={t`Retourner à l'accueil`}
+          wording={t`Retourner à l'accueil`}
           onPress={navigateToHome}
           icon={PlainArrowPrevious}
         />,
@@ -58,7 +58,7 @@ Nous reviendrons vers toi d’ici quelques jours.`}</StyledBody>
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ color, theme }) => ({
-  color: color ?? theme.colors.white,
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
   textAlign: 'center',
 }))

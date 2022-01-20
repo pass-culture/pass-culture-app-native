@@ -41,8 +41,12 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
         icon={Error}
         flex={false}
         buttons={[
-          <ButtonPrimaryWhite key={1} title={t`Continuer l'inscription`} onPress={resume} />,
-          <ButtonTertiaryWhite key={2} title={t`Abandonner l'inscription`} onPress={quitSignup} />,
+          <ButtonPrimaryWhite key={1} wording={t`Continuer l'inscription`} onPress={resume} />,
+          <ButtonTertiaryWhite
+            key={2}
+            wording={t`Abandonner l'inscription`}
+            onPress={quitSignup}
+          />,
         ]}>
         <StyledBody>{description}</StyledBody>
         <Spacer.Column numberOfSpaces={8} />

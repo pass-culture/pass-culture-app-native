@@ -14,15 +14,13 @@ export interface BaseButtonProps {
   disabled?: boolean
   icon?: FunctionComponent<IconInterface>
   loadingIndicator?: FunctionComponent<IconInterface>
-  // TODO : replace Title with "title" when available
   inline?: boolean
   isLoading?: boolean
   onLongPress?: ((e: GestureResponderEvent) => void) | (() => void)
   onPress?: ((e: GestureResponderEvent) => void) | (() => void)
   testId?: string
   textSize?: number
-  // TODO : replace title with "text" in all code base
-  title: string
+  wording: string
   fullWidth?: boolean
   justifyContent?: 'center' | 'flex-start'
   numberOfLines?: number
@@ -32,7 +30,7 @@ export interface BaseButtonProps {
 interface AppButtonProps extends BaseButtonProps {
   inline?: boolean
   inlineHeight?: number
-  Title: FunctionComponent<any>
+  title: FunctionComponent<any>
 }
 
 type Only<TestedType, StandardType> = TestedType &
@@ -40,7 +38,7 @@ type Only<TestedType, StandardType> = TestedType &
 
 const _AppButton = <T extends AppButtonProps>({
   icon: Icon,
-  Title,
+  title: Title,
   inline,
   disabled,
   isLoading,
@@ -51,7 +49,7 @@ const _AppButton = <T extends AppButtonProps>({
   inlineHeight,
   accessibilityLabel,
   testId,
-  title,
+  wording,
   adjustsFontSizeToFit,
   justifyContent,
   numberOfLines,
@@ -62,7 +60,7 @@ const _AppButton = <T extends AppButtonProps>({
   const longPressHandler = disabled || isLoading ? undefined : onLongPress
   return (
     <StyledTouchableOpacity
-      {...accessibilityAndTestId(accessibilityLabel || title, testId || title)}
+      {...accessibilityAndTestId(accessibilityLabel || wording, testId || wording)}
       fullWidth={fullWidth}
       onPress={pressHandler}
       onLongPress={longPressHandler}
@@ -83,7 +81,7 @@ const _AppButton = <T extends AppButtonProps>({
             adjustsFontSizeToFit={adjustsFontSizeToFit ?? false}
             icon={Icon}
             numberOfLines={numberOfLines ?? 1}>
-            {title}
+            {wording}
           </Title>
         </Fragment>
       )}

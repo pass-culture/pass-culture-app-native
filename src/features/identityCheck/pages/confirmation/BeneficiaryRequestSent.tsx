@@ -45,14 +45,14 @@ export function BeneficiaryRequestSent() {
     <GenericInfoPage
       title={t`Demande envoyée\u00a0!`}
       icon={RequestSent}
-      buttons={[<ButtonPrimaryWhite key={1} title={t`On y va\u00a0!`} onPress={onPress} />]}>
+      buttons={[<ButtonPrimaryWhite key={1} wording={t`On y va\u00a0!`} onPress={onPress} />]}>
       <StyledBody>{t`Nous étudions ton dossier...`}</StyledBody>
       <StyledBody>{message}</StyledBody>
     </GenericInfoPage>
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ color, theme }) => ({
-  color: color ?? theme.colors.white,
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
   textAlign: 'center',
 }))

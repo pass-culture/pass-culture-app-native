@@ -246,7 +246,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
             <Spacer.Column numberOfSpaces={8} />
           )}
           <ButtonPrimary
-            title={t`Continuer`}
+            wording={t`Continuer`}
             disabled={!codeInputState.isValid}
             onPress={validateCode}
             isLoading={isLoading}
@@ -257,7 +257,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
             {/* force button to wrap on small screen, otherwise timer will "unwrap" when timer is under 10 seconds */}
             {appContentWidth <= 320 ? <Break /> : <Spacer.Row numberOfSpaces={1} />}
             <RetryButton
-              title={getRetryButtonTitle()}
+              wording={getRetryButtonTitle()}
               testId={'Réessayer'}
               onPress={requestSendPhoneValidationCode}
               inline
@@ -273,7 +273,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
             </Typo.Caption>
             {appContentWidth <= 320 ? <Break /> : <Spacer.Row numberOfSpaces={1} />}
             <ButtonQuaternary
-              title={t`Contacter le support`}
+              wording={t`Contacter le support`}
               icon={Email}
               onPress={contactSupport.forPhoneNumberConfirmation}
               inline

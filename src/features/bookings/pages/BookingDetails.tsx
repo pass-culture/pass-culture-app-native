@@ -33,7 +33,7 @@ import { blurImageHeight, heroMarginTop } from 'ui/components/hero/useHeroDimens
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const getOfferRules = (
   properties: BookingProperties,
@@ -170,7 +170,7 @@ export function BookingDetails() {
           <Spacer.Column numberOfSpaces={8} />
           <ButtonPrimary
             testId="Voir le détail de l’offre"
-            title={t`Voir le détail de l’offre`}
+            wording={t`Voir le détail de l’offre`}
             onPress={navigateToOffer}
             fullWidth
           />
@@ -203,10 +203,10 @@ const Container = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.white,
 }))
 
-const OfferRules = styled(Typo.Caption)({
-  color: ColorsEnum.GREY_DARK,
+const OfferRules = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
   textAlign: 'center',
-})
+}))
 
 const ViewWithPadding = styled.View({
   paddingHorizontal: getSpacing(5),

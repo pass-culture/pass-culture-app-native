@@ -9,7 +9,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { Plus } from 'ui/svg/icons/Plus'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 export function IdentityCheckStartContent() {
   const { visible, showModal, hideModal } = useModal(false)
@@ -35,12 +35,9 @@ export function IdentityCheckStartContent() {
       <Spacer.Column numberOfSpaces={6} />
       <Spacer.Flex />
       <DMSInformationContainer>
-        <Typo.Caption
-          color={
-            ColorsEnum.GREY_DARK
-          }>{t`Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées`}</Typo.Caption>
+        <Caption>{t`Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées`}</Caption>
         <ButtonQuaternaryBlack
-          title={t`Transmettre un document`}
+          wording={t`Transmettre un document`}
           onPress={showDMSModal}
           icon={Plus}
           justifyContent="flex-start"
@@ -56,8 +53,12 @@ const Container = styled.View({ height: '100%', alignItems: 'center' })
 
 const Title = styled(Typo.Title4)({ textAlign: 'center' })
 
-const Body = styled(Typo.Body)(({ theme, color }) => ({
-  color: color ?? theme.colors.greyDark,
+const Caption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
+
+const Body = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.greyDark,
   textAlign: 'center',
 }))
 

@@ -36,7 +36,7 @@ export const ButtonQuaternaryBlack: FunctionComponent<BaseButtonProps> = (props)
       {...props}
       loadingIndicator={LoadingIndicator}
       icon={Icon}
-      Title={Title}
+      title={Title}
       inlineHeight={getSpacing(5)}
     />
   )

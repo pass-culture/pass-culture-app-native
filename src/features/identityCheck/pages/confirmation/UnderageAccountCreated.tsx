@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import { useTheme } from 'styled-components/native'
 
 import {
   Amount,
@@ -17,11 +18,12 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import CategoryIcon from 'ui/svg/icons/categories/bicolor'
-import { UniqueColors, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
 
 export function UnderageAccountCreated() {
   const maxPrice = useMaxPrice()
   const text = t`Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi\u00a0!`
+  const { colors } = useTheme()
 
   useEnterKeyAction(navigateToHome)
 
@@ -33,19 +35,14 @@ export function UnderageAccountCreated() {
 
       <Spacer.Column numberOfSpaces={4} />
       <ProgressBarContainer>
-        <ProgressBar
-          progress={1}
-          color={UniqueColors.BRAND}
-          icon={CategoryIcon.Spectacles}
-          isAnimated
-        />
-        <Amount color={UniqueColors.BRAND}>{formatPriceInEuroToDisplayPrice(maxPrice)}</Amount>
+        <ProgressBar progress={1} color={colors.brand} icon={CategoryIcon.Spectacles} isAnimated />
+        <Amount color={colors.brand}>{formatPriceInEuroToDisplayPrice(maxPrice)}</Amount>
       </ProgressBarContainer>
       <Spacer.Column numberOfSpaces={4} />
       <Text>{text}</Text>
       <Spacer.Column numberOfSpaces={5} />
       <ButtonContainer>
-        <ButtonPrimary title={t`Je découvre les offres`} onPress={navigateToHome} />
+        <ButtonPrimary wording={t`Je découvre les offres`} onPress={navigateToHome} />
       </ButtonContainer>
     </GenericInfoPageWhite>
   )

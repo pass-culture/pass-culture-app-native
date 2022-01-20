@@ -14,7 +14,7 @@ export function DeleteProfileSuccess() {
       title={t`Compte désactivé`}
       icon={ProfileDeletionLight}
       buttons={[
-        <ButtonPrimaryWhite key={1} title={t`Retourner à l'accueil`} onPress={navigateToHome} />,
+        <ButtonPrimaryWhite key={1} wording={t`Retourner à l'accueil`} onPress={navigateToHome} />,
       ]}>
       <StyledBody>{t`Tu as 30 jours pour te rétracter par e-mail à\u00a0: support@passculture.app`}</StyledBody>
       <Spacer.Column numberOfSpaces={4} />
