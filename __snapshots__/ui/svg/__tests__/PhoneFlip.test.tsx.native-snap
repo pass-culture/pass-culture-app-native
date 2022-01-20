@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PhoneError should render component correctly 1`] = `
+exports[`PhoneFlip should render component correctly 1`] = `
 <RNSVGSvgView
   align="xMidYMid"
   aria-hidden={true}

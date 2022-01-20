@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { PhoneFlip } from 'ui/svg/PhoneFlip'
+import { PhoneFlip } from 'ui/svg/icons/PhoneFlip'
 import { Typo } from 'ui/theme'
 
 type LandscapePositionPageProps = {

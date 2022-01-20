@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`PhoneError should render component correctly 1`] = `
+exports[`PhoneFlip should render component correctly 1`] = `
 <svg
   aria-hidden={true}
   fill="none"

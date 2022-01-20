@@ -16,12 +16,12 @@ import { MaintenanceConeDeprecated } from 'ui/svg/icons/MaintenanceCone_deprecat
 import { NoBookings } from 'ui/svg/icons/NoBookings'
 import { NoBookingsDeprecated } from 'ui/svg/icons/NoBookings_deprecated'
 import { NoOfferDeprecated } from 'ui/svg/icons/NoOffer_deprecated'
+import { PhoneFlip } from 'ui/svg/icons/PhoneFlip'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { SadFaceDeprecated } from 'ui/svg/icons/SadFace_deprecated'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { TicketBookedDeprecated } from 'ui/svg/icons/TicketBooked_deprecated'
 import { IconInterface } from 'ui/svg/icons/types'
-import { PhoneFlip } from 'ui/svg/PhoneFlip'
 import { ColorsEnum, STANDARD_ICON_SIZE } from 'ui/theme'
 
 export const Illustrations: FunctionComponent = () => {
