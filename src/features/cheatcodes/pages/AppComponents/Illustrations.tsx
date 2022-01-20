@@ -21,9 +21,8 @@ import { SadFaceDeprecated } from 'ui/svg/icons/SadFace_deprecated'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { TicketBookedDeprecated } from 'ui/svg/icons/TicketBooked_deprecated'
 import { IconInterface } from 'ui/svg/icons/types'
-import { PhoneError } from 'ui/svg/PhoneError'
-import { ColorsEnum } from 'ui/theme/colors'
-import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
+import { PhoneFlip } from 'ui/svg/PhoneFlip'
+import { ColorsEnum, STANDARD_ICON_SIZE } from 'ui/theme'
 
 export const Illustrations: FunctionComponent = () => {
   return (
@@ -60,7 +59,7 @@ export const Illustrations: FunctionComponent = () => {
       <Illustration name="NoBookingsDeprecated" component={NoBookingsDeprecated} />
       <Illustration name="NoBookings" component={NoBookings} isNew />
       <Illustration name="NoOfferDeprecated" component={NoOfferDeprecated} />
-      <Illustration name="PhoneError" component={PhoneError} isNew />
+      <Illustration name="PhoneFlip" component={PhoneFlip} isNew />
       <Illustration name="SadFaceDeprecated" component={SadFaceDeprecated} />
       <Illustration name="SadFace" component={SadFace} isNew />
       <AlignedText>

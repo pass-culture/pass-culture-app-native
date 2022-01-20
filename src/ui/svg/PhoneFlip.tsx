@@ -2,9 +2,9 @@ import * as React from 'react'
 import Svg, { Path, Circle } from 'react-native-svg'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum } from 'ui/theme/colors'
-import { ILLUSTRATION_ICON_SIZE } from 'ui/theme/constants'
-export const PhoneError: React.FunctionComponent<IconInterface> = ({
+import { ColorsEnum, ILLUSTRATION_ICON_SIZE } from 'ui/theme'
+
+export const PhoneFlip: React.FunctionComponent<IconInterface> = ({
   size = ILLUSTRATION_ICON_SIZE,
   color = ColorsEnum.BLACK,
   testID,

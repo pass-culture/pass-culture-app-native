@@ -1,13 +1,13 @@
 import * as React from 'react'
 
 import { render } from 'tests/utils'
-import { PhoneError } from 'ui/svg/PhoneError'
+import { PhoneFlip } from 'ui/svg/PhoneFlip'
 
 jest.unmock('react-native-svg')
 
 describe('PhoneError', () => {
   it('should render component correctly', () => {
-    const PhoneErrorIcon = render(<PhoneError />)
-    expect(PhoneErrorIcon).toMatchSnapshot()
+    const PhoneFlipIcon = render(<PhoneFlip />)
+    expect(PhoneFlipIcon).toMatchSnapshot()
   })
 })
