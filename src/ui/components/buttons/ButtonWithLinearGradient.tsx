@@ -35,8 +35,9 @@ export const ButtonWithLinearGradient: React.FC<Props> = ({
   )
 }
 
-const Container = styled.TouchableOpacity(({ theme }) => ({
+const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
   activeOpacity: theme.activeOpacity,
+}))(({ theme }) => ({
   justifyContent: 'center',
   alignItems: 'center',
   borderRadius: theme.borderRadius.button,

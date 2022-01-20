@@ -1,15 +1,17 @@
 import React from 'react'
 import Svg, { Path } from 'react-native-svg'
+import { useTheme } from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { STANDARD_ICON_SIZE } from 'ui/theme'
-import { ColorsEnum } from 'ui/theme/colors'
 
-export function Offers({
-  size = STANDARD_ICON_SIZE,
-  testID,
-  color = ColorsEnum.BLACK,
-}: IconInterface) {
+export function Offers({ size, testID, color }: IconInterface) {
+  const { colors, icon } = useTheme()
+  if (!size) {
+    size = icon.size
+  }
+  if (!color) {
+    color = colors.black
+  }
   return (
     <Svg width={size} height={size} testID={testID} viewBox="0 0 48 48" fill="none" aria-hidden>
       <Path

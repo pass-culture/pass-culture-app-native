@@ -11,9 +11,12 @@ import {
   XXS_SMALLER_ICON_SIZE,
   STANDARD_ICON_SIZE,
   TAB_BAR_COMP_HEIGHT,
+  PAGE_HEADER_HEIGHT,
 } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ACTIVE_OPACITY, ColorsEnum, UniqueColors } from 'ui/theme/colors'
 import { BorderRadiusEnum, Breakpoints } from 'ui/theme/grid'
+// eslint-disable-next-line no-restricted-imports
 import { ZIndex } from 'ui/theme/layers'
 
 const isNative = Platform.OS === 'ios' || Platform.OS === 'android'
@@ -32,6 +35,7 @@ export interface AppThemeType {
   appBarHeight: number
   navTopHeight: number
   tabBarHeight: number
+  pageHeaderHeight: number
   isMobileViewport?: boolean // computed dynamically in ThemeProvider.tsx
   isTabletViewport?: boolean // computed dynamically in ThemeProvider.tsx
   isDesktopViewport?: boolean // computed dynamically in ThemeProvider.tsx
@@ -61,11 +65,9 @@ export interface AppThemeType {
     black: ColorsEnum
     error: ColorsEnum
     greenValid: ColorsEnum
-    greenDisabled: UniqueColors
     greenLight: ColorsEnum
     greyDark: ColorsEnum
     greyMedium: ColorsEnum
-    greyDisabled: UniqueColors
     greyLight: ColorsEnum
     primary: ColorsEnum
     primaryDisabled: ColorsEnum
@@ -74,10 +76,12 @@ export interface AppThemeType {
     tertiary: ColorsEnum
     transparent: ColorsEnum
     white: ColorsEnum
-    brand: UniqueColors
-    brandDark: UniqueColors
   }
   uniqueColors: {
+    greyDisabled: UniqueColors
+    greenDisabled: UniqueColors
+    brand: UniqueColors
+    brandDark: UniqueColors
     tabBar: UniqueColors
     greyOverlay: UniqueColors
     filterButton: UniqueColors
@@ -117,6 +121,9 @@ export interface AppThemeType {
   icon: {
     color: ColorsEnum
     size: number
+    smSize: number
+    xsSize: number
+    xxsSize: number
   }
   buttons: {
     loading: {
@@ -280,6 +287,7 @@ export const theme: AppThemeType = {
   appBarHeight: getSpacing(16),
   navTopHeight: getSpacing(20),
   tabBarHeight: TAB_BAR_COMP_HEIGHT,
+  pageHeaderHeight: PAGE_HEADER_HEIGHT,
   isTouch,
   showTabBar: true, // default value, the actual value is computed dynamically in ThemeProvider.tsx
   activeOpacity: ACTIVE_OPACITY,
@@ -338,11 +346,9 @@ export const theme: AppThemeType = {
     black: ColorsEnum.BLACK,
     error: ColorsEnum.ERROR,
     greenValid: ColorsEnum.GREEN_VALID,
-    greenDisabled: UniqueColors.GREEN_DISABLED,
     greenLight: ColorsEnum.GREEN_LIGHT,
     greyDark: ColorsEnum.GREY_DARK,
     greyMedium: ColorsEnum.GREY_MEDIUM,
-    greyDisabled: UniqueColors.GREY_DISABLED,
     greyLight: ColorsEnum.GREY_LIGHT,
     primary: ColorsEnum.PRIMARY,
     primaryDisabled: ColorsEnum.PRIMARY_DISABLED,
@@ -351,10 +357,12 @@ export const theme: AppThemeType = {
     tertiary: ColorsEnum.TERTIARY,
     transparent: ColorsEnum.TRANSPARENT,
     white: ColorsEnum.WHITE,
-    brand: UniqueColors.BRAND,
-    brandDark: UniqueColors.BRAND_DARK,
   },
   uniqueColors: {
+    greenDisabled: UniqueColors.GREEN_DISABLED,
+    greyDisabled: UniqueColors.GREY_DISABLED,
+    brand: UniqueColors.BRAND,
+    brandDark: UniqueColors.BRAND_DARK,
     tabBar: UniqueColors.TAB_BAR,
     greyOverlay: UniqueColors.GREY_OVERLAY,
     filterButton: UniqueColors.FILTER_BUTTON,
@@ -394,6 +402,9 @@ export const theme: AppThemeType = {
   icon: {
     color: ColorsEnum.BLACK,
     size: STANDARD_ICON_SIZE,
+    smSize: SM_ICON_SIZE,
+    xsSize: XS_SMALLER_ICON_SIZE,
+    xxsSize: XXS_SMALLER_ICON_SIZE,
   },
   buttons: {
     loading: {

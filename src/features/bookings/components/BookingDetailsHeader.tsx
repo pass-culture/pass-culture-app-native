@@ -7,8 +7,8 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ZIndex } from 'ui/theme/layers'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+
 interface Props {
   headerTransition: Animated.AnimatedInterpolation
   title: string
@@ -38,7 +38,7 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
           </IconContainer>
 
           <Title style={{ opacity: headerTransition }}>
-            <Typo.Body color={ColorsEnum.WHITE}>{title}</Typo.Body>
+            <StyledBody>{title}</StyledBody>
           </Title>
 
           <Spacer.Row numberOfSpaces={3} />
@@ -50,12 +50,16 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
   )
 }
 
-const HeaderContainer = styled(Animated.View)({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
+}))
+
+const HeaderContainer = styled(Animated.View)(({ theme }) => ({
   position: 'absolute',
   top: 0,
   width: '100%',
-  zIndex: ZIndex.HEADER,
-})
+  zIndex: theme.zIndex.header,
+}))
 
 const Row = styled.View({
   flexDirection: 'row',

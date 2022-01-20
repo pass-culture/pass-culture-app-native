@@ -58,6 +58,8 @@ module.exports = {
       },
       { name: 'ui/theme/shadow.ios', message: 'use ui/theme instead' },
       { name: 'ui/theme/shadow.android', message: 'use ui/theme instead' },
+      { name: 'ui/theme/colors', message: 'use theme/index.ts instead, styled(Component).attrs(({ theme }) => ({})`` | styled(Component).attrs(({ theme }) => ({})(({ theme }) => ({}) | styled(Component)(({ theme }) => ({})' },
+      { name: 'ui/theme/layers', message: 'use theme/index.ts instead, styled(Component).attrs(({ theme }) => ({})`` | styled(Component).attrs(({ theme }) => ({})(({ theme }) => ({}) | styled(Component)(({ theme }) => ({})' },
       { name: 'msw/lib/types', message: 'use msw instead' },
       { name: '@testing-library/react-native', message: 'Use test/utils instead' },
     ],

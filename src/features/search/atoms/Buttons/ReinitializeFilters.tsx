@@ -1,14 +1,14 @@
 import { t } from '@lingui/macro'
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
+import styled from 'styled-components/native'
 
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { analytics } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { accessibilityAndTestId } from 'tests/utils'
-import { ColorsEnum, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { Typo } from 'ui/theme'
 
 export const ReinitializeFilters = () => {
   const { dispatch } = useStagedSearch()
@@ -28,11 +28,18 @@ export const ReinitializeFilters = () => {
   }
 
   return (
-    <TouchableOpacity
-      activeOpacity={ACTIVE_OPACITY}
+    <StyledTouchableOpacity
       onPress={reinitializeFilters}
       {...accessibilityAndTestId(t`Réinitialiser les filtres`)}>
-      <Typo.ButtonText color={ColorsEnum.WHITE}>{t`Réinitialiser`}</Typo.ButtonText>
-    </TouchableOpacity>
+      <ButtonText>{t`Réinitialiser`}</ButtonText>
+    </StyledTouchableOpacity>
   )
 }
+
+const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
+  color: theme.colors.white,
+}))
+
+const StyledTouchableOpacity = styled(TouchableOpacity).attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))``

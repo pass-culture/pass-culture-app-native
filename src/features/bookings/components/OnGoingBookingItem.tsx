@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -8,8 +8,7 @@ import { mapCategoryToIcon } from 'libs/parsers'
 import { useSubcategory } from 'libs/subcategories'
 import { Clock } from 'ui/svg/icons/Clock'
 import { Duo } from 'ui/svg/icons/Duo'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { getBookingProperties, getBookingLabels } from '../helpers'
 
@@ -18,6 +17,7 @@ import { OnGoingTicket } from './OnGoingTicket'
 import { BookingItemProps } from './types'
 
 export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
+  const { colors } = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
   const { data: settings = null } = useAppSettings()
   const { categoryId, isEvent } = useSubcategory(booking.stock.offer.subcategoryId)
@@ -33,15 +33,15 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
       <OnGoingTicket image={stock.offer.image?.url} altIcon={mapCategoryToIcon(categoryId)} />
       <AttributesView>
         <BookingItemTitle title={stock.offer.name} />
-        {!!dateLabel && <DateLabel color={ColorsEnum.GREY_DARK}>{dateLabel}</DateLabel>}
+        {!!dateLabel && <DateLabel color={colors.greyDark}>{dateLabel}</DateLabel>}
         <Spacer.Column numberOfSpaces={1} />
         {!!bookingProperties.isDuo && <Duo />}
         <Spacer.Flex />
         {!!withdrawLabel && (
           <WithDrawContainer>
-            <Clock size={16} color={ColorsEnum.PRIMARY} />
+            <Clock size={16} color={colors.primary} />
             <Spacer.Row numberOfSpaces={1} />
-            <WithdrawCaption color={ColorsEnum.PRIMARY} numberOfLines={2}>
+            <WithdrawCaption color={colors.primary} numberOfLines={2}>
               {withdrawLabel}
             </WithdrawCaption>
           </WithDrawContainer>
@@ -51,8 +51,8 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
   )
 }
 
-const Container = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
+const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
 }))({
   paddingHorizontal: getSpacing(6),
   flexDirection: 'row',

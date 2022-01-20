@@ -15,7 +15,6 @@ import { formatToFrenchDecimal } from 'libs/parsers'
 import { Profile } from 'ui/svg/icons/Profile'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export const BookDuoChoice: React.FC = () => {
   const { bookingState, dispatch } = useBooking()
@@ -52,15 +51,19 @@ export const BookDuoChoice: React.FC = () => {
           {!!isDuo && <DuoChoice {...getChoiceInfosForQuantity(2)} testID={`DuoChoice2`} />}
         </DuoChoiceContainer>
       ) : (
-        <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={changeQuantity}>
+        <StyledTouchableOpacity onPress={changeQuantity}>
           <Typo.ButtonText>
             {bookingState.quantity && bookingState.quantity === 1 ? t`Solo` : t`Duo`}
           </Typo.ButtonText>
-        </TouchableOpacity>
+        </StyledTouchableOpacity>
       )}
     </React.Fragment>
   )
 }
+
+const StyledTouchableOpacity = styled(TouchableOpacity).attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))``
 
 const DuoPerson = (props: IconInterface): JSX.Element => (
   <DuoPersonContainer>

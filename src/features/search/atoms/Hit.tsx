@@ -12,8 +12,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit } from 'libs/search'
 import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { OfferImage } from './OfferImage'
 
@@ -81,8 +80,8 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
   )
 }
 
-const Container = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
+const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
 }))({
   marginHorizontal: getSpacing(6),
   flexDirection: 'row',
@@ -90,8 +89,13 @@ const Container = styled.TouchableOpacity.attrs(() => ({
 })
 
 const Column = styled.View({ flexDirection: 'column', flex: 1 })
+
 const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
-const Name = styled(Typo.ButtonText)({})
-const Distance = styled(Typo.Body)({ textAlign: 'right', color: ColorsEnum.GREY_DARK })
-const Body = styled(Typo.Body)({ color: ColorsEnum.GREY_DARK })
+const Name = styled(Typo.ButtonText)``
+
+const Distance = styled(Typo.Body)(({ theme }) => ({
+  textAlign: 'right',
+  color: theme.colors.greyDark,
+}))
+const Body = styled(Typo.Body)(({ theme }) => ({ color: theme.colors.greyDark }))

@@ -1,12 +1,10 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { StepConfig } from 'features/identityCheck/types'
 import { accessibilityAndTestId } from 'tests/utils'
 import { Validate } from 'ui/svg/icons/Validate'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
-import { BorderRadiusEnum } from 'ui/theme/grid'
+import { getSpacing, Typo } from 'ui/theme'
 
 export type StepButtonState = 'completed' | 'current' | 'disabled'
 
@@ -17,11 +15,11 @@ interface Props {
 }
 
 export const StepButton = ({ step, state, onPress }: Props) => {
+  const { colors } = useTheme()
   const { icon: Icon, label } = step
 
   return (
     <Button
-      activeOpacity={ACTIVE_OPACITY}
       onPress={onPress}
       disabled={state !== 'current'}
       state={state}
@@ -32,7 +30,7 @@ export const StepButton = ({ step, state, onPress }: Props) => {
       <Typo.ButtonText>{label}</Typo.ButtonText>
       <CompletionContainer>
         <Validate
-          color={state === 'completed' ? ColorsEnum.GREEN_LIGHT : ColorsEnum.TRANSPARENT}
+          color={state === 'completed' ? colors.greenLight : colors.transparent}
           {...accessibilityAndTestId(state === 'completed' ? 'StepCompleted' : 'StepNotCompleted')}
         />
       </CompletionContainer>
@@ -40,18 +38,22 @@ export const StepButton = ({ step, state, onPress }: Props) => {
   )
 }
 
-const Button = styled.TouchableOpacity<{ disabled: boolean; state: StepButtonState }>((props) => ({
+const Button = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))<{ disabled: boolean; state: StepButtonState }>((props) => ({
   height: getSpacing(24),
   marginTop: getSpacing(6),
   width: '100%',
-  backgroundColor: ColorsEnum.WHITE,
-  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
+  backgroundColor: props.theme.colors.white,
+  borderRadius: props.theme.borderRadius.radius,
   opacity: props.state === 'disabled' ? 0.5 : 1,
   flexDirection: 'row',
   alignItems: 'center',
 }))
 
-const IconContainer = styled.View({ padding: getSpacing(4) })
+const IconContainer = styled.View({
+  padding: getSpacing(4),
+})
 
 const CompletionContainer = styled.View({
   flex: 1,

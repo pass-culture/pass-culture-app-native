@@ -1,12 +1,11 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { LocationType } from 'features/search/enums'
-import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { Validate } from 'ui/svg/icons/Validate'
-import { getSpacing, Spacer, Typo, ColorsEnum } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { ArrowNext as ArrowNextDefault } from 'ui/svg/icons/ArrowNext'
+import { Validate as ValidateDefault } from 'ui/svg/icons/Validate'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
   section: LocationType.PLACE | LocationType.EVERYWHERE | LocationType.AROUND_ME
@@ -16,37 +15,46 @@ type Props = {
 }
 
 export const LocationChoice: React.FC<Props> = (props) => {
+  const { colors } = useTheme()
   const { section, onPress, arrowNext = false, testID } = props
   const { Icon, label, isSelected } = useLocationChoice(section)
-  const iconColor2 = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.SECONDARY
 
   return (
     <Container onPress={onPress} testID={`locationChoice-${testID}`}>
       <FirstPart>
         <Spacer.Row numberOfSpaces={3} />
-        <Icon color2={iconColor2} />
+        <Icon color2={isSelected ? colors.primary : colors.secondary} />
         <Spacer.Row numberOfSpaces={3} />
         <TextContainer>
-          <Typo.ButtonText
-            numberOfLines={3}
-            color={isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK}>
+          <ButtonText numberOfLines={3} isSelected={isSelected}>
             {label}
-          </Typo.ButtonText>
+          </ButtonText>
         </TextContainer>
       </FirstPart>
       <SecondPart>
-        {!!isSelected && (
-          <Validate color={ColorsEnum.PRIMARY} testID="validateIcon" size={getSpacing(6)} />
-        )}
-        {!!arrowNext && <ArrowNext size={getSpacing(6)} />}
+        {!!isSelected && <Validate testID="validateIcon" />}
+        {!!arrowNext && <ArrowNext />}
         {!isSelected && !arrowNext ? <Spacer.Row numberOfSpaces={8} /> : null}
       </SecondPart>
     </Container>
   )
 }
 
-const Container = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
+const ButtonText = styled(Typo.ButtonText)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
+  color: isSelected ? theme.colors.primary : theme.colors.black,
+}))
+
+const ArrowNext = styled(ArrowNextDefault).attrs(({ theme }) => ({
+  size: theme.icon.smSize,
+}))``
+
+const Validate = styled(ValidateDefault).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  size: theme.icon.smSize,
+}))``
+
+const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
 }))({
   display: 'flex',
   flexDirection: 'row',

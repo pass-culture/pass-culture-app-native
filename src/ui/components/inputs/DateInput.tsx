@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import React, { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 import { Platform, TextInput, TextInputProps } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import validateDate from 'validate-date'
@@ -9,7 +9,6 @@ import validateDate from 'validate-date'
 import { accessibilityAndTestId } from 'tests/utils'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { ColorsEnum, Typo } from 'ui/theme'
-import { ZIndex } from 'ui/theme/layers'
 
 interface ValidationBarProps {
   testID?: string
@@ -75,8 +74,9 @@ const DateInputLabel: React.FC<DateInputLabelProps> = ({
   onFocus,
   accessibilityLabel,
 }) => {
+  const { colors } = useTheme()
   const text = value?.trim?.()?.length ? value.trim() : placeholder
-  const color = value?.trim?.()?.length ? undefined : ColorsEnum.GREY_DARK
+  const color = value?.trim?.()?.length ? undefined : colors.greyDark
   return (
     <StyledTouchableOpacity {...accessibilityAndTestId(accessibilityLabel)} onPress={onFocus}>
       <DateInputLabelText testID={'date-input-label-text'} numberOfLines={1} color={color}>
@@ -279,11 +279,11 @@ const Container = styled.View({
 })
 type ValidationBarPropsWithoutFocus = Omit<ValidationBarProps, 'onFocus' | 'width'>
 const ValidationBar = styled.View.attrs<ValidationBarPropsWithoutFocus>(
-  ({ isEmpty, isFocused, isValid }) => {
-    if (isValid) return { backgroundColor: ColorsEnum.GREEN_VALID }
-    if (isFocused) return { backgroundColor: ColorsEnum.PRIMARY }
-    if (isEmpty) return { backgroundColor: ColorsEnum.GREY_MEDIUM }
-    return { backgroundColor: ColorsEnum.ERROR }
+  ({ isEmpty, isFocused, isValid, theme }) => {
+    if (isValid) return { backgroundColor: theme.colors.greenValid }
+    if (isFocused) return { backgroundColor: theme.colors.primary }
+    if (isEmpty) return { backgroundColor: theme.colors.greyMedium }
+    return { backgroundColor: theme.colors.error }
   }
 )<ValidationBarPropsWithoutFocus>(({ backgroundColor }) => ({
   backgroundColor,
@@ -297,7 +297,7 @@ const ValidationBarContainer = styled.View({
   position: 'relative',
 })
 
-const HiddenTextInput = styled(TextInput)({
+const HiddenTextInput = styled(TextInput)(({ theme }) => ({
   fontSize: 1,
   lineHeight: '22px',
   textAlign: 'center',
@@ -305,11 +305,11 @@ const HiddenTextInput = styled(TextInput)({
   width: 1,
   height: 1,
   overflow: 'hidden',
-  zIndex: ZIndex.BACKGROUND,
+  zIndex: theme.zIndex.background,
   opacity: 0.1,
   ...Platform.select({
     web: {
       caretColor: 'transparent',
     },
   }),
-})
+}))

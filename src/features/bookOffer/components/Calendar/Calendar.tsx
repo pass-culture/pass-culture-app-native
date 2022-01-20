@@ -9,8 +9,7 @@ import { analytics } from 'libs/analytics'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { monthNames, monthNamesShort, dayNames, dayNamesShort } from './Calendar.utils'
 import { DayComponent, useSelectDay } from './DayComponent'
@@ -99,10 +98,9 @@ export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit, offerId
           <Container onPress={onPress} disabled={!onPress}>
             <DayComponent status={status} selected={selected} date={date} />
             {typeof price === 'number' ? (
-              <Typo.Caption
-                color={status === OfferStatus.BOOKABLE ? ColorsEnum.PRIMARY : ColorsEnum.GREY_DARK}>
+              <OfferStatusCaption status={OfferStatus.BOOKABLE}>
                 {formatToFrenchDecimal(price).replace(' ', '')}
-              </Typo.Caption>
+              </OfferStatusCaption>
             ) : (
               <Spacer.Column numberOfSpaces={getSpacing(1)} />
             )}
@@ -116,8 +114,12 @@ export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit, offerId
 // Only works for iOS but still useful
 const hitSlop = { top: 8, bottom: 8, left: 8, right: 8 }
 
-const Container = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
+const OfferStatusCaption = styled(Typo.Caption)<{ status: OfferStatus }>(({ theme, status }) => ({
+  color: status === OfferStatus.BOOKABLE ? theme.colors.primary : theme.colors.greyDark,
+}))
+
+const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
   hitSlop,
 }))({
   alignItems: 'center',

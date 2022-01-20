@@ -10,9 +10,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
-import { ZIndex } from 'ui/theme/layers'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export const HomeHeader: FunctionComponent = function () {
@@ -55,37 +53,40 @@ export const HomeHeader: FunctionComponent = function () {
 
       <CenterContainer>
         <Spacer.Column numberOfSpaces={8} />
-        <StyledTitle1 color={ColorsEnum.WHITE} numberOfLines={2}>
-          {welcomeTitle}
-        </StyledTitle1>
+        <StyledTitle1 numberOfLines={2}>{welcomeTitle}</StyledTitle1>
         <Spacer.Column numberOfSpaces={2} />
-        <Typo.Body color={ColorsEnum.WHITE}>{subtitle}</Typo.Body>
+        <StyledBody>{subtitle}</StyledBody>
       </CenterContainer>
       <Spacer.Column numberOfSpaces={6} />
     </React.Fragment>
   )
 }
 
-const StyledTitle1 = styled(Typo.Title1)({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
+}))
+
+const StyledTitle1 = styled(Typo.Title1)(({ theme }) => ({
+  color: theme.colors.white,
   textAlign: 'center',
   marginHorizontal: getSpacing(8),
-})
+}))
 
 const CenterContainer = styled.View({
   flexGrow: 1,
   alignItems: 'center',
 })
 
-const HeaderBackgroundWrapper = styled.View({
+const HeaderBackgroundWrapper = styled.View(({ theme }) => ({
   position: 'absolute',
   top: 0,
   left: 0,
-  zIndex: ZIndex.BACKGROUND,
-})
+  zIndex: theme.zIndex.background,
+}))
 
-const CheatCodeButtonContainer = styled.TouchableOpacity.attrs({
-  activeOpacity: ACTIVE_OPACITY,
-})(({ theme }) => ({
+const CheatCodeButtonContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))(({ theme }) => ({
   position: 'absolute',
   right: getSpacing(2),
   zIndex: theme.zIndex.cheatCodeButton,

@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Validate } from 'ui/svg/icons/Validate'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { Validate as ValidateDefault } from 'ui/svg/icons/Validate'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
   label: string
@@ -15,31 +14,40 @@ export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) =>
   <TouchableOpacity selected={selected} onPress={onPress}>
     {selected ? (
       <IconContainer>
-        <Validate color={ColorsEnum.WHITE} size={getSpacing(4.5)} />
+        <Validate />
       </IconContainer>
     ) : (
       <Spacer.Row numberOfSpaces={5} />
     )}
-    <Label color={selected ? ColorsEnum.WHITE : ColorsEnum.BLACK}>{label}</Label>
+    <Label selected={selected}>{label}</Label>
     <Spacer.Row numberOfSpaces={selected ? 2 : 5} />
   </TouchableOpacity>
 )
+
+const Validate = styled(ValidateDefault).attrs(({ theme }) => ({
+  color: theme.colors.white,
+  size: getSpacing(4.5), // TODO: see with UXs why this icon is not a theme size
+}))``
 
 const IconContainer = styled.View({
   width: getSpacing(8),
   paddingHorizontal: getSpacing(1),
 })
 
-const TouchableOpacity = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
-}))<{ selected: boolean }>(({ selected }) => ({
+const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))<{ selected: boolean }>(({ selected, theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   borderRadius: getSpacing(10),
   borderWidth: 2,
-  borderColor: selected ? ColorsEnum.PRIMARY : ColorsEnum.GREY_MEDIUM,
+  borderColor: selected ? theme.colors.primary : theme.colors.greyMedium,
   marginBottom: getSpacing(3),
   marginRight: getSpacing(3),
-  backgroundColor: selected ? ColorsEnum.PRIMARY : ColorsEnum.WHITE,
+  backgroundColor: selected ? theme.colors.primary : theme.colors.white,
 }))
-const Label = styled(Typo.ButtonText)({ paddingVertical: getSpacing(2.5) })
+
+const Label = styled(Typo.ButtonText)<{ selected: boolean }>(({ selected, theme }) => ({
+  color: selected ? theme.colors.white : theme.colors.black,
+  paddingVertical: getSpacing(2.5),
+}))

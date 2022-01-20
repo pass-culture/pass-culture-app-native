@@ -5,11 +5,8 @@ import styled from 'styled-components/native'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { accessibilityAndTestId } from 'tests/utils'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
-
-export const HEADER_HEIGHT = getSpacing(16)
+import { ArrowPrevious as ArrowPreviousDefault } from 'ui/svg/icons/ArrowPrevious'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
   title: string
@@ -23,16 +20,18 @@ export const PageHeader: React.FC<Props> = (props) => (
   </HeaderContainer>
 )
 
-const HeaderContainer = styled.View({
+const HeaderContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
-  height: HEADER_HEIGHT,
-})
+  height: theme.pageHeaderHeight,
+}))
 
-const Title = styled(Typo.Title4).attrs({
-  color: ColorsEnum.WHITE,
-})({ flex: 1, textAlign: 'center' })
+const Title = styled(Typo.Title4)(({ theme }) => ({
+  flex: 1,
+  textAlign: 'center',
+  color: theme.colors.white,
+}))
 
 interface BackButtonProps {
   onGoBack?: () => void
@@ -44,11 +43,19 @@ const BackIcon: React.FC<BackButtonProps> = (props) => {
     <StyledTouchableOpacity
       onPress={props.onGoBack ?? goBack}
       {...accessibilityAndTestId(t`Revenir en arrière`)}>
-      <ArrowPrevious color={ColorsEnum.WHITE} size={24} testID="icon-back" />
+      <ArrowPrevious testID="icon-back" />
     </StyledTouchableOpacity>
   )
 }
 
-const StyledTouchableOpacity = styled.TouchableOpacity.attrs({
-  activeOpacity: ACTIVE_OPACITY,
-})({ position: 'absolute', left: getSpacing(3) })
+const ArrowPrevious = styled(ArrowPreviousDefault).attrs(({ theme }) => ({
+  color: theme.colors.white,
+  size: theme.icon.smSize,
+}))``
+
+const StyledTouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))({
+  position: 'absolute',
+  left: getSpacing(3),
+})

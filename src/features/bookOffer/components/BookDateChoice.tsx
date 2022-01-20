@@ -1,12 +1,11 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import { TouchableOpacity } from 'react-native'
+import styled from 'styled-components/native'
 
 import { OfferStockResponse } from 'api/gen'
 import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { Step } from '../pages/reducer'
 
@@ -37,13 +36,17 @@ export const BookDateChoice: React.FC<Props> = ({ stocks, userRemainingCredit })
           offerId={bookingState.offerId}
         />
       ) : (
-        <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={showCalendar}>
+        <StyledTouchableOpacity onPress={showCalendar}>
           <Spacer.Column numberOfSpaces={2} />
           <Typo.ButtonText>
             {bookingState.date ? formatToCompleteFrenchDate(bookingState.date) : ''}
           </Typo.ButtonText>
-        </TouchableOpacity>
+        </StyledTouchableOpacity>
       )}
     </React.Fragment>
   )
 }
+
+const StyledTouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))``

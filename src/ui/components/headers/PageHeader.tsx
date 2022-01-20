@@ -7,9 +7,8 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { accessibilityAndTestId } from 'tests/utils'
 import { useElementWidth } from 'ui/hooks/useElementWidth'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { ArrowPrevious as ArrowPreviousDefault } from 'ui/svg/icons/ArrowPrevious'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
   title: string
@@ -24,12 +23,11 @@ interface HeaderIconProps {
 const HeaderIconBack: React.FC<HeaderIconProps> = ({ onGoBack }) => {
   const { goBack } = useGoBack(...homeNavConfig)
   return (
-    <TouchableOpacity
-      activeOpacity={ACTIVE_OPACITY}
+    <StyledTouchableOpacity
       onPress={onGoBack || goBack}
       {...accessibilityAndTestId(t`Revenir en arrière`)}>
-      <ArrowPrevious color={ColorsEnum.WHITE} size={24} testID="icon-back" />
-    </TouchableOpacity>
+      <ArrowPrevious testID="icon-back" />
+    </StyledTouchableOpacity>
   )
 }
 
@@ -47,7 +45,7 @@ export const PageHeader: React.FC<Props> = (props) => {
           <HeaderIconBack onGoBack={props.onGoBack} />
         </ButtonContainer>
 
-        <Title color={ColorsEnum.WHITE}>{title}</Title>
+        <Title>{title}</Title>
 
         <ButtonContainer positionInHeader="right">
           {!!RightComponent && (
@@ -63,16 +61,23 @@ export const PageHeader: React.FC<Props> = (props) => {
   )
 }
 
-const HeaderContainer = styled.View({
+const StyledTouchableOpacity = styled(TouchableOpacity).attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))``
+
+const HeaderContainer = styled.View(({ theme }) => ({
   position: 'absolute',
   top: 0,
   width: '100%',
-  backgroundColor: ColorsEnum.PRIMARY,
-})
+  backgroundColor: theme.colors.primary,
+}))
 
-const Title = styled(Typo.Body).attrs({ numberOfLines: 1, color: ColorsEnum.WHITE })({
+const Title = styled(Typo.Body).attrs({
+  numberOfLines: 1,
+})(({ theme }) => ({
+  color: theme.colors.white,
   textAlign: 'center',
-})
+}))
 
 const Row = styled.View({
   flexDirection: 'row',
@@ -90,3 +95,8 @@ const ButtonContainer = styled.View<{ positionInHeader: 'left' | 'right' }>(
     flex: 1,
   })
 )
+
+const ArrowPrevious = styled(ArrowPreviousDefault).attrs(({ theme }) => ({
+  color: theme.colors.white,
+  size: getSpacing(6),
+}))``

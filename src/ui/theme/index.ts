@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 export { ColorsEnum, UniqueColors } from 'ui/theme/colors'
 export * from './constants'
 export { getShadow } from './shadow'

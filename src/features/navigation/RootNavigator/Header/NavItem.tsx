@@ -44,7 +44,7 @@ const StyledTouchableOpacity = styled.TouchableOpacity<{ isSelected?: boolean }>
     height: getSpacing(11),
     paddingHorizontal: getSpacing(4),
     borderWidth: 1,
-    borderColor: isSelected ? theme.colors.brand : ColorsEnum.TRANSPARENT,
+    borderColor: isSelected ? theme.uniqueColors.brand : ColorsEnum.TRANSPARENT,
     borderRadius: theme.borderRadius.button * 2,
   })
 )

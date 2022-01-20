@@ -14,8 +14,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
-import { Typo, ColorsEnum, getSpacing } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { Typo, getSpacing } from 'ui/theme'
 
 type Props = {
   beforeNavigateToItinerary?: () => Promise<void> | void
@@ -116,9 +115,9 @@ export const WhereSection: React.FC<Props> = ({
   )
 }
 
-const VenueNameContainer = styled.TouchableOpacity.attrs({
-  activeOpacity: ACTIVE_OPACITY,
-})({
+const VenueNameContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))({
   flexDirection: 'row',
   alignItems: 'center',
 })
@@ -140,7 +139,7 @@ const IconContainer = styled.View({
   left: -iconSpacing,
 })
 
-const Separator = styled.View({
+const Separator = styled.View(({ theme }) => ({
   height: 1,
-  backgroundColor: ColorsEnum.GREY_MEDIUM,
-})
+  backgroundColor: theme.colors.greyMedium,
+}))

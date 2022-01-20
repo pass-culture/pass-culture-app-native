@@ -3,16 +3,15 @@ import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useRef } from 'react'
 import { ScrollView, ViewStyle } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { SearchGroupNameEnum } from 'api/gen'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { Validate } from 'ui/svg/icons/Validate'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { Validate as ValidateDefault } from 'ui/svg/icons/Validate'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const DEBOUNCED_CALLBACK = 200
 
@@ -34,6 +33,7 @@ const useSelectCategory = (callback: () => void) => {
 }
 
 export const Categories: React.FC = () => {
+  const { colors } = useTheme()
   const { goBack } = useNavigation()
   const { isCategorySelected, selectCategory } = useSelectCategory(goBack)
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
@@ -47,8 +47,7 @@ export const Categories: React.FC = () => {
         {Object.entries(CATEGORY_CRITERIA).map(([category, { icon: Icon }]) => {
           const searchGroup = category as SearchGroupNameEnum
           const isSelected = isCategorySelected(searchGroup)
-          const color2 = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.SECONDARY
-          const textColor = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK
+          const color2 = isSelected ? colors.primary : colors.secondary
 
           return (
             <LabelContainer
@@ -56,13 +55,13 @@ export const Categories: React.FC = () => {
               onPress={selectCategory(searchGroup)}
               testID={searchGroup}>
               <Spacer.Row numberOfSpaces={4} />
-              <Icon size={getSpacing(9)} color={ColorsEnum.PRIMARY} color2={color2} />
+              <Icon size={getSpacing(9)} color={colors.primary} color2={color2} />
               <Spacer.Row numberOfSpaces={4} />
-              <Typo.ButtonText numberOfLines={2} color={textColor}>
+              <ButtonText numberOfLines={2} isSelected={isSelected}>
                 {searchGroupLabelMapping[searchGroup]}
-              </Typo.ButtonText>
+              </ButtonText>
               <Spacer.Flex />
-              {!!isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(6)} />}
+              {!!isSelected && <Validate />}
             </LabelContainer>
           )
         })}
@@ -73,6 +72,15 @@ export const Categories: React.FC = () => {
   )
 }
 
+const ButtonText = styled(Typo.ButtonText)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
+  color: isSelected ? theme.colors.primary : theme.colors.black,
+}))
+
+const Validate = styled(ValidateDefault).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  size: theme.icon.size,
+}))``
+
 const Container = styled.View(({ theme }) => ({
   flex: 1,
   backgroundColor: theme.colors.white,
@@ -80,9 +88,9 @@ const Container = styled.View(({ theme }) => ({
 
 const contentContainerStyle: ViewStyle = { flexGrow: 1, marginRight: getSpacing(6) }
 
-const LabelContainer = styled.TouchableOpacity.attrs({
-  activeOpacity: ACTIVE_OPACITY,
-})({
+const LabelContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))({
   flexDirection: 'row',
   alignItems: 'center',
   marginBottom: getSpacing(4),

@@ -11,10 +11,11 @@ import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { InputError } from 'ui/components/inputs/InputError'
-import { Validate } from 'ui/svg/icons/Validate'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { Validate as ValidateDefault } from 'ui/svg/icons/Validate'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export type FavoriteSortBy = 'RECENTLY_ADDED' | 'ASCENDING_PRICE' | 'AROUND_ME'
+
 const SORT_OPTIONS: Record<FavoriteSortBy, string> = {
   RECENTLY_ADDED: t`Ajouté récemment`,
   ASCENDING_PRICE: t`Prix croissant`,
@@ -75,7 +76,6 @@ export const FavoritesSorts: React.FC = () => {
 
         {SORT_OPTIONS_LIST.map(([sortBy, label]) => {
           const isSelected = stagedSelectedSortBy === sortBy
-          const textColor = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK
           return (
             <React.Fragment key={sortBy}>
               <LabelContainer
@@ -84,11 +84,11 @@ export const FavoritesSorts: React.FC = () => {
                 testID={sortBy}>
                 <Spacer.Column numberOfSpaces={8} />
                 <Spacer.Row numberOfSpaces={6} />
-                <Typo.ButtonText numberOfLines={2} color={textColor}>
+                <ButtonText numberOfLines={2} isSelected={isSelected}>
                   {label}
-                </Typo.ButtonText>
+                </ButtonText>
                 <Spacer.Flex />
-                {!!isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(6)} />}
+                {!!isSelected && <Validate />}
               </LabelContainer>
               {sortBy === 'AROUND_ME' && positionError ? (
                 <InputError visible messageId={positionError.message} numberOfSpacesTop={1} />
@@ -106,6 +106,15 @@ export const FavoritesSorts: React.FC = () => {
   )
 }
 
+const ButtonText = styled(Typo.ButtonText)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
+  color: isSelected ? theme.colors.primary : theme.colors.black,
+}))
+
+const Validate = styled(ValidateDefault).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  size: theme.icon.smSize,
+}))``
+
 const Container = styled.View(({ theme }) => ({
   flex: 1,
   backgroundColor: theme.colors.white,
@@ -117,12 +126,13 @@ const contentContainerStyle: ViewStyle = {
   paddingRight: getSpacing(3),
 }
 
-const LabelContainer = styled.TouchableOpacity(({ theme }) => ({
+const LabelContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
   activeOpacity: theme.activeOpacity,
+}))({
   flexDirection: 'row',
   alignItems: 'center',
   marginBottom: getSpacing(4),
-}))
+})
 
 const TitleContainer = styled.View({
   flexDirection: 'row',

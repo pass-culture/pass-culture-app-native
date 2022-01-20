@@ -11,8 +11,7 @@ import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
   setScrollEnabled?: ((setScrollEnabled: boolean) => void) | Dispatch<SetStateAction<boolean>>
@@ -73,14 +72,9 @@ export function OfferDate({ setScrollEnabled }: Props) {
           onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.USER_PICK)}
         />
         {option === DATE_FILTER_OPTIONS.USER_PICK && (
-          <TouchableOpacity
-            testID="pickedDate"
-            activeOpacity={ACTIVE_OPACITY}
-            onPress={() => setShowTimePicker(true)}>
-            <Typo.Body color={ColorsEnum.BLACK}>
-              {formatToCompleteFrenchDate(selectedDate)}
-            </Typo.Body>
-          </TouchableOpacity>
+          <StyledTouchableOpacity testID="pickedDate" onPress={() => setShowTimePicker(true)}>
+            <Body>{formatToCompleteFrenchDate(selectedDate)}</Body>
+          </StyledTouchableOpacity>
         )}
       </Container>
 
@@ -93,5 +87,13 @@ export function OfferDate({ setScrollEnabled }: Props) {
     </React.Fragment>
   )
 }
+
+const Body = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.black,
+}))
+
+const StyledTouchableOpacity = styled(TouchableOpacity).attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))``
 
 const Container = styled.View({ marginHorizontal: getSpacing(6) })

@@ -171,10 +171,11 @@ export const Favorite: React.FC<Props> = (props) => {
 
 const imageWidth = getSpacing(16)
 
-const Container = styled.TouchableOpacity(({ theme }) => ({
+const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
   activeOpacity: theme.activeOpacity,
+}))({
   marginHorizontal: getSpacing(6),
-}))
+})
 
 const columnPadding = 4
 const columnMargin = 2 * 6

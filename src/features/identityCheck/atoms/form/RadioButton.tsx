@@ -2,8 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Validate } from 'ui/svg/icons/Validate'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
   selected: boolean
@@ -15,21 +14,32 @@ interface Props {
 export const RadioButton = ({ name, description, selected, onPress }: Props) => (
   <Label selected={selected} onPress={() => onPress(name)}>
     <TextContainer>
-      <Typo.ButtonText color={selected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK}>
-        {name}
-      </Typo.ButtonText>
-      {description ? <Typo.Caption color={ColorsEnum.GREY_DARK}>{description}</Typo.Caption> : null}
+      <ButtonText selected={selected}>{name}</ButtonText>
+      {!!description && <Caption>{description}</Caption>}
     </TextContainer>
-    {selected ? (
+    {!!selected && (
       <IconContainer>
-        <Validate color={ColorsEnum.PRIMARY} size={24} />
+        <Validated />
       </IconContainer>
-    ) : null}
+    )}
   </Label>
 )
 
-const Label = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
+const Caption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
+
+const ButtonText = styled(Typo.ButtonText)<{ selected: boolean }>(({ theme, selected }) => ({
+  color: selected ? theme.colors.primary : theme.colors.black,
+}))
+
+const Validated = styled(Validate).attrs(({ theme }) => ({
+  color: theme.colors.greyDark,
+  size: theme.icon.smSize,
+}))``
+
+const Label = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
 }))<{ selected: boolean }>(({ theme, selected }) => ({
   flexDirection: 'row',
   alignItems: 'center',

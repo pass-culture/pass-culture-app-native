@@ -4,9 +4,8 @@ import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
-import { Invalidate } from 'ui/svg/icons/Invalidate'
+import { Invalidate as InvalidateDefault } from 'ui/svg/icons/Invalidate'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { BaseTextInput } from './BaseTextInput'
 import { StyledInputContainer } from './StyledInputContainer'
@@ -60,7 +59,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           <RightIconContainer
             onPress={onPressRightIcon}
             {...accessibilityAndTestId(t`Réinitialiser la recherche`)}>
-            <Invalidate color={ColorsEnum.GREY_DARK} />
+            <Invalidate />
           </RightIconContainer>
         )}
       </StyledInputContainer>
@@ -68,8 +67,16 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
   )
 }
 
+export const Invalidate = styled(InvalidateDefault).attrs(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))``
+
 export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(WithRefSearchInput)
 
-const RightIconContainer = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
-}))({ position: 'absolute', right: getSpacing(1), padding: getSpacing(2) })
+const RightIconContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))({
+  position: 'absolute',
+  right: getSpacing(1),
+  padding: getSpacing(2),
+})

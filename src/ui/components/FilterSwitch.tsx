@@ -1,10 +1,9 @@
 import React, { memo, useEffect, useRef } from 'react'
 import { Animated, Easing, TouchableOpacity } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { DefaultTheme } from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
-import { ColorsEnum, UniqueColors, getShadow, getSpacing } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { getShadow, getSpacing } from 'ui/theme'
 
 interface Props {
   active: boolean
@@ -37,28 +36,31 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
 
   return (
     <FilterSwitchContainer>
-      <TouchableOpacity
-        activeOpacity={ACTIVE_OPACITY}
+      <StyledTouchableOpacity
         onPress={toggle}
         disabled={disabled}
         accessibilityValue={{ text: active.toString() }}
         {...accessibilityAndTestId(props.accessibilityLabel)}>
-        <StyledBackgroundColor backgroundColor={getBackgroundColor(active, disabled)}>
+        <StyledBackgroundColor active={active} disabled={disabled}>
           <StyledToggle style={{ marginLeft }} />
         </StyledBackgroundColor>
-      </TouchableOpacity>
+      </StyledTouchableOpacity>
     </FilterSwitchContainer>
   )
 }
 
-const getBackgroundColor = (active: boolean, disabled: boolean): ColorsEnum | UniqueColors => {
-  if (active) return disabled ? UniqueColors.GREEN_DISABLED : ColorsEnum.GREEN_VALID
-  return disabled ? UniqueColors.GREY_DISABLED : ColorsEnum.GREY_MEDIUM
+const StyledTouchableOpacity = styled(TouchableOpacity).attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))``
+
+const getBackgroundColor = (theme: DefaultTheme, active: boolean, disabled: boolean) => {
+  if (active) return disabled ? theme.uniqueColors.greenDisabled : theme.colors.greenValid
+  return disabled ? theme.uniqueColors.greyDisabled : theme.colors.greyMedium
 }
 
-const StyledBackgroundColor = styled.View<{ backgroundColor: ColorsEnum | UniqueColors }>(
-  ({ backgroundColor }) => ({
-    backgroundColor,
+const StyledBackgroundColor = styled.View<{ active: boolean; disabled: boolean }>(
+  ({ active, disabled, theme }) => ({
+    backgroundColor: getBackgroundColor(theme, active, disabled),
     width: getSpacing(14),
     height: getSpacing(8),
     marginLeft: getSpacing(5),
@@ -69,11 +71,11 @@ const StyledBackgroundColor = styled.View<{ backgroundColor: ColorsEnum | Unique
 
 const FilterSwitchContainer = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
-const StyledToggle = styled(Animated.View)({
+const StyledToggle = styled(Animated.View)(({ theme }) => ({
   aspectRatio: '1',
   width: TOGGLE_WIDTH,
   height: getSpacing(7),
-  backgroundColor: ColorsEnum.WHITE,
+  backgroundColor: theme.colors.white,
   borderRadius: getSpacing(7),
   ...getShadow({
     shadowOffset: {
@@ -81,10 +83,10 @@ const StyledToggle = styled(Animated.View)({
       height: getSpacing(0.5),
     },
     shadowRadius: 2.5,
-    shadowColor: ColorsEnum.BLACK,
+    shadowColor: theme.colors.black,
     shadowOpacity: 0.2,
   }),
-})
+}))
 
 const propsAreEqual = (
   prevProps: Readonly<React.PropsWithChildren<Props>>,

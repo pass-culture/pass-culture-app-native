@@ -11,7 +11,6 @@ import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export const ContactBlock: React.FC<{ venueId: number }> = ({ venueId }) => {
   const { data: venue } = useVenue(venueId)
@@ -57,17 +56,21 @@ type ContactAtomProps = {
 }
 
 const ContactAtom = ({ label, onPress, Icon }: ContactAtomProps) => (
-  <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={onPress}>
+  <StyledTouchableOpacity onPress={onPress}>
     <Icon size={getSpacing(6)} testID={`Icon ${label}`} />
     <Spacer.Row numberOfSpaces={2} />
     <Typo.ButtonText>{label}</Typo.ButtonText>
-  </TouchableOpacity>
+  </StyledTouchableOpacity>
 )
 
 const Container = styled.View({
   marginVertical: -getSpacing(1),
 })
 
-const TouchableOpacity = styled.TouchableOpacity.attrs({
-  activeOpacity: ACTIVE_OPACITY,
-})({ flexDirection: 'row', alignItems: 'center', marginVertical: getSpacing(1) })
+const StyledTouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))({
+  flexDirection: 'row',
+  alignItems: 'center',
+  marginVertical: getSpacing(1),
+})

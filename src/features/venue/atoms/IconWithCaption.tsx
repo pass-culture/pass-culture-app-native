@@ -1,8 +1,8 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface IconWithCaptionProps {
   Icon: React.FC<IconInterface>
@@ -12,17 +12,18 @@ interface IconWithCaptionProps {
 }
 
 export const IconWithCaption = ({ Icon, caption, testID, isDisabled }: IconWithCaptionProps) => {
+  const { colors } = useTheme()
   const getTextColor = (isDisabled: boolean) => {
-    if (isDisabled) return ColorsEnum.GREY_DARK
-    return ColorsEnum.BLACK
+    if (isDisabled) return colors.greyDark
+    return colors.black
   }
 
-  const textColor = getTextColor(isDisabled as boolean)
+  const textColor = getTextColor(!!isDisabled)
 
   return (
     <Container>
       <IconContainer>
-        <Icon size={getSpacing(10)} color={ColorsEnum.GREY_DARK} testID={testID} />
+        <Icon size={getSpacing(10)} color={colors.greyDark} testID={testID} />
       </IconContainer>
       <Spacer.Column numberOfSpaces={1} />
       <Caption testID={`caption-${testID}`} color={textColor}>

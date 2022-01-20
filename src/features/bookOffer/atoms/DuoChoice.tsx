@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 
-import { ChoiceBloc, getTextColor } from './ChoiceBloc'
+import { ChoiceBloc, useTextColor } from './ChoiceBloc'
 
 interface Props {
   title: string
@@ -26,7 +26,7 @@ export const DuoChoice: React.FC<Props> = ({
   testID,
 }) => {
   const disabled = !hasEnoughCredit
-  const textColor = getTextColor(selected, disabled)
+  const textColor = useTextColor(selected, disabled)
 
   return (
     <ChoiceBloc onPress={onPress} testID={testID} selected={selected} disabled={disabled}>

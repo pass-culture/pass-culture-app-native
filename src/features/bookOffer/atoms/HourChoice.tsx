@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { getSpacing, Typo } from 'ui/theme'
 
-import { ChoiceBloc, getTextColor } from './ChoiceBloc'
+import { ChoiceBloc, useTextColor } from './ChoiceBloc'
 
 const getWording = (price: number, isBookable: boolean, enoughCredit: boolean): string => {
   if (!enoughCredit) return t`crédit insuffisant`
@@ -34,7 +34,7 @@ export const HourChoice: React.FC<Props> = ({
 }) => {
   const enoughCredit = price <= offerCredit
   const disabled = !isBookable || !enoughCredit
-  const textColor = getTextColor(selected, disabled)
+  const textColor = useTextColor(selected, disabled)
   const wording = getWording(price, isBookable, enoughCredit)
 
   return (

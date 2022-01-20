@@ -23,7 +23,7 @@ import { Spacer } from 'ui/theme'
 export function UnderageAccountCreated() {
   const maxPrice = useMaxPrice()
   const text = t`Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi\u00a0!`
-  const { colors } = useTheme()
+  const { uniqueColors } = useTheme()
 
   useEnterKeyAction(navigateToHome)
 
@@ -35,8 +35,13 @@ export function UnderageAccountCreated() {
 
       <Spacer.Column numberOfSpaces={4} />
       <ProgressBarContainer>
-        <ProgressBar progress={1} color={colors.brand} icon={CategoryIcon.Spectacles} isAnimated />
-        <Amount color={colors.brand}>{formatPriceInEuroToDisplayPrice(maxPrice)}</Amount>
+        <ProgressBar
+          progress={1}
+          color={uniqueColors.brand}
+          icon={CategoryIcon.Spectacles}
+          isAnimated
+        />
+        <Amount color={uniqueColors.brand}>{formatPriceInEuroToDisplayPrice(maxPrice)}</Amount>
       </ProgressBarContainer>
       <Spacer.Column numberOfSpaces={4} />
       <Text>{text}</Text>

@@ -7,10 +7,7 @@ import styled from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useFilterCount } from 'features/search/utils/useFilterCount'
-import { Filter as FilterIcon } from 'ui/svg/icons/Filter'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
-import { BorderRadiusEnum } from 'ui/theme/grid'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const Filter: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -29,7 +26,7 @@ export const Filter: React.FC = () => {
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
         colors={['#bf275f', '#5a0d80']}>
-        <FilterIcon color={ColorsEnum.WHITE} />
+        <FilterIcon />
         <Spacer.Row numberOfSpaces={1} />
         <Title>{t`Filtrer`}</Title>
         <Spacer.Row numberOfSpaces={2} />
@@ -37,7 +34,7 @@ export const Filter: React.FC = () => {
           <React.Fragment>
             <Spacer.Row numberOfSpaces={1} />
             <WhiteBackgroundContainer>
-              <Typo.ButtonText color={ColorsEnum.PRIMARY}>{filterCount}</Typo.ButtonText>
+              <ButtonText>{filterCount}</ButtonText>
             </WhiteBackgroundContainer>
             <Spacer.Row numberOfSpaces={1} />
           </React.Fragment>
@@ -47,26 +44,35 @@ export const Filter: React.FC = () => {
   )
 }
 
-const Container = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
+const FilterIcon = styled(Filter).attrs(({ theme }) => ({
+  color: theme.colors.white,
+}))``
+
+const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
+  color: theme.colors.primary,
+}))
+
+const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
 }))({ overflow: 'hidden' })
 
-const StyledLinearGradient = styled(LinearGradient)({
-  borderRadius: BorderRadiusEnum.BUTTON,
+const StyledLinearGradient = styled(LinearGradient)(({ theme }) => ({
+  borderRadius: theme.borderRadius.button,
   alignItems: 'center',
   flexDirection: 'row',
   overflow: 'hidden',
   paddingHorizontal: getSpacing(3),
   height: getSpacing(10),
-})
+}))
 
-const Title = styled(Typo.ButtonText)({ color: ColorsEnum.WHITE })
-const WhiteBackgroundContainer = styled.View({
+const Title = styled(Typo.ButtonText)(({ theme }) => ({ color: theme.colors.white }))
+
+const WhiteBackgroundContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  backgroundColor: ColorsEnum.WHITE,
+  backgroundColor: theme.colors.white,
   borderRadius: getSpacing(6),
   aspectRatio: '1',
   width: getSpacing(6),
   alignItems: 'center',
   justifyContent: 'center',
-})
+}))

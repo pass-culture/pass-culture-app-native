@@ -1,10 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ArrowNextDouble } from 'ui/svg/icons/ArrowNextDouble'
-import { ColorsEnum, getSpacing } from 'ui/theme'
-import { BorderRadiusEnum } from 'ui/theme/grid'
-import { ZIndex } from 'ui/theme/layers'
+import { ArrowNextDouble as ArrowNextDoubleDefault } from 'ui/svg/icons/ArrowNextDouble'
+import { getSpacing } from 'ui/theme'
 
 interface Props {
   height: number
@@ -18,12 +16,17 @@ export const Cover = (props: Props) => {
       <Image source={{ uri: props.uri }} testID="coverImage" />
       <ArrowsContainer>
         <ArrowMarginContainer>
-          <ArrowNextDouble color={ColorsEnum.WHITE} size={56} />
+          <ArrowNextDouble />
         </ArrowMarginContainer>
       </ArrowsContainer>
     </Container>
   )
 }
+
+const ArrowNextDouble = styled(ArrowNextDoubleDefault).attrs(({ theme }) => ({
+  color: theme.colors.white,
+  size: getSpacing(14),
+}))``
 
 const Container = styled.View<{ width: number; height: number }>(({ width, height }) => ({
   height,
@@ -32,18 +35,18 @@ const Container = styled.View<{ width: number; height: number }>(({ width, heigh
   justifyContent: 'center',
 }))
 
-const Image = styled.Image({
+const Image = styled.Image(({ theme }) => ({
   height: '100%',
   width: '100%',
-  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
-})
+  borderRadius: theme.borderRadius.radius,
+}))
 
-const ArrowsContainer = styled.View({
+const ArrowsContainer = styled.View(({ theme }) => ({
   position: 'absolute',
-  zIndex: ZIndex.HOME_OFFER_COVER_ICONS,
+  zIndex: theme.zIndex.homeOfferCoverIcons,
   flexDirection: 'row',
   alignItems: 'center',
-})
+}))
 
 const ArrowMarginContainer = styled.View({
   marginRight: getSpacing(-6),

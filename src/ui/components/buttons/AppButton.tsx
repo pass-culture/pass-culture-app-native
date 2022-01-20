@@ -115,9 +115,10 @@ interface StyledTouchableOpacityProps {
   numberOfLines?: number
 }
 
-const StyledTouchableOpacity = styled(TouchableOpacity)<StyledTouchableOpacityProps>(
+const StyledTouchableOpacity = styled(TouchableOpacity).attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))<StyledTouchableOpacityProps>(
   ({ theme, inline, buttonHeight, inlineHeight, fullWidth, justifyContent, numberOfLines }) => ({
-    activeOpacity: theme.activeOpacity,
     flexDirection: 'row',
     justifyContent: justifyContent === 'flex-start' ? 'flex-start' : 'center',
     alignItems: 'center',

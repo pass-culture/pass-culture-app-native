@@ -12,7 +12,6 @@ import {
 import { formatHour, formatToKeyDate } from 'features/bookOffer/services/utils'
 import { useCreditForOffer } from 'features/offer/services/useHasEnoughCredit'
 import { Typo, Spacer, getSpacing } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { HourChoice } from '../atoms/HourChoice'
 import { Step } from '../pages/reducer'
@@ -78,15 +77,19 @@ export const BookHourChoice: React.FC = () => {
       {bookingState.step === Step.HOUR ? (
         <HourChoiceContainer>{filteredStocks}</HourChoiceContainer>
       ) : (
-        <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={changeHour}>
+        <StyledTouchableOpacity onPress={changeHour}>
           <Typo.ButtonText>
             {stock && stock.beginningDatetime ? formatHour(stock.beginningDatetime) : ''}
           </Typo.ButtonText>
-        </TouchableOpacity>
+        </StyledTouchableOpacity>
       )}
     </React.Fragment>
   )
 }
+
+const StyledTouchableOpacity = styled(TouchableOpacity).attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))``
 
 const HourChoiceContainer = styled.View({
   flexDirection: 'row',

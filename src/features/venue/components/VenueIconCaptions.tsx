@@ -9,8 +9,7 @@ import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { accessibilityAndTestId } from 'tests/utils'
 import { PointerLocationNotFilled } from 'ui/svg/icons/PointerLocationNotFilled'
 import { PointerLocationNotFilledDisabled } from 'ui/svg/icons/PointerLocationNotFilledDisabled'
-import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { getSpacing, Spacer } from 'ui/theme'
 
 type Props = { type: VenueTypeCodeKey | null; label: string; locationCoordinates: Coordinates }
 
@@ -56,16 +55,16 @@ export const VenueIconCaptions: React.FC<Props> = ({ type, label, locationCoordi
 
 const Row = styled.View({ flexDirection: 'row', alignItems: 'flex-start' })
 
-const Separator = styled.View({
+const Separator = styled.View(({ theme }) => ({
   width: 1,
   height: '92%',
-  backgroundColor: ColorsEnum.GREY_MEDIUM,
+  backgroundColor: theme.colors.greyMedium,
   marginHorizontal: getSpacing(2),
   alignSelf: 'center',
-})
+}))
 
-const ActiveGeolocationButton = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
+const ActiveGeolocationButton = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
 }))({
   flex: 1,
 })

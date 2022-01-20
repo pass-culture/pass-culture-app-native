@@ -27,7 +27,7 @@ import CategoryIcon from 'ui/svg/icons/categories/bicolor'
 
 export const RecreditBirthdayNotification = () => {
   const { data: user } = useUserProfileInfo()
-  const { colors } = useTheme()
+  const { uniqueColors } = useTheme()
   const age = user?.dateOfBirth
     ? new Date().getFullYear() - new Date(user.dateOfBirth).getFullYear()
     : undefined
@@ -76,8 +76,13 @@ export const RecreditBirthdayNotification = () => {
 
       <Spacer.Column numberOfSpaces={4} />
       <ProgressBarContainer>
-        <ProgressBar progress={1} color={colors.brand} icon={CategoryIcon.Spectacles} isAnimated />
-        <Amount color={colors.brand}>{remainingCredit}</Amount>
+        <ProgressBar
+          progress={1}
+          color={uniqueColors.brand}
+          icon={CategoryIcon.Spectacles}
+          isAnimated
+        />
+        <Amount color={uniqueColors.brand}>{remainingCredit}</Amount>
       </ProgressBarContainer>
       <Spacer.Column numberOfSpaces={4} />
       <Text>{t`Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget.`}</Text>

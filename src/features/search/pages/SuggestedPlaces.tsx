@@ -12,10 +12,9 @@ import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import { SuggestedPlace, usePlaces, useVenues } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
-import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
-import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
+import { BicolorLocationPointer as BicolorLocationPointerDefault } from 'ui/svg/icons/BicolorLocationPointer'
+import { LocationBuilding as LocationBuildingDefault } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY, ColorsEnum } from 'ui/theme/colors'
 
 type SuggestedPlaceOrVenue = SuggestedPlace | SuggestedVenue
 
@@ -34,9 +33,7 @@ export const keyExtractor = (hit: SuggestedPlaceOrVenue) => {
 }
 
 const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hit, onPress }) => {
-  const Icon = isVenue(hit)
-    ? () => <LocationBuilding size={getSpacing(8)} color={ColorsEnum.PRIMARY} />
-    : () => <BicolorLocationPointer size={getSpacing(8)} color2={ColorsEnum.PRIMARY} />
+  const Icon = isVenue(hit) ? () => <LocationBuilding /> : () => <BicolorLocationPointer />
 
   return (
     <ItemContainer onPress={onPress} testID={keyExtractor(hit)}>
@@ -99,9 +96,9 @@ const NoSuggestedPlaces = ({ show }: { show: boolean }) =>
     <React.Fragment />
   )
 
-const ItemContainer = styled.TouchableOpacity.attrs({
-  activeOpacity: ACTIVE_OPACITY,
-})({
+const ItemContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))({
   flexDirection: 'row',
   marginHorizontal: getSpacing(6),
   paddingVertical: getSpacing(4),
@@ -110,15 +107,25 @@ const ItemContainer = styled.TouchableOpacity.attrs({
 
 const Text = styled.Text({ flex: 1 })
 
-const Separator = styled.View({
+const Separator = styled.View(({ theme }) => ({
   height: 2,
-  backgroundColor: ColorsEnum.GREY_LIGHT,
+  backgroundColor: theme.colors.greyLight,
   marginHorizontal: getSpacing(6),
-})
+}))
 
 const DescriptionErrorTextContainer = styled.Text({
   marginTop: getSpacing(6.5),
   textAlign: 'center',
 })
 
-const DescriptionErrorText = styled(Typo.Body)({ color: ColorsEnum.GREY_DARK })
+const DescriptionErrorText = styled(Typo.Body)(({ theme }) => ({ color: theme.colors.greyDark }))
+
+const LocationBuilding = styled(LocationBuildingDefault).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  size: theme.icon.size,
+}))``
+
+const BicolorLocationPointer = styled(BicolorLocationPointerDefault).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  size: theme.icon.size,
+}))``

@@ -1,22 +1,22 @@
 import React from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled, { useTheme, DefaultTheme } from 'styled-components/native'
 
-import { Validate } from 'ui/svg/icons/Validate'
-import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
-import { BorderRadiusEnum } from 'ui/theme/grid'
+import { Validate as ValidateDefault } from 'ui/svg/icons/Validate'
+import { getSpacing, Spacer } from 'ui/theme'
 
-const getBorderColor = (selected: boolean, disabled?: boolean) => {
-  if (selected) return ColorsEnum.PRIMARY
-  if (disabled) return ColorsEnum.GREY_MEDIUM
-  return ColorsEnum.GREY_DARK
+const getBorderColor = (selected: boolean, theme: DefaultTheme, disabled?: boolean) => {
+  if (selected) return theme.colors.primary
+  if (disabled) return theme.colors.greyMedium
+  return theme.colors.greyDark
 }
 
-export const getTextColor = (selected: boolean, disabled: boolean) => {
-  if (selected) return ColorsEnum.WHITE
-  if (disabled) return ColorsEnum.GREY_DARK
-  return ColorsEnum.BLACK
+export const useTextColor = (selected: boolean, disabled: boolean) => {
+  const { colors } = useTheme()
+  if (selected) return colors.white
+  if (disabled) return colors.greyDark
+  return colors.black
 }
+
 interface Props {
   selected: boolean
   onPress: () => void
@@ -35,15 +35,11 @@ export const ChoiceBloc: React.FC<Props> = ({ selected, onPress, testID, childre
     (appContentWidth - 2 * getSpacing(4) - CHOICE_BLOCS_BY_LINE * getSpacing(2)) /
     CHOICE_BLOCS_BY_LINE
   return (
-    <ChoiceContainer
-      onPress={onPress}
-      activeOpacity={ACTIVE_OPACITY}
-      testID={testID}
-      disabled={disabled}>
+    <ChoiceContainer onPress={onPress} testID={testID} disabled={disabled}>
       <ChoiceContent selected={selected} disabled={disabled}>
         {selected ? (
           <IconContainer>
-            <Validate color={ColorsEnum.WHITE} size={getSpacing(4.5)} />
+            <Validate />
           </IconContainer>
         ) : (
           <Spacer.Row numberOfSpaces={5} />
@@ -54,24 +50,32 @@ export const ChoiceBloc: React.FC<Props> = ({ selected, onPress, testID, childre
     </ChoiceContainer>
   )
 }
+
+const Validate = styled(ValidateDefault).attrs(({ theme }) => ({
+  colors: theme.colors.white,
+  size: getSpacing(4.5),
+}))``
+
 const IconContainer = styled.View({
   position: 'absolute',
   top: getSpacing(0.5),
   right: getSpacing(0.5),
 })
 
-const ChoiceContainer = styled.TouchableOpacity({
+const ChoiceContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))({
   width: '33%',
   padding: getSpacing(2),
 })
 
 const ChoiceContent = styled.View<{ selected: boolean; disabled?: boolean }>(
-  ({ selected, disabled }) => ({
-    borderRadius: BorderRadiusEnum.CHECKBOX_RADIUS,
+  ({ selected, disabled, theme }) => ({
+    borderRadius: theme.borderRadius.checkbox,
     border: `solid 1px`,
-    borderColor: getBorderColor(selected, disabled),
+    borderColor: getBorderColor(selected, theme, disabled),
     overflow: 'hidden',
-    backgroundColor: selected ? ColorsEnum.PRIMARY : ColorsEnum.WHITE,
+    backgroundColor: selected ? theme.colors.primary : theme.colors.white,
     paddingHorizontal: getSpacing(3.25),
     alignItems: 'center',
     justifyContent: 'center',
@@ -84,7 +88,7 @@ const StrikeLine = styled.View<{ parentWidth: number }>((props) => {
     transform: `rotate(-${strikeLineAngle}deg)`,
     height: `${LINE_THICKNESS}px`,
     width: `${props.parentWidth + getSpacing(6)}px`,
-    backgroundColor: ColorsEnum.GREY_MEDIUM,
+    backgroundColor: props.theme.colors.greyMedium,
     borderRadius: `${LINE_THICKNESS / 2}px`,
     position: 'absolute',
   }
