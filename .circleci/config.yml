@@ -694,24 +694,30 @@ workflows:
             - checkout-and-install-deps
       - deploy-android-testing-hard:
           filters:
+            branches:
+              only:
+                - PC-12797
             tags:
               only: /^(testing_)?v.*/
-            branches:
-              ignore: /.*/
+#            branches:
+#              ignore: /.*/
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
-            - test-native
+#            - test-native
       - deploy-ios-testing-hard:
           filters:
+            branches:
+              only:
+                - PC-12797
             tags:
               only: /^(testing_)?v.*/
-            branches:
-              ignore: /.*/
+#            branches:
+#              ignore: /.*/
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
-            - test-native
+#            - test-native
       - notify-hard-testing-release:
           filters:
             tags:
