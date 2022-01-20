@@ -6,7 +6,7 @@ import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 import { IconInterface } from './types'
 
-export const NoOffer = ({
+export const NoOfferDeprecated = ({
   color = ColorsEnum.GREY_MEDIUM,
   size = STANDARD_ICON_SIZE,
   testID,

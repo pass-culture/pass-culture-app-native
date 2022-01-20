@@ -65,7 +65,6 @@ import { Lock } from 'ui/svg/icons/Lock'
 import { Logo } from 'ui/svg/icons/Logo'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
-import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { OfferDigital } from 'ui/svg/icons/OfferDigital'
 import { OfferEvent } from 'ui/svg/icons/OfferEvent'
 import { OfferPhysical } from 'ui/svg/icons/OfferPhysical'
@@ -267,7 +266,6 @@ const SecondaryAndBiggerIcons = () => {
       <Icon name="Lock" component={Lock} isNew />
       <Icon name="Logo" component={Logo} />
       <Icon name="MagnifyingGlass" component={MagnifyingGlass} isNew />
-      <Icon name="NoOffer" component={NoOffer} />
       <Icon name="OfferDigital" component={OfferDigital} isNew />
       <Icon name="OfferEvent" component={OfferEvent} isNew />
       <Icon name="OfferPhysical" component={OfferPhysical} isNew />
