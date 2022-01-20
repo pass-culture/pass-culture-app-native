@@ -5,7 +5,7 @@ import { ColorsEnum } from 'ui/theme/colors'
 
 import { RectangleIconInterface } from './types'
 
-export function MaintenanceCone({
+export function MaintenanceConeDeprecated({
   width = 197,
   height = 124,
   color = ColorsEnum.WHITE,

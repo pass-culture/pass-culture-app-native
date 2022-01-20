@@ -65,7 +65,6 @@ import { Lock } from 'ui/svg/icons/Lock'
 import { Logo } from 'ui/svg/icons/Logo'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
-import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { OfferDigital } from 'ui/svg/icons/OfferDigital'
 import { OfferEvent } from 'ui/svg/icons/OfferEvent'
@@ -106,14 +105,6 @@ export const Icons: FunctionComponent = () => {
       <TertiaryAndSmallerIcons />
       <Spacer.Column numberOfSpaces={4} />
       <Text> Icônes à uniformiser (conversion en illustrations) </Text>
-      <AlignedText>
-        <MaintenanceCone
-          width={STANDARD_ICON_SIZE * 2}
-          height={STANDARD_ICON_SIZE}
-          color={ColorsEnum.BLACK}
-        />
-        <Text> - MaintenanceCone </Text>
-      </AlignedText>
       <AlignedText>
         <LogoPassCulture
           width={STANDARD_ICON_SIZE * 2}
