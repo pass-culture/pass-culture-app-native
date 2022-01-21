@@ -3,7 +3,8 @@ import { TouchableHighlight } from 'react-native'
 import styled from 'styled-components/native'
 
 import { NextArrowIcon } from 'features/home/assets/NextArrowIcon'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 import { BACKGROUND_IMAGE_SOURCE } from './backgroundImageSource'
 

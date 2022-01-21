@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ColorsEnum, getSpacing, padding } from 'ui/theme'
+import { getSpacing, padding } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = {
   isError?: boolean

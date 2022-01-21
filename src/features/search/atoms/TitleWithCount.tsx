@@ -2,8 +2,8 @@ import React from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ColorsEnum, Typo } from 'ui/theme'
-
+import { Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 const NON_BREAKING_SPACE = '\xa0'
 
 export const TitleWithCount: React.FC<{ title: string; count: number }> = ({

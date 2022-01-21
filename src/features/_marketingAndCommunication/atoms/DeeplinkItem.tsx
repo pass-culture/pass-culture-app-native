@@ -7,7 +7,8 @@ import { GeneratedDeeplink } from 'features/_marketingAndCommunication/component
 import { openUrl } from 'features/navigation/helpers'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Share } from 'ui/svg/icons/Share'
-import { ColorsEnum, getSpacing, getSpacingString, Spacer } from 'ui/theme'
+import { getSpacing, getSpacingString, Spacer } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
   deeplink: GeneratedDeeplink

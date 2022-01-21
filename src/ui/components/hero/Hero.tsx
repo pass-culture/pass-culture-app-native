@@ -7,7 +7,8 @@ import { mapCategoryToIcon, mapVenueTypeToIcon } from 'libs/parsers'
 import { HeroHeader } from 'ui/components/hero/HeroHeader'
 import { heroMarginTop, useHeroDimensions } from 'ui/components/hero/useHeroDimensions'
 import { ImagePlaceholder, ImagePlaceholderProps } from 'ui/components/ImagePlaceholder'
-import { ColorsEnum, getSpacing, Spacer, getShadow } from 'ui/theme'
+import { getSpacing, Spacer, getShadow } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 type HeroProps =

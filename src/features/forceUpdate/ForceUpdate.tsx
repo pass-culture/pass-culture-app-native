@@ -9,8 +9,8 @@ import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { Star } from 'ui/svg/icons/Star'
-import { ColorsEnum, Typo } from 'ui/theme'
-
+import { Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 const ANDROID_STORE_LINK = `https://play.google.com/store/apps/details?id=${env.ANDROID_APP_ID}`
 const IOS_STORE_LINK = `https://apps.apple.com/fr/app/pass-culture/id${env.IOS_APP_STORE_ID}`
 

@@ -3,7 +3,7 @@ import React from 'react'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props extends Omit<IconInterface, 'testID'> {
   isValid: boolean

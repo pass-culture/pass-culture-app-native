@@ -2,7 +2,7 @@ import React from 'react'
 
 import { SetEmail } from 'features/auth/signup/SetEmail'
 import { fireEvent, render } from 'tests/utils'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 

@@ -3,7 +3,7 @@ import { KeyboardAvoidingView, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { HEADER_HEIGHT } from 'features/identityCheck/atoms/layout/PageHeader'
-import { ColorsEnum, getSpacing } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
@@ -29,18 +29,21 @@ const Container = styled.View({
 
 const StyledKeyboardAvoidingView = styled(KeyboardAvoidingView).attrs({
   behavior: Platform.OS === 'ios' ? 'padding' : undefined,
-})({ flexGrow: 1, flexBasis: 0 })
+})({
+  flexGrow: 1,
+  flexBasis: 0,
+})
 
-const ChildrenContainer = styled.View({
+const ChildrenContainer = styled.View(({ theme }) => ({
   height: '100%',
   display: 'flex',
   flexDirection: 'column',
-  backgroundColor: ColorsEnum.WHITE,
+  backgroundColor: theme.colors.white,
   borderTopLeftRadius: 22,
   borderTopRightRadius: 22,
   paddingTop: getSpacing(3),
   alignItems: 'center',
-})
+}))
 
 const CenteredWebContainer = styled.View(({ theme }) => ({
   ...(Platform.OS === 'web' && !theme.isMobileViewport

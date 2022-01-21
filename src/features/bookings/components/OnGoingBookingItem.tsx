@@ -8,7 +8,8 @@ import { mapCategoryToIcon } from 'libs/parsers'
 import { useSubcategory } from 'libs/subcategories'
 import { Clock } from 'ui/svg/icons/Clock'
 import { Duo } from 'ui/svg/icons/Duo'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 import { getBookingProperties, getBookingLabels } from '../helpers'
 

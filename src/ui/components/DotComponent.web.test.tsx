@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { fireEvent, render } from 'tests/utils/web'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 import { DotComponent, getDotColors } from './DotComponent'
 

@@ -5,7 +5,9 @@ import styled from 'styled-components/native'
 import { useNavigateToSearchResults } from 'features/search/utils/useNavigateToSearchResults'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { EmptyFavoritesDeprecated as EmptyFavorites } from 'ui/svg/icons/EmptyFavorites_deprecated'
-import { ColorsEnum, getSpacing, Spacer, TAB_BAR_COMP_HEIGHT, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
+import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 
 export const NoFavoritesResult = () => {
   const onPressExploreOffers = useNavigateToSearchResults({ from: 'favorites' })

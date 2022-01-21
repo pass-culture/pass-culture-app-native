@@ -11,7 +11,8 @@ import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { AppFullPageModal } from 'ui/components/modals/AppFullPageModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { Error } from 'ui/svg/icons/Error'
-import { ColorsEnum, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
   visible: boolean

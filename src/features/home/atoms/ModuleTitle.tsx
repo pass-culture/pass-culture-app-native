@@ -2,7 +2,8 @@ import React from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Typo, MARGIN_DP, ColorsEnum } from 'ui/theme'
+import { Typo, MARGIN_DP } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 export const ModuleTitle = (props: { title: string; color?: ColorsEnum }) => {
   const { title, color = ColorsEnum.BLACK } = props

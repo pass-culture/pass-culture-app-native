@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
 
 import { AppButton, BaseButtonProps } from 'ui/components/buttons/AppButton'
-import { ColorsEnum, getSpacing } from 'ui/theme'
-
+import { getSpacing } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 export const ButtonQuaternaryBlack: FunctionComponent<BaseButtonProps> = (props) => {
   let textColor = ColorsEnum.BLACK
   const backgroundColor = ColorsEnum.TRANSPARENT

@@ -2,8 +2,8 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getSpacing, Typo, Spacer } from 'ui/theme'
-
+import { getSpacing, Typo, Spacer } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 type Props = {
   title: string
   icon: FunctionComponent<IconInterface>

@@ -2,14 +2,13 @@ import { Platform } from 'react-native'
 
 // eslint-disable-next-line no-restricted-imports
 import { isMobileDeviceDetectOnWeb, isTabletDeviceDetectOnWeb } from 'libs/react-device-detect'
+import { getSpacing, getSpacingString } from 'ui/theme'
+import { ACTIVE_OPACITY, ColorsEnum, UniqueColors } from 'ui/theme/colors'
 import {
   BOTTOM_CONTENT_PAGE_OFFSET_TOP_HEIGHT_DESKTOP_TABLET,
   DESKTOP_CONTENT_MAX_WIDTH,
-  getSpacing,
-  getSpacingString,
   TAB_BAR_COMP_HEIGHT,
-} from 'ui/theme'
-import { ACTIVE_OPACITY, ColorsEnum, UniqueColors } from 'ui/theme/colors'
+} from 'ui/theme/constants'
 import { BorderRadiusEnum, Breakpoints } from 'ui/theme/grid'
 import { ZIndex } from 'ui/theme/layers'
 

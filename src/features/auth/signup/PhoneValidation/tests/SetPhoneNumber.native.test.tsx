@@ -16,7 +16,7 @@ import {
   superFlushWithAct,
   useMutationFactory,
 } from 'tests/utils'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 jest.mock('react-query')
 

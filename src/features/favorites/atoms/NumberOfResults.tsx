@@ -2,8 +2,8 @@ import { plural } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-
+import { getSpacing, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 export const NumberOfResults: React.FC<{ nbFavorites: number }> = ({ nbFavorites }) => {
   if (!nbFavorites) return <React.Fragment></React.Fragment>
   return (

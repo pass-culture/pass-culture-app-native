@@ -7,8 +7,8 @@ import { Cover } from 'features/home/atoms/Cover'
 import { accessibilityAndTestId } from 'tests/utils'
 import { Playlist, RenderFooterItem, RenderHeaderItem } from 'ui/components/Playlist'
 import { EyeSophisticated } from 'ui/svg/icons/EyeSophisticated'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 type Props = Pick<
   ComponentProps<typeof Playlist>,
   'data' | 'itemWidth' | 'itemHeight' | 'testID' | 'keyExtractor' | 'renderItem' | 'onEndReached'

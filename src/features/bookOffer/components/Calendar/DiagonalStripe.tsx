@@ -1,7 +1,7 @@
 import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 export const DiagonalStripe: React.FC = ({ children }) => (
   <LinearGradient

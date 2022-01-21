@@ -3,7 +3,7 @@ import { ReactTestInstance } from 'react-test-renderer'
 
 import { render } from 'tests/utils'
 import { StepDots } from 'ui/components/StepDots'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 describe('<StepDots />', () => {
   describe('three steps with first as current step', () => {

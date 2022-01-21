@@ -14,7 +14,7 @@ import { EduConnectError } from 'features/identityCheck/errors/eduConnect/types'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { eduConnectClient } from 'libs/eduConnectClient'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 export const IdentityCheckEduConnectForm = () => {
   const { navigateToNextScreen } = useIdentityCheckNavigation()

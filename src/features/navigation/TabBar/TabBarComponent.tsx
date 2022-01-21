@@ -4,7 +4,8 @@ import styled from 'styled-components/native'
 import { accessibilityAndTestId } from 'tests/utils'
 import { BicolorSelector } from 'ui/svg/icons/BicolorSelector'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, Spacer, getSpacing } from 'ui/theme'
+import { Spacer, getSpacing } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 const SELECTOR_WIDTH = '80%'
 const SELECTOR_HEIGHT = getSpacing(1)

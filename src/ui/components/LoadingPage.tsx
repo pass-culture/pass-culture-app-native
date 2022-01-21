@@ -5,8 +5,8 @@ import styled from 'styled-components/native'
 import LottieView from 'libs/lottie'
 import LoadingAnimation from 'ui/animations/lottie_loading.json'
 import { Background } from 'ui/svg/Background'
-import { ColorsEnum, Typo } from 'ui/theme'
-
+import { Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 export const LoadingPage: FunctionComponent = () => {
   return (
     <Container>

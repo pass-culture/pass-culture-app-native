@@ -3,7 +3,8 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { TicketFooter } from 'ui/svg/TicketFooter'
 import { TicketHeader } from 'ui/svg/TicketHeader'
-import { ColorsEnum, getShadow, getSpacing } from 'ui/theme'
+import { getShadow, getSpacing } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = PropsWithChildren<{
   width?: number

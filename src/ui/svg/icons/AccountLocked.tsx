@@ -1,7 +1,8 @@
 import * as React from 'react'
 import Svg, { Path, G } from 'react-native-svg'
 
-import { ColorsEnum, STANDARD_ICON_SIZE } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
+import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 import { BicolorIconInterface } from './types'
 

@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { StyleSheet, Text, View, StyleProp, ViewStyle } from 'react-native'
 import { GeoCoordinates } from 'react-native-geolocation-service'
 
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
   position: GeoCoordinates | null

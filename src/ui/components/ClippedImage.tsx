@@ -5,7 +5,8 @@ import styled from 'styled-components/native'
 import { Image } from 'libs/react-native-svg/Image'
 import { OfferDigital } from 'ui/svg/icons/OfferDigital'
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getShadow } from 'ui/theme'
+import { getShadow } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 export type ClippedImageProps = {
   clipId: string

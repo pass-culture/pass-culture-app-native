@@ -6,8 +6,8 @@ import { useSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 export const NoSearchResult: React.FC = () => {
   const { position } = useGeolocation()
   const { searchState, dispatch } = useSearch()

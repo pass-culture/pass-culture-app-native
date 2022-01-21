@@ -3,7 +3,8 @@ import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface Props {

@@ -12,7 +12,8 @@ import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
-import { getSpacing, SECTION_ROW_ICON_SIZE, Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
+import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 export function LegalNotices() {
   const { data: user } = useUserProfileInfo()

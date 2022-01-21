@@ -2,8 +2,8 @@ import * as React from 'react'
 import Svg, { Path } from 'react-native-svg'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, STANDARD_ICON_SIZE } from 'ui/theme'
-
+import { ColorsEnum } from 'ui/theme/colors'
+import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 export function Confirmation({
   size = STANDARD_ICON_SIZE,
   color = ColorsEnum.BLACK,

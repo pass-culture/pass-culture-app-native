@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
   openItinerary: () => void

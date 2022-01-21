@@ -4,7 +4,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, RenderAPI } from 'tests/utils'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 import { SetBirthday } from './SetBirthday'
 

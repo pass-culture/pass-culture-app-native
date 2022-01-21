@@ -5,7 +5,8 @@ import styled from 'styled-components/native'
 
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { Background } from 'ui/svg/Background'
-import { ColorsEnum, getShadow, getSpacing, Spacer } from 'ui/theme'
+import { getShadow, getSpacing, Spacer } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 const getCorrectPadding = (keyboardHeight: number) => {
   if (Platform.OS === 'ios') {

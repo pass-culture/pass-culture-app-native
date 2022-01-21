@@ -6,7 +6,7 @@ import waitForExpect from 'wait-for-expect'
 import { fireEvent, render } from 'tests/utils'
 
 import { Logo } from '../../svg/icons/Logo'
-import { ColorsEnum } from '../../theme'
+import { ColorsEnum } from '../../theme/colors'
 import { AnimatedIcon } from '../AnimatedIcon'
 
 const DummyComponent: React.FC = () => {

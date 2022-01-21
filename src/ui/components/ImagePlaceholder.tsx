@@ -4,7 +4,8 @@ import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
 import { ImagePlaceholderVenue } from 'ui/svg/ImagePlaceholderVenue'
-import { ColorsEnum, LENGTH_M } from 'ui/theme'
+import { LENGTH_M } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export interface ImagePlaceholderProps {

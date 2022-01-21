@@ -1,6 +1,6 @@
 import { ViewStyle } from 'react-native'
 
-import { ColorsEnum, UniqueColors } from 'ui/theme'
+import { ColorsEnum, UniqueColors } from 'ui/theme/colors'
 
 interface IconSharedProperties {
   color?: ColorsEnum | UniqueColors

@@ -11,7 +11,8 @@ import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { ColorsEnum, Typo, Spacer, getSpacing } from 'ui/theme'
+import { Typo, Spacer, getSpacing } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 export interface Props {
   visible: boolean

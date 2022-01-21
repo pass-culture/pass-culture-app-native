@@ -11,15 +11,8 @@ import { BusinessPane } from 'features/home/contentful'
 import { openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import {
-  Typo,
-  ColorsEnum,
-  getSpacing,
-  MARGIN_DP,
-  LENGTH_XS,
-  RATIO_BUSINESS,
-  Spacer,
-} from 'ui/theme'
+import { Typo, getSpacing, MARGIN_DP, LENGTH_XS, RATIO_BUSINESS, Spacer } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 import { fillUrlEmail, shouldUrlBeFilled, showBusinessModule } from './BusinessModule.utils'
 

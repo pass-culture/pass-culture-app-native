@@ -1,7 +1,8 @@
 import * as React from 'react'
 import Svg, { Path } from 'react-native-svg'
 
-import { ColorsEnum, SMALLER_ICON_SIZE } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
+import { SMALLER_ICON_SIZE } from 'ui/theme/constants'
 
 import { IconInterface } from './types'
 

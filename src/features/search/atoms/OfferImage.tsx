@@ -6,7 +6,8 @@ import styled from 'styled-components/native'
 import { CategoryIdEnum } from 'api/gen'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
-import { ColorsEnum, getShadow, getSpacing } from 'ui/theme'
+import { getShadow, getSpacing } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
   imageUrl: string | undefined

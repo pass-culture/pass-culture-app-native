@@ -16,7 +16,7 @@ import { ProgressBar } from 'ui/components/snackBar/ProgressBar'
 import { Close } from 'ui/svg/icons/Close'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 type RefType = RefObject<
   React.Component<AnimatableProperties<ViewStyle> & ViewProps, never, never> & {

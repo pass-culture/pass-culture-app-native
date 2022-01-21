@@ -3,8 +3,8 @@ import { Path } from 'react-native-svg'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { ColorsEnum, SMALLER_ICON_SIZE } from 'ui/theme'
-
+import { ColorsEnum } from 'ui/theme/colors'
+import { SMALLER_ICON_SIZE } from 'ui/theme/constants'
 export const EmailFilled: React.FunctionComponent<AccessibleIcon> = ({
   size = SMALLER_ICON_SIZE,
   color = ColorsEnum.BLACK,

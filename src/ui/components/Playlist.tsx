@@ -7,8 +7,8 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { BicolorArrowLeft } from 'ui/svg/icons/BicolorArrowLeft'
 import { BicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'
-import { ColorsEnum, getSpacing } from 'ui/theme'
-
+import { getSpacing } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 type ItemDimensions = { width: number; height: number }
 
 type Direction = 'previous' | 'next'
