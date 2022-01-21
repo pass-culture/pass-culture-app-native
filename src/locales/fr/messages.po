@@ -1127,6 +1127,14 @@ msgstr "Il y a déjà une demande de crédit pass Culture en cours sur ton compt
 msgid "Il y a eu un problème. Tu peux réessayer plus tard"
 msgstr "Il y a eu un problème. Tu peux réessayer plus tard"
 
+#: src/features/search/components/SearchBox.tsx
+msgid ""
+"Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche\n"
+"\"Entrée\""
+msgstr ""
+"Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche\n"
+"\"Entrée\""
+
 #: src/features/identityCheck/pages/profile/SetCity.tsx
 msgid "Indique ton code postal et choisis ta ville"
 msgstr "Indique ton code postal et choisis ta ville"
