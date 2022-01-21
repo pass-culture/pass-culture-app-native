@@ -1147,6 +1147,10 @@ msgstr ""
 msgid "Indique ton code postal et choisis ta ville"
 msgstr "Indique ton code postal et choisis ta ville"
 
+#: src/features/search/pages/LocationPicker.tsx
+msgid "Indique un lieu pour découvrir toutes les offres de ce lieu puis clique sur le lieu pour valider ton choix"
+msgstr "Indique un lieu pour découvrir toutes les offres de ce lieu puis clique sur le lieu pour valider ton choix"
+
 #: src/features/profile/pages/PersonalData.tsx
 #: src/features/profile/pages/Profile.tsx
 msgid "Informations personnelles"
