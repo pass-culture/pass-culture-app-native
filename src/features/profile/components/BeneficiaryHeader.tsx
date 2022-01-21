@@ -7,7 +7,8 @@ import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeil
 import { computeCredit, useIsUserUnderageBeneficiary } from 'features/profile/utils'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
-import { getSpacing, ColorsEnum, Typo, Spacer } from 'ui/theme'
+import { getSpacing, Typo, Spacer } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 type BeneficiaryHeaderProps = {
   firstName?: string | null

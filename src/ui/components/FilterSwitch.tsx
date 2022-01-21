@@ -1,10 +1,9 @@
 import React, { memo, useEffect, useRef } from 'react'
-import { Animated, Easing, TouchableOpacity } from 'react-native'
+import { Animated, Easing } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
-import { ColorsEnum, getShadow, getSpacing } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
+import { getShadow, getSpacing } from 'ui/theme'
 
 interface Props {
   active: boolean
@@ -38,7 +37,6 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
   return (
     <FilterSwitchContainer>
       <TouchableOpacity
-        activeOpacity={ACTIVE_OPACITY}
         onPress={toggle}
         disabled={disabled}
         accessibilityValue={{ text: active.toString() }}
@@ -56,6 +54,10 @@ const getBackgroundColor = (theme: DefaultTheme, active: boolean, disabled: bool
   return disabled ? theme.uniqueColors.greyDisabled : theme.colors.greyMedium
 }
 
+const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))``
+
 const StyledBackgroundColor = styled.View<{ active: boolean; disabled: boolean }>(
   ({ theme, active, disabled }) => ({
     backgroundColor: getBackgroundColor(theme, active, disabled),
@@ -69,11 +71,11 @@ const StyledBackgroundColor = styled.View<{ active: boolean; disabled: boolean }
 
 const FilterSwitchContainer = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
-const StyledToggle = styled(Animated.View)({
+const StyledToggle = styled(Animated.View)(({ theme }) => ({
   aspectRatio: '1',
   width: TOGGLE_WIDTH,
   height: getSpacing(7),
-  backgroundColor: ColorsEnum.WHITE,
+  backgroundColor: theme.colors.white,
   borderRadius: getSpacing(7),
   ...getShadow({
     shadowOffset: {
@@ -81,10 +83,10 @@ const StyledToggle = styled(Animated.View)({
       height: getSpacing(0.5),
     },
     shadowRadius: 2.5,
-    shadowColor: ColorsEnum.BLACK,
+    shadowColor: theme.colors.black,
     shadowOpacity: 0.2,
   }),
-})
+}))
 
 const propsAreEqual = (
   prevProps: Readonly<React.PropsWithChildren<Props>>,

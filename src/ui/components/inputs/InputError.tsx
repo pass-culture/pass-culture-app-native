@@ -1,7 +1,8 @@
 import React, { FC, Fragment } from 'react'
 
 import { Error } from 'ui/svg/icons/Error'
-import { ColorsEnum, Spacer } from 'ui/theme'
+import { Spacer } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 import { InputRule } from './rules/InputRule'
 

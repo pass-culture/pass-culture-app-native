@@ -13,8 +13,8 @@ import { eduConnectClient } from 'libs/eduConnectClient'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { BicolorIdCardWithMagnifyingGlassDeprecated as BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass_deprecated'
 import { Info } from 'ui/svg/icons/Info'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 export const IdentityCheckEduConnectForm = () => {
   const [error, setError] = useState<EduConnectError | null>(null)
 

@@ -3,7 +3,7 @@ import * as RN from 'react-native'
 
 import { fireEvent, render, waitFor } from 'tests/utils'
 import { Check } from 'ui/svg/icons/Check'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 import { SnackBar, SnackBarProps } from './SnackBar'
 import { SnackBarHelperSettings } from './types'

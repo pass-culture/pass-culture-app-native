@@ -4,8 +4,8 @@ import styled from 'styled-components/native'
 import { handleCallToActionLink } from 'features/profile/utils'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getSpacing, Typo, Spacer } from 'ui/theme'
-
+import { getSpacing, Typo, Spacer } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 interface ProfileBadgeProps {
   message: string
   popOverIcon?: FunctionComponent<IconInterface>

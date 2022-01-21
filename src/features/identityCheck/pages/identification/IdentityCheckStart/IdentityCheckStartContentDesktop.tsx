@@ -9,7 +9,9 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { useModal } from 'ui/components/modals/useModal'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
+
 interface Props {
   showSomeAdviceBeforeIdentityCheckModal: () => void
 }

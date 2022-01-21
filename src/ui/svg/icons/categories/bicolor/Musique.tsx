@@ -3,7 +3,7 @@ import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
 
 import { IconInterface } from 'ui/svg/icons/types'
 import { svgIdentifier } from 'ui/svg/utils'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 export const Musique: React.FunctionComponent<IconInterface> = ({
   size = 32,

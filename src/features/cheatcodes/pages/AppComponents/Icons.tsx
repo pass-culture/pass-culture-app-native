@@ -85,7 +85,8 @@ import { Sun } from 'ui/svg/icons/Sun'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
 import { Warning } from 'ui/svg/icons/Warning'
-import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 const STANDARD_ICON_SIZE = getSpacing(8)
 

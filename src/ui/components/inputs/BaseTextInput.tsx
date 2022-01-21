@@ -3,7 +3,8 @@ import React, { forwardRef, useEffect, useRef } from 'react'
 import { Platform, TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ColorsEnum, getSpacing } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 import { RNTextInputProps } from './types'
 

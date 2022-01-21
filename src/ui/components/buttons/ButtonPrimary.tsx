@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 
 import { AppButton, BaseButtonProps } from 'ui/components/buttons/AppButton'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 export const ButtonPrimary: FunctionComponent<BaseButtonProps> = (props) => {
   const loadingIconColor = ColorsEnum.WHITE

@@ -6,7 +6,8 @@ import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = {
   onDismiss: () => void

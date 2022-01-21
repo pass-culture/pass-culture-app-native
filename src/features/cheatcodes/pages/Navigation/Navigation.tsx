@@ -19,7 +19,8 @@ import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { ColorsEnum, padding, Spacer } from 'ui/theme'
+import { padding, Spacer } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 const MAX_ASYNC_TEST_REQ_COUNT = 3
 const EIFFEL_TOWER_COORDINATES = { lat: 48.8584, lng: 2.2945 }

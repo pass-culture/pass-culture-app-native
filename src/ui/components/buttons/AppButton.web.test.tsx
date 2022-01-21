@@ -2,7 +2,7 @@ import React from 'react'
 
 import { render } from 'tests/utils/web'
 import { Close } from 'ui/svg/icons/Close'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 import { AppButton } from './AppButton'
 

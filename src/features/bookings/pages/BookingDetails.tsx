@@ -33,8 +33,8 @@ import { blurImageHeight, heroMarginTop } from 'ui/components/hero/useHeroDimens
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 const getOfferRules = (
   properties: BookingProperties,
   activationCodeFeatureEnabled?: boolean

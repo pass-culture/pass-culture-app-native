@@ -27,7 +27,8 @@ import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
-import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 import { Form } from 'ui/web/form/Form'
 
 export function ChangeEmail() {

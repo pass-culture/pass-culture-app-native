@@ -9,8 +9,8 @@ import { analytics } from 'libs/analytics'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 export function LoggedOutHeader() {
   const { navigate } = useNavigation<UseNavigationType>()
   return (

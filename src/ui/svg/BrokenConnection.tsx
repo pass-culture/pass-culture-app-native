@@ -2,8 +2,8 @@ import * as React from 'react'
 import Svg, { Path } from 'react-native-svg'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, ILLUSTRATION_ICON_SIZE } from 'ui/theme'
-
+import { ColorsEnum } from 'ui/theme/colors'
+import { ILLUSTRATION_ICON_SIZE } from 'ui/theme/constants'
 export const BrokenConnection: React.FunctionComponent<IconInterface> = ({
   size = ILLUSTRATION_ICON_SIZE,
   color = ColorsEnum.BLACK,

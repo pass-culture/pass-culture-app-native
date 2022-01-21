@@ -2,7 +2,8 @@ import React from 'react'
 import styled, { useTheme, DefaultTheme } from 'styled-components/native'
 
 import { Validate } from 'ui/svg/icons/Validate'
-import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 const getBorderColor = (theme: DefaultTheme, selected: boolean, disabled?: boolean) => {
   if (selected) return theme.colors.primary

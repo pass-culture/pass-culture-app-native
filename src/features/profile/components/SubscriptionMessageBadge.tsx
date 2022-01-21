@@ -7,7 +7,8 @@ import { matchSubscriptionMessageIconToSvg } from 'features/profile/utils'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { formatToHour } from 'libs/parsers/formatDates'
 import { Clock } from 'ui/svg/icons/Clock'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 type SubscriptionMessageBadgeProps = {
   subscriptionMessage?: SubscriptionMessage | null

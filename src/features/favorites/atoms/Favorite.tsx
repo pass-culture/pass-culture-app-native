@@ -17,7 +17,8 @@ import { QueryKeys } from 'libs/queryKeys'
 import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 import { BookingButton } from './BookingButton'
 

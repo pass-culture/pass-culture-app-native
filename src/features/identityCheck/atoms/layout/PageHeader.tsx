@@ -6,8 +6,8 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-
+import { getSpacing, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 export const HEADER_HEIGHT = getSpacing(16)
 
 interface Props {

@@ -6,8 +6,8 @@ import { EndedBookingsSection } from 'features/bookings/pages/EndedBookingsSecti
 import { useNavigateToSearchResults } from 'features/search/utils/useNavigateToSearchResults'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { NoBookingsDeprecated as NoBookings } from 'ui/svg/icons/NoBookings_deprecated'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 export function NoBookingsView() {
   const onPressExploreOffers = useNavigateToSearchResults({ from: 'bookings' })
 

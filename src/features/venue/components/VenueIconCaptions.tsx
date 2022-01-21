@@ -9,7 +9,8 @@ import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { PointerLocationNotFilled } from 'ui/svg/icons/PointerLocationNotFilled'
 import { PointerLocationNotFilledDisabled } from 'ui/svg/icons/PointerLocationNotFilledDisabled'
-import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = { type: VenueTypeCodeKey | null; label: string; locationCoordinates: Coordinates }
 

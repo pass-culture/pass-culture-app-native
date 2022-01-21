@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { Logo } from 'ui/svg/icons/Logo'
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 const USE_NATIVE_DRIVER = Platform.select({ default: false, ios: true, android: true })
 

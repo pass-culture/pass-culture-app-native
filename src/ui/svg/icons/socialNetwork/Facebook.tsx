@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Svg, { Path, G } from 'react-native-svg'
 
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 import { IconInterface } from '../types'
 

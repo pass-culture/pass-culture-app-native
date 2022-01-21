@@ -5,7 +5,8 @@ import { useLocationChoice } from 'features/search/components/locationChoice.uti
 import { LocationType } from 'features/search/enums'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Validate } from 'ui/svg/icons/Validate'
-import { getSpacing, Spacer, Typo, ColorsEnum } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = {
   section: LocationType.PLACE | LocationType.EVERYWHERE | LocationType.AROUND_ME

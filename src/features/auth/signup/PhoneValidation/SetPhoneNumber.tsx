@@ -24,7 +24,8 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Close } from 'ui/svg/icons/Close'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 import { Form } from 'ui/web/form/Form'
 
 const TIMER = 60

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ExpenseDomain } from 'api/gen'
 import { render } from 'tests/utils'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 import { CreditCeiling } from './CreditCeiling'
 

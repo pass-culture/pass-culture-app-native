@@ -23,7 +23,8 @@ import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Warning } from 'ui/svg/icons/Warning'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 export interface GeneratedDeeplink {
   universalLink: string

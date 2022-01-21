@@ -2,7 +2,8 @@ import React from 'react'
 import { ViewStyle, View, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ColorsEnum, getShadow, getSpacing, padding } from 'ui/theme'
+import { getShadow, getSpacing, padding } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = {
   isError?: boolean

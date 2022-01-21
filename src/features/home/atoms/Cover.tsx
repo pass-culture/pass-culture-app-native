@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { ArrowNextDouble } from 'ui/svg/icons/ArrowNextDouble'
-import { ColorsEnum, getSpacing } from 'ui/theme'
-
+import { getSpacing } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 interface Props {
   height: number
   width: number

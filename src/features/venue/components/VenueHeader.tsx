@@ -9,7 +9,8 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { isShareApiSupported } from 'libs/share'
 import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 import { useShareVenue } from '../services/useShareVenue'
 

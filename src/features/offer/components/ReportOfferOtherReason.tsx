@@ -9,7 +9,8 @@ import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
   dismissModal: () => void

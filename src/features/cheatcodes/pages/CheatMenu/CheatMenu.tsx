@@ -8,8 +8,8 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 export const CheatMenu: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavConfig)

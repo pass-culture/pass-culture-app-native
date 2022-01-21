@@ -3,7 +3,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { ColorsEnum, getSpacing, Spacer, Typo, getShadow } from 'ui/theme'
+import { getSpacing, Spacer, Typo, getShadow } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 interface SeeMoreProps {
   height: number

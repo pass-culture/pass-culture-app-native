@@ -2,7 +2,7 @@ import * as React from 'react'
 import Svg, { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
 
 import { svgIdentifier } from 'ui/svg/utils'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 import { BicolorIconInterface } from './types'
 

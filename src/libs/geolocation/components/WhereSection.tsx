@@ -14,7 +14,8 @@ import { QueryKeys } from 'libs/queryKeys'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
-import { Typo, ColorsEnum, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = {
   beforeNavigateToItinerary?: () => Promise<void> | void

@@ -6,7 +6,8 @@ import { CustomKeyboardAvoidingView } from 'features/identityCheck/atoms/layout/
 import { PageHeader } from 'features/identityCheck/atoms/layout/PageHeader'
 import { useShouldEnableScrollOnView } from 'features/identityCheck/utils/useShouldEnableScrollView'
 import { Background } from 'ui/svg/Background'
-import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
   title: string

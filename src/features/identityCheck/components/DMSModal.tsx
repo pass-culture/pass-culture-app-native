@@ -8,7 +8,8 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
   visible: boolean

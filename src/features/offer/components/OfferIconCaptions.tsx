@@ -10,7 +10,8 @@ import { getOfferPrices } from 'features/offer/services/getOfferPrice'
 import { getDisplayPrice, getDisplayPriceWithDuoMention } from 'libs/parsers'
 import { Duo } from 'ui/svg/icons/Duo'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
-import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = { categoryId: CategoryIdEnum | null; label: string } & Pick<
   OfferResponse,

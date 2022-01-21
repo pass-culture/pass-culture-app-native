@@ -9,8 +9,8 @@ import { Flash } from 'ui/svg/icons/Flash'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Sun } from 'ui/svg/icons/Sun'
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-
+import { getSpacing, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 interface Props {
   visible: boolean
   hideModal: () => void

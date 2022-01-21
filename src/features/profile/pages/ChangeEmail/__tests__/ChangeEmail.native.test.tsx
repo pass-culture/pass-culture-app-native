@@ -8,7 +8,7 @@ import { CHANGE_EMAIL_ERROR_CODE } from 'features/profile/api'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 import { ChangeEmail } from '../ChangeEmail'
 

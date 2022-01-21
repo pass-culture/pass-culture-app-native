@@ -6,8 +6,8 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { AccountLocked } from 'ui/svg/icons/AccountLocked'
-import { ColorsEnum, Typo } from 'ui/theme'
-
+import { Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 export function PhoneValidationTooManySMSSent() {
   return (
     <GenericInfoPage

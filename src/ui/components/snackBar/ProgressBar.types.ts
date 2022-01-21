@@ -1,4 +1,4 @@
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 export type ProgressBarProps = {
   color: ColorsEnum

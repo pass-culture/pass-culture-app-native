@@ -7,8 +7,8 @@ import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { analytics } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { accessibilityAndTestId } from 'tests/utils'
-import { ColorsEnum, Typo } from 'ui/theme'
-
+import { Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 export const ReinitializeFilters = () => {
   const { dispatch } = useStagedSearch()
   const logReinitializeFilters = useFunctionOnce(() => {

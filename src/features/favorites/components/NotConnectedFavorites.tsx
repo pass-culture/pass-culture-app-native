@@ -7,8 +7,8 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { Background } from 'ui/svg/Background'
 import { CreateAccount } from 'ui/svg/icons/CreateAccount'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 export const NotConnectedFavorites = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 

@@ -1,6 +1,6 @@
 import styled from 'styled-components/native'
 
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 export const DashedSeparator = styled.View({
   borderBottomColor: ColorsEnum.BLACK,

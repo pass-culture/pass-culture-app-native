@@ -5,8 +5,8 @@ import styled from 'styled-components/native'
 import { OfferVenueResponse } from 'api/gen'
 import { Digital } from 'ui/svg/icons/Digital'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-
+import { getSpacing, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 type Props = {
   venue: OfferVenueResponse
   isDigital: boolean

@@ -2,7 +2,7 @@ import * as React from 'react'
 import Svg, { Circle, G } from 'react-native-svg'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = Omit<IconInterface, 'color'> & {
   'aria-label'?: string

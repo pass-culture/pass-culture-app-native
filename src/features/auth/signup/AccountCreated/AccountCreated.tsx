@@ -11,8 +11,8 @@ import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { ColorsEnum, Typo } from 'ui/theme'
-
+import { Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 export function AccountCreated() {
   const { data: user } = useUserProfileInfo()
   const { navigate } = useNavigation<UseNavigationType>()

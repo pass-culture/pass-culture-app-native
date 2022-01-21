@@ -9,7 +9,8 @@ import { useIdentityCheckContext } from 'features/identityCheck/context/Identity
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 export function IdentityCheckValidation() {
   const { dispatch, identification } = useIdentityCheckContext()

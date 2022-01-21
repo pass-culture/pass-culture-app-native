@@ -5,8 +5,8 @@ import { SwiperProps } from 'react-native-web-swiper'
 import styled from 'styled-components/native'
 
 import { Dot } from 'ui/svg/icons/Dot'
-import { ColorsEnum, getSpacing } from 'ui/theme'
-
+import { getSpacing } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 export function getDotColors(
   stepIndex: number,
   currentStepIndex: number

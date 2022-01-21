@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Quote } from 'ui/svg/icons/Quote'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-
+import { getSpacing, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 export const Declaration = ({ text, description }: { text: string; description: string }) => {
   return (
     <CenteredContainer>

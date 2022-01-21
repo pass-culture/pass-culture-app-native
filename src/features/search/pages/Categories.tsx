@@ -11,8 +11,8 @@ import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Validate } from 'ui/svg/icons/Validate'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 const DEBOUNCED_CALLBACK = 200
 
 const useSelectCategory = (callback: () => void) => {

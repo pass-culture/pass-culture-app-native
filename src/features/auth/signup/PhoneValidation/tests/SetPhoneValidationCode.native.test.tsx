@@ -24,7 +24,7 @@ import {
   useMutationFactory,
   flushAllPromises,
 } from 'tests/utils'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 // eslint-disable-next-line local-rules/no-allow-console
 // allowConsole({ error: true })

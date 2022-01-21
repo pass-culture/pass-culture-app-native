@@ -2,7 +2,8 @@ import React from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ColorsEnum, Typo, GUTTER_DP, getSpacing } from 'ui/theme'
+import { Typo, GUTTER_DP, getSpacing } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 interface ImageCaptionProps {
   categoryLabel: string | null

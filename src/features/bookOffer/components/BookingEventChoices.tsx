@@ -12,7 +12,8 @@ import { Step } from 'features/bookOffer/pages/reducer'
 import { useUserProfileInfo } from 'features/home/api'
 import { useCreditForOffer } from 'features/offer/services/useHasEnoughCredit'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
   stocks: OfferStockResponse[]

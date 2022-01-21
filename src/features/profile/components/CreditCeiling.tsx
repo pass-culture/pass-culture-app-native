@@ -9,7 +9,8 @@ import { OfferDigital } from 'ui/svg/icons/OfferDigital'
 import { OfferEvent } from 'ui/svg/icons/OfferEvent'
 import { OfferPhysical } from 'ui/svg/icons/OfferPhysical'
 import { Offers } from 'ui/svg/icons/Offers'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 import { ProgressBar } from '../../../ui/components/bars/ProgressBar'
 

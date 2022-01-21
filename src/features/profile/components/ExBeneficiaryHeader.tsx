@@ -5,7 +5,8 @@ import styled from 'styled-components/native'
 import { DomainsCredit } from 'api/gen/api'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
-import { getSpacing, ColorsEnum, Typo, Spacer } from 'ui/theme'
+import { getSpacing, Typo, Spacer } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 import { accordionStyle, GreyContainer, Description } from './reusables'
 

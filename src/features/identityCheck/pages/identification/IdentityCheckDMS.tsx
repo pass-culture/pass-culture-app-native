@@ -11,8 +11,8 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { OrSeparator } from 'ui/components/OrSeparator'
 import { BicolorIdCardWithMagnifyingGlassDeprecated as BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass_deprecated'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 export const IdentityCheckDMS = () => {
   const theme = useTheme()
 

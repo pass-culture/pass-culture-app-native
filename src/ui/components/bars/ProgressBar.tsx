@@ -4,7 +4,8 @@ import * as Animatable from 'react-native-animatable'
 import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, UniqueColors, getSpacing } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
+import { UniqueColors, ColorsEnum } from 'ui/theme/colors'
 
 interface ProgressBarProps {
   progress: number

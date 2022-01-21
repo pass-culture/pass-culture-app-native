@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import Svg, { Path, G, Stop, LinearGradient, Use } from 'react-native-svg'
 
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 const ticketFooterRatio = 303 / 38
 const viewBox = '0 0 303 38'

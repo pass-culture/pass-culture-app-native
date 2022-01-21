@@ -1,7 +1,7 @@
 import React, { useEffect, useState, memo } from 'react'
 import styled from 'styled-components/native'
 
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 import { ProgressBarProps } from './ProgressBar.types'
 

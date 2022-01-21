@@ -5,8 +5,8 @@ import styled from 'styled-components/native'
 import { accessibilityAndTestId } from 'tests/utils'
 import { Logo } from 'ui/svg/icons/Logo'
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-
+import { getSpacing, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 export interface BaseButtonProps {
   accessibilityLabel?: string
   adjustsFontSizeToFit?: boolean

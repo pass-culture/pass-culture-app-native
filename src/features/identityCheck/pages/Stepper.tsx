@@ -17,7 +17,8 @@ import { analytics } from 'libs/analytics'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { useModal } from 'ui/components/modals/useModal'
 import { Background } from 'ui/svg/Background'
-import { Spacer, Typo, ColorsEnum, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 export const IdentityCheckStepper = () => {
   const theme = useTheme()

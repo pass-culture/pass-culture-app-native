@@ -18,7 +18,8 @@ import { Hero } from 'ui/components/hero/Hero'
 import { PartialAccordionDescription } from 'ui/components/PartialAccordionDescription'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 import { useVenue } from '../api/useVenue'
 

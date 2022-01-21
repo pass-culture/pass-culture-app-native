@@ -4,7 +4,8 @@ import { Text } from 'react-native'
 import { openUrl } from 'features/navigation/helpers'
 import { extractExternalLinkParts } from 'ui/components/buttons/externalLink/ExternalLink.service'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
   url: string

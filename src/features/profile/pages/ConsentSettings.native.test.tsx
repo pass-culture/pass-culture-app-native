@@ -10,7 +10,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
 import { superFlushWithAct, render, fireEvent, waitFor } from 'tests/utils'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 import { ConsentSettings } from './ConsentSettings'
 

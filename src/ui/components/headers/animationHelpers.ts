@@ -1,8 +1,8 @@
 import { useRef } from 'react'
 import { Animated, Easing, NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
-import { ColorsEnum, getSpacing } from 'ui/theme'
-
+import { getSpacing } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 const HEIGHT_END_OF_TRANSITION = getSpacing(20)
 
 const interpolationConfig = {

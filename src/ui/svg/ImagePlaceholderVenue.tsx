@@ -2,7 +2,7 @@ import * as React from 'react'
 import Svg, { Defs, LinearGradient, Stop, Rect, Path } from 'react-native-svg'
 import { v1 as uuidv1 } from 'uuid'
 
-import { ColorsEnum } from '../theme'
+import { ColorsEnum } from '../theme/colors'
 
 interface Props {
   height?: number

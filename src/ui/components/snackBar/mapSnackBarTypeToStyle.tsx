@@ -1,7 +1,7 @@
 import { Check } from 'ui/svg/icons/Check'
 import { Error } from 'ui/svg/icons/Error'
 import { Info } from 'ui/svg/icons/Info'
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 import { SnackBarSettings, SnackBarType } from './types'
 

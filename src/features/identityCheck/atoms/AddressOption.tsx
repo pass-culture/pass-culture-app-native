@@ -3,8 +3,8 @@ import styled from 'styled-components/native'
 
 import { Separator } from 'ui/components/Separator'
 import { Validate } from 'ui/svg/icons/Validate'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-
+import { getSpacing, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 interface Props {
   onPressOption: (optionKey: string) => void
   optionKey: string

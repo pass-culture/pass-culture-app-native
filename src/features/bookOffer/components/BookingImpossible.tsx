@@ -12,8 +12,8 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SadFaceDeprecated as SadFace } from 'ui/svg/icons/SadFace_deprecated'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-
+import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 export const BookingImpossible: React.FC = () => {
   const { bookingState, dismissModal } = useBooking()
   const { offerId } = bookingState

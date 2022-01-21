@@ -2,7 +2,7 @@ import React, { Component, ReactElement } from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import CodePush from 'react-native-code-push' // @codepush
 
-import { ColorsEnum } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 interface State {
   info?: string

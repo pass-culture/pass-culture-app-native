@@ -8,7 +8,8 @@ import { isUserExBeneficiary } from 'features/profile/utils'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { useSubcategory } from 'libs/subcategories'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
-import { ColorsEnum, Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 import { Booking } from './types'
 
