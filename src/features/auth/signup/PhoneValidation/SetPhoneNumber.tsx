@@ -50,6 +50,7 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
     showModal: showQuitSignupModal,
     hideModal: hideQuitSignupModal,
   } = useModal(false)
+  const [isContinueButtonLoading, setIsContinueButtonLoading] = useState(false)
 
   const timeSinceLastRequest = useTimer(
     validationCodeRequestTimestamp,
@@ -69,6 +70,7 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
   }, [])
 
   function onSuccess() {
+    setIsContinueButtonLoading(true)
     const now = currentTimestamp()
     storage.saveObject('phone_validation_code_asked_at', now)
     setValidationCodeRequestTimestamp(now)
@@ -162,7 +164,7 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
               title={getButtonTitle()}
               disabled={!isContinueButtonEnabled}
               onPress={requestSendPhoneValidationCode}
-              isLoading={isLoading}
+              isLoading={isLoading || isContinueButtonLoading}
             />
           </Form.MaxWidth>
         </ModalContent>

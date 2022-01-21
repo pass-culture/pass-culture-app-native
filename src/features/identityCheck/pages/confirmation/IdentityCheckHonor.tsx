@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useState } from 'react'
 import { useQueryClient } from 'react-query'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -25,9 +25,11 @@ export const IdentityCheckHonor = () => {
   const queryClient = useQueryClient()
   const { navigate } = useNavigation<UseNavigationType>()
   const { refetch } = useUserProfileInfo()
+  const [isContinueButtonLoading, setIsContinueButtonLoading] = useState(false)
 
   const { mutate: postHonorStatement, isLoading } = usePostHonorStatement({
     onSuccess: () => {
+      setIsContinueButtonLoading(true)
       queryClient.invalidateQueries(QueryKeys.NEXT_SUBSCRIPTION_STEP)
       refetch()
         .then(({ data: userProfile }) => {
@@ -75,7 +77,7 @@ export const IdentityCheckHonor = () => {
             <ButtonPrimary
               onPress={postHonorStatement}
               title={t`Valider et continuer`}
-              isLoading={isLoading}
+              isLoading={isLoading || isContinueButtonLoading}
             />
           </ButtonContainer>
           <Spacer.BottomScreen />
