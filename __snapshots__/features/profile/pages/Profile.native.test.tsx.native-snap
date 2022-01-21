@@ -1531,7 +1531,7 @@ exports[`Profile component should render correctly 1`] = `
                               ]
                             }
                           >
-                            Snapchat
+                            Tiktok
                           </Text>
                         </View>
                       </View>

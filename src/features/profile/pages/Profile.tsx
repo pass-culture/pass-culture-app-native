@@ -190,7 +190,7 @@ export const Profile: React.FC = () => {
             <NetworkRowContainer>
               <SocialNetworkCard network="instagram" />
               <SocialNetworkCard network="twitter" />
-              <SocialNetworkCard network="snapchat" />
+              <SocialNetworkCard network="tiktok" />
               <SocialNetworkCard network="facebook" />
             </NetworkRowContainer>
           </NetworkRow>
