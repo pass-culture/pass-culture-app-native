@@ -18,7 +18,6 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { ColorsEnum } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
-import { ZIndex } from 'ui/theme/layers'
 
 type RefType = RefObject<
   React.Component<AnimatableProperties<ViewStyle> & ViewProps, never, never> & {
@@ -129,9 +128,9 @@ const _SnackBar = (props: SnackBarProps) => {
 
 export const SnackBar = memo(_SnackBar)
 
-/* 
-  Display rules : 
-  - On mobile : at the very top of the screen, with a full width 
+/*
+  Display rules :
+  - On mobile : at the very top of the screen, with a full width
   - On tablet or desktop : below top menu on the right side of the screen, with a max width
 */
 const RootContainer = styled(View)(({ theme }) => ({
@@ -140,7 +139,7 @@ const RootContainer = styled(View)(({ theme }) => ({
   top: theme.isMobileViewport ? 0 : theme.navTopHeight,
   left: theme.isMobileViewport ? 0 : 'auto',
   right: 0,
-  zIndex: ZIndex.SNACKBAR,
+  zIndex: theme.zIndex.snackbar,
 }))
 
 // Troobleshoot Animated types issue with forwaded 'backgroundColor' prop
