@@ -53,7 +53,7 @@ export const NumberOfResults: React.FC<Props> = ({ nbHits }) => {
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       ) : (
-        <Body>{numberOfResults}</Body>
+        <Body aria-live="assertive">{numberOfResults}</Body>
       )}
     </Container>
   )
