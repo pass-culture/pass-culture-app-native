@@ -13,7 +13,6 @@ import { SearchHit } from 'libs/search'
 import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { OfferImage } from './OfferImage'
 
@@ -81,8 +80,8 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
   )
 }
 
-const Container = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
+const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
 }))({
   marginHorizontal: getSpacing(6),
   flexDirection: 'row',

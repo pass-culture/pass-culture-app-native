@@ -3,7 +3,6 @@ import styled from 'styled-components/native'
 
 import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 interface Props {
   label: string
@@ -30,8 +29,8 @@ const IconContainer = styled.View({
   paddingHorizontal: getSpacing(1),
 })
 
-const TouchableOpacity = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
+const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
 }))<{ selected: boolean }>(({ selected }) => ({
   flexDirection: 'row',
   alignItems: 'center',

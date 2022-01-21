@@ -3,7 +3,6 @@ import styled from 'styled-components/native'
 
 import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 interface Props {
   selected: boolean
@@ -28,8 +27,8 @@ export const RadioButton = ({ name, description, selected, onPress }: Props) => 
   </Label>
 )
 
-const Label = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
+const Label = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
 }))<{ selected: boolean }>(({ theme, selected }) => ({
   flexDirection: 'row',
   alignItems: 'center',

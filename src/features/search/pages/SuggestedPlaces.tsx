@@ -15,7 +15,7 @@ import { SuggestedVenue } from 'libs/venue'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY, ColorsEnum } from 'ui/theme/colors'
+import { ColorsEnum } from 'ui/theme/colors'
 
 type SuggestedPlaceOrVenue = SuggestedPlace | SuggestedVenue
 
@@ -99,9 +99,9 @@ const NoSuggestedPlaces = ({ show }: { show: boolean }) =>
     <React.Fragment />
   )
 
-const ItemContainer = styled.TouchableOpacity.attrs({
-  activeOpacity: ACTIVE_OPACITY,
-})({
+const ItemContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))({
   flexDirection: 'row',
   marginHorizontal: getSpacing(6),
   paddingVertical: getSpacing(4),

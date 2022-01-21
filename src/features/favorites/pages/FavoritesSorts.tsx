@@ -13,7 +13,6 @@ import { PageHeader } from 'ui/components/headers/PageHeader'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export type FavoriteSortBy = 'RECENTLY_ADDED' | 'ASCENDING_PRICE' | 'AROUND_ME'
 const SORT_OPTIONS: Record<FavoriteSortBy, string> = {
@@ -118,9 +117,9 @@ const contentContainerStyle: ViewStyle = {
   paddingRight: getSpacing(3),
 }
 
-const LabelContainer = styled.TouchableOpacity.attrs({
-  activeOpacity: ACTIVE_OPACITY,
-})({
+const LabelContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))({
   flexDirection: 'row',
   alignItems: 'center',
   marginBottom: getSpacing(4),

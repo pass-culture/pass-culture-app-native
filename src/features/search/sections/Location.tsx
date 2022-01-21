@@ -12,7 +12,6 @@ import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Typo, Spacer, ColorsEnum, getSpacing } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export const Location: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -50,8 +49,8 @@ export const Location: React.FC = () => {
   )
 }
 
-const LocationContentContainer = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
+const LocationContentContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
 }))({
   display: 'flex',
   flexDirection: 'row',
