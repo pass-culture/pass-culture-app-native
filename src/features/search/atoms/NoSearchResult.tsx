@@ -34,7 +34,7 @@ export const NoSearchResult: React.FC = () => {
       <NoOffer size={156} />
       <MainTitle>{t`Oups\u00a0!`}</MainTitle>
       <DescriptionErrorTextContainer>
-        <DescriptionErrorText>{errorMessage}</DescriptionErrorText>
+        <DescriptionErrorText aria-live="assertive">{errorMessage}</DescriptionErrorText>
       </DescriptionErrorTextContainer>
       <DescriptionErrorTextContainer>
         <DescriptionErrorText>
