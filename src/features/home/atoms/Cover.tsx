@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 import { ArrowNextDouble } from 'ui/svg/icons/ArrowNextDouble'
 import { ColorsEnum, getSpacing } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
-import { ZIndex } from 'ui/theme/layers'
 
 interface Props {
   height: number
@@ -38,12 +37,12 @@ const Image = styled.Image({
   borderRadius: BorderRadiusEnum.BORDER_RADIUS,
 })
 
-const ArrowsContainer = styled.View({
+const ArrowsContainer = styled.View(({ theme }) => ({
   position: 'absolute',
-  zIndex: ZIndex.HOME_OFFER_COVER_ICONS,
+  zIndex: theme.zIndex.homeOfferCoverIcons,
   flexDirection: 'row',
   alignItems: 'center',
-})
+}))
 
 const ArrowMarginContainer = styled.View({
   marginRight: getSpacing(-6),

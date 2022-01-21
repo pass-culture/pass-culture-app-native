@@ -10,7 +10,6 @@ import { BicolorFavoriteAuthed } from 'ui/svg/icons/BicolorFavoriteAuthed'
 import { Pastille } from 'ui/svg/icons/Pastille'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
-import { ZIndex } from 'ui/theme/layers'
 
 const COUNT_MAX = 100
 
@@ -76,7 +75,7 @@ const PastilleContent = styled.View<{ height: number; width: number }>((props) =
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
-  zIndex: ZIndex.FAVORITE_PASTILLE_CONTENT,
+  zIndex: props.theme.zIndex.favoritePastilleContent,
   height: props.height,
   width: props.width,
 }))

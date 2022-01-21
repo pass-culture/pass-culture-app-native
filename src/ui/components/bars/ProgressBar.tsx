@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, UniqueColors, getSpacing } from 'ui/theme'
-import { ZIndex } from 'ui/theme/layers'
 
 interface ProgressBarProps {
   progress: number
@@ -79,18 +78,18 @@ const Container = styled.View({
   maxHeight: 40,
 })
 
-const IconContainer = styled.View<{ backgroundColor: string }>(({ backgroundColor }) => ({
+const IconContainer = styled.View<{ backgroundColor: string }>(({ backgroundColor, theme }) => ({
   width: 32,
   height: 32,
   borderRadius: 32,
   backgroundColor,
-  zIndex: ZIndex.PROGRESSBAR_ICON,
+  zIndex: theme.zIndex.progressbarIcon,
   position: 'absolute',
   alignItems: 'center',
   justifyContent: 'center',
 }))
 
-const ProgressBarContainer = styled.View({
+const ProgressBarContainer = styled.View(({ theme }) => ({
   marginLeft: getSpacing(5),
   flexDirection: 'row',
   overflow: 'hidden',
@@ -99,9 +98,9 @@ const ProgressBarContainer = styled.View({
   borderColor: ColorsEnum.GREY_MEDIUM,
   borderRadius: 20,
   height: 20,
-  zIndex: ZIndex.PROGRESSBAR,
+  zIndex: theme.zIndex.progressbar,
   position: 'relative',
-})
+}))
 
 const Bar = styled(Animatable.View)<{
   backgroundColor: string

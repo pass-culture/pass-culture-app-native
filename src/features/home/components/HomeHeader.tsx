@@ -11,7 +11,6 @@ import { env } from 'libs/environment'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ZIndex } from 'ui/theme/layers'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export const HomeHeader: FunctionComponent = function () {
@@ -75,12 +74,12 @@ const CenterContainer = styled.View({
   alignItems: 'center',
 })
 
-const HeaderBackgroundWrapper = styled.View({
+const HeaderBackgroundWrapper = styled.View(({ theme }) => ({
   position: 'absolute',
   top: 0,
   left: 0,
-  zIndex: ZIndex.BACKGROUND,
-})
+  zIndex: theme.zIndex.background,
+}))
 
 const CheatCodeButtonContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
   activeOpacity: theme.activeOpacity,
