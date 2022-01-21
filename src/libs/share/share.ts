@@ -1,26 +1,11 @@
 import { Platform, Share } from 'react-native'
 
-const WEB_DESKTOP_SHARE_API_OPTIONS = {
-  copy: true,
-  email: true,
-  print: false,
-  sms: true,
-  messenger: false,
-  facebook: true,
-  whatsapp: true,
-  twitter: true,
-  linkedin: true,
-  telegram: true,
-  skype: false,
-  language: 'fr', // default language
-}
-
 export function isShareApiSupported(): boolean {
   if (Platform.OS === 'ios' || Platform.OS === 'android') {
     return true
   }
   if (Platform.OS === 'web') {
-    return !!window && !!window.navigator && !!window.navigator.share
+    return true
   }
   return false
 }
@@ -40,10 +25,10 @@ export async function share(content: ShareContent, options: ShareOptions): Promi
     await Share.share(content, options)
   }
   if (Platform.OS === 'web') {
-    const { title, message, url } = content
-    await navigator.share(
-      { title, text: message, url, hashtags: 'PassCulture' },
-      WEB_DESKTOP_SHARE_API_OPTIONS
-    )
+    // const { title, message, url } = content
+    // await navigator.share(
+    //   { title, text: message, url, hashtags: 'PassCulture' },
+    //   WEB_DESKTOP_SHARE_API_OPTIONS
+    // )
   }
 }
