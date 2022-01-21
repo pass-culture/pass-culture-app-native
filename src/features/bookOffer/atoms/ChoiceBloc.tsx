@@ -3,7 +3,6 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 const getBorderColor = (selected: boolean, disabled?: boolean) => {
@@ -35,11 +34,7 @@ export const ChoiceBloc: React.FC<Props> = ({ selected, onPress, testID, childre
     (appContentWidth - 2 * getSpacing(4) - CHOICE_BLOCS_BY_LINE * getSpacing(2)) /
     CHOICE_BLOCS_BY_LINE
   return (
-    <ChoiceContainer
-      onPress={onPress}
-      activeOpacity={ACTIVE_OPACITY}
-      testID={testID}
-      disabled={disabled}>
+    <ChoiceContainer onPress={onPress} testID={testID} disabled={disabled}>
       <ChoiceContent selected={selected} disabled={disabled}>
         {selected ? (
           <IconContainer>
@@ -60,7 +55,9 @@ const IconContainer = styled.View({
   right: getSpacing(0.5),
 })
 
-const ChoiceContainer = styled.TouchableOpacity({
+const ChoiceContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))({
   width: '33%',
   padding: getSpacing(2),
 })

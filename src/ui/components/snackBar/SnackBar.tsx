@@ -7,7 +7,7 @@ import React, {
   useState,
   memo,
 } from 'react'
-import { TouchableOpacity, View, ViewProps, ViewStyle } from 'react-native'
+import { View, ViewProps, ViewStyle } from 'react-native'
 import { AnimatableProperties, View as AnimatableView } from 'react-native-animatable'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
@@ -17,7 +17,6 @@ import { Close } from 'ui/svg/icons/Close'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { ColorsEnum } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 type RefType = RefObject<
   React.Component<AnimatableProperties<ViewStyle> & ViewProps, never, never> & {
@@ -113,10 +112,7 @@ const _SnackBar = (props: SnackBarProps) => {
               {props.message}
             </Text>
           </Spacer.Flex>
-          <TouchableOpacity
-            testID="snackbar-close"
-            onPress={onClose}
-            activeOpacity={ACTIVE_OPACITY}>
+          <TouchableOpacity testID="snackbar-close" onPress={onClose}>
             <Close size={20} color={props.color} />
           </TouchableOpacity>
         </SnackBarContainer>
@@ -127,6 +123,10 @@ const _SnackBar = (props: SnackBarProps) => {
 }
 
 export const SnackBar = memo(_SnackBar)
+
+const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))``
 
 /*
   Display rules :

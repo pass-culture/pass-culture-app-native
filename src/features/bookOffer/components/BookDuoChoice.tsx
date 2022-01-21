@@ -1,6 +1,5 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { DuoChoice } from 'features/bookOffer/atoms/DuoChoice'
@@ -15,7 +14,6 @@ import { formatToFrenchDecimal } from 'libs/parsers'
 import { Profile } from 'ui/svg/icons/Profile'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export const BookDuoChoice: React.FC = () => {
   const { bookingState, dispatch } = useBooking()
@@ -52,7 +50,7 @@ export const BookDuoChoice: React.FC = () => {
           {!!isDuo && <DuoChoice {...getChoiceInfosForQuantity(2)} testID={`DuoChoice2`} />}
         </DuoChoiceContainer>
       ) : (
-        <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={changeQuantity}>
+        <TouchableOpacity onPress={changeQuantity}>
           <Typo.ButtonText>
             {bookingState.quantity && bookingState.quantity === 1 ? t`Solo` : t`Duo`}
           </Typo.ButtonText>
@@ -68,6 +66,10 @@ const DuoPerson = (props: IconInterface): JSX.Element => (
     <Profile {...props} />
   </DuoPersonContainer>
 )
+
+const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))``
 
 const DuoChoiceContainer = styled.View({
   flexDirection: 'row',

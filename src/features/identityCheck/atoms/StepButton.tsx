@@ -5,7 +5,6 @@ import { StepConfig } from 'features/identityCheck/types'
 import { accessibilityAndTestId } from 'tests/utils'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export type StepButtonState = 'completed' | 'current' | 'disabled'
@@ -20,8 +19,7 @@ export const StepButton = ({ step, state, onPress }: Props) => {
   const { icon: Icon, label } = step
 
   return (
-    <Button
-      activeOpacity={ACTIVE_OPACITY}
+    <TouchableOpacity
       onPress={onPress}
       disabled={state !== 'current'}
       state={state}
@@ -36,11 +34,13 @@ export const StepButton = ({ step, state, onPress }: Props) => {
           {...accessibilityAndTestId(state === 'completed' ? 'StepCompleted' : 'StepNotCompleted')}
         />
       </CompletionContainer>
-    </Button>
+    </TouchableOpacity>
   )
 }
 
-const Button = styled.TouchableOpacity<{ disabled: boolean; state: StepButtonState }>((props) => ({
+const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))<{ disabled: boolean; state: StepButtonState }>((props) => ({
   height: getSpacing(24),
   marginTop: getSpacing(6),
   width: '100%',

@@ -1,7 +1,6 @@
 import { t } from '@lingui/macro'
 import debounce from 'lodash/debounce'
 import React, { useMemo, useRef } from 'react'
-import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import {
@@ -12,7 +11,6 @@ import {
 import { formatHour, formatToKeyDate } from 'features/bookOffer/services/utils'
 import { useCreditForOffer } from 'features/offer/services/useHasEnoughCredit'
 import { Typo, Spacer, getSpacing } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { HourChoice } from '../atoms/HourChoice'
 import { Step } from '../pages/reducer'
@@ -78,7 +76,7 @@ export const BookHourChoice: React.FC = () => {
       {bookingState.step === Step.HOUR ? (
         <HourChoiceContainer>{filteredStocks}</HourChoiceContainer>
       ) : (
-        <TouchableOpacity activeOpacity={ACTIVE_OPACITY} onPress={changeHour}>
+        <TouchableOpacity onPress={changeHour}>
           <Typo.ButtonText>
             {stock && stock.beginningDatetime ? formatHour(stock.beginningDatetime) : ''}
           </Typo.ButtonText>
@@ -87,6 +85,10 @@ export const BookHourChoice: React.FC = () => {
     </React.Fragment>
   )
 }
+
+const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))``
 
 const HourChoiceContainer = styled.View({
   flexDirection: 'row',
