@@ -18,7 +18,6 @@ import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { BookingButton } from './BookingButton'
 
@@ -176,8 +175,8 @@ export const Favorite: React.FC<Props> = (props) => {
 
 const imageWidth = getSpacing(16)
 
-const Container = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
+const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
 }))({ marginHorizontal: getSpacing(6) })
 
 const columnPadding = 4

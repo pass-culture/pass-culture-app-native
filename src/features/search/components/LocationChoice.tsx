@@ -6,7 +6,6 @@ import { LocationType } from 'features/search/enums'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo, ColorsEnum } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 type Props = {
   section: LocationType.PLACE | LocationType.EVERYWHERE | LocationType.AROUND_ME
@@ -45,8 +44,8 @@ export const LocationChoice: React.FC<Props> = (props) => {
   )
 }
 
-const Container = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
+const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
 }))({
   display: 'flex',
   flexDirection: 'row',

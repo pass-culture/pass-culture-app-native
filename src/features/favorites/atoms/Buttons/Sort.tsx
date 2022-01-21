@@ -7,7 +7,6 @@ import styled from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Sort as SortIcon } from 'ui/svg/icons/Sort'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export const Sort: React.FC = () => {
@@ -30,8 +29,8 @@ export const Sort: React.FC = () => {
   )
 }
 
-const Container = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
+const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
 }))({ overflow: 'hidden' })
 
 const StyledLinearGradient = styled(LinearGradient)({

@@ -9,7 +9,6 @@ import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useFilterCount } from 'features/search/utils/useFilterCount'
 import { Filter as FilterIcon } from 'ui/svg/icons/Filter'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export const Filter: React.FC = () => {
@@ -47,8 +46,8 @@ export const Filter: React.FC = () => {
   )
 }
 
-const Container = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
+const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
 }))({ overflow: 'hidden' })
 
 const StyledLinearGradient = styled(LinearGradient)({

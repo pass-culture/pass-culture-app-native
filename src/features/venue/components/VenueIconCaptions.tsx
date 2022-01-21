@@ -10,7 +10,6 @@ import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { PointerLocationNotFilled } from 'ui/svg/icons/PointerLocationNotFilled'
 import { PointerLocationNotFilledDisabled } from 'ui/svg/icons/PointerLocationNotFilledDisabled'
 import { ColorsEnum, getSpacing, Spacer } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 type Props = { type: VenueTypeCodeKey | null; label: string; locationCoordinates: Coordinates }
 
@@ -68,8 +67,8 @@ const Separator = styled.View({
   alignSelf: 'center',
 })
 
-const ActiveGeolocationButton = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
+const ActiveGeolocationButton = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
 }))({
   flex: 1,
 })

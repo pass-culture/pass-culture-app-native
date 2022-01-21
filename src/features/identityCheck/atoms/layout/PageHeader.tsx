@@ -7,7 +7,6 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 export const HEADER_HEIGHT = getSpacing(16)
 
@@ -49,6 +48,6 @@ const BackIcon: React.FC<BackButtonProps> = (props) => {
   )
 }
 
-const StyledTouchableOpacity = styled.TouchableOpacity.attrs({
-  activeOpacity: ACTIVE_OPACITY,
-})({ position: 'absolute', left: getSpacing(3) })
+const StyledTouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))({ position: 'absolute', left: getSpacing(3) })

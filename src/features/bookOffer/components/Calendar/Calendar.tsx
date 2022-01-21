@@ -10,7 +10,6 @@ import { formatToFrenchDecimal } from 'libs/parsers'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 import { monthNames, monthNamesShort, dayNames, dayNamesShort } from './Calendar.utils'
 import { DayComponent, useSelectDay } from './DayComponent'
@@ -116,8 +115,8 @@ export const Calendar: React.FC<Props> = ({ stocks, userRemainingCredit, offerId
 // Only works for iOS but still useful
 const hitSlop = { top: 8, bottom: 8, left: 8, right: 8 }
 
-const Container = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
+const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
   hitSlop,
 }))({
   alignItems: 'center',

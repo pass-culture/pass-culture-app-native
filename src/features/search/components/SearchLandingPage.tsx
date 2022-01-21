@@ -14,7 +14,7 @@ import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { useSearchGroupLabel } from 'libs/subcategories'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
+
 const SMALL_VIEWPORT_MAX_HEIGHT = 500
 
 export const SearchLandingPage: React.FC = () => {
@@ -88,9 +88,9 @@ const contentContainerStyle: ViewStyle = {
   flexGrow: 1,
 }
 
-const TouchableOpacity = styled.TouchableOpacity.attrs({
-  activeOpacity: ACTIVE_OPACITY,
-})({ alignItems: 'center' })
+const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))({ alignItems: 'center' })
 
 const iconSize = getSpacing(9)
 const iconSpacing = Math.round(iconSize / 5)

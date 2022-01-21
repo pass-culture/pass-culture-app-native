@@ -12,7 +12,6 @@ import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 const DEBOUNCED_CALLBACK = 200
 
@@ -80,9 +79,9 @@ const Container = styled.View(({ theme }) => ({
 
 const contentContainerStyle: ViewStyle = { flexGrow: 1, marginRight: getSpacing(6) }
 
-const LabelContainer = styled.TouchableOpacity.attrs({
-  activeOpacity: ACTIVE_OPACITY,
-})({
+const LabelContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))({
   flexDirection: 'row',
   alignItems: 'center',
   marginBottom: getSpacing(4),
