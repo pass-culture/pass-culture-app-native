@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { isApiError } from 'api/apiHelpers'
 import { OfferStockResponse } from 'api/gen'
@@ -42,6 +43,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
   const { showErrorSnackBar } = useSnackBarContext()
   const isUserUnderage = useIsUserUnderage()
   const { quantity, offerId } = bookingState
+  const accessibilityDescribedBy = uuidv4()
 
   const { mutate } = useBookOfferMutation({
     onSuccess: ({ bookingId }) => {
@@ -120,8 +122,11 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
         disabled={!isStockBookable}
         title={t`Confirmer la réservation`}
         onPress={onPressBookOffer}
+        accessibilityDescribedBy={accessibilityDescribedBy}
       />
-      {!!formattedPriceWithEuro && <Caption>{deductedAmount}</Caption>}
+      {!!formattedPriceWithEuro && (
+        <Caption nativeID={accessibilityDescribedBy}>{deductedAmount}</Caption>
+      )}
     </Container>
   )
 }
