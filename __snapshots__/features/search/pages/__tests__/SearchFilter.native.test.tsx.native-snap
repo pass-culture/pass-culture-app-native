@@ -2227,7 +2227,8 @@ exports[`SearchFilter component should render correctly 1`] = `
               testID="Interrupteur filtre offres gratuites"
             >
               <View
-                backgroundColor="#c7c7cc"
+                active={false}
+                disabled={false}
                 style={
                   Array [
                     Object {
@@ -2372,7 +2373,8 @@ exports[`SearchFilter component should render correctly 1`] = `
               testID="Interrupteur filtre offres duo"
             >
               <View
-                backgroundColor="#c7c7cc"
+                active={false}
+                disabled={false}
                 style={
                   Array [
                     Object {
@@ -2517,7 +2519,8 @@ exports[`SearchFilter component should render correctly 1`] = `
               testID="Interrupteur filtre nouvelles offres"
             >
               <View
-                backgroundColor="#c7c7cc"
+                active={false}
+                disabled={false}
                 style={
                   Array [
                     Object {
@@ -2662,7 +2665,8 @@ exports[`SearchFilter component should render correctly 1`] = `
               testID="Interrupteur filtre dates"
             >
               <View
-                backgroundColor="#c7c7cc"
+                active={false}
+                disabled={false}
                 style={
                   Array [
                     Object {
@@ -2832,7 +2836,8 @@ exports[`SearchFilter component should render correctly 1`] = `
               testID="Interrupteur filtre heures"
             >
               <View
-                backgroundColor="#c7c7cc"
+                active={false}
+                disabled={false}
                 style={
                   Array [
                     Object {

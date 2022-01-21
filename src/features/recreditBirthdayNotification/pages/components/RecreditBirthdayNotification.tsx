@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { useEffect } from 'react'
+import { useTheme } from 'styled-components/native'
 
 import {
   Amount,
@@ -23,10 +24,10 @@ import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import CategoryIcon from 'ui/svg/icons/categories/bicolor'
-import { UniqueColors } from 'ui/theme'
 
 export const RecreditBirthdayNotification = () => {
   const { data: user } = useUserProfileInfo()
+  const { uniqueColors } = useTheme()
   const age = user?.dateOfBirth
     ? new Date().getFullYear() - new Date(user.dateOfBirth).getFullYear()
     : undefined
@@ -77,11 +78,11 @@ export const RecreditBirthdayNotification = () => {
       <ProgressBarContainer>
         <ProgressBar
           progress={1}
-          color={UniqueColors.BRAND}
+          color={uniqueColors.brand}
           icon={CategoryIcon.Spectacles}
           isAnimated
         />
-        <Amount color={UniqueColors.BRAND}>{remainingCredit}</Amount>
+        <Amount color={uniqueColors.brand}>{remainingCredit}</Amount>
       </ProgressBarContainer>
       <Spacer.Column numberOfSpaces={4} />
       <Text>{t`Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget.`}</Text>

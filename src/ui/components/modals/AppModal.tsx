@@ -4,7 +4,7 @@ import { ReactNativeModal } from 'react-native-modal'
 import styled from 'styled-components/native'
 
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
-import { getSpacing, UniqueColors } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { ModalHeader } from './ModalHeader'
@@ -97,7 +97,6 @@ export const AppModal: FunctionComponent<Props> = ({
       supportedOrientations={['portrait', 'landscape']}
       statusBarTranslucent
       hasBackdrop={shouldDisplayOverlay}
-      backdropColor={UniqueColors.GREY_OVERLAY}
       isVisible={visible}
       onBackdropPress={onBackdropPress ?? onLeftIconPress ?? onRightIconPress}
       testID="modal"
@@ -130,7 +129,9 @@ const SpacerBetweenHeaderAndContent = styled.View({
   height: SPACE_BETWEEN_HEADER_AND_CONTENT,
 })
 
-const ScrollViewContainer = styled.View<{ paddingBottom: number }>(({ paddingBottom }) => ({
+const ScrollViewContainer = styled.View.attrs(({ theme }) => ({
+  backdropColor: theme.uniqueColors.greyOverlay,
+}))<{ paddingBottom: number }>(({ paddingBottom }) => ({
   width: '100%', // do not use `flex: 1` here if you want full width
   maxWidth: getSpacing(120),
   paddingBottom,

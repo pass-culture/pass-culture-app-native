@@ -1148,7 +1148,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         onStartShouldSetResponder={[Function]}
         style={
           Object {
-            "backgroundColor": "#00000080",
+            "backgroundColor": "black",
             "bottom": 0,
             "height": 1334,
             "left": 0,
@@ -1375,6 +1375,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
             }
           />
           <View
+            backdropColor="#00000080"
             paddingBottom={8}
             style={
               Array [

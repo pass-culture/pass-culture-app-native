@@ -608,7 +608,8 @@ exports[`Profile component should render correctly 1`] = `
                           testID="Interrupteur géolocalisation"
                         >
                           <View
-                            backgroundColor="#15884f"
+                            active={true}
+                            disabled={false}
                             style={
                               Array [
                                 Object {

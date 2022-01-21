@@ -42,7 +42,7 @@ exports[`<PrivacyPolicy /> should render privacy policy 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#00000080",
+        "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
         "left": 0,
@@ -273,6 +273,7 @@ exports[`<PrivacyPolicy /> should render privacy policy 1`] = `
         }
       />
       <View
+        backdropColor="#00000080"
         paddingBottom={8}
         style={
           Array [

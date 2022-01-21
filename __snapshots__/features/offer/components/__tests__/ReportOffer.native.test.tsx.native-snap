@@ -42,7 +42,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#00000080",
+        "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
         "left": 0,
@@ -283,6 +283,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
         }
       />
       <View
+        backdropColor="#00000080"
         paddingBottom={8}
         style={
           Array [
@@ -365,7 +366,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#00000080",
+        "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
         "left": 0,
@@ -608,6 +609,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
         }
       />
       <View
+        backdropColor="#00000080"
         paddingBottom={8}
         style={
           Array [

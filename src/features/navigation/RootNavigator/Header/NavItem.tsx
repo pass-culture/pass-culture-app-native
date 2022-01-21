@@ -1,11 +1,11 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { menu } from 'features/navigation/TabBar/routes'
 import { TabRouteName } from 'features/navigation/TabBar/types'
 import { accessibilityAndTestId } from 'tests/utils'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, UniqueColors, getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface NavItemInterface {
   isSelected?: boolean
@@ -20,6 +20,7 @@ export const NavItem: React.FC<NavItemInterface> = ({
   tabName,
   isSelected,
 }) => {
+  const { uniqueColors, colors } = useTheme()
   return (
     <StyledTouchableOpacity
       isSelected={isSelected}
@@ -27,11 +28,11 @@ export const NavItem: React.FC<NavItemInterface> = ({
       activeOpacity={1}
       {...accessibilityAndTestId(`${tabName} nav`)}>
       <BicolorIcon
-        color={isSelected ? undefined : ColorsEnum.GREY_DARK}
+        color={isSelected ? undefined : colors.greyDark}
         size={getSpacing(6)}
         thin={!isSelected}
       />
-      <Title color={isSelected ? UniqueColors.BRAND : ColorsEnum.BLACK}>{menu[tabName]}</Title>
+      <Title color={isSelected ? uniqueColors.brand : colors.black}>{menu[tabName]}</Title>
     </StyledTouchableOpacity>
   )
 }
@@ -44,7 +45,7 @@ const StyledTouchableOpacity = styled.TouchableOpacity<{ isSelected?: boolean }>
     height: getSpacing(11),
     paddingHorizontal: getSpacing(4),
     borderWidth: 1,
-    borderColor: isSelected ? theme.colors.brand : ColorsEnum.TRANSPARENT,
+    borderColor: isSelected ? theme.uniqueColors.brand : theme.colors.transparent,
     borderRadius: theme.borderRadius.button * 2,
   })
 )
