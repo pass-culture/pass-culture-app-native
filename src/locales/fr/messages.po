@@ -448,6 +448,10 @@ msgstr "Choix du status"
 msgid "Cinéma - Salle de projections"
 msgstr "Cinéma - Salle de projections"
 
+#: src/features/search/components/SearchLandingPage.tsx
+msgid "Clique ici pour accéder à la liste des catégories afin d'affiner les résultats puis lance la recherche à l'aide du bouton \"Rechercher\""
+msgstr "Clique ici pour accéder à la liste des catégories afin d'affiner les résultats puis lance la recherche à l'aide du bouton \"Rechercher\""
+
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 msgid "Clique sur le lien reçu à l'adresse :"
