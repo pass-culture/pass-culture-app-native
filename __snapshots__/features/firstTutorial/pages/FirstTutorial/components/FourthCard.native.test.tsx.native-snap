@@ -129,6 +129,7 @@ exports[`FourthCard should render fourth card 1`] = `
     }
   />
   <View
+    paddingBottom={40}
     style={
       Array [
         Object {

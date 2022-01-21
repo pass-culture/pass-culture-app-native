@@ -35,6 +35,7 @@ export type AchievementCardProps = AchievementCardKeyProps & {
   centerChild?: (() => JSX.Element) | null
   text: string
   title: string
+  ignoreBottomPadding?: boolean
 }
 
 const SMALL_HEIGHT = 576
@@ -126,7 +127,10 @@ Those props are provided by the GenericAchievementCard and must be passed down t
       )}
       <StyledBody>{props.text}</StyledBody>
       <Spacer.Flex flex={2} />
-      <BottomButtonsContainer>
+      <BottomButtonsContainer
+        paddingBottom={getSpacing(
+          props.ignoreBottomPadding ? grid({ default: 10, sm: 2, md: 5 }, 'height') : 10
+        )}>
         <Animatable.View ref={animatedButtonRef}>
           {props.activeIndex === props.index ? (
             <ButtonPrimary title={props.buttonText} onPress={props.buttonCallback} />
@@ -149,11 +153,11 @@ const FlexContainer = styled.View<{ marginTop: number }>((props) => ({
   marginTop: props.marginTop,
 }))
 
-const BottomButtonsContainer = styled.View({
+const BottomButtonsContainer = styled.View<{ paddingBottom: number }>(({ paddingBottom }) => ({
   flex: 1,
   justifyContent: 'flex-end',
-  paddingBottom: getSpacing(10),
-})
+  paddingBottom,
+}))
 
 const InvisibleButtonHeight = styled.View({
   height: getSpacing(12),
