@@ -1,4 +1,4 @@
-import { t } from '@lingui/macro'
+import { plural, t } from '@lingui/macro'
 import isEqual from 'lodash.isequal'
 import uniqWith from 'lodash.uniqwith'
 import React from 'react'
@@ -78,22 +78,41 @@ export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
   const isLoading = isLoadingPlaces || isLoadingVenues
 
   return (
-    <FlatList
-      data={filteredPlaces}
-      keyExtractor={keyExtractor}
-      renderItem={({ item }) => <Hit hit={item} onPress={onPickPlace(item)} />}
-      ListEmptyComponent={() => <NoSuggestedPlaces show={query.length > 0 && !isLoading} />}
-      ItemSeparatorComponent={Separator}
-      keyboardShouldPersistTaps="handled"
-      keyboardDismissMode="on-drag"
-    />
+    <React.Fragment>
+      <NumberOfResults
+        nbHits={filteredPlaces.length}
+        show={filteredPlaces.length > 0 && !isLoading}
+      />
+      <FlatList
+        data={filteredPlaces}
+        keyExtractor={keyExtractor}
+        renderItem={({ item }) => <Hit hit={item} onPress={onPickPlace(item)} />}
+        ListEmptyComponent={() => <NoSuggestedPlaces show={query.length > 0 && !isLoading} />}
+        ItemSeparatorComponent={Separator}
+        keyboardShouldPersistTaps="handled"
+        keyboardDismissMode="on-drag"
+      />
+    </React.Fragment>
+  )
+}
+
+const NumberOfResults = ({ nbHits, show }: { nbHits: number; show: boolean }) => {
+  const numberOfResults = plural(nbHits, {
+    one: '# résultat',
+    other: '# résultats',
+  })
+
+  return (
+    <Typo.Body aria-live="assertive">
+      {show ? <HiddenText>{numberOfResults}</HiddenText> : <React.Fragment />}
+    </Typo.Body>
   )
 }
 
 const NoSuggestedPlaces = ({ show }: { show: boolean }) =>
   show ? (
     <DescriptionErrorTextContainer>
-      <DescriptionErrorText>{t`Aucun lieu ne correspond à ta recherche`}</DescriptionErrorText>
+      <DescriptionErrorText aria-live="assertive">{t`Aucun lieu ne correspond à ta recherche`}</DescriptionErrorText>
     </DescriptionErrorTextContainer>
   ) : (
     <React.Fragment />
@@ -122,3 +141,5 @@ const DescriptionErrorTextContainer = styled.Text({
 })
 
 const DescriptionErrorText = styled(Typo.Body)({ color: ColorsEnum.GREY_DARK })
+
+const HiddenText = styled.Text({ display: 'none' })
