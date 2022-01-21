@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { Platform } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
+import { TouchableOpacity as TouchableOpacityGestureHandler } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
 import { DateFilter } from 'features/search/atoms/Buttons'
@@ -12,7 +12,6 @@ import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 type Props = {
   setScrollEnabled?: ((setScrollEnabled: boolean) => void) | Dispatch<SetStateAction<boolean>>
@@ -73,10 +72,7 @@ export function OfferDate({ setScrollEnabled }: Props) {
           onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.USER_PICK)}
         />
         {option === DATE_FILTER_OPTIONS.USER_PICK && (
-          <TouchableOpacity
-            testID="pickedDate"
-            activeOpacity={ACTIVE_OPACITY}
-            onPress={() => setShowTimePicker(true)}>
+          <TouchableOpacity testID="pickedDate" onPress={() => setShowTimePicker(true)}>
             <Typo.Body color={ColorsEnum.BLACK}>
               {formatToCompleteFrenchDate(selectedDate)}
             </Typo.Body>
@@ -93,5 +89,8 @@ export function OfferDate({ setScrollEnabled }: Props) {
     </React.Fragment>
   )
 }
+const TouchableOpacity = styled(TouchableOpacityGestureHandler).attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))``
 
 const Container = styled.View({ marginHorizontal: getSpacing(6) })

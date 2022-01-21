@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 import { Separator } from 'ui/components/Separator'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 interface Props {
   onPressOption: (optionKey: string) => void
@@ -18,16 +17,14 @@ const ICON_SIZE = getSpacing(6)
 export const AddressOption = ({ optionKey, label, onPressOption, selected }: Props) => {
   return (
     <Container>
-      <StyledTouchableOpacity
-        onPress={() => onPressOption(optionKey)}
-        activeOpacity={ACTIVE_OPACITY}>
+      <TouchableOpacity onPress={() => onPressOption(optionKey)}>
         <TextContainer>
           <StyledBody selected={selected}>{label}</StyledBody>
           <IconContainer>
             {!!selected && <Validate color={ColorsEnum.PRIMARY} size={ICON_SIZE} />}
           </IconContainer>
         </TextContainer>
-      </StyledTouchableOpacity>
+      </TouchableOpacity>
       <Separator />
     </Container>
   )
@@ -37,7 +34,9 @@ const Container = styled.View({
   paddingHorizontal: getSpacing(4),
 })
 
-const StyledTouchableOpacity = styled.TouchableOpacity({
+const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))({
   flexDirection: 'column',
   justifyContent: 'flex-start',
   paddingVertical: getSpacing(3),

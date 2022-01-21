@@ -6,7 +6,6 @@ import { accessibilityAndTestId } from 'tests/utils'
 import { Logo } from 'ui/svg/icons/Logo'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export interface BaseButtonProps {
@@ -130,8 +129,8 @@ interface StyledTouchableOpacityProps {
   numberOfLines?: number
 }
 
-const StyledTouchableOpacity = styled(TouchableOpacity).attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
+const StyledTouchableOpacity = styled(TouchableOpacity).attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
 }))<StyledTouchableOpacityProps>(
   ({
     inline,
