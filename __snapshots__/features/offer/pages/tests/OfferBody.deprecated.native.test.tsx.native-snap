@@ -1895,7 +1895,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               onStartShouldSetResponder={[Function]}
                               style={
                                 Object {
-                                  "backgroundColor": "#00000080",
+                                  "backgroundColor": "black",
                                   "bottom": 0,
                                   "height": 1334,
                                   "left": 0,
@@ -2122,6 +2122,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   }
                                 />
                                 <View
+                                  backdropColor="#00000080"
                                   paddingBottom={8}
                                   style={
                                     Array [
@@ -4685,7 +4686,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               onStartShouldSetResponder={[Function]}
                               style={
                                 Object {
-                                  "backgroundColor": "#00000080",
+                                  "backgroundColor": "black",
                                   "bottom": 0,
                                   "height": 1334,
                                   "left": 0,
@@ -4912,6 +4913,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   }
                                 />
                                 <View
+                                  backdropColor="#00000080"
                                   paddingBottom={8}
                                   style={
                                     Array [

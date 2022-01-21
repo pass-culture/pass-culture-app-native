@@ -120,9 +120,7 @@ describe('NotificationSettings', () => {
         const toggleSwitch = getByTestId("Interrupteur d'autorisation des notifications marketing")
         // expect activated
         expect(toggleSwitch.parent?.props.accessibilityValue.text).toBe('true')
-        expect((toggleSwitch.children[0] as ReactTestInstance).props.backgroundColor).toEqual(
-          ColorsEnum.GREEN_VALID
-        )
+        expect((toggleSwitch.children[0] as ReactTestInstance).props.active).toBeTruthy()
       })
     })
 
@@ -143,9 +141,7 @@ describe('NotificationSettings', () => {
         const toggleSwitch = getByTestId("Interrupteur d'autorisation des notifications marketing")
         // expect not activated
         expect(toggleSwitch.parent?.props.accessibilityValue.text).toBe('false')
-        expect((toggleSwitch.children[0] as ReactTestInstance).props.backgroundColor).toEqual(
-          ColorsEnum.GREY_MEDIUM
-        )
+        expect((toggleSwitch.children[0] as ReactTestInstance).props.active).toBeFalsy()
       })
     })
 

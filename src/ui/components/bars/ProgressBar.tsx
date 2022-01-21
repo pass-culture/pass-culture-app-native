@@ -95,7 +95,7 @@ const ProgressBarContainer = styled.View(({ theme }) => ({
   overflow: 'hidden',
   flex: 1,
   borderWidth: 2,
-  borderColor: ColorsEnum.GREY_MEDIUM,
+  borderColor: theme.colors.greyMedium,
   borderRadius: 20,
   height: 20,
   zIndex: theme.zIndex.progressbar,

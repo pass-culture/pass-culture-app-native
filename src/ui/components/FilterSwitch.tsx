@@ -1,9 +1,9 @@
 import React, { memo, useEffect, useRef } from 'react'
 import { Animated, Easing, TouchableOpacity } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { DefaultTheme } from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
-import { ColorsEnum, UniqueColors, getShadow, getSpacing } from 'ui/theme'
+import { ColorsEnum, getShadow, getSpacing } from 'ui/theme'
 import { ACTIVE_OPACITY } from 'ui/theme/colors'
 
 interface Props {
@@ -43,7 +43,7 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
         disabled={disabled}
         accessibilityValue={{ text: active.toString() }}
         {...accessibilityAndTestId(props.accessibilityLabel)}>
-        <StyledBackgroundColor backgroundColor={getBackgroundColor(active, disabled)}>
+        <StyledBackgroundColor active={active} disabled={disabled}>
           <StyledToggle style={{ marginLeft }} />
         </StyledBackgroundColor>
       </TouchableOpacity>
@@ -51,14 +51,14 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
   )
 }
 
-const getBackgroundColor = (active: boolean, disabled: boolean): ColorsEnum | UniqueColors => {
-  if (active) return disabled ? UniqueColors.GREEN_DISABLED : ColorsEnum.GREEN_VALID
-  return disabled ? UniqueColors.GREY_DISABLED : ColorsEnum.GREY_MEDIUM
+const getBackgroundColor = (theme: DefaultTheme, active: boolean, disabled: boolean) => {
+  if (active) return disabled ? theme.uniqueColors.greenDisabled : theme.colors.greenValid
+  return disabled ? theme.uniqueColors.greyDisabled : theme.colors.greyMedium
 }
 
-const StyledBackgroundColor = styled.View<{ backgroundColor: ColorsEnum | UniqueColors }>(
-  ({ backgroundColor }) => ({
-    backgroundColor,
+const StyledBackgroundColor = styled.View<{ active: boolean; disabled: boolean }>(
+  ({ theme, active, disabled }) => ({
+    backgroundColor: getBackgroundColor(theme, active, disabled),
     width: getSpacing(14),
     height: getSpacing(8),
     marginLeft: getSpacing(5),

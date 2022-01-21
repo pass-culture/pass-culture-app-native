@@ -25,7 +25,7 @@ const BackgroundContainer = styled.View(({ theme }) => ({
 
 function BackgroundSvg() {
   const {
-    colors: { brand: dark, brandDark: light },
+    uniqueColors: { brand: dark, brandDark: light },
   } = useTheme()
   const { id, fill } = svgIdentifier()
   const { id: id2, xlinkHref: xlinkHref2 } = svgIdentifier()

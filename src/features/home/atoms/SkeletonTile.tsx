@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react'
 import { Animated, Easing, StyleSheet } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
-import styled from 'styled-components/native'
-
-import { UniqueColors } from 'ui/theme'
+import styled, { useTheme } from 'styled-components/native'
 
 const AnimatedLinearGradient = Animated.createAnimatedComponent(LinearGradient)
 
@@ -37,16 +35,16 @@ const useWaveAnimation = (width: number) => {
 
 const start = { x: 0, y: 0 }
 const end = { x: 1, y: 0 }
-const colors = [
-  UniqueColors.BACKGROUND_COLOR,
-  UniqueColors.FOREGROUND_COLOR,
-  UniqueColors.FOREGROUND_COLOR,
-  UniqueColors.BACKGROUND_COLOR,
-]
 
 export function SkeletonTile({ width, height, borderRadius, fullWidth }: DimensionProps) {
   const translateX = useWaveAnimation(width)
-
+  const { uniqueColors } = useTheme()
+  const colors = [
+    uniqueColors.backgroundColor,
+    uniqueColors.foregroundColor,
+    uniqueColors.foregroundColor,
+    uniqueColors.backgroundColor,
+  ]
   return (
     <BackgroundContainer
       height={height}
@@ -68,11 +66,11 @@ export function SkeletonTile({ width, height, borderRadius, fullWidth }: Dimensi
 }
 
 const BackgroundContainer = styled.View<DimensionProps>(
-  ({ height, width, borderRadius, fullWidth }) => ({
+  ({ height, width, borderRadius, fullWidth, theme }) => ({
     borderRadius,
     height,
     width: fullWidth ? '100%' : width,
     overflow: 'hidden',
-    backgroundColor: UniqueColors.BACKGROUND_COLOR,
+    backgroundColor: theme.uniqueColors.backgroundColor,
   })
 )

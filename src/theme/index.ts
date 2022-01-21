@@ -59,11 +59,9 @@ export interface AppThemeType {
     black: ColorsEnum
     error: ColorsEnum
     greenValid: ColorsEnum
-    greenDisabled: UniqueColors
     greenLight: ColorsEnum
     greyDark: ColorsEnum
     greyMedium: ColorsEnum
-    greyDisabled: UniqueColors
     greyLight: ColorsEnum
     primary: ColorsEnum
     primaryDisabled: ColorsEnum
@@ -72,8 +70,6 @@ export interface AppThemeType {
     tertiary: ColorsEnum
     transparent: ColorsEnum
     white: ColorsEnum
-    brand: UniqueColors
-    brandDark: UniqueColors
   }
   uniqueColors: {
     tabBar: UniqueColors
@@ -81,6 +77,10 @@ export interface AppThemeType {
     filterButton: UniqueColors
     backgroundColor: UniqueColors
     foregroundColor: UniqueColors
+    brand: UniqueColors
+    brandDark: UniqueColors
+    greyDisabled: UniqueColors
+    greenDisabled: UniqueColors
   }
   breakpoints: {
     xs: Breakpoints
@@ -274,11 +274,9 @@ export const theme: AppThemeType = {
     black: ColorsEnum.BLACK,
     error: ColorsEnum.ERROR,
     greenValid: ColorsEnum.GREEN_VALID,
-    greenDisabled: UniqueColors.GREEN_DISABLED,
     greenLight: ColorsEnum.GREEN_LIGHT,
     greyDark: ColorsEnum.GREY_DARK,
     greyMedium: ColorsEnum.GREY_MEDIUM,
-    greyDisabled: UniqueColors.GREY_DISABLED,
     greyLight: ColorsEnum.GREY_LIGHT,
     primary: ColorsEnum.PRIMARY,
     primaryDisabled: ColorsEnum.PRIMARY_DISABLED,
@@ -287,8 +285,6 @@ export const theme: AppThemeType = {
     tertiary: ColorsEnum.TERTIARY,
     transparent: ColorsEnum.TRANSPARENT,
     white: ColorsEnum.WHITE,
-    brand: UniqueColors.BRAND,
-    brandDark: UniqueColors.BRAND_DARK,
   },
   uniqueColors: {
     tabBar: UniqueColors.TAB_BAR,
@@ -296,6 +292,10 @@ export const theme: AppThemeType = {
     filterButton: UniqueColors.FILTER_BUTTON,
     backgroundColor: UniqueColors.BACKGROUND_COLOR,
     foregroundColor: UniqueColors.FOREGROUND_COLOR,
+    brand: UniqueColors.BRAND,
+    brandDark: UniqueColors.BRAND_DARK,
+    greyDisabled: UniqueColors.GREY_DISABLED,
+    greenDisabled: UniqueColors.GREEN_DISABLED,
   },
   breakpoints: {
     xs: Breakpoints.XS,

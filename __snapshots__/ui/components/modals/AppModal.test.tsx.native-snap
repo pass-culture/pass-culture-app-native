@@ -42,7 +42,7 @@ exports[`<AppModal /> on big screen 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#00000080",
+        "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
         "left": 0,
@@ -263,6 +263,7 @@ exports[`<AppModal /> on big screen 1`] = `
         }
       />
       <View
+        backdropColor="#00000080"
         paddingBottom={8}
         style={
           Array [
@@ -333,7 +334,7 @@ exports[`<AppModal /> on small screen 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#00000080",
+        "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
         "left": 0,
@@ -554,6 +555,7 @@ exports[`<AppModal /> on small screen 1`] = `
         }
       />
       <View
+        backdropColor="#00000080"
         paddingBottom={8}
         style={
           Array [
@@ -626,7 +628,7 @@ exports[`<AppModal /> when hidden 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#00000080",
+        "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
         "left": 0,
@@ -849,6 +851,7 @@ exports[`<AppModal /> when hidden 1`] = `
         }
       />
       <View
+        backdropColor="#00000080"
         paddingBottom={8}
         style={
           Array [
@@ -1115,6 +1118,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
         }
       />
       <View
+        backdropColor="#00000080"
         paddingBottom={8}
         style={
           Array [
@@ -1185,7 +1189,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#00000080",
+        "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
         "left": 0,
@@ -1406,6 +1410,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
         }
       />
       <View
+        backdropColor="#00000080"
         paddingBottom={8}
         style={
           Array [
@@ -1476,7 +1481,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#00000080",
+        "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
         "left": 0,
@@ -1697,6 +1702,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
         }
       />
       <View
+        backdropColor="#00000080"
         paddingBottom={8}
         style={
           Array [
@@ -1767,7 +1773,7 @@ exports[`<AppModal /> with left icon render 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#00000080",
+        "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
         "left": 0,
@@ -1998,6 +2004,7 @@ exports[`<AppModal /> with left icon render 1`] = `
         }
       />
       <View
+        backdropColor="#00000080"
         paddingBottom={8}
         style={
           Array [
@@ -2068,7 +2075,7 @@ exports[`<AppModal /> with long title on 1 line 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#00000080",
+        "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
         "left": 0,
@@ -2289,6 +2296,7 @@ exports[`<AppModal /> with long title on 1 line 1`] = `
         }
       />
       <View
+        backdropColor="#00000080"
         paddingBottom={8}
         style={
           Array [
@@ -2359,7 +2367,7 @@ exports[`<AppModal /> with long title on 2 lines by default 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#00000080",
+        "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
         "left": 0,
@@ -2580,6 +2588,7 @@ exports[`<AppModal /> with long title on 2 lines by default 1`] = `
         }
       />
       <View
+        backdropColor="#00000080"
         paddingBottom={8}
         style={
           Array [
@@ -2650,7 +2659,7 @@ exports[`<AppModal /> with minimal props 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#00000080",
+        "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
         "left": 0,
@@ -2871,6 +2880,7 @@ exports[`<AppModal /> with minimal props 1`] = `
         }
       />
       <View
+        backdropColor="#00000080"
         paddingBottom={8}
         style={
           Array [
@@ -2941,7 +2951,7 @@ exports[`<AppModal /> with right icon render 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#00000080",
+        "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
         "left": 0,
@@ -3172,6 +3182,7 @@ exports[`<AppModal /> with right icon render 1`] = `
         }
       />
       <View
+        backdropColor="#00000080"
         paddingBottom={8}
         style={
           Array [
@@ -3242,7 +3253,7 @@ exports[`<AppModal /> with scroll disabled 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#00000080",
+        "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
         "left": 0,
@@ -3463,6 +3474,7 @@ exports[`<AppModal /> with scroll disabled 1`] = `
         }
       />
       <View
+        backdropColor="#00000080"
         paddingBottom={8}
         style={
           Array [
@@ -3533,7 +3545,7 @@ exports[`<AppModal /> with scroll enabled by default 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#00000080",
+        "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
         "left": 0,
@@ -3754,6 +3766,7 @@ exports[`<AppModal /> with scroll enabled by default 1`] = `
         }
       />
       <View
+        backdropColor="#00000080"
         paddingBottom={8}
         style={
           Array [
@@ -3824,7 +3837,7 @@ exports[`<AppModal /> with scroll explicitly enabled 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#00000080",
+        "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
         "left": 0,
@@ -4045,6 +4058,7 @@ exports[`<AppModal /> with scroll explicitly enabled 1`] = `
         }
       />
       <View
+        backdropColor="#00000080"
         paddingBottom={8}
         style={
           Array [
@@ -4115,7 +4129,7 @@ exports[`<AppModal /> without children 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#00000080",
+        "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
         "left": 0,
@@ -4336,6 +4350,7 @@ exports[`<AppModal /> without children 1`] = `
         }
       />
       <View
+        backdropColor="#00000080"
         paddingBottom={8}
         style={
           Array [
@@ -4402,7 +4417,7 @@ exports[`<AppModal /> without title 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#00000080",
+        "backgroundColor": "black",
         "bottom": 0,
         "height": 1334,
         "left": 0,
@@ -4623,6 +4638,7 @@ exports[`<AppModal /> without title 1`] = `
         }
       />
       <View
+        backdropColor="#00000080"
         paddingBottom={8}
         style={
           Array [

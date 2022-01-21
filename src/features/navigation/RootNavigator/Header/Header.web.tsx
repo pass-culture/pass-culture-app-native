@@ -81,13 +81,13 @@ export const Header = memo(function Header() {
     <HeaderContainer>
       <LeftContainer margin={margin} isVisible={!!isDesktopOffset} style={fadeAnim}>
         <LogoContainer onPress={navigateToHome}>
-          <LogoPassCulture color={theme.colors.brand} height={getSpacing(10)} width="100%" />
+          <LogoPassCulture color={theme.uniqueColors.brand} height={getSpacing(10)} width="100%" />
         </LogoContainer>
         <FlexContainer />
       </LeftContainer>
       <CenterContainer isDesktop={theme.isDesktopViewport}>
         <LeftContainer margin={margin} isVisible={true} style={fadeAnimSmall}>
-          <LogoPassCulture color={theme.colors.brand} height={getSpacing(6.5)} width={80} />
+          <LogoPassCulture color={theme.uniqueColors.brand} height={getSpacing(6.5)} width={80} />
         </LeftContainer>
         <Nav
           maxWidth={theme.appContentWidth}
