@@ -26,14 +26,6 @@ Object {
         </div>
         <div
           class="css-view-1dbjc4n"
-          style="height: 16px;"
-        />
-        <div
-          class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-        />
-        <div
-          class="css-view-1dbjc4n"
           data-testid="backArrow"
           style="cursor: pointer; left: 24px; position: absolute; top: 30px; transition-duration: 0s; transition-property: opacity; user-select: none;"
           tabindex="0"
@@ -51,88 +43,69 @@ Object {
         </div>
         <div
           class="css-view-1dbjc4n"
-        >
-          <div
-            class="css-text-901oao"
-            dir="auto"
-          >
-            undefined-SVG-Mock
-          </div>
-        </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="height: 8px;"
-        />
-        <div
-          class="css-text-901oao"
-          dir="auto"
-          style="color: rgb(255, 255, 255); font-family: Montserrat-Black; font-size: 24px; line-height: 36px;"
-        >
-          Oups !
-        </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="height: 16px;"
-        />
-        <div
-          class="css-view-1dbjc4n"
-          style="flex-direction: row;"
+          style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; padding-right: 16px; padding-left: 16px;"
         >
           <div
             class="css-view-1dbjc4n"
-            style="max-width: 352px;"
+            style="height: 36px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
           >
             <div
               class="css-text-901oao"
               dir="auto"
-              style="text-align: center;"
             >
-              <span
-                class="css-text-901oao css-textHasAncestor-16my406"
-                style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
-              >
-                Une erreur s'est produite pendant le chargement.
-              </span>
+              undefined-SVG-Mock
             </div>
           </div>
-        </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="height: 32px;"
-        />
-        <div
-          class="css-view-1dbjc4n"
-          style="flex-direction: row;"
-        >
           <div
             class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 176px; min-width: 120px;"
+            style="height: 36px;"
+          />
+          <div
+            class="css-text-901oao"
+            dir="auto"
+            style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; text-align: center;"
+          >
+            Oups !
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 20px;"
+          />
+          <div
+            class="css-text-901oao"
+            dir="auto"
+            style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
+          >
+            Une erreur s'est produite pendant le chargement.
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
           >
             <div
               aria-label="Réessayer"
               class="css-view-1dbjc4n"
               data-testid="Réessayer"
-              style="align-items: center; border-top-color: rgba(255,255,255,1.00); border-right-color: rgba(255,255,255,1.00); border-bottom-color: rgba(255,255,255,1.00); border-left-color: rgba(255,255,255,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; cursor: pointer; flex-direction: row; height: 48px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+              style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 48px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
               tabindex="0"
             >
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
                 dir="auto"
-                style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
+                style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
               >
                 Réessayer
               </div>
             </div>
           </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 8px;"
+          />
         </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-        />
-        <div
-          class="css-view-1dbjc4n"
-          style="height: 8px;"
-        />
       </div>
     </div>
   </body>,
@@ -158,14 +131,6 @@ Object {
       </div>
       <div
         class="css-view-1dbjc4n"
-        style="height: 16px;"
-      />
-      <div
-        class="css-view-1dbjc4n"
-        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-      />
-      <div
-        class="css-view-1dbjc4n"
         data-testid="backArrow"
         style="cursor: pointer; left: 24px; position: absolute; top: 30px; transition-duration: 0s; transition-property: opacity; user-select: none;"
         tabindex="0"
@@ -183,88 +148,69 @@ Object {
       </div>
       <div
         class="css-view-1dbjc4n"
-      >
-        <div
-          class="css-text-901oao"
-          dir="auto"
-        >
-          undefined-SVG-Mock
-        </div>
-      </div>
-      <div
-        class="css-view-1dbjc4n"
-        style="height: 8px;"
-      />
-      <div
-        class="css-text-901oao"
-        dir="auto"
-        style="color: rgb(255, 255, 255); font-family: Montserrat-Black; font-size: 24px; line-height: 36px;"
-      >
-        Oups !
-      </div>
-      <div
-        class="css-view-1dbjc4n"
-        style="height: 16px;"
-      />
-      <div
-        class="css-view-1dbjc4n"
-        style="flex-direction: row;"
+        style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; padding-right: 16px; padding-left: 16px;"
       >
         <div
           class="css-view-1dbjc4n"
-          style="max-width: 352px;"
+          style="height: 36px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
         >
           <div
             class="css-text-901oao"
             dir="auto"
-            style="text-align: center;"
           >
-            <span
-              class="css-text-901oao css-textHasAncestor-16my406"
-              style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
-            >
-              Une erreur s'est produite pendant le chargement.
-            </span>
+            undefined-SVG-Mock
           </div>
         </div>
-      </div>
-      <div
-        class="css-view-1dbjc4n"
-        style="height: 32px;"
-      />
-      <div
-        class="css-view-1dbjc4n"
-        style="flex-direction: row;"
-      >
         <div
           class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 176px; min-width: 120px;"
+          style="height: 36px;"
+        />
+        <div
+          class="css-text-901oao"
+          dir="auto"
+          style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; text-align: center;"
+        >
+          Oups !
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 20px;"
+        />
+        <div
+          class="css-text-901oao"
+          dir="auto"
+          style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
+        >
+          Une erreur s'est produite pendant le chargement.
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
         >
           <div
             aria-label="Réessayer"
             class="css-view-1dbjc4n"
             data-testid="Réessayer"
-            style="align-items: center; border-top-color: rgba(255,255,255,1.00); border-right-color: rgba(255,255,255,1.00); border-bottom-color: rgba(255,255,255,1.00); border-left-color: rgba(255,255,255,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 2px; border-right-width: 2px; border-bottom-width: 2px; border-left-width: 2px; cursor: pointer; flex-direction: row; height: 48px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+            style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 48px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
             tabindex="0"
           >
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
               dir="auto"
-              style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
+              style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
             >
               Réessayer
             </div>
           </div>
         </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 8px;"
+        />
       </div>
-      <div
-        class="css-view-1dbjc4n"
-        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-      />
-      <div
-        class="css-view-1dbjc4n"
-        style="height: 8px;"
-      />
     </div>
   </div>,
   "debug": [Function],
