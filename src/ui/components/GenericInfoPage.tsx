@@ -6,9 +6,10 @@ import { Helmet } from 'libs/react-helmet/Helmet'
 import { AnimationObject } from 'ui/animations/type'
 import { Background } from 'ui/svg/Background'
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
+  header?: ReactNode
   noIndex?: boolean
   flex?: boolean
   animation?: AnimationObject
@@ -22,6 +23,7 @@ const ICON_SIZE = getSpacing(35)
 
 export const GenericInfoPage: FunctionComponent<Props> = ({
   children,
+  header,
   noIndex = true,
   animation,
   icon: Icon,
@@ -29,7 +31,7 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
   flex = true,
   buttons,
 }) => {
-  const { isTouch } = useTheme()
+  const { isTouch, colors } = useTheme()
   const Wrapper = useMemo(() => (flex ? Container : React.Fragment), [flex])
   return (
     <Wrapper>
@@ -39,12 +41,13 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
         </Helmet>
       )}
       <Background />
+      {header}
       <Content>
         <Spacer.Column numberOfSpaces={spacingMatrix.top} />
         {!!isTouch && <Spacer.Flex />}
         {Icon ? (
           <React.Fragment>
-            <Icon color={ColorsEnum.WHITE} size={ICON_SIZE} />
+            <Icon color={colors.white} size={ICON_SIZE} />
             <Spacer.Column numberOfSpaces={spacingMatrix.afterIcon} />
           </React.Fragment>
         ) : (
@@ -92,8 +95,8 @@ const StyledLottieView = styled(LottieView)((props: { size: number }) => ({
   height: props.size,
 }))
 
-const StyledTitle2 = styled(Typo.Title2)(({ color, theme }) => ({
-  color: color ?? theme.colors.white,
+const StyledTitle2 = styled(Typo.Title2)(({ theme }) => ({
+  color: theme.colors.white,
   textAlign: 'center',
 }))
 
