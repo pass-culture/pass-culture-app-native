@@ -4,10 +4,11 @@ import { Platform } from 'react-native'
 import { Facebook } from 'ui/svg/icons/socialNetwork/Facebook'
 import { Instagram } from 'ui/svg/icons/socialNetwork/Instagram'
 import { Snapchat } from 'ui/svg/icons/socialNetwork/Snapchat'
+import { TikTok } from 'ui/svg/icons/socialNetwork/TikTok'
 import { Twitter } from 'ui/svg/icons/socialNetwork/Twitter'
 import { IconInterface } from 'ui/svg/icons/types'
 
-export type SocialNetwork = 'facebook' | 'instagram' | 'snapchat' | 'twitter'
+export type SocialNetwork = 'facebook' | 'instagram' | 'snapchat' | 'twitter' | 'tiktok'
 
 const FACEBOOK_ID = '2202916773290436'
 const FACEBOOK_WEB_URL = 'https://www.facebook.com/passCultureofficiel/'
@@ -29,4 +30,5 @@ export const SocialNetworkIconsMap: Record<
   instagram: { icon: Instagram, link: 'https://www.instagram.com/passcultureofficiel/?hl=fr' },
   snapchat: { icon: Snapchat, link: 'https://story.snapchat.com/@pass.culture' },
   twitter: { icon: Twitter, link: 'https://twitter.com/pass_Culture' },
+  tiktok: { icon: TikTok, link: 'https://www.tiktok.com/@passcultureofficiel' },
 }
