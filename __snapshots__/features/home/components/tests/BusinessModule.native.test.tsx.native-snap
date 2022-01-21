@@ -171,27 +171,6 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
               secondLine
             </Text>
           </View>
-          <View
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "height": 56,
-                  "justifyContent": "center",
-                  "width": 56,
-                },
-              ]
-            }
-          >
-            <View
-              height="32"
-              width="32"
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-          </View>
         </View>
       </View>
     </View>

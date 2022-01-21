@@ -26,6 +26,7 @@ import { fillUrlEmail, shouldUrlBeFilled, showBusinessModule } from './BusinessM
 
 export const BusinessModule = ({ module }: { module: BusinessPane }) => {
   const { title, firstLine, secondLine, leftIcon, image, url } = module
+  const isDisabled = !url
   const { appContentWidth } = useTheme()
   const { isLoggedIn } = useAuthContext()
   const imageWidth = appContentWidth - 2 * MARGIN_DP
@@ -63,7 +64,7 @@ export const BusinessModule = ({ module }: { module: BusinessPane }) => {
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />
-      <TouchableHighlight onPress={() => setShouldRedirect(true)} disabled={!url}>
+      <TouchableHighlight onPress={() => setShouldRedirect(true)} disabled={isDisabled}>
         <ImageContainer>
           <ImageBackground
             source={{ uri: image }}
@@ -82,9 +83,11 @@ export const BusinessModule = ({ module }: { module: BusinessPane }) => {
                   {secondLine}
                 </Typo.Body>
               </TextContainer>
-              <IconContainer>
-                <NextArrowIcon />
-              </IconContainer>
+              {!isDisabled && (
+                <IconContainer>
+                  <NextArrowIcon />
+                </IconContainer>
+              )}
             </Container>
           </ImageBackground>
         </ImageContainer>
