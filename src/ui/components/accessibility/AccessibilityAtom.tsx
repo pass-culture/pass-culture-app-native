@@ -2,8 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { ValidationMark } from 'ui/components/ValidationMark'
-import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { BorderRadiusEnum } from 'ui/theme/grid'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { getIconAndWording, HandicapCategory } from './AccessibilityAtom.service'
 interface Props {
@@ -48,14 +47,14 @@ const Container = styled.View<{ rightSpacingValue: number }>(({ rightSpacingValu
   alignItems: theme.isMobileViewport ? undefined : 'center',
 }))
 
-const Frame = styled.View({
+const Frame = styled.View(({ theme }) => ({
   aspectRatio: '1',
   alignItems: 'center',
-  borderColor: ColorsEnum.GREY_MEDIUM,
-  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
+  borderColor: theme.colors.greyMedium,
+  borderRadius: theme.borderRadius.radius,
   borderWidth: 1,
   minHeight: getSpacing(16),
-})
+}))
 
 const TextContainer = styled.View({
   marginHorizontal: -getSpacing(1),

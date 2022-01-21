@@ -3,7 +3,6 @@ import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ColorsEnum, Typo, GUTTER_DP, getSpacing } from 'ui/theme'
-import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface ImageCaptionProps {
   categoryLabel: string | null
@@ -36,21 +35,21 @@ export const ImageCaption = ({ categoryLabel, height, width, distance }: ImageCa
 
 const textLineHeight = PixelRatio.roundToNearestPixel(GUTTER_DP)
 
-const Row = styled.View<{ height: number; width: number }>(({ height, width }) => ({
+const Row = styled.View<{ height: number; width: number }>(({ theme, height, width }) => ({
   flexDirection: 'row',
-  backgroundColor: ColorsEnum.BLACK,
+  backgroundColor: theme.colors.black,
   height,
   width,
-  borderBottomLeftRadius: BorderRadiusEnum.BORDER_RADIUS,
-  borderBottomRightRadius: BorderRadiusEnum.BORDER_RADIUS,
+  borderBottomLeftRadius: theme.borderRadius.radius,
+  borderBottomRightRadius: theme.borderRadius.radius,
   alignItems: 'center',
 }))
 
-const Separator = styled.View({
+const Separator = styled.View(({ theme }) => ({
   height: textLineHeight,
-  backgroundColor: ColorsEnum.WHITE,
+  backgroundColor: theme.colors.white,
   width: 1,
-})
+}))
 
 const TextWrapper = styled.View({
   alignItems: 'center',

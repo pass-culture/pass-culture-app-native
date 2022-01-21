@@ -6,7 +6,6 @@ import { accessibilityAndTestId } from 'tests/utils'
 import { Logo } from 'ui/svg/icons/Logo'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export interface BaseButtonProps {
   accessibilityLabel?: string
@@ -146,7 +145,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity).attrs(({ theme }) => ({
     flexDirection: 'row',
     justifyContent: justifyContent === 'flex-start' ? 'flex-start' : 'center',
     alignItems: 'center',
-    borderRadius: BorderRadiusEnum.BUTTON,
+    borderRadius: theme.borderRadius.button,
     padding: 2,
     backgroundColor,
     borderColor,

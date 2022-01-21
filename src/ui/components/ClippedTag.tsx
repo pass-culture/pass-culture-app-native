@@ -4,8 +4,7 @@ import styled from 'styled-components/native'
 import { accessibilityAndTestId } from 'tests/utils'
 import { Clear as ClearIcon } from 'ui/svg/icons/Clear'
 import { getSpacing, Typo } from 'ui/theme'
-import { ACTIVE_OPACITY, ColorsEnum } from 'ui/theme/colors'
-import { BorderRadiusEnum } from 'ui/theme/grid'
+import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
   label: string
@@ -30,25 +29,25 @@ const Container = styled.View({
   flexDirection: 'row',
 })
 
-const VenueLabelContainer = styled.View({
-  backgroundColor: ColorsEnum.PRIMARY,
+const VenueLabelContainer = styled.View(({ theme }) => ({
+  backgroundColor: theme.colors.primary,
   paddingVertical: getSpacing(2),
   paddingLeft: getSpacing(3),
-  borderTopLeftRadius: BorderRadiusEnum.CHECKBOX_RADIUS,
-  borderBottomLeftRadius: BorderRadiusEnum.CHECKBOX_RADIUS,
+  borderTopLeftRadius: theme.borderRadius.checkbox,
+  borderBottomLeftRadius: theme.borderRadius.checkbox,
   maxWidth: '70%',
-})
+}))
 
 const VenueLabel = styled(Typo.ButtonText).attrs(() => ({
   numberOfLines: 1,
   color: ColorsEnum.WHITE,
 }))({})
 
-const TouchableOpacity = styled.TouchableOpacity.attrs(() => ({
-  activeOpacity: ACTIVE_OPACITY,
-}))({
+const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))(({ theme }) => ({
   padding: getSpacing(2),
-  backgroundColor: ColorsEnum.PRIMARY,
-  borderTopRightRadius: BorderRadiusEnum.BUTTON,
-  borderBottomRightRadius: BorderRadiusEnum.BUTTON,
-})
+  backgroundColor: theme.colors.primary,
+  borderTopRightRadius: theme.borderRadius.button,
+  borderBottomRightRadius: theme.borderRadius.button,
+}))

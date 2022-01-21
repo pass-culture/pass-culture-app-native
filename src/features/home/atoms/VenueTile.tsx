@@ -13,7 +13,6 @@ import { QueryKeys } from 'libs/queryKeys'
 import { VenueHit } from 'libs/search'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ImageTile } from 'ui/components/ImageTile'
-import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export interface VenueTileProps {
   venue: VenueHit
@@ -71,7 +70,7 @@ const TouchableHighlight = styled.TouchableHighlight<{ height: number; width: nu
   ({ height, width, theme }) => ({
     height,
     width,
-    borderRadius: BorderRadiusEnum.BORDER_RADIUS,
+    borderRadius: theme.borderRadius.radius,
     backgroundColor: theme.uniqueColors.greyDisabled,
   })
 )

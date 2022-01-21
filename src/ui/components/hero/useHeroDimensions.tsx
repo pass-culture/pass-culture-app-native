@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import { useTheme } from 'styled-components/native'
 
 import { getSpacing } from 'ui/theme'
-import { BorderRadiusEnum, LENGTH_M, LENGTH_L, MARGIN_DP } from 'ui/theme/grid'
+import { LENGTH_M, LENGTH_L, MARGIN_DP } from 'ui/theme/grid'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 const RATIO_LANDSCAPE = 3 / 2
@@ -13,7 +13,8 @@ export const heroMarginTop = MARGIN_DP + getSpacing(0.5)
 
 export const useHeroDimensions = (type: 'offer' | 'venue', hasImage: boolean) => {
   const { top } = useCustomSafeInsets()
-  const fullWidth = useTheme().appContentWidth - 2 * MARGIN_DP
+  const { appContentWidth, borderRadius } = useTheme()
+  const fullWidth = appContentWidth - 2 * MARGIN_DP
 
   return useMemo(() => {
     if (type === 'venue') {
@@ -21,7 +22,7 @@ export const useHeroDimensions = (type: 'offer' | 'venue', hasImage: boolean) =>
         return {
           heroBackgroundHeight: top + blurImageHeight / RATIO_LANDSCAPE,
           imageStyle: {
-            borderRadius: BorderRadiusEnum.BORDER_RADIUS,
+            borderRadius: borderRadius.radius,
             maxWidth: LENGTH_L * RATIO_LANDSCAPE,
             height: Math.min(LENGTH_L, fullWidth / RATIO_LANDSCAPE),
             width: fullWidth,
@@ -33,7 +34,7 @@ export const useHeroDimensions = (type: 'offer' | 'venue', hasImage: boolean) =>
         return {
           heroBackgroundHeight: top + blurImageHeight / RATIO_LANDSCAPE,
           imageStyle: {
-            borderRadius: BorderRadiusEnum.BUTTON,
+            borderRadius: borderRadius.button,
             width: LENGTH_M,
             aspectRatio: 1,
           },
@@ -44,12 +45,12 @@ export const useHeroDimensions = (type: 'offer' | 'venue', hasImage: boolean) =>
     return {
       heroBackgroundHeight: top + blurImageHeight,
       imageStyle: {
-        borderRadius: BorderRadiusEnum.BORDER_RADIUS,
+        borderRadius: borderRadius.radius,
         height: blurImageHeight,
         width: Math.round(blurImageHeight * RATIO_PORTRAIT),
         maxWidth: fullWidth,
         aspectRatio: RATIO_PORTRAIT,
       },
     }
-  }, [hasImage, type, top])
+  }, [hasImage, type, top, borderRadius])
 }

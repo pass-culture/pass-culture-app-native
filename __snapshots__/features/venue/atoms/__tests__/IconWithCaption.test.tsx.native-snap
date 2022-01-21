@@ -47,7 +47,6 @@ exports[`IconWithCaption should render correctly 1`] = `
     }
   />
   <Text
-    color="#151515"
     style={
       Array [
         Object {
@@ -71,14 +70,13 @@ exports[`IconWithCaption should render different when isDisabled is true 1`] = `
 - First value
 + Second value
 
-@@ -41,15 +41,15 @@
+@@ -41,14 +41,15 @@
           },
         ]
       }
     />
     <Text
--     color=\\"#151515\\"
-+     color=\\"#626262\\"
++     disabled={true}
       style={
         Array [
           Object {

@@ -12,7 +12,6 @@ import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { MARGIN_DP, LENGTH_XL, RATIO_EXCLU, Spacer, getSpacing } from 'ui/theme'
-import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export const ExclusivityModule = ({
   alt,
@@ -59,13 +58,13 @@ const ImageContainer = styled.View({
   maxHeight: LENGTH_XL,
 })
 
-const TouchableHighlight = styled.TouchableHighlight({
-  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
+const TouchableHighlight = styled.TouchableHighlight(({ theme }) => ({
+  borderRadius: theme.borderRadius.radius,
   maxHeight: LENGTH_XL,
-})
+}))
 
 const Image = styled(FastImage)(({ theme }) => ({
-  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
+  borderRadius: theme.borderRadius.radius,
   maxHeight: LENGTH_XL,
   height: PixelRatio.roundToNearestPixel((theme.appContentWidth - 2 * MARGIN_DP) * RATIO_EXCLU),
 }))

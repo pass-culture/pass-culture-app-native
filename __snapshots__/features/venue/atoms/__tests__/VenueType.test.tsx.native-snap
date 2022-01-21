@@ -46,7 +46,6 @@ exports[`VenueType should render correctly 1`] = `
     }
   />
   <Text
-    color="#151515"
     style={
       Array [
         Object {
