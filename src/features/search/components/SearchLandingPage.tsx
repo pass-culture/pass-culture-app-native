@@ -36,6 +36,7 @@ export const SearchLandingPage: React.FC = () => {
   const mqSmallWebViewportHeight = useMediaQuery({ maxHeight: SMALL_VIEWPORT_MAX_HEIGHT }, 'web')
 
   const searchCategoriesDescribedBy = uuidv4()
+  const locationFilterDescribedBy = uuidv4()
 
   return (
     <React.Fragment>
@@ -54,9 +55,15 @@ export const SearchLandingPage: React.FC = () => {
 
         <Separator isSmallWebViewportHeight={mqSmallWebViewportHeight} />
 
-        <TouchableOpacity onPress={() => navigate('LocationFilter')}>
+        <TouchableOpacity
+          onPress={() => navigate('LocationFilter')}
+          aria-describedby={locationFilterDescribedBy}>
           <BicolorListItem title={locationLabel} Icon={LocationIcon} secondaryText={t`Où`} />
         </TouchableOpacity>
+        <HiddenText
+          nativeID={
+            locationFilterDescribedBy
+          }>{t`Clique ici pour affiner ta recherche en fonction d'un lieu ou de ta géolocalisation puis lance la recherche à l'aide du bouton "Rechercher"`}</HiddenText>
 
         {!mqSmallWebViewportHeight && <Spacer.Flex flex={2} />}
       </ScrollView>
