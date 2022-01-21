@@ -8,7 +8,6 @@ import styled, { useTheme } from 'styled-components/native'
 import { BicolorArrowLeft } from 'ui/svg/icons/BicolorArrowLeft'
 import { BicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'
 import { ColorsEnum, getSpacing } from 'ui/theme'
-import { ZIndex } from 'ui/theme/layers'
 
 type ItemDimensions = { width: number; height: number }
 
@@ -190,7 +189,7 @@ const ScrollButtonForNotTouchDevice = styled.TouchableOpacity<{
   borderRadius: HALF_BUTTON_SIZE,
   borderColor: ColorsEnum.GREY_MEDIUM,
   backgroundColor: ColorsEnum.WHITE,
-  zIndex: ZIndex.PLAYLIST_BUTTON,
+  zIndex: props.theme.zIndex.playlistsButton,
 }))
 
 const HorizontalMargin = styled.View({ width: getSpacing(6) })

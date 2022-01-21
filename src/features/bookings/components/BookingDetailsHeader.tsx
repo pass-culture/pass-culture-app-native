@@ -8,7 +8,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { ColorsEnum, getSpacing, Spacer, Typo } from 'ui/theme'
-import { ZIndex } from 'ui/theme/layers'
+
 interface Props {
   headerTransition: Animated.AnimatedInterpolation
   title: string
@@ -50,12 +50,12 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
   )
 }
 
-const HeaderContainer = styled(Animated.View)({
+const HeaderContainer = styled(Animated.View)(({ theme }) => ({
   position: 'absolute',
   top: 0,
   width: '100%',
-  zIndex: ZIndex.HEADER,
-})
+  zIndex: theme.zIndex.header,
+}))
 
 const Row = styled.View({
   flexDirection: 'row',

@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
 import { getSpacing, Typo } from 'ui/theme'
-import { ZIndex } from 'ui/theme/layers'
 
 import { ModalIconProps } from './types'
 
@@ -58,13 +57,13 @@ const HeaderContainer = styled.View({
   justifyContent: 'center',
 })
 
-const TitleContainer = styled.View({
+const TitleContainer = styled.View(({ theme }) => ({
   justifyContent: 'center',
   paddingRight: getSpacing(3),
   paddingLeft: getSpacing(3),
   flex: 0.8,
-  zIndex: ZIndex.MODAL_HEADER,
-})
+  zIndex: theme.zIndex.modalHeader,
+}))
 
 const LeftHeaderActionContainer = styled.View({
   flexDirection: 'row',
