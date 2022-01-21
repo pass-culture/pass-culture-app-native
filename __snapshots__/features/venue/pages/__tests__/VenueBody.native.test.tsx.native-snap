@@ -393,7 +393,6 @@ exports[`<VenueBody /> should render correctly 1`] = `
           }
         />
         <Text
-          color="#151515"
           style={
             Array [
               Object {
@@ -496,7 +495,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
             }
           />
           <Text
-            color="#626262"
+            disabled={true}
             style={
               Array [
                 Object {

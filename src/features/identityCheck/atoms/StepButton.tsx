@@ -1,11 +1,10 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { StepConfig } from 'features/identityCheck/types'
 import { accessibilityAndTestId } from 'tests/utils'
 import { Validate } from 'ui/svg/icons/Validate'
-import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-import { BorderRadiusEnum } from 'ui/theme/grid'
+import { getSpacing, Typo } from 'ui/theme'
 
 export type StepButtonState = 'completed' | 'current' | 'disabled'
 
@@ -16,6 +15,7 @@ interface Props {
 }
 
 export const StepButton = ({ step, state, onPress }: Props) => {
+  const { colors } = useTheme()
   const { icon: Icon, label } = step
 
   return (
@@ -30,7 +30,7 @@ export const StepButton = ({ step, state, onPress }: Props) => {
       <Typo.ButtonText>{label}</Typo.ButtonText>
       <CompletionContainer>
         <Validate
-          color={state === 'completed' ? ColorsEnum.GREEN_LIGHT : ColorsEnum.TRANSPARENT}
+          color={state === 'completed' ? colors.greenLight : colors.transparent}
           {...accessibilityAndTestId(state === 'completed' ? 'StepCompleted' : 'StepNotCompleted')}
         />
       </CompletionContainer>
@@ -40,13 +40,13 @@ export const StepButton = ({ step, state, onPress }: Props) => {
 
 const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
   activeOpacity: theme.activeOpacity,
-}))<{ disabled: boolean; state: StepButtonState }>((props) => ({
+}))<{ disabled: boolean; state: StepButtonState }>(({ state, theme }) => ({
   height: getSpacing(24),
   marginTop: getSpacing(6),
   width: '100%',
-  backgroundColor: ColorsEnum.WHITE,
-  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
-  opacity: props.state === 'disabled' ? 0.5 : 1,
+  backgroundColor: theme.colors.white,
+  borderRadius: theme.borderRadius.radius,
+  opacity: state === 'disabled' ? 0.5 : 1,
   flexDirection: 'row',
   alignItems: 'center',
 }))

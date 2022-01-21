@@ -3,7 +3,6 @@ import styled from 'styled-components/native'
 
 import { ArrowNextDouble } from 'ui/svg/icons/ArrowNextDouble'
 import { ColorsEnum, getSpacing } from 'ui/theme'
-import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface Props {
   height: number
@@ -31,11 +30,11 @@ const Container = styled.View<{ width: number; height: number }>(({ width, heigh
   justifyContent: 'center',
 }))
 
-const Image = styled.Image({
+const Image = styled.Image(({ theme }) => ({
   height: '100%',
   width: '100%',
-  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
-})
+  borderRadius: theme.borderRadius.radius,
+}))
 
 const ArrowsContainer = styled.View(({ theme }) => ({
   position: 'absolute',

@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { NextArrowIcon } from 'features/home/assets/NextArrowIcon'
 import { ColorsEnum, getSpacing, Typo } from 'ui/theme'
-import { BorderRadiusEnum } from 'ui/theme/grid'
 
 import { BACKGROUND_IMAGE_SOURCE } from './backgroundImageSource'
 
@@ -38,10 +37,10 @@ export function ModuleBanner(props: ModuleBannerProps) {
   )
 }
 
-const ImageContainer = styled.View({
-  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
+const ImageContainer = styled.View(({ theme }) => ({
+  borderRadius: theme.borderRadius.radius,
   overflow: 'hidden',
-})
+}))
 
 const ImageBackground = styled.ImageBackground({
   width: '100%',

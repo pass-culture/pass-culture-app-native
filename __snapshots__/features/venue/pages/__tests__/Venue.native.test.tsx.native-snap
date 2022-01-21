@@ -405,7 +405,6 @@ exports[`<Venue /> should match snapshot 1`] = `
             }
           />
           <Text
-            color="#151515"
             style={
               Array [
                 Object {
@@ -508,7 +507,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               }
             />
             <Text
-              color="#626262"
+              disabled={true}
               style={
                 Array [
                   Object {

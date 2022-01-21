@@ -20,7 +20,6 @@ import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
 import { OfferCaption } from 'ui/components/OfferCaption'
 import { MARGIN_DP } from 'ui/theme'
-import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export interface OfferTileProps {
   categoryId: CategoryIdEnum | null | undefined
@@ -134,7 +133,7 @@ const IMAGE_CAPTION_HEIGHT = PixelRatio.roundToNearestPixel(MARGIN_DP)
 
 const Container = styled.View({ flex: 1 })
 
-const TouchableHighlight = styled.TouchableHighlight<{ height: number }>(({ height }) => ({
-  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
+const TouchableHighlight = styled.TouchableHighlight<{ height: number }>(({ height, theme }) => ({
+  borderRadius: theme.borderRadius.radius,
   height,
 }))

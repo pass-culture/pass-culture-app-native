@@ -2,8 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CheckboxMark } from 'ui/svg/icons/CheckBoxTMark'
-import { ColorsEnum, getSpacing } from 'ui/theme'
-import { BorderRadiusEnum } from 'ui/theme/grid'
+import { getSpacing } from 'ui/theme'
 
 type CustomCheckboxProps = {
   isChecked: boolean
@@ -24,13 +23,13 @@ export function CheckboxInput({ isChecked, setIsChecked }: CustomCheckboxProps):
   )
 }
 
-const StyledCheckboxInput = styled.TouchableOpacity<{ checked: boolean }>((props) => ({
+const StyledCheckboxInput = styled.TouchableOpacity<{ checked: boolean }>(({ checked, theme }) => ({
   width: getSpacing(6),
   height: getSpacing(6),
-  borderRadius: BorderRadiusEnum.CHECKBOX_RADIUS,
+  borderRadius: theme.borderRadius.checkbox,
   border: 2,
-  borderColor: ColorsEnum.GREY_DARK,
-  backgroundColor: props.checked ? ColorsEnum.GREY_DARK : ColorsEnum.WHITE,
-  paddingLeft: props.checked ? getSpacing(0.8) : 0,
-  paddingTop: props.checked ? getSpacing(1.2) : 0,
+  borderColor: theme.colors.greyDark,
+  backgroundColor: checked ? theme.colors.greyDark : theme.colors.white,
+  paddingLeft: checked ? getSpacing(0.8) : 0,
+  paddingTop: checked ? getSpacing(1.2) : 0,
 }))

@@ -20,7 +20,6 @@ import {
   RATIO_BUSINESS,
   Spacer,
 } from 'ui/theme'
-import { BorderRadiusEnum } from 'ui/theme/grid'
 
 import { fillUrlEmail, shouldUrlBeFilled, showBusinessModule } from './BusinessModule.utils'
 
@@ -99,15 +98,15 @@ const Row = styled.View({
   paddingBottom: getSpacing(6),
 })
 
-const TouchableHighlight = styled.TouchableHighlight({
-  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
-})
+const TouchableHighlight = styled.TouchableHighlight(({ theme }) => ({
+  borderRadius: theme.borderRadius.radius,
+}))
 
-const ImageContainer = styled.View({
-  borderRadius: BorderRadiusEnum.BORDER_RADIUS,
+const ImageContainer = styled.View(({ theme }) => ({
+  borderRadius: theme.borderRadius.radius,
   overflow: 'hidden',
   maxHeight: LENGTH_XS,
-})
+}))
 
 const Image = styled.Image({
   width: getSpacing(14),
