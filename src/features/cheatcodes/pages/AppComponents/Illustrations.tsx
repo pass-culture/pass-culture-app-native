@@ -8,6 +8,7 @@ import { BicolorIdCardWithMagnifyingGlassDeprecated } from 'ui/svg/icons/Bicolor
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
 import { BirthdayCakeDeprecated } from 'ui/svg/icons/BirthdayCake_deprecated'
+import { CalendarIllustration } from 'ui/svg/icons/CalendarIllustration'
 import { EmptyFavorites } from 'ui/svg/icons/EmptyFavorites'
 import { EmptyFavoritesDeprecated } from 'ui/svg/icons/EmptyFavorites_deprecated'
 import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
@@ -48,6 +49,7 @@ export const Illustrations: FunctionComponent = () => {
       <Illustration name="BirthdayCakeDeprecated" component={BirthdayCakeDeprecated} />
       <Illustration name="BirthdayCake" component={BirthdayCake} isNew />
       <Illustration name="BrokenConnection" component={BrokenConnection} isNew />
+      <Illustration name="CalendarIllustration" component={CalendarIllustration} isNew />
       <Illustration name="ErrorIllustration" component={ErrorIllustration} isNew />
       <AlignedText>
         <EmptyFavoritesDeprecated size={STANDARD_ICON_SIZE} />
