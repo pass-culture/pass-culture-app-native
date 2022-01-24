@@ -14,6 +14,7 @@ import { EmptyFavoritesDeprecated } from 'ui/svg/icons/EmptyFavorites_deprecated
 import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { HappyFaceDeprecated } from 'ui/svg/icons/HappyFace_deprecated'
+import { LocationIllustration } from 'ui/svg/icons/LocationIllustration'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { MaintenanceConeDeprecated } from 'ui/svg/icons/MaintenanceCone_deprecated'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
@@ -59,6 +60,7 @@ export const Illustrations: FunctionComponent = () => {
       <Illustration name="EmptyFavorites" component={EmptyFavorites} isNew />
       <Illustration name="HappyFaceDeprecated" component={HappyFaceDeprecated} />
       <Illustration name="HappyFace" component={HappyFace} isNew />
+      <Illustration name="LocationIllustration" component={LocationIllustration} isNew />
       <AlignedText>
         <MaintenanceConeDeprecated
           width={STANDARD_ICON_SIZE * 2}
