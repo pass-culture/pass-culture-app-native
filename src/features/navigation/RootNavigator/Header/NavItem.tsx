@@ -3,7 +3,6 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { menu } from 'features/navigation/TabBar/routes'
 import { TabRouteName } from 'features/navigation/TabBar/types'
-import { accessibilityAndTestId } from 'tests/utils'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -26,7 +25,7 @@ export const NavItem: React.FC<NavItemInterface> = ({
       isSelected={isSelected}
       onPress={onPress}
       activeOpacity={1}
-      {...accessibilityAndTestId(`${tabName} nav`)}>
+      testID={`${tabName} nav`}>
       <BicolorIcon
         color={isSelected ? undefined : colors.greyDark}
         size={getSpacing(6)}

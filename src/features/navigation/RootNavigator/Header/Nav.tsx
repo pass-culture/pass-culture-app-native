@@ -6,6 +6,9 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { Spacer, getShadow, getSpacing } from 'ui/theme'
+import { A } from 'ui/web/link/A'
+import { Li } from 'ui/web/list/Li'
+import { Ul } from 'ui/web/list/Ul'
 
 import { NavItem } from './NavItem'
 
@@ -19,30 +22,35 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
   const { tabRoutes } = useTabNavigationContext()
   return (
     <NavItemsContainer maxWidth={maxWidth} height={height} noShadow={noShadow}>
-      {tabRoutes.map((route, index) => {
-        const onPress = () => {
-          navigateFromRef(...getTabNavConfig(route.name, undefined))
-        }
-        const key = `key-tab-nav-${route.name}`
-        function renderNavItem() {
+      <Ul>
+        {tabRoutes.map((route, index) => {
+          const onPress = () => {
+            navigateFromRef(...getTabNavConfig(route.name, undefined))
+          }
+          const key = `key-tab-nav-${route.name}`
+          function renderNavItem() {
+            return (
+              <Li key={key}>
+                <A href={route.path}>
+                  <NavItem
+                    tabName={route.name}
+                    isSelected={route.isSelected}
+                    BicolorIcon={mapTabRouteToBicolorIcon(route.name)}
+                    onPress={onPress}
+                  />
+                </A>
+              </Li>
+            )
+          }
+          if (index === 0) return renderNavItem()
           return (
-            <NavItem
-              key={key}
-              tabName={route.name}
-              isSelected={route.isSelected}
-              BicolorIcon={mapTabRouteToBicolorIcon(route.name)}
-              onPress={onPress}
-            />
+            <React.Fragment key={key}>
+              <Spacer.Row numberOfSpaces={1.5} />
+              {renderNavItem()}
+            </React.Fragment>
           )
-        }
-        if (index === 0) return renderNavItem()
-        return (
-          <React.Fragment key={key}>
-            <Spacer.Row numberOfSpaces={1.5} />
-            {renderNavItem()}
-          </React.Fragment>
-        )
-      })}
+        })}
+      </Ul>
     </NavItemsContainer>
   )
 }
