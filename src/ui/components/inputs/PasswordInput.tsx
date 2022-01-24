@@ -6,14 +6,16 @@ import {
   TextInputFocusEventData,
 } from 'react-native'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { accessibilityAndTestId } from 'tests/utils'
+import { InputLabel } from 'ui/components/InputLabel'
 import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
 import { Eye } from 'ui/svg/icons/Eye'
 import { EyeSlash } from 'ui/svg/icons/EyeSlash'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
 import { StyledInputContainer } from './StyledInputContainer'
@@ -28,6 +30,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
 
   const [shouldHidePassword, setShouldHidePassword] = useState(true)
   const [isFocus, setIsFocus] = useState(false)
+  const passwordInputID = uuidv4()
 
   function togglePasswordDisplay() {
     setShouldHidePassword(!shouldHidePassword)
@@ -47,7 +50,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
       {!!customProps.label && (
         <React.Fragment>
           <LabelContainer>
-            <Typo.Body>{customProps.label}</Typo.Body>
+            <InputLabel htmlFor={passwordInputID}>{customProps.label}</InputLabel>
             {!!customProps.isRequiredField && <RequiredLabel />}
           </LabelContainer>
           <Spacer.Column numberOfSpaces={2} />
@@ -59,6 +62,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
         isInputDisabled={customProps.disabled}>
         <StyledBaseTextInput
           {...nativeProps}
+          nativeID={passwordInputID}
           onFocus={onFocus}
           onBlur={onBlur}
           secureTextEntry={shouldHidePassword}

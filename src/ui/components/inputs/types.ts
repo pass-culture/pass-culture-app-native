@@ -24,6 +24,7 @@ export type RNTextInputProps = Pick<
    * which adds the web property "disabled" (not focusable) to the input
    * https://github.com/necolas/react-native-web/commit/fc033a3161be76224d120dec7aab7009e9414fa7 */
   | 'autoCapitalize'
+  | 'autoComplete'
   | 'autoCorrect'
   | 'autoFocus'
   | 'blurOnSubmit'
@@ -31,6 +32,7 @@ export type RNTextInputProps = Pick<
   | 'disabled'
   | 'keyboardType'
   | 'maxLength'
+  | 'nativeID'
   | 'onBlur'
   | 'onChangeText'
   | 'onFocus'
@@ -85,6 +87,7 @@ export function getCustomSearchInputProps(props: SearchInputProps): CustomSearch
 export function getRNTextInputProps(props: TextInputProps): RNTextInputProps {
   return {
     autoCapitalize: props.autoCapitalize,
+    autoComplete: props.autoComplete,
     autoCorrect: props.autoCorrect,
     autoFocus: props.autoFocus,
     blurOnSubmit: props.blurOnSubmit,
@@ -92,6 +95,7 @@ export function getRNTextInputProps(props: TextInputProps): RNTextInputProps {
     editable: props.editable,
     keyboardType: props.keyboardType,
     maxLength: props.maxLength,
+    nativeID: props.nativeID,
     onBlur: props.onBlur,
     onChangeText: props.onChangeText,
     onFocus: props.onFocus,
