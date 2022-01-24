@@ -7,7 +7,7 @@ import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 import { IconInterface } from './types'
 
-export function EmailSent({
+export function EmailSentDeprecated({
   size = STANDARD_ICON_SIZE,
   color = ColorsEnum.WHITE,
   testID,
