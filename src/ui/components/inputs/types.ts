@@ -7,6 +7,7 @@ type CustomTextInputProps = {
   disabled?: boolean
   containerStyle?: ViewStyle
   isRequiredField?: boolean
+  accessibilityDescribedBy?: string
 }
 
 type CustomSearchInputProps = {
@@ -62,6 +63,7 @@ export function getCustomTextInputProps(props: TextInputProps): CustomTextInputP
     disabled: props.disabled,
     containerStyle: props.containerStyle,
     isRequiredField: props.isRequiredField,
+    accessibilityDescribedBy: props.accessibilityDescribedBy,
   }
 }
 

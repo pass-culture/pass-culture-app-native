@@ -4,6 +4,7 @@ import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 import { useTheme } from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import {
   isPasswordCorrect,
@@ -33,6 +34,7 @@ export function ChangePassword() {
   const [hasError, setHasError] = useState(false)
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   const [shouldDisplayPasswordRules, setShouldDisplayPasswordRules] = useState(false)
+  const passwordDescribedBy = uuidv4()
 
   const displayNotMatchingError = confirmedPassword.length > 0 && confirmedPassword !== newPassword
 
@@ -112,13 +114,14 @@ export function ChangePassword() {
           <Spacer.Column numberOfSpaces={7} />
           <PasswordInput
             label={t`Nouveau mot de passe`}
+            accessibilityDescribedBy={passwordDescribedBy}
             value={newPassword}
             onChangeText={updateNewPassword}
             placeholder={t`Ton nouveau mot de passe`}
             isRequiredField
           />
           {!!(shouldDisplayPasswordRules && newPassword.length > 0) && (
-            <PasswordSecurityRules password={newPassword} />
+            <PasswordSecurityRules password={newPassword} nativeID={passwordDescribedBy} />
           )}
           <Spacer.Column numberOfSpaces={5} />
           <PasswordInput

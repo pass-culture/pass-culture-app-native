@@ -7,6 +7,7 @@ import { getSpacing } from 'ui/theme'
 
 type Props = {
   password: string
+  nativeID?: string
 }
 
 const PASSWORD_MIN_LENGTH = 12
@@ -45,9 +46,9 @@ function containsSpecialCharacter(password: string): boolean {
   return password.match(SPECIAL_CHARACTER_REGEX) ? true : false
 }
 
-export const PasswordSecurityRules: FunctionComponent<Props> = ({ password }) => {
+export const PasswordSecurityRules: FunctionComponent<Props> = ({ password, nativeID }) => {
   return (
-    <RulesContainer>
+    <RulesContainer nativeID={nativeID} accessibilityLabel={t`Critères à respecter`}>
       <PasswordRule title={t`12 Caractères`} isValidated={isLongEnough(password)} />
       <PasswordRule title={t`1 Majuscule`} isValidated={containsCapital(password)} />
       <PasswordRule title={t`1 Minuscule`} isValidated={containsLowercase(password)} />

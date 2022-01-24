@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import {
   isPasswordCorrect,
@@ -31,6 +32,7 @@ export const ReinitializePassword = () => {
   const [isTimestampExpirationVerified, setIsTimestampExpirationVerified] = useState(false)
   const [password, setPassword] = useState('')
   const [confirmedPassword, setConfirmedPassword] = useState('')
+  const passwordDescribedBy = uuidv4()
 
   const allowSubmission = isPasswordCorrect(password) && confirmedPassword === password
   const displayNotMatchingError = confirmedPassword.length > 0 && confirmedPassword !== password
@@ -84,6 +86,7 @@ export const ReinitializePassword = () => {
         <Form.MaxWidth>
           <PasswordInput
             label={t`Nouveau mot de passe`}
+            accessibilityDescribedBy={passwordDescribedBy}
             value={password}
             autoFocus
             onChangeText={setPassword}
@@ -91,7 +94,7 @@ export const ReinitializePassword = () => {
             onSubmitEditing={submitPassword}
             isRequiredField
           />
-          <PasswordSecurityRules password={password} />
+          <PasswordSecurityRules password={password} nativeID={passwordDescribedBy} />
           <Spacer.Column numberOfSpaces={6} />
           <PasswordInput
             label={t`Confirmer le mot de passe`}
