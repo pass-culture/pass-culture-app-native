@@ -20,6 +20,7 @@ import { NoBookings } from 'ui/svg/icons/NoBookings'
 import { NoBookingsDeprecated } from 'ui/svg/icons/NoBookings_deprecated'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { NoOfferDeprecated } from 'ui/svg/icons/NoOffer_deprecated'
+import { Notification } from 'ui/svg/icons/Notification'
 import { PageNotFound } from 'ui/svg/icons/PageNotFound'
 import { PageNotFoundIconDeprecated } from 'ui/svg/icons/PageNotFoundIcon_deprecated'
 import { PhoneFlip } from 'ui/svg/icons/PhoneFlip'
@@ -71,6 +72,7 @@ export const Illustrations: FunctionComponent = () => {
       <Illustration name="NoBookings" component={NoBookings} isNew />
       <Illustration name="NoOfferDeprecated" component={NoOfferDeprecated} />
       <Illustration name="NoOffer" component={NoOffer} isNew />
+      <Illustration name="Notification" component={Notification} isNew />
       <Illustration name="PageNotFoundDeprecated" component={PageNotFoundIconDeprecated} />
       <Illustration name="PageNotFound" component={PageNotFound} isNew />
       <Illustration name="PhoneFlip" component={PhoneFlip} isNew />
