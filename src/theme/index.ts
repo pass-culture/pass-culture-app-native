@@ -10,6 +10,7 @@ import {
   TAB_BAR_COMP_HEIGHT,
 } from 'ui/theme/constants'
 import { BorderRadiusEnum, Breakpoints } from 'ui/theme/grid'
+// eslint-disable-next-line no-restricted-imports
 import { ZIndex } from 'ui/theme/layers'
 
 const isNative = Platform.OS === 'ios' || Platform.OS === 'android'
