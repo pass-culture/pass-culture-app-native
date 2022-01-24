@@ -270,6 +270,7 @@ exports[`<SetName/> should render correctly 1`] = `
               >
                 <TextInput
                   editable={true}
+                  nativeID="testUuidV4"
                   onBlur={[Function]}
                   onChangeText={[Function]}
                   onFocus={[Function]}
@@ -363,6 +364,7 @@ exports[`<SetName/> should render correctly 1`] = `
               >
                 <TextInput
                   editable={true}
+                  nativeID="testUuidV4"
                   onBlur={[Function]}
                   onChangeText={[Function]}
                   onFocus={[Function]}

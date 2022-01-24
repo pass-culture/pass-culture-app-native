@@ -248,10 +248,12 @@ Array [
           >
             <TextInput
               autoCapitalize="none"
+              autoComplete="email"
               disabled={true}
               editable={false}
               keyboardType="email-address"
               maxLength={120}
+              nativeID="testUuidV4"
               onBlur={[Function]}
               onChangeText={[Function]}
               onFocus={[Function]}
@@ -375,10 +377,11 @@ Array [
             }
           >
             <TextInput
-              accessibilityLabel="Entrée pour le mot de passe"
+              accessibilityLabel="Mot de passe"
               accessible={true}
               disabled={true}
               editable={false}
+              nativeID="testUuidV4"
               onBlur={[Function]}
               onChangeText={[Function]}
               onFocus={[Function]}
@@ -407,7 +410,7 @@ Array [
                   },
                 ]
               }
-              testID="Entrée pour le mot de passe"
+              testID="Mot de passe"
               textContentType="password"
               value=""
             />
@@ -878,10 +881,12 @@ Array [
           >
             <TextInput
               autoCapitalize="none"
+              autoComplete="email"
               disabled={false}
               editable={true}
               keyboardType="email-address"
               maxLength={120}
+              nativeID="testUuidV4"
               onBlur={[Function]}
               onChangeText={[Function]}
               onFocus={[Function]}
@@ -1015,10 +1020,11 @@ Array [
             }
           >
             <TextInput
-              accessibilityLabel="Entrée pour le mot de passe"
+              accessibilityLabel="Mot de passe"
               accessible={true}
               disabled={false}
               editable={true}
+              nativeID="testUuidV4"
               onBlur={[Function]}
               onChangeText={[Function]}
               onFocus={[Function]}
@@ -1047,7 +1053,7 @@ Array [
                   },
                 ]
               }
-              testID="Entrée pour le mot de passe"
+              testID="Mot de passe"
               textContentType="password"
               value=""
             />

@@ -125,6 +125,7 @@ exports[`Search component should render correctly 1`] = `
         aria-describedby="testUuidV4"
         autoCorrect={false}
         editable={true}
+        nativeID="testUuidV4"
         onBlur={[Function]}
         onChangeText={[Function]}
         onFocus={[Function]}

@@ -34,6 +34,7 @@ exports[`<TextInput /> should render correctly when NOT focused 1`] = `
 >
   <TextInput
     editable={true}
+    nativeID="testUuidV4"
     onBlur={[Function]}
     onChangeText={[Function]}
     onFocus={[Function]}

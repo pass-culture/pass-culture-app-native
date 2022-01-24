@@ -262,6 +262,7 @@ exports[`<SetCity/> should render correctly 1`] = `
                 autoCorrect={false}
                 editable={true}
                 keyboardType="number-pad"
+                nativeID="testUuidV4"
                 onBlur={[Function]}
                 onChangeText={[Function]}
                 onFocus={[Function]}
