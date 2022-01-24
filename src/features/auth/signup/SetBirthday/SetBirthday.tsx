@@ -15,7 +15,7 @@ import { DateInput, DateInputRef, DateValidation } from 'ui/components/inputs/Da
 import { InputError } from 'ui/components/inputs/InputError'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { useModal } from 'ui/components/modals/useModal'
-import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
+import { BirthdayCakeDeprecated as BirthdayCake } from 'ui/svg/icons/BirthdayCake_deprecated'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 

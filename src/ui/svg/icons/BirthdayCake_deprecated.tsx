@@ -5,7 +5,7 @@ import { RectangleIconInterface } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
-export const BirthdayCake: React.FunctionComponent<RectangleIconInterface> = ({
+export const BirthdayCakeDeprecated: React.FunctionComponent<RectangleIconInterface> = ({
   width = 281,
   height = 176,
   testID,
