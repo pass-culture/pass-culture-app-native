@@ -10,7 +10,7 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { RequestSent } from 'ui/svg/icons/RequestSent'
+import { RequestSentDeprecated as RequestSent } from 'ui/svg/icons/RequestSent_deprecated'
 import { Typo } from 'ui/theme'
 
 export function BeneficiaryRequestSent() {

@@ -7,7 +7,7 @@ import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 import { IconInterface } from './types'
 
-export function RequestSent({
+export function RequestSentDeprecated({
   size = STANDARD_ICON_SIZE,
   color = ColorsEnum.BLACK,
   testID,
