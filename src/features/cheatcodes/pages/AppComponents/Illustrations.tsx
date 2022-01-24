@@ -9,6 +9,7 @@ import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
 import { BirthdayCakeDeprecated } from 'ui/svg/icons/BirthdayCake_deprecated'
 import { CalendarIllustration } from 'ui/svg/icons/CalendarIllustration'
+import { EmailSent } from 'ui/svg/icons/EmailSent'
 import { EmailSentDeprecated } from 'ui/svg/icons/EmailSent_deprecated'
 import { EmptyFavorites } from 'ui/svg/icons/EmptyFavorites'
 import { EmptyFavoritesDeprecated } from 'ui/svg/icons/EmptyFavorites_deprecated'
@@ -55,12 +56,13 @@ export const Illustrations: FunctionComponent = () => {
       <Illustration name="CalendarIllustration" component={CalendarIllustration} isNew />
       <Illustration name="ErrorIllustration" component={ErrorIllustration} isNew />
       <AlignedText>
-        <EmptyFavoritesDeprecated size={STANDARD_ICON_SIZE} />
-        <Text> - EmptyFavoritesDeprecated (deprecated) </Text>
-      </AlignedText>
-      <AlignedText>
         <EmailSentDeprecated size={STANDARD_ICON_SIZE} color={ColorsEnum.BLACK} />
         <Text> - EmailSentDeprecated (deprecated) </Text>
+      </AlignedText>
+      <Illustration name="EmailSent" component={EmailSent} isNew />
+      <AlignedText>
+        <EmptyFavoritesDeprecated size={STANDARD_ICON_SIZE} />
+        <Text> - EmptyFavoritesDeprecated (deprecated) </Text>
       </AlignedText>
       <Illustration name="EmptyFavorites" component={EmptyFavorites} isNew />
       <Illustration name="HappyFaceDeprecated" component={HappyFaceDeprecated} />
