@@ -15,6 +15,7 @@ Object {
           autocorrect="on"
           class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
           dir="auto"
+          id="testUuidV4"
           placeholder="placeholder"
           spellcheck="true"
           style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
@@ -35,6 +36,7 @@ Object {
         autocorrect="on"
         class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
         dir="auto"
+        id="testUuidV4"
         placeholder="placeholder"
         spellcheck="true"
         style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
@@ -102,7 +104,7 @@ exports[`<TextInput /> should render correctly when in error 1`] = `
 - First value
 + Second value
 
-@@ -41,11 +41,11 @@
+@@ -43,11 +43,11 @@
       </div>
     </body>,
     \\"container\\": <div>

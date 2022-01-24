@@ -57,13 +57,12 @@ Object {
                   class="css-view-1dbjc4n"
                   style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                 >
-                  <div
-                    class="css-text-901oao"
-                    dir="auto"
-                    style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                  <label
+                    class="sc-bdvvtL lavEYF"
+                    for="testUuidV4"
                   >
                     Nouvel e-mail
-                  </div>
+                  </label>
                   <div
                     class="css-text-901oao"
                     dir="auto"
@@ -82,10 +81,11 @@ Object {
                 >
                   <input
                     autocapitalize="none"
-                    autocomplete="on"
+                    autocomplete="email"
                     autocorrect="on"
                     class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
                     dir="auto"
+                    id="testUuidV4"
                     maxlength="120"
                     placeholder="tonadresse@email.com"
                     spellcheck="true"
@@ -107,13 +107,12 @@ Object {
                   class="css-view-1dbjc4n"
                   style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                 >
-                  <div
-                    class="css-text-901oao"
-                    dir="auto"
-                    style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                  <label
+                    class="sc-bdvvtL lavEYF"
+                    for="testUuidV4"
                   >
                     Mot de passe
-                  </div>
+                  </label>
                   <div
                     class="css-text-901oao"
                     dir="auto"
@@ -131,13 +130,14 @@ Object {
                   style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
                 >
                   <input
-                    aria-label="Entrée pour le mot de passe"
+                    aria-label="Mot de passe"
                     autocapitalize="sentences"
                     autocomplete="on"
                     autocorrect="on"
                     class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
-                    data-testid="Entrée pour le mot de passe"
+                    data-testid="Mot de passe"
                     dir="auto"
+                    id="testUuidV4"
                     placeholder="Ton mot de passe"
                     spellcheck="true"
                     style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
@@ -308,13 +308,12 @@ Object {
                 class="css-view-1dbjc4n"
                 style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
               >
-                <div
-                  class="css-text-901oao"
-                  dir="auto"
-                  style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                <label
+                  class="sc-bdvvtL lavEYF"
+                  for="testUuidV4"
                 >
                   Nouvel e-mail
-                </div>
+                </label>
                 <div
                   class="css-text-901oao"
                   dir="auto"
@@ -333,10 +332,11 @@ Object {
               >
                 <input
                   autocapitalize="none"
-                  autocomplete="on"
+                  autocomplete="email"
                   autocorrect="on"
                   class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
                   dir="auto"
+                  id="testUuidV4"
                   maxlength="120"
                   placeholder="tonadresse@email.com"
                   spellcheck="true"
@@ -358,13 +358,12 @@ Object {
                 class="css-view-1dbjc4n"
                 style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
               >
-                <div
-                  class="css-text-901oao"
-                  dir="auto"
-                  style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                <label
+                  class="sc-bdvvtL lavEYF"
+                  for="testUuidV4"
                 >
                   Mot de passe
-                </div>
+                </label>
                 <div
                   class="css-text-901oao"
                   dir="auto"
@@ -382,13 +381,14 @@ Object {
                 style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
               >
                 <input
-                  aria-label="Entrée pour le mot de passe"
+                  aria-label="Mot de passe"
                   autocapitalize="sentences"
                   autocomplete="on"
                   autocorrect="on"
                   class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
-                  data-testid="Entrée pour le mot de passe"
+                  data-testid="Mot de passe"
                   dir="auto"
+                  id="testUuidV4"
                   placeholder="Ton mot de passe"
                   spellcheck="true"
                   style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
