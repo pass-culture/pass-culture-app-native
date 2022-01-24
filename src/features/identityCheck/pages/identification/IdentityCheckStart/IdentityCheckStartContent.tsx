@@ -10,6 +10,7 @@ import { Spacer } from 'ui/components/spacer/Spacer'
 import { BicolorIdCardWithMagnifyingGlassDeprecated as BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass_deprecated'
 import { Plus } from 'ui/svg/icons/Plus'
 import { getSpacing, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 export function IdentityCheckStartContent() {
   const { visible, showModal, hideModal } = useModal(false)

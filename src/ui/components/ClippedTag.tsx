@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { accessibilityAndTestId } from 'tests/utils'
 import { Clear as ClearIcon } from 'ui/svg/icons/Clear'
 import { getSpacing, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {

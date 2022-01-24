@@ -3,6 +3,7 @@ import React from 'react'
 
 import { Separator } from 'ui/components/Separator'
 import { Spacer, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 export function ChangeEmailDisclaimer() {

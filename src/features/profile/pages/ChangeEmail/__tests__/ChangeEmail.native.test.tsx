@@ -8,6 +8,7 @@ import { CHANGE_EMAIL_ERROR_CODE } from 'features/profile/api'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { ChangeEmail } from '../ChangeEmail'

@@ -1,5 +1,6 @@
 import { ViewStyle } from 'react-native'
 
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum, UniqueColors } from 'ui/theme/colors'
 
 interface IconSharedProperties {

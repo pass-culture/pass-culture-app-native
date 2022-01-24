@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 interface Props {
   isSelected: boolean

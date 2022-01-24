@@ -2,6 +2,7 @@ import React, { Component, ReactElement } from 'react'
 import { StyleSheet, Text, TouchableOpacity } from 'react-native'
 import CodePush from 'react-native-code-push' // @codepush
 
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 interface State {

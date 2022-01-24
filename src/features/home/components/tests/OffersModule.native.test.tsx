@@ -10,6 +10,7 @@ import { mockedAlgoliaResponse } from 'libs/algolia/mockedResponses/mockedAlgoli
 import { analytics } from 'libs/analytics'
 import { SearchHit, transformHit } from 'libs/search'
 import { flushAllPromises, act, fireEvent, render } from 'tests/utils'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { OffersModule } from '../OffersModule'

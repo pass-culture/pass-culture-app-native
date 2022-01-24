@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {

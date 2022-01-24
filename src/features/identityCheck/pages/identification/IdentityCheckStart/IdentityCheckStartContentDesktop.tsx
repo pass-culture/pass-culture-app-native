@@ -10,6 +10,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {

@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { Background } from 'ui/svg/Background'
 import { getShadow, getSpacing, Spacer } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 const getCorrectPadding = (keyboardHeight: number) => {

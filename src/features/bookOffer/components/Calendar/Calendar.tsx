@@ -10,6 +10,7 @@ import { formatToFrenchDecimal } from 'libs/parsers'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { monthNames, monthNamesShort, dayNames, dayNamesShort } from './Calendar.utils'

@@ -2,6 +2,7 @@ import * as React from 'react'
 import Svg, { Circle, G } from 'react-native-svg'
 
 import { IconInterface } from 'ui/svg/icons/types'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = Omit<IconInterface, 'color'> & {

@@ -10,6 +10,7 @@ import { analytics } from 'libs/analytics'
 import { ButtonTertiaryGreyDark } from 'ui/components/buttons/ButtonTertiaryGreyDark'
 import { DotComponent } from 'ui/components/DotComponent'
 import { getSpacing, Spacer } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { ControlComponent } from './ControlComponent'

@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 import Svg, { Path, G } from 'react-native-svg'
 
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 const ratio = 303 / 38

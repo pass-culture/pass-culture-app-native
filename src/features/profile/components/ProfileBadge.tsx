@@ -5,6 +5,7 @@ import { handleCallToActionLink } from 'features/profile/utils'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo, Spacer } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 interface ProfileBadgeProps {
   message: string

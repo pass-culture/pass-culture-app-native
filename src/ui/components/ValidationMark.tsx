@@ -3,6 +3,7 @@ import React from 'react'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props extends Omit<IconInterface, 'testID'> {

@@ -1,5 +1,6 @@
 import React, { createContext, memo, useContext, useRef, useState } from 'react'
 
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { mapSnackBarTypeToStyle } from './mapSnackBarTypeToStyle'

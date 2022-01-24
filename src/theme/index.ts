@@ -3,6 +3,7 @@ import { Platform } from 'react-native'
 // eslint-disable-next-line no-restricted-imports
 import { isMobileDeviceDetectOnWeb, isTabletDeviceDetectOnWeb } from 'libs/react-device-detect'
 import { getSpacing, getSpacingString } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ACTIVE_OPACITY, ColorsEnum, UniqueColors } from 'ui/theme/colors'
 import {
   BOTTOM_CONTENT_PAGE_OFFSET_TOP_HEIGHT_DESKTOP_TABLET,
@@ -10,6 +11,7 @@ import {
   TAB_BAR_COMP_HEIGHT,
 } from 'ui/theme/constants'
 import { BorderRadiusEnum, Breakpoints } from 'ui/theme/grid'
+// eslint-disable-next-line no-restricted-imports
 import { ZIndex } from 'ui/theme/layers'
 
 const isNative = Platform.OS === 'ios' || Platform.OS === 'android'

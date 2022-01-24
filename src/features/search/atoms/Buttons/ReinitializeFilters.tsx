@@ -8,6 +8,7 @@ import { analytics } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { accessibilityAndTestId } from 'tests/utils'
 import { Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 export const ReinitializeFilters = () => {
   const { dispatch } = useStagedSearch()

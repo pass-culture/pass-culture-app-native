@@ -2,6 +2,7 @@ import * as React from 'react'
 import Svg, { Rect, G, Path } from 'react-native-svg'
 
 import { RectangleIconInterface } from 'ui/svg/icons/types'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 export const BirthdayCake: React.FunctionComponent<RectangleIconInterface> = ({

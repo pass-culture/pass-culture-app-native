@@ -2,6 +2,7 @@ import * as React from 'react'
 import Svg, { Defs, LinearGradient, Stop, Path, G } from 'react-native-svg'
 import { v1 as uuidv1 } from 'uuid'
 
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { getSpacing } from '../theme'

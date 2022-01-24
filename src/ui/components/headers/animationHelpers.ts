@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { Animated, Easing, NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
 import { getSpacing } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 const HEIGHT_END_OF_TRANSITION = getSpacing(20)
 

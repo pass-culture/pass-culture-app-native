@@ -5,6 +5,7 @@ import { accessibilityAndTestId } from 'tests/utils'
 import { BicolorSelector } from 'ui/svg/icons/BicolorSelector'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { Spacer, getSpacing } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 const SELECTOR_WIDTH = '80%'

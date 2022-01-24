@@ -10,6 +10,7 @@ import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
 import { Share } from 'ui/svg/icons/Share'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 interface HeaderIconProps {
   iconName: 'back' | 'share' | 'favorite' | 'favorite-filled'

@@ -15,6 +15,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Email } from 'ui/svg/icons/Email'
 import { Spacer, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { useAppSettings } from '../../settings'

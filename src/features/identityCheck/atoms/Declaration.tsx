@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { Quote } from 'ui/svg/icons/Quote'
 import { getSpacing, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 export const Declaration = ({ text, description }: { text: string; description: string }) => {
   return (

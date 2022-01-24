@@ -8,6 +8,7 @@ import { formatToSlashedFrenchDate } from 'libs/dates'
 import { formatToHour } from 'libs/parsers/formatDates'
 import { Clock } from 'ui/svg/icons/Clock'
 import { Spacer, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 type SubscriptionMessageBadgeProps = {

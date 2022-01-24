@@ -3,6 +3,7 @@ import { Path } from 'react-native-svg'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleIcon } from 'ui/svg/icons/types'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { SMALLER_ICON_SIZE } from 'ui/theme/constants'
 export const ExternalSiteFilled: React.FunctionComponent<AccessibleIcon> = ({

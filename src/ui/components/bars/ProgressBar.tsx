@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { UniqueColors, ColorsEnum } from 'ui/theme/colors'
 
 interface ProgressBarProps {

@@ -2,6 +2,7 @@ import React, { FC, Fragment } from 'react'
 
 import { Error } from 'ui/svg/icons/Error'
 import { Spacer } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { InputRule } from './rules/InputRule'

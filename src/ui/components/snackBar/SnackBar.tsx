@@ -16,6 +16,7 @@ import { ProgressBar } from 'ui/components/snackBar/ProgressBar'
 import { Close } from 'ui/svg/icons/Close'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 type RefType = RefObject<

@@ -3,6 +3,7 @@ import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
 
 import { IconInterface } from 'ui/svg/icons/types'
 import { svgIdentifier } from 'ui/svg/utils'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 export const Instrument: React.FunctionComponent<IconInterface> = ({

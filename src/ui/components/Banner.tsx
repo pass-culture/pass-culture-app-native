@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { Error } from 'ui/svg/icons/Error'
 import { Spacer, getSpacing, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 export const Banner: React.FC<{ title: string }> = ({ title }) => (

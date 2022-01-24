@@ -10,6 +10,7 @@ import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 export function LoggedOutHeader() {
   const { navigate } = useNavigation<UseNavigationType>()

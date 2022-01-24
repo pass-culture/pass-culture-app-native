@@ -11,6 +11,7 @@ import { server } from 'tests/server'
 import { flushAllPromises, superFlushWithAct, render, act, fireEvent } from 'tests/utils'
 import { showSuccessSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { ChangePassword } from '../ChangePassword'

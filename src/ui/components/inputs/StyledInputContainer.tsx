@@ -3,6 +3,7 @@ import { ViewStyle, View, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getShadow, getSpacing, padding } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = {

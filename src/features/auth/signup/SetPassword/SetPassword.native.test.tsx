@@ -2,6 +2,7 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { fireEvent, render, waitFor } from 'tests/utils'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { SetPassword } from './SetPassword'

@@ -1,5 +1,6 @@
 import { Platform, ViewStyle } from 'react-native'
 
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 type InputShadow = {

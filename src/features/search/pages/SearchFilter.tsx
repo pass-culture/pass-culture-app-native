@@ -10,6 +10,7 @@ import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import Section from 'features/search/sections'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { getSpacing, Spacer } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 const useScrollToEndOnTimeOrDateActivation = () => {

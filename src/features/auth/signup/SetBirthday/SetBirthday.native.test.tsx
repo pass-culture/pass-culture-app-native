@@ -9,6 +9,7 @@ import { mockDefaultSettings } from 'features/auth/__mocks__/settings'
 import { useAppSettings } from 'features/auth/settings'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, RenderAPI } from 'tests/utils'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { SetBirthday } from './SetBirthday'

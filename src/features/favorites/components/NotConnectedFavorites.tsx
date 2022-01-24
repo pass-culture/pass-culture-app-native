@@ -8,6 +8,7 @@ import { AppButton } from 'ui/components/buttons/AppButton'
 import { Background } from 'ui/svg/Background'
 import { CreateAccount } from 'ui/svg/icons/CreateAccount'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 export const NotConnectedFavorites = () => {
   const { navigate } = useNavigation<UseNavigationType>()
