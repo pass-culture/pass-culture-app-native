@@ -3,6 +3,7 @@ import { ReactTestInstance } from 'react-test-renderer'
 import waitForExpect from 'wait-for-expect'
 
 import { fireEvent, render } from 'tests/utils'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { DateInput, DateInputLabelText, DateInputRef } from './DateInput'

@@ -4,12 +4,15 @@ import { Platform, TextInput, TextInputProps } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
+// eslint-disable-next-line import/no-unresolved
 import validateDate from 'validate-date'
 
 import { accessibilityAndTestId } from 'tests/utils'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
+// eslint-disable-next-line no-restricted-imports
 import { ZIndex } from 'ui/theme/layers'
 
 interface ValidationBarProps {
