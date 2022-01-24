@@ -626,9 +626,9 @@ PODS:
   - RNScreens (3.10.1):
     - React-Core
     - React-RCTImage
-  - RNSentry (3.2.7):
+  - RNSentry (3.2.13):
     - React-Core
-    - Sentry (= 7.5.4)
+    - Sentry (= 7.9.0)
   - RNSVG (12.1.1):
     - React
   - SDWebImage (5.11.1):
@@ -637,9 +637,9 @@ PODS:
   - SDWebImageWebPCoder (0.8.4):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.10)
-  - Sentry (7.5.4):
-    - Sentry/Core (= 7.5.4)
-  - Sentry/Core (7.5.4)
+  - Sentry (7.9.0):
+    - Sentry/Core (= 7.9.0)
+  - Sentry/Core (7.9.0)
   - SocketRocket (0.6.0)
   - SSZipArchive (2.2.3)
   - Yoga (1.14.0)
@@ -957,7 +957,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 98b29e3828f0a53651c363937a7f7d92a19f1ba2
   FirebaseCoreDiagnostics: 56fb7216d87e0e6ec2feddefa9d8a392fe8b2c18
   FirebaseDynamicLinks: cf76a46274569da2d4491548a39ef35f3c1a992d
-  FirebaseFirestore: 7103ab89eff01c90ced62a65dc071e010eeec4a7
+  FirebaseFirestore: d09c620ac1fe1570cb1e909f6f165d6b55bc4ee0
   FirebaseInstallations: 830327b45345ffc859eaa9c17bcd5ae893fd5425
   FirebasePerformance: 0c01a7a496657d7cea86d40c0b1725259d164c6c
   FirebaseRemoteConfig: f6365883d7950d784ee97bcdbbf1e442d4fa6119
@@ -1042,11 +1042,11 @@ SPEC CHECKSUMS:
   RNPermissions: 4b54095940aea8c03fa3e6c92d4ac3647b31ed4e
   RNReanimated: 65583befd5706cc9c86ae9a081786181ced37b93
   RNScreens: 522705f2e5c9d27efb17f24aceb2bf8335bc7b8e
-  RNSentry: bf1f0970fffd3519a5cf553217f281bbb5b10de4
+  RNSentry: 0aa1567f66c20390f3834637fc4f73380dcd0774
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SDWebImageWebPCoder: f93010f3f6c031e2f8fb3081ca4ee6966c539815
-  Sentry: 5c5dd4005f3b7b9765d5a8871232cddbd0d888b7
+  Sentry: 2f7e91f247cfb05b05bd01e0b5d0692557a7687b
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
   SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
   Yoga: 32a18c0e845e185f4a2a66ec76e1fd1f958f22fa

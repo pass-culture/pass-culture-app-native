@@ -91,7 +91,7 @@
     "@react-navigation/native": "^6.0.6",
     "@react-navigation/stack": "^6.0.11",
     "@sentry/react": "^6.13.3",
-    "@sentry/react-native": "^3.1.1",
+    "@sentry/react-native": "^3.2.13",
     "@sentry/tracing": "^6.13.3",
     "@typeform/embed-react": "^1.1.2",
     "algoliasearch": "^4.6.0",
