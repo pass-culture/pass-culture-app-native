@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { navigateToHome } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { PageNotFoundIcon } from 'ui/svg/icons/PageNotFoundIcon'
+import { PageNotFoundIconDeprecated as PageNotFoundIcon } from 'ui/svg/icons/PageNotFoundIcon_deprecated'
 import { Typo } from 'ui/theme'
 
 export const PageNotFound: React.FC = () => {

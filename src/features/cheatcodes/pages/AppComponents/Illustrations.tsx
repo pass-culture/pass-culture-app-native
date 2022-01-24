@@ -11,14 +11,20 @@ import { EmptyFavoritesDeprecated } from 'ui/svg/icons/EmptyFavorites_deprecated
 import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { HappyFaceDeprecated } from 'ui/svg/icons/HappyFace_deprecated'
+import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
+import { MaintenanceConeDeprecated } from 'ui/svg/icons/MaintenanceCone_deprecated'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
 import { NoBookingsDeprecated } from 'ui/svg/icons/NoBookings_deprecated'
+import { NoOffer } from 'ui/svg/icons/NoOffer'
+import { NoOfferDeprecated } from 'ui/svg/icons/NoOffer_deprecated'
+import { PageNotFound } from 'ui/svg/icons/PageNotFound'
+import { PageNotFoundIconDeprecated } from 'ui/svg/icons/PageNotFoundIcon_deprecated'
+import { PhoneFlip } from 'ui/svg/icons/PhoneFlip'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { SadFaceDeprecated } from 'ui/svg/icons/SadFace_deprecated'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { TicketBookedDeprecated } from 'ui/svg/icons/TicketBooked_deprecated'
 import { IconInterface } from 'ui/svg/icons/types'
-import { PhoneError } from 'ui/svg/PhoneError'
 import { ColorsEnum } from 'ui/theme/colors'
 import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
@@ -45,9 +51,22 @@ export const Illustrations: FunctionComponent = () => {
       <Illustration name="EmptyFavorites" component={EmptyFavorites} isNew />
       <Illustration name="HappyFaceDeprecated" component={HappyFaceDeprecated} />
       <Illustration name="HappyFace" component={HappyFace} isNew />
+      <AlignedText>
+        <MaintenanceConeDeprecated
+          width={STANDARD_ICON_SIZE * 2}
+          height={STANDARD_ICON_SIZE}
+          color={ColorsEnum.BLACK}
+        />
+        <Text> - MaintenanceCone (deprecated) </Text>
+      </AlignedText>
+      <Illustration name="MaintenanceCone" component={MaintenanceCone} isNew />
       <Illustration name="NoBookingsDeprecated" component={NoBookingsDeprecated} />
       <Illustration name="NoBookings" component={NoBookings} isNew />
-      <Illustration name="PhoneError" component={PhoneError} isNew />
+      <Illustration name="NoOfferDeprecated" component={NoOfferDeprecated} />
+      <Illustration name="NoOffer" component={NoOffer} isNew />
+      <Illustration name="PageNotFoundDeprecated" component={PageNotFoundIconDeprecated} />
+      <Illustration name="PageNotFound" component={PageNotFound} isNew />
+      <Illustration name="PhoneFlip" component={PhoneFlip} isNew />
       <Illustration name="SadFaceDeprecated" component={SadFaceDeprecated} />
       <Illustration name="SadFace" component={SadFace} isNew />
       <AlignedText>

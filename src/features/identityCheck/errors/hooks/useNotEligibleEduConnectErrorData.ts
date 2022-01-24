@@ -7,7 +7,7 @@ import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBene
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Clock } from 'ui/svg/icons/Clock'
 import { InfoFraud } from 'ui/svg/icons/InfoFraud'
-import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
+import { MaintenanceConeDeprecated as MaintenanceCone } from 'ui/svg/icons/MaintenanceCone_deprecated'
 import { IconInterface } from 'ui/svg/icons/types'
 
 export enum EduConnectErrorMessageEnum {

@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { PhoneError } from 'ui/svg/PhoneError'
+import { PhoneFlip } from 'ui/svg/icons/PhoneFlip'
 import { Typo } from 'ui/theme'
 
 type LandscapePositionPageProps = {
@@ -18,7 +18,7 @@ export const LandscapePositionPage: React.FC<LandscapePositionPageProps> = ({ is
       <Helmet>
         <title>{t`Tourne-moi`}</title>
       </Helmet>
-      <GenericInfoPage title={t`Tourne-moi`} icon={PhoneError}>
+      <GenericInfoPage title={t`Tourne-moi`} icon={PhoneFlip}>
         <StyledBody>
           {t`Place ton téléphone ou ta tablette à la verticale pour afficher l’application.`}
         </StyledBody>
