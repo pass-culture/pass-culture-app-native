@@ -2,7 +2,8 @@ import * as React from 'react'
 import Svg, { Path, Circle } from 'react-native-svg'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, ILLUSTRATION_ICON_SIZE } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
+import { ILLUSTRATION_ICON_SIZE } from 'ui/theme/constants'
 
 export const PhoneFlip: React.FunctionComponent<IconInterface> = ({
   size = ILLUSTRATION_ICON_SIZE,

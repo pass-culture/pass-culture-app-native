@@ -10,7 +10,8 @@ import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { NoOfferDeprecated as NoOffer } from 'ui/svg/icons/NoOffer_deprecated'
-import { ColorsEnum, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
 
 export const VenueNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   const timer = useRef<number>()

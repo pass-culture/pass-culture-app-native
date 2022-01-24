@@ -25,7 +25,8 @@ import { SadFaceDeprecated } from 'ui/svg/icons/SadFace_deprecated'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { TicketBookedDeprecated } from 'ui/svg/icons/TicketBooked_deprecated'
 import { IconInterface } from 'ui/svg/icons/types'
-import { ColorsEnum, STANDARD_ICON_SIZE } from 'ui/theme'
+import { ColorsEnum } from 'ui/theme/colors'
+import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 export const Illustrations: FunctionComponent = () => {
   return (
