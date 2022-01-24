@@ -11,6 +11,7 @@ import { LargeTextInput } from 'ui/components/inputs/LargeTextInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer, Typo } from 'ui/theme'
 import { ColorsEnum } from 'ui/theme/colors'
+import { Form } from 'ui/web/form/Form'
 
 interface Props {
   dismissModal: () => void
@@ -42,7 +43,7 @@ export const ReportOfferOtherReason: FunctionComponent<Props> = (props) => {
   }
 
   return (
-    <React.Fragment>
+    <Form.MaxWidth>
       <Intro>{t`Décris en quelques mots la raison pour laquelle tu souhaites signaler cette offre.`}</Intro>
       <Spacer.Column numberOfSpaces={4} />
       <InputTitle>{t`Autre raison`}</InputTitle>
@@ -55,7 +56,7 @@ export const ReportOfferOtherReason: FunctionComponent<Props> = (props) => {
         onPress={reportOffer}
         testId="report-other-button"
       />
-    </React.Fragment>
+    </Form.MaxWidth>
   )
 }
 
