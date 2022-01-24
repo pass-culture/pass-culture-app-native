@@ -3,6 +3,7 @@ import { ReactTestInstance } from 'react-test-renderer'
 
 import { render } from 'tests/utils'
 import { StepDots } from 'ui/components/StepDots'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 describe('<StepDots />', () => {

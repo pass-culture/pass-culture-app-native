@@ -9,6 +9,7 @@ import { useSubcategory } from 'libs/subcategories'
 import { Clock } from 'ui/svg/icons/Clock'
 import { Duo } from 'ui/svg/icons/Duo'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { getBookingProperties, getBookingLabels } from '../helpers'

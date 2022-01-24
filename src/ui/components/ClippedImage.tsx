@@ -6,6 +6,7 @@ import { Image } from 'libs/react-native-svg/Image'
 import { OfferDigital } from 'ui/svg/icons/OfferDigital'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getShadow } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 export type ClippedImageProps = {

@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { NextArrowIcon } from 'features/home/assets/NextArrowIcon'
 import { getSpacing, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { BACKGROUND_IMAGE_SOURCE } from './backgroundImageSource'

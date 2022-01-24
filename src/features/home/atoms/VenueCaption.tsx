@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { VenueTypeCodeKey } from 'api/gen'
 import { mapVenueTypeToIcon, parseTypeHomeLabel } from 'libs/parsers'
 import { Typo, GUTTER_DP, getSpacing, Spacer } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 interface VenueCaptionProps {

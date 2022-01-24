@@ -11,6 +11,7 @@ import { env } from 'libs/environment'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 

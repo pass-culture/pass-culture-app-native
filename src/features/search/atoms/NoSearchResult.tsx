@@ -7,6 +7,7 @@ import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { NoOfferDeprecated as NoOffer } from 'ui/svg/icons/NoOffer_deprecated'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 export const NoSearchResult: React.FC = () => {

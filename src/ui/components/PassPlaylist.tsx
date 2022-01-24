@@ -8,6 +8,7 @@ import { accessibilityAndTestId } from 'tests/utils'
 import { Playlist, RenderFooterItem, RenderHeaderItem } from 'ui/components/Playlist'
 import { EyeSophisticated } from 'ui/svg/icons/EyeSophisticated'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 type Props = Pick<
   ComponentProps<typeof Playlist>,

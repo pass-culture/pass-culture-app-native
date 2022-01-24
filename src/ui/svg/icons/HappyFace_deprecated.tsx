@@ -1,6 +1,7 @@
 import * as React from 'react'
 import Svg, { Path } from 'react-native-svg'
 
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 

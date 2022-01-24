@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { fireEvent, render } from 'tests/utils'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { DotComponent, getDotColors } from './DotComponent'

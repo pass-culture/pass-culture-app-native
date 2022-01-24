@@ -6,6 +6,7 @@ import { OfferVenueResponse } from 'api/gen'
 import { Digital } from 'ui/svg/icons/Digital'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 type Props = {
   venue: OfferVenueResponse

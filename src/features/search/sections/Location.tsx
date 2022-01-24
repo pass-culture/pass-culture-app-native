@@ -12,6 +12,7 @@ import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Typo, Spacer, getSpacing } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 export const Location: React.FC = () => {

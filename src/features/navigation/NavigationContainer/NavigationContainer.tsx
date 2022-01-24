@@ -12,6 +12,7 @@ import { linking } from 'features/navigation/RootNavigator/linking'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { LoadingPage } from 'ui/components/LoadingPage'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { author } from '../../../../package.json'

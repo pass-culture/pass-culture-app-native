@@ -3,6 +3,7 @@ import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 const NON_BREAKING_SPACE = '\xa0'
 

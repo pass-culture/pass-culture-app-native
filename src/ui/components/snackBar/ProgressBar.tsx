@@ -3,6 +3,7 @@ import { useWindowDimensions } from 'react-native'
 import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { ProgressBarProps } from './ProgressBar.types'

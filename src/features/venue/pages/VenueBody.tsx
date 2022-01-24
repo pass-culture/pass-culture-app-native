@@ -19,6 +19,7 @@ import { PartialAccordionDescription } from 'ui/components/PartialAccordionDescr
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { useVenue } from '../api/useVenue'

@@ -12,6 +12,7 @@ import { DeeplinksResult } from 'features/_marketingAndCommunication/components/
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing, Spacer } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 const linksInitialState: Array<GeneratedDeeplink> = []

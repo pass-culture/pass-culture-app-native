@@ -13,6 +13,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 export function IdentityCheckValidation() {

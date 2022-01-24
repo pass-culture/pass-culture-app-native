@@ -3,6 +3,7 @@ import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Typo, MARGIN_DP } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 export const ModuleTitle = (props: { title: string; color?: ColorsEnum }) => {

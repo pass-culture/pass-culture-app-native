@@ -2,6 +2,7 @@ import React from 'react'
 
 import { ExpenseDomain } from 'api/gen'
 import { render } from 'tests/utils'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { CreditCeiling } from './CreditCeiling'

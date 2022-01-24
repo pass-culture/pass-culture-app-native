@@ -2,6 +2,7 @@ import * as React from 'react'
 import Svg, { Path } from 'react-native-svg'
 
 import { IconInterface } from 'ui/svg/icons/types'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { ILLUSTRATION_ICON_SIZE } from 'ui/theme/constants'
 

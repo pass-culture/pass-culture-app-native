@@ -1,6 +1,7 @@
 import React, { useEffect, useState, memo } from 'react'
 import styled from 'styled-components/native'
 
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { ProgressBarProps } from './ProgressBar.types'

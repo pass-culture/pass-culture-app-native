@@ -3,6 +3,7 @@ import Svg, { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
 
 import { svgIdentifier } from 'ui/svg/utils'
 import { getSpacing } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { RectangleIconInterface } from './types'

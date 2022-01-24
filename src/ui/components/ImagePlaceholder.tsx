@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { IconInterface } from 'ui/svg/icons/types'
 import { ImagePlaceholderVenue } from 'ui/svg/ImagePlaceholderVenue'
 import { LENGTH_M } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 

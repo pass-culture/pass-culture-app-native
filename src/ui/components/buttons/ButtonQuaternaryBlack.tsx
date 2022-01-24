@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 
 import { AppButton, BaseButtonProps } from 'ui/components/buttons/AppButton'
 import { getSpacing } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 export const ButtonQuaternaryBlack: FunctionComponent<BaseButtonProps> = (props) => {
   let textColor = ColorsEnum.BLACK

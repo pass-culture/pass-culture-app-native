@@ -10,6 +10,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 type Props = StackScreenProps<RootStackParamList, 'NotYetUnderageEligibility'>
 

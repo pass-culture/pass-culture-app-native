@@ -6,6 +6,7 @@ import { analytics } from 'libs/analytics'
 import * as datesLib from 'libs/dates'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { superFlushWithAct, fireEvent, render } from 'tests/utils'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { ReinitializePassword } from '../ReinitializePassword'

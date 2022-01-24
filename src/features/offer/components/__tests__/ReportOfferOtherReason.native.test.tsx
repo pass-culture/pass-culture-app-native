@@ -7,6 +7,7 @@ import { ReportOfferOtherReason } from 'features/offer/components/ReportOfferOth
 import { QueryKeys } from 'libs/queryKeys'
 import { fireEvent, render, useMutationFactory } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 jest.mock('react-query')

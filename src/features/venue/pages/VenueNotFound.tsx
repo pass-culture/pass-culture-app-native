@@ -11,6 +11,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { NoOfferDeprecated as NoOffer } from 'ui/svg/icons/NoOffer_deprecated'
 import { Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 export const VenueNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {

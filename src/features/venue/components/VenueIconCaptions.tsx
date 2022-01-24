@@ -10,6 +10,7 @@ import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { PointerLocationNotFilled } from 'ui/svg/icons/PointerLocationNotFilled'
 import { PointerLocationNotFilledDisabled } from 'ui/svg/icons/PointerLocationNotFilledDisabled'
 import { getSpacing, Spacer } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = { type: VenueTypeCodeKey | null; label: string; locationCoordinates: Coordinates }

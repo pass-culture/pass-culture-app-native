@@ -6,6 +6,7 @@ import { accessibilityAndTestId } from 'tests/utils'
 import { Logo } from 'ui/svg/icons/Logo'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 export interface BaseButtonProps {
   accessibilityLabel?: string

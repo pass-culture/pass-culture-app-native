@@ -6,6 +6,7 @@ import { useNavigateToSearchResults } from 'features/search/utils/useNavigateToS
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { EmptyFavoritesDeprecated as EmptyFavorites } from 'ui/svg/icons/EmptyFavorites_deprecated'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 

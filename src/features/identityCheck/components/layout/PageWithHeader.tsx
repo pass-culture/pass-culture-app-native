@@ -7,6 +7,7 @@ import { PageHeader } from 'features/identityCheck/atoms/layout/PageHeader'
 import { useShouldEnableScrollOnView } from 'features/identityCheck/utils/useShouldEnableScrollView'
 import { Background } from 'ui/svg/Background'
 import { getSpacing, Spacer } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {

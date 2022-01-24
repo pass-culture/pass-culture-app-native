@@ -8,6 +8,7 @@ import { HeroHeader } from 'ui/components/hero/HeroHeader'
 import { heroMarginTop, useHeroDimensions } from 'ui/components/hero/useHeroDimensions'
 import { ImagePlaceholder, ImagePlaceholderProps } from 'ui/components/ImagePlaceholder'
 import { getSpacing, Spacer, getShadow } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { BorderRadiusEnum } from 'ui/theme/grid'
 

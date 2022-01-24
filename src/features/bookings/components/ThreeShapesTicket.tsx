@@ -4,6 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { TicketFooter } from 'ui/svg/TicketFooter'
 import { TicketHeader } from 'ui/svg/TicketHeader'
 import { getShadow, getSpacing } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = PropsWithChildren<{

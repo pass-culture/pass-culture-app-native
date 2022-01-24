@@ -1,6 +1,7 @@
 import { Check } from 'ui/svg/icons/Check'
 import { Error } from 'ui/svg/icons/Error'
 import { Info } from 'ui/svg/icons/Info'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { SnackBarSettings, SnackBarType } from './types'

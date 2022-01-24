@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 
 import { Dot } from 'ui/svg/icons/Dot'
 import { getSpacing } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 export function getDotColors(
   stepIndex: number,

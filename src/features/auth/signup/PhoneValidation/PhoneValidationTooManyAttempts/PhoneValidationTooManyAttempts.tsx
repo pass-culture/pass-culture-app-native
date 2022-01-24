@@ -10,6 +10,7 @@ import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { AccountLocked } from 'ui/svg/icons/AccountLocked'
 import { Email } from 'ui/svg/icons/Email'
 import { Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 export function PhoneValidationTooManyAttempts() {
   return (

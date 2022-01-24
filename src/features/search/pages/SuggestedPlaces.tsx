@@ -15,6 +15,7 @@ import { SuggestedVenue } from 'libs/venue'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 type SuggestedPlaceOrVenue = SuggestedPlace | SuggestedVenue

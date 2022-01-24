@@ -4,6 +4,7 @@ import waitForExpect from 'wait-for-expect'
 import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { fireEvent, render, waitFor } from 'tests/utils'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 jest.mock('features/auth/settings')

@@ -13,6 +13,7 @@ import { useUserProfileInfo } from 'features/home/api'
 import { useCreditForOffer } from 'features/offer/services/useHasEnoughCredit'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { getSpacing, Spacer } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {

@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { ArrowNextDouble } from 'ui/svg/icons/ArrowNextDouble'
 import { getSpacing } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 interface Props {
   height: number

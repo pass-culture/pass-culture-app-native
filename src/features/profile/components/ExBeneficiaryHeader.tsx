@@ -6,6 +6,7 @@ import { DomainsCredit } from 'api/gen/api'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Typo, Spacer } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { accordionStyle, GreyContainer, Description } from './reusables'

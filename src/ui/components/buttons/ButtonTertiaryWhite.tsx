@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 
 import { AppButton, BaseButtonProps } from 'ui/components/buttons/AppButton'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 export const ButtonTertiaryWhite: FunctionComponent<BaseButtonProps> = (props) => {

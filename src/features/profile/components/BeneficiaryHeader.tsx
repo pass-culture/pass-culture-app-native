@@ -8,6 +8,7 @@ import { computeCredit, useIsUserUnderageBeneficiary } from 'features/profile/ut
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Typo, Spacer } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 type BeneficiaryHeaderProps = {

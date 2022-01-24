@@ -2,6 +2,7 @@ import React from 'react'
 
 import { render } from 'tests/utils'
 import { Close } from 'ui/svg/icons/Close'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { AppButton } from './AppButton'

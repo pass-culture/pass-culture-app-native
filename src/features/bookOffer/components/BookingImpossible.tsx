@@ -13,6 +13,7 @@ import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SadFaceDeprecated as SadFace } from 'ui/svg/icons/SadFace_deprecated'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 export const BookingImpossible: React.FC = () => {
   const { bookingState, dismissModal } = useBooking()
