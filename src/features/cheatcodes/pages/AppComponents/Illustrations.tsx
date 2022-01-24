@@ -27,6 +27,7 @@ import { Notification } from 'ui/svg/icons/Notification'
 import { PageNotFound } from 'ui/svg/icons/PageNotFound'
 import { PageNotFoundIconDeprecated } from 'ui/svg/icons/PageNotFoundIcon_deprecated'
 import { PhoneFlip } from 'ui/svg/icons/PhoneFlip'
+import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { RequestSentDeprecated } from 'ui/svg/icons/RequestSent_deprecated'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { SadFaceDeprecated } from 'ui/svg/icons/SadFace_deprecated'
@@ -87,6 +88,7 @@ export const Illustrations: FunctionComponent = () => {
       <Illustration name="PageNotFound" component={PageNotFound} isNew />
       <Illustration name="PhoneFlip" component={PhoneFlip} isNew />
       <Illustration name="RequestSentDeprecated" component={RequestSentDeprecated} />
+      <Illustration name="RequestSent" component={RequestSent} isNew />
       <Illustration name="SadFaceDeprecated" component={SadFaceDeprecated} />
       <Illustration name="SadFace" component={SadFace} isNew />
       <AlignedText>
