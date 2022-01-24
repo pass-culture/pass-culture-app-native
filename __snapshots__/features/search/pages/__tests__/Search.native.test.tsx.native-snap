@@ -122,6 +122,7 @@ exports[`Search component should render correctly 1`] = `
       <TextInput
         accessibilityLabel="Barre de recherche des offres"
         accessible={true}
+        aria-describedby="testUuidV4"
         autoCorrect={false}
         editable={true}
         onBlur={[Function]}
@@ -153,6 +154,19 @@ exports[`Search component should render correctly 1`] = `
         value=""
       />
     </View>
+    <Text
+      nativeID="testUuidV4"
+      style={
+        Array [
+          Object {
+            "display": "none",
+          },
+        ]
+      }
+    >
+      Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche
+"Entrée"
+    </Text>
   </View>
   <RCTScrollView
     contentContainerStyle={
@@ -286,6 +300,18 @@ exports[`Search component should render correctly 1`] = `
           </View>
         </View>
       </View>
+      <Text
+        nativeID="testUuidV4"
+        style={
+          Array [
+            Object {
+              "display": "none",
+            },
+          ]
+        }
+      >
+        Clique ici pour accéder à la liste des catégories afin d'affiner les résultats puis lance la recherche à l'aide du bouton "Rechercher"
+      </Text>
       <View
         isSmallWebViewportHeight={false}
         style={
@@ -410,6 +436,18 @@ exports[`Search component should render correctly 1`] = `
           </View>
         </View>
       </View>
+      <Text
+        nativeID="testUuidV4"
+        style={
+          Array [
+            Object {
+              "display": "none",
+            },
+          ]
+        }
+      >
+        Clique ici pour affiner ta recherche en fonction d'un lieu ou de ta géolocalisation puis lance la recherche à l'aide du bouton "Rechercher"
+      </Text>
       <View
         flex={2}
         style={

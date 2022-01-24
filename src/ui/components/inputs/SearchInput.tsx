@@ -20,7 +20,8 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
   const [isFocus, setIsFocus] = useState<boolean>(false)
   const nativeProps = getRNTextInputProps(props)
   const customProps = getCustomSearchInputProps(props)
-  const { LeftIcon, label, accessibilityLabel, onPressRightIcon } = customProps
+  const { LeftIcon, label, accessibilityLabel, accessibilityDescribedBy, onPressRightIcon } =
+    customProps
   const { value = '' } = nativeProps
 
   function onFocus() {
@@ -55,7 +56,8 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           autoCorrect={false}
           returnKeyType="search"
           selectionColor={ColorsEnum.GREY_DARK}
-          {...accessibilityAndTestId(accessibilityLabel)}
+          aria-describedby={accessibilityDescribedBy}
+          {...accessibilityAndTestId(accessibilityLabel, undefined)}
         />
         {value.length > 0 && (
           <RightIconContainer

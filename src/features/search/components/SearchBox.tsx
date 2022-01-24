@@ -6,12 +6,14 @@ import {
   TextInputSubmitEditingEventData,
   TouchableOpacity,
 } from 'react-native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import { accessibilityAndTestId } from 'tests/utils'
+import { HiddenText } from 'ui/components/HiddenText'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
@@ -35,6 +37,7 @@ export const SearchBox: React.FC = () => {
   const { searchState, dispatch } = useSearch()
   const { searchState: stagedSearchState, dispatch: stagedDispatch } = useStagedSearch()
   const [query, _setQuery] = useState<string>('')
+  const accessibilityDescribedBy = uuidv4()
 
   function setQuery(value: string) {
     stagedDispatch({ type: 'SET_QUERY', payload: value })
@@ -79,16 +82,23 @@ export const SearchBox: React.FC = () => {
   }
 
   return (
-    <SearchInput
-      value={query}
-      onChangeText={setQuery}
-      placeholder={t`Titre, artiste, lieu...`}
-      autoFocus={false}
-      inputHeight="tall"
-      LeftIcon={() => <LeftIcon onPressArrowBack={onPressArrowBack} />}
-      onSubmitEditing={onSubmitQuery}
-      accessibilityLabel={t`Barre de recherche des offres`}
-      onPressRightIcon={resetSearch}
-    />
+    <React.Fragment>
+      <SearchInput
+        value={query}
+        onChangeText={setQuery}
+        placeholder={t`Titre, artiste, lieu...`}
+        autoFocus={false}
+        inputHeight="tall"
+        LeftIcon={() => <LeftIcon onPressArrowBack={onPressArrowBack} />}
+        onSubmitEditing={onSubmitQuery}
+        accessibilityLabel={t`Barre de recherche des offres`}
+        onPressRightIcon={resetSearch}
+        accessibilityDescribedBy={accessibilityDescribedBy}
+      />
+      <HiddenText nativeID={accessibilityDescribedBy}>
+        {t`Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche
+        "Entrée"`}
+      </HiddenText>
+    </React.Fragment>
   )
 }

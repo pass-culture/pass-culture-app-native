@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { ScrollView, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnum } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -12,6 +13,7 @@ import { CATEGORY_CRITERIA, LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { useSearchGroupLabel } from 'libs/subcategories'
+import { HiddenText } from 'ui/components/HiddenText'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -33,20 +35,35 @@ export const SearchLandingPage: React.FC = () => {
 
   const mqSmallWebViewportHeight = useMediaQuery({ maxHeight: SMALL_VIEWPORT_MAX_HEIGHT }, 'web')
 
+  const searchCategoriesDescribedBy = uuidv4()
+  const locationFilterDescribedBy = uuidv4()
+
   return (
     <React.Fragment>
       <ScrollView contentContainerStyle={contentContainerStyle}>
         <Spacer.Flex flex={mqSmallWebViewportHeight ? 0.5 : 1} />
 
-        <TouchableOpacity onPress={() => navigate('SearchCategories')}>
+        <TouchableOpacity
+          onPress={() => navigate('SearchCategories')}
+          aria-describedby={searchCategoriesDescribedBy}>
           <BicolorListItem title={searchGroupLabel} Icon={Icon} secondaryText={t`Je cherche`} />
         </TouchableOpacity>
+        <HiddenText
+          nativeID={
+            searchCategoriesDescribedBy
+          }>{t`Clique ici pour accéder à la liste des catégories afin d'affiner les résultats puis lance la recherche à l'aide du bouton "Rechercher"`}</HiddenText>
 
         <Separator isSmallWebViewportHeight={mqSmallWebViewportHeight} />
 
-        <TouchableOpacity onPress={() => navigate('LocationFilter')}>
+        <TouchableOpacity
+          onPress={() => navigate('LocationFilter')}
+          aria-describedby={locationFilterDescribedBy}>
           <BicolorListItem title={locationLabel} Icon={LocationIcon} secondaryText={t`Où`} />
         </TouchableOpacity>
+        <HiddenText
+          nativeID={
+            locationFilterDescribedBy
+          }>{t`Clique ici pour affiner ta recherche en fonction d'un lieu ou de ta géolocalisation puis lance la recherche à l'aide du bouton "Rechercher"`}</HiddenText>
 
         {!mqSmallWebViewportHeight && <Spacer.Flex flex={2} />}
       </ScrollView>

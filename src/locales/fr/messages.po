@@ -452,6 +452,14 @@ msgstr "Choix du status"
 msgid "Cinéma - Salle de projections"
 msgstr "Cinéma - Salle de projections"
 
+#: src/features/search/components/SearchLandingPage.tsx
+msgid "Clique ici pour accéder à la liste des catégories afin d'affiner les résultats puis lance la recherche à l'aide du bouton \"Rechercher\""
+msgstr "Clique ici pour accéder à la liste des catégories afin d'affiner les résultats puis lance la recherche à l'aide du bouton \"Rechercher\""
+
+#: src/features/search/components/SearchLandingPage.tsx
+msgid "Clique ici pour affiner ta recherche en fonction d'un lieu ou de ta géolocalisation puis lance la recherche à l'aide du bouton \"Rechercher\""
+msgstr "Clique ici pour affiner ta recherche en fonction d'un lieu ou de ta géolocalisation puis lance la recherche à l'aide du bouton \"Rechercher\""
+
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 msgid "Clique sur le lien reçu à l'adresse :"
@@ -1134,9 +1142,21 @@ msgstr "Il y a déjà une demande de crédit pass Culture en cours sur ton compt
 msgid "Il y a eu un problème. Tu peux réessayer plus tard"
 msgstr "Il y a eu un problème. Tu peux réessayer plus tard"
 
+#: src/features/search/components/SearchBox.tsx
+msgid ""
+"Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche\n"
+"\"Entrée\""
+msgstr ""
+"Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche\n"
+"\"Entrée\""
+
 #: src/features/identityCheck/pages/profile/SetCity.tsx
 msgid "Indique ton code postal et choisis ta ville"
 msgstr "Indique ton code postal et choisis ta ville"
+
+#: src/features/search/pages/LocationPicker.tsx
+msgid "Indique un lieu pour découvrir toutes les offres de ce lieu puis clique sur le lieu pour valider ton choix"
+msgstr "Indique un lieu pour découvrir toutes les offres de ce lieu puis clique sur le lieu pour valider ton choix"
 
 #: src/features/profile/pages/PersonalData.tsx
 #: src/features/profile/pages/Profile.tsx

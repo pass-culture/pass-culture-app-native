@@ -10,6 +10,7 @@ import { getSpacing, Typo } from 'ui/theme'
 import { ColorsEnum } from 'ui/theme/colors'
 export interface BaseButtonProps {
   accessibilityLabel?: string
+  accessibilityDescribedBy?: string
   adjustsFontSizeToFit?: boolean
   buttonHeight?: 'small' | 'tall'
   disabled?: boolean
@@ -58,6 +59,7 @@ const _AppButton = <T extends AppButtonProps>({
   buttonHeight,
   inlineHeight,
   accessibilityLabel,
+  accessibilityDescribedBy,
   testId,
   title,
   textColor,
@@ -73,6 +75,7 @@ const _AppButton = <T extends AppButtonProps>({
   return (
     <StyledTouchableOpacity
       {...accessibilityAndTestId(accessibilityLabel || title, testId || title)}
+      aria-describedby={accessibilityDescribedBy}
       backgroundColor={backgroundColor}
       fullWidth={fullWidth}
       borderColor={borderColor}
