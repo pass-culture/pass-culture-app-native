@@ -6,6 +6,7 @@ import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
+import { useEduConnectLogin } from 'features/identityCheck/utils/useEduConnectLogin'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -20,12 +21,22 @@ export const IdentityCheckEduConnect = () => {
   const { dispatch } = useIdentityCheckContext()
   const { goBack } = useGoBack(...homeNavConfig)
 
+  const { error } = useEduConnectLogin()
+
   const onGoBack = () => {
     dispatch({ type: 'SET_METHOD', payload: null })
     goBack()
   }
 
-  useEnterKeyAction(navigateToNextScreen)
+  const onSubmit = () => {
+    navigateToNextScreen()
+  }
+
+  useEnterKeyAction(onSubmit)
+
+  if (error) {
+    throw error
+  }
 
   return (
     <PageWithHeader
@@ -54,7 +65,7 @@ export const IdentityCheckEduConnect = () => {
         </Container>
       }
       fixedBottomChildren={
-        <ButtonPrimary wording={`Connexion avec ÉduConnect`} onPress={navigateToNextScreen} />
+        <ButtonPrimary wording={`Connexion avec ÉduConnect`} onPress={onSubmit} />
       }
     />
   )

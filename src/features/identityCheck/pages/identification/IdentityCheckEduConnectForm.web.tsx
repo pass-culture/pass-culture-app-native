@@ -1,58 +1,21 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect } from '@react-navigation/native'
-import React, { useCallback, useState } from 'react'
+import React from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import styled from 'styled-components/native'
 
 import { ErrorTrigger } from 'features/identityCheck/atoms/ErrorTrigger'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { EduConnectErrorBoundary } from 'features/identityCheck/errors/eduConnect/EduConnectErrorBoundary'
-import { EduConnectError } from 'features/identityCheck/errors/eduConnect/types'
-import { EduConnectErrorMessageEnum } from 'features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData'
-import { eduConnectClient } from 'libs/eduConnectClient'
+import { useEduConnectLogin } from 'features/identityCheck/utils/useEduConnectLogin'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { BicolorIdCardWithMagnifyingGlassDeprecated as BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass_deprecated'
 import { Info } from 'ui/svg/icons/Info'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
+
 export const IdentityCheckEduConnectForm = () => {
-  const [error, setError] = useState<EduConnectError | null>(null)
-
-  const openEduConnect = useCallback(() => {
-    const windowReference = globalThis.window.open()
-
-    async function setWebView() {
-      try {
-        const { getAccessToken, getLoginUrl } = eduConnectClient
-        const accessToken = await getAccessToken()
-        const { status, headers } = await fetch(`${getLoginUrl()}?redirect=false`, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-          mode: 'cors',
-          credentials: 'include',
-        })
-        if (status === 204) {
-          const finalURL = headers.get('educonnect-redirect')
-          if (finalURL && windowReference) {
-            windowReference.location = finalURL
-            return
-          }
-          setError(new EduConnectError(EduConnectErrorMessageEnum.GenericError))
-        }
-      } catch (err) {
-        setError(new EduConnectError(EduConnectErrorMessageEnum.GenericError))
-      }
-    }
-    setWebView()
-  }, [eduConnectClient])
-
-  useFocusEffect(
-    useCallback(() => {
-      openEduConnect()
-    }, [openEduConnect])
-  )
+  const { error, openEduConnect } = useEduConnectLogin()
 
   if (error) {
     throw error
