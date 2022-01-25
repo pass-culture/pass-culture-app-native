@@ -4,6 +4,8 @@
 <dict>
 	<key>BatchAPIKey</key>
 	<string>$(BATCH_API_KEY_IOS)</string>
+    <key>WebAppV2Domain</key>
+    <string>$(WEBAPP_V2_DOMAIN)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>fr</string>
 	<key>CFBundleDisplayName</key>

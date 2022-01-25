@@ -1,5 +1,6 @@
+// eslint-disable-next-line no-restricted-imports
+import { BatchPush } from '@bam.tech/react-native-batch'
 import dynamicLinks from '@react-native-firebase/dynamic-links'
-import { Linking } from 'react-native'
 
 import { WEBAPP_V2_URL } from 'libs/environment'
 
@@ -11,7 +12,7 @@ export async function getInitialURL(): Promise<string> {
   if (dynamicLinkUrl) {
     return dynamicLinkUrl.url
   }
-  const url = await Linking.getInitialURL()
+  const url = await BatchPush.getInitialURL()
   if (url) {
     return url
   }

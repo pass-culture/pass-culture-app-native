@@ -56,10 +56,14 @@ static void InitializeFlipper(UIApplication *application) {
                                                    moduleName:@"PassCulture"
                                             initialProperties:nil];
 
-  [RNBatch start];
+//   [Batch start]
+  NSString* BatchApiKey = [plistConfig valueForKey:@"BatchApiKey"];
+  [Batch startWithAPIKey:BatchApiKey];
+
   [BatchUNUserNotificationCenterDelegate registerAsDelegate];
   [BatchUNUserNotificationCenterDelegate sharedInstance].showForegroundNotifications = true;
   [BatchEventDispatcher addDispatcher:[BatchFirebaseDispatcher instance]];
+
   rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -68,8 +72,8 @@ static void InitializeFlipper(UIApplication *application) {
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
 
-  NSString* BatchKey = [plistConfig valueForKey:@"BATCH_API_KEY_IOS"];
-  [Batch startWithAPIKey:BatchKey];
+  NSString* WebAppV2Domain = [plistConfig valueForKey:@"WebAppV2Domain"];
+  [Batch setAssociatedDomains:WebAppV2Domain];
 
   [RNSplashScreen show]; // react-native-splash-screen
   return YES;

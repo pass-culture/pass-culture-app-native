@@ -440,10 +440,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = "$(IOS_APP_ICON)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = PassCulture/PassCulture.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "$(IOS_TEAM_ID)";
+				DEVELOPMENT_TEAM = WBC4X3LRTS;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -462,7 +462,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "$(IOS_APP_ID)";
 				PRODUCT_NAME = PassCulture;
-				PROVISIONING_PROFILE_SPECIFIER = "$(IOS_PROVISIONING_PROFILE_SPECIFIER_RELEASE)";
+				PROVISIONING_PROFILE_SPECIFIER = "match AdHoc app.passculture.test";
 				SWIFT_OBJC_BRIDGING_HEADER = "PassCulture-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
