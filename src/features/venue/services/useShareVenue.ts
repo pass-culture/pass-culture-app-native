@@ -15,7 +15,7 @@ export function getVenueUrl(id: number) {
   return `${WEBAPP_V2_URL}${path}`
 }
 
-const shareVenue = async (venue: VenueResponse) => {
+const getShareContentFromVenue = (venue: VenueResponse) => {
   const message = t({
     id: 'share venue message',
     values: { name: venue.publicName || venue.name },
@@ -24,17 +24,21 @@ const shareVenue = async (venue: VenueResponse) => {
 
   const url = getVenueUrl(venue.id)
 
-  // url share content param is only for iOs, so we add url in message for android
+  // url share content param is only for iOS, so we add url in message for android
   const completeMessage = Platform.OS === 'ios' ? message : message.concat(`\n\n${url}`)
 
-  const shareContent = {
+  return {
     message: completeMessage,
     url, // iOS only
     title: message, // android only
   }
+}
+
+const shareVenue = async (venue: VenueResponse) => {
+  const shareContent = getShareContentFromVenue(venue)
   const shareOptions = {
-    subject: message, // iOS only
-    dialogTitle: message, // android only
+    subject: shareContent.title, // iOS only
+    dialogTitle: shareContent.title, // android only
   }
   await share(shareContent, shareOptions)
 }
