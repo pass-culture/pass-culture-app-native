@@ -24,11 +24,5 @@ export async function share(content: ShareContent, options: ShareOptions): Promi
     // eslint-disable-next-line no-restricted-properties
     await Share.share(content, options)
   }
-  if (Platform.OS === 'web') {
-    // const { title, message, url } = content
-    // await navigator.share(
-    //   { title, text: message, url, hashtags: 'PassCulture' },
-    //   WEB_DESKTOP_SHARE_API_OPTIONS
-    // )
-  }
+  // On web, the share feature is supported by the WebShareModal component.
 }
