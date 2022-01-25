@@ -12,7 +12,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { Error } from 'ui/svg/icons/Error'
+import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
 import { Typo } from 'ui/theme'
 
 export function ConfirmDeleteProfile() {
@@ -42,7 +42,7 @@ export function ConfirmDeleteProfile() {
   return (
     <GenericInfoPage
       title={t`Es-tu sûr de vouloir supprimer ton compte\u00a0?`}
-      icon={Error}
+      icon={ErrorIllustration}
       buttons={[
         <ButtonPrimaryWhite
           key={1}

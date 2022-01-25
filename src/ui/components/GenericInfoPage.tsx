@@ -19,7 +19,7 @@ type Props = {
 }
 
 const ANIMATION_SIZE = getSpacing(45)
-const ICON_SIZE = getSpacing(35)
+const ICON_SIZE = getSpacing(50)
 
 export const GenericInfoPage: FunctionComponent<Props> = ({
   children,

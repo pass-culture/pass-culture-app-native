@@ -9,7 +9,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { AppFullPageModal } from 'ui/components/modals/AppFullPageModal'
-import { Error } from 'ui/svg/icons/Error'
+import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
 import { Typo } from 'ui/theme'
 
 interface Props {
@@ -43,7 +43,7 @@ export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
     <AppFullPageModal visible={visible} testIdSuffix={testIdSuffix}>
       <GenericInfoPage
         title={title}
-        icon={Error}
+        icon={ErrorIllustration}
         flex={false}
         buttons={[
           <ButtonPrimaryWhite

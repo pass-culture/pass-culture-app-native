@@ -8,17 +8,18 @@ import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { formatToReadableFrenchDate } from 'libs/dates'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { Calendar } from 'ui/svg/icons/Calendar'
+import { CalendarIllustration } from 'ui/svg/icons/CalendarIllustration'
 import { Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
+
 type Props = StackScreenProps<RootStackParamList, 'NotYetUnderageEligibility'>
 
 export const NotYetUnderageEligibility: FunctionComponent<Props> = (props) => {
   return (
     <GenericInfoPage
       title={t`C'est pour bientôt\u00a0!`}
-      icon={Calendar}
+      icon={CalendarIllustration}
       buttons={[
         <ButtonPrimaryWhite key={1} title={t`Retourner à l'accueil`} onPress={navigateToHome} />,
       ]}>
