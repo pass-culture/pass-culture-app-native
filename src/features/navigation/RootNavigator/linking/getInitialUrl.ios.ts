@@ -1,7 +1,7 @@
 import dynamicLinks from '@react-native-firebase/dynamic-links'
-import { Linking } from 'react-native'
 
 import { WEBAPP_V2_URL } from 'libs/environment'
+import { BatchPush } from 'libs/react-native-batch'
 
 // Override of default `getInitialURL` of `linking` config required to make
 // firebase dynamic links work on iOS :
@@ -11,7 +11,7 @@ export async function getInitialURL(): Promise<string> {
   if (dynamicLinkUrl) {
     return dynamicLinkUrl.url
   }
-  const url = await Linking.getInitialURL()
+  const url = await BatchPush.getInitialURL()
   if (url) {
     return url
   }

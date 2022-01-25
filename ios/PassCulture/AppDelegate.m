@@ -9,6 +9,7 @@
 #import <Firebase.h>
 #import <React/RCTLinkingManager.h>
 #import "BatchFirebaseDispatcher.h"
+#import "ReactNativeConfig.h"
 
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
@@ -56,10 +57,14 @@ static void InitializeFlipper(UIApplication *application) {
                                                    moduleName:@"PassCulture"
                                             initialProperties:nil];
 
+  // Setup Batch
+  NSString* AssociatedDomain = [ReactNativeConfig envFor:@"WEBAPP_V2_DOMAIN"];
+  [Batch setAssociatedDomains:@[AssociatedDomain]];
+  [BatchEventDispatcher addDispatcher:[BatchFirebaseDispatcher instance]];
   [RNBatch start];
   [BatchUNUserNotificationCenterDelegate registerAsDelegate];
   [BatchUNUserNotificationCenterDelegate sharedInstance].showForegroundNotifications = true;
-  [BatchEventDispatcher addDispatcher:[BatchFirebaseDispatcher instance]];
+
   rootView.backgroundColor = [[UIColor alloc] initWithRed:1.0f green:1.0f blue:1.0f alpha:1];
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
@@ -67,9 +72,6 @@ static void InitializeFlipper(UIApplication *application) {
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
-
-  NSString* BatchKey = [plistConfig valueForKey:@"BATCH_API_KEY_IOS"];
-  [Batch startWithAPIKey:BatchKey];
 
   [RNSplashScreen show]; // react-native-splash-screen
   return YES;
