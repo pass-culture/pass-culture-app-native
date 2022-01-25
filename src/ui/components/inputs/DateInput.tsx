@@ -4,7 +4,6 @@ import { Platform, TextInput, TextInputProps } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-// eslint-disable-next-line import/no-unresolved
 import validateDate from 'validate-date'
 
 import { accessibilityAndTestId } from 'tests/utils'
