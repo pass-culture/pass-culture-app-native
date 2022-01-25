@@ -1,9 +1,10 @@
-import React, { FC, Fragment } from 'react'
+import React, { FC } from 'react'
 
 import { Error } from 'ui/svg/icons/Error'
 import { Spacer } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
+import { ErrorMessage } from 'ui/web/errors/ErrorMessage'
 
 import { InputRule } from './rules/InputRule'
 
@@ -16,7 +17,7 @@ interface Props {
 
 export const InputError: FC<Props> = (props) => {
   return props.visible ? (
-    <Fragment>
+    <ErrorMessage>
       <Spacer.Column testID="input-error-top-spacer" numberOfSpaces={props.numberOfSpacesTop} />
       <InputRule
         title={props.messageId}
@@ -26,6 +27,6 @@ export const InputError: FC<Props> = (props) => {
         iconSize={16}
         centered={props.centered}
       />
-    </Fragment>
+    </ErrorMessage>
   ) : null
 }
