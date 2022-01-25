@@ -2453,6 +2453,10 @@ msgstr "Ton signalement a bien été pris en compte"
 msgid "Tourne-moi"
 msgstr "Tourne-moi"
 
+#: src/features/auth/components/PasswordSecurityRules.tsx
+msgid "Tous les critères sont validés"
+msgstr "Tous les critères sont validés"
+
 #: src/ui/components/achievements/components/GenericAchievement.tsx
 msgid "Tout passer"
 msgstr "Tout passer"
@@ -3145,6 +3149,10 @@ msgstr "type"
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 msgid "une initiative du Gouvernement financée par le ministère de la Culture."
 msgstr "une initiative du Gouvernement financée par le ministère de la Culture."
+
+#: src/ui/components/inputs/rules/PasswordRule.tsx
+msgid "validé"
+msgstr "validé"
 
 #: src/libs/monitoring/errors.ts
 msgid "venueId is undefined"

@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { AriaLive } from 'ui/components/AriaLive'
 import { PasswordRule } from 'ui/components/inputs/rules/PasswordRule'
 import { getSpacing } from 'ui/theme'
 
@@ -57,6 +58,9 @@ export const PasswordSecurityRules: FunctionComponent<Props> = ({ password, nati
         title={t`1 Caractère spécial (!@#$%^&*...)`}
         isValidated={containsSpecialCharacter(password)}
       />
+      <AriaLive liveType="assertive">
+        {isPasswordCorrect(password) ? t`Tous les critères sont validés` : ''}
+      </AriaLive>
     </RulesContainer>
   )
 }
