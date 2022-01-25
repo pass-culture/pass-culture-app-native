@@ -15,7 +15,7 @@ export function getOfferUrl(id: number): string {
   return `${WEBAPP_V2_URL}${path}`
 }
 
-async function shareOffer(offer: OfferResponse) {
+function getShareContentFromOffer(offer: OfferResponse) {
   const locationName = getLocationName(offer.venue, offer.isDigital)
   const message = t({
     id: 'share offer message',
@@ -25,17 +25,20 @@ async function shareOffer(offer: OfferResponse) {
 
   const url = getOfferUrl(offer.id)
 
-  // url share content param is only for iOs, so we add url in message for android
-  const completeMessage = Platform.OS === 'ios' ? message : message.concat(`\n\n${url}`)
+  // url share content param is only for iOS, so we add url in message for android
   const title = t`Je t'invite à découvrir une super offre sur le pass Culture\u00a0!`
-  const shareContent = {
+  return {
     message: completeMessage,
     url, // iOS only
     title, // android only
   }
+}
+
+async function shareOffer(offer: OfferResponse) {
+  const shareContent = getShareContentFromOffer(offer)
   const shareOptions = {
-    subject: title, // iOS only
-    dialogTitle: title, // android only
+    subject: shareContent.title, // iOS only
+    dialogTitle: shareContent.title, // android only
   }
   await share(shareContent, shareOptions)
 }
