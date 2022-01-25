@@ -8,7 +8,7 @@ import { getLocationName } from 'features/offer/atoms/LocationCaption'
 import { analytics } from 'libs/analytics'
 import { WEBAPP_V2_URL } from 'libs/environment'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
-import { share } from 'libs/share'
+import { share, ShareContent } from 'libs/share'
 
 export function getOfferUrl(id: number): string {
   const path = getScreenPath('Offer', { id })
@@ -43,16 +43,21 @@ async function shareOffer(offer: OfferResponse) {
   await share(shareContent, shareOptions)
 }
 
-export const useShareOffer = (offerId: number): (() => Promise<void>) => {
+export const useShareOffer = (
+  offerId: number
+): { share: () => Promise<void>; shareContent?: ShareContent } => {
   const { data: offer } = useOffer({ offerId })
 
   const logShareOffer = useFunctionOnce(() => {
     analytics.logShareOffer(offerId)
   })
 
-  return async () => {
-    logShareOffer()
-    if (typeof offer === 'undefined') return
-    await shareOffer(offer)
+  return {
+    share: async () => {
+      logShareOffer()
+      if (typeof offer === 'undefined') return
+      await shareOffer(offer)
+    },
+    shareContent: offer && getShareContentFromOffer(offer),
   }
 }
