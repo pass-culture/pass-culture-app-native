@@ -8,15 +8,16 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { Email } from 'ui/svg/icons/Email'
-import { UserBlockedDeprecated } from 'ui/svg/icons/UserBlocked_deprecated'
+import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
+
 export function PhoneValidationTooManyAttempts() {
   return (
     <GenericInfoPage
       title={t`Trop de tentatives\u00a0!`}
-      icon={UserBlockedDeprecated}
+      icon={UserBlocked}
       buttons={[
         <ButtonTertiaryWhite
           key={1}

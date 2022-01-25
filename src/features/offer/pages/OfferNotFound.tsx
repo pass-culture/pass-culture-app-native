@@ -9,7 +9,7 @@ import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { NoOfferDeprecated as NoOffer } from 'ui/svg/icons/NoOffer_deprecated'
+import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { Typo } from 'ui/theme'
 
 export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {

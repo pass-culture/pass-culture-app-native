@@ -78,8 +78,8 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
       }
     />
     <View
-      height={124}
-      width={197}
+      height={156}
+      width={200}
     >
       <Text>
         undefined-SVG-Mock
@@ -272,8 +272,8 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
       }
     />
     <View
-      height={124}
-      width={197}
+      height={156}
+      width={200}
     >
       <Text>
         undefined-SVG-Mock

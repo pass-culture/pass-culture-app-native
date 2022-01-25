@@ -104,8 +104,8 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
         }
       />
       <View
-        height={140}
-        width={140}
+        height={156}
+        width={200}
       >
         <Text>
           undefined-SVG-Mock

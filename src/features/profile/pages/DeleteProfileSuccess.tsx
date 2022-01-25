@@ -5,14 +5,14 @@ import styled from 'styled-components/native'
 import { navigateToHome } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { ProfileDeletionIllustrationDeprecated as ProfileDeletionLight } from 'ui/svg/icons/ProfileDeletionIllustration_deprecated'
+import { ProfileDeletionIllustration } from 'ui/svg/icons/ProfileDeletionIllustration'
 import { Spacer, Typo } from 'ui/theme'
 
 export function DeleteProfileSuccess() {
   return (
     <GenericInfoPage
       title={t`Compte désactivé`}
-      icon={ProfileDeletionLight}
+      icon={ProfileDeletionIllustration}
       buttons={[
         <ButtonPrimaryWhite key={1} title={t`Retourner à l'accueil`} onPress={navigateToHome} />,
       ]}>

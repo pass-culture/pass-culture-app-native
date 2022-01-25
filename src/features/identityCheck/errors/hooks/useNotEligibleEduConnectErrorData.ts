@@ -5,10 +5,10 @@ import { TextStyle } from 'react-native'
 
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { Clock } from 'ui/svg/icons/Clock'
-import { MaintenanceConeDeprecated as MaintenanceCone } from 'ui/svg/icons/MaintenanceCone_deprecated'
+import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
+import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { IconInterface } from 'ui/svg/icons/types'
-import { UserErrorDeprecated } from 'ui/svg/icons/UserError_deprecated'
+import { UserError } from 'ui/svg/icons/UserError'
 
 export enum EduConnectErrorMessageEnum {
   UserAgeNotValid18YearsOld = 'UserAgeNotValid18YearsOld',
@@ -30,7 +30,7 @@ type NotEligibleEduConnectErrorData = {
 }
 
 const UserNotWhitelisted: NotEligibleEduConnectErrorData = {
-  Icon: Clock,
+  Icon: ErrorIllustration,
   title: t`Tu ne fais pas partie de la phase de test`,
   description:
     t`Encore un peu de patience\u00a0: en fonction de ton âge, tu pourras compléter ton inscription à la date suivante\u00a0: ` +
@@ -47,7 +47,7 @@ const UserNotWhitelisted: NotEligibleEduConnectErrorData = {
 }
 
 const UserAgeNotValid: NotEligibleEduConnectErrorData = {
-  Icon: UserErrorDeprecated,
+  Icon: UserError,
   title: t`Oh non\u00a0!`,
   description:
     t`La date de naissance enregistrée dans ÉduConnect semble indiquer que tu n'as pas l'âge requis pour obtenir l'aide du Gouvernement.` +
@@ -60,7 +60,7 @@ const UserAgeNotValid: NotEligibleEduConnectErrorData = {
 const getInvalidInformation = (
   onPrimaryButtonPress: () => Promise<void>
 ): NotEligibleEduConnectErrorData => ({
-  Icon: UserErrorDeprecated,
+  Icon: UserError,
   title: t`Oh non\u00a0!`,
   description:
     t`Il semblerait que les informations que tu nous as communiquées ne soient pas correctes.` +
@@ -75,7 +75,7 @@ const getInvalidInformation = (
 const getUserTypeNotStudent = (
   onPrimaryButtonPress: () => void
 ): NotEligibleEduConnectErrorData => ({
-  Icon: UserErrorDeprecated,
+  Icon: UserError,
   title: t`Qui est-ce\u00a0?`,
   description:
     t`Les informations provenant d'ÉduConnect indiquent que vous êtes le représentant légal d'un jeune scolarisé.` +

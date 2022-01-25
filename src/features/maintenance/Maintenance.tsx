@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { LogoPassCulture as LogoPassCultureOriginal } from 'ui/svg/icons/LogoPassCulture'
-import { MaintenanceConeDeprecated as MaintenanceCone } from 'ui/svg/icons/MaintenanceCone_deprecated'
+import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { Spacer, Typo } from 'ui/theme'
 
 type MaintenanceProps = {
