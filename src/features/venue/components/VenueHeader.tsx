@@ -7,8 +7,10 @@ import styled from 'styled-components/native'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { isShareApiSupported } from 'libs/share'
+import { WebShareModal } from 'libs/share/WebShareModal'
 import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
+import { useModal } from 'ui/components/modals/useModal'
 import { Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -28,42 +30,61 @@ export const VenueHeader: React.FC<Props> = (props) => {
   const { headerTransition, title, venueId } = props
   const { goBack } = useGoBack(...getTabNavConfig('Search'))
 
-  const shareVenue = useShareVenue(venueId)
+  const { share: shareVenue, shareContent } = useShareVenue(venueId)
+  const {
+    visible: shareVenueModalVisible,
+    showModal: showShareVenueModal,
+    hideModal: hideShareVenueModal,
+  } = useModal(false)
+  const onSharePress = () => {
+    shareVenue()
+    showShareVenueModal()
+  }
 
   const { animationState, backgroundColor } = getAnimationState(headerTransition)
   const { top } = useSafeAreaInsets()
 
   return (
-    <HeaderContainer style={{ backgroundColor }} safeAreaTop={top}>
-      <Spacer.TopScreen />
-      <Spacer.Column numberOfSpaces={2} />
-      <Row>
-        <Spacer.Row numberOfSpaces={6} />
-        <HeaderIcon
-          animationState={animationState}
-          iconName="back"
-          onPress={goBack}
-          testID={t`Revenir en arrière`}
-        />
-        <Spacer.Flex />
-
-        <Title testID="venueHeaderName" style={{ opacity: headerTransition }}>
-          <Typo.Body color={ColorsEnum.WHITE}>{title}</Typo.Body>
-        </Title>
-
-        <Spacer.Flex />
-        {!!isShareApiSupported() && (
+    <React.Fragment>
+      <HeaderContainer style={{ backgroundColor }} safeAreaTop={top}>
+        <Spacer.TopScreen />
+        <Spacer.Column numberOfSpaces={2} />
+        <Row>
+          <Spacer.Row numberOfSpaces={6} />
           <HeaderIcon
             animationState={animationState}
-            iconName="share"
-            onPress={shareVenue}
-            testID={t`Partager`}
+            iconName="back"
+            onPress={goBack}
+            testID={t`Revenir en arrière`}
           />
-        )}
-        <Spacer.Row numberOfSpaces={6} />
-      </Row>
-      <Spacer.Column numberOfSpaces={2} />
-    </HeaderContainer>
+          <Spacer.Flex />
+
+          <Title testID="venueHeaderName" style={{ opacity: headerTransition }}>
+            <Typo.Body color={ColorsEnum.WHITE}>{title}</Typo.Body>
+          </Title>
+
+          <Spacer.Flex />
+          {!!isShareApiSupported() && (
+            <HeaderIcon
+              animationState={animationState}
+              iconName="share"
+              onPress={onSharePress}
+              testID={t`Partager`}
+            />
+          )}
+          <Spacer.Row numberOfSpaces={6} />
+        </Row>
+        <Spacer.Column numberOfSpaces={2} />
+      </HeaderContainer>
+      {shareContent ? (
+        <WebShareModal
+          visible={shareVenueModalVisible}
+          headerTitle={t`Partager le lieu`}
+          shareContent={shareContent}
+          dismissModal={hideShareVenueModal}
+        />
+      ) : null}
+    </React.Fragment>
   )
 }
 

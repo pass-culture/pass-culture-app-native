@@ -6,7 +6,7 @@ import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScre
 import { analytics } from 'libs/analytics'
 import { WEBAPP_V2_URL } from 'libs/environment'
 import { useFunctionOnce } from 'libs/hooks'
-import { share } from 'libs/share'
+import { share, ShareContent } from 'libs/share'
 
 import { useVenue } from '../api/useVenue'
 
@@ -43,16 +43,21 @@ const shareVenue = async (venue: VenueResponse) => {
   await share(shareContent, shareOptions)
 }
 
-export const useShareVenue = (venueId: number): (() => Promise<void>) => {
+export const useShareVenue = (
+  venueId: number
+): { share: () => Promise<void>; shareContent?: ShareContent } => {
   const { data: venue } = useVenue(venueId)
 
   const logShareVenue = useFunctionOnce(() => {
     analytics.logShareVenue(venueId)
   })
 
-  return async () => {
-    logShareVenue()
-    if (typeof venue === 'undefined') return
-    await shareVenue(venue)
+  return {
+    share: async () => {
+      logShareVenue()
+      if (typeof venue === 'undefined') return
+      await shareVenue(venue)
+    },
+    shareContent: venue && getShareContentFromVenue(venue),
   }
 }
