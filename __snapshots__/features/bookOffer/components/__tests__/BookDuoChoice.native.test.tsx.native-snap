@@ -37,6 +37,7 @@ Array [
         },
       ]
     }
+    testID="DuoChoiceSelector"
   >
     <View
       accessibilityState={
