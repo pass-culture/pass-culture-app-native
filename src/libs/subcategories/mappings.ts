@@ -7,6 +7,7 @@ import {
   HomeLabelMapping,
   SearchGroupLabelMapping,
   SubcategoriesMapping,
+  SubcategoryLabelMapping,
 } from 'libs/subcategories/types'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 
@@ -32,6 +33,19 @@ export const useCategoryIdMapping = (): CategoryIdMapping => {
     const mapping = {} as CategoryIdMapping
     subcategories.forEach((curr) => {
       mapping[curr.id] = curr.categoryId
+    })
+    return mapping
+  }, [subcategories.length])
+}
+
+export const useSubcategoryLabelMapping = (): SubcategoryLabelMapping => {
+  const { data } = useSubcategories()
+  const { subcategories = [] } = data || {}
+
+  return useMemo(() => {
+    const mapping = {} as SubcategoryLabelMapping
+    subcategories.forEach((curr) => {
+      mapping[curr.appLabel] = curr.id
     })
     return mapping
   }, [subcategories.length])
