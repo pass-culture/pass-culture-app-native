@@ -5,7 +5,7 @@ import { useNextSubscriptionStep } from 'features/auth/signup/nextSubscriptionSt
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { navigateToHome } from 'features/navigation/helpers'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { EmailSent } from 'ui/svg/icons/EmailSent'
+import { EmailSentDeprecated as EmailSent } from 'ui/svg/icons/EmailSent_deprecated'
 
 export const IdentityCheckEnd = () => {
   const { data: subscription } = useNextSubscriptionStep()

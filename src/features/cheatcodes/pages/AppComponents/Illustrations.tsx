@@ -6,20 +6,29 @@ import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { BicolorIdCardWithMagnifyingGlassDeprecated } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass_deprecated'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
+import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
+import { BirthdayCakeDeprecated } from 'ui/svg/icons/BirthdayCake_deprecated'
+import { CalendarIllustration } from 'ui/svg/icons/CalendarIllustration'
+import { EmailSent } from 'ui/svg/icons/EmailSent'
+import { EmailSentDeprecated } from 'ui/svg/icons/EmailSent_deprecated'
 import { EmptyFavorites } from 'ui/svg/icons/EmptyFavorites'
 import { EmptyFavoritesDeprecated } from 'ui/svg/icons/EmptyFavorites_deprecated'
 import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { HappyFaceDeprecated } from 'ui/svg/icons/HappyFace_deprecated'
+import { LocationIllustration } from 'ui/svg/icons/LocationIllustration'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { MaintenanceConeDeprecated } from 'ui/svg/icons/MaintenanceCone_deprecated'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
 import { NoBookingsDeprecated } from 'ui/svg/icons/NoBookings_deprecated'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { NoOfferDeprecated } from 'ui/svg/icons/NoOffer_deprecated'
+import { Notification } from 'ui/svg/icons/Notification'
 import { PageNotFound } from 'ui/svg/icons/PageNotFound'
 import { PageNotFoundIconDeprecated } from 'ui/svg/icons/PageNotFoundIcon_deprecated'
 import { PhoneFlip } from 'ui/svg/icons/PhoneFlip'
+import { RequestSent } from 'ui/svg/icons/RequestSent'
+import { RequestSentDeprecated } from 'ui/svg/icons/RequestSent_deprecated'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { SadFaceDeprecated } from 'ui/svg/icons/SadFace_deprecated'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
@@ -43,8 +52,16 @@ export const Illustrations: FunctionComponent = () => {
         component={BicolorIdCardWithMagnifyingGlass}
         isNew
       />
+      <Illustration name="BirthdayCakeDeprecated" component={BirthdayCakeDeprecated} />
+      <Illustration name="BirthdayCake" component={BirthdayCake} isNew />
       <Illustration name="BrokenConnection" component={BrokenConnection} isNew />
+      <Illustration name="CalendarIllustration" component={CalendarIllustration} isNew />
       <Illustration name="ErrorIllustration" component={ErrorIllustration} isNew />
+      <AlignedText>
+        <EmailSentDeprecated size={STANDARD_ICON_SIZE} color={ColorsEnum.BLACK} />
+        <Text> - EmailSentDeprecated (deprecated) </Text>
+      </AlignedText>
+      <Illustration name="EmailSent" component={EmailSent} isNew />
       <AlignedText>
         <EmptyFavoritesDeprecated size={STANDARD_ICON_SIZE} />
         <Text> - EmptyFavoritesDeprecated (deprecated) </Text>
@@ -52,6 +69,7 @@ export const Illustrations: FunctionComponent = () => {
       <Illustration name="EmptyFavorites" component={EmptyFavorites} isNew />
       <Illustration name="HappyFaceDeprecated" component={HappyFaceDeprecated} />
       <Illustration name="HappyFace" component={HappyFace} isNew />
+      <Illustration name="LocationIllustration" component={LocationIllustration} isNew />
       <AlignedText>
         <MaintenanceConeDeprecated
           width={STANDARD_ICON_SIZE * 2}
@@ -65,9 +83,12 @@ export const Illustrations: FunctionComponent = () => {
       <Illustration name="NoBookings" component={NoBookings} isNew />
       <Illustration name="NoOfferDeprecated" component={NoOfferDeprecated} />
       <Illustration name="NoOffer" component={NoOffer} isNew />
+      <Illustration name="Notification" component={Notification} isNew />
       <Illustration name="PageNotFoundDeprecated" component={PageNotFoundIconDeprecated} />
       <Illustration name="PageNotFound" component={PageNotFound} isNew />
       <Illustration name="PhoneFlip" component={PhoneFlip} isNew />
+      <Illustration name="RequestSentDeprecated" component={RequestSentDeprecated} />
+      <Illustration name="RequestSent" component={RequestSent} isNew />
       <Illustration name="SadFaceDeprecated" component={SadFaceDeprecated} />
       <Illustration name="SadFace" component={SadFace} isNew />
       <AlignedText>
