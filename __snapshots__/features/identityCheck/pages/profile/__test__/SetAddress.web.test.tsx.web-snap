@@ -1,0 +1,418 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SetAddress/> should render correctly 1`] = `
+Object {
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="css-view-1dbjc4n"
+        style="display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 16px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+          style="align-items: center; flex-direction: row; height: 64px; justify-content: center;"
+        >
+          <div
+            class="css-text-901oao"
+            dir="auto"
+            style="color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+          >
+            Profil
+          </div>
+          <div
+            aria-label="Revenir en arrière"
+            class="css-view-1dbjc4n"
+            data-testid="Revenir en arrière"
+            style="cursor: pointer; left: 12px; position: absolute; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            tabindex="0"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              data-testid="icon-back"
+            >
+              <div
+                class="css-text-901oao"
+                dir="auto"
+              >
+                icon-back-SVG-Mock
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-basis: 0px; flex-grow: 1;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-direction: column; height: 100%; padding-top: 12px;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
+                >
+                  <form
+                    class="sc-dkPtRN jhQXzx"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="align-items: center; width: 100%;"
+                    >
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                        style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+                      >
+                        Quelle est ton adresse ?
+                      </div>
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 20px;"
+                    />
+                    <label
+                      class="sc-bdvvtL lavEYF"
+                      for="testUuidV4"
+                    >
+                      Entre ton adresse
+                    </label>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="width: 4px;"
+                      />
+                      <input
+                        aria-label="Entrée pour l'adresse"
+                        autocapitalize="sentences"
+                        autocomplete="on"
+                        autocorrect="off"
+                        class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
+                        data-testid="Entrée pour l'adresse"
+                        dir="auto"
+                        enterkeyhint="search"
+                        id="testUuidV4"
+                        placeholder="Ex : 34 avenue de l'Opéra"
+                        spellcheck="false"
+                        style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
+                        type="text"
+                        value=""
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                  </form>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="box-sizing: content-box; flex-grow: 1; overflow-y: scroll;"
+                    />
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
+                >
+                  <div
+                    aria-label="Continuer"
+                    class="css-view-1dbjc4n"
+                    data-testid="Continuer"
+                    style="align-items: center; background-color: rgb(245, 245, 245); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                    tabindex="0"
+                  >
+                    <div
+                      class="css-text-901oao css-textMultiLine-cens5h"
+                      dir="auto"
+                      style="color: rgb(98, 98, 98); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
+                    >
+                      Continuer
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="height: 8px;"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="bottom: 0px; height: 100%; left: 0px; position: absolute; right: 0px; top: 0px; width: 100%; z-index: -1;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+            >
+              undefined-SVG-Mock
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="css-view-1dbjc4n"
+      style="display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1;"
+    >
+      <div
+        class="css-view-1dbjc4n"
+        style="height: 16px;"
+      />
+      <div
+        class="css-view-1dbjc4n"
+        style="align-items: center; flex-direction: row; height: 64px; justify-content: center;"
+      >
+        <div
+          class="css-text-901oao"
+          dir="auto"
+          style="color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+        >
+          Profil
+        </div>
+        <div
+          aria-label="Revenir en arrière"
+          class="css-view-1dbjc4n"
+          data-testid="Revenir en arrière"
+          style="cursor: pointer; left: 12px; position: absolute; transition-duration: 0s; transition-property: opacity; user-select: none;"
+          tabindex="0"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            data-testid="icon-back"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+            >
+              icon-back-SVG-Mock
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-basis: 0px; flex-grow: 1;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-direction: column; height: 100%; padding-top: 12px;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
+              >
+                <form
+                  class="sc-dkPtRN jhQXzx"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="align-items: center; width: 100%;"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                      style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+                    >
+                      Quelle est ton adresse ?
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="height: 20px;"
+                  />
+                  <label
+                    class="sc-bdvvtL lavEYF"
+                    for="testUuidV4"
+                  >
+                    Entre ton adresse
+                  </label>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="height: 8px;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="width: 4px;"
+                    />
+                    <input
+                      aria-label="Entrée pour l'adresse"
+                      autocapitalize="sentences"
+                      autocomplete="on"
+                      autocorrect="off"
+                      class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
+                      data-testid="Entrée pour l'adresse"
+                      dir="auto"
+                      enterkeyhint="search"
+                      id="testUuidV4"
+                      placeholder="Ex : 34 avenue de l'Opéra"
+                      spellcheck="false"
+                      style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
+                      type="text"
+                      value=""
+                    />
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="height: 8px;"
+                  />
+                </form>
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="box-sizing: content-box; flex-grow: 1; overflow-y: scroll;"
+                  />
+                </div>
+              </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
+              >
+                <div
+                  aria-label="Continuer"
+                  class="css-view-1dbjc4n"
+                  data-testid="Continuer"
+                  style="align-items: center; background-color: rgb(245, 245, 245); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                  tabindex="0"
+                >
+                  <div
+                    class="css-text-901oao css-textMultiLine-cens5h"
+                    dir="auto"
+                    style="color: rgb(98, 98, 98); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
+                  >
+                    Continuer
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="height: 8px;"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="css-view-1dbjc4n"
+        style="bottom: 0px; height: 100%; left: 0px; position: absolute; right: 0px; top: 0px; width: 100%; z-index: -1;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+        >
+          <div
+            class="css-text-901oao"
+            dir="auto"
+          >
+            undefined-SVG-Mock
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;
