@@ -34,6 +34,7 @@ import { SadFaceDeprecated } from 'ui/svg/icons/SadFace_deprecated'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { TicketBookedDeprecated } from 'ui/svg/icons/TicketBooked_deprecated'
 import { IconInterface } from 'ui/svg/icons/types'
+import { UserErrorDeprecated } from 'ui/svg/icons/UserError_deprecated'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
@@ -96,6 +97,7 @@ export const Illustrations: FunctionComponent = () => {
         <Text> - TicketBookedDeprecated (deprecated) </Text>
       </AlignedText>
       <Illustration name="TicketBooked" component={TicketBooked} isNew />
+      <Illustration name="UserErrorDeprecated" component={UserErrorDeprecated} />
     </React.Fragment>
   )
 }
