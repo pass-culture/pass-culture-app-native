@@ -15,11 +15,9 @@ import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { formatToFrenchDate, getFavoriteDisplayPrice } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'
 import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
-import { AppButton } from 'ui/components/buttons/AppButton'
+import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { BookingButton } from './BookingButton'
 
@@ -154,13 +152,9 @@ export const Favorite: React.FC<Props> = (props) => {
       </Container>
       <ButtonsRow>
         <ButtonContainer>
-          <AppButton
+          <ButtonSecondary
             title={t`Supprimer`}
             onPress={onRemove}
-            textColor={ColorsEnum.BLACK}
-            borderColor={ColorsEnum.GREY_MEDIUM}
-            backgroundColor={ColorsEnum.WHITE}
-            loadingIconColor={ColorsEnum.PRIMARY}
             buttonHeight="tall"
             disabled={isLoading}
           />
@@ -205,13 +199,18 @@ const ButtonsRow = styled.View(({ theme }) => ({
 
 const Name = styled(Typo.ButtonText)({})
 
-const Distance = styled(Typo.Body)({ textAlign: 'right', color: ColorsEnum.GREY_DARK })
+const Distance = styled(Typo.Body)(({ theme }) => ({
+  textAlign: 'right',
+  color: theme.colors.greyDark,
+}))
 
-const Body = styled(Typo.Body)({ color: ColorsEnum.GREY_DARK })
+const Body = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
 
-const Separator = styled.View({
+const Separator = styled.View(({ theme }) => ({
   height: 2,
-  backgroundColor: ColorsEnum.GREY_LIGHT,
+  backgroundColor: theme.colors.greyLight,
   marginHorizontal: getSpacing(6),
   marginVertical: getSpacing(4),
-})
+}))
