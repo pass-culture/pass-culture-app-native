@@ -26,6 +26,7 @@ describe('useVenueSearchParameters', () => {
       hitsPerPage: 10,
       locationFilter: { locationType: LocationType.EVERYWHERE },
       offerCategories: [],
+      offerSubcategories: [],
       offerIsDuo: false,
       offerIsFree: false,
       offerIsNew: false,

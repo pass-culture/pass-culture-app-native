@@ -1,4 +1,4 @@
-import { SearchGroupNameEnum } from 'api/gen'
+import { SearchGroupNameEnum, SubcategoryIdEnum } from 'api/gen'
 import { LocationType } from 'features/search/enums'
 import { FACETS_ENUM } from 'libs/algolia/enums'
 import { FiltersArray, SearchParametersQuery } from 'libs/algolia/types'
@@ -10,13 +10,14 @@ export const buildFacetFilters = ({
   locationFilter,
   objectIds,
   offerCategories,
+  offerSubcategories,
   offerTypes,
   offerIsDuo,
   tags,
   isUserUnderage,
 }: Pick<
   SearchParametersQuery,
-  'locationFilter' | 'offerCategories' | 'offerTypes' | 'offerIsDuo' | 'tags'
+  'locationFilter' | 'offerCategories' | 'offerSubcategories' | 'offerTypes' | 'offerIsDuo' | 'tags'
 > & { isUserUnderage: boolean; objectIds?: string[] }): null | {
   facetFilters: FiltersArray
 } => {
@@ -29,6 +30,11 @@ export const buildFacetFilters = ({
   if (offerCategories.length > 0) {
     const categoriesPredicate = buildOfferCategoriesPredicate(offerCategories)
     facetFilters.push(categoriesPredicate)
+  }
+
+  if (offerSubcategories.length > 0) {
+    const subcategoriesPredicate = buildOfferSubcategoriesPredicate(offerSubcategories)
+    facetFilters.push(subcategoriesPredicate)
   }
 
   if (objectIds && objectIds.length > 0) {
@@ -57,6 +63,9 @@ export const buildFacetFilters = ({
 
 const buildOfferCategoriesPredicate = (searchGroups: SearchGroupNameEnum[]): string[] =>
   searchGroups.map((searchGroup) => `${FACETS_ENUM.OFFER_SEARCH_GROUP_NAME}:${searchGroup}`)
+
+const buildOfferSubcategoriesPredicate = (subcategoryIds: SubcategoryIdEnum[]): string[] =>
+  subcategoryIds.map((subcategoryId) => `${FACETS_ENUM.OFFER_SUB_CATEGORY}:${subcategoryId}`)
 
 const buildObjectIdsPredicate = (objectIds: string[]): string[] =>
   objectIds.map((objectId) => `${FACETS_ENUM.OBJECT_ID}:${objectId}`)

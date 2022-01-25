@@ -34,6 +34,7 @@ const parameters: SearchState = {
   hitsPerPage: 8,
   locationFilter: { locationType: LocationType.EVERYWHERE },
   offerCategories: [SearchGroupNameEnum.CINEMA],
+  offerSubcategories: [],
   offerIsDuo: false,
   offerIsFree: false,
   offerIsNew: false,

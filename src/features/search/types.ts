@@ -1,4 +1,4 @@
-import { SearchGroupNameEnum } from 'api/gen'
+import { SearchGroupNameEnum, SubcategoryIdEnum } from 'api/gen'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { SuggestedPlace } from 'libs/place'
 import { Range } from 'libs/typesUtils/typeHelpers'
@@ -24,6 +24,7 @@ export interface SearchState {
   hitsPerPage: number | null
   locationFilter: LocationFilter
   offerCategories: SearchGroupNameEnum[]
+  offerSubcategories: SubcategoryIdEnum[]
   offerIsDuo: boolean
   offerIsFree: boolean
   offerIsNew: boolean

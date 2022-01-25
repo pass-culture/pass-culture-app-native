@@ -39,6 +39,7 @@ const buildSearchParameters = (
     endingDatetime = null,
     locationFilter,
     offerCategories = [],
+    offerSubcategories = [],
     objectIds = [],
     offerIsDuo = false,
     offerIsFree = false,
@@ -58,6 +59,7 @@ const buildSearchParameters = (
   ...buildFacetFilters({
     locationFilter,
     offerCategories,
+    offerSubcategories,
     objectIds,
     offerTypes,
     offerIsDuo,

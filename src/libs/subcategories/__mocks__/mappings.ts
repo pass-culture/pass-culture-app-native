@@ -5,6 +5,7 @@ import {
   SearchGroupLabelMapping,
   SubcategoriesMapping,
   HomeLabelMapping,
+  SubcategoryLabelMapping,
 } from 'libs/subcategories/types'
 
 const { subcategories, searchGroups, homepageLabels } = placeholderData
@@ -14,6 +15,14 @@ export const useSubcategoriesMapping = () => {
   subcategories.forEach((curr) => {
     const { id, ...subcategory } = curr
     mapping[id] = subcategory
+  })
+  return mapping
+}
+
+export const useSubcategoryLabelMapping = (): SubcategoryLabelMapping => {
+  const mapping = {} as SubcategoryLabelMapping
+  subcategories.forEach((curr) => {
+    mapping[curr.appLabel] = curr.id
   })
   return mapping
 }
