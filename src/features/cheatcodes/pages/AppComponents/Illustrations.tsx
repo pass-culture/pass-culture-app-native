@@ -40,6 +40,7 @@ import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { UserBlockedDeprecated } from 'ui/svg/icons/UserBlocked_deprecated'
 import { UserError } from 'ui/svg/icons/UserError'
 import { UserErrorDeprecated } from 'ui/svg/icons/UserError_deprecated'
+import { UserFavoriteDeprecated } from 'ui/svg/icons/UserFavorite_deprecated'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
@@ -115,6 +116,7 @@ export const Illustrations: FunctionComponent = () => {
       <Illustration name="UserBlocked" component={UserBlocked} isNew />
       <Illustration name="UserErrorDeprecated" component={UserErrorDeprecated} />
       <Illustration name="UserError" component={UserError} isNew />
+      <Illustration name="UserFavoriteDeprecated" component={UserFavoriteDeprecated} />
     </React.Fragment>
   )
 }

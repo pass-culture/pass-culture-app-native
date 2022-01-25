@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { AppButton } from 'ui/components/buttons/AppButton'
 import { Background } from 'ui/svg/Background'
-import { CreateAccount } from 'ui/svg/icons/CreateAccount'
+import { UserFavoriteDeprecated } from 'ui/svg/icons/UserFavorite_deprecated'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -18,7 +18,7 @@ export const NotConnectedFavorites = () => {
       <Background />
       <Spacer.TopScreen />
       <Spacer.Flex />
-      <CreateAccount color={ColorsEnum.WHITE} />
+      <UserFavoriteDeprecated color={ColorsEnum.WHITE} />
 
       <CenteredContainer>
         <TypoTitle4 color={ColorsEnum.WHITE}>
