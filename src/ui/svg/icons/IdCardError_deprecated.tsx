@@ -8,9 +8,9 @@ import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 import { IconInterface } from './types'
 
-export const IdCardError: React.FunctionComponent<IconInterface> = ({
+export const IdCardErrorDeprecated: React.FunctionComponent<IconInterface> = ({
   size = STANDARD_ICON_SIZE,
-  color = ColorsEnum.WHITE,
+  color = ColorsEnum.BLACK,
   color2,
   opacity = 1,
   testID,
