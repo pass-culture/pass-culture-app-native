@@ -58,7 +58,7 @@ Object {
                   style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                 >
                   <label
-                    class="sc-bdvvtL lavEYF"
+                    class="sc-gsDKAQ feJuLU"
                     for="testUuidV4"
                   >
                     Nouvel e-mail
@@ -108,7 +108,7 @@ Object {
                   style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                 >
                   <label
-                    class="sc-bdvvtL lavEYF"
+                    class="sc-gsDKAQ feJuLU"
                     for="testUuidV4"
                   >
                     Mot de passe
@@ -309,7 +309,7 @@ Object {
                 style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
               >
                 <label
-                  class="sc-bdvvtL lavEYF"
+                  class="sc-gsDKAQ feJuLU"
                   for="testUuidV4"
                 >
                   Nouvel e-mail
@@ -359,7 +359,7 @@ Object {
                 style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
               >
                 <label
-                  class="sc-bdvvtL lavEYF"
+                  class="sc-gsDKAQ feJuLU"
                   for="testUuidV4"
                 >
                   Mot de passe

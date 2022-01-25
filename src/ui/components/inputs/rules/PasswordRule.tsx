@@ -1,5 +1,7 @@
+import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 
+import { AriaLive } from 'ui/components/AriaLive'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { Check } from 'ui/svg/icons/Check'
 import { Close } from 'ui/svg/icons/Close'
@@ -13,12 +15,15 @@ type Props = {
 
 export const PasswordRule: FunctionComponent<Props> = ({ title, isValidated }) => {
   return (
-    <InputRule
-      title={title}
-      icon={isValidated ? Check : Close}
-      iconSize={10}
-      testIdSuffix={isValidated ? 'check' : 'close'}
-      color={isValidated ? ColorsEnum.GREEN_VALID : ColorsEnum.ERROR}
-    />
+    <React.Fragment>
+      <InputRule
+        title={title}
+        icon={isValidated ? Check : Close}
+        iconSize={10}
+        testIdSuffix={isValidated ? 'check' : 'close'}
+        color={isValidated ? ColorsEnum.GREEN_VALID : ColorsEnum.ERROR}
+      />
+      <AriaLive liveType="polite">{isValidated ? title + ' ' + t`validé` : ''}</AriaLive>
+    </React.Fragment>
   )
 }

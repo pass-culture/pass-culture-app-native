@@ -12,6 +12,7 @@ import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import { SuggestedPlace, usePlaces, useVenues } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
+import { AriaLive } from 'ui/components/AriaLive'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -103,11 +104,7 @@ const NumberOfResults = ({ nbHits, show }: { nbHits: number; show: boolean }) =>
     other: '# résultats',
   })
 
-  return (
-    <Typo.Body aria-live="assertive">
-      {show ? <HiddenText>{numberOfResults}</HiddenText> : <React.Fragment />}
-    </Typo.Body>
-  )
+  return <AriaLive liveType="assertive">{show ? numberOfResults : ''}</AriaLive>
 }
 
 const NoSuggestedPlaces = ({ show }: { show: boolean }) =>
@@ -142,5 +139,3 @@ const DescriptionErrorTextContainer = styled.Text({
 })
 
 const DescriptionErrorText = styled(Typo.Body)({ color: ColorsEnum.GREY_DARK })
-
-const HiddenText = styled.Text({ display: 'none' })
