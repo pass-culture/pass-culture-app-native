@@ -259,7 +259,7 @@ describe('fetchAlgolia', () => {
     })
   })
 
-  describe('categories', () => {
+  describe('categories and subcategories', () => {
     it('should fetch with no facetFilters parameter when no category is provided', () => {
       const query = 'searched query'
       const offerCategories: string[] = []
@@ -300,6 +300,47 @@ describe('fetchAlgolia', () => {
         facetFilters: [
           ['offer.isEducational:false'],
           ['offer.searchGroupName:SPECTACLE', 'offer.searchGroupName:LIVRE'],
+        ],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        attributesToHighlight: [],
+        attributesToRetrieve,
+      })
+    })
+
+    it('should fetch with facetFilters parameter when one subcategory is provided', () => {
+      const query = 'searched query'
+      const offerSubcategories = ['CINE_PLEIN_AIR']
+
+      fetchAlgolia(
+        { ...baseParams, query, offerSubcategories } as SearchParametersQuery,
+        null,
+        false
+      )
+
+      expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [['offer.isEducational:false'], ['offer.subcategoryId:CINE_PLEIN_AIR']],
+        numericFilters: [['offer.prices: 0 TO 300']],
+        page: 0,
+        attributesToHighlight: [],
+        attributesToRetrieve,
+      })
+    })
+
+    it('should fetch with facetFilters parameter when multiple subcategory is provided', () => {
+      const query = 'searched query'
+      const offerSubcategories = ['CINE_PLEIN_AIR', 'ESCAPE_GAME']
+
+      fetchAlgolia(
+        { ...baseParams, query, offerSubcategories } as SearchParametersQuery,
+        null,
+        false
+      )
+
+      expect(search).toHaveBeenCalledWith(query, {
+        facetFilters: [
+          ['offer.isEducational:false'],
+          ['offer.subcategoryId:CINE_PLEIN_AIR', 'offer.subcategoryId:ESCAPE_GAME'],
         ],
         numericFilters: [['offer.prices: 0 TO 300']],
         page: 0,

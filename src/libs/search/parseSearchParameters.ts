@@ -4,6 +4,7 @@ import { sortCategories } from 'features/search/pages/reducer.helpers'
 import { SearchState } from 'features/search/types'
 import { GeoCoordinates } from 'libs/geolocation'
 import { getCategoriesFacetFilters } from 'libs/search/utils'
+import { SubcategoryLabelMapping } from 'libs/subcategories/types'
 
 export const parseGeolocationParameters = (
   geolocation: GeoCoordinates | null,
@@ -22,7 +23,8 @@ export const parseGeolocationParameters = (
 
 export const parseSearchParameters = (
   parameters: SearchParametersFields,
-  geolocation: GeoCoordinates | null
+  geolocation: GeoCoordinates | null,
+  subcategoryLabelMapping: SubcategoryLabelMapping
 ): SearchState | undefined => {
   const { aroundRadius, isGeolocated, priceMin, priceMax } = parameters
 
@@ -40,12 +42,17 @@ export const parseSearchParameters = (
     .map(getCategoriesFacetFilters)
     .sort(sortCategories)
 
+  const offerSubcategories = (parameters.subcategories || []).map(
+    (subcategoryLabel) => subcategoryLabelMapping[subcategoryLabel]
+  )
+
   return {
     beginningDatetime: beginningDatetime,
     endingDatetime: endingDatetime,
     hitsPerPage: parameters.hitsPerPage || null,
     locationFilter,
     offerCategories,
+    offerSubcategories,
     offerIsDuo: parameters.isDuo || false,
     offerIsFree: parameters.isFree || false,
     offerIsNew: parameters.newestOnly || false,

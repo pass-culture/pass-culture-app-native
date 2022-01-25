@@ -34,6 +34,7 @@ export const useVenueSearchParameters = (venueId: number): SearchState => {
     hitsPerPage: 10,
     locationFilter,
     offerCategories: [],
+    offerSubcategories: [],
     offerIsDuo: false,
     offerIsFree: false,
     offerIsNew: false,

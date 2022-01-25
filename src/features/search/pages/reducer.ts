@@ -20,6 +20,7 @@ export const initialSearchState: SearchState = {
   hitsPerPage: 20,
   locationFilter: { locationType: LocationType.EVERYWHERE },
   offerCategories: [],
+  offerSubcategories: [],
   offerIsDuo: false,
   offerIsFree: false,
   offerIsNew: false,

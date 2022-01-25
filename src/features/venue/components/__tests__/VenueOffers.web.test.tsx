@@ -38,6 +38,7 @@ const defaultParams = {
   endingDatetime: null,
   hitsPerPage: 10,
   offerCategories: [],
+  offerSubcategories: [],
   offerIsDuo: false,
   offerIsFree: false,
   offerIsNew: false,
