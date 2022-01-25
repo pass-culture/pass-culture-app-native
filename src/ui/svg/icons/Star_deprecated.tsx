@@ -6,7 +6,11 @@ import { ColorsEnum } from 'ui/theme/colors'
 
 import { RectangleIconInterface } from './types'
 
-export function Star({ height = 167, color = ColorsEnum.WHITE, testID }: RectangleIconInterface) {
+export function StarDeprecated({
+  height = 167,
+  color = ColorsEnum.BLACK,
+  testID,
+}: RectangleIconInterface) {
   return (
     <Svg width={height} height={height} viewBox="0 0 168 168" testID={testID}>
       <G fill="none" fillRule="evenodd">

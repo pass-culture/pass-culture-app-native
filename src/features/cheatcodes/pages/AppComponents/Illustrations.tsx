@@ -33,6 +33,7 @@ import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { RequestSentDeprecated } from 'ui/svg/icons/RequestSent_deprecated'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { SadFaceDeprecated } from 'ui/svg/icons/SadFace_deprecated'
+import { StarDeprecated } from 'ui/svg/icons/Star_deprecated'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { TicketBookedDeprecated } from 'ui/svg/icons/TicketBooked_deprecated'
 import { IconInterface } from 'ui/svg/icons/types'
@@ -108,6 +109,7 @@ export const Illustrations: FunctionComponent = () => {
       <Illustration name="RequestSent" component={RequestSent} isNew />
       <Illustration name="SadFaceDeprecated" component={SadFaceDeprecated} />
       <Illustration name="SadFace" component={SadFace} isNew />
+      <Illustration name="StarDeprecated" component={StarDeprecated} />
       <AlignedText>
         <TicketBookedDeprecated width={STANDARD_ICON_SIZE} height={STANDARD_ICON_SIZE} />
         <Text> - TicketBookedDeprecated (deprecated) </Text>

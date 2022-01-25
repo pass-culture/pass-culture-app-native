@@ -8,7 +8,7 @@ import { env } from 'libs/environment'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { Star } from 'ui/svg/icons/Star'
+import { StarDeprecated as Star } from 'ui/svg/icons/Star_deprecated'
 import { Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
