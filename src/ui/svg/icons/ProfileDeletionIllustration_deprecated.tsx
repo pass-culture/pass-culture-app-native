@@ -6,9 +6,9 @@ import { ColorsEnum } from 'ui/theme/colors'
 
 import { IconInterface } from './types'
 
-export function ProfileDeletionLight({
+export function ProfileDeletionIllustrationDeprecated({
   size = 120,
-  color = ColorsEnum.WHITE,
+  color = ColorsEnum.BLACK,
   testID,
 }: IconInterface) {
   return (
