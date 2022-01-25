@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { navigateToHome } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { AccountLocked } from 'ui/svg/icons/AccountLocked'
+import { UserBlockedDeprecated } from 'ui/svg/icons/UserBlocked_deprecated'
 import { Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -13,7 +13,7 @@ export function PhoneValidationTooManySMSSent() {
   return (
     <GenericInfoPage
       title={t`Trop de tentatives\u00a0!`}
-      icon={AccountLocked}
+      icon={UserBlockedDeprecated}
       buttons={[
         <ButtonPrimaryWhite key={1} title={t`Retourner à l'accueil`} onPress={navigateToHome} />,
       ]}>

@@ -7,7 +7,7 @@ import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 import { IconInterface } from './types'
 
-export const InfoFraud: React.FunctionComponent<IconInterface> = ({
+export const UserErrorDeprecated: React.FunctionComponent<IconInterface> = ({
   size = STANDARD_ICON_SIZE,
   color = ColorsEnum.BLACK,
   testID,

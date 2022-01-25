@@ -7,7 +7,7 @@ import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 import { BicolorIconInterface } from './types'
 
-export const AccountLocked: React.FunctionComponent<BicolorIconInterface> = ({
+export const UserBlockedDeprecated: React.FunctionComponent<BicolorIconInterface> = ({
   size = STANDARD_ICON_SIZE,
   color = ColorsEnum.PRIMARY,
   testID,

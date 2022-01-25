@@ -27,13 +27,23 @@ import { Notification } from 'ui/svg/icons/Notification'
 import { PageNotFound } from 'ui/svg/icons/PageNotFound'
 import { PageNotFoundIconDeprecated } from 'ui/svg/icons/PageNotFoundIcon_deprecated'
 import { PhoneFlip } from 'ui/svg/icons/PhoneFlip'
+import { ProfileDeletionIllustration } from 'ui/svg/icons/ProfileDeletionIllustration'
+import { ProfileDeletionIllustrationDeprecated } from 'ui/svg/icons/ProfileDeletionIllustration_deprecated'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { RequestSentDeprecated } from 'ui/svg/icons/RequestSent_deprecated'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { SadFaceDeprecated } from 'ui/svg/icons/SadFace_deprecated'
+import { Star } from 'ui/svg/icons/Star'
+import { StarDeprecated } from 'ui/svg/icons/Star_deprecated'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { TicketBookedDeprecated } from 'ui/svg/icons/TicketBooked_deprecated'
 import { IconInterface } from 'ui/svg/icons/types'
+import { UserBlocked } from 'ui/svg/icons/UserBlocked'
+import { UserBlockedDeprecated } from 'ui/svg/icons/UserBlocked_deprecated'
+import { UserError } from 'ui/svg/icons/UserError'
+import { UserErrorDeprecated } from 'ui/svg/icons/UserError_deprecated'
+import { UserFavorite } from 'ui/svg/icons/UserFavorite'
+import { UserFavoriteDeprecated } from 'ui/svg/icons/UserFavorite_deprecated'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
@@ -87,15 +97,32 @@ export const Illustrations: FunctionComponent = () => {
       <Illustration name="PageNotFoundDeprecated" component={PageNotFoundIconDeprecated} />
       <Illustration name="PageNotFound" component={PageNotFound} isNew />
       <Illustration name="PhoneFlip" component={PhoneFlip} isNew />
+      <Illustration
+        name="ProfileDeletionIllustrationDeprecated"
+        component={ProfileDeletionIllustrationDeprecated}
+      />
+      <Illustration
+        name="ProfileDeletionIllustration"
+        component={ProfileDeletionIllustration}
+        isNew
+      />
       <Illustration name="RequestSentDeprecated" component={RequestSentDeprecated} />
       <Illustration name="RequestSent" component={RequestSent} isNew />
       <Illustration name="SadFaceDeprecated" component={SadFaceDeprecated} />
       <Illustration name="SadFace" component={SadFace} isNew />
+      <Illustration name="StarDeprecated" component={StarDeprecated} />
+      <Illustration name="Star" component={Star} isNew />
       <AlignedText>
         <TicketBookedDeprecated width={STANDARD_ICON_SIZE} height={STANDARD_ICON_SIZE} />
         <Text> - TicketBookedDeprecated (deprecated) </Text>
       </AlignedText>
       <Illustration name="TicketBooked" component={TicketBooked} isNew />
+      <Illustration name="UserBlockedDeprecated" component={UserBlockedDeprecated} />
+      <Illustration name="UserBlocked" component={UserBlocked} isNew />
+      <Illustration name="UserErrorDeprecated" component={UserErrorDeprecated} />
+      <Illustration name="UserError" component={UserError} isNew />
+      <Illustration name="UserFavoriteDeprecated" component={UserFavoriteDeprecated} />
+      <Illustration name="UserFavorite" component={UserFavorite} isNew />
     </React.Fragment>
   )
 }

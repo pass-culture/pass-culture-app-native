@@ -6,9 +6,9 @@ import { TextStyle } from 'react-native'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Clock } from 'ui/svg/icons/Clock'
-import { InfoFraud } from 'ui/svg/icons/InfoFraud'
 import { MaintenanceConeDeprecated as MaintenanceCone } from 'ui/svg/icons/MaintenanceCone_deprecated'
 import { IconInterface } from 'ui/svg/icons/types'
+import { UserErrorDeprecated } from 'ui/svg/icons/UserError_deprecated'
 
 export enum EduConnectErrorMessageEnum {
   UserAgeNotValid18YearsOld = 'UserAgeNotValid18YearsOld',
@@ -47,7 +47,7 @@ const UserNotWhitelisted: NotEligibleEduConnectErrorData = {
 }
 
 const UserAgeNotValid: NotEligibleEduConnectErrorData = {
-  Icon: InfoFraud,
+  Icon: UserErrorDeprecated,
   title: t`Oh non\u00a0!`,
   description:
     t`La date de naissance enregistrée dans ÉduConnect semble indiquer que tu n'as pas l'âge requis pour obtenir l'aide du Gouvernement.` +
@@ -60,7 +60,7 @@ const UserAgeNotValid: NotEligibleEduConnectErrorData = {
 const getInvalidInformation = (
   onPrimaryButtonPress: () => Promise<void>
 ): NotEligibleEduConnectErrorData => ({
-  Icon: InfoFraud,
+  Icon: UserErrorDeprecated,
   title: t`Oh non\u00a0!`,
   description:
     t`Il semblerait que les informations que tu nous as communiquées ne soient pas correctes.` +
@@ -75,7 +75,7 @@ const getInvalidInformation = (
 const getUserTypeNotStudent = (
   onPrimaryButtonPress: () => void
 ): NotEligibleEduConnectErrorData => ({
-  Icon: InfoFraud,
+  Icon: UserErrorDeprecated,
   title: t`Qui est-ce\u00a0?`,
   description:
     t`Les informations provenant d'ÉduConnect indiquent que vous êtes le représentant légal d'un jeune scolarisé.` +

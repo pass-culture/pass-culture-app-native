@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { navigateToHome } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { ProfileDeletionLight } from 'ui/svg/icons/ProfileDeletionLight'
+import { ProfileDeletionIllustrationDeprecated as ProfileDeletionLight } from 'ui/svg/icons/ProfileDeletionIllustration_deprecated'
 import { Spacer, Typo } from 'ui/theme'
 
 export function DeleteProfileSuccess() {
