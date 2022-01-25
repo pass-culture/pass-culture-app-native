@@ -17,6 +17,7 @@ import { Separator } from 'ui/components/Separator'
 import { Close } from 'ui/svg/icons/Close'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
+import { SMSFilled } from 'ui/svg/icons/SMSFilled'
 import { Facebook } from 'ui/svg/icons/socialNetwork/Facebook'
 import { Telegram } from 'ui/svg/icons/socialNetwork/Telegram'
 import { Twitter } from 'ui/svg/icons/socialNetwork/Twitter'
@@ -102,7 +103,7 @@ export const WebShareModal = ({
             isMobileDeviceDetectOnWeb || isMacOsDeviceDetectOnWeb ? (
               <NonSocialButton
                 title="SMS"
-                icon={EmailFilled}
+                icon={SMSFilled}
                 onPress={() => {
                   location.href = `sms:${t`Veuillez choisir un contact`}?&body=${message}: ${url}`
                 }}
@@ -140,7 +141,7 @@ const NonSocialButton = styled(ButtonTertiaryBlack)({
 
 const SocialButtonsContainer = styled.View({
   display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fill, minmax(120px,1fr))',
+  gridTemplateColumns: 'repeat(auto-fill, minmax(100px,1fr))',
   gap: `${getSpacingString(6)} 0px`,
   width: '100%',
 })
