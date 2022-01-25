@@ -34,6 +34,7 @@ import { SadFaceDeprecated } from 'ui/svg/icons/SadFace_deprecated'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { TicketBookedDeprecated } from 'ui/svg/icons/TicketBooked_deprecated'
 import { IconInterface } from 'ui/svg/icons/types'
+import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { UserBlockedDeprecated } from 'ui/svg/icons/UserBlocked_deprecated'
 import { UserError } from 'ui/svg/icons/UserError'
 import { UserErrorDeprecated } from 'ui/svg/icons/UserError_deprecated'
@@ -100,6 +101,7 @@ export const Illustrations: FunctionComponent = () => {
       </AlignedText>
       <Illustration name="TicketBooked" component={TicketBooked} isNew />
       <Illustration name="UserBlockedDeprecated" component={UserBlockedDeprecated} />
+      <Illustration name="UserBlocked" component={UserBlocked} isNew />
       <Illustration name="UserErrorDeprecated" component={UserErrorDeprecated} />
       <Illustration name="UserError" component={UserError} isNew />
     </React.Fragment>
