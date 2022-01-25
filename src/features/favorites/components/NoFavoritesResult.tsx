@@ -1,16 +1,14 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useNavigateToSearchResults } from 'features/search/utils/useNavigateToSearchResults'
-import { AppButton } from 'ui/components/buttons/AppButton'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { EmptyFavoritesDeprecated as EmptyFavorites } from 'ui/svg/icons/EmptyFavorites_deprecated'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 
 export const NoFavoritesResult = () => {
+  const { colors } = useTheme()
   const onPressExploreOffers = useNavigateToSearchResults({ from: 'favorites' })
 
   return (
@@ -18,19 +16,16 @@ export const NoFavoritesResult = () => {
       <Spacer.TabBar />
       <Spacer.Flex />
       <IconContainer>
-        <EmptyFavorites size={197} color={ColorsEnum.GREY_MEDIUM} />
+        <EmptyFavorites size={197} color={colors.greyMedium} />
       </IconContainer>
-      <Explanation color={ColorsEnum.GREY_DARK}>
+      <Explanation>
         {t`Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris\u00a0!`}
       </Explanation>
       <Spacer.Column numberOfSpaces={6} />
       <ButtonContainer>
-        <AppButton
+        <ButtonPrimary
           title={t`Explorer les offres`}
           onPress={onPressExploreOffers}
-          textColor={ColorsEnum.WHITE}
-          backgroundColor={ColorsEnum.PRIMARY}
-          loadingIconColor={ColorsEnum.WHITE}
           buttonHeight="tall"
         />
       </ButtonContainer>
@@ -44,21 +39,22 @@ const IconContainer = styled.View({
   minHeight: 80,
 })
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flex: 1,
   justifyContent: 'center',
   alignItems: 'center',
-  marginBottom: TAB_BAR_COMP_HEIGHT,
+  marginBottom: theme.tabBarHeight,
   padding: getSpacing(4),
-})
+}))
 
 const ButtonContainer = styled.View({
   maxWidth: getSpacing(44),
   width: '100%',
 })
 
-const Explanation = styled(Typo.Body)({
+const Explanation = styled(Typo.Body)(({ theme }) => ({
   flex: 1,
   flexGrow: 0,
   textAlign: 'center',
-})
+  color: theme.colors.greyDark,
+}))
