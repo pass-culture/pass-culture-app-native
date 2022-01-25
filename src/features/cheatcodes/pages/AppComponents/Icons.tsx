@@ -34,6 +34,7 @@ import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
 import { Digital } from 'ui/svg/icons/Digital'
 import { Duo } from 'ui/svg/icons/Duo'
+import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
@@ -77,6 +78,9 @@ import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Quote } from 'ui/svg/icons/Quote'
 import { Share } from 'ui/svg/icons/Share'
 import { SignOut } from 'ui/svg/icons/SignOut'
+import { SMSFilled } from 'ui/svg/icons/SMSFilled'
+import { Telegram } from 'ui/svg/icons/socialNetwork/Telegram'
+import { WhatsApp } from 'ui/svg/icons/socialNetwork/WhatsApp'
 import { Sun } from 'ui/svg/icons/Sun'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
@@ -198,6 +202,7 @@ const TertiaryAndSmallerIcons = () => {
       </Text>
       <Icon name="Again" component={Again} isNew />
       <Icon name="Digital" component={Digital} isNew />
+      <Icon name="Duplicate" component={Duplicate} isNew />
       <Icon name="EditPen" component={EditPen} isNew />
       <Icon name="EmailFilled" component={EmailFilled} isNew />
       <Icon name="ExternalSiteFilled" component={ExternalSiteFilled} isNew />
@@ -208,6 +213,7 @@ const TertiaryAndSmallerIcons = () => {
       <Icon name="PhoneFilled" component={PhoneFilled} isNew />
       <Icon name="PlainArrowPrevious" component={PlainArrowPrevious} isNew />
       <Icon name="Plus" component={Plus} isNew />
+      <Icon name="SMSFilled" component={SMSFilled} isNew />
       <Icon name="Validate" component={Validate} isNew />
       <Text>{'\n'}</Text>
     </React.Fragment>
@@ -294,6 +300,8 @@ const SocialNetworkIcons = () => {
           </AlignedText>
         )
       })}
+      <Icon name="WhatsApp" component={WhatsApp} isNew />
+      <Icon name="Telegram" component={Telegram} isNew />
     </React.Fragment>
   )
 }
