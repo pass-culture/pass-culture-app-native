@@ -7,6 +7,44 @@ Object {
     tabindex="-1"
   >
     <div>
+      <main
+        class="sc-dkPtRN eZPCZU"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin: auto auto auto auto; width: 100%;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin: auto auto auto auto; max-width: 960px; width: 100%;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+            />
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%; z-index: -1;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+            >
+              <div
+                class="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>,
+  "container": <div>
+    <main
+      class="sc-dkPtRN eZPCZU"
+    >
       <div
         class="css-view-1dbjc4n"
         style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin: auto auto auto auto; width: 100%;"
@@ -35,37 +73,7 @@ Object {
           </div>
         </div>
       </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="css-view-1dbjc4n"
-      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin: auto auto auto auto; width: 100%;"
-    >
-      <div
-        class="css-view-1dbjc4n"
-        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin: auto auto auto auto; max-width: 960px; width: 100%;"
-      >
-        <div
-          class="css-view-1dbjc4n"
-        />
-      </div>
-      <div
-        class="css-view-1dbjc4n"
-        style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%; z-index: -1;"
-      >
-        <div
-          class="css-view-1dbjc4n"
-        >
-          <div
-            class="css-text-901oao"
-            dir="auto"
-          >
-            undefined-SVG-Mock
-          </div>
-        </div>
-      </div>
-    </div>
+    </main>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
