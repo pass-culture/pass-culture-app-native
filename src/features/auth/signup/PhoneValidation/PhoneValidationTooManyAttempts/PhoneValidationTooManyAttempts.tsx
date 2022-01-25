@@ -7,8 +7,8 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { AccountLocked } from 'ui/svg/icons/AccountLocked'
 import { Email } from 'ui/svg/icons/Email'
+import { UserBlockedDeprecated } from 'ui/svg/icons/UserBlocked_deprecated'
 import { Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -16,7 +16,7 @@ export function PhoneValidationTooManyAttempts() {
   return (
     <GenericInfoPage
       title={t`Trop de tentatives\u00a0!`}
-      icon={AccountLocked}
+      icon={UserBlockedDeprecated}
       buttons={[
         <ButtonTertiaryWhite
           key={1}

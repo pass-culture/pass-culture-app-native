@@ -34,6 +34,7 @@ import { SadFaceDeprecated } from 'ui/svg/icons/SadFace_deprecated'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { TicketBookedDeprecated } from 'ui/svg/icons/TicketBooked_deprecated'
 import { IconInterface } from 'ui/svg/icons/types'
+import { UserBlockedDeprecated } from 'ui/svg/icons/UserBlocked_deprecated'
 import { UserError } from 'ui/svg/icons/UserError'
 import { UserErrorDeprecated } from 'ui/svg/icons/UserError_deprecated'
 // eslint-disable-next-line no-restricted-imports
@@ -98,6 +99,7 @@ export const Illustrations: FunctionComponent = () => {
         <Text> - TicketBookedDeprecated (deprecated) </Text>
       </AlignedText>
       <Illustration name="TicketBooked" component={TicketBooked} isNew />
+      <Illustration name="UserBlockedDeprecated" component={UserBlockedDeprecated} />
       <Illustration name="UserErrorDeprecated" component={UserErrorDeprecated} />
       <Illustration name="UserError" component={UserError} isNew />
     </React.Fragment>
