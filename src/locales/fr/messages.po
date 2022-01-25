@@ -910,10 +910,6 @@ msgstr "Entrée pour le jour de la date de naissance"
 msgid "Entrée pour le mois de la date de naissance"
 msgstr "Entrée pour le mois de la date de naissance"
 
-#: src/ui/components/inputs/PasswordInput.tsx
-msgid "Entrée pour le mot de passe"
-msgstr "Entrée pour le mot de passe"
-
 #: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Entrée pour le nom"
 msgstr "Entrée pour le nom"
@@ -1557,6 +1553,7 @@ msgstr "Mon identité"
 #: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
 #: src/features/profile/pages/ChangePassword/ChangePassword.tsx
 #: src/features/profile/pages/Profile.tsx
+#: src/ui/components/inputs/PasswordInput.tsx
 msgid "Mot de passe"
 msgstr "Mot de passe"
 
@@ -3183,6 +3180,7 @@ msgid "{nbFavorites, plural, one {# favori} other {# favoris}}"
 msgstr "{nbFavorites, plural, one {# favori} other {# favoris}}"
 
 #: src/features/search/atoms/NumberOfResults.tsx
+#: src/features/search/pages/SuggestedPlaces.tsx
 msgid "{nbHits, plural, one {# résultat} other {# résultats}}"
 msgstr "{nbHits, plural, one {# résultat} other {# résultats}}"
 

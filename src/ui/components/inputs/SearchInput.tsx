@@ -2,10 +2,12 @@ import { t } from '@lingui/macro'
 import React, { forwardRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { accessibilityAndTestId } from 'tests/utils'
+import { InputLabel } from 'ui/components/InputLabel'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -23,6 +25,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
   const { LeftIcon, label, accessibilityLabel, accessibilityDescribedBy, onPressRightIcon } =
     customProps
   const { value = '' } = nativeProps
+  const searchInputID = uuidv4()
 
   function onFocus() {
     setIsFocus(true)
@@ -36,7 +39,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
     <React.Fragment>
       {!!label && (
         <React.Fragment>
-          <Typo.Body>{label}</Typo.Body>
+          <InputLabel htmlFor={searchInputID}>{label}</InputLabel>
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}
@@ -50,6 +53,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
         )}
         <BaseTextInput
           {...nativeProps}
+          nativeID={searchInputID}
           ref={forwardedRef}
           onFocus={onFocus}
           onBlur={onBlur}

@@ -1,7 +1,9 @@
 import React, { forwardRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
+import { v4 as uuidv4 } from 'uuid'
 
-import { Spacer, Typo } from 'ui/theme'
+import { InputLabel } from 'ui/components/InputLabel'
+import { Spacer } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
 import { StyledInputContainer } from './StyledInputContainer'
@@ -14,6 +16,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
   const [isFocus, setIsFocus] = useState(false)
   const nativeProps = getRNTextInputProps(props)
   const customProps = getCustomTextInputProps(props)
+  const textInputID = uuidv4()
 
   function onFocus() {
     setIsFocus(true)
@@ -31,7 +34,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
     <React.Fragment>
       {!!customProps.label && (
         <React.Fragment>
-          <Typo.Body>{customProps.label}</Typo.Body>
+          <InputLabel htmlFor={textInputID}>{customProps.label}</InputLabel>
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}
@@ -40,7 +43,13 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
         isError={customProps.isError}
         isInputDisabled={customProps.disabled}
         style={customProps.containerStyle}>
-        <BaseTextInput {...nativeProps} ref={forwardedRef} onFocus={onFocus} onBlur={onBlur} />
+        <BaseTextInput
+          {...nativeProps}
+          nativeID={textInputID}
+          ref={forwardedRef}
+          onFocus={onFocus}
+          onBlur={onBlur}
+        />
       </StyledInputContainer>
     </React.Fragment>
   )

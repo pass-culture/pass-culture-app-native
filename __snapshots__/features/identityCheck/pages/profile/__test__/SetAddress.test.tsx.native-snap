@@ -261,6 +261,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                 accessible={true}
                 autoCorrect={false}
                 editable={true}
+                nativeID="testUuidV4"
                 onBlur={[Function]}
                 onChangeText={[Function]}
                 onFocus={[Function]}
