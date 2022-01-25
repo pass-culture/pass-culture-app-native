@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { navigateToHome } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
-import { IdCardErrorDeprecated as IdCardError } from 'ui/svg/icons/IdCardError_deprecated'
+import { IdCardError } from 'ui/svg/icons/IdCardError'
 import { Spacer, Typo } from 'ui/theme'
 
 export function IdentityCheckPending() {
