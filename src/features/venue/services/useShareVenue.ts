@@ -25,7 +25,7 @@ const getShareContentFromVenue = (venue: VenueResponse) => {
   const url = getVenueUrl(venue.id)
 
   // url share content param is only for iOS, so we add url in message for android
-  const completeMessage = Platform.OS === 'ios' ? message : message.concat(`\n\n${url}`)
+  const completeMessage = Platform.OS === 'android' ? message.concat(`\n\n${url}`) : message
 
   return {
     message: completeMessage,

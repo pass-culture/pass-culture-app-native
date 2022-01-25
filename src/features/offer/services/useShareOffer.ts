@@ -26,6 +26,7 @@ function getShareContentFromOffer(offer: OfferResponse) {
   const url = getOfferUrl(offer.id)
 
   // url share content param is only for iOS, so we add url in message for android
+  const completeMessage = Platform.OS === 'android' ? message.concat(`\n\n${url}`) : message
   const title = t`Je t'invite à découvrir une super offre sur le pass Culture\u00a0!`
   return {
     message: completeMessage,
