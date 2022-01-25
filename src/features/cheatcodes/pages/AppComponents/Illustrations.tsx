@@ -27,6 +27,7 @@ import { Notification } from 'ui/svg/icons/Notification'
 import { PageNotFound } from 'ui/svg/icons/PageNotFound'
 import { PageNotFoundIconDeprecated } from 'ui/svg/icons/PageNotFoundIcon_deprecated'
 import { PhoneFlip } from 'ui/svg/icons/PhoneFlip'
+import { ProfileDeletionIllustration } from 'ui/svg/icons/ProfileDeletionIllustration'
 import { ProfileDeletionIllustrationDeprecated } from 'ui/svg/icons/ProfileDeletionIllustration_deprecated'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { RequestSentDeprecated } from 'ui/svg/icons/RequestSent_deprecated'
@@ -95,6 +96,11 @@ export const Illustrations: FunctionComponent = () => {
       <Illustration
         name="ProfileDeletionIllustrationDeprecated"
         component={ProfileDeletionIllustrationDeprecated}
+      />
+      <Illustration
+        name="ProfileDeletionIllustration"
+        component={ProfileDeletionIllustration}
+        isNew
       />
       <Illustration name="RequestSentDeprecated" component={RequestSentDeprecated} />
       <Illustration name="RequestSent" component={RequestSent} isNew />
