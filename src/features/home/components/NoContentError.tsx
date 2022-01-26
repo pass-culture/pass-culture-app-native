@@ -6,10 +6,10 @@ import styled from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { ButtonSecondaryWhite } from 'ui/components/buttons/ButtonSecondaryWhite'
-import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { getSpacing, Typo } from 'ui/theme'
+import { GenericErrorPage } from 'ui/components/GenericErrorPage'
 
 export const NoContentError = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -19,7 +19,7 @@ export const NoContentError = () => {
   }
 
   return (
-    <GenericInfoPage
+    <GenericErrorPage
       title={t`Oups\u00a0!`}
       icon={BrokenConnection}
       buttons={[
@@ -28,10 +28,11 @@ export const NoContentError = () => {
           title={t`Rechercher une offre`}
           icon={MagnifyingGlass}
           onPress={navigateToSearchTab}
+          buttonHeight="tall"
         />,
       ]}>
       <BodyText>{t`Une erreur s’est produite pendant le chargement de nos recommandations.`}</BodyText>
-    </GenericInfoPage>
+    </GenericErrorPage>
   )
 }
 
