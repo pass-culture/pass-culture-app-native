@@ -1,13 +1,7 @@
 import { Platform, Share } from 'react-native'
 
 export function isShareApiSupported(): boolean {
-  if (Platform.OS === 'ios' || Platform.OS === 'android') {
-    return true
-  }
-  if (Platform.OS === 'web') {
-    return true
-  }
-  return false
+  return Platform.OS === 'ios' || Platform.OS === 'android' || Platform.OS === 'web'
 }
 
 export type ShareContent = {
