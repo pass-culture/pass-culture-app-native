@@ -6,7 +6,7 @@ import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScre
 import { analytics } from 'libs/analytics'
 import { WEBAPP_V2_URL } from 'libs/environment'
 import { useFunctionOnce } from 'libs/hooks'
-import { share } from 'libs/share'
+import { share, ShareContent } from 'libs/share'
 
 import { useVenue } from '../api/useVenue'
 
@@ -15,7 +15,7 @@ export function getVenueUrl(id: number) {
   return `${WEBAPP_V2_URL}${path}`
 }
 
-const shareVenue = async (venue: VenueResponse) => {
+const getShareContentFromVenue = (venue: VenueResponse) => {
   const message = t({
     id: 'share venue message',
     values: { name: venue.publicName || venue.name },
@@ -24,31 +24,40 @@ const shareVenue = async (venue: VenueResponse) => {
 
   const url = getVenueUrl(venue.id)
 
-  // url share content param is only for iOs, so we add url in message for android
-  const completeMessage = Platform.OS === 'ios' ? message : message.concat(`\n\n${url}`)
+  // url share content param is only for iOS, so we add url in message for android
+  const completeMessage = Platform.OS === 'android' ? message.concat(`\n\n${url}`) : message
 
-  const shareContent = {
+  return {
     message: completeMessage,
     url, // iOS only
     title: message, // android only
   }
+}
+
+const shareVenue = async (venue: VenueResponse) => {
+  const shareContent = getShareContentFromVenue(venue)
   const shareOptions = {
-    subject: message, // iOS only
-    dialogTitle: message, // android only
+    subject: shareContent.title, // iOS only
+    dialogTitle: shareContent.title, // android only
   }
   await share(shareContent, shareOptions)
 }
 
-export const useShareVenue = (venueId: number): (() => Promise<void>) => {
+export const useShareVenue = (
+  venueId: number
+): { share: () => Promise<void>; shareContent?: ShareContent } => {
   const { data: venue } = useVenue(venueId)
 
   const logShareVenue = useFunctionOnce(() => {
     analytics.logShareVenue(venueId)
   })
 
-  return async () => {
-    logShareVenue()
-    if (typeof venue === 'undefined') return
-    await shareVenue(venue)
+  return {
+    share: async () => {
+      logShareVenue()
+      if (typeof venue === 'undefined') return
+      await shareVenue(venue)
+    },
+    shareContent: venue && getShareContentFromVenue(venue),
   }
 }

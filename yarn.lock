@@ -3407,11 +3407,6 @@
     "@types/mime" "^1"
     "@types/node" "*"
 
-"@types/share-api-polyfill@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/@types/share-api-polyfill/-/share-api-polyfill-1.0.2.tgz#0378fc127f22f5b1aa539fc3dc7be066eabd5d0e"
-  integrity sha512-uE1Q6tYuQq3B5tPtoHQrH0cAYyrBI1IBr0iWU+vYKyhZQ7H+kwQA6PmxKVkfKMnmOsymigEyyYx6LPDHO0SW4A==
-
 "@types/source-list-map@*":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@types/source-list-map/-/source-list-map-0.1.2.tgz#0078836063ffaf17412349bba364087e0ac02ec9"

@@ -18,6 +18,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal'
 import { analytics } from 'libs/analytics'
 import { isShareApiSupported } from 'libs/share'
+import { WebShareModal } from 'libs/share/WebShareModal'
 import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { useModal } from 'ui/components/modals/useModal'
@@ -45,8 +46,14 @@ export const OfferHeader: React.FC<Props> = (props) => {
     showModal: showSignInModal,
     hideModal: hideSignInModal,
   } = useModal(false)
+  const {
+    visible: shareOfferModalVisible,
+    showModal: showShareOfferModal,
+    hideModal: hideShareOfferModal,
+  } = useModal(false)
+
   const { goBack } = useGoBack(...getTabNavConfig('Search'))
-  const shareOffer = useShareOffer(offerId)
+  const { share: shareOffer, shareContent } = useShareOffer(offerId)
   const { params } = useRoute<UseRouteType<'Offer'>>()
   const favorite = useFavorite({ offerId })
   const { showErrorSnackBar } = useSnackBarContext()
@@ -93,6 +100,11 @@ export const OfferHeader: React.FC<Props> = (props) => {
     }
   }
 
+  const pressShareOffer = () => {
+    shareOffer()
+    showShareOfferModal()
+  }
+
   return (
     <React.Fragment>
       <HeaderContainer style={{ backgroundColor }} safeAreaTop={top}>
@@ -119,7 +131,7 @@ export const OfferHeader: React.FC<Props> = (props) => {
             <HeaderIcon
               animationState={animationState}
               iconName="share"
-              onPress={shareOffer}
+              onPress={pressShareOffer}
               testID={t`Partager`}
             />
           )}
@@ -136,6 +148,14 @@ export const OfferHeader: React.FC<Props> = (props) => {
         </Row>
         <Spacer.Column numberOfSpaces={2} />
       </HeaderContainer>
+      {shareContent ? (
+        <WebShareModal
+          visible={shareOfferModalVisible}
+          headerTitle={t`Partager l'offre`}
+          shareContent={shareContent}
+          dismissModal={hideShareOfferModal}
+        />
+      ) : null}
       <SignUpSignInChoiceOfferModal visible={signInModalVisible} dismissModal={hideSignInModal} />
     </React.Fragment>
   )

@@ -3,5 +3,11 @@
 const isDesktopDeviceDetectOnWeb = true
 const isMobileDeviceDetectOnWeb = true
 const isTabletDeviceDetectOnWeb = true
+const isMacOsDeviceDetectOnWeb = true
 
-export { isDesktopDeviceDetectOnWeb, isMobileDeviceDetectOnWeb, isTabletDeviceDetectOnWeb }
+export {
+  isDesktopDeviceDetectOnWeb,
+  isMobileDeviceDetectOnWeb,
+  isTabletDeviceDetectOnWeb,
+  isMacOsDeviceDetectOnWeb,
+}

@@ -8,14 +8,14 @@ import { getLocationName } from 'features/offer/atoms/LocationCaption'
 import { analytics } from 'libs/analytics'
 import { WEBAPP_V2_URL } from 'libs/environment'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
-import { share } from 'libs/share'
+import { share, ShareContent } from 'libs/share'
 
 export function getOfferUrl(id: number): string {
   const path = getScreenPath('Offer', { id })
   return `${WEBAPP_V2_URL}${path}`
 }
 
-async function shareOffer(offer: OfferResponse) {
+function getShareContentFromOffer(offer: OfferResponse) {
   const locationName = getLocationName(offer.venue, offer.isDigital)
   const message = t({
     id: 'share offer message',
@@ -25,31 +25,40 @@ async function shareOffer(offer: OfferResponse) {
 
   const url = getOfferUrl(offer.id)
 
-  // url share content param is only for iOs, so we add url in message for android
-  const completeMessage = Platform.OS === 'ios' ? message : message.concat(`\n\n${url}`)
+  // url share content param is only for iOS, so we add url in message for android
+  const completeMessage = Platform.OS === 'android' ? message.concat(`\n\n${url}`) : message
   const title = t`Je t'invite à découvrir une super offre sur le pass Culture\u00a0!`
-  const shareContent = {
+  return {
     message: completeMessage,
     url, // iOS only
     title, // android only
   }
+}
+
+async function shareOffer(offer: OfferResponse) {
+  const shareContent = getShareContentFromOffer(offer)
   const shareOptions = {
-    subject: title, // iOS only
-    dialogTitle: title, // android only
+    subject: shareContent.title, // iOS only
+    dialogTitle: shareContent.title, // android only
   }
   await share(shareContent, shareOptions)
 }
 
-export const useShareOffer = (offerId: number): (() => Promise<void>) => {
+export const useShareOffer = (
+  offerId: number
+): { share: () => Promise<void>; shareContent?: ShareContent } => {
   const { data: offer } = useOffer({ offerId })
 
   const logShareOffer = useFunctionOnce(() => {
     analytics.logShareOffer(offerId)
   })
 
-  return async () => {
-    logShareOffer()
-    if (typeof offer === 'undefined') return
-    await shareOffer(offer)
+  return {
+    share: async () => {
+      logShareOffer()
+      if (typeof offer === 'undefined') return
+      await shareOffer(offer)
+    },
+    shareContent: offer && getShareContentFromOffer(offer),
   }
 }
