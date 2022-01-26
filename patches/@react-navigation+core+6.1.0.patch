@@ -1,0 +1,70 @@
+diff --git a/node_modules/@react-navigation/core/lib/module/getPathFromState.js b/node_modules/@react-navigation/core/lib/module/getPathFromState.js
+index faf8720..0503093 100644
+--- a/node_modules/@react-navigation/core/lib/module/getPathFromState.js
++++ b/node_modules/@react-navigation/core/lib/module/getPathFromState.js
+@@ -38,11 +38,12 @@ const getActiveRoute = state => {
+  *
+  * @param state Navigation state to serialize.
+  * @param options Extra options to fine-tune how to serialize the path.
++ * @param isTabScreen Return true if it's a TabNavigator screen
+  * @returns Path representing the state, e.g. /foo/bar?count=42.
+  */
+ 
+ 
+-export default function getPathFromState(state, options) {
++export default function getPathFromState(state, options, isTabScreen) {
+   if (state == null) {
+     throw Error("Got 'undefined' for the navigation state. You must pass a valid state object.");
+   }
+@@ -65,6 +66,10 @@ export default function getPathFromState(state, options) {
+     let focusedRoute = getActiveRoute(state);
+     let currentOptions = configs; // Keep all the route names that appeared during going deeper in config in case the pattern is resolved to undefined
+ 
++    if (isTabScreen && isTabScreen(route.name)) {
++      currentOptions = configs?.TabNavigator?.screens || configs
++    }
++
+     let nestedRouteNames = [];
+     let hasNext = true;
+ 
+diff --git a/node_modules/@react-navigation/core/lib/typescript/src/getPathFromState.d.ts b/node_modules/@react-navigation/core/lib/typescript/src/getPathFromState.d.ts
+index c490438..851a434 100644
+--- a/node_modules/@react-navigation/core/lib/typescript/src/getPathFromState.d.ts
++++ b/node_modules/@react-navigation/core/lib/typescript/src/getPathFromState.d.ts
+@@ -34,5 +34,5 @@ declare type State = NavigationState | Omit<PartialState<NavigationState>, 'stal
+  * @param options Extra options to fine-tune how to serialize the path.
+  * @returns Path representing the state, e.g. /foo/bar?count=42.
+  */
+-export default function getPathFromState<ParamList extends {}>(state: State, options?: Options<ParamList>): string;
++export default function getPathFromState<ParamList extends {}>(state: State, options?: Options<ParamList>, getTabScreen?: (name: string) => boolean): string;
+ export {};
+diff --git a/node_modules/@react-navigation/core/src/getPathFromState.tsx b/node_modules/@react-navigation/core/src/getPathFromState.tsx
+index f3e30de..e904e84 100644
+--- a/node_modules/@react-navigation/core/src/getPathFromState.tsx
++++ b/node_modules/@react-navigation/core/src/getPathFromState.tsx
+@@ -64,11 +64,13 @@ const getActiveRoute = (state: State): { name: string; params?: object } => {
+  *
+  * @param state Navigation state to serialize.
+  * @param options Extra options to fine-tune how to serialize the path.
++ * @param isTabScreen Return true if it's a TabNavigator screen
+  * @returns Path representing the state, e.g. /foo/bar?count=42.
+  */
+ export default function getPathFromState<ParamList extends {}>(
+   state: State,
+-  options?: Options<ParamList>
++  options?: Options<ParamList>,
++  isTabScreen?: (name: string) => boolean
+ ): string {
+   if (state == null) {
+     throw Error(
+@@ -102,6 +104,10 @@ export default function getPathFromState<ParamList extends {}>(
+     let focusedRoute = getActiveRoute(state);
+     let currentOptions = configs;
+ 
++    if (isTabScreen && isTabScreen(route.name as any)) {
++      currentOptions = configs?.TabNavigator?.screens as any || configs
++    }
++
+     // Keep all the route names that appeared during going deeper in config in case the pattern is resolved to undefined
+     let nestedRouteNames = [];
+ 
