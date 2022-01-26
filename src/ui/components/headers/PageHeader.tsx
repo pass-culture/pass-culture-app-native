@@ -11,6 +11,7 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
+import { Header } from 'ui/web/global/Header'
 
 interface Props {
   title: string
@@ -38,28 +39,30 @@ export const PageHeader: React.FC<Props> = (props) => {
   const { onLayout } = useElementWidth()
 
   return (
-    <HeaderContainer>
-      <Spacer.TopScreen />
-      <Spacer.Column numberOfSpaces={2} />
+    <Header>
+      <Container>
+        <Spacer.TopScreen />
+        <Spacer.Column numberOfSpaces={2} />
 
-      <Row>
-        <ButtonContainer positionInHeader="left">
-          <HeaderIconBack onGoBack={props.onGoBack} />
-        </ButtonContainer>
+        <Row>
+          <ButtonContainer positionInHeader="left">
+            <HeaderIconBack onGoBack={props.onGoBack} />
+          </ButtonContainer>
 
-        <Title color={ColorsEnum.WHITE}>{title}</Title>
+          <Title color={ColorsEnum.WHITE}>{title}</Title>
 
-        <ButtonContainer positionInHeader="right">
-          {!!RightComponent && (
-            <View onLayout={onLayout}>
-              <RightComponent />
-            </View>
-          )}
-        </ButtonContainer>
-      </Row>
+          <ButtonContainer positionInHeader="right">
+            {!!RightComponent && (
+              <View onLayout={onLayout}>
+                <RightComponent />
+              </View>
+            )}
+          </ButtonContainer>
+        </Row>
 
-      <Spacer.Column numberOfSpaces={2} />
-    </HeaderContainer>
+        <Spacer.Column numberOfSpaces={2} />
+      </Container>
+    </Header>
   )
 }
 
@@ -67,7 +70,7 @@ const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
   activeOpacity: theme.activeOpacity,
 }))``
 
-const HeaderContainer = styled.View(({ theme }) => ({
+const Container = styled.View(({ theme }) => ({
   position: 'absolute',
   top: 0,
   width: '100%',
