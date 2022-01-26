@@ -30,7 +30,7 @@ const renderCallToAction = (
         icon={callToActionIcon || undefined}
         testId="call-to-action-button"
         onPress={() => handleCallToActionLink(callToActionLink)}
-        title={callToActionMessage}
+        wording={callToActionMessage}
         justifyContent="flex-start"
         numberOfLines={2}
       />

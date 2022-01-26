@@ -50,7 +50,7 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
         </Typo.Body>
       </Description>
       <ButtonTertiary
-        title={cookieButtonText}
+        wording={cookieButtonText}
         onPress={openCookiesPolicyExternalUrl}
         icon={ExternalSite}
         textSize={12}
@@ -61,9 +61,9 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
         </Typo.Caption>
       </SubDescription>
       <CallToActionsContainer>
-        <AcceptanceButton title={t`Autoriser`} onPress={onApproval} />
+        <AcceptanceButton wording={t`Autoriser`} onPress={onApproval} />
         <Spacer.Column numberOfSpaces={3} />
-        <RefusalButton title={t`Refuser`} onPress={onRefusal} />
+        <RefusalButton wording={t`Refuser`} onPress={onRefusal} />
       </CallToActionsContainer>
     </AppModal>
   )

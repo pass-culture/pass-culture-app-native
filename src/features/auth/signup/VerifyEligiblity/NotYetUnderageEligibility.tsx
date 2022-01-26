@@ -21,7 +21,7 @@ export const NotYetUnderageEligibility: FunctionComponent<Props> = (props) => {
       title={t`C'est pour bientôt\u00a0!`}
       icon={CalendarIllustration}
       buttons={[
-        <ButtonPrimaryWhite key={1} title={t`Retourner à l'accueil`} onPress={navigateToHome} />,
+        <ButtonPrimaryWhite key={1} wording={t`Retourner à l'accueil`} onPress={navigateToHome} />,
       ]}>
       <StyledBody>
         {t({

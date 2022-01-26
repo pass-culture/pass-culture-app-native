@@ -33,7 +33,7 @@ export function LayoutExpiredLink({
         renderResendEmailButton && renderResendEmailButton(),
         <ButtonTertiaryWhite
           key={1}
-          title={t`Retourner à l'accueil`}
+          wording={t`Retourner à l'accueil`}
           {...accessibilityAndTestId('button-icon')}
           onPress={navigateToHome}
           icon={PlainArrowPrevious}
@@ -55,7 +55,7 @@ export function LayoutExpiredLink({
 
       {!!urlFAQ && (
         <ButtonTertiaryWhite
-          title={t`Consulter l'article d'aide`}
+          wording={t`Consulter l'article d'aide`}
           onPress={() => openUrl(urlFAQ)}
           icon={ExternalSite}
           iconSize={18}
@@ -64,7 +64,7 @@ export function LayoutExpiredLink({
 
       {!!contactSupport && (
         <ButtonTertiaryWhite
-          title={t`Contacter le support`}
+          wording={t`Contacter le support`}
           {...accessibilityAndTestId('button-icon')}
           onPress={contactSupport}
           icon={EmailFilled}

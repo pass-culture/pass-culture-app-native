@@ -86,7 +86,7 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
         {!!lastIndex && (
           <SkipButton>
             <HorizontalPaddingContainer>
-              <ButtonTertiaryGreyDark title={t`Tout passer`} onPress={skip} />
+              <ButtonTertiaryGreyDark wording={t`Tout passer`} onPress={skip} />
             </HorizontalPaddingContainer>
           </SkipButton>
         )}

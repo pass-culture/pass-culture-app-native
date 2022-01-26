@@ -54,10 +54,10 @@ export function BookingConfirmation() {
       buttons={[
         <ButtonPrimaryWhite
           key={1}
-          title={t`Voir ma réservation`}
+          wording={t`Voir ma réservation`}
           onPress={displayBookingDetails}
         />,
-        <ButtonTertiaryWhite key={2} title={t`Retourner à l'accueil`} onPress={navigateToHome} />,
+        <ButtonTertiaryWhite key={2} wording={t`Retourner à l'accueil`} onPress={navigateToHome} />,
       ]}>
       <StyledBody>
         {t({

@@ -29,7 +29,7 @@ export function LoggedOutHeader() {
         </Description>
         <Spacer.Column numberOfSpaces={8} />
         <ButtonPrimaryWhite
-          title={t`S'inscrire`}
+          wording={t`S'inscrire`}
           onPress={() => {
             analytics.logProfilSignUp()
             navigate('SignupForm', { preventCancellation: true })

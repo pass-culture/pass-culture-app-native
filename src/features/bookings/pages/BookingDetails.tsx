@@ -171,7 +171,7 @@ export function BookingDetails() {
           <Spacer.Column numberOfSpaces={8} />
           <ButtonPrimary
             testId="Voir le détail de l’offre"
-            title={t`Voir le détail de l’offre`}
+            wording={t`Voir le détail de l’offre`}
             onPress={navigateToOffer}
             fullWidth
           />

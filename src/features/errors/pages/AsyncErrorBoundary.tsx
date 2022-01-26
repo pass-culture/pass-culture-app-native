@@ -61,7 +61,7 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
       buttons={[
         <ButtonPrimaryWhite
           key={1}
-          title={t`Réessayer`}
+          wording={t`Réessayer`}
           onPress={handleRetry}
           buttonHeight="tall"
         />,

@@ -96,7 +96,7 @@ export const IdentityCheckStepper = () => {
             <Spacer.Flex flex={2} />
           )}
 
-          <ButtonTertiaryWhite title={t`Abandonner`} onPress={showQuitIdentityCheckModal} />
+          <ButtonTertiaryWhite wording={t`Abandonner`} onPress={showQuitIdentityCheckModal} />
         </Container>
       </CenteredContainer>
       <QuitIdentityCheckModal

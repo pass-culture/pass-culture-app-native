@@ -28,13 +28,13 @@ export const VerifyEligibility: FunctionComponent = () => {
       buttons={[
         <ButtonPrimaryWhite
           key={1}
-          title={t`Vérifier mon identité`}
+          wording={t`Vérifier mon identité`}
           onPress={navigateToNextBeneficiaryValidationStep}
         />,
         <ButtonTertiaryWhite
           key={2}
           icon={PlainArrowPrevious}
-          title={t`Retourner à l'accueil`}
+          wording={t`Retourner à l'accueil`}
           onPress={navigateToHome}
         />,
       ]}>

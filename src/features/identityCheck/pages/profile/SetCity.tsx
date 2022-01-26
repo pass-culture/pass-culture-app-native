@@ -123,7 +123,7 @@ export const SetCity = () => {
         </React.Fragment>
       }
       fixedBottomChildren={
-        <ButtonPrimary onPress={submitCity} title={t`Continuer`} disabled={disabled} />
+        <ButtonPrimary onPress={submitCity} wording={t`Continuer`} disabled={disabled} />
       }
     />
   )

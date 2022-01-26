@@ -101,7 +101,7 @@ export const FavoritesSorts: React.FC = () => {
 
       <PageHeader title={t`Trier`} />
       <ButtonContainer>
-        <StyledButtonPrimary title={t`Valider`} onPress={onValidation} />
+        <StyledButtonPrimary wording={t`Valider`} onPress={onValidation} />
       </ButtonContainer>
     </Container>
   )

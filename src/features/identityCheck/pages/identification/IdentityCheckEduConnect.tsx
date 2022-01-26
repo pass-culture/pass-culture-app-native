@@ -54,7 +54,7 @@ export const IdentityCheckEduConnect = () => {
         </Container>
       }
       fixedBottomChildren={
-        <ButtonPrimary title={`Connexion avec ÉduConnect`} onPress={navigateToNextScreen} />
+        <ButtonPrimary wording={`Connexion avec ÉduConnect`} onPress={navigateToNextScreen} />
       }
     />
   )

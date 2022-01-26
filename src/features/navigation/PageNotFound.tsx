@@ -14,7 +14,7 @@ export const PageNotFound: React.FC = () => {
       title={t`Page introuvable\u00a0!`}
       icon={PageNotFoundIcon}
       buttons={[
-        <ButtonPrimaryWhite key={1} title={t`Retourner à l'accueil`} onPress={navigateToHome} />,
+        <ButtonPrimaryWhite key={1} wording={t`Retourner à l'accueil`} onPress={navigateToHome} />,
       ]}>
       <StyledBody>{t`Il est possible que cette page soit désactivée ou n'existe pas.`}</StyledBody>
     </GenericInfoPage>

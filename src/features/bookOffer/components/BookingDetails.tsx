@@ -133,7 +133,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
 
       <ButtonPrimary
         disabled={!isStockBookable}
-        title={t`Confirmer la réservation`}
+        wording={t`Confirmer la réservation`}
         onPress={onPressBookOffer}
         accessibilityDescribedBy={accessibilityDescribedBy}
       />

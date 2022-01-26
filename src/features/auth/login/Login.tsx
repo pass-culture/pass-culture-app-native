@@ -181,7 +181,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         <Spacer.Column numberOfSpaces={7} />
         <ButtonContainer>
           <ButtonTertiaryBlack
-            title={t`Mot de passe oublié\u00a0?`}
+            wording={t`Mot de passe oublié\u00a0?`}
             onPress={onForgottenPasswordClick}
             icon={Key}
             inline
@@ -190,7 +190,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
 
         <Spacer.Column numberOfSpaces={8} />
         <ButtonPrimary
-          title={t`Se connecter`}
+          wording={t`Se connecter`}
           onPress={onSubmit}
           disabled={shouldDisableLoginButton}
         />

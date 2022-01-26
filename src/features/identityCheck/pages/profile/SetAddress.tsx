@@ -131,7 +131,7 @@ export const SetAddress = () => {
         </React.Fragment>
       }
       fixedBottomChildren={
-        <ButtonPrimary onPress={submitAddress} title={t`Continuer`} disabled={!enabled} />
+        <ButtonPrimary onPress={submitAddress} wording={t`Continuer`} disabled={!enabled} />
       }
     />
   )

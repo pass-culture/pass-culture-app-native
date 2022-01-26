@@ -44,14 +44,14 @@ export function IdentityCheckStartContentDesktop({
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
         onPress={showSomeAdviceBeforeIdentityCheckModal}
-        title={t`Vérification par smartphone`}
+        wording={t`Vérification par smartphone`}
       />
       <Spacer.Column numberOfSpaces={8} />
       <DMSInformationContainer>
         <Typo.Body color={ColorsEnum.GREY_DARK}>{t`Tu n'as pas de smartphone\u00a0?`}</Typo.Body>
         <Spacer.Column numberOfSpaces={4} />
         <ButtonTertiaryBlack
-          title={t`Identification par le site Démarches-Simplifiées`}
+          wording={t`Identification par le site Démarches-Simplifiées`}
           onPress={showDMSModal}
           icon={ExternalSiteFilled}
         />

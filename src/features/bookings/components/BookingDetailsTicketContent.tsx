@@ -35,7 +35,7 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
 
   const accessOfferButton = (
     <InnerButtonContainer>
-      <ButtonPrimary title={t`Accéder à l'offre`} onPress={accessExternalOffer} />
+      <ButtonPrimary wording={t`Accéder à l'offre`} onPress={accessExternalOffer} />
     </InnerButtonContainer>
   )
 

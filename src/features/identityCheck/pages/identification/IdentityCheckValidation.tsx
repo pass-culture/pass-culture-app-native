@@ -48,7 +48,10 @@ export function IdentityCheckValidation() {
         </BodyContainer>
       }
       fixedBottomChildren={
-        <ButtonPrimary title={t`Valider mes informations`} onPress={navigateToNextEduConnectStep} />
+        <ButtonPrimary
+          wording={t`Valider mes informations`}
+          onPress={navigateToNextEduConnectStep}
+        />
       }
     />
   )

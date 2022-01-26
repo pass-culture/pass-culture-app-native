@@ -35,7 +35,7 @@ export const IdentityCheckStart = () => {
         onGoBack={onGoBack}
         scrollChildren={<IdentityCheckStartContent />}
         fixedBottomChildren={
-          <ButtonPrimary onPress={showModal} title={t`Commencer la vérification`} />
+          <ButtonPrimary onPress={showModal} wording={t`Commencer la vérification`} />
         }
       />
       <SomeAdviceBeforeIdentityCheckModal

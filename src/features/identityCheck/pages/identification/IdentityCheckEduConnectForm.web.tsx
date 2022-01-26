@@ -88,7 +88,7 @@ export const IdentityCheckEduConnectForm = () => {
           </React.Fragment>
         }
         fixedBottomChildren={
-          <ButtonPrimary title={t`Ouvrir un onglet ÉduConnect`} onPress={openEduConnect} />
+          <ButtonPrimary wording={t`Ouvrir un onglet ÉduConnect`} onPress={openEduConnect} />
         }
       />
       <ErrorTrigger error={error} />

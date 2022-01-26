@@ -11,13 +11,13 @@ describe('AppButton Component', () => {
   describe('* Icon property', () => {
     it('should display icon when provided', () => {
       const { getByTestId } = render(
-        <AppButton title="Testing Disabled" loadingIconColor={ColorsEnum.BLACK} icon={Close} />
+        <AppButton wording="Testing Disabled" loadingIconColor={ColorsEnum.BLACK} icon={Close} />
       )
       getByTestId('button-icon')
     })
     it('should not display icon when not provided', () => {
       const { queryByTestId } = render(
-        <AppButton title="Testing Disabled" loadingIconColor={ColorsEnum.BLACK} />
+        <AppButton wording="Testing Disabled" loadingIconColor={ColorsEnum.BLACK} />
       )
       const icon = queryByTestId('button-icon')
       expect(icon).toBeFalsy()
@@ -27,7 +27,7 @@ describe('AppButton Component', () => {
     it('should display right elements when isLoading equals true', () => {
       const { getByTestId, queryByTestId } = render(
         <AppButton
-          title="Testing Disabled"
+          wording="Testing Disabled"
           loadingIconColor={ColorsEnum.BLACK}
           isLoading
           icon={Close}
@@ -40,7 +40,7 @@ describe('AppButton Component', () => {
     it('should display right elements when isLoading equals false', () => {
       const { getByTestId, queryByTestId } = render(
         <AppButton
-          title="Testing Disabled"
+          wording="Testing Disabled"
           loadingIconColor={ColorsEnum.BLACK}
           isLoading={false}
           icon={Close}
@@ -56,7 +56,12 @@ describe('AppButton Component', () => {
   describe('* inline property', () => {
     it('should use inline css style when true', () => {
       const renderAPI = render(
-        <AppButton title="Testing inline" loadingIconColor={ColorsEnum.BLACK} icon={Close} inline />
+        <AppButton
+          wording="Testing inline"
+          loadingIconColor={ColorsEnum.BLACK}
+          icon={Close}
+          inline
+        />
       )
       expect(renderAPI).toMatchSnapshot()
     })

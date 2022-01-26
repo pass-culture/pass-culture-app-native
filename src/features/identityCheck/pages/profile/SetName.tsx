@@ -74,7 +74,7 @@ export const SetName = () => {
         </Form.MaxWidth>
       }
       fixedBottomChildren={
-        <ButtonPrimary title={t`Continuer`} onPress={submitName} disabled={disabled} />
+        <ButtonPrimary wording={t`Continuer`} onPress={submitName} disabled={disabled} />
       }
     />
   )

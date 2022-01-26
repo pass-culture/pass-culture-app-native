@@ -41,7 +41,7 @@ export const SetPassword: FunctionComponent<PreValidationSignupStepProps> = (pro
       <PasswordSecurityRules password={password} nativeID={passwordDescribedBy} />
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
-        title={t`Continuer`}
+        wording={t`Continuer`}
         accessibilityLabel={props.accessibilityLabelForNextStep}
         onPress={submitPassword}
         disabled={disabled}

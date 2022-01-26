@@ -89,7 +89,7 @@ export function NavigationIdentityCheck(): JSX.Element {
         />
         <Row half>
           <NavigationButton
-            title={'Identifie-toi en 2 minutes'}
+            wording={'Identifie-toi en 2 minutes'}
             onPress={() => {
               setFastEduconnectConnectionRequestModalVisible(true)
             }}
@@ -123,7 +123,7 @@ const LinkToComponent = ({
 
   return (
     <Row half>
-      <NavigationButton title={title ?? name} onPress={onPress ?? navigateToComponent} />
+      <NavigationButton wording={title ?? name} onPress={onPress ?? navigateToComponent} />
     </Row>
   )
 }

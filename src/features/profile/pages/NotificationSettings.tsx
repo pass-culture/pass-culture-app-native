@@ -185,7 +185,7 @@ export function NotificationSettings() {
         <Spacer.Flex flex={1} />
         {!!isLoggedIn && (
           <StyledButtonPrimary
-            title={t`Enregistrer`}
+            wording={t`Enregistrer`}
             isLoading={isUpdating}
             disabled={!state.emailTouched && !state.pushTouched}
             onPress={submitProfile}
