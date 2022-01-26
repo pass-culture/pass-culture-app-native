@@ -61,6 +61,7 @@ Array [
         ]
       }
       testID="cultural-survey-webview"
+      textInteractionEnabled={true}
       useSharedProcessPool={true}
     />
   </View>,
