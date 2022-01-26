@@ -11,7 +11,7 @@ export function isShareApiSupported(): boolean {
 }
 
 export type ShareContent = {
-  title?: string | undefined
+  title?: string
   message: string
   url: string
 }
