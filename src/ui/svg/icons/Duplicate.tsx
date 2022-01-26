@@ -3,7 +3,9 @@ import { Path } from 'react-native-svg'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { ColorsEnum, SMALLER_ICON_SIZE } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
+import { SMALLER_ICON_SIZE } from 'ui/theme/constants'
 
 export const Duplicate: React.FunctionComponent<AccessibleIcon> = ({
   size = SMALLER_ICON_SIZE,
