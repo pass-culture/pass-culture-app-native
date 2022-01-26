@@ -51,7 +51,7 @@ exports[`<Favorite /> component offer name should take full space if no geolocat
 +               style={
 +                 Array [
 +                   Object {
-+                     \\"color\\": \\"#626262\\",
++                     \\"color\\": \\"#696A6F\\",
 +                     \\"fontFamily\\": \\"Montserrat-Regular\\",
 +                     \\"fontSize\\": 15,
 +                     \\"lineHeight\\": 20,

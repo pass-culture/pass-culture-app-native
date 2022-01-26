@@ -117,7 +117,7 @@ describe('SetPhoneValidationCode', () => {
       const continueButton = getByTestId('Continuer')
 
       await waitForExpect(() => {
-        expect(continueButton.style.backgroundColor).toEqual('rgb(245, 245, 245)')
+        expect(continueButton.style.backgroundColor).toEqual('rgb(241, 241, 244)')
       })
     })
 
@@ -130,7 +130,7 @@ describe('SetPhoneValidationCode', () => {
       const continueButton = getByTestId('Continuer')
 
       await waitForExpect(() => {
-        expect(continueButton.style.backgroundColor).toEqual('rgb(245, 245, 245)')
+        expect(continueButton.style.backgroundColor).toEqual('rgb(241, 241, 244)')
       })
     })
 

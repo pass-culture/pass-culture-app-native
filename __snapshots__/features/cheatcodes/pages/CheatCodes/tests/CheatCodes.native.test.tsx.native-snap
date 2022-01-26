@@ -405,7 +405,7 @@ exports[`CheatCodes component should render correctly 1`] = `
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
           "lineHeight": 20,
@@ -430,7 +430,7 @@ exports[`CheatCodes component should render correctly 1`] = `
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
           "lineHeight": 20,
@@ -444,7 +444,7 @@ exports[`CheatCodes component should render correctly 1`] = `
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,
             "lineHeight": 20,
@@ -501,7 +501,7 @@ exports[`CheatCodes component should render correctly 1`] = `
     onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#c7c7cc",
+        "backgroundColor": "#CBCDD2",
         "borderBottomLeftRadius": 5,
         "borderColor": "#ffffff",
         "borderRightWidth": 0,

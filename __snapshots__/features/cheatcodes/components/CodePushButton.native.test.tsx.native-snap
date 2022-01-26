@@ -13,7 +13,7 @@ exports[`CodePushButton prints AWAITING_USER_ACTION 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "#c7c7cc",
+      "backgroundColor": "#CBCDD2",
       "borderBottomLeftRadius": 5,
       "borderColor": "#ffffff",
       "borderRightWidth": 0,
@@ -53,7 +53,7 @@ exports[`CodePushButton prints CHECKING_FOR_UPDATE 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "#c7c7cc",
+      "backgroundColor": "#CBCDD2",
       "borderBottomLeftRadius": 5,
       "borderColor": "#ffffff",
       "borderRightWidth": 0,
@@ -93,7 +93,7 @@ exports[`CodePushButton prints DOWNLOADING_PACKAGE 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "#c7c7cc",
+      "backgroundColor": "#CBCDD2",
       "borderBottomLeftRadius": 5,
       "borderColor": "#ffffff",
       "borderRightWidth": 0,
@@ -133,7 +133,7 @@ exports[`CodePushButton prints INSTALLING_UPDATE 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "#c7c7cc",
+      "backgroundColor": "#CBCDD2",
       "borderBottomLeftRadius": 5,
       "borderColor": "#ffffff",
       "borderRightWidth": 0,
@@ -173,7 +173,7 @@ exports[`CodePushButton prints undefined 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "#c7c7cc",
+      "backgroundColor": "#CBCDD2",
       "borderBottomLeftRadius": 5,
       "borderColor": "#ffffff",
       "borderRightWidth": 0,
@@ -215,7 +215,7 @@ exports[`CodePushButton renders correctly 1`] = `
   onStartShouldSetResponder={[Function]}
   style={
     Object {
-      "backgroundColor": "#c7c7cc",
+      "backgroundColor": "#CBCDD2",
       "borderBottomLeftRadius": 5,
       "borderColor": "#ffffff",
       "borderRightWidth": 0,

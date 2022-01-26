@@ -15,7 +15,7 @@ Array [
     dir="auto"
     style={
       Object {
-        "color": "rgba(21,21,21,1.00)",
+        "color": "rgba(22,22,23,1.00)",
         "fontFamily": "Montserrat-Medium",
         "fontSize": "18px",
         "lineHeight": "22px",
@@ -108,7 +108,7 @@ Array [
         Object {
           "WebkitFlexShrink": 1,
           "WebkitLineClamp": 1,
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "flexShrink": 1,
           "fontFamily": "Montserrat-Bold",
           "fontSize": "15px",
@@ -162,7 +162,7 @@ Array [
     dir="auto"
     style={
       Object {
-        "color": "rgba(21,21,21,1.00)",
+        "color": "rgba(22,22,23,1.00)",
         "fontFamily": "Montserrat-SemiBold",
         "fontSize": "12px",
         "lineHeight": "16px",
@@ -184,7 +184,7 @@ Array [
     dir="auto"
     style={
       Object {
-        "color": "rgba(21,21,21,1.00)",
+        "color": "rgba(22,22,23,1.00)",
         "fontFamily": "Montserrat-Regular",
         "fontSize": "15px",
         "lineHeight": "20px",
@@ -206,7 +206,7 @@ Array [
     className="css-view-1dbjc4n"
     style={
       Object {
-        "backgroundColor": "rgba(199,199,204,1.00)",
+        "backgroundColor": "rgba(203,205,210,1.00)",
         "height": "1px",
       }
     }
@@ -301,7 +301,7 @@ Array [
         style={
           Object {
             "WebkitLineClamp": 1,
-            "color": "rgba(21,21,21,1.00)",
+            "color": "rgba(22,22,23,1.00)",
             "fontFamily": "Montserrat-Bold",
             "fontSize": "15px",
             "lineHeight": "20px",
@@ -411,7 +411,7 @@ exports[`WhereSection should render correctly 2`] = `
 +         Object {
 +           \\"WebkitFlexShrink\\": 1,
 +           \\"WebkitLineClamp\\": 1,
-+           \\"color\\": \\"rgba(21,21,21,1.00)\\",
++           \\"color\\": \\"rgba(22,22,23,1.00)\\",
 +           \\"flexShrink\\": 1,
 +           \\"fontFamily\\": \\"Montserrat-Bold\\",
 +           \\"fontSize\\": \\"15px\\",
@@ -465,5 +465,5 @@ exports[`WhereSection should render correctly 2`] = `
       dir=\\"auto\\"
       style={
         Object {
-          \\"color\\": \\"rgba(21,21,21,1.00)\\","
+          \\"color\\": \\"rgba(22,22,23,1.00)\\","
 `;

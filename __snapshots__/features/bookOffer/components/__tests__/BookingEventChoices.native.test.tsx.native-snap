@@ -15,7 +15,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     style={
       Array [
         Object {
-          "backgroundColor": "#f5f5f5",
+          "backgroundColor": "#F1F1F4",
           "height": 2,
         },
       ]
@@ -35,7 +35,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 18,
           "lineHeight": 22,
@@ -78,7 +78,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,
             "lineHeight": 20,
@@ -103,7 +103,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     style={
       Array [
         Object {
-          "backgroundColor": "#f5f5f5",
+          "backgroundColor": "#F1F1F4",
           "height": 2,
         },
       ]
@@ -123,7 +123,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 18,
           "lineHeight": 22,
@@ -166,7 +166,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,
             "lineHeight": 20,
@@ -191,7 +191,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     style={
       Array [
         Object {
-          "backgroundColor": "#f5f5f5",
+          "backgroundColor": "#F1F1F4",
           "height": 2,
         },
       ]
@@ -211,7 +211,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 18,
           "lineHeight": 22,
@@ -370,7 +370,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
           style={
             Array [
               Object {
-                "backgroundColor": "#c7c7cc",
+                "backgroundColor": "#CBCDD2",
                 "borderRadius": 0.5,
                 "height": 1,
                 "position": "absolute",
@@ -423,7 +423,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
             Object {
               "alignItems": "center",
               "backgroundColor": "#ffffff",
-              "borderColor": "#c7c7cc",
+              "borderColor": "#CBCDD2",
               "borderRadius": 4,
               "borderStyle": "solid",
               "borderWidth": 1,
@@ -465,7 +465,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
             }
           >
             <View
-              fill="#626262"
+              fill="#696A6F"
               height={28}
               width={28}
             >
@@ -474,7 +474,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
               </Text>
             </View>
             <View
-              fill="#626262"
+              fill="#696A6F"
               height={28}
               width={28}
             >
@@ -484,11 +484,11 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
             </View>
           </View>
           <Text
-            color="#626262"
+            color="#696A6F"
             style={
               Array [
                 Object {
-                  "color": "#626262",
+                  "color": "#696A6F",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
@@ -499,11 +499,11 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
             Duo
           </Text>
           <Text
-            color="#626262"
+            color="#696A6F"
             style={
               Array [
                 Object {
-                  "color": "#626262",
+                  "color": "#696A6F",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 16,
@@ -521,7 +521,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
           style={
             Array [
               Object {
-                "backgroundColor": "#c7c7cc",
+                "backgroundColor": "#CBCDD2",
                 "borderRadius": 0.5,
                 "height": 1,
                 "position": "absolute",

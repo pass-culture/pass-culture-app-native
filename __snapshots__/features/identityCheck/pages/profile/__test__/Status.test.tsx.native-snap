@@ -169,7 +169,7 @@ exports[`<Status/> should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 18,
                       "lineHeight": 22,
@@ -228,7 +228,7 @@ exports[`<Status/> should render correctly 1`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "borderColor": "#c7c7cc",
+                    "borderColor": "#CBCDD2",
                     "borderRadius": 24,
                     "borderWidth": 1,
                     "flexDirection": "row",
@@ -252,11 +252,11 @@ exports[`<Status/> should render correctly 1`] = `
                   }
                 >
                   <Text
-                    color="#151515"
+                    color="#161617"
                     style={
                       Array [
                         Object {
-                          "color": "#151515",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -283,7 +283,7 @@ exports[`<Status/> should render correctly 1`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "borderColor": "#c7c7cc",
+                    "borderColor": "#CBCDD2",
                     "borderRadius": 24,
                     "borderWidth": 1,
                     "flexDirection": "row",
@@ -307,11 +307,11 @@ exports[`<Status/> should render correctly 1`] = `
                   }
                 >
                   <Text
-                    color="#151515"
+                    color="#161617"
                     style={
                       Array [
                         Object {
-                          "color": "#151515",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -338,7 +338,7 @@ exports[`<Status/> should render correctly 1`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "borderColor": "#c7c7cc",
+                    "borderColor": "#CBCDD2",
                     "borderRadius": 24,
                     "borderWidth": 1,
                     "flexDirection": "row",
@@ -362,11 +362,11 @@ exports[`<Status/> should render correctly 1`] = `
                   }
                 >
                   <Text
-                    color="#151515"
+                    color="#161617"
                     style={
                       Array [
                         Object {
-                          "color": "#151515",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -393,7 +393,7 @@ exports[`<Status/> should render correctly 1`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "borderColor": "#c7c7cc",
+                    "borderColor": "#CBCDD2",
                     "borderRadius": 24,
                     "borderWidth": 1,
                     "flexDirection": "row",
@@ -417,11 +417,11 @@ exports[`<Status/> should render correctly 1`] = `
                   }
                 >
                   <Text
-                    color="#151515"
+                    color="#161617"
                     style={
                       Array [
                         Object {
-                          "color": "#151515",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -448,7 +448,7 @@ exports[`<Status/> should render correctly 1`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "borderColor": "#c7c7cc",
+                    "borderColor": "#CBCDD2",
                     "borderRadius": 24,
                     "borderWidth": 1,
                     "flexDirection": "row",
@@ -472,11 +472,11 @@ exports[`<Status/> should render correctly 1`] = `
                   }
                 >
                   <Text
-                    color="#151515"
+                    color="#161617"
                     style={
                       Array [
                         Object {
-                          "color": "#151515",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -503,7 +503,7 @@ exports[`<Status/> should render correctly 1`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "borderColor": "#c7c7cc",
+                    "borderColor": "#CBCDD2",
                     "borderRadius": 24,
                     "borderWidth": 1,
                     "flexDirection": "row",
@@ -527,11 +527,11 @@ exports[`<Status/> should render correctly 1`] = `
                   }
                 >
                   <Text
-                    color="#151515"
+                    color="#161617"
                     style={
                       Array [
                         Object {
-                          "color": "#151515",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -558,7 +558,7 @@ exports[`<Status/> should render correctly 1`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "borderColor": "#c7c7cc",
+                    "borderColor": "#CBCDD2",
                     "borderRadius": 24,
                     "borderWidth": 1,
                     "flexDirection": "row",
@@ -582,11 +582,11 @@ exports[`<Status/> should render correctly 1`] = `
                   }
                 >
                   <Text
-                    color="#151515"
+                    color="#161617"
                     style={
                       Array [
                         Object {
-                          "color": "#151515",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -597,11 +597,11 @@ exports[`<Status/> should render correctly 1`] = `
                     Volontaire
                   </Text>
                   <Text
-                    color="#626262"
+                    color="#696A6F"
                     style={
                       Array [
                         Object {
-                          "color": "#626262",
+                          "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 16,
@@ -628,7 +628,7 @@ exports[`<Status/> should render correctly 1`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "borderColor": "#c7c7cc",
+                    "borderColor": "#CBCDD2",
                     "borderRadius": 24,
                     "borderWidth": 1,
                     "flexDirection": "row",
@@ -652,11 +652,11 @@ exports[`<Status/> should render correctly 1`] = `
                   }
                 >
                   <Text
-                    color="#151515"
+                    color="#161617"
                     style={
                       Array [
                         Object {
-                          "color": "#151515",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -667,11 +667,11 @@ exports[`<Status/> should render correctly 1`] = `
                     Inactif
                   </Text>
                   <Text
-                    color="#626262"
+                    color="#696A6F"
                     style={
                       Array [
                         Object {
-                          "color": "#626262",
+                          "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 16,
@@ -698,7 +698,7 @@ exports[`<Status/> should render correctly 1`] = `
                 style={
                   Object {
                     "alignItems": "center",
-                    "borderColor": "#c7c7cc",
+                    "borderColor": "#CBCDD2",
                     "borderRadius": 24,
                     "borderWidth": 1,
                     "flexDirection": "row",
@@ -722,11 +722,11 @@ exports[`<Status/> should render correctly 1`] = `
                   }
                 >
                   <Text
-                    color="#151515"
+                    color="#161617"
                     style={
                       Array [
                         Object {
-                          "color": "#151515",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -737,11 +737,11 @@ exports[`<Status/> should render correctly 1`] = `
                     Chômeur
                   </Text>
                   <Text
-                    color="#626262"
+                    color="#696A6F"
                     style={
                       Array [
                         Object {
-                          "color": "#626262",
+                          "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 16,
@@ -788,7 +788,7 @@ exports[`<Status/> should render correctly 1`] = `
               style={
                 Object {
                   "alignItems": "center",
-                  "backgroundColor": "#f5f5f5",
+                  "backgroundColor": "#F1F1F4",
                   "borderRadius": 24,
                   "borderWidth": 0,
                   "flexDirection": "row",
@@ -811,7 +811,7 @@ exports[`<Status/> should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#626262",
+                      "color": "#696A6F",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -820,7 +820,7 @@ exports[`<Status/> should render correctly 1`] = `
                     },
                   ]
                 }
-                textColor="#626262"
+                textColor="#696A6F"
               >
                 Choisis ton statut
               </Text>

@@ -71,7 +71,7 @@ Object {
                     <div
                       class="css-text-901oao"
                       dir="auto"
-                      style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+                      style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                     >
                       Les informations extraites sont-elles correctes ?
                     </div>
@@ -96,7 +96,7 @@ Object {
                       <div
                         class="css-text-901oao"
                         dir="auto"
-                        style="color: rgb(98, 98, 98); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                        style="color: rgb(105, 106, 111); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                       >
                         Ton prénom
                       </div>
@@ -108,7 +108,7 @@ Object {
                         class="css-text-901oao"
                         data-testid="validation-first-name"
                         dir="auto"
-                        style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px;"
+                        style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px;"
                       >
                         John
                       </div>
@@ -119,7 +119,7 @@ Object {
                       <div
                         class="css-text-901oao"
                         dir="auto"
-                        style="color: rgb(98, 98, 98); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                        style="color: rgb(105, 106, 111); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                       >
                         Ton nom de famille
                       </div>
@@ -131,7 +131,7 @@ Object {
                         class="css-text-901oao"
                         data-testid="validation-name"
                         dir="auto"
-                        style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px;"
+                        style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px;"
                       >
                         Doe
                       </div>
@@ -142,7 +142,7 @@ Object {
                       <div
                         class="css-text-901oao"
                         dir="auto"
-                        style="color: rgb(98, 98, 98); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                        style="color: rgb(105, 106, 111); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                       >
                         Ta date de naissance
                       </div>
@@ -154,7 +154,7 @@ Object {
                         class="css-text-901oao"
                         data-testid="validation-birth-date"
                         dir="auto"
-                        style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px;"
+                        style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px;"
                       >
                         28/01/1993
                       </div>
@@ -274,7 +274,7 @@ Object {
                   <div
                     class="css-text-901oao"
                     dir="auto"
-                    style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+                    style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                   >
                     Les informations extraites sont-elles correctes ?
                   </div>
@@ -299,7 +299,7 @@ Object {
                     <div
                       class="css-text-901oao"
                       dir="auto"
-                      style="color: rgb(98, 98, 98); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                      style="color: rgb(105, 106, 111); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                     >
                       Ton prénom
                     </div>
@@ -311,7 +311,7 @@ Object {
                       class="css-text-901oao"
                       data-testid="validation-first-name"
                       dir="auto"
-                      style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px;"
+                      style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px;"
                     >
                       John
                     </div>
@@ -322,7 +322,7 @@ Object {
                     <div
                       class="css-text-901oao"
                       dir="auto"
-                      style="color: rgb(98, 98, 98); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                      style="color: rgb(105, 106, 111); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                     >
                       Ton nom de famille
                     </div>
@@ -334,7 +334,7 @@ Object {
                       class="css-text-901oao"
                       data-testid="validation-name"
                       dir="auto"
-                      style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px;"
+                      style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px;"
                     >
                       Doe
                     </div>
@@ -345,7 +345,7 @@ Object {
                     <div
                       class="css-text-901oao"
                       dir="auto"
-                      style="color: rgb(98, 98, 98); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                      style="color: rgb(105, 106, 111); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                     >
                       Ta date de naissance
                     </div>
@@ -357,7 +357,7 @@ Object {
                       class="css-text-901oao"
                       data-testid="validation-birth-date"
                       dir="auto"
-                      style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px;"
+                      style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px;"
                     >
                       28/01/1993
                     </div>

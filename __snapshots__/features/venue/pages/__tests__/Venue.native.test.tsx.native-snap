@@ -167,7 +167,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             Array [
               Object {
                 "bottom": 0,
-                "shadowColor": "#151515",
+                "shadowColor": "#161617",
                 "shadowOffset": Object {
                   "height": 8,
                   "width": 0,
@@ -287,7 +287,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "flexShrink": 1,
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
@@ -317,7 +317,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 20,
                 "lineHeight": 24,
@@ -385,7 +385,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             }
           >
             <View
-              fill="#626262"
+              fill="#696A6F"
               height={40}
               width={40}
             >
@@ -408,7 +408,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 16,
@@ -426,7 +426,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             Array [
               Object {
                 "alignSelf": "center",
-                "backgroundColor": "#c7c7cc",
+                "backgroundColor": "#CBCDD2",
                 "height": "92%",
                 "marginHorizontal": 8,
                 "width": 1,
@@ -487,7 +487,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               }
             >
               <View
-                fill="#626262"
+                fill="#696A6F"
                 height={40}
                 width={40}
               >
@@ -511,7 +511,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               style={
                 Array [
                   Object {
-                    "color": "#626262",
+                    "color": "#696A6F",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 16,
@@ -574,7 +574,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               style={
                 Array [
                   Object {
-                    "color": "#151515",
+                    "color": "#161617",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -589,7 +589,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -630,7 +630,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         style={
           Array [
             Object {
-              "backgroundColor": "#f5f5f5",
+              "backgroundColor": "#F1F1F4",
               "height": 8,
             },
           ]
@@ -667,12 +667,12 @@ exports[`<Venue /> should match snapshot 1`] = `
           }
         >
           <Text
-            color="#151515"
+            color="#161617"
             numberOfLines={2}
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 18,
                   "lineHeight": 22,
@@ -949,7 +949,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         Array [
                           Object {
                             "alignItems": "center",
-                            "backgroundColor": "#151515",
+                            "backgroundColor": "#161617",
                             "borderBottomLeftRadius": 8,
                             "borderBottomRightRadius": 8,
                             "flexDirection": "row",
@@ -1010,7 +1010,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       style={
                         Array [
                           Object {
-                            "color": "#151515",
+                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 16,
@@ -1021,12 +1021,12 @@ exports[`<Venue /> should match snapshot 1`] = `
                       Titane - VF
                     </Text>
                     <Text
-                      color="#626262"
+                      color="#696A6F"
                       numberOfLines={1}
                       style={
                         Array [
                           Object {
-                            "color": "#626262",
+                            "color": "#696A6F",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 16,
@@ -1037,11 +1037,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                       Dès le 18 août 2021
                     </Text>
                     <Text
-                      color="#626262"
+                      color="#696A6F"
                       style={
                         Array [
                           Object {
-                            "color": "#626262",
+                            "color": "#696A6F",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 16,
@@ -1173,7 +1173,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         Array [
                           Object {
                             "alignItems": "center",
-                            "backgroundColor": "#151515",
+                            "backgroundColor": "#161617",
                             "borderBottomLeftRadius": 8,
                             "borderBottomRightRadius": 8,
                             "flexDirection": "row",
@@ -1234,7 +1234,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       style={
                         Array [
                           Object {
-                            "color": "#151515",
+                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 16,
@@ -1245,12 +1245,12 @@ exports[`<Venue /> should match snapshot 1`] = `
                       Bac Nord - VF
                     </Text>
                     <Text
-                      color="#626262"
+                      color="#696A6F"
                       numberOfLines={1}
                       style={
                         Array [
                           Object {
-                            "color": "#626262",
+                            "color": "#696A6F",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 16,
@@ -1261,11 +1261,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                       Dès le 18 août 2021
                     </Text>
                     <Text
-                      color="#626262"
+                      color="#696A6F"
                       style={
                         Array [
                           Object {
-                            "color": "#626262",
+                            "color": "#696A6F",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 16,
@@ -1397,7 +1397,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                         Array [
                           Object {
                             "alignItems": "center",
-                            "backgroundColor": "#151515",
+                            "backgroundColor": "#161617",
                             "borderBottomLeftRadius": 8,
                             "borderBottomRightRadius": 8,
                             "flexDirection": "row",
@@ -1458,7 +1458,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       style={
                         Array [
                           Object {
-                            "color": "#151515",
+                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 16,
@@ -1469,12 +1469,12 @@ exports[`<Venue /> should match snapshot 1`] = `
                       Black Widow - VF
                     </Text>
                     <Text
-                      color="#626262"
+                      color="#696A6F"
                       numberOfLines={1}
                       style={
                         Array [
                           Object {
-                            "color": "#626262",
+                            "color": "#696A6F",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 16,
@@ -1485,11 +1485,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                       Dès le 18 août 2021
                     </Text>
                     <Text
-                      color="#626262"
+                      color="#696A6F"
                       style={
                         Array [
                           Object {
-                            "color": "#626262",
+                            "color": "#696A6F",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 16,
@@ -1628,13 +1628,13 @@ exports[`<Venue /> should match snapshot 1`] = `
                             "alignItems": "center",
                             "aspectRatio": 1,
                             "backgroundColor": "#ffffff",
-                            "borderColor": "#f5f5f5",
+                            "borderColor": "#F1F1F4",
                             "borderRadius": 32,
                             "borderStyle": "solid",
                             "borderWidth": 1,
                             "justifyContent": "center",
                             "opacity": 1,
-                            "shadowColor": "#151515",
+                            "shadowColor": "#161617",
                             "shadowOffset": Object {
                               "height": 8,
                               "width": 0,
@@ -1815,7 +1815,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         style={
           Array [
             Object {
-              "backgroundColor": "#f5f5f5",
+              "backgroundColor": "#F1F1F4",
               "height": 8,
             },
           ]
@@ -1844,7 +1844,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 18,
                 "lineHeight": 22,
@@ -1868,7 +1868,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 16,
@@ -1892,7 +1892,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 15,
                 "lineHeight": 20,
@@ -1917,7 +1917,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           style={
             Array [
               Object {
-                "backgroundColor": "#c7c7cc",
+                "backgroundColor": "#CBCDD2",
                 "height": 1,
               },
             ]
@@ -1989,7 +1989,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               style={
                 Array [
                   Object {
-                    "color": "#151515",
+                    "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -1998,7 +1998,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   },
                 ]
               }
-              textColor="#151515"
+              textColor="#161617"
             >
               Voir l'itinéraire
             </Text>
@@ -2019,7 +2019,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         style={
           Array [
             Object {
-              "backgroundColor": "#f5f5f5",
+              "backgroundColor": "#F1F1F4",
               "height": 8,
             },
           ]
@@ -2055,7 +2055,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "flexBasis": 0,
                 "flexGrow": 0.9,
                 "flexShrink": 1,
@@ -2124,7 +2124,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Regular",
                   "fontSize": 15,
                   "lineHeight": 20,
@@ -2138,7 +2138,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               style={
                 Array [
                   Object {
-                    "color": "#151515",
+                    "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -2177,7 +2177,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         style={
           Array [
             Object {
-              "backgroundColor": "#f5f5f5",
+              "backgroundColor": "#F1F1F4",
               "height": 8,
             },
           ]
@@ -2213,7 +2213,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "flexBasis": 0,
                 "flexGrow": 0.9,
                 "flexShrink": 1,
@@ -2308,7 +2308,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     Object {
                       "alignItems": "center",
                       "aspectRatio": 1,
-                      "borderColor": "#c7c7cc",
+                      "borderColor": "#CBCDD2",
                       "borderRadius": 8,
                       "borderWidth": 1,
                       "minHeight": 64,
@@ -2329,7 +2329,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 />
                 <View
-                  fill="#151515"
+                  fill="#161617"
                   height={32}
                   width={32}
                 >
@@ -2394,7 +2394,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   style={
                     Array [
                       Object {
-                        "color": "#151515",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
@@ -2428,7 +2428,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     Object {
                       "alignItems": "center",
                       "aspectRatio": 1,
-                      "borderColor": "#c7c7cc",
+                      "borderColor": "#CBCDD2",
                       "borderRadius": 8,
                       "borderWidth": 1,
                       "minHeight": 64,
@@ -2449,7 +2449,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 />
                 <View
-                  fill="#151515"
+                  fill="#161617"
                   height={32}
                   width={32}
                 >
@@ -2479,7 +2479,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 >
                   <View
-                    fill="#626262"
+                    fill="#696A6F"
                     height={24}
                     testID="invalidTestId"
                     width={24}
@@ -2515,7 +2515,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   style={
                     Array [
                       Object {
-                        "color": "#151515",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
@@ -2549,7 +2549,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     Object {
                       "alignItems": "center",
                       "aspectRatio": 1,
-                      "borderColor": "#c7c7cc",
+                      "borderColor": "#CBCDD2",
                       "borderRadius": 8,
                       "borderWidth": 1,
                       "minHeight": 64,
@@ -2570,7 +2570,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 />
                 <View
-                  fill="#151515"
+                  fill="#161617"
                   height={32}
                   width={32}
                 >
@@ -2600,7 +2600,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 >
                   <View
-                    fill="#626262"
+                    fill="#696A6F"
                     height={24}
                     testID="invalidTestId"
                     width={24}
@@ -2636,7 +2636,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   style={
                     Array [
                       Object {
-                        "color": "#151515",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
@@ -2670,7 +2670,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     Object {
                       "alignItems": "center",
                       "aspectRatio": 1,
-                      "borderColor": "#c7c7cc",
+                      "borderColor": "#CBCDD2",
                       "borderRadius": 8,
                       "borderWidth": 1,
                       "minHeight": 64,
@@ -2691,7 +2691,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 />
                 <View
-                  fill="#151515"
+                  fill="#161617"
                   height={32}
                   width={32}
                 >
@@ -2721,7 +2721,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 >
                   <View
-                    fill="#626262"
+                    fill="#696A6F"
                     height={24}
                     testID="invalidTestId"
                     width={24}
@@ -2757,7 +2757,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   style={
                     Array [
                       Object {
-                        "color": "#151515",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
@@ -2778,7 +2778,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         style={
           Array [
             Object {
-              "backgroundColor": "#f5f5f5",
+              "backgroundColor": "#F1F1F4",
               "height": 8,
             },
           ]
@@ -2814,7 +2814,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "flexBasis": 0,
                 "flexGrow": 0.9,
                 "flexShrink": 1,
@@ -2932,7 +2932,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -2987,7 +2987,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -3042,7 +3042,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -3060,7 +3060,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         style={
           Array [
             Object {
-              "backgroundColor": "#f5f5f5",
+              "backgroundColor": "#F1F1F4",
               "height": 8,
             },
           ]
@@ -3164,7 +3164,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               "alignItems": "center",
               "aspectRatio": 1,
               "backgroundColor": "rgba(255, 255, 255, 1)",
-              "borderColor": "rgba(245, 245, 245, 1)",
+              "borderColor": "rgba(241, 241, 244, 1)",
               "borderRadius": 40,
               "borderStyle": "solid",
               "borderWidth": 1,
@@ -3311,7 +3311,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               "alignItems": "center",
               "aspectRatio": 1,
               "backgroundColor": "rgba(255, 255, 255, 1)",
-              "borderColor": "rgba(245, 245, 245, 1)",
+              "borderColor": "rgba(241, 241, 244, 1)",
               "borderRadius": 40,
               "borderStyle": "solid",
               "borderWidth": 1,
@@ -3346,7 +3346,7 @@ exports[`<Venue /> should match snapshot 1`] = `
               testID="initial-icon-container"
             >
               <View
-                fill="#151515"
+                fill="#161617"
                 height={24}
                 testID="icon-share"
                 width={24}

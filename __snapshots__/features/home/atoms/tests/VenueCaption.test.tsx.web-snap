@@ -16,7 +16,7 @@ exports[`VenueCaption component should render correctly 1`] = `
     style={
       Object {
         "WebkitLineClamp": 2,
-        "color": "rgba(21,21,21,1.00)",
+        "color": "rgba(22,22,23,1.00)",
         "fontFamily": "Montserrat-SemiBold",
         "fontSize": "12px",
         "lineHeight": "16px",
@@ -66,7 +66,7 @@ exports[`VenueCaption component should render correctly 1`] = `
         Object {
           "WebkitFlexShrink": 1,
           "WebkitLineClamp": 1,
-          "color": "rgba(98,98,98,1.00)",
+          "color": "rgba(105,106,111,1.00)",
           "flexShrink": 1,
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
@@ -83,7 +83,7 @@ exports[`VenueCaption component should render correctly 1`] = `
     dir="auto"
     style={
       Object {
-        "color": "rgba(98,98,98,1.00)",
+        "color": "rgba(105,106,111,1.00)",
         "fontFamily": "Montserrat-SemiBold",
         "fontSize": "12px",
         "lineHeight": "16px",

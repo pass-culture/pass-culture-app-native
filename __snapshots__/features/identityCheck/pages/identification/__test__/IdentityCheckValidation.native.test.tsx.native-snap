@@ -169,7 +169,7 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 18,
                       "lineHeight": 22,
@@ -217,11 +217,11 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
                 }
               >
                 <Text
-                  color="#626262"
+                  color="#696A6F"
                   style={
                     Array [
                       Object {
-                        "color": "#626262",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
@@ -245,7 +245,7 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
                   style={
                     Array [
                       Object {
-                        "color": "#151515",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 20,
                         "lineHeight": 24,
@@ -267,11 +267,11 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
                   }
                 />
                 <Text
-                  color="#626262"
+                  color="#696A6F"
                   style={
                     Array [
                       Object {
-                        "color": "#626262",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
@@ -295,7 +295,7 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
                   style={
                     Array [
                       Object {
-                        "color": "#151515",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 20,
                         "lineHeight": 24,
@@ -317,11 +317,11 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
                   }
                 />
                 <Text
-                  color="#626262"
+                  color="#696A6F"
                   style={
                     Array [
                       Object {
-                        "color": "#626262",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
@@ -345,7 +345,7 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
                   style={
                     Array [
                       Object {
-                        "color": "#151515",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 20,
                         "lineHeight": 24,

@@ -59,7 +59,7 @@ exports[`IconWithCaption should render correctly 1`] = `
     dir="auto"
     style={
       Object {
-        "color": "rgba(21,21,21,1.00)",
+        "color": "rgba(22,22,23,1.00)",
         "fontFamily": "Montserrat-SemiBold",
         "fontSize": "12px",
         "lineHeight": "16px",
@@ -83,8 +83,8 @@ exports[`IconWithCaption should render different when isDisabled is true 1`] = `
       dir=\\"auto\\"
       style={
         Object {
--         \\"color\\": \\"rgba(21,21,21,1.00)\\",
-+         \\"color\\": \\"rgba(98,98,98,1.00)\\",
+-         \\"color\\": \\"rgba(22,22,23,1.00)\\",
++         \\"color\\": \\"rgba(105,106,111,1.00)\\",
           \\"fontFamily\\": \\"Montserrat-SemiBold\\",
           \\"fontSize\\": \\"12px\\",
           \\"lineHeight\\": \\"16px\\",

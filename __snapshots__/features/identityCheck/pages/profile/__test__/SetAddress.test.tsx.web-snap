@@ -227,7 +227,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                   dir="auto"
                   style={
                     Object {
-                      "color": "rgba(21,21,21,1.00)",
+                      "color": "rgba(22,22,23,1.00)",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": "18px",
                       "lineHeight": "22px",
@@ -271,18 +271,18 @@ exports[`<SetAddress/> should render correctly 1`] = `
                     "WebkitFlexDirection": "row",
                     "alignItems": "center",
                     "backgroundColor": "rgba(255,255,255,1.00)",
-                    "borderBottomColor": "rgba(199,199,204,1.00)",
+                    "borderBottomColor": "rgba(203,205,210,1.00)",
                     "borderBottomLeftRadius": "22px",
                     "borderBottomRightRadius": "22px",
                     "borderBottomStyle": "solid",
                     "borderBottomWidth": "1px",
-                    "borderLeftColor": "rgba(199,199,204,1.00)",
+                    "borderLeftColor": "rgba(203,205,210,1.00)",
                     "borderLeftStyle": "solid",
                     "borderLeftWidth": "1px",
-                    "borderRightColor": "rgba(199,199,204,1.00)",
+                    "borderRightColor": "rgba(203,205,210,1.00)",
                     "borderRightStyle": "solid",
                     "borderRightWidth": "1px",
-                    "borderTopColor": "rgba(199,199,204,1.00)",
+                    "borderTopColor": "rgba(203,205,210,1.00)",
                     "borderTopLeftRadius": "22px",
                     "borderTopRightRadius": "22px",
                     "borderTopStyle": "solid",
@@ -312,7 +312,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                   autoCapitalize="sentences"
                   autoComplete="on"
                   autoCorrect="off"
-                  className="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
+                  className="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
                   data-testid="Entrée pour l'adresse"
                   dir="auto"
                   enterKeyHint="search"
@@ -331,7 +331,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                       "WebkitFlexBasis": "0px",
                       "WebkitFlexGrow": 1,
                       "WebkitFlexShrink": 1,
-                      "color": "rgba(21,21,21,1.00)",
+                      "color": "rgba(22,22,23,1.00)",
                       "flexBasis": "0px",
                       "flexGrow": 1,
                       "flexShrink": 1,
@@ -462,7 +462,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                   "WebkitTransitionProperty": "opacity",
                   "WebkitUserSelect": "none",
                   "alignItems": "center",
-                  "backgroundColor": "rgba(245,245,245,1.00)",
+                  "backgroundColor": "rgba(241,241,244,1.00)",
                   "borderBottomLeftRadius": "24px",
                   "borderBottomRightRadius": "24px",
                   "borderBottomWidth": "0px",
@@ -500,7 +500,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                 style={
                   Object {
                     "WebkitLineClamp": 1,
-                    "color": "rgba(98,98,98,1.00)",
+                    "color": "rgba(105,106,111,1.00)",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": "15px",
                     "lineHeight": "20px",

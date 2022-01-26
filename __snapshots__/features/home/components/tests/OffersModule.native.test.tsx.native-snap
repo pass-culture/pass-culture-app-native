@@ -22,12 +22,12 @@ exports[`OffersModule component should render correctly - with black title 1`] =
     }
   >
     <Text
-      color="#151515"
+      color="#161617"
       numberOfLines={2}
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 20,
             "lineHeight": 24,
@@ -304,7 +304,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                   Array [
                     Object {
                       "alignItems": "center",
-                      "backgroundColor": "#151515",
+                      "backgroundColor": "#161617",
                       "borderBottomLeftRadius": 8,
                       "borderBottomRightRadius": 8,
                       "flexDirection": "row",
@@ -365,7 +365,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 16,
@@ -376,11 +376,11 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                 Mensch ! Où sont les Hommes ?
               </Text>
               <Text
-                color="#626262"
+                color="#696A6F"
                 style={
                   Array [
                     Object {
-                      "color": "#626262",
+                      "color": "#696A6F",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 16,
@@ -506,7 +506,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                   Array [
                     Object {
                       "alignItems": "center",
-                      "backgroundColor": "#151515",
+                      "backgroundColor": "#161617",
                       "borderBottomLeftRadius": 8,
                       "borderBottomRightRadius": 8,
                       "flexDirection": "row",
@@ -567,7 +567,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 16,
@@ -578,11 +578,11 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                 I want something more
               </Text>
               <Text
-                color="#626262"
+                color="#696A6F"
                 style={
                   Array [
                     Object {
-                      "color": "#626262",
+                      "color": "#696A6F",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 16,
@@ -708,7 +708,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                   Array [
                     Object {
                       "alignItems": "center",
-                      "backgroundColor": "#151515",
+                      "backgroundColor": "#161617",
                       "borderBottomLeftRadius": 8,
                       "borderBottomRightRadius": 8,
                       "flexDirection": "row",
@@ -769,7 +769,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 16,
@@ -780,12 +780,12 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                 Un lit sous une rivière
               </Text>
               <Text
-                color="#626262"
+                color="#696A6F"
                 numberOfLines={1}
                 style={
                   Array [
                     Object {
-                      "color": "#626262",
+                      "color": "#696A6F",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 16,
@@ -796,11 +796,11 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                 17 novembre 2020
               </Text>
               <Text
-                color="#626262"
+                color="#696A6F"
                 style={
                   Array [
                     Object {
-                      "color": "#626262",
+                      "color": "#696A6F",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 16,
@@ -928,7 +928,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                   Array [
                     Object {
                       "alignItems": "center",
-                      "backgroundColor": "#151515",
+                      "backgroundColor": "#161617",
                       "borderBottomLeftRadius": 8,
                       "borderBottomRightRadius": 8,
                       "flexDirection": "row",
@@ -989,7 +989,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 16,
@@ -1000,11 +1000,11 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                 I want something more
               </Text>
               <Text
-                color="#626262"
+                color="#696A6F"
                 style={
                   Array [
                     Object {
-                      "color": "#626262",
+                      "color": "#696A6F",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 16,

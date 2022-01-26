@@ -11,13 +11,13 @@ exports[`Categories component should match diff snapshot when new category is se
             }
           />
           <Text
--           color=\\"#151515\\"
+-           color=\\"#161617\\"
 +           color=\\"#eb0055\\"
             numberOfLines={2}
             style={
               Array [
                 Object {
--                 \\"color\\": \\"#151515\\",
+-                 \\"color\\": \\"#161617\\",
 +                 \\"color\\": \\"#eb0055\\",
                   \\"fontFamily\\": \\"Montserrat-Bold\\",
                   \\"fontSize\\": 15,
@@ -50,13 +50,13 @@ exports[`Categories component should match diff snapshot when new category is se
           />
           <Text
 -           color=\\"#eb0055\\"
-+           color=\\"#151515\\"
++           color=\\"#161617\\"
             numberOfLines={2}
             style={
               Array [
                 Object {
 -                 \\"color\\": \\"#eb0055\\",
-+                 \\"color\\": \\"#151515\\",
++                 \\"color\\": \\"#161617\\",
                   \\"fontFamily\\": \\"Montserrat-Bold\\",
                   \\"fontSize\\": 15,
                   \\"lineHeight\\": 20,
@@ -263,12 +263,12 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <Text
-          color="#151515"
+          color="#161617"
           numberOfLines={2}
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
@@ -341,12 +341,12 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <Text
-          color="#151515"
+          color="#161617"
           numberOfLines={2}
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
@@ -419,12 +419,12 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <Text
-          color="#151515"
+          color="#161617"
           numberOfLines={2}
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
@@ -497,12 +497,12 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <Text
-          color="#151515"
+          color="#161617"
           numberOfLines={2}
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
@@ -575,12 +575,12 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <Text
-          color="#151515"
+          color="#161617"
           numberOfLines={2}
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
@@ -653,12 +653,12 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <Text
-          color="#151515"
+          color="#161617"
           numberOfLines={2}
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
@@ -731,12 +731,12 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <Text
-          color="#151515"
+          color="#161617"
           numberOfLines={2}
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
@@ -809,12 +809,12 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <Text
-          color="#151515"
+          color="#161617"
           numberOfLines={2}
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
@@ -887,12 +887,12 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <Text
-          color="#151515"
+          color="#161617"
           numberOfLines={2}
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
@@ -965,12 +965,12 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <Text
-          color="#151515"
+          color="#161617"
           numberOfLines={2}
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
@@ -1043,12 +1043,12 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <Text
-          color="#151515"
+          color="#161617"
           numberOfLines={2}
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
@@ -1121,12 +1121,12 @@ exports[`Categories component should render correctly 1`] = `
           }
         />
         <Text
-          color="#151515"
+          color="#161617"
           numberOfLines={2}
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,

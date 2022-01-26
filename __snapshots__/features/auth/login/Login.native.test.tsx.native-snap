@@ -100,7 +100,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
               style={
                 Object {
                   \\"alignItems\\": \\"center\\",
--                 \\"backgroundColor\\": \\"#f5f5f5\\",
+-                 \\"backgroundColor\\": \\"#F1F1F4\\",
 +                 \\"backgroundColor\\": \\"#eb0055\\",
                   \\"borderRadius\\": 24,
                   \\"borderWidth\\": 0,
@@ -113,7 +113,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                 style={
                   Array [
                     Object {
--                     \\"color\\": \\"#626262\\",
+-                     \\"color\\": \\"#696A6F\\",
 +                     \\"color\\": \\"#ffffff\\",
                       \\"fontFamily\\": \\"Montserrat-Bold\\",
                       \\"fontSize\\": 15,
@@ -123,7 +123,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                     },
                   ]
                 }
--               textColor=\\"#626262\\"
+-               textColor=\\"#696A6F\\"
 +               textColor=\\"#ffffff\\"
               >
                 Se connecter
@@ -171,7 +171,7 @@ exports[`<Login/> should show email error message WHEN signin has failed because
                 }
               />
               <View
--               borderColor=\\"#c7c7cc\\"
+-               borderColor=\\"#CBCDD2\\"
 +               borderColor=\\"#b60025\\"
                 height=\\"small\\"
                 isInputDisabled={false}
@@ -180,7 +180,7 @@ exports[`<Login/> should show email error message WHEN signin has failed because
                     Object {
                       \\"alignItems\\": \\"center\\",
                       \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#c7c7cc\\",
+-                     \\"borderColor\\": \\"#CBCDD2\\",
 +                     \\"borderColor\\": \\"#b60025\\",
                       \\"borderRadius\\": 22,
                       \\"borderStyle\\": \\"solid\\",
@@ -427,7 +427,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 }
               />
               <View
--               borderColor=\\"#c7c7cc\\"
+-               borderColor=\\"#CBCDD2\\"
 +               borderColor=\\"#b60025\\"
                 height=\\"small\\"
                 isInputDisabled={false}
@@ -436,7 +436,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     Object {
                       \\"alignItems\\": \\"center\\",
                       \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#c7c7cc\\",
+-                     \\"borderColor\\": \\"#CBCDD2\\",
 +                     \\"borderColor\\": \\"#b60025\\",
                       \\"borderRadius\\": 22,
                       \\"borderStyle\\": \\"solid\\",
@@ -462,7 +462,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 }
               />
               <View
--               borderColor=\\"#c7c7cc\\"
+-               borderColor=\\"#CBCDD2\\"
 +               borderColor=\\"#b60025\\"
                 height=\\"small\\"
                 isInputDisabled={false}
@@ -471,7 +471,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     Object {
                       \\"alignItems\\": \\"center\\",
                       \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#c7c7cc\\",
+-                     \\"borderColor\\": \\"#CBCDD2\\",
 +                     \\"borderColor\\": \\"#b60025\\",
                       \\"borderRadius\\": 22,
                       \\"borderStyle\\": \\"solid\\",
@@ -532,7 +532,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
               style={
                 Object {
                   \\"alignItems\\": \\"center\\",
--                 \\"backgroundColor\\": \\"#f5f5f5\\",
+-                 \\"backgroundColor\\": \\"#F1F1F4\\",
 +                 \\"backgroundColor\\": \\"#eb0055\\",
                   \\"borderRadius\\": 24,
                   \\"borderWidth\\": 0,
@@ -545,7 +545,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 style={
                   Array [
                     Object {
--                     \\"color\\": \\"#626262\\",
+-                     \\"color\\": \\"#696A6F\\",
 +                     \\"color\\": \\"#ffffff\\",
                       \\"fontFamily\\": \\"Montserrat-Bold\\",
                       \\"fontSize\\": 15,
@@ -555,7 +555,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     },
                   ]
                 }
--               textColor=\\"#626262\\"
+-               textColor=\\"#696A6F\\"
 +               textColor=\\"#ffffff\\"
               >
                 Se connecter
@@ -679,7 +679,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 }
               />
               <View
--               borderColor=\\"#c7c7cc\\"
+-               borderColor=\\"#CBCDD2\\"
 +               borderColor=\\"#b60025\\"
                 height=\\"small\\"
                 isInputDisabled={false}
@@ -688,7 +688,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     Object {
                       \\"alignItems\\": \\"center\\",
                       \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#c7c7cc\\",
+-                     \\"borderColor\\": \\"#CBCDD2\\",
 +                     \\"borderColor\\": \\"#b60025\\",
                       \\"borderRadius\\": 22,
                       \\"borderStyle\\": \\"solid\\",
@@ -714,7 +714,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 }
               />
               <View
--               borderColor=\\"#c7c7cc\\"
+-               borderColor=\\"#CBCDD2\\"
 +               borderColor=\\"#b60025\\"
                 height=\\"small\\"
                 isInputDisabled={false}
@@ -723,7 +723,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     Object {
                       \\"alignItems\\": \\"center\\",
                       \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#c7c7cc\\",
+-                     \\"borderColor\\": \\"#CBCDD2\\",
 +                     \\"borderColor\\": \\"#b60025\\",
                       \\"borderRadius\\": 22,
                       \\"borderStyle\\": \\"solid\\",
@@ -784,7 +784,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
               style={
                 Object {
                   \\"alignItems\\": \\"center\\",
--                 \\"backgroundColor\\": \\"#f5f5f5\\",
+-                 \\"backgroundColor\\": \\"#F1F1F4\\",
 +                 \\"backgroundColor\\": \\"#eb0055\\",
                   \\"borderRadius\\": 24,
                   \\"borderWidth\\": 0,
@@ -797,7 +797,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 style={
                   Array [
                     Object {
--                     \\"color\\": \\"#626262\\",
+-                     \\"color\\": \\"#696A6F\\",
 +                     \\"color\\": \\"#ffffff\\",
                       \\"fontFamily\\": \\"Montserrat-Bold\\",
                       \\"fontSize\\": 15,
@@ -807,7 +807,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                     },
                   ]
                 }
--               textColor=\\"#626262\\"
+-               textColor=\\"#696A6F\\"
 +               textColor=\\"#ffffff\\"
               >
                 Se connecter
@@ -931,7 +931,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                 }
               />
               <View
--               borderColor=\\"#c7c7cc\\"
+-               borderColor=\\"#CBCDD2\\"
 +               borderColor=\\"#b60025\\"
                 height=\\"small\\"
                 isInputDisabled={false}
@@ -940,7 +940,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                     Object {
                       \\"alignItems\\": \\"center\\",
                       \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#c7c7cc\\",
+-                     \\"borderColor\\": \\"#CBCDD2\\",
 +                     \\"borderColor\\": \\"#b60025\\",
                       \\"borderRadius\\": 22,
                       \\"borderStyle\\": \\"solid\\",
@@ -966,7 +966,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                 }
               />
               <View
--               borderColor=\\"#c7c7cc\\"
+-               borderColor=\\"#CBCDD2\\"
 +               borderColor=\\"#b60025\\"
                 height=\\"small\\"
                 isInputDisabled={false}
@@ -975,7 +975,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                     Object {
                       \\"alignItems\\": \\"center\\",
                       \\"backgroundColor\\": \\"#ffffff\\",
--                     \\"borderColor\\": \\"#c7c7cc\\",
+-                     \\"borderColor\\": \\"#CBCDD2\\",
 +                     \\"borderColor\\": \\"#b60025\\",
                       \\"borderRadius\\": 22,
                       \\"borderStyle\\": \\"solid\\",
@@ -1036,7 +1036,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
               style={
                 Object {
                   \\"alignItems\\": \\"center\\",
--                 \\"backgroundColor\\": \\"#f5f5f5\\",
+-                 \\"backgroundColor\\": \\"#F1F1F4\\",
 +                 \\"backgroundColor\\": \\"#eb0055\\",
                   \\"borderRadius\\": 24,
                   \\"borderWidth\\": 0,
@@ -1049,7 +1049,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                 style={
                   Array [
                     Object {
--                     \\"color\\": \\"#626262\\",
+-                     \\"color\\": \\"#696A6F\\",
 +                     \\"color\\": \\"#ffffff\\",
                       \\"fontFamily\\": \\"Montserrat-Bold\\",
                       \\"fontSize\\": 15,
@@ -1059,7 +1059,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                     },
                   ]
                 }
--               textColor=\\"#626262\\"
+-               textColor=\\"#696A6F\\"
 +               textColor=\\"#ffffff\\"
               >
                 Se connecter

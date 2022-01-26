@@ -3,11 +3,11 @@
 exports[`SubscriptionMessageBadge should display component correctly 1`] = `
 Array [
   <Text
-    color="#626262"
+    color="#696A6F"
     style={
       Array [
         Object {
-          "color": "#626262",
+          "color": "#696A6F",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
           "lineHeight": 16,
@@ -32,7 +32,7 @@ Array [
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#f5f5f5",
+          "backgroundColor": "#F1F1F4",
           "borderRadius": 6,
           "flexDirection": "row",
           "justifyContent": "space-between",
@@ -75,11 +75,11 @@ Array [
       }
     >
       <Text
-        color="#151515"
+        color="#161617"
         style={
           Array [
             Object {
-              "color": "#151515",
+              "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 16,
@@ -100,7 +100,7 @@ exports[`SubscriptionMessageBadge should not display last update sentence if upd
     Array [
       Object {
         "alignItems": "center",
-        "backgroundColor": "#f5f5f5",
+        "backgroundColor": "#F1F1F4",
         "borderRadius": 6,
         "flexDirection": "row",
         "justifyContent": "space-between",
@@ -143,11 +143,11 @@ exports[`SubscriptionMessageBadge should not display last update sentence if upd
     }
   >
     <Text
-      color="#151515"
+      color="#161617"
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,

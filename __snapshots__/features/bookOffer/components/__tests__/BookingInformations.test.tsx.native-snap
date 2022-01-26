@@ -36,7 +36,7 @@ Array [
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -57,11 +57,11 @@ Array [
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -85,7 +85,7 @@ Array [
     }
   >
     <View
-      fill="#626262"
+      fill="#696A6F"
       height={24}
       width={24}
     >
@@ -107,7 +107,7 @@ Array [
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -128,11 +128,11 @@ Array [
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -177,7 +177,7 @@ Array [
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -198,11 +198,11 @@ Array [
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -252,7 +252,7 @@ Array [
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -273,11 +273,11 @@ Array [
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -322,7 +322,7 @@ Array [
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -343,11 +343,11 @@ Array [
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -393,7 +393,7 @@ Array [
         Array [
           Object {
             "alignItems": "center",
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
             "lineHeight": 20,
@@ -406,7 +406,7 @@ Array [
         style={
           Array [
             Object {
-              "color": "#151515",
+              "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 16,
@@ -428,11 +428,11 @@ Array [
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -456,7 +456,7 @@ Array [
     }
   >
     <View
-      fill="#626262"
+      fill="#696A6F"
       height={24}
       width={24}
     >
@@ -478,7 +478,7 @@ Array [
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -499,11 +499,11 @@ Array [
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -553,7 +553,7 @@ Array [
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -574,11 +574,11 @@ Array [
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -624,7 +624,7 @@ Array [
         Array [
           Object {
             "alignItems": "center",
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
             "lineHeight": 20,
@@ -637,7 +637,7 @@ Array [
         style={
           Array [
             Object {
-              "color": "#151515",
+              "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 16,
@@ -659,11 +659,11 @@ Array [
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -687,7 +687,7 @@ Array [
     }
   >
     <View
-      fill="#626262"
+      fill="#696A6F"
       height={24}
       width={24}
     >
@@ -709,7 +709,7 @@ Array [
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -730,11 +730,11 @@ Array [
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -784,7 +784,7 @@ Array [
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -805,11 +805,11 @@ Array [
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -854,7 +854,7 @@ Array [
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -875,11 +875,11 @@ Array [
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -925,7 +925,7 @@ Array [
         Array [
           Object {
             "alignItems": "center",
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
             "lineHeight": 20,
@@ -938,7 +938,7 @@ Array [
         style={
           Array [
             Object {
-              "color": "#151515",
+              "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 16,
@@ -960,11 +960,11 @@ Array [
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -988,7 +988,7 @@ Array [
     }
   >
     <View
-      fill="#626262"
+      fill="#696A6F"
       height={24}
       width={24}
     >
@@ -1010,7 +1010,7 @@ Array [
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -1031,11 +1031,11 @@ Array [
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -1085,7 +1085,7 @@ Array [
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -1106,11 +1106,11 @@ Array [
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -1134,7 +1134,7 @@ Array [
     }
   >
     <View
-      fill="#626262"
+      fill="#696A6F"
       height={24}
       width={24}
     >
@@ -1156,7 +1156,7 @@ Array [
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -1177,11 +1177,11 @@ Array [
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -1231,7 +1231,7 @@ Array [
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -1252,11 +1252,11 @@ Array [
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -1301,7 +1301,7 @@ Array [
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -1322,11 +1322,11 @@ Array [
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -1372,7 +1372,7 @@ Array [
         Array [
           Object {
             "alignItems": "center",
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
             "lineHeight": 20,
@@ -1385,7 +1385,7 @@ Array [
         style={
           Array [
             Object {
-              "color": "#151515",
+              "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 16,
@@ -1407,11 +1407,11 @@ Array [
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -1435,7 +1435,7 @@ Array [
     }
   >
     <View
-      fill="#626262"
+      fill="#696A6F"
       height={24}
       width={24}
     >
@@ -1457,7 +1457,7 @@ Array [
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -1478,11 +1478,11 @@ Array [
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,

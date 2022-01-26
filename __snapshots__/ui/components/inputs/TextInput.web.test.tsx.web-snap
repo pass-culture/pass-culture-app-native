@@ -7,18 +7,18 @@ Object {
     <div>
       <div
         class="css-view-1dbjc4n"
-        style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+        style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
       >
         <input
           autocapitalize="sentences"
           autocomplete="on"
           autocorrect="on"
-          class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
+          class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
           dir="auto"
           id="testUuidV4"
           placeholder="placeholder"
           spellcheck="true"
-          style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
+          style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
           type="text"
           value=""
         />
@@ -28,18 +28,18 @@ Object {
   "container": <div>
     <div
       class="css-view-1dbjc4n"
-      style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+      style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
     >
       <input
         autocapitalize="sentences"
         autocomplete="on"
         autocorrect="on"
-        class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
+        class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
         dir="auto"
         id="testUuidV4"
         placeholder="placeholder"
         spellcheck="true"
-        style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
+        style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
         type="text"
         value=""
       />
@@ -110,7 +110,7 @@ exports[`<TextInput /> should render correctly when in error 1`] = `
     \\"container\\": <div>
       <div
         class=\\"css-view-1dbjc4n\\"
--       style=\\"align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;\\"
+-       style=\\"align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;\\"
 +       style=\\"align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(182,0,37,1.00); border-right-color: rgba(182,0,37,1.00); border-bottom-color: rgba(182,0,37,1.00); border-left-color: rgba(182,0,37,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;\\"
       >
         <input

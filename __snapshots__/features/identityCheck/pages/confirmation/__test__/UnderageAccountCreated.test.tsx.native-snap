@@ -60,7 +60,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-Black",
           "fontSize": 28,
           "lineHeight": 36,
@@ -89,7 +89,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 18,
           "lineHeight": 22,
@@ -162,7 +162,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
         style={
           Array [
             Object {
-              "borderColor": "#c7c7cc",
+              "borderColor": "#CBCDD2",
               "borderRadius": 20,
               "borderWidth": 2,
               "flexBasis": 0,
@@ -236,7 +236,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
           "lineHeight": 20,

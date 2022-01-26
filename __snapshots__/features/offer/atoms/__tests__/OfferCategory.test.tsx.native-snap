@@ -48,7 +48,7 @@ exports[`OfferCategory renders correctly 1`] = `
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
           "lineHeight": 16,

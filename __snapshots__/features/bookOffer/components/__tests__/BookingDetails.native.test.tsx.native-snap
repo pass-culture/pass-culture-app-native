@@ -15,7 +15,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#f5f5f5",
+          "backgroundColor": "#F1F1F4",
           "borderRadius": 4,
           "display": "flex",
           "flexDirection": "row",
@@ -54,11 +54,11 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
       }
     >
       <Text
-        color="#151515"
+        color="#161617"
         style={
           Array [
             Object {
-              "color": "#151515",
+              "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 16,
@@ -114,7 +114,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -135,11 +135,11 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -184,7 +184,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -205,11 +205,11 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -255,7 +255,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
         Array [
           Object {
             "alignItems": "center",
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
             "lineHeight": 20,
@@ -268,7 +268,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
         style={
           Array [
             Object {
-              "color": "#151515",
+              "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 16,
@@ -290,11 +290,11 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -318,7 +318,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
     }
   >
     <View
-      fill="#626262"
+      fill="#696A6F"
       height={24}
       width={24}
     >
@@ -340,7 +340,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -361,11 +361,11 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -390,7 +390,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
     style={
       Array [
         Object {
-          "backgroundColor": "#f5f5f5",
+          "backgroundColor": "#F1F1F4",
           "height": 2,
         },
       ]
@@ -410,7 +410,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 18,
           "lineHeight": 22,
@@ -434,7 +434,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
           "lineHeight": 16,
@@ -508,12 +508,12 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
     </Text>
   </View>
   <Text
-    color="#626262"
+    color="#696A6F"
     nativeID="testUuidV4"
     style={
       Array [
         Object {
-          "color": "#626262",
+          "color": "#696A6F",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
           "lineHeight": 16,
@@ -543,7 +543,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
       Array [
         Object {
           "alignItems": "center",
-          "backgroundColor": "#f5f5f5",
+          "backgroundColor": "#F1F1F4",
           "borderRadius": 4,
           "display": "flex",
           "flexDirection": "row",
@@ -582,11 +582,11 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
       }
     >
       <Text
-        color="#151515"
+        color="#161617"
         style={
           Array [
             Object {
-              "color": "#151515",
+              "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 16,
@@ -642,7 +642,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -663,11 +663,11 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -712,7 +712,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -733,11 +733,11 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -783,7 +783,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
         Array [
           Object {
             "alignItems": "center",
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-Regular",
             "fontSize": 15,
             "lineHeight": 20,
@@ -796,7 +796,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
         style={
           Array [
             Object {
-              "color": "#151515",
+              "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 16,
@@ -818,11 +818,11 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -846,7 +846,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
     }
   >
     <View
-      fill="#626262"
+      fill="#696A6F"
       height={24}
       width={24}
     >
@@ -868,7 +868,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -889,11 +889,11 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -918,7 +918,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
     style={
       Array [
         Object {
-          "backgroundColor": "#f5f5f5",
+          "backgroundColor": "#F1F1F4",
           "height": 2,
         },
       ]
@@ -938,7 +938,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 18,
           "lineHeight": 22,
@@ -962,7 +962,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
           "lineHeight": 16,
@@ -998,7 +998,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
     style={
       Object {
         "alignItems": "center",
-        "backgroundColor": "#f5f5f5",
+        "backgroundColor": "#F1F1F4",
         "borderRadius": 24,
         "borderWidth": 0,
         "flexDirection": "row",
@@ -1021,7 +1021,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,
             "lineHeight": 20,
@@ -1030,18 +1030,18 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
           },
         ]
       }
-      textColor="#626262"
+      textColor="#696A6F"
     >
       Confirmer la réservation
     </Text>
   </View>
   <Text
-    color="#626262"
+    color="#696A6F"
     nativeID="testUuidV4"
     style={
       Array [
         Object {
-          "color": "#626262",
+          "color": "#696A6F",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
           "lineHeight": 16,

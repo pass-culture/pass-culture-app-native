@@ -57,7 +57,7 @@ exports[`<SectionWithSwitch/> should display different if isDesktopViewport or w
 +       style={
 +         Array [
 +           Object {
-+             \\"color\\": \\"#626262\\",
++             \\"color\\": \\"#696A6F\\",
 +             \\"fontFamily\\": \\"Montserrat-SemiBold\\",
 +             \\"fontSize\\": 12,
 +             \\"lineHeight\\": 16,

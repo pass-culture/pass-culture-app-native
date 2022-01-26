@@ -164,12 +164,12 @@ Array [
             testID="Entrée pour le jour de la date de naissance"
           >
             <Text
-              color="#626262"
+              color="#696A6F"
               numberOfLines={1}
               style={
                 Array [
                   Object {
-                    "color": "#626262",
+                    "color": "#696A6F",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 18,
                     "lineHeight": 22,
@@ -182,7 +182,7 @@ Array [
               JJ
             </Text>
             <View
-              backgroundColor="#c7c7cc"
+              backgroundColor="#CBCDD2"
               isEmpty={true}
               isFocused={false}
               isValid={false}
@@ -190,7 +190,7 @@ Array [
                 Array [
                   Object {
                     "alignSelf": "stretch",
-                    "backgroundColor": "#c7c7cc",
+                    "backgroundColor": "#CBCDD2",
                     "borderRadius": 22,
                     "height": 5,
                   },
@@ -236,12 +236,12 @@ Array [
             testID="Entrée pour le mois de la date de naissance"
           >
             <Text
-              color="#626262"
+              color="#696A6F"
               numberOfLines={1}
               style={
                 Array [
                   Object {
-                    "color": "#626262",
+                    "color": "#696A6F",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 18,
                     "lineHeight": 22,
@@ -254,7 +254,7 @@ Array [
               MM
             </Text>
             <View
-              backgroundColor="#c7c7cc"
+              backgroundColor="#CBCDD2"
               isEmpty={true}
               isFocused={false}
               isValid={false}
@@ -262,7 +262,7 @@ Array [
                 Array [
                   Object {
                     "alignSelf": "stretch",
-                    "backgroundColor": "#c7c7cc",
+                    "backgroundColor": "#CBCDD2",
                     "borderRadius": 22,
                     "height": 5,
                   },
@@ -308,12 +308,12 @@ Array [
             testID="Entrée pour l'année jour de la date de naissance"
           >
             <Text
-              color="#626262"
+              color="#696A6F"
               numberOfLines={1}
               style={
                 Array [
                   Object {
-                    "color": "#626262",
+                    "color": "#696A6F",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 18,
                     "lineHeight": 22,
@@ -326,7 +326,7 @@ Array [
               AAAA
             </Text>
             <View
-              backgroundColor="#c7c7cc"
+              backgroundColor="#CBCDD2"
               isEmpty={true}
               isFocused={false}
               isValid={false}
@@ -334,7 +334,7 @@ Array [
                 Array [
                   Object {
                     "alignSelf": "stretch",
-                    "backgroundColor": "#c7c7cc",
+                    "backgroundColor": "#CBCDD2",
                     "borderRadius": 22,
                     "height": 5,
                   },
@@ -370,7 +370,7 @@ Array [
       style={
         Object {
           "alignItems": "center",
-          "backgroundColor": "#f5f5f5",
+          "backgroundColor": "#F1F1F4",
           "borderRadius": 24,
           "borderWidth": 0,
           "flexDirection": "row",
@@ -393,7 +393,7 @@ Array [
         style={
           Array [
             Object {
-              "color": "#626262",
+              "color": "#696A6F",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
@@ -402,7 +402,7 @@ Array [
             },
           ]
         }
-        textColor="#626262"
+        textColor="#696A6F"
       >
         Continuer
       </Text>
@@ -561,7 +561,7 @@ Array [
               style={
                 Array [
                   Object {
-                    "color": "#151515",
+                    "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 20,
                     "lineHeight": 24,
@@ -670,7 +670,7 @@ Array [
               style={
                 Array [
                   Object {
-                    "color": "#151515",
+                    "color": "#161617",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -865,12 +865,12 @@ exports[`SetBirthday Page should render properly 1`] = `
           testID="Entrée pour le jour de la date de naissance"
         >
           <Text
-            color="#626262"
+            color="#696A6F"
             numberOfLines={1}
             style={
               Array [
                 Object {
-                  "color": "#626262",
+                  "color": "#696A6F",
                   "fontFamily": "Montserrat-Regular",
                   "fontSize": 18,
                   "lineHeight": 22,
@@ -883,7 +883,7 @@ exports[`SetBirthday Page should render properly 1`] = `
             JJ
           </Text>
           <View
-            backgroundColor="#c7c7cc"
+            backgroundColor="#CBCDD2"
             isEmpty={true}
             isFocused={false}
             isValid={false}
@@ -891,7 +891,7 @@ exports[`SetBirthday Page should render properly 1`] = `
               Array [
                 Object {
                   "alignSelf": "stretch",
-                  "backgroundColor": "#c7c7cc",
+                  "backgroundColor": "#CBCDD2",
                   "borderRadius": 22,
                   "height": 5,
                 },
@@ -937,12 +937,12 @@ exports[`SetBirthday Page should render properly 1`] = `
           testID="Entrée pour le mois de la date de naissance"
         >
           <Text
-            color="#626262"
+            color="#696A6F"
             numberOfLines={1}
             style={
               Array [
                 Object {
-                  "color": "#626262",
+                  "color": "#696A6F",
                   "fontFamily": "Montserrat-Regular",
                   "fontSize": 18,
                   "lineHeight": 22,
@@ -955,7 +955,7 @@ exports[`SetBirthday Page should render properly 1`] = `
             MM
           </Text>
           <View
-            backgroundColor="#c7c7cc"
+            backgroundColor="#CBCDD2"
             isEmpty={true}
             isFocused={false}
             isValid={false}
@@ -963,7 +963,7 @@ exports[`SetBirthday Page should render properly 1`] = `
               Array [
                 Object {
                   "alignSelf": "stretch",
-                  "backgroundColor": "#c7c7cc",
+                  "backgroundColor": "#CBCDD2",
                   "borderRadius": 22,
                   "height": 5,
                 },
@@ -1009,12 +1009,12 @@ exports[`SetBirthday Page should render properly 1`] = `
           testID="Entrée pour l'année jour de la date de naissance"
         >
           <Text
-            color="#626262"
+            color="#696A6F"
             numberOfLines={1}
             style={
               Array [
                 Object {
-                  "color": "#626262",
+                  "color": "#696A6F",
                   "fontFamily": "Montserrat-Regular",
                   "fontSize": 18,
                   "lineHeight": 22,
@@ -1027,7 +1027,7 @@ exports[`SetBirthday Page should render properly 1`] = `
             AAAA
           </Text>
           <View
-            backgroundColor="#c7c7cc"
+            backgroundColor="#CBCDD2"
             isEmpty={true}
             isFocused={false}
             isValid={false}
@@ -1035,7 +1035,7 @@ exports[`SetBirthday Page should render properly 1`] = `
               Array [
                 Object {
                   "alignSelf": "stretch",
-                  "backgroundColor": "#c7c7cc",
+                  "backgroundColor": "#CBCDD2",
                   "borderRadius": 22,
                   "height": 5,
                 },
@@ -1071,7 +1071,7 @@ exports[`SetBirthday Page should render properly 1`] = `
     style={
       Object {
         "alignItems": "center",
-        "backgroundColor": "#f5f5f5",
+        "backgroundColor": "#F1F1F4",
         "borderRadius": 24,
         "borderWidth": 0,
         "flexDirection": "row",
@@ -1094,7 +1094,7 @@ exports[`SetBirthday Page should render properly 1`] = `
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,
             "lineHeight": 20,
@@ -1103,7 +1103,7 @@ exports[`SetBirthday Page should render properly 1`] = `
           },
         ]
       }
-      textColor="#626262"
+      textColor="#696A6F"
     >
       Continuer
     </Text>
