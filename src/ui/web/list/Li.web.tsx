@@ -1,10 +1,3 @@
-import React, { ReactNode } from 'react'
+import styled from 'styled-components'
 
-type Props = {
-  children: ReactNode
-  className?: string
-}
-
-export function Li(props: Props) {
-  return <li className={props.className}>{props.children}</li>
-}
+export const Li = styled.li``
