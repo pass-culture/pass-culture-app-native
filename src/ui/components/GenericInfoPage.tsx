@@ -1,6 +1,8 @@
+import { useRoute } from '@react-navigation/native'
 import React, { ReactNode, useMemo, FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { isTabScreen } from 'features/navigation/TabBar/routes'
 import LottieView from 'libs/lottie'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { AnimationObject } from 'ui/animations/type'
@@ -18,7 +20,7 @@ type Props = {
   buttons?: Array<ReactNode>
 }
 
-const ANIMATION_SIZE = getSpacing(45)
+const ANIMATION_SIZE = getSpacing(35)
 const ICON_SIZE = getSpacing(50)
 
 export const GenericInfoPage: FunctionComponent<Props> = ({
@@ -31,6 +33,9 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
   flex = true,
   buttons,
 }) => {
+  const { name } = useRoute()
+  const tabScreen = isTabScreen(name)
+
   const { isTouch, colors } = useTheme()
   const Wrapper = useMemo(() => (flex ? Container : React.Fragment), [flex])
   return (
@@ -43,8 +48,9 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
       <Background />
       {header}
       <Content>
-        <Spacer.Column numberOfSpaces={spacingMatrix.top} />
+        <Spacer.TopScreen />
         {!!isTouch && <Spacer.Flex />}
+        <Spacer.Column numberOfSpaces={spacingMatrix.top} />
         {Icon ? (
           <React.Fragment>
             <Icon color={colors.white} size={ICON_SIZE} />
@@ -61,16 +67,32 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
         <StyledTitle2>{title}</StyledTitle2>
         <Spacer.Column numberOfSpaces={spacingMatrix.afterTitle} />
         {children}
-        {isTouch ? <Spacer.Flex flex={buttons ? 1.25 : 1} /> : null}
+        {isTouch ? (
+          <React.Fragment>
+            <Spacer.Column
+              numberOfSpaces={
+                buttons
+                  ? buttons.length === 1
+                    ? spacingMatrix.bottomWithOneButton
+                    : spacingMatrix.bottomWithMoreThanOneButton
+                  : spacingMatrix.bottom
+              }
+            />
+            <Spacer.Flex />
+          </React.Fragment>
+        ) : null}
         {!!buttons && (
-          <BottomContainer>
-            {buttons.map((button, index) => (
-              <React.Fragment key={index}>
-                {index !== 0 && <Spacer.Column numberOfSpaces={4} />}
-                {button}
-              </React.Fragment>
-            ))}
-          </BottomContainer>
+          <React.Fragment>
+            <BottomContainer>
+              {buttons.map((button, index) => (
+                <React.Fragment key={index}>
+                  {index !== 0 && <Spacer.Column numberOfSpaces={4} />}
+                  {button}
+                </React.Fragment>
+              ))}
+            </BottomContainer>
+            {tabScreen ? <SpacingTabBar /> : null}
+          </React.Fragment>
         )}
         <Spacer.BottomScreen />
       </Content>
@@ -79,10 +101,13 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
 }
 
 const spacingMatrix = {
-  top: 9,
-  afterIcon: 9,
-  afterLottieAnimation: 9,
+  top: 10,
+  afterIcon: 5,
+  afterLottieAnimation: 5,
   afterTitle: 5,
+  bottom: 10,
+  bottomWithOneButton: 15,
+  bottomWithMoreThanOneButton: 30,
 }
 
 const Container = styled.View({
@@ -121,4 +146,8 @@ const BottomContainer = styled.View(({ theme }) => ({
         marginTop: getSpacing(8),
         maxHeight: getSpacing(24),
       }),
+}))
+
+const SpacingTabBar = styled.View(({ theme }) => ({
+  height: theme.tabBarHeight,
 }))
