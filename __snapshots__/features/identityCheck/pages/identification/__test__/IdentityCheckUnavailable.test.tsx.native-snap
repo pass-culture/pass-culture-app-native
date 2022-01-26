@@ -100,7 +100,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 24,
             "lineHeight": 28,
@@ -377,7 +377,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 18,
                       "lineHeight": 22,
@@ -469,11 +469,11 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
             >
               <View>
                 <Text
-                  color="#626262"
+                  color="#696A6F"
                   style={
                     Array [
                       Object {
-                        "color": "#626262",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
@@ -542,7 +542,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
                     style={
                       Array [
                         Object {
-                          "color": "#151515",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -551,17 +551,17 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
                         },
                       ]
                     }
-                    textColor="#151515"
+                    textColor="#161617"
                   >
                     Je suis de nationalité française
                   </Text>
                 </View>
                 <Text
-                  color="#626262"
+                  color="#696A6F"
                   style={
                     Array [
                       Object {
-                        "color": "#626262",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
@@ -630,7 +630,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
                     style={
                       Array [
                         Object {
-                          "color": "#151515",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -639,17 +639,17 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
                         },
                       ]
                     }
-                    textColor="#151515"
+                    textColor="#161617"
                   >
                     Je suis de nationalité étrangère
                   </Text>
                 </View>
                 <Text
-                  color="#626262"
+                  color="#696A6F"
                   style={
                     Array [
                       Object {
-                        "color": "#626262",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,

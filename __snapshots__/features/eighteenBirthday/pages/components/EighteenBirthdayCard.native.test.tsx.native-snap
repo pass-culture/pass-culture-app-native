@@ -58,7 +58,7 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-Black",
           "fontSize": 28,
           "lineHeight": 36,
@@ -76,7 +76,7 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 24,
           "lineHeight": 28,
@@ -105,7 +105,7 @@ exports[`<EighteenBirthdayCard /> should render eighteen birthday card 1`] = `
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
           "lineHeight": 20,

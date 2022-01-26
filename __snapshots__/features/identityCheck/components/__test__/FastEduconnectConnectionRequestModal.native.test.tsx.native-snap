@@ -204,7 +204,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 18,
                   "lineHeight": 22,
@@ -296,11 +296,11 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
         >
           <View>
             <Text
-              color="#626262"
+              color="#696A6F"
               style={
                 Array [
                   Object {
-                    "color": "#626262",
+                    "color": "#696A6F",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -346,7 +346,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
               testID="C’est quoi ÉduConnect ?"
             >
               <View
-                fill="#151515"
+                fill="#161617"
                 height={16}
                 testID="button-icon"
                 width={16}
@@ -363,7 +363,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 12,
                       "lineHeight": 20,
@@ -372,7 +372,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                     },
                   ]
                 }
-                textColor="#151515"
+                textColor="#161617"
                 textSize={12}
               >
                 C’est quoi ÉduConnect ?
@@ -448,7 +448,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                 style={
                   Array [
                     Object {
-                      "backgroundColor": "#c7c7cc",
+                      "backgroundColor": "#CBCDD2",
                       "height": 1,
                       "left": 0,
                       "position": "absolute",
@@ -471,7 +471,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                   style={
                     Array [
                       Object {
-                        "color": "#151515",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
@@ -518,7 +518,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
               testID="Identification manuelle"
             >
               <View
-                fill="#151515"
+                fill="#161617"
                 height={20}
                 testID="button-icon"
                 width={20}
@@ -534,7 +534,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -543,17 +543,17 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                     },
                   ]
                 }
-                textColor="#151515"
+                textColor="#161617"
               >
                 Identification manuelle
               </Text>
             </View>
             <Text
-              color="#626262"
+              color="#696A6F"
               style={
                 Array [
                   Object {
-                    "color": "#626262",
+                    "color": "#696A6F",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -772,7 +772,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 18,
                   "lineHeight": 22,
@@ -864,11 +864,11 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
         >
           <View>
             <Text
-              color="#626262"
+              color="#696A6F"
               style={
                 Array [
                   Object {
-                    "color": "#626262",
+                    "color": "#696A6F",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -914,7 +914,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
               testID="C’est quoi ÉduConnect ?"
             >
               <View
-                fill="#151515"
+                fill="#161617"
                 height={16}
                 testID="button-icon"
                 width={16}
@@ -931,7 +931,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 12,
                       "lineHeight": 20,
@@ -940,7 +940,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                     },
                   ]
                 }
-                textColor="#151515"
+                textColor="#161617"
                 textSize={12}
               >
                 C’est quoi ÉduConnect ?
@@ -1016,7 +1016,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                 style={
                   Array [
                     Object {
-                      "backgroundColor": "#c7c7cc",
+                      "backgroundColor": "#CBCDD2",
                       "height": 1,
                       "left": 0,
                       "position": "absolute",
@@ -1039,7 +1039,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                   style={
                     Array [
                       Object {
-                        "color": "#151515",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
@@ -1086,7 +1086,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
               testID="Identification manuelle"
             >
               <View
-                fill="#151515"
+                fill="#161617"
                 height={20}
                 testID="button-icon"
                 width={20}
@@ -1102,7 +1102,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -1111,17 +1111,17 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                     },
                   ]
                 }
-                textColor="#151515"
+                textColor="#161617"
               >
                 Identification manuelle
               </Text>
             </View>
             <Text
-              color="#626262"
+              color="#696A6F"
               style={
                 Array [
                   Object {
-                    "color": "#626262",
+                    "color": "#696A6F",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 15,
                     "lineHeight": 20,

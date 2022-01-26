@@ -300,7 +300,7 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
                     dir="auto"
                     style={
                       Object {
-                        "color": "rgba(21,21,21,1.00)",
+                        "color": "rgba(22,22,23,1.00)",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": "18px",
                         "lineHeight": "22px",
@@ -324,7 +324,7 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
                   dir="auto"
                   style={
                     Object {
-                      "color": "rgba(98,98,98,1.00)",
+                      "color": "rgba(105,106,111,1.00)",
                       "fontFamily": "Montserrat-Regular",
                       "fontSize": "15px",
                       "lineHeight": "20px",

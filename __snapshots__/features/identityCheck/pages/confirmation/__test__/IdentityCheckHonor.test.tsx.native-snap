@@ -178,7 +178,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                   style={
                     Array [
                       Object {
-                        "color": "#151515",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 18,
                         "lineHeight": 22,
@@ -233,7 +233,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                   style={
                     Array [
                       Object {
-                        "color": "#151515",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
@@ -272,7 +272,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                   style={
                     Array [
                       Object {
-                        "color": "#151515",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,

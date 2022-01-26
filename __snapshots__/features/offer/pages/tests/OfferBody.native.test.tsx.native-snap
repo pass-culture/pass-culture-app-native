@@ -83,7 +83,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           Array [
             Object {
               "bottom": 0,
-              "shadowColor": "#151515",
+              "shadowColor": "#161617",
               "shadowOffset": Object {
                 "height": 8,
                 "width": 0,
@@ -194,7 +194,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "flexShrink": 1,
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
@@ -213,7 +213,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         style={
           Array [
             Object {
-              "color": "#151515",
+              "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 16,
@@ -251,7 +251,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         style={
           Array [
             Object {
-              "color": "#151515",
+              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 20,
               "lineHeight": 24,
@@ -341,7 +341,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 16,
@@ -359,7 +359,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           Array [
             Object {
               "alignSelf": "center",
-              "backgroundColor": "#c7c7cc",
+              "backgroundColor": "#CBCDD2",
               "height": "92%",
               "marginHorizontal": 8,
               "width": 1,
@@ -415,7 +415,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 16,
@@ -433,7 +433,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           Array [
             Object {
               "alignSelf": "center",
-              "backgroundColor": "#c7c7cc",
+              "backgroundColor": "#CBCDD2",
               "height": "92%",
               "marginHorizontal": 8,
               "width": 1,
@@ -466,7 +466,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           }
         >
           <View
-            fill="#626262"
+            fill="#696A6F"
             height={32}
             testID="iconPrice"
             width={32}
@@ -490,7 +490,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 16,
@@ -595,7 +595,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
               style={
                 Array [
                   Object {
-                    "color": "#151515",
+                    "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 15,
                     "lineHeight": 20,
@@ -604,7 +604,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                   },
                 ]
               }
-              textColor="#151515"
+              textColor="#161617"
             >
               Voir plus d'informations
             </Text>
@@ -644,7 +644,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
       style={
         Array [
           Object {
-            "backgroundColor": "#f5f5f5",
+            "backgroundColor": "#F1F1F4",
             "height": 8,
           },
         ]
@@ -663,7 +663,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         style={
           Array [
             Object {
-              "color": "#151515",
+              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 18,
               "lineHeight": 22,
@@ -678,7 +678,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         style={
           Array [
             Object {
-              "color": "#151515",
+              "color": "#161617",
               "fontFamily": "Montserrat-Regular",
               "fontSize": 15,
               "lineHeight": 20,
@@ -695,7 +695,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
       style={
         Array [
           Object {
-            "backgroundColor": "#f5f5f5",
+            "backgroundColor": "#F1F1F4",
             "height": 8,
           },
         ]
@@ -724,7 +724,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         style={
           Array [
             Object {
-              "color": "#151515",
+              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 18,
               "lineHeight": 22,
@@ -807,7 +807,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "flexShrink": 1,
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
@@ -854,7 +854,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         style={
           Array [
             Object {
-              "color": "#151515",
+              "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 16,
@@ -878,7 +878,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         style={
           Array [
             Object {
-              "color": "#151515",
+              "color": "#161617",
               "fontFamily": "Montserrat-Regular",
               "fontSize": 15,
               "lineHeight": 20,
@@ -903,7 +903,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         style={
           Array [
             Object {
-              "backgroundColor": "#c7c7cc",
+              "backgroundColor": "#CBCDD2",
               "height": 1,
             },
           ]
@@ -975,7 +975,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
@@ -984,7 +984,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                 },
               ]
             }
-            textColor="#151515"
+            textColor="#161617"
           >
             Voir l'itinéraire
           </Text>
@@ -1005,7 +1005,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
       style={
         Array [
           Object {
-            "backgroundColor": "#f5f5f5",
+            "backgroundColor": "#F1F1F4",
             "height": 8,
           },
         ]
@@ -1034,7 +1034,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         style={
           Array [
             Object {
-              "color": "#151515",
+              "color": "#161617",
               "fontFamily": "Montserrat-Regular",
               "fontSize": 15,
               "lineHeight": 20,
@@ -1091,7 +1091,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
@@ -1100,7 +1100,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                 },
               ]
             }
-            textColor="#151515"
+            textColor="#161617"
           >
             Signaler l'offre
           </Text>
@@ -1304,7 +1304,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 18,
                       "lineHeight": 22,
@@ -1406,7 +1406,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                     style={
                       Array [
                         Object {
-                          "color": "#151515",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Regular",
                           "fontSize": 15,
                           "lineHeight": 20,
@@ -1459,7 +1459,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                       style={
                         Array [
                           Object {
-                            "color": "#151515",
+                            "color": "#161617",
                             "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,
@@ -1515,7 +1515,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                       style={
                         Array [
                           Object {
-                            "color": "#151515",
+                            "color": "#161617",
                             "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,

@@ -210,7 +210,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 18,
                   "lineHeight": 22,
@@ -536,7 +536,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 18,
                   "lineHeight": 22,

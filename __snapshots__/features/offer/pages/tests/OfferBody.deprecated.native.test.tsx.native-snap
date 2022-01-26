@@ -396,7 +396,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                 Array [
                                   Object {
                                     "bottom": 0,
-                                    "shadowColor": "#151515",
+                                    "shadowColor": "#161617",
                                     "shadowOffset": Object {
                                       "height": 8,
                                       "width": 0,
@@ -507,7 +507,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                 style={
                                   Array [
                                     Object {
-                                      "color": "#151515",
+                                      "color": "#161617",
                                       "flexShrink": 1,
                                       "fontFamily": "Montserrat-SemiBold",
                                       "fontSize": 12,
@@ -526,7 +526,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
+                                    "color": "#161617",
                                     "fontFamily": "Montserrat-SemiBold",
                                     "fontSize": 12,
                                     "lineHeight": 16,
@@ -564,7 +564,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
+                                    "color": "#161617",
                                     "fontFamily": "Montserrat-Bold",
                                     "fontSize": 20,
                                     "lineHeight": 24,
@@ -654,7 +654,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                 style={
                                   Array [
                                     Object {
-                                      "color": "#151515",
+                                      "color": "#161617",
                                       "fontFamily": "Montserrat-SemiBold",
                                       "fontSize": 12,
                                       "lineHeight": 16,
@@ -672,7 +672,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                 Array [
                                   Object {
                                     "alignSelf": "center",
-                                    "backgroundColor": "#c7c7cc",
+                                    "backgroundColor": "#CBCDD2",
                                     "height": "92%",
                                     "marginHorizontal": 8,
                                     "width": 1,
@@ -705,7 +705,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                 }
                               >
                                 <View
-                                  fill="#626262"
+                                  fill="#696A6F"
                                   height={32}
                                   testID="iconPrice"
                                   width={32}
@@ -729,7 +729,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                 style={
                                   Array [
                                     Object {
-                                      "color": "#151515",
+                                      "color": "#161617",
                                       "fontFamily": "Montserrat-SemiBold",
                                       "fontSize": 12,
                                       "lineHeight": 16,
@@ -779,7 +779,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
+                                    "color": "#161617",
                                     "fontFamily": "Montserrat-Regular",
                                     "fontSize": 15,
                                     "lineHeight": 20,
@@ -797,7 +797,7 @@ Tous les détails du film sur AlloCiné:
                                 style={
                                   Array [
                                     Object {
-                                      "color": "#151515",
+                                      "color": "#161617",
                                       "fontFamily": "Montserrat-Bold",
                                       "fontSize": 15,
                                       "lineHeight": 20,
@@ -902,7 +902,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     style={
                                       Array [
                                         Object {
-                                          "color": "#151515",
+                                          "color": "#161617",
                                           "fontFamily": "Montserrat-Bold",
                                           "fontSize": 15,
                                           "lineHeight": 20,
@@ -911,7 +911,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         },
                                       ]
                                     }
-                                    textColor="#151515"
+                                    textColor="#161617"
                                   >
                                     voir plus
                                   </Text>
@@ -951,7 +951,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             style={
                               Array [
                                 Object {
-                                  "backgroundColor": "#f5f5f5",
+                                  "backgroundColor": "#F1F1F4",
                                   "height": 8,
                                 },
                               ]
@@ -970,7 +970,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
+                                    "color": "#161617",
                                     "fontFamily": "Montserrat-Medium",
                                     "fontSize": 18,
                                     "lineHeight": 22,
@@ -985,7 +985,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
+                                    "color": "#161617",
                                     "fontFamily": "Montserrat-Regular",
                                     "fontSize": 15,
                                     "lineHeight": 20,
@@ -1002,7 +1002,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             style={
                               Array [
                                 Object {
-                                  "backgroundColor": "#f5f5f5",
+                                  "backgroundColor": "#F1F1F4",
                                   "height": 8,
                                 },
                               ]
@@ -1038,7 +1038,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
+                                    "color": "#161617",
                                     "flexBasis": 0,
                                     "flexGrow": 0.9,
                                     "flexShrink": 1,
@@ -1103,7 +1103,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 style={
                                   Array [
                                     Object {
-                                      "color": "#151515",
+                                      "color": "#161617",
                                       "fontFamily": "Montserrat-Regular",
                                       "fontSize": 15,
                                       "lineHeight": 20,
@@ -1117,7 +1117,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   style={
                                     Array [
                                       Object {
-                                        "color": "#151515",
+                                        "color": "#161617",
                                         "fontFamily": "Montserrat-Bold",
                                         "fontSize": 15,
                                         "lineHeight": 20,
@@ -1156,7 +1156,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             style={
                               Array [
                                 Object {
-                                  "backgroundColor": "#f5f5f5",
+                                  "backgroundColor": "#F1F1F4",
                                   "height": 8,
                                 },
                               ]
@@ -1192,7 +1192,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
+                                    "color": "#161617",
                                     "flexBasis": 0,
                                     "flexGrow": 0.9,
                                     "flexShrink": 1,
@@ -1283,7 +1283,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         Object {
                                           "alignItems": "center",
                                           "aspectRatio": 1,
-                                          "borderColor": "#c7c7cc",
+                                          "borderColor": "#CBCDD2",
                                           "borderRadius": 8,
                                           "borderWidth": 1,
                                           "minHeight": 64,
@@ -1304,7 +1304,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     />
                                     <View
-                                      fill="#151515"
+                                      fill="#161617"
                                       height={32}
                                       width={32}
                                     >
@@ -1334,7 +1334,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     >
                                       <View
-                                        fill="#626262"
+                                        fill="#696A6F"
                                         height={24}
                                         testID="invalidTestId"
                                         width={24}
@@ -1370,7 +1370,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       style={
                                         Array [
                                           Object {
-                                            "color": "#151515",
+                                            "color": "#161617",
                                             "fontFamily": "Montserrat-SemiBold",
                                             "fontSize": 12,
                                             "lineHeight": 16,
@@ -1404,7 +1404,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         Object {
                                           "alignItems": "center",
                                           "aspectRatio": 1,
-                                          "borderColor": "#c7c7cc",
+                                          "borderColor": "#CBCDD2",
                                           "borderRadius": 8,
                                           "borderWidth": 1,
                                           "minHeight": 64,
@@ -1425,7 +1425,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     />
                                     <View
-                                      fill="#151515"
+                                      fill="#161617"
                                       height={32}
                                       width={32}
                                     >
@@ -1490,7 +1490,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       style={
                                         Array [
                                           Object {
-                                            "color": "#151515",
+                                            "color": "#161617",
                                             "fontFamily": "Montserrat-SemiBold",
                                             "fontSize": 12,
                                             "lineHeight": 16,
@@ -1524,7 +1524,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         Object {
                                           "alignItems": "center",
                                           "aspectRatio": 1,
-                                          "borderColor": "#c7c7cc",
+                                          "borderColor": "#CBCDD2",
                                           "borderRadius": 8,
                                           "borderWidth": 1,
                                           "minHeight": 64,
@@ -1545,7 +1545,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     />
                                     <View
-                                      fill="#151515"
+                                      fill="#161617"
                                       height={32}
                                       width={32}
                                     >
@@ -1575,7 +1575,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     >
                                       <View
-                                        fill="#626262"
+                                        fill="#696A6F"
                                         height={24}
                                         testID="invalidTestId"
                                         width={24}
@@ -1611,7 +1611,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       style={
                                         Array [
                                           Object {
-                                            "color": "#151515",
+                                            "color": "#161617",
                                             "fontFamily": "Montserrat-SemiBold",
                                             "fontSize": 12,
                                             "lineHeight": 16,
@@ -1645,7 +1645,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         Object {
                                           "alignItems": "center",
                                           "aspectRatio": 1,
-                                          "borderColor": "#c7c7cc",
+                                          "borderColor": "#CBCDD2",
                                           "borderRadius": 8,
                                           "borderWidth": 1,
                                           "minHeight": 64,
@@ -1666,7 +1666,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     />
                                     <View
-                                      fill="#151515"
+                                      fill="#161617"
                                       height={32}
                                       width={32}
                                     >
@@ -1731,7 +1731,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       style={
                                         Array [
                                           Object {
-                                            "color": "#151515",
+                                            "color": "#161617",
                                             "fontFamily": "Montserrat-SemiBold",
                                             "fontSize": 12,
                                             "lineHeight": 16,
@@ -1752,7 +1752,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             style={
                               Array [
                                 Object {
-                                  "backgroundColor": "#f5f5f5",
+                                  "backgroundColor": "#F1F1F4",
                                   "height": 8,
                                 },
                               ]
@@ -1781,7 +1781,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
+                                    "color": "#161617",
                                     "fontFamily": "Montserrat-Regular",
                                     "fontSize": 15,
                                     "lineHeight": 20,
@@ -1838,7 +1838,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   style={
                                     Array [
                                       Object {
-                                        "color": "#151515",
+                                        "color": "#161617",
                                         "fontFamily": "Montserrat-Bold",
                                         "fontSize": 15,
                                         "lineHeight": 20,
@@ -1847,7 +1847,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       },
                                     ]
                                   }
-                                  textColor="#151515"
+                                  textColor="#161617"
                                 >
                                   Signaler l'offre
                                 </Text>
@@ -2051,7 +2051,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       style={
                                         Array [
                                           Object {
-                                            "color": "#151515",
+                                            "color": "#161617",
                                             "fontFamily": "Montserrat-Medium",
                                             "fontSize": 18,
                                             "lineHeight": 22,
@@ -2153,7 +2153,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                           style={
                                             Array [
                                               Object {
-                                                "color": "#151515",
+                                                "color": "#161617",
                                                 "fontFamily": "Montserrat-Regular",
                                                 "fontSize": 15,
                                                 "lineHeight": 20,
@@ -2206,7 +2206,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                             style={
                                               Array [
                                                 Object {
-                                                  "color": "#151515",
+                                                  "color": "#161617",
                                                   "flexBasis": 0,
                                                   "flexGrow": 1,
                                                   "flexShrink": 1,
@@ -2262,7 +2262,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                             style={
                                               Array [
                                                 Object {
-                                                  "color": "#151515",
+                                                  "color": "#161617",
                                                   "flexBasis": 0,
                                                   "flexGrow": 1,
                                                   "flexShrink": 1,
@@ -2755,7 +2755,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 Array [
                                   Object {
                                     "bottom": 0,
-                                    "shadowColor": "#151515",
+                                    "shadowColor": "#161617",
                                     "shadowOffset": Object {
                                       "height": 8,
                                       "width": 0,
@@ -2866,7 +2866,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 style={
                                   Array [
                                     Object {
-                                      "color": "#151515",
+                                      "color": "#161617",
                                       "flexShrink": 1,
                                       "fontFamily": "Montserrat-SemiBold",
                                       "fontSize": 12,
@@ -2885,7 +2885,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
+                                    "color": "#161617",
                                     "fontFamily": "Montserrat-SemiBold",
                                     "fontSize": 12,
                                     "lineHeight": 16,
@@ -2923,7 +2923,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
+                                    "color": "#161617",
                                     "fontFamily": "Montserrat-Bold",
                                     "fontSize": 20,
                                     "lineHeight": 24,
@@ -3013,7 +3013,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 style={
                                   Array [
                                     Object {
-                                      "color": "#151515",
+                                      "color": "#161617",
                                       "fontFamily": "Montserrat-SemiBold",
                                       "fontSize": 12,
                                       "lineHeight": 16,
@@ -3031,7 +3031,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 Array [
                                   Object {
                                     "alignSelf": "center",
-                                    "backgroundColor": "#c7c7cc",
+                                    "backgroundColor": "#CBCDD2",
                                     "height": "92%",
                                     "marginHorizontal": 8,
                                     "width": 1,
@@ -3087,7 +3087,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 style={
                                   Array [
                                     Object {
-                                      "color": "#151515",
+                                      "color": "#161617",
                                       "fontFamily": "Montserrat-SemiBold",
                                       "fontSize": 12,
                                       "lineHeight": 16,
@@ -3105,7 +3105,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 Array [
                                   Object {
                                     "alignSelf": "center",
-                                    "backgroundColor": "#c7c7cc",
+                                    "backgroundColor": "#CBCDD2",
                                     "height": "92%",
                                     "marginHorizontal": 8,
                                     "width": 1,
@@ -3138,7 +3138,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 }
                               >
                                 <View
-                                  fill="#626262"
+                                  fill="#696A6F"
                                   height={32}
                                   testID="iconPrice"
                                   width={32}
@@ -3162,7 +3162,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 style={
                                   Array [
                                     Object {
-                                      "color": "#151515",
+                                      "color": "#161617",
                                       "fontFamily": "Montserrat-SemiBold",
                                       "fontSize": 12,
                                       "lineHeight": 16,
@@ -3212,7 +3212,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
+                                    "color": "#161617",
                                     "fontFamily": "Montserrat-Regular",
                                     "fontSize": 15,
                                     "lineHeight": 20,
@@ -3230,7 +3230,7 @@ Tous les détails du film sur AlloCiné:
                                 style={
                                   Array [
                                     Object {
-                                      "color": "#151515",
+                                      "color": "#161617",
                                       "fontFamily": "Montserrat-Bold",
                                       "fontSize": 15,
                                       "lineHeight": 20,
@@ -3335,7 +3335,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     style={
                                       Array [
                                         Object {
-                                          "color": "#151515",
+                                          "color": "#161617",
                                           "fontFamily": "Montserrat-Bold",
                                           "fontSize": 15,
                                           "lineHeight": 20,
@@ -3344,7 +3344,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         },
                                       ]
                                     }
-                                    textColor="#151515"
+                                    textColor="#161617"
                                   >
                                     voir plus
                                   </Text>
@@ -3384,7 +3384,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             style={
                               Array [
                                 Object {
-                                  "backgroundColor": "#f5f5f5",
+                                  "backgroundColor": "#F1F1F4",
                                   "height": 8,
                                 },
                               ]
@@ -3403,7 +3403,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
+                                    "color": "#161617",
                                     "fontFamily": "Montserrat-Medium",
                                     "fontSize": 18,
                                     "lineHeight": 22,
@@ -3418,7 +3418,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
+                                    "color": "#161617",
                                     "fontFamily": "Montserrat-Regular",
                                     "fontSize": 15,
                                     "lineHeight": 20,
@@ -3435,7 +3435,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             style={
                               Array [
                                 Object {
-                                  "backgroundColor": "#f5f5f5",
+                                  "backgroundColor": "#F1F1F4",
                                   "height": 8,
                                 },
                               ]
@@ -3464,7 +3464,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
+                                    "color": "#161617",
                                     "fontFamily": "Montserrat-Medium",
                                     "fontSize": 18,
                                     "lineHeight": 22,
@@ -3547,7 +3547,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 style={
                                   Array [
                                     Object {
-                                      "color": "#151515",
+                                      "color": "#161617",
                                       "flexShrink": 1,
                                       "fontFamily": "Montserrat-Bold",
                                       "fontSize": 15,
@@ -3594,7 +3594,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
+                                    "color": "#161617",
                                     "fontFamily": "Montserrat-SemiBold",
                                     "fontSize": 12,
                                     "lineHeight": 16,
@@ -3618,7 +3618,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
+                                    "color": "#161617",
                                     "fontFamily": "Montserrat-Regular",
                                     "fontSize": 15,
                                     "lineHeight": 20,
@@ -3643,7 +3643,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
+                                    "color": "#161617",
                                     "fontFamily": "Montserrat-SemiBold",
                                     "fontSize": 12,
                                     "lineHeight": 16,
@@ -3667,7 +3667,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
+                                    "color": "#161617",
                                     "fontFamily": "Montserrat-Regular",
                                     "fontSize": 15,
                                     "lineHeight": 20,
@@ -3691,7 +3691,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               style={
                                 Array [
                                   Object {
-                                    "backgroundColor": "#c7c7cc",
+                                    "backgroundColor": "#CBCDD2",
                                     "height": 1,
                                   },
                                 ]
@@ -3763,7 +3763,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   style={
                                     Array [
                                       Object {
-                                        "color": "#151515",
+                                        "color": "#161617",
                                         "fontFamily": "Montserrat-Bold",
                                         "fontSize": 15,
                                         "lineHeight": 20,
@@ -3772,7 +3772,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       },
                                     ]
                                   }
-                                  textColor="#151515"
+                                  textColor="#161617"
                                 >
                                   Voir l'itinéraire
                                 </Text>
@@ -3793,7 +3793,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             style={
                               Array [
                                 Object {
-                                  "backgroundColor": "#f5f5f5",
+                                  "backgroundColor": "#F1F1F4",
                                   "height": 8,
                                 },
                               ]
@@ -3829,7 +3829,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
+                                    "color": "#161617",
                                     "flexBasis": 0,
                                     "flexGrow": 0.9,
                                     "flexShrink": 1,
@@ -3894,7 +3894,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 style={
                                   Array [
                                     Object {
-                                      "color": "#151515",
+                                      "color": "#161617",
                                       "fontFamily": "Montserrat-Regular",
                                       "fontSize": 15,
                                       "lineHeight": 20,
@@ -3908,7 +3908,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   style={
                                     Array [
                                       Object {
-                                        "color": "#151515",
+                                        "color": "#161617",
                                         "fontFamily": "Montserrat-Bold",
                                         "fontSize": 15,
                                         "lineHeight": 20,
@@ -3947,7 +3947,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             style={
                               Array [
                                 Object {
-                                  "backgroundColor": "#f5f5f5",
+                                  "backgroundColor": "#F1F1F4",
                                   "height": 8,
                                 },
                               ]
@@ -3983,7 +3983,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
+                                    "color": "#161617",
                                     "flexBasis": 0,
                                     "flexGrow": 0.9,
                                     "flexShrink": 1,
@@ -4074,7 +4074,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         Object {
                                           "alignItems": "center",
                                           "aspectRatio": 1,
-                                          "borderColor": "#c7c7cc",
+                                          "borderColor": "#CBCDD2",
                                           "borderRadius": 8,
                                           "borderWidth": 1,
                                           "minHeight": 64,
@@ -4095,7 +4095,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     />
                                     <View
-                                      fill="#151515"
+                                      fill="#161617"
                                       height={32}
                                       width={32}
                                     >
@@ -4125,7 +4125,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     >
                                       <View
-                                        fill="#626262"
+                                        fill="#696A6F"
                                         height={24}
                                         testID="invalidTestId"
                                         width={24}
@@ -4161,7 +4161,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       style={
                                         Array [
                                           Object {
-                                            "color": "#151515",
+                                            "color": "#161617",
                                             "fontFamily": "Montserrat-SemiBold",
                                             "fontSize": 12,
                                             "lineHeight": 16,
@@ -4195,7 +4195,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         Object {
                                           "alignItems": "center",
                                           "aspectRatio": 1,
-                                          "borderColor": "#c7c7cc",
+                                          "borderColor": "#CBCDD2",
                                           "borderRadius": 8,
                                           "borderWidth": 1,
                                           "minHeight": 64,
@@ -4216,7 +4216,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     />
                                     <View
-                                      fill="#151515"
+                                      fill="#161617"
                                       height={32}
                                       width={32}
                                     >
@@ -4281,7 +4281,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       style={
                                         Array [
                                           Object {
-                                            "color": "#151515",
+                                            "color": "#161617",
                                             "fontFamily": "Montserrat-SemiBold",
                                             "fontSize": 12,
                                             "lineHeight": 16,
@@ -4315,7 +4315,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         Object {
                                           "alignItems": "center",
                                           "aspectRatio": 1,
-                                          "borderColor": "#c7c7cc",
+                                          "borderColor": "#CBCDD2",
                                           "borderRadius": 8,
                                           "borderWidth": 1,
                                           "minHeight": 64,
@@ -4336,7 +4336,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     />
                                     <View
-                                      fill="#151515"
+                                      fill="#161617"
                                       height={32}
                                       width={32}
                                     >
@@ -4366,7 +4366,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     >
                                       <View
-                                        fill="#626262"
+                                        fill="#696A6F"
                                         height={24}
                                         testID="invalidTestId"
                                         width={24}
@@ -4402,7 +4402,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       style={
                                         Array [
                                           Object {
-                                            "color": "#151515",
+                                            "color": "#161617",
                                             "fontFamily": "Montserrat-SemiBold",
                                             "fontSize": 12,
                                             "lineHeight": 16,
@@ -4436,7 +4436,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         Object {
                                           "alignItems": "center",
                                           "aspectRatio": 1,
-                                          "borderColor": "#c7c7cc",
+                                          "borderColor": "#CBCDD2",
                                           "borderRadius": 8,
                                           "borderWidth": 1,
                                           "minHeight": 64,
@@ -4457,7 +4457,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     />
                                     <View
-                                      fill="#151515"
+                                      fill="#161617"
                                       height={32}
                                       width={32}
                                     >
@@ -4522,7 +4522,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       style={
                                         Array [
                                           Object {
-                                            "color": "#151515",
+                                            "color": "#161617",
                                             "fontFamily": "Montserrat-SemiBold",
                                             "fontSize": 12,
                                             "lineHeight": 16,
@@ -4543,7 +4543,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             style={
                               Array [
                                 Object {
-                                  "backgroundColor": "#f5f5f5",
+                                  "backgroundColor": "#F1F1F4",
                                   "height": 8,
                                 },
                               ]
@@ -4572,7 +4572,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               style={
                                 Array [
                                   Object {
-                                    "color": "#151515",
+                                    "color": "#161617",
                                     "fontFamily": "Montserrat-Regular",
                                     "fontSize": 15,
                                     "lineHeight": 20,
@@ -4629,7 +4629,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   style={
                                     Array [
                                       Object {
-                                        "color": "#151515",
+                                        "color": "#161617",
                                         "fontFamily": "Montserrat-Bold",
                                         "fontSize": 15,
                                         "lineHeight": 20,
@@ -4638,7 +4638,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       },
                                     ]
                                   }
-                                  textColor="#151515"
+                                  textColor="#161617"
                                 >
                                   Signaler l'offre
                                 </Text>
@@ -4842,7 +4842,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       style={
                                         Array [
                                           Object {
-                                            "color": "#151515",
+                                            "color": "#161617",
                                             "fontFamily": "Montserrat-Medium",
                                             "fontSize": 18,
                                             "lineHeight": 22,
@@ -4944,7 +4944,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                           style={
                                             Array [
                                               Object {
-                                                "color": "#151515",
+                                                "color": "#161617",
                                                 "fontFamily": "Montserrat-Regular",
                                                 "fontSize": 15,
                                                 "lineHeight": 20,
@@ -4997,7 +4997,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                             style={
                                               Array [
                                                 Object {
-                                                  "color": "#151515",
+                                                  "color": "#161617",
                                                   "flexBasis": 0,
                                                   "flexGrow": 1,
                                                   "flexShrink": 1,
@@ -5053,7 +5053,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                             style={
                                               Array [
                                                 Object {
-                                                  "color": "#151515",
+                                                  "color": "#161617",
                                                   "flexBasis": 0,
                                                   "flexGrow": 1,
                                                   "flexShrink": 1,

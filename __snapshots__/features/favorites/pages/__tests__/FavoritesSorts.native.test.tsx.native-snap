@@ -79,7 +79,7 @@ exports[`FavoritesSorts component should render correctly 1`] = `
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 18,
                 "lineHeight": 22,
@@ -211,12 +211,12 @@ exports[`FavoritesSorts component should render correctly 1`] = `
           }
         />
         <Text
-          color="#151515"
+          color="#161617"
           numberOfLines={2}
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
@@ -281,12 +281,12 @@ exports[`FavoritesSorts component should render correctly 1`] = `
           }
         />
         <Text
-          color="#151515"
+          color="#161617"
           numberOfLines={2}
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,

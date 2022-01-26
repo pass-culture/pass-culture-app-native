@@ -35,7 +35,7 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
           "lineHeight": 20,
@@ -61,7 +61,7 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
           "lineHeight": 20,
@@ -248,7 +248,7 @@ exports[`<BookingImpossible /> should render without CTAs when offer is favorite
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
           "lineHeight": 20,
@@ -274,7 +274,7 @@ exports[`<BookingImpossible /> should render without CTAs when offer is favorite
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
           "lineHeight": 20,

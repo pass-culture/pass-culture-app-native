@@ -33,12 +33,12 @@ Array [
       }
     >
       <Text
-        color="#151515"
+        color="#161617"
         numberOfLines={2}
         style={
           Array [
             Object {
-              "color": "#151515",
+              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 18,
               "lineHeight": 22,
@@ -315,7 +315,7 @@ Array [
                     Array [
                       Object {
                         "alignItems": "center",
-                        "backgroundColor": "#151515",
+                        "backgroundColor": "#161617",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
                         "flexDirection": "row",
@@ -376,7 +376,7 @@ Array [
                   style={
                     Array [
                       Object {
-                        "color": "#151515",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
@@ -387,12 +387,12 @@ Array [
                   Titane - VF
                 </Text>
                 <Text
-                  color="#626262"
+                  color="#696A6F"
                   numberOfLines={1}
                   style={
                     Array [
                       Object {
-                        "color": "#626262",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
@@ -403,11 +403,11 @@ Array [
                   Dès le 18 août 2021
                 </Text>
                 <Text
-                  color="#626262"
+                  color="#696A6F"
                   style={
                     Array [
                       Object {
-                        "color": "#626262",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
@@ -539,7 +539,7 @@ Array [
                     Array [
                       Object {
                         "alignItems": "center",
-                        "backgroundColor": "#151515",
+                        "backgroundColor": "#161617",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
                         "flexDirection": "row",
@@ -600,7 +600,7 @@ Array [
                   style={
                     Array [
                       Object {
-                        "color": "#151515",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
@@ -611,12 +611,12 @@ Array [
                   Bac Nord - VF
                 </Text>
                 <Text
-                  color="#626262"
+                  color="#696A6F"
                   numberOfLines={1}
                   style={
                     Array [
                       Object {
-                        "color": "#626262",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
@@ -627,11 +627,11 @@ Array [
                   Dès le 18 août 2021
                 </Text>
                 <Text
-                  color="#626262"
+                  color="#696A6F"
                   style={
                     Array [
                       Object {
-                        "color": "#626262",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
@@ -763,7 +763,7 @@ Array [
                     Array [
                       Object {
                         "alignItems": "center",
-                        "backgroundColor": "#151515",
+                        "backgroundColor": "#161617",
                         "borderBottomLeftRadius": 8,
                         "borderBottomRightRadius": 8,
                         "flexDirection": "row",
@@ -824,7 +824,7 @@ Array [
                   style={
                     Array [
                       Object {
-                        "color": "#151515",
+                        "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
@@ -835,12 +835,12 @@ Array [
                   Black Widow - VF
                 </Text>
                 <Text
-                  color="#626262"
+                  color="#696A6F"
                   numberOfLines={1}
                   style={
                     Array [
                       Object {
-                        "color": "#626262",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
@@ -851,11 +851,11 @@ Array [
                   Dès le 18 août 2021
                 </Text>
                 <Text
-                  color="#626262"
+                  color="#696A6F"
                   style={
                     Array [
                       Object {
-                        "color": "#626262",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 16,
@@ -994,13 +994,13 @@ Array [
                         "alignItems": "center",
                         "aspectRatio": 1,
                         "backgroundColor": "#ffffff",
-                        "borderColor": "#f5f5f5",
+                        "borderColor": "#F1F1F4",
                         "borderRadius": 32,
                         "borderStyle": "solid",
                         "borderWidth": 1,
                         "justifyContent": "center",
                         "opacity": 1,
-                        "shadowColor": "#151515",
+                        "shadowColor": "#161617",
                         "shadowOffset": Object {
                           "height": 8,
                           "width": 0,

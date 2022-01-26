@@ -219,7 +219,7 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
                     style={
                       Array [
                         Object {
-                          "color": "#151515",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Medium",
                           "fontSize": 18,
                           "lineHeight": 22,
@@ -242,11 +242,11 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
                   }
                 />
                 <Text
-                  color="#626262"
+                  color="#696A6F"
                   style={
                     Array [
                       Object {
-                        "color": "#626262",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,

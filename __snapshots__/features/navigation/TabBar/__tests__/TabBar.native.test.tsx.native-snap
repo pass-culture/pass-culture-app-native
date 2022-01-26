@@ -7,12 +7,12 @@ exports[`TabBar renders correctly 1`] = `
       Object {
         "alignItems": "center",
         "backgroundColor": "#fffffff8",
-        "borderColor": "#f5f5f5",
+        "borderColor": "#F1F1F4",
         "borderStyle": "solid",
         "borderWidth": 1,
         "bottom": 0,
         "position": "absolute",
-        "shadowColor": "#151515",
+        "shadowColor": "#161617",
         "shadowOffset": Object {
           "height": 1,
           "width": 0,

@@ -217,7 +217,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                 dir="auto"
                 style={
                   Object {
-                    "color": "rgba(21,21,21,1.00)",
+                    "color": "rgba(22,22,23,1.00)",
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": "18px",
                     "lineHeight": "22px",
@@ -313,15 +313,15 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       "WebkitTransitionProperty": "opacity",
                       "WebkitUserSelect": "none",
                       "alignItems": "center",
-                      "borderBottomColor": "rgba(199,199,204,1.00)",
+                      "borderBottomColor": "rgba(203,205,210,1.00)",
                       "borderBottomLeftRadius": "24px",
                       "borderBottomRightRadius": "24px",
                       "borderBottomWidth": "1px",
-                      "borderLeftColor": "rgba(199,199,204,1.00)",
+                      "borderLeftColor": "rgba(203,205,210,1.00)",
                       "borderLeftWidth": "1px",
-                      "borderRightColor": "rgba(199,199,204,1.00)",
+                      "borderRightColor": "rgba(203,205,210,1.00)",
                       "borderRightWidth": "1px",
-                      "borderTopColor": "rgba(199,199,204,1.00)",
+                      "borderTopColor": "rgba(203,205,210,1.00)",
                       "borderTopLeftRadius": "24px",
                       "borderTopRightRadius": "24px",
                       "borderTopWidth": "1px",
@@ -368,7 +368,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       dir="auto"
                       style={
                         Object {
-                          "color": "rgba(21,21,21,1.00)",
+                          "color": "rgba(22,22,23,1.00)",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": "15px",
                           "lineHeight": "20px",
@@ -397,15 +397,15 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       "WebkitTransitionProperty": "opacity",
                       "WebkitUserSelect": "none",
                       "alignItems": "center",
-                      "borderBottomColor": "rgba(199,199,204,1.00)",
+                      "borderBottomColor": "rgba(203,205,210,1.00)",
                       "borderBottomLeftRadius": "24px",
                       "borderBottomRightRadius": "24px",
                       "borderBottomWidth": "1px",
-                      "borderLeftColor": "rgba(199,199,204,1.00)",
+                      "borderLeftColor": "rgba(203,205,210,1.00)",
                       "borderLeftWidth": "1px",
-                      "borderRightColor": "rgba(199,199,204,1.00)",
+                      "borderRightColor": "rgba(203,205,210,1.00)",
                       "borderRightWidth": "1px",
-                      "borderTopColor": "rgba(199,199,204,1.00)",
+                      "borderTopColor": "rgba(203,205,210,1.00)",
                       "borderTopLeftRadius": "24px",
                       "borderTopRightRadius": "24px",
                       "borderTopWidth": "1px",
@@ -452,7 +452,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       dir="auto"
                       style={
                         Object {
-                          "color": "rgba(21,21,21,1.00)",
+                          "color": "rgba(22,22,23,1.00)",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": "15px",
                           "lineHeight": "20px",
@@ -479,15 +479,15 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       "WebkitTransitionProperty": "opacity",
                       "WebkitUserSelect": "none",
                       "alignItems": "center",
-                      "borderBottomColor": "rgba(199,199,204,1.00)",
+                      "borderBottomColor": "rgba(203,205,210,1.00)",
                       "borderBottomLeftRadius": "24px",
                       "borderBottomRightRadius": "24px",
                       "borderBottomWidth": "1px",
-                      "borderLeftColor": "rgba(199,199,204,1.00)",
+                      "borderLeftColor": "rgba(203,205,210,1.00)",
                       "borderLeftWidth": "1px",
-                      "borderRightColor": "rgba(199,199,204,1.00)",
+                      "borderRightColor": "rgba(203,205,210,1.00)",
                       "borderRightWidth": "1px",
-                      "borderTopColor": "rgba(199,199,204,1.00)",
+                      "borderTopColor": "rgba(203,205,210,1.00)",
                       "borderTopLeftRadius": "24px",
                       "borderTopRightRadius": "24px",
                       "borderTopWidth": "1px",
@@ -534,7 +534,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       dir="auto"
                       style={
                         Object {
-                          "color": "rgba(21,21,21,1.00)",
+                          "color": "rgba(22,22,23,1.00)",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": "15px",
                           "lineHeight": "20px",
@@ -561,15 +561,15 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       "WebkitTransitionProperty": "opacity",
                       "WebkitUserSelect": "none",
                       "alignItems": "center",
-                      "borderBottomColor": "rgba(199,199,204,1.00)",
+                      "borderBottomColor": "rgba(203,205,210,1.00)",
                       "borderBottomLeftRadius": "24px",
                       "borderBottomRightRadius": "24px",
                       "borderBottomWidth": "1px",
-                      "borderLeftColor": "rgba(199,199,204,1.00)",
+                      "borderLeftColor": "rgba(203,205,210,1.00)",
                       "borderLeftWidth": "1px",
-                      "borderRightColor": "rgba(199,199,204,1.00)",
+                      "borderRightColor": "rgba(203,205,210,1.00)",
                       "borderRightWidth": "1px",
-                      "borderTopColor": "rgba(199,199,204,1.00)",
+                      "borderTopColor": "rgba(203,205,210,1.00)",
                       "borderTopLeftRadius": "24px",
                       "borderTopRightRadius": "24px",
                       "borderTopWidth": "1px",
@@ -616,7 +616,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       dir="auto"
                       style={
                         Object {
-                          "color": "rgba(21,21,21,1.00)",
+                          "color": "rgba(22,22,23,1.00)",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": "15px",
                           "lineHeight": "20px",
@@ -643,15 +643,15 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       "WebkitTransitionProperty": "opacity",
                       "WebkitUserSelect": "none",
                       "alignItems": "center",
-                      "borderBottomColor": "rgba(199,199,204,1.00)",
+                      "borderBottomColor": "rgba(203,205,210,1.00)",
                       "borderBottomLeftRadius": "24px",
                       "borderBottomRightRadius": "24px",
                       "borderBottomWidth": "1px",
-                      "borderLeftColor": "rgba(199,199,204,1.00)",
+                      "borderLeftColor": "rgba(203,205,210,1.00)",
                       "borderLeftWidth": "1px",
-                      "borderRightColor": "rgba(199,199,204,1.00)",
+                      "borderRightColor": "rgba(203,205,210,1.00)",
                       "borderRightWidth": "1px",
-                      "borderTopColor": "rgba(199,199,204,1.00)",
+                      "borderTopColor": "rgba(203,205,210,1.00)",
                       "borderTopLeftRadius": "24px",
                       "borderTopRightRadius": "24px",
                       "borderTopWidth": "1px",
@@ -698,7 +698,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       dir="auto"
                       style={
                         Object {
-                          "color": "rgba(21,21,21,1.00)",
+                          "color": "rgba(22,22,23,1.00)",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": "15px",
                           "lineHeight": "20px",
@@ -725,15 +725,15 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       "WebkitTransitionProperty": "opacity",
                       "WebkitUserSelect": "none",
                       "alignItems": "center",
-                      "borderBottomColor": "rgba(199,199,204,1.00)",
+                      "borderBottomColor": "rgba(203,205,210,1.00)",
                       "borderBottomLeftRadius": "24px",
                       "borderBottomRightRadius": "24px",
                       "borderBottomWidth": "1px",
-                      "borderLeftColor": "rgba(199,199,204,1.00)",
+                      "borderLeftColor": "rgba(203,205,210,1.00)",
                       "borderLeftWidth": "1px",
-                      "borderRightColor": "rgba(199,199,204,1.00)",
+                      "borderRightColor": "rgba(203,205,210,1.00)",
                       "borderRightWidth": "1px",
-                      "borderTopColor": "rgba(199,199,204,1.00)",
+                      "borderTopColor": "rgba(203,205,210,1.00)",
                       "borderTopLeftRadius": "24px",
                       "borderTopRightRadius": "24px",
                       "borderTopWidth": "1px",
@@ -780,7 +780,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       dir="auto"
                       style={
                         Object {
-                          "color": "rgba(21,21,21,1.00)",
+                          "color": "rgba(22,22,23,1.00)",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": "15px",
                           "lineHeight": "20px",
@@ -794,7 +794,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       dir="auto"
                       style={
                         Object {
-                          "color": "rgba(98,98,98,1.00)",
+                          "color": "rgba(105,106,111,1.00)",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": "12px",
                           "lineHeight": "16px",
@@ -823,15 +823,15 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       "WebkitTransitionProperty": "opacity",
                       "WebkitUserSelect": "none",
                       "alignItems": "center",
-                      "borderBottomColor": "rgba(199,199,204,1.00)",
+                      "borderBottomColor": "rgba(203,205,210,1.00)",
                       "borderBottomLeftRadius": "24px",
                       "borderBottomRightRadius": "24px",
                       "borderBottomWidth": "1px",
-                      "borderLeftColor": "rgba(199,199,204,1.00)",
+                      "borderLeftColor": "rgba(203,205,210,1.00)",
                       "borderLeftWidth": "1px",
-                      "borderRightColor": "rgba(199,199,204,1.00)",
+                      "borderRightColor": "rgba(203,205,210,1.00)",
                       "borderRightWidth": "1px",
-                      "borderTopColor": "rgba(199,199,204,1.00)",
+                      "borderTopColor": "rgba(203,205,210,1.00)",
                       "borderTopLeftRadius": "24px",
                       "borderTopRightRadius": "24px",
                       "borderTopWidth": "1px",
@@ -878,7 +878,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                       dir="auto"
                       style={
                         Object {
-                          "color": "rgba(21,21,21,1.00)",
+                          "color": "rgba(22,22,23,1.00)",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": "15px",
                           "lineHeight": "20px",
@@ -930,7 +930,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   "WebkitTransitionProperty": "opacity",
                   "WebkitUserSelect": "none",
                   "alignItems": "center",
-                  "backgroundColor": "rgba(245,245,245,1.00)",
+                  "backgroundColor": "rgba(241,241,244,1.00)",
                   "borderBottomLeftRadius": "24px",
                   "borderBottomRightRadius": "24px",
                   "borderBottomWidth": "0px",
@@ -968,7 +968,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                 style={
                   Object {
                     "WebkitLineClamp": 1,
-                    "color": "rgba(98,98,98,1.00)",
+                    "color": "rgba(105,106,111,1.00)",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": "15px",
                     "lineHeight": "20px",
@@ -1239,7 +1239,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                 dir="auto"
                 style={
                   Object {
-                    "color": "rgba(21,21,21,1.00)",
+                    "color": "rgba(22,22,23,1.00)",
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": "18px",
                     "lineHeight": "22px",
@@ -1335,15 +1335,15 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                       "WebkitTransitionProperty": "opacity",
                       "WebkitUserSelect": "none",
                       "alignItems": "center",
-                      "borderBottomColor": "rgba(199,199,204,1.00)",
+                      "borderBottomColor": "rgba(203,205,210,1.00)",
                       "borderBottomLeftRadius": "24px",
                       "borderBottomRightRadius": "24px",
                       "borderBottomWidth": "1px",
-                      "borderLeftColor": "rgba(199,199,204,1.00)",
+                      "borderLeftColor": "rgba(203,205,210,1.00)",
                       "borderLeftWidth": "1px",
-                      "borderRightColor": "rgba(199,199,204,1.00)",
+                      "borderRightColor": "rgba(203,205,210,1.00)",
                       "borderRightWidth": "1px",
-                      "borderTopColor": "rgba(199,199,204,1.00)",
+                      "borderTopColor": "rgba(203,205,210,1.00)",
                       "borderTopLeftRadius": "24px",
                       "borderTopRightRadius": "24px",
                       "borderTopWidth": "1px",
@@ -1390,7 +1390,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                       dir="auto"
                       style={
                         Object {
-                          "color": "rgba(21,21,21,1.00)",
+                          "color": "rgba(22,22,23,1.00)",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": "15px",
                           "lineHeight": "20px",
@@ -1419,15 +1419,15 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                       "WebkitTransitionProperty": "opacity",
                       "WebkitUserSelect": "none",
                       "alignItems": "center",
-                      "borderBottomColor": "rgba(199,199,204,1.00)",
+                      "borderBottomColor": "rgba(203,205,210,1.00)",
                       "borderBottomLeftRadius": "24px",
                       "borderBottomRightRadius": "24px",
                       "borderBottomWidth": "1px",
-                      "borderLeftColor": "rgba(199,199,204,1.00)",
+                      "borderLeftColor": "rgba(203,205,210,1.00)",
                       "borderLeftWidth": "1px",
-                      "borderRightColor": "rgba(199,199,204,1.00)",
+                      "borderRightColor": "rgba(203,205,210,1.00)",
                       "borderRightWidth": "1px",
-                      "borderTopColor": "rgba(199,199,204,1.00)",
+                      "borderTopColor": "rgba(203,205,210,1.00)",
                       "borderTopLeftRadius": "24px",
                       "borderTopRightRadius": "24px",
                       "borderTopWidth": "1px",
@@ -1474,7 +1474,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                       dir="auto"
                       style={
                         Object {
-                          "color": "rgba(21,21,21,1.00)",
+                          "color": "rgba(22,22,23,1.00)",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": "15px",
                           "lineHeight": "20px",
@@ -1503,15 +1503,15 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                       "WebkitTransitionProperty": "opacity",
                       "WebkitUserSelect": "none",
                       "alignItems": "center",
-                      "borderBottomColor": "rgba(199,199,204,1.00)",
+                      "borderBottomColor": "rgba(203,205,210,1.00)",
                       "borderBottomLeftRadius": "24px",
                       "borderBottomRightRadius": "24px",
                       "borderBottomWidth": "1px",
-                      "borderLeftColor": "rgba(199,199,204,1.00)",
+                      "borderLeftColor": "rgba(203,205,210,1.00)",
                       "borderLeftWidth": "1px",
-                      "borderRightColor": "rgba(199,199,204,1.00)",
+                      "borderRightColor": "rgba(203,205,210,1.00)",
                       "borderRightWidth": "1px",
-                      "borderTopColor": "rgba(199,199,204,1.00)",
+                      "borderTopColor": "rgba(203,205,210,1.00)",
                       "borderTopLeftRadius": "24px",
                       "borderTopRightRadius": "24px",
                       "borderTopWidth": "1px",
@@ -1558,7 +1558,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                       dir="auto"
                       style={
                         Object {
-                          "color": "rgba(21,21,21,1.00)",
+                          "color": "rgba(22,22,23,1.00)",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": "15px",
                           "lineHeight": "20px",
@@ -1572,7 +1572,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                       dir="auto"
                       style={
                         Object {
-                          "color": "rgba(98,98,98,1.00)",
+                          "color": "rgba(105,106,111,1.00)",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": "12px",
                           "lineHeight": "16px",
@@ -1624,7 +1624,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                   "WebkitTransitionProperty": "opacity",
                   "WebkitUserSelect": "none",
                   "alignItems": "center",
-                  "backgroundColor": "rgba(245,245,245,1.00)",
+                  "backgroundColor": "rgba(241,241,244,1.00)",
                   "borderBottomLeftRadius": "24px",
                   "borderBottomRightRadius": "24px",
                   "borderBottomWidth": "0px",
@@ -1662,7 +1662,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                 style={
                   Object {
                     "WebkitLineClamp": 1,
-                    "color": "rgba(98,98,98,1.00)",
+                    "color": "rgba(105,106,111,1.00)",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": "15px",
                     "lineHeight": "20px",

@@ -60,7 +60,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 18,
                 "lineHeight": 22,
@@ -137,7 +137,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "flexShrink": 1,
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
@@ -179,11 +179,11 @@ exports[`SearchFilter component should render correctly 1`] = `
           }
         />
         <Text
-          color="#626262"
+          color="#696A6F"
           style={
             Array [
               Object {
-                "color": "#626262",
+                "color": "#696A6F",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 16,
@@ -209,7 +209,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           Array [
             Object {
               "alignSelf": "center",
-              "backgroundColor": "#f5f5f5",
+              "backgroundColor": "#F1F1F4",
               "height": 2,
               "marginVertical": 0,
               "width": 912,
@@ -240,7 +240,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 18,
                 "lineHeight": 22,
@@ -273,7 +273,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
@@ -359,7 +359,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                           "marginTop": -7,
                         },
                         Object {
-                          "backgroundColor": "#c7c7cc",
+                          "backgroundColor": "#CBCDD2",
                         },
                         Object {
                           "width": 0,
@@ -451,7 +451,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                                 "borderRadius": 28,
                                 "elevation": 4,
                                 "height": 28,
-                                "shadowColor": "#151515",
+                                "shadowColor": "#161617",
                                 "shadowOpacity": 0.2,
                                 "shadowRadius": 4,
                                 "width": 28,
@@ -485,7 +485,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           Array [
             Object {
               "alignSelf": "center",
-              "backgroundColor": "#f5f5f5",
+              "backgroundColor": "#F1F1F4",
               "height": 2,
               "marginVertical": 0,
               "width": 912,
@@ -523,7 +523,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "flexBasis": 0,
                 "flexGrow": 0.9,
                 "flexShrink": 1,
@@ -538,7 +538,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 18,
                   "lineHeight": 22,
@@ -629,7 +629,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#c7c7cc",
+                  "borderColor": "#CBCDD2",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -650,11 +650,11 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#151515"
+                color="#161617"
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -692,7 +692,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#c7c7cc",
+                  "borderColor": "#CBCDD2",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -713,11 +713,11 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#151515"
+                color="#161617"
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -755,7 +755,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#c7c7cc",
+                  "borderColor": "#CBCDD2",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -776,11 +776,11 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#151515"
+                color="#161617"
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -818,7 +818,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#c7c7cc",
+                  "borderColor": "#CBCDD2",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -839,11 +839,11 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#151515"
+                color="#161617"
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -881,7 +881,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#c7c7cc",
+                  "borderColor": "#CBCDD2",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -902,11 +902,11 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#151515"
+                color="#161617"
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -944,7 +944,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#c7c7cc",
+                  "borderColor": "#CBCDD2",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -965,11 +965,11 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#151515"
+                color="#161617"
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -1007,7 +1007,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#c7c7cc",
+                  "borderColor": "#CBCDD2",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -1028,11 +1028,11 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#151515"
+                color="#161617"
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -1070,7 +1070,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#c7c7cc",
+                  "borderColor": "#CBCDD2",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -1091,11 +1091,11 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#151515"
+                color="#161617"
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -1133,7 +1133,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#c7c7cc",
+                  "borderColor": "#CBCDD2",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -1154,11 +1154,11 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#151515"
+                color="#161617"
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -1196,7 +1196,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#c7c7cc",
+                  "borderColor": "#CBCDD2",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -1217,11 +1217,11 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#151515"
+                color="#161617"
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -1259,7 +1259,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#c7c7cc",
+                  "borderColor": "#CBCDD2",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -1280,11 +1280,11 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#151515"
+                color="#161617"
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -1322,7 +1322,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#c7c7cc",
+                  "borderColor": "#CBCDD2",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -1343,11 +1343,11 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#151515"
+                color="#161617"
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -1387,7 +1387,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           Array [
             Object {
               "alignSelf": "center",
-              "backgroundColor": "#f5f5f5",
+              "backgroundColor": "#F1F1F4",
               "height": 2,
               "marginVertical": 0,
               "width": 912,
@@ -1425,7 +1425,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "flexBasis": 0,
                 "flexGrow": 0.9,
                 "flexShrink": 1,
@@ -1440,7 +1440,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 18,
                   "lineHeight": 22,
@@ -1531,7 +1531,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#c7c7cc",
+                  "borderColor": "#CBCDD2",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -1552,11 +1552,11 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#151515"
+                color="#161617"
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -1594,7 +1594,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#c7c7cc",
+                  "borderColor": "#CBCDD2",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -1615,11 +1615,11 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#151515"
+                color="#161617"
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -1657,7 +1657,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 Object {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#c7c7cc",
+                  "borderColor": "#CBCDD2",
                   "borderRadius": 40,
                   "borderWidth": 2,
                   "flexDirection": "row",
@@ -1678,11 +1678,11 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#151515"
+                color="#161617"
                 style={
                   Array [
                     Object {
-                      "color": "#151515",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
@@ -1722,7 +1722,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           Array [
             Object {
               "alignSelf": "center",
-              "backgroundColor": "#f5f5f5",
+              "backgroundColor": "#F1F1F4",
               "height": 2,
               "marginVertical": 0,
               "width": 912,
@@ -1753,7 +1753,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           style={
             Array [
               Object {
-                "color": "#151515",
+                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 18,
                 "lineHeight": 22,
@@ -1765,7 +1765,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 18,
                   "lineHeight": 22,
@@ -1799,7 +1799,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
@@ -1863,7 +1863,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                           "marginTop": -7,
                         },
                         Object {
-                          "backgroundColor": "#c7c7cc",
+                          "backgroundColor": "#CBCDD2",
                         },
                         Object {
                           "width": 0,
@@ -1919,7 +1919,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                           "marginTop": -7,
                         },
                         Object {
-                          "backgroundColor": "#c7c7cc",
+                          "backgroundColor": "#CBCDD2",
                         },
                         Object {
                           "width": 0,
@@ -2009,7 +2009,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                                 "borderRadius": 28,
                                 "elevation": 4,
                                 "height": 28,
-                                "shadowColor": "#151515",
+                                "shadowColor": "#161617",
                                 "shadowOpacity": 0.2,
                                 "shadowRadius": 4,
                                 "width": 28,
@@ -2103,7 +2103,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                                 "borderRadius": 28,
                                 "elevation": 4,
                                 "height": 28,
-                                "shadowColor": "#151515",
+                                "shadowColor": "#161617",
                                 "shadowOpacity": 0.2,
                                 "shadowRadius": 4,
                                 "width": 28,
@@ -2128,7 +2128,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           Array [
             Object {
               "alignSelf": "center",
-              "backgroundColor": "#f5f5f5",
+              "backgroundColor": "#F1F1F4",
               "height": 2,
               "marginVertical": 24,
               "width": 912,
@@ -2160,7 +2160,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -2175,7 +2175,7 @@ exports[`SearchFilter component should render correctly 1`] = `
               style={
                 Array [
                   Object {
-                    "color": "#151515",
+                    "color": "#161617",
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": 18,
                     "lineHeight": 22,
@@ -2232,7 +2232,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "backgroundColor": "#c7c7cc",
+                      "backgroundColor": "#CBCDD2",
                       "borderRadius": 16,
                       "height": 32,
                       "justifyContent": "center",
@@ -2252,7 +2252,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                       "borderRadius": 28,
                       "height": 28,
                       "marginLeft": 2,
-                      "shadowColor": "#151515",
+                      "shadowColor": "#161617",
                       "shadowOffset": Object {
                         "height": 2,
                         "width": 0,
@@ -2274,7 +2274,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           Array [
             Object {
               "alignSelf": "center",
-              "backgroundColor": "#f5f5f5",
+              "backgroundColor": "#F1F1F4",
               "height": 2,
               "marginVertical": 24,
               "width": 912,
@@ -2306,7 +2306,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -2321,7 +2321,7 @@ exports[`SearchFilter component should render correctly 1`] = `
               style={
                 Array [
                   Object {
-                    "color": "#151515",
+                    "color": "#161617",
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": 18,
                     "lineHeight": 22,
@@ -2378,7 +2378,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "backgroundColor": "#c7c7cc",
+                      "backgroundColor": "#CBCDD2",
                       "borderRadius": 16,
                       "height": 32,
                       "justifyContent": "center",
@@ -2398,7 +2398,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                       "borderRadius": 28,
                       "height": 28,
                       "marginLeft": 2,
-                      "shadowColor": "#151515",
+                      "shadowColor": "#161617",
                       "shadowOffset": Object {
                         "height": 2,
                         "width": 0,
@@ -2420,7 +2420,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           Array [
             Object {
               "alignSelf": "center",
-              "backgroundColor": "#f5f5f5",
+              "backgroundColor": "#F1F1F4",
               "height": 2,
               "marginVertical": 24,
               "width": 912,
@@ -2452,7 +2452,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -2467,7 +2467,7 @@ exports[`SearchFilter component should render correctly 1`] = `
               style={
                 Array [
                   Object {
-                    "color": "#151515",
+                    "color": "#161617",
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": 18,
                     "lineHeight": 22,
@@ -2524,7 +2524,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "backgroundColor": "#c7c7cc",
+                      "backgroundColor": "#CBCDD2",
                       "borderRadius": 16,
                       "height": 32,
                       "justifyContent": "center",
@@ -2544,7 +2544,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                       "borderRadius": 28,
                       "height": 28,
                       "marginLeft": 2,
-                      "shadowColor": "#151515",
+                      "shadowColor": "#161617",
                       "shadowOffset": Object {
                         "height": 2,
                         "width": 0,
@@ -2566,7 +2566,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           Array [
             Object {
               "alignSelf": "center",
-              "backgroundColor": "#f5f5f5",
+              "backgroundColor": "#F1F1F4",
               "height": 2,
               "marginVertical": 24,
               "width": 912,
@@ -2598,7 +2598,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -2613,7 +2613,7 @@ exports[`SearchFilter component should render correctly 1`] = `
               style={
                 Array [
                   Object {
-                    "color": "#151515",
+                    "color": "#161617",
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": 18,
                     "lineHeight": 22,
@@ -2670,7 +2670,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "backgroundColor": "#c7c7cc",
+                      "backgroundColor": "#CBCDD2",
                       "borderRadius": 16,
                       "height": 32,
                       "justifyContent": "center",
@@ -2690,7 +2690,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                       "borderRadius": 28,
                       "height": 28,
                       "marginLeft": 2,
-                      "shadowColor": "#151515",
+                      "shadowColor": "#161617",
                       "shadowOffset": Object {
                         "height": 2,
                         "width": 0,
@@ -2716,11 +2716,11 @@ exports[`SearchFilter component should render correctly 1`] = `
           }
         />
         <Text
-          color="#626262"
+          color="#696A6F"
           style={
             Array [
               Object {
-                "color": "#626262",
+                "color": "#696A6F",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 16,
@@ -2737,7 +2737,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           Array [
             Object {
               "alignSelf": "center",
-              "backgroundColor": "#f5f5f5",
+              "backgroundColor": "#F1F1F4",
               "height": 2,
               "marginVertical": 24,
               "width": 912,
@@ -2769,7 +2769,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -2784,7 +2784,7 @@ exports[`SearchFilter component should render correctly 1`] = `
               style={
                 Array [
                   Object {
-                    "color": "#151515",
+                    "color": "#161617",
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": 18,
                     "lineHeight": 22,
@@ -2841,7 +2841,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "backgroundColor": "#c7c7cc",
+                      "backgroundColor": "#CBCDD2",
                       "borderRadius": 16,
                       "height": 32,
                       "justifyContent": "center",
@@ -2861,7 +2861,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                       "borderRadius": 28,
                       "height": 28,
                       "marginLeft": 2,
-                      "shadowColor": "#151515",
+                      "shadowColor": "#161617",
                       "shadowOffset": Object {
                         "height": 2,
                         "width": 0,
@@ -2887,11 +2887,11 @@ exports[`SearchFilter component should render correctly 1`] = `
           }
         />
         <Text
-          color="#626262"
+          color="#696A6F"
           style={
             Array [
               Object {
-                "color": "#626262",
+                "color": "#696A6F",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 12,
                 "lineHeight": 16,
@@ -3122,7 +3122,7 @@ exports[`SearchFilter component should render correctly 1`] = `
       style={
         Object {
           "alignItems": "center",
-          "backgroundColor": "#f5f5f5",
+          "backgroundColor": "#F1F1F4",
           "borderRadius": 24,
           "borderWidth": 0,
           "flexDirection": "row",
@@ -3145,7 +3145,7 @@ exports[`SearchFilter component should render correctly 1`] = `
         style={
           Array [
             Object {
-              "color": "#626262",
+              "color": "#696A6F",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
@@ -3154,7 +3154,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             },
           ]
         }
-        textColor="#626262"
+        textColor="#696A6F"
       >
         Aucun résultat
       </Text>

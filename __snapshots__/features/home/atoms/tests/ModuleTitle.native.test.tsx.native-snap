@@ -11,12 +11,12 @@ exports[`ModuleTitle component should render correctly 1`] = `
   }
 >
   <Text
-    color="#151515"
+    color="#161617"
     numberOfLines={2}
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 20,
           "lineHeight": 24,

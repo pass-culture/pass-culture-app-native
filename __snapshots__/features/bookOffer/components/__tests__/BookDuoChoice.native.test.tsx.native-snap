@@ -6,7 +6,7 @@ Array [
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 18,
           "lineHeight": 22,
@@ -199,7 +199,7 @@ Array [
             Object {
               "alignItems": "center",
               "backgroundColor": "#ffffff",
-              "borderColor": "#626262",
+              "borderColor": "#696A6F",
               "borderRadius": 4,
               "borderStyle": "solid",
               "borderWidth": 1,
@@ -241,7 +241,7 @@ Array [
             }
           >
             <View
-              fill="#151515"
+              fill="#161617"
               height={28}
               width={28}
             >
@@ -250,7 +250,7 @@ Array [
               </Text>
             </View>
             <View
-              fill="#151515"
+              fill="#161617"
               height={28}
               width={28}
             >
@@ -260,11 +260,11 @@ Array [
             </View>
           </View>
           <Text
-            color="#151515"
+            color="#161617"
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
@@ -275,11 +275,11 @@ Array [
             Duo
           </Text>
           <Text
-            color="#151515"
+            color="#161617"
             style={
               Array [
                 Object {
-                  "color": "#151515",
+                  "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 16,

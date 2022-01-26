@@ -68,7 +68,7 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -86,7 +86,7 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
       Array [
         Object {
           "alignSelf": "center",
-          "backgroundColor": "#c7c7cc",
+          "backgroundColor": "#CBCDD2",
           "height": "92%",
           "marginHorizontal": 8,
           "width": 1,
@@ -119,7 +119,7 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
       }
     >
       <View
-        fill="#626262"
+        fill="#696A6F"
         height={32}
         testID="iconPrice"
         width={32}
@@ -143,7 +143,7 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,

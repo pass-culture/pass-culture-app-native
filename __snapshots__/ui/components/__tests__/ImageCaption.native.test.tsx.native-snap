@@ -7,7 +7,7 @@ exports[`ImageCaption component should render correctly 1`] = `
     Array [
       Object {
         "alignItems": "center",
-        "backgroundColor": "#151515",
+        "backgroundColor": "#161617",
         "borderBottomLeftRadius": 8,
         "borderBottomRightRadius": 8,
         "flexDirection": "row",

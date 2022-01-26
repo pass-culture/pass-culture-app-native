@@ -11,7 +11,7 @@ exports[`Categories component should match diff snapshot when new category is se
             style={
               Object {
                 \\"WebkitLineClamp\\": 2,
--               \\"color\\": \\"rgba(21,21,21,1.00)\\",
+-               \\"color\\": \\"rgba(22,22,23,1.00)\\",
 +               \\"color\\": \\"rgba(235,0,85,1.00)\\",
                 \\"fontFamily\\": \\"Montserrat-Bold\\",
                 \\"fontSize\\": \\"15px\\",
@@ -46,7 +46,7 @@ exports[`Categories component should match diff snapshot when new category is se
               Object {
                 \\"WebkitLineClamp\\": 2,
 -               \\"color\\": \\"rgba(235,0,85,1.00)\\",
-+               \\"color\\": \\"rgba(21,21,21,1.00)\\",
++               \\"color\\": \\"rgba(22,22,23,1.00)\\",
                 \\"fontFamily\\": \\"Montserrat-Bold\\",
                 \\"fontSize\\": \\"15px\\",
                 \\"lineHeight\\": \\"20px\\",
@@ -320,7 +320,7 @@ exports[`Categories component should render correctly 1`] = `
           style={
             Object {
               "WebkitLineClamp": 2,
-              "color": "rgba(21,21,21,1.00)",
+              "color": "rgba(22,22,23,1.00)",
               "fontFamily": "Montserrat-Bold",
               "fontSize": "15px",
               "lineHeight": "20px",
@@ -413,7 +413,7 @@ exports[`Categories component should render correctly 1`] = `
           style={
             Object {
               "WebkitLineClamp": 2,
-              "color": "rgba(21,21,21,1.00)",
+              "color": "rgba(22,22,23,1.00)",
               "fontFamily": "Montserrat-Bold",
               "fontSize": "15px",
               "lineHeight": "20px",
@@ -506,7 +506,7 @@ exports[`Categories component should render correctly 1`] = `
           style={
             Object {
               "WebkitLineClamp": 2,
-              "color": "rgba(21,21,21,1.00)",
+              "color": "rgba(22,22,23,1.00)",
               "fontFamily": "Montserrat-Bold",
               "fontSize": "15px",
               "lineHeight": "20px",
@@ -599,7 +599,7 @@ exports[`Categories component should render correctly 1`] = `
           style={
             Object {
               "WebkitLineClamp": 2,
-              "color": "rgba(21,21,21,1.00)",
+              "color": "rgba(22,22,23,1.00)",
               "fontFamily": "Montserrat-Bold",
               "fontSize": "15px",
               "lineHeight": "20px",
@@ -692,7 +692,7 @@ exports[`Categories component should render correctly 1`] = `
           style={
             Object {
               "WebkitLineClamp": 2,
-              "color": "rgba(21,21,21,1.00)",
+              "color": "rgba(22,22,23,1.00)",
               "fontFamily": "Montserrat-Bold",
               "fontSize": "15px",
               "lineHeight": "20px",
@@ -785,7 +785,7 @@ exports[`Categories component should render correctly 1`] = `
           style={
             Object {
               "WebkitLineClamp": 2,
-              "color": "rgba(21,21,21,1.00)",
+              "color": "rgba(22,22,23,1.00)",
               "fontFamily": "Montserrat-Bold",
               "fontSize": "15px",
               "lineHeight": "20px",
@@ -878,7 +878,7 @@ exports[`Categories component should render correctly 1`] = `
           style={
             Object {
               "WebkitLineClamp": 2,
-              "color": "rgba(21,21,21,1.00)",
+              "color": "rgba(22,22,23,1.00)",
               "fontFamily": "Montserrat-Bold",
               "fontSize": "15px",
               "lineHeight": "20px",
@@ -971,7 +971,7 @@ exports[`Categories component should render correctly 1`] = `
           style={
             Object {
               "WebkitLineClamp": 2,
-              "color": "rgba(21,21,21,1.00)",
+              "color": "rgba(22,22,23,1.00)",
               "fontFamily": "Montserrat-Bold",
               "fontSize": "15px",
               "lineHeight": "20px",
@@ -1064,7 +1064,7 @@ exports[`Categories component should render correctly 1`] = `
           style={
             Object {
               "WebkitLineClamp": 2,
-              "color": "rgba(21,21,21,1.00)",
+              "color": "rgba(22,22,23,1.00)",
               "fontFamily": "Montserrat-Bold",
               "fontSize": "15px",
               "lineHeight": "20px",
@@ -1157,7 +1157,7 @@ exports[`Categories component should render correctly 1`] = `
           style={
             Object {
               "WebkitLineClamp": 2,
-              "color": "rgba(21,21,21,1.00)",
+              "color": "rgba(22,22,23,1.00)",
               "fontFamily": "Montserrat-Bold",
               "fontSize": "15px",
               "lineHeight": "20px",
@@ -1250,7 +1250,7 @@ exports[`Categories component should render correctly 1`] = `
           style={
             Object {
               "WebkitLineClamp": 2,
-              "color": "rgba(21,21,21,1.00)",
+              "color": "rgba(22,22,23,1.00)",
               "fontFamily": "Montserrat-Bold",
               "fontSize": "15px",
               "lineHeight": "20px",
@@ -1343,7 +1343,7 @@ exports[`Categories component should render correctly 1`] = `
           style={
             Object {
               "WebkitLineClamp": 2,
-              "color": "rgba(21,21,21,1.00)",
+              "color": "rgba(22,22,23,1.00)",
               "fontFamily": "Montserrat-Bold",
               "fontSize": "15px",
               "lineHeight": "20px",

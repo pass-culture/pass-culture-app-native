@@ -43,6 +43,6 @@ describe('CreditCeiling', () => {
       />
     )
     const progressBar = getByTestId('progress-bar')
-    expect(progressBar.style.backgroundColor).toBe('rgb(98, 98, 98)')
+    expect(progressBar.style.backgroundColor).toBe('rgb(105, 106, 111)')
   })
 })

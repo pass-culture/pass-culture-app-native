@@ -59,7 +59,7 @@ exports[`<DotComponent /> should render correctly 1`] = `
   testID="button"
 >
   <View
-    borderColor="#626262"
+    borderColor="#696A6F"
     fillColor="transparent"
     height={8}
     testID="dot-icon"

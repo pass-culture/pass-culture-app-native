@@ -95,7 +95,7 @@ exports[`<AccountCreated /> should render correctly 1`] = `
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 24,
             "lineHeight": 28,

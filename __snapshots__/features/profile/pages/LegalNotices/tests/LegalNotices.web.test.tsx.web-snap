@@ -49,7 +49,7 @@ Object {
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
                 dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
               >
                 Conditions Générales d’Utilisation
               </div>
@@ -62,7 +62,7 @@ Object {
         </div>
         <div
           class="css-view-1dbjc4n"
-          style="background-color: rgb(245, 245, 245); height: 1px; width: 100%;"
+          style="background-color: rgb(241, 241, 244); height: 1px; width: 100%;"
         />
         <div
           aria-label="Charte de protection des données personnelles"
@@ -96,7 +96,7 @@ Object {
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
                 dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
               >
                 Charte de protection des données personnelles
               </div>
@@ -109,7 +109,7 @@ Object {
         </div>
         <div
           class="css-view-1dbjc4n"
-          style="background-color: rgb(245, 245, 245); height: 1px; width: 100%;"
+          style="background-color: rgb(241, 241, 244); height: 1px; width: 100%;"
         />
         <div
           aria-label="Suppression du compte"
@@ -143,7 +143,7 @@ Object {
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
                 dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
               >
                 Suppression du compte
               </div>
@@ -259,7 +259,7 @@ Object {
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
               dir="auto"
-              style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+              style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
             >
               Conditions Générales d’Utilisation
             </div>
@@ -272,7 +272,7 @@ Object {
       </div>
       <div
         class="css-view-1dbjc4n"
-        style="background-color: rgb(245, 245, 245); height: 1px; width: 100%;"
+        style="background-color: rgb(241, 241, 244); height: 1px; width: 100%;"
       />
       <div
         aria-label="Charte de protection des données personnelles"
@@ -306,7 +306,7 @@ Object {
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
               dir="auto"
-              style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+              style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
             >
               Charte de protection des données personnelles
             </div>
@@ -319,7 +319,7 @@ Object {
       </div>
       <div
         class="css-view-1dbjc4n"
-        style="background-color: rgb(245, 245, 245); height: 1px; width: 100%;"
+        style="background-color: rgb(241, 241, 244); height: 1px; width: 100%;"
       />
       <div
         aria-label="Suppression du compte"
@@ -353,7 +353,7 @@ Object {
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
               dir="auto"
-              style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+              style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
             >
               Suppression du compte
             </div>

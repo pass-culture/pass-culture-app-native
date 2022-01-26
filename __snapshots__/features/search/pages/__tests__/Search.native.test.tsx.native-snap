@@ -61,7 +61,7 @@ exports[`Search component should render correctly 1`] = `
     }
   >
     <View
-      borderColor="#c7c7cc"
+      borderColor="#CBCDD2"
       height="tall"
       isInputDisabled={false}
       style={
@@ -69,7 +69,7 @@ exports[`Search component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "backgroundColor": "#ffffff",
-            "borderColor": "#c7c7cc",
+            "borderColor": "#CBCDD2",
             "borderRadius": 22,
             "borderStyle": "solid",
             "borderWidth": 1,
@@ -79,7 +79,7 @@ exports[`Search component should render correctly 1`] = `
             "paddingLeft": 16,
             "paddingRight": 16,
             "paddingTop": 4,
-            "shadowColor": "#151515",
+            "shadowColor": "#161617",
             "shadowOffset": Object {
               "height": 2,
               "width": 0,
@@ -131,13 +131,13 @@ exports[`Search component should render correctly 1`] = `
         onFocus={[Function]}
         onSubmitEditing={[Function]}
         placeholder="Titre, artiste, lieu..."
-        placeholderTextColor="#626262"
+        placeholderTextColor="#696A6F"
         returnKeyType="search"
-        selectionColor="#626262"
+        selectionColor="#696A6F"
         style={
           Array [
             Object {
-              "color": "#151515",
+              "color": "#161617",
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
@@ -219,11 +219,11 @@ exports[`Search component should render correctly 1`] = `
           }
         >
           <Text
-            color="#626262"
+            color="#696A6F"
             style={
               Array [
                 Object {
-                  "color": "#626262",
+                  "color": "#696A6F",
                   "fontFamily": "Montserrat-Regular",
                   "fontSize": 15,
                   "lineHeight": 20,
@@ -286,7 +286,7 @@ exports[`Search component should render correctly 1`] = `
               style={
                 Array [
                   Object {
-                    "color": "#151515",
+                    "color": "#161617",
                     "flexShrink": 1,
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 20,
@@ -318,7 +318,7 @@ exports[`Search component should render correctly 1`] = `
         style={
           Array [
             Object {
-              "backgroundColor": "#f5f5f5",
+              "backgroundColor": "#F1F1F4",
               "height": 2,
               "marginVertical": 32,
               "width": 912,
@@ -355,11 +355,11 @@ exports[`Search component should render correctly 1`] = `
           }
         >
           <Text
-            color="#626262"
+            color="#696A6F"
             style={
               Array [
                 Object {
-                  "color": "#626262",
+                  "color": "#696A6F",
                   "fontFamily": "Montserrat-Regular",
                   "fontSize": 15,
                   "lineHeight": 20,
@@ -422,7 +422,7 @@ exports[`Search component should render correctly 1`] = `
               style={
                 Array [
                   Object {
-                    "color": "#151515",
+                    "color": "#161617",
                     "flexShrink": 1,
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 20,

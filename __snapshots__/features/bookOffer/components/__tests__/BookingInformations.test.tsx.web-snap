@@ -44,7 +44,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -66,7 +66,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(98,98,98,1.00)",
+          "color": "rgba(105,106,111,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -118,7 +118,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -140,7 +140,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(98,98,98,1.00)",
+          "color": "rgba(105,106,111,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -192,7 +192,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -214,7 +214,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(98,98,98,1.00)",
+          "color": "rgba(105,106,111,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -271,7 +271,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -293,7 +293,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(98,98,98,1.00)",
+          "color": "rgba(105,106,111,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -345,7 +345,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -367,7 +367,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(98,98,98,1.00)",
+          "color": "rgba(105,106,111,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -422,7 +422,7 @@ Array [
           "WebkitAlignItems": "center",
           "WebkitBoxAlign": "center",
           "alignItems": "center",
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "fontFamily": "Montserrat-Regular",
           "fontSize": "15px",
           "lineHeight": "20px",
@@ -435,7 +435,7 @@ Array [
         className="css-text-901oao css-textHasAncestor-16my406"
         style={
           Object {
-            "color": "rgba(21,21,21,1.00)",
+            "color": "rgba(22,22,23,1.00)",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": "12px",
             "lineHeight": "16px",
@@ -458,7 +458,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(98,98,98,1.00)",
+          "color": "rgba(105,106,111,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -510,7 +510,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -532,7 +532,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(98,98,98,1.00)",
+          "color": "rgba(105,106,111,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -589,7 +589,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -611,7 +611,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(98,98,98,1.00)",
+          "color": "rgba(105,106,111,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -666,7 +666,7 @@ Array [
           "WebkitAlignItems": "center",
           "WebkitBoxAlign": "center",
           "alignItems": "center",
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "fontFamily": "Montserrat-Regular",
           "fontSize": "15px",
           "lineHeight": "20px",
@@ -679,7 +679,7 @@ Array [
         className="css-text-901oao css-textHasAncestor-16my406"
         style={
           Object {
-            "color": "rgba(21,21,21,1.00)",
+            "color": "rgba(22,22,23,1.00)",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": "12px",
             "lineHeight": "16px",
@@ -702,7 +702,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(98,98,98,1.00)",
+          "color": "rgba(105,106,111,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -754,7 +754,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -776,7 +776,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(98,98,98,1.00)",
+          "color": "rgba(105,106,111,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -833,7 +833,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -855,7 +855,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(98,98,98,1.00)",
+          "color": "rgba(105,106,111,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -907,7 +907,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -929,7 +929,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(98,98,98,1.00)",
+          "color": "rgba(105,106,111,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -984,7 +984,7 @@ Array [
           "WebkitAlignItems": "center",
           "WebkitBoxAlign": "center",
           "alignItems": "center",
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "fontFamily": "Montserrat-Regular",
           "fontSize": "15px",
           "lineHeight": "20px",
@@ -997,7 +997,7 @@ Array [
         className="css-text-901oao css-textHasAncestor-16my406"
         style={
           Object {
-            "color": "rgba(21,21,21,1.00)",
+            "color": "rgba(22,22,23,1.00)",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": "12px",
             "lineHeight": "16px",
@@ -1020,7 +1020,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(98,98,98,1.00)",
+          "color": "rgba(105,106,111,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -1072,7 +1072,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -1094,7 +1094,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(98,98,98,1.00)",
+          "color": "rgba(105,106,111,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -1151,7 +1151,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -1173,7 +1173,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(98,98,98,1.00)",
+          "color": "rgba(105,106,111,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -1225,7 +1225,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -1247,7 +1247,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(98,98,98,1.00)",
+          "color": "rgba(105,106,111,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -1304,7 +1304,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -1326,7 +1326,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(98,98,98,1.00)",
+          "color": "rgba(105,106,111,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -1378,7 +1378,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -1400,7 +1400,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(98,98,98,1.00)",
+          "color": "rgba(105,106,111,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -1455,7 +1455,7 @@ Array [
           "WebkitAlignItems": "center",
           "WebkitBoxAlign": "center",
           "alignItems": "center",
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "fontFamily": "Montserrat-Regular",
           "fontSize": "15px",
           "lineHeight": "20px",
@@ -1468,7 +1468,7 @@ Array [
         className="css-text-901oao css-textHasAncestor-16my406"
         style={
           Object {
-            "color": "rgba(21,21,21,1.00)",
+            "color": "rgba(22,22,23,1.00)",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": "12px",
             "lineHeight": "16px",
@@ -1491,7 +1491,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(98,98,98,1.00)",
+          "color": "rgba(105,106,111,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -1543,7 +1543,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(21,21,21,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",
@@ -1565,7 +1565,7 @@ Array [
       dir="auto"
       style={
         Object {
-          "color": "rgba(98,98,98,1.00)",
+          "color": "rgba(105,106,111,1.00)",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": "12px",
           "lineHeight": "16px",

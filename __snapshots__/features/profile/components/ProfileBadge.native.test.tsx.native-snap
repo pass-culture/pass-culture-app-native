@@ -6,7 +6,7 @@ exports[`ProfileBadge should not show CTA if no link is provided 1`] = `
     Array [
       Object {
         "alignItems": "center",
-        "backgroundColor": "#f5f5f5",
+        "backgroundColor": "#F1F1F4",
         "borderRadius": 6,
         "flexDirection": "row",
         "justifyContent": "space-between",
@@ -31,11 +31,11 @@ exports[`ProfileBadge should not show CTA if no link is provided 1`] = `
     }
   >
     <Text
-      color="#151515"
+      color="#161617"
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -55,7 +55,7 @@ exports[`ProfileBadge should render component correctly if icon is provided 1`] 
     Array [
       Object {
         "alignItems": "center",
-        "backgroundColor": "#f5f5f5",
+        "backgroundColor": "#F1F1F4",
         "borderRadius": 6,
         "flexDirection": "row",
         "justifyContent": "space-between",
@@ -98,11 +98,11 @@ exports[`ProfileBadge should render component correctly if icon is provided 1`] 
     }
   >
     <Text
-      color="#151515"
+      color="#161617"
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -122,7 +122,7 @@ exports[`ProfileBadge should render component correctly if no icon is provided 1
     Array [
       Object {
         "alignItems": "center",
-        "backgroundColor": "#f5f5f5",
+        "backgroundColor": "#F1F1F4",
         "borderRadius": 6,
         "flexDirection": "row",
         "justifyContent": "space-between",
@@ -147,11 +147,11 @@ exports[`ProfileBadge should render component correctly if no icon is provided 1
     }
   >
     <Text
-      color="#151515"
+      color="#161617"
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -171,7 +171,7 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
     Array [
       Object {
         "alignItems": "center",
-        "backgroundColor": "#f5f5f5",
+        "backgroundColor": "#F1F1F4",
         "borderRadius": 6,
         "flexDirection": "row",
         "justifyContent": "space-between",
@@ -196,11 +196,11 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
     }
   >
     <Text
-      color="#626262"
+      color="#696A6F"
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,
@@ -270,7 +270,7 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
         style={
           Array [
             Object {
-              "color": "#151515",
+              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 12,
               "lineHeight": 20,
@@ -279,7 +279,7 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
             },
           ]
         }
-        textColor="#151515"
+        textColor="#161617"
         textSize={12}
       >
         Tu peux cliquer ici
@@ -295,7 +295,7 @@ exports[`ProfileBadge should show neither CTA Icon nor CTA message if no CTA mes
     Array [
       Object {
         "alignItems": "center",
-        "backgroundColor": "#f5f5f5",
+        "backgroundColor": "#F1F1F4",
         "borderRadius": 6,
         "flexDirection": "row",
         "justifyContent": "space-between",
@@ -320,11 +320,11 @@ exports[`ProfileBadge should show neither CTA Icon nor CTA message if no CTA mes
     }
   >
     <Text
-      color="#151515"
+      color="#161617"
       style={
         Array [
           Object {
-            "color": "#151515",
+            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 16,

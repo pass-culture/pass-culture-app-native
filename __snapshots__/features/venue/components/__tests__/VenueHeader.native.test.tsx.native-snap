@@ -87,7 +87,7 @@ exports[`<VenueHeader /> should render correctly 1`] = `
             "alignItems": "center",
             "aspectRatio": 1,
             "backgroundColor": "rgba(255, 255, 255, 1)",
-            "borderColor": "rgba(245, 245, 245, 1)",
+            "borderColor": "rgba(241, 241, 244, 1)",
             "borderRadius": 40,
             "borderStyle": "solid",
             "borderWidth": 1,
@@ -234,7 +234,7 @@ exports[`<VenueHeader /> should render correctly 1`] = `
             "alignItems": "center",
             "aspectRatio": 1,
             "backgroundColor": "rgba(255, 255, 255, 1)",
-            "borderColor": "rgba(245, 245, 245, 1)",
+            "borderColor": "rgba(241, 241, 244, 1)",
             "borderRadius": 40,
             "borderStyle": "solid",
             "borderWidth": 1,
@@ -269,7 +269,7 @@ exports[`<VenueHeader /> should render correctly 1`] = `
             testID="initial-icon-container"
           >
             <View
-              fill="#151515"
+              fill="#161617"
               height={24}
               testID="icon-share"
               width={24}

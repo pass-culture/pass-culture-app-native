@@ -24,7 +24,7 @@ Object {
           <div
             class="css-text-901oao"
             dir="auto"
-            style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
           >
             Saisis ta nouvelle adresse e-mail et ton mot de passe. Tu vas recevoir un e-mail sur ta nouvelle adresse avec un lien de confirmation valable 24h. Tu ne peux modifier ton adresse e-mail qu'une fois par jour.
           </div>
@@ -34,7 +34,7 @@ Object {
           />
           <div
             class="css-view-1dbjc4n"
-            style="background-color: rgb(245, 245, 245); height: 1px; width: 100%;"
+            style="background-color: rgb(241, 241, 244); height: 1px; width: 100%;"
           />
           <div
             class="css-view-1dbjc4n"
@@ -66,7 +66,7 @@ Object {
                   <div
                     class="css-text-901oao"
                     dir="auto"
-                    style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                   >
                     Obligatoire
                   </div>
@@ -77,19 +77,19 @@ Object {
                 />
                 <div
                   class="css-view-1dbjc4n"
-                  style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+                  style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
                 >
                   <input
                     autocapitalize="none"
                     autocomplete="email"
                     autocorrect="on"
-                    class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
+                    class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
                     dir="auto"
                     id="testUuidV4"
                     maxlength="120"
                     placeholder="tonadresse@email.com"
                     spellcheck="true"
-                    style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
+                    style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
                     type="email"
                     value=""
                   />
@@ -116,7 +116,7 @@ Object {
                   <div
                     class="css-text-901oao"
                     dir="auto"
-                    style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                   >
                     Obligatoire
                   </div>
@@ -127,20 +127,20 @@ Object {
                 />
                 <div
                   class="css-view-1dbjc4n"
-                  style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+                  style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
                 >
                   <input
                     aria-label="Mot de passe"
                     autocapitalize="sentences"
                     autocomplete="on"
                     autocorrect="on"
-                    class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
+                    class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
                     data-testid="Mot de passe"
                     dir="auto"
                     id="testUuidV4"
                     placeholder="Ton mot de passe"
                     spellcheck="true"
-                    style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
+                    style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
                     type="password"
                     value=""
                   />
@@ -176,13 +176,13 @@ Object {
                   aria-label="Enregistrer"
                   class="css-view-1dbjc4n"
                   data-testid="Enregistrer"
-                  style="align-items: center; background-color: rgb(245, 245, 245); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                  style="align-items: center; background-color: rgb(241, 241, 244); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
                   tabindex="0"
                 >
                   <div
                     class="css-text-901oao css-textMultiLine-cens5h"
                     dir="auto"
-                    style="color: rgb(98, 98, 98); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
+                    style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
                   >
                     Enregistrer
                   </div>
@@ -275,7 +275,7 @@ Object {
         <div
           class="css-text-901oao"
           dir="auto"
-          style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
         >
           Saisis ta nouvelle adresse e-mail et ton mot de passe. Tu vas recevoir un e-mail sur ta nouvelle adresse avec un lien de confirmation valable 24h. Tu ne peux modifier ton adresse e-mail qu'une fois par jour.
         </div>
@@ -285,7 +285,7 @@ Object {
         />
         <div
           class="css-view-1dbjc4n"
-          style="background-color: rgb(245, 245, 245); height: 1px; width: 100%;"
+          style="background-color: rgb(241, 241, 244); height: 1px; width: 100%;"
         />
         <div
           class="css-view-1dbjc4n"
@@ -317,7 +317,7 @@ Object {
                 <div
                   class="css-text-901oao"
                   dir="auto"
-                  style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                 >
                   Obligatoire
                 </div>
@@ -328,19 +328,19 @@ Object {
               />
               <div
                 class="css-view-1dbjc4n"
-                style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+                style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
               >
                 <input
                   autocapitalize="none"
                   autocomplete="email"
                   autocorrect="on"
-                  class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
+                  class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
                   dir="auto"
                   id="testUuidV4"
                   maxlength="120"
                   placeholder="tonadresse@email.com"
                   spellcheck="true"
-                  style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
+                  style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
                   type="email"
                   value=""
                 />
@@ -367,7 +367,7 @@ Object {
                 <div
                   class="css-text-901oao"
                   dir="auto"
-                  style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                 >
                   Obligatoire
                 </div>
@@ -378,20 +378,20 @@ Object {
               />
               <div
                 class="css-view-1dbjc4n"
-                style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+                style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
               >
                 <input
                   aria-label="Mot de passe"
                   autocapitalize="sentences"
                   autocomplete="on"
                   autocorrect="on"
-                  class="css-textinput-11aywtz r-placeholderTextColor-18k68vc"
+                  class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
                   data-testid="Mot de passe"
                   dir="auto"
                   id="testUuidV4"
                   placeholder="Ton mot de passe"
                   spellcheck="true"
-                  style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
+                  style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
                   type="password"
                   value=""
                 />
@@ -427,13 +427,13 @@ Object {
                 aria-label="Enregistrer"
                 class="css-view-1dbjc4n"
                 data-testid="Enregistrer"
-                style="align-items: center; background-color: rgb(245, 245, 245); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                style="align-items: center; background-color: rgb(241, 241, 244); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
                 tabindex="0"
               >
                 <div
                   class="css-text-901oao css-textMultiLine-cens5h"
                   dir="auto"
-                  style="color: rgb(98, 98, 98); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
+                  style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
                 >
                   Enregistrer
                 </div>

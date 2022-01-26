@@ -17,7 +17,7 @@ exports[`VenueCaption component should render correctly 1`] = `
     style={
       Array [
         Object {
-          "color": "#151515",
+          "color": "#161617",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
           "lineHeight": 16,
@@ -38,7 +38,7 @@ exports[`VenueCaption component should render correctly 1`] = `
     }
   >
     <View
-      fill="#626262"
+      fill="#696A6F"
       height={16}
       width={16}
     >
@@ -57,12 +57,12 @@ exports[`VenueCaption component should render correctly 1`] = `
       }
     />
     <Text
-      color="#626262"
+      color="#696A6F"
       numberOfLines={1}
       style={
         Array [
           Object {
-            "color": "#626262",
+            "color": "#696A6F",
             "flexShrink": 1,
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
@@ -75,11 +75,11 @@ exports[`VenueCaption component should render correctly 1`] = `
     </Text>
   </View>
   <Text
-    color="#626262"
+    color="#696A6F"
     style={
       Array [
         Object {
-          "color": "#626262",
+          "color": "#696A6F",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 12,
           "lineHeight": 16,

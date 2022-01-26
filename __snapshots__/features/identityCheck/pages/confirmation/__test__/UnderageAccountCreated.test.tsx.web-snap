@@ -94,7 +94,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
     dir="auto"
     style={
       Object {
-        "color": "rgba(21,21,21,1.00)",
+        "color": "rgba(22,22,23,1.00)",
         "fontFamily": "Montserrat-Black",
         "fontSize": "24px",
         "lineHeight": "36px",
@@ -126,7 +126,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
     dir="auto"
     style={
       Object {
-        "color": "rgba(21,21,21,1.00)",
+        "color": "rgba(22,22,23,1.00)",
         "fontFamily": "Montserrat-Medium",
         "fontSize": "18px",
         "lineHeight": "22px",
@@ -218,15 +218,15 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
             "WebkitFlexDirection": "row",
             "WebkitFlexGrow": 1,
             "WebkitFlexShrink": 1,
-            "borderBottomColor": "rgba(199,199,204,1.00)",
+            "borderBottomColor": "rgba(203,205,210,1.00)",
             "borderBottomLeftRadius": "20px",
             "borderBottomRightRadius": "20px",
             "borderBottomWidth": "2px",
-            "borderLeftColor": "rgba(199,199,204,1.00)",
+            "borderLeftColor": "rgba(203,205,210,1.00)",
             "borderLeftWidth": "2px",
-            "borderRightColor": "rgba(199,199,204,1.00)",
+            "borderRightColor": "rgba(203,205,210,1.00)",
             "borderRightWidth": "2px",
-            "borderTopColor": "rgba(199,199,204,1.00)",
+            "borderTopColor": "rgba(203,205,210,1.00)",
             "borderTopLeftRadius": "20px",
             "borderTopRightRadius": "20px",
             "borderTopWidth": "2px",
@@ -300,7 +300,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
     dir="auto"
     style={
       Object {
-        "color": "rgba(21,21,21,1.00)",
+        "color": "rgba(22,22,23,1.00)",
         "fontFamily": "Montserrat-Regular",
         "fontSize": "15px",
         "lineHeight": "20px",

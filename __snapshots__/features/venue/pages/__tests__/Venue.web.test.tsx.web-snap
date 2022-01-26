@@ -138,7 +138,7 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="image-container"
-                style="border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; bottom: 0px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); width: 216px;"
+                style="border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; bottom: 0px; box-shadow: 0px 8px 12px rgba(22,22,23,1.00); width: 216px;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -205,7 +205,7 @@ Object {
                 <div
                   class="css-text-901oao css-textMultiLine-cens5h"
                   dir="auto"
-                  style="color: rgb(21, 21, 21); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-transform: capitalize;"
+                  style="color: rgb(22, 22, 23); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-transform: capitalize;"
                 >
                   1 boulevard Poissonnière, 75000 Paris
                 </div>
@@ -218,7 +218,7 @@ Object {
                 class="css-text-901oao css-textMultiLine-cens5h"
                 data-testid="venueTitle"
                 dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px; text-align: center;"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px; text-align: center;"
               >
                 Le Petit Rintintin 1
               </div>
@@ -262,14 +262,14 @@ Object {
                   class="css-text-901oao"
                   data-testid="caption-undefined"
                   dir="auto"
-                  style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
                 >
                   Autre type de lieu
                 </div>
               </div>
               <div
                 class="css-view-1dbjc4n"
-                style="align-self: center; background-color: rgb(199, 199, 204); height: 92%; margin-right: 8px; margin-left: 8px; width: 1px;"
+                style="align-self: center; background-color: rgb(203, 205, 210); height: 92%; margin-right: 8px; margin-left: 8px; width: 1px;"
               />
               <div
                 aria-label="Activer la localisation"
@@ -305,7 +305,7 @@ Object {
                     class="css-text-901oao"
                     data-testid="caption-undefined"
                     dir="auto"
-                    style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
+                    style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
                   >
                     Géolocalisation désactivée
                   </div>
@@ -333,12 +333,12 @@ Object {
                   <div
                     class="css-text-901oao"
                     dir="auto"
-                    style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; width: 100%;"
+                    style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; width: 100%;"
                   >
                      
                     <span
                       class="css-text-901oao css-textHasAncestor-16my406"
-                      style="color: rgb(21, 21, 21); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                      style="color: rgb(22, 22, 23); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -370,7 +370,7 @@ Object {
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="background-color: rgb(245, 245, 245); height: 8px;"
+              style="background-color: rgb(241, 241, 244); height: 8px;"
             />
             <div
               class="css-view-1dbjc4n"
@@ -388,7 +388,7 @@ Object {
                   class="css-text-901oao css-textMultiLine-cens5h"
                   data-testid="playlistTitle"
                   dir="auto"
-                  style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
                 >
                   Offres
                 </div>
@@ -398,7 +398,7 @@ Object {
                 />
                 <div
                   class="css-view-1dbjc4n"
-                  style="background-color: rgb(199, 199, 204); height: 20px; width: 1px;"
+                  style="background-color: rgb(203, 205, 210); height: 20px; width: 1px;"
                 />
                 <div
                   class="css-view-1dbjc4n"
@@ -476,7 +476,7 @@ Object {
                         >
                           <div
                             class="css-view-1dbjc4n"
-                            style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                            style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
                           >
                             <div
                               class="css-view-1dbjc4n"
@@ -500,14 +500,14 @@ Object {
                           <div
                             class="css-text-901oao css-textMultiLine-cens5h"
                             dir="auto"
-                            style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                           >
                             Titane - VF
                           </div>
                           <div
                             class="css-text-901oao css-textMultiLine-cens5h"
                             dir="auto"
-                            style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                           >
                             Dès le 18 août 2021
                           </div>
@@ -515,7 +515,7 @@ Object {
                             class="css-text-901oao"
                             data-testid="priceIsDuo"
                             dir="auto"
-                            style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                           >
                             Gratuit
                           </div>
@@ -543,7 +543,7 @@ Object {
                         >
                           <div
                             class="css-view-1dbjc4n"
-                            style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                            style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
                           >
                             <div
                               class="css-view-1dbjc4n"
@@ -567,14 +567,14 @@ Object {
                           <div
                             class="css-text-901oao css-textMultiLine-cens5h"
                             dir="auto"
-                            style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                           >
                             Bac Nord - VF
                           </div>
                           <div
                             class="css-text-901oao css-textMultiLine-cens5h"
                             dir="auto"
-                            style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                           >
                             Dès le 18 août 2021
                           </div>
@@ -582,7 +582,7 @@ Object {
                             class="css-text-901oao"
                             data-testid="priceIsDuo"
                             dir="auto"
-                            style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                           >
                             Gratuit
                           </div>
@@ -610,7 +610,7 @@ Object {
                         >
                           <div
                             class="css-view-1dbjc4n"
-                            style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                            style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
                           >
                             <div
                               class="css-view-1dbjc4n"
@@ -634,14 +634,14 @@ Object {
                           <div
                             class="css-text-901oao css-textMultiLine-cens5h"
                             dir="auto"
-                            style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                           >
                             Black Widow - VF
                           </div>
                           <div
                             class="css-text-901oao css-textMultiLine-cens5h"
                             dir="auto"
-                            style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                           >
                             Dès le 18 août 2021
                           </div>
@@ -649,7 +649,7 @@ Object {
                             class="css-text-901oao"
                             data-testid="priceIsDuo"
                             dir="auto"
-                            style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                           >
                             Gratuit
                           </div>
@@ -696,7 +696,7 @@ Object {
             />
             <div
               class="css-view-1dbjc4n"
-              style="background-color: rgb(245, 245, 245); height: 8px;"
+              style="background-color: rgb(241, 241, 244); height: 8px;"
             />
             <div
               class="css-view-1dbjc4n"
@@ -709,7 +709,7 @@ Object {
               <div
                 class="css-text-901oao"
                 dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
               >
                 Où ?
               </div>
@@ -720,7 +720,7 @@ Object {
               <div
                 class="css-text-901oao"
                 dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
               >
                 Adresse
               </div>
@@ -731,7 +731,7 @@ Object {
               <div
                 class="css-text-901oao"
                 dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-transform: capitalize;"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-transform: capitalize;"
               >
                 1 boulevard Poissonnière, 75000 Paris
               </div>
@@ -741,7 +741,7 @@ Object {
               />
               <div
                 class="css-view-1dbjc4n"
-                style="background-color: rgb(199, 199, 204); height: 1px;"
+                style="background-color: rgb(203, 205, 210); height: 1px;"
               />
               <div
                 class="css-view-1dbjc4n"
@@ -771,7 +771,7 @@ Object {
                   <div
                     class="css-text-901oao css-textMultiLine-cens5h"
                     dir="auto"
-                    style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 12px; max-width: 100%;"
+                    style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 12px; max-width: 100%;"
                   >
                     Voir l'itinéraire
                   </div>
@@ -784,7 +784,7 @@ Object {
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="background-color: rgb(245, 245, 245); height: 8px;"
+              style="background-color: rgb(241, 241, 244); height: 8px;"
             />
             <div
               aria-label="Ouvrir la section"
@@ -795,7 +795,7 @@ Object {
               <div
                 class="css-text-901oao"
                 dir="auto"
-                style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
               >
                 Modalités de retrait
               </div>
@@ -829,12 +829,12 @@ Object {
                 <div
                   class="css-text-901oao"
                   dir="auto"
-                  style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                 >
                   How to withdraw, 
                   <span
                     class="css-text-901oao css-textHasAncestor-16my406"
-                    style="color: rgb(21, 21, 21); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                    style="color: rgb(22, 22, 23); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -864,7 +864,7 @@ Object {
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="background-color: rgb(245, 245, 245); height: 8px;"
+              style="background-color: rgb(241, 241, 244); height: 8px;"
             />
             <div
               aria-label="Ouvrir la section"
@@ -875,7 +875,7 @@ Object {
               <div
                 class="css-text-901oao"
                 dir="auto"
-                style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
               >
                 Accessibilité
               </div>
@@ -918,7 +918,7 @@ Object {
                     <div
                       class="css-view-1dbjc4n"
                       data-testid="accessibilityFrame"
-                      style="align-items: center; border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                      style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -967,7 +967,7 @@ Object {
                       <div
                         class="css-text-901oao"
                         dir="auto"
-                        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                        style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                       >
                         Handicap visuel
                       </div>
@@ -981,7 +981,7 @@ Object {
                     <div
                       class="css-view-1dbjc4n"
                       data-testid="accessibilityFrame"
-                      style="align-items: center; border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                      style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -1030,7 +1030,7 @@ Object {
                       <div
                         class="css-text-901oao"
                         dir="auto"
-                        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                        style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                       >
                         Handicap psychique ou cognitif
                       </div>
@@ -1044,7 +1044,7 @@ Object {
                     <div
                       class="css-view-1dbjc4n"
                       data-testid="accessibilityFrame"
-                      style="align-items: center; border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                      style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -1093,7 +1093,7 @@ Object {
                       <div
                         class="css-text-901oao"
                         dir="auto"
-                        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                        style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                       >
                         Handicap moteur
                       </div>
@@ -1107,7 +1107,7 @@ Object {
                     <div
                       class="css-view-1dbjc4n"
                       data-testid="accessibilityFrame"
-                      style="align-items: center; border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                      style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -1156,7 +1156,7 @@ Object {
                       <div
                         class="css-text-901oao"
                         dir="auto"
-                        style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                        style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                       >
                         Handicap auditif
                       </div>
@@ -1167,7 +1167,7 @@ Object {
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="background-color: rgb(245, 245, 245); height: 8px;"
+              style="background-color: rgb(241, 241, 244); height: 8px;"
             />
             <div
               aria-label="Ouvrir la section"
@@ -1178,7 +1178,7 @@ Object {
               <div
                 class="css-text-901oao"
                 dir="auto"
-                style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
               >
                 Contact
               </div>
@@ -1212,21 +1212,21 @@ Object {
                 <div
                   class="css-text-901oao"
                   dir="auto"
-                  style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                 >
                   contact@venue.com
                 </div>
                 <div
                   class="css-text-901oao"
                   dir="auto"
-                  style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                 >
                   +33102030405
                 </div>
                 <div
                   class="css-text-901oao"
                   dir="auto"
-                  style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                 >
                   https://my@website.com
                 </div>
@@ -1234,7 +1234,7 @@ Object {
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="background-color: rgb(245, 245, 245); height: 8px;"
+              style="background-color: rgb(241, 241, 244); height: 8px;"
             />
             <div
               class="css-view-1dbjc4n"
@@ -1272,7 +1272,7 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="headerIconRoundContainer"
-                style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
+                style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(241,241,244,1.00); border-right-color: rgba(241,241,244,1.00); border-bottom-color: rgba(241,241,244,1.00); border-left-color: rgba(241,241,244,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -1346,7 +1346,7 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="headerIconRoundContainer"
-                style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
+                style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(241,241,244,1.00); border-right-color: rgba(241,241,244,1.00); border-bottom-color: rgba(241,241,244,1.00); border-left-color: rgba(241,241,244,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -1536,7 +1536,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="image-container"
-              style="border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; bottom: 0px; box-shadow: 0px 8px 12px rgba(21,21,21,1.00); width: 216px;"
+              style="border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; bottom: 0px; box-shadow: 0px 8px 12px rgba(22,22,23,1.00); width: 216px;"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -1603,7 +1603,7 @@ Object {
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
                 dir="auto"
-                style="color: rgb(21, 21, 21); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-transform: capitalize;"
+                style="color: rgb(22, 22, 23); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-transform: capitalize;"
               >
                 1 boulevard Poissonnière, 75000 Paris
               </div>
@@ -1616,7 +1616,7 @@ Object {
               class="css-text-901oao css-textMultiLine-cens5h"
               data-testid="venueTitle"
               dir="auto"
-              style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px; text-align: center;"
+              style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px; text-align: center;"
             >
               Le Petit Rintintin 1
             </div>
@@ -1660,14 +1660,14 @@ Object {
                 class="css-text-901oao"
                 data-testid="caption-undefined"
                 dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
               >
                 Autre type de lieu
               </div>
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="align-self: center; background-color: rgb(199, 199, 204); height: 92%; margin-right: 8px; margin-left: 8px; width: 1px;"
+              style="align-self: center; background-color: rgb(203, 205, 210); height: 92%; margin-right: 8px; margin-left: 8px; width: 1px;"
             />
             <div
               aria-label="Activer la localisation"
@@ -1703,7 +1703,7 @@ Object {
                   class="css-text-901oao"
                   data-testid="caption-undefined"
                   dir="auto"
-                  style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
+                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
                 >
                   Géolocalisation désactivée
                 </div>
@@ -1731,12 +1731,12 @@ Object {
                 <div
                   class="css-text-901oao"
                   dir="auto"
-                  style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; width: 100%;"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; width: 100%;"
                 >
                    
                   <span
                     class="css-text-901oao css-textHasAncestor-16my406"
-                    style="color: rgb(21, 21, 21); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                    style="color: rgb(22, 22, 23); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -1768,7 +1768,7 @@ Object {
           </div>
           <div
             class="css-view-1dbjc4n"
-            style="background-color: rgb(245, 245, 245); height: 8px;"
+            style="background-color: rgb(241, 241, 244); height: 8px;"
           />
           <div
             class="css-view-1dbjc4n"
@@ -1786,7 +1786,7 @@ Object {
                 class="css-text-901oao css-textMultiLine-cens5h"
                 data-testid="playlistTitle"
                 dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
               >
                 Offres
               </div>
@@ -1796,7 +1796,7 @@ Object {
               />
               <div
                 class="css-view-1dbjc4n"
-                style="background-color: rgb(199, 199, 204); height: 20px; width: 1px;"
+                style="background-color: rgb(203, 205, 210); height: 20px; width: 1px;"
               />
               <div
                 class="css-view-1dbjc4n"
@@ -1874,7 +1874,7 @@ Object {
                       >
                         <div
                           class="css-view-1dbjc4n"
-                          style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                          style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
                         >
                           <div
                             class="css-view-1dbjc4n"
@@ -1898,14 +1898,14 @@ Object {
                         <div
                           class="css-text-901oao css-textMultiLine-cens5h"
                           dir="auto"
-                          style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           Titane - VF
                         </div>
                         <div
                           class="css-text-901oao css-textMultiLine-cens5h"
                           dir="auto"
-                          style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           Dès le 18 août 2021
                         </div>
@@ -1913,7 +1913,7 @@ Object {
                           class="css-text-901oao"
                           data-testid="priceIsDuo"
                           dir="auto"
-                          style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           Gratuit
                         </div>
@@ -1941,7 +1941,7 @@ Object {
                       >
                         <div
                           class="css-view-1dbjc4n"
-                          style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                          style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
                         >
                           <div
                             class="css-view-1dbjc4n"
@@ -1965,14 +1965,14 @@ Object {
                         <div
                           class="css-text-901oao css-textMultiLine-cens5h"
                           dir="auto"
-                          style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           Bac Nord - VF
                         </div>
                         <div
                           class="css-text-901oao css-textMultiLine-cens5h"
                           dir="auto"
-                          style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           Dès le 18 août 2021
                         </div>
@@ -1980,7 +1980,7 @@ Object {
                           class="css-text-901oao"
                           data-testid="priceIsDuo"
                           dir="auto"
-                          style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           Gratuit
                         </div>
@@ -2008,7 +2008,7 @@ Object {
                       >
                         <div
                           class="css-view-1dbjc4n"
-                          style="align-items: center; background-color: rgb(21, 21, 21); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                          style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
                         >
                           <div
                             class="css-view-1dbjc4n"
@@ -2032,14 +2032,14 @@ Object {
                         <div
                           class="css-text-901oao css-textMultiLine-cens5h"
                           dir="auto"
-                          style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           Black Widow - VF
                         </div>
                         <div
                           class="css-text-901oao css-textMultiLine-cens5h"
                           dir="auto"
-                          style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           Dès le 18 août 2021
                         </div>
@@ -2047,7 +2047,7 @@ Object {
                           class="css-text-901oao"
                           data-testid="priceIsDuo"
                           dir="auto"
-                          style="color: rgb(98, 98, 98); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           Gratuit
                         </div>
@@ -2094,7 +2094,7 @@ Object {
           />
           <div
             class="css-view-1dbjc4n"
-            style="background-color: rgb(245, 245, 245); height: 8px;"
+            style="background-color: rgb(241, 241, 244); height: 8px;"
           />
           <div
             class="css-view-1dbjc4n"
@@ -2107,7 +2107,7 @@ Object {
             <div
               class="css-text-901oao"
               dir="auto"
-              style="color: rgb(21, 21, 21); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+              style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
             >
               Où ?
             </div>
@@ -2118,7 +2118,7 @@ Object {
             <div
               class="css-text-901oao"
               dir="auto"
-              style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
             >
               Adresse
             </div>
@@ -2129,7 +2129,7 @@ Object {
             <div
               class="css-text-901oao"
               dir="auto"
-              style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-transform: capitalize;"
+              style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-transform: capitalize;"
             >
               1 boulevard Poissonnière, 75000 Paris
             </div>
@@ -2139,7 +2139,7 @@ Object {
             />
             <div
               class="css-view-1dbjc4n"
-              style="background-color: rgb(199, 199, 204); height: 1px;"
+              style="background-color: rgb(203, 205, 210); height: 1px;"
             />
             <div
               class="css-view-1dbjc4n"
@@ -2169,7 +2169,7 @@ Object {
                 <div
                   class="css-text-901oao css-textMultiLine-cens5h"
                   dir="auto"
-                  style="color: rgb(21, 21, 21); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 12px; max-width: 100%;"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 12px; max-width: 100%;"
                 >
                   Voir l'itinéraire
                 </div>
@@ -2182,7 +2182,7 @@ Object {
           </div>
           <div
             class="css-view-1dbjc4n"
-            style="background-color: rgb(245, 245, 245); height: 8px;"
+            style="background-color: rgb(241, 241, 244); height: 8px;"
           />
           <div
             aria-label="Ouvrir la section"
@@ -2193,7 +2193,7 @@ Object {
             <div
               class="css-text-901oao"
               dir="auto"
-              style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+              style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
             >
               Modalités de retrait
             </div>
@@ -2227,12 +2227,12 @@ Object {
               <div
                 class="css-text-901oao"
                 dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
               >
                 How to withdraw, 
                 <span
                   class="css-text-901oao css-textHasAncestor-16my406"
-                  style="color: rgb(21, 21, 21); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                  style="color: rgb(22, 22, 23); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -2262,7 +2262,7 @@ Object {
           </div>
           <div
             class="css-view-1dbjc4n"
-            style="background-color: rgb(245, 245, 245); height: 8px;"
+            style="background-color: rgb(241, 241, 244); height: 8px;"
           />
           <div
             aria-label="Ouvrir la section"
@@ -2273,7 +2273,7 @@ Object {
             <div
               class="css-text-901oao"
               dir="auto"
-              style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+              style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
             >
               Accessibilité
             </div>
@@ -2316,7 +2316,7 @@ Object {
                   <div
                     class="css-view-1dbjc4n"
                     data-testid="accessibilityFrame"
-                    style="align-items: center; border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                    style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -2365,7 +2365,7 @@ Object {
                     <div
                       class="css-text-901oao"
                       dir="auto"
-                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                      style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                     >
                       Handicap visuel
                     </div>
@@ -2379,7 +2379,7 @@ Object {
                   <div
                     class="css-view-1dbjc4n"
                     data-testid="accessibilityFrame"
-                    style="align-items: center; border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                    style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -2428,7 +2428,7 @@ Object {
                     <div
                       class="css-text-901oao"
                       dir="auto"
-                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                      style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                     >
                       Handicap psychique ou cognitif
                     </div>
@@ -2442,7 +2442,7 @@ Object {
                   <div
                     class="css-view-1dbjc4n"
                     data-testid="accessibilityFrame"
-                    style="align-items: center; border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                    style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -2491,7 +2491,7 @@ Object {
                     <div
                       class="css-text-901oao"
                       dir="auto"
-                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                      style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                     >
                       Handicap moteur
                     </div>
@@ -2505,7 +2505,7 @@ Object {
                   <div
                     class="css-view-1dbjc4n"
                     data-testid="accessibilityFrame"
-                    style="align-items: center; border-top-color: rgba(199,199,204,1.00); border-right-color: rgba(199,199,204,1.00); border-bottom-color: rgba(199,199,204,1.00); border-left-color: rgba(199,199,204,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                    style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -2554,7 +2554,7 @@ Object {
                     <div
                       class="css-text-901oao"
                       dir="auto"
-                      style="color: rgb(21, 21, 21); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
+                      style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                     >
                       Handicap auditif
                     </div>
@@ -2565,7 +2565,7 @@ Object {
           </div>
           <div
             class="css-view-1dbjc4n"
-            style="background-color: rgb(245, 245, 245); height: 8px;"
+            style="background-color: rgb(241, 241, 244); height: 8px;"
           />
           <div
             aria-label="Ouvrir la section"
@@ -2576,7 +2576,7 @@ Object {
             <div
               class="css-text-901oao"
               dir="auto"
-              style="color: rgb(21, 21, 21); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+              style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
             >
               Contact
             </div>
@@ -2610,21 +2610,21 @@ Object {
               <div
                 class="css-text-901oao"
                 dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
               >
                 contact@venue.com
               </div>
               <div
                 class="css-text-901oao"
                 dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
               >
                 +33102030405
               </div>
               <div
                 class="css-text-901oao"
                 dir="auto"
-                style="color: rgb(21, 21, 21); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
               >
                 https://my@website.com
               </div>
@@ -2632,7 +2632,7 @@ Object {
           </div>
           <div
             class="css-view-1dbjc4n"
-            style="background-color: rgb(245, 245, 245); height: 8px;"
+            style="background-color: rgb(241, 241, 244); height: 8px;"
           />
           <div
             class="css-view-1dbjc4n"
@@ -2670,7 +2670,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="headerIconRoundContainer"
-              style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
+              style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(241,241,244,1.00); border-right-color: rgba(241,241,244,1.00); border-bottom-color: rgba(241,241,244,1.00); border-left-color: rgba(241,241,244,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -2744,7 +2744,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="headerIconRoundContainer"
-              style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(245,245,245,1.00); border-right-color: rgba(245,245,245,1.00); border-bottom-color: rgba(245,245,245,1.00); border-left-color: rgba(245,245,245,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
+              style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(241,241,244,1.00); border-right-color: rgba(241,241,244,1.00); border-bottom-color: rgba(241,241,244,1.00); border-left-color: rgba(241,241,244,1.00); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; justify-content: center; overflow-x: hidden; overflow-y: hidden; width: 40px;"
             >
               <div
                 class="css-view-1dbjc4n"
