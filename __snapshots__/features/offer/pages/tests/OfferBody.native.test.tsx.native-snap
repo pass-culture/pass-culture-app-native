@@ -1551,6 +1551,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                   >
                     <Text
                       adjustsFontSizeToFit={false}
+                      iconSize={24}
                       numberOfLines={1}
                       style={
                         Array [

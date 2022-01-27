@@ -489,6 +489,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
   >
     <Text
       adjustsFontSizeToFit={false}
+      iconSize={24}
       numberOfLines={1}
       style={
         Array [
@@ -1016,6 +1017,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
   >
     <Text
       adjustsFontSizeToFit={false}
+      iconSize={24}
       numberOfLines={1}
       style={
         Array [

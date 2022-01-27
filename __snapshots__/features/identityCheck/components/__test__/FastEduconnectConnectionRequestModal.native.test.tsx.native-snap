@@ -386,6 +386,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
             >
               <Text
                 adjustsFontSizeToFit={false}
+                iconSize={24}
                 numberOfLines={1}
                 style={
                   Array [
@@ -927,6 +928,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
             >
               <Text
                 adjustsFontSizeToFit={false}
+                iconSize={24}
                 numberOfLines={1}
                 style={
                   Array [

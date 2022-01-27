@@ -185,6 +185,7 @@ exports[`FirstCard should render first card 1`] = `
       >
         <Text
           adjustsFontSizeToFit={false}
+          iconSize={24}
           numberOfLines={1}
           style={
             Array [

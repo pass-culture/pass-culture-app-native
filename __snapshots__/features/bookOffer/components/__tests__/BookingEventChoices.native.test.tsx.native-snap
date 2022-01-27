@@ -583,6 +583,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
   >
     <Text
       adjustsFontSizeToFit={false}
+      iconSize={24}
       numberOfLines={1}
       style={
         Array [

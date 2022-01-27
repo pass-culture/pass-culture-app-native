@@ -374,6 +374,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
+                        iconSize={24}
                         numberOfLines={1}
                         style={
                           Array [

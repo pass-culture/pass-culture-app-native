@@ -107,8 +107,8 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -687,20 +677,20 @@
-                adjustsFontSizeToFit={false}
+@@ -688,20 +678,20 @@
+                iconSize={24}
                 numberOfLines={1}
                 style={
                   Array [
@@ -539,8 +539,8 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -687,20 +739,20 @@
-                adjustsFontSizeToFit={false}
+@@ -688,20 +740,20 @@
+                iconSize={24}
                 numberOfLines={1}
                 style={
                   Array [
@@ -791,8 +791,8 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -687,20 +739,20 @@
-                adjustsFontSizeToFit={false}
+@@ -688,20 +740,20 @@
+                iconSize={24}
                 numberOfLines={1}
                 style={
                   Array [
@@ -1043,8 +1043,8 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -687,20 +739,20 @@
-                adjustsFontSizeToFit={false}
+@@ -688,20 +740,20 @@
+                iconSize={24}
                 numberOfLines={1}
                 style={
                   Array [

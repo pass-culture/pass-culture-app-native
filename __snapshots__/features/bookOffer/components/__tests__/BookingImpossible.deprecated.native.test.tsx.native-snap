@@ -118,6 +118,7 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
   >
     <Text
       adjustsFontSizeToFit={false}
+      iconSize={24}
       numberOfLines={1}
       style={
         Array [
@@ -331,6 +332,7 @@ exports[`<BookingImpossible /> should render without CTAs when offer is favorite
   >
     <Text
       adjustsFontSizeToFit={false}
+      iconSize={24}
       numberOfLines={1}
       style={
         Array [

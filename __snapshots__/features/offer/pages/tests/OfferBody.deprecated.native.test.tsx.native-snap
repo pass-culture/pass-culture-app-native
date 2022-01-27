@@ -2278,6 +2278,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         >
                                           <Text
                                             adjustsFontSizeToFit={false}
+                                            iconSize={24}
                                             numberOfLines={1}
                                             style={
                                               Array [
@@ -5066,6 +5067,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         >
                                           <Text
                                             adjustsFontSizeToFit={false}
+                                            iconSize={24}
                                             numberOfLines={1}
                                             style={
                                               Array [
