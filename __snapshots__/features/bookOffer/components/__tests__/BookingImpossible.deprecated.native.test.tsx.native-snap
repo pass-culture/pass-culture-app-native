@@ -182,7 +182,7 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
   >
     <Text
       adjustsFontSizeToFit={false}
-      iconSize={18}
+      iconSize={20}
       numberOfLines={1}
       style={
         Array [

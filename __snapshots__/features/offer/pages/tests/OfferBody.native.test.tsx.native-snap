@@ -558,9 +558,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           <View
             accessibilityLabel="Voir plus d'informations"
             accessible={true}
-            collapsable={false}
             focusable={true}
-            nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -575,7 +573,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                 "borderRadius": 0,
                 "borderWidth": 0,
                 "flexDirection": "row",
-                "height": 20,
+                "height": 16,
                 "justifyContent": "center",
                 "marginTop": 0,
                 "maxWidth": 500,
@@ -591,6 +589,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           >
             <Text
               adjustsFontSizeToFit={false}
+              iconSize={20}
               numberOfLines={1}
               style={
                 Array [
@@ -946,7 +945,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
               "borderRadius": 0,
               "borderWidth": 0,
               "flexDirection": "row",
-              "height": 20,
+              "height": 16,
               "justifyContent": "center",
               "marginTop": 0,
               "maxWidth": 500,
@@ -989,6 +988,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                 "withComponent": [Function],
               }
             }
+            iconSize={20}
             numberOfLines={1}
             style={
               Array [
@@ -1066,7 +1066,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
               "borderRadius": 0,
               "borderWidth": 0,
               "flexDirection": "row",
-              "height": 20,
+              "height": 16,
               "justifyContent": "flex-start",
               "marginTop": 0,
               "maxWidth": 500,
@@ -1091,6 +1091,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           <Text
             adjustsFontSizeToFit={false}
             icon={[Function]}
+            iconSize={20}
             numberOfLines={1}
             style={
               Array [

@@ -865,9 +865,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 <View
                                   accessibilityLabel="voir plus"
                                   accessible={true}
-                                  collapsable={false}
                                   focusable={true}
-                                  nativeID="animatedComponent"
                                   onClick={[Function]}
                                   onResponderGrant={[Function]}
                                   onResponderMove={[Function]}
@@ -882,7 +880,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       "borderRadius": 0,
                                       "borderWidth": 0,
                                       "flexDirection": "row",
-                                      "height": 20,
+                                      "height": 16,
                                       "justifyContent": "center",
                                       "marginTop": 0,
                                       "maxWidth": 500,
@@ -898,6 +896,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 >
                                   <Text
                                     adjustsFontSizeToFit={false}
+                                    iconSize={20}
                                     numberOfLines={1}
                                     style={
                                       Array [
@@ -1793,7 +1792,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     "borderRadius": 0,
                                     "borderWidth": 0,
                                     "flexDirection": "row",
-                                    "height": 20,
+                                    "height": 16,
                                     "justifyContent": "flex-start",
                                     "marginTop": 0,
                                     "maxWidth": 500,
@@ -1818,6 +1817,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 <Text
                                   adjustsFontSizeToFit={false}
                                   icon={[Function]}
+                                  iconSize={20}
                                   numberOfLines={1}
                                   style={
                                     Array [
@@ -3278,9 +3278,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 <View
                                   accessibilityLabel="voir plus"
                                   accessible={true}
-                                  collapsable={false}
                                   focusable={true}
-                                  nativeID="animatedComponent"
                                   onClick={[Function]}
                                   onResponderGrant={[Function]}
                                   onResponderMove={[Function]}
@@ -3295,7 +3293,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       "borderRadius": 0,
                                       "borderWidth": 0,
                                       "flexDirection": "row",
-                                      "height": 20,
+                                      "height": 16,
                                       "justifyContent": "center",
                                       "marginTop": 0,
                                       "maxWidth": 500,
@@ -3311,6 +3309,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 >
                                   <Text
                                     adjustsFontSizeToFit={false}
+                                    iconSize={20}
                                     numberOfLines={1}
                                     style={
                                       Array [
@@ -3714,7 +3713,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     "borderRadius": 0,
                                     "borderWidth": 0,
                                     "flexDirection": "row",
-                                    "height": 20,
+                                    "height": 16,
                                     "justifyContent": "center",
                                     "marginTop": 0,
                                     "maxWidth": 500,
@@ -3757,6 +3756,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       "withComponent": [Function],
                                     }
                                   }
+                                  iconSize={20}
                                   numberOfLines={1}
                                   style={
                                     Array [
@@ -4582,7 +4582,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     "borderRadius": 0,
                                     "borderWidth": 0,
                                     "flexDirection": "row",
-                                    "height": 20,
+                                    "height": 16,
                                     "justifyContent": "flex-start",
                                     "marginTop": 0,
                                     "maxWidth": 500,
@@ -4607,6 +4607,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 <Text
                                   adjustsFontSizeToFit={false}
                                   icon={[Function]}
+                                  iconSize={20}
                                   numberOfLines={1}
                                   style={
                                     Array [

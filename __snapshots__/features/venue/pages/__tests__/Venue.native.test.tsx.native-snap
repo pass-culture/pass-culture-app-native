@@ -1957,7 +1957,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 "borderRadius": 0,
                 "borderWidth": 0,
                 "flexDirection": "row",
-                "height": 20,
+                "height": 16,
                 "justifyContent": "center",
                 "marginTop": 0,
                 "maxWidth": 500,
@@ -2000,6 +2000,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   "withComponent": [Function],
                 }
               }
+              iconSize={20}
               numberOfLines={1}
               style={
                 Array [

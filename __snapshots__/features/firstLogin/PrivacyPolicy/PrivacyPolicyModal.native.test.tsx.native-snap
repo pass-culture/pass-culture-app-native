@@ -322,9 +322,9 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
               testID="Politique des cookies"
             >
               <View
-                height={18}
+                height={20}
                 testID="button-icon"
-                width={18}
+                width={20}
               >
                 <Text>
                   button-icon-SVG-Mock
@@ -333,7 +333,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
               <Text
                 adjustsFontSizeToFit={false}
                 icon={[Function]}
-                iconSize={18}
+                iconSize={20}
                 numberOfLines={1}
                 style={
                   Array [
@@ -472,7 +472,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                   Object {
                     "alignItems": "center",
                     "backgroundColor": "transparent",
-                    "borderColor": "#eb0055",
+                    "borderColor": "#ff99be",
                     "borderRadius": 24,
                     "borderWidth": 2,
                     "flexDirection": "row",

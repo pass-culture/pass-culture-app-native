@@ -152,6 +152,10 @@ export interface AppThemeType {
         textColor: ColorsEnum
         iconColor: ColorsEnum
       }
+      tertiaryBlack: {
+        textColor: ColorsEnum
+        iconColor: ColorsEnum
+      }
       tertiaryWhite: {
         textColor: ColorsEnum
         iconColor: ColorsEnum
@@ -196,6 +200,12 @@ export interface AppThemeType {
       borderColor: ColorsEnum
     }
     tertiary: {
+      textColor: ColorsEnum
+      backgroundColor: ColorsEnum
+      loadingIconColor: ColorsEnum
+      iconColor: ColorsEnum
+    }
+    tertiaryBlack: {
       textColor: ColorsEnum
       backgroundColor: ColorsEnum
       loadingIconColor: ColorsEnum
@@ -383,6 +393,10 @@ export const theme: AppThemeType = {
         textColor: ColorsEnum.PRIMARY_DISABLED,
         iconColor: ColorsEnum.PRIMARY_DISABLED,
       },
+      tertiaryBlack: {
+        textColor: ColorsEnum.GREY_DARK,
+        iconColor: ColorsEnum.GREY_DARK,
+      },
       tertiaryWhite: {
         textColor: ColorsEnum.PRIMARY_DISABLED,
         iconColor: ColorsEnum.PRIMARY_DISABLED,
@@ -431,6 +445,12 @@ export const theme: AppThemeType = {
       backgroundColor: ColorsEnum.TRANSPARENT,
       loadingIconColor: ColorsEnum.PRIMARY_DARK,
       iconColor: ColorsEnum.PRIMARY,
+    },
+    tertiaryBlack: {
+      textColor: ColorsEnum.BLACK,
+      backgroundColor: ColorsEnum.TRANSPARENT,
+      loadingIconColor: ColorsEnum.BLACK,
+      iconColor: ColorsEnum.BLACK,
     },
     tertiaryWhite: {
       textColor: ColorsEnum.WHITE,

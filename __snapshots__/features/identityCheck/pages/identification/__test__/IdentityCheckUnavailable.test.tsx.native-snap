@@ -522,6 +522,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
                   <Text
                     adjustsFontSizeToFit={false}
                     icon={[Function]}
+                    iconSize={20}
                     numberOfLines={1}
                     style={
                       Array [
@@ -610,6 +611,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
                   <Text
                     adjustsFontSizeToFit={false}
                     icon={[Function]}
+                    iconSize={20}
                     numberOfLines={1}
                     style={
                       Array [
@@ -729,9 +731,9 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
         testID="Retourner à l'accueil"
       >
         <View
-          height={18}
+          height={20}
           testID="button-icon"
-          width={18}
+          width={20}
         >
           <Text>
             button-icon-SVG-Mock
@@ -740,7 +742,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
         <Text
           adjustsFontSizeToFit={false}
           icon={[Function]}
-          iconSize={18}
+          iconSize={20}
           numberOfLines={1}
           style={
             Array [

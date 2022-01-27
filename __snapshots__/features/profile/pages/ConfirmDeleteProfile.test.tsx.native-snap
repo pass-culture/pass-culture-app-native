@@ -285,7 +285,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       >
         <Text
           adjustsFontSizeToFit={false}
-          iconSize={18}
+          iconSize={20}
           numberOfLines={1}
           style={
             Array [

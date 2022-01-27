@@ -1,26 +1,29 @@
 import React, { FunctionComponent } from 'react'
+import styled from 'styled-components/native'
 
 import { AppButton, BaseButtonProps } from 'ui/components/buttons/AppButton'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 export const ButtonTertiaryGreyDark: FunctionComponent<BaseButtonProps> = (props) => {
-  let textColor = ColorsEnum.GREY_DARK
-  const backgroundColor = ColorsEnum.TRANSPARENT
-  const loadingIconColor = ColorsEnum.GREY_DARK
-  let iconColor = ColorsEnum.GREY_DARK
+  return <StyledAppButton {...props} />
+}
 
-  if (props.disabled) {
-    textColor = iconColor = ColorsEnum.PRIMARY_DISABLED
+const StyledAppButton = styled(AppButton).attrs(({ theme, disabled }) => {
+  const { buttons, icons } = theme
+  const loadingIconColor = buttons.tertiaryGreyDark.loadingIconColor
+  let iconColor = buttons.tertiaryGreyDark.iconColor
+  let textColor = buttons.tertiaryGreyDark.textColor
+  const backgroundColor = buttons.tertiaryGreyDark.backgroundColor
+
+  if (disabled) {
+    textColor = buttons.disabled.tertiaryGreyDark.textColor
+    iconColor = buttons.disabled.tertiaryGreyDark.iconColor
   }
 
-  return (
-    <AppButton
-      {...props}
-      loadingIconColor={loadingIconColor}
-      backgroundColor={backgroundColor}
-      iconColor={iconColor}
-      textColor={textColor}
-    />
-  )
-}
+  return {
+    iconSize: icons.sizes.smaller,
+    loadingIconColor: loadingIconColor,
+    backgroundColor: backgroundColor,
+    iconColor: iconColor,
+    textColor: textColor,
+  }
+})``
