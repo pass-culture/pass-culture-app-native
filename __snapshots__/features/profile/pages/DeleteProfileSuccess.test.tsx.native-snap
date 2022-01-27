@@ -186,11 +186,12 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
       }
     />
     <View
+      flex={0.5}
       style={
         Array [
           Object {
             "flexBasis": 0,
-            "flexGrow": 1,
+            "flexGrow": 0.5,
             "flexShrink": 1,
           },
         ]
