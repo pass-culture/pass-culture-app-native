@@ -17,6 +17,7 @@ export const replace = jest.fn()
 export const reset = jest.fn()
 export const setOptions = jest.fn()
 export const setParams = jest.fn()
+export const useLinkProps = jest.fn()
 
 export const navigation = {
   addListener,
@@ -35,6 +36,7 @@ export const navigation = {
   reset,
   setOptions,
   setParams,
+  useLinkProps,
 }
 export const useNavigation = () => navigation
 export const createNavigationContainerRef = () => ({
