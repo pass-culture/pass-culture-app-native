@@ -11,6 +11,7 @@ import {
   TAB_BAR_COMP_HEIGHT,
 } from 'ui/theme/constants'
 import { BorderRadiusEnum, Breakpoints } from 'ui/theme/grid'
+import { IconSizesType, iconSizes } from 'ui/theme/iconSizes'
 // eslint-disable-next-line no-restricted-imports
 import { ZIndex } from 'ui/theme/layers'
 
@@ -114,6 +115,7 @@ export interface AppThemeType {
     maxWidth: number
     bottom: { offsetTopHeightDesktopTablet: number }
   }
+  icons: { sizes: IconSizesType }
   buttons: {
     maxWidth: number
     loading: {
@@ -329,6 +331,7 @@ export const theme: AppThemeType = {
     maxWidth: DESKTOP_CONTENT_MAX_WIDTH,
     bottom: { offsetTopHeightDesktopTablet: BOTTOM_CONTENT_PAGE_OFFSET_TOP_HEIGHT_DESKTOP_TABLET },
   },
+  icons: { sizes: iconSizes },
   buttons: {
     maxWidth: DESKTOP_CONTENT_MAX_WIDTH,
     loading: {
