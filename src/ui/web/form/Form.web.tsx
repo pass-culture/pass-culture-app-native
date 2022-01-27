@@ -1,16 +1,17 @@
 import styled from 'styled-components'
 
-const MaxWidth = styled.form`
-  ${({ theme }) => `
-    width: 100%;
-    max-width: ${theme.forms.maxWidth};
-  `}
-`
+const MaxWidth = styled.form(({ theme }) => ({
+  display: 'flex',
+  flex: 1,
+  flexDirection: 'column',
+  width: '100%',
+  maxWidth: theme.forms.maxWidth,
+}))
 
-const Flex = styled.form`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-`
+const Flex = styled.form({
+  display: 'flex',
+  flex: 1,
+  flexDirection: 'column',
+})
 
 export const Form = { Flex, MaxWidth }
