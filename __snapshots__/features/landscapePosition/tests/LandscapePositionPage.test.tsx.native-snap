@@ -70,11 +70,12 @@ exports[`<LandscapePositionPage /> should match snapshot with default message 1`
       }
     >
       <View
-        numberOfSpaces={9}
+        customHeight={16}
+        enable={true}
         style={
           Array [
             Object {
-              "height": 36,
+              "height": 16,
             },
           ]
         }
@@ -91,6 +92,16 @@ exports[`<LandscapePositionPage /> should match snapshot with default message 1`
         }
       />
       <View
+        numberOfSpaces={10}
+        style={
+          Array [
+            Object {
+              "height": 40,
+            },
+          ]
+        }
+      />
+      <View
         fill="none"
         height={156}
         width={200}
@@ -100,11 +111,11 @@ exports[`<LandscapePositionPage /> should match snapshot with default message 1`
         </Text>
       </View>
       <View
-        numberOfSpaces={9}
+        numberOfSpaces={5}
         style={
           Array [
             Object {
-              "height": 36,
+              "height": 20,
             },
           ]
         }
@@ -154,7 +165,16 @@ exports[`<LandscapePositionPage /> should match snapshot with default message 1`
         Place ton téléphone ou ta tablette à la verticale pour afficher l’application.
       </Text>
       <View
-        flex={1}
+        numberOfSpaces={10}
+        style={
+          Array [
+            Object {
+              "height": 40,
+            },
+          ]
+        }
+      />
+      <View
         style={
           Array [
             Object {

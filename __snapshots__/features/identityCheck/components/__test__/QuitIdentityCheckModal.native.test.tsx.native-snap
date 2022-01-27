@@ -33,7 +33,6 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
         "maxHeight": "100%",
         "maxWidth": 960,
         "opacity": 1,
-        "paddingBottom": 0,
         "position": "absolute",
         "width": "100%",
       }
@@ -83,11 +82,12 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
       }
     >
       <View
-        numberOfSpaces={9}
+        customHeight={16}
+        enable={true}
         style={
           Array [
             Object {
-              "height": 36,
+              "height": 16,
             },
           ]
         }
@@ -104,6 +104,16 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
         }
       />
       <View
+        numberOfSpaces={10}
+        style={
+          Array [
+            Object {
+              "height": 40,
+            },
+          ]
+        }
+      />
+      <View
         height={156}
         width={200}
       >
@@ -112,11 +122,11 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
         </Text>
       </View>
       <View
-        numberOfSpaces={9}
+        numberOfSpaces={5}
         style={
           Array [
             Object {
-              "height": 36,
+              "height": 20,
             },
           ]
         }
@@ -166,12 +176,21 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
         Les informations que tu as renseignées ne seront pas enregistrées.
       </Text>
       <View
-        flex={1.25}
+        numberOfSpaces={30}
+        style={
+          Array [
+            Object {
+              "height": 120,
+            },
+          ]
+        }
+      />
+      <View
         style={
           Array [
             Object {
               "flexBasis": 0,
-              "flexGrow": 1.25,
+              "flexGrow": 1,
               "flexShrink": 1,
             },
           ]

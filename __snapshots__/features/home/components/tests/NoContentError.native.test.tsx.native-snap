@@ -57,11 +57,12 @@ exports[`NoContentError should render correctly 1`] = `
     }
   >
     <View
-      numberOfSpaces={9}
+      customHeight={16}
+      enable={true}
       style={
         Array [
           Object {
-            "height": 36,
+            "height": 16,
           },
         ]
       }
@@ -78,6 +79,16 @@ exports[`NoContentError should render correctly 1`] = `
       }
     />
     <View
+      numberOfSpaces={10}
+      style={
+        Array [
+          Object {
+            "height": 40,
+          },
+        ]
+      }
+    />
+    <View
       height={156}
       width={200}
     >
@@ -86,11 +97,11 @@ exports[`NoContentError should render correctly 1`] = `
       </Text>
     </View>
     <View
-      numberOfSpaces={9}
+      numberOfSpaces={5}
       style={
         Array [
           Object {
-            "height": 36,
+            "height": 20,
           },
         ]
       }
@@ -140,13 +151,11 @@ exports[`NoContentError should render correctly 1`] = `
       Une erreur s’est produite pendant le chargement de nos recommandations.
     </Text>
     <View
-      flex={1.25}
+      numberOfSpaces={10}
       style={
         Array [
           Object {
-            "flexBasis": 0,
-            "flexGrow": 1.25,
-            "flexShrink": 1,
+            "height": 40,
           },
         ]
       }
@@ -159,8 +168,6 @@ exports[`NoContentError should render correctly 1`] = `
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-            "justifyContent": "flex-end",
-            "marginBottom": 32,
           },
         ]
       }
@@ -186,7 +193,7 @@ exports[`NoContentError should render correctly 1`] = `
             "borderRadius": 24,
             "borderWidth": 2,
             "flexDirection": "row",
-            "height": 40,
+            "height": 48,
             "justifyContent": "center",
             "maxWidth": 500,
             "opacity": 1,
@@ -231,6 +238,27 @@ exports[`NoContentError should render correctly 1`] = `
         </Text>
       </View>
     </View>
+    <View
+      numberOfSpaces={10}
+      style={
+        Array [
+          Object {
+            "height": 40,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
     <View
       customHeight={8}
       enable={true}

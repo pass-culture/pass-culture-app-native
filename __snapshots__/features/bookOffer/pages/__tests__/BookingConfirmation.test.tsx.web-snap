@@ -85,7 +85,7 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       className="css-view-1dbjc4n"
       style={
         Object {
-          "height": "36px",
+          "height": "16px",
         }
       }
     />
@@ -103,7 +103,7 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       className="css-view-1dbjc4n"
       style={
         Object {
-          "height": "36px",
+          "height": "20px",
         }
       }
     />
