@@ -35,7 +35,6 @@ export function IdentityCheckUnavailable() {
             key={1}
             wording={t`Transmettre un dossier`}
             onPress={showDMSModal}
-            iconSize={20}
             icon={ExternalSite}
           />
         ),
