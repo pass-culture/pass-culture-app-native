@@ -57,11 +57,12 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
     }
   >
     <View
-      numberOfSpaces={9}
+      customHeight={16}
+      enable={true}
       style={
         Array [
           Object {
-            "height": 36,
+            "height": 16,
           },
         ]
       }
@@ -78,6 +79,16 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
       }
     />
     <View
+      numberOfSpaces={10}
+      style={
+        Array [
+          Object {
+            "height": 40,
+          },
+        ]
+      }
+    />
+    <View
       height={156}
       width={200}
     >
@@ -86,11 +97,11 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
       </Text>
     </View>
     <View
-      numberOfSpaces={9}
+      numberOfSpaces={5}
       style={
         Array [
           Object {
-            "height": 36,
+            "height": 20,
           },
         ]
       }
@@ -167,12 +178,21 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
       }
     />
     <View
-      flex={1.25}
+      numberOfSpaces={30}
+      style={
+        Array [
+          Object {
+            "height": 120,
+          },
+        ]
+      }
+    />
+    <View
       style={
         Array [
           Object {
             "flexBasis": 0,
-            "flexGrow": 1.25,
+            "flexGrow": 1,
             "flexShrink": 1,
           },
         ]
@@ -392,11 +412,12 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
     }
   >
     <View
-      numberOfSpaces={9}
+      customHeight={16}
+      enable={true}
       style={
         Array [
           Object {
-            "height": 36,
+            "height": 16,
           },
         ]
       }
@@ -413,6 +434,16 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
       }
     />
     <View
+      numberOfSpaces={10}
+      style={
+        Array [
+          Object {
+            "height": 40,
+          },
+        ]
+      }
+    />
+    <View
       height={156}
       width={200}
     >
@@ -421,11 +452,11 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
       </Text>
     </View>
     <View
-      numberOfSpaces={9}
+      numberOfSpaces={5}
       style={
         Array [
           Object {
-            "height": 36,
+            "height": 20,
           },
         ]
       }
@@ -502,12 +533,21 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
       }
     />
     <View
-      flex={1.25}
+      numberOfSpaces={30}
+      style={
+        Array [
+          Object {
+            "height": 120,
+          },
+        ]
+      }
+    />
+    <View
       style={
         Array [
           Object {
             "flexBasis": 0,
-            "flexGrow": 1.25,
+            "flexGrow": 1,
             "flexShrink": 1,
           },
         ]

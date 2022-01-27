@@ -9,7 +9,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { AsyncError, MonitoringError, eventMonitoring } from 'libs/monitoring'
 import { ScreenError } from 'libs/monitoring/errors'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
-import { GenericInfoPage } from 'ui/components/GenericInfoPage'
+import { GenericErrorPage } from 'ui/components/GenericErrorPage'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { ArrowPrevious as ArrowPreviousDefault } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Typo } from 'ui/theme'
@@ -54,7 +54,7 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
   }
 
   return (
-    <GenericInfoPage
+    <GenericErrorPage
       title={t`Oups\u00a0!`}
       icon={BrokenConnection}
       header={header}
@@ -67,7 +67,7 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
         />,
       ]}>
       <StyledBody>{t`Une erreur s'est produite pendant le chargement.`}</StyledBody>
-    </GenericInfoPage>
+    </GenericErrorPage>
   )
 }
 
