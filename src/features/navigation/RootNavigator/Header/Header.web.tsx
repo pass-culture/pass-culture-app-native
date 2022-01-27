@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, memo } from 'react'
 import { Animated } from 'react-native'
+import webStyled from 'styled-components'
 import styled, { useTheme } from 'styled-components/native'
 
 import { navigateToHome } from 'features/navigation/helpers'
@@ -114,7 +115,8 @@ export const Header = memo(function Header() {
   )
 })
 
-const HeaderContainer = styled.View(({ theme }) => ({
+const HeaderContainer = webStyled.header(({ theme }) => ({
+  display: 'flex',
   flexGrow: 1,
   maxHeight: theme.navTopHeight,
   justifyContent: 'space-between',
