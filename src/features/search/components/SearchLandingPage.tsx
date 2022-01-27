@@ -110,7 +110,6 @@ const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
 }))({ alignItems: 'center' })
 
 const iconSize = getSpacing(9)
-const iconSpacing = Math.round(iconSize / 5)
 
 const BicolorListItem: React.FC<{
   title: string
@@ -123,9 +122,7 @@ const BicolorListItem: React.FC<{
       <Typo.Body color={colors.greyDark}>{secondaryText}</Typo.Body>
       <Spacer.Column numberOfSpaces={2} />
       <TitleIconContainer>
-        <IconContainer>
-          <Icon size={iconSize} color={colors.primary} color2={colors.secondary} />
-        </IconContainer>
+        <Icon size={iconSize} color={colors.primary} color2={colors.secondary} />
         <Spacer.Row numberOfSpaces={2} />
         <Title numberOfLines={1}>{title}</Title>
       </TitleIconContainer>
@@ -140,13 +137,9 @@ const Container = styled.View({
 const TitleIconContainer = styled.View({
   alignItems: 'center',
   flexDirection: 'row',
+  paddingHorizontal: getSpacing(2),
 })
 
 const Title = styled(Typo.Title3)({
   flexShrink: 1,
-  left: -iconSpacing,
-})
-
-const IconContainer = styled.View({
-  left: -iconSpacing,
 })
