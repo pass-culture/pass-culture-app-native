@@ -9,11 +9,11 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { AsyncError, MonitoringError, eventMonitoring } from 'libs/monitoring'
 import { ScreenError } from 'libs/monitoring/errors'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
+import { GenericErrorPage } from 'ui/components/GenericErrorPage'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { ArrowPrevious as ArrowPreviousDefault } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
-import { GenericErrorPage } from 'ui/components/GenericErrorPage'
 
 interface AsyncFallbackProps extends FallbackProps {
   resetErrorBoundary: (...args: Array<unknown>) => void

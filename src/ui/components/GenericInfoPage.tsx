@@ -44,8 +44,12 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
       {header}
       <Content>
         <Spacer.TopScreen />
-        {!!isTouch && <Spacer.Flex />}
-        <Spacer.Column numberOfSpaces={spacingMatrix.top} />
+        {!!isTouch && (
+          <React.Fragment>
+            <Spacer.Flex />
+            <Spacer.Column numberOfSpaces={spacingMatrix.top} />
+          </React.Fragment>
+        )}
         {Icon ? (
           <React.Fragment>
             <Icon color={colors.white} size={ICON_SIZE} />
@@ -62,7 +66,7 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
         <StyledTitle2>{title}</StyledTitle2>
         <Spacer.Column numberOfSpaces={spacingMatrix.afterTitle} />
         {children}
-        {isTouch ? (
+        {!!isTouch && (
           <React.Fragment>
             <Spacer.Column
               numberOfSpaces={
@@ -75,7 +79,7 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
             />
             <Spacer.Flex />
           </React.Fragment>
-        ) : null}
+        )}
         {!!buttons && (
           <BottomContainer>
             {buttons.map((button, index) => (

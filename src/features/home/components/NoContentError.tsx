@@ -6,10 +6,10 @@ import styled from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { ButtonSecondaryWhite } from 'ui/components/buttons/ButtonSecondaryWhite'
+import { GenericErrorPage } from 'ui/components/GenericErrorPage'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { getSpacing, Typo } from 'ui/theme'
-import { GenericErrorPage } from 'ui/components/GenericErrorPage'
 
 export const NoContentError = () => {
   const { navigate } = useNavigation<UseNavigationType>()
