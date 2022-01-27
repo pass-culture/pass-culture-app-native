@@ -2,6 +2,10 @@
  * Ce fichier est copier de @react-navigation/native et rajoute un hack nécessaire pour react-native-web,
  * En effet, nous n'avons pas trouvé comment annuler l'événement qui reload la page au click sur l'anchor tag en ReactJS,
  * Nous attachons donc un événement en vanillaJS pour annuler l'événement pour le Web
+ *
+ * Related issues :
+ * - https://github.com/react-navigation/react-navigation/issues/10295
+ * - https://github.com/necolas/react-native-web/issues/2206
  */
 import type { NavigationAction } from '@react-navigation/core'
 import { useLinkProps } from '@react-navigation/native'
