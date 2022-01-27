@@ -37,13 +37,13 @@ export const NotConnectedFavorites = () => {
       <Row>
         <ButtonContainer>
           <ButtonPrimaryWhite
-            title={t`S'inscrire`}
+            wording={t`S'inscrire`}
             onPress={() => navigate('SignupForm')}
             buttonHeight="tall"
           />
           <Spacer.Column numberOfSpaces={4} />
           <ButtonTertiaryWhite
-            title={t`Se connecter`}
+            wording={t`Se connecter`}
             onPress={() => navigate('Login')}
             buttonHeight="tall"
           />

@@ -148,7 +148,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
   return (
     <Form.MaxWidth>
       <InnerContainer>
-        <ButtonTertiary title={t`Pourquoi\u00a0?`} onPress={onPressWhy} />
+        <ButtonTertiary wording={t`Pourquoi\u00a0?`} onPress={onPressWhy} />
         <Spacer.Column numberOfSpaces={8} />
         <DateInputContainer>
           <DateInput
@@ -166,7 +166,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
         </DateInputContainer>
         <Spacer.Column numberOfSpaces={14} />
         <ButtonPrimary
-          title={t`Continuer`}
+          wording={t`Continuer`}
           accessibilityLabel={props.accessibilityLabelForNextStep}
           disabled={!state.isDateValid}
           onPress={goToNextStep}

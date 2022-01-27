@@ -33,7 +33,7 @@ export function IdentityCheckUnavailable() {
         !!params?.withDMS && (
           <ButtonPrimaryWhite
             key={1}
-            title={t`Transmettre un dossier`}
+            wording={t`Transmettre un dossier`}
             onPress={showDMSModal}
             iconSize={20}
             icon={ExternalSite}
@@ -41,7 +41,7 @@ export function IdentityCheckUnavailable() {
         ),
         <ButtonTertiaryWhite
           key={2}
-          title={t`Retourner à l'accueil`}
+          wording={t`Retourner à l'accueil`}
           onPress={navigateToHome}
           icon={PlainArrowPrevious}
         />,

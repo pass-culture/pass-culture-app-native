@@ -41,7 +41,7 @@ export function IdentityCheckStartContent() {
             ColorsEnum.GREY_DARK
           }>{t`Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, tu peux transmettre un autre document via le site Démarches-Simplifiées`}</Typo.Caption>
         <ButtonQuaternaryBlack
-          title={t`Transmettre un document`}
+          wording={t`Transmettre un document`}
           onPress={showDMSModal}
           icon={Plus}
           justifyContent="flex-start"

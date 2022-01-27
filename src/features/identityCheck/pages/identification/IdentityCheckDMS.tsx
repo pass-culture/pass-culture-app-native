@@ -43,14 +43,14 @@ export const IdentityCheckDMS = () => {
           {theme.isMobileViewport ? <Spacer.Flex /> : <Spacer.Column numberOfSpaces={5} />}
           <ButtonContainer>
             <ButtonTertiaryBlack
-              title={t`Je suis de nationalité française`}
+              wording={t`Je suis de nationalité française`}
               onPress={openDMSFrenchCitizenURL}
               icon={ExternalSiteFilled}
             />
             <Caption>{t`Carte d’identité ou passeport.`}</Caption>
             <OrSeparator />
             <ButtonTertiaryBlack
-              title={t`Je suis de nationalité étrangère`}
+              wording={t`Je suis de nationalité étrangère`}
               onPress={openDMSForeignCitizenURL}
               icon={ExternalSiteFilled}
             />

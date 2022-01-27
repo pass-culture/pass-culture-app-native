@@ -156,7 +156,9 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
         <SectionBody>
           <ButtonTertiaryBlack
             inline
-            title={isOfferAlreadyReported ? t`Tu as déjà signalé cette offre` : t`Signaler l'offre`}
+            wording={
+              isOfferAlreadyReported ? t`Tu as déjà signalé cette offre` : t`Signaler l'offre`
+            }
             disabled={!!isOfferAlreadyReported}
             icon={() => <Flag size={24} />}
             onPress={showReportOfferDescription}

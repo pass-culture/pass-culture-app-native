@@ -42,7 +42,7 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
     </Typo.Body>
     <Spacer.Column numberOfSpaces={8} />
     <ButtonTertiaryBlack
-      title={t`Je suis de nationalité française`}
+      wording={t`Je suis de nationalité française`}
       onPress={openDMSFrenchCitizenURL}
       icon={ExternalSiteFilled}
       justifyContent="flex-start"
@@ -50,7 +50,7 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
     <Typo.Caption color={ColorsEnum.GREY_DARK}>{t`Carte d’identité ou passeport.`}</Typo.Caption>
     <Spacer.Column numberOfSpaces={8} />
     <ButtonTertiaryBlack
-      title={t`Je suis de nationalité étrangère`}
+      wording={t`Je suis de nationalité étrangère`}
       onPress={openDMSForeignCitizenURL}
       icon={ExternalSiteFilled}
       justifyContent="flex-start"

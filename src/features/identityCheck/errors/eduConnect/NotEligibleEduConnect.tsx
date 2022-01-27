@@ -60,14 +60,14 @@ export const NotEligibleEduConnect = ({
       buttons={[
         <ButtonPrimaryWhite
           key={1}
-          title={primaryButtonText ?? "Retourner à l'accueil"}
+          wording={primaryButtonText ?? "Retourner à l'accueil"}
           onPress={onPrimaryButtonPress ?? onAbandon}
         />,
         !!tertiaryButtonVisible && (
           <ButtonTertiaryWhite
             key={2}
             icon={PlainArrowPrevious}
-            title={t`Retourner à l'accueil`}
+            wording={t`Retourner à l'accueil`}
             onPress={onAbandon}
           />
         ),

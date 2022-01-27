@@ -71,7 +71,7 @@ export const BookingImpossible: React.FC = () => {
         <React.Fragment>
           <Content>{t`Rends-toi vite sur le site pass Culture afin de la réserver`}</Content>
           <Spacer.Column numberOfSpaces={6} />
-          <ButtonPrimary title={t`Voir le détail de l'offre`} onPress={navigateToOffer} />
+          <ButtonPrimary wording={t`Voir le détail de l'offre`} onPress={navigateToOffer} />
         </React.Fragment>
       ) : (
         <React.Fragment>
@@ -79,9 +79,9 @@ export const BookingImpossible: React.FC = () => {
             {t`Mets cette offre en favoris\u00a0: tu recevras une notification avec un lien pour la réserver sur notre application web\u00a0!`}
           </Content>
           <Spacer.Column numberOfSpaces={6} />
-          <ButtonPrimary title={t`Mettre en favoris`} onPress={addToFavourite} />
+          <ButtonPrimary wording={t`Mettre en favoris`} onPress={addToFavourite} />
           <Spacer.Column numberOfSpaces={4} />
-          <ButtonTertiary title={t`Retourner à l'offre`} onPress={dismissModal} />
+          <ButtonTertiary wording={t`Retourner à l'offre`} onPress={dismissModal} />
         </React.Fragment>
       )}
       <Spacer.Column numberOfSpaces={4} />

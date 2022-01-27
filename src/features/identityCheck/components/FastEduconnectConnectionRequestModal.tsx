@@ -69,16 +69,16 @@ export const FastEduconnectConnectionRequestModal: React.FC<
       <TextQuestion
         onPress={() => openUrl(env.FAQ_LINK_EDUCONNECT_URL)}
         icon={InfoPlain}
-        title={t`C’est quoi ÉduConnect\u00a0?`}
+        wording={t`C’est quoi ÉduConnect\u00a0?`}
       />
 
-      <ButtonPrimary title={t`Identification avec ÉduConnect`} onPress={onPressEduConnect} />
+      <ButtonPrimary wording={t`Identification avec ÉduConnect`} onPress={onPressEduConnect} />
 
       <OrSeparator />
 
       <ButtonTertiaryBlack
         icon={EditPen}
-        title={t`Identification manuelle`}
+        wording={t`Identification manuelle`}
         onPress={onPressManualIdentification}
       />
       <DurationInfoText color={colors.greyDark}>{ubbleETAMessage}</DurationInfoText>

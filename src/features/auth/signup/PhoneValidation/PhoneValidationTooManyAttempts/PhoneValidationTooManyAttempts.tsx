@@ -21,11 +21,11 @@ export function PhoneValidationTooManyAttempts() {
       buttons={[
         <ButtonTertiaryWhite
           key={1}
-          title={t`Contacter le support`}
+          wording={t`Contacter le support`}
           icon={Email}
           onPress={contactSupport.forPhoneNumberConfirmation}
         />,
-        <ButtonPrimaryWhite key={2} title={t`Retourner à l'accueil`} onPress={navigateToHome} />,
+        <ButtonPrimaryWhite key={2} wording={t`Retourner à l'accueil`} onPress={navigateToHome} />,
       ]}>
       <StyledBody>
         {t`Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux\u00a0:`}

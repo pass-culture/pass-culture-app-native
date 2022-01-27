@@ -23,7 +23,7 @@ export interface BaseButtonProps {
   testId?: string
   textLineHeight?: string
   textSize?: number
-  title: string
+  wording: string
   fullWidth?: boolean
   justifyContent?: 'center' | 'flex-start'
   numberOfLines?: number
@@ -61,7 +61,7 @@ const _AppButton = <T extends AppButtonProps>({
   accessibilityLabel,
   accessibilityDescribedBy,
   testId,
-  title,
+  wording,
   textColor,
   textSize,
   textLineHeight,
@@ -74,7 +74,7 @@ const _AppButton = <T extends AppButtonProps>({
   const longPressHandler = disabled || isLoading ? undefined : onLongPress
   return (
     <StyledTouchableOpacity
-      {...accessibilityAndTestId(accessibilityLabel || title, testId || title)}
+      {...accessibilityAndTestId(accessibilityLabel || wording, testId || wording)}
       aria-describedby={accessibilityDescribedBy}
       backgroundColor={backgroundColor}
       fullWidth={fullWidth}
@@ -110,7 +110,7 @@ const _AppButton = <T extends AppButtonProps>({
             icon={Icon}
             iconSize={iconSize}
             numberOfLines={numberOfLines ?? 1}>
-            {title}
+            {wording}
           </Title>
         </Fragment>
       )}

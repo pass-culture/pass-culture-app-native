@@ -74,7 +74,7 @@ export const IdentityCheckHonor = () => {
           <ButtonContainer>
             <ButtonPrimary
               onPress={postHonorStatement}
-              title={t`Valider et continuer`}
+              wording={t`Valider et continuer`}
               isLoading={isLoading}
             />
           </ButtonContainer>

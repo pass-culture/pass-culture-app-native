@@ -16,7 +16,7 @@ export function SeeItineraryButton(props: Props) {
     <Container>
       <ButtonTertiaryBlack
         inline
-        title={t`Voir l'itinéraire`}
+        wording={t`Voir l'itinéraire`}
         onPress={props.openItinerary}
         icon={icon}
       />

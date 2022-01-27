@@ -89,7 +89,7 @@ export const RecreditBirthdayNotification = () => {
       <Spacer.Column numberOfSpaces={5} />
       <ButtonContainer>
         <ButtonPrimary
-          title={t`Continuer`}
+          wording={t`Continuer`}
           onPress={onPressContinue}
           isLoading={isResetRecreditAmountToShowLoading}
         />

@@ -6,5 +6,5 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 export const CheatCodesButton: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
-  return <ButtonPrimary title="CheatCodes" onPress={() => navigate('CheatCodes')} />
+  return <ButtonPrimary wording="CheatCodes" onPress={() => navigate('CheatCodes')} />
 }

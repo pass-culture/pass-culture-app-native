@@ -53,7 +53,7 @@ export const GeolocationActivationModal: React.FC<Props> = ({
         <Spacer.Column numberOfSpaces={6} />
         {isNative ? (
           <ButtonPrimary
-            title={callToActionMessage}
+            wording={callToActionMessage}
             onPress={() => {
               analytics.logOpenLocationSettings()
               onPressGeolocPermissionModalButton()

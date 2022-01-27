@@ -89,12 +89,12 @@ export const WebShareModal = ({
         <Spacer.Column numberOfSpaces={3} />
         <NonSocialButtonsContainer>
           <NonSocialButton
-            title={t`Copier`}
+            wording={t`Copier`}
             icon={Duplicate}
             onPress={() => navigator.clipboard.writeText(url)}
           />
           <NonSocialButton
-            title="E-mail"
+            wording="E-mail"
             icon={EmailFilled}
             onPress={() => window.open('mailto:' + '' + '?subject=' + message + '&body=' + url)}
           />
@@ -102,7 +102,7 @@ export const WebShareModal = ({
             // A message app is only available on mobile or on MacOS device
             isMobileDeviceDetectOnWeb || isMacOsDeviceDetectOnWeb ? (
               <NonSocialButton
-                title="SMS"
+                wording="SMS"
                 icon={SMSFilled}
                 onPress={() => {
                   location.href = `sms:${t`Veuillez choisir un contact`}?&body=${message}: ${url}`
@@ -120,7 +120,7 @@ export const WebShareModal = ({
           ))}
         </SocialButtonsContainer>
         <Spacer.Column numberOfSpaces={8} />
-        <CancelButton title={t`Annuler`} onPress={dismissModal} />
+        <CancelButton wording={t`Annuler`} onPress={dismissModal} />
       </Container>
     </AppModal>
   )

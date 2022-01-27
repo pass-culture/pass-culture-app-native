@@ -112,7 +112,7 @@ export const ReinitializePassword = () => {
           />
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary
-            title={t`Continuer`}
+            wording={t`Continuer`}
             onPress={submitPassword}
             disabled={!allowSubmission || isLoading}
             isLoading={isLoading}

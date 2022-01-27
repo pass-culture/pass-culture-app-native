@@ -48,7 +48,7 @@ export function UnderageAccountCreated() {
       <Text>{text}</Text>
       <Spacer.Column numberOfSpaces={5} />
       <ButtonContainer>
-        <ButtonPrimary title={t`Je découvre les offres`} onPress={navigateToHome} />
+        <ButtonPrimary wording={t`Je découvre les offres`} onPress={navigateToHome} />
       </ButtonContainer>
     </GenericInfoPageWhite>
   )

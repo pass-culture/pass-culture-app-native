@@ -77,7 +77,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
             <Typo.Body>{t`Si tu rencontres des difficultés, tu peux consulter notre centre d'aide.`}</Typo.Body>
           </CenteredText>
           <ButtonTertiary
-            title={t`Consulter notre centre d'aide`}
+            wording={t`Consulter notre centre d'aide`}
             onPress={onConsultHelpSupport}
             icon={Email}
           />

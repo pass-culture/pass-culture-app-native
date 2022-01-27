@@ -44,7 +44,7 @@ export function NavigationNotScreensPages(): JSX.Element {
       <StyledContainer>
         <Row half>
           <NavigationButton
-            title="BrowserNotSupportedPage"
+            wording="BrowserNotSupportedPage"
             onPress={() => setPage(Page.BrowserNotSupportedPage)}
           />
         </Row>

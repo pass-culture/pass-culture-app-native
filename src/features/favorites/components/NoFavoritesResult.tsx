@@ -24,7 +24,7 @@ export const NoFavoritesResult = () => {
       <Spacer.Column numberOfSpaces={6} />
       <ButtonContainer>
         <ButtonPrimary
-          title={t`Explorer les offres`}
+          wording={t`Explorer les offres`}
           onPress={onPressExploreOffers}
           buttonHeight="tall"
         />

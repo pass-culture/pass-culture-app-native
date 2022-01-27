@@ -77,16 +77,16 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
-            title={'IdentityCheck 🎨'}
+            wording={'IdentityCheck 🎨'}
             onPress={() => navigate('NavigationIdentityCheck')}
           />
         </Row>
         <Row half>
-          <NavigationButton title={'Login'} onPress={() => navigate('Login')} />
+          <NavigationButton wording={'Login'} onPress={() => navigate('Login')} />
         </Row>
         <Row half>
           <NavigationButton
-            title={'Signup : email envoyé'}
+            wording={'Signup : email envoyé'}
             onPress={() =>
               navigate('SignupConfirmationEmailSent', {
                 email: 'jean.dupont@gmail.com',
@@ -96,7 +96,7 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
-            title={'Reset mdp lien expiré'}
+            wording={'Reset mdp lien expiré'}
             onPress={() =>
               navigate('ResetPasswordExpiredLink', {
                 email: 'john@wick.com',
@@ -106,7 +106,7 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
-            title={'Account confirmation lien expiré'}
+            wording={'Account confirmation lien expiré'}
             onPress={() =>
               navigate('SignupConfirmationExpiredLink', {
                 email: 'john@wick.com',
@@ -116,7 +116,7 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
-            title={'Signup : Validate Email'}
+            wording={'Signup : Validate Email'}
             onPress={() =>
               navigate('AfterSignupEmailValidationBuffer', {
                 token: 'whichTokenDoYouWantReally',
@@ -127,11 +127,14 @@ export function Navigation(): JSX.Element {
           />
         </Row>
         <Row half>
-          <NavigationButton title={'Account Created'} onPress={() => navigate('AccountCreated')} />
+          <NavigationButton
+            wording={'Account Created'}
+            onPress={() => navigate('AccountCreated')}
+          />
         </Row>
         <Row half>
           <NavigationButton
-            title={'Reset mdp email envoyé'}
+            wording={'Reset mdp email envoyé'}
             onPress={() =>
               navigate('ResetPasswordEmailSent', {
                 email: 'jean.dupont@gmail.com',
@@ -141,13 +144,13 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
-            title={'Vérifier éligibilité'}
+            wording={'Vérifier éligibilité'}
             onPress={() => navigate('VerifyEligibility')}
           />
         </Row>
         <Row half>
           <NavigationButton
-            title={"C'est pour bientôt"}
+            wording={"C'est pour bientôt"}
             onPress={() =>
               navigate('NotYetUnderageEligibility', {
                 eligibilityStartDatetime: new Date('2019-12-01T00:00:00Z').toString(),
@@ -157,25 +160,28 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
-            title={'First Tutorial'}
+            wording={'First Tutorial'}
             onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
           />
         </Row>
         <Row half>
-          <NavigationButton title={'Cultural Survey'} onPress={() => navigate('CulturalSurvey')} />
+          <NavigationButton
+            wording={'Cultural Survey'}
+            onPress={() => navigate('CulturalSurvey')}
+          />
         </Row>
         <Row half>
-          <NavigationButton title="Venue" onPress={() => navigate('Venue', { id: venueId })} />
+          <NavigationButton wording="Venue" onPress={() => navigate('Venue', { id: venueId })} />
         </Row>
         <Row half>
           <NavigationButton
-            title={'Confirm delete profile'}
+            wording={'Confirm delete profile'}
             onPress={() => navigate('ConfirmDeleteProfile')}
           />
         </Row>
         <Row half>
           <NavigationButton
-            title={'Erreur rendering'}
+            wording={'Erreur rendering'}
             onPress={() => {
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
               // @ts-expect-error
@@ -186,7 +192,7 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
-            title={
+            wording={
               asyncTestReqCount < MAX_ASYNC_TEST_REQ_COUNT
                 ? `${MAX_ASYNC_TEST_REQ_COUNT} erreurs asynchrones`
                 : 'OK'
@@ -197,25 +203,25 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
-            title={'Eighteen Birthday'}
+            wording={'Eighteen Birthday'}
             onPress={() => navigate('EighteenBirthday')}
           />
         </Row>
         <Row half>
           <NavigationButton
-            title={'Réglages notifications'}
+            wording={'Réglages notifications'}
             onPress={() => navigate('NotificationSettings')}
           />
         </Row>
         <Row half>
           <NavigationButton
-            title={'Réglages cookies'}
+            wording={'Réglages cookies'}
             onPress={() => navigate('ConsentSettings', { onGoBack: () => null })}
           />
         </Row>
         <Row half>
           <NavigationButton
-            title={`Distance to Eiffel Tower`}
+            wording={`Distance to Eiffel Tower`}
             onPress={() => {
               Alert.alert(distanceToEiffelTower || 'Authorize geolocation first')
             }}
@@ -224,13 +230,13 @@ export function Navigation(): JSX.Element {
         <Row half>
           <LandscapePositionPage isVisible={isLandscapeVisible} />
           <NavigationButton
-            title={'Tu es en paysage !'}
+            wording={'Tu es en paysage !'}
             onPress={() => setIsLandscapeVisible(true)}
           />
         </Row>
         <Row half>
           <NavigationButton
-            title={`Maintenance Page`}
+            wording={`Maintenance Page`}
             onPress={() =>
               setScreenError(
                 new ScreenError('Test maintenance page', () => (
@@ -242,79 +248,85 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <NavigationButton
-            title={`ForceUpdate Page`}
+            wording={`ForceUpdate Page`}
             onPress={() => setScreenError(new ScreenError('Test force update page', ForceUpdate))}
           />
         </Row>
         <Row half>
           <NavigationButton
-            title={`Beneficiary request sent`}
+            wording={`Beneficiary request sent`}
             onPress={() => navigate('BeneficiaryRequestSent')}
           />
         </Row>
         <Row half>
-          <NavigationButton title={`PhoneValidation`} onPress={() => navigate('SetPhoneNumber')} />
+          <NavigationButton
+            wording={`PhoneValidation`}
+            onPress={() => navigate('SetPhoneNumber')}
+          />
         </Row>
         <Row half>
           <NavigationButton
-            title={`Pages non écrans`}
+            wording={`Pages non écrans`}
             onPress={() => navigate('NavigationNotScreensPages')}
           />
         </Row>
         <Row half>
           <NavigationButton
-            title={`Phone validation too many attempts`}
+            wording={`Phone validation too many attempts`}
             onPress={() => navigate('PhoneValidationTooManyAttempts')}
           />
         </Row>
         <Row half>
           <NavigationButton
-            title={`Phone validation too many SMS sent`}
+            wording={`Phone validation too many SMS sent`}
             onPress={() => navigate('PhoneValidationTooManySMSSent')}
           />
         </Row>
         <Row half>
           <NavigationButton
-            title={`Offre inexistante`}
+            wording={`Offre inexistante`}
             onPress={() => navigate('Offer', { id: 0, from: 'search' })}
           />
         </Row>
         <Row half>
           <NavigationButton
-            title={`Booking Confirmation`}
+            wording={`Booking Confirmation`}
             onPress={() => navigate('BookingConfirmation', { offerId: 11224, bookingId: 1240 })}
           />
         </Row>
         <Row half>
-          <NavigationButton title={`Modifier mon e-mail`} onPress={() => navigate('ChangeEmail')} />
+          <NavigationButton
+            wording={`Modifier mon e-mail`}
+            onPress={() => navigate('ChangeEmail')}
+          />
         </Row>
         <Row half>
           <NavigationButton
-            title={'Change e-mail lien expiré'}
+            wording={'Change e-mail lien expiré'}
             onPress={() => navigate('ChangeEmailExpiredLink')}
           />
         </Row>
         <Row half>
           <NavigationButton
-            title={'Générateur de deeplinks'}
+            wording={'Générateur de deeplinks'}
             onPress={() => navigate('DeeplinksGenerator')}
           />
         </Row>
         <Row half>
           <NavigationButton
-            title={`Notification rechargement crédit`}
+            wording={`Notification rechargement crédit`}
             onPress={() => navigate('RecreditBirthdayNotification')}
           />
         </Row>
         <Row half>
           <NavigationButton
-            title={'Underage account created'}
+            wording={'Underage account created'}
             onPress={() => navigate('UnderageAccountCreated')}
           />
         </Row>
         <Row half>
           <NavigationButton
-            title={'Contentful KO error'}
+            wording={'Contentful KO error'}
             onPress={() =>
               setScreenError(
                 new ScreenError(

@@ -59,12 +59,12 @@ export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
         <Explanation>{t`Tu pourras retrouver l’offre dans tes réservations teminées`}</Explanation>
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary
-          title={t`Terminer ma réservation`}
+          wording={t`Terminer ma réservation`}
           onPress={terminateCancel}
           disabled={isLoading}
         />
         <Spacer.Column numberOfSpaces={3} />
-        <ButtonTertiary title={t`Retourner à ma réservation`} onPress={props.onDismiss} />
+        <ButtonTertiary wording={t`Retourner à ma réservation`} onPress={props.onDismiss} />
       </ModalContent>
     </AppModal>
   )

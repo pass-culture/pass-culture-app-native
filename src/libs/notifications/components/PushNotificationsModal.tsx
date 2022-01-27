@@ -44,7 +44,7 @@ export const PushNotificationsModal: React.FC<Props> = ({
       </InformationText>
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
-        title={t`Autoriser les notifications`}
+        wording={t`Autoriser les notifications`}
         onPress={() => {
           analytics.logOpenNotificationSettings()
           onRequestPermission()

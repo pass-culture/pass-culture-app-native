@@ -28,7 +28,7 @@ export function ChangeEmailExpiredLink() {
 
   const resendEmailButtonText = isLoggedIn ? t`Faire une nouvelle demande` : t`Se connecter`
   const renderResendEmailButton = () => (
-    <ButtonPrimaryWhite title={resendEmailButtonText} onPress={changeEmailExpiredLink} />
+    <ButtonPrimaryWhite wording={resendEmailButtonText} onPress={changeEmailExpiredLink} />
   )
 
   return (

@@ -52,7 +52,7 @@ export const ReportOfferOtherReason: FunctionComponent<Props> = (props) => {
       <LargeTextInput value={inputText} onChangeText={setInputText} maxLength={200} />
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
-        title={t`Signaler l'offre`}
+        wording={t`Signaler l'offre`}
         disabled={!inputText}
         onPress={reportOffer}
         testId="report-other-button"

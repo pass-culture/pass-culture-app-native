@@ -63,7 +63,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
       </StyledCheckBox>
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
-        title={t`Continuer`}
+        wording={t`Continuer`}
         accessibilityLabel={props.accessibilityLabelForNextStep}
         onPress={validateEmail}
         isLoading={false}

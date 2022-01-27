@@ -7,7 +7,7 @@ import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 
 export const OpenInboxButton = () => (
   <ButtonPrimary
-    title={t`Consulter mes e-mails`}
+    wording={t`Consulter mes e-mails`}
     onPress={openInbox}
     icon={ExternalSite}
     iconSize={20}

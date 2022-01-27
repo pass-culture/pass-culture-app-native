@@ -161,7 +161,7 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
               <Spacer.Column numberOfSpaces={8} />
             )}
             <ButtonPrimary
-              title={getButtonTitle()}
+              wording={getButtonTitle()}
               disabled={!isContinueButtonEnabled}
               onPress={requestSendPhoneValidationCode}
               isLoading={isLoading}

@@ -24,7 +24,7 @@ export function NoBookingsView() {
       <Spacer.Column numberOfSpaces={8} />
       <ButtonContainer>
         <ButtonPrimary
-          title={t`Explorer les offres`}
+          wording={t`Explorer les offres`}
           onPress={onPressExploreOffers}
           buttonHeight="tall"
         />

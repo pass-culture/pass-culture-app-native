@@ -44,7 +44,7 @@ export const SomeAdviceBeforeIdentityCheckModal: FunctionComponent<Props> = ({
       <Instruction title={t`Place-toi dans un lieu bien éclairé`} Icon={Sun} />
       <Instruction title={t`Cadre l’intégralité de ton document`} Icon={IdCard} />
     </Instructions>
-    <ButtonPrimary title={t`J'ai compris`} onPress={onPressContinue} />
+    <ButtonPrimary wording={t`J'ai compris`} onPress={onPressContinue} />
   </AppModal>
 )
 
