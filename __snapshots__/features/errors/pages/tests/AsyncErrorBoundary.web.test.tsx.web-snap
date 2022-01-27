@@ -47,7 +47,11 @@ Object {
         >
           <div
             class="css-view-1dbjc4n"
-            style="height: 36px;"
+            style="height: 16px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           />
           <div
             class="css-view-1dbjc4n"
@@ -61,7 +65,7 @@ Object {
           </div>
           <div
             class="css-view-1dbjc4n"
-            style="height: 36px;"
+            style="height: 20px;"
           />
           <div
             class="css-text-901oao"
@@ -83,7 +87,11 @@ Object {
           </div>
           <div
             class="css-view-1dbjc4n"
-            style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
+            style="height: 40px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           >
             <div
               aria-label="Réessayer"
@@ -101,6 +109,10 @@ Object {
               </div>
             </div>
           </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+          />
           <div
             class="css-view-1dbjc4n"
             style="height: 8px;"
@@ -152,7 +164,11 @@ Object {
       >
         <div
           class="css-view-1dbjc4n"
-          style="height: 36px;"
+          style="height: 16px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         />
         <div
           class="css-view-1dbjc4n"
@@ -166,7 +182,7 @@ Object {
         </div>
         <div
           class="css-view-1dbjc4n"
-          style="height: 36px;"
+          style="height: 20px;"
         />
         <div
           class="css-text-901oao"
@@ -188,7 +204,11 @@ Object {
         </div>
         <div
           class="css-view-1dbjc4n"
-          style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
+          style="height: 40px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+          style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         >
           <div
             aria-label="Réessayer"
@@ -206,6 +226,10 @@ Object {
             </div>
           </div>
         </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+        />
         <div
           class="css-view-1dbjc4n"
           style="height: 8px;"

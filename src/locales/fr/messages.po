@@ -642,6 +642,10 @@ msgstr "Copier dans le press-papier"
 msgid "Cours et pratique artistiques"
 msgstr "Cours et pratique artistiques"
 
+#: src/features/auth/components/PasswordSecurityRules.tsx
+msgid "Critères à respecter"
+msgstr "Critères à respecter"
+
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Création de compte"
 msgstr "Création de compte"
@@ -2522,8 +2526,8 @@ msgid "Tu as déjà un compte ?"
 msgstr "Tu as déjà un compte ?"
 
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
-msgid "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux :"
-msgstr "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux :"
+msgid "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux contacter le support."
+msgstr "Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux contacter le support."
 
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
 msgid "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures !"

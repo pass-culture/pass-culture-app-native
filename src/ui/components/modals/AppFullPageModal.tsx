@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { Modal, Platform, TouchableOpacity, useWindowDimensions } from 'react-native'
+import { Modal, TouchableOpacity, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { theme } from 'theme'
@@ -35,5 +35,4 @@ const Container = styled(TouchableOpacity)<{ maxHeight: number }>(({ maxHeight, 
   height: '100%',
   maxWidth: theme.appContentWidth,
   maxHeight: !theme.isMobileViewport ? maxHeight : '100%',
-  paddingBottom: theme.isMobileViewport && Platform.OS === 'web' ? theme.tabBarHeight : 0,
 }))

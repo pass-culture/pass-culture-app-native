@@ -96,7 +96,7 @@ exports[`<LandscapePositionPage /> should match snapshot with default message 1`
         className="css-view-1dbjc4n"
         style={
           Object {
-            "height": "36px",
+            "height": "16px",
           }
         }
       />
@@ -114,7 +114,7 @@ exports[`<LandscapePositionPage /> should match snapshot with default message 1`
         className="css-view-1dbjc4n"
         style={
           Object {
-            "height": "36px",
+            "height": "20px",
           }
         }
       />

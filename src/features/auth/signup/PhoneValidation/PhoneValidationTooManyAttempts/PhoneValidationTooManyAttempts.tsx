@@ -28,7 +28,7 @@ export function PhoneValidationTooManyAttempts() {
         <ButtonPrimaryWhite key={2} wording={t`Retourner à l'accueil`} onPress={navigateToHome} />,
       ]}>
       <StyledBody>
-        {t`Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux\u00a0:`}
+        {t`Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux contacter le support.`}
       </StyledBody>
     </GenericInfoPage>
   )
