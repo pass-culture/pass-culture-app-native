@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SetName/> should render correctly 1`] = `
+exports[`<SetCity/> should render correctly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
@@ -64,22 +64,65 @@ Object {
                   class="css-view-1dbjc4n"
                   style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
                 >
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="align-items: center; width: 100%;"
+                  <form
+                    class="sc-hKwDye iARjhg"
                   >
                     <div
-                      class="css-text-901oao"
-                      dir="auto"
-                      style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+                      class="css-view-1dbjc4n"
+                      style="align-items: center; width: 100%;"
                     >
-                      Comment t'appelles-tu ?
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                        style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+                      >
+                        Dans quelle ville résides-tu ?
+                      </div>
                     </div>
-                  </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="height: 20px;"
-                  />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 20px;"
+                    />
+                    <label
+                      class="sc-gsDKAQ feJuLU"
+                      for="testUuidV4"
+                    >
+                      Indique ton code postal et choisis ta ville
+                    </label>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+                    >
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="width: 4px;"
+                      />
+                      <input
+                        aria-label="Entrée pour le code postal"
+                        autocapitalize="sentences"
+                        autocomplete="on"
+                        autocorrect="off"
+                        class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
+                        data-testid="Entrée pour le code postal"
+                        dir="auto"
+                        enterkeyhint="search"
+                        id="testUuidV4"
+                        inputmode="numeric"
+                        placeholder="Ex : 75017"
+                        spellcheck="false"
+                        style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
+                        value=""
+                      />
+                    </div>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="height: 8px;"
+                    />
+                  </form>
                 </div>
                 <div
                   class="css-view-1dbjc4n"
@@ -89,70 +132,10 @@ Object {
                     class="css-view-1dbjc4n"
                     style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                   >
-                    <form
-                      class="sc-gsDKAQ dunkbr"
-                    >
-                      <label
-                        class="sc-bdvvtL lavEYF"
-                        for="testUuidV4"
-                      >
-                        Prénom
-                      </label>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="height: 8px;"
-                      />
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
-                      >
-                        <input
-                          autocapitalize="sentences"
-                          autocomplete="on"
-                          autocorrect="on"
-                          class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
-                          dir="auto"
-                          id="testUuidV4"
-                          placeholder="Ton prénom"
-                          spellcheck="true"
-                          style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
-                          type="text"
-                          value=""
-                        />
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="height: 24px;"
-                      />
-                      <label
-                        class="sc-bdvvtL lavEYF"
-                        for="testUuidV4"
-                      >
-                        Nom
-                      </label>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="height: 8px;"
-                      />
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
-                      >
-                        <input
-                          autocapitalize="sentences"
-                          autocomplete="on"
-                          autocorrect="on"
-                          class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
-                          dir="auto"
-                          id="testUuidV4"
-                          placeholder="Ton nom"
-                          spellcheck="true"
-                          style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
-                          type="text"
-                          value=""
-                        />
-                      </div>
-                    </form>
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="box-sizing: content-box; flex-grow: 1; overflow-y: scroll;"
+                    />
                   </div>
                 </div>
                 <div
@@ -261,22 +244,65 @@ Object {
                 class="css-view-1dbjc4n"
                 style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
               >
-                <div
-                  class="css-view-1dbjc4n"
-                  style="align-items: center; width: 100%;"
+                <form
+                  class="sc-hKwDye iARjhg"
                 >
                   <div
-                    class="css-text-901oao"
-                    dir="auto"
-                    style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+                    class="css-view-1dbjc4n"
+                    style="align-items: center; width: 100%;"
                   >
-                    Comment t'appelles-tu ?
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                      style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+                    >
+                      Dans quelle ville résides-tu ?
+                    </div>
                   </div>
-                </div>
-                <div
-                  class="css-view-1dbjc4n"
-                  style="height: 20px;"
-                />
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="height: 20px;"
+                  />
+                  <label
+                    class="sc-gsDKAQ feJuLU"
+                    for="testUuidV4"
+                  >
+                    Indique ton code postal et choisis ta ville
+                  </label>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="height: 8px;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+                  >
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="width: 4px;"
+                    />
+                    <input
+                      aria-label="Entrée pour le code postal"
+                      autocapitalize="sentences"
+                      autocomplete="on"
+                      autocorrect="off"
+                      class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
+                      data-testid="Entrée pour le code postal"
+                      dir="auto"
+                      enterkeyhint="search"
+                      id="testUuidV4"
+                      inputmode="numeric"
+                      placeholder="Ex : 75017"
+                      spellcheck="false"
+                      style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
+                      value=""
+                    />
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="height: 8px;"
+                  />
+                </form>
               </div>
               <div
                 class="css-view-1dbjc4n"
@@ -286,70 +312,10 @@ Object {
                   class="css-view-1dbjc4n"
                   style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                 >
-                  <form
-                    class="sc-gsDKAQ dunkbr"
-                  >
-                    <label
-                      class="sc-bdvvtL lavEYF"
-                      for="testUuidV4"
-                    >
-                      Prénom
-                    </label>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="height: 8px;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
-                    >
-                      <input
-                        autocapitalize="sentences"
-                        autocomplete="on"
-                        autocorrect="on"
-                        class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
-                        dir="auto"
-                        id="testUuidV4"
-                        placeholder="Ton prénom"
-                        spellcheck="true"
-                        style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
-                        type="text"
-                        value=""
-                      />
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="height: 24px;"
-                    />
-                    <label
-                      class="sc-bdvvtL lavEYF"
-                      for="testUuidV4"
-                    >
-                      Nom
-                    </label>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="height: 8px;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
-                    >
-                      <input
-                        autocapitalize="sentences"
-                        autocomplete="on"
-                        autocorrect="on"
-                        class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
-                        dir="auto"
-                        id="testUuidV4"
-                        placeholder="Ton nom"
-                        spellcheck="true"
-                        style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
-                        type="text"
-                        value=""
-                      />
-                    </div>
-                  </form>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="box-sizing: content-box; flex-grow: 1; overflow-y: scroll;"
+                  />
                 </div>
               </div>
               <div

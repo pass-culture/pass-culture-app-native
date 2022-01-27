@@ -5,7 +5,11 @@ import { navigateFromRef } from 'features/navigation/navigationRef'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
+import { TabParamList } from 'features/navigation/TabBar/types'
 import { Spacer, getShadow, getSpacing } from 'ui/theme'
+import { Link } from 'ui/web/link/Link'
+import { Li } from 'ui/web/list/Li'
+import { Ul } from 'ui/web/list/Ul'
 
 import { NavItem } from './NavItem'
 
@@ -17,32 +21,30 @@ type Props = {
 
 export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
   const { tabRoutes } = useTabNavigationContext()
+
+  const onPress = (name: keyof TabParamList) => {
+    navigateFromRef(...getTabNavConfig(name, undefined))
+  }
+
   return (
     <NavItemsContainer maxWidth={maxWidth} height={height} noShadow={noShadow}>
-      {tabRoutes.map((route, index) => {
-        const onPress = () => {
-          navigateFromRef(...getTabNavConfig(route.name, undefined))
-        }
-        const key = `key-tab-nav-${route.name}`
-        function renderNavItem() {
-          return (
-            <NavItem
-              key={key}
-              tabName={route.name}
-              isSelected={route.isSelected}
-              BicolorIcon={mapTabRouteToBicolorIcon(route.name)}
-              onPress={onPress}
-            />
-          )
-        }
-        if (index === 0) return renderNavItem()
-        return (
-          <React.Fragment key={key}>
-            <Spacer.Row numberOfSpaces={1.5} />
-            {renderNavItem()}
+      <Ul>
+        {tabRoutes.map((route, index) => (
+          <React.Fragment key={`key-tab-nav-${route.name}`}>
+            {index > 0 && <Spacer.Row numberOfSpaces={1.5} />}
+            <Li>
+              <Link to={{ screen: route.name, params: undefined }}>
+                <NavItem
+                  tabName={route.name}
+                  isSelected={route.isSelected}
+                  BicolorIcon={mapTabRouteToBicolorIcon(route.name)}
+                  onPress={() => onPress(route.name)}
+                />
+              </Link>
+            </Li>
           </React.Fragment>
-        )
-      })}
+        ))}
+      </Ul>
     </NavItemsContainer>
   )
 }

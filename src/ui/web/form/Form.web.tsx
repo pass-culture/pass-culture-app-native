@@ -1,27 +1,17 @@
-import React, { ReactNode } from 'react'
-import styled from 'styled-components/native'
+import styled from 'styled-components'
 
-type Props = {
-  children: ReactNode
-}
-
-function MaxWidth(props: Props) {
-  // @ts-ignore: typescript is not maintained by react-native-web
-  return <MaxWidthContainer accessibilityRole="form">{props.children}</MaxWidthContainer>
-}
-
-function Flex(props: Props) {
-  // @ts-ignore: typescript is not maintained by react-native-web
-  return <FlexContainer accessibilityRole="form">{props.children}</FlexContainer>
-}
-
-const MaxWidthContainer = styled.View(({ theme }) => ({
+const MaxWidth = styled.form(({ theme }) => ({
+  display: 'flex',
+  flex: 1,
+  flexDirection: 'column',
   width: '100%',
   maxWidth: theme.forms.maxWidth,
 }))
 
-const FlexContainer = styled.View({
+const Flex = styled.form({
+  display: 'flex',
   flex: 1,
+  flexDirection: 'column',
 })
 
 export const Form = { Flex, MaxWidth }
