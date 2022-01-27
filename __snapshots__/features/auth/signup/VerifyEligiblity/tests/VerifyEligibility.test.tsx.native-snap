@@ -223,6 +223,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       >
         <Text
           adjustsFontSizeToFit={false}
+          iconSize={24}
           numberOfLines={1}
           style={
             Array [

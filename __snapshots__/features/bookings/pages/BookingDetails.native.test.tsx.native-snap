@@ -1061,6 +1061,7 @@ exports[`BookingDetails should render correctly 1`] = `
                 >
                   <Text
                     adjustsFontSizeToFit={false}
+                    iconSize={24}
                     numberOfLines={1}
                     style={
                       Array [

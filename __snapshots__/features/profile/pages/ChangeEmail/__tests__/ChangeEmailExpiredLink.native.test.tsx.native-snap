@@ -248,6 +248,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
       >
         <Text
           adjustsFontSizeToFit={false}
+          iconSize={24}
           numberOfLines={1}
           style={
             Array [
@@ -604,6 +605,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
       >
         <Text
           adjustsFontSizeToFit={false}
+          iconSize={24}
           numberOfLines={1}
           style={
             Array [
