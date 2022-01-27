@@ -125,6 +125,9 @@ export interface AppThemeType {
       secondary: {
         borderColor: ColorsEnum
       }
+      secondaryWhite: {
+        borderColor: ColorsEnum
+      }
     }
     disabled: {
       primary: {
@@ -136,6 +139,11 @@ export interface AppThemeType {
         textColor: ColorsEnum
       }
       secondary: {
+        borderColor: ColorsEnum
+        textColor: ColorsEnum
+        iconColor: ColorsEnum
+      }
+      secondaryWhite: {
         borderColor: ColorsEnum
         textColor: ColorsEnum
         iconColor: ColorsEnum
@@ -174,6 +182,13 @@ export interface AppThemeType {
       backgroundColor: ColorsEnum
     }
     secondary: {
+      loadingIconColor: ColorsEnum
+      iconColor: ColorsEnum
+      textColor: ColorsEnum
+      backgroundColor: ColorsEnum
+      borderColor: ColorsEnum
+    }
+    secondaryWhite: {
       loadingIconColor: ColorsEnum
       iconColor: ColorsEnum
       textColor: ColorsEnum
@@ -341,6 +356,9 @@ export const theme: AppThemeType = {
       secondary: {
         borderColor: ColorsEnum.PRIMARY,
       },
+      secondaryWhite: {
+        borderColor: ColorsEnum.PRIMARY_DARK,
+      },
     },
     disabled: {
       primary: {
@@ -355,6 +373,11 @@ export const theme: AppThemeType = {
         borderColor: ColorsEnum.PRIMARY_DISABLED,
         textColor: ColorsEnum.PRIMARY_DISABLED,
         iconColor: ColorsEnum.PRIMARY_DISABLED,
+      },
+      secondaryWhite: {
+        borderColor: ColorsEnum.GREY_DARK,
+        textColor: ColorsEnum.GREY_DARK,
+        iconColor: ColorsEnum.GREY_DARK,
       },
       tertiary: {
         textColor: ColorsEnum.PRIMARY_DISABLED,
@@ -395,6 +418,13 @@ export const theme: AppThemeType = {
       textColor: ColorsEnum.PRIMARY,
       backgroundColor: ColorsEnum.TRANSPARENT,
       borderColor: ColorsEnum.PRIMARY_DISABLED,
+    },
+    secondaryWhite: {
+      loadingIconColor: ColorsEnum.PRIMARY_DARK,
+      iconColor: ColorsEnum.WHITE,
+      textColor: ColorsEnum.WHITE,
+      backgroundColor: ColorsEnum.TRANSPARENT,
+      borderColor: ColorsEnum.WHITE,
     },
     tertiary: {
       textColor: ColorsEnum.PRIMARY,

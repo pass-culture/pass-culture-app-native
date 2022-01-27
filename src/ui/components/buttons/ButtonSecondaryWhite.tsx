@@ -1,30 +1,34 @@
 import React, { FunctionComponent } from 'react'
+import styled from 'styled-components/native'
 
 import { AppButton, BaseButtonProps } from 'ui/components/buttons/AppButton'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 export const ButtonSecondaryWhite: FunctionComponent<BaseButtonProps> = (props) => {
-  let textColor = ColorsEnum.WHITE
-  const backgroundColor = ColorsEnum.TRANSPARENT
-  let borderColor = ColorsEnum.WHITE
-  const loadingIconColor = ColorsEnum.PRIMARY_DARK
-  let iconColor = ColorsEnum.WHITE
+  return <StyledAppButton {...props} />
+}
 
-  if (props.isLoading) {
-    borderColor = ColorsEnum.PRIMARY_DARK
-  } else if (props.disabled) {
-    borderColor = textColor = iconColor = ColorsEnum.GREY_DARK
+const StyledAppButton = styled(AppButton).attrs(({ theme, isLoading, disabled }) => {
+  const { buttons, icons } = theme
+  const loadingIconColor = buttons.secondaryWhite.loadingIconColor
+  let iconColor = buttons.secondaryWhite.iconColor
+  let textColor = buttons.secondaryWhite.textColor
+  const backgroundColor = buttons.secondaryWhite.backgroundColor
+  let borderColor = buttons.secondaryWhite.borderColor
+
+  if (isLoading) {
+    borderColor = buttons.loading.secondaryWhite.borderColor
+  } else if (disabled) {
+    textColor = buttons.disabled.secondaryWhite.textColor
+    iconColor = buttons.disabled.secondaryWhite.iconColor
+    borderColor = buttons.disabled.secondaryWhite.borderColor
   }
 
-  return (
-    <AppButton
-      {...props}
-      loadingIconColor={loadingIconColor}
-      backgroundColor={backgroundColor}
-      iconColor={iconColor}
-      textColor={textColor}
-      borderColor={borderColor}
-    />
-  )
-}
+  return {
+    iconSize: icons.sizes.small,
+    loadingIconColor: loadingIconColor,
+    backgroundColor: backgroundColor,
+    iconColor: iconColor,
+    textColor: textColor,
+    borderColor: borderColor,
+  }
+})``
