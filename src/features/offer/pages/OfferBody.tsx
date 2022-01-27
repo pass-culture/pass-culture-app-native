@@ -152,8 +152,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
       <SectionWithDivider
         visible={!!user && (isUserBeneficiary(user) || isUserExBeneficiary(user))}
         margin={true}>
-        <Spacer.Column numberOfSpaces={7} />
-        <SectionBody>
+        <SectionReportOffer>
           <ButtonTertiaryBlack
             inline
             wording={
@@ -163,8 +162,9 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
             icon={() => <Flag size={24} />}
             onPress={showReportOfferDescription}
             testId={'report-offer-body'}
+            justifyContent="flex-start"
           />
-        </SectionBody>
+        </SectionReportOffer>
       </SectionWithDivider>
 
       <ReportOfferModal
@@ -186,6 +186,10 @@ const Container = styled.ScrollView({ overflow: 'visible' })
 const OfferTitle = styled(Typo.Title3)({ textAlign: 'center' })
 const SectionTitle = styled(Typo.Title4)({ paddingVertical: getSpacing(6) })
 const SectionBody = styled(Typo.Body)({ marginTop: -getSpacing(2), paddingBottom: getSpacing(6) })
+const SectionReportOffer = styled.View({
+  paddingVertical: getSpacing(5),
+  marginLeft: -getSpacing(2),
+})
 
 const MarginContainer = styled.View({
   marginHorizontal: getSpacing(6),
