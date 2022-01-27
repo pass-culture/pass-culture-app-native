@@ -149,6 +149,7 @@ exports[`<ReCaptcha /> should render correctly 1`] = `
         ]
       }
       testID="recaptcha-webview"
+      textInteractionEnabled={true}
       useSharedProcessPool={true}
     />
   </View>
