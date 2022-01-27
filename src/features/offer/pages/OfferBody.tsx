@@ -172,6 +172,10 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
         dismissModal={hideReportOfferDescription}
         offerId={offerId}
       />
+
+      <SectionWithDivider visible>
+        <Spacer.Column numberOfSpaces={6} />
+      </SectionWithDivider>
     </Container>
   )
 }
