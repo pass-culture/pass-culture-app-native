@@ -106,60 +106,64 @@ Object {
                   data-testid="modalContainer"
                   style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 20px 20px 20px 20px; width: 100%;"
                 >
-                  <div
-                    class="css-view-1dbjc4n"
-                    data-testid="modalHeader"
-                    style="display: flex; flex-direction: row; justify-content: center; width: 100%;"
+                  <header
+                    class="sc-bdvvtL gqNVAp"
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      style="align-items: flex-start; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-start;"
+                      data-testid="modalHeader"
+                      style="display: flex; flex-direction: row; justify-content: center; width: 100%;"
                     >
                       <div
-                        aria-label="leftIconButton"
                         class="css-view-1dbjc4n"
-                        data-testid="leftIconButton"
-                        style="cursor: pointer; margin-left: -8px; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
-                        tabindex="0"
-                      />
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 0.8; flex-shrink: 1; justify-content: center; padding-left: 12px; padding-right: 12px; z-index: 1;"
-                    >
-                      <div
-                        class="css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
-                        style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
-                      >
-                        Partager l'offre
-                      </div>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="align-items: flex-start; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-end;"
-                    >
-                      <div
-                        aria-label="Fermer la modale"
-                        class="css-view-1dbjc4n"
-                        data-testid="Fermer la modale"
-                        style="cursor: pointer; margin-right: -8px; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
-                        tabindex="0"
+                        style="align-items: flex-start; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-start;"
                       >
                         <div
+                          aria-label="leftIconButton"
                           class="css-view-1dbjc4n"
-                          data-testid="rightIcon"
+                          data-testid="leftIconButton"
+                          style="cursor: pointer; margin-left: -8px; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                          tabindex="0"
+                        />
+                      </div>
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="flex-basis: 0px; flex-grow: 0.8; flex-shrink: 1; justify-content: center; padding-left: 12px; padding-right: 12px; z-index: 1;"
+                      >
+                        <div
+                          class="css-text-901oao css-textMultiLine-cens5h"
+                          dir="auto"
+                          style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
+                        >
+                          Partager l'offre
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="align-items: flex-start; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-end;"
+                      >
+                        <div
+                          aria-label="Fermer la modale"
+                          class="css-view-1dbjc4n"
+                          data-testid="Fermer la modale"
+                          style="cursor: pointer; margin-right: -8px; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                          tabindex="0"
                         >
                           <div
-                            class="css-text-901oao"
-                            dir="auto"
+                            class="css-view-1dbjc4n"
+                            data-testid="rightIcon"
                           >
-                            rightIcon-SVG-Mock
+                            <div
+                              class="css-text-901oao"
+                              dir="auto"
+                            >
+                              rightIcon-SVG-Mock
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </header>
                   <div
                     class="css-view-1dbjc4n"
                     style="height: 20px;"

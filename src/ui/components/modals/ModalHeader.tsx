@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
 import { getSpacing, Typo } from 'ui/theme'
+import { Header } from 'ui/web/global/Header'
 
 import { ModalIconProps } from './types'
 
@@ -28,29 +29,31 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
 }) => {
   const TitleComponent = boldTitle ? BoldTitle : Title
   return (
-    <HeaderContainer onLayout={onLayout} testID="modalHeader">
-      <LeftHeaderActionContainer>
-        <LeftHeaderAction
-          onPress={onLeftIconPress}
-          {...accessibilityAndTestId(leftIconAccessibilityLabel)}>
-          {!!LeftIcon && <LeftIcon size={getSpacing(5)} testID="leftIcon" />}
-        </LeftHeaderAction>
-      </LeftHeaderActionContainer>
-      <TitleContainer>
-        <TitleComponent numberOfLines={numberOfLines}>{title}</TitleComponent>
-      </TitleContainer>
-      <RightHeaderActionContainer>
-        <RightHeaderAction
-          onPress={onRightIconPress}
-          {...accessibilityAndTestId(rightIconAccessibilityLabel)}>
-          {!!RightIcon && <RightIcon size={getSpacing(5)} testID="rightIcon" />}
-        </RightHeaderAction>
-      </RightHeaderActionContainer>
-    </HeaderContainer>
+    <Header>
+      <Container onLayout={onLayout} testID="modalHeader">
+        <LeftHeaderActionContainer>
+          <LeftHeaderAction
+            onPress={onLeftIconPress}
+            {...accessibilityAndTestId(leftIconAccessibilityLabel)}>
+            {!!LeftIcon && <LeftIcon size={getSpacing(5)} testID="leftIcon" />}
+          </LeftHeaderAction>
+        </LeftHeaderActionContainer>
+        <TitleContainer>
+          <TitleComponent numberOfLines={numberOfLines}>{title}</TitleComponent>
+        </TitleContainer>
+        <RightHeaderActionContainer>
+          <RightHeaderAction
+            onPress={onRightIconPress}
+            {...accessibilityAndTestId(rightIconAccessibilityLabel)}>
+            {!!RightIcon && <RightIcon size={getSpacing(5)} testID="rightIcon" />}
+          </RightHeaderAction>
+        </RightHeaderActionContainer>
+      </Container>
+    </Header>
   )
 }
 
-const HeaderContainer = styled.View({
+const Container = styled.View({
   display: 'flex',
   width: '100%',
   flexDirection: 'row',
