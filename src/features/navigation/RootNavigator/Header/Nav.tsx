@@ -1,11 +1,12 @@
 import React from 'react'
-import styled from 'styled-components/native'
+import styled from 'styled-components'
 
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { TabParamList } from 'features/navigation/TabBar/types'
+import { theme } from 'theme'
 import { Spacer, getShadow, getSpacing } from 'ui/theme'
 import { Link } from 'ui/web/link/Link'
 import { Li } from 'ui/web/list/Li'
@@ -49,11 +50,12 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
   )
 }
 
-const NavItemsContainer = styled.View<{
+const NavItemsContainer = styled.nav<{
   maxWidth?: number
   height?: number
   noShadow?: boolean
-}>(({ maxWidth, theme, height, noShadow }) => ({
+}>(({ maxWidth, height, noShadow }) => ({
+  display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
