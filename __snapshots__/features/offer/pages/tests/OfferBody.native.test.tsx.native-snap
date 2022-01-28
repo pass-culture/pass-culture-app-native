@@ -1259,31 +1259,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                   },
                 ]
               }
-            >
-              <View
-                accessibilityLabel="leftIconButton"
-                accessible={true}
-                focusable={false}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "marginLeft": -8,
-                    "opacity": 1,
-                    "paddingBottom": 4,
-                    "paddingLeft": 4,
-                    "paddingRight": 4,
-                    "paddingTop": 4,
-                  }
-                }
-                testID="leftIconButton"
-              />
-            </View>
+            />
             <View
               style={
                 Array [
@@ -1343,7 +1319,6 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                 onStartShouldSetResponder={[Function]}
                 style={
                   Object {
-                    "marginRight": -8,
                     "opacity": 1,
                     "paddingBottom": 4,
                     "paddingLeft": 4,

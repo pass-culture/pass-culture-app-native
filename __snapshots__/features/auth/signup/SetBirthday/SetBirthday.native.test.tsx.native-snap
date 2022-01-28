@@ -514,33 +514,7 @@ Array [
                 },
               ]
             }
-          >
-            <View
-              accessibilityLabel="leftIconButton"
-              accessible={true}
-              collapsable={false}
-              focusable={false}
-              nativeID="animatedComponent"
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "marginLeft": -8,
-                  "opacity": 1,
-                  "paddingBottom": 4,
-                  "paddingLeft": 4,
-                  "paddingRight": 4,
-                  "paddingTop": 4,
-                }
-              }
-              testID="leftIconButton"
-            />
-          </View>
+          />
           <View
             style={
               Array [
@@ -602,7 +576,6 @@ Array [
               onStartShouldSetResponder={[Function]}
               style={
                 Object {
-                  "marginRight": -8,
                   "opacity": 1,
                   "paddingBottom": 4,
                   "paddingLeft": 4,
@@ -649,8 +622,8 @@ Array [
             }
           >
             <View
-              height={176}
-              width={281}
+              height={109.2}
+              width={140}
             >
               <Text>
                 undefined-SVG-Mock
@@ -679,7 +652,7 @@ Array [
                 ]
               }
             >
-              Nous avons besoin de connaître ton âge. Si tu as 18 ans, tu es éligible à une aide financière de 300 € offerte par le Gouvernement.
+              Nous avons besoin de connaître ton âge. Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de 20 € à 300 € offerte par le Gouvernement.
 
 Cette aide sera créditée directement sur ton compte pass Culture.
             </Text>

@@ -153,33 +153,7 @@ exports[`<SomeAdviceBeforeIdentityCheckModal/> should render correctly 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="leftIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginLeft": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="leftIconButton"
-          />
-        </View>
+        />
         <View
           style={
             Array [
@@ -241,7 +215,6 @@ exports[`<SomeAdviceBeforeIdentityCheckModal/> should render correctly 1`] = `
             onStartShouldSetResponder={[Function]}
             style={
               Object {
-                "marginRight": -8,
                 "opacity": 1,
                 "paddingBottom": 4,
                 "paddingLeft": 4,

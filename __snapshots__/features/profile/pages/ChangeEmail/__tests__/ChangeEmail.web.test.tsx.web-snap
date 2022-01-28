@@ -58,7 +58,7 @@ Object {
                   style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                 >
                   <label
-                    class="sc-dkPtRN gBaIds"
+                    class="sc-gsDKAQ feJuLU"
                     for="testUuidV4"
                   >
                     Nouvel e-mail
@@ -108,7 +108,7 @@ Object {
                   style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                 >
                   <label
-                    class="sc-dkPtRN gBaIds"
+                    class="sc-gsDKAQ feJuLU"
                     for="testUuidV4"
                   >
                     Mot de passe
@@ -197,7 +197,7 @@ Object {
         </div>
       </div>
       <header
-        class="sc-gsDKAQ dfZAzE"
+        class="sc-jRQBWg kHDcEk"
       >
         <div
           class="css-view-1dbjc4n"
@@ -313,7 +313,7 @@ Object {
                 style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
               >
                 <label
-                  class="sc-dkPtRN gBaIds"
+                  class="sc-gsDKAQ feJuLU"
                   for="testUuidV4"
                 >
                   Nouvel e-mail
@@ -363,7 +363,7 @@ Object {
                 style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
               >
                 <label
-                  class="sc-dkPtRN gBaIds"
+                  class="sc-gsDKAQ feJuLU"
                   for="testUuidV4"
                 >
                   Mot de passe
@@ -452,7 +452,7 @@ Object {
       </div>
     </div>
     <header
-      class="sc-gsDKAQ dfZAzE"
+      class="sc-jRQBWg kHDcEk"
     >
       <div
         class="css-view-1dbjc4n"
