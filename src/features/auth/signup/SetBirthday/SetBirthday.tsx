@@ -16,6 +16,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
+import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 
 let INITIAL_DATE: Date | null = null
 let INITIAL_DAY: string | undefined = undefined
@@ -109,7 +110,11 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
   return (
     <Form.MaxWidth>
       <InnerContainer>
-        <ButtonTertiary wording={t`Pourquoi\u00a0?`} onPress={onPressWhy} />
+        <ButtonTertiary
+          icon={InfoPlain}
+          wording={t`Pour quelle raison\u00a0?`}
+          onPress={onPressWhy}
+        />
         <Spacer.Column numberOfSpaces={8} />
         <DateInputContainer>
           <DateInput
