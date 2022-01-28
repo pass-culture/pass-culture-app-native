@@ -19,6 +19,7 @@ import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBene
 import { contactSupport } from 'features/auth/support.services'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { amplitude } from 'libs/amplitude'
 import { currentTimestamp } from 'libs/dates'
 import { env } from 'libs/environment'
 import { eventMonitoring, captureMonitoringError } from 'libs/monitoring'
@@ -159,7 +160,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
     })
   }
 
-  function validateCode() {
+  async function validateCode() {
     if (codeInputState.isValid) {
       setErrorMessage('')
       const { code } = codeInputState
@@ -173,6 +174,8 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
         validatePhoneNumber(code)
       }
     }
+
+    await amplitude().logEvent('young18_set_phone_validation_code_clicked_front')
   }
 
   function onGoBack() {
@@ -186,10 +189,12 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
     return t`Attends` + ` ${remainingTime}s.`
   }
 
-  function requestSendPhoneValidationCode() {
+  async function requestSendPhoneValidationCode() {
     if (isRequestTimestampExpired) {
       sendPhoneValidationCode(formattedPhoneNumber)
     }
+
+    await amplitude().logEvent('young18_set_phone_validation_code_clicked_front')
   }
 
   const validationCodeInformation = useMemo(
