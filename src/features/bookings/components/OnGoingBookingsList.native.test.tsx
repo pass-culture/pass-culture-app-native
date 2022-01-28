@@ -1,5 +1,9 @@
 import React from 'react'
+import { UseQueryResult } from 'react-query'
+import { mocked } from 'ts-jest/utils'
 
+import { BookingsResponse } from 'api/gen'
+import { useBookings } from 'features/bookings/api/queries'
 import { analytics } from 'libs/analytics'
 import { flushAllPromises, render } from 'tests/utils'
 
@@ -8,9 +12,14 @@ import { bookingsSnap as mockBookings } from '../api/bookingsSnap'
 import { OnGoingBookingsList } from './OnGoingBookingsList'
 
 jest.mock('react-query')
-jest.mock('features/bookings/api/queries', () => ({
-  useBookings: jest.fn(() => ({ data: mockBookings })),
-}))
+
+jest.mock('features/bookings/api/queries')
+const mockUseBookings = mocked(useBookings)
+mockUseBookings.mockReturnValue({
+  data: mockBookings,
+  isLoading: false,
+  isFetching: false,
+} as UseQueryResult<BookingsResponse, unknown>)
 
 describe('<OnGoingBookingsList /> - Analytics', () => {
   const nativeEventMiddle = {
@@ -23,6 +32,22 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
     contentOffset: { y: 900 },
     contentSize: { height: 1600 },
   }
+
+  describe('displays the placeholder', () => {
+    it('when bookings are loading', () => {
+      const loadingBookings = {
+        data: undefined,
+        isLoading: true,
+        isFetching: false,
+      } as UseQueryResult<BookingsResponse, unknown>
+      mockUseBookings.mockReturnValueOnce(loadingBookings)
+      const { queryByTestId } = render(<OnGoingBookingsList />)
+
+      const placeholder = queryByTestId('BookingsPlaceholder')
+
+      expect(placeholder).toBeTruthy()
+    })
+  })
 
   it('should trigger logEvent "BookingsScrolledToBottom" when reaching the end', () => {
     const { getByTestId } = render(<OnGoingBookingsList />)

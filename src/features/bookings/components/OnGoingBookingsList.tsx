@@ -130,7 +130,7 @@ function BookingsPlaceholder() {
   const ListFooterComponent = useMemo(() => <Footer />, [])
 
   return (
-    <LoadingContainer>
+    <LoadingContainer testID="BookingsPlaceholder">
       <FlatList
         data={BOOKINGS_LIST_PLACEHOLDER}
         renderItem={renderItem}
