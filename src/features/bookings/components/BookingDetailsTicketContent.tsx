@@ -14,8 +14,7 @@ import { openUrl } from 'features/navigation/helpers'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
 import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+
 interface BookingDetailsTicketContentProps {
   booking: BookingReponse
   activationCodeFeatureEnabled?: boolean
@@ -102,11 +101,11 @@ const Title = styled(Typo.Title3)({
   maxWidth: '100%',
 })
 
-const Token = styled(Typo.Title4)({
-  color: ColorsEnum.PRIMARY,
+const Token = styled(Typo.Title4)(({ theme }) => ({
+  color: theme.colors.primary,
   textAlign: 'center',
   padding: getSpacing(2.5),
-})
+}))
 
 const TicketInnerContent = styled.View({
   justifyContent: 'center',
