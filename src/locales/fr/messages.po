@@ -192,6 +192,7 @@ msgid "Anniversaire 18 ans"
 msgstr "Anniversaire 18 ans"
 
 #: src/libs/itinerary/useItinerary.ts
+#: src/libs/share/WebShareModal.web.tsx
 msgid "Annuler"
 msgstr "Annuler"
 
@@ -390,7 +391,7 @@ msgstr "Centre culturel"
 msgid "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 msgstr "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+#: src/features/auth/signup/SetBirthday/BirthdayInformationModal.tsx
 msgid "Cette aide sera créditée directement sur ton compte pass Culture."
 msgstr "Cette aide sera créditée directement sur ton compte pass Culture."
 
@@ -631,6 +632,7 @@ msgid "Continuer vers l'étape"
 msgstr "Continuer vers l'étape"
 
 #: src/features/_marketingAndCommunication/atoms/DeeplinkItem.tsx
+#: src/libs/share/WebShareModal.web.tsx
 msgid "Copier"
 msgstr "Copier"
 
@@ -755,7 +757,7 @@ msgid "Dossier déposé, nous avons bien reçu ton dossier et sommes en train de
 msgstr "Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !"
 
 #: src/features/bookOffer/components/BookDuoChoice.tsx
-#: src/features/bookOffer/components/BookDuoChoice.tsx
+#: src/features/bookOffer/components/DuoChoiceSelector.tsx
 #: src/ui/components/OfferCaption.tsx
 msgid "Duo"
 msgstr "Duo"
@@ -959,6 +961,10 @@ msgstr "Ex : 34 avenue de l'Opéra"
 msgid "Ex : 75017"
 msgstr "Ex : 75017"
 
+#: src/libs/share/WebShareModal.web.tsx
+msgid "Facebook"
+msgstr "Facebook"
+
 #: src/features/profile/pages/ChangeEmail/ChangeEmailExpiredLink.tsx
 msgid "Faire une nouvelle demande"
 msgstr "Faire une nouvelle demande"
@@ -971,7 +977,9 @@ msgstr "Favoris"
 #: src/features/bookOffer/pages/BookingOfferModal.tsx
 #: src/features/offer/components/ReportOfferModal.tsx
 #: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx
+#: src/libs/share/WebShareModal.web.tsx
 #: src/ui/components/modals/AppInformationModal.tsx
+#: src/ui/components/modals/ModalHeader.tsx
 msgid "Fermer la modale"
 msgstr "Fermer la modale"
 
@@ -1653,7 +1661,7 @@ msgstr "Notification rechargement anniversaire"
 msgid "Notifications"
 msgstr "Notifications"
 
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+#: src/features/auth/signup/SetBirthday/BirthdayInformationModal.tsx
 msgid "Nous avons besoin de connaître ton âge."
 msgstr "Nous avons besoin de connaître ton âge."
 
@@ -1841,6 +1849,14 @@ msgstr "Paramètres marketing"
 msgid "Partager"
 msgstr "Partager"
 
+#: src/features/offer/components/OfferHeader.tsx
+msgid "Partager l'offre"
+msgstr "Partager l'offre"
+
+#: src/features/venue/components/VenueHeader.tsx
+msgid "Partager le lieu"
+msgstr "Partager le lieu"
+
 #: src/features/profile/pages/Profile.tsx
 #: src/features/profile/pages/Profile.tsx
 msgid "Partager ma position"
@@ -1911,7 +1927,7 @@ msgstr "Pourquoi les biens numériques sont-ils limités ?"
 msgid "Pourquoi les biens physiques et numériques sont-ils limités ?"
 msgstr "Pourquoi les biens physiques et numériques sont-ils limités ?"
 
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+#: src/features/auth/signup/SetBirthday/BirthdayInformationModal.tsx
 msgid "Pourquoi saisir ma date de naissance ?"
 msgstr "Pourquoi saisir ma date de naissance ?"
 
@@ -2125,6 +2141,7 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 #: src/features/search/components/SearchBox.tsx
 #: src/features/venue/components/VenueHeader.tsx
 #: src/ui/components/headers/PageHeader.tsx
+#: src/ui/components/modals/ModalHeader.tsx
 msgid "Revenir en arrière"
 msgstr "Revenir en arrière"
 
@@ -2292,7 +2309,7 @@ msgid "Site internet"
 msgstr "Site internet"
 
 #: src/features/bookOffer/components/BookDuoChoice.tsx
-#: src/features/bookOffer/components/BookDuoChoice.tsx
+#: src/features/bookOffer/components/DuoChoiceSelector.tsx
 msgid "Solo"
 msgstr "Solo"
 
@@ -2346,6 +2363,10 @@ msgstr "Ta date de naissance"
 #: src/features/identityCheck/pages/identification/IdentityCheckEnd.tsx
 msgid "Ta pièce d’identité a bien été transmise !"
 msgstr "Ta pièce d’identité a bien été transmise !"
+
+#: src/libs/share/WebShareModal.web.tsx
+msgid "Telegram"
+msgstr "Telegram"
 
 #: src/features/bookings/components/BookingDetailsCancelButton.tsx
 msgid "Terminer"
@@ -2659,6 +2680,10 @@ msgstr "Tu recevras une réponse par e-mail sous 5 jours ouvrés."
 msgid "Tu y es presque"
 msgstr "Tu y es presque"
 
+#: src/libs/share/WebShareModal.web.tsx
+msgid "Twitter"
+msgstr "Twitter"
+
 #: src/features/search/sections/titles.ts
 msgid "Type d'offre"
 msgstr "Type d'offre"
@@ -2806,6 +2831,10 @@ msgstr "Venue {venueId} could not be retrieved"
 msgid "Version"
 msgstr "Version"
 
+#: src/libs/share/WebShareModal.web.tsx
+msgid "Veuillez choisir un contact"
+msgstr "Veuillez choisir un contact"
+
 #: src/features/auth/components/QuitSignupModal.tsx
 msgid "Veux-tu abandonner l'inscription ?"
 msgstr "Veux-tu abandonner l'inscription ?"
@@ -2902,6 +2931,10 @@ msgstr "Vérifier mon identité"
 msgid "Welcome to pass Culture"
 msgstr "Bienvenue à pass Culture"
 
+#: src/libs/share/WebShareModal.web.tsx
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
 #: src/features/bookings/helpers.ts
 msgid "activate before date"
 msgstr "À activer avant le {dateLimit}"
@@ -2952,7 +2985,7 @@ msgid "credit left to spend"
 msgstr "Il te reste encore {credit} à dépenser sur le pass !"
 
 #: src/features/bookOffer/atoms/HourChoice.tsx
-#: src/features/bookOffer/components/BookDuoChoice.tsx
+#: src/features/bookOffer/components/DuoChoiceSelector.tsx
 msgid "crédit insuffisant"
 msgstr "crédit insuffisant"
 
@@ -3011,6 +3044,10 @@ msgstr "et si tu as..."
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "et si tu es..."
 msgstr "et si tu es..."
+
+#: src/features/auth/signup/SetBirthday/BirthdayInformationModal.tsx
+msgid "financialHelpMessage"
+msgstr "Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de {deposit15} à {deposit18} offerte par le Gouvernement."
 
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "genre"
@@ -3084,14 +3121,6 @@ msgstr "page-introuvable"
 #: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
 msgid "passeport"
 msgstr "passeport"
-
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "postGeneralisationFinancialHelpMessage"
-msgstr "Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de {deposit15} à {deposit18} offerte par le Gouvernement."
-
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "preGeneralisationFinancialHelpMessage"
-msgstr "Si tu as 18 ans, tu es éligible à une aide financière de {deposit} offerte par le Gouvernement."
 
 #: src/features/bookOffer/components/BookingInformations.tsx
 msgid "prix duo"

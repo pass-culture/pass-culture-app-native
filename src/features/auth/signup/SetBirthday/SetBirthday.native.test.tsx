@@ -1,12 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import { UseQueryResult } from 'react-query'
-import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
-import { SettingsResponse } from 'api/gen'
-import { mockDefaultSettings } from 'features/auth/__mocks__/settings'
-import { useAppSettings } from 'features/auth/settings'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render, RenderAPI } from 'tests/utils'
 // eslint-disable-next-line no-restricted-imports
@@ -17,20 +12,6 @@ import { SetBirthday } from './SetBirthday'
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 
 jest.mock('features/auth/settings')
-jest.mock('features/auth/api', () => {
-  const originalModule = jest.requireActual('features/auth/api')
-
-  return {
-    ...originalModule,
-    useDepositAmountsByAge: jest.fn().mockReturnValue({
-      fifteenYearsOldDeposit: '20 €',
-      sixteenYearsOldDeposit: '30 €',
-      seventeenYearsOldDeposit: '30 €',
-      eighteenYearsOldDeposit: '300 €',
-    }),
-  }
-})
-const mockedUseAppSettings = mocked(useAppSettings)
 
 describe('SetBirthday Page', () => {
   beforeEach(() => {
@@ -50,42 +31,6 @@ describe('SetBirthday Page', () => {
 
     const button = renderAPI.getByTestId('Continuer')
     expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
-  })
-
-  it('should show the correct deposit amount', async () => {
-    const component = render(<SetBirthday {...props} />)
-    fireEvent.press(component.getByTestId('Pourquoi\u00a0?'))
-
-    expect(component.queryByText(/une aide financière de/)).toBeTruthy()
-    expect(component.queryByText(new RegExp('300' + '\u00a0' + '€'))).toBeTruthy()
-  })
-
-  it('should show the correct deposit amount if generalisation is enabled', async () => {
-    const mockSettings = {
-      ...mockDefaultSettings,
-      enableUnderageGeneralisation: true,
-      enableNativeEacIndividual: true,
-    }
-    // eslint-disable-next-line local-rules/independant-mocks
-    mockedUseAppSettings.mockImplementation(
-      () =>
-        ({
-          data: mockSettings,
-        } as UseQueryResult<SettingsResponse, unknown>)
-    )
-    const component = render(<SetBirthday {...props} />)
-    fireEvent.press(component.getByTestId('Pourquoi\u00a0?'))
-    expect(component.queryByText(/une aide financière progressive allant de/)).toBeTruthy()
-
-    expect(component.queryByText(new RegExp('20' + '\u00a0' + '€'))).toBeTruthy()
-    // eslint-disable-next-line local-rules/independant-mocks
-    mockedUseAppSettings.mockImplementation(
-      () =>
-        ({ data: mockDefaultSettings, isLoading: false } as UseQueryResult<
-          SettingsResponse,
-          unknown
-        >)
-    )
   })
 
   it('should display the error message "date incorrecte" when the date is too old', async () => {
