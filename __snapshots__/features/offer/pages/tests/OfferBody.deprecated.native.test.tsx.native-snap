@@ -1808,8 +1808,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 testID="report-offer-body"
                               >
                                 <View
-                                  height={24}
-                                  width={24}
+                                  height={20}
+                                  width={20}
                                 >
                                   <Text>
                                     undefined-SVG-Mock
@@ -4578,8 +4578,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 testID="report-offer-body"
                               >
                                 <View
-                                  height={24}
-                                  width={24}
+                                  height={20}
+                                  width={20}
                                 >
                                   <Text>
                                     undefined-SVG-Mock

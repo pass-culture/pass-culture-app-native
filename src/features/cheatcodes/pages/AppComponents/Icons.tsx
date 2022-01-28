@@ -206,6 +206,7 @@ const TertiaryAndSmallerIcons = () => {
       <Icon name="EditPen" component={EditPen} isNew />
       <Icon name="EmailFilled" component={EmailFilled} isNew />
       <Icon name="ExternalSiteFilled" component={ExternalSiteFilled} isNew />
+      <Icon name="Flag" component={Flag} isNew />
       <Icon name="InfoPlain" component={InfoPlain} isNew />
       <Icon name="Invalidate" component={Invalidate} isNew />
       <Icon name="Key" component={Key} isNew />
@@ -256,7 +257,6 @@ const SecondaryAndBiggerIcons = () => {
       <Icon name="EyeSlash" component={EyeSlash} isNew />
       <Icon name="Favorite" component={Favorite} isNew />
       <Icon name="FavoriteFilled" component={FavoriteFilled} isNew />
-      <Icon name="Flag" component={Flag} />
       <Icon name="Flash" component={Flash} isNew />
       <Icon name="HandicapVisual" component={HandicapVisual} isNew />
       <Icon name="HandicapMental" component={HandicapMental} isNew />
