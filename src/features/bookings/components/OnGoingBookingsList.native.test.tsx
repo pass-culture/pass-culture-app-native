@@ -2,9 +2,10 @@ import React from 'react'
 import { UseQueryResult } from 'react-query'
 import { mocked } from 'ts-jest/utils'
 
-import { BookingsResponse } from 'api/gen'
+import { BookingsResponse, SubcategoriesResponseModel } from 'api/gen'
 import { useBookings } from 'features/bookings/api/queries'
 import { analytics } from 'libs/analytics'
+import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { flushAllPromises, render } from 'tests/utils'
 
 import { bookingsSnap as mockBookings } from '../api/bookingsSnap'
@@ -20,6 +21,12 @@ mockUseBookings.mockReturnValue({
   isLoading: false,
   isFetching: false,
 } as UseQueryResult<BookingsResponse, unknown>)
+
+jest.mock('libs/subcategories/useSubcategories')
+const mockUseSubcategories = mocked(useSubcategories)
+mockUseSubcategories.mockReturnValue({
+  isLoading: false,
+} as UseQueryResult<SubcategoriesResponseModel, unknown>)
 
 describe('<OnGoingBookingsList /> - Analytics', () => {
   const nativeEventMiddle = {
@@ -41,6 +48,18 @@ describe('<OnGoingBookingsList /> - Analytics', () => {
         isFetching: false,
       } as UseQueryResult<BookingsResponse, unknown>
       mockUseBookings.mockReturnValueOnce(loadingBookings)
+      const { queryByTestId } = render(<OnGoingBookingsList />)
+
+      const placeholder = queryByTestId('BookingsPlaceholder')
+
+      expect(placeholder).toBeTruthy()
+    })
+
+    it('when subcategories are loading', () => {
+      const loadingSubcategories = {
+        isLoading: true,
+      } as UseQueryResult<SubcategoriesResponseModel, unknown>
+      mockUseSubcategories.mockReturnValueOnce(loadingSubcategories)
       const { queryByTestId } = render(<OnGoingBookingsList />)
 
       const placeholder = queryByTestId('BookingsPlaceholder')

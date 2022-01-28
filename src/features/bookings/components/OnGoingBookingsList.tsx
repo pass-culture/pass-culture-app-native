@@ -13,6 +13,7 @@ import {
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
+import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
@@ -30,7 +31,8 @@ const ANIMATION_DURATION = 700
 export function OnGoingBookingsList() {
   const { data: bookings, isLoading, isFetching, refetch } = useBookings()
   const { bottom } = useSafeAreaInsets()
-  const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
+  const { isLoading: subcategoriesIsLoading } = useSubcategories()
+  const showSkeleton = useIsFalseWithDelay(isLoading || subcategoriesIsLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
 
   const {
