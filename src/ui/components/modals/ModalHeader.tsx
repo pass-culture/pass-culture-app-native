@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
@@ -17,10 +18,10 @@ type ModalHeaderProps = {
 export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   title,
   leftIcon: LeftIcon,
-  leftIconAccessibilityLabel = 'Revenir en arrière',
+  leftIconAccessibilityLabel = t`Revenir en arrière`,
   onLeftIconPress,
   rightIcon: RightIcon,
-  rightIconAccessibilityLabel = 'Fermer la modale',
+  rightIconAccessibilityLabel = t`Fermer la modale`,
   onRightIconPress,
   boldTitle = false,
   numberOfLines = 2,

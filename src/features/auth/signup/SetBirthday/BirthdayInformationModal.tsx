@@ -15,7 +15,7 @@ type Props = {
 const LINE_BREAK = '\n' + '\n'
 const SPACE = ' '
 
-export const BirthdayInformationModal: React.FC<Props> = ({ visible, hideModal }) => {
+export function BirthdayInformationModal({ visible, hideModal }: Props) {
   const { eighteenYearsOldDeposit, fifteenYearsOldDeposit } = useDepositAmountsByAge()
 
   const birthdayInformation =
