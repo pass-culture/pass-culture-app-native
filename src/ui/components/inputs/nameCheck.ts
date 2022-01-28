@@ -1,18 +1,18 @@
-const EXCLUDE_SPECIAL_CHARACTER_REGEX = /[`!@#$%^&*()_+=[\]{};:"\\|<>/?~¿§«»ω⊙¤°℃℉€¥£¢¡®©]/
-const EXCLUDE_SPECIAL_CHARACTER_AT_THE_BEGINNING_OR_END_REGEX = /^['-]|['-]$/
+const SPECIAL_CHARACTER_AT_THE_BEGINNING_OR_END_REGEX = /^['-]|['-]$/
 const NUMBER_REGEX = /[0-9]+/
+const LATIN_REGEX = /\p{sc=Latin}|[',-. ]/gu
 
 export function isNameValid(name: string) {
   return (
     name.length > 0 &&
-    !containsExcludeSpecialCharacter(name) &&
+    containsOnlyLatinCharacters(name) &&
     !containsNumber(name) &&
     !containsSpecialCharacterAtTheBeginningOrEnd(name)
   )
 }
 
-function containsExcludeSpecialCharacter(name: string): boolean {
-  return EXCLUDE_SPECIAL_CHARACTER_REGEX.test(name)
+function containsOnlyLatinCharacters(name: string) {
+  return name.match(LATIN_REGEX)?.length === name.length
 }
 
 function containsNumber(name: string): boolean {
@@ -20,5 +20,5 @@ function containsNumber(name: string): boolean {
 }
 
 function containsSpecialCharacterAtTheBeginningOrEnd(name: string): boolean {
-  return EXCLUDE_SPECIAL_CHARACTER_AT_THE_BEGINNING_OR_END_REGEX.test(name)
+  return SPECIAL_CHARACTER_AT_THE_BEGINNING_OR_END_REGEX.test(name)
 }
