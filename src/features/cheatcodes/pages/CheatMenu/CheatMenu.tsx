@@ -9,11 +9,11 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+
 export const CheatMenu: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavConfig)
+
   return (
     <Container>
       <Spacer.TopScreen />
@@ -48,8 +48,8 @@ const Container = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.white,
 }))
 
-const CheatTouchableOpacity = styled.TouchableOpacity({
-  borderColor: ColorsEnum.BLACK,
+const CheatTouchableOpacity = styled.TouchableOpacity(({ theme }) => ({
+  borderColor: theme.colors.black,
   borderWidth: 2,
   padding: getSpacing(1),
-})
+}))

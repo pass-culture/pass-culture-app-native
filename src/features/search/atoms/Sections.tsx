@@ -2,8 +2,6 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { getSpacing, Typo, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { TitleWithCount } from './TitleWithCount'
 
@@ -44,11 +42,15 @@ export const InlineSection: React.FC<{
     {!!subtitle && (
       <React.Fragment>
         <Spacer.Column numberOfSpaces={2} />
-        <Typo.Caption color={ColorsEnum.GREY_DARK}>{subtitle}</Typo.Caption>
+        <Caption>{subtitle}</Caption>
       </React.Fragment>
     )}
   </MarginHorizontalContainer>
 )
+
+const Caption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
 
 const Center = styled.View({ alignItems: 'center' })
 const MarginHorizontalContainer = styled.View({ marginHorizontal: getSpacing(6) })

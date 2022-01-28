@@ -11,8 +11,7 @@ import { LocationFilter } from 'features/search/types'
 import { useGeolocation } from 'libs/geolocation'
 import { ClippedTag } from 'ui/components/ClippedTag'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+
 interface Props {
   nbHits: number
 }
@@ -65,4 +64,6 @@ const Container = styled.View({
   marginBottom: getSpacing(4),
 })
 
-const Body = styled(Typo.Body)({ color: ColorsEnum.GREY_DARK })
+const Body = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

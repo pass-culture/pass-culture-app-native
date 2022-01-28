@@ -39,8 +39,6 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { Form } from 'ui/web/form/Form'
 
 const CODE_INPUT_LENGTH = 6
@@ -232,7 +230,6 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
                   onChangeValue(rawText ?? '')
                 }}
                 placeholder={codeInputPlaceholder}
-                placeholderTextColor={ColorsEnum.GREY_DARK}
                 mask={codeInputMask}
                 maxLength={codeInputPlaceholder.length}
                 keyboardType="number-pad"
@@ -269,12 +266,10 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
             />
           </HelpRow>
           <Spacer.Column numberOfSpaces={4} />
-          <Separator color={ColorsEnum.GREY_MEDIUM} />
+          <GreyMediumSeparator />
           <Spacer.Column numberOfSpaces={4} />
           <HelpRow>
-            <Typo.Caption color={ColorsEnum.GREY_DARK}>
-              {t`Si tu n’arrives pas à valider ton code tu peux`}
-            </Typo.Caption>
+            <Caption>{t`Si tu n’arrives pas à valider ton code tu peux`}</Caption>
             {appContentWidth <= 320 ? <Break /> : <Spacer.Row numberOfSpaces={1} />}
             <ButtonQuaternary
               wording={t`Contacter le support`}
@@ -298,14 +293,20 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
 const codeInputPlaceholder = '000000'
 const codeInputMask = '999999'
 
-const CodeInput = styled(MaskedTextInput)({
+const Caption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyMedium,
+}))
+
+const CodeInput = styled(MaskedTextInput).attrs(({ theme }) => ({
+  placeholderTextColor: theme.colors.greyDark,
+}))(({ theme }) => ({
   fontSize: 20,
   marginLeft: getSpacing(4),
-  color: ColorsEnum.BLACK,
+  color: theme.colors.black,
   textAlign: 'center',
   fontFamily: 'Montserrat-Regular',
   letterSpacing: getSpacing(4),
-})
+}))
 
 const CodeInputContainer = styled.View({
   width: 240,
@@ -344,3 +345,7 @@ const HelpRow = styled.View({
 const RetryButton = styled(ButtonTertiary)({
   height: '100%',
 })
+
+const GreyMediumSeparator = styled(Separator)(({ theme }) => ({
+  color: theme.colors.greyMedium,
+}))

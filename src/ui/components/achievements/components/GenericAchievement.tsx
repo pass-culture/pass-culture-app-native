@@ -10,8 +10,6 @@ import { analytics } from 'libs/analytics'
 import { ButtonTertiaryGreyDark } from 'ui/components/buttons/ButtonTertiaryGreyDark'
 import { DotComponent } from 'ui/components/DotComponent'
 import { getSpacing, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { ControlComponent } from './ControlComponent'
 import { AchievementCardKeyProps } from './GenericAchievementCard'
@@ -162,13 +160,13 @@ const slideWrapperStyle = {
   width: '100%',
 }
 
-const EntireScreen = styled.View({
+const EntireScreen = styled.View(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  backgroundColor: ColorsEnum.WHITE,
+  backgroundColor: theme.colors.white,
   flexGrow: 1,
-})
+}))
 
 const ScreenUsableArea = styled.View(({ theme }) => ({
   display: 'flex',

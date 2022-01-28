@@ -8,8 +8,7 @@ import { analytics } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { accessibilityAndTestId } from 'tests/utils'
 import { Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+
 export const ReinitializeFilters = () => {
   const { dispatch } = useStagedSearch()
   const logReinitializeFilters = useFunctionOnce(() => {
@@ -31,10 +30,14 @@ export const ReinitializeFilters = () => {
     <TouchableOpacity
       onPress={reinitializeFilters}
       {...accessibilityAndTestId(t`Réinitialiser les filtres`)}>
-      <Typo.ButtonText color={ColorsEnum.WHITE}>{t`Réinitialiser`}</Typo.ButtonText>
+      <ButtonText>{t`Réinitialiser`}</ButtonText>
     </TouchableOpacity>
   )
 }
+
+const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
+  color: theme.colors.white,
+}))
 
 const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
   activeOpacity: theme.activeOpacity,

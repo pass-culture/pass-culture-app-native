@@ -13,8 +13,6 @@ import { SearchHit } from 'libs/search'
 import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { OfferImage } from './OfferImage'
 
@@ -91,8 +89,16 @@ const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
 })
 
 const Column = styled.View({ flexDirection: 'column', flex: 1 })
+
 const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
-const Name = styled(Typo.ButtonText)({})
-const Distance = styled(Typo.Body)({ textAlign: 'right', color: ColorsEnum.GREY_DARK })
-const Body = styled(Typo.Body)({ color: ColorsEnum.GREY_DARK })
+const Name = styled(Typo.ButtonText)``
+
+const Distance = styled(Typo.Body)(({ theme }) => ({
+  textAlign: 'right',
+  color: theme.colors.greyDark,
+}))
+
+const Body = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

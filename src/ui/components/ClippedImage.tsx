@@ -1,13 +1,11 @@
 import React from 'react'
 import Svg, { ClipPath, Defs, G, Path, Use, LinearGradient, Stop } from 'react-native-svg'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { Image } from 'libs/react-native-svg/Image'
 import { OfferDigital } from 'ui/svg/icons/OfferDigital'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getShadow } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 export type ClippedImageProps = {
   clipId: string
@@ -30,6 +28,7 @@ export type ClippedImageProps = {
 )
 
 export function ClippedImage(props: ClippedImageProps) {
+  const { colors } = useTheme()
   const linearGradientId = props.clipId + '_linear'
   const pathId = props.clipId + '_path'
   const Icon = props.altIcon || OfferDigital
@@ -44,8 +43,8 @@ export function ClippedImage(props: ClippedImageProps) {
           <Path id={pathId} d={props.path} />
         </Defs>
         <LinearGradient x1="0" y1="1" x2="0" y2="0" id={linearGradientId}>
-          <Stop offset="0" stopColor={ColorsEnum.GREY_MEDIUM} stopOpacity="1" />
-          <Stop offset="1" stopColor={ColorsEnum.GREY_LIGHT} stopOpacity="1" />
+          <Stop offset="0" stopColor={colors.greyMedium} stopOpacity="1" />
+          <Stop offset="1" stopColor={colors.greyLight} stopOpacity="1" />
         </LinearGradient>
         {props.image ? (
           <Image
@@ -63,14 +62,14 @@ export function ClippedImage(props: ClippedImageProps) {
       </Svg>
       {!props.image && Icon ? (
         <IconContainer testID="iconContainer">
-          <Icon size={40} color={ColorsEnum.GREY_MEDIUM} />
+          <Icon size={40} color={colors.greyMedium} />
         </IconContainer>
       ) : null}
     </Container>
   )
 }
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   borderRadius: 4,
   ...getShadow({
     shadowOffset: {
@@ -78,10 +77,10 @@ const Container = styled.View({
       height: 2,
     },
     shadowRadius: 2,
-    shadowColor: ColorsEnum.BLACK,
+    shadowColor: theme.colors.black,
     shadowOpacity: 0.1,
   }),
-})
+}))
 
 const IconContainer = styled.View({
   position: 'absolute',

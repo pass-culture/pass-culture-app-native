@@ -12,8 +12,6 @@ import { AppFullPageModal } from 'ui/components/modals/AppFullPageModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
 import { Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
   visible: boolean
@@ -57,8 +55,7 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
   )
 }
 
-const StyledBody = styled(Typo.Body).attrs({
-  color: ColorsEnum.WHITE,
-})({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
   textAlign: 'center',
-})
+}))

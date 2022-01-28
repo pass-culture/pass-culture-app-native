@@ -3,8 +3,6 @@ import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Typo, GUTTER_DP, getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 interface ImageCaptionProps {
   categoryLabel: string | null
@@ -17,23 +15,29 @@ export const ImageCaption = ({ categoryLabel, height, width, distance }: ImageCa
   return (
     <Row height={height} width={width}>
       <TextWrapper>
-        <Typo.Caption color={ColorsEnum.WHITE} numberOfLines={1} testID="categoryImageCaption">
+        <CategoryLabel numberOfLines={1} testID="categoryImageCaption">
           {categoryLabel}
-        </Typo.Caption>
+        </CategoryLabel>
       </TextWrapper>
       {!!distance && (
         <React.Fragment>
           <Separator />
           <TextWrapper>
-            <Typo.Caption color={ColorsEnum.WHITE} testID="distanceImageCaption">
-              {distance}
-            </Typo.Caption>
+            <Distance testID="distanceImageCaption">{distance}</Distance>
           </TextWrapper>
         </React.Fragment>
       )}
     </Row>
   )
 }
+
+const CategoryLabel = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.white,
+}))
+
+const Distance = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.white,
+}))
 
 const textLineHeight = PixelRatio.roundToNearestPixel(GUTTER_DP)
 

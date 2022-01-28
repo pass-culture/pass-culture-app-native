@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useState, createElement } from 'react'
-import { Alert, ScrollView } from 'react-native'
+import { Alert } from 'react-native'
 import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -20,15 +20,9 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { padding, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 const MAX_ASYNC_TEST_REQ_COUNT = 3
 const EIFFEL_TOWER_COORDINATES = { lat: 48.8584, lng: 2.2945 }
-
-const contentContainerStyle = {
-  backgroundColor: ColorsEnum.WHITE,
-}
 
 export function Navigation(): JSX.Element {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -60,7 +54,7 @@ export function Navigation(): JSX.Element {
   }
 
   return (
-    <ScrollView contentContainerStyle={contentContainerStyle}>
+    <ScrollView>
       <Spacer.TopScreen />
       <ModalHeader
         title="Navigation"
@@ -343,9 +337,15 @@ export function Navigation(): JSX.Element {
   )
 }
 
+const ScrollView = styled.ScrollView.attrs(({ theme }) => ({
+  contentContainerStyle: {
+    backgroundColor: theme.colors.white,
+  },
+}))``
+
 const NavigationButton = styled(ButtonPrimary).attrs({
   textSize: 11.5,
-})({})
+})``
 
 const StyledContainer = styled.View({
   display: 'flex',

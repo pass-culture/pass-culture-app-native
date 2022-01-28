@@ -10,8 +10,6 @@ import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { Email } from 'ui/svg/icons/Email'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 export function PhoneValidationTooManyAttempts() {
   return (
@@ -34,8 +32,7 @@ export function PhoneValidationTooManyAttempts() {
   )
 }
 
-const StyledBody = styled(Typo.Body).attrs({
-  color: ColorsEnum.WHITE,
-})({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
   textAlign: 'center',
-})
+}))

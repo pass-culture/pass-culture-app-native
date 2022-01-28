@@ -6,8 +6,6 @@ import styled from 'styled-components/native'
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { Background } from 'ui/svg/Background'
 import { getShadow, getSpacing, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 const getCorrectPadding = (keyboardHeight: number) => {
   if (Platform.OS === 'ios') {
@@ -89,7 +87,7 @@ const StyledBottomCardContainer = styled.ScrollView.attrs<{ customPaddingBottom:
       padding: getSpacing(6),
       borderTopLeftRadius: getSpacing(4),
       borderTopRightRadius: getSpacing(4),
-      backgroundColor: `${ColorsEnum.WHITE}`,
+      backgroundColor: theme.colors.white,
       alignItems: 'center',
       flexDirection: 'column',
       paddingBottom: customPaddingBottom,
@@ -101,17 +99,17 @@ const StyledBottomCardContainer = styled.ScrollView.attrs<{ customPaddingBottom:
           }),
     },
   })
-)<{ customPaddingBottom: number }>({
+)<{ customPaddingBottom: number }>(({ theme }) => ({
   ...getShadow({
     shadowOffset: {
       width: 0,
       height: getSpacing(2),
     },
     shadowRadius: getSpacing(1),
-    shadowColor: ColorsEnum.BLACK,
+    shadowColor: theme.colors.black,
     shadowOpacity: 0.15,
   }),
-})
+}))
 
 const SCALE_HEIGHT_RATIO = 1.75
 const BottomContentPageBackground = styled(Background).attrs(

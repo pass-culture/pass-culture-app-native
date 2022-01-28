@@ -1,6 +1,6 @@
 import React from 'react'
 import { Animated, TouchableOpacity } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
 import { AnimatedIcon } from 'ui/components/AnimatedIcon'
@@ -12,6 +12,7 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
+
 interface HeaderIconProps {
   iconName: 'back' | 'share' | 'favorite' | 'favorite-filled'
   initialColor?: ColorsEnum | undefined
@@ -34,6 +35,7 @@ const getIcon = (iconName: HeaderIconProps['iconName']): React.FC<IconInterface>
 
 export const HeaderIcon = (props: HeaderIconProps) => {
   const Icon = getIcon(props.iconName)
+  const { colors } = useTheme()
 
   return (
     <TouchableOpacity
@@ -50,24 +52,24 @@ export const HeaderIcon = (props: HeaderIconProps) => {
         <AnimatedIcon
           Icon={Icon}
           size={getSpacing(6)}
-          initialColor={props.initialColor || ColorsEnum.BLACK}
+          initialColor={props.initialColor || colors.black}
           testID={`icon-${props.iconName}`}
           transition={props.animationState.transition}
-          finalColor={ColorsEnum.WHITE}
+          finalColor={colors.white}
         />
       </StyledAnimatedView>
     </TouchableOpacity>
   )
 }
 
-const StyledAnimatedView = styled(Animated.View)({
+const StyledAnimatedView = styled(Animated.View)(({ theme }) => ({
   width: getSpacing(10),
   aspectRatio: '1',
   borderRadius: getSpacing(10),
-  backgroundColor: ColorsEnum.WHITE,
+  backgroundColor: theme.colors.white,
   border: 1,
   justifyContent: 'center',
   alignItems: 'center',
   overflow: 'hidden',
-  borderColor: ColorsEnum.GREY_LIGHT,
-})
+  borderColor: theme.colors.greyLight,
+}))

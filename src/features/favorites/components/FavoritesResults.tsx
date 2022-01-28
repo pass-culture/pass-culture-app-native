@@ -25,8 +25,6 @@ import {
 import { useGeolocation, GeoCoordinates } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { getSpacing, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 
 const keyExtractor = (item: FavoriteResponse) => item.id.toString()
@@ -51,6 +49,18 @@ function applySortBy(
 }
 
 const ANIMATION_DURATION = 700
+
+const StyledFlatList = styled(FlatList).attrs(({ theme }) => ({
+  contentContainerStyle: {
+    flexGrow: 1,
+    paddingBottom: theme.tabBarHeight + getSpacing(4),
+  },
+}))``
+
+const contentContainerStyle = {
+  flexGrow: 1,
+  paddingBottom: TAB_BAR_COMP_HEIGHT + getSpacing(4),
+}
 
 export const FavoritesResults: React.FC = React.memo(function FavoritesResults() {
   const [offerToBook, setOfferToBook] = useState<FavoriteOfferResponse | null>(null)
@@ -134,25 +144,20 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
   )
 })
 
-const contentContainerStyle = {
-  flexGrow: 1,
-  paddingBottom: TAB_BAR_COMP_HEIGHT + getSpacing(4),
-}
-
 const Container = styled.View({ flex: 1 })
 
-const Separator = styled.View({
+const Separator = styled.View(({ theme }) => ({
   height: 2,
-  backgroundColor: ColorsEnum.GREY_LIGHT,
+  backgroundColor: theme.colors.greyLight,
   marginHorizontal: getSpacing(6),
   marginVertical: getSpacing(4),
-})
+}))
 
-const SortContainer = styled.View({
+const SortContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
   position: 'absolute',
-  bottom: TAB_BAR_COMP_HEIGHT + getSpacing(6),
-})
+  bottom: theme.tabBarHeight + getSpacing(6),
+}))
 
 const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 10 }).map((_, index) => ({
   key: index.toString(),
@@ -165,10 +170,9 @@ const FavoritesResultsPlaceHolder = () => {
   return (
     <React.Fragment>
       <Container testID="FavoritesResultsPlaceHolder">
-        <FlatList
+        <StyledFlatList
           data={FAVORITE_LIST_PLACEHOLDER}
           renderItem={renderItem}
-          contentContainerStyle={contentContainerStyle}
           ListHeaderComponent={ListHeaderComponent}
           ItemSeparatorComponent={Separator}
           scrollEnabled={false}
