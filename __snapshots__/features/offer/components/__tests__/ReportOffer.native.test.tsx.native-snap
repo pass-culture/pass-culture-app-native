@@ -155,7 +155,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
           }
         >
           <View
-            accessibilityLabel="leftIconButton"
+            accessibilityLabel="Revenir en arrière"
             accessible={true}
             collapsable={false}
             focusable={false}
@@ -169,7 +169,6 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
             onStartShouldSetResponder={[Function]}
             style={
               Object {
-                "marginLeft": -8,
                 "opacity": 1,
                 "paddingBottom": 4,
                 "paddingLeft": 4,
@@ -177,7 +176,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                 "paddingTop": 4,
               }
             }
-            testID="leftIconButton"
+            testID="Revenir en arrière"
           >
             <View
               height={20}
@@ -251,7 +250,6 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
             onStartShouldSetResponder={[Function]}
             style={
               Object {
-                "marginRight": -8,
                 "opacity": 1,
                 "paddingBottom": 4,
                 "paddingLeft": 4,
@@ -481,7 +479,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
           }
         >
           <View
-            accessibilityLabel="leftIconButton"
+            accessibilityLabel="Revenir en arrière"
             accessible={true}
             collapsable={false}
             focusable={false}
@@ -495,7 +493,6 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
             onStartShouldSetResponder={[Function]}
             style={
               Object {
-                "marginLeft": -8,
                 "opacity": 1,
                 "paddingBottom": 4,
                 "paddingLeft": 4,
@@ -503,7 +500,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
                 "paddingTop": 4,
               }
             }
-            testID="leftIconButton"
+            testID="Revenir en arrière"
           >
             <View
               height={20}
@@ -577,7 +574,6 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
             onStartShouldSetResponder={[Function]}
             style={
               Object {
-                "marginRight": -8,
                 "opacity": 1,
                 "paddingBottom": 4,
                 "paddingLeft": 4,

@@ -153,33 +153,7 @@ exports[`<AppModal /> on big screen 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="leftIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginLeft": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="leftIconButton"
-          />
-        </View>
+        />
         <View
           style={
             Array [
@@ -225,33 +199,7 @@ exports[`<AppModal /> on big screen 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="rightIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginRight": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="rightIconButton"
-          />
-        </View>
+        />
       </View>
       <View
         style={
@@ -445,33 +393,7 @@ exports[`<AppModal /> on small screen 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="leftIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginLeft": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="leftIconButton"
-          />
-        </View>
+        />
         <View
           style={
             Array [
@@ -517,33 +439,7 @@ exports[`<AppModal /> on small screen 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="rightIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginRight": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="rightIconButton"
-          />
-        </View>
+        />
       </View>
       <View
         style={
@@ -741,33 +637,7 @@ exports[`<AppModal /> when hidden 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="leftIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginLeft": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="leftIconButton"
-          />
-        </View>
+        />
         <View
           style={
             Array [
@@ -813,33 +683,7 @@ exports[`<AppModal /> when hidden 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="rightIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginRight": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="rightIconButton"
-          />
-        </View>
+        />
       </View>
       <View
         style={
@@ -1008,33 +852,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="leftIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginLeft": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="leftIconButton"
-          />
-        </View>
+        />
         <View
           style={
             Array [
@@ -1080,33 +898,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="rightIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginRight": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="rightIconButton"
-          />
-        </View>
+        />
       </View>
       <View
         style={
@@ -1300,33 +1092,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="leftIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginLeft": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="leftIconButton"
-          />
-        </View>
+        />
         <View
           style={
             Array [
@@ -1372,33 +1138,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="rightIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginRight": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="rightIconButton"
-          />
-        </View>
+        />
       </View>
       <View
         style={
@@ -1592,33 +1332,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="leftIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginLeft": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="leftIconButton"
-          />
-        </View>
+        />
         <View
           style={
             Array [
@@ -1664,33 +1378,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="rightIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginRight": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="rightIconButton"
-          />
-        </View>
+        />
       </View>
       <View
         style={
@@ -1900,7 +1588,6 @@ exports[`<AppModal /> with left icon render 1`] = `
             onStartShouldSetResponder={[Function]}
             style={
               Object {
-                "marginLeft": -8,
                 "opacity": 1,
                 "paddingBottom": 4,
                 "paddingLeft": 4,
@@ -1966,33 +1653,7 @@ exports[`<AppModal /> with left icon render 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="rightIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginRight": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="rightIconButton"
-          />
-        </View>
+        />
       </View>
       <View
         style={
@@ -2186,33 +1847,7 @@ exports[`<AppModal /> with long title on 1 line 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="leftIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginLeft": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="leftIconButton"
-          />
-        </View>
+        />
         <View
           style={
             Array [
@@ -2258,33 +1893,7 @@ exports[`<AppModal /> with long title on 1 line 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="rightIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginRight": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="rightIconButton"
-          />
-        </View>
+        />
       </View>
       <View
         style={
@@ -2478,33 +2087,7 @@ exports[`<AppModal /> with long title on 2 lines by default 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="leftIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginLeft": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="leftIconButton"
-          />
-        </View>
+        />
         <View
           style={
             Array [
@@ -2550,33 +2133,7 @@ exports[`<AppModal /> with long title on 2 lines by default 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="rightIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginRight": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="rightIconButton"
-          />
-        </View>
+        />
       </View>
       <View
         style={
@@ -2770,33 +2327,7 @@ exports[`<AppModal /> with minimal props 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="leftIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginLeft": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="leftIconButton"
-          />
-        </View>
+        />
         <View
           style={
             Array [
@@ -2842,33 +2373,7 @@ exports[`<AppModal /> with minimal props 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="rightIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginRight": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="rightIconButton"
-          />
-        </View>
+        />
       </View>
       <View
         style={
@@ -3062,33 +2567,7 @@ exports[`<AppModal /> with right icon render 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="leftIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginLeft": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="leftIconButton"
-          />
-        </View>
+        />
         <View
           style={
             Array [
@@ -3150,7 +2629,6 @@ exports[`<AppModal /> with right icon render 1`] = `
             onStartShouldSetResponder={[Function]}
             style={
               Object {
-                "marginRight": -8,
                 "opacity": 1,
                 "paddingBottom": 4,
                 "paddingLeft": 4,
@@ -3364,33 +2842,7 @@ exports[`<AppModal /> with scroll disabled 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="leftIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginLeft": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="leftIconButton"
-          />
-        </View>
+        />
         <View
           style={
             Array [
@@ -3436,33 +2888,7 @@ exports[`<AppModal /> with scroll disabled 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="rightIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginRight": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="rightIconButton"
-          />
-        </View>
+        />
       </View>
       <View
         style={
@@ -3656,33 +3082,7 @@ exports[`<AppModal /> with scroll enabled by default 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="leftIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginLeft": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="leftIconButton"
-          />
-        </View>
+        />
         <View
           style={
             Array [
@@ -3728,33 +3128,7 @@ exports[`<AppModal /> with scroll enabled by default 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="rightIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginRight": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="rightIconButton"
-          />
-        </View>
+        />
       </View>
       <View
         style={
@@ -3948,33 +3322,7 @@ exports[`<AppModal /> with scroll explicitly enabled 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="leftIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginLeft": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="leftIconButton"
-          />
-        </View>
+        />
         <View
           style={
             Array [
@@ -4020,33 +3368,7 @@ exports[`<AppModal /> with scroll explicitly enabled 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="rightIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginRight": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="rightIconButton"
-          />
-        </View>
+        />
       </View>
       <View
         style={
@@ -4240,33 +3562,7 @@ exports[`<AppModal /> without children 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="leftIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginLeft": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="leftIconButton"
-          />
-        </View>
+        />
         <View
           style={
             Array [
@@ -4312,33 +3608,7 @@ exports[`<AppModal /> without children 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="rightIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginRight": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="rightIconButton"
-          />
-        </View>
+        />
       </View>
       <View
         style={
@@ -4528,33 +3798,7 @@ exports[`<AppModal /> without title 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="leftIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginLeft": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="leftIconButton"
-          />
-        </View>
+        />
         <View
           style={
             Array [
@@ -4600,33 +3844,7 @@ exports[`<AppModal /> without title 1`] = `
               },
             ]
           }
-        >
-          <View
-            accessibilityLabel="rightIconButton"
-            accessible={true}
-            collapsable={false}
-            focusable={false}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "marginRight": -8,
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="rightIconButton"
-          />
-        </View>
+        />
       </View>
       <View
         style={
