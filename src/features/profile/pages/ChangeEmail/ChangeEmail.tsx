@@ -33,7 +33,7 @@ import { ColorsEnum } from 'ui/theme/colors'
 import { Form } from 'ui/web/form/Form'
 
 export function ChangeEmail() {
-  const theme = useTheme()
+  const { isMobileViewport, isTouch } = useTheme()
   const [email, setEmail] = useSafeState('')
   const [password, setPassword] = useSafeState('')
   const emailErrorMessage = useValidateEmail(email)
@@ -141,10 +141,10 @@ export function ChangeEmail() {
               <InputError visible messageId={passwordErrorMessage} numberOfSpacesTop={2} />
             )}
 
-            {theme.isDesktopViewport ? (
-              <Spacer.Column numberOfSpaces={10} />
-            ) : (
+            {isMobileViewport && isTouch ? (
               <Spacer.Flex flex={1} />
+            ) : (
+              <Spacer.Column numberOfSpaces={10} />
             )}
 
             {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}

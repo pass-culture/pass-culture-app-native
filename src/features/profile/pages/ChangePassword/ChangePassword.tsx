@@ -25,7 +25,7 @@ import { ColorsEnum } from 'ui/theme/colors'
 import { Form } from 'ui/web/form/Form'
 
 export function ChangePassword() {
-  const theme = useTheme()
+  const { isMobileViewport, isTouch } = useTheme()
   const { showSuccessSnackBar } = useSnackBarContext()
 
   const [currentPassword, setCurrentPassword] = useState('')
@@ -139,11 +139,13 @@ export function ChangePassword() {
             messageId={t`Les mots de passe ne concordent pas`}
             numberOfSpacesTop={2}
           />
-          {theme.isDesktopViewport ? (
-            <Spacer.Column numberOfSpaces={10} />
-          ) : (
+
+          {isMobileViewport && isTouch ? (
             <Spacer.Flex flex={1} />
+          ) : (
+            <Spacer.Column numberOfSpaces={10} />
           )}
+
           {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
           <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
             <ButtonPrimary wording={t`Enregistrer`} onPress={submitPassword} disabled={disabled} />

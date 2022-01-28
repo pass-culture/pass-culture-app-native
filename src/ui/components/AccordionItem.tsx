@@ -115,9 +115,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    paddingBottom: getSpacing(4),
+    paddingVertical: getSpacing(5),
     paddingHorizontal: getSpacing(6),
-    paddingTop: getSpacing(6),
     ...(Platform.OS === 'web' ? { cursor: 'pointer' } : {}),
   },
   bodyContainer: {

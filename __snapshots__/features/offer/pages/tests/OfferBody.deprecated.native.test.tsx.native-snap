@@ -1026,9 +1026,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   "alignItems": "center",
                                   "flexDirection": "row",
                                   "justifyContent": "space-between",
-                                  "paddingBottom": 16,
                                   "paddingHorizontal": 24,
-                                  "paddingTop": 24,
+                                  "paddingVertical": 20,
                                 },
                                 undefined,
                               ]
@@ -1180,9 +1179,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   "alignItems": "center",
                                   "flexDirection": "row",
                                   "justifyContent": "space-between",
-                                  "paddingBottom": 16,
                                   "paddingHorizontal": 24,
-                                  "paddingTop": 24,
+                                  "paddingVertical": 20,
                                 },
                                 undefined,
                               ]
@@ -1768,25 +1766,11 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             }
                           >
                             <View
-                              numberOfSpaces={7}
                               style={
                                 Array [
                                   Object {
-                                    "height": 28,
-                                  },
-                                ]
-                              }
-                            />
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Regular",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                    "marginTop": -8,
-                                    "paddingBottom": 24,
+                                    "marginLeft": -8,
+                                    "paddingVertical": 20,
                                   },
                                 ]
                               }
@@ -1810,7 +1794,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     "borderWidth": 0,
                                     "flexDirection": "row",
                                     "height": 20,
-                                    "justifyContent": "center",
+                                    "justifyContent": "flex-start",
                                     "marginTop": 0,
                                     "maxWidth": 500,
                                     "opacity": 1,
@@ -1852,7 +1836,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   Signaler l'offre
                                 </Text>
                               </View>
-                            </Text>
+                            </View>
                           </View>
                           <Modal
                             animationType="none"
@@ -2344,6 +2328,26 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               </View>
                             </View>
                           </Modal>
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "backgroundColor": "#F1F1F4",
+                                  "height": 8,
+                                },
+                              ]
+                            }
+                          />
+                          <View
+                            numberOfSpaces={6}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 24,
+                                },
+                              ]
+                            }
+                          />
                         </View>
                       </RCTScrollView>
                     </View>
@@ -3817,9 +3821,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   "alignItems": "center",
                                   "flexDirection": "row",
                                   "justifyContent": "space-between",
-                                  "paddingBottom": 16,
                                   "paddingHorizontal": 24,
-                                  "paddingTop": 24,
+                                  "paddingVertical": 20,
                                 },
                                 undefined,
                               ]
@@ -3971,9 +3974,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   "alignItems": "center",
                                   "flexDirection": "row",
                                   "justifyContent": "space-between",
-                                  "paddingBottom": 16,
                                   "paddingHorizontal": 24,
-                                  "paddingTop": 24,
+                                  "paddingVertical": 20,
                                 },
                                 undefined,
                               ]
@@ -4559,25 +4561,11 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             }
                           >
                             <View
-                              numberOfSpaces={7}
                               style={
                                 Array [
                                   Object {
-                                    "height": 28,
-                                  },
-                                ]
-                              }
-                            />
-                            <Text
-                              style={
-                                Array [
-                                  Object {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-Regular",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
-                                    "marginTop": -8,
-                                    "paddingBottom": 24,
+                                    "marginLeft": -8,
+                                    "paddingVertical": 20,
                                   },
                                 ]
                               }
@@ -4601,7 +4589,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     "borderWidth": 0,
                                     "flexDirection": "row",
                                     "height": 20,
-                                    "justifyContent": "center",
+                                    "justifyContent": "flex-start",
                                     "marginTop": 0,
                                     "maxWidth": 500,
                                     "opacity": 1,
@@ -4643,7 +4631,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   Signaler l'offre
                                 </Text>
                               </View>
-                            </Text>
+                            </View>
                           </View>
                           <Modal
                             animationType="none"
@@ -5135,6 +5123,26 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               </View>
                             </View>
                           </Modal>
+                          <View
+                            style={
+                              Array [
+                                Object {
+                                  "backgroundColor": "#F1F1F4",
+                                  "height": 8,
+                                },
+                              ]
+                            }
+                          />
+                          <View
+                            numberOfSpaces={6}
+                            style={
+                              Array [
+                                Object {
+                                  "height": 24,
+                                },
+                              ]
+                            }
+                          />
                         </View>
                       </RCTScrollView>
                     </View>

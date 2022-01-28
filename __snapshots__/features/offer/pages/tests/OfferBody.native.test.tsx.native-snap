@@ -1021,25 +1021,11 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
       }
     >
       <View
-        numberOfSpaces={7}
         style={
           Array [
             Object {
-              "height": 28,
-            },
-          ]
-        }
-      />
-      <Text
-        style={
-          Array [
-            Object {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "marginTop": -8,
-              "paddingBottom": 24,
+              "marginLeft": -8,
+              "paddingVertical": 20,
             },
           ]
         }
@@ -1063,7 +1049,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
               "borderWidth": 0,
               "flexDirection": "row",
               "height": 20,
-              "justifyContent": "center",
+              "justifyContent": "flex-start",
               "marginTop": 0,
               "maxWidth": 500,
               "opacity": 1,
@@ -1105,7 +1091,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
             Signaler l'offre
           </Text>
         </View>
-      </Text>
+      </View>
     </View>
     <Modal
       animationType="none"
@@ -1597,6 +1583,26 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         </View>
       </View>
     </Modal>
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#F1F1F4",
+            "height": 8,
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "height": 24,
+          },
+        ]
+      }
+    />
   </View>
 </RCTScrollView>
 `;

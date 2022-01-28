@@ -18,7 +18,7 @@ type Props = {
   buttons?: Array<ReactNode>
 }
 
-const ANIMATION_SIZE = getSpacing(35)
+const ANIMATION_SIZE = getSpacing(45)
 const ICON_SIZE = getSpacing(50)
 
 export const GenericInfoPage: FunctionComponent<Props> = ({
@@ -77,7 +77,7 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
                   : spacingMatrix.bottom
               }
             />
-            <Spacer.Flex />
+            <Spacer.Flex flex={0.5} />
           </React.Fragment>
         )}
         {!!buttons && (

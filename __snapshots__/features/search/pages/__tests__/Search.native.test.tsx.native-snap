@@ -249,27 +249,18 @@ exports[`Search component should render correctly 1`] = `
                 Object {
                   "alignItems": "center",
                   "flexDirection": "row",
+                  "paddingHorizontal": 8,
                 },
               ]
             }
           >
             <View
-              style={
-                Array [
-                  Object {
-                    "left": -7,
-                  },
-                ]
-              }
+              height={36}
+              width={36}
             >
-              <View
-                height={36}
-                width={36}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
+              <Text>
+                undefined-SVG-Mock
+              </Text>
             </View>
             <View
               numberOfSpaces={2}
@@ -290,7 +281,6 @@ exports[`Search component should render correctly 1`] = `
                     "flexShrink": 1,
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 20,
-                    "left": -7,
                     "lineHeight": 24,
                   },
                 ]
@@ -385,27 +375,18 @@ exports[`Search component should render correctly 1`] = `
                 Object {
                   "alignItems": "center",
                   "flexDirection": "row",
+                  "paddingHorizontal": 8,
                 },
               ]
             }
           >
             <View
-              style={
-                Array [
-                  Object {
-                    "left": -7,
-                  },
-                ]
-              }
+              height={36}
+              width={36}
             >
-              <View
-                height={36}
-                width={36}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
+              <Text>
+                undefined-SVG-Mock
+              </Text>
             </View>
             <View
               numberOfSpaces={2}
@@ -426,7 +407,6 @@ exports[`Search component should render correctly 1`] = `
                     "flexShrink": 1,
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 20,
-                    "left": -7,
                     "lineHeight": 24,
                   },
                 ]

@@ -188,11 +188,12 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
       }
     />
     <View
+      flex={0.5}
       style={
         Array [
           Object {
             "flexBasis": 0,
-            "flexGrow": 1,
+            "flexGrow": 0.5,
             "flexShrink": 1,
           },
         ]
@@ -543,11 +544,12 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
       }
     />
     <View
+      flex={0.5}
       style={
         Array [
           Object {
             "flexBasis": 0,
-            "flexGrow": 1,
+            "flexGrow": 0.5,
             "flexShrink": 1,
           },
         ]

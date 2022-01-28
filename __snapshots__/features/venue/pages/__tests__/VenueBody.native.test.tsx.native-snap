@@ -2031,9 +2031,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
             "alignItems": "center",
             "flexDirection": "row",
             "justifyContent": "space-between",
-            "paddingBottom": 16,
             "paddingHorizontal": 24,
-            "paddingTop": 24,
+            "paddingVertical": 20,
           },
           undefined,
         ]
@@ -2189,9 +2188,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
             "alignItems": "center",
             "flexDirection": "row",
             "justifyContent": "space-between",
-            "paddingBottom": 16,
             "paddingHorizontal": 24,
-            "paddingTop": 24,
+            "paddingVertical": 20,
           },
           undefined,
         ]
@@ -2790,9 +2788,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
             "alignItems": "center",
             "flexDirection": "row",
             "justifyContent": "space-between",
-            "paddingBottom": 16,
             "paddingHorizontal": 24,
-            "paddingTop": 24,
+            "paddingVertical": 20,
           },
           undefined,
         ]

@@ -44,7 +44,7 @@ export const AccessibilityAtom: React.FC<Props> = ({
 const Container = styled.View<{ rightSpacingValue: number }>(({ rightSpacingValue, theme }) => ({
   flex: 1,
   marginRight: rightSpacingValue,
-  alignItems: theme.isMobileViewport ? undefined : 'center',
+  alignItems: theme.isMobileViewport && theme.isTouch ? undefined : 'center',
 }))
 
 const Frame = styled.View(({ theme }) => ({

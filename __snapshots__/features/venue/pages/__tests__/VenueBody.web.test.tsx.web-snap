@@ -785,7 +785,7 @@ Object {
           <div
             aria-label="Ouvrir la section"
             class="css-view-1dbjc4n"
-            style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
+            style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
             tabindex="0"
           >
             <div
@@ -865,7 +865,7 @@ Object {
           <div
             aria-label="Ouvrir la section"
             class="css-view-1dbjc4n"
-            style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
+            style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
             tabindex="0"
           >
             <div
@@ -909,7 +909,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="accessibilityAtomContainer"
-                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
+                  style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -972,7 +972,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="accessibilityAtomContainer"
-                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
+                  style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -1035,7 +1035,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="accessibilityAtomContainer"
-                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
+                  style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -1098,7 +1098,7 @@ Object {
                 <div
                   class="css-view-1dbjc4n"
                   data-testid="accessibilityAtomContainer"
-                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px;"
+                  style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -1168,7 +1168,7 @@ Object {
           <div
             aria-label="Ouvrir la section"
             class="css-view-1dbjc4n"
-            style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
+            style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
             tabindex="0"
           >
             <div
@@ -2021,7 +2021,7 @@ Object {
         <div
           aria-label="Ouvrir la section"
           class="css-view-1dbjc4n"
-          style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
+          style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
           tabindex="0"
         >
           <div
@@ -2101,7 +2101,7 @@ Object {
         <div
           aria-label="Ouvrir la section"
           class="css-view-1dbjc4n"
-          style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
+          style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
           tabindex="0"
         >
           <div
@@ -2145,7 +2145,7 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="accessibilityAtomContainer"
-                style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
+                style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -2208,7 +2208,7 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="accessibilityAtomContainer"
-                style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
+                style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -2271,7 +2271,7 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="accessibilityAtomContainer"
-                style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
+                style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -2334,7 +2334,7 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="accessibilityAtomContainer"
-                style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px;"
+                style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -2404,7 +2404,7 @@ Object {
         <div
           aria-label="Ouvrir la section"
           class="css-view-1dbjc4n"
-          style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 24px 24px 16px 24px;"
+          style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
           tabindex="0"
         >
           <div
