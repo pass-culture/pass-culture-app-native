@@ -118,18 +118,7 @@ exports[`BookingDetails should render correctly 1`] = `
             }
             width={295}
           >
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "minHeight": 250,
-                    "paddingHorizontal": 28,
-                    "paddingVertical": 8,
-                  },
-                ]
-              }
-            >
+            <View>
               <Text
                 style={
                   Array [
@@ -138,6 +127,7 @@ exports[`BookingDetails should render correctly 1`] = `
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 20,
                       "lineHeight": 24,
+                      "marginTop": 8,
                       "maxWidth": "100%",
                       "paddingHorizontal": 4,
                       "textAlign": "center",
@@ -151,9 +141,10 @@ exports[`BookingDetails should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "alignItems": "center",
-                      "flexGrow": 1,
                       "justifyContent": "center",
+                      "minHeight": 200,
+                      "paddingHorizontal": 28,
+                      "paddingTop": 8,
                     },
                   ]
                 }
@@ -178,49 +169,63 @@ exports[`BookingDetails should render correctly 1`] = `
                   352UW4
                 </Text>
                 <View
-                  style={
-                    Array [
-                      Object {
-                        "flexDirection": "row",
-                      },
-                    ]
+                  accessibilityLabel="Accéder à l'offre"
+                  accessibilityState={
+                    Object {
+                      "disabled": false,
+                    }
                   }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  nativeID="animatedComponent"
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderRadius": 24,
+                      "justifyContent": "center",
+                      "opacity": 1,
+                      "overflow": "hidden",
+                    }
+                  }
+                  testID="Accéder à l'offre"
                 >
                   <View
-                    accessibilityLabel="Accéder à l'offre"
-                    accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    nativeID="animatedComponent"
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Object {
-                        "alignItems": "center",
-                        "backgroundColor": "#eb0055",
-                        "borderRadius": 24,
-                        "borderWidth": 0,
-                        "flexDirection": "row",
-                        "height": 40,
-                        "justifyContent": "center",
-                        "maxWidth": 500,
-                        "opacity": 1,
-                        "paddingBottom": 2,
-                        "paddingLeft": 2,
-                        "paddingRight": 2,
-                        "paddingTop": 2,
-                        "width": "100%",
-                      }
-                    }
-                    testID="Accéder à l'offre"
+                    height={48}
+                    width="100%"
                   >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "position": "absolute",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
                     <Text
-                      adjustsFontSizeToFit={false}
+                      adjustsFontSizeToFit={true}
                       numberOfLines={1}
                       style={
                         Array [
@@ -229,12 +234,13 @@ exports[`BookingDetails should render correctly 1`] = `
                             "fontFamily": "Montserrat-Bold",
                             "fontSize": 15,
                             "lineHeight": 20,
-                            "marginLeft": 0,
-                            "maxWidth": "100%",
+                            "paddingBottom": 20,
+                            "paddingLeft": 20,
+                            "paddingRight": 20,
+                            "paddingTop": 20,
                           },
                         ]
                       }
-                      textColor="#ffffff"
                     >
                       Accéder à l'offre
                     </Text>
