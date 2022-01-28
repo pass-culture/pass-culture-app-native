@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { useCurrentRoute } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
@@ -12,6 +13,9 @@ import { Link } from 'ui/web/link/Link'
 
 export const AccessibleTabBar = () => {
   const { tabRoutes } = useTabNavigationContext()
+  const currentRoute = useCurrentRoute()
+
+  if (currentRoute && currentRoute.name !== 'TabNavigator') return null
 
   const onPress = (name: keyof TabParamList) => {
     navigateFromRef(...getTabNavConfig(name, undefined))
