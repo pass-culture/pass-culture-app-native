@@ -114,18 +114,18 @@ exports[`Home component should render correctly without login modal 1`] = `
                 }
               />
               <Text
-                color="#ffffff"
                 fontSize={28}
                 numberOfLines={2}
                 style={
                   Array [
                     Object {
-                      "color": "#ffffff",
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Black",
                       "fontSize": 28,
                       "lineHeight": 36,
                     },
                     Object {
+                      "color": "#ffffff",
                       "marginHorizontal": 32,
                       "textAlign": "center",
                     },
@@ -145,7 +145,6 @@ exports[`Home component should render correctly without login modal 1`] = `
                 }
               />
               <Text
-                color="#ffffff"
                 style={
                   Array [
                     Object {

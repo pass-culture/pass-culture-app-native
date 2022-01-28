@@ -180,7 +180,6 @@ exports[`<VenueHeader /> should render correctly 1`] = `
       testID="venueHeaderName"
     >
       <Text
-        color="#ffffff"
         style={
           Array [
             Object {

@@ -760,12 +760,13 @@ Object {
                 >
                   <div
                     class="css-view-1dbjc4n"
+                    data-testid="button-icon"
                   >
                     <div
                       class="css-text-901oao"
                       dir="auto"
                     >
-                      undefined-SVG-Mock
+                      button-icon-SVG-Mock
                     </div>
                   </div>
                   <div
@@ -2159,12 +2160,13 @@ Object {
               >
                 <div
                   class="css-view-1dbjc4n"
+                  data-testid="button-icon"
                 >
                   <div
                     class="css-text-901oao"
                     dir="auto"
                   >
-                    undefined-SVG-Mock
+                    button-icon-SVG-Mock
                   </div>
                 </div>
                 <div

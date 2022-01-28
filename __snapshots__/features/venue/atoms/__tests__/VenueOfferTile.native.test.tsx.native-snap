@@ -99,7 +99,6 @@ exports[`VenueOfferTile component should render correctly 1`] = `
         }
       >
         <Text
-          color="#ffffff"
           numberOfLines={1}
           style={
             Array [

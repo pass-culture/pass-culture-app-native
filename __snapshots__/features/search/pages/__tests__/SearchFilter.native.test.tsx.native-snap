@@ -650,7 +650,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#161617"
+                selected={false}
                 style={
                   Array [
                     Object {
@@ -713,7 +713,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#161617"
+                selected={false}
                 style={
                   Array [
                     Object {
@@ -776,7 +776,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#161617"
+                selected={false}
                 style={
                   Array [
                     Object {
@@ -839,7 +839,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#161617"
+                selected={false}
                 style={
                   Array [
                     Object {
@@ -902,7 +902,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#161617"
+                selected={false}
                 style={
                   Array [
                     Object {
@@ -965,7 +965,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#161617"
+                selected={false}
                 style={
                   Array [
                     Object {
@@ -1028,7 +1028,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#161617"
+                selected={false}
                 style={
                   Array [
                     Object {
@@ -1091,7 +1091,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#161617"
+                selected={false}
                 style={
                   Array [
                     Object {
@@ -1154,7 +1154,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#161617"
+                selected={false}
                 style={
                   Array [
                     Object {
@@ -1217,7 +1217,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#161617"
+                selected={false}
                 style={
                   Array [
                     Object {
@@ -1280,7 +1280,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#161617"
+                selected={false}
                 style={
                   Array [
                     Object {
@@ -1343,7 +1343,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#161617"
+                selected={false}
                 style={
                   Array [
                     Object {
@@ -1552,7 +1552,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#161617"
+                selected={false}
                 style={
                   Array [
                     Object {
@@ -1615,7 +1615,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#161617"
+                selected={false}
                 style={
                   Array [
                     Object {
@@ -1678,7 +1678,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                 }
               />
               <Text
-                color="#161617"
+                selected={false}
                 style={
                   Array [
                     Object {
@@ -2716,7 +2716,6 @@ exports[`SearchFilter component should render correctly 1`] = `
           }
         />
         <Text
-          color="#696A6F"
           style={
             Array [
               Object {
@@ -2887,7 +2886,6 @@ exports[`SearchFilter component should render correctly 1`] = `
           }
         />
         <Text
-          color="#696A6F"
           style={
             Array [
               Object {
@@ -3064,7 +3062,6 @@ exports[`SearchFilter component should render correctly 1`] = `
             testID="Réinitialiser les filtres"
           >
             <Text
-              color="#ffffff"
               style={
                 Array [
                   Object {

@@ -136,7 +136,6 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       }
     />
     <Text
-      color="#ffffff"
       style={
         Array [
           Object {

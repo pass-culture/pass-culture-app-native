@@ -193,7 +193,6 @@ Array [
         testID="offerHeaderName"
       >
         <Text
-          color="#ffffff"
           style={
             Array [
               Object {

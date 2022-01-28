@@ -231,7 +231,6 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 }
               />
               <Text
-                color="#696A6F"
                 style={
                   Array [
                     Object {
@@ -333,7 +332,6 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                   </Text>
                 </View>
                 <Text
-                  color="#696A6F"
                   style={
                     Array [
                       Object {
@@ -465,7 +463,6 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                   </Text>
                 </View>
                 <Text
-                  color="#696A6F"
                   style={
                     Array [
                       Object {
