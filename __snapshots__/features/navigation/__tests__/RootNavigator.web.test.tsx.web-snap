@@ -8,7 +8,7 @@ Object {
   >
     <div>
       <main
-        class="sc-eCImPb cDeQCD"
+        class="sc-gsDKAQ ldlJPY"
       >
         <div
           class="css-view-1dbjc4n"
@@ -43,7 +43,11 @@ Object {
   </body>,
   "container": <div>
     <main
+<<<<<<< HEAD
       class="sc-eCImPb cDeQCD"
+=======
+      class="sc-gsDKAQ ldlJPY"
+>>>>>>> c7da9003a ((PC-12840) feat(accessibility): Update RootNavigator web tests)
     >
       <div
         class="css-view-1dbjc4n"
