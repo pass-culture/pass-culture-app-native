@@ -27,8 +27,8 @@ export function useEduConnectLogin() {
           setLoginUrl(finalURL)
           return
         }
-        setError(new EduConnectError(EduConnectErrorMessageEnum.GenericError))
       }
+      setError(new EduConnectError(EduConnectErrorMessageEnum.GenericError))
     } catch (err) {
       setError(new EduConnectError(EduConnectErrorMessageEnum.GenericError))
     }

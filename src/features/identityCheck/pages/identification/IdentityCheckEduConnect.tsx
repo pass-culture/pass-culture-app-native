@@ -21,7 +21,7 @@ export const IdentityCheckEduConnect = () => {
   const { dispatch } = useIdentityCheckContext()
   const { goBack } = useGoBack(...homeNavConfig)
 
-  const { error } = useEduConnectLogin()
+  const { error, openEduConnect } = useEduConnectLogin()
 
   const onGoBack = () => {
     dispatch({ type: 'SET_METHOD', payload: null })
@@ -30,6 +30,9 @@ export const IdentityCheckEduConnect = () => {
 
   const onSubmit = () => {
     navigateToNextScreen()
+    openEduConnect().catch((err) => {
+      throw err
+    })
   }
 
   useEnterKeyAction(onSubmit)
