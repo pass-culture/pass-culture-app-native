@@ -9,5 +9,5 @@
 //    |_______________|      |
 //    |      _____    |      |  3. TicketFooter
 //    |_____/     \___|     _|
-export const TICKET_MIN_HEIGHT = 250
+export const TICKET_MIN_HEIGHT = 200
 export const QR_CODE_SIZE = 170
