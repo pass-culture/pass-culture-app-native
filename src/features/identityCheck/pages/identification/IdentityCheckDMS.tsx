@@ -12,8 +12,7 @@ import { OrSeparator } from 'ui/components/OrSeparator'
 import { BicolorIdCardWithMagnifyingGlassDeprecated as BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass_deprecated'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+
 export const IdentityCheckDMS = () => {
   const theme = useTheme()
 
@@ -64,6 +63,14 @@ export const IdentityCheckDMS = () => {
 }
 
 const Container = styled.View({ height: '100%', alignItems: 'center' })
-const StyledBody = styled(Typo.Body).attrs({ color: ColorsEnum.GREY_DARK })({ textAlign: 'center' })
+
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  textAlign: 'center',
+  color: theme.colors.greyDark,
+}))
 const ButtonContainer = styled.View({ padding: getSpacing(10) })
-const Caption = styled(Typo.Caption).attrs({ color: ColorsEnum.GREY_DARK })({ textAlign: 'center' })
+
+const Caption = styled(Typo.Caption)(({ theme }) => ({
+  textAlign: 'center',
+  color: theme.colors.greyDark,
+}))

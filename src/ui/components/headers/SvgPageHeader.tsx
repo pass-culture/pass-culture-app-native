@@ -3,8 +3,6 @@ import styled from 'styled-components/native'
 
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface SvgPageHeaderProps {
@@ -27,8 +25,8 @@ const HeaderBackgroundWrapper = styled.View({
   alignItems: 'center',
 })
 
-const Title = styled(Typo.Title4)({
+const Title = styled(Typo.Title4)(({ theme }) => ({
   position: 'absolute',
   bottom: getSpacing(3),
-  color: ColorsEnum.WHITE,
-})
+  color: theme.colors.white,
+}))

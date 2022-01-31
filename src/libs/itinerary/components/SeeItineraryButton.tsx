@@ -4,8 +4,6 @@ import styled from 'styled-components/native'
 
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
   openItinerary: () => void
@@ -18,13 +16,15 @@ export function SeeItineraryButton(props: Props) {
         inline
         wording={t`Voir l'itinéraire`}
         onPress={props.openItinerary}
-        icon={icon}
+        icon={Icon}
       />
     </Container>
   )
 }
 
-const icon = () => <LocationPointer color={ColorsEnum.BLACK} />
+const Icon = styled(LocationPointer).attrs(({ theme }) => ({
+  color: theme.colors.black,
+}))``
 
 const Container = styled.View({
   alignItems: 'flex-start',

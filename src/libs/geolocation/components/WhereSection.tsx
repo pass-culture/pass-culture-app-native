@@ -15,8 +15,6 @@ import { Spacer } from 'ui/components/spacer/Spacer'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { Typo, getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = {
   beforeNavigateToItinerary?: () => Promise<void> | void
@@ -141,7 +139,7 @@ const IconContainer = styled.View({
   left: -iconSpacing,
 })
 
-const Separator = styled.View({
+const Separator = styled.View(({ theme }) => ({
   height: 1,
-  backgroundColor: ColorsEnum.GREY_MEDIUM,
-})
+  backgroundColor: theme.colors.greyMedium,
+}))

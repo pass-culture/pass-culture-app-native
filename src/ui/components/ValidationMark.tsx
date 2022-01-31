@@ -1,20 +1,28 @@
 import React from 'react'
+import styled from 'styled-components/native'
 
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props extends Omit<IconInterface, 'testID'> {
   isValid: boolean
   validtestID?: string
   invalidTestID?: string
 }
+
 export const ValidationMark: React.FC<Props> = ({ isValid, size, validtestID, invalidTestID }) => {
   return isValid ? (
-    <Validate size={size} color={ColorsEnum.GREEN_VALID} testID={validtestID} />
+    <ValidateGreenValid size={size} testID={validtestID} />
   ) : (
-    <Invalidate size={size} color={ColorsEnum.GREY_DARK} testID={invalidTestID} />
+    <InvalidateGreyDark size={size} testID={invalidTestID} />
   )
 }
+
+const ValidateGreenValid = styled(Validate).attrs(({ theme }) => ({
+  color: theme.colors.greenValid,
+}))``
+
+const InvalidateGreyDark = styled(Invalidate).attrs(({ theme }) => ({
+  color: theme.colors.greenValid,
+}))``

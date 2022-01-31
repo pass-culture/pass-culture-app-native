@@ -11,8 +11,6 @@ import { env } from 'libs/environment'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export const HomeHeader: FunctionComponent = function () {
@@ -55,21 +53,26 @@ export const HomeHeader: FunctionComponent = function () {
 
       <CenterContainer>
         <Spacer.Column numberOfSpaces={8} />
-        <StyledTitle1 color={ColorsEnum.WHITE} numberOfLines={2}>
-          {welcomeTitle}
-        </StyledTitle1>
+        <StyledTitle1>{welcomeTitle}</StyledTitle1>
         <Spacer.Column numberOfSpaces={2} />
-        <Typo.Body color={ColorsEnum.WHITE}>{subtitle}</Typo.Body>
+        <Body>{subtitle}</Body>
       </CenterContainer>
       <Spacer.Column numberOfSpaces={6} />
     </React.Fragment>
   )
 }
 
-const StyledTitle1 = styled(Typo.Title1)({
+const Body = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
+}))
+
+const StyledTitle1 = styled(Typo.Title1).attrs({
+  numberOfLines: 2,
+})(({ theme }) => ({
   textAlign: 'center',
   marginHorizontal: getSpacing(8),
-})
+  color: theme.colors.white,
+}))
 
 const CenterContainer = styled.View({
   flexGrow: 1,

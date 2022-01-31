@@ -12,8 +12,6 @@ import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
 import { Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   const timer = useRef<number>()
@@ -55,8 +53,7 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   )
 }
 
-const StyledBody = styled(Typo.Body).attrs({
-  color: ColorsEnum.WHITE,
-})({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
   textAlign: 'center',
-})
+}))

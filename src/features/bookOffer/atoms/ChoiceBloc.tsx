@@ -3,8 +3,6 @@ import styled, { useTheme, DefaultTheme } from 'styled-components/native'
 
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 const getBorderColor = (theme: DefaultTheme, selected: boolean, disabled?: boolean) => {
   if (selected) return theme.colors.primary
@@ -12,11 +10,12 @@ const getBorderColor = (theme: DefaultTheme, selected: boolean, disabled?: boole
   return theme.colors.greyDark
 }
 
-export const getTextColor = (selected: boolean, disabled: boolean) => {
-  if (selected) return ColorsEnum.WHITE
-  if (disabled) return ColorsEnum.GREY_DARK
-  return ColorsEnum.BLACK
+export const getTextColor = (theme: DefaultTheme, selected: boolean, disabled: boolean) => {
+  if (selected) return theme.colors.white
+  if (disabled) return theme.colors.greyDark
+  return theme.colors.black
 }
+
 interface Props {
   selected: boolean
   onPress: () => void

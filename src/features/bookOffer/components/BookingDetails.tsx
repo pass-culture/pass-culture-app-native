@@ -16,8 +16,6 @@ import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { useBooking, useBookingOffer, useBookingStock } from '../pages/BookingOfferWrapper'
 import { useBookOfferMutation } from '../services/useBookOfferMutation'
@@ -145,11 +143,14 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
 }
 
 const Container = styled.View({ width: '100%' })
-const Separator = styled.View({
+
+const Separator = styled.View(({ theme }) => ({
   height: 2,
-  backgroundColor: ColorsEnum.GREY_LIGHT,
-})
-const Caption = styled(Typo.Caption).attrs({ color: ColorsEnum.GREY_DARK })({
+  backgroundColor: theme.colors.greyLight,
+}))
+
+const Caption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
   marginTop: getSpacing(1),
   textAlign: 'center',
-})
+}))

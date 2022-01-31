@@ -13,9 +13,9 @@ import { PageHeader } from 'ui/components/headers/PageHeader'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+
 export type FavoriteSortBy = 'RECENTLY_ADDED' | 'ASCENDING_PRICE' | 'AROUND_ME'
+
 const SORT_OPTIONS: Record<FavoriteSortBy, string> = {
   RECENTLY_ADDED: t`Ajouté récemment`,
   ASCENDING_PRICE: t`Prix croissant`,
@@ -76,7 +76,6 @@ export const FavoritesSorts: React.FC = () => {
 
         {SORT_OPTIONS_LIST.map(([sortBy, label]) => {
           const isSelected = stagedSelectedSortBy === sortBy
-          const textColor = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK
           return (
             <React.Fragment key={sortBy}>
               <LabelContainer
@@ -85,11 +84,9 @@ export const FavoritesSorts: React.FC = () => {
                 testID={sortBy}>
                 <Spacer.Column numberOfSpaces={8} />
                 <Spacer.Row numberOfSpaces={6} />
-                <Typo.ButtonText numberOfLines={2} color={textColor}>
-                  {label}
-                </Typo.ButtonText>
+                <Label isSelected={isSelected}>{label}</Label>
                 <Spacer.Flex />
-                {!!isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(6)} />}
+                {!!isSelected && <ValidatePrimary />}
               </LabelContainer>
               {sortBy === 'AROUND_ME' && positionError ? (
                 <InputError visible messageId={positionError.message} numberOfSpacesTop={1} />
@@ -106,6 +103,17 @@ export const FavoritesSorts: React.FC = () => {
     </Container>
   )
 }
+
+const Label = styled(Typo.ButtonText).attrs({
+  numberOfLines: 2,
+})<{ isSelected: boolean }>(({ isSelected, theme }) => ({
+  color: isSelected ? theme.colors.primary : theme.colors.black,
+}))
+
+const ValidatePrimary = styled(Validate).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  size: getSpacing(6),
+}))``
 
 const Container = styled.View(({ theme }) => ({
   flex: 1,

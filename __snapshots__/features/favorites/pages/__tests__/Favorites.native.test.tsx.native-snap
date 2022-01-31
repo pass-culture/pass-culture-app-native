@@ -70,10 +70,7 @@ exports[`Favorites component should render correctly 1`] = `
           "attrs": Array [],
           "inlineStyle": InlineStyle {
             "rules": Array [
-              "height: 2px;",
-              "background-color: #F1F1F4;",
-              "margin-horizontal: 24px;",
-              "margin-vertical: 16px;",
+              [Function],
             ],
           },
           "render": [Function],
@@ -139,6 +136,11 @@ exports[`Favorites component should render correctly 1`] = `
       scrollEnabled={false}
       scrollEventThrottle={50}
       stickyHeaderIndices={Array []}
+      style={
+        Array [
+          Object {},
+        ]
+      }
       viewabilityConfigCallbackPairs={Array []}
     >
       <View>

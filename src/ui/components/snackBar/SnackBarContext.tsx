@@ -1,7 +1,5 @@
 import React, { createContext, memo, useContext, useRef, useState } from 'react'
-
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { useTheme } from 'styled-components/native'
 
 import { mapSnackBarTypeToStyle } from './mapSnackBarTypeToStyle'
 import { SnackBar, SnackBarProps } from './SnackBar'
@@ -24,14 +22,15 @@ const SnackBarContext = createContext<SnackBarContextValue>({
 })
 
 export const SnackBarProvider = memo(function SnackBarProviderComponent({ children }) {
+  const { colors } = useTheme()
   const [snackBarProps, setSnackBarProps] = useState<SnackBarProps>({
     visible: false,
     message: '',
     onClose: undefined,
     icon: undefined,
-    backgroundColor: ColorsEnum.TRANSPARENT,
-    progressBarColor: ColorsEnum.TRANSPARENT,
-    color: ColorsEnum.WHITE,
+    backgroundColor: colors.transparent,
+    progressBarColor: colors.transparent,
+    color: colors.white,
     refresher: 0,
   })
 

@@ -7,8 +7,6 @@ import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { NoOfferDeprecated as NoOffer } from 'ui/svg/icons/NoOffer_deprecated'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 export const NoSearchResult: React.FC = () => {
   const { position } = useGeolocation()
@@ -58,20 +56,20 @@ const Container = styled.View({
   marginHorizontal: getSpacing(14.5),
 })
 
-const MainTitle = styled(Typo.Title4)({
-  color: ColorsEnum.GREY_DARK,
+const MainTitle = styled(Typo.Title4)(({ theme }) => ({
+  color: theme.colors.greyDark,
   marginTop: getSpacing(2),
-})
+}))
 
-const DescriptionErrorText = styled(Typo.Body)({
-  color: ColorsEnum.GREY_DARK,
-})
+const DescriptionErrorText = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
 
 const DescriptionErrorTextContainer = styled.Text({
   marginTop: getSpacing(6.5),
   textAlign: 'center',
 })
 
-const AroundMeText = styled(Typo.ButtonText)({
-  color: ColorsEnum.PRIMARY,
-})
+const AroundMeText = styled(Typo.ButtonText)(({ theme }) => ({
+  color: theme.colors.primary,
+}))

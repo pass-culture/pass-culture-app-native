@@ -513,15 +513,33 @@ exports[`BookingDetails should render correctly 1`] = `
           >
             <View
               height={20}
+              testID="button-icon"
               width={20}
             >
               <Text>
-                undefined-SVG-Mock
+                button-icon-SVG-Mock
               </Text>
             </View>
             <Text
               adjustsFontSizeToFit={false}
-              icon={[Function]}
+              icon={
+                Object {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": Array [
+                    [Function],
+                  ],
+                  "inlineStyle": InlineStyle {
+                    "rules": Array [
+                      "",
+                    ],
+                  },
+                  "render": [Function],
+                  "shouldForwardProp": undefined,
+                  "styledComponentId": "StyledNativeComponent",
+                  "target": [Function],
+                  "withComponent": [Function],
+                }
+              }
               numberOfLines={1}
               style={
                 Array [

@@ -217,7 +217,6 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
                 }
               >
                 <Text
-                  color="#696A6F"
                   style={
                     Array [
                       Object {
@@ -267,7 +266,6 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
                   }
                 />
                 <Text
-                  color="#696A6F"
                   style={
                     Array [
                       Object {
@@ -317,7 +315,6 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
                   }
                 />
                 <Text
-                  color="#696A6F"
                   style={
                     Array [
                       Object {

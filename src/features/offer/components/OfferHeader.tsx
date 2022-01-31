@@ -3,7 +3,7 @@ import { useRoute } from '@react-navigation/native'
 import React, { useRef } from 'react'
 import { Animated, Platform } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { isApiError } from 'api/apiHelpers'
 import { useAuthContext } from 'features/auth/AuthContext'
@@ -17,15 +17,12 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal'
 import { analytics } from 'libs/analytics'
-import { isShareApiSupported } from 'libs/share'
 import { WebShareModal } from 'libs/share/WebShareModal'
 import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { useShareOffer } from '../services/useShareOffer'
 
@@ -41,6 +38,7 @@ interface Props {
 export const OfferHeader: React.FC<Props> = (props) => {
   const { headerTransition, offerId, title } = props
   const { isLoggedIn } = useAuthContext()
+  const { colors } = useTheme()
   const {
     visible: signInModalVisible,
     showModal: showSignInModal,
@@ -123,23 +121,21 @@ export const OfferHeader: React.FC<Props> = (props) => {
           <Spacer.Flex />
 
           <Title testID="offerHeaderName" style={{ opacity: headerTransition }}>
-            <Typo.Body color={ColorsEnum.WHITE}>{title}</Typo.Body>
+            <Body>{title}</Body>
           </Title>
 
           <Spacer.Flex />
-          {!!isShareApiSupported() && (
-            <HeaderIcon
-              animationState={animationState}
-              iconName="share"
-              onPress={pressShareOffer}
-              testID={t`Partager`}
-            />
-          )}
+          <HeaderIcon
+            animationState={animationState}
+            iconName="share"
+            onPress={pressShareOffer}
+            testID={t`Partager`}
+          />
           <Spacer.Row numberOfSpaces={3} />
           <HeaderIcon
             animationState={animationState}
             scaleAnimatedValue={scaleFavoriteIconAnimatedValueRef.current}
-            initialColor={favorite ? ColorsEnum.PRIMARY : undefined}
+            initialColor={favorite ? colors.primary : undefined}
             iconName={favorite ? 'favorite-filled' : 'favorite'}
             onPress={pressFavorite}
             testID={t`Mettre en favoris`}
@@ -195,4 +191,8 @@ const Title = styled(Animated.Text).attrs({ numberOfLines: 2 })(({ theme }) => (
   textAlign: 'center',
   color: theme.colors.white,
   ...(Platform.OS === 'web' ? { whiteSpace: 'pre-wrap' } : {}),
+}))
+
+const Body = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
 }))

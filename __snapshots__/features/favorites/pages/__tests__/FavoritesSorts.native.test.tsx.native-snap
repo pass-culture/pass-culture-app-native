@@ -133,7 +133,7 @@ exports[`FavoritesSorts component should render correctly 1`] = `
           }
         />
         <Text
-          color="#eb0055"
+          isSelected={true}
           numberOfLines={2}
           style={
             Array [
@@ -211,7 +211,7 @@ exports[`FavoritesSorts component should render correctly 1`] = `
           }
         />
         <Text
-          color="#161617"
+          isSelected={false}
           numberOfLines={2}
           style={
             Array [
@@ -281,7 +281,7 @@ exports[`FavoritesSorts component should render correctly 1`] = `
           }
         />
         <Text
-          color="#161617"
+          isSelected={false}
           numberOfLines={2}
           style={
             Array [

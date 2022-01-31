@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
@@ -26,7 +26,8 @@ export const DuoChoice: React.FC<Props> = ({
   testID,
 }) => {
   const disabled = !hasEnoughCredit
-  const textColor = getTextColor(selected, disabled)
+  const theme = useTheme()
+  const textColor = getTextColor(theme, selected, disabled)
 
   return (
     <ChoiceBloc onPress={onPress} testID={testID} selected={selected} disabled={disabled}>

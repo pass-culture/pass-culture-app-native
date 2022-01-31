@@ -341,7 +341,6 @@ Array [
                     }
                   >
                     <Text
-                      color="#ffffff"
                       numberOfLines={1}
                       style={
                         Array [
@@ -565,7 +564,6 @@ Array [
                     }
                   >
                     <Text
-                      color="#ffffff"
                       numberOfLines={1}
                       style={
                         Array [
@@ -789,7 +787,6 @@ Array [
                     }
                   >
                     <Text
-                      color="#ffffff"
                       numberOfLines={1}
                       style={
                         Array [

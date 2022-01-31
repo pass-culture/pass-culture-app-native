@@ -3,20 +3,23 @@ import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+
 export const Badge: React.FunctionComponent<IconInterface & { label: string | number }> = ({
   label,
   testID,
 }) => (
   <Container testID={testID}>
-    <Typo.Caption color={ColorsEnum.WHITE}>{label}</Typo.Caption>
+    <Caption>{label}</Caption>
   </Container>
 )
 
-const Container = styled.View({
-  background: ColorsEnum.PRIMARY,
+const Caption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.white,
+}))
+
+const Container = styled.View(({ theme }) => ({
+  background: theme.colors.primary,
   height: getSpacing(4),
   borderRadius: getSpacing(2),
   paddingHorizontal: getSpacing(2),
-})
+}))

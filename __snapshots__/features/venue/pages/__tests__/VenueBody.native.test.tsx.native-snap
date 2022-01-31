@@ -963,7 +963,6 @@ exports[`<VenueBody /> should render correctly 1`] = `
                       }
                     >
                       <Text
-                        color="#ffffff"
                         numberOfLines={1}
                         style={
                           Array [
@@ -1187,7 +1186,6 @@ exports[`<VenueBody /> should render correctly 1`] = `
                       }
                     >
                       <Text
-                        color="#ffffff"
                         numberOfLines={1}
                         style={
                           Array [
@@ -1411,7 +1409,6 @@ exports[`<VenueBody /> should render correctly 1`] = `
                       }
                     >
                       <Text
-                        color="#ffffff"
                         numberOfLines={1}
                         style={
                           Array [
@@ -1964,15 +1961,33 @@ exports[`<VenueBody /> should render correctly 1`] = `
         >
           <View
             height={20}
+            testID="button-icon"
             width={20}
           >
             <Text>
-              undefined-SVG-Mock
+              button-icon-SVG-Mock
             </Text>
           </View>
           <Text
             adjustsFontSizeToFit={false}
-            icon={[Function]}
+            icon={
+              Object {
+                "$$typeof": Symbol(react.forward_ref),
+                "attrs": Array [
+                  [Function],
+                ],
+                "inlineStyle": InlineStyle {
+                  "rules": Array [
+                    "",
+                  ],
+                },
+                "render": [Function],
+                "shouldForwardProp": undefined,
+                "styledComponentId": "StyledNativeComponent",
+                "target": [Function],
+                "withComponent": [Function],
+              }
+            }
             numberOfLines={1}
             style={
               Array [
@@ -2465,7 +2480,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 }
               >
                 <View
-                  fill="#696A6F"
+                  fill="#15884f"
                   height={24}
                   testID="invalidTestId"
                   width={24}
@@ -2586,7 +2601,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 }
               >
                 <View
-                  fill="#696A6F"
+                  fill="#15884f"
                   height={24}
                   testID="invalidTestId"
                   width={24}
@@ -2707,7 +2722,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 }
               >
                 <View
-                  fill="#696A6F"
+                  fill="#15884f"
                   height={24}
                   testID="invalidTestId"
                   width={24}

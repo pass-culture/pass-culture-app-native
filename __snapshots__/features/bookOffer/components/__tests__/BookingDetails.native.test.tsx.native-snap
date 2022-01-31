@@ -508,7 +508,6 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
     </Text>
   </View>
   <Text
-    color="#696A6F"
     nativeID="testUuidV4"
     style={
       Array [
@@ -1036,7 +1035,6 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
     </Text>
   </View>
   <Text
-    color="#696A6F"
     nativeID="testUuidV4"
     style={
       Array [

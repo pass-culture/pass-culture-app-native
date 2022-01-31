@@ -14,8 +14,6 @@ import { EduConnectError } from 'features/identityCheck/errors/eduConnect/types'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { eduConnectClient } from 'libs/eduConnectClient'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 export const IdentityCheckEduConnectForm = () => {
   const { navigateToNextScreen } = useIdentityCheckNavigation()
@@ -113,7 +111,7 @@ export const IdentityCheckEduConnectForm = () => {
   )
 }
 
-const StyledWebView = styled(WebView)({
+const StyledWebView = styled(WebView)(({ theme }) => ({
   flex: 1,
-  backgroundColor: ColorsEnum.WHITE,
-})
+  backgroundColor: theme.colors.white,
+}))

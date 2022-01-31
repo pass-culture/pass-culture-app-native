@@ -99,7 +99,6 @@ exports[`OfferTile component should render correctly 1`] = `
         }
       >
         <Text
-          color="#ffffff"
           numberOfLines={1}
           style={
             Array [
@@ -142,7 +141,6 @@ exports[`OfferTile component should render correctly 1`] = `
         }
       >
         <Text
-          color="#ffffff"
           style={
             Array [
               Object {

@@ -1,14 +1,11 @@
 import { Platform, Share } from 'react-native'
 
-export function isShareApiSupported(): boolean {
-  return Platform.OS === 'ios' || Platform.OS === 'android' || Platform.OS === 'web'
-}
-
 export type ShareContent = {
   title?: string
   message: string
   url: string
 }
+
 type ShareOptions = Parameters<typeof Share.share>[1]
 
 export async function share(content: ShareContent, options: ShareOptions): Promise<void> {

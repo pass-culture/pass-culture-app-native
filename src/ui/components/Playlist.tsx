@@ -8,8 +8,6 @@ import styled, { useTheme } from 'styled-components/native'
 import { BicolorArrowLeft } from 'ui/svg/icons/BicolorArrowLeft'
 import { BicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'
 import { getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 type ItemDimensions = { width: number; height: number }
 
 type Direction = 'previous' | 'next'
@@ -175,25 +173,27 @@ const HALF_BUTTON_SIZE = BUTTON_SIZE / 2
 const ScrollButtonForNotTouchDevice = styled.TouchableOpacity<{
   horizontalAlign: 'left' | 'right'
   top?: number
-}>((props) => ({
+}>(({ theme, top, horizontalAlign }) => ({
   position: 'absolute',
   justifyContent: 'center',
   alignItems: 'center',
   margin: 'auto',
   height: BUTTON_SIZE,
   width: BUTTON_SIZE,
-  right: props.horizontalAlign === 'right' ? getSpacing(2) : 'auto',
-  left: props.horizontalAlign === 'left' ? getSpacing(2) : 'auto',
-  top: props.top ? props.top - HALF_BUTTON_SIZE : 0,
-  bottom: props.top ? 'auto' : 0,
+  right: horizontalAlign === 'right' ? getSpacing(2) : 'auto',
+  left: horizontalAlign === 'left' ? getSpacing(2) : 'auto',
+  top: top ? top - HALF_BUTTON_SIZE : 0,
+  bottom: top ? 'auto' : 0,
   borderWidth: 1,
   borderRadius: HALF_BUTTON_SIZE,
-  borderColor: ColorsEnum.GREY_MEDIUM,
-  backgroundColor: ColorsEnum.WHITE,
-  zIndex: props.theme.zIndex.playlistsButton,
+  borderColor: theme.colors.greyMedium,
+  backgroundColor: theme.colors.white,
+  zIndex: theme.zIndex.playlistsButton,
 }))
 
-const HorizontalMargin = styled.View({ width: getSpacing(6) })
+const HorizontalMargin = styled.View({
+  width: getSpacing(6),
+})
 
 const ITEM_SEPARATOR_WIDTH = getSpacing(4)
 const ItemSeparatorComponent = styled.View({ width: ITEM_SEPARATOR_WIDTH })

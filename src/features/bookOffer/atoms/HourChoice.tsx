@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { getSpacing, Typo } from 'ui/theme'
@@ -34,7 +34,8 @@ export const HourChoice: React.FC<Props> = ({
 }) => {
   const enoughCredit = price <= offerCredit
   const disabled = !isBookable || !enoughCredit
-  const textColor = getTextColor(selected, disabled)
+  const theme = useTheme()
+  const textColor = getTextColor(theme, selected, disabled)
   const wording = getWording(price, isBookable, enoughCredit)
 
   return (
