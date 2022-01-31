@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import DatePicker from 'react-native-date-picker'
 import styled from 'styled-components/native'
 
@@ -14,11 +14,18 @@ import { useModal } from 'ui/components/modals/useModal'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
+import { InputError } from 'ui/components/inputs/InputError'
+import { useAppSettings } from 'features/auth/settings'
+import { dateDiffInFullYears } from 'libs/dates'
 
-const currentDateWithoutTime = formatDateToISOStringWithoutTime(new Date())
+const MINIMUM_DATE = new Date('1900-01-01')
+const CURRENT_DATE = new Date()
+const CURRENT_DATE_WITHOUT_TIME = formatDateToISOStringWithoutTime(CURRENT_DATE)
+const DEFAULT_YOUNGEST_AGE = 15
 
 export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (props) => {
-  const [date, setDate] = useState<Date>(new Date())
+  const [date, setDate] = useState<Date>(CURRENT_DATE)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const { visible, showModal: showInformationModal, hideModal } = useModal(false)
 
   function onPressWhy() {
@@ -26,12 +33,26 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
     showInformationModal()
   }
 
-  const selectedDateWithoutTime = formatDateToISOStringWithoutTime(date)
-  const isDisabled = currentDateWithoutTime === selectedDateWithoutTime
+  const SELECTED_DATE_WITHOUT_TIME = formatDateToISOStringWithoutTime(date)
+  const isDisabled = CURRENT_DATE_WITHOUT_TIME === SELECTED_DATE_WITHOUT_TIME
+
+  const { data: settings } = useAppSettings()
+  const youngestAge = settings?.accountCreationMinimumAge ?? DEFAULT_YOUNGEST_AGE
+
+  useEffect(() => {
+    const age = dateDiffInFullYears(date, CURRENT_DATE)
+    if (!isDisabled && age < 15) {
+      analytics.logSignUpTooYoung(age)
+      return setErrorMessage(
+        t`Tu dois avoir au moins\u00a0${youngestAge}\u00a0ans pour t’inscrire au pass Culture`
+      )
+    }
+    return setErrorMessage(null)
+  }, [date])
 
   function goToNextStep() {
     if (date) {
-      const birthday = selectedDateWithoutTime
+      const birthday = SELECTED_DATE_WITHOUT_TIME
       props.goToNextStep({ birthdate: birthday })
     }
   }
@@ -46,14 +67,15 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
         />
         <Spacer.Column numberOfSpaces={5} />
         <DateInput date={date} />
+        {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={2} />}
         <Spacer.Column numberOfSpaces={5} />
-        <StyledDateTimePicker
+        <StyledDatePicker
           date={date}
           onDateChange={setDate}
           mode="date"
           locale="fr-FR"
-          maximumDate={new Date()}
-          minimumDate={new Date(1900, 0, 2)}
+          maximumDate={CURRENT_DATE}
+          minimumDate={MINIMUM_DATE}
           androidVariant="nativeAndroid"
         />
         <Spacer.Column numberOfSpaces={2} />
@@ -75,6 +97,6 @@ const InnerContainer = styled.View({
   alignItems: 'center',
 })
 
-const StyledDateTimePicker = styled(DatePicker).attrs(({ theme }) => ({
+const StyledDatePicker = styled(DatePicker).attrs(({ theme }) => ({
   textColor: theme.colors.black,
 }))({ width: '100%' })

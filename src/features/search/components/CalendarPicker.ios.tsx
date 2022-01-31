@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import DateTimePicker from '@react-native-community/datetimepicker'
+import DatePicker from 'react-native-date-picker'
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
@@ -7,8 +7,6 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { Props } from './CalendarPicker.d'
 
@@ -19,10 +17,6 @@ export const CalendarPicker: React.FC<Props> = ({
   hideCalendar,
 }) => {
   const [currentDate, setCurrentDate] = useState<Date>(selectedDate)
-
-  const onChange = (_event: Event, newDate: Date | undefined) => {
-    setCurrentDate(newDate || currentDate)
-  }
 
   const onValidate = () => {
     setSelectedDate(currentDate)
@@ -39,23 +33,19 @@ export const CalendarPicker: React.FC<Props> = ({
       rightIconAccessibilityLabel={t`Fermer le calendrier`}
       rightIcon={Close}
       onRightIconPress={hideCalendar}>
-      <Container>
-        <DateTimePicker
-          testID="dateTimePicker"
-          value={currentDate}
-          mode="date"
-          is24Hour={true}
-          display="spinner"
-          // @ts-expect-error FIXME: Type '(_event: Event, newDate: Date | undefined) => void' is not assignable to type '(event: Event, date?: Date | undefined) => void'. Added with PR #1272 when adding Web support
-          onChange={onChange}
-          textColor={ColorsEnum.BLACK}
-          locale="fr-FR"
-        />
-      </Container>
+      <StyledDatePicker
+        testID="dateTimePicker"
+        date={currentDate}
+        mode="date"
+        onDateChange={setCurrentDate}
+        locale="fr-FR"
+      />
       <Spacer.Column numberOfSpaces={2} />
       <ButtonPrimary wording={t`Valider la date`} onPress={onValidate} />
     </AppModal>
   )
 }
 
-const Container = styled.View({ width: '100%', marginTop: -getSpacing(8) })
+const StyledDatePicker = styled(DatePicker).attrs(({ theme }) => ({
+  textColor: theme.colors.black,
+}))({ width: '100%', marginTop: -getSpacing(8) })
