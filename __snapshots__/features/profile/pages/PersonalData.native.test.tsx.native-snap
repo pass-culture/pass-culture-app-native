@@ -193,9 +193,9 @@ Array [
         >
           <View
             fill="#eb0055"
-            height={16}
+            height={24}
             testID="button-icon"
-            width={16}
+            width={24}
           >
             <Text>
               button-icon-SVG-Mock
@@ -204,7 +204,7 @@ Array [
           <Text
             adjustsFontSizeToFit={false}
             icon={[Function]}
-            iconSize={16}
+            iconSize={24}
             numberOfLines={1}
             style={
               Array [

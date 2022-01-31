@@ -3136,6 +3136,7 @@ exports[`SearchFilter component should render correctly 1`] = `
     >
       <Text
         adjustsFontSizeToFit={true}
+        iconSize={24}
         numberOfLines={1}
         style={
           Array [

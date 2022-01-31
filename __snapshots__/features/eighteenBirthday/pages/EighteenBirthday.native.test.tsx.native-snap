@@ -301,6 +301,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
+                        iconSize={24}
                         numberOfLines={1}
                         style={
                           Array [
@@ -366,6 +367,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
+                        iconSize={24}
                         numberOfLines={1}
                         style={
                           Array [

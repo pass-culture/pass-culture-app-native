@@ -207,9 +207,9 @@ exports[`NoContentError should render correctly 1`] = `
         testID="Rechercher une offre"
       >
         <View
-          height={22}
+          height={24}
           testID="button-icon"
-          width={22}
+          width={24}
         >
           <Text>
             button-icon-SVG-Mock
@@ -218,7 +218,7 @@ exports[`NoContentError should render correctly 1`] = `
         <Text
           adjustsFontSizeToFit={false}
           icon={[Function]}
-          iconSize={22}
+          iconSize={24}
           numberOfLines={1}
           style={
             Array [

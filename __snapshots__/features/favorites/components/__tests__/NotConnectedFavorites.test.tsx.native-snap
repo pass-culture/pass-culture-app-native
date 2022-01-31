@@ -199,6 +199,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       >
         <Text
           adjustsFontSizeToFit={false}
+          iconSize={24}
           numberOfLines={1}
           style={
             Array [
@@ -262,7 +263,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       >
         <Text
           adjustsFontSizeToFit={false}
-          iconSize={18}
+          iconSize={20}
           numberOfLines={1}
           style={
             Array [

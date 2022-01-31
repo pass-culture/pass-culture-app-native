@@ -1,29 +1,30 @@
 import React, { FunctionComponent } from 'react'
+import styled from 'styled-components/native'
 
 import { AppButton, BaseButtonProps } from 'ui/components/buttons/AppButton'
 import { getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-export const ButtonQuaternary: FunctionComponent<BaseButtonProps> = (props) => {
-  let textColor = ColorsEnum.PRIMARY
-  const backgroundColor = ColorsEnum.TRANSPARENT
-  const loadingIconColor = ColorsEnum.PRIMARY_DARK
-  let iconColor = ColorsEnum.PRIMARY
 
-  if (props.disabled) {
-    textColor = iconColor = ColorsEnum.GREY_DARK
+export const ButtonQuaternary: FunctionComponent<BaseButtonProps> = (props) => {
+  return <StyledAppButton {...props} inlineHeight={getSpacing(5)} textSize={getSpacing(3)} />
+}
+
+const StyledAppButton = styled(AppButton).attrs(({ theme, disabled }) => {
+  const { buttons, icons } = theme
+  const loadingIconColor = buttons.quaternary.loadingIconColor
+  let iconColor = buttons.quaternary.iconColor
+  let textColor = buttons.quaternary.textColor
+  const backgroundColor = buttons.quaternary.backgroundColor
+
+  if (disabled) {
+    textColor = buttons.disabled.quaternary.textColor
+    iconColor = buttons.disabled.quaternary.iconColor
   }
 
-  return (
-    <AppButton
-      {...props}
-      loadingIconColor={loadingIconColor}
-      backgroundColor={backgroundColor}
-      iconColor={iconColor}
-      textColor={textColor}
-      iconSize={getSpacing(4)}
-      inlineHeight={getSpacing(5)}
-      textSize={getSpacing(3)}
-    />
-  )
-}
+  return {
+    iconSize: icons.sizes.extraSmall,
+    loadingIconColor: loadingIconColor,
+    backgroundColor: backgroundColor,
+    iconColor: iconColor,
+    textColor: textColor,
+  }
+})``

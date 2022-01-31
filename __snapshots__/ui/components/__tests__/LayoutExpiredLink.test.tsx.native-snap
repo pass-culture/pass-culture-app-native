@@ -234,9 +234,9 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       testID="Consulter l'article d'aide"
     >
       <View
-        height={18}
+        height={20}
         testID="button-icon"
-        width={18}
+        width={20}
       >
         <Text>
           button-icon-SVG-Mock
@@ -245,7 +245,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       <Text
         adjustsFontSizeToFit={false}
         icon={[Function]}
-        iconSize={18}
+        iconSize={20}
         numberOfLines={1}
         style={
           Array [
@@ -298,9 +298,9 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       testID="Contacter le support"
     >
       <View
-        height={18}
+        height={20}
         testID="button-icon"
-        width={18}
+        width={20}
       >
         <Text>
           button-icon-SVG-Mock
@@ -309,7 +309,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       <Text
         adjustsFontSizeToFit={false}
         icon={[Function]}
-        iconSize={18}
+        iconSize={20}
         numberOfLines={1}
         style={
           Array [
@@ -399,6 +399,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       >
         <Text
           adjustsFontSizeToFit={false}
+          iconSize={24}
           numberOfLines={1}
           style={
             Array [
@@ -461,9 +462,9 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         testID="Retourner à l'accueil"
       >
         <View
-          height={18}
+          height={20}
           testID="button-icon"
-          width={18}
+          width={20}
         >
           <Text>
             button-icon-SVG-Mock
@@ -472,7 +473,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         <Text
           adjustsFontSizeToFit={false}
           icon={[Function]}
-          iconSize={18}
+          iconSize={20}
           numberOfLines={1}
           style={
             Array [

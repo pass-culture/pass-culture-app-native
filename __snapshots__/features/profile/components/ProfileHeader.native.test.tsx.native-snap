@@ -148,6 +148,7 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
     >
       <Text
         adjustsFontSizeToFit={false}
+        iconSize={24}
         numberOfLines={1}
         style={
           Array [

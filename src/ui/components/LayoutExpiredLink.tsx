@@ -58,7 +58,6 @@ export function LayoutExpiredLink({
           wording={t`Consulter l'article d'aide`}
           onPress={() => openUrl(urlFAQ)}
           icon={ExternalSite}
-          iconSize={18}
         />
       )}
 

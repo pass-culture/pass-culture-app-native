@@ -659,6 +659,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
             >
               <Text
                 adjustsFontSizeToFit={false}
+                iconSize={24}
                 numberOfLines={1}
                 style={
                   Array [
@@ -1170,6 +1171,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
             >
               <Text
                 adjustsFontSizeToFit={false}
+                iconSize={24}
                 numberOfLines={1}
                 style={
                   Array [

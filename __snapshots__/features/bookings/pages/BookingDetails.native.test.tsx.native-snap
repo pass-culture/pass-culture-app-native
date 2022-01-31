@@ -497,7 +497,7 @@ exports[`BookingDetails should render correctly 1`] = `
                 "borderRadius": 0,
                 "borderWidth": 0,
                 "flexDirection": "row",
-                "height": 20,
+                "height": 16,
                 "justifyContent": "center",
                 "marginTop": 0,
                 "maxWidth": 500,
@@ -540,6 +540,7 @@ exports[`BookingDetails should render correctly 1`] = `
                   "withComponent": [Function],
                 }
               }
+              iconSize={20}
               numberOfLines={1}
               style={
                 Array [
@@ -603,6 +604,7 @@ exports[`BookingDetails should render correctly 1`] = `
         >
           <Text
             adjustsFontSizeToFit={false}
+            iconSize={24}
             numberOfLines={1}
             style={
               Array [
@@ -996,6 +998,7 @@ exports[`BookingDetails should render correctly 1`] = `
                 >
                   <Text
                     adjustsFontSizeToFit={false}
+                    iconSize={24}
                     numberOfLines={1}
                     style={
                       Array [
@@ -1059,6 +1062,7 @@ exports[`BookingDetails should render correctly 1`] = `
                 >
                   <Text
                     adjustsFontSizeToFit={false}
+                    iconSize={24}
                     numberOfLines={1}
                     style={
                       Array [
@@ -1448,6 +1452,7 @@ exports[`BookingDetails should render correctly 1`] = `
                 >
                   <Text
                     adjustsFontSizeToFit={false}
+                    iconSize={24}
                     numberOfLines={1}
                     style={
                       Array [
@@ -1511,7 +1516,7 @@ exports[`BookingDetails should render correctly 1`] = `
                 >
                   <Text
                     adjustsFontSizeToFit={false}
-                    iconSize={18}
+                    iconSize={20}
                     numberOfLines={1}
                     style={
                       Array [

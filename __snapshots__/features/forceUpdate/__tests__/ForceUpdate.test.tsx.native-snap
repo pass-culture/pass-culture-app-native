@@ -223,6 +223,7 @@ Pour des questions de performance et de sécurité merci de télécharger la der
       >
         <Text
           adjustsFontSizeToFit={false}
+          iconSize={24}
           numberOfLines={1}
           style={
             Array [

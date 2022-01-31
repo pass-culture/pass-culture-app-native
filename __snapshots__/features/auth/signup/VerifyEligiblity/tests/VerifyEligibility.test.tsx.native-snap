@@ -223,6 +223,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       >
         <Text
           adjustsFontSizeToFit={false}
+          iconSize={24}
           numberOfLines={1}
           style={
             Array [
@@ -285,9 +286,9 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         testID="Retourner à l'accueil"
       >
         <View
-          height={18}
+          height={20}
           testID="button-icon"
-          width={18}
+          width={20}
         >
           <Text>
             button-icon-SVG-Mock
@@ -296,7 +297,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         <Text
           adjustsFontSizeToFit={false}
           icon={[Function]}
-          iconSize={18}
+          iconSize={20}
           numberOfLines={1}
           style={
             Array [

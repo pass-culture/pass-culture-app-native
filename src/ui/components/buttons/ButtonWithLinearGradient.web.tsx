@@ -23,7 +23,7 @@ export const ButtonWithLinearGradient: React.FC<Props> = ({
   name,
   className,
 }) => {
-  const { colors } = useTheme()
+  const { colors, icons } = useTheme()
   const onClick = useCallback(
     (event: SyntheticEvent) => {
       if (type === 'submit') {
@@ -38,7 +38,7 @@ export const ButtonWithLinearGradient: React.FC<Props> = ({
   return (
     <Button name={name} onClick={onClick} disabled={isDisabled} type={type} className={className}>
       <LegendContainer>
-        {!!isExternal && <ExternalSite size={24} color={colors.white} />}
+        {!!isExternal && <ExternalSite size={icons.sizes.small} color={colors.white} />}
         <Title adjustsFontSizeToFit numberOfLines={1}>
           {wording}
         </Title>

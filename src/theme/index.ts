@@ -11,6 +11,7 @@ import {
   TAB_BAR_COMP_HEIGHT,
 } from 'ui/theme/constants'
 import { BorderRadiusEnum, Breakpoints } from 'ui/theme/grid'
+import { IconSizesType, iconSizes } from 'ui/theme/iconSizes'
 // eslint-disable-next-line no-restricted-imports
 import { ZIndex } from 'ui/theme/layers'
 
@@ -114,6 +115,7 @@ export interface AppThemeType {
     maxWidth: number
     bottom: { offsetTopHeightDesktopTablet: number }
   }
+  icons: { sizes: IconSizesType }
   buttons: {
     maxWidth: number
     loading: {
@@ -121,6 +123,9 @@ export interface AppThemeType {
         backgroundColor: ColorsEnum
       }
       secondary: {
+        borderColor: ColorsEnum
+      }
+      secondaryWhite: {
         borderColor: ColorsEnum
       }
     }
@@ -138,7 +143,16 @@ export interface AppThemeType {
         textColor: ColorsEnum
         iconColor: ColorsEnum
       }
+      secondaryWhite: {
+        borderColor: ColorsEnum
+        textColor: ColorsEnum
+        iconColor: ColorsEnum
+      }
       tertiary: {
+        textColor: ColorsEnum
+        iconColor: ColorsEnum
+      }
+      tertiaryBlack: {
         textColor: ColorsEnum
         iconColor: ColorsEnum
       }
@@ -178,7 +192,20 @@ export interface AppThemeType {
       backgroundColor: ColorsEnum
       borderColor: ColorsEnum
     }
+    secondaryWhite: {
+      loadingIconColor: ColorsEnum
+      iconColor: ColorsEnum
+      textColor: ColorsEnum
+      backgroundColor: ColorsEnum
+      borderColor: ColorsEnum
+    }
     tertiary: {
+      textColor: ColorsEnum
+      backgroundColor: ColorsEnum
+      loadingIconColor: ColorsEnum
+      iconColor: ColorsEnum
+    }
+    tertiaryBlack: {
       textColor: ColorsEnum
       backgroundColor: ColorsEnum
       loadingIconColor: ColorsEnum
@@ -329,6 +356,7 @@ export const theme: AppThemeType = {
     maxWidth: DESKTOP_CONTENT_MAX_WIDTH,
     bottom: { offsetTopHeightDesktopTablet: BOTTOM_CONTENT_PAGE_OFFSET_TOP_HEIGHT_DESKTOP_TABLET },
   },
+  icons: { sizes: iconSizes },
   buttons: {
     maxWidth: DESKTOP_CONTENT_MAX_WIDTH,
     loading: {
@@ -337,6 +365,9 @@ export const theme: AppThemeType = {
       },
       secondary: {
         borderColor: ColorsEnum.PRIMARY,
+      },
+      secondaryWhite: {
+        borderColor: ColorsEnum.PRIMARY_DARK,
       },
     },
     disabled: {
@@ -353,9 +384,18 @@ export const theme: AppThemeType = {
         textColor: ColorsEnum.PRIMARY_DISABLED,
         iconColor: ColorsEnum.PRIMARY_DISABLED,
       },
+      secondaryWhite: {
+        borderColor: ColorsEnum.GREY_DARK,
+        textColor: ColorsEnum.GREY_DARK,
+        iconColor: ColorsEnum.GREY_DARK,
+      },
       tertiary: {
         textColor: ColorsEnum.PRIMARY_DISABLED,
         iconColor: ColorsEnum.PRIMARY_DISABLED,
+      },
+      tertiaryBlack: {
+        textColor: ColorsEnum.GREY_DARK,
+        iconColor: ColorsEnum.GREY_DARK,
       },
       tertiaryWhite: {
         textColor: ColorsEnum.PRIMARY_DISABLED,
@@ -393,11 +433,24 @@ export const theme: AppThemeType = {
       backgroundColor: ColorsEnum.TRANSPARENT,
       borderColor: ColorsEnum.PRIMARY_DISABLED,
     },
+    secondaryWhite: {
+      loadingIconColor: ColorsEnum.PRIMARY_DARK,
+      iconColor: ColorsEnum.WHITE,
+      textColor: ColorsEnum.WHITE,
+      backgroundColor: ColorsEnum.TRANSPARENT,
+      borderColor: ColorsEnum.WHITE,
+    },
     tertiary: {
       textColor: ColorsEnum.PRIMARY,
       backgroundColor: ColorsEnum.TRANSPARENT,
       loadingIconColor: ColorsEnum.PRIMARY_DARK,
       iconColor: ColorsEnum.PRIMARY,
+    },
+    tertiaryBlack: {
+      textColor: ColorsEnum.BLACK,
+      backgroundColor: ColorsEnum.TRANSPARENT,
+      loadingIconColor: ColorsEnum.BLACK,
+      iconColor: ColorsEnum.BLACK,
     },
     tertiaryWhite: {
       textColor: ColorsEnum.WHITE,

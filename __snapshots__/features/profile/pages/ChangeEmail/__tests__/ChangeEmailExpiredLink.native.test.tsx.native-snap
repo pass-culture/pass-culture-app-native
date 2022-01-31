@@ -248,6 +248,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
       >
         <Text
           adjustsFontSizeToFit={false}
+          iconSize={24}
           numberOfLines={1}
           style={
             Array [
@@ -310,9 +311,9 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
         testID="Retourner à l'accueil"
       >
         <View
-          height={18}
+          height={20}
           testID="button-icon"
-          width={18}
+          width={20}
         >
           <Text>
             button-icon-SVG-Mock
@@ -321,7 +322,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
         <Text
           adjustsFontSizeToFit={false}
           icon={[Function]}
-          iconSize={18}
+          iconSize={20}
           numberOfLines={1}
           style={
             Array [
@@ -604,6 +605,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
       >
         <Text
           adjustsFontSizeToFit={false}
+          iconSize={24}
           numberOfLines={1}
           style={
             Array [
@@ -666,9 +668,9 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
         testID="Retourner à l'accueil"
       >
         <View
-          height={18}
+          height={20}
           testID="button-icon"
-          width={18}
+          width={20}
         >
           <Text>
             button-icon-SVG-Mock
@@ -677,7 +679,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
         <Text
           adjustsFontSizeToFit={false}
           icon={[Function]}
-          iconSize={18}
+          iconSize={20}
           numberOfLines={1}
           style={
             Array [

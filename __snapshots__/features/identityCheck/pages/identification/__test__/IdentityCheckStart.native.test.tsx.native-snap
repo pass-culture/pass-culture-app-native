@@ -729,6 +729,7 @@ Array [
                                 <Text
                                   adjustsFontSizeToFit={false}
                                   icon={[Function]}
+                                  iconSize={20}
                                   numberOfLines={1}
                                   style={
                                     Array [
@@ -817,6 +818,7 @@ Array [
                                 <Text
                                   adjustsFontSizeToFit={false}
                                   icon={[Function]}
+                                  iconSize={20}
                                   numberOfLines={1}
                                   style={
                                     Array [
@@ -931,6 +933,7 @@ Array [
               >
                 <Text
                   adjustsFontSizeToFit={false}
+                  iconSize={24}
                   numberOfLines={1}
                   style={
                     Array [
@@ -1438,6 +1441,7 @@ Array [
               >
                 <Text
                   adjustsFontSizeToFit={false}
+                  iconSize={24}
                   numberOfLines={1}
                   style={
                     Array [
