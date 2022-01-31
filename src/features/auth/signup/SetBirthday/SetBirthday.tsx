@@ -15,6 +15,8 @@ import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 
+const currentDateWithoutTime = formatDateToISOStringWithoutTime(new Date())
+
 export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (props) => {
   const [date, setDate] = useState<Date>(new Date())
   const { visible, showModal: showInformationModal, hideModal } = useModal(false)
@@ -24,9 +26,12 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
     showInformationModal()
   }
 
+  const selectedDateWithoutTime = formatDateToISOStringWithoutTime(date)
+  const isDisabled = currentDateWithoutTime === selectedDateWithoutTime
+
   function goToNextStep() {
     if (date) {
-      const birthday = formatDateToISOStringWithoutTime(date)
+      const birthday = selectedDateWithoutTime
       props.goToNextStep({ birthdate: birthday })
     }
   }
@@ -39,13 +44,9 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
           wording={t`Pour quelle raison\u00a0?`}
           onPress={onPressWhy}
         />
-
         <Spacer.Column numberOfSpaces={5} />
-
         <DateInput date={date} />
-
         <Spacer.Column numberOfSpaces={5} />
-
         <StyledDateTimePicker
           date={date}
           onDateChange={setDate}
@@ -55,13 +56,11 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
           minimumDate={new Date(1900, 0, 2)}
           androidVariant="nativeAndroid"
         />
-
         <Spacer.Column numberOfSpaces={2} />
-
         <ButtonPrimary
           wording={t`Continuer`}
           accessibilityLabel={props.accessibilityLabelForNextStep}
-          disabled={true}
+          disabled={isDisabled}
           onPress={goToNextStep}
         />
         <Spacer.Column numberOfSpaces={5} />
