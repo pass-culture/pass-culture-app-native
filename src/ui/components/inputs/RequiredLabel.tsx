@@ -8,6 +8,6 @@ export function RequiredLabel() {
   return <Label>{t`Obligatoire`}</Label>
 }
 
-const Label = styled(Typo.Caption)(({ theme, color }) => ({
-  color: color ?? theme.colors.greyDark,
+const Label = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
 }))

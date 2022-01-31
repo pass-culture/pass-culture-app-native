@@ -30,9 +30,14 @@ export const PassPlaylist = (props: Props) => {
   const showTitleSeeMore = !!props.onPressSeeMore && !isTouch
   const showFooterSeeMore = !!props.onPressSeeMore && isTouch
 
-  const titleColor = props.onDarkBackground ? colors.white : colors.black
   const titleSeparatorColor = props.onDarkBackground ? colors.white : colors.greyMedium
   const seeMoreColor = props.onDarkBackground ? colors.white : colors.primary
+
+  const StyledTitleComponent = styled(TitleComponent).attrs({
+    numberOfLines: 2,
+  })<{ onDarkBackground?: boolean }>(({ onDarkBackground, theme }) => ({
+    color: onDarkBackground ? theme.colors.white : theme.colors.black,
+  }))
 
   const renderHeader: RenderHeaderItem = useCallback(
     ({ width, height }) => <Cover width={width} height={height} uri={props.coverUrl as string} />,
@@ -48,9 +53,9 @@ export const PassPlaylist = (props: Props) => {
   return (
     <Container>
       <Row>
-        <TitleComponent numberOfLines={2} testID="playlistTitle" color={titleColor}>
+        <StyledTitleComponent testID="playlistTitle" onDarkBackground={props.onDarkBackground}>
           {props.title}
-        </TitleComponent>
+        </StyledTitleComponent>
         {!!showTitleSeeMore && (
           <React.Fragment>
             <Spacer.Row numberOfSpaces={4} />
@@ -63,7 +68,7 @@ export const PassPlaylist = (props: Props) => {
               )}>
               <EyeSophisticated color={seeMoreColor} size={getSpacing(4)} />
               <Spacer.Row numberOfSpaces={2} />
-              <Typo.ButtonText color={seeMoreColor}>{t`En voir plus`}</Typo.ButtonText>
+              <ButtonText onDarkBackground={props.onDarkBackground}>{t`En voir plus`}</ButtonText>
             </StyledTouchableOpacity>
           </React.Fragment>
         )}
@@ -106,3 +111,9 @@ const StyledTouchableOpacity = styled.TouchableOpacity({
   alignItems: 'center',
   padding: getSpacing(1),
 })
+
+const ButtonText = styled(Typo.ButtonText)<{ onDarkBackground?: boolean }>(
+  ({ onDarkBackground, theme }) => ({
+    color: onDarkBackground ? theme.colors.white : theme.colors.primary,
+  })
+)

@@ -33,9 +33,11 @@ export const DuoChoice: React.FC<Props> = ({
     <ChoiceBloc onPress={onPress} testID={testID} selected={selected} disabled={disabled}>
       <Container>
         <Icon color={textColor} size={28} />
-        <Typo.ButtonText color={textColor}>{title}</Typo.ButtonText>
+        <ButtonText selected={selected} disabled={disabled}>
+          {title}
+        </ButtonText>
 
-        <Caption testID={`${testID}-price`} color={textColor}>
+        <Caption testID={`${testID}-price`} selected={selected} disabled={disabled}>
           {price}
         </Caption>
       </Container>
@@ -49,4 +51,16 @@ const Container = styled.View({
   alignItems: 'center',
 })
 
-const Caption = styled(Typo.Caption)({ textAlign: 'center' })
+interface TypoProps {
+  selected: boolean
+  disabled: boolean
+}
+
+const ButtonText = styled(Typo.ButtonText)<TypoProps>(({ selected, disabled, theme }) => ({
+  color: getTextColor(theme, selected, disabled),
+}))
+
+const Caption = styled(Typo.Caption)<TypoProps>(({ selected, disabled, theme }) => ({
+  color: getTextColor(theme, selected, disabled),
+  textAlign: 'center',
+}))

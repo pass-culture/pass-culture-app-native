@@ -34,7 +34,7 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
       <OnGoingTicket image={stock.offer.image?.url} altIcon={mapCategoryToIcon(categoryId)} />
       <AttributesView>
         <BookingItemTitle title={stock.offer.name} />
-        {!!dateLabel && <DateLabel color={ColorsEnum.GREY_DARK}>{dateLabel}</DateLabel>}
+        {!!dateLabel && <DateLabel>{dateLabel}</DateLabel>}
         <Spacer.Column numberOfSpaces={1} />
         {!!bookingProperties.isDuo && <Duo />}
         <Spacer.Flex />
@@ -42,9 +42,7 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
           <WithDrawContainer>
             <Clock size={16} color={ColorsEnum.PRIMARY} />
             <Spacer.Row numberOfSpaces={1} />
-            <WithdrawCaption color={ColorsEnum.PRIMARY} numberOfLines={2}>
-              {withdrawLabel}
-            </WithdrawCaption>
+            <WithdrawCaption numberOfLines={2}>{withdrawLabel}</WithdrawCaption>
           </WithDrawContainer>
         )}
       </AttributesView>
@@ -65,15 +63,17 @@ const AttributesView = styled.View({
   paddingRight: getSpacing(1),
 })
 
-const WithDrawContainer = styled.View({
+const WithDrawContainer = styled.View(({ theme }) => ({
   flex: 1,
   flexDirection: 'row',
   alignItems: 'center',
-})
+  color: theme.colors.primary,
+}))
 
-const DateLabel = styled(Typo.Body)({
+const DateLabel = styled(Typo.Body)(({ theme }) => ({
   flex: 1,
-})
+  color: theme.colors.greyDark,
+}))
 
 const WithdrawCaption = styled(Typo.Caption)({
   marginRight: getSpacing(4),

@@ -69,12 +69,8 @@ export const BusinessModule = ({ module }: { module: BusinessPane }) => {
                 {leftIcon ? <Image source={{ uri: leftIcon }} /> : <IdeaIcon />}
               </IconContainer>
               <TextContainer>
-                <Typo.ButtonText color={ColorsEnum.WHITE} testID="firstLine">
-                  {firstLine}
-                </Typo.ButtonText>
-                <Typo.Body numberOfLines={2} color={ColorsEnum.WHITE}>
-                  {secondLine}
-                </Typo.Body>
+                <ButtonText testID="firstLine">{firstLine}</ButtonText>
+                <StyledBody numberOfLines={2}>{secondLine}</StyledBody>
               </TextContainer>
               {!isDisabled && (
                 <IconContainer>
@@ -138,3 +134,11 @@ const IconContainer = styled.View({
   justifyContent: 'center',
   alignItems: 'center',
 })
+
+const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
+  color: theme.colors.white,
+}))
+
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
+}))

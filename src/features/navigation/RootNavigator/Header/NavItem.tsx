@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { menu } from 'features/navigation/TabBar/routes'
 import { TabRouteName } from 'features/navigation/TabBar/types'
@@ -14,24 +14,25 @@ interface NavItemInterface {
 }
 
 export const NavItem: React.FC<NavItemInterface> = ({
-  BicolorIcon,
+  BicolorIcon: DefaultBicolorIcon,
   onPress,
   tabName,
   isSelected,
 }) => {
-  const { uniqueColors, colors } = useTheme()
+  const BicolorIcon = styled(DefaultBicolorIcon).attrs(({ theme }) => ({
+    color: isSelected ? undefined : theme.colors.greyDark,
+    size: theme.icons.sizes.small,
+    thin: !isSelected,
+  }))``
+
   return (
     <StyledTouchableOpacity
       isSelected={isSelected}
       onPress={onPress}
       activeOpacity={1}
       testID={`${tabName} nav`}>
-      <BicolorIcon
-        color={isSelected ? undefined : colors.greyDark}
-        size={getSpacing(6)}
-        thin={!isSelected}
-      />
-      <Title color={isSelected ? uniqueColors.brand : colors.black}>{menu[tabName]}</Title>
+      <BicolorIcon />
+      <Title>{menu[tabName]}</Title>
     </StyledTouchableOpacity>
   )
 }
@@ -49,4 +50,7 @@ const StyledTouchableOpacity = styled.TouchableOpacity<{ isSelected?: boolean }>
   })
 )
 
-const Title = styled(Typo.ButtonText)({ marginLeft: 12 })
+const Title = styled(Typo.ButtonText)<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
+  marginLeft: 12,
+  color: isSelected ? theme.uniqueColors.brand : theme.colors.black,
+}))

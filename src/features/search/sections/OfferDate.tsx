@@ -12,8 +12,6 @@ import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 type Props = {
   setScrollEnabled?: ((setScrollEnabled: boolean) => void) | Dispatch<SetStateAction<boolean>>
 }
@@ -74,9 +72,7 @@ export function OfferDate({ setScrollEnabled }: Props) {
         />
         {option === DATE_FILTER_OPTIONS.USER_PICK && (
           <TouchableOpacity testID="pickedDate" onPress={() => setShowTimePicker(true)}>
-            <Typo.Body color={ColorsEnum.BLACK}>
-              {formatToCompleteFrenchDate(selectedDate)}
-            </Typo.Body>
+            <StyledBody>{formatToCompleteFrenchDate(selectedDate)}</StyledBody>
           </TouchableOpacity>
         )}
       </Container>
@@ -95,3 +91,7 @@ const TouchableOpacity = styled(TouchableOpacityGestureHandler).attrs(({ theme }
 }))``
 
 const Container = styled.View({ marginHorizontal: getSpacing(6) })
+
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.black,
+}))

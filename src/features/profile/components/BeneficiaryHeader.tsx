@@ -8,8 +8,6 @@ import { computeCredit, useIsUserUnderageBeneficiary } from 'features/profile/ut
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Typo, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 type BeneficiaryHeaderProps = {
   firstName?: string | null
@@ -32,14 +30,12 @@ export function BeneficiaryHeader(props: PropsWithChildren<BeneficiaryHeaderProp
       </HeaderBackgroundWrapper>
       <Spacer.Column numberOfSpaces={6} />
       <UserNameAndCredit>
-        <Typo.Title4 color={ColorsEnum.WHITE}>{name}</Typo.Title4>
+        <Title4>{name}</Title4>
         <Spacer.Column numberOfSpaces={4.5} />
-        {!isUserUnderageBeneficiary && <Typo.Hero color={ColorsEnum.WHITE}>{credit}</Typo.Hero>}
+        {!isUserUnderageBeneficiary && <Hero>{credit}</Hero>}
         <Spacer.Column numberOfSpaces={2} />
         {!!depositExpirationDate && (
-          <Typo.Caption color={ColorsEnum.WHITE}>
-            {t`crédit valable jusqu'au` + `\u00a0${depositExpirationDate}`}
-          </Typo.Caption>
+          <Caption>{t`crédit valable jusqu'au` + `\u00a0${depositExpirationDate}`}</Caption>
         )}
         <Spacer.Column numberOfSpaces={6} />
       </UserNameAndCredit>
@@ -70,3 +66,15 @@ const UserNameAndCredit = styled.View({
 const Ceilings = styled(BeneficiaryCeilings)({
   top: getSpacing(42),
 })
+
+const Title4 = styled(Typo.Title4)(({ theme }) => ({
+  color: theme.colors.white,
+}))
+
+const Hero = styled(Typo.Hero)(({ theme }) => ({
+  color: theme.colors.white,
+}))
+
+const Caption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.white,
+}))

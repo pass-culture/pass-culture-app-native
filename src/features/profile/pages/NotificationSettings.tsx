@@ -207,8 +207,8 @@ const StyledButtonPrimary = styled(ButtonPrimary)({
   alignSelf: 'center',
 })
 
-const StyledCaption = styled(Typo.Caption)(({ theme, color }) => ({
-  color: color ?? theme.colors.greyDark,
+const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
 }))
 
 const getInitialSwitchesState = (

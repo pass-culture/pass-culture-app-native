@@ -119,7 +119,7 @@ const Item: React.FC<{
       <Spacer.Row numberOfSpaces={3} />
       {typeof message === 'string' ? <Typo.Caption>{message}</Typo.Caption> : message}
       <Spacer.Row numberOfSpaces={2} />
-      <Typo.Caption color={ColorsEnum.GREY_DARK}>{subtext}</Typo.Caption>
+      <StyledCaption>{subtext}</StyledCaption>
     </Row>
   )
 }
@@ -134,3 +134,6 @@ const StyledAddress = styled(Typo.Body)({
   textTransform: 'capitalize',
   alignItems: 'center',
 })
+const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

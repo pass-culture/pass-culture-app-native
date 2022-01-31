@@ -49,9 +49,6 @@ const IconWithCaption = styled.View({
 
 const TypeLabel = styled(Typo.Caption).attrs({
   numberOfLines: 1,
-  color: ColorsEnum.GREY_DARK,
-})({ flexShrink: 1 })
+})(({ theme }) => ({ flexShrink: 1, color: theme.colors.greyDark }))
 
-const Distance = styled(Typo.Caption).attrs({
-  color: ColorsEnum.GREY_DARK,
-})({})
+const Distance = styled(Typo.Caption)(({ theme }) => ({ color: theme.colors.greyDark }))

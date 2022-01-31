@@ -10,8 +10,6 @@ import { useModal } from 'ui/components/modals/useModal'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
   showSomeAdviceBeforeIdentityCheckModal: () => void
@@ -48,14 +46,14 @@ export function IdentityCheckStartContentDesktop({
       />
       <Spacer.Column numberOfSpaces={8} />
       <DMSInformationContainer>
-        <Typo.Body color={ColorsEnum.GREY_DARK}>{t`Tu n'as pas de smartphone\u00a0?`}</Typo.Body>
+        <StyledBody>{t`Tu n'as pas de smartphone\u00a0?`}</StyledBody>
         <Spacer.Column numberOfSpaces={4} />
         <ButtonTertiaryBlack
           wording={t`Identification par le site Démarches-Simplifiées`}
           onPress={showDMSModal}
           icon={ExternalSiteFilled}
         />
-        <Typo.Caption color={ColorsEnum.GREY_DARK}>{t`Environ 10 jours`}</Typo.Caption>
+        <StyledCaption>{t`Environ 10 jours`}</StyledCaption>
       </DMSInformationContainer>
       <DMSModal visible={visible} hideModal={hideModal} />
       <Spacer.Column numberOfSpaces={6} />
@@ -66,6 +64,14 @@ export function IdentityCheckStartContentDesktop({
 const Title = styled(Typo.Title4)({ textAlign: 'center' })
 
 const Body = styled(Typo.Body)({ textAlign: 'center' })
+
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
+
+const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
 
 const ContentDesktopContainer = styled.View({ marginHorizontal: getSpacing(2) })
 

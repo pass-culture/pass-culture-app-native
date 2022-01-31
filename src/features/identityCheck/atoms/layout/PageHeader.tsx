@@ -30,9 +30,11 @@ const HeaderContainer = styled.View({
   height: HEADER_HEIGHT,
 })
 
-const Title = styled(Typo.Title4).attrs({
-  color: ColorsEnum.WHITE,
-})({ flex: 1, textAlign: 'center' })
+const Title = styled(Typo.Title4)(({ theme }) => ({
+  flex: 1,
+  textAlign: 'center',
+  color: theme.colors.white,
+}))
 
 interface BackButtonProps {
   onGoBack?: () => void

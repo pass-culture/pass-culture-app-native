@@ -39,10 +39,9 @@ const VenueLabelContainer = styled.View(({ theme }) => ({
   maxWidth: '70%',
 }))
 
-const VenueLabel = styled(Typo.ButtonText).attrs(() => ({
+const VenueLabel = styled(Typo.ButtonText).attrs({
   numberOfLines: 1,
-  color: ColorsEnum.WHITE,
-}))({})
+})(({ theme }) => ({ color: theme.colors.white }))
 
 const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
   activeOpacity: theme.activeOpacity,

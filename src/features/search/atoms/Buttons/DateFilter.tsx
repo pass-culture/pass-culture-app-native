@@ -12,11 +12,9 @@ interface Props {
 }
 
 export const DateFilter: React.FC<Props> = ({ text, onPress, isSelected }: Props) => {
-  const color = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK
-
   return (
     <TouchableOpacity onPress={onPress}>
-      <Typo.ButtonText color={color}>{text}</Typo.ButtonText>
+      <ButtonText isSelected={isSelected}>{text}</ButtonText>
       {!!isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(6)} />}
     </TouchableOpacity>
   )
@@ -30,3 +28,7 @@ const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'space-between',
 })
+
+const ButtonText = styled(Typo.ButtonText)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
+  color: isSelected ? theme.colors.primary : theme.colors.black,
+}))

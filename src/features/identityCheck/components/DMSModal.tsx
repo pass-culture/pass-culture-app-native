@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
+import styled from 'styled-components/native'
 
 import { openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
@@ -9,8 +10,6 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
   visible: boolean
@@ -37,9 +36,9 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
     rightIconAccessibilityLabel={t`Fermer la modale pour transmettre un document sur le site Démarches Simplifiée`}
     rightIcon={Close}
     onRightIconPress={hideModal}>
-    <Typo.Body color={ColorsEnum.GREY_DARK}>
+    <StyledBody>
       {t`Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long\u00a0!`}
-    </Typo.Body>
+    </StyledBody>
     <Spacer.Column numberOfSpaces={8} />
     <ButtonTertiaryBlack
       wording={t`Je suis de nationalité française`}
@@ -47,7 +46,7 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
       icon={ExternalSiteFilled}
       justifyContent="flex-start"
     />
-    <Typo.Caption color={ColorsEnum.GREY_DARK}>{t`Carte d’identité ou passeport.`}</Typo.Caption>
+    <StyledCaption>{t`Carte d’identité ou passeport.`}</StyledCaption>
     <Spacer.Column numberOfSpaces={8} />
     <ButtonTertiaryBlack
       wording={t`Je suis de nationalité étrangère`}
@@ -55,9 +54,15 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
       icon={ExternalSiteFilled}
       justifyContent="flex-start"
     />
-    <Typo.Caption color={ColorsEnum.GREY_DARK}>
-      {t`Titre de séjour, carte d'identité, ou passeport.`}
-    </Typo.Caption>
+    <StyledCaption>{t`Titre de séjour, carte d'identité, ou passeport.`}</StyledCaption>
     <Spacer.Column numberOfSpaces={4} />
   </AppModal>
 )
+
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
+
+const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

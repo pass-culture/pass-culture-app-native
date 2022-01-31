@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { getSpacing, Typo } from 'ui/theme'
@@ -34,18 +34,16 @@ export const HourChoice: React.FC<Props> = ({
 }) => {
   const enoughCredit = price <= offerCredit
   const disabled = !isBookable || !enoughCredit
-  const theme = useTheme()
-  const textColor = getTextColor(theme, selected, disabled)
   const wording = getWording(price, isBookable, enoughCredit)
 
   return (
     <ChoiceBloc onPress={onPress} testID={testID} selected={selected} disabled={disabled}>
       <Container>
-        <Typo.ButtonText testID={`${testID}-hour`} color={textColor}>
+        <ButtonText testID={`${testID}-hour`} selected={selected} disabled={disabled}>
           {hour}
-        </Typo.ButtonText>
+        </ButtonText>
 
-        <Caption testID={`${testID}-price`} color={textColor}>
+        <Caption testID={`${testID}-price`} selected={selected} disabled={disabled}>
           {wording}
         </Caption>
       </Container>
@@ -59,4 +57,16 @@ const Container = styled.View({
   justifyContent: 'center',
 })
 
-const Caption = styled(Typo.Caption)({ textAlign: 'center' })
+interface TypoProps {
+  selected: boolean
+  disabled: boolean
+}
+
+const ButtonText = styled(Typo.ButtonText)<TypoProps>(({ selected, disabled, theme }) => ({
+  color: getTextColor(theme, selected, disabled),
+}))
+
+const Caption = styled(Typo.Caption)<TypoProps>(({ selected, disabled, theme }) => ({
+  color: getTextColor(theme, selected, disabled),
+  textAlign: 'center',
+}))

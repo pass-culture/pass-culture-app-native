@@ -11,8 +11,6 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { BicolorIdCardWithMagnifyingGlassDeprecated as BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass_deprecated'
 import { Info } from 'ui/svg/icons/Info'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 export const IdentityCheckEduConnectForm = () => {
   const { error, openEduConnect } = useEduConnectLogin()
@@ -31,10 +29,10 @@ export const IdentityCheckEduConnectForm = () => {
               <BicolorIdCardWithMagnifyingGlass size={getSpacing(33)} />
             </Center>
 
-            <JustifiedHeader color={ColorsEnum.GREY_DARK}>{t`Identification`}</JustifiedHeader>
+            <JustifiedHeader>{t`Identification`}</JustifiedHeader>
             <Spacer.Column numberOfSpaces={4} />
 
-            <JustifiedText color={ColorsEnum.GREY_DARK}>
+            <JustifiedText>
               {t`Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect\u00a0! Si tu ne les as pas, contacte ton établissement pour les récupérer.`}
             </JustifiedText>
             <Spacer.Column numberOfSpaces={4} />
@@ -42,9 +40,9 @@ export const IdentityCheckEduConnectForm = () => {
               <Info />
               <Spacer.Row numberOfSpaces={2} />
 
-              <Typo.Caption color={ColorsEnum.GREY_DARK}>
+              <StyledCaption>
                 {t`Un souci pour accéder à la page\u00a0? Essaie en navigation privée ou pense bien à accepter les pop-ups de ton navigateur.`}
-              </Typo.Caption>
+              </StyledCaption>
             </HavingTroubleContainer>
 
             <Spacer.Column numberOfSpaces={8} />
@@ -64,13 +62,19 @@ const Center = styled.View({
   padding: getSpacing(7),
 })
 
-const JustifiedText = styled(Typo.Body)({
+const JustifiedText = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
-})
+  color: theme.colors.greyDark,
+}))
 
-const JustifiedHeader = styled(Typo.ButtonText)({
+const JustifiedHeader = styled(Typo.ButtonText)(({ theme }) => ({
   textAlign: 'center',
-})
+  color: theme.colors.greyDark,
+}))
+
+const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
 
 const HavingTroubleContainer = styled.View(({ theme }) => ({
   display: 'flex',

@@ -49,7 +49,7 @@ export const PageHeader: React.FC<Props> = (props) => {
             <HeaderIconBack onGoBack={props.onGoBack} />
           </ButtonContainer>
 
-          <Title color={ColorsEnum.WHITE}>{title}</Title>
+          <Title>{title}</Title>
 
           <ButtonContainer positionInHeader="right">
             {!!RightComponent && (

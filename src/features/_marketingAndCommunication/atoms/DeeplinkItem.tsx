@@ -13,11 +13,10 @@ import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
   deeplink: GeneratedDeeplink
-  color: ColorsEnum
   before?: JSX.Element | JSX.Element[]
 }
 
-export const DeeplinkItem = ({ deeplink, color, before }: Props) => {
+export const DeeplinkItem = ({ deeplink, before }: Props) => {
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
   const copyToClipboard = useCallback(
     (url: string) => {
@@ -50,7 +49,7 @@ export const DeeplinkItem = ({ deeplink, color, before }: Props) => {
         <Spacer.Flex flex={0.85}>
           <TouchableOpacity
             onPress={() => openUrl(deeplink.universalLink, { shouldLogEvent: false })}>
-            <Title color={color}>{deeplink.universalLink}</Title>
+            <Title>{deeplink.universalLink}</Title>
           </TouchableOpacity>
         </Spacer.Flex>
 
@@ -61,7 +60,7 @@ export const DeeplinkItem = ({ deeplink, color, before }: Props) => {
             accessibilityLabel={t`Copier`}
             accessible
             testID="copy-universalLink">
-            <Share color={color} size={24} />
+            <Share color={ColorsEnum.BLACK} size={24} />
           </TouchableOpacity>
         </Spacer.Flex>
       </Container>
@@ -70,7 +69,7 @@ export const DeeplinkItem = ({ deeplink, color, before }: Props) => {
         <Spacer.Flex flex={0.85}>
           <TouchableOpacity
             onPress={() => openUrl(deeplink.firebaseLink, { shouldLogEvent: false })}>
-            <Title color={color}>{deeplink.firebaseLink}</Title>
+            <Title>{deeplink.firebaseLink}</Title>
           </TouchableOpacity>
         </Spacer.Flex>
 
@@ -81,7 +80,7 @@ export const DeeplinkItem = ({ deeplink, color, before }: Props) => {
             accessibilityLabel={t`Copier dans le press-papier`}
             accessible
             testID="copy-firebaselink">
-            <Share color={color} size={24} />
+            <Share color={ColorsEnum.BLACK} size={24} />
           </TouchableOpacity>
         </Spacer.Flex>
       </Container>
@@ -90,18 +89,17 @@ export const DeeplinkItem = ({ deeplink, color, before }: Props) => {
 }
 
 DeeplinkItem.defaultProps = {
-  color: ColorsEnum.BLACK,
   size: getSpacing(3.75),
   iconSize: 32,
 }
 
 const iconContainerStyle = { margin: 'auto' }
 
-const Title = styled.Text<{ color: ColorsEnum }>(({ color, theme }) => ({
+const Title = styled.Text(({ theme }) => ({
   fontFamily: theme.fontFamily.regular,
   fontSize: getSpacing(3),
   lineHeight: getSpacingString(4.5),
-  color: color,
+  color: theme.colors.black,
   flexDirection: 'row',
 }))
 

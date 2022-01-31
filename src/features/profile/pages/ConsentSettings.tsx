@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { openUrl } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
@@ -26,7 +26,6 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
   const { goBack } = useNavigation()
   const [isTrackingSwitchActive, setIsTrackingSwitchActive] = useState(false)
   const [isSaveButtonDisabled, setIsSaveButtonDisabled] = useState(true)
-  const theme = useTheme()
 
   useEffect(() => {
     storage.readObject('has_accepted_cookie').then((hasAcceptedCookie) => {
@@ -65,12 +64,12 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
       <Spacer.TopScreen />
       <Spacer.Column numberOfSpaces={18} />
       <ProfileContainer>
-        <Typo.Body color={theme.colors.black}>
+        <StyledBody>
           {t`L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle.`}
-        </Typo.Body>
+        </StyledBody>
         <Spacer.Column numberOfSpaces={4} />
         <MoreInformationContainer>
-          <Typo.Caption color={theme.colors.greyDark}>
+          <StyledCaption>
             {t`Pour plus d'informations, nous t'invitons à consulter notre`}
             <Spacer.Row numberOfSpaces={1} />
             <ButtonQuaternary
@@ -79,7 +78,7 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
               onPress={openCookiesPolicyExternalUrl}
               inline
             />
-          </Typo.Caption>
+          </StyledCaption>
         </MoreInformationContainer>
         <Spacer.Column numberOfSpaces={4} />
         <Separator />
@@ -101,6 +100,14 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
     </Container>
   )
 }
+
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.black,
+}))
+
+const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
 
 const Container = styled.View(({ theme }) => ({
   flex: 1,

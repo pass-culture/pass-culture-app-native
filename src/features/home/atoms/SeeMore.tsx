@@ -26,7 +26,7 @@ export const SeeMore: React.FC<SeeMoreProps> = ({ height, width, onPress }) => (
       </Row>
       <Spacer.Column numberOfSpaces={2} />
       <Row>
-        <Typo.ButtonText color={ColorsEnum.PRIMARY}>{t`En voir plus`}</Typo.ButtonText>
+        <ButtonText>{t`En voir plus`}</ButtonText>
       </Row>
     </ClickableArea>
   </Container>
@@ -62,3 +62,7 @@ const RoundContainer = styled.TouchableOpacity({
   }),
   alignItems: 'center',
 })
+
+const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
+  color: theme.colors.primary,
+}))

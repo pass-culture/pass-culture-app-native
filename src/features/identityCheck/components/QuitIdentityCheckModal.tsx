@@ -63,7 +63,7 @@ export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ theme, color }) => ({
-  color: color ?? theme.colors.white,
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
   textAlign: 'center',
 }))

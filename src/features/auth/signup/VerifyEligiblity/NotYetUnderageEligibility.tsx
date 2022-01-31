@@ -10,8 +10,6 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { CalendarIllustration } from 'ui/svg/icons/CalendarIllustration'
 import { Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = StackScreenProps<RootStackParamList, 'NotYetUnderageEligibility'>
 
@@ -37,8 +35,7 @@ export const NotYetUnderageEligibility: FunctionComponent<Props> = (props) => {
   )
 }
 
-const StyledBody = styled(Typo.Body).attrs({
-  color: ColorsEnum.WHITE,
-})({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
-})
+  color: theme.colors.white,
+}))

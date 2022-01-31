@@ -2,8 +2,6 @@ import React, { FC } from 'react'
 
 import { Error } from 'ui/svg/icons/Error'
 import { Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { ErrorMessage } from 'ui/web/errors/ErrorMessage'
 
 import { InputRule } from './rules/InputRule'
@@ -21,7 +19,7 @@ export const InputError: FC<Props> = (props) => {
       <Spacer.Column testID="input-error-top-spacer" numberOfSpaces={props.numberOfSpacesTop} />
       <InputRule
         title={props.messageId}
-        color={ColorsEnum.ERROR}
+        isValid={false}
         icon={Error}
         testIdSuffix="warn"
         iconSize={16}

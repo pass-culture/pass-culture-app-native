@@ -22,10 +22,8 @@ import { RadioButton } from 'ui/components/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
-import { Warning } from 'ui/svg/icons/Warning'
+import { Warning as WarningDefault } from 'ui/svg/icons/Warning'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 export interface GeneratedDeeplink {
   universalLink: string
@@ -97,7 +95,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
         )}
         {!!config.description && (
           <DescriptionContainer>
-            <Typo.Caption color={ColorsEnum.GREY_MEDIUM}>{config.description}</Typo.Caption>
+            <StyledCaption>{config.description}</StyledCaption>
           </DescriptionContainer>
         )}
         <Separator />
@@ -187,10 +185,10 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
         </AccordionItem>
       </Container>
       <BottomContainer>
-        <Banner color={ColorsEnum.ERROR}>
-          <Warning color={ColorsEnum.ERROR} size={getSpacing(3.5)} />
+        <ErrorBanner>
+          <Warning />
           {t`Seulement les "ids" disposent de validation\u00a0!`}
-        </Banner>
+        </ErrorBanner>
         <ButtonPrimary wording={t`Générer le lien`} disabled={disabled} onPress={onPress} />
       </BottomContainer>
     </React.Fragment>
@@ -215,9 +213,10 @@ const Container = styled.ScrollView(({ theme }) => ({
   flexDirection: 'column',
 }))
 
-const Banner = styled(Typo.Caption)({
+const ErrorBanner = styled(Typo.Caption)(({ theme }) => ({
   paddingVertical: getSpacing(1.5),
-})
+  color: theme.colors.error,
+}))
 
 const TitleContainer = styled(Typo.Title4)({
   textAlign: 'center',
@@ -232,3 +231,12 @@ const BottomContainer = styled.View({
 const DescriptionContainer = styled.View({
   padding: getSpacing(5),
 })
+
+const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyMedium,
+}))
+
+const Warning = styled(WarningDefault).attrs(({ theme }) => ({
+  color: theme.colors.error,
+  size: getSpacing(3.5),
+}))``

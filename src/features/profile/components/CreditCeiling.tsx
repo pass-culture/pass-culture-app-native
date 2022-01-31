@@ -93,7 +93,7 @@ const Container = styled.View({
   paddingHorizontal: getSpacing(1),
 })
 
-const Amount = styled(Typo.Title4)``
+const Amount = styled(Typo.Title4)<{ color: ColorsEnum }>(({ color }) => ({ color }))
 
 const Label = styled.Text({
   fontSize: 12,

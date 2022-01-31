@@ -6,8 +6,6 @@ import { DomainsCredit } from 'api/gen/api'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Typo, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { accordionStyle, GreyContainer, Description } from './reusables'
 
@@ -30,16 +28,16 @@ export function ExBeneficiaryHeader(props: ExBeneficiaryHeaderProps) {
       </HeaderBackgroundWrapper>
       <Spacer.Column numberOfSpaces={6} />
       <TitleContainer>
-        <Typo.Title4 color={ColorsEnum.WHITE}>{name}</Typo.Title4>
+        <Title4>{name}</Title4>
         <Spacer.Column numberOfSpaces={4.5} />
         {!!depositExpirationDate && (
-          <Typo.Caption color={ColorsEnum.WHITE}>
+          <Caption>
             {t({
               id: 'credit expired on date',
               values: { deadline: depositExpirationDate },
               message: 'crédit expiré le {deadline}',
             })}
-          </Typo.Caption>
+          </Caption>
         )}
       </TitleContainer>
       <Spacer.Column numberOfSpaces={6} />
@@ -81,3 +79,11 @@ const TitleContainer = styled.View({
 })
 
 const DescriptionContainer = styled(GreyContainer)({})
+
+const Title4 = styled(Typo.Title4)(({ theme }) => ({
+  color: theme.colors.white,
+}))
+
+const Caption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.white,
+}))
