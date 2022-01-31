@@ -1081,8 +1081,8 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           testID="report-offer-body"
         >
           <View
-            height={24}
-            width={24}
+            height={20}
+            width={20}
           >
             <Text>
               undefined-SVG-Mock
