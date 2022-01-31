@@ -4,6 +4,7 @@ import { mocked } from 'ts-jest/utils'
 import waitForExpect from 'wait-for-expect'
 
 import { useMustUpdateApp } from 'features/forceUpdate/useMustUpdateApp'
+import { useCurrentRoute } from 'features/navigation/helpers'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -28,6 +29,9 @@ jest.mock('features/navigation/RootNavigator/useInitialScreenConfig', () => ({
   useInitialScreen: () => 'TabNavigator',
 }))
 
+jest.mock('features/navigation/helpers')
+const mockUseCurrentRoute = mocked(useCurrentRoute)
+
 jest.mock('libs/splashscreen')
 const mockUseSplashScreenContext = mocked(useSplashScreenContext)
 
@@ -38,6 +42,10 @@ allowConsole({
 })
 
 describe('<RootNavigator />', () => {
+  beforeEach(() => {
+    mockUseCurrentRoute.mockReturnValue({ name: 'TabNavigator', key: 'key' })
+  })
+
   afterEach(async () => {
     await storage.clear('has_accepted_cookie')
   })

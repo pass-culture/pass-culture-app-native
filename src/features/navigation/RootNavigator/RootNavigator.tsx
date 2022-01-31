@@ -1,5 +1,4 @@
 import React from 'react'
-import { useTheme } from 'styled-components/native'
 
 import { PrivacyPolicy } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicy'
 import { NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
@@ -28,7 +27,6 @@ const RootStackNavigator = withWebWrapper(
 )
 
 export const RootNavigator: React.ComponentType = () => {
-  const theme = useTheme()
   const { isSplashScreenHidden } = useSplashScreenContext()
 
   const initialScreen = useInitialScreen()
@@ -36,10 +34,9 @@ export const RootNavigator: React.ComponentType = () => {
   if (!initialScreen) {
     return <LoadingPage />
   }
-  const showHeader = !theme.showTabBar
   return (
     <TabNavigationStateProvider>
-      {showHeader ? <Header /> : null}
+      <Header />
       <Main>
         <RootStackNavigator initialRouteName={initialScreen} />
       </Main>

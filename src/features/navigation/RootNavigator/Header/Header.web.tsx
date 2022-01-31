@@ -9,6 +9,7 @@ import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getSpacing } from 'ui/theme'
 
+import { AccessibleTabBar } from './AccessibleTabBar'
 import { Nav } from './Nav'
 
 const MINIMUM_BRAND_SIZE = 140
@@ -76,7 +77,7 @@ export const Header = memo(function Header() {
   }, [isBrandVisible])
 
   if (theme.showTabBar) {
-    return null
+    return <AccessibleTabBar />
   }
   return (
     <HeaderContainer>

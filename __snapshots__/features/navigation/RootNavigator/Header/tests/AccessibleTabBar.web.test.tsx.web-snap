@@ -1,14 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ForceUpdate display logic should display force update page when global variable is set 1`] = `
+exports[`AccessibleTabBar renders correctly 1`] = `
 Object {
   "asFragment": [Function],
-  "baseElement": <body
-    tabindex="-1"
-  >
+  "baseElement": <body>
     <div>
       <nav
-        class="sc-gsDKAQ kPkjyC"
+        class="sc-pVTFL jCslBt"
       >
         <div
           class="css-view-1dbjc4n"
@@ -23,14 +21,11 @@ Object {
               style="width: 16px;"
             />
             <div
-              class="sc-dkPtRN SXnGz"
+              class="sc-jrQzAO lnPSut"
             >
-              <a
-                class="css-reset-4rbku5 css-cursor-18t94o4 css-text-901oao"
+              <div
+                class="css-text-901oao"
                 dir="auto"
-                href="/Home"
-                role="link"
-                style="cursor: pointer;"
               >
                 <div
                   aria-label="Home tab"
@@ -73,17 +68,14 @@ Object {
                     style="display: inline-flex; height: 4px;"
                   />
                 </div>
-              </a>
+              </div>
             </div>
             <div
-              class="sc-dkPtRN SXnGz"
+              class="sc-jrQzAO lnPSut"
             >
-              <a
-                class="css-reset-4rbku5 css-cursor-18t94o4 css-text-901oao"
+              <div
+                class="css-text-901oao"
                 dir="auto"
-                href="/Search"
-                role="link"
-                style="cursor: pointer;"
               >
                 <div
                   aria-label="Search tab"
@@ -111,17 +103,14 @@ Object {
                     style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                   />
                 </div>
-              </a>
+              </div>
             </div>
             <div
-              class="sc-dkPtRN SXnGz"
+              class="sc-jrQzAO lnPSut"
             >
-              <a
-                class="css-reset-4rbku5 css-cursor-18t94o4 css-text-901oao"
+              <div
+                class="css-text-901oao"
                 dir="auto"
-                href="/Bookings"
-                role="link"
-                style="cursor: pointer;"
               >
                 <div
                   aria-label="Bookings tab"
@@ -149,17 +138,14 @@ Object {
                     style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                   />
                 </div>
-              </a>
+              </div>
             </div>
             <div
-              class="sc-dkPtRN SXnGz"
+              class="sc-jrQzAO lnPSut"
             >
-              <a
-                class="css-reset-4rbku5 css-cursor-18t94o4 css-text-901oao"
+              <div
+                class="css-text-901oao"
                 dir="auto"
-                href="/Favorites"
-                role="link"
-                style="cursor: pointer;"
               >
                 <div
                   aria-label="Favorites tab"
@@ -187,17 +173,14 @@ Object {
                     style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                   />
                 </div>
-              </a>
+              </div>
             </div>
             <div
-              class="sc-dkPtRN SXnGz"
+              class="sc-jrQzAO lnPSut"
             >
-              <a
-                class="css-reset-4rbku5 css-cursor-18t94o4 css-text-901oao"
+              <div
+                class="css-text-901oao"
                 dir="auto"
-                href="/Profile"
-                role="link"
-                style="cursor: pointer;"
               >
                 <div
                   aria-label="Profile tab"
@@ -225,7 +208,7 @@ Object {
                     style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                   />
                 </div>
-              </a>
+              </div>
             </div>
             <div
               class="css-view-1dbjc4n"
@@ -238,43 +221,11 @@ Object {
           />
         </div>
       </nav>
-      <main
-        class="sc-bdvvtL gknfHF"
-      >
-        <div
-          class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin: auto auto auto auto; width: 100%;"
-        >
-          <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin: auto auto auto auto; max-width: 960px; width: 100%;"
-          >
-            <div
-              class="css-view-1dbjc4n"
-            />
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%; z-index: -1;"
-          >
-            <div
-              class="css-view-1dbjc4n"
-            >
-              <div
-                class="css-text-901oao"
-                dir="auto"
-              >
-                undefined-SVG-Mock
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
     </div>
   </body>,
   "container": <div>
     <nav
-      class="sc-gsDKAQ kPkjyC"
+      class="sc-pVTFL jCslBt"
     >
       <div
         class="css-view-1dbjc4n"
@@ -289,14 +240,11 @@ Object {
             style="width: 16px;"
           />
           <div
-            class="sc-dkPtRN SXnGz"
+            class="sc-jrQzAO lnPSut"
           >
-            <a
-              class="css-reset-4rbku5 css-cursor-18t94o4 css-text-901oao"
+            <div
+              class="css-text-901oao"
               dir="auto"
-              href="/Home"
-              role="link"
-              style="cursor: pointer;"
             >
               <div
                 aria-label="Home tab"
@@ -339,17 +287,14 @@ Object {
                   style="display: inline-flex; height: 4px;"
                 />
               </div>
-            </a>
+            </div>
           </div>
           <div
-            class="sc-dkPtRN SXnGz"
+            class="sc-jrQzAO lnPSut"
           >
-            <a
-              class="css-reset-4rbku5 css-cursor-18t94o4 css-text-901oao"
+            <div
+              class="css-text-901oao"
               dir="auto"
-              href="/Search"
-              role="link"
-              style="cursor: pointer;"
             >
               <div
                 aria-label="Search tab"
@@ -377,17 +322,14 @@ Object {
                   style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                 />
               </div>
-            </a>
+            </div>
           </div>
           <div
-            class="sc-dkPtRN SXnGz"
+            class="sc-jrQzAO lnPSut"
           >
-            <a
-              class="css-reset-4rbku5 css-cursor-18t94o4 css-text-901oao"
+            <div
+              class="css-text-901oao"
               dir="auto"
-              href="/Bookings"
-              role="link"
-              style="cursor: pointer;"
             >
               <div
                 aria-label="Bookings tab"
@@ -415,17 +357,14 @@ Object {
                   style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                 />
               </div>
-            </a>
+            </div>
           </div>
           <div
-            class="sc-dkPtRN SXnGz"
+            class="sc-jrQzAO lnPSut"
           >
-            <a
-              class="css-reset-4rbku5 css-cursor-18t94o4 css-text-901oao"
+            <div
+              class="css-text-901oao"
               dir="auto"
-              href="/Favorites"
-              role="link"
-              style="cursor: pointer;"
             >
               <div
                 aria-label="Favorites tab"
@@ -453,17 +392,14 @@ Object {
                   style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                 />
               </div>
-            </a>
+            </div>
           </div>
           <div
-            class="sc-dkPtRN SXnGz"
+            class="sc-jrQzAO lnPSut"
           >
-            <a
-              class="css-reset-4rbku5 css-cursor-18t94o4 css-text-901oao"
+            <div
+              class="css-text-901oao"
               dir="auto"
-              href="/Profile"
-              role="link"
-              style="cursor: pointer;"
             >
               <div
                 aria-label="Profile tab"
@@ -491,7 +427,7 @@ Object {
                   style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                 />
               </div>
-            </a>
+            </div>
           </div>
           <div
             class="css-view-1dbjc4n"
@@ -504,38 +440,6 @@ Object {
         />
       </div>
     </nav>
-    <main
-      class="sc-bdvvtL gknfHF"
-    >
-      <div
-        class="css-view-1dbjc4n"
-        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin: auto auto auto auto; width: 100%;"
-      >
-        <div
-          class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin: auto auto auto auto; max-width: 960px; width: 100%;"
-        >
-          <div
-            class="css-view-1dbjc4n"
-          />
-        </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%; z-index: -1;"
-        >
-          <div
-            class="css-view-1dbjc4n"
-          >
-            <div
-              class="css-text-901oao"
-              dir="auto"
-            >
-              undefined-SVG-Mock
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
