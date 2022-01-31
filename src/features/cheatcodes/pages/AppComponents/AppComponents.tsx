@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 
 import { CallToActionIcon, CategoryIdEnum, PopOverIcon, VenueTypeCodeKey } from 'api/gen/api'
 import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
+import { DateInput } from 'features/auth/signup/SetBirthday/DateInput/DateInput'
 import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTicket'
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
@@ -36,7 +37,6 @@ import { ClippedTag } from 'ui/components/ClippedTag'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { Hero } from 'ui/components/hero/Hero'
 import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
-import { DateInput } from 'ui/components/inputs/DateInput'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput'
 import { PasswordInput } from 'ui/components/inputs/PasswordInput'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
@@ -383,17 +383,9 @@ export const AppComponents: FunctionComponent = () => {
         <StyledTitle4>Password Input</StyledTitle4>
         <PasswordInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} />
         <Spacer.Column numberOfSpaces={1} />
-        <StyledTitle4>Short Input</StyledTitle4>
+        <Typo.Title4 color={ColorsEnum.TERTIARY}>Date Input</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
-        <StyledTitle4>Date Input</StyledTitle4>
-        <Spacer.Column numberOfSpaces={1} />
-        <Spacer.Flex flex={1}>
-          <DateInput />
-        </Spacer.Flex>
-        <Spacer.Column numberOfSpaces={1} />
-        <StyledTitle4>Code Input of length 20</StyledTitle4>
-        <Spacer.Column numberOfSpaces={1} />
-        <Typo.Caption>is valid if number of 5 digits</Typo.Caption>
+        <DateInput date={new Date()} />
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Caption>{inputText}</Typo.Caption>
         <Spacer.Column numberOfSpaces={1} />
