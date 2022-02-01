@@ -23,7 +23,7 @@ export function DeleteProfileSuccess() {
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ color, theme }) => ({
-  color: color ?? theme.colors.white,
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
   textAlign: 'center',
 }))

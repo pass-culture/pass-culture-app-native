@@ -38,7 +38,6 @@ exports[`<SetAddress/> should render correctly 1`] = `
     }
   >
     <Text
-      color="#ffffff"
       style={
         Array [
           Object {

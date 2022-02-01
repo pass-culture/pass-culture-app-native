@@ -21,9 +21,7 @@ export function RadioButton(props: RadioButtonProps) {
         onPress={() => props.onSelect(props.id)}
         testID={`radio-button-${props.id}`}>
         <Spacer.Flex flex={0.9}>
-          <Title color={props.selectedValue === props.id ? ColorsEnum.PRIMARY : ColorsEnum.BLACK}>
-            {props.title}
-          </Title>
+          <Title match={props.selectedValue === props.id}>{props.title}</Title>
           {!!props.description && <Subtitle>{props.description}</Subtitle>}
         </Spacer.Flex>
 
@@ -44,8 +42,8 @@ const PressableContainer = styled.TouchableOpacity({
   justifyContent: 'space-between',
 })
 
-const Title = styled(Typo.ButtonText)<{ color: ColorsEnum }>(({ color }) => ({
-  color: color,
+const Title = styled(Typo.ButtonText)<{ match: boolean }>(({ match, theme }) => ({
+  color: match ? theme.colors.primary : theme.colors.black,
 }))
 
 const Subtitle = styled(Typo.Caption)({

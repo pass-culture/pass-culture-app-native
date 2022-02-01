@@ -48,7 +48,6 @@ export const Categories: React.FC = () => {
           const searchGroup = category as SearchGroupNameEnum
           const isSelected = isCategorySelected(searchGroup)
           const color2 = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.SECONDARY
-          const textColor = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK
 
           return (
             <LabelContainer
@@ -58,9 +57,9 @@ export const Categories: React.FC = () => {
               <Spacer.Row numberOfSpaces={4} />
               <Icon size={getSpacing(9)} color={ColorsEnum.PRIMARY} color2={color2} />
               <Spacer.Row numberOfSpaces={4} />
-              <Typo.ButtonText numberOfLines={2} color={textColor}>
+              <ButtonText numberOfLines={2} isSelected={isSelected}>
                 {searchGroupLabelMapping[searchGroup]}
-              </Typo.ButtonText>
+              </ButtonText>
               <Spacer.Flex />
               {!!isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(6)} />}
             </LabelContainer>
@@ -87,3 +86,7 @@ const LabelContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
   alignItems: 'center',
   marginBottom: getSpacing(4),
 })
+
+const ButtonText = styled(Typo.ButtonText)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
+  color: isSelected ? theme.colors.primary : theme.colors.black,
+}))

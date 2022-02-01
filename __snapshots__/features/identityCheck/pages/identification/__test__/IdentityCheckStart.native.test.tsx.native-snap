@@ -39,7 +39,6 @@ Array [
       }
     >
       <Text
-        color="#ffffff"
         style={
           Array [
             Object {
@@ -312,7 +311,6 @@ Array [
                     }
                   >
                     <Text
-                      color="#696A6F"
                       style={
                         Array [
                           Object {
@@ -660,7 +658,6 @@ Array [
                           >
                             <View>
                               <Text
-                                color="#696A6F"
                                 style={
                                   Array [
                                     Object {
@@ -749,7 +746,6 @@ Array [
                                 </Text>
                               </View>
                               <Text
-                                color="#696A6F"
                                 style={
                                   Array [
                                     Object {
@@ -838,7 +834,6 @@ Array [
                                 </Text>
                               </View>
                               <Text
-                                color="#696A6F"
                                 style={
                                   Array [
                                     Object {

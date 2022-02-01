@@ -18,8 +18,6 @@ import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { useModal } from 'ui/components/modals/useModal'
 import { Background } from 'ui/svg/Background'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 export const IdentityCheckStepper = () => {
   const theme = useTheme()
@@ -112,13 +110,15 @@ export const IdentityCheckStepper = () => {
   )
 }
 
-const Title = styled(Typo.Title3).attrs({ color: ColorsEnum.WHITE })({
+const Title = styled(Typo.Title3)(({ theme }) => ({
   textAlign: 'center',
-})
+  color: theme.colors.white,
+}))
 
-const StyledBody = styled(Typo.Body).attrs({ color: ColorsEnum.WHITE })({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
-})
+  color: theme.colors.white,
+}))
 
 const CenteredContainer = styled.View({
   flex: 1,

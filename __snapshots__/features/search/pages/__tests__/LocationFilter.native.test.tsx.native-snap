@@ -105,7 +105,6 @@ exports[`LocationFilter component should render correctly 1`] = `
             }
           >
             <Text
-              color="#161617"
               style={
                 Array [
                   Object {
@@ -210,7 +209,7 @@ exports[`LocationFilter component should render correctly 1`] = `
             }
           >
             <Text
-              color="#161617"
+              isSelected={false}
               numberOfLines={3}
               style={
                 Array [
@@ -335,7 +334,7 @@ exports[`LocationFilter component should render correctly 1`] = `
             }
           >
             <Text
-              color="#161617"
+              isSelected={false}
               numberOfLines={3}
               style={
                 Array [
@@ -462,7 +461,7 @@ exports[`LocationFilter component should render correctly 1`] = `
             }
           >
             <Text
-              color="#eb0055"
+              isSelected={true}
               numberOfLines={3}
               style={
                 Array [
@@ -596,7 +595,6 @@ exports[`LocationFilter component should render correctly 1`] = `
         </View>
       </View>
       <Text
-        color="#ffffff"
         numberOfLines={1}
         style={
           Array [

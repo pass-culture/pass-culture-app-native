@@ -38,7 +38,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
     }
   >
     <Text
-      color="#ffffff"
       style={
         Array [
           Object {
@@ -252,7 +251,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   }
                 >
                   <Text
-                    color="#161617"
+                    selected={false}
                     style={
                       Array [
                         Object {
@@ -307,7 +306,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   }
                 >
                   <Text
-                    color="#161617"
+                    selected={false}
                     style={
                       Array [
                         Object {
@@ -360,7 +359,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   }
                 >
                   <Text
-                    color="#161617"
+                    selected={false}
                     style={
                       Array [
                         Object {
@@ -413,7 +412,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   }
                 >
                   <Text
-                    color="#161617"
+                    selected={false}
                     style={
                       Array [
                         Object {
@@ -466,7 +465,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   }
                 >
                   <Text
-                    color="#161617"
+                    selected={false}
                     style={
                       Array [
                         Object {
@@ -519,7 +518,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   }
                 >
                   <Text
-                    color="#161617"
+                    selected={false}
                     style={
                       Array [
                         Object {
@@ -534,7 +533,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                     Accompagnement spécialisé
                   </Text>
                   <Text
-                    color="#696A6F"
                     style={
                       Array [
                         Object {
@@ -589,7 +587,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   }
                 >
                   <Text
-                    color="#161617"
+                    selected={false}
                     style={
                       Array [
                         Object {
@@ -762,7 +760,6 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
     }
   >
     <Text
-      color="#ffffff"
       style={
         Array [
           Object {
@@ -976,7 +973,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                   }
                 >
                   <Text
-                    color="#161617"
+                    selected={false}
                     style={
                       Array [
                         Object {
@@ -1031,7 +1028,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                   }
                 >
                   <Text
-                    color="#161617"
+                    selected={false}
                     style={
                       Array [
                         Object {
@@ -1086,7 +1083,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                   }
                 >
                   <Text
-                    color="#161617"
+                    selected={false}
                     style={
                       Array [
                         Object {
@@ -1101,7 +1098,6 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                     Accompagnement spécialisé
                   </Text>
                   <Text
-                    color="#696A6F"
                     style={
                       Array [
                         Object {

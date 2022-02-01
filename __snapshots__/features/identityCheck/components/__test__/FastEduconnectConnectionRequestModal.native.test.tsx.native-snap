@@ -269,7 +269,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
         >
           <View>
             <Text
-              color="#696A6F"
               style={
                 Array [
                   Object {
@@ -524,7 +523,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
               </Text>
             </View>
             <Text
-              color="#696A6F"
               style={
                 Array [
                   Object {
@@ -812,7 +810,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
         >
           <View>
             <Text
-              color="#696A6F"
               style={
                 Array [
                   Object {
@@ -1067,7 +1064,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
               </Text>
             </View>
             <Text
-              color="#696A6F"
               style={
                 Array [
                   Object {

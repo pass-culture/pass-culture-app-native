@@ -333,7 +333,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
             </Text>
           </View>
           <Text
-            color="#ffffff"
+            disabled={true}
+            selected={true}
             style={
               Array [
                 Object {
@@ -348,7 +349,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
             Solo
           </Text>
           <Text
-            color="#ffffff"
+            disabled={true}
+            selected={true}
             style={
               Array [
                 Object {
@@ -484,7 +486,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
             </View>
           </View>
           <Text
-            color="#696A6F"
+            disabled={true}
+            selected={false}
             style={
               Array [
                 Object {
@@ -499,7 +502,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
             Duo
           </Text>
           <Text
-            color="#696A6F"
+            disabled={true}
+            selected={false}
             style={
               Array [
                 Object {

@@ -11,8 +11,6 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 export const VenueNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   const timer = useRef<number>()
@@ -53,8 +51,7 @@ export const VenueNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   )
 }
 
-const StyledBody = styled(Typo.Body).attrs({
-  color: ColorsEnum.WHITE,
-})({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
-})
+  color: theme.colors.white,
+}))

@@ -48,7 +48,6 @@ exports[`<AfterChangeEmailValidationBuffer/> should render correctly 1`] = `
     Loading-Animation-Lottie-Mock
   </View>
   <Text
-    color="#ffffff"
     style={
       Array [
         Object {

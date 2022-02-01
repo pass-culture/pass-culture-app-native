@@ -3,25 +3,27 @@ import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 type Props = {
   title: string
   icon: FunctionComponent<IconInterface>
   iconSize: number
-  color: ColorsEnum
+  isValid: boolean
   testIdSuffix?: string
   centered?: boolean
 }
 
 export const InputRule: FunctionComponent<Props> = (props) => {
-  const { title, icon, iconSize, color, testIdSuffix, centered } = props
-  const Icon = icon
+  const { title, icon, iconSize, isValid, testIdSuffix, centered } = props
+  const Icon = styled(icon).attrs<{ testID: string }>(({ theme }) => ({
+    color: isValid ? theme.colors.greenValid : theme.colors.error,
+    size: iconSize,
+  }))``
+
   return (
     <StyledView centered={centered}>
-      <Icon testID={`rule-icon-${testIdSuffix}`} color={color} size={iconSize} />
+      <Icon testID={`rule-icon-${testIdSuffix}`} />
       <Spacer.Row numberOfSpaces={1} />
-      <StyledCaption color={color} centered={centered}>
+      <StyledCaption isValid={isValid} centered={centered}>
         {title}
       </StyledCaption>
     </StyledView>
@@ -35,8 +37,12 @@ const StyledView = styled.View<{ centered?: boolean }>(({ centered, theme }) => 
   ...(centered ? {} : { width: '100%' }),
 }))
 
-const StyledCaption = styled(Typo.Caption)<{ centered?: boolean }>(({ centered }) => ({
+const StyledCaption = styled(Typo.Caption)<{
+  isValid: boolean
+  centered?: boolean
+}>(({ isValid, theme, centered }) => ({
   paddingLeft: getSpacing(1),
   flexShrink: 1,
+  color: isValid ? theme.colors.greenValid : theme.colors.error,
   ...(centered ? { textAlign: 'center' } : {}),
 }))

@@ -4,8 +4,6 @@ import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Typo, GUTTER_DP } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 interface OfferCaptionProps {
   imageWidth: number
@@ -22,14 +20,10 @@ export const OfferCaption = (props: OfferCaptionProps) => {
   return (
     <CaptionContainer imageWidth={imageWidth}>
       <Typo.Caption numberOfLines={2}>{name}</Typo.Caption>
-      {!!date && (
-        <Typo.Caption numberOfLines={1} color={ColorsEnum.GREY_DARK}>
-          {date}
-        </Typo.Caption>
-      )}
-      <Typo.Caption color={ColorsEnum.GREY_DARK} testID="priceIsDuo">
+      {!!date && <StyledCaption numberOfLines={1}>{date}</StyledCaption>}
+      <StyledCaption testID="priceIsDuo">
         {isDuo && isBeneficiary ? `${price} - ${t`Duo`}` : price}
-      </Typo.Caption>
+      </StyledCaption>
     </CaptionContainer>
   )
 }
@@ -37,4 +31,8 @@ export const OfferCaption = (props: OfferCaptionProps) => {
 const CaptionContainer = styled.View<{ imageWidth: number }>(({ imageWidth }) => ({
   maxWidth: imageWidth,
   marginTop: PixelRatio.roundToNearestPixel(GUTTER_DP / 2),
+}))
+
+const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
 }))

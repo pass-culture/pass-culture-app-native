@@ -25,8 +25,6 @@ import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { Form } from 'ui/web/form/Form'
 
 const TIMER = 60
@@ -134,9 +132,9 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
         <ModalContent>
           <Form.MaxWidth>
             <Paragraphe>
-              <Typo.Body color={ColorsEnum.GREY_DARK}>
+              <StyledBody>
                 {t`Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro.`}
-              </Typo.Body>
+              </StyledBody>
             </Paragraphe>
             <Spacer.Column numberOfSpaces={8} />
             <InputContainer>
@@ -199,6 +197,10 @@ const InputContainer = styled.View(({ theme }) => ({
   width: '100%',
   maxWidth: getSpacing(90),
   marginHorizontal: theme.isMobileViewport ? undefined : 'auto',
+}))
+
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.greyDark,
 }))
 
 const PICKER_WIDTH_DESKTOP = 30 // in %

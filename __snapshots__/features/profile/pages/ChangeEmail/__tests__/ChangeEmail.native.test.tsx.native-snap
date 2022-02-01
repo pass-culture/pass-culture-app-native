@@ -104,7 +104,6 @@ Array [
         }
       />
       <Text
-        color="#696A6F"
         style={
           Array [
             Object {
@@ -636,7 +635,6 @@ Array [
         </View>
       </View>
       <Text
-        color="#ffffff"
         numberOfLines={1}
         style={
           Array [
@@ -728,7 +726,6 @@ Array [
         }
       />
       <Text
-        color="#696A6F"
         style={
           Array [
             Object {
@@ -1280,7 +1277,6 @@ Array [
         </View>
       </View>
       <Text
-        color="#ffffff"
         numberOfLines={1}
         style={
           Array [

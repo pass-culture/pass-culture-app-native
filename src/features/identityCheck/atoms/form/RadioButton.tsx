@@ -15,10 +15,8 @@ interface Props {
 export const RadioButton = ({ name, description, selected, onPress }: Props) => (
   <Label selected={selected} onPress={() => onPress(name)}>
     <TextContainer>
-      <Typo.ButtonText color={selected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK}>
-        {name}
-      </Typo.ButtonText>
-      {description ? <Typo.Caption color={ColorsEnum.GREY_DARK}>{description}</Typo.Caption> : null}
+      <ButtonText selected={selected}>{name}</ButtonText>
+      {description ? <Caption>{description}</Caption> : null}
     </TextContainer>
     {selected ? (
       <IconContainer>
@@ -50,3 +48,11 @@ const IconContainer = styled.View({
   position: 'absolute',
   right: getSpacing(3),
 })
+
+const ButtonText = styled(Typo.ButtonText)<{ selected: boolean }>(({ selected, theme }) => ({
+  color: selected ? theme.colors.primary : theme.colors.black,
+}))
+
+const Caption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

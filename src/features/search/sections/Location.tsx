@@ -42,9 +42,7 @@ export const Location: React.FC = () => {
       {locationType === LocationType.AROUND_ME ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
-          <Typo.Caption color={ColorsEnum.GREY_DARK}>
-            {t`Seules les sorties et offres physiques seront affichées`}
-          </Typo.Caption>
+          <Caption>{t`Seules les sorties et offres physiques seront affichées`}</Caption>
         </React.Fragment>
       ) : null}
     </Section>
@@ -63,3 +61,7 @@ const LocationContentContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
 const Label = styled(Typo.ButtonText)({
   flexShrink: 1,
 })
+
+const Caption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

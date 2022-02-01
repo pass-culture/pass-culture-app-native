@@ -3,33 +3,42 @@ import styled from 'styled-components/native'
 
 import { openUrl } from 'features/navigation/helpers'
 import { extractExternalLinkParts } from 'ui/components/buttons/externalLink/ExternalLink.service'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { ExternalSite as DefaultExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
   url: string
+  primary?: boolean
   text?: string
-  color?: ColorsEnum
   testID?: string
 }
 
-export const ExternalLink: React.FC<Props> = ({ url, text, color, testID }) => {
+export const ExternalLink: React.FC<Props> = ({ url, text, primary, testID }) => {
   const [firstWord, remainingWords] = extractExternalLinkParts(text || url)
 
   return (
-    <Typo.ButtonText color={color} onPress={() => openUrl(url)} testID={testID}>
+    <ButtonText primary={primary} onPress={() => openUrl(url)} testID={testID}>
       <Spacer.Row numberOfSpaces={1} />
       <Text>
-        <ExternalSite size={14} color={color} testID="externalSiteIcon" />
+        <ExternalSite primary={primary} testID="externalSiteIcon" />
         {firstWord}
       </Text>
       {remainingWords}
-    </Typo.ButtonText>
+    </ButtonText>
   )
 }
 
 const Text = styled.Text({
   whiteSpace: 'nowrap',
 })
+
+const ButtonText = styled(Typo.ButtonText)<{ primary?: boolean }>(({ primary, theme }) => ({
+  color: primary ? theme.colors.primary : undefined,
+}))
+
+const ExternalSite = styled(DefaultExternalSite).attrs<{ primary?: boolean }>(
+  ({ primary, theme }) => ({
+    color: primary ? theme.colors.primary : undefined,
+    size: 14,
+  })
+)<{ primary?: boolean }>``

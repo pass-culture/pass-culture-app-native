@@ -63,7 +63,6 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
     }
   >
     <Text
-      color="#ffffff"
       style={
         Array [
           Object {
@@ -88,7 +87,6 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
       }
     />
     <Text
-      color="#ffffff"
       style={
         Array [
           Object {
@@ -187,7 +185,6 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
       }
     >
       <Text
-        color="#ffffff"
         style={
           Array [
             Object {
@@ -222,7 +219,6 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
         testID="Connecte-toi"
       >
         <Text
-          color="#ffffff"
           style={
             Array [
               Object {

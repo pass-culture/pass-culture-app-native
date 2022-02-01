@@ -49,14 +49,9 @@ export function ProfileBadge(props: ProfileBadgeProps) {
         </IconContainer>
       ) : null}
       <TextContainer>
-        <Typo.Caption
-          color={
-            props.callToActionMessage && props.callToActionLink
-              ? ColorsEnum.GREY_DARK
-              : ColorsEnum.BLACK
-          }>
+        <Caption callToAction={props.callToActionMessage && props.callToActionLink}>
           {props.message}
-        </Typo.Caption>
+        </Caption>
         {renderCallToAction(
           props.callToActionMessage,
           props.callToActionLink,
@@ -83,3 +78,9 @@ const IconContainer = styled.View({
 const TextContainer = styled.View({
   flex: 1,
 })
+
+const Caption = styled(Typo.Caption)<{ callToAction: string | null | undefined }>(
+  ({ theme, callToAction }) => ({
+    color: callToAction ? theme.colors.greyDark : theme.colors.black,
+  })
+)

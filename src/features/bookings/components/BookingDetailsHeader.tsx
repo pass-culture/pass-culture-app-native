@@ -8,8 +8,6 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { getAnimationState } from 'ui/components/headers/animationHelpers'
 import { HeaderIcon } from 'ui/components/headers/HeaderIcon'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 interface Props {
   headerTransition: Animated.AnimatedInterpolation
   title: string
@@ -39,7 +37,7 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
           </IconContainer>
 
           <Title style={{ opacity: headerTransition }}>
-            <Typo.Body color={ColorsEnum.WHITE}>{title}</Typo.Body>
+            <StyledBody>{title}</StyledBody>
           </Title>
 
           <Spacer.Row numberOfSpaces={3} />
@@ -72,3 +70,7 @@ const Title = styled(Animated.Text).attrs({ numberOfLines: 1 })({
   textAlign: 'center',
   flex: 5,
 })
+
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
+}))

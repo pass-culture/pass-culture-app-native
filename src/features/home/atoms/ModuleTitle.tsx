@@ -3,14 +3,12 @@ import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Typo, MARGIN_DP } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
-export const ModuleTitle = (props: { title: string; color?: ColorsEnum }) => {
-  const { title, color = ColorsEnum.BLACK } = props
+export const ModuleTitle = (props: { title: string }) => {
+  const { title } = props
   return (
     <Container>
-      <Typo.Title3 numberOfLines={2} testID="moduleTitle" color={color}>
+      <Typo.Title3 numberOfLines={2} testID="moduleTitle">
         {title}
       </Typo.Title3>
     </Container>

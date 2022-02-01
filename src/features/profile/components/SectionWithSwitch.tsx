@@ -71,6 +71,6 @@ const FilterSwitchLabelContainer = styled.View({
   alignItems: 'center',
 })
 
-const ToggleLabel = styled(Typo.Caption)(({ theme, color }) => ({
-  color: color ?? theme.colors.greyDark,
+const ToggleLabel = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
 }))

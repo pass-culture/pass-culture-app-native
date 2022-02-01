@@ -453,7 +453,6 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
             >
               <View>
                 <Text
-                  color="#696A6F"
                   style={
                     Array [
                       Object {
@@ -542,7 +541,6 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
                   </Text>
                 </View>
                 <Text
-                  color="#696A6F"
                   style={
                     Array [
                       Object {
@@ -631,7 +629,6 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
                   </Text>
                 </View>
                 <Text
-                  color="#696A6F"
                   style={
                     Array [
                       Object {

@@ -16,7 +16,7 @@ export function NoBookingsView() {
     <Container>
       <Spacer.Flex />
       <NoBookings size={197} color={ColorsEnum.GREY_MEDIUM} />
-      <Explanation color={ColorsEnum.GREY_DARK}>
+      <Explanation>
         {t`Tu n’as pas de réservations en cours.
       Découvre les offres disponibles 
       sans attendre\u00a0!`}
@@ -48,7 +48,8 @@ const ButtonContainer = styled.View({
   width: '100%',
 })
 
-const Explanation = styled(Typo.Body)({
+const Explanation = styled(Typo.Body)(({ theme }) => ({
   flex: 1,
   textAlign: 'center',
-})
+  color: theme.colors.greyDark,
+}))

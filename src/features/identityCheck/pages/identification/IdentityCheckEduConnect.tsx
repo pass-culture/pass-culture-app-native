@@ -60,7 +60,7 @@ export const IdentityCheckEduConnect = () => {
 
           <Spacer.Column numberOfSpaces={4} />
 
-          <TextContent color={ColorsEnum.GREY_DARK}>
+          <TextContent>
             {t`Pour t’identifier, nous allons te demander de te connecter à EduConnect. Munis-toi de ton identifiant et ton mot de passe EduConnect\u00a0! Si tu ne les as pas, contacte ton établissement pour les récupérer.`}
           </TextContent>
 
@@ -75,5 +75,8 @@ export const IdentityCheckEduConnect = () => {
 }
 
 const Center = styled.View({ alignSelf: 'center' })
-const TextContent = styled(Typo.Body)({ textAlign: 'center' })
 const Container = styled.View({ flexGrow: 1, justifyContent: 'center' })
+const TextContent = styled(Typo.Body)(({ theme }) => ({
+  textAlign: 'center',
+  color: theme.colors.greyDark,
+}))

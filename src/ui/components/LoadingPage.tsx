@@ -6,8 +6,6 @@ import LottieView from 'libs/lottie'
 import LoadingAnimation from 'ui/animations/lottie_loading.json'
 import { Background } from 'ui/svg/Background'
 import { Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 export const LoadingPage: FunctionComponent = () => {
   return (
     <Container>
@@ -32,10 +30,9 @@ const StyledLottieView = styled(LottieView)({
   height: 150,
 })
 
-const LoadingText = styled(Typo.Body).attrs({
-  color: ColorsEnum.WHITE,
-})({
+const LoadingText = styled(Typo.Body)(({ theme }) => ({
   top: -16,
   textAlign: 'center',
   fontSize: 15,
-})
+  color: theme.colors.white,
+}))

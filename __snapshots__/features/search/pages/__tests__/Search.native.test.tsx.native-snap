@@ -219,7 +219,6 @@ exports[`Search component should render correctly 1`] = `
           }
         >
           <Text
-            color="#696A6F"
             style={
               Array [
                 Object {
@@ -345,7 +344,6 @@ exports[`Search component should render correctly 1`] = `
           }
         >
           <Text
-            color="#696A6F"
             style={
               Array [
                 Object {

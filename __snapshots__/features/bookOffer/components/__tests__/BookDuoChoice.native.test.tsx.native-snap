@@ -128,7 +128,8 @@ Array [
             </Text>
           </View>
           <Text
-            color="#ffffff"
+            disabled={false}
+            selected={true}
             style={
               Array [
                 Object {
@@ -143,7 +144,8 @@ Array [
             Solo
           </Text>
           <Text
-            color="#ffffff"
+            disabled={false}
+            selected={true}
             style={
               Array [
                 Object {
@@ -260,7 +262,8 @@ Array [
             </View>
           </View>
           <Text
-            color="#161617"
+            disabled={false}
+            selected={false}
             style={
               Array [
                 Object {
@@ -275,7 +278,8 @@ Array [
             Duo
           </Text>
           <Text
-            color="#161617"
+            disabled={false}
+            selected={false}
             style={
               Array [
                 Object {

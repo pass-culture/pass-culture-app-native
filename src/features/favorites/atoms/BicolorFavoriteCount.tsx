@@ -47,12 +47,8 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
       <StyledAnimatedView style={{ transform: [{ scale }] }} {...pastilleDimensions}>
         <Pastille color={thin ? colors.greyDark : undefined} {...pastilleDimensions} />
         <PastilleContent {...pastilleDimensions}>
-          <Count {...pastilleDimensions} color={colors.white}>
-            {count}
-          </Count>
-          <Plus {...pastilleDimensions} color={colors.white}>
-            {plusSign}
-          </Plus>
+          <Count {...pastilleDimensions}>{count}</Count>
+          <Plus {...pastilleDimensions}>{plusSign}</Plus>
         </PastilleContent>
       </StyledAnimatedView>
     </Container>
@@ -80,14 +76,16 @@ const PastilleContent = styled.View<{ height: number; width: number }>((props) =
   width: props.width,
 }))
 
-const Plus = styled(Typo.Caption)<{ height: number }>(({ height }) => ({
+const Plus = styled(Typo.Caption)<{ height: number }>(({ height, theme }) => ({
   fontSize: 8,
   height: Platform.select<number>({ web: height, default: height + getSpacing(1) }),
+  color: theme.colors.white,
 }))
 
-const Count = styled(Typo.Caption)<{ height: number }>(({ height }) => ({
+const Count = styled(Typo.Caption)<{ height: number }>(({ height, theme }) => ({
   fontSize: 9,
   height: Platform.select<number>({ web: height, default: height + getSpacing(1) }),
+  color: theme.colors.white,
 }))
 
 const useScaleFavoritesAnimation = (nbFavorites?: number) => {

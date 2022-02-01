@@ -31,7 +31,6 @@ exports[`ProfileBadge should not show CTA if no link is provided 1`] = `
     }
   >
     <Text
-      color="#161617"
       style={
         Array [
           Object {
@@ -98,7 +97,6 @@ exports[`ProfileBadge should render component correctly if icon is provided 1`] 
     }
   >
     <Text
-      color="#161617"
       style={
         Array [
           Object {
@@ -147,7 +145,6 @@ exports[`ProfileBadge should render component correctly if no icon is provided 1
     }
   >
     <Text
-      color="#161617"
       style={
         Array [
           Object {
@@ -196,7 +193,7 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
     }
   >
     <Text
-      color="#696A6F"
+      callToAction="https://calltoaction.com"
       style={
         Array [
           Object {
@@ -320,7 +317,6 @@ exports[`ProfileBadge should show neither CTA Icon nor CTA message if no CTA mes
     }
   >
     <Text
-      color="#161617"
       style={
         Array [
           Object {

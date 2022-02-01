@@ -227,8 +227,8 @@ const Row = styled(SectionRow).attrs({ iconSize: SECTION_ROW_ICON_SIZE })({
   paddingVertical,
 })
 
-const StyledCaption = styled(Typo.Caption)(({ theme, color }) => ({
-  color: color ?? theme.colors.greyDark,
+const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
 }))
 
 const LogoMinistereContainer = styled.View({

@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { IdentityCheckMethod } from 'api/gen'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
@@ -28,7 +28,6 @@ interface FastEduconnectConnectionRequestModalProps {
 export const FastEduconnectConnectionRequestModal: React.FC<
   FastEduconnectConnectionRequestModalProps
 > = ({ visible, hideModal }) => {
-  const { colors } = useTheme()
   const { dispatch } = useIdentityCheckContext()
   const { navigate } = useNavigation<UseNavigationType>()
   const { data: ubbleETAMessage } = useUbbleETAMessage()
@@ -62,7 +61,7 @@ export const FastEduconnectConnectionRequestModal: React.FC<
       rightIconAccessibilityLabel={t`Fermer la modale de propositions d'identifications avec ÉduConnect ou Démarches Simplifiées`}
       rightIcon={Close}
       onRightIconPress={onModalRightIconPress}>
-      <MainContent color={colors.greyDark}>
+      <MainContent>
         {t`Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n'as pas d'identifiants ÉduConnect rapproche toi de ton établissement. `}
       </MainContent>
 
@@ -81,18 +80,20 @@ export const FastEduconnectConnectionRequestModal: React.FC<
         wording={t`Identification manuelle`}
         onPress={onPressManualIdentification}
       />
-      <DurationInfoText color={colors.greyDark}>{ubbleETAMessage}</DurationInfoText>
+      <DurationInfoText>{ubbleETAMessage}</DurationInfoText>
     </AppModal>
   )
 }
 
-const MainContent = styled(Typo.Body)({
+const MainContent = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
-})
+  color: theme.colors.greyDark,
+}))
 
-const DurationInfoText = styled(Typo.Body)({
+const DurationInfoText = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
-})
+  color: theme.colors.greyDark,
+}))
 
 const TextQuestion = styled(ButtonQuaternaryBlack)({
   marginBottom: getSpacing(4),

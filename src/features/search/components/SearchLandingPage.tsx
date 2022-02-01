@@ -119,7 +119,7 @@ const BicolorListItem: React.FC<{
   const { colors } = useTheme()
   return (
     <Container>
-      <Typo.Body color={colors.greyDark}>{secondaryText}</Typo.Body>
+      <StyledBody>{secondaryText}</StyledBody>
       <Spacer.Column numberOfSpaces={2} />
       <TitleIconContainer>
         <Icon size={iconSize} color={colors.primary} color2={colors.secondary} />
@@ -143,3 +143,7 @@ const TitleIconContainer = styled.View({
 const Title = styled(Typo.Title3)({
   flexShrink: 1,
 })
+
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

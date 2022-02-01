@@ -28,11 +28,9 @@ export const LocationChoice: React.FC<Props> = (props) => {
         <Icon color2={iconColor2} />
         <Spacer.Row numberOfSpaces={3} />
         <TextContainer>
-          <Typo.ButtonText
-            numberOfLines={3}
-            color={isSelected ? ColorsEnum.PRIMARY : ColorsEnum.BLACK}>
+          <ButtonText numberOfLines={3} isSelected={isSelected}>
             {label}
-          </Typo.ButtonText>
+          </ButtonText>
         </TextContainer>
       </FirstPart>
       <SecondPart>
@@ -71,3 +69,7 @@ const SecondPart = styled.View({
   alignItems: 'center',
   height: '100%',
 })
+
+const ButtonText = styled(Typo.ButtonText)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
+  color: isSelected ? theme.colors.primary : theme.colors.black,
+}))

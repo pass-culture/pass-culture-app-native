@@ -289,7 +289,7 @@ export const AppComponents: FunctionComponent = () => {
       {/* Modals */}
       <AccordionItem title="Modals">
         <TouchableOpacity onPress={showBasicModal}>
-          <Typo.Title4 color={ColorsEnum.TERTIARY}>Modal - Basic</Typo.Title4>
+          <StyledTitle4>Modal - Basic</StyledTitle4>
         </TouchableOpacity>
         <AppModal
           title="a basic modal"
@@ -358,17 +358,17 @@ export const AppComponents: FunctionComponent = () => {
 
       {/* Inputs */}
       <AccordionItem title="Inputs">
-        <Typo.Title4 color={ColorsEnum.TERTIARY}>Text Input</Typo.Title4>
+        <StyledTitle4>Text Input</StyledTitle4>
         <TextInput value={inputText} onChangeText={setInputText} placeholder={'Placeholder'} />
         <Spacer.Column numberOfSpaces={1} />
         <InputRule
           title={'12 Caractères'}
           icon={inputText.length >= 12 ? Check : Close}
-          color={inputText.length >= 12 ? ColorsEnum.GREEN_VALID : ColorsEnum.ERROR}
+          isValid={inputText.length >= 12}
           iconSize={16}
         />
         <Spacer.Column numberOfSpaces={1} />
-        <Typo.Title4 color={ColorsEnum.TERTIARY}>Text Input - Email</Typo.Title4>
+        <StyledTitle4>Text Input - Email</StyledTitle4>
         <TextInput
           autoCapitalize="none"
           keyboardType="email-address"
@@ -377,28 +377,28 @@ export const AppComponents: FunctionComponent = () => {
           value=""
         />
         <Spacer.Column numberOfSpaces={1} />
-        <Typo.Title4 color={ColorsEnum.TERTIARY}>Text Input - Error</Typo.Title4>
+        <StyledTitle4>Text Input - Error</StyledTitle4>
         <TextInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} isError={true} />
         <Spacer.Column numberOfSpaces={1} />
-        <Typo.Title4 color={ColorsEnum.TERTIARY}>Password Input</Typo.Title4>
+        <StyledTitle4>Password Input</StyledTitle4>
         <PasswordInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} />
         <Spacer.Column numberOfSpaces={1} />
-        <Typo.Title4 color={ColorsEnum.TERTIARY}>Short Input</Typo.Title4>
+        <StyledTitle4>Short Input</StyledTitle4>
         <Spacer.Column numberOfSpaces={1} />
-        <Typo.Title4 color={ColorsEnum.TERTIARY}>Date Input</Typo.Title4>
+        <StyledTitle4>Date Input</StyledTitle4>
         <Spacer.Column numberOfSpaces={1} />
         <Spacer.Flex flex={1}>
           <DateInput />
         </Spacer.Flex>
         <Spacer.Column numberOfSpaces={1} />
-        <Typo.Title4 color={ColorsEnum.TERTIARY}>Code Input of length 20</Typo.Title4>
+        <StyledTitle4>Code Input of length 20</StyledTitle4>
         <Spacer.Column numberOfSpaces={1} />
-        <Typo.Caption color={ColorsEnum.BLACK}>is valid if number of 5 digits</Typo.Caption>
+        <Typo.Caption>is valid if number of 5 digits</Typo.Caption>
         <Spacer.Column numberOfSpaces={1} />
-        <Typo.Caption color={ColorsEnum.BLACK}>{inputText}</Typo.Caption>
+        <Typo.Caption>{inputText}</Typo.Caption>
         <Spacer.Column numberOfSpaces={1} />
 
-        <Typo.Title4 color={ColorsEnum.TERTIARY}>Large input</Typo.Title4>
+        <StyledTitle4>Large input</StyledTitle4>
         <Spacer.Column numberOfSpaces={1} />
         <LargeTextInput value={largeInputText} onChangeText={setLargeInputText} maxLength={200} />
       </AccordionItem>
@@ -507,7 +507,7 @@ export const AppComponents: FunctionComponent = () => {
             <Button title="+1 an" onPress={() => setYear((year) => year - 1)} />
           </AlignedText>
         </View>
-        <Typo.Title4 color={ColorsEnum.TERTIARY}>Communication InApp</Typo.Title4>
+        <StyledTitle4>Communication InApp</StyledTitle4>
         <Text>Long texte</Text>
         <View>
           <SubscriptionMessageBadge
@@ -676,6 +676,10 @@ export const AppComponents: FunctionComponent = () => {
     </StyledScrollView>
   )
 }
+
+const StyledTitle4 = styled(Typo.Title4)(({ theme }) => ({
+  color: theme.colors.tertiary,
+}))
 
 const AlignedText = styled(View)({
   flexDirection: 'row',

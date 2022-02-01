@@ -139,7 +139,6 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
             }
           >
             <Text
-              color="#ffffff"
               style={
                 Array [
                   Object {
@@ -155,7 +154,6 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
               firstLine
             </Text>
             <Text
-              color="#ffffff"
               numberOfLines={2}
               style={
                 Array [
@@ -327,7 +325,6 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
             }
           >
             <Text
-              color="#ffffff"
               style={
                 Array [
                   Object {
@@ -343,7 +340,6 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
               firstLine
             </Text>
             <Text
-              color="#ffffff"
               numberOfLines={2}
               style={
                 Array [
@@ -547,7 +543,6 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
             }
           >
             <Text
-              color="#ffffff"
               style={
                 Array [
                   Object {
@@ -563,7 +558,6 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
               firstLine
             </Text>
             <Text
-              color="#ffffff"
               numberOfLines={2}
               style={
                 Array [

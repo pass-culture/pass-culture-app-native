@@ -138,7 +138,6 @@ exports[`<SeeMore /> renders correctly 1`] = `
       }
     >
       <Text
-        color="#eb0055"
         style={
           Array [
             Object {

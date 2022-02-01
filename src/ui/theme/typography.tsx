@@ -11,12 +11,9 @@ interface CustomTextProps {
 }
 type TextProps = CustomTextProps & RNTextProps
 
-const ColoredText = styled(RNText)<TextProps>(({ color, theme }) => ({
-  color: color ?? theme.colors.black,
-}))
-
-const Hero = styled(ColoredText)(({ theme }) => ({
+const Hero = styled(RNText)(({ theme }) => ({
   ...theme.typography.hero,
+  color: theme.colors.black,
 }))
 
 const Title1: React.FC<TextProps> = (props) => {
@@ -29,9 +26,10 @@ const Title1: React.FC<TextProps> = (props) => {
   )
 }
 
-const StyledTitle1 = styled(ColoredText)<{ fontSize: number }>(({ fontSize, theme }) => ({
+const StyledTitle1 = styled(RNText)<{ fontSize: number }>(({ fontSize, theme }) => ({
   ...theme.typography.title1,
   fontSize: fontSize ?? theme.typography.title1.fontSize,
+  color: theme.colors.black,
 }))
 
 const Title2: React.FC<TextProps> = (props) => {
@@ -43,31 +41,37 @@ const Title2: React.FC<TextProps> = (props) => {
     </StyledTitle2>
   )
 }
-const StyledTitle2 = styled(ColoredText)<{ fontSize: number }>(({ fontSize, theme }) => ({
+const StyledTitle2 = styled(RNText)<{ fontSize: number }>(({ fontSize, theme }) => ({
   ...theme.typography.title2,
   fontSize: fontSize ?? theme.typography.title2.fontSize,
+  color: theme.colors.black,
 }))
 
-const Title3 = styled(ColoredText)(({ theme }) => ({
+const Title3 = styled(RNText)(({ theme }) => ({
   ...theme.typography.title3,
+  color: theme.colors.black,
 }))
 
-const Title4 = styled(ColoredText)(({ theme }) => ({
+const Title4 = styled(RNText)(({ theme }) => ({
   ...theme.typography.title4,
+  color: theme.colors.black,
 }))
 
-const ButtonText = styled(ColoredText)<{ shrink?: boolean }>(({ shrink, theme }) => ({
+const ButtonText = styled(RNText)<{ shrink?: boolean }>(({ shrink, theme }) => ({
   fontFamily: theme.typography.buttonText.fontFamily,
   fontSize: theme.typography.buttonText.fontSize,
+  color: theme.colors.black,
   ...(!shrink ? { lineHeight: theme.typography.buttonText.lineHeight } : { flexShrink: 1 }),
 }))
 
-const Body = styled(ColoredText)(({ theme }) => ({
+const Body = styled(RNText)(({ theme }) => ({
   ...theme.typography.body,
+  color: theme.colors.black,
 }))
 
-const Caption = styled(ColoredText)(({ theme }) => ({
+const Caption = styled(RNText)(({ theme }) => ({
   ...theme.typography.caption,
+  color: theme.colors.black,
 }))
 
 export const Typo = {

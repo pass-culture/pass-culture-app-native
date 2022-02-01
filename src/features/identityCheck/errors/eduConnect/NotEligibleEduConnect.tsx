@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import React, { useEffect, useRef, useState } from 'react'
 import { TextProps, TextStyle } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { navigateToHome } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
@@ -30,7 +30,6 @@ export const NotEligibleEduConnect = ({
     tertiaryButtonVisible = false,
     onPrimaryButtonPress,
   } = useNotEligibleEduConnectErrorData(message, setError)
-  const { colors } = useTheme()
 
   useEffect(
     () => () => {
@@ -75,9 +74,7 @@ export const NotEligibleEduConnect = ({
       <Helmet>
         <title>{title}</title>
       </Helmet>
-      <Body textAlign={descriptionAlignment} color={colors.white}>
-        {description}
-      </Body>
+      <Body textAlign={descriptionAlignment}>{description}</Body>
     </GenericInfoPage>
   )
 }
@@ -89,5 +86,6 @@ const Body = styled(Typo.Body).attrs<TextBodyProps>((props) => props)<TextBodyPr
   ({ theme, textAlign }) => ({
     ...theme.typography.body,
     textAlign,
+    color: theme.colors.white,
   })
 )

@@ -15,8 +15,6 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Email } from 'ui/svg/icons/Email'
 import { Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { useAppSettings } from '../../settings'
 
@@ -105,14 +103,14 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
           <ExternalLink
             text={t`Conditions Générales d'Utilisation`}
             url={env.CGU_LINK}
-            color={ColorsEnum.PRIMARY}
+            primary
             testID="external-link-cgu"
           />
           <Spacer.Row numberOfSpaces={1} />
           <Typo.Body>{t` ainsi que notre `}</Typo.Body>
           <ExternalLink
             text={t`Politique de confidentialité.`}
-            color={ColorsEnum.PRIMARY}
+            primary
             url={env.PRIVACY_POLICY_LINK}
             testID="external-link-privacy-policy"
           />

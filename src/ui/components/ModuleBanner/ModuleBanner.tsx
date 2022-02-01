@@ -4,8 +4,6 @@ import styled from 'styled-components/native'
 
 import { NextArrowIcon } from 'features/home/assets/NextArrowIcon'
 import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { BACKGROUND_IMAGE_SOURCE } from './backgroundImageSource'
 
@@ -26,10 +24,10 @@ export function ModuleBanner(props: ModuleBannerProps) {
           <Container>
             <IconContainer>{props.leftIcon}</IconContainer>
             <TextContainer>
-              <Typo.ButtonText color={ColorsEnum.WHITE} testID="module-title">
+              <ButtonText testID="module-title">
                 <TitleContainer>{props.title}</TitleContainer>
-              </Typo.ButtonText>
-              <Typo.Body color={ColorsEnum.WHITE}>{props.subTitle}</Typo.Body>
+              </ButtonText>
+              <Body>{props.subTitle}</Body>
             </TextContainer>
             <IconContainer>{props.rightIcon || <NextArrowIcon />}</IconContainer>
           </Container>
@@ -74,3 +72,11 @@ const IconContainer = styled.View({
 const TitleContainer = styled.Text({
   marginRight: 5,
 })
+
+const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
+  color: theme.colors.white,
+}))
+
+const Body = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
+}))

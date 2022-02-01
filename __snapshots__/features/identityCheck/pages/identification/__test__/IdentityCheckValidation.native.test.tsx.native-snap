@@ -38,7 +38,6 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
     }
   >
     <Text
-      color="#ffffff"
       style={
         Array [
           Object {

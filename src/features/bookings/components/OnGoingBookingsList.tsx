@@ -16,8 +16,6 @@ import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 
 import { NoBookingsView } from './NoBookingsView'
@@ -106,14 +104,13 @@ const Container = styled.View<{ flex?: number }>(({ flex }) => ({
   height: '100%',
 }))
 
-const BookingsCount = styled(Typo.Body).attrs({
-  color: ColorsEnum.GREY_DARK,
-})({
+const BookingsCount = styled(Typo.Body)(({ theme }) => ({
   fontSize: 15,
   paddingTop: getSpacing(6),
   paddingHorizontal: getSpacing(6),
   paddingBottom: getSpacing(4),
-})
+  color: theme.colors.greyDark,
+}))
 
 const FooterContainer = styled.View<{ safeBottom: number }>(({ safeBottom }) => ({
   marginBottom: safeBottom ? safeBottom / 2 : 0,

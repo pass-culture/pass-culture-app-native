@@ -14,8 +14,6 @@ import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 export function BookingConfirmation() {
   const { params } = useRoute<UseRouteType<'BookingConfirmation'>>()
@@ -74,8 +72,7 @@ export function BookingConfirmation() {
   )
 }
 
-const StyledBody = styled(Typo.Body).attrs({
-  color: ColorsEnum.WHITE,
-})({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
-})
+  color: theme.colors.white,
+}))

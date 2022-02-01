@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import React, { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 import { Platform, TextInput, TextInputProps } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 import validateDate from 'validate-date'
@@ -78,12 +78,14 @@ const DateInputLabel: React.FC<DateInputLabelProps> = ({
   onFocus,
   accessibilityLabel,
 }) => {
-  const { colors } = useTheme()
-  const text = value?.trim?.()?.length ? value.trim() : placeholder
-  const color = value?.trim?.()?.length ? undefined : colors.greyDark
+  const valueLength = value?.trim?.()?.length
+  const text = valueLength ? value.trim() : placeholder
   return (
     <StyledTouchableOpacity {...accessibilityAndTestId(accessibilityLabel)} onPress={onFocus}>
-      <DateInputLabelText testID={'date-input-label-text'} numberOfLines={1} color={color}>
+      <DateInputLabelText
+        testID={'date-input-label-text'}
+        numberOfLines={1}
+        valueLength={valueLength}>
         {text}
       </DateInputLabelText>
       <ValidationBar
@@ -103,11 +105,14 @@ const StyledTouchableOpacity = styled.TouchableOpacity({
   maxWidth: 130,
 })
 
-export const DateInputLabelText = styled(Typo.Body)({
-  textAlign: 'center',
-  fontSize: 18,
-  lineHeight: '22px',
-})
+export const DateInputLabelText = styled(Typo.Body)<{ valueLength: number }>(
+  ({ valueLength, theme }) => ({
+    textAlign: 'center',
+    fontSize: 18,
+    lineHeight: '22px',
+    color: valueLength ? undefined : theme.colors.greyDark,
+  })
+)
 
 const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputProps> = (
   { onSubmit, minDate, maxDate, initialDay, initialMonth, initialYear, ...props },
