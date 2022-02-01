@@ -670,7 +670,6 @@ Tous les détails du film sur AlloCiné:
                               </View>
                             </View>
                             <Text
-                              color="#ffffff"
                               numberOfLines={1}
                               style={
                                 Array [

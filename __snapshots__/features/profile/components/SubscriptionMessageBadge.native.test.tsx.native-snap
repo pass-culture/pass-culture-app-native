@@ -3,7 +3,6 @@
 exports[`SubscriptionMessageBadge should display component correctly 1`] = `
 Array [
   <Text
-    color="#696A6F"
     style={
       Array [
         Object {
@@ -75,7 +74,6 @@ Array [
       }
     >
       <Text
-        color="#161617"
         style={
           Array [
             Object {
@@ -143,7 +141,6 @@ exports[`SubscriptionMessageBadge should not display last update sentence if upd
     }
   >
     <Text
-      color="#161617"
       style={
         Array [
           Object {

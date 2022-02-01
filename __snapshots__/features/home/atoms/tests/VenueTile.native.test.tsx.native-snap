@@ -125,7 +125,6 @@ exports[`VenueTile component should render correctly 1`] = `
         }
       />
       <Text
-        color="#696A6F"
         numberOfLines={1}
         style={
           Array [
@@ -143,7 +142,6 @@ exports[`VenueTile component should render correctly 1`] = `
       </Text>
     </View>
     <Text
-      color="#696A6F"
       style={
         Array [
           Object {

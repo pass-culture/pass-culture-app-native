@@ -389,7 +389,6 @@ Array [
         </View>
       </View>
       <Text
-        color="#ffffff"
         numberOfLines={1}
         style={
           Array [

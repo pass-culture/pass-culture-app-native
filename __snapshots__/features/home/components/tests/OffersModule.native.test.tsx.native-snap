@@ -22,8 +22,8 @@ exports[`OffersModule component should render correctly - with black title 1`] =
     }
   >
     <Text
-      color="#161617"
       numberOfLines={2}
+      onDarkBackground={false}
       style={
         Array [
           Object {
@@ -375,7 +375,6 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                 Mensch ! Où sont les Hommes ?
               </Text>
               <Text
-                color="#696A6F"
                 style={
                   Array [
                     Object {
@@ -576,7 +575,6 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                 I want something more
               </Text>
               <Text
-                color="#696A6F"
                 style={
                   Array [
                     Object {
@@ -777,7 +775,6 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                 Un lit sous une rivière
               </Text>
               <Text
-                color="#696A6F"
                 numberOfLines={1}
                 style={
                   Array [
@@ -793,7 +790,6 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                 17 novembre 2020
               </Text>
               <Text
-                color="#696A6F"
                 style={
                   Array [
                     Object {
@@ -996,7 +992,6 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                 I want something more
               </Text>
               <Text
-                color="#696A6F"
                 style={
                   Array [
                     Object {

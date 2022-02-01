@@ -403,7 +403,6 @@ exports[`FavoritesSorts component should render correctly 1`] = `
         </View>
       </View>
       <Text
-        color="#ffffff"
         numberOfLines={1}
         style={
           Array [

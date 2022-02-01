@@ -33,7 +33,6 @@ Array [
       }
     >
       <Text
-        color="#161617"
         numberOfLines={2}
         style={
           Array [
@@ -386,7 +385,6 @@ Array [
                   Titane - VF
                 </Text>
                 <Text
-                  color="#696A6F"
                   numberOfLines={1}
                   style={
                     Array [
@@ -402,7 +400,6 @@ Array [
                   Dès le 18 août 2021
                 </Text>
                 <Text
-                  color="#696A6F"
                   style={
                     Array [
                       Object {
@@ -609,7 +606,6 @@ Array [
                   Bac Nord - VF
                 </Text>
                 <Text
-                  color="#696A6F"
                   numberOfLines={1}
                   style={
                     Array [
@@ -625,7 +621,6 @@ Array [
                   Dès le 18 août 2021
                 </Text>
                 <Text
-                  color="#696A6F"
                   style={
                     Array [
                       Object {
@@ -832,7 +827,6 @@ Array [
                   Black Widow - VF
                 </Text>
                 <Text
-                  color="#696A6F"
                   numberOfLines={1}
                   style={
                     Array [
@@ -848,7 +842,6 @@ Array [
                   Dès le 18 août 2021
                 </Text>
                 <Text
-                  color="#696A6F"
                   style={
                     Array [
                       Object {
@@ -1049,7 +1042,6 @@ Array [
                   }
                 >
                   <Text
-                    color="#eb0055"
                     style={
                       Array [
                         Object {

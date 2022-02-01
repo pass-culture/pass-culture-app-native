@@ -667,7 +667,6 @@ exports[`<Venue /> should match snapshot 1`] = `
           }
         >
           <Text
-            color="#161617"
             numberOfLines={2}
             style={
               Array [
@@ -1020,7 +1019,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                       Titane - VF
                     </Text>
                     <Text
-                      color="#696A6F"
                       numberOfLines={1}
                       style={
                         Array [
@@ -1036,7 +1034,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                       Dès le 18 août 2021
                     </Text>
                     <Text
-                      color="#696A6F"
                       style={
                         Array [
                           Object {
@@ -1243,7 +1240,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                       Bac Nord - VF
                     </Text>
                     <Text
-                      color="#696A6F"
                       numberOfLines={1}
                       style={
                         Array [
@@ -1259,7 +1255,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                       Dès le 18 août 2021
                     </Text>
                     <Text
-                      color="#696A6F"
                       style={
                         Array [
                           Object {
@@ -1466,7 +1461,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                       Black Widow - VF
                     </Text>
                     <Text
-                      color="#696A6F"
                       numberOfLines={1}
                       style={
                         Array [
@@ -1482,7 +1476,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                       Dès le 18 août 2021
                     </Text>
                     <Text
-                      color="#696A6F"
                       style={
                         Array [
                           Object {
@@ -1683,7 +1676,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                       }
                     >
                       <Text
-                        color="#eb0055"
                         style={
                           Array [
                             Object {

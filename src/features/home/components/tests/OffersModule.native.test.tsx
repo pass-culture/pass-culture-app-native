@@ -47,12 +47,12 @@ describe('OffersModule component', () => {
   it('should render correctly - with black title', () => {
     const component = render(<OffersModule {...props} index={1} />)
     expect(component).toMatchSnapshot()
-    expect(component.getByTestId('playlistTitle').props.color).toBe(ColorsEnum.BLACK)
+    expect(component.getByTestId('playlistTitle').props.style[0].color).toBe(ColorsEnum.BLACK)
   })
 
   it('should render with white title if first module displayed', async () => {
     const component = render(<OffersModule {...props} index={0} />)
-    expect(component.getByTestId('playlistTitle').props.color).toBe(ColorsEnum.WHITE)
+    expect(component.getByTestId('playlistTitle').props.style[0].color).toBe(ColorsEnum.WHITE)
   })
 })
 

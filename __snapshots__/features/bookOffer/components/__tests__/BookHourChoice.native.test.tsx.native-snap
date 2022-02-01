@@ -108,7 +108,8 @@ Array [
           }
         >
           <Text
-            color="#696A6F"
+            disabled={true}
+            selected={false}
             style={
               Array [
                 Object {
@@ -124,7 +125,8 @@ Array [
             10h00
           </Text>
           <Text
-            color="#696A6F"
+            disabled={true}
+            selected={false}
             style={
               Array [
                 Object {
@@ -232,7 +234,8 @@ Array [
           }
         >
           <Text
-            color="#161617"
+            disabled={false}
+            selected={false}
             style={
               Array [
                 Object {
@@ -248,7 +251,8 @@ Array [
             20h00
           </Text>
           <Text
-            color="#161617"
+            disabled={false}
+            selected={false}
             style={
               Array [
                 Object {

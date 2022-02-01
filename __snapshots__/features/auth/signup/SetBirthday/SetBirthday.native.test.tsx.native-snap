@@ -164,7 +164,6 @@ Array [
             testID="Entrée pour le jour de la date de naissance"
           >
             <Text
-              color="#696A6F"
               numberOfLines={1}
               style={
                 Array [
@@ -178,6 +177,7 @@ Array [
                 ]
               }
               testID="date-input-label-text"
+              valueLength={0}
             >
               JJ
             </Text>
@@ -236,7 +236,6 @@ Array [
             testID="Entrée pour le mois de la date de naissance"
           >
             <Text
-              color="#696A6F"
               numberOfLines={1}
               style={
                 Array [
@@ -250,6 +249,7 @@ Array [
                 ]
               }
               testID="date-input-label-text"
+              valueLength={0}
             >
               MM
             </Text>
@@ -308,7 +308,6 @@ Array [
             testID="Entrée pour l'année jour de la date de naissance"
           >
             <Text
-              color="#696A6F"
               numberOfLines={1}
               style={
                 Array [
@@ -322,6 +321,7 @@ Array [
                 ]
               }
               testID="date-input-label-text"
+              valueLength={0}
             >
               AAAA
             </Text>
@@ -839,7 +839,6 @@ exports[`SetBirthday Page should render properly 1`] = `
           testID="Entrée pour le jour de la date de naissance"
         >
           <Text
-            color="#696A6F"
             numberOfLines={1}
             style={
               Array [
@@ -853,6 +852,7 @@ exports[`SetBirthday Page should render properly 1`] = `
               ]
             }
             testID="date-input-label-text"
+            valueLength={0}
           >
             JJ
           </Text>
@@ -911,7 +911,6 @@ exports[`SetBirthday Page should render properly 1`] = `
           testID="Entrée pour le mois de la date de naissance"
         >
           <Text
-            color="#696A6F"
             numberOfLines={1}
             style={
               Array [
@@ -925,6 +924,7 @@ exports[`SetBirthday Page should render properly 1`] = `
               ]
             }
             testID="date-input-label-text"
+            valueLength={0}
           >
             MM
           </Text>
@@ -983,7 +983,6 @@ exports[`SetBirthday Page should render properly 1`] = `
           testID="Entrée pour l'année jour de la date de naissance"
         >
           <Text
-            color="#696A6F"
             numberOfLines={1}
             style={
               Array [
@@ -997,6 +996,7 @@ exports[`SetBirthday Page should render properly 1`] = `
               ]
             }
             testID="date-input-label-text"
+            valueLength={0}
           >
             AAAA
           </Text>

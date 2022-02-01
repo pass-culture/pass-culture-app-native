@@ -38,7 +38,6 @@ exports[`<Status/> should render correctly 1`] = `
     }
   >
     <Text
-      color="#ffffff"
       style={
         Array [
           Object {
@@ -252,7 +251,7 @@ exports[`<Status/> should render correctly 1`] = `
                   }
                 >
                   <Text
-                    color="#161617"
+                    selected={false}
                     style={
                       Array [
                         Object {
@@ -307,7 +306,7 @@ exports[`<Status/> should render correctly 1`] = `
                   }
                 >
                   <Text
-                    color="#161617"
+                    selected={false}
                     style={
                       Array [
                         Object {
@@ -362,7 +361,7 @@ exports[`<Status/> should render correctly 1`] = `
                   }
                 >
                   <Text
-                    color="#161617"
+                    selected={false}
                     style={
                       Array [
                         Object {
@@ -417,7 +416,7 @@ exports[`<Status/> should render correctly 1`] = `
                   }
                 >
                   <Text
-                    color="#161617"
+                    selected={false}
                     style={
                       Array [
                         Object {
@@ -472,7 +471,7 @@ exports[`<Status/> should render correctly 1`] = `
                   }
                 >
                   <Text
-                    color="#161617"
+                    selected={false}
                     style={
                       Array [
                         Object {
@@ -527,7 +526,7 @@ exports[`<Status/> should render correctly 1`] = `
                   }
                 >
                   <Text
-                    color="#161617"
+                    selected={false}
                     style={
                       Array [
                         Object {
@@ -582,7 +581,7 @@ exports[`<Status/> should render correctly 1`] = `
                   }
                 >
                   <Text
-                    color="#161617"
+                    selected={false}
                     style={
                       Array [
                         Object {
@@ -597,7 +596,6 @@ exports[`<Status/> should render correctly 1`] = `
                     Volontaire
                   </Text>
                   <Text
-                    color="#696A6F"
                     style={
                       Array [
                         Object {
@@ -652,7 +650,7 @@ exports[`<Status/> should render correctly 1`] = `
                   }
                 >
                   <Text
-                    color="#161617"
+                    selected={false}
                     style={
                       Array [
                         Object {
@@ -667,7 +665,6 @@ exports[`<Status/> should render correctly 1`] = `
                     Inactif
                   </Text>
                   <Text
-                    color="#696A6F"
                     style={
                       Array [
                         Object {
@@ -722,7 +719,7 @@ exports[`<Status/> should render correctly 1`] = `
                   }
                 >
                   <Text
-                    color="#161617"
+                    selected={false}
                     style={
                       Array [
                         Object {
@@ -737,7 +734,6 @@ exports[`<Status/> should render correctly 1`] = `
                     Chômeur
                   </Text>
                   <Text
-                    color="#696A6F"
                     style={
                       Array [
                         Object {

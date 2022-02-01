@@ -241,7 +241,7 @@ exports[`<Login/> should show email error message WHEN signin has failed because
 +               }
 +             />
 +             <Text
-+               color=\\"#b60025\\"
++               isValid={false}
 +               style={
 +                 Array [
 +                   Object {
@@ -399,7 +399,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +             />
 +             <Text
 +               centered={true}
-+               color=\\"#b60025\\"
++               isValid={false}
 +               style={
 +                 Array [
 +                   Object {
@@ -651,7 +651,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +             />
 +             <Text
 +               centered={true}
-+               color=\\"#b60025\\"
++               isValid={false}
 +               style={
 +                 Array [
 +                   Object {
@@ -903,7 +903,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 +             />
 +             <Text
 +               centered={true}
-+               color=\\"#b60025\\"
++               isValid={false}
 +               style={
 +                 Array [
 +                   Object {

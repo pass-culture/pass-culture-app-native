@@ -38,7 +38,6 @@ exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectFo
     }
   >
     <Text
-      color="#ffffff"
       style={
         Array [
           Object {

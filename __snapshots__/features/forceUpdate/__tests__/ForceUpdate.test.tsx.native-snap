@@ -136,7 +136,6 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
       }
     />
     <Text
-      color="#ffffff"
       style={
         Array [
           Object {

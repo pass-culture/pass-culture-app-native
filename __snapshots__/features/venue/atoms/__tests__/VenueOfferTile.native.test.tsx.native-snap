@@ -144,7 +144,6 @@ exports[`VenueOfferTile component should render correctly 1`] = `
       Mensch ! Où sont les Hommes ?
     </Text>
     <Text
-      color="#696A6F"
       numberOfLines={1}
       style={
         Array [
@@ -160,7 +159,6 @@ exports[`VenueOfferTile component should render correctly 1`] = `
       Dès le 12 mars 2020
     </Text>
     <Text
-      color="#696A6F"
       style={
         Array [
           Object {
