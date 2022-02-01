@@ -31,6 +31,7 @@ Object {
                 href="/Home"
                 role="link"
                 style="cursor: pointer;"
+                tabindex="-1"
               >
                 <div
                   aria-label="Home tab"
@@ -84,6 +85,7 @@ Object {
                 href="/Search"
                 role="link"
                 style="cursor: pointer;"
+                tabindex="-1"
               >
                 <div
                   aria-label="Search tab"
@@ -122,6 +124,7 @@ Object {
                 href="/Bookings"
                 role="link"
                 style="cursor: pointer;"
+                tabindex="-1"
               >
                 <div
                   aria-label="Bookings tab"
@@ -160,6 +163,7 @@ Object {
                 href="/Favorites"
                 role="link"
                 style="cursor: pointer;"
+                tabindex="-1"
               >
                 <div
                   aria-label="Favorites tab"
@@ -198,6 +202,7 @@ Object {
                 href="/Profile"
                 role="link"
                 style="cursor: pointer;"
+                tabindex="-1"
               >
                 <div
                   aria-label="Profile tab"
@@ -297,6 +302,7 @@ Object {
               href="/Home"
               role="link"
               style="cursor: pointer;"
+              tabindex="-1"
             >
               <div
                 aria-label="Home tab"
@@ -350,6 +356,7 @@ Object {
               href="/Search"
               role="link"
               style="cursor: pointer;"
+              tabindex="-1"
             >
               <div
                 aria-label="Search tab"
@@ -388,6 +395,7 @@ Object {
               href="/Bookings"
               role="link"
               style="cursor: pointer;"
+              tabindex="-1"
             >
               <div
                 aria-label="Bookings tab"
@@ -426,6 +434,7 @@ Object {
               href="/Favorites"
               role="link"
               style="cursor: pointer;"
+              tabindex="-1"
             >
               <div
                 aria-label="Favorites tab"
@@ -464,6 +473,7 @@ Object {
               href="/Profile"
               role="link"
               style="cursor: pointer;"
+              tabindex="-1"
             >
               <div
                 aria-label="Profile tab"
