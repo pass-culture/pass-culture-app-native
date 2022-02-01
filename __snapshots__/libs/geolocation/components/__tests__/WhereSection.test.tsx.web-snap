@@ -263,7 +263,7 @@ Array [
           "borderTopWidth": "0px",
           "cursor": "pointer",
           "flexDirection": "row",
-          "height": "16px",
+          "height": "20px",
           "justifyContent": "center",
           "marginTop": "0px",
           "maxWidth": "500px",
