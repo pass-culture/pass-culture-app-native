@@ -12,6 +12,7 @@ import { useIsUserUnderage } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
 import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import { formatToFrenchDecimal } from 'libs/parsers'
+import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -42,6 +43,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
   const offer = useBookingOffer()
   const { showErrorSnackBar } = useSnackBarContext()
   const isUserUnderage = useIsUserUnderage()
+  const mapping = useSubcategoriesMapping()
   const { quantity, offerId } = bookingState
   const accessibilityDescribedBy = uuidv4()
 
@@ -103,6 +105,8 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
 
   const isStockBookable = !(isUserUnderage && selectedStock.isForbiddenToUnderage)
 
+  const isEvent = offer?.subcategoryId ? mapping[offer?.subcategoryId].isEvent : undefined
+
   return (
     <Container>
       <Banner title={disclaimer} />
@@ -118,7 +122,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
 
       <Spacer.Column numberOfSpaces={6} />
 
-      {!!offer?.isDuo && (
+      {!!(offer?.isDuo && !isEvent) && (
         <React.Fragment>
           <Separator />
           <Spacer.Column numberOfSpaces={6} />

@@ -62,6 +62,14 @@ const mockDigitalStocks = mockDigitalOffer.stocks
 jest.mock('features/profile/utils')
 const mockedUseIsUserUnderage = mocked(useIsUserUnderage)
 
+const mockUseSubcategoriesMapping = jest.fn()
+jest.mock('libs/subcategories', () => ({
+  useSubcategoriesMapping: jest.fn(() => mockUseSubcategoriesMapping()),
+}))
+mockUseSubcategoriesMapping.mockReturnValue({
+  EVENEMENT_PATRIMOINE: { isEvent: true },
+})
+
 describe('<BookingDetails />', () => {
   it('should initialize correctly state when offer isDigital', async () => {
     mockBookingState = {
@@ -205,7 +213,7 @@ describe('<BookingDetails />', () => {
       expect(queryByTestId('DuoChoiceSelector')).toBeFalsy()
     })
 
-    it('should display the Duo selector when the offer is duo', async () => {
+    it('should not display the Duo selector when the offer is duo but is an event', async () => {
       mockUseBookingOffer.mockReturnValueOnce({ ...mockOffer, isDuo: true })
 
       const duoBookingState: BookingState = { ...mockInitialBookingState, quantity: 2 }
@@ -214,6 +222,29 @@ describe('<BookingDetails />', () => {
         dismissModal: mockDismissModal,
         dispatch: mockDispatch,
       }
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        EVENEMENT_PATRIMOINE: { isEvent: true },
+      })
+
+      const { queryByTestId } = await renderBookingDetails(mockDigitalStocks)
+
+      expect(queryByTestId('DuoChoiceSelector')).toBeFalsy()
+    })
+
+    it('should display the Duo selector when the offer is duo and not an event', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({ ...mockOffer, isDuo: true })
+
+      const duoBookingState: BookingState = { ...mockInitialBookingState, quantity: 2 }
+      mockBookingState = {
+        bookingState: duoBookingState,
+        dismissModal: mockDismissModal,
+        dispatch: mockDispatch,
+      }
+
+      mockUseSubcategoriesMapping.mockReturnValueOnce({
+        EVENEMENT_PATRIMOINE: { isEvent: false },
+      })
 
       const { queryByTestId } = await renderBookingDetails(mockDigitalStocks)
 
