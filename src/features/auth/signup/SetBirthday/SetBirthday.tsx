@@ -3,29 +3,31 @@ import React, { FunctionComponent, useEffect, useState } from 'react'
 import DatePicker from 'react-native-date-picker'
 import styled from 'styled-components/native'
 
+import { useAppSettings } from 'features/auth/settings'
 import { BirthdayInformationModal } from 'features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal'
 import { DateInput } from 'features/auth/signup/SetBirthday/DateInput/DateInput'
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
 import { analytics } from 'libs/analytics'
+import { dateDiffInFullYears } from 'libs/dates'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+import { InputError } from 'ui/components/inputs/InputError'
 import { useModal } from 'ui/components/modals/useModal'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
-import { InputError } from 'ui/components/inputs/InputError'
-import { useAppSettings } from 'features/auth/settings'
-import { dateDiffInFullYears } from 'libs/dates'
 
 const MINIMUM_DATE = new Date('1900-01-01')
-const CURRENT_DATE = new Date()
-const CURRENT_DATE_WITHOUT_TIME = formatDateToISOStringWithoutTime(CURRENT_DATE)
 const DEFAULT_YOUNGEST_AGE = 15
 
 export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (props) => {
+  const CURRENT_DATE = new Date()
+  const CURRENT_DATE_WITHOUT_TIME = formatDateToISOStringWithoutTime(CURRENT_DATE)
+
   const [date, setDate] = useState<Date>(CURRENT_DATE)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
   const { visible, showModal: showInformationModal, hideModal } = useModal(false)
 
   function onPressWhy() {
@@ -66,10 +68,11 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
           onPress={onPressWhy}
         />
         <Spacer.Column numberOfSpaces={5} />
-        <DateInput date={date} />
+        <DateInput date={date} isFocus={!isDisabled} isError={!!errorMessage} />
         {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={2} />}
         <Spacer.Column numberOfSpaces={5} />
         <StyledDatePicker
+          testID="datePicker"
           date={date}
           onDateChange={setDate}
           mode="date"

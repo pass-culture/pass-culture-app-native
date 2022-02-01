@@ -1,120 +1,144 @@
 import mockdate from 'mockdate'
 import React from 'react'
-import waitForExpect from 'wait-for-expect'
 
 import { analytics } from 'libs/analytics'
-import { fireEvent, render, RenderAPI } from 'tests/utils'
+import { formatDateToISOStringWithoutTime } from 'libs/parsers'
+import { fireEvent, render } from 'tests/utils'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { SetBirthday } from './SetBirthday'
 
+const CURRENT_DATE = new Date('2020-12-01T00:00:00.000Z')
+const ELIGIBLE_AGE_DATE = new Date('2003-12-01T00:00:00.000Z')
+const FIFTEEN_YEARS_OLD_FIRST_DAY_DATE = new Date('2005-12-01T00:00:00.000Z')
+const NOT_ELIGIBLE_YOUNGEST_AGE_DATE = new Date('2006-01-01T00:00:00.000Z')
+
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 
 jest.mock('features/auth/settings')
 
-describe('SetBirthday Page', () => {
+describe('<SetBirthday />', () => {
   beforeEach(() => {
-    mockdate.set(new Date('2020-12-01T00:00:00Z'))
+    mockdate.set(CURRENT_DATE)
     jest.useFakeTimers()
   })
 
-  it('should render properly', () => {
-    const { toJSON } = render(<SetBirthday {...props} />)
-    expect(toJSON()).toMatchSnapshot()
+  it('should render correctly', () => {
+    const renderAPI = render(<SetBirthday {...props} />)
+    expect(renderAPI).toMatchSnapshot()
   })
 
-  it('should keep disabled the button "Continuer" when the date is not complete', () => {
-    const renderAPI = render(<SetBirthday {...props} />)
+  describe('- navigation -', () => {
+    it('should display a information modal when clicking "Pour quelle raison ?" button', () => {
+      const { getByTestId } = render(<SetBirthday {...props} />)
 
-    changeDate(renderAPI, '1', '1', '1')
+      const whyBirthdayButton = getByTestId('Pour quelle raison\u00a0?')
+      fireEvent.press(whyBirthdayButton)
 
-    const button = renderAPI.getByTestId('Continuer')
-    expect(button.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
-  })
+      const birthdayModal = getByTestId('modal-birthday-information')
+      expect(birthdayModal.props.visible).toBeTruthy()
+    })
 
-  it('should display the error message "date incorrecte" when the date is too old', async () => {
-    const renderAPI = render(<SetBirthday {...props} />)
+    it('should keep disabled the button "Continuer" when the date is not selected', () => {
+      const { getByTestId } = render(<SetBirthday {...props} />)
 
-    changeDate(renderAPI, '31', '12', '1889')
+      const datePicker = getByTestId('datePicker')
+      fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: CURRENT_DATE } })
 
-    await waitForExpect(() => {
-      const message = renderAPI.queryByText('La date choisie est incorrecte')
-      expect(message).toBeTruthy()
+      const continueButton = getByTestId('Continuer')
+      expect(continueButton.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
+    })
+
+    it('should keep enable the button "Continuer" when the date is selected and is different from the current date', () => {
+      const { getByTestId } = render(<SetBirthday {...props} />)
+
+      const datePicker = getByTestId('datePicker')
+      fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+
+      const continueButton = getByTestId('Continuer')
+      expect(continueButton.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
+    })
+
+    it('should call goToNextStep() when the date is selected and press the button "Continuer"', () => {
+      const { getByTestId } = render(<SetBirthday {...props} />)
+
+      const datePicker = getByTestId('datePicker')
+      fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+
+      const continueButton = getByTestId('Continuer')
+      fireEvent.press(continueButton)
+
+      expect(props.goToNextStep).toBeCalledWith({
+        birthdate: formatDateToISOStringWithoutTime(ELIGIBLE_AGE_DATE),
+      })
     })
   })
 
-  it('should display the error message "tu dois avoir 15 ans" when the date is too young', () => {
-    const renderAPI = render(<SetBirthday {...props} />)
+  describe('- error message -', () => {
+    it('should display the error message "tu dois avoir 15 ans" when the selected date is too young', () => {
+      const { getByTestId, queryByText } = render(<SetBirthday {...props} />)
 
-    changeDate(renderAPI, '02', '12', '2005') // 15 years old - 1 day
+      const datePicker = getByTestId('datePicker')
+      fireEvent(datePicker, 'onChange', {
+        nativeEvent: { timestamp: NOT_ELIGIBLE_YOUNGEST_AGE_DATE },
+      })
 
-    const message = renderAPI.queryByText(
-      'Tu dois avoir' + '\u00a0' + 15 + '\u00a0' + "ans pour t'inscrire"
-    )
-    expect(message).toBeTruthy()
+      const message = 'Tu dois avoir au moins\u00a015\u00a0ans pour t’inscrire au pass Culture'
+      expect(queryByText(message)).toBeTruthy()
+    })
+
+    it('should not display the error message "tu dois avoir 15 ans" when the user is exactly 15yo', () => {
+      const { getByTestId, queryByText } = render(<SetBirthday {...props} />)
+
+      const datePicker = getByTestId('datePicker')
+      fireEvent(datePicker, 'onChange', {
+        nativeEvent: { timestamp: FIFTEEN_YEARS_OLD_FIRST_DAY_DATE },
+      })
+
+      const message = 'Tu dois avoir au moins\u00a015\u00a0ans pour t’inscrire au pass Culture'
+      expect(queryByText(message)).toBeNull()
+    })
+
+    it('should not display the error message "tu dois avoir 15 ans" when the selected date is the current date', () => {
+      const { getByTestId, queryByText } = render(<SetBirthday {...props} />)
+
+      const datePicker = getByTestId('datePicker')
+      fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: CURRENT_DATE } })
+
+      const message = 'Tu dois avoir au moins\u00a015\u00a0ans pour t’inscrire au pass Culture'
+      expect(queryByText(message)).toBeNull()
+    })
   })
 
-  it('should not display the error message "tu dois avoir 15 ans" when the user is exactly 15yo', () => {
-    const renderAPI = render(<SetBirthday {...props} />)
-
-    changeDate(renderAPI, '01', '12', '2005') // 15 years old
-
-    const message = renderAPI.queryByText(
-      'Tu dois avoir' + '\u00a0' + 15 + '\u00a0' + "ans pour t'inscrire"
-    )
-    expect(message).toBeFalsy()
-  })
-
-  it('should call goToNextStep()', () => {
-    const renderAPI = render(<SetBirthday {...props} />)
-
-    changeDate(renderAPI, '16', '01', '1995')
-
-    const continueButton = renderAPI.getByText('Continuer')
-    fireEvent.press(continueButton)
-
-    expect(props.goToNextStep).toBeCalledWith({ birthdate: '1995-01-16' })
-  })
-
-  it('should display a information modal when clicking "Pourquoi" link', () => {
-    const { getByTestId, toJSON } = render(<SetBirthday {...props} />)
-
-    const whyBirthdayLink = getByTestId('Pourquoi\u00a0?')
-    fireEvent.press(whyBirthdayLink)
-
-    const birthdayModal = getByTestId('modal-birthday-information')
-    expect(birthdayModal.props.visible).toBeTruthy()
-    expect(toJSON()).toMatchSnapshot()
-  })
-
-  describe('SetBirthday - analytics', () => {
-    it('should log ConsultModalWhyAnniversary when clicking "Pourquoi" link', () => {
+  describe('- analytics -', () => {
+    it('should log ConsultModalWhyAnniversary when clicking "Pour quelle raison ?" button', () => {
       const { getByTestId } = render(<SetBirthday {...props} />)
 
-      const whyBirthdayLink = getByTestId('Pourquoi\u00a0?')
+      const whyBirthdayLink = getByTestId('Pour quelle raison\u00a0?')
       fireEvent.press(whyBirthdayLink)
 
       expect(analytics.logConsultWhyAnniversary).toHaveBeenCalledTimes(1)
     })
 
     it('should not log SignUpTooYoung if the user is 15 years old or more', () => {
-      const renderAPI = render(<SetBirthday {...props} />)
+      const { getByTestId } = render(<SetBirthday {...props} />)
 
-      changeDate(renderAPI, '01', '12', '2005')
+      const datePicker = getByTestId('datePicker')
+      fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+
       expect(analytics.logSignUpTooYoung).not.toBeCalled()
     })
 
     it('should log SignUpTooYoung if the user is 14 years old or less', () => {
-      const renderAPI = render(<SetBirthday {...props} />)
+      const { getByTestId } = render(<SetBirthday {...props} />)
 
-      changeDate(renderAPI, '01', '12', '2006')
-      expect(analytics.logSignUpTooYoung).toBeCalledTimes(1)
+      const datePicker = getByTestId('datePicker')
+      fireEvent(datePicker, 'onChange', {
+        nativeEvent: { timestamp: NOT_ELIGIBLE_YOUNGEST_AGE_DATE },
+      })
+
+      expect(analytics.logSignUpTooYoung).toBeCalled()
     })
   })
 })
-
-function changeDate(renderAPI: RenderAPI, dayStr: string, monthStr: string, yearStr: string) {
-  const dateInput = renderAPI.getByTestId('Entrée pour la date de naissance')
-  fireEvent.changeText(dateInput, [dayStr, monthStr, yearStr].join(''))
-}

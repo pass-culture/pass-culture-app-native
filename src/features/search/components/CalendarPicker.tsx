@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
-import DatePicker from 'react-native-date-picker'
 import React, { useState } from 'react'
+import DatePicker from 'react-native-date-picker'
 import styled from 'styled-components/native'
 
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

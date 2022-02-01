@@ -688,9 +688,11 @@ exports[`SetBirthday Page should render properly 1`] = `
   }
 >
   <View
-    accessibilityLabel="Pourquoi ?"
+    accessibilityLabel="Pour quelle raison ?"
     accessible={true}
+    collapsable={false}
     focusable={true}
+    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -716,8 +718,18 @@ exports[`SetBirthday Page should render properly 1`] = `
         "width": "100%",
       }
     }
-    testID="Pourquoi ?"
+    testID="Pour quelle raison ?"
   >
+    <View
+      fill="#eb0055"
+      height={18}
+      testID="button-icon"
+      width={18}
+    >
+      <Text>
+        button-icon-SVG-Mock
+      </Text>
+    </View>
     <Text
       adjustsFontSizeToFit={false}
       iconSize={20}
@@ -729,22 +741,22 @@ exports[`SetBirthday Page should render properly 1`] = `
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,
             "lineHeight": 20,
-            "marginLeft": 0,
+            "marginLeft": 12,
             "maxWidth": "100%",
           },
         ]
       }
       textColor="#eb0055"
     >
-      Pourquoi ?
+      Pour quelle raison ?
     </Text>
   </View>
   <View
-    numberOfSpaces={8}
+    numberOfSpaces={5}
     style={
       Array [
         Object {
-          "height": 32,
+          "height": 20,
         },
       ]
     }
@@ -753,8 +765,10 @@ exports[`SetBirthday Page should render properly 1`] = `
     style={
       Array [
         Object {
-          "alignItems": "stretch",
+          "alignItems": "flex-start",
+          "display": "flex",
           "flexDirection": "column",
+          "maxWidth": 500,
           "width": "100%",
         },
       ]
@@ -764,22 +778,22 @@ exports[`SetBirthday Page should render properly 1`] = `
       style={
         Array [
           Object {
-            "alignItems": "stretch",
-            "alignSelf": "center",
-            "flexDirection": "column",
-            "maxWidth": 300,
-            "position": "relative",
+            "alignItems": "flex-end",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
             "width": "100%",
           },
         ]
       }
     >
-      <View
+      <Text
         style={
           Array [
             Object {
-              "flexDirection": "row",
-              "position": "relative",
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
             },
           ]
         }
@@ -1022,11 +1036,52 @@ exports[`SetBirthday Page should render properly 1`] = `
     </View>
   </View>
   <View
-    numberOfSpaces={14}
+    numberOfSpaces={5}
     style={
       Array [
         Object {
-          "height": 56,
+          "height": 20,
+        },
+      ]
+    }
+  />
+  <RNDatePicker
+    androidVariant="nativeAndroid"
+    cancelText="Cancel"
+    confirmText="Confirm"
+    date={1606780800000}
+    locale="fr-FR"
+    maximumDate={1606780800000}
+    minimumDate={-2208988800000}
+    minuteInterval={1}
+    mode="date"
+    onChange={[Function]}
+    onDateChange={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Array [
+        Object {
+          "height": 216,
+          "width": 310,
+        },
+        Array [
+          Object {
+            "width": "100%",
+          },
+        ],
+      ]
+    }
+    testID="datePicker"
+    textColor="#161617"
+    title="Select date"
+  />
+  <View
+    numberOfSpaces={2}
+    style={
+      Array [
+        Object {
+          "height": 8,
         },
       ]
     }
@@ -1034,7 +1089,9 @@ exports[`SetBirthday Page should render properly 1`] = `
   <View
     accessibilityLabel="Continuer"
     accessible={true}
+    collapsable={false}
     focusable={false}
+    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
