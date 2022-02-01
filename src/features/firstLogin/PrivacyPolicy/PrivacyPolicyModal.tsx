@@ -6,14 +6,12 @@ import styled from 'styled-components/native'
 import { openUrl } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
-import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo, Spacer, getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 export interface Props {
   visible: boolean
@@ -49,16 +47,15 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
           {t`Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur "Autoriser", tu acceptes l'utilisation de ces services détaillés dans notre`}
         </Typo.Body>
       </Description>
-      <ButtonTertiary
+      <ButtonQuaternary
         wording={cookieButtonText}
         onPress={openCookiesPolicyExternalUrl}
-        icon={ExternalSite}
-        textSize={12}
+        icon={ExternalSiteFilled}
       />
       <SubDescription>
-        <Typo.Caption color={ColorsEnum.GREY_DARK}>
+        <Caption>
           {t`Tu pourras modifier tes paramètres de confidentialité dans ton profil.`}
-        </Typo.Caption>
+        </Caption>
       </SubDescription>
       <CallToActionsContainer>
         <AcceptanceButton wording={t`Autoriser`} onPress={onApproval} />
@@ -68,6 +65,10 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
     </AppModal>
   )
 }
+
+const Caption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
 
 const CallToActionsContainer = styled.View(({ theme }) => ({
   flexDirection: theme.isDesktopViewport ? 'column' : 'column-reverse',
