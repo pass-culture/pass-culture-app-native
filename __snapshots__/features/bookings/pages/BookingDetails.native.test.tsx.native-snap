@@ -497,7 +497,7 @@ exports[`BookingDetails should render correctly 1`] = `
                 "borderRadius": 0,
                 "borderWidth": 0,
                 "flexDirection": "row",
-                "height": 16,
+                "height": 20,
                 "justifyContent": "center",
                 "marginTop": 0,
                 "maxWidth": 500,

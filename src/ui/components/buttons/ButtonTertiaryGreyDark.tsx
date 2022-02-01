@@ -25,5 +25,6 @@ const StyledAppButton = styled(AppButton).attrs(({ theme, disabled }) => {
     backgroundColor: backgroundColor,
     iconColor: iconColor,
     textColor: textColor,
+    inlineHeight: icons.sizes.smaller,
   }
 })``
