@@ -1,6 +1,4 @@
-import RNDateTimePicker from '@react-native-community/datetimepicker'
 import React from 'react'
-import { View } from 'react-native'
 
 import { useUserProfileInfo } from 'features/home/api'
 import { LocationType } from 'features/search/enums'
@@ -11,9 +9,6 @@ import { render } from 'tests/utils'
 
 import { initialSearchState } from '../reducer'
 import { SearchFilter } from '../SearchFilter'
-
-// @ts-expect-error: solution find on the github repo to the issue https://github.com/react-native-datetimepicker/datetimepicker/issues/216
-RNDateTimePicker.mockImplementation((props) => <View testID={props.testID} />)
 
 const mockSearchState = initialSearchState
 jest.mock('features/search/pages/SearchWrapper', () => ({

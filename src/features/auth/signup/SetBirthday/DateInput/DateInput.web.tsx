@@ -2,8 +2,7 @@ import { t } from '@lingui/macro'
 import React, { forwardRef, useEffect, useImperativeHandle, useMemo, useRef, useState } from 'react'
 import { Platform, TextInput, TextInputProps } from 'react-native'
 import styled from 'styled-components/native'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
+// @ts-ignore : problem with the module typing
 import validateDate from 'validate-date'
 
 import { accessibilityAndTestId } from 'tests/utils'

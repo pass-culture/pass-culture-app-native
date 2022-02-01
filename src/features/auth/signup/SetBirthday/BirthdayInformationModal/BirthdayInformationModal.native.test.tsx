@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { BirthdayInformationModal } from 'features/auth/signup/SetBirthday/BirthdayInformationModal'
+import { BirthdayInformationModal } from 'features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal'
 import { render } from 'tests/utils'
 
 jest.mock('features/auth/api', () => {

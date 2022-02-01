@@ -1,135 +1,91 @@
 import { t } from '@lingui/macro'
-import React, { FunctionComponent, useRef, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
+import DatePicker from 'react-native-date-picker'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
-import { BirthdayInformationModal } from 'features/auth/signup/SetBirthday/BirthdayInformationModal'
+import { BirthdayInformationModal } from 'features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal'
+import { DateInput } from 'features/auth/signup/SetBirthday/DateInput/DateInput'
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
 import { analytics } from 'libs/analytics'
 import { dateDiffInFullYears } from 'libs/dates'
-import { env } from 'libs/environment'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
-import { DateInput, DateInputRef, DateValidation } from 'ui/components/inputs/DateInput'
 import { InputError } from 'ui/components/inputs/InputError'
 import { useModal } from 'ui/components/modals/useModal'
+import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 
-let INITIAL_DATE: Date | null = null
-let INITIAL_DAY: string | undefined = undefined
-let INITIAL_MONTH: string | undefined = undefined
-let INITIAL_YEAR: string | undefined = undefined
-
-if (__DEV__ && env.SIGNUP_DATE) {
-  INITIAL_DATE = new Date(env.SIGNUP_DATE) // '2003-01-01T00:00:00Z'
-  INITIAL_DAY = `${INITIAL_DATE.getDate()}`.padStart(2, '0')
-  INITIAL_MONTH = `${INITIAL_DATE.getMonth() + 1}`.padStart(2, '0')
-  INITIAL_YEAR = `${INITIAL_DATE.getFullYear()}`
-}
-
+const MINIMUM_DATE = new Date('1900-01-01')
 const DEFAULT_YOUNGEST_AGE = 15
-const MIN_DATE = new Date('1900-01-01T00:00:00Z')
-
-interface State {
-  date: Date | null
-  isDateComplete: boolean
-  isDateValid: boolean
-  isTooYoung: boolean
-  isTooOld: boolean
-}
 
 export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (props) => {
-  const [wereBirthdayAnalyticsTriggered, setWereBirthdayAnalyticsTriggered] = useState(false)
-  const [state, setState] = useState<State>({
-    date: INITIAL_DATE,
-    isDateComplete: false,
-    isDateValid: false,
-    isTooYoung: false,
-    isTooOld: false,
-  })
-  const { data: settings } = useAppSettings()
+  const CURRENT_DATE = new Date()
+  const CURRENT_DATE_WITHOUT_TIME = formatDateToISOStringWithoutTime(CURRENT_DATE)
 
-  const now = new Date()
-  const youngestAge = settings?.accountCreationMinimumAge ?? DEFAULT_YOUNGEST_AGE
-  const maxYear = now.getFullYear() - youngestAge
-  const maxDate = new Date(maxYear, now.getMonth(), now.getDate())
+  const [date, setDate] = useState<Date>(CURRENT_DATE)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const { visible, showModal: showInformationModal, hideModal } = useModal(false)
-
-  const dateInputRef = useRef<DateInputRef>(null)
-
-  function onChangeValue(date: Date | null, validation: DateValidation) {
-    setState({
-      date,
-      isDateComplete: validation.isComplete,
-      isDateValid: validation.isValid,
-      isTooYoung: !validation.isDateBelowMax,
-      isTooOld: !validation.isDateAboveMin,
-    })
-  }
-
-  function goToNextStep() {
-    const { date } = state
-    if (date) {
-      const birthday = formatDateToISOStringWithoutTime(date)
-      props.goToNextStep({ birthdate: birthday })
-    }
-  }
 
   function onPressWhy() {
     analytics.logConsultWhyAnniversary()
     showInformationModal()
   }
 
-  function renderErrorMessages() {
-    if (!state.isDateComplete || state.isDateValid) {
-      return
-    }
-    if (state.isTooYoung && !state.isTooOld) {
-      if (!wereBirthdayAnalyticsTriggered && state.date) {
-        const age = dateDiffInFullYears(state.date, now)
-        analytics.logSignUpTooYoung(age)
-        setWereBirthdayAnalyticsTriggered(true)
-      }
-      return (
-        <InputError
-          visible
-          messageId={t`Tu dois avoir\u00a0${youngestAge}\u00a0ans pour t'inscrire`}
-          numberOfSpacesTop={5}
-        />
+  const SELECTED_DATE_WITHOUT_TIME = formatDateToISOStringWithoutTime(date)
+  const isDisabled = CURRENT_DATE_WITHOUT_TIME === SELECTED_DATE_WITHOUT_TIME
+
+  const { data: settings } = useAppSettings()
+  const youngestAge = settings?.accountCreationMinimumAge ?? DEFAULT_YOUNGEST_AGE
+
+  useEffect(() => {
+    const age = dateDiffInFullYears(date, CURRENT_DATE)
+    if (!isDisabled && age < 15) {
+      analytics.logSignUpTooYoung(age)
+      return setErrorMessage(
+        t`Tu dois avoir au moins\u00a0${youngestAge}\u00a0ans pour t’inscrire au pass Culture`
       )
     }
-    return (
-      <InputError visible messageId={t`La date choisie est incorrecte`} numberOfSpacesTop={5} />
-    )
+    return setErrorMessage(null)
+  }, [date])
+
+  function goToNextStep() {
+    if (date) {
+      const birthday = SELECTED_DATE_WITHOUT_TIME
+      props.goToNextStep({ birthdate: birthday })
+    }
   }
 
   return (
     <Form.MaxWidth>
       <InnerContainer>
-        <ButtonTertiary wording={t`Pourquoi\u00a0?`} onPress={onPressWhy} />
-        <Spacer.Column numberOfSpaces={8} />
-        <DateInputContainer>
-          <DateInput
-            autoFocus={true}
-            onChangeValue={onChangeValue}
-            ref={dateInputRef}
-            minDate={MIN_DATE}
-            maxDate={maxDate}
-            initialDay={INITIAL_DAY}
-            initialMonth={INITIAL_MONTH}
-            initialYear={INITIAL_YEAR}
-            onSubmit={goToNextStep}
-          />
-          {renderErrorMessages()}
-        </DateInputContainer>
-        <Spacer.Column numberOfSpaces={14} />
+        <ButtonTertiary
+          icon={InfoPlain}
+          wording={t`Pour quelle raison\u00a0?`}
+          onPress={onPressWhy}
+        />
+        <Spacer.Column numberOfSpaces={5} />
+        <DateInput date={date} isFocus={!isDisabled} isError={!!errorMessage} />
+        {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={2} />}
+        <Spacer.Column numberOfSpaces={5} />
+        <StyledDatePicker
+          testID="datePicker"
+          date={date}
+          onDateChange={setDate}
+          mode="date"
+          locale="fr-FR"
+          maximumDate={CURRENT_DATE}
+          minimumDate={MINIMUM_DATE}
+          androidVariant="nativeAndroid"
+        />
+        <Spacer.Column numberOfSpaces={2} />
         <ButtonPrimary
           wording={t`Continuer`}
           accessibilityLabel={props.accessibilityLabelForNextStep}
-          disabled={!state.isDateValid}
+          disabled={isDisabled}
           onPress={goToNextStep}
         />
         <Spacer.Column numberOfSpaces={5} />
@@ -144,8 +100,6 @@ const InnerContainer = styled.View({
   alignItems: 'center',
 })
 
-const DateInputContainer = styled.View({
-  alignItems: 'stretch',
-  flexDirection: 'column',
-  width: '100%',
-})
+const StyledDatePicker = styled(DatePicker).attrs(({ theme }) => ({
+  textColor: theme.colors.black,
+}))({ width: '100%' })
