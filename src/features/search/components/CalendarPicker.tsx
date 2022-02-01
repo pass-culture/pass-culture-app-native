@@ -10,6 +10,8 @@ import { getSpacing, Spacer } from 'ui/theme'
 
 import { Props } from './CalendarPicker.d'
 
+const CURRENT_DATE = new Date()
+
 export const CalendarPicker: React.FC<Props> = ({
   setSelectedDate,
   selectedDate,
@@ -26,7 +28,7 @@ export const CalendarPicker: React.FC<Props> = ({
   return (
     <AppModal
       visible={visible}
-      title=""
+      title="Choisis une date"
       leftIconAccessibilityLabel={undefined}
       leftIcon={undefined}
       onLeftIconPress={undefined}
@@ -37,10 +39,12 @@ export const CalendarPicker: React.FC<Props> = ({
         testID="dateTimePicker"
         date={currentDate}
         mode="date"
+        minimumDate={CURRENT_DATE}
         onDateChange={setCurrentDate}
         locale="fr-FR"
+        androidVariant="nativeAndroid"
       />
-      <Spacer.Column numberOfSpaces={2} />
+      <Spacer.Column numberOfSpaces={5} />
       <ButtonPrimary wording={t`Valider la date`} onPress={onValidate} />
     </AppModal>
   )
@@ -48,4 +52,4 @@ export const CalendarPicker: React.FC<Props> = ({
 
 const StyledDatePicker = styled(DatePicker).attrs(({ theme }) => ({
   textColor: theme.colors.black,
-}))({ width: '100%', marginTop: -getSpacing(8) })
+}))({ width: '100%', marginTop: -getSpacing(2) })

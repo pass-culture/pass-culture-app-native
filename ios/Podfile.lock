@@ -556,8 +556,6 @@ PODS:
     - React
   - RNCAsyncStorage (1.15.14):
     - React-Core
-  - RNDateTimePicker (3.5.2):
-    - React-Core
   - RNDeviceInfo (8.4.8):
     - React-Core
   - RNFastImage (8.5.11):
@@ -730,7 +728,6 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - "RNBatchPush (from `../node_modules/@bam.tech/react-native-batch/ios`)"
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
-  - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNFastImage (from `../node_modules/react-native-fast-image`)
   - "RNFBAnalytics (from `../node_modules/@react-native-firebase/analytics`)"
@@ -902,8 +899,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@bam.tech/react-native-batch/ios"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
-  RNDateTimePicker:
-    :path: "../node_modules/@react-native-community/datetimepicker"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
   RNFastImage:
@@ -1033,7 +1028,6 @@ SPEC CHECKSUMS:
   ReactCommon: 9bac022ab71596f2b0fde1268272543184c63971
   RNBatchPush: 8b5ce832fcdb4f4ba94033f20e45df9157a73a5b
   RNCAsyncStorage: ea6b5c280997b2b32a587793163b1f10e580c4f7
-  RNDateTimePicker: 7658208086d86d09e1627b5c34ba0cf237c60140
   RNDeviceInfo: 0400a6d0c94186d1120c3cbd97b23abc022187a9
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
   RNFBAnalytics: f76bfa164ac235b00505deb9fc1776634056898c
