@@ -34,7 +34,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
           <React.Fragment key={`key-tab-nav-${route.name}`}>
             {index > 0 && <Spacer.Row numberOfSpaces={1.5} />}
             <Li>
-              <Link to={{ screen: route.name, params: undefined }}>
+              <Link to={{ screen: route.name, params: undefined }} accessible={false}>
                 <NavItem
                   tabName={route.name}
                   isSelected={route.isSelected}

@@ -27,7 +27,7 @@ export const AccessibleTabBar = () => {
         {tabRoutes.map((route) => {
           return (
             <LinkContainer key={route.name}>
-              <Link to={{ screen: route.name, params: undefined }}>
+              <Link to={{ screen: route.name, params: undefined }} accessible={false}>
                 <TabBarComponent
                   tabName={route.name}
                   isSelected={route.isSelected}
