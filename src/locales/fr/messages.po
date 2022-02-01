@@ -71,7 +71,7 @@ msgstr "18 ans"
 msgid "1er tutoriel"
 msgstr "1er tutoriel"
 
-#: src/ui/components/inputs/DateInput.tsx
+#: src/features/auth/signup/SetBirthday/DateInput/DateInput.web.tsx
 msgid "AAAA"
 msgstr "AAAA"
 
@@ -391,7 +391,7 @@ msgstr "Centre culturel"
 msgid "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 msgstr "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 
-#: src/features/auth/signup/SetBirthday/BirthdayInformationModal.tsx
+#: src/features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal.tsx
 msgid "Cette aide sera créditée directement sur ton compte pass Culture."
 msgstr "Cette aide sera créditée directement sur ton compte pass Culture."
 
@@ -606,6 +606,7 @@ msgstr "Contacter le support"
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+#: src/features/auth/signup/SetBirthday/SetBirthday.web.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
 #: src/features/auth/signup/SetPassword/SetPassword.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
@@ -699,6 +700,10 @@ msgstr "Date"
 #: src/features/search/sections/titles.ts
 msgid "Date de l'offre"
 msgstr "Date de l'offre"
+
+#: src/features/auth/signup/SetBirthday/DateInput/DateInput.tsx
+msgid "Date de naissance"
+msgstr "Date de naissance"
 
 #: src/features/search/sections/OfferDate.tsx
 msgid "Date précise"
@@ -892,7 +897,7 @@ msgstr "Entrée du code de confirmation"
 msgid "Entrée pour l'adresse"
 msgstr "Entrée pour l'adresse"
 
-#: src/ui/components/inputs/DateInput.tsx
+#: src/features/auth/signup/SetBirthday/DateInput/DateInput.web.tsx
 msgid "Entrée pour l'année jour de la date de naissance"
 msgstr "Entrée pour l'année jour de la date de naissance"
 
@@ -900,7 +905,7 @@ msgstr "Entrée pour l'année jour de la date de naissance"
 msgid "Entrée pour l'email"
 msgstr "Entrée pour l'email"
 
-#: src/ui/components/inputs/DateInput.tsx
+#: src/features/auth/signup/SetBirthday/DateInput/DateInput.web.tsx
 msgid "Entrée pour la date de naissance"
 msgstr "Entrée pour la date de naissance"
 
@@ -908,11 +913,11 @@ msgstr "Entrée pour la date de naissance"
 msgid "Entrée pour le code postal"
 msgstr "Entrée pour le code postal"
 
-#: src/ui/components/inputs/DateInput.tsx
+#: src/features/auth/signup/SetBirthday/DateInput/DateInput.web.tsx
 msgid "Entrée pour le jour de la date de naissance"
 msgstr "Entrée pour le jour de la date de naissance"
 
-#: src/ui/components/inputs/DateInput.tsx
+#: src/features/auth/signup/SetBirthday/DateInput/DateInput.web.tsx
 msgid "Entrée pour le mois de la date de naissance"
 msgstr "Entrée pour le mois de la date de naissance"
 
@@ -1007,7 +1012,7 @@ msgstr "Fermer la modale pour transmettre un document sur le site Démarches Sim
 msgid "Fermer la section"
 msgstr "Fermer la section"
 
-#: src/features/search/components/CalendarPicker.ios.tsx
+#: src/features/search/components/CalendarPicker.tsx
 #: src/features/search/components/CalendarPicker.web.tsx
 msgid "Fermer le calendrier"
 msgstr "Fermer le calendrier"
@@ -1215,7 +1220,7 @@ msgstr "Interrupteur géolocalisation"
 msgid "J'ai compris"
 msgstr "J'ai compris"
 
-#: src/ui/components/inputs/DateInput.tsx
+#: src/features/auth/signup/SetBirthday/DateInput/DateInput.web.tsx
 msgid "JJ"
 msgstr "JJ"
 
@@ -1315,7 +1320,7 @@ msgstr "L'offre n'a pas été retirée de tes favoris"
 msgid "L'usage du pass Culture est strictement nominatif. Le compte doit être créé et utilisé par un jeune éligible, de 15 à 18 ans. L'identification doit se faire au nom du futur bénéficiaire."
 msgstr "L'usage du pass Culture est strictement nominatif. Le compte doit être créé et utilisé par un jeune éligible, de 15 à 18 ans. L'identification doit se faire au nom du futur bénéficiaire."
 
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+#: src/features/auth/signup/SetBirthday/SetBirthday.web.tsx
 msgid "La date choisie est incorrecte"
 msgstr "La date choisie est incorrecte"
 
@@ -1460,7 +1465,7 @@ msgstr "Localisation"
 msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 
-#: src/ui/components/inputs/DateInput.tsx
+#: src/features/auth/signup/SetBirthday/DateInput/DateInput.web.tsx
 msgid "MM"
 msgstr "MM"
 
@@ -1661,7 +1666,7 @@ msgstr "Notification rechargement anniversaire"
 msgid "Notifications"
 msgstr "Notifications"
 
-#: src/features/auth/signup/SetBirthday/BirthdayInformationModal.tsx
+#: src/features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal.tsx
 msgid "Nous avons besoin de connaître ton âge."
 msgstr "Nous avons besoin de connaître ton âge."
 
@@ -1910,6 +1915,11 @@ msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exerc
 msgid "Pour plus d'informations, nous t'invitons à consulter notre"
 msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 
+#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+#: src/features/auth/signup/SetBirthday/SetBirthday.web.tsx
+msgid "Pour quelle raison ?"
+msgstr "Pour quelle raison ?"
+
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 msgid "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
 msgstr "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
@@ -1927,7 +1937,7 @@ msgstr "Pourquoi les biens numériques sont-ils limités ?"
 msgid "Pourquoi les biens physiques et numériques sont-ils limités ?"
 msgstr "Pourquoi les biens physiques et numériques sont-ils limités ?"
 
-#: src/features/auth/signup/SetBirthday/BirthdayInformationModal.tsx
+#: src/features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal.tsx
 msgid "Pourquoi saisir ma date de naissance ?"
 msgstr "Pourquoi saisir ma date de naissance ?"
 
@@ -1935,10 +1945,6 @@ msgstr "Pourquoi saisir ma date de naissance ?"
 #: src/features/offer/components/useReportOfferModalContent.tsx
 msgid "Pourquoi signales-tu"
 msgstr "Pourquoi signales-tu"
-
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "Pourquoi ?"
-msgstr "Pourquoi ?"
 
 #: src/libs/parsers/venueType.ts
 msgid "Pratique artistiques"
@@ -2563,6 +2569,10 @@ msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Dé
 msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+msgid "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
+msgstr "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
+
+#: src/features/auth/signup/SetBirthday/SetBirthday.web.tsx
 msgid "Tu dois avoir {youngestAge} ans pour t'inscrire"
 msgstr "Tu dois avoir {youngestAge} ans pour t'inscrire"
 
@@ -2813,7 +2823,7 @@ msgstr "Valider ces options"
 msgid "Valider et continuer"
 msgstr "Valider et continuer"
 
-#: src/features/search/components/CalendarPicker.ios.tsx
+#: src/features/search/components/CalendarPicker.tsx
 #: src/features/search/components/CalendarPicker.web.tsx
 msgid "Valider la date"
 msgstr "Valider la date"
@@ -3045,7 +3055,7 @@ msgstr "et si tu as..."
 msgid "et si tu es..."
 msgstr "et si tu es..."
 
-#: src/features/auth/signup/SetBirthday/BirthdayInformationModal.tsx
+#: src/features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal.tsx
 msgid "financialHelpMessage"
 msgstr "Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de {deposit15} à {deposit18} offerte par le Gouvernement."
 

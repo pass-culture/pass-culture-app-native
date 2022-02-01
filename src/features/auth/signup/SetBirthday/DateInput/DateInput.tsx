@@ -11,8 +11,8 @@ import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
   date: Date
-  isFocus: boolean
-  isError: boolean
+  isFocus?: boolean
+  isError?: boolean
 }
 
 export function DateInput({ date, isFocus, isError }: Props) {
