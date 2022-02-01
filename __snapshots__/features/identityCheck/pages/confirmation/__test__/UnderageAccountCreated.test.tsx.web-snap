@@ -276,7 +276,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
       dir="auto"
       style={
         Object {
-          "color": "rgba(135,0,135,1.00)",
+          "color": "rgba(22,22,23,1.00)",
           "fontFamily": "Montserrat-Medium",
           "fontSize": "22px",
           "lineHeight": "28px",
