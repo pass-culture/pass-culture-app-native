@@ -588,8 +588,8 @@ PODS:
     - RNFBApp
   - RNGestureHandler (1.10.3):
     - React-Core
-  - RNKeychain (6.2.0):
-    - React
+  - RNKeychain (8.0.0):
+    - React-Core
   - RNLaunchNavigator (1.0.8):
     - React
   - RNPermissions (3.1.0):
@@ -957,7 +957,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 98b29e3828f0a53651c363937a7f7d92a19f1ba2
   FirebaseCoreDiagnostics: 56fb7216d87e0e6ec2feddefa9d8a392fe8b2c18
   FirebaseDynamicLinks: cf76a46274569da2d4491548a39ef35f3c1a992d
-  FirebaseFirestore: 7103ab89eff01c90ced62a65dc071e010eeec4a7
+  FirebaseFirestore: d09c620ac1fe1570cb1e909f6f165d6b55bc4ee0
   FirebaseInstallations: 830327b45345ffc859eaa9c17bcd5ae893fd5425
   FirebasePerformance: 0c01a7a496657d7cea86d40c0b1725259d164c6c
   FirebaseRemoteConfig: f6365883d7950d784ee97bcdbbf1e442d4fa6119
@@ -1037,7 +1037,7 @@ SPEC CHECKSUMS:
   RNFBPerf: 389914cda4000fe0d996a752532a591132cbf3f9
   RNFBRemoteConfig: d88fcaa30a3a1605885c79814856abe7bbaaa929
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
-  RNKeychain: b8e0711b959a19c5b057d1e970d3c83d159b6da5
+  RNKeychain: 4f63aada75ebafd26f4bc2c670199461eab85d94
   RNLaunchNavigator: 058ccdb86a80a9424d5e37f6ec54379e3018c52b
   RNPermissions: 4b54095940aea8c03fa3e6c92d4ac3647b31ed4e
   RNReanimated: 65583befd5706cc9c86ae9a081786181ced37b93

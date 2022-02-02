@@ -135,7 +135,7 @@
     "react-native-get-random-values": "^1.5.1",
     "react-native-image-picker": "4.0.3",
     "react-native-in-app-review": "^3.2.2",
-    "react-native-keychain": "^6.2.0",
+    "react-native-keychain": "^8.0.0",
     "react-native-launch-navigator": "^1.0.8",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-mask-text": "^0.2.2",
