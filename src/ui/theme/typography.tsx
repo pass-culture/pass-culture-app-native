@@ -1,5 +1,5 @@
 import React from 'react'
-import { Text as RNText, TextProps as RNTextProps } from 'react-native'
+import { Platform, Text as RNText, TextProps as RNTextProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ColorsEnum, UniqueColors } from './colors'
@@ -11,6 +11,15 @@ interface CustomTextProps {
 }
 type TextProps = CustomTextProps & RNTextProps
 
+const getTitleAttrs = (level: number) => ({
+  ...(Platform.OS === 'web'
+    ? {
+        accessibilityRole: 'header',
+        'aria-level': level,
+      }
+    : {}),
+})
+
 const Hero = styled(RNText)(({ theme }) => ({
   ...theme.typography.hero,
   color: theme.colors.black,
@@ -20,13 +29,15 @@ const Title1: React.FC<TextProps> = (props) => {
   const grid = useGrid()
   const fontSize = getSpacing(grid({ default: 7, sm: 6 }, 'height'))
   return (
-    <StyledTitle1 {...props} fontSize={fontSize}>
+    <StyledTitle1 {...props} accessibilityRole="header" fontSize={fontSize}>
       {props.children}
     </StyledTitle1>
   )
 }
 
-const StyledTitle1 = styled(RNText)<{ fontSize: number }>(({ fontSize, theme }) => ({
+const StyledTitle1 = styled(RNText).attrs(() => getTitleAttrs(1))<{
+  fontSize: number
+}>(({ fontSize, theme }) => ({
   ...theme.typography.title1,
   fontSize: fontSize ?? theme.typography.title1.fontSize,
   color: theme.colors.black,
@@ -41,18 +52,20 @@ const Title2: React.FC<TextProps> = (props) => {
     </StyledTitle2>
   )
 }
-const StyledTitle2 = styled(RNText)<{ fontSize: number }>(({ fontSize, theme }) => ({
+const StyledTitle2 = styled(RNText).attrs(() => getTitleAttrs(2))<{
+  fontSize: number
+}>(({ fontSize, theme }) => ({
   ...theme.typography.title2,
   fontSize: fontSize ?? theme.typography.title2.fontSize,
   color: theme.colors.black,
 }))
 
-const Title3 = styled(RNText)(({ theme }) => ({
+const Title3 = styled(RNText).attrs(() => getTitleAttrs(3))(({ theme }) => ({
   ...theme.typography.title3,
   color: theme.colors.black,
 }))
 
-const Title4 = styled(RNText)(({ theme }) => ({
+const Title4 = styled(RNText).attrs(() => getTitleAttrs(4))(({ theme }) => ({
   ...theme.typography.title4,
   color: theme.colors.black,
 }))
