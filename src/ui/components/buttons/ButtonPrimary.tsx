@@ -1,31 +1,51 @@
-import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { AppButton, BaseButtonProps } from 'ui/components/buttons/AppButton'
+import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
+import { Typo } from 'ui/theme'
 
-export const ButtonPrimary: FunctionComponent<BaseButtonProps> = (props) => {
-  return <StyledAppButton {...props} />
-}
+export const ButtonPrimary = styled(AppButton).attrs<BaseButtonProps>(
+  ({ disabled, textSize, icon, theme, ...rest }) => {
+    let Icon
 
-const StyledAppButton = styled(AppButton).attrs(({ theme, isLoading, disabled }) => {
-  const { buttons, icons } = theme
-  const loadingIconColor = buttons.primary.loadingIconColor
-  const iconColor = buttons.primary.iconColor
-  let textColor = buttons.primary.textColor
-  let backgroundColor = buttons.primary.backgroundColor
+    if (icon) {
+      Icon = styled(icon).attrs({
+        color: theme.buttons.primary.iconColor,
+        size: theme.buttons.primary.iconSize,
+      })``
+    }
+
+    const Title = styled(Typo.ButtonText)({
+      maxWidth: '100%',
+      color: disabled ? theme.buttons.disabled.primary.textColor : theme.buttons.primary.textColor,
+      fontSize: textSize,
+      marginLeft: icon ? theme.buttons.primary.marginLeftIcon : theme.buttons.primary.marginLeft,
+    })
+
+    return {
+      ...rest,
+      loadingIndicator: LoadingIndicator,
+      icon: Icon,
+      title: Title,
+    }
+  }
+)(({ theme, isLoading, disabled }) => {
+  let backgroundColor = theme.buttons.primary.backgroundColor
 
   if (isLoading) {
-    backgroundColor = buttons.loading.primary.backgroundColor
-  } else if (disabled) {
-    backgroundColor = buttons.disabled.primary.backgroundColor
-    textColor = buttons.disabled.primary.textColor
+    backgroundColor = theme.buttons.loading.primary.backgroundColor
+  }
+
+  if (disabled) {
+    backgroundColor = theme.buttons.disabled.primary.backgroundColor
   }
 
   return {
-    iconSize: icons.sizes.small,
-    loadingIconColor: loadingIconColor,
-    backgroundColor: backgroundColor,
-    iconColor: iconColor,
-    textColor: textColor,
+    backgroundColor,
   }
-})``
+})
+
+const LoadingIndicator = styled(InitialLoadingIndicator).attrs(({ theme }) => ({
+  color: theme.buttons.primary.loadingIconColor,
+  size: theme.buttons.primary.iconSize,
+}))``

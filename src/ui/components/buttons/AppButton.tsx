@@ -1,13 +1,18 @@
-import React, { Fragment, FunctionComponent, memo } from 'react'
-import { GestureResponderEvent, StyleProp, TouchableOpacity, ViewStyle } from 'react-native'
+import React, { ComponentType, Fragment, FunctionComponent, memo } from 'react'
+import {
+  GestureResponderEvent,
+  StyleProp,
+  TouchableOpacity,
+  ViewStyle,
+  TextProps,
+} from 'react-native'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
-import { Logo } from 'ui/svg/icons/Logo'
+import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
 import { IconInterface } from 'ui/svg/icons/types'
-import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { getSpacing } from 'ui/theme'
+
 export interface BaseButtonProps {
   accessibilityLabel?: string
   accessibilityDescribedBy?: string
@@ -15,13 +20,12 @@ export interface BaseButtonProps {
   buttonHeight?: 'small' | 'tall'
   disabled?: boolean
   icon?: FunctionComponent<IconInterface>
-  iconSize?: number
+  loadingIndicator?: ComponentType<IconInterface>
   inline?: boolean
   isLoading?: boolean
   onLongPress?: ((e: GestureResponderEvent) => void) | (() => void)
   onPress?: ((e: GestureResponderEvent) => void) | (() => void)
   testId?: string
-  textLineHeight?: string
   textSize?: number
   wording: string
   fullWidth?: boolean
@@ -31,13 +35,9 @@ export interface BaseButtonProps {
 }
 
 interface AppButtonProps extends BaseButtonProps {
-  backgroundColor?: ColorsEnum
-  borderColor?: ColorsEnum
-  iconColor?: ColorsEnum
   inline?: boolean
   inlineHeight?: number
-  loadingIconColor: ColorsEnum
-  textColor?: ColorsEnum
+  title?: ComponentType<TextProps>
 }
 
 type Only<TestedType, StandardType> = TestedType &
@@ -45,30 +45,24 @@ type Only<TestedType, StandardType> = TestedType &
 
 const _AppButton = <T extends AppButtonProps>({
   icon: Icon,
+  title: Title,
   inline,
   disabled,
   isLoading,
   onPress,
   onLongPress,
-  loadingIconColor,
-  iconSize,
-  iconColor,
-  backgroundColor,
   fullWidth,
-  borderColor,
-  buttonHeight,
+  buttonHeight = 'small',
   inlineHeight,
   accessibilityLabel,
   accessibilityDescribedBy,
   testId,
   wording,
-  textColor,
-  textSize,
-  textLineHeight,
   adjustsFontSizeToFit,
   justifyContent,
   numberOfLines,
   style,
+  loadingIndicator: LoadingIndicator,
 }: Only<T, AppButtonProps>) => {
   const pressHandler = disabled || isLoading ? undefined : onPress
   const longPressHandler = disabled || isLoading ? undefined : onLongPress
@@ -76,54 +70,46 @@ const _AppButton = <T extends AppButtonProps>({
     <StyledTouchableOpacity
       {...accessibilityAndTestId(accessibilityLabel || wording, testId || wording)}
       aria-describedby={accessibilityDescribedBy}
-      backgroundColor={backgroundColor}
       fullWidth={fullWidth}
-      borderColor={borderColor}
       onPress={pressHandler}
       onLongPress={longPressHandler}
-      buttonHeight={buttonHeight ?? 'small'}
+      buttonHeight={buttonHeight}
       inline={inline}
-      inlineHeight={inlineHeight ?? 16}
-      justifyContent={justifyContent ?? 'center'}
+      inlineHeight={inlineHeight}
+      justifyContent={justifyContent}
       numberOfLines={numberOfLines}
       style={style}>
-      {isLoading ? (
-        <Logo
-          {...accessibilityAndTestId(undefined, 'button-isloading-icon')}
-          color={loadingIconColor}
-          size={iconSize}
-        />
+      {!!LoadingIndicator && isLoading ? (
+        <LoadingIndicator {...accessibilityAndTestId(undefined, 'button-isloading-icon')} />
       ) : (
         <Fragment>
-          {!!Icon && (
-            <Icon
-              {...accessibilityAndTestId(undefined, 'button-icon')}
-              color={iconColor}
-              size={iconSize}
-            />
+          {!!Icon && <Icon {...accessibilityAndTestId(undefined, 'button-icon')} />}
+          {!!Title && (
+            <Title
+              adjustsFontSizeToFit={adjustsFontSizeToFit ?? false}
+              numberOfLines={numberOfLines ?? 1}>
+              {wording}
+            </Title>
           )}
-          <Title
-            textColor={textColor}
-            textSize={textSize}
-            textLineHeight={textLineHeight}
-            adjustsFontSizeToFit={adjustsFontSizeToFit ?? false}
-            icon={Icon}
-            iconSize={iconSize}
-            numberOfLines={numberOfLines ?? 1}>
-            {wording}
-          </Title>
         </Fragment>
       )}
     </StyledTouchableOpacity>
   )
 }
 
+const DefaultLoadingIndicator = styled(InitialLoadingIndicator).attrs(({ theme }) => ({
+  color: theme.colors.white,
+  size: theme.icons.sizes.smaller,
+}))``
+
+_AppButton.defaultProps = {
+  loadingIndicator: DefaultLoadingIndicator,
+}
+
 // memo is used to avoid useless rendering while props remain unchanged
 export const AppButton = memo(_AppButton)
 
 interface StyledTouchableOpacityProps {
-  backgroundColor?: ColorsEnum
-  borderColor?: ColorsEnum
   buttonHeight: 'small' | 'tall'
   inline?: boolean
   inlineHeight?: number
@@ -132,31 +118,22 @@ interface StyledTouchableOpacityProps {
   numberOfLines?: number
 }
 
+const TALL_BUTTON_HEIGHT = getSpacing(12)
+const SMALL_BUTTON_HEIGHT = getSpacing(10)
+const DEFAULT_INLINE_BUTTON_HEIGHT = getSpacing(4)
+
 const StyledTouchableOpacity = styled(TouchableOpacity).attrs(({ theme }) => ({
   activeOpacity: theme.activeOpacity,
 }))<StyledTouchableOpacityProps>(
-  ({
-    inline,
-    backgroundColor,
-    borderColor,
-    buttonHeight,
-    inlineHeight,
-    fullWidth,
-    justifyContent,
-    numberOfLines,
-    theme,
-  }) => ({
+  ({ theme, inline, buttonHeight, inlineHeight, fullWidth, justifyContent, numberOfLines }) => ({
     flexDirection: 'row',
-    justifyContent: justifyContent === 'flex-start' ? 'flex-start' : 'center',
+    justifyContent: justifyContent ?? 'center',
     alignItems: 'center',
     borderRadius: theme.borderRadius.button,
     padding: 2,
-    backgroundColor,
-    borderColor,
-    borderWidth: borderColor ? 2 : 0,
-    height: buttonHeight === 'tall' ? getSpacing(12) : getSpacing(10),
+    height: buttonHeight === 'tall' ? TALL_BUTTON_HEIGHT : SMALL_BUTTON_HEIGHT,
     width: '100%',
-    ...(fullWidth ? {} : { maxWidth: theme.buttons.maxWidth }),
+    ...(fullWidth ? {} : { maxWidth: getSpacing(125) }),
     ...(inline
       ? {
           borderWidth: 0,
@@ -164,26 +141,10 @@ const StyledTouchableOpacity = styled(TouchableOpacity).attrs(({ theme }) => ({
           marginTop: 0,
           padding: 0,
           width: 'auto',
-          height: inlineHeight,
+          height: inlineHeight ?? DEFAULT_INLINE_BUTTON_HEIGHT,
         }
       : {}),
     ...(justifyContent === 'flex-start' ? { paddingRight: 0, paddingLeft: 0 } : {}),
     ...(numberOfLines ? { height: 'auto' } : {}),
   })
 )
-
-interface TitleProps {
-  textColor?: ColorsEnum
-  textSize?: number
-  textLineHeight?: string
-  icon?: React.FC<IconInterface>
-  iconSize?: number
-}
-
-const Title = styled(Typo.ButtonText)<TitleProps>((props) => ({
-  maxWidth: '100%',
-  color: props.textColor,
-  fontSize: props.textSize,
-  lineHeight: props.textLineHeight,
-  marginLeft: props.icon ? getSpacing(3) : 0,
-}))

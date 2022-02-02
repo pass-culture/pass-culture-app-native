@@ -1,30 +1,44 @@
-import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { AppButton, BaseButtonProps } from 'ui/components/buttons/AppButton'
-import { getSpacing } from 'ui/theme'
+import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
+import { getSpacing, Typo } from 'ui/theme'
 
-export const ButtonQuaternaryBlack: FunctionComponent<BaseButtonProps> = (props) => {
-  return <StyledAppButton {...props} inlineHeight={getSpacing(5)} textSize={getSpacing(3)} />
-}
+export const ButtonQuaternaryBlack = styled(AppButton).attrs<BaseButtonProps>(
+  ({ icon, disabled, theme, ...rest }) => {
+    let Icon
 
-const StyledAppButton = styled(AppButton).attrs(({ theme, disabled }) => {
-  const { buttons, icons } = theme
-  const loadingIconColor = buttons.quaternaryBlack.loadingIconColor
-  let iconColor = buttons.quaternaryBlack.iconColor
-  let textColor = buttons.quaternaryBlack.textColor
-  const backgroundColor = buttons.quaternaryBlack.backgroundColor
+    if (icon) {
+      Icon = styled(icon).attrs({
+        color: theme.buttons.quaternaryBlack.iconColor,
+        size: theme.buttons.quaternaryBlack.iconSize,
+      })``
+    }
 
-  if (disabled) {
-    textColor = buttons.disabled.quaternaryBlack.textColor
-    iconColor = buttons.disabled.quaternaryBlack.iconColor
+    const LoadingIndicator = styled(InitialLoadingIndicator).attrs({
+      color: theme.buttons.quaternaryBlack.loadingIconColor,
+      size: theme.buttons.quaternaryBlack.iconSize,
+    })``
+
+    const Title = styled(Typo.ButtonText)({
+      maxWidth: '100%',
+      color: disabled
+        ? theme.buttons.disabled.quaternaryBlack.textColor
+        : theme.buttons.quaternaryBlack.textColor,
+      fontSize: getSpacing(3),
+      marginLeft: icon
+        ? theme.buttons.quaternaryBlack.marginLeftIcon
+        : theme.buttons.quaternaryBlack.marginLeft,
+    })
+
+    return {
+      ...rest,
+      icon: Icon,
+      title: Title,
+      loadingIndicator: LoadingIndicator,
+      inlineHeight: getSpacing(5),
+    }
   }
-
-  return {
-    iconSize: icons.sizes.extraSmall,
-    loadingIconColor: loadingIconColor,
-    backgroundColor: backgroundColor,
-    iconColor: iconColor,
-    textColor: textColor,
-  }
-})``
+)(({ theme }) => ({
+  backgroundColor: theme.buttons.quaternaryBlack.backgroundColor,
+}))

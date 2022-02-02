@@ -1,9 +1,9 @@
 import React from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { Rectangle } from 'ui/svg/Rectangle'
+import { ExternalSite as InitialExternalSite } from 'ui/svg/icons/ExternalSite'
+import { Rectangle as InitialRectangle } from 'ui/svg/Rectangle'
 import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
@@ -22,16 +22,11 @@ export const ButtonWithLinearGradient: React.FC<Props> = ({
   isDisabled,
   isExternal = false,
 }) => {
-  const { activeOpacity, colors, icons } = useTheme()
   return (
-    <Container
-      activeOpacity={activeOpacity}
-      onPress={onPress}
-      disabled={isDisabled}
-      {...accessibilityAndTestId(wording)}>
-      {isDisabled ? <DisabledRectangle /> : <Rectangle height={getSpacing(12)} size="100%" />}
+    <Container onPress={onPress} disabled={isDisabled} {...accessibilityAndTestId(wording)}>
+      {isDisabled ? <DisabledRectangle /> : <Rectangle />}
       <LegendContainer>
-        {!!isExternal && <ExternalSite size={icons.sizes.small} color={colors.white} />}
+        {!!isExternal && <ExternalSite />}
         <Title adjustsFontSizeToFit numberOfLines={1}>
           {wording}
         </Title>
@@ -40,7 +35,14 @@ export const ButtonWithLinearGradient: React.FC<Props> = ({
   )
 }
 
-const Container = styled.TouchableOpacity(({ theme }) => ({
+const Rectangle = styled(InitialRectangle).attrs({
+  height: getSpacing(12),
+  size: '100%',
+})``
+
+const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))(({ theme }) => ({
   justifyContent: 'center',
   alignItems: 'center',
   borderRadius: theme.borderRadius.button,
@@ -63,3 +65,8 @@ const DisabledRectangle = styled.View(({ theme }) => ({
   height: getSpacing(12),
   backgroundColor: theme.colors.primaryDisabled,
 }))
+
+const ExternalSite = styled(InitialExternalSite).attrs(({ theme }) => ({
+  size: theme.buttons.linearGradient.iconSize,
+  color: theme.buttons.linearGradient.iconColor,
+}))``

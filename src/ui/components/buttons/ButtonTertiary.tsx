@@ -1,30 +1,43 @@
-import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { AppButton, BaseButtonProps } from 'ui/components/buttons/AppButton'
+import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
+import { Typo } from 'ui/theme'
 
-export const ButtonTertiary: FunctionComponent<BaseButtonProps> = (props) => {
-  return <StyledAppButton {...props} />
-}
+export const ButtonTertiary = styled(AppButton).attrs<BaseButtonProps>(
+  ({ icon, disabled, textSize, theme, ...rest }) => {
+    let Icon
 
-const StyledAppButton = styled(AppButton).attrs(({ theme, disabled }) => {
-  const { buttons, icons } = theme
-  const loadingIconColor = buttons.tertiary.loadingIconColor
-  let iconColor = buttons.tertiary.iconColor
-  let textColor = buttons.tertiary.textColor
-  const backgroundColor = buttons.tertiary.backgroundColor
+    if (icon) {
+      Icon = styled(icon).attrs({
+        color: disabled
+          ? theme.buttons.disabled.tertiary.iconColor
+          : theme.buttons.tertiary.iconColor,
+        size: theme.buttons.tertiary.iconSize,
+      })``
+    }
 
-  if (disabled) {
-    textColor = buttons.disabled.tertiary.textColor
-    iconColor = buttons.disabled.tertiary.iconColor
+    const LoadingIndicator = styled(InitialLoadingIndicator).attrs({
+      color: theme.buttons.tertiary.loadingIconColor,
+      size: theme.buttons.tertiary.iconSize,
+    })``
+
+    const Title = styled(Typo.ButtonText)({
+      maxWidth: '100%',
+      color: disabled
+        ? theme.buttons.disabled.tertiary.textColor
+        : theme.buttons.tertiary.textColor,
+      fontSize: textSize,
+      marginLeft: icon ? theme.buttons.tertiary.marginLeftIcon : theme.buttons.tertiary.marginLeft,
+    })
+
+    return {
+      ...rest,
+      loadingIndicator: LoadingIndicator,
+      icon: Icon,
+      title: Title,
+    }
   }
-
-  return {
-    iconSize: icons.sizes.smaller,
-    loadingIconColor: loadingIconColor,
-    backgroundColor: backgroundColor,
-    iconColor: iconColor,
-    textColor: textColor,
-    inlineHeight: icons.sizes.smaller,
-  }
-})``
+)(({ theme }) => ({
+  backgroundColor: theme.buttons.tertiary.backgroundColor,
+}))

@@ -1,8 +1,8 @@
 import React, { SyntheticEvent, useCallback } from 'react'
 import styled from 'styled-components'
-import styledNative, { useTheme } from 'styled-components/native'
+import styledNative from 'styled-components/native'
 
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { ExternalSite as InitialExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, getSpacingString, Typo } from 'ui/theme'
 
 interface Props {
@@ -14,6 +14,7 @@ interface Props {
   className?: string
   name?: string
 }
+
 export const ButtonWithLinearGradient: React.FC<Props> = ({
   wording,
   onPress,
@@ -23,7 +24,6 @@ export const ButtonWithLinearGradient: React.FC<Props> = ({
   name,
   className,
 }) => {
-  const { colors, icons } = useTheme()
   const onClick = useCallback(
     (event: SyntheticEvent) => {
       if (type === 'submit') {
@@ -38,7 +38,7 @@ export const ButtonWithLinearGradient: React.FC<Props> = ({
   return (
     <Button name={name} onClick={onClick} disabled={isDisabled} type={type} className={className}>
       <LegendContainer>
-        {!!isExternal && <ExternalSite size={icons.sizes.small} color={colors.white} />}
+        {!!isExternal && <ExternalSite />}
         <Title adjustsFontSizeToFit numberOfLines={1}>
           {wording}
         </Title>
@@ -83,3 +83,8 @@ const LegendContainer = styledNative.View({
   alignItems: 'center',
   flexDirection: 'row',
 })
+
+const ExternalSite = styledNative(InitialExternalSite).attrs(({ theme }) => ({
+  size: theme.buttons.linearGradient.iconSize,
+  color: theme.buttons.linearGradient.iconColor,
+}))``

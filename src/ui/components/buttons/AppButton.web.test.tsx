@@ -2,23 +2,17 @@ import React from 'react'
 
 import { render } from 'tests/utils/web'
 import { Close } from 'ui/svg/icons/Close'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { AppButton } from './AppButton'
 
 describe('AppButton Component', () => {
   describe('* Icon property', () => {
     it('should display icon when provided', () => {
-      const { getByTestId } = render(
-        <AppButton wording="Testing Disabled" loadingIconColor={ColorsEnum.BLACK} icon={Close} />
-      )
+      const { getByTestId } = render(<AppButton wording="Testing Disabled" icon={Close} />)
       getByTestId('button-icon')
     })
     it('should not display icon when not provided', () => {
-      const { queryByTestId } = render(
-        <AppButton wording="Testing Disabled" loadingIconColor={ColorsEnum.BLACK} />
-      )
+      const { queryByTestId } = render(<AppButton wording="Testing Disabled" />)
       const icon = queryByTestId('button-icon')
       expect(icon).toBeFalsy()
     })
@@ -26,12 +20,7 @@ describe('AppButton Component', () => {
   describe('* isLoading property', () => {
     it('should display right elements when isLoading equals true', () => {
       const { getByTestId, queryByTestId } = render(
-        <AppButton
-          wording="Testing Disabled"
-          loadingIconColor={ColorsEnum.BLACK}
-          isLoading
-          icon={Close}
-        />
+        <AppButton wording="Testing Disabled" isLoading icon={Close} />
       )
       getByTestId('button-isloading-icon')
       const icon = queryByTestId('button-icon')
@@ -39,12 +28,7 @@ describe('AppButton Component', () => {
     })
     it('should display right elements when isLoading equals false', () => {
       const { getByTestId, queryByTestId } = render(
-        <AppButton
-          wording="Testing Disabled"
-          loadingIconColor={ColorsEnum.BLACK}
-          isLoading={false}
-          icon={Close}
-        />
+        <AppButton wording="Testing Disabled" isLoading={false} icon={Close} />
       )
 
       getByTestId('button-icon')
@@ -55,14 +39,7 @@ describe('AppButton Component', () => {
 
   describe('* inline property', () => {
     it('should use inline css style when true', () => {
-      const renderAPI = render(
-        <AppButton
-          wording="Testing inline"
-          loadingIconColor={ColorsEnum.BLACK}
-          icon={Close}
-          inline
-        />
-      )
+      const renderAPI = render(<AppButton wording="Testing inline" icon={Close} inline />)
       expect(renderAPI).toMatchSnapshot()
     })
   })
