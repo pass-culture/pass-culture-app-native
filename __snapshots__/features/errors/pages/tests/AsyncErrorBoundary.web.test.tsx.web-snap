@@ -67,13 +67,15 @@ Object {
             class="css-view-1dbjc4n"
             style="height: 20px;"
           />
-          <div
-            class="css-text-901oao"
+          <h1
+            aria-level="1"
+            class="css-reset-4rbku5 css-text-901oao"
             dir="auto"
+            role="heading"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; text-align: center;"
           >
             Oups !
-          </div>
+          </h1>
           <div
             class="css-view-1dbjc4n"
             style="height: 20px;"
@@ -184,13 +186,15 @@ Object {
           class="css-view-1dbjc4n"
           style="height: 20px;"
         />
-        <div
-          class="css-text-901oao"
+        <h1
+          aria-level="1"
+          class="css-reset-4rbku5 css-text-901oao"
           dir="auto"
+          role="heading"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; text-align: center;"
         >
           Oups !
-        </div>
+        </h1>
         <div
           class="css-view-1dbjc4n"
           style="height: 20px;"

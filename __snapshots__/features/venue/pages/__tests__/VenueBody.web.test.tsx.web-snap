@@ -210,14 +210,16 @@ Object {
               class="css-view-1dbjc4n"
               style="height: 8px;"
             />
-            <div
-              class="css-text-901oao css-textMultiLine-cens5h"
+            <h3
+              aria-level="3"
+              class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
               data-testid="venueTitle"
               dir="auto"
+              role="heading"
               style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px; text-align: center;"
             >
               Le Petit Rintintin 1
-            </div>
+            </h3>
             <div
               class="css-view-1dbjc4n"
               style="height: 16px;"
@@ -380,14 +382,16 @@ Object {
               class="css-view-1dbjc4n"
               style="align-items: center; flex-direction: row; margin-right: 24px; margin-left: 24px;"
             >
-              <div
-                class="css-text-901oao css-textMultiLine-cens5h"
+              <h4
+                aria-level="4"
+                class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
                 data-testid="playlistTitle"
                 dir="auto"
+                role="heading"
                 style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
               >
                 Offres
-              </div>
+              </h4>
               <div
                 class="css-view-1dbjc4n"
                 style="width: 16px;"
@@ -702,13 +706,15 @@ Object {
               class="css-view-1dbjc4n"
               style="height: 24px;"
             />
-            <div
-              class="css-text-901oao"
+            <h4
+              aria-level="4"
+              class="css-reset-4rbku5 css-text-901oao"
               dir="auto"
+              role="heading"
               style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
             >
               Où ?
-            </div>
+            </h4>
             <div
               class="css-view-1dbjc4n"
               style="height: 16px;"
@@ -789,13 +795,15 @@ Object {
             style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
             tabindex="0"
           >
-            <div
-              class="css-text-901oao"
+            <h2
+              aria-level="2"
+              class="css-reset-4rbku5 css-text-901oao"
               dir="auto"
+              role="heading"
               style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
             >
               Modalités de retrait
-            </div>
+            </h2>
             <div
               class="css-view-1dbjc4n"
               data-testid="accordionArrow"
@@ -869,13 +877,15 @@ Object {
             style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
             tabindex="0"
           >
-            <div
-              class="css-text-901oao"
+            <h2
+              aria-level="2"
+              class="css-reset-4rbku5 css-text-901oao"
               dir="auto"
+              role="heading"
               style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
             >
               Accessibilité
-            </div>
+            </h2>
             <div
               class="css-view-1dbjc4n"
               data-testid="accordionArrow"
@@ -1172,13 +1182,15 @@ Object {
             style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
             tabindex="0"
           >
-            <div
-              class="css-text-901oao"
+            <h2
+              aria-level="2"
+              class="css-reset-4rbku5 css-text-901oao"
               dir="auto"
+              role="heading"
               style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
             >
               Contact
-            </div>
+            </h2>
             <div
               class="css-view-1dbjc4n"
               data-testid="accordionArrow"
@@ -1447,14 +1459,16 @@ Object {
             class="css-view-1dbjc4n"
             style="height: 8px;"
           />
-          <div
-            class="css-text-901oao css-textMultiLine-cens5h"
+          <h3
+            aria-level="3"
+            class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
             data-testid="venueTitle"
             dir="auto"
+            role="heading"
             style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px; text-align: center;"
           >
             Le Petit Rintintin 1
-          </div>
+          </h3>
           <div
             class="css-view-1dbjc4n"
             style="height: 16px;"
@@ -1617,14 +1631,16 @@ Object {
             class="css-view-1dbjc4n"
             style="align-items: center; flex-direction: row; margin-right: 24px; margin-left: 24px;"
           >
-            <div
-              class="css-text-901oao css-textMultiLine-cens5h"
+            <h4
+              aria-level="4"
+              class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
               data-testid="playlistTitle"
               dir="auto"
+              role="heading"
               style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
             >
               Offres
-            </div>
+            </h4>
             <div
               class="css-view-1dbjc4n"
               style="width: 16px;"
@@ -1939,13 +1955,15 @@ Object {
             class="css-view-1dbjc4n"
             style="height: 24px;"
           />
-          <div
-            class="css-text-901oao"
+          <h4
+            aria-level="4"
+            class="css-reset-4rbku5 css-text-901oao"
             dir="auto"
+            role="heading"
             style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
           >
             Où ?
-          </div>
+          </h4>
           <div
             class="css-view-1dbjc4n"
             style="height: 16px;"
@@ -2026,13 +2044,15 @@ Object {
           style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
           tabindex="0"
         >
-          <div
-            class="css-text-901oao"
+          <h2
+            aria-level="2"
+            class="css-reset-4rbku5 css-text-901oao"
             dir="auto"
+            role="heading"
             style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
           >
             Modalités de retrait
-          </div>
+          </h2>
           <div
             class="css-view-1dbjc4n"
             data-testid="accordionArrow"
@@ -2106,13 +2126,15 @@ Object {
           style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
           tabindex="0"
         >
-          <div
-            class="css-text-901oao"
+          <h2
+            aria-level="2"
+            class="css-reset-4rbku5 css-text-901oao"
             dir="auto"
+            role="heading"
             style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
           >
             Accessibilité
-          </div>
+          </h2>
           <div
             class="css-view-1dbjc4n"
             data-testid="accordionArrow"
@@ -2409,13 +2431,15 @@ Object {
           style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
           tabindex="0"
         >
-          <div
-            class="css-text-901oao"
+          <h2
+            aria-level="2"
+            class="css-reset-4rbku5 css-text-901oao"
             dir="auto"
+            role="heading"
             style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
           >
             Contact
-          </div>
+          </h2>
           <div
             class="css-view-1dbjc4n"
             data-testid="accordionArrow"

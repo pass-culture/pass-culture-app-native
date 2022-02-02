@@ -5,14 +5,16 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div
-        class="css-text-901oao"
+      <h4
+        aria-level="4"
+        class="css-reset-4rbku5 css-text-901oao"
         data-testid="DuoStep"
         dir="auto"
+        role="heading"
         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
       >
         Nombre de place
-      </div>
+      </h4>
       <div
         class="css-view-1dbjc4n"
         style="height: 8px;"
@@ -144,14 +146,16 @@ Object {
     </div>
   </body>,
   "container": <div>
-    <div
-      class="css-text-901oao"
+    <h4
+      aria-level="4"
+      class="css-reset-4rbku5 css-text-901oao"
       data-testid="DuoStep"
       dir="auto"
+      role="heading"
       style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
     >
       Nombre de place
-    </div>
+    </h4>
     <div
       class="css-view-1dbjc4n"
       style="height: 8px;"

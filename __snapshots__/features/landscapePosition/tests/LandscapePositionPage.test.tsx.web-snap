@@ -118,9 +118,11 @@ exports[`<LandscapePositionPage /> should match snapshot with default message 1`
           }
         }
       />
-      <div
-        className="css-text-901oao"
+      <h1
+        aria-level={1}
+        className="css-reset-4rbku5 css-text-901oao"
         dir="auto"
+        role="heading"
         style={
           Object {
             "color": "rgba(255,255,255,1.00)",
@@ -132,7 +134,7 @@ exports[`<LandscapePositionPage /> should match snapshot with default message 1`
         }
       >
         Tourne-moi
-      </div>
+      </h1>
       <div
         className="css-view-1dbjc4n"
         style={

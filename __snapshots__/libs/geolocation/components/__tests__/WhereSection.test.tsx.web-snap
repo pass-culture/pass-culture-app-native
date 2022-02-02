@@ -10,9 +10,11 @@ Array [
       }
     }
   />,
-  <div
-    className="css-text-901oao"
+  <h4
+    aria-level={4}
+    className="css-reset-4rbku5 css-text-901oao"
     dir="auto"
+    role="heading"
     style={
       Object {
         "color": "rgba(22,22,23,1.00)",
@@ -23,7 +25,7 @@ Array [
     }
   >
     Où ?
-  </div>,
+  </h4>,
   <div
     className="css-view-1dbjc4n"
     style={
@@ -331,7 +333,7 @@ exports[`WhereSection should render correctly 2`] = `
 - First value
 + Second value
 
-@@ -28,10 +28,135 @@
+@@ -30,10 +30,135 @@
           \\"height\\": \\"16px\\",
         }
       }

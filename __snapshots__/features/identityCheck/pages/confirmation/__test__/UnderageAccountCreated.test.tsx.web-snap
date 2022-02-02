@@ -89,9 +89,11 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
       }
     }
   />
-  <div
-    className="css-text-901oao"
+  <h1
+    aria-level={1}
+    className="css-reset-4rbku5 css-text-901oao"
     dir="auto"
+    role="heading"
     style={
       Object {
         "color": "rgba(22,22,23,1.00)",
@@ -103,7 +105,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
     }
   >
     Bonne nouvelle !
-  </div>
+  </h1>
   <div
     className="css-view-1dbjc4n"
     style={
@@ -121,9 +123,11 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
       }
     }
   />
-  <div
-    className="css-text-901oao"
+  <h4
+    aria-level={4}
+    className="css-reset-4rbku5 css-text-901oao"
     dir="auto"
+    role="heading"
     style={
       Object {
         "color": "rgba(22,22,23,1.00)",
@@ -135,7 +139,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
     }
   >
     300 € viennent d'être crédités sur ton compte pass Culture
-  </div>
+  </h4>
   <div
     className="css-view-1dbjc4n"
     style={
@@ -271,9 +275,11 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
         />
       </div>
     </div>
-    <div
-      className="css-text-901oao"
+    <h2
+      aria-level={2}
+      className="css-reset-4rbku5 css-text-901oao"
       dir="auto"
+      role="heading"
       style={
         Object {
           "color": "rgba(22,22,23,1.00)",
@@ -285,7 +291,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
       }
     >
       300 €
-    </div>
+    </h2>
   </div>
   <div
     className="css-view-1dbjc4n"

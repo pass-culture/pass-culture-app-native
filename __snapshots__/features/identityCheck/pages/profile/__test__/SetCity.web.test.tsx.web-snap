@@ -17,13 +17,15 @@ Object {
           class="css-view-1dbjc4n"
           style="align-items: center; flex-direction: row; height: 64px; justify-content: center;"
         >
-          <div
-            class="css-text-901oao"
+          <h4
+            aria-level="4"
+            class="css-reset-4rbku5 css-text-901oao"
             dir="auto"
+            role="heading"
             style="color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
           >
             Profil
-          </div>
+          </h4>
           <div
             aria-label="Revenir en arrière"
             class="css-view-1dbjc4n"
@@ -71,13 +73,15 @@ Object {
                       class="css-view-1dbjc4n"
                       style="align-items: center; width: 100%;"
                     >
-                      <div
-                        class="css-text-901oao"
+                      <h1
+                        aria-level="1"
+                        class="css-reset-4rbku5 css-text-901oao"
                         dir="auto"
+                        role="heading"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                       >
                         Dans quelle ville résides-tu ?
-                      </div>
+                      </h1>
                     </div>
                     <div
                       class="css-view-1dbjc4n"
@@ -197,13 +201,15 @@ Object {
         class="css-view-1dbjc4n"
         style="align-items: center; flex-direction: row; height: 64px; justify-content: center;"
       >
-        <div
-          class="css-text-901oao"
+        <h4
+          aria-level="4"
+          class="css-reset-4rbku5 css-text-901oao"
           dir="auto"
+          role="heading"
           style="color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
         >
           Profil
-        </div>
+        </h4>
         <div
           aria-label="Revenir en arrière"
           class="css-view-1dbjc4n"
@@ -251,13 +257,15 @@ Object {
                     class="css-view-1dbjc4n"
                     style="align-items: center; width: 100%;"
                   >
-                    <div
-                      class="css-text-901oao"
+                    <h1
+                      aria-level="1"
+                      class="css-reset-4rbku5 css-text-901oao"
                       dir="auto"
+                      role="heading"
                       style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                     >
                       Dans quelle ville résides-tu ?
-                    </div>
+                    </h1>
                   </div>
                   <div
                     class="css-view-1dbjc4n"
