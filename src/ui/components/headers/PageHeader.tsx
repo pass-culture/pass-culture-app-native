@@ -11,6 +11,7 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
+import { getTitleAttrs } from 'ui/theme/typography'
 import { Header } from 'ui/web/global/Header'
 
 interface Props {
@@ -77,9 +78,10 @@ const Container = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.primary,
 }))
 
-const Title = styled(Typo.Body).attrs({
+const Title = styled(Typo.Body).attrs(() => ({
   numberOfLines: 1,
-})(({ theme }) => ({
+  ...getTitleAttrs(1),
+}))(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

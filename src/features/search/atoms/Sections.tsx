@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { getSpacing, Typo, Spacer } from 'ui/theme'
+import { getTitleAttrs } from 'ui/theme/typography'
 
 import { TitleWithCount } from './TitleWithCount'
 
@@ -10,7 +11,7 @@ export const CenteredSection: React.FC<{
   children: JSX.Element | Array<JSX.Element | null>
 }> = ({ title, children }) => (
   <MarginHorizontalContainer>
-    <Typo.Title4>{title}</Typo.Title4>
+    <Title>{title}</Title>
     <Spacer.Column numberOfSpaces={4} />
     <Center>{children}</Center>
   </MarginHorizontalContainer>
@@ -22,7 +23,9 @@ export const Section: React.FC<{
   children: JSX.Element | Array<JSX.Element | null>
 }> = ({ title, count, children }) => (
   <MarginHorizontalContainer>
-    <TitleWithCount title={title} count={count} />
+    <Title>
+      <TitleWithCount title={title} count={count} />
+    </Title>
     <Spacer.Column numberOfSpaces={4} />
     {children}
   </MarginHorizontalContainer>
@@ -60,6 +63,8 @@ const InlineSectionTitleContainer = styled.View({
   alignItems: 'center',
 })
 
-const StyledTitle = styled(Typo.Title4)(({ theme }) => ({
+const StyledTitle = styled(Typo.Title4).attrs(() => getTitleAttrs(2))(({ theme }) => ({
   flex: theme.isMobileViewport ? 1 : undefined,
 }))
+
+const Title = styled(Typo.Title4).attrs(() => getTitleAttrs(2))``

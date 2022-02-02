@@ -15,6 +15,7 @@ import {
 import styled from 'styled-components/native'
 
 import { useFunctionOnce } from 'libs/hooks'
+import { getTitleAttrs } from 'ui/theme/typography'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { ArrowNext } from '../svg/icons/ArrowNext'
@@ -129,7 +130,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const Title = styled(Typo.Title4)({
+const Title = styled(Typo.Title4).attrs(() => getTitleAttrs(2))({
   flex: '0.9',
 })
 

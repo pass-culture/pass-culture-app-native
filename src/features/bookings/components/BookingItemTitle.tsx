@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { getSpacing, Typo } from 'ui/theme'
+import { getTitleAttrs } from 'ui/theme/typography'
 
 type Props = {
   title: string
@@ -10,12 +11,16 @@ type Props = {
 export function BookingItemTitle(props: Props) {
   return (
     <TitleContainer>
-      <Typo.ButtonText numberOfLines={2} shrink>
-        {props.title}
-      </Typo.ButtonText>
+      <ButtonText>{props.title}</ButtonText>
     </TitleContainer>
   )
 }
+
+const ButtonText = styled(Typo.ButtonText).attrs(() => ({
+  numberOfLines: 2,
+  shrink: true,
+  ...getTitleAttrs(3),
+}))``
 
 const TitleContainer = styled.View({
   flexDirection: 'row',

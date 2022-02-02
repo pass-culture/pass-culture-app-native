@@ -18,6 +18,7 @@ import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getTitleAttrs } from 'ui/theme/typography'
 
 import { BookingButton } from './BookingButton'
 
@@ -197,7 +198,7 @@ const ButtonsRow = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(6),
 }))
 
-const Name = styled(Typo.ButtonText)({})
+const Name = styled(Typo.ButtonText).attrs(() => getTitleAttrs(3))``
 
 const Distance = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'right',
