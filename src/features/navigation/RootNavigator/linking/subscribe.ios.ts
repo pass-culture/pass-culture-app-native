@@ -7,7 +7,7 @@ import { Linking } from 'react-native'
 export function subscribe(listener: (deeplink: string) => void) {
   // Default deeplink handling
   const onReceiveURL = ({ url }: { url: string }) => listener(url)
-  Linking.addEventListener('url', onReceiveURL)
+  const subscription = Linking.addEventListener('url', onReceiveURL)
 
   // Dynamic links
   const handleDynamicLink = (dynamicLink: FirebaseDynamicLinksTypes.DynamicLink) => {
@@ -17,6 +17,6 @@ export function subscribe(listener: (deeplink: string) => void) {
 
   return () => {
     unsubscribeToDynamicLinks()
-    Linking.removeEventListener('url', onReceiveURL)
+    subscription.remove()
   }
 }

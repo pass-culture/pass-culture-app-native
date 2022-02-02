@@ -23,9 +23,9 @@ reactQueryFocusManager.setEventListener((handleFocus) => {
       setTimeout(handleFocus, 500)
     }
   }
-  AppState.addEventListener('change', triggerReactQueryFocusOnBecomeActive)
+  const subscription = AppState.addEventListener('change', triggerReactQueryFocusOnBecomeActive)
   return () => {
-    AppState.removeEventListener('change', triggerReactQueryFocusOnBecomeActive)
+    subscription.remove()
   }
 })
 
