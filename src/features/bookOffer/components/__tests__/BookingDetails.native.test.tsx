@@ -192,31 +192,33 @@ describe('<BookingDetails />', () => {
     }
   )
 
-  it('should not display the Duo selector when the offer is not duo', async () => {
-    mockBookingState = {
-      bookingState: mockInitialBookingState,
-      dismissModal: mockDismissModal,
-      dispatch: mockDispatch,
-    }
+  describe('duo selector', () => {
+    it('should not display the Duo selector when the offer is not duo', async () => {
+      mockBookingState = {
+        bookingState: mockInitialBookingState,
+        dismissModal: mockDismissModal,
+        dispatch: mockDispatch,
+      }
 
-    const { queryByTestId } = await renderBookingDetails(mockDigitalStocks)
+      const { queryByTestId } = await renderBookingDetails(mockDigitalStocks)
 
-    expect(queryByTestId('DuoChoiceSelector')).toBeFalsy()
-  })
+      expect(queryByTestId('DuoChoiceSelector')).toBeFalsy()
+    })
 
-  it('should display the Duo selector when the offer is duo', async () => {
-    mockUseBookingOffer.mockReturnValueOnce({ ...mockOffer, isDuo: true })
+    it('should display the Duo selector when the offer is duo', async () => {
+      mockUseBookingOffer.mockReturnValueOnce({ ...mockOffer, isDuo: true })
 
-    const duoBookingState: BookingState = { ...mockInitialBookingState, quantity: 2 }
-    mockBookingState = {
-      bookingState: duoBookingState,
-      dismissModal: mockDismissModal,
-      dispatch: mockDispatch,
-    }
+      const duoBookingState: BookingState = { ...mockInitialBookingState, quantity: 2 }
+      mockBookingState = {
+        bookingState: duoBookingState,
+        dismissModal: mockDismissModal,
+        dispatch: mockDispatch,
+      }
 
-    const { queryByTestId } = await renderBookingDetails(mockDigitalStocks)
+      const { queryByTestId } = await renderBookingDetails(mockDigitalStocks)
 
-    expect(queryByTestId('DuoChoiceSelector')).toBeTruthy()
+      expect(queryByTestId('DuoChoiceSelector')).toBeTruthy()
+    })
   })
 })
 
