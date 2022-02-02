@@ -35,6 +35,10 @@ export function getYears(startYear: number, numberOfYears: number) {
   return range(startYear, startYear + numberOfYears, 1)
 }
 
+export function getPastYears(startYear: number, currentYear: number) {
+  return range(startYear, currentYear + 1, 1).reverse()
+}
+
 /**
  * Returns a list of dates such as [1, 2, ..., 31].
  * Example :
