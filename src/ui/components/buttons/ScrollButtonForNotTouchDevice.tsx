@@ -1,8 +1,27 @@
+import { t } from '@lingui/macro'
+import React from 'react'
 import styled from 'styled-components/native'
 
 import { getSpacing } from 'ui/theme'
 
-export const ScrollButtonForNotTouchDevice = styled.TouchableOpacity<{
+type Props = {
+  horizontalAlign: 'left' | 'right'
+  top?: number
+  children?: JSX.Element
+  onPress?: () => void
+}
+
+export function ScrollButtonForNotTouchDevice(props: Props) {
+  const accessibilityDescription =
+    props.horizontalAlign === 'left'
+      ? t`voir les propositions précédentes`
+      : t`voir les propositions suivantes`
+  return (
+    <StyledTouchable {...props} aria-describedby={accessibilityDescription} aria-role="button" />
+  )
+}
+
+const StyledTouchable = styled.TouchableOpacity<{
   horizontalAlign: 'left' | 'right'
   top?: number
 }>(({ theme, top, horizontalAlign }) => ({

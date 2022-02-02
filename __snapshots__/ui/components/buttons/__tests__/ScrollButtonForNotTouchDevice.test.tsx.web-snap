@@ -2,6 +2,8 @@
 
 exports[`<ScrollButtonForNotTouchDevice /> should render correctly on left direction 1`] = `
 <div
+  aria-describedby="voir les propositions précédentes"
+  aria-role="button"
   className="css-view-1dbjc4n"
   onClick={[Function]}
   onContextMenu={[Function]}
@@ -61,6 +63,8 @@ exports[`<ScrollButtonForNotTouchDevice /> should render correctly on left direc
 
 exports[`<ScrollButtonForNotTouchDevice /> should render correctly on right direction 1`] = `
 <div
+  aria-describedby="voir les propositions suivantes"
+  aria-role="button"
   className="css-view-1dbjc4n"
   onClick={[Function]}
   onContextMenu={[Function]}
@@ -120,6 +124,8 @@ exports[`<ScrollButtonForNotTouchDevice /> should render correctly on right dire
 
 exports[`<ScrollButtonForNotTouchDevice /> should render correctly when no top given 1`] = `
 <div
+  aria-describedby="voir les propositions suivantes"
+  aria-role="button"
   className="css-view-1dbjc4n"
   onClick={[Function]}
   onContextMenu={[Function]}
