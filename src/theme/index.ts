@@ -466,7 +466,7 @@ export const theme: AppThemeType = {
     },
     quaternary: {
       loadingIconColor: ColorsEnum.PRIMARY_DARK,
-      iconColor: ColorsEnum.PRIMARY_DARK,
+      iconColor: ColorsEnum.PRIMARY,
       textColor: ColorsEnum.PRIMARY,
       backgroundColor: ColorsEnum.TRANSPARENT,
     },
