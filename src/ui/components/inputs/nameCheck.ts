@@ -3,11 +3,12 @@ const NUMBER_REGEX = /[0-9]+/
 const LATIN_REGEX = /\p{sc=Latin}|[',-. ]/gu
 
 export function isNameValid(name: string) {
+  const trimmedName = name.trim()
   return (
-    name.length > 0 &&
-    containsOnlyLatinCharacters(name) &&
-    !containsNumber(name) &&
-    !containsSpecialCharacterAtTheBeginningOrEnd(name)
+    trimmedName.length > 0 &&
+    containsOnlyLatinCharacters(trimmedName) &&
+    !containsNumber(trimmedName) &&
+    !containsSpecialCharacterAtTheBeginningOrEnd(trimmedName)
   )
 }
 

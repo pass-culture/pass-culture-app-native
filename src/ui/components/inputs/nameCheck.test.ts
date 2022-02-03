@@ -8,15 +8,15 @@ describe('isNameValid function', () => {
     'Loïc',
     'Martin king, Jr.',
     'àâçéèêîôœùûÀÂÇÉÈÊÎÔŒÙÛ',
-  ])('should accept a well formated name: %s', (email) => {
-    const isValid = isNameValid(email)
+  ])('should accept a well formatted name: %s', (name) => {
+    const isValid = isNameValid(name)
     expect(isValid).toEqual(true)
   })
 
-  it.each(['J@hn', 'John123', '-John', "'John", 'John-', "John'", 'ჯონ', '𝘑𝘦𝘢𝘯 𝘩𝘦𝘯𝘳𝘺'])(
-    'should reject a unwell formated name: %s',
-    (email) => {
-      const isValid = isNameValid(email)
+  it.each(['J@hn', 'John123', '-John', "'John", 'John-', "John'", 'ჯონ', '𝘑𝘦𝘢𝘯 𝘩𝘦𝘯𝘳𝘺', ' ', '  '])(
+    'should reject a unwell formatted name: %s',
+    (name) => {
+      const isValid = isNameValid(name)
       expect(isValid).toEqual(false)
     }
   )
