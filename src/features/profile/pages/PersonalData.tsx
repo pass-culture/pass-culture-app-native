@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { useUserProfileInfo } from 'features/home/api'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
-import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
 import { EditPen } from 'ui/svg/icons/EditPen'
@@ -45,7 +45,7 @@ export function PersonalData() {
           <Spacer.Column numberOfSpaces={2} />
           <EmailContainer>
             <EmailText>{user?.email}</EmailText>
-            <ButtonTertiary wording={t`Modifier`} icon={EditPen} inline onPress={onEmailChange} />
+            <ButtonQuaternary wording={t`Modifier`} icon={EditPen} inline onPress={onEmailChange} />
           </EmailContainer>
         </Row>
         <Separator />
