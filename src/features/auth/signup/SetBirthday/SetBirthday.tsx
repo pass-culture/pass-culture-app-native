@@ -27,6 +27,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
 
   const [date, setDate] = useState<Date>(CURRENT_DATE)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+  const [isDisabled, setIsDisabled] = useState(true)
 
   const { visible, showModal: showInformationModal, hideModal } = useModal(false)
 
@@ -35,27 +36,33 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
     showInformationModal()
   }
 
-  const SELECTED_DATE_WITHOUT_TIME = formatDateToISOStringWithoutTime(date)
-  const isDisabled = CURRENT_DATE_WITHOUT_TIME === SELECTED_DATE_WITHOUT_TIME
-
   const { data: settings } = useAppSettings()
   const youngestAge = settings?.accountCreationMinimumAge ?? DEFAULT_YOUNGEST_AGE
 
   useEffect(() => {
+    const selected_date_without_time = formatDateToISOStringWithoutTime(date)
     const age = dateDiffInFullYears(date, CURRENT_DATE)
-    if (!isDisabled && age < 15) {
-      analytics.logSignUpTooYoung(age)
-      return setErrorMessage(
-        t`Tu dois avoir au moins\u00a0${youngestAge}\u00a0ans pour t’inscrire au pass Culture`
+
+    if (selected_date_without_time === CURRENT_DATE_WITHOUT_TIME) {
+      return setIsDisabled(true), setErrorMessage(null)
+    }
+    if (age < 15) {
+      return (
+        analytics.logSignUpTooYoung(age),
+        setIsDisabled(true),
+        setErrorMessage(
+          t`Tu dois avoir au moins\u00a0${youngestAge}\u00a0ans pour t’inscrire au pass Culture`
+        )
       )
     }
-    return setErrorMessage(null)
+    setIsDisabled(false)
+    setErrorMessage(null)
   }, [date])
 
   function goToNextStep() {
-    if (date) {
-      const birthday = SELECTED_DATE_WITHOUT_TIME
-      props.goToNextStep({ birthdate: birthday })
+    const birthdate = formatDateToISOStringWithoutTime(date)
+    if (birthdate) {
+      props.goToNextStep({ birthdate })
     }
   }
 
@@ -71,7 +78,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
         <DateInput date={date} isFocus={!isDisabled} isError={!!errorMessage} />
         {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={2} />}
         <Spacer.Column numberOfSpaces={5} />
-        <StyledDatePicker
+        <SpinnerDatePicker
           testID="datePicker"
           date={date}
           onDateChange={setDate}
@@ -100,6 +107,6 @@ const InnerContainer = styled.View({
   alignItems: 'center',
 })
 
-const StyledDatePicker = styled(DatePicker).attrs(({ theme }) => ({
+const SpinnerDatePicker = styled(DatePicker).attrs(({ theme }) => ({
   textColor: theme.colors.black,
 }))({ width: '100%' })

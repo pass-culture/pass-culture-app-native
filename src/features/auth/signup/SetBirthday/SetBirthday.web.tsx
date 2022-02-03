@@ -4,12 +4,9 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
 import { BirthdayInformationModal } from 'features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal'
-import {
-  DateInput,
-  DateInputRef,
-  DateValidation,
-} from 'features/auth/signup/SetBirthday/DateInput/DateInput.web'
-import { DatePickerTouch } from 'features/auth/signup/SetBirthday/DatePickerWeb.tsx/DatePickerTouch'
+import { DateInputDesktop } from 'features/auth/signup/SetBirthday/DateInput/DateInputDesktop'
+import { DateInputRef, DateValidation } from 'features/auth/signup/SetBirthday/DateInput/utils'
+import { DatePickerTouch } from 'features/auth/signup/SetBirthday/DatePicker/DatePickerTouch.web'
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
 import { analytics } from 'libs/analytics'
 import { dateDiffInFullYears } from 'libs/dates'
@@ -123,14 +120,14 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
         />
         {isTouch ? (
           <DatePickerTouch
-            goToNextStep={goToNextStep}
+            goToNextStep={props.goToNextStep}
             accessibilityLabelForNextStep={props.accessibilityLabelForNextStep}
           />
         ) : (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={8} />
             <DateInputContainer>
-              <DateInput
+              <DateInputDesktop
                 autoFocus={true}
                 onChangeValue={onChangeValue}
                 ref={dateInputRef}
@@ -158,7 +155,6 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
     </Form.MaxWidth>
   )
 }
-
 const InnerContainer = styled.View({
   width: '100%',
   alignItems: 'center',

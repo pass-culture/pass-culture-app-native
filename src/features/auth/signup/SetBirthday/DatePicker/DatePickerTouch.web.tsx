@@ -4,6 +4,7 @@ import Picker from 'react-mobile-picker'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
+import { DateInput } from 'features/auth/signup/SetBirthday/DateInput/DateInput'
 import { SignupData } from 'features/auth/signup/types'
 import {
   getDatesInMonth,
@@ -17,6 +18,7 @@ import { formatDateToISOStringWithoutTime, pad } from 'libs/parsers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Spacer } from 'ui/theme'
+
 interface Props {
   accessibilityLabelForNextStep?: string
   goToNextStep: (signupData: Partial<SignupData>) => void
@@ -35,11 +37,7 @@ export function DatePickerTouch(props: Props) {
     year: CURRENT_DATE.getFullYear(),
   })
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
-
-  const dateMonth = monthNamesShort.indexOf(date.month) + 1
-  const SELECTED_DATE_WITHOUT_TIME = `${date.year}-${pad(dateMonth)}-${pad(date.day)}`
-
-  const isDisabled = SELECTED_DATE_WITHOUT_TIME === CURRENT_DATE_WITHOUT_TIME
+  const [isDisabled, setIsDisabled] = useState(true)
 
   const { optionGroups } = useMemo(() => {
     const { month: selectedMonth, year: selectedYear } = date
@@ -58,42 +56,60 @@ export function DatePickerTouch(props: Props) {
   const youngestAge = settings?.accountCreationMinimumAge ?? DEFAULT_YOUNGEST_AGE
 
   useEffect(() => {
-    const age = dateDiffInFullYears(new Date(SELECTED_DATE_WITHOUT_TIME), CURRENT_DATE)
-    if (isDisabled) {
-      return setErrorMessage(null)
-    } else if (age < 0) {
-      return setErrorMessage(t`Tu ne peux pas choisir une date dans le futur`)
-    } else if (age < 15) {
-      analytics.logSignUpTooYoung(age)
-      return setErrorMessage(
-        t`Tu dois avoir au moins\u00a0${youngestAge}\u00a0ans pour t’inscrire au pass Culture`
+    const dateMonth = monthNamesShort.indexOf(date.month) + 1
+    const selected_date_without_time = `${date.year}-${pad(dateMonth)}-${pad(date.day)}`
+    const age = dateDiffInFullYears(new Date(selected_date_without_time), CURRENT_DATE)
+
+    if (selected_date_without_time === CURRENT_DATE_WITHOUT_TIME) {
+      return setIsDisabled(true), setErrorMessage(null)
+    }
+    if (age < 0) {
+      return (
+        setIsDisabled(true),
+        setErrorMessage(t`Tu ne peux pas choisir une date dans le futur`),
+        setIsDisabled(true)
       )
     }
-    return setErrorMessage(null)
-  }, [date, isDisabled])
+    if (age < 15) {
+      return (
+        analytics.logSignUpTooYoung(age),
+        setIsDisabled(true),
+        setErrorMessage(
+          t`Tu dois avoir au moins\u00a0${youngestAge}\u00a0ans pour t’inscrire au pass Culture`
+        )
+      )
+    }
+    setIsDisabled(false)
+    setErrorMessage(null)
+  }, [date])
 
   function onDateChange(name: string, value: number | string) {
     setDate((prevDateValues) => ({ ...prevDateValues, [name]: value }))
   }
 
+  const dateMonth = monthNamesShort.indexOf(date.month) + 1
+  const birthdate = `${date.year}-${pad(dateMonth)}-${pad(date.day)}`
+
   function goToNextStep() {
-    if (date) {
-      props.goToNextStep({ birthdate: SELECTED_DATE_WITHOUT_TIME })
+    if (birthdate) {
+      props.goToNextStep({ birthdate })
     }
   }
 
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={2} />
+      <DateInput date={new Date(birthdate)} isFocus={!isDisabled} isError={!!errorMessage} />
+      {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={2} />}
+      <Spacer.Column numberOfSpaces={2} />
       <CalendarPickerWrapper>
         <Picker valueGroups={date} optionGroups={optionGroups} onChange={onDateChange} />
       </CalendarPickerWrapper>
-      {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={2} />}
       <Spacer.Column numberOfSpaces={2} />
       <ButtonPrimary
         wording={t`Continuer`}
         accessibilityLabel={props.accessibilityLabelForNextStep}
-        disabled={isDisabled || !!errorMessage}
+        disabled={isDisabled}
         onPress={goToNextStep}
       />
       <Spacer.Column numberOfSpaces={2} />
@@ -104,7 +120,6 @@ export function DatePickerTouch(props: Props) {
 const CalendarPickerWrapper = styled.View(({ theme }) => ({
   alignSelf: 'stretch',
   flexDirection: 'row',
-  alignItems: 'stretch',
   fontFamily: theme.fontFamily.regular,
   userSelect: 'none',
 }))

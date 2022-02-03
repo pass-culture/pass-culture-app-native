@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 // @ts-ignore : problem with the module typing
 import validateDate from 'validate-date'
 
+import { DateInputRef, DateValidation } from 'features/auth/signup/SetBirthday/DateInput/utils'
 import { accessibilityAndTestId } from 'tests/utils'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { Typo } from 'ui/theme'
@@ -22,13 +23,6 @@ interface ValidationBarProps {
   onFocus: () => void
 }
 
-export interface DateValidation {
-  isComplete: boolean
-  isValid: boolean
-  isDateAboveMin: boolean
-  isDateBelowMax: boolean
-}
-
 interface DateInputProps {
   autoFocus?: boolean
   onChangeValue?: (value: Date | null, dateValidation: DateValidation) => void
@@ -38,10 +32,6 @@ interface DateInputProps {
   initialMonth?: string
   initialYear?: string
   onSubmit?: () => void
-}
-
-export interface DateInputRef {
-  clearFocuses: () => void
 }
 
 const MIN_POSSIBLE_YEAR = 1
@@ -274,7 +264,7 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
   )
 }
 
-export const DateInput = forwardRef<DateInputRef, DateInputProps>(WithRefDateInput)
+export const DateInputDesktop = forwardRef<DateInputRef, DateInputProps>(WithRefDateInput)
 
 const Container = styled.View({
   flexDirection: 'column',
