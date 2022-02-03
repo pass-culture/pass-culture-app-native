@@ -19,7 +19,9 @@ export const ButtonPrimary = styled(AppButton).attrs<BaseButtonProps>(
       maxWidth: '100%',
       color: disabled ? theme.buttons.disabled.primary.textColor : theme.buttons.primary.textColor,
       fontSize: textSize,
-      marginLeft: icon ? theme.buttons.primary.marginLeftWithIcon : theme.buttons.primary.marginLeft,
+      marginLeft: icon
+        ? theme.buttons.primary.marginLeftWithIcon
+        : theme.buttons.primary.marginLeft,
     })
 
     return {

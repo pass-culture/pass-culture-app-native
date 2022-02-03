@@ -28,7 +28,9 @@ export const ButtonTertiary = styled(AppButton).attrs<BaseButtonProps>(
         ? theme.buttons.disabled.tertiary.textColor
         : theme.buttons.tertiary.textColor,
       fontSize: textSize,
-      marginLeft: icon ? theme.buttons.tertiary.marginLeftWithIcon : theme.buttons.tertiary.marginLeft,
+      marginLeft: icon
+        ? theme.buttons.tertiary.marginLeftWithIcon
+        : theme.buttons.tertiary.marginLeft,
     })
 
     return {
