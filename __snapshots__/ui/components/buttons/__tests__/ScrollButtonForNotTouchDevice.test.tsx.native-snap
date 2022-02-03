@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ScrollButtonForNotTouchDevice /> should render correctly on left direction 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  nativeID="animatedComponent"
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#ffffff",
+      "borderColor": "#CBCDD2",
+      "borderRadius": 20,
+      "borderWidth": 1,
+      "bottom": "auto",
+      "height": 40,
+      "justifyContent": "center",
+      "left": 8,
+      "marginBottom": "auto",
+      "marginLeft": "auto",
+      "marginRight": "auto",
+      "marginTop": "auto",
+      "opacity": 1,
+      "position": "absolute",
+      "right": "auto",
+      "top": 35,
+      "width": 40,
+      "zIndex": 1,
+    }
+  }
+/>
+`;
+
+exports[`<ScrollButtonForNotTouchDevice /> should render correctly on right direction 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  nativeID="animatedComponent"
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#ffffff",
+      "borderColor": "#CBCDD2",
+      "borderRadius": 20,
+      "borderWidth": 1,
+      "bottom": "auto",
+      "height": 40,
+      "justifyContent": "center",
+      "left": "auto",
+      "marginBottom": "auto",
+      "marginLeft": "auto",
+      "marginRight": "auto",
+      "marginTop": "auto",
+      "opacity": 1,
+      "position": "absolute",
+      "right": 8,
+      "top": 35,
+      "width": 40,
+      "zIndex": 1,
+    }
+  }
+/>
+`;
+
+exports[`<ScrollButtonForNotTouchDevice /> should render correctly when no top given 1`] = `
+<View
+  accessible={true}
+  collapsable={false}
+  focusable={false}
+  nativeID="animatedComponent"
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    Object {
+      "alignItems": "center",
+      "backgroundColor": "#ffffff",
+      "borderColor": "#CBCDD2",
+      "borderRadius": 20,
+      "borderWidth": 1,
+      "bottom": 0,
+      "height": 40,
+      "justifyContent": "center",
+      "left": "auto",
+      "marginBottom": "auto",
+      "marginLeft": "auto",
+      "marginRight": "auto",
+      "marginTop": "auto",
+      "opacity": 1,
+      "position": "absolute",
+      "right": 8,
+      "top": 0,
+      "width": 40,
+      "zIndex": 1,
+    }
+  }
+/>
+`;

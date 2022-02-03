@@ -3201,6 +3201,14 @@ msgstr "validé"
 msgid "venueId is undefined"
 msgstr "venueId is undefined"
 
+#: src/ui/components/buttons/ScrollButtonForNotTouchDevice.tsx
+msgid "voir les propositions précédentes"
+msgstr "voir les propositions précédentes"
+
+#: src/ui/components/buttons/ScrollButtonForNotTouchDevice.tsx
+msgid "voir les propositions suivantes"
+msgstr "voir les propositions suivantes"
+
 #: src/ui/components/PartialAccordionDescription.tsx
 msgid "voir moins"
 msgstr "voir moins"

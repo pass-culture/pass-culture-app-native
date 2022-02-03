@@ -235,6 +235,9 @@ export interface AppThemeType {
       textColor: ColorsEnum
       backgroundColor: ColorsEnum
     }
+    scrollButton: {
+      size: number
+    }
   }
 }
 
@@ -475,6 +478,9 @@ export const theme: AppThemeType = {
       iconColor: ColorsEnum.BLACK,
       textColor: ColorsEnum.BLACK,
       backgroundColor: ColorsEnum.TRANSPARENT,
+    },
+    scrollButton: {
+      size: getSpacing(10),
     },
   },
 }

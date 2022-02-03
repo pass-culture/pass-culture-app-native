@@ -5,6 +5,7 @@ import React, { useCallback, useMemo, useRef, useState } from 'react'
 import { FlatList, ListRenderItem, ListRenderItemInfo } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
+import { ScrollButtonForNotTouchDevice } from 'ui/components/buttons/ScrollButtonForNotTouchDevice'
 import { BicolorArrowLeft } from 'ui/svg/icons/BicolorArrowLeft'
 import { BicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'
 import { getSpacing } from 'ui/theme'
@@ -167,29 +168,6 @@ function getItemSteps(nbOfItems: number, itemWidth: number, playlistWidth: numbe
 }
 
 const FlatListContainer = styled.View({ position: 'relative' })
-
-const BUTTON_SIZE = getSpacing(10)
-const HALF_BUTTON_SIZE = BUTTON_SIZE / 2
-const ScrollButtonForNotTouchDevice = styled.TouchableOpacity<{
-  horizontalAlign: 'left' | 'right'
-  top?: number
-}>(({ theme, top, horizontalAlign }) => ({
-  position: 'absolute',
-  justifyContent: 'center',
-  alignItems: 'center',
-  margin: 'auto',
-  height: BUTTON_SIZE,
-  width: BUTTON_SIZE,
-  right: horizontalAlign === 'right' ? getSpacing(2) : 'auto',
-  left: horizontalAlign === 'left' ? getSpacing(2) : 'auto',
-  top: top ? top - HALF_BUTTON_SIZE : 0,
-  bottom: top ? 'auto' : 0,
-  borderWidth: 1,
-  borderRadius: HALF_BUTTON_SIZE,
-  borderColor: theme.colors.greyMedium,
-  backgroundColor: theme.colors.white,
-  zIndex: theme.zIndex.playlistsButton,
-}))
 
 const HorizontalMargin = styled.View({
   width: getSpacing(6),
