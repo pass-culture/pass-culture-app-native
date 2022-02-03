@@ -212,20 +212,47 @@ exports[`<SetName/> should render correctly 1`] = `
             }
           >
             <View>
-              <Text
+              <View
                 style={
                   Array [
                     Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "flex-end",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "width": "100%",
                     },
                   ]
                 }
               >
-                Prénom
-              </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Prénom
+                </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  Obligatoire
+                </Text>
+              </View>
               <View
                 numberOfSpaces={2}
                 style={
@@ -306,20 +333,47 @@ exports[`<SetName/> should render correctly 1`] = `
                   ]
                 }
               />
-              <Text
+              <View
                 style={
                   Array [
                     Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "alignItems": "flex-end",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "width": "100%",
                     },
                   ]
                 }
               >
-                Nom
-              </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": 15,
+                        "lineHeight": 20,
+                      },
+                    ]
+                  }
+                >
+                  Nom
+                </Text>
+                <Text
+                  style={
+                    Array [
+                      Object {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  Obligatoire
+                </Text>
+              </View>
               <View
                 numberOfSpaces={2}
                 style={

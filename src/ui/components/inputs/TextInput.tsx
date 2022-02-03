@@ -3,14 +3,20 @@ import { TextInput as RNTextInput } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { InputLabel } from 'ui/components/InputLabel'
+import { LabelContainer } from 'ui/components/inputs/LabelContainer'
+import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
 import { Spacer } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
 import { StyledInputContainer } from './StyledInputContainer'
 import { getCustomTextInputProps, getRNTextInputProps, TextInputProps } from './types'
 
-const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputProps> = (
-  props,
+interface Props extends TextInputProps {
+  isRequiredField?: boolean
+}
+
+const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
+  { isRequiredField = false, ...props },
   forwardedRef
 ) => {
   const [isFocus, setIsFocus] = useState(false)
@@ -25,7 +31,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
   function onBlur() {
     setIsFocus(false)
     if (nativeProps.onBlur) {
-      // @ts-ignore pass event later when needed
+      // @ts-expect-error pass event later when needed
       nativeProps.onBlur()
     }
   }
@@ -34,7 +40,10 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
     <React.Fragment>
       {!!customProps.label && (
         <React.Fragment>
-          <InputLabel htmlFor={textInputID}>{customProps.label}</InputLabel>
+          <LabelContainer>
+            <InputLabel htmlFor={textInputID}>{customProps.label}</InputLabel>
+            {!!isRequiredField && <RequiredLabel />}
+          </LabelContainer>
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}
