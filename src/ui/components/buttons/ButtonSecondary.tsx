@@ -24,7 +24,7 @@ export const ButtonSecondary = styled(AppButton).attrs<BaseButtonProps>(
         : theme.buttons.secondary.textColor,
       fontSize: textSize,
       marginLeft: icon
-        ? theme.buttons.secondary.marginLeftIcon
+        ? theme.buttons.secondary.marginLeftWithIcon
         : theme.buttons.secondary.marginLeft,
     })
 

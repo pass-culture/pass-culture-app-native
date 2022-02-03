@@ -7,56 +7,34 @@ import { Typo } from 'ui/theme'
 
 import { AppButton } from './AppButton'
 
+const baseProps = {
+  title: Typo.ButtonText,
+  loadingIndicator: InitialLoadingIndicator,
+  wording: 'Testing Disabled',
+  icon: Close,
+}
+
 describe('AppButton Component', () => {
   describe('* Icon property', () => {
     it('should display icon when provided', () => {
-      const { getByTestId } = render(
-        <AppButton
-          title={Typo.ButtonText}
-          loadingIndicator={InitialLoadingIndicator}
-          wording="Testing Disabled"
-          icon={Close}
-        />
-      )
+      const { getByTestId } = render(<AppButton {...baseProps} />)
       getByTestId('button-icon')
     })
     it('should not display icon when not provided', () => {
-      const { queryByTestId } = render(
-        <AppButton
-          title={Typo.ButtonText}
-          loadingIndicator={InitialLoadingIndicator}
-          wording="Testing Disabled"
-        />
-      )
+      const { queryByTestId } = render(<AppButton {...baseProps} icon={undefined} />)
       const icon = queryByTestId('button-icon')
       expect(icon).toBeFalsy()
     })
   })
   describe('* isLoading property', () => {
     it('should display right elements when isLoading equals true', () => {
-      const { getByTestId, queryByTestId } = render(
-        <AppButton
-          title={Typo.ButtonText}
-          loadingIndicator={InitialLoadingIndicator}
-          wording="Testing Disabled"
-          isLoading
-          icon={Close}
-        />
-      )
+      const { getByTestId, queryByTestId } = render(<AppButton {...baseProps} isLoading />)
       getByTestId('button-isloading-icon')
       const icon = queryByTestId('button-icon')
       expect(icon).toBeFalsy()
     })
     it('should display right elements when isLoading equals false', () => {
-      const { getByTestId, queryByTestId } = render(
-        <AppButton
-          title={Typo.ButtonText}
-          loadingIndicator={InitialLoadingIndicator}
-          wording="Testing Disabled"
-          isLoading={false}
-          icon={Close}
-        />
-      )
+      const { getByTestId, queryByTestId } = render(<AppButton {...baseProps} isLoading={false} />)
 
       getByTestId('button-icon')
       const icon = queryByTestId('button-isloading-icon')
@@ -66,15 +44,7 @@ describe('AppButton Component', () => {
 
   describe('* inline property', () => {
     it('should use inline css style when true', () => {
-      const renderAPI = render(
-        <AppButton
-          title={Typo.ButtonText}
-          loadingIndicator={InitialLoadingIndicator}
-          wording="Testing inline"
-          icon={Close}
-          inline
-        />
-      )
+      const renderAPI = render(<AppButton {...baseProps} wording="Testing inline" inline />)
       expect(renderAPI).toMatchSnapshot()
     })
   })
