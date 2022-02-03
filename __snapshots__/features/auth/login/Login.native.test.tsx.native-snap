@@ -80,7 +80,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -652,24 +644,22 @@
+@@ -649,24 +641,22 @@
               }
             />
             <View
@@ -103,12 +103,12 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 -                 \\"backgroundColor\\": \\"#F1F1F4\\",
 +                 \\"backgroundColor\\": \\"#eb0055\\",
                   \\"borderRadius\\": 24,
-                  \\"borderWidth\\": 0,
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -689,20 +679,20 @@
-                iconSize={24}
+                  \\"maxWidth\\": 500,
+@@ -684,11 +674,11 @@
+                adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
                   Array [
@@ -119,17 +119,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                       \\"fontSize\\": 15,
                       \\"lineHeight\\": 20,
                       \\"marginLeft\\": 0,
-                      \\"maxWidth\\": \\"100%\\",
-                    },
-                  ]
-                }
--               textColor=\\"#696A6F\\"
-+               textColor=\\"#ffffff\\"
-              >
-                Se connecter
-              </Text>
-            </View>
-            <View"
+                      \\"maxWidth\\": \\"100%\\","
 `;
 
 exports[`<Login/> should show email error message WHEN signin has failed because of invalid e-mail format 1`] = `
@@ -296,7 +286,7 @@ exports[`<Login/> should show email error message WHEN signin has failed because
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -652,13 +704,11 @@
+@@ -649,13 +701,11 @@
               }
             />
             <View
@@ -354,7 +344,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +                 </View>
                 </View>
               </View>
-+           </View>
+            </View>
 +           <View
 +             numberOfSpaces={5}
 +             style={
@@ -386,7 +376,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +               <Text>
 +                 rule-icon-warn-SVG-Mock
 +               </Text>
-              </View>
++             </View>
 +             <View
 +               numberOfSpaces={1}
 +               style={
@@ -512,7 +502,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -652,24 +706,22 @@
+@@ -649,24 +703,22 @@
               }
             />
             <View
@@ -535,12 +525,12 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 -                 \\"backgroundColor\\": \\"#F1F1F4\\",
 +                 \\"backgroundColor\\": \\"#eb0055\\",
                   \\"borderRadius\\": 24,
-                  \\"borderWidth\\": 0,
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -689,20 +741,20 @@
-                iconSize={24}
+                  \\"maxWidth\\": 500,
+@@ -684,11 +736,11 @@
+                adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
                   Array [
@@ -551,17 +541,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"fontSize\\": 15,
                       \\"lineHeight\\": 20,
                       \\"marginLeft\\": 0,
-                      \\"maxWidth\\": \\"100%\\",
-                    },
-                  ]
-                }
--               textColor=\\"#696A6F\\"
-+               textColor=\\"#ffffff\\"
-              >
-                Se connecter
-              </Text>
-            </View>
-            <View"
+                      \\"maxWidth\\": \\"100%\\","
 `;
 
 exports[`<Login/> should show error message and error inputs WHEN signin has failed because of wrong credentials 1`] = `
@@ -606,7 +586,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +                 </View>
                 </View>
               </View>
-+           </View>
+            </View>
 +           <View
 +             numberOfSpaces={5}
 +             style={
@@ -638,7 +618,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +               <Text>
 +                 rule-icon-warn-SVG-Mock
 +               </Text>
-              </View>
++             </View>
 +             <View
 +               numberOfSpaces={1}
 +               style={
@@ -764,7 +744,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -652,24 +706,22 @@
+@@ -649,24 +703,22 @@
               }
             />
             <View
@@ -787,12 +767,12 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 -                 \\"backgroundColor\\": \\"#F1F1F4\\",
 +                 \\"backgroundColor\\": \\"#eb0055\\",
                   \\"borderRadius\\": 24,
-                  \\"borderWidth\\": 0,
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -689,20 +741,20 @@
-                iconSize={24}
+                  \\"maxWidth\\": 500,
+@@ -684,11 +736,11 @@
+                adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
                   Array [
@@ -803,17 +783,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"fontSize\\": 15,
                       \\"lineHeight\\": 20,
                       \\"marginLeft\\": 0,
-                      \\"maxWidth\\": \\"100%\\",
-                    },
-                  ]
-                }
--               textColor=\\"#696A6F\\"
-+               textColor=\\"#ffffff\\"
-              >
-                Se connecter
-              </Text>
-            </View>
-            <View"
+                      \\"maxWidth\\": \\"100%\\","
 `;
 
 exports[`<Login/> should show specific error message when signin rate limit is exceeded 1`] = `
@@ -858,7 +828,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 +                 </View>
                 </View>
               </View>
-+           </View>
+            </View>
 +           <View
 +             numberOfSpaces={5}
 +             style={
@@ -890,7 +860,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 +               <Text>
 +                 rule-icon-warn-SVG-Mock
 +               </Text>
-              </View>
++             </View>
 +             <View
 +               numberOfSpaces={1}
 +               style={
@@ -1016,7 +986,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -652,24 +706,22 @@
+@@ -649,24 +703,22 @@
               }
             />
             <View
@@ -1039,12 +1009,12 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 -                 \\"backgroundColor\\": \\"#F1F1F4\\",
 +                 \\"backgroundColor\\": \\"#eb0055\\",
                   \\"borderRadius\\": 24,
-                  \\"borderWidth\\": 0,
                   \\"flexDirection\\": \\"row\\",
                   \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
-@@ -689,20 +741,20 @@
-                iconSize={24}
+                  \\"maxWidth\\": 500,
+@@ -684,11 +736,11 @@
+                adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
                   Array [
@@ -1055,15 +1025,5 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                       \\"fontSize\\": 15,
                       \\"lineHeight\\": 20,
                       \\"marginLeft\\": 0,
-                      \\"maxWidth\\": \\"100%\\",
-                    },
-                  ]
-                }
--               textColor=\\"#696A6F\\"
-+               textColor=\\"#ffffff\\"
-              >
-                Se connecter
-              </Text>
-            </View>
-            <View"
+                      \\"maxWidth\\": \\"100%\\","
 `;

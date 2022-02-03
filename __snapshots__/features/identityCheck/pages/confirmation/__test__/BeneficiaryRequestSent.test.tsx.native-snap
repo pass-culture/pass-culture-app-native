@@ -219,7 +219,6 @@ exports[`<BeneficiaryRequestSent /> should render correctly 1`] = `
             "alignItems": "center",
             "backgroundColor": "#ffffff",
             "borderRadius": 24,
-            "borderWidth": 0,
             "flexDirection": "row",
             "height": 40,
             "justifyContent": "center",
@@ -236,7 +235,6 @@ exports[`<BeneficiaryRequestSent /> should render correctly 1`] = `
       >
         <Text
           adjustsFontSizeToFit={false}
-          iconSize={24}
           numberOfLines={1}
           style={
             Array [
@@ -250,7 +248,6 @@ exports[`<BeneficiaryRequestSent /> should render correctly 1`] = `
               },
             ]
           }
-          textColor="#eb0055"
         >
           On y va !
         </Text>

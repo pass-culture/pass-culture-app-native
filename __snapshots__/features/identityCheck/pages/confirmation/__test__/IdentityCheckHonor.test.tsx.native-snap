@@ -322,7 +322,6 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                       "alignItems": "center",
                       "backgroundColor": "#eb0055",
                       "borderRadius": 24,
-                      "borderWidth": 0,
                       "flexDirection": "row",
                       "height": 40,
                       "justifyContent": "center",
@@ -339,7 +338,6 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                 >
                   <Text
                     adjustsFontSizeToFit={false}
-                    iconSize={24}
                     numberOfLines={1}
                     style={
                       Array [
@@ -353,7 +351,6 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                         },
                       ]
                     }
-                    textColor="#ffffff"
                   >
                     Valider et continuer
                   </Text>

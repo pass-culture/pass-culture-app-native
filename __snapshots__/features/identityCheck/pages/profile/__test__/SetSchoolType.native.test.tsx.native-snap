@@ -640,7 +640,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   "alignItems": "center",
                   "backgroundColor": "#F1F1F4",
                   "borderRadius": 24,
-                  "borderWidth": 0,
                   "flexDirection": "row",
                   "height": 40,
                   "justifyContent": "center",
@@ -657,7 +656,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
             >
               <Text
                 adjustsFontSizeToFit={false}
-                iconSize={24}
                 numberOfLines={1}
                 style={
                   Array [
@@ -671,7 +669,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                     },
                   ]
                 }
-                textColor="#696A6F"
               >
                 Choisis ton statut
               </Text>
@@ -1150,7 +1147,6 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                   "alignItems": "center",
                   "backgroundColor": "#F1F1F4",
                   "borderRadius": 24,
-                  "borderWidth": 0,
                   "flexDirection": "row",
                   "height": 40,
                   "justifyContent": "center",
@@ -1167,7 +1163,6 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
             >
               <Text
                 adjustsFontSizeToFit={false}
-                iconSize={24}
                 numberOfLines={1}
                 style={
                   Array [
@@ -1181,7 +1176,6 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                     },
                   ]
                 }
-                textColor="#696A6F"
               >
                 Choisis ton statut
               </Text>

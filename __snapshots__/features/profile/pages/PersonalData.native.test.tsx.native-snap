@@ -173,11 +173,11 @@ Array [
           style={
             Object {
               "alignItems": "center",
-              "backgroundColor": "#ffffff",
+              "backgroundColor": "transparent",
               "borderRadius": 0,
               "borderWidth": 0,
               "flexDirection": "row",
-              "height": 32,
+              "height": 16,
               "justifyContent": "center",
               "marginTop": 0,
               "maxWidth": 500,
@@ -193,9 +193,9 @@ Array [
         >
           <View
             fill="#eb0055"
-            height={24}
+            height={20}
             testID="button-icon"
-            width={24}
+            width={20}
           >
             <Text>
               button-icon-SVG-Mock
@@ -203,24 +203,19 @@ Array [
           </View>
           <Text
             adjustsFontSizeToFit={false}
-            icon={[Function]}
-            iconSize={24}
             numberOfLines={1}
             style={
               Array [
                 Object {
                   "color": "#eb0055",
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 12,
-                  "lineHeight": 16,
-                  "marginLeft": 12,
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 8,
                   "maxWidth": "100%",
                 },
               ]
             }
-            textColor="#eb0055"
-            textLineHeight="16px"
-            textSize={12}
           >
             Modifier
           </Text>

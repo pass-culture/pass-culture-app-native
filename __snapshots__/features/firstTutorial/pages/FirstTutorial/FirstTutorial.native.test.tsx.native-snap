@@ -75,7 +75,6 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
               "alignItems": "center",
               "backgroundColor": "transparent",
               "borderRadius": 24,
-              "borderWidth": 0,
               "flexDirection": "row",
               "height": 40,
               "justifyContent": "center",
@@ -92,7 +91,6 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
         >
           <Text
             adjustsFontSizeToFit={false}
-            iconSize={20}
             numberOfLines={1}
             style={
               Array [
@@ -106,7 +104,6 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                 },
               ]
             }
-            textColor="#696A6F"
           >
             Tout passer
           </Text>
@@ -358,7 +355,6 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                           "alignItems": "center",
                           "backgroundColor": "#eb0055",
                           "borderRadius": 24,
-                          "borderWidth": 0,
                           "flexDirection": "row",
                           "height": 40,
                           "justifyContent": "center",
@@ -375,7 +371,6 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     >
                       <Text
                         adjustsFontSizeToFit={false}
-                        iconSize={24}
                         numberOfLines={1}
                         style={
                           Array [
@@ -389,7 +384,6 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                             },
                           ]
                         }
-                        textColor="#ffffff"
                       >
                         Continuer
                       </Text>

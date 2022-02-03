@@ -896,7 +896,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 >
                                   <Text
                                     adjustsFontSizeToFit={false}
-                                    iconSize={20}
                                     numberOfLines={1}
                                     style={
                                       Array [
@@ -910,7 +909,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         },
                                       ]
                                     }
-                                    textColor="#161617"
                                   >
                                     voir plus
                                   </Text>
@@ -1816,8 +1814,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 </View>
                                 <Text
                                   adjustsFontSizeToFit={false}
-                                  icon={[Function]}
-                                  iconSize={20}
                                   numberOfLines={1}
                                   style={
                                     Array [
@@ -1826,12 +1822,11 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         "fontFamily": "Montserrat-Bold",
                                         "fontSize": 15,
                                         "lineHeight": 20,
-                                        "marginLeft": 12,
+                                        "marginLeft": 8,
                                         "maxWidth": "100%",
                                       },
                                     ]
                                   }
-                                  textColor="#161617"
                                 >
                                   Signaler l'offre
                                 </Text>
@@ -2261,7 +2256,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                               "alignItems": "center",
                                               "backgroundColor": "#eb0055",
                                               "borderRadius": 24,
-                                              "borderWidth": 0,
                                               "flexDirection": "row",
                                               "height": 40,
                                               "justifyContent": "center",
@@ -2278,7 +2272,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         >
                                           <Text
                                             adjustsFontSizeToFit={false}
-                                            iconSize={24}
                                             numberOfLines={1}
                                             style={
                                               Array [
@@ -2292,7 +2285,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                                 },
                                               ]
                                             }
-                                            textColor="#ffffff"
                                           >
                                             Signaler l'offre
                                           </Text>
@@ -3309,7 +3301,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 >
                                   <Text
                                     adjustsFontSizeToFit={false}
-                                    iconSize={20}
                                     numberOfLines={1}
                                     style={
                                       Array [
@@ -3323,7 +3314,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         },
                                       ]
                                     }
-                                    textColor="#161617"
                                   >
                                     voir plus
                                   </Text>
@@ -3738,25 +3728,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 </View>
                                 <Text
                                   adjustsFontSizeToFit={false}
-                                  icon={
-                                    Object {
-                                      "$$typeof": Symbol(react.forward_ref),
-                                      "attrs": Array [
-                                        [Function],
-                                      ],
-                                      "inlineStyle": InlineStyle {
-                                        "rules": Array [
-                                          "",
-                                        ],
-                                      },
-                                      "render": [Function],
-                                      "shouldForwardProp": undefined,
-                                      "styledComponentId": "StyledNativeComponent",
-                                      "target": [Function],
-                                      "withComponent": [Function],
-                                    }
-                                  }
-                                  iconSize={20}
                                   numberOfLines={1}
                                   style={
                                     Array [
@@ -3765,12 +3736,11 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         "fontFamily": "Montserrat-Bold",
                                         "fontSize": 15,
                                         "lineHeight": 20,
-                                        "marginLeft": 12,
+                                        "marginLeft": 8,
                                         "maxWidth": "100%",
                                       },
                                     ]
                                   }
-                                  textColor="#161617"
                                 >
                                   Voir l'itinéraire
                                 </Text>
@@ -4606,8 +4576,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 </View>
                                 <Text
                                   adjustsFontSizeToFit={false}
-                                  icon={[Function]}
-                                  iconSize={20}
                                   numberOfLines={1}
                                   style={
                                     Array [
@@ -4616,12 +4584,11 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         "fontFamily": "Montserrat-Bold",
                                         "fontSize": 15,
                                         "lineHeight": 20,
-                                        "marginLeft": 12,
+                                        "marginLeft": 8,
                                         "maxWidth": "100%",
                                       },
                                     ]
                                   }
-                                  textColor="#161617"
                                 >
                                   Signaler l'offre
                                 </Text>
@@ -5051,7 +5018,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                               "alignItems": "center",
                                               "backgroundColor": "#eb0055",
                                               "borderRadius": 24,
-                                              "borderWidth": 0,
                                               "flexDirection": "row",
                                               "height": 40,
                                               "justifyContent": "center",
@@ -5068,7 +5034,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         >
                                           <Text
                                             adjustsFontSizeToFit={false}
-                                            iconSize={24}
                                             numberOfLines={1}
                                             style={
                                               Array [
@@ -5082,7 +5047,6 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                                 },
                                               ]
                                             }
-                                            textColor="#ffffff"
                                           >
                                             Signaler l'offre
                                           </Text>

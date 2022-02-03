@@ -224,12 +224,8 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
             "backgroundColor": "rgba(0,0,0,0.00)",
             "borderBottomLeftRadius": "24px",
             "borderBottomRightRadius": "24px",
-            "borderBottomWidth": "0px",
-            "borderLeftWidth": "0px",
-            "borderRightWidth": "0px",
             "borderTopLeftRadius": "24px",
             "borderTopRightRadius": "24px",
-            "borderTopWidth": "0px",
             "cursor": "pointer",
             "flexDirection": "row",
             "height": "40px",
@@ -274,7 +270,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
               "fontFamily": "Montserrat-Bold",
               "fontSize": "15px",
               "lineHeight": "20px",
-              "marginLeft": "12px",
+              "marginLeft": "8px",
               "maxWidth": "100%",
             }
           }

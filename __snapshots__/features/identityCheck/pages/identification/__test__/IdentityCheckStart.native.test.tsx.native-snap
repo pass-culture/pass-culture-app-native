@@ -342,7 +342,6 @@ Array [
                           "alignItems": "center",
                           "backgroundColor": "transparent",
                           "borderRadius": 24,
-                          "borderWidth": 0,
                           "flexDirection": "row",
                           "height": 40,
                           "justifyContent": "flex-start",
@@ -368,8 +367,6 @@ Array [
                       </View>
                       <Text
                         adjustsFontSizeToFit={false}
-                        icon={[Function]}
-                        iconSize={16}
                         numberOfLines={1}
                         style={
                           Array [
@@ -378,13 +375,11 @@ Array [
                               "fontFamily": "Montserrat-Bold",
                               "fontSize": 12,
                               "lineHeight": 20,
-                              "marginLeft": 12,
+                              "marginLeft": 4,
                               "maxWidth": "100%",
                             },
                           ]
                         }
-                        textColor="#161617"
-                        textSize={12}
                       >
                         Transmettre un document
                       </Text>
@@ -699,7 +694,6 @@ Array [
                                     "alignItems": "center",
                                     "backgroundColor": "transparent",
                                     "borderRadius": 24,
-                                    "borderWidth": 0,
                                     "flexDirection": "row",
                                     "height": 40,
                                     "justifyContent": "flex-start",
@@ -725,8 +719,6 @@ Array [
                                 </View>
                                 <Text
                                   adjustsFontSizeToFit={false}
-                                  icon={[Function]}
-                                  iconSize={20}
                                   numberOfLines={1}
                                   style={
                                     Array [
@@ -735,12 +727,11 @@ Array [
                                         "fontFamily": "Montserrat-Bold",
                                         "fontSize": 15,
                                         "lineHeight": 20,
-                                        "marginLeft": 12,
+                                        "marginLeft": 8,
                                         "maxWidth": "100%",
                                       },
                                     ]
                                   }
-                                  textColor="#161617"
                                 >
                                   Je suis de nationalité française
                                 </Text>
@@ -787,7 +778,6 @@ Array [
                                     "alignItems": "center",
                                     "backgroundColor": "transparent",
                                     "borderRadius": 24,
-                                    "borderWidth": 0,
                                     "flexDirection": "row",
                                     "height": 40,
                                     "justifyContent": "flex-start",
@@ -813,8 +803,6 @@ Array [
                                 </View>
                                 <Text
                                   adjustsFontSizeToFit={false}
-                                  icon={[Function]}
-                                  iconSize={20}
                                   numberOfLines={1}
                                   style={
                                     Array [
@@ -823,12 +811,11 @@ Array [
                                         "fontFamily": "Montserrat-Bold",
                                         "fontSize": 15,
                                         "lineHeight": 20,
-                                        "marginLeft": 12,
+                                        "marginLeft": 8,
                                         "maxWidth": "100%",
                                       },
                                     ]
                                   }
-                                  textColor="#161617"
                                 >
                                   Je suis de nationalité étrangère
                                 </Text>
@@ -911,7 +898,6 @@ Array [
                     "alignItems": "center",
                     "backgroundColor": "#eb0055",
                     "borderRadius": 24,
-                    "borderWidth": 0,
                     "flexDirection": "row",
                     "height": 40,
                     "justifyContent": "center",
@@ -928,7 +914,6 @@ Array [
               >
                 <Text
                   adjustsFontSizeToFit={false}
-                  iconSize={24}
                   numberOfLines={1}
                   style={
                     Array [
@@ -942,7 +927,6 @@ Array [
                       },
                     ]
                   }
-                  textColor="#ffffff"
                 >
                   Commencer la vérification
                 </Text>
@@ -1419,7 +1403,6 @@ Array [
                     "alignItems": "center",
                     "backgroundColor": "#eb0055",
                     "borderRadius": 24,
-                    "borderWidth": 0,
                     "flexDirection": "row",
                     "height": 40,
                     "justifyContent": "center",
@@ -1436,7 +1419,6 @@ Array [
               >
                 <Text
                   adjustsFontSizeToFit={false}
-                  iconSize={24}
                   numberOfLines={1}
                   style={
                     Array [
@@ -1450,7 +1432,6 @@ Array [
                       },
                     ]
                   }
-                  textColor="#ffffff"
                 >
                   J'ai compris
                 </Text>

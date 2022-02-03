@@ -494,7 +494,6 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
                       "alignItems": "center",
                       "backgroundColor": "transparent",
                       "borderRadius": 24,
-                      "borderWidth": 0,
                       "flexDirection": "row",
                       "height": 40,
                       "justifyContent": "flex-start",
@@ -520,8 +519,6 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
                   </View>
                   <Text
                     adjustsFontSizeToFit={false}
-                    icon={[Function]}
-                    iconSize={20}
                     numberOfLines={1}
                     style={
                       Array [
@@ -530,12 +527,11 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
-                          "marginLeft": 12,
+                          "marginLeft": 8,
                           "maxWidth": "100%",
                         },
                       ]
                     }
-                    textColor="#161617"
                   >
                     Je suis de nationalité française
                   </Text>
@@ -582,7 +578,6 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
                       "alignItems": "center",
                       "backgroundColor": "transparent",
                       "borderRadius": 24,
-                      "borderWidth": 0,
                       "flexDirection": "row",
                       "height": 40,
                       "justifyContent": "flex-start",
@@ -608,8 +603,6 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
                   </View>
                   <Text
                     adjustsFontSizeToFit={false}
-                    icon={[Function]}
-                    iconSize={20}
                     numberOfLines={1}
                     style={
                       Array [
@@ -618,12 +611,11 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 15,
                           "lineHeight": 20,
-                          "marginLeft": 12,
+                          "marginLeft": 8,
                           "maxWidth": "100%",
                         },
                       ]
                     }
-                    textColor="#161617"
                   >
                     Je suis de nationalité étrangère
                   </Text>
@@ -712,7 +704,6 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
             "alignItems": "center",
             "backgroundColor": "transparent",
             "borderRadius": 24,
-            "borderWidth": 0,
             "flexDirection": "row",
             "height": 40,
             "justifyContent": "center",
@@ -738,8 +729,6 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
         </View>
         <Text
           adjustsFontSizeToFit={false}
-          icon={[Function]}
-          iconSize={20}
           numberOfLines={1}
           style={
             Array [
@@ -748,12 +737,11 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 12,
+                "marginLeft": 8,
                 "maxWidth": "100%",
               },
             ]
           }
-          textColor="#ffffff"
         >
           Retourner à l'accueil
         </Text>

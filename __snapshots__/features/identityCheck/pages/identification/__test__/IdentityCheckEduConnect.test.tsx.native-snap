@@ -303,7 +303,6 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
                   "alignItems": "center",
                   "backgroundColor": "#eb0055",
                   "borderRadius": 24,
-                  "borderWidth": 0,
                   "flexDirection": "row",
                   "height": 40,
                   "justifyContent": "center",
@@ -320,7 +319,6 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
             >
               <Text
                 adjustsFontSizeToFit={false}
-                iconSize={24}
                 numberOfLines={1}
                 style={
                   Array [
@@ -334,7 +332,6 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
                     },
                   ]
                 }
-                textColor="#ffffff"
               >
                 Connexion avec ÉduConnect
               </Text>

@@ -101,7 +101,6 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
         "alignItems": "center",
         "backgroundColor": "#eb0055",
         "borderRadius": 24,
-        "borderWidth": 0,
         "flexDirection": "row",
         "height": 40,
         "justifyContent": "center",
@@ -118,7 +117,6 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
   >
     <Text
       adjustsFontSizeToFit={false}
-      iconSize={24}
       numberOfLines={1}
       style={
         Array [
@@ -132,7 +130,6 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
           },
         ]
       }
-      textColor="#ffffff"
     >
       Mettre en favoris
     </Text>
@@ -165,7 +162,6 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
         "alignItems": "center",
         "backgroundColor": "transparent",
         "borderRadius": 24,
-        "borderWidth": 0,
         "flexDirection": "row",
         "height": 40,
         "justifyContent": "center",
@@ -182,7 +178,6 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
   >
     <Text
       adjustsFontSizeToFit={false}
-      iconSize={20}
       numberOfLines={1}
       style={
         Array [
@@ -196,7 +191,6 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
           },
         ]
       }
-      textColor="#eb0055"
     >
       Retourner à l'offre
     </Text>
@@ -315,7 +309,6 @@ exports[`<BookingImpossible /> should render without CTAs when offer is favorite
         "alignItems": "center",
         "backgroundColor": "#eb0055",
         "borderRadius": 24,
-        "borderWidth": 0,
         "flexDirection": "row",
         "height": 40,
         "justifyContent": "center",
@@ -332,7 +325,6 @@ exports[`<BookingImpossible /> should render without CTAs when offer is favorite
   >
     <Text
       adjustsFontSizeToFit={false}
-      iconSize={24}
       numberOfLines={1}
       style={
         Array [
@@ -346,7 +338,6 @@ exports[`<BookingImpossible /> should render without CTAs when offer is favorite
           },
         ]
       }
-      textColor="#ffffff"
     >
       Voir le détail de l'offre
     </Text>

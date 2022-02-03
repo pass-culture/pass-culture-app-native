@@ -734,7 +734,6 @@ Array [
                     "alignItems": "center",
                     "backgroundColor": "#eb0055",
                     "borderRadius": 24,
-                    "borderWidth": 0,
                     "flexDirection": "row",
                     "height": 40,
                     "justifyContent": "center",
@@ -751,7 +750,6 @@ Array [
               >
                 <Text
                   adjustsFontSizeToFit={false}
-                  iconSize={24}
                   numberOfLines={1}
                   style={
                     Array [
@@ -765,7 +763,6 @@ Array [
                       },
                     ]
                   }
-                  textColor="#ffffff"
                 >
                   S'inscrire
                 </Text>
@@ -796,7 +793,6 @@ Array [
                     "alignItems": "center",
                     "backgroundColor": "transparent",
                     "borderRadius": 24,
-                    "borderWidth": 0,
                     "flexDirection": "row",
                     "height": 40,
                     "justifyContent": "center",
@@ -813,7 +809,6 @@ Array [
               >
                 <Text
                   adjustsFontSizeToFit={false}
-                  iconSize={20}
                   numberOfLines={1}
                   style={
                     Array [
@@ -827,7 +822,6 @@ Array [
                       },
                     ]
                   }
-                  textColor="#eb0055"
                 >
                   Se connecter
                 </Text>

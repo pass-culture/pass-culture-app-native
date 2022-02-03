@@ -570,7 +570,6 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
         "alignItems": "center",
         "backgroundColor": "#eb0055",
         "borderRadius": 24,
-        "borderWidth": 0,
         "flexDirection": "row",
         "height": 40,
         "justifyContent": "center",
@@ -587,7 +586,6 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
   >
     <Text
       adjustsFontSizeToFit={false}
-      iconSize={24}
       numberOfLines={1}
       style={
         Array [
@@ -601,7 +599,6 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
           },
         ]
       }
-      textColor="#ffffff"
     >
       Valider ces options
     </Text>

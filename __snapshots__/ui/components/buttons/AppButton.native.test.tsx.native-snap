@@ -45,7 +45,6 @@ exports[`AppButton Component * inline property should use inline css style when 
   </View>
   <Text
     adjustsFontSizeToFit={false}
-    icon={[Function]}
     numberOfLines={1}
     style={
       Array [
@@ -54,8 +53,6 @@ exports[`AppButton Component * inline property should use inline css style when 
           "fontFamily": "Montserrat-Bold",
           "fontSize": 15,
           "lineHeight": 20,
-          "marginLeft": 12,
-          "maxWidth": "100%",
         },
       ]
     }

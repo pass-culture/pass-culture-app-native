@@ -467,7 +467,6 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
         "alignItems": "center",
         "backgroundColor": "#eb0055",
         "borderRadius": 24,
-        "borderWidth": 0,
         "flexDirection": "row",
         "height": 40,
         "justifyContent": "center",
@@ -484,7 +483,6 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
   >
     <Text
       adjustsFontSizeToFit={false}
-      iconSize={24}
       numberOfLines={1}
       style={
         Array [
@@ -498,7 +496,6 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
           },
         ]
       }
-      textColor="#ffffff"
     >
       Confirmer la réservation
     </Text>
@@ -990,7 +987,6 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
         "alignItems": "center",
         "backgroundColor": "#F1F1F4",
         "borderRadius": 24,
-        "borderWidth": 0,
         "flexDirection": "row",
         "height": 40,
         "justifyContent": "center",
@@ -1007,7 +1003,6 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
   >
     <Text
       adjustsFontSizeToFit={false}
-      iconSize={24}
       numberOfLines={1}
       style={
         Array [
@@ -1021,7 +1016,6 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
           },
         ]
       }
-      textColor="#696A6F"
     >
       Confirmer la réservation
     </Text>
