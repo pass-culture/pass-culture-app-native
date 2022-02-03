@@ -5,6 +5,14 @@
 - Illustrations (rectangular frame)
 - Pictograms (square frame)
 
+## svg VS react-native-svg
+
+:warning: SVG attributes use hyphen (e.g. `fill-rule` and `clip-rule`) while react-native-svg use camelCase props. 
+
+Since react-native-svg use camelCase props, use `fillRule` and `clipRule`. 
+
+> TypeScript will not throw if you use `fill-rule` and `clip-rule`, although it will fail at compilation and throw warnings on the Web. 
+
 ### Illustrations
 
 Illustrations are meant to be used in Generic info pages and modals. They have a ratio of 200x156 and thus cannot be replaced by pictograms in generic components: the render would differ.
@@ -22,20 +30,18 @@ All types of icons should be imported the same way to enforce consistency in use
 
 ## Illustrations
 
-Illustrations should be imported with a fixed ratio of 156/200, a black color, and the `ILLUSTRATION_ICON_SIZE` as follows:
+Illustrations should be imported with a fixed ratio of 156/200, a black color, and the standard icon size as follows:
 
 ```jsx
-import * as React from 'react'
+import React from 'react'
 import Svg, { Path } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { ILLUSTRATION_ICON_SIZE } from 'ui/theme/constants'
 
-export const MyIllustration: React.FunctionComponent<IconInterface> = ({
-  size = ILLUSTRATION_ICON_SIZE,
-  color = ColorsEnum.BLACK,
+const MyIllustrationSvg: React.FunctionComponent<IconInterface> = ({
+  size,
+  color,
   testID,
 }) => {
   const height = typeof size === 'string' ? size : (size * 156) / 200
@@ -50,25 +56,31 @@ export const MyIllustration: React.FunctionComponent<IconInterface> = ({
     </Svg>
   )
 }
+
+export const MyIllustration = styled(MyIllustrationSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.black,
+  size: size ?? theme.icons.sizes.standard,
+}))``
 ```
+
+> Do not import constants to style your SVG, instead, use `theme` API from styled-components
 
 ## Accessible icons
 
 Accessible SVGs are the ones that indicate an action that can be performed. They should be wrapped in the `AccessibleSvg` component as follows.
 
 ```jsx
-import * as React from 'react'
+import React from 'react'
 import { Path } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
-export const MyAccessiblePictogram: React.FunctionComponent<AccessibleIcon> = ({
-  size = STANDARD_ICON_SIZE,
-  color = ColorsEnum.BLACK,
+
+const MyAccessiblePictogramSvg: React.FunctionComponent<AccessibleIcon> = ({
+  size,
+  color,
   testID,
   accessibilityLabel,
 }) => (
@@ -81,6 +93,11 @@ export const MyAccessiblePictogram: React.FunctionComponent<AccessibleIcon> = ({
     <Path fill={color} d="M37 44.15.4263 33.0687 14.5 31.9198 14.5H24.7191Z" />
   </AccessibleSvg>
 )
+
+export const MyAccessiblePictogram = styled(MyAccessiblePictogramSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.black,
+  size: size ?? theme.icons.sizes.standard
+}))``
 ```
 
 Icons that are not meant to be accessible should come with the `aria-hidden` prop, as written in all the following examples.
@@ -90,18 +107,15 @@ Icons that are not meant to be accessible should come with the `aria-hidden` pro
 Regular linear pictograms should be imported as follows:
 
 ```jsx
-import * as React from 'react'
+import React from 'react'
 import Svg, { Path } from 'react-native-svg'
-
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
+import styled from 'styled-components/native'
 
 import { IconInterface } from './types'
 
-export const MyRegularPictogram: React.FunctionComponent<IconInterface> = ({
-  size = STANDARD_ICON_SIZE,
-  color = ColorsEnum.BLACK,
+const MyRegularPictogramSvg: React.FunctionComponent<IconInterface> = ({
+  size,
+  color,
   testID,
 }) => (
   <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID} aria-hidden>
@@ -111,27 +125,30 @@ export const MyRegularPictogram: React.FunctionComponent<IconInterface> = ({
     />
   </Svg>
 )
+
+export const MyRegularPictogram = styled(MyRegularPictogramSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.black,
+  size: size ?? theme.icons.sizes.standard
+}))``
 ```
 
-Filled (tertiary and quaternary) pictograms should be imported with a default size of `SMALLER_ICON_SIZE`.
+Filled (tertiary and quaternary) pictograms should be imported with a default size of `theme.icons.sizes.smaller`.
 
 ## Bicolor pictograms
 
 ```jsx
-import * as React from 'react'
+import React from 'react'
 import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 import { svgIdentifier } from 'ui/svg/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 import { IconInterface } from './types'
 
-const NotMemoizedMyBicolorPictogram: React.FunctionComponent<IconInterface> = ({
-  size = STANDARD_ICON_SIZE,
-  color = ColorsEnum.PRIMARY,
-  color2 = ColorsEnum.SECONDARY,
+const MyBicolorPictogramSvg: React.FunctionComponent<IconInterface> = ({
+  size,
+  color,
+  color2,
   testID,
 }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
@@ -154,5 +171,10 @@ const NotMemoizedMyBicolorPictogram: React.FunctionComponent<IconInterface> = ({
   )
 }
 
-export const MyBicolorPictogram = React.memo(NotMemoizedMyBicolorPictogram)
+export const MyBicolorPictogram = styled(MyBicolorPictogramSvg).attrs(({ color, color2, size, theme }) => ({
+  color: color ?? theme.colors.primary,
+  color2: color2 ?? theme.colors.secondary,
+  size: size ?? theme.icons.sizes.standard
+}))``
+
 ```
