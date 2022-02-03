@@ -9,6 +9,7 @@ import { QuitSignupModal } from 'features/auth/components/QuitSignupModal'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { amplitude } from 'libs/amplitude'
 import { env } from 'libs/environment'
 import { AsyncError, captureMonitoringError } from 'libs/monitoring'
 import { BottomCardContentContainer } from 'ui/components/BottomCardContentContainer'
@@ -31,6 +32,7 @@ type SignupStepConfig = {
   name: PreValidationSignupStep
   headerTitle: string
   Component: React.FunctionComponent<PreValidationSignupStepProps>
+  tracker?: () => Promise<void>
 }
 
 const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
@@ -38,6 +40,9 @@ const SIGNUP_STEP_CONFIG: SignupStepConfig[] = [
     name: PreValidationSignupStep.Email,
     headerTitle: t`Adresse e-mail`,
     Component: SetEmail,
+    tracker: async () => {
+      await amplitude().logEvent('user_set_email_clicked_front')
+    },
   },
   {
     name: PreValidationSignupStep.Password,
@@ -86,6 +91,11 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
   function goToNextStep(_signupData: Partial<SignupData>) {
     setSignupData((previousSignupData) => ({ ...previousSignupData, ..._signupData }))
     setStepIndex((prevStepIndex) => Math.min(SIGNUP_STEP_CONFIG_MAX_INDEX, prevStepIndex + 1))
+
+    const { tracker } = stepConfig
+    if (tracker) {
+      tracker()
+    }
   }
 
   async function signUp(token: string) {
@@ -95,6 +105,8 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
         throw new AsyncError('NETWORK_REQUEST_FAILED')
       }
       navigation.navigate('SignupConfirmationEmailSent', { email: signupData.email })
+
+      await amplitude().logEvent('user_accepted_terms_clicked_front')
     } catch (error) {
       const errorMessage = `Request info : ${JSON.stringify({
         ...signupData,

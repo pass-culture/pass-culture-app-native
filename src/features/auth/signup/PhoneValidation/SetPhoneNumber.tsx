@@ -10,6 +10,7 @@ import { QuitSignupModal } from 'features/auth/components/QuitSignupModal'
 import { useAppSettings } from 'features/auth/settings'
 import { SignupStep } from 'features/auth/signup/enums'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { amplitude } from 'libs/amplitude'
 import { CountryPicker, METROPOLITAN_FRANCE } from 'libs/country-picker'
 import { currentTimestamp } from 'libs/dates'
 import { useSafeState } from 'libs/hooks'
@@ -90,7 +91,7 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
     onError,
   })
 
-  function requestSendPhoneValidationCode() {
+  async function requestSendPhoneValidationCode() {
     const callingCode = country.callingCode[0]
     if (isContinueButtonEnabled && isRequestTimestampExpired && callingCode) {
       setInvalidPhoneNumberMessage('')
@@ -103,6 +104,8 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
       }
       sendPhoneValidationCode(phoneNumberWithPrefix)
     }
+
+    await amplitude().logEvent('young18_set_phone_number_clicked_front')
   }
 
   function onChangeText(value: string) {

@@ -6,6 +6,7 @@ export const env: Environment = {
   ALGOLIA_OFFERS_INDEX_NAME: 'algoliaOffersIndexName',
   ALGOLIA_SEARCH_API_KEY: 'algoliaApiKey',
   ALGOLIA_VENUES_INDEX_NAME: 'algoliaVenuesIndexName',
+  AMPLITUDE_API_KEY: 'amplitudeApiKey',
   ANDROID_APP_ID: 'app.android',
   API_BASE_URL: 'https://localhost',
   APPS_FLYER_DEV_KEY: 'appsFlyerDevKey',
