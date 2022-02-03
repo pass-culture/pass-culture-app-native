@@ -174,66 +174,102 @@ export interface AppThemeType {
       }
     }
     primary: {
+      marginLeft: number
+      marginLeftWithIcon: number
       loadingIconColor: ColorsEnum
       iconColor: ColorsEnum
+      iconSize: number
       textColor: ColorsEnum
       backgroundColor?: ColorsEnum
     }
     primaryWhite: {
+      marginLeft: number
+      marginLeftWithIcon: number
       loadingIconColor: ColorsEnum
       iconColor: ColorsEnum
+      iconSize: number
       textColor: ColorsEnum
       backgroundColor: ColorsEnum
     }
     secondary: {
+      marginLeft: number
+      marginLeftWithIcon: number
       loadingIconColor: ColorsEnum
       iconColor: ColorsEnum
+      iconSize: number
       textColor: ColorsEnum
       backgroundColor: ColorsEnum
       borderColor: ColorsEnum
+      borderWidth: number
     }
     secondaryWhite: {
+      marginLeft: number
+      marginLeftWithIcon: number
       loadingIconColor: ColorsEnum
       iconColor: ColorsEnum
+      iconSize: number
       textColor: ColorsEnum
       backgroundColor: ColorsEnum
       borderColor: ColorsEnum
+      borderWidth: number
     }
     tertiary: {
+      marginLeft: number
+      marginLeftWithIcon: number
       textColor: ColorsEnum
       backgroundColor: ColorsEnum
       loadingIconColor: ColorsEnum
       iconColor: ColorsEnum
+      iconSize: number
     }
     tertiaryBlack: {
+      marginLeft: number
+      marginLeftWithIcon: number
       textColor: ColorsEnum
       backgroundColor: ColorsEnum
       loadingIconColor: ColorsEnum
       iconColor: ColorsEnum
+      iconSize: number
     }
     tertiaryWhite: {
+      marginLeft: number
+      marginLeftWithIcon: number
       textColor: ColorsEnum
       backgroundColor: ColorsEnum
       loadingIconColor: ColorsEnum
       iconColor: ColorsEnum
+      iconSize: number
     }
     tertiaryGreyDark: {
+      marginLeft: number
+      marginLeftWithIcon: number
       textColor: ColorsEnum
       backgroundColor: ColorsEnum
       loadingIconColor: ColorsEnum
       iconColor: ColorsEnum
+      iconSize: number
     }
     quaternary: {
+      marginLeft: number
+      marginLeftWithIcon: number
       loadingIconColor: ColorsEnum
       iconColor: ColorsEnum
+      iconSize: number
       textColor: ColorsEnum
       backgroundColor: ColorsEnum
     }
     quaternaryBlack: {
+      marginLeft: number
+      marginLeftWithIcon: number
       loadingIconColor: ColorsEnum
       iconColor: ColorsEnum
+      iconSize: number
       textColor: ColorsEnum
       backgroundColor: ColorsEnum
+    }
+    linearGradient: {
+      iconSize: number
+      iconColor: ColorsEnum
     }
     scrollButton: {
       size: number
@@ -367,7 +403,7 @@ export const theme: AppThemeType = {
         backgroundColor: ColorsEnum.PRIMARY_DARK,
       },
       secondary: {
-        borderColor: ColorsEnum.PRIMARY,
+        borderColor: ColorsEnum.PRIMARY_DARK,
       },
       secondaryWhite: {
         borderColor: ColorsEnum.PRIMARY_DARK,
@@ -379,13 +415,13 @@ export const theme: AppThemeType = {
         textColor: ColorsEnum.GREY_DARK,
       },
       primaryWhite: {
-        iconColor: ColorsEnum.PRIMARY_DISABLED,
-        textColor: ColorsEnum.PRIMARY_DISABLED,
+        iconColor: ColorsEnum.GREY_DARK,
+        textColor: ColorsEnum.GREY_DARK,
       },
       secondary: {
-        borderColor: ColorsEnum.PRIMARY_DISABLED,
-        textColor: ColorsEnum.PRIMARY_DISABLED,
-        iconColor: ColorsEnum.PRIMARY_DISABLED,
+        borderColor: ColorsEnum.GREY_DARK,
+        textColor: ColorsEnum.GREY_DARK,
+        iconColor: ColorsEnum.GREY_DARK,
       },
       secondaryWhite: {
         borderColor: ColorsEnum.GREY_DARK,
@@ -393,8 +429,8 @@ export const theme: AppThemeType = {
         iconColor: ColorsEnum.GREY_DARK,
       },
       tertiary: {
-        textColor: ColorsEnum.PRIMARY_DISABLED,
-        iconColor: ColorsEnum.PRIMARY_DISABLED,
+        textColor: ColorsEnum.GREY_DARK,
+        iconColor: ColorsEnum.GREY_DARK,
       },
       tertiaryBlack: {
         textColor: ColorsEnum.GREY_DARK,
@@ -409,8 +445,8 @@ export const theme: AppThemeType = {
         iconColor: ColorsEnum.PRIMARY_DISABLED,
       },
       quaternary: {
-        iconColor: ColorsEnum.PRIMARY_DISABLED,
-        textColor: ColorsEnum.PRIMARY_DISABLED,
+        iconColor: ColorsEnum.GREY_DARK,
+        textColor: ColorsEnum.GREY_DARK,
       },
       quaternaryBlack: {
         iconColor: ColorsEnum.PRIMARY_DISABLED,
@@ -418,66 +454,102 @@ export const theme: AppThemeType = {
       },
     },
     primary: {
+      marginLeft: 0,
+      marginLeftWithIcon: getSpacing(2),
       loadingIconColor: ColorsEnum.WHITE,
       iconColor: ColorsEnum.WHITE,
+      iconSize: iconSizes.small,
       textColor: ColorsEnum.WHITE,
       backgroundColor: ColorsEnum.PRIMARY,
     },
     primaryWhite: {
+      marginLeft: 0,
+      marginLeftWithIcon: getSpacing(2),
       loadingIconColor: ColorsEnum.PRIMARY_DARK,
       iconColor: ColorsEnum.PRIMARY,
+      iconSize: iconSizes.small,
       textColor: ColorsEnum.PRIMARY,
       backgroundColor: ColorsEnum.WHITE,
     },
     secondary: {
+      marginLeft: 0,
+      marginLeftWithIcon: getSpacing(2),
       loadingIconColor: ColorsEnum.PRIMARY_DARK,
       iconColor: ColorsEnum.PRIMARY,
+      iconSize: iconSizes.small,
       textColor: ColorsEnum.PRIMARY,
       backgroundColor: ColorsEnum.TRANSPARENT,
-      borderColor: ColorsEnum.PRIMARY_DISABLED,
+      borderColor: ColorsEnum.PRIMARY,
+      borderWidth: getSpacing(0.5),
     },
     secondaryWhite: {
+      marginLeft: 0,
+      marginLeftWithIcon: getSpacing(2),
       loadingIconColor: ColorsEnum.PRIMARY_DARK,
       iconColor: ColorsEnum.WHITE,
+      iconSize: iconSizes.small,
       textColor: ColorsEnum.WHITE,
       backgroundColor: ColorsEnum.TRANSPARENT,
       borderColor: ColorsEnum.WHITE,
+      borderWidth: getSpacing(0.5),
     },
     tertiary: {
+      marginLeft: 0,
+      marginLeftWithIcon: getSpacing(2),
       textColor: ColorsEnum.PRIMARY,
       backgroundColor: ColorsEnum.TRANSPARENT,
       loadingIconColor: ColorsEnum.PRIMARY_DARK,
       iconColor: ColorsEnum.PRIMARY,
+      iconSize: iconSizes.smaller,
     },
     tertiaryBlack: {
+      marginLeft: 0,
+      marginLeftWithIcon: getSpacing(2),
       textColor: ColorsEnum.BLACK,
       backgroundColor: ColorsEnum.TRANSPARENT,
       loadingIconColor: ColorsEnum.BLACK,
       iconColor: ColorsEnum.BLACK,
+      iconSize: iconSizes.smaller,
     },
     tertiaryWhite: {
+      marginLeft: 0,
+      marginLeftWithIcon: getSpacing(2),
       textColor: ColorsEnum.WHITE,
       backgroundColor: ColorsEnum.TRANSPARENT,
       loadingIconColor: ColorsEnum.WHITE,
       iconColor: ColorsEnum.WHITE,
+      iconSize: iconSizes.smaller,
     },
     tertiaryGreyDark: {
+      marginLeft: 0,
+      marginLeftWithIcon: getSpacing(2),
       textColor: ColorsEnum.GREY_DARK,
       backgroundColor: ColorsEnum.TRANSPARENT,
       loadingIconColor: ColorsEnum.GREY_DARK,
       iconColor: ColorsEnum.GREY_DARK,
+      iconSize: iconSizes.smaller,
     },
     quaternary: {
+      marginLeft: 0,
+      marginLeftWithIcon: getSpacing(1),
       loadingIconColor: ColorsEnum.PRIMARY_DARK,
       iconColor: ColorsEnum.PRIMARY,
+      iconSize: iconSizes.extraSmall,
       textColor: ColorsEnum.PRIMARY,
       backgroundColor: ColorsEnum.TRANSPARENT,
     },
     quaternaryBlack: {
+      marginLeft: 0,
+      marginLeftWithIcon: getSpacing(1),
       loadingIconColor: ColorsEnum.PRIMARY_DARK,
       iconColor: ColorsEnum.BLACK,
       textColor: ColorsEnum.BLACK,
       backgroundColor: ColorsEnum.TRANSPARENT,
+      iconSize: iconSizes.extraSmall,
+    },
+    linearGradient: {
+      iconSize: iconSizes.small,
+      iconColor: ColorsEnum.WHITE,
     },
     scrollButton: {
       size: getSpacing(10),

@@ -229,7 +229,6 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
             "alignItems": "center",
             "backgroundColor": "#ffffff",
             "borderRadius": 24,
-            "borderWidth": 0,
             "flexDirection": "row",
             "height": 40,
             "justifyContent": "center",
@@ -246,7 +245,6 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
       >
         <Text
           adjustsFontSizeToFit={false}
-          iconSize={24}
           numberOfLines={1}
           style={
             Array [
@@ -260,7 +258,6 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
               },
             ]
           }
-          textColor="#eb0055"
         >
           Retourner à l'accueil
         </Text>

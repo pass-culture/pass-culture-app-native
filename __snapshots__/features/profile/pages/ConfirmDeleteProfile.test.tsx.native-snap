@@ -204,7 +204,6 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
             "alignItems": "center",
             "backgroundColor": "#ffffff",
             "borderRadius": 24,
-            "borderWidth": 0,
             "flexDirection": "row",
             "height": 40,
             "justifyContent": "center",
@@ -221,7 +220,6 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       >
         <Text
           adjustsFontSizeToFit={false}
-          iconSize={24}
           numberOfLines={1}
           style={
             Array [
@@ -235,7 +233,6 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
               },
             ]
           }
-          textColor="#eb0055"
         >
           Supprimer mon compte
         </Text>
@@ -268,7 +265,6 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
             "alignItems": "center",
             "backgroundColor": "transparent",
             "borderRadius": 24,
-            "borderWidth": 0,
             "flexDirection": "row",
             "height": 40,
             "justifyContent": "center",
@@ -285,7 +281,6 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       >
         <Text
           adjustsFontSizeToFit={false}
-          iconSize={20}
           numberOfLines={1}
           style={
             Array [
@@ -299,7 +294,6 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
               },
             ]
           }
-          textColor="#ffffff"
         >
           Abandonner
         </Text>

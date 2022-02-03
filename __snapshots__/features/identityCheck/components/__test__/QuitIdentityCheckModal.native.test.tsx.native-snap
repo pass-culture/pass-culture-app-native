@@ -229,7 +229,6 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
               "alignItems": "center",
               "backgroundColor": "#ffffff",
               "borderRadius": 24,
-              "borderWidth": 0,
               "flexDirection": "row",
               "height": 40,
               "justifyContent": "center",
@@ -246,7 +245,6 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
         >
           <Text
             adjustsFontSizeToFit={false}
-            iconSize={24}
             numberOfLines={1}
             style={
               Array [
@@ -260,7 +258,6 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
                 },
               ]
             }
-            textColor="#eb0055"
           >
             Continuer la vérification
           </Text>
@@ -293,7 +290,6 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
               "alignItems": "center",
               "backgroundColor": "transparent",
               "borderRadius": 24,
-              "borderWidth": 0,
               "flexDirection": "row",
               "height": 40,
               "justifyContent": "center",
@@ -310,7 +306,6 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
         >
           <Text
             adjustsFontSizeToFit={false}
-            iconSize={20}
             numberOfLines={1}
             style={
               Array [
@@ -324,7 +319,6 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
                 },
               ]
             }
-            textColor="#ffffff"
           >
             Abandonner la vérification
           </Text>

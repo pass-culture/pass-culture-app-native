@@ -284,7 +284,6 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
           "alignItems": "center",
           "backgroundColor": "#eb0055",
           "borderRadius": 24,
-          "borderWidth": 0,
           "flexDirection": "row",
           "height": 40,
           "justifyContent": "center",
@@ -301,7 +300,6 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
     >
       <Text
         adjustsFontSizeToFit={false}
-        iconSize={24}
         numberOfLines={1}
         style={
           Array [
@@ -315,7 +313,6 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
             },
           ]
         }
-        textColor="#ffffff"
       >
         Je découvre les offres
       </Text>

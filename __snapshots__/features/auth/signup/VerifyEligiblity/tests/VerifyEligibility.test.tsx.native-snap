@@ -206,7 +206,6 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
             "alignItems": "center",
             "backgroundColor": "#ffffff",
             "borderRadius": 24,
-            "borderWidth": 0,
             "flexDirection": "row",
             "height": 40,
             "justifyContent": "center",
@@ -223,7 +222,6 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       >
         <Text
           adjustsFontSizeToFit={false}
-          iconSize={24}
           numberOfLines={1}
           style={
             Array [
@@ -237,7 +235,6 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
               },
             ]
           }
-          textColor="#eb0055"
         >
           Vérifier mon identité
         </Text>
@@ -270,7 +267,6 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
             "alignItems": "center",
             "backgroundColor": "transparent",
             "borderRadius": 24,
-            "borderWidth": 0,
             "flexDirection": "row",
             "height": 40,
             "justifyContent": "center",
@@ -296,8 +292,6 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         </View>
         <Text
           adjustsFontSizeToFit={false}
-          icon={[Function]}
-          iconSize={20}
           numberOfLines={1}
           style={
             Array [
@@ -306,12 +300,11 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 12,
+                "marginLeft": 8,
                 "maxWidth": "100%",
               },
             ]
           }
-          textColor="#ffffff"
         >
           Retourner à l'accueil
         </Text>

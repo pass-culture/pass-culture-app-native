@@ -235,7 +235,6 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
           "alignItems": "center",
           "backgroundColor": "transparent",
           "borderRadius": 24,
-          "borderWidth": 0,
           "flexDirection": "row",
           "height": "auto",
           "justifyContent": "flex-start",
@@ -261,8 +260,6 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
       </View>
       <Text
         adjustsFontSizeToFit={false}
-        icon={[Function]}
-        iconSize={16}
         numberOfLines={2}
         style={
           Array [
@@ -271,13 +268,11 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
               "fontFamily": "Montserrat-Bold",
               "fontSize": 12,
               "lineHeight": 20,
-              "marginLeft": 12,
+              "marginLeft": 4,
               "maxWidth": "100%",
             },
           ]
         }
-        textColor="#161617"
-        textSize={12}
       >
         Tu peux cliquer ici
       </Text>

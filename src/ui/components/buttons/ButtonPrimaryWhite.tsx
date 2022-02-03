@@ -1,29 +1,45 @@
-import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { AppButton, BaseButtonProps } from 'ui/components/buttons/AppButton'
+import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
+import { Typo } from 'ui/theme'
 
-export const ButtonPrimaryWhite: FunctionComponent<BaseButtonProps> = (props) => {
-  return <StyledAppButton {...props} />
-}
+export const ButtonPrimaryWhite = styled(AppButton).attrs<BaseButtonProps>(
+  ({ disabled, icon, textSize, theme, ...rest }) => {
+    let Icon
 
-const StyledAppButton = styled(AppButton).attrs(({ theme, disabled }) => {
-  const { buttons, icons } = theme
-  const loadingIconColor = buttons.primaryWhite.loadingIconColor
-  let iconColor = buttons.primaryWhite.iconColor
-  let textColor = buttons.primaryWhite.textColor
-  const backgroundColor = buttons.primaryWhite.backgroundColor
+    if (icon) {
+      Icon = styled(icon).attrs({
+        color: disabled
+          ? theme.buttons.disabled.primaryWhite.iconColor
+          : theme.buttons.primaryWhite.iconColor,
+        size: theme.buttons.primaryWhite.iconSize,
+      })``
+    }
 
-  if (disabled) {
-    textColor = buttons.disabled.primaryWhite.textColor
-    iconColor = buttons.disabled.primaryWhite.iconColor
+    const Title = styled(Typo.ButtonText)({
+      maxWidth: '100%',
+      color: disabled
+        ? theme.buttons.disabled.primaryWhite.textColor
+        : theme.buttons.primaryWhite.textColor,
+      fontSize: textSize,
+      marginLeft: icon
+        ? theme.buttons.primaryWhite.marginLeftWithIcon
+        : theme.buttons.primaryWhite.marginLeft,
+    })
+
+    return {
+      ...rest,
+      loadingIndicator: LoadingIndicator,
+      icon: Icon,
+      title: Title,
+    }
   }
+)(({ theme }) => ({
+  backgroundColor: theme.buttons.primaryWhite.backgroundColor,
+}))
 
-  return {
-    iconSize: icons.sizes.small,
-    loadingIconColor: loadingIconColor,
-    backgroundColor: backgroundColor,
-    iconColor: iconColor,
-    textColor: textColor,
-  }
-})``
+const LoadingIndicator = styled(InitialLoadingIndicator).attrs(({ theme }) => ({
+  color: theme.buttons.primaryWhite.loadingIconColor,
+  size: theme.buttons.primaryWhite.iconSize,
+}))``

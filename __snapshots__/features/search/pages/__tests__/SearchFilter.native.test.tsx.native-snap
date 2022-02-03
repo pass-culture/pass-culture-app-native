@@ -3117,7 +3117,6 @@ exports[`SearchFilter component should render correctly 1`] = `
           "alignItems": "center",
           "backgroundColor": "#F1F1F4",
           "borderRadius": 24,
-          "borderWidth": 0,
           "flexDirection": "row",
           "height": 40,
           "justifyContent": "center",
@@ -3134,7 +3133,6 @@ exports[`SearchFilter component should render correctly 1`] = `
     >
       <Text
         adjustsFontSizeToFit={true}
-        iconSize={24}
         numberOfLines={1}
         style={
           Array [
@@ -3148,7 +3146,6 @@ exports[`SearchFilter component should render correctly 1`] = `
             },
           ]
         }
-        textColor="#696A6F"
       >
         Aucun résultat
       </Text>

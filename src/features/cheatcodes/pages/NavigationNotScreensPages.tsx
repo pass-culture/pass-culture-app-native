@@ -43,7 +43,7 @@ export function NavigationNotScreensPages(): JSX.Element {
       />
       <StyledContainer>
         <Row half>
-          <NavigationButton
+          <ButtonPrimary
             wording="BrowserNotSupportedPage"
             onPress={() => setPage(Page.BrowserNotSupportedPage)}
           />
@@ -53,10 +53,6 @@ export function NavigationNotScreensPages(): JSX.Element {
     </ScrollView>
   )
 }
-
-const NavigationButton = styled(ButtonPrimary).attrs({
-  textSize: 11.5,
-})({})
 
 const StyledContainer = styled.View({
   display: 'flex',

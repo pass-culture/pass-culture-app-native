@@ -1,34 +1,61 @@
-import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { AppButton, BaseButtonProps } from 'ui/components/buttons/AppButton'
+import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
+import { Typo } from 'ui/theme'
 
-export const ButtonSecondaryWhite: FunctionComponent<BaseButtonProps> = (props) => {
-  return <StyledAppButton {...props} />
-}
+export const ButtonSecondaryWhite = styled(AppButton).attrs<BaseButtonProps>(
+  ({ icon, disabled, textSize, theme, ...rest }) => {
+    let Icon
 
-const StyledAppButton = styled(AppButton).attrs(({ theme, isLoading, disabled }) => {
-  const { buttons, icons } = theme
-  const loadingIconColor = buttons.secondaryWhite.loadingIconColor
-  let iconColor = buttons.secondaryWhite.iconColor
-  let textColor = buttons.secondaryWhite.textColor
-  const backgroundColor = buttons.secondaryWhite.backgroundColor
-  let borderColor = buttons.secondaryWhite.borderColor
+    if (icon) {
+      Icon = styled(icon).attrs({
+        color: disabled
+          ? theme.buttons.disabled.secondaryWhite.iconColor
+          : theme.buttons.secondaryWhite.iconColor,
+        size: theme.buttons.secondaryWhite.iconSize,
+      })``
+    }
+
+    const Title = styled(Typo.ButtonText)({
+      maxWidth: '100%',
+      color: disabled
+        ? theme.buttons.disabled.secondaryWhite.textColor
+        : theme.buttons.secondaryWhite.textColor,
+      fontSize: textSize,
+      marginLeft: icon
+        ? theme.buttons.secondaryWhite.marginLeftWithIcon
+        : theme.buttons.secondaryWhite.marginLeft,
+    })
+
+    return {
+      ...rest,
+      icon: Icon,
+      title: Title,
+      loadingIndicator: LoadingIndicator,
+    }
+  }
+)(({ theme, isLoading, disabled }) => {
+  const backgroundColor = theme.buttons.secondaryWhite.backgroundColor
+  const borderWidth = theme.buttons.secondaryWhite.borderWidth
+  let borderColor = theme.buttons.secondaryWhite.borderColor
 
   if (isLoading) {
-    borderColor = buttons.loading.secondaryWhite.borderColor
-  } else if (disabled) {
-    textColor = buttons.disabled.secondaryWhite.textColor
-    iconColor = buttons.disabled.secondaryWhite.iconColor
-    borderColor = buttons.disabled.secondaryWhite.borderColor
+    borderColor = theme.buttons.loading.secondaryWhite.borderColor
+  }
+
+  if (disabled) {
+    borderColor = theme.buttons.disabled.secondaryWhite.borderColor
   }
 
   return {
-    iconSize: icons.sizes.small,
-    loadingIconColor: loadingIconColor,
-    backgroundColor: backgroundColor,
-    iconColor: iconColor,
-    textColor: textColor,
-    borderColor: borderColor,
+    backgroundColor,
+    borderColor,
+    borderWidth,
   }
-})``
+})
+
+const LoadingIndicator = styled(InitialLoadingIndicator).attrs(({ theme }) => ({
+  color: theme.buttons.secondaryWhite.loadingIconColor,
+  size: theme.buttons.secondaryWhite.iconSize,
+}))``

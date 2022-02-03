@@ -231,7 +231,6 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             "alignItems": "center",
             "backgroundColor": "#ffffff",
             "borderRadius": 24,
-            "borderWidth": 0,
             "flexDirection": "row",
             "height": 40,
             "justifyContent": "center",
@@ -248,7 +247,6 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
       >
         <Text
           adjustsFontSizeToFit={false}
-          iconSize={24}
           numberOfLines={1}
           style={
             Array [
@@ -262,7 +260,6 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
               },
             ]
           }
-          textColor="#eb0055"
         >
           Faire une nouvelle demande
         </Text>
@@ -295,7 +292,6 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             "alignItems": "center",
             "backgroundColor": "transparent",
             "borderRadius": 24,
-            "borderWidth": 0,
             "flexDirection": "row",
             "height": 40,
             "justifyContent": "center",
@@ -321,8 +317,6 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
         </View>
         <Text
           adjustsFontSizeToFit={false}
-          icon={[Function]}
-          iconSize={20}
           numberOfLines={1}
           style={
             Array [
@@ -331,12 +325,11 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 12,
+                "marginLeft": 8,
                 "maxWidth": "100%",
               },
             ]
           }
-          textColor="#ffffff"
         >
           Retourner à l'accueil
         </Text>
@@ -588,7 +581,6 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             "alignItems": "center",
             "backgroundColor": "#ffffff",
             "borderRadius": 24,
-            "borderWidth": 0,
             "flexDirection": "row",
             "height": 40,
             "justifyContent": "center",
@@ -605,7 +597,6 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
       >
         <Text
           adjustsFontSizeToFit={false}
-          iconSize={24}
           numberOfLines={1}
           style={
             Array [
@@ -619,7 +610,6 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
               },
             ]
           }
-          textColor="#eb0055"
         >
           Se connecter
         </Text>
@@ -652,7 +642,6 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             "alignItems": "center",
             "backgroundColor": "transparent",
             "borderRadius": 24,
-            "borderWidth": 0,
             "flexDirection": "row",
             "height": 40,
             "justifyContent": "center",
@@ -678,8 +667,6 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
         </View>
         <Text
           adjustsFontSizeToFit={false}
-          icon={[Function]}
-          iconSize={20}
           numberOfLines={1}
           style={
             Array [
@@ -688,12 +675,11 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 12,
+                "marginLeft": 8,
                 "maxWidth": "100%",
               },
             ]
           }
-          textColor="#ffffff"
         >
           Retourner à l'accueil
         </Text>

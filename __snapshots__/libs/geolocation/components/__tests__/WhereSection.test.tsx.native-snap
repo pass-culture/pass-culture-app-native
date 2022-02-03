@@ -267,25 +267,6 @@ Array [
       </View>
       <Text
         adjustsFontSizeToFit={false}
-        icon={
-          Object {
-            "$$typeof": Symbol(react.forward_ref),
-            "attrs": Array [
-              [Function],
-            ],
-            "inlineStyle": InlineStyle {
-              "rules": Array [
-                "",
-              ],
-            },
-            "render": [Function],
-            "shouldForwardProp": undefined,
-            "styledComponentId": "StyledNativeComponent",
-            "target": [Function],
-            "withComponent": [Function],
-          }
-        }
-        iconSize={20}
         numberOfLines={1}
         style={
           Array [
@@ -294,12 +275,11 @@ Array [
               "fontFamily": "Montserrat-Bold",
               "fontSize": 15,
               "lineHeight": 20,
-              "marginLeft": 12,
+              "marginLeft": 8,
               "maxWidth": "100%",
             },
           ]
         }
-        textColor="#161617"
       >
         Voir l'itinéraire
       </Text>

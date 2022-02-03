@@ -217,8 +217,6 @@ exports[`NoContentError should render correctly 1`] = `
         </View>
         <Text
           adjustsFontSizeToFit={false}
-          icon={[Function]}
-          iconSize={24}
           numberOfLines={1}
           style={
             Array [
@@ -227,12 +225,11 @@ exports[`NoContentError should render correctly 1`] = `
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 12,
+                "marginLeft": 8,
                 "maxWidth": "100%",
               },
             ]
           }
-          textColor="#ffffff"
         >
           Rechercher une offre
         </Text>

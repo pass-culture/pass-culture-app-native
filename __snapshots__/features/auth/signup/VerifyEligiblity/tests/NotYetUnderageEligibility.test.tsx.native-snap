@@ -204,7 +204,6 @@ exports[`<NotYetUnderageEligibility /> should render properly 1`] = `
             "alignItems": "center",
             "backgroundColor": "#ffffff",
             "borderRadius": 24,
-            "borderWidth": 0,
             "flexDirection": "row",
             "height": 40,
             "justifyContent": "center",
@@ -221,7 +220,6 @@ exports[`<NotYetUnderageEligibility /> should render properly 1`] = `
       >
         <Text
           adjustsFontSizeToFit={false}
-          iconSize={24}
           numberOfLines={1}
           style={
             Array [
@@ -235,7 +233,6 @@ exports[`<NotYetUnderageEligibility /> should render properly 1`] = `
               },
             ]
           }
-          textColor="#eb0055"
         >
           Retourner à l'accueil
         </Text>

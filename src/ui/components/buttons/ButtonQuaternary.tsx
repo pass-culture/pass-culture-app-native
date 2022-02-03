@@ -1,30 +1,46 @@
-import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { AppButton, BaseButtonProps } from 'ui/components/buttons/AppButton'
-import { getSpacing } from 'ui/theme'
+import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
+import { getSpacing, Typo } from 'ui/theme'
 
-export const ButtonQuaternary: FunctionComponent<BaseButtonProps> = (props) => {
-  return <StyledAppButton {...props} inlineHeight={getSpacing(5)} textSize={getSpacing(3)} />
-}
+export const ButtonQuaternary = styled(AppButton).attrs<BaseButtonProps>(
+  ({ icon, disabled, theme, ...rest }) => {
+    let Icon
 
-const StyledAppButton = styled(AppButton).attrs(({ theme, disabled }) => {
-  const { buttons, icons } = theme
-  const loadingIconColor = buttons.quaternary.loadingIconColor
-  let iconColor = buttons.quaternary.iconColor
-  let textColor = buttons.quaternary.textColor
-  const backgroundColor = buttons.quaternary.backgroundColor
+    if (icon) {
+      Icon = styled(icon).attrs({
+        color: disabled
+          ? theme.buttons.disabled.quaternary.iconColor
+          : theme.buttons.quaternary.iconColor,
+        size: theme.buttons.quaternary.iconSize,
+      })``
+    }
 
-  if (disabled) {
-    textColor = buttons.disabled.quaternary.textColor
-    iconColor = buttons.disabled.quaternary.iconColor
+    const LoadingIndicator = styled(InitialLoadingIndicator).attrs({
+      color: theme.buttons.quaternary.loadingIconColor,
+      size: theme.buttons.quaternary.iconSize,
+    })``
+
+    const Title = styled(Typo.ButtonText)({
+      maxWidth: '100%',
+      color: disabled
+        ? theme.buttons.disabled.quaternary.textColor
+        : theme.buttons.quaternary.textColor,
+      fontSize: getSpacing(3),
+      marginLeft: icon
+        ? theme.buttons.quaternary.marginLeftWithIcon
+        : theme.buttons.quaternary.marginLeft,
+    })
+
+    return {
+      ...rest,
+      inlineHeight: getSpacing(5),
+      icon: Icon,
+      loadingIndicator: LoadingIndicator,
+      title: Title,
+    }
   }
-
-  return {
-    iconSize: icons.sizes.extraSmall,
-    loadingIconColor: loadingIconColor,
-    backgroundColor: backgroundColor,
-    iconColor: iconColor,
-    textColor: textColor,
-  }
-})``
+)(({ theme }) => ({
+  backgroundColor: theme.buttons.quaternary.backgroundColor,
+}))

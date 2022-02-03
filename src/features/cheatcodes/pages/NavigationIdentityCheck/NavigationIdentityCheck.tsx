@@ -88,7 +88,7 @@ export function NavigationIdentityCheck(): JSX.Element {
           onPress={() => trigger(EduConnectErrorMessageEnum.GenericError)}
         />
         <Row half>
-          <NavigationButton
+          <ButtonPrimary
             wording={'Identifie-toi en 2 minutes'}
             onPress={() => {
               setFastEduconnectConnectionRequestModalVisible(true)
@@ -123,14 +123,10 @@ const LinkToComponent = ({
 
   return (
     <Row half>
-      <NavigationButton wording={title ?? name} onPress={onPress ?? navigateToComponent} />
+      <ButtonPrimary wording={title ?? name} onPress={onPress ?? navigateToComponent} />
     </Row>
   )
 }
-
-const NavigationButton = styled(ButtonPrimary).attrs({
-  textSize: 11.5,
-})({})
 
 const StyledContainer = styled.View({
   display: 'flex',

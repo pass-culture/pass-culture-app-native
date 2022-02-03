@@ -301,7 +301,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "borderRadius": 24,
-                  "borderWidth": 0,
                   "flexDirection": "row",
                   "height": 40,
                   "justifyContent": "center",
@@ -329,8 +328,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
               </View>
               <Text
                 adjustsFontSizeToFit={false}
-                icon={[Function]}
-                iconSize={16}
                 numberOfLines={1}
                 style={
                   Array [
@@ -339,13 +336,11 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 12,
                       "lineHeight": 20,
-                      "marginLeft": 12,
+                      "marginLeft": 4,
                       "maxWidth": "100%",
                     },
                   ]
                 }
-                textColor="#161617"
-                textSize={12}
               >
                 C’est quoi ÉduConnect ?
               </Text>
@@ -368,7 +363,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                   "alignItems": "center",
                   "backgroundColor": "#eb0055",
                   "borderRadius": 24,
-                  "borderWidth": 0,
                   "flexDirection": "row",
                   "height": 40,
                   "justifyContent": "center",
@@ -385,7 +379,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
             >
               <Text
                 adjustsFontSizeToFit={false}
-                iconSize={24}
                 numberOfLines={1}
                 style={
                   Array [
@@ -399,7 +392,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                     },
                   ]
                 }
-                textColor="#ffffff"
               >
                 Identification avec ÉduConnect
               </Text>
@@ -475,7 +467,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "borderRadius": 24,
-                  "borderWidth": 0,
                   "flexDirection": "row",
                   "height": 40,
                   "justifyContent": "center",
@@ -502,8 +493,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
               </View>
               <Text
                 adjustsFontSizeToFit={false}
-                icon={[Function]}
-                iconSize={20}
                 numberOfLines={1}
                 style={
                   Array [
@@ -512,12 +501,11 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
-                      "marginLeft": 12,
+                      "marginLeft": 8,
                       "maxWidth": "100%",
                     },
                   ]
                 }
-                textColor="#161617"
               >
                 Identification manuelle
               </Text>
@@ -842,7 +830,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "borderRadius": 24,
-                  "borderWidth": 0,
                   "flexDirection": "row",
                   "height": 40,
                   "justifyContent": "center",
@@ -870,8 +857,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
               </View>
               <Text
                 adjustsFontSizeToFit={false}
-                icon={[Function]}
-                iconSize={16}
                 numberOfLines={1}
                 style={
                   Array [
@@ -880,13 +865,11 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 12,
                       "lineHeight": 20,
-                      "marginLeft": 12,
+                      "marginLeft": 4,
                       "maxWidth": "100%",
                     },
                   ]
                 }
-                textColor="#161617"
-                textSize={12}
               >
                 C’est quoi ÉduConnect ?
               </Text>
@@ -909,7 +892,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                   "alignItems": "center",
                   "backgroundColor": "#eb0055",
                   "borderRadius": 24,
-                  "borderWidth": 0,
                   "flexDirection": "row",
                   "height": 40,
                   "justifyContent": "center",
@@ -926,7 +908,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
             >
               <Text
                 adjustsFontSizeToFit={false}
-                iconSize={24}
                 numberOfLines={1}
                 style={
                   Array [
@@ -940,7 +921,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                     },
                   ]
                 }
-                textColor="#ffffff"
               >
                 Identification avec ÉduConnect
               </Text>
@@ -1016,7 +996,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                   "alignItems": "center",
                   "backgroundColor": "transparent",
                   "borderRadius": 24,
-                  "borderWidth": 0,
                   "flexDirection": "row",
                   "height": 40,
                   "justifyContent": "center",
@@ -1043,8 +1022,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
               </View>
               <Text
                 adjustsFontSizeToFit={false}
-                icon={[Function]}
-                iconSize={20}
                 numberOfLines={1}
                 style={
                   Array [
@@ -1053,12 +1030,11 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
-                      "marginLeft": 12,
+                      "marginLeft": 8,
                       "maxWidth": "100%",
                     },
                   ]
                 }
-                textColor="#161617"
               >
                 Identification manuelle
               </Text>

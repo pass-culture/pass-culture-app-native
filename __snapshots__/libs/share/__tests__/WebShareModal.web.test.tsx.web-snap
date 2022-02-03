@@ -192,7 +192,7 @@ Object {
                               aria-label="Copier"
                               class="css-view-1dbjc4n"
                               data-testid="Copier"
-                              style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
+                              style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
                               tabindex="0"
                             >
                               <div
@@ -209,7 +209,7 @@ Object {
                               <div
                                 class="css-text-901oao css-textMultiLine-cens5h"
                                 dir="auto"
-                                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 12px; max-width: 100%;"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
                               >
                                 Copier
                               </div>
@@ -218,7 +218,7 @@ Object {
                               aria-label="E-mail"
                               class="css-view-1dbjc4n"
                               data-testid="E-mail"
-                              style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
+                              style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
                               tabindex="0"
                             >
                               <div
@@ -235,7 +235,7 @@ Object {
                               <div
                                 class="css-text-901oao css-textMultiLine-cens5h"
                                 dir="auto"
-                                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 12px; max-width: 100%;"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
                               >
                                 E-mail
                               </div>
@@ -374,7 +374,7 @@ Object {
                             aria-label="Annuler"
                             class="css-view-1dbjc4n"
                             data-testid="Annuler"
-                            style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 240px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                            style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 240px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
                             tabindex="0"
                           >
                             <div

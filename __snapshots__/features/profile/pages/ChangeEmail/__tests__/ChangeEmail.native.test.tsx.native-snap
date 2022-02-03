@@ -492,7 +492,6 @@ Array [
                 "alignItems": "center",
                 "backgroundColor": "#F1F1F4",
                 "borderRadius": 24,
-                "borderWidth": 0,
                 "flexDirection": "row",
                 "height": 40,
                 "justifyContent": "center",
@@ -509,7 +508,6 @@ Array [
           >
             <Text
               adjustsFontSizeToFit={false}
-              iconSize={24}
               numberOfLines={1}
               style={
                 Array [
@@ -523,7 +521,6 @@ Array [
                   },
                 ]
               }
-              textColor="#696A6F"
             >
               Enregistrer
             </Text>
@@ -1134,7 +1131,6 @@ Array [
                 "alignItems": "center",
                 "backgroundColor": "#F1F1F4",
                 "borderRadius": 24,
-                "borderWidth": 0,
                 "flexDirection": "row",
                 "height": 40,
                 "justifyContent": "center",
@@ -1151,7 +1147,6 @@ Array [
           >
             <Text
               adjustsFontSizeToFit={false}
-              iconSize={24}
               numberOfLines={1}
               style={
                 Array [
@@ -1165,7 +1160,6 @@ Array [
                   },
                 ]
               }
-              textColor="#696A6F"
             >
               Enregistrer
             </Text>
