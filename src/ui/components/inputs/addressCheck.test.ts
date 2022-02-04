@@ -1,7 +1,7 @@
 import { isAddressValid } from './addressCheck'
 
 describe('isAddressValid function', () => {
-  it.each(['1 ', '1', '1 rue', '1 rue de Loïc', 'àâçéèêîôœùûÀÂÇÉÈÊÎÔŒÙÛ'])(
+  it.each(['1 ', '1', '1 rue', '1, rue de Loïc-Raison', 'àâçéèêîôœùûÀÂÇÉÈÊÎÔŒÙÛ'])(
     'should accept a well-formatted address: %s',
     (address) => {
       const isValid = isAddressValid(address)
@@ -9,7 +9,7 @@ describe('isAddressValid function', () => {
     }
   )
 
-  it.each(['J@hn', 'ჯონ', '𝘑𝘦𝘢𝘯 𝘩𝘦𝘯𝘳𝘺', ' ', '  '])(
+  it.each(['J@hn', 'ჯონ', '𝘑𝘦𝘢𝘯 𝘩𝘦𝘯𝘳𝘺', ' ', '  ', '1() rue de Loïc-Raison'])(
     'should reject a unwell-formatted address: %s',
     (address) => {
       const isValid = isAddressValid(address)
