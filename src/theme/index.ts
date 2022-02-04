@@ -15,6 +15,7 @@ import {
 } from 'ui/theme/constants'
 import { BorderRadiusEnum, Breakpoints } from 'ui/theme/grid'
 import { IconSizesType, iconSizes } from 'ui/theme/iconSizes'
+import { IllustrationSizesType, illustrationSizes } from 'ui/theme/illustrationSizes'
 // eslint-disable-next-line no-restricted-imports
 import { ZIndex } from 'ui/theme/layers'
 
@@ -120,6 +121,7 @@ export interface AppThemeType {
     bottom: { offsetTopHeightDesktopTablet: number }
   }
   icons: { sizes: IconSizesType }
+  illustrations: { sizes: IllustrationSizesType }
   buttons: {
     maxWidth: number
     buttonHeights: ButtonHeightsType
@@ -402,6 +404,7 @@ export const theme: AppThemeType = {
     bottom: { offsetTopHeightDesktopTablet: BOTTOM_CONTENT_PAGE_OFFSET_TOP_HEIGHT_DESKTOP_TABLET },
   },
   icons: { sizes: iconSizes },
+  illustrations: { sizes: illustrationSizes },
   buttons: {
     maxWidth: DESKTOP_CONTENT_MAX_WIDTH,
     buttonHeights: {
