@@ -20,7 +20,6 @@ type Props = {
 }
 
 const ANIMATION_SIZE = getSpacing(45)
-const ICON_SIZE = getSpacing(50)
 
 export const GenericInfoPage: FunctionComponent<Props> = ({
   children,
@@ -32,8 +31,15 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
   flex = true,
   buttons,
 }) => {
-  const { isTouch, colors } = useTheme()
+  const { isTouch } = useTheme()
   const Wrapper = useMemo(() => (flex ? Container : React.Fragment), [flex])
+  const StyledIcon =
+    Icon &&
+    styled(Icon).attrs(({ theme }) => ({
+      size: theme.illustrations.sizes.fullPage,
+      color: theme.colors.white,
+    }))({ width: '100%' })
+
   return (
     <Wrapper>
       {!!noIndex && (
@@ -51,9 +57,9 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
             <Spacer.Column numberOfSpaces={spacingMatrix.top} />
           </React.Fragment>
         )}
-        {Icon ? (
+        {StyledIcon ? (
           <React.Fragment>
-            <Icon color={colors.white} size={ICON_SIZE} />
+            <StyledIcon />
             <Spacer.Column numberOfSpaces={spacingMatrix.afterIcon} />
           </React.Fragment>
         ) : (
