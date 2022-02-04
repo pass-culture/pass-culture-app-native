@@ -304,7 +304,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                   "flexDirection": "row",
                   "height": 40,
                   "justifyContent": "center",
-                  "marginBottom": 16,
                   "maxWidth": 500,
                   "opacity": 1,
                   "paddingBottom": 2,
@@ -345,6 +344,16 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                 C’est quoi ÉduConnect ?
               </Text>
             </View>
+            <View
+              numberOfSpaces={4}
+              style={
+                Array [
+                  Object {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
             <View
               accessibilityLabel="Identification avec ÉduConnect"
               accessible={true}
@@ -833,7 +842,6 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                   "flexDirection": "row",
                   "height": 40,
                   "justifyContent": "center",
-                  "marginBottom": 16,
                   "maxWidth": 500,
                   "opacity": 1,
                   "paddingBottom": 2,
@@ -874,6 +882,16 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                 C’est quoi ÉduConnect ?
               </Text>
             </View>
+            <View
+              numberOfSpaces={4}
+              style={
+                Array [
+                  Object {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
             <View
               accessibilityLabel="Identification avec ÉduConnect"
               accessible={true}

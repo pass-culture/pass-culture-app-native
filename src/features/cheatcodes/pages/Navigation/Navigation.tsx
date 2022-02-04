@@ -319,6 +319,14 @@ export function Navigation(): JSX.Element {
             }
           />
         </Row>
+        <Row half>
+          <ButtonPrimary
+            wording={'Set Phone Validation Code'}
+            onPress={() =>
+              navigate('SetPhoneValidationCode', { phoneNumber: '+33612345678', countryCode: 'FR' })
+            }
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>

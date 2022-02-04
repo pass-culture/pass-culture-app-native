@@ -88,26 +88,32 @@ export const WebShareModal = ({
         <Separator />
         <Spacer.Column numberOfSpaces={3} />
         <NonSocialButtonsContainer>
-          <NonSocialButton
-            wording={t`Copier`}
-            icon={Duplicate}
-            onPress={() => navigator.clipboard.writeText(url)}
-          />
-          <NonSocialButton
-            wording="E-mail"
-            icon={EmailFilled}
-            onPress={() => window.open('mailto:' + '' + '?subject=' + message + '&body=' + url)}
-          />
+          <NonSocialButtonsItem>
+            <ButtonTertiaryBlack
+              wording={t`Copier`}
+              icon={Duplicate}
+              onPress={() => navigator.clipboard.writeText(url)}
+            />
+          </NonSocialButtonsItem>
+          <NonSocialButtonsItem>
+            <ButtonTertiaryBlack
+              wording="E-mail"
+              icon={EmailFilled}
+              onPress={() => window.open('mailto:' + '' + '?subject=' + message + '&body=' + url)}
+            />
+          </NonSocialButtonsItem>
           {
             // A message app is only available on mobile or on MacOS device
             isMobileDeviceDetectOnWeb || isMacOsDeviceDetectOnWeb ? (
-              <NonSocialButton
-                wording="SMS"
-                icon={SMSFilled}
-                onPress={() => {
-                  location.href = `sms:${t`Veuillez choisir un contact`}?&body=${message}: ${url}`
-                }}
-              />
+              <NonSocialButtonsItem>
+                <ButtonTertiaryBlack
+                  wording="SMS"
+                  icon={SMSFilled}
+                  onPress={() => {
+                    location.href = `sms:${t`Veuillez choisir un contact`}?&body=${message}: ${url}`
+                  }}
+                />
+              </NonSocialButtonsItem>
             ) : null
           }
         </NonSocialButtonsContainer>
@@ -120,7 +126,7 @@ export const WebShareModal = ({
           ))}
         </SocialButtonsContainer>
         <Spacer.Column numberOfSpaces={8} />
-        <CancelButton wording={t`Annuler`} onPress={dismissModal} />
+        <ButtonPrimary wording={t`Annuler`} onPress={dismissModal} mediumWidth />
       </Container>
     </AppModal>
   )
@@ -133,10 +139,13 @@ const Container = styled.View({
 const NonSocialButtonsContainer = styled.View({
   flexDirection: 'row',
   width: '100%',
+  flex: 1,
+  flexBasis: 'auto',
 })
 
-const NonSocialButton = styled(ButtonTertiaryBlack)({
-  width: '33%',
+const NonSocialButtonsItem = styled.View({
+  flex: 1,
+  justifyContent: 'center',
 })
 
 const SocialButtonsContainer = styled.View({
@@ -144,8 +153,4 @@ const SocialButtonsContainer = styled.View({
   gridTemplateColumns: 'repeat(auto-fill, minmax(100px,1fr))',
   gap: `${getSpacingString(6)} 0px`,
   width: '100%',
-})
-
-const CancelButton = styled(ButtonPrimary)({
-  maxWidth: 240,
 })

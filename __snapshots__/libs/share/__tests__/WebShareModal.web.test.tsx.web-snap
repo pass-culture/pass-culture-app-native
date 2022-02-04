@@ -186,58 +186,68 @@ Object {
                           />
                           <div
                             class="css-view-1dbjc4n"
-                            style="flex-direction: row; width: 100%;"
+                            style="flex-basis: auto; flex-direction: row; flex-grow: 1; flex-shrink: 1; width: 100%;"
                           >
                             <div
-                              aria-label="Copier"
                               class="css-view-1dbjc4n"
-                              data-testid="Copier"
-                              style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
-                              tabindex="0"
+                              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center;"
                             >
                               <div
+                                aria-label="Copier"
                                 class="css-view-1dbjc4n"
-                                data-testid="button-icon"
+                                data-testid="Copier"
+                                style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                                tabindex="0"
                               >
                                 <div
-                                  class="css-text-901oao"
-                                  dir="auto"
+                                  class="css-view-1dbjc4n"
+                                  data-testid="button-icon"
                                 >
-                                  button-icon-SVG-Mock
+                                  <div
+                                    class="css-text-901oao"
+                                    dir="auto"
+                                  >
+                                    button-icon-SVG-Mock
+                                  </div>
                                 </div>
-                              </div>
-                              <div
-                                class="css-text-901oao css-textMultiLine-cens5h"
-                                dir="auto"
-                                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
-                              >
-                                Copier
+                                <div
+                                  class="css-text-901oao css-textMultiLine-cens5h"
+                                  dir="auto"
+                                  style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
+                                >
+                                  Copier
+                                </div>
                               </div>
                             </div>
                             <div
-                              aria-label="E-mail"
                               class="css-view-1dbjc4n"
-                              data-testid="E-mail"
-                              style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
-                              tabindex="0"
+                              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center;"
                             >
                               <div
+                                aria-label="E-mail"
                                 class="css-view-1dbjc4n"
-                                data-testid="button-icon"
+                                data-testid="E-mail"
+                                style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                                tabindex="0"
                               >
                                 <div
-                                  class="css-text-901oao"
-                                  dir="auto"
+                                  class="css-view-1dbjc4n"
+                                  data-testid="button-icon"
                                 >
-                                  button-icon-SVG-Mock
+                                  <div
+                                    class="css-text-901oao"
+                                    dir="auto"
+                                  >
+                                    button-icon-SVG-Mock
+                                  </div>
                                 </div>
-                              </div>
-                              <div
-                                class="css-text-901oao css-textMultiLine-cens5h"
-                                dir="auto"
-                                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
-                              >
-                                E-mail
+                                <div
+                                  class="css-text-901oao css-textMultiLine-cens5h"
+                                  dir="auto"
+                                  style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
+                                >
+                                  E-mail
+                                </div>
                               </div>
                             </div>
                           </div>
@@ -374,7 +384,7 @@ Object {
                             aria-label="Annuler"
                             class="css-view-1dbjc4n"
                             data-testid="Annuler"
-                            style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 240px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                            style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 320px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
                             tabindex="0"
                           >
                             <div

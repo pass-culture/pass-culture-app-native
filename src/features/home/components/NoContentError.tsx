@@ -9,7 +9,7 @@ import { ButtonSecondaryWhite } from 'ui/components/buttons/ButtonSecondaryWhite
 import { GenericErrorPage } from 'ui/components/GenericErrorPage'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
-import { getSpacing, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const NoContentError = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -23,7 +23,7 @@ export const NoContentError = () => {
       title={t`Oups\u00a0!`}
       icon={BrokenConnection}
       buttons={[
-        <SearchButton
+        <ButtonSecondaryWhite
           key={1}
           wording={t`Rechercher une offre`}
           icon={MagnifyingGlass}
@@ -40,11 +40,3 @@ const BodyText = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))
-
-const SearchButton = styled(ButtonSecondaryWhite).attrs({
-  iconSize: 22,
-})({
-  width: 'auto',
-  paddingLeft: getSpacing(6),
-  paddingRight: getSpacing(6),
-})
