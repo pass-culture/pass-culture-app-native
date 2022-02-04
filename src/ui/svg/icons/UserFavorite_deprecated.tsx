@@ -1,14 +1,12 @@
 import * as React from 'react'
 import Svg, { Path, G } from 'react-native-svg'
-
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import styled from 'styled-components/native'
 
 import { IconInterface } from './types'
 
-export const UserFavoriteDeprecated: React.FunctionComponent<IconInterface> = ({
-  size = 127,
-  color = ColorsEnum.BLACK,
+const UserFavoriteDeprecatedSvg: React.FunctionComponent<IconInterface> = ({
+  size,
+  color,
   testID,
 }) => (
   <Svg
@@ -26,3 +24,10 @@ export const UserFavoriteDeprecated: React.FunctionComponent<IconInterface> = ({
     </G>
   </Svg>
 )
+
+export const UserFavoriteDeprecated = styled(UserFavoriteDeprecatedSvg).attrs(
+  ({ color, size, theme }) => ({
+    color: color ?? theme.colors.black,
+    size: size ?? 127,
+  })
+)``

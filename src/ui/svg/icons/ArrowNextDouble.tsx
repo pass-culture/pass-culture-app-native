@@ -1,17 +1,10 @@
 import * as React from 'react'
 import Svg, { Path, G } from 'react-native-svg'
-
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
+import styled from 'styled-components/native'
 
 import { IconInterface } from './types'
 
-export const ArrowNextDouble: React.FunctionComponent<IconInterface> = ({
-  size = STANDARD_ICON_SIZE,
-  color = ColorsEnum.BLACK,
-  testID,
-}) => (
+const ArrowNextDoubleSvg: React.FunctionComponent<IconInterface> = ({ size, color, testID }) => (
   <Svg width={size} height={size} viewBox="0 0 52 53" testID={testID}>
     <G fill="none" fillRule="evenodd">
       <G fill={color}>
@@ -27,3 +20,8 @@ export const ArrowNextDouble: React.FunctionComponent<IconInterface> = ({
     </G>
   </Svg>
 )
+
+export const ArrowNextDouble = styled(ArrowNextDoubleSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.black,
+  size: size ?? theme.icons.sizes.standard,
+}))``

@@ -1,17 +1,10 @@
 import * as React from 'react'
 import Svg, { Path } from 'react-native-svg'
-
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
+import styled from 'styled-components/native'
 
 import { IconInterface } from './types'
 
-export function Eye({
-  size = STANDARD_ICON_SIZE,
-  color = ColorsEnum.BLACK,
-  testID,
-}: IconInterface): JSX.Element {
+function EyeSvg({ size, color, testID }: IconInterface): JSX.Element {
   return (
     <Svg width={size} height={size} testID={testID} fill={color} viewBox="0 0 48 48" aria-hidden>
       <Path
@@ -22,3 +15,8 @@ export function Eye({
     </Svg>
   )
 }
+
+export const Eye = styled(EyeSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.black,
+  size: size ?? theme.icons.sizes.standard,
+}))``

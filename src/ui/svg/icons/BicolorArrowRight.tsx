@@ -1,17 +1,14 @@
 import * as React from 'react'
 import Svg, { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 import { svgIdentifier } from 'ui/svg/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { BicolorIconInterface } from './types'
 
 const NotMemoizedBicolorArrowRight: React.FC<BicolorIconInterface> = (props) => {
   const { size = 28, color, color2, style, testID } = props
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
-  const primaryColor = color || ColorsEnum.PRIMARY
-  const secondaryColor = color2 || color || ColorsEnum.SECONDARY
   return (
     <Svg
       width={size}
@@ -33,12 +30,17 @@ const NotMemoizedBicolorArrowRight: React.FC<BicolorIconInterface> = (props) => 
           x2="16.2592"
           y2="-1.52288"
           gradientUnits="userSpaceOnUse">
-          <Stop stopColor={primaryColor} />
-          <Stop offset="1" stopColor={secondaryColor} />
+          <Stop stopColor={color} />
+          <Stop offset="1" stopColor={color2} />
         </LinearGradient>
       </Defs>
     </Svg>
   )
 }
 
-export const BicolorArrowRight = React.memo(NotMemoizedBicolorArrowRight)
+export const BicolorArrowRight = React.memo(
+  styled(NotMemoizedBicolorArrowRight).attrs(({ color, color2, theme }) => ({
+    color: color ?? theme.colors.primary,
+    color2: color2 ?? color ?? theme.colors.secondary,
+  }))``
+)

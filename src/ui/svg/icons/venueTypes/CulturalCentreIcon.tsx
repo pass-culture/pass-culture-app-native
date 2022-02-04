@@ -1,16 +1,10 @@
 import * as React from 'react'
 import Svg, { Path } from 'react-native-svg'
-
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import styled from 'styled-components/native'
 
 import { IconInterface } from '../types'
 
-export function CulturalCentreIcon({
-  size = 32,
-  color = ColorsEnum.BLACK,
-  testID,
-}: IconInterface): JSX.Element {
+function CulturalCentreSvg({ size, color, testID }: IconInterface): JSX.Element {
   return (
     <Svg width={size} height={size} testID={testID} fill={color} viewBox="0 0 96 96" aria-hidden>
       <Path
@@ -21,3 +15,8 @@ export function CulturalCentreIcon({
     </Svg>
   )
 }
+
+export const CulturalCentreIcon = styled(CulturalCentreSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.black,
+  size: size ?? theme.icons.sizes.standard,
+}))``

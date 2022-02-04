@@ -1,17 +1,10 @@
 import * as React from 'react'
 import Svg, { Path, G } from 'react-native-svg'
-
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
+import styled from 'styled-components/native'
 
 import { IconInterface } from './types'
 
-export const NoOfferDeprecated = ({
-  color = ColorsEnum.GREY_MEDIUM,
-  size = STANDARD_ICON_SIZE,
-  testID,
-}: IconInterface) => {
+const NoOfferDeprecatedSvg = ({ color, size, testID }: IconInterface) => {
   return (
     <Svg width={size} height={size} testID={testID} viewBox="0 0 156 156" aria-hidden>
       <G fill="none" fillRule="evenodd">
@@ -25,3 +18,8 @@ export const NoOfferDeprecated = ({
     </Svg>
   )
 }
+
+export const NoOfferDeprecated = styled(NoOfferDeprecatedSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.greyMedium,
+  size: size ?? theme.icons.sizes.standard,
+}))``

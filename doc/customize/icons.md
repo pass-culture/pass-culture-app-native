@@ -44,7 +44,7 @@ const MyIllustrationSvg: React.FunctionComponent<IconInterface> = ({
   color,
   testID,
 }) => {
-  const height = typeof size === 'string' ? size : (size * 156) / 200
+  const height = typeof size === 'string' ? size : ((size as number) * 156) / 200
   return (
     <Svg width={size} height={height} viewBox="0 0 200 156" testID={testID} aria-hidden>
       <Path
@@ -76,7 +76,6 @@ import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-
 
 const MyAccessiblePictogramSvg: React.FunctionComponent<AccessibleIcon> = ({
   size,
@@ -165,9 +164,8 @@ const MyBicolorPictogramSvg: React.FunctionComponent<IconInterface> = ({
         fill={gradientFill}
         clipRule={'evenodd'}
         fillRule={'evenodd'}
-        d="M24 6.5C22.8923 6.5 22 74 38 29.74H34ZM35 35.5V31.74H37V35.5H35Z"
-      />
-    </Svg>
+        d="M24 6.5C22.8923 6.5 22 74 38 29.74H34ZM35 35.5V31.74H37V35.5H35Z" />
+      </Svg>
   )
 }
 

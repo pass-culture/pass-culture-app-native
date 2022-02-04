@@ -1,18 +1,16 @@
 import * as React from 'react'
 import Svg, { Path } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 import { BicolorGradient, svgIdentifier } from 'ui/svg/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 import { IconInterface } from './types'
 
-export const IdCard: React.FunctionComponent<IconInterface> = ({
-  size = STANDARD_ICON_SIZE,
-  color = ColorsEnum.BLACK,
+const IdCardSvg: React.FunctionComponent<IconInterface> = ({
+  size,
+  color,
   color2,
-  opacity = 1,
+  opacity,
   testID,
 }) => {
   const { id, fill: fillBicolor } = svgIdentifier()
@@ -20,7 +18,7 @@ export const IdCard: React.FunctionComponent<IconInterface> = ({
 
   return (
     <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID} aria-hidden>
-      {!!color2 && <BicolorGradient id={id} color1={color} color2={color2} />}
+      {!!(color && color2) && <BicolorGradient id={id} color1={color} color2={color2} />}
       <Path
         fill={fill}
         opacity={opacity}
@@ -31,3 +29,9 @@ export const IdCard: React.FunctionComponent<IconInterface> = ({
     </Svg>
   )
 }
+
+export const IdCard = styled(IdCardSvg).attrs(({ color, size, opacity, theme }) => ({
+  color: color ?? theme.colors.black,
+  size: size ?? theme.icons.sizes.standard,
+  opacity: opacity ?? 1,
+}))``

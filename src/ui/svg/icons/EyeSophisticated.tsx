@@ -1,17 +1,10 @@
 import * as React from 'react'
 import Svg, { Path } from 'react-native-svg'
-
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
+import styled from 'styled-components/native'
 
 import { IconInterface } from './types'
 
-export const EyeSophisticated: React.FC<IconInterface> = ({
-  size = STANDARD_ICON_SIZE,
-  color = ColorsEnum.BLACK,
-  testID,
-}) => {
+const EyeSophisticatedSvg: React.FC<IconInterface> = ({ size, color, testID }) => {
   return (
     <Svg width={size} height={size} testID={testID} fill="none" viewBox="0 0 18 12" aria-hidden>
       <Path
@@ -23,3 +16,8 @@ export const EyeSophisticated: React.FC<IconInterface> = ({
     </Svg>
   )
 }
+
+export const EyeSophisticated = styled(EyeSophisticatedSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.black,
+  size: size ?? theme.icons.sizes.standard,
+}))``

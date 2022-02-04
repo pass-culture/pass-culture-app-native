@@ -1,17 +1,13 @@
 import * as React from 'react'
 import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
 import { svgIdentifier } from 'ui/svg/utils'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
-export const Presse: React.FunctionComponent<IconInterface> = ({
-  size = 32,
-  color = ColorsEnum.PRIMARY,
-  color2,
-  testID,
-}) => {
+const PresseSvg: React.FunctionComponent<IconInterface> = ({ size, color, color2, testID }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
 
   return (
@@ -31,3 +27,8 @@ export const Presse: React.FunctionComponent<IconInterface> = ({
     </Svg>
   )
 }
+
+export const Presse = styled(PresseSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.primary,
+  size: size ?? theme.icons.sizes.standard,
+}))``

@@ -1,5 +1,6 @@
 import * as React from 'react'
 import Svg, { Circle, G } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
@@ -11,11 +12,11 @@ type Props = Omit<IconInterface, 'color'> & {
   fillColor?: ColorsEnum
 }
 
-export const Dot: React.FC<Props> = ({
+const DotSvg: React.FC<Props> = ({
   'aria-label': ariaLabel,
-  size = 8,
-  borderColor = ColorsEnum.BLACK,
-  fillColor = ColorsEnum.BLACK,
+  size,
+  borderColor,
+  fillColor,
   testID,
 }) => (
   <Svg
@@ -32,3 +33,9 @@ export const Dot: React.FC<Props> = ({
     </G>
   </Svg>
 )
+
+export const Dot = styled(DotSvg).attrs(({ borderColor, fillColor, size, theme }) => ({
+  borderColor: borderColor ?? theme.colors.black,
+  fillColor: fillColor ?? theme.colors.black,
+  size: size ?? 8,
+}))``

@@ -1,10 +1,9 @@
 import * as React from 'react'
 import Svg, { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 import { svgIdentifier } from 'ui/svg/utils'
 import { getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { RectangleIconInterface } from './types'
 
@@ -19,8 +18,6 @@ export const BicolorSelector: React.FC<RectangleIconInterface> = ({
   style,
 }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
-  const primaryColor = color || ColorsEnum.PRIMARY
-  const secondaryColor = color || ColorsEnum.SECONDARY
   return (
     <Svg
       width={width}
@@ -32,8 +29,8 @@ export const BicolorSelector: React.FC<RectangleIconInterface> = ({
       aria-hidden>
       <Defs>
         <LinearGradient id={gradientId} x1="-42.969%" x2="153.672%" y1="52.422%" y2="52.422%">
-          <Stop offset="0%" stopColor={primaryColor} />
-          <Stop offset="100%" stopColor={secondaryColor} />
+          <PrimaryStop stopColor={color} />
+          <SecondaryStop stopColor={color} />
         </LinearGradient>
       </Defs>
       <Path
@@ -45,3 +42,13 @@ export const BicolorSelector: React.FC<RectangleIconInterface> = ({
     </Svg>
   )
 }
+
+const PrimaryStop = styled(Stop).attrs(({ stopColor, theme }) => ({
+  stopColor: stopColor ?? theme.colors.primary,
+  offset: '0%',
+}))``
+
+const SecondaryStop = styled(Stop).attrs(({ stopColor, theme }) => ({
+  stopColor: stopColor ?? theme.colors.secondary,
+  offset: '100%',
+}))``

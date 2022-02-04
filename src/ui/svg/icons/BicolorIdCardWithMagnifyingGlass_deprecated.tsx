@@ -1,24 +1,20 @@
 import * as React from 'react'
 import Svg, { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 import { svgIdentifier } from 'ui/svg/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 import { BicolorIconInterface } from './types'
 
 const ratio = 155 / 124
 
-export const BicolorIdCardWithMagnifyingGlassDeprecated: React.FC<BicolorIconInterface> = ({
-  size = STANDARD_ICON_SIZE,
+const BicolorIdCardWithMagnifyingGlassDeprecatedSvg: React.FC<BicolorIconInterface> = ({
+  size,
   color,
   color2,
   testID,
 }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
-  const primaryColor = color || ColorsEnum.PRIMARY
-  const secondaryColor = color2 || color || ColorsEnum.SECONDARY
 
   const width = ratio * (size as number)
   const height = (size as number) / ratio
@@ -49,10 +45,18 @@ export const BicolorIdCardWithMagnifyingGlassDeprecated: React.FC<BicolorIconInt
           x2="38.7669"
           y2="134.133"
           gradientUnits="userSpaceOnUse">
-          <Stop stopColor={secondaryColor} />
-          <Stop offset="1" stopColor={primaryColor} />
+          <Stop stopColor={color2} />
+          <Stop offset="1" stopColor={color} />
         </LinearGradient>
       </Defs>
     </Svg>
   )
 }
+
+export const BicolorIdCardWithMagnifyingGlassDeprecated = styled(
+  BicolorIdCardWithMagnifyingGlassDeprecatedSvg
+).attrs(({ color, color2, size, theme }) => ({
+  color: color ?? theme.colors.primary,
+  color2: color2 ?? color ?? theme.colors.secondary,
+  size: size ?? theme.icons.sizes.standard,
+}))``

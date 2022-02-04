@@ -1,19 +1,13 @@
 import * as React from 'react'
 import Svg, { G, Path, Defs, RadialGradient, Stop } from 'react-native-svg'
-
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import styled from 'styled-components/native'
 
 import { IconInterface } from '../types'
 
 const RADIAL_GRADIENT_1_ID = 'Instagram-RadialGradient1'
 const RADIAL_GRADIENT_2_ID = 'Instagram-RadialGradient2'
 
-export const Instagram = ({
-  color: _color = ColorsEnum.GREY_DARK,
-  size = 32,
-  testID,
-}: IconInterface) => {
+export const InstagramSvg = ({ color: _color, size, testID }: IconInterface) => {
   return (
     <Svg width={size} height={size} testID={testID} viewBox="0 0 24 24" aria-hidden>
       <Defs>
@@ -60,3 +54,8 @@ export const Instagram = ({
     </Svg>
   )
 }
+
+export const Instagram = styled(InstagramSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.greyDark,
+  size: size ?? theme.icons.sizes.standard,
+}))``

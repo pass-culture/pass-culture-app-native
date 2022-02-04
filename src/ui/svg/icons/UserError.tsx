@@ -1,17 +1,12 @@
 import * as React from 'react'
 import Svg, { Path } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { ILLUSTRATION_ICON_SIZE } from 'ui/theme/constants'
 
-export const UserError: React.FunctionComponent<IconInterface> = ({
-  size = ILLUSTRATION_ICON_SIZE,
-  color = ColorsEnum.BLACK,
-  testID,
-}) => {
-  const height = typeof size === 'string' ? size : (size * 156) / 200
+const UserErrorSvg: React.FunctionComponent<IconInterface> = ({ size, color, testID }) => {
+  const height = typeof size === 'string' ? size : ((size as number) * 156) / 200
   return (
     <Svg width={size} height={height} viewBox="0 0 200 156" testID={testID} aria-hidden>
       <Path
@@ -23,3 +18,8 @@ export const UserError: React.FunctionComponent<IconInterface> = ({
     </Svg>
   )
 }
+
+export const UserError = styled(UserErrorSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.black,
+  size: size ?? ILLUSTRATION_ICON_SIZE,
+}))``

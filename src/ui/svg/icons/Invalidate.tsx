@@ -1,17 +1,13 @@
 import * as React from 'react'
 import Svg, { Circle, Path } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
-import { SMALLER_ICON_SIZE } from 'ui/theme/constants'
 
 import { IconInterface } from './types'
 
-export const Invalidate: React.FunctionComponent<IconInterface> = ({
-  size = SMALLER_ICON_SIZE,
-  color = ColorsEnum.BLACK,
-  testID,
-}) => (
+const InvalidateSvg: React.FunctionComponent<IconInterface> = ({ size, color, testID }) => (
   <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID} fill={color} aria-hidden>
     <Circle r={10} cx={24} cy={24} fill={ColorsEnum.WHITE} />
     <Path
@@ -21,3 +17,8 @@ export const Invalidate: React.FunctionComponent<IconInterface> = ({
     />
   </Svg>
 )
+
+export const Invalidate = styled(InvalidateSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.black,
+  size: size ?? theme.icons.sizes.smaller,
+}))``

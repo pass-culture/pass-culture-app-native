@@ -1,29 +1,25 @@
 import React from 'react'
 import Svg, { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 import { svgIdentifier } from 'ui/svg/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 import { BicolorIconInterface } from './types'
 
 const NotMemoizedBicolorLogo: React.FC<BicolorIconInterface> = ({
-  size = STANDARD_ICON_SIZE,
+  size,
   color,
   color2,
-  thin = false,
+  thin,
   testID,
 }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
-  const primaryColor = color || ColorsEnum.PRIMARY
-  const secondaryColor = color2 || color || ColorsEnum.SECONDARY
   return (
     <Svg width={size} height={size} viewBox="0 0 26 26" testID={testID} aria-hidden>
       <Defs>
         <LinearGradient id={gradientId} x1="-42.969%" x2="153.672%" y1="52.422%" y2="52.422%">
-          <Stop offset="0%" stopColor={primaryColor} />
-          <Stop offset="100%" stopColor={secondaryColor} />
+          <Stop offset="0%" stopColor={color} />
+          <Stop offset="100%" stopColor={color2} />
         </LinearGradient>
       </Defs>
       <Path
@@ -36,4 +32,11 @@ const NotMemoizedBicolorLogo: React.FC<BicolorIconInterface> = ({
   )
 }
 
-export const BicolorLogo = React.memo(NotMemoizedBicolorLogo)
+export const BicolorLogo = React.memo(
+  styled(NotMemoizedBicolorLogo).attrs(({ color, color2, size, thin, theme }) => ({
+    color: color ?? theme.colors.primary,
+    color2: color2 ?? color ?? theme.colors.secondary,
+    size: size ?? theme.icons.sizes.standard,
+    thin: thin ?? false,
+  }))``
+)

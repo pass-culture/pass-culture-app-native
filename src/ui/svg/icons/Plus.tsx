@@ -1,17 +1,10 @@
 import * as React from 'react'
 import Svg, { Path } from 'react-native-svg'
-
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { SMALLER_ICON_SIZE } from 'ui/theme/constants'
+import styled from 'styled-components/native'
 
 import { IconInterface } from './types'
 
-export const Plus: React.FunctionComponent<IconInterface> = ({
-  size = SMALLER_ICON_SIZE,
-  color = ColorsEnum.BLACK,
-  testID,
-}) => (
+const PlusSvg: React.FunctionComponent<IconInterface> = ({ size, color, testID }) => (
   <Svg width={size} height={size} testID={testID} viewBox="0 0 48 48">
     <Path
       fill={color}
@@ -21,3 +14,8 @@ export const Plus: React.FunctionComponent<IconInterface> = ({
     />
   </Svg>
 )
+
+export const Plus = styled(PlusSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.black,
+  size: size ?? theme.icons.sizes.smaller,
+}))``

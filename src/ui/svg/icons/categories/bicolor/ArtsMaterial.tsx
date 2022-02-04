@@ -1,14 +1,15 @@
 import * as React from 'react'
 import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
 import { svgIdentifier } from 'ui/svg/utils'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
-export const ArtsMaterial: React.FunctionComponent<IconInterface> = ({
-  size = 32,
-  color = ColorsEnum.PRIMARY,
+const ArtsMaterialSvg: React.FunctionComponent<IconInterface> = ({
+  size,
+  color,
   color2,
   testID,
 }) => {
@@ -31,3 +32,8 @@ export const ArtsMaterial: React.FunctionComponent<IconInterface> = ({
     </Svg>
   )
 }
+
+export const ArtsMaterial = styled(ArtsMaterialSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.primary,
+  size: size ?? theme.icons.sizes.standard,
+}))``

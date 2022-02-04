@@ -1,9 +1,7 @@
 import * as React from 'react'
 import Svg, { Defs, LinearGradient, Stop, Path, G } from 'react-native-svg'
+import styled from 'styled-components/native'
 import { v1 as uuidv1 } from 'uuid'
-
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { getSpacing } from '../theme'
 
@@ -24,8 +22,8 @@ const NotMemoizedRectangle: React.FC<Omit<IconInterface, 'color'> & { height?: n
       testID={testID}>
       <Defs>
         <LinearGradient id={LINEAR_GRADIENT_ID} x1="0%" x2="100%" y1="49.977%" y2="50.023%">
-          <Stop offset="0%" stopColor={ColorsEnum.PRIMARY} />
-          <Stop offset="100%" stopColor={ColorsEnum.SECONDARY} />
+          <PrimaryStop />
+          <SecondaryStop />
         </LinearGradient>
       </Defs>
       <G fill="none">
@@ -39,5 +37,15 @@ const NotMemoizedRectangle: React.FC<Omit<IconInterface, 'color'> & { height?: n
     </Svg>
   )
 }
+
+const PrimaryStop = styled(Stop).attrs(({ theme }) => ({
+  stopColor: theme.colors.primary,
+  offset: '0%',
+}))``
+
+const SecondaryStop = styled(Stop).attrs(({ theme }) => ({
+  stopColor: theme.colors.secondary,
+  offset: '100%',
+}))``
 
 export const Rectangle = React.memo(NotMemoizedRectangle)
