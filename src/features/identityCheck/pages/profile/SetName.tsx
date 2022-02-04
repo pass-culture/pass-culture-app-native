@@ -50,6 +50,7 @@ export const SetName = () => {
             onChangeText={setFirstName}
             placeholder={t`Ton prénom`}
             textContentType="username"
+            isRequiredField
             {...accessibilityAndTestId(t`Entrée pour le prénom`)}
           />
           <InputError
@@ -64,6 +65,7 @@ export const SetName = () => {
             onChangeText={setLastName}
             placeholder={t`Ton nom`}
             textContentType="username"
+            isRequiredField
             {...accessibilityAndTestId(t`Entrée pour le nom`)}
           />
           <InputError

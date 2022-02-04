@@ -15,6 +15,8 @@ import { eventMonitoring } from 'libs/monitoring'
 import { useAddresses } from 'libs/place'
 import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { isAddressValid } from 'ui/components/inputs/addressCheck'
+import { InputError } from 'ui/components/inputs/InputError'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spinner } from 'ui/components/Spinner'
@@ -72,6 +74,8 @@ export const SetAddress = () => {
     debouncedSetQuery('')
   }
 
+  const isValidAddress = isAddressValid(query)
+
   // The button is enabled only when the user has selected an address
   // if suggested addresses are available. Otherwise, if the user has
   // typed something and either the FF doesn't allow suggested addresses
@@ -79,7 +83,7 @@ export const SetAddress = () => {
   const enabled =
     !isError && idCheckAddressAutocompletion && query.length > 0
       ? !!selectedAddress
-      : query.length > 0
+      : isValidAddress
 
   const label = idCheckAddressAutocompletion
     ? t`Recherche et sélectionne ton adresse`
@@ -109,6 +113,11 @@ export const SetAddress = () => {
             textContentType="addressState"
             accessibilityLabel={t`Entrée pour l'adresse`}
             onPressRightIcon={resetSearch}
+          />
+          <InputError
+            visible={!isValidAddress && query.length > 0}
+            messageId={t`Ton adresse ne doit pas contenir de caractères spéciaux ou n'être composée que d'espaces.`}
+            numberOfSpacesTop={2}
           />
           <Spacer.Column numberOfSpaces={2} />
         </Form.MaxWidth>
