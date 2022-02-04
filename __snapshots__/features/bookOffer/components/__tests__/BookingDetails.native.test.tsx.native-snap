@@ -27,12 +27,22 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
     }
   >
     <View
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -92,12 +102,22 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
     }
   >
     <View
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -161,12 +181,22 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
     }
   >
     <View
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -230,12 +260,22 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
     }
   >
     <View
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -314,13 +354,23 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
     }
   >
     <View
-      fill="#696A6F"
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        fill="#696A6F"
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -547,12 +597,22 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
     }
   >
     <View
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -612,12 +672,22 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
     }
   >
     <View
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -681,12 +751,22 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
     }
   >
     <View
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -750,12 +830,22 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
     }
   >
     <View
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -834,13 +924,23 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
     }
   >
     <View
-      fill="#696A6F"
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        fill="#696A6F"
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}

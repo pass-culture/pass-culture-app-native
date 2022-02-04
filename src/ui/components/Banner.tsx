@@ -4,12 +4,12 @@ import styled from 'styled-components/native'
 
 import { Error } from 'ui/svg/icons/Error'
 import { Spacer, getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 export const Banner: React.FC<{ title: string }> = ({ title }) => (
   <Background>
-    <Error size={24} color={ColorsEnum.BLACK} />
+    <IconWrapper>
+      <StyledError />
+    </IconWrapper>
     <Spacer.Row numberOfSpaces={3} />
     <TextContainer>
       <Caption>{title}</Caption>
@@ -27,6 +27,14 @@ const Background = styled(View)(({ theme }) => ({
   flexDirection: 'row',
   borderRadius: getSpacing(1),
 }))
+
+const IconWrapper = styled.View({
+  flexShrink: 0,
+})
+
+const StyledError = styled(Error).attrs(({ theme }) => ({
+  size: theme.icons.sizes.small,
+}))``
 
 const TextContainer = styled(View)({
   flexShrink: 1,

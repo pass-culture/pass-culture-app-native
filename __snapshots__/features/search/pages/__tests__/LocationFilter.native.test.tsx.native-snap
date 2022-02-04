@@ -78,12 +78,22 @@ exports[`LocationFilter component should render correctly 1`] = `
           }
         >
           <View
-            height={24}
-            width={24}
+            style={
+              Array [
+                Object {
+                  "flexShrink": 0,
+                },
+              ]
+            }
           >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
+            <View
+              height={24}
+              width={24}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
           </View>
           <View
             numberOfSpaces={3}

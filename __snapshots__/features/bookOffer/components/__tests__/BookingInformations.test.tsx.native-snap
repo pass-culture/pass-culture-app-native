@@ -15,12 +15,22 @@ Array [
     }
   >
     <View
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -84,13 +94,23 @@ Array [
     }
   >
     <View
-      fill="#696A6F"
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        fill="#696A6F"
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -154,12 +174,22 @@ Array [
     }
   >
     <View
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -228,12 +258,22 @@ Array [
     }
   >
     <View
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -297,12 +337,22 @@ Array [
     }
   >
     <View
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -366,12 +416,22 @@ Array [
     }
   >
     <View
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -450,13 +510,23 @@ Array [
     }
   >
     <View
-      fill="#696A6F"
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        fill="#696A6F"
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -525,12 +595,22 @@ Array [
     }
   >
     <View
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -594,12 +674,22 @@ Array [
     }
   >
     <View
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -678,13 +768,23 @@ Array [
     }
   >
     <View
-      fill="#696A6F"
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        fill="#696A6F"
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -753,12 +853,22 @@ Array [
     }
   >
     <View
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -822,12 +932,22 @@ Array [
     }
   >
     <View
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -891,12 +1011,22 @@ Array [
     }
   >
     <View
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -975,13 +1105,23 @@ Array [
     }
   >
     <View
-      fill="#696A6F"
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        fill="#696A6F"
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -1050,12 +1190,22 @@ Array [
     }
   >
     <View
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -1119,13 +1269,23 @@ Array [
     }
   >
     <View
-      fill="#696A6F"
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        fill="#696A6F"
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -1194,12 +1354,22 @@ Array [
     }
   >
     <View
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -1263,12 +1433,22 @@ Array [
     }
   >
     <View
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -1332,12 +1512,22 @@ Array [
     }
   >
     <View
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
@@ -1416,13 +1606,23 @@ Array [
     }
   >
     <View
-      fill="#696A6F"
-      height={24}
-      width={24}
+      style={
+        Array [
+          Object {
+            "flexShrink": 0,
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        fill="#696A6F"
+        height={24}
+        width={24}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
     </View>
     <View
       numberOfSpaces={3}
