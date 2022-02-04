@@ -4,9 +4,7 @@ import styled from 'styled-components/native'
 
 import { VenueTypeCodeKey } from 'api/gen'
 import { mapVenueTypeToIcon, parseTypeHomeLabel } from 'libs/parsers'
-import { Typo, GUTTER_DP, getSpacing, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { Typo, GUTTER_DP, Spacer } from 'ui/theme'
 
 interface VenueCaptionProps {
   width: number
@@ -18,13 +16,16 @@ interface VenueCaptionProps {
 export const VenueCaption = (props: VenueCaptionProps) => {
   const { width, name, venueType, distance } = props
   const typeLabel = parseTypeHomeLabel(venueType)
-  const Icon = mapVenueTypeToIcon(venueType)
+  const Icon = styled(mapVenueTypeToIcon(venueType)).attrs(({ theme }) => ({
+    color: theme.colors.greyDark,
+    size: theme.icons.sizes.extraSmall,
+  }))``
 
   return (
     <CaptionContainer maxWidth={width}>
       <VenueName>{name}</VenueName>
       <IconWithCaption>
-        <Icon size={getSpacing(4)} color={ColorsEnum.GREY_DARK} />
+        <Icon />
         <Spacer.Row numberOfSpaces={1} />
         <TypeLabel>{typeLabel}</TypeLabel>
       </IconWithCaption>

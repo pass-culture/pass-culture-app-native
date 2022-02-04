@@ -61,8 +61,6 @@ import { Email } from 'ui/svg/icons/Email'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 function onButtonPress() {
   Alert.alert('you pressed it')
 }
@@ -452,14 +450,14 @@ export const AppComponents: FunctionComponent = () => {
           <Text> Progress bars </Text>
           <Spacer.Column numberOfSpaces={3} />
           <View>
-            <ProgressBar progress={0} color={ColorsEnum.GREEN_VALID} icon={Email} />
-            <ProgressBar progress={0.3} color={ColorsEnum.PRIMARY_DARK} icon={Email} />
-            <ProgressBar progress={1} color={ColorsEnum.SECONDARY} icon={Email} />
+            <ValidProgressBar />
+            <PrimaryDarkProgressBar />
+            <SecondaryProgressBar />
           </View>
           <Spacer.Column numberOfSpaces={1} />
           <View>
-            <ProgressBar progress={0.5} color={ColorsEnum.PRIMARY} icon={Email} />
-            <ProgressBar progress={1} color={ColorsEnum.TERTIARY} icon={Email} />
+            <PrimaryProgressBar />
+            <TertiaryProgressBar />
           </View>
         </GreyView>
         <Spacer.Column numberOfSpaces={4} />
@@ -679,27 +677,53 @@ const AlignedText = styled(View)({
 const Center = styled(View)({
   alignItems: 'center',
 })
-const GreyView = styled.View({
-  backgroundColor: ColorsEnum.GREY_LIGHT,
-})
+const GreyView = styled.View(({ theme }) => ({
+  backgroundColor: theme.colors.greyLight,
+}))
 
 const RowWrap = styled.View({
   flexWrap: 'wrap',
   flexDirection: 'row',
 })
 
-const StyledScrollView = styled(ScrollView)({
-  backgroundColor: ColorsEnum.WHITE,
-})
+const StyledScrollView = styled(ScrollView)(({ theme }) => ({
+  backgroundColor: theme.colors.white,
+}))
+
+const PrimaryProgressBar = styled(ProgressBar).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  icon: Email,
+  progress: 0.5,
+}))``
+const PrimaryDarkProgressBar = styled(ProgressBar).attrs(({ theme }) => ({
+  color: theme.colors.primaryDark,
+  icon: Email,
+  progress: 0.3,
+}))``
+const SecondaryProgressBar = styled(ProgressBar).attrs(({ theme }) => ({
+  color: theme.colors.secondary,
+  icon: Email,
+  progress: 1,
+}))``
+const TertiaryProgressBar = styled(ProgressBar).attrs(({ theme }) => ({
+  color: theme.colors.tertiary,
+  icon: Email,
+  progress: 1,
+}))``
+const ValidProgressBar = styled(ProgressBar).attrs(({ theme }) => ({
+  color: theme.colors.greenValid,
+  icon: Email,
+  progress: 0,
+}))``
 
 function doNothingFn() {
   /* do nothing */
 }
 
-const Divider = styled.View({
+const Divider = styled.View(({ theme }) => ({
   height: getSpacing(2),
-  backgroundColor: ColorsEnum.GREY_LIGHT,
-})
+  backgroundColor: theme.colors.greyLight,
+}))
 
 const FilterSwitchesSection = () => {
   const [switch1, setSwitch1] = useState(true)

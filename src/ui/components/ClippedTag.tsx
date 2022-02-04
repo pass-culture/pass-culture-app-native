@@ -2,10 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
-import { Clear as ClearIcon } from 'ui/svg/icons/Clear'
+import { Clear } from 'ui/svg/icons/Clear'
 import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
   label: string
@@ -20,11 +18,16 @@ export const ClippedTag: React.FC<Props> = ({ label, onPress, testId }) => {
         <VenueLabel>{label}</VenueLabel>
       </VenueLabelContainer>
       <TouchableOpacity onPress={onPress}>
-        <ClearIcon size={20} {...accessibilityAndTestId(testId)} color={ColorsEnum.WHITE} />
+        <ClearIcon {...accessibilityAndTestId(testId)} />
       </TouchableOpacity>
     </Container>
   )
 }
+
+const ClearIcon = styled(Clear).attrs(({ theme }) => ({
+  color: theme.colors.white,
+  size: theme.icons.sizes.smaller,
+}))``
 
 const Container = styled.View({
   flexDirection: 'row',

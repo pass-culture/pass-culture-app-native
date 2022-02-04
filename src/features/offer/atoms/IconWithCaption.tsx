@@ -3,23 +3,28 @@ import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 interface IconWithCaptionProps {
   Icon: React.FC<IconInterface>
   caption: string
   testID?: string
 }
 
-export const IconWithCaption = ({ Icon, caption, testID }: IconWithCaptionProps) => (
-  <Container>
-    <IconContainer>
-      <Icon size={getSpacing(8)} color={ColorsEnum.GREY_DARK} testID={testID} />
-    </IconContainer>
-    <Spacer.Column numberOfSpaces={2} />
-    <Caption testID={`caption-${testID}`}>{caption}</Caption>
-  </Container>
-)
+export const IconWithCaption = ({ Icon, caption, testID }: IconWithCaptionProps) => {
+  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
+    color: theme.colors.greyDark,
+    size: theme.icons.sizes.standard,
+  }))``
+
+  return (
+    <Container>
+      <IconContainer>
+        <StyledIcon testID={testID} />
+      </IconContainer>
+      <Spacer.Column numberOfSpaces={2} />
+      <Caption testID={`caption-${testID}`}>{caption}</Caption>
+    </Container>
+  )
+}
 
 const Container = styled.View({ flex: 1, alignItems: 'center' })
 const IconContainer = styled.View({ padding: getSpacing(1) })

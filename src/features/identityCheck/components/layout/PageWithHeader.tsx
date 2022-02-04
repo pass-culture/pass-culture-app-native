@@ -7,8 +7,6 @@ import { PageHeader } from 'features/identityCheck/atoms/layout/PageHeader'
 import { useShouldEnableScrollOnView } from 'features/identityCheck/utils/useShouldEnableScrollView'
 import { Background } from 'ui/svg/Background'
 import { getSpacing, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
   title: string
@@ -79,13 +77,13 @@ const ChildrenScrollView = styled.ScrollView.attrs<ChildrenScrollViewProps>((pro
   },
 }))<ChildrenScrollViewProps>({})
 
-const FixedBottomChildrenView = styled.View({
+const FixedBottomChildrenView = styled.View(({ theme }) => ({
   position: 'absolute',
   bottom: 0,
   left: 0,
   right: 0,
   paddingBottom: getSpacing(5),
   paddingTop: getSpacing(3),
-  backgroundColor: ColorsEnum.WHITE,
+  backgroundColor: theme.colors.white,
   paddingHorizontal: getSpacing(5),
-})
+}))

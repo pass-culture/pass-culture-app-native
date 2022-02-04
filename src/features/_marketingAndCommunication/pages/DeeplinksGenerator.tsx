@@ -12,8 +12,6 @@ import { DeeplinksResult } from 'features/_marketingAndCommunication/components/
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 const linksInitialState: Array<GeneratedDeeplink> = []
 
@@ -74,10 +72,10 @@ export const DeeplinksGenerator = () => {
   )
 }
 
-const Divider = styled.View({
+const Divider = styled.View(({ theme }) => ({
   height: getSpacing(2),
-  backgroundColor: ColorsEnum.GREY_LIGHT,
-})
+  backgroundColor: theme.colors.greyLight,
+}))
 
 const Row = styled.View(({ theme }) => ({
   flex: 1,

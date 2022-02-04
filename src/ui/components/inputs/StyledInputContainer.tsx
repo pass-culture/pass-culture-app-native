@@ -3,8 +3,6 @@ import { ViewStyle, View, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getShadow, getSpacing, padding } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = {
   isError?: boolean
@@ -21,32 +19,25 @@ const defaultProps: Props = {
   isInputDisabled: false,
 }
 
-export const StyledInputContainer: React.FC<Props> = (props) => {
-  let borderColor = ColorsEnum.GREY_MEDIUM
-  if (props.isFocus) {
-    borderColor = ColorsEnum.PRIMARY
-  } else if (props.isError) {
-    borderColor = ColorsEnum.ERROR
-  }
-
-  return (
-    <StyledView
-      height={props.inputHeight}
-      borderColor={borderColor}
-      isInputDisabled={props.isInputDisabled}
-      style={props.style}>
-      {props.children}
-    </StyledView>
-  )
-}
+export const StyledInputContainer: React.FC<Props> = (props) => (
+  <StyledView
+    height={props.inputHeight}
+    isFocus={props.isFocus}
+    isError={props.isError}
+    isInputDisabled={props.isInputDisabled}
+    style={props.style}>
+    {props.children}
+  </StyledView>
+)
 
 StyledInputContainer.defaultProps = defaultProps
 
 const StyledView = styled(View)<{
   height: Props['inputHeight']
-  borderColor: ColorsEnum
+  isFocus?: boolean
+  isError?: boolean
   isInputDisabled?: boolean
-}>(({ height, borderColor, isInputDisabled, theme }) => {
+}>(({ height, isFocus, isError, isInputDisabled, theme }) => {
   let shadows = {}
   // ACCESSIBILITY : on the web, it is better to have no shadow to increase the contrast
   if (!isInputDisabled && Platform.OS !== 'web') {
@@ -64,7 +55,15 @@ const StyledView = styled(View)<{
     alignItems: 'center',
     ...padding(1, 4),
     borderRadius: 22,
-    border: isInputDisabled ? undefined : `solid 1px ${borderColor}`,
+    borderStyle: 'solid',
+    borderWidth: '1px',
+    borderColor: isInputDisabled
+      ? undefined
+      : isFocus
+      ? theme.colors.primary
+      : isError
+      ? theme.colors.error
+      : theme.colors.greyMedium,
     backgroundColor: isInputDisabled ? theme.colors.greyLight : theme.colors.white,
     ...shadows,
   }

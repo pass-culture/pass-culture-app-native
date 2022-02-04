@@ -2,21 +2,26 @@ import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import { TouchableWithoutFeedback } from 'react-native'
 import { SwiperProps } from 'react-native-web-swiper'
-import styled from 'styled-components/native'
+import styled, { DefaultTheme } from 'styled-components/native'
 
 import { Dot } from 'ui/svg/icons/Dot'
 import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 export function getDotColors(
+  theme: DefaultTheme,
   stepIndex: number,
   currentStepIndex: number
 ): { borderColor?: ColorsEnum; fillColor?: ColorsEnum } {
   if (stepIndex === currentStepIndex)
-    return { borderColor: ColorsEnum.PRIMARY, fillColor: ColorsEnum.PRIMARY }
+    return { borderColor: theme.colors.primary, fillColor: theme.colors.primary }
   if (stepIndex < currentStepIndex)
-    return { borderColor: ColorsEnum.GREEN_VALID, fillColor: ColorsEnum.GREEN_VALID }
-  return { borderColor: ColorsEnum.GREY_DARK, fillColor: ColorsEnum.TRANSPARENT }
+    return { borderColor: theme.colors.greenValid, fillColor: theme.colors.greenValid }
+  return { borderColor: theme.colors.greyDark, fillColor: theme.colors.transparent }
+}
+
+function getStyledDot(stepIndex: number, currentStepIndex: number) {
+  return styled(Dot).attrs(({ theme }) => getDotColors(theme, stepIndex, currentStepIndex))``
 }
 
 const CURRENT_STEP_SIZE = 12
@@ -31,7 +36,7 @@ type DotComponentProps = SwiperProps & {
 }
 
 export const DotComponent: FunctionComponent<DotComponentProps> = (props) => {
-  const { borderColor, fillColor } = getDotColors(props.index, props.activeIndex)
+  const Dot = getStyledDot(props.index, props.activeIndex)
   const step = props.index + 1
   const totalSteps = props.numberOfSteps
 
@@ -47,8 +52,6 @@ export const DotComponent: FunctionComponent<DotComponentProps> = (props) => {
       <DotContainer>
         <Dot
           aria-label={t`Étape ${step} sur ${totalSteps} ${status}`}
-          borderColor={borderColor}
-          fillColor={fillColor}
           size={props.isActive ? CURRENT_STEP_SIZE : DEFAULT_SIZE}
           testID="dot-icon"
         />

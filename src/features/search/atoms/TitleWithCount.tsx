@@ -3,8 +3,6 @@ import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 const NON_BREAKING_SPACE = '\xa0'
 
 export const TitleWithCount: React.FC<{ title: string; count: number }> = ({
@@ -21,4 +19,4 @@ export const TitleWithCount: React.FC<{ title: string; count: number }> = ({
 }
 
 const Title = styled(Typo.Title4).attrs({ accessibilityRole: 'none', 'aria-level': undefined })``
-const RedTitle = styled(Text)({ color: ColorsEnum.PRIMARY })
+const RedTitle = styled(Text)(({ theme }) => ({ color: theme.colors.primary }))

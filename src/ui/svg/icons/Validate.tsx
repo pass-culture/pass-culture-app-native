@@ -1,14 +1,14 @@
 import * as React from 'react'
 import Svg, { Circle, Path } from 'react-native-svg'
-import styled from 'styled-components/native'
-
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import styled, { useTheme } from 'styled-components/native'
 
 import { IconInterface } from './types'
 
 const ValidateSvg: React.FunctionComponent<IconInterface> = ({ size, color, testID }) => {
-  const fillColor = color === ColorsEnum.WHITE ? ColorsEnum.PRIMARY : ColorsEnum.WHITE
+  const {
+    colors: { primary, white },
+  } = useTheme()
+  const fillColor = color === white ? primary : white
   return (
     <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID}>
       <Circle r={10} cx={24} cy={24} fill={fillColor} />

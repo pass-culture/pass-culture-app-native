@@ -24,6 +24,11 @@ const ProgressBarComponent: React.FC<ProgressBarProps> = ({
   const barRef = useRef<Animatable.View & View>(null)
   const [barWidth, setBarWidth] = useState(0)
 
+  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
+    color: theme.colors.white,
+    size: theme.icons.sizes.smaller,
+  }))``
+
   useEffect(() => {
     if (barRef.current && barWidth && isAnimated) {
       barRef.current.transition(
@@ -47,7 +52,7 @@ const ProgressBarComponent: React.FC<ProgressBarProps> = ({
   return (
     <Container>
       <IconContainer backgroundColor={color}>
-        <Icon color={ColorsEnum.WHITE} testID="progress-bar-icon" size={20} />
+        <StyledIcon testID="progress-bar-icon" />
       </IconContainer>
       <ProgressBarContainer>
         <Bar

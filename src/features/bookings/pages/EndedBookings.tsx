@@ -9,8 +9,6 @@ import { Booking } from 'features/bookings/components/types'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 const renderItem: ListRenderItem<Booking> = ({ item }) => <EndedBookingItem booking={item} />
 const keyExtractor: (item: Booking) => string = (item) => item.id.toString()
 
@@ -50,10 +48,10 @@ export const EndedBookings: React.FC = () => {
   )
 }
 
-const EndedBookingsCount = styled(Typo.Body)({
-  color: ColorsEnum.GREY_DARK,
+const EndedBookingsCount = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.greyDark,
   paddingBottom: getSpacing(5.5),
-})
+}))
 
 const contentContainerStyle = { paddingHorizontal: getSpacing(5) }
 const ListFooterComponent = () => <Spacer.Column numberOfSpaces={12} />

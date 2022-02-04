@@ -2,10 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Separator } from 'ui/components/Separator'
-import { Validate } from 'ui/svg/icons/Validate'
+import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 interface Props {
   onPressOption: (optionKey: string) => void
   optionKey: string
@@ -13,23 +11,24 @@ interface Props {
   selected: boolean
 }
 
-const ICON_SIZE = getSpacing(6)
-
 export const AddressOption = ({ optionKey, label, onPressOption, selected }: Props) => {
   return (
     <Container>
       <TouchableOpacity onPress={() => onPressOption(optionKey)}>
         <TextContainer>
           <StyledBody selected={selected}>{label}</StyledBody>
-          <IconContainer>
-            {!!selected && <Validate color={ColorsEnum.PRIMARY} size={ICON_SIZE} />}
-          </IconContainer>
+          <IconContainer>{!!selected && <Validate />}</IconContainer>
         </TextContainer>
       </TouchableOpacity>
       <Separator />
     </Container>
   )
 }
+
+const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  size: theme.icons.sizes.small,
+}))``
 
 const Container = styled.View({
   paddingHorizontal: getSpacing(4),
@@ -53,10 +52,10 @@ const StyledBody = styled(Typo.Body)<{ selected: boolean }>(({ selected }) => ({
   flex: 1,
 }))
 
-const IconContainer = styled.View({
-  width: ICON_SIZE,
-  height: ICON_SIZE,
+const IconContainer = styled.View(({ theme }) => ({
+  width: theme.icons.sizes.small,
+  height: theme.icons.sizes.small,
   alignItems: 'center',
   justifyContent: 'center',
   marginLeft: getSpacing(2),
-})
+}))

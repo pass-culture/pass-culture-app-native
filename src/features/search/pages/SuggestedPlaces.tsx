@@ -13,11 +13,9 @@ import { analytics } from 'libs/analytics'
 import { SuggestedPlace, usePlaces, useVenues } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
 import { AriaLive } from 'ui/components/AriaLive'
-import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
-import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
+import { BicolorLocationPointer as DefaultBicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
+import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 type SuggestedPlaceOrVenue = SuggestedPlace | SuggestedVenue
 
@@ -36,9 +34,7 @@ export const keyExtractor = (hit: SuggestedPlaceOrVenue) => {
 }
 
 const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hit, onPress }) => {
-  const Icon = isVenue(hit)
-    ? () => <LocationBuilding size={getSpacing(8)} color={ColorsEnum.PRIMARY} />
-    : () => <BicolorLocationPointer size={getSpacing(8)} color2={ColorsEnum.PRIMARY} />
+  const Icon = isVenue(hit) ? () => <LocationBuilding /> : () => <BicolorLocationPointer />
 
   return (
     <ItemContainer onPress={onPress} testID={keyExtractor(hit)}>
@@ -127,15 +123,23 @@ const ItemContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
 
 const Text = styled.Text({ flex: 1 })
 
-const Separator = styled.View({
+const Separator = styled.View(({ theme }) => ({
   height: 2,
-  backgroundColor: ColorsEnum.GREY_LIGHT,
+  backgroundColor: theme.colors.greyLight,
   marginHorizontal: getSpacing(6),
-})
+}))
 
 const DescriptionErrorTextContainer = styled.Text({
   marginTop: getSpacing(6.5),
   textAlign: 'center',
 })
 
-const DescriptionErrorText = styled(Typo.Body)({ color: ColorsEnum.GREY_DARK })
+const DescriptionErrorText = styled(Typo.Body)(({ theme }) => ({ color: theme.colors.greyDark }))
+
+const LocationBuilding = styled(DefaultLocationBuilding).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+}))``
+
+const BicolorLocationPointer = styled(DefaultBicolorLocationPointer).attrs(({ theme }) => ({
+  color2: theme.colors.primary,
+}))``

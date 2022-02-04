@@ -6,12 +6,10 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { accessibilityAndTestId } from 'tests/utils'
 import { InputLabel } from 'ui/components/InputLabel'
-import { Invalidate } from 'ui/svg/icons/Invalidate'
+import { Invalidate as DefaultInvalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
-import { BaseTextInput } from './BaseTextInput'
+import { BaseTextInput as DefaultBaseTextInput } from './BaseTextInput'
 import { StyledInputContainer } from './StyledInputContainer'
 import { getCustomSearchInputProps, getRNTextInputProps, SearchInputProps } from './types'
 
@@ -59,7 +57,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           onBlur={onBlur}
           autoCorrect={false}
           returnKeyType="search"
-          selectionColor={ColorsEnum.GREY_DARK}
+          selectionColor={undefined}
           aria-describedby={accessibilityDescribedBy}
           {...accessibilityAndTestId(accessibilityLabel, undefined)}
         />
@@ -67,7 +65,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           <RightIconContainer
             onPress={onPressRightIcon}
             {...accessibilityAndTestId(t`Réinitialiser la recherche`)}>
-            <Invalidate color={ColorsEnum.GREY_DARK} />
+            <Invalidate />
           </RightIconContainer>
         )}
       </StyledInputContainer>
@@ -84,3 +82,11 @@ const RightIconContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
   right: getSpacing(1),
   padding: getSpacing(2),
 })
+
+const Invalidate = styled(DefaultInvalidate).attrs(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))``
+
+const BaseTextInput = styled(DefaultBaseTextInput).attrs(({ theme }) => ({
+  selectionColor: theme.colors.greyDark,
+}))``

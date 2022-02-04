@@ -5,17 +5,15 @@ import styled from 'styled-components/native'
 import { EndedBookingsSection } from 'features/bookings/pages/EndedBookingsSection'
 import { useNavigateToSearchResults } from 'features/search/utils/useNavigateToSearchResults'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { NoBookingsDeprecated as NoBookings } from 'ui/svg/icons/NoBookings_deprecated'
+import { NoBookingsDeprecated } from 'ui/svg/icons/NoBookings_deprecated'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 export function NoBookingsView() {
   const onPressExploreOffers = useNavigateToSearchResults({ from: 'bookings' })
 
   return (
     <Container>
       <Spacer.Flex />
-      <NoBookings size={197} color={ColorsEnum.GREY_MEDIUM} />
+      <NoBookings />
       <Explanation>
         {t`Tu n’as pas de réservations en cours.
       Découvre les offres disponibles 
@@ -53,3 +51,8 @@ const Explanation = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.greyDark,
 }))
+
+const NoBookings = styled(NoBookingsDeprecated).attrs(({ theme }) => ({
+  color: theme.colors.greyMedium,
+  size: 197, // Cette taille n'existe pas dans le theme : todo: voir avec les UXs cette incohérence graphique
+}))``

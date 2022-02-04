@@ -12,6 +12,7 @@ import {
 } from 'features/auth/components/PasswordSecurityRules'
 import { useChangePasswordMutation } from 'features/auth/mutations'
 import { analytics } from 'libs/analytics'
+import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { InputError } from 'ui/components/inputs/InputError'
@@ -20,8 +21,6 @@ import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEv
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { getSpacing, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { Form } from 'ui/web/form/Form'
 
 export function ChangePassword() {
@@ -168,7 +167,7 @@ const getScrollViewContentContainerStyle = (keyboardHeight: number): StyleProp<V
   flexGrow: 1,
   flexDirection: 'column',
   paddingBottom: Platform.OS === 'ios' ? keyboardHeight : 0,
-  backgroundColor: ColorsEnum.WHITE,
+  backgroundColor: theme.colors.white,
   alignItems: 'center',
 })
 

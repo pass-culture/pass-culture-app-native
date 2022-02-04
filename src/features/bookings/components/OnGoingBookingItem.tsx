@@ -6,11 +6,9 @@ import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { useSubcategory } from 'libs/subcategories'
-import { Clock } from 'ui/svg/icons/Clock'
+import { Clock as DefaultClock } from 'ui/svg/icons/Clock'
 import { Duo } from 'ui/svg/icons/Duo'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { getBookingProperties, getBookingLabels } from '../helpers'
 
@@ -40,7 +38,7 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
         <Spacer.Flex />
         {!!withdrawLabel && (
           <WithDrawContainer>
-            <Clock size={16} color={ColorsEnum.PRIMARY} />
+            <Clock />
             <Spacer.Row numberOfSpaces={1} />
             <WithdrawCaption numberOfLines={2}>{withdrawLabel}</WithdrawCaption>
           </WithDrawContainer>
@@ -78,3 +76,8 @@ const DateLabel = styled(Typo.Body)(({ theme }) => ({
 const WithdrawCaption = styled(Typo.Caption)({
   marginRight: getSpacing(4),
 })
+
+const Clock = styled(DefaultClock).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  size: theme.icons.sizes.extraSmall,
+}))``

@@ -3,11 +3,9 @@ import styled from 'styled-components/native'
 
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { LocationType } from 'features/search/enums'
-import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { Validate } from 'ui/svg/icons/Validate'
+import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
+import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = {
   section: LocationType.PLACE | LocationType.EVERYWHERE | LocationType.AROUND_ME
@@ -19,13 +17,15 @@ type Props = {
 export const LocationChoice: React.FC<Props> = (props) => {
   const { section, onPress, arrowNext = false, testID } = props
   const { Icon, label, isSelected } = useLocationChoice(section)
-  const iconColor2 = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.SECONDARY
+  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
+    color2: isSelected ? theme.colors.primary : theme.colors.secondary,
+  }))``
 
   return (
     <Container onPress={onPress} testID={`locationChoice-${testID}`}>
       <FirstPart>
         <Spacer.Row numberOfSpaces={3} />
-        <Icon color2={iconColor2} />
+        <StyledIcon />
         <Spacer.Row numberOfSpaces={3} />
         <TextContainer>
           <ButtonText numberOfLines={3} isSelected={isSelected}>
@@ -34,10 +34,8 @@ export const LocationChoice: React.FC<Props> = (props) => {
         </TextContainer>
       </FirstPart>
       <SecondPart>
-        {!!isSelected && (
-          <Validate color={ColorsEnum.PRIMARY} testID="validateIcon" size={getSpacing(6)} />
-        )}
-        {!!arrowNext && <ArrowNext size={getSpacing(6)} />}
+        {!!isSelected && <Validate testID="validateIcon" />}
+        {!!arrowNext && <ArrowNext />}
         {!isSelected && !arrowNext ? <Spacer.Row numberOfSpaces={8} /> : null}
       </SecondPart>
     </Container>
@@ -73,3 +71,12 @@ const SecondPart = styled.View({
 const ButtonText = styled(Typo.ButtonText)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
   color: isSelected ? theme.colors.primary : theme.colors.black,
 }))
+
+const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  size: theme.icons.sizes.small,
+}))``
+
+const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
+  size: theme.icons.sizes.small,
+}))``

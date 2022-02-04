@@ -13,8 +13,6 @@ import { useUserProfileInfo } from 'features/home/api'
 import { useCreditForOffer } from 'features/offer/services/useHasEnoughCredit'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { getSpacing, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
   stocks: OfferStockResponse[]
@@ -73,7 +71,7 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks }) => {
 }
 
 const Container = styled.View({ width: '100%', marginTop: -getSpacing(2) })
-const Separator = styled.View({
+const Separator = styled.View(({ theme }) => ({
   height: 2,
-  backgroundColor: ColorsEnum.GREY_LIGHT,
-})
+  backgroundColor: theme.colors.greyLight,
+}))

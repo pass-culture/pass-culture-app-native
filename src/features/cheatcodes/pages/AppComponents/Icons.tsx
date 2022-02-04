@@ -86,8 +86,6 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
 import { Warning } from 'ui/svg/icons/Warning'
 import { getSpacing, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 const STANDARD_ICON_SIZE = getSpacing(8)
 
@@ -108,16 +106,18 @@ export const Icons: FunctionComponent = () => {
       <Spacer.Column numberOfSpaces={4} />
       <Text> Icônes à uniformiser (conversion en illustrations) </Text>
       <AlignedText>
-        <LogoPassCulture
-          width={STANDARD_ICON_SIZE * 2}
-          height={STANDARD_ICON_SIZE}
-          color={ColorsEnum.BLACK}
-        />
+        <StyledLogoPassCulture />
         <Text> - LogoPassCulture </Text>
       </AlignedText>
     </React.Fragment>
   )
 }
+
+const StyledLogoPassCulture = styled(LogoPassCulture).attrs(({ theme }) => ({
+  width: theme.icons.sizes.standard * 2,
+  height: theme.icons.sizes.standard,
+  color: theme.colors.black,
+}))``
 
 interface IconProps {
   name: string
@@ -125,40 +125,52 @@ interface IconProps {
   isNew?: boolean
 }
 
-const Icon = ({ name, component: IconComponent, isNew = false }: IconProps) => (
-  <AlignedText>
-    <IconComponent size={!isNew ? STANDARD_ICON_SIZE : undefined} />
-    <Text style={{ color: isNew ? ColorsEnum.BLACK : ColorsEnum.GREY_DARK }}>
-      {` - ${name} ${isNew ? '' : '(deprecated)'}`}
-    </Text>
-  </AlignedText>
-)
+const Icon = ({ name, component: IconComponent, isNew = false }: IconProps) => {
+  const StyledIcon = !isNew
+    ? styled(IconComponent).attrs(({ theme }) => ({
+        size: theme.icons.sizes.standard,
+      }))``
+    : IconComponent
+  return (
+    <AlignedText>
+      <StyledIcon />
+      <StyledText isNew={isNew}>{` - ${name} ${isNew ? '' : '(deprecated)'}`}</StyledText>
+    </AlignedText>
+  )
+}
 
 const AlignedText = styled(View)({
   flexDirection: 'row',
   alignItems: 'center',
 })
 
+const StyledText = styled(Text)<{ isNew: boolean }>(({ theme, isNew }) => ({
+  color: isNew ? theme.colors.black : theme.colors.greyDark,
+}))
+
 const CategoryIcons = () => {
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
   return (
     <React.Fragment>
       <Text>{'Categories'}</Text>
-      {Object.entries(CATEGORY_CRITERIA).map(([searchGroup, { icon: BicolorIcon }]) => (
-        <AlignedText key={searchGroup}>
-          <BicolorIcon
-            size={STANDARD_ICON_SIZE}
-            color={ColorsEnum.PRIMARY}
-            color2={ColorsEnum.PRIMARY}
-          />
-          <BicolorIcon
-            size={STANDARD_ICON_SIZE}
-            color={ColorsEnum.PRIMARY}
-            color2={ColorsEnum.SECONDARY}
-          />
-          <Text> - {searchGroupLabelMapping[searchGroup as SearchGroupNameEnum]} </Text>
-        </AlignedText>
-      ))}
+      {Object.entries(CATEGORY_CRITERIA).map(([searchGroup, { icon: BicolorIcon }]) => {
+        const StyledBicolorIcon1 = styled(BicolorIcon).attrs(({ theme }) => ({
+          color: theme.colors.primary,
+          color2: theme.colors.primary,
+          size: theme.icons.sizes.standard,
+        }))``
+
+        const StyledBicolorIcon2 = styled(StyledBicolorIcon1).attrs(({ theme }) => ({
+          color2: theme.colors.secondary,
+        }))``
+        return (
+          <AlignedText key={searchGroup}>
+            <StyledBicolorIcon1 />
+            <StyledBicolorIcon2 />
+            <Text> - {searchGroupLabelMapping[searchGroup as SearchGroupNameEnum]} </Text>
+          </AlignedText>
+        )
+      })}
       <Text>{'\n'}</Text>
     </React.Fragment>
   )
@@ -170,9 +182,13 @@ const VenueTypesIcons = () => {
       <Text>{'Venue Types'}</Text>
       {Object.values(VenueTypeCodeKey).map((venueType) => {
         const Icon = mapVenueTypeToIcon(venueType as VenueTypeCodeKey)
+        const StyledIcon = styled(Icon).attrs(({ theme }) => ({
+          color: theme.colors.primary,
+          size: theme.icons.sizes.standard,
+        }))``
         return (
           <AlignedText key={venueType}>
-            <Icon size={STANDARD_ICON_SIZE} color={ColorsEnum.PRIMARY} />
+            <StyledIcon />
             <Text> - {venueType} </Text>
           </AlignedText>
         )

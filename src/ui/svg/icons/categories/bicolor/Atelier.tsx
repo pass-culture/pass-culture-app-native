@@ -1,21 +1,22 @@
 import * as React from 'react'
 import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
 import { svgIdentifier } from 'ui/svg/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 const AtelierSvg: React.FunctionComponent<IconInterface> = ({ size, color, color2, testID }) => {
+  const {
+    colors: { primary, secondary },
+  } = useTheme()
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
 
   return (
     <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID} aria-hidden>
       <Defs>
         <LinearGradient id={gradientId} x1="39.159%" x2="60.841%" y1="0%" y2="100%">
-          <Stop offset="0%" stopColor={color ?? ColorsEnum.PRIMARY} />
-          <Stop offset="100%" stopColor={color2 ?? color ?? ColorsEnum.SECONDARY} />
+          <Stop offset="0%" stopColor={color ?? primary} />
+          <Stop offset="100%" stopColor={color2 ?? color ?? secondary} />
         </LinearGradient>
       </Defs>
       <Path

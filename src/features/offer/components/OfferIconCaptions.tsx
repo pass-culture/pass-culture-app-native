@@ -11,8 +11,6 @@ import { getDisplayPrice, getDisplayPriceWithDuoMention } from 'libs/parsers'
 import { Duo } from 'ui/svg/icons/Duo'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { getSpacing, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = { categoryId: CategoryIdEnum | null; label: string } & Pick<
   OfferResponse,
@@ -50,10 +48,10 @@ export const OfferIconCaptions: React.FC<Props> = ({ isDuo, stocks, categoryId, 
 
 const Row = styled.View({ flexDirection: 'row', alignItems: 'flex-start' })
 
-const Separator = styled.View({
+const Separator = styled.View(({ theme }) => ({
   width: 1,
   height: '92%',
-  backgroundColor: ColorsEnum.GREY_MEDIUM,
+  backgroundColor: theme.colors.greyMedium,
   marginHorizontal: getSpacing(2),
   alignSelf: 'center',
-})
+}))

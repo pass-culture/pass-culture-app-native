@@ -10,8 +10,6 @@ import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import Section from 'features/search/sections'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { getSpacing, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 const useScrollToEndOnTimeOrDateActivation = () => {
   const windowHeight = useWindowDimensions().height
@@ -147,7 +145,7 @@ const StyledScrollView = styled(ScrollView)({
 const Separator = styled.View<{ marginVertical?: number }>(({ theme, marginVertical = 0 }) => ({
   width: theme.appContentWidth - getSpacing(2 * 6),
   height: 2,
-  backgroundColor: ColorsEnum.GREY_LIGHT,
+  backgroundColor: theme.colors.greyLight,
   alignSelf: 'center',
   marginVertical: marginVertical,
 }))

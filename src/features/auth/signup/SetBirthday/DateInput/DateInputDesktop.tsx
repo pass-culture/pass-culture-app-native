@@ -11,8 +11,6 @@ import { Spacer } from 'ui/components/spacer/Spacer'
 import { Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
-// eslint-disable-next-line no-restricted-imports
-import { ZIndex } from 'ui/theme/layers'
 
 interface ValidationBarProps {
   testID?: string
@@ -295,7 +293,7 @@ const ValidationBarContainer = styled.View({
   position: 'relative',
 })
 
-const HiddenTextInput = styled(TextInput)({
+const HiddenTextInput = styled(TextInput)(({ theme }) => ({
   fontSize: 1,
   lineHeight: '22px',
   textAlign: 'center',
@@ -303,11 +301,11 @@ const HiddenTextInput = styled(TextInput)({
   width: 1,
   height: 1,
   overflow: 'hidden',
-  zIndex: ZIndex.BACKGROUND,
+  zIndex: theme.zIndex.background,
   opacity: 0.1,
   ...Platform.select({
     web: {
       caretColor: 'transparent',
     },
   }),
-})
+}))

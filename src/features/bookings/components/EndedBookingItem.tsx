@@ -15,8 +15,6 @@ import { useCategoryId } from 'libs/subcategories'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { Check } from 'ui/svg/icons/Check'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { BookingItemTitle } from './BookingItemTitle'
 import { EndedBookingTicket } from './EndedBookingTicket'
@@ -84,9 +82,9 @@ const EndedReasonAndDate = styled.View({
   alignItems: 'center',
 })
 
-const DateLabel = styled(Typo.Caption)({
-  color: ColorsEnum.GREY_DARK,
-})
+const DateLabel = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
 
 function getEndedBookingReason(
   cancellationReason?: BookingCancellationReasons | null,

@@ -1,10 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ArrowNextDouble } from 'ui/svg/icons/ArrowNextDouble'
+import { ArrowNextDouble as DefaultArrowNextDouble } from 'ui/svg/icons/ArrowNextDouble'
 import { getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 interface Props {
   height: number
   width: number
@@ -17,7 +15,7 @@ export const Cover = (props: Props) => {
       <Image source={{ uri: props.uri }} testID="coverImage" />
       <ArrowsContainer>
         <ArrowMarginContainer>
-          <ArrowNextDouble color={ColorsEnum.WHITE} size={56} />
+          <ArrowNextDouble />
         </ArrowMarginContainer>
       </ArrowsContainer>
     </Container>
@@ -48,3 +46,8 @@ const ArrowMarginContainer = styled.View({
   marginRight: getSpacing(-6),
   marginTop: getSpacing(7),
 })
+
+const ArrowNextDouble = styled(DefaultArrowNextDouble).attrs(({ theme }) => ({
+  color: theme.colors.white,
+  size: 56,
+}))``

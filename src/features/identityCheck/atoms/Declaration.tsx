@@ -1,24 +1,27 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Quote } from 'ui/svg/icons/Quote'
+import { Quote as DefaultQuote } from 'ui/svg/icons/Quote'
 import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 export const Declaration = ({ text, description }: { text: string; description: string }) => {
   return (
     <CenteredContainer>
       <QuoteContainer>
-        <Quote size={getSpacing(12)} color={ColorsEnum.GREY_MEDIUM} />
+        <Quote />
       </QuoteContainer>
       <CenteredText>{text}</CenteredText>
       <QuoteContainer reversed>
-        <Quote size={getSpacing(12)} color={ColorsEnum.GREY_MEDIUM} />
+        <Quote />
       </QuoteContainer>
       <CenteredDescription>{description}</CenteredDescription>
     </CenteredContainer>
   )
 }
+
+const Quote = styled(DefaultQuote).attrs(({ theme }) => ({
+  color: theme.colors.greyMedium,
+  size: getSpacing(12),
+}))``
 
 const CenteredContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
