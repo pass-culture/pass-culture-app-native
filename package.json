@@ -229,6 +229,7 @@
     "babel-plugin-styled-components": "^2.0.2",
     "babel-preset-react-app": "^10.0.0",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
+    "chromatic": "^6.4.3",
     "color": "^4.1.0",
     "console-fail-test": "^0.1.5",
     "cross-fetch": "^3.0.4",
