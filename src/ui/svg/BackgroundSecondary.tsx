@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import Svg, { Defs, LinearGradient, Stop, Path, G, Mask, Use } from 'react-native-svg'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { svgIdentifier } from 'ui/svg/utils'
 
@@ -24,9 +24,6 @@ const BackgroundContainer = styled.View(({ theme }) => ({
 }))
 
 function BackgroundSvg() {
-  const {
-    uniqueColors: { brand: dark, brandDark: light },
-  } = useTheme()
   const { id, fill } = svgIdentifier()
   const { id: id2, xlinkHref: xlinkHref2 } = svgIdentifier()
   const { id: id3 } = svgIdentifier()
@@ -40,8 +37,8 @@ function BackgroundSvg() {
           y1="26.588%"
           y2="116.28%"
           gradientTransform="rotate(-30)">
-          <Stop offset="0%" stopColor={dark} />
-          <Stop offset="100%" stopColor={light} />
+          <DarkStop />
+          <LightStop />
         </LinearGradient>
         <Path id={id2} d="M0 0h375v667H0z" />
       </Defs>
@@ -54,3 +51,13 @@ function BackgroundSvg() {
     </Svg>
   )
 }
+
+const DarkStop = styled(Stop).attrs(({ theme }) => ({
+  stopColor: theme.uniqueColors.brand,
+  offset: '0%',
+}))``
+
+const LightStop = styled(Stop).attrs(({ theme }) => ({
+  stopColor: theme.uniqueColors.brandDark,
+  offset: '100%',
+}))``

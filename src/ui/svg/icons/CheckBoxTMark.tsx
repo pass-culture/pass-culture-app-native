@@ -1,15 +1,13 @@
 import * as React from 'react'
 import Svg, { Path, G } from 'react-native-svg'
-
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import styled from 'styled-components/native'
 
 import { RectangleIconInterface } from './types'
 
-export const CheckboxMark: React.FunctionComponent<RectangleIconInterface> = ({
-  width = 16,
-  height = 11,
-  color = ColorsEnum.WHITE,
+const CheckboxMarkSvg: React.FunctionComponent<RectangleIconInterface> = ({
+  width,
+  height,
+  color,
   testID,
 }) => (
   <Svg width={width} height={height} viewBox="0 0 17 11" testID={testID}>
@@ -27,3 +25,9 @@ export const CheckboxMark: React.FunctionComponent<RectangleIconInterface> = ({
     </G>
   </Svg>
 )
+
+export const CheckboxMark = styled(CheckboxMarkSvg).attrs(({ color, width, height, theme }) => ({
+  color: color ?? theme.colors.white,
+  width: width ?? 16,
+  height: height ?? 11,
+}))``

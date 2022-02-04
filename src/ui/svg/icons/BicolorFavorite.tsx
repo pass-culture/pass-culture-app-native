@@ -1,29 +1,26 @@
 import React, { memo } from 'react'
 import Svg, { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
-import { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { svgIdentifier } from 'ui/svg/utils'
-import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 import { BicolorIconInterface } from './types'
 
 const NotMemoizedBicolorFavorite: React.FC<BicolorIconInterface> = ({
-  size = STANDARD_ICON_SIZE,
+  size,
   color,
   color2,
-  thin = false,
+  thin,
   testID,
 }) => {
-  const { colors } = useTheme()
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
-  const primaryColor = color || colors.primary
-  const secondaryColor = color2 || color || colors.secondary
+
   return (
     <Svg width={size} height={size} viewBox="0 0 27 22" testID={testID} aria-hidden>
       <Defs>
         <LinearGradient id={gradientId} x1="-42.969%" x2="153.672%" y1="52.422%" y2="52.422%">
-          <Stop offset="0%" stopColor={primaryColor} />
-          <Stop offset="100%" stopColor={secondaryColor} />
+          <Stop offset="0%" stopColor={color} />
+          <Stop offset="100%" stopColor={color2} />
         </LinearGradient>
       </Defs>
       <Path
@@ -38,4 +35,11 @@ const NotMemoizedBicolorFavorite: React.FC<BicolorIconInterface> = ({
   )
 }
 
-export const BicolorFavorite = memo(NotMemoizedBicolorFavorite)
+export const BicolorFavorite = memo(
+  styled(NotMemoizedBicolorFavorite).attrs(({ color, color2, size, thin, theme }) => ({
+    color: color ?? theme.colors.primary,
+    color2: color2 ?? color ?? theme.colors.secondary,
+    size: size ?? theme.icons.sizes.standard,
+    thin: thin ?? false,
+  }))``
+)

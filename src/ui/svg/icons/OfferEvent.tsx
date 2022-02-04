@@ -1,16 +1,10 @@
 import React from 'react'
 import Svg, { Path } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
-export function OfferEvent({
-  size = STANDARD_ICON_SIZE,
-  testID,
-  color = ColorsEnum.BLACK,
-}: IconInterface) {
+function OfferEventSvg({ size, testID, color }: IconInterface) {
   return (
     <Svg width={size} height={size} testID={testID} viewBox="0 0 48 48" aria-hidden>
       <Path
@@ -22,3 +16,8 @@ export function OfferEvent({
     </Svg>
   )
 }
+
+export const OfferEvent = styled(OfferEventSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.black,
+  size: size ?? theme.icons.sizes.standard,
+}))``

@@ -1,17 +1,10 @@
 import * as React from 'react'
 import Svg, { Path } from 'react-native-svg'
-
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
+import styled from 'styled-components/native'
 
 import { IconInterface } from './types'
 
-export const HandicapVisual = ({
-  color = ColorsEnum.BLACK,
-  size = STANDARD_ICON_SIZE,
-  testID,
-}: IconInterface) => {
+const HandicapVisualSvg = ({ color, size, testID }: IconInterface) => {
   return (
     <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID} fill={color} aria-hidden>
       <Path
@@ -22,3 +15,8 @@ export const HandicapVisual = ({
     </Svg>
   )
 }
+
+export const HandicapVisual = styled(HandicapVisualSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.black,
+  size: size ?? theme.icons.sizes.standard,
+}))``

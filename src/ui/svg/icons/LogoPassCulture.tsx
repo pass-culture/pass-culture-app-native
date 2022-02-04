@@ -1,17 +1,10 @@
 import * as React from 'react'
 import Svg, { Path, G } from 'react-native-svg'
-
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import styled from 'styled-components/native'
 
 import { RectangleIconInterface } from './types'
 
-export function LogoPassCulture({
-  width = 107,
-  height = 36,
-  color = ColorsEnum.WHITE,
-  testID,
-}: RectangleIconInterface) {
+function LogoPassCultureSvg({ width, height, color, testID }: RectangleIconInterface) {
   return (
     <Svg
       width={width}
@@ -31,3 +24,11 @@ export function LogoPassCulture({
     </Svg>
   )
 }
+
+export const LogoPassCulture = styled(LogoPassCultureSvg).attrs(
+  ({ color, width, height, theme }) => ({
+    color: color ?? theme.colors.white,
+    width: width ?? 107,
+    height: height ?? 36,
+  })
+)``

@@ -1,17 +1,10 @@
 import * as React from 'react'
 import Svg, { G, Path } from 'react-native-svg'
-
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
+import styled from 'styled-components/native'
 
 import { IconInterface } from './types'
 
-export function NoBookingsDeprecated({
-  size = STANDARD_ICON_SIZE,
-  color = ColorsEnum.BLACK,
-  testID,
-}: IconInterface) {
+function NoBookingsDeprecatedSvg({ size, color, testID }: IconInterface) {
   return (
     <Svg width={size} height={size} fill={color} viewBox="0 0 197 124" testID={testID}>
       <G fill="none" fillRule="evenodd">
@@ -25,3 +18,10 @@ export function NoBookingsDeprecated({
     </Svg>
   )
 }
+
+export const NoBookingsDeprecated = styled(NoBookingsDeprecatedSvg).attrs(
+  ({ color, size, theme }) => ({
+    color: color ?? theme.colors.black,
+    size: size ?? theme.icons.sizes.standard,
+  })
+)``

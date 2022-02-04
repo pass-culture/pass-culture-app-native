@@ -1,21 +1,18 @@
 import * as React from 'react'
 import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 import { svgIdentifier } from 'ui/svg/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 import { IconInterface } from './types'
 
 const NotMemoizedBicolorLocationPointer: React.FunctionComponent<IconInterface> = ({
-  size = STANDARD_ICON_SIZE,
-  color = ColorsEnum.PRIMARY,
-  color2 = ColorsEnum.SECONDARY,
+  size,
+  color,
+  color2,
   testID = 'BicolorLocationPointer',
 }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
-
   return (
     <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID} aria-hidden>
       <Defs>
@@ -34,4 +31,10 @@ const NotMemoizedBicolorLocationPointer: React.FunctionComponent<IconInterface> 
   )
 }
 
-export const BicolorLocationPointer = React.memo(NotMemoizedBicolorLocationPointer)
+export const BicolorLocationPointer = React.memo(
+  styled(NotMemoizedBicolorLocationPointer).attrs(({ color, color2, size, theme }) => ({
+    color: color ?? theme.colors.primary,
+    color2: color2 ?? theme.colors.secondary,
+    size: size ?? theme.icons.sizes.standard,
+  }))``
+)

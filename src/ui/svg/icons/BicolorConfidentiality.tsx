@@ -1,17 +1,15 @@
 import * as React from 'react'
 import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 import { svgIdentifier } from 'ui/svg/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 import { BicolorIconInterface } from './types'
 
 const NotMemoizedBicolorConfidentiality: React.FC<BicolorIconInterface> = ({
-  size = STANDARD_ICON_SIZE,
-  color = ColorsEnum.PRIMARY,
-  color2 = ColorsEnum.SECONDARY,
+  size,
+  color,
+  color2,
   testID,
 }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
@@ -34,4 +32,10 @@ const NotMemoizedBicolorConfidentiality: React.FC<BicolorIconInterface> = ({
   )
 }
 
-export const BicolorConfidentiality = React.memo(NotMemoizedBicolorConfidentiality)
+export const BicolorConfidentiality = React.memo(
+  styled(NotMemoizedBicolorConfidentiality).attrs(({ color, color2, size, theme }) => ({
+    color: color ?? theme.colors.primary,
+    color2: color2 ?? theme.colors.secondary,
+    size: size ?? theme.icons.sizes.standard,
+  }))``
+)

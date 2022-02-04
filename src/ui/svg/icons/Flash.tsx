@@ -1,25 +1,18 @@
 import * as React from 'react'
 import Svg, { Path } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 import { BicolorGradient, svgIdentifier } from 'ui/svg/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 import { IconInterface } from './types'
 
-export const Flash: React.FunctionComponent<IconInterface> = ({
-  size = STANDARD_ICON_SIZE,
-  color = ColorsEnum.BLACK,
-  color2,
-  testID,
-}) => {
+const FlashSvg: React.FunctionComponent<IconInterface> = ({ size, color, color2, testID }) => {
   const { id, fill: fillBicolor } = svgIdentifier()
   const fill = color2 ? fillBicolor : color
 
   return (
     <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID} aria-hidden>
-      {!!color2 && <BicolorGradient id={id} color1={color} color2={color2} />}
+      {!!(color && color2) && <BicolorGradient id={id} color1={color} color2={color2} />}
       <Path
         fill={fill}
         fillRule="evenodd"
@@ -29,3 +22,8 @@ export const Flash: React.FunctionComponent<IconInterface> = ({
     </Svg>
   )
 }
+
+export const Flash = styled(FlashSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.black,
+  size: size ?? theme.icons.sizes.standard,
+}))``

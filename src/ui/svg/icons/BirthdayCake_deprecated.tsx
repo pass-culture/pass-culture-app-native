@@ -1,18 +1,18 @@
 import * as React from 'react'
 import Svg, { Rect, G, Path } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 import { RectangleIconInterface } from 'ui/svg/icons/types'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
-export const BirthdayCakeDeprecated: React.FunctionComponent<RectangleIconInterface> = ({
-  width = 281,
-  height = 176,
+const BirthdayCakeDeprecatedSvg: React.FunctionComponent<RectangleIconInterface> = ({
+  color,
+  width,
+  height,
   testID,
 }) => (
   <Svg width={width} height={height} testID={testID}>
     <G transform="translate(-26 -59)" fill="none" fillRule="evenodd">
-      <G stroke={ColorsEnum.PRIMARY} strokeWidth={4} transform="translate(26.002 59)">
+      <G stroke={color} strokeWidth={4} transform="translate(26.002 59)">
         <Path
           strokeLinecap="round"
           d="M156.635 149H98.49c-5.239 0-9.49-4.263-9.49-9.515v-20.97c0-5.257 4.251-9.515 9.49-9.515h81.02c5.243 0 9.49 4.258 9.49 9.515v20.97c0 5.252-4.247 9.515-9.49 9.515m-11.929-41H112.85c-5.328 0-9.634-4.29-9.634-9.575v-10.85c0-5.285 4.306-9.575 9.634-9.575h54.731c5.323 0 9.635 4.29 9.635 9.575v10.85c0 5.285-4.312 9.575-9.635 9.575z"
@@ -30,3 +30,11 @@ export const BirthdayCakeDeprecated: React.FunctionComponent<RectangleIconInterf
     </G>
   </Svg>
 )
+
+export const BirthdayCakeDeprecated = styled(BirthdayCakeDeprecatedSvg).attrs(
+  ({ color, width, height, theme }) => ({
+    color: color ?? theme.colors.primary,
+    width: width ?? 281,
+    height: height ?? 176,
+  })
+)``

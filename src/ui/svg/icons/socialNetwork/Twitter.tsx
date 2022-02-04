@@ -1,14 +1,12 @@
 import * as React from 'react'
 import Svg, { Path, G } from 'react-native-svg'
-
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import styled from 'styled-components/native'
 
 import { IconInterface } from '../types'
 
-export const Twitter: React.FunctionComponent<IconInterface> = ({
-  size = 32,
-  color: _color = ColorsEnum.BLACK,
+export const TwitterSvg: React.FunctionComponent<IconInterface> = ({
+  size,
+  color: _color,
   testID,
 }) => (
   <Svg width={size} height={size} viewBox="0 0 24 24" testID={testID} aria-hidden>
@@ -30,3 +28,8 @@ export const Twitter: React.FunctionComponent<IconInterface> = ({
     </G>
   </Svg>
 )
+
+export const Twitter = styled(TwitterSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.black,
+  size: size ?? theme.icons.sizes.standard,
+}))``

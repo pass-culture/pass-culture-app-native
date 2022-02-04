@@ -1,17 +1,14 @@
 import * as React from 'react'
 import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
+import styled from 'styled-components/native'
 import { v1 as uuidv1 } from 'uuid'
-
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 import { IconInterface } from './types'
 
-export const BicolorEverywhere: React.FunctionComponent<IconInterface> = ({
-  size = STANDARD_ICON_SIZE,
-  color = ColorsEnum.PRIMARY,
-  color2 = ColorsEnum.SECONDARY,
+const BicolorEverywhereSvg: React.FunctionComponent<IconInterface> = ({
+  size,
+  color,
+  color2,
   testID,
 }) => {
   const LINEAR_GRADIENT_1_ID = uuidv1()
@@ -33,3 +30,11 @@ export const BicolorEverywhere: React.FunctionComponent<IconInterface> = ({
     </Svg>
   )
 }
+
+export const BicolorEverywhere = styled(BicolorEverywhereSvg).attrs(
+  ({ color, color2, size, theme }) => ({
+    color: color ?? theme.colors.primary,
+    color2: color2 ?? theme.colors.secondary,
+    size: size ?? theme.icons.sizes.standard,
+  })
+)``

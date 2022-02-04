@@ -1,16 +1,10 @@
 import * as React from 'react'
 import Svg, { Path, G } from 'react-native-svg'
-
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import styled from 'styled-components/native'
 
 import { IconInterface } from '../types'
 
-export const Facebook: React.FunctionComponent<IconInterface> = ({
-  size = 32,
-  color: _color = ColorsEnum.BLACK,
-  testID,
-}) => (
+const FacebookSvg: React.FunctionComponent<IconInterface> = ({ size, color: _color, testID }) => (
   <Svg width={size} height={size} viewBox="0 0 25 24" testID={testID} aria-hidden>
     <G fill="none" fillRule="evenodd">
       <G fillRule="nonzero">
@@ -30,3 +24,8 @@ export const Facebook: React.FunctionComponent<IconInterface> = ({
     </G>
   </Svg>
 )
+
+export const Facebook = styled(FacebookSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.black,
+  size: size ?? theme.icons.sizes.standard,
+}))``

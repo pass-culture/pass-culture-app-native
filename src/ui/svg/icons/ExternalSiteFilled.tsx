@@ -1,14 +1,12 @@
 import * as React from 'react'
 import { Path } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { SMALLER_ICON_SIZE } from 'ui/theme/constants'
-export const ExternalSiteFilled: React.FunctionComponent<AccessibleIcon> = ({
-  size = SMALLER_ICON_SIZE,
-  color = ColorsEnum.BLACK,
+const ExternalSiteFilledSvg: React.FunctionComponent<AccessibleIcon> = ({
+  size,
+  color,
   testID,
   accessibilityLabel,
 }) => (
@@ -24,3 +22,8 @@ export const ExternalSiteFilled: React.FunctionComponent<AccessibleIcon> = ({
     />
   </AccessibleSvg>
 )
+
+export const ExternalSiteFilled = styled(ExternalSiteFilledSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.black,
+  size: size ?? theme.icons.sizes.smaller,
+}))``

@@ -1,14 +1,12 @@
 import * as React from 'react'
 import { Path } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
-export const Email: React.FunctionComponent<AccessibleIcon> = ({
-  size = STANDARD_ICON_SIZE,
-  color = ColorsEnum.BLACK,
+const EmailSvg: React.FunctionComponent<AccessibleIcon> = ({
+  size,
+  color,
   testID,
   accessibilityLabel,
 }) => (
@@ -26,3 +24,8 @@ export const Email: React.FunctionComponent<AccessibleIcon> = ({
     />
   </AccessibleSvg>
 )
+
+export const Email = styled(EmailSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.black,
+  size: size ?? theme.icons.sizes.standard,
+}))``

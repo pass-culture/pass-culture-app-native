@@ -1,16 +1,9 @@
 import * as React from 'react'
 import Svg, { Path } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
-export function ProfileDeletion({
-  size = STANDARD_ICON_SIZE,
-  color = ColorsEnum.BLACK,
-  testID,
-  opacity = 1,
-}: IconInterface): JSX.Element {
+function ProfileDeletionSvg({ size, color, testID, opacity }: IconInterface): JSX.Element {
   return (
     <Svg width={size} height={size} testID={testID} viewBox="0 0 48 48" fill={color} aria-hidden>
       <Path
@@ -20,3 +13,11 @@ export function ProfileDeletion({
     </Svg>
   )
 }
+
+export const ProfileDeletion = styled(ProfileDeletionSvg).attrs(
+  ({ color, size, opacity, theme }) => ({
+    color: color ?? theme.colors.black,
+    size: size ?? theme.icons.sizes.standard,
+    opacity: opacity ?? 1,
+  })
+)``
