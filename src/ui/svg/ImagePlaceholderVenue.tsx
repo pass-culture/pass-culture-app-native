@@ -1,6 +1,6 @@
 import * as React from 'react'
 import Svg, { Defs, LinearGradient, Stop, Rect, Path } from 'react-native-svg'
-import styled from 'styled-components/native'
+import { useTheme } from 'styled-components/native'
 import { v1 as uuidv1 } from 'uuid'
 
 interface Props {
@@ -14,6 +14,9 @@ const NotMemoizedImagePlaceholderVenue: React.FC<Props> = ({
   height = 50,
   testID = 'ImagePlaceholderVenue',
 }) => {
+  const {
+    colors: { primary, secondary },
+  } = useTheme()
   const LINEAR_GRADIENT_ID = uuidv1()
   const LINEAR_GRADIENT_ID_2 = uuidv1()
 
@@ -32,8 +35,8 @@ const NotMemoizedImagePlaceholderVenue: React.FC<Props> = ({
           x2="145.524"
           y2="229.885"
           gradientUnits="userSpaceOnUse">
-          <PrimaryStop />
-          <SecondaryStop />
+          <Stop stopColor={primary} />
+          <Stop offset="1" stopColor={secondary} />
         </LinearGradient>
         <LinearGradient
           id={LINEAR_GRADIENT_ID_2}
@@ -42,21 +45,12 @@ const NotMemoizedImagePlaceholderVenue: React.FC<Props> = ({
           x2="340.596"
           y2="210.852"
           gradientUnits="userSpaceOnUse">
-          <PrimaryStop />
-          <SecondaryStop offset="0.971769" />
+          <Stop stopColor={primary} />
+          <Stop offset="0.971769" stopColor={secondary} />
         </LinearGradient>
       </Defs>
     </Svg>
   )
 }
-
-const PrimaryStop = styled(Stop).attrs(({ theme }) => ({
-  stopColor: theme.colors.primary,
-}))``
-
-const SecondaryStop = styled(Stop).attrs(({ offset, theme }) => ({
-  stopColor: theme.colors.secondary,
-  offset: offset ?? '1',
-}))``
 
 export const ImagePlaceholderVenue = React.memo(NotMemoizedImagePlaceholderVenue)
