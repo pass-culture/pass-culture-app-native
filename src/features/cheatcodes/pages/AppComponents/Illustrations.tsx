@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
-import { BicolorIdCardWithMagnifyingGlassDeprecated } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass_deprecated'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
 import { CalendarIllustration } from 'ui/svg/icons/CalendarIllustration'
@@ -39,10 +38,6 @@ export const Illustrations: FunctionComponent = () => {
     <React.Fragment>
       <Text>{'Illustration icons should have a standard size of 140'}</Text>
       <Illustration name="BicolorPhonePending" component={BicolorPhonePending} isNew />
-      <Illustration
-        name="BicolorIdCardWithMagnifyingGlassDeprecated"
-        component={BicolorIdCardWithMagnifyingGlassDeprecated}
-      />
       <Illustration
         name="BicolorIdCardWithMagnifyingGlass"
         component={BicolorIdCardWithMagnifyingGlass}

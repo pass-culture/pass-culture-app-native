@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { useModal } from 'ui/components/modals/useModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
-import { BicolorIdCardWithMagnifyingGlassDeprecated as BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass_deprecated'
+import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { Plus } from 'ui/svg/icons/Plus'
 import { getSpacing, Typo } from 'ui/theme'
 export function IdentityCheckStartContent() {
