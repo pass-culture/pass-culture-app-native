@@ -36,9 +36,7 @@ export const ButtonPrimary = styled(AppButton).attrs<BaseButtonProps>(
 
   if (isLoading) {
     backgroundColor = theme.buttons.loading.primary.backgroundColor
-  }
-
-  if (disabled) {
+  } else if (disabled) {
     backgroundColor = theme.buttons.disabled.primary.backgroundColor
   }
 
