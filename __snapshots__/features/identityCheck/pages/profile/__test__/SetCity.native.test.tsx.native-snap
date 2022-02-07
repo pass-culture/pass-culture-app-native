@@ -215,8 +215,9 @@ exports[`<SetCity/> should render correctly 1`] = `
               }
             />
             <View
-              borderColor="#CBCDD2"
               height="small"
+              isError={false}
+              isFocus={false}
               isInputDisabled={false}
               style={
                 Array [
@@ -284,6 +285,7 @@ exports[`<SetCity/> should render correctly 1`] = `
                       "paddingRight": 0,
                       "paddingTop": 0,
                     },
+                    Object {},
                   ]
                 }
                 testID="Entrée pour le code postal"

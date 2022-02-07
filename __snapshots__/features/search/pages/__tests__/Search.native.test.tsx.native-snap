@@ -61,8 +61,9 @@ exports[`Search component should render correctly 1`] = `
     }
   >
     <View
-      borderColor="#CBCDD2"
       height="tall"
+      isError={false}
+      isFocus={false}
       isInputDisabled={false}
       style={
         Array [
@@ -149,6 +150,7 @@ exports[`Search component should render correctly 1`] = `
               "paddingRight": 0,
               "paddingTop": 0,
             },
+            Object {},
           ]
         }
         testID="Barre de recherche des offres"

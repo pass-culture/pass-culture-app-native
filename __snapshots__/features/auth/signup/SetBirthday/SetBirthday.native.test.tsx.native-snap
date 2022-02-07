@@ -133,8 +133,9 @@ exports[`<SetBirthday /> should render correctly 1`] = `
       }
     />
     <View
-      borderColor="#CBCDD2"
       height="small"
+      isError={false}
+      isFocus={false}
       isInputDisabled={false}
       style={
         Array [
