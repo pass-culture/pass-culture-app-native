@@ -1,3 +1,4 @@
+import { useNetInfo } from '@react-native-community/netinfo'
 import { useQuery } from 'react-query'
 
 import { SuggestedCity } from 'libs/place'
@@ -15,12 +16,11 @@ export type CitiesResponse = Array<{
 
 export const CITIES_API_URL = 'https://geo.api.gouv.fr/communes'
 
-const STALE_TIME_CITIES = 5 * 60 * 1000
+export const useCities = (postalCode: string) => {
+  const networkInfo = useNetInfo()
 
-export const useCities = (postalCode: string) =>
-  useQuery([QueryKeys.CITIES, postalCode], () => fetchCities(postalCode), {
-    staleTime: STALE_TIME_CITIES,
-    enabled: postalCode.length >= 5,
+  return useQuery([QueryKeys.CITIES, postalCode], () => fetchCities(postalCode), {
+    enabled: postalCode.length >= 5 && networkInfo.isConnected,
     select: (data: CitiesResponse) =>
       data.map(({ nom, code }) => ({
         name: nom,
@@ -28,3 +28,4 @@ export const useCities = (postalCode: string) =>
         postalCode,
       })) as SuggestedCity[],
   })
+}

@@ -1,3 +1,4 @@
+import { useNetInfo } from '@react-native-community/netinfo'
 import { useEffect } from 'react'
 
 import { api } from 'api/api'
@@ -15,7 +16,10 @@ const prefetchQueries = async () => {
 }
 
 export const usePrefetchQueries = () => {
+  const networkInfo = useNetInfo()
+
   useEffect(() => {
+    if (!networkInfo.isConnected) return
     prefetchQueries()
   }, [])
 }

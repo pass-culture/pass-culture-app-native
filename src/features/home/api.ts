@@ -1,3 +1,4 @@
+import { useNetInfo } from '@react-native-community/netinfo'
 import resolveResponse from 'contentful-resolve-response'
 import { useMemo, useEffect } from 'react'
 import { useQuery } from 'react-query'
@@ -16,7 +17,6 @@ import { ScreenError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 
 const DEPTH_LEVEL = 2
-const STALE_TIME_CONTENTFUL = 5 * 60 * 1000
 
 export const CONTENTFUL_BASE_URL = 'https://cdn.contentful.com'
 export const BASE_URL = `${CONTENTFUL_BASE_URL}/spaces/${env.CONTENTFUL_SPACE_ID}/environments/${env.CONTENTFUL_ENVIRONMENT}`
@@ -34,9 +34,10 @@ export async function getEntries() {
 }
 
 export function useHomepageModules(paramsEntryId?: string) {
+  const networkInfo = useNetInfo()
   const selectPlaylist = useSelectPlaylist(paramsEntryId)
   const { data: entries } = useQuery<HomepageEntry[]>(QueryKeys.HOMEPAGE_MODULES, getEntries, {
-    staleTime: STALE_TIME_CONTENTFUL,
+    enabled: networkInfo.isConnected,
   })
 
   const entry = selectPlaylist(entries || [])
@@ -49,14 +50,12 @@ export function useHomepageModules(paramsEntryId?: string) {
   return useMemo(() => (entry ? processHomepageEntry(entry) : []), [entryId])
 }
 
-const STALE_TIME_USER_PROFILE = 5 * 60 * 1000
-
 export function useUserProfileInfo(options = {}) {
+  const networkInfo = useNetInfo()
   const { isLoggedIn } = useAuthContext()
 
   return useQuery<UserProfileResponse>(QueryKeys.USER_PROFILE, () => api.getnativev1me(), {
-    enabled: isLoggedIn,
-    staleTime: STALE_TIME_USER_PROFILE,
+    enabled: isLoggedIn && networkInfo.isConnected,
     ...options,
   })
 }

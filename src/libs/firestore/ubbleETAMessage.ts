@@ -1,3 +1,4 @@
+import { useNetInfo } from '@react-native-community/netinfo'
 import { useQuery } from 'react-query'
 
 import { env } from 'libs/environment'
@@ -5,8 +6,6 @@ import { firestoreRemoteStore } from 'libs/firestore/client'
 import { RemoteStoreCollections, RemoteStoreDocuments } from 'libs/firestore/types'
 import { QueryKeys } from 'libs/queryKeys'
 
-// To avoid firing requests firestore on every request
-const STALE_TIME_FIRESTORE_UBBLE_ETA_MESSAGE = 5 * 60 * 1000
 const defaultUbbleETAMessage = 'Environ 3 heures'
 
 export const getUbbleETAMessage = () =>
@@ -23,7 +22,10 @@ export const getUbbleETAMessage = () =>
         : defaultUbbleETAMessage
     )
 
-export const useUbbleETAMessage = () =>
-  useQuery<string>(QueryKeys.FIRESTORE_UBBLE_ETA_MESSAGE, () => getUbbleETAMessage(), {
-    staleTime: STALE_TIME_FIRESTORE_UBBLE_ETA_MESSAGE,
+export const useUbbleETAMessage = () => {
+  const networkInfo = useNetInfo()
+
+  return useQuery<string>(QueryKeys.FIRESTORE_UBBLE_ETA_MESSAGE, () => getUbbleETAMessage(), {
+    enabled: networkInfo.isConnected,
   })
+}

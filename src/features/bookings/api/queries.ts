@@ -1,3 +1,4 @@
+import { useNetInfo } from '@react-native-community/netinfo'
 import { useCallback } from 'react'
 import { useQuery, UseQueryResult } from 'react-query'
 
@@ -5,12 +6,11 @@ import { api } from 'api/api'
 import { BookingReponse, BookingsResponse } from 'api/gen'
 import { QueryKeys } from 'libs/queryKeys'
 
-// Arbitrary. Make sure the cache is invalidated after each booking
-const STALE_TIME_BOOKINGS = 5 * 60 * 1000
-
 export function useBookings(options = {}) {
+  const networkInfo = useNetInfo()
+
   return useQuery<BookingsResponse>(QueryKeys.BOOKINGS, () => api.getnativev1bookings(), {
-    staleTime: STALE_TIME_BOOKINGS,
+    enabled: networkInfo.isConnected,
     ...options,
   })
 }

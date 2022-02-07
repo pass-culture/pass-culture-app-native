@@ -1,3 +1,4 @@
+import { useNetInfo } from '@react-native-community/netinfo'
 import uniqBy from 'lodash.uniqby'
 import { useEffect, useMemo } from 'react'
 import { useQuery } from 'react-query'
@@ -34,6 +35,7 @@ export const useOfferModule = ({
   search,
   moduleId,
 }: useOfferModuleProps): { hits: SearchHit[]; nbHits: number } | undefined => {
+  const networkInfo = useNetInfo()
   const { position } = useGeolocation()
   const transformHits = useTransformAlgoliaHits()
   const parseSearchParameters = useParseSearchParameters()
@@ -44,13 +46,15 @@ export const useOfferModule = ({
 
   const { data, refetch } = useQuery(
     [QueryKeys.HOME_MODULE, moduleId],
-    async () => await fetchMultipleAlgolia(parsedParameters, position, isUserUnderage)
+    async () => await fetchMultipleAlgolia(parsedParameters, position, isUserUnderage),
+    { enabled: networkInfo.isConnected }
   )
 
   useEffect(() => {
+    if (!networkInfo.isConnected) return
     // When we enable or disable the geolocation, we want to refetch the home modules
     refetch()
-  }, [!!position, user?.isBeneficiary])
+  }, [!!position, user?.isBeneficiary, networkInfo.isConnected])
 
   return useMemo(() => {
     if (!data) return

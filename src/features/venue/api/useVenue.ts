@@ -1,3 +1,4 @@
+import { useNetInfo } from '@react-native-community/netinfo'
 import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
@@ -15,7 +16,12 @@ const getVenueById = async (venueId: number | null) => {
   }
 }
 
-export const useVenue = (venueId: number | null) =>
-  useQuery<VenueResponse | undefined>([QueryKeys.VENUE, venueId], () => getVenueById(venueId), {
-    enabled: typeof venueId === 'number',
-  })
+export const useVenue = (venueId: number | null) => {
+  const networkInfo = useNetInfo()
+
+  return useQuery<VenueResponse | undefined>(
+    [QueryKeys.VENUE, venueId],
+    () => getVenueById(venueId),
+    { enabled: typeof venueId === 'number' && networkInfo.isConnected }
+  )
+}

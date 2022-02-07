@@ -1,3 +1,4 @@
+import { useNetInfo } from '@react-native-community/netinfo'
 import { useMemo } from 'react'
 import { useQuery } from 'react-query'
 
@@ -33,6 +34,7 @@ export const getRecommendationEndpoint = (
 }
 
 const useRecommendedOfferIds = (userId: number | undefined, position: GeoCoordinates | null) => {
+  const networkInfo = useNetInfo()
   const recommendationEndpoint = getRecommendationEndpoint(userId, position) as string
 
   return useQuery(
@@ -49,18 +51,19 @@ const useRecommendedOfferIds = (userId: number | undefined, position: GeoCoordin
         return { recommended_offers: [] }
       }
     },
-    { enabled: typeof userId === 'number' && !!recommendationEndpoint }
+    { enabled: typeof userId === 'number' && !!recommendationEndpoint && networkInfo.isConnected }
   )
 }
 
 const useRecommendedHits = (ids: string[]): SearchHit[] | undefined => {
+  const networkInfo = useNetInfo()
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformAlgoliaHits()
 
   const { data: hits } = useQuery(
     QueryKeys.RECOMMENDATION_HITS,
     async () => await fetchAlgoliaHits(ids, isUserUnderage),
-    { enabled: ids.length > 0 }
+    { enabled: ids.length > 0 && networkInfo.isConnected }
   )
 
   return useMemo(() => {

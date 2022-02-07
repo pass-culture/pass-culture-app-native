@@ -1,3 +1,4 @@
+import { useNetInfo } from '@react-native-community/netinfo'
 import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 
@@ -12,16 +13,19 @@ export const useVenueModule = ({
   moduleId,
 }: Pick<VenuesModule, 'search' | 'moduleId'>): VenueHit[] | undefined => {
   const { position } = useGeolocation()
+  const networkInfo = useNetInfo()
 
   const { data, refetch } = useQuery(
     [QueryKeys.HOME_VENUES_MODULE, moduleId],
-    async () => await fetchMultipleVenues(search, position)
+    async () => await fetchMultipleVenues(search, position),
+    { enabled: networkInfo.isConnected }
   )
 
   useEffect(() => {
+    if (!networkInfo.isConnected) return
     // When we enable or disable the geolocation, we want to refetch the home modules
     refetch()
-  }, [!!position])
+  }, [!!position, networkInfo.isConnected])
 
   return data
 }
