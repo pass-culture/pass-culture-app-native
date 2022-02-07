@@ -13,8 +13,6 @@ import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { useBooking, useBookingOffer, useBookingStock } from '../pages/BookingOfferWrapper'
 
@@ -113,9 +111,15 @@ const Item: React.FC<{
   message: JSX.Element | string
   subtext?: string
 }> = ({ Icon, message, subtext = '' }) => {
+  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
+    color: theme.colors.greyDark,
+    size: theme.icons.sizes.small,
+  }))``
   return (
     <Row>
-      <Icon color={ColorsEnum.GREY_DARK} size={getSpacing(6)} />
+      <IconWrapper>
+        <StyledIcon />
+      </IconWrapper>
       <Spacer.Row numberOfSpaces={3} />
       {typeof message === 'string' ? <Typo.Caption>{message}</Typo.Caption> : message}
       <Spacer.Row numberOfSpaces={2} />
@@ -130,6 +134,9 @@ const Row = styled.View(({ theme }) => ({
   width: theme.appContentWidth - getSpacing(24),
   paddingVertical: getSpacing(0.5),
 }))
+const IconWrapper = styled.View({
+  flexShrink: 0,
+})
 const StyledAddress = styled(Typo.Body)({
   textTransform: 'capitalize',
   alignItems: 'center',
