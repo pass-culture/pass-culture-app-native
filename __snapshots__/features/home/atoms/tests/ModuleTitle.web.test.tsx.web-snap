@@ -9,14 +9,16 @@ Object {
         class="css-view-1dbjc4n"
         style="margin-right: 24px; margin-left: 24px;"
       >
-        <div
-          class="css-text-901oao css-textMultiLine-cens5h"
+        <h3
+          aria-level="3"
+          class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
           data-testid="moduleTitle"
           dir="auto"
+          role="heading"
           style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px;"
         >
           Pour bien commencer
-        </div>
+        </h3>
       </div>
     </div>
   </body>,
@@ -25,14 +27,16 @@ Object {
       class="css-view-1dbjc4n"
       style="margin-right: 24px; margin-left: 24px;"
     >
-      <div
-        class="css-text-901oao css-textMultiLine-cens5h"
+      <h3
+        aria-level="3"
+        class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
         data-testid="moduleTitle"
         dir="auto"
+        role="heading"
         style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px;"
       >
         Pour bien commencer
-      </div>
+      </h3>
     </div>
   </div>,
   "debug": [Function],

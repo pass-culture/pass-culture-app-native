@@ -5,6 +5,7 @@ import { Helmet } from 'libs/react-helmet/Helmet'
 import { Background } from 'ui/svg/Background'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getTitleAttrs } from 'ui/theme/typography'
 
 type Props = {
   header?: ReactNode
@@ -44,7 +45,7 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
             <Spacer.Column numberOfSpaces={spacingMatrix.afterIcon} />
           </React.Fragment>
         )}
-        <StyledTitle2>{title}</StyledTitle2>
+        <StyledTitle>{title}</StyledTitle>
         <Spacer.Column numberOfSpaces={spacingMatrix.afterTitle} />
         {children}
         <Spacer.Column numberOfSpaces={spacingMatrix.afterChildren} />
@@ -79,7 +80,7 @@ const spacingMatrix = {
   bottom: 10,
 }
 
-const StyledTitle2 = styled(Typo.Title2)(({ theme }) => ({
+const StyledTitle = styled(Typo.Title2).attrs(() => getTitleAttrs(1))(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

@@ -13,11 +13,12 @@ export const TitleWithCount: React.FC<{ title: string; count: number }> = ({
 }) => {
   const countString = `${NON_BREAKING_SPACE}(${count})`
   return (
-    <Typo.Title4>
+    <Title>
       {title}
       {count > 0 && <RedTitle>{countString}</RedTitle>}
-    </Typo.Title4>
+    </Title>
   )
 }
 
+const Title = styled(Typo.Title4).attrs({ accessibilityRole: 'none', 'aria-level': undefined })``
 const RedTitle = styled(Text)({ color: ColorsEnum.PRIMARY })

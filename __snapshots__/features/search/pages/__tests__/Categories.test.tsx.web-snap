@@ -1492,9 +1492,11 @@ exports[`Categories component should render correctly 1`] = `
             </div>
           </div>
         </div>
-        <div
-          className="css-text-901oao css-textMultiLine-cens5h"
+        <h1
+          aria-level={1}
+          className="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
           dir="auto"
+          role="heading"
           style={
             Object {
               "WebkitLineClamp": 1,
@@ -1507,7 +1509,7 @@ exports[`Categories component should render correctly 1`] = `
           }
         >
           Catégories
-        </div>
+        </h1>
         <div
           className="css-view-1dbjc4n"
           style={

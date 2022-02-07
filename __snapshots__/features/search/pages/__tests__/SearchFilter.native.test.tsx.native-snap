@@ -68,17 +68,31 @@ exports[`SearchFilter component should render correctly 1`] = `
             ]
           }
         >
-          Localisation
           <Text
+            accessibilityRole="none"
             style={
               Array [
                 Object {
-                  "color": "#eb0055",
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 18,
+                  "lineHeight": 22,
                 },
               ]
             }
           >
-             (1)
+            Localisation
+            <Text
+              style={
+                Array [
+                  Object {
+                    "color": "#eb0055",
+                  },
+                ]
+              }
+            >
+               (1)
+            </Text>
           </Text>
         </Text>
         <View
@@ -533,6 +547,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           }
         >
           <Text
+            accessibilityRole="none"
             style={
               Array [
                 Object {
@@ -1434,6 +1449,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           }
         >
           <Text
+            accessibilityRole="none"
             style={
               Array [
                 Object {
@@ -1759,6 +1775,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           }
         >
           <Text
+            accessibilityRole="none"
             style={
               Array [
                 Object {
@@ -2169,6 +2186,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityRole="none"
               style={
                 Array [
                   Object {
@@ -2315,6 +2333,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityRole="none"
               style={
                 Array [
                   Object {
@@ -2461,6 +2480,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityRole="none"
               style={
                 Array [
                   Object {
@@ -2607,6 +2627,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityRole="none"
               style={
                 Array [
                   Object {
@@ -2777,6 +2798,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <Text
+              accessibilityRole="none"
               style={
                 Array [
                   Object {

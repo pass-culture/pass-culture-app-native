@@ -17,6 +17,7 @@ import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Typo } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
+import { getTitleAttrs } from 'ui/theme/typography'
 
 import { NoBookingsView } from './NoBookingsView'
 import { OnGoingBookingItem } from './OnGoingBookingItem'
@@ -104,7 +105,7 @@ const Container = styled.View<{ flex?: number }>(({ flex }) => ({
   height: '100%',
 }))
 
-const BookingsCount = styled(Typo.Body)(({ theme }) => ({
+const BookingsCount = styled(Typo.Body).attrs(() => getTitleAttrs(2))(({ theme }) => ({
   fontSize: 15,
   paddingTop: getSpacing(6),
   paddingHorizontal: getSpacing(6),

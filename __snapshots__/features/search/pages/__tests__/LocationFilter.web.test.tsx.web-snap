@@ -294,13 +294,15 @@ Object {
                   </div>
                 </div>
               </div>
-              <div
-                class="css-text-901oao css-textMultiLine-cens5h"
+              <h1
+                aria-level="1"
+                class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
                 dir="auto"
+                role="heading"
                 style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
               >
                 Localisation
-              </div>
+              </h1>
               <div
                 class="css-view-1dbjc4n"
                 style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-end; padding-left: 12px; padding-right: 12px;"
@@ -605,13 +607,15 @@ Object {
                 </div>
               </div>
             </div>
-            <div
-              class="css-text-901oao css-textMultiLine-cens5h"
+            <h1
+              aria-level="1"
+              class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
               dir="auto"
+              role="heading"
               style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
             >
               Localisation
-            </div>
+            </h1>
             <div
               class="css-view-1dbjc4n"
               style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 1; flex-shrink: 1; justify-content: flex-end; padding-left: 12px; padding-right: 12px;"

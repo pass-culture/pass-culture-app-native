@@ -105,9 +105,11 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       }
     }
   >
-    <div
-      className="css-text-901oao"
+    <h4
+      aria-level={4}
+      className="css-reset-4rbku5 css-text-901oao"
       dir="auto"
+      role="heading"
       style={
         Object {
           "color": "rgba(255,255,255,1.00)",
@@ -119,7 +121,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       }
     >
       Connecte-toi pour profiter de cette fonctionnalité !
-    </div>
+    </h4>
     <div
       className="css-view-1dbjc4n"
       style={

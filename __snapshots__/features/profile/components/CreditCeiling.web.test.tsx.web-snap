@@ -40,13 +40,15 @@ Object {
             />
           </div>
         </div>
-        <div
-          class="css-text-901oao"
+        <h4
+          aria-level="4"
+          class="css-reset-4rbku5 css-text-901oao"
           dir="auto"
+          role="heading"
           style="color: rgb(50, 0, 150); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
         >
           155 €
-        </div>
+        </h4>
         <div
           class="css-view-1dbjc4n"
         >
@@ -97,13 +99,15 @@ Object {
           />
         </div>
       </div>
-      <div
-        class="css-text-901oao"
+      <h4
+        aria-level="4"
+        class="css-reset-4rbku5 css-text-901oao"
         dir="auto"
+        role="heading"
         style="color: rgb(50, 0, 150); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
       >
         155 €
-      </div>
+      </h4>
       <div
         class="css-view-1dbjc4n"
       >
