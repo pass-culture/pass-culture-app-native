@@ -23,10 +23,6 @@ i18n.loadLocaleData({
 
 i18n.activate('fr')
 
-export function accessibilityAndTestId(id: string) {
-  return { accessible: true, accessibilityLabel: id, testID: id }
-}
-
 export async function flushAllPromises() {
   await flushPromises()
   return new Promise((resolve) => setImmediate(resolve))

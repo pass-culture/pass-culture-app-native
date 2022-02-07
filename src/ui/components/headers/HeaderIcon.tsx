@@ -2,7 +2,7 @@ import React from 'react'
 import { Animated, TouchableOpacity } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { accessibilityAndTestId } from 'tests/utils'
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AnimatedIcon } from 'ui/components/AnimatedIcon'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Favorite } from 'ui/svg/icons/Favorite'

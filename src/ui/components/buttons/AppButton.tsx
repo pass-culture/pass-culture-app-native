@@ -8,7 +8,7 @@ import {
 } from 'react-native'
 import styled from 'styled-components/native'
 
-import { accessibilityAndTestId } from 'tests/utils'
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
 import { IconInterface } from 'ui/svg/icons/types'
 

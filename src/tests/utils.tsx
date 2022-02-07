@@ -7,7 +7,8 @@ import flushPromises from 'flush-promises'
 import { fr } from 'make-plural/plurals'
 import React, { ReactNode } from 'react'
 import { act, ReactTestInstance } from 'react-test-renderer'
-import { ThemeProvider, DefaultTheme } from 'styled-components/native'
+import { ThemeProvider as ThemeProviderWeb, DefaultTheme } from 'styled-components'
+import { ThemeProvider } from 'styled-components/native'
 
 import { messages } from 'locales/fr/messages'
 
@@ -22,14 +23,6 @@ i18n.loadLocaleData({
 })
 
 i18n.activate('fr')
-
-export function accessibilityAndTestId(accessibilityLabel?: string, testID?: string) {
-  return {
-    accessible: !!accessibilityLabel,
-    accessibilityLabel,
-    testID: testID || accessibilityLabel,
-  }
-}
 
 export async function flushAllPromises() {
   await flushPromises()
@@ -89,11 +82,14 @@ type PropsWithTheme = {
 
 const DefaultWrapper = ({ theme, children }: PropsWithTheme) => {
   return (
-    <ThemeProvider theme={deepmerge(computedTheme, theme || {})}>
-      <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
-        {children}
-      </I18nProvider>
-    </ThemeProvider>
+    // ThemeProviderWeb is useful to recycle .test.tsx for both native and web
+    <ThemeProviderWeb theme={deepmerge(computedTheme, theme || {})}>
+      <ThemeProvider theme={deepmerge(computedTheme, theme || {})}>
+        <I18nProvider i18n={i18n} forceRenderOnLocaleChange={false}>
+          {children}
+        </I18nProvider>
+      </ThemeProvider>
+    </ThemeProviderWeb>
   )
 }
 

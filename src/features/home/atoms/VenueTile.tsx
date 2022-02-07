@@ -6,12 +6,12 @@ import styled from 'styled-components/native'
 import { VenueResponse } from 'api/gen'
 import { VenueCaption } from 'features/home/atoms/VenueCaption'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
 import { formatDistance } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'
 import { VenueHit } from 'libs/search'
-import { accessibilityAndTestId } from 'tests/utils'
 import { ImageTile } from 'ui/components/ImageTile'
 
 export interface VenueTileProps {

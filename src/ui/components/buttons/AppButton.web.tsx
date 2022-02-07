@@ -10,7 +10,7 @@ import React, {
 import { TextProps } from 'react-native'
 import styled from 'styled-components'
 
-import { accessibilityAndTestId } from 'tests/utils'
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
 import { IconInterface } from 'ui/svg/icons/types'
 
@@ -61,9 +61,9 @@ const _AppButton = <T extends AppButtonProps>({
   fullWidth,
   buttonHeight = 'small',
   inlineHeight,
-  // accessibilityLabel,
+  accessibilityLabel,
   accessibilityDescribedBy,
-  // testId,
+  testId,
   wording,
   adjustsFontSizeToFit,
   justifyContent,
@@ -103,6 +103,7 @@ const _AppButton = <T extends AppButtonProps>({
   )
   return (
     <Button
+      {...accessibilityAndTestId(accessibilityLabel || wording, testId || wording)}
       name={name}
       onClick={onClick}
       onDoubleClick={onDoubleClick}

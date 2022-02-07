@@ -13,9 +13,9 @@ import {
   SubcategoryIdEnum,
 } from 'api/gen'
 import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator'
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/analytics'
 import { QueryKeys } from 'libs/queryKeys'
-import { accessibilityAndTestId } from 'tests/utils'
 import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
 import { OfferCaption } from 'ui/components/OfferCaption'

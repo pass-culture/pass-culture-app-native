@@ -9,7 +9,7 @@ import ReactNativeCountryPicker, {
 } from 'react-native-country-picker-modal'
 import styled from 'styled-components/native'
 
-import { accessibilityAndTestId } from 'tests/utils'
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
 import { ArrowDown } from 'ui/svg/icons/ArrowDown'

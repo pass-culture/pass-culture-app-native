@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
-import { accessibilityAndTestId } from 'tests/utils'
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { getSpacing, Typo } from 'ui/theme'
 import { getTitleAttrs } from 'ui/theme/typography'
 

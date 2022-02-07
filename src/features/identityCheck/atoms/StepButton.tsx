@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { StepConfig } from 'features/identityCheck/types'
-import { accessibilityAndTestId } from 'tests/utils'
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
 

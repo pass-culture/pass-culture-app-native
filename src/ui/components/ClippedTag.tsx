@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { accessibilityAndTestId } from 'tests/utils'
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { Clear } from 'ui/svg/icons/Clear'
 import { getSpacing, Typo } from 'ui/theme'
 

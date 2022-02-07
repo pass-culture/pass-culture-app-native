@@ -4,9 +4,9 @@ import styled from 'styled-components/native'
 
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
-import { accessibilityAndTestId } from 'tests/utils'
 import { Typo } from 'ui/theme'
 
 export const ReinitializeFilters = () => {
