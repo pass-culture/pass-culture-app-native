@@ -1,6 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { Email } from 'ui/svg/icons/Email'
+
 import { ButtonPrimary } from './ButtonPrimary'
 
 export default {
@@ -25,4 +27,17 @@ export const Tall = Template.bind({})
 Tall.args = {
   wording: 'Confirmer',
   buttonHeight: 'tall',
+}
+
+export const WithIcon = Template.bind({})
+WithIcon.args = {
+  wording: 'Confirmer',
+  icon: Email,
+}
+
+export const DisabledWithIcon = Template.bind({})
+DisabledWithIcon.args = {
+  wording: 'Confirmer',
+  icon: Email,
+  disabled: true,
 }
