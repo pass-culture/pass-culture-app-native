@@ -13,7 +13,7 @@ export function NoBookingsView() {
   return (
     <Container>
       <Spacer.Flex />
-      <NoBookings />
+      <StyledNoBookings />
       <Explanation>
         {t`Tu n’as pas de réservations en cours.
       Découvre les offres disponibles 
@@ -34,6 +34,11 @@ export function NoBookingsView() {
   )
 }
 
+const StyledNoBookings = styled(NoBookings).attrs(({ theme }) => ({
+  size: theme.illustrations.sizes.fullPage,
+  color: theme.colors.greyMedium,
+}))``
+
 const Container = styled.View({
   flex: 1,
   justifyContent: 'center',
@@ -51,8 +56,3 @@ const Explanation = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.greyDark,
 }))
-
-const NoBookings = styled(NoBookingsDeprecated).attrs(({ theme }) => ({
-  color: theme.colors.greyMedium,
-  size: 197, // Cette taille n'existe pas dans le theme : todo: voir avec les UXs cette incohérence graphique
-}))``

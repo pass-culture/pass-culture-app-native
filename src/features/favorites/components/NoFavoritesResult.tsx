@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { useNavigateToSearchResults } from 'features/search/utils/useNavigateToSearchResults'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -8,7 +8,6 @@ import { EmptyFavorites } from 'ui/svg/icons/EmptyFavorites'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const NoFavoritesResult = () => {
-  const { colors } = useTheme()
   const onPressExploreOffers = useNavigateToSearchResults({ from: 'favorites' })
 
   return (
@@ -16,7 +15,7 @@ export const NoFavoritesResult = () => {
       <Spacer.TabBar />
       <Spacer.Flex />
       <IconContainer>
-        <EmptyFavorites size={197} color={colors.greyMedium} />
+        <StyledEmptyFavorites />
       </IconContainer>
       <Explanation>
         {t`Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris\u00a0!`}
@@ -33,6 +32,10 @@ export const NoFavoritesResult = () => {
     </Container>
   )
 }
+const StyledEmptyFavorites = styled(EmptyFavorites).attrs(({ theme }) => ({
+  size: theme.illustrations.sizes.fullPage,
+  color: theme.colors.greyMedium,
+}))``
 
 const IconContainer = styled.View({
   flex: 1,
