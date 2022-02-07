@@ -194,12 +194,8 @@ Object {
                               class="css-view-1dbjc4n"
                               style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center;"
                             >
-                              <div
-                                aria-label="Copier"
-                                class="css-view-1dbjc4n"
-                                data-testid="Copier"
-                                style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                                tabindex="0"
+                              <button
+                                class="sc-gsDKAQ kNRtDq sc-hKwDye gvtKtm"
                               >
                                 <div
                                   class="css-view-1dbjc4n"
@@ -219,18 +215,14 @@ Object {
                                 >
                                   Copier
                                 </div>
-                              </div>
+                              </button>
                             </div>
                             <div
                               class="css-view-1dbjc4n"
                               style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center;"
                             >
-                              <div
-                                aria-label="E-mail"
-                                class="css-view-1dbjc4n"
-                                data-testid="E-mail"
-                                style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                                tabindex="0"
+                              <button
+                                class="sc-gsDKAQ kNRtDq sc-hKwDye gvtKtm"
                               >
                                 <div
                                   class="css-view-1dbjc4n"
@@ -250,7 +242,7 @@ Object {
                                 >
                                   E-mail
                                 </div>
-                              </div>
+                              </button>
                             </div>
                           </div>
                           <div
@@ -382,12 +374,8 @@ Object {
                             class="css-view-1dbjc4n"
                             style="height: 32px;"
                           />
-                          <div
-                            aria-label="Annuler"
-                            class="css-view-1dbjc4n"
-                            data-testid="Annuler"
-                            style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 320px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                            tabindex="0"
+                          <button
+                            class="sc-gsDKAQ dYnIle sc-dkPtRN efdTBP"
                           >
                             <div
                               class="css-text-901oao css-textMultiLine-cens5h"
@@ -396,7 +384,7 @@ Object {
                             >
                               Annuler
                             </div>
-                          </div>
+                          </button>
                         </div>
                       </div>
                     </div>

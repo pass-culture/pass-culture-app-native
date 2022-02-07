@@ -143,12 +143,8 @@ Object {
                   class="css-view-1dbjc4n"
                   style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
                 >
-                  <div
-                    aria-label="Ouvrir un onglet ÉduConnect"
-                    class="css-view-1dbjc4n"
-                    data-testid="Ouvrir un onglet ÉduConnect"
-                    style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                    tabindex="0"
+                  <button
+                    class="sc-gsDKAQ kNRtDq sc-eCImPb bxfGfU"
                   >
                     <div
                       class="css-text-901oao css-textMultiLine-cens5h"
@@ -157,7 +153,7 @@ Object {
                     >
                       Ouvrir un onglet ÉduConnect
                     </div>
-                  </div>
+                  </button>
                   <div
                     class="css-view-1dbjc4n"
                     style="height: 8px;"
@@ -324,12 +320,8 @@ Object {
                 class="css-view-1dbjc4n"
                 style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
               >
-                <div
-                  aria-label="Ouvrir un onglet ÉduConnect"
-                  class="css-view-1dbjc4n"
-                  data-testid="Ouvrir un onglet ÉduConnect"
-                  style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                  tabindex="0"
+                <button
+                  class="sc-gsDKAQ kNRtDq sc-eCImPb bxfGfU"
                 >
                   <div
                     class="css-text-901oao css-textMultiLine-cens5h"
@@ -338,7 +330,7 @@ Object {
                   >
                     Ouvrir un onglet ÉduConnect
                   </div>
-                </div>
+                </button>
                 <div
                   class="css-view-1dbjc4n"
                   style="height: 8px;"

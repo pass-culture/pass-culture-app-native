@@ -673,7 +673,7 @@ Object {
             style="margin-right: 24px; margin-left: 24px;"
           >
             <button
-              class="sc-gsDKAQ gJxVdF"
+              class="sc-jrQzAO dQNBgw"
               type="button"
             >
               <div
@@ -753,12 +753,8 @@ Object {
               class="css-view-1dbjc4n"
               style="align-items: flex-start;"
             >
-              <div
-                aria-label="Voir l'itinéraire"
-                class="css-view-1dbjc4n"
-                data-testid="Voir l'itinéraire"
-                style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 20px; justify-content: center; margin-top: 0px; max-width: 500px; padding: 0px 0px 0px 0px; transition-duration: 0s; transition-property: opacity; user-select: none; width: auto;"
-                tabindex="0"
+              <button
+                class="sc-gsDKAQ gzbzIm sc-ieecCq fhwLym"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -778,7 +774,7 @@ Object {
                 >
                   Voir l'itinéraire
                 </div>
-              </div>
+              </button>
             </div>
             <div
               class="css-view-1dbjc4n"
@@ -1922,7 +1918,7 @@ Object {
           style="margin-right: 24px; margin-left: 24px;"
         >
           <button
-            class="sc-gsDKAQ gJxVdF"
+            class="sc-jrQzAO dQNBgw"
             type="button"
           >
             <div
@@ -2002,12 +1998,8 @@ Object {
             class="css-view-1dbjc4n"
             style="align-items: flex-start;"
           >
-            <div
-              aria-label="Voir l'itinéraire"
-              class="css-view-1dbjc4n"
-              data-testid="Voir l'itinéraire"
-              style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 0px; border-top-right-radius: 0px; border-bottom-right-radius: 0px; border-bottom-left-radius: 0px; border-top-width: 0px; border-right-width: 0px; border-bottom-width: 0px; border-left-width: 0px; cursor: pointer; flex-direction: row; height: 20px; justify-content: center; margin-top: 0px; max-width: 500px; padding: 0px 0px 0px 0px; transition-duration: 0s; transition-property: opacity; user-select: none; width: auto;"
-              tabindex="0"
+            <button
+              class="sc-gsDKAQ gzbzIm sc-ieecCq fhwLym"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -2027,7 +2019,7 @@ Object {
               >
                 Voir l'itinéraire
               </div>
-            </div>
+            </button>
           </div>
           <div
             class="css-view-1dbjc4n"

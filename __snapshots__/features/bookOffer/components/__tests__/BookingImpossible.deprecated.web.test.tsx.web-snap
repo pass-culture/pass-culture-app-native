@@ -45,12 +45,8 @@ Object {
           class="css-view-1dbjc4n"
           style="height: 24px;"
         />
-        <div
-          aria-label="Mettre en favoris"
-          class="css-view-1dbjc4n"
-          data-testid="Mettre en favoris"
-          style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-          tabindex="0"
+        <button
+          class="sc-gsDKAQ kNRtDq sc-dkPtRN efdTBP"
         >
           <div
             class="css-text-901oao css-textMultiLine-cens5h"
@@ -59,17 +55,13 @@ Object {
           >
             Mettre en favoris
           </div>
-        </div>
+        </button>
         <div
           class="css-view-1dbjc4n"
           style="height: 16px;"
         />
-        <div
-          aria-label="Retourner à l'offre"
-          class="css-view-1dbjc4n"
-          data-testid="Retourner à l'offre"
-          style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-          tabindex="0"
+        <button
+          class="sc-gsDKAQ kNRtDq sc-hKwDye gvtKtm"
         >
           <div
             class="css-text-901oao css-textMultiLine-cens5h"
@@ -78,7 +70,7 @@ Object {
           >
             Retourner à l'offre
           </div>
-        </div>
+        </button>
         <div
           class="css-view-1dbjc4n"
           style="height: 16px;"
@@ -127,12 +119,8 @@ Object {
         class="css-view-1dbjc4n"
         style="height: 24px;"
       />
-      <div
-        aria-label="Mettre en favoris"
-        class="css-view-1dbjc4n"
-        data-testid="Mettre en favoris"
-        style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-        tabindex="0"
+      <button
+        class="sc-gsDKAQ kNRtDq sc-dkPtRN efdTBP"
       >
         <div
           class="css-text-901oao css-textMultiLine-cens5h"
@@ -141,17 +129,13 @@ Object {
         >
           Mettre en favoris
         </div>
-      </div>
+      </button>
       <div
         class="css-view-1dbjc4n"
         style="height: 16px;"
       />
-      <div
-        aria-label="Retourner à l'offre"
-        class="css-view-1dbjc4n"
-        data-testid="Retourner à l'offre"
-        style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-        tabindex="0"
+      <button
+        class="sc-gsDKAQ kNRtDq sc-hKwDye gvtKtm"
       >
         <div
           class="css-text-901oao css-textMultiLine-cens5h"
@@ -160,7 +144,7 @@ Object {
         >
           Retourner à l'offre
         </div>
-      </div>
+      </button>
       <div
         class="css-view-1dbjc4n"
         style="height: 16px;"

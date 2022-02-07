@@ -94,7 +94,7 @@ Object {
                     style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                   >
                     <form
-                      class="sc-bdvvtL jTTsqq"
+                      class="sc-hKwDye iARjhg"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -286,12 +286,9 @@ Object {
                   class="css-view-1dbjc4n"
                   style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
                 >
-                  <div
-                    aria-label="Choisis ton statut"
-                    class="css-view-1dbjc4n"
-                    data-testid="Choisis ton statut"
-                    style="align-items: center; background-color: rgb(241, 241, 244); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                    tabindex="0"
+                  <button
+                    class="sc-gsDKAQ kNRtDq sc-dkPtRN cRlcLC"
+                    disabled=""
                   >
                     <div
                       class="css-text-901oao css-textMultiLine-cens5h"
@@ -300,7 +297,7 @@ Object {
                     >
                       Choisis ton statut
                     </div>
-                  </div>
+                  </button>
                   <div
                     class="css-view-1dbjc4n"
                     style="height: 8px;"
@@ -418,7 +415,7 @@ Object {
                   style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                 >
                   <form
-                    class="sc-bdvvtL jTTsqq"
+                    class="sc-hKwDye iARjhg"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -610,12 +607,9 @@ Object {
                 class="css-view-1dbjc4n"
                 style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
               >
-                <div
-                  aria-label="Choisis ton statut"
-                  class="css-view-1dbjc4n"
-                  data-testid="Choisis ton statut"
-                  style="align-items: center; background-color: rgb(241, 241, 244); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                  tabindex="0"
+                <button
+                  class="sc-gsDKAQ kNRtDq sc-dkPtRN cRlcLC"
+                  disabled=""
                 >
                   <div
                     class="css-text-901oao css-textMultiLine-cens5h"
@@ -624,7 +618,7 @@ Object {
                   >
                     Choisis ton statut
                   </div>
-                </div>
+                </button>
                 <div
                   class="css-view-1dbjc4n"
                   style="height: 8px;"

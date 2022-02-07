@@ -138,7 +138,7 @@ Object {
           </div>
         </div>
         <header
-          class="sc-bdvvtL dEiHBQ"
+          class="sc-hKwDye uAnLW"
         >
           <div
             class="css-view-1dbjc4n"
@@ -204,12 +204,8 @@ Object {
           class="css-view-1dbjc4n"
           style="padding: 20px 20px 20px 20px;"
         >
-          <div
-            aria-label="Valider"
-            class="css-view-1dbjc4n"
-            data-testid="Valider"
-            style="align-items: center; align-self: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-            tabindex="0"
+          <button
+            class="sc-gsDKAQ ijLbuY sc-dkPtRN efdTBP"
           >
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
@@ -218,7 +214,7 @@ Object {
             >
               Valider
             </div>
-          </div>
+          </button>
         </div>
       </div>
     </div>
@@ -357,7 +353,7 @@ Object {
         </div>
       </div>
       <header
-        class="sc-bdvvtL dEiHBQ"
+        class="sc-hKwDye uAnLW"
       >
         <div
           class="css-view-1dbjc4n"
@@ -423,12 +419,8 @@ Object {
         class="css-view-1dbjc4n"
         style="padding: 20px 20px 20px 20px;"
       >
-        <div
-          aria-label="Valider"
-          class="css-view-1dbjc4n"
-          data-testid="Valider"
-          style="align-items: center; align-self: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-          tabindex="0"
+        <button
+          class="sc-gsDKAQ ijLbuY sc-dkPtRN efdTBP"
         >
           <div
             class="css-text-901oao css-textMultiLine-cens5h"
@@ -437,7 +429,7 @@ Object {
           >
             Valider
           </div>
-        </div>
+        </button>
       </div>
     </div>
   </div>,
