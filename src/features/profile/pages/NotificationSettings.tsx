@@ -18,6 +18,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer, Typo } from 'ui/theme'
+import { Form } from 'ui/web/form/Form'
 
 import { useUpdateProfileMutation } from '../api'
 import { ProfileContainer } from '../components/reusables'
@@ -159,13 +160,15 @@ export function NotificationSettings() {
         <StyledCaption>
           {t`Je veux recevoir les recommandations personnalisées et meilleures offres du pass Culture.`}
         </StyledCaption>
-        <SectionWithSwitch
-          title={t`Autoriser l’envoi d’e\u2011mails`}
-          active={allowEmails}
-          accessibilityLabel={t`Interrupteur d'autorisation d'envoi des e-mails`}
-          toggle={toggleEmails}
-          disabled={!isLoggedIn}
-        />
+        <Form.Flex>
+          <SectionWithSwitch
+            title={t`Autoriser l’envoi d’e\u2011mails`}
+            active={allowEmails}
+            accessibilityLabel={t`Interrupteur d'autorisation d'envoi des e-mails`}
+            toggle={toggleEmails}
+            disabled={!isLoggedIn}
+          />
+        </Form.Flex>
         <Separator />
         {Platform.OS === 'ios' && (
           <React.Fragment>

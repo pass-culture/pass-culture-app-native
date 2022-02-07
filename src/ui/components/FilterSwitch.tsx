@@ -4,6 +4,7 @@ import styled, { DefaultTheme } from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'tests/utils'
 import { getShadow, getSpacing } from 'ui/theme'
+import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 
 interface Props {
   active: boolean
@@ -45,6 +46,7 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
           <StyledToggle style={{ marginLeft }} />
         </StyledBackgroundColor>
       </TouchableOpacity>
+      <HiddenCheckbox checked={active} accessibilityLabel={props.accessibilityLabel} />
     </FilterSwitchContainer>
   )
 }
