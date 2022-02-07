@@ -1,4 +1,4 @@
-const ADDRESS_REGEX = /\p{sc=Latin}|[ \-,'.]|[0-9]/gu // Latin characters, spaces and numbers
+const ADDRESS_REGEX = /\p{sc=Latin}|[ \-,'.’]|[0-9]/gu // Latin characters, spaces and numbers
 
 export function isAddressValid(name: string) {
   const trimmedName = name.trim()

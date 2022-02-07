@@ -4,6 +4,7 @@ describe('isNameValid function', () => {
   it.each([
     'John',
     "John O'Wick",
+    'John O’Wick',
     'John Doe-Smith',
     'Loïc',
     'Martin king, Jr.',
