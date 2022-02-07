@@ -26,7 +26,7 @@ export const IdentityCheckEduConnectForm = () => {
         scrollChildren={
           <React.Fragment>
             <Center>
-              <BicolorIdCardWithMagnifyingGlass size={getSpacing(33)} />
+              <StyledBicolorIdCardWithMagnifyingGlass />
             </Center>
 
             <JustifiedHeader>{t`Identification`}</JustifiedHeader>
@@ -56,6 +56,12 @@ export const IdentityCheckEduConnectForm = () => {
     </ErrorBoundary>
   )
 }
+
+const StyledBicolorIdCardWithMagnifyingGlass = styled(BicolorIdCardWithMagnifyingGlass).attrs(
+  ({ theme }) => ({
+    size: theme.illustrations.sizes.fullPage,
+  })
+)``
 
 const Center = styled.View({
   alignSelf: 'center',

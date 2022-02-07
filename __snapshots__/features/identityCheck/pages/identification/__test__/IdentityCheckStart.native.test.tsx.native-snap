@@ -188,8 +188,8 @@ Array [
                   />
                   <View
                     fill="none"
-                    height={115.2}
-                    width={180}
+                    height={160}
+                    width={250}
                   >
                     <Text>
                       undefined-SVG-Mock

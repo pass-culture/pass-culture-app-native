@@ -26,7 +26,7 @@ export function IdentityCheckStartContentDesktop({
 
   return (
     <React.Fragment>
-      <BicolorPhonePending size={getSpacing(30)} />
+      <StyledBicolorPhonePending />
       <Spacer.Column numberOfSpaces={6} />
       <ContentDesktopContainer>
         <Title>{t`Vérifie ton identité sur ton smartphone`}</Title>
@@ -60,6 +60,10 @@ export function IdentityCheckStartContentDesktop({
     </React.Fragment>
   )
 }
+
+const StyledBicolorPhonePending = styled(BicolorPhonePending).attrs(({ theme }) => ({
+  size: theme.illustrations.sizes.fullPage,
+}))``
 
 const Title = styled(Typo.Title4)({ textAlign: 'center' })
 

@@ -32,7 +32,7 @@ export const IdentityCheckDMS = () => {
       fixedTopChildren={
         <Container>
           <Spacer.Column numberOfSpaces={5} />
-          <BicolorIdCardWithMagnifyingGlass size={getSpacing(30)} />
+          <StyledBicolorIdCardWithMagnifyingGlass />
           <Spacer.Column numberOfSpaces={5} />
           <CenteredTitle title={t`Créer un dossier sur le site des Démarches Simplifiées`} />
           <Spacer.Column numberOfSpaces={5} />
@@ -61,6 +61,12 @@ export const IdentityCheckDMS = () => {
     />
   )
 }
+
+const StyledBicolorIdCardWithMagnifyingGlass = styled(BicolorIdCardWithMagnifyingGlass).attrs(
+  ({ theme }) => ({
+    size: theme.illustrations.sizes.fullPage,
+  })
+)``
 
 const Container = styled.View({ height: '100%', alignItems: 'center' })
 

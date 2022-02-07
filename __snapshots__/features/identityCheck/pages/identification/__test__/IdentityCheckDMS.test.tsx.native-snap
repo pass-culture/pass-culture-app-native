@@ -176,8 +176,8 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
               />
               <View
                 fill="none"
-                height={96}
-                width={150}
+                height={160}
+                width={250}
               >
                 <Text>
                   undefined-SVG-Mock

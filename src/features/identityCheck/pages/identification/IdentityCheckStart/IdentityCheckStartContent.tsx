@@ -20,7 +20,7 @@ export function IdentityCheckStartContent() {
   return (
     <Container>
       <Spacer.Column numberOfSpaces={10} />
-      <BicolorIdCardWithMagnifyingGlass size={getSpacing(36)} />
+      <StyledBicolorIdCardWithMagnifyingGlass />
       <Spacer.Column numberOfSpaces={6} />
       <Title>{t`Vérification de l'identité`}</Title>
       <Spacer.Column numberOfSpaces={6} />
@@ -47,6 +47,12 @@ export function IdentityCheckStartContent() {
     </Container>
   )
 }
+
+const StyledBicolorIdCardWithMagnifyingGlass = styled(BicolorIdCardWithMagnifyingGlass).attrs(
+  ({ theme }) => ({
+    size: theme.illustrations.sizes.fullPage,
+  })
+)``
 
 const Container = styled.View({ height: '100%', alignItems: 'center' })
 
