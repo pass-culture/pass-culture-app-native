@@ -7,7 +7,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { Background } from 'ui/svg/Background'
-import { UserFavoriteDeprecated } from 'ui/svg/icons/UserFavorite_deprecated'
+import { UserFavorite } from 'ui/svg/icons/UserFavorite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const NotConnectedFavorites = () => {

@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
-import { NoOfferDeprecated as NoOffer } from 'ui/svg/icons/NoOffer_deprecated'
+import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const NoSearchResult: React.FC = () => {

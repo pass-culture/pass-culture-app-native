@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { useNavigateToSearchResults } from 'features/search/utils/useNavigateToSearchResults'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { EmptyFavoritesDeprecated as EmptyFavorites } from 'ui/svg/icons/EmptyFavorites_deprecated'
+import { EmptyFavorites } from 'ui/svg/icons/EmptyFavorites'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const NoFavoritesResult = () => {
