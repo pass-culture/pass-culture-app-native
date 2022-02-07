@@ -18,6 +18,7 @@ const MINIMUM_DATE = 1900
 
 export function DatePickerDropDown(props: Props) {
   const CURRENT_DATE = new Date()
+  const years = getPastYears(MINIMUM_DATE, CURRENT_DATE.getFullYear())
 
   function goToNextStep() {
     const birthdate = formatDateToISOStringWithoutTime(new Date())
@@ -27,22 +28,24 @@ export function DatePickerDropDown(props: Props) {
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={2} />
-      <DropDownContainer>
-        <DropDown label="Mois" placeholder="MM" options={monthNames} />
+      <Container>
+        <DropDownContainer>
+          <DropDown label="Jour" placeholder="JJ" options={monthNames} />
+        </DropDownContainer>
         <Spacer.Row numberOfSpaces={2} />
-        <DropDown label="Jour" placeholder="JJ" options={monthNames} />
+        <DropDownContainer>
+          <DropDown label="Mois" placeholder="MM" options={monthNames} />
+        </DropDownContainer>
         <Spacer.Row numberOfSpaces={2} />
-        <DropDown
-          label="Année"
-          placeholder="AAAA"
-          options={getPastYears(MINIMUM_DATE, CURRENT_DATE.getFullYear())}
-        />
-      </DropDownContainer>
+        <DropDownContainer>
+          <DropDown label="Année" placeholder="AAAA" options={years} />
+        </DropDownContainer>
+      </Container>
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
         wording={t`Continuer`}
         accessibilityLabel={props.accessibilityLabelForNextStep}
-        disabled={false}
+        disabled={true}
         onPress={goToNextStep}
       />
       <Spacer.Column numberOfSpaces={2} />
@@ -50,8 +53,12 @@ export function DatePickerDropDown(props: Props) {
   )
 }
 
-const DropDownContainer = styled.View({
-  display: 'flex',
+const Container = styled.View({
   flexDirection: 'row',
   width: '100%',
+  zIndex: 1,
+})
+
+const DropDownContainer = styled.View({
+  flex: 1,
 })

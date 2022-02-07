@@ -4,6 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { BirthdayInformationModal } from 'features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal'
+import { DatePickerDropDown } from 'features/auth/signup/SetBirthday/DatePicker/DatePickerDropDown.web'
 import { DatePickerSpinner } from 'features/auth/signup/SetBirthday/DatePicker/DatePickerSpinner.web'
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
 import { analytics } from 'libs/analytics'
@@ -11,7 +12,6 @@ import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { useModal } from 'ui/components/modals/useModal'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Form } from 'ui/web/form/Form'
-import { DatePickerDropDown } from 'features/auth/signup/SetBirthday/DatePicker/DatePickerDropDown.web'
 
 export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (props) => {
   const { isTouch } = useTheme()

@@ -4,6 +4,7 @@ import styledNative from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { InputLabel } from 'ui/components/InputLabel.web'
+import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { getSpacingString, Spacer, Typo } from 'ui/theme'
 import { Li } from 'ui/web/list/Li.web'
 
@@ -26,7 +27,7 @@ export function DropDown({ label, placeholder, options }: Props) {
   const dropDownInputID = uuidv4()
 
   return (
-    <Container>
+    <InputContainer>
       <InputLabel htmlFor={dropDownInputID}>{label}</InputLabel>
       <Spacer.Column numberOfSpaces={2} />
       <DropDownButton
@@ -34,29 +35,27 @@ export function DropDown({ label, placeholder, options }: Props) {
         type="button"
         id={dropDownInputID}
         onClick={toggling}
-        data-toggle="dropdown">
+        data-toggle="dropdown"
+        onBlur={() => setIsOpen(false)}>
         <SytledBody isSelected={!!selectedOption}>{selectedOption || placeholder}</SytledBody>
       </DropDownButton>
       {!!isOpen && (
         <Ul>
           {options.map((option: string | number) => (
-            <Li onClick={() => onOptionClicked(option)} key={option}>
-              <ButtonOption role="button" type="button">
+            <Li key={option}>
+              <ButtonOption role="button" type="button" onMouseDown={() => onOptionClicked(option)}>
                 <Typo.Body>{option}</Typo.Body>
               </ButtonOption>
             </Li>
           ))}
         </Ul>
       )}
-    </Container>
+    </InputContainer>
   )
 }
 
-const Container = styledNative.View({ flex: 1 })
-
 const Button = styled.button`
-  ${({ theme }) => `  
-    display: block;
+  ${({ theme }) => `
     width: 100%;
     padding-right: ${getSpacingString(4)};
     padding-left: ${getSpacingString(4)};
@@ -67,13 +66,14 @@ const Button = styled.button`
 `
 
 const DropDownButton = styled(Button)`
-  ${({ theme }) => `  
-    height:  ${getSpacingString(10)};
+  ${({ theme }) => `
+    height: ${getSpacingString(10)};
+    padding-top: ${getSpacingString(1)};
+    padding-bottom: ${getSpacingString(1)};
     border-radius: ${theme.borderRadius.button}px;
-    background-color: ${theme.colors.white};
     border: solid 1px ${theme.colors.greyMedium};
 
-    &:focus {
+    &:focus, :active {
       border-color: ${theme.colors.primary};
     }
   `}
@@ -95,13 +95,17 @@ const Ul = styled.ul`
     border-radius: ${getSpacingString(1)};
     max-height: ${getSpacingString(75)};
     overflow: scroll;
-    margin-top:  ${getSpacingString(2)};
+    margin-top: ${getSpacingString(2)};
     -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
   `}
 `
 
 const ButtonOption = styled(Button)`
   ${({ theme }) => `
+    width: 100%;
+    padding-right: ${getSpacingString(4)};
+    padding-left: ${getSpacingString(4)};
     padding-top: ${getSpacingString(2)};
     padding-bottom: ${getSpacingString(2)};
     border: none;
