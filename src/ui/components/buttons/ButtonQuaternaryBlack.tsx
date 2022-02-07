@@ -1,10 +1,11 @@
 import styled from 'styled-components/native'
 
 import { AppButton, BaseButtonProps } from 'ui/components/buttons/AppButton'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
 import { getSpacing, Typo } from 'ui/theme'
 
-export const ButtonQuaternaryBlack = styled(AppButton).attrs<BaseButtonProps>(
+export const ButtonQuaternaryBlack = styledButton(AppButton).attrs<BaseButtonProps>(
   ({ icon, disabled, theme, ...rest }) => {
     let Icon
 

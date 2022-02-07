@@ -1,12 +1,14 @@
-import React, { ComponentType, Fragment, FunctionComponent, memo } from 'react'
-import {
-  GestureResponderEvent,
-  StyleProp,
-  TouchableOpacity,
-  ViewStyle,
-  TextProps,
-} from 'react-native'
-import styled from 'styled-components/native'
+import React, {
+  ComponentType,
+  CSSProperties,
+  Fragment,
+  FunctionComponent,
+  memo,
+  MouseEventHandler,
+  useCallback,
+} from 'react'
+import { TextProps } from 'react-native'
+import styled from 'styled-components'
 
 import { accessibilityAndTestId } from 'tests/utils'
 import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
@@ -22,8 +24,8 @@ export interface BaseButtonProps {
   loadingIndicator?: ComponentType<IconInterface>
   inline?: boolean
   isLoading?: boolean
-  onLongPress?: ((e: GestureResponderEvent) => void) | (() => void)
-  onPress?: ((e: GestureResponderEvent) => void) | (() => void)
+  onLongPress?: MouseEventHandler<HTMLButtonElement> | (() => void)
+  onPress?: MouseEventHandler<HTMLButtonElement> | (() => void)
   testId?: string
   textSize?: number
   wording: string
@@ -31,7 +33,7 @@ export interface BaseButtonProps {
   fullWidth?: boolean
   justifyContent?: 'center' | 'flex-start'
   numberOfLines?: number
-  style?: StyleProp<ViewStyle>
+  style?: CSSProperties
   center?: boolean
   type?: 'button' | 'submit' | 'reset'
   name?: string
@@ -59,9 +61,9 @@ const _AppButton = <T extends AppButtonProps>({
   fullWidth,
   buttonHeight = 'small',
   inlineHeight,
-  accessibilityLabel,
+  // accessibilityLabel,
   accessibilityDescribedBy,
-  testId,
+  // testId,
   wording,
   adjustsFontSizeToFit,
   justifyContent,
@@ -69,24 +71,54 @@ const _AppButton = <T extends AppButtonProps>({
   style,
   loadingIndicator: LoadingIndicator,
   center,
+  type,
+  className,
+  name,
 }: Only<T, AppButtonProps>) => {
   const pressHandler = disabled || isLoading ? undefined : onPress
   const longPressHandler = disabled || isLoading ? undefined : onLongPress
+
+  const onClick: MouseEventHandler<HTMLButtonElement> = useCallback(
+    (event) => {
+      if (type === 'submit' && pressHandler) {
+        event.preventDefault()
+      }
+      if (pressHandler) {
+        pressHandler(event)
+      }
+    },
+    [type, pressHandler]
+  )
+
+  const onDoubleClick: MouseEventHandler<HTMLButtonElement> = useCallback(
+    (event) => {
+      if (type === 'submit' && pressHandler) {
+        event.preventDefault()
+      }
+      if (longPressHandler) {
+        longPressHandler(event)
+      }
+    },
+    [type, longPressHandler]
+  )
   return (
-    <StyledTouchableOpacity
-      {...accessibilityAndTestId(accessibilityLabel || wording, testId || wording)}
+    <Button
+      name={name}
+      onClick={onClick}
+      onDoubleClick={onDoubleClick}
+      disabled={disabled}
+      type={type}
       aria-describedby={accessibilityDescribedBy}
       mediumWidth={mediumWidth}
       fullWidth={fullWidth}
-      onPress={pressHandler}
-      onLongPress={longPressHandler}
       buttonHeight={buttonHeight}
       inline={inline}
       inlineHeight={inlineHeight}
       justifyContent={justifyContent}
       numberOfLines={numberOfLines}
       style={style}
-      center={center}>
+      center={center}
+      className={className}>
       {!!LoadingIndicator && isLoading ? (
         <LoadingIndicator {...accessibilityAndTestId(undefined, 'button-isloading-icon')} />
       ) : (
@@ -101,7 +133,7 @@ const _AppButton = <T extends AppButtonProps>({
           )}
         </Fragment>
       )}
-    </StyledTouchableOpacity>
+    </Button>
   )
 }
 
@@ -128,9 +160,7 @@ interface StyledTouchableOpacityProps {
   center?: boolean
 }
 
-const StyledTouchableOpacity = styled(TouchableOpacity).attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))<StyledTouchableOpacityProps>(
+const Button = styled.button<StyledTouchableOpacityProps>(
   ({
     theme,
     inline,
@@ -142,10 +172,17 @@ const StyledTouchableOpacity = styled(TouchableOpacity).attrs(({ theme }) => ({
     numberOfLines,
     center,
   }) => ({
+    cursor: 'pointer',
+    outline: 'none',
+    borderStyle: 'solid',
+    boxShadow: 'none',
+    display: 'flex',
+    overflow: 'hidden',
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: justifyContent ?? 'center',
     borderRadius: theme.borderRadius.button,
+    borderWidth: 0,
     padding: 2,
     height:
       buttonHeight === 'tall'
@@ -167,5 +204,12 @@ const StyledTouchableOpacity = styled(TouchableOpacity).attrs(({ theme }) => ({
       : {}),
     ...(justifyContent === 'flex-start' ? { paddingRight: 0, paddingLeft: 0 } : {}),
     ...(numberOfLines ? { height: 'auto' } : {}),
+    ['&:active']: {
+      opacity: theme.activeOpacity,
+    },
+    ['&:disabled']: {
+      cursor: 'initial',
+      background: 'none',
+    },
   })
 )

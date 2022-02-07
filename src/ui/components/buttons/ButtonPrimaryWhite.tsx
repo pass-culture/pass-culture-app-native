@@ -1,10 +1,12 @@
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AppButton, BaseButtonProps } from 'ui/components/buttons/AppButton'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
 import { Typo } from 'ui/theme'
 
-export const ButtonPrimaryWhite = styled(AppButton).attrs<BaseButtonProps>(
+export const ButtonPrimaryWhite = styledButton(AppButton).attrs<BaseButtonProps>(
   ({ disabled, icon, textSize, theme, ...rest }) => {
     let Icon
 
@@ -37,6 +39,13 @@ export const ButtonPrimaryWhite = styled(AppButton).attrs<BaseButtonProps>(
   }
 )(({ theme }) => ({
   backgroundColor: theme.buttons.primaryWhite.backgroundColor,
+  ...(Platform.OS === 'web'
+    ? {
+        ['&:disabled']: {
+          backgroundColor: theme.buttons.disabled.primary.backgroundColor,
+        },
+      }
+    : {}),
 }))
 
 const LoadingIndicator = styled(InitialLoadingIndicator).attrs(({ theme }) => ({

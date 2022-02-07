@@ -17,3 +17,8 @@ export const SMALLER_ICON_SIZE = getSpacing(5)
 export const EXTRA_SMALL_ICON_SIZE = getSpacing(4)
 // icons used for illustrations should be imported with ILLUSTRATION_ICON_SIZE
 export const ILLUSTRATION_ICON_SIZE = getSpacing(35)
+
+// buttons
+export const TALL_BUTTON_HEIGHT = getSpacing(12)
+export const SMALL_BUTTON_HEIGHT = getSpacing(10)
+export const DEFAULT_INLINE_BUTTON_HEIGHT = getSpacing(4)
