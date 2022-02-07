@@ -1,6 +1,6 @@
 const SPECIAL_CHARACTER_AT_THE_BEGINNING_OR_END_REGEX = /^['-]|['-]$/
 const NUMBER_REGEX = /[0-9]+/
-const LATIN_REGEX = /\p{sc=Latin}|[',-. ]/gu
+const LATIN_REGEX = /\p{sc=Latin}|[',-.’ ]/gu
 
 export function isNameValid(name: string) {
   const trimmedName = name.trim()
