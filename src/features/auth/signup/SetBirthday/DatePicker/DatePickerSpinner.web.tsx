@@ -29,7 +29,7 @@ const MINIMUM_DATE = 1900
 const DEFAULT_YOUNGEST_AGE = 15
 const UNDER_YOUNGEST_AGE = DEFAULT_YOUNGEST_AGE - 1
 
-export function DatePickerTouch(props: Props) {
+export function DatePickerSpinner(props: Props) {
   const CURRENT_DATE = new Date()
   const DEFAULT_SELECTED_DATE = new Date(
     new Date().setFullYear(new Date().getFullYear() - UNDER_YOUNGEST_AGE)
