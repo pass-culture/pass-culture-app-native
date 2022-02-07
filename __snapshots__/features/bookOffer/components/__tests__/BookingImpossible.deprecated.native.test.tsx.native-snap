@@ -14,8 +14,8 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
   }
 >
   <View
-    height={68}
-    width={68}
+    height={117}
+    width={150}
   >
     <Text>
       undefined-SVG-Mock
@@ -222,8 +222,8 @@ exports[`<BookingImpossible /> should render without CTAs when offer is favorite
   }
 >
   <View
-    height={68}
-    width={68}
+    height={117}
+    width={150}
   >
     <Text>
       undefined-SVG-Mock

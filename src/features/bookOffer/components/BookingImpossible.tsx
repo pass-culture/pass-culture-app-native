@@ -11,10 +11,9 @@ import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { SadFaceDeprecated as SadFace } from 'ui/svg/icons/SadFace_deprecated'
+import { SadFace } from 'ui/svg/icons/SadFace'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+
 export const BookingImpossible: React.FC = () => {
   const { bookingState, dismissModal } = useBooking()
   const { offerId } = bookingState
@@ -59,7 +58,7 @@ export const BookingImpossible: React.FC = () => {
 
   return (
     <Container>
-      <SadFace size={getSpacing(17)} color={ColorsEnum.GREY_DARK} />
+      <GreySadFace />
       <Spacer.Column numberOfSpaces={6} />
 
       <Content>
@@ -88,6 +87,12 @@ export const BookingImpossible: React.FC = () => {
     </Container>
   )
 }
+
+// Only occurrence where the illustration is not using theme.icons.sizes.illustrations, it would be too big.
+const GreySadFace = styled(SadFace).attrs(({ theme }) => ({
+  color: theme.colors.greyDark,
+  size: getSpacing(37.5),
+}))``
 
 const Container = styled.View({
   width: '100%',

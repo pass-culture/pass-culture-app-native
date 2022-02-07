@@ -27,7 +27,6 @@ import { PhoneFlip } from 'ui/svg/icons/PhoneFlip'
 import { ProfileDeletionIllustration } from 'ui/svg/icons/ProfileDeletionIllustration'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { SadFace } from 'ui/svg/icons/SadFace'
-import { SadFaceDeprecated } from 'ui/svg/icons/SadFace_deprecated'
 import { Star } from 'ui/svg/icons/Star'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { IconInterface } from 'ui/svg/icons/types'
@@ -81,7 +80,6 @@ export const Illustrations: FunctionComponent = () => {
         isNew
       />
       <Illustration name="RequestSent" component={RequestSent} isNew />
-      <Illustration name="SadFaceDeprecated" component={SadFaceDeprecated} />
       <Illustration name="SadFace" component={SadFace} isNew />
       <Illustration name="Star" component={Star} isNew />
       <Illustration name="TicketBooked" component={TicketBooked} isNew />
