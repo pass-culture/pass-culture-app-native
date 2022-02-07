@@ -1,14 +1,12 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent, useRef, useState } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
 import { BirthdayInformationModal } from 'features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal'
-import {
-  DateInput,
-  DateInputRef,
-  DateValidation,
-} from 'features/auth/signup/SetBirthday/DateInput/DateInput.web'
+import { DateInputDesktop } from 'features/auth/signup/SetBirthday/DateInput/DateInputDesktop'
+import { DateInputRef, DateValidation } from 'features/auth/signup/SetBirthday/DateInput/utils'
+import { DatePickerTouch } from 'features/auth/signup/SetBirthday/DatePicker/DatePickerTouch.web'
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
 import { analytics } from 'libs/analytics'
 import { dateDiffInFullYears } from 'libs/dates'
@@ -46,6 +44,7 @@ interface State {
 }
 
 export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (props) => {
+  const { isTouch } = useTheme()
   const [wereBirthdayAnalyticsTriggered, setWereBirthdayAnalyticsTriggered] = useState(false)
   const [state, setState] = useState<State>({
     date: INITIAL_DATE,
@@ -119,35 +118,43 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
           wording={t`Pour quelle raison\u00a0?`}
           onPress={onPressWhy}
         />
-        <Spacer.Column numberOfSpaces={8} />
-        <DateInputContainer>
-          <DateInput
-            autoFocus={true}
-            onChangeValue={onChangeValue}
-            ref={dateInputRef}
-            minDate={MIN_DATE}
-            maxDate={maxDate}
-            initialDay={INITIAL_DAY}
-            initialMonth={INITIAL_MONTH}
-            initialYear={INITIAL_YEAR}
-            onSubmit={goToNextStep}
+        {isTouch ? (
+          <DatePickerTouch
+            goToNextStep={props.goToNextStep}
+            accessibilityLabelForNextStep={props.accessibilityLabelForNextStep}
           />
-          {renderErrorMessages()}
-        </DateInputContainer>
-        <Spacer.Column numberOfSpaces={14} />
-        <ButtonPrimary
-          wording={t`Continuer`}
-          accessibilityLabel={props.accessibilityLabelForNextStep}
-          disabled={!state.isDateValid}
-          onPress={goToNextStep}
-        />
-        <Spacer.Column numberOfSpaces={5} />
+        ) : (
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={8} />
+            <DateInputContainer>
+              <DateInputDesktop
+                autoFocus={true}
+                onChangeValue={onChangeValue}
+                ref={dateInputRef}
+                minDate={MIN_DATE}
+                maxDate={maxDate}
+                initialDay={INITIAL_DAY}
+                initialMonth={INITIAL_MONTH}
+                initialYear={INITIAL_YEAR}
+                onSubmit={goToNextStep}
+              />
+              {renderErrorMessages()}
+            </DateInputContainer>
+            <Spacer.Column numberOfSpaces={14} />
+            <ButtonPrimary
+              wording={t`Continuer`}
+              accessibilityLabel={props.accessibilityLabelForNextStep}
+              disabled={!state.isDateValid}
+              onPress={goToNextStep}
+            />
+            <Spacer.Column numberOfSpaces={2} />
+          </React.Fragment>
+        )}
       </InnerContainer>
       <BirthdayInformationModal visible={visible} hideModal={hideModal} />
     </Form.MaxWidth>
   )
 }
-
 const InnerContainer = styled.View({
   width: '100%',
   alignItems: 'center',

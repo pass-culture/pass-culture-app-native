@@ -16,7 +16,7 @@ const MONTHS = [
 
 const DAYS = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
 
-const pad = (num: number): string => {
+export const pad = (num: number): string => {
   const res = num.toString()
   return res.length === 1 ? '0' + res : res
 }

@@ -384,7 +384,6 @@ export const AppComponents: FunctionComponent = () => {
         <PasswordInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} />
         <Spacer.Column numberOfSpaces={1} />
         <StyledTitle4>Date Input</StyledTitle4>
-        <Spacer.Column numberOfSpaces={1} />
         <DateInput date={new Date()} />
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Caption>{inputText}</Typo.Caption>
