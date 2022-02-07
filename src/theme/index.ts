@@ -8,6 +8,7 @@ import { ACTIVE_OPACITY, ColorsEnum, UniqueColors } from 'ui/theme/colors'
 import {
   BOTTOM_CONTENT_PAGE_OFFSET_TOP_HEIGHT_DESKTOP_TABLET,
   DESKTOP_CONTENT_MAX_WIDTH,
+  DESKTOP_CONTENT_MEDIUM_WIDTH,
   TAB_BAR_COMP_HEIGHT,
 } from 'ui/theme/constants'
 import { BorderRadiusEnum, Breakpoints } from 'ui/theme/grid'
@@ -112,6 +113,7 @@ export interface AppThemeType {
     snackbar: ZIndex
   }
   contentPage: {
+    mediumWidth: number
     maxWidth: number
     bottom: { offsetTopHeightDesktopTablet: number }
   }
@@ -392,6 +394,7 @@ export const theme: AppThemeType = {
     snackbar: ZIndex.SNACKBAR,
   },
   contentPage: {
+    mediumWidth: DESKTOP_CONTENT_MEDIUM_WIDTH,
     maxWidth: DESKTOP_CONTENT_MAX_WIDTH,
     bottom: { offsetTopHeightDesktopTablet: BOTTOM_CONTENT_PAGE_OFFSET_TOP_HEIGHT_DESKTOP_TABLET },
   },

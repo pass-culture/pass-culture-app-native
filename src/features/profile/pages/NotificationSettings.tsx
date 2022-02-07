@@ -184,11 +184,12 @@ export function NotificationSettings() {
         )}
         <Spacer.Flex flex={1} />
         {!!isLoggedIn && (
-          <StyledButtonPrimary
+          <ButtonPrimary
             wording={t`Enregistrer`}
             isLoading={isUpdating}
             disabled={!state.emailTouched && !state.pushTouched}
             onPress={submitProfile}
+            center
           />
         )}
         <Spacer.Column numberOfSpaces={8} />
@@ -202,10 +203,6 @@ export function NotificationSettings() {
     </React.Fragment>
   )
 }
-
-const StyledButtonPrimary = styled(ButtonPrimary)({
-  alignSelf: 'center',
-})
 
 const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,

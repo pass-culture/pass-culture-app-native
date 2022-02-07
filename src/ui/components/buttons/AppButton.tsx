@@ -28,15 +28,17 @@ export interface BaseButtonProps {
   testId?: string
   textSize?: number
   wording: string
+  mediumWidth?: boolean
   fullWidth?: boolean
   justifyContent?: 'center' | 'flex-start'
   numberOfLines?: number
   style?: StyleProp<ViewStyle>
+  center?: boolean
 }
 
 interface AppButtonProps extends BaseButtonProps {
   inline?: boolean
-  inlineHeight?: number
+  inlineHeight?: number | string
   title?: ComponentType<TextProps>
 }
 
@@ -51,6 +53,7 @@ const _AppButton = <T extends AppButtonProps>({
   isLoading,
   onPress,
   onLongPress,
+  mediumWidth,
   fullWidth,
   buttonHeight = 'small',
   inlineHeight,
@@ -63,6 +66,7 @@ const _AppButton = <T extends AppButtonProps>({
   numberOfLines,
   style,
   loadingIndicator: LoadingIndicator,
+  center,
 }: Only<T, AppButtonProps>) => {
   const pressHandler = disabled || isLoading ? undefined : onPress
   const longPressHandler = disabled || isLoading ? undefined : onLongPress
@@ -70,6 +74,7 @@ const _AppButton = <T extends AppButtonProps>({
     <StyledTouchableOpacity
       {...accessibilityAndTestId(accessibilityLabel || wording, testId || wording)}
       aria-describedby={accessibilityDescribedBy}
+      mediumWidth={mediumWidth}
       fullWidth={fullWidth}
       onPress={pressHandler}
       onLongPress={longPressHandler}
@@ -78,7 +83,8 @@ const _AppButton = <T extends AppButtonProps>({
       inlineHeight={inlineHeight}
       justifyContent={justifyContent}
       numberOfLines={numberOfLines}
-      style={style}>
+      style={style}
+      center={center}>
       {!!LoadingIndicator && isLoading ? (
         <LoadingIndicator {...accessibilityAndTestId(undefined, 'button-isloading-icon')} />
       ) : (
@@ -112,10 +118,12 @@ export const AppButton = memo(_AppButton)
 interface StyledTouchableOpacityProps {
   buttonHeight: 'small' | 'tall'
   inline?: boolean
-  inlineHeight?: number
+  inlineHeight?: number | string
+  mediumWidth?: boolean
   fullWidth?: boolean
   justifyContent?: 'center' | 'flex-start'
   numberOfLines?: number
+  center?: boolean
 }
 
 const TALL_BUTTON_HEIGHT = getSpacing(12)
@@ -125,7 +133,17 @@ const DEFAULT_INLINE_BUTTON_HEIGHT = getSpacing(4)
 const StyledTouchableOpacity = styled(TouchableOpacity).attrs(({ theme }) => ({
   activeOpacity: theme.activeOpacity,
 }))<StyledTouchableOpacityProps>(
-  ({ theme, inline, buttonHeight, inlineHeight, fullWidth, justifyContent, numberOfLines }) => ({
+  ({
+    theme,
+    inline,
+    buttonHeight,
+    inlineHeight,
+    mediumWidth,
+    fullWidth,
+    justifyContent,
+    numberOfLines,
+    center,
+  }) => ({
     flexDirection: 'row',
     justifyContent: justifyContent ?? 'center',
     alignItems: 'center',
@@ -133,7 +151,9 @@ const StyledTouchableOpacity = styled(TouchableOpacity).attrs(({ theme }) => ({
     padding: 2,
     height: buttonHeight === 'tall' ? TALL_BUTTON_HEIGHT : SMALL_BUTTON_HEIGHT,
     width: '100%',
-    ...(fullWidth ? {} : { maxWidth: getSpacing(125) }),
+    ...(center ? { alignSelf: 'center' } : {}),
+    ...(fullWidth ? {} : { maxWidth: theme.contentPage.maxWidth }),
+    ...(mediumWidth ? { maxWidth: theme.contentPage.mediumWidth } : {}),
     ...(inline
       ? {
           borderWidth: 0,

@@ -18,7 +18,7 @@ import { OrSeparator } from 'ui/components/OrSeparator'
 import { Close } from 'ui/svg/icons/Close'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo, Spacer } from 'ui/theme'
 
 interface FastEduconnectConnectionRequestModalProps {
   visible: boolean
@@ -65,11 +65,13 @@ export const FastEduconnectConnectionRequestModal: React.FC<
         {t`Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n'as pas d'identifiants ÉduConnect rapproche toi de ton établissement. `}
       </MainContent>
 
-      <TextQuestion
+      <ButtonQuaternaryBlack
         onPress={() => openUrl(env.FAQ_LINK_EDUCONNECT_URL)}
         icon={InfoPlain}
         wording={t`C’est quoi ÉduConnect\u00a0?`}
       />
+
+      <Spacer.Column numberOfSpaces={4} />
 
       <ButtonPrimary wording={t`Identification avec ÉduConnect`} onPress={onPressEduConnect} />
 
@@ -94,7 +96,3 @@ const DurationInfoText = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.greyDark,
 }))
-
-const TextQuestion = styled(ButtonQuaternaryBlack)({
-  marginBottom: getSpacing(4),
-})

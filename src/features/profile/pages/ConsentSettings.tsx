@@ -89,10 +89,11 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
           toggle={toggleTrackingSwitch}
         />
         <Spacer.Flex />
-        <StyledButtonPrimary
+        <ButtonPrimary
           wording={t`Enregistrer`}
           onPress={save}
           disabled={isSaveButtonDisabled}
+          center
         />
         <Spacer.Column numberOfSpaces={8} />
       </ProfileContainer>
@@ -117,8 +118,4 @@ const Container = styled.View(({ theme }) => ({
 const MoreInformationContainer = styled.View({
   flexDirection: 'row',
   flexWrap: 'wrap',
-})
-
-const StyledButtonPrimary = styled(ButtonPrimary)({
-  alignSelf: 'center',
 })

@@ -98,7 +98,7 @@ export const FavoritesSorts: React.FC = () => {
 
       <PageHeader title={t`Trier`} />
       <ButtonContainer>
-        <StyledButtonPrimary wording={t`Valider`} onPress={onValidation} />
+        <ButtonPrimary wording={t`Valider`} onPress={onValidation} center />
       </ButtonContainer>
     </Container>
   )
@@ -142,8 +142,4 @@ const TitleContainer = styled.View({
 
 const ButtonContainer = styled.View({
   padding: getSpacing(5),
-})
-
-const StyledButtonPrimary = styled(ButtonPrimary)({
-  alignSelf: 'center',
 })

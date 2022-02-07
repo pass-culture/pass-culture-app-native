@@ -11,7 +11,7 @@ import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Typo, Spacer, getSpacing } from 'ui/theme'
+import { Typo, Spacer } from 'ui/theme'
 
 export interface Props {
   visible: boolean
@@ -58,9 +58,9 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
         </Caption>
       </SubDescription>
       <CallToActionsContainer>
-        <AcceptanceButton wording={t`Autoriser`} onPress={onApproval} />
+        <ButtonPrimary wording={t`Autoriser`} onPress={onApproval} mediumWidth />
         <Spacer.Column numberOfSpaces={3} />
-        <RefusalButton wording={t`Refuser`} onPress={onRefusal} />
+        <ButtonSecondary wording={t`Refuser`} onPress={onRefusal} mediumWidth />
       </CallToActionsContainer>
     </AppModal>
   )
@@ -75,14 +75,6 @@ const CallToActionsContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
   width: '100%',
 }))
-
-const AcceptanceButton = styled(ButtonPrimary)({
-  maxWidth: getSpacing(80),
-})
-
-const RefusalButton = styled(ButtonSecondary)({
-  maxWidth: getSpacing(80),
-})
 
 const Description = styled.Text({
   textAlign: 'center',

@@ -198,10 +198,10 @@ exports[`NoContentError should render correctly 1`] = `
             "maxWidth": 500,
             "opacity": 1,
             "paddingBottom": 2,
-            "paddingLeft": 24,
-            "paddingRight": 24,
+            "paddingLeft": 2,
+            "paddingRight": 2,
             "paddingTop": 2,
-            "width": "auto",
+            "width": "100%",
           }
         }
         testID="Rechercher une offre"
