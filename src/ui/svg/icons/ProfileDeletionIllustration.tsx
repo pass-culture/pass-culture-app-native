@@ -3,7 +3,6 @@ import Svg, { Path } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { ILLUSTRATION_ICON_SIZE } from 'ui/theme/constants'
 
 const ProfileDeletionIllustrationSvg: React.FunctionComponent<IconInterface> = ({
   size,
@@ -26,6 +25,6 @@ const ProfileDeletionIllustrationSvg: React.FunctionComponent<IconInterface> = (
 export const ProfileDeletionIllustration = styled(ProfileDeletionIllustrationSvg).attrs(
   ({ color, size, theme }) => ({
     color: color ?? theme.colors.black,
-    size: size ?? ILLUSTRATION_ICON_SIZE,
+    size: size ?? theme.illustrations.sizes.medium,
   })
 )``

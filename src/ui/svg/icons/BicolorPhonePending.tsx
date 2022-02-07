@@ -3,7 +3,6 @@ import Svg, { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { svgIdentifier } from 'ui/svg/utils'
-import { ILLUSTRATION_ICON_SIZE } from 'ui/theme/constants'
 
 import { BicolorIconInterface } from './types'
 
@@ -44,6 +43,6 @@ export const BicolorPhonePending = styled(BicolorPhonePendingSvg).attrs(
   ({ color, color2, size, theme }) => ({
     color: color ?? theme.colors.primary,
     color2: color2 ?? color ?? theme.colors.secondary,
-    size: size ?? ILLUSTRATION_ICON_SIZE,
+    size: size ?? theme.illustrations.sizes.medium,
   })
 )``

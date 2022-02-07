@@ -3,7 +3,6 @@ import Svg, { Path } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { ILLUSTRATION_ICON_SIZE } from 'ui/theme/constants'
 
 const CalendarIllustrationSvg: React.FunctionComponent<IconInterface> = ({
   size,
@@ -26,6 +25,6 @@ const CalendarIllustrationSvg: React.FunctionComponent<IconInterface> = ({
 export const CalendarIllustration = styled(CalendarIllustrationSvg).attrs(
   ({ color, size, theme }) => ({
     color: color ?? theme.colors.black,
-    size: size ?? ILLUSTRATION_ICON_SIZE,
+    size: size ?? theme.illustrations.sizes.medium,
   })
 )``
