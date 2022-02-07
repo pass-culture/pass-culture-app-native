@@ -5,8 +5,6 @@ import { handleCallToActionLink } from 'features/profile/utils'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 interface ProfileBadgeProps {
   message: string
   popOverIcon?: FunctionComponent<IconInterface>
@@ -39,13 +37,18 @@ const renderCallToAction = (
 }
 
 export function ProfileBadge(props: ProfileBadgeProps) {
-  const Icon = props.popOverIcon
+  const Icon =
+    props.popOverIcon &&
+    styled(props.popOverIcon).attrs(({ theme }) => ({
+      color: theme.colors.greyDark,
+      size: theme.icons.sizes.standard,
+    }))``
 
   return (
     <Container testID={props.testID || 'profile-badge'}>
       {Icon && !props.callToActionIcon ? (
         <IconContainer>
-          <Icon size={getSpacing(8)} color={ColorsEnum.GREY_DARK} />
+          <Icon />
         </IconContainer>
       ) : null}
       <TextContainer>
@@ -62,14 +65,14 @@ export function ProfileBadge(props: ProfileBadgeProps) {
   )
 }
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'space-between',
-  backgroundColor: ColorsEnum.GREY_LIGHT,
+  backgroundColor: theme.colors.greyLight,
   borderRadius: 6,
   padding: getSpacing(4),
-})
+}))
 
 const IconContainer = styled.View({
   paddingRight: getSpacing(4),

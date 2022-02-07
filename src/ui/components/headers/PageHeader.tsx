@@ -7,10 +7,8 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { accessibilityAndTestId } from 'tests/utils'
 import { useElementWidth } from 'ui/hooks/useElementWidth'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { getTitleAttrs } from 'ui/theme/typography'
 import { Header } from 'ui/web/global/Header'
 
@@ -30,7 +28,7 @@ const HeaderIconBack: React.FC<HeaderIconProps> = ({ onGoBack }) => {
     <TouchableOpacity
       onPress={onGoBack || goBack}
       {...accessibilityAndTestId(t`Revenir en arrière`)}>
-      <ArrowPrevious color={ColorsEnum.WHITE} size={24} testID="icon-back" />
+      <ArrowPrevious testID="icon-back" />
     </TouchableOpacity>
   )
 }
@@ -66,6 +64,11 @@ export const PageHeader: React.FC<Props> = (props) => {
     </Header>
   )
 }
+
+const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
+  color: theme.colors.white,
+  size: theme.icons.sizes.small,
+}))``
 
 const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
   activeOpacity: theme.activeOpacity,

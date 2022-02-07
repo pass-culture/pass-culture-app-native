@@ -7,8 +7,6 @@ import { CategoryIdEnum } from 'api/gen'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
 import { getShadow, getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 interface Props {
   imageUrl: string | undefined
@@ -24,12 +22,7 @@ export const OfferImage: React.FC<Props> = ({ categoryId, imageUrl }) => {
       {imageUrl ? (
         <FastImage style={imageStyle} source={source} resizeMode={FastImage.resizeMode.cover} />
       ) : (
-        <ImagePlaceholder
-          backgroundColors={backgroundColors}
-          Icon={Icon}
-          size={getSpacing(10)}
-          borderRadius={borderRadius}
-        />
+        <StyledImagePlaceholder Icon={Icon} />
       )}
     </Container>
   )
@@ -38,11 +31,16 @@ export const OfferImage: React.FC<Props> = ({ categoryId, imageUrl }) => {
 const borderRadius = 4
 const width = getSpacing(16)
 const height = getSpacing(24) // ratio 2/3
-const backgroundColors = [ColorsEnum.GREY_LIGHT, ColorsEnum.GREY_MEDIUM]
 
 const imageStyle = { borderRadius, height, width }
 
-const Container = styled.View({
+const StyledImagePlaceholder = styled(ImagePlaceholder).attrs(({ theme }) => ({
+  backgroundColors: [theme.colors.greyLight, theme.colors.greyMedium],
+  size: getSpacing(10),
+  borderRadius,
+}))``
+
+const Container = styled.View(({ theme }) => ({
   width,
   height,
   borderRadius,
@@ -52,7 +50,7 @@ const Container = styled.View({
       height: getSpacing(1),
     },
     shadowRadius: getSpacing(1),
-    shadowColor: ColorsEnum.GREY_DARK,
+    shadowColor: theme.colors.greyDark,
     shadowOpacity: 0.2,
   }),
-})
+}))

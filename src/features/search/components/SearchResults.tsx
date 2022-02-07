@@ -12,8 +12,6 @@ import { analytics } from 'libs/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { SearchHit } from 'libs/search'
 import { getSpacing, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 
 const keyExtractor = (item: SearchHit) => item.objectID
@@ -120,12 +118,12 @@ export const SearchResults: React.FC = () => {
 const contentContainerStyle = { flexGrow: 1 }
 const Container = styled.View({ flex: 1 })
 const Footer = styled.View({ height: TAB_BAR_COMP_HEIGHT + getSpacing(52) })
-const Separator = styled.View({
+const Separator = styled.View(({ theme }) => ({
   height: 2,
-  backgroundColor: ColorsEnum.GREY_LIGHT,
+  backgroundColor: theme.colors.greyLight,
   marginHorizontal: getSpacing(6),
   marginVertical: getSpacing(4),
-})
+}))
 
 const FilterContainer = styled.View({
   alignSelf: 'center',

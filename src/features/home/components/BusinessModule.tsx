@@ -12,8 +12,6 @@ import { openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Typo, getSpacing, MARGIN_DP, LENGTH_XS, RATIO_BUSINESS, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { fillUrlEmail, shouldUrlBeFilled, showBusinessModule } from './BusinessModule.utils'
 
@@ -101,11 +99,11 @@ const ImageContainer = styled.View(({ theme }) => ({
   maxHeight: LENGTH_XS,
 }))
 
-const Image = styled.Image({
+const Image = styled.Image(({ theme }) => ({
   width: getSpacing(14),
   height: getSpacing(14),
-  tintColor: ColorsEnum.WHITE,
-})
+  tintColor: theme.colors.white,
+}))
 
 const ImageBackground = styled.ImageBackground<{ width: number; height: number }>((props) => ({
   height: props.height,

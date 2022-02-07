@@ -11,10 +11,8 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
-import { BicolorIdCardWithMagnifyingGlassDeprecated as BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass_deprecated'
+import { BicolorIdCardWithMagnifyingGlassDeprecated } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass_deprecated'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 export const IdentityCheckEduConnect = () => {
   const { navigateToNextScreen } = useIdentityCheckNavigation()
@@ -49,11 +47,7 @@ export const IdentityCheckEduConnect = () => {
         <Container>
           <Center>
             <Spacer.Column numberOfSpaces={10} />
-            <BicolorIdCardWithMagnifyingGlass
-              color={ColorsEnum.SECONDARY}
-              color2={ColorsEnum.PRIMARY}
-              size={getSpacing(36)}
-            />
+            <BicolorIdCardWithMagnifyingGlass />
           </Center>
 
           <CenteredTitle title={t`Identification`} />
@@ -80,3 +74,11 @@ const TextContent = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.greyDark,
 }))
+
+const BicolorIdCardWithMagnifyingGlass = styled(BicolorIdCardWithMagnifyingGlassDeprecated).attrs(
+  ({ theme }) => ({
+    color: theme.colors.secondary,
+    color2: theme.colors.primary,
+    size: getSpacing(36),
+  })
+)``

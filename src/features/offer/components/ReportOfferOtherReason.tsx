@@ -10,8 +10,6 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { Form } from 'ui/web/form/Form'
 
 interface Props {
@@ -61,10 +59,10 @@ export const ReportOfferOtherReason: FunctionComponent<Props> = (props) => {
   )
 }
 
-const Intro = styled(Typo.Caption)({
+const Intro = styled(Typo.Caption)(({ theme }) => ({
   textAlign: 'left',
-  color: ColorsEnum.GREY_DARK,
-})
+  color: theme.colors.greyDark,
+}))
 
 const InputTitle = styled(Typo.ButtonText)({
   textAlign: 'left',

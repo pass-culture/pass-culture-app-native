@@ -4,8 +4,6 @@ import styled, { useTheme } from 'styled-components/native'
 import { TicketFooter } from 'ui/svg/TicketFooter'
 import { TicketHeader } from 'ui/svg/TicketHeader'
 import { getShadow, getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = PropsWithChildren<{
   width?: number
@@ -20,14 +18,14 @@ export function ThreeShapesTicket(props: Props) {
   const contentWidth = width - 5
   return (
     <Container testID="three-shapes-ticket">
-      <TicketHeader width={width} color={ColorsEnum.WHITE} />
+      <TicketHeader width={width} />
       <TicketContent width={contentWidth}>{props.children}</TicketContent>
-      <TicketFooter width={width} color={ColorsEnum.WHITE} />
+      <TicketFooter width={width} />
     </Container>
   )
 }
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flexDirection: 'column',
   alignItems: 'center',
   justifyContent: 'center',
@@ -37,13 +35,13 @@ const Container = styled.View({
       height: 2,
     },
     shadowRadius: 3,
-    shadowColor: ColorsEnum.BLACK,
+    shadowColor: theme.colors.black,
     shadowOpacity: 0.1,
   }),
-})
+}))
 
-const TicketContent = styled.View<{ width: number }>(({ width }) => ({
-  backgroundColor: ColorsEnum.WHITE,
+const TicketContent = styled.View<{ width: number }>(({ theme, width }) => ({
+  backgroundColor: theme.colors.white,
   width,
   flex: 0,
 }))

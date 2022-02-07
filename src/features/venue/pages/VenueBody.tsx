@@ -17,10 +17,8 @@ import { ContactBlock } from 'ui/components/contact/ContactBlock'
 import { Hero } from 'ui/components/hero/Hero'
 import { PartialAccordionDescription } from 'ui/components/PartialAccordionDescription'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
-import { LocationPointer } from 'ui/svg/icons/LocationPointer'
+import { LocationPointer as DefaultLocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { useVenue } from '../api/useVenue'
 
@@ -75,7 +73,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       <MarginContainer>
         <VenueAddressContainer>
           <IconContainer>
-            <LocationPointer size={getSpacing(4.5)} color={ColorsEnum.PRIMARY} />
+            <LocationPointer />
           </IconContainer>
           <StyledText numberOfLines={1}>{venueAddress}</StyledText>
         </VenueAddressContainer>
@@ -149,6 +147,11 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
     </Container>
   )
 }
+
+const LocationPointer = styled(DefaultLocationPointer).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  size: getSpacing(4.5), // Cette taille n'existe pas dans le theme : todo: voir avec les UXs cette incohérence graphique
+}))``
 
 const scrollIndicatorInsets = { right: 1 }
 

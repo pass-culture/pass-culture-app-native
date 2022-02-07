@@ -2,10 +2,8 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ArrowNext } from 'ui/svg/icons/ArrowNext'
+import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { getSpacing, Spacer, Typo, getShadow } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 interface SeeMoreProps {
   height: number
@@ -20,7 +18,7 @@ export const SeeMore: React.FC<SeeMoreProps> = ({ height, width, onPress }) => (
       <Row>
         <Spacer.Row numberOfSpaces={16} />
         <RoundContainer onPress={onPress}>
-          <ArrowNext size={40} color={ColorsEnum.PRIMARY} testID={'arrow-next'} />
+          <ArrowNext testID={'arrow-next'} />
         </RoundContainer>
         <Spacer.Row numberOfSpaces={16} />
       </Row>
@@ -43,26 +41,31 @@ const Container = styled.View<{ height: number; width: number }>(({ height, widt
 const ClickableArea = styled.TouchableOpacity({
   alignItems: 'center',
 })
-const RoundContainer = styled.TouchableOpacity({
+const RoundContainer = styled.TouchableOpacity(({ theme }) => ({
   width: getSpacing(16),
   aspectRatio: '1',
   borderRadius: getSpacing(8),
-  backgroundColor: ColorsEnum.WHITE,
+  backgroundColor: theme.colors.white,
   border: 1,
   justifyContent: 'center',
-  borderColor: ColorsEnum.GREY_LIGHT,
+  borderColor: theme.colors.greyLight,
   ...getShadow({
     shadowOffset: {
       width: 0,
       height: getSpacing(2),
     },
     shadowRadius: getSpacing(3),
-    shadowColor: ColorsEnum.BLACK,
+    shadowColor: theme.colors.black,
     shadowOpacity: 0.15,
   }),
   alignItems: 'center',
-})
+}))
 
 const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
   color: theme.colors.primary,
 }))
+
+const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  size: 40,
+}))``

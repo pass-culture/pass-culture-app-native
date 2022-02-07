@@ -5,10 +5,8 @@ import styled from 'styled-components/native'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
-import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
+import { BicolorLocationPointer as DefaultBicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 type Props = {
   onDismiss: () => void
@@ -28,11 +26,7 @@ export const PushNotificationsModal: React.FC<Props> = ({
     testIdSuffix="notifications-permission-modal">
     <React.Fragment>
       <Spacer.Column numberOfSpaces={5} />
-      <BicolorLocationPointer
-        size={85}
-        color={ColorsEnum.GREY_DARK}
-        color2={ColorsEnum.GREY_DARK}
-      />
+      <BicolorLocationPointer />
       <Spacer.Column numberOfSpaces={10} />
       <InformationText>
         {t`Reste informé des actualités du pass Culture en activant les notifications.`}
@@ -57,3 +51,9 @@ export const PushNotificationsModal: React.FC<Props> = ({
 const InformationText = styled(Typo.Body)({
   textAlign: 'center',
 })
+
+const BicolorLocationPointer = styled(DefaultBicolorLocationPointer).attrs(({ theme }) => ({
+  color: theme.colors.greyDark,
+  color2: theme.colors.greyDark,
+  size: 85,
+}))``

@@ -11,7 +11,7 @@ import { BirthdayCakeDeprecated } from 'ui/svg/icons/BirthdayCake_deprecated'
 import { CalendarIllustration } from 'ui/svg/icons/CalendarIllustration'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
 import { EmptyFavorites } from 'ui/svg/icons/EmptyFavorites'
-import { EmptyFavoritesDeprecated } from 'ui/svg/icons/EmptyFavorites_deprecated'
+import { EmptyFavoritesDeprecated as DefaultEmptyFavoritesDeprecated } from 'ui/svg/icons/EmptyFavorites_deprecated'
 import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { IdCardError } from 'ui/svg/icons/IdCardError'
@@ -34,9 +34,6 @@ import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { UserError } from 'ui/svg/icons/UserError'
 import { UserFavorite } from 'ui/svg/icons/UserFavorite'
 import { UserFavoriteDeprecated } from 'ui/svg/icons/UserFavorite_deprecated'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 export const Illustrations: FunctionComponent = () => {
   return (
@@ -59,7 +56,7 @@ export const Illustrations: FunctionComponent = () => {
       <Illustration name="ErrorIllustration" component={ErrorIllustration} isNew />
       <Illustration name="EmailSent" component={EmailSent} isNew />
       <AlignedText>
-        <EmptyFavoritesDeprecated size={STANDARD_ICON_SIZE} />
+        <EmptyFavoritesDeprecated />
         <Text> - EmptyFavoritesDeprecated (deprecated) </Text>
       </AlignedText>
       <Illustration name="EmptyFavorites" component={EmptyFavorites} isNew />
@@ -100,12 +97,18 @@ interface IllustrationsProps {
 const Illustration = ({ name, component: IconComponent, isNew = false }: IllustrationsProps) => (
   <AlignedText>
     <IconComponent />
-    <Text style={{ color: isNew ? ColorsEnum.BLACK : ColorsEnum.GREY_DARK }}>
-      {` - ${name} ${isNew ? '' : '(deprecated)'}`}
-    </Text>
+    <StyledText isNew={isNew}>{` - ${name} ${isNew ? '' : '(deprecated)'}`}</StyledText>
   </AlignedText>
 )
 const AlignedText = styled(View)({
   flexDirection: 'row',
   alignItems: 'center',
 })
+
+const StyledText = styled(Text)<{ isNew: boolean }>(({ theme, isNew }) => ({
+  color: isNew ? theme.colors.black : theme.colors.greyDark,
+}))
+
+const EmptyFavoritesDeprecated = styled(DefaultEmptyFavoritesDeprecated).attrs(({ theme }) => ({
+  size: theme.icons.sizes.standard,
+}))``

@@ -19,6 +19,7 @@ import { useCheckHasCurrentEmailChange } from 'features/profile/pages/ChangeEmai
 import { useValidateEmail } from 'features/profile/pages/ChangeEmail/utils/useValidateEmail'
 import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
+import { theme } from 'theme'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { EmailInput } from 'ui/components/inputs/EmailInput'
@@ -28,8 +29,6 @@ import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEv
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { getSpacing, Spacer } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { Form } from 'ui/web/form/Form'
 
 export function ChangeEmail() {
@@ -178,7 +177,7 @@ const getScrollViewContentContainerStyle = (keyboardHeight: number): StyleProp<V
   flexDirection: 'column',
   justifyContent: 'space-between',
   paddingBottom: Platform.OS === 'ios' ? keyboardHeight : 0,
-  backgroundColor: ColorsEnum.WHITE,
+  backgroundColor: theme.colors.white,
 })
 
 const ButtonContainer = styled.View<{ paddingBottom: number }>(({ paddingBottom }) => ({

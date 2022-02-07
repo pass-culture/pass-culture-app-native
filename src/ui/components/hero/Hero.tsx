@@ -6,11 +6,8 @@ import { CategoryIdEnum, VenueTypeCodeKey } from 'api/gen'
 import { mapCategoryToIcon, mapVenueTypeToIcon } from 'libs/parsers'
 import { HeroHeader } from 'ui/components/hero/HeroHeader'
 import { heroMarginTop, useHeroDimensions } from 'ui/components/hero/useHeroDimensions'
-import { ImagePlaceholder, ImagePlaceholderProps } from 'ui/components/ImagePlaceholder'
+import { ImagePlaceholder as DefaultImagePlaceholder } from 'ui/components/ImagePlaceholder'
 import { getSpacing, Spacer, getShadow } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { BorderRadiusEnum } from 'ui/theme/grid'
 
 type HeroProps =
   | { type: 'offer'; categoryId: CategoryIdEnum | null }
@@ -21,6 +18,22 @@ export const Hero: React.FC<HeroProps & { imageUrl?: string }> = (props) => {
   const source = useMemo(() => ({ uri: imageUrl }), [imageUrl])
   const { heroBackgroundHeight, imageStyle } = useHeroDimensions(placeholderProps.type, !!imageUrl)
 
+  const ImagePlaceholder = styled(DefaultImagePlaceholder).attrs(({ theme }) =>
+    placeholderProps.type === 'offer'
+      ? {
+          Icon: mapCategoryToIcon(placeholderProps.categoryId),
+          backgroundColors: [theme.colors.greyLight, theme.colors.greyMedium],
+          borderRadius: theme.borderRadius.radius,
+          size: getSpacing(24),
+        }
+      : {
+          Icon: mapVenueTypeToIcon(placeholderProps.venueType),
+          borderRadius: theme.borderRadius.button,
+          iconColor: theme.colors.white,
+          size: getSpacing(24),
+        }
+  )``
+
   return (
     <HeroHeader type={placeholderProps.type} imageHeight={heroBackgroundHeight} imageUrl={imageUrl}>
       <Spacer.Column numberOfSpaces={heroMarginTop} />
@@ -28,14 +41,14 @@ export const Hero: React.FC<HeroProps & { imageUrl?: string }> = (props) => {
         {imageUrl ? (
           <FastImage style={imageStyle} source={source} resizeMode={FastImage.resizeMode.cover} />
         ) : (
-          <ImagePlaceholder {...getPlaceholderContent(placeholderProps)} size={getSpacing(24)} />
+          <ImagePlaceholder />
         )}
       </ImageContainer>
     </HeroHeader>
   )
 }
 
-const ImageContainer = styled.View({
+const ImageContainer = styled.View(({ theme }) => ({
   bottom: 0,
   ...getShadow({
     shadowOffset: {
@@ -43,22 +56,7 @@ const ImageContainer = styled.View({
       height: getSpacing(2),
     },
     shadowRadius: getSpacing(3),
-    shadowColor: ColorsEnum.BLACK,
+    shadowColor: theme.colors.black,
     shadowOpacity: 0.2,
   }),
-})
-
-function getPlaceholderContent(props: HeroProps): Omit<ImagePlaceholderProps, 'size'> {
-  if (props.type === 'offer') {
-    return {
-      Icon: mapCategoryToIcon(props.categoryId),
-      backgroundColors: [ColorsEnum.GREY_LIGHT, ColorsEnum.GREY_MEDIUM],
-      borderRadius: BorderRadiusEnum.BORDER_RADIUS,
-    }
-  }
-  return {
-    Icon: mapVenueTypeToIcon(props.venueType),
-    borderRadius: BorderRadiusEnum.BUTTON,
-    iconColor: ColorsEnum.WHITE,
-  }
-}
+}))

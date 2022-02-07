@@ -1,5 +1,6 @@
 import React, { memo } from 'react'
 import Svg, { Path, G, Stop, LinearGradient, Use } from 'react-native-svg'
+import styled from 'styled-components/native'
 
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -14,7 +15,6 @@ interface Props {
 
 function TicketFooterComponent(props: Props) {
   const height = props.width / ticketFooterRatio
-  const color = props.color || ColorsEnum.WHITE
   const linearGradientId = 'ticket-footer-gradient'
   const pathId = 'ticket-footer-path'
 
@@ -29,7 +29,7 @@ function TicketFooterComponent(props: Props) {
         <Stop offset="1" stopColor={'#F0F0F0'} stopOpacity="1" />
       </LinearGradient>
       <G fill="none" fillRule="evenodd">
-        <G fill={color}>
+        <G fill={props.color}>
           <Path
             id={pathId}
             d="M121.004 329c.27 16.616 13.82 30 30.496 30 16.678 0 30.229-13.386 30.496-30H283c11.046 0 20 8.954 20 20l-.001 18H0v-18c0-11.046 8.954-20 20-20h101.004z"
@@ -42,4 +42,8 @@ function TicketFooterComponent(props: Props) {
   )
 }
 
-export const TicketFooter = memo(TicketFooterComponent)
+export const TicketFooter = memo(
+  styled(TicketFooterComponent).attrs(({ color, theme }) => ({
+    color: color ?? theme.colors.white,
+  }))``
+)

@@ -12,8 +12,6 @@ import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Typo, Spacer, getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 export const Location: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -25,6 +23,12 @@ export const Location: React.FC = () => {
   const { Icon, label } = useLocationChoice(section)
   const logUseFilter = useLogFilterOnce(SectionTitle.Location)
 
+  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
+    color: theme.colors.black,
+    color2: theme.colors.black,
+    size: getSpacing(10),
+  }))``
+
   const onPressChangeLocation = () => {
     logUseFilter()
     navigate('LocationFilter')
@@ -33,7 +37,7 @@ export const Location: React.FC = () => {
   return (
     <Section title={SectionTitle.Location} count={+(locationType !== LocationType.EVERYWHERE)}>
       <LocationContentContainer testID="changeLocation" onPress={onPressChangeLocation}>
-        <Icon size={getSpacing(10)} color={ColorsEnum.BLACK} color2={ColorsEnum.BLACK} />
+        <StyledIcon />
         <Spacer.Row numberOfSpaces={2} />
         <Label numberOfLines={2}>{label}</Label>
         <Spacer.Flex />

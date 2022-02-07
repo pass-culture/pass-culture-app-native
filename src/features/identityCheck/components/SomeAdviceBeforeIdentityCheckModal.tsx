@@ -10,8 +10,6 @@ import { IdCard } from 'ui/svg/icons/IdCard'
 import { Sun } from 'ui/svg/icons/Sun'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 interface Props {
   visible: boolean
   hideModal: () => void
@@ -55,12 +53,20 @@ interface InstructionProps {
   Icon: React.FunctionComponent<IconInterface>
 }
 
-const Instruction = ({ title, Icon }: InstructionProps) => (
-  <InstructionContainer>
-    <Icon size={getSpacing(6)} color={ColorsEnum.SECONDARY} color2={ColorsEnum.PRIMARY} />
-    <Text>{title}</Text>
-  </InstructionContainer>
-)
+const Instruction = ({ title, Icon }: InstructionProps) => {
+  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
+    color: theme.colors.secondary,
+    color2: theme.colors.primary,
+    size: theme.icons.sizes.small,
+  }))``
+
+  return (
+    <InstructionContainer>
+      <StyledIcon />
+      <Text>{title}</Text>
+    </InstructionContainer>
+  )
+}
 
 const InstructionContainer = styled.View({
   flexDirection: 'row',

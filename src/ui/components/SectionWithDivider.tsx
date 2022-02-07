@@ -2,8 +2,6 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 interface SectionProps {
   visible: boolean
   children: JSX.Element | JSX.Element[]
@@ -21,10 +19,10 @@ export const SectionWithDivider = ({ visible, children, margin = false }: Sectio
   )
 }
 
-const Divider = styled.View({
+const Divider = styled.View(({ theme }) => ({
   height: getSpacing(2),
-  backgroundColor: ColorsEnum.GREY_LIGHT,
-})
+  backgroundColor: theme.colors.greyLight,
+}))
 
 const MarginContainer = styled.View({
   marginHorizontal: getSpacing(6),

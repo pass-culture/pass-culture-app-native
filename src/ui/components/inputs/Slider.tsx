@@ -1,12 +1,10 @@
 import MultiSlider from '@ptomasroos/react-native-multi-slider'
 import React, { useEffect, useState } from 'react'
 import { View } from 'react-native'
+import styled from 'styled-components/native'
 import { useTheme } from 'styled-components/native'
 
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
-import { BorderRadiusEnum } from 'ui/theme/grid'
 
 interface Props {
   values?: number[]
@@ -42,18 +40,12 @@ export const Slider: React.FC<Props> = (props) => {
       )}
       <Spacer.Column numberOfSpaces={4} />
       <View testID="slider">
-        <MultiSlider
+        <StyledMultiSlider
           values={values}
           allowOverlap={true}
           min={props.min || DEFAULT_MIN}
           max={props.max || DEFAULT_MAX}
           step={props.step || DEFAULT_STEP}
-          trackStyle={trackStyle}
-          selectedStyle={selectedStyle}
-          unselectedStyle={unselectedStyle}
-          markerStyle={markerStyle}
-          pressedMarkerStyle={markerStyle}
-          containerStyle={containerStyle}
           onValuesChange={setValues}
           onValuesChangeFinish={props.onValuesChangeFinish}
           sliderLength={appContentWidth - getSpacing(2 * 2 * 6)}
@@ -63,19 +55,24 @@ export const Slider: React.FC<Props> = (props) => {
   )
 }
 
-const markerStyle = {
-  height: getSpacing(7),
-  width: getSpacing(7),
-  borderRadius: getSpacing(7),
-  borderColor: ColorsEnum.WHITE,
-  backgroundColor: ColorsEnum.WHITE,
-  shadowColor: ColorsEnum.BLACK,
-  shadowRadius: getSpacing(1),
-  shadowOpacity: 0.2,
-  elevation: 4,
-}
-
-const trackStyle = { height: 15, marginTop: -7, borderRadius: BorderRadiusEnum.BUTTON }
-const selectedStyle = { backgroundColor: ColorsEnum.PRIMARY }
-const unselectedStyle = { backgroundColor: ColorsEnum.GREY_MEDIUM }
-const containerStyle = { height: getSpacing(8) }
+const StyledMultiSlider = styled(MultiSlider).attrs(({ theme }) => {
+  const markerStyle = {
+    height: getSpacing(7),
+    width: getSpacing(7),
+    borderRadius: getSpacing(7),
+    borderColor: theme.colors.white,
+    backgroundColor: theme.colors.white,
+    shadowColor: theme.colors.black,
+    shadowRadius: getSpacing(1),
+    shadowOpacity: 0.2,
+    elevation: 4,
+  }
+  return {
+    markerStyle,
+    pressedMarkerStyle: markerStyle,
+    trackStyle: { height: 15, marginTop: -7, borderRadius: theme.borderRadius.button },
+    selectedStyle: { backgroundColor: theme.colors.primary },
+    unselectedStyle: { backgroundColor: theme.colors.greyMedium },
+    containerStyle: { height: getSpacing(8) },
+  }
+})``

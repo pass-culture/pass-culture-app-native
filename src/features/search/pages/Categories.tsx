@@ -10,10 +10,8 @@ import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { Validate } from 'ui/svg/icons/Validate'
+import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 const DEBOUNCED_CALLBACK = 200
 
 const useSelectCategory = (callback: () => void) => {
@@ -47,7 +45,11 @@ export const Categories: React.FC = () => {
         {Object.entries(CATEGORY_CRITERIA).map(([category, { icon: Icon }]) => {
           const searchGroup = category as SearchGroupNameEnum
           const isSelected = isCategorySelected(searchGroup)
-          const color2 = isSelected ? ColorsEnum.PRIMARY : ColorsEnum.SECONDARY
+          const StyledIcon = styled(Icon).attrs(({ theme }) => ({
+            color: theme.colors.primary,
+            color2: isSelected ? theme.colors.primary : theme.colors.secondary,
+            size: getSpacing(9),
+          }))``
 
           return (
             <LabelContainer
@@ -55,13 +57,13 @@ export const Categories: React.FC = () => {
               onPress={selectCategory(searchGroup)}
               testID={searchGroup}>
               <Spacer.Row numberOfSpaces={4} />
-              <Icon size={getSpacing(9)} color={ColorsEnum.PRIMARY} color2={color2} />
+              <StyledIcon />
               <Spacer.Row numberOfSpaces={4} />
               <ButtonText numberOfLines={2} isSelected={isSelected}>
                 {searchGroupLabelMapping[searchGroup]}
               </ButtonText>
               <Spacer.Flex />
-              {!!isSelected && <Validate color={ColorsEnum.PRIMARY} size={getSpacing(6)} />}
+              {!!isSelected && <Validate />}
             </LabelContainer>
           )
         })}
@@ -71,6 +73,11 @@ export const Categories: React.FC = () => {
     </Container>
   )
 }
+
+const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  size: theme.icons.sizes.small,
+}))``
 
 const Container = styled.View(({ theme }) => ({
   flex: 1,

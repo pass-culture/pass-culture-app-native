@@ -3,11 +3,9 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { OfferVenueResponse } from 'api/gen'
-import { Digital } from 'ui/svg/icons/Digital'
-import { LocationPointer } from 'ui/svg/icons/LocationPointer'
+import { Digital as DefaultDigital } from 'ui/svg/icons/Digital'
+import { LocationPointer as DefaultLocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 type Props = {
   venue: OfferVenueResponse
   isDigital: boolean
@@ -23,13 +21,7 @@ export const LocationCaption: FunctionComponent<Props> = ({ venue, isDigital }: 
   return (
     <LocationContainer>
       <StyledView>
-        <IconContainer>
-          {isDigital ? (
-            <Digital size={getSpacing(4.5)} color={ColorsEnum.PRIMARY} />
-          ) : (
-            <LocationPointer size={getSpacing(4.5)} color={ColorsEnum.PRIMARY} />
-          )}
-        </IconContainer>
+        <IconContainer>{isDigital ? <Digital /> : <LocationPointer />}</IconContainer>
         {!!locationName && <StyledText numberOfLines={1}>{`${locationName}, `}</StyledText>}
       </StyledView>
       {!!where && (
@@ -40,6 +32,15 @@ export const LocationCaption: FunctionComponent<Props> = ({ venue, isDigital }: 
     </LocationContainer>
   )
 }
+
+const Digital = styled(DefaultDigital).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  size: getSpacing(4.5), // Cette taille n'existe pas dans le theme : todo: voir avec les UXs cette incohérence graphique
+}))``
+const LocationPointer = styled(DefaultLocationPointer).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  size: getSpacing(4.5), // Cette taille n'existe pas dans le theme : todo: voir avec les UXs cette incohérence graphique
+}))``
 
 const LocationContainer = styled.View({
   justifyContent: 'center',

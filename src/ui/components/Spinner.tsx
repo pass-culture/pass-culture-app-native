@@ -4,12 +4,10 @@ import styled from 'styled-components/native'
 
 import { Logo } from 'ui/svg/icons/Logo'
 import { IconInterface } from 'ui/svg/icons/types'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 const USE_NATIVE_DRIVER = Platform.select({ default: false, ios: true, android: true })
 
-function NotMemoizedSpinner({ size = 40, color = ColorsEnum.GREY_DARK }: IconInterface) {
+function NotMemoizedSpinner({ size, color }: IconInterface) {
   const animatedValue = useRef(new Animated.Value(0)).current
   const spin = animatedValue.interpolate({
     inputRange: [0, 1],
@@ -40,4 +38,6 @@ const SpinnerContainer = styled.View({
   alignItems: 'center',
 })
 
-export const Spinner = memo(NotMemoizedSpinner)
+export const Spinner = memo(
+  styled(NotMemoizedSpinner).attrs(({ theme }) => ({ color: theme.colors.greyDark, size: 40 }))``
+)

@@ -5,8 +5,6 @@ import { accessibilityAndTestId } from 'tests/utils'
 import { BicolorSelector } from 'ui/svg/icons/BicolorSelector'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { Spacer, getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 const SELECTOR_WIDTH = '80%'
 const SELECTOR_HEIGHT = getSpacing(1)
@@ -19,6 +17,12 @@ interface Props {
 }
 
 export const TabBarComponent: React.FC<Props> = ({ isSelected, BicolorIcon, onPress, tabName }) => {
+  const StyledBicolorIcon = styled(BicolorIcon).attrs(({ theme }) => ({
+    color: isSelected ? undefined : theme.colors.greyDark,
+    size: getSpacing(7),
+    thin: !isSelected,
+  }))``
+
   return (
     <TabComponentContainer
       onPress={onPress}
@@ -32,11 +36,7 @@ export const TabBarComponent: React.FC<Props> = ({ isSelected, BicolorIcon, onPr
         />
       )}
       <Spacer.Flex />
-      <BicolorIcon
-        color={isSelected ? undefined : ColorsEnum.GREY_DARK}
-        size={getSpacing(7)}
-        thin={!isSelected}
-      />
+      <StyledBicolorIcon />
       <Spacer.Flex />
       {!!isSelected && <BicolorSelectorPlaceholder />}
     </TabComponentContainer>

@@ -225,8 +225,9 @@ Array [
             }
           />
           <View
-            borderColor="#CBCDD2"
             height="small"
+            isError={false}
+            isFocus={false}
             isInputDisabled={true}
             style={
               Array [
@@ -234,6 +235,8 @@ Array [
                   "alignItems": "center",
                   "backgroundColor": "#F1F1F4",
                   "borderRadius": 22,
+                  "borderStyle": "solid",
+                  "borderWidth": 1,
                   "flexDirection": "row",
                   "height": 40,
                   "paddingBottom": 4,
@@ -355,8 +358,9 @@ Array [
             }
           />
           <View
-            borderColor="#CBCDD2"
             height="small"
+            isError={false}
+            isFocus={false}
             isInputDisabled={true}
             style={
               Array [
@@ -364,6 +368,8 @@ Array [
                   "alignItems": "center",
                   "backgroundColor": "#F1F1F4",
                   "borderRadius": 22,
+                  "borderStyle": "solid",
+                  "borderWidth": 1,
                   "flexDirection": "row",
                   "height": 40,
                   "paddingBottom": 4,
@@ -844,8 +850,9 @@ Array [
             }
           />
           <View
-            borderColor="#CBCDD2"
             height="small"
+            isError={false}
+            isFocus={false}
             isInputDisabled={false}
             style={
               Array [
@@ -984,8 +991,9 @@ Array [
             }
           />
           <View
-            borderColor="#CBCDD2"
             height="small"
+            isError={false}
+            isFocus={false}
             isInputDisabled={false}
             style={
               Array [

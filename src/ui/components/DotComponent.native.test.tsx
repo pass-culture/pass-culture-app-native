@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { fireEvent, render } from 'tests/utils'
+import { theme } from 'theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -38,19 +39,19 @@ describe('<DotComponent />', () => {
   })
 
   it('should get grey medium color when after active index', () => {
-    const { borderColor, fillColor } = getDotColors(2, 1)
+    const { borderColor, fillColor } = getDotColors(theme, 2, 1)
     expect(borderColor).toBe(ColorsEnum.GREY_DARK)
     expect(fillColor).toBe(ColorsEnum.TRANSPARENT)
   })
 
   it('should get primary color when active index', () => {
-    const { borderColor, fillColor } = getDotColors(2, 2)
+    const { borderColor, fillColor } = getDotColors(theme, 2, 2)
     expect(borderColor).toBe(ColorsEnum.PRIMARY)
     expect(fillColor).toBe(ColorsEnum.PRIMARY)
   })
 
   it('should get green valid color when before active index', () => {
-    const { borderColor, fillColor } = getDotColors(1, 2)
+    const { borderColor, fillColor } = getDotColors(theme, 1, 2)
     expect(borderColor).toBe(ColorsEnum.GREEN_VALID)
     expect(fillColor).toBe(ColorsEnum.GREEN_VALID)
   })

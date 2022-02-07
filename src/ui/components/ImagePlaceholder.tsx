@@ -7,7 +7,6 @@ import { ImagePlaceholderVenue } from 'ui/svg/ImagePlaceholderVenue'
 import { LENGTH_M } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
-import { BorderRadiusEnum } from 'ui/theme/grid'
 
 export interface ImagePlaceholderProps {
   Icon: React.FC<IconInterface>
@@ -17,18 +16,18 @@ export interface ImagePlaceholderProps {
   iconColor?: ColorsEnum
 }
 
-export const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({
+const ImagePlaceholderComponent: React.FC<ImagePlaceholderProps> = ({
   backgroundColors,
   Icon,
   size: iconSize,
-  borderRadius = BorderRadiusEnum.BORDER_RADIUS,
-  iconColor = ColorsEnum.GREY_MEDIUM,
+  borderRadius,
+  iconColor,
 }) => {
   if (backgroundColors) {
     return (
       <StyledLinearGradient
         colors={backgroundColors}
-        borderRadius={borderRadius}
+        borderRadius={borderRadius as number}
         testID="imagePlaceholder">
         <Icon testID="categoryIcon" size={iconSize} color={iconColor} />
       </StyledLinearGradient>
@@ -36,10 +35,10 @@ export const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({
   }
 
   // Not too sure why but `LENGTH_M` is not enough and doesn't look good
-  const size = LENGTH_M + borderRadius
+  const size = LENGTH_M + (borderRadius as number)
 
   return (
-    <HeaderBackgroundWrapper borderRadius={borderRadius} testID="imagePlaceholder">
+    <HeaderBackgroundWrapper borderRadius={borderRadius as number} testID="imagePlaceholder">
       <ImagePlaceholderVenue width={size} height={size} />
       <IconContainer>
         <Icon testID="categoryIcon" size={iconSize} color={iconColor} />
@@ -47,6 +46,11 @@ export const ImagePlaceholder: React.FC<ImagePlaceholderProps> = ({
     </HeaderBackgroundWrapper>
   )
 }
+
+export const ImagePlaceholder = styled(ImagePlaceholderComponent).attrs(({ theme }) => ({
+  borderRadius: theme.borderRadius.radius,
+  iconColor: theme.colors.greyMedium,
+}))``
 
 const StyledLinearGradient = styled(LinearGradient)<{ borderRadius: number }>(
   ({ borderRadius }) => ({

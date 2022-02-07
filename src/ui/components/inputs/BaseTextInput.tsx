@@ -4,8 +4,6 @@ import { Platform, TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { RNTextInputProps } from './types'
 
@@ -67,9 +65,9 @@ export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function 
   )
 })
 
-const StyledTextInput = styled(RNTextInput).attrs({
-  placeholderTextColor: ColorsEnum.GREY_DARK,
-})(({ theme }) => ({
+const StyledTextInput = styled(RNTextInput).attrs(({ theme }) => ({
+  placeholderTextColor: theme.colors.greyDark,
+}))(({ theme }) => ({
   flex: 1,
   padding: 0,
   color: theme.colors.black,

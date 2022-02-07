@@ -1,10 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Validate } from 'ui/svg/icons/Validate'
+import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 interface Props {
   selected: boolean
   description?: string | null
@@ -20,11 +18,16 @@ export const RadioButton = ({ name, description, selected, onPress }: Props) => 
     </TextContainer>
     {selected ? (
       <IconContainer>
-        <Validate color={ColorsEnum.PRIMARY} size={24} />
+        <Validate />
       </IconContainer>
     ) : null}
   </Label>
 )
+
+const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  size: theme.icons.sizes.small,
+}))``
 
 const Label = styled.TouchableOpacity.attrs(({ theme }) => ({
   activeOpacity: theme.activeOpacity,

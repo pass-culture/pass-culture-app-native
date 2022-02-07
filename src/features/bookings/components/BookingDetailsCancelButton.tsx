@@ -9,8 +9,6 @@ import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { useSubcategory } from 'libs/subcategories'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { Booking } from './types'
 
@@ -86,7 +84,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   return renderButton
 }
 
-const CancellationCaption = styled(Typo.Caption)({
+const CancellationCaption = styled(Typo.Caption)(({ theme }) => ({
   textAlign: 'center',
-  color: ColorsEnum.GREY_DARK,
-})
+  color: theme.colors.greyDark,
+}))
