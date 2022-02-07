@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 
 interface Props {
   label: string
@@ -21,6 +22,7 @@ export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) =>
     )}
     <Label selected={selected}>{label}</Label>
     <Spacer.Row numberOfSpaces={selected ? 2 : 5} />
+    <HiddenCheckbox checked={selected} accessibilityLabel={label} />
   </TouchableOpacity>
 )
 
