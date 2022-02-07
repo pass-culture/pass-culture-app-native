@@ -11,6 +11,7 @@ import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { InputError } from 'ui/components/inputs/InputError'
 import { padding, Spacer, Typo } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
+import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 
 import { PreValidationSignupStepProps } from '../types'
 
@@ -60,6 +61,10 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
         }>
         <CheckboxInput isChecked={isNewsletterChecked} setIsChecked={setIsNewsletterChecked} />
         <CheckBoxText>{t`J’accepte de recevoir les e-mails du pass Culture.`}</CheckBoxText>
+        <HiddenCheckbox
+          checked={isNewsletterChecked}
+          accessibilityLabel={t`J’accepte de recevoir les e-mails du pass Culture.`}
+        />
       </StyledCheckBox>
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
