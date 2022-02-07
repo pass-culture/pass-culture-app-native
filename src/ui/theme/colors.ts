@@ -8,7 +8,7 @@ export enum ColorsEnum {
   GREY_DARK = '#696A6F',
   GREY_MEDIUM = '#CBCDD2',
   GREY_LIGHT = '#F1F1F4',
-  PRIMARY = '#eb0055',
+  PRIMARY = 'royalblue',
   PRIMARY_DISABLED = '#ff99be',
   PRIMARY_DARK = '#c10046',
   SECONDARY = '#320096',

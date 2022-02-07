@@ -29,6 +29,7 @@ export const ButtonPrimary = styled(AppButton).attrs<BaseButtonProps>(
       loadingIndicator: LoadingIndicator,
       icon: Icon,
       title: Title,
+      wording: 'toto',
     }
   }
 )(({ theme, isLoading, disabled }) => {
