@@ -12,6 +12,10 @@ import { emptyBookingsSnap, bookingsSnap } from '../api/bookingsSnap'
 
 import { Bookings } from './Bookings'
 
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: jest.fn(() => ({ isLoading: false })),
+}))
+
 describe('Bookings', () => {
   afterEach(jest.restoreAllMocks)
 
@@ -27,8 +31,8 @@ describe('Bookings', () => {
     expect(queryByText('1 réservation en cours')).toBeTruthy()
   })
 
-  it('should display the empty bookings dedicated view', async () => {
-    const { getByText } = await renderBookings(emptyBookingsSnap)
+  it('should display the empty bookings dedicated view', () => {
+    const { getByText } = renderBookings(emptyBookingsSnap)
     getByText('Explorer les offres')
   })
 
@@ -55,7 +59,10 @@ describe('Bookings', () => {
 const renderBookings = (bookings: BookingsResponse) => {
   jest
     .spyOn(Queries, 'useBookings')
-    .mockReturnValue({ data: bookings } as QueryObserverResult<BookingsResponse, unknown>)
+    .mockReturnValue({ data: bookings, isLoading: false, isFetching: false } as QueryObserverResult<
+      BookingsResponse,
+      unknown
+    >)
 
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<Bookings />))
