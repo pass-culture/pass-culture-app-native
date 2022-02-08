@@ -53,8 +53,8 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
       }
     }
   >
-    <h4
-      aria-level={4}
+    <h1
+      aria-level={1}
       className="css-reset-4rbku5 css-text-901oao"
       dir="auto"
       role="heading"
@@ -79,7 +79,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
       }
     >
       Page with header title
-    </h4>
+    </h1>
     <div
       aria-label="Revenir en arrière"
       className="css-view-1dbjc4n"

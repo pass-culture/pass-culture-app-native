@@ -30,8 +30,8 @@ exports[`<SectionWithSwitch/> should display different if isDesktopViewport or w
         }
       }
     >
-      <div
-        className=\\"css-text-901oao\\""
+      <label
+        className=\\"sc-bdvvtL lavEYF\\""
 `;
 
 exports[`<SectionWithSwitch/> should display different if isDesktopViewport or with toggleLabel 2`] = `
@@ -64,9 +64,9 @@ exports[`<SectionWithSwitch/> should display different if isDesktopViewport or w
         }
       }
     >
-      <div
-        className=\\"css-text-901oao\\"
-@@ -58,13 +68,27 @@
+      <label
+        className=\\"sc-bdvvtL lavEYF\\"
+@@ -63,13 +73,27 @@
           \\"WebkitFlexDirection\\": \\"row\\",
           \\"alignItems\\": \\"center\\",
           \\"flexDirection\\": \\"row\\",
