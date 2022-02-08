@@ -101,11 +101,6 @@ export interface AccountRequest {
    * @type {string}
    * @memberof AccountRequest
    */
-  postalCode?: string | null
-  /**
-   * @type {string}
-   * @memberof AccountRequest
-   */
   token: string
 }
 /**
@@ -175,58 +170,6 @@ export enum AgentType {
   'browser_computer' = 'browser_computer',
   'browser_mobile' = 'browser_mobile',
   'agent_mobile' = 'agent_mobile',
-}
-/**
- * @export
- * @interface BeneficiaryInformationUpdateRequest
- */
-export interface BeneficiaryInformationUpdateRequest {
-  /**
-   * @type {ActivityEnum}
-   * @memberof BeneficiaryInformationUpdateRequest
-   */
-  activity: ActivityEnum
-  /**
-   * @type {string}
-   * @memberof BeneficiaryInformationUpdateRequest
-   */
-  address?: string | null
-  /**
-   * @type {string}
-   * @memberof BeneficiaryInformationUpdateRequest
-   */
-  city: string
-  /**
-   * @type {string}
-   * @memberof BeneficiaryInformationUpdateRequest
-   */
-  firstName?: string | null
-  /**
-   * @type {string}
-   * @memberof BeneficiaryInformationUpdateRequest
-   */
-  lastName?: string | null
-  /**
-   * @type {string}
-   * @memberof BeneficiaryInformationUpdateRequest
-   */
-  phone?: string | null
-  /**
-   * @type {string}
-   * @memberof BeneficiaryInformationUpdateRequest
-   */
-  postalCode: string
-}
-/**
- * An enumeration.
- * @export
- * @enum {string}
- */
-export enum BeneficiaryValidationStep {
-  'phone-validation' = 'phone-validation',
-  'id-check' = 'id-check',
-  'beneficiary-information' = 'beneficiary-information',
-  'honor-statement' = 'honor-statement',
 }
 /**
  * @export
@@ -698,15 +641,6 @@ export interface DomainsCredit {
  * @export
  * @enum {string}
  */
-export enum EligibilityCheckMethods {
-  'jouve' = 'jouve',
-  'educonnect' = 'educonnect',
-}
-/**
- * An enumeration.
- * @export
- * @enum {string}
- */
 export enum EligibilityType {
   'underage' = 'underage',
   'age-18' = 'age-18',
@@ -852,22 +786,6 @@ export interface FavoritesCountResponse {
   count: number
 }
 /**
- * @export
- * @interface GetIdCheckTokenResponse
- */
-export interface GetIdCheckTokenResponse {
-  /**
-   * @type {string}
-   * @memberof GetIdCheckTokenResponse
-   */
-  token?: string | null
-  /**
-   * @type {string}
-   * @memberof GetIdCheckTokenResponse
-   */
-  token_timestamp?: string | null
-}
-/**
  * An enumeration.
  * @export
  * @enum {string}
@@ -931,7 +849,6 @@ export interface IdentificationSessionResponse {
  */
 export enum IdentityCheckMethod {
   'educonnect' = 'educonnect',
-  'jouve' = 'jouve',
   'ubble' = 'ubble',
 }
 /**
@@ -1953,11 +1870,6 @@ export interface UserProfileEmailUpdate {
  */
 export interface UserProfileResponse {
   /**
-   * @type {Array<EligibilityCheckMethods>}
-   * @memberof UserProfileResponse
-   */
-  allowedEligibilityCheckMethods?: Array<EligibilityCheckMethods> | null
-  /**
    * @type {{ [key: string]: number; }}
    * @memberof UserProfileResponse
    */
@@ -2042,11 +1954,6 @@ export interface UserProfileResponse {
    * @memberof UserProfileResponse
    */
   needsToFillCulturalSurvey: boolean
-  /**
-   * @type {BeneficiaryValidationStep}
-   * @memberof UserProfileResponse
-   */
-  nextBeneficiaryValidationStep?: BeneficiaryValidationStep | null
   /**
    * @type {string}
    * @memberof UserProfileResponse
@@ -2399,24 +2306,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary get_id_check_token <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getnativev1idCheckToken(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/id_check_token`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
      * @summary get_user_profile <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -2663,28 +2552,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary update_beneficiary_mandatory_information <PATCH>
-     * @param {BeneficiaryInformationUpdateRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async patchnativev1beneficiaryInformation(body?: BeneficiaryInformationUpdateRequest, options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/beneficiary_information`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'PATCH' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarHeaderParameter['Content-Type'] = 'application/json'
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
-      const needsSerialization = (<any>"BeneficiaryInformationUpdateRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
-      localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
      * @summary create_account <POST>
      * @param {AccountRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -2699,24 +2566,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"AccountRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary has_completed_id_check <POST>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postnativev1accounthasCompletedIdCheck(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/account/has_completed_id_check`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: pathname,
         options: localVarRequestOptions,
@@ -2841,24 +2690,6 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       const needsSerialization = (<any>"ChangePasswordRequest" !== "string") || localVarRequestOptions.headers['Content-Type'] === 'application/json'
       localVarRequestOptions.body =  needsSerialization ? JSON.stringify(body || {}) : (body || "")
-      return {
-        url: pathname,
-        options: localVarRequestOptions,
-      }
-    },
-    /**
-     * @summary upload_identity_document <POST>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postnativev1identityDocument(options: any = {}): Promise<FetchArgs> {
-      const pathname = `/native/v1/identity_document`
-      let secureOptions = Object.assign(options, { credentials: 'omit' })
-      // authentication JWTAuth required
-      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
-      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
-      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
-      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
       return {
         url: pathname,
         options: localVarRequestOptions,
@@ -3358,17 +3189,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
-     * @summary get_id_check_token <GET>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async getnativev1idCheckToken(basePath: string, options?: any): Promise<GetIdCheckTokenResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1idCheckToken(options)
-      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     * 
      * @summary get_user_profile <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3514,18 +3334,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
-     * @summary update_beneficiary_mandatory_information <PATCH>
-     * @param {BeneficiaryInformationUpdateRequest} [body] 
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async patchnativev1beneficiaryInformation(basePath: string, body?: BeneficiaryInformationUpdateRequest, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).patchnativev1beneficiaryInformation(body, options)
-      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     * 
      * @summary create_account <POST>
      * @param {AccountRequest} [body] 
      * @param {*} [options] Override http request option.
@@ -3533,17 +3341,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async postnativev1account(basePath: string, body?: AccountRequest, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1account(body, options)
-      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     * 
-     * @summary has_completed_id_check <POST>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postnativev1accounthasCompletedIdCheck(basePath: string, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1accounthasCompletedIdCheck(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3604,17 +3401,6 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
      */
     async postnativev1changePassword(basePath: string, body?: ChangePasswordRequest, options?: any): Promise<EmptyResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1changePassword(body, options)
-      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
-      return handleGeneratedApiResponse(response)
-    },
-    /**
-     * 
-     * @summary upload_identity_document <POST>
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     */
-    async postnativev1identityDocument(basePath: string, options?: any): Promise<EmptyResponse> {
-      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).postnativev1identityDocument(options)
       const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
       return handleGeneratedApiResponse(response)
     },
@@ -3901,16 +3687,6 @@ export class DefaultApi extends BaseAPI {
   }
   /**
     * 
-    * @summary get_id_check_token <GET>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async getnativev1idCheckToken(options?: any) {
-    return DefaultApiFp(this, this.configuration).getnativev1idCheckToken(this.basePath, options)
-  }
-  /**
-    * 
     * @summary get_user_profile <GET>
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}
@@ -4043,17 +3819,6 @@ export class DefaultApi extends BaseAPI {
   }
   /**
     * 
-    * @summary update_beneficiary_mandatory_information <PATCH>
-    * @param {BeneficiaryInformationUpdateRequest} [body] 
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async patchnativev1beneficiaryInformation(body?: BeneficiaryInformationUpdateRequest, options?: any) {
-    return DefaultApiFp(this, this.configuration).patchnativev1beneficiaryInformation(this.basePath, body, options)
-  }
-  /**
-    * 
     * @summary create_account <POST>
     * @param {AccountRequest} [body] 
     * @param {*} [options] Override http request option.
@@ -4062,16 +3827,6 @@ export class DefaultApi extends BaseAPI {
     */
   public async postnativev1account(body?: AccountRequest, options?: any) {
     return DefaultApiFp(this, this.configuration).postnativev1account(this.basePath, body, options)
-  }
-  /**
-    * 
-    * @summary has_completed_id_check <POST>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async postnativev1accounthasCompletedIdCheck(options?: any) {
-    return DefaultApiFp(this, this.configuration).postnativev1accounthasCompletedIdCheck(this.basePath, options)
   }
   /**
     * 
@@ -4127,16 +3882,6 @@ export class DefaultApi extends BaseAPI {
     */
   public async postnativev1changePassword(body?: ChangePasswordRequest, options?: any) {
     return DefaultApiFp(this, this.configuration).postnativev1changePassword(this.basePath, body, options)
-  }
-  /**
-    * 
-    * @summary upload_identity_document <POST>
-    * @param {*} [options] Override http request option.
-    * @throws {RequiredError}
-    * @memberof DefaultApi
-    */
-  public async postnativev1identityDocument(options?: any) {
-    return DefaultApiFp(this, this.configuration).postnativev1identityDocument(this.basePath, options)
   }
   /**
     * 

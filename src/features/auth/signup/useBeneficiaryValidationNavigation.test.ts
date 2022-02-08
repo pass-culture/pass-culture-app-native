@@ -21,7 +21,7 @@ jest.mock('features/auth/settings')
 jest.mock('features/home/api')
 jest.mock('features/profile/utils')
 
-const allowedIdentityCheckMethods = [IdentityCheckMethod.jouve]
+const allowedIdentityCheckMethods = [IdentityCheckMethod.ubble]
 
 describe('useBeneficiaryValidationNavigation', () => {
   it('should navigate to home if nextStep is null', async () => {

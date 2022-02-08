@@ -30,7 +30,6 @@ export const beneficiaryUser: UserProfileResponse = {
   },
   isBeneficiary: true,
   roles: [UserRole.BENEFICIARY],
-  nextBeneficiaryValidationStep: undefined,
   isEligibleForBeneficiaryUpgrade: false,
 }
 
