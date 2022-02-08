@@ -9,6 +9,7 @@ import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { formatDates, getDisplayPrice } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'
+import { GLOBAL_STALE_TIME } from 'libs/react-query/queryClient'
 import { SearchHit } from 'libs/search'
 import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
@@ -45,7 +46,11 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
         isDuo: offer.isDuo,
         name: offer.name,
         offerId,
-      })
+      }),
+      {
+        // Make sure the data is stale, so that it is considered as a placeholder
+        updatedAt: Date.now() - (GLOBAL_STALE_TIME + 1),
+      }
     )
     analytics.logConsultOffer({ offerId, from: 'search', query: query })
     navigation.navigate('Offer', { id: offerId, from: 'search' })

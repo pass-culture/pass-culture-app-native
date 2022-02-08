@@ -1,3 +1,4 @@
+import { useNetInfo } from '@react-native-community/netinfo'
 import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import { FlatList, ActivityIndicator } from 'react-native'
@@ -19,6 +20,7 @@ const keyExtractor = (item: SearchHit) => item.objectID
 const ANIMATION_DURATION = 700
 
 export const SearchResults: React.FC = () => {
+  const networkInfo = useNetInfo()
   const flatListRef = useRef<FlatList<SearchHit> | null>(null)
   const {
     hasNextPage,
@@ -82,6 +84,12 @@ export const SearchResults: React.FC = () => {
     [isFetchingNextPage, hits.length]
   )
 
+  const onRefresh = () => {
+    if (networkInfo.isConnected) {
+      refetch()
+    }
+  }
+
   if (showSkeleton) return <SearchResultsPlaceHolder />
   return (
     <React.Fragment>
@@ -97,7 +105,7 @@ export const SearchResults: React.FC = () => {
           ListFooterComponent={ListFooterComponent}
           renderItem={renderItem}
           refreshing={isRefreshing}
-          onRefresh={refetch}
+          onRefresh={onRefresh}
           onEndReached={onEndReached}
           scrollEnabled={nbHits > 0}
           ListEmptyComponent={ListEmptyComponent}

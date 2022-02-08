@@ -1,3 +1,4 @@
+import NetInfo from '@react-native-community/netinfo'
 import React, { memo, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { useQueryClient } from 'react-query'
 
@@ -45,9 +46,15 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
   const readTokenAndConnectUser = useCallback(async () => {
     try {
       let accessToken = await storage.readString('access_token')
+      const { isConnected } = await NetInfo.fetch()
+
+      if (!!accessToken && !isConnected) {
+        setIsLoggedIn(true)
+        return
+      }
 
       if (getAccessTokenStatus(accessToken) === 'expired') {
-        // refreshAccessToken calls the backend to get a new acces token
+        // refreshAccessToken calls the backend to get a new access token
         // and also saves it to the storage
         accessToken = await refreshAccessToken(api)
       }

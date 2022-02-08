@@ -1,4 +1,5 @@
 import { plural } from '@lingui/macro'
+import { useNetInfo } from '@react-native-community/netinfo'
 import React, { useCallback, useMemo } from 'react'
 import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -28,6 +29,7 @@ const emptyBookings: Booking[] = []
 const ANIMATION_DURATION = 700
 
 export function OnGoingBookingsList() {
+  const networkInfo = useNetInfo()
   const { data: bookings, isLoading, isFetching, refetch } = useBookings()
   const { bottom } = useSafeAreaInsets()
   const { isLoading: subcategoriesIsLoading } = useSubcategories()
@@ -68,6 +70,12 @@ export function OnGoingBookingsList() {
     }
   }
 
+  const onRefresh = () => {
+    if (networkInfo.isConnected) {
+      refetch()
+    }
+  }
+
   if (showSkeleton) return <BookingsPlaceholder />
   return (
     <Container flex={hasBookings || hasEndedBookings ? 1 : undefined}>
@@ -77,7 +85,7 @@ export function OnGoingBookingsList() {
         data={ongoingBookings}
         renderItem={renderItem}
         refreshing={isRefreshing}
-        onRefresh={refetch}
+        onRefresh={onRefresh}
         contentContainerStyle={contentContainerStyle}
         ListHeaderComponent={ListHeaderComponent}
         ListEmptyComponent={<NoBookingsView />}

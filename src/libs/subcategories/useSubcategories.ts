@@ -1,16 +1,16 @@
+import { useNetInfo } from '@react-native-community/netinfo'
 import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { SubcategoriesResponseModel } from 'api/gen'
 import { QueryKeys } from 'libs/queryKeys'
 
-import { placeholderData } from './placeholderData'
+export const useSubcategories = () => {
+  const networkInfo = useNetInfo()
 
-const STALE_TIME_SUBCATEGORIES = 5 * 60 * 1000
-
-export const useSubcategories = () =>
-  useQuery<SubcategoriesResponseModel>(
+  return useQuery<SubcategoriesResponseModel>(
     QueryKeys.SUBCATEGORIES,
     () => api.getnativev1subcategories(),
-    { staleTime: STALE_TIME_SUBCATEGORIES, placeholderData }
+    { enabled: networkInfo.isConnected }
   )
+}

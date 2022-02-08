@@ -1,3 +1,4 @@
+import { useNetInfo } from '@react-native-community/netinfo'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
@@ -135,25 +136,23 @@ export function useAddFavorite({ onSuccess, onError }: AddFavorite) {
   })
 }
 
-// arbitrary. We have to make sure we invalidate the cache when adding/removing favorites. See above
-const STALE_TIME_FAVORITES = 5 * 60 * 1000
-
 export function useFavorites() {
+  const networkInfo = useNetInfo()
   const { isLoggedIn } = useAuthContext()
 
   return useQuery<PaginatedFavoritesResponse>(
     QueryKeys.FAVORITES,
     () => api.getnativev1mefavorites(),
-    { enabled: isLoggedIn, staleTime: STALE_TIME_FAVORITES }
+    { enabled: isLoggedIn && networkInfo.isConnected }
   )
 }
 
 export function useFavoritesCount() {
+  const networkInfo = useNetInfo()
   const { isLoggedIn } = useAuthContext()
 
   return useQuery(QueryKeys.FAVORITES_COUNT, () => api.getnativev1mefavoritescount(), {
-    enabled: isLoggedIn,
-    staleTime: STALE_TIME_FAVORITES,
+    enabled: isLoggedIn && networkInfo.isConnected,
     select: (data: FavoritesCountResponse) => data.count,
   })
 }
