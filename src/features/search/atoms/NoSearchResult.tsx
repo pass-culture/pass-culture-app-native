@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
-import { NoOfferDeprecated as NoOffer } from 'ui/svg/icons/NoOffer_deprecated'
+import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const NoSearchResult: React.FC = () => {
@@ -31,7 +31,7 @@ export const NoSearchResult: React.FC = () => {
   return (
     <Container>
       <Spacer.Flex />
-      <NoOffer size={156} />
+      <StyledNoOffer />
       <MainTitle>{t`Oups\u00a0!`}</MainTitle>
       <DescriptionErrorTextContainer>
         <DescriptionErrorText aria-live="assertive">{errorMessage}</DescriptionErrorText>
@@ -46,6 +46,11 @@ export const NoSearchResult: React.FC = () => {
     </Container>
   )
 }
+
+const StyledNoOffer = styled(NoOffer).attrs(({ theme }) => ({
+  size: theme.illustrations.sizes.medium,
+  color: theme.colors.greyMedium,
+}))``
 
 const Container = styled.View({
   flex: 1,

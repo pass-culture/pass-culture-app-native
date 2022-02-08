@@ -88,10 +88,9 @@ export const BookingImpossible: React.FC = () => {
   )
 }
 
-// Only occurrence where the illustration is not using theme.icons.sizes.illustrations, it would be too big.
 const GreySadFace = styled(SadFace).attrs(({ theme }) => ({
   color: theme.colors.greyDark,
-  size: getSpacing(37.5),
+  size: theme.illustrations.sizes.medium,
 }))``
 
 const Container = styled.View({

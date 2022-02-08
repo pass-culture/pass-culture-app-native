@@ -3,7 +3,6 @@ import Svg, { Path, Circle } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { ILLUSTRATION_ICON_SIZE } from 'ui/theme/constants'
 
 const PhoneFlipSvg: React.FunctionComponent<IconInterface> = ({ size, color, testID }) => {
   const height = typeof size === 'string' ? size : ((size as number) * 156) / 200
@@ -49,5 +48,5 @@ const PhoneFlipSvg: React.FunctionComponent<IconInterface> = ({ size, color, tes
 
 export const PhoneFlip = styled(PhoneFlipSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.colors.black,
-  size: size ?? ILLUSTRATION_ICON_SIZE,
+  size: size ?? theme.illustrations.sizes.medium,
 }))``

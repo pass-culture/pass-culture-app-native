@@ -9,7 +9,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { OrSeparator } from 'ui/components/OrSeparator'
-import { BicolorIdCardWithMagnifyingGlassDeprecated as BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass_deprecated'
+import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -32,7 +32,7 @@ export const IdentityCheckDMS = () => {
       fixedTopChildren={
         <Container>
           <Spacer.Column numberOfSpaces={5} />
-          <BicolorIdCardWithMagnifyingGlass size={getSpacing(30)} />
+          <StyledBicolorIdCardWithMagnifyingGlass />
           <Spacer.Column numberOfSpaces={5} />
           <CenteredTitle title={t`Créer un dossier sur le site des Démarches Simplifiées`} />
           <Spacer.Column numberOfSpaces={5} />
@@ -61,6 +61,12 @@ export const IdentityCheckDMS = () => {
     />
   )
 }
+
+const StyledBicolorIdCardWithMagnifyingGlass = styled(BicolorIdCardWithMagnifyingGlass).attrs(
+  ({ theme }) => ({
+    size: theme.illustrations.sizes.fullPage,
+  })
+)``
 
 const Container = styled.View({ height: '100%', alignItems: 'center' })
 

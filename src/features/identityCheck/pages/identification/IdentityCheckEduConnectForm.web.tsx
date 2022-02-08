@@ -8,7 +8,7 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { EduConnectErrorBoundary } from 'features/identityCheck/errors/eduConnect/EduConnectErrorBoundary'
 import { useEduConnectLogin } from 'features/identityCheck/utils/useEduConnectLogin'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { BicolorIdCardWithMagnifyingGlassDeprecated as BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass_deprecated'
+import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { Info } from 'ui/svg/icons/Info'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -26,7 +26,7 @@ export const IdentityCheckEduConnectForm = () => {
         scrollChildren={
           <React.Fragment>
             <Center>
-              <BicolorIdCardWithMagnifyingGlass size={getSpacing(33)} />
+              <StyledBicolorIdCardWithMagnifyingGlass />
             </Center>
 
             <JustifiedHeader>{t`Identification`}</JustifiedHeader>
@@ -56,6 +56,12 @@ export const IdentityCheckEduConnectForm = () => {
     </ErrorBoundary>
   )
 }
+
+const StyledBicolorIdCardWithMagnifyingGlass = styled(BicolorIdCardWithMagnifyingGlass).attrs(
+  ({ theme }) => ({
+    size: theme.illustrations.sizes.fullPage,
+  })
+)``
 
 const Center = styled.View({
   alignSelf: 'center',

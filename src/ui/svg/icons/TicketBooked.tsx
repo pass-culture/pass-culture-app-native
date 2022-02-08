@@ -3,7 +3,7 @@ import Svg, { Path } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { ILLUSTRATION_ICON_SIZE } from 'ui/theme/constants'
+
 const TicketBookedSvg: React.FunctionComponent<IconInterface> = ({ size, color, testID }) => {
   const height = typeof size === 'string' ? size : ((size as number) * 156) / 200
   return (
@@ -20,5 +20,5 @@ const TicketBookedSvg: React.FunctionComponent<IconInterface> = ({ size, color, 
 
 export const TicketBooked = styled(TicketBookedSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.colors.black,
-  size: size ?? ILLUSTRATION_ICON_SIZE,
+  size: size ?? theme.illustrations.sizes.medium,
 }))``

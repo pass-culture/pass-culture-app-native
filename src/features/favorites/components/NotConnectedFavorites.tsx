@@ -1,17 +1,16 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { Background } from 'ui/svg/Background'
-import { UserFavoriteDeprecated } from 'ui/svg/icons/UserFavorite_deprecated'
+import { UserFavorite } from 'ui/svg/icons/UserFavorite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const NotConnectedFavorites = () => {
-  const { colors } = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
 
   return (
@@ -19,8 +18,7 @@ export const NotConnectedFavorites = () => {
       <Background />
       <Spacer.TopScreen />
       <Spacer.Flex />
-      <UserFavoriteDeprecated color={colors.white} />
-
+      <StyledUserFavorite />
       <CenteredContainer>
         <TypoTitle4>{t`Connecte-toi pour profiter de cette fonctionnalité\u00a0!`}</TypoTitle4>
         <Spacer.Column numberOfSpaces={4} />
@@ -55,6 +53,11 @@ export const NotConnectedFavorites = () => {
     </Container>
   )
 }
+
+const StyledUserFavorite = styled(UserFavorite).attrs(({ theme }) => ({
+  color: theme.colors.white,
+  size: theme.illustrations.sizes.fullPage,
+}))``
 
 const Container = styled.View({
   flex: 1,

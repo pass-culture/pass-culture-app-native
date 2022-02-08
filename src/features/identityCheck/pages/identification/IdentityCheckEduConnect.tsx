@@ -11,8 +11,8 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
-import { BicolorIdCardWithMagnifyingGlassDeprecated } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass_deprecated'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
+import { Spacer, Typo } from 'ui/theme'
 
 export const IdentityCheckEduConnect = () => {
   const { navigateToNextScreen } = useIdentityCheckNavigation()
@@ -47,7 +47,7 @@ export const IdentityCheckEduConnect = () => {
         <Container>
           <Center>
             <Spacer.Column numberOfSpaces={10} />
-            <BicolorIdCardWithMagnifyingGlass />
+            <StyledBicolorIdCardWithMagnifyingGlass />
           </Center>
 
           <CenteredTitle title={t`Identification`} />
@@ -68,17 +68,17 @@ export const IdentityCheckEduConnect = () => {
   )
 }
 
+const StyledBicolorIdCardWithMagnifyingGlass = styled(BicolorIdCardWithMagnifyingGlass).attrs(
+  ({ theme }) => ({
+    size: theme.illustrations.sizes.fullPage,
+    color: theme.colors.secondary,
+    color2: theme.colors.primary,
+  })
+)``
+
 const Center = styled.View({ alignSelf: 'center' })
 const Container = styled.View({ flexGrow: 1, justifyContent: 'center' })
 const TextContent = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.greyDark,
 }))
-
-const BicolorIdCardWithMagnifyingGlass = styled(BicolorIdCardWithMagnifyingGlassDeprecated).attrs(
-  ({ theme }) => ({
-    color: theme.colors.secondary,
-    color2: theme.colors.primary,
-    size: getSpacing(36),
-  })
-)``
