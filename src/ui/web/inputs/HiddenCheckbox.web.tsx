@@ -2,8 +2,25 @@ import React from 'react'
 
 export const HiddenCheckbox = ({
   checked,
+  id,
+  name,
   accessibilityLabel,
+  onChange,
 }: {
   checked: boolean
+  id?: string
+  name: string
   accessibilityLabel: string
-}) => <input type="checkbox" checked={checked} aria-label={accessibilityLabel} hidden readOnly />
+  onChange: () => void
+}) => (
+  <input
+    type="checkbox"
+    id={id}
+    name={name}
+    checked={checked}
+    aria-label={accessibilityLabel}
+    onChange={onChange}
+    hidden
+    readOnly
+  />
+)

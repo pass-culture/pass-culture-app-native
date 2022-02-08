@@ -1,8 +1,10 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 import { useTheme } from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import FilterSwitch from 'ui/components/FilterSwitch'
+import { InputLabel } from 'ui/components/InputLabel'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -19,6 +21,7 @@ interface Props {
 
 export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
   const { isMobileViewport } = useTheme()
+  const checkboxID = uuidv4()
   const {
     icon,
     iconSize,
@@ -39,11 +42,14 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
             <Spacer.Row numberOfSpaces={2} />
           </React.Fragment>
         )}
-        <Typo.ButtonText>{title}</Typo.ButtonText>
+        <InputLabel htmlFor={checkboxID}>
+          <Typo.ButtonText>{title}</Typo.ButtonText>
+        </InputLabel>
       </TitleContainer>
       <FilterSwitchLabelContainer>
         {toggleLabel && !isMobileViewport ? <ToggleLabel>{toggleLabel}</ToggleLabel> : null}
         <FilterSwitch
+          checkboxID={checkboxID}
           active={active}
           toggle={toggle}
           accessibilityLabel={accessibilityLabel}

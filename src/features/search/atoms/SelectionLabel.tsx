@@ -11,20 +11,22 @@ interface Props {
   onPress: () => void
 }
 
-export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) => (
-  <TouchableOpacity selected={selected} onPress={onPress}>
-    {selected ? (
-      <IconContainer>
-        <ValidateWhite />
-      </IconContainer>
-    ) : (
-      <Spacer.Row numberOfSpaces={5} />
-    )}
-    <Label selected={selected}>{label}</Label>
-    <Spacer.Row numberOfSpaces={selected ? 2 : 5} />
-    <HiddenCheckbox checked={selected} accessibilityLabel={label} />
-  </TouchableOpacity>
-)
+export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) => {
+  return (
+    <TouchableOpacity selected={selected} onPress={onPress}>
+      {selected ? (
+        <IconContainer>
+          <ValidateWhite />
+        </IconContainer>
+      ) : (
+        <Spacer.Row numberOfSpaces={5} />
+      )}
+      <Label selected={selected}>{label}</Label>
+      <Spacer.Row numberOfSpaces={selected ? 2 : 5} />
+      <HiddenCheckbox name={label} checked={selected} accessibilityLabel={label} />
+    </TouchableOpacity>
+  )
+}
 
 const ValidateWhite = styled(Validate).attrs(({ theme }) => ({
   color: theme.colors.white,

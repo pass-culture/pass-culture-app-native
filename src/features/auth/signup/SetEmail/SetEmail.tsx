@@ -2,8 +2,10 @@ import { t } from '@lingui/macro'
 import React, { FunctionComponent, useRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { InputLabel } from 'ui/components/InputLabel'
 import { CheckboxInput } from 'ui/components/inputs/CheckboxInput'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
 import { EmailInput } from 'ui/components/inputs/EmailInput'
@@ -23,6 +25,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
   const shouldDisableValidateButton = isValueEmpty(email)
 
   const emailInput = useRef<RNTextInput | null>(null)
+  const checkboxID = uuidv4()
 
   function onEmailChange(email: string) {
     if (hasError) {
@@ -37,6 +40,10 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
     } else {
       setHasError(true)
     }
+  }
+
+  function onCheckboxPress() {
+    setIsNewsletterChecked((prevIsNewsletterChecked) => !prevIsNewsletterChecked)
   }
 
   return (
@@ -55,15 +62,19 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
         numberOfSpacesTop={2}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <StyledCheckBox
-        onPress={() =>
-          setIsNewsletterChecked((prevIsNewsletterChecked) => !prevIsNewsletterChecked)
-        }>
+      <StyledCheckBox onPress={onCheckboxPress}>
         <CheckboxInput isChecked={isNewsletterChecked} setIsChecked={setIsNewsletterChecked} />
-        <CheckBoxText>{t`J’accepte de recevoir les e-mails du pass Culture.`}</CheckBoxText>
+        <CheckBoxText>
+          <InputLabel htmlFor={checkboxID}>
+            {t`J’accepte de recevoir les e-mails du pass Culture.`}
+          </InputLabel>
+        </CheckBoxText>
         <HiddenCheckbox
+          id={checkboxID}
+          name="email"
           checked={isNewsletterChecked}
           accessibilityLabel={t`J’accepte de recevoir les e-mails du pass Culture.`}
+          onChange={onCheckboxPress}
         />
       </StyledCheckBox>
       <Spacer.Column numberOfSpaces={6} />
