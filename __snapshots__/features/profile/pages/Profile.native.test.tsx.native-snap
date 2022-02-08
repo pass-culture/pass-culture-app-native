@@ -547,14 +547,27 @@ exports[`Profile component should render correctly 1`] = `
                           Array [
                             Object {
                               "color": "#161617",
-                              "fontFamily": "Montserrat-Bold",
+                              "fontFamily": "Montserrat-Regular",
                               "fontSize": 15,
                               "lineHeight": 20,
                             },
                           ]
                         }
                       >
-                        Partager ma position
+                        <Text
+                          style={
+                            Array [
+                              Object {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Bold",
+                                "fontSize": 15,
+                                "lineHeight": 20,
+                              },
+                            ]
+                          }
+                        >
+                          Partager ma position
+                        </Text>
                       </Text>
                     </View>
                     <View

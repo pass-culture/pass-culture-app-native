@@ -47,7 +47,7 @@ exports[`<SectionWithSwitch/> should display different if isDesktopViewport or w
         style={
           Array [
             Object {
-@@ -43,10 +46,24 @@
+@@ -56,10 +59,24 @@
             \\"flexDirection\\": \\"row\\",
           },
         ]

@@ -8,6 +8,7 @@ import { computeCredit, useIsUserUnderageBeneficiary } from 'features/profile/ut
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Typo, Spacer } from 'ui/theme'
+import { getTitleAttrs } from 'ui/theme/typography'
 
 type BeneficiaryHeaderProps = {
   firstName?: string | null
@@ -30,7 +31,7 @@ export function BeneficiaryHeader(props: PropsWithChildren<BeneficiaryHeaderProp
       </HeaderBackgroundWrapper>
       <Spacer.Column numberOfSpaces={6} />
       <UserNameAndCredit>
-        <Title4>{name}</Title4>
+        <Title>{name}</Title>
         <Spacer.Column numberOfSpaces={4.5} />
         {!isUserUnderageBeneficiary && <Hero>{credit}</Hero>}
         <Spacer.Column numberOfSpaces={2} />
@@ -67,7 +68,7 @@ const Ceilings = styled(BeneficiaryCeilings)({
   top: getSpacing(42),
 })
 
-const Title4 = styled(Typo.Title4)(({ theme }) => ({
+const Title = styled(Typo.Title4).attrs(() => getTitleAttrs(1))(({ theme }) => ({
   color: theme.colors.white,
 }))
 

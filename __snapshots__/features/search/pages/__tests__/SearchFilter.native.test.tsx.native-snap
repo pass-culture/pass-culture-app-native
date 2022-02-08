@@ -2186,19 +2186,32 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <Text
-              accessibilityRole="none"
               style={
                 Array [
                   Object {
                     "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 18,
-                    "lineHeight": 22,
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
                   },
                 ]
               }
             >
-              Uniquement les offres gratuites
+              <Text
+                accessibilityRole="none"
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 18,
+                      "lineHeight": 22,
+                    },
+                  ]
+                }
+              >
+                Uniquement les offres gratuites
+              </Text>
             </Text>
           </Text>
           <View
@@ -2333,19 +2346,32 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <Text
-              accessibilityRole="none"
               style={
                 Array [
                   Object {
                     "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 18,
-                    "lineHeight": 22,
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
                   },
                 ]
               }
             >
-              Uniquement les offres duo
+              <Text
+                accessibilityRole="none"
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 18,
+                      "lineHeight": 22,
+                    },
+                  ]
+                }
+              >
+                Uniquement les offres duo
+              </Text>
             </Text>
           </Text>
           <View
@@ -2480,19 +2506,32 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <Text
-              accessibilityRole="none"
               style={
                 Array [
                   Object {
                     "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 18,
-                    "lineHeight": 22,
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
                   },
                 ]
               }
             >
-              Uniquement les nouveautés
+              <Text
+                accessibilityRole="none"
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 18,
+                      "lineHeight": 22,
+                    },
+                  ]
+                }
+              >
+                Uniquement les nouveautés
+              </Text>
             </Text>
           </Text>
           <View
@@ -2627,19 +2666,32 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <Text
-              accessibilityRole="none"
               style={
                 Array [
                   Object {
                     "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 18,
-                    "lineHeight": 22,
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
                   },
                 ]
               }
             >
-              Date
+              <Text
+                accessibilityRole="none"
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 18,
+                      "lineHeight": 22,
+                    },
+                  ]
+                }
+              >
+                Date
+              </Text>
             </Text>
           </Text>
           <View
@@ -2798,19 +2850,32 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <Text
-              accessibilityRole="none"
               style={
                 Array [
                   Object {
                     "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 18,
-                    "lineHeight": 22,
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
                   },
                 ]
               }
             >
-              Heure
+              <Text
+                accessibilityRole="none"
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 18,
+                      "lineHeight": 22,
+                    },
+                  ]
+                }
+              >
+                Heure
+              </Text>
             </Text>
           </Text>
           <View

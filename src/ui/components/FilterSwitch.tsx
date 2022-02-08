@@ -9,6 +9,7 @@ import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 interface Props {
   active: boolean
   accessibilityLabel: string
+  checkboxID?: string
   disabled?: boolean
   toggle: () => void
 }
@@ -18,7 +19,7 @@ const TOGGLE_PATH_START = 2
 const TOGGLE_PATH_END = TOGGLE_WIDTH - TOGGLE_PATH_START
 
 const FilterSwitch: React.FC<Props> = (props: Props) => {
-  const { toggle, active = false, disabled = false } = props
+  const { toggle, active = false, disabled = false, checkboxID } = props
   const animatedValue = useRef(new Animated.Value(active ? 1 : 0)).current
 
   const marginLeft = animatedValue.interpolate({
@@ -46,7 +47,13 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
           <StyledToggle style={{ marginLeft }} />
         </StyledBackgroundColor>
       </TouchableOpacity>
-      <HiddenCheckbox checked={active} accessibilityLabel={props.accessibilityLabel} />
+      <HiddenCheckbox
+        id={checkboxID}
+        name={props.accessibilityLabel}
+        checked={active}
+        accessibilityLabel={props.accessibilityLabel}
+        onChange={toggle}
+      />
     </FilterSwitchContainer>
   )
 }
@@ -93,6 +100,9 @@ const StyledToggle = styled(Animated.View)(({ theme }) => ({
 const propsAreEqual = (
   prevProps: Readonly<React.PropsWithChildren<Props>>,
   nextProps: Readonly<React.PropsWithChildren<Props>>
-) => prevProps.active === nextProps.active && prevProps.disabled === nextProps.disabled
+) =>
+  prevProps.active === nextProps.active &&
+  prevProps.disabled === nextProps.disabled &&
+  prevProps.checkboxID === nextProps.checkboxID
 
 export default memo(FilterSwitch, propsAreEqual)

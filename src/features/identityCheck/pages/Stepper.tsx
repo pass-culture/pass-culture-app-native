@@ -18,6 +18,7 @@ import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { useModal } from 'ui/components/modals/useModal'
 import { Background } from 'ui/svg/Background'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { getTitleAttrs } from 'ui/theme/typography'
 
 export const IdentityCheckStepper = () => {
   const theme = useTheme()
@@ -110,7 +111,7 @@ export const IdentityCheckStepper = () => {
   )
 }
 
-const Title = styled(Typo.Title3)(({ theme }) => ({
+const Title = styled(Typo.Title3).attrs(() => getTitleAttrs(1))(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.white,
 }))
