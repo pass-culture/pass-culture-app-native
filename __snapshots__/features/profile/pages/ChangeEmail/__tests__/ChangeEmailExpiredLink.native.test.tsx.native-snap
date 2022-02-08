@@ -304,7 +304,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             "width": "100%",
           }
         }
-        testID="Retourner à l'accueil"
+        testID="button-icon"
       >
         <View
           height={20}
@@ -654,7 +654,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             "width": "100%",
           }
         }
-        testID="Retourner à l'accueil"
+        testID="button-icon"
       >
         <View
           height={20}

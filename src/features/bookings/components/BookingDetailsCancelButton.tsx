@@ -30,6 +30,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   if (properties.hasActivationCode == true && props.activationCodeFeatureEnabled) {
     return (
       <ButtonSecondary
+        testID={'Terminer'}
         wording={t`Terminer`}
         onPress={props.onTerminate}
         fullWidth={props.fullWidth}
@@ -39,6 +40,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
 
   const renderButton = (
     <ButtonSecondary
+      testID={'Annuler ma réservation'}
       wording={t`Annuler ma réservation`}
       onPress={props.onCancel}
       fullWidth={props.fullWidth}

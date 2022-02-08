@@ -251,6 +251,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
               <Spacer.Column numberOfSpaces={8} />
             )}
             <ButtonPrimary
+              testID="Continuer"
               wording={t`Continuer`}
               disabled={!codeInputState.isValid}
               onPress={validateCode}

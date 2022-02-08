@@ -27,6 +27,7 @@ export function LoggedOutHeader() {
         </Description>
         <Spacer.Column numberOfSpaces={8} />
         <ButtonPrimaryWhite
+          testID="S'inscrire"
           wording={t`S'inscrire`}
           onPress={() => {
             analytics.logProfilSignUp()
