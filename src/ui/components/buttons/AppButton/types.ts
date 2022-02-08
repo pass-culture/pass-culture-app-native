@@ -39,7 +39,7 @@ export interface BaseButtonProps {
   isLoading?: boolean
   onLongPress?: AppButtonEventWeb | AppButtonEventNative
   onPress?: AppButtonEventWeb | AppButtonEventNative
-  testId?: string
+  testID?: string
   textSize?: number
   wording: string
   mediumWidth?: boolean

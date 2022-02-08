@@ -32,7 +32,7 @@ export const ReportOfferDescription: FunctionComponent<Props> = ({ onPressReport
       <ButtonPrimary
         wording={t`Signaler l'offre`}
         onPress={onPressReportOffer}
-        testId={'go-to-reason-report-button'}
+        testID={'go-to-reason-report-button'}
       />
     </React.Fragment>
   )

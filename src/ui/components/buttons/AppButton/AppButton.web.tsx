@@ -26,7 +26,7 @@ const _AppButton = <T extends AppButtonProps>({
   inlineHeight,
   accessibilityLabel,
   accessibilityDescribedBy,
-  testId,
+  testID,
   wording,
   adjustsFontSizeToFit,
   justifyContent,
@@ -66,7 +66,7 @@ const _AppButton = <T extends AppButtonProps>({
   )
   return (
     <Button
-      {...accessibilityAndTestId(accessibilityLabel, testId)}
+      {...accessibilityAndTestId(accessibilityLabel, testID)}
       name={name}
       onClick={onClick}
       onDoubleClick={onDoubleClick}

@@ -265,7 +265,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
             <ButtonTertiary
               inlineHeight="100%"
               wording={getRetryButtonTitle()}
-              testId={'Réessayer'}
+              testID={'Réessayer'}
               onPress={requestSendPhoneValidationCode}
               inline
               disabled={!isRequestTimestampExpired}
