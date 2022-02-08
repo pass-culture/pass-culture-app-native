@@ -70,7 +70,8 @@
     "trigger:testing:deploy": "./scripts/deploy_new_version.sh testing_v patch",
     "generate:api:client": "SWAGGER_CODEGEN_CLI_VERSION=3.0.30 ./scripts/generate_api_client.sh",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "chromatic": "chromatic --exit-zero-on-changes --exit-once-uploaded"
   },
   "dependencies": {
     "@algolia/client-search": "^4.6.0",
@@ -229,6 +230,7 @@
     "babel-plugin-styled-components": "^2.0.2",
     "babel-preset-react-app": "^10.0.0",
     "case-sensitive-paths-webpack-plugin": "^2.4.0",
+    "chromatic": "^6.4.3",
     "color": "^4.1.0",
     "console-fail-test": "^0.1.5",
     "cross-fetch": "^3.0.4",

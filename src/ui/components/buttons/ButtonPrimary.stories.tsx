@@ -8,7 +8,7 @@ export default {
   component: ButtonPrimary,
 } as ComponentMeta<typeof ButtonPrimary>
 
-const Template: ComponentStory<typeof ButtonPrimary> = (args) => <ButtonPrimary {...args} />
+const Template: ComponentStory<typeof ButtonPrimary> = (props) => <ButtonPrimary {...props} />
 
 export const Default = Template.bind({})
 Default.args = {
