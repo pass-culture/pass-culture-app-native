@@ -1,7 +1,6 @@
 import { QueryCache, QueryClient } from 'react-query'
-import { persistQueryClient } from 'react-query/persistQueryClient-experimental'
 
-import { persistor } from 'libs/react-query/persistor'
+import { saveQueryClient } from 'libs/react-query/persistor'
 
 // Read https://tkdodo.eu/blog/placeholder-and-initial-data-in-react-query
 export const GLOBAL_STALE_TIME = 1000 * 60 * 60 * 24 // 24 hours
@@ -19,7 +18,4 @@ export const queryClient = new QueryClient({
   },
 })
 
-persistQueryClient({
-  queryClient,
-  persistor,
-})
+saveQueryClient(queryClient)
