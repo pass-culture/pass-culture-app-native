@@ -115,7 +115,6 @@ Array [
             },
           ]
         }
-        topSafeInset={16}
       >
         <View
           style={

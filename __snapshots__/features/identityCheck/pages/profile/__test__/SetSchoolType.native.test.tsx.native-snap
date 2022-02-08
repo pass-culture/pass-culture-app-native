@@ -114,7 +114,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
           },
         ]
       }
-      topSafeInset={16}
     >
       <View
         style={
@@ -834,7 +833,6 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
           },
         ]
       }
-      topSafeInset={16}
     >
       <View
         style={
