@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import validateDate from 'validate-date'
 
 import { DateInputRef, DateValidation } from 'features/auth/signup/SetBirthday/DateInput/utils'
-import { accessibilityAndTestId } from 'tests/utils'
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports

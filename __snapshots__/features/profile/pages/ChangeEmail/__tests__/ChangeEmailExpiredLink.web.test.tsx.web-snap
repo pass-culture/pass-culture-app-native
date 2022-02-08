@@ -83,12 +83,9 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             class="css-view-1dbjc4n"
             style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
           >
-            <div
-              aria-label="Faire une nouvelle demande"
-              class="css-view-1dbjc4n"
-              data-testid="Faire une nouvelle demande"
-              style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-              tabindex="0"
+            <button
+              class="sc-bdvvtL iDzbyb sc-gsDKAQ khldlI"
+              type="button"
             >
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
@@ -97,17 +94,15 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
               >
                 Faire une nouvelle demande
               </div>
-            </div>
+            </button>
             <div
               class="css-view-1dbjc4n"
               style="height: 16px;"
             />
-            <div
-              aria-label="button-icon"
-              class="css-view-1dbjc4n"
-              data-testid="Retourner à l'accueil"
-              style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-              tabindex="0"
+            <button
+              class="sc-bdvvtL iDzbyb sc-dkPtRN fwCeAR"
+              data-testid="button-icon"
+              type="button"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -127,7 +122,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
               >
                 Retourner à l'accueil
               </div>
-            </div>
+            </button>
           </div>
           <div
             class="css-view-1dbjc4n"
@@ -216,12 +211,9 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
           class="css-view-1dbjc4n"
           style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
         >
-          <div
-            aria-label="Faire une nouvelle demande"
-            class="css-view-1dbjc4n"
-            data-testid="Faire une nouvelle demande"
-            style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-            tabindex="0"
+          <button
+            class="sc-bdvvtL iDzbyb sc-gsDKAQ khldlI"
+            type="button"
           >
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
@@ -230,17 +222,15 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             >
               Faire une nouvelle demande
             </div>
-          </div>
+          </button>
           <div
             class="css-view-1dbjc4n"
             style="height: 16px;"
           />
-          <div
-            aria-label="button-icon"
-            class="css-view-1dbjc4n"
-            data-testid="Retourner à l'accueil"
-            style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-            tabindex="0"
+          <button
+            class="sc-bdvvtL iDzbyb sc-dkPtRN fwCeAR"
+            data-testid="button-icon"
+            type="button"
           >
             <div
               class="css-view-1dbjc4n"
@@ -260,7 +250,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             >
               Retourner à l'accueil
             </div>
-          </div>
+          </button>
         </div>
         <div
           class="css-view-1dbjc4n"
@@ -406,12 +396,9 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             class="css-view-1dbjc4n"
             style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
           >
-            <div
-              aria-label="Se connecter"
-              class="css-view-1dbjc4n"
-              data-testid="Se connecter"
-              style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-              tabindex="0"
+            <button
+              class="sc-bdvvtL iDzbyb sc-gsDKAQ khldlI"
+              type="button"
             >
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
@@ -420,17 +407,15 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
               >
                 Se connecter
               </div>
-            </div>
+            </button>
             <div
               class="css-view-1dbjc4n"
               style="height: 16px;"
             />
-            <div
-              aria-label="button-icon"
-              class="css-view-1dbjc4n"
-              data-testid="Retourner à l'accueil"
-              style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-              tabindex="0"
+            <button
+              class="sc-bdvvtL iDzbyb sc-dkPtRN fwCeAR"
+              data-testid="button-icon"
+              type="button"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -450,7 +435,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
               >
                 Retourner à l'accueil
               </div>
-            </div>
+            </button>
           </div>
           <div
             class="css-view-1dbjc4n"
@@ -539,12 +524,9 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
           class="css-view-1dbjc4n"
           style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
         >
-          <div
-            aria-label="Se connecter"
-            class="css-view-1dbjc4n"
-            data-testid="Se connecter"
-            style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-            tabindex="0"
+          <button
+            class="sc-bdvvtL iDzbyb sc-gsDKAQ khldlI"
+            type="button"
           >
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
@@ -553,17 +535,15 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             >
               Se connecter
             </div>
-          </div>
+          </button>
           <div
             class="css-view-1dbjc4n"
             style="height: 16px;"
           />
-          <div
-            aria-label="button-icon"
-            class="css-view-1dbjc4n"
-            data-testid="Retourner à l'accueil"
-            style="align-items: center; background-color: rgba(0, 0, 0, 0); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-            tabindex="0"
+          <button
+            class="sc-bdvvtL iDzbyb sc-dkPtRN fwCeAR"
+            data-testid="button-icon"
+            type="button"
           >
             <div
               class="css-view-1dbjc4n"
@@ -583,7 +563,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             >
               Retourner à l'accueil
             </div>
-          </div>
+          </button>
         </div>
         <div
           class="css-view-1dbjc4n"

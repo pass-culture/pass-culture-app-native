@@ -5,8 +5,8 @@ import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/analytics'
-import { accessibilityAndTestId } from 'tests/utils'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -27,6 +27,7 @@ export function LoggedOutHeader() {
         </Description>
         <Spacer.Column numberOfSpaces={8} />
         <ButtonPrimaryWhite
+          testID="S'inscrire"
           wording={t`S'inscrire`}
           onPress={() => {
             analytics.logProfilSignUp()

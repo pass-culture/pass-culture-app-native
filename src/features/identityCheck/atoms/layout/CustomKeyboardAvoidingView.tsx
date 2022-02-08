@@ -1,8 +1,7 @@
 import React, { ReactNode } from 'react'
 import { KeyboardAvoidingView, Platform } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
-import { HEADER_HEIGHT } from 'features/identityCheck/atoms/layout/PageHeader'
 import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -12,9 +11,10 @@ type Props = {
 
 export const CustomKeyboardAvoidingView = (props: Props) => {
   const { top: topSafeInset } = useCustomSafeInsets()
+  const { appBarHeight } = useTheme()
   return (
     <Container>
-      <StyledKeyboardAvoidingView keyboardVerticalOffset={HEADER_HEIGHT + topSafeInset}>
+      <StyledKeyboardAvoidingView keyboardVerticalOffset={appBarHeight + topSafeInset}>
         <ChildrenContainer>
           <CenteredWebContainer>{props.children}</CenteredWebContainer>
         </ChildrenContainer>

@@ -26,7 +26,7 @@ export const OfferSeeMore: React.FC<Props> = ({ id, longWording = false }) => {
     <Container>
       <ButtonTertiaryBlack
         inline
-        testId="description-details-button"
+        testID="description-details-button"
         onPress={onPressSeeMore}
         wording={longWording ? t`Voir plus d'informations` : t`voir plus`}
       />

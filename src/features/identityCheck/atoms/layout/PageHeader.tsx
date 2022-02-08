@@ -4,10 +4,9 @@ import styled from 'styled-components/native'
 
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { accessibilityAndTestId } from 'tests/utils'
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Typo } from 'ui/theme'
-export const HEADER_HEIGHT = getSpacing(16)
 
 interface Props {
   title: string
@@ -21,12 +20,12 @@ export const PageHeader: React.FC<Props> = (props) => (
   </HeaderContainer>
 )
 
-const HeaderContainer = styled.View({
+const HeaderContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
-  height: HEADER_HEIGHT,
-})
+  height: theme.appBarHeight,
+}))
 
 const Title = styled(Typo.Title4)(({ theme }) => ({
   flex: 1,

@@ -232,60 +232,11 @@ Array [
       }
     }
   >
-    <div
-      aria-label="Voir l'itinéraire"
-      className="css-view-1dbjc4n"
-      data-testid="Voir l'itinéraire"
+    <button
+      className="sc-bdvvtL eVOETn sc-gsDKAQ bzsCsN"
       onClick={[Function]}
-      onContextMenu={[Function]}
-      onKeyDown={[Function]}
-      style={
-        Object {
-          "MozTransitionProperty": "opacity",
-          "MozUserSelect": "none",
-          "WebkitAlignItems": "center",
-          "WebkitBoxAlign": "center",
-          "WebkitBoxDirection": "normal",
-          "WebkitBoxOrient": "horizontal",
-          "WebkitBoxPack": "center",
-          "WebkitFlexDirection": "row",
-          "WebkitJustifyContent": "center",
-          "WebkitTransitionDuration": "0s",
-          "WebkitTransitionProperty": "opacity",
-          "WebkitUserSelect": "none",
-          "alignItems": "center",
-          "backgroundColor": "rgba(0,0,0,0.00)",
-          "borderBottomLeftRadius": "0px",
-          "borderBottomRightRadius": "0px",
-          "borderBottomWidth": "0px",
-          "borderLeftWidth": "0px",
-          "borderRightWidth": "0px",
-          "borderTopLeftRadius": "0px",
-          "borderTopRightRadius": "0px",
-          "borderTopWidth": "0px",
-          "cursor": "pointer",
-          "flexDirection": "row",
-          "height": "20px",
-          "justifyContent": "center",
-          "marginTop": "0px",
-          "maxWidth": "500px",
-          "msFlexAlign": "center",
-          "msFlexDirection": "row",
-          "msFlexPack": "center",
-          "msTouchAction": "manipulation",
-          "msUserSelect": "none",
-          "paddingBottom": "0px",
-          "paddingLeft": "0px",
-          "paddingRight": "0px",
-          "paddingTop": "0px",
-          "touchAction": "manipulation",
-          "transitionDuration": "0s",
-          "transitionProperty": "opacity",
-          "userSelect": "none",
-          "width": "auto",
-        }
-      }
-      tabIndex="0"
+      onDoubleClick={[Function]}
+      type="button"
     >
       <div
         className="css-view-1dbjc4n"
@@ -315,7 +266,7 @@ Array [
       >
         Voir l'itinéraire
       </div>
-    </div>
+    </button>
   </div>,
   <div
     className="css-view-1dbjc4n"

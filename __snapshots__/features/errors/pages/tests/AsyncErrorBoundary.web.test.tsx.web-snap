@@ -95,12 +95,9 @@ Object {
             class="css-view-1dbjc4n"
             style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           >
-            <div
-              aria-label="Réessayer"
-              class="css-view-1dbjc4n"
-              data-testid="Réessayer"
-              style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 48px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-              tabindex="0"
+            <button
+              class="sc-bdvvtL foGXkH sc-gsDKAQ khldlI"
+              type="button"
             >
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
@@ -109,7 +106,7 @@ Object {
               >
                 Réessayer
               </div>
-            </div>
+            </button>
           </div>
           <div
             class="css-view-1dbjc4n"
@@ -214,12 +211,9 @@ Object {
           class="css-view-1dbjc4n"
           style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         >
-          <div
-            aria-label="Réessayer"
-            class="css-view-1dbjc4n"
-            data-testid="Réessayer"
-            style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 48px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-            tabindex="0"
+          <button
+            class="sc-bdvvtL foGXkH sc-gsDKAQ khldlI"
+            type="button"
           >
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
@@ -228,7 +222,7 @@ Object {
             >
               Réessayer
             </div>
-          </div>
+          </button>
         </div>
         <div
           class="css-view-1dbjc4n"

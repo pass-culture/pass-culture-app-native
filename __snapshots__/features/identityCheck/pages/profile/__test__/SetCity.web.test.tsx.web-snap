@@ -67,7 +67,7 @@ Object {
                   style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
                 >
                   <form
-                    class="sc-dkPtRN iViOxT"
+                    class="sc-jrQzAO fLQviJ"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -88,7 +88,7 @@ Object {
                       style="height: 20px;"
                     />
                     <label
-                      class="sc-bdvvtL lavEYF"
+                      class="sc-furwcr dyBdUw"
                       for="testUuidV4"
                     >
                       Indique ton code postal et choisis ta ville
@@ -146,12 +146,10 @@ Object {
                   class="css-view-1dbjc4n"
                   style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
                 >
-                  <div
-                    aria-label="Continuer"
-                    class="css-view-1dbjc4n"
-                    data-testid="Continuer"
-                    style="align-items: center; background-color: rgb(241, 241, 244); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                    tabindex="0"
+                  <button
+                    class="sc-bdvvtL iDzbyb sc-hKwDye gqAQWB"
+                    disabled=""
+                    type="button"
                   >
                     <div
                       class="css-text-901oao css-textMultiLine-cens5h"
@@ -160,7 +158,7 @@ Object {
                     >
                       Continuer
                     </div>
-                  </div>
+                  </button>
                   <div
                     class="css-view-1dbjc4n"
                     style="height: 8px;"
@@ -251,7 +249,7 @@ Object {
                 style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
               >
                 <form
-                  class="sc-dkPtRN iViOxT"
+                  class="sc-jrQzAO fLQviJ"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -272,7 +270,7 @@ Object {
                     style="height: 20px;"
                   />
                   <label
-                    class="sc-bdvvtL lavEYF"
+                    class="sc-furwcr dyBdUw"
                     for="testUuidV4"
                   >
                     Indique ton code postal et choisis ta ville
@@ -330,12 +328,10 @@ Object {
                 class="css-view-1dbjc4n"
                 style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
               >
-                <div
-                  aria-label="Continuer"
-                  class="css-view-1dbjc4n"
-                  data-testid="Continuer"
-                  style="align-items: center; background-color: rgb(241, 241, 244); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                  tabindex="0"
+                <button
+                  class="sc-bdvvtL iDzbyb sc-hKwDye gqAQWB"
+                  disabled=""
+                  type="button"
                 >
                   <div
                     class="css-text-901oao css-textMultiLine-cens5h"
@@ -344,7 +340,7 @@ Object {
                   >
                     Continuer
                   </div>
-                </div>
+                </button>
                 <div
                   class="css-view-1dbjc4n"
                   style="height: 8px;"

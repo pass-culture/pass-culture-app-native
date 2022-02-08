@@ -193,55 +193,11 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         }
       }
     />
-    <div
-      aria-label="Consulter l'article d'aide"
-      className="css-view-1dbjc4n"
-      data-testid="Consulter l'article d'aide"
+    <button
+      className="sc-bdvvtL iDzbyb sc-gKclnd kKVSn"
       onClick={[Function]}
-      onContextMenu={[Function]}
-      onKeyDown={[Function]}
-      style={
-        Object {
-          "MozTransitionProperty": "opacity",
-          "MozUserSelect": "none",
-          "WebkitAlignItems": "center",
-          "WebkitBoxAlign": "center",
-          "WebkitBoxDirection": "normal",
-          "WebkitBoxOrient": "horizontal",
-          "WebkitBoxPack": "center",
-          "WebkitFlexDirection": "row",
-          "WebkitJustifyContent": "center",
-          "WebkitTransitionDuration": "0s",
-          "WebkitTransitionProperty": "opacity",
-          "WebkitUserSelect": "none",
-          "alignItems": "center",
-          "backgroundColor": "rgba(0,0,0,0.00)",
-          "borderBottomLeftRadius": "24px",
-          "borderBottomRightRadius": "24px",
-          "borderTopLeftRadius": "24px",
-          "borderTopRightRadius": "24px",
-          "cursor": "pointer",
-          "flexDirection": "row",
-          "height": "40px",
-          "justifyContent": "center",
-          "maxWidth": "500px",
-          "msFlexAlign": "center",
-          "msFlexDirection": "row",
-          "msFlexPack": "center",
-          "msTouchAction": "manipulation",
-          "msUserSelect": "none",
-          "paddingBottom": "2px",
-          "paddingLeft": "2px",
-          "paddingRight": "2px",
-          "paddingTop": "2px",
-          "touchAction": "manipulation",
-          "transitionDuration": "0s",
-          "transitionProperty": "opacity",
-          "userSelect": "none",
-          "width": "100%",
-        }
-      }
-      tabIndex="0"
+      onDoubleClick={[Function]}
+      type="button"
     >
       <div
         className="css-view-1dbjc4n"
@@ -271,56 +227,13 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       >
         Consulter l'article d'aide
       </div>
-    </div>
-    <div
-      aria-label="button-icon"
-      className="css-view-1dbjc4n"
-      data-testid="Contacter le support"
+    </button>
+    <button
+      className="sc-bdvvtL iDzbyb sc-gKclnd kKVSn"
+      data-testid="button-icon"
       onClick={[Function]}
-      onContextMenu={[Function]}
-      onKeyDown={[Function]}
-      style={
-        Object {
-          "MozTransitionProperty": "opacity",
-          "MozUserSelect": "none",
-          "WebkitAlignItems": "center",
-          "WebkitBoxAlign": "center",
-          "WebkitBoxDirection": "normal",
-          "WebkitBoxOrient": "horizontal",
-          "WebkitBoxPack": "center",
-          "WebkitFlexDirection": "row",
-          "WebkitJustifyContent": "center",
-          "WebkitTransitionDuration": "0s",
-          "WebkitTransitionProperty": "opacity",
-          "WebkitUserSelect": "none",
-          "alignItems": "center",
-          "backgroundColor": "rgba(0,0,0,0.00)",
-          "borderBottomLeftRadius": "24px",
-          "borderBottomRightRadius": "24px",
-          "borderTopLeftRadius": "24px",
-          "borderTopRightRadius": "24px",
-          "cursor": "pointer",
-          "flexDirection": "row",
-          "height": "40px",
-          "justifyContent": "center",
-          "maxWidth": "500px",
-          "msFlexAlign": "center",
-          "msFlexDirection": "row",
-          "msFlexPack": "center",
-          "msTouchAction": "manipulation",
-          "msUserSelect": "none",
-          "paddingBottom": "2px",
-          "paddingLeft": "2px",
-          "paddingRight": "2px",
-          "paddingTop": "2px",
-          "touchAction": "manipulation",
-          "transitionDuration": "0s",
-          "transitionProperty": "opacity",
-          "userSelect": "none",
-          "width": "100%",
-        }
-      }
-      tabIndex="0"
+      onDoubleClick={[Function]}
+      type="button"
     >
       <div
         className="css-view-1dbjc4n"
@@ -350,7 +263,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       >
         Contacter le support
       </div>
-    </div>
+    </button>
     <div
       className="css-view-1dbjc4n"
       style={
@@ -374,55 +287,12 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         }
       }
     >
-      <div
-        aria-label="Renvoyer l'email"
-        className="css-view-1dbjc4n"
-        data-testid="Renvoyer l'email"
+      <button
+        className="sc-bdvvtL iDzbyb sc-gsDKAQ khldlI"
+        disabled={false}
         onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitBoxPack": "center",
-            "WebkitFlexDirection": "row",
-            "WebkitJustifyContent": "center",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "center",
-            "backgroundColor": "rgba(255,255,255,1.00)",
-            "borderBottomLeftRadius": "24px",
-            "borderBottomRightRadius": "24px",
-            "borderTopLeftRadius": "24px",
-            "borderTopRightRadius": "24px",
-            "cursor": "pointer",
-            "flexDirection": "row",
-            "height": "40px",
-            "justifyContent": "center",
-            "maxWidth": "500px",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msFlexPack": "center",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "paddingBottom": "2px",
-            "paddingLeft": "2px",
-            "paddingRight": "2px",
-            "paddingTop": "2px",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-            "width": "100%",
-          }
-        }
-        tabIndex="0"
+        onDoubleClick={[Function]}
+        type="button"
       >
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
@@ -441,7 +311,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         >
           Renvoyer l'email
         </div>
-      </div>
+      </button>
       <div
         className="css-view-1dbjc4n"
         style={
@@ -450,55 +320,12 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
           }
         }
       />
-      <div
-        aria-label="button-icon"
-        className="css-view-1dbjc4n"
-        data-testid="Retourner à l'accueil"
+      <button
+        className="sc-bdvvtL iDzbyb sc-gKclnd kKVSn"
+        data-testid="button-icon"
         onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitBoxPack": "center",
-            "WebkitFlexDirection": "row",
-            "WebkitJustifyContent": "center",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "center",
-            "backgroundColor": "rgba(0,0,0,0.00)",
-            "borderBottomLeftRadius": "24px",
-            "borderBottomRightRadius": "24px",
-            "borderTopLeftRadius": "24px",
-            "borderTopRightRadius": "24px",
-            "cursor": "pointer",
-            "flexDirection": "row",
-            "height": "40px",
-            "justifyContent": "center",
-            "maxWidth": "500px",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msFlexPack": "center",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "paddingBottom": "2px",
-            "paddingLeft": "2px",
-            "paddingRight": "2px",
-            "paddingTop": "2px",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-            "width": "100%",
-          }
-        }
-        tabIndex="0"
+        onDoubleClick={[Function]}
+        type="button"
       >
         <div
           className="css-view-1dbjc4n"
@@ -528,7 +355,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         >
           Retourner à l'accueil
         </div>
-      </div>
+      </button>
     </div>
     <div
       className="css-view-1dbjc4n"

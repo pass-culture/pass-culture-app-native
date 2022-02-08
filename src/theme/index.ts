@@ -4,6 +4,8 @@ import { Platform } from 'react-native'
 import { isMobileDeviceDetectOnWeb, isTabletDeviceDetectOnWeb } from 'libs/react-device-detect'
 import { getSpacing, getSpacingString } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
+import { buttonHeights, ButtonHeightsType } from 'ui/theme/buttonHeights'
+// eslint-disable-next-line no-restricted-imports
 import { ACTIVE_OPACITY, ColorsEnum, UniqueColors } from 'ui/theme/colors'
 import {
   BOTTOM_CONTENT_PAGE_OFFSET_TOP_HEIGHT_DESKTOP_TABLET,
@@ -120,6 +122,7 @@ export interface AppThemeType {
   icons: { sizes: IconSizesType }
   buttons: {
     maxWidth: number
+    buttonHeights: ButtonHeightsType
     loading: {
       primary: {
         backgroundColor: ColorsEnum
@@ -401,6 +404,11 @@ export const theme: AppThemeType = {
   icons: { sizes: iconSizes },
   buttons: {
     maxWidth: DESKTOP_CONTENT_MAX_WIDTH,
+    buttonHeights: {
+      small: buttonHeights.small,
+      tall: buttonHeights.tall,
+      inline: buttonHeights.inline,
+    },
     loading: {
       primary: {
         backgroundColor: ColorsEnum.PRIMARY_DARK,

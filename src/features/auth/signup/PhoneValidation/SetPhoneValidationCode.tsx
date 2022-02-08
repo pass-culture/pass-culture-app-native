@@ -19,6 +19,7 @@ import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBene
 import { contactSupport } from 'features/auth/support.services'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { amplitude } from 'libs/amplitude'
 import { currentTimestamp } from 'libs/dates'
 import { env } from 'libs/environment'
@@ -27,7 +28,6 @@ import { eventMonitoring, captureMonitoringError } from 'libs/monitoring'
 import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
 import { storage } from 'libs/storage'
 import { TIMER_NOT_INITIALIZED, useTimer } from 'libs/timer'
-import { accessibilityAndTestId } from 'tests/utils'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
@@ -251,6 +251,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
               <Spacer.Column numberOfSpaces={8} />
             )}
             <ButtonPrimary
+              testID="Continuer"
               wording={t`Continuer`}
               disabled={!codeInputState.isValid}
               onPress={validateCode}
@@ -265,7 +266,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
             <ButtonTertiary
               inlineHeight="100%"
               wording={getRetryButtonTitle()}
-              testId={'Réessayer'}
+              testID={'Réessayer'}
               onPress={requestSendPhoneValidationCode}
               inline
               disabled={!isRequestTimestampExpired}

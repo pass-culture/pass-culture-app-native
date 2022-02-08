@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { SeeMore } from 'features/home/atoms'
 import { Cover } from 'features/home/atoms/Cover'
-import { accessibilityAndTestId } from 'tests/utils'
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { Playlist, RenderFooterItem, RenderHeaderItem } from 'ui/components/Playlist'
 import { EyeSophisticated } from 'ui/svg/icons/EyeSophisticated'
 import { getSpacing, Spacer, Typo } from 'ui/theme'

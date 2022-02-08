@@ -161,7 +161,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
             disabled={!!isOfferAlreadyReported}
             icon={() => <Flag size={20} />}
             onPress={showReportOfferDescription}
-            testId={'report-offer-body'}
+            testID={'report-offer-body'}
             justifyContent="flex-start"
           />
         </SectionReportOffer>

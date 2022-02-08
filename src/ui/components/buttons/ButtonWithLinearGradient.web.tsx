@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import styledNative from 'styled-components/native'
 
 import { ExternalSite as InitialExternalSite } from 'ui/svg/icons/ExternalSite'
-import { getSpacing, getSpacingString, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
   wording: string
@@ -47,31 +47,27 @@ export const ButtonWithLinearGradient: React.FC<Props> = ({
   )
 }
 
-const Button = styled.button`
-  ${({ theme }) => `
-    height: ${getSpacingString(12)};
-    border-radius: ${theme.borderRadius.button}px;
-    background-color: ${theme.colors.primary};
-    background: linear-gradient(0.25turn, ${theme.colors.primary}, ${theme.colors.secondary});
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 0;
-    overflow: hidden;
-    cursor: pointer;
-
-    &:active {
-      opacity: ${theme.activeOpacity};
-    }
-
-    &:disabled {
-      cursor: initial;
-      background: none;
-      background-color: ${theme.colors.primaryDisabled};
-    }
-  `}
-`
+const Button = styled.button(({ theme }) => ({
+  overflow: 'hidden',
+  cursor: 'pointer',
+  height: theme.buttons.buttonHeights.tall,
+  borderRadius: theme.borderRadius.button,
+  backgroundColor: theme.colors.primary,
+  background: `linear-gradient(0.25turn, ${theme.colors.primary}, ${theme.colors.secondary})`,
+  padding: 0,
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  border: 0,
+  ['&:active']: {
+    opacity: theme.activeOpacity,
+  },
+  ['&:disabled']: {
+    cursor: 'initial',
+    background: 'none',
+    backgroundColor: theme.colors.primaryDisabled,
+  },
+}))
 
 const Title = styledNative(Typo.ButtonText)(({ theme }) => ({
   color: theme.colors.white,

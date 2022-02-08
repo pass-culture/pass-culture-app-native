@@ -290,7 +290,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
           "width": "100%",
         }
       }
-      testID="Contacter le support"
+      testID="button-icon"
     >
       <View
         height={20}
@@ -447,7 +447,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
             "width": "100%",
           }
         }
-        testID="Retourner à l'accueil"
+        testID="button-icon"
       >
         <View
           height={20}

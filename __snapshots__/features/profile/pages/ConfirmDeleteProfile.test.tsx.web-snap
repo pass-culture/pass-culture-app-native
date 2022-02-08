@@ -170,55 +170,11 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
         }
       }
     >
-      <div
-        aria-label="Supprimer mon compte"
-        className="css-view-1dbjc4n"
-        data-testid="Supprimer mon compte"
+      <button
+        className="sc-bdvvtL iDzbyb sc-gsDKAQ khldlI"
         onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitBoxPack": "center",
-            "WebkitFlexDirection": "row",
-            "WebkitJustifyContent": "center",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "center",
-            "backgroundColor": "rgba(255,255,255,1.00)",
-            "borderBottomLeftRadius": "24px",
-            "borderBottomRightRadius": "24px",
-            "borderTopLeftRadius": "24px",
-            "borderTopRightRadius": "24px",
-            "cursor": "pointer",
-            "flexDirection": "row",
-            "height": "40px",
-            "justifyContent": "center",
-            "maxWidth": "500px",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msFlexPack": "center",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "paddingBottom": "2px",
-            "paddingLeft": "2px",
-            "paddingRight": "2px",
-            "paddingTop": "2px",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-            "width": "100%",
-          }
-        }
-        tabIndex="0"
+        onDoubleClick={[Function]}
+        type="button"
       >
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
@@ -237,7 +193,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
         >
           Supprimer mon compte
         </div>
-      </div>
+      </button>
       <div
         className="css-view-1dbjc4n"
         style={
@@ -246,55 +202,11 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
           }
         }
       />
-      <div
-        aria-label="Abandonner"
-        className="css-view-1dbjc4n"
-        data-testid="Abandonner"
+      <button
+        className="sc-bdvvtL iDzbyb sc-dkPtRN fwCeAR"
         onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitBoxPack": "center",
-            "WebkitFlexDirection": "row",
-            "WebkitJustifyContent": "center",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "center",
-            "backgroundColor": "rgba(0,0,0,0.00)",
-            "borderBottomLeftRadius": "24px",
-            "borderBottomRightRadius": "24px",
-            "borderTopLeftRadius": "24px",
-            "borderTopRightRadius": "24px",
-            "cursor": "pointer",
-            "flexDirection": "row",
-            "height": "40px",
-            "justifyContent": "center",
-            "maxWidth": "500px",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msFlexPack": "center",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "paddingBottom": "2px",
-            "paddingLeft": "2px",
-            "paddingRight": "2px",
-            "paddingTop": "2px",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-            "width": "100%",
-          }
-        }
-        tabIndex="0"
+        onDoubleClick={[Function]}
+        type="button"
       >
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
@@ -313,7 +225,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
         >
           Abandonner
         </div>
-      </div>
+      </button>
     </div>
     <div
       className="css-view-1dbjc4n"

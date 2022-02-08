@@ -26,7 +26,7 @@ const renderCallToAction = (
       <Spacer.Column numberOfSpaces={4} />
       <ButtonQuaternaryBlack
         icon={callToActionIcon || undefined}
-        testId="call-to-action-button"
+        testID="call-to-action-button"
         onPress={() => handleCallToActionLink(callToActionLink)}
         wording={callToActionMessage}
         justifyContent="flex-start"

@@ -53,7 +53,7 @@ export const ReportOfferOtherReason: FunctionComponent<Props> = (props) => {
         wording={t`Signaler l'offre`}
         disabled={!inputText}
         onPress={reportOffer}
-        testId="report-other-button"
+        testID="report-other-button"
       />
     </Form.MaxWidth>
   )

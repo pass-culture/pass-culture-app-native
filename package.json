@@ -183,6 +183,7 @@
     "@storybook/addon-react-native-web": "^0.0.18",
     "@storybook/react": "^6.4.18",
     "@svgr/webpack": "^5.5.0",
+    "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.0.0",
     "@testing-library/react-hooks": "^3.4.2",
     "@testing-library/react-native": "7.1.0",

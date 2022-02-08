@@ -368,55 +368,11 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                   }
                 }
               >
-                <div
-                  aria-label="Valider et continuer"
-                  className="css-view-1dbjc4n"
-                  data-testid="Valider et continuer"
+                <button
+                  className="sc-bdvvtL iDzbyb sc-dkPtRN efdTBP"
                   onClick={[Function]}
-                  onContextMenu={[Function]}
-                  onKeyDown={[Function]}
-                  style={
-                    Object {
-                      "MozTransitionProperty": "opacity",
-                      "MozUserSelect": "none",
-                      "WebkitAlignItems": "center",
-                      "WebkitBoxAlign": "center",
-                      "WebkitBoxDirection": "normal",
-                      "WebkitBoxOrient": "horizontal",
-                      "WebkitBoxPack": "center",
-                      "WebkitFlexDirection": "row",
-                      "WebkitJustifyContent": "center",
-                      "WebkitTransitionDuration": "0s",
-                      "WebkitTransitionProperty": "opacity",
-                      "WebkitUserSelect": "none",
-                      "alignItems": "center",
-                      "backgroundColor": "rgba(235,0,85,1.00)",
-                      "borderBottomLeftRadius": "24px",
-                      "borderBottomRightRadius": "24px",
-                      "borderTopLeftRadius": "24px",
-                      "borderTopRightRadius": "24px",
-                      "cursor": "pointer",
-                      "flexDirection": "row",
-                      "height": "40px",
-                      "justifyContent": "center",
-                      "maxWidth": "500px",
-                      "msFlexAlign": "center",
-                      "msFlexDirection": "row",
-                      "msFlexPack": "center",
-                      "msTouchAction": "manipulation",
-                      "msUserSelect": "none",
-                      "paddingBottom": "2px",
-                      "paddingLeft": "2px",
-                      "paddingRight": "2px",
-                      "paddingTop": "2px",
-                      "touchAction": "manipulation",
-                      "transitionDuration": "0s",
-                      "transitionProperty": "opacity",
-                      "userSelect": "none",
-                      "width": "100%",
-                    }
-                  }
-                  tabIndex="0"
+                  onDoubleClick={[Function]}
+                  type="button"
                 >
                   <div
                     className="css-text-901oao css-textMultiLine-cens5h"
@@ -435,7 +391,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                   >
                     Valider et continuer
                   </div>
-                </div>
+                </button>
               </div>
               <div
                 className="css-view-1dbjc4n"

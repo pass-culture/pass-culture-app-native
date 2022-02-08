@@ -45,7 +45,7 @@ Object {
             style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           >
             <form
-              class="sc-hKwDye iARjhg"
+              class="sc-jrQzAO fLQviJ"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -56,7 +56,7 @@ Object {
                   style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                 >
                   <label
-                    class="sc-gsDKAQ feJuLU"
+                    class="sc-furwcr dyBdUw"
                     for="testUuidV4"
                   >
                     Nouvel e-mail
@@ -106,7 +106,7 @@ Object {
                   style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                 >
                   <label
-                    class="sc-gsDKAQ feJuLU"
+                    class="sc-furwcr dyBdUw"
                     for="testUuidV4"
                   >
                     Mot de passe
@@ -170,12 +170,10 @@ Object {
                 class="css-view-1dbjc4n"
                 style="align-items: center; padding-bottom: 16px; width: 100%;"
               >
-                <div
-                  aria-label="Enregistrer"
-                  class="css-view-1dbjc4n"
-                  data-testid="Enregistrer"
-                  style="align-items: center; background-color: rgb(241, 241, 244); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                  tabindex="0"
+                <button
+                  class="sc-gsDKAQ hGMWsC sc-hKwDye gqAQWB"
+                  disabled=""
+                  type="button"
                 >
                   <div
                     class="css-text-901oao css-textMultiLine-cens5h"
@@ -184,7 +182,7 @@ Object {
                   >
                     Enregistrer
                   </div>
-                </div>
+                </button>
               </div>
             </form>
             <div
@@ -195,7 +193,7 @@ Object {
         </div>
       </div>
       <header
-        class="sc-iqseJM hNrWwj"
+        class="sc-ieecCq etXgLS"
       >
         <div
           class="css-view-1dbjc4n"
@@ -300,7 +298,7 @@ Object {
           style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         >
           <form
-            class="sc-hKwDye iARjhg"
+            class="sc-jrQzAO fLQviJ"
           >
             <div
               class="css-view-1dbjc4n"
@@ -311,7 +309,7 @@ Object {
                 style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
               >
                 <label
-                  class="sc-gsDKAQ feJuLU"
+                  class="sc-furwcr dyBdUw"
                   for="testUuidV4"
                 >
                   Nouvel e-mail
@@ -361,7 +359,7 @@ Object {
                 style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
               >
                 <label
-                  class="sc-gsDKAQ feJuLU"
+                  class="sc-furwcr dyBdUw"
                   for="testUuidV4"
                 >
                   Mot de passe
@@ -425,12 +423,10 @@ Object {
               class="css-view-1dbjc4n"
               style="align-items: center; padding-bottom: 16px; width: 100%;"
             >
-              <div
-                aria-label="Enregistrer"
-                class="css-view-1dbjc4n"
-                data-testid="Enregistrer"
-                style="align-items: center; background-color: rgb(241, 241, 244); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; cursor: pointer; flex-direction: row; height: 40px; justify-content: center; max-width: 500px; padding: 2px 2px 2px 2px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                tabindex="0"
+              <button
+                class="sc-gsDKAQ hGMWsC sc-hKwDye gqAQWB"
+                disabled=""
+                type="button"
               >
                 <div
                   class="css-text-901oao css-textMultiLine-cens5h"
@@ -439,7 +435,7 @@ Object {
                 >
                   Enregistrer
                 </div>
-              </div>
+              </button>
             </div>
           </form>
           <div
@@ -450,7 +446,7 @@ Object {
       </div>
     </div>
     <header
-      class="sc-iqseJM hNrWwj"
+      class="sc-ieecCq etXgLS"
     >
       <div
         class="css-view-1dbjc4n"
