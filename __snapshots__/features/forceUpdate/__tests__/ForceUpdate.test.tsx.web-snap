@@ -173,6 +173,7 @@ Pour des questions de performance et de sécurité merci d'actualiser la page po
     >
       <button
         className="sc-gsDKAQ kNRtDq sc-dkPtRN gNpZyI"
+        data-testid="Actualiser la page"
         onClick={[Function]}
         onDoubleClick={[Function]}
       >

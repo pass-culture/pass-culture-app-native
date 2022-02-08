@@ -206,6 +206,7 @@ Object {
         >
           <button
             class="sc-gsDKAQ ijLbuY sc-dkPtRN efdTBP"
+            data-testid="Valider"
           >
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
@@ -421,6 +422,7 @@ Object {
       >
         <button
           class="sc-gsDKAQ ijLbuY sc-dkPtRN efdTBP"
+          data-testid="Valider"
         >
           <div
             class="css-text-901oao css-textMultiLine-cens5h"

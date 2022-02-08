@@ -172,6 +172,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
     >
       <button
         className="sc-gsDKAQ kNRtDq sc-dkPtRN gNpZyI"
+        data-testid="Supprimer mon compte"
         onClick={[Function]}
         onDoubleClick={[Function]}
       >
@@ -203,6 +204,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       />
       <button
         className="sc-gsDKAQ kNRtDq sc-hKwDye gvtKtm"
+        data-testid="Abandonner"
         onClick={[Function]}
         onDoubleClick={[Function]}
       >

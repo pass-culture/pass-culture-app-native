@@ -71,7 +71,7 @@ const _AppButton = <T extends AppButtonProps>({
   style,
   loadingIndicator: LoadingIndicator,
   center,
-  type,
+  type = 'button',
   className,
   name,
 }: Only<T, AppButtonProps>) => {

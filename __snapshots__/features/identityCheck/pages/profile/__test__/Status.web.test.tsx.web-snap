@@ -288,6 +288,7 @@ Object {
                 >
                   <button
                     class="sc-gsDKAQ kNRtDq sc-dkPtRN cRlcLC"
+                    data-testid="Choisis ton statut"
                     disabled=""
                   >
                     <div
@@ -609,6 +610,7 @@ Object {
               >
                 <button
                   class="sc-gsDKAQ kNRtDq sc-dkPtRN cRlcLC"
+                  data-testid="Choisis ton statut"
                   disabled=""
                 >
                   <div

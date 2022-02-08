@@ -195,17 +195,19 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
     />
     <button
       className="sc-gsDKAQ kNRtDq sc-iCfMLu uxgRG"
+      data-testid="Consulter l'article d'aide"
       onClick={[Function]}
       onDoubleClick={[Function]}
     >
       <div
         className="css-view-1dbjc4n"
+        data-testid="button-icon"
       >
         <div
           className="css-text-901oao"
           dir="auto"
         >
-          undefined-SVG-Mock
+          button-icon-SVG-Mock
         </div>
       </div>
       <div
@@ -228,17 +230,19 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
     </button>
     <button
       className="sc-gsDKAQ kNRtDq sc-iCfMLu uxgRG"
+      data-testid="Contacter le support"
       onClick={[Function]}
       onDoubleClick={[Function]}
     >
       <div
         className="css-view-1dbjc4n"
+        data-testid="button-icon"
       >
         <div
           className="css-text-901oao"
           dir="auto"
         >
-          undefined-SVG-Mock
+          button-icon-SVG-Mock
         </div>
       </div>
       <div
@@ -284,6 +288,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
     >
       <button
         className="sc-gsDKAQ kNRtDq sc-dkPtRN gNpZyI"
+        data-testid="Renvoyer l'email"
         disabled={false}
         onClick={[Function]}
         onDoubleClick={[Function]}
@@ -316,17 +321,19 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       />
       <button
         className="sc-gsDKAQ kNRtDq sc-iCfMLu uxgRG"
+        data-testid="Retourner à l'accueil"
         onClick={[Function]}
         onDoubleClick={[Function]}
       >
         <div
           className="css-view-1dbjc4n"
+          data-testid="button-icon"
         >
           <div
             className="css-text-901oao"
             dir="auto"
           >
-            undefined-SVG-Mock
+            button-icon-SVG-Mock
           </div>
         </div>
         <div

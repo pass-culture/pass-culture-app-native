@@ -113,11 +113,12 @@ describe('SetPhoneValidationCode', () => {
 
   describe('Continue button', () => {
     it('should enable continue button if input is valid and complete', async () => {
-      const { getByTestId } = renderModalWithFilledCodeInput('123456')
-      const continueButton = getByTestId('Continuer')
-
+      const renderAPI = renderModalWithFilledCodeInput('123456')
+      const continueButton = renderAPI.getByTestId('Continuer')
+      // renderAPI.debug()
       await waitForExpect(() => {
-        expect(continueButton.style.backgroundColor).toEqual('rgb(241, 241, 244)')
+        // TODO: test live and fix line bellow
+        expect(continueButton).not.toHaveProperty('disabled')
       })
     })
 
@@ -130,7 +131,7 @@ describe('SetPhoneValidationCode', () => {
       const continueButton = getByTestId('Continuer')
 
       await waitForExpect(() => {
-        expect(continueButton.style.backgroundColor).toEqual('rgb(241, 241, 244)')
+        expect(continueButton).toHaveProperty('disabled')
       })
     })
 

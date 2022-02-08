@@ -172,6 +172,7 @@ Object {
               >
                 <button
                   class="sc-dkPtRN dVZUnu sc-eCImPb cYRLFR"
+                  data-testid="Enregistrer"
                   disabled=""
                 >
                   <div
@@ -424,6 +425,7 @@ Object {
             >
               <button
                 class="sc-dkPtRN dVZUnu sc-eCImPb cYRLFR"
+                data-testid="Enregistrer"
                 disabled=""
               >
                 <div

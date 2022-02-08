@@ -323,17 +323,19 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
               >
                 <button
                   className="sc-gsDKAQ kNRtDq sc-ieecCq fhwLym"
+                  data-testid="Je suis de nationalité française"
                   onClick={[Function]}
                   onDoubleClick={[Function]}
                 >
                   <div
                     className="css-view-1dbjc4n"
+                    data-testid="button-icon"
                   >
                     <div
                       className="css-text-901oao"
                       dir="auto"
                     >
-                      undefined-SVG-Mock
+                      button-icon-SVG-Mock
                     </div>
                   </div>
                   <div
@@ -432,17 +434,19 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 </div>
                 <button
                   className="sc-gsDKAQ kNRtDq sc-ieecCq fhwLym"
+                  data-testid="Je suis de nationalité étrangère"
                   onClick={[Function]}
                   onDoubleClick={[Function]}
                 >
                   <div
                     className="css-view-1dbjc4n"
+                    data-testid="button-icon"
                   >
                     <div
                       className="css-text-901oao"
                       dir="auto"
                     >
-                      undefined-SVG-Mock
+                      button-icon-SVG-Mock
                     </div>
                   </div>
                   <div

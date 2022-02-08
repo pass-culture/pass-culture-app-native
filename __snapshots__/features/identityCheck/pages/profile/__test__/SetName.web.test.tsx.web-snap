@@ -189,6 +189,7 @@ Object {
                 >
                   <button
                     class="sc-gsDKAQ kNRtDq sc-dkPtRN cRlcLC"
+                    data-testid="Continuer"
                     disabled=""
                   >
                     <div
@@ -411,6 +412,7 @@ Object {
               >
                 <button
                   class="sc-gsDKAQ kNRtDq sc-dkPtRN cRlcLC"
+                  data-testid="Continuer"
                   disabled=""
                 >
                   <div

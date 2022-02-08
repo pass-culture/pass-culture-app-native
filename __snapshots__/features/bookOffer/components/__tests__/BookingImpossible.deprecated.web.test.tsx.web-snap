@@ -47,6 +47,7 @@ Object {
         />
         <button
           class="sc-gsDKAQ kNRtDq sc-dkPtRN efdTBP"
+          data-testid="Mettre en favoris"
         >
           <div
             class="css-text-901oao css-textMultiLine-cens5h"
@@ -62,6 +63,7 @@ Object {
         />
         <button
           class="sc-gsDKAQ kNRtDq sc-hKwDye gvtKtm"
+          data-testid="Retourner à l'offre"
         >
           <div
             class="css-text-901oao css-textMultiLine-cens5h"
@@ -121,6 +123,7 @@ Object {
       />
       <button
         class="sc-gsDKAQ kNRtDq sc-dkPtRN efdTBP"
+        data-testid="Mettre en favoris"
       >
         <div
           class="css-text-901oao css-textMultiLine-cens5h"
@@ -136,6 +139,7 @@ Object {
       />
       <button
         class="sc-gsDKAQ kNRtDq sc-hKwDye gvtKtm"
+        data-testid="Retourner à l'offre"
       >
         <div
           class="css-text-901oao css-textMultiLine-cens5h"

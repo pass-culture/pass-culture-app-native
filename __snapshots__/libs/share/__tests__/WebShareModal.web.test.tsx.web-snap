@@ -196,15 +196,17 @@ Object {
                             >
                               <button
                                 class="sc-gsDKAQ kNRtDq sc-hKwDye gvtKtm"
+                                data-testid="Copier"
                               >
                                 <div
                                   class="css-view-1dbjc4n"
+                                  data-testid="button-icon"
                                 >
                                   <div
                                     class="css-text-901oao"
                                     dir="auto"
                                   >
-                                    undefined-SVG-Mock
+                                    button-icon-SVG-Mock
                                   </div>
                                 </div>
                                 <div
@@ -222,15 +224,17 @@ Object {
                             >
                               <button
                                 class="sc-gsDKAQ kNRtDq sc-hKwDye gvtKtm"
+                                data-testid="E-mail"
                               >
                                 <div
                                   class="css-view-1dbjc4n"
+                                  data-testid="button-icon"
                                 >
                                   <div
                                     class="css-text-901oao"
                                     dir="auto"
                                   >
-                                    undefined-SVG-Mock
+                                    button-icon-SVG-Mock
                                   </div>
                                 </div>
                                 <div
@@ -374,6 +378,7 @@ Object {
                           />
                           <button
                             class="sc-gsDKAQ dYnIle sc-dkPtRN efdTBP"
+                            data-testid="Annuler"
                           >
                             <div
                               class="css-text-901oao css-textMultiLine-cens5h"

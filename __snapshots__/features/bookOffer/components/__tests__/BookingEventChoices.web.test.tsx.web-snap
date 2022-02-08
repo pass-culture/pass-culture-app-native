@@ -247,6 +247,7 @@ Object {
         />
         <button
           class="sc-gsDKAQ kNRtDq sc-hKwDye dYlrCo"
+          data-testid="Valider ces options"
         >
           <div
             class="css-text-901oao css-textMultiLine-cens5h"
@@ -502,6 +503,7 @@ Object {
       />
       <button
         class="sc-gsDKAQ kNRtDq sc-hKwDye dYlrCo"
+        data-testid="Valider ces options"
       >
         <div
           class="css-text-901oao css-textMultiLine-cens5h"

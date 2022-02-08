@@ -370,6 +370,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
               >
                 <button
                   className="sc-gsDKAQ kNRtDq sc-hKwDye dYlrCo"
+                  data-testid="Valider et continuer"
                   onClick={[Function]}
                   onDoubleClick={[Function]}
                 >

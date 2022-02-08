@@ -97,6 +97,7 @@ Object {
           >
             <button
               class="sc-gsDKAQ falnvy sc-dkPtRN gNpZyI"
+              data-testid="Réessayer"
             >
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
@@ -212,6 +213,7 @@ Object {
         >
           <button
             class="sc-gsDKAQ falnvy sc-dkPtRN gNpZyI"
+            data-testid="Réessayer"
           >
             <div
               class="css-text-901oao css-textMultiLine-cens5h"

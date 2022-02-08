@@ -203,17 +203,19 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
     >
       <button
         className="sc-gsDKAQ kNRtDq sc-iCfMLu uxgRG"
+        data-testid="Retourner à l'accueil"
         onClick={[Function]}
         onDoubleClick={[Function]}
       >
         <div
           className="css-view-1dbjc4n"
+          data-testid="button-icon"
         >
           <div
             className="css-text-901oao"
             dir="auto"
           >
-            undefined-SVG-Mock
+            button-icon-SVG-Mock
           </div>
         </div>
         <div

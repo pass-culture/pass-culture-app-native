@@ -148,6 +148,7 @@ Object {
                 >
                   <button
                     class="sc-gsDKAQ kNRtDq sc-eCImPb cYRLFR"
+                    data-testid="Continuer"
                     disabled=""
                   >
                     <div
@@ -329,6 +330,7 @@ Object {
               >
                 <button
                   class="sc-gsDKAQ kNRtDq sc-eCImPb cYRLFR"
+                  data-testid="Continuer"
                   disabled=""
                 >
                   <div

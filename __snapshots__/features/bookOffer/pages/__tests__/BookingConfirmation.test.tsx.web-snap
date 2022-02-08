@@ -195,6 +195,7 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
     >
       <button
         className="sc-gsDKAQ kNRtDq sc-dkPtRN gNpZyI"
+        data-testid="Voir ma réservation"
         onClick={[Function]}
         onDoubleClick={[Function]}
       >
@@ -226,6 +227,7 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       />
       <button
         className="sc-gsDKAQ kNRtDq sc-iCfMLu uxgRG"
+        data-testid="Retourner à l'accueil"
         onClick={[Function]}
         onDoubleClick={[Function]}
       >
