@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AppButtonInner } from 'ui/components/buttons/AppButton/AppButtonInner'
 import { DefaultLoadingIndicator } from 'ui/components/buttons/AppButton/DefaultLoadingIndicator'
-import { buttonWebStyles } from 'ui/components/buttons/AppButton/styleUtils'
+import { appButtonWebStyles } from 'ui/components/buttons/AppButton/styleUtils'
 import {
   AppButtonEventWeb,
   AppButtonProps,
@@ -103,4 +103,4 @@ _AppButton.defaultProps = {
 // memo is used to avoid useless rendering while props remain unchanged
 export const AppButton = memo(_AppButton)
 
-const Button = styled.button<TouchableOpacityButtonProps>(buttonWebStyles)
+const Button = styled.button<TouchableOpacityButtonProps>(appButtonWebStyles)

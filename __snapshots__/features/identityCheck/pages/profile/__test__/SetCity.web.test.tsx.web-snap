@@ -67,7 +67,7 @@ Object {
                   style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
                 >
                   <form
-                    class="sc-jrQzAO fLQviJ"
+                    class="sc-kDTinF bkTDgm"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -88,7 +88,7 @@ Object {
                       style="height: 20px;"
                     />
                     <label
-                      class="sc-furwcr dyBdUw"
+                      class="sc-pVTFL kFA-dfT"
                       for="testUuidV4"
                     >
                       Indique ton code postal et choisis ta ville
@@ -147,7 +147,7 @@ Object {
                   style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
                 >
                   <button
-                    class="sc-bdvvtL iDzbyb sc-hKwDye gqAQWB"
+                    class="sc-bdvvtL hhxsjW sc-hKwDye gqAQWB"
                     disabled=""
                     type="button"
                   >
@@ -249,7 +249,7 @@ Object {
                 style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
               >
                 <form
-                  class="sc-jrQzAO fLQviJ"
+                  class="sc-kDTinF bkTDgm"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -270,7 +270,7 @@ Object {
                     style="height: 20px;"
                   />
                   <label
-                    class="sc-furwcr dyBdUw"
+                    class="sc-pVTFL kFA-dfT"
                     for="testUuidV4"
                   >
                     Indique ton code postal et choisis ta ville
@@ -329,7 +329,7 @@ Object {
                 style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
               >
                 <button
-                  class="sc-bdvvtL iDzbyb sc-hKwDye gqAQWB"
+                  class="sc-bdvvtL hhxsjW sc-hKwDye gqAQWB"
                   disabled=""
                   type="button"
                 >

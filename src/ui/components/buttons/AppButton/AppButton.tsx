@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AppButtonInner } from 'ui/components/buttons/AppButton/AppButtonInner'
 import { DefaultLoadingIndicator } from 'ui/components/buttons/AppButton/DefaultLoadingIndicator'
-import { buttonStyles } from 'ui/components/buttons/AppButton/styleUtils'
+import { appButtonStyles } from 'ui/components/buttons/AppButton/styleUtils'
 import {
   AppButtonEventNative,
   AppButtonProps,
@@ -77,4 +77,4 @@ export const AppButton = memo(_AppButton)
 
 const TouchableOpacityButton = styled(TouchableOpacity).attrs(({ theme }) => ({
   activeOpacity: theme.activeOpacity,
-}))<TouchableOpacityButtonProps>(buttonStyles)
+}))<TouchableOpacityButtonProps>(appButtonStyles)

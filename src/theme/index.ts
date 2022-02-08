@@ -280,6 +280,9 @@ export interface AppThemeType {
     }
     scrollButton: {
       size: number
+      borderWidth: number
+      borderColor: ColorsEnum
+      backgroundColor: ColorsEnum
     }
   }
 }
@@ -567,6 +570,9 @@ export const theme: AppThemeType = {
     },
     scrollButton: {
       size: getSpacing(10),
+      borderWidth: getSpacing(0.25),
+      borderColor: ColorsEnum.GREY_MEDIUM,
+      backgroundColor: ColorsEnum.WHITE,
     },
   },
 }
