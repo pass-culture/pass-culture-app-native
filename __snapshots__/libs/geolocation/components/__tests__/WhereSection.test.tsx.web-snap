@@ -237,6 +237,7 @@ Array [
       data-testid="Voir l'itinéraire"
       onClick={[Function]}
       onDoubleClick={[Function]}
+      type="button"
     >
       <div
         className="css-view-1dbjc4n"

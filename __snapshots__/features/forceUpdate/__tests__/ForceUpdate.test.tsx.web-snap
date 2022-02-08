@@ -176,6 +176,7 @@ Pour des questions de performance et de sécurité merci d'actualiser la page po
         data-testid="Actualiser la page"
         onClick={[Function]}
         onDoubleClick={[Function]}
+        type="button"
       >
         <div
           className="css-text-901oao css-textMultiLine-cens5h"

@@ -206,6 +206,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
         data-testid="Retourner à l'accueil"
         onClick={[Function]}
         onDoubleClick={[Function]}
+        type="button"
       >
         <div
           className="css-view-1dbjc4n"

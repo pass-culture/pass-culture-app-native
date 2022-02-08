@@ -175,6 +175,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
         data-testid="Supprimer mon compte"
         onClick={[Function]}
         onDoubleClick={[Function]}
+        type="button"
       >
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
@@ -207,6 +208,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
         data-testid="Abandonner"
         onClick={[Function]}
         onDoubleClick={[Function]}
+        type="button"
       >
         <div
           className="css-text-901oao css-textMultiLine-cens5h"

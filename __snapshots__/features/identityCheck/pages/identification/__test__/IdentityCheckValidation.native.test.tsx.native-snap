@@ -114,6 +114,7 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
           },
         ]
       }
+      topSafeInset={16}
     >
       <View
         style={

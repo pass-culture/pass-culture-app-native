@@ -198,6 +198,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         data-testid="S'inscrire"
         onClick={[Function]}
         onDoubleClick={[Function]}
+        type="button"
       >
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
@@ -230,6 +231,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         data-testid="Se connecter"
         onClick={[Function]}
         onDoubleClick={[Function]}
+        type="button"
       >
         <div
           className="css-text-901oao css-textMultiLine-cens5h"

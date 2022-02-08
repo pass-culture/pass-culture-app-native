@@ -114,6 +114,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
           },
         ]
       }
+      topSafeInset={16}
     >
       <View
         style={

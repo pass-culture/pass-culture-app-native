@@ -86,6 +86,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             <button
               class="sc-gsDKAQ kNRtDq sc-dkPtRN gNpZyI"
               data-testid="Faire une nouvelle demande"
+              type="button"
             >
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
@@ -102,6 +103,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             <button
               class="sc-gsDKAQ kNRtDq sc-hKwDye gvtKtm"
               data-testid="Retourner à l'accueil"
+              type="button"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -213,6 +215,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
           <button
             class="sc-gsDKAQ kNRtDq sc-dkPtRN gNpZyI"
             data-testid="Faire une nouvelle demande"
+            type="button"
           >
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
@@ -229,6 +232,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
           <button
             class="sc-gsDKAQ kNRtDq sc-hKwDye gvtKtm"
             data-testid="Retourner à l'accueil"
+            type="button"
           >
             <div
               class="css-view-1dbjc4n"
@@ -397,6 +401,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             <button
               class="sc-gsDKAQ kNRtDq sc-dkPtRN gNpZyI"
               data-testid="Se connecter"
+              type="button"
             >
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
@@ -413,6 +418,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             <button
               class="sc-gsDKAQ kNRtDq sc-hKwDye gvtKtm"
               data-testid="Retourner à l'accueil"
+              type="button"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -524,6 +530,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
           <button
             class="sc-gsDKAQ kNRtDq sc-dkPtRN gNpZyI"
             data-testid="Se connecter"
+            type="button"
           >
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
@@ -540,6 +547,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
           <button
             class="sc-gsDKAQ kNRtDq sc-hKwDye gvtKtm"
             data-testid="Retourner à l'accueil"
+            type="button"
           >
             <div
               class="css-view-1dbjc4n"

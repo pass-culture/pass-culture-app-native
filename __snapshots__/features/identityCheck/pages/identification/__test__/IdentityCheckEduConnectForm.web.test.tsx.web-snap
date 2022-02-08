@@ -146,6 +146,7 @@ Object {
                   <button
                     class="sc-gsDKAQ kNRtDq sc-eCImPb bxfGfU"
                     data-testid="Ouvrir un onglet ÉduConnect"
+                    type="button"
                   >
                     <div
                       class="css-text-901oao css-textMultiLine-cens5h"
@@ -324,6 +325,7 @@ Object {
                 <button
                   class="sc-gsDKAQ kNRtDq sc-eCImPb bxfGfU"
                   data-testid="Ouvrir un onglet ÉduConnect"
+                  type="button"
                 >
                   <div
                     class="css-text-901oao css-textMultiLine-cens5h"

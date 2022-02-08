@@ -373,6 +373,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                   data-testid="Valider et continuer"
                   onClick={[Function]}
                   onDoubleClick={[Function]}
+                  type="button"
                 >
                   <div
                     className="css-text-901oao css-textMultiLine-cens5h"

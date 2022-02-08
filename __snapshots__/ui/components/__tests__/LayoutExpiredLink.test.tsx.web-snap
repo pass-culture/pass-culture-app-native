@@ -198,6 +198,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       data-testid="Consulter l'article d'aide"
       onClick={[Function]}
       onDoubleClick={[Function]}
+      type="button"
     >
       <div
         className="css-view-1dbjc4n"
@@ -233,6 +234,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       data-testid="Contacter le support"
       onClick={[Function]}
       onDoubleClick={[Function]}
+      type="button"
     >
       <div
         className="css-view-1dbjc4n"
@@ -292,6 +294,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         disabled={false}
         onClick={[Function]}
         onDoubleClick={[Function]}
+        type="button"
       >
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
@@ -324,6 +327,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         data-testid="Retourner à l'accueil"
         onClick={[Function]}
         onDoubleClick={[Function]}
+        type="button"
       >
         <div
           className="css-view-1dbjc4n"

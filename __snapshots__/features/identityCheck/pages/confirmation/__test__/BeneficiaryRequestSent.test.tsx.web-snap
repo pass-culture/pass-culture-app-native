@@ -190,6 +190,7 @@ exports[`<BeneficiaryRequestSent /> should render correctly 1`] = `
         data-testid="On y va !"
         onClick={[Function]}
         onDoubleClick={[Function]}
+        type="button"
       >
         <div
           className="css-text-901oao css-textMultiLine-cens5h"

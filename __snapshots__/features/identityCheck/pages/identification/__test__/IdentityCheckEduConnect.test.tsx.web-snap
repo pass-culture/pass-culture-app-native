@@ -370,6 +370,7 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
               data-testid="Connexion avec ÉduConnect"
               onClick={[Function]}
               onDoubleClick={[Function]}
+              type="button"
             >
               <div
                 className="css-text-901oao css-textMultiLine-cens5h"

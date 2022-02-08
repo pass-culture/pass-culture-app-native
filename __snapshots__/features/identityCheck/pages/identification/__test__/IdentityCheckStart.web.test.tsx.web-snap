@@ -5,11 +5,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 - First value
 + Second value
 
-<<<<<<< Updated upstream
-@@ -487,24 +487,32 @@
-=======
-@@ -483,11 +483,11 @@
->>>>>>> Stashed changes
+@@ -497,11 +497,11 @@
               class=\\"css-view-1dbjc4n\\"
               style=\\"align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 22px; border-top-right-radius: 22px; display: flex; flex-direction: column; height: 100%; padding-top: 12px;\\"
             >
@@ -22,43 +18,27 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
                   class=\\"css-view-1dbjc4n\\"
                   style=\\"flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);\\"
                 >
-<<<<<<< Updated upstream
-                  <div
-                    class=\\"css-view-1dbjc4n\\"
-                    style=\\"flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;\\"
-+                 >
-+                   <div
-+                     class=\\"css-view-1dbjc4n\\"
-+                     style=\\"align-items: center; height: 100%;\\"
-=======
-@@ -499,94 +499,84 @@
+@@ -513,97 +513,86 @@
                       class=\\"css-view-1dbjc4n\\"
                       style=\\"align-items: center; height: 100%;\\"
->>>>>>> Stashed changes
                     >
                       <div
                         class=\\"css-view-1dbjc4n\\"
-                        style=\\"align-items: center; height: 100%;\\"
++                       style=\\"align-items: center; height: 100%;\\"
                       >
-+                       <div
+                        <div
 +                         class=\\"css-view-1dbjc4n\\"
 +                         style=\\"height: 40px;\\"
 +                       />
-                        <div
-                          class=\\"css-view-1dbjc4n\\"
-                        >
-                          <div
++                       <div
++                         class=\\"css-view-1dbjc4n\\"
++                       >
++                         <div
                             class=\\"css-text-901oao\\"
-<<<<<<< Updated upstream
-@@ -515,82 +523,65 @@
-=======
                             dir=\\"auto\\"
--                         style=\\"color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;\\"
                           >
--                         Vérifie ton identité sur ton smartphone
-+                           undefined-SVG-Mock
-+                         </div>
->>>>>>> Stashed changes
+                            undefined-SVG-Mock
+                          </div>
                         </div>
                         <div
                           class=\\"css-view-1dbjc4n\\"
@@ -123,6 +103,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 -                     <button
 -                       class=\\"sc-gsDKAQ kNRtDq sc-dkPtRN efdTBP\\"
 -                       data-testid=\\"Vérification par smartphone\\"
+-                       type=\\"button\\"
 -                     >
                         <div
 -                         class=\\"css-text-901oao css-textMultiLine-cens5h\\"
@@ -160,17 +141,12 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 -                         data-testid=\\"Identification par le site Démarches-Simplifiées\\"
 +                           class=\\"sc-gsDKAQ fdLRtI sc-furwcr iHUpsl\\"
 +                           data-testid=\\"Transmettre un document\\"
+                            type=\\"button\\"
                           >
                             <div
                               class=\\"css-view-1dbjc4n\\"
                               data-testid=\\"button-icon\\"
-                            >
-<<<<<<< Updated upstream
-                              <div
-@@ -601,29 +592,43 @@
-=======
-@@ -598,29 +588,44 @@
->>>>>>> Stashed changes
+@@ -616,29 +605,45 @@
                               </div>
                             </div>
                             <div
@@ -200,6 +176,7 @@ exports[`<IdentityCheckStart/> should render correctly 1`] = `
 +                 <button
 +                   class=\\"sc-gsDKAQ kNRtDq sc-dkPtRN efdTBP\\"
 +                   data-testid=\\"Commencer la vérification\\"
++                   type=\\"button\\"
 +                 >
 +                   <div
 +                     class=\\"css-text-901oao css-textMultiLine-cens5h\\"

@@ -114,6 +114,7 @@ exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectFo
           },
         ]
       }
+      topSafeInset={16}
     >
       <View
         style={

@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react'
 import { KeyboardAvoidingView, Platform } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -11,9 +11,10 @@ type Props = {
 
 export const CustomKeyboardAvoidingView = (props: Props) => {
   const { top: topSafeInset } = useCustomSafeInsets()
+  const { appBarHeight } = useTheme()
   return (
     <Container>
-      <StyledKeyboardAvoidingView topSafeInset={topSafeInset}>
+      <StyledKeyboardAvoidingView keyboardVerticalOffset={appBarHeight + topSafeInset}>
         <ChildrenContainer>
           <CenteredWebContainer>{props.children}</CenteredWebContainer>
         </ChildrenContainer>
@@ -26,12 +27,9 @@ const Container = styled.View({
   flex: 1,
 })
 
-const StyledKeyboardAvoidingView = styled(KeyboardAvoidingView).attrs<{ topSafeInset: number }>(
-  ({ theme, topSafeInset }) => ({
-    behavior: Platform.OS === 'ios' ? 'padding' : undefined,
-    keyboardVerticalOffset: theme.appBarHeight + topSafeInset,
-  })
-)({
+const StyledKeyboardAvoidingView = styled(KeyboardAvoidingView).attrs({
+  behavior: Platform.OS === 'ios' ? 'padding' : undefined,
+})({
   flexGrow: 1,
   flexBasis: 0,
 })

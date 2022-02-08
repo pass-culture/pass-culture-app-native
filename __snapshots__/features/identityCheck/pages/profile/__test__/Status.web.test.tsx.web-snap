@@ -290,6 +290,7 @@ Object {
                     class="sc-gsDKAQ kNRtDq sc-dkPtRN cRlcLC"
                     data-testid="Choisis ton statut"
                     disabled=""
+                    type="button"
                   >
                     <div
                       class="css-text-901oao css-textMultiLine-cens5h"
@@ -612,6 +613,7 @@ Object {
                   class="sc-gsDKAQ kNRtDq sc-dkPtRN cRlcLC"
                   data-testid="Choisis ton statut"
                   disabled=""
+                  type="button"
                 >
                   <div
                     class="css-text-901oao css-textMultiLine-cens5h"

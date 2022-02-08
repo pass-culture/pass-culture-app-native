@@ -177,6 +177,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         data-testid="Vérifier mon identité"
         onClick={[Function]}
         onDoubleClick={[Function]}
+        type="button"
       >
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
@@ -209,6 +210,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         data-testid="Retourner à l'accueil"
         onClick={[Function]}
         onDoubleClick={[Function]}
+        type="button"
       >
         <div
           className="css-view-1dbjc4n"

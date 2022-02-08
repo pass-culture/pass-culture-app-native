@@ -178,6 +178,7 @@ Object {
                   <button
                     class="sc-gsDKAQ kNRtDq sc-dkPtRN efdTBP"
                     data-testid="Valider mes informations"
+                    type="button"
                   >
                     <div
                       class="css-text-901oao css-textMultiLine-cens5h"
@@ -388,6 +389,7 @@ Object {
                 <button
                   class="sc-gsDKAQ kNRtDq sc-dkPtRN efdTBP"
                   data-testid="Valider mes informations"
+                  type="button"
                 >
                   <div
                     class="css-text-901oao css-textMultiLine-cens5h"

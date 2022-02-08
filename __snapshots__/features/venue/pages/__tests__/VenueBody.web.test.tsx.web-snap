@@ -756,6 +756,7 @@ Object {
               <button
                 class="sc-gsDKAQ gzbzIm sc-ieecCq fhwLym"
                 data-testid="Voir l'itinéraire"
+                type="button"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -2002,6 +2003,7 @@ Object {
             <button
               class="sc-gsDKAQ gzbzIm sc-ieecCq fhwLym"
               data-testid="Voir l'itinéraire"
+              type="button"
             >
               <div
                 class="css-view-1dbjc4n"

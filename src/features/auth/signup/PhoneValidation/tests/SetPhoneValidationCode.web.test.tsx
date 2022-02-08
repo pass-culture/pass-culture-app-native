@@ -115,25 +115,25 @@ describe('SetPhoneValidationCode', () => {
     it('should enable continue button if input is valid and complete', async () => {
       const renderAPI = renderModalWithFilledCodeInput('123456')
       const continueButton = renderAPI.getByTestId('Continuer')
-      // renderAPI.debug()
       await waitForExpect(() => {
-        // TODO: test live and fix line bellow
-        expect(continueButton).not.toHaveProperty('disabled')
+        expect(continueButton).toHaveProperty('disabled', false)
       })
     })
 
     it.each([
-      ['empty', ''],
-      ['includes string', 's09453'],
-      ['is too short', '54'],
-    ])('should not enable continue button when "%s"', async (_reason, codeTyped) => {
-      const { getByTestId } = renderModalWithFilledCodeInput(codeTyped)
-      const continueButton = getByTestId('Continuer')
-
-      await waitForExpect(() => {
-        expect(continueButton).toHaveProperty('disabled')
-      })
-    })
+      ['empty', '', true],
+      ['includes string', 's09453', false], // numeric input on the web will leave blank the input value
+      ['is too short', '54', true],
+    ])(
+      'should not enable continue button when "%s"',
+      async (_reason: string, codeTyped: string, isNumericInput: boolean) => {
+        const renderAPI = renderModalWithFilledCodeInput(codeTyped)
+        const continueButton = renderAPI.getByTestId('Continuer')
+        await waitForExpect(() => {
+          expect(continueButton).toHaveProperty('disabled', isNumericInput)
+        })
+      }
+    )
 
     it('should navigate to nextBeneficiaryValidationStep if validate phone number request succeeds', async () => {
       const setError = jest.fn()
@@ -247,7 +247,8 @@ function renderModalWithFilledCodeInput(code: string) {
       },
     },
   } as StackScreenProps<RootStackParamList, 'SetPhoneValidationCode'>
-  fireEvent.change(renderAPI.getByTestId('Entrée du code de confirmation'), code)
+  const input = renderAPI.getByTestId('Entrée du code de confirmation')
+  fireEvent.change(input, { target: { value: code } })
   renderAPI.rerender(
     <SafeAreaProvider>
       <SetPhoneValidationCode {...navigationProps} />
