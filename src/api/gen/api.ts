@@ -491,6 +491,7 @@ export interface CallToActionMessage {
  */
 export enum CategoryIdEnum {
   'BEAUX_ARTS' = 'BEAUX_ARTS',
+  'CARTE_JEUNES' = 'CARTE_JEUNES',
   'CINEMA' = 'CINEMA',
   'CONFERENCE' = 'CONFERENCE',
   'FILM' = 'FILM',
@@ -802,6 +803,7 @@ export enum HomepageLabelNameEnum {
   'PRESSE' = 'PRESSE',
   'SPECTACLE' = 'SPECTACLE',
   'MATERIEL' = 'MATERIEL',
+  'CARTE_JEUNES' = 'CARTE_JEUNES',
   'NONE' = 'NONE',
 }
 /**
@@ -1525,6 +1527,7 @@ export enum SearchGroupNameEnum {
   'SPECTACLE' = 'SPECTACLE',
   'INSTRUMENT' = 'INSTRUMENT',
   'MATERIEL' = 'MATERIEL',
+  'CARTE_JEUNES' = 'CARTE_JEUNES',
   'NONE' = 'NONE',
 }
 /**
@@ -1706,6 +1709,7 @@ export enum SubcategoryIdEnum {
   'CAPTATION_MUSIQUE' = 'CAPTATION_MUSIQUE',
   'CARTE_CINE_ILLIMITE' = 'CARTE_CINE_ILLIMITE',
   'CARTE_CINE_MULTISEANCES' = 'CARTE_CINE_MULTISEANCES',
+  'CARTE_JEUNES' = 'CARTE_JEUNES',
   'CARTE_MUSEE' = 'CARTE_MUSEE',
   'CINE_PLEIN_AIR' = 'CINE_PLEIN_AIR',
   'CINE_VENTE_DISTANCE' = 'CINE_VENTE_DISTANCE',
