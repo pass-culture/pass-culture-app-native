@@ -1,15 +1,14 @@
 import { t } from '@lingui/macro'
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import DatePicker from 'react-native-date-picker'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { useAppSettings } from 'features/auth/settings'
 import { BirthdayInformationModal } from 'features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal'
 import { DateInput } from 'features/auth/signup/SetBirthday/DateInput/DateInput'
+import { useDatePickerErrorHandler } from 'features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler'
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
 import { analytics } from 'libs/analytics'
-import { dateDiffInFullYears } from 'libs/dates'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
@@ -20,51 +19,17 @@ import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 
 const MINIMUM_DATE = new Date('1900-01-01')
-const DEFAULT_YOUNGEST_AGE = 15
-const UNDER_YOUNGEST_AGE = DEFAULT_YOUNGEST_AGE - 1
 
 export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (props) => {
   const CURRENT_DATE = new Date()
-  const DEFAULT_SELECTED_DATE = new Date(
-    new Date().setFullYear(new Date().getFullYear() - UNDER_YOUNGEST_AGE)
-  )
-  const MAXIMUM_SPINNER_DATE = new Date(DEFAULT_SELECTED_DATE.getFullYear(), 11, 31)
-  const DEFAULT_SELECTED_DATE_WITHOUT_TIME = formatDateToISOStringWithoutTime(DEFAULT_SELECTED_DATE)
-
-  const [date, setDate] = useState<Date>(DEFAULT_SELECTED_DATE)
-  const [errorMessage, setErrorMessage] = useState<string | null>(null)
-  const [isDisabled, setIsDisabled] = useState(true)
-  const birthdateInputErrorId = uuidv4()
-
+  const [date, setDate] = useState<Date>(CURRENT_DATE)
   const { visible, showModal: showInformationModal, hideModal } = useModal(false)
+  const { isDisabled, errorMessage } = useDatePickerErrorHandler(date)
 
   function onPressWhy() {
     analytics.logConsultWhyAnniversary()
     showInformationModal()
   }
-
-  const { data: settings } = useAppSettings()
-  const youngestAge = settings?.accountCreationMinimumAge ?? DEFAULT_YOUNGEST_AGE
-
-  useEffect(() => {
-    const selected_date_without_time = formatDateToISOStringWithoutTime(date)
-    const age = dateDiffInFullYears(date, CURRENT_DATE)
-
-    if (selected_date_without_time === DEFAULT_SELECTED_DATE_WITHOUT_TIME) {
-      return setIsDisabled(true), setErrorMessage(null)
-    }
-    if (age < 15) {
-      return (
-        analytics.logSignUpTooYoung(age),
-        setIsDisabled(true),
-        setErrorMessage(
-          t`Tu dois avoir au moins\u00a0${youngestAge}\u00a0ans pour t’inscrire au pass Culture`
-        )
-      )
-    }
-    setIsDisabled(false)
-    setErrorMessage(null)
-  }, [date])
 
   function goToNextStep() {
     const birthdate = formatDateToISOStringWithoutTime(date)

@@ -14,6 +14,7 @@ type Props = {
   options: string[]
 }
 
+// TODO (LucasBeneston) : This is a test
 export function DropDownWithAutocomplete({ label, placeholder, options }: Props) {
   const [isOpen, setIsOpen] = useState(false)
   const [searchValue, setSearchValue] = useState('')
