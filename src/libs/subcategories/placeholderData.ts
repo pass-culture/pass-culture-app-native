@@ -208,6 +208,15 @@ export const placeholderData: SubcategoriesResponseModel = {
       onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
     },
     {
+      id: SubcategoryIdEnum.CARTE_JEUNES,
+      categoryId: CategoryIdEnum.CARTE_JEUNES,
+      appLabel: 'Carte jeunes',
+      searchGroupName: SearchGroupNameEnum.CARTE_JEUNES,
+      homepageLabelName: HomepageLabelNameEnum.CARTE_JEUNES,
+      isEvent: false,
+      onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
+    },
+    {
       id: SubcategoryIdEnum.CARTE_MUSEE,
       categoryId: CategoryIdEnum.MUSEE,
       appLabel: 'Cartes musées, patrimoine...',
@@ -651,6 +660,7 @@ export const placeholderData: SubcategoriesResponseModel = {
   ],
   searchGroups: [
     { name: SearchGroupNameEnum.FILM, value: 'Films, séries' },
+    { name: SearchGroupNameEnum.CARTE_JEUNES, value: 'Carte jeunes' },
     { name: SearchGroupNameEnum.CINEMA, value: 'Cinéma' },
     { name: SearchGroupNameEnum.CONFERENCE, value: 'Conférences, rencontres' },
     { name: SearchGroupNameEnum.JEU, value: 'Jeux' },
@@ -666,6 +676,7 @@ export const placeholderData: SubcategoriesResponseModel = {
   ],
   homepageLabels: [
     { name: HomepageLabelNameEnum.FILM, value: 'Films' },
+    { name: HomepageLabelNameEnum.CARTE_JEUNES, value: 'Carte jeunes' },
     { name: HomepageLabelNameEnum.CINEMA, value: 'Cinéma' },
     { name: HomepageLabelNameEnum.CONFERENCE, value: 'Rencontres' },
     { name: HomepageLabelNameEnum.JEU, value: 'Jeux' },

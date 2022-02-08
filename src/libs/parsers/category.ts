@@ -5,6 +5,7 @@ import { IconInterface } from 'ui/svg/icons/types'
 export const MAP_CATEGORY_ID_TO_ICON: {
   [k in CategoryIdEnum]: React.FC<IconInterface>
 } = {
+  [CategoryIdEnum.CARTE_JEUNES]: CategoryIcon.CarteJeunes,
   [CategoryIdEnum.CINEMA]: CategoryIcon.Cinema,
   [CategoryIdEnum.MUSEE]: CategoryIcon.Exposition,
   [CategoryIdEnum.MUSIQUE_LIVE]: CategoryIcon.Musique,
