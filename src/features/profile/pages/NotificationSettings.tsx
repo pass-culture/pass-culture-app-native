@@ -168,8 +168,8 @@ export function NotificationSettings() {
             toggle={toggleEmails}
             disabled={!isLoggedIn}
           />
+          <Separator />
         </Form.Flex>
-        <Separator />
         {Platform.OS === 'ios' && (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={4} />
