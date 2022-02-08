@@ -45,7 +45,7 @@ Object {
             style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           >
             <form
-              class="sc-kDTinF bkTDgm"
+              class="sc-jrQzAO fLQviJ"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -56,7 +56,7 @@ Object {
                   style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                 >
                   <label
-                    class="sc-pVTFL kFA-dfT"
+                    class="sc-furwcr dyBdUw"
                     for="testUuidV4"
                   >
                     Nouvel e-mail
@@ -106,7 +106,7 @@ Object {
                   style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                 >
                   <label
-                    class="sc-pVTFL kFA-dfT"
+                    class="sc-furwcr dyBdUw"
                     for="testUuidV4"
                   >
                     Mot de passe
@@ -171,8 +171,7 @@ Object {
                 style="align-items: center; padding-bottom: 16px; width: 100%;"
               >
                 <button
-                  class="sc-dkPtRN dVZUnu sc-eCImPb cYRLFR"
-                  data-testid="Enregistrer"
+                  class="sc-gsDKAQ hGMWsC sc-hKwDye gqAQWB"
                   disabled=""
                   type="button"
                 >
@@ -194,7 +193,7 @@ Object {
         </div>
       </div>
       <header
-        class="sc-dJjYzT CitA-d"
+        class="sc-ieecCq etXgLS"
       >
         <div
           class="css-view-1dbjc4n"
@@ -299,7 +298,7 @@ Object {
           style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         >
           <form
-            class="sc-kDTinF bkTDgm"
+            class="sc-jrQzAO fLQviJ"
           >
             <div
               class="css-view-1dbjc4n"
@@ -310,7 +309,7 @@ Object {
                 style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
               >
                 <label
-                  class="sc-pVTFL kFA-dfT"
+                  class="sc-furwcr dyBdUw"
                   for="testUuidV4"
                 >
                   Nouvel e-mail
@@ -360,7 +359,7 @@ Object {
                 style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
               >
                 <label
-                  class="sc-pVTFL kFA-dfT"
+                  class="sc-furwcr dyBdUw"
                   for="testUuidV4"
                 >
                   Mot de passe
@@ -425,8 +424,7 @@ Object {
               style="align-items: center; padding-bottom: 16px; width: 100%;"
             >
               <button
-                class="sc-dkPtRN dVZUnu sc-eCImPb cYRLFR"
-                data-testid="Enregistrer"
+                class="sc-gsDKAQ hGMWsC sc-hKwDye gqAQWB"
                 disabled=""
                 type="button"
               >
@@ -448,7 +446,7 @@ Object {
       </div>
     </div>
     <header
-      class="sc-dJjYzT CitA-d"
+      class="sc-ieecCq etXgLS"
     >
       <div
         class="css-view-1dbjc4n"

@@ -246,8 +246,7 @@ Object {
           style="height: 24px;"
         />
         <button
-          class="sc-gsDKAQ kNRtDq sc-hKwDye dYlrCo"
-          data-testid="Valider ces options"
+          class="sc-bdvvtL iDzbyb sc-dkPtRN efdTBP"
           type="button"
         >
           <div
@@ -503,8 +502,7 @@ Object {
         style="height: 24px;"
       />
       <button
-        class="sc-gsDKAQ kNRtDq sc-hKwDye dYlrCo"
-        data-testid="Valider ces options"
+        class="sc-bdvvtL iDzbyb sc-dkPtRN efdTBP"
         type="button"
       >
         <div

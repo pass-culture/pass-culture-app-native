@@ -336,8 +336,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
     }
   >
     <button
-      className="sc-gsDKAQ kNRtDq sc-eCImPb bxfGfU"
-      data-testid="Je découvre les offres"
+      className="sc-bdvvtL iDzbyb sc-hKwDye dYlrCo"
       onClick={[Function]}
       onDoubleClick={[Function]}
       type="button"

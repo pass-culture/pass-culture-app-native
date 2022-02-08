@@ -173,8 +173,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
       }
     >
       <button
-        className="sc-gsDKAQ kNRtDq sc-dkPtRN gNpZyI"
-        data-testid="Vérifier mon identité"
+        className="sc-bdvvtL iDzbyb sc-gsDKAQ khldlI"
         onClick={[Function]}
         onDoubleClick={[Function]}
         type="button"
@@ -206,8 +205,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         }
       />
       <button
-        className="sc-gsDKAQ kNRtDq sc-hKwDye gvtKtm"
-        data-testid="Retourner à l'accueil"
+        className="sc-bdvvtL iDzbyb sc-dkPtRN fwCeAR"
         onClick={[Function]}
         onDoubleClick={[Function]}
         type="button"

@@ -194,8 +194,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
       }
     >
       <button
-        className="sc-gsDKAQ kNRtDq sc-dkPtRN gNpZyI"
-        data-testid="Retourner à l'accueil"
+        className="sc-bdvvtL iDzbyb sc-gsDKAQ khldlI"
         onClick={[Function]}
         onDoubleClick={[Function]}
         type="button"

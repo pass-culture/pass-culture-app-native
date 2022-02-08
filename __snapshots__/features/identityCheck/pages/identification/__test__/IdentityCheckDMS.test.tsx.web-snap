@@ -322,8 +322,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 }
               >
                 <button
-                  className="sc-gsDKAQ kNRtDq sc-ieecCq fhwLym"
-                  data-testid="Je suis de nationalité française"
+                  className="sc-bdvvtL iDzbyb sc-bkkeKt gTfeXO"
                   onClick={[Function]}
                   onDoubleClick={[Function]}
                   type="button"
@@ -434,8 +433,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                   </div>
                 </div>
                 <button
-                  className="sc-gsDKAQ kNRtDq sc-ieecCq fhwLym"
-                  data-testid="Je suis de nationalité étrangère"
+                  className="sc-bdvvtL iDzbyb sc-bkkeKt gTfeXO"
                   onClick={[Function]}
                   onDoubleClick={[Function]}
                   type="button"

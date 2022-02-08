@@ -46,8 +46,7 @@ Object {
           style="height: 24px;"
         />
         <button
-          class="sc-gsDKAQ kNRtDq sc-dkPtRN efdTBP"
-          data-testid="Mettre en favoris"
+          class="sc-bdvvtL iDzbyb sc-gsDKAQ cenQpD"
           type="button"
         >
           <div
@@ -63,8 +62,7 @@ Object {
           style="height: 16px;"
         />
         <button
-          class="sc-gsDKAQ kNRtDq sc-hKwDye gvtKtm"
-          data-testid="Retourner à l'offre"
+          class="sc-bdvvtL iDzbyb sc-dkPtRN fwCeAR"
           type="button"
         >
           <div
@@ -124,8 +122,7 @@ Object {
         style="height: 24px;"
       />
       <button
-        class="sc-gsDKAQ kNRtDq sc-dkPtRN efdTBP"
-        data-testid="Mettre en favoris"
+        class="sc-bdvvtL iDzbyb sc-gsDKAQ cenQpD"
         type="button"
       >
         <div
@@ -141,8 +138,7 @@ Object {
         style="height: 16px;"
       />
       <button
-        class="sc-gsDKAQ kNRtDq sc-hKwDye gvtKtm"
-        data-testid="Retourner à l'offre"
+        class="sc-bdvvtL iDzbyb sc-dkPtRN fwCeAR"
         type="button"
       >
         <div

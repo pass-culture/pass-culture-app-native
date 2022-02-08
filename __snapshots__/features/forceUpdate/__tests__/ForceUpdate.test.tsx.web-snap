@@ -172,8 +172,7 @@ Pour des questions de performance et de sécurité merci d'actualiser la page po
       }
     >
       <button
-        className="sc-gsDKAQ kNRtDq sc-dkPtRN gNpZyI"
-        data-testid="Actualiser la page"
+        className="sc-bdvvtL iDzbyb sc-gsDKAQ khldlI"
         onClick={[Function]}
         onDoubleClick={[Function]}
         type="button"

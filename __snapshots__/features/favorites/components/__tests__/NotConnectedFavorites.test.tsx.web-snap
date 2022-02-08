@@ -194,8 +194,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       }
     >
       <button
-        className="sc-gsDKAQ falnvy sc-dkPtRN gNpZyI"
-        data-testid="S'inscrire"
+        className="sc-bdvvtL foGXkH sc-gsDKAQ khldlI"
         onClick={[Function]}
         onDoubleClick={[Function]}
         type="button"
@@ -227,8 +226,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         }
       />
       <button
-        className="sc-gsDKAQ falnvy sc-hKwDye gvtKtm"
-        data-testid="Se connecter"
+        className="sc-bdvvtL foGXkH sc-dkPtRN fwCeAR"
         onClick={[Function]}
         onDoubleClick={[Function]}
         type="button"

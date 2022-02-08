@@ -171,8 +171,7 @@ exports[`<NotYetUnderageEligibility /> should render properly 1`] = `
       }
     >
       <button
-        className="sc-gsDKAQ kNRtDq sc-dkPtRN gNpZyI"
-        data-testid="Retourner à l'accueil"
+        className="sc-bdvvtL iDzbyb sc-gsDKAQ khldlI"
         onClick={[Function]}
         onDoubleClick={[Function]}
         type="button"

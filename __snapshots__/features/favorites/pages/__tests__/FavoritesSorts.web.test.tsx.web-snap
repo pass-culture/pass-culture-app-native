@@ -138,7 +138,7 @@ Object {
           </div>
         </div>
         <header
-          class="sc-hKwDye uAnLW"
+          class="sc-dkPtRN denOoN"
         >
           <div
             class="css-view-1dbjc4n"
@@ -205,8 +205,7 @@ Object {
           style="padding: 20px 20px 20px 20px;"
         >
           <button
-            class="sc-gsDKAQ ijLbuY sc-dkPtRN efdTBP"
-            data-testid="Valider"
+            class="sc-bdvvtL eCRejZ sc-gsDKAQ cenQpD"
             type="button"
           >
             <div
@@ -355,7 +354,7 @@ Object {
         </div>
       </div>
       <header
-        class="sc-hKwDye uAnLW"
+        class="sc-dkPtRN denOoN"
       >
         <div
           class="css-view-1dbjc4n"
@@ -422,8 +421,7 @@ Object {
         style="padding: 20px 20px 20px 20px;"
       >
         <button
-          class="sc-gsDKAQ ijLbuY sc-dkPtRN efdTBP"
-          data-testid="Valider"
+          class="sc-bdvvtL eCRejZ sc-gsDKAQ cenQpD"
           type="button"
         >
           <div

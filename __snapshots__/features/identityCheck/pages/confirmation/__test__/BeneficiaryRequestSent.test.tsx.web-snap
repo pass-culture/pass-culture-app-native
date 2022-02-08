@@ -186,8 +186,7 @@ exports[`<BeneficiaryRequestSent /> should render correctly 1`] = `
       }
     >
       <button
-        className="sc-gsDKAQ kNRtDq sc-dkPtRN gNpZyI"
-        data-testid="On y va !"
+        className="sc-bdvvtL iDzbyb sc-gsDKAQ khldlI"
         onClick={[Function]}
         onDoubleClick={[Function]}
         type="button"

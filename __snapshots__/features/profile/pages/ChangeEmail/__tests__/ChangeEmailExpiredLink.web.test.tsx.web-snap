@@ -84,8 +84,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
           >
             <button
-              class="sc-gsDKAQ kNRtDq sc-dkPtRN gNpZyI"
-              data-testid="Faire une nouvelle demande"
+              class="sc-bdvvtL iDzbyb sc-gsDKAQ khldlI"
               type="button"
             >
               <div
@@ -101,8 +100,8 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
               style="height: 16px;"
             />
             <button
-              class="sc-gsDKAQ kNRtDq sc-hKwDye gvtKtm"
-              data-testid="Retourner à l'accueil"
+              class="sc-bdvvtL iDzbyb sc-dkPtRN fwCeAR"
+              data-testid="button-icon"
               type="button"
             >
               <div
@@ -213,8 +212,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
           style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
         >
           <button
-            class="sc-gsDKAQ kNRtDq sc-dkPtRN gNpZyI"
-            data-testid="Faire une nouvelle demande"
+            class="sc-bdvvtL iDzbyb sc-gsDKAQ khldlI"
             type="button"
           >
             <div
@@ -230,8 +228,8 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             style="height: 16px;"
           />
           <button
-            class="sc-gsDKAQ kNRtDq sc-hKwDye gvtKtm"
-            data-testid="Retourner à l'accueil"
+            class="sc-bdvvtL iDzbyb sc-dkPtRN fwCeAR"
+            data-testid="button-icon"
             type="button"
           >
             <div
@@ -399,8 +397,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
           >
             <button
-              class="sc-gsDKAQ kNRtDq sc-dkPtRN gNpZyI"
-              data-testid="Se connecter"
+              class="sc-bdvvtL iDzbyb sc-gsDKAQ khldlI"
               type="button"
             >
               <div
@@ -416,8 +413,8 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
               style="height: 16px;"
             />
             <button
-              class="sc-gsDKAQ kNRtDq sc-hKwDye gvtKtm"
-              data-testid="Retourner à l'accueil"
+              class="sc-bdvvtL iDzbyb sc-dkPtRN fwCeAR"
+              data-testid="button-icon"
               type="button"
             >
               <div
@@ -528,8 +525,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
           style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
         >
           <button
-            class="sc-gsDKAQ kNRtDq sc-dkPtRN gNpZyI"
-            data-testid="Se connecter"
+            class="sc-bdvvtL iDzbyb sc-gsDKAQ khldlI"
             type="button"
           >
             <div
@@ -545,8 +541,8 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             style="height: 16px;"
           />
           <button
-            class="sc-gsDKAQ kNRtDq sc-hKwDye gvtKtm"
-            data-testid="Retourner à l'accueil"
+            class="sc-bdvvtL iDzbyb sc-dkPtRN fwCeAR"
+            data-testid="button-icon"
             type="button"
           >
             <div

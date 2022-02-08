@@ -176,8 +176,7 @@ Object {
                   style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
                 >
                   <button
-                    class="sc-gsDKAQ kNRtDq sc-dkPtRN efdTBP"
-                    data-testid="Valider mes informations"
+                    class="sc-bdvvtL iDzbyb sc-gsDKAQ cenQpD"
                     type="button"
                   >
                     <div
@@ -387,8 +386,7 @@ Object {
                 style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
               >
                 <button
-                  class="sc-gsDKAQ kNRtDq sc-dkPtRN efdTBP"
-                  data-testid="Valider mes informations"
+                  class="sc-bdvvtL iDzbyb sc-gsDKAQ cenQpD"
                   type="button"
                 >
                   <div

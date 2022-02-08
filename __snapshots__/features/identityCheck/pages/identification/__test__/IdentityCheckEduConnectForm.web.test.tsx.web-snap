@@ -144,8 +144,7 @@ Object {
                   style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
                 >
                   <button
-                    class="sc-gsDKAQ kNRtDq sc-eCImPb bxfGfU"
-                    data-testid="Ouvrir un onglet ÉduConnect"
+                    class="sc-bdvvtL iDzbyb sc-hKwDye dYlrCo"
                     type="button"
                   >
                     <div
@@ -323,8 +322,7 @@ Object {
                 style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
               >
                 <button
-                  class="sc-gsDKAQ kNRtDq sc-eCImPb bxfGfU"
-                  data-testid="Ouvrir un onglet ÉduConnect"
+                  class="sc-bdvvtL iDzbyb sc-hKwDye dYlrCo"
                   type="button"
                 >
                   <div

@@ -96,8 +96,7 @@ Object {
             style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           >
             <button
-              class="sc-gsDKAQ falnvy sc-dkPtRN gNpZyI"
-              data-testid="Réessayer"
+              class="sc-bdvvtL foGXkH sc-gsDKAQ khldlI"
               type="button"
             >
               <div
@@ -213,8 +212,7 @@ Object {
           style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         >
           <button
-            class="sc-gsDKAQ falnvy sc-dkPtRN gNpZyI"
-            data-testid="Réessayer"
+            class="sc-bdvvtL foGXkH sc-gsDKAQ khldlI"
             type="button"
           >
             <div

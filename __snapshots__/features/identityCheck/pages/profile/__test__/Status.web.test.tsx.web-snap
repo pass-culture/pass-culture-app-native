@@ -94,7 +94,7 @@ Object {
                     style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                   >
                     <form
-                      class="sc-hKwDye iARjhg"
+                      class="sc-dkPtRN iViOxT"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -287,8 +287,7 @@ Object {
                   style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
                 >
                   <button
-                    class="sc-gsDKAQ kNRtDq sc-dkPtRN cRlcLC"
-                    data-testid="Choisis ton statut"
+                    class="sc-bdvvtL iDzbyb sc-gsDKAQ lkBHtq"
                     disabled=""
                     type="button"
                   >
@@ -417,7 +416,7 @@ Object {
                   style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                 >
                   <form
-                    class="sc-hKwDye iARjhg"
+                    class="sc-dkPtRN iViOxT"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -610,8 +609,7 @@ Object {
                 style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
               >
                 <button
-                  class="sc-gsDKAQ kNRtDq sc-dkPtRN cRlcLC"
-                  data-testid="Choisis ton statut"
+                  class="sc-bdvvtL iDzbyb sc-gsDKAQ lkBHtq"
                   disabled=""
                   type="button"
                 >

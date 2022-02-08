@@ -202,8 +202,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
       }
     >
       <button
-        className="sc-gsDKAQ kNRtDq sc-iCfMLu uxgRG"
-        data-testid="Retourner à l'accueil"
+        className="sc-bdvvtL iDzbyb sc-gKclnd kKVSn"
         onClick={[Function]}
         onDoubleClick={[Function]}
         type="button"

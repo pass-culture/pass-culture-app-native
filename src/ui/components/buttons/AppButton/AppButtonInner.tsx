@@ -13,7 +13,7 @@ export function AppButtonInner({
   wording,
 }: AppButtonInnerProps) {
   return (
-    <React.Fragment>
+    <Fragment>
       {!!LoadingIndicator && isLoading ? (
         <LoadingIndicator {...accessibilityAndTestId(undefined, 'button-isloading-icon')} />
       ) : (
@@ -26,6 +26,6 @@ export function AppButtonInner({
           )}
         </Fragment>
       )}
-    </React.Fragment>
+    </Fragment>
   )
 }

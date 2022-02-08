@@ -673,7 +673,7 @@ Object {
             style="margin-right: 24px; margin-left: 24px;"
           >
             <button
-              class="sc-jrQzAO dQNBgw"
+              class="sc-pVTFL jvXLcd"
               type="button"
             >
               <div
@@ -754,8 +754,7 @@ Object {
               style="align-items: flex-start;"
             >
               <button
-                class="sc-gsDKAQ gzbzIm sc-ieecCq fhwLym"
-                data-testid="Voir l'itinéraire"
+                class="sc-bdvvtL eVOETn sc-bkkeKt gTfeXO"
                 type="button"
               >
                 <div
@@ -1920,7 +1919,7 @@ Object {
           style="margin-right: 24px; margin-left: 24px;"
         >
           <button
-            class="sc-jrQzAO dQNBgw"
+            class="sc-pVTFL jvXLcd"
             type="button"
           >
             <div
@@ -2001,8 +2000,7 @@ Object {
             style="align-items: flex-start;"
           >
             <button
-              class="sc-gsDKAQ gzbzIm sc-ieecCq fhwLym"
-              data-testid="Voir l'itinéraire"
+              class="sc-bdvvtL eVOETn sc-bkkeKt gTfeXO"
               type="button"
             >
               <div

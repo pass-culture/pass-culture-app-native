@@ -366,8 +366,7 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
             }
           >
             <button
-              className="sc-gsDKAQ kNRtDq sc-eCImPb bxfGfU"
-              data-testid="Connexion avec ÉduConnect"
+              className="sc-bdvvtL iDzbyb sc-hKwDye dYlrCo"
               onClick={[Function]}
               onDoubleClick={[Function]}
               type="button"

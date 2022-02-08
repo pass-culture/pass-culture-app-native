@@ -194,8 +194,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       }
     />
     <button
-      className="sc-gsDKAQ kNRtDq sc-iCfMLu uxgRG"
-      data-testid="Consulter l'article d'aide"
+      className="sc-bdvvtL iDzbyb sc-gKclnd kKVSn"
       onClick={[Function]}
       onDoubleClick={[Function]}
       type="button"
@@ -230,8 +229,8 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       </div>
     </button>
     <button
-      className="sc-gsDKAQ kNRtDq sc-iCfMLu uxgRG"
-      data-testid="Contacter le support"
+      className="sc-bdvvtL iDzbyb sc-gKclnd kKVSn"
+      data-testid="button-icon"
       onClick={[Function]}
       onDoubleClick={[Function]}
       type="button"
@@ -289,8 +288,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       }
     >
       <button
-        className="sc-gsDKAQ kNRtDq sc-dkPtRN gNpZyI"
-        data-testid="Renvoyer l'email"
+        className="sc-bdvvtL iDzbyb sc-gsDKAQ khldlI"
         disabled={false}
         onClick={[Function]}
         onDoubleClick={[Function]}
@@ -323,8 +321,8 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         }
       />
       <button
-        className="sc-gsDKAQ kNRtDq sc-iCfMLu uxgRG"
-        data-testid="Retourner à l'accueil"
+        className="sc-bdvvtL iDzbyb sc-gKclnd kKVSn"
+        data-testid="button-icon"
         onClick={[Function]}
         onDoubleClick={[Function]}
         type="button"
