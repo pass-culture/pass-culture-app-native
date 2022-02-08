@@ -135,7 +135,7 @@ export const AppComponents: FunctionComponent = () => {
       <Divider />
 
       {/* Buttons */}
-      <AccordionItem title="Buttons" defaultOpen>
+      <AccordionItem title="Buttons">
         {/* Buttons: Primary */}
         <Typo.Title4>Button - Theme Primary</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
