@@ -1941,6 +1941,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
               "justifyContent": "center",
               "marginTop": 0,
               "maxWidth": 500,
+              "minHeight": 40,
               "opacity": 1,
               "paddingBottom": 0,
               "paddingLeft": 0,

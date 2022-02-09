@@ -80,7 +80,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -651,24 +643,22 @@
+@@ -652,24 +644,22 @@
               }
             />
             <View
@@ -104,10 +104,10 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 +                 \\"backgroundColor\\": \\"#eb0055\\",
                   \\"borderRadius\\": 24,
                   \\"flexDirection\\": \\"row\\",
-                  \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
-@@ -686,11 +676,11 @@
+                  \\"minHeight\\": 40,
+@@ -687,11 +677,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -286,7 +286,7 @@ exports[`<Login/> should show email error message WHEN signin has failed because
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -651,13 +703,11 @@
+@@ -652,13 +704,11 @@
               }
             />
             <View
@@ -502,7 +502,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -651,24 +705,22 @@
+@@ -652,24 +706,22 @@
               }
             />
             <View
@@ -526,10 +526,10 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +                 \\"backgroundColor\\": \\"#eb0055\\",
                   \\"borderRadius\\": 24,
                   \\"flexDirection\\": \\"row\\",
-                  \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
-@@ -686,11 +738,11 @@
+                  \\"minHeight\\": 40,
+@@ -687,11 +739,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -744,7 +744,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -651,24 +705,22 @@
+@@ -652,24 +706,22 @@
               }
             />
             <View
@@ -768,10 +768,10 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +                 \\"backgroundColor\\": \\"#eb0055\\",
                   \\"borderRadius\\": 24,
                   \\"flexDirection\\": \\"row\\",
-                  \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
-@@ -686,11 +738,11 @@
+                  \\"minHeight\\": 40,
+@@ -687,11 +739,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -986,7 +986,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -651,24 +705,22 @@
+@@ -652,24 +706,22 @@
               }
             />
             <View
@@ -1010,10 +1010,10 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 +                 \\"backgroundColor\\": \\"#eb0055\\",
                   \\"borderRadius\\": 24,
                   \\"flexDirection\\": \\"row\\",
-                  \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
-@@ -686,11 +738,11 @@
+                  \\"minHeight\\": 40,
+@@ -687,11 +739,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
