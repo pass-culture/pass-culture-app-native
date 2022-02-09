@@ -8,7 +8,7 @@ import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 
 const DEFAULT_YOUNGEST_AGE = 15
 
-export const useDatePickerErrorHandler = (date: Date) => {
+export const useDatePickerErrorHandler = (date?: Date) => {
   const CURRENT_DATE = new Date()
   const CURRENT_DATE_WITHOUT_TIME = formatDateToISOStringWithoutTime(CURRENT_DATE)
 
@@ -19,6 +19,10 @@ export const useDatePickerErrorHandler = (date: Date) => {
   const youngestAge = settings?.accountCreationMinimumAge ?? DEFAULT_YOUNGEST_AGE
 
   useEffect(() => {
+    if (date === undefined) {
+      return setIsDisabled(true), setErrorMessage(null)
+    }
+
     const SELECTED_DATE_WITHOUT_TIME = formatDateToISOStringWithoutTime(date)
     const AGE = dateDiffInFullYears(new Date(SELECTED_DATE_WITHOUT_TIME), CURRENT_DATE)
 

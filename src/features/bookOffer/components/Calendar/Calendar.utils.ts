@@ -28,6 +28,7 @@ export const monthNamesShort = [
   'Nov.',
   'Déc.',
 ]
+export const dayNumber = range(1, 31 + 1)
 export const dayNames = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi']
 export const dayNamesShort = ['D', 'L', 'M', 'M', 'J', 'V', 'S']
 

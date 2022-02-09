@@ -1,5 +1,7 @@
 export const DropDown = (_: {
   label?: string
   placeholder?: string
-  options?: string[] | number[]
+  options?: string[]
+  onChange?: (value: string) => void
+  children?: never
 }) => null
