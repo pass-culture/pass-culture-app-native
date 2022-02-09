@@ -489,8 +489,8 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                   className="sc-bdvvtL kUtbun"
                                 >
                                   <View
-                                    height={18}
-                                    width={18}
+                                    height={16}
+                                    width={16}
                                   >
                                     <Text>
                                       undefined-SVG-Mock
@@ -746,9 +746,9 @@ Tous les détails du film sur AlloCiné:
                                   />
                                   <Text>
                                     <View
-                                      height={14}
+                                      height={16}
                                       testID="externalSiteIcon"
-                                      width={14}
+                                      width={16}
                                     >
                                       <Text>
                                         externalSiteIcon-SVG-Mock
@@ -853,8 +853,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     }
                                   />
                                   <View
-                                    height={18}
-                                    width={18}
+                                    height={20}
+                                    width={20}
                                   >
                                     <Text>
                                       undefined-SVG-Mock
@@ -969,8 +969,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               testID="accordionArrow"
                             >
                               <View
-                                height={18}
-                                width={18}
+                                height={20}
+                                width={20}
                               >
                                 <Text>
                                   undefined-SVG-Mock
@@ -1042,9 +1042,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   />
                                   <Text>
                                     <View
-                                      height={14}
+                                      height={16}
                                       testID="externalSiteIcon"
-                                      width={14}
+                                      width={16}
                                     >
                                       <Text>
                                         externalSiteIcon-SVG-Mock
@@ -1122,8 +1122,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               testID="accordionArrow"
                             >
                               <View
-                                height={18}
-                                width={18}
+                                height={20}
+                                width={20}
                               >
                                 <Text>
                                   undefined-SVG-Mock
@@ -2729,8 +2729,8 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                   className="sc-bdvvtL kUtbun"
                                 >
                                   <View
-                                    height={18}
-                                    width={18}
+                                    height={16}
+                                    width={16}
                                   >
                                     <Text>
                                       undefined-SVG-Mock
@@ -3041,9 +3041,9 @@ Tous les détails du film sur AlloCiné:
                                   />
                                   <Text>
                                     <View
-                                      height={14}
+                                      height={16}
                                       testID="externalSiteIcon"
-                                      width={14}
+                                      width={16}
                                     >
                                       <Text>
                                         externalSiteIcon-SVG-Mock
@@ -3148,8 +3148,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     }
                                   />
                                   <View
-                                    height={18}
-                                    width={18}
+                                    height={20}
+                                    width={20}
                                   >
                                     <Text>
                                       undefined-SVG-Mock
@@ -3614,8 +3614,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               testID="accordionArrow"
                             >
                               <View
-                                height={18}
-                                width={18}
+                                height={20}
+                                width={20}
                               >
                                 <Text>
                                   undefined-SVG-Mock
@@ -3687,9 +3687,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   />
                                   <Text>
                                     <View
-                                      height={14}
+                                      height={16}
                                       testID="externalSiteIcon"
-                                      width={14}
+                                      width={16}
                                     >
                                       <Text>
                                         externalSiteIcon-SVG-Mock
@@ -3767,8 +3767,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               testID="accordionArrow"
                             >
                               <View
-                                height={18}
-                                width={18}
+                                height={20}
+                                width={20}
                               >
                                 <Text>
                                   undefined-SVG-Mock

@@ -304,8 +304,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
           }
         >
           <View
-            height={18}
-            width={18}
+            height={16}
+            width={16}
           >
             <Text>
               undefined-SVG-Mock
@@ -325,8 +325,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
         >
           <View
             fill="#ffffff"
-            height={28}
-            width={28}
+            height={24}
+            width={24}
           >
             <Text>
               undefined-SVG-Mock
@@ -468,8 +468,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
           >
             <View
               fill="#696A6F"
-              height={28}
-              width={28}
+              height={24}
+              width={24}
             >
               <Text>
                 undefined-SVG-Mock
@@ -477,8 +477,8 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
             </View>
             <View
               fill="#696A6F"
-              height={28}
-              width={28}
+              height={24}
+              width={24}
             >
               <Text>
                 undefined-SVG-Mock

@@ -98,9 +98,9 @@ exports[`<SeeMore /> renders correctly 1`] = `
         }
       >
         <View
-          height={40}
+          height={32}
           testID="arrow-next"
-          width={40}
+          width={32}
         >
           <Text>
             arrow-next-SVG-Mock

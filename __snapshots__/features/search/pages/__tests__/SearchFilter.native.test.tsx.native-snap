@@ -129,8 +129,8 @@ exports[`SearchFilter component should render correctly 1`] = `
           testID="changeLocation"
         >
           <View
-            height={40}
-            width={40}
+            height={24}
+            width={24}
           >
             <Text>
               undefined-SVG-Mock
@@ -577,8 +577,8 @@ exports[`SearchFilter component should render correctly 1`] = `
           testID="accordionArrow"
         >
           <View
-            height={18}
-            width={18}
+            height={20}
+            width={20}
           >
             <Text>
               undefined-SVG-Mock
@@ -1542,8 +1542,8 @@ exports[`SearchFilter component should render correctly 1`] = `
           testID="accordionArrow"
         >
           <View
-            height={18}
-            width={18}
+            height={20}
+            width={20}
           >
             <Text>
               undefined-SVG-Mock

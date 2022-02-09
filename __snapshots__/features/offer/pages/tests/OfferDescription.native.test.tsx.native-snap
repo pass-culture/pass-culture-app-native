@@ -478,9 +478,9 @@ Tous les détails du film sur AlloCiné:
                                     />
                                     <Text>
                                       <View
-                                        height={14}
+                                        height={16}
                                         testID="externalSiteIcon"
-                                        width={14}
+                                        width={16}
                                       >
                                         <Text>
                                           externalSiteIcon-SVG-Mock
