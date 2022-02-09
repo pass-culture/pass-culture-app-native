@@ -177,7 +177,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
           ]
         }
       >
-        1 décembre 2020
+        1 décembre 2006
       </Text>
     </View>
   </View>
@@ -195,9 +195,9 @@ exports[`<SetBirthday /> should render correctly 1`] = `
     androidVariant="nativeAndroid"
     cancelText="Cancel"
     confirmText="Confirm"
-    date={1606780800000}
+    date={1164931200000}
     locale="fr-FR"
-    maximumDate={1606780800000}
+    maximumDate={1167523200000}
     minimumDate={-2208988800000}
     minuteInterval={1}
     mode="date"

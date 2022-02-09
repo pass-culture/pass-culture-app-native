@@ -10,6 +10,7 @@ import { ColorsEnum } from 'ui/theme/colors'
 import { SetBirthday } from './SetBirthday'
 
 const CURRENT_DATE = new Date('2020-12-01T00:00:00.000Z')
+const DEFAULT_SELECTED_DATE = new Date('2006-12-01T00:00:00.000Z')
 const ELIGIBLE_AGE_DATE = new Date('2003-12-01T00:00:00.000Z')
 const FIFTEEN_YEARS_OLD_FIRST_DAY_DATE = new Date('2005-12-01T00:00:00.000Z')
 const NOT_ELIGIBLE_YOUNGEST_AGE_DATE = new Date('2006-01-01T00:00:00.000Z')
@@ -104,7 +105,7 @@ describe('<SetBirthday />', () => {
       const { getByTestId, queryByText } = render(<SetBirthday {...props} />)
 
       const datePicker = getByTestId('datePicker')
-      fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: CURRENT_DATE } })
+      fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: DEFAULT_SELECTED_DATE } })
 
       const message = 'Tu dois avoir au moins\u00a015\u00a0ans pour t’inscrire au pass Culture'
       expect(queryByText(message)).toBeNull()
