@@ -1,3 +1,6 @@
+const path = require('path')
+const paths = require('../web/config/paths')
+
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
@@ -18,6 +21,9 @@ module.exports = {
           ui: './src/ui',
           web: './src/web',
           __mocks__: './__mocks__',
+
+          'react-native-linear-gradient': 'react-native-web-linear-gradient',
+          'react-native-fast-image': path.join(paths.appSrc, 'libs/react-native-web-fast-image'),
         },
       },
     },
