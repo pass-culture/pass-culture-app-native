@@ -38,7 +38,7 @@ export const appButtonStyles: ButtonStyles = ({
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: justifyContent ?? 'center',
-  borderRadius: theme.borderRadius.button,
+  borderRadius: 0,
   padding: 2,
   height:
     buttonHeight === 'tall' ? theme.buttons.buttonHeights.tall : theme.buttons.buttonHeights.small,
