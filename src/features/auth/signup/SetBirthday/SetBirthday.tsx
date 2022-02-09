@@ -20,12 +20,17 @@ import { Form } from 'ui/web/form/Form'
 
 const MINIMUM_DATE = new Date('1900-01-01')
 const DEFAULT_YOUNGEST_AGE = 15
+const FOURTEEN_YEARS = DEFAULT_YOUNGEST_AGE - 1
 
 export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (props) => {
   const CURRENT_DATE = new Date()
-  const CURRENT_DATE_WITHOUT_TIME = formatDateToISOStringWithoutTime(CURRENT_DATE)
+  const DEFAULT_SELECTED_DATE = new Date(
+    new Date().setFullYear(new Date().getFullYear() - FOURTEEN_YEARS)
+  )
+  const MAXIMUM_SPINNER_DATE = new Date(DEFAULT_SELECTED_DATE.getFullYear(), 11, 31)
+  const DEFAULT_SELECTED_DATE_WITHOUT_TIME = formatDateToISOStringWithoutTime(DEFAULT_SELECTED_DATE)
 
-  const [date, setDate] = useState<Date>(CURRENT_DATE)
+  const [date, setDate] = useState<Date>(DEFAULT_SELECTED_DATE)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [isDisabled, setIsDisabled] = useState(true)
 
@@ -43,7 +48,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
     const selected_date_without_time = formatDateToISOStringWithoutTime(date)
     const age = dateDiffInFullYears(date, CURRENT_DATE)
 
-    if (selected_date_without_time === CURRENT_DATE_WITHOUT_TIME) {
+    if (selected_date_without_time === DEFAULT_SELECTED_DATE_WITHOUT_TIME) {
       return setIsDisabled(true), setErrorMessage(null)
     }
     if (age < 15) {
@@ -84,7 +89,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
           onDateChange={setDate}
           mode="date"
           locale="fr-FR"
-          maximumDate={CURRENT_DATE}
+          maximumDate={MAXIMUM_SPINNER_DATE}
           minimumDate={MINIMUM_DATE}
           androidVariant="nativeAndroid"
         />
