@@ -29,10 +29,15 @@ export const DuoChoice: React.FC<Props> = ({
   const theme = useTheme()
   const textColor = getTextColor(theme, selected, disabled)
 
+  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
+    size: theme.icons.sizes.small,
+    color: textColor,
+  }))``
+
   return (
     <ChoiceBloc onPress={onPress} testID={testID} selected={selected} disabled={disabled}>
       <Container>
-        <Icon color={textColor} size={28} />
+        <StyledIcon />
         <ButtonText selected={selected} disabled={disabled}>
           {title}
         </ButtonText>

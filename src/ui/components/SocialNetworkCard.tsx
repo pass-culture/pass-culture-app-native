@@ -17,6 +17,10 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
   const { icon: Icon, link, fallbackLink } = SocialNetworkIconsMap[network]
   const name = network[0].toUpperCase() + network.slice(1)
 
+  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
+    size: theme.icons.sizes.small,
+  }))``
+
   return (
     <TouchableOpacity
       onPress={() => {
@@ -25,7 +29,7 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
       }}>
       <Container>
         <NetworkIconBox>
-          <Icon size={24} />
+          <StyledIcon />
         </NetworkIconBox>
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Caption numberOfLines={2}>{name}</Typo.Caption>

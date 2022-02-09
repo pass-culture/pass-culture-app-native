@@ -36,7 +36,7 @@ const imageStyle = { borderRadius, height, width }
 
 const StyledImagePlaceholder = styled(ImagePlaceholder).attrs(({ theme }) => ({
   backgroundColors: [theme.colors.greyLight, theme.colors.greyMedium],
-  size: getSpacing(10),
+  size: theme.icons.sizes.standard,
   borderRadius,
 }))``
 

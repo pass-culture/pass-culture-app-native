@@ -1,6 +1,6 @@
 import React from 'react'
 import webStyled from 'styled-components'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -15,12 +15,15 @@ interface IconWithCaptionProps {
 }
 
 export const IconWithCaption = ({ Icon, caption, testID, isDisabled }: IconWithCaptionProps) => {
-  const { colors } = useTheme()
+  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
+    size: theme.icons.sizes.standard,
+    color: theme.colors.greyDark,
+  }))``
 
   return (
     <Container>
       <IconContainer>
-        <Icon size={getSpacing(10)} color={colors.greyDark} testID={testID} />
+        <StyledIcon testID={testID} />
       </IconContainer>
       <Spacer.Column numberOfSpaces={1} />
       <Caption testID={`caption-${testID}`} disabled={isDisabled}>

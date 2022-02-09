@@ -67,5 +67,5 @@ const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
 
 const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
   color: theme.colors.primary,
-  size: 40,
+  size: theme.icons.sizes.standard,
 }))``

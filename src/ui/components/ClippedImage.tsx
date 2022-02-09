@@ -33,6 +33,11 @@ export function ClippedImage(props: ClippedImageProps) {
   const pathId = props.clipId + '_path'
   const Icon = props.altIcon || OfferDigital
 
+  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
+    size: theme.icons.sizes.standard,
+    color: theme.colors.greyMedium,
+  }))``
+
   return (
     <Container>
       <Svg width={props.width} height={props.height} viewBox={`0 0 ${props.width} ${props.height}`}>
@@ -62,7 +67,7 @@ export function ClippedImage(props: ClippedImageProps) {
       </Svg>
       {!props.image && Icon ? (
         <IconContainer testID="iconContainer">
-          <Icon size={40} color={colors.greyMedium} />
+          <StyledIcon />
         </IconContainer>
       ) : null}
     </Container>

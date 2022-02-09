@@ -95,12 +95,12 @@ function getEndedBookingReason(
   cancellationReason?: BookingCancellationReasons | null,
   dateUsed?: string | null
 ) {
-  if (dateUsed) return <InputRule title={t`Utilisé`} icon={Check} isValid iconSize={20} />
+  if (dateUsed) return <StyledInputRule title={t`Utilisé`} icon={Check} isValid />
 
   if (cancellationReason === BookingCancellationReasons.OFFERER)
-    return <InputRule title={t`Annulé`} icon={Check} isValid={false} iconSize={20} />
+    return <StyledInputRule title={t`Annulé`} icon={Check} isValid={false} />
 
-  return <InputRule title={t`Réservation annulée`} icon={Check} isValid={false} iconSize={20} />
+  return <StyledInputRule title={t`Réservation annulée`} icon={Check} isValid={false} />
 }
 
 function getEndedBookingDateLabel(cancellationDate?: string | null, dateUsed?: string | null) {
@@ -114,3 +114,7 @@ function getEndedBookingDateLabel(cancellationDate?: string | null, dateUsed?: s
   }
   return null
 }
+
+const StyledInputRule = styled(InputRule).attrs(({ theme }) => ({
+  iconSize: theme.icons.sizes.smaller,
+}))``

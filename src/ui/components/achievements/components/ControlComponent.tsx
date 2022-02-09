@@ -2,8 +2,8 @@ import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
+import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 
 export type ControlComponentProps = {
   onPress: () => void
@@ -23,10 +23,18 @@ export const ControlComponent = ({ onPress, title, type }: ControlComponentProps
       type={type}
       testID="controlButton">
       {type === 'prev' ? (
-        <ArrowPrevious size={24} testID="arrowPrevious" />
+        <ArrowPrevious testID="arrowPrevious" />
       ) : (
-        <ArrowNext size={24} testID="arrowNext" />
+        <ArrowNext testID="arrowNext" />
       )}
     </StyledTouchableOpacity>
   )
 }
+
+const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
+  size: theme.icons.sizes.small,
+}))``
+
+const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
+  size: theme.icons.sizes.small,
+}))``

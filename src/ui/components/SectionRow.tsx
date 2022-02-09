@@ -3,7 +3,7 @@ import { StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-
 import styled, { useTheme } from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import { ArrowNext } from 'ui/svg/icons/ArrowNext'
+import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Typo, Spacer } from 'ui/theme'
 
@@ -40,6 +40,9 @@ export function SectionRow(props: SectionRowProps) {
   )
 
   const accessibilityLabel = props.accessibilityLabel || props.title
+  const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
+    size: props.ctaIconSize || theme.icons.sizes.smaller,
+  }))``
   return (
     <TouchableOpacity
       activeOpacity={props.onPress ? activeOpacity : 1}
@@ -55,7 +58,7 @@ export function SectionRow(props: SectionRowProps) {
         <TitleContainer>{title}</TitleContainer>
         <CTAContainer>
           {props.type == 'navigable' ? (
-            <ArrowNext size={props.ctaIconSize || 20} testID="section-row-navigable-icon" />
+            <ArrowNext testID="section-row-navigable-icon" />
           ) : (
             props.cta
           )}

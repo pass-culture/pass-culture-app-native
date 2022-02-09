@@ -13,9 +13,9 @@ import { InputLabel } from 'ui/components/InputLabel'
 import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
-import { Eye } from 'ui/svg/icons/Eye'
-import { EyeSlash } from 'ui/svg/icons/EyeSlash'
-import { getSpacing, Spacer } from 'ui/theme'
+import { Eye as DefaultEye } from 'ui/svg/icons/Eye'
+import { EyeSlash as DefaultEyeSlash } from 'ui/svg/icons/EyeSlash'
+import { Spacer } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
 import { StyledInputContainer } from './StyledInputContainer'
@@ -76,7 +76,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
             shouldHidePassword ? t`Afficher le mot de passe` : t`Cacher le mot de passe`
           }
           onPress={togglePasswordDisplay}>
-          {shouldHidePassword ? <EyeSlash size={getSpacing(6)} /> : <Eye size={getSpacing(6)} />}
+          {shouldHidePassword ? <EyeSlash /> : <Eye />}
         </IconTouchableOpacity>
       </StyledInputContainer>
     </InputContainer>
@@ -94,3 +94,11 @@ const IconTouchableOpacity = styled.TouchableOpacity({
   maxWidth: 60,
   alignItems: 'flex-end',
 })
+
+const EyeSlash = styled(DefaultEyeSlash).attrs(({ theme }) => ({
+  size: theme.icons.sizes.small,
+}))``
+
+const Eye = styled(DefaultEye).attrs(({ theme }) => ({
+  size: theme.icons.sizes.small,
+}))``

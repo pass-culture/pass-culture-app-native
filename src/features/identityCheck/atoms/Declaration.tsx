@@ -20,7 +20,7 @@ export const Declaration = ({ text, description }: { text: string; description: 
 
 const Quote = styled(DefaultQuote).attrs(({ theme }) => ({
   color: theme.colors.greyMedium,
-  size: getSpacing(12),
+  size: theme.icons.sizes.standard,
 }))``
 
 const CenteredContainer = styled.View(({ theme }) => ({

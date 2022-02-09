@@ -20,7 +20,7 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
   thin = false,
   testID,
 }) => {
-  const { colors } = useTheme()
+  const { colors, showTabBar } = useTheme()
   const { isLoggedIn } = useAuthContext()
   const { data: favoritesCount } = useFavoritesCount()
   const scale = useScaleFavoritesAnimation(favoritesCount)
@@ -46,7 +46,7 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
       />
       <StyledAnimatedView style={{ transform: [{ scale }] }} {...pastilleDimensions}>
         <Pastille color={thin ? colors.greyDark : undefined} {...pastilleDimensions} />
-        <PastilleContent {...pastilleDimensions}>
+        <PastilleContent {...pastilleDimensions} showTabBar={showTabBar}>
           <Count {...pastilleDimensions}>{count}</Count>
           <Plus {...pastilleDimensions}>{plusSign}</Plus>
         </PastilleContent>
@@ -65,16 +65,21 @@ const StyledAnimatedView = styled(Animated.View)<{ height: number; width: number
   width: props.width,
 }))
 
-const PastilleContent = styled.View<{ height: number; width: number }>((props) => ({
-  position: 'absolute',
-  bottom: Platform.select<string | undefined>({ web: '20%', default: undefined }),
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: 'center',
-  zIndex: props.theme.zIndex.favoritePastilleContent,
-  height: props.height,
-  width: props.width,
-}))
+const PastilleContent = styled.View<{ height: number; width: number; showTabBar: boolean }>(
+  (props) => ({
+    position: 'absolute',
+    bottom: Platform.select<string | undefined>({
+      web: props.showTabBar ? '5%' : '20%',
+      default: undefined,
+    }),
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: props.theme.zIndex.favoritePastilleContent,
+    height: props.height,
+    width: props.width,
+  })
+)
 
 const Plus = styled(Typo.Caption)<{ height: number }>(({ height, theme }) => ({
   fontSize: 8,

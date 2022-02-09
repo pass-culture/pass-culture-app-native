@@ -55,5 +55,5 @@ const InformationText = styled(Typo.Body)({
 const BicolorLocationPointer = styled(DefaultBicolorLocationPointer).attrs(({ theme }) => ({
   color: theme.colors.greyDark,
   color2: theme.colors.greyDark,
-  size: 85,
+  size: 85, // Special case where theme.icons.sizes is not used
 }))``

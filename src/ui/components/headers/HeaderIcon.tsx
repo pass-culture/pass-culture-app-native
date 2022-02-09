@@ -3,7 +3,7 @@ import { Animated, TouchableOpacity } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import { AnimatedIcon } from 'ui/components/AnimatedIcon'
+import { AnimatedIcon as DefaultAnimatedIcon } from 'ui/components/AnimatedIcon'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
@@ -51,7 +51,6 @@ export const HeaderIcon = (props: HeaderIconProps) => {
         }}>
         <AnimatedIcon
           Icon={Icon}
-          size={getSpacing(6)}
           initialColor={props.initialColor || colors.black}
           testID={`icon-${props.iconName}`}
           transition={props.animationState.transition}
@@ -73,3 +72,7 @@ const StyledAnimatedView = styled(Animated.View)(({ theme }) => ({
   overflow: 'hidden',
   borderColor: theme.colors.greyLight,
 }))
+
+const AnimatedIcon = styled(DefaultAnimatedIcon).attrs(({ theme }) => ({
+  size: theme.icons.sizes.small,
+}))``

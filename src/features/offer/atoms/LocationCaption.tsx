@@ -38,11 +38,11 @@ export const LocationCaption: FunctionComponent<Props> = ({ venue, isDigital }: 
 
 const Digital = styled(DefaultDigital).attrs(({ theme }) => ({
   color: theme.colors.primary,
-  size: getSpacing(4.5), // Cette taille n'existe pas dans le theme : todo: voir avec les UXs cette incohérence graphique
+  size: theme.icons.sizes.extraSmall,
 }))``
 const LocationPointer = styled(DefaultLocationPointer).attrs(({ theme }) => ({
   color: theme.colors.primary,
-  size: getSpacing(4.5), // Cette taille n'existe pas dans le theme : todo: voir avec les UXs cette incohérence graphique
+  size: theme.icons.sizes.extraSmall,
 }))``
 
 const LocationContainer = styled.View({

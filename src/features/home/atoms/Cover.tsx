@@ -49,5 +49,5 @@ const ArrowMarginContainer = styled.View({
 
 const ArrowNextDouble = styled(DefaultArrowNextDouble).attrs(({ theme }) => ({
   color: theme.colors.white,
-  size: 56,
+  size: 56, // Special case where theme.icons.sizes is not used
 }))``

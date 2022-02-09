@@ -91,7 +91,7 @@ export const AsyncErrorBoundary = (props: AsyncFallbackProps) => {
 
 const ArrowPrevious = styled(ArrowPreviousDefault).attrs(({ theme }) => ({
   color: theme.colors.white,
-  size: getSpacing(7),
+  size: theme.icons.sizes.small,
 }))``
 
 const HeaderContainer = styled.TouchableOpacity<{ top: number }>(({ top }) => ({

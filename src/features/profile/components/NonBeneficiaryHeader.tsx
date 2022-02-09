@@ -75,7 +75,7 @@ function NonBeneficiaryHeaderComponent(props: PropsWithChildren<NonBeneficiaryHe
             )}
             <ModuleBanner
               onPress={onBannerPress}
-              leftIcon={<ThumbUp size={68} />}
+              leftIcon={<ThumbUp />}
               title={moduleBannerWording}
               subTitle={t`à dépenser dans l'application`}
               testID="eligibility-banner"

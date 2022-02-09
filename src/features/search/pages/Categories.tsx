@@ -48,7 +48,7 @@ export const Categories: React.FC = () => {
           const StyledIcon = styled(Icon).attrs(({ theme }) => ({
             color: theme.colors.primary,
             color2: isSelected ? theme.colors.primary : theme.colors.secondary,
-            size: getSpacing(9),
+            size: theme.icons.sizes.small,
           }))``
 
           return (

@@ -238,5 +238,5 @@ const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
 
 const Warning = styled(WarningDefault).attrs(({ theme }) => ({
   color: theme.colors.error,
-  size: getSpacing(3.5),
+  size: theme.icons.sizes.extraSmall,
 }))``

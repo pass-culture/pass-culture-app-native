@@ -10,8 +10,8 @@ import { LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
-import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { Typo, Spacer, getSpacing } from 'ui/theme'
+import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
+import { Typo, Spacer } from 'ui/theme'
 
 export const Location: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -26,7 +26,7 @@ export const Location: React.FC = () => {
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
     color: theme.colors.black,
     color2: theme.colors.black,
-    size: getSpacing(10),
+    size: theme.icons.sizes.small,
   }))``
 
   const onPressChangeLocation = () => {
@@ -41,7 +41,7 @@ export const Location: React.FC = () => {
         <Spacer.Row numberOfSpaces={2} />
         <Label numberOfLines={2}>{label}</Label>
         <Spacer.Flex />
-        <ArrowNext size={getSpacing(5)} />
+        <ArrowNext />
       </LocationContentContainer>
       {locationType === LocationType.AROUND_ME ? (
         <React.Fragment>
@@ -69,3 +69,7 @@ const Label = styled(Typo.ButtonText)({
 const Caption = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
+
+const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
+  size: theme.icons.sizes.smaller,
+}))``

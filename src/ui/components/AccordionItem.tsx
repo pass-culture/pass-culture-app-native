@@ -18,7 +18,7 @@ import { useFunctionOnce } from 'libs/hooks'
 import { getTitleAttrs } from 'ui/theme/typography'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-import { ArrowNext } from '../svg/icons/ArrowNext'
+import { ArrowNext as DefaultArrowNext } from '../svg/icons/ArrowNext'
 import { getSpacing, Typo } from '../theme'
 
 interface IAccordionItemProps {
@@ -95,7 +95,7 @@ export const AccordionItem = ({
         <View style={[styles.titleContainer, titleStyle]}>
           <Title>{title}</Title>
           <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }} testID="accordionArrow">
-            <ArrowNext size={getSpacing(4.5)} />
+            <ArrowNext />
           </Animated.View>
         </View>
       </TouchableWithoutFeedback>
@@ -135,3 +135,7 @@ const Title = styled(Typo.Title4).attrs(() => getTitleAttrs(2))({
 })
 
 const StyledAnimatedView = styled(Animated.View)({ overflow: 'hidden' })
+
+const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
+  size: theme.icons.sizes.smaller,
+}))``

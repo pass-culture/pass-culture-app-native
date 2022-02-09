@@ -6,6 +6,7 @@ import {
   TextInputSubmitEditingEventData,
   TouchableOpacity,
 } from 'react-native'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -15,9 +16,8 @@ import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/analytics'
 import { HiddenText } from 'ui/components/HiddenText'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
-import { getSpacing } from 'ui/theme'
+import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { MagnifyingGlass as DefaultMagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 
 const LeftIcon: React.FC<{ onPressArrowBack: () => void }> = ({ onPressArrowBack }) => {
   const { searchState } = useSearch()
@@ -26,10 +26,10 @@ const LeftIcon: React.FC<{ onPressArrowBack: () => void }> = ({ onPressArrowBack
       <TouchableOpacity
         onPress={onPressArrowBack}
         {...accessibilityAndTestId(t`Revenir en arrière`)}>
-        <ArrowPrevious size={getSpacing(5)} />
+        <ArrowPrevious />
       </TouchableOpacity>
     )
-  return <MagnifyingGlass size={getSpacing(5)} />
+  return <MagnifyingGlass />
 }
 
 export const SearchBox: React.FC = () => {
@@ -102,3 +102,11 @@ export const SearchBox: React.FC = () => {
     </React.Fragment>
   )
 }
+
+const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
+  size: theme.icons.sizes.smaller,
+}))``
+
+const MagnifyingGlass = styled(DefaultMagnifyingGlass).attrs(({ theme }) => ({
+  size: theme.icons.sizes.smaller,
+}))``

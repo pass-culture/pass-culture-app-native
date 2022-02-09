@@ -12,7 +12,7 @@ import styled from 'styled-components/native'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
-import { ArrowDown } from 'ui/svg/icons/ArrowDown'
+import { ArrowDown as DefaultArrowDown } from 'ui/svg/icons/ArrowDown'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -67,7 +67,7 @@ export const CountryPicker: React.FC<Props> = (props) => {
         {...accessibilityAndTestId(t`Ouvrir la modale de choix de l'indicatif téléphonique`)}>
         <Flag countryCode={country.cca2} flagSize={25} />
         <CallingCodeText>{callingCode}</CallingCodeText>
-        <ArrowDown size={getSpacing(4)} />
+        <ArrowDown />
       </StyledTouchableOpacity>
       <AppModal
         title={t`Choix de l'indicatif téléphonique`}
@@ -99,3 +99,7 @@ const CallingCodeText = styled(Typo.ButtonText)({
   marginLeft: -getSpacing(1), // To compensate for the Flag component right margin
   marginRight: getSpacing(1),
 })
+
+const ArrowDown = styled(DefaultArrowDown).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+}))``

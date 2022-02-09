@@ -43,6 +43,7 @@ export const GeolocationActivationModal: React.FC<Props> = ({
       testIdSuffix="geoloc-permission-modal">
       <React.Fragment>
         <Spacer.Column numberOfSpaces={5} />
+        {/** Special case where theme.icons.sizes is not used */}
         <BicolorLocationPointer size={85} />
         <Spacer.Column numberOfSpaces={10} />
         <InformationText>

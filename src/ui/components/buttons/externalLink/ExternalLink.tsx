@@ -36,6 +36,6 @@ const ButtonText = styled(Typo.ButtonText)<{ primary?: boolean }>(({ primary, th
 const ExternalSite = styled(DefaultExternalSite).attrs<{ primary?: boolean }>(
   ({ primary, theme }) => ({
     color: primary ? theme.colors.primary : undefined,
-    size: 14,
+    size: theme.icons.sizes.extraSmall,
   })
 )<{ primary?: boolean }>``

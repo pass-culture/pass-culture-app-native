@@ -15,17 +15,23 @@ type Props = {
   buttons?: Array<ReactNode>
 }
 
-const ICON_SIZE = getSpacing(50)
-
 export const GenericErrorPage: FunctionComponent<Props> = ({
   children,
   header,
   noIndex = true,
-  icon: Icon,
+  icon,
   title,
   buttons,
 }) => {
-  const { isTouch, colors } = useTheme()
+  const { isTouch } = useTheme()
+
+  const Icon =
+    !!icon &&
+    styled(icon).attrs(({ theme }) => ({
+      size: theme.illustrations.sizes.fullPage,
+      color: theme.colors.white,
+    }))``
+
   return (
     <Container>
       {!!noIndex && (
@@ -41,7 +47,7 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
         {!!isTouch && <Spacer.Column numberOfSpaces={spacingMatrix.top} />}
         {!!Icon && (
           <React.Fragment>
-            <Icon color={colors.white} size={ICON_SIZE} />
+            <Icon />
             <Spacer.Column numberOfSpaces={spacingMatrix.afterIcon} />
           </React.Fragment>
         )}

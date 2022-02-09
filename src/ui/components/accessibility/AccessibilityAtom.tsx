@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ValidationMark } from 'ui/components/ValidationMark'
+import { ValidationMark as DefaultValidationMark } from 'ui/components/ValidationMark'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { getIconAndWording, HandicapCategory } from './AccessibilityAtom.service'
@@ -17,17 +17,19 @@ export const AccessibilityAtom: React.FC<Props> = ({
   rightSpacingValue = 0,
 }) => {
   const { Icon, wording } = getIconAndWording(handicap)
+  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
+    size: theme.icons.sizes.standard,
+  }))``
 
   return (
     <Container rightSpacingValue={rightSpacingValue} testID="accessibilityAtomContainer">
       <Frame testID="accessibilityFrame">
         <Spacer.Flex />
-        <Icon size={getSpacing(8)} />
+        <StyledIcon />
         <Spacer.Flex />
         <ValidationContainer>
           <ValidationMark
             isValid={isAccessible}
-            size={getSpacing(6)}
             invalidTestID="invalidTestId"
             validtestID="validTestId"
           />
@@ -67,3 +69,7 @@ const ValidationContainer = styled.View({
   position: 'absolute',
   bottom: -getSpacing(3),
 })
+
+const ValidationMark = styled(DefaultValidationMark).attrs(({ theme }) => ({
+  size: theme.icons.sizes.small,
+}))``

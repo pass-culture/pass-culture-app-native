@@ -39,5 +39,8 @@ const SpinnerContainer = styled.View({
 })
 
 export const Spinner = memo(
-  styled(NotMemoizedSpinner).attrs(({ theme }) => ({ color: theme.colors.greyDark, size: 40 }))``
+  styled(NotMemoizedSpinner).attrs(({ theme }) => ({
+    color: theme.colors.greyDark,
+    size: theme.icons.sizes.standard,
+  }))``
 )
