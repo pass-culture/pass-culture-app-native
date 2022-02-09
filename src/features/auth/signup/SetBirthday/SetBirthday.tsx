@@ -20,12 +20,12 @@ import { Form } from 'ui/web/form/Form'
 
 const MINIMUM_DATE = new Date('1900-01-01')
 const DEFAULT_YOUNGEST_AGE = 15
-const FOURTEEN_YEARS = DEFAULT_YOUNGEST_AGE - 1
+const UNDER_YOUNGEST_AGE = DEFAULT_YOUNGEST_AGE - 1
 
 export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (props) => {
   const CURRENT_DATE = new Date()
   const DEFAULT_SELECTED_DATE = new Date(
-    new Date().setFullYear(new Date().getFullYear() - FOURTEEN_YEARS)
+    new Date().setFullYear(new Date().getFullYear() - UNDER_YOUNGEST_AGE)
   )
   const MAXIMUM_SPINNER_DATE = new Date(DEFAULT_SELECTED_DATE.getFullYear(), 11, 31)
   const DEFAULT_SELECTED_DATE_WITHOUT_TIME = formatDateToISOStringWithoutTime(DEFAULT_SELECTED_DATE)

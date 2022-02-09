@@ -26,12 +26,12 @@ interface Props {
 
 const MINIMUM_DATE = 1900
 const DEFAULT_YOUNGEST_AGE = 15
-const FOURTEEN_YEARS = DEFAULT_YOUNGEST_AGE - 1
+const UNDER_YOUNGEST_AGE = DEFAULT_YOUNGEST_AGE - 1
 
 export function DatePickerTouch(props: Props) {
   const CURRENT_DATE = new Date()
   const DEFAULT_SELECTED_DATE = new Date(
-    new Date().setFullYear(new Date().getFullYear() - FOURTEEN_YEARS)
+    new Date().setFullYear(new Date().getFullYear() - UNDER_YOUNGEST_AGE)
   )
   const DEFAULT_SELECTED_DATE_WITHOUT_TIME = formatDateToISOStringWithoutTime(DEFAULT_SELECTED_DATE)
 
