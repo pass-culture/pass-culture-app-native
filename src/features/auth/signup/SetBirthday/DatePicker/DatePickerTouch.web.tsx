@@ -26,10 +26,14 @@ interface Props {
 
 const MINIMUM_DATE = 1900
 const DEFAULT_YOUNGEST_AGE = 15
+const FOURTEEN_YEARS = DEFAULT_YOUNGEST_AGE - 1
 
 export function DatePickerTouch(props: Props) {
   const CURRENT_DATE = new Date()
-  const CURRENT_DATE_WITHOUT_TIME = formatDateToISOStringWithoutTime(CURRENT_DATE)
+  const DEFAULT_SELECTED_DATE = new Date(
+    new Date().setFullYear(new Date().getFullYear() - FOURTEEN_YEARS)
+  )
+  const DEFAULT_SELECTED_DATE_WITHOUT_TIME = formatDateToISOStringWithoutTime(DEFAULT_SELECTED_DATE)
 
   const [date, setDate] = useState({
     day: CURRENT_DATE.getDate(),
@@ -42,12 +46,12 @@ export function DatePickerTouch(props: Props) {
   const { optionGroups } = useMemo(() => {
     const { month: selectedMonth, year: selectedYear } = date
     const selectedMonthIndex = monthNamesShort.indexOf(selectedMonth)
-    const currentYear = CURRENT_DATE.getFullYear()
+    const defaultSelectedYear = DEFAULT_SELECTED_DATE.getFullYear()
     return {
       optionGroups: {
         day: getDatesInMonth(selectedMonthIndex, selectedYear),
         month: monthNamesShort,
-        year: getPastYears(MINIMUM_DATE, currentYear),
+        year: getPastYears(MINIMUM_DATE, defaultSelectedYear),
       },
     }
   }, [date, monthNamesShort, getYears])
@@ -60,7 +64,7 @@ export function DatePickerTouch(props: Props) {
     const selected_date_without_time = `${date.year}-${pad(dateMonth)}-${pad(date.day)}`
     const age = dateDiffInFullYears(new Date(selected_date_without_time), CURRENT_DATE)
 
-    if (selected_date_without_time === CURRENT_DATE_WITHOUT_TIME) {
+    if (selected_date_without_time === DEFAULT_SELECTED_DATE_WITHOUT_TIME) {
       return setIsDisabled(true), setErrorMessage(null)
     }
     if (age < 0) {
