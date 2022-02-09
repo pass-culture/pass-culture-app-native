@@ -20,6 +20,7 @@ import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getTitleAttrs } from 'ui/theme/typography'
+import { Link } from 'ui/web/link/Link'
 
 import { BookingButton } from './BookingButton'
 
@@ -128,33 +129,35 @@ export const Favorite: React.FC<Props> = (props) => {
           : undefined,
       }}>
       <Container onPress={handlePressOffer} testID="favorite">
-        <Row>
-          <OfferImage imageUrl={offer.image?.url} categoryId={categoryId} />
-          <Spacer.Row numberOfSpaces={4} />
-          <Column>
-            <Row>
-              {distanceToOffer ? (
-                <React.Fragment>
-                  <Spacer.Flex flex={0.7}>
-                    <Name numberOfLines={2}>{offer.name}</Name>
-                  </Spacer.Flex>
-                  <Spacer.Flex flex={0.3}>
-                    <Distance>{distanceToOffer}</Distance>
-                  </Spacer.Flex>
-                </React.Fragment>
-              ) : (
-                <Name numberOfLines={2}>{offer.name}</Name>
-              )}
-            </Row>
-            <Spacer.Column numberOfSpaces={1} />
-            <Body>{searchGroupLabel}</Body>
-            {!!formattedDate && <Body>{formattedDate}</Body>}
-            <Spacer.Column numberOfSpaces={1} />
-            <Typo.Caption>
-              {getFavoriteDisplayPrice({ startPrice: offer.startPrice, price: offer.price })}
-            </Typo.Caption>
-          </Column>
-        </Row>
+        <Link to={{ screen: 'Offer', params: { id: offer.id, from: 'favorites' } }}>
+          <Row>
+            <OfferImage imageUrl={offer.image?.url} categoryId={categoryId} />
+            <Spacer.Row numberOfSpaces={4} />
+            <Column>
+              <Row>
+                {distanceToOffer ? (
+                  <React.Fragment>
+                    <Spacer.Flex flex={0.7}>
+                      <Name numberOfLines={2}>{offer.name}</Name>
+                    </Spacer.Flex>
+                    <Spacer.Flex flex={0.3}>
+                      <Distance>{distanceToOffer}</Distance>
+                    </Spacer.Flex>
+                  </React.Fragment>
+                ) : (
+                  <Name numberOfLines={2}>{offer.name}</Name>
+                )}
+              </Row>
+              <Spacer.Column numberOfSpaces={1} />
+              <Body>{searchGroupLabel}</Body>
+              {!!formattedDate && <Body>{formattedDate}</Body>}
+              <Spacer.Column numberOfSpaces={1} />
+              <Typo.Caption>
+                {getFavoriteDisplayPrice({ startPrice: offer.startPrice, price: offer.price })}
+              </Typo.Caption>
+            </Column>
+          </Row>
+        </Link>
       </Container>
       <ButtonsRow>
         <ButtonContainer>
@@ -179,7 +182,9 @@ const imageWidth = getSpacing(16)
 
 const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
   activeOpacity: theme.activeOpacity,
-}))({ marginHorizontal: getSpacing(6) })
+}))({
+  marginHorizontal: getSpacing(6),
+})
 
 const columnPadding = 4
 const columnMargin = 2 * 6
