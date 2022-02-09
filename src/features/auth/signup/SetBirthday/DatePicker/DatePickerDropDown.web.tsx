@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { DropDown } from 'features/auth/signup/SetBirthday/DatePicker/DropDown.web'
+import { DropDown } from 'features/auth/signup/SetBirthday/atoms/DropDown/DropDown'
 import { SignupData } from 'features/auth/signup/types'
 import { getPastYears, monthNames } from 'features/bookOffer/components/Calendar/Calendar.utils'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
