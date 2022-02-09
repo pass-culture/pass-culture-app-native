@@ -40,7 +40,7 @@ export const appButtonStyles: ButtonStyles = ({
   justifyContent: justifyContent ?? 'center',
   borderRadius: theme.borderRadius.button,
   padding: 2,
-  height:
+  minHeight:
     buttonHeight === 'tall' ? theme.buttons.buttonHeights.tall : theme.buttons.buttonHeights.small,
   width: '100%',
   ...(center ? { alignSelf: 'center' } : {}),
