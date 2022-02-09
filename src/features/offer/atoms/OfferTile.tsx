@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { PixelRatio } from 'react-native'
+import { PixelRatio, StyleSheet } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -21,6 +21,7 @@ import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
 import { OfferCaption } from 'ui/components/OfferCaption'
 import { MARGIN_DP } from 'ui/theme'
+import { Link } from 'ui/web/link/Link'
 
 export interface OfferTileProps {
   categoryId: CategoryIdEnum | null | undefined
@@ -88,9 +89,9 @@ export const OfferTile = (props: OfferTileProps) => {
 
   const navigation = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
+  const { offerId } = offer
 
   function handlePressOffer() {
-    const { offerId } = offer
     // We pre-populate the query-cache with the data from the search result for a smooth transition
     queryClient.setQueryData([QueryKeys.OFFER, offerId], mergeOfferData(offer), {
       // Make sure the data is stale, so that it is considered as a placeholder
@@ -106,7 +107,9 @@ export const OfferTile = (props: OfferTileProps) => {
         height={height}
         onPress={handlePressOffer}
         {...accessibilityAndTestId('offerTile')}>
-        <React.Fragment>
+        <Link
+          to={{ screen: 'Offer', params: { id: offerId, from: analyticsFrom, moduleName } }}
+          style={styles.link}>
           <ImageTile
             width={width}
             height={height - IMAGE_CAPTION_HEIGHT}
@@ -119,7 +122,7 @@ export const OfferTile = (props: OfferTileProps) => {
             categoryLabel={categoryLabel}
             distance={offer.distance}
           />
-        </React.Fragment>
+        </Link>
       </TouchableHighlight>
       <OfferCaption
         imageWidth={width}
@@ -141,3 +144,10 @@ const TouchableHighlight = styled.TouchableHighlight<{ height: number }>(({ heig
   borderRadius: theme.borderRadius.radius,
   height,
 }))
+
+const styles = StyleSheet.create({
+  link: {
+    flexDirection: 'column',
+    display: 'flex',
+  },
+})

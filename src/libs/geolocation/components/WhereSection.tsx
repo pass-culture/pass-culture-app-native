@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
+import { StyleSheet } from 'react-native'
 import { useQueryClient } from 'react-query'
 import webStyled from 'styled-components'
 import styled from 'styled-components/native'
@@ -17,6 +18,7 @@ import { Spacer } from 'ui/components/spacer/Spacer'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { Typo, getSpacing } from 'ui/theme'
+import { Link } from 'ui/web/link/Link'
 import { Dd } from 'ui/web/list/Dd'
 import { Dt } from 'ui/web/list/Dt'
 
@@ -82,16 +84,20 @@ export const WhereSection: React.FC<Props> = ({
         {showVenueBanner ? (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={4} />
-            <VenueNameContainer onPress={navigateToVenuePage} testID="VenueBannerComponent">
-              <Spacer.Row numberOfSpaces={2} />
-              <IconContainer>
-                <LocationBuilding size={iconSize} />
-              </IconContainer>
-              <Spacer.Row numberOfSpaces={2} />
-              <StyledVenueName numberOfLines={1}>{venue.publicName || venue.name}</StyledVenueName>
-              <Spacer.Flex />
-              <ArrowNext />
-            </VenueNameContainer>
+            <Link to={{ screen: 'Venue', params: { id: venue.id } }} style={styles.link}>
+              <VenueNameContainer onPress={navigateToVenuePage} testID="VenueBannerComponent">
+                <Spacer.Row numberOfSpaces={2} />
+                <IconContainer>
+                  <LocationBuilding size={iconSize} />
+                </IconContainer>
+                <Spacer.Row numberOfSpaces={2} />
+                <StyledVenueName numberOfLines={1}>
+                  {venue.publicName || venue.name}
+                </StyledVenueName>
+                <Spacer.Flex />
+                <ArrowNext />
+              </VenueNameContainer>
+            </Link>
           </React.Fragment>
         ) : null}
         {!!address && (
@@ -123,6 +129,13 @@ export const WhereSection: React.FC<Props> = ({
     </React.Fragment>
   )
 }
+
+const styles = StyleSheet.create({
+  link: {
+    flexDirection: 'column',
+    display: 'flex',
+  },
+})
 
 const VenueNameContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
   activeOpacity: theme.activeOpacity,

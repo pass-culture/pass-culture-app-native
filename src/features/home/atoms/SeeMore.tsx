@@ -31,6 +31,7 @@ export const SeeMore: React.FC<SeeMoreProps> = ({ height, width, onPress }) => (
 )
 
 const Row = styled.View({ flexDirection: 'row' })
+
 const Container = styled.View<{ height: number; width: number }>(({ height, width }) => ({
   height,
   width,
@@ -38,10 +39,15 @@ const Container = styled.View<{ height: number; width: number }>(({ height, widt
   justifyContent: 'center',
 }))
 
-const ClickableArea = styled.TouchableOpacity({
+const ClickableArea = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))({
   alignItems: 'center',
 })
-const RoundContainer = styled.TouchableOpacity(({ theme }) => ({
+
+const RoundContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))(({ theme }) => ({
   width: getSpacing(16),
   aspectRatio: '1',
   borderRadius: getSpacing(8),

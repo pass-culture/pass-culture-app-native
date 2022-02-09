@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
+import { StyleSheet } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -14,6 +15,7 @@ import { SearchHit } from 'libs/search'
 import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Link } from 'ui/web/link/Link'
 
 import { OfferImage } from './OfferImage'
 
@@ -58,29 +60,31 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
 
   return (
     <Container onPress={handlePressOffer} testID="offerHit">
-      <OfferImage imageUrl={offer.thumbUrl} categoryId={categoryId} />
-      <Spacer.Row numberOfSpaces={4} />
-      <Column>
-        <Row>
-          {distanceToOffer ? (
-            <React.Fragment>
-              <Spacer.Flex flex={0.7}>
-                <Name numberOfLines={2}>{offer.name}</Name>
-              </Spacer.Flex>
-              <Spacer.Flex flex={0.3}>
-                <Distance>{distanceToOffer}</Distance>
-              </Spacer.Flex>
-            </React.Fragment>
-          ) : (
-            <Name numberOfLines={2}>{offer.name}</Name>
-          )}
-        </Row>
-        <Spacer.Column numberOfSpaces={1} />
-        <Body>{searchGroupLabel}</Body>
-        {!!formattedDate && <Body>{formattedDate}</Body>}
-        <Spacer.Column numberOfSpaces={1} />
-        <Typo.Caption>{getDisplayPrice(offer.prices)}</Typo.Caption>
-      </Column>
+      <Link to={{ screen: 'EndedBookings', params: undefined }} style={styles.link}>
+        <OfferImage imageUrl={offer.thumbUrl} categoryId={categoryId} />
+        <Spacer.Row numberOfSpaces={4} />
+        <Column>
+          <Row>
+            {distanceToOffer ? (
+              <React.Fragment>
+                <Spacer.Flex flex={0.7}>
+                  <Name numberOfLines={2}>{offer.name}</Name>
+                </Spacer.Flex>
+                <Spacer.Flex flex={0.3}>
+                  <Distance>{distanceToOffer}</Distance>
+                </Spacer.Flex>
+              </React.Fragment>
+            ) : (
+              <Name numberOfLines={2}>{offer.name}</Name>
+            )}
+          </Row>
+          <Spacer.Column numberOfSpaces={1} />
+          <Body>{searchGroupLabel}</Body>
+          {!!formattedDate && <Body>{formattedDate}</Body>}
+          <Spacer.Column numberOfSpaces={1} />
+          <Typo.Caption>{getDisplayPrice(offer.prices)}</Typo.Caption>
+        </Column>
+      </Link>
     </Container>
   )
 }
@@ -107,3 +111,11 @@ const Distance = styled(Typo.Body)(({ theme }) => ({
 const Body = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
+
+const styles = StyleSheet.create({
+  link: {
+    flex: 1,
+    flexDirection: 'row',
+    display: 'flex',
+  },
+})

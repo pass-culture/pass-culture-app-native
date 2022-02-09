@@ -1,7 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { TouchableOpacity } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -16,6 +15,7 @@ import { useCategoryId } from 'libs/subcategories'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { Check } from 'ui/svg/icons/Check'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Link } from 'ui/web/link/Link'
 
 import { BookingItemTitle } from './BookingItemTitle'
 import { EndedBookingTicket } from './EndedBookingTicket'
@@ -53,22 +53,28 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   }
 
   return (
-    <TouchableOpacity onPress={handlePressOffer} testID="EndedBookingItem">
-      <ItemContainer>
-        <EndedBookingTicket image={stock.offer.image?.url} categoryId={categoryId} />
-        <Spacer.Row numberOfSpaces={4} />
-        <AttributesView>
-          <BookingItemTitle title={stock.offer.name} />
-          <EndedReasonAndDate>
-            {endedBookingReason}
-            <Spacer.Row numberOfSpaces={1} />
-            <DateLabel>{endedBookingDateLabel}</DateLabel>
-          </EndedReasonAndDate>
-        </AttributesView>
-      </ItemContainer>
-    </TouchableOpacity>
+    <Link to={{ screen: 'Offer', params: { id: stock.offer.id, from: 'endedbookings' } }}>
+      <TouchableOpacity onPress={handlePressOffer} testID="EndedBookingItem">
+        <ItemContainer>
+          <EndedBookingTicket image={stock.offer.image?.url} categoryId={categoryId} />
+          <Spacer.Row numberOfSpaces={4} />
+          <AttributesView>
+            <BookingItemTitle title={stock.offer.name} />
+            <EndedReasonAndDate>
+              {endedBookingReason}
+              <Spacer.Row numberOfSpaces={1} />
+              <DateLabel>{endedBookingDateLabel}</DateLabel>
+            </EndedReasonAndDate>
+          </AttributesView>
+        </ItemContainer>
+      </TouchableOpacity>
+    </Link>
   )
 }
+
+const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))``
 
 const AttributesView = styled.View({
   flex: 1,
