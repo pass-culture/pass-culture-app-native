@@ -1,6 +1,7 @@
 import { All } from './All'
 import { ArtsMaterial } from './ArtsMaterial'
 import { Atelier } from './Atelier'
+import { CarteJeunes } from './CarteJeunes'
 import { Cinema } from './Cinema'
 import { Conference } from './Conference'
 import { Exposition } from './Exposition'
@@ -16,6 +17,7 @@ export default {
   All,
   ArtsMaterial,
   Atelier,
+  CarteJeunes,
   Cinema,
   Conference,
   Exposition,

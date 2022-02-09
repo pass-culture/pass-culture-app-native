@@ -29,6 +29,10 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     icon: CategoryIcon.All,
     facetFilter: SearchGroupNameEnum.NONE,
   },
+  [SearchGroupNameEnum.CARTE_JEUNES]: {
+    icon: CategoryIcon.CarteJeunes,
+    facetFilter: SearchGroupNameEnum.CARTE_JEUNES,
+  },
   [SearchGroupNameEnum.CINEMA]: {
     icon: CategoryIcon.Cinema,
     facetFilter: SearchGroupNameEnum.CINEMA,

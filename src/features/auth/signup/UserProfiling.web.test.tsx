@@ -25,7 +25,7 @@ const defaultProps = {
   error: new UserProfilingError('UserProfilingError', UserProfiling),
   resetErrorBoundary,
 }
-const allowedIdentityCheckMethods = [IdentityCheckMethod.jouve]
+const allowedIdentityCheckMethods = [IdentityCheckMethod.ubble]
 
 describe('<UserProfiling />', () => {
   beforeEach(jest.clearAllMocks)

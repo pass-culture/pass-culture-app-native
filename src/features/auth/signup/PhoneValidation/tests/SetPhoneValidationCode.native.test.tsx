@@ -41,7 +41,6 @@ jest.mock('features/home/api', () => ({
           email: 'christophe.dupont@example.com',
           firstName: 'Christophe',
           lastName: 'Dupont',
-          nextBeneficiaryValidationStep: 'id-check',
         },
       })
     ),

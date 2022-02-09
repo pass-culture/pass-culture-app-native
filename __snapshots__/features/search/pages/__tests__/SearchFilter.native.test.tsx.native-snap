@@ -676,6 +676,69 @@ exports[`SearchFilter component should render correctly 1`] = `
                   ]
                 }
               >
+                Carte jeunes
+              </Text>
+              <View
+                numberOfSpaces={5}
+                style={
+                  Array [
+                    Object {
+                      "width": 20,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <View
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              nativeID="animatedComponent"
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                Object {
+                  "alignItems": "center",
+                  "backgroundColor": "#ffffff",
+                  "borderColor": "#CBCDD2",
+                  "borderRadius": 40,
+                  "borderWidth": 2,
+                  "flexDirection": "row",
+                  "marginBottom": 12,
+                  "marginRight": 12,
+                  "opacity": 1,
+                }
+              }
+            >
+              <View
+                numberOfSpaces={5}
+                style={
+                  Array [
+                    Object {
+                      "width": 20,
+                    },
+                  ]
+                }
+              />
+              <Text
+                selected={false}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                      "paddingVertical": 10,
+                    },
+                  ]
+                }
+              >
                 Cinéma
               </Text>
               <View
