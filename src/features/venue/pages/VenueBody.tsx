@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent, useRef } from 'react'
 import { ScrollView } from 'react-native'
+import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
@@ -19,6 +20,9 @@ import { PartialAccordionDescription } from 'ui/components/PartialAccordionDescr
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { LocationPointer as DefaultLocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Dd } from 'ui/web/list/Dd'
+import { Dl } from 'ui/web/list/Dl'
+import { Dt } from 'ui/web/list/Dt'
 
 import { useVenue } from '../api/useVenue'
 
@@ -70,49 +74,53 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       {/* TODO(antoinewg, #10099) use the image once we have it */}
       <Hero imageUrl={undefined} type="venue" venueType={venueTypeCode || null} />
       <Spacer.Column numberOfSpaces={4} />
-      <MarginContainer>
-        <VenueAddressContainer>
-          <IconContainer>
-            <LocationPointer />
-          </IconContainer>
-          <StyledText numberOfLines={1}>{venueAddress}</StyledText>
-        </VenueAddressContainer>
-        <Spacer.Column numberOfSpaces={2} />
-        <VenueTitle
-          testID="venueTitle"
-          numberOfLines={2}
-          adjustsFontSizeToFit
-          allowFontScaling={false}>
-          {publicName || name}
-        </VenueTitle>
-        <Spacer.Column numberOfSpaces={4} />
-      </MarginContainer>
+      <Dl>
+        <MarginContainer>
+          <VenueAddressContainer>
+            <IconContainer>
+              <LocationPointer />
+            </IconContainer>
+            <StyledText numberOfLines={1}>{venueAddress}</StyledText>
+          </VenueAddressContainer>
+          <Spacer.Column numberOfSpaces={2} />
+          <HiddenTitle>{t`Lieu`}</HiddenTitle>
+          <VenueTitle
+            testID="venueTitle"
+            numberOfLines={2}
+            adjustsFontSizeToFit
+            allowFontScaling={false}>
+            {publicName || name}
+          </VenueTitle>
+          <Spacer.Column numberOfSpaces={4} />
+        </MarginContainer>
 
-      <VenueIconCaptions
-        type={venueTypeCode || null}
-        label={typeLabel}
-        locationCoordinates={{ latitude, longitude }}
-      />
-
-      {/* Description */}
-      <PartialAccordionDescription description={description || ''} />
-
-      {/* Offres */}
-      <SectionWithDivider visible={shouldShowVenueOffers}>
-        <VenueOffers venueId={venueId} />
-      </SectionWithDivider>
-
-      {/* Où */}
-      <SectionWithDivider visible margin>
-        <WhereSection
-          beforeNavigateToItinerary={() =>
-            analytics.logConsultItinerary({ venueId, from: 'venue' })
-          }
-          venue={venue}
-          address={venueAddress}
+        <VenueIconCaptions
+          type={venueTypeCode || null}
+          label={typeLabel}
           locationCoordinates={{ latitude, longitude }}
         />
-      </SectionWithDivider>
+
+        {/* Description */}
+        <HiddenTitle>{t`Description`}</HiddenTitle>
+        <PartialAccordionDescription description={description || ''} />
+
+        {/* Offres */}
+        <SectionWithDivider visible={shouldShowVenueOffers}>
+          <VenueOffers venueId={venueId} />
+        </SectionWithDivider>
+
+        {/* Où */}
+        <SectionWithDivider visible margin>
+          <WhereSection
+            beforeNavigateToItinerary={() =>
+              analytics.logConsultItinerary({ venueId, from: 'venue' })
+            }
+            venue={venue}
+            address={venueAddress}
+            locationCoordinates={{ latitude, longitude }}
+          />
+        </SectionWithDivider>
+      </Dl>
 
       {/* Modalités de retrait */}
       <SectionWithDivider visible={!!withdrawalDetails}>
@@ -156,7 +164,11 @@ const LocationPointer = styled(DefaultLocationPointer).attrs(({ theme }) => ({
 const scrollIndicatorInsets = { right: 1 }
 
 const Container = styled.ScrollView({ overflow: 'visible' })
-const VenueTitle = styled(Typo.Title3)({ textAlign: 'center' })
+const HiddenTitle = webStyled(Dt)({ display: 'none' })
+const VenueTitle = webStyled(Dd)(({ theme }) => ({
+  ...theme.typography.title3,
+  textAlign: 'center',
+}))
 
 const MarginContainer = styled.View({
   marginHorizontal: getSpacing(6),
@@ -169,11 +181,12 @@ const VenueAddressContainer = styled.View({
   marginTop: getSpacing(2),
 })
 
-const IconContainer = styled.View({
+const IconContainer = webStyled(Dt)({
   marginRight: getSpacing(1),
 })
 
-const StyledText = styled(Typo.Caption)({
+const StyledText = webStyled(Dd)(({ theme }) => ({
+  ...theme.typography.caption,
   flexShrink: 1,
   textTransform: 'capitalize',
-})
+}))

@@ -1,8 +1,11 @@
 import React from 'react'
+import webStyled from 'styled-components'
 import styled, { useTheme } from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
+import { Dd } from 'ui/web/list/Dd'
+import { Dt } from 'ui/web/list/Dt'
 
 interface IconWithCaptionProps {
   Icon: React.FC<IconInterface>
@@ -29,9 +32,10 @@ export const IconWithCaption = ({ Icon, caption, testID, isDisabled }: IconWithC
 
 const Container = styled.View({ flex: 1, alignItems: 'center' })
 
-const IconContainer = styled.View({ padding: getSpacing(1) })
+const IconContainer = webStyled(Dt)({ padding: getSpacing(1) })
 
-const Caption = styled(Typo.Caption)<{ disabled?: boolean }>(({ disabled, theme }) => ({
+const Caption = webStyled(Dd)<{ disabled?: boolean }>(({ disabled, theme }) => ({
+  ...theme.typography.caption,
   color: disabled ? theme.colors.greyDark : theme.colors.black,
   textAlign: 'center',
 }))
