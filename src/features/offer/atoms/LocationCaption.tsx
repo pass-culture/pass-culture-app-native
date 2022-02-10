@@ -1,11 +1,14 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
+import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
 import { OfferVenueResponse } from 'api/gen'
 import { Digital as DefaultDigital } from 'ui/svg/icons/Digital'
 import { LocationPointer as DefaultLocationPointer } from 'ui/svg/icons/LocationPointer'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
+import { Dd } from 'ui/web/list/Dd'
+import { Dt } from 'ui/web/list/Dt'
 type Props = {
   venue: OfferVenueResponse
   isDigital: boolean
@@ -50,16 +53,18 @@ const LocationContainer = styled.View({
   marginHorizontal: getSpacing(6),
 })
 
-const IconContainer = styled.View({
+const IconContainer = webStyled(Dt)({
   marginRight: getSpacing(1),
 })
 
-const StyledText = styled(Typo.Caption)({
+const StyledText = webStyled(Dd)(({ theme }) => ({
+  ...theme.typography.caption,
   flexShrink: 1,
   textTransform: 'capitalize',
-})
+}))
 
-const WhereText = styled(Typo.Caption)<{ isDigital: boolean }>(({ isDigital }) => ({
+const WhereText = webStyled(Dd)<{ isDigital: boolean }>(({ isDigital, theme }) => ({
+  ...theme.typography.caption,
   textTransform: isDigital ? 'none' : 'capitalize',
 }))
 

@@ -1,12 +1,14 @@
 import { t } from '@lingui/macro'
 import React, { useEffect, useRef, useState } from 'react'
 import { Animated, Easing, TouchableWithoutFeedback, Platform } from 'react-native'
+import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { useElementHeight } from 'ui/hooks/useElementHeight'
 import { ArrowDown } from 'ui/svg/icons/ArrowDown'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Dd } from 'ui/web/list/Dd'
 
 interface Props {
   description?: string | undefined
@@ -88,9 +90,8 @@ export const PartialAccordionDescription: React.FC<Props> = ({ description }) =>
   )
 }
 
-const Container = styled.View({
-  paddingHorizontal: getSpacing(6),
-  paddingVertical: getSpacing(6),
+const Container = webStyled(Dd)({
+  padding: getSpacing(6),
 })
 
 const StyledAnimatedView = styled(Animated.View)({

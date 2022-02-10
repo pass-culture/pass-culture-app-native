@@ -14,16 +14,7 @@ exports[`VenueType should render correctly 1`] = `
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "paddingBottom": 4,
-          "paddingLeft": 4,
-          "paddingRight": 4,
-          "paddingTop": 4,
-        },
-      ]
-    }
+    className="sc-bdvvtL fuZyMx"
   >
     <View
       fill="#696A6F"
@@ -46,17 +37,7 @@ exports[`VenueType should render correctly 1`] = `
     }
   />
   <Text
-    style={
-      Array [
-        Object {
-          "color": "#161617",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": 12,
-          "lineHeight": 16,
-          "textAlign": "center",
-        },
-      ]
-    }
+    className="sc-gsDKAQ hUUtnF"
     testID="caption-undefined"
   >
     Cinéma - Salle de projections

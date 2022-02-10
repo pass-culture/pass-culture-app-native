@@ -22,16 +22,8 @@ exports[`VenueType should render correctly 1`] = `
     }
   }
 >
-  <div
-    className="css-view-1dbjc4n"
-    style={
-      Object {
-        "paddingBottom": "4px",
-        "paddingLeft": "4px",
-        "paddingRight": "4px",
-        "paddingTop": "4px",
-      }
-    }
+  <dt
+    className="sc-gsDKAQ sc-dkPtRN gFZcdC gDWpPc"
   >
     <div
       className="css-view-1dbjc4n"
@@ -43,7 +35,7 @@ exports[`VenueType should render correctly 1`] = `
         undefined-SVG-Mock
       </div>
     </div>
-  </div>
+  </dt>
   <div
     className="css-view-1dbjc4n"
     style={
@@ -52,21 +44,11 @@ exports[`VenueType should render correctly 1`] = `
       }
     }
   />
-  <div
-    className="css-text-901oao"
+  <dd
+    className="sc-bdvvtL sc-hKwDye kxtmOw kOBXq"
     data-testid="caption-undefined"
-    dir="auto"
-    style={
-      Object {
-        "color": "rgba(22,22,23,1.00)",
-        "fontFamily": "Montserrat-SemiBold",
-        "fontSize": "12px",
-        "lineHeight": "16px",
-        "textAlign": "center",
-      }
-    }
   >
     Cinéma - Salle de projections
-  </div>
+  </dd>
 </div>
 `;
