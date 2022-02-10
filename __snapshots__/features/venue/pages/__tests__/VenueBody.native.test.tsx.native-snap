@@ -2012,19 +2012,19 @@ exports[`<VenueBody /> should render correctly 1`] = `
       testID="accordionBody"
     >
       <View
-        hidden={false}
+        hidden={true}
         onLayout={[Function]}
         style={
           Array [
             Object {
               "bottom": 0,
+              "display": "none",
               "paddingBottom": 24,
               "paddingHorizontal": 24,
               "paddingTop": 0,
               "position": "absolute",
               "width": "100%",
             },
-            undefined,
           ]
         }
         testID="accordionBodyContainer"
@@ -2170,19 +2170,19 @@ exports[`<VenueBody /> should render correctly 1`] = `
       testID="accordionBody"
     >
       <View
-        hidden={false}
+        hidden={true}
         onLayout={[Function]}
         style={
           Array [
             Object {
               "bottom": 0,
+              "display": "none",
               "paddingBottom": 24,
               "paddingHorizontal": 24,
               "paddingTop": 0,
               "position": "absolute",
               "width": "100%",
             },
-            undefined,
           ]
         }
         testID="accordionBodyContainer"
@@ -2771,19 +2771,19 @@ exports[`<VenueBody /> should render correctly 1`] = `
       testID="accordionBody"
     >
       <View
-        hidden={false}
+        hidden={true}
         onLayout={[Function]}
         style={
           Array [
             Object {
               "bottom": 0,
+              "display": "none",
               "paddingBottom": 24,
               "paddingHorizontal": 24,
               "paddingTop": 0,
               "position": "absolute",
               "width": "100%",
             },
-            undefined,
           ]
         }
         testID="accordionBodyContainer"
