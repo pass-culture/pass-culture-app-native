@@ -239,6 +239,7 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
           "height": "auto",
           "justifyContent": "flex-start",
           "maxWidth": 500,
+          "minHeight": 40,
           "opacity": 1,
           "paddingBottom": 2,
           "paddingLeft": 0,

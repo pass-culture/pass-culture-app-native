@@ -322,7 +322,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 }
               >
                 <button
-                  className="sc-bdvvtL hhxsjW sc-ieecCq fhwLym"
+                  className="sc-bdvvtL kwQCoR sc-ieecCq fhwLym"
                   onClick={[Function]}
                   onDoubleClick={[Function]}
                   type="button"
@@ -433,7 +433,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                   </div>
                 </div>
                 <button
-                  className="sc-bdvvtL hhxsjW sc-ieecCq fhwLym"
+                  className="sc-bdvvtL kwQCoR sc-ieecCq fhwLym"
                   onClick={[Function]}
                   onDoubleClick={[Function]}
                   type="button"

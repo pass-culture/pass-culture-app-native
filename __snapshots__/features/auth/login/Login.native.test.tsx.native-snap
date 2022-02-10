@@ -104,9 +104,9 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
 +                 \\"backgroundColor\\": \\"#eb0055\\",
                   \\"borderRadius\\": 24,
                   \\"flexDirection\\": \\"row\\",
-                  \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
+                  \\"minHeight\\": 40,
 @@ -686,11 +676,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
@@ -526,9 +526,9 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +                 \\"backgroundColor\\": \\"#eb0055\\",
                   \\"borderRadius\\": 24,
                   \\"flexDirection\\": \\"row\\",
-                  \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
+                  \\"minHeight\\": 40,
 @@ -686,11 +738,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
@@ -768,9 +768,9 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +                 \\"backgroundColor\\": \\"#eb0055\\",
                   \\"borderRadius\\": 24,
                   \\"flexDirection\\": \\"row\\",
-                  \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
+                  \\"minHeight\\": 40,
 @@ -686,11 +738,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
@@ -1010,9 +1010,9 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 +                 \\"backgroundColor\\": \\"#eb0055\\",
                   \\"borderRadius\\": 24,
                   \\"flexDirection\\": \\"row\\",
-                  \\"height\\": 40,
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
+                  \\"minHeight\\": 40,
 @@ -686,11 +738,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}

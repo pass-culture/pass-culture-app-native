@@ -40,7 +40,7 @@ export const appButtonStyles: ButtonStyles = ({
   justifyContent: justifyContent ?? 'center',
   borderRadius: theme.borderRadius.button,
   padding: 2,
-  height:
+  minHeight:
     buttonHeight === 'tall' ? theme.buttons.buttonHeights.tall : theme.buttons.buttonHeights.small,
   width: '100%',
   ...(center ? { alignSelf: 'center' } : {}),
@@ -53,7 +53,7 @@ export const appButtonStyles: ButtonStyles = ({
         marginTop: 0,
         padding: 0,
         width: 'auto',
-        height: inlineHeight ?? theme.buttons.buttonHeights.inline,
+        minHeight: inlineHeight ?? theme.buttons.buttonHeights.inline,
       }
     : {}),
   ...(justifyContent === 'flex-start' ? { paddingRight: 0, paddingLeft: 0 } : {}),
