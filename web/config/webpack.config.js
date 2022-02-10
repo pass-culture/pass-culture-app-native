@@ -689,7 +689,7 @@ module.exports = function (webpackEnv) {
           // 2. Other SentryWebpackPlugin configuration
           include: paths.appSrc,
           ignore: [paths.appNodeModules, paths.appWebpackConfig],
-          release: appPackageJson.version,
+          dist: appPackageJson.version,
           validate: true,
           deploy: {
             env: env.raw.ENV,
