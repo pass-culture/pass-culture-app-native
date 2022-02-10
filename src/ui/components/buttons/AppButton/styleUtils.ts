@@ -53,7 +53,7 @@ export const appButtonStyles: ButtonStyles = ({
         marginTop: 0,
         padding: 0,
         width: 'auto',
-        height: inlineHeight ?? theme.buttons.buttonHeights.inline,
+        minHeight: inlineHeight ?? theme.buttons.buttonHeights.inline,
       }
     : {}),
   ...(justifyContent === 'flex-start' ? { paddingRight: 0, paddingLeft: 0 } : {}),
