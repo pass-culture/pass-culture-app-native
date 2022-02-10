@@ -1,8 +1,11 @@
 import React from 'react'
+import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
+import { Dd } from 'ui/web/list/Dd'
+import { Dt } from 'ui/web/list/Dt'
 interface IconWithCaptionProps {
   Icon: React.FC<IconInterface>
   caption: string
@@ -27,5 +30,8 @@ export const IconWithCaption = ({ Icon, caption, testID }: IconWithCaptionProps)
 }
 
 const Container = styled.View({ flex: 1, alignItems: 'center' })
-const IconContainer = styled.View({ padding: getSpacing(1) })
-const Caption = styled(Typo.Caption)({ textAlign: 'center' })
+const IconContainer = webStyled(Dt)({ padding: getSpacing(1) })
+const Caption = webStyled(Dd)(({ theme }) => ({
+  ...theme.typography.caption,
+  textAlign: 'center',
+}))

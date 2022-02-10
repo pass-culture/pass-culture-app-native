@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { useQueryClient } from 'react-query'
+import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
 import { Coordinates, OfferVenueResponse, VenueResponse } from 'api/gen'
@@ -16,6 +17,8 @@ import { Spacer } from 'ui/components/spacer/Spacer'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { Typo, getSpacing } from 'ui/theme'
+import { Dd } from 'ui/web/list/Dd'
+import { Dt } from 'ui/web/list/Dt'
 
 type Props = {
   beforeNavigateToItinerary?: () => Promise<void> | void
@@ -74,46 +77,48 @@ export const WhereSection: React.FC<Props> = ({
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
-      <Typo.Title4>{t`Où\u00a0?`}</Typo.Title4>
-      {showVenueBanner ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
-          <VenueNameContainer onPress={navigateToVenuePage} testID="VenueBannerComponent">
-            <Spacer.Row numberOfSpaces={2} />
-            <IconContainer>
-              <LocationBuilding size={iconSize} />
-            </IconContainer>
-            <Spacer.Row numberOfSpaces={2} />
-            <StyledVenueName numberOfLines={1}>{venue.publicName || venue.name}</StyledVenueName>
-            <Spacer.Flex />
-            <ArrowNext size={getSpacing(5)} />
-          </VenueNameContainer>
-        </React.Fragment>
-      ) : null}
-      {!!address && (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
-          <Typo.Caption>{t`Adresse`}</Typo.Caption>
-          <Spacer.Column numberOfSpaces={1} />
-          <StyledAddress>{address}</StyledAddress>
-        </React.Fragment>
-      )}
-      {!!distanceToLocation && (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
-          <Typo.Caption>{t`Distance`}</Typo.Caption>
-          <Spacer.Column numberOfSpaces={1} />
-          <Typo.Body>{distanceToLocation}</Typo.Body>
-        </React.Fragment>
-      )}
-      {!!canOpenItinerary && (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
-          <Separator />
-          <Spacer.Column numberOfSpaces={6} />
-          <SeeItineraryButton openItinerary={openItinerary} />
-        </React.Fragment>
-      )}
+      <SectionTitle>{t`Où\u00a0?`}</SectionTitle>
+      <Dd>
+        {showVenueBanner ? (
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={4} />
+            <VenueNameContainer onPress={navigateToVenuePage} testID="VenueBannerComponent">
+              <Spacer.Row numberOfSpaces={2} />
+              <IconContainer>
+                <LocationBuilding size={iconSize} />
+              </IconContainer>
+              <Spacer.Row numberOfSpaces={2} />
+              <StyledVenueName numberOfLines={1}>{venue.publicName || venue.name}</StyledVenueName>
+              <Spacer.Flex />
+              <ArrowNext size={getSpacing(5)} />
+            </VenueNameContainer>
+          </React.Fragment>
+        ) : null}
+        {!!address && (
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={4} />
+            <Typo.Caption>{t`Adresse`}</Typo.Caption>
+            <Spacer.Column numberOfSpaces={1} />
+            <StyledAddress>{address}</StyledAddress>
+          </React.Fragment>
+        )}
+        {!!distanceToLocation && (
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={4} />
+            <Typo.Caption>{t`Distance`}</Typo.Caption>
+            <Spacer.Column numberOfSpaces={1} />
+            <Typo.Body>{distanceToLocation}</Typo.Body>
+          </React.Fragment>
+        )}
+        {!!canOpenItinerary && (
+          <React.Fragment>
+            <Spacer.Column numberOfSpaces={4} />
+            <Separator />
+            <Spacer.Column numberOfSpaces={6} />
+            <SeeItineraryButton openItinerary={openItinerary} />
+          </React.Fragment>
+        )}
+      </Dd>
       <Spacer.Column numberOfSpaces={6} />
     </React.Fragment>
   )
@@ -146,4 +151,9 @@ const IconContainer = styled.View({
 const Separator = styled.View(({ theme }) => ({
   height: 1,
   backgroundColor: theme.colors.greyMedium,
+}))
+
+const SectionTitle = webStyled(Dt)(({ theme }) => ({
+  ...theme.typography.title4,
+  color: theme.colors.black,
 }))

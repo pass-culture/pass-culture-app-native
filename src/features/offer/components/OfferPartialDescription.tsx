@@ -1,8 +1,10 @@
 import React from 'react'
+import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Dd } from 'ui/web/list/Dd'
 
 import { useOffer } from '../api/useOffer'
 import { OfferSeeMore } from '../atoms/OfferSeeMore'
@@ -55,7 +57,8 @@ const OfferSeeMoreContainer = styled.View<{ description: string }>(({ descriptio
   alignSelf: description ? 'flex-end' : 'center',
 }))
 const TypoDescription = styled(Typo.Body)({ overflow: 'hidden', width: '100%' })
-const DescriptionContainer = styled.View({
+const DescriptionContainer = webStyled(Dd)({
   alignItems: 'center',
-  paddingHorizontal: getSpacing(6),
+  paddingRight: getSpacing(6),
+  paddingLeft: getSpacing(6),
 })

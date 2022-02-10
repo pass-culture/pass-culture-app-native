@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent, useRef, useState } from 'react'
 import { ScrollView } from 'react-native'
+import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
 import { ReportedOffer } from 'api/gen'
@@ -25,6 +26,9 @@ import { Hero } from 'ui/components/hero/Hero'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Flag } from 'ui/svg/icons/Flag'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Dd } from 'ui/web/list/Dd'
+import { Dl } from 'ui/web/list/Dl'
+import { Dt } from 'ui/web/list/Dt'
 
 import { useOffer } from '../api/useOffer'
 import { OfferIconCaptions, OfferPartialDescription } from '../components'
@@ -91,43 +95,47 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
       onScroll={onScroll}>
       <Hero imageUrl={offer.image?.url} type="offer" categoryId={categoryId || null} />
       <Spacer.Column numberOfSpaces={4} />
-      <LocationCaption venue={venue} isDigital={offer.isDigital} />
-      <Spacer.Column numberOfSpaces={2} />
-      <MarginContainer>
-        <OfferTitle
-          testID="offerTitle"
-          numberOfLines={3}
-          adjustsFontSizeToFit
-          allowFontScaling={false}>
-          {offer.name}
-        </OfferTitle>
-      </MarginContainer>
-      <Spacer.Column numberOfSpaces={4} />
-      <OfferIconCaptions
-        isDuo={offer.isDuo}
-        stocks={offer.stocks}
-        categoryId={categoryId || null}
-        label={appLabel}
-      />
-      <OfferPartialDescription description={offer.description || ''} id={offerId} />
-      <Spacer.Column numberOfSpaces={4} />
-
-      <SectionWithDivider visible={shouldDisplayWhenBlock} margin={true}>
-        <SectionTitle>{t`Quand\u00a0?`}</SectionTitle>
-        <SectionBody>{formattedDate}</SectionBody>
-      </SectionWithDivider>
-
-      <SectionWithDivider visible={!offer.isDigital} margin={true}>
-        <WhereSection
-          beforeNavigateToItinerary={() =>
-            analytics.logConsultItinerary({ offerId: offer.id, from: 'offer' })
-          }
-          venue={venue}
-          address={fullAddress}
-          locationCoordinates={venue.coordinates}
-          showVenueBanner={showVenueBanner}
+      <Dl>
+        <LocationCaption venue={venue} isDigital={offer.isDigital} />
+        <Spacer.Column numberOfSpaces={2} />
+        <MarginContainer>
+          <HiddenTitle>{t`Titre`}</HiddenTitle>
+          <OfferTitle
+            testID="offerTitle"
+            numberOfLines={3}
+            adjustsFontSizeToFit
+            allowFontScaling={false}>
+            {offer.name}
+          </OfferTitle>
+        </MarginContainer>
+        <Spacer.Column numberOfSpaces={4} />
+        <OfferIconCaptions
+          isDuo={offer.isDuo}
+          stocks={offer.stocks}
+          categoryId={categoryId || null}
+          label={appLabel}
         />
-      </SectionWithDivider>
+        <HiddenTitle>{t`Description`}</HiddenTitle>
+        <OfferPartialDescription description={offer.description || ''} id={offerId} />
+        <Spacer.Column numberOfSpaces={4} />
+
+        <SectionWithDivider visible={shouldDisplayWhenBlock} margin={true}>
+          <SectionTitle>{t`Quand\u00a0?`}</SectionTitle>
+          <SectionBody>{formattedDate}</SectionBody>
+        </SectionWithDivider>
+
+        <SectionWithDivider visible={!offer.isDigital} margin={true}>
+          <WhereSection
+            beforeNavigateToItinerary={() =>
+              analytics.logConsultItinerary({ offerId: offer.id, from: 'offer' })
+            }
+            venue={venue}
+            address={fullAddress}
+            locationCoordinates={venue.coordinates}
+            showVenueBanner={showVenueBanner}
+          />
+        </SectionWithDivider>
+      </Dl>
 
       <SectionWithDivider visible={!!offer.withdrawalDetails && !!user?.isBeneficiary}>
         <AccordionItem
@@ -183,9 +191,21 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
 const scrollIndicatorInsets = { right: 1 }
 
 const Container = styled.ScrollView({ overflow: 'visible' })
-const OfferTitle = styled(Typo.Title3)({ textAlign: 'center' })
-const SectionTitle = styled(Typo.Title4)({ paddingVertical: getSpacing(6) })
-const SectionBody = styled(Typo.Body)({ marginTop: -getSpacing(2), paddingBottom: getSpacing(6) })
+const OfferTitle = webStyled(Dd)(({ theme }) => ({
+  ...theme.typography.title3,
+  textAlign: 'center',
+}))
+const SectionTitle = webStyled(Dt)(({ theme }) => ({
+  ...theme.typography.title4,
+  paddingTop: getSpacing(6),
+  paddingBottom: getSpacing(6),
+}))
+const HiddenTitle = webStyled(Dt)({ display: 'none' })
+const SectionBody = webStyled(Dd)(({ theme }) => ({
+  ...theme.typography.body,
+  marginTop: -getSpacing(2),
+  paddingBottom: getSpacing(6),
+}))
 const SectionReportOffer = styled.View({
   paddingVertical: getSpacing(5),
   marginLeft: -getSpacing(2),
