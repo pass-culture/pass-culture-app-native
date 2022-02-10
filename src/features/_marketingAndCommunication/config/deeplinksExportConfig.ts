@@ -47,7 +47,13 @@ export const SCREENS_CONFIG: {
       description: `Le module d'accueil à afficher`,
     },
   },
-  Search: {},
+  Search: {
+    URL: {
+      type: 'string',
+      required: true,
+      description: `Une URL de recherche a convertir`,
+    },
+  },
   Profile: {},
   SignupForm: {},
 }

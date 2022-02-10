@@ -29,10 +29,13 @@ export const DeeplinksResult = ({ result }: Props) => {
   )
 }
 
-const Container = styled.View({
+const Container = styled.ScrollView.attrs({
+  contentContainerStyle: {
+    flexGrow: 1,
+  },
+})({
   paddingHorizontal: getSpacing(2),
   paddingVertical: getSpacing(4),
-  flex: 1,
   maxHeight: 300,
 })
 

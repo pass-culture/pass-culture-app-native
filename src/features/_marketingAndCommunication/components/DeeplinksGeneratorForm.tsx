@@ -125,8 +125,13 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       screenPath = getScreenPath(...tabNavConfig)
     }
 
-    const universalLink = `https://${env.WEBAPP_V2_DOMAIN}${screenPath}`
-    const firebaseLink = generateLongFirebaseDynamicLink(universalLink, fdlParams)
+    let universalLink = `https://${env.WEBAPP_V2_DOMAIN}${screenPath}`
+    let firebaseLink = generateLongFirebaseDynamicLink(universalLink, fdlParams)
+
+    if (selectedScreen === 'Search' && appParams.URL) {
+      universalLink = appParams.URL
+      firebaseLink = generateLongFirebaseDynamicLink(universalLink, fdlParams)
+    }
 
     onCreate({ universalLink, firebaseLink })
   }
