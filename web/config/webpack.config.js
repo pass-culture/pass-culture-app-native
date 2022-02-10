@@ -321,27 +321,6 @@ module.exports = function (webpackEnv) {
         }),
       },
       plugins: [
-        new SentryWebpackPlugin({
-          // 1. sentry-cli configuration is in the file ~/.sentryclirc
-          //    See https://docs.sentry.io/product/cli/configuration/ for details
-          // 2. Other SentryWebpackPlugin configuration
-          include: paths.appBuild,
-          ignore: [paths.appNodeModules, paths.appWebpackConfig],
-          // include: '.',
-          // ignore: ['node_modules', 'webpack.config.js'],
-          release: process.env.ENV,
-          silent: false,
-          validate: true,
-          // sourceMapReference: false,
-          // rewrite: false,
-          // finalize: false,
-          // debug: true, // can be enable if you add two [] to have an array for the two .map in node_modules/@sentry/webpack-plugin/src/index.js
-          errorHandler: (err, invokeErr, compilation) => {
-            compilation.warnings.push('Sentry CLI Plugin: ' + err.message);
-            console.error(err);
-            invokeErr()
-          }
-        }),
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
         // guards against forgotten dependencies and such.
         PnpWebpackPlugin,
@@ -704,6 +683,26 @@ module.exports = function (webpackEnv) {
           // The formatter is invoked directly in WebpackDevServerUtils during development
           formatter: isEnvProduction ? typescriptFormatter : undefined,
         }),
+        new SentryWebpackPlugin({
+          // 1. sentry-cli configuration is in the file ~/.sentryclirc
+          //    See https://docs.sentry.io/product/cli/configuration/ for details
+          // 2. Other SentryWebpackPlugin configuration
+          include: paths.appSrc,
+          ignore: [paths.appNodeModules, paths.appWebpackConfig],
+          dist: appPackageJson.version,
+          validate: true,
+          deploy: {
+            env: env.raw.ENV,
+            name: env.raw.ENV,
+            url: env.raw.APP_PUBLIC_URL,
+          },
+          errorHandler: (err, invokeErr, compilation) => {
+            compilation.warnings.push('Sentry CLI Plugin: ' + err.message);
+            console.error(err);
+            invokeErr()
+          }
+        }),
+
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell webpack to provide empty mocks for them so importing them works.
