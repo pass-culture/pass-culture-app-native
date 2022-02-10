@@ -100,7 +100,11 @@ export const Home: FunctionComponent = () => {
           keyExtractor={keyExtractor}
           ListFooterComponent={<Spacer.TabBar />}
           ListHeaderComponent={ListHeaderComponent}
-          initialNumToRender={5}
+          // initialNumToRender is used for performance reasons
+          // However, we have to disable it if we don't want the skeleton to infinitely load.
+          // Indeed if the modules are hidden, they will still be fetching and thus showSkeleton
+          // will be true.
+          initialNumToRender={modules.length}
           onEndReachedThreshold={0.5}
           removeClippedSubviews={false}
         />
