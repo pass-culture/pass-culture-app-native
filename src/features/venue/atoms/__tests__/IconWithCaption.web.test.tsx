@@ -2,7 +2,7 @@ import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
 import { mapVenueTypeToIcon, parseType } from 'libs/parsers'
-import { render } from 'tests/utils'
+import { render } from 'tests/utils/web'
 
 import { IconWithCaption } from '../IconWithCaption'
 
@@ -12,10 +12,8 @@ const icon = mapVenueTypeToIcon(VenueTypeCodeKey.MOVIE)
 
 describe('IconWithCaption', () => {
   it('should render correctly', () => {
-    const { toJSON } = render(
-      <IconWithCaption Icon={icon} caption={typeLabel} testID={typeLabel} />
-    )
-    expect(toJSON()).toMatchSnapshot()
+    const renderAPI = render(<IconWithCaption Icon={icon} caption={typeLabel} testID={typeLabel} />)
+    expect(renderAPI).toMatchSnapshot()
   })
 
   it('should display a default label "Autre type de lieu" for venue type if type is null', async () => {
@@ -29,8 +27,8 @@ describe('IconWithCaption', () => {
   })
 
   it('should render different when isDisabled is true', () => {
-    const enabled = render(<IconWithCaption Icon={icon} caption={typeLabel} />).toJSON()
-    const disabled = render(<IconWithCaption Icon={icon} caption={typeLabel} isDisabled />).toJSON()
+    const enabled = render(<IconWithCaption Icon={icon} caption={typeLabel} />)
+    const disabled = render(<IconWithCaption Icon={icon} caption={typeLabel} isDisabled />)
     expect(enabled).toMatchDiffSnapshot(disabled)
   })
 })
