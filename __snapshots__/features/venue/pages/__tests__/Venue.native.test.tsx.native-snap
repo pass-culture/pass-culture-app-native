@@ -2024,6 +2024,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         testID="accordionBody"
       >
         <View
+          hidden={false}
           onLayout={[Function]}
           style={
             Array [
@@ -2181,6 +2182,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         testID="accordionBody"
       >
         <View
+          hidden={false}
           onLayout={[Function]}
           style={
             Array [
@@ -2781,6 +2783,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         testID="accordionBody"
       >
         <View
+          hidden={false}
           onLayout={[Function]}
           style={
             Array [

@@ -2012,6 +2012,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
       testID="accordionBody"
     >
       <View
+        hidden={false}
         onLayout={[Function]}
         style={
           Array [
@@ -2169,6 +2170,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
       testID="accordionBody"
     >
       <View
+        hidden={false}
         onLayout={[Function]}
         style={
           Array [
@@ -2769,6 +2771,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
       testID="accordionBody"
     >
       <View
+        hidden={false}
         onLayout={[Function]}
         style={
           Array [

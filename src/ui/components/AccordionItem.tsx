@@ -42,6 +42,7 @@ export const AccordionItem = ({
 }: IAccordionItemProps) => {
   const { tabBarHeight, top } = useCustomSafeInsets()
   const [open, setOpen] = useState(defaultOpen)
+  const [showChildren, setShowChildren] = useState(defaultOpen)
   const [bodyPositionY, setBodyPositionY] = useState<number>(0)
   const [bodySectionHeight, setBodySectionHeight] = useState<number>(0)
   const animatedController = useRef(new Animated.Value(defaultOpen ? 1 : 0)).current
@@ -67,12 +68,18 @@ export const AccordionItem = ({
   })
 
   const toggleListItem = () => {
+    !open && setShowChildren(true) // Display children before opening animation begins
     Animated.timing(animatedController, {
       duration: 300,
       toValue: open ? 0 : 1,
       easing: Easing.bezier(0.4, 0.0, 0.2, 1),
       useNativeDriver: false,
-    }).start(() => setOpen((prevOpen) => !prevOpen))
+    }).start(() => {
+      setOpen((prevOpen) => {
+        prevOpen && setShowChildren(false) // Hide children after closing animation ends
+        return !prevOpen
+      })
+    })
   }
 
   useEffect(() => {
@@ -100,12 +107,13 @@ export const AccordionItem = ({
         </View>
       </TouchableWithoutFeedback>
       <StyledAnimatedView style={{ height: bodyHeight }} testID="accordionBody">
-        <View
-          style={[styles.bodyContainer, bodyStyle]}
+        <StyledView
+          style={bodyStyle}
           testID="accordionBodyContainer"
-          onLayout={(event) => setBodySectionHeight(event.nativeEvent.layout.height)}>
+          onLayout={(event) => setBodySectionHeight(event.nativeEvent.layout.height)}
+          hidden={!showChildren}>
           {children}
-        </View>
+        </StyledView>
       </StyledAnimatedView>
     </React.Fragment>
   )
@@ -120,15 +128,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: getSpacing(6),
     ...(Platform.OS === 'web' ? { cursor: 'pointer' } : {}),
   },
-  bodyContainer: {
-    position: 'absolute',
-    bottom: 0,
-    width: '100%',
-    paddingBottom: getSpacing(6),
-    paddingHorizontal: getSpacing(6),
-    paddingTop: 0,
-  },
 })
+
+const StyledView = styled.View<{ hidden: boolean }>(({ hidden }) => ({
+  display: hidden ? 'none' : 'flex',
+  position: 'absolute',
+  bottom: 0,
+  width: '100%',
+  paddingBottom: getSpacing(6),
+  paddingHorizontal: getSpacing(6),
+  paddingTop: 0,
+}))
 
 const Title = styled(Typo.Title4).attrs(() => getTitleAttrs(2))({
   flex: '0.9',

@@ -988,6 +988,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             testID="accordionBody"
                           >
                             <View
+                              hidden={false}
                               onLayout={[Function]}
                               style={
                                 Array [
@@ -1141,6 +1142,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             testID="accordionBody"
                           >
                             <View
+                              hidden={false}
                               onLayout={[Function]}
                               style={
                                 Array [
@@ -3633,6 +3635,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             testID="accordionBody"
                           >
                             <View
+                              hidden={false}
                               onLayout={[Function]}
                               style={
                                 Array [
@@ -3786,6 +3789,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             testID="accordionBody"
                           >
                             <View
+                              hidden={false}
                               onLayout={[Function]}
                               style={
                                 Array [

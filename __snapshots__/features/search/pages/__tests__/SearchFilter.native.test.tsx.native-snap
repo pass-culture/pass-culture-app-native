@@ -598,6 +598,7 @@ exports[`SearchFilter component should render correctly 1`] = `
         testID="accordionBody"
       >
         <View
+          hidden={true}
           onLayout={[Function]}
           style={
             Array [
@@ -1563,6 +1564,7 @@ exports[`SearchFilter component should render correctly 1`] = `
         testID="accordionBody"
       >
         <View
+          hidden={true}
           onLayout={[Function]}
           style={
             Array [
