@@ -14,16 +14,7 @@ exports[`OfferCategory renders correctly 1`] = `
   }
 >
   <View
-    style={
-      Array [
-        Object {
-          "paddingBottom": 4,
-          "paddingLeft": 4,
-          "paddingRight": 4,
-          "paddingTop": 4,
-        },
-      ]
-    }
+    className="sc-bdvvtL fuZyMx"
   >
     <View
       height={32}
@@ -45,17 +36,7 @@ exports[`OfferCategory renders correctly 1`] = `
     }
   />
   <Text
-    style={
-      Array [
-        Object {
-          "color": "#161617",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": 12,
-          "lineHeight": 16,
-          "textAlign": "center",
-        },
-      ]
-    }
+    className="sc-gsDKAQ dZPdWA"
     testID="caption-undefined"
   >
     Livre ou carte lecture
