@@ -80,6 +80,7 @@ export const DateInputDesktop: FunctionComponent<Props> = ({ onDateChange }) => 
           placeholder="JJ"
           options={optionGroups.days.map(String)}
           onChange={onPartialDateChange('day')}
+          noBorderRadiusRight
         />
       </DropDownContainer>
       <Spacer.Row numberOfSpaces={2} />
@@ -89,6 +90,8 @@ export const DateInputDesktop: FunctionComponent<Props> = ({ onDateChange }) => 
           placeholder="MM"
           options={optionGroups.months}
           onChange={onPartialDateChange('month')}
+          noBorderRadiusRight
+          noBorderRadiusLeft
         />
       </DropDownContainer>
       <Spacer.Row numberOfSpaces={2} />
@@ -98,17 +101,18 @@ export const DateInputDesktop: FunctionComponent<Props> = ({ onDateChange }) => 
           placeholder="AAAA"
           options={optionGroups.years.map(String)}
           onChange={onPartialDateChange('year')}
+          noBorderRadiusLeft
         />
       </DropDownContainer>
     </Container>
   )
 }
 
-const Container = styled.View({
+const Container = styled.View(({ theme }) => ({
   flexDirection: 'row',
   width: '100%',
-  zIndex: 1,
-})
+  maxWidth: theme.forms.maxWidth,
+}))
 
 const DropDownContainer = styled.View({
   flex: 1,

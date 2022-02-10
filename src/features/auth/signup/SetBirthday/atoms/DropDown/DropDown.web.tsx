@@ -4,8 +4,8 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { InputLabel } from 'ui/components/InputLabel.web'
 import { InputContainer } from 'ui/components/inputs/InputContainer'
-import { getSpacingString, Spacer } from 'ui/theme'
 import { ArrowDown } from 'ui/svg/icons/ArrowDown'
+import { getSpacingString, Spacer } from 'ui/theme'
 
 type Props = {
   label: string
@@ -13,9 +13,18 @@ type Props = {
   options: string[]
   onChange: (value: string) => void
   children?: never
+  noBorderRadiusRight?: boolean
+  noBorderRadiusLeft?: boolean
 }
 
-export function DropDown({ label, placeholder, options, onChange }: Props) {
+export function DropDown({
+  label,
+  placeholder,
+  options,
+  onChange,
+  noBorderRadiusRight = false,
+  noBorderRadiusLeft = false,
+}: Props) {
   const onChangeDate: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
     onChange(event.target.value)
   }
@@ -27,7 +36,10 @@ export function DropDown({ label, placeholder, options, onChange }: Props) {
       <InputLabel htmlFor={dropDownInputID}>{label}</InputLabel>
       <Spacer.Column numberOfSpaces={2} />
       <SelectContainer>
-        <Select onChange={onChangeDate}>
+        <Select
+          onChange={onChangeDate}
+          noBorderRadiusRight={noBorderRadiusRight}
+          noBorderRadiusLeft={noBorderRadiusLeft}>
           <Option value="">{placeholder}</Option>
           {options.map((option) => (
             <Option key={option} value={option}>
@@ -62,22 +74,35 @@ const IconContainer = styled.div`
   `}
 `
 
-const Select = styled.select`
-  ${({ theme }) => `
+const Select = styled.select<{ noBorderRadiusRight: boolean; noBorderRadiusLeft: boolean }>`
+  ${({ theme, noBorderRadiusRight, noBorderRadiusLeft }) => `
     width: 100%;
     padding-right: ${getSpacingString(4)};
     padding-left: ${getSpacingString(4)};
     height: ${getSpacingString(10)};
-    border-radius: ${theme.borderRadius.button}px;
+    border-top-left-radius: ${
+      noBorderRadiusLeft ? `${getSpacingString(1)};` : `${theme.borderRadius.button}px;`
+    }
+    border-bottom-left-radius: ${
+      noBorderRadiusLeft ? `${getSpacingString(1)};` : `${theme.borderRadius.button}px;`
+    }
+    border-top-right-radius: ${
+      noBorderRadiusRight ? `${getSpacingString(1)};` : `${theme.borderRadius.button}px;`
+    }
+    border-bottom-right-radius: ${
+      noBorderRadiusRight ? `${getSpacingString(1)};` : `${theme.borderRadius.button}px;`
+    }
     border: solid 1px ${theme.colors.greyMedium};
     cursor: pointer;
     background-color: ${theme.colors.white};
-    -webkit-appearance: none;
-    -moz-appearance: none;
     appearance: none;
 
     &:focus, :active {
       border-color: ${theme.colors.primary};
+    }
+
+    &:invalid {
+      color: green;
     }
   `}
 `
