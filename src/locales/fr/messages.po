@@ -1267,8 +1267,8 @@ msgid "Jeux / Jeux vidéos"
 msgstr "Jeux / Jeux vidéos"
 
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
-msgid "J’accepte de recevoir les e-mails du pass Culture."
-msgstr "J’accepte de recevoir les e-mails du pass Culture."
+msgid "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisées du pass Culture."
+msgstr "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisées du pass Culture."
 
 #: src/libs/keychain.ts
 #: src/libs/keychain.ts
