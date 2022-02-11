@@ -4,6 +4,7 @@ import Picker from 'react-mobile-picker'
 import { Calendar as RNCalendar, LocaleConfig } from 'react-native-calendars'
 import { Theme as RNCalendarTheme, DateData } from 'react-native-calendars/src/types'
 import styled, { useTheme } from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import {
   monthNamesShort,
@@ -71,6 +72,7 @@ export const CalendarPicker: React.FC<Props> = ({
     month: monthNamesShort[selectedDate.getMonth()],
     year: selectedDate.getFullYear(),
   })
+  const bookingDateChoiceErrorId = uuidv4()
 
   useEffect(() => {
     if (ref.current) {
@@ -170,6 +172,7 @@ export const CalendarPicker: React.FC<Props> = ({
             theme={calendarTheme}
             markedDates={markedDates}
             onDayPress={handleDesktopDateChange}
+            aria-describedby={bookingDateChoiceErrorId}
           />
         </CalendarPickerWrapperDesktop>
       )}
@@ -182,18 +185,17 @@ export const CalendarPicker: React.FC<Props> = ({
           onPress={onValidate}
           adjustsFontSizeToFit={true}
         />
-        {isMobileDateInvalid ? (
+        {
           <React.Fragment>
             <InputError
               visible
               messageId={t`Choisis une date dans le futur`}
               numberOfSpacesTop={2}
+              relatedInputId={bookingDateChoiceErrorId}
             />
             <Spacer.Column numberOfSpaces={1} />
           </React.Fragment>
-        ) : (
-          <Spacer.Column numberOfSpaces={7} />
-        )}
+        }
       </CalendarButtonWrapper>
       <Spacer.BottomScreen />
     </AppModal>

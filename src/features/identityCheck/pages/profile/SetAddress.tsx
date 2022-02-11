@@ -3,6 +3,7 @@ import debounce from 'lodash.debounce'
 import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { useAppSettings } from 'features/auth/settings'
 import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
@@ -36,6 +37,7 @@ export const SetAddress = () => {
   const [debouncedQuery, setDebouncedQuery] = useState<string>(query)
   const [selectedAddress, setSelectedAddress] = useState<string | null>(profile.address || null)
   const debouncedSetQuery = useRef(debounce(setDebouncedQuery, 500)).current
+  const adressInputErrorId = uuidv4()
 
   const idCheckAddressAutocompletion = !!settings?.idCheckAddressAutocompletion
 
@@ -112,12 +114,14 @@ export const SetAddress = () => {
             placeholder={t`Ex\u00a0: 34 avenue de l'Opéra`}
             textContentType="addressState"
             accessibilityLabel={t`Entrée pour l'adresse`}
+            accessibilityDescribedBy={adressInputErrorId}
             onPressRightIcon={resetSearch}
           />
           <InputError
             visible={!isValidAddress && query.length > 0}
             messageId={t`Ton adresse ne doit pas contenir de caractères spéciaux ou n'être composée que d'espaces.`}
             numberOfSpacesTop={2}
+            relatedInputId={adressInputErrorId}
           />
           <Spacer.Column numberOfSpaces={2} />
         </Form.MaxWidth>

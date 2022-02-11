@@ -4,6 +4,7 @@ import debounce from 'lodash.debounce'
 import React, { useRef } from 'react'
 import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
@@ -59,6 +60,7 @@ export const LocationFilter: React.FC = () => {
     dispatch({ type: 'SET_LOCATION_EVERYWHERE' })
     debouncedGoBack()
   }
+  const locationChoiceErrorId = uuidv4()
 
   return (
     <Container>
@@ -84,9 +86,15 @@ export const LocationFilter: React.FC = () => {
           testID="aroundMe"
           section={LocationType.AROUND_ME}
           onPress={onPressAroundMe}
+          accessibilityDescribedBy={locationChoiceErrorId}
         />
         {!!positionError && (
-          <InputError visible messageId={positionError.message} numberOfSpacesTop={1} />
+          <InputError
+            visible
+            messageId={positionError.message}
+            numberOfSpacesTop={1}
+            relatedInputId={locationChoiceErrorId}
+          />
         )}
         <Spacer.Column numberOfSpaces={4} />
         <LocationChoice

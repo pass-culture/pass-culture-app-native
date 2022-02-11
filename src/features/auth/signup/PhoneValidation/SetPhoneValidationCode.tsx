@@ -78,6 +78,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
     validationCodeRequestTimestamp,
     (elapsedTime: number) => elapsedTime > TIMER
   )
+  const validationCodeInputLabel = 'validationCodeInputLabel'
 
   const isRequestTimestampExpired =
     !validationCodeRequestTimestamp ||
@@ -231,6 +232,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
             <Spacer.Column numberOfSpaces={6} />
             <CodeInputContainer>
               <CodeInput
+                aria-label={validationCodeInputLabel}
                 onChangeText={(text, rawText) => {
                   onChangeValue(rawText ?? '')
                 }}
@@ -244,7 +246,12 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
             </CodeInputContainer>
             {errorMessage ? (
               <React.Fragment>
-                <InputError visible messageId={errorMessage} numberOfSpacesTop={3} />
+                <InputError
+                  visible
+                  messageId={errorMessage}
+                  numberOfSpacesTop={3}
+                  relatedInputId={validationCodeInputLabel}
+                />
                 <Spacer.Column numberOfSpaces={5} />
               </React.Fragment>
             ) : (

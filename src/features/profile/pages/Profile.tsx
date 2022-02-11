@@ -4,6 +4,7 @@ import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { NativeScrollEvent, ScrollView, StyleSheet } from 'react-native'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { useAuthContext, useLogoutRoutine } from 'features/auth/AuthContext'
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
@@ -48,6 +49,7 @@ export const Profile: React.FC = () => {
   const { isLoggedIn } = useAuthContext()
   const signOut = useLogoutRoutine()
   const scrollViewRef = useRef<ScrollView | null>(null)
+  const locationActivationErrorId = uuidv4()
 
   const { positionError, permissionState, requestGeolocPermission, showGeolocPermissionModal } =
     useGeolocation()
@@ -148,6 +150,7 @@ export const Profile: React.FC = () => {
             title={t`Partager ma position`}
             active={isGeolocSwitchActive}
             accessibilityLabel={t`Interrupteur géolocalisation`}
+            accessibilityDescribedBy={locationActivationErrorId}
             toggle={() => {
               switchGeolocation()
               debouncedLogLocationToggle(!isGeolocSwitchActive)
@@ -155,7 +158,12 @@ export const Profile: React.FC = () => {
             toggleLabel={t`Partager ma position`}
           />
           {!!positionError && (
-            <InputError visible messageId={positionError.message} numberOfSpacesTop={1} />
+            <InputError
+              visible
+              messageId={positionError.message}
+              numberOfSpacesTop={1}
+              relatedInputId={locationActivationErrorId}
+            />
           )}
         </Section>
         <Section title={t`Aides`}>

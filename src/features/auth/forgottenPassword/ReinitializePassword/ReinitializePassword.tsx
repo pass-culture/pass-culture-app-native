@@ -33,6 +33,7 @@ export const ReinitializePassword = () => {
   const [password, setPassword] = useState('')
   const [confirmedPassword, setConfirmedPassword] = useState('')
   const passwordDescribedBy = uuidv4()
+  const passwordErrorId = uuidv4()
 
   const allowSubmission = isPasswordCorrect(password) && confirmedPassword === password
   const displayNotMatchingError = confirmedPassword.length > 0 && confirmedPassword !== password
@@ -103,12 +104,14 @@ export const ReinitializePassword = () => {
             placeholder={t`Confirmer le mot de passe`}
             onSubmitEditing={submitPassword}
             isRequiredField
+            accessibilityDescribedBy={passwordErrorId}
           />
           <Spacer.Column numberOfSpaces={2} />
           <InputError
             visible={displayNotMatchingError}
             messageId={t`Les mots de passe ne concordent pas`}
             numberOfSpacesTop={0}
+            relatedInputId={passwordErrorId}
           />
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary

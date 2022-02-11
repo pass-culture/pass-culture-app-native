@@ -7,7 +7,12 @@ import { InputError } from './InputError'
 describe('InputError Component', () => {
   it('should display the given message', () => {
     const { queryByText } = render(
-      <InputError visible={true} messageId="message" numberOfSpacesTop={1} />
+      <InputError
+        visible={true}
+        messageId="message"
+        numberOfSpacesTop={1}
+        relatedInputId="relatedInputId"
+      />
     )
 
     const text = queryByText('message')
@@ -15,7 +20,12 @@ describe('InputError Component', () => {
   })
   it('should hide the given message', () => {
     const { queryByText } = render(
-      <InputError visible={false} messageId="message" numberOfSpacesTop={1} />
+      <InputError
+        visible={false}
+        messageId="message"
+        numberOfSpacesTop={1}
+        relatedInputId="relatedInputId"
+      />
     )
 
     const text = queryByText('message')

@@ -3,6 +3,7 @@ import { useNetInfo } from '@react-native-community/netinfo'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/apiHelpers'
@@ -27,6 +28,7 @@ export const ForgottenPassword: FunctionComponent = () => {
   const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
   const { navigate, replace } = useNavigation<UseNavigationType>()
   const networkInfo = useNetInfo()
+  const emailErrorMessageId = uuidv4()
 
   const [email, setEmail] = useState('')
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
@@ -143,8 +145,16 @@ export const ForgottenPassword: FunctionComponent = () => {
             email={email}
             onEmailChange={onEmailChange}
             autoFocus={true}
+            accessibilityDescribedBy={emailErrorMessageId}
           />
-          {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={2} />}
+          {!!errorMessage && (
+            <InputError
+              visible
+              messageId={errorMessage}
+              numberOfSpacesTop={2}
+              relatedInputId={emailErrorMessageId}
+            />
+          )}
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary
             wording={t`Valider`}

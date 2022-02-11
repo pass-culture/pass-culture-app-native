@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { memo, useEffect, useState } from 'react'
 import { Country, CountryCode } from 'react-native-country-picker-modal'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
 import { useSendPhoneValidationMutation } from 'features/auth/api'
@@ -56,6 +57,8 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
     validationCodeRequestTimestamp,
     (elapsedTime: number) => elapsedTime > TIMER
   )
+  const phoneNumberInputErrorId = uuidv4()
+
   const isRequestTimestampExpired =
     !validationCodeRequestTimestamp ||
     timeSinceLastRequest === TIMER_NOT_INITIALIZED ||
@@ -151,11 +154,17 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
                 textContentType="telephoneNumber"
                 onSubmitEditing={requestSendPhoneValidationCode}
                 {...accessibilityAndTestId(t`Entrée pour le numéro de téléphone`)}
+                aria-describedby={phoneNumberInputErrorId}
               />
             </InputContainer>
             {invalidPhoneNumberMessage ? (
               <React.Fragment>
-                <InputError visible messageId={invalidPhoneNumberMessage} numberOfSpacesTop={3} />
+                <InputError
+                  relatedInputId={phoneNumberInputErrorId}
+                  visible
+                  messageId={invalidPhoneNumberMessage}
+                  numberOfSpacesTop={3}
+                />
                 <Spacer.Column numberOfSpaces={5} />
               </React.Fragment>
             ) : (

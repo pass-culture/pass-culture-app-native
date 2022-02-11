@@ -12,10 +12,11 @@ type Props = {
   testID: string
   onPress?: () => void
   arrowNext?: boolean
+  accessibilityDescribedBy?: string
 }
 
 export const LocationChoice: React.FC<Props> = (props) => {
-  const { section, onPress, arrowNext = false, testID } = props
+  const { section, onPress, arrowNext = false, testID, accessibilityDescribedBy } = props
   const { Icon, label, isSelected } = useLocationChoice(section)
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
     color2: isSelected ? theme.colors.primary : theme.colors.secondary,
@@ -29,7 +30,10 @@ export const LocationChoice: React.FC<Props> = (props) => {
         <StyledIcon />
         <Spacer.Row numberOfSpaces={3} />
         <TextContainer>
-          <ButtonText numberOfLines={3} isSelected={isSelected}>
+          <ButtonText
+            numberOfLines={3}
+            isSelected={isSelected}
+            aria-describedby={accessibilityDescribedBy}>
             {label}
           </ButtonText>
         </TextContainer>

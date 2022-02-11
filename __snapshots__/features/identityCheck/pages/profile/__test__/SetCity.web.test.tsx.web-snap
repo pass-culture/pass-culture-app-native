@@ -106,6 +106,7 @@ Object {
                         style="width: 4px;"
                       />
                       <input
+                        aria-describedby="testUuidV4"
                         aria-label="Entrée pour le code postal"
                         autocapitalize="sentences"
                         autocomplete="on"
@@ -288,6 +289,7 @@ Object {
                       style="width: 4px;"
                     />
                     <input
+                      aria-describedby="testUuidV4"
                       aria-label="Entrée pour le code postal"
                       autocapitalize="sentences"
                       autocomplete="on"

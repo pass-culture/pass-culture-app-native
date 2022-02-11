@@ -6,6 +6,7 @@ import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useMutation } from 'react-query'
 import styled, { useTheme } from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/apiHelpers'
@@ -40,6 +41,9 @@ export function ChangeEmail() {
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
   const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
+
+  const passwordInputErrorId = uuidv4()
+  const emailInputErrorId = uuidv4()
 
   const { mutate: changeEmail, isLoading } = useMutation(
     (body: ChangeEmailRequest) => api.postnativev1profileupdateEmail(body),
@@ -123,9 +127,15 @@ export function ChangeEmail() {
               onEmailChange={setEmail}
               disabled={hasCurrentEmailChange}
               isRequiredField
+              accessibilityDescribedBy={emailInputErrorId}
             />
             {!!emailErrorMessage && (
-              <InputError visible messageId={emailErrorMessage} numberOfSpacesTop={2} />
+              <InputError
+                visible
+                messageId={emailErrorMessage}
+                numberOfSpacesTop={2}
+                relatedInputId={emailInputErrorId}
+              />
             )}
             <Spacer.Column numberOfSpaces={4} />
             <PasswordInput
@@ -136,9 +146,15 @@ export function ChangeEmail() {
               textContentType="password"
               disabled={hasCurrentEmailChange}
               isRequiredField
+              accessibilityDescribedBy={passwordInputErrorId}
             />
             {!!passwordErrorMessage && (
-              <InputError visible messageId={passwordErrorMessage} numberOfSpacesTop={2} />
+              <InputError
+                visible
+                messageId={passwordErrorMessage}
+                numberOfSpacesTop={2}
+                relatedInputId={passwordInputErrorId}
+              />
             )}
 
             {isMobileViewport && isTouch ? (

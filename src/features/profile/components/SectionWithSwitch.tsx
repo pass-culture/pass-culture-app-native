@@ -10,6 +10,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
   accessibilityLabel: string
+  accessibilityDescribedBy?: string
   title: string
   iconSize?: number
   icon?: FunctionComponent<IconInterface>
@@ -31,6 +32,7 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
     toggle = () => null,
     toggleLabel,
     disabled,
+    accessibilityDescribedBy,
   } = props
   const Icon = icon
   return (
@@ -54,6 +56,7 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
           toggle={toggle}
           accessibilityLabel={accessibilityLabel}
           disabled={disabled}
+          accessibilityDescribedBy={accessibilityDescribedBy}
         />
       </FilterSwitchLabelContainer>
     </Container>
