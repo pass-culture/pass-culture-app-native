@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Typo } from 'ui/theme'
-import { getTitleAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typography'
 
 export const CenteredTitle = ({ title }: { title: string }) => (
   <TitleContainer>
@@ -15,6 +15,6 @@ const TitleContainer = styled.View({
   width: '100%',
 })
 
-const Title = styled(Typo.Title4).attrs(() => getTitleAttrs(1))({
+const Title = styled(Typo.Title4).attrs(() => getHeadingAttrs(1))({
   textAlign: 'center',
 })

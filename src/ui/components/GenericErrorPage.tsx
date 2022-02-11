@@ -5,7 +5,7 @@ import { Helmet } from 'libs/react-helmet/Helmet'
 import { Background } from 'ui/svg/Background'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getTitleAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typography'
 
 type Props = {
   header?: ReactNode
@@ -86,7 +86,7 @@ const spacingMatrix = {
   bottom: 10,
 }
 
-const StyledTitle = styled(Typo.Title2).attrs(() => getTitleAttrs(1))(({ theme }) => ({
+const StyledTitle = styled(Typo.Title2).attrs(() => getHeadingAttrs(1))(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

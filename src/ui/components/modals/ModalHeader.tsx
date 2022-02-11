@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { getSpacing, Typo } from 'ui/theme'
-import { getTitleAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typography'
 
 import { ModalIconProps } from './types'
 
@@ -100,9 +100,9 @@ const HeaderAction = styled.TouchableOpacity({
   padding: getSpacing(1),
 })
 
-const Title = styled(Typo.Title4).attrs(() => getTitleAttrs(1))({
+const Title = styled(Typo.Title4).attrs(() => getHeadingAttrs(1))({
   textAlign: 'center',
 })
-const BoldTitle = styled(Typo.Title3).attrs(() => getTitleAttrs(1))({
+const BoldTitle = styled(Typo.Title3).attrs(() => getHeadingAttrs(1))({
   textAlign: 'center',
 })

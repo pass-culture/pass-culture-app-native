@@ -15,7 +15,7 @@ import {
 import styled from 'styled-components/native'
 
 import { useFunctionOnce } from 'libs/hooks'
-import { getTitleAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typography'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { ArrowNext as DefaultArrowNext } from '../svg/icons/ArrowNext'
@@ -140,7 +140,7 @@ const StyledView = styled.View<{ hidden: boolean }>(({ hidden }) => ({
   paddingTop: 0,
 }))
 
-const Title = styled(Typo.Title4).attrs(() => getTitleAttrs(2))({
+const Title = styled(Typo.Title4).attrs(() => getHeadingAttrs(2))({
   flex: '0.9',
 })
 

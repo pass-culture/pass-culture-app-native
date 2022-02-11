@@ -10,7 +10,7 @@ import { analytics } from 'libs/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getTitleAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typography'
 export function LoggedOutHeader() {
   const { navigate } = useNavigation<UseNavigationType>()
   return (
@@ -75,7 +75,7 @@ const Description = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const Title = styled(Typo.Title4).attrs(() => getTitleAttrs(1))(({ theme }) => ({
+const Title = styled(Typo.Title4).attrs(() => getHeadingAttrs(1))(({ theme }) => ({
   color: theme.colors.white,
 }))
 

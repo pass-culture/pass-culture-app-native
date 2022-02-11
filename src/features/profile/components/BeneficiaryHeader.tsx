@@ -8,7 +8,7 @@ import { computeCredit, useIsUserUnderageBeneficiary } from 'features/profile/ut
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Typo, Spacer } from 'ui/theme'
-import { getTitleAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typography'
 
 type BeneficiaryHeaderProps = {
   firstName?: string | null
@@ -68,7 +68,7 @@ const Ceilings = styled(BeneficiaryCeilings)({
   top: getSpacing(42),
 })
 
-const Title = styled(Typo.Title4).attrs(() => getTitleAttrs(1))(({ theme }) => ({
+const Title = styled(Typo.Title4).attrs(() => getHeadingAttrs(1))(({ theme }) => ({
   color: theme.colors.white,
 }))
 

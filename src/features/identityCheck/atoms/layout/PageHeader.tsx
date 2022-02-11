@@ -7,7 +7,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Typo } from 'ui/theme'
-import { getTitleAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typography'
 
 interface Props {
   title: string
@@ -28,7 +28,7 @@ const HeaderContainer = styled.View(({ theme }) => ({
   height: theme.appBarHeight,
 }))
 
-const Title = styled(Typo.Title4).attrs(() => getTitleAttrs(1))(({ theme }) => ({
+const Title = styled(Typo.Title4).attrs(() => getHeadingAttrs(1))(({ theme }) => ({
   flex: 1,
   textAlign: 'center',
   color: theme.colors.white,
