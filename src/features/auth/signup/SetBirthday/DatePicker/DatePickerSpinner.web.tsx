@@ -10,8 +10,8 @@ import {
   CURRENT_DAY,
   CURRENT_MONTH,
   CURRENT_YEAR,
-  DEFAULT_SELECTED_DATE,
   MINIMUM_YEAR,
+  UNDER_YOUNGEST_AGE,
 } from 'features/auth/signup/SetBirthday/utils/constants'
 import { useDatePickerErrorHandler } from 'features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler'
 import {
@@ -33,6 +33,9 @@ export function DatePickerSpinner(props: DatePickerProps) {
   })
 
   const optionGroups = useMemo(() => {
+    const DEFAULT_SELECTED_DATE = new Date(
+      new Date().setFullYear(new Date().getFullYear() - UNDER_YOUNGEST_AGE)
+    )
     const { month: selectedMonth, year: selectedYear } = date
     const selectedMonthIndex = monthNamesShort.indexOf(selectedMonth)
     const defaultSelectedYear = DEFAULT_SELECTED_DATE.getFullYear()

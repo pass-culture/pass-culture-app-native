@@ -5,11 +5,7 @@ import styled from 'styled-components/native'
 
 import { DateInput } from 'features/auth/signup/SetBirthday/atoms/DateInput/DateInput'
 import { DatePickerProps } from 'features/auth/signup/SetBirthday/DatePicker/types'
-import {
-  DEFAULT_SELECTED_DATE,
-  MAXIMUM_SPINNER_DATE,
-  MINIMUM_DATE,
-} from 'features/auth/signup/SetBirthday/utils/constants'
+import { MINIMUM_DATE, UNDER_YOUNGEST_AGE } from 'features/auth/signup/SetBirthday/utils/constants'
 import { useDatePickerErrorHandler } from 'features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -17,6 +13,11 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { Spacer } from 'ui/theme'
 
 export function DatePickerSpinner(props: DatePickerProps) {
+  const DEFAULT_SELECTED_DATE = new Date(
+    new Date().setFullYear(new Date().getFullYear() - UNDER_YOUNGEST_AGE)
+  )
+  const MAXIMUM_SPINNER_DATE = new Date(DEFAULT_SELECTED_DATE.getFullYear(), 11, 31)
+
   const [date, setDate] = useState<Date>(DEFAULT_SELECTED_DATE)
   const birthdate = formatDateToISOStringWithoutTime(date)
   const { isDisabled, errorMessage } = useDatePickerErrorHandler(new Date(birthdate))

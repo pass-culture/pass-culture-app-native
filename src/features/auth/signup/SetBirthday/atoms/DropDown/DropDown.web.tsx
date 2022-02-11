@@ -6,6 +6,8 @@ import { InputLabel } from 'ui/components/InputLabel.web'
 import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { ArrowDown } from 'ui/svg/icons/ArrowDown'
 import { getSpacingString, Spacer } from 'ui/theme'
+import { Option } from 'ui/web/form/Option.web'
+import { Select } from 'ui/web/form/Select.web'
 
 type Props = {
   label: string
@@ -36,7 +38,7 @@ export function DropDown({
       <InputLabel htmlFor={dropDownInputID}>{label}</InputLabel>
       <Spacer.Column numberOfSpaces={2} />
       <SelectContainer>
-        <Select
+        <StyledSelect
           role="listbox"
           id={dropDownInputID}
           onChange={onChangeDate}
@@ -48,7 +50,7 @@ export function DropDown({
               {option}
             </Option>
           ))}
-        </Select>
+        </StyledSelect>
         <IconContainer>
           <ArrowDown />
         </IconContainer>
@@ -77,7 +79,7 @@ const IconContainer = styled.div`
 `
 
 const noBorderRadius = getSpacingString(1)
-const Select = styled.select<{ noBorderRadiusRight: boolean; noBorderRadiusLeft: boolean }>`
+const StyledSelect = styled(Select)<{ noBorderRadiusRight: boolean; noBorderRadiusLeft: boolean }>`
   ${({ theme, noBorderRadiusRight, noBorderRadiusLeft }) => `
     width: 100%;
     padding-right: ${getSpacingString(4)};
@@ -109,5 +111,3 @@ const Select = styled.select<{ noBorderRadiusRight: boolean; noBorderRadiusLeft:
     }
   `}
 `
-
-const Option = styled.option``

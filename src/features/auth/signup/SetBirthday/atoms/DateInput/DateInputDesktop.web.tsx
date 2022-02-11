@@ -2,10 +2,7 @@ import React, { useMemo, useState, FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { DropDown } from 'features/auth/signup/SetBirthday/atoms/DropDown/DropDown'
-import {
-  DEFAULT_SELECTED_DATE,
-  MINIMUM_YEAR,
-} from 'features/auth/signup/SetBirthday/utils/constants'
+import { MINIMUM_YEAR, UNDER_YOUNGEST_AGE } from 'features/auth/signup/SetBirthday/utils/constants'
 import {
   dayNumber,
   getDatesInMonth,
@@ -33,6 +30,9 @@ const INITIAL_DATE: InitialDateProps = {
 }
 
 export const DateInputDesktop: FunctionComponent<Props> = ({ onDateChange }) => {
+  const DEFAULT_SELECTED_DATE = new Date(
+    new Date().setFullYear(new Date().getFullYear() - UNDER_YOUNGEST_AGE)
+  )
   const [date, setDate] = useState<InitialDateProps>(INITIAL_DATE)
 
   const optionGroups = useMemo(() => {
