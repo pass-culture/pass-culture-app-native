@@ -100,6 +100,7 @@ export function ChangeEmail() {
 
   return (
     <React.Fragment>
+      <PageHeader title={t`Modifier mon e-mail`} />
       <Spacer.TopScreen />
       <StyledScrollView
         ref={scrollRef}
@@ -158,7 +159,6 @@ export function ChangeEmail() {
           <Spacer.Column numberOfSpaces={6} />
         </CenteredContainer>
       </StyledScrollView>
-      <PageHeader title={t`Modifier mon e-mail`} />
     </React.Fragment>
   )
 }

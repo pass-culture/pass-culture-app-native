@@ -20,6 +20,7 @@ export function LegalNotices() {
   const { navigate } = useNavigation<UseNavigationType>()
   return (
     <React.Fragment>
+      <PageHeader title={t`Mentions légales`} />
       <Container>
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={14} />
@@ -48,8 +49,6 @@ export function LegalNotices() {
           </React.Fragment>
         )}
       </Container>
-
-      <PageHeader title={t`Mentions légales`} />
     </React.Fragment>
   )
 }

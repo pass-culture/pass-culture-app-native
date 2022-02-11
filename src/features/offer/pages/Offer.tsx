@@ -49,6 +49,11 @@ export const Offer: FunctionComponent = () => {
   return (
     <Container>
       <OfferWebHead offer={offerResponse} />
+      <OfferHeader
+        title={offerResponse.name}
+        headerTransition={headerTransition}
+        offerId={offerResponse.id}
+      />
       <OfferBody offerId={offerId} onScroll={onScroll} />
       {!!wording && (
         <CallToActionContainer testID="CTA-button" style={{ paddingBottom: bottom }}>
@@ -69,12 +74,6 @@ export const Offer: FunctionComponent = () => {
       <BookingOfferModal
         visible={bookingOfferModalIsVisible}
         dismissModal={dismissBookingOfferModal}
-        offerId={offerResponse.id}
-      />
-
-      <OfferHeader
-        title={offerResponse.name}
-        headerTransition={headerTransition}
         offerId={offerResponse.id}
       />
     </Container>

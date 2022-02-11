@@ -90,6 +90,7 @@ export function ChangePassword() {
 
   return (
     <Container>
+      <PageHeader title={t`Mot de passe`} />
       <Spacer.TopScreen />
       <StyledScrollView
         ref={scrollRef}
@@ -152,8 +153,6 @@ export function ChangePassword() {
         </Form.MaxWidth>
         <Spacer.Column numberOfSpaces={6} />
       </StyledScrollView>
-
-      <PageHeader title={t`Mot de passe`} />
     </Container>
   )
 }

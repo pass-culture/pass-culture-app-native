@@ -44,6 +44,7 @@ export const SearchFilter: React.FC = () => {
 
   return (
     <Container>
+      <PageHeader title={t`Filtrer`} RightComponent={ReinitializeFilters} />
       <React.Fragment>
         <StyledScrollView ref={scrollViewRef} scrollEnabled={scrollEnabled}>
           <Spacer.TopScreen />
@@ -123,8 +124,6 @@ export const SearchFilter: React.FC = () => {
           <Spacer.Column numberOfSpaces={30} />
         </StyledScrollView>
       </React.Fragment>
-
-      <PageHeader title={t`Filtrer`} RightComponent={ReinitializeFilters} />
 
       <ShowResultsContainer>
         <ShowResults />

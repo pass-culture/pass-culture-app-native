@@ -61,6 +61,7 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
 
   return (
     <Container>
+      <PageHeader title={t`Paramètres de confidentialité`} onGoBack={route.params?.onGoBack} />
       <Spacer.TopScreen />
       <Spacer.Column numberOfSpaces={18} />
       <ProfileContainer>
@@ -97,7 +98,6 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
         />
         <Spacer.Column numberOfSpaces={8} />
       </ProfileContainer>
-      <PageHeader title={t`Paramètres de confidentialité`} onGoBack={route.params?.onGoBack} />
     </Container>
   )
 }

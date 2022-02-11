@@ -79,6 +79,7 @@ const Container = styled.View(({ theme }) => ({
   top: 0,
   width: '100%',
   backgroundColor: theme.colors.primary,
+  zIndex: theme.zIndex.header,
 }))
 
 const Title = styled(Typo.Body).attrs(() => ({

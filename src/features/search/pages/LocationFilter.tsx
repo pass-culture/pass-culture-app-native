@@ -62,6 +62,7 @@ export const LocationFilter: React.FC = () => {
 
   return (
     <Container>
+      <PageHeader title={t`Localisation`} />
       <Spacer.TopScreen />
       <ScrollView contentContainerStyle={contentContainerStyle}>
         <Spacer.Column numberOfSpaces={14} />
@@ -94,7 +95,6 @@ export const LocationFilter: React.FC = () => {
           onPress={onPressEverywhere}
         />
       </ScrollView>
-      <PageHeader title={t`Localisation`} />
     </Container>
   )
 }

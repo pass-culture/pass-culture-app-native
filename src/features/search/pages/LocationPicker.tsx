@@ -31,6 +31,7 @@ export const LocationPicker: React.FC = () => {
 
   return (
     <Container>
+      <PageHeader title={t`Choisir un lieu`} />
       <Spacer.TopScreen />
       <Spacer.Column numberOfSpaces={18} />
       <StyledInput>
@@ -51,8 +52,6 @@ export const LocationPicker: React.FC = () => {
         }>{t`Indique un lieu pour découvrir toutes les offres de ce lieu puis clique sur le lieu pour valider ton choix`}</HiddenText>
       <Spacer.Column numberOfSpaces={4} />
       <SuggestedPlaces query={debouncedValue} />
-
-      <PageHeader title={t`Choisir un lieu`} />
     </Container>
   )
 }
