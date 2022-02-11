@@ -14,6 +14,144 @@ exports[`LocationFilter component should render correctly 1`] = `
   }
 >
   <View
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#eb0055",
+          "position": "absolute",
+          "top": 0,
+          "width": "100%",
+          "zIndex": 1,
+        },
+      ]
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+          },
+        ]
+      }
+    >
+      <View
+        positionInHeader="left"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityLabel="Revenir en arrière"
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          nativeID="animatedComponent"
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
+          testID="Revenir en arrière"
+        >
+          <View
+            height={24}
+            testID="icon-back"
+            width={24}
+          >
+            <Text>
+              icon-back-SVG-Mock
+            </Text>
+          </View>
+        </View>
+      </View>
+      <Text
+        numberOfLines={1}
+        style={
+          Array [
+            Object {
+              "color": "#ffffff",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Localisation
+      </Text>
+      <View
+        positionInHeader="right"
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+  </View>
+  <View
     customHeight={16}
     enable={true}
     style={
@@ -512,142 +650,5 @@ exports[`LocationFilter component should render correctly 1`] = `
       </View>
     </View>
   </RCTScrollView>
-  <View
-    style={
-      Array [
-        Object {
-          "backgroundColor": "#eb0055",
-          "position": "absolute",
-          "top": 0,
-          "width": "100%",
-        },
-      ]
-    }
-  >
-    <View
-      customHeight={16}
-      enable={true}
-      style={
-        Array [
-          Object {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "height": 8,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-          },
-        ]
-      }
-    >
-      <View
-        positionInHeader="left"
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-start",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            },
-          ]
-        }
-      >
-        <View
-          accessibilityLabel="Revenir en arrière"
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          nativeID="animatedComponent"
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "opacity": 1,
-            }
-          }
-          testID="Revenir en arrière"
-        >
-          <View
-            height={24}
-            testID="icon-back"
-            width={24}
-          >
-            <Text>
-              icon-back-SVG-Mock
-            </Text>
-          </View>
-        </View>
-      </View>
-      <Text
-        numberOfLines={1}
-        style={
-          Array [
-            Object {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": 15,
-              "lineHeight": 20,
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Localisation
-      </Text>
-      <View
-        positionInHeader="right"
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-end",
-              "paddingLeft": 12,
-              "paddingRight": 12,
-            },
-          ]
-        }
-      />
-    </View>
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "height": 8,
-          },
-        ]
-      }
-    />
-  </View>
 </View>
 `;
