@@ -831,7 +831,7 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="accordionBodyContainer"
-                style="bottom: 0px; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
+                style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
               >
                 <div
                   class="css-text-901oao"
@@ -913,7 +913,7 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="accordionBodyContainer"
-                style="bottom: 0px; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
+                style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -1218,7 +1218,7 @@ Object {
               <div
                 class="css-view-1dbjc4n"
                 data-testid="accordionBodyContainer"
-                style="bottom: 0px; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
+                style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
               >
                 <div
                   class="css-text-901oao"
@@ -2241,7 +2241,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="accordionBodyContainer"
-              style="bottom: 0px; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
+              style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
             >
               <div
                 class="css-text-901oao"
@@ -2323,7 +2323,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="accordionBodyContainer"
-              style="bottom: 0px; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
+              style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -2628,7 +2628,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="accordionBodyContainer"
-              style="bottom: 0px; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
+              style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
             >
               <div
                 class="css-text-901oao"
