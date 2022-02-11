@@ -24,9 +24,14 @@ interface Props {
 }
 
 const MINIMUM_DATE = 1900
+const DEFAULT_YOUNGEST_AGE = 15
+const UNDER_YOUNGEST_AGE = DEFAULT_YOUNGEST_AGE - 1
 
 export function DatePickerSpinner(props: Props) {
   const CURRENT_DATE = new Date()
+  const DEFAULT_SELECTED_DATE = new Date(
+    new Date().setFullYear(new Date().getFullYear() - UNDER_YOUNGEST_AGE)
+  )
 
   const [date, setDate] = useState({
     day: CURRENT_DATE.getDate(),
@@ -41,7 +46,7 @@ export function DatePickerSpinner(props: Props) {
     return {
       day: getDatesInMonth(selectedMonthIndex, selectedYear),
       month: monthNamesShort,
-      year: getPastYears(MINIMUM_DATE, currentYear),
+      year: getPastYears(MINIMUM_DATE, defaultSelectedYear),
     }
   }, [date, monthNamesShort, getYears])
 

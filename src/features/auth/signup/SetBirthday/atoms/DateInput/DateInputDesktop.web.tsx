@@ -16,8 +16,6 @@ interface Props {
   children?: never
 }
 
-const MINIMUM_DATE = 1900
-
 type InitialDateProps = {
   day?: number
   month?: string
@@ -30,18 +28,24 @@ const INITIAL_DATE: InitialDateProps = {
   year: undefined,
 }
 
+const MINIMUM_DATE = 1900
+const DEFAULT_YOUNGEST_AGE = 15
+const UNDER_YOUNGEST_AGE = DEFAULT_YOUNGEST_AGE - 1
+
 export const DateInputDesktop: FunctionComponent<Props> = ({ onDateChange }) => {
-  const CURRENT_DATE = new Date()
+  const DEFAULT_SELECTED_DATE = new Date(
+    new Date().setFullYear(new Date().getFullYear() - UNDER_YOUNGEST_AGE)
+  )
 
   const [date, setDate] = useState<InitialDateProps>(INITIAL_DATE)
 
   const optionGroups = useMemo(() => {
-    const currentYear = CURRENT_DATE.getFullYear()
+    const defaultSelectedYear = DEFAULT_SELECTED_DATE.getFullYear()
     if (date.year === undefined || date.month === undefined || date.day === undefined) {
       return {
         days: dayNumber,
         months: monthNames,
-        years: getPastYears(MINIMUM_DATE, currentYear),
+        years: getPastYears(MINIMUM_DATE, defaultSelectedYear),
       }
     }
     const { month: selectedMonth, year: selectedYear } = date
@@ -49,7 +53,7 @@ export const DateInputDesktop: FunctionComponent<Props> = ({ onDateChange }) => 
     return {
       days: getDatesInMonth(selectedMonthIndex, selectedYear),
       months: monthNames,
-      years: getPastYears(MINIMUM_DATE, currentYear),
+      years: getPastYears(MINIMUM_DATE, defaultSelectedYear),
     }
   }, [date, monthNames, getYears])
 
