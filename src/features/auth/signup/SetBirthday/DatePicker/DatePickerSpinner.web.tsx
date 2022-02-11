@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { DateInput } from 'features/auth/signup/SetBirthday/atoms/DateInput/DateInput'
+import { DatePickerProps } from 'features/auth/signup/SetBirthday/DatePicker/types'
 import {
   CURRENT_DAY,
   CURRENT_MONTH,
@@ -13,7 +14,6 @@ import {
   MINIMUM_YEAR,
 } from 'features/auth/signup/SetBirthday/utils/constants'
 import { useDatePickerErrorHandler } from 'features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler'
-import { SignupData } from 'features/auth/signup/types'
 import {
   getDatesInMonth,
   getPastYears,
@@ -25,12 +25,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Spacer } from 'ui/theme'
 
-interface Props {
-  accessibilityLabelForNextStep?: string
-  goToNextStep: (signupData: Partial<SignupData>) => void
-}
-
-export function DatePickerSpinner(props: Props) {
+export function DatePickerSpinner(props: DatePickerProps) {
   const [date, setDate] = useState({
     day: CURRENT_DAY,
     month: monthNamesShort[CURRENT_MONTH],

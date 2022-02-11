@@ -728,7 +728,8 @@ msgstr "Date"
 msgid "Date de l'offre"
 msgstr "Date de l'offre"
 
-#: src/features/auth/signup/SetBirthday/DateInput/DateInput.tsx
+#: src/features/auth/signup/SetBirthday/atoms/DateInput/DateInput.tsx
+#: src/features/auth/signup/SignupForm.tsx
 msgid "Date de naissance"
 msgstr "Date de naissance"
 
@@ -1364,10 +1365,6 @@ msgstr "L'offre n'a pas été retirée de tes favoris"
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "L'usage du pass Culture est strictement nominatif. Le compte doit être créé et utilisé par un jeune éligible, de 15 à 18 ans. L'identification doit se faire au nom du futur bénéficiaire."
 msgstr "L'usage du pass Culture est strictement nominatif. Le compte doit être créé et utilisé par un jeune éligible, de 15 à 18 ans. L'identification doit se faire au nom du futur bénéficiaire."
-
-#: src/features/auth/signup/SetBirthday/SetBirthday.web.tsx
-msgid "La date choisie est incorrecte"
-msgstr "La date choisie est incorrecte"
 
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "La date de naissance enregistrée dans ÉduConnect semble indiquer que tu n'as pas l'âge requis pour obtenir l'aide du Gouvernement."
@@ -2435,7 +2432,6 @@ msgstr "Sélectionne ton statut"
 msgid "S’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect."
 msgstr "S’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect."
 
-#: src/features/auth/signup/SignupForm.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckValidation.web.tsx
 msgid "Ta date de naissance"
@@ -2655,10 +2651,6 @@ msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. D�
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 msgid "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
 msgstr "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
-
-#: src/features/auth/signup/SetBirthday/SetBirthday.web.tsx
-msgid "Tu dois avoir {youngestAge} ans pour t'inscrire"
-msgstr "Tu dois avoir {youngestAge} ans pour t'inscrire"
 
 #: src/features/bookings/pages/BookingDetails.tsx
 msgid "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."

@@ -2,20 +2,14 @@ import { t } from '@lingui/macro'
 import React, { useState } from 'react'
 
 import { DateInputDesktop } from 'features/auth/signup/SetBirthday/atoms/DateInput/DateInputDesktop.web'
+import { DatePickerProps } from 'features/auth/signup/SetBirthday/DatePicker/types'
 import { useDatePickerErrorHandler } from 'features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler'
-import { SignupData } from 'features/auth/signup/types'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Spacer } from 'ui/theme'
 
-interface Props {
-  accessibilityLabelForNextStep?: string
-  goToNextStep: (signupData: Partial<SignupData>) => void
-  chidren?: never
-}
-
-export function DatePickerDropDown(props: Props) {
+export function DatePickerDropDown(props: DatePickerProps) {
   const [date, setDate] = useState<Date | undefined>()
 
   const { isDisabled, errorMessage } = useDatePickerErrorHandler(date)

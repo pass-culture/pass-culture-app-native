@@ -4,24 +4,19 @@ import DatePicker from 'react-native-date-picker'
 import styled from 'styled-components/native'
 
 import { DateInput } from 'features/auth/signup/SetBirthday/atoms/DateInput/DateInput'
+import { DatePickerProps } from 'features/auth/signup/SetBirthday/DatePicker/types'
 import {
   DEFAULT_SELECTED_DATE,
   MAXIMUM_SPINNER_DATE,
   MINIMUM_DATE,
 } from 'features/auth/signup/SetBirthday/utils/constants'
 import { useDatePickerErrorHandler } from 'features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler'
-import { SignupData } from 'features/auth/signup/types'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Spacer } from 'ui/theme'
 
-interface Props {
-  accessibilityLabelForNextStep?: string
-  goToNextStep: (signupData: Partial<SignupData>) => void
-}
-
-export function DatePickerSpinner(props: Props) {
+export function DatePickerSpinner(props: DatePickerProps) {
   const [date, setDate] = useState<Date>(DEFAULT_SELECTED_DATE)
   const birthdate = formatDateToISOStringWithoutTime(date)
   const { isDisabled, errorMessage } = useDatePickerErrorHandler(new Date(birthdate))

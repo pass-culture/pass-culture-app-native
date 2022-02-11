@@ -76,6 +76,7 @@ const IconContainer = styled.div`
   `}
 `
 
+const noBorderRadius = getSpacingString(1)
 const Select = styled.select<{ noBorderRadiusRight: boolean; noBorderRadiusLeft: boolean }>`
   ${({ theme, noBorderRadiusRight, noBorderRadiusLeft }) => `
     width: 100%;
@@ -83,16 +84,16 @@ const Select = styled.select<{ noBorderRadiusRight: boolean; noBorderRadiusLeft:
     padding-left: ${getSpacingString(4)};
     height: ${getSpacingString(10)};
     border-top-left-radius: ${
-      noBorderRadiusLeft ? `${getSpacingString(1)};` : `${theme.borderRadius.button}px;`
+      noBorderRadiusLeft ? `${noBorderRadius};` : `${theme.borderRadius.button}px;`
     }
     border-bottom-left-radius: ${
-      noBorderRadiusLeft ? `${getSpacingString(1)};` : `${theme.borderRadius.button}px;`
+      noBorderRadiusLeft ? `${noBorderRadius};` : `${theme.borderRadius.button}px;`
     }
     border-top-right-radius: ${
-      noBorderRadiusRight ? `${getSpacingString(1)};` : `${theme.borderRadius.button}px;`
+      noBorderRadiusRight ? `${noBorderRadius};` : `${theme.borderRadius.button}px;`
     }
     border-bottom-right-radius: ${
-      noBorderRadiusRight ? `${getSpacingString(1)};` : `${theme.borderRadius.button}px;`
+      noBorderRadiusRight ? `${noBorderRadius};` : `${theme.borderRadius.button}px;`
     }
     border: solid 1px ${theme.colors.greyMedium};
     cursor: pointer;
