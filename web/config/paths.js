@@ -49,6 +49,7 @@ const resolveModule = (resolveFn, filePath) => {
 module.exports = {
   dotenv: resolveApp('.env'),
   appPath: resolveApp('.'),
+  appTsConfig: resolveApp('tsconfig.json'),
   appBuild: resolveApp('build'),
   appPublic: resolveApp('public'),
   appWebpackConfig: resolveApp('web/config/webpack.config.js'),
