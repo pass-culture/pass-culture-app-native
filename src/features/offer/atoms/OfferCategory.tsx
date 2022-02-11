@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import React from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
@@ -12,5 +13,7 @@ interface OfferCategoryProps {
 
 export const OfferCategory = ({ categoryId, label }: OfferCategoryProps) => {
   const Icon = mapCategoryToIcon(categoryId)
-  return <IconWithCaption Icon={Icon} caption={label} />
+  return (
+    <IconWithCaption Icon={Icon} caption={label} accessibilityLabel={t`Catégorie de l'offre`} />
+  )
 }
