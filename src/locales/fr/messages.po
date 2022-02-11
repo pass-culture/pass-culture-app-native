@@ -71,7 +71,7 @@ msgstr "18 ans"
 msgid "1er tutoriel"
 msgstr "1er tutoriel"
 
-#: src/features/auth/signup/SetBirthday/DateInput/DateInput.web.tsx
+#: src/features/auth/signup/SetBirthday/DateInput/DateInputDesktop.tsx
 msgid "AAAA"
 msgstr "AAAA"
 
@@ -135,6 +135,8 @@ msgstr "Activer la localisation"
 msgid "Actualiser la page"
 msgstr "Actualiser la page"
 
+#: src/features/offer/atoms/LocationCaption.tsx
+#: src/features/venue/pages/VenueBody.tsx
 #: src/libs/geolocation/components/WhereSection.tsx
 msgid "Adresse"
 msgstr "Adresse"
@@ -348,6 +350,10 @@ msgstr "Cadre l’intégralité de ton document"
 #: src/features/identityCheck/pages/identification/IdentityCheckDMS.tsx
 msgid "Carte d’identité ou passeport."
 msgstr "Carte d’identité ou passeport."
+
+#: src/features/offer/atoms/OfferCategory.tsx
+msgid "Catégorie de l'offre"
+msgstr "Catégorie de l'offre"
 
 #: src/features/search/pages/Categories.tsx
 #: src/features/search/sections/titles.ts
@@ -605,6 +611,7 @@ msgstr "Contacter le support"
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
+#: src/features/auth/signup/SetBirthday/DatePicker/DatePickerTouch.web.tsx
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 #: src/features/auth/signup/SetBirthday/SetBirthday.web.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
@@ -634,6 +641,7 @@ msgstr "Continuer vers l'étape"
 
 #: src/features/_marketingAndCommunication/atoms/DeeplinkItem.tsx
 #: src/libs/share/WebShareModal.web.tsx
+#: src/ui/svg/icons/Duplicate.tsx
 msgid "Copier"
 msgstr "Copier"
 
@@ -741,10 +749,16 @@ msgstr "Des nouveautés"
 msgid "Des offres pour tous"
 msgstr "Des offres pour tous"
 
+#: src/features/offer/pages/OfferBody.tsx
+#: src/features/venue/pages/VenueBody.tsx
+msgid "Description"
+msgstr "Description"
+
 #: src/libs/parsers/venueType.ts
 msgid "Disquaire"
 msgstr "Disquaire"
 
+#: src/features/venue/components/VenueIconCaptions.tsx
 #: src/libs/geolocation/components/WhereSection.tsx
 msgid "Distance"
 msgstr "Distance"
@@ -752,6 +766,10 @@ msgstr "Distance"
 #: src/features/venue/components/VenueIconCaptions.tsx
 msgid "Distance depuis la localisation"
 msgstr "Distance depuis la localisation"
+
+#: src/features/venue/components/VenueIconCaptions.tsx
+msgid "Distance indisponible"
+msgstr "Distance indisponible"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Données personnelles"
@@ -897,7 +915,7 @@ msgstr "Entrée du code de confirmation"
 msgid "Entrée pour l'adresse"
 msgstr "Entrée pour l'adresse"
 
-#: src/features/auth/signup/SetBirthday/DateInput/DateInput.web.tsx
+#: src/features/auth/signup/SetBirthday/DateInput/DateInputDesktop.tsx
 msgid "Entrée pour l'année jour de la date de naissance"
 msgstr "Entrée pour l'année jour de la date de naissance"
 
@@ -905,7 +923,7 @@ msgstr "Entrée pour l'année jour de la date de naissance"
 msgid "Entrée pour l'email"
 msgstr "Entrée pour l'email"
 
-#: src/features/auth/signup/SetBirthday/DateInput/DateInput.web.tsx
+#: src/features/auth/signup/SetBirthday/DateInput/DateInputDesktop.tsx
 msgid "Entrée pour la date de naissance"
 msgstr "Entrée pour la date de naissance"
 
@@ -913,11 +931,11 @@ msgstr "Entrée pour la date de naissance"
 msgid "Entrée pour le code postal"
 msgstr "Entrée pour le code postal"
 
-#: src/features/auth/signup/SetBirthday/DateInput/DateInput.web.tsx
+#: src/features/auth/signup/SetBirthday/DateInput/DateInputDesktop.tsx
 msgid "Entrée pour le jour de la date de naissance"
 msgstr "Entrée pour le jour de la date de naissance"
 
-#: src/features/auth/signup/SetBirthday/DateInput/DateInput.web.tsx
+#: src/features/auth/signup/SetBirthday/DateInput/DateInputDesktop.tsx
 msgid "Entrée pour le mois de la date de naissance"
 msgstr "Entrée pour le mois de la date de naissance"
 
@@ -1220,7 +1238,7 @@ msgstr "Interrupteur géolocalisation"
 msgid "J'ai compris"
 msgstr "J'ai compris"
 
-#: src/features/auth/signup/SetBirthday/DateInput/DateInput.web.tsx
+#: src/features/auth/signup/SetBirthday/DateInput/DateInputDesktop.tsx
 msgid "JJ"
 msgstr "JJ"
 
@@ -1266,6 +1284,7 @@ msgstr "Jeux"
 msgid "Jeux / Jeux vidéos"
 msgstr "Jeux / Jeux vidéos"
 
+#: src/features/auth/signup/SetEmail/SetEmail.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
 msgid "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisées du pass Culture."
 msgstr "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisées du pass Culture."
@@ -1444,6 +1463,7 @@ msgid "Lien de modification de l'email expiré"
 msgstr "Lien de modification de l'email expiré"
 
 #: src/features/navigation/RootNavigator/routes.ts
+#: src/features/venue/pages/VenueBody.tsx
 msgid "Lieu"
 msgstr "Lieu"
 
@@ -1465,7 +1485,7 @@ msgstr "Localisation"
 msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 
-#: src/features/auth/signup/SetBirthday/DateInput/DateInput.web.tsx
+#: src/features/auth/signup/SetBirthday/DateInput/DateInputDesktop.tsx
 msgid "MM"
 msgstr "MM"
 
@@ -1707,6 +1727,11 @@ msgstr "Nouveau mot de passe"
 msgid "Nouvel e-mail"
 msgstr "Nouvel e-mail"
 
+#: src/ui/svg/icons/ExternalSite.tsx
+#: src/ui/svg/icons/ExternalSiteFilled.tsx
+msgid "Nouvelle fenêtre"
+msgstr "Nouvelle fenêtre"
+
 #: src/features/profile/pages/PersonalData.tsx
 msgid "Numéro de téléphone"
 msgstr "Numéro de téléphone"
@@ -1722,6 +1747,10 @@ msgstr "Offer {offerId} could not be retrieved"
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Offre"
 msgstr "Offre"
+
+#: src/features/offer/atoms/LocationCaption.tsx
+msgid "Offre digitale"
+msgstr "Offre digitale"
 
 #: src/features/favorites/atoms/BookingButton.tsx
 #: src/features/offer/services/useCtaWordingAndAction.ts
@@ -1751,6 +1780,10 @@ msgstr "Offre physique"
 #: src/features/favorites/atoms/BookingButton.tsx
 msgid "Offre réservée"
 msgstr "Offre réservée"
+
+#: src/features/offer/components/OfferIconCaptions.tsx
+msgid "Offre à deux"
+msgstr "Offre à deux"
 
 #: src/features/favorites/atoms/BookingButton.tsx
 #: src/features/offer/services/useCtaWordingAndAction.ts
@@ -1783,6 +1816,11 @@ msgstr "Oups, cette offre n’est plus disponible !"
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Oups !"
 msgstr "Oups !"
+
+#: src/ui/svg/icons/Email.tsx
+#: src/ui/svg/icons/EmailFilled.tsx
+msgid "Ouvrir la boîte e-mail"
+msgstr "Ouvrir la boîte e-mail"
 
 #: src/libs/country-picker/CountryPicker.tsx
 msgid "Ouvrir la modale de choix de l'indicatif téléphonique"
@@ -1958,6 +1996,7 @@ msgstr "Prends une photo de ta"
 msgid "Prends une photo de ta carte d'identité ou de ton passeport en cours de validité pour accéder à ton pass Culture."
 msgstr "Prends une photo de ta carte d'identité ou de ton passeport en cours de validité pour accéder à ton pass Culture."
 
+#: src/features/offer/components/OfferIconCaptions.tsx
 #: src/features/search/sections/titles.ts
 msgid "Prix"
 msgstr "Prix"
@@ -2197,6 +2236,10 @@ msgstr "Réinitialiser le mot de passe"
 msgid "Réinitialiser les filtres"
 msgstr "Réinitialiser les filtres"
 
+#: src/ui/svg/LogoMinistere.tsx
+msgid "République Française - Liberté Égalité Fraternité"
+msgstr "République Française - Liberté Égalité Fraternité"
+
 #: src/features/bookings/components/EndedBookingItem.tsx
 msgid "Réservation annulée"
 msgstr "Réservation annulée"
@@ -2234,6 +2277,10 @@ msgstr "Réserver"
 #: src/features/profile/components/LoggedOutHeader.tsx
 msgid "S'inscrire"
 msgstr "S'inscrire"
+
+#: src/ui/svg/icons/SMSFilled.tsx
+msgid "SMS"
+msgstr "SMS"
 
 #: src/features/search/pages/LocationPicker.tsx
 msgid "Saisir une adresse..."
@@ -2382,6 +2429,10 @@ msgstr "Terminer"
 msgid "Terminer ma réservation"
 msgstr "Terminer ma réservation"
 
+#: src/features/offer/pages/OfferBody.tsx
+msgid "Titre"
+msgstr "Titre"
+
 #: src/features/identityCheck/pages/identification/IdentityCheckDMS.tsx
 msgid "Titre de séjour, carte d'identité ou passeport."
 msgstr "Titre de séjour, carte d'identité ou passeport."
@@ -2401,6 +2452,10 @@ msgstr "Ton adresse e-mail a été modifiée. Tu peux te reconnecter avec ta nou
 #: src/features/profile/pages/ChangeEmail/ChangeEmailExpiredLink.tsx
 msgid "Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception."
 msgstr "Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception."
+
+#: src/features/identityCheck/pages/profile/SetAddress.tsx
+msgid "Ton adresse ne doit pas contenir de caractères spéciaux ou n'être composée que d'espaces."
+msgstr "Ton adresse ne doit pas contenir de caractères spéciaux ou n'être composée que d'espaces."
 
 #: src/features/auth/signup/AccountCreated/AccountCreated.tsx
 msgid "Ton compte a été activé !"
@@ -2568,6 +2623,7 @@ msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget."
 msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 
+#: src/features/auth/signup/SetBirthday/DatePicker/DatePickerTouch.web.tsx
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 msgid "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
 msgstr "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
@@ -2603,6 +2659,10 @@ msgstr "Tu n'as pas reçu le sms ?"
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Tu ne fais pas partie de la phase de test"
 msgstr "Tu ne fais pas partie de la phase de test"
+
+#: src/features/auth/signup/SetBirthday/DatePicker/DatePickerTouch.web.tsx
+msgid "Tu ne peux pas choisir une date dans le futur"
+msgstr "Tu ne peux pas choisir une date dans le futur"
 
 #: src/features/bookings/components/BookingDetailsCancelButton.tsx
 msgid "Tu ne peux plus annuler ta réservation : elle devait être annulée avant le {formattedConfirmationDate}"
@@ -2701,6 +2761,10 @@ msgstr "Type d'offre"
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Type d'établissement"
 msgstr "Type d'établissement"
+
+#: src/features/venue/atoms/VenueType.tsx
+msgid "Type de lieu"
+msgstr "Type de lieu"
 
 #: src/features/forceUpdate/ForceUpdate.tsx
 msgid "Télécharger la dernière version"
@@ -3201,11 +3265,11 @@ msgstr "validé"
 msgid "venueId is undefined"
 msgstr "venueId is undefined"
 
-#: src/ui/components/buttons/ScrollButtonForNotTouchDevice.tsx
+#: src/ui/components/buttons/scrollButtonForNotTouchDeviceUtils.ts
 msgid "voir les propositions précédentes"
 msgstr "voir les propositions précédentes"
 
-#: src/ui/components/buttons/ScrollButtonForNotTouchDevice.tsx
+#: src/ui/components/buttons/scrollButtonForNotTouchDeviceUtils.ts
 msgid "voir les propositions suivantes"
 msgstr "voir les propositions suivantes"
 
