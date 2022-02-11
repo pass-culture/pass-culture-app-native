@@ -5,6 +5,13 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { DateInput } from 'features/auth/signup/SetBirthday/atoms/DateInput/DateInput'
+import {
+  CURRENT_DAY,
+  CURRENT_MONTH,
+  CURRENT_YEAR,
+  DEFAULT_SELECTED_DATE,
+  MINIMUM_YEAR,
+} from 'features/auth/signup/SetBirthday/utils/constants'
 import { useDatePickerErrorHandler } from 'features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler'
 import { SignupData } from 'features/auth/signup/types'
 import {
@@ -23,20 +30,11 @@ interface Props {
   goToNextStep: (signupData: Partial<SignupData>) => void
 }
 
-const MINIMUM_DATE = 1900
-const DEFAULT_YOUNGEST_AGE = 15
-const UNDER_YOUNGEST_AGE = DEFAULT_YOUNGEST_AGE - 1
-
 export function DatePickerSpinner(props: Props) {
-  const CURRENT_DATE = new Date()
-  const DEFAULT_SELECTED_DATE = new Date(
-    new Date().setFullYear(new Date().getFullYear() - UNDER_YOUNGEST_AGE)
-  )
-
   const [date, setDate] = useState({
-    day: CURRENT_DATE.getDate(),
-    month: monthNamesShort[CURRENT_DATE.getMonth()],
-    year: CURRENT_DATE.getFullYear(),
+    day: CURRENT_DAY,
+    month: monthNamesShort[CURRENT_MONTH],
+    year: CURRENT_YEAR,
   })
 
   const optionGroups = useMemo(() => {
@@ -46,7 +44,7 @@ export function DatePickerSpinner(props: Props) {
     return {
       day: getDatesInMonth(selectedMonthIndex, selectedYear),
       month: monthNamesShort,
-      year: getPastYears(MINIMUM_DATE, defaultSelectedYear),
+      year: getPastYears(MINIMUM_YEAR, defaultSelectedYear),
     }
   }, [date, monthNamesShort, getYears])
 

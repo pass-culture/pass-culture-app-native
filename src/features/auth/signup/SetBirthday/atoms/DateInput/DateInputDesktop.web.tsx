@@ -3,6 +3,10 @@ import styled from 'styled-components/native'
 
 import { DropDown } from 'features/auth/signup/SetBirthday/atoms/DropDown/DropDown'
 import {
+  DEFAULT_SELECTED_DATE,
+  MINIMUM_YEAR,
+} from 'features/auth/signup/SetBirthday/utils/constants'
+import {
   dayNumber,
   getDatesInMonth,
   getPastYears,
@@ -28,15 +32,7 @@ const INITIAL_DATE: InitialDateProps = {
   year: undefined,
 }
 
-const MINIMUM_DATE = 1900
-const DEFAULT_YOUNGEST_AGE = 15
-const UNDER_YOUNGEST_AGE = DEFAULT_YOUNGEST_AGE - 1
-
 export const DateInputDesktop: FunctionComponent<Props> = ({ onDateChange }) => {
-  const DEFAULT_SELECTED_DATE = new Date(
-    new Date().setFullYear(new Date().getFullYear() - UNDER_YOUNGEST_AGE)
-  )
-
   const [date, setDate] = useState<InitialDateProps>(INITIAL_DATE)
 
   const optionGroups = useMemo(() => {
@@ -45,7 +41,7 @@ export const DateInputDesktop: FunctionComponent<Props> = ({ onDateChange }) => 
       return {
         days: dayNumber,
         months: monthNames,
-        years: getPastYears(MINIMUM_DATE, defaultSelectedYear),
+        years: getPastYears(MINIMUM_YEAR, defaultSelectedYear),
       }
     }
     const { month: selectedMonth, year: selectedYear } = date
@@ -53,7 +49,7 @@ export const DateInputDesktop: FunctionComponent<Props> = ({ onDateChange }) => 
     return {
       days: getDatesInMonth(selectedMonthIndex, selectedYear),
       months: monthNames,
-      years: getPastYears(MINIMUM_DATE, defaultSelectedYear),
+      years: getPastYears(MINIMUM_YEAR, defaultSelectedYear),
     }
   }, [date, monthNames, getYears])
 
