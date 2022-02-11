@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useMemo } from 'react'
-import { PixelRatio } from 'react-native'
+import { PixelRatio, StyleSheet } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
@@ -12,6 +12,7 @@ import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { MARGIN_DP, LENGTH_XL, RATIO_EXCLU, Spacer, getSpacing } from 'ui/theme'
+import { Link } from 'ui/web/link/Link'
 
 export const ExclusivityModule = ({
   alt,
@@ -40,7 +41,9 @@ export const ExclusivityModule = ({
       <Spacer.Row numberOfSpaces={6} />
       <ImageContainer>
         <TouchableHighlight onPress={handlePressExclu} testID="imageExclu">
-          <Image source={source} accessible={!!alt} accessibilityLabel={alt} />
+          <Link to={{ screen: 'Offer', params: { id, from: 'home' } }} style={styles.link}>
+            <Image source={source} accessible={!!alt} accessibilityLabel={alt} />
+          </Link>
         </TouchableHighlight>
       </ImageContainer>
       <Spacer.Row numberOfSpaces={6} />
@@ -68,3 +71,10 @@ const Image = styled(FastImage)(({ theme }) => ({
   maxHeight: LENGTH_XL,
   height: PixelRatio.roundToNearestPixel((theme.appContentWidth - 2 * MARGIN_DP) * RATIO_EXCLU),
 }))
+
+const styles = StyleSheet.create({
+  link: {
+    flexDirection: 'column',
+    display: 'flex',
+  },
+})

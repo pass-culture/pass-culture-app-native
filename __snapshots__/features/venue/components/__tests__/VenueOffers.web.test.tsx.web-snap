@@ -40,32 +40,36 @@ Object {
             style="width: 12px;"
           />
           <div
-            aria-label="Voir plus d’offres de la sélection Offres"
-            class="css-view-1dbjc4n"
-            data-testid="Voir plus d’offres de la sélection Offres"
-            style="align-items: center; cursor: pointer; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
-            tabindex="0"
+            class="css-text-901oao"
+            dir="auto"
           >
             <div
+              aria-label="Voir plus d’offres de la sélection Offres"
               class="css-view-1dbjc4n"
+              data-testid="Voir plus d’offres de la sélection Offres"
+              style="align-items: center; cursor: pointer; display: inline-flex; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+              tabindex="0"
             >
               <div
-                class="css-text-901oao"
-                dir="auto"
+                class="css-view-1dbjc4n"
+                style="display: inline-flex;"
               >
-                undefined-SVG-Mock
+                <span
+                  class="css-text-901oao css-textHasAncestor-16my406"
+                >
+                  undefined-SVG-Mock
+                </span>
               </div>
-            </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="width: 8px;"
-            />
-            <div
-              class="css-text-901oao"
-              dir="auto"
-              style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-            >
-              En voir plus
+              <div
+                class="css-view-1dbjc4n"
+                style="display: inline-flex; width: 8px;"
+              />
+              <span
+                class="css-text-901oao css-textHasAncestor-16my406"
+                style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+              >
+                En voir plus
+              </span>
             </div>
           </div>
         </div>
@@ -110,20 +114,25 @@ Object {
                     tabindex="0"
                   >
                     <div
-                      class="css-view-1dbjc4n"
-                      style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                      class="css-text-901oao"
+                      dir="auto"
+                      style="display: flex; flex-direction: column;"
                     >
                       <div
                         class="css-view-1dbjc4n"
-                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                        style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
                       >
                         <div
-                          class="css-text-901oao css-textMultiLine-cens5h"
-                          data-testid="categoryImageCaption"
-                          dir="auto"
-                          style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                         >
-                          Cinéma
+                          <span
+                            class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                            data-testid="categoryImageCaption"
+                            style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Cinéma
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -177,20 +186,25 @@ Object {
                     tabindex="0"
                   >
                     <div
-                      class="css-view-1dbjc4n"
-                      style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                      class="css-text-901oao"
+                      dir="auto"
+                      style="display: flex; flex-direction: column;"
                     >
                       <div
                         class="css-view-1dbjc4n"
-                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                        style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
                       >
                         <div
-                          class="css-text-901oao css-textMultiLine-cens5h"
-                          data-testid="categoryImageCaption"
-                          dir="auto"
-                          style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                         >
-                          Cinéma
+                          <span
+                            class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                            data-testid="categoryImageCaption"
+                            style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Cinéma
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -244,20 +258,25 @@ Object {
                     tabindex="0"
                   >
                     <div
-                      class="css-view-1dbjc4n"
-                      style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                      class="css-text-901oao"
+                      dir="auto"
+                      style="display: flex; flex-direction: column;"
                     >
                       <div
                         class="css-view-1dbjc4n"
-                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                        style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
                       >
                         <div
-                          class="css-text-901oao css-textMultiLine-cens5h"
-                          data-testid="categoryImageCaption"
-                          dir="auto"
-                          style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                         >
-                          Cinéma
+                          <span
+                            class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                            data-testid="categoryImageCaption"
+                            style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Cinéma
+                          </span>
                         </div>
                       </div>
                     </div>
@@ -307,23 +326,27 @@ Object {
         class="css-view-1dbjc4n"
         style="margin-right: 24px; margin-left: 24px;"
       >
-        <button
-          class="sc-jrQzAO dQNBgw"
-          type="button"
+        <div
+          class="css-text-901oao"
+          dir="auto"
         >
-          <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; flex-direction: row; position: absolute;"
+          <button
+            class="sc-jrQzAO dQNBgw"
+            type="button"
           >
             <div
-              class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
-              style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 20px 20px 20px 20px;"
+              class="css-view-1dbjc4n"
+              style="align-items: center; display: inline-flex; flex-direction: row; position: absolute;"
             >
-              Voir toutes les offres
+              <span
+                class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 20px 20px 20px 20px;"
+              >
+                Voir toutes les offres
+              </span>
             </div>
-          </div>
-        </button>
+          </button>
+        </div>
       </div>
       <div
         class="css-view-1dbjc4n"
@@ -367,32 +390,36 @@ Object {
           style="width: 12px;"
         />
         <div
-          aria-label="Voir plus d’offres de la sélection Offres"
-          class="css-view-1dbjc4n"
-          data-testid="Voir plus d’offres de la sélection Offres"
-          style="align-items: center; cursor: pointer; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
-          tabindex="0"
+          class="css-text-901oao"
+          dir="auto"
         >
           <div
+            aria-label="Voir plus d’offres de la sélection Offres"
             class="css-view-1dbjc4n"
+            data-testid="Voir plus d’offres de la sélection Offres"
+            style="align-items: center; cursor: pointer; display: inline-flex; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            tabindex="0"
           >
             <div
-              class="css-text-901oao"
-              dir="auto"
+              class="css-view-1dbjc4n"
+              style="display: inline-flex;"
             >
-              undefined-SVG-Mock
+              <span
+                class="css-text-901oao css-textHasAncestor-16my406"
+              >
+                undefined-SVG-Mock
+              </span>
             </div>
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="width: 8px;"
-          />
-          <div
-            class="css-text-901oao"
-            dir="auto"
-            style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-          >
-            En voir plus
+            <div
+              class="css-view-1dbjc4n"
+              style="display: inline-flex; width: 8px;"
+            />
+            <span
+              class="css-text-901oao css-textHasAncestor-16my406"
+              style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+            >
+              En voir plus
+            </span>
           </div>
         </div>
       </div>
@@ -437,20 +464,25 @@ Object {
                   tabindex="0"
                 >
                   <div
-                    class="css-view-1dbjc4n"
-                    style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="display: flex; flex-direction: column;"
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                      style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
                     >
                       <div
-                        class="css-text-901oao css-textMultiLine-cens5h"
-                        data-testid="categoryImageCaption"
-                        dir="auto"
-                        style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                        class="css-view-1dbjc4n"
+                        style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                       >
-                        Cinéma
+                        <span
+                          class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                          data-testid="categoryImageCaption"
+                          style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                        >
+                          Cinéma
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -504,20 +536,25 @@ Object {
                   tabindex="0"
                 >
                   <div
-                    class="css-view-1dbjc4n"
-                    style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="display: flex; flex-direction: column;"
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                      style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
                     >
                       <div
-                        class="css-text-901oao css-textMultiLine-cens5h"
-                        data-testid="categoryImageCaption"
-                        dir="auto"
-                        style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                        class="css-view-1dbjc4n"
+                        style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                       >
-                        Cinéma
+                        <span
+                          class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                          data-testid="categoryImageCaption"
+                          style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                        >
+                          Cinéma
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -571,20 +608,25 @@ Object {
                   tabindex="0"
                 >
                   <div
-                    class="css-view-1dbjc4n"
-                    style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 192px;"
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="display: flex; flex-direction: column;"
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                      style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
                     >
                       <div
-                        class="css-text-901oao css-textMultiLine-cens5h"
-                        data-testid="categoryImageCaption"
-                        dir="auto"
-                        style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                        class="css-view-1dbjc4n"
+                        style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                       >
-                        Cinéma
+                        <span
+                          class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                          data-testid="categoryImageCaption"
+                          style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                        >
+                          Cinéma
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -634,23 +676,27 @@ Object {
       class="css-view-1dbjc4n"
       style="margin-right: 24px; margin-left: 24px;"
     >
-      <button
-        class="sc-jrQzAO dQNBgw"
-        type="button"
+      <div
+        class="css-text-901oao"
+        dir="auto"
       >
-        <div
-          class="css-view-1dbjc4n"
-          style="align-items: center; flex-direction: row; position: absolute;"
+        <button
+          class="sc-jrQzAO dQNBgw"
+          type="button"
         >
           <div
-            class="css-text-901oao css-textMultiLine-cens5h"
-            dir="auto"
-            style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 20px 20px 20px 20px;"
+            class="css-view-1dbjc4n"
+            style="align-items: center; display: inline-flex; flex-direction: row; position: absolute;"
           >
-            Voir toutes les offres
+            <span
+              class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+              style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 20px 20px 20px 20px;"
+            >
+              Voir toutes les offres
+            </span>
           </div>
-        </div>
-      </button>
+        </button>
+      </div>
     </div>
     <div
       class="css-view-1dbjc4n"

@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React, { ComponentProps, ComponentType, useCallback } from 'react'
+import React, { ComponentProps, ComponentType, ReactNode, useCallback } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { SeeMore } from 'features/home/atoms'
@@ -10,6 +10,7 @@ import { EyeSophisticated as DefaultEyeSophisticated } from 'ui/svg/icons/EyeSop
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
+
 type Props = Pick<
   ComponentProps<typeof Playlist>,
   'data' | 'itemWidth' | 'itemHeight' | 'testID' | 'keyExtractor' | 'renderItem' | 'onEndReached'
@@ -19,6 +20,8 @@ type Props = Pick<
   onPressSeeMore?: () => void
   coverUrl?: string | null
   onDarkBackground?: boolean
+  renderFooter?: RenderFooterItem
+  renderTitleSeeMore?: ({ children }: { children: ReactNode }) => ReactNode
 }
 
 export const PassPlaylist = (props: Props) => {
@@ -50,28 +53,38 @@ export const PassPlaylist = (props: Props) => {
     [props.onPressSeeMore]
   )
 
+  function renderTitleSeeMore() {
+    if (!showTitleSeeMore) {
+      return null
+    }
+    const titleSeeMoreChildren = (
+      <StyledTouchableOpacity
+        onPress={props.onPressSeeMore}
+        {...accessibilityAndTestId(t`Voir plus d’offres de la sélection` + ' ' + props.title)}>
+        <EyeSophisticated color={seeMoreColor} />
+        <Spacer.Row numberOfSpaces={2} />
+        <ButtonText onDarkBackground={props.onDarkBackground}>{t`En voir plus`}</ButtonText>
+      </StyledTouchableOpacity>
+    )
+    return (
+      <React.Fragment>
+        <Spacer.Row numberOfSpaces={4} />
+        <TitleSeparator color={titleSeparatorColor} />
+        <Spacer.Row numberOfSpaces={3} />
+        {props.renderTitleSeeMore
+          ? props.renderTitleSeeMore({ children: titleSeeMoreChildren })
+          : titleSeeMoreChildren}
+      </React.Fragment>
+    )
+  }
+
   return (
     <Container>
       <Row>
         <StyledTitleComponent testID="playlistTitle" onDarkBackground={props.onDarkBackground}>
           {props.title}
         </StyledTitleComponent>
-        {!!showTitleSeeMore && (
-          <React.Fragment>
-            <Spacer.Row numberOfSpaces={4} />
-            <TitleSeparator color={titleSeparatorColor} />
-            <Spacer.Row numberOfSpaces={3} />
-            <StyledTouchableOpacity
-              onPress={props.onPressSeeMore}
-              {...accessibilityAndTestId(
-                t`Voir plus d’offres de la sélection` + ' ' + props.title
-              )}>
-              <EyeSophisticated color={seeMoreColor} />
-              <Spacer.Row numberOfSpaces={2} />
-              <ButtonText onDarkBackground={props.onDarkBackground}>{t`En voir plus`}</ButtonText>
-            </StyledTouchableOpacity>
-          </React.Fragment>
-        )}
+        {renderTitleSeeMore()}
       </Row>
       <Spacer.Column numberOfSpaces={4} />
       <Playlist
@@ -82,7 +95,7 @@ export const PassPlaylist = (props: Props) => {
         scrollButtonOffsetY={props.itemHeight / 2}
         renderItem={props.renderItem}
         renderHeader={showHeader ? renderHeader : undefined}
-        renderFooter={showFooterSeeMore ? renderFooter : undefined}
+        renderFooter={showFooterSeeMore ? props.renderFooter || renderFooter : undefined}
         keyExtractor={props.keyExtractor}
         onEndReached={props.onEndReached}
       />
@@ -106,7 +119,9 @@ const TitleSeparator = styled.View<{ color?: ColorsEnum }>((props) => ({
   backgroundColor: props.color,
 }))
 
-const StyledTouchableOpacity = styled.TouchableOpacity({
+const StyledTouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))({
   flexDirection: 'row',
   alignItems: 'center',
   padding: getSpacing(1),

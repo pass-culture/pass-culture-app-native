@@ -4,10 +4,12 @@ import webStyled from 'styled-components'
 import styled, { useTheme } from 'styled-components/native'
 
 import { navigateToHome } from 'features/navigation/helpers'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getSpacing } from 'ui/theme'
+import { Link } from 'ui/web/link/Link'
 
 import { AccessibleTabBar } from './AccessibleTabBar'
 import { Nav } from './Nav'
@@ -83,7 +85,13 @@ export const Header = memo(function Header() {
     <HeaderContainer>
       <LeftContainer margin={margin} isVisible={!!isDesktopOffset} style={fadeAnim}>
         <LogoContainer onPress={navigateToHome}>
-          <LogoPassCulture color={theme.uniqueColors.brand} height={getSpacing(10)} width="100%" />
+          <Link to={{ screen: homeNavConfig[0], params: homeNavConfig[1] }}>
+            <LogoPassCulture
+              color={theme.uniqueColors.brand}
+              height={getSpacing(10)}
+              width="100%"
+            />
+          </Link>
         </LogoContainer>
         <FlexContainer />
       </LeftContainer>
@@ -158,7 +166,9 @@ const FlexContainer = styled.View<{ alignItems?: string }>(({ alignItems }) => (
   alignItems,
 }))
 
-const LogoContainer = styled.TouchableOpacity({
+const LogoContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))({
   flex: 1,
 })
 

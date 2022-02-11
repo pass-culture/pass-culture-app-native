@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
-import { useWindowDimensions } from 'react-native'
+import { StyleSheet, useWindowDimensions } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
@@ -35,6 +35,7 @@ import { LoadingPage } from 'ui/components/LoadingPage'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Link } from 'ui/web/link/Link'
 const getOfferRules = (
   properties: BookingProperties,
   activationCodeFeatureEnabled?: boolean
@@ -172,12 +173,16 @@ export function BookingDetails() {
             </React.Fragment>
           )}
           <Spacer.Column numberOfSpaces={8} />
-          <ButtonPrimary
-            testID="Voir le détail de l’offre"
-            wording={t`Voir le détail de l’offre`}
-            onPress={navigateToOffer}
-            fullWidth
-          />
+          <Link
+            to={{ screen: 'Offer', params: { id: offer.id, from: 'bookingdetails' } }}
+            style={styles.link}>
+            <ButtonPrimary
+              testID="Voir le détail de l’offre"
+              wording={t`Voir le détail de l’offre`}
+              onPress={navigateToOffer}
+              fullWidth
+            />
+          </Link>
           <Spacer.Column numberOfSpaces={4} />
           <BookingDetailsCancelButton
             booking={booking}
@@ -214,4 +219,11 @@ const OfferRules = styled(Typo.Caption)(({ theme }) => ({
 
 const ViewWithPadding = styled.View({
   paddingHorizontal: getSpacing(5),
+})
+
+const styles = StyleSheet.create({
+  link: {
+    flexDirection: 'column',
+    display: 'flex',
+  },
 })

@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { NativeScrollEvent, ScrollView } from 'react-native'
+import { NativeScrollEvent, ScrollView, StyleSheet } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAuthContext, useLogoutRoutine } from 'features/auth/AuthContext'
@@ -35,6 +35,7 @@ import { SignOut } from 'ui/svg/icons/SignOut'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
+import { Link } from 'ui/web/link/Link'
 
 import Package from '../../../../package.json'
 
@@ -115,26 +116,32 @@ export const Profile: React.FC = () => {
         <Section title={isLoggedIn ? t`Paramètres du compte` : t`Paramètres de l'application`}>
           {!!isLoggedIn && (
             <React.Fragment>
-              <Row
-                title={t`Informations personnelles`}
-                type="navigable"
-                onPress={() => navigate('PersonalData')}
-                icon={ProfileIcon}
-              />
-              <Row
-                title={t`Mot de passe`}
-                type="navigable"
-                onPress={() => navigate('ChangePassword')}
-                icon={Lock}
-              />
+              <Link to={{ screen: 'PersonalData', params: undefined }} style={styles.link}>
+                <Row
+                  title={t`Informations personnelles`}
+                  type="navigable"
+                  onPress={() => navigate('PersonalData')}
+                  icon={ProfileIcon}
+                />
+              </Link>
+              <Link to={{ screen: 'ChangePassword', params: undefined }} style={styles.link}>
+                <Row
+                  title={t`Mot de passe`}
+                  type="navigable"
+                  onPress={() => navigate('ChangePassword')}
+                  icon={Lock}
+                />
+              </Link>
             </React.Fragment>
           )}
-          <Row
-            type="navigable"
-            title={t`Notifications`}
-            icon={Bell}
-            onPress={() => navigate('NotificationSettings')}
-          />
+          <Link to={{ screen: 'NotificationSettings', params: undefined }} style={styles.link}>
+            <Row
+              type="navigable"
+              title={t`Notifications`}
+              icon={Bell}
+              onPress={() => navigate('NotificationSettings')}
+            />
+          </Link>
           <SectionWithSwitch
             icon={LocationPointerNotFilled}
             iconSize={SECTION_ROW_ICON_SIZE}
@@ -152,12 +159,16 @@ export const Profile: React.FC = () => {
           )}
         </Section>
         <Section title={t`Aides`}>
-          <Row
-            title={t`Comment ça marche\u00a0?`}
-            type="navigable"
-            onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
-            icon={LifeBuoy}
-          />
+          <Link
+            to={{ screen: 'FirstTutorial', params: { shouldCloseAppOnBackAction: false } }}
+            style={styles.link}>
+            <Row
+              title={t`Comment ça marche\u00a0?`}
+              type="navigable"
+              onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
+              icon={LifeBuoy}
+            />
+          </Link>
           <Row
             title={t`Questions fréquentes`}
             type="clickable"
@@ -172,18 +183,22 @@ export const Profile: React.FC = () => {
             onPress={() => openUrl(env.ACCESSIBILITY_LINK)}
             icon={ExternalSite}
           />
-          <Row
-            title={t`Mentions légales`}
-            type="navigable"
-            onPress={() => navigate('LegalNotices')}
-            icon={LegalNotices}
-          />
-          <Row
-            title={t`Confidentialité`}
-            type="navigable"
-            onPress={() => navigate('ConsentSettings')}
-            icon={Confidentiality}
-          />
+          <Link to={{ screen: 'LegalNotices', params: undefined }} style={styles.link}>
+            <Row
+              title={t`Mentions légales`}
+              type="navigable"
+              onPress={() => navigate('LegalNotices')}
+              icon={LegalNotices}
+            />
+          </Link>
+          <Link to={{ screen: 'ConsentSettings', params: undefined }} style={styles.link}>
+            <Row
+              title={t`Confidentialité`}
+              type="navigable"
+              onPress={() => navigate('ConsentSettings')}
+              icon={Confidentiality}
+            />
+          </Link>
         </Section>
         <Section title={t`Suivre pass Culture`}>
           <NetworkRow>
@@ -250,4 +265,11 @@ const NetworkRowContainer = styled.View({
 
 const SignOutRow = styled(SectionRow).attrs({ iconSize: SECTION_ROW_ICON_SIZE })({
   marginTop: getSpacing(4),
+})
+
+const styles = StyleSheet.create({
+  link: {
+    flexDirection: 'column',
+    display: 'flex',
+  },
 })

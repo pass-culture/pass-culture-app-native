@@ -1,8 +1,8 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback } from 'react'
+import React, { ReactNode, useCallback } from 'react'
 
 import { useUserProfileInfo } from 'features/home/api'
-import { HomeOfferTile } from 'features/home/atoms'
+import { HomeOfferTile, SeeMore } from 'features/home/atoms'
 import { SearchParametersFields, DisplayParametersFields } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { useOfferModule } from 'features/home/pages/useOfferModule'
@@ -15,7 +15,8 @@ import { formatDates, formatDistance, getDisplayPrice } from 'libs/parsers'
 import { SearchHit, useParseSearchParameters } from 'libs/search'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
-import { CustomListRenderItem } from 'ui/components/Playlist'
+import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
+import { Link } from 'ui/web/link/Link'
 
 type OffersModuleProps = {
   search: SearchParametersFields[]
@@ -40,6 +41,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   const { hits = [], nbHits = 0 } = data || {}
 
   const [parameters] = search
+  const params = { ...parseSearchParameters(parameters), hitsPerPage: 20 }
   const moduleName = display.title || parameters.title
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>
     analytics.logAllTilesSeen(moduleName, hits.length)
@@ -87,6 +89,25 @@ export const OffersModule = (props: OffersModuleProps) => {
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(display.layout)
 
   const shouldModuleBeDisplayed = hits.length > 0 && nbHits >= display.minOffers
+
+  const renderFooter: RenderFooterItem = useCallback(
+    ({ width, height }) => {
+      return (
+        <Link to={{ screen: 'Search', params }}>
+          <SeeMore width={width} height={height} onPress={onPressSeeMore as () => void} />
+        </Link>
+      )
+    },
+    [onPressSeeMore, params]
+  )
+
+  const renderTitleSeeMore = useCallback(
+    ({ children }: { children: ReactNode }) => {
+      return <Link to={{ screen: 'Search', params }}>{children}</Link>
+    },
+    [onPressSeeMore, params]
+  )
+
   if (!shouldModuleBeDisplayed) return <React.Fragment />
   return (
     <PassPlaylist
@@ -98,7 +119,9 @@ export const OffersModule = (props: OffersModuleProps) => {
       itemWidth={itemWidth}
       coverUrl={cover}
       onPressSeeMore={onPressSeeMore}
+      renderTitleSeeMore={renderTitleSeeMore}
       renderItem={renderItem}
+      renderFooter={renderFooter}
       keyExtractor={keyExtractor}
       onEndReached={logHasSeenAllTilesOnce}
     />
