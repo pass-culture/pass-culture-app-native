@@ -17,37 +17,41 @@ Object {
           tabindex="0"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 100px;"
+            class="css-text-901oao"
+            dir="auto"
+            style="display: flex; flex-direction: column;"
           >
             <div
               class="css-view-1dbjc4n"
-              style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+              style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 100px;"
             >
               <div
-                class="css-text-901oao css-textMultiLine-cens5h"
-                data-testid="categoryImageCaption"
-                dir="auto"
-                style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                class="css-view-1dbjc4n"
+                style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
               >
-                MUSIQUE
+                <span
+                  class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                  data-testid="categoryImageCaption"
+                  style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                >
+                  MUSIQUE
+                </span>
               </div>
-            </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="background-color: rgb(255, 255, 255); height: 16px; width: 1px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
-            >
               <div
-                class="css-text-901oao"
-                data-testid="distanceImageCaption"
-                dir="auto"
-                style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                class="css-view-1dbjc4n"
+                style="background-color: rgb(255, 255, 255); display: inline-flex; height: 16px; width: 1px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
               >
-                1,2km
+                <span
+                  class="css-text-901oao css-textHasAncestor-16my406"
+                  data-testid="distanceImageCaption"
+                  style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                >
+                  1,2km
+                </span>
               </div>
             </div>
           </div>
@@ -95,37 +99,41 @@ Object {
         tabindex="0"
       >
         <div
-          class="css-view-1dbjc4n"
-          style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; flex-direction: row; height: 24px; width: 100px;"
+          class="css-text-901oao"
+          dir="auto"
+          style="display: flex; flex-direction: column;"
         >
           <div
             class="css-view-1dbjc4n"
-            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+            style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 100px;"
           >
             <div
-              class="css-text-901oao css-textMultiLine-cens5h"
-              data-testid="categoryImageCaption"
-              dir="auto"
-              style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              class="css-view-1dbjc4n"
+              style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
             >
-              MUSIQUE
+              <span
+                class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                data-testid="categoryImageCaption"
+                style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              >
+                MUSIQUE
+              </span>
             </div>
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="background-color: rgb(255, 255, 255); height: 16px; width: 1px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
-          >
             <div
-              class="css-text-901oao"
-              data-testid="distanceImageCaption"
-              dir="auto"
-              style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              class="css-view-1dbjc4n"
+              style="background-color: rgb(255, 255, 255); display: inline-flex; height: 16px; width: 1px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
             >
-              1,2km
+              <span
+                class="css-text-901oao css-textHasAncestor-16my406"
+                data-testid="distanceImageCaption"
+                style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              >
+                1,2km
+              </span>
             </div>
           </div>
         </div>
