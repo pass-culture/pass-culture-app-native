@@ -32,7 +32,7 @@ export function DatePickerDropDown(props: Props) {
       <Spacer.Column numberOfSpaces={2} />
       <DateInputDesktop onDateChange={setDate} />
       {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={2} />}
-      <Spacer.Column numberOfSpaces={6} />
+      <Spacer.Column numberOfSpaces={errorMessage ? 6 : 12} />
       <ButtonPrimary
         wording={t`Continuer`}
         accessibilityLabel={props.accessibilityLabelForNextStep}

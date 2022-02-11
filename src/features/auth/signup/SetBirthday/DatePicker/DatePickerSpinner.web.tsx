@@ -34,16 +34,14 @@ export function DatePickerSpinner(props: Props) {
     year: CURRENT_DATE.getFullYear(),
   })
 
-  const { optionGroups } = useMemo(() => {
+  const optionGroups = useMemo(() => {
     const { month: selectedMonth, year: selectedYear } = date
     const selectedMonthIndex = monthNamesShort.indexOf(selectedMonth)
     const defaultSelectedYear = DEFAULT_SELECTED_DATE.getFullYear()
     return {
-      optionGroups: {
-        day: getDatesInMonth(selectedMonthIndex, selectedYear),
-        month: monthNamesShort,
-        year: getPastYears(MINIMUM_DATE, defaultSelectedYear),
-      },
+      day: getDatesInMonth(selectedMonthIndex, selectedYear),
+      month: monthNamesShort,
+      year: getPastYears(MINIMUM_DATE, currentYear),
     }
   }, [date, monthNamesShort, getYears])
 

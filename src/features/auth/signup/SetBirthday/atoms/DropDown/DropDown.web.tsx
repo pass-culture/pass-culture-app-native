@@ -37,6 +37,8 @@ export function DropDown({
       <Spacer.Column numberOfSpaces={2} />
       <SelectContainer>
         <Select
+          role="listbox"
+          id={dropDownInputID}
           onChange={onChangeDate}
           noBorderRadiusRight={noBorderRadiusRight}
           noBorderRadiusLeft={noBorderRadiusLeft}>

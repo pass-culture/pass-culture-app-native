@@ -7,12 +7,9 @@ import styled from 'styled-components/native'
 
 import { CallToActionIcon, CategoryIdEnum, PopOverIcon, VenueTypeCodeKey } from 'api/gen/api'
 import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
-import { DateInput } from 'features/auth/signup/SetBirthday/atoms/DateInput/DateInput'
-import { DropDown } from 'features/auth/signup/SetBirthday/atoms/DropDown/DropDown'
 import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTicket'
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
-import { monthNames } from 'features/bookOffer/components/Calendar/Calendar.utils'
 import { Icons } from 'features/cheatcodes/pages/AppComponents/Icons'
 import { Illustrations } from 'features/cheatcodes/pages/AppComponents/Illustrations'
 import { useGoBack } from 'features/navigation/useGoBack'
@@ -377,14 +374,6 @@ export const AppComponents: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={1} />
         <StyledTitle4>Password Input</StyledTitle4>
         <PasswordInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} />
-        <Spacer.Column numberOfSpaces={1} />
-        <StyledTitle4>Date Input</StyledTitle4>
-        <DateInput date={new Date()} />
-        <Spacer.Column numberOfSpaces={1} />
-        <StyledTitle4>Dropdown input</StyledTitle4>
-        <Spacer.Column numberOfSpaces={1} />
-        <DropDown label="Mois" placeholder="MM" options={monthNames} />
-        <Typo.Caption>{inputText}</Typo.Caption>
         <Spacer.Column numberOfSpaces={1} />
         <StyledTitle4>Large input</StyledTitle4>
         <Spacer.Column numberOfSpaces={1} />
