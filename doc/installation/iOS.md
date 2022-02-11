@@ -24,7 +24,7 @@ You will need to add the `GoogleService-Info.plist` file in the `ios` directory.
 To run the app, simply run: `yarn ios:testing`.
 This will also start the metro server. If not, run `yarn start` in another tab.
 
-### Start the app on your Apple device (with Xcode)
+### Start the app on your Apple device or in your Simulator (with Xcode)
 
 In order to launch the app in your Apple device, you need to follow these steps:
 
@@ -38,7 +38,15 @@ Download the iOS certificates to your computer:
 5. Add the URL of the private certificates git repository named "pass-culture-app-native-certificates".
 6. Get the `match repo passphrase` on 1password in the "Tech" vault.
 
-Connect your device to the computer and run `yarn ios:testing --device` or use the Xcode interface. Choose a scheme (your device) and click the Run button in the toolbar. More info [here][3].
+7. Launch with yarn :
+
+   - For Apple External Device
+
+   Connect your device to the computer and run `yarn ios:testing --device` or use the Xcode interface. Choose a scheme (your device) and click the Run button in the toolbar. More info [here][3].
+
+   - For Xcode Simulator
+
+   Run `yarn ios:testing` or use the Xcode interface. More info [here][3].
 
 [1]: ./setup.md
 [2]: https://bundler.io/bundle_install.html
