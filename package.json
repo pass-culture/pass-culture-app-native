@@ -83,7 +83,7 @@
     "@pass-culture/react-native-profiling": "1.1.2",
     "@ptomasroos/react-native-multi-slider": "^2.2.2",
     "@react-native-async-storage/async-storage": "^1.15.5",
-    "@react-native-community/netinfo": "^5.9.10",
+    "@react-native-community/netinfo": "^8.0.0",
     "@react-native-firebase/analytics": "^12.8.0",
     "@react-native-firebase/app": "^12.8.0",
     "@react-native-firebase/dynamic-links": "^12.8.0",
