@@ -1,4 +1,3 @@
-import { useNetInfo } from '@react-native-community/netinfo'
 import resolveResponse from 'contentful-resolve-response'
 import { useMemo, useEffect } from 'react'
 import { useQuery } from 'react-query'
@@ -14,6 +13,7 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
 import { ScreenError } from 'libs/monitoring'
+import { useNetwork } from 'libs/network/useNetwork'
 import { QueryKeys } from 'libs/queryKeys'
 
 const DEPTH_LEVEL = 2
@@ -34,10 +34,10 @@ export async function getEntries() {
 }
 
 export function useHomepageModules(paramsEntryId?: string) {
-  const networkInfo = useNetInfo()
+  const { isConnected } = useNetwork()
   const selectPlaylist = useSelectPlaylist(paramsEntryId)
   const { data: entries } = useQuery<HomepageEntry[]>(QueryKeys.HOMEPAGE_MODULES, getEntries, {
-    enabled: networkInfo.isConnected,
+    enabled: isConnected,
   })
 
   const entry = selectPlaylist(entries || [])
@@ -51,11 +51,11 @@ export function useHomepageModules(paramsEntryId?: string) {
 }
 
 export function useUserProfileInfo(options = {}) {
-  const networkInfo = useNetInfo()
+  const { isConnected } = useNetwork()
   const { isLoggedIn } = useAuthContext()
 
   return useQuery<UserProfileResponse>(QueryKeys.USER_PROFILE, () => api.getnativev1me(), {
-    enabled: isLoggedIn && networkInfo.isConnected,
+    enabled: isLoggedIn && isConnected,
     ...options,
   })
 }

@@ -1,4 +1,3 @@
-import { useNetInfo } from '@react-native-community/netinfo'
 import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
@@ -6,6 +5,7 @@ import { ApiError } from 'api/apiHelpers'
 import { OfferResponse } from 'api/gen'
 import { OfferNotFound } from 'features/offer/pages/OfferNotFound'
 import { OfferNotFoundError } from 'libs/monitoring'
+import { useNetwork } from 'libs/network/useNetwork'
 import { QueryKeys } from 'libs/queryKeys'
 
 async function getOfferById(offerId: number) {
@@ -23,11 +23,11 @@ async function getOfferById(offerId: number) {
 }
 
 export const useOffer = ({ offerId }: { offerId: number }) => {
-  const networkInfo = useNetInfo()
+  const { isConnected } = useNetwork()
 
   return useQuery<OfferResponse | undefined>(
     [QueryKeys.OFFER, offerId],
     () => (offerId ? getOfferById(offerId) : undefined),
-    { enabled: networkInfo.isConnected }
+    { enabled: isConnected }
   )
 }

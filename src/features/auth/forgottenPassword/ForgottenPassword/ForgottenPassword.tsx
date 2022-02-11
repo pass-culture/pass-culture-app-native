@@ -1,5 +1,4 @@
 import { t } from '@lingui/macro'
-import { useNetInfo } from '@react-native-community/netinfo'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
@@ -11,6 +10,7 @@ import { useAppSettings } from 'features/auth/settings'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { captureMonitoringError } from 'libs/monitoring'
+import { useNetwork } from 'libs/network/useNetwork'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -27,7 +27,7 @@ import { Form } from 'ui/web/form/Form'
 export const ForgottenPassword: FunctionComponent = () => {
   const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
   const { navigate, replace } = useNavigation<UseNavigationType>()
-  const networkInfo = useNetInfo()
+  const networkInfo = useNetwork()
   const emailErrorMessageId = uuidv4()
 
   const [email, setEmail] = useState('')

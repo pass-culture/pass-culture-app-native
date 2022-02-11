@@ -1,16 +1,16 @@
-import { useNetInfo } from '@react-native-community/netinfo'
 import { useCallback } from 'react'
 import { useQuery, UseQueryResult } from 'react-query'
 
 import { api } from 'api/api'
 import { BookingReponse, BookingsResponse } from 'api/gen'
+import { useNetwork } from 'libs/network/useNetwork'
 import { QueryKeys } from 'libs/queryKeys'
 
 export function useBookings(options = {}) {
-  const networkInfo = useNetInfo()
+  const { isConnected } = useNetwork()
 
   return useQuery<BookingsResponse>(QueryKeys.BOOKINGS, () => api.getnativev1bookings(), {
-    enabled: networkInfo.isConnected,
+    enabled: isConnected,
     ...options,
   })
 }

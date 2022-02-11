@@ -1,13 +1,14 @@
 import { t } from '@lingui/macro'
-import { useNetInfo } from '@react-native-community/netinfo'
 import React, { FC, useEffect, useState, useCallback, useMemo } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { CardContent, Paragraphe } from 'features/auth/components/signupComponents'
+import { useAppSettings } from 'features/auth/settings'
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
 import { contactSupport } from 'features/auth/support.services'
 import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'
+import { useNetwork } from 'libs/network/useNetwork'
 import { ReCaptcha } from 'libs/recaptcha/ReCaptcha'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
@@ -17,11 +18,9 @@ import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Email } from 'ui/svg/icons/Email'
 import { Spacer, Typo } from 'ui/theme'
 
-import { useAppSettings } from '../../settings'
-
 export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
   const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
-  const networkInfo = useNetInfo()
+  const networkInfo = useNetwork()
   const checkCGUErrorId = uuidv4()
 
   const [isDoingReCaptchaChallenge, setIsDoingReCaptchaChallenge] = useState(false)

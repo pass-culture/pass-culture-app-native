@@ -1,9 +1,9 @@
-import { useNetInfo } from '@react-native-community/netinfo'
 import { useQuery } from 'react-query'
 
 import { env } from 'libs/environment'
 import { firestoreRemoteStore } from 'libs/firestore/client'
 import { RemoteStoreCollections, RemoteStoreDocuments } from 'libs/firestore/types'
+import { useNetwork } from 'libs/network/useNetwork'
 import { QueryKeys } from 'libs/queryKeys'
 
 const defaultUbbleETAMessage = 'Environ 3 heures'
@@ -23,9 +23,9 @@ export const getUbbleETAMessage = () =>
     )
 
 export const useUbbleETAMessage = () => {
-  const networkInfo = useNetInfo()
+  const { isConnected } = useNetwork()
 
   return useQuery<string>(QueryKeys.FIRESTORE_UBBLE_ETA_MESSAGE, () => getUbbleETAMessage(), {
-    enabled: networkInfo.isConnected,
+    enabled: isConnected,
   })
 }

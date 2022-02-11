@@ -241,6 +241,10 @@ msgstr "Aucun refresh token à sauvegarder"
 msgid "Aucun résultat"
 msgstr "Aucun résultat"
 
+#: src/libs/network/NetInfoWrapper.tsx
+msgid "Aucune connexion internet. Réessaie plus tard"
+msgstr "Aucune connexion internet. Réessaie plus tard"
+
 #: src/libs/storage.ts
 #: src/libs/storage.ts
 msgid "Aucune valeur à sauvegarder"

@@ -1,4 +1,3 @@
-import { useNetInfo } from '@react-native-community/netinfo'
 import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import { FlatList, ActivityIndicator } from 'react-native'
@@ -11,6 +10,7 @@ import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
 import { analytics } from 'libs/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
+import { useNetwork } from 'libs/network/useNetwork'
 import { SearchHit } from 'libs/search'
 import { getSpacing, Spacer } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
@@ -20,7 +20,7 @@ const keyExtractor = (item: SearchHit) => item.objectID
 const ANIMATION_DURATION = 700
 
 export const SearchResults: React.FC = () => {
-  const networkInfo = useNetInfo()
+  const network = useNetwork()
   const flatListRef = useRef<FlatList<SearchHit> | null>(null)
   const {
     hasNextPage,
@@ -85,7 +85,7 @@ export const SearchResults: React.FC = () => {
   )
 
   const onRefresh = () => {
-    if (networkInfo.isConnected) {
+    if (network.isConnected) {
       refetch()
     }
   }

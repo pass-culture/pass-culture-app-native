@@ -1,4 +1,3 @@
-import { useNetInfo } from '@react-native-community/netinfo'
 import { useMutation, useQuery, useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
@@ -11,6 +10,7 @@ import {
   SubcategoryIdEnum,
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
+import { useNetwork } from 'libs/network/useNetwork'
 import { QueryKeys } from 'libs/queryKeys'
 
 export interface FavoriteMutationContext {
@@ -137,22 +137,22 @@ export function useAddFavorite({ onSuccess, onError }: AddFavorite) {
 }
 
 export function useFavorites() {
-  const networkInfo = useNetInfo()
+  const { isConnected } = useNetwork()
   const { isLoggedIn } = useAuthContext()
 
   return useQuery<PaginatedFavoritesResponse>(
     QueryKeys.FAVORITES,
     () => api.getnativev1mefavorites(),
-    { enabled: isLoggedIn && networkInfo.isConnected }
+    { enabled: isLoggedIn && isConnected }
   )
 }
 
 export function useFavoritesCount() {
-  const networkInfo = useNetInfo()
+  const { isConnected } = useNetwork()
   const { isLoggedIn } = useAuthContext()
 
   return useQuery(QueryKeys.FAVORITES_COUNT, () => api.getnativev1mefavoritescount(), {
-    enabled: isLoggedIn && networkInfo.isConnected,
+    enabled: isLoggedIn && isConnected,
     select: (data: FavoritesCountResponse) => data.count,
   })
 }
