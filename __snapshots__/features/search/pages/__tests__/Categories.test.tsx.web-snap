@@ -5,7 +5,7 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -137,11 +137,11 @@
+@@ -319,11 +319,11 @@
             className=\\"css-text-901oao css-textMultiLine-cens5h\\"
             dir=\\"auto\\"
             style={
@@ -18,7 +18,7 @@ exports[`Categories component should match diff snapshot when new category is se
                 \\"lineHeight\\": \\"20px\\",
               }
             }
-@@ -163,10 +163,20 @@
+@@ -345,10 +345,20 @@
                 \\"msFlexPositive\\": 1,
                 \\"msFlexPreferredSize\\": \\"0px\\",
               }
@@ -39,7 +39,7 @@ exports[`Categories component should match diff snapshot when new category is se
           className=\\"css-view-1dbjc4n\\"
           data-testid=\\"CARTE_JEUNES\\"
           onClick={[Function onClick]}
-@@ -323,11 +333,11 @@
+@@ -505,11 +515,11 @@
             className=\\"css-text-901oao css-textMultiLine-cens5h\\"
             dir=\\"auto\\"
             style={
@@ -52,7 +52,7 @@ exports[`Categories component should match diff snapshot when new category is se
                 \\"lineHeight\\": \\"20px\\",
               }
             }
-@@ -349,20 +359,10 @@
+@@ -531,20 +541,10 @@
                 \\"msFlexPositive\\": 1,
                 \\"msFlexPreferredSize\\": \\"0px\\",
               }
@@ -94,6 +94,188 @@ exports[`Categories component should render correctly 1`] = `
     }
   }
 >
+  <header
+    className="sc-bdvvtL dEiHBQ"
+  >
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "backgroundColor": "rgba(235,0,85,1.00)",
+          "position": "absolute",
+          "top": "0px",
+          "width": "100%",
+          "zIndex": 1,
+        }
+      }
+    >
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "height": "16px",
+          }
+        }
+      />
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "height": "8px",
+          }
+        }
+      />
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "WebkitAlignItems": "center",
+            "WebkitBoxAlign": "center",
+            "WebkitBoxDirection": "normal",
+            "WebkitBoxOrient": "horizontal",
+            "WebkitBoxPack": "justify",
+            "WebkitFlexDirection": "row",
+            "WebkitJustifyContent": "space-between",
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "msFlexAlign": "center",
+            "msFlexDirection": "row",
+            "msFlexPack": "justify",
+          }
+        }
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "WebkitAlignItems": "center",
+              "WebkitBoxAlign": "center",
+              "WebkitBoxDirection": "normal",
+              "WebkitBoxFlex": 1,
+              "WebkitBoxOrient": "horizontal",
+              "WebkitBoxPack": "start",
+              "WebkitFlexBasis": "0px",
+              "WebkitFlexDirection": "row",
+              "WebkitFlexGrow": 1,
+              "WebkitFlexShrink": 1,
+              "WebkitJustifyContent": "flex-start",
+              "alignItems": "center",
+              "flexBasis": "0px",
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
+              "msFlexAlign": "center",
+              "msFlexDirection": "row",
+              "msFlexNegative": 1,
+              "msFlexPack": "start",
+              "msFlexPositive": 1,
+              "msFlexPreferredSize": "0px",
+              "paddingLeft": "12px",
+              "paddingRight": "12px",
+            }
+          }
+        >
+          <div
+            aria-label="Revenir en arrière"
+            className="css-view-1dbjc4n"
+            data-testid="Revenir en arrière"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onKeyDown={[Function]}
+            style={
+              Object {
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "none",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "none",
+                "cursor": "pointer",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "none",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "none",
+              }
+            }
+            tabIndex="0"
+          >
+            <div
+              className="css-view-1dbjc4n"
+              data-testid="icon-back"
+            >
+              <div
+                className="css-text-901oao"
+                dir="auto"
+              >
+                icon-back-SVG-Mock
+              </div>
+            </div>
+          </div>
+        </div>
+        <h1
+          aria-level={1}
+          className="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
+          dir="auto"
+          role="heading"
+          style={
+            Object {
+              "WebkitLineClamp": 1,
+              "color": "rgba(255,255,255,1.00)",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "textAlign": "center",
+            }
+          }
+        >
+          Catégories
+        </h1>
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "WebkitAlignItems": "center",
+              "WebkitBoxAlign": "center",
+              "WebkitBoxDirection": "normal",
+              "WebkitBoxFlex": 1,
+              "WebkitBoxOrient": "horizontal",
+              "WebkitBoxPack": "end",
+              "WebkitFlexBasis": "0px",
+              "WebkitFlexDirection": "row",
+              "WebkitFlexGrow": 1,
+              "WebkitFlexShrink": 1,
+              "WebkitJustifyContent": "flex-end",
+              "alignItems": "center",
+              "flexBasis": "0px",
+              "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
+              "msFlexAlign": "center",
+              "msFlexDirection": "row",
+              "msFlexNegative": 1,
+              "msFlexPack": "end",
+              "msFlexPositive": 1,
+              "msFlexPreferredSize": "0px",
+              "paddingLeft": "12px",
+              "paddingRight": "12px",
+            }
+          }
+        />
+      </div>
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "height": "8px",
+          }
+        }
+      />
+    </div>
+  </header>
   <div
     className="css-view-1dbjc4n"
     onScroll={[Function]}
@@ -1465,186 +1647,5 @@ exports[`Categories component should render correctly 1`] = `
       </div>
     </div>
   </div>
-  <header
-    className="sc-bdvvtL dEiHBQ"
-  >
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "backgroundColor": "rgba(235,0,85,1.00)",
-          "position": "absolute",
-          "top": "0px",
-          "width": "100%",
-        }
-      }
-    >
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "16px",
-          }
-        }
-      />
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "8px",
-          }
-        }
-      />
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitBoxPack": "justify",
-            "WebkitFlexDirection": "row",
-            "WebkitJustifyContent": "space-between",
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msFlexPack": "justify",
-          }
-        }
-      >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitAlignItems": "center",
-              "WebkitBoxAlign": "center",
-              "WebkitBoxDirection": "normal",
-              "WebkitBoxFlex": 1,
-              "WebkitBoxOrient": "horizontal",
-              "WebkitBoxPack": "start",
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexDirection": "row",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "WebkitJustifyContent": "flex-start",
-              "alignItems": "center",
-              "flexBasis": "0px",
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-start",
-              "msFlexAlign": "center",
-              "msFlexDirection": "row",
-              "msFlexNegative": 1,
-              "msFlexPack": "start",
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-              "paddingLeft": "12px",
-              "paddingRight": "12px",
-            }
-          }
-        >
-          <div
-            aria-label="Revenir en arrière"
-            className="css-view-1dbjc4n"
-            data-testid="Revenir en arrière"
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onKeyDown={[Function]}
-            style={
-              Object {
-                "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
-                "WebkitTransitionDuration": "0s",
-                "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
-                "cursor": "pointer",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "none",
-                "touchAction": "manipulation",
-                "transitionDuration": "0s",
-                "transitionProperty": "opacity",
-                "userSelect": "none",
-              }
-            }
-            tabIndex="0"
-          >
-            <div
-              className="css-view-1dbjc4n"
-              data-testid="icon-back"
-            >
-              <div
-                className="css-text-901oao"
-                dir="auto"
-              >
-                icon-back-SVG-Mock
-              </div>
-            </div>
-          </div>
-        </div>
-        <h1
-          aria-level={1}
-          className="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
-          role="heading"
-          style={
-            Object {
-              "WebkitLineClamp": 1,
-              "color": "rgba(255,255,255,1.00)",
-              "fontFamily": "Montserrat-Regular",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-              "textAlign": "center",
-            }
-          }
-        >
-          Catégories
-        </h1>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitAlignItems": "center",
-              "WebkitBoxAlign": "center",
-              "WebkitBoxDirection": "normal",
-              "WebkitBoxFlex": 1,
-              "WebkitBoxOrient": "horizontal",
-              "WebkitBoxPack": "end",
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexDirection": "row",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "WebkitJustifyContent": "flex-end",
-              "alignItems": "center",
-              "flexBasis": "0px",
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-end",
-              "msFlexAlign": "center",
-              "msFlexDirection": "row",
-              "msFlexNegative": 1,
-              "msFlexPack": "end",
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-              "paddingLeft": "12px",
-              "paddingRight": "12px",
-            }
-          }
-        />
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        style={
-          Object {
-            "height": "8px",
-          }
-        }
-      />
-    </div>
-  </header>
 </div>
 `;

@@ -7,7 +7,7 @@ Object {
     <div>
       <div
         class="css-view-1dbjc4n"
-        style="background-color: rgba(255, 255, 255, 0); height: 80px; position: absolute; top: 0px; width: 100%;"
+        style="background-color: rgba(255, 255, 255, 0); height: 80px; position: absolute; top: 0px; width: 100%; z-index: 1;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -167,7 +167,7 @@ Object {
   "container": <div>
     <div
       class="css-view-1dbjc4n"
-      style="background-color: rgba(255, 255, 255, 0); height: 80px; position: absolute; top: 0px; width: 100%;"
+      style="background-color: rgba(255, 255, 255, 0); height: 80px; position: absolute; top: 0px; width: 100%; z-index: 1;"
     >
       <div
         class="css-view-1dbjc4n"
