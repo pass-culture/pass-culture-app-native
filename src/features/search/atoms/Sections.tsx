@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { getSpacing, Typo, Spacer } from 'ui/theme'
-import { getTitleAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typography'
 
 import { TitleWithCount } from './TitleWithCount'
 
@@ -63,8 +63,8 @@ const InlineSectionTitleContainer = styled.View({
   alignItems: 'center',
 })
 
-const StyledTitle = styled(Typo.Title4).attrs(() => getTitleAttrs(2))(({ theme }) => ({
+const StyledTitle = styled(Typo.Title4).attrs(() => getHeadingAttrs(2))(({ theme }) => ({
   flex: theme.isMobileViewport ? 1 : undefined,
 }))
 
-const Title = styled(Typo.Title4).attrs(() => getTitleAttrs(2))``
+const Title = styled(Typo.Title4).attrs(() => getHeadingAttrs(2))``

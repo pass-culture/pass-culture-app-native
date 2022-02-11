@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Typo } from 'ui/theme'
-import { getTitleAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typography'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface SvgPageHeaderProps {
@@ -26,7 +26,7 @@ const HeaderBackgroundWrapper = styled.View({
   alignItems: 'center',
 })
 
-const Title = styled(Typo.Title4).attrs(() => getTitleAttrs(1))(({ theme }) => ({
+const Title = styled(Typo.Title4).attrs(() => getHeadingAttrs(1))(({ theme }) => ({
   position: 'absolute',
   bottom: getSpacing(3),
   color: theme.colors.white,

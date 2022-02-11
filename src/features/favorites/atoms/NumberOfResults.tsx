@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { getSpacing, Typo } from 'ui/theme'
-import { getTitleAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typography'
 
 export const NumberOfResults: React.FC<{ nbFavorites: number }> = ({ nbFavorites }) => {
   if (!nbFavorites) return <React.Fragment></React.Fragment>
@@ -24,6 +24,6 @@ const Container = styled.View({
   marginBottom: getSpacing(4),
 })
 
-const Body = styled(Typo.Body).attrs(() => getTitleAttrs(2))(({ theme }) => ({
+const Body = styled(Typo.Body).attrs(() => getHeadingAttrs(2))(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

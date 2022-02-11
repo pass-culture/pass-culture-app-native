@@ -9,7 +9,7 @@ import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { useElementWidth } from 'ui/hooks/useElementWidth'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getTitleAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typography'
 import { Header } from 'ui/web/global/Header'
 
 interface Props {
@@ -83,7 +83,7 @@ const Container = styled.View(({ theme }) => ({
 
 const Title = styled(Typo.Body).attrs(() => ({
   numberOfLines: 1,
-  ...getTitleAttrs(1),
+  ...getHeadingAttrs(1),
 }))(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',

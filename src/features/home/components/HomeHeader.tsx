@@ -11,7 +11,7 @@ import { env } from 'libs/environment'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getTitleAttrs } from 'ui/theme/typography'
+import { getHeadingAttrs } from 'ui/theme/typography'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export const HomeHeader: FunctionComponent = function () {
@@ -63,7 +63,7 @@ export const HomeHeader: FunctionComponent = function () {
   )
 }
 
-const Body = styled(Typo.Body).attrs(() => getTitleAttrs(2))(({ theme }) => ({
+const Body = styled(Typo.Body).attrs(() => getHeadingAttrs(2))(({ theme }) => ({
   color: theme.colors.white,
 }))
 

@@ -2024,18 +2024,19 @@ exports[`<Venue /> should match snapshot 1`] = `
         testID="accordionBody"
       >
         <View
+          hidden={true}
           onLayout={[Function]}
           style={
             Array [
               Object {
                 "bottom": 0,
+                "display": "none",
                 "paddingBottom": 24,
                 "paddingHorizontal": 24,
                 "paddingTop": 0,
                 "position": "absolute",
                 "width": "100%",
               },
-              undefined,
             ]
           }
           testID="accordionBodyContainer"
@@ -2181,18 +2182,19 @@ exports[`<Venue /> should match snapshot 1`] = `
         testID="accordionBody"
       >
         <View
+          hidden={true}
           onLayout={[Function]}
           style={
             Array [
               Object {
                 "bottom": 0,
+                "display": "none",
                 "paddingBottom": 24,
                 "paddingHorizontal": 24,
                 "paddingTop": 0,
                 "position": "absolute",
                 "width": "100%",
               },
-              undefined,
             ]
           }
           testID="accordionBodyContainer"
@@ -2781,18 +2783,19 @@ exports[`<Venue /> should match snapshot 1`] = `
         testID="accordionBody"
       >
         <View
+          hidden={true}
           onLayout={[Function]}
           style={
             Array [
               Object {
                 "bottom": 0,
+                "display": "none",
                 "paddingBottom": 24,
                 "paddingHorizontal": 24,
                 "paddingTop": 0,
                 "position": "absolute",
                 "width": "100%",
               },
-              undefined,
             ]
           }
           testID="accordionBodyContainer"
