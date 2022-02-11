@@ -275,11 +275,7 @@ export const AppComponents: FunctionComponent = () => {
 
       {/* ImagePlaceholder */}
       <AccordionItem title="ImagePlaceholder">
-        <ImagePlaceholder
-          Icon={MAP_CATEGORY_ID_TO_ICON.FILM}
-          size={getSpacing(24)}
-          borderRadius={4}
-        />
+        <StyledImagePlaceholder />
       </AccordionItem>
 
       <Divider />
@@ -359,11 +355,10 @@ export const AppComponents: FunctionComponent = () => {
         <StyledTitle4>Text Input</StyledTitle4>
         <TextInput value={inputText} onChangeText={setInputText} placeholder={'Placeholder'} />
         <Spacer.Column numberOfSpaces={1} />
-        <InputRule
+        <StyledInputRule
           title={'12 Caractères'}
           icon={inputText.length >= 12 ? Check : Close}
           isValid={inputText.length >= 12}
-          iconSize={16}
         />
         <Spacer.Column numberOfSpaces={1} />
         <StyledTitle4>Text Input - Email</StyledTitle4>
@@ -714,6 +709,16 @@ const ValidProgressBar = styled(ProgressBar).attrs(({ theme }) => ({
   color: theme.colors.greenValid,
   icon: Email,
   progress: 0,
+}))``
+
+const StyledImagePlaceholder = styled(ImagePlaceholder).attrs(({ theme }) => ({
+  size: theme.icons.sizes.standard,
+  borderRadius: 4,
+  Icon: MAP_CATEGORY_ID_TO_ICON.FILM,
+}))``
+
+const StyledInputRule = styled(InputRule).attrs(({ theme }) => ({
+  iconSize: theme.icons.sizes.extraSmall,
 }))``
 
 function doNothingFn() {

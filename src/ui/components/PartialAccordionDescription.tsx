@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { useElementHeight } from 'ui/hooks/useElementHeight'
-import { ArrowDown } from 'ui/svg/icons/ArrowDown'
+import { ArrowDown as DefaultArrowDown } from 'ui/svg/icons/ArrowDown'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Dd } from 'ui/web/list/Dd'
 
@@ -81,7 +81,7 @@ export const PartialAccordionDescription: React.FC<Props> = ({ description }) =>
             <Typo.ButtonText>{buttonLabel}</Typo.ButtonText>
             <Spacer.Row numberOfSpaces={2} />
             <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }} testID="accordionArrow">
-              <ArrowDown size={getSpacing(5)} />
+              <ArrowDown />
             </Animated.View>
           </SeeMoreButton>
         </TouchableWithoutFeedback>
@@ -115,3 +115,7 @@ const SeeMoreButton = styled.View({
   paddingTop: getSpacing(4),
   ...(Platform.OS === 'web' ? { cursor: 'pointer' } : {}),
 })
+
+const ArrowDown = styled(DefaultArrowDown).attrs(({ theme }) => ({
+  size: theme.icons.sizes.smaller,
+}))``

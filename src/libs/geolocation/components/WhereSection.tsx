@@ -14,7 +14,7 @@ import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { QueryKeys } from 'libs/queryKeys'
 import { GLOBAL_STALE_TIME } from 'libs/react-query/queryClient'
 import { Spacer } from 'ui/components/spacer/Spacer'
-import { ArrowNext } from 'ui/svg/icons/ArrowNext'
+import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { Typo, getSpacing } from 'ui/theme'
 import { Dd } from 'ui/web/list/Dd'
@@ -90,7 +90,7 @@ export const WhereSection: React.FC<Props> = ({
               <Spacer.Row numberOfSpaces={2} />
               <StyledVenueName numberOfLines={1}>{venue.publicName || venue.name}</StyledVenueName>
               <Spacer.Flex />
-              <ArrowNext size={getSpacing(5)} />
+              <ArrowNext />
             </VenueNameContainer>
           </React.Fragment>
         ) : null}
@@ -157,3 +157,7 @@ const SectionTitle = webStyled(Dt)(({ theme }) => ({
   ...theme.typography.title4,
   color: theme.colors.black,
 }))
+
+const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
+  size: theme.icons.sizes.smaller,
+}))``

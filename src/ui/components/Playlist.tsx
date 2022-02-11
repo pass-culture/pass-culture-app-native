@@ -6,8 +6,8 @@ import { FlatList, ListRenderItem, ListRenderItemInfo } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { ScrollButtonForNotTouchDevice } from 'ui/components/buttons/ScrollButtonForNotTouchDevice'
-import { BicolorArrowLeft } from 'ui/svg/icons/BicolorArrowLeft'
-import { BicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'
+import { BicolorArrowLeft as DefaultBicolorArrowLeft } from 'ui/svg/icons/BicolorArrowLeft'
+import { BicolorArrowRight as DefaultBicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'
 import { getSpacing } from 'ui/theme'
 type ItemDimensions = { width: number; height: number }
 
@@ -121,7 +121,7 @@ export const Playlist = (props: Props) => {
           horizontalAlign="left"
           top={props.scrollButtonOffsetY}
           onPress={() => displayItems('previous')}>
-          <BicolorArrowLeft size={22} />
+          <BicolorArrowLeft />
         </ScrollButtonForNotTouchDevice>
       ) : null}
       {displayRightScrollButtonForNotTouchDevice ? (
@@ -129,7 +129,7 @@ export const Playlist = (props: Props) => {
           horizontalAlign="right"
           top={props.scrollButtonOffsetY}
           onPress={() => displayItems('next')}>
-          <BicolorArrowRight size={22} />
+          <BicolorArrowRight />
         </ScrollButtonForNotTouchDevice>
       ) : null}
       <FlatList
@@ -175,3 +175,11 @@ const HorizontalMargin = styled.View({
 
 const ITEM_SEPARATOR_WIDTH = getSpacing(4)
 const ItemSeparatorComponent = styled.View({ width: ITEM_SEPARATOR_WIDTH })
+
+const BicolorArrowLeft = styled(DefaultBicolorArrowLeft).attrs(({ theme }) => ({
+  size: theme.icons.sizes.small,
+}))``
+
+const BicolorArrowRight = styled(DefaultBicolorArrowRight).attrs(({ theme }) => ({
+  size: theme.icons.sizes.small,
+}))``

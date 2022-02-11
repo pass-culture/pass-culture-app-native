@@ -112,7 +112,7 @@ const Label = styled(Typo.ButtonText).attrs({
 
 const ValidatePrimary = styled(Validate).attrs(({ theme }) => ({
   color: theme.colors.primary,
-  size: getSpacing(6),
+  size: theme.icons.sizes.small,
 }))``
 
 const Container = styled.View(({ theme }) => ({

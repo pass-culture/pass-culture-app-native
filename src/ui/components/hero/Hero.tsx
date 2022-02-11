@@ -13,6 +13,9 @@ type HeroProps =
   | { type: 'offer'; categoryId: CategoryIdEnum | null }
   | { type: 'venue'; venueType: VenueTypeCodeKey | null }
 
+// Special case where theme.icons.sizes is not used
+const PLACEHOLDER_ICON_SIZE = getSpacing(24)
+
 export const Hero: React.FC<HeroProps & { imageUrl?: string }> = (props) => {
   const { imageUrl, ...placeholderProps } = props
   const source = useMemo(() => ({ uri: imageUrl }), [imageUrl])
@@ -24,13 +27,13 @@ export const Hero: React.FC<HeroProps & { imageUrl?: string }> = (props) => {
           Icon: mapCategoryToIcon(placeholderProps.categoryId),
           backgroundColors: [theme.colors.greyLight, theme.colors.greyMedium],
           borderRadius: theme.borderRadius.radius,
-          size: getSpacing(24),
+          size: PLACEHOLDER_ICON_SIZE,
         }
       : {
           Icon: mapVenueTypeToIcon(placeholderProps.venueType),
           borderRadius: theme.borderRadius.button,
           iconColor: theme.colors.white,
-          size: getSpacing(24),
+          size: PLACEHOLDER_ICON_SIZE,
         }
   )``
 

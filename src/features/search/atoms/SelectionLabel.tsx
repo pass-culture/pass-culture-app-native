@@ -30,7 +30,7 @@ export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) =>
 
 const ValidateWhite = styled(Validate).attrs(({ theme }) => ({
   color: theme.colors.white,
-  size: getSpacing(4.5),
+  size: theme.icons.sizes.smaller,
 }))``
 
 const IconContainer = styled.View({

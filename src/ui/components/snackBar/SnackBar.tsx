@@ -13,7 +13,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { ProgressBar } from 'ui/components/snackBar/ProgressBar'
-import { Close } from 'ui/svg/icons/Close'
+import { Close as DefaultClose } from 'ui/svg/icons/Close'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
@@ -40,7 +40,6 @@ export type SnackBarProps = {
 }
 
 const _SnackBar = (props: SnackBarProps) => {
-  const Icon = props.icon
   const animationDuration = props.animationDuration || 500
 
   const containerRef: RefType = useRef(null)
@@ -60,6 +59,12 @@ const _SnackBar = (props: SnackBarProps) => {
   }
 
   const onClose = useCallback(() => props.onClose?.(), [])
+
+  const Icon =
+    !!props.icon &&
+    styled(props.icon).attrs(({ theme }) => ({
+      size: theme.icons.sizes.small,
+    }))``
 
   // Visibility effect
   useEffect(() => {
@@ -107,14 +112,14 @@ const _SnackBar = (props: SnackBarProps) => {
         duration={animationDuration}
         ref={containerRef}>
         <SnackBarContainer isVisible={isVisible} marginTop={top} testID="snackbar-container">
-          {!!Icon && <Icon testID="snackbar-icon" size={24} color={props.color} />}
+          {!!Icon && <Icon testID="snackbar-icon" color={props.color} />}
           <Spacer.Flex flex={1}>
             <Text testID="snackbar-message" color={props.color}>
               {props.message}
             </Text>
           </Spacer.Flex>
           <TouchableOpacity testID="snackbar-close" onPress={onClose}>
-            <Close size={20} color={props.color} />
+            <Close color={props.color} />
           </TouchableOpacity>
         </SnackBarContainer>
         {renderProgressBar()}
@@ -166,3 +171,7 @@ const Text = styled(Typo.Body)<{ color: string }>((props) => ({
   flexGrow: 0,
   flexWrap: 'wrap',
 }))
+
+const Close = styled(DefaultClose).attrs(({ theme }) => ({
+  size: theme.icons.sizes.smaller,
+}))``

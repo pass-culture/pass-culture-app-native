@@ -42,9 +42,13 @@ const InformationComponent: FunctionComponent<{
   Icon: React.FC<BicolorIconInterface>
   text: string
 }> = ({ Icon, text }) => {
+  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
+    size: theme.icons.sizes.small,
+  }))``
+
   return (
     <InfoContainer>
-      <Icon size={24} />
+      <StyledIcon />
       <Spacer.Row numberOfSpaces={3.75} />
       <Info>{text}</Info>
     </InfoContainer>

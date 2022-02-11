@@ -256,8 +256,8 @@ exports[`Search component should render correctly 1`] = `
             }
           >
             <View
-              height={36}
-              width={36}
+              height={32}
+              width={32}
             >
               <Text>
                 undefined-SVG-Mock
@@ -381,8 +381,8 @@ exports[`Search component should render correctly 1`] = `
             }
           >
             <View
-              height={36}
-              width={36}
+              height={32}
+              width={32}
             >
               <Text>
                 undefined-SVG-Mock

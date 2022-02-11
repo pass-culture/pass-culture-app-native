@@ -90,8 +90,8 @@ exports[`TabBar renders correctly 1`] = `
         }
       />
       <View
-        height={28}
-        width={28}
+        height={32}
+        width={32}
       >
         <Text>
           undefined-SVG-Mock
@@ -155,8 +155,8 @@ exports[`TabBar renders correctly 1`] = `
         }
       />
       <View
-        height={28}
-        width={28}
+        height={32}
+        width={32}
       >
         <Text>
           undefined-SVG-Mock
@@ -211,8 +211,8 @@ exports[`TabBar renders correctly 1`] = `
         }
       />
       <View
-        height={28}
-        width={28}
+        height={32}
+        width={32}
       >
         <Text>
           undefined-SVG-Mock
@@ -267,8 +267,8 @@ exports[`TabBar renders correctly 1`] = `
         }
       />
       <View
-        height={28}
-        width={28}
+        height={32}
+        width={32}
       >
         <Text>
           undefined-SVG-Mock
@@ -323,8 +323,8 @@ exports[`TabBar renders correctly 1`] = `
         }
       />
       <View
-        height={28}
-        width={28}
+        height={32}
+        width={32}
       >
         <Text>
           undefined-SVG-Mock

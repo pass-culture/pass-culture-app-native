@@ -55,13 +55,19 @@ type ContactAtomProps = {
   Icon: React.FC<IconInterface>
 }
 
-const ContactAtom = ({ label, onPress, Icon }: ContactAtomProps) => (
-  <TouchableOpacity onPress={onPress}>
-    <Icon size={getSpacing(6)} testID={`Icon ${label}`} />
-    <Spacer.Row numberOfSpaces={2} />
-    <Typo.ButtonText>{label}</Typo.ButtonText>
-  </TouchableOpacity>
-)
+const ContactAtom = ({ label, onPress, Icon }: ContactAtomProps) => {
+  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
+    size: theme.icons.sizes.small,
+  }))``
+
+  return (
+    <TouchableOpacity onPress={onPress}>
+      <StyledIcon testID={`Icon ${label}`} />
+      <Spacer.Row numberOfSpaces={2} />
+      <Typo.ButtonText>{label}</Typo.ButtonText>
+    </TouchableOpacity>
+  )
+}
 
 const Container = styled.View({
   marginVertical: -getSpacing(1),

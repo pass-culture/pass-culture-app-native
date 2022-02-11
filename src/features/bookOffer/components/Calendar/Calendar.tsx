@@ -7,8 +7,8 @@ import { OfferStockResponse } from 'api/gen'
 import { OfferStatus } from 'features/bookOffer/services/utils'
 import { analytics } from 'libs/analytics'
 import { formatToFrenchDecimal } from 'libs/parsers'
-import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
+import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { monthNames, monthNamesShort, dayNames, dayNamesShort } from './Calendar.utils'
@@ -25,8 +25,8 @@ LocaleConfig.locales['fr'] = {
 LocaleConfig.defaultLocale = 'fr'
 
 const renderArrow = (direction: string) => {
-  if (direction === 'left') return <ArrowPrevious size={getSpacing(5)} />
-  if (direction === 'right') return <ArrowNext size={getSpacing(5)} />
+  if (direction === 'left') return <ArrowPrevious />
+  if (direction === 'right') return <ArrowNext />
   return <React.Fragment />
 }
 
@@ -123,3 +123,11 @@ const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
   alignItems: 'center',
   width: getSpacing(9.25), // Max width limite for small devices
 })
+
+const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
+  size: theme.icons.sizes.smaller,
+}))``
+
+const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
+  size: theme.icons.sizes.smaller,
+}))``

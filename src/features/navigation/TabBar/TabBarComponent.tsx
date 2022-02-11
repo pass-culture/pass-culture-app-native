@@ -19,7 +19,7 @@ interface Props {
 export const TabBarComponent: React.FC<Props> = ({ isSelected, BicolorIcon, onPress, tabName }) => {
   const StyledBicolorIcon = styled(BicolorIcon).attrs(({ theme }) => ({
     color: isSelected ? undefined : theme.colors.greyDark,
-    size: getSpacing(7),
+    size: theme.icons.sizes.standard,
     thin: !isSelected,
   }))``
 

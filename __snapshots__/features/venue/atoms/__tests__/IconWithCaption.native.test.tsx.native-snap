@@ -18,9 +18,9 @@ exports[`IconWithCaption should render correctly 1`] = `
   >
     <View
       fill="#696A6F"
-      height={40}
+      height={32}
       testID="Cinéma - Salle de projections"
-      width={40}
+      width={32}
     >
       <Text>
         Cinéma - Salle de projections-SVG-Mock

@@ -6,7 +6,7 @@ import { SeeMore } from 'features/home/atoms'
 import { Cover } from 'features/home/atoms/Cover'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { Playlist, RenderFooterItem, RenderHeaderItem } from 'ui/components/Playlist'
-import { EyeSophisticated } from 'ui/svg/icons/EyeSophisticated'
+import { EyeSophisticated as DefaultEyeSophisticated } from 'ui/svg/icons/EyeSophisticated'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -66,7 +66,7 @@ export const PassPlaylist = (props: Props) => {
               {...accessibilityAndTestId(
                 t`Voir plus d’offres de la sélection` + ' ' + props.title
               )}>
-              <EyeSophisticated color={seeMoreColor} size={getSpacing(4)} />
+              <EyeSophisticated color={seeMoreColor} />
               <Spacer.Row numberOfSpaces={2} />
               <ButtonText onDarkBackground={props.onDarkBackground}>{t`En voir plus`}</ButtonText>
             </StyledTouchableOpacity>
@@ -117,3 +117,7 @@ const ButtonText = styled(Typo.ButtonText)<{ onDarkBackground?: boolean }>(
     color: onDarkBackground ? theme.colors.white : theme.colors.primary,
   })
 )
+
+const EyeSophisticated = styled(DefaultEyeSophisticated).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+}))``

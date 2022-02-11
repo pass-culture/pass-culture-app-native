@@ -1,9 +1,9 @@
 import React from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { StepConfig } from 'features/identityCheck/types'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import { Validate } from 'ui/svg/icons/Validate'
+import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
 
 export type StepButtonState = 'completed' | 'current' | 'disabled'
@@ -15,7 +15,6 @@ interface Props {
 }
 
 export const StepButton = ({ step, state, onPress }: Props) => {
-  const { colors } = useTheme()
   const { icon: Icon, label } = step
 
   return (
@@ -25,12 +24,12 @@ export const StepButton = ({ step, state, onPress }: Props) => {
       state={state}
       {...accessibilityAndTestId(label)}>
       <IconContainer>
-        <Icon size={getSpacing(10)} />
+        <Icon />
       </IconContainer>
       <Typo.ButtonText>{label}</Typo.ButtonText>
       <CompletionContainer>
         <Validate
-          color={state === 'completed' ? colors.greenLight : colors.transparent}
+          isCompleted={state === 'completed'}
           {...accessibilityAndTestId(state === 'completed' ? 'StepCompleted' : 'StepNotCompleted')}
         />
       </CompletionContainer>
@@ -58,3 +57,9 @@ const CompletionContainer = styled.View({
   alignItems: 'flex-end',
   paddingHorizontal: getSpacing(2),
 })
+
+const Validate = styled(DefaultValidate).attrs<{ isCompleted: boolean }>(
+  ({ theme, isCompleted }) => ({
+    color: isCompleted ? theme.colors.greenLight : theme.colors.transparent,
+  })
+)<{ isCompleted: boolean }>``

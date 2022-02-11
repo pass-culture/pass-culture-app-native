@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { useTheme, DefaultTheme } from 'styled-components/native'
 
-import { Validate } from 'ui/svg/icons/Validate'
+import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer } from 'ui/theme'
 
 const getBorderColor = (theme: DefaultTheme, selected: boolean, disabled?: boolean) => {
@@ -29,7 +29,7 @@ const CHOICE_BLOCS_BY_LINE = 3
 const BUTTON_HEIGHT = getSpacing(20)
 
 export const ChoiceBloc: React.FC<Props> = ({ selected, onPress, testID, children, disabled }) => {
-  const { appContentWidth, colors } = useTheme()
+  const { appContentWidth } = useTheme()
   const buttonWidth =
     (appContentWidth - 2 * getSpacing(4) - CHOICE_BLOCS_BY_LINE * getSpacing(2)) /
     CHOICE_BLOCS_BY_LINE
@@ -38,7 +38,7 @@ export const ChoiceBloc: React.FC<Props> = ({ selected, onPress, testID, childre
       <ChoiceContent selected={selected} disabled={disabled}>
         {selected ? (
           <IconContainer>
-            <Validate color={colors.white} size={getSpacing(4.5)} />
+            <Validate />
           </IconContainer>
         ) : (
           <Spacer.Row numberOfSpaces={5} />
@@ -54,6 +54,11 @@ const IconContainer = styled.View({
   top: getSpacing(0.5),
   right: getSpacing(0.5),
 })
+
+const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
+  color: theme.colors.white,
+  size: theme.icons.sizes.extraSmall,
+}))``
 
 const ChoiceContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
   activeOpacity: theme.activeOpacity,

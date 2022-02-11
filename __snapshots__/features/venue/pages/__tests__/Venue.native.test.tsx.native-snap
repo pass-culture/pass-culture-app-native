@@ -269,8 +269,8 @@ exports[`<Venue /> should match snapshot 1`] = `
               className="sc-gKclnd dMoWgI"
             >
               <View
-                height={18}
-                width={18}
+                height={16}
+                width={16}
               >
                 <Text>
                   undefined-SVG-Mock
@@ -356,8 +356,8 @@ exports[`<Venue /> should match snapshot 1`] = `
             >
               <View
                 fill="#696A6F"
-                height={40}
-                width={40}
+                height={32}
+                width={32}
               >
                 <Text>
                   undefined-SVG-Mock
@@ -439,8 +439,8 @@ exports[`<Venue /> should match snapshot 1`] = `
               >
                 <View
                   fill="#696A6F"
-                  height={40}
-                  width={40}
+                  height={32}
+                  width={32}
                 >
                   <Text>
                     undefined-SVG-Mock
@@ -548,9 +548,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                   />
                   <Text>
                     <View
-                      height={14}
+                      height={16}
                       testID="externalSiteIcon"
-                      width={14}
+                      width={16}
                     >
                       <Text>
                         externalSiteIcon-SVG-Mock
@@ -1575,9 +1575,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                           }
                         >
                           <View
-                            height={40}
+                            height={32}
                             testID="arrow-next"
-                            width={40}
+                            width={32}
                           >
                             <Text>
                               arrow-next-SVG-Mock
@@ -2003,8 +2003,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           testID="accordionArrow"
         >
           <View
-            height={18}
-            width={18}
+            height={20}
+            width={20}
           >
             <Text>
               undefined-SVG-Mock
@@ -2078,9 +2078,9 @@ exports[`<Venue /> should match snapshot 1`] = `
               />
               <Text>
                 <View
-                  height={14}
+                  height={16}
                   testID="externalSiteIcon"
-                  width={14}
+                  width={16}
                 >
                   <Text>
                     externalSiteIcon-SVG-Mock
@@ -2160,8 +2160,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           testID="accordionArrow"
         >
           <View
-            height={18}
-            width={18}
+            height={20}
+            width={20}
           >
             <Text>
               undefined-SVG-Mock
@@ -2760,8 +2760,8 @@ exports[`<Venue /> should match snapshot 1`] = `
           testID="accordionArrow"
         >
           <View
-            height={18}
-            width={18}
+            height={20}
+            width={20}
           >
             <Text>
               undefined-SVG-Mock

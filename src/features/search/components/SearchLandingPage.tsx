@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { ScrollView, ViewStyle } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnum } from 'api/gen'
@@ -109,20 +109,23 @@ const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
   activeOpacity: theme.activeOpacity,
 }))({ alignItems: 'center' })
 
-const iconSize = getSpacing(9)
-
 const BicolorListItem: React.FC<{
   title: string
   Icon: React.FC<BicolorIconInterface>
   secondaryText: string | React.ElementType
 }> = ({ title, secondaryText, Icon }) => {
-  const { colors } = useTheme()
+  const StyledIcon = styled(Icon).attrs(({ theme }) => ({
+    color: theme.colors.primary,
+    color2: theme.colors.secondary,
+    size: theme.icons.sizes.standard,
+  }))``
+
   return (
     <Container>
       <StyledBody>{secondaryText}</StyledBody>
       <Spacer.Column numberOfSpaces={2} />
       <TitleIconContainer>
-        <Icon size={iconSize} color={colors.primary} color2={colors.secondary} />
+        <StyledIcon />
         <Spacer.Row numberOfSpaces={2} />
         <Title numberOfLines={1}>{title}</Title>
       </TitleIconContainer>

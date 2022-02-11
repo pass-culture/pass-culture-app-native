@@ -18,10 +18,10 @@ type ModalHeaderProps = {
 
 export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   title,
-  leftIcon: LeftIcon,
+  leftIcon,
   leftIconAccessibilityLabel = t`Revenir en arrière`,
   onLeftIconPress,
-  rightIcon: RightIcon,
+  rightIcon,
   rightIconAccessibilityLabel = t`Fermer la modale`,
   onRightIconPress,
   boldTitle = false,
@@ -29,6 +29,17 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
   onLayout,
 }) => {
   const TitleComponent = boldTitle ? BoldTitle : Title
+  const LeftIcon =
+    !!leftIcon &&
+    styled(leftIcon).attrs(({ theme }) => ({
+      size: theme.icons.sizes.smaller,
+    }))``
+  const RightIcon =
+    !!rightIcon &&
+    styled(rightIcon).attrs(({ theme }) => ({
+      size: theme.icons.sizes.smaller,
+    }))``
+
   return (
     <Container onLayout={onLayout} testID="modalHeader">
       <LeftHeaderActionContainer>
@@ -36,7 +47,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
           <HeaderAction
             onPress={onLeftIconPress}
             {...accessibilityAndTestId(leftIconAccessibilityLabel)}>
-            <LeftIcon size={getSpacing(5)} testID="leftIcon" />
+            <LeftIcon testID="leftIcon" />
           </HeaderAction>
         )}
       </LeftHeaderActionContainer>
@@ -48,7 +59,7 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
           <HeaderAction
             onPress={onRightIconPress}
             {...accessibilityAndTestId(rightIconAccessibilityLabel)}>
-            <RightIcon size={getSpacing(5)} testID="rightIcon" />
+            <RightIcon testID="rightIcon" />
           </HeaderAction>
         )}
       </RightHeaderActionContainer>
