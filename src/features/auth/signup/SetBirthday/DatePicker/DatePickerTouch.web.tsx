@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import React, { useEffect, useMemo, useState } from 'react'
 import Picker from 'react-mobile-picker'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { useAppSettings } from 'features/auth/settings'
 import { DateInput } from 'features/auth/signup/SetBirthday/DateInput/DateInput'
@@ -34,6 +35,7 @@ export function DatePickerTouch(props: Props) {
     new Date().setFullYear(new Date().getFullYear() - UNDER_YOUNGEST_AGE)
   )
   const DEFAULT_SELECTED_DATE_WITHOUT_TIME = formatDateToISOStringWithoutTime(DEFAULT_SELECTED_DATE)
+  const dateInputErrorId = uuidv4()
 
   const [date, setDate] = useState({
     day: CURRENT_DATE.getDate(),
@@ -104,10 +106,22 @@ export function DatePickerTouch(props: Props) {
     <React.Fragment>
       <Spacer.Column numberOfSpaces={2} />
       <DateInput date={new Date(birthdate)} isFocus={!isDisabled} isError={!!errorMessage} />
-      {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={2} />}
+      {!!errorMessage && (
+        <InputError
+          visible
+          messageId={errorMessage}
+          numberOfSpacesTop={2}
+          relatedInputId={dateInputErrorId}
+        />
+      )}
       <Spacer.Column numberOfSpaces={2} />
       <CalendarPickerWrapper>
-        <Picker valueGroups={date} optionGroups={optionGroups} onChange={onDateChange} />
+        <Picker
+          valueGroups={date}
+          optionGroups={optionGroups}
+          onChange={onDateChange}
+          aria-describedby={dateInputErrorId}
+        />
       </CalendarPickerWrapper>
       <Spacer.Column numberOfSpaces={2} />
       <ButtonPrimary

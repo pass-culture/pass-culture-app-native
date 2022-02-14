@@ -1,5 +1,11 @@
 import React from 'react'
-
-export const ErrorMessage: React.FC = (props) => {
-  return <div role="alert">{props.children}</div>
+interface Props {
+  relatedInputId?: string
+}
+export const ErrorMessage: React.FC<Props> = (props) => {
+  return (
+    <div role="alert" id={props.relatedInputId || ''}>
+      {props.children}
+    </div>
+  )
 }

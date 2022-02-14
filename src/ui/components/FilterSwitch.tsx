@@ -10,6 +10,7 @@ interface Props {
   active: boolean
   accessibilityLabel: string
   checkboxID?: string
+  accessibilityDescribedBy?: string
   disabled?: boolean
   toggle: () => void
 }
@@ -42,7 +43,8 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
         onPress={toggle}
         disabled={disabled}
         accessibilityValue={{ text: active.toString() }}
-        {...accessibilityAndTestId(props.accessibilityLabel)}>
+        {...accessibilityAndTestId(props.accessibilityLabel)}
+        aria-describedby={props.accessibilityDescribedBy}>
         <StyledBackgroundColor active={active} disabled={disabled}>
           <StyledToggle style={{ marginLeft }} />
         </StyledBackgroundColor>

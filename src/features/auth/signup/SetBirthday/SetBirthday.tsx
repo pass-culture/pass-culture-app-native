@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import DatePicker from 'react-native-date-picker'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { useAppSettings } from 'features/auth/settings'
 import { BirthdayInformationModal } from 'features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal'
@@ -33,6 +34,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
   const [date, setDate] = useState<Date>(DEFAULT_SELECTED_DATE)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
   const [isDisabled, setIsDisabled] = useState(true)
+  const birthdateInputErrorId = uuidv4()
 
   const { visible, showModal: showInformationModal, hideModal } = useModal(false)
 
@@ -81,7 +83,14 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
         />
         <Spacer.Column numberOfSpaces={5} />
         <DateInput date={date} isFocus={!isDisabled} isError={!!errorMessage} />
-        {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={2} />}
+        {!!errorMessage && (
+          <InputError
+            visible
+            messageId={errorMessage}
+            numberOfSpacesTop={2}
+            relatedInputId={birthdateInputErrorId}
+          />
+        )}
         <Spacer.Column numberOfSpaces={5} />
         <SpinnerDatePicker
           testID="datePicker"
@@ -92,6 +101,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
           maximumDate={MAXIMUM_SPINNER_DATE}
           minimumDate={MINIMUM_DATE}
           androidVariant="nativeAndroid"
+          aria-describedby={birthdateInputErrorId}
         />
         <Spacer.Column numberOfSpaces={2} />
         <ButtonPrimary

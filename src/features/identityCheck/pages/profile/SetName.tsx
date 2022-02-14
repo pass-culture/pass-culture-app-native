@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
@@ -23,6 +24,8 @@ export const SetName = () => {
   const isValidFirstName = isNameValid(firstName)
   const isValidLastName = isNameValid(lastName)
   const disabled = !isValidFirstName || !isValidLastName
+  const lastnameInputErrorId = uuidv4()
+  const usernameInputErrorId = uuidv4()
 
   function submitName() {
     if (disabled) return
@@ -52,11 +55,13 @@ export const SetName = () => {
             textContentType="username"
             isRequiredField
             {...accessibilityAndTestId(t`Entrée pour le prénom`)}
+            accessibilityDescribedBy={lastnameInputErrorId}
           />
           <InputError
             visible={!isValidFirstName && firstName.length > 0}
             messageId={t`Ton prénom ne doit pas contenir de chiffres ou de caractères spéciaux.`}
             numberOfSpacesTop={2}
+            relatedInputId={lastnameInputErrorId}
           />
           <Spacer.Column numberOfSpaces={6} />
           <TextInput
@@ -67,11 +72,13 @@ export const SetName = () => {
             textContentType="username"
             isRequiredField
             {...accessibilityAndTestId(t`Entrée pour le nom`)}
+            accessibilityDescribedBy={usernameInputErrorId}
           />
           <InputError
             visible={!isValidLastName && lastName.length > 0}
             messageId={t`Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux.`}
             numberOfSpacesTop={2}
+            relatedInputId={usernameInputErrorId}
           />
         </Form.MaxWidth>
       }

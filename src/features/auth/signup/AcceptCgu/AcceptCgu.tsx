@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNetInfo } from '@react-native-community/netinfo'
 import React, { FC, useEffect, useState, useCallback, useMemo } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { CardContent, Paragraphe } from 'features/auth/components/signupComponents'
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
@@ -21,6 +22,7 @@ import { useAppSettings } from '../../settings'
 export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
   const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
   const networkInfo = useNetInfo()
+  const checkCGUErrorId = uuidv4()
 
   const [isDoingReCaptchaChallenge, setIsDoingReCaptchaChallenge] = useState(false)
   const [isFetching, setIsFetching] = useState(false)
@@ -133,8 +135,16 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
           onPress={onSubmit}
           isLoading={isDoingReCaptchaChallenge || isFetching}
           disabled={disabled}
+          accessibilityDescribedBy={checkCGUErrorId}
         />
-        {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={5} />}
+        {!!errorMessage && (
+          <InputError
+            visible
+            messageId={errorMessage}
+            numberOfSpacesTop={5}
+            relatedInputId={checkCGUErrorId}
+          />
+        )}
         <Spacer.Column numberOfSpaces={5} />
       </CardContent>
     </React.Fragment>

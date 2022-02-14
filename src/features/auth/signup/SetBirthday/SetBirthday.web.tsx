@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent, useRef, useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { useAppSettings } from 'features/auth/settings'
 import { BirthdayInformationModal } from 'features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal'
@@ -54,6 +55,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
     isTooOld: false,
   })
   const { data: settings } = useAppSettings()
+  const birthdateInputErrorId = uuidv4()
 
   const now = new Date()
   const youngestAge = settings?.accountCreationMinimumAge ?? DEFAULT_YOUNGEST_AGE
@@ -102,11 +104,17 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
           visible
           messageId={t`Tu dois avoir\u00a0${youngestAge}\u00a0ans pour t'inscrire`}
           numberOfSpacesTop={5}
+          relatedInputId={birthdateInputErrorId}
         />
       )
     }
     return (
-      <InputError visible messageId={t`La date choisie est incorrecte`} numberOfSpacesTop={5} />
+      <InputError
+        visible
+        messageId={t`La date choisie est incorrecte`}
+        numberOfSpacesTop={5}
+        relatedInputId={birthdateInputErrorId}
+      />
     )
   }
 
@@ -137,6 +145,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
                 initialMonth={INITIAL_MONTH}
                 initialYear={INITIAL_YEAR}
                 onSubmit={goToNextStep}
+                accessibilityDescribedBy={birthdateInputErrorId}
               />
               {renderErrorMessages()}
             </DateInputContainer>

@@ -3,6 +3,7 @@ import debounce from 'lodash.debounce'
 import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { AddressOption } from 'features/identityCheck/atoms/AddressOption'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
@@ -37,6 +38,8 @@ export const SetCity = () => {
   const [debouncedPostalCode, setDebouncedPostalCode] = useState<string>(query)
   const [selectedCity, setSelectedCity] = useState<SuggestedCity | null>(profile.city || null)
   const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+  const postalCodeInputErrorId = uuidv4()
 
   const debouncedSetPostalCode = useRef(debounce(setDebouncedPostalCode, 500)).current
   const { data: cities = [], isLoading, isError, isSuccess } = useCities(debouncedPostalCode)
@@ -98,8 +101,16 @@ export const SetCity = () => {
             accessibilityLabel={t`Entrée pour le code postal`}
             onPressRightIcon={resetSearch}
             keyboardType="number-pad"
+            accessibilityDescribedBy={postalCodeInputErrorId}
           />
-          {!!errorMessage && <InputError messageId={errorMessage} numberOfSpacesTop={2} visible />}
+          {!!errorMessage && (
+            <InputError
+              messageId={errorMessage}
+              numberOfSpacesTop={2}
+              visible
+              relatedInputId={postalCodeInputErrorId}
+            />
+          )}
           <Spacer.Column numberOfSpaces={2} />
         </Form.MaxWidth>
       }

@@ -8,7 +8,7 @@ import { ErrorMessage } from '../ErrorMessage'
 describe('<ErrorMessage />', () => {
   it('should render correctly', () => {
     const renderErrorMessage = render(
-      <ErrorMessage>
+      <ErrorMessage relatedInputId="relatedInputId">
         <Text>Error Text Message</Text>
       </ErrorMessage>
     )

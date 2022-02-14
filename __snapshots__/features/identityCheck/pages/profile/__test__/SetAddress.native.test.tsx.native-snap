@@ -259,6 +259,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
               <TextInput
                 accessibilityLabel="Entrée pour l'adresse"
                 accessible={true}
+                aria-describedby="testUuidV4"
                 autoCorrect={false}
                 editable={true}
                 nativeID="testUuidV4"

@@ -522,6 +522,7 @@ Array [
             <TextInput
               accessibilityLabel="Mot de passe"
               accessible={true}
+              aria-describedby="testUuidV4"
               disabled={true}
               editable={false}
               nativeID="testUuidV4"
@@ -1164,6 +1165,7 @@ Array [
             <TextInput
               accessibilityLabel="Mot de passe"
               accessible={true}
+              aria-describedby="testUuidV4"
               disabled={false}
               editable={true}
               nativeID="testUuidV4"

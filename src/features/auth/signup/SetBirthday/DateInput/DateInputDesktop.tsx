@@ -30,6 +30,7 @@ interface DateInputProps {
   initialMonth?: string
   initialYear?: string
   onSubmit?: () => void
+  accessibilityDescribedBy?: string
 }
 
 const MIN_POSSIBLE_YEAR = 1
@@ -102,7 +103,16 @@ export const DateInputLabelText = styled(Typo.Body)<{ valueLength: number }>(
 )
 
 const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputProps> = (
-  { onSubmit, minDate, maxDate, initialDay, initialMonth, initialYear, ...props },
+  {
+    onSubmit,
+    minDate,
+    maxDate,
+    initialDay,
+    initialMonth,
+    initialYear,
+    accessibilityDescribedBy,
+    ...props
+  },
   forwardedRef
 ) => {
   const inputRef = useRef<TextInput>(null)
@@ -218,6 +228,7 @@ const WithRefDateInput: React.ForwardRefRenderFunction<DateInputRef, DateInputPr
           onSelectionChange={onSelectionChange}
           selectionColor={'transparent'}
           {...accessibilityAndTestId(t`Entrée pour la date de naissance`)}
+          aria-describedby={accessibilityDescribedBy}
         />
         <DateInputLabel
           accessibilityLabel={t`Entrée pour le jour de la date de naissance`}

@@ -3,6 +3,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, memo } from 'react'
 import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
 import { useSignIn, SignInResponseFailure } from 'features/auth/api'
@@ -49,6 +50,8 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const [hasEmailError, setHasEmailError] = useSafeState(false)
   const signIn = useSignIn()
   const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password) || isLoading
+  const emailInputErrorId = uuidv4()
+  const passwordInputErrorId = uuidv4()
 
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -152,7 +155,13 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       />
       <Form.MaxWidth>
         {!!errorMessage && (
-          <InputError visible messageId={errorMessage} numberOfSpacesTop={5} centered />
+          <InputError
+            visible
+            messageId={errorMessage}
+            numberOfSpacesTop={5}
+            centered
+            relatedInputId={passwordInputErrorId}
+          />
         )}
         <Spacer.Column numberOfSpaces={7} />
         <EmailInput
@@ -161,11 +170,13 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           onEmailChange={onEmailChange}
           isError={hasEmailError || !!errorMessage}
           isRequiredField
+          accessibilityDescribedBy={emailInputErrorId}
         />
         <InputError
           visible={hasEmailError}
           messageId={t`L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr`}
           numberOfSpacesTop={2}
+          relatedInputId={emailInputErrorId}
         />
         <Spacer.Column numberOfSpaces={6} />
         <PasswordInput
@@ -177,6 +188,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           textContentType="password"
           onSubmitEditing={onSubmit}
           isRequiredField
+          accessibilityDescribedBy={passwordInputErrorId}
         />
         <Spacer.Column numberOfSpaces={7} />
         <ButtonContainer>
