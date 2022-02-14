@@ -78,7 +78,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
         <MarginContainer>
           <VenueAddressContainer>
             <IconContainer>
-              <LocationPointer />
+              <LocationPointer accessibilityLabel={t`Adresse`} />
             </IconContainer>
             <StyledText numberOfLines={1}>{venueAddress}</StyledText>
           </VenueAddressContainer>

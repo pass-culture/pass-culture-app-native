@@ -2,17 +2,23 @@ import React from 'react'
 import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer } from 'ui/theme'
 import { Dd } from 'ui/web/list/Dd'
 import { Dt } from 'ui/web/list/Dt'
 interface IconWithCaptionProps {
-  Icon: React.FC<IconInterface>
+  Icon: React.FC<AccessibleIcon>
   caption: string
+  accessibilityLabel: string
   testID?: string
 }
 
-export const IconWithCaption = ({ Icon, caption, testID }: IconWithCaptionProps) => {
+export const IconWithCaption = ({
+  Icon,
+  caption,
+  accessibilityLabel,
+  testID,
+}: IconWithCaptionProps) => {
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
     color: theme.colors.greyDark,
     size: theme.icons.sizes.standard,
@@ -21,7 +27,7 @@ export const IconWithCaption = ({ Icon, caption, testID }: IconWithCaptionProps)
   return (
     <Container>
       <IconContainer>
-        <StyledIcon testID={testID} />
+        <StyledIcon accessibilityLabel={accessibilityLabel} testID={testID} />
       </IconContainer>
       <Spacer.Column numberOfSpaces={2} />
       <Caption testID={`caption-${testID}`}>{caption}</Caption>

@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import * as React from 'react'
 import { Path } from 'react-native-svg'
 import styled from 'styled-components/native'
@@ -15,7 +16,7 @@ const EmailSvg: React.FunctionComponent<AccessibleIcon> = ({
     height={size}
     viewBox="0 0 48 49"
     testID={testID}
-    accessibilityLabel={accessibilityLabel ?? 'ouvrir la boîte e-mail'}>
+    accessibilityLabel={accessibilityLabel ?? t`Ouvrir la boîte e-mail`}>
     <Path
       fill={color}
       fillRule="evenodd"

@@ -1,18 +1,31 @@
 import * as React from 'react'
-import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
+import { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
 import styled, { useTheme } from 'styled-components/native'
 
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { svgIdentifier } from 'ui/svg/utils'
 
-const LivresSvg: React.FunctionComponent<IconInterface> = ({ size, color, color2, testID }) => {
+const LivresSvg: React.FunctionComponent<AccessibleIcon> = ({
+  size,
+  color,
+  color2,
+  accessibilityLabel,
+  testID,
+}) => {
   const {
     colors: { primary, secondary },
   } = useTheme()
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
 
   return (
-    <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID} aria-hidden>
+    <AccessibleSvg
+      width={size}
+      height={size}
+      viewBox="0 0 48 48"
+      testID={testID}
+      accessibilityLabel={accessibilityLabel}
+      aria-hidden={!accessibilityLabel}>
       <Defs>
         <LinearGradient id={gradientId} x1="16.819%" x2="83.181%" y1="0%" y2="100%">
           <Stop offset="0%" stopColor={color ?? primary} />
@@ -37,7 +50,7 @@ const LivresSvg: React.FunctionComponent<IconInterface> = ({ size, color, color2
         fillRule={'evenodd'}
         d="M22 19C21.4477 19 21 19.4477 21 20C21 20.5523 21.4477 21 22 21H30C30.5523 21 31 20.5523 31 20C31 19.4477 30.5523 19 30 19H22Z"
       />
-    </Svg>
+    </AccessibleSvg>
   )
 }
 

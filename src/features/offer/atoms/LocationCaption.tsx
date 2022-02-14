@@ -24,7 +24,13 @@ export const LocationCaption: FunctionComponent<Props> = ({ venue, isDigital }: 
   return (
     <LocationContainer>
       <StyledView>
-        <IconContainer>{isDigital ? <Digital /> : <LocationPointer />}</IconContainer>
+        <IconContainer>
+          {isDigital ? (
+            <Digital accessibilityLabel={t`Offre digitale`} />
+          ) : (
+            <LocationPointer accessibilityLabel={t`Adresse`} />
+          )}
+        </IconContainer>
         {!!locationName && <StyledText numberOfLines={1}>{`${locationName}, `}</StyledText>}
       </StyledView>
       {!!where && (

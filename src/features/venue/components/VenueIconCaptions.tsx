@@ -42,12 +42,14 @@ export const VenueIconCaptions: React.FC<Props> = ({ type, label, locationCoordi
           <IconWithCaption
             Icon={PointerLocationNotFilled}
             caption={distanceToLocation}
+            accessibilityLabel={t`Distance`}
             isDisabled={false}
           />
         ) : (
           <IconWithCaption
             Icon={PointerLocationNotFilledDisabled}
             caption={'Géolocalisation désactivée'}
+            accessibilityLabel={t`Distance indisponible`}
             isDisabled={true}
           />
         )}

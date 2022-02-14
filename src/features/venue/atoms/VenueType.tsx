@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
@@ -12,5 +13,5 @@ interface Props {
 
 export const VenueType = ({ type, label }: Props) => {
   const Icon = mapVenueTypeToIcon(type)
-  return <IconWithCaption Icon={Icon} caption={label || ''} />
+  return <IconWithCaption Icon={Icon} caption={label || ''} accessibilityLabel={t`Type de lieu`} />
 }
