@@ -38,6 +38,7 @@ export const Categories: React.FC = () => {
 
   return (
     <Container>
+      <PageHeader title={t`Catégories`} />
       <ScrollView contentContainerStyle={contentContainerStyle}>
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={16} />
@@ -68,8 +69,6 @@ export const Categories: React.FC = () => {
           )
         })}
       </ScrollView>
-
-      <PageHeader title={t`Catégories`} />
     </Container>
   )
 }

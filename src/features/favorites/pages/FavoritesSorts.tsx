@@ -64,6 +64,7 @@ export const FavoritesSorts: React.FC = () => {
 
   return (
     <Container>
+      <PageHeader title={t`Trier`} />
       <ScrollView contentContainerStyle={contentContainerStyle}>
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={16} />
@@ -96,7 +97,6 @@ export const FavoritesSorts: React.FC = () => {
         })}
       </ScrollView>
 
-      <PageHeader title={t`Trier`} />
       <ButtonContainer>
         <ButtonPrimary wording={t`Valider`} onPress={onValidation} center />
       </ButtonContainer>

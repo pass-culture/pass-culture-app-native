@@ -146,6 +146,7 @@ export function NotificationSettings() {
 
   return (
     <React.Fragment>
+      <PageHeader title={t`Notifications`} />
       <Spacer.TopScreen />
       <ProfileContainer>
         <Spacer.Column numberOfSpaces={18} />
@@ -197,7 +198,6 @@ export function NotificationSettings() {
         )}
         <Spacer.Column numberOfSpaces={8} />
       </ProfileContainer>
-      <PageHeader title={t`Notifications`} />
       <PushNotificationsModal
         visible={isNotificationsModalVisible}
         onRequestPermission={onRequestNotificationPermissionFromModal}

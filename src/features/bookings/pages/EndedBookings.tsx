@@ -33,6 +33,7 @@ export const EndedBookings: React.FC = () => {
 
   return (
     <React.Fragment>
+      <PageHeader title={t`Réservations terminées`} />
       <Spacer.TopScreen />
       <FlatList
         contentContainerStyle={contentContainerStyle}
@@ -43,7 +44,6 @@ export const EndedBookings: React.FC = () => {
         ListHeaderComponent={ListHeaderComponent}
         ListFooterComponent={ListFooterComponent}
       />
-      <PageHeader title={t`Réservations terminées`} />
     </React.Fragment>
   )
 }

@@ -12,6 +12,7 @@ exports[`<VenueHeader /> should render correctly 1`] = `
       "position": "absolute",
       "top": 0,
       "width": "100%",
+      "zIndex": 1,
     }
   }
 >

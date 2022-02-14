@@ -27,6 +27,7 @@ export function PersonalData() {
 
   return (
     <React.Fragment>
+      <PageHeader title={t`Informations personnelles`} />
       <Spacer.TopScreen />
       <Container>
         <Spacer.Column numberOfSpaces={14} />
@@ -60,8 +61,6 @@ export function PersonalData() {
           </React.Fragment>
         )}
       </Container>
-
-      <PageHeader title={t`Informations personnelles`} />
     </React.Fragment>
   )
 }

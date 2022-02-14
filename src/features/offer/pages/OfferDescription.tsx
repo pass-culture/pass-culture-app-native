@@ -110,6 +110,7 @@ export const OfferDescription = () => {
 
   return (
     <Container>
+      <PageHeader title="Description" />
       <React.Fragment>
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={14} />
@@ -123,7 +124,6 @@ export const OfferDescription = () => {
           showsHorizontalScrollIndicator={false}
         />
       </React.Fragment>
-      <PageHeader title="Description" />
     </Container>
   )
 }

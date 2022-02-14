@@ -21,12 +21,12 @@ export const Venue: FunctionComponent = () => {
   return (
     <Container>
       <VenueWebHeader venue={venue} />
-      <VenueBody venueId={params.id} onScroll={onScroll} />
       <VenueHeader
         headerTransition={headerTransition}
         title={venue.publicName || venue.name}
         venueId={venue.id}
       />
+      <VenueBody venueId={params.id} onScroll={onScroll} />
     </Container>
   )
 }

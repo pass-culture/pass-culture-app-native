@@ -61,46 +61,12 @@ Object {
                               class="css-view-1dbjc4n"
                               style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                             >
-                              <div
-                                class="css-view-1dbjc4n"
-                                style="height: 16px;"
-                              />
-                              <div
-                                class="css-view-1dbjc4n"
-                                style="height: 56px;"
-                              />
-                              <div
-                                class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-                                data-testid="offer-description-list"
-                                style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
-                              >
-                                <div
-                                  class="css-view-1dbjc4n"
-                                >
-                                  <div
-                                    class="css-view-1dbjc4n"
-                                  >
-                                    <div
-                                      class="css-view-1dbjc4n"
-                                      style="height: 24px;"
-                                    />
-                                  </div>
-                                  <div
-                                    class="css-view-1dbjc4n"
-                                  >
-                                    <div
-                                      class="css-view-1dbjc4n"
-                                      style="height: 128px;"
-                                    />
-                                  </div>
-                                </div>
-                              </div>
                               <header
                                 class="sc-ieecCq etXgLS"
                               >
                                 <div
                                   class="css-view-1dbjc4n"
-                                  style="background-color: rgb(235, 0, 85); position: absolute; top: 0px; width: 100%;"
+                                  style="background-color: rgb(235, 0, 85); position: absolute; top: 0px; width: 100%; z-index: 1;"
                                 >
                                   <div
                                     class="css-view-1dbjc4n"
@@ -158,6 +124,40 @@ Object {
                                   />
                                 </div>
                               </header>
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="height: 16px;"
+                              />
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="height: 56px;"
+                              />
+                              <div
+                                class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+                                data-testid="offer-description-list"
+                                style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                >
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                  >
+                                    <div
+                                      class="css-view-1dbjc4n"
+                                      style="height: 24px;"
+                                    />
+                                  </div>
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                  >
+                                    <div
+                                      class="css-view-1dbjc4n"
+                                      style="height: 128px;"
+                                    />
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                           </div>
                           <div
@@ -289,46 +289,12 @@ Object {
                             class="css-view-1dbjc4n"
                             style="background-color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                           >
-                            <div
-                              class="css-view-1dbjc4n"
-                              style="height: 16px;"
-                            />
-                            <div
-                              class="css-view-1dbjc4n"
-                              style="height: 56px;"
-                            />
-                            <div
-                              class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-                              data-testid="offer-description-list"
-                              style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
-                            >
-                              <div
-                                class="css-view-1dbjc4n"
-                              >
-                                <div
-                                  class="css-view-1dbjc4n"
-                                >
-                                  <div
-                                    class="css-view-1dbjc4n"
-                                    style="height: 24px;"
-                                  />
-                                </div>
-                                <div
-                                  class="css-view-1dbjc4n"
-                                >
-                                  <div
-                                    class="css-view-1dbjc4n"
-                                    style="height: 128px;"
-                                  />
-                                </div>
-                              </div>
-                            </div>
                             <header
                               class="sc-ieecCq etXgLS"
                             >
                               <div
                                 class="css-view-1dbjc4n"
-                                style="background-color: rgb(235, 0, 85); position: absolute; top: 0px; width: 100%;"
+                                style="background-color: rgb(235, 0, 85); position: absolute; top: 0px; width: 100%; z-index: 1;"
                               >
                                 <div
                                   class="css-view-1dbjc4n"
@@ -386,6 +352,40 @@ Object {
                                 />
                               </div>
                             </header>
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="height: 16px;"
+                            />
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="height: 56px;"
+                            />
+                            <div
+                              class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+                              data-testid="offer-description-list"
+                              style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
+                            >
+                              <div
+                                class="css-view-1dbjc4n"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                >
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                    style="height: 24px;"
+                                  />
+                                </div>
+                                <div
+                                  class="css-view-1dbjc4n"
+                                >
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                    style="height: 128px;"
+                                  />
+                                </div>
+                              </div>
+                            </div>
                           </div>
                         </div>
                         <div

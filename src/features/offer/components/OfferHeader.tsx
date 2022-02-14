@@ -178,6 +178,7 @@ const HeaderContainer = styled(Animated.View)<{ safeAreaTop: number }>(
     top: 0,
     height: theme.appBarHeight + safeAreaTop,
     width: '100%',
+    zIndex: theme.zIndex.header,
   })
 )
 
