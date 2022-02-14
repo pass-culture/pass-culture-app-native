@@ -39,14 +39,17 @@ export function DropDown({
       <Spacer.Column numberOfSpaces={2} />
       <SelectContainer>
         <StyledSelect
+          data-testid="select"
           role="listbox"
           id={dropDownInputID}
           onChange={onChangeDate}
           noBorderRadiusRight={noBorderRadiusRight}
           noBorderRadiusLeft={noBorderRadiusLeft}>
-          <Option value="">{placeholder}</Option>
+          <Option role="option" value="">
+            {placeholder}
+          </Option>
           {options.map((option) => (
-            <Option key={option} value={option}>
+            <Option role="option" key={option} value={option} data-testid="select-option">
               {option}
             </Option>
           ))}
@@ -80,23 +83,23 @@ const IconContainer = styled.div`
 
 const noBorderRadius = getSpacingString(1)
 const StyledSelect = styled(Select)<{ noBorderRadiusRight: boolean; noBorderRadiusLeft: boolean }>`
-  ${({ theme, noBorderRadiusRight, noBorderRadiusLeft }) => `
+  ${({ theme, noBorderRadiusRight, noBorderRadiusLeft }) => {
+    const borderRadiusLeft = noBorderRadiusLeft ? noBorderRadius : `${theme.borderRadius.button}px`
+    const borderRadiusRight = noBorderRadiusRight
+      ? noBorderRadius
+      : `${theme.borderRadius.button}px`
+    return `
+    font-family: ${theme.fontFamily.regular};
+    font-size: ${getSpacingString(3.75)};
+    color: ${theme.colors.black};
     width: 100%;
     padding-right: ${getSpacingString(4)};
     padding-left: ${getSpacingString(4)};
     height: ${getSpacingString(10)};
-    border-top-left-radius: ${
-      noBorderRadiusLeft ? `${noBorderRadius};` : `${theme.borderRadius.button}px;`
-    }
-    border-bottom-left-radius: ${
-      noBorderRadiusLeft ? `${noBorderRadius};` : `${theme.borderRadius.button}px;`
-    }
-    border-top-right-radius: ${
-      noBorderRadiusRight ? `${noBorderRadius};` : `${theme.borderRadius.button}px;`
-    }
-    border-bottom-right-radius: ${
-      noBorderRadiusRight ? `${noBorderRadius};` : `${theme.borderRadius.button}px;`
-    }
+    border-top-left-radius: ${borderRadiusLeft};
+    border-bottom-left-radius: ${borderRadiusLeft};
+    border-top-right-radius: ${borderRadiusRight};
+    border-bottom-right-radius: ${borderRadiusRight};
     border: solid 1px ${theme.colors.greyMedium};
     cursor: pointer;
     background-color: ${theme.colors.white};
@@ -105,9 +108,6 @@ const StyledSelect = styled(Select)<{ noBorderRadiusRight: boolean; noBorderRadi
     &:focus, :active {
       border-color: ${theme.colors.primary};
     }
-
-    &:invalid {
-      color: green;
-    }
-  `}
+  `
+  }}
 `

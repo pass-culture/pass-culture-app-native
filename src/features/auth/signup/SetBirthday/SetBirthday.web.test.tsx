@@ -18,50 +18,38 @@ describe('<SetBirthday />', () => {
     jest.useFakeTimers()
   })
 
-  // TODO : tester la différence d'affichage entre le web touch / web non touch
-  it('should render correctly', () => {
-    const renderAPI = render(<SetBirthday {...props} />)
-    expect(renderAPI).toMatchSnapshot()
-  })
+  describe('- No touch device -', () => {
+    it('should render correctly', () => {})
 
-  describe('- navigation -', () => {
-    it('should display a information modal when clicking "Pour quelle raison ?" button', () => {
-      const { getByText, getByTestId } = render(<SetBirthday {...props} />)
+    describe('- navigation -', () => {
+      it('should keep disabled the button "Continuer" when the date is not selected', () => {})
 
-      const whyBirthdayButton = getByText('Pour quelle raison ?')
-      fireEvent.click(whyBirthdayButton)
+      it('should keep enable the button "Continuer" when the date is selected and is different from the current date', () => {})
 
-      const birthdayModal = getByTestId('modal-birthday-information')
-      expect(birthdayModal).toBeTruthy()
+      it('should call goToNextStep() when the date is selected and press the button "Continuer"', () => {})
     })
 
-    it('should keep disabled the button "Continuer" when the date is not selected', () => {})
+    describe('- error message -', () => {
+      it('should display the error message "tu dois avoir 15 ans" when the selected date is too young', () => {})
 
-    it('should keep enable the button "Continuer" when the date is selected and is different from the current date', () => {})
+      it('should not display the error message "tu dois avoir 15 ans" when the user is exactly 15yo', () => {})
 
-    it('should call goToNextStep() when the date is selected and press the button "Continuer"', () => {})
-  })
-
-  describe('- error message -', () => {
-    it('should display the error message "tu dois avoir 15 ans" when the selected date is too young', () => {})
-
-    it('should not display the error message "tu dois avoir 15 ans" when the user is exactly 15yo', () => {})
-
-    it('should not display the error message "tu dois avoir 15 ans" when the selected date is the current date', () => {})
-  })
-
-  describe('- analytics -', () => {
-    it('should log ConsultModalWhyAnniversary when clicking "Pour quelle raison ?" button', () => {
-      const { getByText } = render(<SetBirthday {...props} />)
-
-      const whyBirthdayLink = getByText('Pour quelle raison ?')
-      fireEvent.click(whyBirthdayLink)
-
-      expect(analytics.logConsultWhyAnniversary).toHaveBeenCalledTimes(1)
+      it('should not display the error message "tu dois avoir 15 ans" when the selected date is the current date', () => {})
     })
 
-    it('should not log SignUpTooYoung if the user is 15 years old or more', () => {})
+    describe('- analytics -', () => {
+      it('should log ConsultModalWhyAnniversary when clicking "Pour quelle raison ?" button', () => {
+        const { getByText } = render(<SetBirthday {...props} />)
 
-    it('should log SignUpTooYoung if the user is 14 years old or less', () => {})
+        const whyBirthdayLink = getByText('Pour quelle raison ?')
+        fireEvent.click(whyBirthdayLink)
+
+        expect(analytics.logConsultWhyAnniversary).toHaveBeenCalledTimes(1)
+      })
+
+      it('should not log SignUpTooYoung if the user is 15 years old or more', () => {})
+
+      it('should log SignUpTooYoung if the user is 14 years old or less', () => {})
+    })
   })
 })
