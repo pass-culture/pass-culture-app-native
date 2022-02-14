@@ -19,12 +19,7 @@ To install the pods, and create the Pods folder, run:
 
 You will need to add the `GoogleService-Info.plist` file in the `ios` directory. You can get a copy of the testing configuration one through the password manager, or directly through the Firebase console inside `Project Settings`.
 
-### 🚀 Run the app
-
-To run the app, simply run: `yarn ios:testing`.
-This will also start the metro server. If not, run `yarn start` in another tab.
-
-### Start the app on your Apple device or in your Simulator (with Xcode)
+### Setup Xcode to launch the app in the Simulator or on your external device
 
 In order to launch the app in your Apple device, you need to follow these steps:
 
@@ -38,15 +33,23 @@ Download the iOS certificates to your computer:
 5. Add the URL of the private certificates git repository named "pass-culture-app-native-certificates".
 6. Get the `match repo passphrase` on 1password in the "Tech" vault.
 
-7. Launch with yarn :
+(Only the first time) Set arbitrary Version and BuildVersion numbers of the App in Xcode at PassCulture > General > Identity > Build
 
-   - For Apple External Device
+For example :
 
-   Connect your device to the computer and run `yarn ios:testing --device` or use the Xcode interface. Choose a scheme (your device) and click the Run button in the toolbar. More info [here][3].
+- Version : 1.176.0
+- Build : 10176000
 
-   - For Xcode Simulator
+### 🚀 Run the app with yarn
 
-   Run `yarn ios:testing` or use the Xcode interface. More info [here][3].
+- For Apple External Device
+
+Connect your device to the computer and run `yarn ios:testing --device` or use the Xcode interface. Choose a scheme (your device) and click the Run button in the toolbar. More info [here][3].
+
+- For Xcode Simulator
+
+Run `yarn ios:testing` or use the Xcode interface. More info [here][3].
+This will also start the metro server. If not, run `yarn start` in another tab.
 
 [1]: ./setup.md
 [2]: https://bundler.io/bundle_install.html
