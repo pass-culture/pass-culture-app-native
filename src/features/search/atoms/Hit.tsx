@@ -60,7 +60,7 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
 
   return (
     <Container onPress={handlePressOffer} testID="offerHit">
-      <Link to={{ screen: 'EndedBookings', params: undefined }} style={styles.link}>
+      <Link to={{ screen: 'Offer', params: { id: offerId, from: 'search' } }} style={styles.link}>
         <OfferImage imageUrl={offer.thumbUrl} categoryId={categoryId} />
         <Spacer.Row numberOfSpaces={4} />
         <Column>
