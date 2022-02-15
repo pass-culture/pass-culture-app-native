@@ -1,6 +1,6 @@
-import { useNetInfo } from '@react-native-community/netinfo'
 import { useQuery } from 'react-query'
 
+import { useNetwork } from 'libs/network/useNetwork'
 import { BuildSearchAddressProps } from 'libs/place/buildUrl'
 import { fetchAddresses } from 'libs/place/fetchAddresses'
 import { QueryKeys } from 'libs/queryKeys'
@@ -12,11 +12,11 @@ export const useAddresses = ({
   postalCode,
   enabled,
 }: BuildSearchAddressProps & { enabled: boolean }) => {
-  const networkInfo = useNetInfo()
+  const { isConnected } = useNetwork()
 
   return useQuery<string[]>(
     [QueryKeys.ADDRESSES, query, cityCode, postalCode],
     () => fetchAddresses({ query, limit, cityCode, postalCode }),
-    { enabled: enabled && networkInfo.isConnected }
+    { enabled: enabled && isConnected }
   )
 }

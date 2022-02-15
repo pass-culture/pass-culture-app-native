@@ -10,8 +10,6 @@ export function useNextSubscriptionStep() {
   return useQuery<NextSubscriptionStepResponse>(
     QueryKeys.NEXT_SUBSCRIPTION_STEP,
     () => api.getnativev1subscriptionnextStep(),
-    {
-      enabled: isLoggedIn,
-    }
+    { enabled: isLoggedIn }
   )
 }

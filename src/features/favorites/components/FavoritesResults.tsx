@@ -1,4 +1,3 @@
-import { useNetInfo } from '@react-native-community/netinfo'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
@@ -25,6 +24,7 @@ import {
 } from 'features/search/components/Placeholders'
 import { useGeolocation, GeoCoordinates } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
+import { useNetwork } from 'libs/network/useNetwork'
 import { getSpacing, Spacer } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 
@@ -64,7 +64,7 @@ const contentContainerStyle = {
 }
 
 export const FavoritesResults: React.FC = React.memo(function FavoritesResults() {
-  const networkInfo = useNetInfo()
+  const networkInfo = useNetwork()
   const [offerToBook, setOfferToBook] = useState<FavoriteOfferResponse | null>(null)
   const flatListRef = useRef<FlatList<FavoriteResponse> | null>(null)
   const favoritesState = useFavoritesState()

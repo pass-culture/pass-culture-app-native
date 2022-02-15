@@ -27,6 +27,7 @@ import { env } from 'libs/environment'
 import { GeolocationWrapper } from 'libs/geolocation'
 import { activate } from 'libs/i18n'
 import { eventMonitoring } from 'libs/monitoring'
+import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { useStartBatchNotification } from 'libs/notifications'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
@@ -70,13 +71,15 @@ const App: FunctionComponent = function () {
                     <SearchWrapper>
                       <I18nProvider i18n={i18n}>
                         <SnackBarProvider>
-                          <IdentityCheckContextProvider>
-                            <SplashScreenProvider>
-                              <ScreenErrorProvider>
-                                <AppNavigationContainer />
-                              </ScreenErrorProvider>
-                            </SplashScreenProvider>
-                          </IdentityCheckContextProvider>
+                          <NetInfoWrapper>
+                            <IdentityCheckContextProvider>
+                              <SplashScreenProvider>
+                                <ScreenErrorProvider>
+                                  <AppNavigationContainer />
+                                </ScreenErrorProvider>
+                              </SplashScreenProvider>
+                            </IdentityCheckContextProvider>
+                          </NetInfoWrapper>
                         </SnackBarProvider>
                       </I18nProvider>
                     </SearchWrapper>

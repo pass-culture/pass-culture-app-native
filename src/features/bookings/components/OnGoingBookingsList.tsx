@@ -1,5 +1,4 @@
 import { plural } from '@lingui/macro'
-import { useNetInfo } from '@react-native-community/netinfo'
 import React, { useCallback, useMemo } from 'react'
 import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -14,6 +13,7 @@ import {
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
+import { useNetwork } from 'libs/network/useNetwork'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Typo } from 'ui/theme'
@@ -29,7 +29,7 @@ const emptyBookings: Booking[] = []
 const ANIMATION_DURATION = 700
 
 export function OnGoingBookingsList() {
-  const networkInfo = useNetInfo()
+  const networkInfo = useNetwork()
   const { data: bookings, isLoading, isFetching, refetch } = useBookings()
   const { bottom } = useSafeAreaInsets()
   const { isLoading: subcategoriesIsLoading } = useSubcategories()
