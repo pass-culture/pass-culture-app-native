@@ -39,7 +39,7 @@ export function DropDown({
       <Spacer.Column numberOfSpaces={2} />
       <SelectContainer>
         <StyledSelect
-          data-testid="select"
+          data-testid={`select-${label}`}
           role="listbox"
           id={dropDownInputID}
           onChange={onChangeDate}

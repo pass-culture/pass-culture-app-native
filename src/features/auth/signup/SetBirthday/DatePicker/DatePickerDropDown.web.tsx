@@ -29,6 +29,7 @@ export function DatePickerDropDown(props: DatePickerProps) {
       <Spacer.Column numberOfSpaces={errorMessage ? 6 : 12} />
       <ButtonPrimary
         wording={t`Continuer`}
+        testID="date-picker-dropdown-submit-button"
         accessibilityLabel={props.accessibilityLabelForNextStep}
         disabled={isDisabled}
         onPress={goToNextStep}

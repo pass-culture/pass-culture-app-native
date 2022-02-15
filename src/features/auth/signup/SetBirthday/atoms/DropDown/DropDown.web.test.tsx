@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { fireEvent, render } from 'tests/utils/web'
 import { DropDown } from 'features/auth/signup/SetBirthday/atoms/DropDown/DropDown.web'
 import { monthNames } from 'features/bookOffer/components/Calendar/Calendar.utils'
+import { fireEvent, render } from 'tests/utils/web'
 
 describe('<DropDown />', () => {
   it('should correctly set default option', () => {
@@ -18,7 +18,7 @@ describe('<DropDown />', () => {
       <DropDown label="Mois" placeholder="MM" options={monthNames} onChange={onChange} />
     )
 
-    fireEvent.change(getByTestId('select'), { target: { value: monthNames[2] } })
+    fireEvent.change(getByTestId('select-Mois'), { target: { value: monthNames[2] } })
 
     expect(onChange).toBeCalledWith(monthNames[2])
   })
