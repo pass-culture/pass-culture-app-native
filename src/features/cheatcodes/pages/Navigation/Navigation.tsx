@@ -3,6 +3,7 @@ import React, { useState, createElement } from 'react'
 import { Alert } from 'react-native'
 import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { CheatCodesButton } from 'features/cheatcodes/components/CheatCodesButton'
 import { useSomeVenueId } from 'features/cheatcodes/pages/Navigation/useSomeVenueId'
@@ -12,12 +13,14 @@ import { LandscapePositionPage } from 'features/landscapePosition/LandscapePosit
 import { Maintenance } from 'features/maintenance/Maintenance'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { env } from 'libs/environment'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
-import { AsyncError } from 'libs/monitoring'
+import { AsyncError, eventMonitoring } from 'libs/monitoring'
 import { ScreenError } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { padding, Spacer } from 'ui/theme'
 
@@ -33,6 +36,8 @@ export function Navigation(): JSX.Element {
   const [asyncTestReqCount, setAsyncTestReqCount] = useState(0)
   const distanceToEiffelTower = useDistance(EIFFEL_TOWER_COORDINATES)
   const venueId = useSomeVenueId()
+  const { showInfoSnackBar } = useSnackBarContext()
+
   const { refetch: errorAsyncQuery, isFetching } = useQuery(
     QueryKeys.ERROR_ASYNC,
     () => errorAsync(),
@@ -73,6 +78,19 @@ export function Navigation(): JSX.Element {
           <ButtonPrimary
             wording={'IdentityCheck 🎨'}
             onPress={() => navigate('NavigationIdentityCheck')}
+          />
+        </Row>
+        <Row half>
+          <ButtonPrimary
+            wording={'Sentry'}
+            onPress={() => {
+              const message = `SENTRY_${env.ENV}_TEST_${uuidv4().slice(0, 5)}`.toUpperCase()
+              eventMonitoring.captureException(new Error(message))
+              showInfoSnackBar({
+                message: `L'erreur ${message} a été envoyé sur Sentry`,
+                timeout: SNACK_BAR_TIME_OUT,
+              })
+            }}
           />
         </Row>
         <Row half>
