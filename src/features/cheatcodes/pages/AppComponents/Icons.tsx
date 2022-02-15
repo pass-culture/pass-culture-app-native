@@ -52,6 +52,7 @@ import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
 import { IdCard } from 'ui/svg/icons/IdCard'
+import { Idea } from 'ui/svg/icons/Idea'
 import { Info } from 'ui/svg/icons/Info'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -277,6 +278,7 @@ const SecondaryAndBiggerIcons = () => {
       <Icon name="HandicapMental" component={HandicapMental} isNew />
       <Icon name="HandicapMotor" component={HandicapMotor} isNew />
       <Icon name="HandicapAudio" component={HandicapAudio} isNew />
+      <Icon name="Idea" component={Idea} isNew />
       <Icon name="Info" component={Info} isNew />
       <Icon name="LegalNotices" component={LegalNotices} isNew />
       <Icon name="LifeBuoy" component={LifeBuoy} isNew />
