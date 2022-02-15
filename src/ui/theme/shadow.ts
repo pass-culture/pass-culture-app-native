@@ -1,3 +1,4 @@
+import Color from 'color'
 import { Platform, ViewStyle } from 'react-native'
 
 // eslint-disable-next-line no-restricted-imports
@@ -19,9 +20,12 @@ type IOSShadow = {
   shadowColor: ColorsEnum | string
   shadowOpacity: string
 }
-type WebShadow = { boxShadow: string }
+type WebShadow = { boxShadow?: string; filter?: string }
 
-export function getShadow(shadowInput: InputShadow): AndroidShadow | IOSShadow | WebShadow {
+export function getShadow(
+  shadowInput: InputShadow,
+  dropShadow = false
+): AndroidShadow | IOSShadow | WebShadow {
   if (Platform.OS === 'android') {
     // Elevation is implemented only for Android 5 and above
     if (Platform.Version < 5) {
@@ -37,7 +41,14 @@ export function getShadow(shadowInput: InputShadow): AndroidShadow | IOSShadow |
       shadowOpacity: shadowInput.shadowOpacity.toString(),
     }
   }
-  return {
-    boxShadow: `${shadowInput.shadowOffset.width}px ${shadowInput.shadowOffset.height}px ${shadowInput.shadowRadius}px ${shadowInput.shadowColor}`,
+  const shadowColor = Color(shadowInput.shadowColor).alpha(shadowInput.shadowOpacity ?? 1)
+  if (dropShadow) {
+    return {
+      filter: `drop-shadow(0px 2px 4px ${shadowColor})`,
+    }
+  } else {
+    return {
+      boxShadow: `${shadowInput.shadowOffset.width}px ${shadowInput.shadowOffset.height}px ${shadowInput.shadowRadius}px ${shadowColor}`,
+    }
   }
 }
