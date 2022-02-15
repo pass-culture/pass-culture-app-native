@@ -19,5 +19,6 @@ export enum FACETS_ENUM {
 
 // Taken from https://www.algolia.com/apps/E2IKXJ325N/explorer/configuration/venues/facets
 export enum VenuesFacets {
+  tags = 'tags',
   venue_type = 'venue_type',
 }

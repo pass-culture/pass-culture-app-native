@@ -42,17 +42,22 @@ export const fetchMultipleVenues = async (
   }
 }
 
-const buildVenuesQueryOptions = (
+export const buildVenuesQueryOptions = (
   params: VenuesSearchParametersFields,
   userLocation: GeoCoordinates | null
 ) => {
-  const { aroundRadius, isGeolocated, venueTypes = [] } = params
+  const { aroundRadius, isGeolocated, tags = [], venueTypes = [] } = params
 
   const locationFilter = parseGeolocationParameters(userLocation, isGeolocated, aroundRadius) || {
     locationType: LocationType.EVERYWHERE,
   }
 
   const facetFilters: FiltersArray = []
+
+  if (tags.length) {
+    const tagsPredicate = buildTagsPredicate(tags)
+    facetFilters.push(tagsPredicate)
+  }
 
   if (venueTypes.length) {
     const venueTypesPredicate = buildVenueTypesPredicate(venueTypes.map(getVenueTypeFacetFilters))
@@ -67,6 +72,9 @@ const buildVenuesQueryOptions = (
 
 const buildVenueTypesPredicate = (venueTypes: string[]): string[] =>
   venueTypes.map((venueType) => `${VenuesFacets.venue_type}:${venueType}`)
+
+const buildTagsPredicate = (tags: string[]): string[] =>
+  tags.map((tag: string) => `${VenuesFacets.tags}:${tag}`)
 
 const buildVenueHit = (venue: AlgoliaVenue): VenueHit => {
   const socialMedias: Record<string, string> = {}
