@@ -14,6 +14,8 @@ import { useNetwork } from 'libs/network/useNetwork'
 import { SearchHit } from 'libs/search'
 import { getSpacing, Spacer } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
+import { Li } from 'ui/web/list/Li'
+import { Ul } from 'ui/web/list/Ul'
 
 const keyExtractor = (item: SearchHit) => item.objectID
 
@@ -94,24 +96,27 @@ export const SearchResults: React.FC = () => {
   return (
     <React.Fragment>
       <Container>
-        <FlatList
-          ref={flatListRef}
-          testID="searchResultsFlatlist"
-          data={hits}
-          contentContainerStyle={contentContainerStyle}
-          keyExtractor={keyExtractor}
-          ListHeaderComponent={ListHeaderComponent}
-          ItemSeparatorComponent={Separator}
-          ListFooterComponent={ListFooterComponent}
-          renderItem={renderItem}
-          refreshing={isRefreshing}
-          onRefresh={onRefresh}
-          onEndReached={onEndReached}
-          scrollEnabled={nbHits > 0}
-          ListEmptyComponent={ListEmptyComponent}
-          keyboardShouldPersistTaps="handled"
-          keyboardDismissMode="on-drag"
-        />
+        <Ul>
+          <FlatList
+            ref={flatListRef}
+            testID="searchResultsFlatlist"
+            data={hits}
+            contentContainerStyle={contentContainerStyle}
+            keyExtractor={keyExtractor}
+            ListHeaderComponent={ListHeaderComponent}
+            ItemSeparatorComponent={Separator}
+            ListFooterComponent={ListFooterComponent}
+            renderItem={renderItem}
+            CellRendererComponent={Li}
+            refreshing={isRefreshing}
+            onRefresh={onRefresh}
+            onEndReached={onEndReached}
+            scrollEnabled={nbHits > 0}
+            ListEmptyComponent={ListEmptyComponent}
+            keyboardShouldPersistTaps="handled"
+            keyboardDismissMode="on-drag"
+          />
+        </Ul>
       </Container>
       {nbHits > 0 && (
         <FilterContainer>
@@ -151,15 +156,18 @@ function SearchResultsPlaceHolder() {
   return (
     <React.Fragment>
       <Container>
-        <FlatList
-          data={FAVORITE_LIST_PLACEHOLDER}
-          renderItem={renderItem}
-          contentContainerStyle={contentContainerStyle}
-          ListHeaderComponent={ListHeaderComponent}
-          ItemSeparatorComponent={Separator}
-          ListFooterComponent={ListFooterComponent}
-          scrollEnabled={false}
-        />
+        <Ul>
+          <FlatList
+            data={FAVORITE_LIST_PLACEHOLDER}
+            renderItem={renderItem}
+            CellRendererComponent={Li}
+            contentContainerStyle={contentContainerStyle}
+            ListHeaderComponent={ListHeaderComponent}
+            ItemSeparatorComponent={Separator}
+            ListFooterComponent={ListFooterComponent}
+            scrollEnabled={false}
+          />
+        </Ul>
       </Container>
       <FilterContainer>
         <Filter />

@@ -17,6 +17,8 @@ import { Banner } from 'ui/components/Banner'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { InputError } from 'ui/components/inputs/InputError'
 import { getSpacing, Spacer } from 'ui/theme'
+import { Li } from 'ui/web/list/Li'
+import { VerticalUl } from 'ui/web/list/Ul'
 
 const DEBOUNCED_CALLBACK = 500
 
@@ -75,33 +77,41 @@ export const LocationFilter: React.FC = () => {
           />
         </BannerContainer>
         <Spacer.Column numberOfSpaces={6} />
-        <LocationChoice
-          testID="pickPlace"
-          section={LocationType.PLACE}
-          arrowNext={true}
-          onPress={onPressPickPlace}
-        />
-        <Spacer.Column numberOfSpaces={4} />
-        <LocationChoice
-          testID="aroundMe"
-          section={LocationType.AROUND_ME}
-          onPress={onPressAroundMe}
-          accessibilityDescribedBy={locationChoiceErrorId}
-        />
-        {!!positionError && (
-          <InputError
-            visible
-            messageId={positionError.message}
-            numberOfSpacesTop={1}
-            relatedInputId={locationChoiceErrorId}
-          />
-        )}
-        <Spacer.Column numberOfSpaces={4} />
-        <LocationChoice
-          testID="everywhere"
-          section={LocationType.EVERYWHERE}
-          onPress={onPressEverywhere}
-        />
+        <VerticalUl>
+          <Li>
+            <LocationChoice
+              testID="pickPlace"
+              section={LocationType.PLACE}
+              arrowNext={true}
+              onPress={onPressPickPlace}
+            />
+            <Spacer.Column numberOfSpaces={4} />
+          </Li>
+          <Li>
+            <LocationChoice
+              testID="aroundMe"
+              section={LocationType.AROUND_ME}
+              onPress={onPressAroundMe}
+              accessibilityDescribedBy={locationChoiceErrorId}
+            />
+            {!!positionError && (
+              <InputError
+                visible
+                messageId={positionError.message}
+                numberOfSpacesTop={1}
+                relatedInputId={locationChoiceErrorId}
+              />
+            )}
+            <Spacer.Column numberOfSpaces={4} />
+          </Li>
+          <Li>
+            <LocationChoice
+              testID="everywhere"
+              section={LocationType.EVERYWHERE}
+              onPress={onPressEverywhere}
+            />
+          </Li>
+        </VerticalUl>
       </ScrollView>
     </Container>
   )

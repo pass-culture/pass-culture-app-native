@@ -23,6 +23,8 @@ import { Spinner } from 'ui/components/Spinner'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
+import { Li } from 'ui/web/list/Li'
+import { VerticalUl } from 'ui/web/list/Ul'
 
 const keyExtractor = ({ name, code, postalCode }: SuggestedCity) => `${name}-${code}-${postalCode}`
 
@@ -118,18 +120,23 @@ export const SetCity = () => {
         <React.Fragment>
           {!!isLoading && <Spinner />}
           <CitiesContainer>
-            {cities.map((city, index) => (
-              <AddressOption
-                label={city.name}
-                selected={selectedCity ? keyExtractor(city) === keyExtractor(selectedCity) : false}
-                onPressOption={onPressOption}
-                optionKey={keyExtractor(city)}
-                key={city.name}
-                {...accessibilityAndTestId(
-                  t`Proposition de ville ${index + 1}\u00a0: ${city.name}`
-                )}
-              />
-            ))}
+            <VerticalUl>
+              {cities.map((city, index) => (
+                <Li key={city.name}>
+                  <AddressOption
+                    label={city.name}
+                    selected={
+                      selectedCity ? keyExtractor(city) === keyExtractor(selectedCity) : false
+                    }
+                    onPressOption={onPressOption}
+                    optionKey={keyExtractor(city)}
+                    {...accessibilityAndTestId(
+                      t`Proposition de ville ${index + 1}\u00a0: ${city.name}`
+                    )}
+                  />
+                </Li>
+              ))}
+            </VerticalUl>
           </CitiesContainer>
         </React.Fragment>
       }

@@ -1,4 +1,5 @@
 import React from 'react'
+import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnum } from 'api/gen'
@@ -10,6 +11,8 @@ import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { getSpacing } from 'ui/theme'
+import { Li } from 'ui/web/list/Li'
+import { Ul } from 'ui/web/list/Ul'
 
 export const Category: React.FC = () => {
   const { searchState, dispatch } = useStagedSearch()
@@ -27,14 +30,17 @@ export const Category: React.FC = () => {
       defaultOpen={true}
       title={<TitleWithCount title={SectionTitle.Category} count={offerCategories.length} />}>
       <BodyContainer>
-        {Object.entries(availableCategories).map(([category, { facetFilter }]) => (
-          <SelectionLabel
-            key={category}
-            label={searchGroupLabelMapping[category as SearchGroupNameEnum]}
-            selected={offerCategories.includes(facetFilter)}
-            onPress={onPress(facetFilter)}
-          />
-        ))}
+        <StyledUl>
+          {Object.entries(availableCategories).map(([category, { facetFilter }]) => (
+            <Li key={category}>
+              <SelectionLabel
+                label={searchGroupLabelMapping[category as SearchGroupNameEnum]}
+                selected={offerCategories.includes(facetFilter)}
+                onPress={onPress(facetFilter)}
+              />
+            </Li>
+          ))}
+        </StyledUl>
       </BodyContainer>
     </AccordionItem>
   )
@@ -45,4 +51,8 @@ const BodyContainer = styled.View({
   flexDirection: 'row',
   marginBottom: getSpacing(-3),
   marginRight: getSpacing(-3),
+})
+
+const StyledUl = webStyled(Ul)({
+  flexWrap: 'wrap',
 })

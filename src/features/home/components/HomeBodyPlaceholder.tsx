@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react'
 import { View, PixelRatio } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
+import webStyled from 'styled-components'
 import styled, { useTheme } from 'styled-components/native'
 
 import { SkeletonTile } from 'features/home/atoms/SkeletonTile'
@@ -14,6 +15,8 @@ import {
   Spacer,
 } from 'ui/theme'
 import { BorderRadiusEnum } from 'ui/theme/grid'
+import { Li } from 'ui/web/list/Li'
+import { Ul } from 'ui/web/list/Ul'
 
 enum TileSize {
   M = LENGTH_M,
@@ -53,13 +56,16 @@ const OfferModulePlaceholder: React.FC<{ size: TileSize; numberOfTiles: number }
         <Spacer.Column numberOfSpaces={1} />
         <ModuleTitlePlaceholder />
         <Spacer.Column numberOfSpaces={5} />
-        <FlatList
-          horizontal
-          data={data}
-          renderItem={renderPlaceholder}
-          ItemSeparatorComponent={() => <Spacer.Row numberOfSpaces={4} />}
-          showsHorizontalScrollIndicator={false}
-        />
+        <Ul>
+          <FlatList
+            horizontal
+            data={data}
+            renderItem={renderPlaceholder}
+            CellRendererComponent={StyledLi}
+            ItemSeparatorComponent={() => <Spacer.Row numberOfSpaces={4} />}
+            showsHorizontalScrollIndicator={false}
+          />
+        </Ul>
       </View>
     </Container>
   )
@@ -105,4 +111,9 @@ const Container = styled.View({ flexDirection: 'row', paddingBottom: getSpacing(
 const CenterContainer = styled.View({
   flex: 1,
   alignItems: 'center',
+})
+
+const StyledLi = webStyled(Li)({
+  display: 'flex',
+  flexDirection: 'row',
 })

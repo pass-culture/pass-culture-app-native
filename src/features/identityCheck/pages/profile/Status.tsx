@@ -14,6 +14,8 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
+import { Li } from 'ui/web/list/Li'
+import { VerticalUl } from 'ui/web/list/Ul'
 
 export const Status = () => {
   const { activities } = useProfileOptions()
@@ -58,16 +60,19 @@ export const Status = () => {
       }
       scrollChildren={
         <Form.MaxWidth>
-          {filteredActivities &&
-            filteredActivities.map((activity) => (
-              <RadioButton
-                key={activity.label}
-                selected={activity.id === selectedStatus}
-                description={activity.description}
-                name={activity.label}
-                onPress={() => setSelectedStatus(activity.id)}
-              />
-            ))}
+          <VerticalUl>
+            {filteredActivities &&
+              filteredActivities.map((activity) => (
+                <Li key={activity.label}>
+                  <RadioButton
+                    selected={activity.id === selectedStatus}
+                    description={activity.description}
+                    name={activity.label}
+                    onPress={() => setSelectedStatus(activity.id)}
+                  />
+                </Li>
+              ))}
+          </VerticalUl>
         </Form.MaxWidth>
       }
       fixedBottomChildren={

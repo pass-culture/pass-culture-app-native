@@ -10,6 +10,8 @@ import { TabBarContainer } from 'features/navigation/TabBar/TabBarContainer'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { TabParamList, TabRouteName } from 'features/navigation/TabBar/types'
 import { Link } from 'ui/web/link/Link'
+import { Li } from 'ui/web/list/Li'
+import { Ul } from 'ui/web/list/Ul'
 
 export const AccessibleTabBar = () => {
   const { tabRoutes } = useTabNavigationContext()
@@ -24,20 +26,22 @@ export const AccessibleTabBar = () => {
   return (
     <AccessibleTabBarContainer>
       <TabBarContainer>
-        {tabRoutes.map((route) => {
-          return (
-            <LinkContainer key={route.name}>
-              <Link to={{ screen: route.name, params: undefined }} accessible={false}>
-                <TabBarComponent
-                  tabName={route.name}
-                  isSelected={route.isSelected}
-                  BicolorIcon={mapTabRouteToBicolorIcon(route.name as TabRouteName)}
-                  onPress={() => onPress(route.name)}
-                />
-              </Link>
-            </LinkContainer>
-          )
-        })}
+        <StyledUl>
+          {tabRoutes.map((route) => {
+            return (
+              <LinkContainer key={route.name}>
+                <Link to={{ screen: route.name, params: undefined }} accessible={false}>
+                  <TabBarComponent
+                    tabName={route.name}
+                    isSelected={route.isSelected}
+                    BicolorIcon={mapTabRouteToBicolorIcon(route.name as TabRouteName)}
+                    onPress={() => onPress(route.name)}
+                  />
+                </Link>
+              </LinkContainer>
+            )
+          })}
+        </StyledUl>
       </TabBarContainer>
     </AccessibleTabBarContainer>
   )
@@ -47,7 +51,12 @@ const AccessibleTabBarContainer = styled.nav(({ theme }) => ({
   zIndex: theme.zIndex.tabBar,
 }))
 
-const LinkContainer = styled.div({
+const StyledUl = styled(Ul)({
+  flex: 1,
+  overflow: 'visible',
+})
+
+const LinkContainer = styled(Li)({
   display: 'flex',
   flex: 1,
   '> *': {

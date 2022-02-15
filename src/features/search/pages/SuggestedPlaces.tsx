@@ -16,6 +16,8 @@ import { AriaLive } from 'ui/components/AriaLive'
 import { BicolorLocationPointer as DefaultBicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Li } from 'ui/web/list/Li'
+import { Ul } from 'ui/web/list/Ul'
 
 type SuggestedPlaceOrVenue = SuggestedPlace | SuggestedVenue
 
@@ -81,15 +83,18 @@ export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
         nbHits={filteredPlaces.length}
         show={filteredPlaces.length > 0 && !isLoading}
       />
-      <FlatList
-        data={filteredPlaces}
-        keyExtractor={keyExtractor}
-        renderItem={({ item }) => <Hit hit={item} onPress={onPickPlace(item)} />}
-        ListEmptyComponent={() => <NoSuggestedPlaces show={query.length > 0 && !isLoading} />}
-        ItemSeparatorComponent={Separator}
-        keyboardShouldPersistTaps="handled"
-        keyboardDismissMode="on-drag"
-      />
+      <Ul>
+        <FlatList
+          data={filteredPlaces}
+          keyExtractor={keyExtractor}
+          renderItem={({ item }) => <Hit hit={item} onPress={onPickPlace(item)} />}
+          CellRendererComponent={Li}
+          ListEmptyComponent={() => <NoSuggestedPlaces show={query.length > 0 && !isLoading} />}
+          ItemSeparatorComponent={Separator}
+          keyboardShouldPersistTaps="handled"
+          keyboardDismissMode="on-drag"
+        />
+      </Ul>
     </React.Fragment>
   )
 }
