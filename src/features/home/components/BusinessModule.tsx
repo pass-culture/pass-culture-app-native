@@ -5,12 +5,12 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
-import { IdeaIcon } from 'features/home/assets/IdeaIcon'
 import { NextArrowIcon } from 'features/home/assets/NextArrowIcon'
 import { BusinessPane } from 'features/home/contentful'
 import { openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { Idea } from 'ui/svg/icons/Idea'
 import { Typo, getSpacing, MARGIN_DP, LENGTH_XS, RATIO_BUSINESS, Spacer } from 'ui/theme'
 
 import { fillUrlEmail, shouldUrlBeFilled, showBusinessModule } from './BusinessModule.utils'
@@ -140,3 +140,7 @@ const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))
+
+const IdeaIcon = styled(Idea).attrs(({ theme }) => ({
+  color: theme.colors.white,
+}))``

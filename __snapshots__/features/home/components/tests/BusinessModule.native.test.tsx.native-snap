@@ -118,7 +118,10 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
               ]
             }
           >
-            <View>
+            <View
+              height={32}
+              width={32}
+            >
               <Text>
                 undefined-SVG-Mock
               </Text>
@@ -304,7 +307,10 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
               ]
             }
           >
-            <View>
+            <View
+              height={32}
+              width={32}
+            >
               <Text>
                 undefined-SVG-Mock
               </Text>
