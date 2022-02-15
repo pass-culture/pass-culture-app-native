@@ -1,0 +1,58 @@
+import { renderHook } from '@testing-library/react-hooks'
+import mockdate from 'mockdate'
+
+import { useDatePickerErrorHandler } from './useDatePickerErrorHandler'
+
+const CURRENT_DATE = new Date('2020-12-01T00:00:00.000Z')
+const FUTUR_DATE = new Date('2022-12-01T00:00:00.000Z')
+const DEFAULT_SELECTED_DATE = new Date('2006-12-01T00:00:00.000Z')
+const ELIGIBLE_AGE_DATE = new Date('2003-12-01T00:00:00.000Z')
+const FIFTEEN_YEARS_OLD_FIRST_DAY_DATE = new Date('2005-12-01T00:00:00.000Z')
+const NOT_ELIGIBLE_YOUNGEST_AGE_DATE = new Date('2006-01-01T00:00:00.000Z')
+
+jest.mock('features/auth/settings')
+
+describe('useDatePickerErrorHandler', () => {
+  beforeEach(() => {
+    mockdate.set(CURRENT_DATE)
+    jest.useFakeTimers()
+  })
+
+  it('should not display the error message when the date is undefined', () => {
+    const { result } = renderHook(() => useDatePickerErrorHandler(undefined))
+    expect(result.current.isDisabled).toEqual(true)
+    expect(result.current.errorMessage).toEqual(null)
+  })
+
+  it('should not display the error message when the default selected date is selected', () => {
+    const { result } = renderHook(() => useDatePickerErrorHandler(DEFAULT_SELECTED_DATE))
+    expect(result.current.isDisabled).toEqual(true)
+    expect(result.current.errorMessage).toEqual(null)
+  })
+
+  it('should display the error message "une date dans le futur" when the selected date is in the futur', () => {
+    const message = 'Tu ne peux pas choisir une date dans le futur'
+    const { result } = renderHook(() => useDatePickerErrorHandler(FUTUR_DATE))
+    expect(result.current.isDisabled).toEqual(true)
+    expect(result.current.errorMessage).toEqual(message)
+  })
+
+  it('should display the error message "tu dois avoir 15 ans" when the selected date is too young', () => {
+    const message = 'Tu dois avoir au moins\u00a015\u00a0ans pour t’inscrire au pass Culture'
+    const { result } = renderHook(() => useDatePickerErrorHandler(NOT_ELIGIBLE_YOUNGEST_AGE_DATE))
+    expect(result.current.isDisabled).toEqual(true)
+    expect(result.current.errorMessage).toEqual(message)
+  })
+
+  it('should not display the error message when the user is exactly 15yo', () => {
+    const { result } = renderHook(() => useDatePickerErrorHandler(FIFTEEN_YEARS_OLD_FIRST_DAY_DATE))
+    expect(result.current.isDisabled).toEqual(false)
+    expect(result.current.errorMessage).toEqual(null)
+  })
+
+  it('should not display the error message when the date is equal or more than 15yo', () => {
+    const { result } = renderHook(() => useDatePickerErrorHandler(ELIGIBLE_AGE_DATE))
+    expect(result.current.isDisabled).toEqual(false)
+    expect(result.current.errorMessage).toEqual(null)
+  })
+})

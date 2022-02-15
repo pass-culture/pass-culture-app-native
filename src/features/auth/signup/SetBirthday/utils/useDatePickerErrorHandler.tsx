@@ -34,11 +34,7 @@ export const useDatePickerErrorHandler = (date?: Date) => {
       return setIsDisabled(true), setErrorMessage(null)
     }
     if (AGE < 0) {
-      return (
-        setIsDisabled(true),
-        setErrorMessage(t`Tu ne peux pas choisir une date dans le futur`),
-        setIsDisabled(true)
-      )
+      return setIsDisabled(true), setErrorMessage(t`Tu ne peux pas choisir une date dans le futur`)
     }
     if (AGE < 15) {
       return (
