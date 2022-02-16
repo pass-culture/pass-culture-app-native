@@ -1,28 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Touchable /> should render correctly 1`] = `
-<div
-  className="css-view-1dbjc4n"
-  onClick={[Function]}
-  onContextMenu={[Function]}
-  onKeyDown={[Function]}
-  style={
-    Object {
-      "MozTransitionProperty": "opacity",
-      "MozUserSelect": "none",
-      "WebkitTransitionDuration": "0s",
-      "WebkitTransitionProperty": "opacity",
-      "WebkitUserSelect": "none",
-      "cursor": "pointer",
-      "msTouchAction": "manipulation",
-      "msUserSelect": "none",
-      "touchAction": "manipulation",
-      "transitionDuration": "0s",
-      "transitionProperty": "opacity",
-      "userSelect": "none",
-    }
-  }
+<button
+  className="sc-bdvvtL iKGGoh"
   tabIndex="0"
+  type="button"
 >
   <div
     className="css-text-901oao"
@@ -30,5 +12,5 @@ exports[`<Touchable /> should render correctly 1`] = `
   >
     Touchable content
   </div>
-</div>
+</button>
 `;

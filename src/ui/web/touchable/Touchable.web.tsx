@@ -1,1 +1,14 @@
-export { TouchableOpacity as Touchable } from 'react-native'
+import styled from 'styled-components'
+
+import { appTouchableOpacityWebStyles } from 'ui/components/buttons/AppButton/styleUtils'
+
+export const Touchable = styled.button.attrs<{ onPress?: () => void }>(
+  // @ts-ignore will be remove in next ticket
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  ({ onPress, activeOpacity, ...rest }) => ({
+    tabIndex: '0',
+    type: 'button',
+    onClick: onPress,
+    ...rest,
+  })
+)(appTouchableOpacityWebStyles)
