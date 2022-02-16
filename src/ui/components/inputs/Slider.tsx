@@ -25,7 +25,7 @@ const RIGHT_CURSOR = 'RIGHT_CURSOR'
 
 export const Slider: React.FC<Props> = (props) => {
   const { appContentWidth } = useTheme()
-  const sliderContainerRer = useRef<View>(null)
+  const sliderContainerRef = useRef<View>(null)
 
   const min = props.min || DEFAULT_MIN
   const max = props.max || DEFAULT_MAX
@@ -75,8 +75,8 @@ export const Slider: React.FC<Props> = (props) => {
 
     let leftCursor: Element, rightCursor: Element
     if (Platform.OS === 'web') {
-      if (viewRef.current) {
-        const htmlRef = viewRef.current as unknown as HTMLDivElement
+      if (sliderContainerRef.current) {
+        const htmlRef = sliderContainerRef.current as unknown as HTMLDivElement
         ;[leftCursor, rightCursor] = htmlRef.querySelectorAll('[class*=cursor]')
         leftCursor?.addEventListener('keydown', updateLeftCursor)
         rightCursor?.addEventListener('keydown', updateRightCursor)
@@ -100,7 +100,7 @@ export const Slider: React.FC<Props> = (props) => {
         </Typo.ButtonText>
       )}
       <Spacer.Column numberOfSpaces={4} />
-      <View ref={sliderContainerRer} testID="slider">
+      <View ref={sliderContainerRef} testID="slider">
         <StyledMultiSlider
           values={values}
           allowOverlap={true}
