@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import React, { useState } from 'react'
 import DatePicker from 'react-native-date-picker'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { DateInput } from 'features/auth/signup/SetBirthday/atoms/DateInput/DateInput'
 import { DatePickerProps } from 'features/auth/signup/SetBirthday/DatePicker/types'
@@ -28,11 +29,20 @@ export function DatePickerSpinner(props: DatePickerProps) {
     }
   }
 
+  const birthdateInputErrorId = uuidv4()
+
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={5} />
       <DateInput date={date} isFocus={!isDisabled} isError={!!errorMessage} />
-      {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={2} />}
+      {!!errorMessage && (
+        <InputError
+          visible
+          messageId={errorMessage}
+          numberOfSpacesTop={2}
+          relatedInputId={birthdateInputErrorId}
+        />
+      )}
       <Spacer.Column numberOfSpaces={5} />
       <SpinnerDatePicker
         testID="datePicker"
@@ -43,6 +53,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
         maximumDate={MAXIMUM_SPINNER_DATE}
         minimumDate={MINIMUM_DATE}
         androidVariant="nativeAndroid"
+        aria-describedby={birthdateInputErrorId}
       />
       <Spacer.Column numberOfSpaces={2} />
       <ButtonPrimary

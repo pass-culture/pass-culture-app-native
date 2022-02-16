@@ -17,6 +17,7 @@ type Props = {
   children?: never
   noBorderRadiusRight?: boolean
   noBorderRadiusLeft?: boolean
+  ariaLabel?: string
 }
 
 export function DropDown({
@@ -26,6 +27,7 @@ export function DropDown({
   onChange,
   noBorderRadiusRight = false,
   noBorderRadiusLeft = false,
+  ariaLabel,
 }: Props) {
   const onChangeDate: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
     onChange(event.target.value)
@@ -39,6 +41,7 @@ export function DropDown({
       <Spacer.Column numberOfSpaces={2} />
       <SelectContainer>
         <StyledSelect
+          aria-label={ariaLabel}
           data-testid={`select-${label}`}
           role="listbox"
           id={dropDownInputID}

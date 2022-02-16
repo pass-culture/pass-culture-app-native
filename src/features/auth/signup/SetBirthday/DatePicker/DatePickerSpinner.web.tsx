@@ -56,6 +56,8 @@ export function DatePickerSpinner(props: DatePickerProps) {
     }
   }
 
+  const birthdateInputErrorId = uuidv4()
+
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={2} />
@@ -65,7 +67,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
           visible
           messageId={errorMessage}
           numberOfSpacesTop={2}
-          relatedInputId={dateInputErrorId}
+          relatedInputId={birthdateInputErrorId}
         />
       )}
       <Spacer.Column numberOfSpaces={2} />
@@ -75,7 +77,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
           valueGroups={date}
           optionGroups={optionGroups}
           onChange={onDateChange}
-          aria-describedby={dateInputErrorId}
+          aria-describedby={birthdateInputErrorId}
         />
       </CalendarPickerWrapper>
       <Spacer.Column numberOfSpaces={2} />

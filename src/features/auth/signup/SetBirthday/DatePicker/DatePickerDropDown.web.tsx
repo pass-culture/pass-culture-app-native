@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { useState } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { DateInputDesktop } from 'features/auth/signup/SetBirthday/atoms/DateInput/DateInputDesktop.web'
 import { DatePickerProps } from 'features/auth/signup/SetBirthday/DatePicker/types'
@@ -21,11 +22,20 @@ export function DatePickerDropDown(props: DatePickerProps) {
     }
   }
 
+  const birthdateInputErrorId = uuidv4()
+
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={2} />
-      <DateInputDesktop onDateChange={setDate} />
-      {!!errorMessage && <InputError visible messageId={errorMessage} numberOfSpacesTop={2} />}
+      <DateInputDesktop onDateChange={setDate} aria-describedby={birthdateInputErrorId} />
+      {!!errorMessage && (
+        <InputError
+          visible
+          messageId={errorMessage}
+          numberOfSpacesTop={2}
+          relatedInputId={birthdateInputErrorId}
+        />
+      )}
       <Spacer.Column numberOfSpaces={errorMessage ? 6 : 12} />
       <ButtonPrimary
         wording={t`Continuer`}

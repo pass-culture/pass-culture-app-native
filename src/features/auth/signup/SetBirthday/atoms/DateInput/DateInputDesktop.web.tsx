@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import React, { useMemo, useState, FunctionComponent, useEffect } from 'react'
 import styled from 'styled-components/native'
 
@@ -83,6 +84,7 @@ export const DateInputDesktop: FunctionComponent<Props> = ({ onDateChange }) => 
           options={optionGroups.days.map(String)}
           onChange={onPartialDateChange('day')}
           noBorderRadiusRight
+          ariaLabel={t`Entrée pour le jour de la date de naissance`}
         />
       </DropDownContainer>
       <Spacer.Row numberOfSpaces={2} />
@@ -94,6 +96,7 @@ export const DateInputDesktop: FunctionComponent<Props> = ({ onDateChange }) => 
           onChange={onPartialDateChange('month')}
           noBorderRadiusRight
           noBorderRadiusLeft
+          ariaLabel={t`Entrée pour le mois de la date de naissance`}
         />
       </DropDownContainer>
       <Spacer.Row numberOfSpaces={2} />
@@ -104,6 +107,7 @@ export const DateInputDesktop: FunctionComponent<Props> = ({ onDateChange }) => 
           options={optionGroups.years.map(String)}
           onChange={onPartialDateChange('year')}
           noBorderRadiusLeft
+          ariaLabel={t`Entrée pour l'année de la date de naissance`}
         />
       </DropDownContainer>
     </Container>

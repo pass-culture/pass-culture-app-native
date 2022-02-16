@@ -71,10 +71,6 @@ msgstr "18 ans"
 msgid "1er tutoriel"
 msgstr "1er tutoriel"
 
-#: src/features/auth/signup/SetBirthday/DateInput/DateInputDesktop.tsx
-msgid "AAAA"
-msgstr "AAAA"
-
 #: src/features/identityCheck/pages/Stepper.tsx
 #: src/features/profile/pages/ConfirmDeleteProfile.tsx
 msgid "Abandonner"
@@ -623,9 +619,9 @@ msgstr "Contacter le support"
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
-#: src/features/auth/signup/SetBirthday/DatePicker/DatePickerTouch.web.tsx
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-#: src/features/auth/signup/SetBirthday/SetBirthday.web.tsx
+#: src/features/auth/signup/SetBirthday/DatePicker/DatePickerDropDown.web.tsx
+#: src/features/auth/signup/SetBirthday/DatePicker/DatePickerSpinner.tsx
+#: src/features/auth/signup/SetBirthday/DatePicker/DatePickerSpinner.web.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
 #: src/features/auth/signup/SetPassword/SetPassword.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
@@ -942,29 +938,13 @@ msgstr "Entrée du code de confirmation"
 msgid "Entrée pour l'adresse"
 msgstr "Entrée pour l'adresse"
 
-#: src/features/auth/signup/SetBirthday/DateInput/DateInputDesktop.tsx
-msgid "Entrée pour l'année jour de la date de naissance"
-msgstr "Entrée pour l'année jour de la date de naissance"
-
 #: src/ui/components/inputs/EmailInput.tsx
 msgid "Entrée pour l'email"
 msgstr "Entrée pour l'email"
 
-#: src/features/auth/signup/SetBirthday/DateInput/DateInputDesktop.tsx
-msgid "Entrée pour la date de naissance"
-msgstr "Entrée pour la date de naissance"
-
 #: src/features/identityCheck/pages/profile/SetCity.tsx
 msgid "Entrée pour le code postal"
 msgstr "Entrée pour le code postal"
-
-#: src/features/auth/signup/SetBirthday/DateInput/DateInputDesktop.tsx
-msgid "Entrée pour le jour de la date de naissance"
-msgstr "Entrée pour le jour de la date de naissance"
-
-#: src/features/auth/signup/SetBirthday/DateInput/DateInputDesktop.tsx
-msgid "Entrée pour le mois de la date de naissance"
-msgstr "Entrée pour le mois de la date de naissance"
 
 #: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Entrée pour le nom"
@@ -1265,10 +1245,6 @@ msgstr "Interrupteur géolocalisation"
 msgid "J'ai compris"
 msgstr "J'ai compris"
 
-#: src/features/auth/signup/SetBirthday/DateInput/DateInputDesktop.tsx
-msgid "JJ"
-msgstr "JJ"
-
 #: src/features/search/components/SearchLandingPage.tsx
 msgid "Je cherche"
 msgstr "Je cherche"
@@ -1507,10 +1483,6 @@ msgstr "Localisation"
 #: src/libs/firestore/maintenance.ts
 msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
-
-#: src/features/auth/signup/SetBirthday/DateInput/DateInputDesktop.tsx
-msgid "MM"
-msgstr "MM"
 
 #: src/features/bookings/components/BookingPropertiesSection.tsx
 msgid "Ma réservation"
@@ -2647,8 +2619,7 @@ msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget."
 msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 
-#: src/features/auth/signup/SetBirthday/DatePicker/DatePickerTouch.web.tsx
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+#: src/features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler.tsx
 msgid "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
 msgstr "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
 
@@ -2680,7 +2651,7 @@ msgstr "Tu n'as pas reçu le sms ?"
 msgid "Tu ne fais pas partie de la phase de test"
 msgstr "Tu ne fais pas partie de la phase de test"
 
-#: src/features/auth/signup/SetBirthday/DatePicker/DatePickerTouch.web.tsx
+#: src/features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler.tsx
 msgid "Tu ne peux pas choisir une date dans le futur"
 msgstr "Tu ne peux pas choisir une date dans le futur"
 
