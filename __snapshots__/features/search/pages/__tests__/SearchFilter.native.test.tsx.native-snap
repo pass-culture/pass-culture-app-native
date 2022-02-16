@@ -617,6 +617,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                         onResponderTerminate={[Function]}
                         onResponderTerminationRequest={[Function]}
                         onStartShouldSetResponder={[Function]}
+                        testID="slider-control"
                       >
                         <View
                           style={
@@ -2241,6 +2242,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                         onResponderTerminate={[Function]}
                         onResponderTerminationRequest={[Function]}
                         onStartShouldSetResponder={[Function]}
+                        testID="slider-control"
                       >
                         <View
                           style={
@@ -2335,6 +2337,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                         onResponderTerminate={[Function]}
                         onResponderTerminationRequest={[Function]}
                         onStartShouldSetResponder={[Function]}
+                        testID="slider-control"
                       >
                         <View
                           style={

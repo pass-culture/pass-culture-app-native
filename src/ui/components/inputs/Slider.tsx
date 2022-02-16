@@ -77,7 +77,7 @@ export const Slider: React.FC<Props> = (props) => {
     if (Platform.OS === 'web') {
       if (sliderContainerRef.current) {
         const htmlRef = sliderContainerRef.current as unknown as HTMLDivElement
-        ;[leftCursor, rightCursor] = htmlRef.querySelectorAll('[class*=cursor]')
+        ;[leftCursor, rightCursor] = htmlRef.querySelectorAll('[data-testid="slider-control"]')
         leftCursor?.addEventListener('keydown', updateLeftCursor)
         rightCursor?.addEventListener('keydown', updateRightCursor)
       }
