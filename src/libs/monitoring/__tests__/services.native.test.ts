@@ -2,7 +2,7 @@ import * as SentryModule from '@sentry/react-native'
 
 import { env } from 'libs/environment'
 
-import { version } from '../../../../package.json'
+import { version, build } from '../../../../package.json'
 import { eventMonitoring } from '../services'
 
 describe('eventMonitoring', () => {
@@ -10,6 +10,7 @@ describe('eventMonitoring', () => {
     it("should call sentry's init() when enabled", () => {
       eventMonitoring.init({ enabled: true })
       expect(SentryModule.init).toBeCalledWith({
+        dist: `${build}`,
         dsn: env.SENTRY_DSN,
         environment: 'development',
         release: version,

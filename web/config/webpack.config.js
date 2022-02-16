@@ -683,26 +683,24 @@ module.exports = function (webpackEnv) {
           // The formatter is invoked directly in WebpackDevServerUtils during development
           formatter: isEnvProduction ? typescriptFormatter : undefined,
         }),
-        new SentryWebpackPlugin({
-          // 1. sentry-cli configuration is in the file ~/.sentryclirc
-          //    See https://docs.sentry.io/product/cli/configuration/ for details
-          // 2. Other SentryWebpackPlugin configuration
-          include: paths.appSrc,
-          ignore: [paths.appNodeModules, paths.appWebpackConfig],
-          dist: appPackageJson.version,
-          validate: true,
+        isEnvProduction && new SentryWebpackPlugin({
+          include: paths.appBuild,
+          rewrite: true,
+          release: appPackageJson.version,
+          dist: `${appPackageJson.build}`,
+          cleanArtifacts: env.raw.ENV === 'testing',
+          finalize: env.raw.ENV !== 'testing',
           deploy: {
-            env: env.raw.ENV,
-            name: env.raw.ENV,
+            env: isEnvDevelopment ? 'development' : env.raw.ENV,
+            name: isEnvDevelopment ? 'development' : env.raw.ENV,
             url: env.raw.APP_PUBLIC_URL,
           },
-          errorHandler: (err, invokeErr, compilation) => {
-            compilation.warnings.push('Sentry CLI Plugin: ' + err.message);
-            console.error(err);
-            invokeErr()
-          }
+          debug: isEnvDevelopment,
+          dryRun: isEnvDevelopment,
+          // -- for testing
+          // debug: true,
+          // dryRun: false,
         }),
-
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.
     // Tell webpack to provide empty mocks for them so importing them works.
