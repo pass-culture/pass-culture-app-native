@@ -261,7 +261,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       </Text>
     </View>
     <View
-      accessibilityLabel="button-icon"
+      accessibilityLabel="Contacter le support"
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -290,7 +290,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
           "width": "100%",
         }
       }
-      testID="button-icon"
+      testID="Contacter le support"
     >
       <View
         height={20}
@@ -418,7 +418,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         }
       />
       <View
-        accessibilityLabel="button-icon"
+        accessibilityLabel="Retourner à l'accueil"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -447,7 +447,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
             "width": "100%",
           }
         }
-        testID="button-icon"
+        testID="Retourner à l'accueil"
       >
         <View
           height={20}

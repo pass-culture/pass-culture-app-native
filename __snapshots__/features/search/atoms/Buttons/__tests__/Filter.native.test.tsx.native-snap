@@ -2,6 +2,7 @@
 
 exports[`Filter component should render correctly 1`] = `
 <View
+  accessibilityLabel="Afficher les filtres"
   accessible={true}
   collapsable={false}
   focusable={true}

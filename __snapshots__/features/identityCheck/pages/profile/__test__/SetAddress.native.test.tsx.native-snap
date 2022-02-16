@@ -355,7 +355,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="Continuer"
+              accessibilityLabel="Continuer vers l'étape suivante"
               accessible={true}
               collapsable={false}
               focusable={false}
