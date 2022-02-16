@@ -214,12 +214,12 @@ describe('BookingDetails', () => {
         )
       ).toBeTruthy()
       expect(renderAPI.queryByText('Mes réservations terminées')).toBeTruthy()
-      expect(renderAPI.queryByText(`Retourner l'accueil`)).toBeTruthy()
+      expect(renderAPI.queryByText(`Retourner à l'accueil`)).toBeTruthy()
 
       fireEvent.press(renderAPI.getByText('Mes réservations terminées'))
       expect(navigate).toBeCalledWith('EndedBookings')
 
-      fireEvent.press(renderAPI.getByText(`Retourner l'accueil`))
+      fireEvent.press(renderAPI.getByText(`Retourner à l'accueil`))
       expect(mockedNavigateToHome).toBeCalled()
     })
   })

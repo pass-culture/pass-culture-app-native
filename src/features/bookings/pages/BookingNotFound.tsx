@@ -45,7 +45,11 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
         icon={NoBookings}
         buttons={[
           <ButtonPrimaryWhite key={1} wording={t`Mes réservations terminées`} onPress={onPress} />,
-          <ButtonTertiaryWhite key={2} wording={t`Retourner l'accueil`} onPress={navigateToHome} />,
+          <ButtonTertiaryWhite
+            key={2}
+            wording={t`Retourner à l'accueil`}
+            onPress={navigateToHome}
+          />,
         ]}>
         <StyledBody>{t`Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N'hésite pas à retrouver la liste de tes réservations terminées et annulées pour t'en assurer.`}</StyledBody>
       </GenericInfoPage>

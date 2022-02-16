@@ -192,7 +192,7 @@ describe('Profile component', () => {
       const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
       const { getByTestId } = await renderProfile()
 
-      const row = getByTestId('Questions fréquentes')
+      const row = getByTestId(`Centre d'aide`)
       fireEvent.press(row)
 
       expect(openUrl).toBeCalledWith(env.FAQ_LINK)
