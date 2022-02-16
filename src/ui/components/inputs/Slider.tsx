@@ -25,7 +25,7 @@ const RIGHT_CURSOR = 'RIGHT_CURSOR'
 
 export const Slider: React.FC<Props> = (props) => {
   const { appContentWidth } = useTheme()
-  const viewRef = useRef<View>(null)
+  const sliderContainerRer = useRef<View>(null)
 
   const min = props.min || DEFAULT_MIN
   const max = props.max || DEFAULT_MAX
@@ -100,7 +100,7 @@ export const Slider: React.FC<Props> = (props) => {
         </Typo.ButtonText>
       )}
       <Spacer.Column numberOfSpaces={4} />
-      <View ref={viewRef} testID="slider">
+      <View ref={sliderContainerRer} testID="slider">
         <StyledMultiSlider
           values={values}
           allowOverlap={true}
