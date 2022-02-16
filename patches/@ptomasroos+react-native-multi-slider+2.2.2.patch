@@ -1,0 +1,13 @@
+diff --git a/node_modules/@ptomasroos/react-native-multi-slider/DefaultMarker.js b/node_modules/@ptomasroos/react-native-multi-slider/DefaultMarker.js
+index aeb46ff..cbd8591 100644
+--- a/node_modules/@ptomasroos/react-native-multi-slider/DefaultMarker.js
++++ b/node_modules/@ptomasroos/react-native-multi-slider/DefaultMarker.js
+@@ -4,7 +4,7 @@ import { View, StyleSheet, Platform, TouchableHighlight } from 'react-native';
+ class DefaultMarker extends React.Component {
+   render() {
+     return (
+-      <TouchableHighlight>
++      <TouchableHighlight testID="slider-control">
+         <View
+           style={
+             this.props.enabled
