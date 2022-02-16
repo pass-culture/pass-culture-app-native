@@ -16,7 +16,7 @@ import { QuitSignupModal } from 'features/auth/components/QuitSignupModal'
 import { useAppSettings } from 'features/auth/settings'
 import { SignupStep } from 'features/auth/signup/enums'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
-import { contactSupport } from 'features/auth/support.services'
+import { contactSupport, supportUrl } from 'features/auth/support.services'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
@@ -41,6 +41,7 @@ import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
+import { A } from 'ui/web/link/A'
 
 const CODE_INPUT_LENGTH = 6
 const AGENT_TYPE = Platform.select({
@@ -285,12 +286,14 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
           <HelpRow>
             <Caption>{t`Si tu n’arrives pas à valider ton code tu peux`}</Caption>
             {appContentWidth <= 320 ? <Break /> : <Spacer.Row numberOfSpaces={1} />}
-            <ButtonQuaternary
-              wording={t`Contacter le support`}
-              icon={Email}
-              onPress={contactSupport.forPhoneNumberConfirmation}
-              inline
-            />
+            <A href={supportUrl.forPhoneNumberConfirmation}>
+              <ButtonQuaternary
+                wording={t`Contacter le support`}
+                icon={Email}
+                onPress={contactSupport.forPhoneNumberConfirmation}
+                inline
+              />
+            </A>
           </HelpRow>
         </ModalContent>
       </BottomContentPage>

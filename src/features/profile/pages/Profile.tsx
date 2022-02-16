@@ -36,6 +36,7 @@ import { SignOut } from 'ui/svg/icons/SignOut'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
+import { A } from 'ui/web/link/A'
 import { Link } from 'ui/web/link/Link'
 
 import Package from '../../../../package.json'
@@ -177,20 +178,24 @@ export const Profile: React.FC = () => {
               icon={LifeBuoy}
             />
           </Link>
-          <Row
-            title={t`Centre d'aide`}
-            type="clickable"
-            onPress={() => openUrl(env.FAQ_LINK)}
-            icon={ExternalSite}
-          />
+          <A href={env.FAQ_LINK}>
+            <Row
+              title={t`Centre d'aide`}
+              type="clickable"
+              onPress={() => openUrl(env.FAQ_LINK)}
+              icon={ExternalSite}
+            />
+          </A>
         </Section>
         <Section title={t`Autres`}>
-          <Row
-            title={t`Accessibilité`}
-            type="clickable"
-            onPress={() => openUrl(env.ACCESSIBILITY_LINK)}
-            icon={ExternalSite}
-          />
+          <A href={env.ACCESSIBILITY_LINK}>
+            <Row
+              title={t`Accessibilité`}
+              type="clickable"
+              onPress={() => openUrl(env.ACCESSIBILITY_LINK)}
+              icon={ExternalSite}
+            />
+          </A>
           <Link to={{ screen: 'LegalNotices', params: undefined }} style={styles.link}>
             <Row
               title={t`Mentions légales`}

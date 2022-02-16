@@ -10,14 +10,21 @@ class ContactSupportError extends Error {
   }
 }
 
+const subject = encodeURI('Confirmation de numéro de téléphone')
+export const supportUrl = {
+  forGenericQuestion: `mailto:${env.SUPPORT_EMAIL_ADDRESS}`,
+  forSignupConfirmationEmailNotReceived: env.FAQ_LINK_SIGNUP_CONFIRMATION_EMAIL_NOT_RECEIVED,
+  forPhoneNumberConfirmation: `mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}`,
+}
+
 export const contactSupport = {
   forGenericQuestion() {
-    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}`, { shouldLogEvent: false })
+    openUrl(supportUrl.forGenericQuestion, { shouldLogEvent: false })
       .then(() => analytics.logMailTo('forGenericQuestion'))
       .catch(() => eventMonitoring.captureException(new ContactSupportError('GenericQuestion')))
   },
   forSignupConfirmationEmailNotReceived() {
-    openUrl(env.FAQ_LINK_SIGNUP_CONFIRMATION_EMAIL_NOT_RECEIVED, { shouldLogEvent: false })
+    openUrl(supportUrl.forSignupConfirmationEmailNotReceived, { shouldLogEvent: false })
       .then(() => analytics.logMailTo('forSignupConfirmationEmailNotReceived'))
       .catch(() =>
         eventMonitoring.captureException(
@@ -26,8 +33,7 @@ export const contactSupport = {
       )
   },
   forPhoneNumberConfirmation() {
-    const subject = encodeURI('Confirmation de numéro de téléphone')
-    openUrl(`mailto:${env.SUPPORT_EMAIL_ADDRESS}?subject=${subject}`, { shouldLogEvent: false })
+    openUrl(supportUrl.forPhoneNumberConfirmation, { shouldLogEvent: false })
       .then(() => analytics.logMailTo('forPhoneNumberConfirmation'))
       .catch(() =>
         eventMonitoring.captureException(new ContactSupportError('PhoneNumberConfirmation'))

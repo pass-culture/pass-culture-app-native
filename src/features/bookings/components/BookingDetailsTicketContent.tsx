@@ -14,6 +14,7 @@ import { openUrl } from 'features/navigation/helpers'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
 import { getSpacing, Typo } from 'ui/theme'
+import { A } from 'ui/web/link/A'
 
 interface BookingDetailsTicketContentProps {
   booking: BookingReponse
@@ -35,12 +36,14 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
   const shouldDisplayEAN = offer.extraData?.isbn && categoryId === CategoryIdEnum.LIVRE
 
   const accessOfferButton = (
-    <ButtonWithLinearGradient
-      wording={t`Accéder à l'offre`}
-      isExternal
-      isDisabled={false}
-      onPress={accessExternalOffer}
-    />
+    <A href={offer.url || undefined}>
+      <ButtonWithLinearGradient
+        wording={t`Accéder à l'offre`}
+        isExternal
+        isDisabled={false}
+        onPress={accessExternalOffer}
+      />
+    </A>
   )
 
   const isDigitalAndActivationCodeEnabled =

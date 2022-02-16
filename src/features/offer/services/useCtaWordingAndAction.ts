@@ -29,6 +29,7 @@ interface Props {
 }
 interface ICTAWordingAndAction {
   isExternal?: boolean
+  url?: string
   wording?: string
   onPress?: () => void
 }
@@ -62,6 +63,7 @@ export const getCtaWordingAndAction = ({
 
     return {
       isExternal: true,
+      url: externalTicketOfficeUrl,
       wording: subcategory.isEvent ? t`Accéder à la billetterie` : t`Accéder à l'offre`,
       onPress: () => openUrl(externalTicketOfficeUrl),
     }
