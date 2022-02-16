@@ -2,7 +2,7 @@ import * as SentryModule from '@sentry/react'
 
 import { env } from 'libs/environment'
 
-import { version } from '../../../../package.json'
+import { version, build } from '../../../../package.json'
 import { eventMonitoring } from '../services'
 
 describe('eventMonitoring', () => {
@@ -13,6 +13,7 @@ describe('eventMonitoring', () => {
         dsn: env.SENTRY_DSN,
         environment: 'development',
         release: version,
+        dist: `${build}`,
         integrations: [expect.anything()],
         tracesSampleRate: 0.01,
       })
