@@ -167,6 +167,7 @@ export function ChangeEmail() {
             <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
               <ButtonPrimary
                 wording={t`Enregistrer`}
+                accessibilityLabel={t`Enregistrer les modifications`}
                 onPress={submitEmailChange}
                 disabled={isSubmitButtonDisabled}
               />

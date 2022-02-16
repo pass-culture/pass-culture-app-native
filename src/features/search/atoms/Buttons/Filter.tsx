@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useFilterCount } from 'features/search/utils/useFilterCount'
+import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { Filter as FilterIconDefault } from 'ui/svg/icons/Filter'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -22,7 +23,9 @@ export const Filter: React.FC = () => {
   }
 
   return (
-    <Container onPress={onPress} testID="FilterButton">
+    <Container
+      onPress={onPress}
+      {...accessibilityAndTestId(t`Afficher les filtres`, 'FilterButton')}>
       <StyledLinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}

@@ -134,7 +134,12 @@ export const SetCity = () => {
         </React.Fragment>
       }
       fixedBottomChildren={
-        <ButtonPrimary onPress={submitCity} wording={t`Continuer`} disabled={disabled} />
+        <ButtonPrimary
+          onPress={submitCity}
+          wording={t`Continuer`}
+          accessibilityLabel={t`Continuer vers l'étape suivante`}
+          disabled={disabled}
+        />
       }
     />
   )

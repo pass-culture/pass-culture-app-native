@@ -92,6 +92,7 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
         <Spacer.Flex />
         <ButtonPrimary
           wording={t`Enregistrer`}
+          accessibilityLabel={t`Enregistrer les modifications`}
           onPress={save}
           disabled={isSaveButtonDisabled}
           center

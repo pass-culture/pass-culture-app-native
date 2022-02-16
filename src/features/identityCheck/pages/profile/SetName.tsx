@@ -83,7 +83,12 @@ export const SetName = () => {
         </Form.MaxWidth>
       }
       fixedBottomChildren={
-        <ButtonPrimary wording={t`Continuer`} onPress={submitName} disabled={disabled} />
+        <ButtonPrimary
+          wording={t`Continuer`}
+          accessibilityLabel={t`Continuer vers l'étape suivante`}
+          onPress={submitName}
+          disabled={disabled}
+        />
       }
     />
   )

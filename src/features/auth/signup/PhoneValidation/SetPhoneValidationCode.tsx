@@ -260,6 +260,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
             <ButtonPrimary
               testID="Continuer"
               wording={t`Continuer`}
+              accessibilityLabel={t`Continuer vers l'étape suivante`}
               disabled={!codeInputState.isValid}
               onPress={validateCode}
               isLoading={isLoading}

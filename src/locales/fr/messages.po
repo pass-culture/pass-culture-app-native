@@ -161,6 +161,10 @@ msgstr "Afficher le mot de passe"
 msgid "Afficher les 999+ résultats"
 msgstr "Afficher les 999+ résultats"
 
+#: src/features/search/atoms/Buttons/Filter.tsx
+msgid "Afficher les filtres"
+msgstr "Afficher les filtres"
+
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "Aide financière 15 ans"
 msgstr "Aide financière 15 ans"
@@ -643,6 +647,13 @@ msgstr "Continuer la vérification"
 msgid "Continuer vers l'étape"
 msgstr "Continuer vers l'étape"
 
+#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
+#: src/features/identityCheck/pages/profile/SetAddress.tsx
+#: src/features/identityCheck/pages/profile/SetCity.tsx
+#: src/features/identityCheck/pages/profile/SetName.tsx
+msgid "Continuer vers l'étape suivante"
+msgstr "Continuer vers l'étape suivante"
+
 #: src/features/_marketingAndCommunication/atoms/DeeplinkItem.tsx
 #: src/libs/share/WebShareModal.web.tsx
 #: src/ui/svg/icons/Duplicate.tsx
@@ -906,6 +917,13 @@ msgstr "Encore un peu de patience : en fonction de ton âge, tu pourras complé
 #: src/features/profile/pages/NotificationSettings.tsx
 msgid "Enregistrer"
 msgstr "Enregistrer"
+
+#: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
+#: src/features/profile/pages/ChangePassword/ChangePassword.tsx
+#: src/features/profile/pages/ConsentSettings.tsx
+#: src/features/profile/pages/NotificationSettings.tsx
+msgid "Enregistrer les modifications"
+msgstr "Enregistrer les modifications"
 
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
 msgid "Entre ton adresse"
@@ -2276,6 +2294,11 @@ msgstr "Réservations terminées"
 msgid "Réserver"
 msgstr "Réserver"
 
+#: src/features/favorites/atoms/BookingButton.tsx
+#: src/features/favorites/atoms/BookingButton.tsx
+msgid "Réserver l'offre"
+msgstr "Réserver l'offre"
+
 #: src/features/favorites/components/NotConnectedFavorites.tsx
 #: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx
 #: src/features/profile/components/LoggedOutHeader.tsx
@@ -2398,6 +2421,10 @@ msgstr "Suppression profil confirmée"
 #: src/features/favorites/atoms/Favorite.tsx
 msgid "Supprimer"
 msgstr "Supprimer"
+
+#: src/features/favorites/atoms/Favorite.tsx
+msgid "Supprimer l'offre de mes favoris"
+msgstr "Supprimer l'offre de mes favoris"
 
 #: src/features/profile/pages/ConfirmDeleteProfile.tsx
 msgid "Supprimer mon compte"
