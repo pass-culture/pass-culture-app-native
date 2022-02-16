@@ -1,6 +1,9 @@
 import { renderHook } from '@testing-library/react-hooks'
 import mockdate from 'mockdate'
 
+import { analytics } from 'libs/analytics'
+import { dateDiffInFullYears } from 'libs/dates'
+
 import { useDatePickerErrorHandler } from './useDatePickerErrorHandler'
 
 const CURRENT_DATE = new Date('2020-12-01T00:00:00.000Z')
@@ -9,6 +12,7 @@ const DEFAULT_SELECTED_DATE = new Date('2006-12-01T00:00:00.000Z')
 const ELIGIBLE_AGE_DATE = new Date('2003-12-01T00:00:00.000Z')
 const FIFTEEN_YEARS_OLD_FIRST_DAY_DATE = new Date('2005-12-01T00:00:00.000Z')
 const NOT_ELIGIBLE_YOUNGEST_AGE_DATE = new Date('2006-01-01T00:00:00.000Z')
+const AGE = dateDiffInFullYears(new Date(NOT_ELIGIBLE_YOUNGEST_AGE_DATE), CURRENT_DATE)
 
 jest.mock('features/auth/settings')
 
@@ -54,5 +58,17 @@ describe('useDatePickerErrorHandler', () => {
     const { result } = renderHook(() => useDatePickerErrorHandler(ELIGIBLE_AGE_DATE))
     expect(result.current.isDisabled).toEqual(false)
     expect(result.current.errorMessage).toEqual(null)
+  })
+
+  describe('- analytics -', () => {
+    it('should not log SignUpTooYoung if the user is 15 years old or more', () => {
+      renderHook(() => useDatePickerErrorHandler(ELIGIBLE_AGE_DATE))
+      expect(analytics.logSignUpTooYoung).not.toBeCalled()
+    })
+
+    it('should log SignUpTooYoung if the user is 14 years old or less', () => {
+      renderHook(() => useDatePickerErrorHandler(NOT_ELIGIBLE_YOUNGEST_AGE_DATE))
+      expect(analytics.logSignUpTooYoung).toBeCalledWith(AGE)
+    })
   })
 })

@@ -66,7 +66,7 @@ Object {
                 >
                   <select
                     class="sc-dJjYzT sc-kfPuZi  eVyUPp"
-                    data-testid="select"
+                    data-testid="select-Jour"
                     id="testUuidV4"
                     role="listbox"
                   >
@@ -370,7 +370,7 @@ Object {
                 >
                   <select
                     class="sc-dJjYzT sc-kfPuZi  eVxVlx"
-                    data-testid="select"
+                    data-testid="select-Mois"
                     id="testUuidV4"
                     role="listbox"
                   >
@@ -522,7 +522,7 @@ Object {
                 >
                   <select
                     class="sc-dJjYzT sc-kfPuZi  ceOeWJ"
-                    data-testid="select"
+                    data-testid="select-Année"
                     id="testUuidV4"
                     role="listbox"
                   >
@@ -1414,6 +1414,7 @@ Object {
           />
           <button
             class="sc-bdvvtL kwQCoR sc-hKwDye gqAQWB"
+            data-testid="date-picker-dropdown-submit-button"
             disabled=""
             type="button"
           >
@@ -1495,7 +1496,7 @@ Object {
               >
                 <select
                   class="sc-dJjYzT sc-kfPuZi  eVyUPp"
-                  data-testid="select"
+                  data-testid="select-Jour"
                   id="testUuidV4"
                   role="listbox"
                 >
@@ -1799,7 +1800,7 @@ Object {
               >
                 <select
                   class="sc-dJjYzT sc-kfPuZi  eVxVlx"
-                  data-testid="select"
+                  data-testid="select-Mois"
                   id="testUuidV4"
                   role="listbox"
                 >
@@ -1951,7 +1952,7 @@ Object {
               >
                 <select
                   class="sc-dJjYzT sc-kfPuZi  ceOeWJ"
-                  data-testid="select"
+                  data-testid="select-Année"
                   id="testUuidV4"
                   role="listbox"
                 >
@@ -2843,6 +2844,7 @@ Object {
         />
         <button
           class="sc-bdvvtL kwQCoR sc-hKwDye gqAQWB"
+          data-testid="date-picker-dropdown-submit-button"
           disabled=""
           type="button"
         >
@@ -2975,7 +2977,7 @@ Object {
             />
             <div
               class="css-view-1dbjc4n"
-              style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(182,0,37,1.00); border-right-color: rgba(182,0,37,1.00); border-bottom-color: rgba(182,0,37,1.00); border-left-color: rgba(182,0,37,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+              style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
             >
               <div
                 class="css-text-901oao"
@@ -2983,43 +2985,7 @@ Object {
                 id="testUuidV4"
                 style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
               >
-                14 février 2006
-              </div>
-            </div>
-          </div>
-          <div
-            role="alert"
-          >
-            <div
-              class="css-view-1dbjc4n"
-              data-testid="input-error-top-spacer"
-              style="height: 8px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="align-items: center; flex-direction: row; max-width: 500px; width: 100%;"
-            >
-              <div
-                class="css-view-1dbjc4n"
-                data-testid="rule-icon-warn"
-              >
-                <div
-                  class="css-text-901oao"
-                  dir="auto"
-                >
-                  rule-icon-warn-SVG-Mock
-                </div>
-              </div>
-              <div
-                class="css-view-1dbjc4n"
-                style="width: 4px;"
-              />
-              <div
-                class="css-text-901oao"
-                dir="auto"
-                style="color: rgb(182, 0, 37); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-left: 4px;"
-              >
-                Tu dois avoir au moins 15 ans pour t’inscrire au pass Culture
+                1 décembre 2006
               </div>
             </div>
           </div>
@@ -3043,10 +3009,10 @@ Object {
                 >
                   <div
                     class="picker-scroller"
-                    style="transform: translate3d(0, -378px, 0);"
+                    style="transform: translate3d(0, 90px, 0);"
                   >
                     <div
-                      class="picker-item"
+                      class="picker-item picker-item-selected"
                       style="height: 36px; line-height: 36px;"
                     >
                       1
@@ -3124,7 +3090,7 @@ Object {
                       13
                     </div>
                     <div
-                      class="picker-item picker-item-selected"
+                      class="picker-item"
                       style="height: 36px; line-height: 36px;"
                     >
                       14
@@ -3213,6 +3179,24 @@ Object {
                     >
                       28
                     </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      29
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      30
+                    </div>
+                    <div
+                      class="picker-item"
+                      style="height: 36px; line-height: 36px;"
+                    >
+                      31
+                    </div>
                   </div>
                 </div>
                 <div
@@ -3220,7 +3204,7 @@ Object {
                 >
                   <div
                     class="picker-scroller"
-                    style="transform: translate3d(0, 54px, 0);"
+                    style="transform: translate3d(0, -306px, 0);"
                   >
                     <div
                       class="picker-item"
@@ -3229,7 +3213,7 @@ Object {
                       Janv.
                     </div>
                     <div
-                      class="picker-item picker-item-selected"
+                      class="picker-item"
                       style="height: 36px; line-height: 36px;"
                     >
                       Févr.
@@ -3289,7 +3273,7 @@ Object {
                       Nov.
                     </div>
                     <div
-                      class="picker-item"
+                      class="picker-item picker-item-selected"
                       style="height: 36px; line-height: 36px;"
                     >
                       Déc.
@@ -3960,6 +3944,7 @@ Object {
           />
           <button
             class="sc-bdvvtL kwQCoR sc-hKwDye gqAQWB"
+            data-testid="date-picker-spinner-submit-button"
             disabled=""
             type="button"
           >
@@ -4035,7 +4020,7 @@ Object {
           />
           <div
             class="css-view-1dbjc4n"
-            style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(182,0,37,1.00); border-right-color: rgba(182,0,37,1.00); border-bottom-color: rgba(182,0,37,1.00); border-left-color: rgba(182,0,37,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+            style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
           >
             <div
               class="css-text-901oao"
@@ -4043,43 +4028,7 @@ Object {
               id="testUuidV4"
               style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
             >
-              14 février 2006
-            </div>
-          </div>
-        </div>
-        <div
-          role="alert"
-        >
-          <div
-            class="css-view-1dbjc4n"
-            data-testid="input-error-top-spacer"
-            style="height: 8px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; flex-direction: row; max-width: 500px; width: 100%;"
-          >
-            <div
-              class="css-view-1dbjc4n"
-              data-testid="rule-icon-warn"
-            >
-              <div
-                class="css-text-901oao"
-                dir="auto"
-              >
-                rule-icon-warn-SVG-Mock
-              </div>
-            </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="width: 4px;"
-            />
-            <div
-              class="css-text-901oao"
-              dir="auto"
-              style="color: rgb(182, 0, 37); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-left: 4px;"
-            >
-              Tu dois avoir au moins 15 ans pour t’inscrire au pass Culture
+              1 décembre 2006
             </div>
           </div>
         </div>
@@ -4103,10 +4052,10 @@ Object {
               >
                 <div
                   class="picker-scroller"
-                  style="transform: translate3d(0, -378px, 0);"
+                  style="transform: translate3d(0, 90px, 0);"
                 >
                   <div
-                    class="picker-item"
+                    class="picker-item picker-item-selected"
                     style="height: 36px; line-height: 36px;"
                   >
                     1
@@ -4184,7 +4133,7 @@ Object {
                     13
                   </div>
                   <div
-                    class="picker-item picker-item-selected"
+                    class="picker-item"
                     style="height: 36px; line-height: 36px;"
                   >
                     14
@@ -4273,6 +4222,24 @@ Object {
                   >
                     28
                   </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    29
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    30
+                  </div>
+                  <div
+                    class="picker-item"
+                    style="height: 36px; line-height: 36px;"
+                  >
+                    31
+                  </div>
                 </div>
               </div>
               <div
@@ -4280,7 +4247,7 @@ Object {
               >
                 <div
                   class="picker-scroller"
-                  style="transform: translate3d(0, 54px, 0);"
+                  style="transform: translate3d(0, -306px, 0);"
                 >
                   <div
                     class="picker-item"
@@ -4289,7 +4256,7 @@ Object {
                     Janv.
                   </div>
                   <div
-                    class="picker-item picker-item-selected"
+                    class="picker-item"
                     style="height: 36px; line-height: 36px;"
                   >
                     Févr.
@@ -4349,7 +4316,7 @@ Object {
                     Nov.
                   </div>
                   <div
-                    class="picker-item"
+                    class="picker-item picker-item-selected"
                     style="height: 36px; line-height: 36px;"
                   >
                     Déc.
@@ -5020,6 +4987,7 @@ Object {
         />
         <button
           class="sc-bdvvtL kwQCoR sc-hKwDye gqAQWB"
+          data-testid="date-picker-spinner-submit-button"
           disabled=""
           type="button"
         >

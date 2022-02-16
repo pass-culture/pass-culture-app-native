@@ -6,13 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { DateInput } from 'features/auth/signup/SetBirthday/atoms/DateInput/DateInput'
 import { DatePickerProps } from 'features/auth/signup/SetBirthday/DatePicker/types'
-import {
-  CURRENT_DAY,
-  CURRENT_MONTH,
-  CURRENT_YEAR,
-  MINIMUM_YEAR,
-  UNDER_YOUNGEST_AGE,
-} from 'features/auth/signup/SetBirthday/utils/constants'
+import { MINIMUM_YEAR, UNDER_YOUNGEST_AGE } from 'features/auth/signup/SetBirthday/utils/constants'
 import { useDatePickerErrorHandler } from 'features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler'
 import {
   getDatesInMonth,
@@ -26,10 +20,11 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { Spacer } from 'ui/theme'
 
 export function DatePickerSpinner(props: DatePickerProps) {
+  const CURRENT_DATE = new Date()
   const [date, setDate] = useState({
-    day: CURRENT_DAY,
-    month: monthNamesShort[CURRENT_MONTH],
-    year: CURRENT_YEAR,
+    day: CURRENT_DATE.getDate(),
+    month: monthNamesShort[CURRENT_DATE.getMonth()],
+    year: CURRENT_DATE.getFullYear(),
   })
 
   const optionGroups = useMemo(() => {
@@ -76,7 +71,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
       <Spacer.Column numberOfSpaces={2} />
       <CalendarPickerWrapper>
         <Picker
-          data-testid="datePickerTouch"
+          data-testid="date-picker-touch"
           valueGroups={date}
           optionGroups={optionGroups}
           onChange={onDateChange}
@@ -86,6 +81,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
       <Spacer.Column numberOfSpaces={2} />
       <ButtonPrimary
         wording={t`Continuer`}
+        testID="date-picker-spinner-submit-button"
         accessibilityLabel={props.accessibilityLabelForNextStep}
         disabled={isDisabled}
         onPress={goToNextStep}

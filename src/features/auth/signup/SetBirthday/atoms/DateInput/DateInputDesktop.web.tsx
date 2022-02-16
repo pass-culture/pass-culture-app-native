@@ -1,4 +1,4 @@
-import React, { useMemo, useState, FunctionComponent } from 'react'
+import React, { useMemo, useState, FunctionComponent, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { DropDown } from 'features/auth/signup/SetBirthday/atoms/DropDown/DropDown'
@@ -60,17 +60,19 @@ export const DateInputDesktop: FunctionComponent<Props> = ({ onDateChange }) => 
         [key]: value,
       }
 
-      if (newDate.year && newDate.month && newDate.day) {
-        const dateMonth = monthNames.indexOf(newDate.month)
-        const maybeValidDate = new Date(newDate.year, dateMonth, newDate.day)
-        onDateChange(maybeValidDate.getDate() == newDate.day ? maybeValidDate : undefined)
-      } else {
-        onDateChange(undefined)
-      }
-
       return newDate
     })
   }
+
+  useEffect(() => {
+    if (date.year && date.month && date.day) {
+      const dateMonth = monthNames.indexOf(date.month)
+      const maybeValidDate = new Date(date.year, dateMonth, date.day)
+      onDateChange(maybeValidDate.getDate() == date.day ? maybeValidDate : undefined)
+    } else {
+      onDateChange(undefined)
+    }
+  }, [date])
 
   return (
     <Container>
