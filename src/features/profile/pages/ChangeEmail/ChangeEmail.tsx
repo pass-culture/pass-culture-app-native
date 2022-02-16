@@ -36,7 +36,7 @@ export function ChangeEmail() {
   const { isMobileViewport, isTouch } = useTheme()
   const [email, setEmail] = useSafeState('')
   const [password, setPassword] = useSafeState('')
-  const emailErrorMessage = useValidateEmail(email)
+  const { emailErrorMessage, isEmailValid } = useValidateEmail(email)
   const [passwordErrorMessage, setPasswordErrorMessage] = useSafeState<string | null>(null)
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
@@ -98,7 +98,7 @@ export function ChangeEmail() {
   }
 
   const isSubmitButtonDisabled =
-    !isLongEnough(password) || !!emailErrorMessage || !!passwordErrorMessage || isLoading
+    !isLongEnough(password) || !isEmailValid || !!passwordErrorMessage || isLoading
 
   useEnterKeyAction(!isSubmitButtonDisabled ? submitEmailChange : undefined)
 
