@@ -8,7 +8,7 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
-import { getShadow, getSpacing } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 import { Link } from 'ui/web/link/Link'
 
 import { AccessibleTabBar } from './AccessibleTabBar'
@@ -124,25 +124,13 @@ export const Header = memo(function Header() {
   )
 })
 
-const HeaderContainer = webStyled.header(({ theme }) => {
-  return {
-    display: 'flex',
-    flexGrow: 1,
-    maxHeight: theme.navTopHeight,
-    justifyContent: 'space-between',
-    flexDirection: 'row',
-    zIndex: 1,
-    ...getShadow({
-      shadowOffset: {
-        width: 0,
-        height: getSpacing(1),
-      },
-      shadowRadius: getSpacing(3),
-      shadowColor: theme.colors.greyDark,
-      shadowOpacity: 0.1,
-    }),
-  }
-})
+const HeaderContainer = webStyled.header(({ theme }) => ({
+  display: 'flex',
+  flexGrow: 1,
+  maxHeight: theme.navTopHeight,
+  justifyContent: 'space-between',
+  flexDirection: 'row',
+}))
 
 const LeftContainer = styled(Animated.View)<{ margin: number; isVisible: boolean }>(
   ({ margin, isVisible }) => ({
