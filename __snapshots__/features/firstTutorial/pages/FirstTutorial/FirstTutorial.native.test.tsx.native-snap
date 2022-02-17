@@ -487,7 +487,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     ]
                   }
                 >
-                  et si tu es...
+                  et si tu as...
                 </Text>
                 <View
                   flex={0.5}
@@ -497,6 +497,413 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                         "flexBasis": 0,
                         "flexGrow": 0.5,
                         "flexShrink": 1,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  numberOfSpaces={4}
+                  style={
+                    Array [
+                      Object {
+                        "height": 16,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    flex={0.5}
+                    style={
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexGrow": 0.5,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "flexDirection": "column",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#320096",
+                            "borderRadius": 4,
+                            "height": 20,
+                            "justifyContent": "center",
+                            "paddingHorizontal": 0,
+                            "paddingVertical": 0,
+                            "transform": Array [
+                              Object {
+                                "rotate": "-4.34deg",
+                              },
+                            ],
+                            "width": 43,
+                          },
+                        ]
+                      }
+                      tagHeight={20}
+                      tagWidth={43}
+                      testID="Aide financière 15 ans"
+                    >
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "alignSelf": "center",
+                              "color": "#ffffff",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "transform": Array [
+                                Object {
+                                  "rotate": "4.34deg",
+                                },
+                              ],
+                            },
+                          ]
+                        }
+                      >
+                        20 €
+                      </Text>
+                    </View>
+                    <View
+                      numberOfSpaces={1}
+                      style={
+                        Array [
+                          Object {
+                            "height": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "alignSelf": "center",
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                    >
+                      15 ans
+                    </Text>
+                  </View>
+                  <View
+                    flex={0.25}
+                    style={
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexGrow": 0.25,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "flexDirection": "column",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#320096",
+                            "borderRadius": 4,
+                            "height": 20,
+                            "justifyContent": "center",
+                            "paddingHorizontal": 0,
+                            "paddingVertical": 0,
+                            "transform": Array [
+                              Object {
+                                "rotate": "-4.34deg",
+                              },
+                            ],
+                            "width": 43,
+                          },
+                        ]
+                      }
+                      tagHeight={20}
+                      tagWidth={43}
+                      testID="Aide financière 16 ans"
+                    >
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "alignSelf": "center",
+                              "color": "#ffffff",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "transform": Array [
+                                Object {
+                                  "rotate": "4.34deg",
+                                },
+                              ],
+                            },
+                          ]
+                        }
+                      >
+                        30 €
+                      </Text>
+                    </View>
+                    <View
+                      numberOfSpaces={1}
+                      style={
+                        Array [
+                          Object {
+                            "height": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "alignSelf": "center",
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                    >
+                      16 ans
+                    </Text>
+                  </View>
+                  <View
+                    flex={0.25}
+                    style={
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexGrow": 0.25,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "flexDirection": "column",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#320096",
+                            "borderRadius": 4,
+                            "height": 20,
+                            "justifyContent": "center",
+                            "paddingHorizontal": 0,
+                            "paddingVertical": 0,
+                            "transform": Array [
+                              Object {
+                                "rotate": "-4.34deg",
+                              },
+                            ],
+                            "width": 43,
+                          },
+                        ]
+                      }
+                      tagHeight={20}
+                      tagWidth={43}
+                      testID="Aide financière 17 ans"
+                    >
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "alignSelf": "center",
+                              "color": "#ffffff",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "transform": Array [
+                                Object {
+                                  "rotate": "4.34deg",
+                                },
+                              ],
+                            },
+                          ]
+                        }
+                      >
+                        30 €
+                      </Text>
+                    </View>
+                    <View
+                      numberOfSpaces={1}
+                      style={
+                        Array [
+                          Object {
+                            "height": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "alignSelf": "center",
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                    >
+                      17 ans
+                    </Text>
+                  </View>
+                  <View
+                    flex={0.25}
+                    style={
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexGrow": 0.25,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "flexDirection": "column",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "backgroundColor": "#320096",
+                            "borderRadius": 4,
+                            "height": 20,
+                            "justifyContent": "center",
+                            "paddingHorizontal": 0,
+                            "paddingVertical": 0,
+                            "transform": Array [
+                              Object {
+                                "rotate": "-4.34deg",
+                              },
+                            ],
+                            "width": 43,
+                          },
+                        ]
+                      }
+                      tagHeight={20}
+                      tagWidth={43}
+                      testID="Aide financière 18 ans"
+                    >
+                      <Text
+                        style={
+                          Array [
+                            Object {
+                              "alignSelf": "center",
+                              "color": "#ffffff",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                              "transform": Array [
+                                Object {
+                                  "rotate": "4.34deg",
+                                },
+                              ],
+                            },
+                          ]
+                        }
+                      >
+                        300 €
+                      </Text>
+                    </View>
+                    <View
+                      numberOfSpaces={1}
+                      style={
+                        Array [
+                          Object {
+                            "height": 4,
+                          },
+                        ]
+                      }
+                    />
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "alignSelf": "center",
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                    >
+                      18 ans
+                    </Text>
+                  </View>
+                  <View
+                    flex={0.5}
+                    style={
+                      Array [
+                        Object {
+                          "flexBasis": 0,
+                          "flexGrow": 0.5,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  numberOfSpaces={5}
+                  style={
+                    Array [
+                      Object {
+                        "height": 20,
                       },
                     ]
                   }
@@ -514,7 +921,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     ]
                   }
                 >
-                  dans l'année de tes 18 ans, le Gouvernement offre un crédit de 300 € à dépenser dans l’application.
+                  de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application.
                 </Text>
                 <View
                   flex={2}
