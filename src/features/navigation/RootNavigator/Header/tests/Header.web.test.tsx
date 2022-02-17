@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react'
 import React from 'react'
-import { ThemeProvider as WebThemeProvider } from 'styled-components'
 import { ThemeProvider } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
@@ -59,13 +58,11 @@ function renderHeader({
   return render(
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     reactQueryProviderHOC(
-      <WebThemeProvider theme={{ ...theme, showTabBar: false }}>
-        <ThemeProvider theme={{ ...theme, showTabBar: false }}>
-          <TabNavigationStateProvider>
-            <Header />
-          </TabNavigationStateProvider>
-        </ThemeProvider>
-      </WebThemeProvider>
+      <ThemeProvider theme={{ ...theme, showTabBar: false }}>
+        <TabNavigationStateProvider>
+          <Header />
+        </TabNavigationStateProvider>
+      </ThemeProvider>
     )
   )
 }
