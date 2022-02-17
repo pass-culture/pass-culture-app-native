@@ -127,6 +127,7 @@ export function ChangeEmail() {
               onEmailChange={setEmail}
               disabled={hasCurrentEmailChange}
               isRequiredField
+              autoFocus
               accessibilityDescribedBy={emailInputErrorId}
             />
             {!!emailErrorMessage && (

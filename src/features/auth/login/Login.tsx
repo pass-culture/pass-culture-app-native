@@ -170,6 +170,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           onEmailChange={onEmailChange}
           isError={hasEmailError || !!errorMessage}
           isRequiredField
+          autoFocus
           accessibilityDescribedBy={emailInputErrorId}
         />
         <InputError
