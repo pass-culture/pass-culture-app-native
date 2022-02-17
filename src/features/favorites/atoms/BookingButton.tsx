@@ -71,7 +71,12 @@ export const BookingButton: React.FC<Props> = (props) => {
 }
 
 const BookInAppButton = ({ onPress }: { onPress: () => void }) => (
-  <ButtonPrimary wording={t`Réserver`} onPress={onPress} buttonHeight="tall" />
+  <ButtonPrimary
+    wording={t`Réserver`}
+    accessibilityLabel={t`Réserver l'offre`}
+    onPress={onPress}
+    buttonHeight="tall"
+  />
 )
 
 const BookExternallyButton = ({
@@ -84,6 +89,7 @@ const BookExternallyButton = ({
   url ? (
     <ButtonPrimary
       wording={t`Réserver`}
+      accessibilityLabel={t`Réserver l'offre`}
       onPress={() => url && openUrl(url, { analyticsData: { offerId } })}
       icon={ExternalSite}
       buttonHeight="tall"

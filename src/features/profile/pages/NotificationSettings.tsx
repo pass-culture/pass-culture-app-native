@@ -190,6 +190,7 @@ export function NotificationSettings() {
         {!!isLoggedIn && (
           <ButtonPrimary
             wording={t`Enregistrer`}
+            accessibilityLabel={t`Enregistrer les modifications`}
             isLoading={isUpdating}
             disabled={!state.emailTouched && !state.pushTouched}
             onPress={submitProfile}

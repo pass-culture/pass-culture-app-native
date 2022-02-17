@@ -154,7 +154,12 @@ export function ChangePassword() {
 
           {!!keyboardHeight && <Spacer.Column numberOfSpaces={2} />}
           <ButtonContainer paddingBottom={keyboardHeight ? 0 : bottom}>
-            <ButtonPrimary wording={t`Enregistrer`} onPress={submitPassword} disabled={disabled} />
+            <ButtonPrimary
+              wording={t`Enregistrer`}
+              accessibilityLabel={t`Enregistrer les modifications`}
+              onPress={submitPassword}
+              disabled={disabled}
+            />
           </ButtonContainer>
         </Form.MaxWidth>
         <Spacer.Column numberOfSpaces={6} />

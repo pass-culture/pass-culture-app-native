@@ -235,7 +235,9 @@ Object {
                 style="align-items: center; padding-bottom: 16px; width: 100%;"
               >
                 <button
+                  aria-label="Enregistrer les modifications"
                   class="sc-gsDKAQ dVNSGw sc-hKwDye gqAQWB"
+                  data-testid="Enregistrer les modifications"
                   disabled=""
                   type="button"
                 >
@@ -489,7 +491,9 @@ Object {
               style="align-items: center; padding-bottom: 16px; width: 100%;"
             >
               <button
+                aria-label="Enregistrer les modifications"
                 class="sc-gsDKAQ dVNSGw sc-hKwDye gqAQWB"
+                data-testid="Enregistrer les modifications"
                 disabled=""
                 type="button"
               >

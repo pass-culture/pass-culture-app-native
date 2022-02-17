@@ -144,7 +144,12 @@ export const SetAddress = () => {
         </React.Fragment>
       }
       fixedBottomChildren={
-        <ButtonPrimary onPress={submitAddress} wording={t`Continuer`} disabled={!enabled} />
+        <ButtonPrimary
+          onPress={submitAddress}
+          wording={t`Continuer`}
+          accessibilityLabel={t`Continuer vers l'étape suivante`}
+          disabled={!enabled}
+        />
       }
     />
   )

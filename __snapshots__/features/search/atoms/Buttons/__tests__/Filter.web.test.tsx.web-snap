@@ -6,6 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <div
+        aria-label="Afficher les filtres"
         class="css-view-1dbjc4n"
         data-testid="FilterButton"
         style="cursor: pointer; overflow-x: hidden; overflow-y: hidden; transition-duration: 0s; transition-property: opacity; user-select: none;"
@@ -66,6 +67,7 @@ Object {
   </body>,
   "container": <div>
     <div
+      aria-label="Afficher les filtres"
       class="css-view-1dbjc4n"
       data-testid="FilterButton"
       style="cursor: pointer; overflow-x: hidden; overflow-y: hidden; transition-duration: 0s; transition-property: opacity; user-select: none;"

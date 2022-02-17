@@ -3,7 +3,6 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { navigateToHome, openUrl } from 'features/navigation/helpers'
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
@@ -34,7 +33,6 @@ export function LayoutExpiredLink({
         <ButtonTertiaryWhite
           key={1}
           wording={t`Retourner à l'accueil`}
-          {...accessibilityAndTestId('button-icon')}
           onPress={navigateToHome}
           icon={PlainArrowPrevious}
         />,
@@ -64,7 +62,6 @@ export function LayoutExpiredLink({
       {!!contactSupport && (
         <ButtonTertiaryWhite
           wording={t`Contacter le support`}
-          {...accessibilityAndTestId('button-icon')}
           onPress={contactSupport}
           icon={EmailFilled}
         />
