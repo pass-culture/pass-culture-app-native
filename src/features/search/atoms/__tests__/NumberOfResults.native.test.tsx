@@ -20,8 +20,14 @@ let mockLocationFilter: LocationFilter = {
   locationType: LocationType.VENUE,
   venue: mockedSuggestedVenues[0],
 }
+
+const mockStagedSearchDispatch = jest.fn()
+
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({ searchState: { locationFilter: mockLocationFilter } }),
+  useStagedSearch: () => ({
+    dispatch: mockStagedSearchDispatch,
+  }),
 }))
 
 describe('NumberOfResults component', () => {
@@ -51,9 +57,15 @@ describe('NumberOfResults component', () => {
 
       fireEvent.press(getByTestId('Enlever le lieu'))
 
+      const params = { locationFilter: { locationType: LocationType.EVERYWHERE } }
+      expect(mockStagedSearchDispatch).toBeCalledWith({
+        type: 'SET_STATE_FROM_NAVIGATE',
+        payload: params,
+      })
+
       expect(navigate).toBeCalledWith('TabNavigator', {
         screen: 'Search',
-        params: { locationFilter: { locationType: LocationType.EVERYWHERE } },
+        params,
       })
     })
 
