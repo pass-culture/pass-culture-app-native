@@ -64,7 +64,7 @@ describe('useMediaQuery native', () => {
       ${0}         | ${400}       | ${undefined} | ${undefined} | ${false}
       ${0}         | ${500}       | ${undefined} | ${undefined} | ${false}
       ${500}       | ${1000}      | ${undefined} | ${undefined} | ${true}
-      ${501}       | ${1200}      | ${600}       | ${undefined} | ${true}
+      ${501}       | ${1200}      | ${600}       | ${undefined} | ${false}
       ${501}       | ${1200}      | ${undefined} | ${1000}      | ${true}
       ${501}       | ${1200}      | ${undefined} | ${500}       | ${true}
       ${501}       | ${1200}      | ${500}       | ${undefined} | ${true}
@@ -84,7 +84,7 @@ describe('useMediaQuery native', () => {
       ${1000}      | ${2000}      | ${undefined} | ${500}       | ${true}
     `(
       'should return $mq when minWidth=$minWidth, maxWidth=$maxWidth, minHeight=$minHeight and maxHeight=$maxHeight',
-      async ({
+      ({
         minWidth,
         maxWidth,
         minHeight,
