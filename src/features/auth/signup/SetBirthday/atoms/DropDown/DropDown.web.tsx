@@ -48,13 +48,13 @@ export function DropDown({
           onChange={onChangeDate}
           noBorderRadiusRight={noBorderRadiusRight}
           noBorderRadiusLeft={noBorderRadiusLeft}>
-          <Option role="option" value="">
+          <StyledOption role="option" value="">
             {placeholder}
-          </Option>
+          </StyledOption>
           {options.map((option) => (
-            <Option role="option" key={option} value={option} data-testid="select-option">
+            <StyledOption role="option" key={option} value={option} data-testid="select-option">
               {option}
-            </Option>
+            </StyledOption>
           ))}
         </StyledSelect>
         <IconContainer>
@@ -113,4 +113,13 @@ const StyledSelect = styled(Select)<{ noBorderRadiusRight: boolean; noBorderRadi
     }
   `
   }}
+`
+
+/*
+The fonts supported by <option/> are native browser fonts.
+That's why we can't use our theme's font.
+Note: Font-Family is only used by Firefox.
+*/
+const StyledOption = styled(Option)`
+  font-family: 'Arial', sans-serif;
 `

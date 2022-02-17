@@ -1,13 +1,10 @@
-import { t } from '@lingui/macro'
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import Picker from 'react-mobile-picker'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { DateInput } from 'features/auth/signup/SetBirthday/atoms/DateInput/DateInput'
-import { DatePickerProps } from 'features/auth/signup/SetBirthday/DatePicker/types'
-import { MINIMUM_YEAR, UNDER_YOUNGEST_AGE } from 'features/auth/signup/SetBirthday/utils/constants'
-import { useDatePickerErrorHandler } from 'features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler'
+import { DatePickerWebProps } from 'features/auth/signup/SetBirthday/DatePicker/types'
 import {
   getDatesInMonth,
   getPastYears,
@@ -15,29 +12,24 @@ import {
   monthNamesShort,
 } from 'features/bookOffer/components/Calendar/Calendar.utils'
 import { pad } from 'libs/parsers'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Spacer } from 'ui/theme'
 
-export function DatePickerSpinner(props: DatePickerProps) {
-  const CURRENT_DATE = new Date()
-  const [date, setDate] = useState({
-    day: CURRENT_DATE.getDate(),
-    month: monthNamesShort[CURRENT_DATE.getMonth()],
-    year: CURRENT_DATE.getFullYear(),
-  })
+export function DatePickerSpinner(props: DatePickerWebProps) {
+  const DEFAULT_DATE = {
+    day: props.defaultSelectedDate?.getDate(),
+    month: monthNamesShort[props.defaultSelectedDate?.getMonth()],
+    year: props.defaultSelectedDate?.getFullYear(),
+  }
+  const [date, setDate] = useState(DEFAULT_DATE)
 
   const optionGroups = useMemo(() => {
-    const DEFAULT_SELECTED_DATE = new Date(
-      new Date().setFullYear(new Date().getFullYear() - UNDER_YOUNGEST_AGE)
-    )
     const { month: selectedMonth, year: selectedYear } = date
     const selectedMonthIndex = monthNamesShort.indexOf(selectedMonth)
-    const defaultSelectedYear = DEFAULT_SELECTED_DATE.getFullYear()
     return {
       day: getDatesInMonth(selectedMonthIndex, selectedYear),
       month: monthNamesShort,
-      year: getPastYears(MINIMUM_YEAR, defaultSelectedYear),
+      year: getPastYears(props.minimumYear, DEFAULT_DATE.year),
     }
   }, [date, monthNamesShort, getYears])
 
@@ -46,26 +38,26 @@ export function DatePickerSpinner(props: DatePickerProps) {
   }
 
   const dateMonth = monthNamesShort.indexOf(date.month) + 1
-  const birthdate = `${date.year}-${pad(dateMonth)}-${pad(date.day)}`
+  const birthdate = new Date(`${date.year}-${pad(dateMonth)}-${pad(date.day)}`)
 
-  const { isDisabled, errorMessage } = useDatePickerErrorHandler(new Date(birthdate))
-
-  function goToNextStep() {
+  useEffect(() => {
     if (birthdate) {
-      props.goToNextStep({ birthdate })
+      props.onChange(birthdate)
+    } else {
+      props.onChange(undefined)
     }
-  }
+  }, [date])
 
   const birthdateInputErrorId = uuidv4()
 
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={2} />
-      <DateInput date={new Date(birthdate)} isFocus={!isDisabled} isError={!!errorMessage} />
-      {!!errorMessage && (
+      <DateInput date={birthdate} isError={!!props.errorMessage} />
+      {!!props.errorMessage && (
         <InputError
           visible
-          messageId={errorMessage}
+          messageId={props.errorMessage}
           numberOfSpacesTop={2}
           relatedInputId={birthdateInputErrorId}
         />
@@ -80,14 +72,6 @@ export function DatePickerSpinner(props: DatePickerProps) {
           aria-describedby={birthdateInputErrorId}
         />
       </CalendarPickerWrapper>
-      <Spacer.Column numberOfSpaces={2} />
-      <ButtonPrimary
-        wording={t`Continuer`}
-        testID="date-picker-spinner-submit-button"
-        accessibilityLabel={props.accessibilityLabelForNextStep}
-        disabled={isDisabled}
-        onPress={goToNextStep}
-      />
       <Spacer.Column numberOfSpaces={2} />
     </React.Fragment>
   )

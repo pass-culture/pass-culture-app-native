@@ -14,9 +14,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
   <View
     accessibilityLabel="Pour quelle raison ?"
     accessible={true}
-    collapsable={false}
     focusable={true}
-    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -236,9 +234,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
   <View
     accessibilityLabel="Continuer"
     accessible={true}
-    collapsable={false}
     focusable={false}
-    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}

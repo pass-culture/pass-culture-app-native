@@ -1,50 +1,42 @@
-import { t } from '@lingui/macro'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { DateInputDesktop } from 'features/auth/signup/SetBirthday/atoms/DateInput/DateInputDesktop.web'
-import { DatePickerProps } from 'features/auth/signup/SetBirthday/DatePicker/types'
-import { useDatePickerErrorHandler } from 'features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler'
-import { formatDateToISOStringWithoutTime } from 'libs/parsers'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { DatePickerWebProps } from 'features/auth/signup/SetBirthday/DatePicker/types'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Spacer } from 'ui/theme'
 
-export function DatePickerDropDown(props: DatePickerProps) {
+export function DatePickerDropDown(props: DatePickerWebProps) {
   const [date, setDate] = useState<Date | undefined>()
 
-  const { isDisabled, errorMessage } = useDatePickerErrorHandler(date)
-
-  function goToNextStep() {
-    if (date) {
-      const birthdate = formatDateToISOStringWithoutTime(date)
-      props.goToNextStep({ birthdate })
-    }
-  }
-
   const birthdateInputErrorId = uuidv4()
+
+  useEffect(() => {
+    if (date) {
+      props.onChange(date)
+    } else {
+      props.onChange(undefined)
+    }
+  }, [date])
 
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={2} />
-      <DateInputDesktop onDateChange={setDate} aria-describedby={birthdateInputErrorId} />
-      {!!errorMessage && (
+      <DateInputDesktop
+        onChange={setDate}
+        minimumYear={props.minimumYear}
+        defaultSelectedDate={props.defaultSelectedDate}
+        aria-describedby={birthdateInputErrorId}
+      />
+      {!!props.errorMessage && (
         <InputError
           visible
-          messageId={errorMessage}
+          messageId={props.errorMessage}
           numberOfSpacesTop={2}
           relatedInputId={birthdateInputErrorId}
         />
       )}
-      <Spacer.Column numberOfSpaces={errorMessage ? 6 : 12} />
-      <ButtonPrimary
-        wording={t`Continuer`}
-        testID="date-picker-dropdown-submit-button"
-        accessibilityLabel={props.accessibilityLabelForNextStep}
-        disabled={isDisabled}
-        onPress={goToNextStep}
-      />
-      <Spacer.Column numberOfSpaces={2} />
+      <Spacer.Column numberOfSpaces={props.errorMessage ? 6 : 12} />
     </React.Fragment>
   )
 }

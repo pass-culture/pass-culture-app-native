@@ -2,11 +2,13 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { analytics } from 'libs/analytics'
+import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { fireEvent, render } from 'tests/utils'
 
 import { SetBirthday } from './SetBirthday'
 
 const CURRENT_DATE = new Date('2020-12-01T00:00:00.000Z')
+const ELIGIBLE_AGE_DATE = new Date('2003-12-01T00:00:00.000Z')
 
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 
@@ -40,5 +42,19 @@ describe('<SetBirthday />', () => {
     fireEvent.press(whyBirthdayLink)
 
     expect(analytics.logConsultWhyAnniversary).toHaveBeenCalledTimes(1)
+  })
+
+  it('should call goToNextStep() when the date is selected and press the button "Continuer"', () => {
+    const { getByTestId } = render(<SetBirthday {...props} />)
+
+    const datePicker = getByTestId('datePicker')
+    fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
+
+    const continueButton = getByTestId('Continuer')
+    fireEvent.press(continueButton)
+
+    expect(props.goToNextStep).toBeCalledWith({
+      birthdate: formatDateToISOStringWithoutTime(ELIGIBLE_AGE_DATE),
+    })
   })
 })

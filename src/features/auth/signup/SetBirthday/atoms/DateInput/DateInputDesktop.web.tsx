@@ -1,9 +1,9 @@
 import { t } from '@lingui/macro'
-import React, { useMemo, useState, FunctionComponent, useEffect } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { DropDown } from 'features/auth/signup/SetBirthday/atoms/DropDown/DropDown'
-import { MINIMUM_YEAR, UNDER_YOUNGEST_AGE } from 'features/auth/signup/SetBirthday/utils/constants'
+import { DatePickerWebProps } from 'features/auth/signup/SetBirthday/DatePicker/types'
 import {
   dayNumber,
   getDatesInMonth,
@@ -12,11 +12,6 @@ import {
   monthNames,
 } from 'features/bookOffer/components/Calendar/Calendar.utils'
 import { Spacer } from 'ui/theme'
-
-interface Props {
-  onDateChange: (date?: Date) => void
-  children?: never
-}
 
 type InitialDateProps = {
   day?: number
@@ -30,19 +25,16 @@ const INITIAL_DATE: InitialDateProps = {
   year: undefined,
 }
 
-export const DateInputDesktop: FunctionComponent<Props> = ({ onDateChange }) => {
-  const DEFAULT_SELECTED_DATE = new Date(
-    new Date().setFullYear(new Date().getFullYear() - UNDER_YOUNGEST_AGE)
-  )
+export function DateInputDesktop(props: DatePickerWebProps) {
   const [date, setDate] = useState<InitialDateProps>(INITIAL_DATE)
 
   const optionGroups = useMemo(() => {
-    const defaultSelectedYear = DEFAULT_SELECTED_DATE.getFullYear()
+    const defaultSelectedYear = props.defaultSelectedDate.getFullYear()
     if (date.year === undefined || date.month === undefined || date.day === undefined) {
       return {
         days: dayNumber,
         months: monthNames,
-        years: getPastYears(MINIMUM_YEAR, defaultSelectedYear),
+        years: getPastYears(props.minimumYear, defaultSelectedYear),
       }
     }
     const { month: selectedMonth, year: selectedYear } = date
@@ -50,28 +42,21 @@ export const DateInputDesktop: FunctionComponent<Props> = ({ onDateChange }) => 
     return {
       days: getDatesInMonth(selectedMonthIndex, selectedYear),
       months: monthNames,
-      years: getPastYears(MINIMUM_YEAR, defaultSelectedYear),
+      years: getPastYears(props.minimumYear, defaultSelectedYear),
     }
   }, [date, monthNames, getYears])
 
   const onPartialDateChange = (key: keyof InitialDateProps) => (value: string) => {
-    setDate((prevDateValues) => {
-      const newDate = {
-        ...prevDateValues,
-        [key]: value,
-      }
-
-      return newDate
-    })
+    setDate((prevDateValues) => ({ ...prevDateValues, [key]: value }))
   }
 
   useEffect(() => {
     if (date.year && date.month && date.day) {
       const dateMonth = monthNames.indexOf(date.month)
       const maybeValidDate = new Date(date.year, dateMonth, date.day)
-      onDateChange(maybeValidDate.getDate() == date.day ? maybeValidDate : undefined)
+      props.onChange(maybeValidDate.getDate() == date.day ? maybeValidDate : undefined)
     } else {
-      onDateChange(undefined)
+      props.onChange(undefined)
     }
   }, [date])
 

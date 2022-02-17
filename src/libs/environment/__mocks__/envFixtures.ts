@@ -52,7 +52,6 @@ export const env: Environment = {
   SENTRY_DSN: 'SENTRY_DSN',
   SIGNIN_IDENTIFIER: '',
   SIGNIN_PASSWORD: '',
-  SIGNUP_DATE: '',
   SIGNUP_POSTAL_CODE: '',
   SITE_KEY: 'SITE_KEY',
   SUPPORT_EMAIL_ADDRESS: 'support@test.passculture.app',
