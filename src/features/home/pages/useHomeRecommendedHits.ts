@@ -45,9 +45,9 @@ const useRecommendedOfferIds = (userId: number | undefined, position: GeoCoordin
         if (!response.ok) throw new Error('Failed to fetch recommendation')
         return response.json() as Promise<{ recommended_offers: string[] }>
       } catch (err) {
-        eventMonitoring.captureException(
-          new Error(`Error with recommendation endpoint: ${recommendationEndpoint}.`)
-        )
+        eventMonitoring.captureException(new Error('Error with recommendation endpoint'), {
+          extra: { url: recommendationEndpoint },
+        })
         return { recommended_offers: [] }
       }
     },
