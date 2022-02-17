@@ -8,12 +8,21 @@ export const useIsCurrentUserEmail = (email: string): boolean => {
   return email.toLowerCase() === user?.email?.toLowerCase()
 }
 
-export function useValidateEmail(email: string): string | null {
+export function useValidateEmail(email: string): useValidateEmailReturn {
   const isCurrentUserEmail = useIsCurrentUserEmail(email)
 
-  if (email.length === 0) return null
+  if (email.length === 0) return { emailErrorMessage: null, isEmailValid: false }
   if (!isEmailValid(email))
-    return t`L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr`
-  if (isCurrentUserEmail) return t`L'e-mail saisi est identique à votre e-mail actuel`
-  return null
+    return {
+      emailErrorMessage: t`L'e-mail renseigné est incorrect. Exemple de format attendu\u00a0: edith.piaf@email.fr`,
+      isEmailValid: false,
+    }
+  if (isCurrentUserEmail)
+    return {
+      emailErrorMessage: t`L'e-mail saisi est identique à votre e-mail actuel`,
+      isEmailValid: false,
+    }
+  return { emailErrorMessage: null, isEmailValid: true }
 }
+
+type useValidateEmailReturn = { emailErrorMessage: string | null; isEmailValid: boolean }

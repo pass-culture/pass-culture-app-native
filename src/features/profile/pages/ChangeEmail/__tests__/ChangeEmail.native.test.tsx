@@ -83,6 +83,7 @@ describe('<ChangeEmail/>', () => {
     ${'password>=12'} | ${'valid@email.com'} | ${ColorsEnum.PRIMARY}    | ${false}
     ${'password>=12'} | ${'invalid@email'}   | ${ColorsEnum.GREY_LIGHT} | ${true}
     ${'password<12'}  | ${'valid@email.com'} | ${ColorsEnum.GREY_LIGHT} | ${true}
+    ${'password>=12'} | ${''}                | ${ColorsEnum.GREY_LIGHT} | ${true}
   `(
     'CTA "Enregistrer" (disabled=$isDisabled) with background color = $backgroundColor if password = "$password" and email = $email',
     async ({ password, email, backgroundColor }) => {
