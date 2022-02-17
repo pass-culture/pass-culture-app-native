@@ -264,7 +264,6 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
             {/* force button to wrap on small screen, otherwise timer will "unwrap" when timer is under 10 seconds */}
             {appContentWidth <= 320 ? <Break /> : <Spacer.Row numberOfSpaces={1} />}
             <ButtonTertiary
-              inlineHeight="100%"
               wording={getRetryButtonTitle()}
               testID={'Réessayer'}
               onPress={requestSendPhoneValidationCode}
@@ -342,12 +341,13 @@ const Paragraphe = styled.Text({
   textAlign: 'center',
 })
 
-const HelpRow = styled.View({
+const HelpRow = styled.View(({ theme }) => ({
   flexDirection: 'row',
   width: '100%',
   flexWrap: 'wrap',
   alignItems: 'center',
-})
+  maxWidth: theme.contentPage.maxWidth,
+}))
 
 const GreyMediumSeparator = styled(Separator)(({ theme }) => ({
   color: theme.colors.greyMedium,
