@@ -11,12 +11,12 @@ Array [
     }
   />,
   <dt
-    className="sc-hKwDye sc-eCImPb bSWfzB kKanVC"
+    className="sc-dlVxhl sc-kfPuZi ctocLT ikunrp"
   >
     Où ?
   </dt>,
   <dd
-    className="sc-dkPtRN fxFYRJ"
+    className="sc-hGPBjI sSLs"
   >
     <div
       className="css-view-1dbjc4n"
@@ -241,53 +241,59 @@ Array [
         }
       }
     />
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitAlignItems": "flex-start",
-          "WebkitBoxAlign": "start",
-          "alignItems": "flex-start",
-          "msFlexAlign": "start",
-        }
-      }
+    <a
+      className="sc-iCfMLu iaRsUK"
+      href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re"
+      target="_blank"
     >
-      <button
-        className="sc-bdvvtL jBhCHV sc-gsDKAQ bzsCsN"
-        onClick={[Function]}
-        onDoubleClick={[Function]}
-        type="button"
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "WebkitAlignItems": "flex-start",
+            "WebkitBoxAlign": "start",
+            "alignItems": "flex-start",
+            "msFlexAlign": "start",
+          }
+        }
       >
-        <div
-          className="css-view-1dbjc4n"
-          data-testid="button-icon"
+        <button
+          className="sc-bdvvtL jBhCHV sc-gsDKAQ bzsCsN"
+          onClick={[Function]}
+          onDoubleClick={[Function]}
+          type="button"
         >
           <div
-            className="css-text-901oao"
-            dir="auto"
+            className="css-view-1dbjc4n"
+            data-testid="button-icon"
           >
-            button-icon-SVG-Mock
+            <div
+              className="css-text-901oao"
+              dir="auto"
+            >
+              button-icon-SVG-Mock
+            </div>
           </div>
-        </div>
-        <div
-          className="css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
-          style={
-            Object {
-              "WebkitLineClamp": 1,
-              "color": "rgba(22,22,23,1.00)",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-              "marginLeft": "8px",
-              "maxWidth": "100%",
+          <div
+            className="css-text-901oao css-textMultiLine-cens5h"
+            dir="auto"
+            style={
+              Object {
+                "WebkitLineClamp": 1,
+                "color": "rgba(22,22,23,1.00)",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": "15px",
+                "lineHeight": "20px",
+                "marginLeft": "8px",
+                "maxWidth": "100%",
+              }
             }
-          }
-        >
-          Voir l'itinéraire
-        </div>
-      </button>
-    </div>
+          >
+            Voir l'itinéraire
+          </div>
+        </button>
+      </div>
+    </a>
   </dd>,
   <div
     className="css-view-1dbjc4n"

@@ -67,7 +67,7 @@ Object {
                   style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
                 >
                   <form
-                    class="sc-kDTinF bkTDgm"
+                    class="sc-iqseJM jLKwMp"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -88,7 +88,7 @@ Object {
                       style="height: 20px;"
                     />
                     <label
-                      class="sc-pVTFL kFA-dfT"
+                      class="sc-jrQzAO gESpwC"
                       for="testUuidV4"
                     >
                       Indique ton code postal et choisis ta ville
@@ -252,7 +252,7 @@ Object {
                 style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
               >
                 <form
-                  class="sc-kDTinF bkTDgm"
+                  class="sc-iqseJM jLKwMp"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -273,7 +273,7 @@ Object {
                     style="height: 20px;"
                   />
                   <label
-                    class="sc-pVTFL kFA-dfT"
+                    class="sc-jrQzAO gESpwC"
                     for="testUuidV4"
                   >
                     Indique ton code postal et choisis ta ville

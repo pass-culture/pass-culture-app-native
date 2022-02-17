@@ -226,7 +226,7 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
         }
       />
       <button
-        className="sc-bdvvtL kwQCoR sc-gKclnd kKVSn"
+        className="sc-bdvvtL kwQCoR sc-iCfMLu uxgRG"
         onClick={[Function]}
         onDoubleClick={[Function]}
         type="button"
