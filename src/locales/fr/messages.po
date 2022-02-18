@@ -401,6 +401,10 @@ msgstr "Cela entraînera l'annulation de l'ensemble de tes réservations en cour
 msgid "Centre culturel"
 msgstr "Centre culturel"
 
+#: src/features/profile/pages/Profile.tsx
+msgid "Centre d'aide"
+msgstr "Centre d'aide"
+
 #: src/features/profile/components/BeneficiaryCeilings.tsx
 msgid "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
 msgstr "Ces plafonds ont été mis en place pour favoriser la diversification des pratiques culturelles. Aucune dérogation à ces plafonds n'est possible."
@@ -2084,10 +2088,6 @@ msgstr "Quelques conseils"
 msgid "Questionnaire culturel"
 msgstr "Questionnaire culturel"
 
-#: src/features/profile/pages/Profile.tsx
-msgid "Questions fréquentes"
-msgstr "Questions fréquentes"
-
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "Qui est-ce ?"
 msgstr "Qui est-ce ?"
@@ -2159,15 +2159,12 @@ msgstr "Reste informé des actualités du pass Culture en activant les notificat
 msgid "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans."
 
-#: src/features/bookings/pages/BookingNotFound.tsx
-msgid "Retourner l'accueil"
-msgstr "Retourner l'accueil"
-
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
 #: src/features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility.tsx
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
+#: src/features/bookings/pages/BookingNotFound.tsx
 #: src/features/identityCheck/errors/eduConnect/NotEligibleEduConnect.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckPending.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx

@@ -809,7 +809,7 @@ exports[`Profile component should render correctly 1`] = `
                     </View>
                   </View>
                   <View
-                    accessibilityLabel="Questions fréquentes"
+                    accessibilityLabel="Centre d'aide"
                     accessible={true}
                     collapsable={false}
                     focusable={true}
@@ -826,7 +826,7 @@ exports[`Profile component should render correctly 1`] = `
                         "opacity": 1,
                       }
                     }
-                    testID="Questions fréquentes"
+                    testID="Centre d'aide"
                   >
                     <View
                       style={
@@ -887,7 +887,7 @@ exports[`Profile component should render correctly 1`] = `
                             ]
                           }
                         >
-                          Questions fréquentes
+                          Centre d'aide
                         </Text>
                       </View>
                       <View

@@ -178,7 +178,7 @@ export const Profile: React.FC = () => {
             />
           </Link>
           <Row
-            title={t`Questions fréquentes`}
+            title={t`Centre d'aide`}
             type="clickable"
             onPress={() => openUrl(env.FAQ_LINK)}
             icon={ExternalSite}
