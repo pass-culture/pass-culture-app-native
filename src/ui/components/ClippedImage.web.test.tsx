@@ -7,6 +7,8 @@ import { ClippedImage } from './ClippedImage'
 const props = {
   clipId: 'clipId',
   path: 'path',
+  width: 58,
+  height: 67,
 }
 
 describe('ClippedImage', () => {
