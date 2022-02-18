@@ -80,10 +80,9 @@ describe('processHomepageEntry', () => {
 
 describe('parseOfferId', () => {
   it.each`
-    offerId          | expected
-    ${'12345'}       | ${12345}
-    ${'AGHYA'}       | ${102272}
-    ${'ABEFPOLXX19'} | ${null}
+    offerId      | expected
+    ${'12345'}   | ${12345}
+    ${'A120934'} | ${null}
   `(
     'parseOfferId($offerId) = $expected',
     ({ offerId, expected }: { offerId: string; expected: number | null }) => {

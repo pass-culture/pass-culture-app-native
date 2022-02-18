@@ -1,5 +1,3 @@
-import { dehumanizeId } from 'features/offer/services/dehumanizeId'
-
 import {
   AlgoliaFields,
   BusinessFields,
@@ -25,12 +23,8 @@ import {
   VenuesModule,
 } from './moduleTypes'
 
-// Offer can be humanized (before) or a number (now) in contenful
 export const parseOfferId = (offerId: string): number | null => {
-  // If the offer is only digits: we assume it the offer id (non humanized)
-  if (offerId.match(/^[0-9]+$/)) return parseInt(offerId, 10)
-
-  return dehumanizeId(offerId)
+  return Number.isNaN(Number(offerId)) ? null : Number(offerId)
 }
 
 const buildAlgoliaModule = (
