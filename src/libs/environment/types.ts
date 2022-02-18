@@ -56,4 +56,7 @@ export interface Environment {
   TMX_ORGID: string
   URL_PREFIX: string
   WEBAPP_V2_DOMAIN: string
+  COMMIT_HASH: string
+  BRANCH: string
+  LAST_COMMIT_DATETIME: string
 }

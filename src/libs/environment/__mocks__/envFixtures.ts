@@ -60,4 +60,7 @@ export const env: Environment = {
   TMX_ORGID: 'xyzt',
   URL_PREFIX: 'passculture',
   WEBAPP_V2_DOMAIN: 'webapp-v2.example.com',
+  COMMIT_HASH: '13371337',
+  BRANCH: 'master',
+  LAST_COMMIT_DATETIME: '2022-02-18T18:29:01+01:00',
 }
