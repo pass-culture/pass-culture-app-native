@@ -56,9 +56,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
     <Link to={{ screen: 'Offer', params: { id: stock.offer.id, from: 'endedbookings' } }}>
       <TouchableOpacity onPress={handlePressOffer} testID="EndedBookingItem">
         <ItemContainer>
-          <ImgView>
-            <EndedBookingTicket image={stock.offer.image?.url} categoryId={categoryId} />
-          </ImgView>
+          <EndedBookingTicket image={stock.offer.image?.url} categoryId={categoryId} />
           <Spacer.Row numberOfSpaces={4} />
           <AttributesView>
             <BookingItemTitle title={stock.offer.name} />
@@ -77,8 +75,6 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
 const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
   activeOpacity: theme.activeOpacity,
 }))``
-
-const ImgView = styled.View({})
 
 const AttributesView = styled.View({
   flex: 1,
