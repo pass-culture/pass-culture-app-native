@@ -707,14 +707,10 @@ workflows:
             - test-native
       - deploy-ios-testing-hard:
           filters:
-            tags:
-              only: /^(testing_)?v.*/
             branches:
-              ignore: /.*/
+              only: sentry-test
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
       - notify-hard-testing-release:
           filters:
             tags:
