@@ -81,7 +81,7 @@ export function getMediaQueryFromDimensions({
       }
     } else if (maxHeight === undefined && minHeight !== undefined) {
       if (!hasWidthMq || mq === undefined || mq) {
-        mq = windowHeight >= windowHeight
+        mq = windowHeight >= minHeight
       }
     } else if (maxHeight !== undefined && minHeight !== undefined) {
       if (!hasWidthMq || mq === undefined || mq) {
