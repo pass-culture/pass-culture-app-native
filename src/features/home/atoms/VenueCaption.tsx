@@ -2,14 +2,13 @@ import React from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
-import { VenueTypeCodeKey } from 'api/gen'
-import { mapVenueTypeToIcon, parseTypeHomeLabel } from 'libs/parsers'
+import { mapVenueTypeToIcon, parseTypeHomeLabel, VenueTypeCode } from 'libs/parsers'
 import { Typo, GUTTER_DP, Spacer } from 'ui/theme'
 
 interface VenueCaptionProps {
   width: number
   name: string
-  venueType: VenueTypeCodeKey | null
+  venueType: VenueTypeCode | null
   distance?: string
 }
 

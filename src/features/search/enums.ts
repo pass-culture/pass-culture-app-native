@@ -1,5 +1,5 @@
 import { SearchGroupNameEnum, VenueTypeCodeKey } from 'api/gen'
-import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers'
+import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers'
 import CategoryIcon from 'ui/svg/icons/categories/bicolor'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 
@@ -84,7 +84,7 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
 }
 
 type VenueTypeCriteria = { ALL: { label: string; facetFilter: '' } } & {
-  [venueType in VenueTypeCodeKey]: { label: string; facetFilter: VenueTypeCodeKey }
+  [venueType in VenueTypeCode]: { label: string; facetFilter: VenueTypeCode }
 }
 
 export const VENUE_TYPE_CRITERIA: VenueTypeCriteria = {

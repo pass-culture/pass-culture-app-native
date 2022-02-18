@@ -10,7 +10,7 @@ import { VenueOffers } from 'features/venue/components/VenueOffers'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { analytics } from 'libs/analytics'
 import { WhereSection } from 'libs/geolocation/components/WhereSection'
-import { parseType } from 'libs/parsers'
+import { parseType, VenueTypeCode } from 'libs/parsers'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlock'
 import { AccordionItem } from 'ui/components/AccordionItem'
@@ -52,9 +52,10 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
     contact,
     name,
   } = venue
+  const venueType = venueTypeCode as VenueTypeCode
 
   const venueAddress = formatFullAddress(address || publicName, postalCode, city)
-  const typeLabel = parseType(venueTypeCode)
+  const typeLabel = parseType(venueType)
 
   const shouldShowVenueOffers = !!offers && offers?.hits.length > 0
   const shouldShowAccessibility = Object.values(accessibility).some(
@@ -72,7 +73,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       bounces={false}
       onScroll={onScroll}>
       {/* TODO(antoinewg, #10099) use the image once we have it */}
-      <Hero imageUrl={undefined} type="venue" venueType={venueTypeCode || null} />
+      <Hero imageUrl={undefined} type="venue" venueType={venueType || null} />
       <Spacer.Column numberOfSpaces={4} />
       <Dl>
         <MarginContainer>
@@ -95,7 +96,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
         </MarginContainer>
 
         <VenueIconCaptions
-          type={venueTypeCode || null}
+          type={venueType || null}
           label={typeLabel}
           locationCoordinates={{ latitude, longitude }}
         />

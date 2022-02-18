@@ -1,6 +1,5 @@
 import flatten from 'lodash.flatten'
 
-import { VenueTypeCodeKey } from 'api/gen'
 import { VenuesSearchParametersFields } from 'features/home/contentful'
 import { LocationType } from 'features/search/enums'
 import { AlgoliaVenue, FiltersArray } from 'libs/algolia'
@@ -11,6 +10,7 @@ import { buildGeolocationParameter } from 'libs/algolia/fetchAlgolia/fetchAlgoli
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { env } from 'libs/environment'
 import { GeoCoordinates } from 'libs/geolocation'
+import { VenueTypeCode } from 'libs/parsers'
 import { VenueHit } from 'libs/search'
 import { parseGeolocationParameters } from 'libs/search/parseSearchParameters'
 import { getVenueTypeFacetFilters } from 'libs/search/utils/getVenueTypeFacetFilters'
@@ -102,6 +102,6 @@ const buildVenueHit = (venue: AlgoliaVenue): VenueHit => {
     longitude: venue._geoloc.lng,
     name: venue.name,
     publicName: venue.name,
-    venueTypeCode: venue.venue_type as VenueTypeCodeKey,
+    venueTypeCode: venue.venue_type as VenueTypeCode,
   }
 }
