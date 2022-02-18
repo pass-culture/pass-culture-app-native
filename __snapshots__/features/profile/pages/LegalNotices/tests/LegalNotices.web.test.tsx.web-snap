@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <header
-        class="sc-bkkeKt hOlULm"
+        class="sc-ieecCq etXgLS"
       >
         <div
           class="css-view-1dbjc4n"
@@ -80,96 +80,108 @@ Object {
           class="css-view-1dbjc4n"
           style="height: 56px;"
         />
-        <div
-          aria-label="Conditions Générales d’Utilisation"
-          class="css-view-1dbjc4n"
-          data-testid="Conditions Générales d’Utilisation"
-          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
-          tabindex="0"
+        <a
+          class="sc-jRQBWg cmDpap"
+          href="https://passculture.cgu"
+          target="_blank"
         >
           <div
+            aria-label="Conditions Générales d’Utilisation"
             class="css-view-1dbjc4n"
-            style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
+            data-testid="Conditions Générales d’Utilisation"
+            style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            tabindex="0"
           >
             <div
               class="css-view-1dbjc4n"
+              style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
             >
               <div
-                class="css-text-901oao"
-                dir="auto"
+                class="css-view-1dbjc4n"
               >
-                undefined-SVG-Mock
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
               </div>
-            </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="width: 8px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; text-align: left;"
-            >
               <div
-                class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                class="css-view-1dbjc4n"
+                style="width: 8px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; text-align: left;"
               >
-                Conditions Générales d’Utilisation
+                <div
+                  class="css-text-901oao css-textMultiLine-cens5h"
+                  dir="auto"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                >
+                  Conditions Générales d’Utilisation
+                </div>
               </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: flex-end;"
+              />
             </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="align-items: flex-end;"
-            />
           </div>
-        </div>
+        </a>
         <div
           class="css-view-1dbjc4n"
           style="background-color: rgb(241, 241, 244); height: 1px; width: 100%;"
         />
-        <div
-          aria-label="Charte de protection des données personnelles"
-          class="css-view-1dbjc4n"
-          data-testid="Charte de protection des données personnelles"
-          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
-          tabindex="0"
+        <a
+          class="sc-jRQBWg cmDpap"
+          href="https://passculture.data-privacy-chart"
+          target="_blank"
         >
           <div
+            aria-label="Charte de protection des données personnelles"
             class="css-view-1dbjc4n"
-            style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
+            data-testid="Charte de protection des données personnelles"
+            style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            tabindex="0"
           >
             <div
               class="css-view-1dbjc4n"
+              style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
             >
               <div
-                class="css-text-901oao"
-                dir="auto"
+                class="css-view-1dbjc4n"
               >
-                undefined-SVG-Mock
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
               </div>
-            </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="width: 8px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; text-align: left;"
-            >
               <div
-                class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                class="css-view-1dbjc4n"
+                style="width: 8px;"
+              />
+              <div
+                class="css-view-1dbjc4n"
+                style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; text-align: left;"
               >
-                Charte de protection des données personnelles
+                <div
+                  class="css-text-901oao css-textMultiLine-cens5h"
+                  dir="auto"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                >
+                  Charte de protection des données personnelles
+                </div>
               </div>
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: flex-end;"
+              />
             </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="align-items: flex-end;"
-            />
           </div>
-        </div>
+        </a>
         <div
           class="css-view-1dbjc4n"
           style="background-color: rgb(241, 241, 244); height: 1px; width: 100%;"
@@ -222,7 +234,7 @@ Object {
   </body>,
   "container": <div>
     <header
-      class="sc-bkkeKt hOlULm"
+      class="sc-ieecCq etXgLS"
     >
       <div
         class="css-view-1dbjc4n"
@@ -296,96 +308,108 @@ Object {
         class="css-view-1dbjc4n"
         style="height: 56px;"
       />
-      <div
-        aria-label="Conditions Générales d’Utilisation"
-        class="css-view-1dbjc4n"
-        data-testid="Conditions Générales d’Utilisation"
-        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
-        tabindex="0"
+      <a
+        class="sc-jRQBWg cmDpap"
+        href="https://passculture.cgu"
+        target="_blank"
       >
         <div
+          aria-label="Conditions Générales d’Utilisation"
           class="css-view-1dbjc4n"
-          style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
+          data-testid="Conditions Générales d’Utilisation"
+          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+          tabindex="0"
         >
           <div
             class="css-view-1dbjc4n"
+            style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
           >
             <div
-              class="css-text-901oao"
-              dir="auto"
+              class="css-view-1dbjc4n"
             >
-              undefined-SVG-Mock
+              <div
+                class="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
             </div>
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="width: 8px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; text-align: left;"
-          >
             <div
-              class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
-              style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+              class="css-view-1dbjc4n"
+              style="width: 8px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; text-align: left;"
             >
-              Conditions Générales d’Utilisation
+              <div
+                class="css-text-901oao css-textMultiLine-cens5h"
+                dir="auto"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+              >
+                Conditions Générales d’Utilisation
+              </div>
             </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: flex-end;"
+            />
           </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="align-items: flex-end;"
-          />
         </div>
-      </div>
+      </a>
       <div
         class="css-view-1dbjc4n"
         style="background-color: rgb(241, 241, 244); height: 1px; width: 100%;"
       />
-      <div
-        aria-label="Charte de protection des données personnelles"
-        class="css-view-1dbjc4n"
-        data-testid="Charte de protection des données personnelles"
-        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
-        tabindex="0"
+      <a
+        class="sc-jRQBWg cmDpap"
+        href="https://passculture.data-privacy-chart"
+        target="_blank"
       >
         <div
+          aria-label="Charte de protection des données personnelles"
           class="css-view-1dbjc4n"
-          style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
+          data-testid="Charte de protection des données personnelles"
+          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+          tabindex="0"
         >
           <div
             class="css-view-1dbjc4n"
+            style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
           >
             <div
-              class="css-text-901oao"
-              dir="auto"
+              class="css-view-1dbjc4n"
             >
-              undefined-SVG-Mock
+              <div
+                class="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
             </div>
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="width: 8px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; text-align: left;"
-          >
             <div
-              class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
-              style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+              class="css-view-1dbjc4n"
+              style="width: 8px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; text-align: left;"
             >
-              Charte de protection des données personnelles
+              <div
+                class="css-text-901oao css-textMultiLine-cens5h"
+                dir="auto"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+              >
+                Charte de protection des données personnelles
+              </div>
             </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: flex-end;"
+            />
           </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="align-items: flex-end;"
-          />
         </div>
-      </div>
+      </a>
       <div
         class="css-view-1dbjc4n"
         style="background-color: rgb(241, 241, 244); height: 1px; width: 100%;"

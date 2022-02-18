@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { ReactNode, useCallback } from 'react'
-import { PixelRatio } from 'react-native'
+import { PixelRatio, StyleSheet } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SeeMore } from 'features/home/atoms'
@@ -119,7 +119,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
         keyExtractor={keyExtractor}
       />
       <MarginContainer>
-        <Link to={{ screen: 'Search', params }}>
+        <Link to={{ screen: 'Search', params }} style={styles.link}>
           <ButtonWithLinearGradient
             wording={VENUE_OFFERS_CTA_WORDING}
             onPress={seeAllOffers}
@@ -134,4 +134,11 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
 
 const MarginContainer = styled.View({
   marginHorizontal: PixelRatio.roundToNearestPixel(MARGIN_DP),
+})
+
+const styles = StyleSheet.create({
+  link: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
 })

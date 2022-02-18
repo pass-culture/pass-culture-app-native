@@ -337,7 +337,7 @@ Object {
               style="height: 16px;"
             />
             <dl
-              class="sc-iwjdpV eHpIaf"
+              class="sc-cxpSdN ioZFYP"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -348,7 +348,7 @@ Object {
                   style="align-items: center; flex-direction: row; justify-content: center; margin-top: 8px;"
                 >
                   <dt
-                    class="sc-hGPBjI sc-iJKOTD cjFdMf gaGitO"
+                    class="sc-dlVxhl sc-giYglK ctocLT cURyye"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -362,7 +362,7 @@ Object {
                     </div>
                   </dt>
                   <dd
-                    class="sc-dJjYzT sc-giYglK laPVRp jASuGN"
+                    class="sc-hGPBjI sc-ezbkAF sSLs eMA-DhL"
                   >
                     1 boulevard Poissonnière, 75000 Paris
                   </dd>
@@ -372,12 +372,12 @@ Object {
                   style="height: 8px;"
                 />
                 <dt
-                  class="sc-hGPBjI sc-cxpSdN cjFdMf fHzcTA"
+                  class="sc-dlVxhl sc-llYSUQ ctocLT kNLmEk"
                 >
                   Lieu
                 </dt>
                 <dd
-                  class="sc-dJjYzT sc-llYSUQ laPVRp fpAxNb"
+                  class="sc-hGPBjI sc-iJKOTD sSLs dNuyyK"
                   data-testid="venueTitle"
                 >
                   Le Petit Rintintin 1
@@ -400,7 +400,7 @@ Object {
                   style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                 >
                   <dt
-                    class="sc-hGPBjI sc-dlVxhl cjFdMf fVIyRx"
+                    class="sc-dlVxhl sc-kfPuZi ctocLT ligalo"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -418,7 +418,7 @@ Object {
                     style="height: 4px;"
                   />
                   <dd
-                    class="sc-dJjYzT sc-kfPuZi laPVRp behDhh"
+                    class="sc-hGPBjI sc-fKVqWL sSLs cOsyrv"
                     data-testid="caption-undefined"
                   >
                     Autre type de lieu
@@ -440,7 +440,7 @@ Object {
                     style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                   >
                     <dt
-                      class="sc-hGPBjI sc-dlVxhl cjFdMf fVIyRx"
+                      class="sc-dlVxhl sc-kfPuZi ctocLT ligalo"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -458,7 +458,7 @@ Object {
                       style="height: 4px;"
                     />
                     <dd
-                      class="sc-dJjYzT sc-kfPuZi laPVRp cGMIiT"
+                      class="sc-hGPBjI sc-fKVqWL sSLs kePWdl"
                       data-testid="caption-undefined"
                       disabled=""
                     >
@@ -472,12 +472,12 @@ Object {
                 />
               </div>
               <dt
-                class="sc-hGPBjI sc-cxpSdN cjFdMf fHzcTA"
+                class="sc-dlVxhl sc-llYSUQ ctocLT kNLmEk"
               >
                 Description
               </dt>
               <dd
-                class="sc-dJjYzT sc-bBHxTw laPVRp kdloxe"
+                class="sc-hGPBjI sc-iwjdpV sSLs hbdCef"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -495,33 +495,39 @@ Object {
                       style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; width: 100%;"
                     >
                        
-                      <span
-                        class="css-text-901oao css-textHasAncestor-16my406"
-                        style="color: rgb(22, 22, 23); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                      <a
+                        class="sc-iCfMLu iaRsUK"
+                        href="https://pass.culture.fr/"
+                        target="_blank"
                       >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="display: inline-flex; width: 4px;"
-                        />
                         <span
                           class="css-text-901oao css-textHasAncestor-16my406"
-                          style="white-space: nowrap;"
+                          style="color: rgb(22, 22, 23); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                         >
                           <div
                             class="css-view-1dbjc4n"
-                            data-testid="externalSiteIcon"
-                            style="display: inline-flex;"
+                            style="display: inline-flex; width: 4px;"
+                          />
+                          <span
+                            class="css-text-901oao css-textHasAncestor-16my406"
+                            style="white-space: nowrap;"
                           >
-                            <span
-                              class="css-text-901oao css-textHasAncestor-16my406"
+                            <div
+                              class="css-view-1dbjc4n"
+                              data-testid="externalSiteIcon"
+                              style="display: inline-flex;"
                             >
-                              externalSiteIcon-SVG-Mock
-                            </span>
-                          </div>
-                          
+                              <span
+                                class="css-text-901oao css-textHasAncestor-16my406"
+                              >
+                                externalSiteIcon-SVG-Mock
+                              </span>
+                            </div>
+                            
+                          </span>
+                           https://pass.culture.fr/
                         </span>
-                         https://pass.culture.fr/
-                      </span>
+                      </a>
                        lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,
                     </div>
                   </div>
@@ -855,9 +861,10 @@ Object {
                 <div
                   class="css-text-901oao"
                   dir="auto"
+                  style="display: flex; flex-direction: column;"
                 >
                   <button
-                    class="sc-kDTinF gRNtfL"
+                    class="sc-iqseJM fzmVpo"
                     type="button"
                   >
                     <div
@@ -891,12 +898,12 @@ Object {
                   style="height: 24px;"
                 />
                 <dt
-                  class="sc-hGPBjI sc-fKVqWL cjFdMf gtyDCz"
+                  class="sc-dlVxhl sc-bBHxTw ctocLT eOAigJ"
                 >
                   Où ?
                 </dt>
                 <dd
-                  class="sc-dJjYzT laPVRp"
+                  class="sc-hGPBjI sSLs"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -932,34 +939,40 @@ Object {
                     class="css-view-1dbjc4n"
                     style="height: 24px;"
                   />
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="align-items: flex-start;"
+                  <a
+                    class="sc-iCfMLu iaRsUK"
+                    href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re"
+                    target="_blank"
                   >
-                    <button
-                      class="sc-bdvvtL jBhCHV sc-dkPtRN fwCeAR"
-                      type="button"
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="align-items: flex-start;"
                     >
-                      <div
-                        class="css-view-1dbjc4n"
-                        data-testid="button-icon"
+                      <button
+                        class="sc-bdvvtL jBhCHV sc-dkPtRN fwCeAR"
+                        type="button"
                       >
                         <div
-                          class="css-text-901oao"
-                          dir="auto"
+                          class="css-view-1dbjc4n"
+                          data-testid="button-icon"
                         >
-                          button-icon-SVG-Mock
+                          <div
+                            class="css-text-901oao"
+                            dir="auto"
+                          >
+                            button-icon-SVG-Mock
+                          </div>
                         </div>
-                      </div>
-                      <div
-                        class="css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
-                        style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
-                      >
-                        Voir l'itinéraire
-                      </div>
-                    </button>
-                  </div>
+                        <div
+                          class="css-text-901oao css-textMultiLine-cens5h"
+                          dir="auto"
+                          style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
+                        >
+                          Voir l'itinéraire
+                        </div>
+                      </button>
+                    </div>
+                  </a>
                 </dd>
                 <div
                   class="css-view-1dbjc4n"
@@ -1019,33 +1032,39 @@ Object {
                   style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                 >
                   How to withdraw, 
-                  <span
-                    class="css-text-901oao css-textHasAncestor-16my406"
-                    style="color: rgb(22, 22, 23); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                  <a
+                    class="sc-iCfMLu iaRsUK"
+                    href="https://test.com"
+                    target="_blank"
                   >
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="display: inline-flex; width: 4px;"
-                    />
                     <span
                       class="css-text-901oao css-textHasAncestor-16my406"
-                      style="white-space: nowrap;"
+                      style="color: rgb(22, 22, 23); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                     >
                       <div
                         class="css-view-1dbjc4n"
-                        data-testid="externalSiteIcon"
-                        style="display: inline-flex;"
+                        style="display: inline-flex; width: 4px;"
+                      />
+                      <span
+                        class="css-text-901oao css-textHasAncestor-16my406"
+                        style="white-space: nowrap;"
                       >
-                        <span
-                          class="css-text-901oao css-textHasAncestor-16my406"
+                        <div
+                          class="css-view-1dbjc4n"
+                          data-testid="externalSiteIcon"
+                          style="display: inline-flex;"
                         >
-                          externalSiteIcon-SVG-Mock
-                        </span>
-                      </div>
-                      
+                          <span
+                            class="css-text-901oao css-textHasAncestor-16my406"
+                          >
+                            externalSiteIcon-SVG-Mock
+                          </span>
+                        </div>
+                        
+                      </span>
+                       https://test.com
                     </span>
-                     https://test.com
-                  </span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -1770,7 +1789,7 @@ Object {
             style="height: 16px;"
           />
           <dl
-            class="sc-iwjdpV eHpIaf"
+            class="sc-cxpSdN ioZFYP"
           >
             <div
               class="css-view-1dbjc4n"
@@ -1781,7 +1800,7 @@ Object {
                 style="align-items: center; flex-direction: row; justify-content: center; margin-top: 8px;"
               >
                 <dt
-                  class="sc-hGPBjI sc-iJKOTD cjFdMf gaGitO"
+                  class="sc-dlVxhl sc-giYglK ctocLT cURyye"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -1795,7 +1814,7 @@ Object {
                   </div>
                 </dt>
                 <dd
-                  class="sc-dJjYzT sc-giYglK laPVRp jASuGN"
+                  class="sc-hGPBjI sc-ezbkAF sSLs eMA-DhL"
                 >
                   1 boulevard Poissonnière, 75000 Paris
                 </dd>
@@ -1805,12 +1824,12 @@ Object {
                 style="height: 8px;"
               />
               <dt
-                class="sc-hGPBjI sc-cxpSdN cjFdMf fHzcTA"
+                class="sc-dlVxhl sc-llYSUQ ctocLT kNLmEk"
               >
                 Lieu
               </dt>
               <dd
-                class="sc-dJjYzT sc-llYSUQ laPVRp fpAxNb"
+                class="sc-hGPBjI sc-iJKOTD sSLs dNuyyK"
                 data-testid="venueTitle"
               >
                 Le Petit Rintintin 1
@@ -1833,7 +1852,7 @@ Object {
                 style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <dt
-                  class="sc-hGPBjI sc-dlVxhl cjFdMf fVIyRx"
+                  class="sc-dlVxhl sc-kfPuZi ctocLT ligalo"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -1851,7 +1870,7 @@ Object {
                   style="height: 4px;"
                 />
                 <dd
-                  class="sc-dJjYzT sc-kfPuZi laPVRp behDhh"
+                  class="sc-hGPBjI sc-fKVqWL sSLs cOsyrv"
                   data-testid="caption-undefined"
                 >
                   Autre type de lieu
@@ -1873,7 +1892,7 @@ Object {
                   style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                 >
                   <dt
-                    class="sc-hGPBjI sc-dlVxhl cjFdMf fVIyRx"
+                    class="sc-dlVxhl sc-kfPuZi ctocLT ligalo"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -1891,7 +1910,7 @@ Object {
                     style="height: 4px;"
                   />
                   <dd
-                    class="sc-dJjYzT sc-kfPuZi laPVRp cGMIiT"
+                    class="sc-hGPBjI sc-fKVqWL sSLs kePWdl"
                     data-testid="caption-undefined"
                     disabled=""
                   >
@@ -1905,12 +1924,12 @@ Object {
               />
             </div>
             <dt
-              class="sc-hGPBjI sc-cxpSdN cjFdMf fHzcTA"
+              class="sc-dlVxhl sc-llYSUQ ctocLT kNLmEk"
             >
               Description
             </dt>
             <dd
-              class="sc-dJjYzT sc-bBHxTw laPVRp kdloxe"
+              class="sc-hGPBjI sc-iwjdpV sSLs hbdCef"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -1928,33 +1947,39 @@ Object {
                     style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; width: 100%;"
                   >
                      
-                    <span
-                      class="css-text-901oao css-textHasAncestor-16my406"
-                      style="color: rgb(22, 22, 23); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                    <a
+                      class="sc-iCfMLu iaRsUK"
+                      href="https://pass.culture.fr/"
+                      target="_blank"
                     >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="display: inline-flex; width: 4px;"
-                      />
                       <span
                         class="css-text-901oao css-textHasAncestor-16my406"
-                        style="white-space: nowrap;"
+                        style="color: rgb(22, 22, 23); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                       >
                         <div
                           class="css-view-1dbjc4n"
-                          data-testid="externalSiteIcon"
-                          style="display: inline-flex;"
+                          style="display: inline-flex; width: 4px;"
+                        />
+                        <span
+                          class="css-text-901oao css-textHasAncestor-16my406"
+                          style="white-space: nowrap;"
                         >
-                          <span
-                            class="css-text-901oao css-textHasAncestor-16my406"
+                          <div
+                            class="css-view-1dbjc4n"
+                            data-testid="externalSiteIcon"
+                            style="display: inline-flex;"
                           >
-                            externalSiteIcon-SVG-Mock
-                          </span>
-                        </div>
-                        
+                            <span
+                              class="css-text-901oao css-textHasAncestor-16my406"
+                            >
+                              externalSiteIcon-SVG-Mock
+                            </span>
+                          </div>
+                          
+                        </span>
+                         https://pass.culture.fr/
                       </span>
-                       https://pass.culture.fr/
-                    </span>
+                    </a>
                      lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,
                   </div>
                 </div>
@@ -2288,9 +2313,10 @@ Object {
               <div
                 class="css-text-901oao"
                 dir="auto"
+                style="display: flex; flex-direction: column;"
               >
                 <button
-                  class="sc-kDTinF gRNtfL"
+                  class="sc-iqseJM fzmVpo"
                   type="button"
                 >
                   <div
@@ -2324,12 +2350,12 @@ Object {
                 style="height: 24px;"
               />
               <dt
-                class="sc-hGPBjI sc-fKVqWL cjFdMf gtyDCz"
+                class="sc-dlVxhl sc-bBHxTw ctocLT eOAigJ"
               >
                 Où ?
               </dt>
               <dd
-                class="sc-dJjYzT laPVRp"
+                class="sc-hGPBjI sSLs"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -2365,34 +2391,40 @@ Object {
                   class="css-view-1dbjc4n"
                   style="height: 24px;"
                 />
-                <div
-                  class="css-view-1dbjc4n"
-                  style="align-items: flex-start;"
+                <a
+                  class="sc-iCfMLu iaRsUK"
+                  href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re"
+                  target="_blank"
                 >
-                  <button
-                    class="sc-bdvvtL jBhCHV sc-dkPtRN fwCeAR"
-                    type="button"
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="align-items: flex-start;"
                   >
-                    <div
-                      class="css-view-1dbjc4n"
-                      data-testid="button-icon"
+                    <button
+                      class="sc-bdvvtL jBhCHV sc-dkPtRN fwCeAR"
+                      type="button"
                     >
                       <div
-                        class="css-text-901oao"
-                        dir="auto"
+                        class="css-view-1dbjc4n"
+                        data-testid="button-icon"
                       >
-                        button-icon-SVG-Mock
+                        <div
+                          class="css-text-901oao"
+                          dir="auto"
+                        >
+                          button-icon-SVG-Mock
+                        </div>
                       </div>
-                    </div>
-                    <div
-                      class="css-text-901oao css-textMultiLine-cens5h"
-                      dir="auto"
-                      style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
-                    >
-                      Voir l'itinéraire
-                    </div>
-                  </button>
-                </div>
+                      <div
+                        class="css-text-901oao css-textMultiLine-cens5h"
+                        dir="auto"
+                        style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
+                      >
+                        Voir l'itinéraire
+                      </div>
+                    </button>
+                  </div>
+                </a>
               </dd>
               <div
                 class="css-view-1dbjc4n"
@@ -2452,33 +2484,39 @@ Object {
                 style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
               >
                 How to withdraw, 
-                <span
-                  class="css-text-901oao css-textHasAncestor-16my406"
-                  style="color: rgb(22, 22, 23); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                <a
+                  class="sc-iCfMLu iaRsUK"
+                  href="https://test.com"
+                  target="_blank"
                 >
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="display: inline-flex; width: 4px;"
-                  />
                   <span
                     class="css-text-901oao css-textHasAncestor-16my406"
-                    style="white-space: nowrap;"
+                    style="color: rgb(22, 22, 23); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      data-testid="externalSiteIcon"
-                      style="display: inline-flex;"
+                      style="display: inline-flex; width: 4px;"
+                    />
+                    <span
+                      class="css-text-901oao css-textHasAncestor-16my406"
+                      style="white-space: nowrap;"
                     >
-                      <span
-                        class="css-text-901oao css-textHasAncestor-16my406"
+                      <div
+                        class="css-view-1dbjc4n"
+                        data-testid="externalSiteIcon"
+                        style="display: inline-flex;"
                       >
-                        externalSiteIcon-SVG-Mock
-                      </span>
-                    </div>
-                    
+                        <span
+                          class="css-text-901oao css-textHasAncestor-16my406"
+                        >
+                          externalSiteIcon-SVG-Mock
+                        </span>
+                      </div>
+                      
+                    </span>
+                     https://test.com
                   </span>
-                   https://test.com
-                </span>
+                </a>
               </div>
             </div>
           </div>

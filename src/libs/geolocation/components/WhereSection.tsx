@@ -11,6 +11,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
+import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { QueryKeys } from 'libs/queryKeys'
 import { GLOBAL_STALE_TIME } from 'libs/react-query/queryClient'
@@ -18,6 +19,7 @@ import { Spacer } from 'ui/components/spacer/Spacer'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { Typo, getSpacing } from 'ui/theme'
+import { A } from 'ui/web/link/A'
 import { Link } from 'ui/web/link/Link'
 import { Dd } from 'ui/web/list/Dd'
 import { Dt } from 'ui/web/list/Dt'
@@ -121,7 +123,9 @@ export const WhereSection: React.FC<Props> = ({
             <Spacer.Column numberOfSpaces={4} />
             <Separator />
             <Spacer.Column numberOfSpaces={6} />
-            <SeeItineraryButton openItinerary={openItinerary} />
+            <A href={venue.address ? getGoogleMapsItineraryUrl(venue.address) : undefined}>
+              <SeeItineraryButton openItinerary={openItinerary} />
+            </A>
           </React.Fragment>
         )}
       </Dd>

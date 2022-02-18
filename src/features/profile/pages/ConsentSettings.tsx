@@ -16,6 +16,7 @@ import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
+import { A } from 'ui/web/link/A'
 
 import { ProfileContainer } from '../components/reusables'
 
@@ -73,12 +74,14 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
           <StyledCaption>
             {t`Pour plus d'informations, nous t'invitons à consulter notre`}
             <Spacer.Row numberOfSpaces={1} />
-            <ButtonQuaternary
-              wording={cookieButtonText}
-              icon={ExternalSiteFilled}
-              onPress={openCookiesPolicyExternalUrl}
-              inline
-            />
+            <A href={env.COOKIES_POLICY_LINK}>
+              <ButtonQuaternary
+                wording={cookieButtonText}
+                icon={ExternalSiteFilled}
+                onPress={openCookiesPolicyExternalUrl}
+                inline
+              />
+            </A>
           </StyledCaption>
         </MoreInformationContainer>
         <Spacer.Column numberOfSpaces={4} />

@@ -329,9 +329,10 @@ Object {
         <div
           class="css-text-901oao"
           dir="auto"
+          style="display: flex; flex-direction: column;"
         >
           <button
-            class="sc-jrQzAO dQNBgw"
+            class="sc-kDTinF gRNtfL"
             type="button"
           >
             <div
@@ -679,9 +680,10 @@ Object {
       <div
         class="css-text-901oao"
         dir="auto"
+        style="display: flex; flex-direction: column;"
       >
         <button
-          class="sc-jrQzAO dQNBgw"
+          class="sc-kDTinF gRNtfL"
           type="button"
         >
           <div

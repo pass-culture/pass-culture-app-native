@@ -16,22 +16,27 @@ describe('ExternalLink', () => {
     waitForExpect(() => {
       expect(openURLSpy).toHaveBeenCalledWith(someUrl)
       expect(openURLSpy).toHaveBeenCalledTimes(1)
+      expect(getByText(someUrl)).toHaveAttribute('href', someUrl)
     })
     openURLSpy.mockClear()
   })
   it('should open given url when text clicked and text not matching url', () => {
     const text = 'anchor text'
     const { getByText } = render(<ExternalLink text={text} url={someUrl} />)
-    fireEvent.click(getByText('anchor'))
+    const anchorElement = getByText('anchor')
+    fireEvent.click(anchorElement)
     expect(openURLSpy).toHaveBeenCalledWith(someUrl)
     expect(openURLSpy).toHaveBeenCalledTimes(1)
+    expect(anchorElement.closest('a')).toHaveAttribute('href', someUrl)
     openURLSpy.mockClear()
   })
   it('should open given url when icon clicked', () => {
     const { getByTestId } = render(<ExternalLink url={someUrl} />)
-    fireEvent.click(getByTestId('externalSiteIcon'))
+    const icon = getByTestId('externalSiteIcon')
+    fireEvent.click(icon)
     expect(openURLSpy).toHaveBeenCalledWith(someUrl)
     expect(openURLSpy).toHaveBeenCalledTimes(1)
+    expect(icon.closest('a')).toHaveAttribute('href', someUrl)
     openURLSpy.mockClear()
   })
 

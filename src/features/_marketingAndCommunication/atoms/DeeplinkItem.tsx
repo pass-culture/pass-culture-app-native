@@ -8,6 +8,7 @@ import { openUrl } from 'features/navigation/helpers'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Share as DefaultShare } from 'ui/svg/icons/Share'
 import { getSpacing, getSpacingString, Spacer } from 'ui/theme'
+import { A } from 'ui/web/link/A'
 
 interface Props {
   deeplink: GeneratedDeeplink
@@ -45,10 +46,12 @@ export const DeeplinkItem = ({ deeplink, before }: Props) => {
       ) : null}
       <Container>
         <Spacer.Flex flex={0.85}>
-          <TouchableOpacity
-            onPress={() => openUrl(deeplink.universalLink, { shouldLogEvent: false })}>
-            <Title>{deeplink.universalLink}</Title>
-          </TouchableOpacity>
+          <A href={deeplink.universalLink}>
+            <TouchableOpacity
+              onPress={() => openUrl(deeplink.universalLink, { shouldLogEvent: false })}>
+              <Title>{deeplink.universalLink}</Title>
+            </TouchableOpacity>
+          </A>
         </Spacer.Flex>
 
         <Spacer.Flex flex={0.15}>
@@ -65,10 +68,12 @@ export const DeeplinkItem = ({ deeplink, before }: Props) => {
       <Spacer.Column numberOfSpaces={getSpacing(0.5)} />
       <Container>
         <Spacer.Flex flex={0.85}>
-          <TouchableOpacity
-            onPress={() => openUrl(deeplink.firebaseLink, { shouldLogEvent: false })}>
-            <Title>{deeplink.firebaseLink}</Title>
-          </TouchableOpacity>
+          <A href={deeplink.firebaseLink}>
+            <TouchableOpacity
+              onPress={() => openUrl(deeplink.firebaseLink, { shouldLogEvent: false })}>
+              <Title>{deeplink.firebaseLink}</Title>
+            </TouchableOpacity>
+          </A>
         </Spacer.Flex>
 
         <Spacer.Flex flex={0.15}>

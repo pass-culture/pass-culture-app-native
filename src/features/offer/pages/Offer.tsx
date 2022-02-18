@@ -15,6 +15,7 @@ import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
 import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
+import { A } from 'ui/web/link/A'
 
 import { OfferBody } from './OfferBody'
 
@@ -42,7 +43,12 @@ export const Offer: FunctionComponent = () => {
     },
   })
 
-  const { wording, onPress: onPressCTA, isExternal } = useCtaWordingAndAction({ offerId }) || {}
+  const {
+    wording,
+    onPress: onPressCTA,
+    isExternal,
+    url,
+  } = useCtaWordingAndAction({ offerId }) || {}
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
 
@@ -57,17 +63,19 @@ export const Offer: FunctionComponent = () => {
       <OfferBody offerId={offerId} onScroll={onScroll} />
       {!!wording && (
         <CallToActionContainer testID="CTA-button" style={{ paddingBottom: bottom }}>
-          <ButtonWithLinearGradient
-            wording={wording}
-            onPress={() => {
-              onPressCTA && onPressCTA()
-              if (!isExternal) {
-                showBookingOfferModal()
-              }
-            }}
-            isExternal={isExternal}
-            isDisabled={onPressCTA === undefined}
-          />
+          <A href={isExternal ? url : undefined}>
+            <ButtonWithLinearGradient
+              wording={wording}
+              onPress={() => {
+                onPressCTA && onPressCTA()
+                if (!isExternal) {
+                  showBookingOfferModal()
+                }
+              }}
+              isExternal={isExternal}
+              isDisabled={onPressCTA === undefined}
+            />
+          </A>
         </CallToActionContainer>
       )}
 

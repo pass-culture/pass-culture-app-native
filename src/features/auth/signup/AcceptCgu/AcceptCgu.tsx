@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { CardContent, Paragraphe } from 'features/auth/components/signupComponents'
 import { useAppSettings } from 'features/auth/settings'
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
-import { contactSupport } from 'features/auth/support.services'
+import { contactSupport, supportUrl } from 'features/auth/support.services'
 import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'
 import { useNetwork } from 'libs/network/useNetwork'
@@ -17,6 +17,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Email } from 'ui/svg/icons/Email'
 import { Spacer, Typo } from 'ui/theme'
+import { A } from 'ui/web/link/A'
 
 export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
   const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
@@ -120,11 +121,13 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
             {t`Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux\u00a0:`}
           </Typo.Body>
         </Paragraphe>
-        <ButtonTertiary
-          wording={t`Contacter le support`}
-          onPress={contactSupport.forGenericQuestion}
-          icon={Email}
-        />
+        <A href={supportUrl.forGenericQuestion}>
+          <ButtonTertiary
+            wording={t`Contacter le support`}
+            onPress={contactSupport.forGenericQuestion}
+            icon={Email}
+          />
+        </A>
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary
           wording={t`Accepter et s’inscrire`}

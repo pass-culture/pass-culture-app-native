@@ -8,7 +8,7 @@ import {
   Description,
   EmailSentModalContent,
 } from 'features/auth/components/signupComponents'
-import { contactSupport } from 'features/auth/support.services'
+import { contactSupport, supportUrl } from 'features/auth/support.services'
 import { navigateToHome, usePreviousRoute } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
@@ -21,6 +21,7 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
 import { Spacer, Typo } from 'ui/theme'
+import { A } from 'ui/web/link/A'
 
 type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
 
@@ -76,11 +77,13 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
           <CenteredText>
             <Typo.Body>{t`Si tu rencontres des difficultés, tu peux consulter notre centre d'aide.`}</Typo.Body>
           </CenteredText>
-          <ButtonTertiary
-            wording={t`Consulter notre centre d'aide`}
-            onPress={onConsultHelpSupport}
-            icon={Email}
-          />
+          <A href={supportUrl.forSignupConfirmationEmailNotReceived}>
+            <ButtonTertiary
+              wording={t`Consulter notre centre d'aide`}
+              onPress={onConsultHelpSupport}
+              icon={Email}
+            />
+          </A>
         </Description>
         <Spacer.Column numberOfSpaces={3} />
         <OpenInboxButton />

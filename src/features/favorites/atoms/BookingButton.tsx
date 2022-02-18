@@ -7,6 +7,7 @@ import { hasEnoughCredit } from 'features/offer/services/useHasEnoughCredit'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { A } from 'ui/web/link/A'
 
 interface Props {
   offer: FavoriteOfferResponse
@@ -87,13 +88,15 @@ const BookExternallyButton = ({
   offerId: FavoriteOfferResponse['id']
 }) =>
   url ? (
-    <ButtonPrimary
-      wording={t`Réserver`}
-      accessibilityLabel={t`Réserver l'offre`}
-      onPress={() => url && openUrl(url, { analyticsData: { offerId } })}
-      icon={ExternalSite}
-      buttonHeight="tall"
-    />
+    <A href={url}>
+      <ButtonPrimary
+        wording={t`Réserver`}
+        accessibilityLabel={t`Réserver l'offre`}
+        onPress={() => url && openUrl(url, { analyticsData: { offerId } })}
+        icon={ExternalSite}
+        buttonHeight="tall"
+      />
+    </A>
   ) : null
 
 function getIsFreeOffer(offer: FavoriteOfferResponse): boolean {

@@ -30,3 +30,9 @@ export type Props<ParamList extends ReactNavigation.RootParamList> = {
   target?: string
   onPress?: (e: React.MouseEvent<HTMLAnchorElement, MouseEvent> | GestureResponderEvent) => void
 } & (TextProps & { children: React.ReactNode })
+
+export type AProps = {
+  children: React.ReactNode
+  href?: string
+  className?: string
+}

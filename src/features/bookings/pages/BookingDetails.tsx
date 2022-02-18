@@ -22,6 +22,7 @@ import { mergeOfferData } from 'features/offer/atoms/OfferTile'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
+import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { ScreenError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
@@ -35,6 +36,7 @@ import { LoadingPage } from 'ui/components/LoadingPage'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { A } from 'ui/web/link/A'
 import { Link } from 'ui/web/link/Link'
 const getOfferRules = (
   properties: BookingProperties,
@@ -161,7 +163,9 @@ export function BookingDetails() {
               <Spacer.Column numberOfSpaces={4} />
               <Separator />
               <Spacer.Column numberOfSpaces={4} />
-              <SeeItineraryButton openItinerary={openItinerary} />
+              <A href={address ? getGoogleMapsItineraryUrl(address) : undefined}>
+                <SeeItineraryButton openItinerary={openItinerary} />
+              </A>
             </React.Fragment>
           )}
           {!!offer.withdrawalDetails && (
