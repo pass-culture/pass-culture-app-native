@@ -92,7 +92,7 @@ export const homepageEntriesAPIResponse = {
           title: 'Exclusitivité du moment',
           alt: 'Exclusitivité du moment',
           image: { sys: { type: 'Link', linkType: 'Asset', id: '2qTXOFUocq1HhgB7Wzl23K' } },
-          offerId: 'AE67',
+          offerId: '317',
           displayParameters: {
             sys: {
               contentType: { sys: { id: 'recommendation', linkType: 'ContentType', type: 'Link' } },
@@ -738,7 +738,7 @@ export const adaptedHomepageEntry: HomepageEntry = {
               },
             },
           },
-          offerId: 'AE67',
+          offerId: '317',
           displayParameters: {
             sys: {
               contentType: { sys: { id: 'recommendation', linkType: 'ContentType', type: 'Link' } },
