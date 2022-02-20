@@ -13,7 +13,7 @@ describe('eventMonitoring', () => {
         dsn: env.SENTRY_DSN,
         environment: 'development',
         release: version,
-        dist: `${build}`,
+        dist: `${build}-web-13371337`,
         integrations: [expect.anything()],
         tracesSampleRate: 0.01,
       })

@@ -8,7 +8,7 @@ export const SENTRY_CONFIG = {
   dsn: env.SENTRY_DSN,
   environment: __DEV__ ? 'development' : env.ENV,
   release: version,
-  dist: `${build}`,
+  dist: env.ENV === 'testing' ? `${build}-web-${env.COMMIT_HASH}` : `${build}-web`,
   integrations: [new Integrations.BrowserTracing()],
   tracesSampleRate: 0.01,
 }
