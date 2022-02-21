@@ -31,7 +31,8 @@ export const ReinitializeFilters = () => {
   return (
     <TouchableOpacity
       onPress={reinitializeFilters}
-      {...accessibilityAndTestId(t`Réinitialiser les filtres`)}>
+      {...accessibilityAndTestId(t`Réinitialiser les filtres`)}
+      type="reset">
       <ButtonText>{t`Réinitialiser`}</ButtonText>
     </TouchableOpacity>
   )
