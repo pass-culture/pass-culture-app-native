@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <header
-        class="sc-iwjdpV wMNhc"
+        class="sc-llYSUQ bwXIAE"
       >
         <div
           class="css-view-1dbjc4n"
@@ -108,7 +108,7 @@ Object {
             style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           >
             <form
-              class="sc-fotOHu eAvIPT"
+              class="sc-bkkeKt iTSBbs"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -207,9 +207,7 @@ Object {
                     value=""
                   />
                   <button
-                    aria-label="Afficher le mot de passe"
-                    class="sc-dlVxhl sc-kfPuZi hAAOmt fPdIeU"
-                    data-testid="Afficher le mot de passe"
+                    class="sc-hBUSln sc-iJKOTD ivBQvl ePkbTE"
                     tabindex="0"
                     type="button"
                   >
@@ -262,7 +260,7 @@ Object {
   </body>,
   "container": <div>
     <header
-      class="sc-iwjdpV wMNhc"
+      class="sc-llYSUQ bwXIAE"
     >
       <div
         class="css-view-1dbjc4n"
@@ -364,7 +362,7 @@ Object {
           style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         >
           <form
-            class="sc-fotOHu eAvIPT"
+            class="sc-bkkeKt iTSBbs"
           >
             <div
               class="css-view-1dbjc4n"
@@ -463,9 +461,7 @@ Object {
                   value=""
                 />
                 <button
-                  aria-label="Afficher le mot de passe"
-                  class="sc-dlVxhl sc-kfPuZi hAAOmt fPdIeU"
-                  data-testid="Afficher le mot de passe"
+                  class="sc-hBUSln sc-iJKOTD ivBQvl ePkbTE"
                   tabindex="0"
                   type="button"
                 >
