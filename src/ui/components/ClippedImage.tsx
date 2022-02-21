@@ -10,8 +10,8 @@ import { getShadow } from 'ui/theme'
 export type ClippedImageProps = {
   clipId: string
   path: string
-  width?: number
-  height?: number
+  width: number
+  height: number
 } & (
   | {
       image: string
@@ -39,7 +39,7 @@ export function ClippedImage(props: ClippedImageProps) {
   }))``
 
   return (
-    <Container>
+    <Container width={props.width} height={props.height}>
       <Svg width={props.width} height={props.height} viewBox={`0 0 ${props.width} ${props.height}`}>
         <Defs>
           <ClipPath id={props.clipId}>
@@ -74,7 +74,15 @@ export function ClippedImage(props: ClippedImageProps) {
   )
 }
 
-const Container = styled.View(({ theme }) => ({
+type ContainerProps = {
+  height: number
+  width: number
+}
+
+const Container = styled.View.attrs<ContainerProps>(({ height, width }) => ({
+  height,
+  width,
+}))<ContainerProps>(({ theme }) => ({
   borderRadius: 4,
   ...getShadow({
     shadowOffset: {
