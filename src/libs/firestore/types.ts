@@ -1,6 +1,4 @@
 export enum RemoteStoreCollections {
-  // TODO(antoinewg): delete this once we have no more application using it
-  APP_SEARCH = 'appsearch',
   MAINTENANCE = 'maintenance',
   APPLICATION_VERSIONS = 'applicationVersions',
   UBBLE = 'ubble',
