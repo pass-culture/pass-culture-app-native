@@ -5,7 +5,6 @@ import { TextStyle } from 'react-native'
 
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { IconInterface } from 'ui/svg/icons/types'
 import { UserError } from 'ui/svg/icons/UserError'
@@ -13,7 +12,6 @@ import { UserError } from 'ui/svg/icons/UserError'
 export enum EduConnectErrorMessageEnum {
   UserAgeNotValid18YearsOld = 'UserAgeNotValid18YearsOld',
   UserAgeNotValid = 'UserAgeNotValid',
-  UserNotWhitelisted = 'UserNotWhitelisted',
   UserTypeNotStudent = 'UserTypeNotStudent',
   GenericError = 'GenericError',
 }
@@ -27,23 +25,6 @@ type NotEligibleEduConnectErrorData = {
   primaryButtonText?: string
   tertiaryButtonVisible?: boolean
   onPrimaryButtonPress?: () => void
-}
-
-const UserNotWhitelisted: NotEligibleEduConnectErrorData = {
-  Icon: ErrorIllustration,
-  title: t`Tu ne fais pas partie de la phase de test`,
-  description:
-    t`Encore un peu de patience\u00a0: en fonction de ton âge, tu pourras compléter ton inscription à la date suivante\u00a0: ` +
-    '\n\n' +
-    t`17 ans, le 10 janvier` +
-    '\n' +
-    t`16 ans, le 20 janvier` +
-    '\n' +
-    t`15 ans, le 31 janvier` +
-    '\n\n' +
-    t`En attendant, tu peux tout de même découvrir l'application mais sans pouvoir réserver les offres.`,
-  titleAlignment: 'left',
-  descriptionAlignment: 'center',
 }
 
 const UserAgeNotValid: NotEligibleEduConnectErrorData = {
@@ -113,9 +94,6 @@ export function useNotEligibleEduConnectErrorData(
         goBack()
         navigate('IdentityCheckEduConnectForm')
       })
-
-    case EduConnectErrorMessageEnum.UserNotWhitelisted:
-      return UserNotWhitelisted
 
     default:
       return GenericError
