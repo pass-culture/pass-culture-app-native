@@ -3,7 +3,7 @@ import React, { useMemo, useState, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { DropDown } from 'features/auth/signup/SetBirthday/atoms/DropDown/DropDown'
-import { DatePickerWebProps } from 'features/auth/signup/SetBirthday/DatePicker/types'
+import { DatePickerProps } from 'features/auth/signup/SetBirthday/DatePicker/types'
 import {
   dayNumber,
   getDatesInMonth,
@@ -25,7 +25,7 @@ const INITIAL_DATE: InitialDateProps = {
   year: undefined,
 }
 
-export function DateInputDesktop(props: DatePickerWebProps) {
+export function DateInputDesktop(props: DatePickerProps) {
   const [date, setDate] = useState<InitialDateProps>(INITIAL_DATE)
 
   const optionGroups = useMemo(() => {
@@ -34,7 +34,7 @@ export function DateInputDesktop(props: DatePickerWebProps) {
       return {
         days: dayNumber,
         months: monthNames,
-        years: getPastYears(props.minimumYear, defaultSelectedYear),
+        years: getPastYears(props.minimumDate.getFullYear(), defaultSelectedYear),
       }
     }
     const { month: selectedMonth, year: selectedYear } = date
@@ -42,7 +42,7 @@ export function DateInputDesktop(props: DatePickerWebProps) {
     return {
       days: getDatesInMonth(selectedMonthIndex, selectedYear),
       months: monthNames,
-      years: getPastYears(props.minimumYear, defaultSelectedYear),
+      years: getPastYears(props.minimumDate.getFullYear(), defaultSelectedYear),
     }
   }, [date, monthNames, getYears])
 
@@ -50,14 +50,16 @@ export function DateInputDesktop(props: DatePickerWebProps) {
     setDate((prevDateValues) => ({ ...prevDateValues, [key]: value }))
   }
 
+  const getValidDate = () => {
+    if (!date.year || !date.month || !date.day) return
+
+    const dateMonth = monthNames.indexOf(date.month)
+    const maybeValidDate = new Date(date.year, dateMonth, date.day)
+    return maybeValidDate.getDate() == date.day ? maybeValidDate : undefined
+  }
+
   useEffect(() => {
-    if (date.year && date.month && date.day) {
-      const dateMonth = monthNames.indexOf(date.month)
-      const maybeValidDate = new Date(date.year, dateMonth, date.day)
-      props.onChange(maybeValidDate.getDate() == date.day ? maybeValidDate : undefined)
-    } else {
-      props.onChange(undefined)
-    }
+    props.onChange(getValidDate())
   }, [date])
 
   return (
@@ -70,6 +72,7 @@ export function DateInputDesktop(props: DatePickerWebProps) {
           onChange={onPartialDateChange('day')}
           noBorderRadiusRight
           ariaLabel={t`Entrée pour le jour de la date de naissance`}
+          isError={!!props.errorMessage}
         />
       </DropDownContainer>
       <Spacer.Row numberOfSpaces={2} />
@@ -82,6 +85,7 @@ export function DateInputDesktop(props: DatePickerWebProps) {
           noBorderRadiusRight
           noBorderRadiusLeft
           ariaLabel={t`Entrée pour le mois de la date de naissance`}
+          isError={!!props.errorMessage}
         />
       </DropDownContainer>
       <Spacer.Row numberOfSpaces={2} />
@@ -93,6 +97,7 @@ export function DateInputDesktop(props: DatePickerWebProps) {
           onChange={onPartialDateChange('year')}
           noBorderRadiusLeft
           ariaLabel={t`Entrée pour l'année de la date de naissance`}
+          isError={!!props.errorMessage}
         />
       </DropDownContainer>
     </Container>

@@ -18,3 +18,11 @@ Default.args = {
   placeholder: 'MM',
   options: monthNames,
 }
+
+export const Error = Template.bind({})
+Error.args = {
+  label: 'Mois',
+  placeholder: 'MM',
+  options: monthNames,
+  isError: true,
+}

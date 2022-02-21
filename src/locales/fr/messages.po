@@ -443,6 +443,8 @@ msgid "Choisir un lieu"
 msgstr "Choisir un lieu"
 
 #: src/features/identityCheck/pages/profile/SetSchoolType.tsx
+#: src/features/identityCheck/pages/profile/SetSchoolType.tsx
+#: src/features/identityCheck/pages/profile/Status.tsx
 #: src/features/identityCheck/pages/profile/Status.tsx
 msgid "Choisis ton statut"
 msgstr "Choisis ton statut"
@@ -619,9 +621,7 @@ msgstr "Contacter le support"
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
-#: src/features/auth/signup/SetBirthday/DatePicker/DatePickerDropDown.web.tsx
-#: src/features/auth/signup/SetBirthday/DatePicker/DatePickerSpinner.tsx
-#: src/features/auth/signup/SetBirthday/DatePicker/DatePickerSpinner.web.tsx
+#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
 #: src/features/auth/signup/SetPassword/SetPassword.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
@@ -651,6 +651,8 @@ msgstr "Continuer vers l'étape"
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
 #: src/features/identityCheck/pages/profile/SetCity.tsx
 #: src/features/identityCheck/pages/profile/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetSchoolType.tsx
+#: src/features/identityCheck/pages/profile/Status.tsx
 msgid "Continuer vers l'étape suivante"
 msgstr "Continuer vers l'étape suivante"
 
@@ -938,6 +940,10 @@ msgstr "Entrée du code de confirmation"
 msgid "Entrée pour l'adresse"
 msgstr "Entrée pour l'adresse"
 
+#: src/features/auth/signup/SetBirthday/atoms/DateInput/DateInputDesktop.web.tsx
+msgid "Entrée pour l'année de la date de naissance"
+msgstr "Entrée pour l'année de la date de naissance"
+
 #: src/ui/components/inputs/EmailInput.tsx
 msgid "Entrée pour l'email"
 msgstr "Entrée pour l'email"
@@ -945,6 +951,14 @@ msgstr "Entrée pour l'email"
 #: src/features/identityCheck/pages/profile/SetCity.tsx
 msgid "Entrée pour le code postal"
 msgstr "Entrée pour le code postal"
+
+#: src/features/auth/signup/SetBirthday/atoms/DateInput/DateInputDesktop.web.tsx
+msgid "Entrée pour le jour de la date de naissance"
+msgstr "Entrée pour le jour de la date de naissance"
+
+#: src/features/auth/signup/SetBirthday/atoms/DateInput/DateInputDesktop.web.tsx
+msgid "Entrée pour le mois de la date de naissance"
+msgstr "Entrée pour le mois de la date de naissance"
 
 #: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Entrée pour le nom"
@@ -1949,7 +1963,6 @@ msgid "Pour plus d'informations, nous t'invitons à consulter notre"
 msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-#: src/features/auth/signup/SetBirthday/SetBirthday.web.tsx
 msgid "Pour quelle raison ?"
 msgstr "Pour quelle raison ?"
 
@@ -2620,8 +2633,8 @@ msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Dé
 msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 
 #: src/features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler.tsx
-msgid "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
-msgstr "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
+msgid "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
+msgstr "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
 
 #: src/features/bookings/pages/BookingDetails.tsx
 msgid "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."

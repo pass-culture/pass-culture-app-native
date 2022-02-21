@@ -42,7 +42,7 @@ describe('useDatePickerErrorHandler', () => {
   })
 
   it('should display the error message "tu dois avoir 15 ans" when the selected date is too young', () => {
-    const message = 'Tu dois avoir au moins\u00a015\u00a0ans pour t’inscrire au pass Culture'
+    const message = 'Tu dois avoir au moins 15\u00a0ans pour t’inscrire au pass Culture'
     const { result } = renderHook(() => useDatePickerErrorHandler(NOT_ELIGIBLE_YOUNGEST_AGE_DATE))
     expect(result.current.isDisabled).toEqual(true)
     expect(result.current.errorMessage).toEqual(message)

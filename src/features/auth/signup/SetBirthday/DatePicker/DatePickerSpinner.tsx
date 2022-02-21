@@ -14,16 +14,11 @@ export function DatePickerSpinner(props: DatePickerProps) {
   const birthdateInputErrorId = uuidv4()
 
   useEffect(() => {
-    if (date) {
-      props.onChange(date)
-    } else {
-      props.onChange(undefined)
-    }
+    props.onChange(date)
   }, [date])
 
   return (
     <React.Fragment>
-      <Spacer.Column numberOfSpaces={5} />
       <DateInput date={date} isError={!!props.errorMessage} />
       {!!props.errorMessage && (
         <InputError
@@ -45,7 +40,6 @@ export function DatePickerSpinner(props: DatePickerProps) {
         androidVariant="nativeAndroid"
         aria-describedby={birthdateInputErrorId}
       />
-      <Spacer.Column numberOfSpaces={2} />
     </React.Fragment>
   )
 }

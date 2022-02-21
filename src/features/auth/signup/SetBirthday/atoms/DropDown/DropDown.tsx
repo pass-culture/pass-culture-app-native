@@ -7,4 +7,5 @@ export const DropDown = (_: {
   noBorderRadiusRight?: boolean
   noBorderRadiusLeft?: boolean
   ariaLabel?: string
+  isError?: boolean
 }) => null

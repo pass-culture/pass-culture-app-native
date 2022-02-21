@@ -18,6 +18,7 @@ type Props = {
   noBorderRadiusRight?: boolean
   noBorderRadiusLeft?: boolean
   ariaLabel?: string
+  isError?: boolean
 }
 
 export function DropDown({
@@ -28,6 +29,7 @@ export function DropDown({
   noBorderRadiusRight = false,
   noBorderRadiusLeft = false,
   ariaLabel,
+  isError = false,
 }: Props) {
   const onChangeDate: React.ChangeEventHandler<HTMLSelectElement> = (event) => {
     onChange(event.target.value)
@@ -47,7 +49,8 @@ export function DropDown({
           id={dropDownInputID}
           onChange={onChangeDate}
           noBorderRadiusRight={noBorderRadiusRight}
-          noBorderRadiusLeft={noBorderRadiusLeft}>
+          noBorderRadiusLeft={noBorderRadiusLeft}
+          isError={isError}>
           <StyledOption role="option" value="">
             {placeholder}
           </StyledOption>
@@ -85,8 +88,14 @@ const IconContainer = styled.div`
 `
 
 const noBorderRadius = getSpacingString(1)
-const StyledSelect = styled(Select)<{ noBorderRadiusRight: boolean; noBorderRadiusLeft: boolean }>`
-  ${({ theme, noBorderRadiusRight, noBorderRadiusLeft }) => {
+type SelectProps = {
+  noBorderRadiusRight: boolean
+  noBorderRadiusLeft: boolean
+  isError: boolean
+}
+
+const StyledSelect = styled(Select)<SelectProps>`
+  ${({ theme, noBorderRadiusRight, noBorderRadiusLeft, isError }) => {
     const borderRadiusLeft = noBorderRadiusLeft ? noBorderRadius : `${theme.borderRadius.button}px`
     const borderRadiusRight = noBorderRadiusRight
       ? noBorderRadius
@@ -103,7 +112,7 @@ const StyledSelect = styled(Select)<{ noBorderRadiusRight: boolean; noBorderRadi
     border-bottom-left-radius: ${borderRadiusLeft};
     border-top-right-radius: ${borderRadiusRight};
     border-bottom-right-radius: ${borderRadiusRight};
-    border: solid 1px ${theme.colors.greyMedium};
+    border: solid 1px ${isError ? theme.colors.error : theme.colors.greyMedium};
     cursor: pointer;
     background-color: ${theme.colors.white};
     appearance: none;

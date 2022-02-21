@@ -1413,7 +1413,11 @@ Object {
           </div>
           <div
             class="css-view-1dbjc4n"
-            style="height: 48px;"
+            style="height: 24px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 16px;"
           />
           <div
             class="css-view-1dbjc4n"
@@ -2850,7 +2854,11 @@ Object {
         </div>
         <div
           class="css-view-1dbjc4n"
-          style="height: 48px;"
+          style="height: 24px;"
+        />
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 16px;"
         />
         <div
           class="css-view-1dbjc4n"
@@ -3956,10 +3964,6 @@ Object {
             class="css-view-1dbjc4n"
             style="height: 8px;"
           />
-          <div
-            class="css-view-1dbjc4n"
-            style="height: 8px;"
-          />
           <button
             class="sc-bdvvtL kwQCoR sc-hKwDye gqAQWB"
             data-testid="date-picker-submit-button"
@@ -4999,10 +5003,6 @@ Object {
             </div>
           </div>
         </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="height: 8px;"
-        />
         <div
           class="css-view-1dbjc4n"
           style="height: 8px;"

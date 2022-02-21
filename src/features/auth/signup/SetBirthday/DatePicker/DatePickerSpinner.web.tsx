@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { DateInput } from 'features/auth/signup/SetBirthday/atoms/DateInput/DateInput'
-import { DatePickerWebProps } from 'features/auth/signup/SetBirthday/DatePicker/types'
+import { DatePickerProps } from 'features/auth/signup/SetBirthday/DatePicker/types'
 import {
   getDatesInMonth,
   getPastYears,
@@ -15,11 +15,11 @@ import { pad } from 'libs/parsers'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Spacer } from 'ui/theme'
 
-export function DatePickerSpinner(props: DatePickerWebProps) {
+export function DatePickerSpinner(props: DatePickerProps) {
   const DEFAULT_DATE = {
-    day: props.defaultSelectedDate?.getDate(),
-    month: monthNamesShort[props.defaultSelectedDate?.getMonth()],
-    year: props.defaultSelectedDate?.getFullYear(),
+    day: props.defaultSelectedDate.getDate(),
+    month: monthNamesShort[props.defaultSelectedDate.getMonth()],
+    year: props.defaultSelectedDate.getFullYear(),
   }
   const [date, setDate] = useState(DEFAULT_DATE)
 
@@ -29,7 +29,7 @@ export function DatePickerSpinner(props: DatePickerWebProps) {
     return {
       day: getDatesInMonth(selectedMonthIndex, selectedYear),
       month: monthNamesShort,
-      year: getPastYears(props.minimumYear, DEFAULT_DATE.year),
+      year: getPastYears(props.minimumDate.getFullYear(), DEFAULT_DATE.year),
     }
   }, [date, monthNamesShort, getYears])
 
@@ -41,18 +41,13 @@ export function DatePickerSpinner(props: DatePickerWebProps) {
   const birthdate = new Date(`${date.year}-${pad(dateMonth)}-${pad(date.day)}`)
 
   useEffect(() => {
-    if (birthdate) {
-      props.onChange(birthdate)
-    } else {
-      props.onChange(undefined)
-    }
+    props.onChange(birthdate)
   }, [date])
 
   const birthdateInputErrorId = uuidv4()
 
   return (
     <React.Fragment>
-      <Spacer.Column numberOfSpaces={2} />
       <DateInput date={birthdate} isError={!!props.errorMessage} />
       {!!props.errorMessage && (
         <InputError
@@ -72,7 +67,6 @@ export function DatePickerSpinner(props: DatePickerWebProps) {
           aria-describedby={birthdateInputErrorId}
         />
       </SpinnerPickerWrapper>
-      <Spacer.Column numberOfSpaces={2} />
     </React.Fragment>
   )
 }

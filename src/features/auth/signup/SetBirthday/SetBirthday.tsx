@@ -1,8 +1,10 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
+import { useTheme } from 'styled-components/native'
 
 import { BirthdayInformationModal } from 'features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal'
+import { DatePickerDropDown } from 'features/auth/signup/SetBirthday/DatePicker/DatePickerDropDown.web'
 import { DatePickerSpinner } from 'features/auth/signup/SetBirthday/DatePicker/DatePickerSpinner'
 import { MINIMUM_DATE, UNDER_YOUNGEST_AGE } from 'features/auth/signup/SetBirthday/utils/constants'
 import { useDatePickerErrorHandler } from 'features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler'
@@ -22,6 +24,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
   )
   const MAXIMUM_SPINNER_DATE = new Date(DEFAULT_SELECTED_DATE.getFullYear(), 11, 31)
 
+  const { isTouch } = useTheme()
   const { visible, showModal: showInformationModal, hideModal } = useModal(false)
   const [date, setDate] = useState<Date | undefined>()
 
@@ -39,6 +42,8 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
     }
   }
 
+  const DatePicker = isTouch ? DatePickerSpinner : DatePickerDropDown
+
   return (
     <Form.MaxWidth>
       <InnerContainer>
@@ -47,14 +52,17 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
           wording={t`Pour quelle raison\u00a0?`}
           onPress={onPressWhy}
         />
-        <DatePickerSpinner
+        <Spacer.Column numberOfSpaces={2} />
+        <DatePicker
           onChange={setDate}
           errorMessage={errorMessage}
           defaultSelectedDate={DEFAULT_SELECTED_DATE}
           maximumDate={MAXIMUM_SPINNER_DATE}
           minimumDate={MINIMUM_DATE}
         />
+        <Spacer.Column numberOfSpaces={2} />
         <ButtonPrimary
+          testID="date-picker-submit-button"
           wording={t`Continuer`}
           accessibilityLabel={props.accessibilityLabelForNextStep}
           disabled={isDisabled}

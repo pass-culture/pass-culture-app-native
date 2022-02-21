@@ -43,7 +43,7 @@ export const useDatePickerErrorHandler = (date?: Date) => {
     analytics.logSignUpTooYoung(AGE)
     return {
       isDisabled: true,
-      errorMessage: t`Tu dois avoir au moins\u00a0${youngestAge}\u00a0ans pour t’inscrire au pass Culture`,
+      errorMessage: t`Tu dois avoir au moins ${youngestAge}\u00a0ans pour t’inscrire au pass Culture`,
     }
   }
   return {

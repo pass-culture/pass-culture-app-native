@@ -15,7 +15,6 @@ jest.mock('features/auth/settings')
 describe('<SetBirthday />', () => {
   beforeEach(() => {
     mockdate.set(CURRENT_DATE)
-    jest.useFakeTimers()
   })
 
   it('should render correctly', () => {
@@ -48,7 +47,7 @@ describe('<SetBirthday />', () => {
     const datePicker = getByTestId('datePicker')
     fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
 
-    const continueButton = getByTestId('Continuer')
+    const continueButton = getByTestId('date-picker-submit-button')
     fireEvent.press(continueButton)
 
     expect(props.goToNextStep).toBeCalledWith({
