@@ -2,6 +2,7 @@ import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { AlgoliaHit } from 'libs/algolia'
 import { Geoloc as AlgoliaGeoloc } from 'libs/algolia/algolia.d'
 import { transformAlgoliaHit } from 'libs/algolia/fetchAlgolia'
+import { VenueTypeCode } from 'libs/parsers'
 export { parseSearchParameters } from './parseSearchParameters'
 export { useParseSearchParameters } from './useParseSearchParameters'
 
@@ -37,5 +38,6 @@ export type VenueHit = Pick<
   | 'longitude'
   | 'name'
   | 'publicName'
-  | 'venueTypeCode'
->
+> & {
+  venueTypeCode: VenueTypeCode
+}

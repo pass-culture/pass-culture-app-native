@@ -1929,11 +1929,6 @@ export interface UserProfileResponse {
    */
   firstName?: string | null
   /**
-   * @type {boolean}
-   * @memberof UserProfileResponse
-   */
-  hasCompletedIdCheck?: boolean | null
-  /**
    * @type {number}
    * @memberof UserProfileResponse
    */
@@ -2133,22 +2128,22 @@ export interface VenueContactModel {
    * @type {string}
    * @memberof VenueContactModel
    */
-  email?: string
+  email?: string | null
   /**
    * @type {string}
    * @memberof VenueContactModel
    */
-  phoneNumber?: string
+  phoneNumber?: string | null
   /**
    * @type {{ [key: string]: string; }}
    * @memberof VenueContactModel
    */
-  socialMedias?: { [key: string]: string; }
+  socialMedias?: { [key: string]: string; } | null
   /**
    * @type {string}
    * @memberof VenueContactModel
    */
-  website?: string
+  website?: string | null
 }
 /**
  * @export
@@ -2254,6 +2249,7 @@ export enum VenueTypeCodeKey {
   'MOVIE' = 'MOVIE',
   'PERFORMING_ARTS' = 'PERFORMING_ARTS',
   'CREATIVE_ARTS_STORE' = 'CREATIVE_ARTS_STORE',
+  'ADMINISTRATIVE' = 'ADMINISTRATIVE',
   'OTHER' = 'OTHER',
 }
 
@@ -3033,7 +3029,7 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
-     * @summary update_profile <POST>
+     * @summary complete_profile <POST>
      * @param {ProfileUpdateRequest} [body] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3588,7 +3584,7 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
-     * @summary update_profile <POST>
+     * @summary complete_profile <POST>
      * @param {ProfileUpdateRequest} [body] 
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -4052,7 +4048,7 @@ export class DefaultApi extends BaseAPI {
   }
   /**
     * 
-    * @summary update_profile <POST>
+    * @summary complete_profile <POST>
     * @param {ProfileUpdateRequest} [body] 
     * @param {*} [options] Override http request option.
     * @throws {RequiredError}

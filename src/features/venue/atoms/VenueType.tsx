@@ -1,13 +1,12 @@
 import { t } from '@lingui/macro'
 import React from 'react'
 
-import { VenueTypeCodeKey } from 'api/gen'
-import { mapVenueTypeToIcon } from 'libs/parsers'
+import { mapVenueTypeToIcon, VenueTypeCode } from 'libs/parsers'
 
 import { IconWithCaption } from './IconWithCaption'
 
 interface Props {
-  type: VenueTypeCodeKey | null
+  type: VenueTypeCode | null
   label?: string
 }
 

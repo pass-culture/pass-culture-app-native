@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { SearchGroupNameEnum, VenueTypeCodeKey } from 'api/gen/api'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
-import { mapVenueTypeToIcon } from 'libs/parsers'
+import { mapVenueTypeToIcon, VenueTypeCode } from 'libs/parsers'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { SocialNetworkCard } from 'ui/components/SocialNetworkCard'
 import { SocialNetworkIconsMap, SocialNetwork } from 'ui/components/socials/types'
@@ -181,8 +181,9 @@ const VenueTypesIcons = () => {
     <React.Fragment>
       <Text>{'Venue Types'}</Text>
       {Object.values(VenueTypeCodeKey).map((venueType) => {
-        const Icon = mapVenueTypeToIcon(venueType as VenueTypeCodeKey)
-        const StyledIcon = styled(Icon).attrs(({ theme }) => ({
+        if (venueType === VenueTypeCodeKey.ADMINISTRATIVE) return
+        const VenueTypeIcon = mapVenueTypeToIcon(venueType as VenueTypeCode)
+        const StyledIcon = styled(VenueTypeIcon).attrs(({ theme }) => ({
           color: theme.colors.primary,
           size: theme.icons.sizes.standard,
         }))``

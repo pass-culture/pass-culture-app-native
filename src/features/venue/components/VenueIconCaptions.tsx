@@ -2,16 +2,17 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Coordinates, VenueTypeCodeKey } from 'api/gen'
+import { Coordinates } from 'api/gen'
 import { IconWithCaption } from 'features/venue/atoms/IconWithCaption'
 import { VenueType } from 'features/venue/atoms/VenueType'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
+import { VenueTypeCode } from 'libs/parsers'
 import { PointerLocationNotFilled } from 'ui/svg/icons/PointerLocationNotFilled'
 import { PointerLocationNotFilledDisabled } from 'ui/svg/icons/PointerLocationNotFilledDisabled'
 import { getSpacing, Spacer } from 'ui/theme'
 
-type Props = { type: VenueTypeCodeKey | null; label: string; locationCoordinates: Coordinates }
+type Props = { type: VenueTypeCode | null; label: string; locationCoordinates: Coordinates }
 
 export const VenueIconCaptions: React.FC<Props> = ({ type, label, locationCoordinates }) => {
   const { permissionState, requestGeolocPermission, showGeolocPermissionModal } = useGeolocation()

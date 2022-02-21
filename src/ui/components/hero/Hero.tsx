@@ -2,8 +2,8 @@ import React, { useMemo } from 'react'
 import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
-import { CategoryIdEnum, VenueTypeCodeKey } from 'api/gen'
-import { mapCategoryToIcon, mapVenueTypeToIcon } from 'libs/parsers'
+import { CategoryIdEnum } from 'api/gen'
+import { mapCategoryToIcon, mapVenueTypeToIcon, VenueTypeCode } from 'libs/parsers'
 import { HeroHeader } from 'ui/components/hero/HeroHeader'
 import { heroMarginTop, useHeroDimensions } from 'ui/components/hero/useHeroDimensions'
 import { ImagePlaceholder as DefaultImagePlaceholder } from 'ui/components/ImagePlaceholder'
@@ -11,7 +11,7 @@ import { getSpacing, Spacer, getShadow } from 'ui/theme'
 
 type HeroProps =
   | { type: 'offer'; categoryId: CategoryIdEnum | null }
-  | { type: 'venue'; venueType: VenueTypeCodeKey | null }
+  | { type: 'venue'; venueType: VenueTypeCode | null }
 
 // Special case where theme.icons.sizes is not used
 const PLACEHOLDER_ICON_SIZE = getSpacing(24)
