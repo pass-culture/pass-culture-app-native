@@ -6,15 +6,22 @@ import { env } from 'libs/environment'
 import { version, build } from '../../../package.json'
 
 export async function getSentryConfig() {
-  const update = await CodePush.getUpdateMetadata()
-  let dist = `${build}-${Platform.OS}`
-  if (update) {
-    dist += `-${update.appVersion}+codepush:${update.label}`
+  let update
+  try {
+    update = await CodePush.getUpdateMetadata()
+  } catch (error) {
+    // silent fail
   }
+
+  let release = `${version}-${Platform.OS}`
+  if (update) {
+    release += `+codepush:${update.label}`
+  }
+  const dist = `${build}-${Platform.OS}`
   return {
     dsn: env.SENTRY_DSN,
     environment: __DEV__ ? 'development' : env.ENV,
-    release: version,
+    release,
     dist,
     tracesSampleRate: 0.01,
   }

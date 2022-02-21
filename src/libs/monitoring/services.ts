@@ -26,13 +26,8 @@ export const eventMonitoring: EventMonitoring = {
   configureScope: SentryModule.configureScope,
   setUser: SentryModule.setUser,
   async init({ enabled } = { enabled: true }) {
-    // if (!enabled) return
-    try {
-      const config = await getSentryConfig()
-      console.log(JSON.stringify(config, null, 2))
-      SentryModule.init(config)
-    } catch (error) {
-      console.error(error)
-    }
+    if (!enabled) return
+    const config = await getSentryConfig()
+    SentryModule.init(config)
   },
 }
