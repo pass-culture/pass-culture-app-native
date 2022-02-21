@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 set -e
 RED='\033[0;31m'
 BLUE='\033[0;34m'
@@ -9,6 +10,8 @@ NO_COLOR='\033[0m'
 
 PROJECT_DIR="$( dirname "${BASH_SOURCE[0]}" )/.."
 CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
+
+. "${PROJECT_DIR}/scripts/upload_sourcemaps_to_sentry.sh"
 
 invalid_option_val() {
   echo >&2 "Invalid option value \"$OPTARG\""; print_usage; exit 1;
@@ -102,14 +105,16 @@ if [ $DEPLOY_TYPE == "hard" ]; then
     echo -e "${GREEN}- - - - -"
     echo -e "Fastlane 🍎  iOS $APP_ENV"
     echo -e "- - - - -${NO_COLOR}"
-    bundle exec fastlane ios deploy --env $APP_ENV --verbose
+    bundle exec fastlane ios deploy --env "${APP_ENV}" --verbose
   fi
   if [[ $APP_OS != "ios" ]]; then
     echo -e "${YELLOW}- - - - -"
     echo "Fastlane 🤖  Android $APP_ENV"
     echo -e "- - - - -${NO_COLOR}"
-    bundle exec fastlane android deploy --env $APP_ENV --verbose
+    bundle exec fastlane android deploy --env "${APP_ENV}" --verbose
   fi
+
+  upload_sourcemaps "${APP_OS}" "${APP_ENV}"
 fi
 
 if [ $DEPLOY_TYPE == "soft" ]; then
@@ -121,14 +126,20 @@ if [ $DEPLOY_TYPE == "soft" ]; then
     echo -e "${GREEN}- - - - -"
     echo -e "Codepush 🍎  iOS ${APP_ENV}"
     echo -e "- - - - -${NO_COLOR}"
-    bundle exec fastlane ios deploy codepush: --env $APP_ENV
+    bundle exec fastlane ios deploy codepush: --env "${APP_ENV}"
+    CODEPUSH_KEY="${CODEPUSH_KEY_IOS}"
   fi
   if [[ $APP_OS != "ios" ]]; then
     echo -e "${YELLOW}- - - - -"
     echo -e "Codepush 🤖  Android ${APP_ENV}"
     echo -e "- - - - -${NO_COLOR}"
-    bundle exec fastlane android deploy codepush: --env $APP_ENV
+    bundle exec fastlane android deploy codepush: --env "${APP_ENV}"
+    CODEPUSH_KEY="${CODEPUSH_KEY_ANDROID}"
   fi
+
+  CODEPUSH_LABEL=$(curl -sS "https://codepush.appcenter.ms/v0.1/public/codepush/update_check?deployment_key=${CODEPUSH_KEY}&app_version=${VERSION}" | jq -r '.update_info.label')
+
+  upload_sourcemaps "${APP_OS}" "${APP_ENV}" "${CODEPUSH_LABEL}"
 fi
 
 success "📦  Deploy succeeded."

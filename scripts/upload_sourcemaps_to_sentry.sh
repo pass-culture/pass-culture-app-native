@@ -2,43 +2,71 @@
 
 set -e
 
-create_sourcemaps_android(){
-  npx react-native bundle \
-    --platform android \
-    --entry-file index.js \
-    --dev false \
-    --bundle-output sourcemaps/index.android.bundle \
-    --sourcemap-output sourcemaps/index.android.bundle.map
-}
+create_sourcemaps(){
+  APP_OS="$1"
+  if [[ $APP_OS = "android" ]]; then
+    HERMES_BIN="linux64-bin"
+  else
+    HERMES_BIN="osx-bin"
+  fi
 
-create_sourcemaps_ios(){
   npx react-native bundle \
-    --platform ios \
-    --entry-file index.js \
+    --platform "${APP_OS}" \
     --dev false \
-    --bundle-output sourcemaps/main.jsbundle \
-    --sourcemap-output sourcemaps/main.jsbundle.map
+    --entry-file index.js \
+    --bundle-output "sourcemaps/index.${APP_OS}.bundle" \
+    --sourcemap-output "sourcemaps/index.${APP_OS}.bundle.packager.map"
+
+  node_modules/hermes-engine/${HERMES_BIN}/hermesc \
+    -O \
+    -emit-binary \
+    -output-source-map \
+    -out="sourcemaps/index.${APP_OS}.bundle.hbc" \
+    "sourcemaps/index.${APP_OS}.bundle"
+
+  node node_modules/react-native/scripts/compose-source-maps.js \
+    "sourcemaps/index.${APP_OS}.bundle.packager.map" \
+    "sourcemaps/index.${APP_OS}.bundle.hbc.map" \
+    "-o sourcemaps/index.${APP_OS}.bundle.map"
 }
 
 upload_sourcemaps(){
+  APP_OS="$1"
+  APP_ENV="$2"
+  CODE_PUSH_LABEL="$3"
   VERSION=`jq -r .version package.json`
-  DIST="${VERSION//./0}"
+  BUILD=`jq -r .build package.json`
 
-  node_modules/@sentry/cli/bin/sentry-cli releases files $VERSION \
-    upload-sourcemaps sourcemaps \
-    --dist $DIST \
-    --url-prefix "app:///" \
-    --no-rewrite # or rewrite
+  echo "APP_OS: $APP_OS"
+  echo "APP_ENV: $APP_ENV"
+  echo "CODE_PUSH_LABEL: $CODE_PUSH_LABEL"
+  echo "VERSION: $VERSION"
+  echo "BUILD: $BUILD"
+
+  echo "Creating sources maps... "
+  mkdir -p sourcemaps
+
+  create_sourcemaps "${APP_OS}"
+  echo "✅ Successfully created sources maps"
+
+  echo "Uploading ${APP_OS} source maps... "
+
+  if [[ -z "$CODE_PUSH_LABEL" ]]; then
+    RELEASE="$VERSION-${APP_OS}"
+  else
+    RELEASE="$VERSION-${APP_OS}+codepush:${CODE_PUSH_LABEL}"
+  fi
+
+  DIST="$VERSION-${APP_OS}"
+  echo "RELEASE: $RELEASE"
+  echo "DIST: $DIST"
+
+  node_modules/@sentry/cli/bin/sentry-cli releases files "${RELEASE}" \
+    upload-sourcemaps \
+    --dist "${DIST}" \
+    --strip-prefix "${PWD}" \
+    --rewrite "sourcemaps/index.${APP_OS}.bundle sourcemaps/index.${APP_OS}.bundle.map"
+
+  echo "✅ Successfully uploaded sources maps"
 }
 
-
-mkdir -p sourcemaps
-
-echo "Creating source maps... "
-create_sourcemaps_android
-create_sourcemaps_ios
-echo "✅ Successfully created source maps"
-
-echo "Uploading source maps... "
-upload_sourcemaps
-echo "✅ Successfully uploaded source maps"
