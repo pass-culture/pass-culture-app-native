@@ -71,7 +71,7 @@ exports[`ExclusivityModule component should render correctly 1`] = `
       >
         <FastImageView
           accessibilityLabel="Image d'Adèle"
-          accessible={true}
+          accessible={false}
           resizeMode="cover"
           source={
             Object {

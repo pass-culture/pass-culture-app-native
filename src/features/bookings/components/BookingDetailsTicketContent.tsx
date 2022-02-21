@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import * as React from 'react'
 import { Platform, View } from 'react-native'
 import QRCode from 'react-native-qrcode-svg'
+import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum, BookingOfferResponse, BookingReponse } from 'api/gen'
@@ -36,14 +37,14 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
   const shouldDisplayEAN = offer.extraData?.isbn && categoryId === CategoryIdEnum.LIVRE
 
   const accessOfferButton = (
-    <A href={offer.url || undefined}>
+    <StyledA href={offer.url || undefined}>
       <ButtonWithLinearGradient
         wording={t`Accéder à l'offre`}
         isExternal
         isDisabled={false}
         onPress={accessExternalOffer}
       />
-    </A>
+    </StyledA>
   )
 
   const isDigitalAndActivationCodeEnabled =
@@ -130,4 +131,9 @@ const EANContainer = styled.View({
   marginTop: getSpacing(3),
   alignItems: 'center',
   justifyContent: 'center',
+})
+
+const StyledA = webStyled(A)({
+  display: 'flex',
+  flexDirection: 'column',
 })

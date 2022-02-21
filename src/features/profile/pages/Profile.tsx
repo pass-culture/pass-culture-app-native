@@ -119,7 +119,10 @@ export const Profile: React.FC = () => {
         <Section title={isLoggedIn ? t`Paramètres du compte` : t`Paramètres de l'application`}>
           {!!isLoggedIn && (
             <React.Fragment>
-              <Link to={{ screen: 'PersonalData', params: undefined }} style={styles.link}>
+              <Link
+                to={{ screen: 'PersonalData', params: undefined }}
+                style={styles.link}
+                accessible={false}>
                 <Row
                   title={t`Informations personnelles`}
                   type="navigable"
@@ -127,7 +130,10 @@ export const Profile: React.FC = () => {
                   icon={ProfileIcon}
                 />
               </Link>
-              <Link to={{ screen: 'ChangePassword', params: undefined }} style={styles.link}>
+              <Link
+                to={{ screen: 'ChangePassword', params: undefined }}
+                style={styles.link}
+                accessible={false}>
                 <Row
                   title={t`Mot de passe`}
                   type="navigable"
@@ -137,7 +143,10 @@ export const Profile: React.FC = () => {
               </Link>
             </React.Fragment>
           )}
-          <Link to={{ screen: 'NotificationSettings', params: undefined }} style={styles.link}>
+          <Link
+            to={{ screen: 'NotificationSettings', params: undefined }}
+            style={styles.link}
+            accessible={false}>
             <Row
               type="navigable"
               title={t`Notifications`}
@@ -170,7 +179,8 @@ export const Profile: React.FC = () => {
         <Section title={t`Aides`}>
           <Link
             to={{ screen: 'FirstTutorial', params: { shouldCloseAppOnBackAction: false } }}
-            style={styles.link}>
+            style={styles.link}
+            accessible={false}>
             <Row
               title={t`Comment ça marche\u00a0?`}
               type="navigable"
@@ -196,7 +206,10 @@ export const Profile: React.FC = () => {
               icon={ExternalSite}
             />
           </A>
-          <Link to={{ screen: 'LegalNotices', params: undefined }} style={styles.link}>
+          <Link
+            to={{ screen: 'LegalNotices', params: undefined }}
+            style={styles.link}
+            accessible={false}>
             <Row
               title={t`Mentions légales`}
               type="navigable"
@@ -204,7 +217,10 @@ export const Profile: React.FC = () => {
               icon={LegalNotices}
             />
           </Link>
-          <Link to={{ screen: 'ConsentSettings', params: undefined }} style={styles.link}>
+          <Link
+            to={{ screen: 'ConsentSettings', params: undefined }}
+            style={styles.link}
+            accessible={false}>
             <Row
               title={t`Confidentialité`}
               type="navigable"

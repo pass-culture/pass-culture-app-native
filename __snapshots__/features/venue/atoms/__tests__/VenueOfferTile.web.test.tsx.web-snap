@@ -20,6 +20,7 @@ Object {
             class="css-text-901oao"
             dir="auto"
             style="display: flex; flex-direction: column;"
+            tabindex="-1"
           >
             <div
               class="css-view-1dbjc4n"
@@ -86,6 +87,7 @@ Object {
           class="css-text-901oao"
           dir="auto"
           style="display: flex; flex-direction: column;"
+          tabindex="-1"
         >
           <div
             class="css-view-1dbjc4n"

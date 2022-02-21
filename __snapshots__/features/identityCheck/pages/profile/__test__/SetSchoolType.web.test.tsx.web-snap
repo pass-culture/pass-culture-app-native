@@ -229,7 +229,9 @@ Object {
                   style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
                 >
                   <button
+                    aria-label="Choisis ton statut"
                     class="sc-bdvvtL kwQCoR sc-hKwDye gqAQWB"
+                    data-testid="Choisis ton statut"
                     disabled=""
                     type="button"
                   >
@@ -493,7 +495,9 @@ Object {
                 style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
               >
                 <button
+                  aria-label="Choisis ton statut"
                   class="sc-bdvvtL kwQCoR sc-hKwDye gqAQWB"
+                  data-testid="Choisis ton statut"
                   disabled=""
                   type="button"
                 >
@@ -750,7 +754,9 @@ Object {
                   style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
                 >
                   <button
+                    aria-label="Choisis ton statut"
                     class="sc-bdvvtL kwQCoR sc-hKwDye gqAQWB"
+                    data-testid="Choisis ton statut"
                     disabled=""
                     type="button"
                   >
@@ -950,7 +956,9 @@ Object {
                 style="background-color: rgb(255, 255, 255); bottom: 0px; left: 0px; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
               >
                 <button
+                  aria-label="Choisis ton statut"
                   class="sc-bdvvtL kwQCoR sc-hKwDye gqAQWB"
+                  data-testid="Choisis ton statut"
                   disabled=""
                   type="button"
                 >

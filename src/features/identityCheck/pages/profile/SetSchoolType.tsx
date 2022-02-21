@@ -73,6 +73,9 @@ export const SetSchoolType = () => {
         <ButtonPrimary
           onPress={onPressContinue}
           wording={!selectedSchoolTypeId ? t`Choisis ton statut` : t`Continuer`}
+          accessibilityLabel={
+            !selectedSchoolTypeId ? t`Choisis ton statut` : t`Continuer vers l'étape suivante`
+          }
           disabled={!selectedSchoolTypeId}
         />
       }

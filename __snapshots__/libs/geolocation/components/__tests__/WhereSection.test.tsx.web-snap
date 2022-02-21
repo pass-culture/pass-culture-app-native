@@ -40,6 +40,7 @@ Array [
           "msFlexDirection": "column",
         }
       }
+      tabIndex="-1"
     >
       <div
         className="css-view-1dbjc4n"
@@ -244,6 +245,7 @@ Array [
     <a
       className="sc-iCfMLu iaRsUK"
       href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re"
+      tabIndex={-1}
       target="_blank"
     >
       <div
@@ -311,7 +313,7 @@ exports[`WhereSection should render correctly 2`] = `
 - First value
 + Second value
 
-@@ -24,10 +24,163 @@
+@@ -24,10 +24,164 @@
         }
       />
       <div
@@ -328,6 +330,7 @@ exports[`WhereSection should render correctly 2`] = `
 +           \\"msFlexDirection\\": \\"column\\",
 +         }
 +       }
++       tabIndex=\\"-1\\"
 +     >
 +       <div
 +         className=\\"css-view-1dbjc4n\\"

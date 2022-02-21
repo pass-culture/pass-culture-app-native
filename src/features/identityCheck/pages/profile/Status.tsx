@@ -74,6 +74,9 @@ export const Status = () => {
         <ButtonPrimary
           onPress={submitStatus}
           wording={!selectedStatus ? t`Choisis ton statut` : t`Continuer`}
+          accessibilityLabel={
+            !selectedStatus ? t`Choisis ton statut` : t`Continuer vers l'étape suivante`
+          }
           disabled={!selectedStatus}
         />
       }

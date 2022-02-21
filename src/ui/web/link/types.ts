@@ -35,4 +35,5 @@ export type AProps = {
   children: React.ReactNode
   href?: string
   className?: string
+  accessible?: boolean
 }

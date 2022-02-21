@@ -27,6 +27,7 @@ Object {
               class="css-text-901oao"
               dir="auto"
               style="display: flex; flex-direction: column;"
+              tabindex="-1"
             />
           </div>
         </div>
@@ -60,6 +61,7 @@ Object {
             class="css-text-901oao"
             dir="auto"
             style="display: flex; flex-direction: column;"
+            tabindex="-1"
           />
         </div>
       </div>

@@ -93,7 +93,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   const renderFooter: RenderFooterItem = useCallback(
     ({ width, height }) => {
       return (
-        <Link to={{ screen: 'Search', params }}>
+        <Link to={{ screen: 'Search', params }} accessible={false}>
           <SeeMore width={width} height={height} onPress={onPressSeeMore as () => void} />
         </Link>
       )
@@ -103,7 +103,11 @@ export const OffersModule = (props: OffersModuleProps) => {
 
   const renderTitleSeeMore = useCallback(
     ({ children }: { children: ReactNode }) => {
-      return <Link to={{ screen: 'Search', params }}>{children}</Link>
+      return (
+        <Link to={{ screen: 'Search', params }} accessible={false}>
+          {children}
+        </Link>
+      )
     },
     [onPressSeeMore, params]
   )

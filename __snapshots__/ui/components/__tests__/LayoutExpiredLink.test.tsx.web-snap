@@ -196,6 +196,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
     <a
       className="sc-gKclnd bWYkKD"
       href="https://passculture.zendesk.com/hc/fr/"
+      tabIndex={-1}
       target="_blank"
     >
       <button

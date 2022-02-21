@@ -41,8 +41,11 @@ export const ExclusivityModule = ({
       <Spacer.Row numberOfSpaces={6} />
       <ImageContainer>
         <TouchableHighlight onPress={handlePressExclu} testID="imageExclu">
-          <Link to={{ screen: 'Offer', params: { id, from: 'home' } }} style={styles.link}>
-            <Image source={source} accessible={!!alt} accessibilityLabel={alt} />
+          <Link
+            to={{ screen: 'Offer', params: { id, from: 'home' } }}
+            style={styles.link}
+            accessible={false}>
+            <Image source={source} accessible={false} accessibilityLabel={alt} />
           </Link>
         </TouchableHighlight>
       </ImageContainer>

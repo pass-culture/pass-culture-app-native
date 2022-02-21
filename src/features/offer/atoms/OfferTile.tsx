@@ -109,7 +109,8 @@ export const OfferTile = (props: OfferTileProps) => {
         {...accessibilityAndTestId('offerTile')}>
         <Link
           to={{ screen: 'Offer', params: { id: offerId, from: analyticsFrom, moduleName } }}
-          style={styles.link}>
+          style={styles.link}
+          accessible={false}>
           <ImageTile
             width={width}
             height={height - IMAGE_CAPTION_HEIGHT}

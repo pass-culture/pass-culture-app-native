@@ -498,6 +498,7 @@ Object {
                       <a
                         class="sc-iCfMLu iaRsUK"
                         href="https://pass.culture.fr/"
+                        tabindex="-1"
                         target="_blank"
                       >
                         <span
@@ -574,6 +575,7 @@ Object {
                   <div
                     class="css-text-901oao"
                     dir="auto"
+                    tabindex="-1"
                   >
                     <div
                       aria-label="Voir plus d’offres de la sélection Offres"
@@ -649,6 +651,7 @@ Object {
                               class="css-text-901oao"
                               dir="auto"
                               style="display: flex; flex-direction: column;"
+                              tabindex="-1"
                             >
                               <div
                                 class="css-view-1dbjc4n"
@@ -721,6 +724,7 @@ Object {
                               class="css-text-901oao"
                               dir="auto"
                               style="display: flex; flex-direction: column;"
+                              tabindex="-1"
                             >
                               <div
                                 class="css-view-1dbjc4n"
@@ -793,6 +797,7 @@ Object {
                               class="css-text-901oao"
                               dir="auto"
                               style="display: flex; flex-direction: column;"
+                              tabindex="-1"
                             >
                               <div
                                 class="css-view-1dbjc4n"
@@ -862,6 +867,7 @@ Object {
                   class="css-text-901oao"
                   dir="auto"
                   style="display: flex; flex-direction: column;"
+                  tabindex="-1"
                 >
                   <button
                     class="sc-iqseJM fzmVpo"
@@ -942,6 +948,7 @@ Object {
                   <a
                     class="sc-iCfMLu iaRsUK"
                     href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re"
+                    tabindex="-1"
                     target="_blank"
                   >
                     <div
@@ -1035,6 +1042,7 @@ Object {
                   <a
                     class="sc-iCfMLu iaRsUK"
                     href="https://test.com"
+                    tabindex="-1"
                     target="_blank"
                   >
                     <span
@@ -1950,6 +1958,7 @@ Object {
                     <a
                       class="sc-iCfMLu iaRsUK"
                       href="https://pass.culture.fr/"
+                      tabindex="-1"
                       target="_blank"
                     >
                       <span
@@ -2026,6 +2035,7 @@ Object {
                 <div
                   class="css-text-901oao"
                   dir="auto"
+                  tabindex="-1"
                 >
                   <div
                     aria-label="Voir plus d’offres de la sélection Offres"
@@ -2101,6 +2111,7 @@ Object {
                             class="css-text-901oao"
                             dir="auto"
                             style="display: flex; flex-direction: column;"
+                            tabindex="-1"
                           >
                             <div
                               class="css-view-1dbjc4n"
@@ -2173,6 +2184,7 @@ Object {
                             class="css-text-901oao"
                             dir="auto"
                             style="display: flex; flex-direction: column;"
+                            tabindex="-1"
                           >
                             <div
                               class="css-view-1dbjc4n"
@@ -2245,6 +2257,7 @@ Object {
                             class="css-text-901oao"
                             dir="auto"
                             style="display: flex; flex-direction: column;"
+                            tabindex="-1"
                           >
                             <div
                               class="css-view-1dbjc4n"
@@ -2314,6 +2327,7 @@ Object {
                 class="css-text-901oao"
                 dir="auto"
                 style="display: flex; flex-direction: column;"
+                tabindex="-1"
               >
                 <button
                   class="sc-iqseJM fzmVpo"
@@ -2394,6 +2408,7 @@ Object {
                 <a
                   class="sc-iCfMLu iaRsUK"
                   href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re"
+                  tabindex="-1"
                   target="_blank"
                 >
                   <div
@@ -2487,6 +2502,7 @@ Object {
                 <a
                   class="sc-iCfMLu iaRsUK"
                   href="https://test.com"
+                  tabindex="-1"
                   target="_blank"
                 >
                   <span

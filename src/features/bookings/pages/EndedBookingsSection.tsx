@@ -30,7 +30,10 @@ export const EndedBookingsSection: React.FC<{ endedBookings?: Booking[] }> = (pr
       <Separator />
       <Spacer.Column numberOfSpaces={4} />
       <EndedBookingsSectionWrapper>
-        <Link to={{ screen: 'EndedBookings', params: undefined }} style={styles.link}>
+        <Link
+          to={{ screen: 'EndedBookings', params: undefined }}
+          style={styles.link}
+          accessible={false}>
           <SectionRow
             type="navigable"
             title={endedBookingsLabel}

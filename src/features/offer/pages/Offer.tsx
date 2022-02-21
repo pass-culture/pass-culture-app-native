@@ -1,5 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
+import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
@@ -63,7 +64,7 @@ export const Offer: FunctionComponent = () => {
       <OfferBody offerId={offerId} onScroll={onScroll} />
       {!!wording && (
         <CallToActionContainer testID="CTA-button" style={{ paddingBottom: bottom }}>
-          <A href={isExternal ? url : undefined}>
+          <StyledA href={isExternal ? url : undefined}>
             <ButtonWithLinearGradient
               wording={wording}
               onPress={() => {
@@ -75,7 +76,7 @@ export const Offer: FunctionComponent = () => {
               isExternal={isExternal}
               isDisabled={onPressCTA === undefined}
             />
-          </A>
+          </StyledA>
         </CallToActionContainer>
       )}
 
@@ -96,4 +97,9 @@ const Container = styled.View(({ theme }) => ({
 const CallToActionContainer = styled.View({
   marginHorizontal: getSpacing(6),
   marginBottom: getSpacing(8),
+})
+
+const StyledA = webStyled(A)({
+  display: 'flex',
+  flexDirection: 'column',
 })
