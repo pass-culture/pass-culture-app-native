@@ -41,6 +41,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
   const {
     address,
     postalCode,
+    bannerUrl,
     city,
     publicName,
     withdrawalDetails,
@@ -72,8 +73,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
       ref={scrollViewRef as any}
       bounces={false}
       onScroll={onScroll}>
-      {/* TODO(antoinewg, #10099) use the image once we have it */}
-      <Hero imageUrl={undefined} type="venue" venueType={venueType || null} />
+      <Hero imageUrl={bannerUrl || undefined} type="venue" venueType={venueType || null} />
       <Spacer.Column numberOfSpaces={4} />
       <Dl>
         <MarginContainer>

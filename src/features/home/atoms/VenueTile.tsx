@@ -30,10 +30,6 @@ const mergeVenueData =
     ...(prevData || {}),
   })
 
-// TODO (Lucasbeneston) : Remove when we get image from venue
-const uri =
-  'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA'
-
 export const VenueTile = (props: VenueTileProps) => {
   const { venue, width, height, userPosition } = props
   const navigation = useNavigation<UseNavigationType>()
@@ -56,7 +52,7 @@ export const VenueTile = (props: VenueTileProps) => {
         width={width}
         onPress={handlePressVenue}
         {...accessibilityAndTestId('venueTile')}>
-        <ImageTile width={width} height={height} uri={uri} />
+        <ImageTile width={width} height={height} uri={venue.bannerUrl} />
       </TouchableHighlight>
       <VenueCaption
         width={width}

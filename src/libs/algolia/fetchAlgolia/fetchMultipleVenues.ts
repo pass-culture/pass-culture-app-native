@@ -4,6 +4,7 @@ import { VenuesSearchParametersFields } from 'features/home/contentful'
 import { LocationType } from 'features/search/enums'
 import { AlgoliaVenue, FiltersArray } from 'libs/algolia'
 import { VenuesFacets } from 'libs/algolia/enums'
+import { isVenueHitTypeguard } from 'libs/algolia/fetchAlgolia'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { client } from 'libs/algolia/fetchAlgolia/clients'
 import { buildGeolocationParameter } from 'libs/algolia/fetchAlgolia/fetchAlgolia'
@@ -11,7 +12,7 @@ import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { env } from 'libs/environment'
 import { GeoCoordinates } from 'libs/geolocation'
 import { VenueTypeCode } from 'libs/parsers'
-import { VenueHit } from 'libs/search'
+import { IncompleteVenueHit, VenueHit } from 'libs/search'
 import { parseGeolocationParameters } from 'libs/search/parseSearchParameters'
 import { getVenueTypeFacetFilters } from 'libs/search/utils/getVenueTypeFacetFilters'
 
@@ -35,7 +36,7 @@ export const fetchMultipleVenues = async (
   try {
     const allResults = await client.multipleQueries<AlgoliaVenue>(queries)
     const hits = flatten(allResults.results.map(({ hits }) => hits))
-    return hits.map(buildVenueHit)
+    return hits.map(buildVenueHit).filter(isVenueHitTypeguard)
   } catch (error) {
     captureAlgoliaError(error)
     return [] as VenueHit[]
@@ -76,7 +77,7 @@ const buildVenueTypesPredicate = (venueTypes: string[]): string[] =>
 const buildTagsPredicate = (tags: string[]): string[] =>
   tags.map((tag: string) => `${VenuesFacets.tags}:${tag}`)
 
-const buildVenueHit = (venue: AlgoliaVenue): VenueHit => {
+const buildVenueHit = (venue: AlgoliaVenue): IncompleteVenueHit => {
   const socialMedias: Record<string, string> = {}
   if (venue.facebook) socialMedias[venue.facebook] = venue.facebook
   if (venue.instagram) socialMedias[venue.instagram] = venue.instagram
@@ -90,6 +91,7 @@ const buildVenueHit = (venue: AlgoliaVenue): VenueHit => {
       motorDisability: venue.motor_disability,
       visualDisability: venue.visual_disability,
     },
+    bannerUrl: venue.banner_url,
     contact: {
       email: venue.email || undefined,
       phoneNumber: venue.phone_number || undefined,

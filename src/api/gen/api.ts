@@ -2164,6 +2164,11 @@ export interface VenueResponse {
    * @type {string}
    * @memberof VenueResponse
    */
+  bannerUrl?: string | null
+  /**
+   * @type {string}
+   * @memberof VenueResponse
+   */
   city?: string | null
   /**
    * @type {VenueContactModel}
