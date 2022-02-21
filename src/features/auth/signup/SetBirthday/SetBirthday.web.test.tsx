@@ -1,13 +1,11 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
+import { CURRENT_DATE, ELIGIBLE_AGE_DATE } from 'features/auth/signup/SetBirthday/utils/fixtures'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { fireEvent, render } from 'tests/utils/web'
 
 import { SetBirthday } from './SetBirthday'
-
-const CURRENT_DATE = new Date('2020-01-01T00:00:00.000Z')
-const ELIGIBLE_AGE_DATE = new Date('2003-01-01T00:00:00.000Z')
 
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 
@@ -79,7 +77,7 @@ describe('<SetBirthday />', () => {
       const day = container.getElementsByClassName('picker-scroller')[0].childNodes[0] // 01
       fireEvent.click(day)
 
-      const month = container.getElementsByClassName('picker-scroller')[1].childNodes[0] // Janvier
+      const month = container.getElementsByClassName('picker-scroller')[1].childNodes[11] // Décembre
       fireEvent.click(month)
 
       const year = container.getElementsByClassName('picker-scroller')[2].childNodes[3] // 2003
@@ -144,7 +142,7 @@ describe('<SetBirthday />', () => {
       const { getByTestId } = render(<SetBirthday {...props} />, { theme: { isTouch: false } })
 
       fireEvent.change(getByTestId('select-Jour'), { target: { value: '1' } })
-      fireEvent.change(getByTestId('select-Mois'), { target: { value: 'Janvier' } })
+      fireEvent.change(getByTestId('select-Mois'), { target: { value: 'Décembre' } })
       fireEvent.change(getByTestId('select-Année'), { target: { value: '2003' } })
 
       const continueButton = getByTestId('date-picker-submit-button')

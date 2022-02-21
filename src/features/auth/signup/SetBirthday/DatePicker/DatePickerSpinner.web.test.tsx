@@ -2,12 +2,13 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { MINIMUM_YEAR } from 'features/auth/signup/SetBirthday/utils/constants'
+import {
+  CURRENT_DATE,
+  DEFAULT_SELECTED_DATE,
+} from 'features/auth/signup/SetBirthday/utils/fixtures'
 import { fireEvent, render } from 'tests/utils/web'
 
 import { DatePickerSpinner } from './DatePickerSpinner.web'
-
-const CURRENT_DATE = new Date('2020-01-01T00:00:00.000Z')
-const DEFAULT_SELECTED_DATE = new Date('2006-06-01T00:00:00.000Z')
 
 const props = {
   onChange: jest.fn(),

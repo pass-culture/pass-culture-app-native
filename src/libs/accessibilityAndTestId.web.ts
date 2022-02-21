@@ -5,6 +5,6 @@ export function accessibilityAndTestId(accessibilityLabel?: string, testID?: str
     testID: testID || accessibilityLabel,
     // necessary if components are not React Native Web such as <button>
     ['data-testid']: testID || accessibilityLabel,
-    ['aria-label']: accessibilityLabel || testID,
+    ['aria-label']: accessibilityLabel,
   }
 }

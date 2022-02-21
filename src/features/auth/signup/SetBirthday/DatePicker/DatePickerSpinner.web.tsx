@@ -63,7 +63,7 @@ export function DatePickerSpinner(props: DatePickerWebProps) {
         />
       )}
       <Spacer.Column numberOfSpaces={2} />
-      <CalendarPickerWrapper>
+      <SpinnerPickerWrapper>
         <Picker
           data-testid="date-picker-touch"
           valueGroups={date}
@@ -71,15 +71,17 @@ export function DatePickerSpinner(props: DatePickerWebProps) {
           onChange={onDateChange}
           aria-describedby={birthdateInputErrorId}
         />
-      </CalendarPickerWrapper>
+      </SpinnerPickerWrapper>
       <Spacer.Column numberOfSpaces={2} />
     </React.Fragment>
   )
 }
 
-const CalendarPickerWrapper = styled.View(({ theme }) => ({
+const SpinnerPickerWrapper = styled.View(({ theme }) => ({
   alignSelf: 'stretch',
   flexDirection: 'row',
   fontFamily: theme.fontFamily.regular,
   userSelect: 'none',
+  width: '100%',
+  maxWidth: theme.forms.maxWidth,
 }))

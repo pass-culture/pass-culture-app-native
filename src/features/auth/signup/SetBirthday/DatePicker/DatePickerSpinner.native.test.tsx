@@ -1,15 +1,16 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { MINIMUM_DATE } from 'features/auth/signup/SetBirthday/utils/constants'
+import {
+  CURRENT_DATE,
+  DEFAULT_SELECTED_DATE,
+  ELIGIBLE_AGE_DATE,
+  MAXIMUM_DATE,
+  MINIMUM_DATE,
+} from 'features/auth/signup/SetBirthday/utils/fixtures'
 import { fireEvent, render } from 'tests/utils'
 
 import { DatePickerSpinner } from './DatePickerSpinner'
-
-const CURRENT_DATE = new Date('2020-01-01T00:00:00.000Z')
-const ELIGIBLE_AGE_DATE = new Date('2003-01-01T00:00:00.000Z')
-const MAXIMUM_DATE = new Date('2003-12-01T00:00:00.000Z')
-const DEFAULT_SELECTED_DATE = new Date('2006-06-01T00:00:00.000Z')
 
 const props = {
   onChange: jest.fn(),

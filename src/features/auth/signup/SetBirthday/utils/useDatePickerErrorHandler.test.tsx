@@ -1,18 +1,18 @@
 import { renderHook } from '@testing-library/react-hooks'
 import mockdate from 'mockdate'
 
+import {
+  AGE,
+  CURRENT_DATE,
+  DEFAULT_SELECTED_DATE,
+  ELIGIBLE_AGE_DATE,
+  FIFTEEN_YEARS_OLD_FIRST_DAY_DATE,
+  FUTUR_DATE,
+  NOT_ELIGIBLE_YOUNGEST_AGE_DATE,
+} from 'features/auth/signup/SetBirthday/utils/fixtures'
 import { analytics } from 'libs/analytics'
-import { dateDiffInFullYears } from 'libs/dates'
 
 import { useDatePickerErrorHandler } from './useDatePickerErrorHandler'
-
-const CURRENT_DATE = new Date('2020-12-01T00:00:00.000Z')
-const FUTUR_DATE = new Date('2022-12-01T00:00:00.000Z')
-const DEFAULT_SELECTED_DATE = new Date('2006-12-01T00:00:00.000Z')
-const ELIGIBLE_AGE_DATE = new Date('2003-12-01T00:00:00.000Z')
-const FIFTEEN_YEARS_OLD_FIRST_DAY_DATE = new Date('2005-12-01T00:00:00.000Z')
-const NOT_ELIGIBLE_YOUNGEST_AGE_DATE = new Date('2006-01-01T00:00:00.000Z')
-const AGE = dateDiffInFullYears(new Date(NOT_ELIGIBLE_YOUNGEST_AGE_DATE), CURRENT_DATE)
 
 jest.mock('features/auth/settings')
 

@@ -1,14 +1,12 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
+import { CURRENT_DATE, ELIGIBLE_AGE_DATE } from 'features/auth/signup/SetBirthday/utils/fixtures'
 import { analytics } from 'libs/analytics'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { fireEvent, render } from 'tests/utils'
 
 import { SetBirthday } from './SetBirthday'
-
-const CURRENT_DATE = new Date('2020-12-01T00:00:00.000Z')
-const ELIGIBLE_AGE_DATE = new Date('2003-12-01T00:00:00.000Z')
 
 const props = { goToNextStep: jest.fn(), signUp: jest.fn() }
 
