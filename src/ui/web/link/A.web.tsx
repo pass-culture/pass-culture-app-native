@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { AProps } from 'ui/web/link/types'
 
-export function A({ children, ...props }: AProps) {
+export function A({ children, accessible = false, ...props }: AProps) {
   const linkRef = createRef<HTMLAnchorElement>()
 
   function preventDefault(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
@@ -22,7 +22,7 @@ export function A({ children, ...props }: AProps) {
   }, [])
 
   return (
-    <ControlledA ref={linkRef} {...props}>
+    <ControlledA ref={linkRef} {...props} tabIndex={accessible ? 0 : -1}>
       {children}
     </ControlledA>
   )

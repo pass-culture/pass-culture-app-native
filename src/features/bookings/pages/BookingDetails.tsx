@@ -179,7 +179,8 @@ export function BookingDetails() {
           <Spacer.Column numberOfSpaces={8} />
           <Link
             to={{ screen: 'Offer', params: { id: offer.id, from: 'bookingdetails' } }}
-            style={styles.link}>
+            style={styles.link}
+            accessible={false}>
             <ButtonPrimary
               testID="Voir le détail de l’offre"
               wording={t`Voir le détail de l’offre`}

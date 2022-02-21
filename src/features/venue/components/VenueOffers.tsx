@@ -84,7 +84,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
 
   const renderFooter: RenderFooterItem = useCallback(
     ({ width, height }) => (
-      <Link to={{ screen: 'Search', params }}>
+      <Link to={{ screen: 'Search', params }} accessible={false}>
         <SeeMore width={width} height={height} onPress={onPressSeeMore as () => void} />
       </Link>
     ),
@@ -93,7 +93,11 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
 
   const renderTitleSeeMore = useCallback(
     ({ children }: { children: ReactNode }) => {
-      return <Link to={{ screen: 'Search', params }}>{children}</Link>
+      return (
+        <Link to={{ screen: 'Search', params }} accessible={false}>
+          {children}
+        </Link>
+      )
     },
     [onPressSeeMore, params]
   )
@@ -119,7 +123,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
         keyExtractor={keyExtractor}
       />
       <MarginContainer>
-        <Link to={{ screen: 'Search', params }} style={styles.link}>
+        <Link to={{ screen: 'Search', params }} style={styles.link} accessible={false}>
           <ButtonWithLinearGradient
             wording={VENUE_OFFERS_CTA_WORDING}
             onPress={seeAllOffers}

@@ -25,7 +25,7 @@ export const OfferSeeMore: React.FC<Props> = ({ id, longWording = false }) => {
 
   return (
     <Container>
-      <Link to={{ screen: 'OfferDescription', params: { id } }}>
+      <Link to={{ screen: 'OfferDescription', params: { id } }} accessible={false}>
         <ButtonTertiaryBlack
           inline
           testID="description-details-button"

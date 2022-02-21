@@ -28,7 +28,10 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
   const { dateLabel, withdrawLabel } = getBookingLabels(booking, bookingProperties, settings)
 
   return (
-    <Link to={{ screen: 'BookingDetails', params: { id: booking.id } }} style={styles.link}>
+    <Link
+      to={{ screen: 'BookingDetails', params: { id: booking.id } }}
+      style={styles.link}
+      accessible={false}>
       <Container
         onPress={() => navigate('BookingDetails', { id: booking.id })}
         testID="OnGoingBookingItem">

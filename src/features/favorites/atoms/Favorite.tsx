@@ -129,7 +129,9 @@ export const Favorite: React.FC<Props> = (props) => {
           : undefined,
       }}>
       <Container onPress={handlePressOffer} testID="favorite">
-        <Link to={{ screen: 'Offer', params: { id: offer.id, from: 'favorites' } }}>
+        <Link
+          to={{ screen: 'Offer', params: { id: offer.id, from: 'favorites' } }}
+          accessible={false}>
           <Row>
             <OfferImage imageUrl={offer.image?.url} categoryId={categoryId} />
             <Spacer.Row numberOfSpaces={4} />

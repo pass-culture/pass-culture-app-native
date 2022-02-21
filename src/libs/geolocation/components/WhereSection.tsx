@@ -86,7 +86,10 @@ export const WhereSection: React.FC<Props> = ({
         {showVenueBanner ? (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={4} />
-            <Link to={{ screen: 'Venue', params: { id: venue.id } }} style={styles.link}>
+            <Link
+              to={{ screen: 'Venue', params: { id: venue.id } }}
+              style={styles.link}
+              accessible={false}>
               <VenueNameContainer onPress={navigateToVenuePage} testID="VenueBannerComponent">
                 <Spacer.Row numberOfSpaces={2} />
                 <IconContainer>
