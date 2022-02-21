@@ -176,7 +176,7 @@ Object {
             style="height: 16px;"
           />
           <dl
-            class="sc-hiCibw lflKPz"
+            class="sc-gWXbKe cLfsmh"
           >
             <div
               class="css-view-1dbjc4n"
@@ -187,7 +187,7 @@ Object {
                 style="align-items: center; flex-direction: row; justify-content: center; margin-top: 8px;"
               >
                 <dt
-                  class="sc-gsDKAQ sc-cidDSM gFZcdC bicHFl"
+                  class="sc-gsDKAQ sc-jcFjpl gFZcdC bOwTiA"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -201,7 +201,7 @@ Object {
                   </div>
                 </dt>
                 <dd
-                  class="sc-bdvvtL sc-jcFjpl kxtmOw hQIJWz"
+                  class="sc-bdvvtL sc-caiLqq kxtmOw hRwUsV"
                 >
                   1 boulevard Poissonnière, 75000 Paris
                 </dd>
@@ -211,12 +211,12 @@ Object {
                 style="height: 8px;"
               />
               <dt
-                class="sc-gsDKAQ sc-gWXbKe gFZcdC kHQyAa"
+                class="sc-gsDKAQ sc-cCcXHH gFZcdC hgNHsF"
               >
                 Lieu
               </dt>
               <dd
-                class="sc-bdvvtL sc-cCcXHH kxtmOw haXDLu"
+                class="sc-bdvvtL sc-cidDSM kxtmOw kWbrYV"
                 data-testid="venueTitle"
               >
                 Le Petit Rintintin 1
@@ -311,12 +311,12 @@ Object {
               />
             </div>
             <dt
-              class="sc-gsDKAQ sc-gWXbKe gFZcdC kHQyAa"
+              class="sc-gsDKAQ sc-cCcXHH gFZcdC hgNHsF"
             >
               Description
             </dt>
             <dd
-              class="sc-bdvvtL sc-jJoQJp kxtmOw jfCbnt"
+              class="sc-bdvvtL sc-hiCibw kxtmOw gqqvan"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -710,7 +710,7 @@ Object {
                 tabindex="-1"
               >
                 <button
-                  class="sc-hGPBjI jfYDNH"
+                  class="sc-dlVxhl dMlqLD"
                   type="button"
                 >
                   <div
@@ -744,7 +744,7 @@ Object {
                 style="height: 24px;"
               />
               <dt
-                class="sc-gsDKAQ sc-bYoBSM gFZcdC cqykSW"
+                class="sc-gsDKAQ sc-kLwhqv gFZcdC crayCh"
               >
                 Où ?
               </dt>
@@ -796,7 +796,7 @@ Object {
                     style="align-items: flex-start;"
                   >
                     <button
-                      class="sc-eCImPb gBAYyT sc-ezbkAF fZQzH"
+                      class="sc-eCImPb gBAYyT sc-bYoBSM gncaJq"
                       type="button"
                     >
                       <div
@@ -967,10 +967,10 @@ Object {
                 style="flex-direction: row; justify-content: space-between;"
               >
                 <ul
-                  class="sc-crHmcD sc-kLwhqv gzFTzc fcwiXt"
+                  class="sc-crHmcD sc-ikJyIC gzFTzc iGXYCt"
                 >
                   <li
-                    class="sc-ikJyIC hXNHhL"
+                    class="sc-jJoQJp eazuZI"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -1037,7 +1037,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-ikJyIC hXNHhL"
+                    class="sc-jJoQJp eazuZI"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -1104,7 +1104,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-ikJyIC hXNHhL"
+                    class="sc-jJoQJp eazuZI"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -1171,7 +1171,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-ikJyIC hXNHhL"
+                    class="sc-jJoQJp eazuZI"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -1494,7 +1494,7 @@ Object {
           style="height: 16px;"
         />
         <dl
-          class="sc-hiCibw lflKPz"
+          class="sc-gWXbKe cLfsmh"
         >
           <div
             class="css-view-1dbjc4n"
@@ -1505,7 +1505,7 @@ Object {
               style="align-items: center; flex-direction: row; justify-content: center; margin-top: 8px;"
             >
               <dt
-                class="sc-gsDKAQ sc-cidDSM gFZcdC bicHFl"
+                class="sc-gsDKAQ sc-jcFjpl gFZcdC bOwTiA"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -1519,7 +1519,7 @@ Object {
                 </div>
               </dt>
               <dd
-                class="sc-bdvvtL sc-jcFjpl kxtmOw hQIJWz"
+                class="sc-bdvvtL sc-caiLqq kxtmOw hRwUsV"
               >
                 1 boulevard Poissonnière, 75000 Paris
               </dd>
@@ -1529,12 +1529,12 @@ Object {
               style="height: 8px;"
             />
             <dt
-              class="sc-gsDKAQ sc-gWXbKe gFZcdC kHQyAa"
+              class="sc-gsDKAQ sc-cCcXHH gFZcdC hgNHsF"
             >
               Lieu
             </dt>
             <dd
-              class="sc-bdvvtL sc-cCcXHH kxtmOw haXDLu"
+              class="sc-bdvvtL sc-cidDSM kxtmOw kWbrYV"
               data-testid="venueTitle"
             >
               Le Petit Rintintin 1
@@ -1629,12 +1629,12 @@ Object {
             />
           </div>
           <dt
-            class="sc-gsDKAQ sc-gWXbKe gFZcdC kHQyAa"
+            class="sc-gsDKAQ sc-cCcXHH gFZcdC hgNHsF"
           >
             Description
           </dt>
           <dd
-            class="sc-bdvvtL sc-jJoQJp kxtmOw jfCbnt"
+            class="sc-bdvvtL sc-hiCibw kxtmOw gqqvan"
           >
             <div
               class="css-view-1dbjc4n"
@@ -2028,7 +2028,7 @@ Object {
               tabindex="-1"
             >
               <button
-                class="sc-hGPBjI jfYDNH"
+                class="sc-dlVxhl dMlqLD"
                 type="button"
               >
                 <div
@@ -2062,7 +2062,7 @@ Object {
               style="height: 24px;"
             />
             <dt
-              class="sc-gsDKAQ sc-bYoBSM gFZcdC cqykSW"
+              class="sc-gsDKAQ sc-kLwhqv gFZcdC crayCh"
             >
               Où ?
             </dt>
@@ -2114,7 +2114,7 @@ Object {
                   style="align-items: flex-start;"
                 >
                   <button
-                    class="sc-eCImPb gBAYyT sc-ezbkAF fZQzH"
+                    class="sc-eCImPb gBAYyT sc-bYoBSM gncaJq"
                     type="button"
                   >
                     <div
@@ -2285,10 +2285,10 @@ Object {
               style="flex-direction: row; justify-content: space-between;"
             >
               <ul
-                class="sc-crHmcD sc-kLwhqv gzFTzc fcwiXt"
+                class="sc-crHmcD sc-ikJyIC gzFTzc iGXYCt"
               >
                 <li
-                  class="sc-ikJyIC hXNHhL"
+                  class="sc-jJoQJp eazuZI"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -2355,7 +2355,7 @@ Object {
                   </div>
                 </li>
                 <li
-                  class="sc-ikJyIC hXNHhL"
+                  class="sc-jJoQJp eazuZI"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -2422,7 +2422,7 @@ Object {
                   </div>
                 </li>
                 <li
-                  class="sc-ikJyIC hXNHhL"
+                  class="sc-jJoQJp eazuZI"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -2489,7 +2489,7 @@ Object {
                   </div>
                 </li>
                 <li
-                  class="sc-ikJyIC hXNHhL"
+                  class="sc-jJoQJp eazuZI"
                 >
                   <div
                     class="css-view-1dbjc4n"

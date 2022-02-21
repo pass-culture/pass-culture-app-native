@@ -5,9 +5,11 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { InputLabel } from 'ui/components/InputLabel'
 import { Invalidate as DefaultInvalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer } from 'ui/theme'
+import { Touchable } from 'ui/web/touchable/Touchable'
 
 import { BaseTextInput as DefaultBaseTextInput } from './BaseTextInput'
 import { StyledInputContainer } from './StyledInputContainer'
@@ -64,7 +66,8 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
         {value.length > 0 && (
           <RightIconContainer
             onPress={onPressRightIcon}
-            {...accessibilityAndTestId(t`Réinitialiser la recherche`)}>
+            {...accessibilityAndTestId(t`Réinitialiser la recherche`)}
+            type="reset">
             <Invalidate />
           </RightIconContainer>
         )}
@@ -75,7 +78,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
 
 export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(WithRefSearchInput)
 
-const RightIconContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
+const RightIconContainer = styledButton(Touchable).attrs(({ theme }) => ({
   activeOpacity: theme.activeOpacity,
 }))({
   position: 'absolute',
