@@ -83,6 +83,7 @@ Object {
         <a
           class="sc-jRQBWg cmDpap"
           href="https://passculture.cgu"
+          tabindex="-1"
           target="_blank"
         >
           <div
@@ -136,6 +137,7 @@ Object {
         <a
           class="sc-jRQBWg cmDpap"
           href="https://passculture.data-privacy-chart"
+          tabindex="-1"
           target="_blank"
         >
           <div
@@ -311,6 +313,7 @@ Object {
       <a
         class="sc-jRQBWg cmDpap"
         href="https://passculture.cgu"
+        tabindex="-1"
         target="_blank"
       >
         <div
@@ -364,6 +367,7 @@ Object {
       <a
         class="sc-jRQBWg cmDpap"
         href="https://passculture.data-privacy-chart"
+        tabindex="-1"
         target="_blank"
       >
         <div

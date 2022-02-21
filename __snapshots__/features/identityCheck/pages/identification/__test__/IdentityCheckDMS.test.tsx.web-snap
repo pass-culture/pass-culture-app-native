@@ -324,6 +324,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 <a
                   className="sc-gKclnd bWYkKD"
                   href="https://dmsfrenchcitizen"
+                  tabIndex={-1}
                   target="_blank"
                 >
                   <button
@@ -441,6 +442,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 <a
                   className="sc-gKclnd bWYkKD"
                   href="https://dmsforeigncitizen"
+                  tabIndex={-1}
                   target="_blank"
                 >
                   <button

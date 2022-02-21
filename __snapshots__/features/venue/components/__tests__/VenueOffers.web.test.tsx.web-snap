@@ -42,6 +42,7 @@ Object {
           <div
             class="css-text-901oao"
             dir="auto"
+            tabindex="-1"
           >
             <div
               aria-label="Voir plus d’offres de la sélection Offres"
@@ -117,6 +118,7 @@ Object {
                       class="css-text-901oao"
                       dir="auto"
                       style="display: flex; flex-direction: column;"
+                      tabindex="-1"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -189,6 +191,7 @@ Object {
                       class="css-text-901oao"
                       dir="auto"
                       style="display: flex; flex-direction: column;"
+                      tabindex="-1"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -261,6 +264,7 @@ Object {
                       class="css-text-901oao"
                       dir="auto"
                       style="display: flex; flex-direction: column;"
+                      tabindex="-1"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -330,6 +334,7 @@ Object {
           class="css-text-901oao"
           dir="auto"
           style="display: flex; flex-direction: column;"
+          tabindex="-1"
         >
           <button
             class="sc-kDTinF gRNtfL"
@@ -393,6 +398,7 @@ Object {
         <div
           class="css-text-901oao"
           dir="auto"
+          tabindex="-1"
         >
           <div
             aria-label="Voir plus d’offres de la sélection Offres"
@@ -468,6 +474,7 @@ Object {
                     class="css-text-901oao"
                     dir="auto"
                     style="display: flex; flex-direction: column;"
+                    tabindex="-1"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -540,6 +547,7 @@ Object {
                     class="css-text-901oao"
                     dir="auto"
                     style="display: flex; flex-direction: column;"
+                    tabindex="-1"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -612,6 +620,7 @@ Object {
                     class="css-text-901oao"
                     dir="auto"
                     style="display: flex; flex-direction: column;"
+                    tabindex="-1"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -681,6 +690,7 @@ Object {
         class="css-text-901oao"
         dir="auto"
         style="display: flex; flex-direction: column;"
+        tabindex="-1"
       >
         <button
           class="sc-kDTinF gRNtfL"
