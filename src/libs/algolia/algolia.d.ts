@@ -40,5 +40,6 @@ export interface AlgoliaVenue {
   twitter: string | null
   instagram: string | null
   snapchat: string | null
+  banner_url: string | null
   _geoloc: Geoloc
 }

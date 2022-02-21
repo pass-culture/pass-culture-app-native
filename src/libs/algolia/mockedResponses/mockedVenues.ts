@@ -33,6 +33,8 @@ export const mockVenues: SearchResponse = {
           snapchat: 'https://snapchat.com',
         },
       },
+      bannerUrl:
+        'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA',
     },
     {
       id: 5544,
@@ -59,6 +61,8 @@ export const mockVenues: SearchResponse = {
           snapchat: 'https://snapchat.com',
         },
       },
+      bannerUrl:
+        'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA',
     },
     {
       id: 5545,
@@ -85,6 +89,8 @@ export const mockVenues: SearchResponse = {
           snapchat: 'https://snapchat.com',
         },
       },
+      bannerUrl:
+        'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA',
     },
     {
       id: 5546,
@@ -111,6 +117,8 @@ export const mockVenues: SearchResponse = {
           snapchat: 'https://snapchat.com',
         },
       },
+      bannerUrl:
+        'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA',
     },
   ],
   nbHits: 4,

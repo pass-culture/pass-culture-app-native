@@ -6,6 +6,7 @@ export {
 } from './fetchAlgolia'
 export {
   filterAlgoliaHit,
+  isVenueHitTypeguard,
   transformAlgoliaHit,
   useTransformAlgoliaHits,
 } from './transformAlgoliaHit'
