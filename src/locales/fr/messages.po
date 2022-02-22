@@ -447,6 +447,8 @@ msgid "Choisir un lieu"
 msgstr "Choisir un lieu"
 
 #: src/features/identityCheck/pages/profile/SetSchoolType.tsx
+#: src/features/identityCheck/pages/profile/SetSchoolType.tsx
+#: src/features/identityCheck/pages/profile/Status.tsx
 #: src/features/identityCheck/pages/profile/Status.tsx
 msgid "Choisis ton statut"
 msgstr "Choisis ton statut"
@@ -655,6 +657,8 @@ msgstr "Continuer vers l'étape"
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
 #: src/features/identityCheck/pages/profile/SetCity.tsx
 #: src/features/identityCheck/pages/profile/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetSchoolType.tsx
+#: src/features/identityCheck/pages/profile/Status.tsx
 msgid "Continuer vers l'étape suivante"
 msgstr "Continuer vers l'étape suivante"
 
@@ -3255,6 +3259,14 @@ msgstr "réalisée"
 #: src/features/bookOffer/components/CancellationDetails.tsx
 msgid "réservation annulable jusqu'au"
 msgstr "Cette réservation peut être annulée jusqu’au {date}"
+
+#: src/features/search/components/SearchLandingPage.tsx
+msgid "search category label"
+msgstr "Je cherche dans la catégorie {searchGroupLabel}"
+
+#: src/features/search/components/SearchLandingPage.tsx
+msgid "search location label"
+msgstr "Je cherche {locationLabel}"
 
 #: src/features/offer/services/useShareOffer.ts
 msgid "share offer message"

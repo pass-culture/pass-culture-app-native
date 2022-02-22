@@ -40,6 +40,21 @@ export const SearchLandingPage: React.FC = () => {
   const searchCategoriesDescribedBy = uuidv4()
   const locationFilterDescribedBy = uuidv4()
 
+  const searchCategoriesAriaLabel = t({
+    id: 'search category label',
+    values: {
+      searchGroupLabel,
+    },
+    message: 'Je cherche dans la catégorie {searchGroupLabel}',
+  })
+  const locationFilterAriaLabel = t({
+    id: 'search location label',
+    values: {
+      locationLabel,
+    },
+    message: 'Je cherche {locationLabel}',
+  })
+
   return (
     <React.Fragment>
       <ScrollView contentContainerStyle={contentContainerStyle}>
@@ -47,7 +62,8 @@ export const SearchLandingPage: React.FC = () => {
 
         <TouchableOpacity
           onPress={() => navigate('SearchCategories')}
-          aria-describedby={searchCategoriesDescribedBy}>
+          aria-describedby={searchCategoriesDescribedBy}
+          aria-label={searchCategoriesAriaLabel}>
           <BicolorListItem title={searchGroupLabel} Icon={Icon} secondaryText={t`Je cherche`} />
         </TouchableOpacity>
         <HiddenText
@@ -59,7 +75,8 @@ export const SearchLandingPage: React.FC = () => {
 
         <TouchableOpacity
           onPress={() => navigate('LocationFilter')}
-          aria-describedby={locationFilterDescribedBy}>
+          aria-describedby={locationFilterDescribedBy}
+          aria-label={locationFilterAriaLabel}>
           <BicolorListItem title={locationLabel} Icon={LocationIcon} secondaryText={t`Où`} />
         </TouchableOpacity>
         <HiddenText
