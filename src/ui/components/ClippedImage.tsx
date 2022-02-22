@@ -1,4 +1,5 @@
 import React from 'react'
+import { Platform } from 'react-native'
 import Svg, { ClipPath, Defs, G, Path, Use, LinearGradient, Stop } from 'react-native-svg'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -10,8 +11,8 @@ import { getShadow } from 'ui/theme'
 export type ClippedImageProps = {
   clipId: string
   path: string
-  width: number
-  height: number
+  width?: number
+  height?: number
 } & (
   | {
       image: string
@@ -39,8 +40,11 @@ export function ClippedImage(props: ClippedImageProps) {
   }))``
 
   return (
-    <Container width={props.width} height={props.height}>
-      <Svg width={props.width} height={props.height} viewBox={`0 0 ${props.width} ${props.height}`}>
+    <Container>
+      <StyledSvg
+        width={props.width}
+        height={props.height}
+        viewBox={`0 0 ${props.width} ${props.height}`}>
         <Defs>
           <ClipPath id={props.clipId}>
             <Path d={props.path} />
@@ -64,7 +68,7 @@ export function ClippedImage(props: ClippedImageProps) {
             <Use fill={`url(#${linearGradientId})`} xlinkHref={`#${pathId}`} />
           </G>
         )}
-      </Svg>
+      </StyledSvg>
       {!props.image && Icon ? (
         <IconContainer testID="iconContainer">
           <StyledIcon />
@@ -74,26 +78,40 @@ export function ClippedImage(props: ClippedImageProps) {
   )
 }
 
-type ContainerProps = {
-  height: number
-  width: number
-}
-
-const Container = styled.View.attrs<ContainerProps>(({ height, width }) => ({
-  height,
-  width,
-}))<ContainerProps>(({ theme }) => ({
+const Container = styled.View(({ theme }) => ({
   borderRadius: 4,
-  ...getShadow({
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowRadius: 2,
-    shadowColor: theme.colors.black,
-    shadowOpacity: 0.1,
+  ...Platform.select({
+    default: getShadow({
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowRadius: 2,
+      shadowColor: theme.colors.black,
+      shadowOpacity: 0.25,
+    }),
+    web: {},
   }),
 }))
+
+const StyledSvg =
+  Platform.OS === 'web'
+    ? styled(Svg)(({ theme }) => ({
+        borderRadius: 4,
+        ...getShadow(
+          {
+            shadowOffset: {
+              width: 0,
+              height: 2,
+            },
+            shadowRadius: 2,
+            shadowColor: theme.colors.black,
+            shadowOpacity: 0.25,
+          },
+          true
+        ),
+      }))
+    : Svg
 
 const IconContainer = styled.View({
   position: 'absolute',
