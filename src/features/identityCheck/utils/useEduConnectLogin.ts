@@ -10,10 +10,9 @@ export function useEduConnectLogin() {
 
   const getLoginUrl = async () => {
     try {
-      const { getAccessToken, getLoginUrl } = eduConnectClient
-      const accessToken = await getAccessToken()
+      const accessToken = await eduConnectClient.getAccessToken()
 
-      const { status, headers } = await fetch(`${getLoginUrl()}?redirect=false`, {
+      const { status, headers } = await fetch(`${eduConnectClient.getLoginUrl()}?redirect=false`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },

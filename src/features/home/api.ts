@@ -6,8 +6,12 @@ import { api } from 'api/api'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { NoContentError } from 'features/home/components/NoContentError'
-import { HomepageEntry } from 'features/home/contentful'
-import { EntryCollection, EntryFields, processHomepageEntry } from 'features/home/contentful'
+import {
+  HomepageEntry,
+  EntryCollection,
+  EntryFields,
+  processHomepageEntry,
+} from 'features/home/contentful'
 import { useSelectPlaylist } from 'features/home/selectPlaylist'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'

@@ -138,14 +138,14 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
     navigateToNextBeneficiaryValidationStep()
   }
 
-  function onError(error: unknown | ApiError) {
-    const { content } = error as ApiError
+  function onError(err: unknown | ApiError) {
+    const { content } = err as ApiError
     if (content.code === 'TOO_MANY_VALIDATION_ATTEMPTS') {
       navigate('PhoneValidationTooManyAttempts')
     } else if (content.code === 'TOO_MANY_SMS_SENT') {
       navigate('PhoneValidationTooManySMSSent')
     } else {
-      setErrorMessage(extractApiErrorMessage(error))
+      setErrorMessage(extractApiErrorMessage(err))
     }
   }
 
@@ -168,10 +168,8 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
       const { code } = codeInputState
       if (code) {
         if (settings?.enableNativeIdCheckVerboseDebugging) {
-          const errorMessage = `Request info : ${JSON.stringify({
-            code,
-          })}`
-          captureMonitoringError(errorMessage, 'validatePhoneNumber')
+          const errMessage = `Request info : ${JSON.stringify({ code })}`
+          captureMonitoringError(errMessage, 'validatePhoneNumber')
         }
         validatePhoneNumber(code)
       }

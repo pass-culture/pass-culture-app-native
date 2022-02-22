@@ -41,9 +41,9 @@ export const useSetSubscriptionStepAndMethod = () => {
   useFocusEffect(
     useCallback(() => {
       refetch()
-        .then(({ data: subscription }) => {
-          setCurrentStep(subscription)
-          setCurrentIdentityCheckMethod(subscription)
+        .then(({ data: subscriptionStep }) => {
+          setCurrentStep(subscriptionStep)
+          setCurrentIdentityCheckMethod(subscriptionStep)
         })
         .catch(() => {
           eventMonitoring.captureException(new Error('Error fetching subscription'))

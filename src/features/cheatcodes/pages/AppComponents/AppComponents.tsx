@@ -477,11 +477,11 @@ export const AppComponents: FunctionComponent = () => {
             <Text>Date de naissance: {year}-01-28</Text>
           </AlignedText>
           <AlignedText>
-            <Button title="-1 an" onPress={() => setYear((year) => year + 1)} />
+            <Button title="-1 an" onPress={() => setYear((y) => y + 1)} />
             <Spacer.Column numberOfSpaces={2} />
             <Text>{THIS_YEAR - year} ans</Text>
             <Spacer.Column numberOfSpaces={2} />
-            <Button title="+1 an" onPress={() => setYear((year) => year - 1)} />
+            <Button title="+1 an" onPress={() => setYear((y) => y - 1)} />
           </AlignedText>
         </View>
         <StyledTitle4>Communication InApp</StyledTitle4>
