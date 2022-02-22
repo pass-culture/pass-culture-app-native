@@ -48,7 +48,6 @@ export interface Environment {
   SENTRY_DSN: string
   SIGNIN_IDENTIFIER: string
   SIGNIN_PASSWORD: string
-  SIGNUP_DATE: string
   SIGNUP_POSTAL_CODE: string
   SITE_KEY: string
   SUPPORT_EMAIL_ADDRESS: string

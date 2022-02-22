@@ -7,7 +7,6 @@ import styled from 'styled-components/native'
 
 import { CallToActionIcon, CategoryIdEnum, PopOverIcon, VenueTypeCodeKey } from 'api/gen/api'
 import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
-import { DateInput } from 'features/auth/signup/SetBirthday/DateInput/DateInput'
 import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTicket'
 import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
@@ -376,12 +375,6 @@ export const AppComponents: FunctionComponent = () => {
         <StyledTitle4>Password Input</StyledTitle4>
         <PasswordInput value="" onChangeText={doNothingFn} placeholder={'Placeholder'} />
         <Spacer.Column numberOfSpaces={1} />
-        <StyledTitle4>Date Input</StyledTitle4>
-        <DateInput date={new Date()} />
-        <Spacer.Column numberOfSpaces={1} />
-        <Typo.Caption>{inputText}</Typo.Caption>
-        <Spacer.Column numberOfSpaces={1} />
-
         <StyledTitle4>Large input</StyledTitle4>
         <Spacer.Column numberOfSpaces={1} />
         <LargeTextInput value={largeInputText} onChangeText={setLargeInputText} maxLength={200} />

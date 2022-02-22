@@ -71,10 +71,6 @@ msgstr "18 ans"
 msgid "1er tutoriel"
 msgstr "1er tutoriel"
 
-#: src/features/auth/signup/SetBirthday/DateInput/DateInputDesktop.tsx
-msgid "AAAA"
-msgstr "AAAA"
-
 #: src/features/identityCheck/pages/Stepper.tsx
 #: src/features/profile/pages/ConfirmDeleteProfile.tsx
 msgid "Abandonner"
@@ -447,6 +443,8 @@ msgid "Choisir un lieu"
 msgstr "Choisir un lieu"
 
 #: src/features/identityCheck/pages/profile/SetSchoolType.tsx
+#: src/features/identityCheck/pages/profile/SetSchoolType.tsx
+#: src/features/identityCheck/pages/profile/Status.tsx
 #: src/features/identityCheck/pages/profile/Status.tsx
 msgid "Choisis ton statut"
 msgstr "Choisis ton statut"
@@ -623,9 +621,7 @@ msgstr "Contacter le support"
 #: src/features/auth/forgottenPassword/ReinitializePassword/ReinitializePassword.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
-#: src/features/auth/signup/SetBirthday/DatePicker/DatePickerTouch.web.tsx
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-#: src/features/auth/signup/SetBirthday/SetBirthday.web.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
 #: src/features/auth/signup/SetPassword/SetPassword.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
@@ -655,6 +651,8 @@ msgstr "Continuer vers l'étape"
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
 #: src/features/identityCheck/pages/profile/SetCity.tsx
 #: src/features/identityCheck/pages/profile/SetName.tsx
+#: src/features/identityCheck/pages/profile/SetSchoolType.tsx
+#: src/features/identityCheck/pages/profile/Status.tsx
 msgid "Continuer vers l'étape suivante"
 msgstr "Continuer vers l'étape suivante"
 
@@ -728,7 +726,8 @@ msgstr "Date"
 msgid "Date de l'offre"
 msgstr "Date de l'offre"
 
-#: src/features/auth/signup/SetBirthday/DateInput/DateInput.tsx
+#: src/features/auth/signup/SetBirthday/atoms/DateInput/DateInput.tsx
+#: src/features/auth/signup/SignupForm.tsx
 msgid "Date de naissance"
 msgstr "Date de naissance"
 
@@ -941,27 +940,23 @@ msgstr "Entrée du code de confirmation"
 msgid "Entrée pour l'adresse"
 msgstr "Entrée pour l'adresse"
 
-#: src/features/auth/signup/SetBirthday/DateInput/DateInputDesktop.tsx
-msgid "Entrée pour l'année jour de la date de naissance"
-msgstr "Entrée pour l'année jour de la date de naissance"
+#: src/features/auth/signup/SetBirthday/atoms/DateInput/DateInputDesktop.web.tsx
+msgid "Entrée pour l'année de la date de naissance"
+msgstr "Entrée pour l'année de la date de naissance"
 
 #: src/ui/components/inputs/EmailInput.tsx
 msgid "Entrée pour l'email"
 msgstr "Entrée pour l'email"
 
-#: src/features/auth/signup/SetBirthday/DateInput/DateInputDesktop.tsx
-msgid "Entrée pour la date de naissance"
-msgstr "Entrée pour la date de naissance"
-
 #: src/features/identityCheck/pages/profile/SetCity.tsx
 msgid "Entrée pour le code postal"
 msgstr "Entrée pour le code postal"
 
-#: src/features/auth/signup/SetBirthday/DateInput/DateInputDesktop.tsx
+#: src/features/auth/signup/SetBirthday/atoms/DateInput/DateInputDesktop.web.tsx
 msgid "Entrée pour le jour de la date de naissance"
 msgstr "Entrée pour le jour de la date de naissance"
 
-#: src/features/auth/signup/SetBirthday/DateInput/DateInputDesktop.tsx
+#: src/features/auth/signup/SetBirthday/atoms/DateInput/DateInputDesktop.web.tsx
 msgid "Entrée pour le mois de la date de naissance"
 msgstr "Entrée pour le mois de la date de naissance"
 
@@ -1264,10 +1259,6 @@ msgstr "Interrupteur géolocalisation"
 msgid "J'ai compris"
 msgstr "J'ai compris"
 
-#: src/features/auth/signup/SetBirthday/DateInput/DateInputDesktop.tsx
-msgid "JJ"
-msgstr "JJ"
-
 #: src/features/search/components/SearchLandingPage.tsx
 msgid "Je cherche"
 msgstr "Je cherche"
@@ -1364,10 +1355,6 @@ msgstr "L'offre n'a pas été retirée de tes favoris"
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "L'usage du pass Culture est strictement nominatif. Le compte doit être créé et utilisé par un jeune éligible, de 15 à 18 ans. L'identification doit se faire au nom du futur bénéficiaire."
 msgstr "L'usage du pass Culture est strictement nominatif. Le compte doit être créé et utilisé par un jeune éligible, de 15 à 18 ans. L'identification doit se faire au nom du futur bénéficiaire."
-
-#: src/features/auth/signup/SetBirthday/SetBirthday.web.tsx
-msgid "La date choisie est incorrecte"
-msgstr "La date choisie est incorrecte"
 
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "La date de naissance enregistrée dans ÉduConnect semble indiquer que tu n'as pas l'âge requis pour obtenir l'aide du Gouvernement."
@@ -1510,10 +1497,6 @@ msgstr "Localisation"
 #: src/libs/firestore/maintenance.ts
 msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
-
-#: src/features/auth/signup/SetBirthday/DateInput/DateInputDesktop.tsx
-msgid "MM"
-msgstr "MM"
 
 #: src/features/bookings/components/BookingPropertiesSection.tsx
 msgid "Ma réservation"
@@ -1980,7 +1963,6 @@ msgid "Pour plus d'informations, nous t'invitons à consulter notre"
 msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-#: src/features/auth/signup/SetBirthday/SetBirthday.web.tsx
 msgid "Pour quelle raison ?"
 msgstr "Pour quelle raison ?"
 
@@ -2435,7 +2417,6 @@ msgstr "Sélectionne ton statut"
 msgid "S’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect."
 msgstr "S’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect."
 
-#: src/features/auth/signup/SignupForm.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckValidation.web.tsx
 msgid "Ta date de naissance"
@@ -2651,14 +2632,9 @@ msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget."
 msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 
-#: src/features/auth/signup/SetBirthday/DatePicker/DatePickerTouch.web.tsx
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
-msgstr "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
-
-#: src/features/auth/signup/SetBirthday/SetBirthday.web.tsx
-msgid "Tu dois avoir {youngestAge} ans pour t'inscrire"
-msgstr "Tu dois avoir {youngestAge} ans pour t'inscrire"
+#: src/features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler.tsx
+msgid "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
+msgstr "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
 
 #: src/features/bookings/pages/BookingDetails.tsx
 msgid "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
@@ -2688,7 +2664,7 @@ msgstr "Tu n'as pas reçu le sms ?"
 msgid "Tu ne fais pas partie de la phase de test"
 msgstr "Tu ne fais pas partie de la phase de test"
 
-#: src/features/auth/signup/SetBirthday/DatePicker/DatePickerTouch.web.tsx
+#: src/features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler.tsx
 msgid "Tu ne peux pas choisir une date dans le futur"
 msgstr "Tu ne peux pas choisir une date dans le futur"
 

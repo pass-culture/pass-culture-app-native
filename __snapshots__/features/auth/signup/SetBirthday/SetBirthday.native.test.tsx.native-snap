@@ -14,9 +14,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
   <View
     accessibilityLabel="Pour quelle raison ?"
     accessible={true}
-    collapsable={false}
     focusable={true}
-    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -73,11 +71,11 @@ exports[`<SetBirthday /> should render correctly 1`] = `
     </Text>
   </View>
   <View
-    numberOfSpaces={5}
+    numberOfSpaces={2}
     style={
       Array [
         Object {
-          "height": 20,
+          "height": 8,
         },
       ]
     }
@@ -236,9 +234,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
   <View
     accessibilityLabel="Continuer"
     accessible={true}
-    collapsable={false}
     focusable={false}
-    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -263,7 +259,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
         "width": "100%",
       }
     }
-    testID="Continuer"
+    testID="date-picker-submit-button"
   >
     <Text
       adjustsFontSizeToFit={false}

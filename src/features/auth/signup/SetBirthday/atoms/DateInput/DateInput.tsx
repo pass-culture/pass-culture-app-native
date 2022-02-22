@@ -11,11 +11,10 @@ import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
   date: Date
-  isFocus?: boolean
   isError?: boolean
 }
 
-export function DateInput({ date, isFocus, isError }: Props) {
+export function DateInput({ date, isError }: Props) {
   const dateInputID = uuidv4()
   return (
     <InputContainer>
@@ -23,7 +22,7 @@ export function DateInput({ date, isFocus, isError }: Props) {
         <InputLabel htmlFor={dateInputID}>{t`Date de naissance`}</InputLabel>
       </LabelContainer>
       <Spacer.Column numberOfSpaces={2} />
-      <StyledInputContainer isFocus={isFocus} isError={isError}>
+      <StyledInputContainer isError={isError}>
         <Typo.Body nativeID={dateInputID}>{formatToFrenchDate(date)}</Typo.Body>
       </StyledInputContainer>
     </InputContainer>
