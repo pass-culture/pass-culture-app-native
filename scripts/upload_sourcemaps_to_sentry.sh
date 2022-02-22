@@ -27,7 +27,7 @@ create_sourcemaps(){
   node node_modules/react-native/scripts/compose-source-maps.js \
     "sourcemaps/index.${APP_OS}.bundle.packager.map" \
     "sourcemaps/index.${APP_OS}.bundle.hbc.map" \
-    "-o sourcemaps/index.${APP_OS}.bundle.map"
+    -o "sourcemaps/index.${APP_OS}.bundle.map"
 }
 
 upload_sourcemaps(){
@@ -39,7 +39,9 @@ upload_sourcemaps(){
 
   echo "APP_OS: $APP_OS"
   echo "APP_ENV: $APP_ENV"
-  echo "CODE_PUSH_LABEL: $CODE_PUSH_LABEL"
+  if [[ -n "$CODE_PUSH_LABEL" ]]; then
+    echo "CODE_PUSH_LABEL: $CODE_PUSH_LABEL"
+  fi
   echo "VERSION: $VERSION"
   echo "BUILD: $BUILD"
 
@@ -51,10 +53,10 @@ upload_sourcemaps(){
 
   echo "Uploading ${APP_OS} source maps... "
 
-  if [[ -z "$CODE_PUSH_LABEL" ]]; then
-    RELEASE="$VERSION-${APP_OS}"
-  else
+  if [[ -n "$CODE_PUSH_LABEL" ]]; then
     RELEASE="$VERSION-${APP_OS}+codepush:${CODE_PUSH_LABEL}"
+  else
+    RELEASE="$VERSION-${APP_OS}"
   fi
 
   DIST="$VERSION-${APP_OS}"
