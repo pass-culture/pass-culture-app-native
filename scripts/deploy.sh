@@ -137,6 +137,7 @@ if [ $DEPLOY_TYPE == "soft" ]; then
     CODEPUSH_KEY="${CODEPUSH_KEY_ANDROID}"
   fi
 
+  VERSION=`jq -r .version package.json`
   CODEPUSH_LABEL=$(curl -sS "https://codepush.appcenter.ms/v0.1/public/codepush/update_check?deployment_key=${CODEPUSH_KEY}&app_version=${VERSION}" | jq -r '.update_info.label')
 
   upload_sourcemaps "${APP_OS}" "${APP_ENV}" "${CODEPUSH_LABEL}"
