@@ -3,7 +3,6 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useDepositAmountsByAge } from 'features/auth/api'
-import { useAppSettings } from 'features/auth/settings'
 import TutorialOffers from 'ui/animations/tutorial_offers.json'
 import {
   AchievementCardKeyProps,
@@ -17,11 +16,7 @@ const tagWidth = getSpacing(10.75)
 const tagHeight = getSpacing(5)
 
 export function SecondCard(props: AchievementCardKeyProps) {
-  const { data: settings } = useAppSettings()
   const depositAmountsByAge = useDepositAmountsByAge()
-
-  const enabledGeneralisation =
-    settings?.enableNativeEacIndividual && settings?.enableUnderageGeneralisation
 
   const centerChild = () => (
     <React.Fragment>
@@ -79,14 +74,8 @@ export function SecondCard(props: AchievementCardKeyProps) {
     props.swiperRef?.current?.goToNext()
   }
 
-  let subtitle = t`et si tu as...`
-  let text = t`de 15 à 18 ans\u00a0: le Gouvernement offre un crédit à dépenser dans l’application.`
-
-  if (!enabledGeneralisation) {
-    const deposit = depositAmountsByAge.eighteenYearsOldDeposit.replace(' ', '')
-    subtitle = t`et si tu es...`
-    text = t`dans l'année de tes 18 ans, le Gouvernement offre un crédit de ${deposit} à dépenser dans l’application.`
-  }
+  const subtitle = t`et si tu as...`
+  const text = t`de 15 à 18 ans\u00a0: le Gouvernement offre un crédit à dépenser dans l’application.`
 
   return (
     <GenericAchievementCard
@@ -95,7 +84,7 @@ export function SecondCard(props: AchievementCardKeyProps) {
       buttonText={t`Continuer`}
       pauseAnimationOnRenderAtFrame={62}
       subTitle={subtitle}
-      centerChild={enabledGeneralisation ? centerChild : null}
+      centerChild={centerChild}
       text={text}
       title={t`Des offres pour tous`}
       swiperRef={props.swiperRef}

@@ -7,38 +7,21 @@ import { SecondCard } from './SecondCard'
 
 jest.mock('features/auth/api')
 
-const mockSettings = {
-  enableUnderageGeneralisation: false,
-  enableNativeEacIndividual: false,
-}
-jest.mock('features/auth/settings', () => ({
-  useAppSettings: jest.fn(() => ({
-    data: mockSettings,
-  })),
-}))
-
 describe('SecondCard', () => {
   it('should render second card', () => {
     const firstTutorial = render(<SecondCard activeIndex={0} index={0} lastIndex={0} />)
     expect(firstTutorial).toMatchSnapshot()
   })
 
-  it.each([
-    [true, 'de 15 à 18 ans\u00a0: le Gouvernement offre un crédit à dépenser dans l’application.'],
-    [
-      false,
-      "dans l'année de tes 18 ans, le Gouvernement offre un crédit de 300€ à dépenser dans l’application.",
-    ],
-  ])(
-    'should display correct description if enableNativeEacIndividual and enableUnderageGeneralisation are %s',
-    (isSettingEnabled, description) => {
-      mockSettings.enableNativeEacIndividual = isSettingEnabled
-      mockSettings.enableUnderageGeneralisation = isSettingEnabled
-      const { getByText } = render(<SecondCard activeIndex={0} index={0} lastIndex={0} />)
+  it('should display correct description', () => {
+    const { getByText } = render(<SecondCard activeIndex={0} index={0} lastIndex={0} />)
 
-      expect(getByText(description)).toBeTruthy()
-    }
-  )
+    expect(
+      getByText(
+        'de 15 à 18 ans\u00a0: le Gouvernement offre un crédit à dépenser dans l’application.'
+      )
+    ).toBeTruthy()
+  })
 
   it('should swipe to next card on button press', () => {
     const ref = {
