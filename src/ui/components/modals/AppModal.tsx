@@ -4,6 +4,7 @@ import { ReactNativeModal } from 'react-native-modal'
 import styled from 'styled-components/native'
 
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
+import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
 import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -90,6 +91,8 @@ export const AppModal: FunctionComponent<Props> = ({
     },
     [setScrollViewContentHeight, scrollViewRef]
   )
+
+  useEscapeKeyAction(visible ? onRightIconPress : undefined)
 
   return (
     <StyledModal
