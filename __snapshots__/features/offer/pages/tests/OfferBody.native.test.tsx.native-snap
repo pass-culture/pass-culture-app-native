@@ -219,14 +219,14 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         }
       >
         <Text
-          className="sc-pVTFL ikKgzG"
+          className="sc-bqiRlB gCHpIY"
         >
           Titre
         </Text>
         <Text
           adjustsFontSizeToFit={true}
           allowFontScaling={false}
-          className="sc-iCfMLu hPTqZV"
+          className="sc-crHmcD VvfNK"
           numberOfLines={3}
           testID="offerTitle"
         >
@@ -276,7 +276,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           }
         >
           <View
-            className="sc-eCImPb RpyGb"
+            className="sc-jrQzAO jGqhgK"
           >
             <View
               height={32}
@@ -298,7 +298,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
             }
           />
           <Text
-            className="sc-jRQBWg gkZaEc"
+            className="sc-kDTinF ZWptV"
             testID="caption-undefined"
           >
             Événement et atelier patrimoine
@@ -330,7 +330,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           }
         >
           <View
-            className="sc-eCImPb RpyGb"
+            className="sc-jrQzAO jGqhgK"
           >
             <View
               height={32}
@@ -353,7 +353,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
             }
           />
           <Text
-            className="sc-jRQBWg gkZaEc"
+            className="sc-kDTinF ZWptV"
             testID="caption-iconDuo"
           >
             À deux !
@@ -385,7 +385,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           }
         >
           <View
-            className="sc-eCImPb RpyGb"
+            className="sc-jrQzAO jGqhgK"
           >
             <View
               fill="#696A6F"
@@ -409,7 +409,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
             }
           />
           <Text
-            className="sc-jRQBWg gkZaEc"
+            className="sc-kDTinF ZWptV"
             testID="caption-iconPrice"
           >
             Dès 24 € / place
@@ -427,12 +427,12 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         />
       </View>
       <Text
-        className="sc-pVTFL ikKgzG"
+        className="sc-bqiRlB gCHpIY"
       >
         Description
       </Text>
       <View
-        className="sc-gKclnd denmeW"
+        className="sc-iqseJM jeyjMy"
       >
         <View
           numberOfSpaces={4}
@@ -567,12 +567,12 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         }
       >
         <Text
-          className="sc-furwcr gggupM"
+          className="sc-egiyK losQmC"
         >
           Quand ?
         </Text>
         <Text
-          className="sc-jrQzAO bmZWBG"
+          className="sc-ksdxgE svbVl"
         >
           Du 2 au 17 mars 2021
         </Text>
@@ -607,7 +607,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
           }
         />
         <Text
-          className="sc-hKwDye fUmfdy"
+          className="sc-iCfMLu cMjKNK"
         >
           Où ?
         </Text>

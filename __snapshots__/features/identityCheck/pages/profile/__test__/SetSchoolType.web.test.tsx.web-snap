@@ -94,133 +94,151 @@ Object {
                     style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                   >
                     <form
-                      class="sc-iqseJM jLKwMp"
+                      class="sc-fotOHu eAvIPT"
                     >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                        tabindex="0"
+                      <ul
+                        class="sc-pVTFL sc-jrQzAO nPmQf bBHHXK"
                       >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                        >
+                        <li>
                           <div
-                            class="css-text-901oao"
-                            dir="auto"
-                            style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                            tabindex="0"
                           >
-                            Lycée agricole
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="auto"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                              >
+                                Lycée agricole
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                        tabindex="0"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                        >
+                        </li>
+                        <li>
                           <div
-                            class="css-text-901oao"
-                            dir="auto"
-                            style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-                          />
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                        tabindex="0"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                        >
-                          <div
-                            class="css-text-901oao"
-                            dir="auto"
-                            style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-                          />
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                        tabindex="0"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                        >
-                          <div
-                            class="css-text-901oao"
-                            dir="auto"
-                            style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-                          />
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                        tabindex="0"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                        >
-                          <div
-                            class="css-text-901oao"
-                            dir="auto"
-                            style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-                          />
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                        tabindex="0"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                        >
-                          <div
-                            class="css-text-901oao"
-                            dir="auto"
-                            style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                            tabindex="0"
                           >
-                            Accompagnement spécialisé
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="auto"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                              />
+                            </div>
                           </div>
+                        </li>
+                        <li>
                           <div
-                            class="css-text-901oao"
-                            dir="auto"
-                            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                            tabindex="0"
                           >
-                            À domicile, CNED, institut de santé, etc.
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="auto"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                              />
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                        tabindex="0"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                        >
+                        </li>
+                        <li>
                           <div
-                            class="css-text-901oao"
-                            dir="auto"
-                            style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                            tabindex="0"
                           >
-                            Centre de formation d'apprentis
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="auto"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                              />
+                            </div>
                           </div>
-                        </div>
-                      </div>
+                        </li>
+                        <li>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                            tabindex="0"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="auto"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                              />
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                            tabindex="0"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="auto"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                              >
+                                Accompagnement spécialisé
+                              </div>
+                              <div
+                                class="css-text-901oao"
+                                dir="auto"
+                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                À domicile, CNED, institut de santé, etc.
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                        <li>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                            tabindex="0"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="auto"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                              >
+                                Centre de formation d'apprentis
+                              </div>
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
                     </form>
                   </div>
                 </div>
@@ -360,133 +378,151 @@ Object {
                   style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                 >
                   <form
-                    class="sc-iqseJM jLKwMp"
+                    class="sc-fotOHu eAvIPT"
                   >
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                      tabindex="0"
+                    <ul
+                      class="sc-pVTFL sc-jrQzAO nPmQf bBHHXK"
                     >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                      >
+                      <li>
                         <div
-                          class="css-text-901oao"
-                          dir="auto"
-                          style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                          tabindex="0"
                         >
-                          Lycée agricole
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="auto"
+                              style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                            >
+                              Lycée agricole
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                      tabindex="0"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                      >
+                      </li>
+                      <li>
                         <div
-                          class="css-text-901oao"
-                          dir="auto"
-                          style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-                        />
-                      </div>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                      tabindex="0"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                      >
-                        <div
-                          class="css-text-901oao"
-                          dir="auto"
-                          style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-                        />
-                      </div>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                      tabindex="0"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                      >
-                        <div
-                          class="css-text-901oao"
-                          dir="auto"
-                          style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-                        />
-                      </div>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                      tabindex="0"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                      >
-                        <div
-                          class="css-text-901oao"
-                          dir="auto"
-                          style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-                        />
-                      </div>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                      tabindex="0"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                      >
-                        <div
-                          class="css-text-901oao"
-                          dir="auto"
-                          style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                          tabindex="0"
                         >
-                          Accompagnement spécialisé
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="auto"
+                              style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                            />
+                          </div>
                         </div>
+                      </li>
+                      <li>
                         <div
-                          class="css-text-901oao"
-                          dir="auto"
-                          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                          tabindex="0"
                         >
-                          À domicile, CNED, institut de santé, etc.
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="auto"
+                              style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                            />
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                      tabindex="0"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                      >
+                      </li>
+                      <li>
                         <div
-                          class="css-text-901oao"
-                          dir="auto"
-                          style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                          tabindex="0"
                         >
-                          Centre de formation d'apprentis
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="auto"
+                              style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                            />
+                          </div>
                         </div>
-                      </div>
-                    </div>
+                      </li>
+                      <li>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                          tabindex="0"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="auto"
+                              style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                            />
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                          tabindex="0"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="auto"
+                              style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                            >
+                              Accompagnement spécialisé
+                            </div>
+                            <div
+                              class="css-text-901oao"
+                              dir="auto"
+                              style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              À domicile, CNED, institut de santé, etc.
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                      <li>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                          tabindex="0"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="auto"
+                              style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                            >
+                              Centre de formation d'apprentis
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
                   </form>
                 </div>
               </div>
@@ -683,69 +719,79 @@ Object {
                     style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                   >
                     <form
-                      class="sc-iqseJM jLKwMp"
+                      class="sc-fotOHu eAvIPT"
                     >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                        tabindex="0"
+                      <ul
+                        class="sc-pVTFL sc-jrQzAO nPmQf bBHHXK"
                       >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                        >
+                        <li>
                           <div
-                            class="css-text-901oao"
-                            dir="auto"
-                            style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                            tabindex="0"
                           >
-                            Collège privé
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="auto"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                              >
+                                Collège privé
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                        tabindex="0"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                        >
+                        </li>
+                        <li>
                           <div
-                            class="css-text-901oao"
-                            dir="auto"
-                            style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                            tabindex="0"
                           >
-                            Collège public
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="auto"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                              >
+                                Collège public
+                              </div>
+                            </div>
                           </div>
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                        tabindex="0"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                        >
+                        </li>
+                        <li>
                           <div
-                            class="css-text-901oao"
-                            dir="auto"
-                            style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                            tabindex="0"
                           >
-                            Accompagnement spécialisé
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="auto"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                              >
+                                Accompagnement spécialisé
+                              </div>
+                              <div
+                                class="css-text-901oao"
+                                dir="auto"
+                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                À domicile, CNED, institut de santé, etc.
+                              </div>
+                            </div>
                           </div>
-                          <div
-                            class="css-text-901oao"
-                            dir="auto"
-                            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                          >
-                            À domicile, CNED, institut de santé, etc.
-                          </div>
-                        </div>
-                      </div>
+                        </li>
+                      </ul>
                     </form>
                   </div>
                 </div>
@@ -885,69 +931,79 @@ Object {
                   style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                 >
                   <form
-                    class="sc-iqseJM jLKwMp"
+                    class="sc-fotOHu eAvIPT"
                   >
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                      tabindex="0"
+                    <ul
+                      class="sc-pVTFL sc-jrQzAO nPmQf bBHHXK"
                     >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                      >
+                      <li>
                         <div
-                          class="css-text-901oao"
-                          dir="auto"
-                          style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                          tabindex="0"
                         >
-                          Collège privé
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="auto"
+                              style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                            >
+                              Collège privé
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                      tabindex="0"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                      >
+                      </li>
+                      <li>
                         <div
-                          class="css-text-901oao"
-                          dir="auto"
-                          style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                          tabindex="0"
                         >
-                          Collège public
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="auto"
+                              style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                            >
+                              Collège public
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
-                      tabindex="0"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                      >
+                      </li>
+                      <li>
                         <div
-                          class="css-text-901oao"
-                          dir="auto"
-                          style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                          class="css-view-1dbjc4n"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                          tabindex="0"
                         >
-                          Accompagnement spécialisé
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="auto"
+                              style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                            >
+                              Accompagnement spécialisé
+                            </div>
+                            <div
+                              class="css-text-901oao"
+                              dir="auto"
+                              style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              À domicile, CNED, institut de santé, etc.
+                            </div>
+                          </div>
                         </div>
-                        <div
-                          class="css-text-901oao"
-                          dir="auto"
-                          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                        >
-                          À domicile, CNED, institut de santé, etc.
-                        </div>
-                      </div>
-                    </div>
+                      </li>
+                    </ul>
                   </form>
                 </div>
               </div>

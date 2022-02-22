@@ -16,6 +16,8 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
+import { Li } from 'ui/web/list/Li'
+import { VerticalUl } from 'ui/web/list/Ul'
 
 export const SetSchoolType = () => {
   const { schoolTypes, activities } = useProfileOptions()
@@ -51,22 +53,25 @@ export const SetSchoolType = () => {
       }
       scrollChildren={
         <Form.MaxWidth>
-          {hasData &&
-            activitySchoolTypes.map((schoolTypeId) => {
-              const { label, description } = mapSchoolTypeIdToLabelAndDescription(
-                schoolTypeId,
-                schoolTypes
-              )
-              return (
-                <RadioButton
-                  key={schoolTypeId}
-                  selected={schoolTypeId === selectedSchoolTypeId}
-                  name={label as string}
-                  description={description}
-                  onPress={() => setSelectedSchoolTypeId(schoolTypeId)}
-                />
-              )
-            })}
+          <VerticalUl>
+            {hasData &&
+              activitySchoolTypes.map((schoolTypeId) => {
+                const { label, description } = mapSchoolTypeIdToLabelAndDescription(
+                  schoolTypeId,
+                  schoolTypes
+                )
+                return (
+                  <Li key={schoolTypeId}>
+                    <RadioButton
+                      selected={schoolTypeId === selectedSchoolTypeId}
+                      name={label as string}
+                      description={description}
+                      onPress={() => setSelectedSchoolTypeId(schoolTypeId)}
+                    />
+                  </Li>
+                )
+              })}
+          </VerticalUl>
         </Form.MaxWidth>
       }
       fixedBottomChildren={

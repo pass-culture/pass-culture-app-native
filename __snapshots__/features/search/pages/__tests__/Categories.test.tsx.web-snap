@@ -5,74 +5,74 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -319,11 +319,11 @@
-            className=\\"css-text-901oao css-textMultiLine-cens5h\\"
-            dir=\\"auto\\"
-            style={
-              Object {
-                \\"WebkitLineClamp\\": 2,
--               \\"color\\": \\"rgba(22,22,23,1.00)\\",
-+               \\"color\\": \\"rgba(235,0,85,1.00)\\",
-                \\"fontFamily\\": \\"Montserrat-Bold\\",
-                \\"fontSize\\": \\"15px\\",
-                \\"lineHeight\\": \\"20px\\",
-              }
-            }
-@@ -345,10 +345,20 @@
-                \\"msFlexPositive\\": 1,
-                \\"msFlexPreferredSize\\": \\"0px\\",
-              }
-            }
-          />
-+         <div
-+           className=\\"css-view-1dbjc4n\\"
-+         >
-+           <div
-+             className=\\"css-text-901oao\\"
-+             dir=\\"auto\\"
-+           >
-+             undefined-SVG-Mock
-+           </div>
-+         </div>
-        </div>
-        <div
-          className=\\"css-view-1dbjc4n\\"
-          data-testid=\\"CARTE_JEUNES\\"
-          onClick={[Function onClick]}
-@@ -505,11 +515,11 @@
-            className=\\"css-text-901oao css-textMultiLine-cens5h\\"
-            dir=\\"auto\\"
-            style={
-              Object {
-                \\"WebkitLineClamp\\": 2,
--               \\"color\\": \\"rgba(235,0,85,1.00)\\",
-+               \\"color\\": \\"rgba(22,22,23,1.00)\\",
-                \\"fontFamily\\": \\"Montserrat-Bold\\",
-                \\"fontSize\\": \\"15px\\",
-                \\"lineHeight\\": \\"20px\\",
-              }
-            }
-@@ -531,20 +541,10 @@
-                \\"msFlexPositive\\": 1,
-                \\"msFlexPreferredSize\\": \\"0px\\",
-              }
-            }
-          />
--         <div
--           className=\\"css-view-1dbjc4n\\"
--         >
--           <div
--             className=\\"css-text-901oao\\"
--             dir=\\"auto\\"
--           >
--             undefined-SVG-Mock
--           </div>
--         </div>
-        </div>
-        <div
-          className=\\"css-view-1dbjc4n\\"
-          data-testid=\\"VISITE\\"
-          onClick={[Function onClick]}"
+@@ -323,11 +323,11 @@
+                className=\\"css-text-901oao css-textMultiLine-cens5h\\"
+                dir=\\"auto\\"
+                style={
+                  Object {
+                    \\"WebkitLineClamp\\": 2,
+-                   \\"color\\": \\"rgba(22,22,23,1.00)\\",
++                   \\"color\\": \\"rgba(235,0,85,1.00)\\",
+                    \\"fontFamily\\": \\"Montserrat-Bold\\",
+                    \\"fontSize\\": \\"15px\\",
+                    \\"lineHeight\\": \\"20px\\",
+                  }
+                }
+@@ -349,10 +349,20 @@
+                    \\"msFlexPositive\\": 1,
+                    \\"msFlexPreferredSize\\": \\"0px\\",
+                  }
+                }
+              />
++             <div
++               className=\\"css-view-1dbjc4n\\"
++             >
++               <div
++                 className=\\"css-text-901oao\\"
++                 dir=\\"auto\\"
++               >
++                 undefined-SVG-Mock
++               </div>
++             </div>
+            </div>
+          </li>
+          <li>
+            <div
+              className=\\"css-view-1dbjc4n\\"
+@@ -513,11 +523,11 @@
+                className=\\"css-text-901oao css-textMultiLine-cens5h\\"
+                dir=\\"auto\\"
+                style={
+                  Object {
+                    \\"WebkitLineClamp\\": 2,
+-                   \\"color\\": \\"rgba(235,0,85,1.00)\\",
++                   \\"color\\": \\"rgba(22,22,23,1.00)\\",
+                    \\"fontFamily\\": \\"Montserrat-Bold\\",
+                    \\"fontSize\\": \\"15px\\",
+                    \\"lineHeight\\": \\"20px\\",
+                  }
+                }
+@@ -539,20 +549,10 @@
+                    \\"msFlexPositive\\": 1,
+                    \\"msFlexPreferredSize\\": \\"0px\\",
+                  }
+                }
+              />
+-             <div
+-               className=\\"css-view-1dbjc4n\\"
+-             >
+-               <div
+-                 className=\\"css-text-901oao\\"
+-                 dir=\\"auto\\"
+-               >
+-                 undefined-SVG-Mock
+-               </div>
+-             </div>
+            </div>
+          </li>
+          <li>
+            <div
+              className=\\"css-view-1dbjc4n\\""
 `;
 
 exports[`Categories component should render correctly 1`] = `
@@ -333,1318 +333,1350 @@ exports[`Categories component should render correctly 1`] = `
           }
         }
       />
-      <div
-        className="css-view-1dbjc4n"
-        data-testid="NONE"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "center",
-            "cursor": "pointer",
-            "flexDirection": "row",
-            "marginBottom": "16px",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-          }
-        }
-        tabIndex="0"
+      <ul
+        className="sc-gsDKAQ sc-dkPtRN bwGBFc ezyhIk"
       >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-view-1dbjc4n"
-        >
+        <li>
           <div
-            className="css-text-901oao"
-            dir="auto"
+            className="css-view-1dbjc4n"
+            data-testid="NONE"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onKeyDown={[Function]}
+            style={
+              Object {
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "none",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitFlexDirection": "row",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "none",
+                "alignItems": "center",
+                "cursor": "pointer",
+                "flexDirection": "row",
+                "marginBottom": "16px",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "none",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "none",
+              }
+            }
+            tabIndex="0"
           >
-            undefined-SVG-Mock
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-view-1dbjc4n"
+            >
+              <div
+                className="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-text-901oao css-textMultiLine-cens5h"
+              dir="auto"
+              style={
+                Object {
+                  "WebkitLineClamp": 2,
+                  "color": "rgba(235,0,85,1.00)",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "15px",
+                  "lineHeight": "20px",
+                }
+              }
+            >
+              Toutes les catégories
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitBoxFlex": 1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 1,
+                  "WebkitFlexShrink": 1,
+                  "flexBasis": "0px",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 1,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            />
+            <div
+              className="css-view-1dbjc4n"
+            >
+              <div
+                className="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
           </div>
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
-          style={
-            Object {
-              "WebkitLineClamp": 2,
-              "color": "rgba(235,0,85,1.00)",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-            }
-          }
-        >
-          Toutes les catégories
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
-        />
-        <div
-          className="css-view-1dbjc4n"
-        >
+        </li>
+        <li>
           <div
-            className="css-text-901oao"
-            dir="auto"
-          >
-            undefined-SVG-Mock
-          </div>
-        </div>
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        data-testid="CARTE_JEUNES"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "center",
-            "cursor": "pointer",
-            "flexDirection": "row",
-            "marginBottom": "16px",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-          }
-        }
-        tabIndex="0"
-      >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
+            className="css-view-1dbjc4n"
+            data-testid="CARTE_JEUNES"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onKeyDown={[Function]}
+            style={
+              Object {
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "none",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitFlexDirection": "row",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "none",
+                "alignItems": "center",
+                "cursor": "pointer",
+                "flexDirection": "row",
+                "marginBottom": "16px",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "none",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "none",
+              }
             }
-          }
-        />
-        <div
-          className="css-view-1dbjc4n"
-        >
+            tabIndex="0"
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-view-1dbjc4n"
+            >
+              <div
+                className="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-text-901oao css-textMultiLine-cens5h"
+              dir="auto"
+              style={
+                Object {
+                  "WebkitLineClamp": 2,
+                  "color": "rgba(22,22,23,1.00)",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "15px",
+                  "lineHeight": "20px",
+                }
+              }
+            >
+              Carte jeunes
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitBoxFlex": 1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 1,
+                  "WebkitFlexShrink": 1,
+                  "flexBasis": "0px",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 1,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            />
+          </div>
+        </li>
+        <li>
           <div
-            className="css-text-901oao"
-            dir="auto"
+            className="css-view-1dbjc4n"
+            data-testid="CINEMA"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onKeyDown={[Function]}
+            style={
+              Object {
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "none",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitFlexDirection": "row",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "none",
+                "alignItems": "center",
+                "cursor": "pointer",
+                "flexDirection": "row",
+                "marginBottom": "16px",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "none",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "none",
+              }
+            }
+            tabIndex="0"
           >
-            undefined-SVG-Mock
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-view-1dbjc4n"
+            >
+              <div
+                className="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-text-901oao css-textMultiLine-cens5h"
+              dir="auto"
+              style={
+                Object {
+                  "WebkitLineClamp": 2,
+                  "color": "rgba(22,22,23,1.00)",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "15px",
+                  "lineHeight": "20px",
+                }
+              }
+            >
+              Cinéma
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitBoxFlex": 1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 1,
+                  "WebkitFlexShrink": 1,
+                  "flexBasis": "0px",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 1,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            />
           </div>
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
-          style={
-            Object {
-              "WebkitLineClamp": 2,
-              "color": "rgba(22,22,23,1.00)",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-            }
-          }
-        >
-          Carte jeunes
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
-        />
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        data-testid="CINEMA"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "center",
-            "cursor": "pointer",
-            "flexDirection": "row",
-            "marginBottom": "16px",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-          }
-        }
-        tabIndex="0"
-      >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-view-1dbjc4n"
-        >
+        </li>
+        <li>
           <div
-            className="css-text-901oao"
-            dir="auto"
+            className="css-view-1dbjc4n"
+            data-testid="VISITE"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onKeyDown={[Function]}
+            style={
+              Object {
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "none",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitFlexDirection": "row",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "none",
+                "alignItems": "center",
+                "cursor": "pointer",
+                "flexDirection": "row",
+                "marginBottom": "16px",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "none",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "none",
+              }
+            }
+            tabIndex="0"
           >
-            undefined-SVG-Mock
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-view-1dbjc4n"
+            >
+              <div
+                className="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-text-901oao css-textMultiLine-cens5h"
+              dir="auto"
+              style={
+                Object {
+                  "WebkitLineClamp": 2,
+                  "color": "rgba(22,22,23,1.00)",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "15px",
+                  "lineHeight": "20px",
+                }
+              }
+            >
+              Visites, expositions
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitBoxFlex": 1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 1,
+                  "WebkitFlexShrink": 1,
+                  "flexBasis": "0px",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 1,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            />
           </div>
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
-          style={
-            Object {
-              "WebkitLineClamp": 2,
-              "color": "rgba(22,22,23,1.00)",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-            }
-          }
-        >
-          Cinéma
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
-        />
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        data-testid="VISITE"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "center",
-            "cursor": "pointer",
-            "flexDirection": "row",
-            "marginBottom": "16px",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-          }
-        }
-        tabIndex="0"
-      >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-view-1dbjc4n"
-        >
+        </li>
+        <li>
           <div
-            className="css-text-901oao"
-            dir="auto"
+            className="css-view-1dbjc4n"
+            data-testid="MUSIQUE"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onKeyDown={[Function]}
+            style={
+              Object {
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "none",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitFlexDirection": "row",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "none",
+                "alignItems": "center",
+                "cursor": "pointer",
+                "flexDirection": "row",
+                "marginBottom": "16px",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "none",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "none",
+              }
+            }
+            tabIndex="0"
           >
-            undefined-SVG-Mock
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-view-1dbjc4n"
+            >
+              <div
+                className="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-text-901oao css-textMultiLine-cens5h"
+              dir="auto"
+              style={
+                Object {
+                  "WebkitLineClamp": 2,
+                  "color": "rgba(22,22,23,1.00)",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "15px",
+                  "lineHeight": "20px",
+                }
+              }
+            >
+              Musique
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitBoxFlex": 1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 1,
+                  "WebkitFlexShrink": 1,
+                  "flexBasis": "0px",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 1,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            />
           </div>
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
-          style={
-            Object {
-              "WebkitLineClamp": 2,
-              "color": "rgba(22,22,23,1.00)",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-            }
-          }
-        >
-          Visites, expositions
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
-        />
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        data-testid="MUSIQUE"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "center",
-            "cursor": "pointer",
-            "flexDirection": "row",
-            "marginBottom": "16px",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-          }
-        }
-        tabIndex="0"
-      >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-view-1dbjc4n"
-        >
+        </li>
+        <li>
           <div
-            className="css-text-901oao"
-            dir="auto"
+            className="css-view-1dbjc4n"
+            data-testid="SPECTACLE"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onKeyDown={[Function]}
+            style={
+              Object {
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "none",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitFlexDirection": "row",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "none",
+                "alignItems": "center",
+                "cursor": "pointer",
+                "flexDirection": "row",
+                "marginBottom": "16px",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "none",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "none",
+              }
+            }
+            tabIndex="0"
           >
-            undefined-SVG-Mock
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-view-1dbjc4n"
+            >
+              <div
+                className="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-text-901oao css-textMultiLine-cens5h"
+              dir="auto"
+              style={
+                Object {
+                  "WebkitLineClamp": 2,
+                  "color": "rgba(22,22,23,1.00)",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "15px",
+                  "lineHeight": "20px",
+                }
+              }
+            >
+              Spectacles
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitBoxFlex": 1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 1,
+                  "WebkitFlexShrink": 1,
+                  "flexBasis": "0px",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 1,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            />
           </div>
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
-          style={
-            Object {
-              "WebkitLineClamp": 2,
-              "color": "rgba(22,22,23,1.00)",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-            }
-          }
-        >
-          Musique
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
-        />
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        data-testid="SPECTACLE"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "center",
-            "cursor": "pointer",
-            "flexDirection": "row",
-            "marginBottom": "16px",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-          }
-        }
-        tabIndex="0"
-      >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-view-1dbjc4n"
-        >
+        </li>
+        <li>
           <div
-            className="css-text-901oao"
-            dir="auto"
+            className="css-view-1dbjc4n"
+            data-testid="COURS"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onKeyDown={[Function]}
+            style={
+              Object {
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "none",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitFlexDirection": "row",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "none",
+                "alignItems": "center",
+                "cursor": "pointer",
+                "flexDirection": "row",
+                "marginBottom": "16px",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "none",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "none",
+              }
+            }
+            tabIndex="0"
           >
-            undefined-SVG-Mock
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-view-1dbjc4n"
+            >
+              <div
+                className="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-text-901oao css-textMultiLine-cens5h"
+              dir="auto"
+              style={
+                Object {
+                  "WebkitLineClamp": 2,
+                  "color": "rgba(22,22,23,1.00)",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "15px",
+                  "lineHeight": "20px",
+                }
+              }
+            >
+              Cours, ateliers
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitBoxFlex": 1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 1,
+                  "WebkitFlexShrink": 1,
+                  "flexBasis": "0px",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 1,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            />
           </div>
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
-          style={
-            Object {
-              "WebkitLineClamp": 2,
-              "color": "rgba(22,22,23,1.00)",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-            }
-          }
-        >
-          Spectacles
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
-        />
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        data-testid="COURS"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "center",
-            "cursor": "pointer",
-            "flexDirection": "row",
-            "marginBottom": "16px",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-          }
-        }
-        tabIndex="0"
-      >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-view-1dbjc4n"
-        >
+        </li>
+        <li>
           <div
-            className="css-text-901oao"
-            dir="auto"
+            className="css-view-1dbjc4n"
+            data-testid="LIVRE"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onKeyDown={[Function]}
+            style={
+              Object {
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "none",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitFlexDirection": "row",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "none",
+                "alignItems": "center",
+                "cursor": "pointer",
+                "flexDirection": "row",
+                "marginBottom": "16px",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "none",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "none",
+              }
+            }
+            tabIndex="0"
           >
-            undefined-SVG-Mock
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-view-1dbjc4n"
+            >
+              <div
+                className="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-text-901oao css-textMultiLine-cens5h"
+              dir="auto"
+              style={
+                Object {
+                  "WebkitLineClamp": 2,
+                  "color": "rgba(22,22,23,1.00)",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "15px",
+                  "lineHeight": "20px",
+                }
+              }
+            >
+              Livre
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitBoxFlex": 1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 1,
+                  "WebkitFlexShrink": 1,
+                  "flexBasis": "0px",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 1,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            />
           </div>
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
-          style={
-            Object {
-              "WebkitLineClamp": 2,
-              "color": "rgba(22,22,23,1.00)",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-            }
-          }
-        >
-          Cours, ateliers
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
-        />
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        data-testid="LIVRE"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "center",
-            "cursor": "pointer",
-            "flexDirection": "row",
-            "marginBottom": "16px",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-          }
-        }
-        tabIndex="0"
-      >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-view-1dbjc4n"
-        >
+        </li>
+        <li>
           <div
-            className="css-text-901oao"
-            dir="auto"
+            className="css-view-1dbjc4n"
+            data-testid="FILM"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onKeyDown={[Function]}
+            style={
+              Object {
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "none",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitFlexDirection": "row",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "none",
+                "alignItems": "center",
+                "cursor": "pointer",
+                "flexDirection": "row",
+                "marginBottom": "16px",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "none",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "none",
+              }
+            }
+            tabIndex="0"
           >
-            undefined-SVG-Mock
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-view-1dbjc4n"
+            >
+              <div
+                className="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-text-901oao css-textMultiLine-cens5h"
+              dir="auto"
+              style={
+                Object {
+                  "WebkitLineClamp": 2,
+                  "color": "rgba(22,22,23,1.00)",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "15px",
+                  "lineHeight": "20px",
+                }
+              }
+            >
+              Films, séries
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitBoxFlex": 1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 1,
+                  "WebkitFlexShrink": 1,
+                  "flexBasis": "0px",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 1,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            />
           </div>
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
-          style={
-            Object {
-              "WebkitLineClamp": 2,
-              "color": "rgba(22,22,23,1.00)",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-            }
-          }
-        >
-          Livre
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
-        />
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        data-testid="FILM"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "center",
-            "cursor": "pointer",
-            "flexDirection": "row",
-            "marginBottom": "16px",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-          }
-        }
-        tabIndex="0"
-      >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-view-1dbjc4n"
-        >
+        </li>
+        <li>
           <div
-            className="css-text-901oao"
-            dir="auto"
+            className="css-view-1dbjc4n"
+            data-testid="PRESSE"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onKeyDown={[Function]}
+            style={
+              Object {
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "none",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitFlexDirection": "row",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "none",
+                "alignItems": "center",
+                "cursor": "pointer",
+                "flexDirection": "row",
+                "marginBottom": "16px",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "none",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "none",
+              }
+            }
+            tabIndex="0"
           >
-            undefined-SVG-Mock
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-view-1dbjc4n"
+            >
+              <div
+                className="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-text-901oao css-textMultiLine-cens5h"
+              dir="auto"
+              style={
+                Object {
+                  "WebkitLineClamp": 2,
+                  "color": "rgba(22,22,23,1.00)",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "15px",
+                  "lineHeight": "20px",
+                }
+              }
+            >
+              Presse, médias
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitBoxFlex": 1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 1,
+                  "WebkitFlexShrink": 1,
+                  "flexBasis": "0px",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 1,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            />
           </div>
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
-          style={
-            Object {
-              "WebkitLineClamp": 2,
-              "color": "rgba(22,22,23,1.00)",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-            }
-          }
-        >
-          Films, séries
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
-        />
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        data-testid="PRESSE"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "center",
-            "cursor": "pointer",
-            "flexDirection": "row",
-            "marginBottom": "16px",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-          }
-        }
-        tabIndex="0"
-      >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-view-1dbjc4n"
-        >
+        </li>
+        <li>
           <div
-            className="css-text-901oao"
-            dir="auto"
+            className="css-view-1dbjc4n"
+            data-testid="JEU"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onKeyDown={[Function]}
+            style={
+              Object {
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "none",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitFlexDirection": "row",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "none",
+                "alignItems": "center",
+                "cursor": "pointer",
+                "flexDirection": "row",
+                "marginBottom": "16px",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "none",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "none",
+              }
+            }
+            tabIndex="0"
           >
-            undefined-SVG-Mock
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-view-1dbjc4n"
+            >
+              <div
+                className="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-text-901oao css-textMultiLine-cens5h"
+              dir="auto"
+              style={
+                Object {
+                  "WebkitLineClamp": 2,
+                  "color": "rgba(22,22,23,1.00)",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "15px",
+                  "lineHeight": "20px",
+                }
+              }
+            >
+              Jeux
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitBoxFlex": 1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 1,
+                  "WebkitFlexShrink": 1,
+                  "flexBasis": "0px",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 1,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            />
           </div>
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
-          style={
-            Object {
-              "WebkitLineClamp": 2,
-              "color": "rgba(22,22,23,1.00)",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-            }
-          }
-        >
-          Presse, médias
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
-        />
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        data-testid="JEU"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "center",
-            "cursor": "pointer",
-            "flexDirection": "row",
-            "marginBottom": "16px",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-          }
-        }
-        tabIndex="0"
-      >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-view-1dbjc4n"
-        >
+        </li>
+        <li>
           <div
-            className="css-text-901oao"
-            dir="auto"
+            className="css-view-1dbjc4n"
+            data-testid="CONFERENCE"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onKeyDown={[Function]}
+            style={
+              Object {
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "none",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitFlexDirection": "row",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "none",
+                "alignItems": "center",
+                "cursor": "pointer",
+                "flexDirection": "row",
+                "marginBottom": "16px",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "none",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "none",
+              }
+            }
+            tabIndex="0"
           >
-            undefined-SVG-Mock
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-view-1dbjc4n"
+            >
+              <div
+                className="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-text-901oao css-textMultiLine-cens5h"
+              dir="auto"
+              style={
+                Object {
+                  "WebkitLineClamp": 2,
+                  "color": "rgba(22,22,23,1.00)",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "15px",
+                  "lineHeight": "20px",
+                }
+              }
+            >
+              Conférences, rencontres
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitBoxFlex": 1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 1,
+                  "WebkitFlexShrink": 1,
+                  "flexBasis": "0px",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 1,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            />
           </div>
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
-          style={
-            Object {
-              "WebkitLineClamp": 2,
-              "color": "rgba(22,22,23,1.00)",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-            }
-          }
-        >
-          Jeux
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
-        />
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        data-testid="CONFERENCE"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "center",
-            "cursor": "pointer",
-            "flexDirection": "row",
-            "marginBottom": "16px",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-          }
-        }
-        tabIndex="0"
-      >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-view-1dbjc4n"
-        >
+        </li>
+        <li>
           <div
-            className="css-text-901oao"
-            dir="auto"
+            className="css-view-1dbjc4n"
+            data-testid="INSTRUMENT"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onKeyDown={[Function]}
+            style={
+              Object {
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "none",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitFlexDirection": "row",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "none",
+                "alignItems": "center",
+                "cursor": "pointer",
+                "flexDirection": "row",
+                "marginBottom": "16px",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "none",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "none",
+              }
+            }
+            tabIndex="0"
           >
-            undefined-SVG-Mock
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-view-1dbjc4n"
+            >
+              <div
+                className="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-text-901oao css-textMultiLine-cens5h"
+              dir="auto"
+              style={
+                Object {
+                  "WebkitLineClamp": 2,
+                  "color": "rgba(22,22,23,1.00)",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "15px",
+                  "lineHeight": "20px",
+                }
+              }
+            >
+              Instruments de musique
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitBoxFlex": 1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 1,
+                  "WebkitFlexShrink": 1,
+                  "flexBasis": "0px",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 1,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            />
           </div>
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
-          style={
-            Object {
-              "WebkitLineClamp": 2,
-              "color": "rgba(22,22,23,1.00)",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-            }
-          }
-        >
-          Conférences, rencontres
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
-        />
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        data-testid="INSTRUMENT"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "center",
-            "cursor": "pointer",
-            "flexDirection": "row",
-            "marginBottom": "16px",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-          }
-        }
-        tabIndex="0"
-      >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-view-1dbjc4n"
-        >
+        </li>
+        <li>
           <div
-            className="css-text-901oao"
-            dir="auto"
+            className="css-view-1dbjc4n"
+            data-testid="MATERIEL"
+            onClick={[Function]}
+            onContextMenu={[Function]}
+            onKeyDown={[Function]}
+            style={
+              Object {
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "none",
+                "WebkitAlignItems": "center",
+                "WebkitBoxAlign": "center",
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitFlexDirection": "row",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "none",
+                "alignItems": "center",
+                "cursor": "pointer",
+                "flexDirection": "row",
+                "marginBottom": "16px",
+                "msFlexAlign": "center",
+                "msFlexDirection": "row",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "none",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "none",
+              }
+            }
+            tabIndex="0"
           >
-            undefined-SVG-Mock
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-view-1dbjc4n"
+            >
+              <div
+                className="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "width": "16px",
+                }
+              }
+            />
+            <div
+              className="css-text-901oao css-textMultiLine-cens5h"
+              dir="auto"
+              style={
+                Object {
+                  "WebkitLineClamp": 2,
+                  "color": "rgba(22,22,23,1.00)",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": "15px",
+                  "lineHeight": "20px",
+                }
+              }
+            >
+              Beaux-Arts
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitBoxFlex": 1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 1,
+                  "WebkitFlexShrink": 1,
+                  "flexBasis": "0px",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 1,
+                  "msFlexPreferredSize": "0px",
+                }
+              }
+            />
           </div>
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
-          style={
-            Object {
-              "WebkitLineClamp": 2,
-              "color": "rgba(22,22,23,1.00)",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-            }
-          }
-        >
-          Instruments de musique
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
-        />
-      </div>
-      <div
-        className="css-view-1dbjc4n"
-        data-testid="MATERIEL"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
-        style={
-          Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
-            "alignItems": "center",
-            "cursor": "pointer",
-            "flexDirection": "row",
-            "marginBottom": "16px",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "none",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "none",
-          }
-        }
-        tabIndex="0"
-      >
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-view-1dbjc4n"
-        >
-          <div
-            className="css-text-901oao"
-            dir="auto"
-          >
-            undefined-SVG-Mock
-          </div>
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "width": "16px",
-            }
-          }
-        />
-        <div
-          className="css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
-          style={
-            Object {
-              "WebkitLineClamp": 2,
-              "color": "rgba(22,22,23,1.00)",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "lineHeight": "20px",
-            }
-          }
-        >
-          Beaux-Arts
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
-        />
-      </div>
+        </li>
+      </ul>
     </div>
   </div>
 </div>

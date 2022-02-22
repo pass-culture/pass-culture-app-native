@@ -337,7 +337,7 @@ Object {
               style="height: 16px;"
             />
             <dl
-              class="sc-cxpSdN ioZFYP"
+              class="sc-ikJyIC dZPHje"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -348,7 +348,7 @@ Object {
                   style="align-items: center; flex-direction: row; justify-content: center; margin-top: 8px;"
                 >
                   <dt
-                    class="sc-dlVxhl sc-giYglK ctocLT cURyye"
+                    class="sc-cxpSdN sc-gWXbKe ioZFYP lpppZR"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -362,7 +362,7 @@ Object {
                     </div>
                   </dt>
                   <dd
-                    class="sc-hGPBjI sc-ezbkAF sSLs eMA-DhL"
+                    class="sc-iwjdpV sc-cCcXHH cNhjYM jYbjIZ"
                   >
                     1 boulevard Poissonnière, 75000 Paris
                   </dd>
@@ -372,12 +372,12 @@ Object {
                   style="height: 8px;"
                 />
                 <dt
-                  class="sc-dlVxhl sc-llYSUQ ctocLT kNLmEk"
+                  class="sc-cxpSdN sc-jJoQJp ioZFYP fgwOBS"
                 >
                   Lieu
                 </dt>
                 <dd
-                  class="sc-hGPBjI sc-iJKOTD sSLs dNuyyK"
+                  class="sc-iwjdpV sc-hiCibw cNhjYM kCKNWD"
                   data-testid="venueTitle"
                 >
                   Le Petit Rintintin 1
@@ -400,7 +400,7 @@ Object {
                   style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                 >
                   <dt
-                    class="sc-dlVxhl sc-kfPuZi ctocLT ligalo"
+                    class="sc-cxpSdN sc-llYSUQ ioZFYP edjRNJ"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -418,7 +418,7 @@ Object {
                     style="height: 4px;"
                   />
                   <dd
-                    class="sc-hGPBjI sc-fKVqWL sSLs cOsyrv"
+                    class="sc-iwjdpV sc-iJKOTD cNhjYM fwkwVJ"
                     data-testid="caption-undefined"
                   >
                     Autre type de lieu
@@ -440,7 +440,7 @@ Object {
                     style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                   >
                     <dt
-                      class="sc-dlVxhl sc-kfPuZi ctocLT ligalo"
+                      class="sc-cxpSdN sc-llYSUQ ioZFYP edjRNJ"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -458,7 +458,7 @@ Object {
                       style="height: 4px;"
                     />
                     <dd
-                      class="sc-hGPBjI sc-fKVqWL sSLs kePWdl"
+                      class="sc-iwjdpV sc-iJKOTD cNhjYM cRpUWb"
                       data-testid="caption-undefined"
                       disabled=""
                     >
@@ -472,12 +472,12 @@ Object {
                 />
               </div>
               <dt
-                class="sc-dlVxhl sc-llYSUQ ctocLT kNLmEk"
+                class="sc-cxpSdN sc-jJoQJp ioZFYP fgwOBS"
               >
                 Description
               </dt>
               <dd
-                class="sc-hGPBjI sc-iwjdpV sSLs hbdCef"
+                class="sc-iwjdpV sc-kLwhqv cNhjYM bZJcCS"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -615,248 +615,249 @@ Object {
                   class="css-view-1dbjc4n"
                   style="position: relative;"
                 >
-                  <div
-                    class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-                    data-testid="offersModuleList"
-                    style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: hidden; transform: translateZ(0px);"
+                  <ul
+                    class="sc-jrQzAO sc-iqseJM coApC eEsKpq"
                   >
                     <div
-                      class="css-view-1dbjc4n"
-                      style="flex-direction: row;"
+                      class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+                      data-testid="offersModuleList"
+                      style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: hidden; transform: translateZ(0px);"
                     >
                       <div
                         class="css-view-1dbjc4n"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="width: 24px;"
-                        />
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
                         style="flex-direction: row;"
                       >
                         <div
                           class="css-view-1dbjc4n"
-                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                         >
                           <div
-                            aria-label="offerTile"
                             class="css-view-1dbjc4n"
-                            data-testid="offerTile"
-                            style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
-                            tabindex="0"
+                            style="width: 24px;"
+                          />
+                        </div>
+                        <li
+                          class="sc-crHmcD llifix"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                           >
                             <div
-                              class="css-text-901oao"
-                              dir="auto"
-                              style="display: flex; flex-direction: column;"
-                              tabindex="-1"
+                              aria-label="offerTile"
+                              class="css-view-1dbjc4n"
+                              data-testid="offerTile"
+                              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                              tabindex="0"
                             >
                               <div
-                                class="css-view-1dbjc4n"
-                                style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
+                                class="css-text-901oao"
+                                dir="auto"
+                                style="display: flex; flex-direction: column;"
+                                tabindex="-1"
                               >
                                 <div
                                   class="css-view-1dbjc4n"
-                                  style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                                  style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
                                 >
-                                  <span
-                                    class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
-                                    data-testid="categoryImageCaption"
-                                    style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                    style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                                   >
-                                    Cinéma
-                                  </span>
+                                    <span
+                                      class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                                      data-testid="categoryImageCaption"
+                                      style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                    >
+                                      Cinéma
+                                    </span>
+                                  </div>
                                 </div>
+                              </div>
+                            </div>
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="margin-top: 8px; max-width: 192px;"
+                            >
+                              <div
+                                class="css-text-901oao css-textMultiLine-cens5h"
+                                dir="auto"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Titane - VF
+                              </div>
+                              <div
+                                class="css-text-901oao css-textMultiLine-cens5h"
+                                dir="auto"
+                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Dès le 18 août 2021
+                              </div>
+                              <div
+                                class="css-text-901oao"
+                                data-testid="priceIsDuo"
+                                dir="auto"
+                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Gratuit
                               </div>
                             </div>
                           </div>
                           <div
                             class="css-view-1dbjc4n"
-                            style="margin-top: 8px; max-width: 192px;"
-                          >
-                            <div
-                              class="css-text-901oao css-textMultiLine-cens5h"
-                              dir="auto"
-                              style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                            >
-                              Titane - VF
-                            </div>
-                            <div
-                              class="css-text-901oao css-textMultiLine-cens5h"
-                              dir="auto"
-                              style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                            >
-                              Dès le 18 août 2021
-                            </div>
-                            <div
-                              class="css-text-901oao"
-                              data-testid="priceIsDuo"
-                              dir="auto"
-                              style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                            >
-                              Gratuit
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="width: 16px;"
-                        />
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="flex-direction: row;"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            style="width: 16px;"
+                          />
+                        </li>
+                        <li
+                          class="sc-crHmcD llifix"
                         >
                           <div
-                            aria-label="offerTile"
                             class="css-view-1dbjc4n"
-                            data-testid="offerTile"
-                            style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
-                            tabindex="0"
+                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                           >
                             <div
-                              class="css-text-901oao"
-                              dir="auto"
-                              style="display: flex; flex-direction: column;"
-                              tabindex="-1"
+                              aria-label="offerTile"
+                              class="css-view-1dbjc4n"
+                              data-testid="offerTile"
+                              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                              tabindex="0"
                             >
                               <div
-                                class="css-view-1dbjc4n"
-                                style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
+                                class="css-text-901oao"
+                                dir="auto"
+                                style="display: flex; flex-direction: column;"
+                                tabindex="-1"
                               >
                                 <div
                                   class="css-view-1dbjc4n"
-                                  style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                                  style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
                                 >
-                                  <span
-                                    class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
-                                    data-testid="categoryImageCaption"
-                                    style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                    style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                                   >
-                                    Cinéma
-                                  </span>
+                                    <span
+                                      class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                                      data-testid="categoryImageCaption"
+                                      style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                    >
+                                      Cinéma
+                                    </span>
+                                  </div>
                                 </div>
+                              </div>
+                            </div>
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="margin-top: 8px; max-width: 192px;"
+                            >
+                              <div
+                                class="css-text-901oao css-textMultiLine-cens5h"
+                                dir="auto"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Bac Nord - VF
+                              </div>
+                              <div
+                                class="css-text-901oao css-textMultiLine-cens5h"
+                                dir="auto"
+                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Dès le 18 août 2021
+                              </div>
+                              <div
+                                class="css-text-901oao"
+                                data-testid="priceIsDuo"
+                                dir="auto"
+                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Gratuit
                               </div>
                             </div>
                           </div>
                           <div
                             class="css-view-1dbjc4n"
-                            style="margin-top: 8px; max-width: 192px;"
-                          >
-                            <div
-                              class="css-text-901oao css-textMultiLine-cens5h"
-                              dir="auto"
-                              style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                            >
-                              Bac Nord - VF
-                            </div>
-                            <div
-                              class="css-text-901oao css-textMultiLine-cens5h"
-                              dir="auto"
-                              style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                            >
-                              Dès le 18 août 2021
-                            </div>
-                            <div
-                              class="css-text-901oao"
-                              data-testid="priceIsDuo"
-                              dir="auto"
-                              style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                            >
-                              Gratuit
-                            </div>
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="width: 16px;"
-                        />
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="flex-direction: row;"
-                      >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                            style="width: 16px;"
+                          />
+                        </li>
+                        <li
+                          class="sc-crHmcD llifix"
                         >
                           <div
-                            aria-label="offerTile"
                             class="css-view-1dbjc4n"
-                            data-testid="offerTile"
-                            style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
-                            tabindex="0"
+                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                           >
                             <div
-                              class="css-text-901oao"
-                              dir="auto"
-                              style="display: flex; flex-direction: column;"
-                              tabindex="-1"
+                              aria-label="offerTile"
+                              class="css-view-1dbjc4n"
+                              data-testid="offerTile"
+                              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                              tabindex="0"
                             >
                               <div
-                                class="css-view-1dbjc4n"
-                                style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
+                                class="css-text-901oao"
+                                dir="auto"
+                                style="display: flex; flex-direction: column;"
+                                tabindex="-1"
                               >
                                 <div
                                   class="css-view-1dbjc4n"
-                                  style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                                  style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
                                 >
-                                  <span
-                                    class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
-                                    data-testid="categoryImageCaption"
-                                    style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                    style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                                   >
-                                    Cinéma
-                                  </span>
+                                    <span
+                                      class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                                      data-testid="categoryImageCaption"
+                                      style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                    >
+                                      Cinéma
+                                    </span>
+                                  </div>
                                 </div>
                               </div>
                             </div>
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="margin-top: 8px; max-width: 192px;"
+                            >
+                              <div
+                                class="css-text-901oao css-textMultiLine-cens5h"
+                                dir="auto"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Black Widow - VF
+                              </div>
+                              <div
+                                class="css-text-901oao css-textMultiLine-cens5h"
+                                dir="auto"
+                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Dès le 18 août 2021
+                              </div>
+                              <div
+                                class="css-text-901oao"
+                                data-testid="priceIsDuo"
+                                dir="auto"
+                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Gratuit
+                              </div>
+                            </div>
                           </div>
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="margin-top: 8px; max-width: 192px;"
-                          >
-                            <div
-                              class="css-text-901oao css-textMultiLine-cens5h"
-                              dir="auto"
-                              style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                            >
-                              Black Widow - VF
-                            </div>
-                            <div
-                              class="css-text-901oao css-textMultiLine-cens5h"
-                              dir="auto"
-                              style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                            >
-                              Dès le 18 août 2021
-                            </div>
-                            <div
-                              class="css-text-901oao"
-                              data-testid="priceIsDuo"
-                              dir="auto"
-                              style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                            >
-                              Gratuit
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                      >
+                        </li>
                         <div
                           class="css-view-1dbjc4n"
-                          style="width: 24px;"
-                        />
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="width: 24px;"
+                          />
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  </ul>
                 </div>
               </div>
               <div
@@ -870,7 +871,7 @@ Object {
                   tabindex="-1"
                 >
                   <button
-                    class="sc-iqseJM fzmVpo"
+                    class="sc-fotOHu hLcKgu"
                     type="button"
                   >
                     <div
@@ -904,12 +905,12 @@ Object {
                   style="height: 24px;"
                 />
                 <dt
-                  class="sc-dlVxhl sc-bBHxTw ctocLT eOAigJ"
+                  class="sc-cxpSdN sc-giYglK ioZFYP iyLgtd"
                 >
                   Où ?
                 </dt>
                 <dd
-                  class="sc-hGPBjI sSLs"
+                  class="sc-iwjdpV cNhjYM"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -1126,258 +1127,278 @@ Object {
                   class="css-view-1dbjc4n"
                   style="flex-direction: row; justify-content: space-between;"
                 >
-                  <div
-                    class="css-view-1dbjc4n"
-                    data-testid="accessibilityAtomContainer"
-                    style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
+                  <ul
+                    class="sc-jrQzAO sc-ezbkAF coApC bwCtEb"
                   >
-                    <div
-                      class="css-view-1dbjc4n"
-                      data-testid="accessibilityFrame"
-                      style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                    <li
+                      class="sc-bYoBSM kPmJro"
                     >
                       <div
                         class="css-view-1dbjc4n"
-                        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                      />
-                      <div
-                        class="css-view-1dbjc4n"
-                      >
-                        <div
-                          class="css-text-901oao"
-                          dir="auto"
-                        >
-                          undefined-SVG-Mock
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                      />
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="bottom: -12px; position: absolute;"
+                        data-testid="accessibilityAtomContainer"
+                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                       >
                         <div
                           class="css-view-1dbjc4n"
-                          data-testid="validTestId"
+                          data-testid="accessibilityFrame"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          />
+                          <div
+                            class="css-view-1dbjc4n"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="auto"
+                            >
+                              undefined-SVG-Mock
+                            </div>
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          />
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="bottom: -12px; position: absolute;"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              data-testid="validTestId"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="auto"
+                              >
+                                validTestId-SVG-Mock
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="height: 16px;"
+                        />
+                        <div
+                          class="css-view-1dbjc4n"
+                          data-testid="Handicap visuel"
+                          style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
                         >
                           <div
                             class="css-text-901oao"
                             dir="auto"
+                            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                           >
-                            validTestId-SVG-Mock
+                            Handicap visuel
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="height: 16px;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                      data-testid="Handicap visuel"
-                      style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
-                    >
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                        style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                      >
-                        Handicap visuel
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                    data-testid="accessibilityAtomContainer"
-                    style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
-                  >
-                    <div
-                      class="css-view-1dbjc4n"
-                      data-testid="accessibilityFrame"
-                      style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                    </li>
+                    <li
+                      class="sc-bYoBSM kPmJro"
                     >
                       <div
                         class="css-view-1dbjc4n"
-                        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                      />
-                      <div
-                        class="css-view-1dbjc4n"
-                      >
-                        <div
-                          class="css-text-901oao"
-                          dir="auto"
-                        >
-                          undefined-SVG-Mock
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                      />
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="bottom: -12px; position: absolute;"
+                        data-testid="accessibilityAtomContainer"
+                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                       >
                         <div
                           class="css-view-1dbjc4n"
-                          data-testid="invalidTestId"
+                          data-testid="accessibilityFrame"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          />
+                          <div
+                            class="css-view-1dbjc4n"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="auto"
+                            >
+                              undefined-SVG-Mock
+                            </div>
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          />
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="bottom: -12px; position: absolute;"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              data-testid="invalidTestId"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="auto"
+                              >
+                                invalidTestId-SVG-Mock
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="height: 16px;"
+                        />
+                        <div
+                          class="css-view-1dbjc4n"
+                          data-testid="Handicap psychique ou cognitif"
+                          style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
                         >
                           <div
                             class="css-text-901oao"
                             dir="auto"
+                            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                           >
-                            invalidTestId-SVG-Mock
+                            Handicap psychique ou cognitif
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="height: 16px;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                      data-testid="Handicap psychique ou cognitif"
-                      style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
-                    >
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                        style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                      >
-                        Handicap psychique ou cognitif
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                    data-testid="accessibilityAtomContainer"
-                    style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
-                  >
-                    <div
-                      class="css-view-1dbjc4n"
-                      data-testid="accessibilityFrame"
-                      style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                    </li>
+                    <li
+                      class="sc-bYoBSM kPmJro"
                     >
                       <div
                         class="css-view-1dbjc4n"
-                        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                      />
-                      <div
-                        class="css-view-1dbjc4n"
-                      >
-                        <div
-                          class="css-text-901oao"
-                          dir="auto"
-                        >
-                          undefined-SVG-Mock
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                      />
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="bottom: -12px; position: absolute;"
+                        data-testid="accessibilityAtomContainer"
+                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                       >
                         <div
                           class="css-view-1dbjc4n"
-                          data-testid="invalidTestId"
+                          data-testid="accessibilityFrame"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          />
+                          <div
+                            class="css-view-1dbjc4n"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="auto"
+                            >
+                              undefined-SVG-Mock
+                            </div>
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          />
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="bottom: -12px; position: absolute;"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              data-testid="invalidTestId"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="auto"
+                              >
+                                invalidTestId-SVG-Mock
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="height: 16px;"
+                        />
+                        <div
+                          class="css-view-1dbjc4n"
+                          data-testid="Handicap moteur"
+                          style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
                         >
                           <div
                             class="css-text-901oao"
                             dir="auto"
+                            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                           >
-                            invalidTestId-SVG-Mock
+                            Handicap moteur
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="height: 16px;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                      data-testid="Handicap moteur"
-                      style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
-                    >
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                        style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                      >
-                        Handicap moteur
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                    data-testid="accessibilityAtomContainer"
-                    style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px;"
-                  >
-                    <div
-                      class="css-view-1dbjc4n"
-                      data-testid="accessibilityFrame"
-                      style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                    </li>
+                    <li
+                      class="sc-bYoBSM kPmJro"
                     >
                       <div
                         class="css-view-1dbjc4n"
-                        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                      />
-                      <div
-                        class="css-view-1dbjc4n"
-                      >
-                        <div
-                          class="css-text-901oao"
-                          dir="auto"
-                        >
-                          undefined-SVG-Mock
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                      />
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="bottom: -12px; position: absolute;"
+                        data-testid="accessibilityAtomContainer"
+                        style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px;"
                       >
                         <div
                           class="css-view-1dbjc4n"
-                          data-testid="invalidTestId"
+                          data-testid="accessibilityFrame"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          />
+                          <div
+                            class="css-view-1dbjc4n"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="auto"
+                            >
+                              undefined-SVG-Mock
+                            </div>
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          />
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="bottom: -12px; position: absolute;"
+                          >
+                            <div
+                              class="css-view-1dbjc4n"
+                              data-testid="invalidTestId"
+                            >
+                              <div
+                                class="css-text-901oao"
+                                dir="auto"
+                              >
+                                invalidTestId-SVG-Mock
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="height: 16px;"
+                        />
+                        <div
+                          class="css-view-1dbjc4n"
+                          data-testid="Handicap auditif"
+                          style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
                         >
                           <div
                             class="css-text-901oao"
                             dir="auto"
+                            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                           >
-                            invalidTestId-SVG-Mock
+                            Handicap auditif
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="height: 16px;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                      data-testid="Handicap auditif"
-                      style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
-                    >
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                        style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                      >
-                        Handicap auditif
-                      </div>
-                    </div>
-                  </div>
+                    </li>
+                  </ul>
                 </div>
               </div>
             </div>
@@ -1797,7 +1818,7 @@ Object {
             style="height: 16px;"
           />
           <dl
-            class="sc-cxpSdN ioZFYP"
+            class="sc-ikJyIC dZPHje"
           >
             <div
               class="css-view-1dbjc4n"
@@ -1808,7 +1829,7 @@ Object {
                 style="align-items: center; flex-direction: row; justify-content: center; margin-top: 8px;"
               >
                 <dt
-                  class="sc-dlVxhl sc-giYglK ctocLT cURyye"
+                  class="sc-cxpSdN sc-gWXbKe ioZFYP lpppZR"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -1822,7 +1843,7 @@ Object {
                   </div>
                 </dt>
                 <dd
-                  class="sc-hGPBjI sc-ezbkAF sSLs eMA-DhL"
+                  class="sc-iwjdpV sc-cCcXHH cNhjYM jYbjIZ"
                 >
                   1 boulevard Poissonnière, 75000 Paris
                 </dd>
@@ -1832,12 +1853,12 @@ Object {
                 style="height: 8px;"
               />
               <dt
-                class="sc-dlVxhl sc-llYSUQ ctocLT kNLmEk"
+                class="sc-cxpSdN sc-jJoQJp ioZFYP fgwOBS"
               >
                 Lieu
               </dt>
               <dd
-                class="sc-hGPBjI sc-iJKOTD sSLs dNuyyK"
+                class="sc-iwjdpV sc-hiCibw cNhjYM kCKNWD"
                 data-testid="venueTitle"
               >
                 Le Petit Rintintin 1
@@ -1860,7 +1881,7 @@ Object {
                 style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <dt
-                  class="sc-dlVxhl sc-kfPuZi ctocLT ligalo"
+                  class="sc-cxpSdN sc-llYSUQ ioZFYP edjRNJ"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -1878,7 +1899,7 @@ Object {
                   style="height: 4px;"
                 />
                 <dd
-                  class="sc-hGPBjI sc-fKVqWL sSLs cOsyrv"
+                  class="sc-iwjdpV sc-iJKOTD cNhjYM fwkwVJ"
                   data-testid="caption-undefined"
                 >
                   Autre type de lieu
@@ -1900,7 +1921,7 @@ Object {
                   style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                 >
                   <dt
-                    class="sc-dlVxhl sc-kfPuZi ctocLT ligalo"
+                    class="sc-cxpSdN sc-llYSUQ ioZFYP edjRNJ"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -1918,7 +1939,7 @@ Object {
                     style="height: 4px;"
                   />
                   <dd
-                    class="sc-hGPBjI sc-fKVqWL sSLs kePWdl"
+                    class="sc-iwjdpV sc-iJKOTD cNhjYM cRpUWb"
                     data-testid="caption-undefined"
                     disabled=""
                   >
@@ -1932,12 +1953,12 @@ Object {
               />
             </div>
             <dt
-              class="sc-dlVxhl sc-llYSUQ ctocLT kNLmEk"
+              class="sc-cxpSdN sc-jJoQJp ioZFYP fgwOBS"
             >
               Description
             </dt>
             <dd
-              class="sc-hGPBjI sc-iwjdpV sSLs hbdCef"
+              class="sc-iwjdpV sc-kLwhqv cNhjYM bZJcCS"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -2075,248 +2096,249 @@ Object {
                 class="css-view-1dbjc4n"
                 style="position: relative;"
               >
-                <div
-                  class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-                  data-testid="offersModuleList"
-                  style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: hidden; transform: translateZ(0px);"
+                <ul
+                  class="sc-jrQzAO sc-iqseJM coApC eEsKpq"
                 >
                   <div
-                    class="css-view-1dbjc4n"
-                    style="flex-direction: row;"
+                    class="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+                    data-testid="offersModuleList"
+                    style="flex-direction: row; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: hidden; transform: translateZ(0px);"
                   >
                     <div
                       class="css-view-1dbjc4n"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="width: 24px;"
-                      />
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
                       style="flex-direction: row;"
                     >
                       <div
                         class="css-view-1dbjc4n"
-                        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                       >
                         <div
-                          aria-label="offerTile"
                           class="css-view-1dbjc4n"
-                          data-testid="offerTile"
-                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
-                          tabindex="0"
+                          style="width: 24px;"
+                        />
+                      </div>
+                      <li
+                        class="sc-crHmcD llifix"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                         >
                           <div
-                            class="css-text-901oao"
-                            dir="auto"
-                            style="display: flex; flex-direction: column;"
-                            tabindex="-1"
+                            aria-label="offerTile"
+                            class="css-view-1dbjc4n"
+                            data-testid="offerTile"
+                            style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                            tabindex="0"
                           >
                             <div
-                              class="css-view-1dbjc4n"
-                              style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
+                              class="css-text-901oao"
+                              dir="auto"
+                              style="display: flex; flex-direction: column;"
+                              tabindex="-1"
                             >
                               <div
                                 class="css-view-1dbjc4n"
-                                style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                                style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
                               >
-                                <span
-                                  class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
-                                  data-testid="categoryImageCaption"
-                                  style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                                 >
-                                  Cinéma
-                                </span>
+                                  <span
+                                    class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                                    data-testid="categoryImageCaption"
+                                    style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                  >
+                                    Cinéma
+                                  </span>
+                                </div>
                               </div>
+                            </div>
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="margin-top: 8px; max-width: 192px;"
+                          >
+                            <div
+                              class="css-text-901oao css-textMultiLine-cens5h"
+                              dir="auto"
+                              style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              Titane - VF
+                            </div>
+                            <div
+                              class="css-text-901oao css-textMultiLine-cens5h"
+                              dir="auto"
+                              style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              Dès le 18 août 2021
+                            </div>
+                            <div
+                              class="css-text-901oao"
+                              data-testid="priceIsDuo"
+                              dir="auto"
+                              style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              Gratuit
                             </div>
                           </div>
                         </div>
                         <div
                           class="css-view-1dbjc4n"
-                          style="margin-top: 8px; max-width: 192px;"
-                        >
-                          <div
-                            class="css-text-901oao css-textMultiLine-cens5h"
-                            dir="auto"
-                            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                          >
-                            Titane - VF
-                          </div>
-                          <div
-                            class="css-text-901oao css-textMultiLine-cens5h"
-                            dir="auto"
-                            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                          >
-                            Dès le 18 août 2021
-                          </div>
-                          <div
-                            class="css-text-901oao"
-                            data-testid="priceIsDuo"
-                            dir="auto"
-                            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                          >
-                            Gratuit
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="width: 16px;"
-                      />
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-direction: row;"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          style="width: 16px;"
+                        />
+                      </li>
+                      <li
+                        class="sc-crHmcD llifix"
                       >
                         <div
-                          aria-label="offerTile"
                           class="css-view-1dbjc4n"
-                          data-testid="offerTile"
-                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
-                          tabindex="0"
+                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                         >
                           <div
-                            class="css-text-901oao"
-                            dir="auto"
-                            style="display: flex; flex-direction: column;"
-                            tabindex="-1"
+                            aria-label="offerTile"
+                            class="css-view-1dbjc4n"
+                            data-testid="offerTile"
+                            style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                            tabindex="0"
                           >
                             <div
-                              class="css-view-1dbjc4n"
-                              style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
+                              class="css-text-901oao"
+                              dir="auto"
+                              style="display: flex; flex-direction: column;"
+                              tabindex="-1"
                             >
                               <div
                                 class="css-view-1dbjc4n"
-                                style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                                style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
                               >
-                                <span
-                                  class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
-                                  data-testid="categoryImageCaption"
-                                  style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                                 >
-                                  Cinéma
-                                </span>
+                                  <span
+                                    class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                                    data-testid="categoryImageCaption"
+                                    style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                  >
+                                    Cinéma
+                                  </span>
+                                </div>
                               </div>
+                            </div>
+                          </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="margin-top: 8px; max-width: 192px;"
+                          >
+                            <div
+                              class="css-text-901oao css-textMultiLine-cens5h"
+                              dir="auto"
+                              style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              Bac Nord - VF
+                            </div>
+                            <div
+                              class="css-text-901oao css-textMultiLine-cens5h"
+                              dir="auto"
+                              style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              Dès le 18 août 2021
+                            </div>
+                            <div
+                              class="css-text-901oao"
+                              data-testid="priceIsDuo"
+                              dir="auto"
+                              style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              Gratuit
                             </div>
                           </div>
                         </div>
                         <div
                           class="css-view-1dbjc4n"
-                          style="margin-top: 8px; max-width: 192px;"
-                        >
-                          <div
-                            class="css-text-901oao css-textMultiLine-cens5h"
-                            dir="auto"
-                            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                          >
-                            Bac Nord - VF
-                          </div>
-                          <div
-                            class="css-text-901oao css-textMultiLine-cens5h"
-                            dir="auto"
-                            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                          >
-                            Dès le 18 août 2021
-                          </div>
-                          <div
-                            class="css-text-901oao"
-                            data-testid="priceIsDuo"
-                            dir="auto"
-                            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                          >
-                            Gratuit
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="width: 16px;"
-                      />
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-direction: row;"
-                    >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                          style="width: 16px;"
+                        />
+                      </li>
+                      <li
+                        class="sc-crHmcD llifix"
                       >
                         <div
-                          aria-label="offerTile"
                           class="css-view-1dbjc4n"
-                          data-testid="offerTile"
-                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
-                          tabindex="0"
+                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                         >
                           <div
-                            class="css-text-901oao"
-                            dir="auto"
-                            style="display: flex; flex-direction: column;"
-                            tabindex="-1"
+                            aria-label="offerTile"
+                            class="css-view-1dbjc4n"
+                            data-testid="offerTile"
+                            style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                            tabindex="0"
                           >
                             <div
-                              class="css-view-1dbjc4n"
-                              style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
+                              class="css-text-901oao"
+                              dir="auto"
+                              style="display: flex; flex-direction: column;"
+                              tabindex="-1"
                             >
                               <div
                                 class="css-view-1dbjc4n"
-                                style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                                style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
                               >
-                                <span
-                                  class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
-                                  data-testid="categoryImageCaption"
-                                  style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
                                 >
-                                  Cinéma
-                                </span>
+                                  <span
+                                    class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                                    data-testid="categoryImageCaption"
+                                    style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                  >
+                                    Cinéma
+                                  </span>
+                                </div>
                               </div>
                             </div>
                           </div>
+                          <div
+                            class="css-view-1dbjc4n"
+                            style="margin-top: 8px; max-width: 192px;"
+                          >
+                            <div
+                              class="css-text-901oao css-textMultiLine-cens5h"
+                              dir="auto"
+                              style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              Black Widow - VF
+                            </div>
+                            <div
+                              class="css-text-901oao css-textMultiLine-cens5h"
+                              dir="auto"
+                              style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              Dès le 18 août 2021
+                            </div>
+                            <div
+                              class="css-text-901oao"
+                              data-testid="priceIsDuo"
+                              dir="auto"
+                              style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                            >
+                              Gratuit
+                            </div>
+                          </div>
                         </div>
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="margin-top: 8px; max-width: 192px;"
-                        >
-                          <div
-                            class="css-text-901oao css-textMultiLine-cens5h"
-                            dir="auto"
-                            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                          >
-                            Black Widow - VF
-                          </div>
-                          <div
-                            class="css-text-901oao css-textMultiLine-cens5h"
-                            dir="auto"
-                            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                          >
-                            Dès le 18 août 2021
-                          </div>
-                          <div
-                            class="css-text-901oao"
-                            data-testid="priceIsDuo"
-                            dir="auto"
-                            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                          >
-                            Gratuit
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                    >
+                      </li>
                       <div
                         class="css-view-1dbjc4n"
-                        style="width: 24px;"
-                      />
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="width: 24px;"
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
+                </ul>
               </div>
             </div>
             <div
@@ -2330,7 +2352,7 @@ Object {
                 tabindex="-1"
               >
                 <button
-                  class="sc-iqseJM fzmVpo"
+                  class="sc-fotOHu hLcKgu"
                   type="button"
                 >
                   <div
@@ -2364,12 +2386,12 @@ Object {
                 style="height: 24px;"
               />
               <dt
-                class="sc-dlVxhl sc-bBHxTw ctocLT eOAigJ"
+                class="sc-cxpSdN sc-giYglK ioZFYP iyLgtd"
               >
                 Où ?
               </dt>
               <dd
-                class="sc-hGPBjI sSLs"
+                class="sc-iwjdpV cNhjYM"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -2586,258 +2608,278 @@ Object {
                 class="css-view-1dbjc4n"
                 style="flex-direction: row; justify-content: space-between;"
               >
-                <div
-                  class="css-view-1dbjc4n"
-                  data-testid="accessibilityAtomContainer"
-                  style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
+                <ul
+                  class="sc-jrQzAO sc-ezbkAF coApC bwCtEb"
                 >
-                  <div
-                    class="css-view-1dbjc4n"
-                    data-testid="accessibilityFrame"
-                    style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                  <li
+                    class="sc-bYoBSM kPmJro"
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                    >
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                      >
-                        undefined-SVG-Mock
-                      </div>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="bottom: -12px; position: absolute;"
+                      data-testid="accessibilityAtomContainer"
+                      style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                     >
                       <div
                         class="css-view-1dbjc4n"
-                        data-testid="validTestId"
+                        data-testid="accessibilityFrame"
+                        style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                        />
+                        <div
+                          class="css-view-1dbjc4n"
+                        >
+                          <div
+                            class="css-text-901oao"
+                            dir="auto"
+                          >
+                            undefined-SVG-Mock
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                        />
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="bottom: -12px; position: absolute;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            data-testid="validTestId"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="auto"
+                            >
+                              validTestId-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="height: 16px;"
+                      />
+                      <div
+                        class="css-view-1dbjc4n"
+                        data-testid="Handicap visuel"
+                        style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
                       >
                         <div
                           class="css-text-901oao"
                           dir="auto"
+                          style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                         >
-                          validTestId-SVG-Mock
+                          Handicap visuel
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="height: 16px;"
-                  />
-                  <div
-                    class="css-view-1dbjc4n"
-                    data-testid="Handicap visuel"
-                    style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
-                  >
-                    <div
-                      class="css-text-901oao"
-                      dir="auto"
-                      style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                    >
-                      Handicap visuel
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="css-view-1dbjc4n"
-                  data-testid="accessibilityAtomContainer"
-                  style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
-                >
-                  <div
-                    class="css-view-1dbjc4n"
-                    data-testid="accessibilityFrame"
-                    style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                  </li>
+                  <li
+                    class="sc-bYoBSM kPmJro"
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                    >
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                      >
-                        undefined-SVG-Mock
-                      </div>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="bottom: -12px; position: absolute;"
+                      data-testid="accessibilityAtomContainer"
+                      style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                     >
                       <div
                         class="css-view-1dbjc4n"
-                        data-testid="invalidTestId"
+                        data-testid="accessibilityFrame"
+                        style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                        />
+                        <div
+                          class="css-view-1dbjc4n"
+                        >
+                          <div
+                            class="css-text-901oao"
+                            dir="auto"
+                          >
+                            undefined-SVG-Mock
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                        />
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="bottom: -12px; position: absolute;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            data-testid="invalidTestId"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="auto"
+                            >
+                              invalidTestId-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="height: 16px;"
+                      />
+                      <div
+                        class="css-view-1dbjc4n"
+                        data-testid="Handicap psychique ou cognitif"
+                        style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
                       >
                         <div
                           class="css-text-901oao"
                           dir="auto"
+                          style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                         >
-                          invalidTestId-SVG-Mock
+                          Handicap psychique ou cognitif
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="height: 16px;"
-                  />
-                  <div
-                    class="css-view-1dbjc4n"
-                    data-testid="Handicap psychique ou cognitif"
-                    style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
-                  >
-                    <div
-                      class="css-text-901oao"
-                      dir="auto"
-                      style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                    >
-                      Handicap psychique ou cognitif
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="css-view-1dbjc4n"
-                  data-testid="accessibilityAtomContainer"
-                  style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
-                >
-                  <div
-                    class="css-view-1dbjc4n"
-                    data-testid="accessibilityFrame"
-                    style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                  </li>
+                  <li
+                    class="sc-bYoBSM kPmJro"
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                    >
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                      >
-                        undefined-SVG-Mock
-                      </div>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="bottom: -12px; position: absolute;"
+                      data-testid="accessibilityAtomContainer"
+                      style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                     >
                       <div
                         class="css-view-1dbjc4n"
-                        data-testid="invalidTestId"
+                        data-testid="accessibilityFrame"
+                        style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                        />
+                        <div
+                          class="css-view-1dbjc4n"
+                        >
+                          <div
+                            class="css-text-901oao"
+                            dir="auto"
+                          >
+                            undefined-SVG-Mock
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                        />
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="bottom: -12px; position: absolute;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            data-testid="invalidTestId"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="auto"
+                            >
+                              invalidTestId-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="height: 16px;"
+                      />
+                      <div
+                        class="css-view-1dbjc4n"
+                        data-testid="Handicap moteur"
+                        style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
                       >
                         <div
                           class="css-text-901oao"
                           dir="auto"
+                          style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                         >
-                          invalidTestId-SVG-Mock
+                          Handicap moteur
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="height: 16px;"
-                  />
-                  <div
-                    class="css-view-1dbjc4n"
-                    data-testid="Handicap moteur"
-                    style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
-                  >
-                    <div
-                      class="css-text-901oao"
-                      dir="auto"
-                      style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                    >
-                      Handicap moteur
-                    </div>
-                  </div>
-                </div>
-                <div
-                  class="css-view-1dbjc4n"
-                  data-testid="accessibilityAtomContainer"
-                  style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px;"
-                >
-                  <div
-                    class="css-view-1dbjc4n"
-                    data-testid="accessibilityFrame"
-                    style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                  </li>
+                  <li
+                    class="sc-bYoBSM kPmJro"
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                    >
-                      <div
-                        class="css-text-901oao"
-                        dir="auto"
-                      >
-                        undefined-SVG-Mock
-                      </div>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="bottom: -12px; position: absolute;"
+                      data-testid="accessibilityAtomContainer"
+                      style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px;"
                     >
                       <div
                         class="css-view-1dbjc4n"
-                        data-testid="invalidTestId"
+                        data-testid="accessibilityFrame"
+                        style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; min-height: 64px;"
+                      >
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                        />
+                        <div
+                          class="css-view-1dbjc4n"
+                        >
+                          <div
+                            class="css-text-901oao"
+                            dir="auto"
+                          >
+                            undefined-SVG-Mock
+                          </div>
+                        </div>
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                        />
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="bottom: -12px; position: absolute;"
+                        >
+                          <div
+                            class="css-view-1dbjc4n"
+                            data-testid="invalidTestId"
+                          >
+                            <div
+                              class="css-text-901oao"
+                              dir="auto"
+                            >
+                              invalidTestId-SVG-Mock
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="height: 16px;"
+                      />
+                      <div
+                        class="css-view-1dbjc4n"
+                        data-testid="Handicap auditif"
+                        style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
                       >
                         <div
                           class="css-text-901oao"
                           dir="auto"
+                          style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                         >
-                          invalidTestId-SVG-Mock
+                          Handicap auditif
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="height: 16px;"
-                  />
-                  <div
-                    class="css-view-1dbjc4n"
-                    data-testid="Handicap auditif"
-                    style="margin-bottom: 16px; margin-right: -4px; margin-left: -4px;"
-                  >
-                    <div
-                      class="css-text-901oao"
-                      dir="auto"
-                      style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
-                    >
-                      Handicap auditif
-                    </div>
-                  </div>
-                </div>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>

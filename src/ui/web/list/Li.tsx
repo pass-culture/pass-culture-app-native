@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react'
 
-type Props = {
+export type LiProps = {
   children: ReactNode
   className?: string
 }
 
-export function Li(props: Props) {
+export function Li(props: LiProps) {
   return <React.Fragment>{props.children}</React.Fragment>
 }

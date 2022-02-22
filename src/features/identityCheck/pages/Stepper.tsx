@@ -19,6 +19,8 @@ import { useModal } from 'ui/components/modals/useModal'
 import { Background } from 'ui/svg/Background'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
+import { Li } from 'ui/web/list/Li'
+import { VerticalUl } from 'ui/web/list/Ul'
 
 export const IdentityCheckStepper = () => {
   const theme = useTheme()
@@ -80,14 +82,17 @@ export const IdentityCheckStepper = () => {
           <StyledBody>{t`Voici les 3 étapes que tu vas devoir suivre.`}</StyledBody>
           {theme.isDesktopViewport ? <Spacer.Column numberOfSpaces={2} /> : <Spacer.Flex />}
 
-          {steps.map((step) => (
-            <StepButton
-              key={step.name}
-              step={step}
-              state={getStepState(step.name)}
-              onPress={() => navigateToStep(step)}
-            />
-          ))}
+          <VerticalUl>
+            {steps.map((step) => (
+              <Li key={step.name}>
+                <StepButton
+                  step={step}
+                  state={getStepState(step.name)}
+                  onPress={() => navigateToStep(step)}
+                />
+              </Li>
+            ))}
+          </VerticalUl>
 
           {theme.isDesktopViewport ? (
             <Spacer.Column numberOfSpaces={10} />

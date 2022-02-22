@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
 import { SelectionLabel, TitleWithCount } from 'features/search/atoms'
@@ -9,6 +10,8 @@ import { SearchState } from 'features/search/types'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { getSpacing } from 'ui/theme'
+import { Li } from 'ui/web/list/Li'
+import { Ul } from 'ui/web/list/Ul'
 
 type OfferType = keyof SearchState['offerTypes']
 
@@ -38,14 +41,17 @@ export const OfferType: React.FC = () => {
         />
       }>
       <BodyContainer>
-        {OFFER_TYPES.map(([offerType, label]) => (
-          <SelectionLabel
-            key={label}
-            label={label}
-            selected={offerTypes[offerType]}
-            onPress={onPress(offerType)}
-          />
-        ))}
+        <StyledUl>
+          {OFFER_TYPES.map(([offerType, label]) => (
+            <Li key={label}>
+              <SelectionLabel
+                label={label}
+                selected={offerTypes[offerType]}
+                onPress={onPress(offerType)}
+              />
+            </Li>
+          ))}
+        </StyledUl>
       </BodyContainer>
     </AccordionItem>
   )
@@ -56,4 +62,8 @@ const BodyContainer = styled.View({
   flexDirection: 'row',
   marginBottom: getSpacing(-3),
   marginRight: getSpacing(-3),
+})
+
+const StyledUl = webStyled(Ul)({
+  flexWrap: 'wrap',
 })

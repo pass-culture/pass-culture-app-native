@@ -80,44 +80,35 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           }
         }
       />
-      <div
-        className="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-        onScroll={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        onWheel={[Function]}
-        style={
-          Object {
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxFlex": 1,
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "WebkitFlexGrow": 1,
-            "WebkitFlexShrink": 1,
-            "WebkitOverflowScrolling": "touch",
-            "WebkitTransform": "translateZ(0px)",
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "msFlexDirection": "row",
-            "msFlexNegative": 1,
-            "msFlexPositive": 1,
-            "overflowX": "auto",
-            "overflowY": "hidden",
-            "transform": "translateZ(0px)",
-          }
-        }
+      <ul
+        className="sc-bdvvtL vVNul"
       >
         <div
-          className="css-view-1dbjc4n"
+          className="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+          onScroll={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          onWheel={[Function]}
           style={
             Object {
               "WebkitBoxDirection": "normal",
+              "WebkitBoxFlex": 1,
               "WebkitBoxOrient": "horizontal",
               "WebkitFlexDirection": "row",
+              "WebkitFlexGrow": 1,
+              "WebkitFlexShrink": 1,
+              "WebkitOverflowScrolling": "touch",
+              "WebkitTransform": "translateZ(0px)",
               "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
               "msFlexDirection": "row",
+              "msFlexNegative": 1,
+              "msFlexPositive": 1,
+              "overflowX": "auto",
+              "overflowY": "hidden",
+              "transform": "translateZ(0px)",
             }
           }
         >
@@ -133,129 +124,141 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               }
             }
           >
-            <div
-              className="css-view-1dbjc4n"
+            <li
+              className="sc-dkPtRN fQwkeZ"
             >
               <div
                 className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "8px",
-                    "borderBottomRightRadius": "8px",
-                    "borderTopLeftRadius": "8px",
-                    "borderTopRightRadius": "8px",
-                    "height": "288px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "192px",
-                  }
-                }
               >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-240px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "8px",
                       "borderBottomRightRadius": "8px",
                       "borderTopLeftRadius": "8px",
                       "borderTopRightRadius": "8px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-240px)",
+                      "height": "288px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "192px",
                     }
                   }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "12px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "153.60000000000002px",
-                  }
-                }
-              >
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-240px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "8px",
+                        "borderBottomRightRadius": "8px",
+                        "borderTopLeftRadius": "8px",
+                        "borderTopRightRadius": "8px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-240px)",
+                      }
+                    }
+                  />
+                </div>
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-192.00000000000003px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-192.00000000000003px)",
+                      "height": "12px",
                     }
                   }
                 />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "8px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "57.599999999999994px",
-                  }
-                }
-              >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-72px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "2px",
                       "borderBottomRightRadius": "2px",
                       "borderTopLeftRadius": "2px",
                       "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-72px)",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "153.60000000000002px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-192.00000000000003px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-192.00000000000003px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "8px",
+                    }
+                  }
+                />
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(221,221,221,1.00)",
+                      "borderBottomLeftRadius": "2px",
+                      "borderBottomRightRadius": "2px",
+                      "borderTopLeftRadius": "2px",
+                      "borderTopRightRadius": "2px",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "57.599999999999994px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-72px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-72px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "12px",
                     }
                   }
                 />
@@ -264,155 +267,146 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 className="css-view-1dbjc4n"
                 style={
                   Object {
-                    "height": "12px",
+                    "width": "16px",
                   }
                 }
               />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "width": "16px",
-                }
-              }
-            />
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "flexDirection": "row",
-                "msFlexDirection": "row",
-              }
-            }
-          >
-            <div
-              className="css-view-1dbjc4n"
+            </li>
+            <li
+              className="sc-dkPtRN fQwkeZ"
             >
               <div
                 className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "8px",
-                    "borderBottomRightRadius": "8px",
-                    "borderTopLeftRadius": "8px",
-                    "borderTopRightRadius": "8px",
-                    "height": "288px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "192px",
-                  }
-                }
               >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-240px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "8px",
                       "borderBottomRightRadius": "8px",
                       "borderTopLeftRadius": "8px",
                       "borderTopRightRadius": "8px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-240px)",
+                      "height": "288px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "192px",
                     }
                   }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "12px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "153.60000000000002px",
-                  }
-                }
-              >
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-240px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "8px",
+                        "borderBottomRightRadius": "8px",
+                        "borderTopLeftRadius": "8px",
+                        "borderTopRightRadius": "8px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-240px)",
+                      }
+                    }
+                  />
+                </div>
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-192.00000000000003px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-192.00000000000003px)",
+                      "height": "12px",
                     }
                   }
                 />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "8px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "57.599999999999994px",
-                  }
-                }
-              >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-72px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "2px",
                       "borderBottomRightRadius": "2px",
                       "borderTopLeftRadius": "2px",
                       "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-72px)",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "153.60000000000002px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-192.00000000000003px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-192.00000000000003px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "8px",
+                    }
+                  }
+                />
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(221,221,221,1.00)",
+                      "borderBottomLeftRadius": "2px",
+                      "borderBottomRightRadius": "2px",
+                      "borderTopLeftRadius": "2px",
+                      "borderTopRightRadius": "2px",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "57.599999999999994px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-72px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-72px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "12px",
                     }
                   }
                 />
@@ -421,155 +415,146 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 className="css-view-1dbjc4n"
                 style={
                   Object {
-                    "height": "12px",
+                    "width": "16px",
                   }
                 }
               />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "width": "16px",
-                }
-              }
-            />
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "flexDirection": "row",
-                "msFlexDirection": "row",
-              }
-            }
-          >
-            <div
-              className="css-view-1dbjc4n"
+            </li>
+            <li
+              className="sc-dkPtRN fQwkeZ"
             >
               <div
                 className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "8px",
-                    "borderBottomRightRadius": "8px",
-                    "borderTopLeftRadius": "8px",
-                    "borderTopRightRadius": "8px",
-                    "height": "288px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "192px",
-                  }
-                }
               >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-240px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "8px",
                       "borderBottomRightRadius": "8px",
                       "borderTopLeftRadius": "8px",
                       "borderTopRightRadius": "8px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-240px)",
+                      "height": "288px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "192px",
                     }
                   }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "12px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "153.60000000000002px",
-                  }
-                }
-              >
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-240px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "8px",
+                        "borderBottomRightRadius": "8px",
+                        "borderTopLeftRadius": "8px",
+                        "borderTopRightRadius": "8px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-240px)",
+                      }
+                    }
+                  />
+                </div>
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-192.00000000000003px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-192.00000000000003px)",
+                      "height": "12px",
                     }
                   }
                 />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "8px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "57.599999999999994px",
-                  }
-                }
-              >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-72px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "2px",
                       "borderBottomRightRadius": "2px",
                       "borderTopLeftRadius": "2px",
                       "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-72px)",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "153.60000000000002px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-192.00000000000003px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-192.00000000000003px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "8px",
+                    }
+                  }
+                />
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(221,221,221,1.00)",
+                      "borderBottomLeftRadius": "2px",
+                      "borderBottomRightRadius": "2px",
+                      "borderTopLeftRadius": "2px",
+                      "borderTopRightRadius": "2px",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "57.599999999999994px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-72px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-72px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "12px",
                     }
                   }
                 />
@@ -578,171 +563,154 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 className="css-view-1dbjc4n"
                 style={
                   Object {
-                    "height": "12px",
+                    "width": "16px",
                   }
                 }
               />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "width": "16px",
-                }
-              }
-            />
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "flexDirection": "row",
-                "msFlexDirection": "row",
-              }
-            }
-          >
-            <div
-              className="css-view-1dbjc4n"
+            </li>
+            <li
+              className="sc-dkPtRN fQwkeZ"
             >
               <div
                 className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "8px",
-                    "borderBottomRightRadius": "8px",
-                    "borderTopLeftRadius": "8px",
-                    "borderTopRightRadius": "8px",
-                    "height": "288px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "192px",
-                  }
-                }
               >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-240px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "8px",
                       "borderBottomRightRadius": "8px",
                       "borderTopLeftRadius": "8px",
                       "borderTopRightRadius": "8px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-240px)",
+                      "height": "288px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "192px",
                     }
                   }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "12px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "153.60000000000002px",
-                  }
-                }
-              >
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-240px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "8px",
+                        "borderBottomRightRadius": "8px",
+                        "borderTopLeftRadius": "8px",
+                        "borderTopRightRadius": "8px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-240px)",
+                      }
+                    }
+                  />
+                </div>
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-192.00000000000003px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-192.00000000000003px)",
+                      "height": "12px",
                     }
                   }
                 />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "8px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "57.599999999999994px",
-                  }
-                }
-              >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-72px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "2px",
                       "borderBottomRightRadius": "2px",
                       "borderTopLeftRadius": "2px",
                       "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-72px)",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "153.60000000000002px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-192.00000000000003px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-192.00000000000003px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "8px",
+                    }
+                  }
+                />
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(221,221,221,1.00)",
+                      "borderBottomLeftRadius": "2px",
+                      "borderBottomRightRadius": "2px",
+                      "borderTopLeftRadius": "2px",
+                      "borderTopRightRadius": "2px",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "57.599999999999994px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-72px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-72px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "12px",
                     }
                   }
                 />
               </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "12px",
-                  }
-                }
-              />
-            </div>
+            </li>
           </div>
         </div>
-      </div>
+      </ul>
     </div>
   </div>
   <div
@@ -829,44 +797,35 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           }
         }
       />
-      <div
-        className="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-        onScroll={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        onWheel={[Function]}
-        style={
-          Object {
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxFlex": 1,
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "WebkitFlexGrow": 1,
-            "WebkitFlexShrink": 1,
-            "WebkitOverflowScrolling": "touch",
-            "WebkitTransform": "translateZ(0px)",
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "msFlexDirection": "row",
-            "msFlexNegative": 1,
-            "msFlexPositive": 1,
-            "overflowX": "auto",
-            "overflowY": "hidden",
-            "transform": "translateZ(0px)",
-          }
-        }
+      <ul
+        className="sc-bdvvtL vVNul"
       >
         <div
-          className="css-view-1dbjc4n"
+          className="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+          onScroll={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          onWheel={[Function]}
           style={
             Object {
               "WebkitBoxDirection": "normal",
+              "WebkitBoxFlex": 1,
               "WebkitBoxOrient": "horizontal",
               "WebkitFlexDirection": "row",
+              "WebkitFlexGrow": 1,
+              "WebkitFlexShrink": 1,
+              "WebkitOverflowScrolling": "touch",
+              "WebkitTransform": "translateZ(0px)",
               "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
               "msFlexDirection": "row",
+              "msFlexNegative": 1,
+              "msFlexPositive": 1,
+              "overflowX": "auto",
+              "overflowY": "hidden",
+              "transform": "translateZ(0px)",
             }
           }
         >
@@ -882,129 +841,141 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               }
             }
           >
-            <div
-              className="css-view-1dbjc4n"
+            <li
+              className="sc-dkPtRN fQwkeZ"
             >
               <div
                 className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "8px",
-                    "borderBottomRightRadius": "8px",
-                    "borderTopLeftRadius": "8px",
-                    "borderTopRightRadius": "8px",
-                    "height": "216px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "144px",
-                  }
-                }
               >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-180px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "8px",
                       "borderBottomRightRadius": "8px",
                       "borderTopLeftRadius": "8px",
                       "borderTopRightRadius": "8px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-180px)",
+                      "height": "216px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "144px",
                     }
                   }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "12px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "115.2px",
-                  }
-                }
-              >
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-180px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "8px",
+                        "borderBottomRightRadius": "8px",
+                        "borderTopLeftRadius": "8px",
+                        "borderTopRightRadius": "8px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-180px)",
+                      }
+                    }
+                  />
+                </div>
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-144px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-144px)",
+                      "height": "12px",
                     }
                   }
                 />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "8px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "43.199999999999996px",
-                  }
-                }
-              >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-53.99999999999999px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "2px",
                       "borderBottomRightRadius": "2px",
                       "borderTopLeftRadius": "2px",
                       "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-53.99999999999999px)",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "115.2px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-144px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-144px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "8px",
+                    }
+                  }
+                />
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(221,221,221,1.00)",
+                      "borderBottomLeftRadius": "2px",
+                      "borderBottomRightRadius": "2px",
+                      "borderTopLeftRadius": "2px",
+                      "borderTopRightRadius": "2px",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "43.199999999999996px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-53.99999999999999px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-53.99999999999999px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "12px",
                     }
                   }
                 />
@@ -1013,155 +984,146 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 className="css-view-1dbjc4n"
                 style={
                   Object {
-                    "height": "12px",
+                    "width": "16px",
                   }
                 }
               />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "width": "16px",
-                }
-              }
-            />
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "flexDirection": "row",
-                "msFlexDirection": "row",
-              }
-            }
-          >
-            <div
-              className="css-view-1dbjc4n"
+            </li>
+            <li
+              className="sc-dkPtRN fQwkeZ"
             >
               <div
                 className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "8px",
-                    "borderBottomRightRadius": "8px",
-                    "borderTopLeftRadius": "8px",
-                    "borderTopRightRadius": "8px",
-                    "height": "216px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "144px",
-                  }
-                }
               >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-180px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "8px",
                       "borderBottomRightRadius": "8px",
                       "borderTopLeftRadius": "8px",
                       "borderTopRightRadius": "8px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-180px)",
+                      "height": "216px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "144px",
                     }
                   }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "12px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "115.2px",
-                  }
-                }
-              >
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-180px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "8px",
+                        "borderBottomRightRadius": "8px",
+                        "borderTopLeftRadius": "8px",
+                        "borderTopRightRadius": "8px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-180px)",
+                      }
+                    }
+                  />
+                </div>
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-144px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-144px)",
+                      "height": "12px",
                     }
                   }
                 />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "8px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "43.199999999999996px",
-                  }
-                }
-              >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-53.99999999999999px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "2px",
                       "borderBottomRightRadius": "2px",
                       "borderTopLeftRadius": "2px",
                       "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-53.99999999999999px)",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "115.2px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-144px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-144px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "8px",
+                    }
+                  }
+                />
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(221,221,221,1.00)",
+                      "borderBottomLeftRadius": "2px",
+                      "borderBottomRightRadius": "2px",
+                      "borderTopLeftRadius": "2px",
+                      "borderTopRightRadius": "2px",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "43.199999999999996px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-53.99999999999999px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-53.99999999999999px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "12px",
                     }
                   }
                 />
@@ -1170,155 +1132,146 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 className="css-view-1dbjc4n"
                 style={
                   Object {
-                    "height": "12px",
+                    "width": "16px",
                   }
                 }
               />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "width": "16px",
-                }
-              }
-            />
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "flexDirection": "row",
-                "msFlexDirection": "row",
-              }
-            }
-          >
-            <div
-              className="css-view-1dbjc4n"
+            </li>
+            <li
+              className="sc-dkPtRN fQwkeZ"
             >
               <div
                 className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "8px",
-                    "borderBottomRightRadius": "8px",
-                    "borderTopLeftRadius": "8px",
-                    "borderTopRightRadius": "8px",
-                    "height": "216px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "144px",
-                  }
-                }
               >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-180px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "8px",
                       "borderBottomRightRadius": "8px",
                       "borderTopLeftRadius": "8px",
                       "borderTopRightRadius": "8px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-180px)",
+                      "height": "216px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "144px",
                     }
                   }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "12px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "115.2px",
-                  }
-                }
-              >
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-180px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "8px",
+                        "borderBottomRightRadius": "8px",
+                        "borderTopLeftRadius": "8px",
+                        "borderTopRightRadius": "8px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-180px)",
+                      }
+                    }
+                  />
+                </div>
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-144px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-144px)",
+                      "height": "12px",
                     }
                   }
                 />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "8px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "43.199999999999996px",
-                  }
-                }
-              >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-53.99999999999999px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "2px",
                       "borderBottomRightRadius": "2px",
                       "borderTopLeftRadius": "2px",
                       "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-53.99999999999999px)",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "115.2px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-144px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-144px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "8px",
+                    }
+                  }
+                />
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(221,221,221,1.00)",
+                      "borderBottomLeftRadius": "2px",
+                      "borderBottomRightRadius": "2px",
+                      "borderTopLeftRadius": "2px",
+                      "borderTopRightRadius": "2px",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "43.199999999999996px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-53.99999999999999px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-53.99999999999999px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "12px",
                     }
                   }
                 />
@@ -1327,155 +1280,146 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 className="css-view-1dbjc4n"
                 style={
                   Object {
-                    "height": "12px",
+                    "width": "16px",
                   }
                 }
               />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "width": "16px",
-                }
-              }
-            />
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "flexDirection": "row",
-                "msFlexDirection": "row",
-              }
-            }
-          >
-            <div
-              className="css-view-1dbjc4n"
+            </li>
+            <li
+              className="sc-dkPtRN fQwkeZ"
             >
               <div
                 className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "8px",
-                    "borderBottomRightRadius": "8px",
-                    "borderTopLeftRadius": "8px",
-                    "borderTopRightRadius": "8px",
-                    "height": "216px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "144px",
-                  }
-                }
               >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-180px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "8px",
                       "borderBottomRightRadius": "8px",
                       "borderTopLeftRadius": "8px",
                       "borderTopRightRadius": "8px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-180px)",
+                      "height": "216px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "144px",
                     }
                   }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "12px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "115.2px",
-                  }
-                }
-              >
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-180px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "8px",
+                        "borderBottomRightRadius": "8px",
+                        "borderTopLeftRadius": "8px",
+                        "borderTopRightRadius": "8px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-180px)",
+                      }
+                    }
+                  />
+                </div>
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-144px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-144px)",
+                      "height": "12px",
                     }
                   }
                 />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "8px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "43.199999999999996px",
-                  }
-                }
-              >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-53.99999999999999px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "2px",
                       "borderBottomRightRadius": "2px",
                       "borderTopLeftRadius": "2px",
                       "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-53.99999999999999px)",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "115.2px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-144px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-144px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "8px",
+                    }
+                  }
+                />
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(221,221,221,1.00)",
+                      "borderBottomLeftRadius": "2px",
+                      "borderBottomRightRadius": "2px",
+                      "borderTopLeftRadius": "2px",
+                      "borderTopRightRadius": "2px",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "43.199999999999996px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-53.99999999999999px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-53.99999999999999px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "12px",
                     }
                   }
                 />
@@ -1484,171 +1428,154 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 className="css-view-1dbjc4n"
                 style={
                   Object {
-                    "height": "12px",
+                    "width": "16px",
                   }
                 }
               />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "width": "16px",
-                }
-              }
-            />
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "flexDirection": "row",
-                "msFlexDirection": "row",
-              }
-            }
-          >
-            <div
-              className="css-view-1dbjc4n"
+            </li>
+            <li
+              className="sc-dkPtRN fQwkeZ"
             >
               <div
                 className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "8px",
-                    "borderBottomRightRadius": "8px",
-                    "borderTopLeftRadius": "8px",
-                    "borderTopRightRadius": "8px",
-                    "height": "216px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "144px",
-                  }
-                }
               >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-180px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "8px",
                       "borderBottomRightRadius": "8px",
                       "borderTopLeftRadius": "8px",
                       "borderTopRightRadius": "8px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-180px)",
+                      "height": "216px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "144px",
                     }
                   }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "12px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "115.2px",
-                  }
-                }
-              >
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-180px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "8px",
+                        "borderBottomRightRadius": "8px",
+                        "borderTopLeftRadius": "8px",
+                        "borderTopRightRadius": "8px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-180px)",
+                      }
+                    }
+                  />
+                </div>
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-144px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-144px)",
+                      "height": "12px",
                     }
                   }
                 />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "8px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "43.199999999999996px",
-                  }
-                }
-              >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-53.99999999999999px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "2px",
                       "borderBottomRightRadius": "2px",
                       "borderTopLeftRadius": "2px",
                       "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-53.99999999999999px)",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "115.2px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-144px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-144px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "8px",
+                    }
+                  }
+                />
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(221,221,221,1.00)",
+                      "borderBottomLeftRadius": "2px",
+                      "borderBottomRightRadius": "2px",
+                      "borderTopLeftRadius": "2px",
+                      "borderTopRightRadius": "2px",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "43.199999999999996px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-53.99999999999999px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-53.99999999999999px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "12px",
                     }
                   }
                 />
               </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "12px",
-                  }
-                }
-              />
-            </div>
+            </li>
           </div>
         </div>
-      </div>
+      </ul>
     </div>
   </div>
   <div
@@ -1802,44 +1729,35 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           }
         }
       />
-      <div
-        className="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-        onScroll={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        onWheel={[Function]}
-        style={
-          Object {
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxFlex": 1,
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "WebkitFlexGrow": 1,
-            "WebkitFlexShrink": 1,
-            "WebkitOverflowScrolling": "touch",
-            "WebkitTransform": "translateZ(0px)",
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "msFlexDirection": "row",
-            "msFlexNegative": 1,
-            "msFlexPositive": 1,
-            "overflowX": "auto",
-            "overflowY": "hidden",
-            "transform": "translateZ(0px)",
-          }
-        }
+      <ul
+        className="sc-bdvvtL vVNul"
       >
         <div
-          className="css-view-1dbjc4n"
+          className="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+          onScroll={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          onWheel={[Function]}
           style={
             Object {
               "WebkitBoxDirection": "normal",
+              "WebkitBoxFlex": 1,
               "WebkitBoxOrient": "horizontal",
               "WebkitFlexDirection": "row",
+              "WebkitFlexGrow": 1,
+              "WebkitFlexShrink": 1,
+              "WebkitOverflowScrolling": "touch",
+              "WebkitTransform": "translateZ(0px)",
               "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
               "msFlexDirection": "row",
+              "msFlexNegative": 1,
+              "msFlexPositive": 1,
+              "overflowX": "auto",
+              "overflowY": "hidden",
+              "transform": "translateZ(0px)",
             }
           }
         >
@@ -1855,129 +1773,141 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               }
             }
           >
-            <div
-              className="css-view-1dbjc4n"
+            <li
+              className="sc-dkPtRN fQwkeZ"
             >
               <div
                 className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "8px",
-                    "borderBottomRightRadius": "8px",
-                    "borderTopLeftRadius": "8px",
-                    "borderTopRightRadius": "8px",
-                    "height": "216px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "144px",
-                  }
-                }
               >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-180px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "8px",
                       "borderBottomRightRadius": "8px",
                       "borderTopLeftRadius": "8px",
                       "borderTopRightRadius": "8px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-180px)",
+                      "height": "216px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "144px",
                     }
                   }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "12px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "115.2px",
-                  }
-                }
-              >
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-180px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "8px",
+                        "borderBottomRightRadius": "8px",
+                        "borderTopLeftRadius": "8px",
+                        "borderTopRightRadius": "8px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-180px)",
+                      }
+                    }
+                  />
+                </div>
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-144px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-144px)",
+                      "height": "12px",
                     }
                   }
                 />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "8px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "43.199999999999996px",
-                  }
-                }
-              >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-53.99999999999999px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "2px",
                       "borderBottomRightRadius": "2px",
                       "borderTopLeftRadius": "2px",
                       "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-53.99999999999999px)",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "115.2px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-144px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-144px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "8px",
+                    }
+                  }
+                />
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(221,221,221,1.00)",
+                      "borderBottomLeftRadius": "2px",
+                      "borderBottomRightRadius": "2px",
+                      "borderTopLeftRadius": "2px",
+                      "borderTopRightRadius": "2px",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "43.199999999999996px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-53.99999999999999px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-53.99999999999999px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "12px",
                     }
                   }
                 />
@@ -1986,155 +1916,146 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 className="css-view-1dbjc4n"
                 style={
                   Object {
-                    "height": "12px",
+                    "width": "16px",
                   }
                 }
               />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "width": "16px",
-                }
-              }
-            />
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "flexDirection": "row",
-                "msFlexDirection": "row",
-              }
-            }
-          >
-            <div
-              className="css-view-1dbjc4n"
+            </li>
+            <li
+              className="sc-dkPtRN fQwkeZ"
             >
               <div
                 className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "8px",
-                    "borderBottomRightRadius": "8px",
-                    "borderTopLeftRadius": "8px",
-                    "borderTopRightRadius": "8px",
-                    "height": "216px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "144px",
-                  }
-                }
               >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-180px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "8px",
                       "borderBottomRightRadius": "8px",
                       "borderTopLeftRadius": "8px",
                       "borderTopRightRadius": "8px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-180px)",
+                      "height": "216px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "144px",
                     }
                   }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "12px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "115.2px",
-                  }
-                }
-              >
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-180px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "8px",
+                        "borderBottomRightRadius": "8px",
+                        "borderTopLeftRadius": "8px",
+                        "borderTopRightRadius": "8px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-180px)",
+                      }
+                    }
+                  />
+                </div>
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-144px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-144px)",
+                      "height": "12px",
                     }
                   }
                 />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "8px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "43.199999999999996px",
-                  }
-                }
-              >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-53.99999999999999px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "2px",
                       "borderBottomRightRadius": "2px",
                       "borderTopLeftRadius": "2px",
                       "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-53.99999999999999px)",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "115.2px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-144px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-144px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "8px",
+                    }
+                  }
+                />
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(221,221,221,1.00)",
+                      "borderBottomLeftRadius": "2px",
+                      "borderBottomRightRadius": "2px",
+                      "borderTopLeftRadius": "2px",
+                      "borderTopRightRadius": "2px",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "43.199999999999996px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-53.99999999999999px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-53.99999999999999px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "12px",
                     }
                   }
                 />
@@ -2143,155 +2064,146 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 className="css-view-1dbjc4n"
                 style={
                   Object {
-                    "height": "12px",
+                    "width": "16px",
                   }
                 }
               />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "width": "16px",
-                }
-              }
-            />
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "flexDirection": "row",
-                "msFlexDirection": "row",
-              }
-            }
-          >
-            <div
-              className="css-view-1dbjc4n"
+            </li>
+            <li
+              className="sc-dkPtRN fQwkeZ"
             >
               <div
                 className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "8px",
-                    "borderBottomRightRadius": "8px",
-                    "borderTopLeftRadius": "8px",
-                    "borderTopRightRadius": "8px",
-                    "height": "216px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "144px",
-                  }
-                }
               >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-180px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "8px",
                       "borderBottomRightRadius": "8px",
                       "borderTopLeftRadius": "8px",
                       "borderTopRightRadius": "8px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-180px)",
+                      "height": "216px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "144px",
                     }
                   }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "12px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "115.2px",
-                  }
-                }
-              >
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-180px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "8px",
+                        "borderBottomRightRadius": "8px",
+                        "borderTopLeftRadius": "8px",
+                        "borderTopRightRadius": "8px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-180px)",
+                      }
+                    }
+                  />
+                </div>
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-144px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-144px)",
+                      "height": "12px",
                     }
                   }
                 />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "8px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "43.199999999999996px",
-                  }
-                }
-              >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-53.99999999999999px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "2px",
                       "borderBottomRightRadius": "2px",
                       "borderTopLeftRadius": "2px",
                       "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-53.99999999999999px)",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "115.2px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-144px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-144px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "8px",
+                    }
+                  }
+                />
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(221,221,221,1.00)",
+                      "borderBottomLeftRadius": "2px",
+                      "borderBottomRightRadius": "2px",
+                      "borderTopLeftRadius": "2px",
+                      "borderTopRightRadius": "2px",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "43.199999999999996px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-53.99999999999999px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-53.99999999999999px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "12px",
                     }
                   }
                 />
@@ -2300,155 +2212,146 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 className="css-view-1dbjc4n"
                 style={
                   Object {
-                    "height": "12px",
+                    "width": "16px",
                   }
                 }
               />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "width": "16px",
-                }
-              }
-            />
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "flexDirection": "row",
-                "msFlexDirection": "row",
-              }
-            }
-          >
-            <div
-              className="css-view-1dbjc4n"
+            </li>
+            <li
+              className="sc-dkPtRN fQwkeZ"
             >
               <div
                 className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "8px",
-                    "borderBottomRightRadius": "8px",
-                    "borderTopLeftRadius": "8px",
-                    "borderTopRightRadius": "8px",
-                    "height": "216px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "144px",
-                  }
-                }
               >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-180px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "8px",
                       "borderBottomRightRadius": "8px",
                       "borderTopLeftRadius": "8px",
                       "borderTopRightRadius": "8px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-180px)",
+                      "height": "216px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "144px",
                     }
                   }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "12px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "115.2px",
-                  }
-                }
-              >
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-180px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "8px",
+                        "borderBottomRightRadius": "8px",
+                        "borderTopLeftRadius": "8px",
+                        "borderTopRightRadius": "8px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-180px)",
+                      }
+                    }
+                  />
+                </div>
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-144px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-144px)",
+                      "height": "12px",
                     }
                   }
                 />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "8px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "43.199999999999996px",
-                  }
-                }
-              >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-53.99999999999999px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "2px",
                       "borderBottomRightRadius": "2px",
                       "borderTopLeftRadius": "2px",
                       "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-53.99999999999999px)",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "115.2px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-144px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-144px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "8px",
+                    }
+                  }
+                />
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(221,221,221,1.00)",
+                      "borderBottomLeftRadius": "2px",
+                      "borderBottomRightRadius": "2px",
+                      "borderTopLeftRadius": "2px",
+                      "borderTopRightRadius": "2px",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "43.199999999999996px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-53.99999999999999px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-53.99999999999999px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "12px",
                     }
                   }
                 />
@@ -2457,171 +2360,154 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 className="css-view-1dbjc4n"
                 style={
                   Object {
-                    "height": "12px",
+                    "width": "16px",
                   }
                 }
               />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "width": "16px",
-                }
-              }
-            />
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "flexDirection": "row",
-                "msFlexDirection": "row",
-              }
-            }
-          >
-            <div
-              className="css-view-1dbjc4n"
+            </li>
+            <li
+              className="sc-dkPtRN fQwkeZ"
             >
               <div
                 className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "8px",
-                    "borderBottomRightRadius": "8px",
-                    "borderTopLeftRadius": "8px",
-                    "borderTopRightRadius": "8px",
-                    "height": "216px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "144px",
-                  }
-                }
               >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-180px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "8px",
                       "borderBottomRightRadius": "8px",
                       "borderTopLeftRadius": "8px",
                       "borderTopRightRadius": "8px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-180px)",
+                      "height": "216px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "144px",
                     }
                   }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "12px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "115.2px",
-                  }
-                }
-              >
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-180px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "8px",
+                        "borderBottomRightRadius": "8px",
+                        "borderTopLeftRadius": "8px",
+                        "borderTopRightRadius": "8px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-180px)",
+                      }
+                    }
+                  />
+                </div>
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-144px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-144px)",
+                      "height": "12px",
                     }
                   }
                 />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "8px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "43.199999999999996px",
-                  }
-                }
-              >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-53.99999999999999px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "2px",
                       "borderBottomRightRadius": "2px",
                       "borderTopLeftRadius": "2px",
                       "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-53.99999999999999px)",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "115.2px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-144px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-144px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "8px",
+                    }
+                  }
+                />
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(221,221,221,1.00)",
+                      "borderBottomLeftRadius": "2px",
+                      "borderBottomRightRadius": "2px",
+                      "borderTopLeftRadius": "2px",
+                      "borderTopRightRadius": "2px",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "43.199999999999996px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-53.99999999999999px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-53.99999999999999px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "12px",
                     }
                   }
                 />
               </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "12px",
-                  }
-                }
-              />
-            </div>
+            </li>
           </div>
         </div>
-      </div>
+      </ul>
     </div>
   </div>
   <div
@@ -2708,44 +2594,35 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
           }
         }
       />
-      <div
-        className="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
-        onScroll={[Function]}
-        onTouchEnd={[Function]}
-        onTouchMove={[Function]}
-        onTouchStart={[Function]}
-        onWheel={[Function]}
-        style={
-          Object {
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxFlex": 1,
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "WebkitFlexGrow": 1,
-            "WebkitFlexShrink": 1,
-            "WebkitOverflowScrolling": "touch",
-            "WebkitTransform": "translateZ(0px)",
-            "flexDirection": "row",
-            "flexGrow": 1,
-            "flexShrink": 1,
-            "msFlexDirection": "row",
-            "msFlexNegative": 1,
-            "msFlexPositive": 1,
-            "overflowX": "auto",
-            "overflowY": "hidden",
-            "transform": "translateZ(0px)",
-          }
-        }
+      <ul
+        className="sc-bdvvtL vVNul"
       >
         <div
-          className="css-view-1dbjc4n"
+          className="css-view-1dbjc4n r-scrollbarWidth-2eszeu"
+          onScroll={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          onWheel={[Function]}
           style={
             Object {
               "WebkitBoxDirection": "normal",
+              "WebkitBoxFlex": 1,
               "WebkitBoxOrient": "horizontal",
               "WebkitFlexDirection": "row",
+              "WebkitFlexGrow": 1,
+              "WebkitFlexShrink": 1,
+              "WebkitOverflowScrolling": "touch",
+              "WebkitTransform": "translateZ(0px)",
               "flexDirection": "row",
+              "flexGrow": 1,
+              "flexShrink": 1,
               "msFlexDirection": "row",
+              "msFlexNegative": 1,
+              "msFlexPositive": 1,
+              "overflowX": "auto",
+              "overflowY": "hidden",
+              "transform": "translateZ(0px)",
             }
           }
         >
@@ -2761,129 +2638,141 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
               }
             }
           >
-            <div
-              className="css-view-1dbjc4n"
+            <li
+              className="sc-dkPtRN fQwkeZ"
             >
               <div
                 className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "8px",
-                    "borderBottomRightRadius": "8px",
-                    "borderTopLeftRadius": "8px",
-                    "borderTopRightRadius": "8px",
-                    "height": "288px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "192px",
-                  }
-                }
               >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-240px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "8px",
                       "borderBottomRightRadius": "8px",
                       "borderTopLeftRadius": "8px",
                       "borderTopRightRadius": "8px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-240px)",
+                      "height": "288px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "192px",
                     }
                   }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "12px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "153.60000000000002px",
-                  }
-                }
-              >
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-240px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "8px",
+                        "borderBottomRightRadius": "8px",
+                        "borderTopLeftRadius": "8px",
+                        "borderTopRightRadius": "8px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-240px)",
+                      }
+                    }
+                  />
+                </div>
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-192.00000000000003px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-192.00000000000003px)",
+                      "height": "12px",
                     }
                   }
                 />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "8px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "57.599999999999994px",
-                  }
-                }
-              >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-72px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "2px",
                       "borderBottomRightRadius": "2px",
                       "borderTopLeftRadius": "2px",
                       "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-72px)",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "153.60000000000002px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-192.00000000000003px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-192.00000000000003px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "8px",
+                    }
+                  }
+                />
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(221,221,221,1.00)",
+                      "borderBottomLeftRadius": "2px",
+                      "borderBottomRightRadius": "2px",
+                      "borderTopLeftRadius": "2px",
+                      "borderTopRightRadius": "2px",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "57.599999999999994px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-72px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-72px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "12px",
                     }
                   }
                 />
@@ -2892,155 +2781,146 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 className="css-view-1dbjc4n"
                 style={
                   Object {
-                    "height": "12px",
+                    "width": "16px",
                   }
                 }
               />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "width": "16px",
-                }
-              }
-            />
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "flexDirection": "row",
-                "msFlexDirection": "row",
-              }
-            }
-          >
-            <div
-              className="css-view-1dbjc4n"
+            </li>
+            <li
+              className="sc-dkPtRN fQwkeZ"
             >
               <div
                 className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "8px",
-                    "borderBottomRightRadius": "8px",
-                    "borderTopLeftRadius": "8px",
-                    "borderTopRightRadius": "8px",
-                    "height": "288px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "192px",
-                  }
-                }
               >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-240px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "8px",
                       "borderBottomRightRadius": "8px",
                       "borderTopLeftRadius": "8px",
                       "borderTopRightRadius": "8px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-240px)",
+                      "height": "288px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "192px",
                     }
                   }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "12px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "153.60000000000002px",
-                  }
-                }
-              >
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-240px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "8px",
+                        "borderBottomRightRadius": "8px",
+                        "borderTopLeftRadius": "8px",
+                        "borderTopRightRadius": "8px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-240px)",
+                      }
+                    }
+                  />
+                </div>
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-192.00000000000003px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-192.00000000000003px)",
+                      "height": "12px",
                     }
                   }
                 />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "8px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "57.599999999999994px",
-                  }
-                }
-              >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-72px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "2px",
                       "borderBottomRightRadius": "2px",
                       "borderTopLeftRadius": "2px",
                       "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-72px)",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "153.60000000000002px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-192.00000000000003px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-192.00000000000003px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "8px",
+                    }
+                  }
+                />
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(221,221,221,1.00)",
+                      "borderBottomLeftRadius": "2px",
+                      "borderBottomRightRadius": "2px",
+                      "borderTopLeftRadius": "2px",
+                      "borderTopRightRadius": "2px",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "57.599999999999994px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-72px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-72px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "12px",
                     }
                   }
                 />
@@ -3049,155 +2929,146 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 className="css-view-1dbjc4n"
                 style={
                   Object {
-                    "height": "12px",
+                    "width": "16px",
                   }
                 }
               />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "width": "16px",
-                }
-              }
-            />
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "flexDirection": "row",
-                "msFlexDirection": "row",
-              }
-            }
-          >
-            <div
-              className="css-view-1dbjc4n"
+            </li>
+            <li
+              className="sc-dkPtRN fQwkeZ"
             >
               <div
                 className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "8px",
-                    "borderBottomRightRadius": "8px",
-                    "borderTopLeftRadius": "8px",
-                    "borderTopRightRadius": "8px",
-                    "height": "288px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "192px",
-                  }
-                }
               >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-240px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "8px",
                       "borderBottomRightRadius": "8px",
                       "borderTopLeftRadius": "8px",
                       "borderTopRightRadius": "8px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-240px)",
+                      "height": "288px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "192px",
                     }
                   }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "12px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "153.60000000000002px",
-                  }
-                }
-              >
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-240px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "8px",
+                        "borderBottomRightRadius": "8px",
+                        "borderTopLeftRadius": "8px",
+                        "borderTopRightRadius": "8px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-240px)",
+                      }
+                    }
+                  />
+                </div>
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-192.00000000000003px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-192.00000000000003px)",
+                      "height": "12px",
                     }
                   }
                 />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "8px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "57.599999999999994px",
-                  }
-                }
-              >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-72px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "2px",
                       "borderBottomRightRadius": "2px",
                       "borderTopLeftRadius": "2px",
                       "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-72px)",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "153.60000000000002px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-192.00000000000003px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-192.00000000000003px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "8px",
+                    }
+                  }
+                />
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(221,221,221,1.00)",
+                      "borderBottomLeftRadius": "2px",
+                      "borderBottomRightRadius": "2px",
+                      "borderTopLeftRadius": "2px",
+                      "borderTopRightRadius": "2px",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "57.599999999999994px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-72px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-72px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "12px",
                     }
                   }
                 />
@@ -3206,171 +3077,154 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
                 className="css-view-1dbjc4n"
                 style={
                   Object {
-                    "height": "12px",
+                    "width": "16px",
                   }
                 }
               />
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "width": "16px",
-                }
-              }
-            />
-          </div>
-          <div
-            className="css-view-1dbjc4n"
-            style={
-              Object {
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitFlexDirection": "row",
-                "flexDirection": "row",
-                "msFlexDirection": "row",
-              }
-            }
-          >
-            <div
-              className="css-view-1dbjc4n"
+            </li>
+            <li
+              className="sc-dkPtRN fQwkeZ"
             >
               <div
                 className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "8px",
-                    "borderBottomRightRadius": "8px",
-                    "borderTopLeftRadius": "8px",
-                    "borderTopRightRadius": "8px",
-                    "height": "288px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "192px",
-                  }
-                }
               >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-240px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "8px",
                       "borderBottomRightRadius": "8px",
                       "borderTopLeftRadius": "8px",
                       "borderTopRightRadius": "8px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-240px)",
+                      "height": "288px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "192px",
                     }
                   }
-                />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "12px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "153.60000000000002px",
-                  }
-                }
-              >
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-240px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "8px",
+                        "borderBottomRightRadius": "8px",
+                        "borderTopLeftRadius": "8px",
+                        "borderTopRightRadius": "8px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-240px)",
+                      }
+                    }
+                  />
+                </div>
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-192.00000000000003px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
-                      "borderBottomLeftRadius": "2px",
-                      "borderBottomRightRadius": "2px",
-                      "borderTopLeftRadius": "2px",
-                      "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-192.00000000000003px)",
+                      "height": "12px",
                     }
                   }
                 />
-              </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "8px",
-                  }
-                }
-              />
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "backgroundColor": "rgba(221,221,221,1.00)",
-                    "borderBottomLeftRadius": "2px",
-                    "borderBottomRightRadius": "2px",
-                    "borderTopLeftRadius": "2px",
-                    "borderTopRightRadius": "2px",
-                    "height": "12px",
-                    "overflowX": "hidden",
-                    "overflowY": "hidden",
-                    "width": "57.599999999999994px",
-                  }
-                }
-              >
                 <div
                   className="css-view-1dbjc4n"
                   style={
                     Object {
-                      "WebkitTransform": "translateX(-72px)",
-                      "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                      "backgroundColor": "rgba(221,221,221,1.00)",
                       "borderBottomLeftRadius": "2px",
                       "borderBottomRightRadius": "2px",
                       "borderTopLeftRadius": "2px",
                       "borderTopRightRadius": "2px",
-                      "bottom": "0px",
-                      "left": "0px",
-                      "position": "absolute",
-                      "right": "0px",
-                      "top": "0px",
-                      "transform": "translateX(-72px)",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "153.60000000000002px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-192.00000000000003px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-192.00000000000003px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "8px",
+                    }
+                  }
+                />
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "backgroundColor": "rgba(221,221,221,1.00)",
+                      "borderBottomLeftRadius": "2px",
+                      "borderBottomRightRadius": "2px",
+                      "borderTopLeftRadius": "2px",
+                      "borderTopRightRadius": "2px",
+                      "height": "12px",
+                      "overflowX": "hidden",
+                      "overflowY": "hidden",
+                      "width": "57.599999999999994px",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    style={
+                      Object {
+                        "WebkitTransform": "translateX(-72px)",
+                        "backgroundImage": "linear-gradient(1.5707963267948966rad,#DDDDDD,#EEEEEE,#EEEEEE,#DDDDDD)",
+                        "borderBottomLeftRadius": "2px",
+                        "borderBottomRightRadius": "2px",
+                        "borderTopLeftRadius": "2px",
+                        "borderTopRightRadius": "2px",
+                        "bottom": "0px",
+                        "left": "0px",
+                        "position": "absolute",
+                        "right": "0px",
+                        "top": "0px",
+                        "transform": "translateX(-72px)",
+                      }
+                    }
+                  />
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "height": "12px",
                     }
                   }
                 />
               </div>
-              <div
-                className="css-view-1dbjc4n"
-                style={
-                  Object {
-                    "height": "12px",
-                  }
-                }
-              />
-            </div>
+            </li>
           </div>
         </div>
-      </div>
+      </ul>
     </div>
   </div>
 </div>

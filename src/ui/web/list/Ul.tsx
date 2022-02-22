@@ -5,6 +5,8 @@ type Props = {
   className?: string
 }
 
-export function Ul(props: Props) {
+export default function Ul(props: Props) {
   return <React.Fragment>{props.children}</React.Fragment>
 }
+
+export { Ul, Ul as VerticalUl }

@@ -3,6 +3,7 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { NativeScrollEvent, ScrollView, StyleSheet } from 'react-native'
+import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -38,6 +39,8 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 import { A } from 'ui/web/link/A'
 import { Link } from 'ui/web/link/Link'
+import { Li } from 'ui/web/list/Li'
+import { Ul, VerticalUl } from 'ui/web/list/Ul'
 
 import Package from '../../../../package.json'
 
@@ -117,125 +120,159 @@ export const Profile: React.FC = () => {
       <ProfileContainer>
         <Spacer.Column numberOfSpaces={getSpacing(1)} />
         <Section title={isLoggedIn ? t`Paramètres du compte` : t`Paramètres de l'application`}>
-          {!!isLoggedIn && (
-            <React.Fragment>
+          <VerticalUl>
+            {!!isLoggedIn && (
+              <React.Fragment>
+                <Li>
+                  <Link
+                    to={{ screen: 'PersonalData', params: undefined }}
+                    style={styles.link}
+                    accessible={false}>
+                    <Row
+                      title={t`Informations personnelles`}
+                      type="navigable"
+                      onPress={() => navigate('PersonalData')}
+                      icon={ProfileIcon}
+                    />
+                  </Link>
+                </Li>
+                <Li>
+                  <Link
+                    to={{ screen: 'ChangePassword', params: undefined }}
+                    style={styles.link}
+                    accessible={false}>
+                    <Row
+                      title={t`Mot de passe`}
+                      type="navigable"
+                      onPress={() => navigate('ChangePassword')}
+                      icon={Lock}
+                    />
+                  </Link>
+                </Li>
+              </React.Fragment>
+            )}
+            <Li>
               <Link
-                to={{ screen: 'PersonalData', params: undefined }}
+                to={{ screen: 'NotificationSettings', params: undefined }}
                 style={styles.link}
                 accessible={false}>
                 <Row
-                  title={t`Informations personnelles`}
                   type="navigable"
-                  onPress={() => navigate('PersonalData')}
-                  icon={ProfileIcon}
+                  title={t`Notifications`}
+                  icon={Bell}
+                  onPress={() => navigate('NotificationSettings')}
                 />
               </Link>
-              <Link
-                to={{ screen: 'ChangePassword', params: undefined }}
-                style={styles.link}
-                accessible={false}>
-                <Row
-                  title={t`Mot de passe`}
-                  type="navigable"
-                  onPress={() => navigate('ChangePassword')}
-                  icon={Lock}
+            </Li>
+            <Li>
+              <SectionWithSwitch
+                icon={LocationPointerNotFilled}
+                iconSize={SECTION_ROW_ICON_SIZE}
+                title={t`Partager ma position`}
+                active={isGeolocSwitchActive}
+                accessibilityLabel={t`Interrupteur géolocalisation`}
+                accessibilityDescribedBy={locationActivationErrorId}
+                toggle={() => {
+                  switchGeolocation()
+                  debouncedLogLocationToggle(!isGeolocSwitchActive)
+                }}
+                toggleLabel={t`Partager ma position`}
+              />
+              {!!positionError && (
+                <InputError
+                  visible
+                  messageId={positionError.message}
+                  numberOfSpacesTop={1}
+                  relatedInputId={locationActivationErrorId}
                 />
-              </Link>
-            </React.Fragment>
-          )}
-          <Link
-            to={{ screen: 'NotificationSettings', params: undefined }}
-            style={styles.link}
-            accessible={false}>
-            <Row
-              type="navigable"
-              title={t`Notifications`}
-              icon={Bell}
-              onPress={() => navigate('NotificationSettings')}
-            />
-          </Link>
-          <SectionWithSwitch
-            icon={LocationPointerNotFilled}
-            iconSize={SECTION_ROW_ICON_SIZE}
-            title={t`Partager ma position`}
-            active={isGeolocSwitchActive}
-            accessibilityLabel={t`Interrupteur géolocalisation`}
-            accessibilityDescribedBy={locationActivationErrorId}
-            toggle={() => {
-              switchGeolocation()
-              debouncedLogLocationToggle(!isGeolocSwitchActive)
-            }}
-            toggleLabel={t`Partager ma position`}
-          />
-          {!!positionError && (
-            <InputError
-              visible
-              messageId={positionError.message}
-              numberOfSpacesTop={1}
-              relatedInputId={locationActivationErrorId}
-            />
-          )}
+              )}
+            </Li>
+          </VerticalUl>
         </Section>
         <Section title={t`Aides`}>
-          <Link
-            to={{ screen: 'FirstTutorial', params: { shouldCloseAppOnBackAction: false } }}
-            style={styles.link}
-            accessible={false}>
-            <Row
-              title={t`Comment ça marche\u00a0?`}
-              type="navigable"
-              onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
-              icon={LifeBuoy}
-            />
-          </Link>
-          <A href={env.FAQ_LINK}>
-            <Row
-              title={t`Centre d'aide`}
-              type="clickable"
-              onPress={() => openUrl(env.FAQ_LINK)}
-              icon={ExternalSite}
-            />
-          </A>
+          <VerticalUl>
+            <Li>
+              <Link
+                to={{ screen: 'FirstTutorial', params: { shouldCloseAppOnBackAction: false } }}
+                style={styles.link}
+                accessible={false}>
+                <Row
+                  title={t`Comment ça marche\u00a0?`}
+                  type="navigable"
+                  onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
+                  icon={LifeBuoy}
+                />
+              </Link>
+            </Li>
+            <Li>
+              <A href={env.FAQ_LINK}>
+                <Row
+                  title={t`Centre d'aide`}
+                  type="clickable"
+                  onPress={() => openUrl(env.FAQ_LINK)}
+                  icon={ExternalSite}
+                />
+              </A>
+            </Li>
+          </VerticalUl>
         </Section>
         <Section title={t`Autres`}>
-          <A href={env.ACCESSIBILITY_LINK}>
-            <Row
-              title={t`Accessibilité`}
-              type="clickable"
-              onPress={() => openUrl(env.ACCESSIBILITY_LINK)}
-              icon={ExternalSite}
-            />
-          </A>
-          <Link
-            to={{ screen: 'LegalNotices', params: undefined }}
-            style={styles.link}
-            accessible={false}>
-            <Row
-              title={t`Mentions légales`}
-              type="navigable"
-              onPress={() => navigate('LegalNotices')}
-              icon={LegalNotices}
-            />
-          </Link>
-          <Link
-            to={{ screen: 'ConsentSettings', params: undefined }}
-            style={styles.link}
-            accessible={false}>
-            <Row
-              title={t`Confidentialité`}
-              type="navigable"
-              onPress={() => navigate('ConsentSettings')}
-              icon={Confidentiality}
-            />
-          </Link>
+          <VerticalUl>
+            <Li>
+              <A href={env.ACCESSIBILITY_LINK}>
+                <Row
+                  title={t`Accessibilité`}
+                  type="clickable"
+                  onPress={() => openUrl(env.ACCESSIBILITY_LINK)}
+                  icon={ExternalSite}
+                />
+              </A>
+            </Li>
+            <Li>
+              <Link
+                to={{ screen: 'LegalNotices', params: undefined }}
+                style={styles.link}
+                accessible={false}>
+                <Row
+                  title={t`Mentions légales`}
+                  type="navigable"
+                  onPress={() => navigate('LegalNotices')}
+                  icon={LegalNotices}
+                />
+              </Link>
+            </Li>
+            <Li>
+              <Link
+                to={{ screen: 'ConsentSettings', params: undefined }}
+                style={styles.link}
+                accessible={false}>
+                <Row
+                  title={t`Confidentialité`}
+                  type="navigable"
+                  onPress={() => navigate('ConsentSettings')}
+                  icon={Confidentiality}
+                />
+              </Link>
+            </Li>
+          </VerticalUl>
         </Section>
         <Section title={t`Suivre pass Culture`}>
           <NetworkRow>
             <NetworkRowContainer>
-              <SocialNetworkCard network="instagram" />
-              <SocialNetworkCard network="twitter" />
-              <SocialNetworkCard network="tiktok" />
-              <SocialNetworkCard network="facebook" />
+              <StyledUl>
+                <Li>
+                  <SocialNetworkCard network="instagram" />
+                </Li>
+                <Li>
+                  <SocialNetworkCard network="twitter" />
+                </Li>
+                <Li>
+                  <SocialNetworkCard network="tiktok" />
+                </Li>
+                <Li>
+                  <SocialNetworkCard network="facebook" />
+                </Li>
+              </StyledUl>
             </NetworkRowContainer>
           </NetworkRow>
         </Section>
@@ -289,6 +326,11 @@ const NetworkRow = styled.View(({ theme }) => ({
 const NetworkRowContainer = styled.View({
   flexDirection: 'row',
   paddingVertical,
+  justifyContent: 'space-between',
+})
+
+const StyledUl = webStyled(Ul)({
+  flex: 1,
   justifyContent: 'space-between',
 })
 

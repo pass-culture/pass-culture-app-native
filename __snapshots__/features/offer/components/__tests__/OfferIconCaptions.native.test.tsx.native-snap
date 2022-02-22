@@ -34,7 +34,7 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
     }
   >
     <View
-      className="sc-bdvvtL fuZyMx"
+      className="sc-eCImPb RpyGb"
     >
       <View
         height={32}
@@ -56,7 +56,7 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
       }
     />
     <Text
-      className="sc-gsDKAQ dZPdWA"
+      className="sc-jRQBWg gkZaEc"
       testID="caption-undefined"
     >
       Abonnements concerts
@@ -88,7 +88,7 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
     }
   >
     <View
-      className="sc-bdvvtL fuZyMx"
+      className="sc-eCImPb RpyGb"
     >
       <View
         fill="#696A6F"
@@ -112,7 +112,7 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
       }
     />
     <Text
-      className="sc-gsDKAQ dZPdWA"
+      className="sc-jRQBWg gkZaEc"
       testID="caption-iconPrice"
     >
       28 €

@@ -486,7 +486,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                 }
                               >
                                 <View
-                                  className="sc-bdvvtL kUtbun"
+                                  className="sc-eCImPb clXaVx"
                                 >
                                   <View
                                     height={16}
@@ -498,14 +498,14 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                   </View>
                                 </View>
                                 <Text
-                                  className="sc-gsDKAQ icLopp"
+                                  className="sc-jRQBWg cIdrsZ"
                                   numberOfLines={1}
                                 >
                                   PATHE BEAUGRENELLE, 
                                 </Text>
                               </View>
                               <Text
-                                className="sc-dkPtRN hPdduw"
+                                className="sc-gKclnd feVMaO"
                                 isDigital={true}
                                 numberOfLines={1}
                               >
@@ -532,14 +532,14 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                               }
                             >
                               <Text
-                                className="sc-pVTFL ikKgzG"
+                                className="sc-bqiRlB gCHpIY"
                               >
                                 Titre
                               </Text>
                               <Text
                                 adjustsFontSizeToFit={true}
                                 allowFontScaling={false}
-                                className="sc-iCfMLu hPTqZV"
+                                className="sc-crHmcD VvfNK"
                                 numberOfLines={3}
                                 testID="offerTitle"
                               >
@@ -589,7 +589,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                 }
                               >
                                 <View
-                                  className="sc-hKwDye knufov"
+                                  className="sc-iCfMLu knmSFD"
                                 >
                                   <View
                                     height={32}
@@ -611,7 +611,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                   }
                                 />
                                 <Text
-                                  className="sc-eCImPb bkgyub"
+                                  className="sc-furwcr dPkSoo"
                                   testID="caption-undefined"
                                 >
                                   Cinéma plein air
@@ -643,7 +643,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                 }
                               >
                                 <View
-                                  className="sc-hKwDye knufov"
+                                  className="sc-iCfMLu knmSFD"
                                 >
                                   <View
                                     fill="#696A6F"
@@ -667,7 +667,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                   }
                                 />
                                 <Text
-                                  className="sc-eCImPb bkgyub"
+                                  className="sc-furwcr dPkSoo"
                                   testID="caption-iconPrice"
                                 >
                                   5 €
@@ -685,12 +685,12 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                               />
                             </View>
                             <Text
-                              className="sc-pVTFL ikKgzG"
+                              className="sc-bqiRlB gCHpIY"
                             >
                               Description
                             </Text>
                             <View
-                              className="sc-jRQBWg jnmfbU"
+                              className="sc-pVTFL kpRESb"
                             >
                               <View
                                 numberOfSpaces={4}
@@ -893,12 +893,12 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             >
                               <Text
-                                className="sc-furwcr gggupM"
+                                className="sc-egiyK losQmC"
                               >
                                 Quand ?
                               </Text>
                               <Text
-                                className="sc-jrQzAO bmZWBG"
+                                className="sc-ksdxgE svbVl"
                               >
                                 Du 3 au 4 janvier 2021
                               </Text>
@@ -2728,7 +2728,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 }
                               >
                                 <View
-                                  className="sc-bdvvtL kUtbun"
+                                  className="sc-eCImPb clXaVx"
                                 >
                                   <View
                                     height={16}
@@ -2740,14 +2740,14 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                   </View>
                                 </View>
                                 <Text
-                                  className="sc-gsDKAQ icLopp"
+                                  className="sc-jRQBWg cIdrsZ"
                                   numberOfLines={1}
                                 >
                                   PATHE BEAUGRENELLE, 
                                 </Text>
                               </View>
                               <Text
-                                className="sc-dkPtRN hYPHvu"
+                                className="sc-gKclnd gmlRSw"
                                 isDigital={false}
                                 numberOfLines={1}
                               >
@@ -2774,14 +2774,14 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                               }
                             >
                               <Text
-                                className="sc-pVTFL ikKgzG"
+                                className="sc-bqiRlB gCHpIY"
                               >
                                 Titre
                               </Text>
                               <Text
                                 adjustsFontSizeToFit={true}
                                 allowFontScaling={false}
-                                className="sc-iCfMLu hPTqZV"
+                                className="sc-crHmcD VvfNK"
                                 numberOfLines={3}
                                 testID="offerTitle"
                               >
@@ -2831,7 +2831,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 }
                               >
                                 <View
-                                  className="sc-hKwDye knufov"
+                                  className="sc-iCfMLu knmSFD"
                                 >
                                   <View
                                     height={32}
@@ -2853,7 +2853,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                   }
                                 />
                                 <Text
-                                  className="sc-eCImPb bkgyub"
+                                  className="sc-furwcr dPkSoo"
                                   testID="caption-undefined"
                                 >
                                   Cinéma plein air
@@ -2885,7 +2885,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 }
                               >
                                 <View
-                                  className="sc-hKwDye knufov"
+                                  className="sc-iCfMLu knmSFD"
                                 >
                                   <View
                                     height={32}
@@ -2908,7 +2908,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                   }
                                 />
                                 <Text
-                                  className="sc-eCImPb bkgyub"
+                                  className="sc-furwcr dPkSoo"
                                   testID="caption-iconDuo"
                                 >
                                   À deux !
@@ -2940,7 +2940,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                 }
                               >
                                 <View
-                                  className="sc-hKwDye knufov"
+                                  className="sc-iCfMLu knmSFD"
                                 >
                                   <View
                                     fill="#696A6F"
@@ -2964,7 +2964,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                   }
                                 />
                                 <Text
-                                  className="sc-eCImPb bkgyub"
+                                  className="sc-furwcr dPkSoo"
                                   testID="caption-iconPrice"
                                 >
                                   5 € / place
@@ -2982,12 +2982,12 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                               />
                             </View>
                             <Text
-                              className="sc-pVTFL ikKgzG"
+                              className="sc-bqiRlB gCHpIY"
                             >
                               Description
                             </Text>
                             <View
-                              className="sc-jRQBWg jnmfbU"
+                              className="sc-pVTFL kpRESb"
                             >
                               <View
                                 numberOfSpaces={4}
@@ -3190,12 +3190,12 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             >
                               <Text
-                                className="sc-furwcr gggupM"
+                                className="sc-egiyK losQmC"
                               >
                                 Quand ?
                               </Text>
                               <Text
-                                className="sc-jrQzAO bmZWBG"
+                                className="sc-ksdxgE svbVl"
                               >
                                 Du 3 au 4 janvier 2021
                               </Text>
@@ -3230,7 +3230,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 }
                               />
                               <Text
-                                className="sc-gKclnd jQLBDT"
+                                className="sc-jrQzAO MoQXb"
                               >
                                 Où ?
                               </Text>
