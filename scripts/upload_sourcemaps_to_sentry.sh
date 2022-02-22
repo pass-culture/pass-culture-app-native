@@ -67,7 +67,7 @@ upload_sourcemaps(){
     upload-sourcemaps \
     --dist "${DIST}" \
     --strip-prefix "${PWD}" \
-    --rewrite "sourcemaps/index.${APP_OS}.bundle sourcemaps/index.${APP_OS}.bundle.map"
+    --rewrite "sourcemaps/index.${APP_OS}.bundle" "sourcemaps/index.${APP_OS}.bundle.map"
 
   echo "✅ Successfully uploaded sources maps"
 }

@@ -371,6 +371,7 @@ jobs:
       - install_node_version
       - install_node_modules
       - install_ruby_modules
+      - setup_sentry
       - run:
           name: Deploy Android App for testing environment
           command: |
