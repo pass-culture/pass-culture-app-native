@@ -10,6 +10,7 @@ import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { AppFullPageModal } from 'ui/components/modals/AppFullPageModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
+import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
 import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
 import { Typo } from 'ui/theme'
 
@@ -33,6 +34,8 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
 
   const title = t`Veux-tu abandonner l'inscription\u00a0?`
   const description = t`Les informations que tu as renseignées ne seront pas enregistrées.`
+
+  useEscapeKeyAction(visible ? resume : undefined)
 
   return (
     <AppFullPageModal visible={visible} testIdSuffix={testIdSuffix}>
