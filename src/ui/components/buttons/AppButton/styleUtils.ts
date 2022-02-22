@@ -37,7 +37,7 @@ export const appButtonStyles: ButtonStyles = ({
 }: ButtonStylesArgs) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  justifyContent: justifyContent ?? 'center',
+  justifyContent: justifyContent ?? 'flex-start',
   borderRadius: theme.borderRadius.button,
   padding: 2,
   minHeight:
