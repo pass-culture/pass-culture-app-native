@@ -97,6 +97,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
     swipeThreshold={100}
   >
     <View
+      aria-describedby="testUuidV4"
       height={428}
       style={
         Array [
@@ -205,6 +206,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
           }
         >
           <Text
+            nativeID="testUuidV4"
             numberOfLines={2}
             style={
               Array [
@@ -421,6 +423,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
     swipeThreshold={100}
   >
     <View
+      aria-describedby="testUuidV4"
       height={428}
       style={
         Array [
@@ -529,6 +532,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
           }
         >
           <Text
+            nativeID="testUuidV4"
             numberOfLines={2}
             style={
               Array [

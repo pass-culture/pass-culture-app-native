@@ -485,6 +485,7 @@ Array [
                       swipeThreshold={100}
                     >
                       <View
+                        aria-describedby="testUuidV4"
                         height={428}
                         style={
                           Array [
@@ -558,6 +559,7 @@ Array [
                             }
                           >
                             <Text
+                              nativeID="testUuidV4"
                               numberOfLines={2}
                               style={
                                 Array [
@@ -1075,6 +1077,7 @@ Array [
       swipeThreshold={100}
     >
       <View
+        aria-describedby="testUuidV4"
         height={428}
         style={
           Array [
@@ -1148,6 +1151,7 @@ Array [
             }
           >
             <Text
+              nativeID="testUuidV4"
               numberOfLines={2}
               style={
                 Array [

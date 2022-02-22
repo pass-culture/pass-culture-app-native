@@ -114,6 +114,7 @@ exports[`<BirthdayInformationModal /> should render properly 1`] = `
           }
         >
           <Text
+            nativeID="testUuidV4"
             numberOfLines={3}
             style={
               Array [

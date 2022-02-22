@@ -3,6 +3,7 @@ import React, { FunctionComponent } from 'react'
 import { Modal, TouchableOpacity } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -27,6 +28,7 @@ export const AppInformationModal: FunctionComponent<Props> = ({
 }) => {
   const { bottom } = useSafeAreaInsets()
   const paddingBottom = Math.max(bottom, getSpacing(3))
+  const modalId = uuidv4()
   return (
     <React.Fragment>
       {!!visible && (
@@ -38,7 +40,7 @@ export const AppInformationModal: FunctionComponent<Props> = ({
           testID={`modal-${testIdSuffix}`}>
           <ClicAwayArea activeOpacity={1} onPress={onCloseIconPress}>
             <Spacer.Flex />
-            <Container activeOpacity={1}>
+            <Container activeOpacity={1} aria-describedby={modalId}>
               <ModalHeader
                 title={title}
                 boldTitle
@@ -49,6 +51,7 @@ export const AppInformationModal: FunctionComponent<Props> = ({
                 rightIcon={Close}
                 onRightIconPress={onCloseIconPress}
                 numberOfLines={numberOfLinesTitle}
+                accessibilityDescribedBy={modalId}
               />
               <Content style={{ paddingBottom: paddingBottom }}>{children}</Content>
             </Container>
