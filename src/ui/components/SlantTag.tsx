@@ -9,6 +9,7 @@ interface Props {
   height?: number
   slantAngle?: number
   testID?: string
+  children?: never
 }
 
 export const SlantTag: React.FC<Props> = ({ text, width, height, testID, slantAngle }) => {
