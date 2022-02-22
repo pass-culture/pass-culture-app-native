@@ -9,6 +9,7 @@ interface Props {
   label: string
   onPress: () => void
   testId: string
+  children?: never
 }
 
 export const ClippedTag: React.FC<Props> = ({ label, onPress, testId }) => {
