@@ -97,7 +97,7 @@ exports[`BookingDetails should render correctly 1`] = `
           testID="three-shapes-ticket"
         >
           <View
-            height={37.62376237623762}
+            height={48.54368932038835}
             width={300}
           >
             <Text>
@@ -250,7 +250,7 @@ exports[`BookingDetails should render correctly 1`] = `
             </View>
           </View>
           <View
-            height={37.62376237623762}
+            height={48.54368932038835}
             width={300}
           >
             <Text>

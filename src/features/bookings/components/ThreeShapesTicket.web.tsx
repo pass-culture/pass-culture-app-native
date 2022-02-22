@@ -31,9 +31,13 @@ const Container = styled.View({
 })
 
 const TicketContent = styled.View<{ width: number }>(({ width, theme }) => ({
-  top: -1,
+  top: -3,
+  marginBottom: -6,
   backgroundColor: theme.colors.white,
   width,
   flex: 0,
   flexBasis: 'unset',
+  borderLeftWidth: 2,
+  borderRightWidth: 2,
+  borderColor: theme.colors.greyLight,
 }))
