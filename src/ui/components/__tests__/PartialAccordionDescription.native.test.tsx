@@ -51,7 +51,7 @@ describe('PartialAccordionDescription', () => {
       jest.advanceTimersByTime(ANIMATION_DURATION)
     })
 
-    expect(getByText('voir moins'))
+    getByText('voir moins')
     expect(accordionBody.props.style).not.toEqual({
       height: PARTIAL_DESCRIPTION_HEIGHT,
       overflow: 'hidden',
