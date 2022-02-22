@@ -133,7 +133,7 @@ const BOOKINGS_LIST_PLACEHOLDER = Array.from({ length: 10 }).map((_, index) => (
 }))
 
 function BookingsPlaceholder() {
-  const renderItem = useCallback(() => <BookingHitPlaceholder />, [])
+  const renderPlaceholder = useCallback(() => <BookingHitPlaceholder />, [])
   const ListHeaderComponent = useMemo(() => <NumberOfBookingsPlaceholder />, [])
   const ListFooterComponent = useMemo(() => <Footer />, [])
 
@@ -141,7 +141,7 @@ function BookingsPlaceholder() {
     <LoadingContainer testID="BookingsPlaceholder">
       <FlatList
         data={BOOKINGS_LIST_PLACEHOLDER}
-        renderItem={renderItem}
+        renderItem={renderPlaceholder}
         contentContainerStyle={contentContainerStyle}
         ListHeaderComponent={ListHeaderComponent}
         ItemSeparatorComponent={ItemSeparatorComponent}

@@ -1,4 +1,3 @@
-const SPECIAL_CHARACTER_AT_THE_BEGINNING_OR_END_REGEX = /^['-]|['-]$/
 const NUMBER_REGEX = /[0-9]+/
 const LATIN_REGEX = /\p{sc=Latin}|[',-.’ ]/gu
 
@@ -20,6 +19,7 @@ function containsNumber(name: string): boolean {
   return NUMBER_REGEX.test(name)
 }
 
+const specialCharacters = ["'", '-']
 function containsSpecialCharacterAtTheBeginningOrEnd(name: string): boolean {
-  return SPECIAL_CHARACTER_AT_THE_BEGINNING_OR_END_REGEX.test(name)
+  return specialCharacters.some((c) => name.startsWith(c) || name.endsWith(c))
 }

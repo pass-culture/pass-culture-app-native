@@ -128,9 +128,9 @@ export const buildSearchParams = (
     .map(({ fields }) => fields)
 
 const buildSearchVenuesParams = (
-  params: VenuesSearchParameters[]
+  venuesParams: VenuesSearchParameters[]
 ): VenuesSearchParametersFields[] =>
-  params
+  venuesParams
     .filter((params) => params.fields && hasAtLeastOneField(params.fields))
     .map(({ fields }) => fields)
 

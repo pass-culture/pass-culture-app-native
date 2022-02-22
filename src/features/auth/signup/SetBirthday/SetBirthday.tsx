@@ -1,7 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent, useState } from 'react'
-import styled from 'styled-components/native'
-import { useTheme } from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { BirthdayInformationModal } from 'features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal'
 import { DatePickerDropDown } from 'features/auth/signup/SetBirthday/DatePicker/DatePickerDropDown.web'

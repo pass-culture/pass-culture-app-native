@@ -70,11 +70,11 @@ export const ForgottenPassword: FunctionComponent = () => {
     navigateToHome()
   }
 
-  function onEmailChange(email: string) {
+  function onEmailChange(mail: string) {
     if (errorMessage) {
       setErrorMessage(null)
     }
-    setEmail(email)
+    setEmail(mail)
   }
 
   function openReCaptchaChallenge() {

@@ -64,7 +64,9 @@ export const SetCity = () => {
   }
 
   const onPressOption = (cityKey: string) => {
-    const city = cities.find((city: SuggestedCity) => keyExtractor(city) === cityKey)
+    const city = cities.find(
+      (suggestedCity: SuggestedCity) => keyExtractor(suggestedCity) === cityKey
+    )
     setSelectedCity(city || null)
     Keyboard.dismiss()
   }

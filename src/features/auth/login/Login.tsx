@@ -57,12 +57,12 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const { navigate } = useNavigation<UseNavigationType>()
   const { goBack } = useGoBack(...homeNavConfig)
 
-  function onEmailChange(email: string) {
+  function onEmailChange(mail: string) {
     if (hasEmailError) {
       setIsLoading(false)
       setHasEmailError(false)
     }
-    setEmail(email)
+    setEmail(mail)
   }
 
   async function handleSignin() {

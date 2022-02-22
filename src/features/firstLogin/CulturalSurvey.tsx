@@ -8,10 +8,10 @@ import { Spacer } from 'ui/theme'
 export const CulturalSurvey: React.FC = withCulturalSurveyProvider(function (props) {
   const { userId, userPk, url } = props.culturalSurveyConfig
 
-  function onNavigationStateChange(webviewUrl: string, userId: string, userPk: string) {
+  function onNavigationStateChange(webviewUrl: string, idUser: string, pkUser: string) {
     const isTypeformShowedInWebview = webviewUrl.includes('typeform.com')
     if (!isTypeformShowedInWebview) {
-      props.onCulturalSurveyExit(userId, userPk)
+      props.onCulturalSurveyExit(idUser, pkUser)
     }
   }
 

@@ -44,16 +44,14 @@ export const FavoritesSorts: React.FC = () => {
         return
       }
       if (position) {
-        return void updateSortBySelection()
+        return updateSortBySelection()
       }
       if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
-        return void showGeolocPermissionModal()
+        return showGeolocPermissionModal()
       }
-      return void (await requestGeolocPermission({
-        onAcceptance: updateSortBySelection,
-      }))
+      return await requestGeolocPermission({ onAcceptance: updateSortBySelection })
     }
-    return void updateSortBySelection()
+    return updateSortBySelection()
   }
 
   function onValidation() {
