@@ -1,12 +1,13 @@
 import React, { memo } from 'react'
-import Svg, { Path, G, Stop, LinearGradient, Use } from 'react-native-svg'
+import Svg, { Path } from 'react-native-svg'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
-const ticketFooterRatio = 303 / 38
-const viewBox = '0 0 303 38'
+const ratio = 309 / 50
+const viewBox = '0 0 309 50'
 
 interface Props {
   width: number
@@ -14,30 +15,33 @@ interface Props {
 }
 
 function TicketFooterComponent(props: Props) {
-  const height = props.width / ticketFooterRatio
-  const linearGradientId = 'ticket-footer-gradient'
-  const pathId = 'ticket-footer-path'
+  const height = props.width / ratio
+  const theme = useTheme()
 
   return (
     <Svg
-      style={{ aspectRatio: ticketFooterRatio }}
+      style={{
+        aspectRatio: ratio,
+        transform: [
+          {
+            rotate: '180deg',
+          },
+        ],
+      }}
       width={props.width}
       height={height}
       viewBox={viewBox}>
-      <LinearGradient x1="0" y1="1" x2="0" y2="0" id={linearGradientId}>
-        <Stop offset="0" stopColor={props.color} stopOpacity="1" />
-        <Stop offset="1" stopColor={'#F0F0F0'} stopOpacity="1" />
-      </LinearGradient>
-      <G fill="none" fillRule="evenodd">
-        <G fill={props.color}>
-          <Path
-            id={pathId}
-            d="M121.004 329c.27 16.616 13.82 30 30.496 30 16.678 0 30.229-13.386 30.496-30H283c11.046 0 20 8.954 20 20l-.001 18H0v-18c0-11.046 8.954-20 20-20h101.004z"
-            transform="translate(-36 -356) translate(36 27) matrix(1 0 0 -1 0 696)"
-          />
-          <Use fill={`url(#${linearGradientId})`} xlinkHref={`#${pathId}`} />
-        </G>
-      </G>
+      <Path
+        d="M186.5,2c0,17.67-14.33,32-32,32s-32-14.33-32-32H26C12.75,2,2,12.75,2,26v24h305V26c0-13.25-10.75-24-24-24
+		H186.5z"
+        fill={theme.colors.white}
+      />
+      <Path
+        d="M283,2c13.25,0,24,10.75,24,24v24H2V26C2,12.75,12.75,2,26,2h96.5c0,17.67,14.33,32,32,32s32-14.33,32-32H283
+		 M283,0h-96.5h-2v2c0,16.54-13.46,30-30,30s-30-13.46-30-30V0h-2H26C11.66,0,0,11.66,0,26v24l0,0h2h305h2l0,0V26
+		C309,11.66,297.34,0,283,0L283,0z"
+        fill={theme.colors.greyLight}
+      />
     </Svg>
   )
 }
