@@ -72,7 +72,7 @@ upload_sourcemaps(){
   fi
 
 
-  DIST="${VERSION}-${APP_OS}"
+  DIST="${BUILD}-${APP_OS}"
   echo "RELEASE: $RELEASE"
   echo "DIST: $DIST"
 
