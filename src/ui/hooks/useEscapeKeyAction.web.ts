@@ -1,12 +1,12 @@
 import { useFocusEffect } from '@react-navigation/native'
 import { useCallback } from 'react'
 
-export const useEscapeKeyAction = (cb?: () => void) => {
+export const useEscapeKeyAction = (callback?: () => void) => {
   useFocusEffect(
     useCallback(() => {
       const handleEsc = (event: KeyboardEvent) => {
         if (event.key === 'Escape' || event.key === 'Esc') {
-          return cb && cb()
+          return callback && callback()
         }
       }
       globalThis.addEventListener('keydown', handleEsc)
@@ -14,6 +14,6 @@ export const useEscapeKeyAction = (cb?: () => void) => {
       return () => {
         globalThis.removeEventListener('keydown', handleEsc)
       }
-    }, [cb])
+    }, [callback])
   )
 }
