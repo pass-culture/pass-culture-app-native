@@ -78,3 +78,17 @@ export const appButtonWebStyles: ButtonStylesWeb = ({ theme, ...rest }: ButtonSt
     },
   }
 }
+
+export const appTouchableOpacityWebStyles: ButtonStylesWeb = ({ theme }: ButtonStylesArgs) => {
+  return {
+    flexDirection: 'column',
+    cursor: 'pointer',
+    borderWidth: 0,
+    display: 'flex',
+    ['&:active']: {
+      opacity: theme.activeOpacity,
+    },
+    backgroundColor: 'transparent',
+    padding: 0,
+  }
+}

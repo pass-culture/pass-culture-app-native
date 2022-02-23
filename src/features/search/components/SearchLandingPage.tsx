@@ -13,9 +13,11 @@ import { CATEGORY_CRITERIA, LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { useSearchGroupLabel } from 'libs/subcategories'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { HiddenText } from 'ui/components/HiddenText'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Touchable } from 'ui/web/touchable/Touchable'
 
 const SMALL_VIEWPORT_MAX_HEIGHT = 500
 
@@ -38,6 +40,21 @@ export const SearchLandingPage: React.FC = () => {
   const searchCategoriesDescribedBy = uuidv4()
   const locationFilterDescribedBy = uuidv4()
 
+  const searchCategoriesAriaLabel = t({
+    id: 'search category label',
+    values: {
+      searchGroupLabel,
+    },
+    message: 'Je cherche dans la catégorie {searchGroupLabel}',
+  })
+  const locationFilterAriaLabel = t({
+    id: 'search location label',
+    values: {
+      locationLabel,
+    },
+    message: 'Je cherche {locationLabel}',
+  })
+
   return (
     <React.Fragment>
       <ScrollView contentContainerStyle={contentContainerStyle}>
@@ -45,7 +62,8 @@ export const SearchLandingPage: React.FC = () => {
 
         <TouchableOpacity
           onPress={() => navigate('SearchCategories')}
-          aria-describedby={searchCategoriesDescribedBy}>
+          aria-describedby={searchCategoriesDescribedBy}
+          aria-label={searchCategoriesAriaLabel}>
           <BicolorListItem title={searchGroupLabel} Icon={Icon} secondaryText={t`Je cherche`} />
         </TouchableOpacity>
         <HiddenText
@@ -57,7 +75,8 @@ export const SearchLandingPage: React.FC = () => {
 
         <TouchableOpacity
           onPress={() => navigate('LocationFilter')}
-          aria-describedby={locationFilterDescribedBy}>
+          aria-describedby={locationFilterDescribedBy}
+          aria-label={locationFilterAriaLabel}>
           <BicolorListItem title={locationLabel} Icon={LocationIcon} secondaryText={t`Où`} />
         </TouchableOpacity>
         <HiddenText
@@ -105,7 +124,7 @@ const contentContainerStyle: ViewStyle = {
   flexGrow: 1,
 }
 
-const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
+const TouchableOpacity = styledButton(Touchable).attrs(({ theme }) => ({
   activeOpacity: theme.activeOpacity,
 }))({ alignItems: 'center' })
 

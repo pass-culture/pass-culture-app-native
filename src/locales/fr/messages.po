@@ -3207,6 +3207,14 @@ msgstr "réalisée"
 msgid "réservation annulable jusqu'au"
 msgstr "Cette réservation peut être annulée jusqu’au {date}"
 
+#: src/features/search/components/SearchLandingPage.tsx
+msgid "search category label"
+msgstr "Je cherche dans la catégorie {searchGroupLabel}"
+
+#: src/features/search/components/SearchLandingPage.tsx
+msgid "search location label"
+msgstr "Je cherche {locationLabel}"
+
 #: src/features/offer/services/useShareOffer.ts
 msgid "share offer message"
 msgstr "Retrouve \"{name}\" chez \"{locationName}\" sur le pass Culture"

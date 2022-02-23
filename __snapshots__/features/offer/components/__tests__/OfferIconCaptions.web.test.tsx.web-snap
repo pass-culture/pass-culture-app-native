@@ -18,7 +18,7 @@ Object {
           style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         >
           <dt
-            class="sc-iwjdpV sc-cxpSdN eHpIaf fdjvcl"
+            class="sc-giYglK sc-ezbkAF flIzxi kjhfIO"
           >
             <div
               class="css-view-1dbjc4n"
@@ -36,7 +36,7 @@ Object {
             style="height: 8px;"
           />
           <dd
-            class="sc-bBHxTw sc-llYSUQ fyUbuB gsIHFt"
+            class="sc-iJKOTD sc-bYoBSM dKa-dtZ ijcAkb"
             data-testid="caption-undefined"
           >
             Abonnements concerts
@@ -51,7 +51,7 @@ Object {
           style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         >
           <dt
-            class="sc-iwjdpV sc-cxpSdN eHpIaf fdjvcl"
+            class="sc-giYglK sc-ezbkAF flIzxi kjhfIO"
           >
             <div
               class="css-view-1dbjc4n"
@@ -70,7 +70,7 @@ Object {
             style="height: 8px;"
           />
           <dd
-            class="sc-bBHxTw sc-llYSUQ fyUbuB gsIHFt"
+            class="sc-iJKOTD sc-bYoBSM dKa-dtZ ijcAkb"
             data-testid="caption-iconPrice"
           >
             28 €
@@ -97,7 +97,7 @@ Object {
         style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
       >
         <dt
-          class="sc-iwjdpV sc-cxpSdN eHpIaf fdjvcl"
+          class="sc-giYglK sc-ezbkAF flIzxi kjhfIO"
         >
           <div
             class="css-view-1dbjc4n"
@@ -115,7 +115,7 @@ Object {
           style="height: 8px;"
         />
         <dd
-          class="sc-bBHxTw sc-llYSUQ fyUbuB gsIHFt"
+          class="sc-iJKOTD sc-bYoBSM dKa-dtZ ijcAkb"
           data-testid="caption-undefined"
         >
           Abonnements concerts
@@ -130,7 +130,7 @@ Object {
         style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
       >
         <dt
-          class="sc-iwjdpV sc-cxpSdN eHpIaf fdjvcl"
+          class="sc-giYglK sc-ezbkAF flIzxi kjhfIO"
         >
           <div
             class="css-view-1dbjc4n"
@@ -149,7 +149,7 @@ Object {
           style="height: 8px;"
         />
         <dd
-          class="sc-bBHxTw sc-llYSUQ fyUbuB gsIHFt"
+          class="sc-iJKOTD sc-bYoBSM dKa-dtZ ijcAkb"
           data-testid="caption-iconPrice"
         >
           28 €
