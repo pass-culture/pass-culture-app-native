@@ -7,7 +7,7 @@ import { eventMonitoring } from 'libs/monitoring'
 
 import { EduConnectError } from './types'
 
-export interface EduConnectFallbackProps extends FallbackProps {
+interface EduConnectFallbackProps extends FallbackProps {
   error: EduConnectError | Error
   resetErrorBoundary: (...args: Array<unknown>) => void
 }

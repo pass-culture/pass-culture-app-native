@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { IconInterface } from './types'
 
-export const CalendarSvg: React.FunctionComponent<IconInterface> = ({ size, color, testID }) => (
+const CalendarSvg: React.FunctionComponent<IconInterface> = ({ size, color, testID }) => (
   <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID} aria-hidden>
     <Path
       fill={color}

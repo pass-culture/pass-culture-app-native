@@ -4,7 +4,7 @@ import { api } from 'api/api'
 import { ProfileOptionsResponse } from 'api/gen'
 import { QueryKeys } from 'libs/queryKeys'
 
-export function useProfileOptionsResponse() {
+function useProfileOptionsResponse() {
   return useQuery<ProfileOptionsResponse>(QueryKeys.SCHOOL_TYPES, () =>
     api.getnativev1subscriptionprofileOptions()
   )

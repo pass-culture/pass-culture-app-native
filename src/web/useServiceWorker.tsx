@@ -2,13 +2,13 @@ import React, { useEffect, useReducer, useContext } from 'react'
 
 import { register, unregister } from './serviceWorkerRegistration'
 
-export const SERVICE_WORKER_READY = 'SERVICE_WORKER_READY'
-export const SERVICE_WORKER_REGISTERED = 'SERVICE_WORKER_REGISTERED'
-export const SERVICE_WORKER_CACHED = 'SERVICE_WORKER_CACHED'
-export const SERVICE_WORKER_UPDATE_FOUND = 'SERVICE_WORKER_UPDATE_FOUND'
-export const SERVICE_WORKER_OFFLINE = 'SERVICE_WORKER_OFFLINE'
-export const SERVICE_WORKER_UPDATE_READY = 'SERVICE_WORKER_UPDATE_READY'
-export const SERVICE_WORKER_ERROR = 'SERVICE_WORKER_ERROR'
+const SERVICE_WORKER_READY = 'SERVICE_WORKER_READY'
+const SERVICE_WORKER_REGISTERED = 'SERVICE_WORKER_REGISTERED'
+const SERVICE_WORKER_CACHED = 'SERVICE_WORKER_CACHED'
+const SERVICE_WORKER_UPDATE_FOUND = 'SERVICE_WORKER_UPDATE_FOUND'
+const SERVICE_WORKER_OFFLINE = 'SERVICE_WORKER_OFFLINE'
+const SERVICE_WORKER_UPDATE_READY = 'SERVICE_WORKER_UPDATE_READY'
+const SERVICE_WORKER_ERROR = 'SERVICE_WORKER_ERROR'
 
 interface ServiceWorkerReady {
   type: typeof SERVICE_WORKER_READY
@@ -45,7 +45,7 @@ interface ServiceWorkerError {
   payload: ServiceWorker
 }
 
-export type ServiceWorkerActionTypes =
+type ServiceWorkerActionTypes =
   | ServiceWorkerReady
   | ServiceWorkerRegistered
   | ServiceWorkerCached
@@ -54,7 +54,7 @@ export type ServiceWorkerActionTypes =
   | ServiceWorkerUpdateReady
   | ServiceWorkerError
 
-export type ServiceWorkerStatus =
+type ServiceWorkerStatus =
   | 'offline'
   | 'registered'
   | 'register'
@@ -64,13 +64,13 @@ export type ServiceWorkerStatus =
   | 'updated'
   | 'error'
 
-export interface ServiceWorker {
+interface ServiceWorker {
   serviceWorkerStatus: ServiceWorkerStatus
   registration?: null | ServiceWorkerRegistration
   error?: Error
 }
 
-export interface ServiceWorkerState {
+interface ServiceWorkerState {
   serviceWorkerStatus: ServiceWorkerStatus
   registration?: null | ServiceWorkerRegistration
   error?: Error

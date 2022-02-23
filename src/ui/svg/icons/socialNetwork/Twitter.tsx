@@ -4,11 +4,7 @@ import styled from 'styled-components/native'
 
 import { IconInterface } from '../types'
 
-export const TwitterSvg: React.FunctionComponent<IconInterface> = ({
-  size,
-  color: _color,
-  testID,
-}) => (
+const TwitterSvg: React.FunctionComponent<IconInterface> = ({ size, color: _color, testID }) => (
   <Svg width={size} height={size} viewBox="0 0 24 24" testID={testID} aria-hidden>
     <G fill="none" fillRule="evenodd">
       <G fillRule="nonzero">
