@@ -2,6 +2,11 @@
 
 exports[`<DotComponent /> renders dot active color 1`] = `
 <View
+  accessibilityState={
+    Object {
+      "disabled": false,
+    }
+  }
   accessible={true}
   focusable={true}
   onClick={[Function]}
@@ -38,6 +43,11 @@ exports[`<DotComponent /> renders dot active color 1`] = `
 
 exports[`<DotComponent /> should render correctly 1`] = `
 <View
+  accessibilityState={
+    Object {
+      "disabled": false,
+    }
+  }
   accessible={true}
   focusable={true}
   onClick={[Function]}
