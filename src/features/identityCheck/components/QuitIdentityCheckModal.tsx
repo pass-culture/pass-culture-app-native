@@ -9,7 +9,6 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { AppFullPageModal } from 'ui/components/modals/AppFullPageModal'
-import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
 import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
 import { Typo } from 'ui/theme'
 
@@ -40,10 +39,11 @@ export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
     hideModal()
   }
 
-  useEscapeKeyAction(visible ? continueIdentityCheck : undefined)
-
   return (
-    <AppFullPageModal visible={visible} testIdSuffix={testIdSuffix}>
+    <AppFullPageModal
+      visible={visible}
+      testIdSuffix={testIdSuffix}
+      onRequestClose={continueIdentityCheck}>
       <GenericInfoPage
         title={title}
         icon={ErrorIllustration}

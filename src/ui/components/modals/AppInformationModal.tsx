@@ -37,7 +37,8 @@ export const AppInformationModal: FunctionComponent<Props> = ({
           statusBarTranslucent
           transparent={true}
           visible={visible}
-          testID={`modal-${testIdSuffix}`}>
+          testID={`modal-${testIdSuffix}`}
+          onRequestClose={onCloseIconPress}>
           <ClicAwayArea activeOpacity={1} onPress={onCloseIconPress}>
             <Spacer.Flex />
             <Container activeOpacity={1} aria-describedby={modalId}>

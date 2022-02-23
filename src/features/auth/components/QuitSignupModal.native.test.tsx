@@ -49,6 +49,15 @@ describe('QuitSignupModal', () => {
   })
 
   describe('QuitSignupModal - Analytics', () => {
+    it('should log CancelSignup when clicking on "Continuer l\'inscription"', () => {
+      const { getByText } = renderQuitSignupModal(true)
+
+      const resumeButton = getByText("Continuer l'inscription")
+      fireEvent.press(resumeButton)
+
+      expect(analytics.logContinueSignup).toHaveBeenCalledTimes(1)
+    })
+
     it('should log CancelSignup when clicking on "Abandonner l\'inscription"', () => {
       const { getByText } = renderQuitSignupModal(true)
 
