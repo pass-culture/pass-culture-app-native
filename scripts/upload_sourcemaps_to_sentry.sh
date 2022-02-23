@@ -72,15 +72,15 @@ upload_sourcemaps(){
   fi
 
 
-  DIST="${VERSION}-${APP_OS}"
+  DIST="${BUILD}-${APP_OS}"
   echo "RELEASE: $RELEASE"
   echo "DIST: $DIST"
 
   node_modules/@sentry/cli/bin/sentry-cli releases files "${RELEASE}" \
-    upload-sourcemaps "${SOURCEMAPS_DIR}" \
+    upload-sourcemaps \
     --dist "${DIST}" \
-    --url-prefix "app:///" \
-    --no-rewrite
+    --strip-prefix "${PWD}" \
+    --rewrite "${SOURCEMAPS_DIR}/${SOURCEMAPS_SUFFIX}" "${SOURCEMAPS_DIR}/${SOURCEMAPS_SUFFIX}.map"
 
   echo "✅ Successfully uploaded sources maps"
 }
