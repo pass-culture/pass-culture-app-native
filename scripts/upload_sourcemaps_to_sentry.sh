@@ -79,7 +79,6 @@ upload_sourcemaps(){
   node_modules/@sentry/cli/bin/sentry-cli releases files "${RELEASE}" \
     upload-sourcemaps "${SOURCEMAPS_DIR}" \
     --dist "${DIST}" \
-    --strip-prefix "${PWD}" \
     --url-prefix "app:///" \
     --no-rewrite
 
