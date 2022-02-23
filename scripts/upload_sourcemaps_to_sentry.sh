@@ -80,7 +80,7 @@ upload_sourcemaps(){
     upload-sourcemaps \
     --dist "${DIST}" \
     --strip-prefix "${PWD}" \
-    --rewrite "${SOURCEMAPS_DIR}/${SOURCEMAPS_SUFFIX}" "${SOURCEMAPS_DIR}/${SOURCEMAPS_SUFFIX}.map"
+    --rewrite "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}" "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.map"
 
   echo "✅ Successfully uploaded sources maps"
 }
