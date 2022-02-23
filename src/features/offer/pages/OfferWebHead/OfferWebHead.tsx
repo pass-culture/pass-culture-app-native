@@ -11,7 +11,7 @@ interface Props {
 
 export const OfferWebHead = ({ offer }: Props) => (
   <Helmet>
-    <title>{offer.name}</title>
+    <title>{offer.name + ' | pass Culture'}</title>
     <meta name="title" content={offer.name} />
     <meta name="description" content={offer.description || description} />
   </Helmet>
