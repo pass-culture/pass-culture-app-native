@@ -26,11 +26,6 @@ const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpack
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter')
 const SentryWebpackPlugin = require('@sentry/webpack-plugin')
 const postcssNormalize = require('postcss-normalize');
-const { GitRevisionPlugin } = require('git-revision-webpack-plugin')
-
-const gitRevisionPlugin = new GitRevisionPlugin({
-  commithashCommand: 'rev-parse --short HEAD'
-})
 
 const appPackageJson = require(paths.appPackageJson)
 
@@ -604,9 +599,6 @@ module.exports = function (webpackEnv) {
         ...env.stringified,
         // This is used originally by our react-native app. It is useful to test if we are in development environment
         __DEV__: process.env.NODE_ENV !== 'production',
-        COMMIT_HASH: JSON.stringify(gitRevisionPlugin.commithash()),
-        BRANCH: JSON.stringify(gitRevisionPlugin.branch()),
-        LAST_COMMIT_DATETIME: JSON.stringify(gitRevisionPlugin.lastcommitdatetime()),
       }),
       // This is necessary to emit hot updates (currently CSS only):
       isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
