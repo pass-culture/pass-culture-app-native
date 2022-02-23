@@ -692,10 +692,9 @@ module.exports = function (webpackEnv) {
         new SentryWebpackPlugin({
           include: paths.appBuild,
           rewrite: true,
-          release: appPackageJson.version,
-          dist: `${appPackageJson.build}-web${
-            env.raw.ENV !== 'testing' ? '' : `-${env.raw.COMMIT_HASH}`
-          }`,
+          // for testing, we want to group the source map under one artifact and select sourcemaps using hash
+          release: env.raw.ENV === 'testing' ? `${appPackageJson.version}-web` : `${appPackageJson.version}-web-${env.raw.COMMIT_HASH}`,
+          dist: env.raw.ENV === 'testing' ? `${appPackageJson.build}-web-${env.raw.COMMIT_HASH}` : `${appPackageJson.build}-web`,
           cleanArtifacts: false,
           finalize: env.raw.ENV !== 'testing',
           deploy: {
