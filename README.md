@@ -122,12 +122,6 @@ See 1password for more test accounts.
 
 </details>
 
-<details>
-  <summary>Develop locally with id-check</summary>
-  
-To develop locally with id-check, please follow the instructions [here](./doc/development/@pass-culture/id-check.md).
-</details>
-
 ### ⬇️ Download
 
 To download the **testing** app, visit Appcenter for [iOS][1] and [Android][2], or use this [url][3].

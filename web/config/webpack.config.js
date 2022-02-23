@@ -25,7 +25,7 @@ const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin')
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin')
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter')
 const SentryWebpackPlugin = require('@sentry/webpack-plugin')
-const postcssNormalize = require('postcss-normalize');
+const postcssNormalize = require('postcss-normalize')
 
 const appPackageJson = require(paths.appPackageJson)
 
@@ -49,16 +49,22 @@ const cssModuleRegex = /\.module\.css$/
 const sassRegex = /\.(scss|sass)$/
 const sassModuleRegex = /\.module\.(scss|sass)$/
 
-const allCssFiles = fs.readdirSync(paths.appExtraCss)
-  .filter((fileName) => fileName.match(/.*\.css/ig))
+const allCssFiles = fs
+  .readdirSync(paths.appExtraCss)
+  .filter((fileName) => fileName.match(/.*\.css/gi))
 
 const devCssFiles = allCssFiles.filter((fileName) => fileName.match(/^\d{2}-dev-/))
 const prodCssFiles = allCssFiles.filter((fileName) => !fileName.match(/^\d{2}-dev-/))
 
 function getCss(files) {
-  return files.map((fileName) => path.join(paths.appExtraCss, fileName))
-    .map((filePath) => !filePath.includes('dev-server-overlay') || process.env.ERROR_OVERLAY !== 'true' ? `<style>${fs.readFileSync(filePath, 'utf8')}</style>` : '')
-    .join('\n    ');
+  return files
+    .map((fileName) => path.join(paths.appExtraCss, fileName))
+    .map((filePath) =>
+      !filePath.includes('dev-server-overlay') || process.env.ERROR_OVERLAY !== 'true'
+        ? `<style>${fs.readFileSync(filePath, 'utf8')}</style>`
+        : ''
+    )
+    .join('\n    ')
 }
 
 // This is the production and development configuration.
@@ -387,8 +393,6 @@ module.exports = function (webpackEnv) {
                 /node_modules\/@ptomasroos\/react-native-multi-slider/,
                 /node_modules\/react-native-gesture-handler/,
                 /node_modules\/react-native-animatable/,
-                /node_modules\/@pass-culture\/id-check\/src/,
-                /id-check-front\/packages\/id-check\/src/,
                 /node_modules\/@pass-culture\/react-native-profiling/,
                 /node_modules\/react-native-calendars/,
                 /node_modules\/react-native-swipe-gestures/,
@@ -583,7 +587,8 @@ module.exports = function (webpackEnv) {
         AUTHOR: appPackageJson.author.name,
         TITLE: appPackageJson.author.name,
         TWITTER_SITE: appPackageJson.author.twitter,
-        META_NO_INDEX: env.raw.ENV !== 'production' ? `<meta name="robots" content="noindex" />` : '',
+        META_NO_INDEX:
+          env.raw.ENV !== 'production' ? `<meta name="robots" content="noindex" />` : '',
         PROD_CSS: getCss(prodCssFiles) || '',
         DEV_CSS: !isEnvProduction ? getCss(devCssFiles) : '',
       }),
@@ -683,11 +688,14 @@ module.exports = function (webpackEnv) {
           // The formatter is invoked directly in WebpackDevServerUtils during development
           formatter: isEnvProduction ? typescriptFormatter : undefined,
         }),
-        isEnvProduction && new SentryWebpackPlugin({
+      isEnvProduction &&
+        new SentryWebpackPlugin({
           include: paths.appBuild,
           rewrite: true,
           release: appPackageJson.version,
-          dist: `${appPackageJson.build}-web${env.raw.ENV !== 'testing' ? '' : `-${env.raw.COMMIT_HASH}`}`,
+          dist: `${appPackageJson.build}-web${
+            env.raw.ENV !== 'testing' ? '' : `-${env.raw.COMMIT_HASH}`
+          }`,
           cleanArtifacts: false,
           finalize: env.raw.ENV !== 'testing',
           deploy: {
