@@ -48,7 +48,7 @@ export const DotComponent: FunctionComponent<DotComponentProps> = (props) => {
   }
 
   return (
-    <TouchableWithoutFeedback onPress={props.onPress} testID="button">
+    <TouchableWithoutFeedback onPress={props.onPress} disabled={!props.onPress} testID="button">
       <DotContainer>
         <Dot
           aria-label={t`Étape ${step} sur ${totalSteps} ${status}`}

@@ -25,6 +25,7 @@ const DotSvg: React.FC<Props> = ({
     height={size}
     viewBox="0 0 9 9"
     testID={testID}
+    accessibilityRole="image"
     // @ts-expect-error : borderColor and fillColor are on <Svg/> only for test purposes
     borderColor={borderColor}
     fillColor={fillColor}>
