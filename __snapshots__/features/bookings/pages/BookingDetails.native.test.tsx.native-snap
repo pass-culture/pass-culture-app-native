@@ -15,10 +15,7 @@ exports[`BookingDetails should render correctly 1`] = `
 >
   <RCTScrollView
     bounces={false}
-    collapsable={false}
     onContentSizeChange={[Function]}
-    onGestureHandlerEvent={[Function]}
-    onGestureHandlerStateChange={[Function]}
     onScroll={[Function]}
     scrollEventThrottle={20}
     scrollIndicatorInsets={
