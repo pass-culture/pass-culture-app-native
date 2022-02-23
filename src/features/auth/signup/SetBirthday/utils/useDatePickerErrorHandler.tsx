@@ -1,4 +1,5 @@
 import { t } from '@lingui/macro'
+import { useTheme } from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
 import {
@@ -10,6 +11,7 @@ import { dateDiffInFullYears } from 'libs/dates'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 
 export const useDatePickerErrorHandler = (date?: Date) => {
+  const { isTouch } = useTheme()
   const CURRENT_DATE = new Date()
   const DEFAULT_SELECTED_DATE = new Date(
     new Date().setFullYear(new Date().getFullYear() - UNDER_YOUNGEST_AGE)
@@ -27,7 +29,7 @@ export const useDatePickerErrorHandler = (date?: Date) => {
   }
   const SELECTED_DATE_WITHOUT_TIME = formatDateToISOStringWithoutTime(date)
   const AGE = dateDiffInFullYears(new Date(SELECTED_DATE_WITHOUT_TIME), CURRENT_DATE)
-  if (SELECTED_DATE_WITHOUT_TIME === DEFAULT_SELECTED_DATE_WITHOUT_TIME) {
+  if (SELECTED_DATE_WITHOUT_TIME === DEFAULT_SELECTED_DATE_WITHOUT_TIME && isTouch) {
     return {
       isDisabled: true,
       errorMessage: null,
