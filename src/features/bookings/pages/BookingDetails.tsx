@@ -1,8 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
-import { StyleSheet, useWindowDimensions } from 'react-native'
-import { ScrollView } from 'react-native-gesture-handler'
+import { ScrollView, StyleSheet, useWindowDimensions } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 

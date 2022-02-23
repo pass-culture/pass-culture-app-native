@@ -6,6 +6,7 @@ import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum, BookingOfferResponse, BookingReponse } from 'api/gen'
+import { TicketCode } from 'features/bookings/atoms/TicketCode'
 import {
   TICKET_MIN_HEIGHT,
   QR_CODE_SIZE,
@@ -56,12 +57,12 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
       <TicketInnerContent>
         {isDigitalAndActivationCodeEnabled ? (
           <React.Fragment>
-            <Token>{booking.activationCode?.code}</Token>
+            {!!booking.activationCode && <TicketCode code={booking.activationCode?.code} />}
             {accessOfferButton}
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <Token>{booking.token}</Token>
+            <TicketCode code={booking.token} />
             {properties.isDigital ? (
               accessOfferButton
             ) : booking.qrCodeData ? (
@@ -104,12 +105,6 @@ const Title = styled(Typo.Title3)({
   textAlign: 'center',
   maxWidth: '100%',
 })
-
-const Token = styled(Typo.Title4)(({ theme }) => ({
-  color: theme.colors.primary,
-  textAlign: 'center',
-  padding: getSpacing(2.5),
-}))
 
 const TicketInnerContent = styled.View({
   justifyContent: 'center',
