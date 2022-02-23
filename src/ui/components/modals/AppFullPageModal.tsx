@@ -26,7 +26,7 @@ export const AppFullPageModal: FunctionComponent<Props> = ({
       visible={visible}
       testID={`modal-${testIdSuffix}`}
       onRequestClose={onRequestClose}>
-      <Container activeOpacity={1} maxHeight={maxHeight}>
+      <Container activeOpacity={1} maxHeight={maxHeight} disabled={true}>
         {children}
       </Container>
     </Modal>

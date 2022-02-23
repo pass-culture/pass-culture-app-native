@@ -11,6 +11,11 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
   visible={true}
 >
   <View
+    accessibilityState={
+      Object {
+        "disabled": true,
+      }
+    }
     accessible={true}
     collapsable={false}
     focusable={false}
