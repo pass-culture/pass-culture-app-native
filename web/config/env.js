@@ -1,6 +1,7 @@
 /* eslint-disable */
 const fs = require('fs');
 const path = require('path');
+const { GitRevisionPlugin } = require('git-revision-webpack-plugin')
 const paths = require('./paths');
 const { name, version } = require('../../package.json')
 
@@ -19,6 +20,10 @@ const ENV = process.env.ENV;
 if (!NODE_ENV) {
     throw new Error('The NODE_ENV environment variable is required but was not specified.');
 }
+
+const gitRevisionPlugin = new GitRevisionPlugin({
+    commithashCommand: 'rev-parse --short HEAD'
+})
 
 // https://github.com/bkeepers/dotenv#what-other-env-files-can-i-use
 const dotenvFiles = [
@@ -93,6 +98,9 @@ function getClientEnvironment(publicUrl) {
             // Our envs
             NAME: name,
             VERSION: version,
+            COMMIT_HASH: gitRevisionPlugin.commithash(),
+            BRANCH: gitRevisionPlugin.branch(),
+            LAST_COMMIT_DATETIME: gitRevisionPlugin.lastcommitdatetime(),
         },
       );
     // Stringify all values so we can feed into webpack DefinePlugin
