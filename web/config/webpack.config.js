@@ -687,7 +687,7 @@ module.exports = function (webpackEnv) {
           include: paths.appBuild,
           rewrite: true,
           release: appPackageJson.version,
-          dist: `${appPackageJson.build}-web${env.raw.ENV !== 'testing' ? '' : `-${gitRevisionPlugin.commithash()}`}`,
+          dist: `${appPackageJson.build}-web${env.raw.ENV !== 'testing' ? '' : `-${env.raw.COMMIT_HASH}`}`,
           cleanArtifacts: false,
           finalize: env.raw.ENV !== 'testing',
           deploy: {
