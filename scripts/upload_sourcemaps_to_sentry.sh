@@ -6,6 +6,7 @@ SOURCEMAPS_DIR="sourcemaps"
 
 create_sourcemaps(){
   APP_OS="$1"
+  SOURCEMAPS_SUFFIX="$2"
 
   if [ "$(uname -s)" = "Linux" ]; then
     HERMES_BIN="linux64-bin"
@@ -17,20 +18,20 @@ create_sourcemaps(){
     --platform "${APP_OS}" \
     --dev false \
     --entry-file index.js \
-    --bundle-output "${SOURCEMAPS_DIR}/index.${APP_OS}.bundle" \
-    --sourcemap-output "${SOURCEMAPS_DIR}/index.${APP_OS}.bundle.packager.map"
+    --bundle-output "${SOURCEMAPS_DIR}/index.${SOURCEMAPS_SUFFIX}.bundle" \
+    --sourcemap-output "${SOURCEMAPS_DIR}/index.${SOURCEMAPS_SUFFIX}.bundle.packager.map"
 
   node_modules/hermes-engine/${HERMES_BIN}/hermesc \
     -O \
     -emit-binary \
     -output-source-map \
-    -out="${SOURCEMAPS_DIR}/index.${APP_OS}.bundle.hbc" \
-    "${SOURCEMAPS_DIR}/index.${APP_OS}.bundle"
+    -out="${SOURCEMAPS_DIR}/index.${SOURCEMAPS_SUFFIX}.bundle.hbc" \
+    "${SOURCEMAPS_DIR}/index.${SOURCEMAPS_SUFFIX}.bundle"
 
   node node_modules/react-native/scripts/compose-source-maps.js \
-    "${SOURCEMAPS_DIR}/index.${APP_OS}.bundle.packager.map" \
-    "${SOURCEMAPS_DIR}/index.${APP_OS}.bundle.hbc.map" \
-    -o "${SOURCEMAPS_DIR}/index.${APP_OS}.bundle.map"
+    "${SOURCEMAPS_DIR}/index.${SOURCEMAPS_SUFFIX}.bundle.packager.map" \
+    "${SOURCEMAPS_DIR}/index.${SOURCEMAPS_SUFFIX}.bundle.hbc.map" \
+    -o "${SOURCEMAPS_DIR}/index.${SOURCEMAPS_SUFFIX}.bundle.map"
 }
 
 upload_sourcemaps(){
@@ -51,7 +52,14 @@ upload_sourcemaps(){
   echo "Creating sources maps... "
   mkdir -p "${SOURCEMAPS_DIR}"
 
-  create_sourcemaps "${APP_OS}"
+
+  if [[ -n "${CODE_PUSH_LABEL}" ]]; then
+    SOURCEMAPS_SUFFIX="${VERSION}.${APP_OS}.codepush+${CODE_PUSH_LABEL}"
+  else
+    SOURCEMAPS_SUFFIX="${VERSION}.${APP_OS}"
+  fi
+
+  create_sourcemaps "${APP_OS}" "${SOURCEMAPS_SUFFIX}"
   echo "✅ Successfully created sources maps"
 
   echo "Uploading ${APP_OS} source maps... "
@@ -62,7 +70,8 @@ upload_sourcemaps(){
     RELEASE="$VERSION-${APP_OS}"
   fi
 
-  DIST="$VERSION-${APP_OS}"
+
+  DIST="${VERSION}-${APP_OS}"
   echo "RELEASE: $RELEASE"
   echo "DIST: $DIST"
 
@@ -71,7 +80,7 @@ upload_sourcemaps(){
     --dist "${DIST}" \
     --strip-prefix "${PWD}" \
     --url-prefix "app:///" \
-    --rewrite "${SOURCEMAPS_DIR}/index.${APP_OS}.bundle" "${SOURCEMAPS_DIR}/index.${APP_OS}.bundle.map"
+    --rewrite "${SOURCEMAPS_DIR}/index.${SOURCEMAPS_SUFFIX}.bundle" "${SOURCEMAPS_DIR}/index.${SOURCEMAPS_SUFFIX}.bundle.map"
 
   echo "✅ Successfully uploaded sources maps"
 }
