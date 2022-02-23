@@ -1,3 +1,5 @@
+import { plural, t } from '@lingui/macro'
+import { useIsFocused } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import { FlatList, ActivityIndicator } from 'react-native'
@@ -14,6 +16,7 @@ import { useNetwork } from 'libs/network/useNetwork'
 import { SearchHit } from 'libs/search'
 import { getSpacing, Spacer } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
+import { Helmet } from 'ui/web/global/Helmet'
 import { Li } from 'ui/web/list/Li'
 import { Ul } from 'ui/web/list/Ul'
 
@@ -38,6 +41,7 @@ export const SearchResults: React.FC = () => {
   const { searchState } = useSearch()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
+  const isFocused = useIsFocused()
 
   useEffect(
     // Despite the fact that the useEffect hook being called immediately,
@@ -93,8 +97,19 @@ export const SearchResults: React.FC = () => {
   }
 
   if (showSkeleton) return <SearchResultsPlaceHolder />
+
+  const numberOfResults = plural(nbHits, {
+    one: '# résultat',
+    other: '# résultats',
+  })
+
+  const helmetTitle =
+    numberOfResults +
+    (searchState.query.length > 0 ? ` ${t`pour`} "${searchState.query}"` : '') +
+    ' | Recherche | pass Culture'
   return (
     <React.Fragment>
+      {isFocused ? <Helmet title={helmetTitle} /> : null}
       <Container>
         <Ul>
           <FlatList

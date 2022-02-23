@@ -43,33 +43,17 @@ msgstr "12 Caractères"
 msgid "15 ans"
 msgstr "15 ans"
 
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
-msgid "15 ans, le 31 janvier"
-msgstr "15 ans, le 31 janvier"
-
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "16 ans"
 msgstr "16 ans"
-
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
-msgid "16 ans, le 20 janvier"
-msgstr "16 ans, le 20 janvier"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "17 ans"
 msgstr "17 ans"
 
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
-msgid "17 ans, le 10 janvier"
-msgstr "17 ans, le 10 janvier"
-
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "18 ans"
 msgstr "18 ans"
-
-#: src/features/navigation/RootNavigator/routes.ts
-msgid "1er tutoriel"
-msgstr "1er tutoriel"
 
 #: src/features/identityCheck/pages/Stepper.tsx
 #: src/features/profile/pages/ConfirmDeleteProfile.tsx
@@ -789,10 +773,6 @@ msgstr "Distance depuis la localisation"
 msgid "Distance indisponible"
 msgstr "Distance indisponible"
 
-#: src/features/navigation/RootNavigator/routes.ts
-msgid "Données personnelles"
-msgstr "Données personnelles"
-
 #: src/features/profile/components/SubscriptionMessageBadge.tsx
 msgid "Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !"
 msgstr "Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !"
@@ -845,10 +825,6 @@ msgstr "Détails de l'offre"
 msgid "Détails de la réservation"
 msgstr "Détails de la réservation"
 
-#: src/features/navigation/RootNavigator/routes.ts
-msgid "Détails de réservation"
-msgstr "Détails de réservation"
-
 #: src/ui/components/contact/ContactBlock.tsx
 msgid "E-mail"
 msgstr "E-mail"
@@ -893,10 +869,6 @@ msgstr "En attendant, aide-nous à en savoir plus sur tes pratiques culturelles�
 msgid "En attendant, tu peux découvrir l'application !"
 msgstr "En attendant, tu peux découvrir l'application !"
 
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
-msgid "En attendant, tu peux tout de même découvrir l'application mais sans pouvoir réserver les offres."
-msgstr "En attendant, tu peux tout de même découvrir l'application mais sans pouvoir réserver les offres."
-
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
@@ -909,10 +881,6 @@ msgstr "En raison d’une erreur technique, l’offre n’a pas pu être réserv
 #: src/ui/components/PassPlaylist.tsx
 msgid "En voir plus"
 msgstr "En voir plus"
-
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
-msgid "Encore un peu de patience : en fonction de ton âge, tu pourras compléter ton inscription à la date suivante :"
-msgstr "Encore un peu de patience : en fonction de ton âge, tu pourras compléter ton inscription à la date suivante :"
 
 #: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
 #: src/features/profile/pages/ChangePassword/ChangePassword.tsx
@@ -1014,7 +982,6 @@ msgid "Faire une nouvelle demande"
 msgstr "Faire une nouvelle demande"
 
 #: src/features/navigation/TabBar/routes.ts
-#: src/features/navigation/TabBar/routes.ts
 msgid "Favoris"
 msgstr "Favoris"
 
@@ -1065,6 +1032,10 @@ msgstr "Festival"
 #: src/features/search/pages/SearchFilter.tsx
 msgid "Filtrer"
 msgstr "Filtrer"
+
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "Filtres de recherche"
+msgstr "Filtres de recherche"
 
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Fin du parcours"
@@ -1502,6 +1473,10 @@ msgstr "L’application est actuellement en maintenance, mais sera à nouveau en
 msgid "Ma réservation"
 msgstr "Ma réservation"
 
+#: src/features/bookings/pages/BookingDetails.tsx
+msgid "Ma réservation pour"
+msgstr "Ma réservation pour"
+
 #: src/libs/parsers/venueType.ts
 msgid "Magasin arts créatifs"
 msgstr "Magasin arts créatifs"
@@ -1522,20 +1497,27 @@ msgstr "Maintenance"
 msgid "Maintenance en cours"
 msgstr "Maintenance en cours"
 
+#: src/features/navigation/RootNavigator/routes.ts
 #: src/features/profile/pages/LegalNotices/LegalNotices.tsx
 #: src/features/profile/pages/Profile.tsx
 msgid "Mentions légales"
 msgstr "Mentions légales"
 
 #: src/features/favorites/pages/Favorites.tsx
+#: src/features/navigation/TabBar/routes.ts
 msgid "Mes favoris"
 msgstr "Mes favoris"
+
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "Mes informations personnelles"
+msgstr "Mes informations personnelles"
 
 #: src/features/bookOffer/services/useModalContent.tsx
 msgid "Mes options"
 msgstr "Mes options"
 
 #: src/features/bookings/pages/Bookings.tsx
+#: src/features/navigation/TabBar/routes.ts
 msgid "Mes réservations"
 msgstr "Mes réservations"
 
@@ -1592,6 +1574,10 @@ msgstr "Mon crédit est expiré, que faire ?"
 #: src/features/identityCheck/pages/identification/IdentityCheckValidation.web.tsx
 msgid "Mon identité"
 msgstr "Mon identité"
+
+#: src/features/navigation/TabBar/routes.ts
+msgid "Mon profil"
+msgstr "Mon profil"
 
 #: src/features/auth/login/Login.tsx
 #: src/features/auth/signup/SetPassword/SetPassword.tsx
@@ -1681,10 +1667,6 @@ msgstr "Nos conseils :"
 #: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx
 msgid "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
 msgstr "Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant !"
-
-#: src/features/navigation/RootNavigator/routes.ts
-msgid "Notices légales"
-msgstr "Notices légales"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Notification rechargement anniversaire"
@@ -1850,6 +1832,10 @@ msgstr "Où"
 #: src/libs/geolocation/components/WhereSection.tsx
 msgid "Où ?"
 msgstr "Où ?"
+
+#: src/features/navigation/TabBar/routes.ts
+msgid "Page d'accueil"
+msgstr "Page d'accueil"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Page introuvable"
@@ -2024,7 +2010,6 @@ msgstr "Problème technique ;("
 #: src/features/identityCheck/pages/profile/Status.tsx
 #: src/features/identityCheck/useIdentityCheckSteps.tsx
 #: src/features/navigation/TabBar/routes.ts
-#: src/features/navigation/TabBar/routes.ts
 #: src/features/profile/components/LoggedOutHeader.tsx
 #: src/features/profile/components/NonBeneficiaryHeader.tsx
 msgid "Profil"
@@ -2078,19 +2063,9 @@ msgstr "Qui est-ce ?"
 msgid "Rayon"
 msgstr "Rayon"
 
-#: src/features/navigation/RootNavigator/routes.ts
-#: src/features/navigation/RootNavigator/routes.ts
 #: src/features/navigation/TabBar/routes.ts
 msgid "Recherche"
 msgstr "Recherche"
-
-#: src/features/navigation/RootNavigator/routes.ts
-msgid "Recherche - catégories"
-msgstr "Recherche - catégories"
-
-#: src/features/navigation/RootNavigator/routes.ts
-msgid "Recherche - filtres"
-msgstr "Recherche - filtres"
 
 #: src/features/navigation/TabBar/routes.ts
 msgid "Recherche des offres"
@@ -2099,6 +2074,15 @@ msgstr "Recherche des offres"
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
 msgid "Recherche et sélectionne ton adresse"
 msgstr "Recherche et sélectionne ton adresse"
+
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "Recherche par catégorie"
+msgstr "Recherche par catégorie"
+
+#: src/features/navigation/RootNavigator/routes.ts
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "Recherche par localisation"
+msgstr "Recherche par localisation"
 
 #: src/features/search/atoms/Buttons/Search.tsx
 msgid "Rechercher"
@@ -2258,7 +2242,6 @@ msgid "Réservation introuvable !"
 msgstr "Réservation introuvable !"
 
 #: src/features/navigation/TabBar/routes.ts
-#: src/features/navigation/TabBar/routes.ts
 msgid "Réservations"
 msgstr "Réservations"
 
@@ -2385,13 +2368,13 @@ msgstr "Spectacle vivant"
 msgid "Suivre pass Culture"
 msgstr "Suivre pass Culture"
 
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "Suppression de compte"
+msgstr "Suppression de compte"
+
 #: src/features/profile/pages/LegalNotices/LegalNotices.tsx
 msgid "Suppression du compte"
 msgstr "Suppression du compte"
-
-#: src/features/navigation/RootNavigator/routes.ts
-msgid "Suppression profil"
-msgstr "Suppression profil"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Suppression profil confirmée"
@@ -2528,6 +2511,10 @@ msgstr "Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux."
 msgid "Ton nouveau mot de passe"
 msgstr "Ton nouveau mot de passe"
 
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "Ton numéro de téléphone"
+msgstr "Ton numéro de téléphone"
+
 #: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckValidation.web.tsx
 #: src/features/identityCheck/pages/profile/SetName.tsx
@@ -2660,10 +2647,6 @@ msgstr "Tu n'as pas de smartphone ?"
 msgid "Tu n'as pas reçu le sms ?"
 msgstr "Tu n'as pas reçu le sms ?"
 
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
-msgid "Tu ne fais pas partie de la phase de test"
-msgstr "Tu ne fais pas partie de la phase de test"
-
 #: src/features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler.tsx
 msgid "Tu ne peux pas choisir une date dans le futur"
 msgstr "Tu ne peux pas choisir une date dans le futur"
@@ -2777,10 +2760,6 @@ msgstr "Télécharger la dernière version"
 #: src/ui/components/contact/ContactBlock.tsx
 msgid "Téléphone"
 msgstr "Téléphone"
-
-#: src/features/navigation/RootNavigator/routes.ts
-msgid "Téléphone - Formulaire"
-msgstr "Téléphone - Formulaire"
 
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
@@ -3075,10 +3054,6 @@ msgstr "crédit photo"
 msgid "crédit valable jusqu'au"
 msgstr "crédit valable jusqu'au"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
-msgid "dans l'année de tes 18 ans, le Gouvernement offre un crédit de {deposit} à dépenser dans l’application."
-msgstr "dans l'année de tes 18 ans, le Gouvernement offre un crédit de {deposit} à dépenser dans l’application."
-
 #: src/features/profile/components/YoungerBadge.tsx
 msgid "date d'éligibilité"
 msgstr "Patience ! Reviens à partir du {date} pour continuer ton inscription et bénéficier du crédit pass Culture."
@@ -3118,10 +3093,6 @@ msgstr "Profite de {deposit}"
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "et si tu as..."
 msgstr "et si tu as..."
-
-#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
-msgid "et si tu es..."
-msgstr "et si tu es..."
 
 #: src/features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal.tsx
 msgid "financialHelpMessage"
@@ -3199,6 +3170,10 @@ msgstr "page-introuvable"
 #: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContent.tsx
 msgid "passeport"
 msgstr "passeport"
+
+#: src/features/search/components/SearchResults.tsx
+msgid "pour"
+msgstr "pour"
 
 #: src/features/bookOffer/components/BookingInformations.tsx
 msgid "prix duo"
@@ -3307,6 +3282,7 @@ msgid "{nbFavorites, plural, one {# favori} other {# favoris}}"
 msgstr "{nbFavorites, plural, one {# favori} other {# favoris}}"
 
 #: src/features/search/atoms/NumberOfResults.tsx
+#: src/features/search/components/SearchResults.tsx
 #: src/features/search/pages/SuggestedPlaces.tsx
 msgid "{nbHits, plural, one {# résultat} other {# résultats}}"
 msgstr "{nbHits, plural, one {# résultat} other {# résultats}}"
@@ -3330,6 +3306,18 @@ msgstr "À deux !"
 #: src/features/bookings/helpers.ts
 msgid "À retirer avant le {dateLimit}"
 msgstr "À retirer avant le {dateLimit}"
+
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "Étape 1 sur 4 | Tutoriel \"Comment ça marche\""
+msgstr "Étape 1 sur 4 | Tutoriel \"Comment ça marche\""
+
+#: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
+msgid "Étape {0} sur {1} | Tutoriel \"Comment ça marche\""
+msgstr "Étape {0} sur {1} | Tutoriel \"Comment ça marche\""
+
+#: src/features/auth/signup/SignupForm.tsx
+msgid "Étape {0} sur {SIGNUP_NUMBER_OF_STEPS} - Inscription"
+msgstr "Étape {0} sur {SIGNUP_NUMBER_OF_STEPS} - Inscription"
 
 #: src/ui/components/DotComponent.tsx
 msgid "Étape {step} sur {totalSteps} {status}"

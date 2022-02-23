@@ -20,6 +20,7 @@ import { StepDots } from 'ui/components/StepDots'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Spacer } from 'ui/theme'
+import { Helmet } from 'ui/web/global/Helmet'
 
 import { AcceptCgu } from './AcceptCgu'
 import { PreValidationSignupStep } from './enums'
@@ -81,6 +82,8 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
       ? t`Continuer vers l'étape` + ' ' + SIGNUP_STEP_CONFIG[stepIndex + 1].headerTitle
       : undefined
   const isFirstStep = stepIndex === 0
+  const helmetTitle =
+    t`Étape ${stepIndex + 1} sur ${SIGNUP_NUMBER_OF_STEPS} - Inscription` + ' | pass Culture'
 
   const { goBack: goBackAndLeaveSignup } = useGoBack(...getTabNavConfig('Profile'))
 
@@ -159,6 +162,7 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
 
   return (
     <React.Fragment>
+      <Helmet title={helmetTitle} />
       <BottomContentPage>
         <ModalHeader
           title={stepConfig.headerTitle}

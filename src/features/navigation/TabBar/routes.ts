@@ -23,6 +23,7 @@ const routes: TabRoute[] = [
     name: 'Home',
     component: Home,
     pathConfig: { path: 'accueil', deeplinkPaths: ['home'], parse: screenParamsParser['Home'] },
+    options: { title: t`Page d'accueil` },
   },
   {
     name: 'Search',
@@ -39,20 +40,20 @@ const routes: TabRoute[] = [
     component: Bookings,
     path: 'reservations',
     deeplinkPaths: ['bookings'],
-    options: { title: t`Réservations` },
+    options: { title: t`Mes réservations` },
     secure: true,
   },
   {
     name: 'Favorites',
     component: Favorites,
     path: 'favoris',
-    options: { title: t`Favoris` },
+    options: { title: t`Mes favoris` },
   },
   {
     name: 'Profile',
     component: Profile,
     path: 'profil',
-    options: { title: t`Profil` },
+    options: { title: t`Mon profil` },
   },
 ]
 

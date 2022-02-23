@@ -36,6 +36,7 @@ import { LoadingPage } from 'ui/components/LoadingPage'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Helmet } from 'ui/web/global/Helmet'
 import { A } from 'ui/web/link/A'
 import { Link } from 'ui/web/link/Link'
 const getOfferRules = (
@@ -130,8 +131,10 @@ export function BookingDetails() {
     navigate('Offer', { id: offer.id, from: 'bookingdetails' })
   }
 
+  const helmetTitle = `${t`Ma réservation pour`} ${booking.stock.offer.name} | pass Culture`
   return (
     <Container>
+      <Helmet title={helmetTitle} />
       <ScrollView
         onScroll={onScroll}
         scrollEventThrottle={20}
