@@ -6,9 +6,9 @@ SOURCEMAPS_DIR="sourcemaps"
 
 create_sourcemaps(){
   APP_OS="$1"
-  SOURCEMAPS_SUFFIX="$2"
+  SOURCEMAPS_NAME="$2"
 
-  if [ "$(uname -s)" = "Linux" ]; then
+  if [[ "$(uname -s)" = "Linux" ]]; then
     HERMES_BIN="linux64-bin"
   else
     HERMES_BIN="osx-bin"
@@ -18,20 +18,20 @@ create_sourcemaps(){
     --platform "${APP_OS}" \
     --dev false \
     --entry-file index.js \
-    --bundle-output "${SOURCEMAPS_DIR}/index.${SOURCEMAPS_SUFFIX}.bundle" \
-    --sourcemap-output "${SOURCEMAPS_DIR}/index.${SOURCEMAPS_SUFFIX}.bundle.packager.map"
+    --bundle-output "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}" \
+    --sourcemap-output "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.packager.map"
 
   node_modules/hermes-engine/${HERMES_BIN}/hermesc \
     -O \
     -emit-binary \
     -output-source-map \
-    -out="${SOURCEMAPS_DIR}/index.${SOURCEMAPS_SUFFIX}.bundle.hbc" \
-    "${SOURCEMAPS_DIR}/index.${SOURCEMAPS_SUFFIX}.bundle"
+    -out="${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.hbc" \
+    "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}"
 
   node node_modules/react-native/scripts/compose-source-maps.js \
-    "${SOURCEMAPS_DIR}/index.${SOURCEMAPS_SUFFIX}.bundle.packager.map" \
-    "${SOURCEMAPS_DIR}/index.${SOURCEMAPS_SUFFIX}.bundle.hbc.map" \
-    -o "${SOURCEMAPS_DIR}/index.${SOURCEMAPS_SUFFIX}.bundle.map"
+    "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.packager.map" \
+    "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.hbc.map" \
+    -o "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.map"
 }
 
 upload_sourcemaps(){
@@ -53,13 +53,14 @@ upload_sourcemaps(){
   mkdir -p "${SOURCEMAPS_DIR}"
 
 
-  if [[ -n "${CODE_PUSH_LABEL}" ]]; then
-    SOURCEMAPS_SUFFIX="${VERSION}.${APP_OS}.codepush+${CODE_PUSH_LABEL}"
+  if [[ "${APP_OS}" = "android" ]]; then
+    SOURCEMAPS_NAME="index.android.bundle"
   else
-    SOURCEMAPS_SUFFIX="${VERSION}.${APP_OS}"
+    SOURCEMAPS_NAME="main.jsbundle"
   fi
 
-  create_sourcemaps "${APP_OS}" "${SOURCEMAPS_SUFFIX}"
+  create_sourcemaps "${APP_OS}" "${SOURCEMAPS_NAME}"
+
   echo "✅ Successfully created sources maps"
 
   echo "Uploading ${APP_OS} source maps... "
@@ -76,11 +77,11 @@ upload_sourcemaps(){
   echo "DIST: $DIST"
 
   node_modules/@sentry/cli/bin/sentry-cli releases files "${RELEASE}" \
-    upload-sourcemaps \
+    upload-sourcemaps "${SOURCEMAPS_DIR}" \
     --dist "${DIST}" \
     --strip-prefix "${PWD}" \
     --url-prefix "app:///" \
-    --rewrite "${SOURCEMAPS_DIR}/index.${SOURCEMAPS_SUFFIX}.bundle" "${SOURCEMAPS_DIR}/index.${SOURCEMAPS_SUFFIX}.bundle.map"
+    --no-rewrite
 
   echo "✅ Successfully uploaded sources maps"
 }
