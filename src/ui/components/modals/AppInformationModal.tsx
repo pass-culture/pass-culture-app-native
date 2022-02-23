@@ -41,7 +41,7 @@ export const AppInformationModal: FunctionComponent<Props> = ({
           onRequestClose={onCloseIconPress}>
           <ClicAwayArea activeOpacity={1} onPress={onCloseIconPress}>
             <Spacer.Flex />
-            <Container activeOpacity={1} aria-describedby={modalId} disabled={true}>
+            <Container activeOpacity={1} aria-describedby={modalId}>
               <ModalHeader
                 title={title}
                 boldTitle

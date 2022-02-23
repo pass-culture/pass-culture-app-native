@@ -48,7 +48,7 @@ describe('NotificationSettings', () => {
     const { queryByText } = await renderNotificationSettings('granted', {} as UserProfileResponse)
     await superFlushWithAct(10)
     await waitForExpect(() => {
-      queryByText('Autoriser l’envoi d’e\u2011mails')
+      queryByText('Autoriser l’envoi d’e-mails')
       queryByText('Autoriser les notifications marketing')
     })
   })
@@ -59,7 +59,7 @@ describe('NotificationSettings', () => {
     const { queryByText } = await renderNotificationSettings('granted', {} as UserProfileResponse)
     await superFlushWithAct(10)
     await waitForExpect(() => {
-      queryByText('Autoriser l’envoi d’e\u2011mails')
+      queryByText('Autoriser l’envoi d’e-mails')
     })
   })
 

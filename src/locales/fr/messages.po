@@ -43,25 +43,13 @@ msgstr "12 Caractères"
 msgid "15 ans"
 msgstr "15 ans"
 
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
-msgid "15 ans, le 31 janvier"
-msgstr "15 ans, le 31 janvier"
-
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "16 ans"
 msgstr "16 ans"
 
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
-msgid "16 ans, le 20 janvier"
-msgstr "16 ans, le 20 janvier"
-
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "17 ans"
 msgstr "17 ans"
-
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
-msgid "17 ans, le 10 janvier"
-msgstr "17 ans, le 10 janvier"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "18 ans"
@@ -268,8 +256,8 @@ msgid "Autoriser les notifications marketing"
 msgstr "Autoriser les notifications marketing"
 
 #: src/features/profile/pages/NotificationSettings.tsx
-msgid "Autoriser l’envoi d’e‑mails"
-msgstr "Autoriser l’envoi d’e‑mails"
+msgid "Autoriser l’envoi d’e-mails"
+msgstr "Autoriser l’envoi d’e-mails"
 
 #: src/features/profile/pages/ConsentSettings.tsx
 msgid "Autoriser l’utilisation de mes données de navigation"
@@ -893,10 +881,6 @@ msgstr "En attendant, aide-nous à en savoir plus sur tes pratiques culturelles�
 msgid "En attendant, tu peux découvrir l'application !"
 msgstr "En attendant, tu peux découvrir l'application !"
 
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
-msgid "En attendant, tu peux tout de même découvrir l'application mais sans pouvoir réserver les offres."
-msgstr "En attendant, tu peux tout de même découvrir l'application mais sans pouvoir réserver les offres."
-
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
@@ -909,10 +893,6 @@ msgstr "En raison d’une erreur technique, l’offre n’a pas pu être réserv
 #: src/ui/components/PassPlaylist.tsx
 msgid "En voir plus"
 msgstr "En voir plus"
-
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
-msgid "Encore un peu de patience : en fonction de ton âge, tu pourras compléter ton inscription à la date suivante :"
-msgstr "Encore un peu de patience : en fonction de ton âge, tu pourras compléter ton inscription à la date suivante :"
 
 #: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
 #: src/features/profile/pages/ChangePassword/ChangePassword.tsx
@@ -2660,10 +2640,6 @@ msgstr "Tu n'as pas de smartphone ?"
 msgid "Tu n'as pas reçu le sms ?"
 msgstr "Tu n'as pas reçu le sms ?"
 
-#: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
-msgid "Tu ne fais pas partie de la phase de test"
-msgstr "Tu ne fais pas partie de la phase de test"
-
 #: src/features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler.tsx
 msgid "Tu ne peux pas choisir une date dans le futur"
 msgstr "Tu ne peux pas choisir une date dans le futur"
@@ -3075,10 +3051,6 @@ msgstr "crédit photo"
 msgid "crédit valable jusqu'au"
 msgstr "crédit valable jusqu'au"
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
-msgid "dans l'année de tes 18 ans, le Gouvernement offre un crédit de {deposit} à dépenser dans l’application."
-msgstr "dans l'année de tes 18 ans, le Gouvernement offre un crédit de {deposit} à dépenser dans l’application."
-
 #: src/features/profile/components/YoungerBadge.tsx
 msgid "date d'éligibilité"
 msgstr "Patience ! Reviens à partir du {date} pour continuer ton inscription et bénéficier du crédit pass Culture."
@@ -3118,10 +3090,6 @@ msgstr "Profite de {deposit}"
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "et si tu as..."
 msgstr "et si tu as..."
-
-#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
-msgid "et si tu es..."
-msgstr "et si tu es..."
 
 #: src/features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal.tsx
 msgid "financialHelpMessage"
