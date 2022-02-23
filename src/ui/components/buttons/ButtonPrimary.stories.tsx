@@ -1,6 +1,8 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
+import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
 
 import { ButtonPrimary } from './ButtonPrimary'
@@ -8,6 +10,12 @@ import { ButtonPrimary } from './ButtonPrimary'
 export default {
   title: 'ui/buttons/ButtonPrimary',
   component: ButtonPrimary,
+  argTypes: {
+    icon: selectArgTypeFromObject({
+      Email,
+      EditPen,
+    }),
+  },
 } as ComponentMeta<typeof ButtonPrimary>
 
 const Template: ComponentStory<typeof ButtonPrimary> = (props) => <ButtonPrimary {...props} />
@@ -32,12 +40,12 @@ Tall.args = {
 export const WithIcon = Template.bind({})
 WithIcon.args = {
   wording: 'Confirmer',
-  icon: Email,
+  icon: 'Email',
 }
 
 export const DisabledWithIcon = Template.bind({})
 DisabledWithIcon.args = {
   wording: 'Confirmer',
-  icon: Email,
+  icon: 'Email',
   disabled: true,
 }
