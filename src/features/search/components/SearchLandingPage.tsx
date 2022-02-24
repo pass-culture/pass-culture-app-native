@@ -15,9 +15,9 @@ import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { useSearchGroupLabel } from 'libs/subcategories'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { HiddenText } from 'ui/components/HiddenText'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { Touchable } from 'ui/web/touchable/Touchable'
 
 const SMALL_VIEWPORT_MAX_HEIGHT = 500
 
@@ -124,9 +124,7 @@ const contentContainerStyle: ViewStyle = {
   flexGrow: 1,
 }
 
-const TouchableOpacity = styledButton(Touchable).attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({ alignItems: 'center' })
+const TouchableOpacity = styledButton(Touchable)({ alignItems: 'center' })
 
 const BicolorListItem: React.FC<{
   title: string
