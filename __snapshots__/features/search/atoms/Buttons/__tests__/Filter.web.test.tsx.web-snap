@@ -14,7 +14,7 @@ Object {
       >
         <div
           class="css-view-1dbjc4n"
-          style="align-items: center; border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; flex-direction: row; height: 40px; overflow-x: hidden; overflow-y: hidden; padding-right: 12px; padding-left: 12px;"
+          style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; flex-direction: row; height: 40px; overflow-x: hidden; overflow-y: hidden; padding-right: 12px; padding-left: 12px;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -75,7 +75,7 @@ Object {
     >
       <div
         class="css-view-1dbjc4n"
-        style="align-items: center; border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; flex-direction: row; height: 40px; overflow-x: hidden; overflow-y: hidden; padding-right: 12px; padding-left: 12px;"
+        style="align-items: center; background-color: rgb(235, 0, 85); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; flex-direction: row; height: 40px; overflow-x: hidden; overflow-y: hidden; padding-right: 12px; padding-left: 12px;"
       >
         <div
           class="css-view-1dbjc4n"
