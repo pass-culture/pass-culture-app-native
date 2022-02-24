@@ -2,14 +2,16 @@ import styled from 'styled-components'
 
 import { appTouchableOpacityWebStyles } from 'ui/components/buttons/AppButton/styleUtils'
 
-export const Touchable = styled.button.attrs<{
-  type?: string
-  onPress?: () => void
-  // @ts-ignore will be remove in next ticket
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-}>(({ onPress, type, activeOpacity, ...rest }) => ({
-  tabIndex: '0',
-  type: type || 'button',
-  onClick: onPress,
-  ...rest,
-}))(appTouchableOpacityWebStyles)
+import { TouchableProps } from './types'
+
+// REMOBE testID
+export const Touchable = styled.button.attrs<TouchableProps>(
+  ({ onPress, type, testID, accessibilityLabel, ...rest }) => ({
+    tabIndex: '0',
+    type: type || 'button',
+    onClick: onPress,
+    testID,
+    'aria-label': accessibilityLabel,
+    ...rest,
+  })
+)(appTouchableOpacityWebStyles)

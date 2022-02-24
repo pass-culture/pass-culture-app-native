@@ -124,9 +124,7 @@ const contentContainerStyle: ViewStyle = {
   flexGrow: 1,
 }
 
-const TouchableOpacity = styledButton(Touchable).attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({ alignItems: 'center' })
+const TouchableOpacity = styledButton(Touchable)({ alignItems: 'center' })
 
 const BicolorListItem: React.FC<{
   title: string

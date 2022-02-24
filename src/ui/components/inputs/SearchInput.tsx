@@ -78,9 +78,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
 
 export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(WithRefSearchInput)
 
-const RightIconContainer = styledButton(Touchable).attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({
+const RightIconContainer = styledButton(Touchable)({
   position: 'absolute',
   right: getSpacing(1),
   padding: getSpacing(2),

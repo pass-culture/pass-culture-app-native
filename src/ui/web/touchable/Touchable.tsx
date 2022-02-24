@@ -1,10 +1,21 @@
 import React from 'react'
-import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
+import styled from 'styled-components/native'
 
-interface Props extends TouchableOpacityProps {
-  type?: string
+import { TouchableProps } from './types'
+
+export const Touchable: React.FC<TouchableProps> = ({
+  children,
+  onPress,
+  accessibilityLabel,
+  testID,
+}) => {
+  return (
+    <StyledTouchable onPress={onPress} testID={testID} accessibilityLabel={accessibilityLabel}>
+      {children}
+    </StyledTouchable>
+  )
 }
 
-export const Touchable: React.FC<Props> = (props) => {
-  return <TouchableOpacity {...props}>{props.children}</TouchableOpacity>
-}
+const StyledTouchable = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))``
