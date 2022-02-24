@@ -7,8 +7,8 @@ import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { Typo } from 'ui/theme'
-import { Touchable } from 'ui/web/touchable/Touchable'
 
 export const ReinitializeFilters = () => {
   const { dispatch } = useStagedSearch()
