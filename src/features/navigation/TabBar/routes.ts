@@ -65,12 +65,12 @@ export function isTabScreen(screen: ScreenNames): screen is TabRouteName {
   return tabRouteNames.includes(screen)
 }
 
-export const menu: Record<TabRouteName, { displayName: string; accessibilityLabel: string }> = {
-  Home: { displayName: t`Accueil`, accessibilityLabel: t`Accueil` },
-  Search: { displayName: t`Recherche`, accessibilityLabel: t`Rechercher des offres` },
-  Bookings: { displayName: t`Réservations`, accessibilityLabel: t`Mes réservations` },
-  Favorites: { displayName: t`Favoris`, accessibilityLabel: t`Mes favoris` },
-  Profile: { displayName: t`Profil`, accessibilityLabel: t`Mon profil` },
+export const menu: Record<TabRouteName, string> = {
+  Home: t`Accueil`,
+  Search: t`Recherche`,
+  Bookings: t`Réservations`,
+  Favorites: t`Favoris`,
+  Profile: t`Profil`,
 }
 
 const { screensConfig: tabScreensConfig, Screens: TabScreens } = getScreensAndConfig(
