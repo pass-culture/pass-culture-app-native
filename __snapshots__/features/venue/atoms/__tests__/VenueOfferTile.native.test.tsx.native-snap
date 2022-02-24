@@ -39,12 +39,17 @@ exports[`VenueOfferTile component should render correctly 1`] = `
           Object {
             "overflow": "hidden",
           },
-          Object {
-            "borderTopLeftRadius": 8,
-            "borderTopRightRadius": 8,
-            "height": 76,
-            "width": 100,
-          },
+          Array [
+            Object {
+              "backgroundColor": "#F1F1F4",
+            },
+            Object {
+              "borderTopLeftRadius": 8,
+              "borderTopRightRadius": 8,
+              "height": 76,
+              "width": 100,
+            },
+          ],
         ]
       }
     >

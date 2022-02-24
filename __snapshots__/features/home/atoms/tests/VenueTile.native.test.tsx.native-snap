@@ -41,11 +41,16 @@ exports[`VenueTile component should render correctly 1`] = `
           Object {
             "overflow": "hidden",
           },
-          Object {
-            "borderRadius": 8,
-            "height": 100,
-            "width": 100,
-          },
+          Array [
+            Object {
+              "backgroundColor": "#F1F1F4",
+            },
+            Object {
+              "borderRadius": 8,
+              "height": 100,
+              "width": 100,
+            },
+          ],
         ]
       }
     >

@@ -60,6 +60,7 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
         style={
           Array [
             Object {
+              "backgroundColor": "#eb0055",
               "height": 304,
               "justifyContent": "center",
               "maxHeight": 144,
@@ -249,6 +250,7 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
         style={
           Array [
             Object {
+              "backgroundColor": "#eb0055",
               "height": 304,
               "justifyContent": "center",
               "maxHeight": 144,
@@ -459,6 +461,7 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
         style={
           Array [
             Object {
+              "backgroundColor": "#eb0055",
               "height": 304,
               "justifyContent": "center",
               "maxHeight": 144,
