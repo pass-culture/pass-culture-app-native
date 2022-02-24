@@ -330,7 +330,7 @@ export const routes: Route[] = [
     name: 'PhoneValidationTooManyAttempts',
     component: PhoneValidationTooManyAttempts,
     path: 'creation-compte/code-de-validation-trop-d-essais',
-    options: { title: t`Validation téléphone - Trop d'éssais` },
+    options: { title: t`Validation téléphone - Trop d'essais` },
   },
   {
     name: 'PhoneValidationTooManySMSSent',
