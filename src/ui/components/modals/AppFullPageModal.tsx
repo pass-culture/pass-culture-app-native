@@ -6,9 +6,15 @@ import { theme } from 'theme'
 interface Props {
   visible: boolean
   testIdSuffix?: string
+  onRequestClose: () => void
 }
 
-export const AppFullPageModal: FunctionComponent<Props> = ({ visible, children, testIdSuffix }) => {
+export const AppFullPageModal: FunctionComponent<Props> = ({
+  visible,
+  children,
+  testIdSuffix,
+  onRequestClose,
+}) => {
   const { height: windowHeight } = useWindowDimensions()
   const maxHeight = windowHeight - theme.navTopHeight
 
@@ -18,8 +24,9 @@ export const AppFullPageModal: FunctionComponent<Props> = ({ visible, children, 
       statusBarTranslucent
       transparent={true}
       visible={visible}
-      testID={`modal-${testIdSuffix}`}>
-      <Container activeOpacity={1} maxHeight={maxHeight}>
+      testID={`modal-${testIdSuffix}`}
+      onRequestClose={onRequestClose}>
+      <Container activeOpacity={1} maxHeight={maxHeight} disabled={true}>
         {children}
       </Container>
     </Modal>

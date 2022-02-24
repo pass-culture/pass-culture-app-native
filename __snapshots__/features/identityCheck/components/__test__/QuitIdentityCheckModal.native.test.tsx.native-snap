@@ -4,12 +4,18 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
 <Modal
   animationType="fade"
   hardwareAccelerated={false}
+  onRequestClose={[Function]}
   statusBarTranslucent={true}
   testID="modal-quit-identity-check-stepper"
   transparent={true}
   visible={true}
 >
   <View
+    accessibilityState={
+      Object {
+        "disabled": true,
+      }
+    }
     accessible={true}
     collapsable={false}
     focusable={false}

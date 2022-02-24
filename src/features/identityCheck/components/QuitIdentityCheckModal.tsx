@@ -40,7 +40,10 @@ export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
   }
 
   return (
-    <AppFullPageModal visible={visible} testIdSuffix={testIdSuffix}>
+    <AppFullPageModal
+      visible={visible}
+      testIdSuffix={testIdSuffix}
+      onRequestClose={continueIdentityCheck}>
       <GenericInfoPage
         title={title}
         icon={ErrorIllustration}

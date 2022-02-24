@@ -4,6 +4,7 @@ exports[`<BirthdayInformationModal /> should render properly 1`] = `
 <Modal
   animationType="fade"
   hardwareAccelerated={false}
+  onRequestClose={[MockFunction]}
   statusBarTranslucent={true}
   testID="modal-birthday-information"
   transparent={true}
@@ -114,6 +115,7 @@ exports[`<BirthdayInformationModal /> should render properly 1`] = `
           }
         >
           <Text
+            nativeID="testUuidV4"
             numberOfLines={3}
             style={
               Array [

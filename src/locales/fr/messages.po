@@ -252,8 +252,8 @@ msgid "Autoriser les notifications marketing"
 msgstr "Autoriser les notifications marketing"
 
 #: src/features/profile/pages/NotificationSettings.tsx
-msgid "Autoriser l’envoi d’e‑mails"
-msgstr "Autoriser l’envoi d’e‑mails"
+msgid "Autoriser l’envoi d’e-mails"
+msgstr "Autoriser l’envoi d’e-mails"
 
 #: src/features/profile/pages/ConsentSettings.tsx
 msgid "Autoriser l’utilisation de mes données de navigation"

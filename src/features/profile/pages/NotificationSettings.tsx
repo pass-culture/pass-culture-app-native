@@ -163,7 +163,7 @@ export function NotificationSettings() {
         </StyledCaption>
         <Form.Flex>
           <SectionWithSwitch
-            title={t`Autoriser l’envoi d’e\u2011mails`}
+            title={t`Autoriser l’envoi d’e-mails`}
             active={allowEmails}
             accessibilityLabel={t`Interrupteur d'autorisation d'envoi des e-mails`}
             toggle={toggleEmails}

@@ -91,12 +91,6 @@ Instead, use:
 '\u00a0' + t`EAN` + '\u00a0'
 ```
 
-This works as it is not a suffix or prefix :
-
-```jsx
-t`Confirme ton e\u2011mail`
-```
-
 You don't need to add date formatting in the translation, do not write:
 
 ```jsx

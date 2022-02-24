@@ -102,6 +102,7 @@ Object {
                 style="align-items: center; bottom: 0px; flex: 1; justify-content: center; left: 0px; margin: auto auto auto auto; position: absolute; right: 0px; transform: translateY(0px);"
               >
                 <div
+                  aria-describedby="testUuidV4"
                   class="css-view-1dbjc4n"
                   data-testid="modalContainer"
                   style="align-items: center; background-color: rgb(255, 255, 255); border-bottom-left-radius: 0px; border-bottom-right-radius: 0px; border-top-left-radius: 16px; border-top-right-radius: 16px; flex-direction: column; height: 428px; justify-content: center; max-height: 650px; max-width: 960px; padding: 20px 20px 20px 20px; width: 100%;"
@@ -123,6 +124,7 @@ Object {
                         aria-level="1"
                         class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
                         dir="auto"
+                        id="testUuidV4"
                         role="heading"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                       >
