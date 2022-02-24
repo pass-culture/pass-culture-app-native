@@ -15,7 +15,7 @@ export interface ChangeEmailRequest {
   password: string
 }
 
-export type ResetRecreditAmountToShowMutationOptions = {
+type ResetRecreditAmountToShowMutationOptions = {
   onSuccess: () => void
   onError: (error: unknown) => void
 }

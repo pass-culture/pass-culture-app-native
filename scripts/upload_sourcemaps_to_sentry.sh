@@ -2,9 +2,13 @@
 
 set -e
 
+SOURCEMAPS_DIR="sourcemaps"
+
 create_sourcemaps(){
   APP_OS="$1"
-  if [[ $APP_OS = "android" ]]; then
+  SOURCEMAPS_NAME="$2"
+
+  if [[ "$(uname -s)" = "Linux" ]]; then
     HERMES_BIN="linux64-bin"
   else
     HERMES_BIN="osx-bin"
@@ -14,20 +18,20 @@ create_sourcemaps(){
     --platform "${APP_OS}" \
     --dev false \
     --entry-file index.js \
-    --bundle-output "sourcemaps/index.${APP_OS}.bundle" \
-    --sourcemap-output "sourcemaps/index.${APP_OS}.bundle.packager.map"
+    --bundle-output "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}" \
+    --sourcemap-output "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.packager.map"
 
   node_modules/hermes-engine/${HERMES_BIN}/hermesc \
     -O \
     -emit-binary \
     -output-source-map \
-    -out="sourcemaps/index.${APP_OS}.bundle.hbc" \
-    "sourcemaps/index.${APP_OS}.bundle"
+    -out="${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.hbc" \
+    "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}"
 
   node node_modules/react-native/scripts/compose-source-maps.js \
-    "sourcemaps/index.${APP_OS}.bundle.packager.map" \
-    "sourcemaps/index.${APP_OS}.bundle.hbc.map" \
-    "-o sourcemaps/index.${APP_OS}.bundle.map"
+    "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.packager.map" \
+    "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.hbc.map" \
+    -o "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.map"
 }
 
 upload_sourcemaps(){
@@ -39,25 +43,36 @@ upload_sourcemaps(){
 
   echo "APP_OS: $APP_OS"
   echo "APP_ENV: $APP_ENV"
-  echo "CODE_PUSH_LABEL: $CODE_PUSH_LABEL"
+  if [[ -n "$CODE_PUSH_LABEL" ]]; then
+    echo "CODE_PUSH_LABEL: $CODE_PUSH_LABEL"
+  fi
   echo "VERSION: $VERSION"
   echo "BUILD: $BUILD"
 
   echo "Creating sources maps... "
-  mkdir -p sourcemaps
+  mkdir -p "${SOURCEMAPS_DIR}"
 
-  create_sourcemaps "${APP_OS}"
+
+  if [[ "${APP_OS}" = "android" ]]; then
+    SOURCEMAPS_NAME="index.android.bundle"
+  else
+    SOURCEMAPS_NAME="main.jsbundle"
+  fi
+
+  create_sourcemaps "${APP_OS}" "${SOURCEMAPS_NAME}"
+
   echo "✅ Successfully created sources maps"
 
   echo "Uploading ${APP_OS} source maps... "
 
-  if [[ -z "$CODE_PUSH_LABEL" ]]; then
-    RELEASE="$VERSION-${APP_OS}"
-  else
+  if [[ -n "$CODE_PUSH_LABEL" ]]; then
     RELEASE="$VERSION-${APP_OS}+codepush:${CODE_PUSH_LABEL}"
+  else
+    RELEASE="$VERSION-${APP_OS}"
   fi
 
-  DIST="$VERSION-${APP_OS}"
+
+  DIST="${BUILD}-${APP_OS}"
   echo "RELEASE: $RELEASE"
   echo "DIST: $DIST"
 
@@ -65,7 +80,7 @@ upload_sourcemaps(){
     upload-sourcemaps \
     --dist "${DIST}" \
     --strip-prefix "${PWD}" \
-    --rewrite "sourcemaps/index.${APP_OS}.bundle sourcemaps/index.${APP_OS}.bundle.map"
+    --rewrite "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}" "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.map"
 
   echo "✅ Successfully uploaded sources maps"
 }

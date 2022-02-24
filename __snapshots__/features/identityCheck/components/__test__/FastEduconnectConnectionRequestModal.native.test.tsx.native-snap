@@ -101,6 +101,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
     swipeThreshold={100}
   >
     <View
+      aria-describedby="testUuidV4"
       height={428}
       style={
         Array [
@@ -174,6 +175,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
           }
         >
           <Text
+            nativeID="testUuidV4"
             numberOfLines={2}
             style={
               Array [
@@ -639,6 +641,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
     swipeThreshold={100}
   >
     <View
+      aria-describedby="testUuidV4"
       height={428}
       style={
         Array [
@@ -712,6 +715,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
           }
         >
           <Text
+            nativeID="testUuidV4"
             numberOfLines={2}
             style={
               Array [

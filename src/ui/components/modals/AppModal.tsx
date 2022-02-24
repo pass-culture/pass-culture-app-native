@@ -2,8 +2,10 @@ import React, { FunctionComponent, useRef, useState, useMemo, useCallback } from
 import { LayoutChangeEvent, ScrollView, useWindowDimensions } from 'react-native'
 import { ReactNativeModal } from 'react-native-modal'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
+import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
 import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -91,6 +93,10 @@ export const AppModal: FunctionComponent<Props> = ({
     [setScrollViewContentHeight, scrollViewRef]
   )
 
+  const modalId = uuidv4()
+
+  useEscapeKeyAction(visible ? onRightIconPress : undefined)
+
   return (
     <StyledModal
       style={modalStyles}
@@ -102,11 +108,12 @@ export const AppModal: FunctionComponent<Props> = ({
       testID="modal"
       deviceHeight={windowHeight}
       deviceWidth={windowWidth}>
-      <ModalContainer height={modalHeight} testID="modalContainer">
+      <ModalContainer height={modalHeight} testID="modalContainer" aria-describedby={modalId}>
         <ModalHeader
           title={title}
           numberOfLines={titleNumberOfLines}
           onLayout={updateHeaderHeight}
+          accessibilityDescribedBy={modalId}
           {...iconProps}
         />
         <SpacerBetweenHeaderAndContent />

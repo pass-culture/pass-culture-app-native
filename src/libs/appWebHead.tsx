@@ -14,7 +14,8 @@ if (templateDescription) {
 export const AppWebHead = () => {
   return (
     <Helmet>
-      <title>{description}</title>
+      {/* the default title is defined in NavigationContainer.tsx */}
+      <meta name="description" content={description} />
     </Helmet>
   )
 }

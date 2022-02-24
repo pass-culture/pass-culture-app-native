@@ -25,12 +25,7 @@ const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin')
 const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin')
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter')
 const SentryWebpackPlugin = require('@sentry/webpack-plugin')
-const postcssNormalize = require('postcss-normalize');
-const { GitRevisionPlugin } = require('git-revision-webpack-plugin')
-
-const gitRevisionPlugin = new GitRevisionPlugin({
-  commithashCommand: 'rev-parse --short HEAD'
-})
+const postcssNormalize = require('postcss-normalize')
 
 const appPackageJson = require(paths.appPackageJson)
 
@@ -54,16 +49,22 @@ const cssModuleRegex = /\.module\.css$/
 const sassRegex = /\.(scss|sass)$/
 const sassModuleRegex = /\.module\.(scss|sass)$/
 
-const allCssFiles = fs.readdirSync(paths.appExtraCss)
-  .filter((fileName) => fileName.match(/.*\.css/ig))
+const allCssFiles = fs
+  .readdirSync(paths.appExtraCss)
+  .filter((fileName) => fileName.match(/.*\.css/gi))
 
 const devCssFiles = allCssFiles.filter((fileName) => fileName.match(/^\d{2}-dev-/))
 const prodCssFiles = allCssFiles.filter((fileName) => !fileName.match(/^\d{2}-dev-/))
 
 function getCss(files) {
-  return files.map((fileName) => path.join(paths.appExtraCss, fileName))
-    .map((filePath) => !filePath.includes('dev-server-overlay') || process.env.ERROR_OVERLAY !== 'true' ? `<style>${fs.readFileSync(filePath, 'utf8')}</style>` : '')
-    .join('\n    ');
+  return files
+    .map((fileName) => path.join(paths.appExtraCss, fileName))
+    .map((filePath) =>
+      !filePath.includes('dev-server-overlay') || process.env.ERROR_OVERLAY !== 'true'
+        ? `<style>${fs.readFileSync(filePath, 'utf8')}</style>`
+        : ''
+    )
+    .join('\n    ')
 }
 
 // This is the production and development configuration.
@@ -392,8 +393,6 @@ module.exports = function (webpackEnv) {
                 /node_modules\/@ptomasroos\/react-native-multi-slider/,
                 /node_modules\/react-native-gesture-handler/,
                 /node_modules\/react-native-animatable/,
-                /node_modules\/@pass-culture\/id-check\/src/,
-                /id-check-front\/packages\/id-check\/src/,
                 /node_modules\/@pass-culture\/react-native-profiling/,
                 /node_modules\/react-native-calendars/,
                 /node_modules\/react-native-swipe-gestures/,
@@ -588,7 +587,8 @@ module.exports = function (webpackEnv) {
         AUTHOR: appPackageJson.author.name,
         TITLE: appPackageJson.author.name,
         TWITTER_SITE: appPackageJson.author.twitter,
-        META_NO_INDEX: env.raw.ENV !== 'production' ? `<meta name="robots" content="noindex" />` : '',
+        META_NO_INDEX:
+          env.raw.ENV !== 'production' ? `<meta name="robots" content="noindex" />` : '',
         PROD_CSS: getCss(prodCssFiles) || '',
         DEV_CSS: !isEnvProduction ? getCss(devCssFiles) : '',
       }),
@@ -604,9 +604,6 @@ module.exports = function (webpackEnv) {
         ...env.stringified,
         // This is used originally by our react-native app. It is useful to test if we are in development environment
         __DEV__: process.env.NODE_ENV !== 'production',
-        COMMIT_HASH: JSON.stringify(gitRevisionPlugin.commithash()),
-        BRANCH: JSON.stringify(gitRevisionPlugin.branch()),
-        LAST_COMMIT_DATETIME: JSON.stringify(gitRevisionPlugin.lastcommitdatetime()),
       }),
       // This is necessary to emit hot updates (currently CSS only):
       isEnvDevelopment && new webpack.HotModuleReplacementPlugin(),
@@ -691,11 +688,13 @@ module.exports = function (webpackEnv) {
           // The formatter is invoked directly in WebpackDevServerUtils during development
           formatter: isEnvProduction ? typescriptFormatter : undefined,
         }),
-        isEnvProduction && new SentryWebpackPlugin({
+      isEnvProduction &&
+        new SentryWebpackPlugin({
           include: paths.appBuild,
           rewrite: true,
-          release: appPackageJson.version,
-          dist: `${appPackageJson.build}-web${env.raw.ENV !== 'testing' ? '' : `-${gitRevisionPlugin.commithash()}`}`,
+          // for testing, we want to group the source map under one artifact and select sourcemaps using hash
+          release: env.raw.ENV === 'testing' ? `${appPackageJson.version}-web` : `${appPackageJson.version}-web-${env.raw.COMMIT_HASH}`,
+          dist: env.raw.ENV === 'testing' ? `${appPackageJson.build}-web-${env.raw.COMMIT_HASH}` : `${appPackageJson.build}-web`,
           cleanArtifacts: false,
           finalize: env.raw.ENV !== 'testing',
           deploy: {

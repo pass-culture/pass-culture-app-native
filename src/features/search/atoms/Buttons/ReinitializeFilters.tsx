@@ -7,6 +7,7 @@ import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { Typo } from 'ui/theme'
 
 export const ReinitializeFilters = () => {
@@ -27,18 +28,15 @@ export const ReinitializeFilters = () => {
   }
 
   return (
-    <TouchableOpacity
+    <Touchable
       onPress={reinitializeFilters}
-      {...accessibilityAndTestId(t`Réinitialiser les filtres`)}>
+      {...accessibilityAndTestId(t`Réinitialiser les filtres`)}
+      type="reset">
       <ButtonText>{t`Réinitialiser`}</ButtonText>
-    </TouchableOpacity>
+    </Touchable>
   )
 }
 
 const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
   color: theme.colors.white,
 }))
-
-const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))``

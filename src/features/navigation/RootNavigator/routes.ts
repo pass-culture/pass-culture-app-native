@@ -83,7 +83,6 @@ export const routes: Route[] = [
       deeplinkPaths: ['booking/:id/details'],
       parse: screenParamsParser['BookingDetails'],
     },
-    options: { title: t`Détails de réservation` },
     secure: true,
   },
   {
@@ -186,13 +185,13 @@ export const routes: Route[] = [
     name: 'LegalNotices',
     component: LegalNotices,
     path: 'notices-legales',
-    options: { title: t`Notices légales` },
+    options: { title: t`Mentions légales` },
   },
   {
     name: 'ConfirmDeleteProfile',
     component: ConfirmDeleteProfile,
     path: 'profil/suppression',
-    options: { title: t`Suppression profil` },
+    options: { title: t`Suppression de compte` },
     secure: true,
   },
   {
@@ -205,13 +204,13 @@ export const routes: Route[] = [
     name: 'LocationFilter',
     component: LocationFilter,
     path: 'recherche/localisation/filtres',
-    options: { title: t`Recherche` },
+    options: { title: t`Recherche par localisation` },
   },
   {
     name: 'LocationPicker',
     component: LocationPicker,
     path: 'recherche/localisation/choisir-adresse',
-    options: { title: t`Recherche` },
+    options: { title: t`Recherche par localisation` },
   },
   {
     name: 'Login',
@@ -243,7 +242,7 @@ export const routes: Route[] = [
     name: 'PersonalData',
     component: PersonalData,
     path: 'profil/donnees-personnelles',
-    options: { title: t`Données personnelles` },
+    options: { title: t`Mes informations personnelles` },
   },
   {
     name: 'ChangePassword',
@@ -282,13 +281,13 @@ export const routes: Route[] = [
     name: 'SearchCategories',
     component: SearchCategories,
     path: 'recherche/categories',
-    options: { title: t`Recherche - catégories` },
+    options: { title: t`Recherche par catégorie` },
   },
   {
     name: 'SearchFilter',
     component: SearchFilter,
     path: 'recherche/filtres',
-    options: { title: t`Recherche - filtres` },
+    options: { title: t`Filtres de recherche` },
   },
   {
     name: 'SignupForm',
@@ -314,7 +313,7 @@ export const routes: Route[] = [
     name: 'SetPhoneNumber',
     component: SetPhoneNumber,
     path: 'creation-compte/telephone',
-    options: { title: t`Téléphone - Formulaire` },
+    options: { title: t`Ton numéro de téléphone` },
   },
   {
     name: 'LandscapePositionPage',
@@ -331,7 +330,7 @@ export const routes: Route[] = [
     name: 'PhoneValidationTooManyAttempts',
     component: PhoneValidationTooManyAttempts,
     path: 'creation-compte/code-de-validation-trop-d-essais',
-    options: { title: t`Validation téléphone - Trop d'éssais` },
+    options: { title: t`Validation téléphone - Trop d'essais` },
   },
   {
     name: 'PhoneValidationTooManySMSSent',
@@ -356,7 +355,7 @@ export const routes: Route[] = [
     name: 'FirstTutorial',
     component: FirstTutorial,
     path: 'introduction-tutoriel',
-    options: { title: t`1er tutoriel` },
+    options: { title: t`Étape 1 sur 4 | Tutoriel "Comment ça marche"` },
   },
   {
     name: 'Venue',

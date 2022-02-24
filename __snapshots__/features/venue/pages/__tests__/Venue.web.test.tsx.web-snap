@@ -337,7 +337,7 @@ Object {
               style="height: 16px;"
             />
             <dl
-              class="sc-ikJyIC dZPHje"
+              class="sc-gWXbKe cLfsmh"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -348,7 +348,7 @@ Object {
                   style="align-items: center; flex-direction: row; justify-content: center; margin-top: 8px;"
                 >
                   <dt
-                    class="sc-cxpSdN sc-gWXbKe ioZFYP lpppZR"
+                    class="sc-giYglK sc-jcFjpl flIzxi bOwTiA"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -362,7 +362,7 @@ Object {
                     </div>
                   </dt>
                   <dd
-                    class="sc-iwjdpV sc-cCcXHH cNhjYM jYbjIZ"
+                    class="sc-iJKOTD sc-caiLqq dKa-dtZ hRwUsV"
                   >
                     1 boulevard Poissonnière, 75000 Paris
                   </dd>
@@ -372,12 +372,12 @@ Object {
                   style="height: 8px;"
                 />
                 <dt
-                  class="sc-cxpSdN sc-jJoQJp ioZFYP fgwOBS"
+                  class="sc-giYglK sc-cCcXHH flIzxi hgNHsF"
                 >
                   Lieu
                 </dt>
                 <dd
-                  class="sc-iwjdpV sc-hiCibw cNhjYM kCKNWD"
+                  class="sc-iJKOTD sc-cidDSM dKa-dtZ kWbrYV"
                   data-testid="venueTitle"
                 >
                   Le Petit Rintintin 1
@@ -400,7 +400,7 @@ Object {
                   style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                 >
                   <dt
-                    class="sc-cxpSdN sc-llYSUQ ioZFYP edjRNJ"
+                    class="sc-giYglK sc-ezbkAF flIzxi kjhfIO"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -418,7 +418,7 @@ Object {
                     style="height: 4px;"
                   />
                   <dd
-                    class="sc-iwjdpV sc-iJKOTD cNhjYM fwkwVJ"
+                    class="sc-iJKOTD sc-bYoBSM dKa-dtZ jbDGzC"
                     data-testid="caption-undefined"
                   >
                     Autre type de lieu
@@ -440,7 +440,7 @@ Object {
                     style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                   >
                     <dt
-                      class="sc-cxpSdN sc-llYSUQ ioZFYP edjRNJ"
+                      class="sc-giYglK sc-ezbkAF flIzxi kjhfIO"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -458,7 +458,7 @@ Object {
                       style="height: 4px;"
                     />
                     <dd
-                      class="sc-iwjdpV sc-iJKOTD cNhjYM cRpUWb"
+                      class="sc-iJKOTD sc-bYoBSM dKa-dtZ dPwoHk"
                       data-testid="caption-undefined"
                       disabled=""
                     >
@@ -472,12 +472,12 @@ Object {
                 />
               </div>
               <dt
-                class="sc-cxpSdN sc-jJoQJp ioZFYP fgwOBS"
+                class="sc-giYglK sc-cCcXHH flIzxi hgNHsF"
               >
                 Description
               </dt>
               <dd
-                class="sc-iwjdpV sc-kLwhqv cNhjYM bZJcCS"
+                class="sc-iJKOTD sc-hiCibw dKa-dtZ gqqvan"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -871,7 +871,7 @@ Object {
                   tabindex="-1"
                 >
                   <button
-                    class="sc-fotOHu hLcKgu"
+                    class="sc-bkkeKt evCTqR"
                     type="button"
                   >
                     <div
@@ -905,12 +905,12 @@ Object {
                   style="height: 24px;"
                 />
                 <dt
-                  class="sc-cxpSdN sc-giYglK ioZFYP iyLgtd"
+                  class="sc-giYglK sc-kLwhqv flIzxi crayCh"
                 >
                   Où ?
                 </dt>
                 <dd
-                  class="sc-iwjdpV cNhjYM"
+                  class="sc-iJKOTD dKa-dtZ"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -1128,10 +1128,10 @@ Object {
                   style="flex-direction: row; justify-content: space-between;"
                 >
                   <ul
-                    class="sc-jrQzAO sc-ezbkAF coApC bwCtEb"
+                    class="sc-jrQzAO sc-ikJyIC coApC iGXYCt"
                   >
                     <li
-                      class="sc-bYoBSM kPmJro"
+                      class="sc-jJoQJp eazuZI"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -1198,7 +1198,7 @@ Object {
                       </div>
                     </li>
                     <li
-                      class="sc-bYoBSM kPmJro"
+                      class="sc-jJoQJp eazuZI"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -1265,7 +1265,7 @@ Object {
                       </div>
                     </li>
                     <li
-                      class="sc-bYoBSM kPmJro"
+                      class="sc-jJoQJp eazuZI"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -1332,7 +1332,7 @@ Object {
                       </div>
                     </li>
                     <li
-                      class="sc-bYoBSM kPmJro"
+                      class="sc-jJoQJp eazuZI"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -1818,7 +1818,7 @@ Object {
             style="height: 16px;"
           />
           <dl
-            class="sc-ikJyIC dZPHje"
+            class="sc-gWXbKe cLfsmh"
           >
             <div
               class="css-view-1dbjc4n"
@@ -1829,7 +1829,7 @@ Object {
                 style="align-items: center; flex-direction: row; justify-content: center; margin-top: 8px;"
               >
                 <dt
-                  class="sc-cxpSdN sc-gWXbKe ioZFYP lpppZR"
+                  class="sc-giYglK sc-jcFjpl flIzxi bOwTiA"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -1843,7 +1843,7 @@ Object {
                   </div>
                 </dt>
                 <dd
-                  class="sc-iwjdpV sc-cCcXHH cNhjYM jYbjIZ"
+                  class="sc-iJKOTD sc-caiLqq dKa-dtZ hRwUsV"
                 >
                   1 boulevard Poissonnière, 75000 Paris
                 </dd>
@@ -1853,12 +1853,12 @@ Object {
                 style="height: 8px;"
               />
               <dt
-                class="sc-cxpSdN sc-jJoQJp ioZFYP fgwOBS"
+                class="sc-giYglK sc-cCcXHH flIzxi hgNHsF"
               >
                 Lieu
               </dt>
               <dd
-                class="sc-iwjdpV sc-hiCibw cNhjYM kCKNWD"
+                class="sc-iJKOTD sc-cidDSM dKa-dtZ kWbrYV"
                 data-testid="venueTitle"
               >
                 Le Petit Rintintin 1
@@ -1881,7 +1881,7 @@ Object {
                 style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
               >
                 <dt
-                  class="sc-cxpSdN sc-llYSUQ ioZFYP edjRNJ"
+                  class="sc-giYglK sc-ezbkAF flIzxi kjhfIO"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -1899,7 +1899,7 @@ Object {
                   style="height: 4px;"
                 />
                 <dd
-                  class="sc-iwjdpV sc-iJKOTD cNhjYM fwkwVJ"
+                  class="sc-iJKOTD sc-bYoBSM dKa-dtZ jbDGzC"
                   data-testid="caption-undefined"
                 >
                   Autre type de lieu
@@ -1921,7 +1921,7 @@ Object {
                   style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                 >
                   <dt
-                    class="sc-cxpSdN sc-llYSUQ ioZFYP edjRNJ"
+                    class="sc-giYglK sc-ezbkAF flIzxi kjhfIO"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -1939,7 +1939,7 @@ Object {
                     style="height: 4px;"
                   />
                   <dd
-                    class="sc-iwjdpV sc-iJKOTD cNhjYM cRpUWb"
+                    class="sc-iJKOTD sc-bYoBSM dKa-dtZ dPwoHk"
                     data-testid="caption-undefined"
                     disabled=""
                   >
@@ -1953,12 +1953,12 @@ Object {
               />
             </div>
             <dt
-              class="sc-cxpSdN sc-jJoQJp ioZFYP fgwOBS"
+              class="sc-giYglK sc-cCcXHH flIzxi hgNHsF"
             >
               Description
             </dt>
             <dd
-              class="sc-iwjdpV sc-kLwhqv cNhjYM bZJcCS"
+              class="sc-iJKOTD sc-hiCibw dKa-dtZ gqqvan"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -2352,7 +2352,7 @@ Object {
                 tabindex="-1"
               >
                 <button
-                  class="sc-fotOHu hLcKgu"
+                  class="sc-bkkeKt evCTqR"
                   type="button"
                 >
                   <div
@@ -2386,12 +2386,12 @@ Object {
                 style="height: 24px;"
               />
               <dt
-                class="sc-cxpSdN sc-giYglK ioZFYP iyLgtd"
+                class="sc-giYglK sc-kLwhqv flIzxi crayCh"
               >
                 Où ?
               </dt>
               <dd
-                class="sc-iwjdpV cNhjYM"
+                class="sc-iJKOTD dKa-dtZ"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -2609,10 +2609,10 @@ Object {
                 style="flex-direction: row; justify-content: space-between;"
               >
                 <ul
-                  class="sc-jrQzAO sc-ezbkAF coApC bwCtEb"
+                  class="sc-jrQzAO sc-ikJyIC coApC iGXYCt"
                 >
                   <li
-                    class="sc-bYoBSM kPmJro"
+                    class="sc-jJoQJp eazuZI"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -2679,7 +2679,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-bYoBSM kPmJro"
+                    class="sc-jJoQJp eazuZI"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -2746,7 +2746,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-bYoBSM kPmJro"
+                    class="sc-jJoQJp eazuZI"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -2813,7 +2813,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-bYoBSM kPmJro"
+                    class="sc-jJoQJp eazuZI"
                   >
                     <div
                       class="css-view-1dbjc4n"

@@ -55,6 +55,7 @@ export interface Environment {
   TMX_ORGID: string
   URL_PREFIX: string
   WEBAPP_V2_DOMAIN: string
+  // Below envs are injected by webpack and are defined only on the Webapp
   COMMIT_HASH: string
   BRANCH: string
   LAST_COMMIT_DATETIME: string

@@ -1840,6 +1840,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               swipeThreshold={100}
                             >
                               <View
+                                aria-describedby="testUuidV4"
                                 height={428}
                                 style={
                                   Array [
@@ -1913,6 +1914,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     }
                                   >
                                     <Text
+                                      nativeID="testUuidV4"
                                       numberOfLines={2}
                                       style={
                                         Array [
@@ -4487,6 +4489,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               swipeThreshold={100}
                             >
                               <View
+                                aria-describedby="testUuidV4"
                                 height={428}
                                 style={
                                   Array [
@@ -4560,6 +4563,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     }
                                   >
                                     <Text
+                                      nativeID="testUuidV4"
                                       numberOfLines={2}
                                       style={
                                         Array [

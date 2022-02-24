@@ -72,7 +72,7 @@ export const NotEligibleEduConnect = ({
         ),
       ].filter(Boolean)}>
       <Helmet>
-        <title>{title}</title>
+        <title>{t`Page erreur\u00a0:` + title + ' | pass Culture'}</title>
       </Helmet>
       <Body textAlign={descriptionAlignment}>{description}</Body>
     </GenericInfoPage>

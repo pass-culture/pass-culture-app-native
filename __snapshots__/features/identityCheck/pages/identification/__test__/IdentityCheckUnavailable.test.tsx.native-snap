@@ -285,6 +285,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
         swipeThreshold={100}
       >
         <View
+          aria-describedby="testUuidV4"
           height={428}
           style={
             Array [
@@ -358,6 +359,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
               }
             >
               <Text
+                nativeID="testUuidV4"
                 numberOfLines={2}
                 style={
                   Array [

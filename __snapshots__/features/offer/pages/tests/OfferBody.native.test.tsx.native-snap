@@ -1066,6 +1066,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         swipeThreshold={100}
       >
         <View
+          aria-describedby="testUuidV4"
           height={428}
           style={
             Array [
@@ -1139,6 +1140,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
               }
             >
               <Text
+                nativeID="testUuidV4"
                 numberOfLines={2}
                 style={
                   Array [

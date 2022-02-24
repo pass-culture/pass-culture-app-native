@@ -121,6 +121,7 @@ export const analytics = {
     analyticsProvider.logEvent(AnalyticsEvent.CONSULT_WHY_ANNIVERSARY),
   logCancelSignup: (pageName: string) =>
     analyticsProvider.logEvent(AnalyticsEvent.CANCEL_SIGNUP, { pageName }),
+  logContinueSignup: () => analyticsProvider.logEvent(AnalyticsEvent.CONTINUE_SIGNUP),
   logHelpCenterContactSignupConfirmationEmailSent: () =>
     analyticsProvider.logEvent(AnalyticsEvent.HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT),
   logResendEmailResetPasswordExpiredLink: () =>

@@ -121,7 +121,7 @@ export function requestPasswordResetFail() {
   )
 }
 
-export function requestSettingsSuccess(
+function requestSettingsSuccess(
   settingsResponse: SettingsResponse = {
     isRecaptchaEnabled: true,
     autoActivateDigitalBookings: false,

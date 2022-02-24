@@ -4,11 +4,7 @@ import styled from 'styled-components/native'
 
 import { IconInterface } from '../types'
 
-export const TikTokSvg: React.FunctionComponent<IconInterface> = ({
-  size,
-  color: _color,
-  testID,
-}) => (
+const TikTokSvg: React.FunctionComponent<IconInterface> = ({ size, color: _color, testID }) => (
   <Svg width={size} height={size} viewBox="0 0 48 48" testID={testID} aria-hidden>
     <Path
       d="M0 8C0 3.58172 3.58172 0 8 0H40C44.4183 0 48 3.58172 48 8V40C48 44.4183 44.4183 48 40 48H8C3.58172 48 0 44.4183 0 40V8Z"

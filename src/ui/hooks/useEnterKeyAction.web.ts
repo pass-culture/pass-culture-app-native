@@ -1,12 +1,12 @@
 import { useFocusEffect } from '@react-navigation/native'
 import { useCallback } from 'react'
 
-export const useEnterKeyAction = (cb?: () => void) => {
+export const useEnterKeyAction = (callback?: () => void) => {
   useFocusEffect(
     useCallback(() => {
       const handleEsc = (event: KeyboardEvent) => {
         if (event.key === 'Enter') {
-          return cb && cb()
+          return callback && callback()
         }
       }
       globalThis.addEventListener('keypress', handleEsc)
@@ -14,6 +14,6 @@ export const useEnterKeyAction = (cb?: () => void) => {
       return () => {
         globalThis.removeEventListener('keypress', handleEsc)
       }
-    }, [cb])
+    }, [callback])
   )
 }

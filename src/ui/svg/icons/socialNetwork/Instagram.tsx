@@ -7,7 +7,7 @@ import { IconInterface } from '../types'
 const RADIAL_GRADIENT_1_ID = 'Instagram-RadialGradient1'
 const RADIAL_GRADIENT_2_ID = 'Instagram-RadialGradient2'
 
-export const InstagramSvg = ({ color: _color, size, testID }: IconInterface) => {
+const InstagramSvg = ({ color: _color, size, testID }: IconInterface) => {
   return (
     <Svg width={size} height={size} testID={testID} viewBox="0 0 24 24" aria-hidden>
       <Defs>

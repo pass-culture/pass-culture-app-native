@@ -6,8 +6,6 @@ import { InputLabel } from 'ui/components/InputLabel.web'
 import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { ArrowDown } from 'ui/svg/icons/ArrowDown'
 import { getSpacingString, Spacer } from 'ui/theme'
-import { Option } from 'ui/web/form/Option.web'
-import { Select } from 'ui/web/form/Select.web'
 
 type Props = {
   label: string
@@ -94,7 +92,7 @@ type SelectProps = {
   isError: boolean
 }
 
-const StyledSelect = styled(Select)<SelectProps>`
+const StyledSelect = styled.select<SelectProps>`
   ${({ theme, noBorderRadiusRight, noBorderRadiusLeft, isError }) => {
     const borderRadiusLeft = noBorderRadiusLeft ? noBorderRadius : `${theme.borderRadius.button}px`
     const borderRadiusRight = noBorderRadiusRight
@@ -129,6 +127,6 @@ The fonts supported by <option/> are native browser fonts.
 That's why we can't use our theme's font.
 Note: Font-Family is only used by Firefox.
 */
-const StyledOption = styled(Option)`
+const StyledOption = styled.option`
   font-family: 'Arial', sans-serif;
 `

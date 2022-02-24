@@ -5,7 +5,7 @@ export enum PreValidationSignupStep {
   CGU = 'CGU',
 }
 
-export enum PostValidationSignupStep {
+enum PostValidationSignupStep {
   PhoneNumber = 'PhoneNumber',
 }
 

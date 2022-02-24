@@ -1,3 +1,4 @@
+import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { initialSearchState } from 'features/search/pages/reducer'
@@ -7,6 +8,10 @@ import { render } from 'tests/utils'
 import { SearchResults } from '../SearchResults'
 
 jest.mock('react-query')
+jest.mock('@react-navigation/native', () => ({
+  ...jest.requireActual('@react-navigation/native'),
+  useIsFocused: jest.fn(),
+}))
 const mockSearchState = initialSearchState
 jest.mock('features/search/pages/SearchWrapper', () => ({
   useSearch: () => ({
@@ -37,7 +42,7 @@ jest.mock('features/search/pages/useSearchResults', () => ({
 
 describe('SearchResults component', () => {
   it('should log SearchScrollToPage when hitting the bottom of the page', () => {
-    const { getByTestId } = render(<SearchResults />)
+    const { getByTestId } = render(<SearchResults />, { wrapper: NavigationContainer })
     const flatlist = getByTestId('searchResultsFlatlist')
 
     mockData.pages.push({ hits: [], page: 1, nbHits: 0 })
@@ -53,7 +58,7 @@ describe('SearchResults component', () => {
 
   it('should not log SearchScrollToPage when hitting the bottom of the page if no more results', () => {
     mockHasNextPage = false
-    const { getByTestId } = render(<SearchResults />)
+    const { getByTestId } = render(<SearchResults />, { wrapper: NavigationContainer })
     const flatlist = getByTestId('searchResultsFlatlist')
     flatlist.props.onEndReached()
     expect(analytics.logSearchScrollToPage).not.toHaveBeenCalled()

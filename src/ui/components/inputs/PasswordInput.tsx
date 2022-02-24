@@ -9,10 +9,12 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { InputLabel } from 'ui/components/InputLabel'
 import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { Eye as DefaultEye } from 'ui/svg/icons/Eye'
 import { EyeSlash as DefaultEyeSlash } from 'ui/svg/icons/EyeSlash'
 import { Spacer } from 'ui/theme'
@@ -89,7 +91,7 @@ const StyledBaseTextInput = styled(BaseTextInput)({
   flex: 0.9,
 })
 
-const IconTouchableOpacity = styled.TouchableOpacity({
+const IconTouchableOpacity = styledButton(Touchable)({
   flex: 0.1,
   maxWidth: 60,
   alignItems: 'flex-end',

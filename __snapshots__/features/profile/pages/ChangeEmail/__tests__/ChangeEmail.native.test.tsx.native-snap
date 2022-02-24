@@ -573,11 +573,6 @@ Array [
               onStartShouldSetResponder={[Function]}
               style={
                 Object {
-                  "alignItems": "flex-end",
-                  "flexBasis": 0,
-                  "flexGrow": 0.1,
-                  "flexShrink": 1,
-                  "maxWidth": 60,
                   "opacity": 1,
                 }
               }
@@ -1216,11 +1211,6 @@ Array [
               onStartShouldSetResponder={[Function]}
               style={
                 Object {
-                  "alignItems": "flex-end",
-                  "flexBasis": 0,
-                  "flexGrow": 0.1,
-                  "flexShrink": 1,
-                  "maxWidth": 60,
                   "opacity": 1,
                 }
               }
