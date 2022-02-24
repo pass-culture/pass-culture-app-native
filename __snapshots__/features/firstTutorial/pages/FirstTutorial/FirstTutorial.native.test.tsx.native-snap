@@ -1513,6 +1513,11 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                   }
                 >
                   <View
+                    accessibilityState={
+                      Object {
+                        "disabled": true,
+                      }
+                    }
                     accessible={true}
                     focusable={false}
                     onClick={[Function]}
@@ -1546,6 +1551,11 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     </View>
                   </View>
                   <View
+                    accessibilityState={
+                      Object {
+                        "disabled": true,
+                      }
+                    }
                     accessible={true}
                     focusable={false}
                     onClick={[Function]}
@@ -1579,6 +1589,11 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     </View>
                   </View>
                   <View
+                    accessibilityState={
+                      Object {
+                        "disabled": true,
+                      }
+                    }
                     accessible={true}
                     focusable={false}
                     onClick={[Function]}
@@ -1612,6 +1627,11 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     </View>
                   </View>
                   <View
+                    accessibilityState={
+                      Object {
+                        "disabled": true,
+                      }
+                    }
                     accessible={true}
                     focusable={false}
                     onClick={[Function]}
