@@ -32,7 +32,7 @@ export const NavItem: React.FC<NavItemInterface> = ({
       activeOpacity={1}
       testID={`${tabName} nav`}>
       <BicolorIcon />
-      <Title isSelected={isSelected}>{menu[tabName].displayName}</Title>
+      <Title isSelected={isSelected}>{menu[tabName]}</Title>
     </StyledTouchableOpacity>
   )
 }
