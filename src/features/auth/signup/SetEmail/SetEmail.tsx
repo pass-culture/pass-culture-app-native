@@ -64,7 +64,10 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
         relatedInputId={emailInputErrorId}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <StyledCheckBox onPress={onCheckboxPress}>
+      <StyledCheckBox
+        onPress={onCheckboxPress}
+        accessibilityRole="checkbox"
+        accessibilityState={{ checked: isNewsletterChecked }}>
         <CheckboxInput isChecked={isNewsletterChecked} setIsChecked={setIsNewsletterChecked} />
         <CheckBoxText>
           <InputLabel htmlFor={checkboxID}>
