@@ -85,13 +85,15 @@ export const Header = memo(function Header() {
     <HeaderContainer>
       <LeftContainer margin={margin} isVisible={!!isDesktopOffset} style={fadeAnim}>
         <LogoContainer onPress={navigateToHome}>
-          <Link to={{ screen: homeNavConfig[0], params: homeNavConfig[1] }} accessible={false}>
-            <LogoPassCulture
-              color={theme.uniqueColors.brand}
-              height={getSpacing(10)}
-              width="100%"
-            />
-          </Link>
+          {!!isBrandVisible && (
+            <Link to={{ screen: homeNavConfig[0], params: homeNavConfig[1] }} accessible={false}>
+              <LogoPassCulture
+                color={theme.uniqueColors.brand}
+                height={getSpacing(10)}
+                width="100%"
+              />
+            </Link>
+          )}
         </LogoContainer>
         <FlexContainer />
       </LeftContainer>
