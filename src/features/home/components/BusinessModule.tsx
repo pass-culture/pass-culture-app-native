@@ -110,6 +110,7 @@ const ImageBackground = styled.ImageBackground<{ width: number; height: number }
   width: props.width,
   justifyContent: 'center',
   maxHeight: LENGTH_XS,
+  backgroundColor: props.theme.colors.primary,
 }))
 
 const Container = styled.View({

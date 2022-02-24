@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react'
 import FastImage from 'react-native-fast-image'
+import styled from 'styled-components/native'
 
 import { BorderRadiusEnum } from 'ui/theme/grid'
 
@@ -27,5 +28,9 @@ export const ImageTile: React.FC<Props> = (props) => {
 
   const source = useMemo(() => ({ uri: props.uri }), [props.uri])
 
-  return props.uri ? <FastImage style={style} source={source} testID="tileImage" /> : null
+  return props.uri ? <StyledFastImage style={style} source={source} testID="tileImage" /> : null
 }
+
+const StyledFastImage = styled(FastImage)(({ theme }) => ({
+  backgroundColor: theme.colors.greyLight,
+}))

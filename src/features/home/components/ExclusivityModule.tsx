@@ -70,6 +70,7 @@ const TouchableHighlight = styled.TouchableHighlight(({ theme }) => ({
 }))
 
 const Image = styled(FastImage)(({ theme }) => ({
+  backgroundColor: theme.colors.primary,
   borderRadius: theme.borderRadius.radius,
   maxHeight: LENGTH_XL,
   height: PixelRatio.roundToNearestPixel((theme.appContentWidth - 2 * MARGIN_DP) * RATIO_EXCLU),
