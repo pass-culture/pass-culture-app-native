@@ -16,13 +16,6 @@ import { useNetwork } from 'libs/network/useNetwork'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit, useParseSearchParameters } from 'libs/search'
 
-export type HomeModuleResponse = {
-  [moduleId: string]: {
-    hits: SearchHit[]
-    nbHits: number
-  }
-}
-
 const isSearchState = (parameter: unknown): parameter is SearchState =>
   typeof parameter === 'object' && parameter !== null
 

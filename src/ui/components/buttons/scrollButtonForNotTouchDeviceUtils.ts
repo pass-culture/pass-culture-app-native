@@ -6,11 +6,11 @@ import { DefaultTheme } from 'styled-components/native'
 
 import { getSpacing } from 'ui/theme'
 
-export type HorizontalAlignPropStyle = {
+type HorizontalAlignPropStyle = {
   horizontalAlign: 'left' | 'right'
 }
 
-export type ScrollButtonPropStyle = {
+type ScrollButtonPropStyle = {
   top?: number
   theme: DefaultTheme
 } & HorizontalAlignPropStyle
@@ -20,13 +20,13 @@ export type ScrollButtonForNotTouchDeviceProps = {
   onPress?: () => void
 } & ScrollButtonPropStyle
 
-export type ScrollButtonForNotTouchDevicePropsStylesNative = InterpolationFunction<
+type ScrollButtonForNotTouchDevicePropsStylesNative = InterpolationFunction<
   ThemedStyledProps<
     TouchableOpacityProps & RefAttributes<TouchableOpacity> & ScrollButtonPropStyle,
     DefaultTheme
   >
 >
-export type ScrollButtonForNotTouchDevicePropsStylesWeb = InterpolationFunction<
+type ScrollButtonForNotTouchDevicePropsStylesWeb = InterpolationFunction<
   ThemedStyledProps<
     DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> &
       HorizontalAlignPropStyle,
