@@ -121,10 +121,6 @@ msgstr "Actualiser la page"
 msgid "Adresse"
 msgstr "Adresse"
 
-#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
-msgid "Adresse - Formulaire"
-msgstr "Adresse - Formulaire"
-
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/login/Login.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
@@ -445,10 +441,6 @@ msgstr "Choisissez l'application pour vous rendre sur le lieu de l'offre :"
 msgid "Choix de l'indicatif téléphonique"
 msgstr "Choix de l'indicatif téléphonique"
 
-#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
-msgid "Choix du status"
-msgstr "Choix du status"
-
 #: src/libs/parsers/venueType.ts
 msgid "Cinéma - Salle de projections"
 msgstr "Cinéma - Salle de projections"
@@ -469,10 +461,6 @@ msgstr "Clique sur le lien reçu à l'adresse :"
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
 msgstr "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
-
-#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
-msgid "Code postal - Formulaire"
-msgstr "Code postal - Formulaire"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStart.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStart.web.tsx
@@ -1109,7 +1097,6 @@ msgstr "ISBN"
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
-#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Identification"
 msgstr "Identification"
 
@@ -1648,10 +1635,6 @@ msgstr "Nom"
 msgid "Nom de la réservation"
 msgstr "Nom de la réservation"
 
-#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
-msgid "Nom/prénom - Formulaire"
-msgstr "Nom/prénom - Formulaire"
-
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 msgid "Nombre de place"
 msgstr "Nombre de place"
@@ -1837,6 +1820,19 @@ msgstr "Où ?"
 msgid "Page d'accueil"
 msgstr "Page d'accueil"
 
+#: src/features/identityCheck/errors/eduConnect/NotEligibleEduConnect.tsx
+msgid "Page erreur :"
+msgstr "Page erreur :"
+
+#: src/features/errors/pages/AsyncErrorBoundary.tsx
+msgid "Page erreur : Erreur pendant le chargement"
+msgstr "Page erreur : Erreur pendant le chargement"
+
+#: src/features/home/components/NoContentError.tsx
+msgid "Page erreur : Erreur pendant le chargement de nos recommandations"
+msgstr "Page erreur : Erreur pendant le chargement de nos recommandations"
+
+#: src/features/navigation/PageNotFound.tsx
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Page introuvable"
 msgstr "Page introuvable"
@@ -2449,6 +2445,14 @@ msgstr "Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par
 msgid "Ton adresse ne doit pas contenir de caractères spéciaux ou n'être composée que d'espaces."
 msgstr "Ton adresse ne doit pas contenir de caractères spéciaux ou n'être composée que d'espaces."
 
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
+msgid "Ton adresse | Profil"
+msgstr "Ton adresse | Profil"
+
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
+msgid "Ton code postal | Profil"
+msgstr "Ton code postal | Profil"
+
 #: src/features/auth/signup/AccountCreated/AccountCreated.tsx
 msgid "Ton compte a été activé !"
 msgstr "Ton compte a été activé !"
@@ -2507,6 +2511,10 @@ msgstr "Ton nom de famille"
 msgid "Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux."
 msgstr "Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux."
 
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
+msgid "Ton nom/prénom | Profil"
+msgstr "Ton nom/prénom | Profil"
+
 #: src/features/profile/pages/ChangePassword/ChangePassword.tsx
 msgid "Ton nouveau mot de passe"
 msgstr "Ton nouveau mot de passe"
@@ -2529,6 +2537,14 @@ msgstr "Ton prénom ne doit pas contenir de chiffres ou de caractères spéciaux
 #: src/features/offer/components/ReportOfferReason.tsx
 msgid "Ton signalement a bien été pris en compte"
 msgstr "Ton signalement a bien été pris en compte"
+
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
+msgid "Ton status | Profil"
+msgstr "Ton status | Profil"
+
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
+msgid "Ton établissement | Profil"
+msgstr "Ton établissement | Profil"
 
 #: src/features/landscapePosition/LandscapePositionPage.tsx
 #: src/features/landscapePosition/LandscapePositionPage.tsx
@@ -2745,10 +2761,6 @@ msgstr "Twitter"
 msgid "Type d'offre"
 msgstr "Type d'offre"
 
-#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
-msgid "Type d'établissement"
-msgstr "Type d'établissement"
-
 #: src/features/venue/atoms/VenueType.tsx
 msgid "Type de lieu"
 msgstr "Type de lieu"
@@ -2850,8 +2862,8 @@ msgid "Validation téléphone"
 msgstr "Validation téléphone"
 
 #: src/features/navigation/RootNavigator/routes.ts
-msgid "Validation téléphone - Trop d'éssais"
-msgstr "Validation téléphone - Trop d'éssais"
+msgid "Validation téléphone - Trop d'essais"
+msgstr "Validation téléphone - Trop d'essais"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Validation téléphone - Trop de SMS envoyés"
@@ -2901,6 +2913,7 @@ msgid "Veux-tu abandonner la vérification d'identité ?"
 msgstr "Veux-tu abandonner la vérification d'identité ?"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
+#: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Victime de notre succès !"
 msgstr "Victime de notre succès !"
 

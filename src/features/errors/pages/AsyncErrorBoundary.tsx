@@ -8,6 +8,7 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AsyncError, MonitoringError, eventMonitoring } from 'libs/monitoring'
 import { ScreenError } from 'libs/monitoring/errors'
+import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericErrorPage } from 'ui/components/GenericErrorPage'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
@@ -54,20 +55,25 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
   }
 
   return (
-    <GenericErrorPage
-      title={t`Oups\u00a0!`}
-      icon={BrokenConnection}
-      header={header}
-      buttons={[
-        <ButtonPrimaryWhite
-          key={1}
-          wording={t`Réessayer`}
-          onPress={handleRetry}
-          buttonHeight="tall"
-        />,
-      ]}>
-      <StyledBody>{t`Une erreur s'est produite pendant le chargement.`}</StyledBody>
-    </GenericErrorPage>
+    <React.Fragment>
+      <Helmet>
+        <title>{t`Page erreur\u00a0: Erreur pendant le chargement` + ' | pass Culture'}</title>
+      </Helmet>
+      <GenericErrorPage
+        title={t`Oups\u00a0!`}
+        icon={BrokenConnection}
+        header={header}
+        buttons={[
+          <ButtonPrimaryWhite
+            key={1}
+            wording={t`Réessayer`}
+            onPress={handleRetry}
+            buttonHeight="tall"
+          />,
+        ]}>
+        <StyledBody>{t`Une erreur s'est produite pendant le chargement.`}</StyledBody>
+      </GenericErrorPage>
+    </React.Fragment>
   )
 }
 

@@ -16,7 +16,7 @@ export const Maintenance: React.FC<MaintenanceProps> = (props) => {
   return (
     <React.Fragment>
       <Helmet>
-        <title>{t`Maintenance`}</title>
+        <title>{t`Maintenance` + ' | pass Culture'}</title>
       </Helmet>
       <GenericInfoPage title={t`Maintenance en cours`} icon={MaintenanceCone}>
         <Spacer.Column numberOfSpaces={6} />

@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonSecondaryWhite } from 'ui/components/buttons/ButtonSecondaryWhite'
 import { GenericErrorPage } from 'ui/components/GenericErrorPage'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
@@ -19,20 +20,28 @@ export const NoContentError = () => {
   }
 
   return (
-    <GenericErrorPage
-      title={t`Oups\u00a0!`}
-      icon={BrokenConnection}
-      buttons={[
-        <ButtonSecondaryWhite
-          key={1}
-          wording={t`Rechercher une offre`}
-          icon={MagnifyingGlass}
-          onPress={navigateToSearchTab}
-          buttonHeight="tall"
-        />,
-      ]}>
-      <BodyText>{t`Une erreur s’est produite pendant le chargement de nos recommandations.`}</BodyText>
-    </GenericErrorPage>
+    <React.Fragment>
+      <Helmet>
+        <title>
+          {t`Page erreur\u00a0: Erreur pendant le chargement de nos recommandations` +
+            ' | pass Culture'}
+        </title>
+      </Helmet>
+      <GenericErrorPage
+        title={t`Oups\u00a0!`}
+        icon={BrokenConnection}
+        buttons={[
+          <ButtonSecondaryWhite
+            key={1}
+            wording={t`Rechercher une offre`}
+            icon={MagnifyingGlass}
+            onPress={navigateToSearchTab}
+            buttonHeight="tall"
+          />,
+        ]}>
+        <BodyText>{t`Une erreur s’est produite pendant le chargement de nos recommandations.`}</BodyText>
+      </GenericErrorPage>
+    </React.Fragment>
   )
 }
 
