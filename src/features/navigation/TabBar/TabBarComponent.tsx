@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { menu } from 'features/navigation/TabBar/routes'
+import { TabRouteName } from 'features/navigation/TabBar/types'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { BicolorSelector } from 'ui/svg/icons/BicolorSelector'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
@@ -13,7 +15,7 @@ interface Props {
   isSelected?: boolean
   BicolorIcon: React.FC<BicolorIconInterface>
   onPress: () => void
-  tabName: string
+  tabName: TabRouteName
 }
 
 export const TabBarComponent: React.FC<Props> = ({ isSelected, BicolorIcon, onPress, tabName }) => {
@@ -27,7 +29,7 @@ export const TabBarComponent: React.FC<Props> = ({ isSelected, BicolorIcon, onPr
     <TabComponentContainer
       onPress={onPress}
       activeOpacity={1}
-      {...accessibilityAndTestId(`${tabName} tab`)}>
+      {...accessibilityAndTestId(menu[tabName].accessibilityLabel, `${tabName} tab`)}>
       {!!isSelected && (
         <BicolorSelector
           width={SELECTOR_WIDTH}

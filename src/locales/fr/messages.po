@@ -86,6 +86,7 @@ msgid "Accessibilité"
 msgstr "Accessibilité"
 
 #: src/features/navigation/TabBar/routes.ts
+#: src/features/navigation/TabBar/routes.ts
 msgid "Accueil"
 msgstr "Accueil"
 
@@ -1492,6 +1493,7 @@ msgstr "Mentions légales"
 
 #: src/features/favorites/pages/Favorites.tsx
 #: src/features/navigation/TabBar/routes.ts
+#: src/features/navigation/TabBar/routes.ts
 msgid "Mes favoris"
 msgstr "Mes favoris"
 
@@ -1504,6 +1506,7 @@ msgid "Mes options"
 msgstr "Mes options"
 
 #: src/features/bookings/pages/Bookings.tsx
+#: src/features/navigation/TabBar/routes.ts
 #: src/features/navigation/TabBar/routes.ts
 msgid "Mes réservations"
 msgstr "Mes réservations"
@@ -1562,6 +1565,7 @@ msgstr "Mon crédit est expiré, que faire ?"
 msgid "Mon identité"
 msgstr "Mon identité"
 
+#: src/features/navigation/TabBar/routes.ts
 #: src/features/navigation/TabBar/routes.ts
 msgid "Mon profil"
 msgstr "Mon profil"
@@ -2083,6 +2087,10 @@ msgstr "Recherche par localisation"
 #: src/features/search/atoms/Buttons/Search.tsx
 msgid "Rechercher"
 msgstr "Rechercher"
+
+#: src/features/navigation/TabBar/routes.ts
+msgid "Rechercher des offres"
+msgstr "Rechercher des offres"
 
 #: src/features/home/components/NoContentError.tsx
 msgid "Rechercher une offre"
