@@ -9,6 +9,7 @@ interface Props {
   label: string
   selected: boolean
   onPress: () => void
+  children?: never
 }
 
 export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) => {
@@ -21,7 +22,9 @@ export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) =>
       ) : (
         <Spacer.Row numberOfSpaces={5} />
       )}
-      <Label selected={selected}>{label}</Label>
+      <Label numberOfLines={1} selected={selected}>
+        {label}
+      </Label>
       <Spacer.Row numberOfSpaces={selected ? 2 : 5} />
       <HiddenCheckbox name={label} checked={selected} accessibilityLabel={label} />
     </TouchableOpacity>
@@ -49,8 +52,10 @@ const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
   marginBottom: getSpacing(3),
   marginRight: getSpacing(3),
   backgroundColor: selected ? theme.colors.primary : theme.colors.white,
+  maxWidth: theme.buttons.maxWidth,
+  alignSelf: 'flex-start',
 }))
 const Label = styled(Typo.ButtonText)<{ selected: boolean }>(({ theme, selected }) => ({
-  paddingVertical: getSpacing(2.5),
+  marginVertical: getSpacing(2.5),
   color: selected ? theme.colors.white : theme.colors.black,
 }))
