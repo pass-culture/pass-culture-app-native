@@ -856,12 +856,17 @@ exports[`<VenueBody /> should render correctly 1`] = `
                         Object {
                           "overflow": "hidden",
                         },
-                        Object {
-                          "borderTopLeftRadius": 8,
-                          "borderTopRightRadius": 8,
-                          "height": 264,
-                          "width": 192,
-                        },
+                        Array [
+                          Object {
+                            "backgroundColor": "#F1F1F4",
+                          },
+                          Object {
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "height": 264,
+                            "width": 192,
+                          },
+                        ],
                       ]
                     }
                   >
@@ -1066,12 +1071,17 @@ exports[`<VenueBody /> should render correctly 1`] = `
                         Object {
                           "overflow": "hidden",
                         },
-                        Object {
-                          "borderTopLeftRadius": 8,
-                          "borderTopRightRadius": 8,
-                          "height": 264,
-                          "width": 192,
-                        },
+                        Array [
+                          Object {
+                            "backgroundColor": "#F1F1F4",
+                          },
+                          Object {
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "height": 264,
+                            "width": 192,
+                          },
+                        ],
                       ]
                     }
                   >
@@ -1276,12 +1286,17 @@ exports[`<VenueBody /> should render correctly 1`] = `
                         Object {
                           "overflow": "hidden",
                         },
-                        Object {
-                          "borderTopLeftRadius": 8,
-                          "borderTopRightRadius": 8,
-                          "height": 264,
-                          "width": 192,
-                        },
+                        Array [
+                          Object {
+                            "backgroundColor": "#F1F1F4",
+                          },
+                          Object {
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "height": 264,
+                            "width": 192,
+                          },
+                        ],
                       ]
                     }
                   >

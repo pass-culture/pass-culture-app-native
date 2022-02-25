@@ -53,12 +53,13 @@ export const ImagePlaceholder = styled(ImagePlaceholderComponent).attrs(({ theme
 }))``
 
 const StyledLinearGradient = styled(LinearGradient)<{ borderRadius: number }>(
-  ({ borderRadius }) => ({
+  ({ borderRadius, theme }) => ({
     borderRadius,
     height: '100%',
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
+    backgroundColor: theme.colors.greyLight,
   })
 )
 

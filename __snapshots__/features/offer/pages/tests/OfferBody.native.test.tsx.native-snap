@@ -108,13 +108,18 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
               Object {
                 "overflow": "hidden",
               },
-              Object {
-                "aspectRatio": 0.6666666666666666,
-                "borderRadius": 8,
-                "height": 296,
-                "maxWidth": 912,
-                "width": 197,
-              },
+              Array [
+                Object {
+                  "backgroundColor": "#F1F1F4",
+                },
+                Object {
+                  "aspectRatio": 0.6666666666666666,
+                  "borderRadius": 8,
+                  "height": 296,
+                  "maxWidth": 912,
+                  "width": 197,
+                },
+              ],
             ]
           }
         >

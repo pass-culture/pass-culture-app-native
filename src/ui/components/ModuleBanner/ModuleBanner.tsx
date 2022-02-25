@@ -42,10 +42,11 @@ const ImageContainer = styled.View(({ theme }) => ({
   overflow: 'hidden',
 }))
 
-const ImageBackground = styled.ImageBackground({
+const ImageBackground = styled.ImageBackground(({ theme }) => ({
   width: '100%',
   justifyContent: 'center',
-})
+  backgroundColor: theme.colors.primary,
+}))
 
 const Container = styled.View({
   flexDirection: 'row',

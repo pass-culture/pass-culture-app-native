@@ -42,7 +42,11 @@ export const Hero: React.FC<HeroProps & { imageUrl?: string }> = (props) => {
       <Spacer.Column numberOfSpaces={heroMarginTop} />
       <ImageContainer style={imageStyle} testID="image-container">
         {imageUrl ? (
-          <FastImage style={imageStyle} source={source} resizeMode={FastImage.resizeMode.cover} />
+          <StyledFastImage
+            style={imageStyle}
+            source={source}
+            resizeMode={FastImage.resizeMode.cover}
+          />
         ) : (
           <ImagePlaceholder />
         )}
@@ -50,6 +54,10 @@ export const Hero: React.FC<HeroProps & { imageUrl?: string }> = (props) => {
     </HeroHeader>
   )
 }
+
+const StyledFastImage = styled(FastImage)(({ theme }) => ({
+  backgroundColor: theme.colors.greyLight,
+}))
 
 const ImageContainer = styled.View(({ theme }) => ({
   bottom: 0,

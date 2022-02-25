@@ -39,6 +39,7 @@ const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
 })
 
 const StyledLinearGradient = styled(LinearGradient)(({ theme }) => ({
+  backgroundColor: theme.colors.primary,
   borderRadius: theme.borderRadius.button,
   alignItems: 'center',
   flexDirection: 'row',

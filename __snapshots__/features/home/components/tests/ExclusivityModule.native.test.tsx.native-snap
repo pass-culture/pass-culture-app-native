@@ -61,6 +61,7 @@ exports[`ExclusivityModule component should render correctly 1`] = `
             },
             Array [
               Object {
+                "backgroundColor": "#eb0055",
                 "borderRadius": 8,
                 "height": 760,
                 "maxHeight": 360,
