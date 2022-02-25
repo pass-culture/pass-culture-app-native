@@ -64,8 +64,15 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
         relatedInputId={emailInputErrorId}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <StyledCheckBox onPress={onCheckboxPress}>
-        <CheckboxInput isChecked={isNewsletterChecked} setIsChecked={setIsNewsletterChecked} />
+      <StyledCheckBox
+        onPress={onCheckboxPress}
+        accessibilityRole="checkbox"
+        accessibilityState={{ checked: isNewsletterChecked }}>
+        <CheckboxInput
+          isChecked={isNewsletterChecked}
+          setIsChecked={setIsNewsletterChecked}
+          accessible={false}
+        />
         <CheckBoxText>
           <InputLabel htmlFor={checkboxID}>
             {t`J’accepte de recevoir les newsletters, bons plans et recommandations personnalisées du pass Culture.`}

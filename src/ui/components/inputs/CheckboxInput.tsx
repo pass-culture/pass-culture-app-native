@@ -7,9 +7,14 @@ import { getSpacing } from 'ui/theme'
 type CustomCheckboxProps = {
   isChecked: boolean
   setIsChecked?: (b: boolean) => void
+  accessible?: boolean
 }
 
-export function CheckboxInput({ isChecked, setIsChecked }: CustomCheckboxProps): JSX.Element {
+export function CheckboxInput({
+  isChecked,
+  setIsChecked,
+  accessible = true,
+}: CustomCheckboxProps): JSX.Element {
   function setToggleCheckbox() {
     if (setIsChecked) {
       setIsChecked(!isChecked)
@@ -17,7 +22,11 @@ export function CheckboxInput({ isChecked, setIsChecked }: CustomCheckboxProps):
   }
 
   return (
-    <StyledCheckboxInput checked={isChecked} onPress={setToggleCheckbox} testID="checkbox">
+    <StyledCheckboxInput
+      checked={isChecked}
+      onPress={setToggleCheckbox}
+      testID="checkbox"
+      disabled={!accessible}>
       {!!isChecked && <CheckboxMark testID={'checkbox-mark'} />}
     </StyledCheckboxInput>
   )
