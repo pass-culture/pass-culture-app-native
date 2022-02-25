@@ -52,7 +52,7 @@ export const SCREENS_CONFIG: {
   SignupForm: {},
 }
 
-type MarketingParams = 'utm_campaign' | 'utm_source' | 'utm_medium'
+type MarketingParams = 'utm_campaign' | 'utm_source' | 'utm_medium' | 'utm_content'
 
 type MarketingConfig = {
   [Param in MarketingParams]: ParamConfig
@@ -70,6 +70,10 @@ export const MARKETING_CONFIG: MarketingConfig = {
   utm_medium: {
     type: 'string',
     description: `Support publicitaire ou marketing (ex : cpc, bannière, newsletter envoyée par e-mail).`,
+  },
+  utm_content: {
+    type: 'string',
+    description: 'Visuel de la campagne si elle en compte plusieurs (1, 2, 3, a , b, c...).',
   },
 }
 
