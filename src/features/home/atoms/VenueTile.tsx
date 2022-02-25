@@ -13,7 +13,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { GLOBAL_STALE_TIME } from 'libs/react-query/queryClient'
 import { VenueHit } from 'libs/search'
 import { ImageTile } from 'ui/components/ImageTile'
-
+import { customFocusOutline } from 'ui/theme/customFocusOutline'
 export interface VenueTileProps {
   venue: VenueHit
   width: number
@@ -79,11 +79,5 @@ const TouchableHighlight = styled.TouchableHighlight<{
   marginTop: theme.outline.width,
   borderRadius: theme.borderRadius.radius,
   backgroundColor: theme.uniqueColors.greyDisabled,
-  ...(isFocus
-    ? {
-        outlineColor: theme.outline.color,
-        outlineWidth: theme.outline.width,
-        outlineStyle: theme.outline.style,
-      }
-    : {}),
+  ...customFocusOutline(theme, isFocus),
 }))

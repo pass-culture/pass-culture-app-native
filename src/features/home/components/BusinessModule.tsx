@@ -12,6 +12,7 @@ import { analytics } from 'libs/analytics'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Idea } from 'ui/svg/icons/Idea'
 import { Typo, getSpacing, MARGIN_DP, LENGTH_XS, RATIO_BUSINESS, Spacer } from 'ui/theme'
+import { customFocusOutline } from 'ui/theme/customFocusOutline'
 
 import { fillUrlEmail, shouldUrlBeFilled, showBusinessModule } from './BusinessModule.utils'
 
@@ -98,13 +99,7 @@ const Row = styled.View({
 const TouchableHighlight = styled.TouchableHighlight<{ isFocus?: boolean }>(
   ({ theme, isFocus }) => ({
     borderRadius: theme.borderRadius.radius,
-    ...(isFocus
-      ? {
-          outlineColor: theme.outline.color,
-          outlineWidth: theme.outline.width,
-          outlineStyle: theme.outline.style,
-        }
-      : {}),
+    ...customFocusOutline(theme, isFocus),
   })
 )
 

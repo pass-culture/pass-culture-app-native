@@ -20,6 +20,7 @@ import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
 import { OfferCaption } from 'ui/components/OfferCaption'
 import { MARGIN_DP } from 'ui/theme'
+import { customFocusOutline } from 'ui/theme/customFocusOutline'
 import { Link } from 'ui/web/link/Link'
 
 export interface OfferTileProps {
@@ -149,13 +150,7 @@ const TouchableHighlight = styled.TouchableHighlight<{ height: number; isFocus?:
     marginTop: theme.outline.width,
     borderRadius: theme.borderRadius.radius,
     height,
-    ...(isFocus
-      ? {
-          outlineColor: theme.outline.color,
-          outlineWidth: theme.outline.width,
-          outlineStyle: theme.outline.style,
-        }
-      : {}),
+    ...customFocusOutline(theme, isFocus),
   })
 )
 
