@@ -49,6 +49,11 @@ export interface AppThemeType {
     regular: string
     semiBold: string
   }
+  outline: {
+    width: number
+    color: ColorsEnum
+    style: string
+  }
   typography: {
     hero: Typography
     title1: Typography
@@ -303,6 +308,11 @@ export const theme: AppThemeType = {
     semiBold: 'Montserrat-SemiBold',
   },
   forms: { maxWidth: DESKTOP_CONTENT_MAX_WIDTH },
+  outline: {
+    width: getSpacing(0.75),
+    color: ColorsEnum.PRIMARY,
+    style: 'solid',
+  },
   typography: {
     hero: {
       fontFamily: 'Montserrat-Medium',

@@ -269,7 +269,6 @@ Array [
             }
           >
             <View
-              accessibilityLabel="offerTile"
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -284,6 +283,7 @@ Array [
                   Object {
                     "borderRadius": 8,
                     "height": 288,
+                    "marginTop": 3,
                   },
                 ]
               }
@@ -484,7 +484,6 @@ Array [
             }
           >
             <View
-              accessibilityLabel="offerTile"
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -499,6 +498,7 @@ Array [
                   Object {
                     "borderRadius": 8,
                     "height": 288,
+                    "marginTop": 3,
                   },
                 ]
               }
@@ -699,7 +699,6 @@ Array [
             }
           >
             <View
-              accessibilityLabel="offerTile"
               accessible={true}
               focusable={true}
               onClick={[Function]}
@@ -714,6 +713,7 @@ Array [
                   Object {
                     "borderRadius": 8,
                     "height": 288,
+                    "marginTop": 3,
                   },
                 ]
               }

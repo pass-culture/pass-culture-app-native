@@ -643,10 +643,9 @@ Object {
                             style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                           >
                             <div
-                              aria-label="offerTile"
                               class="css-view-1dbjc4n"
                               data-testid="offerTile"
-                              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; margin-top: 3px; user-select: none;"
                               tabindex="0"
                             >
                               <div
@@ -715,10 +714,9 @@ Object {
                             style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                           >
                             <div
-                              aria-label="offerTile"
                               class="css-view-1dbjc4n"
                               data-testid="offerTile"
-                              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; margin-top: 3px; user-select: none;"
                               tabindex="0"
                             >
                               <div
@@ -787,10 +785,9 @@ Object {
                             style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                           >
                             <div
-                              aria-label="offerTile"
                               class="css-view-1dbjc4n"
                               data-testid="offerTile"
-                              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                              style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; margin-top: 3px; user-select: none;"
                               tabindex="0"
                             >
                               <div
@@ -2124,10 +2121,9 @@ Object {
                           style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                         >
                           <div
-                            aria-label="offerTile"
                             class="css-view-1dbjc4n"
                             data-testid="offerTile"
-                            style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                            style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; margin-top: 3px; user-select: none;"
                             tabindex="0"
                           >
                             <div
@@ -2196,10 +2192,9 @@ Object {
                           style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                         >
                           <div
-                            aria-label="offerTile"
                             class="css-view-1dbjc4n"
                             data-testid="offerTile"
-                            style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                            style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; margin-top: 3px; user-select: none;"
                             tabindex="0"
                           >
                             <div
@@ -2268,10 +2263,9 @@ Object {
                           style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                         >
                           <div
-                            aria-label="offerTile"
                             class="css-view-1dbjc4n"
                             data-testid="offerTile"
-                            style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; user-select: none;"
+                            style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; margin-top: 3px; user-select: none;"
                             tabindex="0"
                           >
                             <div

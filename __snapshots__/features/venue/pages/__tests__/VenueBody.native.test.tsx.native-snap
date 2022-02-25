@@ -830,7 +830,6 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="offerTile"
                   accessible={true}
                   focusable={true}
                   onClick={[Function]}
@@ -845,6 +844,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                       Object {
                         "borderRadius": 8,
                         "height": 288,
+                        "marginTop": 3,
                       },
                     ]
                   }
@@ -1045,7 +1045,6 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="offerTile"
                   accessible={true}
                   focusable={true}
                   onClick={[Function]}
@@ -1060,6 +1059,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                       Object {
                         "borderRadius": 8,
                         "height": 288,
+                        "marginTop": 3,
                       },
                     ]
                   }
@@ -1260,7 +1260,6 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="offerTile"
                   accessible={true}
                   focusable={true}
                   onClick={[Function]}
@@ -1275,6 +1274,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                       Object {
                         "borderRadius": 8,
                         "height": 288,
+                        "marginTop": 3,
                       },
                     ]
                   }
