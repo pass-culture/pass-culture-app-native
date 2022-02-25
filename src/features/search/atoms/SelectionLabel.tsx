@@ -9,6 +9,7 @@ interface Props {
   label: string
   selected: boolean
   onPress: () => void
+  children?: never
 }
 
 export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) => {
