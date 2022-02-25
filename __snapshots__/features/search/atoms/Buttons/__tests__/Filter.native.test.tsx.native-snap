@@ -17,7 +17,6 @@ exports[`Filter component should render correctly 1`] = `
   style={
     Object {
       "opacity": 1,
-      "overflow": "hidden",
     }
   }
   testID="FilterButton"

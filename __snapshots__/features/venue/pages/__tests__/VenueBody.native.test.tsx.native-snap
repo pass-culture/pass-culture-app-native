@@ -254,7 +254,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
           }
         >
           <View
-            className="sc-iqseJM grXLDg"
+            className="sc-crHmcD bSMQIy"
           >
             <View
               height={16}
@@ -266,7 +266,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
             </View>
           </View>
           <Text
-            className="sc-crHmcD XsIxx"
+            className="sc-egiyK bozaBn"
             numberOfLines={1}
           >
             1 boulevard Poissonnière, 75000 Paris
@@ -283,14 +283,14 @@ exports[`<VenueBody /> should render correctly 1`] = `
           }
         />
         <Text
-          className="sc-jrQzAO ASZKX"
+          className="sc-kDTinF bHOrBQ"
         >
           Lieu
         </Text>
         <Text
           adjustsFontSizeToFit={true}
           allowFontScaling={false}
-          className="sc-kDTinF gpnoaP"
+          className="sc-iqseJM btGKiA"
           numberOfLines={2}
           testID="venueTitle"
         >
@@ -466,12 +466,12 @@ exports[`<VenueBody /> should render correctly 1`] = `
         />
       </View>
       <Text
-        className="sc-jrQzAO ASZKX"
+        className="sc-kDTinF bHOrBQ"
       >
         Description
       </Text>
       <View
-        className="sc-pVTFL ctrUkt"
+        className="sc-jrQzAO fkKuRI"
       >
         <View
           collapsable={false}
@@ -1738,7 +1738,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
           }
         />
         <Text
-          className="sc-gKclnd jQLBDT"
+          className="sc-iCfMLu cMjKNK"
         >
           Où ?
         </Text>
