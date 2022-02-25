@@ -13,6 +13,7 @@ interface ProgressBarProps {
   color: ColorsEnum | UniqueColors
   icon: FunctionComponent<IconInterface>
   isAnimated?: boolean
+  children?: never
 }
 
 const ProgressBarComponent: React.FC<ProgressBarProps> = ({
