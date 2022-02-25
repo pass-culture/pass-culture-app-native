@@ -31,6 +31,7 @@ const supportedBrowsers: Array<{
   { message: 'Edge sur Windows', active: DeviceDetect.isEdge, version: 79 },
   { message: 'Opera', active: DeviceDetect.isOpera && DeviceDetect.isDesktop, version: 80 },
   { message: 'Samsung', active: DeviceDetect.isSamsungBrowser, version: 5 },
+  { message: 'Instagram', active: DeviceDetect.browserName === 'Instagram', version: 200 },
   {
     message: 'Les navigateurs basés sur Chromium (autre que Chrome)',
     active: DeviceDetect.isChromium,
