@@ -5,12 +5,12 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div
+      <button
         aria-label="Afficher les filtres"
-        class="css-view-1dbjc4n"
+        class="sc-dkPtRN sc-hKwDye katONk hPtpPc"
         data-testid="FilterButton"
-        style="cursor: pointer; overflow-x: hidden; overflow-y: hidden; transition-duration: 0s; transition-property: opacity; user-select: none;"
         tabindex="0"
+        type="button"
       >
         <div
           class="css-view-1dbjc4n"
@@ -62,16 +62,16 @@ Object {
             style="width: 4px;"
           />
         </div>
-      </div>
+      </button>
     </div>
   </body>,
   "container": <div>
-    <div
+    <button
       aria-label="Afficher les filtres"
-      class="css-view-1dbjc4n"
+      class="sc-dkPtRN sc-hKwDye katONk hPtpPc"
       data-testid="FilterButton"
-      style="cursor: pointer; overflow-x: hidden; overflow-y: hidden; transition-duration: 0s; transition-property: opacity; user-select: none;"
       tabindex="0"
+      type="button"
     >
       <div
         class="css-view-1dbjc4n"
@@ -123,7 +123,7 @@ Object {
           style="width: 4px;"
         />
       </div>
-    </div>
+    </button>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

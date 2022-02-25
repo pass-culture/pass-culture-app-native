@@ -8,6 +8,8 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useFilterCount } from 'features/search/utils/useFilterCount'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { styledButton } from 'ui/components/buttons/styledButton.web'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { Filter as FilterIconDefault } from 'ui/svg/icons/Filter'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -52,9 +54,7 @@ const FilterIcon = styled(FilterIconDefault).attrs(({ theme }) => ({
   color: theme.colors.white,
 }))``
 
-const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({ overflow: 'hidden' })
+const Container = styledButton(Touchable)({ overflow: 'hidden' })
 
 const StyledLinearGradient = styled(LinearGradient)(({ theme }) => ({
   backgroundColor: theme.colors.primary,
