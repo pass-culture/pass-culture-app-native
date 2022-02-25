@@ -16,6 +16,7 @@ import { Typo, getSpacing, MARGIN_DP, LENGTH_XS, RATIO_BUSINESS, Spacer } from '
 import { fillUrlEmail, shouldUrlBeFilled, showBusinessModule } from './BusinessModule.utils'
 
 export const BusinessModule = ({ module }: { module: BusinessPane }) => {
+  const [isFocus, setIsFocus] = useState(false)
   const { title, firstLine, secondLine, leftIcon, image, url } = module
   const isDisabled = !url
   const { appContentWidth } = useTheme()
@@ -55,7 +56,12 @@ export const BusinessModule = ({ module }: { module: BusinessPane }) => {
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />
-      <TouchableHighlight onPress={() => setShouldRedirect(true)} disabled={isDisabled}>
+      <TouchableHighlight
+        onPress={() => setShouldRedirect(true)}
+        onFocus={() => setIsFocus(true)}
+        onBlur={() => setIsFocus(false)}
+        isFocus={isFocus}
+        disabled={isDisabled}>
         <ImageContainer>
           <ImageBackground
             source={{ uri: image }}
@@ -89,9 +95,18 @@ const Row = styled.View({
   paddingBottom: getSpacing(6),
 })
 
-const TouchableHighlight = styled.TouchableHighlight(({ theme }) => ({
-  borderRadius: theme.borderRadius.radius,
-}))
+const TouchableHighlight = styled.TouchableHighlight<{ isFocus?: boolean }>(
+  ({ theme, isFocus }) => ({
+    borderRadius: theme.borderRadius.radius,
+    ...(isFocus
+      ? {
+          outlineColor: theme.outline.color,
+          outlineWidth: theme.outline.width,
+          outlineStyle: theme.outline.style,
+        }
+      : {}),
+  })
+)
 
 const ImageContainer = styled.View(({ theme }) => ({
   borderRadius: theme.borderRadius.radius,
