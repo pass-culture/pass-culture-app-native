@@ -61,15 +61,15 @@ type MarketingConfig = {
 export const MARKETING_CONFIG: MarketingConfig = {
   utm_campaign: {
     type: 'string',
-    description: `Nom de la campagne relative au produit, son slogan ou encore son code promotionnel.`,
+    description: `Nom de la campagne. Exemple : “festivals22”, “tempsfortJapon”, “LouisSan”... une campagne peut être menée sur différents canaux.`,
   },
   utm_source: {
     type: 'string',
-    description: `Annonceur, site ou publication générant du trafic`,
+    description: `Source de la campagne : transac, newsletter (pour les emails), batch, insta, facebook, tiktok, partner (pour les partenariats).`,
   },
   utm_medium: {
     type: 'string',
-    description: `Support publicitaire ou marketing (ex : cpc, bannière, newsletter envoyée par e-mail).`,
+    description: `Canal de la campagne : email, push, smo (social media organic), smp (social media paid), sea (pour les campagnes d’adword...), press.`,
   },
 }
 
