@@ -33,3 +33,10 @@ VenueWithImage.args = {
   type: 'venue',
   venueType: VenueTypeCodeKey.ARTISTIC_COURSE,
 }
+
+export const VenueWithBrokenImage = Template.bind({})
+VenueWithBrokenImage.args = {
+  imageUrl: "ceci est un lien d'image qui n'existe pas",
+  type: 'venue',
+  venueType: VenueTypeCodeKey.ARTISTIC_COURSE,
+}
