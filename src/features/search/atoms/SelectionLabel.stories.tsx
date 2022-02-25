@@ -16,6 +16,12 @@ Label.args = {
   selected: false,
 }
 
+export const VeryLongLabel = Template.bind({})
+VeryLongLabel.args = {
+  label: 'Conférences, rencontres, spectacles, expositions et visites',
+  selected: false,
+}
+
 export const SelectedLabel = Template.bind({})
 SelectedLabel.args = {
   label: 'Cinéma',
