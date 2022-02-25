@@ -1,12 +1,11 @@
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useState } from 'react'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
 import { VenueCaption } from 'features/home/atoms/VenueCaption'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
 import { formatDistance } from 'libs/parsers'
@@ -14,7 +13,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { GLOBAL_STALE_TIME } from 'libs/react-query/queryClient'
 import { VenueHit } from 'libs/search'
 import { ImageTile } from 'ui/components/ImageTile'
-
+import { customFocusOutline } from 'ui/theme/customFocusOutline'
 export interface VenueTileProps {
   venue: VenueHit
   width: number
@@ -31,6 +30,7 @@ const mergeVenueData =
   })
 
 export const VenueTile = (props: VenueTileProps) => {
+  const [isFocus, setIsFocus] = useState(false)
   const { venue, width, height, userPosition } = props
   const navigation = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
@@ -51,7 +51,10 @@ export const VenueTile = (props: VenueTileProps) => {
         height={height}
         width={width}
         onPress={handlePressVenue}
-        {...accessibilityAndTestId('venueTile')}>
+        onFocus={() => setIsFocus(true)}
+        onBlur={() => setIsFocus(false)}
+        isFocus={isFocus}
+        testID="venueTile">
         <ImageTile width={width} height={height} uri={venue.bannerUrl} />
       </TouchableHighlight>
       <VenueCaption
@@ -66,11 +69,15 @@ export const VenueTile = (props: VenueTileProps) => {
 
 const Container = styled.View({ flex: 1 })
 
-const TouchableHighlight = styled.TouchableHighlight<{ height: number; width: number }>(
-  ({ height, width, theme }) => ({
-    height,
-    width,
-    borderRadius: theme.borderRadius.radius,
-    backgroundColor: theme.uniqueColors.greyDisabled,
-  })
-)
+const TouchableHighlight = styled.TouchableHighlight<{
+  height: number
+  width: number
+  isFocus?: boolean
+}>(({ height, width, theme, isFocus }) => ({
+  height,
+  width,
+  marginTop: theme.outline.width,
+  borderRadius: theme.borderRadius.radius,
+  backgroundColor: theme.uniqueColors.greyDisabled,
+  ...customFocusOutline(theme, isFocus),
+}))

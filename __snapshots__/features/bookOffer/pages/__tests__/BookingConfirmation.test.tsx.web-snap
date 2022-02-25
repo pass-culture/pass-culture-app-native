@@ -194,7 +194,7 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       }
     >
       <button
-        className="sc-bdvvtL kwQCoR sc-gsDKAQ khldlI"
+        className="sc-bdvvtL bIVfLC sc-gsDKAQ khldlI"
         onClick={[Function]}
         onDoubleClick={[Function]}
         type="button"
@@ -226,7 +226,7 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
         }
       />
       <button
-        className="sc-bdvvtL kwQCoR sc-iCfMLu uxgRG"
+        className="sc-bdvvtL bIVfLC sc-iCfMLu uxgRG"
         onClick={[Function]}
         onDoubleClick={[Function]}
         type="button"

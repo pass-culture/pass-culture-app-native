@@ -13,7 +13,6 @@ exports[`VenueTile component should render correctly 1`] = `
   }
 >
   <View
-    accessibilityLabel="venueTile"
     accessible={true}
     focusable={true}
     onClick={[Function]}
@@ -29,6 +28,7 @@ exports[`VenueTile component should render correctly 1`] = `
           "backgroundColor": "#e6e6e6",
           "borderRadius": 8,
           "height": 100,
+          "marginTop": 3,
           "width": 100,
         },
       ]

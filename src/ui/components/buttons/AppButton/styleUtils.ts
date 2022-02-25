@@ -69,8 +69,12 @@ export const appButtonWebStyles: ButtonStylesWeb = ({ theme, ...rest }: ButtonSt
     borderWidth: 0,
     display: 'flex',
     overflow: 'hidden',
+    ['&:focus']: {
+      outline: 'auto',
+    },
     ['&:active']: {
       opacity: theme.activeOpacity,
+      outline: 'none',
     },
     ['&:disabled']: {
       cursor: 'initial',

@@ -13,7 +13,7 @@ Object {
           style="align-items: center; width: 100%;"
         >
           <button
-            class="sc-bdvvtL kwQCoR sc-eCImPb ckCibG"
+            class="sc-bdvvtL bIVfLC sc-eCImPb ckCibG"
             type="button"
           >
             <div
@@ -1424,7 +1424,7 @@ Object {
             style="height: 8px;"
           />
           <button
-            class="sc-bdvvtL kwQCoR sc-hKwDye gqAQWB"
+            class="sc-bdvvtL bIVfLC sc-hKwDye gqAQWB"
             data-testid="date-picker-submit-button"
             disabled=""
             type="button"
@@ -1454,7 +1454,7 @@ Object {
         style="align-items: center; width: 100%;"
       >
         <button
-          class="sc-bdvvtL kwQCoR sc-eCImPb ckCibG"
+          class="sc-bdvvtL bIVfLC sc-eCImPb ckCibG"
           type="button"
         >
           <div
@@ -2865,7 +2865,7 @@ Object {
           style="height: 8px;"
         />
         <button
-          class="sc-bdvvtL kwQCoR sc-hKwDye gqAQWB"
+          class="sc-bdvvtL bIVfLC sc-hKwDye gqAQWB"
           data-testid="date-picker-submit-button"
           disabled=""
           type="button"
@@ -2952,7 +2952,7 @@ Object {
           style="align-items: center; width: 100%;"
         >
           <button
-            class="sc-bdvvtL kwQCoR sc-eCImPb ckCibG"
+            class="sc-bdvvtL bIVfLC sc-eCImPb ckCibG"
             type="button"
           >
             <div
@@ -3965,7 +3965,7 @@ Object {
             style="height: 8px;"
           />
           <button
-            class="sc-bdvvtL kwQCoR sc-hKwDye gqAQWB"
+            class="sc-bdvvtL bIVfLC sc-hKwDye gqAQWB"
             data-testid="date-picker-submit-button"
             disabled=""
             type="button"
@@ -3995,7 +3995,7 @@ Object {
         style="align-items: center; width: 100%;"
       >
         <button
-          class="sc-bdvvtL kwQCoR sc-eCImPb ckCibG"
+          class="sc-bdvvtL bIVfLC sc-eCImPb ckCibG"
           type="button"
         >
           <div
@@ -5008,7 +5008,7 @@ Object {
           style="height: 8px;"
         />
         <button
-          class="sc-bdvvtL kwQCoR sc-hKwDye gqAQWB"
+          class="sc-bdvvtL bIVfLC sc-hKwDye gqAQWB"
           data-testid="date-picker-submit-button"
           disabled=""
           type="button"

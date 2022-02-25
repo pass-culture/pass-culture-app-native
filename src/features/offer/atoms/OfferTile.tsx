@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useState } from 'react'
 import { PixelRatio, StyleSheet } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
@@ -13,7 +13,6 @@ import {
   SubcategoryIdEnum,
 } from 'api/gen'
 import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator'
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/analytics'
 import { QueryKeys } from 'libs/queryKeys'
 import { GLOBAL_STALE_TIME } from 'libs/react-query/queryClient'
@@ -21,6 +20,7 @@ import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
 import { OfferCaption } from 'ui/components/OfferCaption'
 import { MARGIN_DP } from 'ui/theme'
+import { customFocusOutline } from 'ui/theme/customFocusOutline'
 import { Link } from 'ui/web/link/Link'
 
 export interface OfferTileProps {
@@ -87,6 +87,7 @@ export const OfferTile = (props: OfferTileProps) => {
     ...offer
   } = props
 
+  const [isFocus, setIsFocus] = useState(false)
   const navigation = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
   const { offerId } = offer
@@ -106,7 +107,10 @@ export const OfferTile = (props: OfferTileProps) => {
       <TouchableHighlight
         height={height}
         onPress={handlePressOffer}
-        {...accessibilityAndTestId('offerTile')}>
+        onFocus={() => setIsFocus(true)}
+        onBlur={() => setIsFocus(false)}
+        isFocus={isFocus}
+        testID="offerTile">
         <Link
           to={{ screen: 'Offer', params: { id: offerId, from: analyticsFrom, moduleName } }}
           style={styles.link}
@@ -141,10 +145,14 @@ const IMAGE_CAPTION_HEIGHT = PixelRatio.roundToNearestPixel(MARGIN_DP)
 
 const Container = styled.View({ flex: 1 })
 
-const TouchableHighlight = styled.TouchableHighlight<{ height: number }>(({ height, theme }) => ({
-  borderRadius: theme.borderRadius.radius,
-  height,
-}))
+const TouchableHighlight = styled.TouchableHighlight<{ height: number; isFocus?: boolean }>(
+  ({ height, theme, isFocus }) => ({
+    marginTop: theme.outline.width,
+    borderRadius: theme.borderRadius.radius,
+    height,
+    ...customFocusOutline(theme, isFocus),
+  })
+)
 
 const styles = StyleSheet.create({
   link: {

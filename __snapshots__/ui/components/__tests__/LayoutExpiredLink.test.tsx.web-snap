@@ -200,7 +200,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       target="_blank"
     >
       <button
-        className="sc-bdvvtL kwQCoR sc-iCfMLu uxgRG"
+        className="sc-bdvvtL bIVfLC sc-iCfMLu uxgRG"
         onClick={[Function]}
         onDoubleClick={[Function]}
         type="button"
@@ -236,7 +236,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       </button>
     </a>
     <button
-      className="sc-bdvvtL kwQCoR sc-iCfMLu uxgRG"
+      className="sc-bdvvtL bIVfLC sc-iCfMLu uxgRG"
       onClick={[Function]}
       onDoubleClick={[Function]}
       type="button"
@@ -294,7 +294,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       }
     >
       <button
-        className="sc-bdvvtL kwQCoR sc-gsDKAQ khldlI"
+        className="sc-bdvvtL bIVfLC sc-gsDKAQ khldlI"
         disabled={false}
         onClick={[Function]}
         onDoubleClick={[Function]}
@@ -327,7 +327,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         }
       />
       <button
-        className="sc-bdvvtL kwQCoR sc-iCfMLu uxgRG"
+        className="sc-bdvvtL bIVfLC sc-iCfMLu uxgRG"
         onClick={[Function]}
         onDoubleClick={[Function]}
         type="button"

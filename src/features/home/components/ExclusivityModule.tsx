@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useCallback, useMemo } from 'react'
+import React, { useCallback, useMemo, useState } from 'react'
 import { PixelRatio, StyleSheet } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
@@ -12,6 +12,7 @@ import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { MARGIN_DP, LENGTH_XL, RATIO_EXCLU, Spacer, getSpacing } from 'ui/theme'
+import { customFocusOutline } from 'ui/theme/customFocusOutline'
 import { Link } from 'ui/web/link/Link'
 
 export const ExclusivityModule = ({
@@ -20,6 +21,7 @@ export const ExclusivityModule = ({
   id,
   display,
 }: Omit<ExclusivityPane, 'moduleId'>) => {
+  const [isFocus, setIsFocus] = useState(false)
   const { navigate } = useNavigation<UseNavigationType>()
   const { data: offer } = useExcluOffer(id)
   const { position } = useGeolocation()
@@ -40,7 +42,12 @@ export const ExclusivityModule = ({
     <Row>
       <Spacer.Row numberOfSpaces={6} />
       <ImageContainer>
-        <TouchableHighlight onPress={handlePressExclu} testID="imageExclu">
+        <TouchableHighlight
+          onPress={handlePressExclu}
+          onFocus={() => setIsFocus(true)}
+          onBlur={() => setIsFocus(false)}
+          isFocus={isFocus}
+          testID="imageExclu">
           <Link
             to={{ screen: 'Offer', params: { id, from: 'home' } }}
             style={styles.link}
@@ -64,10 +71,13 @@ const ImageContainer = styled.View({
   maxHeight: LENGTH_XL,
 })
 
-const TouchableHighlight = styled.TouchableHighlight(({ theme }) => ({
-  borderRadius: theme.borderRadius.radius,
-  maxHeight: LENGTH_XL,
-}))
+const TouchableHighlight = styled.TouchableHighlight<{ isFocus?: boolean }>(
+  ({ theme, isFocus }) => ({
+    borderRadius: theme.borderRadius.radius,
+    maxHeight: LENGTH_XL,
+    ...customFocusOutline(theme, isFocus),
+  })
+)
 
 const Image = styled(FastImage)(({ theme }) => ({
   backgroundColor: theme.colors.primary,
