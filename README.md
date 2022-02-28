@@ -31,6 +31,12 @@ To run the mobile app on Android or iOS, you will need to follow the installatio
 
 To run the web app on your browser, follow the steps [here](./doc/installation/web.md)
 
+#### 💄 Storybook
+
+Access to the [storybook](https://master--61fd537ecf081f003a135235.chromatic.com/).
+
+To run the storybook on your browser, follow the steps [here](./doc/storybook.md)
+
 ---
 
 ## Development
