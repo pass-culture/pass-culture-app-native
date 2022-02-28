@@ -109,7 +109,7 @@ export const Playlist: FunctionComponent<Props> = ({
         return stepIndex
       })
     },
-    [flatListRef.current, nbOfSteps, steps]
+    [nbOfSteps, steps]
   )
 
   const renderItemWithHeaderAndFooter: ListRenderItem<any> = useCallback(
