@@ -24,3 +24,10 @@ ExternalLink.args = {
   wording: 'Ouvrir le lien',
   isExternal: true,
 }
+
+export const Disabled = Template.bind({})
+
+Disabled.args = {
+  wording: 'Confirmer',
+  isDisabled: true,
+}
