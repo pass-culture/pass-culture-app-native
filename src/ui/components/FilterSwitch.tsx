@@ -43,6 +43,8 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
         onPress={toggle}
         disabled={disabled}
         accessibilityValue={{ text: active.toString() }}
+        accessibilityRole="switch"
+        accessibilityState={{ checked: active }}
         {...accessibilityAndTestId(props.accessibilityLabel)}
         aria-describedby={props.accessibilityDescribedBy}>
         <StyledBackgroundColor active={active} disabled={disabled}>

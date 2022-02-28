@@ -592,8 +592,10 @@ exports[`Profile component should render correctly 1`] = `
                       >
                         <View
                           accessibilityLabel="Interrupteur géolocalisation"
+                          accessibilityRole="switch"
                           accessibilityState={
                             Object {
+                              "checked": true,
                               "disabled": false,
                             }
                           }

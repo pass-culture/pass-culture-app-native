@@ -2520,8 +2520,10 @@ exports[`SearchFilter component should render correctly 1`] = `
           >
             <View
               accessibilityLabel="Interrupteur filtre offres gratuites"
+              accessibilityRole="switch"
               accessibilityState={
                 Object {
+                  "checked": false,
                   "disabled": false,
                 }
               }
@@ -2680,8 +2682,10 @@ exports[`SearchFilter component should render correctly 1`] = `
           >
             <View
               accessibilityLabel="Interrupteur filtre offres duo"
+              accessibilityRole="switch"
               accessibilityState={
                 Object {
+                  "checked": false,
                   "disabled": false,
                 }
               }
@@ -2840,8 +2844,10 @@ exports[`SearchFilter component should render correctly 1`] = `
           >
             <View
               accessibilityLabel="Interrupteur filtre nouvelles offres"
+              accessibilityRole="switch"
               accessibilityState={
                 Object {
+                  "checked": false,
                   "disabled": false,
                 }
               }
@@ -3000,8 +3006,10 @@ exports[`SearchFilter component should render correctly 1`] = `
           >
             <View
               accessibilityLabel="Interrupteur filtre dates"
+              accessibilityRole="switch"
               accessibilityState={
                 Object {
+                  "checked": false,
                   "disabled": false,
                 }
               }
@@ -3184,8 +3192,10 @@ exports[`SearchFilter component should render correctly 1`] = `
           >
             <View
               accessibilityLabel="Interrupteur filtre heures"
+              accessibilityRole="switch"
               accessibilityState={
                 Object {
+                  "checked": false,
                   "disabled": false,
                 }
               }
