@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import omit from 'lodash.omit'
 import React, { useMemo, useState } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import {
   FDL_CONFIG,
@@ -14,9 +14,12 @@ import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { isTabScreen } from 'features/navigation/TabBar/routes'
+import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
 import { env } from 'libs/environment'
+import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Slider } from 'ui/components/inputs/Slider'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { RadioButton } from 'ui/components/RadioButton'
 import { Separator } from 'ui/components/Separator'
@@ -35,7 +38,8 @@ interface Props {
 }
 
 export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
-  const [selectedScreen, setSelectedScreen] = useState<ScreensUsedByMarketing>('Offer')
+  const { appContentWidth, isMobileViewport } = useTheme()
+  const [selectedScreen, setSelectedScreen] = useState<ScreensUsedByMarketing>('Search')
   const [screenParams, setScreenParams] = useState<Record<string, string>>({})
 
   const { showErrorSnackBar } = useSnackBarContext()
@@ -71,26 +75,71 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       }
     }
 
+    function onChangeText(text: string) {
+      setScreenParams((prevPageParams) =>
+        text.length === 0
+          ? omit(prevPageParams, name)
+          : {
+              ...prevPageParams,
+              [name]: text,
+            }
+      )
+    }
+
+    function onChangeStringArray(text: string) {
+      setScreenParams((prevPageParams) =>
+        text.length === 0
+          ? omit(prevPageParams, name)
+          : {
+              ...prevPageParams,
+              [name]: text.split(','),
+            }
+      )
+    }
+
+    function onBlurValidate() {
+      const value: string = screenParams[name]
+      !!value && validate(value)
+    }
+
+    function onChangePriceRange(value: number[]) {
+      setScreenParams((prevPageParams) =>
+        value[0] === 0 && value[1] === MAX_PRICE
+          ? omit(prevPageParams, name)
+          : {
+              ...prevPageParams,
+              [name]: value,
+            }
+      )
+    }
+
+    const placeholder = config.required ? `${name} (*)` : name
+    const sliderLength = appContentWidth / (isMobileViewport ? 1 : 2) - getSpacing(2 * 2 * 6)
+
     return (
       <React.Fragment key={name}>
         <Spacer.Column numberOfSpaces={2} />
         {config.type === 'string' && (
           <TextInput
-            placeholder={config.required ? `${name} (*)` : name}
-            onBlur={() => {
-              const value: string = screenParams[name]
-              !!value && validate(value)
-            }}
-            onChangeText={(text) =>
-              setScreenParams((prevPageParams) =>
-                text.length === 0
-                  ? omit(prevPageParams, name)
-                  : {
-                      ...prevPageParams,
-                      [name]: text,
-                    }
-              )
-            }
+            placeholder={placeholder}
+            onBlur={onBlurValidate}
+            onChangeText={onChangeText}
+          />
+        )}
+        {config.type === 'stringArray' && (
+          <TextInput
+            placeholder={placeholder}
+            onBlur={onBlurValidate}
+            onChangeText={onChangeStringArray}
+          />
+        )}
+        {config.type === 'priceRange' && (
+          <Slider
+            showValues={true}
+            max={MAX_PRICE}
+            sliderLength={sliderLength}
+            formatValues={formatPriceInEuroToDisplayPrice}
+            onValuesChangeFinish={onChangePriceRange}
           />
         )}
         {!!config.description && (
