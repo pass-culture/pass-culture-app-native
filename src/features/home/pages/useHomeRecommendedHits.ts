@@ -7,6 +7,7 @@ import {
   filterAlgoliaHit,
   useTransformAlgoliaHits,
 } from 'libs/algolia/fetchAlgolia'
+import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { GeoCoordinates } from 'libs/geolocation'
 import { eventMonitoring } from 'libs/monitoring'
@@ -43,7 +44,16 @@ const useRecommendedOfferIds = (userId: number | undefined, position: GeoCoordin
       try {
         const response = await fetch(recommendationEndpoint)
         if (!response.ok) throw new Error('Failed to fetch recommendation')
-        return response.json() as Promise<{ recommended_offers: string[] }>
+        const responseBody: {
+          recommended_offers: string[]
+          AB_test: string
+          reco_origin: string
+        } = await response.json()
+        analytics.setDefaultEventParameters({
+          AB_test: responseBody.AB_test,
+          reco_origin: responseBody.reco_origin,
+        })
+        return responseBody
       } catch (err) {
         eventMonitoring.captureException(new Error('Error with recommendation endpoint'), {
           extra: { url: recommendationEndpoint },
