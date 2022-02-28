@@ -13,7 +13,9 @@ Object {
           style="align-items: center; width: 100%;"
         >
           <button
+            aria-label="Pourquoi me demande-t-on ma date de naissance ?"
             class="sc-bdvvtL bIVfLC sc-eCImPb ckCibG"
+            data-testid="Pourquoi me demande-t-on ma date de naissance ?"
             type="button"
           >
             <div
@@ -1454,7 +1456,9 @@ Object {
         style="align-items: center; width: 100%;"
       >
         <button
+          aria-label="Pourquoi me demande-t-on ma date de naissance ?"
           class="sc-bdvvtL bIVfLC sc-eCImPb ckCibG"
+          data-testid="Pourquoi me demande-t-on ma date de naissance ?"
           type="button"
         >
           <div
@@ -2952,7 +2956,9 @@ Object {
           style="align-items: center; width: 100%;"
         >
           <button
+            aria-label="Pourquoi me demande-t-on ma date de naissance ?"
             class="sc-bdvvtL bIVfLC sc-eCImPb ckCibG"
+            data-testid="Pourquoi me demande-t-on ma date de naissance ?"
             type="button"
           >
             <div
@@ -3995,7 +4001,9 @@ Object {
         style="align-items: center; width: 100%;"
       >
         <button
+          aria-label="Pourquoi me demande-t-on ma date de naissance ?"
           class="sc-bdvvtL bIVfLC sc-eCImPb ckCibG"
+          data-testid="Pourquoi me demande-t-on ma date de naissance ?"
           type="button"
         >
           <div
