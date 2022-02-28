@@ -111,7 +111,9 @@ const CheckBoxText = styled(Typo.Body)({
   ...padding(0, 8, 0, 4),
 })
 
-const StyledCheckBox = styled.TouchableOpacity({
+const StyledCheckBox = styled.TouchableOpacity.attrs(({ theme }) => ({
+  activeOpacity: theme.activeOpacity,
+}))({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
