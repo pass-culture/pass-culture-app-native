@@ -124,11 +124,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
       />
       <MarginContainer>
         <Link to={{ screen: 'Search', params }} style={styles.link} accessible={false}>
-          <ButtonWithLinearGradient
-            wording={VENUE_OFFERS_CTA_WORDING}
-            onPress={seeAllOffers}
-            isDisabled={false}
-          />
+          <ButtonWithLinearGradient wording={VENUE_OFFERS_CTA_WORDING} onPress={seeAllOffers} />
         </Link>
       </MarginContainer>
       <Spacer.Column numberOfSpaces={6} />

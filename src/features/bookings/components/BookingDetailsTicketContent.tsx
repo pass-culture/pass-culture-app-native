@@ -42,7 +42,6 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
       <ButtonWithLinearGradient
         wording={t`Accéder à l'offre`}
         isExternal
-        isDisabled={false}
         onPress={accessExternalOffer}
       />
     </StyledA>

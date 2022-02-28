@@ -206,23 +206,18 @@ export const AppComponents: FunctionComponent = () => {
         {/* Buttons: With linear gradient */}
         <Typo.Title4>Button - With linear gradient</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
-        <ButtonWithLinearGradient
-          wording="CallToAction"
-          onPress={onButtonPress}
-          isDisabled={false}
-        />
+        <ButtonWithLinearGradient wording="CallToAction" onPress={onButtonPress} />
         <Spacer.Column numberOfSpaces={1} />
         <ButtonWithLinearGradient
           wording="CallToAction external"
           onPress={onButtonPress}
-          isDisabled={false}
           isExternal
         />
         <Spacer.Column numberOfSpaces={1} />
         <ButtonWithLinearGradient
           wording="Disabled CallToAction"
           onPress={onButtonPress}
-          isDisabled={true}
+          isDisabled
         />
       </AccordionItem>
 

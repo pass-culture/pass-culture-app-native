@@ -17,12 +17,5 @@ export const Search: React.FC = () => {
     stagedDispatch({ type: 'SHOW_RESULTS', payload: true })
   }
 
-  return (
-    <ButtonWithLinearGradient
-      wording={SEARCH_CTA_WORDING}
-      onPress={onPress}
-      isDisabled={false}
-      type="submit"
-    />
-  )
+  return <ButtonWithLinearGradient wording={SEARCH_CTA_WORDING} onPress={onPress} type="submit" />
 }
