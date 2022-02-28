@@ -16,19 +16,19 @@ pour les devqapoux
 
 [Fondation](https://www.figma.com/file/jswn3bl2Sy7hm4XDyOLWE9/Fondations)
 
-<!-- <iframe src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2Fjswn3bl2Sy7hm4XDyOLWE9%2FFondations%3Fnode-id%3D25%253A0" allowfullscreen></iframe> -->
+<iframe src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2Fjswn3bl2Sy7hm4XDyOLWE9%2FFondations%3Fnode-id%3D25%253A0" allowfullscreen></iframe>
 
 --
 
 [Library Jeune](https://www.figma.com/file/r2DymT3uGbCrY2MZOtFYW3/App-Native---Library)
 
-<!-- <iframe src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2Fr2DymT3uGbCrY2MZOtFYW3%2FApp-Native---Library%3Fnode-id%3D1%253A2" allowfullscreen></iframe> -->
+<iframe src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2Fr2DymT3uGbCrY2MZOtFYW3%2FApp-Native---Library%3Fnode-id%3D1%253A2" allowfullscreen></iframe>
 
 --
 
 _[Library Pro](https://www.figma.com/file/AEXCkb4KbUyPmB4BRFa88s/PRO---Library)_
 
-<!-- <iframe src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FAEXCkb4KbUyPmB4BRFa88s%2FPRO---Library%3Fnode-id%3D1%253A2" allowfullscreen></iframe> -->
+<iframe src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FAEXCkb4KbUyPmB4BRFa88s%2FPRO---Library%3Fnode-id%3D1%253A2" allowfullscreen></iframe>
 
 --
 
@@ -36,7 +36,7 @@ _[Library Pro](https://www.figma.com/file/AEXCkb4KbUyPmB4BRFa88s/PRO---Library)_
 
 [CheatCodes](https://app.testing.passculture.team/composants-app)
 
-<!-- <iframe src="https://app.testing.passculture.team/composants-app"></iframe> -->
+<iframe src="https://app.testing.passculture.team/composants-app"></iframe>
 
 --
 
@@ -115,7 +115,7 @@ _[Library Pro](https://www.figma.com/file/AEXCkb4KbUyPmB4BRFa88s/PRO---Library)_
     * grille (16x16)
     * outline
 
-<!-- <iframe src="https://master--61fd537ecf081f003a135235.chromatic.com"></iframe> -->
+<iframe src="https://master--61fd537ecf081f003a135235.chromatic.com"></iframe>
 
 --
 
