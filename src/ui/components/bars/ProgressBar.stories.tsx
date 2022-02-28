@@ -35,11 +35,3 @@ Full.args = {
   color: ColorsEnum.ERROR,
   icon: EditPen,
 }
-
-export const Animated = Template.bind({})
-Animated.args = {
-  progress: 1,
-  color: ColorsEnum.GREEN_VALID,
-  icon: EditPen,
-  isAnimated: true,
-}
