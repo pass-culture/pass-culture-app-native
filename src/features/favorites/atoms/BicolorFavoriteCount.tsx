@@ -70,7 +70,7 @@ const PastilleContent = styled.View<{ height: number; width: number; showTabBar:
     position: 'absolute',
     bottom: Platform.select<string | undefined>({
       web: props.showTabBar ? '5%' : '20%',
-      default: undefined,
+      default: '-8%',
     }),
     flexDirection: 'row',
     alignItems: 'center',
