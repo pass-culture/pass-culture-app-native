@@ -12,7 +12,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
   }
 >
   <View
-    accessibilityLabel="Pour quelle raison ?"
+    accessibilityLabel="Pourquoi me demande-t-on ma date de naissance ?"
     accessible={true}
     focusable={true}
     onClick={[Function]}

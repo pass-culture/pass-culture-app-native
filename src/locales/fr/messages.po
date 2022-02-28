@@ -1969,6 +1969,10 @@ msgstr "Pourquoi les biens numériques sont-ils limités ?"
 msgid "Pourquoi les biens physiques et numériques sont-ils limités ?"
 msgstr "Pourquoi les biens physiques et numériques sont-ils limités ?"
 
+#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+msgid "Pourquoi me demande-t-on ma date de naissance ?"
+msgstr "Pourquoi me demande-t-on ma date de naissance ?"
+
 #: src/features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal.tsx
 msgid "Pourquoi saisir ma date de naissance ?"
 msgstr "Pourquoi saisir ma date de naissance ?"
@@ -2456,6 +2460,10 @@ msgstr "Ton adresse ne doit pas contenir de caractères spéciaux ou n'être com
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Ton adresse | Profil"
 msgstr "Ton adresse | Profil"
+
+#: src/features/bookings/atoms/TicketCode.web.tsx
+msgid "Ton code a été copié dans le presse-papier !"
+msgstr "Ton code a été copié dans le presse-papier !"
 
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
 msgid "Ton code postal | Profil"
