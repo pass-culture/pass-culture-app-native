@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { menu } from 'features/navigation/TabBar/routes'
 import { TabRouteName } from 'features/navigation/TabBar/types'
+import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -14,28 +15,26 @@ interface NavItemInterface {
 }
 
 export const NavItem: React.FC<NavItemInterface> = ({
-  BicolorIcon: DefaultBicolorIcon,
+  BicolorIcon,
   onPress,
   tabName,
   isSelected,
-}) => {
-  const BicolorIcon = styled(DefaultBicolorIcon).attrs(({ theme }) => ({
-    color: isSelected ? undefined : theme.colors.greyDark,
-    size: theme.icons.sizes.small,
-    thin: !isSelected,
-  }))``
+}) => (
+  <StyledTouchableOpacity
+    isSelected={isSelected}
+    onPress={onPress}
+    activeOpacity={1}
+    testID={`${tabName} nav`}>
+    <StyledIcon as={BicolorIcon} selected={isSelected} />
+    <Title isSelected={isSelected}>{menu[tabName].displayName}</Title>
+  </StyledTouchableOpacity>
+)
 
-  return (
-    <StyledTouchableOpacity
-      isSelected={isSelected}
-      onPress={onPress}
-      activeOpacity={1}
-      testID={`${tabName} nav`}>
-      <BicolorIcon />
-      <Title isSelected={isSelected}>{menu[tabName].displayName}</Title>
-    </StyledTouchableOpacity>
-  )
-}
+const StyledIcon = styled(BicolorLogo).attrs<{ selected?: boolean }>(({ theme, selected }) => ({
+  color: selected ? undefined : theme.colors.greyDark,
+  size: theme.icons.sizes.small,
+  thin: !selected,
+}))<{ selected?: boolean }>``
 
 const StyledTouchableOpacity = styled.TouchableOpacity<{ isSelected?: boolean }>(
   ({ theme, isSelected }) => ({
