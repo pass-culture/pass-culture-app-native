@@ -32,7 +32,7 @@ module.exports = {
         minimumDescriptionLength: 5,
       },
     ],
-    // not ideal, but progamatically necessary sometimes
+    // not ideal, but programmatically necessary sometimes
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': [
       'error',
