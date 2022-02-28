@@ -122,7 +122,7 @@ export const Playlist: FunctionComponent<Props> = ({
       }
       return renderItem({ item, index, separators, width: itemWidth, height: itemHeight })
     },
-    [nbOfItems, itemWidth, itemHeight]
+    [renderHeader, renderFooter, nbOfItems, renderItem, itemWidth, itemHeight]
   )
 
   const displayLeftScrollButtonForNotTouchDevice = !isTouch && playlistStepIndex > 0
