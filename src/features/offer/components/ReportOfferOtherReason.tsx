@@ -47,7 +47,7 @@ export const ReportOfferOtherReason: FunctionComponent<Props> = (props) => {
       <Spacer.Column numberOfSpaces={4} />
       <InputTitle>{t`Autre raison`}</InputTitle>
       <Spacer.Column numberOfSpaces={2} />
-      <LargeTextInput value={inputText} onChangeText={setInputText} maxLength={200} />
+      <LargeTextInput value={inputText} onChangeText={setInputText} maxLength={200} autoFocus />
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
         wording={t`Signaler l'offre`}
