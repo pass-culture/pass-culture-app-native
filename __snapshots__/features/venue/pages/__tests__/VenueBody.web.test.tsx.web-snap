@@ -343,6 +343,7 @@ Object {
                       <span
                         class="css-text-901oao css-textHasAncestor-16my406"
                         style="color: rgb(22, 22, 23); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                        tabindex="0"
                       >
                         <div
                           class="css-view-1dbjc4n"
@@ -885,6 +886,7 @@ Object {
                   <span
                     class="css-text-901oao css-textHasAncestor-16my406"
                     style="color: rgb(22, 22, 23); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                    tabindex="0"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -1658,6 +1660,7 @@ Object {
                     <span
                       class="css-text-901oao css-textHasAncestor-16my406"
                       style="color: rgb(22, 22, 23); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                      tabindex="0"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -2200,6 +2203,7 @@ Object {
                 <span
                   class="css-text-901oao css-textHasAncestor-16my406"
                   style="color: rgb(22, 22, 23); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                  tabindex="0"
                 >
                   <div
                     class="css-view-1dbjc4n"

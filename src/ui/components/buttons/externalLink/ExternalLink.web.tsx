@@ -19,7 +19,7 @@ export const ExternalLink: React.FC<Props> = ({ url, text, primary, testID }) =>
 
   return (
     <A href={url}>
-      <ButtonText primary={primary} onPress={() => openUrl(url)} testID={testID}>
+      <ButtonText primary={primary} onPress={() => openUrl(url)} testID={testID} accessible={true}>
         <Spacer.Row numberOfSpaces={1} />
         <Text>
           <ExternalSite primary={primary} testID="externalSiteIcon" />
