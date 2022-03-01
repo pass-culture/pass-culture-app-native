@@ -30,7 +30,52 @@ exports[`<BirthdayInformationModal /> should render properly 1`] = `
         "height": "100%",
         "justifyContent": "flex-end",
         "opacity": 1,
+        "position": "absolute",
         "width": "100%",
+      }
+    }
+  />
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "zIndex": -1,
+        },
+      ]
+    }
+  />
+  <View
+    accessibilityState={
+      Object {
+        "disabled": true,
+      }
+    }
+    accessible={true}
+    collapsable={false}
+    focusable={false}
+    nativeID="animatedComponent"
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "alignItems": "center",
+        "alignSelf": "center",
+        "backgroundColor": "#ffffff",
+        "borderRadius": 16,
+        "opacity": 1,
+        "paddingBottom": 20,
+        "paddingLeft": 20,
+        "paddingRight": 20,
+        "paddingTop": 20,
+        "width": 928,
       }
     }
   >
@@ -38,209 +83,109 @@ exports[`<BirthdayInformationModal /> should render properly 1`] = `
       style={
         Array [
           Object {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "display": "flex",
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "width": "100%",
           },
         ]
       }
-    />
-    <View
-      accessible={true}
-      collapsable={false}
-      focusable={false}
-      nativeID="animatedComponent"
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        Object {
-          "alignItems": "center",
-          "alignSelf": "center",
-          "backgroundColor": "#ffffff",
-          "borderRadius": 16,
-          "opacity": 1,
-          "paddingBottom": 20,
-          "paddingLeft": 20,
-          "paddingRight": 20,
-          "paddingTop": 20,
-          "width": 928,
-        }
-      }
+      testID="modalHeader"
     >
       <View
         style={
           Array [
             Object {
-              "display": "flex",
+              "alignItems": "flex-start",
+              "flexBasis": 0,
               "flexDirection": "row",
-              "justifyContent": "center",
-              "width": "100%",
+              "flexGrow": 0.1,
+              "flexShrink": 1,
+              "justifyContent": "flex-start",
             },
           ]
         }
-        testID="modalHeader"
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 0.8,
+              "flexShrink": 1,
+              "justifyContent": "center",
+              "paddingLeft": 12,
+              "paddingRight": 12,
+              "zIndex": 1,
+            },
+          ]
+        }
       >
-        <View
+        <Text
+          nativeID="testUuidV4"
+          numberOfLines={3}
           style={
             Array [
               Object {
-                "alignItems": "flex-start",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 0.8,
-                "flexShrink": 1,
-                "justifyContent": "center",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-                "zIndex": 1,
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 20,
+                "lineHeight": 24,
+                "textAlign": "center",
               },
             ]
           }
         >
-          <Text
-            nativeID="testUuidV4"
-            numberOfLines={3}
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 20,
-                  "lineHeight": 24,
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
-            Pourquoi saisir ma date de naissance ?
-          </Text>
-        </View>
-        <View
-          style={
-            Array [
-              Object {
-                "alignItems": "flex-start",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 0.1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-              },
-            ]
-          }
-        >
-          <View
-            accessibilityLabel="Fermer la modale"
-            accessible={true}
-            collapsable={false}
-            focusable={true}
-            nativeID="animatedComponent"
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              Object {
-                "opacity": 1,
-                "paddingBottom": 4,
-                "paddingLeft": 4,
-                "paddingRight": 4,
-                "paddingTop": 4,
-              }
-            }
-            testID="Fermer la modale"
-          >
-            <View
-              height={20}
-              testID="rightIcon"
-              width={20}
-            >
-              <Text>
-                rightIcon-SVG-Mock
-              </Text>
-            </View>
-          </View>
-        </View>
+          Pourquoi saisir ma date de naissance ?
+        </Text>
       </View>
       <View
         style={
           Array [
             Object {
-              "alignItems": "center",
-              "maxWidth": 500,
-              "width": "100%",
-            },
-            Object {
-              "paddingBottom": 16,
+              "alignItems": "flex-start",
+              "flexBasis": 0,
+              "flexDirection": "row",
+              "flexGrow": 0.1,
+              "flexShrink": 1,
+              "justifyContent": "flex-end",
             },
           ]
         }
       >
         <View
+          accessibilityLabel="Fermer la modale"
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          nativeID="animatedComponent"
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "paddingTop": 20,
-              },
-            ]
+            Object {
+              "opacity": 1,
+              "paddingBottom": 4,
+              "paddingLeft": 4,
+              "paddingRight": 4,
+              "paddingTop": 4,
+            }
           }
+          testID="Fermer la modale"
         >
           <View
-            height={109.2}
-            width={140}
+            height={20}
+            testID="rightIcon"
+            width={20}
           >
             <Text>
-              undefined-SVG-Mock
+              rightIcon-SVG-Mock
             </Text>
           </View>
-          <View
-            numberOfSpaces={2}
-            style={
-              Array [
-                Object {
-                  "height": 8,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Regular",
-                  "fontSize": 15,
-                  "lineHeight": 20,
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
-            Nous avons besoin de connaître ton âge. Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de 20 € à 300 € offerte par le Gouvernement.
-
-Cette aide sera créditée directement sur ton compte pass Culture.
-          </Text>
         </View>
       </View>
     </View>
@@ -248,13 +193,75 @@ Cette aide sera créditée directement sur ton compte pass Culture.
       style={
         Array [
           Object {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "alignItems": "center",
+            "maxWidth": 500,
+            "width": "100%",
+          },
+          Object {
+            "paddingBottom": 16,
           },
         ]
       }
-    />
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "paddingTop": 20,
+            },
+          ]
+        }
+      >
+        <View
+          height={109.2}
+          width={140}
+        >
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+        <View
+          numberOfSpaces={2}
+          style={
+            Array [
+              Object {
+                "height": 8,
+              },
+            ]
+          }
+        />
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Nous avons besoin de connaître ton âge. Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de 20 € à 300 € offerte par le Gouvernement.
+
+Cette aide sera créditée directement sur ton compte pass Culture.
+        </Text>
+      </View>
+    </View>
   </View>
+  <View
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "zIndex": -1,
+        },
+      ]
+    }
+  />
 </Modal>
 `;
