@@ -9,7 +9,7 @@ const onPress = jest.fn()
 describe('<ButtonWithLinearGradient />', () => {
   it('should render not disabled', () => {
     const renderAPI = render(
-      <ButtonWithLinearGradient wording="Wording to display" onPress={onPress} isDisabled={false} />
+      <ButtonWithLinearGradient wording="Wording to display" onPress={onPress} />
     )
     const text = renderAPI.queryByText('Wording to display')
 
@@ -19,7 +19,7 @@ describe('<ButtonWithLinearGradient />', () => {
 
   it('should render disabled', () => {
     const renderAPI = render(
-      <ButtonWithLinearGradient wording="Wording to display" onPress={onPress} isDisabled={true} />
+      <ButtonWithLinearGradient wording="Wording to display" onPress={onPress} isDisabled />
     )
     const text = renderAPI.queryByText('Wording to display')
 

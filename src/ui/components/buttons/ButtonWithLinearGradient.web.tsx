@@ -2,23 +2,14 @@ import React, { SyntheticEvent, useCallback } from 'react'
 import styled from 'styled-components'
 import styledNative from 'styled-components/native'
 
+import { ButtonWithLinearGradientProps } from 'ui/components/buttons/buttonWithLinearGradientTypes'
 import { ExternalSite as InitialExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, Typo } from 'ui/theme'
 
-interface Props {
-  wording: string
-  onPress: (() => void) | (() => Promise<void>) | undefined
-  isDisabled: boolean
-  isExternal?: boolean
-  type?: 'button' | 'reset' | 'submit'
-  className?: string
-  name?: string
-}
-
-export const ButtonWithLinearGradient: React.FC<Props> = ({
+export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> = ({
   wording,
   onPress,
-  isDisabled,
+  isDisabled = false,
   isExternal = false,
   type = 'button',
   name,
