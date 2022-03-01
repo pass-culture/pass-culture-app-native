@@ -14,6 +14,7 @@ import { GLOBAL_STALE_TIME } from 'libs/react-query/queryClient'
 import { SearchHit } from 'libs/search'
 import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
+import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Link } from 'ui/web/link/Link'
 
@@ -26,15 +27,24 @@ interface Props {
 
 export const Hit: React.FC<Props> = ({ hit, query }) => {
   const { offer, objectID, _geoloc } = hit
+  const { subcategoryId, dates, prices } = offer
   const navigation = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
   const distanceToOffer = useDistance(_geoloc)
-  const { categoryId, searchGroupName } = useSubcategory(offer.subcategoryId)
+  const { categoryId, searchGroupName } = useSubcategory(subcategoryId)
   const searchGroupLabel = useSearchGroupLabel(searchGroupName)
 
-  const timestampsInMillis = offer.dates?.map((timestampInSec) => timestampInSec * 1000)
+  const timestampsInMillis = dates?.map((timestampInSec) => timestampInSec * 1000)
   const offerId = +objectID
   const formattedDate = formatDates(timestampsInMillis)
+  const formattedPrice = getDisplayPrice(prices)
+
+  const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
+    ...offer,
+    categoryLabel: searchGroupLabel,
+    distance: distanceToOffer,
+    price: formattedPrice,
+  })
 
   function handlePressOffer() {
     // We pre-populate the query-cache with the data from the search client for a smooth transition
@@ -59,7 +69,7 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
   }
 
   return (
-    <Container onPress={handlePressOffer} testID="offerHit">
+    <Container onPress={handlePressOffer} accessibilityLabel={accessibilityLabel} testID="offerHit">
       <Link
         to={{ screen: 'Offer', params: { id: offerId, from: 'search' } }}
         style={styles.link}
@@ -85,7 +95,7 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
           <Body>{searchGroupLabel}</Body>
           {!!formattedDate && <Body>{formattedDate}</Body>}
           <Spacer.Column numberOfSpaces={1} />
-          <Typo.Caption>{getDisplayPrice(offer.prices)}</Typo.Caption>
+          <Typo.Caption>{formattedPrice}</Typo.Caption>
         </Column>
       </Link>
     </Container>

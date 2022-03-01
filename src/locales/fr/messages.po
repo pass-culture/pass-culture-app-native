@@ -1039,6 +1039,8 @@ msgid "Galeries d’art"
 msgstr "Galeries d’art"
 
 #: src/features/bookOffer/components/BookingInformations.tsx
+#: src/features/offer/atoms/OfferTile.tsx
+#: src/features/search/atoms/Hit.tsx
 #: src/libs/parsers/getDisplayPrice.ts
 #: src/libs/parsers/getDisplayPrice.ts
 #: src/libs/parsers/getDisplayPrice.ts
@@ -1723,6 +1725,8 @@ msgid "Offer {offerId} could not be retrieved"
 msgstr "Offer {offerId} could not be retrieved"
 
 #: src/features/navigation/RootNavigator/routes.ts
+#: src/features/offer/atoms/OfferTile.tsx
+#: src/features/search/atoms/Hit.tsx
 msgid "Offre"
 msgstr "Offre"
 
@@ -3091,6 +3095,11 @@ msgstr "Patience ! Reviens à partir du {date} pour continuer ton inscription e
 msgid "de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application."
 msgstr "de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application."
 
+#: src/features/offer/atoms/OfferTile.tsx
+#: src/features/search/atoms/Hit.tsx
+msgid "de la catégorie"
+msgstr "de la catégorie"
+
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "durée"
 msgstr "durée"
@@ -3155,6 +3164,11 @@ msgstr "le {date}"
 msgid "last update"
 msgstr "Dossier mis à jour le : {day} à {hour}"
 
+#: src/features/offer/atoms/OfferTile.tsx
+#: src/features/search/atoms/Hit.tsx
+msgid "le"
+msgstr "le"
+
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "metteur en scène"
 msgstr "metteur en scène"
@@ -3203,6 +3217,11 @@ msgstr "passeport"
 #: src/features/search/components/SearchResults.tsx
 msgid "pour"
 msgstr "pour"
+
+#: src/features/offer/atoms/OfferTile.tsx
+#: src/features/search/atoms/Hit.tsx
+msgid "prix"
+msgstr "prix"
 
 #: src/features/bookOffer/components/BookingInformations.tsx
 msgid "prix duo"
@@ -3359,6 +3378,11 @@ msgstr "Étape {0} sur {SIGNUP_NUMBER_OF_STEPS} - Inscription"
 #: src/ui/components/DotComponent.tsx
 msgid "Étape {step} sur {totalSteps} {status}"
 msgstr "Étape {step} sur {totalSteps} {status}"
+
+#: src/features/offer/atoms/OfferTile.tsx
+#: src/features/search/atoms/Hit.tsx
+msgid "à"
+msgstr "à"
 
 #: src/features/profile/components/NonBeneficiaryHeader.tsx
 msgid "à dépenser dans l'application"

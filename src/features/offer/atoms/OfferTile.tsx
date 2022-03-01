@@ -16,6 +16,7 @@ import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { QueryKeys } from 'libs/queryKeys'
 import { GLOBAL_STALE_TIME } from 'libs/react-query/queryClient'
+import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
 import { OfferCaption } from 'ui/components/OfferCaption'
@@ -90,7 +91,11 @@ export const OfferTile = (props: OfferTileProps) => {
   const [isFocus, setIsFocus] = useState(false)
   const navigation = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
-  const { offerId } = offer
+  const { offerId, name, distance, date, price, isDuo } = offer
+  const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
+    ...offer,
+    categoryLabel,
+  })
 
   function handlePressOffer() {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
@@ -110,7 +115,8 @@ export const OfferTile = (props: OfferTileProps) => {
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         isFocus={isFocus}
-        testID="offerTile">
+        testID="offerTile"
+        accessibilityLabel={accessibilityLabel}>
         <Link
           to={{ screen: 'Offer', params: { id: offerId, from: analyticsFrom, moduleName } }}
           style={styles.link}
@@ -125,17 +131,17 @@ export const OfferTile = (props: OfferTileProps) => {
             height={IMAGE_CAPTION_HEIGHT}
             width={width}
             categoryLabel={categoryLabel}
-            distance={offer.distance}
+            distance={distance}
           />
         </Link>
       </TouchableHighlight>
       <OfferCaption
         imageWidth={width}
-        name={offer.name}
-        date={offer.date}
-        isDuo={offer.isDuo}
+        name={name}
+        date={date}
+        isDuo={isDuo}
         isBeneficiary={isBeneficiary}
-        price={offer.price}
+        price={price}
       />
     </Container>
   )

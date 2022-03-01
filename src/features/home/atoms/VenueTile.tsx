@@ -13,6 +13,7 @@ import { formatDistance } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'
 import { GLOBAL_STALE_TIME } from 'libs/react-query/queryClient'
 import { VenueHit } from 'libs/search'
+import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ImageTile } from 'ui/components/ImageTile'
 import { customFocusOutline } from 'ui/theme/customFocusOutline'
 import { Link } from 'ui/web/link/Link'
@@ -37,6 +38,9 @@ export const VenueTile = (props: VenueTileProps) => {
   const navigation = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
 
+  const distance = formatDistance({ lat: venue.latitude, lng: venue.longitude }, userPosition)
+  const accessibilityLabel = tileAccessibilityLabel(TileContentType.VENUE, { ...venue, distance })
+
   function handlePressVenue() {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
     queryClient.setQueryData([QueryKeys.VENUE, venue.id], mergeVenueData(venue), {
@@ -56,6 +60,7 @@ export const VenueTile = (props: VenueTileProps) => {
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         isFocus={isFocus}
+        accessibilityLabel={accessibilityLabel}
         testID="venueTile">
         <Link
           to={{ screen: 'Venue', params: { id: venue.id } }}
@@ -68,7 +73,7 @@ export const VenueTile = (props: VenueTileProps) => {
         width={width}
         name={venue.name}
         venueType={venue.venueTypeCode || null}
-        distance={formatDistance({ lat: venue.latitude, lng: venue.longitude }, userPosition)}
+        distance={distance}
       />
     </Container>
   )
