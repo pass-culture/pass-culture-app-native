@@ -3,6 +3,7 @@ import omit from 'lodash.omit'
 import React, { useMemo, useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { ControlledFilterSwitch } from 'features/_marketingAndCommunication/atoms/ControlledFilterSwitch'
 import {
   FDL_CONFIG,
   MARKETING_CONFIG,
@@ -102,6 +103,16 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       !!value && validate(value)
     }
 
+    function onBooleanChange(value: boolean) {
+      setScreenParams((prevPageParams) =>
+        !value
+          ? omit(prevPageParams, name)
+          : {
+              ...prevPageParams,
+              [name]: value,
+            }
+      )
+    }
     function onChangePriceRange(value: number[]) {
       setScreenParams((prevPageParams) =>
         value[0] === 0 && value[1] === MAX_PRICE
@@ -133,14 +144,19 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
             onChangeText={onChangeStringArray}
           />
         )}
+        {config.type === 'boolean' && (
+          <ControlledFilterSwitch onChange={onBooleanChange} name={config.description} />
+        )}
         {config.type === 'priceRange' && (
-          <Slider
-            showValues={true}
-            max={MAX_PRICE}
-            sliderLength={sliderLength}
-            formatValues={formatPriceInEuroToDisplayPrice}
-            onValuesChangeFinish={onChangePriceRange}
-          />
+          <DescriptionContainer>
+            <Slider
+              showValues={true}
+              max={MAX_PRICE}
+              sliderLength={sliderLength}
+              formatValues={formatPriceInEuroToDisplayPrice}
+              onValuesChangeFinish={onChangePriceRange}
+            />
+          </DescriptionContainer>
         )}
         {!!config.description && (
           <DescriptionContainer>
