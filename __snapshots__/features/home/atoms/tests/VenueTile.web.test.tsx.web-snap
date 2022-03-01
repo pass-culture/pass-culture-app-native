@@ -14,7 +14,14 @@ Object {
           data-testid="venueTile"
           style="background-color: rgb(230, 230, 230); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 100px; margin-top: 3px; user-select: none; width: 100px;"
           tabindex="0"
-        />
+        >
+          <div
+            class="css-text-901oao"
+            dir="auto"
+            style="display: flex; flex-direction: column;"
+            tabindex="-1"
+          />
+        </div>
         <div
           class="css-view-1dbjc4n"
           style="margin-top: 8px; max-width: 100px;"
@@ -71,7 +78,14 @@ Object {
         data-testid="venueTile"
         style="background-color: rgb(230, 230, 230); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 100px; margin-top: 3px; user-select: none; width: 100px;"
         tabindex="0"
-      />
+      >
+        <div
+          class="css-text-901oao"
+          dir="auto"
+          style="display: flex; flex-direction: column;"
+          tabindex="-1"
+        />
+      </div>
       <div
         class="css-view-1dbjc4n"
         style="margin-top: 8px; max-width: 100px;"
