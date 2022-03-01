@@ -6,6 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { SearchGroupNameEnum } from 'api/gen'
 import { ControlledFilterSwitch } from 'features/_marketingAndCommunication/atoms/ControlledFilterSwitch'
 import { OfferCategoryChoices } from 'features/_marketingAndCommunication/atoms/OfferCategoryChoices'
+import { OfferTypeChoices } from 'features/_marketingAndCommunication/atoms/OfferTypeChoices'
 import {
   FDL_CONFIG,
   MARKETING_CONFIG,
@@ -138,6 +139,21 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       )
     }
 
+    function onChangeOfferTypes(offerTypes: {
+      isDigital: boolean
+      isEvent: boolean
+      isThing: boolean
+    }) {
+      setScreenParams((prevPageParams) =>
+        !offerTypes.isDigital && !offerTypes.isEvent && !offerTypes.isThing
+          ? omit(prevPageParams, name)
+          : {
+              ...prevPageParams,
+              [name]: offerTypes,
+            }
+      )
+    }
+
     const placeholder = config.required ? `${name} (*)` : name
     const sliderLength = appContentWidth / (isMobileViewport ? 1 : 2) - getSpacing(2 * 2 * 6)
 
@@ -175,6 +191,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
         {config.type === 'offerCategories' && (
           <OfferCategoryChoices onChange={onChangeOfferCategories} />
         )}
+        {config.type === 'offerTypes' && <OfferTypeChoices onChange={onChangeOfferTypes} />}
         {!!config.description && (
           <PaddingContainer>
             <StyledCaption>{config.description}</StyledCaption>

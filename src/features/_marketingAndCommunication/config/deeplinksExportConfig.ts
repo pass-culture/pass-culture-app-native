@@ -63,6 +63,11 @@ export const SCREENS_CONFIG: {
       required: false,
       description: `Categories`,
     },
+    offerTypes: {
+      type: 'offerTypes',
+      required: false,
+      description: `Type d'offre`,
+    },
     locationFilter: {
       type: 'string',
       required: false,
