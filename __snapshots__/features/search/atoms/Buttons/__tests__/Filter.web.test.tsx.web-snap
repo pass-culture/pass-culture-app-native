@@ -7,7 +7,7 @@ Object {
     <div>
       <button
         aria-label="Afficher les filtres"
-        class="sc-dkPtRN sc-hKwDye katONk hPtpPc"
+        class="sc-dkPtRN sc-hKwDye BCPGv hPtpPc"
         data-testid="FilterButton"
         tabindex="0"
         type="button"
@@ -68,7 +68,7 @@ Object {
   "container": <div>
     <button
       aria-label="Afficher les filtres"
-      class="sc-dkPtRN sc-hKwDye katONk hPtpPc"
+      class="sc-dkPtRN sc-hKwDye BCPGv hPtpPc"
       data-testid="FilterButton"
       tabindex="0"
       type="button"

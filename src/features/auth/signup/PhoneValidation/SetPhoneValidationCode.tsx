@@ -282,7 +282,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
           <GreyMediumSeparator />
           <Spacer.Column numberOfSpaces={4} />
           <HelpRow>
-            <Caption>{t`Si tu n’arrives pas à valider ton code tu peux`}</Caption>
+            <Typo.Caption>{t`Si tu n’arrives pas à valider ton code tu peux`}</Typo.Caption>
             {appContentWidth <= 320 ? <Break /> : <Spacer.Row numberOfSpaces={1} />}
             <A href={supportUrl.forPhoneNumberConfirmation}>
               <ButtonQuaternary
@@ -308,10 +308,6 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
 const codeInputPlaceholder = '000000'
 const codeInputMask = '999999'
 
-const Caption = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyMedium,
-}))
-
 const CodeInput = styled(MaskedTextInput).attrs(({ theme }) => ({
   placeholderTextColor: theme.colors.greyDark,
 }))(({ theme }) => ({
@@ -328,8 +324,7 @@ const CodeInputContainer = styled.View({
   marginHorizontal: 'auto',
 })
 
-/** returns a formatted phone number like +33 X XX XX XX XX with unbreakable spaces
- */
+// returns a formatted phone number like +33 X XX XX XX XX with unbreakable spaces
 export const formatPhoneNumber = (phoneNumber: string, countryCode: CountryCode) => {
   const parsedPhoneNumber = parsePhoneNumber(phoneNumber, countryCode)
   return parsedPhoneNumber?.formatInternational().replace(/ /g, '\u00a0') || ''

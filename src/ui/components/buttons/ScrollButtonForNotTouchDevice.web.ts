@@ -8,6 +8,7 @@ import {
 
 export const ScrollButtonForNotTouchDevice =
   styled.button.attrs<ScrollButtonForNotTouchDeviceProps>(({ horizontalAlign, onPress }) => ({
+    tabIndex: '-1',
     type: 'button',
     onClick: onPress,
     ['aria-describedby']: scrollButtonAriaDescribedBy({ horizontalAlign }),

@@ -208,7 +208,7 @@ Object {
                   />
                   <button
                     aria-label="Afficher le mot de passe"
-                    class="sc-hBUSln sc-ezbkAF ivBQvl eVPdqe"
+                    class="sc-hBUSln sc-ezbkAF gNdpZW eVPdqe"
                     tabindex="0"
                     type="button"
                   >
@@ -463,7 +463,7 @@ Object {
                 />
                 <button
                   aria-label="Afficher le mot de passe"
-                  class="sc-hBUSln sc-ezbkAF ivBQvl eVPdqe"
+                  class="sc-hBUSln sc-ezbkAF gNdpZW eVPdqe"
                   tabindex="0"
                   type="button"
                 >
