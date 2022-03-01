@@ -3,7 +3,9 @@ import omit from 'lodash.omit'
 import React, { useMemo, useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { SearchGroupNameEnum } from 'api/gen'
 import { ControlledFilterSwitch } from 'features/_marketingAndCommunication/atoms/ControlledFilterSwitch'
+import { OfferCategoryChoices } from 'features/_marketingAndCommunication/atoms/OfferCategoryChoices'
 import {
   FDL_CONFIG,
   MARKETING_CONFIG,
@@ -93,7 +95,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
           ? omit(prevPageParams, name)
           : {
               ...prevPageParams,
-              [name]: text.split(','),
+              [name]: text.split(';'),
             }
       )
     }
@@ -113,6 +115,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
             }
       )
     }
+
     function onChangePriceRange(value: number[]) {
       setScreenParams((prevPageParams) =>
         value[0] === 0 && value[1] === MAX_PRICE
@@ -120,6 +123,17 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
           : {
               ...prevPageParams,
               [name]: value,
+            }
+      )
+    }
+
+    function onChangeOfferCategories(categories: SearchGroupNameEnum[]) {
+      setScreenParams((prevPageParams) =>
+        !categories.length
+          ? omit(prevPageParams, name)
+          : {
+              ...prevPageParams,
+              [name]: categories,
             }
       )
     }
@@ -148,7 +162,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
           <ControlledFilterSwitch onChange={onBooleanChange} name={config.description} />
         )}
         {config.type === 'priceRange' && (
-          <DescriptionContainer>
+          <PaddingContainer>
             <Slider
               showValues={true}
               max={MAX_PRICE}
@@ -156,12 +170,15 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
               formatValues={formatPriceInEuroToDisplayPrice}
               onValuesChangeFinish={onChangePriceRange}
             />
-          </DescriptionContainer>
+          </PaddingContainer>
+        )}
+        {config.type === 'offerCategories' && (
+          <OfferCategoryChoices onChange={onChangeOfferCategories} />
         )}
         {!!config.description && (
-          <DescriptionContainer>
+          <PaddingContainer>
             <StyledCaption>{config.description}</StyledCaption>
-          </DescriptionContainer>
+          </PaddingContainer>
         )}
         <Separator />
       </React.Fragment>
@@ -298,7 +315,7 @@ const BottomContainer = styled.View({
   alignItems: 'center',
 })
 
-const DescriptionContainer = styled.View({
+const PaddingContainer = styled.View({
   padding: getSpacing(5),
 })
 

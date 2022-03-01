@@ -11,7 +11,7 @@ export type ScreensUsedByMarketing = Extract<
 type ScreensUsedByMarketingParamsList = Pick<AllNavParamList, ScreensUsedByMarketing>
 
 export type ParamConfig = {
-  type: 'string' | 'stringArray' | 'priceRange' | 'boolean'
+  type: 'string' | 'stringArray' | 'priceRange' | 'boolean' | 'offerCategories'
   required?: boolean
   description: string
   serverValidator?: (value: string) => Promise<unknown>
@@ -59,7 +59,7 @@ export const SCREENS_CONFIG: {
       description: `Mot clé`,
     },
     offerCategories: {
-      type: 'string',
+      type: 'offerCategories',
       required: false,
       description: `Categories`,
     },
