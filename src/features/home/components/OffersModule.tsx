@@ -109,7 +109,7 @@ export const OffersModule = (props: OffersModuleProps) => {
         </Link>
       )
     },
-    [onPressSeeMore, params]
+    [params]
   )
 
   if (!shouldModuleBeDisplayed) return <React.Fragment />
