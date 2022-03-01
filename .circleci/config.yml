@@ -696,6 +696,8 @@ workflows:
                 - master
           requires:
             - checkout-and-install-deps
+            - test-lint-and-types
+            - test-native
       - deploy-android-testing-hard:
           filters:
             tags:
