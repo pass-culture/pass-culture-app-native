@@ -1,7 +1,7 @@
 /* We use many `any` on purpose in this module, so we deactivate the following rule : */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import range from 'lodash/range'
-import React, { useCallback, useMemo, useRef, useState } from 'react'
+import React, { FunctionComponent, useCallback, useMemo, useRef, useState } from 'react'
 import { FlatList, ListRenderItem, ListRenderItemInfo } from 'react-native'
 import webStyled from 'styled-components'
 import styled, { useTheme } from 'styled-components/native'
@@ -37,6 +37,7 @@ type Props = {
   renderHeader?: RenderHeaderItem
   renderFooter?: RenderFooterItem
   onEndReached?: () => void
+  children?: never
 }
 
 function defaultKeyExtractor(item: any, index: number): string {
@@ -47,7 +48,18 @@ const defaultProps = {
   keyExtractor: defaultKeyExtractor,
 }
 
-export const Playlist = (props: Props) => {
+export const Playlist: FunctionComponent<Props> = ({
+  data,
+  itemWidth,
+  itemHeight,
+  scrollButtonOffsetY,
+  testID,
+  renderItem,
+  keyExtractor,
+  renderHeader,
+  renderFooter,
+  onEndReached,
+}) => {
   const { isTouch } = useTheme()
 
   const [playlistWidth, setPlaylistWidth] = useState(0)
@@ -58,14 +70,13 @@ export const Playlist = (props: Props) => {
   // in order to have the correct array length available for the scroll functions and renderItem
   // See also renderItemWithHeaderAndFooter(...)
   const dataWithHeaderAndFooter = useMemo(() => {
-    if (props.renderHeader && props.renderFooter)
-      return [{ dataHeader: true }, ...props.data, { dataFooter: true }]
-    if (props.renderHeader) return [{ dataHeader: true }, ...props.data]
-    if (props.renderFooter) return [...props.data, { dataFooter: true }]
-    return props.data
-  }, [props.data, props.renderHeader, props.renderFooter])
+    if (renderHeader && renderFooter) return [{ dataHeader: true }, ...data, { dataFooter: true }]
+    if (renderHeader) return [{ dataHeader: true }, ...data]
+    if (renderFooter) return [...data, { dataFooter: true }]
+    return data
+  }, [data, renderHeader, renderFooter])
 
-  const itemWidthWithOffset = props.itemWidth + ITEM_SEPARATOR_WIDTH
+  const itemWidthWithOffset = itemWidth + ITEM_SEPARATOR_WIDTH
   const nbOfItems = dataWithHeaderAndFooter.length
   const { steps, nbOfSteps } = useMemo(
     () => getItemSteps(nbOfItems, itemWidthWithOffset, playlistWidth),
@@ -75,16 +86,16 @@ export const Playlist = (props: Props) => {
   // It is required to know the exact width of an item width and its offset if we want to use
   // FlatList's scrollToIndex() function.
   function getItemLayout(_data: any[] | null | undefined, index: number) {
-    return { length: props.itemWidth, offset: itemWidthWithOffset * index, index }
+    return { length: itemWidth, offset: itemWidthWithOffset * index, index }
   }
 
   const keyExtractorWithHeaderAndFooter = useCallback(
     function (item: any, index: number) {
-      if (props.renderHeader && index === 0) return 'playlist-data-header'
-      if (props.renderFooter && index === nbOfItems - 1) return 'playlist-data-footer'
-      return props.keyExtractor(item, index)
+      if (renderHeader && index === 0) return 'playlist-data-header'
+      if (renderFooter && index === nbOfItems - 1) return 'playlist-data-footer'
+      return keyExtractor(item, index)
     },
-    [props.renderHeader, props.renderFooter, props.keyExtractor, nbOfItems]
+    [renderHeader, renderFooter, keyExtractor, nbOfItems]
   )
 
   const displayItems = useCallback(
@@ -98,21 +109,20 @@ export const Playlist = (props: Props) => {
         return stepIndex
       })
     },
-    [flatListRef.current, nbOfSteps, steps]
+    [nbOfSteps, steps]
   )
 
   const renderItemWithHeaderAndFooter: ListRenderItem<any> = useCallback(
     function ({ item, index, separators }) {
-      const { itemWidth: width, itemHeight: height } = props
-      if (props.renderHeader && index === 0) {
-        return props.renderHeader({ height, width })
+      if (renderHeader && index === 0) {
+        return renderHeader({ height: itemHeight, width: itemWidth })
       }
-      if (props.renderFooter && index === nbOfItems - 1) {
-        return props.renderFooter({ height, width })
+      if (renderFooter && index === nbOfItems - 1) {
+        return renderFooter({ height: itemHeight, width: itemWidth })
       }
-      return props.renderItem({ item, index, separators, width, height })
+      return renderItem({ item, index, separators, width: itemWidth, height: itemHeight })
     },
-    [nbOfItems, props.itemWidth, props.itemHeight]
+    [renderHeader, renderFooter, nbOfItems, renderItem, itemWidth, itemHeight]
   )
 
   const displayLeftScrollButtonForNotTouchDevice = !isTouch && playlistStepIndex > 0
@@ -122,7 +132,7 @@ export const Playlist = (props: Props) => {
       {displayLeftScrollButtonForNotTouchDevice ? (
         <ScrollButtonForNotTouchDevice
           horizontalAlign="left"
-          top={props.scrollButtonOffsetY}
+          top={scrollButtonOffsetY}
           onPress={() => displayItems('previous')}>
           <BicolorArrowLeft />
         </ScrollButtonForNotTouchDevice>
@@ -130,7 +140,7 @@ export const Playlist = (props: Props) => {
       {displayRightScrollButtonForNotTouchDevice ? (
         <ScrollButtonForNotTouchDevice
           horizontalAlign="right"
-          top={props.scrollButtonOffsetY}
+          top={scrollButtonOffsetY}
           onPress={() => displayItems('next')}>
           <BicolorArrowRight />
         </ScrollButtonForNotTouchDevice>
@@ -140,7 +150,7 @@ export const Playlist = (props: Props) => {
           onLayout={({ nativeEvent }) => {
             setPlaylistWidth(nativeEvent.layout.width)
           }}
-          testID={props.testID}
+          testID={testID}
           ref={flatListRef}
           scrollEnabled={isTouch}
           data={dataWithHeaderAndFooter}
@@ -154,7 +164,7 @@ export const Playlist = (props: Props) => {
           ItemSeparatorComponent={ItemSeparatorComponent}
           ListHeaderComponent={HorizontalMargin}
           ListFooterComponent={HorizontalMargin}
-          onEndReached={props.onEndReached}
+          onEndReached={onEndReached}
           onEndReachedThreshold={0.2}
         />
       </StyledUl>
