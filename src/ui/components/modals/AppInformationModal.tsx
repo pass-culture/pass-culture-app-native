@@ -39,25 +39,24 @@ export const AppInformationModal: FunctionComponent<Props> = ({
           visible={visible}
           testID={`modal-${testIdSuffix}`}
           onRequestClose={onCloseIconPress}>
-          <ClicAwayArea activeOpacity={1} onPress={onCloseIconPress}>
-            <Spacer.Flex />
-            <Container activeOpacity={1} aria-describedby={modalId}>
-              <ModalHeader
-                title={title}
-                boldTitle
-                leftIconAccessibilityLabel={undefined}
-                leftIcon={undefined}
-                onLeftIconPress={undefined}
-                rightIconAccessibilityLabel={t`Fermer la modale`}
-                rightIcon={Close}
-                onRightIconPress={onCloseIconPress}
-                numberOfLines={numberOfLinesTitle}
-                accessibilityDescribedBy={modalId}
-              />
-              <Content style={{ paddingBottom: paddingBottom }}>{children}</Content>
-            </Container>
-            <Spacer.Flex />
-          </ClicAwayArea>
+          <ClicAwayArea onPress={onCloseIconPress} />
+          <FlexSpacer />
+          <Container aria-describedby={modalId} disabled>
+            <ModalHeader
+              title={title}
+              boldTitle
+              leftIconAccessibilityLabel={undefined}
+              leftIcon={undefined}
+              onLeftIconPress={undefined}
+              rightIconAccessibilityLabel={t`Fermer la modale`}
+              rightIcon={Close}
+              onRightIconPress={onCloseIconPress}
+              numberOfLines={numberOfLinesTitle}
+              accessibilityDescribedBy={modalId}
+            />
+            <Content style={{ paddingBottom: paddingBottom }}>{children}</Content>
+          </Container>
+          <FlexSpacer />
         </Modal>
       )}
     </React.Fragment>
@@ -68,6 +67,7 @@ const ClicAwayArea = styled(TouchableOpacity)(({ theme }) => ({
   flexGrow: 1,
   flexDirection: 'column',
   justifyContent: 'flex-end',
+  position: 'absolute',
   height: '100%',
   width: '100%',
   backgroundColor: theme.uniqueColors.greyOverlay,
@@ -88,4 +88,8 @@ const Content = styled.View(({ theme }) => ({
   width: '100%',
   alignItems: 'center',
   maxWidth: theme.contentPage.maxWidth,
+}))
+
+const FlexSpacer = styled(Spacer.Flex)(({ theme }) => ({
+  zIndex: theme.zIndex.background,
 }))
