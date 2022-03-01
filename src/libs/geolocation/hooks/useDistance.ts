@@ -6,7 +6,7 @@ export const useDistance = (offerPosition: {
   lng?: number | null
 }): string | undefined => {
   const { position: userPosition } = useGeolocation()
-  // TODO check if !offerPosition check is useful - add data validation from API if needed
+  // TODO check if  !offerPosition check is usefull - add data validation from API if needed
   if (!userPosition || !offerPosition) return undefined
   return formatDistance(offerPosition, userPosition)
 }

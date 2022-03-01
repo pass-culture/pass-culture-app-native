@@ -8,7 +8,6 @@ module.exports = {
     'plugin:@typescript-eslint/recommended', // Uses the recommended rules from @typescript-eslint/eslint-plugin
     'plugin:prettier/recommended', // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
     'plugin:import/errors',
-    'plugin:react-hooks/recommended',
   ],
   parserOptions: {
     ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
@@ -33,7 +32,7 @@ module.exports = {
         minimumDescriptionLength: 5,
       },
     ],
-    // not ideal, but programmatically necessary sometimes
+    // not ideal, but progamatically necessary sometimes
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': [
       'error',
@@ -42,6 +41,9 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': 'off',
     'react/prop-types': 'off',
     'react-native/sort-styles': 'off',
+    // This is essential. Without this misplaced hooks would go straight to production
+    // since there is no way to detect this during testing.
+    'react-hooks/rules-of-hooks': 'error',
     'react/jsx-fragments': ['error', 'element'], // Otherwise `lingui extract` fails when using the shorthand syntax i.e. <></>
     'no-restricted-imports': [
       'error',
