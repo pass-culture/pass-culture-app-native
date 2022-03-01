@@ -309,7 +309,7 @@ const codeInputPlaceholder = '000000'
 const codeInputMask = '999999'
 
 const Caption = styled(Typo.Caption)(({ theme }) => ({
-  color: theme.colors.greyMedium,
+  color: theme.colors.greyDark,
 }))
 
 const CodeInput = styled(MaskedTextInput).attrs(({ theme }) => ({

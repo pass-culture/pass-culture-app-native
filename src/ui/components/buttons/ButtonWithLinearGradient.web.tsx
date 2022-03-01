@@ -50,8 +50,12 @@ const Button = styled.button(({ theme }) => ({
   justifyContent: 'center',
   alignItems: 'center',
   border: 0,
+  ['&:focus']: {
+    outline: 'auto',
+  },
   ['&:active']: {
     opacity: theme.activeOpacity,
+    outline: 'none',
   },
   ['&:disabled']: {
     cursor: 'initial',
