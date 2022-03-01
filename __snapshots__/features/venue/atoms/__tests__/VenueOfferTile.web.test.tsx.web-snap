@@ -10,6 +10,7 @@ Object {
         style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
       >
         <div
+          aria-label="Offre Mensch ! Où sont les Hommes ? de la catégorie MUSIQUE,   Dès le 12 mars 2020, prix 28 €"
           class="css-view-1dbjc4n"
           data-testid="offerTile"
           style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 100px; margin-top: 3px; user-select: none;"
@@ -76,6 +77,7 @@ Object {
       style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
     >
       <div
+        aria-label="Offre Mensch ! Où sont les Hommes ? de la catégorie MUSIQUE,   Dès le 12 mars 2020, prix 28 €"
         class="css-view-1dbjc4n"
         data-testid="offerTile"
         style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 100px; margin-top: 3px; user-select: none;"

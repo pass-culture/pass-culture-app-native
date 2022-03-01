@@ -13,6 +13,7 @@ exports[`VenueTile component should render correctly 1`] = `
   }
 >
   <View
+    accessibilityLabel="Lieu Le Petit Rintintin 1 du type Salle de projections, "
     accessible={true}
     focusable={true}
     onClick={[Function]}

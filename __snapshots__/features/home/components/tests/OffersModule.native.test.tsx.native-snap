@@ -259,6 +259,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
           }
         >
           <View
+            accessibilityLabel="Offre Mensch ! Où sont les Hommes ? de la catégorie Musique,   prix 28 €"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -453,6 +454,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
           }
         >
           <View
+            accessibilityLabel="Offre I want something more de la catégorie Musique,   prix 23 €"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -647,6 +649,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
           }
         >
           <View
+            accessibilityLabel="Offre Un lit sous une rivière de la catégorie Musique,  le 17 novembre 2020, prix 34 €"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -858,6 +861,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
           }
         >
           <View
+            accessibilityLabel="Offre I want something more de la catégorie Musique,   prix 28 €"
             accessible={true}
             focusable={true}
             onClick={[Function]}

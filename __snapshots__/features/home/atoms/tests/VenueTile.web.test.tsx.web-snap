@@ -10,6 +10,7 @@ Object {
         style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
       >
         <div
+          aria-label="Lieu Le Petit Rintintin 1 du type Salle de projections, "
           class="css-view-1dbjc4n"
           data-testid="venueTile"
           style="background-color: rgb(230, 230, 230); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 100px; margin-top: 3px; user-select: none; width: 100px;"
@@ -74,6 +75,7 @@ Object {
       style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
     >
       <div
+        aria-label="Lieu Le Petit Rintintin 1 du type Salle de projections, "
         class="css-view-1dbjc4n"
         data-testid="venueTile"
         style="background-color: rgb(230, 230, 230); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 100px; margin-top: 3px; user-select: none; width: 100px;"
