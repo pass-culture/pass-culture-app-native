@@ -1,5 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
+import { StyleSheet } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -14,6 +15,7 @@ import { GLOBAL_STALE_TIME } from 'libs/react-query/queryClient'
 import { VenueHit } from 'libs/search'
 import { ImageTile } from 'ui/components/ImageTile'
 import { customFocusOutline } from 'ui/theme/customFocusOutline'
+import { Link } from 'ui/web/link/Link'
 export interface VenueTileProps {
   venue: VenueHit
   width: number
@@ -55,7 +57,12 @@ export const VenueTile = (props: VenueTileProps) => {
         onBlur={() => setIsFocus(false)}
         isFocus={isFocus}
         testID="venueTile">
-        <ImageTile width={width} height={height} uri={venue.bannerUrl} />
+        <Link
+          to={{ screen: 'Venue', params: { id: venue.id } }}
+          style={styles.link}
+          accessible={false}>
+          <ImageTile width={width} height={height} uri={venue.bannerUrl} />
+        </Link>
       </TouchableHighlight>
       <VenueCaption
         width={width}
@@ -81,3 +88,10 @@ const TouchableHighlight = styled.TouchableHighlight<{
   backgroundColor: theme.uniqueColors.greyDisabled,
   ...customFocusOutline(theme, isFocus),
 }))
+
+const styles = StyleSheet.create({
+  link: {
+    flexDirection: 'column',
+    display: 'flex',
+  },
+})
