@@ -89,10 +89,14 @@ export const appTouchableOpacityWebStyles: ButtonStylesWeb = ({ theme }: ButtonS
     cursor: 'pointer',
     borderWidth: 0,
     display: 'flex',
-    ['&:active']: {
-      opacity: theme.activeOpacity,
-    },
     backgroundColor: 'transparent',
     padding: 0,
+    ['&:active']: {
+      opacity: theme.activeOpacity,
+      outline: 'none',
+    },
+    ['&:focus']: {
+      outline: 'auto',
+    },
   }
 }
