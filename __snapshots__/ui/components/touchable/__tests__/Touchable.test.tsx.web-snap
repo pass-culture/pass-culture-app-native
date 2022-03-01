@@ -2,7 +2,7 @@
 
 exports[`<Touchable /> should render correctly 1`] = `
 <button
-  className="sc-bdvvtL iKGGoh"
+  className="sc-bdvvtL gGpmHy"
   tabIndex="0"
   type="button"
 >
@@ -17,7 +17,7 @@ exports[`<Touchable /> should render correctly 1`] = `
 
 exports[`<Touchable /> should render correctly on custom type 1`] = `
 <button
-  className="sc-bdvvtL iKGGoh"
+  className="sc-bdvvtL gGpmHy"
   tabIndex="0"
   type="reset"
 >
