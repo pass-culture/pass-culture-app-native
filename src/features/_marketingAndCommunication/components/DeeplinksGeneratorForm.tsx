@@ -5,6 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { SearchGroupNameEnum } from 'api/gen'
 import { ControlledFilterSwitch } from 'features/_marketingAndCommunication/atoms/ControlledFilterSwitch'
+import { DateChoice } from 'features/_marketingAndCommunication/atoms/DateChoice'
 import { OfferCategoryChoices } from 'features/_marketingAndCommunication/atoms/OfferCategoryChoices'
 import { OfferTypeChoices } from 'features/_marketingAndCommunication/atoms/OfferTypeChoices'
 import {
@@ -154,6 +155,17 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       )
     }
 
+    function onChangeDate(date: Date | undefined) {
+      setScreenParams((prevPageParams) =>
+        !date
+          ? omit(prevPageParams, name)
+          : {
+              ...prevPageParams,
+              [name]: date,
+            }
+      )
+    }
+
     const placeholder = config.required ? `${name} (*)` : name
     const sliderLength = appContentWidth / (isMobileViewport ? 1 : 2) - getSpacing(2 * 2 * 6)
 
@@ -192,6 +204,11 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
           <OfferCategoryChoices onChange={onChangeOfferCategories} />
         )}
         {config.type === 'offerTypes' && <OfferTypeChoices onChange={onChangeOfferTypes} />}
+        {config.type === 'date' && (
+          <PaddingContainer>
+            <DateChoice onChange={onChangeDate} />
+          </PaddingContainer>
+        )}
         {!!config.description && (
           <PaddingContainer>
             <StyledCaption>{config.description}</StyledCaption>

@@ -11,7 +11,14 @@ export type ScreensUsedByMarketing = Extract<
 type ScreensUsedByMarketingParamsList = Pick<AllNavParamList, ScreensUsedByMarketing>
 
 export type ParamConfig = {
-  type: 'string' | 'stringArray' | 'priceRange' | 'boolean' | 'offerCategories'
+  type:
+    | 'string'
+    | 'stringArray'
+    | 'priceRange'
+    | 'boolean'
+    | 'offerCategories'
+    | 'offerTypes'
+    | 'date'
   required?: boolean
   description: string
   serverValidator?: (value: string) => Promise<unknown>
@@ -97,6 +104,16 @@ export const SCREENS_CONFIG: {
       type: 'boolean',
       required: false,
       description: `Offre DUO`,
+    },
+    beginningDatetime: {
+      type: 'date',
+      required: false,
+      description: `Date de début`,
+    },
+    endingDatetime: {
+      type: 'date',
+      required: false,
+      description: `Date de fin`,
     },
   },
   Profile: {},
