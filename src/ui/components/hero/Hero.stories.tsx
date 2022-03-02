@@ -12,7 +12,6 @@ export default {
 
 const Template: ComponentStory<typeof Hero> = (props) => <Hero {...props} />
 
-// Offer Hero
 export const Offer = Template.bind({})
 Offer.args = {
   imageUrl:
@@ -35,7 +34,6 @@ OfferWithBrokenImage.args = {
   categoryId: CategoryIdEnum.CINEMA,
 }
 
-// Venue Hero
 export const Venue = Template.bind({})
 Venue.args = {
   imageUrl:
