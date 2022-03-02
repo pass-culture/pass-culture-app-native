@@ -16,21 +16,20 @@ Label.args = {
   selected: false,
 }
 
-export const VeryLongLabel = Template.bind({})
-VeryLongLabel.args = {
-  label: 'Conférences, rencontres, spectacles, expositions et visites',
-  selected: false,
-}
-
 export const SelectedLabel = Template.bind({})
 SelectedLabel.args = {
   label: 'Cinéma',
   selected: true,
 }
 
-export const Labels = () => (
-  <React.Fragment>
-    <SelectionLabel label="Cinéma" selected={false} onPress={() => null} />
-    <SelectionLabel label="Musique" selected={true} onPress={() => null} />
-  </React.Fragment>
-)
+export const VeryLongLabel = Template.bind({})
+VeryLongLabel.args = {
+  label: 'Conférences, rencontres, spectacles, expositions et visites',
+  selected: false,
+}
+
+export const SelectedVeryLongLabel = Template.bind({})
+SelectedVeryLongLabel.args = {
+  label: 'Conférences, rencontres, spectacles, expositions et visites',
+  selected: true,
+}
