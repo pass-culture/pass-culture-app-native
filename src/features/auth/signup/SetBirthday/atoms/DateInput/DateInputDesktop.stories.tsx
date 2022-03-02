@@ -9,7 +9,7 @@ import {
 import { DateInputDesktop } from './DateInputDesktop.web'
 
 export default {
-  title: 'ui/input/DateInputDesktop',
+  title: 'ui/inputs/DateInputDesktop',
   component: DateInputDesktop,
 } as ComponentMeta<typeof DateInputDesktop>
 

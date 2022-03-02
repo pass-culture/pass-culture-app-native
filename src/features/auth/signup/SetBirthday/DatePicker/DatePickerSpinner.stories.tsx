@@ -9,7 +9,7 @@ import {
 import { DatePickerSpinner } from './DatePickerSpinner.web'
 
 export default {
-  title: 'ui/input/DatePicker/DatePickerSpinner',
+  title: 'ui/inputs/DatePicker/DatePickerSpinner',
   component: DatePickerSpinner,
 } as ComponentMeta<typeof DatePickerSpinner>
 

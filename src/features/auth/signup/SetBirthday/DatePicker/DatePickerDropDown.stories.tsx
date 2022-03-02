@@ -9,7 +9,7 @@ import {
 import { DatePickerDropDown } from './DatePickerDropDown.web'
 
 export default {
-  title: 'ui/input/DatePicker/DatePickerDropDown',
+  title: 'ui/inputs/DatePicker/DatePickerDropDown',
   component: DatePickerDropDown,
 } as ComponentMeta<typeof DatePickerDropDown>
 

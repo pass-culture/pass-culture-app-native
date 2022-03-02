@@ -6,7 +6,7 @@ import { monthNames } from 'features/bookOffer/components/Calendar/Calendar.util
 import { DropDown } from './DropDown.web'
 
 export default {
-  title: 'ui/input/DropDown',
+  title: 'ui/inputs/DropDown',
   component: DropDown,
 } as ComponentMeta<typeof DropDown>
 
