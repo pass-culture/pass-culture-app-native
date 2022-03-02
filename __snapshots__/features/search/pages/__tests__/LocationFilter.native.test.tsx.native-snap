@@ -396,11 +396,11 @@ exports[`LocationFilter component should render correctly 1`] = `
         </View>
       </View>
       <View
-        numberOfSpaces={4}
+        numberOfSpaces={6}
         style={
           Array [
             Object {
-              "height": 16,
+              "height": 24,
             },
           ]
         }
@@ -524,11 +524,11 @@ exports[`LocationFilter component should render correctly 1`] = `
         </View>
       </View>
       <View
-        numberOfSpaces={4}
+        numberOfSpaces={6}
         style={
           Array [
             Object {
-              "height": 16,
+              "height": 24,
             },
           ]
         }

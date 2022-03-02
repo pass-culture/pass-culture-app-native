@@ -85,7 +85,7 @@ export const LocationFilter: React.FC = () => {
               arrowNext={true}
               onPress={onPressPickPlace}
             />
-            <Spacer.Column numberOfSpaces={4} />
+            <Spacer.Column numberOfSpaces={6} />
           </Li>
           <Li>
             <LocationChoice
@@ -102,7 +102,7 @@ export const LocationFilter: React.FC = () => {
                 relatedInputId={locationChoiceErrorId}
               />
             )}
-            <Spacer.Column numberOfSpaces={4} />
+            <Spacer.Column numberOfSpaces={6} />
           </Li>
           <Li>
             <LocationChoice

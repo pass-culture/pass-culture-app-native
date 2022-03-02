@@ -280,7 +280,7 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 16,
+            "marginBottom": 24,
             "opacity": 1,
           }
         }
@@ -366,7 +366,7 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 16,
+            "marginBottom": 24,
             "opacity": 1,
           }
         }
@@ -444,7 +444,7 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 16,
+            "marginBottom": 24,
             "opacity": 1,
           }
         }
@@ -522,7 +522,7 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 16,
+            "marginBottom": 24,
             "opacity": 1,
           }
         }
@@ -600,7 +600,7 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 16,
+            "marginBottom": 24,
             "opacity": 1,
           }
         }
@@ -678,7 +678,7 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 16,
+            "marginBottom": 24,
             "opacity": 1,
           }
         }
@@ -756,7 +756,7 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 16,
+            "marginBottom": 24,
             "opacity": 1,
           }
         }
@@ -834,7 +834,7 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 16,
+            "marginBottom": 24,
             "opacity": 1,
           }
         }
@@ -912,7 +912,7 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 16,
+            "marginBottom": 24,
             "opacity": 1,
           }
         }
@@ -990,7 +990,7 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 16,
+            "marginBottom": 24,
             "opacity": 1,
           }
         }
@@ -1068,7 +1068,7 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 16,
+            "marginBottom": 24,
             "opacity": 1,
           }
         }
@@ -1146,7 +1146,7 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 16,
+            "marginBottom": 24,
             "opacity": 1,
           }
         }
@@ -1224,7 +1224,7 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 16,
+            "marginBottom": 24,
             "opacity": 1,
           }
         }
@@ -1302,7 +1302,7 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 16,
+            "marginBottom": 24,
             "opacity": 1,
           }
         }

@@ -92,7 +92,7 @@ const LabelContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
 }))({
   flexDirection: 'row',
   alignItems: 'center',
-  marginBottom: getSpacing(4),
+  marginBottom: getSpacing(6),
 })
 
 const ButtonText = styled(Typo.ButtonText)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
