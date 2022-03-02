@@ -32,6 +32,7 @@ export const ExclusivityModule = ({
     navigate('Offer', { id, from: 'home' })
     analytics.logClickExclusivityBlock(id)
     analytics.logConsultOffer({ offerId: id, from: 'exclusivity' })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
   const source = useMemo(() => ({ uri: image }), [image])

@@ -37,6 +37,7 @@ export function useTimer(
     return () => {
       exports.clearLocalInterval(timerIdRef.current)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startTime])
 
   return elapsedTime

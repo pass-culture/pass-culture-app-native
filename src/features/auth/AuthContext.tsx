@@ -128,6 +128,7 @@ export function useLogoutRoutine(): () => Promise<void> {
     } finally {
       setIsLoggedIn(false)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setIsLoggedIn])
 }
 

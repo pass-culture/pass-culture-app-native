@@ -37,6 +37,7 @@ export const IdentityCheckEduConnectForm = () => {
     }
     setWebView()
     return () => setWebViewSource(undefined)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [eduConnectClient])
 
   useFocusEffect(

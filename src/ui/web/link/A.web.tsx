@@ -17,8 +17,10 @@ export function A({ children, accessible = false, ...props }: AProps) {
 
     return () => {
       // @ts-ignore en vanilla JS, le mouse click est un MouseEvent, pour rester consistant avec la fonction ci-dessous, nous ignorons ici et conservons le typing react
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       linkRef.current?.removeEventListener('click', preventDefault)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

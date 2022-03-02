@@ -15,6 +15,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
 
   useEffect(() => {
     props.onChange(date)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date])
 
   return (

@@ -43,6 +43,7 @@ export const SearchResults: React.FC = () => {
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
     // Despite the fact that the useEffect hook being called immediately,
     // scrollToOffset may not always have an effect for unknown reason,
@@ -63,6 +64,7 @@ export const SearchResults: React.FC = () => {
       if (lastPage.page > 0) analytics.logSearchScrollToPage(lastPage.page)
       fetchNextPage()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasNextPage])
 
   const renderItem = useCallback(
@@ -72,6 +74,7 @@ export const SearchResults: React.FC = () => {
 
   const ListHeaderComponent = useMemo(
     () => <NumberOfResults nbHits={nbHits} />,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [nbHits, searchState.locationFilter.locationType]
   )
   const ListEmptyComponent = useMemo(() => <NoSearchResult />, [])
@@ -87,6 +90,7 @@ export const SearchResults: React.FC = () => {
       ) : (
         <Footer />
       ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [isFetchingNextPage, hits.length]
   )
 

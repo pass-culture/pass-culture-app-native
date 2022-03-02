@@ -42,6 +42,7 @@ export function useIdentificationUrl() {
   useEffect(() => {
     if (identificationUrl) return
     postIdentificationUrl()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return identificationUrl

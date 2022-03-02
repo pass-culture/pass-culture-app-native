@@ -51,6 +51,7 @@ export function useHomepageModules(paramsEntryId?: string) {
     if (entryId) analytics.logConsultHome({ entryId })
   }, [entryId])
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   return useMemo(() => (entry ? processHomepageEntry(entry) : []), [entryId])
 }
 

@@ -23,6 +23,7 @@ export const NoSearchResult: React.FC = () => {
 
     const actionType = position ? 'SET_LOCATION_AROUND_ME' : 'SET_LOCATION_EVERYWHERE'
     dispatch({ type: actionType })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [!position])
 
   const errorMessage =

@@ -16,6 +16,7 @@ export function NetInfoWrapper({ children }: { children: JSX.Element }) {
         timeout: SNACK_BAR_TIME_OUT,
       })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [networkInfo.isConnected])
 
   return children

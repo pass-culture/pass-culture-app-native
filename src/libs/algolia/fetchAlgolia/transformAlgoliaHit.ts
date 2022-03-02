@@ -61,5 +61,6 @@ export const useTransformAlgoliaHits = () => {
   const { data: settings } = useAppSettings()
   const { objectStorageUrl: urlPrefix } = settings || {}
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   return useCallback(transformAlgoliaHit(urlPrefix), [urlPrefix])
 }

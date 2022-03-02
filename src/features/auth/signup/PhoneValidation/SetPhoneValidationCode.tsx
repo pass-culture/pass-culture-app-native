@@ -121,6 +121,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
         setValidationCodeRequestTimestamp(value as any)
       })
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [route.params])
   )
 
@@ -203,6 +204,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
       ` ${formattedPhoneNumber}.` +
       '\n' +
       t`Attention tu n'as que 3 tentatives.`,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [route.params]
   )
 

@@ -21,6 +21,7 @@ export const OfferSeeMore: React.FC<Props> = ({ id, longWording = false }) => {
   const onPressSeeMore = useCallback(() => {
     analytics.logConsultDescriptionDetails(id)
     navigate('OfferDescription', { id })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
   return (

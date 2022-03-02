@@ -22,6 +22,7 @@ export function AfterChangeEmailValidationBuffer() {
 
   const { showSuccessSnackBar } = useSnackBarContext()
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(beforeEmailValidation, [])
 
   const { isLoggedIn } = useAuthContext()

@@ -133,6 +133,7 @@ export const SignupForm: FunctionComponent<Props> = ({ navigation, route }) => {
         event.preventDefault() // Do not remove screen
       })
       return unsubscribeFromNavigationListener
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isFirstStep])
   )
 

@@ -53,6 +53,7 @@ export function UserProfiling({ resetErrorBoundary }: ScreenErrorProps) {
         .then(resetErrorBoundary)
         .catch(setError)
     }, PROFILING_MIN_DELAY_MS)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sessionId])
 
   if (genericError) {

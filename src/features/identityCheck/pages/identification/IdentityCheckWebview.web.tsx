@@ -54,6 +54,7 @@ export const IdentityCheckWebview: React.FC = () => {
         },
       })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [identificationUrl])
 
   if (!identificationUrl) {

@@ -44,6 +44,7 @@ export function IdentityCheckValidation() {
           birthDate: params.dateOfBirth ?? null,
         },
       })
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [params])
   )
 

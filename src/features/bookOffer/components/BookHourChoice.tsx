@@ -66,6 +66,7 @@ export const BookHourChoice: React.FC = () => {
             offerCredit={offerCredit}
           />
         )),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [stocks, selectedDate, bookingState.stockId, bookingState.quantity, offerCredit]
   )
 

@@ -23,6 +23,7 @@ export function AfterSignupEmailValidationBuffer() {
   }
   const { params } = useRoute<UseRouteType<'AfterSignupEmailValidationBuffer'>>()
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(beforeEmailValidation, [])
 
   const loginRoutine = useLoginRoutine()

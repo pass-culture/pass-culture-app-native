@@ -43,6 +43,7 @@ export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function 
         setTimeout(() => inputRef.current?.focus(), 400)
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [inputRef.current, autoFocus, props.secureTextEntry])
 
   return (

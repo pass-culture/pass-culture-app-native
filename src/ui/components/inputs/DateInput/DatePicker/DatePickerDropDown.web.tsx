@@ -17,6 +17,7 @@ export function DatePickerDropDown(props: DatePickerProps) {
     } else {
       props.onChange(undefined)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date])
 
   return (

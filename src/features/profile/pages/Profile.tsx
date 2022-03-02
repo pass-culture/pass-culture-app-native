@@ -68,6 +68,7 @@ export const Profile: React.FC = () => {
       } else {
         setIsGeolocSwitchActive(false)
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [positionError, permissionState])
   )
 
@@ -80,8 +81,10 @@ export const Profile: React.FC = () => {
     } else {
       await requestGeolocPermission()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [permissionState])
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const debouncedLogLocationToggle = useCallback(
     debounce(analytics.logLocationToggle, DEBOUNCE_TOGGLE_DELAY_MS),
     []
@@ -98,6 +101,7 @@ export const Profile: React.FC = () => {
     if (!isLoggedIn) {
       debouncedScrollToTop()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoggedIn])
 
   const logProfilScrolledToBottom = useFunctionOnce(analytics.logProfilScrolledToBottom)

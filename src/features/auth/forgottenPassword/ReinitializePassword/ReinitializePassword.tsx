@@ -47,6 +47,7 @@ export const ReinitializePassword = () => {
       } else {
         setIsTimestampExpirationVerified(true)
       }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [route.params])
   )
 

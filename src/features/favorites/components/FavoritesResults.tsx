@@ -98,11 +98,13 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
       if (!user || !credit) return <FavoriteHitPlaceholder />
       return <Favorite favorite={favorite} user={user} onInAppBooking={setOfferToBook} />
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [credit, favoritesState, user, setOfferToBook]
   )
 
   const ListHeaderComponent = useMemo(
     () => <NumberOfResults nbFavorites={sortedFavorites ? sortedFavorites.length : 0} />,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [sortedFavorites?.length]
   )
   const ListEmptyComponent = useMemo(() => <NoFavoritesResult />, [])

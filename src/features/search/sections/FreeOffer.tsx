@@ -13,6 +13,7 @@ export const FreeOffer: React.FC = () => {
   const toggle = useCallback(() => {
     dispatch({ type: 'TOGGLE_OFFER_FREE' })
     logUseFilter()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

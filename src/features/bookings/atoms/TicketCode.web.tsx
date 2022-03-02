@@ -13,6 +13,7 @@ export function TicketCode({ code }: { code: string }) {
       message: t`Ton code a été copié dans le presse-papier\u00a0!`,
       timeout: SNACK_BAR_TIME_OUT,
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [code])
 
   return <TicketCodeTitle onPress={copyToClipboard}>{code}</TicketCodeTitle>

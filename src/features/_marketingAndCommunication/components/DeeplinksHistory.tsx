@@ -46,6 +46,7 @@ export const DeeplinksHistory = ({
       }
     }
     toggle()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keepHistory, history])
 
   async function clearLocalData() {
@@ -80,6 +81,7 @@ export const DeeplinksHistory = ({
       }
     }
     init()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

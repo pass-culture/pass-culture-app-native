@@ -40,6 +40,7 @@ export const IdentityCheckStepper = () => {
   useEffect(() => {
     if (context.step === null && steps[0])
       context.dispatch({ type: 'SET_STEP', payload: steps[0].name })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [steps.length])
 
   useEffect(() => {
@@ -51,6 +52,7 @@ export const IdentityCheckStepper = () => {
       }
     }
     showMaintenance()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subscription])
 
   function showQuitIdentityCheckModal() {

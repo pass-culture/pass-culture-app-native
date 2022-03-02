@@ -21,5 +21,6 @@ export const usePrefetchQueries = () => {
   useEffect(() => {
     if (!isConnected) return
     prefetchQueries()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 }

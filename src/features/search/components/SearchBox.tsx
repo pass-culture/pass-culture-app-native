@@ -44,6 +44,7 @@ export const SearchBox: React.FC = () => {
   useFocusEffect(
     useCallback(() => {
       setQuery(searchState.query)
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchState.query])
   )
 

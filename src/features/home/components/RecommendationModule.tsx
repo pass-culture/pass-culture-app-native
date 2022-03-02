@@ -41,6 +41,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
     if (nbHits > 0 && shouldModuleBeDisplayed) {
       analytics.logRecommendationModuleSeen(display.title, nbHits)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nbHits])
 
   const renderItem: CustomListRenderItem<SearchHit> = useCallback(
@@ -65,6 +66,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
         />
       )
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [position, profile?.isBeneficiary]
   )
 

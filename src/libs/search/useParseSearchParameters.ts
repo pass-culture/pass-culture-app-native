@@ -19,6 +19,7 @@ export const useParseSearchParameters = () => {
         position,
         subcategoryLabelMapping
       ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [!position, priceMax, subcategoryLabelMapping]
   )
 }

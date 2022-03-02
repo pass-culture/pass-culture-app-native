@@ -62,6 +62,7 @@ const _AppButton = <T extends AppButtonProps>({
         longPressHandler(event)
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [type, longPressHandler]
   )
   return (

@@ -11,6 +11,7 @@ type Props = {
 export const MaintenanceErrorPage = ({ resetErrorBoundary }: Props) => {
   const { status, message } = useMaintenance()
   // This first hook will be like a componentWillUnmount
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => resetErrorBoundary, [])
   // This one is for when feature flip switch back to off later
   useEffect(() => {
@@ -18,6 +19,7 @@ export const MaintenanceErrorPage = ({ resetErrorBoundary }: Props) => {
     if (status === MAINTENANCE.OFF) {
       resetErrorBoundary()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [status])
   return <Maintenance message={message} />
 }

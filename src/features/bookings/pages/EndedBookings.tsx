@@ -28,6 +28,7 @@ export const EndedBookings: React.FC = () => {
         <EndedBookingsCount>{endedBookingsLabel}</EndedBookingsCount>
       </React.Fragment>
     ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [endedBookingsCount]
   )
 

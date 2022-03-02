@@ -36,6 +36,7 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
       easing: Easing.bezier(0, 0.75, 0, 0.75),
       useNativeDriver: false,
     }).start()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [active])
 
   return (

@@ -37,6 +37,7 @@ export const NumberOfResults: React.FC<Props> = ({ nbHits }) => {
 
     // this reset current search results
     navigate(...getTabNavConfig('Search', { locationFilter }))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [!position])
 
   const numberOfResults = plural(nbHits, {

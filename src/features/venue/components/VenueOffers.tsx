@@ -64,12 +64,14 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
         />
       )
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [position]
   )
 
   const seeAllOffers = useCallback(() => {
     analytics.logVenueSeeAllOffersClicked(venueId)
     navigate(...getTabNavConfig('Search', params))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params])
 
   const showSeeMore = nbHits > hits.length
@@ -88,6 +90,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
         <SeeMore width={width} height={height} onPress={onPressSeeMore as () => void} />
       </Link>
     ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [onPressSeeMore]
   )
 
@@ -99,6 +102,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
         </Link>
       )
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [onPressSeeMore, params]
   )
 

@@ -25,6 +25,7 @@ export const useVenueModule = ({
     if (!isConnected) return
     // When we enable or disable the geolocation, we want to refetch the home modules
     refetch()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [!!position, isConnected])
 
   return data

@@ -44,6 +44,7 @@ export function DateInputDesktop(props: DatePickerProps) {
       months: monthNames,
       years: getPastYears(props.minimumDate.getFullYear(), defaultSelectedYear),
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date, monthNames, getYears])
 
   const onPartialDateChange = (key: keyof InitialDateProps) => (value: string) => {
@@ -60,6 +61,7 @@ export function DateInputDesktop(props: DatePickerProps) {
 
   useEffect(() => {
     props.onChange(getValidDate())
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date])
 
   return (

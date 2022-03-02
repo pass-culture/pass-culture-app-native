@@ -13,6 +13,7 @@ export const Date: React.FC = () => {
   const toggle = useCallback(() => {
     dispatch({ type: 'TOGGLE_DATE' })
     logUseFilter()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

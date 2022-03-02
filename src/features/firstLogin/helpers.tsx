@@ -58,6 +58,7 @@ export function withCulturalSurveyProvider(
         return
       }
       navigate(...homeNavConfig)
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [user, isLoadingUser])
 
     if (currentRoute?.name !== 'CulturalSurvey') return null

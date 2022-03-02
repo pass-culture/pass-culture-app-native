@@ -23,6 +23,7 @@ export const useAppStateChange = (
     return () => {
       subscription.remove()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps)
   return appState
 }

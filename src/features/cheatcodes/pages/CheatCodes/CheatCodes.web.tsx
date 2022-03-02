@@ -10,6 +10,7 @@ export const CheatCodes: React.FC = () => {
   useFocusEffect(
     useCallback(() => {
       navigate(...homeNavConfig)
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
   )
   return <LoadingPage />
