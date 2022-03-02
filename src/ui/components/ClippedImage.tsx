@@ -113,11 +113,26 @@ const StyledSvg =
       }))
     : Svg
 
-const IconContainer = styled.View({
+const IconContainer = styled.View(({ theme }) => ({
   position: 'absolute',
   justifyContent: 'center',
   alignItems: 'center',
   flex: 1,
   width: '100%',
   height: '100%',
-})
+  borderRadius: 4,
+  borderWidth: 1,
+  borderColor: theme.colors.greyLight,
+  ...Platform.select({
+    web: getShadow({
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowRadius: 2,
+      shadowColor: theme.colors.black,
+      shadowOpacity: 0.25,
+    }),
+    default: {},
+  }),
+}))
