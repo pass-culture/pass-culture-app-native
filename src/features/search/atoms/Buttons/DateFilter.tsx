@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
+
 interface Props {
   isSelected: boolean
   onPress: () => void
@@ -11,10 +13,10 @@ interface Props {
 
 export const DateFilter: React.FC<Props> = ({ text, onPress, isSelected }: Props) => {
   return (
-    <TouchableOpacity onPress={onPress}>
+    <StyledTouchableOpacity onPress={onPress}>
       <ButtonText isSelected={isSelected}>{text}</ButtonText>
       {!!isSelected && <Validate />}
-    </TouchableOpacity>
+    </StyledTouchableOpacity>
   )
 }
 
@@ -23,9 +25,7 @@ const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
 
-const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({
+const StyledTouchableOpacity = styled(TouchableOpacity)({
   height: getSpacing(6),
   flexDirection: 'row',
   alignItems: 'center',

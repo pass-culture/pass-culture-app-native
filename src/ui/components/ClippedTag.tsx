@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Clear } from 'ui/svg/icons/Clear'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -18,9 +19,9 @@ export const ClippedTag: React.FC<Props> = ({ label, onPress, testId }) => {
       <VenueLabelContainer>
         <VenueLabel>{label}</VenueLabel>
       </VenueLabelContainer>
-      <TouchableOpacity onPress={onPress}>
+      <StyledTouchableOpacity onPress={onPress}>
         <ClearIcon {...accessibilityAndTestId(testId)} />
-      </TouchableOpacity>
+      </StyledTouchableOpacity>
     </Container>
   )
 }
@@ -47,9 +48,7 @@ const VenueLabel = styled(Typo.ButtonText).attrs({
   numberOfLines: 1,
 })(({ theme }) => ({ color: theme.colors.white }))
 
-const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))(({ theme }) => ({
+const StyledTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
   padding: getSpacing(2),
   backgroundColor: theme.colors.primary,
   borderTopRightRadius: theme.borderRadius.button,

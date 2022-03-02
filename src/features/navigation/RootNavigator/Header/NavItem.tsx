@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { menu } from 'features/navigation/TabBar/routes'
 import { TabRouteName } from 'features/navigation/TabBar/types'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
@@ -36,7 +37,7 @@ const StyledIcon = styled(BicolorLogo).attrs<{ selected?: boolean }>(({ theme, s
   thin: !selected,
 }))<{ selected?: boolean }>``
 
-const StyledTouchableOpacity = styled.TouchableOpacity<{ isSelected?: boolean }>(
+const StyledTouchableOpacity = styled(TouchableOpacity)<{ isSelected?: boolean }>(
   ({ theme, isSelected }) => ({
     flexDirection: 'row',
     alignItems: 'center',

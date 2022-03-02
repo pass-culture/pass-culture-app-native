@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { Spacer, Typo } from 'ui/theme'
+
 interface RadioButtonProps {
   id: string
   title: string
@@ -34,7 +36,7 @@ const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
 
-const PressableContainer = styled.TouchableOpacity({
+const PressableContainer = styled(TouchableOpacity)({
   flexDirection: 'row',
   width: '100%',
   alignItems: 'center',

@@ -14,6 +14,7 @@ import { GLOBAL_STALE_TIME } from 'libs/react-query/queryClient'
 import { useCategoryId } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Check } from 'ui/svg/icons/Check'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Link } from 'ui/web/link/Link'
@@ -83,10 +84,6 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
     </Link>
   )
 }
-
-const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))``
 
 const AttributesView = styled.View({
   flex: 1,

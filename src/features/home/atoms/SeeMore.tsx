@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { getSpacing, Spacer, Typo, getShadow } from 'ui/theme'
 
@@ -39,15 +40,11 @@ const Container = styled.View<{ height: number; width: number }>(({ height, widt
   justifyContent: 'center',
 }))
 
-const ClickableArea = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({
+const ClickableArea = styled(TouchableOpacity)({
   alignItems: 'center',
 })
 
-const RoundContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))(({ theme }) => ({
+const RoundContainer = styled(TouchableOpacity)(({ theme }) => ({
   width: getSpacing(16),
   aspectRatio: '1',
   borderRadius: getSpacing(8),

@@ -1,7 +1,7 @@
 import React from 'react'
-import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 

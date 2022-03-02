@@ -11,6 +11,7 @@ import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { InputError } from 'ui/components/inputs/InputError'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -124,9 +125,7 @@ const contentContainerStyle: ViewStyle = {
   paddingRight: getSpacing(3),
 }
 
-const LabelContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({
+const LabelContainer = styled(TouchableOpacity)({
   flexDirection: 'row',
   alignItems: 'center',
   marginBottom: getSpacing(4),

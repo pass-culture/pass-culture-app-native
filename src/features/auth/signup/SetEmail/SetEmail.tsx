@@ -11,6 +11,7 @@ import { isEmailValid } from 'ui/components/inputs/emailCheck'
 import { EmailInput } from 'ui/components/inputs/EmailInput'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { InputError } from 'ui/components/inputs/InputError'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { padding, Spacer, Typo } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
@@ -104,7 +105,7 @@ const CheckBoxText = styled(Typo.Body)({
   ...padding(0, 8, 0, 4),
 })
 
-const StyledCheckBox = styled.TouchableOpacity({
+const StyledCheckBox = styled(TouchableOpacity)({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',

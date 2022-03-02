@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
@@ -54,6 +55,7 @@ const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
 
-const StyledTouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({ position: 'absolute', left: getSpacing(3) })
+const StyledTouchableOpacity = styled(TouchableOpacity)({
+  position: 'absolute',
+  left: getSpacing(3),
+})

@@ -11,6 +11,7 @@ import { ScreenError } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericErrorPage } from 'ui/components/GenericErrorPage'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { ArrowPrevious as ArrowPreviousDefault } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Typo } from 'ui/theme'
@@ -100,7 +101,7 @@ const ArrowPrevious = styled(ArrowPreviousDefault).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
 
-const HeaderContainer = styled.TouchableOpacity<{ top: number }>(({ top }) => ({
+const HeaderContainer = styled(TouchableOpacity)<{ top: number }>(({ top }) => ({
   position: 'absolute',
   top,
   left: getSpacing(6),

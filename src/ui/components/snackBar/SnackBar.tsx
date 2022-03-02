@@ -13,6 +13,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { ProgressBar } from 'ui/components/snackBar/ProgressBar'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Close as DefaultClose } from 'ui/svg/icons/Close'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -129,10 +130,6 @@ const _SnackBar = (props: SnackBarProps) => {
 }
 
 export const SnackBar = memo(_SnackBar)
-
-const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))``
 
 /*
   Display rules :

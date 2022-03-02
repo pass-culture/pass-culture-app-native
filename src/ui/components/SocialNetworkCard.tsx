@@ -1,9 +1,9 @@
 import React, { memo } from 'react'
-import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Typo, getSpacing, Spacer } from 'ui/theme'
 import { A } from 'ui/web/link/A'
 

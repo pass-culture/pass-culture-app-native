@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
 interface Props {
@@ -29,9 +30,7 @@ const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
 
-const Label = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))<{ selected: boolean }>(({ theme, selected }) => ({
+const Label = styled(TouchableOpacity)<{ selected: boolean }>(({ theme, selected }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   borderColor: selected ? theme.colors.primary : theme.colors.greyMedium,

@@ -13,6 +13,7 @@ import { analytics } from 'libs/analytics'
 import { SuggestedPlace, usePlaces, useVenues } from 'libs/place'
 import { SuggestedVenue } from 'libs/venue'
 import { AriaLive } from 'ui/components/AriaLive'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BicolorLocationPointer as DefaultBicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -117,9 +118,7 @@ const NoSuggestedPlaces = ({ show }: { show: boolean }) =>
     <React.Fragment />
   )
 
-const ItemContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({
+const ItemContainer = styled(TouchableOpacity)({
   flexDirection: 'row',
   marginHorizontal: getSpacing(6),
   paddingVertical: getSpacing(4),

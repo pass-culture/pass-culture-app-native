@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { StyleProp, TouchableOpacity, ViewStyle } from 'react-native'
+import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
@@ -12,6 +12,7 @@ import {
   OnlyBaseButtonProps,
   TouchableOpacityButtonProps,
 } from 'ui/components/buttons/AppButton/types'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
 const _AppButton = <T extends AppButtonProps>({
   icon: Icon,
@@ -75,6 +76,5 @@ _AppButton.defaultProps = {
 // memo is used to avoid useless rendering while props remain unchanged
 export const AppButton = memo(_AppButton)
 
-const TouchableOpacityButton = styled(TouchableOpacity).attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))<TouchableOpacityButtonProps>(appButtonStyles)
+const TouchableOpacityButton =
+  styled(TouchableOpacity)<TouchableOpacityButtonProps>(appButtonStyles)

@@ -16,6 +16,7 @@ import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { QueryKeys } from 'libs/queryKeys'
 import { GLOBAL_STALE_TIME } from 'libs/react-query/queryClient'
 import { Spacer } from 'ui/components/spacer/Spacer'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { Typo, getSpacing } from 'ui/theme'
@@ -144,9 +145,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const VenueNameContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({
+const VenueNameContainer = styled(TouchableOpacity)({
   flexDirection: 'row',
   alignItems: 'center',
 })

@@ -10,6 +10,7 @@ import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { PageHeader } from 'ui/components/headers/PageHeader'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Li } from 'ui/web/list/Li'
@@ -87,9 +88,7 @@ const Container = styled.View(({ theme }) => ({
 
 const contentContainerStyle: ViewStyle = { flexGrow: 1, marginRight: getSpacing(6) }
 
-const LabelContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({
+const LabelContainer = styled(TouchableOpacity)({
   flexDirection: 'row',
   alignItems: 'center',
   marginBottom: getSpacing(6),

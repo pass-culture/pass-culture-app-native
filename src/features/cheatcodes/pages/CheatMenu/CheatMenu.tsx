@@ -7,6 +7,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -48,7 +49,7 @@ const Container = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.white,
 }))
 
-const CheatTouchableOpacity = styled.TouchableOpacity(({ theme }) => ({
+const CheatTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
   borderColor: theme.colors.black,
   borderWidth: 2,
   padding: getSpacing(1),

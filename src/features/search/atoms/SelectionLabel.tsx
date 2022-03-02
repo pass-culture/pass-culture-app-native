@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
@@ -14,7 +15,7 @@ interface Props {
 
 export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) => {
   return (
-    <TouchableOpacity selected={selected} onPress={onPress}>
+    <StyledTouchableOpacity selected={selected} onPress={onPress}>
       {selected ? (
         <IconContainer>
           <ValidateWhite />
@@ -27,7 +28,7 @@ export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) =>
       </Label>
       <Spacer.Row numberOfSpaces={selected ? 2 : 5} />
       <HiddenCheckbox name={label} checked={selected} accessibilityLabel={label} />
-    </TouchableOpacity>
+    </StyledTouchableOpacity>
   )
 }
 
@@ -41,20 +42,20 @@ const IconContainer = styled.View({
   paddingHorizontal: getSpacing(1),
 })
 
-const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))<{ selected: boolean }>(({ selected, theme }) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  borderRadius: getSpacing(10),
-  borderWidth: 2,
-  borderColor: selected ? theme.colors.primary : theme.colors.greyMedium,
-  marginBottom: getSpacing(3),
-  marginRight: getSpacing(3),
-  backgroundColor: selected ? theme.colors.primary : theme.colors.white,
-  maxWidth: theme.buttons.maxWidth,
-  alignSelf: 'flex-start',
-}))
+const StyledTouchableOpacity = styled(TouchableOpacity)<{ selected: boolean }>(
+  ({ selected, theme }) => ({
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: getSpacing(10),
+    borderWidth: 2,
+    borderColor: selected ? theme.colors.primary : theme.colors.greyMedium,
+    marginBottom: getSpacing(3),
+    marginRight: getSpacing(3),
+    backgroundColor: selected ? theme.colors.primary : theme.colors.white,
+    maxWidth: theme.buttons.maxWidth,
+    alignSelf: 'flex-start',
+  })
+)
 const Label = styled(Typo.ButtonText)<{ selected: boolean }>(({ theme, selected }) => ({
   marginVertical: getSpacing(2.5),
   color: selected ? theme.colors.white : theme.colors.black,

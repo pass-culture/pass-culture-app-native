@@ -1,11 +1,11 @@
 import { t } from '@lingui/macro'
 import React, { useCallback } from 'react'
-import { TouchableOpacity } from 'react-native'
 import styled from 'styled-components/native'
 
 import { GeneratedDeeplink } from 'features/_marketingAndCommunication/components/DeeplinksGeneratorForm'
 import { openUrl } from 'features/navigation/helpers'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Share as DefaultShare } from 'ui/svg/icons/Share'
 import { getSpacing, getSpacingString, Spacer } from 'ui/theme'
 import { A } from 'ui/web/link/A'

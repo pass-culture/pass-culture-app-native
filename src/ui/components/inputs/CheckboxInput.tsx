@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { CheckboxMark } from 'ui/svg/icons/CheckBoxTMark'
 import { getSpacing } from 'ui/theme'
 
@@ -32,13 +33,15 @@ export function CheckboxInput({
   )
 }
 
-const StyledCheckboxInput = styled.TouchableOpacity<{ checked: boolean }>(({ checked, theme }) => ({
-  width: getSpacing(6),
-  height: getSpacing(6),
-  borderRadius: theme.borderRadius.checkbox,
-  border: 2,
-  borderColor: theme.colors.greyDark,
-  backgroundColor: checked ? theme.colors.greyDark : theme.colors.white,
-  paddingLeft: checked ? getSpacing(0.8) : 0,
-  paddingTop: checked ? getSpacing(1.2) : 0,
-}))
+const StyledCheckboxInput = styled(TouchableOpacity)<{ checked: boolean }>(
+  ({ checked, theme }) => ({
+    width: getSpacing(6),
+    height: getSpacing(6),
+    borderRadius: theme.borderRadius.checkbox,
+    border: 2,
+    borderColor: theme.colors.greyDark,
+    backgroundColor: checked ? theme.colors.greyDark : theme.colors.white,
+    paddingLeft: checked ? getSpacing(0.8) : 0,
+    paddingTop: checked ? getSpacing(1.2) : 0,
+  })
+)

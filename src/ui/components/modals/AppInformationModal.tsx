@@ -1,10 +1,11 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
-import { Modal, TouchableOpacity } from 'react-native'
+import { Modal } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer } from 'ui/theme'
 

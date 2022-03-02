@@ -1,10 +1,10 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import styled from 'styled-components/native'
 
 import { DuoChoiceSelector } from 'features/bookOffer/components/DuoChoiceSelector'
 import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { Step } from 'features/bookOffer/pages/reducer'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Spacer, Typo } from 'ui/theme'
 
 export const BookDuoChoice: React.FC = () => {
@@ -30,7 +30,3 @@ export const BookDuoChoice: React.FC = () => {
     </React.Fragment>
   )
 }
-
-const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))``

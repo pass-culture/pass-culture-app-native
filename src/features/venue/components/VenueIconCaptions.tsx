@@ -8,6 +8,7 @@ import { VenueType } from 'features/venue/atoms/VenueType'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { VenueTypeCode } from 'libs/parsers'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { PointerLocationNotFilled } from 'ui/svg/icons/PointerLocationNotFilled'
 import { PointerLocationNotFilledDisabled } from 'ui/svg/icons/PointerLocationNotFilledDisabled'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -70,8 +71,6 @@ const Separator = styled.View(({ theme }) => ({
   alignSelf: 'center',
 }))
 
-const ActiveGeolocationButton = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({
+const ActiveGeolocationButton = styled(TouchableOpacity)({
   flex: 1,
 })

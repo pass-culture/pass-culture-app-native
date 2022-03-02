@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { StepConfig } from 'features/identityCheck/types'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -18,7 +19,7 @@ export const StepButton = ({ step, state, onPress }: Props) => {
   const { icon: Icon, label } = step
 
   return (
-    <TouchableOpacity
+    <StyledTouchableOpacity
       onPress={onPress}
       disabled={state !== 'current'}
       state={state}
@@ -33,13 +34,14 @@ export const StepButton = ({ step, state, onPress }: Props) => {
           {...accessibilityAndTestId(state === 'completed' ? 'StepCompleted' : 'StepNotCompleted')}
         />
       </CompletionContainer>
-    </TouchableOpacity>
+    </StyledTouchableOpacity>
   )
 }
 
-const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))<{ disabled: boolean; state: StepButtonState }>(({ state, theme }) => ({
+const StyledTouchableOpacity = styled(TouchableOpacity)<{
+  disabled: boolean
+  state: StepButtonState
+}>(({ state, theme }) => ({
   height: getSpacing(24),
   marginTop: getSpacing(6),
   width: '100%',

@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Separator } from 'ui/components/Separator'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
 interface Props {
@@ -14,12 +15,12 @@ interface Props {
 export const AddressOption = ({ optionKey, label, onPressOption, selected }: Props) => {
   return (
     <Container>
-      <TouchableOpacity onPress={() => onPressOption(optionKey)}>
+      <StyledTouchableOpacity onPress={() => onPressOption(optionKey)}>
         <TextContainer>
           <StyledBody selected={selected}>{label}</StyledBody>
           <IconContainer>{!!selected && <Validate />}</IconContainer>
         </TextContainer>
-      </TouchableOpacity>
+      </StyledTouchableOpacity>
       <Separator />
     </Container>
   )
@@ -34,9 +35,7 @@ const Container = styled.View({
   paddingHorizontal: getSpacing(4),
 })
 
-const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({
+const StyledTouchableOpacity = styled(TouchableOpacity)({
   flexDirection: 'column',
   justifyContent: 'flex-start',
   paddingVertical: getSpacing(3),

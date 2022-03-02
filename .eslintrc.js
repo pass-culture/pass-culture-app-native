@@ -50,6 +50,7 @@ module.exports = {
       { name: 'lottie-react-native', message: 'use libs/lottie instead' },
       { name: 'react-content-loader', message: 'use react-content-loader/native instead' },
       { name: 'react-device-detect', message: 'use libs/react-device-detect instead' },
+      { name: 'react-native', importNames: ["TouchableOpacity"], message: 'use ui/components/TouchableOpacity instead' },
       { name: '@bam.tech/react-native-batch', message: 'user libs/react-native-batch instead' },
       {
         name: 'libs/react-device-detect',

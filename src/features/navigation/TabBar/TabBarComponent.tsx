@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { menu } from 'features/navigation/TabBar/routes'
 import { TabRouteName } from 'features/navigation/TabBar/types'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorSelector } from 'ui/svg/icons/BicolorSelector'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
@@ -46,7 +47,7 @@ const StyledIcon = styled(BicolorLogo).attrs<{ selected?: boolean }>(({ theme, s
 
 const BicolorSelectorPlaceholder = styled.View({ height: SELECTOR_HEIGHT })
 
-const TabComponentContainer = styled.TouchableOpacity(({ theme }) => ({
+const TabComponentContainer = styled(TouchableOpacity)(({ theme }) => ({
   alignItems: 'center',
   height: theme.tabBarHeight,
   flex: 1,

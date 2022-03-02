@@ -6,6 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { navigateToHome } from 'features/navigation/helpers'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getShadow, getSpacing } from 'ui/theme'
@@ -180,9 +181,7 @@ const FlexContainer = styled.View<{ alignItems?: string }>(({ alignItems }) => (
   alignItems,
 }))
 
-const LogoContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({
+const LogoContainer = styled(TouchableOpacity)({
   flex: 1,
 })
 
