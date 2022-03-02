@@ -6,6 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { SearchGroupNameEnum } from 'api/gen'
 import { ControlledFilterSwitch } from 'features/_marketingAndCommunication/atoms/ControlledFilterSwitch'
 import { DateChoice } from 'features/_marketingAndCommunication/atoms/DateChoice'
+import { LocationFilterChoice } from 'features/_marketingAndCommunication/atoms/LocationFilterChoice'
 import { OfferCategoryChoices } from 'features/_marketingAndCommunication/atoms/OfferCategoryChoices'
 import { OfferTypeChoices } from 'features/_marketingAndCommunication/atoms/OfferTypeChoices'
 import {
@@ -20,6 +21,7 @@ import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScre
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { isTabScreen } from 'features/navigation/TabBar/routes'
 import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
+import { LocationFilter } from 'features/search/types'
 import { env } from 'libs/environment'
 import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'
 import { AccordionItem } from 'ui/components/AccordionItem'
@@ -166,6 +168,17 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       )
     }
 
+    function onChangeLocationFilterChoice(locationFilter: LocationFilter | null) {
+      setScreenParams((prevPageParams) =>
+        !locationFilter
+          ? omit(prevPageParams, name)
+          : {
+              ...prevPageParams,
+              [name]: locationFilter,
+            }
+      )
+    }
+
     const placeholder = config.required ? `${name} (*)` : name
     const sliderLength = appContentWidth / (isMobileViewport ? 1 : 2) - getSpacing(2 * 2 * 6)
 
@@ -208,6 +221,9 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
           <PaddingContainer>
             <DateChoice onChange={onChangeDate} />
           </PaddingContainer>
+        )}
+        {config.type === 'locationFilter' && (
+          <LocationFilterChoice onChange={onChangeLocationFilterChoice} />
         )}
         {!!config.description && (
           <PaddingContainer>

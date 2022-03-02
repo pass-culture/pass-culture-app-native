@@ -19,6 +19,7 @@ export type ParamConfig = {
     | 'offerCategories'
     | 'offerTypes'
     | 'date'
+    | 'locationFilter'
   required?: boolean
   description: string
   serverValidator?: (value: string) => Promise<unknown>
@@ -60,6 +61,11 @@ export const SCREENS_CONFIG: {
       required: false,
       description: `Une URL de recherche a convertir`,
     },
+    locationFilter: {
+      type: 'locationFilter',
+      required: false,
+      description: `Lieu`,
+    },
     query: {
       type: 'string',
       required: false,
@@ -74,11 +80,6 @@ export const SCREENS_CONFIG: {
       type: 'offerTypes',
       required: false,
       description: `Type d'offre`,
-    },
-    locationFilter: {
-      type: 'string',
-      required: false,
-      description: `Lieu`,
     },
     tags: {
       type: 'string',
