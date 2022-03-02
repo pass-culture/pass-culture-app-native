@@ -46,7 +46,7 @@ interface Props {
 
 export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
   const { appContentWidth, isMobileViewport } = useTheme()
-  const [selectedScreen, setSelectedScreen] = useState<ScreensUsedByMarketing>('Search')
+  const [selectedScreen, setSelectedScreen] = useState<ScreensUsedByMarketing>('Home')
   const [screenParams, setScreenParams] = useState<Record<string, string>>({})
 
   const { showErrorSnackBar } = useSnackBarContext()
