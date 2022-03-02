@@ -190,6 +190,7 @@ exports[`BookingDetails should render correctly 1`] = `
                       "justifyContent": "center",
                       "opacity": 1,
                       "overflow": "hidden",
+                      "userSelect": "auto",
                     }
                   }
                   testID="Accéder à l'offre"
@@ -351,6 +352,7 @@ exports[`BookingDetails should render correctly 1`] = `
             style={
               Object {
                 "opacity": 1,
+                "userSelect": "auto",
               }
             }
             testID="Le 15 mars 2021 à 20h00"
@@ -503,6 +505,7 @@ exports[`BookingDetails should render correctly 1`] = `
                 "paddingLeft": 0,
                 "paddingRight": 0,
                 "paddingTop": 0,
+                "userSelect": "auto",
                 "width": "auto",
               }
             }
@@ -573,6 +576,7 @@ exports[`BookingDetails should render correctly 1`] = `
               "paddingLeft": 2,
               "paddingRight": 2,
               "paddingTop": 2,
+              "userSelect": "auto",
               "width": "100%",
             }
           }
@@ -860,6 +864,7 @@ exports[`BookingDetails should render correctly 1`] = `
                   "paddingLeft": 4,
                   "paddingRight": 4,
                   "paddingTop": 4,
+                  "userSelect": "auto",
                 }
               }
               testID="Ne pas annuler"
@@ -966,6 +971,7 @@ exports[`BookingDetails should render correctly 1`] = `
                       "paddingLeft": 2,
                       "paddingRight": 2,
                       "paddingTop": 2,
+                      "userSelect": "auto",
                       "width": "100%",
                     }
                   }
@@ -1027,6 +1033,7 @@ exports[`BookingDetails should render correctly 1`] = `
                       "paddingLeft": 2,
                       "paddingRight": 2,
                       "paddingTop": 2,
+                      "userSelect": "auto",
                       "width": "100%",
                     }
                   }
@@ -1293,6 +1300,7 @@ exports[`BookingDetails should render correctly 1`] = `
                   "paddingLeft": 4,
                   "paddingRight": 4,
                   "paddingTop": 4,
+                  "userSelect": "auto",
                 }
               }
               testID="Ne pas archiver"
@@ -1416,6 +1424,7 @@ exports[`BookingDetails should render correctly 1`] = `
                       "paddingLeft": 2,
                       "paddingRight": 2,
                       "paddingTop": 2,
+                      "userSelect": "auto",
                       "width": "100%",
                     }
                   }
@@ -1477,6 +1486,7 @@ exports[`BookingDetails should render correctly 1`] = `
                       "paddingLeft": 2,
                       "paddingRight": 2,
                       "paddingTop": 2,
+                      "userSelect": "auto",
                       "width": "100%",
                     }
                   }
@@ -1580,6 +1590,7 @@ exports[`BookingDetails should render correctly 1`] = `
           style={
             Object {
               "opacity": 1,
+              "userSelect": "auto",
             }
           }
           testID="Revenir en arrière"

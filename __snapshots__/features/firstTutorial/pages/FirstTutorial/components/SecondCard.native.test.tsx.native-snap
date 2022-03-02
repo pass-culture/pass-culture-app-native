@@ -584,6 +584,7 @@ exports[`SecondCard should render second card 1`] = `
             "paddingLeft": 2,
             "paddingRight": 2,
             "paddingTop": 2,
+            "userSelect": "auto",
             "width": "100%",
           }
         }
@@ -647,6 +648,7 @@ exports[`SecondCard should render second card 1`] = `
             "paddingLeft": 2,
             "paddingRight": 2,
             "paddingTop": 2,
+            "userSelect": "auto",
             "width": "100%",
           }
         }

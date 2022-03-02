@@ -9,7 +9,7 @@ Object {
         aria-label="Next"
         class="css-view-1dbjc4n"
         data-testid="controlButton"
-        style="cursor: pointer; margin-right: 70%; transition-duration: 0s; transition-property: opacity; user-select: none;"
+        style="cursor: pointer; margin-right: 70%; transition-duration: 0s; transition-property: opacity; user-select: auto;"
         tabindex="0"
       >
         <div
@@ -31,7 +31,7 @@ Object {
       aria-label="Next"
       class="css-view-1dbjc4n"
       data-testid="controlButton"
-      style="cursor: pointer; margin-right: 70%; transition-duration: 0s; transition-property: opacity; user-select: none;"
+      style="cursor: pointer; margin-right: 70%; transition-duration: 0s; transition-property: opacity; user-select: auto;"
       tabindex="0"
     >
       <div
@@ -110,7 +110,7 @@ Object {
         aria-label="Previous"
         class="css-view-1dbjc4n"
         data-testid="controlButton"
-        style="cursor: pointer; margin-left: 70%; transition-duration: 0s; transition-property: opacity; user-select: none;"
+        style="cursor: pointer; margin-left: 70%; transition-duration: 0s; transition-property: opacity; user-select: auto;"
         tabindex="0"
       >
         <div
@@ -132,7 +132,7 @@ Object {
       aria-label="Previous"
       class="css-view-1dbjc4n"
       data-testid="controlButton"
-      style="cursor: pointer; margin-left: 70%; transition-duration: 0s; transition-property: opacity; user-select: none;"
+      style="cursor: pointer; margin-left: 70%; transition-duration: 0s; transition-property: opacity; user-select: auto;"
       tabindex="0"
     >
       <div
@@ -211,7 +211,7 @@ Object {
         aria-label="Previous"
         class="css-view-1dbjc4n"
         data-testid="controlButton"
-        style="cursor: pointer; margin-left: 70%; transition-duration: 0s; transition-property: opacity; user-select: none;"
+        style="cursor: pointer; margin-left: 70%; transition-duration: 0s; transition-property: opacity; user-select: auto;"
         tabindex="0"
       >
         <div
@@ -233,7 +233,7 @@ Object {
       aria-label="Previous"
       class="css-view-1dbjc4n"
       data-testid="controlButton"
-      style="cursor: pointer; margin-left: 70%; transition-duration: 0s; transition-property: opacity; user-select: none;"
+      style="cursor: pointer; margin-left: 70%; transition-duration: 0s; transition-property: opacity; user-select: auto;"
       tabindex="0"
     >
       <div

@@ -73,6 +73,7 @@ exports[`<Status/> should render correctly 1`] = `
           "left": 12,
           "opacity": 1,
           "position": "absolute",
+          "userSelect": "auto",
         }
       }
       testID="Revenir en arrière"
@@ -234,6 +235,7 @@ exports[`<Status/> should render correctly 1`] = `
                     "height": 48,
                     "marginBottom": 16,
                     "opacity": 1,
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -289,6 +291,7 @@ exports[`<Status/> should render correctly 1`] = `
                     "height": 48,
                     "marginBottom": 16,
                     "opacity": 1,
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -344,6 +347,7 @@ exports[`<Status/> should render correctly 1`] = `
                     "height": 48,
                     "marginBottom": 16,
                     "opacity": 1,
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -399,6 +403,7 @@ exports[`<Status/> should render correctly 1`] = `
                     "height": 48,
                     "marginBottom": 16,
                     "opacity": 1,
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -454,6 +459,7 @@ exports[`<Status/> should render correctly 1`] = `
                     "height": 48,
                     "marginBottom": 16,
                     "opacity": 1,
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -509,6 +515,7 @@ exports[`<Status/> should render correctly 1`] = `
                     "height": 48,
                     "marginBottom": 16,
                     "opacity": 1,
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -564,6 +571,7 @@ exports[`<Status/> should render correctly 1`] = `
                     "height": 48,
                     "marginBottom": 16,
                     "opacity": 1,
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -633,6 +641,7 @@ exports[`<Status/> should render correctly 1`] = `
                     "height": 48,
                     "marginBottom": 16,
                     "opacity": 1,
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -702,6 +711,7 @@ exports[`<Status/> should render correctly 1`] = `
                     "height": 48,
                     "marginBottom": 16,
                     "opacity": 1,
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -795,6 +805,7 @@ exports[`<Status/> should render correctly 1`] = `
                   "paddingLeft": 2,
                   "paddingRight": 2,
                   "paddingTop": 2,
+                  "userSelect": "auto",
                   "width": "100%",
                 }
               }

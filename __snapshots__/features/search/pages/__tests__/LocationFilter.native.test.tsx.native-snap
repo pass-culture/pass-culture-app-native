@@ -91,6 +91,7 @@ exports[`LocationFilter component should render correctly 1`] = `
           style={
             Object {
               "opacity": 1,
+              "userSelect": "auto",
             }
           }
           testID="Revenir en arrière"
@@ -298,6 +299,7 @@ exports[`LocationFilter component should render correctly 1`] = `
             "flexDirection": "row",
             "marginHorizontal": 16,
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="locationChoice-pickPlace"
@@ -424,6 +426,7 @@ exports[`LocationFilter component should render correctly 1`] = `
             "flexDirection": "row",
             "marginHorizontal": 16,
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="locationChoice-aroundMe"
@@ -552,6 +555,7 @@ exports[`LocationFilter component should render correctly 1`] = `
             "flexDirection": "row",
             "marginHorizontal": 16,
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="locationChoice-everywhere"

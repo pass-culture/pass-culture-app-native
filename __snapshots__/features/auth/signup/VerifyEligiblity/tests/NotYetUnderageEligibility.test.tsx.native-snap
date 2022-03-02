@@ -213,6 +213,7 @@ exports[`<NotYetUnderageEligibility /> should render properly 1`] = `
             "paddingLeft": 2,
             "paddingRight": 2,
             "paddingTop": 2,
+            "userSelect": "auto",
             "width": "100%",
           }
         }

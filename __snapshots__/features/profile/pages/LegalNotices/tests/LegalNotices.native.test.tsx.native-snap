@@ -80,6 +80,7 @@ Array [
           style={
             Object {
               "opacity": 1,
+              "userSelect": "auto",
             }
           }
           testID="Revenir en arrière"
@@ -191,6 +192,7 @@ Array [
       style={
         Object {
           "opacity": 1,
+          "userSelect": "auto",
         }
       }
       testID="Conditions Générales d’Utilisation"
@@ -295,6 +297,7 @@ Array [
       style={
         Object {
           "opacity": 1,
+          "userSelect": "auto",
         }
       }
       testID="Charte de protection des données personnelles"
@@ -399,6 +402,7 @@ Array [
       style={
         Object {
           "opacity": 1,
+          "userSelect": "auto",
         }
       }
       testID="Suppression du compte"

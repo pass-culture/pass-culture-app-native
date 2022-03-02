@@ -29,7 +29,7 @@ Object {
         </h4>
         <div
           class="css-view-1dbjc4n"
-          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
           tabindex="0"
         >
           <div
@@ -72,7 +72,7 @@ Object {
         />
         <div
           class="css-view-1dbjc4n"
-          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
           tabindex="0"
         >
           <div
@@ -116,7 +116,7 @@ Object {
             aria-disabled="true"
             class="css-view-1dbjc4n"
             data-testid="DuoChoice1"
-            style="padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
+            style="padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 33%;"
             tabindex="-1"
           >
             <div
@@ -178,7 +178,7 @@ Object {
             aria-disabled="true"
             class="css-view-1dbjc4n"
             data-testid="DuoChoice2"
-            style="padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
+            style="padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 33%;"
             tabindex="-1"
           >
             <div
@@ -285,7 +285,7 @@ Object {
       </h4>
       <div
         class="css-view-1dbjc4n"
-        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
         tabindex="0"
       >
         <div
@@ -328,7 +328,7 @@ Object {
       />
       <div
         class="css-view-1dbjc4n"
-        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
         tabindex="0"
       >
         <div
@@ -372,7 +372,7 @@ Object {
           aria-disabled="true"
           class="css-view-1dbjc4n"
           data-testid="DuoChoice1"
-          style="padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
+          style="padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 33%;"
           tabindex="-1"
         >
           <div
@@ -434,7 +434,7 @@ Object {
           aria-disabled="true"
           class="css-view-1dbjc4n"
           data-testid="DuoChoice2"
-          style="padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
+          style="padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 33%;"
           tabindex="-1"
         >
           <div

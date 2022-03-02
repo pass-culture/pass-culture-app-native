@@ -31,6 +31,7 @@ exports[`<BirthdayInformationModal /> should render properly 1`] = `
         "justifyContent": "flex-end",
         "opacity": 1,
         "position": "absolute",
+        "userSelect": "auto",
         "width": "100%",
       }
     }
@@ -75,6 +76,7 @@ exports[`<BirthdayInformationModal /> should render properly 1`] = `
         "paddingLeft": 20,
         "paddingRight": 20,
         "paddingTop": 20,
+        "userSelect": "auto",
         "width": 928,
       }
     }
@@ -173,6 +175,7 @@ exports[`<BirthdayInformationModal /> should render properly 1`] = `
               "paddingLeft": 4,
               "paddingRight": 4,
               "paddingTop": 4,
+              "userSelect": "auto",
             }
           }
           testID="Fermer la modale"

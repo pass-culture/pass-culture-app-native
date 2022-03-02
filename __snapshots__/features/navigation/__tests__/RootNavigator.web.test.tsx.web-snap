@@ -40,7 +40,7 @@ Object {
                     aria-label="Accueil"
                     class="css-view-1dbjc4n"
                     data-testid="Home tab"
-                    style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                    style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                     tabindex="0"
                   >
                     <div
@@ -94,7 +94,7 @@ Object {
                     aria-label="Rechercher des offres"
                     class="css-view-1dbjc4n"
                     data-testid="Search tab"
-                    style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                    style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                     tabindex="0"
                   >
                     <div
@@ -133,7 +133,7 @@ Object {
                     aria-label="Mes réservations"
                     class="css-view-1dbjc4n"
                     data-testid="Bookings tab"
-                    style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                    style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                     tabindex="0"
                   >
                     <div
@@ -172,7 +172,7 @@ Object {
                     aria-label="Mes favoris"
                     class="css-view-1dbjc4n"
                     data-testid="Favorites tab"
-                    style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                    style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                     tabindex="0"
                   >
                     <div
@@ -211,7 +211,7 @@ Object {
                     aria-label="Mon profil"
                     class="css-view-1dbjc4n"
                     data-testid="Profile tab"
-                    style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                    style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                     tabindex="0"
                   >
                     <div
@@ -315,7 +315,7 @@ Object {
                   aria-label="Accueil"
                   class="css-view-1dbjc4n"
                   data-testid="Home tab"
-                  style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                  style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
                   <div
@@ -369,7 +369,7 @@ Object {
                   aria-label="Rechercher des offres"
                   class="css-view-1dbjc4n"
                   data-testid="Search tab"
-                  style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                  style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
                   <div
@@ -408,7 +408,7 @@ Object {
                   aria-label="Mes réservations"
                   class="css-view-1dbjc4n"
                   data-testid="Bookings tab"
-                  style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                  style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
                   <div
@@ -447,7 +447,7 @@ Object {
                   aria-label="Mes favoris"
                   class="css-view-1dbjc4n"
                   data-testid="Favorites tab"
-                  style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                  style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
                   <div
@@ -486,7 +486,7 @@ Object {
                   aria-label="Mon profil"
                   class="css-view-1dbjc4n"
                   data-testid="Profile tab"
-                  style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                  style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
                   <div

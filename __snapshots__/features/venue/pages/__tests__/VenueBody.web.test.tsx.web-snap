@@ -271,7 +271,7 @@ Object {
                 aria-label="Activer la localisation"
                 class="css-view-1dbjc4n"
                 data-testid="iconLocation"
-                style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 tabindex="0"
               >
                 <div
@@ -421,7 +421,7 @@ Object {
                     aria-label="Voir plus d’offres de la sélection Offres"
                     class="css-view-1dbjc4n"
                     data-testid="Voir plus d’offres de la sélection Offres"
-                    style="align-items: center; cursor: pointer; display: inline-flex; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                    style="align-items: center; cursor: pointer; display: inline-flex; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                     tabindex="0"
                   >
                     <div
@@ -1591,7 +1591,7 @@ Object {
               aria-label="Activer la localisation"
               class="css-view-1dbjc4n"
               data-testid="iconLocation"
-              style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: none;"
+              style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: auto;"
               tabindex="0"
             >
               <div
@@ -1741,7 +1741,7 @@ Object {
                   aria-label="Voir plus d’offres de la sélection Offres"
                   class="css-view-1dbjc4n"
                   data-testid="Voir plus d’offres de la sélection Offres"
-                  style="align-items: center; cursor: pointer; display: inline-flex; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                  style="align-items: center; cursor: pointer; display: inline-flex; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
                   <div

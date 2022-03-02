@@ -73,6 +73,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
           "left": 12,
           "opacity": 1,
           "position": "absolute",
+          "userSelect": "auto",
         }
       }
       testID="Revenir en arrière"
@@ -294,6 +295,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                       "paddingLeft": 2,
                       "paddingRight": 2,
                       "paddingTop": 2,
+                      "userSelect": "auto",
                       "width": "100%",
                     }
                   }
@@ -422,6 +424,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                       "paddingLeft": 2,
                       "paddingRight": 2,
                       "paddingTop": 2,
+                      "userSelect": "auto",
                       "width": "100%",
                     }
                   }

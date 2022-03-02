@@ -73,6 +73,7 @@ exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectFo
           "left": 12,
           "opacity": 1,
           "position": "absolute",
+          "userSelect": "auto",
         }
       }
       testID="Revenir en arrière"

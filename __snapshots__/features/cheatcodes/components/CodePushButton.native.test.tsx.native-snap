@@ -24,6 +24,7 @@ exports[`CodePushButton prints AWAITING_USER_ACTION 1`] = `
       "padding": 10,
       "position": "absolute",
       "right": 0,
+      "userSelect": "auto",
     }
   }
   testID="container"
@@ -64,6 +65,7 @@ exports[`CodePushButton prints CHECKING_FOR_UPDATE 1`] = `
       "padding": 10,
       "position": "absolute",
       "right": 0,
+      "userSelect": "auto",
     }
   }
   testID="container"
@@ -104,6 +106,7 @@ exports[`CodePushButton prints DOWNLOADING_PACKAGE 1`] = `
       "padding": 10,
       "position": "absolute",
       "right": 0,
+      "userSelect": "auto",
     }
   }
   testID="container"
@@ -144,6 +147,7 @@ exports[`CodePushButton prints INSTALLING_UPDATE 1`] = `
       "padding": 10,
       "position": "absolute",
       "right": 0,
+      "userSelect": "auto",
     }
   }
   testID="container"
@@ -184,6 +188,7 @@ exports[`CodePushButton prints undefined 1`] = `
       "padding": 10,
       "position": "absolute",
       "right": 0,
+      "userSelect": "auto",
     }
   }
   testID="container"
@@ -226,6 +231,7 @@ exports[`CodePushButton renders correctly 1`] = `
       "padding": 10,
       "position": "absolute",
       "right": 0,
+      "userSelect": "auto",
     }
   }
   testID="container"

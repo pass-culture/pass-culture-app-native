@@ -61,6 +61,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     style={
       Object {
         "opacity": 1,
+        "userSelect": "auto",
       }
     }
   >
@@ -159,6 +160,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
     style={
       Object {
         "opacity": 1,
+        "userSelect": "auto",
       }
     }
   >
@@ -268,6 +270,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
           "paddingLeft": 8,
           "paddingRight": 8,
           "paddingTop": 8,
+          "userSelect": "auto",
           "width": "33%",
         }
       }
@@ -412,6 +415,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
           "paddingLeft": 8,
           "paddingRight": 8,
           "paddingTop": 8,
+          "userSelect": "auto",
           "width": "33%",
         }
       }
@@ -579,6 +583,7 @@ exports[`<BookingEventChoices /> should display date step and hour step and duo 
         "paddingLeft": 2,
         "paddingRight": 2,
         "paddingTop": 2,
+        "userSelect": "auto",
         "width": "100%",
       }
     }

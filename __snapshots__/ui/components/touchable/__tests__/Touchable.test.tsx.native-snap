@@ -16,6 +16,7 @@ exports[`<Touchable /> should render correctly 1`] = `
   style={
     Object {
       "opacity": 1,
+      "userSelect": "auto",
     }
   }
 >
@@ -41,6 +42,7 @@ exports[`<Touchable /> should render correctly on custom type 1`] = `
   style={
     Object {
       "opacity": 1,
+      "userSelect": "auto",
     }
   }
 >

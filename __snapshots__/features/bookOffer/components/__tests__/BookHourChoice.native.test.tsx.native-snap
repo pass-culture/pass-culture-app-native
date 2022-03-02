@@ -62,6 +62,7 @@ Array [
           "paddingLeft": 8,
           "paddingRight": 8,
           "paddingTop": 8,
+          "userSelect": "auto",
           "width": "33%",
         }
       }
@@ -188,6 +189,7 @@ Array [
           "paddingLeft": 8,
           "paddingRight": 8,
           "paddingTop": 8,
+          "userSelect": "auto",
           "width": "33%",
         }
       }
@@ -317,6 +319,7 @@ Array [
     style={
       Object {
         "opacity": 1,
+        "userSelect": "auto",
       }
     }
   >

@@ -30,7 +30,7 @@ Object {
             aria-label="Revenir en arrière"
             class="css-view-1dbjc4n"
             data-testid="Revenir en arrière"
-            style="cursor: pointer; left: 12px; position: absolute; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            style="cursor: pointer; left: 12px; position: absolute; transition-duration: 0s; transition-property: opacity; user-select: auto;"
             tabindex="0"
           >
             <div
@@ -240,7 +240,7 @@ Object {
           aria-label="Revenir en arrière"
           class="css-view-1dbjc4n"
           data-testid="Revenir en arrière"
-          style="cursor: pointer; left: 12px; position: absolute; transition-duration: 0s; transition-property: opacity; user-select: none;"
+          style="cursor: pointer; left: 12px; position: absolute; transition-duration: 0s; transition-property: opacity; user-select: auto;"
           tabindex="0"
         >
           <div

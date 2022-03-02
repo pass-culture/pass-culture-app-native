@@ -402,6 +402,7 @@ exports[`<OfferDescription /> should render 1`] = `
                                 style={
                                   Object {
                                     "opacity": 1,
+                                    "userSelect": "auto",
                                   }
                                 }
                                 testID="Revenir en arrière"

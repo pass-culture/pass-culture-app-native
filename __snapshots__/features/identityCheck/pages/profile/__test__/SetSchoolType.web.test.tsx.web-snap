@@ -30,7 +30,7 @@ Object {
             aria-label="Revenir en arrière"
             class="css-view-1dbjc4n"
             data-testid="Revenir en arrière"
-            style="cursor: pointer; left: 12px; position: absolute; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            style="cursor: pointer; left: 12px; position: absolute; transition-duration: 0s; transition-property: opacity; user-select: auto;"
             tabindex="0"
           >
             <div
@@ -102,7 +102,7 @@ Object {
                         <li>
                           <div
                             class="css-view-1dbjc4n"
-                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                             tabindex="0"
                           >
                             <div
@@ -122,7 +122,7 @@ Object {
                         <li>
                           <div
                             class="css-view-1dbjc4n"
-                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                             tabindex="0"
                           >
                             <div
@@ -140,7 +140,7 @@ Object {
                         <li>
                           <div
                             class="css-view-1dbjc4n"
-                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                             tabindex="0"
                           >
                             <div
@@ -158,7 +158,7 @@ Object {
                         <li>
                           <div
                             class="css-view-1dbjc4n"
-                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                             tabindex="0"
                           >
                             <div
@@ -176,7 +176,7 @@ Object {
                         <li>
                           <div
                             class="css-view-1dbjc4n"
-                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                             tabindex="0"
                           >
                             <div
@@ -194,7 +194,7 @@ Object {
                         <li>
                           <div
                             class="css-view-1dbjc4n"
-                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                             tabindex="0"
                           >
                             <div
@@ -221,7 +221,7 @@ Object {
                         <li>
                           <div
                             class="css-view-1dbjc4n"
-                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                             tabindex="0"
                           >
                             <div
@@ -314,7 +314,7 @@ Object {
           aria-label="Revenir en arrière"
           class="css-view-1dbjc4n"
           data-testid="Revenir en arrière"
-          style="cursor: pointer; left: 12px; position: absolute; transition-duration: 0s; transition-property: opacity; user-select: none;"
+          style="cursor: pointer; left: 12px; position: absolute; transition-duration: 0s; transition-property: opacity; user-select: auto;"
           tabindex="0"
         >
           <div
@@ -386,7 +386,7 @@ Object {
                       <li>
                         <div
                           class="css-view-1dbjc4n"
-                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                           tabindex="0"
                         >
                           <div
@@ -406,7 +406,7 @@ Object {
                       <li>
                         <div
                           class="css-view-1dbjc4n"
-                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                           tabindex="0"
                         >
                           <div
@@ -424,7 +424,7 @@ Object {
                       <li>
                         <div
                           class="css-view-1dbjc4n"
-                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                           tabindex="0"
                         >
                           <div
@@ -442,7 +442,7 @@ Object {
                       <li>
                         <div
                           class="css-view-1dbjc4n"
-                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                           tabindex="0"
                         >
                           <div
@@ -460,7 +460,7 @@ Object {
                       <li>
                         <div
                           class="css-view-1dbjc4n"
-                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                           tabindex="0"
                         >
                           <div
@@ -478,7 +478,7 @@ Object {
                       <li>
                         <div
                           class="css-view-1dbjc4n"
-                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                           tabindex="0"
                         >
                           <div
@@ -505,7 +505,7 @@ Object {
                       <li>
                         <div
                           class="css-view-1dbjc4n"
-                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                           tabindex="0"
                         >
                           <div
@@ -655,7 +655,7 @@ Object {
             aria-label="Revenir en arrière"
             class="css-view-1dbjc4n"
             data-testid="Revenir en arrière"
-            style="cursor: pointer; left: 12px; position: absolute; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            style="cursor: pointer; left: 12px; position: absolute; transition-duration: 0s; transition-property: opacity; user-select: auto;"
             tabindex="0"
           >
             <div
@@ -727,7 +727,7 @@ Object {
                         <li>
                           <div
                             class="css-view-1dbjc4n"
-                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                             tabindex="0"
                           >
                             <div
@@ -747,7 +747,7 @@ Object {
                         <li>
                           <div
                             class="css-view-1dbjc4n"
-                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                             tabindex="0"
                           >
                             <div
@@ -767,7 +767,7 @@ Object {
                         <li>
                           <div
                             class="css-view-1dbjc4n"
-                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                            style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                             tabindex="0"
                           >
                             <div
@@ -867,7 +867,7 @@ Object {
           aria-label="Revenir en arrière"
           class="css-view-1dbjc4n"
           data-testid="Revenir en arrière"
-          style="cursor: pointer; left: 12px; position: absolute; transition-duration: 0s; transition-property: opacity; user-select: none;"
+          style="cursor: pointer; left: 12px; position: absolute; transition-duration: 0s; transition-property: opacity; user-select: auto;"
           tabindex="0"
         >
           <div
@@ -939,7 +939,7 @@ Object {
                       <li>
                         <div
                           class="css-view-1dbjc4n"
-                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                           tabindex="0"
                         >
                           <div
@@ -959,7 +959,7 @@ Object {
                       <li>
                         <div
                           class="css-view-1dbjc4n"
-                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                           tabindex="0"
                         >
                           <div
@@ -979,7 +979,7 @@ Object {
                       <li>
                         <div
                           class="css-view-1dbjc4n"
-                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 100%;"
+                          style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                           tabindex="0"
                         >
                           <div

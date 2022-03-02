@@ -73,6 +73,7 @@ Array [
         style={
           Object {
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="Revenir en arrière"
@@ -233,6 +234,7 @@ Array [
         style={
           Object {
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="Partager"
@@ -333,6 +335,7 @@ Array [
         style={
           Object {
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="Mettre en favoris"
@@ -652,6 +655,7 @@ Array [
                   "paddingLeft": 4,
                   "paddingRight": 4,
                   "paddingTop": 4,
+                  "userSelect": "auto",
                 }
               }
               testID="Fermer la modale"
@@ -746,6 +750,7 @@ Array [
                     "paddingLeft": 2,
                     "paddingRight": 2,
                     "paddingTop": 2,
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -805,6 +810,7 @@ Array [
                     "paddingLeft": 2,
                     "paddingRight": 2,
                     "paddingTop": 2,
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }

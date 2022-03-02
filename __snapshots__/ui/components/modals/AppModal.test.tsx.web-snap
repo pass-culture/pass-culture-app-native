@@ -942,7 +942,7 @@ Object {
                         aria-label="Revenir à l'étape précédente"
                         class="css-view-1dbjc4n"
                         data-testid="Revenir à l'étape précédente"
-                        style="cursor: pointer; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                        style="cursor: pointer; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                         tabindex="0"
                       >
                         <div
@@ -1640,7 +1640,7 @@ Object {
                         aria-label="Fermer la modale et annuler"
                         class="css-view-1dbjc4n"
                         data-testid="Fermer la modale et annuler"
-                        style="cursor: pointer; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                        style="cursor: pointer; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                         tabindex="0"
                       >
                         <div

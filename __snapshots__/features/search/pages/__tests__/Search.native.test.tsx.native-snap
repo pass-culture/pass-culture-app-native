@@ -207,6 +207,7 @@ exports[`Search component should render correctly 1`] = `
         style={
           Object {
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
       >
@@ -331,6 +332,7 @@ exports[`Search component should render correctly 1`] = `
         style={
           Object {
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
       >
@@ -479,6 +481,7 @@ exports[`Search component should render correctly 1`] = `
           "justifyContent": "center",
           "opacity": 1,
           "overflow": "hidden",
+          "userSelect": "auto",
         }
       }
       testID="Rechercher"

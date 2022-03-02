@@ -227,6 +227,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
           "paddingLeft": 2,
           "paddingRight": 2,
           "paddingTop": 2,
+          "userSelect": "auto",
           "width": "100%",
         }
       }
@@ -287,6 +288,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
           "paddingLeft": 2,
           "paddingRight": 2,
           "paddingTop": 2,
+          "userSelect": "auto",
           "width": "100%",
         }
       }
@@ -383,6 +385,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
             "paddingLeft": 2,
             "paddingRight": 2,
             "paddingTop": 2,
+            "userSelect": "auto",
             "width": "100%",
           }
         }
@@ -444,6 +447,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
             "paddingLeft": 2,
             "paddingRight": 2,
             "paddingTop": 2,
+            "userSelect": "auto",
             "width": "100%",
           }
         }

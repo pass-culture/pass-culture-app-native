@@ -5,7 +5,7 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -227,16 +227,16 @@
+@@ -229,16 +229,16 @@
                 },
               ]
             }
@@ -24,7 +24,7 @@ exports[`Categories component should match diff snapshot when new category is se
                   \\"lineHeight\\": 20,
                 },
               ]
-@@ -253,10 +253,18 @@
+@@ -255,10 +255,18 @@
                   \\"flexShrink\\": 1,
                 },
               ]
@@ -43,7 +43,7 @@ exports[`Categories component should match diff snapshot when new category is se
           accessible={true}
           collapsable={false}
           focusable={true}
-@@ -383,16 +391,16 @@
+@@ -387,16 +395,16 @@
                 },
               ]
             }
@@ -62,7 +62,7 @@ exports[`Categories component should match diff snapshot when new category is se
                   \\"lineHeight\\": 20,
                 },
               ]
-@@ -409,18 +417,10 @@
+@@ -413,18 +421,10 @@
                   \\"flexShrink\\": 1,
                 },
               ]
@@ -174,6 +174,7 @@ exports[`Categories component should render correctly 1`] = `
           style={
             Object {
               "opacity": 1,
+              "userSelect": "auto",
             }
           }
           testID="Revenir en arrière"
@@ -282,6 +283,7 @@ exports[`Categories component should render correctly 1`] = `
             "flexDirection": "row",
             "marginBottom": 24,
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="NONE"
@@ -368,6 +370,7 @@ exports[`Categories component should render correctly 1`] = `
             "flexDirection": "row",
             "marginBottom": 24,
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="CARTE_JEUNES"
@@ -446,6 +449,7 @@ exports[`Categories component should render correctly 1`] = `
             "flexDirection": "row",
             "marginBottom": 24,
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="CINEMA"
@@ -524,6 +528,7 @@ exports[`Categories component should render correctly 1`] = `
             "flexDirection": "row",
             "marginBottom": 24,
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="VISITE"
@@ -602,6 +607,7 @@ exports[`Categories component should render correctly 1`] = `
             "flexDirection": "row",
             "marginBottom": 24,
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="MUSIQUE"
@@ -680,6 +686,7 @@ exports[`Categories component should render correctly 1`] = `
             "flexDirection": "row",
             "marginBottom": 24,
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="SPECTACLE"
@@ -758,6 +765,7 @@ exports[`Categories component should render correctly 1`] = `
             "flexDirection": "row",
             "marginBottom": 24,
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="COURS"
@@ -836,6 +844,7 @@ exports[`Categories component should render correctly 1`] = `
             "flexDirection": "row",
             "marginBottom": 24,
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="LIVRE"
@@ -914,6 +923,7 @@ exports[`Categories component should render correctly 1`] = `
             "flexDirection": "row",
             "marginBottom": 24,
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="FILM"
@@ -992,6 +1002,7 @@ exports[`Categories component should render correctly 1`] = `
             "flexDirection": "row",
             "marginBottom": 24,
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="PRESSE"
@@ -1070,6 +1081,7 @@ exports[`Categories component should render correctly 1`] = `
             "flexDirection": "row",
             "marginBottom": 24,
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="JEU"
@@ -1148,6 +1160,7 @@ exports[`Categories component should render correctly 1`] = `
             "flexDirection": "row",
             "marginBottom": 24,
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="CONFERENCE"
@@ -1226,6 +1239,7 @@ exports[`Categories component should render correctly 1`] = `
             "flexDirection": "row",
             "marginBottom": 24,
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="INSTRUMENT"
@@ -1304,6 +1318,7 @@ exports[`Categories component should render correctly 1`] = `
             "flexDirection": "row",
             "marginBottom": 24,
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="MATERIEL"

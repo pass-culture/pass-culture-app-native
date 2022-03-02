@@ -73,6 +73,7 @@ exports[`<SetCity/> should render correctly 1`] = `
           "left": 12,
           "opacity": 1,
           "position": "absolute",
+          "userSelect": "auto",
         }
       }
       testID="Revenir en arrière"
@@ -382,6 +383,7 @@ exports[`<SetCity/> should render correctly 1`] = `
                   "paddingLeft": 2,
                   "paddingRight": 2,
                   "paddingTop": 2,
+                  "userSelect": "auto",
                   "width": "100%",
                 }
               }

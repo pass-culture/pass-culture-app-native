@@ -205,6 +205,7 @@ exports[`Profile component should render correctly 1`] = `
                     style={
                       Object {
                         "opacity": 1,
+                        "userSelect": "auto",
                       }
                     }
                     testID="Informations personnelles"
@@ -309,6 +310,7 @@ exports[`Profile component should render correctly 1`] = `
                     style={
                       Object {
                         "opacity": 1,
+                        "userSelect": "auto",
                       }
                     }
                     testID="Mot de passe"
@@ -412,6 +414,7 @@ exports[`Profile component should render correctly 1`] = `
                     style={
                       Object {
                         "opacity": 1,
+                        "userSelect": "auto",
                       }
                     }
                     testID="Notifications"
@@ -618,6 +621,7 @@ exports[`Profile component should render correctly 1`] = `
                           style={
                             Object {
                               "opacity": 1,
+                              "userSelect": "auto",
                             }
                           }
                           testID="Interrupteur géolocalisation"
@@ -723,6 +727,7 @@ exports[`Profile component should render correctly 1`] = `
                     style={
                       Object {
                         "opacity": 1,
+                        "userSelect": "auto",
                       }
                     }
                     testID="Comment ça marche ?"
@@ -826,6 +831,7 @@ exports[`Profile component should render correctly 1`] = `
                     style={
                       Object {
                         "opacity": 1,
+                        "userSelect": "auto",
                       }
                     }
                     testID="Centre d'aide"
@@ -964,6 +970,7 @@ exports[`Profile component should render correctly 1`] = `
                     style={
                       Object {
                         "opacity": 1,
+                        "userSelect": "auto",
                       }
                     }
                     testID="Accessibilité"
@@ -1057,6 +1064,7 @@ exports[`Profile component should render correctly 1`] = `
                     style={
                       Object {
                         "opacity": 1,
+                        "userSelect": "auto",
                       }
                     }
                     testID="Mentions légales"
@@ -1160,6 +1168,7 @@ exports[`Profile component should render correctly 1`] = `
                     style={
                       Object {
                         "opacity": 1,
+                        "userSelect": "auto",
                       }
                     }
                     testID="Confidentialité"
@@ -1332,6 +1341,7 @@ exports[`Profile component should render correctly 1`] = `
                         style={
                           Object {
                             "opacity": 1,
+                            "userSelect": "auto",
                           }
                         }
                       >
@@ -1410,6 +1420,7 @@ exports[`Profile component should render correctly 1`] = `
                         style={
                           Object {
                             "opacity": 1,
+                            "userSelect": "auto",
                           }
                         }
                       >
@@ -1488,6 +1499,7 @@ exports[`Profile component should render correctly 1`] = `
                         style={
                           Object {
                             "opacity": 1,
+                            "userSelect": "auto",
                           }
                         }
                       >
@@ -1566,6 +1578,7 @@ exports[`Profile component should render correctly 1`] = `
                         style={
                           Object {
                             "opacity": 1,
+                            "userSelect": "auto",
                           }
                         }
                       >
@@ -1678,6 +1691,7 @@ exports[`Profile component should render correctly 1`] = `
                     style={
                       Object {
                         "opacity": 1,
+                        "userSelect": "auto",
                       }
                     }
                     testID="Déconnexion"

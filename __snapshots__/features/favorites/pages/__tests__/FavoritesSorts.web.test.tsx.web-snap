@@ -36,7 +36,7 @@ Object {
                   aria-label="Revenir en arrière"
                   class="css-view-1dbjc4n"
                   data-testid="Revenir en arrière"
-                  style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                  style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
                   <div
@@ -113,7 +113,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="RECENTLY_ADDED"
-              style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+              style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
               tabindex="0"
             >
               <div
@@ -149,7 +149,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="ASCENDING_PRICE"
-              style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+              style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
               tabindex="0"
             >
               <div
@@ -175,7 +175,7 @@ Object {
             <div
               class="css-view-1dbjc4n"
               data-testid="AROUND_ME"
-              style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+              style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
               tabindex="0"
             >
               <div
@@ -252,7 +252,7 @@ Object {
                 aria-label="Revenir en arrière"
                 class="css-view-1dbjc4n"
                 data-testid="Revenir en arrière"
-                style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 tabindex="0"
               >
                 <div
@@ -329,7 +329,7 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="RECENTLY_ADDED"
-            style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
             tabindex="0"
           >
             <div
@@ -365,7 +365,7 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="ASCENDING_PRICE"
-            style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
             tabindex="0"
           >
             <div
@@ -391,7 +391,7 @@ Object {
           <div
             class="css-view-1dbjc4n"
             data-testid="AROUND_ME"
-            style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
             tabindex="0"
           >
             <div

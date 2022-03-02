@@ -62,6 +62,7 @@ exports[`<ClippedTag/> should render correctly 1`] = `
         "paddingLeft": 8,
         "paddingRight": 8,
         "paddingTop": 8,
+        "userSelect": "auto",
       }
     }
   >

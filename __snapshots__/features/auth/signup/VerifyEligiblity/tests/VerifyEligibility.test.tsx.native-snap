@@ -215,6 +215,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
             "paddingLeft": 2,
             "paddingRight": 2,
             "paddingTop": 2,
+            "userSelect": "auto",
             "width": "100%",
           }
         }
@@ -276,6 +277,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
             "paddingLeft": 2,
             "paddingRight": 2,
             "paddingTop": 2,
+            "userSelect": "auto",
             "width": "100%",
           }
         }

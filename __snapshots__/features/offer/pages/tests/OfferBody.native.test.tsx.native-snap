@@ -497,6 +497,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "userSelect": "auto",
                   "width": "auto",
                 }
               }
@@ -642,6 +643,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                 "alignItems": "center",
                 "flexDirection": "row",
                 "opacity": 1,
+                "userSelect": "auto",
               }
             }
             testID="VenueBannerComponent"
@@ -838,6 +840,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "userSelect": "auto",
                   "width": "auto",
                 }
               }
@@ -941,6 +944,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "userSelect": "auto",
               "width": "auto",
             }
           }
@@ -1194,6 +1198,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                     "paddingLeft": 4,
                     "paddingRight": 4,
                     "paddingTop": 4,
+                    "userSelect": "auto",
                   }
                 }
                 testID="Fermer la modale"
@@ -1409,6 +1414,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
                         "paddingLeft": 2,
                         "paddingRight": 2,
                         "paddingTop": 2,
+                        "userSelect": "auto",
                         "width": "100%",
                       }
                     }

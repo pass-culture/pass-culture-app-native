@@ -41,6 +41,7 @@ exports[`<SeeMore /> renders correctly 1`] = `
       Object {
         "alignItems": "center",
         "opacity": 1,
+        "userSelect": "auto",
       }
     }
   >
@@ -93,6 +94,7 @@ exports[`<SeeMore /> renders correctly 1`] = `
             },
             "shadowOpacity": 0.15,
             "shadowRadius": 12,
+            "userSelect": "auto",
             "width": 64,
           }
         }
