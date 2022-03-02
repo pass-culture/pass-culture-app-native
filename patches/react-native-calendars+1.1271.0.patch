@@ -1,0 +1,16 @@
+diff --git a/node_modules/react-native-calendars/src/calendar/header/index.js b/node_modules/react-native-calendars/src/calendar/header/index.js
+index aab03bd..44b9cd5 100644
+--- a/node_modules/react-native-calendars/src/calendar/header/index.js
++++ b/node_modules/react-native-calendars/src/calendar/header/index.js
+@@ -150,10 +150,7 @@ class CalendarHeader extends Component {
+     }
+     render() {
+         const { style, testID } = this.props;
+-        return (<View testID={testID} style={style} accessible accessibilityRole={'adjustable'} accessibilityActions={[
+-                { name: 'increment', label: 'increment' },
+-                { name: 'decrement', label: 'decrement' }
+-            ]} onAccessibilityAction={this.onAccessibilityAction} accessibilityElementsHidden={this.props.accessibilityElementsHidden} // iOS
++        return (<View testID={testID} style={style} onAccessibilityAction={this.onAccessibilityAction} accessibilityElementsHidden={this.props.accessibilityElementsHidden} // iOS
+          importantForAccessibility={this.props.importantForAccessibility} // Android
+         >
+         <View style={this.style.header}>
