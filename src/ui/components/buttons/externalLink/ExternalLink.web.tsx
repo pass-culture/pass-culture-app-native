@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { openUrl } from 'features/navigation/helpers'
 import { extractExternalLinkParts } from 'ui/components/buttons/externalLink/ExternalLink.service'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ExternalSite as DefaultExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Spacer, Typo } from 'ui/theme'
 import { A } from 'ui/web/link/A'
@@ -19,14 +20,16 @@ export const ExternalLink: React.FC<Props> = ({ url, text, primary, testID }) =>
 
   return (
     <A href={url}>
-      <ButtonText primary={primary} onPress={() => openUrl(url)} testID={testID} accessible={true}>
-        <Spacer.Row numberOfSpaces={1} />
-        <Text>
-          <ExternalSite primary={primary} testID="externalSiteIcon" />
-          {firstWord}
-        </Text>
-        {remainingWords}
-      </ButtonText>
+      <StyledTouchableOpacity onPress={() => openUrl(url)} testID={testID}>
+        <ButtonText primary={primary}>
+          <Spacer.Row numberOfSpaces={1} />
+          <Text>
+            <ExternalSite primary={primary} testID="externalSiteIcon" />
+            {firstWord}
+          </Text>
+          {remainingWords}
+        </ButtonText>
+      </StyledTouchableOpacity>
     </A>
   )
 }
@@ -35,8 +38,12 @@ const Text = styled.Text({
   whiteSpace: 'nowrap',
 })
 
+const StyledTouchableOpacity = styled(TouchableOpacity)({
+  display: 'inline',
+})
+
 const ButtonText = styled(Typo.ButtonText)<{ primary?: boolean }>(({ primary, theme }) => ({
-  color: primary ? theme.colors.primary : undefined,
+  color: primary ? theme.colors.primary : theme.colors.black,
 }))
 
 const ExternalSite = styled(DefaultExternalSite).attrs<{ primary?: boolean }>(
