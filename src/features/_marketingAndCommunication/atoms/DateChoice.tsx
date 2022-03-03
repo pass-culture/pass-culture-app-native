@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { DatePickerDropDown } from 'features/auth/signup/SetBirthday/DatePicker/DatePickerDropDown.web'
+import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 
 interface Props {
   onChange: (date: Date | undefined) => void
@@ -8,7 +8,5 @@ interface Props {
 
 export function DateChoice(props: Props) {
   const now = new Date()
-  return (
-    <DatePickerDropDown defaultSelectedDate={now} minimumDate={now} onChange={props.onChange} />
-  )
+  return <DateInput defaultSelectedDate={now} minimumDate={now} onChange={props.onChange} />
 }
