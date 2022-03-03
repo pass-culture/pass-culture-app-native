@@ -144,6 +144,7 @@ export interface AppThemeType {
     disabled: {
       primary: {
         backgroundColor: ColorsEnum
+        iconColor: ColorsEnum
         textColor: ColorsEnum
       }
       primaryWhite: {
@@ -440,6 +441,7 @@ export const theme: AppThemeType = {
       primary: {
         backgroundColor: ColorsEnum.GREY_LIGHT,
         textColor: ColorsEnum.GREY_DARK,
+        iconColor: ColorsEnum.GREY_DARK,
       },
       primaryWhite: {
         iconColor: ColorsEnum.GREY_DARK,
