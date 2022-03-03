@@ -3,7 +3,6 @@ import Picker from 'react-mobile-picker'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { DateInput } from 'features/auth/signup/SetBirthday/atoms/DateInput/DateInput'
 import { DatePickerProps } from 'features/auth/signup/SetBirthday/DatePicker/types'
 import {
   getDatesInMonth,
@@ -12,6 +11,7 @@ import {
   monthNamesShort,
 } from 'features/bookOffer/components/Calendar/Calendar.utils'
 import { pad } from 'libs/parsers'
+import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Spacer } from 'ui/theme'
 

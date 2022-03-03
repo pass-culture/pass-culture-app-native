@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { DateInputDesktop } from 'features/auth/signup/SetBirthday/atoms/DateInput/DateInputDesktop.web'
 import { DatePickerProps } from 'features/auth/signup/SetBirthday/DatePicker/types'
+import { DateInputDesktop } from 'ui/components/inputs/DateInput/DateInputDesktop.web'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Spacer } from 'ui/theme'
 
