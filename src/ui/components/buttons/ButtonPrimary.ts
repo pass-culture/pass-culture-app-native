@@ -13,7 +13,9 @@ export const ButtonPrimary = styledButton(AppButton).attrs<BaseButtonProps>(
 
     if (icon) {
       Icon = styled(icon).attrs({
-        color: theme.buttons.primary.iconColor,
+        color: disabled
+          ? theme.buttons.disabled.primary.iconColor
+          : theme.buttons.primary.iconColor,
         size: theme.buttons.primary.iconSize,
       })``
     }

@@ -2,10 +2,11 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
-import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ContainerWithBackgound } from 'ui/storybook/ContainerWithBackgound'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
+
+import { ButtonPrimaryWhite } from './ButtonPrimaryWhite'
 
 export default {
   title: 'ui/buttons/ButtonPrimaryWhite',
