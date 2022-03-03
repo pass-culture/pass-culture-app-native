@@ -58,9 +58,8 @@ export function DatePickerSpinner(props: DatePickerProps) {
         />
       )}
       <Spacer.Column numberOfSpaces={2} />
-      <SpinnerPickerWrapper>
+      <SpinnerPickerWrapper testID="date-picker-spinner-touch">
         <Picker
-          data-testid="date-picker-touch"
           valueGroups={date}
           optionGroups={optionGroups}
           onChange={onDateChange}

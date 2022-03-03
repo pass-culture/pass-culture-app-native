@@ -63,7 +63,7 @@ export function DateInputDesktop(props: DatePickerProps) {
   }, [date])
 
   return (
-    <Container>
+    <Container testID="date-picker-dropdown">
       <DropDownContainer>
         <DropDown
           label="Jour"

@@ -30,7 +30,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
       )}
       <Spacer.Column numberOfSpaces={5} />
       <SpinnerDatePicker
-        testID="datePicker"
+        testID="date-picker-spinner-native"
         date={date}
         onDateChange={setDate}
         mode="date"

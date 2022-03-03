@@ -44,7 +44,7 @@ describe('<SetBirthday />', () => {
   it('should call goToNextStep() when the date is selected and press the button "Continuer"', () => {
     const { getByTestId } = render(<SetBirthday {...props} />)
 
-    const datePicker = getByTestId('datePicker')
+    const datePicker = getByTestId('date-picker-spinner-native')
     fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
 
     const continueButton = getByTestId('date-picker-submit-button')
