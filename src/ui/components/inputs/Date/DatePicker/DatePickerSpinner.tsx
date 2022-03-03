@@ -3,8 +3,8 @@ import DatePicker from 'react-native-date-picker'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { DatePickerProps } from 'features/auth/signup/SetBirthday/DatePicker/types'
-import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
+import { DateInput } from 'ui/components/inputs/Date/DateInput/DateInput'
+import { DatePickerProps } from 'ui/components/inputs/Date/DatePicker/types'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Spacer } from 'ui/theme'
 
