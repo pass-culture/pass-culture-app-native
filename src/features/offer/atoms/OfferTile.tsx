@@ -76,7 +76,7 @@ export const mergeOfferData =
     ...(prevData || {}),
   })
 
-export const OfferTile = (props: OfferTileProps) => {
+export function OfferTile(props: OfferTileProps) {
   const {
     analyticsFrom,
     width,
