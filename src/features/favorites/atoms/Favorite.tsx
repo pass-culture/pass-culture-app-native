@@ -16,6 +16,7 @@ import { formatToFrenchDate, getFavoriteDisplayPrice } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'
 import { GLOBAL_STALE_TIME } from 'libs/react-query/queryClient'
 import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
+import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -42,6 +43,7 @@ export const Favorite: React.FC<Props> = (props) => {
     lat: offer.coordinates?.latitude,
     lng: offer.coordinates?.longitude,
   })
+  const displayPrice = getFavoriteDisplayPrice({ startPrice: offer.startPrice, price: offer.price })
   const { showErrorSnackBar } = useSnackBarContext()
   const { categoryId, searchGroupName } = useSubcategory(offer.subcategoryId)
   const searchGroupLabel = useSearchGroupLabel(searchGroupName)
@@ -66,8 +68,16 @@ export const Favorite: React.FC<Props> = (props) => {
         message: 'Dès le {date}',
       })
     }
-    return null
+    return undefined
   }, [offer])
+
+  const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
+    ...offer,
+    categoryLabel: searchGroupLabel,
+    distance: distanceToOffer,
+    date: formattedDate,
+    price: displayPrice,
+  })
 
   function handlePressOffer() {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
@@ -128,7 +138,10 @@ export const Favorite: React.FC<Props> = (props) => {
             })
           : undefined,
       }}>
-      <Container onPress={handlePressOffer} testID="favorite">
+      <Container
+        onPress={handlePressOffer}
+        accessibilityLabel={accessibilityLabel}
+        testID="favorite">
         <Link
           to={{ screen: 'Offer', params: { id: offer.id, from: 'favorites' } }}
           accessible={false}>
@@ -154,9 +167,7 @@ export const Favorite: React.FC<Props> = (props) => {
               <Body>{searchGroupLabel}</Body>
               {!!formattedDate && <Body>{formattedDate}</Body>}
               <Spacer.Column numberOfSpaces={1} />
-              <Typo.Caption>
-                {getFavoriteDisplayPrice({ startPrice: offer.startPrice, price: offer.price })}
-              </Typo.Caption>
+              <Typo.Caption>{displayPrice}</Typo.Caption>
             </Column>
           </Row>
         </Link>

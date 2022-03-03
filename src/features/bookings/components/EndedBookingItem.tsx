@@ -12,6 +12,7 @@ import { formatToSlashedFrenchDate } from 'libs/dates'
 import { QueryKeys } from 'libs/queryKeys'
 import { GLOBAL_STALE_TIME } from 'libs/react-query/queryClient'
 import { useCategoryId } from 'libs/subcategories'
+import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { Check } from 'ui/svg/icons/Check'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -29,6 +30,13 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
 
   const endedBookingReason = getEndedBookingReason(cancellationReason, dateUsed)
   const endedBookingDateLabel = getEndedBookingDateLabel(cancellationDate, dateUsed)
+
+  const accessibilityLabel = tileAccessibilityLabel(TileContentType.BOOKING, {
+    name: stock.offer.name,
+    dateUsed: dateUsed ? formatToSlashedFrenchDate(dateUsed) : undefined,
+    cancellationDate: cancellationDate ? formatToSlashedFrenchDate(cancellationDate) : undefined,
+    cancellationReason: cancellationReason || undefined,
+  })
 
   function handlePressOffer() {
     const { offer } = stock
@@ -56,7 +64,10 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
     <Link
       to={{ screen: 'Offer', params: { id: stock.offer.id, from: 'endedbookings' } }}
       accessible={false}>
-      <TouchableOpacity onPress={handlePressOffer} testID="EndedBookingItem">
+      <TouchableOpacity
+        onPress={handlePressOffer}
+        accessibilityLabel={accessibilityLabel}
+        testID="EndedBookingItem">
         <ItemContainer>
           <EndedBookingTicket image={stock.offer.image?.url} categoryId={categoryId} />
           <Spacer.Row numberOfSpaces={4} />

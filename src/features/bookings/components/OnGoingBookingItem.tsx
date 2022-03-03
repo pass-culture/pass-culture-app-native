@@ -7,6 +7,7 @@ import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { useSubcategory } from 'libs/subcategories'
+import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { Clock as DefaultClock } from 'ui/svg/icons/Clock'
 import { Duo } from 'ui/svg/icons/Duo'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -27,6 +28,12 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
   const bookingProperties = getBookingProperties(booking, isEvent)
   const { dateLabel, withdrawLabel } = getBookingLabels(booking, bookingProperties, settings)
 
+  const accessibilityLabel = tileAccessibilityLabel(TileContentType.BOOKING, {
+    name: stock.offer.name,
+    properties: bookingProperties,
+    date: dateLabel,
+  })
+
   return (
     <Link
       to={{ screen: 'BookingDetails', params: { id: booking.id } }}
@@ -34,6 +41,7 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
       accessible={false}>
       <Container
         onPress={() => navigate('BookingDetails', { id: booking.id })}
+        accessibilityLabel={accessibilityLabel}
         testID="OnGoingBookingItem">
         <OnGoingTicket image={stock.offer.image?.url} altIcon={mapCategoryToIcon(categoryId)} />
         <AttributesView>
