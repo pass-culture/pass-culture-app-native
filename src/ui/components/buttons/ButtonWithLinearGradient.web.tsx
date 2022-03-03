@@ -44,7 +44,7 @@ const Button = styled.button(({ theme }) => ({
   height: theme.buttons.buttonHeights.tall,
   borderRadius: theme.borderRadius.button,
   backgroundColor: theme.colors.primary,
-  background: `linear-gradient(0.25turn, ${theme.colors.primary}, ${theme.colors.secondary})`,
+  backgroundImage: `linear-gradient(0.25turn, ${theme.colors.primary}, ${theme.colors.secondary})`,
   padding: 0,
   display: 'flex',
   justifyContent: 'center',
