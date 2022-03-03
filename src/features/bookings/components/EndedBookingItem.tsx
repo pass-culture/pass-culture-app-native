@@ -35,7 +35,6 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
     name: stock.offer.name,
     dateUsed: dateUsed ? formatToSlashedFrenchDate(dateUsed) : undefined,
     cancellationDate: cancellationDate ? formatToSlashedFrenchDate(cancellationDate) : undefined,
-    cancellationReason: cancellationReason || undefined,
   })
 
   function handlePressOffer() {
