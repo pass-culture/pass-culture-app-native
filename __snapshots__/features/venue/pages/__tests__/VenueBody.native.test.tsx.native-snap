@@ -830,6 +830,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 }
               >
                 <View
+                  accessibilityLabel="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit"
                   accessible={true}
                   focusable={true}
                   onClick={[Function]}
@@ -1045,6 +1046,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 }
               >
                 <View
+                  accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit"
                   accessible={true}
                   focusable={true}
                   onClick={[Function]}
@@ -1260,6 +1262,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 }
               >
                 <View
+                  accessibilityLabel="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit"
                   accessible={true}
                   focusable={true}
                   onClick={[Function]}

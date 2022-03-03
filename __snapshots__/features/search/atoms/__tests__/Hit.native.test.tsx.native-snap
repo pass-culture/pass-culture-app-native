@@ -5,7 +5,16 @@ exports[`Hit component offer name should take full space if no geolocation 1`] =
 - First value
 + Second value
 
-@@ -104,10 +104,22 @@
+@@ -1,7 +1,7 @@
+  <View
+-   accessibilityLabel=\\"Offre Mensch ! Où sont les Hommes ? de la catégorie Musique,   prix 0,28 €\\"
++   accessibilityLabel=\\"Offre Mensch ! Où sont les Hommes ? de la catégorie Musique, à 10 km,  prix 0,28 €\\"
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    nativeID=\\"animatedComponent\\"
+    onClick={[Function onClick]}
+@@ -105,10 +105,22 @@
               \\"flexDirection\\": \\"row\\",
             },
           ]
@@ -28,7 +37,7 @@ exports[`Hit component offer name should take full space if no geolocation 1`] =
             style={
               Array [
                 Object {
-@@ -119,10 +131,39 @@
+@@ -120,10 +132,39 @@
               ]
             }
           >
