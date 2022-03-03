@@ -88,6 +88,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         style={
           Object {
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="Revenir en arrière"
@@ -234,6 +235,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         style={
           Object {
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="Partager"
@@ -743,6 +745,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 "flexGrow": 1,
                 "flexShrink": 1,
                 "opacity": 1,
+                "userSelect": "auto",
               }
             }
             testID="iconLocation"
@@ -1843,6 +1846,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                       Object {
                         "alignItems": "center",
                         "opacity": 1,
+                        "userSelect": "auto",
                       }
                     }
                   >
@@ -1895,6 +1899,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             },
                             "shadowOpacity": 0.15,
                             "shadowRadius": 12,
+                            "userSelect": "auto",
                             "width": 64,
                           }
                         }
@@ -2007,6 +2012,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                 "justifyContent": "center",
                 "opacity": 1,
                 "overflow": "hidden",
+                "userSelect": "auto",
               }
             }
             testID="Voir toutes les offres"
@@ -2213,6 +2219,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                     "paddingLeft": 0,
                     "paddingRight": 0,
                     "paddingTop": 0,
+                    "userSelect": "auto",
                     "width": "auto",
                   }
                 }
@@ -3151,6 +3158,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   "flexDirection": "row",
                   "marginVertical": 4,
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
             >
@@ -3206,6 +3214,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   "flexDirection": "row",
                   "marginVertical": 4,
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
             >
@@ -3261,6 +3270,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   "flexDirection": "row",
                   "marginVertical": 4,
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
             >

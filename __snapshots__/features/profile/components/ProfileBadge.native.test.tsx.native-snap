@@ -245,6 +245,7 @@ exports[`ProfileBadge should show CTA Icon and CTA message if Icon, Message and 
           "paddingLeft": 0,
           "paddingRight": 0,
           "paddingTop": 2,
+          "userSelect": "auto",
           "width": "100%",
         }
       }

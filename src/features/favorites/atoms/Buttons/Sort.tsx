@@ -5,6 +5,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Sort as SortIconDefault } from 'ui/svg/icons/Sort'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -32,9 +33,7 @@ const SortIcon = styled(SortIconDefault).attrs(({ theme }) => ({
   color: theme.colors.white,
 }))``
 
-const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({
+const Container = styled(TouchableOpacity)({
   overflow: 'hidden',
 })
 

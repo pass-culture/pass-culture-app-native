@@ -15,6 +15,7 @@ import { SearchHit } from 'libs/search'
 import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Link } from 'ui/web/link/Link'
 
@@ -102,9 +103,7 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
   )
 }
 
-const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({
+const Container = styled(TouchableOpacity)({
   marginHorizontal: getSpacing(6),
   flexDirection: 'row',
   alignItems: 'center',

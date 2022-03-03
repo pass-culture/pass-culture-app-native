@@ -240,6 +240,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             "paddingLeft": 2,
             "paddingRight": 2,
             "paddingTop": 2,
+            "userSelect": "auto",
             "width": "100%",
           }
         }
@@ -301,6 +302,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             "paddingLeft": 2,
             "paddingRight": 2,
             "paddingTop": 2,
+            "userSelect": "auto",
             "width": "100%",
           }
         }
@@ -590,6 +592,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             "paddingLeft": 2,
             "paddingRight": 2,
             "paddingTop": 2,
+            "userSelect": "auto",
             "width": "100%",
           }
         }
@@ -651,6 +654,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             "paddingLeft": 2,
             "paddingRight": 2,
             "paddingTop": 2,
+            "userSelect": "auto",
             "width": "100%",
           }
         }

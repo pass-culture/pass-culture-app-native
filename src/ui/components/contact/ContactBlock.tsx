@@ -6,6 +6,7 @@ import { openUrl } from 'features/navigation/helpers'
 import { useVenue } from 'features/venue/api/useVenue'
 import { analytics } from 'libs/analytics'
 import { isValidFrenchPhoneNumber, openPhoneNumber, openMail } from 'ui/components/contact/helpers'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { PhoneFilled } from 'ui/svg/icons/PhoneFilled'
@@ -61,11 +62,11 @@ const ContactAtom = ({ label, onPress, Icon }: ContactAtomProps) => {
   }))``
 
   return (
-    <TouchableOpacity onPress={onPress}>
+    <StyledTouchableOpacity onPress={onPress}>
       <StyledIcon testID={`Icon ${label}`} />
       <Spacer.Row numberOfSpaces={2} />
       <Typo.ButtonText>{label}</Typo.ButtonText>
-    </TouchableOpacity>
+    </StyledTouchableOpacity>
   )
 }
 
@@ -73,9 +74,7 @@ const Container = styled.View({
   marginVertical: -getSpacing(1),
 })
 
-const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({
+const StyledTouchableOpacity = styled(TouchableOpacity)({
   flexDirection: 'row',
   alignItems: 'center',
   marginVertical: getSpacing(1),

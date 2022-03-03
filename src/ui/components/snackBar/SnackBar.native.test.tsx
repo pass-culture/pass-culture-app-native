@@ -1,5 +1,5 @@
 import React from 'react'
-import * as RN from 'react-native'
+import { Animated } from 'react-native'
 
 import { fireEvent, render, waitFor } from 'tests/utils'
 import { Check } from 'ui/svg/icons/Check'
@@ -14,7 +14,7 @@ allowConsole({ error: true })
 
 const getAnimatedTimingImplementation = () =>
   jest
-    .spyOn(RN.Animated, 'timing')
+    .spyOn(Animated, 'timing')
     .mockReturnValue({ start: jest.fn(), stop: jest.fn(), reset: jest.fn() })
 
 describe('SnackBar Component', () => {
@@ -113,7 +113,7 @@ describe('SnackBar Component', () => {
       it.each([true, false])(
         'should not display anything at initialisation when mounted (visible = %s)',
         async (visible) => {
-          const timing = jest.spyOn(RN.Animated, 'timing')
+          const timing = jest.spyOn(Animated, 'timing')
 
           const refresher = 0
           render(renderHelperSnackBar(visible, { message: 'message' }, refresher))
@@ -157,7 +157,7 @@ describe('SnackBar Component', () => {
      * "visible" goes from true to false
      */
     it('should hide the snackbar container when hidden', async () => {
-      const timing = jest.spyOn(RN.Animated, 'timing')
+      const timing = jest.spyOn(Animated, 'timing')
 
       let refresher = 1
       const { rerender, getByTestId } = render(

@@ -823,6 +823,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         "paddingLeft": 0,
                                         "paddingRight": 0,
                                         "paddingTop": 0,
+                                        "userSelect": "auto",
                                         "width": "auto",
                                       }
                                     }
@@ -1715,6 +1716,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     "paddingLeft": 0,
                                     "paddingRight": 0,
                                     "paddingTop": 0,
+                                    "userSelect": "auto",
                                     "width": "auto",
                                   }
                                 }
@@ -1968,6 +1970,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                           "paddingLeft": 4,
                                           "paddingRight": 4,
                                           "paddingTop": 4,
+                                          "userSelect": "auto",
                                         }
                                       }
                                       testID="Fermer la modale"
@@ -2183,6 +2186,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                               "paddingLeft": 2,
                                               "paddingRight": 2,
                                               "paddingTop": 2,
+                                              "userSelect": "auto",
                                               "width": "100%",
                                             }
                                           }
@@ -3127,6 +3131,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         "paddingLeft": 0,
                                         "paddingRight": 0,
                                         "paddingTop": 0,
+                                        "userSelect": "auto",
                                         "width": "auto",
                                       }
                                     }
@@ -3272,6 +3277,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       "alignItems": "center",
                                       "flexDirection": "row",
                                       "opacity": 1,
+                                      "userSelect": "auto",
                                     }
                                   }
                                   testID="VenueBannerComponent"
@@ -3516,6 +3522,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                         "paddingLeft": 0,
                                         "paddingRight": 0,
                                         "paddingTop": 0,
+                                        "userSelect": "auto",
                                         "width": "auto",
                                       }
                                     }
@@ -4369,6 +4376,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                     "paddingLeft": 0,
                                     "paddingRight": 0,
                                     "paddingTop": 0,
+                                    "userSelect": "auto",
                                     "width": "auto",
                                   }
                                 }
@@ -4622,6 +4630,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                           "paddingLeft": 4,
                                           "paddingRight": 4,
                                           "paddingTop": 4,
+                                          "userSelect": "auto",
                                         }
                                       }
                                       testID="Fermer la modale"
@@ -4837,6 +4846,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                               "paddingLeft": 2,
                                               "paddingRight": 2,
                                               "paddingTop": 2,
+                                              "userSelect": "auto",
                                               "width": "100%",
                                             }
                                           }

@@ -48,7 +48,7 @@ Object {
               aria-label="Voir plus d’offres de la sélection Offres"
               class="css-view-1dbjc4n"
               data-testid="Voir plus d’offres de la sélection Offres"
-              style="align-items: center; cursor: pointer; display: inline-flex; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+              style="align-items: center; cursor: pointer; display: inline-flex; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
               tabindex="0"
             >
               <div
@@ -405,7 +405,7 @@ Object {
             aria-label="Voir plus d’offres de la sélection Offres"
             class="css-view-1dbjc4n"
             data-testid="Voir plus d’offres de la sélection Offres"
-            style="align-items: center; cursor: pointer; display: inline-flex; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            style="align-items: center; cursor: pointer; display: inline-flex; flex-direction: row; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
             tabindex="0"
           >
             <div

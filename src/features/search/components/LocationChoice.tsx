@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { useLocationChoice } from 'features/search/components/locationChoice.utils'
 import { LocationType } from 'features/search/enums'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -47,9 +48,7 @@ export const LocationChoice: React.FC<Props> = (props) => {
   )
 }
 
-const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({
+const Container = styled(TouchableOpacity)({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',

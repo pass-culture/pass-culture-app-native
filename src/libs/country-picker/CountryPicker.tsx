@@ -12,6 +12,7 @@ import styled from 'styled-components/native'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowDown as DefaultArrowDown } from 'ui/svg/icons/ArrowDown'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Typo } from 'ui/theme'
@@ -90,7 +91,7 @@ export const CountryPicker: React.FC<Props> = (props) => {
   )
 }
 
-const StyledTouchableOpacity = styled.TouchableOpacity({
+const StyledTouchableOpacity = styled(TouchableOpacity)({
   flexDirection: 'row',
   alignItems: 'center',
 })

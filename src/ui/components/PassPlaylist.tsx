@@ -6,6 +6,7 @@ import { SeeMore } from 'features/home/atoms'
 import { Cover } from 'features/home/atoms/Cover'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { Playlist, RenderFooterItem, RenderHeaderItem } from 'ui/components/Playlist'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { EyeSophisticated as DefaultEyeSophisticated } from 'ui/svg/icons/EyeSophisticated'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
@@ -119,9 +120,7 @@ const TitleSeparator = styled.View<{ color?: ColorsEnum }>((props) => ({
   backgroundColor: props.color,
 }))
 
-const StyledTouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({
+const StyledTouchableOpacity = styled(TouchableOpacity)({
   flexDirection: 'row',
   alignItems: 'center',
   padding: getSpacing(1),

@@ -406,6 +406,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
               "flexGrow": 1,
               "flexShrink": 1,
               "opacity": 1,
+              "userSelect": "auto",
             }
           }
           testID="iconLocation"
@@ -1506,6 +1507,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                     Object {
                       "alignItems": "center",
                       "opacity": 1,
+                      "userSelect": "auto",
                     }
                   }
                 >
@@ -1558,6 +1560,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                           },
                           "shadowOpacity": 0.15,
                           "shadowRadius": 12,
+                          "userSelect": "auto",
                           "width": 64,
                         }
                       }
@@ -1670,6 +1673,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
               "justifyContent": "center",
               "opacity": 1,
               "overflow": "hidden",
+              "userSelect": "auto",
             }
           }
           testID="Voir toutes les offres"
@@ -1876,6 +1880,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 0,
+                  "userSelect": "auto",
                   "width": "auto",
                 }
               }
@@ -2814,6 +2819,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 "flexDirection": "row",
                 "marginVertical": 4,
                 "opacity": 1,
+                "userSelect": "auto",
               }
             }
           >
@@ -2869,6 +2875,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 "flexDirection": "row",
                 "marginVertical": 4,
                 "opacity": 1,
+                "userSelect": "auto",
               }
             }
           >
@@ -2924,6 +2931,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 "flexDirection": "row",
                 "marginVertical": 4,
                 "opacity": 1,
+                "userSelect": "auto",
               }
             }
           >

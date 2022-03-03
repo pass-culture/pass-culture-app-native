@@ -526,6 +526,7 @@ exports[`<BookingDetails /> should render correctly when user has selected optio
         "paddingLeft": 2,
         "paddingRight": 2,
         "paddingTop": 2,
+        "userSelect": "auto",
         "width": "100%",
       }
     }
@@ -1096,6 +1097,7 @@ exports[`<BookingDetails /> should render disable CTA when user is underage and 
         "paddingLeft": 2,
         "paddingRight": 2,
         "paddingTop": 2,
+        "userSelect": "auto",
         "width": "100%",
       }
     }

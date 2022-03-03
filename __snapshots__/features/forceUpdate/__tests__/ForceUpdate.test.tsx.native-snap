@@ -214,6 +214,7 @@ Pour des questions de performance et de sécurité merci de télécharger la der
             "paddingLeft": 2,
             "paddingRight": 2,
             "paddingTop": 2,
+            "userSelect": "auto",
             "width": "100%",
           }
         }

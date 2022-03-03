@@ -7,6 +7,7 @@ import { OfferStockResponse } from 'api/gen'
 import { OfferStatus } from 'features/bookOffer/services/utils'
 import { analytics } from 'libs/analytics'
 import { formatToFrenchDecimal } from 'libs/parsers'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -116,10 +117,9 @@ const Caption = styled(Typo.Caption)<{ status: OfferStatus }>(({ status, theme }
   color: status === OfferStatus.BOOKABLE ? theme.colors.primary : theme.colors.greyDark,
 }))
 
-const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
+const Container = styled(TouchableOpacity).attrs({
   hitSlop,
-}))({
+})({
   alignItems: 'center',
   width: getSpacing(9.25), // Max width limite for small devices
 })

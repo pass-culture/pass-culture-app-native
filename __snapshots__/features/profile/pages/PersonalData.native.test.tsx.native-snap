@@ -78,6 +78,7 @@ Array [
           style={
             Object {
               "opacity": 1,
+              "userSelect": "auto",
             }
           }
           testID="Revenir en arrière"
@@ -322,6 +323,7 @@ Array [
               "paddingLeft": 0,
               "paddingRight": 0,
               "paddingTop": 0,
+              "userSelect": "auto",
               "width": "auto",
             }
           }

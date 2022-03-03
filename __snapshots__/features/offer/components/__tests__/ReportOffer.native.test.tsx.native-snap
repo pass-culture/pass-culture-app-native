@@ -175,6 +175,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                 "paddingLeft": 4,
                 "paddingRight": 4,
                 "paddingTop": 4,
+                "userSelect": "auto",
               }
             }
             testID="Revenir en arrière"
@@ -257,6 +258,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
                 "paddingLeft": 4,
                 "paddingRight": 4,
                 "paddingTop": 4,
+                "userSelect": "auto",
               }
             }
             testID="Fermer la modale"
@@ -501,6 +503,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
                 "paddingLeft": 4,
                 "paddingRight": 4,
                 "paddingTop": 4,
+                "userSelect": "auto",
               }
             }
             testID="Revenir en arrière"
@@ -583,6 +586,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
                 "paddingLeft": 4,
                 "paddingRight": 4,
                 "paddingTop": 4,
+                "userSelect": "auto",
               }
             }
             testID="Fermer la modale"

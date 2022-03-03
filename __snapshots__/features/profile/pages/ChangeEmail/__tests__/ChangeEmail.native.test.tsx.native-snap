@@ -80,6 +80,7 @@ Array [
           style={
             Object {
               "opacity": 1,
+              "userSelect": "auto",
             }
           }
           testID="Revenir en arrière"
@@ -574,6 +575,7 @@ Array [
               style={
                 Object {
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
               testID="toggle-password-visibility"
@@ -641,6 +643,7 @@ Array [
                 "paddingLeft": 2,
                 "paddingRight": 2,
                 "paddingTop": 2,
+                "userSelect": "auto",
                 "width": "100%",
               }
             }
@@ -762,6 +765,7 @@ Array [
           style={
             Object {
               "opacity": 1,
+              "userSelect": "auto",
             }
           }
           testID="Revenir en arrière"
@@ -1212,6 +1216,7 @@ Array [
               style={
                 Object {
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
               testID="toggle-password-visibility"
@@ -1279,6 +1284,7 @@ Array [
                 "paddingLeft": 2,
                 "paddingRight": 2,
                 "paddingTop": 2,
+                "userSelect": "auto",
                 "width": "100%",
               }
             }

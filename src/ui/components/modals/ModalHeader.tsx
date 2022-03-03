@@ -4,6 +4,7 @@ import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
 
@@ -100,7 +101,7 @@ const RightHeaderActionContainer = styled.View({
   justifyContent: 'flex-end',
 })
 
-const HeaderAction = styled.TouchableOpacity({
+const HeaderAction = styled(TouchableOpacity)({
   padding: getSpacing(1),
 })
 

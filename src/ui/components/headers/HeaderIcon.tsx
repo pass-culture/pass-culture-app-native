@@ -1,9 +1,10 @@
 import React from 'react'
-import { Animated, TouchableOpacity } from 'react-native'
+import { Animated } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AnimatedIcon as DefaultAnimatedIcon } from 'ui/components/AnimatedIcon'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'

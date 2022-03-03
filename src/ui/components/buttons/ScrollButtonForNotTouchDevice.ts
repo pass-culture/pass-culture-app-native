@@ -4,7 +4,7 @@ import {
   scrollButtonStyles,
   ScrollButtonForNotTouchDeviceProps,
 } from 'ui/components/buttons/scrollButtonForNotTouchDeviceUtils'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
-export const ScrollButtonForNotTouchDevice = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))<ScrollButtonForNotTouchDeviceProps>(scrollButtonStyles)
+export const ScrollButtonForNotTouchDevice =
+  styled(TouchableOpacity)<ScrollButtonForNotTouchDeviceProps>(scrollButtonStyles)

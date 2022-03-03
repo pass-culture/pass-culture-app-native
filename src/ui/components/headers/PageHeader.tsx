@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { useElementWidth } from 'ui/hooks/useElementWidth'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -68,10 +69,6 @@ export const PageHeader: React.FC<Props> = (props) => {
 const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
   color: theme.colors.white,
   size: theme.icons.sizes.small,
-}))``
-
-const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
 }))``
 
 const Container = styled.View(({ theme }) => ({

@@ -139,7 +139,7 @@ Object {
                         aria-label="Fermer la modale"
                         class="css-view-1dbjc4n"
                         data-testid="Fermer la modale"
-                        style="cursor: pointer; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                        style="cursor: pointer; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                         tabindex="0"
                       >
                         <div
@@ -267,7 +267,7 @@ Object {
                           >
                             <div
                               class="css-view-1dbjc4n"
-                              style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                              style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                               tabindex="0"
                             >
                               <div
@@ -294,7 +294,7 @@ Object {
                             </div>
                             <div
                               class="css-view-1dbjc4n"
-                              style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                              style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                               tabindex="0"
                             >
                               <div
@@ -321,7 +321,7 @@ Object {
                             </div>
                             <div
                               class="css-view-1dbjc4n"
-                              style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                              style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                               tabindex="0"
                             >
                               <div
@@ -348,7 +348,7 @@ Object {
                             </div>
                             <div
                               class="css-view-1dbjc4n"
-                              style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                              style="align-items: center; cursor: pointer; flex-grow: 1; min-width: 100px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                               tabindex="0"
                             >
                               <div

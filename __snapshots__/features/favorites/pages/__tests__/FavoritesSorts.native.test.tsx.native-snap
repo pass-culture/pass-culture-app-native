@@ -91,6 +91,7 @@ exports[`FavoritesSorts component should render correctly 1`] = `
           style={
             Object {
               "opacity": 1,
+              "userSelect": "auto",
             }
           }
           testID="Revenir en arrière"
@@ -246,6 +247,7 @@ exports[`FavoritesSorts component should render correctly 1`] = `
             "flexDirection": "row",
             "marginBottom": 16,
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="RECENTLY_ADDED"
@@ -324,6 +326,7 @@ exports[`FavoritesSorts component should render correctly 1`] = `
             "flexDirection": "row",
             "marginBottom": 16,
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="ASCENDING_PRICE"
@@ -394,6 +397,7 @@ exports[`FavoritesSorts component should render correctly 1`] = `
             "flexDirection": "row",
             "marginBottom": 16,
             "opacity": 1,
+            "userSelect": "auto",
           }
         }
         testID="AROUND_ME"
@@ -488,6 +492,7 @@ exports[`FavoritesSorts component should render correctly 1`] = `
           "paddingLeft": 2,
           "paddingRight": 2,
           "paddingTop": 2,
+          "userSelect": "auto",
           "width": "100%",
         }
       }

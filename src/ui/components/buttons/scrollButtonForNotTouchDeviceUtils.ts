@@ -1,9 +1,10 @@
 import { t } from '@lingui/macro'
 import { ButtonHTMLAttributes, DetailedHTMLProps, RefAttributes } from 'react'
-import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
+import { TouchableOpacityProps } from 'react-native'
 import { InterpolationFunction, ThemedStyledProps } from 'styled-components'
 import { DefaultTheme } from 'styled-components/native'
 
+import { RNTouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing } from 'ui/theme'
 
 type HorizontalAlignPropStyle = {
@@ -22,7 +23,7 @@ export type ScrollButtonForNotTouchDeviceProps = {
 
 type ScrollButtonForNotTouchDevicePropsStylesNative = InterpolationFunction<
   ThemedStyledProps<
-    TouchableOpacityProps & RefAttributes<TouchableOpacity> & ScrollButtonPropStyle,
+    TouchableOpacityProps & RefAttributes<RNTouchableOpacity> & ScrollButtonPropStyle,
     DefaultTheme
   >
 >

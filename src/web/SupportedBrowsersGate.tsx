@@ -1,7 +1,9 @@
 import React from 'react'
 // eslint-disable-next-line no-restricted-imports
 import * as DeviceDetect from 'react-device-detect'
-import { StyleSheet, ScrollView, View, Text, TouchableOpacity } from 'react-native'
+import { StyleSheet, ScrollView, View, Text } from 'react-native'
+
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
 const browserVersion = Number(DeviceDetect.browserVersion)
 

@@ -1,7 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { Platform } from 'react-native'
-import { TouchableOpacity as TouchableOpacityGestureHandler } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
 import { DateFilter } from 'features/search/atoms/Buttons'
@@ -11,6 +10,7 @@ import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 type Props = {
   setScrollEnabled?: ((setScrollEnabled: boolean) => void) | Dispatch<SetStateAction<boolean>>
@@ -86,9 +86,6 @@ export function OfferDate({ setScrollEnabled }: Props) {
     </React.Fragment>
   )
 }
-const TouchableOpacity = styled(TouchableOpacityGestureHandler).attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))``
 
 const Container = styled.View({ marginHorizontal: getSpacing(6) })
 

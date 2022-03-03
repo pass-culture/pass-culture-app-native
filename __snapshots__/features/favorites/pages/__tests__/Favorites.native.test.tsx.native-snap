@@ -5587,6 +5587,7 @@ exports[`Favorites component should render correctly 1`] = `
         Object {
           "opacity": 1,
           "overflow": "hidden",
+          "userSelect": "auto",
         }
       }
       testID="SortButton"

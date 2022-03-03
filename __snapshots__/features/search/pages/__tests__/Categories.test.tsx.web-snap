@@ -187,17 +187,17 @@ exports[`Categories component should render correctly 1`] = `
             style={
               Object {
                 "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
+                "MozUserSelect": "auto",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
+                "WebkitUserSelect": "auto",
                 "cursor": "pointer",
                 "msTouchAction": "manipulation",
-                "msUserSelect": "none",
+                "msUserSelect": "auto",
                 "touchAction": "manipulation",
                 "transitionDuration": "0s",
                 "transitionProperty": "opacity",
-                "userSelect": "none",
+                "userSelect": "auto",
               }
             }
             tabIndex="0"
@@ -346,7 +346,7 @@ exports[`Categories component should render correctly 1`] = `
             style={
               Object {
                 "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
+                "MozUserSelect": "auto",
                 "WebkitAlignItems": "center",
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
@@ -354,7 +354,7 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitFlexDirection": "row",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
+                "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
@@ -362,11 +362,11 @@ exports[`Categories component should render correctly 1`] = `
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
                 "msTouchAction": "manipulation",
-                "msUserSelect": "none",
+                "msUserSelect": "auto",
                 "touchAction": "manipulation",
                 "transitionDuration": "0s",
                 "transitionProperty": "opacity",
-                "userSelect": "none",
+                "userSelect": "auto",
               }
             }
             tabIndex="0"
@@ -451,7 +451,7 @@ exports[`Categories component should render correctly 1`] = `
             style={
               Object {
                 "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
+                "MozUserSelect": "auto",
                 "WebkitAlignItems": "center",
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
@@ -459,7 +459,7 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitFlexDirection": "row",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
+                "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
@@ -467,11 +467,11 @@ exports[`Categories component should render correctly 1`] = `
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
                 "msTouchAction": "manipulation",
-                "msUserSelect": "none",
+                "msUserSelect": "auto",
                 "touchAction": "manipulation",
                 "transitionDuration": "0s",
                 "transitionProperty": "opacity",
-                "userSelect": "none",
+                "userSelect": "auto",
               }
             }
             tabIndex="0"
@@ -546,7 +546,7 @@ exports[`Categories component should render correctly 1`] = `
             style={
               Object {
                 "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
+                "MozUserSelect": "auto",
                 "WebkitAlignItems": "center",
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
@@ -554,7 +554,7 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitFlexDirection": "row",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
+                "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
@@ -562,11 +562,11 @@ exports[`Categories component should render correctly 1`] = `
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
                 "msTouchAction": "manipulation",
-                "msUserSelect": "none",
+                "msUserSelect": "auto",
                 "touchAction": "manipulation",
                 "transitionDuration": "0s",
                 "transitionProperty": "opacity",
-                "userSelect": "none",
+                "userSelect": "auto",
               }
             }
             tabIndex="0"
@@ -641,7 +641,7 @@ exports[`Categories component should render correctly 1`] = `
             style={
               Object {
                 "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
+                "MozUserSelect": "auto",
                 "WebkitAlignItems": "center",
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
@@ -649,7 +649,7 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitFlexDirection": "row",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
+                "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
@@ -657,11 +657,11 @@ exports[`Categories component should render correctly 1`] = `
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
                 "msTouchAction": "manipulation",
-                "msUserSelect": "none",
+                "msUserSelect": "auto",
                 "touchAction": "manipulation",
                 "transitionDuration": "0s",
                 "transitionProperty": "opacity",
-                "userSelect": "none",
+                "userSelect": "auto",
               }
             }
             tabIndex="0"
@@ -736,7 +736,7 @@ exports[`Categories component should render correctly 1`] = `
             style={
               Object {
                 "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
+                "MozUserSelect": "auto",
                 "WebkitAlignItems": "center",
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
@@ -744,7 +744,7 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitFlexDirection": "row",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
+                "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
@@ -752,11 +752,11 @@ exports[`Categories component should render correctly 1`] = `
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
                 "msTouchAction": "manipulation",
-                "msUserSelect": "none",
+                "msUserSelect": "auto",
                 "touchAction": "manipulation",
                 "transitionDuration": "0s",
                 "transitionProperty": "opacity",
-                "userSelect": "none",
+                "userSelect": "auto",
               }
             }
             tabIndex="0"
@@ -831,7 +831,7 @@ exports[`Categories component should render correctly 1`] = `
             style={
               Object {
                 "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
+                "MozUserSelect": "auto",
                 "WebkitAlignItems": "center",
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
@@ -839,7 +839,7 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitFlexDirection": "row",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
+                "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
@@ -847,11 +847,11 @@ exports[`Categories component should render correctly 1`] = `
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
                 "msTouchAction": "manipulation",
-                "msUserSelect": "none",
+                "msUserSelect": "auto",
                 "touchAction": "manipulation",
                 "transitionDuration": "0s",
                 "transitionProperty": "opacity",
-                "userSelect": "none",
+                "userSelect": "auto",
               }
             }
             tabIndex="0"
@@ -926,7 +926,7 @@ exports[`Categories component should render correctly 1`] = `
             style={
               Object {
                 "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
+                "MozUserSelect": "auto",
                 "WebkitAlignItems": "center",
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
@@ -934,7 +934,7 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitFlexDirection": "row",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
+                "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
@@ -942,11 +942,11 @@ exports[`Categories component should render correctly 1`] = `
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
                 "msTouchAction": "manipulation",
-                "msUserSelect": "none",
+                "msUserSelect": "auto",
                 "touchAction": "manipulation",
                 "transitionDuration": "0s",
                 "transitionProperty": "opacity",
-                "userSelect": "none",
+                "userSelect": "auto",
               }
             }
             tabIndex="0"
@@ -1021,7 +1021,7 @@ exports[`Categories component should render correctly 1`] = `
             style={
               Object {
                 "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
+                "MozUserSelect": "auto",
                 "WebkitAlignItems": "center",
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
@@ -1029,7 +1029,7 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitFlexDirection": "row",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
+                "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
@@ -1037,11 +1037,11 @@ exports[`Categories component should render correctly 1`] = `
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
                 "msTouchAction": "manipulation",
-                "msUserSelect": "none",
+                "msUserSelect": "auto",
                 "touchAction": "manipulation",
                 "transitionDuration": "0s",
                 "transitionProperty": "opacity",
-                "userSelect": "none",
+                "userSelect": "auto",
               }
             }
             tabIndex="0"
@@ -1116,7 +1116,7 @@ exports[`Categories component should render correctly 1`] = `
             style={
               Object {
                 "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
+                "MozUserSelect": "auto",
                 "WebkitAlignItems": "center",
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
@@ -1124,7 +1124,7 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitFlexDirection": "row",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
+                "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
@@ -1132,11 +1132,11 @@ exports[`Categories component should render correctly 1`] = `
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
                 "msTouchAction": "manipulation",
-                "msUserSelect": "none",
+                "msUserSelect": "auto",
                 "touchAction": "manipulation",
                 "transitionDuration": "0s",
                 "transitionProperty": "opacity",
-                "userSelect": "none",
+                "userSelect": "auto",
               }
             }
             tabIndex="0"
@@ -1211,7 +1211,7 @@ exports[`Categories component should render correctly 1`] = `
             style={
               Object {
                 "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
+                "MozUserSelect": "auto",
                 "WebkitAlignItems": "center",
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
@@ -1219,7 +1219,7 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitFlexDirection": "row",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
+                "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
@@ -1227,11 +1227,11 @@ exports[`Categories component should render correctly 1`] = `
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
                 "msTouchAction": "manipulation",
-                "msUserSelect": "none",
+                "msUserSelect": "auto",
                 "touchAction": "manipulation",
                 "transitionDuration": "0s",
                 "transitionProperty": "opacity",
-                "userSelect": "none",
+                "userSelect": "auto",
               }
             }
             tabIndex="0"
@@ -1306,7 +1306,7 @@ exports[`Categories component should render correctly 1`] = `
             style={
               Object {
                 "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
+                "MozUserSelect": "auto",
                 "WebkitAlignItems": "center",
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
@@ -1314,7 +1314,7 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitFlexDirection": "row",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
+                "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
@@ -1322,11 +1322,11 @@ exports[`Categories component should render correctly 1`] = `
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
                 "msTouchAction": "manipulation",
-                "msUserSelect": "none",
+                "msUserSelect": "auto",
                 "touchAction": "manipulation",
                 "transitionDuration": "0s",
                 "transitionProperty": "opacity",
-                "userSelect": "none",
+                "userSelect": "auto",
               }
             }
             tabIndex="0"
@@ -1401,7 +1401,7 @@ exports[`Categories component should render correctly 1`] = `
             style={
               Object {
                 "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
+                "MozUserSelect": "auto",
                 "WebkitAlignItems": "center",
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
@@ -1409,7 +1409,7 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitFlexDirection": "row",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
+                "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
@@ -1417,11 +1417,11 @@ exports[`Categories component should render correctly 1`] = `
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
                 "msTouchAction": "manipulation",
-                "msUserSelect": "none",
+                "msUserSelect": "auto",
                 "touchAction": "manipulation",
                 "transitionDuration": "0s",
                 "transitionProperty": "opacity",
-                "userSelect": "none",
+                "userSelect": "auto",
               }
             }
             tabIndex="0"
@@ -1496,7 +1496,7 @@ exports[`Categories component should render correctly 1`] = `
             style={
               Object {
                 "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
+                "MozUserSelect": "auto",
                 "WebkitAlignItems": "center",
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
@@ -1504,7 +1504,7 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitFlexDirection": "row",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
+                "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
@@ -1512,11 +1512,11 @@ exports[`Categories component should render correctly 1`] = `
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
                 "msTouchAction": "manipulation",
-                "msUserSelect": "none",
+                "msUserSelect": "auto",
                 "touchAction": "manipulation",
                 "transitionDuration": "0s",
                 "transitionProperty": "opacity",
-                "userSelect": "none",
+                "userSelect": "auto",
               }
             }
             tabIndex="0"
@@ -1591,7 +1591,7 @@ exports[`Categories component should render correctly 1`] = `
             style={
               Object {
                 "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
+                "MozUserSelect": "auto",
                 "WebkitAlignItems": "center",
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
@@ -1599,7 +1599,7 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitFlexDirection": "row",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
+                "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
@@ -1607,11 +1607,11 @@ exports[`Categories component should render correctly 1`] = `
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
                 "msTouchAction": "manipulation",
-                "msUserSelect": "none",
+                "msUserSelect": "auto",
                 "touchAction": "manipulation",
                 "transitionDuration": "0s",
                 "transitionProperty": "opacity",
-                "userSelect": "none",
+                "userSelect": "auto",
               }
             }
             tabIndex="0"

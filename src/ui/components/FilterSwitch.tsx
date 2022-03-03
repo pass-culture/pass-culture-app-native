@@ -3,6 +3,7 @@ import { Animated, Easing } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getShadow, getSpacing } from 'ui/theme'
 import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 
@@ -66,10 +67,6 @@ const getBackgroundColor = (theme: DefaultTheme, active: boolean, disabled: bool
   if (active) return disabled ? theme.uniqueColors.greenDisabled : theme.colors.greenValid
   return disabled ? theme.uniqueColors.greyDisabled : theme.colors.greyMedium
 }
-
-const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))``
 
 const StyledBackgroundColor = styled.View<{ active: boolean; disabled: boolean }>(
   ({ theme, active, disabled }) => ({

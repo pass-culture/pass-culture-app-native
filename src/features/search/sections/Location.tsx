@@ -10,6 +10,7 @@ import { LocationType } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Typo, Spacer } from 'ui/theme'
 
@@ -53,9 +54,7 @@ export const Location: React.FC = () => {
   )
 }
 
-const LocationContentContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({
+const LocationContentContainer = styled(TouchableOpacity)({
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-between',

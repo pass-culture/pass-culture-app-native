@@ -1,8 +1,10 @@
 import React, { FunctionComponent } from 'react'
-import { Modal, TouchableOpacity, useWindowDimensions } from 'react-native'
+import { Modal, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { theme } from 'theme'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+
 interface Props {
   visible: boolean
   testIdSuffix?: string

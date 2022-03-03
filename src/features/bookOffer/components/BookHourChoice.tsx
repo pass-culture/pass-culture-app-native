@@ -12,6 +12,7 @@ import {
 import { Step } from 'features/bookOffer/pages/reducer'
 import { formatHour, formatToKeyDate } from 'features/bookOffer/services/utils'
 import { useCreditForOffer } from 'features/offer/services/useHasEnoughCredit'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Typo, Spacer, getSpacing } from 'ui/theme'
 
 export const BookHourChoice: React.FC = () => {
@@ -86,10 +87,6 @@ export const BookHourChoice: React.FC = () => {
     </React.Fragment>
   )
 }
-
-const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))``
 
 const HourChoiceContainer = styled.View({
   flexDirection: 'row',

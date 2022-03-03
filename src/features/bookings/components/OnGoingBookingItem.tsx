@@ -8,6 +8,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { mapCategoryToIcon } from 'libs/parsers'
 import { useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Clock as DefaultClock } from 'ui/svg/icons/Clock'
 import { Duo } from 'ui/svg/icons/Duo'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -63,9 +64,7 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
   )
 }
 
-const Container = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({
+const Container = styled(TouchableOpacity)({
   paddingHorizontal: getSpacing(6),
   flexDirection: 'row',
 })

@@ -222,6 +222,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
                 "paddingLeft": 4,
                 "paddingRight": 4,
                 "paddingTop": 4,
+                "userSelect": "auto",
               }
             }
             testID="Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
@@ -317,6 +318,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 2,
+                  "userSelect": "auto",
                   "width": "100%",
                 }
               }
@@ -401,6 +403,7 @@ exports[`<DMSModal/> should render correctly 1`] = `
                   "paddingLeft": 0,
                   "paddingRight": 0,
                   "paddingTop": 2,
+                  "userSelect": "auto",
                   "width": "100%",
                 }
               }

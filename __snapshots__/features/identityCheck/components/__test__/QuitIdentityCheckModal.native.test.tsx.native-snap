@@ -40,6 +40,7 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
         "maxWidth": 960,
         "opacity": 1,
         "position": "absolute",
+        "userSelect": "auto",
         "width": "100%",
       }
     }
@@ -244,6 +245,7 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
               "paddingLeft": 2,
               "paddingRight": 2,
               "paddingTop": 2,
+              "userSelect": "auto",
               "width": "100%",
             }
           }
@@ -305,6 +307,7 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
               "paddingLeft": 2,
               "paddingRight": 2,
               "paddingTop": 2,
+              "userSelect": "auto",
               "width": "100%",
             }
           }

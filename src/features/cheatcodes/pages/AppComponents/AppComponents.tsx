@@ -1,7 +1,6 @@
 /* eslint-disable react-native/no-raw-text */
 import React, { FunctionComponent, useCallback, useState } from 'react'
 import { ScrollView, View, Text, Alert, Button } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
@@ -51,6 +50,7 @@ import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { SlantTag } from 'ui/components/SlantTag'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { StepDots } from 'ui/components/StepDots'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import CategoryIcon from 'ui/svg/icons/categories/bicolor'

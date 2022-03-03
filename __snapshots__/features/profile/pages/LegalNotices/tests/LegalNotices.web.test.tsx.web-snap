@@ -32,7 +32,7 @@ Object {
                 aria-label="Revenir en arrière"
                 class="css-view-1dbjc4n"
                 data-testid="Revenir en arrière"
-                style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+                style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 tabindex="0"
               >
                 <div
@@ -90,7 +90,7 @@ Object {
             aria-label="Conditions Générales d’Utilisation"
             class="css-view-1dbjc4n"
             data-testid="Conditions Générales d’Utilisation"
-            style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
             tabindex="0"
           >
             <div
@@ -144,7 +144,7 @@ Object {
             aria-label="Charte de protection des données personnelles"
             class="css-view-1dbjc4n"
             data-testid="Charte de protection des données personnelles"
-            style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+            style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
             tabindex="0"
           >
             <div
@@ -192,7 +192,7 @@ Object {
           aria-label="Suppression du compte"
           class="css-view-1dbjc4n"
           data-testid="Suppression du compte"
-          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
           tabindex="0"
         >
           <div
@@ -262,7 +262,7 @@ Object {
               aria-label="Revenir en arrière"
               class="css-view-1dbjc4n"
               data-testid="Revenir en arrière"
-              style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+              style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
               tabindex="0"
             >
               <div
@@ -320,7 +320,7 @@ Object {
           aria-label="Conditions Générales d’Utilisation"
           class="css-view-1dbjc4n"
           data-testid="Conditions Générales d’Utilisation"
-          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
           tabindex="0"
         >
           <div
@@ -374,7 +374,7 @@ Object {
           aria-label="Charte de protection des données personnelles"
           class="css-view-1dbjc4n"
           data-testid="Charte de protection des données personnelles"
-          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
           tabindex="0"
         >
           <div
@@ -422,7 +422,7 @@ Object {
         aria-label="Suppression du compte"
         class="css-view-1dbjc4n"
         data-testid="Suppression du compte"
-        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
         tabindex="0"
       >
         <div

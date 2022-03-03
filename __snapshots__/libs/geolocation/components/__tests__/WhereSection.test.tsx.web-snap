@@ -51,7 +51,7 @@ Array [
         style={
           Object {
             "MozTransitionProperty": "opacity",
-            "MozUserSelect": "none",
+            "MozUserSelect": "auto",
             "WebkitAlignItems": "center",
             "WebkitBoxAlign": "center",
             "WebkitBoxDirection": "normal",
@@ -59,7 +59,7 @@ Array [
             "WebkitFlexDirection": "row",
             "WebkitTransitionDuration": "0s",
             "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "none",
+            "WebkitUserSelect": "auto",
             "alignItems": "center",
             "cursor": "pointer",
             "display": "inline-flex",
@@ -67,11 +67,11 @@ Array [
             "msFlexAlign": "center",
             "msFlexDirection": "row",
             "msTouchAction": "manipulation",
-            "msUserSelect": "none",
+            "msUserSelect": "auto",
             "touchAction": "manipulation",
             "transitionDuration": "0s",
             "transitionProperty": "opacity",
-            "userSelect": "none",
+            "userSelect": "auto",
           }
         }
         tabIndex="0"
@@ -341,7 +341,7 @@ exports[`WhereSection should render correctly 2`] = `
 +         style={
 +           Object {
 +             \\"MozTransitionProperty\\": \\"opacity\\",
-+             \\"MozUserSelect\\": \\"none\\",
++             \\"MozUserSelect\\": \\"auto\\",
 +             \\"WebkitAlignItems\\": \\"center\\",
 +             \\"WebkitBoxAlign\\": \\"center\\",
 +             \\"WebkitBoxDirection\\": \\"normal\\",
@@ -349,7 +349,7 @@ exports[`WhereSection should render correctly 2`] = `
 +             \\"WebkitFlexDirection\\": \\"row\\",
 +             \\"WebkitTransitionDuration\\": \\"0s\\",
 +             \\"WebkitTransitionProperty\\": \\"opacity\\",
-+             \\"WebkitUserSelect\\": \\"none\\",
++             \\"WebkitUserSelect\\": \\"auto\\",
 +             \\"alignItems\\": \\"center\\",
 +             \\"cursor\\": \\"pointer\\",
 +             \\"display\\": \\"inline-flex\\",
@@ -357,11 +357,11 @@ exports[`WhereSection should render correctly 2`] = `
 +             \\"msFlexAlign\\": \\"center\\",
 +             \\"msFlexDirection\\": \\"row\\",
 +             \\"msTouchAction\\": \\"manipulation\\",
-+             \\"msUserSelect\\": \\"none\\",
++             \\"msUserSelect\\": \\"auto\\",
 +             \\"touchAction\\": \\"manipulation\\",
 +             \\"transitionDuration\\": \\"0s\\",
 +             \\"transitionProperty\\": \\"opacity\\",
-+             \\"userSelect\\": \\"none\\",
++             \\"userSelect\\": \\"auto\\",
 +           }
 +         }
 +         tabIndex=\\"0\\"

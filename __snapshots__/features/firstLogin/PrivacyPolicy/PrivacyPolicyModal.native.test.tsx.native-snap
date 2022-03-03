@@ -222,6 +222,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                 "paddingLeft": 4,
                 "paddingRight": 4,
                 "paddingTop": 4,
+                "userSelect": "auto",
               }
             }
             testID="Fermer la modale et refuser la collecte des données"
@@ -317,6 +318,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                   "paddingLeft": 2,
                   "paddingRight": 2,
                   "paddingTop": 2,
+                  "userSelect": "auto",
                   "width": "100%",
                 }
               }
@@ -414,6 +416,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                     "paddingLeft": 2,
                     "paddingRight": 2,
                     "paddingTop": 2,
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -477,6 +480,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                     "paddingLeft": 2,
                     "paddingRight": 2,
                     "paddingTop": 2,
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }

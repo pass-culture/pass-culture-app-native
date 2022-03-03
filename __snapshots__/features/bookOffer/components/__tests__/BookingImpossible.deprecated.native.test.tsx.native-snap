@@ -110,6 +110,7 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
         "paddingLeft": 2,
         "paddingRight": 2,
         "paddingTop": 2,
+        "userSelect": "auto",
         "width": "100%",
       }
     }
@@ -171,6 +172,7 @@ exports[`<BookingImpossible /> should render with CTAs when offer is not yet fav
         "paddingLeft": 2,
         "paddingRight": 2,
         "paddingTop": 2,
+        "userSelect": "auto",
         "width": "100%",
       }
     }
@@ -318,6 +320,7 @@ exports[`<BookingImpossible /> should render without CTAs when offer is favorite
         "paddingLeft": 2,
         "paddingRight": 2,
         "paddingTop": 2,
+        "userSelect": "auto",
         "width": "100%",
       }
     }

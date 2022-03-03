@@ -226,6 +226,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                 "paddingLeft": 4,
                 "paddingRight": 4,
                 "paddingTop": 4,
+                "userSelect": "auto",
               }
             }
             testID="Fermer la modale de propositions d'identifications avec ÉduConnect ou Démarches Simplifiées"
@@ -312,6 +313,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                   "paddingLeft": 2,
                   "paddingRight": 2,
                   "paddingTop": 2,
+                  "userSelect": "auto",
                   "width": "100%",
                 }
               }
@@ -383,6 +385,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                   "paddingLeft": 2,
                   "paddingRight": 2,
                   "paddingTop": 2,
+                  "userSelect": "auto",
                   "width": "100%",
                 }
               }
@@ -487,6 +490,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
                   "paddingLeft": 2,
                   "paddingRight": 2,
                   "paddingTop": 2,
+                  "userSelect": "auto",
                   "width": "100%",
                 }
               }
@@ -766,6 +770,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                 "paddingLeft": 4,
                 "paddingRight": 4,
                 "paddingTop": 4,
+                "userSelect": "auto",
               }
             }
             testID="Fermer la modale de propositions d'identifications avec ÉduConnect ou Démarches Simplifiées"
@@ -852,6 +857,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                   "paddingLeft": 2,
                   "paddingRight": 2,
                   "paddingTop": 2,
+                  "userSelect": "auto",
                   "width": "100%",
                 }
               }
@@ -923,6 +929,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                   "paddingLeft": 2,
                   "paddingRight": 2,
                   "paddingTop": 2,
+                  "userSelect": "auto",
                   "width": "100%",
                 }
               }
@@ -1027,6 +1034,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
                   "paddingLeft": 2,
                   "paddingRight": 2,
                   "paddingTop": 2,
+                  "userSelect": "auto",
                   "width": "100%",
                 }
               }

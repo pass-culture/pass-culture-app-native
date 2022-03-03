@@ -91,6 +91,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           style={
             Object {
               "opacity": 1,
+              "userSelect": "auto",
             }
           }
           testID="Revenir en arrière"
@@ -158,6 +159,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             style={
               Object {
                 "opacity": 1,
+                "userSelect": "auto",
               }
             }
             testID="Réinitialiser les filtres"
@@ -302,6 +304,7 @@ exports[`SearchFilter component should render correctly 1`] = `
               "flexDirection": "row",
               "justifyContent": "space-between",
               "opacity": 1,
+              "userSelect": "auto",
             }
           }
           testID="changeLocation"
@@ -831,6 +834,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "marginRight": 12,
                   "maxWidth": 500,
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
             >
@@ -897,6 +901,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "marginRight": 12,
                   "maxWidth": 500,
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
             >
@@ -963,6 +968,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "marginRight": 12,
                   "maxWidth": 500,
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
             >
@@ -1029,6 +1035,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "marginRight": 12,
                   "maxWidth": 500,
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
             >
@@ -1095,6 +1102,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "marginRight": 12,
                   "maxWidth": 500,
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
             >
@@ -1161,6 +1169,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "marginRight": 12,
                   "maxWidth": 500,
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
             >
@@ -1227,6 +1236,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "marginRight": 12,
                   "maxWidth": 500,
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
             >
@@ -1293,6 +1303,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "marginRight": 12,
                   "maxWidth": 500,
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
             >
@@ -1359,6 +1370,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "marginRight": 12,
                   "maxWidth": 500,
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
             >
@@ -1425,6 +1437,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "marginRight": 12,
                   "maxWidth": 500,
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
             >
@@ -1491,6 +1504,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "marginRight": 12,
                   "maxWidth": 500,
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
             >
@@ -1557,6 +1571,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "marginRight": 12,
                   "maxWidth": 500,
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
             >
@@ -1623,6 +1638,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "marginRight": 12,
                   "maxWidth": 500,
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
             >
@@ -1836,6 +1852,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "marginRight": 12,
                   "maxWidth": 500,
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
             >
@@ -1902,6 +1919,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "marginRight": 12,
                   "maxWidth": 500,
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
             >
@@ -1968,6 +1986,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "marginRight": 12,
                   "maxWidth": 500,
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
             >
@@ -2546,6 +2565,7 @@ exports[`SearchFilter component should render correctly 1`] = `
               style={
                 Object {
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
               testID="Interrupteur filtre offres gratuites"
@@ -2708,6 +2728,7 @@ exports[`SearchFilter component should render correctly 1`] = `
               style={
                 Object {
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
               testID="Interrupteur filtre offres duo"
@@ -2870,6 +2891,7 @@ exports[`SearchFilter component should render correctly 1`] = `
               style={
                 Object {
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
               testID="Interrupteur filtre nouvelles offres"
@@ -3032,6 +3054,7 @@ exports[`SearchFilter component should render correctly 1`] = `
               style={
                 Object {
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
               testID="Interrupteur filtre dates"
@@ -3218,6 +3241,7 @@ exports[`SearchFilter component should render correctly 1`] = `
               style={
                 Object {
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
               testID="Interrupteur filtre heures"
@@ -3340,6 +3364,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           "paddingLeft": 2,
           "paddingRight": 2,
           "paddingTop": 2,
+          "userSelect": "auto",
           "width": "100%",
         }
       }

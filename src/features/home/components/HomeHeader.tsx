@@ -9,6 +9,7 @@ import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { formatToFrenchDecimal } from 'libs/parsers'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
@@ -87,9 +88,7 @@ const HeaderBackgroundWrapper = styled.View(({ theme }) => ({
   zIndex: theme.zIndex.background,
 }))
 
-const CheatCodeButtonContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))(({ theme }) => ({
+const CheatCodeButtonContainer = styled(TouchableOpacity)(({ theme }) => ({
   position: 'absolute',
   right: getSpacing(2),
   zIndex: theme.zIndex.cheatCodeButton,

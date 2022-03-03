@@ -27,7 +27,7 @@ Object {
           aria-disabled="true"
           class="css-view-1dbjc4n"
           data-testid="HourChoice148411"
-          style="padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
+          style="padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 33%;"
           tabindex="-1"
         >
           <div
@@ -68,7 +68,7 @@ Object {
         <div
           class="css-view-1dbjc4n"
           data-testid="HourChoice148409"
-          style="cursor: pointer; padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
+          style="cursor: pointer; padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 33%;"
           tabindex="0"
         >
           <div
@@ -128,7 +128,7 @@ Object {
         aria-disabled="true"
         class="css-view-1dbjc4n"
         data-testid="HourChoice148411"
-        style="padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
+        style="padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 33%;"
         tabindex="-1"
       >
         <div
@@ -169,7 +169,7 @@ Object {
       <div
         class="css-view-1dbjc4n"
         data-testid="HourChoice148409"
-        style="cursor: pointer; padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: none; width: 33%;"
+        style="cursor: pointer; padding: 8px 8px 8px 8px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 33%;"
         tabindex="0"
       >
         <div
@@ -280,7 +280,7 @@ Object {
       />
       <div
         class="css-view-1dbjc4n"
-        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
         tabindex="0"
       >
         <div
@@ -310,7 +310,7 @@ Object {
     />
     <div
       class="css-view-1dbjc4n"
-      style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: none;"
+      style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
       tabindex="0"
     >
       <div

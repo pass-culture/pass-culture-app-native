@@ -1,10 +1,10 @@
 import { t } from '@lingui/macro'
 import React from 'react'
-import styled from 'styled-components/native'
 
 import { OfferStockResponse } from 'api/gen'
 import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Spacer, Typo } from 'ui/theme'
 
 import { Step } from '../pages/reducer'
@@ -46,7 +46,3 @@ export const BookDateChoice: React.FC<Props> = ({ stocks, userRemainingCredit })
     </React.Fragment>
   )
 }
-
-const TouchableOpacity = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))``

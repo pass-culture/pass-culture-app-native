@@ -512,6 +512,7 @@ exports[`CheatCodes component should render correctly 1`] = `
         "padding": 10,
         "position": "absolute",
         "right": 0,
+        "userSelect": "auto",
       }
     }
     testID="container"

@@ -8,6 +8,7 @@ import { DeeplinkItem } from 'features/_marketingAndCommunication/atoms/Deeplink
 import { GeneratedDeeplink } from 'features/_marketingAndCommunication/components/DeeplinksGeneratorForm'
 import { CheckboxInput } from 'ui/components/inputs/CheckboxInput'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, padding, Spacer, Typo } from 'ui/theme'
 
 interface Props {
@@ -111,9 +112,7 @@ const CheckBoxText = styled(Typo.Body)({
   ...padding(0, 8, 0, 4),
 })
 
-const StyledCheckBox = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({
+const StyledCheckBox = styled(TouchableOpacity)({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',

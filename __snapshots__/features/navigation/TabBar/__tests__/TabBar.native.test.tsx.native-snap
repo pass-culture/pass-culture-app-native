@@ -65,6 +65,7 @@ exports[`TabBar renders correctly 1`] = `
           "flexShrink": 1,
           "height": 64,
           "opacity": 1,
+          "userSelect": "auto",
         }
       }
       testID="Home tab"
@@ -139,6 +140,7 @@ exports[`TabBar renders correctly 1`] = `
           "flexShrink": 1,
           "height": 64,
           "opacity": 1,
+          "userSelect": "auto",
         }
       }
       testID="Search tab"
@@ -195,6 +197,7 @@ exports[`TabBar renders correctly 1`] = `
           "flexShrink": 1,
           "height": 64,
           "opacity": 1,
+          "userSelect": "auto",
         }
       }
       testID="Bookings tab"
@@ -251,6 +254,7 @@ exports[`TabBar renders correctly 1`] = `
           "flexShrink": 1,
           "height": 64,
           "opacity": 1,
+          "userSelect": "auto",
         }
       }
       testID="Favorites tab"
@@ -307,6 +311,7 @@ exports[`TabBar renders correctly 1`] = `
           "flexShrink": 1,
           "height": 64,
           "opacity": 1,
+          "userSelect": "auto",
         }
       }
       testID="Profile tab"

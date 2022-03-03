@@ -29,6 +29,7 @@ exports[`AppButton Component * inline property should use inline css style when 
       "paddingLeft": 0,
       "paddingRight": 0,
       "paddingTop": 0,
+      "userSelect": "auto",
       "width": "auto",
     }
   }

@@ -18,7 +18,7 @@ exports[`<Favorite /> component offer name should take full space if no geolocat
       focusable={true}
       nativeID=\\"animatedComponent\\"
       onClick={[Function onClick]}
-@@ -121,10 +121,22 @@
+@@ -122,10 +122,22 @@
                   \\"flexDirection\\": \\"row\\",
                 },
               ]
@@ -41,7 +41,7 @@ exports[`<Favorite /> component offer name should take full space if no geolocat
                 style={
                   Array [
                     Object {
-@@ -136,10 +148,39 @@
+@@ -137,10 +149,39 @@
                   ]
                 }
               >

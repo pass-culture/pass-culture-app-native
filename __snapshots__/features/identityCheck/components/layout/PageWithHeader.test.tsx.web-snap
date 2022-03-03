@@ -90,19 +90,19 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
       style={
         Object {
           "MozTransitionProperty": "opacity",
-          "MozUserSelect": "none",
+          "MozUserSelect": "auto",
           "WebkitTransitionDuration": "0s",
           "WebkitTransitionProperty": "opacity",
-          "WebkitUserSelect": "none",
+          "WebkitUserSelect": "auto",
           "cursor": "pointer",
           "left": "12px",
           "msTouchAction": "manipulation",
-          "msUserSelect": "none",
+          "msUserSelect": "auto",
           "position": "absolute",
           "touchAction": "manipulation",
           "transitionDuration": "0s",
           "transitionProperty": "opacity",
-          "userSelect": "none",
+          "userSelect": "auto",
         }
       }
       tabIndex="0"

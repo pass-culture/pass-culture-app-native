@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -18,7 +19,7 @@ export const SocialButton = ({ label, icon: Icon, onPress }: Props) => (
   </Container>
 )
 
-const Container = styled.TouchableOpacity({
+const Container = styled(TouchableOpacity)({
   flexGrow: 1,
   alignItems: 'center',
   minWidth: 100,

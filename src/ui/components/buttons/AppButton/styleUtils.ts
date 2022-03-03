@@ -1,13 +1,14 @@
 import { ButtonHTMLAttributes, DetailedHTMLProps, RefAttributes } from 'react'
-import { TouchableOpacity, TouchableOpacityProps } from 'react-native'
+import { TouchableOpacityProps } from 'react-native'
 import { InterpolationFunction, ThemedStyledProps } from 'styled-components'
 import { DefaultTheme } from 'styled-components/native'
 
 import { TouchableOpacityButtonProps } from 'ui/components/buttons/AppButton/types'
+import { RNTouchableOpacity } from 'ui/components/TouchableOpacity'
 
 type ButtonStyles = InterpolationFunction<
   ThemedStyledProps<
-    TouchableOpacityProps & RefAttributes<TouchableOpacity> & TouchableOpacityButtonProps,
+    TouchableOpacityProps & RefAttributes<RNTouchableOpacity> & TouchableOpacityButtonProps,
     DefaultTheme
   >
 >

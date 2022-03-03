@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { useTheme, DefaultTheme } from 'styled-components/native'
 
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -60,9 +61,7 @@ const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
 }))``
 
-const ChoiceContainer = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))({
+const ChoiceContainer = styled(TouchableOpacity)({
   width: '33%',
   padding: getSpacing(2),
 })

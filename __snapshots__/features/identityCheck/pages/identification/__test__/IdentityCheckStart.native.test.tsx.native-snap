@@ -74,6 +74,7 @@ Array [
             "left": 12,
             "opacity": 1,
             "position": "absolute",
+            "userSelect": "auto",
           }
         }
         testID="Revenir en arrière"
@@ -351,6 +352,7 @@ Array [
                           "paddingLeft": 0,
                           "paddingRight": 0,
                           "paddingTop": 2,
+                          "userSelect": "auto",
                           "width": "100%",
                         }
                       }
@@ -610,6 +612,7 @@ Array [
                                   "paddingLeft": 4,
                                   "paddingRight": 4,
                                   "paddingTop": 4,
+                                  "userSelect": "auto",
                                 }
                               }
                               testID="Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
@@ -705,6 +708,7 @@ Array [
                                     "paddingLeft": 0,
                                     "paddingRight": 0,
                                     "paddingTop": 2,
+                                    "userSelect": "auto",
                                     "width": "100%",
                                   }
                                 }
@@ -789,6 +793,7 @@ Array [
                                     "paddingLeft": 0,
                                     "paddingRight": 0,
                                     "paddingTop": 2,
+                                    "userSelect": "auto",
                                     "width": "100%",
                                   }
                                 }
@@ -909,6 +914,7 @@ Array [
                     "paddingLeft": 2,
                     "paddingRight": 2,
                     "paddingTop": 2,
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -1202,6 +1208,7 @@ Array [
                   "paddingLeft": 4,
                   "paddingRight": 4,
                   "paddingTop": 4,
+                  "userSelect": "auto",
                 }
               }
               testID="Fermer la modale de conseils pour avoir un document lisible"
@@ -1416,6 +1423,7 @@ Array [
                     "paddingLeft": 2,
                     "paddingRight": 2,
                     "paddingTop": 2,
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }

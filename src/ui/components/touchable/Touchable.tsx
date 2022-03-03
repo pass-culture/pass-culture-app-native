@@ -1,5 +1,6 @@
 import React from 'react'
-import styled from 'styled-components/native'
+
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
 import { TouchableProps } from './types'
 
@@ -10,12 +11,8 @@ export const Touchable: React.FC<TouchableProps> = ({
   testID,
 }) => {
   return (
-    <StyledTouchable onPress={onPress} testID={testID} accessibilityLabel={accessibilityLabel}>
+    <TouchableOpacity onPress={onPress} testID={testID} accessibilityLabel={accessibilityLabel}>
       {children}
-    </StyledTouchable>
+    </TouchableOpacity>
   )
 }
-
-const StyledTouchable = styled.TouchableOpacity.attrs(({ theme }) => ({
-  activeOpacity: theme.activeOpacity,
-}))``

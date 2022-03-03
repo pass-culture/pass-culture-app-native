@@ -58,6 +58,7 @@ exports[`AsyncErrorBoundary component should render 1`] = `
         "opacity": 1,
         "position": "absolute",
         "top": 30,
+        "userSelect": "auto",
       }
     }
     testID="backArrow"
@@ -230,6 +231,7 @@ exports[`AsyncErrorBoundary component should render 1`] = `
             "paddingLeft": 2,
             "paddingRight": 2,
             "paddingTop": 2,
+            "userSelect": "auto",
             "width": "100%",
           }
         }

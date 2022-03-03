@@ -945,6 +945,7 @@ Array [
                 Object {
                   "alignItems": "center",
                   "opacity": 1,
+                  "userSelect": "auto",
                 }
               }
             >
@@ -997,6 +998,7 @@ Array [
                       },
                       "shadowOpacity": 0.15,
                       "shadowRadius": 12,
+                      "userSelect": "auto",
                       "width": 64,
                     }
                   }
@@ -1109,6 +1111,7 @@ Array [
           "justifyContent": "center",
           "opacity": 1,
           "overflow": "hidden",
+          "userSelect": "auto",
         }
       }
       testID="Voir toutes les offres"

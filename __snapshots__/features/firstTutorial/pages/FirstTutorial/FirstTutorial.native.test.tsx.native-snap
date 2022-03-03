@@ -84,6 +84,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
               "paddingLeft": 2,
               "paddingRight": 2,
               "paddingTop": 2,
+              "userSelect": "auto",
               "width": "100%",
             }
           }
@@ -364,6 +365,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                           "paddingLeft": 2,
                           "paddingRight": 2,
                           "paddingTop": 2,
+                          "userSelect": "auto",
                           "width": "100%",
                         }
                       }
@@ -1703,6 +1705,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     Object {
                       "marginRight": "70%",
                       "opacity": 1,
+                      "userSelect": "auto",
                     }
                   }
                   testID="controlButton"

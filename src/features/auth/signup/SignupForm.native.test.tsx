@@ -1,6 +1,6 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
-import { TouchableOpacity, View, Text } from 'react-native'
+import { View, Text } from 'react-native'
 
 import { navigation } from '__mocks__/@react-navigation/native'
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
@@ -8,6 +8,7 @@ import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
