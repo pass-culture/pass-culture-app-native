@@ -14,7 +14,7 @@ interface Props {
   isError?: boolean
 }
 
-export function DateInput({ date, isError }: Props) {
+export function DateInputDisplay({ date, isError }: Props) {
   const dateInputID = uuidv4()
   return (
     <InputContainer>

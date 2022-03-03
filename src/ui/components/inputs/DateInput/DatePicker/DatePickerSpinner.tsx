@@ -3,7 +3,7 @@ import DatePicker from 'react-native-date-picker'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { DateInput } from 'ui/components/inputs/DateInput/atoms/DateInput'
+import { DateInputDisplay } from 'ui/components/inputs/DateInput/atoms/DateInputDisplay'
 import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Spacer } from 'ui/theme'
@@ -19,7 +19,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
 
   return (
     <React.Fragment>
-      <DateInput date={date} isError={!!props.errorMessage} />
+      <DateInputDisplay date={date} isError={!!props.errorMessage} />
       {!!props.errorMessage && (
         <InputError
           visible
