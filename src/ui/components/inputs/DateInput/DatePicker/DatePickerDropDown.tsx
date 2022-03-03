@@ -1,9 +1,9 @@
 export const DatePickerDropDown = (_: {
   defaultSelectedDate?: Date
   minimumDate?: Date
-  maximumDate?: Date | undefined
+  maximumDate?: Date
   onChange?: (date?: Date | undefined) => void
-  errorMessage?: string | null | undefined
-  isDisabled?: boolean | undefined
-  chidren?: undefined
+  errorMessage?: string | null
+  isDisabled?: boolean
+  chidren?: never
 }) => null

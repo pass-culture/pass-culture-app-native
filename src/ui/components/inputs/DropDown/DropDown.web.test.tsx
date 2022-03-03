@@ -2,7 +2,7 @@ import React from 'react'
 
 import { monthNames } from 'features/bookOffer/components/Calendar/Calendar.utils'
 import { fireEvent, render } from 'tests/utils/web'
-import { DropDown } from 'ui/components/inputs/DropDown/DropDown.web'
+import { DropDown } from 'ui/components/inputs/DropDown/DropDown'
 
 describe('<DropDown />', () => {
   it('should correctly set default option', () => {
