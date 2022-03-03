@@ -87,6 +87,7 @@ export const AccordionItem = ({
       onOpen()
       onOpenOnce && openOnce()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
   const getPositionOfAccordionItem = (event: LayoutChangeEvent) => {

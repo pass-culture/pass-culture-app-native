@@ -44,6 +44,7 @@ export const BottomContentPage: FC<Props> = (props) => {
     }
 
     props.keyboardHeightRef.current = keyboardHeight
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [keyboardHeight])
 
   return (

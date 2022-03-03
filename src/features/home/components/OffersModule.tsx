@@ -41,6 +41,7 @@ export const OffersModule = (props: OffersModuleProps) => {
   const { hits = [], nbHits = 0 } = data || {}
 
   const [parameters] = search
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const params = { ...parseSearchParameters(parameters), hitsPerPage: 20 }
   const moduleName = display.title || parameters.title
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>
@@ -51,6 +52,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     hits.length < nbHits &&
     !(parameters.tags || parameters.beginningDatetime || parameters.endingDatetime)
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const onPressSeeMore = showSeeMore
     ? () => {
         analytics.logClickSeeMore(moduleName)
@@ -83,6 +85,7 @@ export const OffersModule = (props: OffersModuleProps) => {
         />
       )
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [position, profile?.isBeneficiary, labelMapping, mapping]
   )
 

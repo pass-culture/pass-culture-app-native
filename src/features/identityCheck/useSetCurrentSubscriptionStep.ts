@@ -48,6 +48,7 @@ export const useSetSubscriptionStepAndMethod = () => {
         .catch(() => {
           eventMonitoring.captureException(new Error('Error fetching subscription'))
         })
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
   )
 

@@ -38,11 +38,13 @@ export const SearchWrapper = memo(function SearchWrapper({ children }: { childre
     const actionType = position ? 'SET_LOCATION_AROUND_ME' : 'SET_LOCATION_EVERYWHERE'
     dispatch({ type: actionType })
     stagedDispatch({ type: actionType })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [!position])
 
   useEffect(() => {
     dispatch({ type: 'PRICE_RANGE', payload: priceRange })
     stagedDispatch({ type: 'PRICE_RANGE', payload: priceRange })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [maxPrice])
 
   return (

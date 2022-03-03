@@ -49,6 +49,7 @@ export function ChangePassword() {
     if (hasError) {
       setHasError(false)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPassword, newPassword, confirmedPassword])
 
   const { mutate: changePassword, isLoading } = useChangePasswordMutation(

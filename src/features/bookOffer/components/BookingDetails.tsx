@@ -88,6 +88,7 @@ export const BookingDetails: React.FC<Props> = ({ stocks }) => {
       dispatch({ type: 'SELECT_STOCK', payload: firstBookableStock.id })
       dispatch({ type: 'SELECT_QUANTITY', payload: 1 })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [stocks, selectedStock])
 
   if (!selectedStock || typeof quantity !== 'number') return <React.Fragment />

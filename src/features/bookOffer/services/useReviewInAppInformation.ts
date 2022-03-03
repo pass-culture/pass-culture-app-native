@@ -29,6 +29,7 @@ export const useReviewInAppInformation = () => {
           ])
         }
       })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const updateInformationWhenReviewHasBeenRequested = () => {

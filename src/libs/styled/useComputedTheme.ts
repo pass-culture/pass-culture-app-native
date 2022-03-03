@@ -24,6 +24,7 @@ export function useComputedTheme<A extends DefaultThemeNative>(theme: A) {
       showTabBar,
       appContentWidth,
     }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [isMobileViewport, isTabletViewport, isDesktopViewport, showTabBar, appContentWidth]
   )
 }

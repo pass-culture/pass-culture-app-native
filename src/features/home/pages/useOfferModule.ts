@@ -47,6 +47,7 @@ export const useOfferModule = ({
     if (!isConnected) return
     // When we enable or disable the geolocation, we want to refetch the home modules
     refetch()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [!!position, user?.isBeneficiary, isConnected])
 
   return useMemo(() => {
@@ -57,5 +58,6 @@ export const useOfferModule = ({
       hits: uniqBy(hits, 'objectID') as SearchHit[],
       nbHits: data.nbHits,
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, !!position, transformHits])
 }

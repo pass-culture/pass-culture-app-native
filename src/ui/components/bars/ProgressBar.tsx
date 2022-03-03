@@ -49,6 +49,7 @@ const ProgressBarComponent: React.FC<ProgressBarProps> = ({
         }
       )
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [progress, barRef, barWidth])
   return (
     <Container>

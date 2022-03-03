@@ -25,6 +25,7 @@ export function useInitialScreen(): RootScreenNames | undefined {
       .catch(() => {
         setInitialScreen('TabNavigator')
       })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoggedIn])
 
   return initialScreen

@@ -69,6 +69,7 @@ export const useKeyboardEvents = ({ onBeforeShow, onBeforeHide }: UseKeyboardEve
       keyboardWillHide.remove()
       keyboardDidHide.remove()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [onBeforeHide, onBeforeShow])
 }
 

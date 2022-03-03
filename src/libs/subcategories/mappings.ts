@@ -22,6 +22,7 @@ export const useSubcategoriesMapping = (): SubcategoriesMapping => {
       mapping[id] = subcategory
     })
     return mapping
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subcategories.length])
 }
 
@@ -35,6 +36,7 @@ export const useCategoryIdMapping = (): CategoryIdMapping => {
       mapping[curr.id] = curr.categoryId
     })
     return mapping
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subcategories.length])
 }
 
@@ -48,6 +50,7 @@ export const useSubcategoryLabelMapping = (): SubcategoryLabelMapping => {
       mapping[curr.appLabel] = curr.id
     })
     return mapping
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subcategories.length])
 }
 
@@ -61,6 +64,7 @@ const useHomeLabelMapping = (): HomeLabelMapping => {
       mapping[curr.name] = curr.value || null
     })
     return mapping
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [homepageLabels.length])
 }
 
@@ -75,6 +79,7 @@ export const useCategoryHomeLabelMapping = (): CategoryHomeLabelMapping => {
       mapping[curr.id] = homeLabelMapping[curr.homepageLabelName]
     })
     return mapping
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subcategories.length, homeLabelMapping])
 }
 
@@ -88,5 +93,6 @@ export const useSearchGroupLabelMapping = (): SearchGroupLabelMapping => {
       mapping[curr.name] = curr.value || t`Toutes les catégories`
     })
     return mapping
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchGroups.length])
 }

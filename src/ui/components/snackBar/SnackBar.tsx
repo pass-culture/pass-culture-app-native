@@ -59,6 +59,7 @@ const _SnackBar = (props: SnackBarProps) => {
     })
   }
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const onClose = useCallback(() => props.onClose?.(), [])
 
   const Icon =
@@ -86,6 +87,7 @@ const _SnackBar = (props: SnackBarProps) => {
     }
     const timeout = setTimeout(props.onClose, props.timeout)
     return () => clearTimeout(timeout)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.refresher])
 
   const { top } = useSafeAreaInsets()

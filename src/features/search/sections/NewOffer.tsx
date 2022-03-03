@@ -13,6 +13,7 @@ export const NewOffer: React.FC = () => {
   const toggle = useCallback(() => {
     dispatch({ type: 'TOGGLE_OFFER_NEW' })
     logUseFilter()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

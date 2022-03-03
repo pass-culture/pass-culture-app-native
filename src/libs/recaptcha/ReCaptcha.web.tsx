@@ -86,6 +86,7 @@ export function ReCaptcha(props: Props) {
     return () => {
       clearInterval(intervalId)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.isVisible])
 
   return (

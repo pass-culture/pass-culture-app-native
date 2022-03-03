@@ -37,6 +37,7 @@ export function useEduConnectLogin() {
     getLoginUrl().catch(() =>
       setError(new EduConnectError(EduConnectErrorMessageEnum.GenericError))
     )
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [eduConnectClient])
 
   const openEduConnect = useCallback(async () => {
@@ -46,6 +47,7 @@ export function useEduConnectLogin() {
     } catch (err) {
       setError(new EduConnectError(EduConnectErrorMessageEnum.GenericError))
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [eduConnectClient, loginUrl])
 
   return { openEduConnect, loginUrl, error }

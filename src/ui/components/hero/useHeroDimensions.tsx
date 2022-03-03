@@ -52,5 +52,6 @@ export const useHeroDimensions = (type: 'offer' | 'venue', hasImage: boolean) =>
         aspectRatio: RATIO_PORTRAIT,
       },
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasImage, type, top, borderRadius])
 }

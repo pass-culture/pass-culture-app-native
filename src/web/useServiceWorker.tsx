@@ -222,6 +222,7 @@ const useProvideServiceWorker = (
     return () => {
       unregister()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return swState

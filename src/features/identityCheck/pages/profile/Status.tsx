@@ -39,6 +39,7 @@ export const Status = () => {
 
   useEffect(() => {
     dispatch({ type: 'SET_HAS_SCHOOL_TYPES', payload: hasSchoolTypes })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasSchoolTypes])
 
   const submitStatus = async () => {

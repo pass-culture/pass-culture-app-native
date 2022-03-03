@@ -13,6 +13,7 @@ export const Hour: React.FC = () => {
   const toggle = useCallback(() => {
     dispatch({ type: 'TOGGLE_HOUR' })
     logUseFilter()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

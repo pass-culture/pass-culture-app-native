@@ -59,6 +59,7 @@ export function OnGoingBookingsList() {
         <EndedBookingsSection endedBookings={endedBookings} />
       </FooterContainer>
     ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [hasBookings, bookingsCountLabel, endedBookings]
   )
 

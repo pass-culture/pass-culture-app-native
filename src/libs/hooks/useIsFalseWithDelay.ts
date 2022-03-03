@@ -25,6 +25,7 @@ export const useIsFalseWithDelay = (condition: boolean, delay: number): boolean 
     return () => {
       if (timer) clearTimeout(timer)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [condition])
 
   return delayedCondition

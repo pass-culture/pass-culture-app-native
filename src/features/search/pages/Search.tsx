@@ -51,6 +51,7 @@ export function Search() {
       dispatch({ type: 'SET_STATE_FROM_NAVIGATE', payload: params })
       dispatch({ type: 'SHOW_RESULTS', payload: true })
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [params])
 
   return (

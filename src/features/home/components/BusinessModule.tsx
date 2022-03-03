@@ -50,6 +50,7 @@ export const BusinessModule = ({ module }: { module: BusinessPane }) => {
       showInfoSnackBar({ message: t`Redirection en cours` })
       return
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [url, user, shouldRedirect])
 
   const shouldModuleBeDisplayed = showBusinessModule(module.targetNotConnectedUsersOnly, isLoggedIn)

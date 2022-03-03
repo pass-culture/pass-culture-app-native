@@ -21,18 +21,21 @@ export const ContactBlock: React.FC<{ venueId: number }> = ({ venueId }) => {
     if (!email) return
     analytics.logVenueContact({ type: 'email', venueId })
     openMail(email)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [email])
 
   const onPressPhone = useCallback(() => {
     if (!phoneNumber) return
     analytics.logVenueContact({ type: 'phoneNumber', venueId })
     openPhoneNumber(phoneNumber)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [phoneNumber])
 
   const onPressWebsite = useCallback(() => {
     if (!website) return
     analytics.logVenueContact({ type: 'website', venueId })
     openUrl(website)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [website])
 
   if (!venue || !venue.contact) return <React.Fragment></React.Fragment>

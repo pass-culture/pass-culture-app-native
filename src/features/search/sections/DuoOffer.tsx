@@ -13,6 +13,7 @@ export const DuoOffer: React.FC = () => {
   const toggle = useCallback(() => {
     dispatch({ type: 'TOGGLE_OFFER_DUO' })
     logUseFilter()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (

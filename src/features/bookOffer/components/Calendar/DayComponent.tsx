@@ -33,6 +33,7 @@ export const useSelectDay = (): ((props: Props) => VoidFn | undefined) => {
     if (selected) return selectDate(date)
     if (status === OfferStatus.BOOKABLE) return selectDate(date)
     return undefined
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 }
 

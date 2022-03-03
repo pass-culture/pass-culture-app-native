@@ -26,6 +26,7 @@ export function OfferDate({ setScrollEnabled }: Props) {
     if (setScrollEnabled && isTouch && Platform.OS === 'web') {
       setScrollEnabled(!showTimePicker)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [setScrollEnabled, showTimePicker])
 
   if (!searchState.date) return <React.Fragment />

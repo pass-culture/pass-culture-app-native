@@ -31,6 +31,7 @@ export const PartialAccordionDescription: React.FC<Props> = ({ description }) =>
       setIsLongDescription(true)
       setMaxLines(NUMBER_OF_LINES)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [totalDescriptionHeight])
 
   const toggleDescription = () => {

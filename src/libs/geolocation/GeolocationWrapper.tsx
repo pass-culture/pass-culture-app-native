@@ -47,6 +47,7 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
 
   useEffect(() => {
     contextualCheckPermission()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   async function triggerPositionUpdate() {
@@ -63,30 +64,31 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
   }
 
   // this function is used to set OS permissions according to user choice on native geolocation popup
-  const contextualRequestGeolocPermission = useCallback(async function (
-    params?: RequestGeolocPermissionParams
-  ) {
-    !!params?.onSubmit && params.onSubmit()
+  const contextualRequestGeolocPermission = useCallback(
+    async function (params?: RequestGeolocPermissionParams) {
+      !!params?.onSubmit && params.onSubmit()
 
-    let permission = await requestGeolocPermission()
-    if (shouldTriggerPositionUpdate(permission)) {
-      const newPosition = await triggerPositionUpdate()
-      if (isNeedAskPosition(permission)) {
-        permission =
-          newPosition === null
-            ? GeolocPermissionState.NEVER_ASK_AGAIN
-            : GeolocPermissionState.GRANTED
+      let permission = await requestGeolocPermission()
+      if (shouldTriggerPositionUpdate(permission)) {
+        const newPosition = await triggerPositionUpdate()
+        if (isNeedAskPosition(permission)) {
+          permission =
+            newPosition === null
+              ? GeolocPermissionState.NEVER_ASK_AGAIN
+              : GeolocPermissionState.GRANTED
+        }
       }
-    }
 
-    if (isGranted(permission)) {
-      !!params?.onAcceptance && params.onAcceptance()
-    } else {
-      !!params?.onRefusal && params.onRefusal()
-    }
-    setPermissionState(permission)
-  },
-  [])
+      if (isGranted(permission)) {
+        !!params?.onAcceptance && params.onAcceptance()
+      } else {
+        !!params?.onRefusal && params.onRefusal()
+      }
+      setPermissionState(permission)
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  )
 
   // in case user updates his preferences in his phone settings we check if his local
   // storage choice is consistent with phone permissions, and update position if not
@@ -102,6 +104,7 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
       }
     }
     setPermissionState(permission)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -109,6 +112,7 @@ export const GeolocationWrapper = memo(function GeolocationWrapper({
       setPosition(null)
       setPositionError(null)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [permissionState])
 
   useAppStateChange(contextualCheckPermission, undefined, [])

@@ -31,6 +31,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
       month: monthNamesShort,
       year: getPastYears(props.minimumDate.getFullYear(), DEFAULT_DATE.year),
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date, monthNamesShort, getYears])
 
   function onDateChange(name: string, value: number | string) {
@@ -42,6 +43,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
 
   useEffect(() => {
     props.onChange(birthdate)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [date])
 
   const birthdateInputErrorId = uuidv4()

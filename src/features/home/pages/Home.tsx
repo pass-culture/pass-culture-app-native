@@ -70,6 +70,7 @@ export const Home: FunctionComponent = () => {
     ({ nativeEvent }: NativeSyntheticEvent<NativeScrollEvent>) => {
       if (isCloseToBottom(nativeEvent)) logHasSeenAllModules()
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [modules.length]
   )
 

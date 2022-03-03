@@ -94,6 +94,7 @@ Those props are provided by the GenericAchievementCard and must be passed down t
         didFadeIn = true
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [animatedButtonRef])
 
   useEffect(() => {

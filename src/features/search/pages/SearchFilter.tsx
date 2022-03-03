@@ -19,10 +19,12 @@ const useScrollToEndOnTimeOrDateActivation = () => {
 
   useEffect(() => {
     shouldScrollRef.current = true
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [!searchState.date])
 
   useEffect(() => {
     shouldScrollRef.current = true
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [!searchState.timeRange])
 
   const scrollToEnd = (event: LayoutChangeEvent) => {

@@ -27,5 +27,6 @@ export const useTrackOfferSeenDuration = (offerId: number) => {
         totalDurationOnPageInSeconds - timeInBackground.current
       analytics.logOfferSeenDuration(offerId, +durationWithoutBackgroundTimeInSec.toFixed(3))
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 }

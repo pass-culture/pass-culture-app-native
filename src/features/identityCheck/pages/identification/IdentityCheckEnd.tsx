@@ -17,6 +17,7 @@ export const IdentityCheckEnd = () => {
       3000
     )
     return () => clearTimeout(timeout)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subscription?.nextSubscriptionStep])
 
   return (

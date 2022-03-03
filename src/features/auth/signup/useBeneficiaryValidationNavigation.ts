@@ -13,6 +13,7 @@ export const useBeneficiaryValidationNavigation = (setError: (error: Error) => v
 
   const navigateToNextBeneficiaryValidationStep = useCallback(() => {
     return api.getnativev1subscriptionnextStep().then(navigateToNextStep).catch(setError)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navigateToNextStep])
 
   return { navigateToNextBeneficiaryValidationStep }

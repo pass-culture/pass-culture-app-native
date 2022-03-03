@@ -79,6 +79,7 @@ export const CalendarPicker: React.FC<Props> = ({
       const root = document.querySelector('#root')
       if (root) root.append(ref.current)
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref.current])
 
   useEffect(() => {
@@ -118,6 +119,7 @@ export const CalendarPicker: React.FC<Props> = ({
         year: getYears(currentYear, 10),
       },
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [mobileDateValues, monthNamesShort, getYears])
 
   function handleMobileDateChange(name: string, value: number | string) {

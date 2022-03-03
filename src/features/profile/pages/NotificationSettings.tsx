@@ -98,6 +98,7 @@ export function NotificationSettings() {
         allowPush: !prevState.allowPush,
       }
     })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user, isLoggedIn])
 
   const onRequestNotificationPermissionFromModal = () => {

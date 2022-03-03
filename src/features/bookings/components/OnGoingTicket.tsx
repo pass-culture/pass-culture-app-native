@@ -23,5 +23,6 @@ const useClippedImageProps = (altIcon: FC<IconInterface>, image?: string): Clipp
     width: 73,
     height: 110,
   }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   return useMemo(() => Object.assign(props, image ? { image } : { altIcon }), [altIcon, image])
 }

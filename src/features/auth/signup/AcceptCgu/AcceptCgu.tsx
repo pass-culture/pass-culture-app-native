@@ -77,6 +77,7 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
 
   const onSubmit = useCallback(() => {
     settings?.isRecaptchaEnabled ? openReCaptchaChallenge() : handleSignup('dummyToken')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [settings?.isRecaptchaEnabled, openReCaptchaChallenge])
 
   const disabled = useMemo(

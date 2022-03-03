@@ -15,5 +15,6 @@ export const useNavigateToSearchResults = ({ from }: { from: Referrals }) => {
     analytics.logDiscoverOffers(from)
     dispatch({ type: 'INIT' })
     navigate(...getTabNavConfig('Search', { showResults: true }))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 }

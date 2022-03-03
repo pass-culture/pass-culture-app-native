@@ -77,6 +77,7 @@ export const Header = memo(function Header() {
     }
     fadeOutDesktop()
     fadeInTablette()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isBrandVisible])
 
   if (theme.showTabBar) {

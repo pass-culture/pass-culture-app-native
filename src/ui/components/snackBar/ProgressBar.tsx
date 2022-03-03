@@ -25,6 +25,7 @@ const NotMemoizedProgressBar = (props: ProgressBarProps) => {
   useEffect(() => {
     progressBarCompletion.setValue(0)
     animateProgressBarWidth()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.refresher])
 
   return (
