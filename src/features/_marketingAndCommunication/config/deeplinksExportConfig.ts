@@ -11,9 +11,17 @@ export type ScreensUsedByMarketing = Extract<
 type ScreensUsedByMarketingParamsList = Pick<AllNavParamList, ScreensUsedByMarketing>
 
 export type ParamConfig = {
-  type: 'string'
+  type:
+    | 'string'
+    | 'stringArray'
+    | 'priceRange'
+    | 'boolean'
+    | 'offerCategories'
+    | 'offerTypes'
+    | 'date'
+    | 'locationFilter'
   required?: boolean
-  description?: string
+  description: string
   serverValidator?: (value: string) => Promise<unknown>
 }
 
@@ -50,8 +58,63 @@ export const SCREENS_CONFIG: {
   Search: {
     URL: {
       type: 'string',
-      required: true,
+      required: false,
       description: `Une URL de recherche a convertir`,
+    },
+    locationFilter: {
+      type: 'locationFilter',
+      required: false,
+      description: `Lieu`,
+    },
+    query: {
+      type: 'string',
+      required: false,
+      description: `Mot clé`,
+    },
+    offerCategories: {
+      type: 'offerCategories',
+      required: false,
+      description: `Categories`,
+    },
+    offerTypes: {
+      type: 'offerTypes',
+      required: false,
+      description: `Type d'offre`,
+    },
+    tags: {
+      type: 'string',
+      required: false,
+      description: `Tags`,
+    },
+    priceRange: {
+      type: 'priceRange',
+      required: false,
+      description: `Prix`,
+    },
+    offerIsFree: {
+      type: 'boolean',
+      required: false,
+      description: `Uniquement les offres gratuites`,
+    },
+    offerIsNew: {
+      type: 'boolean',
+      required: false,
+      description: `Uniquement les nouveautés`,
+    },
+    offerIsDuo: {
+      type: 'boolean',
+      required: false,
+      description: `Offre DUO`,
+    },
+    beginningDatetime: {
+      type: 'date',
+      required: false,
+      description: `Date de début`,
+    },
+    endingDatetime: {
+      type: 'date',
+      required: false,
+      description: `Date de fin`,
     },
   },
   Profile: {},

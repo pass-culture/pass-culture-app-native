@@ -1,8 +1,14 @@
 import { t } from '@lingui/macro'
 import omit from 'lodash.omit'
 import React, { useMemo, useState } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
+import { SearchGroupNameEnum } from 'api/gen'
+import { ControlledFilterSwitch } from 'features/_marketingAndCommunication/atoms/ControlledFilterSwitch'
+import { DateChoice } from 'features/_marketingAndCommunication/atoms/DateChoice'
+import { LocationFilterChoice } from 'features/_marketingAndCommunication/atoms/LocationFilterChoice'
+import { OfferCategoryChoices } from 'features/_marketingAndCommunication/atoms/OfferCategoryChoices'
+import { OfferTypeChoices } from 'features/_marketingAndCommunication/atoms/OfferTypeChoices'
 import {
   FDL_CONFIG,
   MARKETING_CONFIG,
@@ -14,9 +20,13 @@ import { generateLongFirebaseDynamicLink } from 'features/deeplinks'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { isTabScreen } from 'features/navigation/TabBar/routes'
+import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
+import { LocationFilter } from 'features/search/types'
 import { env } from 'libs/environment'
+import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { Slider } from 'ui/components/inputs/Slider'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { RadioButton } from 'ui/components/RadioButton'
 import { Separator } from 'ui/components/Separator'
@@ -35,7 +45,8 @@ interface Props {
 }
 
 export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
-  const [selectedScreen, setSelectedScreen] = useState<ScreensUsedByMarketing>('Offer')
+  const { appContentWidth, isMobileViewport } = useTheme()
+  const [selectedScreen, setSelectedScreen] = useState<ScreensUsedByMarketing>('Home')
   const [screenParams, setScreenParams] = useState<Record<string, string>>({})
 
   const { showErrorSnackBar } = useSnackBarContext()
@@ -71,32 +82,153 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       }
     }
 
+    function onChangeText(text: string) {
+      setScreenParams((prevPageParams) =>
+        text.length === 0
+          ? omit(prevPageParams, name)
+          : {
+              ...prevPageParams,
+              [name]: text,
+            }
+      )
+    }
+
+    function onChangeStringArray(text: string) {
+      setScreenParams((prevPageParams) =>
+        text.length === 0
+          ? omit(prevPageParams, name)
+          : {
+              ...prevPageParams,
+              [name]: text.split(';'),
+            }
+      )
+    }
+
+    function onBlurValidate() {
+      const value: string = screenParams[name]
+      !!value && validate(value)
+    }
+
+    function onBooleanChange(value: boolean) {
+      setScreenParams((prevPageParams) =>
+        !value
+          ? omit(prevPageParams, name)
+          : {
+              ...prevPageParams,
+              [name]: value,
+            }
+      )
+    }
+
+    function onChangePriceRange(value: number[]) {
+      setScreenParams((prevPageParams) =>
+        value[0] === 0 && value[1] === MAX_PRICE
+          ? omit(prevPageParams, name)
+          : {
+              ...prevPageParams,
+              [name]: value,
+            }
+      )
+    }
+
+    function onChangeOfferCategories(categories: SearchGroupNameEnum[]) {
+      setScreenParams((prevPageParams) =>
+        !categories.length
+          ? omit(prevPageParams, name)
+          : {
+              ...prevPageParams,
+              [name]: categories,
+            }
+      )
+    }
+
+    function onChangeOfferTypes(offerTypes: {
+      isDigital: boolean
+      isEvent: boolean
+      isThing: boolean
+    }) {
+      setScreenParams((prevPageParams) =>
+        !offerTypes.isDigital && !offerTypes.isEvent && !offerTypes.isThing
+          ? omit(prevPageParams, name)
+          : {
+              ...prevPageParams,
+              [name]: offerTypes,
+            }
+      )
+    }
+
+    function onChangeDate(date: Date | undefined) {
+      setScreenParams((prevPageParams) =>
+        !date
+          ? omit(prevPageParams, name)
+          : {
+              ...prevPageParams,
+              [name]: date,
+            }
+      )
+    }
+
+    function onChangeLocationFilterChoice(locationFilter: LocationFilter | null) {
+      setScreenParams((prevPageParams) =>
+        !locationFilter
+          ? omit(prevPageParams, name)
+          : {
+              ...prevPageParams,
+              [name]: locationFilter,
+            }
+      )
+    }
+
+    const placeholder = config.required ? `${name} (*)` : name
+    const sliderLength = appContentWidth / (isMobileViewport ? 1 : 2) - getSpacing(2 * 2 * 6)
+
     return (
       <React.Fragment key={name}>
         <Spacer.Column numberOfSpaces={2} />
         {config.type === 'string' && (
           <TextInput
-            placeholder={config.required ? `${name} (*)` : name}
-            onBlur={() => {
-              const value: string = screenParams[name]
-              !!value && validate(value)
-            }}
-            onChangeText={(text) =>
-              setScreenParams((prevPageParams) =>
-                text.length === 0
-                  ? omit(prevPageParams, name)
-                  : {
-                      ...prevPageParams,
-                      [name]: text,
-                    }
-              )
-            }
+            placeholder={placeholder}
+            onBlur={onBlurValidate}
+            onChangeText={onChangeText}
           />
         )}
+        {config.type === 'stringArray' && (
+          <TextInput
+            placeholder={placeholder}
+            onBlur={onBlurValidate}
+            onChangeText={onChangeStringArray}
+          />
+        )}
+        {config.type === 'boolean' && (
+          <ControlledFilterSwitch onChange={onBooleanChange} name={config.description} />
+        )}
+        {config.type === 'priceRange' && (
+          <PaddingContainer>
+            <Slider
+              showValues={true}
+              max={MAX_PRICE}
+              sliderLength={sliderLength}
+              formatValues={formatPriceInEuroToDisplayPrice}
+              onValuesChangeFinish={onChangePriceRange}
+            />
+          </PaddingContainer>
+        )}
+        {config.type === 'offerCategories' && (
+          <OfferCategoryChoices onChange={onChangeOfferCategories} />
+        )}
+        {config.type === 'offerTypes' && <OfferTypeChoices onChange={onChangeOfferTypes} />}
+        {config.type === 'date' && (
+          <PaddingContainer>
+            <DateChoice onChange={onChangeDate} />
+          </PaddingContainer>
+        )}
+        {config.type === 'locationFilter' && (
+          <LocationFilterChoice onChange={onChangeLocationFilterChoice} />
+        )}
         {!!config.description && (
-          <DescriptionContainer>
+          <PaddingContainer>
             <StyledCaption>{config.description}</StyledCaption>
-          </DescriptionContainer>
+          </PaddingContainer>
         )}
         <Separator />
       </React.Fragment>
@@ -233,7 +365,7 @@ const BottomContainer = styled.View({
   alignItems: 'center',
 })
 
-const DescriptionContainer = styled.View({
+const PaddingContainer = styled.View({
   padding: getSpacing(5),
 })
 

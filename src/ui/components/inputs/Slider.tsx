@@ -2,7 +2,6 @@ import MultiSlider from '@ptomasroos/react-native-multi-slider'
 import React, { useEffect, useRef, useState } from 'react'
 import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
-import { useTheme } from 'styled-components/native'
 
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -14,6 +13,7 @@ interface Props {
   max?: number
   step?: number
   onValuesChangeFinish?: (newValues: number[]) => void
+  sliderLength?: number
 }
 const DEFAULT_MIN = 0
 const DEFAULT_MAX = 100
@@ -24,7 +24,6 @@ const LEFT_CURSOR = 'LEFT_CURSOR'
 const RIGHT_CURSOR = 'RIGHT_CURSOR'
 
 export const Slider: React.FC<Props> = (props) => {
-  const { appContentWidth } = useTheme()
   const sliderContainerRef = useRef<View>(null)
 
   const min = props.min || DEFAULT_MIN
@@ -109,14 +108,14 @@ export const Slider: React.FC<Props> = (props) => {
           step={step}
           onValuesChange={setValues}
           onValuesChangeFinish={props.onValuesChangeFinish}
-          sliderLength={appContentWidth - getSpacing(2 * 2 * 6)}
+          sliderLength={props.sliderLength}
         />
       </View>
     </React.Fragment>
   )
 }
 
-const StyledMultiSlider = styled(MultiSlider).attrs(({ theme }) => {
+const StyledMultiSlider = styled(MultiSlider).attrs(({ sliderLength, theme }) => {
   const markerStyle = {
     height: getSpacing(7),
     width: getSpacing(7),
@@ -135,5 +134,6 @@ const StyledMultiSlider = styled(MultiSlider).attrs(({ theme }) => {
     selectedStyle: { backgroundColor: theme.colors.primary },
     unselectedStyle: { backgroundColor: theme.colors.greyMedium },
     containerStyle: { height: getSpacing(8) },
+    sliderLength: sliderLength ?? theme.appContentWidth - getSpacing(2 * 2 * 6),
   }
 })``

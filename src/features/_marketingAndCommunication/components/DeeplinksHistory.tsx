@@ -11,7 +11,7 @@ import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, padding, Spacer, Typo } from 'ui/theme'
 
-interface Props {
+export interface DeeplinksHistoryProps {
   history: Array<GeneratedDeeplink>
   keepHistory: boolean
   setKeepHistory: (keepHistory: boolean) => void
@@ -25,7 +25,7 @@ export const DeeplinksHistory = ({
   keepHistory,
   setKeepHistory,
   rehydrateHistory,
-}: Props) => {
+}: DeeplinksHistoryProps) => {
   const { showErrorSnackBar } = useSnackBarContext()
 
   const renderItem = ({ item, index }: { item: GeneratedDeeplink; index: number }) => {

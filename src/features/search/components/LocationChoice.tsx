@@ -14,6 +14,8 @@ type Props = {
   onPress?: () => void
   arrowNext?: boolean
   accessibilityDescribedBy?: string
+  // used by DeeplinksGeneratorForm
+  isSelected?: boolean
 }
 
 export const LocationChoice: React.FC<Props> = (props) => {
@@ -24,6 +26,8 @@ export const LocationChoice: React.FC<Props> = (props) => {
     size: theme.icons.sizes.small,
   }))``
 
+  const selected = props.isSelected ?? isSelected
+
   return (
     <Container onPress={onPress} testID={`locationChoice-${testID}`}>
       <FirstPart>
@@ -33,16 +37,16 @@ export const LocationChoice: React.FC<Props> = (props) => {
         <TextContainer>
           <ButtonText
             numberOfLines={3}
-            isSelected={isSelected}
+            isSelected={selected}
             aria-describedby={accessibilityDescribedBy}>
             {label}
           </ButtonText>
         </TextContainer>
       </FirstPart>
       <SecondPart>
-        {!!isSelected && <Validate testID="validateIcon" />}
-        {!!arrowNext && <ArrowNext />}
-        {!isSelected && !arrowNext ? <Spacer.Row numberOfSpaces={8} /> : null}
+        {selected ? <Validate testID="validateIcon" /> : null}
+        {arrowNext ? <ArrowNext /> : null}
+        {!selected && !arrowNext ? <Spacer.Row numberOfSpaces={8} /> : null}
       </SecondPart>
     </Container>
   )

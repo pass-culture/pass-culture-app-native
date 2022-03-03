@@ -7,7 +7,7 @@ import { GeneratedDeeplink } from 'features/_marketingAndCommunication/component
 import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
-  result: GeneratedDeeplink
+  result?: GeneratedDeeplink
 }
 
 export const DeeplinksResult = ({ result }: Props) => {
