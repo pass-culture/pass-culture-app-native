@@ -9,7 +9,7 @@ import {
   getYears,
   monthNames,
 } from 'features/bookOffer/components/Calendar/Calendar.utils'
-import { DatePickerProps } from 'ui/components/inputs/Date/DatePicker/types'
+import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types'
 import { DropDown } from 'ui/components/inputs/DropDown/DropDown'
 import { Spacer } from 'ui/theme'
 

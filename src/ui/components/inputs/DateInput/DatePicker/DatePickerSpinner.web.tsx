@@ -10,8 +10,8 @@ import {
   monthNamesShort,
 } from 'features/bookOffer/components/Calendar/Calendar.utils'
 import { pad } from 'libs/parsers'
-import { DateInput } from 'ui/components/inputs/Date/DateInput/DateInput'
-import { DatePickerProps } from 'ui/components/inputs/Date/DatePicker/types'
+import { DateInput } from 'ui/components/inputs/DateInput/atoms/DateInput'
+import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Spacer } from 'ui/theme'
 
