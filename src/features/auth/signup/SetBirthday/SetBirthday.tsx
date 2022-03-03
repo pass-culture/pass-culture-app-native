@@ -1,10 +1,8 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent, useState } from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { BirthdayInformationModal } from 'features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal'
-import { DatePickerDropDown } from 'features/auth/signup/SetBirthday/DatePicker/DatePickerDropDown.web'
-import { DatePickerSpinner } from 'features/auth/signup/SetBirthday/DatePicker/DatePickerSpinner'
 import { MINIMUM_DATE, UNDER_YOUNGEST_AGE } from 'features/auth/signup/SetBirthday/utils/constants'
 import { useDatePickerErrorHandler } from 'features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler'
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
@@ -12,6 +10,7 @@ import { analytics } from 'libs/analytics'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
+import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 import { useModal } from 'ui/components/modals/useModal'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Spacer } from 'ui/theme'
@@ -23,7 +22,6 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
   )
   const MAXIMUM_SPINNER_DATE = new Date(DEFAULT_SELECTED_DATE.getFullYear(), 11, 31)
 
-  const { isTouch } = useTheme()
   const { visible, showModal: showInformationModal, hideModal } = useModal(false)
   const [date, setDate] = useState<Date | undefined>()
 
@@ -41,8 +39,6 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
     }
   }
 
-  const DatePicker = isTouch ? DatePickerSpinner : DatePickerDropDown
-
   return (
     <Form.MaxWidth>
       <InnerContainer>
@@ -53,7 +49,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
           onPress={onPressWhy}
         />
         <Spacer.Column numberOfSpaces={2} />
-        <DatePicker
+        <DateInput
           onChange={setDate}
           errorMessage={errorMessage}
           defaultSelectedDate={DEFAULT_SELECTED_DATE}

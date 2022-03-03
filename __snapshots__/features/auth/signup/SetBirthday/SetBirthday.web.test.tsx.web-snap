@@ -43,6 +43,7 @@ Object {
           />
           <div
             class="css-view-1dbjc4n"
+            data-testid="date-picker-dropdown"
             style="flex-direction: row; max-width: 500px; width: 100%;"
           >
             <div
@@ -1486,6 +1487,7 @@ Object {
         />
         <div
           class="css-view-1dbjc4n"
+          data-testid="date-picker-dropdown"
           style="flex-direction: row; max-width: 500px; width: 100%;"
         >
           <div
@@ -3023,6 +3025,7 @@ Object {
           />
           <div
             class="css-view-1dbjc4n"
+            data-testid="date-picker-spinner-touch"
             style="align-self: stretch; flex-direction: row; font-family: Montserrat-Regular; max-width: 500px; user-select: none; width: 100%;"
           >
             <div
@@ -4068,6 +4071,7 @@ Object {
         />
         <div
           class="css-view-1dbjc4n"
+          data-testid="date-picker-spinner-touch"
           style="align-self: stretch; flex-direction: row; font-family: Montserrat-Regular; max-width: 500px; user-select: none; width: 100%;"
         >
           <div

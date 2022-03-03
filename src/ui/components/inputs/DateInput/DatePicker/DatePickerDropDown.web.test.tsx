@@ -8,7 +8,7 @@ import {
 } from 'features/auth/signup/SetBirthday/utils/fixtures'
 import { fireEvent, render } from 'tests/utils/web'
 
-import { DatePickerDropDown } from './DatePickerDropDown.web'
+import { DatePickerDropDown } from './DatePickerDropDown'
 
 const props = {
   onChange: jest.fn(),

@@ -3,8 +3,6 @@ import Picker from 'react-mobile-picker'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { DateInput } from 'features/auth/signup/SetBirthday/atoms/DateInput/DateInput'
-import { DatePickerProps } from 'features/auth/signup/SetBirthday/DatePicker/types'
 import {
   getDatesInMonth,
   getPastYears,
@@ -12,6 +10,8 @@ import {
   monthNamesShort,
 } from 'features/bookOffer/components/Calendar/Calendar.utils'
 import { pad } from 'libs/parsers'
+import { DateInputDisplay } from 'ui/components/inputs/DateInput/atoms/DateInputDisplay'
+import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Spacer } from 'ui/theme'
 
@@ -48,7 +48,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
 
   return (
     <React.Fragment>
-      <DateInput date={birthdate} isError={!!props.errorMessage} />
+      <DateInputDisplay date={birthdate} isError={!!props.errorMessage} />
       {!!props.errorMessage && (
         <InputError
           visible
@@ -58,9 +58,8 @@ export function DatePickerSpinner(props: DatePickerProps) {
         />
       )}
       <Spacer.Column numberOfSpaces={2} />
-      <SpinnerPickerWrapper>
+      <SpinnerPickerWrapper testID="date-picker-spinner-touch">
         <Picker
-          data-testid="date-picker-touch"
           valueGroups={date}
           optionGroups={optionGroups}
           onChange={onDateChange}

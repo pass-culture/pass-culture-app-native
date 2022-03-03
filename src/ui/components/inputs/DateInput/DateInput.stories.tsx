@@ -5,15 +5,14 @@ import {
   DEFAULT_SELECTED_DATE,
   MINIMUM_DATE,
 } from 'features/auth/signup/SetBirthday/utils/fixtures'
-
-import { DateInputDesktop } from './DateInputDesktop.web'
+import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 
 export default {
-  title: 'ui/inputs/DateInputDesktop',
-  component: DateInputDesktop,
-} as ComponentMeta<typeof DateInputDesktop>
+  title: 'ui/inputs/DateInput',
+  component: DateInput,
+} as ComponentMeta<typeof DateInput>
 
-const Template: ComponentStory<typeof DateInputDesktop> = (args) => <DateInputDesktop {...args} />
+const Template: ComponentStory<typeof DateInput> = (args) => <DateInput {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
@@ -25,5 +24,5 @@ export const Error = Template.bind({})
 Error.args = {
   defaultSelectedDate: DEFAULT_SELECTED_DATE,
   minimumDate: MINIMUM_DATE,
-  errorMessage: 'Too young',
+  errorMessage: 'Error message',
 }
