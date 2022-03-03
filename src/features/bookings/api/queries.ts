@@ -21,10 +21,10 @@ export function useOngoingOrEndedBooking(id: number): UseQueryResult<BookingRepo
       if (!bookings) {
         return null
       }
-      const onGoingBooking = bookings.ongoing_bookings.find(
+      const onGoingBooking = bookings.ongoing_bookings?.find(
         (item: BookingReponse) => item.id === id
       )
-      const endedBooking = bookings.ended_bookings.find((item: BookingReponse) => item.id === id)
+      const endedBooking = bookings.ended_bookings?.find((item: BookingReponse) => item.id === id)
 
       const selected = onGoingBooking || endedBooking
       if (!selected) {
