@@ -699,8 +699,8 @@ msgstr "Date"
 msgid "Date de l'offre"
 msgstr "Date de l'offre"
 
-#: src/features/auth/signup/SetBirthday/atoms/DateInput/DateInput.tsx
 #: src/features/auth/signup/SignupForm.tsx
+#: src/ui/components/inputs/DateInput/atoms/DateInputDisplay.tsx
 msgid "Date de naissance"
 msgstr "Date de naissance"
 
@@ -897,7 +897,7 @@ msgstr "Entrée du code de confirmation"
 msgid "Entrée pour l'adresse"
 msgstr "Entrée pour l'adresse"
 
-#: src/features/auth/signup/SetBirthday/atoms/DateInput/DateInputDesktop.web.tsx
+#: src/ui/components/inputs/DateInput/atoms/DateInputDesktop.web.tsx
 msgid "Entrée pour l'année de la date de naissance"
 msgstr "Entrée pour l'année de la date de naissance"
 
@@ -909,11 +909,11 @@ msgstr "Entrée pour l'email"
 msgid "Entrée pour le code postal"
 msgstr "Entrée pour le code postal"
 
-#: src/features/auth/signup/SetBirthday/atoms/DateInput/DateInputDesktop.web.tsx
+#: src/ui/components/inputs/DateInput/atoms/DateInputDesktop.web.tsx
 msgid "Entrée pour le jour de la date de naissance"
 msgstr "Entrée pour le jour de la date de naissance"
 
-#: src/features/auth/signup/SetBirthday/atoms/DateInput/DateInputDesktop.web.tsx
+#: src/ui/components/inputs/DateInput/atoms/DateInputDesktop.web.tsx
 msgid "Entrée pour le mois de la date de naissance"
 msgstr "Entrée pour le mois de la date de naissance"
 
@@ -1039,11 +1039,10 @@ msgid "Galeries d’art"
 msgstr "Galeries d’art"
 
 #: src/features/bookOffer/components/BookingInformations.tsx
-#: src/features/offer/atoms/OfferTile.tsx
-#: src/features/search/atoms/Hit.tsx
 #: src/libs/parsers/getDisplayPrice.ts
 #: src/libs/parsers/getDisplayPrice.ts
 #: src/libs/parsers/getDisplayPrice.ts
+#: src/libs/tileAccessibilityLabel.ts
 msgid "Gratuit"
 msgstr "Gratuit"
 
@@ -1438,6 +1437,7 @@ msgstr "Lien de modification de l'email expiré"
 
 #: src/features/navigation/RootNavigator/routes.ts
 #: src/features/venue/pages/VenueBody.tsx
+#: src/libs/tileAccessibilityLabel.ts
 msgid "Lieu"
 msgstr "Lieu"
 
@@ -1725,8 +1725,7 @@ msgid "Offer {offerId} could not be retrieved"
 msgstr "Offer {offerId} could not be retrieved"
 
 #: src/features/navigation/RootNavigator/routes.ts
-#: src/features/offer/atoms/OfferTile.tsx
-#: src/features/search/atoms/Hit.tsx
+#: src/libs/tileAccessibilityLabel.ts
 msgid "Offre"
 msgstr "Offre"
 
@@ -2241,9 +2240,17 @@ msgstr "République Française - Liberté Égalité Fraternité"
 msgid "Réservation annulée"
 msgstr "Réservation annulée"
 
+#: src/libs/tileAccessibilityLabel.ts
+msgid "Réservation annulée de l'offre"
+msgstr "Réservation annulée de l'offre"
+
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 msgid "Réservation confirmée !"
 msgstr "Réservation confirmée !"
+
+#: src/libs/tileAccessibilityLabel.ts
+msgid "Réservation de l'offre"
+msgstr "Réservation de l'offre"
 
 #: src/features/bookings/pages/BookingNotFound.tsx
 msgid "Réservation introuvable | pass Culture"
@@ -2252,6 +2259,10 @@ msgstr "Réservation introuvable | pass Culture"
 #: src/features/bookings/pages/BookingNotFound.tsx
 msgid "Réservation introuvable !"
 msgstr "Réservation introuvable !"
+
+#: src/libs/tileAccessibilityLabel.ts
+msgid "Réservation utilisée de l'offre"
+msgstr "Réservation utilisée de l'offre"
 
 #: src/features/navigation/TabBar/routes.ts
 msgid "Réservations"
@@ -3095,10 +3106,13 @@ msgstr "Patience ! Reviens à partir du {date} pour continuer ton inscription e
 msgid "de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application."
 msgstr "de 15 à 18 ans : le Gouvernement offre un crédit à dépenser dans l’application."
 
-#: src/features/offer/atoms/OfferTile.tsx
-#: src/features/search/atoms/Hit.tsx
+#: src/libs/tileAccessibilityLabel.ts
 msgid "de la catégorie"
 msgstr "de la catégorie"
+
+#: src/libs/tileAccessibilityLabel.ts
+msgid "du type"
+msgstr "du type"
 
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "durée"
@@ -3164,8 +3178,8 @@ msgstr "le {date}"
 msgid "last update"
 msgstr "Dossier mis à jour le : {day} à {hour}"
 
-#: src/features/offer/atoms/OfferTile.tsx
-#: src/features/search/atoms/Hit.tsx
+#: src/libs/tileAccessibilityLabel.ts
+#: src/libs/tileAccessibilityLabel.ts
 msgid "le"
 msgstr "le"
 
@@ -3214,12 +3228,16 @@ msgstr "page-introuvable"
 msgid "passeport"
 msgstr "passeport"
 
+#: src/libs/tileAccessibilityLabel.ts
+msgid "permanente"
+msgstr "permanente"
+
 #: src/features/search/components/SearchResults.tsx
+#: src/libs/tileAccessibilityLabel.ts
 msgid "pour"
 msgstr "pour"
 
-#: src/features/offer/atoms/OfferTile.tsx
-#: src/features/search/atoms/Hit.tsx
+#: src/libs/tileAccessibilityLabel.ts
 msgid "prix"
 msgstr "prix"
 
@@ -3379,8 +3397,8 @@ msgstr "Étape {0} sur {SIGNUP_NUMBER_OF_STEPS} - Inscription"
 msgid "Étape {step} sur {totalSteps} {status}"
 msgstr "Étape {step} sur {totalSteps} {status}"
 
-#: src/features/offer/atoms/OfferTile.tsx
-#: src/features/search/atoms/Hit.tsx
+#: src/libs/tileAccessibilityLabel.ts
+#: src/libs/tileAccessibilityLabel.ts
 msgid "à"
 msgstr "à"
 
