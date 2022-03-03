@@ -5,17 +5,14 @@ import {
   DEFAULT_SELECTED_DATE,
   MINIMUM_DATE,
 } from 'features/auth/signup/SetBirthday/utils/fixtures'
-
-import { DatePickerDropDown } from './DatePickerDropDown'
+import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 
 export default {
-  title: 'ui/inputs/DatePicker/DatePickerDropDown',
-  component: DatePickerDropDown,
-} as ComponentMeta<typeof DatePickerDropDown>
+  title: 'ui/inputs/DateInput',
+  component: DateInput,
+} as ComponentMeta<typeof DateInput>
 
-const Template: ComponentStory<typeof DatePickerDropDown> = (args) => (
-  <DatePickerDropDown {...args} />
-)
+const Template: ComponentStory<typeof DateInput> = (args) => <DateInput {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
