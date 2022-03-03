@@ -80,6 +80,7 @@ Array [
           style={
             Object {
               "opacity": 1,
+              "userSelect": "auto",
             }
           }
           testID="Revenir en arrière"
@@ -346,6 +347,7 @@ Array [
                     "flexDirection": "row",
                     "justifyContent": "space-between",
                     "opacity": 1,
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -441,6 +443,7 @@ Array [
                     "flexDirection": "row",
                     "justifyContent": "space-between",
                     "opacity": 1,
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -536,6 +539,7 @@ Array [
                     "flexDirection": "row",
                     "justifyContent": "space-between",
                     "opacity": 1,
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -640,6 +644,7 @@ Array [
                     "flexDirection": "row",
                     "justifyContent": "space-between",
                     "opacity": 1,
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -735,6 +740,7 @@ Array [
                     "flexDirection": "row",
                     "justifyContent": "space-between",
                     "opacity": 1,
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -830,6 +836,7 @@ Array [
                     "flexDirection": "row",
                     "justifyContent": "space-between",
                     "opacity": 1,
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -1896,6 +1903,7 @@ Array [
               "paddingLeft": 2,
               "paddingRight": 2,
               "paddingTop": 2,
+              "userSelect": "auto",
               "width": "100%",
             }
           }
@@ -2159,6 +2167,7 @@ Array [
                 "display": "flex",
                 "flexDirection": "row",
                 "opacity": 1,
+                "userSelect": "auto",
                 "width": "100%",
               }
             }
@@ -2191,6 +2200,7 @@ Array [
                   "opacity": 1,
                   "paddingLeft": 0,
                   "paddingTop": 0,
+                  "userSelect": "auto",
                   "width": 24,
                 }
               }

@@ -95,17 +95,17 @@ Array [
             style={
               Object {
                 "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
+                "MozUserSelect": "auto",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
+                "WebkitUserSelect": "auto",
                 "cursor": "pointer",
                 "msTouchAction": "manipulation",
-                "msUserSelect": "none",
+                "msUserSelect": "auto",
                 "touchAction": "manipulation",
                 "transitionDuration": "0s",
                 "transitionProperty": "opacity",
-                "userSelect": "none",
+                "userSelect": "auto",
               }
             }
             tabIndex="0"
@@ -422,7 +422,7 @@ Array [
                 style={
                   Object {
                     "MozTransitionProperty": "opacity",
-                    "MozUserSelect": "none",
+                    "MozUserSelect": "auto",
                     "WebkitAlignItems": "center",
                     "WebkitBoxAlign": "center",
                     "WebkitBoxDirection": "normal",
@@ -432,7 +432,7 @@ Array [
                     "WebkitJustifyContent": "space-between",
                     "WebkitTransitionDuration": "0s",
                     "WebkitTransitionProperty": "opacity",
-                    "WebkitUserSelect": "none",
+                    "WebkitUserSelect": "auto",
                     "alignItems": "center",
                     "cursor": "pointer",
                     "flexDirection": "row",
@@ -441,11 +441,11 @@ Array [
                     "msFlexDirection": "row",
                     "msFlexPack": "justify",
                     "msTouchAction": "manipulation",
-                    "msUserSelect": "none",
+                    "msUserSelect": "auto",
                     "touchAction": "manipulation",
                     "transitionDuration": "0s",
                     "transitionProperty": "opacity",
-                    "userSelect": "none",
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -536,7 +536,7 @@ Array [
                 style={
                   Object {
                     "MozTransitionProperty": "opacity",
-                    "MozUserSelect": "none",
+                    "MozUserSelect": "auto",
                     "WebkitAlignItems": "center",
                     "WebkitBoxAlign": "center",
                     "WebkitBoxDirection": "normal",
@@ -546,7 +546,7 @@ Array [
                     "WebkitJustifyContent": "space-between",
                     "WebkitTransitionDuration": "0s",
                     "WebkitTransitionProperty": "opacity",
-                    "WebkitUserSelect": "none",
+                    "WebkitUserSelect": "auto",
                     "alignItems": "center",
                     "cursor": "pointer",
                     "flexDirection": "row",
@@ -555,11 +555,11 @@ Array [
                     "msFlexDirection": "row",
                     "msFlexPack": "justify",
                     "msTouchAction": "manipulation",
-                    "msUserSelect": "none",
+                    "msUserSelect": "auto",
                     "touchAction": "manipulation",
                     "transitionDuration": "0s",
                     "transitionProperty": "opacity",
-                    "userSelect": "none",
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -650,7 +650,7 @@ Array [
                 style={
                   Object {
                     "MozTransitionProperty": "opacity",
-                    "MozUserSelect": "none",
+                    "MozUserSelect": "auto",
                     "WebkitAlignItems": "center",
                     "WebkitBoxAlign": "center",
                     "WebkitBoxDirection": "normal",
@@ -660,7 +660,7 @@ Array [
                     "WebkitJustifyContent": "space-between",
                     "WebkitTransitionDuration": "0s",
                     "WebkitTransitionProperty": "opacity",
-                    "WebkitUserSelect": "none",
+                    "WebkitUserSelect": "auto",
                     "alignItems": "center",
                     "cursor": "pointer",
                     "flexDirection": "row",
@@ -669,11 +669,11 @@ Array [
                     "msFlexDirection": "row",
                     "msFlexPack": "justify",
                     "msTouchAction": "manipulation",
-                    "msUserSelect": "none",
+                    "msUserSelect": "auto",
                     "touchAction": "manipulation",
                     "transitionDuration": "0s",
                     "transitionProperty": "opacity",
-                    "userSelect": "none",
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -775,7 +775,7 @@ Array [
                 style={
                   Object {
                     "MozTransitionProperty": "opacity",
-                    "MozUserSelect": "none",
+                    "MozUserSelect": "auto",
                     "WebkitAlignItems": "center",
                     "WebkitBoxAlign": "center",
                     "WebkitBoxDirection": "normal",
@@ -785,7 +785,7 @@ Array [
                     "WebkitJustifyContent": "space-between",
                     "WebkitTransitionDuration": "0s",
                     "WebkitTransitionProperty": "opacity",
-                    "WebkitUserSelect": "none",
+                    "WebkitUserSelect": "auto",
                     "alignItems": "center",
                     "cursor": "pointer",
                     "flexDirection": "row",
@@ -794,11 +794,11 @@ Array [
                     "msFlexDirection": "row",
                     "msFlexPack": "justify",
                     "msTouchAction": "manipulation",
-                    "msUserSelect": "none",
+                    "msUserSelect": "auto",
                     "touchAction": "manipulation",
                     "transitionDuration": "0s",
                     "transitionProperty": "opacity",
-                    "userSelect": "none",
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -889,7 +889,7 @@ Array [
                 style={
                   Object {
                     "MozTransitionProperty": "opacity",
-                    "MozUserSelect": "none",
+                    "MozUserSelect": "auto",
                     "WebkitAlignItems": "center",
                     "WebkitBoxAlign": "center",
                     "WebkitBoxDirection": "normal",
@@ -899,7 +899,7 @@ Array [
                     "WebkitJustifyContent": "space-between",
                     "WebkitTransitionDuration": "0s",
                     "WebkitTransitionProperty": "opacity",
-                    "WebkitUserSelect": "none",
+                    "WebkitUserSelect": "auto",
                     "alignItems": "center",
                     "cursor": "pointer",
                     "flexDirection": "row",
@@ -908,11 +908,11 @@ Array [
                     "msFlexDirection": "row",
                     "msFlexPack": "justify",
                     "msTouchAction": "manipulation",
-                    "msUserSelect": "none",
+                    "msUserSelect": "auto",
                     "touchAction": "manipulation",
                     "transitionDuration": "0s",
                     "transitionProperty": "opacity",
-                    "userSelect": "none",
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -1003,7 +1003,7 @@ Array [
                 style={
                   Object {
                     "MozTransitionProperty": "opacity",
-                    "MozUserSelect": "none",
+                    "MozUserSelect": "auto",
                     "WebkitAlignItems": "center",
                     "WebkitBoxAlign": "center",
                     "WebkitBoxDirection": "normal",
@@ -1013,7 +1013,7 @@ Array [
                     "WebkitJustifyContent": "space-between",
                     "WebkitTransitionDuration": "0s",
                     "WebkitTransitionProperty": "opacity",
-                    "WebkitUserSelect": "none",
+                    "WebkitUserSelect": "auto",
                     "alignItems": "center",
                     "cursor": "pointer",
                     "flexDirection": "row",
@@ -1022,11 +1022,11 @@ Array [
                     "msFlexDirection": "row",
                     "msFlexPack": "justify",
                     "msTouchAction": "manipulation",
-                    "msUserSelect": "none",
+                    "msUserSelect": "auto",
                     "touchAction": "manipulation",
                     "transitionDuration": "0s",
                     "transitionProperty": "opacity",
-                    "userSelect": "none",
+                    "userSelect": "auto",
                     "width": "100%",
                   }
                 }
@@ -2552,7 +2552,7 @@ Array [
             style={
               Object {
                 "MozTransitionProperty": "opacity",
-                "MozUserSelect": "none",
+                "MozUserSelect": "auto",
                 "WebkitAlignItems": "center",
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
@@ -2560,7 +2560,7 @@ Array [
                 "WebkitFlexDirection": "row",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "none",
+                "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "display": "flex",
@@ -2568,11 +2568,11 @@ Array [
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
                 "msTouchAction": "manipulation",
-                "msUserSelect": "none",
+                "msUserSelect": "auto",
                 "touchAction": "manipulation",
                 "transitionDuration": "0s",
                 "transitionProperty": "opacity",
-                "userSelect": "none",
+                "userSelect": "auto",
                 "width": "100%",
               }
             }
@@ -2587,10 +2587,10 @@ Array [
               style={
                 Object {
                   "MozTransitionProperty": "opacity",
-                  "MozUserSelect": "none",
+                  "MozUserSelect": "auto",
                   "WebkitTransitionDuration": "0s",
                   "WebkitTransitionProperty": "opacity",
-                  "WebkitUserSelect": "none",
+                  "WebkitUserSelect": "auto",
                   "backgroundColor": "rgba(255,255,255,1.00)",
                   "borderBottomColor": "rgba(105,106,111,1.00)",
                   "borderBottomLeftRadius": "4px",
@@ -2611,13 +2611,13 @@ Array [
                   "cursor": "pointer",
                   "height": "24px",
                   "msTouchAction": "manipulation",
-                  "msUserSelect": "none",
+                  "msUserSelect": "auto",
                   "paddingLeft": "0px",
                   "paddingTop": "0px",
                   "touchAction": "manipulation",
                   "transitionDuration": "0s",
                   "transitionProperty": "opacity",
-                  "userSelect": "none",
+                  "userSelect": "auto",
                   "width": "24px",
                 }
               }
