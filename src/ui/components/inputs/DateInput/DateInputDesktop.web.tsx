@@ -2,7 +2,6 @@ import { t } from '@lingui/macro'
 import React, { useMemo, useState, useEffect } from 'react'
 import styled from 'styled-components/native'
 
-import { DropDown } from 'features/auth/signup/SetBirthday/atoms/DropDown/DropDown'
 import { DatePickerProps } from 'features/auth/signup/SetBirthday/DatePicker/types'
 import {
   dayNumber,
@@ -11,6 +10,7 @@ import {
   getYears,
   monthNames,
 } from 'features/bookOffer/components/Calendar/Calendar.utils'
+import { DropDown } from 'ui/components/inputs/DropDown/DropDown'
 import { Spacer } from 'ui/theme'
 
 type InitialDateProps = {
