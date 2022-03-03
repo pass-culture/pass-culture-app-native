@@ -6,7 +6,7 @@ import {
   MINIMUM_DATE,
 } from 'features/auth/signup/SetBirthday/utils/fixtures'
 
-import { DatePickerDropDown } from './DatePickerDropDown.web'
+import { DatePickerDropDown } from './DatePickerDropDown'
 
 export default {
   title: 'ui/inputs/DatePicker/DatePickerDropDown',
