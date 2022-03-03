@@ -35,7 +35,10 @@ function applySortBy(
   sortBy: FavoriteSortBy,
   position: GeoCoordinates | null
 ) {
-  if (sortBy === 'ASCENDING_PRICE') {
+  if (!list) {
+    // fix concurrency sentry/issues/288586
+    return []
+  } else if (sortBy === 'ASCENDING_PRICE') {
     list.sort(sortByAscendingPrice)
     return list
   } else if (sortBy === 'AROUND_ME') {
