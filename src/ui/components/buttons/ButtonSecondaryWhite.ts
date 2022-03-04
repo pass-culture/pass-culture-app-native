@@ -39,21 +39,22 @@ export const ButtonSecondaryWhite = styledButton(AppButton).attrs<BaseButtonProp
     }
   }
 )(({ theme, isLoading, disabled }) => {
-  const backgroundColor = theme.buttons.secondaryWhite.backgroundColor
-  const borderWidth = theme.buttons.secondaryWhite.borderWidth
+  let backgroundColor = theme.buttons.secondaryWhite.backgroundColor
+  let borderWidth = theme.buttons.secondaryWhite.borderWidth
   let borderColor = theme.buttons.secondaryWhite.borderColor
 
   if (isLoading) {
     borderColor = theme.buttons.loading.secondaryWhite.borderColor
   } else if (disabled) {
-    borderColor = theme.buttons.disabled.secondaryWhite.borderColor
+    backgroundColor = theme.buttons.disabled.secondaryWhite.backgroundColor
+    borderWidth = 0
   }
 
   let webOnly = {}
   if (Platform.OS === 'web') {
     webOnly = {
       ['&:disabled']: {
-        borderColor: theme.buttons.disabled.secondaryWhite.borderColor,
+        backgroundColor: theme.buttons.disabled.secondaryWhite.backgroundColor,
       },
     }
   }
