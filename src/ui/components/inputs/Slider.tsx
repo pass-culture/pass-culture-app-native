@@ -23,7 +23,7 @@ const DEFAULT_VALUES = [DEFAULT_MIN, DEFAULT_MAX]
 const LEFT_CURSOR = 'LEFT_CURSOR'
 const RIGHT_CURSOR = 'RIGHT_CURSOR'
 
-export const Slider: React.FC<Props> = (props) => {
+export function Slider(props: Props) {
   const sliderContainerRef = useRef<View>(null)
 
   const min = props.min || DEFAULT_MIN
@@ -94,10 +94,10 @@ export const Slider: React.FC<Props> = (props) => {
   return (
     <React.Fragment>
       {!!props.showValues && (
-        <Typo.ButtonText>
+        <CenteredText width={props.sliderLength}>
           {values.length === 1 && formatValues(values[0])}
           {values.length === 2 && `${formatValues(values[0])} - ${formatValues(values[1])}`}
-        </Typo.ButtonText>
+        </CenteredText>
       )}
       <Spacer.Column numberOfSpaces={4} />
       <View ref={sliderContainerRef} testID="slider">
@@ -138,3 +138,8 @@ const StyledMultiSlider = styled(MultiSlider).attrs(({ sliderLength, theme }) =>
     sliderLength: sliderLength ?? theme.appContentWidth - getSpacing(2 * 2 * 6),
   }
 })``
+
+const CenteredText = styled(Typo.ButtonText)<{ width?: number }>(({ width, theme }) => ({
+  width: width ?? theme.appContentWidth - getSpacing(2 * 2 * 6),
+  textAlign: 'center',
+}))
