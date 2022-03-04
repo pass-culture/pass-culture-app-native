@@ -2,13 +2,15 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
+import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
+import { StoryContainer } from 'ui/storybook/StoryContainer'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
 
 import { ButtonPrimary } from './ButtonPrimary'
 
 export default {
-  title: 'ui/buttons/ButtonPrimary/ButtonPrimary',
+  title: 'ui/buttons/ButtonPrimary',
   component: ButtonPrimary,
   argTypes: {
     icon: selectArgTypeFromObject({
@@ -18,7 +20,16 @@ export default {
   },
 } as ComponentMeta<typeof ButtonPrimary>
 
-const Template: ComponentStory<typeof ButtonPrimary> = (props) => <ButtonPrimary {...props} />
+const Template: ComponentStory<typeof ButtonPrimary> = (props) => (
+  <React.Fragment>
+    <StoryContainer title="ButtonPrimary">
+      <ButtonPrimary {...props} />
+    </StoryContainer>
+    <StoryContainer title="ButtonPrimaryWhite" withBackground>
+      <ButtonPrimaryWhite {...props} />
+    </StoryContainer>
+  </React.Fragment>
+)
 
 export const Default = Template.bind({})
 Default.args = {
