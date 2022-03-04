@@ -376,8 +376,8 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
             }
           >
             <View
-              height="32"
-              width="32"
+              height={32}
+              width={32}
             >
               <Text>
                 undefined-SVG-Mock
@@ -595,8 +595,8 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
             }
           >
             <View
-              height="32"
-              width="32"
+              height={32}
+              width={32}
             >
               <Text>
                 undefined-SVG-Mock

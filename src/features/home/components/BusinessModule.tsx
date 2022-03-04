@@ -5,11 +5,11 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
-import { NextArrowIcon } from 'features/home/assets/NextArrowIcon'
 import { BusinessPane } from 'features/home/contentful'
 import { openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Idea } from 'ui/svg/icons/Idea'
 import { Typo, getSpacing, MARGIN_DP, LENGTH_XS, RATIO_BUSINESS, Spacer } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline'
@@ -80,7 +80,7 @@ export const BusinessModule = ({ module }: { module: BusinessPane }) => {
               </TextContainer>
               {!isDisabled && (
                 <IconContainer>
-                  <NextArrowIcon />
+                  <ArrowNextIcon />
                 </IconContainer>
               )}
             </Container>
@@ -154,5 +154,9 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
 }))
 
 const IdeaIcon = styled(Idea).attrs(({ theme }) => ({
+  color: theme.colors.white,
+}))``
+
+const ArrowNextIcon = styled(ArrowNext).attrs(({ theme }) => ({
   color: theme.colors.white,
 }))``

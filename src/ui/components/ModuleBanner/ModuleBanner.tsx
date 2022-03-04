@@ -2,7 +2,7 @@ import React from 'react'
 import { TouchableHighlight } from 'react-native'
 import styled from 'styled-components/native'
 
-import { NextArrowIcon } from 'features/home/assets/NextArrowIcon'
+import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { getSpacing, Typo } from 'ui/theme'
 
 import { BACKGROUND_IMAGE_SOURCE } from './backgroundImageSource'
@@ -29,7 +29,7 @@ export function ModuleBanner(props: ModuleBannerProps) {
               </ButtonText>
               <Body>{props.subTitle}</Body>
             </TextContainer>
-            <IconContainer>{props.rightIcon || <NextArrowIcon />}</IconContainer>
+            <IconContainer>{props.rightIcon || <ArrowNextIcon />}</IconContainer>
           </Container>
         </ImageBackground>
       </ImageContainer>
@@ -81,3 +81,7 @@ const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
 const Body = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))
+
+const ArrowNextIcon = styled(ArrowNext).attrs(({ theme }) => ({
+  color: theme.colors.white,
+}))``
