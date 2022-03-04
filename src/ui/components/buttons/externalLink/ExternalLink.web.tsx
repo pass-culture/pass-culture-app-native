@@ -43,7 +43,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity)({
 })
 
 const ButtonText = styled(Typo.ButtonText)<{ primary?: boolean }>(({ primary, theme }) => ({
-  color: primary ? theme.colors.primary : theme.colors.black,
+  color: primary ? theme.colors.primary : undefined,
 }))
 
 const ExternalSite = styled(DefaultExternalSite).attrs<{ primary?: boolean }>(
