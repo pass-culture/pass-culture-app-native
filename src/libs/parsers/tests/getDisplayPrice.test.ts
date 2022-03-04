@@ -3,6 +3,7 @@ import {
   getDisplayPriceWithDuoMention,
   getFavoriteDisplayPrice,
   formatToFrenchDecimal,
+  formatPriceInEuroToDisplayPrice,
 } from '../getDisplayPrice'
 
 describe('getDisplayPrice', () => {
@@ -82,5 +83,23 @@ describe('formatToFrenchDecimal()', () => {
     ${-1199.6}   | ${'-12,00\u00a0€'}
   `('formatToFrenchDecimal($priceInCents) \t= $expected', ({ priceInCents, expected }) => {
     expect(formatToFrenchDecimal(priceInCents)).toBe(expected)
+  })
+})
+
+describe('formatPriceInEuroToDisplayPrice()', () => {
+  it.each`
+    priceInEuro | expected
+    ${0}        | ${'0\u00a0€'}
+    ${50}       | ${'50\u00a0€'}
+    ${-50}      | ${'-50\u00a0€'}
+    ${10.5}     | ${'10,50\u00a0€'}
+    ${-10.5}    | ${'-10,50\u00a0€'}
+    ${17.9}     | ${'17,90\u00a0€'}
+    ${19.99}    | ${'19,99\u00a0€'}
+    ${-19.99}   | ${'-19,99\u00a0€'}
+    ${20.999}   | ${'20,99\u00a0€'}
+    ${-20.999}  | ${'-21\u00a0€'}
+  `('formatPriceInEuroToDisplayPrice($priceInEuro) \t= $expected', ({ priceInEuro, expected }) => {
+    expect(formatPriceInEuroToDisplayPrice(priceInEuro)).toBe(expected)
   })
 })
