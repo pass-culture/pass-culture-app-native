@@ -9,7 +9,7 @@ import { Email } from 'ui/svg/icons/Email'
 import { ButtonPrimaryWhite } from './ButtonPrimaryWhite'
 
 export default {
-  title: 'ui/buttons/ButtonPrimaryWhite',
+  title: 'ui/buttons/ButtonPrimary/ButtonPrimaryWhite',
   component: ButtonPrimaryWhite,
   argTypes: {
     icon: selectArgTypeFromObject({

@@ -5,20 +5,20 @@ import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
 
-import { ButtonPrimary } from './ButtonPrimary'
+import { ButtonTertiary } from './ButtonTertiary'
 
 export default {
-  title: 'ui/buttons/ButtonPrimary/ButtonPrimary',
-  component: ButtonPrimary,
+  title: 'ui/buttons/ButtonTertiary/ButtonTertiary',
+  component: ButtonTertiary,
   argTypes: {
     icon: selectArgTypeFromObject({
       Email,
       EditPen,
     }),
   },
-} as ComponentMeta<typeof ButtonPrimary>
+} as ComponentMeta<typeof ButtonTertiary>
 
-const Template: ComponentStory<typeof ButtonPrimary> = (props) => <ButtonPrimary {...props} />
+const Template: ComponentStory<typeof ButtonTertiary> = (props) => <ButtonTertiary {...props} />
 
 export const Default = Template.bind({})
 Default.args = {
@@ -27,7 +27,7 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: '<ButtonPrimary wording="Confirmer" />',
+      code: '<ButtonTertiary wording="Confirmer" />',
     },
   },
 }
@@ -40,7 +40,7 @@ Loading.args = {
 Loading.parameters = {
   docs: {
     source: {
-      code: '<ButtonPrimary wording="Confirmer" isLoading />',
+      code: '<ButtonTertiary wording="Confirmer" isLoading />',
     },
   },
 }
@@ -53,7 +53,7 @@ Tall.args = {
 Tall.parameters = {
   docs: {
     source: {
-      code: '<ButtonPrimary wording="Confirmer" buttonHeight="tall" />',
+      code: '<ButtonTertiary wording="Confirmer" buttonHeight="tall" />',
     },
   },
 }
@@ -66,7 +66,7 @@ WithIcon.args = {
 WithIcon.parameters = {
   docs: {
     source: {
-      code: '<ButtonPrimary wording="Confirmer" icon={Email} />',
+      code: '<ButtonTertiary wording="Confirmer" icon={Email} />',
     },
   },
 }
@@ -80,7 +80,7 @@ DisabledWithIcon.args = {
 DisabledWithIcon.parameters = {
   docs: {
     source: {
-      code: '<ButtonPrimary wording="Confirmer" disabled={true} icon={Email} />',
+      code: '<ButtonTertiary wording="Confirmer" disabled={true} icon={Email} />',
     },
   },
 }
