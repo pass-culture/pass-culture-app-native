@@ -471,6 +471,8 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 864,
                 },
               ]
             }
@@ -2128,6 +2130,8 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
+                  "textAlign": "center",
+                  "width": 864,
                 },
               ]
             }
