@@ -472,8 +472,8 @@ export const theme: AppThemeType = {
         iconColor: ColorsEnum.PRIMARY_DISABLED,
       },
       tertiaryGreyDark: {
-        textColor: ColorsEnum.PRIMARY_DISABLED,
-        iconColor: ColorsEnum.PRIMARY_DISABLED,
+        textColor: ColorsEnum.GREY_MEDIUM,
+        iconColor: ColorsEnum.GREY_MEDIUM,
       },
       quaternary: {
         iconColor: ColorsEnum.GREY_DARK,

@@ -159,4 +159,5 @@ const IdeaIcon = styled(Idea).attrs(({ theme }) => ({
 
 const ArrowNextIcon = styled(ArrowNext).attrs(({ theme }) => ({
   color: theme.colors.white,
+  size: theme.icons.sizes.small,
 }))``

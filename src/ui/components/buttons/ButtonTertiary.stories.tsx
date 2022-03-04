@@ -2,31 +2,39 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
-import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { ButtonTertiaryGreyDark } from 'ui/components/buttons/ButtonTertiaryGreyDark'
+import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { StoryContainer } from 'ui/storybook/StoryContainer'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
 
-import { ButtonPrimary } from './ButtonPrimary'
+import { ButtonTertiary } from './ButtonTertiary'
 
 export default {
-  title: 'ui/buttons/ButtonPrimary',
-  component: ButtonPrimary,
+  title: 'ui/buttons/ButtonTertiary',
+  component: ButtonTertiary,
   argTypes: {
     icon: selectArgTypeFromObject({
       Email,
       EditPen,
     }),
   },
-} as ComponentMeta<typeof ButtonPrimary>
+} as ComponentMeta<typeof ButtonTertiary>
 
-const Template: ComponentStory<typeof ButtonPrimary> = (props) => (
+const Template: ComponentStory<typeof ButtonTertiary> = (props) => (
   <React.Fragment>
-    <StoryContainer title="ButtonPrimary">
-      <ButtonPrimary {...props} />
+    <StoryContainer title="ButtonTertiary">
+      <ButtonTertiary {...props} />
     </StoryContainer>
-    <StoryContainer title="ButtonPrimaryWhite" withBackground>
-      <ButtonPrimaryWhite {...props} />
+    <StoryContainer title="ButtonTertiaryBlack">
+      <ButtonTertiaryBlack {...props} />
+    </StoryContainer>
+    <StoryContainer title="ButtonTertiaryGreyDark">
+      <ButtonTertiaryGreyDark {...props} />
+    </StoryContainer>
+    <StoryContainer title="ButtonTertiaryWhite" withBackground>
+      <ButtonTertiaryWhite {...props} />
     </StoryContainer>
   </React.Fragment>
 )
@@ -38,7 +46,7 @@ Default.args = {
 Default.parameters = {
   docs: {
     source: {
-      code: '<ButtonPrimary wording="Confirmer" />',
+      code: '<ButtonTertiary wording="Confirmer" />',
     },
   },
 }
@@ -51,7 +59,7 @@ Loading.args = {
 Loading.parameters = {
   docs: {
     source: {
-      code: '<ButtonPrimary wording="Confirmer" isLoading />',
+      code: '<ButtonTertiary wording="Confirmer" isLoading />',
     },
   },
 }
@@ -64,7 +72,7 @@ Tall.args = {
 Tall.parameters = {
   docs: {
     source: {
-      code: '<ButtonPrimary wording="Confirmer" buttonHeight="tall" />',
+      code: '<ButtonTertiary wording="Confirmer" buttonHeight="tall" />',
     },
   },
 }
@@ -77,7 +85,7 @@ WithIcon.args = {
 WithIcon.parameters = {
   docs: {
     source: {
-      code: '<ButtonPrimary wording="Confirmer" icon={Email} />',
+      code: '<ButtonTertiary wording="Confirmer" icon={Email} />',
     },
   },
 }
@@ -91,7 +99,7 @@ DisabledWithIcon.args = {
 DisabledWithIcon.parameters = {
   docs: {
     source: {
-      code: '<ButtonPrimary wording="Confirmer" disabled={true} icon={Email} />',
+      code: '<ButtonTertiary wording="Confirmer" disabled={true} icon={Email} />',
     },
   },
 }

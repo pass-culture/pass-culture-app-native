@@ -84,4 +84,5 @@ const Body = styled(Typo.Body)(({ theme }) => ({
 
 const ArrowNextIcon = styled(ArrowNext).attrs(({ theme }) => ({
   color: theme.colors.white,
+  size: theme.icons.sizes.small,
 }))``
