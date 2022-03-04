@@ -501,34 +501,39 @@ Object {
                         tabindex="-1"
                         target="_blank"
                       >
-                        <span
-                          class="css-text-901oao css-textHasAncestor-16my406"
-                          style="color: rgb(22, 22, 23); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="cursor: pointer; display: inline; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                           tabindex="0"
                         >
-                          <div
-                            class="css-view-1dbjc4n"
-                            style="display: inline-flex; width: 4px;"
-                          />
                           <span
                             class="css-text-901oao css-textHasAncestor-16my406"
-                            style="white-space: nowrap;"
+                            style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                           >
                             <div
                               class="css-view-1dbjc4n"
-                              data-testid="externalSiteIcon"
-                              style="display: inline-flex;"
+                              style="display: inline-flex; width: 4px;"
+                            />
+                            <span
+                              class="css-text-901oao css-textHasAncestor-16my406"
+                              style="white-space: nowrap;"
                             >
-                              <span
-                                class="css-text-901oao css-textHasAncestor-16my406"
+                              <div
+                                class="css-view-1dbjc4n"
+                                data-testid="externalSiteIcon"
+                                style="display: inline-flex;"
                               >
-                                externalSiteIcon-SVG-Mock
-                              </span>
-                            </div>
-                            
+                                <span
+                                  class="css-text-901oao css-textHasAncestor-16my406"
+                                >
+                                  externalSiteIcon-SVG-Mock
+                                </span>
+                              </div>
+                              
+                            </span>
+                             https://pass.culture.fr/
                           </span>
-                           https://pass.culture.fr/
-                        </span>
+                        </div>
                       </a>
                        lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,
                     </div>
@@ -1047,34 +1052,39 @@ Object {
                     tabindex="-1"
                     target="_blank"
                   >
-                    <span
-                      class="css-text-901oao css-textHasAncestor-16my406"
-                      style="color: rgb(22, 22, 23); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                    <div
+                      class="css-view-1dbjc4n"
+                      style="cursor: pointer; display: inline; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                       tabindex="0"
                     >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="display: inline-flex; width: 4px;"
-                      />
                       <span
                         class="css-text-901oao css-textHasAncestor-16my406"
-                        style="white-space: nowrap;"
+                        style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                       >
                         <div
                           class="css-view-1dbjc4n"
-                          data-testid="externalSiteIcon"
-                          style="display: inline-flex;"
+                          style="display: inline-flex; width: 4px;"
+                        />
+                        <span
+                          class="css-text-901oao css-textHasAncestor-16my406"
+                          style="white-space: nowrap;"
                         >
-                          <span
-                            class="css-text-901oao css-textHasAncestor-16my406"
+                          <div
+                            class="css-view-1dbjc4n"
+                            data-testid="externalSiteIcon"
+                            style="display: inline-flex;"
                           >
-                            externalSiteIcon-SVG-Mock
-                          </span>
-                        </div>
-                        
+                            <span
+                              class="css-text-901oao css-textHasAncestor-16my406"
+                            >
+                              externalSiteIcon-SVG-Mock
+                            </span>
+                          </div>
+                          
+                        </span>
+                         https://test.com
                       </span>
-                       https://test.com
-                    </span>
+                    </div>
                   </a>
                 </div>
               </div>
@@ -1984,34 +1994,39 @@ Object {
                       tabindex="-1"
                       target="_blank"
                     >
-                      <span
-                        class="css-text-901oao css-textHasAncestor-16my406"
-                        style="color: rgb(22, 22, 23); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="cursor: pointer; display: inline; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                         tabindex="0"
                       >
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="display: inline-flex; width: 4px;"
-                        />
                         <span
                           class="css-text-901oao css-textHasAncestor-16my406"
-                          style="white-space: nowrap;"
+                          style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                         >
                           <div
                             class="css-view-1dbjc4n"
-                            data-testid="externalSiteIcon"
-                            style="display: inline-flex;"
+                            style="display: inline-flex; width: 4px;"
+                          />
+                          <span
+                            class="css-text-901oao css-textHasAncestor-16my406"
+                            style="white-space: nowrap;"
                           >
-                            <span
-                              class="css-text-901oao css-textHasAncestor-16my406"
+                            <div
+                              class="css-view-1dbjc4n"
+                              data-testid="externalSiteIcon"
+                              style="display: inline-flex;"
                             >
-                              externalSiteIcon-SVG-Mock
-                            </span>
-                          </div>
-                          
+                              <span
+                                class="css-text-901oao css-textHasAncestor-16my406"
+                              >
+                                externalSiteIcon-SVG-Mock
+                              </span>
+                            </div>
+                            
+                          </span>
+                           https://pass.culture.fr/
                         </span>
-                         https://pass.culture.fr/
-                      </span>
+                      </div>
                     </a>
                      lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,
                   </div>
@@ -2530,34 +2545,39 @@ Object {
                   tabindex="-1"
                   target="_blank"
                 >
-                  <span
-                    class="css-text-901oao css-textHasAncestor-16my406"
-                    style="color: rgb(22, 22, 23); cursor: pointer; font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="cursor: pointer; display: inline; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                     tabindex="0"
                   >
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="display: inline-flex; width: 4px;"
-                    />
                     <span
                       class="css-text-901oao css-textHasAncestor-16my406"
-                      style="white-space: nowrap;"
+                      style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                     >
                       <div
                         class="css-view-1dbjc4n"
-                        data-testid="externalSiteIcon"
-                        style="display: inline-flex;"
+                        style="display: inline-flex; width: 4px;"
+                      />
+                      <span
+                        class="css-text-901oao css-textHasAncestor-16my406"
+                        style="white-space: nowrap;"
                       >
-                        <span
-                          class="css-text-901oao css-textHasAncestor-16my406"
+                        <div
+                          class="css-view-1dbjc4n"
+                          data-testid="externalSiteIcon"
+                          style="display: inline-flex;"
                         >
-                          externalSiteIcon-SVG-Mock
-                        </span>
-                      </div>
-                      
+                          <span
+                            class="css-text-901oao css-textHasAncestor-16my406"
+                          >
+                            externalSiteIcon-SVG-Mock
+                          </span>
+                        </div>
+                        
+                      </span>
+                       https://test.com
                     </span>
-                     https://test.com
-                  </span>
+                  </div>
                 </a>
               </div>
             </div>
