@@ -35,7 +35,7 @@ exports[`<ButtonWithLinearGradient /> should render disabled 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "#ff99be",
+          "backgroundColor": "#F1F1F4",
           "height": 48,
           "width": "100%",
         },
@@ -55,11 +55,12 @@ exports[`<ButtonWithLinearGradient /> should render disabled 1`] = `
   >
     <Text
       adjustsFontSizeToFit={true}
+      isDisabled={true}
       numberOfLines={1}
       style={
         Array [
           Object {
-            "color": "#ffffff",
+            "color": "#696A6F",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 15,
             "lineHeight": 20,
@@ -129,6 +130,7 @@ exports[`<ButtonWithLinearGradient /> should render not disabled 1`] = `
   >
     <Text
       adjustsFontSizeToFit={true}
+      isDisabled={false}
       numberOfLines={1}
       style={
         Array [

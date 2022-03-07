@@ -224,6 +224,7 @@ exports[`BookingDetails should render correctly 1`] = `
                     </View>
                     <Text
                       adjustsFontSizeToFit={true}
+                      isDisabled={false}
                       numberOfLines={1}
                       style={
                         Array [

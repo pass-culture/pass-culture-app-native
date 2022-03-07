@@ -12,7 +12,9 @@ export const ButtonQuaternaryBlack = styledButton(AppButton).attrs<BaseButtonPro
 
     if (icon) {
       Icon = styled(icon).attrs({
-        color: theme.buttons.quaternaryBlack.iconColor,
+        color: disabled
+          ? theme.buttons.disabled.quaternaryBlack.iconColor
+          : theme.buttons.quaternaryBlack.iconColor,
         size: theme.buttons.quaternaryBlack.iconSize,
       })``
     }
