@@ -80,8 +80,10 @@ export function ClippedImage(props: ClippedImageProps) {
 
 const Container = styled.View(({ theme }) => ({
   borderRadius: 4,
+  borderWidth: 0,
+  backgroundColor: 'transparent',
   ...Platform.select({
-    default: getShadow({
+    ios: getShadow({
       shadowOffset: {
         width: 0,
         height: 2,
@@ -90,7 +92,7 @@ const Container = styled.View(({ theme }) => ({
       shadowColor: theme.colors.black,
       shadowOpacity: 0.25,
     }),
-    web: {},
+    default: {},
   }),
 }))
 
@@ -98,6 +100,7 @@ const StyledSvg =
   Platform.OS === 'web'
     ? styled(Svg)(({ theme }) => ({
         borderRadius: 4,
+        borderWidth: 0,
         ...getShadow(
           {
             shadowOffset: {
@@ -117,11 +120,12 @@ const IconContainer = styled.View(({ theme }) => ({
   position: 'absolute',
   justifyContent: 'center',
   alignItems: 'center',
+  zIndex: 1,
   flex: 1,
   width: '100%',
   height: '100%',
   borderRadius: 4,
-  borderWidth: 1,
+  borderWidth: Platform.select({ default: 1, android: 0 }),
   borderColor: theme.colors.greyLight,
   ...Platform.select({
     web: getShadow({
