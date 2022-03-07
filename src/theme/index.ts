@@ -480,8 +480,8 @@ export const theme: AppThemeType = {
         textColor: ColorsEnum.GREY_DARK,
       },
       quaternaryBlack: {
-        iconColor: ColorsEnum.PRIMARY_DISABLED,
-        textColor: ColorsEnum.PRIMARY_DISABLED,
+        iconColor: ColorsEnum.GREY_DARK,
+        textColor: ColorsEnum.GREY_DARK,
       },
     },
     primary: {
