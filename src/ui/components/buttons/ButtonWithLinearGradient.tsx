@@ -19,7 +19,7 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
       {isDisabled ? <DisabledRectangle /> : <Rectangle />}
       <LegendContainer>
         {!!isExternal && <ExternalSite />}
-        <Title adjustsFontSizeToFit numberOfLines={1}>
+        <Title adjustsFontSizeToFit numberOfLines={1} isDisabled={isDisabled}>
           {wording}
         </Title>
       </LegendContainer>
@@ -39,8 +39,10 @@ const Container = styled(TouchableOpacity)(({ theme }) => ({
   overflow: 'hidden',
 }))
 
-const Title = styled(Typo.ButtonText)(({ theme }) => ({
-  color: theme.colors.white,
+const Title = styled(Typo.ButtonText)<{ isDisabled: boolean }>(({ isDisabled, theme }) => ({
+  color: isDisabled
+    ? theme.buttons.disabled.linearGradient.textColor
+    : theme.buttons.linearGradient.textColor,
   padding: getSpacing(5),
 }))
 
@@ -53,7 +55,7 @@ const LegendContainer = styled.View({
 const DisabledRectangle = styled.View(({ theme }) => ({
   width: '100%',
   height: getSpacing(12),
-  backgroundColor: theme.colors.primaryDisabled,
+  backgroundColor: theme.buttons.disabled.linearGradient.backgroundColor,
 }))
 
 const ExternalSite = styled(InitialExternalSite).attrs(({ theme }) => ({

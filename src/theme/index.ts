@@ -186,6 +186,11 @@ export interface AppThemeType {
         iconColor: ColorsEnum
         textColor: ColorsEnum
       }
+      linearGradient: {
+        backgroundColor: ColorsEnum
+        iconColor: ColorsEnum
+        textColor: ColorsEnum
+      }
     }
     primary: {
       marginLeft: number
@@ -284,6 +289,7 @@ export interface AppThemeType {
     linearGradient: {
       iconSize: number
       iconColor: ColorsEnum
+      textColor: ColorsEnum
     }
     scrollButton: {
       size: number
@@ -483,6 +489,11 @@ export const theme: AppThemeType = {
         iconColor: ColorsEnum.GREY_DARK,
         textColor: ColorsEnum.GREY_DARK,
       },
+      linearGradient: {
+        backgroundColor: ColorsEnum.GREY_LIGHT,
+        textColor: ColorsEnum.GREY_DARK,
+        iconColor: ColorsEnum.GREY_DARK,
+      },
     },
     primary: {
       marginLeft: 0,
@@ -581,6 +592,7 @@ export const theme: AppThemeType = {
     linearGradient: {
       iconSize: iconSizes.small,
       iconColor: ColorsEnum.WHITE,
+      textColor: ColorsEnum.WHITE,
     },
     scrollButton: {
       size: getSpacing(10),

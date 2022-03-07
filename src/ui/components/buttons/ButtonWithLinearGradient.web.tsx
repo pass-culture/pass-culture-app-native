@@ -31,7 +31,7 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
     <Button name={name} onClick={onClick} disabled={isDisabled} type={type} className={className}>
       <LegendContainer>
         {!!isExternal && <ExternalSite />}
-        <Title adjustsFontSizeToFit numberOfLines={1}>
+        <Title adjustsFontSizeToFit numberOfLines={1} isDisabled={isDisabled}>
           {wording}
         </Title>
       </LegendContainer>
@@ -61,12 +61,15 @@ const Button = styled.button(({ theme }) => ({
   ['&:disabled']: {
     cursor: 'initial',
     background: 'none',
-    backgroundColor: theme.colors.primaryDisabled,
+    color: theme.buttons.disabled.linearGradient.textColor,
+    backgroundColor: theme.buttons.disabled.linearGradient.backgroundColor,
   },
 }))
 
-const Title = styledNative(Typo.ButtonText)(({ theme }) => ({
-  color: theme.colors.white,
+const Title = styledNative(Typo.ButtonText)<{ isDisabled: boolean }>(({ isDisabled, theme }) => ({
+  color: isDisabled
+    ? theme.buttons.disabled.linearGradient.textColor
+    : theme.buttons.linearGradient.textColor,
   padding: getSpacing(5),
 }))
 
