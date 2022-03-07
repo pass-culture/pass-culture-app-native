@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo, useCallback } from 'react'
 import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
@@ -14,16 +14,19 @@ import { getSpacing } from 'ui/theme'
 import { Li } from 'ui/web/list/Li'
 import { Ul } from 'ui/web/list/Ul'
 
-export const Category: React.FC = () => {
+const CategoryUnmemoized: React.FC = () => {
   const { searchState, dispatch } = useStagedSearch()
   const { offerCategories } = searchState
   const logUseFilter = useLogFilterOnce(SectionTitle.Category)
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
 
-  const onPress = (facetFilter: SearchGroupNameEnum) => () => {
-    dispatch({ type: 'TOGGLE_CATEGORY', payload: facetFilter })
-    logUseFilter()
-  }
+  const onPress = useCallback(
+    (facetFilter: SearchGroupNameEnum) => () => {
+      dispatch({ type: 'TOGGLE_CATEGORY', payload: facetFilter })
+      logUseFilter()
+    },
+    [dispatch, logUseFilter]
+  )
 
   return (
     <AccordionItem
@@ -45,6 +48,8 @@ export const Category: React.FC = () => {
     </AccordionItem>
   )
 }
+
+export const Category = memo(CategoryUnmemoized)
 
 const BodyContainer = styled.View({
   flexWrap: 'wrap',

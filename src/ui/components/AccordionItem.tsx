@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React, { MutableRefObject, useEffect, useRef, useState } from 'react'
+import React, { MutableRefObject, useCallback, useEffect, useRef, useState } from 'react'
 import {
   Platform,
   TouchableWithoutFeedback,
@@ -47,7 +47,7 @@ export const AccordionItem = ({
   const [bodySectionHeight, setBodySectionHeight] = useState<number>(0)
   const animatedController = useRef(new Animated.Value(defaultOpen ? 1 : 0)).current
   const openOnce = useFunctionOnce(onOpenOnce)
-  const onOpen = () => {
+  const onOpen = useCallback(() => {
     if (!!scrollViewRef && scrollViewRef !== null && scrollViewRef.current !== null) {
       scrollViewRef.current.scrollTo({
         x: 0,
@@ -55,7 +55,7 @@ export const AccordionItem = ({
         animated: true,
       })
     }
-  }
+  }, [bodyPositionY, scrollViewRef, tabBarHeight, top])
 
   const bodyHeight = animatedController.interpolate({
     inputRange: [0, 1],
@@ -67,7 +67,7 @@ export const AccordionItem = ({
     outputRange: [`${Math.PI / 2}rad`, `${(3 * Math.PI) / 2}rad`],
   })
 
-  const toggleListItem = () => {
+  const toggleListItem = useCallback(() => {
     !open && setShowChildren(true) // Display children before opening animation begins
     Animated.timing(animatedController, {
       duration: 300,
@@ -80,7 +80,7 @@ export const AccordionItem = ({
         return !prevOpen
       })
     })
-  }
+  }, [animatedController, open])
 
   useEffect(() => {
     if (open) {
@@ -90,9 +90,13 @@ export const AccordionItem = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])
 
-  const getPositionOfAccordionItem = (event: LayoutChangeEvent) => {
+  const getPositionOfAccordionItem = useCallback((event: LayoutChangeEvent) => {
     setBodyPositionY(event.nativeEvent.layout.y)
-  }
+  }, [])
+
+  const onLayoutSetBodySectionHeight = useCallback((event: LayoutChangeEvent) => {
+    setBodySectionHeight(event.nativeEvent.layout.height)
+  }, [])
 
   return (
     <React.Fragment>
@@ -111,7 +115,7 @@ export const AccordionItem = ({
         <StyledView
           style={bodyStyle}
           testID="accordionBodyContainer"
-          onLayout={(event) => setBodySectionHeight(event.nativeEvent.layout.height)}
+          onLayout={onLayoutSetBodySectionHeight}
           hidden={!showChildren}>
           {children}
         </StyledView>

@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import React, { useCallback } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
@@ -19,10 +19,10 @@ export const Filter: React.FC = () => {
   const { dispatch } = useStagedSearch()
   const filterCount = useFilterCount(searchState)
 
-  const onPress = () => {
+  const onPress = useCallback(() => {
     dispatch({ type: 'SET_STATE', payload: searchState })
     navigate('SearchFilter')
-  }
+  }, [searchState, dispatch, navigate])
 
   return (
     <Container
