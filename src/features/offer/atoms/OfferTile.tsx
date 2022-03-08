@@ -21,7 +21,7 @@ import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
 import { OfferCaption } from 'ui/components/OfferCaption'
 import { MARGIN_DP } from 'ui/theme'
-import { customTouchableFocusOutline } from 'ui/theme/customFocusOutline'
+import { customTouchableFocusOutline } from 'ui/theme/customFocusOutline/customTouchableFocusOutline'
 import { Link } from 'ui/web/link/Link'
 
 export interface OfferTileProps {

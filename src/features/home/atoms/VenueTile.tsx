@@ -15,7 +15,7 @@ import { GLOBAL_STALE_TIME } from 'libs/react-query/queryClient'
 import { VenueHit } from 'libs/search'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ImageTile } from 'ui/components/ImageTile'
-import { customTouchableFocusOutline } from 'ui/theme/customFocusOutline'
+import { customTouchableFocusOutline } from 'ui/theme/customFocusOutline/customTouchableFocusOutline'
 import { Link } from 'ui/web/link/Link'
 export interface VenueTileProps {
   venue: VenueHit

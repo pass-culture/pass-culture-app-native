@@ -12,7 +12,7 @@ import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Idea } from 'ui/svg/icons/Idea'
 import { Typo, getSpacing, MARGIN_DP, LENGTH_XS, RATIO_BUSINESS, Spacer } from 'ui/theme'
-import { customTouchableFocusOutline } from 'ui/theme/customFocusOutline'
+import { customTouchableFocusOutline } from 'ui/theme/customFocusOutline/customTouchableFocusOutline'
 
 import { fillUrlEmail, shouldUrlBeFilled, showBusinessModule } from './BusinessModule.utils'
 

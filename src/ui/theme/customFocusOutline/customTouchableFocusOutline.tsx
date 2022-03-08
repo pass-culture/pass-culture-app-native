@@ -16,16 +16,3 @@ export function customTouchableFocusOutline(
       }
     : {}
 }
-
-export function customFocusOutline(theme: DefaultTheme, color?: ColorsEnum) {
-  return {
-    ['&:focus']: {
-      outlineColor: color ?? theme.outline.color,
-      outlineWidth: theme.outline.width.normal,
-      outlineStyle: theme.outline.style,
-    },
-    ['&:active']: {
-      outline: 'none',
-    },
-  }
-}
