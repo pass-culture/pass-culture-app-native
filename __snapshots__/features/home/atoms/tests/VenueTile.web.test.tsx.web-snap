@@ -13,7 +13,7 @@ Object {
           aria-label="Lieu Le Petit Rintintin 1 du type Salle de projections, "
           class="css-view-1dbjc4n"
           data-testid="venueTile"
-          style="background-color: rgb(230, 230, 230); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 100px; margin-top: 3px; user-select: none; width: 100px;"
+          style="background-color: rgb(230, 230, 230); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 100px; margin-top: 4px; user-select: none; width: 100px;"
           tabindex="0"
         >
           <div
@@ -78,7 +78,7 @@ Object {
         aria-label="Lieu Le Petit Rintintin 1 du type Salle de projections, "
         class="css-view-1dbjc4n"
         data-testid="venueTile"
-        style="background-color: rgb(230, 230, 230); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 100px; margin-top: 3px; user-select: none; width: 100px;"
+        style="background-color: rgb(230, 230, 230); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 100px; margin-top: 4px; user-select: none; width: 100px;"
         tabindex="0"
       >
         <div

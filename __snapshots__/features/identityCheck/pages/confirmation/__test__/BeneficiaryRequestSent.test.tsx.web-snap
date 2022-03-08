@@ -186,7 +186,7 @@ exports[`<BeneficiaryRequestSent /> should render correctly 1`] = `
       }
     >
       <button
-        className="sc-bdvvtL bIVfLC sc-gsDKAQ khldlI"
+        className="sc-bdvvtL bIVfLC sc-gsDKAQ cQyYQY"
         onClick={[Function]}
         onDoubleClick={[Function]}
         type="button"

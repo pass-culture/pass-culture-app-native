@@ -12,7 +12,7 @@ import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { MARGIN_DP, LENGTH_XL, RATIO_EXCLU, Spacer, getSpacing } from 'ui/theme'
-import { customTouchableFocusOutline } from 'ui/theme/customFocusOutline/customTouchableFocusOutline'
+import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { Link } from 'ui/web/link/Link'
 
 export const ExclusivityModule = ({
@@ -76,7 +76,7 @@ const TouchableHighlight = styled.TouchableHighlight<{ isFocus?: boolean }>(
   ({ theme, isFocus }) => ({
     borderRadius: theme.borderRadius.radius,
     maxHeight: LENGTH_XL,
-    ...customTouchableFocusOutline(theme, isFocus),
+    ...customFocusOutline(theme, undefined, isFocus),
   })
 )
 

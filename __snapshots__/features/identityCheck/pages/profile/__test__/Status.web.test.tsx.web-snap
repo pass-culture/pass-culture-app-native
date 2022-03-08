@@ -310,7 +310,7 @@ Object {
                 >
                   <button
                     aria-label="Choisis ton statut"
-                    class="sc-bdvvtL bIVfLC sc-gsDKAQ lkBHtq"
+                    class="sc-bdvvtL bIVfLC sc-gsDKAQ jLStVS"
                     data-testid="Choisis ton statut"
                     disabled=""
                     type="button"
@@ -656,7 +656,7 @@ Object {
               >
                 <button
                   aria-label="Choisis ton statut"
-                  class="sc-bdvvtL bIVfLC sc-gsDKAQ lkBHtq"
+                  class="sc-bdvvtL bIVfLC sc-gsDKAQ jLStVS"
                   data-testid="Choisis ton statut"
                   disabled=""
                   type="button"

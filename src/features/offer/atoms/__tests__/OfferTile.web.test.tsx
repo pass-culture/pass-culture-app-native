@@ -10,6 +10,8 @@ import { fireEvent, render } from 'tests/utils/web'
 
 import { OfferTile } from '../OfferTile'
 
+jest.mock('ui/theme/customFocusOutline/customFocusOutline')
+
 const offer = mockedAlgoliaResponse.hits[0].offer
 const offerId = 116656
 

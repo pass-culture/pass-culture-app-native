@@ -9,6 +9,7 @@ import { render, fireEvent } from 'tests/utils/web'
 import { ExclusivityModule } from '../ExclusivityModule'
 
 jest.mock('features/search/utils/useMaxPrice', () => ({ useMaxPrice: jest.fn(() => 300) }))
+jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 const props: ExclusivityPane = {
   alt: "Image d'Adèle",

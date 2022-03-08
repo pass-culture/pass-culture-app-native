@@ -246,9 +246,9 @@ Array [
               style={
                 Array [
                   Object {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "borderRadius": 8,
+                    "height": 288,
+                    "marginTop": 4,
                   },
                 ]
               }
@@ -473,9 +473,9 @@ Array [
               style={
                 Array [
                   Object {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "borderRadius": 8,
+                    "height": 288,
+                    "marginTop": 4,
                   },
                 ]
               }
@@ -700,9 +700,9 @@ Array [
               style={
                 Array [
                   Object {
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
+                    "borderRadius": 8,
+                    "height": 288,
+                    "marginTop": 4,
                   },
                 ]
               }

@@ -369,7 +369,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                 }
               >
                 <button
-                  className="sc-bdvvtL bIVfLC sc-dkPtRN efdTBP"
+                  className="sc-bdvvtL bIVfLC sc-dkPtRN htpTeb"
                   onClick={[Function]}
                   onDoubleClick={[Function]}
                   type="button"

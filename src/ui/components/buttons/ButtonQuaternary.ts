@@ -5,6 +5,7 @@ import { BaseButtonProps } from 'ui/components/buttons/AppButton/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
 import { getSpacing, Typo } from 'ui/theme'
+import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 export const ButtonQuaternary = styledButton(AppButton).attrs<BaseButtonProps>(
   ({ icon, disabled, theme, ...rest }) => {
@@ -45,4 +46,5 @@ export const ButtonQuaternary = styledButton(AppButton).attrs<BaseButtonProps>(
   }
 )(({ theme }) => ({
   backgroundColor: theme.buttons.quaternary.backgroundColor,
+  ...customFocusOutline(theme, theme.buttons.quaternary.outlineColor),
 }))

@@ -197,9 +197,7 @@ Object {
                               style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center;"
                             >
                               <button
-                                aria-label="Copier le lien"
-                                class="sc-bdvvtL bIVfLC sc-dkPtRN fwCeAR"
-                                data-testid="Copier le lien"
+                                class="sc-bdvvtL bIVfLC sc-dkPtRN ifeNrd"
                                 type="button"
                               >
                                 <div
@@ -227,9 +225,7 @@ Object {
                               style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center;"
                             >
                               <button
-                                aria-label="Ouvrir le gestionnaire mail"
-                                class="sc-bdvvtL bIVfLC sc-dkPtRN fwCeAR"
-                                data-testid="Ouvrir le gestionnaire mail"
+                                class="sc-bdvvtL bIVfLC sc-dkPtRN ifeNrd"
                                 type="button"
                               >
                                 <div
@@ -383,7 +379,7 @@ Object {
                             style="height: 32px;"
                           />
                           <button
-                            class="sc-bdvvtL eQEBJO sc-gsDKAQ cenQpD"
+                            class="sc-bdvvtL eQEBJO sc-gsDKAQ emPjBr"
                             type="button"
                           >
                             <div

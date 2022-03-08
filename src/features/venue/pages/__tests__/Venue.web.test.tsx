@@ -13,6 +13,7 @@ jest.mock('react-query')
 jest.mock('features/auth/settings')
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
+jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 const venueId = venueResponseSnap.id
 

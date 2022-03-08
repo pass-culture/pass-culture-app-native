@@ -236,9 +236,9 @@ exports[`OffersModule component should render correctly - with black title 1`] =
             style={
               Array [
                 Object {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
+                  "borderRadius": 8,
+                  "height": 288,
+                  "marginTop": 4,
                 },
               ]
             }
@@ -442,9 +442,9 @@ exports[`OffersModule component should render correctly - with black title 1`] =
             style={
               Array [
                 Object {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
+                  "borderRadius": 8,
+                  "height": 288,
+                  "marginTop": 4,
                 },
               ]
             }
@@ -648,9 +648,9 @@ exports[`OffersModule component should render correctly - with black title 1`] =
             style={
               Array [
                 Object {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
+                  "borderRadius": 8,
+                  "height": 288,
+                  "marginTop": 4,
                 },
               ]
             }
@@ -871,9 +871,9 @@ exports[`OffersModule component should render correctly - with black title 1`] =
             style={
               Array [
                 Object {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
+                  "borderRadius": 8,
+                  "height": 288,
+                  "marginTop": 4,
                 },
               ]
             }

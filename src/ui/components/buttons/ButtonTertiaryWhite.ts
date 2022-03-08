@@ -5,7 +5,7 @@ import { BaseButtonProps } from 'ui/components/buttons/AppButton/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
 import { Typo } from 'ui/theme'
-import { customWebFocusOutline } from 'ui/theme/customFocusOutline/customWebFocusOutline'
+import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 export const ButtonTertiaryWhite = styledButton(AppButton).attrs<BaseButtonProps>(
   ({ disabled, icon, textSize, theme, ...rest }) => {
@@ -45,5 +45,5 @@ export const ButtonTertiaryWhite = styledButton(AppButton).attrs<BaseButtonProps
   }
 )(({ theme }) => ({
   backgroundColor: theme.buttons.tertiaryWhite.backgroundColor,
-  ...customWebFocusOutline(theme, theme.colors.white),
+  ...customFocusOutline(theme, theme.buttons.tertiaryWhite.outlineColor),
 }))

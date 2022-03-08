@@ -808,9 +808,9 @@ exports[`<VenueBody /> should render correctly 1`] = `
                   style={
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "borderRadius": 8,
+                        "height": 288,
+                        "marginTop": 4,
                       },
                     ]
                   }
@@ -1035,9 +1035,9 @@ exports[`<VenueBody /> should render correctly 1`] = `
                   style={
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "borderRadius": 8,
+                        "height": 288,
+                        "marginTop": 4,
                       },
                     ]
                   }
@@ -1262,9 +1262,9 @@ exports[`<VenueBody /> should render correctly 1`] = `
                   style={
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
+                        "borderRadius": 8,
+                        "height": 288,
+                        "marginTop": 4,
                       },
                     ]
                   }

@@ -8,6 +8,7 @@ import { fireEvent, render } from 'tests/utils/web'
 import { VenueTile, VenueTileProps } from '../VenueTile'
 
 jest.mock('react-query')
+jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 const venue = mockVenues.hits[0]
 

@@ -171,7 +171,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       }
     >
       <button
-        className="sc-bdvvtL bIVfLC sc-gsDKAQ khldlI"
+        className="sc-bdvvtL bIVfLC sc-gsDKAQ cQyYQY"
         onClick={[Function]}
         onDoubleClick={[Function]}
         type="button"
@@ -203,7 +203,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
         }
       />
       <button
-        className="sc-bdvvtL bIVfLC sc-dkPtRN fwCeAR"
+        className="sc-bdvvtL bIVfLC sc-dkPtRN kKuyLJ"
         onClick={[Function]}
         onDoubleClick={[Function]}
         type="button"
