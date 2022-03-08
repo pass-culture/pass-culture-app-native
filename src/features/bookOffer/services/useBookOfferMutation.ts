@@ -25,6 +25,7 @@ export function useBookOfferMutation({ onSuccess, onError }: BookOffer) {
     onSuccess: async (data: BookOfferResponse) => {
       await queryClient.invalidateQueries(QueryKeys.USER_PROFILE)
       await queryClient.invalidateQueries(QueryKeys.BOOKINGS)
+      await queryClient.refetchQueries(QueryKeys.BOOKINGS)
       onSuccess(data)
     },
     onError: (error: Error | ApiError, { stockId, quantity }, context?: BookingMutationContext) => {
