@@ -18,7 +18,10 @@ export const useVenueModule = ({
   const { data, refetch } = useQuery(
     [QueryKeys.HOME_VENUES_MODULE, moduleId],
     async () => await fetchMultipleVenues(search, position),
-    { enabled: isConnected }
+    {
+      enabled: isConnected,
+      staleTime: 1000 * 60, // 1 min
+    }
   )
 
   useEffect(() => {

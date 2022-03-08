@@ -40,7 +40,10 @@ export const useOfferModule = ({
   const { data, refetch } = useQuery(
     [QueryKeys.HOME_MODULE, moduleId],
     async () => await fetchMultipleAlgolia(parsedParameters, position, isUserUnderage),
-    { enabled: isConnected }
+    {
+      enabled: isConnected,
+      staleTime: 1000 * 60, // 1 min
+    }
   )
 
   useEffect(() => {

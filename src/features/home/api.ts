@@ -42,6 +42,7 @@ export function useHomepageModules(paramsEntryId?: string) {
   const selectPlaylist = useSelectPlaylist(paramsEntryId)
   const { data: entries } = useQuery<HomepageEntry[]>(QueryKeys.HOMEPAGE_MODULES, getEntries, {
     enabled: isConnected,
+    staleTime: 1000 * 60, // 1 min
   })
 
   const entry = selectPlaylist(entries || [])
