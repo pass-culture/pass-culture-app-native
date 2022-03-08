@@ -50,7 +50,10 @@ export interface AppThemeType {
     semiBold: string
   }
   outline: {
-    width: number
+    width: {
+      normal: number
+      large: number
+    }
     color: ColorsEnum
     style: string
   }
@@ -317,7 +320,10 @@ export const theme: AppThemeType = {
   },
   forms: { maxWidth: DESKTOP_CONTENT_MAX_WIDTH },
   outline: {
-    width: getSpacing(0.75),
+    width: {
+      normal: getSpacing(0.5),
+      large: getSpacing(0.75),
+    },
     color: ColorsEnum.PRIMARY,
     style: 'solid',
   },
