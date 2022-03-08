@@ -49,7 +49,7 @@ export const getCtaWordingAndAction = ({
 
   if (isAlreadyBookedOffer) {
     return {
-      isExternal: true,
+      isExternal: false,
       wording: t`Voir ma réservation`,
       onPress: () => navigateToBooking(bookedOffers[offer.id]),
     }
