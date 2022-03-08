@@ -290,6 +290,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
         style={
           Array [
             Object {
+              "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
               "width": "100%",
@@ -618,6 +619,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
         style={
           Array [
             Object {
+              "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
               "width": "100%",

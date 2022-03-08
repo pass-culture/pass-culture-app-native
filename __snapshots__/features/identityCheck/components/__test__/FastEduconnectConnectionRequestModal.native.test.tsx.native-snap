@@ -258,6 +258,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
         style={
           Array [
             Object {
+              "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
               "width": "100%",
@@ -802,6 +803,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
         style={
           Array [
             Object {
+              "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
               "width": "100%",

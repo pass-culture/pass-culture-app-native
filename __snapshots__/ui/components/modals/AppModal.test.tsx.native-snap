@@ -216,6 +216,7 @@ exports[`<AppModal /> on big screen 1`] = `
         style={
           Array [
             Object {
+              "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
               "width": "100%",
@@ -456,6 +457,7 @@ exports[`<AppModal /> on small screen 1`] = `
         style={
           Array [
             Object {
+              "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
               "width": "100%",
@@ -700,6 +702,7 @@ exports[`<AppModal /> when hidden 1`] = `
         style={
           Array [
             Object {
+              "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
               "width": "100%",
@@ -915,6 +918,7 @@ exports[`<AppModal /> with backdrop disabled 1`] = `
         style={
           Array [
             Object {
+              "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
               "width": "100%",
@@ -1155,6 +1159,7 @@ exports[`<AppModal /> with backdrop enabled by default 1`] = `
         style={
           Array [
             Object {
+              "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
               "width": "100%",
@@ -1395,6 +1400,7 @@ exports[`<AppModal /> with backdrop explicitly enabled 1`] = `
         style={
           Array [
             Object {
+              "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
               "width": "100%",
@@ -1671,6 +1677,7 @@ exports[`<AppModal /> with left icon render 1`] = `
         style={
           Array [
             Object {
+              "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
               "width": "100%",
@@ -1911,6 +1918,7 @@ exports[`<AppModal /> with long title on 1 line 1`] = `
         style={
           Array [
             Object {
+              "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
               "width": "100%",
@@ -2151,6 +2159,7 @@ exports[`<AppModal /> with long title on 2 lines by default 1`] = `
         style={
           Array [
             Object {
+              "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
               "width": "100%",
@@ -2393,6 +2402,7 @@ exports[`<AppModal /> with minimal props 1`] = `
         style={
           Array [
             Object {
+              "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
               "width": "100%",
@@ -2669,6 +2679,7 @@ exports[`<AppModal /> with right icon render 1`] = `
         style={
           Array [
             Object {
+              "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
               "width": "100%",
@@ -2909,6 +2920,7 @@ exports[`<AppModal /> with scroll disabled 1`] = `
         style={
           Array [
             Object {
+              "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
               "width": "100%",
@@ -3149,6 +3161,7 @@ exports[`<AppModal /> with scroll enabled by default 1`] = `
         style={
           Array [
             Object {
+              "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
               "width": "100%",
@@ -3389,6 +3402,7 @@ exports[`<AppModal /> with scroll explicitly enabled 1`] = `
         style={
           Array [
             Object {
+              "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
               "width": "100%",
@@ -3629,6 +3643,7 @@ exports[`<AppModal /> without children 1`] = `
         style={
           Array [
             Object {
+              "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
               "width": "100%",
@@ -3865,6 +3880,7 @@ exports[`<AppModal /> without title 1`] = `
         style={
           Array [
             Object {
+              "maxHeight": "100%",
               "maxWidth": 480,
               "paddingBottom": 8,
               "width": "100%",

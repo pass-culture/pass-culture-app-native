@@ -442,6 +442,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
             style={
               Array [
                 Object {
+                  "maxHeight": "100%",
                   "maxWidth": 480,
                   "paddingBottom": 8,
                   "width": "100%",

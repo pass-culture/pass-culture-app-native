@@ -162,7 +162,7 @@ Object {
                   />
                   <div
                     class="css-view-1dbjc4n"
-                    style="max-width: 480px; padding-bottom: 8px; width: 100%;"
+                    style="max-height: 100%; max-width: 480px; padding-bottom: 8px; width: 100%;"
                   >
                     <div
                       class="css-view-1dbjc4n"
