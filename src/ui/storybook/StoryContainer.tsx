@@ -11,6 +11,8 @@ type Props = WithBackgroundProps & {
   title?: string
 }
 
+const CaptionInformation = 'Background is not a part of this component'
+
 export const StoryContainer: FunctionComponent<Props> = ({
   children,
   title,
@@ -22,6 +24,7 @@ export const StoryContainer: FunctionComponent<Props> = ({
       {!!withBackground && <Background />}
       {children}
     </ChildrenContainer>
+    {!!withBackground && <StyledCaption>{CaptionInformation}</StyledCaption>}
   </Container>
 )
 
@@ -33,4 +36,10 @@ const Container = styled.View(({ theme }) => ({
 
 const ChildrenContainer = styled.View<WithBackgroundProps>(({ withBackground }) => ({
   padding: withBackground ? getSpacing(5) : 0,
+}))
+
+const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+  fontFamily: theme.fontFamily.regular,
+  fontStyle: 'italic',
 }))

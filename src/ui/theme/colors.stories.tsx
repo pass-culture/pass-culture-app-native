@@ -2,6 +2,8 @@ import { ComponentStory } from '@storybook/react'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { getSpacing } from 'ui/theme'
+
 import { ColorsEnum, UniqueColors } from './colors'
 import { Typo } from './typography'
 
@@ -19,22 +21,25 @@ type ColorProps = RectangleProps & {
 }
 
 const Color: FunctionComponent<ColorProps> = ({ name, color }) => (
-  <figure>
+  <ColorContainer>
     <Rectangle color={color} />
-    <figcaption>
-      <Typo.Caption>
-        {/* eslint-disable-next-line react-native/no-raw-text */}
-        {name}: {color}
-      </Typo.Caption>
-    </figcaption>
-  </figure>
+    <Typo.Caption>
+      {/* eslint-disable-next-line react-native/no-raw-text */}
+      {name}: {color}
+    </Typo.Caption>
+  </ColorContainer>
 )
+
+const ColorContainer = styled.View({
+  margin: getSpacing(5),
+})
 
 const Rectangle = styled.View<RectangleProps>(({ color }) => ({
   height: 125,
   width: 250,
   backgroundColor: color,
   boxShadow: '0 0 5px rgba(0, 0, 0, 0.2)',
+  marginBottom: getSpacing(2),
 }))
 
 const Colors: ComponentStory<
