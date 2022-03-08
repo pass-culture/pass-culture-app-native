@@ -1170,7 +1170,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit"
+                    accessibilityLabel="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                     accessible={true}
                     focusable={true}
                     onClick={[Function]}
@@ -1386,7 +1386,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit"
+                    accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                     accessible={true}
                     focusable={true}
                     onClick={[Function]}
@@ -1602,7 +1602,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit"
+                    accessibilityLabel="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                     accessible={true}
                     focusable={true}
                     onClick={[Function]}

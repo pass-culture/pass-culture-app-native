@@ -649,7 +649,7 @@ Object {
                             style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                           >
                             <div
-                              aria-label="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit"
+                              aria-label="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                               class="css-view-1dbjc4n"
                               data-testid="offerTile"
                               style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; margin-top: 3px; user-select: none;"
@@ -721,7 +721,7 @@ Object {
                             style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                           >
                             <div
-                              aria-label="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit"
+                              aria-label="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                               class="css-view-1dbjc4n"
                               data-testid="offerTile"
                               style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; margin-top: 3px; user-select: none;"
@@ -793,7 +793,7 @@ Object {
                             style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                           >
                             <div
-                              aria-label="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit"
+                              aria-label="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                               class="css-view-1dbjc4n"
                               data-testid="offerTile"
                               style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; margin-top: 3px; user-select: none;"
@@ -2142,7 +2142,7 @@ Object {
                           style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                         >
                           <div
-                            aria-label="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit"
+                            aria-label="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                             class="css-view-1dbjc4n"
                             data-testid="offerTile"
                             style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; margin-top: 3px; user-select: none;"
@@ -2214,7 +2214,7 @@ Object {
                           style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                         >
                           <div
-                            aria-label="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit"
+                            aria-label="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                             class="css-view-1dbjc4n"
                             data-testid="offerTile"
                             style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; margin-top: 3px; user-select: none;"
@@ -2286,7 +2286,7 @@ Object {
                           style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                         >
                           <div
-                            aria-label="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit"
+                            aria-label="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                             class="css-view-1dbjc4n"
                             data-testid="offerTile"
                             style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; margin-top: 3px; user-select: none;"
