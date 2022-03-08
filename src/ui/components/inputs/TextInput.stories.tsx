@@ -28,6 +28,13 @@ Required.args = {
   isRequiredField: true,
 }
 
+export const Disabled = Template.bind({})
+Disabled.args = {
+  label: 'Label',
+  placeholder: 'Placeholder...',
+  disabled: true,
+}
+
 export const Error = Template.bind({})
 Error.args = {
   label: 'Label',
