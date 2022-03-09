@@ -2732,7 +2732,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 >
                   <View
-                    fill="#15884f"
+                    fill="#696A6F"
                     height={24}
                     testID="invalidTestId"
                     width={24}
@@ -2853,7 +2853,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 >
                   <View
-                    fill="#15884f"
+                    fill="#696A6F"
                     height={24}
                     testID="invalidTestId"
                     width={24}
@@ -2974,7 +2974,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   }
                 >
                   <View
-                    fill="#15884f"
+                    fill="#696A6F"
                     height={24}
                     testID="invalidTestId"
                     width={24}
