@@ -45,9 +45,13 @@ export const ReportOfferOtherReason: FunctionComponent<Props> = (props) => {
     <Form.MaxWidth>
       <Intro>{t`Décris en quelques mots la raison pour laquelle tu souhaites signaler cette offre.`}</Intro>
       <Spacer.Column numberOfSpaces={4} />
-      <InputTitle>{t`Autre raison`}</InputTitle>
-      <Spacer.Column numberOfSpaces={2} />
-      <LargeTextInput value={inputText} onChangeText={setInputText} maxLength={200} autoFocus />
+      <LargeTextInput
+        label={t`Autre raison`}
+        value={inputText}
+        onChangeText={setInputText}
+        maxLength={200}
+        autoFocus
+      />
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
         wording={t`Signaler l'offre`}
@@ -63,7 +67,3 @@ const Intro = styled(Typo.Caption)(({ theme }) => ({
   textAlign: 'left',
   color: theme.colors.greyDark,
 }))
-
-const InputTitle = styled(Typo.ButtonText)({
-  textAlign: 'left',
-})
