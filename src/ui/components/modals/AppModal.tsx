@@ -16,6 +16,7 @@ type Props = {
   title: string
   visible: boolean
   titleNumberOfLines?: number
+  contentHeight?: number
   shouldDisplayOverlay?: boolean
   scrollEnabled?: boolean
   onBackdropPress?: () => void
@@ -35,6 +36,7 @@ export const AppModal: FunctionComponent<Props> = ({
   onRightIconPress,
   children,
   titleNumberOfLines,
+  contentHeight,
   shouldDisplayOverlay = true,
   onBackdropPress,
   scrollEnabled = true,
@@ -108,7 +110,10 @@ export const AppModal: FunctionComponent<Props> = ({
       testID="modal"
       deviceHeight={windowHeight}
       deviceWidth={windowWidth}>
-      <ModalContainer height={modalHeight} testID="modalContainer" aria-describedby={modalId}>
+      <ModalContainer
+        height={contentHeight || modalHeight}
+        testID="modalContainer"
+        aria-describedby={modalId}>
         <ModalHeader
           title={title}
           numberOfLines={titleNumberOfLines}
@@ -141,6 +146,7 @@ const ScrollViewContainer = styled.View.attrs(({ theme }) => ({
 }))<{ paddingBottom: number }>(({ paddingBottom }) => ({
   width: '100%', // do not use `flex: 1` here if you want full width
   maxWidth: getSpacing(120),
+  maxHeight: '100%',
   paddingBottom,
 }))
 

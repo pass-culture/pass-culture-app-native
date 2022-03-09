@@ -2002,6 +2002,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   style={
                                     Array [
                                       Object {
+                                        "maxHeight": "100%",
                                         "maxWidth": 480,
                                         "paddingBottom": 8,
                                         "width": "100%",
@@ -4662,6 +4663,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   style={
                                     Array [
                                       Object {
+                                        "maxHeight": "100%",
                                         "maxWidth": 480,
                                         "paddingBottom": 8,
                                         "width": "100%",
