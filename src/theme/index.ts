@@ -131,6 +131,7 @@ export interface AppThemeType {
   buttons: {
     maxWidth: number
     buttonHeights: ButtonHeightsType
+    outlineColor: ColorsEnum
     loading: {
       primary: {
         backgroundColor: ColorsEnum
@@ -201,7 +202,6 @@ export interface AppThemeType {
       iconSize: number
       textColor: ColorsEnum
       backgroundColor?: ColorsEnum
-      outlineColor: ColorsEnum
     }
     primaryWhite: {
       marginLeft: number
@@ -223,7 +223,6 @@ export interface AppThemeType {
       backgroundColor: ColorsEnum
       borderColor: ColorsEnum
       borderWidth: number
-      outlineColor: ColorsEnum
     }
     secondaryWhite: {
       marginLeft: number
@@ -245,7 +244,6 @@ export interface AppThemeType {
       loadingIconColor: ColorsEnum
       iconColor: ColorsEnum
       iconSize: number
-      outlineColor: ColorsEnum
     }
     tertiaryBlack: {
       marginLeft: number
@@ -255,7 +253,6 @@ export interface AppThemeType {
       loadingIconColor: ColorsEnum
       iconColor: ColorsEnum
       iconSize: number
-      outlineColor: ColorsEnum
     }
     tertiaryWhite: {
       marginLeft: number
@@ -275,7 +272,6 @@ export interface AppThemeType {
       loadingIconColor: ColorsEnum
       iconColor: ColorsEnum
       iconSize: number
-      outlineColor: ColorsEnum
     }
     quaternary: {
       marginLeft: number
@@ -285,7 +281,6 @@ export interface AppThemeType {
       iconSize: number
       textColor: ColorsEnum
       backgroundColor: ColorsEnum
-      outlineColor: ColorsEnum
     }
     quaternaryBlack: {
       marginLeft: number
@@ -295,7 +290,6 @@ export interface AppThemeType {
       iconSize: number
       textColor: ColorsEnum
       backgroundColor: ColorsEnum
-      outlineColor: ColorsEnum
     }
     linearGradient: {
       iconSize: number
@@ -445,6 +439,7 @@ export const theme: AppThemeType = {
       tall: buttonHeights.tall,
       inline: buttonHeights.inline,
     },
+    outlineColor: ColorsEnum.ACCENT,
     loading: {
       primary: {
         backgroundColor: ColorsEnum.PRIMARY_DARK,
@@ -515,7 +510,6 @@ export const theme: AppThemeType = {
       iconSize: iconSizes.small,
       textColor: ColorsEnum.WHITE,
       backgroundColor: ColorsEnum.PRIMARY,
-      outlineColor: ColorsEnum.ACCENT,
     },
     primaryWhite: {
       marginLeft: 0,
@@ -537,7 +531,6 @@ export const theme: AppThemeType = {
       backgroundColor: ColorsEnum.TRANSPARENT,
       borderColor: ColorsEnum.PRIMARY,
       borderWidth: getSpacing(0.5),
-      outlineColor: ColorsEnum.ACCENT,
     },
     secondaryWhite: {
       marginLeft: 0,
@@ -559,7 +552,6 @@ export const theme: AppThemeType = {
       loadingIconColor: ColorsEnum.PRIMARY_DARK,
       iconColor: ColorsEnum.PRIMARY,
       iconSize: iconSizes.smaller,
-      outlineColor: ColorsEnum.ACCENT,
     },
     tertiaryBlack: {
       marginLeft: 0,
@@ -569,7 +561,6 @@ export const theme: AppThemeType = {
       loadingIconColor: ColorsEnum.BLACK,
       iconColor: ColorsEnum.BLACK,
       iconSize: iconSizes.smaller,
-      outlineColor: ColorsEnum.ACCENT,
     },
     tertiaryWhite: {
       marginLeft: 0,
@@ -589,7 +580,6 @@ export const theme: AppThemeType = {
       loadingIconColor: ColorsEnum.GREY_DARK,
       iconColor: ColorsEnum.GREY_DARK,
       iconSize: iconSizes.smaller,
-      outlineColor: ColorsEnum.ACCENT,
     },
     quaternary: {
       marginLeft: 0,
@@ -599,7 +589,6 @@ export const theme: AppThemeType = {
       iconSize: iconSizes.extraSmall,
       textColor: ColorsEnum.PRIMARY,
       backgroundColor: ColorsEnum.TRANSPARENT,
-      outlineColor: ColorsEnum.ACCENT,
     },
     quaternaryBlack: {
       marginLeft: 0,
@@ -609,7 +598,6 @@ export const theme: AppThemeType = {
       textColor: ColorsEnum.BLACK,
       backgroundColor: ColorsEnum.TRANSPARENT,
       iconSize: iconSizes.extraSmall,
-      outlineColor: ColorsEnum.ACCENT,
     },
     linearGradient: {
       iconSize: iconSizes.small,

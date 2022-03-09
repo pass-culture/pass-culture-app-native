@@ -16,7 +16,7 @@ export function customFocusOutline(theme: DefaultTheme, color?: ColorsEnum, isFo
     ? outlineRules
     : {
         ['&:focus']: outlineRules,
-        ['&:active']: { outline: 'none' },
+        ['&:active']: { outline: 'none', opacity: theme.activeOpacity },
       }
 
   return Platform.OS === 'web' ? outlineFocusWeb : {}

@@ -5,6 +5,7 @@ import styledNative from 'styled-components/native'
 import { ButtonWithLinearGradientProps } from 'ui/components/buttons/buttonWithLinearGradientTypes'
 import { ExternalSite as InitialExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, Typo } from 'ui/theme'
+import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> = ({
   wording,
@@ -51,19 +52,13 @@ const Button = styled.button(({ theme }) => ({
   justifyContent: 'center',
   alignItems: 'center',
   border: 0,
-  ['&:focus']: {
-    outline: 'auto',
-  },
-  ['&:active']: {
-    opacity: theme.activeOpacity,
-    outline: 'none',
-  },
   ['&:disabled']: {
     cursor: 'initial',
     background: 'none',
     color: theme.buttons.disabled.linearGradient.textColor,
     backgroundColor: theme.buttons.disabled.linearGradient.backgroundColor,
   },
+  ...customFocusOutline(theme, theme.buttons.outlineColor),
 }))
 
 const Title = styledNative(Typo.ButtonText)<{ isDisabled: boolean }>(({ isDisabled, theme }) => ({

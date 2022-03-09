@@ -6,7 +6,6 @@ import { BaseButtonProps } from 'ui/components/buttons/AppButton/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
 import { Typo } from 'ui/theme'
-import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
   ({ icon, disabled, textSize, theme, ...rest }) => {
@@ -63,7 +62,6 @@ export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
     backgroundColor,
     borderColor,
     borderWidth,
-    ...customFocusOutline(theme, theme.buttons.secondary.outlineColor),
     ...webOnly,
   }
 })

@@ -33,7 +33,7 @@ describe('customWebFocusOutline', () => {
     isFocus = false
     const { result } = renderHook(() => customFocusOutline(theme))
     expect(result.current).toEqual({
-      '&:active': { outline: 'none' },
+      '&:active': { outline: 'none', opacity: theme.activeOpacity },
       '&:focus': {
         outlineColor: theme.outline.color,
         outlineStyle: theme.outline.style,
@@ -47,7 +47,7 @@ describe('customWebFocusOutline', () => {
     isFocus = false
     const { result } = renderHook(() => customFocusOutline(theme, color))
     expect(result.current).toEqual({
-      '&:active': { outline: 'none' },
+      '&:active': { outline: 'none', opacity: theme.activeOpacity },
       '&:focus': {
         outlineColor: theme.colors.white,
         outlineStyle: theme.outline.style,

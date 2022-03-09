@@ -5,7 +5,6 @@ import { BaseButtonProps } from 'ui/components/buttons/AppButton/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
 import { getSpacing, Typo } from 'ui/theme'
-import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 export const ButtonTertiaryBlack = styledButton(AppButton).attrs<BaseButtonProps>(
   ({ icon, disabled, textSize, theme, ...rest }) => {
@@ -41,7 +40,6 @@ export const ButtonTertiaryBlack = styledButton(AppButton).attrs<BaseButtonProps
   }
 )(({ theme }) => ({
   backgroundColor: theme.buttons.tertiaryBlack.backgroundColor,
-  ...customFocusOutline(theme, theme.buttons.tertiaryBlack.outlineColor),
 }))
 
 const LoadingIndicator = styled(InitialLoadingIndicator).attrs(({ theme }) => ({
