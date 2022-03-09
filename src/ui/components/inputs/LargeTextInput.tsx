@@ -4,10 +4,10 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { InputLabel } from 'ui/components/InputLabel'
+import { StyledInputContainer } from 'ui/components/inputs/StyledInputContainer'
 import { Spacer } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
-import { LargeInputContainer } from './LargeInputContainer'
 import { getCustomTextInputProps, getRNTextInputProps, TextInputProps } from './types'
 
 const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputProps> = (
@@ -36,10 +36,11 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}
-      <LargeInputContainer
+      <StyledInputContainer
         isFocus={isFocus}
         isError={customProps.isError}
-        isInputDisabled={customProps.disabled}>
+        isInputDisabled={customProps.disabled}
+        inputHeight="tall">
         <LargeBaseTextInput
           {...nativeProps}
           ref={forwardedRef}
@@ -49,7 +50,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
           testID="large-text-input"
           nativeID={largeTextInputID}
         />
-      </LargeInputContainer>
+      </StyledInputContainer>
     </React.Fragment>
   )
 }

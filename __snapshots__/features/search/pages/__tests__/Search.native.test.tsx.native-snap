@@ -61,7 +61,7 @@ exports[`Search component should render correctly 1`] = `
     }
   >
     <View
-      height="tall"
+      height="regular"
       isError={false}
       isFocus={false}
       isInputDisabled={false}

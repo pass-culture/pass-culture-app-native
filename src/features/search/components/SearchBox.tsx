@@ -86,7 +86,7 @@ export const SearchBox: React.FC = () => {
         onChangeText={setQuery}
         placeholder={t`Titre, artiste, lieu...`}
         autoFocus={false}
-        inputHeight="tall"
+        inputHeight="regular"
         LeftIcon={() => <LeftIcon onPressArrowBack={onPressArrowBack} />}
         onSubmitEditing={onSubmitQuery}
         accessibilityLabel={t`Barre de recherche des offres`}

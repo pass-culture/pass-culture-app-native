@@ -7,7 +7,7 @@ import { getShadow, getSpacing, padding } from 'ui/theme'
 type Props = {
   isError?: boolean
   isFocus?: boolean
-  inputHeight?: 'small' | 'tall'
+  inputHeight?: 'small' | 'regular' | 'tall'
   isInputDisabled?: boolean
   style?: ViewStyle
 }
@@ -48,13 +48,13 @@ const StyledView = styled(View)<{
       shadowOpacity: 0.15,
     })
   }
+
+  const heightValue = height === 'small' ? 10 : height === 'regular' ? 12 : 23.5
+
   return {
-    height: height === 'tall' ? getSpacing(12) : getSpacing(10),
+    height: getSpacing(heightValue),
     width: '100%',
     flexDirection: 'row',
-    alignItems: 'center',
-    ...padding(1, 4),
-    borderRadius: 22,
     borderStyle: 'solid',
     borderWidth: '1px',
     borderColor: isInputDisabled
@@ -65,6 +65,13 @@ const StyledView = styled(View)<{
       ? theme.colors.error
       : theme.colors.greyMedium,
     backgroundColor: isInputDisabled ? theme.colors.greyLight : theme.colors.white,
+    ...(height === 'tall'
+      ? {
+          ...padding(2, 3),
+          alignItems: 'flex-start',
+          borderRadius: 16,
+        }
+      : { ...padding(1, 4), alignItems: 'center', borderRadius: 22 }),
     ...shadows,
   }
 })

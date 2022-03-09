@@ -1,5 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
+
 import { LargeTextInput } from './LargeTextInput'
 
 export default {
@@ -22,14 +23,14 @@ WithLabel.args = {
 
 export const Error = Template.bind({})
 Error.args = {
-  label: 'Mois',
+  label: 'Label',
   placeholder: 'Placeholder...',
   isError: true,
 }
 
 export const Disabled = Template.bind({})
 Disabled.args = {
-  label: 'Mois',
+  label: 'Label',
   placeholder: 'Placeholder...',
   disabled: true,
 }
