@@ -13,10 +13,23 @@ export function FirstCard(props: AchievementCardKeyProps) {
     props.swiperRef?.current?.goToNext()
   }
 
+  const currentStep = (props.activeIndex || 0) + 1
+  const totalSteps = (props.lastIndex || 3) + 1
   const helmetTitle =
-    t`Étape ${(props.activeIndex || 0) + 1} sur ${
-      (props.lastIndex || 3) + 1
-    } | Tutoriel "Comment ça marche"` + ' | pass Culture'
+    t({
+      values: {
+        currentStep,
+        totalSteps,
+      },
+      message: 'Étape {currentStep} sur {totalSteps} | Tutorial "Comment ça marche"',
+    }) + ' | pass Culture'
+  const buttonAccessibilityLabel = t({
+    values: {
+      nextStep: currentStep + 1,
+      totalSteps,
+    },
+    message: "Continuer vers l'étape {nextStep} sur {totalSteps}",
+  })
 
   return (
     <React.Fragment>
@@ -25,6 +38,7 @@ export function FirstCard(props: AchievementCardKeyProps) {
         animation={TutorialPassLogo}
         buttonCallback={onButtonPress}
         buttonText={t`Continuer`}
+        buttonAccessibilityLabel={buttonAccessibilityLabel}
         pauseAnimationOnRenderAtFrame={62}
         subTitle={t`c'est...`}
         text={t`une initiative du Gouvernement financée par le ministère de la Culture.`}

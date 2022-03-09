@@ -30,6 +30,7 @@ export type AchievementCardProps = AchievementCardKeyProps & {
   animation: AnimationObject
   buttonCallback?: () => void
   buttonText: string
+  buttonAccessibilityLabel?: string
   pauseAnimationOnRenderAtFrame: number
   subTitle: string
   centerChild?: (() => JSX.Element) | null
@@ -134,7 +135,11 @@ Those props are provided by the GenericAchievementCard and must be passed down t
         )}>
         <Animatable.View ref={animatedButtonRef}>
           {props.activeIndex === props.index ? (
-            <ButtonPrimary wording={props.buttonText} onPress={props.buttonCallback} />
+            <ButtonPrimary
+              wording={props.buttonText}
+              accessibilityLabel={props.buttonAccessibilityLabel}
+              onPress={props.buttonCallback}
+            />
           ) : (
             <InvisibleButtonHeight testID="invisible-button-height" />
           )}

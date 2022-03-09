@@ -28,7 +28,8 @@ export const Category: React.FC = () => {
   return (
     <AccordionItem
       defaultOpen={true}
-      title={<TitleWithCount title={SectionTitle.Category} count={offerCategories.length} />}>
+      title={<TitleWithCount title={SectionTitle.Category} count={offerCategories.length} />}
+      accessibilityTitle={SectionTitle.Category}>
       <BodyContainer>
         <StyledUl>
           {Object.entries(availableCategories).map(([category, { facetFilter }]) => (

@@ -4,13 +4,9 @@ import { TextInput as RNTextInput } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import { InputLabel } from 'ui/components/InputLabel'
 import { InputContainer } from 'ui/components/inputs/InputContainer'
-import { LabelContainer } from 'ui/components/inputs/LabelContainer'
-import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { TextInputProps } from 'ui/components/inputs/types'
-import { Spacer } from 'ui/theme'
 
 interface Props extends TextInputProps {
   label: string
@@ -20,22 +16,13 @@ interface Props extends TextInputProps {
 }
 
 const withRefEmailInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
-  { label, email, onEmailChange, isRequiredField = false, ...inputProps },
+  { email, onEmailChange, ...inputProps },
   forwardedRef
 ) => {
   const emailInputID = uuidv4()
 
   return (
     <InputContainer>
-      {!!label && (
-        <React.Fragment>
-          <LabelContainer>
-            <InputLabel htmlFor={emailInputID}>{label}</InputLabel>
-            {!!isRequiredField && <RequiredLabel />}
-          </LabelContainer>
-          <Spacer.Column numberOfSpaces={2} />
-        </React.Fragment>
-      )}
       <TextInput
         nativeID={emailInputID}
         autoCapitalize="none"

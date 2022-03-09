@@ -77,11 +77,20 @@ export function SecondCard(props: AchievementCardKeyProps) {
   const subtitle = t`et si tu as...`
   const text = t`de 15 à 18 ans\u00a0: le Gouvernement offre un crédit à dépenser dans l’application.`
 
+  const buttonAccessibilityLabel = t({
+    values: {
+      nextStep: (props.activeIndex || 0) + 2,
+      totalSteps: (props.lastIndex || 3) + 1,
+    },
+    message: "Continuer vers l'étape {nextStep} sur {totalSteps}",
+  })
+
   return (
     <GenericAchievementCard
       animation={TutorialOffers}
       buttonCallback={onButtonPress}
       buttonText={t`Continuer`}
+      buttonAccessibilityLabel={buttonAccessibilityLabel}
       pauseAnimationOnRenderAtFrame={62}
       subTitle={subtitle}
       centerChild={centerChild}

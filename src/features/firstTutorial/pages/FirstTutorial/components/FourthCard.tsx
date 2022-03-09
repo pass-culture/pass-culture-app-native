@@ -31,6 +31,7 @@ export function FourthCard(props: AchievementCardKeyProps) {
       animation={StarAnimation}
       buttonCallback={onButtonPress}
       buttonText={t`Découvrir`}
+      buttonAccessibilityLabel={t`Découvrir ton pass Culture`}
       pauseAnimationOnRenderAtFrame={62}
       subTitle={t`quotidiennes`}
       text={t`Nos nombreux partenaires ajoutent de nouvelles offres quotidiennement. Découvre les dès maintenant\u00a0!`}
