@@ -50,7 +50,6 @@ export const ButtonPrimaryWhite = styledButton(AppButton).attrs<BaseButtonProps>
 
   return {
     backgroundColor: theme.buttons.primaryWhite.backgroundColor,
-    outlineColor: theme.buttons.primaryWhite.outlineColor,
     ...webOnly,
   }
 })
