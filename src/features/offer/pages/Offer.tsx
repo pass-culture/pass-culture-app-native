@@ -48,6 +48,7 @@ export const Offer: FunctionComponent = () => {
     wording,
     onPress: onPressCTA,
     isExternal,
+    showBookingModal,
     url,
   } = useCtaWordingAndAction({ offerId }) || {}
 
@@ -69,7 +70,7 @@ export const Offer: FunctionComponent = () => {
               wording={wording}
               onPress={() => {
                 onPressCTA && onPressCTA()
-                if (!isExternal) {
+                if (showBookingModal) {
                   showBookingOfferModal()
                 }
               }}

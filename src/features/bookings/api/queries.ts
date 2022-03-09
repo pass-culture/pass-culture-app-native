@@ -37,5 +37,6 @@ export function useOngoingOrEndedBooking(id: number): UseQueryResult<BookingRepo
 
   return useBookings({
     select,
+    staleTime: 0, // reset all bookings before selecting one booking
   }) as UseQueryResult<BookingReponse | null>
 }

@@ -28,6 +28,7 @@ interface Props {
   isUnderageBeneficiary: boolean
 }
 interface ICTAWordingAndAction {
+  showBookingModal?: boolean
   isExternal?: boolean
   url?: string
   wording?: string
@@ -49,6 +50,7 @@ export const getCtaWordingAndAction = ({
 
   if (isAlreadyBookedOffer) {
     return {
+      showBookingModal: false,
       isExternal: false,
       wording: t`Voir ma réservation`,
       onPress: () => navigateToBooking(bookedOffers[offer.id]),
@@ -62,6 +64,7 @@ export const getCtaWordingAndAction = ({
     if (!externalTicketOfficeUrl) return { wording: undefined }
 
     return {
+      showBookingModal: false,
       isExternal: true,
       url: externalTicketOfficeUrl,
       wording: subcategory.isEvent ? t`Accéder à la billetterie` : t`Accéder à l'offre`,
@@ -82,6 +85,8 @@ export const getCtaWordingAndAction = ({
     }
 
     return {
+      showBookingModal: true,
+      isExternal: false,
       wording: t`Réserver`,
       onPress: () => {
         analytics.logClickBookOffer(offer.id)
@@ -93,6 +98,8 @@ export const getCtaWordingAndAction = ({
     if (!hasEnoughCredit) return { wording: t`Crédit insuffisant` }
 
     return {
+      showBookingModal: true,
+      isExternal: false,
       wording: t`Voir les disponibilités`,
       onPress: () => {
         analytics.logConsultAvailableDates(offer.id)
