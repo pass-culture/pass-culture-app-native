@@ -999,7 +999,7 @@ Object {
               style="background-color: rgb(241, 241, 244); height: 8px;"
             />
             <div
-              aria-label="Ouvrir la section"
+              aria-label="Ouvrir la section Modalités de retrait"
               class="css-view-1dbjc4n"
               style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
               tabindex="0"
@@ -1094,7 +1094,7 @@ Object {
               style="background-color: rgb(241, 241, 244); height: 8px;"
             />
             <div
-              aria-label="Ouvrir la section"
+              aria-label="Ouvrir la section Accessibilité"
               class="css-view-1dbjc4n"
               style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
               tabindex="0"
@@ -1419,7 +1419,7 @@ Object {
               style="background-color: rgb(241, 241, 244); height: 8px;"
             />
             <div
-              aria-label="Ouvrir la section"
+              aria-label="Ouvrir la section Contact"
               class="css-view-1dbjc4n"
               style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
               tabindex="0"
@@ -2492,7 +2492,7 @@ Object {
             style="background-color: rgb(241, 241, 244); height: 8px;"
           />
           <div
-            aria-label="Ouvrir la section"
+            aria-label="Ouvrir la section Modalités de retrait"
             class="css-view-1dbjc4n"
             style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
             tabindex="0"
@@ -2587,7 +2587,7 @@ Object {
             style="background-color: rgb(241, 241, 244); height: 8px;"
           />
           <div
-            aria-label="Ouvrir la section"
+            aria-label="Ouvrir la section Accessibilité"
             class="css-view-1dbjc4n"
             style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
             tabindex="0"
@@ -2912,7 +2912,7 @@ Object {
             style="background-color: rgb(241, 241, 244); height: 8px;"
           />
           <div
-            aria-label="Ouvrir la section"
+            aria-label="Ouvrir la section Contact"
             class="css-view-1dbjc4n"
             style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
             tabindex="0"

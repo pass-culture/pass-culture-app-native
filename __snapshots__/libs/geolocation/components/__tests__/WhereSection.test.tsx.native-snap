@@ -29,6 +29,7 @@ Array [
       }
     />
     <View
+      accessibilityLabel="Lieu Le Petit Rintintin 1"
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -298,13 +299,14 @@ exports[`WhereSection should render correctly 2`] = `
 - First value
 + Second value
 
-@@ -23,10 +23,119 @@
+@@ -23,10 +23,120 @@
               \\"height\\": 16,
             },
           ]
         }
       />
 +     <View
++       accessibilityLabel=\\"Lieu Le Petit Rintintin 1\\"
 +       accessible={true}
 +       collapsable={false}
 +       focusable={true}

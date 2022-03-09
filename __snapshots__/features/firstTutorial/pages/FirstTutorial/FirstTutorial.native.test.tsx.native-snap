@@ -339,7 +339,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     }
                   >
                     <View
-                      accessibilityLabel="Continuer"
+                      accessibilityLabel="Continuer vers l'étape 2 sur 4"
                       accessible={true}
                       collapsable={false}
                       focusable={true}
@@ -1689,7 +1689,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                 }
               >
                 <View
-                  accessibilityLabel="Next"
+                  accessibilityLabel="Continuer vers l'étape suivante"
                   accessible={true}
                   collapsable={false}
                   focusable={true}

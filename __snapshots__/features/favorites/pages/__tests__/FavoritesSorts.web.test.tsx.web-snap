@@ -111,6 +111,7 @@ Object {
               </h4>
             </div>
             <div
+              aria-label="Trier par Ajouté récemment"
               class="css-view-1dbjc4n"
               data-testid="RECENTLY_ADDED"
               style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
@@ -147,6 +148,7 @@ Object {
               </div>
             </div>
             <div
+              aria-label="Trier par Prix croissant"
               class="css-view-1dbjc4n"
               data-testid="ASCENDING_PRICE"
               style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
@@ -173,6 +175,7 @@ Object {
               />
             </div>
             <div
+              aria-label="Trier par Proximité géographique"
               class="css-view-1dbjc4n"
               data-testid="AROUND_ME"
               style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
@@ -327,6 +330,7 @@ Object {
             </h4>
           </div>
           <div
+            aria-label="Trier par Ajouté récemment"
             class="css-view-1dbjc4n"
             data-testid="RECENTLY_ADDED"
             style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
@@ -363,6 +367,7 @@ Object {
             </div>
           </div>
           <div
+            aria-label="Trier par Prix croissant"
             class="css-view-1dbjc4n"
             data-testid="ASCENDING_PRICE"
             style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
@@ -389,6 +394,7 @@ Object {
             />
           </div>
           <div
+            aria-label="Trier par Proximité géographique"
             class="css-view-1dbjc4n"
             data-testid="AROUND_ME"
             style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"

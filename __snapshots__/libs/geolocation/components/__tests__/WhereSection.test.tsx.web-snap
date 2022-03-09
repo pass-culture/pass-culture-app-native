@@ -43,6 +43,7 @@ Array [
       tabIndex="-1"
     >
       <div
+        aria-label="Lieu Le Petit Rintintin 1"
         className="css-view-1dbjc4n"
         data-testid="VenueBannerComponent"
         onClick={[Function]}
@@ -313,7 +314,7 @@ exports[`WhereSection should render correctly 2`] = `
 - First value
 + Second value
 
-@@ -24,10 +24,164 @@
+@@ -24,10 +24,165 @@
         }
       />
       <div
@@ -333,6 +334,7 @@ exports[`WhereSection should render correctly 2`] = `
 +       tabIndex=\\"-1\\"
 +     >
 +       <div
++         aria-label=\\"Lieu Le Petit Rintintin 1\\"
 +         className=\\"css-view-1dbjc4n\\"
 +         data-testid=\\"VenueBannerComponent\\"
 +         onClick={[Function onClick]}

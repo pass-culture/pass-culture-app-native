@@ -1940,7 +1940,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
       }
     />
     <View
-      accessibilityLabel="Ouvrir la section"
+      accessibilityLabel="Ouvrir la section Modalités de retrait"
       accessible={true}
       focusable={true}
       onClick={[Function]}
@@ -2098,7 +2098,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
       }
     />
     <View
-      accessibilityLabel="Ouvrir la section"
+      accessibilityLabel="Ouvrir la section Accessibilité"
       accessible={true}
       focusable={true}
       onClick={[Function]}
@@ -2699,7 +2699,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
       }
     />
     <View
-      accessibilityLabel="Ouvrir la section"
+      accessibilityLabel="Ouvrir la section Contact"
       accessible={true}
       focusable={true}
       onClick={[Function]}
