@@ -1943,6 +1943,10 @@ msgstr "Place-toi dans un lieu bien éclairé"
 msgid "Politique de confidentialité."
 msgstr "Politique de confidentialité."
 
+#: src/libs/tileAccessibilityLabel.ts
+msgid "Possibilité de réserver 2 places."
+msgstr "Possibilité de réserver 2 places."
+
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"
 msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux :"

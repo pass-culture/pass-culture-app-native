@@ -13,7 +13,7 @@ exports[`OfferTile component should render correctly 1`] = `
   }
 >
   <View
-    accessibilityLabel="Offre Mensch ! Où sont les Hommes ? de la catégorie MUSIQUE, à 1,2km,  Dès le 12 mars 2020, prix 28 €"
+    accessibilityLabel="Offre Mensch ! Où sont les Hommes ? de la catégorie MUSIQUE, à 1,2km,  Dès le 12 mars 2020, prix 28 €. "
     accessible={true}
     focusable={true}
     onClick={[Function]}

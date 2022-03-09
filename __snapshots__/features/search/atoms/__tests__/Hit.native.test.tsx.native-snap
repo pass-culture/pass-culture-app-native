@@ -7,8 +7,8 @@ exports[`Hit component offer name should take full space if no geolocation 1`] =
 
 @@ -1,7 +1,7 @@
   <View
--   accessibilityLabel=\\"Offre Mensch ! Où sont les Hommes ? de la catégorie Musique,   prix 0,28 €\\"
-+   accessibilityLabel=\\"Offre Mensch ! Où sont les Hommes ? de la catégorie Musique, à 10 km,  prix 0,28 €\\"
+-   accessibilityLabel=\\"Offre Mensch ! Où sont les Hommes ? de la catégorie Musique,   prix 0,28 €. \\"
++   accessibilityLabel=\\"Offre Mensch ! Où sont les Hommes ? de la catégorie Musique, à 10 km,  prix 0,28 €. \\"
     accessible={true}
     collapsable={false}
     focusable={true}

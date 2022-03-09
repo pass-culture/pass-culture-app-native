@@ -44,6 +44,7 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
     ...offer,
     categoryLabel: searchGroupLabel,
     distance: distanceToOffer,
+    date: formattedDate,
     price: formattedPrice,
   })
 
