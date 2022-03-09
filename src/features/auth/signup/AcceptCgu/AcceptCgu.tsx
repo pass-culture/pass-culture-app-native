@@ -125,6 +125,7 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
         <A href={supportUrl.forGenericQuestion}>
           <ButtonTertiary
             wording={t`Contacter le support`}
+            accessibilityLabel={t`Ouvrir le gestionnaire mail pour contacter le support`}
             onPress={contactSupport.forGenericQuestion}
             icon={Email}
           />

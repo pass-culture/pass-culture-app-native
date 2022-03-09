@@ -24,8 +24,7 @@ const SpectaclesSvg: React.FunctionComponent<AccessibleIcon> = ({
       height={size}
       viewBox="0 0 48 48"
       testID={testID}
-      accessibilityLabel={accessibilityLabel}
-      aria-hidden={!accessibilityLabel}>
+      accessibilityLabel={accessibilityLabel}>
       <Defs>
         <LinearGradient id={gradientId} x1="13.556%" x2="86.444%" y1="0%" y2="100%">
           <Stop offset="0%" stopColor={color ?? primary} />

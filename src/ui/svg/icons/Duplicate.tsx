@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import * as React from 'react'
 import { Path } from 'react-native-svg'
 import styled from 'styled-components/native'
@@ -17,7 +16,7 @@ const DuplicateSvg: React.FunctionComponent<AccessibleIcon> = ({
     height={size}
     viewBox="0 0 48 48"
     testID={testID}
-    accessibilityLabel={accessibilityLabel ?? t`Copier`}>
+    accessibilityLabel={accessibilityLabel}>
     <Path
       fill={color}
       d="M10.9484 35.9982H11.6613V13.8372C11.6613 11.3968 13.7483 9.41857 16.3226 9.41857H32.8164V8.8C32.8164 6.70132 31.0486 5 28.868 5H10.9484C8.76775 5 7 6.70132 7 8.8V32.1982C7 34.2969 8.76775 35.9982 10.9484 35.9982Z"

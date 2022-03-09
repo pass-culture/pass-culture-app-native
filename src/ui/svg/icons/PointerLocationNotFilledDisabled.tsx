@@ -16,7 +16,6 @@ const PointerLocationNotFilledDisabledSvg: React.FunctionComponent<AccessibleIco
     width={size}
     height={size}
     accessibilityLabel={accessibilityLabel}
-    aria-hidden={!accessibilityLabel}
     testID={testID}
     fill={color}
     viewBox="0 0 48 48">

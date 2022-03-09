@@ -24,6 +24,7 @@ export function SeeItineraryButton(props: Props) {
 
 const Icon = styled(LocationPointer).attrs(({ theme }) => ({
   color: theme.colors.black,
+  accessibilityLabel: t`Nouvelle fenêtre`,
 }))``
 
 const Container = styled.View({

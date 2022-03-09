@@ -19,8 +19,7 @@ function PatrimonyTourismSvg({
       testID={testID}
       fill={color}
       viewBox="0 0 96 96"
-      accessibilityLabel={accessibilityLabel}
-      aria-hidden={!accessibilityLabel}>
+      accessibilityLabel={accessibilityLabel}>
       <Path
         fillRule="evenodd"
         clipRule="evenodd"

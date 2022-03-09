@@ -91,6 +91,7 @@ export const WebShareModal = ({
           <NonSocialButtonsItem>
             <ButtonTertiaryBlack
               wording={t`Copier`}
+              accessibilityLabel={t`Copier le lien`}
               icon={Duplicate}
               onPress={() => navigator.clipboard.writeText(url)}
             />
@@ -98,6 +99,7 @@ export const WebShareModal = ({
           <NonSocialButtonsItem>
             <ButtonTertiaryBlack
               wording="E-mail"
+              accessibilityLabel={t`Ouvrir le gestionnaire mail`}
               icon={EmailFilled}
               onPress={() => window.open('mailto:' + '' + '?subject=' + message + '&body=' + url)}
             />
@@ -108,6 +110,7 @@ export const WebShareModal = ({
               <NonSocialButtonsItem>
                 <ButtonTertiaryBlack
                   wording="SMS"
+                  accessibilityLabel={t`Ouvrir l'application de message`}
                   icon={SMSFilled}
                   onPress={() => {
                     location.href = `sms:${t`Veuillez choisir un contact`}?&body=${message}: ${url}`

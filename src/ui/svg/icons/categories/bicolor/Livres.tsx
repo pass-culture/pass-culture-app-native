@@ -24,8 +24,7 @@ const LivresSvg: React.FunctionComponent<AccessibleIcon> = ({
       height={size}
       viewBox="0 0 48 48"
       testID={testID}
-      accessibilityLabel={accessibilityLabel}
-      aria-hidden={!accessibilityLabel}>
+      accessibilityLabel={accessibilityLabel}>
       <Defs>
         <LinearGradient id={gradientId} x1="16.819%" x2="83.181%" y1="0%" y2="100%">
           <Stop offset="0%" stopColor={color ?? primary} />

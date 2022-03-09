@@ -289,6 +289,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
             <A href={supportUrl.forPhoneNumberConfirmation}>
               <ButtonQuaternary
                 wording={t`Contacter le support`}
+                accessibilityLabel={t`Ouvrir le gestionnaire mail pour contacter le support`}
                 icon={Email}
                 onPress={contactSupport.forPhoneNumberConfirmation}
                 inline

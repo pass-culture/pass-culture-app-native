@@ -17,8 +17,7 @@ const DuoSvg: React.FunctionComponent<AccessibleIcon> = ({
     height={size}
     viewBox="0 0 49 49"
     testID={testID}
-    accessibilityLabel={accessibilityLabel}
-    aria-hidden={!accessibilityLabel}>
+    accessibilityLabel={accessibilityLabel}>
     <Path
       fill={color}
       fillRule="evenodd"

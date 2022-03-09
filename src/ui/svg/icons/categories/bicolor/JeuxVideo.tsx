@@ -24,8 +24,7 @@ const JeuxVideoSvg: React.FunctionComponent<AccessibleIcon> = ({
       height={size}
       viewBox="0 0 48 48"
       testID={testID}
-      accessibilityLabel={accessibilityLabel}
-      aria-hidden={!accessibilityLabel}>
+      accessibilityLabel={accessibilityLabel}>
       <Defs>
         <LinearGradient id={gradientId} x1="0%" x2="100%" y1="18.569%" y2="81.431%">
           <Stop offset="0%" stopColor={color ?? primary} />

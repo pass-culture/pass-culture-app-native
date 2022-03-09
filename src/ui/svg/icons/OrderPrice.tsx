@@ -18,8 +18,7 @@ const OrderPriceSvg: React.FunctionComponent<AccessibleIcon> = ({
     testID={testID}
     fill={color}
     viewBox="0 0 48 49"
-    accessibilityLabel={accessibilityLabel}
-    aria-hidden={!accessibilityLabel}>
+    accessibilityLabel={accessibilityLabel}>
     <Path
       fill={color}
       fillRule="evenodd"
