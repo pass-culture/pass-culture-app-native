@@ -36,7 +36,10 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}
-      <LargeInputContainer isFocus={isFocus} isError={customProps.isError}>
+      <LargeInputContainer
+        isFocus={isFocus}
+        isError={customProps.isError}
+        isInputDisabled={customProps.disabled}>
         <LargeBaseTextInput
           {...nativeProps}
           ref={forwardedRef}
