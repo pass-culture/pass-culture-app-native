@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -41,7 +42,9 @@ export const NoSearchResult: React.FC = () => {
         <DescriptionErrorText>
           {t`Modifie ta recherche ou découvre toutes les offres` + ' '}
         </DescriptionErrorText>
-        <AroundMeText onPress={handlePressAroundMe}>{t`autour de toi`}</AroundMeText>
+        <TouchableOpacity onPress={handlePressAroundMe}>
+          <AroundMeText>{t`autour de toi`}</AroundMeText>
+        </TouchableOpacity>
       </DescriptionErrorTextContainer>
       <Spacer.Flex />
     </Container>
