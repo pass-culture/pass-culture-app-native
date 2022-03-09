@@ -22,10 +22,9 @@ export function useBookOfferMutation({ onSuccess, onError }: BookOffer) {
   const queryClient = useQueryClient()
 
   return useMutation((body: BookOfferRequest) => api.postnativev1bookings(body), {
-    onSuccess: async (data: BookOfferResponse) => {
-      await queryClient.invalidateQueries(QueryKeys.USER_PROFILE)
-      await queryClient.invalidateQueries(QueryKeys.BOOKINGS)
-      await queryClient.refetchQueries(QueryKeys.BOOKINGS)
+    onSuccess: (data: BookOfferResponse) => {
+      queryClient.invalidateQueries(QueryKeys.USER_PROFILE)
+      queryClient.invalidateQueries(QueryKeys.BOOKINGS)
       onSuccess(data)
     },
     onError: (error: Error | ApiError, { stockId, quantity }, context?: BookingMutationContext) => {
