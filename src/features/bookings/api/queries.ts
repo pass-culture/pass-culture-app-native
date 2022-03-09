@@ -1,4 +1,3 @@
-import { useCallback } from 'react'
 import { useQuery, UseQueryResult } from 'react-query'
 
 import { api } from 'api/api'
@@ -16,8 +15,8 @@ export function useBookings(options = {}) {
 }
 
 export function useOngoingOrEndedBooking(id: number): UseQueryResult<BookingReponse | null> {
-  const select = useCallback(
-    (bookings) => {
+  return useBookings({
+    select(bookings: BookingsResponse | null) {
       if (!bookings) {
         return null
       }
@@ -32,11 +31,5 @@ export function useOngoingOrEndedBooking(id: number): UseQueryResult<BookingRepo
       }
       return selected
     },
-    [id]
-  )
-
-  return useBookings({
-    select,
-    staleTime: 0, // reset all bookings before selecting one booking
   }) as UseQueryResult<BookingReponse | null>
 }

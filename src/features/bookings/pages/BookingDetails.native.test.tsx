@@ -205,8 +205,10 @@ describe('BookingDetails', () => {
   })
 
   describe('booking not found', () => {
-    it('should render ScreenError BookingNotFound when booking is not found', () => {
-      const renderAPI = renderBookingDetails(undefined)
+    it('should render ScreenError BookingNotFound when booking is not found when data already exists', () => {
+      const renderAPI = renderBookingDetails(undefined, {
+        dataUpdatedAt: new Date().getTime(),
+      })
       expect(renderAPI.queryByText('Réservation introuvable\u00a0!')).toBeTruthy()
       expect(
         renderAPI.queryByText(
@@ -221,6 +223,13 @@ describe('BookingDetails', () => {
 
       fireEvent.press(renderAPI.getByText(`Retourner à l'accueil`))
       expect(mockedNavigateToHome).toBeCalled()
+    })
+
+    it('should not render ScreenError BookingNotFound when booking is not found and no data exists', () => {
+      const renderAPI = renderBookingDetails(undefined, {
+        dataUpdatedAt: 0,
+      })
+      expect(renderAPI.queryByText('Réservation introuvable\u00a0!')).toBeFalsy()
     })
   })
 
@@ -312,12 +321,14 @@ describe('BookingDetails', () => {
   })
 })
 
-function renderBookingDetails(booking?: Booking) {
+function renderBookingDetails(booking?: Booking, options = {}) {
   jest.spyOn(Queries, 'useOngoingOrEndedBooking').mockReturnValue({
     data: booking,
+    isLoading: false,
     isSuccess: true,
     isError: false,
     error: undefined,
+    ...options,
   } as unknown as UseQueryResult<BookingReponse | null>)
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   return render(reactQueryProviderHOC(<BookingDetails />))
