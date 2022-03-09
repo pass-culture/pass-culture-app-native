@@ -15,7 +15,11 @@ interface Props {
 
 export const SelectionLabel: React.FC<Props> = ({ label, selected, onPress }) => {
   return (
-    <StyledTouchableOpacity selected={selected} onPress={onPress}>
+    <StyledTouchableOpacity
+      selected={selected}
+      accessibilityRole="checkbox"
+      accessibilityState={{ checked: selected }}
+      onPress={onPress}>
       {selected ? (
         <IconContainer>
           <ValidateWhite />

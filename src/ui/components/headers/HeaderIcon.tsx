@@ -1,5 +1,5 @@
 import React from 'react'
-import { Animated } from 'react-native'
+import { AccessibilityRole, AccessibilityState, Animated } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
@@ -24,6 +24,8 @@ interface HeaderIconProps {
     iconBorderColor: Animated.AnimatedInterpolation
     transition: Animated.AnimatedInterpolation
   }
+  accessibilityRole?: AccessibilityRole
+  accessibilityState?: AccessibilityState
   testID: string
 }
 
@@ -42,6 +44,8 @@ export const HeaderIcon = (props: HeaderIconProps) => {
     <TouchableOpacity
       activeOpacity={0.5}
       onPress={props.onPress}
+      accessibilityRole={props.accessibilityRole}
+      accessibilityState={props.accessibilityState}
       {...accessibilityAndTestId(props.testID)}>
       <StyledAnimatedView
         testID="headerIconRoundContainer"
