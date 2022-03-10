@@ -59,31 +59,6 @@ exports[`OffersModule component should render correctly - with black title 1`] =
     }
   >
     <RCTScrollView
-      CellRendererComponent={
-        Object {
-          "$$typeof": Symbol(react.forward_ref),
-          "attrs": Array [],
-          "componentStyle": e {
-            "baseHash": -1381688698,
-            "baseStyle": undefined,
-            "componentId": "sc-gsDKAQ",
-            "isStatic": false,
-            "rules": Array [
-              "display: flex;",
-              "flex-direction: row;",
-            ],
-            "staticRulesId": "",
-          },
-          "foldedComponentIds": Array [],
-          "render": [Function],
-          "shouldForwardProp": undefined,
-          "styledComponentId": "sc-gsDKAQ",
-          "target": [Function],
-          "toString": [Function],
-          "warnTooManyClasses": [Function],
-          "withComponent": [Function],
-        }
-      }
       ItemSeparatorComponent={
         Object {
           "$$typeof": Symbol(react.forward_ref),
@@ -251,767 +226,811 @@ exports[`OffersModule component should render correctly - with black title 1`] =
           style={
             Array [
               Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
+                "flexDirection": "row",
               },
+              null,
             ]
           }
         >
           <View
-            accessibilityLabel="Offre Mensch ! Où sont les Hommes ? de la catégorie Musique,   prix 28 €. "
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
               Array [
                 Object {
-                  "borderRadius": 8,
-                  "height": 288,
-                  "marginTop": 3,
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 },
               ]
             }
-            testID="offerTile"
           >
             <View
+              accessibilityLabel="Offre Mensch ! Où sont les Hommes ? de la catégorie Musique,   prix 28 €. "
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
                 Array [
                   Object {
-                    "overflow": "hidden",
-                  },
-                  Array [
-                    Object {
-                      "backgroundColor": "#F1F1F4",
-                    },
-                    Object {
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "height": 264,
-                      "width": 192,
-                    },
-                  ],
-                ]
-              }
-            >
-              <FastImageView
-                resizeMode="cover"
-                source={
-                  Object {
-                    "uri": "fakeUrlPrefix/thumbs/mediations/CDNQ",
-                  }
-                }
-                style={
-                  Object {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-                testID="tileImage"
-              />
-            </View>
-            <View
-              height={24}
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#161617",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "flexDirection": "row",
-                    "height": 24,
-                    "width": 192,
+                    "borderRadius": 8,
+                    "height": 288,
+                    "marginTop": 3,
                   },
                 ]
               }
-              width={192}
+              testID="offerTile"
             >
               <View
                 style={
                   Array [
                     Object {
+                      "overflow": "hidden",
+                    },
+                    Array [
+                      Object {
+                        "backgroundColor": "#F1F1F4",
+                      },
+                      Object {
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "height": 264,
+                        "width": 192,
+                      },
+                    ],
+                  ]
+                }
+              >
+                <FastImageView
+                  resizeMode="cover"
+                  source={
+                    Object {
+                      "uri": "fakeUrlPrefix/thumbs/mediations/CDNQ",
+                    }
+                  }
+                  style={
+                    Object {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    }
+                  }
+                  testID="tileImage"
+                />
+              </View>
+              <View
+                height={24}
+                style={
+                  Array [
+                    Object {
                       "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "justifyContent": "center",
-                      "paddingHorizontal": 2,
+                      "backgroundColor": "#161617",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "flexDirection": "row",
+                      "height": 24,
+                      "width": 192,
+                    },
+                  ]
+                }
+                width={192}
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "justifyContent": "center",
+                        "paddingHorizontal": 2,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    numberOfLines={1}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                    testID="categoryImageCaption"
+                  >
+                    Musique
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              imageWidth={192}
+              style={
+                Array [
+                  Object {
+                    "marginTop": 8,
+                    "maxWidth": 192,
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
                     },
                   ]
                 }
               >
-                <Text
-                  numberOfLines={1}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                      },
-                    ]
-                  }
-                  testID="categoryImageCaption"
-                >
-                  Musique
-                </Text>
-              </View>
+                Mensch ! Où sont les Hommes ?
+              </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+                testID="priceIsDuo"
+              >
+                28 €
+              </Text>
             </View>
           </View>
           <View
-            imageWidth={192}
+            highlighted={false}
+            leadingItem={
+              Object {
+                "_geoloc": Object {
+                  "lat": 48.94374,
+                  "lng": 2.48171,
+                },
+                "objectID": "102280",
+                "offer": Object {
+                  "dates": Array [],
+                  "isDigital": false,
+                  "isDuo": false,
+                  "name": "Mensch ! Où sont les Hommes ?",
+                  "prices": Array [
+                    2800,
+                  ],
+                  "subcategoryId": "CONCERT",
+                  "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDNQ",
+                },
+              }
+            }
             style={
               Array [
                 Object {
-                  "marginTop": 8,
-                  "maxWidth": 192,
+                  "width": 16,
                 },
               ]
             }
-          >
-            <Text
-              numberOfLines={2}
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                  },
-                ]
-              }
-            >
-              Mensch ! Où sont les Hommes ?
-            </Text>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                  },
-                ]
-              }
-              testID="priceIsDuo"
-            >
-              28 €
-            </Text>
-          </View>
+          />
         </View>
         <View
-          highlighted={false}
-          leadingItem={
-            Object {
-              "_geoloc": Object {
-                "lat": 48.94374,
-                "lng": 2.48171,
-              },
-              "objectID": "102280",
-              "offer": Object {
-                "dates": Array [],
-                "isDigital": false,
-                "isDuo": false,
-                "name": "Mensch ! Où sont les Hommes ?",
-                "prices": Array [
-                  2800,
-                ],
-                "subcategoryId": "CONCERT",
-                "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDNQ",
-              },
-            }
-          }
           style={
             Array [
               Object {
-                "width": 16,
+                "flexDirection": "row",
               },
-            ]
-          }
-        />
-        <View
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
+              null,
             ]
           }
         >
           <View
-            accessibilityLabel="Offre I want something more de la catégorie Musique,   prix 23 €. "
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
               Array [
                 Object {
-                  "borderRadius": 8,
-                  "height": 288,
-                  "marginTop": 3,
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 },
               ]
             }
-            testID="offerTile"
           >
             <View
+              accessibilityLabel="Offre I want something more de la catégorie Musique,   prix 23 €. "
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
                 Array [
                   Object {
-                    "overflow": "hidden",
-                  },
-                  Array [
-                    Object {
-                      "backgroundColor": "#F1F1F4",
-                    },
-                    Object {
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "height": 264,
-                      "width": 192,
-                    },
-                  ],
-                ]
-              }
-            >
-              <FastImageView
-                resizeMode="cover"
-                source={
-                  Object {
-                    "uri": "fakeUrlPrefix/thumbs/mediations/CDKQ",
-                  }
-                }
-                style={
-                  Object {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-                testID="tileImage"
-              />
-            </View>
-            <View
-              height={24}
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#161617",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "flexDirection": "row",
-                    "height": 24,
-                    "width": 192,
+                    "borderRadius": 8,
+                    "height": 288,
+                    "marginTop": 3,
                   },
                 ]
               }
-              width={192}
+              testID="offerTile"
             >
               <View
                 style={
                   Array [
                     Object {
+                      "overflow": "hidden",
+                    },
+                    Array [
+                      Object {
+                        "backgroundColor": "#F1F1F4",
+                      },
+                      Object {
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "height": 264,
+                        "width": 192,
+                      },
+                    ],
+                  ]
+                }
+              >
+                <FastImageView
+                  resizeMode="cover"
+                  source={
+                    Object {
+                      "uri": "fakeUrlPrefix/thumbs/mediations/CDKQ",
+                    }
+                  }
+                  style={
+                    Object {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    }
+                  }
+                  testID="tileImage"
+                />
+              </View>
+              <View
+                height={24}
+                style={
+                  Array [
+                    Object {
                       "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "justifyContent": "center",
-                      "paddingHorizontal": 2,
+                      "backgroundColor": "#161617",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "flexDirection": "row",
+                      "height": 24,
+                      "width": 192,
+                    },
+                  ]
+                }
+                width={192}
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "justifyContent": "center",
+                        "paddingHorizontal": 2,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    numberOfLines={1}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                    testID="categoryImageCaption"
+                  >
+                    Musique
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              imageWidth={192}
+              style={
+                Array [
+                  Object {
+                    "marginTop": 8,
+                    "maxWidth": 192,
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
                     },
                   ]
                 }
               >
-                <Text
-                  numberOfLines={1}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                      },
-                    ]
-                  }
-                  testID="categoryImageCaption"
-                >
-                  Musique
-                </Text>
-              </View>
+                I want something more
+              </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+                testID="priceIsDuo"
+              >
+                23 €
+              </Text>
             </View>
           </View>
           <View
-            imageWidth={192}
+            highlighted={false}
+            leadingItem={
+              Object {
+                "_geoloc": Object {
+                  "lat": 48.91265,
+                  "lng": 2.4513,
+                },
+                "objectID": "102272",
+                "offer": Object {
+                  "dates": Array [],
+                  "isDigital": false,
+                  "isDuo": false,
+                  "name": "I want something more",
+                  "prices": Array [
+                    2300,
+                  ],
+                  "subcategoryId": "CONCERT",
+                  "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDKQ",
+                },
+              }
+            }
             style={
               Array [
                 Object {
-                  "marginTop": 8,
-                  "maxWidth": 192,
+                  "width": 16,
                 },
               ]
             }
-          >
-            <Text
-              numberOfLines={2}
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                  },
-                ]
-              }
-            >
-              I want something more
-            </Text>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                  },
-                ]
-              }
-              testID="priceIsDuo"
-            >
-              23 €
-            </Text>
-          </View>
+          />
         </View>
         <View
-          highlighted={false}
-          leadingItem={
-            Object {
-              "_geoloc": Object {
-                "lat": 48.91265,
-                "lng": 2.4513,
-              },
-              "objectID": "102272",
-              "offer": Object {
-                "dates": Array [],
-                "isDigital": false,
-                "isDuo": false,
-                "name": "I want something more",
-                "prices": Array [
-                  2300,
-                ],
-                "subcategoryId": "CONCERT",
-                "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDKQ",
-              },
-            }
-          }
           style={
             Array [
               Object {
-                "width": 16,
+                "flexDirection": "row",
               },
-            ]
-          }
-        />
-        <View
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
+              null,
             ]
           }
         >
           <View
-            accessibilityLabel="Offre Un lit sous une rivière de la catégorie Musique,  le 17 novembre 2020, prix 34 €. Possibilité de réserver 2 places."
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
               Array [
                 Object {
-                  "borderRadius": 8,
-                  "height": 288,
-                  "marginTop": 3,
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 },
               ]
             }
-            testID="offerTile"
           >
             <View
+              accessibilityLabel="Offre Un lit sous une rivière de la catégorie Musique,  le 17 novembre 2020, prix 34 €. Possibilité de réserver 2 places."
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
                 Array [
                   Object {
-                    "overflow": "hidden",
-                  },
-                  Array [
-                    Object {
-                      "backgroundColor": "#F1F1F4",
-                    },
-                    Object {
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "height": 264,
-                      "width": 192,
-                    },
-                  ],
-                ]
-              }
-            >
-              <FastImageView
-                resizeMode="cover"
-                source={
-                  Object {
-                    "uri": "fakeUrlPrefix/thumbs/mediations/CDBA",
-                  }
-                }
-                style={
-                  Object {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-                testID="tileImage"
-              />
-            </View>
-            <View
-              height={24}
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#161617",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "flexDirection": "row",
-                    "height": 24,
-                    "width": 192,
+                    "borderRadius": 8,
+                    "height": 288,
+                    "marginTop": 3,
                   },
                 ]
               }
-              width={192}
+              testID="offerTile"
             >
               <View
                 style={
                   Array [
                     Object {
+                      "overflow": "hidden",
+                    },
+                    Array [
+                      Object {
+                        "backgroundColor": "#F1F1F4",
+                      },
+                      Object {
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "height": 264,
+                        "width": 192,
+                      },
+                    ],
+                  ]
+                }
+              >
+                <FastImageView
+                  resizeMode="cover"
+                  source={
+                    Object {
+                      "uri": "fakeUrlPrefix/thumbs/mediations/CDBA",
+                    }
+                  }
+                  style={
+                    Object {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    }
+                  }
+                  testID="tileImage"
+                />
+              </View>
+              <View
+                height={24}
+                style={
+                  Array [
+                    Object {
                       "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "justifyContent": "center",
-                      "paddingHorizontal": 2,
+                      "backgroundColor": "#161617",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "flexDirection": "row",
+                      "height": 24,
+                      "width": 192,
+                    },
+                  ]
+                }
+                width={192}
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "justifyContent": "center",
+                        "paddingHorizontal": 2,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    numberOfLines={1}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                    testID="categoryImageCaption"
+                  >
+                    Musique
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              imageWidth={192}
+              style={
+                Array [
+                  Object {
+                    "marginTop": 8,
+                    "maxWidth": 192,
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
                     },
                   ]
                 }
               >
-                <Text
-                  numberOfLines={1}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                      },
-                    ]
-                  }
-                  testID="categoryImageCaption"
-                >
-                  Musique
-                </Text>
-              </View>
+                Un lit sous une rivière
+              </Text>
+              <Text
+                numberOfLines={1}
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                17 novembre 2020
+              </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+                testID="priceIsDuo"
+              >
+                34 € - Duo
+              </Text>
             </View>
           </View>
           <View
-            imageWidth={192}
+            highlighted={false}
+            leadingItem={
+              Object {
+                "_geoloc": Object {
+                  "lat": 4.90339,
+                  "lng": -52.31663,
+                },
+                "objectID": "102249",
+                "offer": Object {
+                  "dates": Array [
+                    1605643200,
+                  ],
+                  "isDigital": false,
+                  "isDuo": true,
+                  "name": "Un lit sous une rivière",
+                  "prices": Array [
+                    3400,
+                  ],
+                  "subcategoryId": "CONCERT",
+                  "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDBA",
+                },
+              }
+            }
             style={
               Array [
                 Object {
-                  "marginTop": 8,
-                  "maxWidth": 192,
+                  "width": 16,
                 },
               ]
             }
-          >
-            <Text
-              numberOfLines={2}
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                  },
-                ]
-              }
-            >
-              Un lit sous une rivière
-            </Text>
-            <Text
-              numberOfLines={1}
-              style={
-                Array [
-                  Object {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                  },
-                ]
-              }
-            >
-              17 novembre 2020
-            </Text>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                  },
-                ]
-              }
-              testID="priceIsDuo"
-            >
-              34 € - Duo
-            </Text>
-          </View>
+          />
         </View>
         <View
-          highlighted={false}
-          leadingItem={
-            Object {
-              "_geoloc": Object {
-                "lat": 4.90339,
-                "lng": -52.31663,
-              },
-              "objectID": "102249",
-              "offer": Object {
-                "dates": Array [
-                  1605643200,
-                ],
-                "isDigital": false,
-                "isDuo": true,
-                "name": "Un lit sous une rivière",
-                "prices": Array [
-                  3400,
-                ],
-                "subcategoryId": "CONCERT",
-                "thumbUrl": "fakeUrlPrefix/thumbs/mediations/CDBA",
-              },
-            }
-          }
           style={
             Array [
               Object {
-                "width": 16,
+                "flexDirection": "row",
               },
-            ]
-          }
-        />
-        <View
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
+              null,
             ]
           }
         >
           <View
-            accessibilityLabel="Offre I want something more de la catégorie Musique,   prix 28 €. "
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
               Array [
                 Object {
-                  "borderRadius": 8,
-                  "height": 288,
-                  "marginTop": 3,
+                  "flexBasis": 0,
+                  "flexGrow": 1,
+                  "flexShrink": 1,
                 },
               ]
             }
-            testID="offerTile"
           >
             <View
+              accessibilityLabel="Offre I want something more de la catégorie Musique,   prix 28 €. "
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
                 Array [
                   Object {
-                    "overflow": "hidden",
-                  },
-                  Array [
-                    Object {
-                      "backgroundColor": "#F1F1F4",
-                    },
-                    Object {
-                      "borderTopLeftRadius": 8,
-                      "borderTopRightRadius": 8,
-                      "height": 264,
-                      "width": 192,
-                    },
-                  ],
-                ]
-              }
-            >
-              <FastImageView
-                resizeMode="cover"
-                source={
-                  Object {
-                    "uri": "fakeUrlPrefix/thumbs/mediations/CDZQ",
-                  }
-                }
-                style={
-                  Object {
-                    "bottom": 0,
-                    "left": 0,
-                    "position": "absolute",
-                    "right": 0,
-                    "top": 0,
-                  }
-                }
-                testID="tileImage"
-              />
-            </View>
-            <View
-              height={24}
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "backgroundColor": "#161617",
-                    "borderBottomLeftRadius": 8,
-                    "borderBottomRightRadius": 8,
-                    "flexDirection": "row",
-                    "height": 24,
-                    "width": 192,
+                    "borderRadius": 8,
+                    "height": 288,
+                    "marginTop": 3,
                   },
                 ]
               }
-              width={192}
+              testID="offerTile"
             >
               <View
                 style={
                   Array [
                     Object {
+                      "overflow": "hidden",
+                    },
+                    Array [
+                      Object {
+                        "backgroundColor": "#F1F1F4",
+                      },
+                      Object {
+                        "borderTopLeftRadius": 8,
+                        "borderTopRightRadius": 8,
+                        "height": 264,
+                        "width": 192,
+                      },
+                    ],
+                  ]
+                }
+              >
+                <FastImageView
+                  resizeMode="cover"
+                  source={
+                    Object {
+                      "uri": "fakeUrlPrefix/thumbs/mediations/CDZQ",
+                    }
+                  }
+                  style={
+                    Object {
+                      "bottom": 0,
+                      "left": 0,
+                      "position": "absolute",
+                      "right": 0,
+                      "top": 0,
+                    }
+                  }
+                  testID="tileImage"
+                />
+              </View>
+              <View
+                height={24}
+                style={
+                  Array [
+                    Object {
                       "alignItems": "center",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "justifyContent": "center",
-                      "paddingHorizontal": 2,
+                      "backgroundColor": "#161617",
+                      "borderBottomLeftRadius": 8,
+                      "borderBottomRightRadius": 8,
+                      "flexDirection": "row",
+                      "height": 24,
+                      "width": 192,
+                    },
+                  ]
+                }
+                width={192}
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "justifyContent": "center",
+                        "paddingHorizontal": 2,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    numberOfLines={1}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#ffffff",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                    testID="categoryImageCaption"
+                  >
+                    Musique
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              imageWidth={192}
+              style={
+                Array [
+                  Object {
+                    "marginTop": 8,
+                    "maxWidth": 192,
+                  },
+                ]
+              }
+            >
+              <Text
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
                     },
                   ]
                 }
               >
-                <Text
-                  numberOfLines={1}
-                  style={
-                    Array [
-                      Object {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
-                      },
-                    ]
-                  }
-                  testID="categoryImageCaption"
-                >
-                  Musique
-                </Text>
-              </View>
+                I want something more
+              </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+                testID="priceIsDuo"
+              >
+                28 €
+              </Text>
             </View>
-          </View>
-          <View
-            imageWidth={192}
-            style={
-              Array [
-                Object {
-                  "marginTop": 8,
-                  "maxWidth": 192,
-                },
-              ]
-            }
-          >
-            <Text
-              numberOfLines={2}
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                  },
-                ]
-              }
-            >
-              I want something more
-            </Text>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                  },
-                ]
-              }
-              testID="priceIsDuo"
-            >
-              28 €
-            </Text>
           </View>
         </View>
         <View
