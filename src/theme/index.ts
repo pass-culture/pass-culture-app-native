@@ -112,6 +112,7 @@ export interface AppThemeType {
     background: ZIndex
     cheatCodeButton: ZIndex
     favoritePastilleContent: ZIndex
+    floatingButton: ZIndex
     homeOfferCoverIcons: ZIndex
     header: ZIndex
     modalHeader: ZIndex
@@ -424,6 +425,7 @@ export const theme: AppThemeType = {
     background: ZIndex.BACKGROUND,
     cheatCodeButton: ZIndex.CHEAT_CODE_BUTTON,
     favoritePastilleContent: ZIndex.FAVORITE_PASTILLE_CONTENT,
+    floatingButton: ZIndex.FLOATING_BUTTON,
     homeOfferCoverIcons: ZIndex.HOME_OFFER_COVER_ICONS,
     header: ZIndex.HEADER,
     modalHeader: ZIndex.MODAL_HEADER,

@@ -15,7 +15,6 @@ import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useNetwork } from 'libs/network/useNetwork'
 import { SearchHit } from 'libs/search'
 import { getSpacing, Spacer } from 'ui/theme'
-import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 import { Helmet } from 'ui/web/global/Helmet'
 
 const keyExtractor = (item: SearchHit) => item.objectID
@@ -112,6 +111,12 @@ export const SearchResults: React.FC = () => {
   return (
     <React.Fragment>
       {isFocused ? <Helmet title={helmetTitle} /> : null}
+      {nbHits > 0 && (
+        <FilterContainer>
+          <Filter />
+          <Spacer.BottomScreen />
+        </FilterContainer>
+      )}
       <Container>
         <FlatList
           ref={flatListRef}
@@ -132,19 +137,13 @@ export const SearchResults: React.FC = () => {
           keyboardDismissMode="on-drag"
         />
       </Container>
-      {nbHits > 0 && (
-        <FilterContainer>
-          <Filter />
-          <Spacer.BottomScreen />
-        </FilterContainer>
-      )}
     </React.Fragment>
   )
 }
 
 const contentContainerStyle = { flexGrow: 1 }
 const Container = styled.View({ flex: 1 })
-const Footer = styled.View({ height: TAB_BAR_COMP_HEIGHT + getSpacing(52) })
+const Footer = styled.View(({ theme }) => ({ height: theme.tabBarHeight + getSpacing(52) }))
 const Separator = styled.View(({ theme }) => ({
   height: 2,
   backgroundColor: theme.colors.greyLight,
@@ -152,11 +151,12 @@ const Separator = styled.View(({ theme }) => ({
   marginVertical: getSpacing(4),
 }))
 
-const FilterContainer = styled.View({
+const FilterContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
   position: 'absolute',
-  bottom: TAB_BAR_COMP_HEIGHT + getSpacing(6),
-})
+  bottom: theme.tabBarHeight + getSpacing(6),
+  zIndex: theme.zIndex.floatingButton,
+}))
 
 const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => ({
   key: index.toString(),
@@ -169,6 +169,10 @@ function SearchResultsPlaceHolder() {
 
   return (
     <React.Fragment>
+      <FilterContainer>
+        <Filter />
+        <Spacer.BottomScreen />
+      </FilterContainer>
       <Container>
         <FlatList
           data={FAVORITE_LIST_PLACEHOLDER}
@@ -180,10 +184,6 @@ function SearchResultsPlaceHolder() {
           scrollEnabled={false}
         />
       </Container>
-      <FilterContainer>
-        <Filter />
-        <Spacer.BottomScreen />
-      </FilterContainer>
     </React.Fragment>
   )
 }

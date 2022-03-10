@@ -129,6 +129,12 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
           offerId={offerToBook.id}
         />
       )}
+      {!!(sortedFavorites && sortedFavorites.length > 0) && (
+        <SortContainer>
+          <Sort />
+          <Spacer.BottomScreen />
+        </SortContainer>
+      )}
       <Container>
         <FlatList
           ref={flatListRef}
@@ -147,12 +153,6 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
           initialNumToRender={10}
         />
       </Container>
-      {!!(sortedFavorites && sortedFavorites.length > 0) && (
-        <SortContainer>
-          <Sort />
-          <Spacer.BottomScreen />
-        </SortContainer>
-      )}
     </React.Fragment>
   )
 })
@@ -170,6 +170,7 @@ const SortContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
   position: 'absolute',
   bottom: theme.tabBarHeight + getSpacing(6),
+  zIndex: theme.zIndex.floatingButton,
 }))
 
 const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 10 }).map((_, index) => ({
@@ -182,6 +183,10 @@ const FavoritesResultsPlaceHolder = () => {
 
   return (
     <React.Fragment>
+      <SortContainer>
+        <Sort />
+        <Spacer.BottomScreen />
+      </SortContainer>
       <Container testID="FavoritesResultsPlaceHolder">
         <StyledFlatList
           data={FAVORITE_LIST_PLACEHOLDER}
@@ -191,10 +196,6 @@ const FavoritesResultsPlaceHolder = () => {
           scrollEnabled={false}
         />
       </Container>
-      <SortContainer>
-        <Sort />
-        <Spacer.BottomScreen />
-      </SortContainer>
     </React.Fragment>
   )
 }
