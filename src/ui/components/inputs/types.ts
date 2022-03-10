@@ -11,7 +11,7 @@ type CustomTextInputProps = {
 }
 
 type CustomSearchInputProps = {
-  inputHeight?: 'small' | 'tall'
+  inputHeight?: 'small' | 'regular' | 'tall'
   LeftIcon?: React.FC
   label?: string
   accessibilityLabel?: string

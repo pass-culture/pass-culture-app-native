@@ -98,43 +98,49 @@ Object {
                     >
                       <div
                         class="css-view-1dbjc4n"
-                        style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
+                        style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
                       >
-                        <label
-                          class="sc-dkPtRN kNuMlB"
-                          for="testUuidV4"
-                        >
-                          Prénom
-                        </label>
                         <div
-                          class="css-text-901oao"
-                          dir="auto"
-                          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          class="css-view-1dbjc4n"
+                          style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                         >
-                          Obligatoire
+                          <label
+                            class="sc-dkPtRN kNuMlB"
+                            for="testUuidV4"
+                          >
+                            Prénom
+                          </label>
+                          <div
+                            class="css-text-901oao"
+                            dir="auto"
+                            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Obligatoire
+                          </div>
                         </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="height: 8px;"
-                      />
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
-                      >
-                        <input
-                          autocapitalize="sentences"
-                          autocomplete="on"
-                          autocorrect="on"
-                          class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
-                          dir="auto"
-                          id="testUuidV4"
-                          placeholder="Ton prénom"
-                          spellcheck="true"
-                          style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
-                          type="text"
-                          value=""
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="height: 8px;"
                         />
+                        <div
+                          class="css-view-1dbjc4n"
+                          data-testid="styled-input-container"
+                          style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+                        >
+                          <input
+                            autocapitalize="sentences"
+                            autocomplete="on"
+                            autocorrect="on"
+                            class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
+                            dir="auto"
+                            id="testUuidV4"
+                            placeholder="Ton prénom"
+                            spellcheck="true"
+                            style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
+                            type="text"
+                            value=""
+                          />
+                        </div>
                       </div>
                       <div
                         class="css-view-1dbjc4n"
@@ -142,43 +148,49 @@ Object {
                       />
                       <div
                         class="css-view-1dbjc4n"
-                        style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
+                        style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
                       >
-                        <label
-                          class="sc-dkPtRN kNuMlB"
-                          for="testUuidV4"
-                        >
-                          Nom
-                        </label>
                         <div
-                          class="css-text-901oao"
-                          dir="auto"
-                          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          class="css-view-1dbjc4n"
+                          style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                         >
-                          Obligatoire
+                          <label
+                            class="sc-dkPtRN kNuMlB"
+                            for="testUuidV4"
+                          >
+                            Nom
+                          </label>
+                          <div
+                            class="css-text-901oao"
+                            dir="auto"
+                            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                          >
+                            Obligatoire
+                          </div>
                         </div>
-                      </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="height: 8px;"
-                      />
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
-                      >
-                        <input
-                          autocapitalize="sentences"
-                          autocomplete="on"
-                          autocorrect="on"
-                          class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
-                          dir="auto"
-                          id="testUuidV4"
-                          placeholder="Ton nom"
-                          spellcheck="true"
-                          style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
-                          type="text"
-                          value=""
+                        <div
+                          class="css-view-1dbjc4n"
+                          style="height: 8px;"
                         />
+                        <div
+                          class="css-view-1dbjc4n"
+                          data-testid="styled-input-container"
+                          style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+                        >
+                          <input
+                            autocapitalize="sentences"
+                            autocomplete="on"
+                            autocorrect="on"
+                            class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
+                            dir="auto"
+                            id="testUuidV4"
+                            placeholder="Ton nom"
+                            spellcheck="true"
+                            style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
+                            type="text"
+                            value=""
+                          />
+                        </div>
                       </div>
                     </form>
                   </div>
@@ -323,43 +335,49 @@ Object {
                   >
                     <div
                       class="css-view-1dbjc4n"
-                      style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
+                      style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
                     >
-                      <label
-                        class="sc-dkPtRN kNuMlB"
-                        for="testUuidV4"
-                      >
-                        Prénom
-                      </label>
                       <div
-                        class="css-text-901oao"
-                        dir="auto"
-                        style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                        class="css-view-1dbjc4n"
+                        style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                       >
-                        Obligatoire
+                        <label
+                          class="sc-dkPtRN kNuMlB"
+                          for="testUuidV4"
+                        >
+                          Prénom
+                        </label>
+                        <div
+                          class="css-text-901oao"
+                          dir="auto"
+                          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                        >
+                          Obligatoire
+                        </div>
                       </div>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="height: 8px;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
-                    >
-                      <input
-                        autocapitalize="sentences"
-                        autocomplete="on"
-                        autocorrect="on"
-                        class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
-                        dir="auto"
-                        id="testUuidV4"
-                        placeholder="Ton prénom"
-                        spellcheck="true"
-                        style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
-                        type="text"
-                        value=""
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="height: 8px;"
                       />
+                      <div
+                        class="css-view-1dbjc4n"
+                        data-testid="styled-input-container"
+                        style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+                      >
+                        <input
+                          autocapitalize="sentences"
+                          autocomplete="on"
+                          autocorrect="on"
+                          class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
+                          dir="auto"
+                          id="testUuidV4"
+                          placeholder="Ton prénom"
+                          spellcheck="true"
+                          style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
+                          type="text"
+                          value=""
+                        />
+                      </div>
                     </div>
                     <div
                       class="css-view-1dbjc4n"
@@ -367,43 +385,49 @@ Object {
                     />
                     <div
                       class="css-view-1dbjc4n"
-                      style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
+                      style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
                     >
-                      <label
-                        class="sc-dkPtRN kNuMlB"
-                        for="testUuidV4"
-                      >
-                        Nom
-                      </label>
                       <div
-                        class="css-text-901oao"
-                        dir="auto"
-                        style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                        class="css-view-1dbjc4n"
+                        style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                       >
-                        Obligatoire
+                        <label
+                          class="sc-dkPtRN kNuMlB"
+                          for="testUuidV4"
+                        >
+                          Nom
+                        </label>
+                        <div
+                          class="css-text-901oao"
+                          dir="auto"
+                          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                        >
+                          Obligatoire
+                        </div>
                       </div>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="height: 8px;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
-                    >
-                      <input
-                        autocapitalize="sentences"
-                        autocomplete="on"
-                        autocorrect="on"
-                        class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
-                        dir="auto"
-                        id="testUuidV4"
-                        placeholder="Ton nom"
-                        spellcheck="true"
-                        style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
-                        type="text"
-                        value=""
+                      <div
+                        class="css-view-1dbjc4n"
+                        style="height: 8px;"
                       />
+                      <div
+                        class="css-view-1dbjc4n"
+                        data-testid="styled-input-container"
+                        style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
+                      >
+                        <input
+                          autocapitalize="sentences"
+                          autocomplete="on"
+                          autocorrect="on"
+                          class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
+                          dir="auto"
+                          id="testUuidV4"
+                          placeholder="Ton nom"
+                          spellcheck="true"
+                          style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Regular; font-size: 15px; height: 100%; padding: 0px 0px 0px 0px;"
+                          type="text"
+                          value=""
+                        />
+                      </div>
                     </div>
                   </form>
                 </div>

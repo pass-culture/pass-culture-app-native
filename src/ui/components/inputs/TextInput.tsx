@@ -3,12 +3,13 @@ import { TextInput as RNTextInput } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { InputLabel } from 'ui/components/InputLabel'
+import { ContainerWithMaxWidth } from 'ui/components/inputs/ContainerWithMaxWidth'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
 import { Spacer } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
-import { StyledInputContainer } from './StyledInputContainer'
+import { InputContainer } from './InputContainer'
 import { getCustomTextInputProps, getRNTextInputProps, TextInputProps } from './types'
 
 interface Props extends TextInputProps {
@@ -37,7 +38,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
   }
 
   return (
-    <React.Fragment>
+    <ContainerWithMaxWidth>
       {!!customProps.label && (
         <React.Fragment>
           <LabelContainer>
@@ -47,10 +48,10 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}
-      <StyledInputContainer
+      <InputContainer
         isFocus={isFocus}
         isError={customProps.isError}
-        isInputDisabled={customProps.disabled}
+        isDisabled={customProps.disabled}
         style={customProps.containerStyle}>
         <BaseTextInput
           {...nativeProps}
@@ -59,8 +60,8 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
           onFocus={onFocus}
           onBlur={onBlur}
         />
-      </StyledInputContainer>
-    </React.Fragment>
+      </InputContainer>
+    </ContainerWithMaxWidth>
   )
 }
 

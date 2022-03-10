@@ -365,9 +365,9 @@ Array [
           />
           <View
             height="small"
+            isDisabled={true}
             isError={false}
             isFocus={false}
-            isInputDisabled={true}
             style={
               Array [
                 Object {
@@ -386,6 +386,7 @@ Array [
                 },
               ]
             }
+            testID="styled-input-container"
           >
             <TextInput
               autoCapitalize="none"
@@ -498,9 +499,9 @@ Array [
           />
           <View
             height="small"
+            isDisabled={true}
             isError={false}
             isFocus={false}
-            isInputDisabled={true}
             style={
               Array [
                 Object {
@@ -519,6 +520,7 @@ Array [
                 },
               ]
             }
+            testID="styled-input-container"
           >
             <TextInput
               accessibilityLabel="Mot de passe"
@@ -990,9 +992,9 @@ Array [
           />
           <View
             height="small"
+            isDisabled={false}
             isError={false}
             isFocus={false}
-            isInputDisabled={false}
             style={
               Array [
                 Object {
@@ -1019,6 +1021,7 @@ Array [
                 },
               ]
             }
+            testID="styled-input-container"
           >
             <TextInput
               autoCapitalize="none"
@@ -1131,9 +1134,9 @@ Array [
           />
           <View
             height="small"
+            isDisabled={false}
             isError={false}
             isFocus={false}
-            isInputDisabled={false}
             style={
               Array [
                 Object {
@@ -1160,6 +1163,7 @@ Array [
                 },
               ]
             }
+            testID="styled-input-container"
           >
             <TextInput
               accessibilityLabel="Mot de passe"

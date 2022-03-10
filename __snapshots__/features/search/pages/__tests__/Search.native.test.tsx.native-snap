@@ -61,10 +61,10 @@ exports[`Search component should render correctly 1`] = `
     }
   >
     <View
-      height="tall"
+      height="regular"
+      isDisabled={false}
       isError={false}
       isFocus={false}
-      isInputDisabled={false}
       style={
         Array [
           Object {
@@ -91,6 +91,7 @@ exports[`Search component should render correctly 1`] = `
           },
         ]
       }
+      testID="styled-input-container"
     >
       <View
         numberOfSpaces={1}

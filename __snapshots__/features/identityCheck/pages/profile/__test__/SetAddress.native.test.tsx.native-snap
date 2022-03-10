@@ -217,9 +217,9 @@ exports[`<SetAddress/> should render correctly 1`] = `
             />
             <View
               height="small"
+              isDisabled={false}
               isError={false}
               isFocus={false}
-              isInputDisabled={false}
               style={
                 Array [
                   Object {
@@ -246,6 +246,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                   },
                 ]
               }
+              testID="styled-input-container"
             >
               <View
                 numberOfSpaces={1}

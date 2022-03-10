@@ -217,113 +217,128 @@ exports[`<SetName/> should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "alignItems": "flex-end",
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
+                      "alignItems": "flex-start",
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "maxWidth": 500,
                       "width": "100%",
                     },
                   ]
                 }
               >
-                <Text
+                <View
                   style={
                     Array [
                       Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "alignItems": "flex-end",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "width": "100%",
                       },
                     ]
                   }
                 >
-                  Prénom
-                </Text>
-                <Text
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Prénom
+                  </Text>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Obligatoire
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={2}
                   style={
                     Array [
                       Object {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
+                        "height": 8,
                       },
                     ]
                   }
-                >
-                  Obligatoire
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  Array [
-                    Object {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
-              <View
-                height="small"
-                isError={false}
-                isFocus={false}
-                isInputDisabled={false}
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#CBCDD2",
-                      "borderRadius": 22,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 40,
-                      "paddingBottom": 4,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 4,
-                      "shadowColor": "#161617",
-                      "shadowOffset": Object {
-                        "height": 2,
-                        "width": 0,
-                      },
-                      "shadowOpacity": 0.15,
-                      "shadowRadius": 6,
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <TextInput
-                  editable={true}
-                  nativeID="testUuidV4"
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onFocus={[Function]}
-                  placeholder="Ton prénom"
-                  placeholderTextColor="#696A6F"
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "height": "100%",
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                      },
-                    ]
-                  }
-                  textContentType="username"
-                  value=""
                 />
+                <View
+                  height="small"
+                  isDisabled={false}
+                  isError={false}
+                  isFocus={false}
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#CBCDD2",
+                        "borderRadius": 22,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "height": 40,
+                        "paddingBottom": 4,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 4,
+                        "shadowColor": "#161617",
+                        "shadowOffset": Object {
+                          "height": 2,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.15,
+                        "shadowRadius": 6,
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  testID="styled-input-container"
+                >
+                  <TextInput
+                    editable={true}
+                    nativeID="testUuidV4"
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    placeholder="Ton prénom"
+                    placeholderTextColor="#696A6F"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "height": "100%",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        },
+                      ]
+                    }
+                    textContentType="username"
+                    value=""
+                  />
+                </View>
               </View>
               <View
                 numberOfSpaces={6}
@@ -339,113 +354,128 @@ exports[`<SetName/> should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "alignItems": "flex-end",
-                      "flexDirection": "row",
-                      "justifyContent": "space-between",
+                      "alignItems": "flex-start",
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "maxWidth": 500,
                       "width": "100%",
                     },
                   ]
                 }
               >
-                <Text
+                <View
                   style={
                     Array [
                       Object {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "alignItems": "flex-end",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "width": "100%",
                       },
                     ]
                   }
                 >
-                  Nom
-                </Text>
-                <Text
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "lineHeight": 20,
+                        },
+                      ]
+                    }
+                  >
+                    Nom
+                  </Text>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Obligatoire
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={2}
                   style={
                     Array [
                       Object {
-                        "color": "#696A6F",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 16,
+                        "height": 8,
                       },
                     ]
                   }
-                >
-                  Obligatoire
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  Array [
-                    Object {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
-              <View
-                height="small"
-                isError={false}
-                isFocus={false}
-                isInputDisabled={false}
-                style={
-                  Array [
-                    Object {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#CBCDD2",
-                      "borderRadius": 22,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 40,
-                      "paddingBottom": 4,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 4,
-                      "shadowColor": "#161617",
-                      "shadowOffset": Object {
-                        "height": 2,
-                        "width": 0,
-                      },
-                      "shadowOpacity": 0.15,
-                      "shadowRadius": 6,
-                      "width": "100%",
-                    },
-                  ]
-                }
-              >
-                <TextInput
-                  editable={true}
-                  nativeID="testUuidV4"
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onFocus={[Function]}
-                  placeholder="Ton nom"
-                  placeholderTextColor="#696A6F"
-                  style={
-                    Array [
-                      Object {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "height": "100%",
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                      },
-                    ]
-                  }
-                  textContentType="username"
-                  value=""
                 />
+                <View
+                  height="small"
+                  isDisabled={false}
+                  isError={false}
+                  isFocus={false}
+                  style={
+                    Array [
+                      Object {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#CBCDD2",
+                        "borderRadius": 22,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "height": 40,
+                        "paddingBottom": 4,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 4,
+                        "shadowColor": "#161617",
+                        "shadowOffset": Object {
+                          "height": 2,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.15,
+                        "shadowRadius": 6,
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  testID="styled-input-container"
+                >
+                  <TextInput
+                    editable={true}
+                    nativeID="testUuidV4"
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    placeholder="Ton nom"
+                    placeholderTextColor="#696A6F"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "height": "100%",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        },
+                      ]
+                    }
+                    textContentType="username"
+                    value=""
+                  />
+                </View>
               </View>
             </View>
           </RCTScrollView>
