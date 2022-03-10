@@ -13,6 +13,222 @@ exports[`BookingDetails should render correctly 1`] = `
     ]
   }
 >
+  <View
+    collapsable={false}
+    nativeID="animatedComponent"
+    style={
+      Object {
+        "backgroundColor": "rgba(255, 255, 255, 0)",
+        "position": "absolute",
+        "top": 0,
+        "width": "100%",
+        "zIndex": 1,
+      }
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        Array [
+          Object {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "paddingLeft": 12,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityLabel="Revenir en arrière"
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          nativeID="animatedComponent"
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+              "userSelect": "auto",
+            }
+          }
+          testID="Revenir en arrière"
+        >
+          <View
+            collapsable={false}
+            nativeID="animatedComponent"
+            style={
+              Object {
+                "alignItems": "center",
+                "aspectRatio": 1,
+                "backgroundColor": "rgba(255, 255, 255, 1)",
+                "borderColor": "rgba(241, 241, 244, 1)",
+                "borderRadius": 40,
+                "borderStyle": "solid",
+                "borderWidth": 1,
+                "justifyContent": "center",
+                "overflow": "hidden",
+                "transform": undefined,
+                "width": 40,
+              }
+            }
+            testID="headerIconRoundContainer"
+          >
+            <View
+              size={24}
+              style={
+                Array [
+                  Object {
+                    "height": 24,
+                    "width": 24,
+                  },
+                ]
+              }
+            >
+              <View
+                collapsable={false}
+                nativeID="animatedComponent"
+                style={
+                  Object {
+                    "opacity": 1,
+                    "position": "absolute",
+                  }
+                }
+                testID="initial-icon-container"
+              >
+                <View
+                  height={24}
+                  testID="icon-back"
+                  width={24}
+                >
+                  <Text>
+                    icon-back-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <View
+                collapsable={false}
+                nativeID="animatedComponent"
+                style={
+                  Object {
+                    "opacity": 0,
+                    "position": "absolute",
+                  }
+                }
+                testID="final-icon-container"
+              >
+                <View
+                  height={24}
+                  testID="final-icon-back"
+                  width={24}
+                >
+                  <Text>
+                    final-icon-back-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <Text
+        collapsable={false}
+        nativeID="animatedComponent"
+        numberOfLines={1}
+        style={
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 5,
+            "flexShrink": 1,
+            "opacity": 0,
+            "textAlign": "center",
+          }
+        }
+      >
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          Avez-vous déjà vu ?
+        </Text>
+      </Text>
+      <View
+        numberOfSpaces={3}
+        style={
+          Array [
+            Object {
+              "width": 12,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
+  </View>
   <RCTScrollView
     bounces={false}
     onContentSizeChange={[Function]}
@@ -146,25 +362,50 @@ exports[`BookingDetails should render correctly 1`] = `
                   ]
                 }
               >
-                <Text
+                <View
+                  accessibilityState={
+                    Object {
+                      "disabled": true,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={false}
+                  nativeID="animatedComponent"
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
                   style={
-                    Array [
-                      Object {
-                        "color": "#eb0055",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 18,
-                        "lineHeight": 22,
-                        "paddingBottom": 10,
-                        "paddingLeft": 10,
-                        "paddingRight": 10,
-                        "paddingTop": 10,
-                        "textAlign": "center",
-                      },
-                    ]
+                    Object {
+                      "opacity": 1,
+                      "userSelect": "auto",
+                    }
                   }
                 >
-                  352UW4
-                </Text>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#eb0055",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 18,
+                          "lineHeight": 22,
+                          "paddingBottom": 10,
+                          "paddingLeft": 10,
+                          "paddingRight": 10,
+                          "paddingTop": 10,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    352UW4
+                  </Text>
+                </View>
                 <View
                   accessibilityLabel="Accéder à l'offre"
                   accessibilityState={
@@ -339,6 +580,11 @@ exports[`BookingDetails should render correctly 1`] = `
           />
           <View
             accessibilityLabel="Le 15 mars 2021 à 20h00"
+            accessibilityState={
+              Object {
+                "disabled": true,
+              }
+            }
             accessible={true}
             collapsable={false}
             focusable={false}
@@ -1521,221 +1767,5 @@ exports[`BookingDetails should render correctly 1`] = `
       </View>
     </View>
   </Modal>
-  <View
-    collapsable={false}
-    nativeID="animatedComponent"
-    style={
-      Object {
-        "backgroundColor": "rgba(255, 255, 255, 0)",
-        "position": "absolute",
-        "top": 0,
-        "width": "100%",
-        "zIndex": 1,
-      }
-    }
-  >
-    <View
-      customHeight={16}
-      enable={true}
-      style={
-        Array [
-          Object {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "height": 8,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "paddingLeft": 12,
-            },
-          ]
-        }
-      >
-        <View
-          accessibilityLabel="Revenir en arrière"
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          nativeID="animatedComponent"
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "opacity": 1,
-              "userSelect": "auto",
-            }
-          }
-          testID="Revenir en arrière"
-        >
-          <View
-            collapsable={false}
-            nativeID="animatedComponent"
-            style={
-              Object {
-                "alignItems": "center",
-                "aspectRatio": 1,
-                "backgroundColor": "rgba(255, 255, 255, 1)",
-                "borderColor": "rgba(241, 241, 244, 1)",
-                "borderRadius": 40,
-                "borderStyle": "solid",
-                "borderWidth": 1,
-                "justifyContent": "center",
-                "overflow": "hidden",
-                "transform": undefined,
-                "width": 40,
-              }
-            }
-            testID="headerIconRoundContainer"
-          >
-            <View
-              size={24}
-              style={
-                Array [
-                  Object {
-                    "height": 24,
-                    "width": 24,
-                  },
-                ]
-              }
-            >
-              <View
-                collapsable={false}
-                nativeID="animatedComponent"
-                style={
-                  Object {
-                    "opacity": 1,
-                    "position": "absolute",
-                  }
-                }
-                testID="initial-icon-container"
-              >
-                <View
-                  height={24}
-                  testID="icon-back"
-                  width={24}
-                >
-                  <Text>
-                    icon-back-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <View
-                collapsable={false}
-                nativeID="animatedComponent"
-                style={
-                  Object {
-                    "opacity": 0,
-                    "position": "absolute",
-                  }
-                }
-                testID="final-icon-container"
-              >
-                <View
-                  height={24}
-                  testID="final-icon-back"
-                  width={24}
-                >
-                  <Text>
-                    final-icon-back-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-        </View>
-      </View>
-      <Text
-        collapsable={false}
-        nativeID="animatedComponent"
-        numberOfLines={1}
-        style={
-          Object {
-            "flexBasis": 0,
-            "flexGrow": 5,
-            "flexShrink": 1,
-            "opacity": 0,
-            "textAlign": "center",
-          }
-        }
-      >
-        <Text
-          style={
-            Array [
-              Object {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Avez-vous déjà vu ?
-        </Text>
-      </Text>
-      <View
-        numberOfSpaces={3}
-        style={
-          Array [
-            Object {
-              "width": 12,
-            },
-          ]
-        }
-      />
-      <View
-        style={
-          Array [
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
-        }
-      />
-    </View>
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "height": 8,
-          },
-        ]
-      }
-    />
-  </View>
 </View>
 `;

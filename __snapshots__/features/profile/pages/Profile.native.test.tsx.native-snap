@@ -191,6 +191,11 @@ exports[`Profile component should render correctly 1`] = `
                   />
                   <View
                     accessibilityLabel="Informations personnelles"
+                    accessibilityState={
+                      Object {
+                        "disabled": false,
+                      }
+                    }
                     accessible={true}
                     collapsable={false}
                     focusable={true}
@@ -296,6 +301,11 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                   <View
                     accessibilityLabel="Mot de passe"
+                    accessibilityState={
+                      Object {
+                        "disabled": false,
+                      }
+                    }
                     accessible={true}
                     collapsable={false}
                     focusable={true}
@@ -400,6 +410,11 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                   <View
                     accessibilityLabel="Notifications"
+                    accessibilityState={
+                      Object {
+                        "disabled": false,
+                      }
+                    }
                     accessible={true}
                     collapsable={false}
                     focusable={true}
@@ -713,6 +728,11 @@ exports[`Profile component should render correctly 1`] = `
                   />
                   <View
                     accessibilityLabel="Comment ça marche ?"
+                    accessibilityState={
+                      Object {
+                        "disabled": false,
+                      }
+                    }
                     accessible={true}
                     collapsable={false}
                     focusable={true}
@@ -817,6 +837,11 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                   <View
                     accessibilityLabel="Centre d'aide"
+                    accessibilityState={
+                      Object {
+                        "disabled": false,
+                      }
+                    }
                     accessible={true}
                     collapsable={false}
                     focusable={true}
@@ -956,6 +981,11 @@ exports[`Profile component should render correctly 1`] = `
                   />
                   <View
                     accessibilityLabel="Accessibilité"
+                    accessibilityState={
+                      Object {
+                        "disabled": false,
+                      }
+                    }
                     accessible={true}
                     collapsable={false}
                     focusable={true}
@@ -1050,6 +1080,11 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                   <View
                     accessibilityLabel="Mentions légales"
+                    accessibilityState={
+                      Object {
+                        "disabled": false,
+                      }
+                    }
                     accessible={true}
                     collapsable={false}
                     focusable={true}
@@ -1154,6 +1189,11 @@ exports[`Profile component should render correctly 1`] = `
                   </View>
                   <View
                     accessibilityLabel="Confidentialité"
+                    accessibilityState={
+                      Object {
+                        "disabled": false,
+                      }
+                    }
                     accessible={true}
                     collapsable={false}
                     focusable={true}
@@ -1677,6 +1717,11 @@ exports[`Profile component should render correctly 1`] = `
                   />
                   <View
                     accessibilityLabel="Déconnexion"
+                    accessibilityState={
+                      Object {
+                        "disabled": false,
+                      }
+                    }
                     accessible={true}
                     collapsable={false}
                     focusable={true}

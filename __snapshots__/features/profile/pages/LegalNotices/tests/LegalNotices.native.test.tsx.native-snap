@@ -178,6 +178,11 @@ Array [
     />
     <View
       accessibilityLabel="Conditions Générales d’Utilisation"
+      accessibilityState={
+        Object {
+          "disabled": false,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -283,6 +288,11 @@ Array [
     />
     <View
       accessibilityLabel="Charte de protection des données personnelles"
+      accessibilityState={
+        Object {
+          "disabled": false,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -388,6 +398,11 @@ Array [
     />
     <View
       accessibilityLabel="Suppression du compte"
+      accessibilityState={
+        Object {
+          "disabled": false,
+        }
+      }
       accessible={true}
       collapsable={false}
       focusable={true}
