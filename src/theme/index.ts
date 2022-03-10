@@ -53,6 +53,7 @@ export interface AppThemeType {
     width: number
     color: ColorsEnum
     style: string
+    offSet: number
   }
   typography: {
     hero: Typography
@@ -130,6 +131,7 @@ export interface AppThemeType {
   buttons: {
     maxWidth: number
     buttonHeights: ButtonHeightsType
+    outlineColor: ColorsEnum
     loading: {
       primary: {
         backgroundColor: ColorsEnum
@@ -209,6 +211,7 @@ export interface AppThemeType {
       iconSize: number
       textColor: ColorsEnum
       backgroundColor: ColorsEnum
+      outlineColor: ColorsEnum
     }
     secondary: {
       marginLeft: number
@@ -231,6 +234,7 @@ export interface AppThemeType {
       backgroundColor: ColorsEnum
       borderColor: ColorsEnum
       borderWidth: number
+      outlineColor: ColorsEnum
     }
     tertiary: {
       marginLeft: number
@@ -258,6 +262,7 @@ export interface AppThemeType {
       loadingIconColor: ColorsEnum
       iconColor: ColorsEnum
       iconSize: number
+      outlineColor: ColorsEnum
     }
     tertiaryGreyDark: {
       marginLeft: number
@@ -317,9 +322,10 @@ export const theme: AppThemeType = {
   },
   forms: { maxWidth: DESKTOP_CONTENT_MAX_WIDTH },
   outline: {
-    width: getSpacing(0.75),
+    width: getSpacing(0.5),
     color: ColorsEnum.PRIMARY,
     style: 'solid',
+    offSet: getSpacing(0.5),
   },
   typography: {
     hero: {
@@ -433,6 +439,7 @@ export const theme: AppThemeType = {
       tall: buttonHeights.tall,
       inline: buttonHeights.inline,
     },
+    outlineColor: ColorsEnum.ACCENT,
     loading: {
       primary: {
         backgroundColor: ColorsEnum.PRIMARY_DARK,
@@ -512,6 +519,7 @@ export const theme: AppThemeType = {
       iconSize: iconSizes.small,
       textColor: ColorsEnum.PRIMARY,
       backgroundColor: ColorsEnum.WHITE,
+      outlineColor: ColorsEnum.WHITE,
     },
     secondary: {
       marginLeft: 0,
@@ -534,6 +542,7 @@ export const theme: AppThemeType = {
       backgroundColor: ColorsEnum.TRANSPARENT,
       borderColor: ColorsEnum.WHITE,
       borderWidth: getSpacing(0.5),
+      outlineColor: ColorsEnum.WHITE,
     },
     tertiary: {
       marginLeft: 0,
@@ -561,6 +570,7 @@ export const theme: AppThemeType = {
       loadingIconColor: ColorsEnum.WHITE,
       iconColor: ColorsEnum.WHITE,
       iconSize: iconSizes.smaller,
+      outlineColor: ColorsEnum.WHITE,
     },
     tertiaryGreyDark: {
       marginLeft: 0,

@@ -15,7 +15,7 @@ import { GLOBAL_STALE_TIME } from 'libs/react-query/queryClient'
 import { VenueHit } from 'libs/search'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ImageTile } from 'ui/components/ImageTile'
-import { customFocusOutline } from 'ui/theme/customFocusOutline'
+import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { Link } from 'ui/web/link/Link'
 export interface VenueTileProps {
   venue: VenueHit
@@ -88,10 +88,10 @@ const TouchableHighlight = styled.TouchableHighlight<{
 }>(({ height, width, theme, isFocus }) => ({
   height,
   width,
-  marginTop: theme.outline.width,
+  marginTop: theme.outline.width + theme.outline.offSet,
   borderRadius: theme.borderRadius.radius,
   backgroundColor: theme.uniqueColors.greyDisabled,
-  ...customFocusOutline(theme, isFocus),
+  ...customFocusOutline(theme, undefined, isFocus),
 }))
 
 const styles = StyleSheet.create({

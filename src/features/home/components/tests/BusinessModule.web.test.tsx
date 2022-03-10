@@ -13,6 +13,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { superFlushWithAct, render, fireEvent } from 'tests/utils/web'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
+jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.Mock
 

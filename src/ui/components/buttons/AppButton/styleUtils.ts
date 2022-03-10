@@ -5,6 +5,7 @@ import { DefaultTheme } from 'styled-components/native'
 
 import { TouchableOpacityButtonProps } from 'ui/components/buttons/AppButton/types'
 import { RNTouchableOpacity } from 'ui/components/TouchableOpacity'
+import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 type ButtonStyles = InterpolationFunction<
   ThemedStyledProps<
@@ -61,7 +62,11 @@ export const appButtonStyles: ButtonStyles = ({
   ...(numberOfLines ? { height: 'auto' } : {}),
 })
 
-export const appButtonWebStyles: ButtonStylesWeb = ({ theme, ...rest }: ButtonStylesArgs) => {
+export const appButtonWebStyles: ButtonStylesWeb = ({
+  theme,
+  focusOutlineColor,
+  ...rest
+}: ButtonStylesArgs) => {
   return {
     ...(appButtonStyles({ theme, ...rest }) as Record<string, unknown>),
     cursor: 'pointer',
@@ -70,17 +75,11 @@ export const appButtonWebStyles: ButtonStylesWeb = ({ theme, ...rest }: ButtonSt
     borderWidth: 0,
     display: 'flex',
     overflow: 'hidden',
-    ['&:focus']: {
-      outline: 'auto',
-    },
-    ['&:active']: {
-      opacity: theme.activeOpacity,
-      outline: 'none',
-    },
     ['&:disabled']: {
       cursor: 'initial',
       background: 'none',
     },
+    ...customFocusOutline(theme, focusOutlineColor ?? theme.buttons.outlineColor),
   }
 }
 

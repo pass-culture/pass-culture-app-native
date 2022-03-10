@@ -831,7 +831,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                         Object {
                           "borderRadius": 8,
                           "height": 288,
-                          "marginTop": 3,
+                          "marginTop": 4,
                         },
                       ]
                     }
@@ -1058,7 +1058,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                         Object {
                           "borderRadius": 8,
                           "height": 288,
-                          "marginTop": 3,
+                          "marginTop": 4,
                         },
                       ]
                     }
@@ -1285,7 +1285,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                         Object {
                           "borderRadius": 8,
                           "height": 288,
-                          "marginTop": 3,
+                          "marginTop": 4,
                         },
                       ]
                     }

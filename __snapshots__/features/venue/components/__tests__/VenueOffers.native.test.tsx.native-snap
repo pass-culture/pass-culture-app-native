@@ -269,7 +269,7 @@ Array [
                     Object {
                       "borderRadius": 8,
                       "height": 288,
-                      "marginTop": 3,
+                      "marginTop": 4,
                     },
                   ]
                 }
@@ -496,7 +496,7 @@ Array [
                     Object {
                       "borderRadius": 8,
                       "height": 288,
-                      "marginTop": 3,
+                      "marginTop": 4,
                     },
                   ]
                 }
@@ -723,7 +723,7 @@ Array [
                     Object {
                       "borderRadius": 8,
                       "height": 288,
-                      "marginTop": 3,
+                      "marginTop": 4,
                     },
                   ]
                 }

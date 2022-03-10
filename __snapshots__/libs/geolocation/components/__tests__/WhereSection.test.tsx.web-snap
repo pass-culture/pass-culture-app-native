@@ -261,7 +261,7 @@ Array [
         }
       >
         <button
-          className="sc-bdvvtL dLruQO sc-gsDKAQ bzsCsN"
+          className="sc-bdvvtL bHPueX sc-gsDKAQ bzsCsN"
           onClick={[Function]}
           onDoubleClick={[Function]}
           type="button"

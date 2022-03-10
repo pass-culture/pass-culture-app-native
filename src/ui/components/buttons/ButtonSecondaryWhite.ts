@@ -36,6 +36,8 @@ export const ButtonSecondaryWhite = styledButton(AppButton).attrs<BaseButtonProp
       icon: Icon,
       title: Title,
       loadingIndicator: LoadingIndicator,
+      focusOutlineColor:
+        Platform.OS === 'web' ? theme.buttons.secondaryWhite.outlineColor : undefined,
     }
   }
 )(({ theme, isLoading, disabled }) => {

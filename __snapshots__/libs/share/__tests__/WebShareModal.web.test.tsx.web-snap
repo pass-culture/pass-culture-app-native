@@ -198,7 +198,7 @@ Object {
                             >
                               <button
                                 aria-label="Copier le lien"
-                                class="sc-bdvvtL bIVfLC sc-dkPtRN fwCeAR"
+                                class="sc-bdvvtL iRoXbD sc-dkPtRN fwCeAR"
                                 data-testid="Copier le lien"
                                 type="button"
                               >
@@ -228,7 +228,7 @@ Object {
                             >
                               <button
                                 aria-label="Ouvrir le gestionnaire mail"
-                                class="sc-bdvvtL bIVfLC sc-dkPtRN fwCeAR"
+                                class="sc-bdvvtL iRoXbD sc-dkPtRN fwCeAR"
                                 data-testid="Ouvrir le gestionnaire mail"
                                 type="button"
                               >
@@ -383,7 +383,7 @@ Object {
                             style="height: 32px;"
                           />
                           <button
-                            class="sc-bdvvtL eQEBJO sc-gsDKAQ cenQpD"
+                            class="sc-bdvvtL bpQhCf sc-gsDKAQ cenQpD"
                             type="button"
                           >
                             <div

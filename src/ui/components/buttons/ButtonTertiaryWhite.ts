@@ -1,3 +1,4 @@
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AppButton } from 'ui/components/buttons/AppButton/AppButton'
@@ -40,6 +41,8 @@ export const ButtonTertiaryWhite = styledButton(AppButton).attrs<BaseButtonProps
       loadingIndicator: LoadingIndicator,
       icon: Icon,
       title: Title,
+      focusOutlineColor:
+        Platform.OS === 'web' ? theme.buttons.tertiaryWhite.outlineColor : undefined,
     }
   }
 )(({ theme }) => ({

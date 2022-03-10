@@ -37,6 +37,7 @@ const _AppButton = <T extends AppButtonProps>({
   type = 'button',
   className,
   name,
+  focusOutlineColor,
 }: OnlyBaseButtonProps<T>) => {
   const pressHandler = disabled || isLoading ? undefined : (onPress as AppButtonEventWeb)
   const longPressHandler = disabled || isLoading ? undefined : (onLongPress as AppButtonEventWeb)
@@ -83,7 +84,8 @@ const _AppButton = <T extends AppButtonProps>({
       numberOfLines={numberOfLines}
       style={style as CSSProperties}
       center={center}
-      className={className}>
+      className={className}
+      focusOutlineColor={focusOutlineColor}>
       <AppButtonInner
         loadingIndicator={LoadingIndicator}
         isLoading={isLoading}
