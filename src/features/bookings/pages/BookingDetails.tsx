@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
-import { ScrollView, StyleSheet, useWindowDimensions } from 'react-native'
+import { Platform, ScrollView, StyleSheet, useWindowDimensions } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -19,11 +19,12 @@ import { BookingNotFound } from 'features/bookings/pages/BookingNotFound'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { mergeOfferData } from 'features/offer/atoms/OfferTile'
 import { analytics, isCloseToBottom } from 'libs/analytics'
+import { env } from 'libs/environment'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
-import { ScreenError } from 'libs/monitoring'
+import { eventMonitoring, ScreenError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { GLOBAL_STALE_TIME } from 'libs/react-query/queryClient'
 import { useSubcategoriesMapping } from 'libs/subcategories'
@@ -59,6 +60,7 @@ export function BookingDetails() {
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const {
+    status,
     data: booking,
     isLoading,
     isError,
@@ -94,8 +96,30 @@ export function BookingDetails() {
   })
 
   if ((isLoading || !dataUpdatedAt) && !booking) {
+    if (env.ENV !== 'production') {
+      eventMonitoring.captureMessage(`BookingDetails.LoadingPage`, {
+        extra: {
+          status,
+          isLoading,
+          booking,
+          dataUpdatedAt,
+        },
+      })
+    }
     return <LoadingPage />
   } else if (!isLoading && !booking) {
+    if (Platform.OS !== 'web') {
+      const error = new Error('BookingNotFound')
+      error.name = 'BookingNotFound'
+      eventMonitoring.captureException(error, {
+        extra: {
+          status,
+          isLoading,
+          booking,
+          dataUpdatedAt,
+        },
+      })
+    }
     throw new ScreenError(`Booking #${params.id} not found`, BookingNotFound)
   } else if (isError) {
     throw error
