@@ -4,7 +4,6 @@ import { TextInput as RNTextInput } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { TextInputProps } from 'ui/components/inputs/types'
 
@@ -22,22 +21,20 @@ const withRefEmailInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
   const emailInputID = uuidv4()
 
   return (
-    <InputContainer>
-      <TextInput
-        nativeID={emailInputID}
-        autoCapitalize="none"
-        autoComplete="email"
-        keyboardType="email-address"
-        onChangeText={onEmailChange}
-        placeholder={t`tonadresse@email.com`}
-        textContentType="emailAddress"
-        value={email}
-        maxLength={120}
-        {...accessibilityAndTestId(t`Entrée pour l'email`)}
-        {...inputProps}
-        ref={forwardedRef}
-      />
-    </InputContainer>
+    <TextInput
+      nativeID={emailInputID}
+      autoCapitalize="none"
+      autoComplete="email"
+      keyboardType="email-address"
+      onChangeText={onEmailChange}
+      placeholder={t`tonadresse@email.com`}
+      textContentType="emailAddress"
+      value={email}
+      maxLength={120}
+      {...accessibilityAndTestId(t`Entrée pour l'email`)}
+      {...inputProps}
+      ref={forwardedRef}
+    />
   )
 }
 

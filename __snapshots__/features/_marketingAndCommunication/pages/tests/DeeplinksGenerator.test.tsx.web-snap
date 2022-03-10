@@ -1217,83 +1217,103 @@ Array [
               />
               <div
                 className="css-view-1dbjc4n"
-                data-testid="styled-input-container"
                 style={
                   Object {
-                    "WebkitAlignItems": "center",
-                    "WebkitBoxAlign": "center",
+                    "WebkitAlignItems": "flex-start",
+                    "WebkitBoxAlign": "start",
                     "WebkitBoxDirection": "normal",
-                    "WebkitBoxOrient": "horizontal",
-                    "WebkitFlexDirection": "row",
-                    "alignItems": "center",
-                    "backgroundColor": "rgba(255,255,255,1.00)",
-                    "borderBottomColor": "rgba(203,205,210,1.00)",
-                    "borderBottomLeftRadius": "22px",
-                    "borderBottomRightRadius": "22px",
-                    "borderBottomStyle": "solid",
-                    "borderBottomWidth": "1px",
-                    "borderLeftColor": "rgba(203,205,210,1.00)",
-                    "borderLeftStyle": "solid",
-                    "borderLeftWidth": "1px",
-                    "borderRightColor": "rgba(203,205,210,1.00)",
-                    "borderRightStyle": "solid",
-                    "borderRightWidth": "1px",
-                    "borderTopColor": "rgba(203,205,210,1.00)",
-                    "borderTopLeftRadius": "22px",
-                    "borderTopRightRadius": "22px",
-                    "borderTopStyle": "solid",
-                    "borderTopWidth": "1px",
-                    "flexDirection": "row",
-                    "height": "40px",
-                    "msFlexAlign": "center",
-                    "msFlexDirection": "row",
-                    "paddingBottom": "4px",
-                    "paddingLeft": "16px",
-                    "paddingRight": "16px",
-                    "paddingTop": "4px",
+                    "WebkitBoxOrient": "vertical",
+                    "WebkitFlexDirection": "column",
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "maxWidth": "500px",
+                    "msFlexAlign": "start",
+                    "msFlexDirection": "column",
                     "width": "100%",
                   }
                 }
               >
-                <input
-                  autoCapitalize="sentences"
-                  autoComplete="on"
-                  autoCorrect="on"
-                  className="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
-                  dir="auto"
-                  id="testUuidV4"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onSelect={[Function]}
-                  placeholder="entryId"
-                  readOnly={false}
-                  spellCheck={true}
+                <div
+                  className="css-view-1dbjc4n"
+                  data-testid="styled-input-container"
                   style={
                     Object {
-                      "WebkitBoxFlex": 1,
-                      "WebkitFlexBasis": "0px",
-                      "WebkitFlexGrow": 1,
-                      "WebkitFlexShrink": 1,
-                      "color": "rgba(22,22,23,1.00)",
-                      "flexBasis": "0px",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": "15px",
-                      "height": "100%",
-                      "msFlexNegative": 1,
-                      "msFlexPositive": 1,
-                      "msFlexPreferredSize": "0px",
-                      "paddingBottom": "0px",
-                      "paddingLeft": "0px",
-                      "paddingRight": "0px",
-                      "paddingTop": "0px",
+                      "WebkitAlignItems": "center",
+                      "WebkitBoxAlign": "center",
+                      "WebkitBoxDirection": "normal",
+                      "WebkitBoxOrient": "horizontal",
+                      "WebkitFlexDirection": "row",
+                      "alignItems": "center",
+                      "backgroundColor": "rgba(255,255,255,1.00)",
+                      "borderBottomColor": "rgba(203,205,210,1.00)",
+                      "borderBottomLeftRadius": "22px",
+                      "borderBottomRightRadius": "22px",
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": "1px",
+                      "borderLeftColor": "rgba(203,205,210,1.00)",
+                      "borderLeftStyle": "solid",
+                      "borderLeftWidth": "1px",
+                      "borderRightColor": "rgba(203,205,210,1.00)",
+                      "borderRightStyle": "solid",
+                      "borderRightWidth": "1px",
+                      "borderTopColor": "rgba(203,205,210,1.00)",
+                      "borderTopLeftRadius": "22px",
+                      "borderTopRightRadius": "22px",
+                      "borderTopStyle": "solid",
+                      "borderTopWidth": "1px",
+                      "flexDirection": "row",
+                      "height": "40px",
+                      "msFlexAlign": "center",
+                      "msFlexDirection": "row",
+                      "paddingBottom": "4px",
+                      "paddingLeft": "16px",
+                      "paddingRight": "16px",
+                      "paddingTop": "4px",
+                      "width": "100%",
                     }
                   }
-                  type="text"
-                />
+                >
+                  <input
+                    autoCapitalize="sentences"
+                    autoComplete="on"
+                    autoCorrect="on"
+                    className="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
+                    dir="auto"
+                    id="testUuidV4"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onSelect={[Function]}
+                    placeholder="entryId"
+                    readOnly={false}
+                    spellCheck={true}
+                    style={
+                      Object {
+                        "WebkitBoxFlex": 1,
+                        "WebkitFlexBasis": "0px",
+                        "WebkitFlexGrow": 1,
+                        "WebkitFlexShrink": 1,
+                        "color": "rgba(22,22,23,1.00)",
+                        "flexBasis": "0px",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": "15px",
+                        "height": "100%",
+                        "msFlexNegative": 1,
+                        "msFlexPositive": 1,
+                        "msFlexPreferredSize": "0px",
+                        "paddingBottom": "0px",
+                        "paddingLeft": "0px",
+                        "paddingRight": "0px",
+                        "paddingTop": "0px",
+                      }
+                    }
+                    type="text"
+                  />
+                </div>
               </div>
               <div
                 className="css-view-1dbjc4n"
@@ -1448,83 +1468,103 @@ Array [
               />
               <div
                 className="css-view-1dbjc4n"
-                data-testid="styled-input-container"
                 style={
                   Object {
-                    "WebkitAlignItems": "center",
-                    "WebkitBoxAlign": "center",
+                    "WebkitAlignItems": "flex-start",
+                    "WebkitBoxAlign": "start",
                     "WebkitBoxDirection": "normal",
-                    "WebkitBoxOrient": "horizontal",
-                    "WebkitFlexDirection": "row",
-                    "alignItems": "center",
-                    "backgroundColor": "rgba(255,255,255,1.00)",
-                    "borderBottomColor": "rgba(203,205,210,1.00)",
-                    "borderBottomLeftRadius": "22px",
-                    "borderBottomRightRadius": "22px",
-                    "borderBottomStyle": "solid",
-                    "borderBottomWidth": "1px",
-                    "borderLeftColor": "rgba(203,205,210,1.00)",
-                    "borderLeftStyle": "solid",
-                    "borderLeftWidth": "1px",
-                    "borderRightColor": "rgba(203,205,210,1.00)",
-                    "borderRightStyle": "solid",
-                    "borderRightWidth": "1px",
-                    "borderTopColor": "rgba(203,205,210,1.00)",
-                    "borderTopLeftRadius": "22px",
-                    "borderTopRightRadius": "22px",
-                    "borderTopStyle": "solid",
-                    "borderTopWidth": "1px",
-                    "flexDirection": "row",
-                    "height": "40px",
-                    "msFlexAlign": "center",
-                    "msFlexDirection": "row",
-                    "paddingBottom": "4px",
-                    "paddingLeft": "16px",
-                    "paddingRight": "16px",
-                    "paddingTop": "4px",
+                    "WebkitBoxOrient": "vertical",
+                    "WebkitFlexDirection": "column",
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "maxWidth": "500px",
+                    "msFlexAlign": "start",
+                    "msFlexDirection": "column",
                     "width": "100%",
                   }
                 }
               >
-                <input
-                  autoCapitalize="sentences"
-                  autoComplete="on"
-                  autoCorrect="on"
-                  className="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
-                  dir="auto"
-                  id="testUuidV4"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onSelect={[Function]}
-                  placeholder="utm_campaign"
-                  readOnly={false}
-                  spellCheck={true}
+                <div
+                  className="css-view-1dbjc4n"
+                  data-testid="styled-input-container"
                   style={
                     Object {
-                      "WebkitBoxFlex": 1,
-                      "WebkitFlexBasis": "0px",
-                      "WebkitFlexGrow": 1,
-                      "WebkitFlexShrink": 1,
-                      "color": "rgba(22,22,23,1.00)",
-                      "flexBasis": "0px",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": "15px",
-                      "height": "100%",
-                      "msFlexNegative": 1,
-                      "msFlexPositive": 1,
-                      "msFlexPreferredSize": "0px",
-                      "paddingBottom": "0px",
-                      "paddingLeft": "0px",
-                      "paddingRight": "0px",
-                      "paddingTop": "0px",
+                      "WebkitAlignItems": "center",
+                      "WebkitBoxAlign": "center",
+                      "WebkitBoxDirection": "normal",
+                      "WebkitBoxOrient": "horizontal",
+                      "WebkitFlexDirection": "row",
+                      "alignItems": "center",
+                      "backgroundColor": "rgba(255,255,255,1.00)",
+                      "borderBottomColor": "rgba(203,205,210,1.00)",
+                      "borderBottomLeftRadius": "22px",
+                      "borderBottomRightRadius": "22px",
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": "1px",
+                      "borderLeftColor": "rgba(203,205,210,1.00)",
+                      "borderLeftStyle": "solid",
+                      "borderLeftWidth": "1px",
+                      "borderRightColor": "rgba(203,205,210,1.00)",
+                      "borderRightStyle": "solid",
+                      "borderRightWidth": "1px",
+                      "borderTopColor": "rgba(203,205,210,1.00)",
+                      "borderTopLeftRadius": "22px",
+                      "borderTopRightRadius": "22px",
+                      "borderTopStyle": "solid",
+                      "borderTopWidth": "1px",
+                      "flexDirection": "row",
+                      "height": "40px",
+                      "msFlexAlign": "center",
+                      "msFlexDirection": "row",
+                      "paddingBottom": "4px",
+                      "paddingLeft": "16px",
+                      "paddingRight": "16px",
+                      "paddingTop": "4px",
+                      "width": "100%",
                     }
                   }
-                  type="text"
-                />
+                >
+                  <input
+                    autoCapitalize="sentences"
+                    autoComplete="on"
+                    autoCorrect="on"
+                    className="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
+                    dir="auto"
+                    id="testUuidV4"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onSelect={[Function]}
+                    placeholder="utm_campaign"
+                    readOnly={false}
+                    spellCheck={true}
+                    style={
+                      Object {
+                        "WebkitBoxFlex": 1,
+                        "WebkitFlexBasis": "0px",
+                        "WebkitFlexGrow": 1,
+                        "WebkitFlexShrink": 1,
+                        "color": "rgba(22,22,23,1.00)",
+                        "flexBasis": "0px",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": "15px",
+                        "height": "100%",
+                        "msFlexNegative": 1,
+                        "msFlexPositive": 1,
+                        "msFlexPreferredSize": "0px",
+                        "paddingBottom": "0px",
+                        "paddingLeft": "0px",
+                        "paddingRight": "0px",
+                        "paddingTop": "0px",
+                      }
+                    }
+                    type="text"
+                  />
+                </div>
               </div>
               <div
                 className="css-view-1dbjc4n"
@@ -1572,83 +1612,103 @@ Array [
               />
               <div
                 className="css-view-1dbjc4n"
-                data-testid="styled-input-container"
                 style={
                   Object {
-                    "WebkitAlignItems": "center",
-                    "WebkitBoxAlign": "center",
+                    "WebkitAlignItems": "flex-start",
+                    "WebkitBoxAlign": "start",
                     "WebkitBoxDirection": "normal",
-                    "WebkitBoxOrient": "horizontal",
-                    "WebkitFlexDirection": "row",
-                    "alignItems": "center",
-                    "backgroundColor": "rgba(255,255,255,1.00)",
-                    "borderBottomColor": "rgba(203,205,210,1.00)",
-                    "borderBottomLeftRadius": "22px",
-                    "borderBottomRightRadius": "22px",
-                    "borderBottomStyle": "solid",
-                    "borderBottomWidth": "1px",
-                    "borderLeftColor": "rgba(203,205,210,1.00)",
-                    "borderLeftStyle": "solid",
-                    "borderLeftWidth": "1px",
-                    "borderRightColor": "rgba(203,205,210,1.00)",
-                    "borderRightStyle": "solid",
-                    "borderRightWidth": "1px",
-                    "borderTopColor": "rgba(203,205,210,1.00)",
-                    "borderTopLeftRadius": "22px",
-                    "borderTopRightRadius": "22px",
-                    "borderTopStyle": "solid",
-                    "borderTopWidth": "1px",
-                    "flexDirection": "row",
-                    "height": "40px",
-                    "msFlexAlign": "center",
-                    "msFlexDirection": "row",
-                    "paddingBottom": "4px",
-                    "paddingLeft": "16px",
-                    "paddingRight": "16px",
-                    "paddingTop": "4px",
+                    "WebkitBoxOrient": "vertical",
+                    "WebkitFlexDirection": "column",
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "maxWidth": "500px",
+                    "msFlexAlign": "start",
+                    "msFlexDirection": "column",
                     "width": "100%",
                   }
                 }
               >
-                <input
-                  autoCapitalize="sentences"
-                  autoComplete="on"
-                  autoCorrect="on"
-                  className="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
-                  dir="auto"
-                  id="testUuidV4"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onSelect={[Function]}
-                  placeholder="utm_source"
-                  readOnly={false}
-                  spellCheck={true}
+                <div
+                  className="css-view-1dbjc4n"
+                  data-testid="styled-input-container"
                   style={
                     Object {
-                      "WebkitBoxFlex": 1,
-                      "WebkitFlexBasis": "0px",
-                      "WebkitFlexGrow": 1,
-                      "WebkitFlexShrink": 1,
-                      "color": "rgba(22,22,23,1.00)",
-                      "flexBasis": "0px",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": "15px",
-                      "height": "100%",
-                      "msFlexNegative": 1,
-                      "msFlexPositive": 1,
-                      "msFlexPreferredSize": "0px",
-                      "paddingBottom": "0px",
-                      "paddingLeft": "0px",
-                      "paddingRight": "0px",
-                      "paddingTop": "0px",
+                      "WebkitAlignItems": "center",
+                      "WebkitBoxAlign": "center",
+                      "WebkitBoxDirection": "normal",
+                      "WebkitBoxOrient": "horizontal",
+                      "WebkitFlexDirection": "row",
+                      "alignItems": "center",
+                      "backgroundColor": "rgba(255,255,255,1.00)",
+                      "borderBottomColor": "rgba(203,205,210,1.00)",
+                      "borderBottomLeftRadius": "22px",
+                      "borderBottomRightRadius": "22px",
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": "1px",
+                      "borderLeftColor": "rgba(203,205,210,1.00)",
+                      "borderLeftStyle": "solid",
+                      "borderLeftWidth": "1px",
+                      "borderRightColor": "rgba(203,205,210,1.00)",
+                      "borderRightStyle": "solid",
+                      "borderRightWidth": "1px",
+                      "borderTopColor": "rgba(203,205,210,1.00)",
+                      "borderTopLeftRadius": "22px",
+                      "borderTopRightRadius": "22px",
+                      "borderTopStyle": "solid",
+                      "borderTopWidth": "1px",
+                      "flexDirection": "row",
+                      "height": "40px",
+                      "msFlexAlign": "center",
+                      "msFlexDirection": "row",
+                      "paddingBottom": "4px",
+                      "paddingLeft": "16px",
+                      "paddingRight": "16px",
+                      "paddingTop": "4px",
+                      "width": "100%",
                     }
                   }
-                  type="text"
-                />
+                >
+                  <input
+                    autoCapitalize="sentences"
+                    autoComplete="on"
+                    autoCorrect="on"
+                    className="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
+                    dir="auto"
+                    id="testUuidV4"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onSelect={[Function]}
+                    placeholder="utm_source"
+                    readOnly={false}
+                    spellCheck={true}
+                    style={
+                      Object {
+                        "WebkitBoxFlex": 1,
+                        "WebkitFlexBasis": "0px",
+                        "WebkitFlexGrow": 1,
+                        "WebkitFlexShrink": 1,
+                        "color": "rgba(22,22,23,1.00)",
+                        "flexBasis": "0px",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": "15px",
+                        "height": "100%",
+                        "msFlexNegative": 1,
+                        "msFlexPositive": 1,
+                        "msFlexPreferredSize": "0px",
+                        "paddingBottom": "0px",
+                        "paddingLeft": "0px",
+                        "paddingRight": "0px",
+                        "paddingTop": "0px",
+                      }
+                    }
+                    type="text"
+                  />
+                </div>
               </div>
               <div
                 className="css-view-1dbjc4n"
@@ -1696,83 +1756,103 @@ Array [
               />
               <div
                 className="css-view-1dbjc4n"
-                data-testid="styled-input-container"
                 style={
                   Object {
-                    "WebkitAlignItems": "center",
-                    "WebkitBoxAlign": "center",
+                    "WebkitAlignItems": "flex-start",
+                    "WebkitBoxAlign": "start",
                     "WebkitBoxDirection": "normal",
-                    "WebkitBoxOrient": "horizontal",
-                    "WebkitFlexDirection": "row",
-                    "alignItems": "center",
-                    "backgroundColor": "rgba(255,255,255,1.00)",
-                    "borderBottomColor": "rgba(203,205,210,1.00)",
-                    "borderBottomLeftRadius": "22px",
-                    "borderBottomRightRadius": "22px",
-                    "borderBottomStyle": "solid",
-                    "borderBottomWidth": "1px",
-                    "borderLeftColor": "rgba(203,205,210,1.00)",
-                    "borderLeftStyle": "solid",
-                    "borderLeftWidth": "1px",
-                    "borderRightColor": "rgba(203,205,210,1.00)",
-                    "borderRightStyle": "solid",
-                    "borderRightWidth": "1px",
-                    "borderTopColor": "rgba(203,205,210,1.00)",
-                    "borderTopLeftRadius": "22px",
-                    "borderTopRightRadius": "22px",
-                    "borderTopStyle": "solid",
-                    "borderTopWidth": "1px",
-                    "flexDirection": "row",
-                    "height": "40px",
-                    "msFlexAlign": "center",
-                    "msFlexDirection": "row",
-                    "paddingBottom": "4px",
-                    "paddingLeft": "16px",
-                    "paddingRight": "16px",
-                    "paddingTop": "4px",
+                    "WebkitBoxOrient": "vertical",
+                    "WebkitFlexDirection": "column",
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "maxWidth": "500px",
+                    "msFlexAlign": "start",
+                    "msFlexDirection": "column",
                     "width": "100%",
                   }
                 }
               >
-                <input
-                  autoCapitalize="sentences"
-                  autoComplete="on"
-                  autoCorrect="on"
-                  className="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
-                  dir="auto"
-                  id="testUuidV4"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onSelect={[Function]}
-                  placeholder="utm_medium"
-                  readOnly={false}
-                  spellCheck={true}
+                <div
+                  className="css-view-1dbjc4n"
+                  data-testid="styled-input-container"
                   style={
                     Object {
-                      "WebkitBoxFlex": 1,
-                      "WebkitFlexBasis": "0px",
-                      "WebkitFlexGrow": 1,
-                      "WebkitFlexShrink": 1,
-                      "color": "rgba(22,22,23,1.00)",
-                      "flexBasis": "0px",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": "15px",
-                      "height": "100%",
-                      "msFlexNegative": 1,
-                      "msFlexPositive": 1,
-                      "msFlexPreferredSize": "0px",
-                      "paddingBottom": "0px",
-                      "paddingLeft": "0px",
-                      "paddingRight": "0px",
-                      "paddingTop": "0px",
+                      "WebkitAlignItems": "center",
+                      "WebkitBoxAlign": "center",
+                      "WebkitBoxDirection": "normal",
+                      "WebkitBoxOrient": "horizontal",
+                      "WebkitFlexDirection": "row",
+                      "alignItems": "center",
+                      "backgroundColor": "rgba(255,255,255,1.00)",
+                      "borderBottomColor": "rgba(203,205,210,1.00)",
+                      "borderBottomLeftRadius": "22px",
+                      "borderBottomRightRadius": "22px",
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": "1px",
+                      "borderLeftColor": "rgba(203,205,210,1.00)",
+                      "borderLeftStyle": "solid",
+                      "borderLeftWidth": "1px",
+                      "borderRightColor": "rgba(203,205,210,1.00)",
+                      "borderRightStyle": "solid",
+                      "borderRightWidth": "1px",
+                      "borderTopColor": "rgba(203,205,210,1.00)",
+                      "borderTopLeftRadius": "22px",
+                      "borderTopRightRadius": "22px",
+                      "borderTopStyle": "solid",
+                      "borderTopWidth": "1px",
+                      "flexDirection": "row",
+                      "height": "40px",
+                      "msFlexAlign": "center",
+                      "msFlexDirection": "row",
+                      "paddingBottom": "4px",
+                      "paddingLeft": "16px",
+                      "paddingRight": "16px",
+                      "paddingTop": "4px",
+                      "width": "100%",
                     }
                   }
-                  type="text"
-                />
+                >
+                  <input
+                    autoCapitalize="sentences"
+                    autoComplete="on"
+                    autoCorrect="on"
+                    className="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
+                    dir="auto"
+                    id="testUuidV4"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onSelect={[Function]}
+                    placeholder="utm_medium"
+                    readOnly={false}
+                    spellCheck={true}
+                    style={
+                      Object {
+                        "WebkitBoxFlex": 1,
+                        "WebkitFlexBasis": "0px",
+                        "WebkitFlexGrow": 1,
+                        "WebkitFlexShrink": 1,
+                        "color": "rgba(22,22,23,1.00)",
+                        "flexBasis": "0px",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": "15px",
+                        "height": "100%",
+                        "msFlexNegative": 1,
+                        "msFlexPositive": 1,
+                        "msFlexPreferredSize": "0px",
+                        "paddingBottom": "0px",
+                        "paddingLeft": "0px",
+                        "paddingRight": "0px",
+                        "paddingTop": "0px",
+                      }
+                    }
+                    type="text"
+                  />
+                </div>
               </div>
               <div
                 className="css-view-1dbjc4n"
@@ -1820,83 +1900,103 @@ Array [
               />
               <div
                 className="css-view-1dbjc4n"
-                data-testid="styled-input-container"
                 style={
                   Object {
-                    "WebkitAlignItems": "center",
-                    "WebkitBoxAlign": "center",
+                    "WebkitAlignItems": "flex-start",
+                    "WebkitBoxAlign": "start",
                     "WebkitBoxDirection": "normal",
-                    "WebkitBoxOrient": "horizontal",
-                    "WebkitFlexDirection": "row",
-                    "alignItems": "center",
-                    "backgroundColor": "rgba(255,255,255,1.00)",
-                    "borderBottomColor": "rgba(203,205,210,1.00)",
-                    "borderBottomLeftRadius": "22px",
-                    "borderBottomRightRadius": "22px",
-                    "borderBottomStyle": "solid",
-                    "borderBottomWidth": "1px",
-                    "borderLeftColor": "rgba(203,205,210,1.00)",
-                    "borderLeftStyle": "solid",
-                    "borderLeftWidth": "1px",
-                    "borderRightColor": "rgba(203,205,210,1.00)",
-                    "borderRightStyle": "solid",
-                    "borderRightWidth": "1px",
-                    "borderTopColor": "rgba(203,205,210,1.00)",
-                    "borderTopLeftRadius": "22px",
-                    "borderTopRightRadius": "22px",
-                    "borderTopStyle": "solid",
-                    "borderTopWidth": "1px",
-                    "flexDirection": "row",
-                    "height": "40px",
-                    "msFlexAlign": "center",
-                    "msFlexDirection": "row",
-                    "paddingBottom": "4px",
-                    "paddingLeft": "16px",
-                    "paddingRight": "16px",
-                    "paddingTop": "4px",
+                    "WebkitBoxOrient": "vertical",
+                    "WebkitFlexDirection": "column",
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "maxWidth": "500px",
+                    "msFlexAlign": "start",
+                    "msFlexDirection": "column",
                     "width": "100%",
                   }
                 }
               >
-                <input
-                  autoCapitalize="sentences"
-                  autoComplete="on"
-                  autoCorrect="on"
-                  className="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
-                  dir="auto"
-                  id="testUuidV4"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onSelect={[Function]}
-                  placeholder="utm_content"
-                  readOnly={false}
-                  spellCheck={true}
+                <div
+                  className="css-view-1dbjc4n"
+                  data-testid="styled-input-container"
                   style={
                     Object {
-                      "WebkitBoxFlex": 1,
-                      "WebkitFlexBasis": "0px",
-                      "WebkitFlexGrow": 1,
-                      "WebkitFlexShrink": 1,
-                      "color": "rgba(22,22,23,1.00)",
-                      "flexBasis": "0px",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": "15px",
-                      "height": "100%",
-                      "msFlexNegative": 1,
-                      "msFlexPositive": 1,
-                      "msFlexPreferredSize": "0px",
-                      "paddingBottom": "0px",
-                      "paddingLeft": "0px",
-                      "paddingRight": "0px",
-                      "paddingTop": "0px",
+                      "WebkitAlignItems": "center",
+                      "WebkitBoxAlign": "center",
+                      "WebkitBoxDirection": "normal",
+                      "WebkitBoxOrient": "horizontal",
+                      "WebkitFlexDirection": "row",
+                      "alignItems": "center",
+                      "backgroundColor": "rgba(255,255,255,1.00)",
+                      "borderBottomColor": "rgba(203,205,210,1.00)",
+                      "borderBottomLeftRadius": "22px",
+                      "borderBottomRightRadius": "22px",
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": "1px",
+                      "borderLeftColor": "rgba(203,205,210,1.00)",
+                      "borderLeftStyle": "solid",
+                      "borderLeftWidth": "1px",
+                      "borderRightColor": "rgba(203,205,210,1.00)",
+                      "borderRightStyle": "solid",
+                      "borderRightWidth": "1px",
+                      "borderTopColor": "rgba(203,205,210,1.00)",
+                      "borderTopLeftRadius": "22px",
+                      "borderTopRightRadius": "22px",
+                      "borderTopStyle": "solid",
+                      "borderTopWidth": "1px",
+                      "flexDirection": "row",
+                      "height": "40px",
+                      "msFlexAlign": "center",
+                      "msFlexDirection": "row",
+                      "paddingBottom": "4px",
+                      "paddingLeft": "16px",
+                      "paddingRight": "16px",
+                      "paddingTop": "4px",
+                      "width": "100%",
                     }
                   }
-                  type="text"
-                />
+                >
+                  <input
+                    autoCapitalize="sentences"
+                    autoComplete="on"
+                    autoCorrect="on"
+                    className="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
+                    dir="auto"
+                    id="testUuidV4"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onSelect={[Function]}
+                    placeholder="utm_content"
+                    readOnly={false}
+                    spellCheck={true}
+                    style={
+                      Object {
+                        "WebkitBoxFlex": 1,
+                        "WebkitFlexBasis": "0px",
+                        "WebkitFlexGrow": 1,
+                        "WebkitFlexShrink": 1,
+                        "color": "rgba(22,22,23,1.00)",
+                        "flexBasis": "0px",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": "15px",
+                        "height": "100%",
+                        "msFlexNegative": 1,
+                        "msFlexPositive": 1,
+                        "msFlexPreferredSize": "0px",
+                        "paddingBottom": "0px",
+                        "paddingLeft": "0px",
+                        "paddingRight": "0px",
+                        "paddingTop": "0px",
+                      }
+                    }
+                    type="text"
+                  />
+                </div>
               </div>
               <div
                 className="css-view-1dbjc4n"
@@ -2051,83 +2151,103 @@ Array [
               />
               <div
                 className="css-view-1dbjc4n"
-                data-testid="styled-input-container"
                 style={
                   Object {
-                    "WebkitAlignItems": "center",
-                    "WebkitBoxAlign": "center",
+                    "WebkitAlignItems": "flex-start",
+                    "WebkitBoxAlign": "start",
                     "WebkitBoxDirection": "normal",
-                    "WebkitBoxOrient": "horizontal",
-                    "WebkitFlexDirection": "row",
-                    "alignItems": "center",
-                    "backgroundColor": "rgba(255,255,255,1.00)",
-                    "borderBottomColor": "rgba(203,205,210,1.00)",
-                    "borderBottomLeftRadius": "22px",
-                    "borderBottomRightRadius": "22px",
-                    "borderBottomStyle": "solid",
-                    "borderBottomWidth": "1px",
-                    "borderLeftColor": "rgba(203,205,210,1.00)",
-                    "borderLeftStyle": "solid",
-                    "borderLeftWidth": "1px",
-                    "borderRightColor": "rgba(203,205,210,1.00)",
-                    "borderRightStyle": "solid",
-                    "borderRightWidth": "1px",
-                    "borderTopColor": "rgba(203,205,210,1.00)",
-                    "borderTopLeftRadius": "22px",
-                    "borderTopRightRadius": "22px",
-                    "borderTopStyle": "solid",
-                    "borderTopWidth": "1px",
-                    "flexDirection": "row",
-                    "height": "40px",
-                    "msFlexAlign": "center",
-                    "msFlexDirection": "row",
-                    "paddingBottom": "4px",
-                    "paddingLeft": "16px",
-                    "paddingRight": "16px",
-                    "paddingTop": "4px",
+                    "WebkitBoxOrient": "vertical",
+                    "WebkitFlexDirection": "column",
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "maxWidth": "500px",
+                    "msFlexAlign": "start",
+                    "msFlexDirection": "column",
                     "width": "100%",
                   }
                 }
               >
-                <input
-                  autoCapitalize="sentences"
-                  autoComplete="on"
-                  autoCorrect="on"
-                  className="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
-                  dir="auto"
-                  id="testUuidV4"
-                  onBlur={[Function]}
-                  onChange={[Function]}
-                  onFocus={[Function]}
-                  onKeyDown={[Function]}
-                  onSelect={[Function]}
-                  placeholder="amv"
-                  readOnly={false}
-                  spellCheck={true}
+                <div
+                  className="css-view-1dbjc4n"
+                  data-testid="styled-input-container"
                   style={
                     Object {
-                      "WebkitBoxFlex": 1,
-                      "WebkitFlexBasis": "0px",
-                      "WebkitFlexGrow": 1,
-                      "WebkitFlexShrink": 1,
-                      "color": "rgba(22,22,23,1.00)",
-                      "flexBasis": "0px",
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "fontFamily": "Montserrat-Regular",
-                      "fontSize": "15px",
-                      "height": "100%",
-                      "msFlexNegative": 1,
-                      "msFlexPositive": 1,
-                      "msFlexPreferredSize": "0px",
-                      "paddingBottom": "0px",
-                      "paddingLeft": "0px",
-                      "paddingRight": "0px",
-                      "paddingTop": "0px",
+                      "WebkitAlignItems": "center",
+                      "WebkitBoxAlign": "center",
+                      "WebkitBoxDirection": "normal",
+                      "WebkitBoxOrient": "horizontal",
+                      "WebkitFlexDirection": "row",
+                      "alignItems": "center",
+                      "backgroundColor": "rgba(255,255,255,1.00)",
+                      "borderBottomColor": "rgba(203,205,210,1.00)",
+                      "borderBottomLeftRadius": "22px",
+                      "borderBottomRightRadius": "22px",
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": "1px",
+                      "borderLeftColor": "rgba(203,205,210,1.00)",
+                      "borderLeftStyle": "solid",
+                      "borderLeftWidth": "1px",
+                      "borderRightColor": "rgba(203,205,210,1.00)",
+                      "borderRightStyle": "solid",
+                      "borderRightWidth": "1px",
+                      "borderTopColor": "rgba(203,205,210,1.00)",
+                      "borderTopLeftRadius": "22px",
+                      "borderTopRightRadius": "22px",
+                      "borderTopStyle": "solid",
+                      "borderTopWidth": "1px",
+                      "flexDirection": "row",
+                      "height": "40px",
+                      "msFlexAlign": "center",
+                      "msFlexDirection": "row",
+                      "paddingBottom": "4px",
+                      "paddingLeft": "16px",
+                      "paddingRight": "16px",
+                      "paddingTop": "4px",
+                      "width": "100%",
                     }
                   }
-                  type="text"
-                />
+                >
+                  <input
+                    autoCapitalize="sentences"
+                    autoComplete="on"
+                    autoCorrect="on"
+                    className="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
+                    dir="auto"
+                    id="testUuidV4"
+                    onBlur={[Function]}
+                    onChange={[Function]}
+                    onFocus={[Function]}
+                    onKeyDown={[Function]}
+                    onSelect={[Function]}
+                    placeholder="amv"
+                    readOnly={false}
+                    spellCheck={true}
+                    style={
+                      Object {
+                        "WebkitBoxFlex": 1,
+                        "WebkitFlexBasis": "0px",
+                        "WebkitFlexGrow": 1,
+                        "WebkitFlexShrink": 1,
+                        "color": "rgba(22,22,23,1.00)",
+                        "flexBasis": "0px",
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-Regular",
+                        "fontSize": "15px",
+                        "height": "100%",
+                        "msFlexNegative": 1,
+                        "msFlexPositive": 1,
+                        "msFlexPreferredSize": "0px",
+                        "paddingBottom": "0px",
+                        "paddingLeft": "0px",
+                        "paddingRight": "0px",
+                        "paddingTop": "0px",
+                      }
+                    }
+                    type="text"
+                  />
+                </div>
               </div>
               <div
                 className="css-view-1dbjc4n"

@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { InputLabel } from 'ui/components/InputLabel'
+import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { StyledInputContainer } from 'ui/components/inputs/StyledInputContainer'
 import { Spacer } from 'ui/theme'
 
@@ -29,7 +30,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
   }
 
   return (
-    <React.Fragment>
+    <InputContainer>
       {!!customProps.label && (
         <React.Fragment>
           <InputLabel htmlFor={largeTextInputID}>{customProps.label}</InputLabel>
@@ -51,7 +52,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
           nativeID={largeTextInputID}
         />
       </StyledInputContainer>
-    </React.Fragment>
+    </InputContainer>
   )
 }
 

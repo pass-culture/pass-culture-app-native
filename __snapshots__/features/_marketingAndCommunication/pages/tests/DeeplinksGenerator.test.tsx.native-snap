@@ -1012,64 +1012,78 @@ Array [
                 }
               />
               <View
-                height="small"
-                isDisabled={false}
-                isError={false}
-                isFocus={false}
                 style={
                   Array [
                     Object {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#CBCDD2",
-                      "borderRadius": 22,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 40,
-                      "paddingBottom": 4,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 4,
-                      "shadowColor": "#161617",
-                      "shadowOffset": Object {
-                        "height": 2,
-                        "width": 0,
-                      },
-                      "shadowOpacity": 0.15,
-                      "shadowRadius": 6,
+                      "alignItems": "flex-start",
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "maxWidth": 500,
                       "width": "100%",
                     },
                   ]
                 }
-                testID="styled-input-container"
               >
-                <TextInput
-                  editable={true}
-                  nativeID="testUuidV4"
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onFocus={[Function]}
-                  placeholder="entryId"
-                  placeholderTextColor="#696A6F"
+                <View
+                  height="small"
+                  isDisabled={false}
+                  isError={false}
+                  isFocus={false}
                   style={
                     Array [
                       Object {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "height": "100%",
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#CBCDD2",
+                        "borderRadius": 22,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "height": 40,
+                        "paddingBottom": 4,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 4,
+                        "shadowColor": "#161617",
+                        "shadowOffset": Object {
+                          "height": 2,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.15,
+                        "shadowRadius": 6,
+                        "width": "100%",
                       },
                     ]
                   }
-                />
+                  testID="styled-input-container"
+                >
+                  <TextInput
+                    editable={true}
+                    nativeID="testUuidV4"
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    placeholder="entryId"
+                    placeholderTextColor="#696A6F"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "height": "100%",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        },
+                      ]
+                    }
+                  />
+                </View>
               </View>
               <View
                 style={
@@ -1217,64 +1231,78 @@ Array [
                 }
               />
               <View
-                height="small"
-                isDisabled={false}
-                isError={false}
-                isFocus={false}
                 style={
                   Array [
                     Object {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#CBCDD2",
-                      "borderRadius": 22,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 40,
-                      "paddingBottom": 4,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 4,
-                      "shadowColor": "#161617",
-                      "shadowOffset": Object {
-                        "height": 2,
-                        "width": 0,
-                      },
-                      "shadowOpacity": 0.15,
-                      "shadowRadius": 6,
+                      "alignItems": "flex-start",
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "maxWidth": 500,
                       "width": "100%",
                     },
                   ]
                 }
-                testID="styled-input-container"
               >
-                <TextInput
-                  editable={true}
-                  nativeID="testUuidV4"
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onFocus={[Function]}
-                  placeholder="utm_campaign"
-                  placeholderTextColor="#696A6F"
+                <View
+                  height="small"
+                  isDisabled={false}
+                  isError={false}
+                  isFocus={false}
                   style={
                     Array [
                       Object {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "height": "100%",
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#CBCDD2",
+                        "borderRadius": 22,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "height": 40,
+                        "paddingBottom": 4,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 4,
+                        "shadowColor": "#161617",
+                        "shadowOffset": Object {
+                          "height": 2,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.15,
+                        "shadowRadius": 6,
+                        "width": "100%",
                       },
                     ]
                   }
-                />
+                  testID="styled-input-container"
+                >
+                  <TextInput
+                    editable={true}
+                    nativeID="testUuidV4"
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    placeholder="utm_campaign"
+                    placeholderTextColor="#696A6F"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "height": "100%",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        },
+                      ]
+                    }
+                  />
+                </View>
               </View>
               <View
                 style={
@@ -1325,64 +1353,78 @@ Array [
                 }
               />
               <View
-                height="small"
-                isDisabled={false}
-                isError={false}
-                isFocus={false}
                 style={
                   Array [
                     Object {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#CBCDD2",
-                      "borderRadius": 22,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 40,
-                      "paddingBottom": 4,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 4,
-                      "shadowColor": "#161617",
-                      "shadowOffset": Object {
-                        "height": 2,
-                        "width": 0,
-                      },
-                      "shadowOpacity": 0.15,
-                      "shadowRadius": 6,
+                      "alignItems": "flex-start",
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "maxWidth": 500,
                       "width": "100%",
                     },
                   ]
                 }
-                testID="styled-input-container"
               >
-                <TextInput
-                  editable={true}
-                  nativeID="testUuidV4"
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onFocus={[Function]}
-                  placeholder="utm_source"
-                  placeholderTextColor="#696A6F"
+                <View
+                  height="small"
+                  isDisabled={false}
+                  isError={false}
+                  isFocus={false}
                   style={
                     Array [
                       Object {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "height": "100%",
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#CBCDD2",
+                        "borderRadius": 22,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "height": 40,
+                        "paddingBottom": 4,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 4,
+                        "shadowColor": "#161617",
+                        "shadowOffset": Object {
+                          "height": 2,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.15,
+                        "shadowRadius": 6,
+                        "width": "100%",
                       },
                     ]
                   }
-                />
+                  testID="styled-input-container"
+                >
+                  <TextInput
+                    editable={true}
+                    nativeID="testUuidV4"
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    placeholder="utm_source"
+                    placeholderTextColor="#696A6F"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "height": "100%",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        },
+                      ]
+                    }
+                  />
+                </View>
               </View>
               <View
                 style={
@@ -1433,64 +1475,78 @@ Array [
                 }
               />
               <View
-                height="small"
-                isDisabled={false}
-                isError={false}
-                isFocus={false}
                 style={
                   Array [
                     Object {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#CBCDD2",
-                      "borderRadius": 22,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 40,
-                      "paddingBottom": 4,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 4,
-                      "shadowColor": "#161617",
-                      "shadowOffset": Object {
-                        "height": 2,
-                        "width": 0,
-                      },
-                      "shadowOpacity": 0.15,
-                      "shadowRadius": 6,
+                      "alignItems": "flex-start",
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "maxWidth": 500,
                       "width": "100%",
                     },
                   ]
                 }
-                testID="styled-input-container"
               >
-                <TextInput
-                  editable={true}
-                  nativeID="testUuidV4"
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onFocus={[Function]}
-                  placeholder="utm_medium"
-                  placeholderTextColor="#696A6F"
+                <View
+                  height="small"
+                  isDisabled={false}
+                  isError={false}
+                  isFocus={false}
                   style={
                     Array [
                       Object {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "height": "100%",
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#CBCDD2",
+                        "borderRadius": 22,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "height": 40,
+                        "paddingBottom": 4,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 4,
+                        "shadowColor": "#161617",
+                        "shadowOffset": Object {
+                          "height": 2,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.15,
+                        "shadowRadius": 6,
+                        "width": "100%",
                       },
                     ]
                   }
-                />
+                  testID="styled-input-container"
+                >
+                  <TextInput
+                    editable={true}
+                    nativeID="testUuidV4"
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    placeholder="utm_medium"
+                    placeholderTextColor="#696A6F"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "height": "100%",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        },
+                      ]
+                    }
+                  />
+                </View>
               </View>
               <View
                 style={
@@ -1541,64 +1597,78 @@ Array [
                 }
               />
               <View
-                height="small"
-                isDisabled={false}
-                isError={false}
-                isFocus={false}
                 style={
                   Array [
                     Object {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#CBCDD2",
-                      "borderRadius": 22,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 40,
-                      "paddingBottom": 4,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 4,
-                      "shadowColor": "#161617",
-                      "shadowOffset": Object {
-                        "height": 2,
-                        "width": 0,
-                      },
-                      "shadowOpacity": 0.15,
-                      "shadowRadius": 6,
+                      "alignItems": "flex-start",
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "maxWidth": 500,
                       "width": "100%",
                     },
                   ]
                 }
-                testID="styled-input-container"
               >
-                <TextInput
-                  editable={true}
-                  nativeID="testUuidV4"
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onFocus={[Function]}
-                  placeholder="utm_content"
-                  placeholderTextColor="#696A6F"
+                <View
+                  height="small"
+                  isDisabled={false}
+                  isError={false}
+                  isFocus={false}
                   style={
                     Array [
                       Object {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "height": "100%",
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#CBCDD2",
+                        "borderRadius": 22,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "height": 40,
+                        "paddingBottom": 4,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 4,
+                        "shadowColor": "#161617",
+                        "shadowOffset": Object {
+                          "height": 2,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.15,
+                        "shadowRadius": 6,
+                        "width": "100%",
                       },
                     ]
                   }
-                />
+                  testID="styled-input-container"
+                >
+                  <TextInput
+                    editable={true}
+                    nativeID="testUuidV4"
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    placeholder="utm_content"
+                    placeholderTextColor="#696A6F"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "height": "100%",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        },
+                      ]
+                    }
+                  />
+                </View>
               </View>
               <View
                 style={
@@ -1746,64 +1816,78 @@ Array [
                 }
               />
               <View
-                height="small"
-                isDisabled={false}
-                isError={false}
-                isFocus={false}
                 style={
                   Array [
                     Object {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#CBCDD2",
-                      "borderRadius": 22,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 40,
-                      "paddingBottom": 4,
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                      "paddingTop": 4,
-                      "shadowColor": "#161617",
-                      "shadowOffset": Object {
-                        "height": 2,
-                        "width": 0,
-                      },
-                      "shadowOpacity": 0.15,
-                      "shadowRadius": 6,
+                      "alignItems": "flex-start",
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "maxWidth": 500,
                       "width": "100%",
                     },
                   ]
                 }
-                testID="styled-input-container"
               >
-                <TextInput
-                  editable={true}
-                  nativeID="testUuidV4"
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onFocus={[Function]}
-                  placeholder="amv"
-                  placeholderTextColor="#696A6F"
+                <View
+                  height="small"
+                  isDisabled={false}
+                  isError={false}
+                  isFocus={false}
                   style={
                     Array [
                       Object {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-Regular",
-                        "fontSize": 15,
-                        "height": "100%",
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#CBCDD2",
+                        "borderRadius": 22,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "height": 40,
+                        "paddingBottom": 4,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 4,
+                        "shadowColor": "#161617",
+                        "shadowOffset": Object {
+                          "height": 2,
+                          "width": 0,
+                        },
+                        "shadowOpacity": 0.15,
+                        "shadowRadius": 6,
+                        "width": "100%",
                       },
                     ]
                   }
-                />
+                  testID="styled-input-container"
+                >
+                  <TextInput
+                    editable={true}
+                    nativeID="testUuidV4"
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    placeholder="amv"
+                    placeholderTextColor="#696A6F"
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-Regular",
+                          "fontSize": 15,
+                          "height": "100%",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        },
+                      ]
+                    }
+                  />
+                </View>
               </View>
               <View
                 style={

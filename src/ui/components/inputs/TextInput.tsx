@@ -3,6 +3,7 @@ import { TextInput as RNTextInput } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { InputLabel } from 'ui/components/InputLabel'
+import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
 import { Spacer } from 'ui/theme'
@@ -37,7 +38,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
   }
 
   return (
-    <React.Fragment>
+    <InputContainer>
       {!!customProps.label && (
         <React.Fragment>
           <LabelContainer>
@@ -60,7 +61,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
           onBlur={onBlur}
         />
       </StyledInputContainer>
-    </React.Fragment>
+    </InputContainer>
   )
 }
 
