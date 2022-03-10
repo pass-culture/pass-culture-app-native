@@ -19,7 +19,7 @@ import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
-import { Email } from 'ui/svg/icons/Email'
+import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Spacer, Typo } from 'ui/theme'
 import { A } from 'ui/web/link/A'
 
@@ -81,7 +81,7 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
             <ButtonTertiary
               wording={t`Consulter notre centre d'aide`}
               onPress={onConsultHelpSupport}
-              icon={Email}
+              icon={ExternalSite}
             />
           </A>
         </Description>
