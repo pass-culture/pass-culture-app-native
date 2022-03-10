@@ -3,15 +3,12 @@
 import range from 'lodash/range'
 import React, { FunctionComponent, useCallback, useMemo, useRef, useState } from 'react'
 import { FlatList, ListRenderItem, ListRenderItemInfo } from 'react-native'
-import webStyled from 'styled-components'
 import styled, { useTheme } from 'styled-components/native'
 
 import { ScrollButtonForNotTouchDevice } from 'ui/components/buttons/ScrollButtonForNotTouchDevice'
 import { BicolorArrowLeft as DefaultBicolorArrowLeft } from 'ui/svg/icons/BicolorArrowLeft'
 import { BicolorArrowRight as DefaultBicolorArrowRight } from 'ui/svg/icons/BicolorArrowRight'
 import { getSpacing } from 'ui/theme'
-import { Li } from 'ui/web/list/Li'
-import { Ul } from 'ui/web/list/Ul'
 type ItemDimensions = { width: number; height: number }
 
 type Direction = 'previous' | 'next'
@@ -145,29 +142,26 @@ export const Playlist: FunctionComponent<Props> = ({
           <BicolorArrowRight />
         </ScrollButtonForNotTouchDevice>
       ) : null}
-      <StyledUl>
-        <FlatList
-          onLayout={({ nativeEvent }) => {
-            setPlaylistWidth(nativeEvent.layout.width)
-          }}
-          testID={testID}
-          ref={flatListRef}
-          scrollEnabled={isTouch}
-          data={dataWithHeaderAndFooter}
-          renderItem={renderItemWithHeaderAndFooter}
-          CellRendererComponent={StyledLi}
-          keyExtractor={keyExtractorWithHeaderAndFooter}
-          getItemLayout={getItemLayout}
-          showsHorizontalScrollIndicator={false}
-          scrollEventThrottle={200}
-          horizontal={true}
-          ItemSeparatorComponent={ItemSeparatorComponent}
-          ListHeaderComponent={HorizontalMargin}
-          ListFooterComponent={HorizontalMargin}
-          onEndReached={onEndReached}
-          onEndReachedThreshold={0.2}
-        />
-      </StyledUl>
+      <FlatList
+        onLayout={({ nativeEvent }) => {
+          setPlaylistWidth(nativeEvent.layout.width)
+        }}
+        testID={testID}
+        ref={flatListRef}
+        scrollEnabled={isTouch}
+        data={dataWithHeaderAndFooter}
+        renderItem={renderItemWithHeaderAndFooter}
+        keyExtractor={keyExtractorWithHeaderAndFooter}
+        getItemLayout={getItemLayout}
+        showsHorizontalScrollIndicator={false}
+        scrollEventThrottle={200}
+        horizontal={true}
+        ItemSeparatorComponent={ItemSeparatorComponent}
+        ListHeaderComponent={HorizontalMargin}
+        ListFooterComponent={HorizontalMargin}
+        onEndReached={onEndReached}
+        onEndReachedThreshold={0.2}
+      />
     </FlatListContainer>
   )
 }
@@ -199,12 +193,3 @@ const BicolorArrowLeft = styled(DefaultBicolorArrowLeft).attrs(({ theme }) => ({
 const BicolorArrowRight = styled(DefaultBicolorArrowRight).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
-
-const StyledUl = webStyled(Ul)({
-  flexDirection: 'column',
-})
-
-const StyledLi = webStyled(Li)({
-  display: 'flex',
-  flexDirection: 'row',
-})
