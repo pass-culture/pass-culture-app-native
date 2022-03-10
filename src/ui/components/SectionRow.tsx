@@ -48,6 +48,7 @@ export function SectionRow(props: SectionRowProps) {
     <TouchableOpacity
       activeOpacity={props.onPress ? activeOpacity : 1}
       onPress={props.onPress}
+      disabled={!props.onPress}
       {...accessibilityAndTestId(accessibilityLabel)}>
       <View style={[styles.container, props.style]}>
         {!!Icon && (

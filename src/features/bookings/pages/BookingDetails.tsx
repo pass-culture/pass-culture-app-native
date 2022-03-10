@@ -164,6 +164,7 @@ export function BookingDetails() {
   return (
     <Container>
       <Helmet title={helmetTitle} />
+      <BookingDetailsHeader headerTransition={headerTransition} title={offer.name} />
       <ScrollView
         onScroll={onScroll}
         scrollEventThrottle={20}
@@ -239,7 +240,6 @@ export function BookingDetails() {
         bookingTitle={offer.name}
         onDismiss={hideArchiveModal}
       />
-      <BookingDetailsHeader headerTransition={headerTransition} title={offer.name} />
     </Container>
   )
 }
