@@ -32,6 +32,7 @@ exports[`<TextInput /> should render correctly when NOT focused 1`] = `
       },
     ]
   }
+  testID="styled-input-container"
 >
   <TextInput
     editable={true}

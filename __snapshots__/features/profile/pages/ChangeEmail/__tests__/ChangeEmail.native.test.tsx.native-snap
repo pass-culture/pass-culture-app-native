@@ -386,6 +386,7 @@ Array [
                 },
               ]
             }
+            testID="styled-input-container"
           >
             <TextInput
               autoCapitalize="none"
@@ -519,6 +520,7 @@ Array [
                 },
               ]
             }
+            testID="styled-input-container"
           >
             <TextInput
               accessibilityLabel="Mot de passe"
@@ -1019,6 +1021,7 @@ Array [
                 },
               ]
             }
+            testID="styled-input-container"
           >
             <TextInput
               autoCapitalize="none"
@@ -1160,6 +1163,7 @@ Array [
                 },
               ]
             }
+            testID="styled-input-container"
           >
             <TextInput
               accessibilityLabel="Mot de passe"

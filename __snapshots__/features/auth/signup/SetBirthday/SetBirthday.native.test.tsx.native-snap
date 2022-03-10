@@ -162,6 +162,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
           },
         ]
       }
+      testID="styled-input-container"
     >
       <Text
         nativeID="testUuidV4"

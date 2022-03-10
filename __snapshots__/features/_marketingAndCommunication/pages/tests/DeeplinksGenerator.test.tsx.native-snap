@@ -1042,6 +1042,7 @@ Array [
                     },
                   ]
                 }
+                testID="styled-input-container"
               >
                 <TextInput
                   editable={true}
@@ -1246,6 +1247,7 @@ Array [
                     },
                   ]
                 }
+                testID="styled-input-container"
               >
                 <TextInput
                   editable={true}
@@ -1353,6 +1355,7 @@ Array [
                     },
                   ]
                 }
+                testID="styled-input-container"
               >
                 <TextInput
                   editable={true}
@@ -1460,6 +1463,7 @@ Array [
                     },
                   ]
                 }
+                testID="styled-input-container"
               >
                 <TextInput
                   editable={true}
@@ -1567,6 +1571,7 @@ Array [
                     },
                   ]
                 }
+                testID="styled-input-container"
               >
                 <TextInput
                   editable={true}
@@ -1771,6 +1776,7 @@ Array [
                     },
                   ]
                 }
+                testID="styled-input-container"
               >
                 <TextInput
                   editable={true}

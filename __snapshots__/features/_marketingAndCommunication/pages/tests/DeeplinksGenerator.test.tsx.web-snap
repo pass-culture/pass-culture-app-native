@@ -1217,6 +1217,7 @@ Array [
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="styled-input-container"
                 style={
                   Object {
                     "WebkitAlignItems": "center",
@@ -1447,6 +1448,7 @@ Array [
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="styled-input-container"
                 style={
                   Object {
                     "WebkitAlignItems": "center",
@@ -1570,6 +1572,7 @@ Array [
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="styled-input-container"
                 style={
                   Object {
                     "WebkitAlignItems": "center",
@@ -1693,6 +1696,7 @@ Array [
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="styled-input-container"
                 style={
                   Object {
                     "WebkitAlignItems": "center",
@@ -1816,6 +1820,7 @@ Array [
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="styled-input-container"
                 style={
                   Object {
                     "WebkitAlignItems": "center",
@@ -2046,6 +2051,7 @@ Array [
               />
               <div
                 className="css-view-1dbjc4n"
+                data-testid="styled-input-container"
                 style={
                   Object {
                     "WebkitAlignItems": "center",

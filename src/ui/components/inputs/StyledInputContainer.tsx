@@ -21,6 +21,7 @@ const defaultProps: Props = {
 
 export const StyledInputContainer: React.FC<Props> = (props) => (
   <StyledView
+    testID="styled-input-container"
     height={props.inputHeight}
     isFocus={props.isFocus}
     isError={props.isError}

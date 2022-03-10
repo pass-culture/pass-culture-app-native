@@ -295,6 +295,7 @@ exports[`<SetName/> should render correctly 1`] = `
                     },
                   ]
                 }
+                testID="styled-input-container"
               >
                 <TextInput
                   editable={true}
@@ -417,6 +418,7 @@ exports[`<SetName/> should render correctly 1`] = `
                     },
                   ]
                 }
+                testID="styled-input-container"
               >
                 <TextInput
                   editable={true}
