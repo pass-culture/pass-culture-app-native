@@ -45,7 +45,7 @@ exports[`OfferCategory renders correctly 1`] = `
     }
   />
   <dd
-    className="sc-bdvvtL sc-hKwDye kxtmOw dSUBTz"
+    className="sc-bdvvtL sc-hKwDye kxtmOw kOBXq"
     data-testid="caption-undefined"
   >
     Livre ou carte lecture

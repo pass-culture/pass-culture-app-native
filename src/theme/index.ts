@@ -28,6 +28,7 @@ interface Typography {
   fontSize: number
   lineHeight: string
   fontWeight?: number
+  color: ColorsEnum
 }
 
 export interface AppThemeType {
@@ -332,41 +333,49 @@ export const theme: AppThemeType = {
       fontFamily: 'Montserrat-Medium',
       fontSize: getSpacing(9.5),
       lineHeight: getSpacingString(12),
+      color: ColorsEnum.BLACK,
     },
     title1: {
       fontFamily: 'Montserrat-Black',
       fontSize: getSpacing(6),
       lineHeight: getSpacingString(9),
+      color: ColorsEnum.BLACK,
     },
     title2: {
       fontFamily: 'Montserrat-Medium',
       fontSize: getSpacing(6),
       lineHeight: getSpacingString(7),
+      color: ColorsEnum.BLACK,
     },
     title3: {
       fontFamily: 'Montserrat-Bold',
       fontSize: getSpacing(5),
       lineHeight: getSpacingString(6),
+      color: ColorsEnum.BLACK,
     },
     title4: {
       fontFamily: 'Montserrat-Medium',
       fontSize: getSpacing(4.5),
       lineHeight: getSpacingString(5.5),
+      color: ColorsEnum.BLACK,
     },
     buttonText: {
       fontFamily: 'Montserrat-Bold',
       fontSize: getSpacing(3.75),
       lineHeight: getSpacingString(5),
+      color: ColorsEnum.BLACK,
     },
     body: {
       fontFamily: 'Montserrat-Regular',
       fontSize: getSpacing(3.75),
       lineHeight: getSpacingString(5),
+      color: ColorsEnum.BLACK,
     },
     caption: {
       fontFamily: 'Montserrat-SemiBold',
       fontSize: getSpacing(3),
       lineHeight: getSpacingString(4),
+      color: ColorsEnum.BLACK,
     },
   },
   colors: {

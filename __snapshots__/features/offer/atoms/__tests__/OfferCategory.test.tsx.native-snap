@@ -36,7 +36,7 @@ exports[`OfferCategory renders correctly 1`] = `
     }
   />
   <Text
-    className="sc-gsDKAQ dZPdWA"
+    className="sc-gsDKAQ hUUtnF"
     testID="caption-undefined"
   >
     Livre ou carte lecture

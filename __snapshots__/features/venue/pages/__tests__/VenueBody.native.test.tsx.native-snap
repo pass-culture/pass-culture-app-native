@@ -266,7 +266,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
             </View>
           </View>
           <Text
-            className="sc-kDTinF bpLdCk"
+            className="sc-kDTinF lbcaXF"
             numberOfLines={1}
           >
             1 boulevard Poissonnière, 75000 Paris
@@ -290,7 +290,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
         <Text
           adjustsFontSizeToFit={true}
           allowFontScaling={false}
-          className="sc-pVTFL qa-doJ"
+          className="sc-pVTFL bNqDlM"
           numberOfLines={2}
           testID="venueTitle"
         >

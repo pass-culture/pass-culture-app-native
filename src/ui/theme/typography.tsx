@@ -22,7 +22,6 @@ export const getHeadingAttrs = (level: number) => ({
 
 const Hero = styled(RNText)(({ theme }) => ({
   ...theme.typography.hero,
-  color: theme.colors.black,
 }))
 
 const Title1: React.FC<TextProps> = (props) => {
@@ -40,7 +39,6 @@ const StyledTitle1 = styled(RNText)<{
 }>(({ fontSize, theme }) => ({
   ...theme.typography.title1,
   fontSize: fontSize ?? theme.typography.title1.fontSize,
-  color: theme.colors.black,
 }))
 
 const Title2: React.FC<TextProps> = (props) => {
@@ -57,34 +55,29 @@ const StyledTitle2 = styled(RNText)<{
 }>(({ fontSize, theme }) => ({
   ...theme.typography.title2,
   fontSize: fontSize ?? theme.typography.title2.fontSize,
-  color: theme.colors.black,
 }))
 
 const Title3 = styled(RNText).attrs(() => getHeadingAttrs(3))(({ theme }) => ({
   ...theme.typography.title3,
-  color: theme.colors.black,
 }))
 
 const Title4 = styled(RNText).attrs(() => getHeadingAttrs(4))(({ theme }) => ({
   ...theme.typography.title4,
-  color: theme.colors.black,
 }))
 
 const ButtonText = styled(RNText)<{ shrink?: boolean }>(({ shrink, theme }) => ({
   fontFamily: theme.typography.buttonText.fontFamily,
   fontSize: theme.typography.buttonText.fontSize,
-  color: theme.colors.black,
+  color: theme.typography.buttonText.color,
   ...(!shrink ? { lineHeight: theme.typography.buttonText.lineHeight } : { flexShrink: 1 }),
 }))
 
 const Body = styled(RNText)(({ theme }) => ({
   ...theme.typography.body,
-  color: theme.colors.black,
 }))
 
 const Caption = styled(RNText)(({ theme }) => ({
   ...theme.typography.caption,
-  color: theme.colors.black,
 }))
 
 export const Typo = {
