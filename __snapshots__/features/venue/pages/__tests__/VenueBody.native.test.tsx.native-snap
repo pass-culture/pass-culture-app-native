@@ -2393,7 +2393,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 }
               >
                 <View
-                  fill="#15884f"
+                  fill="#696A6F"
                   height={24}
                   testID="invalidTestId"
                   width={24}
@@ -2514,7 +2514,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 }
               >
                 <View
-                  fill="#15884f"
+                  fill="#696A6F"
                   height={24}
                   testID="invalidTestId"
                   width={24}
@@ -2635,7 +2635,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                 }
               >
                 <View
-                  fill="#15884f"
+                  fill="#696A6F"
                   height={24}
                   testID="invalidTestId"
                   width={24}

@@ -1246,7 +1246,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     >
                                       <View
-                                        fill="#15884f"
+                                        fill="#696A6F"
                                         height={24}
                                         testID="invalidTestId"
                                         width={24}
@@ -1487,7 +1487,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     >
                                       <View
-                                        fill="#15884f"
+                                        fill="#696A6F"
                                         height={24}
                                         testID="invalidTestId"
                                         width={24}
@@ -3907,7 +3907,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     >
                                       <View
-                                        fill="#15884f"
+                                        fill="#696A6F"
                                         height={24}
                                         testID="invalidTestId"
                                         width={24}
@@ -4148,7 +4148,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                       }
                                     >
                                       <View
-                                        fill="#15884f"
+                                        fill="#696A6F"
                                         height={24}
                                         testID="invalidTestId"
                                         width={24}
