@@ -167,9 +167,11 @@ Object {
             style="width: 12px;"
           />
           <div
+            aria-checked="false"
             aria-label="Mettre en favoris"
             class="css-view-1dbjc4n"
             data-testid="Mettre en favoris"
+            role="checkbox"
             style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
             tabindex="0"
           >
@@ -394,9 +396,11 @@ Object {
           style="width: 12px;"
         />
         <div
+          aria-checked="false"
           aria-label="Mettre en favoris"
           class="css-view-1dbjc4n"
           data-testid="Mettre en favoris"
+          role="checkbox"
           style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
           tabindex="0"
         >

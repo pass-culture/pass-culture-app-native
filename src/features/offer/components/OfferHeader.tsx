@@ -139,6 +139,8 @@ export const OfferHeader: React.FC<Props> = (props) => {
             iconName={favorite ? 'favorite-filled' : 'favorite'}
             onPress={pressFavorite}
             testID={t`Mettre en favoris`}
+            accessibilityRole="checkbox"
+            accessibilityState={{ checked: !!favorite }}
           />
           <Spacer.Row numberOfSpaces={6} />
         </Row>
