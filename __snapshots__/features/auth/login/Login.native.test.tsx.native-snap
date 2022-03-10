@@ -155,16 +155,15 @@ exports[`<Login/> should show email error message WHEN signin has failed because
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -310,19 +306,19 @@
-                  ]
+@@ -311,18 +307,18 @@
                 }
               />
               <View
                 height=\\"small\\"
+                isDisabled={false}
 -               isError={false}
 +               isError={true}
                 isFocus={false}
-                isInputDisabled={false}
                 style={
                   Array [
                     Object {
@@ -411,16 +410,15 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
               numberOfSpaces={7}
               style={
                 Array [
-@@ -310,19 +368,19 @@
-                  ]
+@@ -311,18 +369,18 @@
                 }
               />
               <View
                 height=\\"small\\"
+                isDisabled={false}
 -               isError={false}
 +               isError={true}
                 isFocus={false}
-                isInputDisabled={false}
                 style={
                   Array [
                     Object {
@@ -446,16 +444,15 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
             </View>
             <View
               numberOfSpaces={6}
-@@ -451,19 +509,19 @@
-                  ]
+@@ -452,18 +510,18 @@
                 }
               />
               <View
                 height=\\"small\\"
+                isDisabled={false}
 -               isError={false}
 +               isError={true}
                 isFocus={false}
-                isInputDisabled={false}
                 style={
                   Array [
                     Object {
@@ -653,16 +650,15 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
               numberOfSpaces={7}
               style={
                 Array [
-@@ -310,19 +368,19 @@
-                  ]
+@@ -311,18 +369,18 @@
                 }
               />
               <View
                 height=\\"small\\"
+                isDisabled={false}
 -               isError={false}
 +               isError={true}
                 isFocus={false}
-                isInputDisabled={false}
                 style={
                   Array [
                     Object {
@@ -688,16 +684,15 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
             </View>
             <View
               numberOfSpaces={6}
-@@ -451,19 +509,19 @@
-                  ]
+@@ -452,18 +510,18 @@
                 }
               />
               <View
                 height=\\"small\\"
+                isDisabled={false}
 -               isError={false}
 +               isError={true}
                 isFocus={false}
-                isInputDisabled={false}
                 style={
                   Array [
                     Object {
@@ -895,16 +890,15 @@ exports[`<Login/> should show specific error message when signin rate limit is e
               numberOfSpaces={7}
               style={
                 Array [
-@@ -310,19 +368,19 @@
-                  ]
+@@ -311,18 +369,18 @@
                 }
               />
               <View
                 height=\\"small\\"
+                isDisabled={false}
 -               isError={false}
 +               isError={true}
                 isFocus={false}
-                isInputDisabled={false}
                 style={
                   Array [
                     Object {
@@ -930,16 +924,15 @@ exports[`<Login/> should show specific error message when signin rate limit is e
             </View>
             <View
               numberOfSpaces={6}
-@@ -451,19 +509,19 @@
-                  ]
+@@ -452,18 +510,18 @@
                 }
               />
               <View
                 height=\\"small\\"
+                isDisabled={false}
 -               isError={false}
 +               isError={true}
                 isFocus={false}
-                isInputDisabled={false}
                 style={
                   Array [
                     Object {

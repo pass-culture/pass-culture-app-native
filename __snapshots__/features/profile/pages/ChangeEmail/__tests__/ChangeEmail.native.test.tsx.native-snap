@@ -365,9 +365,9 @@ Array [
           />
           <View
             height="small"
+            isDisabled={true}
             isError={false}
             isFocus={false}
-            isInputDisabled={true}
             style={
               Array [
                 Object {
@@ -499,9 +499,9 @@ Array [
           />
           <View
             height="small"
+            isDisabled={true}
             isError={false}
             isFocus={false}
-            isInputDisabled={true}
             style={
               Array [
                 Object {
@@ -992,9 +992,9 @@ Array [
           />
           <View
             height="small"
+            isDisabled={false}
             isError={false}
             isFocus={false}
-            isInputDisabled={false}
             style={
               Array [
                 Object {
@@ -1134,9 +1134,9 @@ Array [
           />
           <View
             height="small"
+            isDisabled={false}
             isError={false}
             isFocus={false}
-            isInputDisabled={false}
             style={
               Array [
                 Object {

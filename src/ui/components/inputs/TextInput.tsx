@@ -50,7 +50,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
       <StyledInputContainer
         isFocus={isFocus}
         isError={customProps.isError}
-        isInputDisabled={customProps.disabled}
+        isDisabled={customProps.disabled}
         style={customProps.containerStyle}>
         <BaseTextInput
           {...nativeProps}

@@ -1013,9 +1013,9 @@ Array [
               />
               <View
                 height="small"
+                isDisabled={false}
                 isError={false}
                 isFocus={false}
-                isInputDisabled={false}
                 style={
                   Array [
                     Object {
@@ -1218,9 +1218,9 @@ Array [
               />
               <View
                 height="small"
+                isDisabled={false}
                 isError={false}
                 isFocus={false}
-                isInputDisabled={false}
                 style={
                   Array [
                     Object {
@@ -1326,9 +1326,9 @@ Array [
               />
               <View
                 height="small"
+                isDisabled={false}
                 isError={false}
                 isFocus={false}
-                isInputDisabled={false}
                 style={
                   Array [
                     Object {
@@ -1434,9 +1434,9 @@ Array [
               />
               <View
                 height="small"
+                isDisabled={false}
                 isError={false}
                 isFocus={false}
-                isInputDisabled={false}
                 style={
                   Array [
                     Object {
@@ -1542,9 +1542,9 @@ Array [
               />
               <View
                 height="small"
+                isDisabled={false}
                 isError={false}
                 isFocus={false}
-                isInputDisabled={false}
                 style={
                   Array [
                     Object {
@@ -1747,9 +1747,9 @@ Array [
               />
               <View
                 height="small"
+                isDisabled={false}
                 isError={false}
                 isFocus={false}
-                isInputDisabled={false}
                 style={
                   Array [
                     Object {

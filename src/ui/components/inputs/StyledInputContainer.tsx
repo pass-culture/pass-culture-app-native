@@ -7,8 +7,8 @@ import { getShadow, getSpacing, padding } from 'ui/theme'
 type Props = {
   isError?: boolean
   isFocus?: boolean
+  isDisabled?: boolean
   inputHeight?: 'small' | 'regular' | 'tall'
-  isInputDisabled?: boolean
   style?: ViewStyle
 }
 
@@ -16,7 +16,7 @@ const defaultProps: Props = {
   isError: false,
   isFocus: false,
   inputHeight: 'small',
-  isInputDisabled: false,
+  isDisabled: false,
 }
 
 export const StyledInputContainer: React.FC<Props> = (props) => (
@@ -25,7 +25,7 @@ export const StyledInputContainer: React.FC<Props> = (props) => (
     height={props.inputHeight}
     isFocus={props.isFocus}
     isError={props.isError}
-    isInputDisabled={props.isInputDisabled}
+    isDisabled={props.isDisabled}
     style={props.style}>
     {props.children}
   </StyledView>
@@ -37,11 +37,11 @@ const StyledView = styled(View)<{
   height: Props['inputHeight']
   isFocus?: boolean
   isError?: boolean
-  isInputDisabled?: boolean
-}>(({ height, isFocus, isError, isInputDisabled, theme }) => {
+  isDisabled?: boolean
+}>(({ height, isFocus, isError, isDisabled, theme }) => {
   let shadows = {}
   // ACCESSIBILITY : on the web, it is better to have no shadow to increase the contrast
-  if (!isInputDisabled && Platform.OS !== 'web') {
+  if (!isDisabled && Platform.OS !== 'web') {
     shadows = getShadow({
       shadowOffset: { width: 0, height: 2 },
       shadowRadius: 6,
@@ -58,14 +58,14 @@ const StyledView = styled(View)<{
     flexDirection: 'row',
     borderStyle: 'solid',
     borderWidth: '1px',
-    borderColor: isInputDisabled
+    borderColor: isDisabled
       ? undefined
       : isFocus
       ? theme.colors.primary
       : isError
       ? theme.colors.error
       : theme.colors.greyMedium,
-    backgroundColor: isInputDisabled ? theme.colors.greyLight : theme.colors.white,
+    backgroundColor: isDisabled ? theme.colors.greyLight : theme.colors.white,
     ...(height === 'tall'
       ? {
           ...padding(2, 3),

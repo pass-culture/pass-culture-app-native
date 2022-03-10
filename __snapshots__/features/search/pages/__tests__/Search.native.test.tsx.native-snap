@@ -62,9 +62,9 @@ exports[`Search component should render correctly 1`] = `
   >
     <View
       height="regular"
+      isDisabled={false}
       isError={false}
       isFocus={false}
-      isInputDisabled={false}
       style={
         Array [
           Object {

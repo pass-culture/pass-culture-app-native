@@ -61,7 +61,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
       <StyledInputContainer
         isFocus={isFocus}
         isError={customProps.isError}
-        isInputDisabled={customProps.disabled}>
+        isDisabled={customProps.disabled}>
         <StyledBaseTextInput
           {...nativeProps}
           nativeID={passwordInputID}
