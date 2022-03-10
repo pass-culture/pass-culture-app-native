@@ -36,7 +36,7 @@ Object {
             style="height: 8px;"
           />
           <dd
-            class="sc-iwjdpV sc-iJKOTD cNhjYM jgrnBQ"
+            class="sc-iwjdpV sc-iJKOTD cNhjYM fwkwVJ"
             data-testid="caption-undefined"
           >
             Abonnements concerts
@@ -70,7 +70,7 @@ Object {
             style="height: 8px;"
           />
           <dd
-            class="sc-iwjdpV sc-iJKOTD cNhjYM jgrnBQ"
+            class="sc-iwjdpV sc-iJKOTD cNhjYM fwkwVJ"
             data-testid="caption-iconPrice"
           >
             28 €
@@ -115,7 +115,7 @@ Object {
           style="height: 8px;"
         />
         <dd
-          class="sc-iwjdpV sc-iJKOTD cNhjYM jgrnBQ"
+          class="sc-iwjdpV sc-iJKOTD cNhjYM fwkwVJ"
           data-testid="caption-undefined"
         >
           Abonnements concerts
@@ -149,7 +149,7 @@ Object {
           style="height: 8px;"
         />
         <dd
-          class="sc-iwjdpV sc-iJKOTD cNhjYM jgrnBQ"
+          class="sc-iwjdpV sc-iJKOTD cNhjYM fwkwVJ"
           data-testid="caption-iconPrice"
         >
           28 €

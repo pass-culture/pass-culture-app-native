@@ -31,7 +31,7 @@ exports[`<SectionWithSwitch/> should display different if isDesktopViewport or w
       }
     >
       <label
-        className=\\"sc-bdvvtL lavEYF\\""
+        className=\\"sc-bdvvtL gQnzaU\\""
 `;
 
 exports[`<SectionWithSwitch/> should display different if isDesktopViewport or with toggleLabel 2`] = `
@@ -65,7 +65,7 @@ exports[`<SectionWithSwitch/> should display different if isDesktopViewport or w
       }
     >
       <label
-        className=\\"sc-bdvvtL lavEYF\\"
+        className=\\"sc-bdvvtL gQnzaU\\"
 @@ -63,13 +73,27 @@
           \\"WebkitFlexDirection\\": \\"row\\",
           \\"alignItems\\": \\"center\\",

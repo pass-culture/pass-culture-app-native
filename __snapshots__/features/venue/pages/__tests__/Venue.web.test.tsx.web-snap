@@ -362,7 +362,7 @@ Object {
                     </div>
                   </dt>
                   <dd
-                    class="sc-cxpSdN sc-cidDSM gueCwc dhhYqK"
+                    class="sc-cxpSdN sc-cidDSM gueCwc cwFhwv"
                   >
                     1 boulevard Poissonnière, 75000 Paris
                   </dd>
@@ -377,7 +377,7 @@ Object {
                   Lieu
                 </dt>
                 <dd
-                  class="sc-cxpSdN sc-gWXbKe gueCwc emKhhB"
+                  class="sc-cxpSdN sc-gWXbKe gueCwc iDHCAM"
                   data-testid="venueTitle"
                 >
                   Le Petit Rintintin 1
@@ -1854,7 +1854,7 @@ Object {
                   </div>
                 </dt>
                 <dd
-                  class="sc-cxpSdN sc-cidDSM gueCwc dhhYqK"
+                  class="sc-cxpSdN sc-cidDSM gueCwc cwFhwv"
                 >
                   1 boulevard Poissonnière, 75000 Paris
                 </dd>
@@ -1869,7 +1869,7 @@ Object {
                 Lieu
               </dt>
               <dd
-                class="sc-cxpSdN sc-gWXbKe gueCwc emKhhB"
+                class="sc-cxpSdN sc-gWXbKe gueCwc iDHCAM"
                 data-testid="venueTitle"
               >
                 Le Petit Rintintin 1

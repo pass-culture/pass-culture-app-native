@@ -2065,6 +2065,7 @@ Array [
           style={
             Array [
               Object {
+                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 18,
                 "lineHeight": 22,

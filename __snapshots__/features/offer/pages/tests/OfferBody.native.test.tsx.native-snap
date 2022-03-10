@@ -190,14 +190,14 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
             </View>
           </View>
           <Text
-            className="sc-gsDKAQ icLopp"
+            className="sc-gsDKAQ igpnIQ"
             numberOfLines={1}
           >
             Cinéma de la fin, 
           </Text>
         </View>
         <Text
-          className="sc-dkPtRN hYPHvu"
+          className="sc-dkPtRN jaTrwj"
           isDigital={false}
           numberOfLines={1}
         >
@@ -231,7 +231,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         <Text
           adjustsFontSizeToFit={true}
           allowFontScaling={false}
-          className="sc-kDTinF gpnoaP"
+          className="sc-kDTinF fGTMCa"
           numberOfLines={3}
           testID="offerTitle"
         >
@@ -303,7 +303,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
             }
           />
           <Text
-            className="sc-pVTFL koiogb"
+            className="sc-pVTFL boSyeW"
             testID="caption-undefined"
           >
             Événement et atelier patrimoine
@@ -358,7 +358,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
             }
           />
           <Text
-            className="sc-pVTFL koiogb"
+            className="sc-pVTFL boSyeW"
             testID="caption-iconDuo"
           >
             À deux !
@@ -414,7 +414,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
             }
           />
           <Text
-            className="sc-pVTFL koiogb"
+            className="sc-pVTFL boSyeW"
             testID="caption-iconPrice"
           >
             Dès 24 € / place
@@ -573,12 +573,12 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
         }
       >
         <Text
-          className="sc-iqseJM kWpAjO"
+          className="sc-iqseJM zJfsn"
         >
           Quand ?
         </Text>
         <Text
-          className="sc-egiyK cqzGSO"
+          className="sc-egiyK kncMBf"
         >
           Du 2 au 17 mars 2021
         </Text>

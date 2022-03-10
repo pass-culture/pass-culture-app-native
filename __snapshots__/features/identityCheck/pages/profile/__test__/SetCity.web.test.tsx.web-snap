@@ -88,7 +88,7 @@ Object {
                       style="height: 20px;"
                     />
                     <label
-                      class="sc-jrQzAO gESpwC"
+                      class="sc-jrQzAO ewNTkL"
                       for="testUuidV4"
                     >
                       Indique ton code postal et choisis ta ville
@@ -277,7 +277,7 @@ Object {
                     style="height: 20px;"
                   />
                   <label
-                    class="sc-jrQzAO gESpwC"
+                    class="sc-jrQzAO ewNTkL"
                     for="testUuidV4"
                   >
                     Indique ton code postal et choisis ta ville

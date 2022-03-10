@@ -56,7 +56,7 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
       }
     />
     <Text
-      className="sc-hKwDye dSUBTz"
+      className="sc-hKwDye kOBXq"
       testID="caption-undefined"
     >
       Abonnements concerts
@@ -112,7 +112,7 @@ exports[`<OfferIconCaptions /> should match snapshot 1`] = `
       }
     />
     <Text
-      className="sc-hKwDye dSUBTz"
+      className="sc-hKwDye kOBXq"
       testID="caption-iconPrice"
     >
       28 €

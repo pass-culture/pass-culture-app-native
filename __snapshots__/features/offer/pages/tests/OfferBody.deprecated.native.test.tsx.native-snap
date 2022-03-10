@@ -503,14 +503,14 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                   </View>
                                 </View>
                                 <Text
-                                  className="sc-hKwDye lbLiMe"
+                                  className="sc-hKwDye ibaJP"
                                   numberOfLines={1}
                                 >
                                   PATHE BEAUGRENELLE, 
                                 </Text>
                               </View>
                               <Text
-                                className="sc-eCImPb fxfBMj"
+                                className="sc-eCImPb ePiUGi"
                                 isDigital={true}
                                 numberOfLines={1}
                               >
@@ -544,7 +544,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                               <Text
                                 adjustsFontSizeToFit={true}
                                 allowFontScaling={false}
-                                className="sc-kDTinF gpnoaP"
+                                className="sc-kDTinF fGTMCa"
                                 numberOfLines={3}
                                 testID="offerTitle"
                               >
@@ -616,7 +616,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                   }
                                 />
                                 <Text
-                                  className="sc-gKclnd AqbsW"
+                                  className="sc-gKclnd bgJhUj"
                                   testID="caption-undefined"
                                 >
                                   Cinéma plein air
@@ -672,7 +672,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                                   }
                                 />
                                 <Text
-                                  className="sc-gKclnd AqbsW"
+                                  className="sc-gKclnd bgJhUj"
                                   testID="caption-iconPrice"
                                 >
                                   5 €
@@ -899,12 +899,12 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             >
                               <Text
-                                className="sc-iqseJM kWpAjO"
+                                className="sc-iqseJM zJfsn"
                               >
                                 Quand ?
                               </Text>
                               <Text
-                                className="sc-egiyK cqzGSO"
+                                className="sc-egiyK kncMBf"
                               >
                                 Du 3 au 4 janvier 2021
                               </Text>
@@ -2757,14 +2757,14 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                   </View>
                                 </View>
                                 <Text
-                                  className="sc-hKwDye lbLiMe"
+                                  className="sc-hKwDye ibaJP"
                                   numberOfLines={1}
                                 >
                                   PATHE BEAUGRENELLE, 
                                 </Text>
                               </View>
                               <Text
-                                className="sc-eCImPb caVsEx"
+                                className="sc-eCImPb woFoo"
                                 isDigital={false}
                                 numberOfLines={1}
                               >
@@ -2798,7 +2798,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                               <Text
                                 adjustsFontSizeToFit={true}
                                 allowFontScaling={false}
-                                className="sc-kDTinF gpnoaP"
+                                className="sc-kDTinF fGTMCa"
                                 numberOfLines={3}
                                 testID="offerTitle"
                               >
@@ -2870,7 +2870,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                   }
                                 />
                                 <Text
-                                  className="sc-gKclnd AqbsW"
+                                  className="sc-gKclnd bgJhUj"
                                   testID="caption-undefined"
                                 >
                                   Cinéma plein air
@@ -2925,7 +2925,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                   }
                                 />
                                 <Text
-                                  className="sc-gKclnd AqbsW"
+                                  className="sc-gKclnd bgJhUj"
                                   testID="caption-iconDuo"
                                 >
                                   À deux !
@@ -2981,7 +2981,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                                   }
                                 />
                                 <Text
-                                  className="sc-gKclnd AqbsW"
+                                  className="sc-gKclnd bgJhUj"
                                   testID="caption-iconPrice"
                                 >
                                   5 € / place
@@ -3208,12 +3208,12 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               }
                             >
                               <Text
-                                className="sc-iqseJM kWpAjO"
+                                className="sc-iqseJM zJfsn"
                               >
                                 Quand ?
                               </Text>
                               <Text
-                                className="sc-egiyK cqzGSO"
+                                className="sc-egiyK kncMBf"
                               >
                                 Du 3 au 4 janvier 2021
                               </Text>

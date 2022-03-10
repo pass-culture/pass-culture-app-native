@@ -88,7 +88,7 @@ Object {
                       style="height: 20px;"
                     />
                     <label
-                      class="sc-jrQzAO gESpwC"
+                      class="sc-jrQzAO ewNTkL"
                       for="testUuidV4"
                     >
                       Entre ton adresse
@@ -273,7 +273,7 @@ Object {
                     style="height: 20px;"
                   />
                   <label
-                    class="sc-jrQzAO gESpwC"
+                    class="sc-jrQzAO ewNTkL"
                     for="testUuidV4"
                   >
                     Entre ton adresse

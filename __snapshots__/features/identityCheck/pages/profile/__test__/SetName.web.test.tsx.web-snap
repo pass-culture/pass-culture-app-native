@@ -101,7 +101,7 @@ Object {
                         style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                       >
                         <label
-                          class="sc-dkPtRN gBaIds"
+                          class="sc-dkPtRN kNuMlB"
                           for="testUuidV4"
                         >
                           Prénom
@@ -145,7 +145,7 @@ Object {
                         style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                       >
                         <label
-                          class="sc-dkPtRN gBaIds"
+                          class="sc-dkPtRN kNuMlB"
                           for="testUuidV4"
                         >
                           Nom
@@ -326,7 +326,7 @@ Object {
                       style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                     >
                       <label
-                        class="sc-dkPtRN gBaIds"
+                        class="sc-dkPtRN kNuMlB"
                         for="testUuidV4"
                       >
                         Prénom
@@ -370,7 +370,7 @@ Object {
                       style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                     >
                       <label
-                        class="sc-dkPtRN gBaIds"
+                        class="sc-dkPtRN kNuMlB"
                         for="testUuidV4"
                       >
                         Nom

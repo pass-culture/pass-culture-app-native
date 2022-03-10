@@ -55,7 +55,7 @@ Object {
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
                 <label
-                  class="sc-jrQzAO gESpwC"
+                  class="sc-jrQzAO ewNTkL"
                   for="testUuidV4"
                 >
                   Jour
@@ -360,7 +360,7 @@ Object {
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
                 <label
-                  class="sc-jrQzAO gESpwC"
+                  class="sc-jrQzAO ewNTkL"
                   for="testUuidV4"
                 >
                   Mois
@@ -513,7 +513,7 @@ Object {
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
                 <label
-                  class="sc-jrQzAO gESpwC"
+                  class="sc-jrQzAO ewNTkL"
                   for="testUuidV4"
                 >
                   Année
@@ -1499,7 +1499,7 @@ Object {
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
               <label
-                class="sc-jrQzAO gESpwC"
+                class="sc-jrQzAO ewNTkL"
                 for="testUuidV4"
               >
                 Jour
@@ -1804,7 +1804,7 @@ Object {
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
               <label
-                class="sc-jrQzAO gESpwC"
+                class="sc-jrQzAO ewNTkL"
                 for="testUuidV4"
               >
                 Mois
@@ -1957,7 +1957,7 @@ Object {
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
               <label
-                class="sc-jrQzAO gESpwC"
+                class="sc-jrQzAO ewNTkL"
                 for="testUuidV4"
               >
                 Année
@@ -2995,7 +2995,7 @@ Object {
               style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
             >
               <label
-                class="sc-jrQzAO gESpwC"
+                class="sc-jrQzAO ewNTkL"
                 for="testUuidV4"
               >
                 Date de naissance
@@ -4041,7 +4041,7 @@ Object {
             style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
           >
             <label
-              class="sc-jrQzAO gESpwC"
+              class="sc-jrQzAO ewNTkL"
               for="testUuidV4"
             >
               Date de naissance
