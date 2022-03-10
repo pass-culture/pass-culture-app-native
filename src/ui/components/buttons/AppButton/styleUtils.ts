@@ -62,7 +62,11 @@ export const appButtonStyles: ButtonStyles = ({
   ...(numberOfLines ? { height: 'auto' } : {}),
 })
 
-export const appButtonWebStyles: ButtonStylesWeb = ({ theme, ...rest }: ButtonStylesArgs) => {
+export const appButtonWebStyles: ButtonStylesWeb = ({
+  theme,
+  focusOutlineColor,
+  ...rest
+}: ButtonStylesArgs) => {
   return {
     ...(appButtonStyles({ theme, ...rest }) as Record<string, unknown>),
     cursor: 'pointer',
@@ -75,7 +79,7 @@ export const appButtonWebStyles: ButtonStylesWeb = ({ theme, ...rest }: ButtonSt
       cursor: 'initial',
       background: 'none',
     },
-    ...customFocusOutline(theme, theme.buttons.outlineColor),
+    ...customFocusOutline(theme, focusOutlineColor ?? theme.buttons.outlineColor),
   }
 }
 

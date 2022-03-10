@@ -202,7 +202,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
       }
     >
       <button
-        className="sc-bdvvtL iRoXbD sc-iCfMLu cwsHiE"
+        className="sc-bdvvtL edSCqH sc-iCfMLu uxgRG"
         onClick={[Function]}
         onDoubleClick={[Function]}
         type="button"

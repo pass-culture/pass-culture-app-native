@@ -36,19 +36,13 @@ export const ButtonTertiaryWhite = styledButton(AppButton).attrs<BaseButtonProps
         : theme.buttons.tertiaryWhite.marginLeft,
     })
 
-    let webOnly = {}
-    if (Platform.OS === 'web') {
-      webOnly = {
-        outlineColor: theme.buttons.tertiaryWhite.outlineColor,
-      }
-    }
-
     return {
       ...rest,
-      ...webOnly,
       loadingIndicator: LoadingIndicator,
       icon: Icon,
       title: Title,
+      focusOutlineColor:
+        Platform.OS === 'web' ? theme.buttons.tertiaryWhite.outlineColor : undefined,
     }
   }
 )(({ theme }) => ({

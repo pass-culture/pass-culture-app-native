@@ -2,6 +2,8 @@ import { ComponentType, CSSProperties, FunctionComponent, MouseEventHandler } fr
 import { GestureResponderEvent, StyleProp, TextProps, ViewStyle } from 'react-native'
 
 import { IconInterface } from 'ui/svg/icons/types'
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
 
 export interface TouchableOpacityButtonProps {
   buttonHeight: 'small' | 'tall'
@@ -12,6 +14,7 @@ export interface TouchableOpacityButtonProps {
   justifyContent?: 'center' | 'flex-start'
   numberOfLines?: number
   center?: boolean
+  focusOutlineColor?: ColorsEnum
 }
 
 export interface AppButtonInnerProps {
@@ -49,6 +52,7 @@ export interface BaseButtonProps {
   center?: boolean
   type?: 'button' | 'submit' | 'reset'
   name?: string
+  focusOutlineColor?: ColorsEnum
 }
 
 export interface AppButtonProps extends BaseButtonProps {

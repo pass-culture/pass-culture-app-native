@@ -197,7 +197,9 @@ Object {
                               style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center;"
                             >
                               <button
+                                aria-label="Copier le lien"
                                 class="sc-bdvvtL iRoXbD sc-dkPtRN fwCeAR"
+                                data-testid="Copier le lien"
                                 type="button"
                               >
                                 <div
@@ -225,7 +227,9 @@ Object {
                               style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center;"
                             >
                               <button
+                                aria-label="Ouvrir le gestionnaire mail"
                                 class="sc-bdvvtL iRoXbD sc-dkPtRN fwCeAR"
+                                data-testid="Ouvrir le gestionnaire mail"
                                 type="button"
                               >
                                 <div
