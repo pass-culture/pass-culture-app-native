@@ -44,6 +44,7 @@ export function ExBeneficiaryHeader(props: ExBeneficiaryHeaderProps) {
       <DescriptionContainer>
         <AccordionItem
           title={<Typo.ButtonText>{t`Mon crédit est expiré, que faire\u00a0?`}</Typo.ButtonText>}
+          accessibilityTitle={t`Mon crédit est expiré, que faire\u00a0?`}
           titleStyle={accordionStyle.title}
           bodyStyle={accordionStyle.body}>
           <Description>

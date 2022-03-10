@@ -230,6 +230,7 @@ exports[`FavoritesSorts component should render correctly 1`] = `
         </Text>
       </View>
       <View
+        accessibilityLabel="Trier par Ajouté récemment"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -309,6 +310,7 @@ exports[`FavoritesSorts component should render correctly 1`] = `
         </View>
       </View>
       <View
+        accessibilityLabel="Trier par Prix croissant"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -380,6 +382,7 @@ exports[`FavoritesSorts component should render correctly 1`] = `
         />
       </View>
       <View
+        accessibilityLabel="Trier par Proximité géographique"
         accessible={true}
         collapsable={false}
         focusable={true}

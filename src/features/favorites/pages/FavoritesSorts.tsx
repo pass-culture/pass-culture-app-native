@@ -79,6 +79,7 @@ export const FavoritesSorts: React.FC = () => {
           return (
             <React.Fragment key={sortBy}>
               <LabelContainer
+                accessibilityLabel={t`Trier par` + ` ${label}`}
                 key={sortBy}
                 onPress={() => onSortBySelection(sortBy)}
                 testID={sortBy}>

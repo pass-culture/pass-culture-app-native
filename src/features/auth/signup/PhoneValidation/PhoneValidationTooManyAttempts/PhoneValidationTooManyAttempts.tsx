@@ -21,6 +21,7 @@ export function PhoneValidationTooManyAttempts() {
         <A key={1} href={supportUrl.forPhoneNumberConfirmation}>
           <ButtonTertiaryWhite
             wording={t`Contacter le support`}
+            accessibilityLabel={t`Ouvrir le gestionnaire mail pour contacter le support`}
             icon={Email}
             onPress={contactSupport.forPhoneNumberConfirmation}
           />

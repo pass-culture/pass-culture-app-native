@@ -240,6 +240,10 @@ msgstr "Aujourd'hui"
 msgid "Autoriser"
 msgstr "Autoriser"
 
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
+msgid "Autoriser l'utilisation des outils pour réaliser des statistiques de navigation"
+msgstr "Autoriser l'utilisation des outils pour réaliser des statistiques de navigation"
+
 #: src/libs/notifications/components/PushNotificationsModal.tsx
 msgid "Autoriser les notifications"
 msgstr "Autoriser les notifications"
@@ -626,18 +630,27 @@ msgstr "Continuer vers l'étape"
 #: src/features/identityCheck/pages/profile/SetName.tsx
 #: src/features/identityCheck/pages/profile/SetSchoolType.tsx
 #: src/features/identityCheck/pages/profile/Status.tsx
+#: src/ui/components/achievements/components/GenericAchievement.tsx
 msgid "Continuer vers l'étape suivante"
 msgstr "Continuer vers l'étape suivante"
 
+#: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
+#: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
+msgid "Continuer vers l'étape {nextStep} sur {totalSteps}"
+msgstr "Continuer vers l'étape {nextStep} sur {totalSteps}"
+
 #: src/features/_marketingAndCommunication/atoms/DeeplinkItem.tsx
 #: src/libs/share/WebShareModal.web.tsx
-#: src/ui/svg/icons/Duplicate.tsx
 msgid "Copier"
 msgstr "Copier"
 
 #: src/features/_marketingAndCommunication/atoms/DeeplinkItem.tsx
 msgid "Copier dans le press-papier"
 msgstr "Copier dans le press-papier"
+
+#: src/libs/share/WebShareModal.web.tsx
+msgid "Copier le lien"
+msgstr "Copier le lien"
 
 #: src/libs/parsers/venueType.ts
 msgid "Cours et pratique artistiques"
@@ -784,6 +797,10 @@ msgstr "Déconnexion"
 #: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx
 msgid "Découvrir"
 msgstr "Découvrir"
+
+#: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx
+msgid "Découvrir ton pass Culture"
+msgstr "Découvrir ton pass Culture"
 
 #: src/features/offer/components/ReportOfferOtherReason.tsx
 msgid "Décris en quelques mots la raison pour laquelle tu souhaites signaler cette offre."
@@ -1437,6 +1454,7 @@ msgstr "Lien de modification de l'email expiré"
 
 #: src/features/navigation/RootNavigator/routes.ts
 #: src/features/venue/pages/VenueBody.tsx
+#: src/libs/geolocation/components/WhereSection.tsx
 #: src/libs/tileAccessibilityLabel.ts
 msgid "Lieu"
 msgstr "Lieu"
@@ -1707,6 +1725,7 @@ msgstr "Nouveau mot de passe"
 msgid "Nouvel e-mail"
 msgstr "Nouvel e-mail"
 
+#: src/libs/itinerary/components/SeeItineraryButton.tsx
 #: src/ui/svg/icons/ExternalSite.tsx
 #: src/ui/svg/icons/ExternalSiteFilled.tsx
 msgid "Nouvelle fenêtre"
@@ -1798,10 +1817,9 @@ msgstr "Oups, cette offre n’est plus disponible !"
 msgid "Oups !"
 msgstr "Oups !"
 
-#: src/ui/svg/icons/Email.tsx
-#: src/ui/svg/icons/EmailFilled.tsx
-msgid "Ouvrir la boîte e-mail"
-msgstr "Ouvrir la boîte e-mail"
+#: src/libs/share/WebShareModal.web.tsx
+msgid "Ouvrir l'application de message"
+msgstr "Ouvrir l'application de message"
 
 #: src/libs/country-picker/CountryPicker.tsx
 msgid "Ouvrir la modale de choix de l'indicatif téléphonique"
@@ -1810,6 +1828,17 @@ msgstr "Ouvrir la modale de choix de l'indicatif téléphonique"
 #: src/ui/components/AccordionItem.tsx
 msgid "Ouvrir la section"
 msgstr "Ouvrir la section"
+
+#: src/libs/share/WebShareModal.web.tsx
+msgid "Ouvrir le gestionnaire mail"
+msgstr "Ouvrir le gestionnaire mail"
+
+#: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
+#: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
+#: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
+#: src/ui/components/LayoutExpiredLink.tsx
+msgid "Ouvrir le gestionnaire mail pour contacter le support"
+msgstr "Ouvrir le gestionnaire mail pour contacter le support"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckEduConnectForm.web.tsx
 msgid "Ouvrir un onglet ÉduConnect"
@@ -2119,6 +2148,10 @@ msgstr "Refais une demande en vérifiant ton identité avec ta pièce d’identi
 msgid "Refuser"
 msgstr "Refuser"
 
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
+msgid "Refuser l'utilisation des outils pour réaliser des statistiques de navigation"
+msgstr "Refuser l'utilisation des outils pour réaliser des statistiques de navigation"
+
 #: src/features/bookOffer/components/BookingImpossible.tsx
 msgid "Rends-toi vite sur le site pass Culture afin de la réserver"
 msgstr "Rends-toi vite sur le site pass Culture afin de la réserver"
@@ -2204,6 +2237,7 @@ msgstr "Revenir à l'accueil"
 #: src/features/bookOffer/services/useModalContent.tsx
 #: src/features/offer/components/useReportOfferModalContent.tsx
 #: src/features/offer/components/useReportOfferModalContent.tsx
+#: src/ui/components/achievements/components/GenericAchievement.tsx
 msgid "Revenir à l'étape précédente"
 msgstr "Revenir à l'étape précédente"
 
@@ -2293,10 +2327,6 @@ msgstr "Réserver l'offre"
 #: src/features/profile/components/LoggedOutHeader.tsx
 msgid "S'inscrire"
 msgstr "S'inscrire"
-
-#: src/ui/svg/icons/SMSFilled.tsx
-msgid "SMS"
-msgstr "SMS"
 
 #: src/features/search/pages/LocationPicker.tsx
 msgid "Saisir une adresse..."
@@ -2625,6 +2655,7 @@ msgstr "Tri des favoris"
 msgid "Trier"
 msgstr "Trier"
 
+#: src/features/favorites/pages/FavoritesSorts.tsx
 #: src/features/favorites/pages/FavoritesSorts.tsx
 msgid "Trier par"
 msgstr "Trier par"
@@ -2960,6 +2991,10 @@ msgstr "Voici les 3 étapes que tu vas devoir suivre."
 #: src/libs/itinerary/useItinerary.ts
 msgid "Voir l'itinéraire"
 msgstr "Voir l'itinéraire"
+
+#: src/features/offer/atoms/OfferSeeMore.tsx
+msgid "Voir la suite de la description"
+msgstr "Voir la suite de la description"
 
 #: src/features/bookOffer/components/BookingImpossible.tsx
 msgid "Voir le détail de l'offre"
@@ -3389,13 +3424,13 @@ msgstr "À retirer avant le {dateLimit}"
 msgid "Étape 1 sur 4 | Tutoriel \"Comment ça marche\""
 msgstr "Étape 1 sur 4 | Tutoriel \"Comment ça marche\""
 
-#: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
-msgid "Étape {0} sur {1} | Tutoriel \"Comment ça marche\""
-msgstr "Étape {0} sur {1} | Tutoriel \"Comment ça marche\""
-
 #: src/features/auth/signup/SignupForm.tsx
 msgid "Étape {0} sur {SIGNUP_NUMBER_OF_STEPS} - Inscription"
 msgstr "Étape {0} sur {SIGNUP_NUMBER_OF_STEPS} - Inscription"
+
+#: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
+msgid "Étape {currentStep} sur {totalSteps} | Tutorial \"Comment ça marche\""
+msgstr "Étape {currentStep} sur {totalSteps} | Tutorial \"Comment ça marche\""
 
 #: src/ui/components/DotComponent.tsx
 msgid "Étape {step} sur {totalSteps} {status}"

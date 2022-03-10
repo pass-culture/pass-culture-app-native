@@ -301,7 +301,7 @@ Array [
             }
           />
           <div
-            aria-label="Fermer la section"
+            aria-label="Fermer la section Pages"
             className="css-view-1dbjc4n"
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -1103,7 +1103,7 @@ Array [
             </div>
           </div>
           <div
-            aria-label="Fermer la section"
+            aria-label="Fermer la section Paramètres applicatifs (1)"
             className="css-view-1dbjc4n"
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -1333,7 +1333,7 @@ Array [
             </div>
           </div>
           <div
-            aria-label="Fermer la section"
+            aria-label="Fermer la section Paramètres marketing"
             className="css-view-1dbjc4n"
             onClick={[Function]}
             onContextMenu={[Function]}
@@ -1932,7 +1932,7 @@ Array [
             </div>
           </div>
           <div
-            aria-label="Ouvrir la section"
+            aria-label="Ouvrir la section Paramètres firebase dynamic link"
             className="css-view-1dbjc4n"
             onClick={[Function]}
             onContextMenu={[Function]}

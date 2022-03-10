@@ -61,9 +61,19 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
         </Caption>
       </SubDescription>
       <CallToActionsContainer>
-        <ButtonPrimary wording={t`Autoriser`} onPress={onApproval} mediumWidth />
+        <ButtonPrimary
+          wording={t`Autoriser`}
+          accessibilityLabel={t`Autoriser l'utilisation des outils pour réaliser des statistiques de navigation`}
+          onPress={onApproval}
+          mediumWidth
+        />
         <Spacer.Column numberOfSpaces={3} />
-        <ButtonSecondary wording={t`Refuser`} onPress={onRefusal} mediumWidth />
+        <ButtonSecondary
+          wording={t`Refuser`}
+          accessibilityLabel={t`Refuser l'utilisation des outils pour réaliser des statistiques de navigation`}
+          onPress={onRefusal}
+          mediumWidth
+        />
       </CallToActionsContainer>
     </AppModal>
   )

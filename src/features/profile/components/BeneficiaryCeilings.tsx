@@ -90,6 +90,7 @@ const CeilingsDescription = (props: CeilingsDescriptionProps) => {
   return (
     <AccordionItem
       title={<Typo.ButtonText>{props.title}</Typo.ButtonText>}
+      accessibilityTitle={props.title}
       titleStyle={accordionStyle.title}
       bodyStyle={accordionStyle.body}>
       <Description>{props.description}</Description>

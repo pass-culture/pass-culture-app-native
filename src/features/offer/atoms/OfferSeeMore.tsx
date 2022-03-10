@@ -32,6 +32,7 @@ export const OfferSeeMore: React.FC<Props> = ({ id, longWording = false }) => {
           testID="description-details-button"
           onPress={onPressSeeMore}
           wording={longWording ? t`Voir plus d'informations` : t`voir plus`}
+          accessibilityLabel={longWording ? undefined : t`Voir la suite de la description`}
         />
       </Link>
       <Spacer.Row numberOfSpaces={1} />

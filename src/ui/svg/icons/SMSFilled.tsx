@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React from 'react'
 import { Circle, Path } from 'react-native-svg'
 import styled from 'styled-components/native'
@@ -17,7 +16,7 @@ const SMSFilledSvg: React.FunctionComponent<AccessibleIcon> = ({
     height={size}
     viewBox="0 0 48 48"
     testID={testID}
-    accessibilityLabel={accessibilityLabel ?? t`SMS`}>
+    accessibilityLabel={accessibilityLabel}>
     <Path
       fillRule="evenodd"
       clipRule="evenodd"

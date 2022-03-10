@@ -17,8 +17,7 @@ const LocationPointerSvg: React.FunctionComponent<AccessibleIcon> = ({
     height={size}
     viewBox="0 0 48 49"
     testID={testID}
-    accessibilityLabel={accessibilityLabel}
-    aria-hidden={!accessibilityLabel}>
+    accessibilityLabel={accessibilityLabel}>
     <Path
       fill={color}
       fillRule="evenodd"

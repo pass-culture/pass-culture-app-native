@@ -151,7 +151,7 @@ exports[`FirstCard should render first card 1`] = `
       }
     >
       <View
-        accessibilityLabel="Continuer"
+        accessibilityLabel="Continuer vers l'étape 2 sur 4"
         accessible={true}
         collapsable={false}
         focusable={true}

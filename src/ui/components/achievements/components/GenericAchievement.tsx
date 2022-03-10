@@ -75,6 +75,8 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
     },
     PrevComponent: ControlComponent,
     NextComponent: ControlComponent,
+    prevTitle: t`Revenir à l'étape précédente`,
+    nextTitle: t`Continuer vers l'étape suivante`,
   }
 
   return (

@@ -7,6 +7,8 @@ import { AccordionItem } from '../AccordionItem'
 
 const Children = () => <View testID="accordion-child-view" />
 
+const accordionTitle = 'accordion title'
+
 describe('AccordionItem', () => {
   beforeAll(() => jest.useFakeTimers())
 
@@ -21,8 +23,8 @@ describe('AccordionItem', () => {
     const accordionBody = accordion.getByTestId('accordionBody')
     const accordionBodyContainer = accordion.getByTestId('accordionBodyContainer')
     expect(accordionBody.props.style).toEqual({ height: 0, overflow: 'hidden' })
-    expect(accordion.queryByLabelText('Ouvrir la section')).toBeTruthy()
-    expect(accordion.queryByLabelText('Fermer la section')).toBeFalsy()
+    expect(accordion.queryByLabelText(`Ouvrir la section ${accordionTitle}`)).toBeTruthy()
+    expect(accordion.queryByLabelText(`Fermer la section ${accordionTitle}`)).toBeFalsy()
 
     fireEvent(accordionBodyContainer, 'layout', { nativeEvent: { layout: { height: 30 } } })
 
@@ -32,8 +34,8 @@ describe('AccordionItem', () => {
     })
 
     expect(accordionBody.props.style).toEqual({ height: 30, overflow: 'hidden' })
-    expect(accordion.queryByLabelText('Fermer la section')).toBeTruthy()
-    expect(accordion.queryByLabelText('Ouvrir la section')).toBeFalsy()
+    expect(accordion.queryByLabelText(`Fermer la section ${accordionTitle}`)).toBeTruthy()
+    expect(accordion.queryByLabelText(`Ouvrir la section ${accordionTitle}`)).toBeFalsy()
   })
 
   it('correct arrow animation,', async () => {
@@ -54,7 +56,7 @@ describe('AccordionItem', () => {
 
 function renderAccordion() {
   return render(
-    <AccordionItem title="accordion title">
+    <AccordionItem title={accordionTitle}>
       <Children />
     </AccordionItem>
   )

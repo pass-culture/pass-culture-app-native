@@ -24,6 +24,7 @@ import { getSpacing, Typo } from '../theme'
 interface IAccordionItemProps {
   scrollViewRef?: MutableRefObject<ScrollView | null>
   title: JSX.Element | string
+  accessibilityTitle?: string
   children: JSX.Element | JSX.Element[]
   defaultOpen?: boolean
   onOpenOnce?: () => void
@@ -34,6 +35,7 @@ interface IAccordionItemProps {
 export const AccordionItem = ({
   scrollViewRef,
   title,
+  accessibilityTitle = '',
   children,
   defaultOpen = false,
   onOpenOnce,
@@ -94,12 +96,16 @@ export const AccordionItem = ({
     setBodyPositionY(event.nativeEvent.layout.y)
   }
 
+  const accessibilityLabel =
+    (open ? t`Fermer la section` : t`Ouvrir la section`) +
+    ` ${typeof title === 'string' ? title : accessibilityTitle}`
+
   return (
     <React.Fragment>
       <TouchableWithoutFeedback
         onPress={toggleListItem}
         onLayout={getPositionOfAccordionItem}
-        accessibilityLabel={open ? t`Fermer la section` : t`Ouvrir la section`}>
+        accessibilityLabel={accessibilityLabel}>
         <View style={[styles.titleContainer, titleStyle]}>
           <Title>{title}</Title>
           <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }} testID="accordionArrow">

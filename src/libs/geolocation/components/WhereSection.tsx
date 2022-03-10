@@ -91,7 +91,10 @@ export const WhereSection: React.FC<Props> = ({
               to={{ screen: 'Venue', params: { id: venue.id } }}
               style={styles.link}
               accessible={false}>
-              <VenueNameContainer onPress={navigateToVenuePage} testID="VenueBannerComponent">
+              <VenueNameContainer
+                onPress={navigateToVenuePage}
+                accessibilityLabel={t`Lieu` + ` ${venue.publicName || venue.name}`}
+                testID="VenueBannerComponent">
                 <Spacer.Row numberOfSpaces={2} />
                 <IconContainer>
                   <LocationBuilding size={iconSize} />

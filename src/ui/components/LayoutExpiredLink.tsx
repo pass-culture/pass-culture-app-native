@@ -65,6 +65,7 @@ export function LayoutExpiredLink({
       {!!contactSupport && (
         <ButtonTertiaryWhite
           wording={t`Contacter le support`}
+          accessibilityLabel={t`Ouvrir le gestionnaire mail pour contacter le support`}
           onPress={contactSupport}
           icon={EmailFilled}
         />

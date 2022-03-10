@@ -225,7 +225,7 @@ Array [
             }
           />
           <View
-            accessibilityLabel="Fermer la section"
+            accessibilityLabel="Fermer la section Pages"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -907,7 +907,7 @@ Array [
             </View>
           </View>
           <View
-            accessibilityLabel="Fermer la section"
+            accessibilityLabel="Fermer la section Paramètres applicatifs (1)"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -1111,7 +1111,7 @@ Array [
             </View>
           </View>
           <View
-            accessibilityLabel="Fermer la section"
+            accessibilityLabel="Fermer la section Paramètres marketing"
             accessible={true}
             focusable={true}
             onClick={[Function]}
@@ -1636,7 +1636,7 @@ Array [
             </View>
           </View>
           <View
-            accessibilityLabel="Ouvrir la section"
+            accessibilityLabel="Ouvrir la section Paramètres firebase dynamic link"
             accessible={true}
             focusable={true}
             onClick={[Function]}

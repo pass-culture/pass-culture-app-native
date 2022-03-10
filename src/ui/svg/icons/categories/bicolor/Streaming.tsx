@@ -24,8 +24,7 @@ const StreamingSvg: React.FunctionComponent<AccessibleIcon> = ({
       height={size}
       viewBox="0 0 48 48"
       testID={testID}
-      accessibilityLabel={accessibilityLabel}
-      aria-hidden={!accessibilityLabel}>
+      accessibilityLabel={accessibilityLabel}>
       <Defs>
         <LinearGradient id={gradientId} x1="0%" x2="100%" y1="13.494%" y2="86.506%">
           <Stop offset="0%" stopColor={color ?? primary} />

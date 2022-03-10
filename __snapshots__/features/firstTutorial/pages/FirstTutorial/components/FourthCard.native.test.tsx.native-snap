@@ -151,7 +151,7 @@ exports[`FourthCard should render fourth card 1`] = `
       }
     >
       <View
-        accessibilityLabel="Découvrir"
+        accessibilityLabel="Découvrir ton pass Culture"
         accessible={true}
         collapsable={false}
         focusable={true}

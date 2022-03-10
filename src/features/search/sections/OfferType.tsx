@@ -39,7 +39,8 @@ export const OfferType: React.FC = () => {
           title={SectionTitle.OfferType}
           count={+offerTypes['isDigital'] + +offerTypes['isEvent'] + +offerTypes['isThing']}
         />
-      }>
+      }
+      accessibilityTitle={SectionTitle.OfferType}>
       <BodyContainer>
         <StyledUl>
           {OFFER_TYPES.map(([offerType, label]) => (

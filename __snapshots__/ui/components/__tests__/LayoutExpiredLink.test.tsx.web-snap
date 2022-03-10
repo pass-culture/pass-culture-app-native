@@ -236,7 +236,9 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       </button>
     </a>
     <button
+      aria-label="Ouvrir le gestionnaire mail pour contacter le support"
       className="sc-bdvvtL bIVfLC sc-iCfMLu uxgRG"
+      data-testid="Ouvrir le gestionnaire mail pour contacter le support"
       onClick={[Function]}
       onDoubleClick={[Function]}
       type="button"

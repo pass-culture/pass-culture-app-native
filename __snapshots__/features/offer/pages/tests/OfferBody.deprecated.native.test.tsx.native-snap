@@ -797,7 +797,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   }
                                 >
                                   <View
-                                    accessibilityLabel="voir plus"
+                                    accessibilityLabel="Voir la suite de la description"
                                     accessible={true}
                                     focusable={true}
                                     onClick={[Function]}
@@ -921,7 +921,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             }
                           />
                           <View
-                            accessibilityLabel="Ouvrir la section"
+                            accessibilityLabel="Ouvrir la section Modalités de retrait"
                             accessible={true}
                             focusable={true}
                             onClick={[Function]}
@@ -1075,7 +1075,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             }
                           />
                           <View
-                            accessibilityLabel="Ouvrir la section"
+                            accessibilityLabel="Ouvrir la section Accessibilité"
                             accessible={true}
                             focusable={true}
                             onClick={[Function]}
@@ -3106,7 +3106,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   }
                                 >
                                   <View
-                                    accessibilityLabel="voir plus"
+                                    accessibilityLabel="Voir la suite de la description"
                                     accessible={true}
                                     focusable={true}
                                     onClick={[Function]}
@@ -3264,6 +3264,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   }
                                 />
                                 <View
+                                  accessibilityLabel="Lieu PATHE BEAUGRENELLE"
                                   accessible={true}
                                   focusable={true}
                                   onClick={[Function]}
@@ -3582,7 +3583,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             }
                           />
                           <View
-                            accessibilityLabel="Ouvrir la section"
+                            accessibilityLabel="Ouvrir la section Modalités de retrait"
                             accessible={true}
                             focusable={true}
                             onClick={[Function]}
@@ -3736,7 +3737,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             }
                           />
                           <View
-                            accessibilityLabel="Ouvrir la section"
+                            accessibilityLabel="Ouvrir la section Accessibilité"
                             accessible={true}
                             focusable={true}
                             onClick={[Function]}
