@@ -5,15 +5,26 @@ import LottieView from 'libs/lottie'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { AnimationObject } from 'ui/animations/type'
 import { Spacer } from 'ui/components/spacer/Spacer'
+import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 import { useGrid } from 'ui/theme/grid'
+import { TextProps } from 'ui/theme/typography'
+
+type PropsWithAnimation = {
+  animation: AnimationObject
+}
+
+type PropsWithIcon = {
+  icon: React.FC<IconInterface>
+}
 
 type Props = {
-  animation: AnimationObject
+  titleComponent?: React.FC<TextProps>
+  subtitleComponent?: React.FC<TextProps>
   title: string
   subtitle?: string
   activeIndex?: number
-}
+} & (PropsWithAnimation | PropsWithIcon)
 
 const SMALL_HEIGHT = 576
 
@@ -26,26 +37,55 @@ export const GenericInfoPageWhite: React.FC<Props> = (props) => {
     [isSmallHeight]
   )
 
+  const { animation } = props as PropsWithAnimation
+  const { icon: Icon } = props as PropsWithIcon
+  const titleComponent = props.titleComponent ?? Typo.Title1
+  const subtitleComponent = props.subtitleComponent ?? Typo.Title4
+
+  const StyledTitle = useMemo(() => {
+    return styled(titleComponent)({
+      textAlign: 'center',
+    })
+  }, [titleComponent])
+
+  const StyledIcon =
+    Icon &&
+    styled(Icon).attrs(({ theme }) => ({
+      size: theme.illustrations.sizes.fullPage,
+      color: theme.colors.white,
+    }))({ width: '100%' })
+
+  const StyledSubtitle = useMemo(() => {
+    return styled(subtitleComponent)({
+      textAlign: 'center',
+    })
+  }, [subtitleComponent])
+
   useEffect(() => {
-    if (animationRef.current) {
+    if (animation && animationRef.current) {
       animationRef.current.play(0, 62)
     }
-  }, [animationRef])
+  }, [animationRef, animation])
 
   return (
     <Container>
       <Spacer.Flex flex={grid({ sm: 1, default: 2 }, 'height')} />
       <StyledLottieContainer>
-        <StyledLottieView
-          style={lottieStyle}
-          key={props?.activeIndex}
-          ref={animationRef}
-          source={props.animation}
-          loop={false}
-        />
+        {animation ? (
+          <StyledLottieView
+            style={lottieStyle}
+            key={props?.activeIndex}
+            ref={animationRef}
+            source={animation}
+            loop={false}
+          />
+        ) : (
+          <StyledIcon />
+        )}
       </StyledLottieContainer>
       <Spacer.Flex flex={1} />
       <StyledTitle>{props.title}</StyledTitle>
+      {!!props.subtitle && <StyledSubtitle>{props.subtitle}</StyledSubtitle>}
       <Spacer.Flex flex={0.5} />
       {props.children}
       <Spacer.Flex flex={grid({ default: 1.5, sm: 2 }, 'height')} />
@@ -60,10 +100,6 @@ const Container = styled.View(({ theme }) => ({
   maxWidth: theme.contentPage.maxWidth,
   overflow: 'scroll',
 }))
-
-const StyledTitle = styled(Typo.Title1)({
-  textAlign: 'center',
-})
 
 const StyledLottieContainer = styled.View({
   flexGrow: 1,
