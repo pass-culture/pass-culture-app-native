@@ -36,6 +36,13 @@ export interface AppThemeType {
   appBarHeight: number
   navTopHeight: number
   tabBarHeight: number
+  inputs: {
+    height: {
+      small: number
+      regular: number
+      tall: number
+    }
+  }
   isMobileViewport?: boolean // computed dynamically in ThemeProvider.tsx
   isTabletViewport?: boolean // computed dynamically in ThemeProvider.tsx
   isDesktopViewport?: boolean // computed dynamically in ThemeProvider.tsx
@@ -311,6 +318,13 @@ export const theme: AppThemeType = {
   appBarHeight: getSpacing(16),
   navTopHeight: getSpacing(20),
   tabBarHeight: TAB_BAR_COMP_HEIGHT,
+  inputs: {
+    height: {
+      small: getSpacing(10),
+      regular: getSpacing(12),
+      tall: getSpacing(23.5),
+    },
+  },
   isTouch,
   showTabBar: true, // default value, the actual value is computed dynamically in ThemeProvider.tsx
   activeOpacity: ACTIVE_OPACITY,

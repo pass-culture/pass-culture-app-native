@@ -2,7 +2,7 @@ import React from 'react'
 import { ViewStyle, View, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getShadow, getSpacing, padding } from 'ui/theme'
+import { getShadow, padding } from 'ui/theme'
 
 type Props = {
   isError?: boolean
@@ -50,10 +50,15 @@ const StyledView = styled(View)<{
     })
   }
 
-  const heightValue = height === 'small' ? 10 : height === 'regular' ? 12 : 23.5
+  const heightValue =
+    height === 'small'
+      ? theme.inputs.height.small
+      : height === 'regular'
+      ? theme.inputs.height.regular
+      : theme.inputs.height.tall
 
   return {
-    height: getSpacing(heightValue),
+    height: heightValue,
     width: '100%',
     flexDirection: 'row',
     borderStyle: 'solid',
