@@ -58,7 +58,13 @@ export function BookingDetails() {
   const windowHeight = useWindowDimensions().height - blurImageHeight
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
   const { navigate } = useNavigation<UseNavigationType>()
-  const { data: booking, isLoading, isError, error } = useOngoingOrEndedBooking(params.id)
+  const {
+    data: booking,
+    isLoading,
+    isError,
+    error,
+    dataUpdatedAt,
+  } = useOngoingOrEndedBooking(params.id)
   const queryClient = useQueryClient()
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
   const {
@@ -87,7 +93,7 @@ export function BookingDetails() {
     },
   })
 
-  if (isLoading && !booking) {
+  if ((isLoading || !dataUpdatedAt) && !booking) {
     return <LoadingPage />
   } else if (!isLoading && !booking) {
     throw new ScreenError(`Booking #${params.id} not found`, BookingNotFound)
