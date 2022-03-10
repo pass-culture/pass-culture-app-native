@@ -11,7 +11,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { InputLabel } from 'ui/components/InputLabel'
-import { InputContainer } from 'ui/components/inputs/InputContainer'
+import { ContainerWithMaxWidth } from 'ui/components/inputs/ContainerWithMaxWidth'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
 import { Touchable } from 'ui/components/touchable/Touchable'
@@ -20,7 +20,7 @@ import { EyeSlash as DefaultEyeSlash } from 'ui/svg/icons/EyeSlash'
 import { Spacer } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
-import { StyledInputContainer } from './StyledInputContainer'
+import { InputContainer } from './InputContainer'
 import { getCustomTextInputProps, getRNTextInputProps, TextInputProps } from './types'
 
 const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInputProps> = (
@@ -48,7 +48,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
   }
 
   return (
-    <InputContainer>
+    <ContainerWithMaxWidth>
       {!!customProps.label && (
         <React.Fragment>
           <LabelContainer>
@@ -58,7 +58,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}
-      <StyledInputContainer
+      <InputContainer
         isFocus={isFocus}
         isError={customProps.isError}
         isDisabled={customProps.disabled}>
@@ -80,8 +80,8 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
           onPress={togglePasswordDisplay}>
           {shouldHidePassword ? <EyeSlash /> : <Eye />}
         </IconTouchableOpacity>
-      </StyledInputContainer>
-    </InputContainer>
+      </InputContainer>
+    </ContainerWithMaxWidth>
   )
 }
 

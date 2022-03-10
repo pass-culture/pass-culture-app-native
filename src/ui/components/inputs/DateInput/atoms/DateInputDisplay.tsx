@@ -4,9 +4,9 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { formatToFrenchDate } from 'libs/parsers'
 import { InputLabel } from 'ui/components/InputLabel'
+import { ContainerWithMaxWidth } from 'ui/components/inputs/ContainerWithMaxWidth'
 import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
-import { StyledInputContainer } from 'ui/components/inputs/StyledInputContainer'
 import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
@@ -17,14 +17,14 @@ interface Props {
 export function DateInputDisplay({ date, isError }: Props) {
   const dateInputID = uuidv4()
   return (
-    <InputContainer>
+    <ContainerWithMaxWidth>
       <LabelContainer>
         <InputLabel htmlFor={dateInputID}>{t`Date de naissance`}</InputLabel>
       </LabelContainer>
       <Spacer.Column numberOfSpaces={2} />
-      <StyledInputContainer isError={isError}>
+      <InputContainer isError={isError}>
         <Typo.Body nativeID={dateInputID}>{formatToFrenchDate(date)}</Typo.Body>
-      </StyledInputContainer>
-    </InputContainer>
+      </InputContainer>
+    </ContainerWithMaxWidth>
   )
 }

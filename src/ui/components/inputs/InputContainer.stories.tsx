@@ -1,16 +1,14 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { StyledInputContainer } from './StyledInputContainer'
+import { InputContainer } from './InputContainer'
 
 export default {
-  title: 'ui/inputs/StyledInputContainer',
-  component: StyledInputContainer,
-} as ComponentMeta<typeof StyledInputContainer>
+  title: 'ui/inputs/InputContainer',
+  component: InputContainer,
+} as ComponentMeta<typeof InputContainer>
 
-const Template: ComponentStory<typeof StyledInputContainer> = (args) => (
-  <StyledInputContainer {...args} />
-)
+const Template: ComponentStory<typeof InputContainer> = (args) => <InputContainer {...args} />
 
 export const Default = Template.bind({})
 Default.args = {}

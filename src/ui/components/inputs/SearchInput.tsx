@@ -12,7 +12,7 @@ import { Invalidate as DefaultInvalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer } from 'ui/theme'
 
 import { BaseTextInput as DefaultBaseTextInput } from './BaseTextInput'
-import { StyledInputContainer } from './StyledInputContainer'
+import { InputContainer } from './InputContainer'
 import { getCustomSearchInputProps, getRNTextInputProps, SearchInputProps } from './types'
 
 const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInputProps> = (
@@ -43,7 +43,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}
-      <StyledInputContainer inputHeight={props.inputHeight} isFocus={isFocus}>
+      <InputContainer inputHeight={props.inputHeight} isFocus={isFocus}>
         <Spacer.Row numberOfSpaces={1} />
         {!!LeftIcon && (
           <React.Fragment>
@@ -71,7 +71,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
             <Invalidate />
           </RightIconContainer>
         )}
-      </StyledInputContainer>
+      </InputContainer>
     </React.Fragment>
   )
 }
