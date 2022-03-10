@@ -11,6 +11,11 @@ export type Referrals =
   | 'exclusivity'
   | 'bookingimpossible'
 
+export type CulturalSurveyRootStackParamList = {
+  NavigationCulturalSurvey: undefined
+  CulturalSurveyIntro: undefined
+}
+
 export type IdentityCheckRootStackParamList = {
   NavigationIdentityCheck: undefined
   // Stepper
@@ -124,7 +129,8 @@ export type RootStackParamList = {
   Venue: { id: number }
   LandscapePositionPage: undefined
   DeeplinksGenerator: undefined
-} & IdentityCheckRootStackParamList
+} & IdentityCheckRootStackParamList &
+  CulturalSurveyRootStackParamList
 
 export type AllNavParamList = RootStackParamList & TabParamList
 

@@ -32,6 +32,7 @@ import { CulturalSurvey } from 'features/firstLogin/CulturalSurvey'
 import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 import { LandscapePositionPage } from 'features/landscapePosition/LandscapePositionPage'
 import { PageNotFound } from 'features/navigation/PageNotFound'
+import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
 import { identityCheckRoutes } from 'features/navigation/RootNavigator/identityCheckRoutes'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
@@ -58,6 +59,7 @@ import { Route } from './types'
 
 export const routes: Route[] = [
   ...identityCheckRoutes,
+  ...culturalSurveyRoutes,
   {
     name: 'Offer',
     component: Offer,
