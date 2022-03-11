@@ -97,6 +97,7 @@ Object {
           >
             <button
               class="sc-bdvvtL dpiwWj sc-gsDKAQ khldlI"
+              tabindex="0"
               type="button"
             >
               <div
@@ -213,6 +214,7 @@ Object {
         >
           <button
             class="sc-bdvvtL dpiwWj sc-gsDKAQ khldlI"
+            tabindex="0"
             type="button"
           >
             <div

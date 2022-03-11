@@ -16,6 +16,7 @@ Object {
             aria-label="Pourquoi me demande-t-on ma date de naissance ?"
             class="sc-bdvvtL iRoXbD sc-eCImPb ckCibG"
             data-testid="Pourquoi me demande-t-on ma date de naissance ?"
+            tabindex="0"
             type="button"
           >
             <div
@@ -1460,6 +1461,7 @@ Object {
           aria-label="Pourquoi me demande-t-on ma date de naissance ?"
           class="sc-bdvvtL iRoXbD sc-eCImPb ckCibG"
           data-testid="Pourquoi me demande-t-on ma date de naissance ?"
+          tabindex="0"
           type="button"
         >
           <div
@@ -2961,6 +2963,7 @@ Object {
             aria-label="Pourquoi me demande-t-on ma date de naissance ?"
             class="sc-bdvvtL iRoXbD sc-eCImPb ckCibG"
             data-testid="Pourquoi me demande-t-on ma date de naissance ?"
+            tabindex="0"
             type="button"
           >
             <div
@@ -4008,6 +4011,7 @@ Object {
           aria-label="Pourquoi me demande-t-on ma date de naissance ?"
           class="sc-bdvvtL iRoXbD sc-eCImPb ckCibG"
           data-testid="Pourquoi me demande-t-on ma date de naissance ?"
+          tabindex="0"
           type="button"
         >
           <div

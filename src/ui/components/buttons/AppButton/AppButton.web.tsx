@@ -85,7 +85,8 @@ const _AppButton = <T extends AppButtonProps>({
       style={style as CSSProperties}
       center={center}
       className={className}
-      focusOutlineColor={focusOutlineColor}>
+      focusOutlineColor={focusOutlineColor}
+      tabIndex={disabled || isLoading ? undefined : 0}>
       <AppButtonInner
         loadingIndicator={LoadingIndicator}
         isLoading={isLoading}

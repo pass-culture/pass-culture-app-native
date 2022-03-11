@@ -203,6 +203,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         className="sc-bdvvtL edSCqH sc-iCfMLu uxgRG"
         onClick={[Function]}
         onDoubleClick={[Function]}
+        tabIndex={0}
         type="button"
       >
         <div
@@ -241,6 +242,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       data-testid="Ouvrir le gestionnaire mail pour contacter le support"
       onClick={[Function]}
       onDoubleClick={[Function]}
+      tabIndex={0}
       type="button"
     >
       <div
@@ -300,6 +302,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         disabled={false}
         onClick={[Function]}
         onDoubleClick={[Function]}
+        tabIndex={0}
         type="button"
       >
         <div
@@ -332,6 +335,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         className="sc-bdvvtL edSCqH sc-iCfMLu uxgRG"
         onClick={[Function]}
         onDoubleClick={[Function]}
+        tabIndex={0}
         type="button"
       >
         <div

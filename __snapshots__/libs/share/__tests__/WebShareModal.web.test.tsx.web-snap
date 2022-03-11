@@ -200,6 +200,7 @@ Object {
                                 aria-label="Copier le lien"
                                 class="sc-bdvvtL iRoXbD sc-dkPtRN fwCeAR"
                                 data-testid="Copier le lien"
+                                tabindex="0"
                                 type="button"
                               >
                                 <div
@@ -230,6 +231,7 @@ Object {
                                 aria-label="Ouvrir le gestionnaire mail"
                                 class="sc-bdvvtL iRoXbD sc-dkPtRN fwCeAR"
                                 data-testid="Ouvrir le gestionnaire mail"
+                                tabindex="0"
                                 type="button"
                               >
                                 <div
@@ -384,6 +386,7 @@ Object {
                           />
                           <button
                             class="sc-bdvvtL bpQhCf sc-gsDKAQ cenQpD"
+                            tabindex="0"
                             type="button"
                           >
                             <div
