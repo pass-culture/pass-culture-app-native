@@ -19,7 +19,6 @@ import { BookingNotFound } from 'features/bookings/pages/BookingNotFound'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { mergeOfferData } from 'features/offer/atoms/OfferTile'
 import { analytics, isCloseToBottom } from 'libs/analytics'
-import { env } from 'libs/environment'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
@@ -96,16 +95,6 @@ export function BookingDetails() {
   })
 
   if ((isLoading || !dataUpdatedAt) && !booking) {
-    if (env.ENV !== 'production') {
-      eventMonitoring.captureMessage(`BookingDetails.LoadingPage`, {
-        extra: {
-          status,
-          isLoading,
-          booking,
-          dataUpdatedAt,
-        },
-      })
-    }
     return <LoadingPage />
   } else if (!isLoading && !booking) {
     if (Platform.OS !== 'web') {
