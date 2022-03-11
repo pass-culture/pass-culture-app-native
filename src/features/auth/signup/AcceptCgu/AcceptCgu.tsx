@@ -14,7 +14,6 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import { InputError } from 'ui/components/inputs/InputError'
-import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Email } from 'ui/svg/icons/Email'
 import { Spacer, Typo } from 'ui/theme'
 import { A } from 'ui/web/link/A'
@@ -84,8 +83,6 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
     () => isDoingReCaptchaChallenge || isFetching || !networkInfo.isConnected || areSettingsLoading,
     [isDoingReCaptchaChallenge, isFetching, networkInfo.isConnected, areSettingsLoading]
   )
-
-  useEnterKeyAction(!disabled ? onSubmit : undefined)
 
   return (
     <React.Fragment>
