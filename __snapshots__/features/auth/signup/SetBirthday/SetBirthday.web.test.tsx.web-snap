@@ -14,7 +14,7 @@ Object {
         >
           <button
             aria-label="Pourquoi me demande-t-on ma date de naissance ?"
-            class="sc-bdvvtL iRoXbD sc-eCImPb ckCibG"
+            class="sc-bdvvtL hrpKOI sc-eCImPb ckCibG"
             data-testid="Pourquoi me demande-t-on ma date de naissance ?"
             tabindex="0"
             type="button"
@@ -70,7 +70,7 @@ Object {
                 >
                   <select
                     aria-label="Entrée pour le jour de la date de naissance"
-                    class="sc-llYSUQ gDNOSg"
+                    class="sc-llYSUQ iCPxMn"
                     data-testid="select-Jour"
                     id="testUuidV4"
                     role="listbox"
@@ -375,7 +375,7 @@ Object {
                 >
                   <select
                     aria-label="Entrée pour le mois de la date de naissance"
-                    class="sc-llYSUQ cLQbTc"
+                    class="sc-llYSUQ ffoCeL"
                     data-testid="select-Mois"
                     id="testUuidV4"
                     role="listbox"
@@ -528,7 +528,7 @@ Object {
                 >
                   <select
                     aria-label="Entrée pour l'année de la date de naissance"
-                    class="sc-llYSUQ EdEVQ"
+                    class="sc-llYSUQ hDtoiv"
                     data-testid="select-Année"
                     id="testUuidV4"
                     role="listbox"
@@ -1428,7 +1428,7 @@ Object {
             style="height: 8px;"
           />
           <button
-            class="sc-bdvvtL iRoXbD sc-hKwDye gqAQWB"
+            class="sc-bdvvtL hrpKOI sc-hKwDye gqAQWB"
             data-testid="date-picker-submit-button"
             disabled=""
             type="button"
@@ -1459,7 +1459,7 @@ Object {
       >
         <button
           aria-label="Pourquoi me demande-t-on ma date de naissance ?"
-          class="sc-bdvvtL iRoXbD sc-eCImPb ckCibG"
+          class="sc-bdvvtL hrpKOI sc-eCImPb ckCibG"
           data-testid="Pourquoi me demande-t-on ma date de naissance ?"
           tabindex="0"
           type="button"
@@ -1515,7 +1515,7 @@ Object {
               >
                 <select
                   aria-label="Entrée pour le jour de la date de naissance"
-                  class="sc-llYSUQ gDNOSg"
+                  class="sc-llYSUQ iCPxMn"
                   data-testid="select-Jour"
                   id="testUuidV4"
                   role="listbox"
@@ -1820,7 +1820,7 @@ Object {
               >
                 <select
                   aria-label="Entrée pour le mois de la date de naissance"
-                  class="sc-llYSUQ cLQbTc"
+                  class="sc-llYSUQ ffoCeL"
                   data-testid="select-Mois"
                   id="testUuidV4"
                   role="listbox"
@@ -1973,7 +1973,7 @@ Object {
               >
                 <select
                   aria-label="Entrée pour l'année de la date de naissance"
-                  class="sc-llYSUQ EdEVQ"
+                  class="sc-llYSUQ hDtoiv"
                   data-testid="select-Année"
                   id="testUuidV4"
                   role="listbox"
@@ -2873,7 +2873,7 @@ Object {
           style="height: 8px;"
         />
         <button
-          class="sc-bdvvtL iRoXbD sc-hKwDye gqAQWB"
+          class="sc-bdvvtL hrpKOI sc-hKwDye gqAQWB"
           data-testid="date-picker-submit-button"
           disabled=""
           type="button"
@@ -2961,7 +2961,7 @@ Object {
         >
           <button
             aria-label="Pourquoi me demande-t-on ma date de naissance ?"
-            class="sc-bdvvtL iRoXbD sc-eCImPb ckCibG"
+            class="sc-bdvvtL hrpKOI sc-eCImPb ckCibG"
             data-testid="Pourquoi me demande-t-on ma date de naissance ?"
             tabindex="0"
             type="button"
@@ -3978,7 +3978,7 @@ Object {
             style="height: 8px;"
           />
           <button
-            class="sc-bdvvtL iRoXbD sc-hKwDye gqAQWB"
+            class="sc-bdvvtL hrpKOI sc-hKwDye gqAQWB"
             data-testid="date-picker-submit-button"
             disabled=""
             type="button"
@@ -4009,7 +4009,7 @@ Object {
       >
         <button
           aria-label="Pourquoi me demande-t-on ma date de naissance ?"
-          class="sc-bdvvtL iRoXbD sc-eCImPb ckCibG"
+          class="sc-bdvvtL hrpKOI sc-eCImPb ckCibG"
           data-testid="Pourquoi me demande-t-on ma date de naissance ?"
           tabindex="0"
           type="button"
@@ -5026,7 +5026,7 @@ Object {
           style="height: 8px;"
         />
         <button
-          class="sc-bdvvtL iRoXbD sc-hKwDye gqAQWB"
+          class="sc-bdvvtL hrpKOI sc-hKwDye gqAQWB"
           data-testid="date-picker-submit-button"
           disabled=""
           type="button"

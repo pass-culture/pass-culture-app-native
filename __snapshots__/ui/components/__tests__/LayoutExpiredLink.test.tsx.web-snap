@@ -200,7 +200,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       target="_blank"
     >
       <button
-        className="sc-bdvvtL edSCqH sc-iCfMLu uxgRG"
+        className="sc-bdvvtL eooxkk sc-iCfMLu uxgRG"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}
@@ -238,7 +238,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
     </a>
     <button
       aria-label="Ouvrir le gestionnaire mail pour contacter le support"
-      className="sc-bdvvtL edSCqH sc-iCfMLu uxgRG"
+      className="sc-bdvvtL eooxkk sc-iCfMLu uxgRG"
       data-testid="Ouvrir le gestionnaire mail pour contacter le support"
       onClick={[Function]}
       onDoubleClick={[Function]}
@@ -298,7 +298,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       }
     >
       <button
-        className="sc-bdvvtL edSCqH sc-gsDKAQ khldlI"
+        className="sc-bdvvtL eooxkk sc-gsDKAQ khldlI"
         disabled={false}
         onClick={[Function]}
         onDoubleClick={[Function]}
@@ -332,7 +332,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         }
       />
       <button
-        className="sc-bdvvtL edSCqH sc-iCfMLu uxgRG"
+        className="sc-bdvvtL eooxkk sc-iCfMLu uxgRG"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}

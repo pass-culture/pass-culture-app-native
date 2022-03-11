@@ -237,7 +237,7 @@ Object {
               >
                 <button
                   aria-label="Enregistrer les modifications"
-                  class="sc-gsDKAQ gLUUpO sc-hKwDye gqAQWB"
+                  class="sc-gsDKAQ kBXepR sc-hKwDye gqAQWB"
                   data-testid="Enregistrer les modifications"
                   disabled=""
                   type="button"
@@ -494,7 +494,7 @@ Object {
             >
               <button
                 aria-label="Enregistrer les modifications"
-                class="sc-gsDKAQ gLUUpO sc-hKwDye gqAQWB"
+                class="sc-gsDKAQ kBXepR sc-hKwDye gqAQWB"
                 data-testid="Enregistrer les modifications"
                 disabled=""
                 type="button"

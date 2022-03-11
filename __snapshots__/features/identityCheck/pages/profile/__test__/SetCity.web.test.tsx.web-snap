@@ -154,7 +154,7 @@ Object {
                 >
                   <button
                     aria-label="Continuer vers l'étape suivante"
-                    class="sc-bdvvtL iRoXbD sc-hKwDye gqAQWB"
+                    class="sc-bdvvtL hrpKOI sc-hKwDye gqAQWB"
                     data-testid="Continuer vers l'étape suivante"
                     disabled=""
                     type="button"
@@ -344,7 +344,7 @@ Object {
               >
                 <button
                   aria-label="Continuer vers l'étape suivante"
-                  class="sc-bdvvtL iRoXbD sc-hKwDye gqAQWB"
+                  class="sc-bdvvtL hrpKOI sc-hKwDye gqAQWB"
                   data-testid="Continuer vers l'étape suivante"
                   disabled=""
                   type="button"
