@@ -43,7 +43,7 @@ If I modified native code, I need to hard deploy:
 
 - `yarn trigger:testing:deploy:patch`
 
-This will bump the patch number, create a tag `testing_vX.X.X+1` and push it.
+This will bump the patch number, create a tag `testing/vX.X.X+1` and push it.
 CircleCI will detect the tag and launch the lanes `deploy-android-testing-hard` & `deploy-ios-testing-hard` (see `.circleci/config.yml` file).
 
 ### Staging (MES)
@@ -60,8 +60,8 @@ This will bump the `minor` version, create a tag `vX.X+1.X` and push it.
 
 - or `trigger:staging:deploy:patch`
 
-This will bump the `patch` version, create a tag `vX.X.X+1` and push it.
-CircleCI will detect the tag `vX.X.X` and launch the lanes `deploy-ios-staging-hard` & `deploy-android-staging-hard` (see `.circleci/config.yml` file)
+This will bump the `patch` version, create a tag `patch/vX.X.X+1` and push it.
+CircleCI will detect the tag `patch/vX.X.X` and launch the lanes `deploy-ios-staging-hard` & `deploy-android-staging-hard` (see `.circleci/config.yml` file)
 
 ### Production (MEP)
 
