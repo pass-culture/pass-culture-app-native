@@ -1,8 +1,13 @@
+// eslint-disable-next-line no-restricted-imports
+import { isSafari, browserVersion } from 'react-device-detect'
 import { Platform } from 'react-native'
 import { DefaultTheme } from 'styled-components/native'
 
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
+
+// Added support for the :focus-visible pseudo-class starting with Safari 15.4 (https://caniuse.com/css-focus-visible)
+const focus = isSafari && Number(browserVersion) < 15.4 ? '&:focus' : '&:focus-visible'
 
 export function customFocusOutline(theme: DefaultTheme, color?: ColorsEnum, isFocus?: boolean) {
   const outlineRules = {
@@ -15,7 +20,7 @@ export function customFocusOutline(theme: DefaultTheme, color?: ColorsEnum, isFo
   const outlineFocusWeb = isFocus
     ? outlineRules
     : {
-        ['&:focus-visible']: outlineRules,
+        [focus]: outlineRules,
         ['&:active']: { outline: 'none', opacity: theme.activeOpacity },
       }
 
