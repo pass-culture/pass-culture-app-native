@@ -117,7 +117,7 @@ const _SnackBar = (props: SnackBarProps) => {
         <SnackBarContainer isVisible={isVisible} marginTop={top} testID="snackbar-container">
           {!!Icon && <Icon testID="snackbar-icon" color={props.color} />}
           <Spacer.Flex flex={1}>
-            <Text testID="snackbar-message" color={props.color}>
+            <Text testID="snackbar-message" color={props.color} aria-live="assertive">
               {props.message}
             </Text>
           </Spacer.Flex>
