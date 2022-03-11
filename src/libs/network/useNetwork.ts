@@ -5,5 +5,6 @@ export const useNetwork = () => {
 
   return {
     isConnected: networkInfo.isConnected ?? false,
+    networkInfo,
   }
 }

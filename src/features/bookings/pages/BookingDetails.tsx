@@ -66,7 +66,9 @@ export function BookingDetails() {
     isError,
     error,
     dataUpdatedAt,
-  } = useOngoingOrEndedBooking(params.id)
+  } = useOngoingOrEndedBooking(params.id, {
+    staleTime: 0,
+  })
   const queryClient = useQueryClient()
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
   const {
@@ -95,7 +97,19 @@ export function BookingDetails() {
     },
   })
 
+  console.log('render booking details', {
+    status,
+    hasBooking: !!booking,
+    isLoading,
+    error,
+  })
   if ((isLoading || !dataUpdatedAt) && !booking) {
+    console.log('render booking details now loading', {
+      status,
+      hasBooking: !!booking,
+      isLoading,
+      error,
+    })
     if (env.ENV !== 'production') {
       eventMonitoring.captureMessage(`BookingDetails.LoadingPage`, {
         extra: {
@@ -108,6 +122,13 @@ export function BookingDetails() {
     }
     return <LoadingPage />
   } else if (!isLoading && !booking) {
+    console.log('renderBookingDetails404', {
+      hasBooking: !!booking,
+      status,
+      isLoading,
+      booking,
+      dataUpdatedAt,
+    })
     if (Platform.OS !== 'web') {
       const error = new Error('BookingNotFound')
       error.name = 'BookingNotFound'

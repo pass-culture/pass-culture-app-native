@@ -22,6 +22,7 @@ export function BookingConfirmation() {
   const amountLeft = credit && !credit.isExpired ? credit.amount : 0
 
   const displayBookingDetails = () => {
+    console.log(`will display bookingId: ${params.bookingId} | offerId: ${params.offerId}`)
     analytics.logSeeMyBooking(params.offerId)
     reset({
       index: 1,
