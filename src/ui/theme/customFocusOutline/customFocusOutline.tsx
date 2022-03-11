@@ -15,7 +15,7 @@ export function customFocusOutline(theme: DefaultTheme, color?: ColorsEnum, isFo
   const outlineFocusWeb = isFocus
     ? outlineRules
     : {
-        ['&:focus']: outlineRules,
+        ['&:focus-visible']: outlineRules,
         ['&:active']: { outline: 'none', opacity: theme.activeOpacity },
       }
 

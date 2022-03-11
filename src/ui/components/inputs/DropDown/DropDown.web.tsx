@@ -115,7 +115,7 @@ const StyledSelect = styled.select<SelectProps>`
     background-color: ${theme.colors.white};
     appearance: none;
 
-    &:focus, :active {
+    &:focus-visible, :active {
       border-color: ${theme.colors.primary};
     }
   `
