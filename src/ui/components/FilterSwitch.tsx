@@ -4,7 +4,7 @@ import styled, { DefaultTheme } from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { getShadow, getSpacing } from 'ui/theme'
+import { getShadow, getSpacing, Spacer } from 'ui/theme'
 import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 
 interface Props {
@@ -41,6 +41,7 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
 
   return (
     <FilterSwitchContainer>
+      <Spacer.Row numberOfSpaces={5} />
       <TouchableOpacity
         onPress={toggle}
         disabled={disabled}
@@ -74,7 +75,6 @@ const StyledBackgroundColor = styled.View<{ active: boolean; disabled: boolean }
     backgroundColor: getBackgroundColor(theme, active, disabled),
     width: getSpacing(14),
     height: getSpacing(8),
-    marginLeft: getSpacing(5),
     borderRadius: getSpacing(4),
     justifyContent: 'center',
   })
