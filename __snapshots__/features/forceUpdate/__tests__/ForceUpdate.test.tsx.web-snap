@@ -175,6 +175,7 @@ Pour des questions de performance et de sécurité merci d'actualiser la page po
         className="sc-bdvvtL edSCqH sc-gsDKAQ khldlI"
         onClick={[Function]}
         onDoubleClick={[Function]}
+        tabIndex={0}
         type="button"
       >
         <div

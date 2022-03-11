@@ -197,6 +197,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
         className="sc-bdvvtL edSCqH sc-gsDKAQ khldlI"
         onClick={[Function]}
         onDoubleClick={[Function]}
+        tabIndex={0}
         type="button"
       >
         <div

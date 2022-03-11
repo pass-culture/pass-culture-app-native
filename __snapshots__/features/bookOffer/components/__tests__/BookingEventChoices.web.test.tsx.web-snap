@@ -247,6 +247,7 @@ Object {
         />
         <button
           class="sc-bdvvtL iRoXbD sc-dkPtRN efdTBP"
+          tabindex="0"
           type="button"
         >
           <div
@@ -503,6 +504,7 @@ Object {
       />
       <button
         class="sc-bdvvtL iRoXbD sc-dkPtRN efdTBP"
+        tabindex="0"
         type="button"
       >
         <div

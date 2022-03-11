@@ -264,6 +264,7 @@ Array [
           className="sc-bdvvtL bHPueX sc-gsDKAQ bzsCsN"
           onClick={[Function]}
           onDoubleClick={[Function]}
+          tabIndex={0}
           type="button"
         >
           <div

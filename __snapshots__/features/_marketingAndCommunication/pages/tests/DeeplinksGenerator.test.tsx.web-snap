@@ -2339,6 +2339,7 @@ Array [
           disabled={false}
           onClick={[Function]}
           onDoubleClick={[Function]}
+          tabIndex={0}
           type="button"
         >
           <div

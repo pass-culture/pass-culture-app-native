@@ -209,6 +209,7 @@ Object {
         >
           <button
             class="sc-bdvvtL lOnRR sc-gsDKAQ cenQpD"
+            tabindex="0"
             type="button"
           >
             <div
@@ -428,6 +429,7 @@ Object {
       >
         <button
           class="sc-bdvvtL lOnRR sc-gsDKAQ cenQpD"
+          tabindex="0"
           type="button"
         >
           <div
