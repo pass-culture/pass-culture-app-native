@@ -33,6 +33,7 @@ interface Typography {
 
 export interface AppThemeType {
   appContentWidth: number
+  minScreenHeight: number
   appBarHeight: number
   navTopHeight: number
   tabBarHeight: number
@@ -47,6 +48,7 @@ export interface AppThemeType {
   isTabletViewport?: boolean // computed dynamically in ThemeProvider.tsx
   isDesktopViewport?: boolean // computed dynamically in ThemeProvider.tsx
   isTouch: boolean
+  isSmallScreen: boolean
   showTabBar: boolean // computed dynamically in ThemeProvider.tsx
   activeOpacity: number
   forms: { maxWidth: number }
@@ -316,6 +318,7 @@ export interface AppThemeType {
 
 export const theme: AppThemeType = {
   appContentWidth: getSpacing(100),
+  minScreenHeight: getSpacing(133),
   appBarHeight: getSpacing(16),
   navTopHeight: getSpacing(20),
   tabBarHeight: TAB_BAR_COMP_HEIGHT,
@@ -327,6 +330,7 @@ export const theme: AppThemeType = {
     },
   },
   isTouch,
+  isSmallScreen: false, // default value, the actual value is computed dynamically in ThemeProvider.tsx
   showTabBar: true, // default value, the actual value is computed dynamically in ThemeProvider.tsx
   activeOpacity: ACTIVE_OPACITY,
   fontFamily: {

@@ -51,6 +51,7 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
           "flexShrink": 1,
           "justifyContent": "center",
           "maxWidth": 360,
+          "overflow": "scroll",
           "paddingHorizontal": 16,
         },
       ]
@@ -403,6 +404,7 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
           "flexShrink": 1,
           "justifyContent": "center",
           "maxWidth": 360,
+          "overflow": "scroll",
           "paddingHorizontal": 16,
         },
       ]

@@ -169,6 +169,8 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
             "height": "100%",
             "msFlexAlign": "center",
             "msFlexDirection": "column",
+            "overflowX": "scroll",
+            "overflowY": "scroll",
             "paddingTop": "12px",
           }
         }

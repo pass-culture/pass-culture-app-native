@@ -135,6 +135,7 @@ const Content = styled.View({
   alignItems: 'center',
   paddingHorizontal: getSpacing(4),
   maxWidth: getSpacing(90),
+  overflow: 'scroll',
 })
 
 const BottomContainer = styled.View(({ theme }) => ({

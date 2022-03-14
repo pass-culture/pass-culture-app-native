@@ -43,6 +43,7 @@ const ChildrenContainer = styled.View(({ theme }) => ({
   borderTopRightRadius: 22,
   paddingTop: getSpacing(3),
   alignItems: 'center',
+  overflow: 'scroll',
 }))
 
 const CenteredWebContainer = styled.View(({ theme }) => ({

@@ -3,7 +3,7 @@ import React, { FunctionComponent, RefObject, useEffect, useMemo } from 'react'
 import { View } from 'react-native'
 import * as Animatable from 'react-native-animatable'
 import Swiper from 'react-native-web-swiper'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { analytics } from 'libs/analytics'
 import LottieView from 'libs/lottie'
@@ -46,6 +46,7 @@ export let didFadeIn = false
 export const GenericAchievementCard: FunctionComponent<AchievementCardProps> = (
   props: AchievementCardProps
 ) => {
+  const { isSmallScreen } = useTheme()
   const grid = useGrid()
   const animationRef = React.useRef<LottieView>(null)
   const animatedButtonRef = React.useRef<Animatable.View & View>(null)
@@ -130,6 +131,7 @@ Those props are provided by the GenericAchievementCard and must be passed down t
       <StyledBody>{props.text}</StyledBody>
       <Spacer.Flex flex={2} />
       <BottomButtonsContainer
+        isSmallScreen={isSmallScreen}
         paddingBottom={getSpacing(
           props.ignoreBottomPadding ? grid({ default: 10, sm: 2, md: 5 }, 'height') : 10
         )}>
@@ -159,11 +161,13 @@ const FlexContainer = styled.View<{ marginTop: number }>((props) => ({
   marginTop: props.marginTop,
 }))
 
-const BottomButtonsContainer = styled.View<{ paddingBottom: number }>(({ paddingBottom }) => ({
-  flex: 1,
-  justifyContent: 'flex-end',
-  paddingBottom,
-}))
+const BottomButtonsContainer = styled.View<{ isSmallScreen: boolean; paddingBottom: number }>(
+  ({ isSmallScreen, paddingBottom }) => ({
+    flex: isSmallScreen ? '0 0 auto' : 1,
+    justifyContent: 'flex-end',
+    paddingBottom,
+  })
+)
 
 const InvisibleButtonHeight = styled.View({
   height: getSpacing(12),
@@ -195,4 +199,5 @@ const StyledSubTitle = styled(Typo.Title2)({
 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
+  overflow: 'scroll',
 })

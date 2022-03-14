@@ -8,10 +8,12 @@ export function useComputedTheme<A extends DefaultThemeNative>(theme: A) {
   const { width: windowWidth } = useWindowDimensions()
   const tabletMinWidth = theme.breakpoints.md
   const desktopMinWidth = theme.breakpoints.lg
+  const minScreenHeight = theme.minScreenHeight
 
   const isMobileViewport = useMediaQuery({ maxWidth: tabletMinWidth })
   const isTabletViewport = useMediaQuery({ minWidth: tabletMinWidth, maxWidth: desktopMinWidth })
   const isDesktopViewport = useMediaQuery({ minWidth: desktopMinWidth })
+  const isSmallScreen = useMediaQuery({ maxHeight: minScreenHeight })
   const showTabBar = theme.isTouch || !!isMobileViewport
   const appContentWidth = Math.min(desktopMinWidth, windowWidth)
 
@@ -21,10 +23,18 @@ export function useComputedTheme<A extends DefaultThemeNative>(theme: A) {
       isMobileViewport,
       isTabletViewport,
       isDesktopViewport,
+      isSmallScreen,
       showTabBar,
       appContentWidth,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [isMobileViewport, isTabletViewport, isDesktopViewport, showTabBar, appContentWidth]
+    [
+      isMobileViewport,
+      isTabletViewport,
+      isDesktopViewport,
+      isSmallScreen,
+      showTabBar,
+      appContentWidth,
+    ]
   )
 }

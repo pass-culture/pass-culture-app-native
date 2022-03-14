@@ -1,7 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { useState, useMemo, useRef, useEffect } from 'react'
 import Picker from 'react-mobile-picker'
-import { useWindowDimensions } from 'react-native'
 import { Calendar as RNCalendar, LocaleConfig } from 'react-native-calendars'
 import { Theme as RNCalendarTheme, DateData } from 'react-native-calendars/src/types'
 import styled, { useTheme } from 'styled-components/native'
@@ -40,9 +39,6 @@ const RN_CALENDAR_STYLE: React.ComponentProps<typeof RNCalendar>['style'] = {
   marginHorizontal: getSpacing(-2),
 }
 
-// Minimum window height for the correct display of the calendar modal on desktop, used specifically for zoom accessibility
-const MIN_SCREEN_HEIGHT = getSpacing(133)
-
 export const CalendarPicker: React.FC<Props> = ({
   selectedDate,
   visible,
@@ -50,8 +46,6 @@ export const CalendarPicker: React.FC<Props> = ({
   setSelectedDate,
 }) => {
   const { isTouch, fontFamily, colors } = useTheme()
-  const { height: windowHeight } = useWindowDimensions()
-  const isSmallScreen = windowHeight < MIN_SCREEN_HEIGHT
   const calendarTheme: RNCalendarTheme = useMemo(
     () => ({
       textSectionTitleColor: colors.greyDark,
@@ -157,7 +151,6 @@ export const CalendarPicker: React.FC<Props> = ({
       onLeftIconPress={undefined}
       rightIconAccessibilityLabel={t`Fermer le calendrier`}
       rightIcon={Close}
-      contentHeight={isSmallScreen ? windowHeight : undefined}
       onRightIconPress={hideCalendar}>
       {isTouch ? (
         <CalendarPickerWrapper>

@@ -297,6 +297,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
+                        "overflow": "scroll",
                         "textAlign": "center",
                       },
                     ]
@@ -317,6 +318,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                   }
                 />
                 <View
+                  isSmallScreen={false}
                   paddingBottom={40}
                   style={
                     Array [
@@ -918,6 +920,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
+                        "overflow": "scroll",
                         "textAlign": "center",
                       },
                     ]
@@ -938,6 +941,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                   }
                 />
                 <View
+                  isSmallScreen={false}
                   paddingBottom={40}
                   style={
                     Array [
@@ -1088,6 +1092,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
+                        "overflow": "scroll",
                         "textAlign": "center",
                       },
                     ]
@@ -1108,6 +1113,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                   }
                 />
                 <View
+                  isSmallScreen={false}
                   paddingBottom={40}
                   style={
                     Array [
@@ -1258,6 +1264,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
+                        "overflow": "scroll",
                         "textAlign": "center",
                       },
                     ]
@@ -1278,6 +1285,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                   }
                 />
                 <View
+                  isSmallScreen={false}
                   paddingBottom={40}
                   style={
                     Array [
