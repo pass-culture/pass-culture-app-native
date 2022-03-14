@@ -2638,6 +2638,16 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "width": 20,
+                  },
+                ]
+              }
+            />
+            <View
               accessibilityLabel="Interrupteur filtre offres gratuites"
               accessibilityRole="switch"
               accessibilityState={
@@ -2680,7 +2690,6 @@ exports[`SearchFilter component should render correctly 1`] = `
                       "borderRadius": 16,
                       "height": 32,
                       "justifyContent": "center",
-                      "marginLeft": 20,
                       "width": 56,
                     },
                   ]
@@ -2801,6 +2810,16 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "width": 20,
+                  },
+                ]
+              }
+            />
+            <View
               accessibilityLabel="Interrupteur filtre offres duo"
               accessibilityRole="switch"
               accessibilityState={
@@ -2843,7 +2862,6 @@ exports[`SearchFilter component should render correctly 1`] = `
                       "borderRadius": 16,
                       "height": 32,
                       "justifyContent": "center",
-                      "marginLeft": 20,
                       "width": 56,
                     },
                   ]
@@ -2964,6 +2982,16 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "width": 20,
+                  },
+                ]
+              }
+            />
+            <View
               accessibilityLabel="Interrupteur filtre nouvelles offres"
               accessibilityRole="switch"
               accessibilityState={
@@ -3006,7 +3034,6 @@ exports[`SearchFilter component should render correctly 1`] = `
                       "borderRadius": 16,
                       "height": 32,
                       "justifyContent": "center",
-                      "marginLeft": 20,
                       "width": 56,
                     },
                   ]
@@ -3127,6 +3154,16 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "width": 20,
+                  },
+                ]
+              }
+            />
+            <View
               accessibilityLabel="Interrupteur filtre dates"
               accessibilityRole="switch"
               accessibilityState={
@@ -3169,7 +3206,6 @@ exports[`SearchFilter component should render correctly 1`] = `
                       "borderRadius": 16,
                       "height": 32,
                       "justifyContent": "center",
-                      "marginLeft": 20,
                       "width": 56,
                     },
                   ]
@@ -3314,6 +3350,16 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <View
+              numberOfSpaces={5}
+              style={
+                Array [
+                  Object {
+                    "width": 20,
+                  },
+                ]
+              }
+            />
+            <View
               accessibilityLabel="Interrupteur filtre heures"
               accessibilityRole="switch"
               accessibilityState={
@@ -3356,7 +3402,6 @@ exports[`SearchFilter component should render correctly 1`] = `
                       "borderRadius": 16,
                       "height": 32,
                       "justifyContent": "center",
-                      "marginLeft": 20,
                       "width": 56,
                     },
                   ]

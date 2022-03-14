@@ -15,6 +15,7 @@ interface Props {
 /**
  * @param props.headerTransition should be between animated between 0 and 1
  */
+
 export const BookingDetailsHeader: React.FC<Props> = (props) => {
   const { headerTransition, title } = props
   const { goBack } = useGoBack(...getTabNavConfig('Bookings'))
@@ -35,13 +36,12 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
               testID={t`Revenir en arrière`}
             />
           </IconContainer>
-
+          <Spacer.Flex />
           <Title style={{ opacity: headerTransition }}>
             <StyledBody>{title}</StyledBody>
           </Title>
-
-          <Spacer.Row numberOfSpaces={3} />
           <Spacer.Flex />
+          <IconContainer />
         </Row>
         <Spacer.Column numberOfSpaces={2} />
       </HeaderContainer>
@@ -61,14 +61,15 @@ const Row = styled.View({
   alignItems: 'center',
 })
 
-const IconContainer = styled.View({
-  paddingLeft: getSpacing(3),
-  flex: 1,
-})
+const IconContainer = styled.View(({ theme }) => ({
+  marginLeft: getSpacing(3),
+  minWidth: theme.icons.sizes.standard,
+}))
 
 const Title = styled(Animated.Text).attrs({ numberOfLines: 1 })({
   textAlign: 'center',
   flex: 5,
+  marginHorizontal: getSpacing(3),
 })
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({

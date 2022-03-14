@@ -208,7 +208,7 @@ const SectionBody = webStyled(Dd)(({ theme }) => ({
 }))
 const SectionReportOffer = styled.View({
   paddingVertical: getSpacing(5),
-  marginLeft: -getSpacing(2),
+  alignItems: 'flex-start',
 })
 
 const MarginContainer = styled.View({

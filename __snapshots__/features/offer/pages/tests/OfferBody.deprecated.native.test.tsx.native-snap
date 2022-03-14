@@ -1683,7 +1683,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               style={
                                 Array [
                                   Object {
-                                    "marginLeft": -8,
+                                    "alignItems": "flex-start",
                                     "paddingVertical": 20,
                                   },
                                 ]
@@ -4345,7 +4345,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                               style={
                                 Array [
                                   Object {
-                                    "marginLeft": -8,
+                                    "alignItems": "flex-start",
                                     "paddingVertical": 20,
                                   },
                                 ]

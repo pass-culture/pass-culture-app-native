@@ -73,16 +73,16 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
         <MoreInformationContainer>
           <StyledCaption>
             {t`Pour plus d'informations, nous t'invitons à consulter notre`}
-            <Spacer.Row numberOfSpaces={1} />
-            <A href={env.COOKIES_POLICY_LINK}>
-              <ButtonQuaternary
-                wording={cookieButtonText}
-                icon={ExternalSiteFilled}
-                onPress={openCookiesPolicyExternalUrl}
-                inline
-              />
-            </A>
           </StyledCaption>
+          <Spacer.Row numberOfSpaces={1} />
+          <A href={env.COOKIES_POLICY_LINK}>
+            <ButtonQuaternary
+              wording={cookieButtonText}
+              icon={ExternalSiteFilled}
+              onPress={openCookiesPolicyExternalUrl}
+              inline
+            />
+          </A>
         </MoreInformationContainer>
         <Spacer.Column numberOfSpaces={4} />
         <Separator />
@@ -122,4 +122,5 @@ const Container = styled.View(({ theme }) => ({
 const MoreInformationContainer = styled.View({
   flexDirection: 'row',
   flexWrap: 'wrap',
+  alignItems: 'center',
 })
