@@ -955,6 +955,7 @@ msgid "Environ 10 jours"
 msgstr "Environ 10 jours"
 
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
+#: src/ui/components/snackBar/mapSnackBarTypeToStyle.tsx
 msgid "Erreur"
 msgstr "Erreur"
 
@@ -1187,6 +1188,10 @@ msgstr "Indique ton code postal et choisis ta ville"
 msgid "Indique un lieu pour découvrir toutes les offres de ce lieu puis clique sur le lieu pour valider ton choix"
 msgstr "Indique un lieu pour découvrir toutes les offres de ce lieu puis clique sur le lieu pour valider ton choix"
 
+#: src/ui/components/snackBar/mapSnackBarTypeToStyle.tsx
+msgid "Information"
+msgstr "Information"
+
 #: src/features/profile/pages/PersonalData.tsx
 #: src/features/profile/pages/Profile.tsx
 msgid "Informations personnelles"
@@ -1366,6 +1371,10 @@ msgstr "La vérification de ton identité n’a pas pu aboutir. Tu peux créer u
 #: src/features/profile/components/BeneficiaryCeilings.tsx
 msgid "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles."
 msgstr "Le but du pass Culture est de renforcer tes pratiques culturelles, mais aussi d'en créer de nouvelles."
+
+#: src/libs/share/WebShareModal.web.tsx
+msgid "Le lien a été copié dans le presse-papier !"
+msgstr "Le lien a été copié dans le presse-papier !"
 
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Le lien est expiré !"
@@ -1575,6 +1584,7 @@ msgstr "Modifier"
 msgid "Modifier mon e-mail"
 msgstr "Modifier mon e-mail"
 
+#: src/features/profile/components/ExBeneficiaryHeader.tsx
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
 msgid "Mon crédit est expiré, que faire ?"
 msgstr "Mon crédit est expiré, que faire ?"
@@ -2420,6 +2430,10 @@ msgstr "Sortie"
 #: src/libs/parsers/venueType.ts
 msgid "Spectacle vivant"
 msgstr "Spectacle vivant"
+
+#: src/ui/components/snackBar/mapSnackBarTypeToStyle.tsx
+msgid "Succès"
+msgstr "Succès"
 
 #: src/features/profile/pages/Profile.tsx
 msgid "Suivre pass Culture"
