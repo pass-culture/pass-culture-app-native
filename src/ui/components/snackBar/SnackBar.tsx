@@ -15,7 +15,7 @@ import styled from 'styled-components/native'
 import { ProgressBar } from 'ui/components/snackBar/ProgressBar'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Close as DefaultClose } from 'ui/svg/icons/Close'
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -30,7 +30,7 @@ type RefType = RefObject<
 export type SnackBarProps = {
   visible: boolean
   message: string
-  icon: FunctionComponent<IconInterface> | undefined
+  icon: FunctionComponent<AccessibleIcon> | undefined
   onClose?: () => void
   timeout?: number
   backgroundColor: ColorsEnum
@@ -62,10 +62,12 @@ const _SnackBar = (props: SnackBarProps) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const onClose = useCallback(() => props.onClose?.(), [])
 
+  const iconLabel = props.visible ? {} : { accessibilityLabel: undefined }
   const Icon =
     !!props.icon &&
     styled(props.icon).attrs(({ theme }) => ({
       size: theme.icons.sizes.small,
+      ...iconLabel,
     }))``
 
   // Visibility effect
@@ -114,10 +116,14 @@ const _SnackBar = (props: SnackBarProps) => {
         easing="ease"
         duration={animationDuration}
         ref={containerRef}>
-        <SnackBarContainer isVisible={isVisible} marginTop={top} testID="snackbar-container">
+        <SnackBarContainer
+          isVisible={isVisible}
+          marginTop={top}
+          testID="snackbar-container"
+          aria-live="assertive">
           {!!Icon && <Icon testID="snackbar-icon" color={props.color} />}
           <Spacer.Flex flex={1}>
-            <Text testID="snackbar-message" color={props.color} aria-live="assertive">
+            <Text testID="snackbar-message" color={props.color}>
               {props.message}
             </Text>
           </Spacer.Flex>

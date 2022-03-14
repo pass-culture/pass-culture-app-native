@@ -14,6 +14,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Separator } from 'ui/components/Separator'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Close } from 'ui/svg/icons/Close'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
@@ -32,6 +33,7 @@ export const WebShareModal = ({
   shareContent,
   dismissModal,
 }: WebShareModalProps) => {
+  const { showSuccessSnackBar } = useSnackBarContext()
   const { message, url } = shareContent
 
   const socialButtonProps = [
@@ -73,6 +75,16 @@ export const WebShareModal = ({
         ),
     },
   ]
+
+  const onCopyPress = () => {
+    navigator.clipboard.writeText(url)
+    showSuccessSnackBar({
+      message: t`Le lien a été copié dans le presse-papier\u00a0!`,
+      timeout: SNACK_BAR_TIME_OUT,
+    })
+    dismissModal()
+  }
+
   return (
     <AppModal
       visible={visible}
@@ -93,7 +105,7 @@ export const WebShareModal = ({
               wording={t`Copier`}
               accessibilityLabel={t`Copier le lien`}
               icon={Duplicate}
-              onPress={() => navigator.clipboard.writeText(url)}
+              onPress={onCopyPress}
             />
           </NonSocialButtonsItem>
           <NonSocialButtonsItem>
