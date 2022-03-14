@@ -61,10 +61,8 @@ exports[`BookingDetails should render correctly 1`] = `
         style={
           Array [
             Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "paddingLeft": 12,
+              "marginLeft": 12,
+              "minWidth": 32,
             },
           ]
         }
@@ -167,6 +165,17 @@ exports[`BookingDetails should render correctly 1`] = `
           </View>
         </View>
       </View>
+      <View
+        style={
+          Array [
+            Object {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      />
       <Text
         collapsable={false}
         nativeID="animatedComponent"
@@ -176,6 +185,7 @@ exports[`BookingDetails should render correctly 1`] = `
             "flexBasis": 0,
             "flexGrow": 5,
             "flexShrink": 1,
+            "marginHorizontal": 12,
             "opacity": 0,
             "textAlign": "center",
           }
@@ -197,11 +207,12 @@ exports[`BookingDetails should render correctly 1`] = `
         </Text>
       </Text>
       <View
-        numberOfSpaces={3}
         style={
           Array [
             Object {
-              "width": 12,
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             },
           ]
         }
@@ -210,9 +221,8 @@ exports[`BookingDetails should render correctly 1`] = `
         style={
           Array [
             Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
+              "marginLeft": 12,
+              "minWidth": 32,
             },
           ]
         }
@@ -1270,7 +1280,7 @@ exports[`BookingDetails should render correctly 1`] = `
                   style={
                     Object {
                       "alignItems": "center",
-                      "backgroundColor": "#ffffff",
+                      "backgroundColor": "transparent",
                       "borderRadius": 24,
                       "flexDirection": "row",
                       "justifyContent": "center",

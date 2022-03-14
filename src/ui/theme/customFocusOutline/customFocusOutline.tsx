@@ -6,7 +6,11 @@ import { DefaultTheme } from 'styled-components/native'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
-// Added support for the :focus-visible pseudo-class starting with Safari 15.4 (https://caniuse.com/css-focus-visible)
+/*
+ * The ':focus-visible' pseudo-class support starting with Safari 15.4 (https://caniuse.com/css-focus-visible)
+ * The WICG ':focus-visible' polyfill (https://github.com/WICG/focus-visible) doesn't work.
+ * If we add ':focus-visible', versions of Safari < 15.4 will not have button focus.
+ */
 const focus = isSafari && Number(browserVersion) < 15.4 ? '&:focus' : '&:focus-visible'
 
 export function customFocusOutline(theme: DefaultTheme, color?: ColorsEnum, isFocus?: boolean) {
