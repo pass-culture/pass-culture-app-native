@@ -1505,6 +1505,10 @@ msgstr "Maintenance"
 msgid "Maintenance en cours"
 msgstr "Maintenance en cours"
 
+#: src/ui/components/inputs/Slider.tsx
+msgid "Maximum :"
+msgstr "Maximum :"
+
 #: src/features/navigation/RootNavigator/routes.ts
 #: src/features/profile/pages/LegalNotices/LegalNotices.tsx
 #: src/features/profile/pages/Profile.tsx
@@ -1544,6 +1548,10 @@ msgstr "Mets cette offre en favoris : tu recevras une notification avec un lien
 msgid "Mettre en favoris"
 msgstr "Mettre en favoris"
 
+#: src/ui/components/inputs/Slider.tsx
+msgid "Minimum :"
+msgstr "Minimum :"
+
 #: src/features/forceUpdate/ForceUpdate.tsx
 #: src/features/forceUpdate/ForceUpdate.tsx
 msgid "Mise à jour de l'application"
@@ -1575,6 +1583,7 @@ msgstr "Modifier"
 msgid "Modifier mon e-mail"
 msgstr "Modifier mon e-mail"
 
+#: src/features/profile/components/ExBeneficiaryHeader.tsx
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
 msgid "Mon crédit est expiré, que faire ?"
 msgstr "Mon crédit est expiré, que faire ?"
