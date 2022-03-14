@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import MultiSlider from '@ptomasroos/react-native-multi-slider'
 import React, { useEffect, useRef, useState } from 'react'
 import { Platform, View } from 'react-native'
@@ -29,6 +30,8 @@ export function Slider(props: Props) {
   const min = props.min || DEFAULT_MIN
   const max = props.max || DEFAULT_MAX
   const step = props.step || DEFAULT_STEP
+  const minLabel = t`Minimum\u00a0:`
+  const maxLabel = t`Maximum\u00a0:`
 
   const [values, setValues] = useState<number[]>(props.values ?? DEFAULT_VALUES)
   const { formatValues = (s: number) => s } = props
@@ -79,6 +82,14 @@ export function Slider(props: Props) {
         ;[leftCursor, rightCursor] = htmlRef.querySelectorAll('[data-testid="slider-control"]')
         leftCursor?.addEventListener('keydown', updateLeftCursor)
         rightCursor?.addEventListener('keydown', updateRightCursor)
+
+        leftCursor?.setAttribute('role', 'slider')
+        rightCursor?.setAttribute('role', 'slider')
+        leftCursor?.setAttribute(
+          'aria-valuetext',
+          `${rightCursor ? minLabel : maxLabel} ${formatValues(values[0])}`
+        )
+        rightCursor?.setAttribute('aria-valuetext', `${maxLabel} ${formatValues(values[1])}`)
       }
     }
 
