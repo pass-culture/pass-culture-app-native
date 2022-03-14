@@ -127,6 +127,7 @@ exports[`<IdentityCheckValidation /> should render IdentityCheckValidation compo
               "display": "flex",
               "flexDirection": "column",
               "height": "100%",
+              "overflow": "scroll",
               "paddingTop": 12,
             },
           ]

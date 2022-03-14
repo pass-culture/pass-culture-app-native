@@ -20,6 +20,8 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
       "msFlexPositive": 1,
       "msFlexPreferredSize": "0px",
       "msGridRowAlign": "center",
+      "overflowX": "scroll",
+      "overflowY": "scroll",
       "paddingLeft": "20px",
       "paddingRight": "20px",
     }

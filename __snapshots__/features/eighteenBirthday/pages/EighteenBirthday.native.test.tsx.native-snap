@@ -225,6 +225,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                         "fontFamily": "Montserrat-Regular",
                         "fontSize": 15,
                         "lineHeight": 20,
+                        "overflow": "scroll",
                         "textAlign": "center",
                       },
                     ]
@@ -245,6 +246,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                   }
                 />
                 <View
+                  isSmallScreen={false}
                   paddingBottom={40}
                   style={
                     Array [

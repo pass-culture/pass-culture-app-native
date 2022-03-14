@@ -109,6 +109,7 @@ exports[`ThirdCard should render third card 1`] = `
           "fontFamily": "Montserrat-Regular",
           "fontSize": 15,
           "lineHeight": 20,
+          "overflow": "scroll",
           "textAlign": "center",
         },
       ]
@@ -129,6 +130,7 @@ exports[`ThirdCard should render third card 1`] = `
     }
   />
   <View
+    isSmallScreen={false}
     paddingBottom={40}
     style={
       Array [

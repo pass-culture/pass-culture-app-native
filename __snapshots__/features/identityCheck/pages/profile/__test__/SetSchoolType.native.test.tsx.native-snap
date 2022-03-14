@@ -127,6 +127,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
               "display": "flex",
               "flexDirection": "column",
               "height": "100%",
+              "overflow": "scroll",
               "paddingTop": 12,
             },
           ]
@@ -855,6 +856,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
               "display": "flex",
               "flexDirection": "column",
               "height": "100%",
+              "overflow": "scroll",
               "paddingTop": 12,
             },
           ]
