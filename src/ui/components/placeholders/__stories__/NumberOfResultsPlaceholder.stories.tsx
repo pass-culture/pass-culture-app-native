@@ -1,9 +1,10 @@
 import React from 'react'
+
 import { NumberOfResultsPlaceholder } from 'ui/components/placeholders/Placeholders'
 
 export default {
-  title: 'ui/placeholders/NumberOfResultsPlaceholder',
-  component: <NumberOfResultsPlaceholder />,
+  title: 'ui/placeholders',
 }
 
-export const Default = () => <NumberOfResultsPlaceholder />
+export const NumberOfResults = () => <NumberOfResultsPlaceholder />
+NumberOfResults.storyName = 'NumberOfResultsPlaceholder'

@@ -6,15 +6,15 @@ import styled from 'styled-components/native'
 
 import { useBookings } from 'features/bookings/api/queries'
 import { EndedBookingsSection } from 'features/bookings/pages/EndedBookingsSection'
-import {
-  BookingHitPlaceholder,
-  NumberOfBookingsPlaceholder,
-} from 'features/search/components/Placeholders'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useNetwork } from 'libs/network/useNetwork'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import {
+  BookingHitPlaceholder,
+  NumberOfBookingsPlaceholder,
+} from 'ui/components/placeholders/Placeholders'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Typo } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'

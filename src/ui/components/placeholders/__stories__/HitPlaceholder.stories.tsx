@@ -1,9 +1,10 @@
 import React from 'react'
+
 import { HitPlaceholder } from 'ui/components/placeholders/Placeholders'
 
 export default {
-  title: 'ui/placeholders/HitPlaceholder',
-  component: <HitPlaceholder />,
+  title: 'ui/placeholders',
 }
 
-export const Default = () => <HitPlaceholder />
+export const Hit = () => <HitPlaceholder />
+Hit.storyName = 'HitPlaceholder'
