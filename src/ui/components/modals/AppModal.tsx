@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useRef, useState, useMemo, useCallback } from 'react'
 import { LayoutChangeEvent, ScrollView, useWindowDimensions } from 'react-native'
 import { ReactNativeModal } from 'react-native-modal'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -16,7 +17,6 @@ type Props = {
   title: string
   visible: boolean
   titleNumberOfLines?: number
-  contentHeight?: number
   shouldDisplayOverlay?: boolean
   scrollEnabled?: boolean
   onBackdropPress?: () => void
@@ -36,7 +36,6 @@ export const AppModal: FunctionComponent<Props> = ({
   onRightIconPress,
   children,
   titleNumberOfLines,
-  contentHeight,
   shouldDisplayOverlay = true,
   onBackdropPress,
   scrollEnabled = true,
@@ -52,6 +51,7 @@ export const AppModal: FunctionComponent<Props> = ({
 
   const { height: windowHeight, width: windowWidth } = useWindowDimensions()
   const { bottom } = useCustomSafeInsets()
+  const { isSmallScreen } = useTheme()
 
   const [keyboardHeight, setKeyboardHeight] = useState(0)
   const [scrollViewContentHeight, setScrollViewContentHeight] = useState(300)
@@ -111,7 +111,7 @@ export const AppModal: FunctionComponent<Props> = ({
       deviceHeight={windowHeight}
       deviceWidth={windowWidth}>
       <ModalContainer
-        height={contentHeight || modalHeight}
+        height={isSmallScreen ? windowHeight : modalHeight}
         testID="modalContainer"
         aria-describedby={modalId}>
         <ModalHeader

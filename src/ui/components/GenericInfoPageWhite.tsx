@@ -58,6 +58,7 @@ const Container = styled.View(({ theme }) => ({
   flex: 1,
   paddingHorizontal: getSpacing(5),
   maxWidth: theme.contentPage.maxWidth,
+  overflow: 'scroll',
 }))
 
 const StyledTitle = styled(Typo.Title1)({
