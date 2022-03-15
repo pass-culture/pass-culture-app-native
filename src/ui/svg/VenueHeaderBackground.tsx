@@ -13,7 +13,7 @@ const NotMemoizedVenueHeaderBackground: React.FC<Props> = (props) => {
   const LINEAR_GRADIENT_1_ID = uuidv1()
 
   return (
-    <Svg height={height} width={width} viewBox="0 0 375 259" fill="none">
+    <Svg height={height} width={width} viewBox="0 0 375 259" fill="none" aria-hidden>
       <Defs>
         <LinearGradient
           id={LINEAR_GRADIENT_1_ID}

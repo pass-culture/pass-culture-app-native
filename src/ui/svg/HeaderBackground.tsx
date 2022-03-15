@@ -17,7 +17,12 @@ const NotMemoizedHeaderBackground: React.FC<Props> = (props) => {
   const PATH_ID = uuidv1()
   const MASK_ID = uuidv1()
   return (
-    <Svg preserveAspectRatio="none" height={height} width={width} viewBox={`0 0 375 352`}>
+    <Svg
+      preserveAspectRatio="none"
+      height={height}
+      width={width}
+      viewBox={`0 0 375 352`}
+      aria-hidden>
       <Defs>
         <LinearGradient
           id={LINEAR_GRADIENT_1_ID}

@@ -65,6 +65,11 @@ export interface AppThemeType {
     style: string
     offSet: number
   }
+  ticket: {
+    maxWidth: number
+    minHeight: number
+    qrCodeSize: number
+  }
   typography: {
     hero: Typography
     title1: Typography
@@ -346,6 +351,11 @@ export const theme: AppThemeType = {
     color: ColorsEnum.PRIMARY,
     style: 'solid',
     offSet: getSpacing(0.5),
+  },
+  ticket: {
+    maxWidth: 300,
+    minHeight: 200,
+    qrCodeSize: 170,
   },
   typography: {
     hero: {

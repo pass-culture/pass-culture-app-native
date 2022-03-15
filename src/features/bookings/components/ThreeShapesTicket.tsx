@@ -9,11 +9,9 @@ type Props = PropsWithChildren<{
   width?: number
 }>
 
-const TICKET_MAX_WIDTH = 300
-
 export function ThreeShapesTicket(props: Props) {
-  const { appContentWidth } = useTheme()
-  const defaultWidth = Math.min(TICKET_MAX_WIDTH, appContentWidth - getSpacing(15))
+  const { appContentWidth, ticket } = useTheme()
+  const defaultWidth = Math.min(ticket.maxWidth, appContentWidth - getSpacing(15))
   const width = props.width || defaultWidth
   const contentWidth = width - 5
   return (

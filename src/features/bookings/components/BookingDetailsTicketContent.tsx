@@ -7,10 +7,7 @@ import styled from 'styled-components/native'
 
 import { CategoryIdEnum, BookingOfferResponse, BookingReponse } from 'api/gen'
 import { TicketCode } from 'features/bookings/atoms/TicketCode'
-import {
-  TICKET_MIN_HEIGHT,
-  QR_CODE_SIZE,
-} from 'features/bookings/components/ThreeShapesTicket.constants'
+// import { QR_CODE_SIZE } from 'features/bookings/components/ThreeShapesTicket.constants'
 import { getBookingProperties } from 'features/bookings/helpers'
 import { openUrl } from 'features/navigation/helpers'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
@@ -88,9 +85,15 @@ const Ean = ({ offer }: EanProps) => (
 type QrCodeViewProps = {
   qrCodeData: string
 }
+
+const StyledQRCode = styled(QRCode).attrs<{ value: QrCodeViewProps }>(({ theme, value }) => ({
+  value,
+  size: theme.ticket.qrCodeSize,
+}))``
+
 const QrCodeView = ({ qrCodeData }: QrCodeViewProps) => (
   <QrCodeContainer testID="qr-code">
-    <QRCode value={qrCodeData} size={QR_CODE_SIZE} />
+    <StyledQRCode value={qrCodeData} />
   </QrCodeContainer>
 )
 
@@ -105,14 +108,14 @@ const Title = styled(Typo.Title3)({
   maxWidth: '100%',
 })
 
-const TicketInnerContent = styled.View({
+const TicketInnerContent = styled.View(({ theme }) => ({
   justifyContent: 'center',
   paddingHorizontal: getSpacing(7),
   paddingTop: getSpacing(2),
-  minHeight: TICKET_MIN_HEIGHT,
+  minHeight: theme.ticket.minHeight,
   // Improve Web spacings using non default View boxSizing
   ...(Platform.OS === 'web' ? { boxSizing: 'content-box' } : {}),
-})
+}))
 
 const QrCodeContainer = styled.View({
   alignItems: 'center',

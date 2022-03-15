@@ -22,7 +22,8 @@ const NotMemoizedRectangle: React.FC<Omit<IconInterface, 'color'> & { height?: n
       height={height}
       viewBox="0 0 375 8"
       preserveAspectRatio="none"
-      testID={testID}>
+      testID={testID}
+      aria-hidden>
       <Defs>
         <LinearGradient id={LINEAR_GRADIENT_ID} x1="0%" x2="100%" y1="49.977%" y2="50.023%">
           <Stop offset="0%" stopColor={primary} />

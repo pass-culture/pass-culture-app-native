@@ -40,7 +40,7 @@ function BackgroundSvg({ width = '100%', height = '100%' }: BackgroundProps) {
   const { id: idd, fill: filld } = svgIdentifier()
   const { id: ide, xlinkHref: xlinkHrefe } = svgIdentifier()
   return (
-    <Svg width={width} height={height} viewBox="0 0 375 667" preserveAspectRatio="none">
+    <Svg width={width} height={height} viewBox="0 0 375 667" preserveAspectRatio="none" aria-hidden>
       <Defs>
         <LinearGradient id={idb} x1="65.805%" x2="47.731%" y1="26.588%" y2="116.28%">
           <Stop offset="0%" stopColor={primary} />
