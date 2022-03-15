@@ -61,11 +61,13 @@ const Container = styled.View({
 })
 
 export const ColorsEnumPalette = Colors.bind({})
+ColorsEnumPalette.storyName = 'ColorsEnumPalette'
 ColorsEnumPalette.args = {
   colorsPalette: ColorsEnum,
 }
 
 export const UniqueColorsPalette = Colors.bind({})
+UniqueColorsPalette.storyName = 'UniqueColorsPalette'
 UniqueColorsPalette.args = {
   colorsPalette: UniqueColors,
 }

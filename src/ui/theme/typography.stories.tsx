@@ -17,6 +17,7 @@ Hero.args = {
 export const Title1: ComponentStory<typeof Typo.Title1> = ({ children }) => (
   <Typo.Title1>{children}</Typo.Title1>
 )
+Title1.storyName = 'Title1'
 Title1.args = {
   children: 'Title1',
 }
@@ -24,6 +25,7 @@ Title1.args = {
 export const Title2: ComponentStory<typeof Typo.Title2> = ({ children }) => (
   <Typo.Title2>{children}</Typo.Title2>
 )
+Title2.storyName = 'Title2'
 Title2.args = {
   children: 'Title2',
 }
@@ -31,6 +33,7 @@ Title2.args = {
 export const Title3: ComponentStory<typeof Typo.Title3> = ({ children }) => (
   <Typo.Title3>{children}</Typo.Title3>
 )
+Title3.storyName = 'Title3'
 Title3.args = {
   children: 'Title3',
 }
@@ -38,6 +41,7 @@ Title3.args = {
 export const Title4: ComponentStory<typeof Typo.Title4> = ({ children }) => (
   <Typo.Title4>{children}</Typo.Title4>
 )
+Title4.storyName = 'Title4'
 Title4.args = {
   children: 'Title4',
 }
@@ -52,6 +56,7 @@ Body.args = {
 export const ButtonText: ComponentStory<typeof Typo.ButtonText> = ({ children }) => (
   <Typo.ButtonText>{children}</Typo.ButtonText>
 )
+ButtonText.storyName = 'ButtonText'
 ButtonText.args = {
   children: 'ButtonText',
 }
