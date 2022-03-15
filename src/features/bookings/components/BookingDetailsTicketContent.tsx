@@ -1,18 +1,16 @@
 import { t } from '@lingui/macro'
 import * as React from 'react'
-import { Platform, View } from 'react-native'
 import QRCode from 'react-native-qrcode-svg'
 import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum, BookingOfferResponse, BookingReponse } from 'api/gen'
 import { TicketCode } from 'features/bookings/atoms/TicketCode'
-// import { QR_CODE_SIZE } from 'features/bookings/components/ThreeShapesTicket.constants'
 import { getBookingProperties } from 'features/bookings/helpers'
 import { openUrl } from 'features/navigation/helpers'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { A } from 'ui/web/link/A'
 
 interface BookingDetailsTicketContentProps {
@@ -48,8 +46,9 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
     activationCodeFeatureEnabled && properties.hasActivationCode
 
   return (
-    <View>
+    <React.Fragment>
       <Title>{offer.name}</Title>
+      <Spacer.Column numberOfSpaces={2} />
       <TicketInnerContent>
         {isDigitalAndActivationCodeEnabled ? (
           <React.Fragment>
@@ -68,7 +67,7 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
         )}
       </TicketInnerContent>
       {!!shouldDisplayEAN && <Ean offer={offer} />}
-    </View>
+    </React.Fragment>
   )
 }
 
@@ -102,19 +101,15 @@ const DarkGreyCaption = styled(Typo.Caption)(({ theme }) => ({
 }))
 
 const Title = styled(Typo.Title3)({
-  marginTop: getSpacing(2),
-  paddingHorizontal: getSpacing(1),
   textAlign: 'center',
   maxWidth: '100%',
 })
 
 const TicketInnerContent = styled.View(({ theme }) => ({
   justifyContent: 'center',
-  paddingHorizontal: getSpacing(7),
-  paddingTop: getSpacing(2),
+  paddingHorizontal: getSpacing(5),
   minHeight: theme.ticket.minHeight,
-  // Improve Web spacings using non default View boxSizing
-  ...(Platform.OS === 'web' ? { boxSizing: 'content-box' } : {}),
+  width: '100%',
 }))
 
 const QrCodeContainer = styled.View({
@@ -124,7 +119,6 @@ const QrCodeContainer = styled.View({
 
 const EANContainer = styled.View({
   flexDirection: 'row',
-  marginBottom: getSpacing(2),
   marginTop: getSpacing(3),
   alignItems: 'center',
   justifyContent: 'center',
