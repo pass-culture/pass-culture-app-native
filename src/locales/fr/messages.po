@@ -674,6 +674,10 @@ msgstr "Crédit insuffisant"
 msgid "Crédit numérique insuffisant"
 msgstr "Crédit numérique insuffisant"
 
+#: src/features/venue/components/VenuePartialAccordionDescription.tsx
+msgid "Crédit photo :"
+msgstr "Crédit photo :"
+
 #: src/features/identityCheck/pages/identification/IdentityCheckDMS.tsx
 msgid "Créer un dossier sur le site des Démarches Simplifiées"
 msgstr "Créer un dossier sur le site des Démarches Simplifiées"
@@ -3387,12 +3391,12 @@ msgstr "voir les propositions précédentes"
 msgid "voir les propositions suivantes"
 msgstr "voir les propositions suivantes"
 
-#: src/ui/components/VenuePartialAccordionDescription.tsx
+#: src/features/venue/components/VenuePartialAccordionDescription.tsx
 msgid "voir moins"
 msgstr "voir moins"
 
 #: src/features/offer/atoms/OfferSeeMore.tsx
-#: src/ui/components/VenuePartialAccordionDescription.tsx
+#: src/features/venue/components/VenuePartialAccordionDescription.tsx
 msgid "voir plus"
 msgstr "voir plus"
 

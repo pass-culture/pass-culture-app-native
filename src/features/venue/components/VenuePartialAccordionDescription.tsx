@@ -77,7 +77,7 @@ export const VenuePartialAccordionDescription: React.FC<Props> = ({ description,
           {!!description && (
             <Description numberOfLines={maxLines}>{highlightLinks(description)}</Description>
           )}
-          {!!credit && <Credit testID="credit">{t`Crédit photo\u00a0: ${credit}`}</Credit>}
+          {!!credit && <Credit testID="credit">{t`Crédit photo\u00a0:` + ` ${credit}`}</Credit>}
         </DescriptionContainer>
       </StyledAnimatedView>
       {!!isLongDescription && (
