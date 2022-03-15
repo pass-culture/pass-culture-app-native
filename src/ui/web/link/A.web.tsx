@@ -8,6 +8,11 @@ export function A({ children, accessible = false, ...props }: AProps) {
 
   function preventDefault(event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) {
     event.preventDefault()
+    const firstChild = (event.target as HTMLElement)?.firstElementChild as HTMLElement
+    if (firstChild?.click) {
+      event.stopPropagation()
+      firstChild.click()
+    }
   }
 
   // useEffect ci-dessous pour le hack en VanillaJS

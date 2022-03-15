@@ -35,10 +35,10 @@ type ScrollButtonForNotTouchDevicePropsStylesWeb = InterpolationFunction<
   >
 >
 
-export const scrollButtonAriaDescribedBy = ({ horizontalAlign }: HorizontalAlignPropStyle) => {
+export const scrollButtonAccessibilityLabel = ({ horizontalAlign }: HorizontalAlignPropStyle) => {
   return horizontalAlign === 'left'
-    ? t`voir les propositions précédentes`
-    : t`voir les propositions suivantes`
+    ? t`Voir les propositions précédentes`
+    : t`Voir les propositions suivantes`
 }
 
 export const scrollButtonStyles: ScrollButtonForNotTouchDevicePropsStylesNative = ({

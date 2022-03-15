@@ -54,6 +54,8 @@ export const Offer: FunctionComponent = () => {
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
 
+  const Link = isExternal ? StyledA : React.Fragment
+  const linkProps = isExternal ? { href: url } : {}
   return (
     <Container>
       <OfferWebHead offer={offerResponse} />
@@ -65,7 +67,7 @@ export const Offer: FunctionComponent = () => {
       <OfferBody offerId={offerId} onScroll={onScroll} />
       {!!wording && (
         <CallToActionContainer testID="CTA-button" style={{ paddingBottom: bottom }}>
-          <StyledA href={isExternal ? url : undefined}>
+          <Link {...linkProps}>
             <ButtonWithLinearGradient
               wording={wording}
               onPress={() => {
@@ -77,7 +79,7 @@ export const Offer: FunctionComponent = () => {
               isExternal={isExternal}
               isDisabled={onPressCTA === undefined}
             />
-          </StyledA>
+          </Link>
         </CallToActionContainer>
       )}
 
