@@ -16,7 +16,6 @@ import { AccessibilityBlock } from 'ui/components/accessibility/AccessibilityBlo
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { ContactBlock } from 'ui/components/contact/ContactBlock'
 import { Hero } from 'ui/components/hero/Hero'
-import { PartialAccordionDescription } from 'ui/components/PartialAccordionDescription'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { LocationPointer as DefaultLocationPointer } from 'ui/svg/icons/LocationPointer'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -25,6 +24,7 @@ import { Dl } from 'ui/web/list/Dl'
 import { Dt } from 'ui/web/list/Dt'
 
 import { useVenue } from '../api/useVenue'
+import { VenuePartialAccordionDescription } from '../components/VenuePartialAccordionDescription'
 
 interface Props {
   venueId: number
@@ -41,6 +41,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
   const {
     address,
     postalCode,
+    bannerMeta,
     bannerUrl,
     city,
     publicName,
@@ -103,7 +104,10 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
 
         {/* Description */}
         <HiddenTitle>{t`Description`}</HiddenTitle>
-        <PartialAccordionDescription description={description || ''} />
+        <VenuePartialAccordionDescription
+          description={description || undefined}
+          credit={bannerMeta?.image_credit}
+        />
 
         {/* Offres */}
         <SectionWithDivider visible={shouldShowVenueOffers}>

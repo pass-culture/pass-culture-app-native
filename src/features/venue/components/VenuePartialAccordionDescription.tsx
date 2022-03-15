@@ -12,13 +12,14 @@ import { Dd } from 'ui/web/list/Dd'
 
 interface Props {
   description?: string | undefined
+  credit?: string | null
 }
 
 const NUMBER_OF_LINES = 3
 export const PARTIAL_DESCRIPTION_HEIGHT = getSpacing(NUMBER_OF_LINES * 5) // Ratio : height for one line = getSpacing(5)
 export const ANIMATION_DURATION = 500 //ms
 
-export const PartialAccordionDescription: React.FC<Props> = ({ description }) => {
+export const VenuePartialAccordionDescription: React.FC<Props> = ({ description, credit }) => {
   const { onLayout, height: totalDescriptionHeight } = useElementHeight()
   const [open, setOpen] = useState(false)
   const [maxLines, setMaxLines] = useState<number | undefined>(undefined)
@@ -67,13 +68,16 @@ export const PartialAccordionDescription: React.FC<Props> = ({ description }) =>
     outputRange: [`${2 * Math.PI}rad`, `${(2 * Math.PI) / 2}rad`],
   })
 
-  if (!description) return <Spacer.Column numberOfSpaces={6} />
+  if (!description && !credit) return <Spacer.Column numberOfSpaces={6} />
 
   return (
     <Container>
       <StyledAnimatedView style={{ height: bodyDescriptionHeight }} testID="accordionBody">
         <DescriptionContainer onLayout={onLayout} testID="descriptionContainer">
-          <Description numberOfLines={maxLines}>{highlightLinks(description)}</Description>
+          {!!description && (
+            <Description numberOfLines={maxLines}>{highlightLinks(description)}</Description>
+          )}
+          {!!credit && <Credit testID="credit">{t`Crédit photo\u00a0: ${credit}`}</Credit>}
         </DescriptionContainer>
       </StyledAnimatedView>
       {!!isLongDescription && (
@@ -120,3 +124,8 @@ const SeeMoreButton = styled.View({
 const ArrowDown = styled(DefaultArrowDown).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
 }))``
+
+const Credit = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+  marginTop: getSpacing(6),
+}))

@@ -2119,6 +2119,13 @@ export interface VenueAccessibilityModel {
    */
   visualDisability?: boolean | null
 }
+export interface VenueBannerMetaModel {
+  /**
+   * @type {string}
+   * @memberof VenueBannerMetaModel
+   */
+  image_credit?: string | null
+}
 /**
  * @export
  * @interface VenueContactModel
@@ -2160,6 +2167,11 @@ export interface VenueResponse {
    * @memberof VenueResponse
    */
   address?: string | null
+  /**
+  * @type {VenueBannerMetaModel}
+  * @memberof VenueResponse
+  */
+  bannerMeta?: VenueBannerMetaModel | null
   /**
    * @type {string}
    * @memberof VenueResponse

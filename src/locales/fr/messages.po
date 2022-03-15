@@ -3387,12 +3387,12 @@ msgstr "voir les propositions précédentes"
 msgid "voir les propositions suivantes"
 msgstr "voir les propositions suivantes"
 
-#: src/ui/components/PartialAccordionDescription.tsx
+#: src/ui/components/VenuePartialAccordionDescription.tsx
 msgid "voir moins"
 msgstr "voir moins"
 
 #: src/features/offer/atoms/OfferSeeMore.tsx
-#: src/ui/components/PartialAccordionDescription.tsx
+#: src/ui/components/VenuePartialAccordionDescription.tsx
 msgid "voir plus"
 msgstr "voir plus"
 
