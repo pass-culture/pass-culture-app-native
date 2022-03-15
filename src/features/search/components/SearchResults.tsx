@@ -11,7 +11,6 @@ import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
 import { analytics } from 'libs/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
-import { useNetwork } from 'libs/network/useNetwork'
 import { SearchHit } from 'libs/search'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'ui/components/placeholders/Placeholders'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -22,7 +21,6 @@ const keyExtractor = (item: SearchHit) => item.objectID
 const ANIMATION_DURATION = 700
 
 export const SearchResults: React.FC = () => {
-  const network = useNetwork()
   const flatListRef = useRef<FlatList<SearchHit> | null>(null)
   const {
     hasNextPage,
@@ -91,12 +89,6 @@ export const SearchResults: React.FC = () => {
     [isFetchingNextPage, hits.length]
   )
 
-  const onRefresh = () => {
-    if (network.isConnected) {
-      refetch()
-    }
-  }
-
   if (showSkeleton) return <SearchResultsPlaceHolder />
 
   const numberOfResults = plural(nbHits, {
@@ -129,7 +121,7 @@ export const SearchResults: React.FC = () => {
           ListFooterComponent={ListFooterComponent}
           renderItem={renderItem}
           refreshing={isRefreshing}
-          onRefresh={onRefresh}
+          onRefresh={refetch}
           onEndReached={onEndReached}
           scrollEnabled={nbHits > 0}
           ListEmptyComponent={ListEmptyComponent}

@@ -10,7 +10,6 @@ import {
   SubcategoryIdEnum,
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useNetwork } from 'libs/network/useNetwork'
 import { QueryKeys } from 'libs/queryKeys'
 
 export interface FavoriteMutationContext {
@@ -136,23 +135,25 @@ export function useAddFavorite({ onSuccess, onError }: AddFavorite) {
   })
 }
 
+// arbitrary. We have to make sure we invalidate the cache when adding/removing favorites. See above
+const STALE_TIME_FAVORITES = 5 * 60 * 1000
+
 export function useFavorites() {
-  const { isConnected } = useNetwork()
   const { isLoggedIn } = useAuthContext()
 
   return useQuery<PaginatedFavoritesResponse>(
     QueryKeys.FAVORITES,
     () => api.getnativev1mefavorites(),
-    { enabled: isLoggedIn && isConnected }
+    { enabled: isLoggedIn, staleTime: STALE_TIME_FAVORITES }
   )
 }
 
 export function useFavoritesCount() {
-  const { isConnected } = useNetwork()
   const { isLoggedIn } = useAuthContext()
 
   return useQuery(QueryKeys.FAVORITES_COUNT, () => api.getnativev1mefavoritescount(), {
-    enabled: isLoggedIn && isConnected,
+    enabled: isLoggedIn,
+    staleTime: STALE_TIME_FAVORITES,
     select: (data: FavoritesCountResponse) => data.count,
   })
 }

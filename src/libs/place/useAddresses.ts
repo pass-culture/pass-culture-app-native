@@ -1,9 +1,10 @@
 import { useQuery } from 'react-query'
 
-import { useNetwork } from 'libs/network/useNetwork'
 import { BuildSearchAddressProps } from 'libs/place/buildUrl'
 import { fetchAddresses } from 'libs/place/fetchAddresses'
 import { QueryKeys } from 'libs/queryKeys'
+
+const STALE_TIME_ADDRESSES = 5 * 60 * 1000
 
 export const useAddresses = ({
   query,
@@ -12,11 +13,9 @@ export const useAddresses = ({
   postalCode,
   enabled,
 }: BuildSearchAddressProps & { enabled: boolean }) => {
-  const { isConnected } = useNetwork()
-
   return useQuery<string[]>(
     [QueryKeys.ADDRESSES, query, cityCode, postalCode],
     () => fetchAddresses({ query, limit, cityCode, postalCode }),
-    { enabled: enabled && isConnected }
+    { staleTime: STALE_TIME_ADDRESSES, enabled }
   )
 }

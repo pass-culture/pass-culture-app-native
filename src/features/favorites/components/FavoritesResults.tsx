@@ -20,7 +20,6 @@ import { useUserProfileInfo } from 'features/home/api'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { useGeolocation, GeoCoordinates } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
-import { useNetwork } from 'libs/network/useNetwork'
 import {
   FavoriteHitPlaceholder,
   NumberOfResultsPlaceholder,
@@ -67,7 +66,6 @@ const contentContainerStyle = {
 }
 
 export const FavoritesResults: React.FC = React.memo(function FavoritesResults() {
-  const networkInfo = useNetwork()
   const [offerToBook, setOfferToBook] = useState<FavoriteOfferResponse | null>(null)
   const flatListRef = useRef<FlatList<FavoriteResponse> | null>(null)
   const favoritesState = useFavoritesState()
@@ -113,12 +111,6 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
     [sortedFavorites?.length]
   )
 
-  const onRefresh = () => {
-    if (networkInfo.isConnected) {
-      refetch()
-    }
-  }
-
   if (showSkeleton) return <FavoritesResultsPlaceHolder />
   return (
     <React.Fragment>
@@ -146,7 +138,7 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
           ListFooterComponent={ListFooterComponent}
           renderItem={renderItem}
           refreshing={isRefreshing}
-          onRefresh={onRefresh}
+          onRefresh={refetch}
           onEndReachedThreshold={0.9}
           scrollEnabled={sortedFavorites && sortedFavorites.length > 0}
           ListEmptyComponent={ListEmptyComponent}

@@ -9,7 +9,6 @@ import { EndedBookingsSection } from 'features/bookings/pages/EndedBookingsSecti
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
-import { useNetwork } from 'libs/network/useNetwork'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import {
   BookingHitPlaceholder,
@@ -29,7 +28,6 @@ const emptyBookings: Booking[] = []
 const ANIMATION_DURATION = 700
 
 export function OnGoingBookingsList() {
-  const networkInfo = useNetwork()
   const { data: bookings, isLoading, isFetching, refetch } = useBookings()
   const { bottom } = useSafeAreaInsets()
   const { isLoading: subcategoriesIsLoading } = useSubcategories()
@@ -71,12 +69,6 @@ export function OnGoingBookingsList() {
     }
   }
 
-  const onRefresh = () => {
-    if (networkInfo.isConnected) {
-      refetch()
-    }
-  }
-
   if (showSkeleton) return <BookingsPlaceholder />
   return (
     <Container flex={hasBookings || hasEndedBookings ? 1 : undefined}>
@@ -86,7 +78,7 @@ export function OnGoingBookingsList() {
         data={ongoingBookings}
         renderItem={renderItem}
         refreshing={isRefreshing}
-        onRefresh={onRefresh}
+        onRefresh={refetch}
         contentContainerStyle={contentContainerStyle}
         ListHeaderComponent={ListHeaderComponent}
         ListEmptyComponent={<NoBookingsView />}

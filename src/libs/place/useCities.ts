@@ -1,6 +1,5 @@
 import { useQuery } from 'react-query'
 
-import { useNetwork } from 'libs/network/useNetwork'
 import { SuggestedCity } from 'libs/place'
 import { fetchCities } from 'libs/place/fetchCities'
 import { QueryKeys } from 'libs/queryKeys'
@@ -16,11 +15,12 @@ export type CitiesResponse = Array<{
 
 export const CITIES_API_URL = 'https://geo.api.gouv.fr/communes'
 
-export const useCities = (postalCode: string) => {
-  const { isConnected } = useNetwork()
+const STALE_TIME_CITIES = 5 * 60 * 1000
 
+export const useCities = (postalCode: string) => {
   return useQuery([QueryKeys.CITIES, postalCode], () => fetchCities(postalCode), {
-    enabled: postalCode.length >= 5 && isConnected,
+    staleTime: STALE_TIME_CITIES,
+    enabled: postalCode.length >= 5,
     select: (data: CitiesResponse) =>
       data.map(({ nom, code }) => ({
         name: nom,
