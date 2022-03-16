@@ -822,7 +822,7 @@ workflows:
           filters:
             tags:
               only:
-                - /^v.*/
+                - /^(patch\/)?v.*/
                 - /^hotfix-staging.*/
             branches:
               ignore: /.*/
@@ -863,7 +863,7 @@ workflows:
               only:
                 - /^prod-hard-deploy.*/
                 - /^hotfix-prod.*/
-                - /^v.*/
+                - /^(patch\/)?v.*/
                 - /^hotfix-staging.*/
             branches:
               ignore: /.*/
