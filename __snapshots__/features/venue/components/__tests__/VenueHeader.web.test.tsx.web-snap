@@ -83,6 +83,7 @@ Object {
             style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           />
           <div
+            aria-hidden="true"
             class="css-text-901oao css-textMultiLine-cens5h"
             data-testid="venueHeaderName"
             dir="auto"
@@ -243,6 +244,7 @@ Object {
           style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         />
         <div
+          aria-hidden="true"
           class="css-text-901oao css-textMultiLine-cens5h"
           data-testid="venueHeaderName"
           dir="auto"

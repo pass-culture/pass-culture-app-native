@@ -181,6 +181,7 @@ Array [
         }
       />
       <Text
+        aria-hidden={true}
         collapsable={false}
         nativeID="animatedComponent"
         numberOfLines={2}

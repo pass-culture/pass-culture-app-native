@@ -52,11 +52,11 @@ const TicketContent = styled.View<{ width: number }>(({ theme, width }) => {
     borders = {
       borderLeftWidth: 2,
       borderRightWidth: 2,
-      borderColor: theme.colors.greyLight,
+      borderColor: theme.ticket.borderColor,
     }
   }
   return {
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.ticket.backgroundColor,
     width,
     alignItems: 'center',
     maxWidth: '100%',

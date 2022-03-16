@@ -69,6 +69,8 @@ export interface AppThemeType {
     maxWidth: number
     minHeight: number
     qrCodeSize: number
+    backgroundColor: ColorsEnum
+    borderColor: ColorsEnum
   }
   typography: {
     hero: Typography
@@ -356,6 +358,8 @@ export const theme: AppThemeType = {
     maxWidth: 300,
     minHeight: 200,
     qrCodeSize: 170,
+    backgroundColor: ColorsEnum.WHITE,
+    borderColor: ColorsEnum.GREY_LIGHT,
   },
   typography: {
     hero: {
