@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React from 'react'
+import React, { useState } from 'react'
 import { Animated } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
@@ -38,6 +38,9 @@ export const VenueHeader: React.FC<Props> = (props) => {
     showShareVenueModal()
   }
 
+  const [ariaHiddenTitle, setAriaHiddenTitle] = useState(true)
+  headerTransition.addListener((opacity) => setAriaHiddenTitle(opacity.value !== 1))
+
   const { animationState, backgroundColor } = getAnimationState(headerTransition)
   const { top } = useSafeAreaInsets()
 
@@ -56,7 +59,10 @@ export const VenueHeader: React.FC<Props> = (props) => {
           />
           <Spacer.Flex />
 
-          <Title testID="venueHeaderName" style={{ opacity: headerTransition }}>
+          <Title
+            testID="venueHeaderName"
+            style={{ opacity: headerTransition }}
+            aria-hidden={ariaHiddenTitle}>
             <Body>{title}</Body>
           </Title>
 

@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React from 'react'
+import React, { useState } from 'react'
 import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -20,6 +20,9 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
   const { headerTransition, title } = props
   const { goBack } = useGoBack(...getTabNavConfig('Bookings'))
 
+  const [ariaHiddenTitle, setAriaHiddenTitle] = useState(true)
+  headerTransition.addListener((opacity) => setAriaHiddenTitle(opacity.value !== 1))
+
   const { animationState, backgroundColor } = getAnimationState(headerTransition)
 
   return (
@@ -37,7 +40,7 @@ export const BookingDetailsHeader: React.FC<Props> = (props) => {
             />
           </IconContainer>
           <Spacer.Flex />
-          <Title style={{ opacity: headerTransition }}>
+          <Title style={{ opacity: headerTransition }} aria-hidden={ariaHiddenTitle}>
             <StyledBody>{title}</StyledBody>
           </Title>
           <Spacer.Flex />
