@@ -9,10 +9,10 @@ describe('SectionRow', () => {
   describe('onPress', () => {
     it('should call onPress when "clickable"', () => {
       const method = jest.fn()
-      const { getByTestId } = render(
+      const { getByText } = render(
         <SectionRow type="clickable" title="just clickable" icon={Close} onPress={method} />
       )
-      const touchable = getByTestId('just clickable')
+      const touchable = getByText('just clickable')
 
       fireEvent.click(touchable)
       expect(method).toBeCalled()

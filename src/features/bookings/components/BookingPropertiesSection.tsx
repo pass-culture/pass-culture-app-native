@@ -44,12 +44,12 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
       {userFullName ? (
         <SectionRow
           title={userFullName}
-          accessibilityLabel={t`Au nom de ` + userFullName}
+          accessibilityLabel={t`Au nom de` + ` ${userFullName}`}
           renderTitle={(title) => (
             <TitleNameContainer>
               <Title>{title}</Title>
               <Spacer.Row numberOfSpaces={2} />
-              {!properties.isDuo && (
+              {!!properties.isDuo && (
                 <IconDuoContainer accessibilityLabel={t`DUO: Elle comporte 2 places.`}>
                   <Duo testID="duo-icon" />
                 </IconDuoContainer>
@@ -65,7 +65,7 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
           <Spacer.Column numberOfSpaces={5} />
           <SectionRow
             title={propertiesLabels.dateLabel}
-            accessibilityLabel={t`Aura lieu ` + propertiesLabels.dateLabel}
+            accessibilityLabel={t`Date:` + ` ${propertiesLabels.dateLabel}`}
             renderTitle={renderRowTitle}
             type={'clickable'}
             icon={() => <Calendar />}
@@ -76,7 +76,7 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
       {!!propertiesLabels.locationLabel && (
         <SectionRow
           title={propertiesLabels.locationLabel}
-          accessibilityLabel={t`Se tiendra dans le lieu ` + propertiesLabels.locationLabel}
+          accessibilityLabel={t`Se tiendra dans le lieu` + ` ${propertiesLabels.locationLabel}`}
           renderTitle={renderRowTitle}
           type={'clickable'}
           icon={() => <LocationBuilding />}

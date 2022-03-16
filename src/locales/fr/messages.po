@@ -240,10 +240,6 @@ msgstr "Aucune valeur à sauvegarder"
 msgid "Aujourd'hui"
 msgstr "Aujourd'hui"
 
-#: src/features/bookings/components/BookingPropertiesSection.tsx
-msgid "Aura lieu"
-msgstr "Aura lieu"
-
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 msgid "Autoriser"
 msgstr "Autoriser"
@@ -736,6 +732,10 @@ msgstr "Date de naissance"
 #: src/features/search/sections/OfferDate.tsx
 msgid "Date précise"
 msgstr "Date précise"
+
+#: src/features/bookings/components/BookingPropertiesSection.tsx
+msgid "Date:"
+msgstr "Date:"
 
 #: src/features/bookings/helpers.ts
 msgid "Demain"
@@ -1607,6 +1607,10 @@ msgstr "Modifier"
 #: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
 msgid "Modifier mon e-mail"
 msgstr "Modifier mon e-mail"
+
+#: src/features/bookOffer/components/Calendar/Calendar.tsx
+msgid "Mois précédent"
+msgstr "Mois précédent"
 
 #: src/features/bookOffer/components/Calendar/Calendar.tsx
 msgid "Mois suivant"
@@ -3406,14 +3410,6 @@ msgstr "validé"
 #: src/libs/monitoring/errors.ts
 msgid "venueId is undefined"
 msgstr "venueId is undefined"
-
-#: src/ui/components/buttons/scrollButtonForNotTouchDeviceUtils.ts
-msgid "voir les propositions précédentes"
-msgstr "voir les propositions précédentes"
-
-#: src/ui/components/buttons/scrollButtonForNotTouchDeviceUtils.ts
-msgid "voir les propositions suivantes"
-msgstr "voir les propositions suivantes"
 
 #: src/features/venue/components/VenuePartialAccordionDescription.tsx
 msgid "voir moins"

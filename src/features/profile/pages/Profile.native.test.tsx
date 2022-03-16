@@ -103,18 +103,18 @@ describe('Profile component', () => {
 
   describe('user settings section', () => {
     it('should navigate when the personal data row is clicked', async () => {
-      const { getByTestId } = await renderProfile()
+      const { getByText } = await renderProfile()
 
-      const row = getByTestId('Informations personnelles')
+      const row = getByText('Informations personnelles')
       fireEvent.press(row)
 
       expect(mockNavigate).toBeCalledWith('PersonalData')
     })
 
     it('should navigate when the password row is clicked', async () => {
-      const { getByTestId } = await renderProfile()
+      const { getByText } = await renderProfile()
 
-      const row = getByTestId('Mot de passe')
+      const row = getByText('Mot de passe')
       fireEvent.press(row)
 
       expect(mockNavigate).toBeCalledWith('ChangePassword')
@@ -169,9 +169,9 @@ describe('Profile component', () => {
       })
     })
     it('should navigate when the notifications row is clicked', async () => {
-      const { getByTestId } = await renderProfile()
+      const { getByText } = await renderProfile()
 
-      const row = getByTestId('Notifications')
+      const row = getByText('Notifications')
       fireEvent.press(row)
 
       expect(mockNavigate).toBeCalledWith('NotificationSettings')
@@ -180,9 +180,9 @@ describe('Profile component', () => {
 
   describe('help section', () => {
     it('should navigate when the how-it-works row is clicked', async () => {
-      const { getByTestId } = await renderProfile()
+      const { getByText } = await renderProfile()
 
-      const row = getByTestId('Comment ça marche\u00a0?')
+      const row = getByText('Comment ça marche\u00a0?')
       fireEvent.press(row)
 
       expect(mockNavigate).toBeCalledWith('FirstTutorial', { shouldCloseAppOnBackAction: false })
@@ -190,9 +190,9 @@ describe('Profile component', () => {
 
     it('should navigate when the faq row is clicked', async () => {
       const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
-      const { getByTestId } = await renderProfile()
+      const { getByText } = await renderProfile()
 
-      const row = getByTestId(`Centre d'aide`)
+      const row = getByText(`Centre d'aide`)
       fireEvent.press(row)
 
       expect(openUrl).toBeCalledWith(env.FAQ_LINK)
@@ -202,27 +202,27 @@ describe('Profile component', () => {
   describe('other section', () => {
     it('should navigate when the accessibility row is clicked', async () => {
       const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
-      const { getByTestId } = await renderProfile()
+      const { getByText } = await renderProfile()
 
-      const row = getByTestId('Accessibilité')
+      const row = getByText('Accessibilité')
       fireEvent.press(row)
 
       expect(openUrl).toBeCalledWith(env.ACCESSIBILITY_LINK)
     })
 
     it('should navigate when the legal notices row is clicked', async () => {
-      const { getByTestId } = await renderProfile()
+      const { getByText } = await renderProfile()
 
-      const row = getByTestId('Mentions légales')
+      const row = getByText('Mentions légales')
       fireEvent.press(row)
 
       expect(mockNavigate).toBeCalledWith('LegalNotices')
     })
 
     it('should navigate when the confidentiality row is clicked', async () => {
-      const { getByTestId } = await renderProfile()
+      const { getByText } = await renderProfile()
 
-      const row = getByTestId('Confidentialité')
+      const row = getByText('Confidentialité')
       fireEvent.press(row)
 
       expect(mockNavigate).toBeCalledWith('ConsentSettings')
@@ -231,25 +231,25 @@ describe('Profile component', () => {
 
   describe('signout section', () => {
     it('should display signout row if the user is connected', async () => {
-      const { getByTestId } = await renderProfile()
-      const row = getByTestId('Déconnexion')
+      const { getByText } = await renderProfile()
+      const row = getByText('Déconnexion')
       expect(row).toBeTruthy()
     })
 
     it('should NOT display signout row if the user is NOT connected', async () => {
       // eslint-disable-next-line local-rules/independant-mocks
       mockedUseAuthContext.mockImplementation(() => ({ isLoggedIn: false }))
-      const { queryByTestId } = await renderProfile()
-      const row = queryByTestId('Déconnexion')
+      const { queryByText } = await renderProfile()
+      const row = queryByText('Déconnexion')
       expect(row).toBeFalsy()
     })
 
     it('should delete the refreshToken, clean user profile and remove user ID from batch when pressed', async () => {
       // eslint-disable-next-line local-rules/independant-mocks
       mockedUseAuthContext.mockImplementation(() => ({ isLoggedIn: true }))
-      const { getByTestId } = await renderProfile()
+      const { getByText } = await renderProfile()
 
-      const row = getByTestId('Déconnexion')
+      const row = getByText('Déconnexion')
       fireEvent.press(row)
 
       expect(mockSignOut).toBeCalled()

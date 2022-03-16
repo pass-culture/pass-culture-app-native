@@ -190,7 +190,6 @@ exports[`Profile component should render correctly 1`] = `
                     }
                   />
                   <View
-                    accessibilityLabel="Informations personnelles"
                     accessibilityState={
                       Object {
                         "disabled": false,
@@ -213,7 +212,6 @@ exports[`Profile component should render correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
-                    testID="Informations personnelles"
                   >
                     <View
                       style={
@@ -300,7 +298,6 @@ exports[`Profile component should render correctly 1`] = `
                     </View>
                   </View>
                   <View
-                    accessibilityLabel="Mot de passe"
                     accessibilityState={
                       Object {
                         "disabled": false,
@@ -323,7 +320,6 @@ exports[`Profile component should render correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
-                    testID="Mot de passe"
                   >
                     <View
                       style={
@@ -409,7 +405,6 @@ exports[`Profile component should render correctly 1`] = `
                     </View>
                   </View>
                   <View
-                    accessibilityLabel="Notifications"
                     accessibilityState={
                       Object {
                         "disabled": false,
@@ -432,7 +427,6 @@ exports[`Profile component should render correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
-                    testID="Notifications"
                   >
                     <View
                       style={
@@ -736,7 +730,6 @@ exports[`Profile component should render correctly 1`] = `
                     }
                   />
                   <View
-                    accessibilityLabel="Comment ça marche ?"
                     accessibilityState={
                       Object {
                         "disabled": false,
@@ -759,7 +752,6 @@ exports[`Profile component should render correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
-                    testID="Comment ça marche ?"
                   >
                     <View
                       style={
@@ -845,7 +837,6 @@ exports[`Profile component should render correctly 1`] = `
                     </View>
                   </View>
                   <View
-                    accessibilityLabel="Centre d'aide"
                     accessibilityState={
                       Object {
                         "disabled": false,
@@ -868,7 +859,6 @@ exports[`Profile component should render correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
-                    testID="Centre d'aide"
                   >
                     <View
                       style={
@@ -989,7 +979,6 @@ exports[`Profile component should render correctly 1`] = `
                     }
                   />
                   <View
-                    accessibilityLabel="Accessibilité"
                     accessibilityState={
                       Object {
                         "disabled": false,
@@ -1012,7 +1001,6 @@ exports[`Profile component should render correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
-                    testID="Accessibilité"
                   >
                     <View
                       style={
@@ -1088,7 +1076,6 @@ exports[`Profile component should render correctly 1`] = `
                     </View>
                   </View>
                   <View
-                    accessibilityLabel="Mentions légales"
                     accessibilityState={
                       Object {
                         "disabled": false,
@@ -1111,7 +1098,6 @@ exports[`Profile component should render correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
-                    testID="Mentions légales"
                   >
                     <View
                       style={
@@ -1197,7 +1183,6 @@ exports[`Profile component should render correctly 1`] = `
                     </View>
                   </View>
                   <View
-                    accessibilityLabel="Confidentialité"
                     accessibilityState={
                       Object {
                         "disabled": false,
@@ -1220,7 +1205,6 @@ exports[`Profile component should render correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
-                    testID="Confidentialité"
                   >
                     <View
                       style={
@@ -1748,7 +1732,6 @@ exports[`Profile component should render correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
-                    testID="Déconnexion"
                   >
                     <View
                       style={
