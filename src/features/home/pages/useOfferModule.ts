@@ -12,7 +12,6 @@ import {
   useTransformAlgoliaHits,
 } from 'libs/algolia/fetchAlgolia'
 import { useGeolocation } from 'libs/geolocation'
-import { useNetwork } from 'libs/network/useNetwork'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit, useParseSearchParameters } from 'libs/search'
 
@@ -28,7 +27,6 @@ export const useOfferModule = ({
   search,
   moduleId,
 }: useOfferModuleProps): { hits: SearchHit[]; nbHits: number } | undefined => {
-  const { isConnected } = useNetwork()
   const { position } = useGeolocation()
   const transformHits = useTransformAlgoliaHits()
   const parseSearchParameters = useParseSearchParameters()
@@ -39,15 +37,14 @@ export const useOfferModule = ({
 
   const { data, refetch } = useQuery(
     [QueryKeys.HOME_MODULE, moduleId],
-    async () => await fetchMultipleAlgolia(parsedParameters, position, isUserUnderage),
-    { enabled: isConnected }
+    async () => await fetchMultipleAlgolia(parsedParameters, position, isUserUnderage)
   )
 
   useEffect(() => {
-    if (!isConnected) return
     // When we enable or disable the geolocation, we want to refetch the home modules
     refetch()
-  }, [!!position, user?.isBeneficiary, isConnected])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [!!position, user?.isBeneficiary])
 
   return useMemo(() => {
     if (!data) return
@@ -57,5 +54,6 @@ export const useOfferModule = ({
       hits: uniqBy(hits, 'objectID') as SearchHit[],
       nbHits: data.nbHits,
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data, !!position, transformHits])
 }

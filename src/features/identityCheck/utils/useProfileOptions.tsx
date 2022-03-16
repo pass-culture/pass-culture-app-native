@@ -4,9 +4,13 @@ import { api } from 'api/api'
 import { ProfileOptionsResponse } from 'api/gen'
 import { QueryKeys } from 'libs/queryKeys'
 
-function useProfileOptionsResponse() {
-  return useQuery<ProfileOptionsResponse>(QueryKeys.SCHOOL_TYPES, () =>
-    api.getnativev1subscriptionprofileOptions()
+const STALE_TIME_PROFILE_OPTIONS = 5 * 60 * 1000
+
+export function useProfileOptionsResponse() {
+  return useQuery<ProfileOptionsResponse>(
+    QueryKeys.SCHOOL_TYPES,
+    () => api.getnativev1subscriptionprofileOptions(),
+    { staleTime: STALE_TIME_PROFILE_OPTIONS }
   )
 }
 

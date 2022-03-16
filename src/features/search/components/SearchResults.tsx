@@ -12,20 +12,15 @@ import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
 import { analytics } from 'libs/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
-import { useNetwork } from 'libs/network/useNetwork'
 import { SearchHit } from 'libs/search'
 import { getSpacing, Spacer } from 'ui/theme'
-import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 import { Helmet } from 'ui/web/global/Helmet'
-import { Li } from 'ui/web/list/Li'
-import { Ul } from 'ui/web/list/Ul'
 
 const keyExtractor = (item: SearchHit) => item.objectID
 
 const ANIMATION_DURATION = 700
 
 export const SearchResults: React.FC = () => {
-  const network = useNetwork()
   const flatListRef = useRef<FlatList<SearchHit> | null>(null)
   const {
     hasNextPage,
@@ -43,6 +38,7 @@ export const SearchResults: React.FC = () => {
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
     // Despite the fact that the useEffect hook being called immediately,
     // scrollToOffset may not always have an effect for unknown reason,
@@ -63,6 +59,7 @@ export const SearchResults: React.FC = () => {
       if (lastPage.page > 0) analytics.logSearchScrollToPage(lastPage.page)
       fetchNextPage()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasNextPage])
 
   const renderItem = useCallback(
@@ -72,6 +69,7 @@ export const SearchResults: React.FC = () => {
 
   const ListHeaderComponent = useMemo(
     () => <NumberOfResults nbHits={nbHits} />,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [nbHits, searchState.locationFilter.locationType]
   )
   const ListEmptyComponent = useMemo(() => <NoSearchResult />, [])
@@ -87,14 +85,9 @@ export const SearchResults: React.FC = () => {
       ) : (
         <Footer />
       ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [isFetchingNextPage, hits.length]
   )
-
-  const onRefresh = () => {
-    if (network.isConnected) {
-      refetch()
-    }
-  }
 
   if (showSkeleton) return <SearchResultsPlaceHolder />
 
@@ -110,42 +103,39 @@ export const SearchResults: React.FC = () => {
   return (
     <React.Fragment>
       {isFocused ? <Helmet title={helmetTitle} /> : null}
-      <Container>
-        <Ul>
-          <FlatList
-            ref={flatListRef}
-            testID="searchResultsFlatlist"
-            data={hits}
-            contentContainerStyle={contentContainerStyle}
-            keyExtractor={keyExtractor}
-            ListHeaderComponent={ListHeaderComponent}
-            ItemSeparatorComponent={Separator}
-            ListFooterComponent={ListFooterComponent}
-            renderItem={renderItem}
-            CellRendererComponent={Li}
-            refreshing={isRefreshing}
-            onRefresh={onRefresh}
-            onEndReached={onEndReached}
-            scrollEnabled={nbHits > 0}
-            ListEmptyComponent={ListEmptyComponent}
-            keyboardShouldPersistTaps="handled"
-            keyboardDismissMode="on-drag"
-          />
-        </Ul>
-      </Container>
       {nbHits > 0 && (
         <FilterContainer>
           <Filter />
           <Spacer.BottomScreen />
         </FilterContainer>
       )}
+      <Container>
+        <FlatList
+          ref={flatListRef}
+          testID="searchResultsFlatlist"
+          data={hits}
+          contentContainerStyle={contentContainerStyle}
+          keyExtractor={keyExtractor}
+          ListHeaderComponent={ListHeaderComponent}
+          ItemSeparatorComponent={Separator}
+          ListFooterComponent={ListFooterComponent}
+          renderItem={renderItem}
+          refreshing={isRefreshing}
+          onRefresh={refetch}
+          onEndReached={onEndReached}
+          scrollEnabled={nbHits > 0}
+          ListEmptyComponent={ListEmptyComponent}
+          keyboardShouldPersistTaps="handled"
+          keyboardDismissMode="on-drag"
+        />
+      </Container>
     </React.Fragment>
   )
 }
 
 const contentContainerStyle = { flexGrow: 1 }
 const Container = styled.View({ flex: 1 })
-const Footer = styled.View({ height: TAB_BAR_COMP_HEIGHT + getSpacing(52) })
+const Footer = styled.View(({ theme }) => ({ height: theme.tabBarHeight + getSpacing(52) }))
 const Separator = styled.View(({ theme }) => ({
   height: 2,
   backgroundColor: theme.colors.greyLight,
@@ -153,11 +143,12 @@ const Separator = styled.View(({ theme }) => ({
   marginVertical: getSpacing(4),
 }))
 
-const FilterContainer = styled.View({
+const FilterContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
   position: 'absolute',
-  bottom: TAB_BAR_COMP_HEIGHT + getSpacing(6),
-})
+  bottom: theme.tabBarHeight + getSpacing(6),
+  zIndex: theme.zIndex.floatingButton,
+}))
 
 const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => ({
   key: index.toString(),
@@ -170,24 +161,21 @@ function SearchResultsPlaceHolder() {
 
   return (
     <React.Fragment>
-      <Container>
-        <Ul>
-          <FlatList
-            data={FAVORITE_LIST_PLACEHOLDER}
-            renderItem={renderItem}
-            CellRendererComponent={Li}
-            contentContainerStyle={contentContainerStyle}
-            ListHeaderComponent={ListHeaderComponent}
-            ItemSeparatorComponent={Separator}
-            ListFooterComponent={ListFooterComponent}
-            scrollEnabled={false}
-          />
-        </Ul>
-      </Container>
       <FilterContainer>
         <Filter />
         <Spacer.BottomScreen />
       </FilterContainer>
+      <Container>
+        <FlatList
+          data={FAVORITE_LIST_PLACEHOLDER}
+          renderItem={renderItem}
+          contentContainerStyle={contentContainerStyle}
+          ListHeaderComponent={ListHeaderComponent}
+          ItemSeparatorComponent={Separator}
+          ListFooterComponent={ListFooterComponent}
+          scrollEnabled={false}
+        />
+      </Container>
     </React.Fragment>
   )
 }

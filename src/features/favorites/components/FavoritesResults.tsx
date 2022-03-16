@@ -24,7 +24,6 @@ import {
 } from 'features/search/components/Placeholders'
 import { useGeolocation, GeoCoordinates } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
-import { useNetwork } from 'libs/network/useNetwork'
 import { getSpacing, Spacer } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 
@@ -35,7 +34,10 @@ function applySortBy(
   sortBy: FavoriteSortBy,
   position: GeoCoordinates | null
 ) {
-  if (sortBy === 'ASCENDING_PRICE') {
+  if (!list) {
+    // fix concurrency sentry/issues/288586
+    return []
+  } else if (sortBy === 'ASCENDING_PRICE') {
     list.sort(sortByAscendingPrice)
     return list
   } else if (sortBy === 'AROUND_ME') {
@@ -64,7 +66,6 @@ const contentContainerStyle = {
 }
 
 export const FavoritesResults: React.FC = React.memo(function FavoritesResults() {
-  const networkInfo = useNetwork()
   const [offerToBook, setOfferToBook] = useState<FavoriteOfferResponse | null>(null)
   const flatListRef = useRef<FlatList<FavoriteResponse> | null>(null)
   const favoritesState = useFavoritesState()
@@ -95,11 +96,13 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
       if (!user || !credit) return <FavoriteHitPlaceholder />
       return <Favorite favorite={favorite} user={user} onInAppBooking={setOfferToBook} />
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [credit, favoritesState, user, setOfferToBook]
   )
 
   const ListHeaderComponent = useMemo(
     () => <NumberOfResults nbFavorites={sortedFavorites ? sortedFavorites.length : 0} />,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [sortedFavorites?.length]
   )
   const ListEmptyComponent = useMemo(() => <NoFavoritesResult />, [])
@@ -107,12 +110,6 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
     () => (sortedFavorites?.length ? <Spacer.Column numberOfSpaces={getSpacing(5)} /> : null),
     [sortedFavorites?.length]
   )
-
-  const onRefresh = () => {
-    if (networkInfo.isConnected) {
-      refetch()
-    }
-  }
 
   if (showSkeleton) return <FavoritesResultsPlaceHolder />
   return (
@@ -123,6 +120,12 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
           dismissModal={() => setOfferToBook(null)}
           offerId={offerToBook.id}
         />
+      )}
+      {!!(sortedFavorites && sortedFavorites.length > 0) && (
+        <SortContainer>
+          <Sort />
+          <Spacer.BottomScreen />
+        </SortContainer>
       )}
       <Container>
         <FlatList
@@ -135,19 +138,13 @@ export const FavoritesResults: React.FC = React.memo(function FavoritesResults()
           ListFooterComponent={ListFooterComponent}
           renderItem={renderItem}
           refreshing={isRefreshing}
-          onRefresh={onRefresh}
+          onRefresh={refetch}
           onEndReachedThreshold={0.9}
           scrollEnabled={sortedFavorites && sortedFavorites.length > 0}
           ListEmptyComponent={ListEmptyComponent}
           initialNumToRender={10}
         />
       </Container>
-      {!!(sortedFavorites && sortedFavorites.length > 0) && (
-        <SortContainer>
-          <Sort />
-          <Spacer.BottomScreen />
-        </SortContainer>
-      )}
     </React.Fragment>
   )
 })
@@ -165,6 +162,7 @@ const SortContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
   position: 'absolute',
   bottom: theme.tabBarHeight + getSpacing(6),
+  zIndex: theme.zIndex.floatingButton,
 }))
 
 const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 10 }).map((_, index) => ({
@@ -177,6 +175,10 @@ const FavoritesResultsPlaceHolder = () => {
 
   return (
     <React.Fragment>
+      <SortContainer>
+        <Sort />
+        <Spacer.BottomScreen />
+      </SortContainer>
       <Container testID="FavoritesResultsPlaceHolder">
         <StyledFlatList
           data={FAVORITE_LIST_PLACEHOLDER}
@@ -186,10 +188,6 @@ const FavoritesResultsPlaceHolder = () => {
           scrollEnabled={false}
         />
       </Container>
-      <SortContainer>
-        <Sort />
-        <Spacer.BottomScreen />
-      </SortContainer>
     </React.Fragment>
   )
 }

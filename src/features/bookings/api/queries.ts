@@ -3,14 +3,14 @@ import { useQuery, UseQueryResult } from 'react-query'
 
 import { api } from 'api/api'
 import { BookingReponse, BookingsResponse } from 'api/gen'
-import { useNetwork } from 'libs/network/useNetwork'
 import { QueryKeys } from 'libs/queryKeys'
 
-export function useBookings(options = {}) {
-  const { isConnected } = useNetwork()
+// Arbitrary. Make sure the cache is invalidated after each booking
+const STALE_TIME_BOOKINGS = 5 * 60 * 1000
 
+export function useBookings(options = {}) {
   return useQuery<BookingsResponse>(QueryKeys.BOOKINGS, () => api.getnativev1bookings(), {
-    enabled: isConnected,
+    staleTime: STALE_TIME_BOOKINGS,
     ...options,
   })
 }

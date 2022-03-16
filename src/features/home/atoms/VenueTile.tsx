@@ -11,7 +11,6 @@ import { analytics } from 'libs/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
 import { formatDistance } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'
-import { GLOBAL_STALE_TIME } from 'libs/react-query/queryClient'
 import { VenueHit } from 'libs/search'
 import { ImageTile } from 'ui/components/ImageTile'
 
@@ -37,10 +36,7 @@ export const VenueTile = (props: VenueTileProps) => {
 
   function handlePressVenue() {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
-    queryClient.setQueryData([QueryKeys.VENUE, venue.id], mergeVenueData(venue), {
-      // Make sure the data is stale, so that it is considered as a placeholder
-      updatedAt: Date.now() - (GLOBAL_STALE_TIME + 1),
-    })
+    queryClient.setQueryData([QueryKeys.VENUE, venue.id], mergeVenueData(venue))
     analytics.logConsultVenue({ venueId: venue.id, from: 'home' })
     navigation.navigate('Venue', { id: venue.id })
   }
