@@ -169,6 +169,7 @@ exports[`<VenueHeader /> should render correctly 1`] = `
       }
     />
     <Text
+      aria-hidden={true}
       collapsable={false}
       nativeID="animatedComponent"
       numberOfLines={1}

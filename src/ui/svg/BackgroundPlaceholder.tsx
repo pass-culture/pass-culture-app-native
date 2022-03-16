@@ -16,7 +16,8 @@ const NotMemoizedBackgroundPlaceholder: React.FC<RectangleIconInterface> = ({
       height={height}
       viewBox="0 0 375 317"
       testID={testID}
-      preserveAspectRatio="none">
+      preserveAspectRatio="none"
+      aria-hidden>
       <Defs>
         <LinearGradient id={LINEAR_GRADIENT_ID} x1="50%" x2="50%" y1="0%" y2="100%">
           <Stop offset="0%" stopColor="#ECF0F1" />

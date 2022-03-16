@@ -7,7 +7,7 @@ import { venueResponseSnap } from 'features/venue/fixtures/venueResponseSnap'
 import { getVenueUrl } from 'features/venue/services/useShareVenue'
 import { analytics } from 'libs/analytics'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render } from 'tests/utils'
+import { act, fireEvent, render } from 'tests/utils'
 
 import { VenueHeader } from '../VenueHeader'
 
@@ -40,9 +40,15 @@ describe('<VenueHeader />', () => {
 
   it('should fully display the title at the end of the animation', async () => {
     const { animatedValue, getByTestId } = await renderVenueHeader()
+    expect(getByTestId('venueHeaderName').props['aria-hidden']).toBeTruthy()
     expect(getByTestId('venueHeaderName').props.style.opacity).toBe(0)
-    Animated.timing(animatedValue, { duration: 100, toValue: 1, useNativeDriver: false }).start()
-    jest.advanceTimersByTime(100)
+    act(() => {
+      Animated.timing(animatedValue, { duration: 100, toValue: 1, useNativeDriver: false }).start()
+      jest.advanceTimersByTime(100)
+    })
+    await waitForExpect(() =>
+      expect(getByTestId('venueHeaderName').props['aria-hidden']).toBeFalsy()
+    )
     await waitForExpect(() => expect(getByTestId('venueHeaderName').props.style.opacity).toBe(1))
   })
 

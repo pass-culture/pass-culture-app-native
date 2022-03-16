@@ -27,7 +27,7 @@ LocaleConfig.locales['fr'] = {
 LocaleConfig.defaultLocale = 'fr'
 
 const renderArrow = (direction: string) => {
-  if (direction === 'left') return <ArrowPrevious />
+  if (direction === 'left') return <ArrowPrevious accessibilityLabel={t`Mois précédent`} />
   if (direction === 'right') return <ArrowNext accessibilityLabel={t`Mois suivant`} />
   return <React.Fragment />
 }

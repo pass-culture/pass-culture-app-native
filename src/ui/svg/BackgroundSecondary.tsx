@@ -31,7 +31,7 @@ function BackgroundSvg() {
   const { id: id2, xlinkHref: xlinkHref2 } = svgIdentifier()
   const { id: id3 } = svgIdentifier()
   return (
-    <Svg width="100%" height="100%" viewBox="0 0 375 667" preserveAspectRatio="none">
+    <Svg width="100%" height="100%" viewBox="0 0 375 667" preserveAspectRatio="none" aria-hidden>
       <Defs>
         <LinearGradient
           id={id}

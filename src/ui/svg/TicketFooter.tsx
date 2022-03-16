@@ -30,7 +30,8 @@ function TicketFooterComponent(props: Props) {
       }}
       width={props.width}
       height={height}
-      viewBox={viewBox}>
+      viewBox={viewBox}
+      aria-hidden>
       <Path
         d="M186.5,2c0,17.67-14.33,32-32,32s-32-14.33-32-32H26C12.75,2,2,12.75,2,26v24h305V26c0-13.25-10.75-24-24-24
 		H186.5z"

@@ -89,8 +89,14 @@ describe('<OfferHeader />', () => {
 
   it('should fully display the title at the end of the animation', async () => {
     const { animatedValue, getByTestId } = await renderOfferHeader({ isLoggedIn: true })
+    expect(getByTestId('offerHeaderName').props['aria-hidden']).toBeTruthy()
     expect(getByTestId('offerHeaderName').props.style.opacity).toBe(0)
-    Animated.timing(animatedValue, { duration: 100, toValue: 1, useNativeDriver: false }).start()
+    act(() =>
+      Animated.timing(animatedValue, { duration: 100, toValue: 1, useNativeDriver: false }).start()
+    )
+    await waitForExpect(() =>
+      expect(getByTestId('offerHeaderName').props['aria-hidden']).toBeFalsy()
+    )
     await waitForExpect(() => expect(getByTestId('offerHeaderName').props.style.opacity).toBe(1))
   })
 

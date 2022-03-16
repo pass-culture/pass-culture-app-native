@@ -1,4 +1,5 @@
 import React, { PropsWithChildren } from 'react'
+import { Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { TicketFooter } from 'ui/svg/TicketFooter'
@@ -9,13 +10,12 @@ type Props = PropsWithChildren<{
   width?: number
 }>
 
-const TICKET_MAX_WIDTH = 300
-
+const isWeb = Platform.OS === 'web'
 export function ThreeShapesTicket(props: Props) {
-  const { appContentWidth } = useTheme()
-  const defaultWidth = Math.min(TICKET_MAX_WIDTH, appContentWidth - getSpacing(15))
+  const { appContentWidth, ticket } = useTheme()
+  const defaultWidth = Math.min(ticket.maxWidth, appContentWidth - getSpacing(15))
   const width = props.width || defaultWidth
-  const contentWidth = width - 5
+  const contentWidth = isWeb ? width : width - 5
   return (
     <Container testID="three-shapes-ticket">
       <TicketHeader width={width} />
@@ -25,23 +25,42 @@ export function ThreeShapesTicket(props: Props) {
   )
 }
 
-const Container = styled.View(({ theme }) => ({
-  flexDirection: 'column',
-  alignItems: 'center',
-  justifyContent: 'center',
-  ...getShadow({
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowRadius: 3,
-    shadowColor: theme.colors.black,
-    shadowOpacity: 0.1,
-  }),
-}))
+const Container = styled.View(({ theme }) => {
+  let shadows = {}
+  if (!isWeb) {
+    shadows = getShadow({
+      shadowOffset: {
+        width: 0,
+        height: 2,
+      },
+      shadowRadius: 3,
+      shadowColor: theme.colors.black,
+      shadowOpacity: 0.1,
+    })
+  }
+  return {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+    ...shadows,
+  }
+})
 
-const TicketContent = styled.View<{ width: number }>(({ theme, width }) => ({
-  backgroundColor: theme.colors.white,
-  width,
-  flex: 0,
-}))
+const TicketContent = styled.View<{ width: number }>(({ theme, width }) => {
+  let borders = {}
+  if (isWeb) {
+    borders = {
+      borderLeftWidth: 2,
+      borderRightWidth: 2,
+      borderColor: theme.ticket.borderColor,
+    }
+  }
+  return {
+    backgroundColor: theme.ticket.backgroundColor,
+    width,
+    alignItems: 'center',
+    maxWidth: '100%',
+    padding: getSpacing(2),
+    ...borders,
+  }
+})

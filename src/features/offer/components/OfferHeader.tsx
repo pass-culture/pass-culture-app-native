@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useRoute } from '@react-navigation/native'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { Animated, Platform } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
@@ -56,6 +56,9 @@ export const OfferHeader: React.FC<Props> = (props) => {
   const favorite = useFavorite({ offerId })
   const { showErrorSnackBar } = useSnackBarContext()
   const { top } = useSafeAreaInsets()
+
+  const [ariaHiddenTitle, setAriaHiddenTitle] = useState(true)
+  headerTransition.addListener((opacity) => setAriaHiddenTitle(opacity.value !== 1))
 
   const { mutate: addFavorite } = useAddFavorite({
     onSuccess: () => {
@@ -120,7 +123,10 @@ export const OfferHeader: React.FC<Props> = (props) => {
           <Spacer.Row testID="leftShareIconPlaceholder" numberOfSpaces={10} />
           <Spacer.Flex />
 
-          <Title testID="offerHeaderName" style={{ opacity: headerTransition }}>
+          <Title
+            testID="offerHeaderName"
+            style={{ opacity: headerTransition }}
+            aria-hidden={ariaHiddenTitle}>
             <Body>{title}</Body>
           </Title>
 
