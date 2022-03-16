@@ -12,6 +12,9 @@ import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Li } from 'ui/web/list/Li'
+import { VerticalUl } from 'ui/web/list/Ul'
+
 type Props = {
   setScrollEnabled?: ((setScrollEnabled: boolean) => void) | Dispatch<SetStateAction<boolean>>
 }
@@ -48,34 +51,44 @@ export function OfferDate({ setScrollEnabled }: Props) {
       <Container testID="offerDateContainer">
         <Typo.Title4>{SectionTitle.OfferDate}</Typo.Title4>
         <Spacer.Column numberOfSpaces={4} />
-        <DateFilter
-          text={t`Aujourd'hui`}
-          isSelected={option === DATE_FILTER_OPTIONS.TODAY}
-          onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.TODAY)}
-        />
-        <Spacer.Column numberOfSpaces={4} />
-        <DateFilter
-          text={t`Cette semaine`}
-          isSelected={option === DATE_FILTER_OPTIONS.CURRENT_WEEK}
-          onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.CURRENT_WEEK)}
-        />
-        <Spacer.Column numberOfSpaces={4} />
-        <DateFilter
-          text={t`Ce week-end`}
-          isSelected={option === DATE_FILTER_OPTIONS.CURRENT_WEEK_END}
-          onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.CURRENT_WEEK_END)}
-        />
-        <Spacer.Column numberOfSpaces={4} />
-        <DateFilter
-          text={t`Date précise`}
-          isSelected={option === DATE_FILTER_OPTIONS.USER_PICK}
-          onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.USER_PICK)}
-        />
-        {option === DATE_FILTER_OPTIONS.USER_PICK && (
-          <TouchableOpacity testID="pickedDate" onPress={() => setShowTimePicker(true)}>
-            <StyledBody>{formatToCompleteFrenchDate(selectedDate)}</StyledBody>
-          </TouchableOpacity>
-        )}
+        <VerticalUl>
+          <Li>
+            <DateFilter
+              text={t`Aujourd'hui`}
+              isSelected={option === DATE_FILTER_OPTIONS.TODAY}
+              onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.TODAY)}
+            />
+            <Spacer.Column numberOfSpaces={4} />
+          </Li>
+          <Li>
+            <DateFilter
+              text={t`Cette semaine`}
+              isSelected={option === DATE_FILTER_OPTIONS.CURRENT_WEEK}
+              onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.CURRENT_WEEK)}
+            />
+            <Spacer.Column numberOfSpaces={4} />
+          </Li>
+          <Li>
+            <DateFilter
+              text={t`Ce week-end`}
+              isSelected={option === DATE_FILTER_OPTIONS.CURRENT_WEEK_END}
+              onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.CURRENT_WEEK_END)}
+            />
+            <Spacer.Column numberOfSpaces={4} />
+          </Li>
+          <Li>
+            <DateFilter
+              text={t`Date précise`}
+              isSelected={option === DATE_FILTER_OPTIONS.USER_PICK}
+              onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.USER_PICK)}
+            />
+            {option === DATE_FILTER_OPTIONS.USER_PICK && (
+              <TouchableOpacity testID="pickedDate" onPress={() => setShowTimePicker(true)}>
+                <StyledBody>{formatToCompleteFrenchDate(selectedDate)}</StyledBody>
+              </TouchableOpacity>
+            )}
+          </Li>
+        </VerticalUl>
       </Container>
 
       <CalendarPicker
