@@ -14,7 +14,6 @@ import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { formatToFrenchDate, getFavoriteDisplayPrice } from 'libs/parsers'
 import { QueryKeys } from 'libs/queryKeys'
-import { GLOBAL_STALE_TIME } from 'libs/react-query/queryClient'
 import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
@@ -91,11 +90,7 @@ export const Favorite: React.FC<Props> = (props) => {
         thumbUrl: offer.image?.url,
         name: offer.name,
         offerId: offer.id,
-      }),
-      {
-        // Make sure the data is stale, so that it is considered as a placeholder
-        updatedAt: Date.now() - (GLOBAL_STALE_TIME + 1),
-      }
+      })
     )
     analytics.logConsultOffer({ offerId: offer.id, from: 'favorites' })
     navigate('Offer', { id: offer.id, from: 'favorites' })

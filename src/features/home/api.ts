@@ -7,20 +7,20 @@ import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { NoContentError } from 'features/home/components/NoContentError'
 import {
-  HomepageEntry,
   EntryCollection,
   EntryFields,
   processHomepageEntry,
+  HomepageEntry,
 } from 'features/home/contentful'
 import { useSelectPlaylist } from 'features/home/selectPlaylist'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { getExternal } from 'libs/fetch'
 import { ScreenError } from 'libs/monitoring'
-import { useNetwork } from 'libs/network/useNetwork'
 import { QueryKeys } from 'libs/queryKeys'
 
 const DEPTH_LEVEL = 2
+const STALE_TIME_CONTENTFUL = 5 * 60 * 1000
 
 export const CONTENTFUL_BASE_URL = 'https://cdn.contentful.com'
 export const BASE_URL = `${CONTENTFUL_BASE_URL}/spaces/${env.CONTENTFUL_SPACE_ID}/environments/${env.CONTENTFUL_ENVIRONMENT}`
@@ -38,11 +38,9 @@ export async function getEntries() {
 }
 
 export function useHomepageModules(paramsEntryId?: string) {
-  const { isConnected } = useNetwork()
   const selectPlaylist = useSelectPlaylist(paramsEntryId)
   const { data: entries } = useQuery<HomepageEntry[]>(QueryKeys.HOMEPAGE_MODULES, getEntries, {
-    enabled: isConnected,
-    staleTime: 1000 * 60, // 1 min
+    staleTime: STALE_TIME_CONTENTFUL,
   })
 
   const entry = selectPlaylist(entries || [])
@@ -56,12 +54,14 @@ export function useHomepageModules(paramsEntryId?: string) {
   return useMemo(() => (entry ? processHomepageEntry(entry) : []), [entryId])
 }
 
+const STALE_TIME_USER_PROFILE = 5 * 60 * 1000
+
 export function useUserProfileInfo(options = {}) {
-  const { isConnected } = useNetwork()
   const { isLoggedIn } = useAuthContext()
 
   return useQuery<UserProfileResponse>(QueryKeys.USER_PROFILE, () => api.getnativev1me(), {
-    enabled: isLoggedIn && isConnected,
+    enabled: isLoggedIn,
+    staleTime: STALE_TIME_USER_PROFILE,
     ...options,
   })
 }
