@@ -12,9 +12,9 @@ import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
 import { analytics } from 'libs/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
+import { Helmet } from 'libs/react-helmet/Helmet'
 import { SearchHit } from 'libs/search'
 import { getSpacing, Spacer } from 'ui/theme'
-import { Helmet } from 'ui/web/global/Helmet'
 
 const keyExtractor = (item: SearchHit) => item.objectID
 

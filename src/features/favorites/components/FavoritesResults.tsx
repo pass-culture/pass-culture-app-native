@@ -18,12 +18,12 @@ import {
 } from 'features/favorites/pages/utils/sorts'
 import { useUserProfileInfo } from 'features/home/api'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
-import { useGeolocation, GeoCoordinates } from 'libs/geolocation'
-import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import {
   FavoriteHitPlaceholder,
   NumberOfResultsPlaceholder,
 } from 'features/search/components/Placeholders'
+import { useGeolocation, GeoCoordinates } from 'libs/geolocation'
+import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { getSpacing, Spacer } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
 

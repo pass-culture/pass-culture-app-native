@@ -14,8 +14,8 @@ import {
   TAB_BAR_COMP_HEIGHT,
 } from 'ui/theme/constants'
 import { BorderRadiusEnum, Breakpoints } from 'ui/theme/grid'
-import { IconSizesType, iconSizes } from 'ui/theme/iconSizes'
-import { IllustrationSizesType, illustrationSizes } from 'ui/theme/illustrationSizes'
+import { iconSizes, IconSizesType } from 'ui/theme/iconSizes'
+import { illustrationSizes, IllustrationSizesType } from 'ui/theme/illustrationSizes'
 // eslint-disable-next-line no-restricted-imports
 import { ZIndex } from 'ui/theme/layers'
 
@@ -105,6 +105,7 @@ export interface AppThemeType {
     background: ZIndex
     cheatCodeButton: ZIndex
     favoritePastilleContent: ZIndex
+    floatingButton: ZIndex
     homeOfferCoverIcons: ZIndex
     header: ZIndex
     modalHeader: ZIndex
@@ -391,6 +392,7 @@ export const theme: AppThemeType = {
     background: ZIndex.BACKGROUND,
     cheatCodeButton: ZIndex.CHEAT_CODE_BUTTON,
     favoritePastilleContent: ZIndex.FAVORITE_PASTILLE_CONTENT,
+    floatingButton: ZIndex.FLOATING_BUTTON,
     homeOfferCoverIcons: ZIndex.HOME_OFFER_COVER_ICONS,
     header: ZIndex.HEADER,
     modalHeader: ZIndex.MODAL_HEADER,
