@@ -599,7 +599,7 @@ exports[`BookingDetails should render correctly 1`] = `
             }
           />
           <View
-            accessibilityLabel="Le 15 mars 2021 à 20h00"
+            accessibilityLabel="Date: Le 15 mars 2021 à 20h00"
             accessibilityState={
               Object {
                 "disabled": true,
@@ -622,7 +622,6 @@ exports[`BookingDetails should render correctly 1`] = `
                 "userSelect": "auto",
               }
             }
-            testID="Le 15 mars 2021 à 20h00"
           >
             <View
               style={

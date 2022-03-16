@@ -42,9 +42,9 @@ describe('Bookings', () => {
   })
 
   it('should navigate to ended bookings page on press ended bookings CTA', async () => {
-    const { getByTestId } = renderBookings(bookingsSnap)
+    const { getByText } = renderBookings(bookingsSnap)
 
-    const cta = getByTestId('Réservation terminée')
+    const cta = getByText('Réservation terminée')
     fireEvent.press(cta)
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith('EndedBookings')

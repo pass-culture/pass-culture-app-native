@@ -87,9 +87,7 @@ Object {
           target="_blank"
         >
           <div
-            aria-label="Conditions Générales d’Utilisation"
             class="css-view-1dbjc4n"
-            data-testid="Conditions Générales d’Utilisation"
             style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
             tabindex="0"
           >
@@ -141,9 +139,7 @@ Object {
           target="_blank"
         >
           <div
-            aria-label="Charte de protection des données personnelles"
             class="css-view-1dbjc4n"
-            data-testid="Charte de protection des données personnelles"
             style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
             tabindex="0"
           >
@@ -189,9 +185,7 @@ Object {
           style="background-color: rgb(241, 241, 244); height: 1px; width: 100%;"
         />
         <div
-          aria-label="Suppression du compte"
           class="css-view-1dbjc4n"
-          data-testid="Suppression du compte"
           style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
           tabindex="0"
         >
@@ -317,9 +311,7 @@ Object {
         target="_blank"
       >
         <div
-          aria-label="Conditions Générales d’Utilisation"
           class="css-view-1dbjc4n"
-          data-testid="Conditions Générales d’Utilisation"
           style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
           tabindex="0"
         >
@@ -371,9 +363,7 @@ Object {
         target="_blank"
       >
         <div
-          aria-label="Charte de protection des données personnelles"
           class="css-view-1dbjc4n"
-          data-testid="Charte de protection des données personnelles"
           style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
           tabindex="0"
         >
@@ -419,9 +409,7 @@ Object {
         style="background-color: rgb(241, 241, 244); height: 1px; width: 100%;"
       />
       <div
-        aria-label="Suppression du compte"
         class="css-view-1dbjc4n"
-        data-testid="Suppression du compte"
         style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
         tabindex="0"
       >

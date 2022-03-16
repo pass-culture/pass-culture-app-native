@@ -209,6 +209,10 @@ msgstr "Attention, il est impossible de réserver plusieurs fois la même offre�
 msgid "Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !"
 msgstr "Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !"
 
+#: src/features/bookings/components/BookingPropertiesSection.tsx
+msgid "Au nom de"
+msgstr "Au nom de"
+
 #: src/features/search/pages/SuggestedPlaces.tsx
 msgid "Aucun lieu ne correspond à ta recherche"
 msgstr "Aucun lieu ne correspond à ta recherche"
@@ -699,6 +703,10 @@ msgstr "C’est quoi ÉduConnect ?"
 msgid "C’est très rapide !"
 msgstr "C’est très rapide !"
 
+#: src/features/bookings/components/BookingPropertiesSection.tsx
+msgid "DUO: Elle comporte 2 places."
+msgstr "DUO: Elle comporte 2 places."
+
 #: src/features/identityCheck/pages/profile/SetSchoolType.tsx
 msgid "Dans quel type d'établissement ?"
 msgstr "Dans quel type d'établissement ?"
@@ -724,6 +732,10 @@ msgstr "Date de naissance"
 #: src/features/search/sections/OfferDate.tsx
 msgid "Date précise"
 msgstr "Date précise"
+
+#: src/features/bookings/components/BookingPropertiesSection.tsx
+msgid "Date:"
+msgstr "Date:"
 
 #: src/features/bookings/helpers.ts
 msgid "Demain"
@@ -1597,6 +1609,10 @@ msgid "Modifier mon e-mail"
 msgstr "Modifier mon e-mail"
 
 #: src/features/bookOffer/components/Calendar/Calendar.tsx
+msgid "Mois précédent"
+msgstr "Mois précédent"
+
+#: src/features/bookOffer/components/Calendar/Calendar.tsx
 msgid "Mois suivant"
 msgstr "Mois suivant"
 
@@ -1680,10 +1696,6 @@ msgstr "Ne pas archiver"
 #: src/features/identityCheck/pages/profile/SetName.tsx
 msgid "Nom"
 msgstr "Nom"
-
-#: src/features/bookings/components/BookingPropertiesSection.tsx
-msgid "Nom de la réservation"
-msgstr "Nom de la réservation"
 
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 msgid "Nombre de place"
@@ -2384,6 +2396,10 @@ msgstr "Salle de projections"
 #: src/features/profile/pages/ChangeEmail/ChangeEmailExpiredLink.tsx
 msgid "Se connecter"
 msgstr "Se connecter"
+
+#: src/features/bookings/components/BookingPropertiesSection.tsx
+msgid "Se tiendra dans le lieu"
+msgstr "Se tiendra dans le lieu"
 
 #: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
 msgid "Seulement les \"ids\" disposent de validation !"
