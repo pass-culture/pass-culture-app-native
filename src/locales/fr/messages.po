@@ -209,6 +209,10 @@ msgstr "Attention, il est impossible de réserver plusieurs fois la même offre�
 msgid "Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !"
 msgstr "Attention, ton crédit est insuffisant pour pouvoir réserver cette offre !"
 
+#: src/features/bookings/components/BookingPropertiesSection.tsx
+msgid "Au nom de"
+msgstr "Au nom de"
+
 #: src/features/search/pages/SuggestedPlaces.tsx
 msgid "Aucun lieu ne correspond à ta recherche"
 msgstr "Aucun lieu ne correspond à ta recherche"
@@ -235,6 +239,10 @@ msgstr "Aucune valeur à sauvegarder"
 #: src/features/search/sections/OfferDate.tsx
 msgid "Aujourd'hui"
 msgstr "Aujourd'hui"
+
+#: src/features/bookings/components/BookingPropertiesSection.tsx
+msgid "Aura lieu"
+msgstr "Aura lieu"
 
 #: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
 msgid "Autoriser"
@@ -698,6 +706,10 @@ msgstr "C’est quoi ÉduConnect ?"
 #: src/features/identityCheck/pages/Stepper.tsx
 msgid "C’est très rapide !"
 msgstr "C’est très rapide !"
+
+#: src/features/bookings/components/BookingPropertiesSection.tsx
+msgid "DUO: Elle comporte 2 places."
+msgstr "DUO: Elle comporte 2 places."
 
 #: src/features/identityCheck/pages/profile/SetSchoolType.tsx
 msgid "Dans quel type d'établissement ?"
@@ -1681,10 +1693,6 @@ msgstr "Ne pas archiver"
 msgid "Nom"
 msgstr "Nom"
 
-#: src/features/bookings/components/BookingPropertiesSection.tsx
-msgid "Nom de la réservation"
-msgstr "Nom de la réservation"
-
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 msgid "Nombre de place"
 msgstr "Nombre de place"
@@ -2384,6 +2392,10 @@ msgstr "Salle de projections"
 #: src/features/profile/pages/ChangeEmail/ChangeEmailExpiredLink.tsx
 msgid "Se connecter"
 msgstr "Se connecter"
+
+#: src/features/bookings/components/BookingPropertiesSection.tsx
+msgid "Se tiendra dans le lieu"
+msgstr "Se tiendra dans le lieu"
 
 #: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
 msgid "Seulement les \"ids\" disposent de validation !"
@@ -3394,6 +3406,14 @@ msgstr "validé"
 #: src/libs/monitoring/errors.ts
 msgid "venueId is undefined"
 msgstr "venueId is undefined"
+
+#: src/ui/components/buttons/scrollButtonForNotTouchDeviceUtils.ts
+msgid "voir les propositions précédentes"
+msgstr "voir les propositions précédentes"
+
+#: src/ui/components/buttons/scrollButtonForNotTouchDeviceUtils.ts
+msgid "voir les propositions suivantes"
+msgstr "voir les propositions suivantes"
 
 #: src/features/venue/components/VenuePartialAccordionDescription.tsx
 msgid "voir moins"
