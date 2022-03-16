@@ -86,7 +86,7 @@ export const Header = memo(function Header() {
   return (
     <HeaderContainer>
       <LeftContainer margin={margin} isVisible={!!isDesktopOffset} style={fadeAnim}>
-        <LogoContainer onPress={navigateToHome}>
+        <LogoContainer onPress={navigateToHome} aria-hidden={!isBrandVisible}>
           {!!isBrandVisible && (
             <Link to={{ screen: homeNavConfig[0], params: homeNavConfig[1] }} accessible={false}>
               <LogoPassCulture
@@ -100,7 +100,11 @@ export const Header = memo(function Header() {
         <FlexContainer />
       </LeftContainer>
       <CenterContainer isDesktop={theme.isDesktopViewport}>
-        <LeftContainer margin={margin} isVisible={true} style={fadeAnimSmall}>
+        <LeftContainer
+          margin={margin}
+          isVisible={true}
+          style={fadeAnimSmall}
+          aria-hidden={!!isBrandVisible}>
           <LogoPassCulture color={theme.uniqueColors.brand} height={getSpacing(6.5)} width={80} />
         </LeftContainer>
         <Nav
@@ -108,7 +112,11 @@ export const Header = memo(function Header() {
           height={theme.navTopHeight}
           noShadow={theme.isDesktopViewport}
         />
-        <RightContainer margin={margin} isVisible={true} style={fadeAnimSmall}>
+        <RightContainer
+          margin={margin}
+          isVisible={true}
+          style={fadeAnimSmall}
+          aria-hidden={!!isBrandVisible}>
           <FlexContainer alignItems="flex-end">
             <LogoMinistereContainer height={getSpacing(11)} width={getSpacing(15.5)}>
               <LogoMinistere />
@@ -116,7 +124,11 @@ export const Header = memo(function Header() {
           </FlexContainer>
         </RightContainer>
       </CenterContainer>
-      <RightContainer margin={margin} isVisible={!!isDesktopOffset} style={fadeAnim}>
+      <RightContainer
+        margin={margin}
+        isVisible={!!isDesktopOffset}
+        style={fadeAnim}
+        aria-hidden={!isBrandVisible}>
         <FlexContainer />
         <FlexContainer>
           <LogoMinistereContainer>
