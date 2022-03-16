@@ -1,4 +1,3 @@
-import { useNetInfo } from '@react-native-community/netinfo'
 import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
@@ -22,12 +21,7 @@ async function getOfferById(offerId: number) {
   }
 }
 
-export const useOffer = ({ offerId }: { offerId: number }) => {
-  const networkInfo = useNetInfo()
-
-  return useQuery<OfferResponse | undefined>(
-    [QueryKeys.OFFER, offerId],
-    () => (offerId ? getOfferById(offerId) : undefined),
-    { enabled: networkInfo.isConnected }
+export const useOffer = ({ offerId }: { offerId: number }) =>
+  useQuery<OfferResponse | undefined>([QueryKeys.OFFER, offerId], () =>
+    offerId ? getOfferById(offerId) : undefined
   )
-}

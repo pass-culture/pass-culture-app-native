@@ -1,4 +1,5 @@
-import { useNetInfo } from '@react-native-community/netinfo'
+import { plural, t } from '@lingui/macro'
+import { useIsFocused } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import { FlatList, ActivityIndicator } from 'react-native'
@@ -13,14 +14,13 @@ import { analytics } from 'libs/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { SearchHit } from 'libs/search'
 import { getSpacing, Spacer } from 'ui/theme'
-import { TAB_BAR_COMP_HEIGHT } from 'ui/theme/constants'
+import { Helmet } from 'ui/web/global/Helmet'
 
 const keyExtractor = (item: SearchHit) => item.objectID
 
 const ANIMATION_DURATION = 700
 
 export const SearchResults: React.FC = () => {
-  const networkInfo = useNetInfo()
   const flatListRef = useRef<FlatList<SearchHit> | null>(null)
   const {
     hasNextPage,
@@ -36,7 +36,9 @@ export const SearchResults: React.FC = () => {
   const { searchState } = useSearch()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
+  const isFocused = useIsFocused()
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
     // Despite the fact that the useEffect hook being called immediately,
     // scrollToOffset may not always have an effect for unknown reason,
@@ -57,6 +59,7 @@ export const SearchResults: React.FC = () => {
       if (lastPage.page > 0) analytics.logSearchScrollToPage(lastPage.page)
       fetchNextPage()
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasNextPage])
 
   const renderItem = useCallback(
@@ -66,6 +69,7 @@ export const SearchResults: React.FC = () => {
 
   const ListHeaderComponent = useMemo(
     () => <NumberOfResults nbHits={nbHits} />,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [nbHits, searchState.locationFilter.locationType]
   )
   const ListEmptyComponent = useMemo(() => <NoSearchResult />, [])
@@ -81,18 +85,30 @@ export const SearchResults: React.FC = () => {
       ) : (
         <Footer />
       ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [isFetchingNextPage, hits.length]
   )
 
-  const onRefresh = () => {
-    if (networkInfo.isConnected) {
-      refetch()
-    }
-  }
-
   if (showSkeleton) return <SearchResultsPlaceHolder />
+
+  const numberOfResults = plural(nbHits, {
+    one: '# résultat',
+    other: '# résultats',
+  })
+
+  const helmetTitle =
+    numberOfResults +
+    (searchState.query.length > 0 ? ` ${t`pour`} "${searchState.query}"` : '') +
+    ' | Recherche | pass Culture'
   return (
     <React.Fragment>
+      {isFocused ? <Helmet title={helmetTitle} /> : null}
+      {nbHits > 0 && (
+        <FilterContainer>
+          <Filter />
+          <Spacer.BottomScreen />
+        </FilterContainer>
+      )}
       <Container>
         <FlatList
           ref={flatListRef}
@@ -105,7 +121,7 @@ export const SearchResults: React.FC = () => {
           ListFooterComponent={ListFooterComponent}
           renderItem={renderItem}
           refreshing={isRefreshing}
-          onRefresh={onRefresh}
+          onRefresh={refetch}
           onEndReached={onEndReached}
           scrollEnabled={nbHits > 0}
           ListEmptyComponent={ListEmptyComponent}
@@ -113,19 +129,13 @@ export const SearchResults: React.FC = () => {
           keyboardDismissMode="on-drag"
         />
       </Container>
-      {nbHits > 0 && (
-        <FilterContainer>
-          <Filter />
-          <Spacer.BottomScreen />
-        </FilterContainer>
-      )}
     </React.Fragment>
   )
 }
 
 const contentContainerStyle = { flexGrow: 1 }
 const Container = styled.View({ flex: 1 })
-const Footer = styled.View({ height: TAB_BAR_COMP_HEIGHT + getSpacing(52) })
+const Footer = styled.View(({ theme }) => ({ height: theme.tabBarHeight + getSpacing(52) }))
 const Separator = styled.View(({ theme }) => ({
   height: 2,
   backgroundColor: theme.colors.greyLight,
@@ -133,11 +143,12 @@ const Separator = styled.View(({ theme }) => ({
   marginVertical: getSpacing(4),
 }))
 
-const FilterContainer = styled.View({
+const FilterContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
   position: 'absolute',
-  bottom: TAB_BAR_COMP_HEIGHT + getSpacing(6),
-})
+  bottom: theme.tabBarHeight + getSpacing(6),
+  zIndex: theme.zIndex.floatingButton,
+}))
 
 const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => ({
   key: index.toString(),
@@ -150,6 +161,10 @@ function SearchResultsPlaceHolder() {
 
   return (
     <React.Fragment>
+      <FilterContainer>
+        <Filter />
+        <Spacer.BottomScreen />
+      </FilterContainer>
       <Container>
         <FlatList
           data={FAVORITE_LIST_PLACEHOLDER}
@@ -161,10 +176,6 @@ function SearchResultsPlaceHolder() {
           scrollEnabled={false}
         />
       </Container>
-      <FilterContainer>
-        <Filter />
-        <Spacer.BottomScreen />
-      </FilterContainer>
     </React.Fragment>
   )
 }

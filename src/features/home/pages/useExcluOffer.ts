@@ -1,12 +1,9 @@
-import { useNetInfo } from '@react-native-community/netinfo'
 import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { QueryKeys } from 'libs/queryKeys'
 
 export const useExcluOffer = (id: number) => {
-  const networkInfo = useNetInfo()
-
   return useQuery(
     [QueryKeys.OFFER, id],
     async () => {
@@ -17,6 +14,6 @@ export const useExcluOffer = (id: number) => {
         return undefined
       }
     },
-    { enabled: typeof id === 'number' && networkInfo.isConnected }
+    { enabled: typeof id === 'number' }
   )
 }

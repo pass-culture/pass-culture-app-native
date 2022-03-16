@@ -16,7 +16,6 @@ import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/analytics'
 import { QueryKeys } from 'libs/queryKeys'
-import { GLOBAL_STALE_TIME } from 'libs/react-query/queryClient'
 import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
 import { OfferCaption } from 'ui/components/OfferCaption'
@@ -74,7 +73,7 @@ export const mergeOfferData =
     ...(prevData || {}),
   })
 
-export const OfferTile = (props: OfferTileProps) => {
+export function OfferTile(props: OfferTileProps) {
   const {
     analyticsFrom,
     width,
@@ -92,10 +91,7 @@ export const OfferTile = (props: OfferTileProps) => {
   function handlePressOffer() {
     const { offerId } = offer
     // We pre-populate the query-cache with the data from the search result for a smooth transition
-    queryClient.setQueryData([QueryKeys.OFFER, offerId], mergeOfferData(offer), {
-      // Make sure the data is stale, so that it is considered as a placeholder
-      updatedAt: Date.now() - (GLOBAL_STALE_TIME + 1),
-    })
+    queryClient.setQueryData([QueryKeys.OFFER, offerId], mergeOfferData(offer))
     analytics.logConsultOffer({ offerId, from: analyticsFrom, moduleName, venueId })
     navigation.navigate('Offer', { id: offerId, from: analyticsFrom, moduleName })
   }

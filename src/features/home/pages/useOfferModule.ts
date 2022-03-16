@@ -1,4 +1,3 @@
-import { useNetInfo } from '@react-native-community/netinfo'
 import uniqBy from 'lodash.uniqby'
 import { useEffect, useMemo } from 'react'
 import { useQuery } from 'react-query'
@@ -16,13 +15,6 @@ import { useGeolocation } from 'libs/geolocation'
 import { QueryKeys } from 'libs/queryKeys'
 import { SearchHit, useParseSearchParameters } from 'libs/search'
 
-export type HomeModuleResponse = {
-  [moduleId: string]: {
-    hits: SearchHit[]
-    nbHits: number
-  }
-}
-
 const isSearchState = (parameter: unknown): parameter is SearchState =>
   typeof parameter === 'object' && parameter !== null
 
@@ -35,7 +27,6 @@ export const useOfferModule = ({
   search,
   moduleId,
 }: useOfferModuleProps): { hits: SearchHit[]; nbHits: number } | undefined => {
-  const networkInfo = useNetInfo()
   const { position } = useGeolocation()
   const transformHits = useTransformAlgoliaHits()
   const parseSearchParameters = useParseSearchParameters()
@@ -46,15 +37,14 @@ export const useOfferModule = ({
 
   const { data, refetch } = useQuery(
     [QueryKeys.HOME_MODULE, moduleId],
-    async () => await fetchMultipleAlgolia(parsedParameters, position, isUserUnderage),
-    { enabled: networkInfo.isConnected }
+    async () => await fetchMultipleAlgolia(parsedParameters, position, isUserUnderage)
   )
 
   useEffect(() => {
-    if (!networkInfo.isConnected) return
     // When we enable or disable the geolocation, we want to refetch the home modules
     refetch()
-  }, [!!position, user?.isBeneficiary, networkInfo.isConnected])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [!!position, user?.isBeneficiary])
 
   return useMemo(() => {
     if (!data) return

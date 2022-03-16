@@ -25,7 +25,6 @@ import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { ScreenError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
-import { GLOBAL_STALE_TIME } from 'libs/react-query/queryClient'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
@@ -117,11 +116,7 @@ export function BookingDetails() {
         thumbUrl: offer.image?.url,
         name: offer.name,
         offerId: offer.id,
-      }),
-      {
-        // Make sure the data is stale, so that it is considered as a placeholder
-        updatedAt: Date.now() - (GLOBAL_STALE_TIME + 1),
-      }
+      })
     )
     analytics.logConsultOffer({ offerId: offer.id, from: 'bookings' })
     navigate('Offer', { id: offer.id, from: 'bookingdetails' })

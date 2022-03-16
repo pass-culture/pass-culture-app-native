@@ -1,5 +1,4 @@
 import { plural } from '@lingui/macro'
-import { useNetInfo } from '@react-native-community/netinfo'
 import React, { useCallback, useMemo } from 'react'
 import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -29,7 +28,6 @@ const emptyBookings: Booking[] = []
 const ANIMATION_DURATION = 700
 
 export function OnGoingBookingsList() {
-  const networkInfo = useNetInfo()
   const { data: bookings, isLoading, isFetching, refetch } = useBookings()
   const { bottom } = useSafeAreaInsets()
   const { isLoading: subcategoriesIsLoading } = useSubcategories()
@@ -59,6 +57,7 @@ export function OnGoingBookingsList() {
         <EndedBookingsSection endedBookings={endedBookings} />
       </FooterContainer>
     ),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [hasBookings, bookingsCountLabel, endedBookings]
   )
 
@@ -67,12 +66,6 @@ export function OnGoingBookingsList() {
   function onScroll({ nativeEvent }: { nativeEvent: NativeScrollEvent }) {
     if (isCloseToBottom(nativeEvent)) {
       logBookingsScrolledToBottom()
-    }
-  }
-
-  const onRefresh = () => {
-    if (networkInfo.isConnected) {
-      refetch()
     }
   }
 
@@ -85,7 +78,7 @@ export function OnGoingBookingsList() {
         data={ongoingBookings}
         renderItem={renderItem}
         refreshing={isRefreshing}
-        onRefresh={onRefresh}
+        onRefresh={refetch}
         contentContainerStyle={contentContainerStyle}
         ListHeaderComponent={ListHeaderComponent}
         ListEmptyComponent={<NoBookingsView />}

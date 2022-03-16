@@ -48,7 +48,9 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
   }
 
   const openReCaptchaChallenge = useCallback(() => {
-    if (!networkInfo.isConnected) return
+    if (!networkInfo.isConnected) {
+      return
+    }
     setIsDoingReCaptchaChallenge(true)
     setErrorMessage(null)
   }, [networkInfo.isConnected])

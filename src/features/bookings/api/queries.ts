@@ -1,30 +1,29 @@
-import { useNetInfo } from '@react-native-community/netinfo'
-import { useCallback } from 'react'
 import { useQuery, UseQueryResult } from 'react-query'
 
 import { api } from 'api/api'
 import { BookingReponse, BookingsResponse } from 'api/gen'
 import { QueryKeys } from 'libs/queryKeys'
 
-export function useBookings(options = {}) {
-  const networkInfo = useNetInfo()
+// Arbitrary. Make sure the cache is invalidated after each booking
+const STALE_TIME_BOOKINGS = 5 * 60 * 1000
 
+export function useBookings(options = {}) {
   return useQuery<BookingsResponse>(QueryKeys.BOOKINGS, () => api.getnativev1bookings(), {
-    enabled: networkInfo.isConnected,
+    staleTime: STALE_TIME_BOOKINGS,
     ...options,
   })
 }
 
 export function useOngoingOrEndedBooking(id: number): UseQueryResult<BookingReponse | null> {
-  const select = useCallback(
-    (bookings) => {
+  return useBookings({
+    select(bookings: BookingsResponse | null) {
       if (!bookings) {
         return null
       }
-      const onGoingBooking = bookings.ongoing_bookings.find(
+      const onGoingBooking = bookings.ongoing_bookings?.find(
         (item: BookingReponse) => item.id === id
       )
-      const endedBooking = bookings.ended_bookings.find((item: BookingReponse) => item.id === id)
+      const endedBooking = bookings.ended_bookings?.find((item: BookingReponse) => item.id === id)
 
       const selected = onGoingBooking || endedBooking
       if (!selected) {
@@ -32,10 +31,5 @@ export function useOngoingOrEndedBooking(id: number): UseQueryResult<BookingRepo
       }
       return selected
     },
-    [id]
-  )
-
-  return useBookings({
-    select,
   }) as UseQueryResult<BookingReponse | null>
 }

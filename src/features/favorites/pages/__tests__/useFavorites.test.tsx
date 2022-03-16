@@ -66,6 +66,8 @@ function simulateBackend(options: Options = defaultOptions) {
 }
 
 describe('useFavorites hook', () => {
+  afterEach(jest.resetAllMocks)
+
   it('should retrieve favorite data when logged in', async () => {
     simulateBackend()
     mockUseAuthContext.mockImplementationOnce(() => ({
@@ -112,6 +114,8 @@ describe('useFavorites hook', () => {
 })
 
 describe('useAddFavorite hook', () => {
+  afterEach(jest.resetAllMocks)
+
   it('should add favorite', async () => {
     simulateBackend({
       id: offerId,
@@ -184,6 +188,8 @@ describe('useAddFavorite hook', () => {
 })
 
 describe('useRemoveFavorite hook', () => {
+  afterEach(jest.resetAllMocks)
+
   it('should remove favorite', async () => {
     const favorite = paginatedFavoritesResponseSnap.favorites[0]
     const favoriteId = favorite.id
@@ -250,6 +256,8 @@ describe('useRemoveFavorite hook', () => {
 })
 
 describe('useFavorite hook', () => {
+  afterEach(jest.resetAllMocks)
+
   it('should get favorite from offer id', async () => {
     const favorite = paginatedFavoritesResponseSnap.favorites[0]
     simulateBackend({
