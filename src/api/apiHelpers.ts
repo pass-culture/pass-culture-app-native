@@ -2,7 +2,7 @@
 import { t } from '@lingui/macro'
 
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import { Headers, FailedToRefreshAccessTokenError } from 'libs/fetch'
+import { Headers, FailedToRefreshAccessTokenError, FailedToGetRefreshTokenError } from 'libs/fetch'
 import { decodeAccessToken } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
@@ -103,7 +103,7 @@ export const refreshAccessToken = async (api: DefaultApi): Promise<string | null
 
   // if not connected, we also redirect to the login page
   if (refreshToken == null) {
-    throw new FailedToRefreshAccessTokenError()
+    throw new FailedToGetRefreshTokenError()
   }
   try {
     const response = await api.postnativev1refreshAccessToken({
