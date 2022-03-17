@@ -28,15 +28,13 @@ export const BookingOfferModalComponent: React.FC<Props> = ({ visible, offerId }
 
   useEffect(() => {
     dispatch({ type: 'SET_OFFER_ID', payload: offerId })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [offerId, dispatch])
 
   useEffect(() => {
     if (visible) {
       analytics.logBookingProcessStart(offerId)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [visible])
+  }, [visible, offerId])
 
   return (
     <AppModal
