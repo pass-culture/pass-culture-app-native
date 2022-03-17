@@ -87,7 +87,7 @@ type QrCodeViewProps = {
 
 const StyledQRCode = styled(QRCode).attrs<{ value: QrCodeViewProps }>(({ theme, value }) => ({
   value,
-  size: theme.ticket.qrCodeSize,
+  size: theme.ticket.threeShapes.qrCodeSize,
 }))``
 
 const QrCodeView = ({ qrCodeData }: QrCodeViewProps) => (
@@ -108,7 +108,7 @@ const Title = styled(Typo.Title3)({
 const TicketInnerContent = styled.View(({ theme }) => ({
   justifyContent: 'center',
   paddingHorizontal: getSpacing(5),
-  minHeight: theme.ticket.minHeight,
+  minHeight: theme.ticket.threeShapes.minHeight,
   width: '100%',
 }))
 

@@ -6,8 +6,6 @@ import styled from 'styled-components/native'
 
 import { CallToActionIcon, CategoryIdEnum, PopOverIcon, VenueTypeCodeKey } from 'api/gen/api'
 import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
-import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTicket'
-import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
 import { Icons } from 'features/cheatcodes/pages/AppComponents/Icons'
 import { Illustrations } from 'features/cheatcodes/pages/AppComponents/Illustrations'
@@ -15,6 +13,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
 import { SubscriptionMessageBadge } from 'features/profile/components/SubscriptionMessageBadge'
+import { OfferImage } from 'features/search/atoms/OfferImage'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
 import { useUtmParams } from 'libs/utm'
@@ -53,7 +52,6 @@ import { StepDots } from 'ui/components/StepDots'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import CategoryIcon from 'ui/svg/icons/categories/bicolor'
 import { Check } from 'ui/svg/icons/Check'
 import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
@@ -611,24 +609,18 @@ export const AppComponents: FunctionComponent = () => {
           />
         </AlignedText>
         <AlignedText>
-          <OnGoingTicket
-            altIcon={CategoryIcon.ArtsMaterial}
-            image="https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg"
+          <OfferImage
+            categoryId={CategoryIdEnum.BEAUX_ARTS}
+            imageUrl="https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg"
           />
-          <Text> - OnGoing Ticket </Text>
-        </AlignedText>
-
-        <AlignedText>
-          <OnGoingTicket altIcon={CategoryIcon.ArtsMaterial} />
-          <Text> - OnGoing Ticket without image </Text>
+          <Text> - OfferImage small </Text>
         </AlignedText>
         <AlignedText>
-          <EndedBookingTicket image="https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg" />
-          <Text> - Ended booking Ticket </Text>
-        </AlignedText>
-        <AlignedText>
-          <EndedBookingTicket categoryId={CategoryIdEnum.CINEMA} />
-          <Text> - Ended booking Ticket without image </Text>
+          <OfferImage
+            categoryId={CategoryIdEnum.BEAUX_ARTS}
+            imageUrl="https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg"
+          />
+          <Text> - TODO(LucasBeneston): OfferImage large </Text>
         </AlignedText>
         <AlignedText>
           <Badge label={1} />
@@ -636,9 +628,7 @@ export const AppComponents: FunctionComponent = () => {
         </AlignedText>
         <AlignedText>
           <ThreeShapesTicket width={200}>
-            <Center>
-              <QRCode value="passculture" />
-            </Center>
+            <QRCode value="passculture" />
           </ThreeShapesTicket>
           <Text>- {`contient le mot "passculture"`}</Text>
         </AlignedText>

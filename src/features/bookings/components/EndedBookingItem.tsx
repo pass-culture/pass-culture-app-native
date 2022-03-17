@@ -7,6 +7,7 @@ import styled from 'styled-components/native'
 import { BookingCancellationReasons } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { mergeOfferData } from 'features/offer/atoms/OfferTile'
+import { OfferImage } from 'features/search/atoms/OfferImage'
 import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { QueryKeys } from 'libs/queryKeys'
@@ -19,7 +20,6 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Link } from 'ui/web/link/Link'
 
 import { BookingItemTitle } from './BookingItemTitle'
-import { EndedBookingTicket } from './EndedBookingTicket'
 import { BookingItemProps } from './types'
 
 export const EndedBookingItem = ({ booking }: BookingItemProps) => {
@@ -64,7 +64,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
         accessibilityLabel={accessibilityLabel}
         testID="EndedBookingItem">
         <ItemContainer>
-          <EndedBookingTicket image={stock.offer.image?.url} categoryId={categoryId} />
+          <OfferImage imageUrl={stock.offer.image?.url} categoryId={categoryId} />
           <Spacer.Row numberOfSpaces={4} />
           <AttributesView>
             <BookingItemTitle title={stock.offer.name} />

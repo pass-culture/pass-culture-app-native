@@ -5,8 +5,8 @@ import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { mapCategoryToIcon } from 'libs/parsers'
-import { useSubcategory } from 'libs/subcategories'
+import { OfferImage } from 'features/search/atoms/OfferImage'
+import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Clock as DefaultClock } from 'ui/svg/icons/Clock'
@@ -17,13 +17,13 @@ import { Link } from 'ui/web/link/Link'
 import { getBookingProperties, getBookingLabels } from '../helpers'
 
 import { BookingItemTitle } from './BookingItemTitle'
-import { OnGoingTicket } from './OnGoingTicket'
 import { BookingItemProps } from './types'
 
 export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { data: settings = null } = useAppSettings()
-  const { categoryId, isEvent } = useSubcategory(booking.stock.offer.subcategoryId)
+  const { isEvent } = useSubcategory(booking.stock.offer.subcategoryId)
+  const categoryId = useCategoryId(booking.stock.offer.subcategoryId)
 
   const { stock } = booking
   const bookingProperties = getBookingProperties(booking, isEvent)
@@ -44,7 +44,7 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
         onPress={() => navigate('BookingDetails', { id: booking.id })}
         accessibilityLabel={accessibilityLabel}
         testID="OnGoingBookingItem">
-        <OnGoingTicket image={stock.offer.image?.url} altIcon={mapCategoryToIcon(categoryId)} />
+        <OfferImage imageUrl={stock.offer.image?.url} categoryId={categoryId} />
         <AttributesView>
           <BookingItemTitle title={stock.offer.name} />
           {!!dateLabel && <DateLabel>{dateLabel}</DateLabel>}
