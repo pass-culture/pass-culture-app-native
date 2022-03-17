@@ -1,0 +1,46 @@
+{
+  "name": "@pass-culture/web-server",
+  "description": "Web server proxy for pass-culture-app-native",
+  "version": "0.0.1",
+  "private": true,
+  "license": "MIT",
+  "author": {
+    "email": "support@passculture.app",
+    "url": "https://pass.culture.fr",
+    "name": "pass Culture",
+    "twitter": "@pass_Culture"
+  },
+  "contributors": [
+    "Dimitri Kopriwa <dimitri.kopriwa@passculture.app>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pass-culture/nodejs-docs-samples.git"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "scripts": {
+    "dev": "ENV=testing node-dev index.ts",
+    "start": "ENV=${ENV:-testing} ts-node .",
+    "start:development": "ENV=development yarn start",
+    "start:testing": "ENV=testing yarn start",
+    "start:staging": "ENV=staging yarn start",
+    "start:integration": "ENV=integration yarn start",
+    "start:production": "ENV=production yarn start"
+  },
+  "dependencies": {
+    "@swc/core": "^1.2.163",
+    "@types/node": "^16.11.7",
+    "cross-fetch": "^3.1.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.3",
+    "http-proxy-middleware": "^2.0.4",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.3.5"
+  },
+  "devDependencies": {
+    "node-dev": "^7.4.2",
+    "nodemon": "^2.0.15"
+  }
+}
