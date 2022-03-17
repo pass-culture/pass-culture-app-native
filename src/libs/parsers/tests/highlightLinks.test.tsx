@@ -168,5 +168,11 @@ describe('highlightLinks', () => {
         ])
       })
     })
+
+    it('can contain an email', () => {
+      const parsedDescription = highlightLinks('test@passculture.app')
+
+      expect(parsedDescription).toEqual(['test@passculture.app'])
+    })
   })
 })
