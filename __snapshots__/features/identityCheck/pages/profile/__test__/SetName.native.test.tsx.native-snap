@@ -319,6 +319,7 @@ exports[`<SetName/> should render correctly 1`] = `
                     onFocus={[Function]}
                     placeholder="Ton prénom"
                     placeholderTextColor="#696A6F"
+                    returnKeyType="next"
                     style={
                       Array [
                         Object {
@@ -456,6 +457,7 @@ exports[`<SetName/> should render correctly 1`] = `
                     onFocus={[Function]}
                     placeholder="Ton nom"
                     placeholderTextColor="#696A6F"
+                    returnKeyType="next"
                     style={
                       Array [
                         Object {

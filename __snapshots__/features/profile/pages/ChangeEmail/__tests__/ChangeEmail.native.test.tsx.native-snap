@@ -401,6 +401,7 @@ Array [
               onFocus={[Function]}
               placeholder="tonadresse@email.com"
               placeholderTextColor="#696A6F"
+              returnKeyType="next"
               style={
                 Array [
                   Object {
@@ -534,6 +535,7 @@ Array [
               onFocus={[Function]}
               placeholder="Ton mot de passe"
               placeholderTextColor="#696A6F"
+              returnKeyType="next"
               secureTextEntry={true}
               style={
                 Array [
@@ -1036,6 +1038,7 @@ Array [
               onFocus={[Function]}
               placeholder="tonadresse@email.com"
               placeholderTextColor="#696A6F"
+              returnKeyType="next"
               style={
                 Array [
                   Object {
@@ -1177,6 +1180,7 @@ Array [
               onFocus={[Function]}
               placeholder="Ton mot de passe"
               placeholderTextColor="#696A6F"
+              returnKeyType="next"
               secureTextEntry={true}
               style={
                 Array [

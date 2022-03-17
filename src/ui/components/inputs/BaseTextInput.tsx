@@ -52,6 +52,7 @@ export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function 
       editable={!props.disabled}
       testID={props.testID}
       placeholder={restOfProps.placeholder || ''}
+      returnKeyType={props.returnKeyType ?? 'next'}
       ref={(ref) => {
         if (ref) {
           /* @ts-expect-error Conflicts between types */

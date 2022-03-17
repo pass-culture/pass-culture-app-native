@@ -55,6 +55,7 @@ exports[`<TextInput /> should render correctly when NOT focused 1`] = `
       onFocus={[Function]}
       placeholder="placeholder"
       placeholderTextColor="#696A6F"
+      returnKeyType="next"
       style={
         Array [
           Object {
