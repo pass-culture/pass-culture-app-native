@@ -1065,6 +1065,7 @@ Array [
                     onFocus={[Function]}
                     placeholder="entryId"
                     placeholderTextColor="#696A6F"
+                    returnKeyType="next"
                     style={
                       Array [
                         Object {
@@ -1284,6 +1285,7 @@ Array [
                     onFocus={[Function]}
                     placeholder="utm_campaign"
                     placeholderTextColor="#696A6F"
+                    returnKeyType="next"
                     style={
                       Array [
                         Object {
@@ -1406,6 +1408,7 @@ Array [
                     onFocus={[Function]}
                     placeholder="utm_source"
                     placeholderTextColor="#696A6F"
+                    returnKeyType="next"
                     style={
                       Array [
                         Object {
@@ -1528,6 +1531,7 @@ Array [
                     onFocus={[Function]}
                     placeholder="utm_medium"
                     placeholderTextColor="#696A6F"
+                    returnKeyType="next"
                     style={
                       Array [
                         Object {
@@ -1650,6 +1654,7 @@ Array [
                     onFocus={[Function]}
                     placeholder="utm_content"
                     placeholderTextColor="#696A6F"
+                    returnKeyType="next"
                     style={
                       Array [
                         Object {
@@ -1869,6 +1874,7 @@ Array [
                     onFocus={[Function]}
                     placeholder="amv"
                     placeholderTextColor="#696A6F"
+                    returnKeyType="next"
                     style={
                       Array [
                         Object {

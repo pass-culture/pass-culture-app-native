@@ -1280,6 +1280,7 @@ Array [
                     autoCorrect="on"
                     className="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
                     dir="auto"
+                    enterKeyHint="next"
                     id="testUuidV4"
                     onBlur={[Function]}
                     onChange={[Function]}
@@ -1531,6 +1532,7 @@ Array [
                     autoCorrect="on"
                     className="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
                     dir="auto"
+                    enterKeyHint="next"
                     id="testUuidV4"
                     onBlur={[Function]}
                     onChange={[Function]}
@@ -1675,6 +1677,7 @@ Array [
                     autoCorrect="on"
                     className="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
                     dir="auto"
+                    enterKeyHint="next"
                     id="testUuidV4"
                     onBlur={[Function]}
                     onChange={[Function]}
@@ -1819,6 +1822,7 @@ Array [
                     autoCorrect="on"
                     className="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
                     dir="auto"
+                    enterKeyHint="next"
                     id="testUuidV4"
                     onBlur={[Function]}
                     onChange={[Function]}
@@ -1963,6 +1967,7 @@ Array [
                     autoCorrect="on"
                     className="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
                     dir="auto"
+                    enterKeyHint="next"
                     id="testUuidV4"
                     onBlur={[Function]}
                     onChange={[Function]}
@@ -2214,6 +2219,7 @@ Array [
                     autoCorrect="on"
                     className="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
                     dir="auto"
+                    enterKeyHint="next"
                     id="testUuidV4"
                     onBlur={[Function]}
                     onChange={[Function]}
