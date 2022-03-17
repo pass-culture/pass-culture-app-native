@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "rootDir": ".",
+    "declaration": true,
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "target": "es6",
+    "types": [
+      "node"
+    ],
+    "lib": [
+      "es6"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ],
+  "ts-node": {
+    "swc": true
+  }
+}
