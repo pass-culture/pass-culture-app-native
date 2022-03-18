@@ -1,9 +1,9 @@
 import React from 'react'
 import { Animated } from 'react-native'
-import { TouchableOpacity } from 'react-native-gesture-handler'
 import waitForExpect from 'wait-for-expect'
 
 import { fireEvent, render } from 'tests/utils/web'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
 import { Logo } from '../../svg/icons/Logo'
 import { ColorsEnum } from '../../theme/colors'
@@ -35,8 +35,8 @@ describe('AnimatedIcon', () => {
     expect(initialContainer.style.opacity).toBe('1')
     expect(finalContainer.style.opacity).toBe('0')
   })
-  // FIXME(kopax): web integration
-  it.skip('should display only the last color after animation [Web Integration]', async () => {
+
+  it('should display only the last color after animation [Web Integration]', async () => {
     const { getByTestId } = render(<DummyComponent />)
     fireEvent.click(getByTestId('dummyPressable'))
     const initialContainer = getByTestId('initial-icon-container')

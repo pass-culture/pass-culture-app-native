@@ -41,13 +41,12 @@ describe('<BookingPropertiesSection />', () => {
     })
   })
 
-  // FIXME(Lucasbeneston): web integration
-  it.skip('should display location label if offer is not permanent and not a digital event', async () => {
+  it('should display location label if offer is not permanent and not a digital event', async () => {
     booking.stock.offer.isDigital = false
     booking.stock.offer.isPermanent = false
     const { getByText } = await renderBookingProperties(booking)
     await waitForExpect(() => {
-      expect(getByText('Maison de la Brique, Drancy')).toBeTruthy()
+      expect(getByText('Maison de la Brique, Drancy')).toBeTruthy()
     })
   })
 })

@@ -97,8 +97,7 @@ describe('<GenericAchievement />', () => {
     expect(queryByText('Tout passer')).toBeFalsy()
   })
 
-  // FIXME(Lucasbeneston): web integration
-  it.skip('should trigger analytics with a custom name instead of Achievement1', async () => {
+  it('should trigger analytics with a custom name instead of Achievement1', async () => {
     const cardCustomName = 'CustomName'
     const { getByTestId } = renderGenericAchievementComponent({
       screenName: 'FirstTutorial',

@@ -23,6 +23,7 @@ let mockPosition: GeoCoordinates | null = DEFAULT_POSITION
 let mockPositionError: GeolocationError | null = null
 const mockTriggerPositionUpdate = jest.fn()
 const mockShowGeolocPermissionModal = jest.fn()
+const mockRequestGeolocPermission = jest.fn()
 
 jest.mock('libs/geolocation/GeolocationWrapper', () => ({
   useGeolocation: () => ({
@@ -31,6 +32,7 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
     positionError: mockPositionError,
     triggerPositionUpdate: mockTriggerPositionUpdate,
     showGeolocPermissionModal: mockShowGeolocPermissionModal,
+    requestGeolocPermission: mockRequestGeolocPermission,
   }),
 }))
 
@@ -115,8 +117,7 @@ describe('FavoritesSorts component', () => {
     })
   })
 
-  // FIXME(Lucasbeneston): web integration
-  it.skip('should NOT trigger analytics=AROUND_ME when clicking on "Proximité géographique" then refusing geoloc then validating', async () => {
+  it('should NOT trigger analytics=AROUND_ME when clicking on "Proximité géographique" then refusing geoloc then validating', async () => {
     mockPosition = null
     mockPermissionState = GeolocPermissionState.DENIED
     const renderAPI = await renderFavoritesSort()

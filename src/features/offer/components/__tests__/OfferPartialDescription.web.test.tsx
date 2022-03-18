@@ -33,15 +33,13 @@ describe('OfferPartialDescription', () => {
       description: '',
     })
     const offerSeeMoreContainer = getByTestId('offerSeeMoreContainer')
-    // @ts-expect-error FIXME(yorickeando) see how to fix typing
-    const { 'align-self': alignSelf } = offerSeeMoreContainer.style
+    const { alignSelf } = offerSeeMoreContainer.style
     expect(alignSelf).toBe('center')
   })
   it('places CTA on flex-end when provided a description', () => {
     const { getByTestId } = renderOfferDescription(defaultParams)
     const offerSeeMoreContainer = getByTestId('offerSeeMoreContainer')
-    // @ts-expect-error FIXME(yorickeando) see how to fix typing
-    const { 'align-self': alignSelf } = offerSeeMoreContainer.style
+    const { alignSelf } = offerSeeMoreContainer.style
     expect(alignSelf).toBe('flex-end')
   })
   it('renders externalLinks if http(s) url are present in the description', () => {

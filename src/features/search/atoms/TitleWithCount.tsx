@@ -13,7 +13,7 @@ export const TitleWithCount: React.FC<{ title: string; count: number }> = ({
   return (
     <Title>
       {title}
-      {count > 0 && <RedTitle>{countString}</RedTitle>}
+      {count > 0 && <RedTitle testID="titleCount">{countString}</RedTitle>}
     </Title>
   )
 }
