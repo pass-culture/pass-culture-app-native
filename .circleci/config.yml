@@ -384,6 +384,12 @@ jobs:
             export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
             export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_TESTING
             ./scripts/deploy.sh -o ios -t soft -e testing
+      - run:
+          name: Notify failed deploy
+          command: |
+            BOT_MESSAGE="'*testing* : [App Native] deployment *"$CIRCLE_TAG"* has failed :collision:'"
+            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-testing','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
+          when: on_fail
 
   deploy-android-testing-hard:
     executor: android
@@ -410,6 +416,12 @@ jobs:
           command: |
             export ANDROID_APPCENTER_API_TOKEN=$ANDROID_TESTING_APPCENTER_API_TOKEN
             ./scripts/deploy.sh -o android -t hard -e testing
+      - run:
+          name: Notify failed deploy
+          command: |
+            BOT_MESSAGE="'*testing* : [App Native] deployment *"$CIRCLE_TAG"* has failed :collision:'"
+            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-testing','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
+          when: on_fail
 
   deploy-ios-testing-hard:
     executor: ios
@@ -434,6 +446,12 @@ jobs:
           command: |
             export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
             ./scripts/deploy.sh -o ios -t hard -e testing
+      - run:
+          name: Notify failed deploy
+          command: |
+            BOT_MESSAGE="'*testing* : [App Native] deployment *"$CIRCLE_TAG"* has failed :collision:'"
+            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-testing','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
+          when: on_fail
 
   deploy-ios-staging-hard:
     executor: ios
@@ -608,6 +626,12 @@ jobs:
           bucket_name: passculture-metier-ehp-testing-decliweb
       - invalidate-cache:
           url_map_name: testing-decliweb-url-map
+      - run:
+          name: Notify failed deploy
+          command: |
+            BOT_MESSAGE="'*testing-web* : [App Native] deployment *"$CIRCLE_TAG"* has failed :collision:'"
+            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-testing','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
+          when: on_fail      
 
   deploy-web-staging:
     executor: gcp
