@@ -9,7 +9,6 @@ import { FavoriteOfferResponse, FavoriteResponse, UserProfileResponse } from 'ap
 import { useRemoveFavorite } from 'features/favorites/pages/useFavorites'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { mergeOfferData } from 'features/offer/atoms/OfferTile'
-import { OfferImage } from 'features/search/atoms/OfferImage'
 import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { formatToFrenchDate, getFavoriteDisplayPrice } from 'libs/parsers'
@@ -24,6 +23,7 @@ import { getHeadingAttrs } from 'ui/theme/typography'
 import { Link } from 'ui/web/link/Link'
 
 import { BookingButton } from './BookingButton'
+import { OfferImage } from 'ui/components/tiles/OfferImage'
 
 interface Props {
   favorite: FavoriteResponse

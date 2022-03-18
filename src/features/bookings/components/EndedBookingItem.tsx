@@ -7,7 +7,6 @@ import styled from 'styled-components/native'
 import { BookingCancellationReasons } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { mergeOfferData } from 'features/offer/atoms/OfferTile'
-import { OfferImage } from 'features/search/atoms/OfferImage'
 import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { QueryKeys } from 'libs/queryKeys'
@@ -21,6 +20,7 @@ import { Link } from 'ui/web/link/Link'
 
 import { BookingItemTitle } from './BookingItemTitle'
 import { BookingItemProps } from './types'
+import { OfferImage } from 'ui/components/tiles/OfferImage'
 
 export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   const { navigate } = useNavigation<UseNavigationType>()

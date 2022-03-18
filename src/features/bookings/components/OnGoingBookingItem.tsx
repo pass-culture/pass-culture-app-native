@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { OfferImage } from 'features/search/atoms/OfferImage'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -18,6 +17,7 @@ import { getBookingProperties, getBookingLabels } from '../helpers'
 
 import { BookingItemTitle } from './BookingItemTitle'
 import { BookingItemProps } from './types'
+import { OfferImage } from 'ui/components/tiles/OfferImage'
 
 export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
   const { navigate } = useNavigation<UseNavigationType>()

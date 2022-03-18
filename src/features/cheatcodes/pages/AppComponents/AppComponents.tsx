@@ -13,7 +13,6 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
 import { SubscriptionMessageBadge } from 'features/profile/components/SubscriptionMessageBadge'
-import { OfferImage } from 'features/search/atoms/OfferImage'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
 import { useUtmParams } from 'libs/utm'
@@ -58,6 +57,7 @@ import { Email } from 'ui/svg/icons/Email'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { OfferImage } from 'ui/components/tiles/OfferImage'
 function onButtonPress() {
   Alert.alert('you pressed it')
 }
