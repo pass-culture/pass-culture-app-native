@@ -24,7 +24,7 @@ describe('Location section', () => {
     expect(render(<Location />).queryByText(countString)).toBeNull()
   })
 
-  // FIXME: Web Integration
+  // FIXME(kopax): Web Integration
   it.skip('should have count in title when searching Around me [WEB INTEGRATION]', () => {
     mockSearchState.locationFilter = {
       locationType: LocationType.AROUND_ME,
@@ -33,7 +33,7 @@ describe('Location section', () => {
     expect(render(<Location />).queryByText(countString)).toBeTruthy()
   })
 
-  // FIXME: Web Integration
+  // FIXME(kopax): Web Integration
   it.skip('should have count in title when searching Place [WEB INTEGRATION]', () => {
     mockSearchState.locationFilter = {
       locationType: LocationType.PLACE,

@@ -41,7 +41,7 @@ describe('<BookingPropertiesSection />', () => {
     })
   })
 
-  // FIXME: web integration
+  // FIXME(Lucasbeneston): web integration
   it.skip('should display location label if offer is not permanent and not a digital event', async () => {
     booking.stock.offer.isDigital = false
     booking.stock.offer.isPermanent = false

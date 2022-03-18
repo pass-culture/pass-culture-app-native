@@ -53,7 +53,7 @@ describe('NotificationSettings', () => {
     })
   })
 
-  // TODO : see why it use an elevation 4px in a next ticket
+  // TODO(kopax): see why it use an elevation 4px in a next ticket
   it.skip('should only display the email switch on android', async () => {
     Platform.OS = 'android'
     const { queryByText } = await renderNotificationSettings('granted', {} as UserProfileResponse)

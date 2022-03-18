@@ -1,4 +1,4 @@
-// TODO: code was commented so we can release webapp v2 and have more time later for testing this.
+// TODO(kopax): code was commented so we can release webapp v2 and have more time later for testing this.
 // import { t } from '@lingui/macro'
 // import React from 'react'
 //

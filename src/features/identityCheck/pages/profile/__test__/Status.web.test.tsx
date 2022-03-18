@@ -34,7 +34,7 @@ describe('<Status/>', () => {
     const renderAPI = render(<Status />)
     expect(renderAPI).toMatchSnapshot()
   })
-  // TODO PC-12410 : déléguer la responsabilité au back de faire cette filtration
+  // TODO(PC-12410): déléguer la responsabilité au back de faire cette filtration
   it('should render with no Collégien status if user is over 18', () => {
     mockUseIsUserUnderage.mockReturnValueOnce(false)
     const { queryByText } = render(<Status />)

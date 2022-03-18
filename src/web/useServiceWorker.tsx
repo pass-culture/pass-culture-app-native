@@ -76,7 +76,7 @@ interface ServiceWorkerState {
   error?: Error
 }
 
-// TODO: remove me when PC-10931 is validated
+// TODO(kopax): remove me when PC-10931 is validated
 const log = (text: string, err?: Error) => {
   if (__DEV__ || globalThis.window.location.origin === 'https://app.testing.passculture.team/') {
     // eslint-disable-next-line no-console

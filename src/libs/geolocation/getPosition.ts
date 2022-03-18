@@ -45,7 +45,7 @@ export const getPosition = () =>
             break
           case GeolocPositionError.TIMEOUT:
             // Location request timed out
-            // TODO: we could implement a retry pattern
+            // TODO(unknown): we could implement a retry pattern
             reject({ type, message: GEOLOCATION_USER_ERROR_MESSAGE[type] })
             break
           case GeolocPositionError.PLAY_SERVICE_NOT_AVAILABLE:

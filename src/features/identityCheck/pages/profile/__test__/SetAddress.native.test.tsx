@@ -98,7 +98,7 @@ describe('<SetAddress/>', () => {
     })
   })
 
-  // TODO(antoinewg): make this test work
+  // TODO(unknown): make this test work
   it.skip('should show the generic error message if the API call returns error', async () => {
     mockAddressesApiCallError()
     const mockedGetCitiesSpy = jest.spyOn(fetchAddresses, 'fetchAddresses')

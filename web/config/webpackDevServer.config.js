@@ -107,7 +107,7 @@ module.exports = function (proxy, allowedHost) {
         // `proxy` is run between `before` and `after` `webpack-dev-server` hooks
         proxy: {
             ...proxy,
-            // TODO: This `proxy` is handy until pc backend accept CORS request (or fetch client is configured). Remove after configuring CORS with https://passculture.atlassian.net/browse/PC-9847
+            // TODO(kopax): This `proxy` is handy until pc backend accept CORS request (or fetch client is configured). Remove after configuring CORS with https://passculture.atlassian.net/browse/PC-9847
             '/native': {
                 target: raw.API_BASE_URL,
                 changeOrigin: true,
