@@ -7,6 +7,7 @@ import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
+import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Clock as DefaultClock } from 'ui/svg/icons/Clock'
 import { Duo } from 'ui/svg/icons/Duo'
@@ -17,7 +18,6 @@ import { getBookingProperties, getBookingLabels } from '../helpers'
 
 import { BookingItemTitle } from './BookingItemTitle'
 import { BookingItemProps } from './types'
-import { OfferImage } from 'ui/components/tiles/OfferImage'
 
 export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
   const { navigate } = useNavigation<UseNavigationType>()

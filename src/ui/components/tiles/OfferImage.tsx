@@ -9,7 +9,7 @@ import { ImagePlaceholder } from 'ui/components/ImagePlaceholder'
 import { getShadow, getSpacing } from 'ui/theme'
 
 interface Props {
-  imageUrl: string | undefined
+  imageUrl?: string
   categoryId?: CategoryIdEnum | null
 }
 

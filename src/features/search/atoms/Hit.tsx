@@ -14,10 +14,10 @@ import { SearchHit } from 'libs/search'
 import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
+import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Link } from 'ui/web/link/Link'
-import { OfferImage } from 'ui/components/tiles/OfferImage'
 interface Props {
   hit: SearchHit
   query: string

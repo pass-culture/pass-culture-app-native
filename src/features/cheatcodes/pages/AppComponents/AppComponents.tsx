@@ -48,6 +48,7 @@ import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { SlantTag } from 'ui/components/SlantTag'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { StepDots } from 'ui/components/StepDots'
+import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -57,7 +58,6 @@ import { Email } from 'ui/svg/icons/Email'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { OfferImage } from 'ui/components/tiles/OfferImage'
 function onButtonPress() {
   Alert.alert('you pressed it')
 }
