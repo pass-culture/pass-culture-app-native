@@ -270,6 +270,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   },
                 ]
               }
+              testID="titleCount"
             >
                (1)
             </Text>
