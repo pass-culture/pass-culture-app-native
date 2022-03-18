@@ -35,7 +35,7 @@ describe('AnimatedIcon', () => {
     expect(initialContainer.style.opacity).toBe('1')
     expect(finalContainer.style.opacity).toBe('0')
   })
-  // FIXME: web integration
+  // FIXME(kopax): web integration
   it.skip('should display only the last color after animation [Web Integration]', async () => {
     const { getByTestId } = render(<DummyComponent />)
     fireEvent.click(getByTestId('dummyPressable'))

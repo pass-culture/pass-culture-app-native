@@ -28,7 +28,7 @@ export function useBookOfferMutation({ onSuccess, onError }: BookOffer) {
 
       try {
         // NOTE: In react-query, to force refetch, invalidateQueries is not reliable, staleTime is not reliable, and underlying function such as refetch are not.
-        // TODO: dig why and take actions
+        // TODO(kopax): dig why and take actions
         const bookings: BookingsResponse = await api.getnativev1bookings()
         queryClient.setQueryData(QueryKeys.BOOKINGS, bookings)
       } catch (error) {

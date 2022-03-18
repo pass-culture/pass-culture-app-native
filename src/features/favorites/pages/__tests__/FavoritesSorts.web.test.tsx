@@ -115,7 +115,7 @@ describe('FavoritesSorts component', () => {
     })
   })
 
-  // FIXME: web integration
+  // FIXME(Lucasbeneston): web integration
   it.skip('should NOT trigger analytics=AROUND_ME when clicking on "Proximité géographique" then refusing geoloc then validating', async () => {
     mockPosition = null
     mockPermissionState = GeolocPermissionState.DENIED

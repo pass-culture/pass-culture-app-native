@@ -34,7 +34,7 @@ export type IdentityCheckRootStackParamList = {
     dateOfBirth?: string
     logoutUrl?: string
   }
-  // TODO: this duplicate route is required until we solve PC-12433
+  // TODO(PC-12433): this duplicate route is required until we solve PC-12433
   Validation: {
     firstName?: string
     lastName?: string

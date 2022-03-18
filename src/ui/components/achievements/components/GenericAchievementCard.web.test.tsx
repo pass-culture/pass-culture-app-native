@@ -155,7 +155,7 @@ describe('<GenericAchievementCard />', () => {
     expect(queryByTestId('invisible-button-height')).toBeFalsy()
   })
 
-  // FIXME: web integration
+  // FIXME(kopax): web integration
   it.skip('should pause animation when not on active index', async () => {
     jest.spyOn(React, 'useRef').mockReturnValueOnce({
       current: {
@@ -183,7 +183,7 @@ describe('<GenericAchievementCard />', () => {
     })
   })
 
-  // FIXME: web integration
+  // FIXME(Lucasbeneston): web integration
   it.skip('should play animation when on active index', async () => {
     jest.spyOn(React, 'useRef').mockReturnValueOnce({
       current: {
@@ -212,7 +212,7 @@ describe('<GenericAchievementCard />', () => {
     })
   })
 
-  // FIXME: web integration
+  // FIXME(Lucasbeneston): web integration
   it.skip('should not fade in button when not on active index', async () => {
     jest.spyOn(React, 'useRef').mockReturnValueOnce({
       current: {
@@ -239,7 +239,7 @@ describe('<GenericAchievementCard />', () => {
     })
   })
 
-  // FIXME: web integration
+  // FIXME(Lucasbeneston): web integration
   it.skip('should fade in button when on active index', async () => {
     const fadeIn = jest.fn()
     jest.spyOn(React, 'useRef').mockReturnValueOnce({
@@ -272,7 +272,7 @@ describe('<GenericAchievementCard />', () => {
     })
   })
 
-  // FIXME: web integration
+  // FIXME(Lucasbeneston): web integration
   it.skip('should have a button to skip single card', () => {
     jest.spyOn(React, 'useRef').mockReturnValueOnce({
       current: {

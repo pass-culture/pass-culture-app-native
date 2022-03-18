@@ -95,7 +95,7 @@ describe('<Favorite /> component', () => {
     expect(withoutDistance).toMatchDiffSnapshot(withDistance)
   })
 
-  // TODO : fix test
+  // TODO(unknown) : fix test
   it.skip('should delete favorite on button click', async () => {
     const deleteFavoriteSpy = jest.spyOn(api, 'deletenativev1mefavoritesfavoriteId')
     simulateBackend()
@@ -112,7 +112,7 @@ describe('<Favorite /> component', () => {
     })
   })
 
-  // TODO : fix test
+  // TODO(unknown) : fix test
   it.skip('should fail to delete favorite on button click', async () => {
     const deleteFavoriteSpy = jest.spyOn(api, 'deletenativev1mefavoritesfavoriteId')
     const id = 0

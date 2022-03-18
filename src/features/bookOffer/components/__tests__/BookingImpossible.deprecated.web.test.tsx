@@ -82,7 +82,7 @@ describe('<BookingImpossible />', () => {
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
 
-  // FIXME: Web Integration
+  // FIXME(kopax): Web Integration
   it.skip('should log analytics event when adding to favorites [Web Integration]', async () => {
     const setup = (queryClient: QueryClient) => {
       queryClient.setQueryData('favorites', {
