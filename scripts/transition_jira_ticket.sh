@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-set -e
-
 JIRA_TICKET_ID=$(git log --oneline | head -1 | grep -oP "PC-\d+" | head -1)
 JIRA_TRANSITION_ID="81" # revue PM
 CURRENT_BRANCH=`git rev-parse --abbrev-ref HEAD`
