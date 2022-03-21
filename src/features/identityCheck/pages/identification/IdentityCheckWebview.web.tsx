@@ -64,10 +64,7 @@ export const IdentityCheckWebview: React.FC = () => {
   return (
     <React.Fragment>
       <Helmet>
-        <script
-          src="https://oos.eu-west-2.outscale.com/public-ubble-ai/iframe-sdk-0.0.1.js"
-          type="application/javascript"
-        />
+        <script src="https://oos.eu-west-2.outscale.com/public-ubble-ai/iframe-sdk-0.0.1.js" />
       </Helmet>
       <div id={ubbleIframeId} style={style} />
     </React.Fragment>

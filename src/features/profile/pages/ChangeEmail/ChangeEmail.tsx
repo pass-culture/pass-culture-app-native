@@ -129,7 +129,7 @@ export function ChangeEmail() {
               disabled={hasCurrentEmailChange}
               isRequiredField
               autoFocus
-              accessibilityDescribedBy={emailInputErrorId}
+              accessibilityDescribedBy={emailErrorMessage ? emailInputErrorId : undefined}
             />
             {!!emailErrorMessage && (
               <InputError
@@ -148,7 +148,7 @@ export function ChangeEmail() {
               textContentType="password"
               disabled={hasCurrentEmailChange}
               isRequiredField
-              accessibilityDescribedBy={passwordInputErrorId}
+              accessibilityDescribedBy={passwordErrorMessage ? passwordInputErrorId : undefined}
             />
             {!!passwordErrorMessage && (
               <InputError

@@ -8,6 +8,6 @@ describe('Style', () => {
   it('should render a style tag including theCSS on the Web', () => {
     const css = `body { color: red; }`
     const renderAPI = render(<Style>{css}</Style>)
-    expect(renderAPI.toJSON()).toEqual(render(<style type="text/css">{css}</style>).toJSON())
+    expect(renderAPI.toJSON()).toEqual(render(<style>{css}</style>).toJSON())
   })
 })

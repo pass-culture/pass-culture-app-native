@@ -145,7 +145,7 @@ export const ForgottenPassword: FunctionComponent = () => {
             email={email}
             onEmailChange={onEmailChange}
             autoFocus={true}
-            accessibilityDescribedBy={emailErrorMessageId}
+            accessibilityDescribedBy={errorMessage ? emailErrorMessageId : undefined}
           />
           {!!errorMessage && (
             <InputError

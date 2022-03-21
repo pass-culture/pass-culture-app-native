@@ -68,5 +68,6 @@ export function Link<ParamList extends ReactNavigation.RootParamList>({
       web: { onClick: onPress } as any,
       default: { onPress },
     }),
+    accessibilityRole: props?.href ? undefined : props?.accessibilityRole,
   })
 }

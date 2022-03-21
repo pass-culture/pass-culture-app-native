@@ -56,7 +56,7 @@ export const SetEmail: FunctionComponent<PreValidationSignupStepProps> = (props)
         autoFocus={true}
         onSubmitEditing={validateEmail}
         ref={emailInput}
-        accessibilityDescribedBy={emailInputErrorId}
+        accessibilityDescribedBy={hasError ? emailInputErrorId : undefined}
       />
       <InputError
         visible={hasError}

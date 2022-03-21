@@ -92,7 +92,7 @@ export const LocationFilter: React.FC = () => {
               testID="aroundMe"
               section={LocationType.AROUND_ME}
               onPress={onPressAroundMe}
-              accessibilityDescribedBy={locationChoiceErrorId}
+              accessibilityDescribedBy={positionError ? locationChoiceErrorId : undefined}
             />
             {!!positionError && (
               <InputError

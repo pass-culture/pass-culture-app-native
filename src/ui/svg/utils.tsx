@@ -7,7 +7,7 @@ import { ColorsEnum, UniqueColors } from 'ui/theme/colors'
 
 export const svgIdentifier = (prefix?: string, suffix?: string) => {
   const uuid = uuidv1()
-  const p = prefix || ''
+  const p = prefix || 'gradient'
   const s = suffix || ''
   const id = `${p}${uuid}${s}`
   const xlinkHref = `#${id}`

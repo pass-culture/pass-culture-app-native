@@ -91,7 +91,7 @@ export function ReCaptcha(props: Props) {
 
   return (
     <React.Fragment>
-      <style type="text/css">{css}</style>
+      <style>{css}</style>
       <div id="recaptcha-container" ref={reCaptchaContainerRef} />
     </React.Fragment>
   )

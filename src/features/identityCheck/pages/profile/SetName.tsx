@@ -24,8 +24,11 @@ export const SetName = () => {
   const isValidFirstName = isNameValid(firstName)
   const isValidLastName = isNameValid(lastName)
   const disabled = !isValidFirstName || !isValidLastName
-  const lastnameInputErrorId = uuidv4()
-  const usernameInputErrorId = uuidv4()
+  const firstNameInputErrorId = uuidv4()
+  const lastNameInputErrorId = uuidv4()
+
+  const firstNameHasError = !isValidFirstName && firstName.length > 0
+  const lastNameHasError = !isValidLastName && lastName.length > 0
 
   function submitName() {
     if (disabled) return
@@ -54,14 +57,14 @@ export const SetName = () => {
             placeholder={t`Ton prénom`}
             textContentType="username"
             isRequiredField
+            accessibilityDescribedBy={firstNameHasError ? firstNameInputErrorId : undefined}
             {...accessibilityAndTestId(t`Entrée pour le prénom`)}
-            accessibilityDescribedBy={lastnameInputErrorId}
           />
           <InputError
-            visible={!isValidFirstName && firstName.length > 0}
+            visible={firstNameHasError}
             messageId={t`Ton prénom ne doit pas contenir de chiffres ou de caractères spéciaux.`}
             numberOfSpacesTop={2}
-            relatedInputId={lastnameInputErrorId}
+            relatedInputId={firstNameInputErrorId}
           />
           <Spacer.Column numberOfSpaces={6} />
           <TextInput
@@ -71,14 +74,14 @@ export const SetName = () => {
             placeholder={t`Ton nom`}
             textContentType="username"
             isRequiredField
+            accessibilityDescribedBy={lastNameHasError ? lastNameInputErrorId : undefined}
             {...accessibilityAndTestId(t`Entrée pour le nom`)}
-            accessibilityDescribedBy={usernameInputErrorId}
           />
           <InputError
-            visible={!isValidLastName && lastName.length > 0}
+            visible={lastNameHasError}
             messageId={t`Ton nom ne doit pas contenir de chiffres ou de caractères spéciaux.`}
             numberOfSpacesTop={2}
-            relatedInputId={usernameInputErrorId}
+            relatedInputId={lastNameInputErrorId}
           />
         </Form.MaxWidth>
       }

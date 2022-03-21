@@ -7,6 +7,7 @@ import React, { useCallback, useState, useMemo, memo } from 'react'
 import { Platform } from 'react-native'
 import { MaskedTextInput } from 'react-native-mask-text'
 import styled, { useTheme } from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
 import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
@@ -79,7 +80,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
     validationCodeRequestTimestamp,
     (elapsedTime: number) => elapsedTime > TIMER
   )
-  const validationCodeInputLabel = 'validationCodeInputLabel'
+  const validationCodeInputId = uuidv4()
 
   const isRequestTimestampExpired =
     !validationCodeRequestTimestamp ||
@@ -233,7 +234,6 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
             <Spacer.Column numberOfSpaces={6} />
             <CodeInputContainer>
               <CodeInput
-                aria-label={validationCodeInputLabel}
                 onChangeText={(text, rawText) => {
                   onChangeValue(rawText ?? '')
                 }}
@@ -242,6 +242,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
                 maxLength={codeInputPlaceholder.length}
                 keyboardType="number-pad"
                 onSubmitEditing={validateCode}
+                aria-describedby={errorMessage ? validationCodeInputId : undefined}
                 {...accessibilityAndTestId(t`Entrée du code de confirmation`)}
               />
             </CodeInputContainer>
@@ -251,7 +252,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
                   visible
                   messageId={errorMessage}
                   numberOfSpacesTop={3}
-                  relatedInputId={validationCodeInputLabel}
+                  relatedInputId={validationCodeInputId}
                 />
                 <Spacer.Column numberOfSpaces={5} />
               </React.Fragment>

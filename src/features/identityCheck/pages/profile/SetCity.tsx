@@ -106,7 +106,7 @@ export const SetCity = () => {
             accessibilityLabel={t`Entrée pour le code postal`}
             onPressRightIcon={resetSearch}
             keyboardType="number-pad"
-            accessibilityDescribedBy={postalCodeInputErrorId}
+            accessibilityDescribedBy={errorMessage ? postalCodeInputErrorId : undefined}
           />
           {!!errorMessage && (
             <InputError
