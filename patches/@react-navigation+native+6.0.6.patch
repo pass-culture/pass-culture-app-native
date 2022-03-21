@@ -1,0 +1,93 @@
+diff --git a/node_modules/@react-navigation/native/lib/commonjs/useLinking.js b/node_modules/@react-navigation/native/lib/commonjs/useLinking.js
+index 7c13e0e..8acc290 100644
+--- a/node_modules/@react-navigation/native/lib/commonjs/useLinking.js
++++ b/node_modules/@react-navigation/native/lib/commonjs/useLinking.js
+@@ -46,7 +46,7 @@ const createMemoryHistory = () => {
+       const id = (_window$history$state = window.history.state) === null || _window$history$state === void 0 ? void 0 : _window$history$state.id;
+ 
+       if (id) {
+-        const index = items.findIndex(item => item.id === id);
++        const index = items.findIndex(item => item?.id === id);
+         return index > -1 ? index : 0;
+       }
+ 
+@@ -105,7 +105,7 @@ const createMemoryHistory = () => {
+       interrupt();
+       const id = (_window$history$state2 = (_window$history$state3 = window.history.state) === null || _window$history$state3 === void 0 ? void 0 : _window$history$state3.id) !== null && _window$history$state2 !== void 0 ? _window$history$state2 : (0, _nonSecure.nanoid)();
+ 
+-      if (!items.length || items.findIndex(item => item.id === id) < 0) {
++      if (!items.length || items.findIndex(item => item?.id === id) < 0) {
+         // There are two scenarios for creating an array with only one history record:
+         // - When loaded id not found in the items array, this function by default will replace
+         //   the first item. We need to keep only the new updated object, otherwise it will break
+@@ -204,7 +204,7 @@ const createMemoryHistory = () => {
+           var _window$history$state4;
+ 
+           const id = (_window$history$state4 = window.history.state) === null || _window$history$state4 === void 0 ? void 0 : _window$history$state4.id;
+-          const currentIndex = items.findIndex(item => item.id === id); // Fix createMemoryHistory.index variable's value
++          const currentIndex = items.findIndex(item => item?.id === id); // Fix createMemoryHistory.index variable's value
+           // as it may go out of sync when navigating in the browser.
+ 
+           index = Math.max(currentIndex, 0);
+diff --git a/node_modules/@react-navigation/native/lib/module/useLinking.js b/node_modules/@react-navigation/native/lib/module/useLinking.js
+index 3321728..bd061db 100644
+--- a/node_modules/@react-navigation/native/lib/module/useLinking.js
++++ b/node_modules/@react-navigation/native/lib/module/useLinking.js
+@@ -30,7 +30,7 @@ const createMemoryHistory = () => {
+       const id = (_window$history$state = window.history.state) === null || _window$history$state === void 0 ? void 0 : _window$history$state.id;
+ 
+       if (id) {
+-        const index = items.findIndex(item => item.id === id);
++        const index = items.findIndex(item => item?.id === id);
+         return index > -1 ? index : 0;
+       }
+ 
+@@ -89,7 +89,7 @@ const createMemoryHistory = () => {
+       interrupt();
+       const id = (_window$history$state2 = (_window$history$state3 = window.history.state) === null || _window$history$state3 === void 0 ? void 0 : _window$history$state3.id) !== null && _window$history$state2 !== void 0 ? _window$history$state2 : nanoid();
+ 
+-      if (!items.length || items.findIndex(item => item.id === id) < 0) {
++      if (!items.length || items.findIndex(item => item?.id === id) < 0) {
+         // There are two scenarios for creating an array with only one history record:
+         // - When loaded id not found in the items array, this function by default will replace
+         //   the first item. We need to keep only the new updated object, otherwise it will break
+@@ -188,7 +188,7 @@ const createMemoryHistory = () => {
+           var _window$history$state4;
+ 
+           const id = (_window$history$state4 = window.history.state) === null || _window$history$state4 === void 0 ? void 0 : _window$history$state4.id;
+-          const currentIndex = items.findIndex(item => item.id === id); // Fix createMemoryHistory.index variable's value
++          const currentIndex = items.findIndex(item => item?.id === id); // Fix createMemoryHistory.index variable's value
+           // as it may go out of sync when navigating in the browser.
+ 
+           index = Math.max(currentIndex, 0);
+diff --git a/node_modules/@react-navigation/native/src/useLinking.tsx b/node_modules/@react-navigation/native/src/useLinking.tsx
+index bda378e..783a35f 100644
+--- a/node_modules/@react-navigation/native/src/useLinking.tsx
++++ b/node_modules/@react-navigation/native/src/useLinking.tsx
+@@ -49,7 +49,7 @@ const createMemoryHistory = () => {
+       const id = window.history.state?.id;
+ 
+       if (id) {
+-        const index = items.findIndex((item) => item.id === id);
++        const index = items.findIndex((item) => item?.id === id);
+ 
+         return index > -1 ? index : 0;
+       }
+@@ -98,7 +98,7 @@ const createMemoryHistory = () => {
+ 
+       const id = window.history.state?.id ?? nanoid();
+ 
+-      if (!items.length || items.findIndex((item) => item.id === id) < 0) {
++      if (!items.length || items.findIndex((item) => item?.id === id) < 0) {
+         // There are two scenarios for creating an array with only one history record:
+         // - When loaded id not found in the items array, this function by default will replace
+         //   the first item. We need to keep only the new updated object, otherwise it will break
+@@ -184,7 +184,7 @@ const createMemoryHistory = () => {
+ 
+         const onPopState = () => {
+           const id = window.history.state?.id;
+-          const currentIndex = items.findIndex((item) => item.id === id);
++          const currentIndex = items.findIndex((item) => item?.id === id);
+ 
+           // Fix createMemoryHistory.index variable's value
+           // as it may go out of sync when navigating in the browser.
