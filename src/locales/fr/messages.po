@@ -805,6 +805,10 @@ msgstr "Duo"
 msgid "Dès {0}"
 msgstr "Dès {0}"
 
+#: src/features/culturalSurvey/pages/CulturalSurveyIntro.tsx
+msgid "Débuter le questionnaire"
+msgstr "Débuter le questionnaire"
+
 #: src/features/profile/pages/Profile.tsx
 #: src/features/profile/pages/Profile.tsx
 msgid "Déconnexion"
@@ -1339,6 +1343,10 @@ msgstr "L'e-mail saisi est identique à votre e-mail actuel"
 #: src/features/_marketingAndCommunication/components/DeeplinksHistory.tsx
 msgid "L'historique n'a pas pu supprimer les données locales: {0}"
 msgstr "L'historique n'a pas pu supprimer les données locales: {0}"
+
+#: src/features/culturalSurvey/pages/CulturalSurveyIntro.tsx
+msgid "L'objectif du questionnaire est de nous permettre de te suggérer les meilleures activités culturelles selon tes préférences, tes envies et ta localisation."
+msgstr "L'objectif du questionnaire est de nous permettre de te suggérer les meilleures activités culturelles selon tes préférences, tes envies et ta localisation."
 
 #: src/features/bookOffer/components/BookingImpossible.tsx
 #: src/features/offer/components/OfferHeader.tsx
@@ -2006,6 +2014,10 @@ msgstr "Place ton téléphone ou ta tablette à la verticale pour afficher l’a
 msgid "Place-toi dans un lieu bien éclairé"
 msgstr "Place-toi dans un lieu bien éclairé"
 
+#: src/features/culturalSurvey/pages/CulturalSurveyIntro.tsx
+msgid "Plus tard"
+msgstr "Plus tard"
+
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Politique de confidentialité."
 msgstr "Politique de confidentialité."
@@ -2067,6 +2079,11 @@ msgstr "Prends une photo de ta"
 #: src/features/identityCheck/pages/identification/IdentityCheckStart/IdentityCheckStartContentDesktop.tsx
 msgid "Prends une photo de ta carte d'identité ou de ton passeport en cours de validité pour accéder à ton pass Culture."
 msgstr "Prends une photo de ta carte d'identité ou de ton passeport en cours de validité pour accéder à ton pass Culture."
+
+#: src/features/culturalSurvey/pages/CulturalSurveyIntro.tsx
+#: src/features/navigation/RootNavigator/culturalSurveyRoutes.ts
+msgid "Prenons 1 minute"
+msgstr "Prenons 1 minute"
 
 #: src/features/offer/components/OfferIconCaptions.tsx
 #: src/features/search/sections/titles.ts
@@ -3329,6 +3346,10 @@ msgstr "permanente"
 #: src/libs/tileAccessibilityLabel.ts
 msgid "pour"
 msgstr "pour"
+
+#: src/features/culturalSurvey/pages/CulturalSurveyIntro.tsx
+msgid "pour parler de tes pratiques culturelles !"
+msgstr "pour parler de tes pratiques culturelles !"
 
 #: src/libs/tileAccessibilityLabel.ts
 msgid "prix"

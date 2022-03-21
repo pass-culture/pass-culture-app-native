@@ -82,6 +82,12 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <ButtonPrimary
+            wording={'Cultural Survey 🎨'}
+            onPress={() => navigate('NavigationCulturalSurvey')}
+          />
+        </Row>
+        <Row half>
+          <ButtonPrimary
             wording={'Sentry'}
             onPress={() => {
               const message = `SENTRY_${env.ENV}_TEST_${uuidv4().slice(0, 5)}`.toUpperCase()

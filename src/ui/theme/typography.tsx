@@ -9,7 +9,7 @@ import { getSpacing } from './spacing'
 interface CustomTextProps {
   color?: ColorsEnum | UniqueColors
 }
-type TextProps = CustomTextProps & RNTextProps
+export type TextProps = CustomTextProps & RNTextProps
 
 export const getHeadingAttrs = (level: number) => ({
   ...(Platform.OS === 'web'

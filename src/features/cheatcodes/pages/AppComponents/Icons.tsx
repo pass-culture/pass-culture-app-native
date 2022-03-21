@@ -29,6 +29,7 @@ import { Booking } from 'ui/svg/icons/Booking'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { Check } from 'ui/svg/icons/Check'
 import { Clock } from 'ui/svg/icons/Clock'
+import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Close } from 'ui/svg/icons/Close'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
@@ -218,6 +219,7 @@ const TertiaryAndSmallerIcons = () => {
         {'Tertiary and smaller plain Icons ( <= 20x20 ) should have a standard size of 20'}
       </Text>
       <Icon name="Again" component={Again} isNew />
+      <Icon name="ClockFilled" component={ClockFilled} isNew />
       <Icon name="Digital" component={Digital} isNew />
       <Icon name="Duplicate" component={Duplicate} isNew />
       <Icon name="EditPen" component={EditPen} isNew />
