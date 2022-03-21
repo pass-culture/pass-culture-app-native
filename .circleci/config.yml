@@ -254,8 +254,8 @@ commands:
   transition-jira-ticket:
     description: Transition JIRA ticket to "Revue PM"
     steps:
-      - run:
-          command: ./scripts/transition_jira_ticket.sh
+      - run: |
+          ./scripts/transition_jira_ticket.sh
 
   sonarcloud-scanner:
     description: Detect bugs and vulnerabilities
@@ -359,6 +359,7 @@ jobs:
     executor: node
     working_directory: ~/pass-culture
     steps:
+      - checkout
       - transition-jira-ticket
 
   notify-hard-staging-release:
@@ -643,7 +644,7 @@ jobs:
           command: |
             BOT_MESSAGE="'*testing-web* : [App Native] deployment *"$CIRCLE_TAG"* has failed :collision:'"
             curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-testing','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
-          when: on_fail      
+          when: on_fail
 
   deploy-web-staging:
     executor: gcp
@@ -744,6 +745,7 @@ workflows:
             - test-lint-and-types
             - test-native
             - test-web
+            - deploy-soft-testing
             - deploy-web-testing
           context: JIRA
 
