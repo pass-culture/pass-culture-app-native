@@ -251,6 +251,12 @@ commands:
             gcloud compute url-maps invalidate-cdn-cache << parameters.url_map_name >> --path "/*"  --async
             echo "An invalidateCache operation has been requested. You can follow its progress on https://console.cloud.google.com/compute/operations"
 
+  transition-jira-ticket:
+    description: Transition JIRA ticket to "Revue PM"
+    steps:
+      - run:
+          command: ./scripts/transition_jira_ticket.sh
+
   sonarcloud-scanner:
     description: Detect bugs and vulnerabilities
     parameters:
@@ -348,6 +354,12 @@ jobs:
     steps:
       - notify-release-appcenter:
           env: testing
+
+  transition-jira-ticket:
+    executor: node
+    working_directory: ~/pass-culture
+    steps:
+      - transition-jira-ticket
 
   notify-hard-staging-release:
     executor: node
@@ -722,6 +734,19 @@ workflows:
             - checkout-and-install-deps
             - test-lint-and-types
             - test-native
+      - transition-jira-ticket:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - checkout-and-install-deps
+            - test-lint-and-types
+            - test-native
+            - test-web
+            - deploy-web-testing
+          context: JIRA
+
       - deploy-android-testing-hard:
           filters:
             tags:
