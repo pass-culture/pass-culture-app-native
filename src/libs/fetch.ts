@@ -51,8 +51,14 @@ class NotAuthenticatedError extends Error {
   }
 }
 
+export class FailedToGetRefreshTokenError extends Error {
+  constructor() {
+    super(`Erreur lors de la récupération du refresh token`)
+  }
+}
+
 export class FailedToRefreshAccessTokenError extends Error {
   constructor() {
-    super(`Erreur lors de la récupération du token d'accès`)
+    super(`Erreur lors de la régénération du token d'accès`)
   }
 }
