@@ -72,6 +72,19 @@ export interface AppThemeType {
     backgroundColor: ColorsEnum
     borderColor: ColorsEnum
   }
+  tiles: {
+    borderRadius: number
+    sizes: {
+      small: {
+        width: number
+        height: number
+      }
+      tall: {
+        width: number
+        height: number
+      }
+    }
+  }
   typography: {
     hero: Typography
     title1: Typography
@@ -360,6 +373,19 @@ export const theme: AppThemeType = {
     qrCodeSize: 170,
     backgroundColor: ColorsEnum.WHITE,
     borderColor: ColorsEnum.GREY_LIGHT,
+  },
+  tiles: {
+    borderRadius: getSpacing(1),
+    sizes: {
+      small: {
+        width: getSpacing(16),
+        height: getSpacing(24),
+      },
+      tall: {
+        width: getSpacing(20),
+        height: getSpacing(30),
+      },
+    },
   },
   typography: {
     hero: {

@@ -13,13 +13,13 @@ import { QueryKeys } from 'libs/queryKeys'
 import { useCategoryId } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
+import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Check } from 'ui/svg/icons/Check'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Link } from 'ui/web/link/Link'
 
 import { BookingItemTitle } from './BookingItemTitle'
-import { EndedBookingTicket } from './EndedBookingTicket'
 import { BookingItemProps } from './types'
 
 export const EndedBookingItem = ({ booking }: BookingItemProps) => {
@@ -64,7 +64,7 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
         accessibilityLabel={accessibilityLabel}
         testID="EndedBookingItem">
         <ItemContainer>
-          <EndedBookingTicket image={stock.offer.image?.url} categoryId={categoryId} />
+          <OfferImage imageUrl={stock.offer.image?.url} categoryId={categoryId} />
           <Spacer.Row numberOfSpaces={4} />
           <AttributesView>
             <BookingItemTitle title={stock.offer.name} />

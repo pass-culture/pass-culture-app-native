@@ -6,8 +6,6 @@ import styled from 'styled-components/native'
 
 import { CallToActionIcon, CategoryIdEnum, PopOverIcon, VenueTypeCodeKey } from 'api/gen/api'
 import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
-import { EndedBookingTicket } from 'features/bookings/components/EndedBookingTicket'
-import { OnGoingTicket } from 'features/bookings/components/OnGoingTicket'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
 import { Icons } from 'features/cheatcodes/pages/AppComponents/Icons'
 import { Illustrations } from 'features/cheatcodes/pages/AppComponents/Illustrations'
@@ -50,10 +48,10 @@ import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { SlantTag } from 'ui/components/SlantTag'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { StepDots } from 'ui/components/StepDots'
+import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import CategoryIcon from 'ui/svg/icons/categories/bicolor'
 import { Check } from 'ui/svg/icons/Check'
 import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
@@ -65,6 +63,8 @@ function onButtonPress() {
 }
 
 const THIS_YEAR = new Date().getFullYear()
+const imageUrl =
+  'https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg'
 
 const domains_credit_v1 = {
   all: { initial: 50000, remaining: 40000 },
@@ -234,11 +234,7 @@ export const AppComponents: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={4} />
         <Typo.Title4>Landscape Hero - Venue with image</Typo.Title4>
         <Spacer.Column numberOfSpaces={1} />
-        <Hero
-          imageUrl="https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg"
-          type="venue"
-          venueType={VenueTypeCodeKey.ARTISTIC_COURSE}
-        />
+        <Hero imageUrl={imageUrl} type="venue" venueType={VenueTypeCodeKey.ARTISTIC_COURSE} />
       </AccordionItem>
 
       <Divider />
@@ -611,24 +607,12 @@ export const AppComponents: FunctionComponent = () => {
           />
         </AlignedText>
         <AlignedText>
-          <OnGoingTicket
-            altIcon={CategoryIcon.ArtsMaterial}
-            image="https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg"
-          />
-          <Text> - OnGoing Ticket </Text>
-        </AlignedText>
-
-        <AlignedText>
-          <OnGoingTicket altIcon={CategoryIcon.ArtsMaterial} />
-          <Text> - OnGoing Ticket without image </Text>
+          <OfferImage categoryId={CategoryIdEnum.BEAUX_ARTS} imageUrl={imageUrl} />
+          <Text> - OfferImage small </Text>
         </AlignedText>
         <AlignedText>
-          <EndedBookingTicket image="https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg" />
-          <Text> - Ended booking Ticket </Text>
-        </AlignedText>
-        <AlignedText>
-          <EndedBookingTicket categoryId={CategoryIdEnum.CINEMA} />
-          <Text> - Ended booking Ticket without image </Text>
+          <OfferImage categoryId={CategoryIdEnum.BEAUX_ARTS} imageUrl={imageUrl} />
+          <Text> - TODO(LucasBeneston): OfferImage large </Text>
         </AlignedText>
         <AlignedText>
           <Badge label={1} />
@@ -636,9 +620,7 @@ export const AppComponents: FunctionComponent = () => {
         </AlignedText>
         <AlignedText>
           <ThreeShapesTicket width={200}>
-            <Center>
-              <QRCode value="passculture" />
-            </Center>
+            <QRCode value="passculture" />
           </ThreeShapesTicket>
           <Text>- {`contient le mot "passculture"`}</Text>
         </AlignedText>
