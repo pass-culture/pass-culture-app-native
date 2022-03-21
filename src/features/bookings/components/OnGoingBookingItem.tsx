@@ -44,7 +44,7 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
         onPress={() => navigate('BookingDetails', { id: booking.id })}
         accessibilityLabel={accessibilityLabel}
         testID="OnGoingBookingItem">
-        <OfferImage imageUrl={stock.offer.image?.url} categoryId={categoryId} />
+        <OfferImage imageUrl={stock.offer.image?.url} categoryId={categoryId} size="tall" />
         <AttributesView>
           <BookingItemTitle title={stock.offer.name} />
           {!!dateLabel && <DateLabel>{dateLabel}</DateLabel>}

@@ -1,17 +1,28 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
+import { CategoryIdEnum } from 'api/gen'
+import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
+
 import { OfferImage } from './OfferImage'
 
 export default {
   title: 'ui/tiles/OfferImage',
   component: OfferImage,
+  argTypes: {
+    categoryId: selectArgTypeFromObject(CategoryIdEnum),
+  },
 } as ComponentMeta<typeof OfferImage>
 
 const Template: ComponentStory<typeof OfferImage> = (props) => <OfferImage {...props} />
 
 export const Default = Template.bind({})
 Default.args = {}
+
+export const Tall = Template.bind({})
+Tall.args = {
+  size: 'tall',
+}
 
 export const WithImage = Template.bind({})
 WithImage.args = {

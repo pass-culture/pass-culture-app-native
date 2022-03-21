@@ -13,7 +13,7 @@ type Props = PropsWithChildren<{
 const isWeb = Platform.OS === 'web'
 export function ThreeShapesTicket(props: Props) {
   const { appContentWidth, ticket } = useTheme()
-  const defaultWidth = Math.min(ticket.threeShapes.maxWidth, appContentWidth - getSpacing(15))
+  const defaultWidth = Math.min(ticket.maxWidth, appContentWidth - getSpacing(15))
   const width = props.width || defaultWidth
   const contentWidth = isWeb ? width : width - 5
   return (
@@ -52,11 +52,11 @@ const TicketContent = styled.View<{ width: number }>(({ theme, width }) => {
     borders = {
       borderLeftWidth: 2,
       borderRightWidth: 2,
-      borderColor: theme.ticket.threeShapes.borderColor,
+      borderColor: theme.ticket.borderColor,
     }
   }
   return {
-    backgroundColor: theme.ticket.threeShapes.backgroundColor,
+    backgroundColor: theme.ticket.backgroundColor,
     width,
     alignItems: 'center',
     maxWidth: '100%',

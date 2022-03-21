@@ -66,19 +66,20 @@ export interface AppThemeType {
     offSet: number
   }
   ticket: {
-    threeShapes: {
-      maxWidth: number
-      minHeight: number
-      qrCodeSize: number
-      backgroundColor: ColorsEnum
-      borderColor: ColorsEnum
-    }
-    withBackgroundImage: {
-      default: {
+    maxWidth: number
+    minHeight: number
+    qrCodeSize: number
+    backgroundColor: ColorsEnum
+    borderColor: ColorsEnum
+  }
+  tiles: {
+    borderRadius: number
+    sizes: {
+      small: {
         width: number
         height: number
       }
-      withMultipleBottomPunch: {
+      tall: {
         width: number
         height: number
       }
@@ -367,21 +368,22 @@ export const theme: AppThemeType = {
     offSet: getSpacing(0.5),
   },
   ticket: {
-    threeShapes: {
-      maxWidth: 300,
-      minHeight: 200,
-      qrCodeSize: 170,
-      backgroundColor: ColorsEnum.WHITE,
-      borderColor: ColorsEnum.GREY_LIGHT,
-    },
-    withBackgroundImage: {
-      default: {
-        width: 73,
-        height: 110,
+    maxWidth: 300,
+    minHeight: 200,
+    qrCodeSize: 170,
+    backgroundColor: ColorsEnum.WHITE,
+    borderColor: ColorsEnum.GREY_LIGHT,
+  },
+  tiles: {
+    borderRadius: getSpacing(1),
+    sizes: {
+      small: {
+        width: getSpacing(16),
+        height: getSpacing(24),
       },
-      withMultipleBottomPunch: {
-        width: 58,
-        height: 67,
+      tall: {
+        width: getSpacing(20),
+        height: getSpacing(30),
       },
     },
   },

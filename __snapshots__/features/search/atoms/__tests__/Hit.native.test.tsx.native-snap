@@ -14,7 +14,7 @@ exports[`Hit component offer name should take full space if no geolocation 1`] =
     focusable={true}
     nativeID=\\"animatedComponent\\"
     onClick={[Function onClick]}
-@@ -106,10 +106,22 @@
+@@ -108,10 +108,22 @@
               \\"flexDirection\\": \\"row\\",
             },
           ]
@@ -37,7 +37,7 @@ exports[`Hit component offer name should take full space if no geolocation 1`] =
             style={
               Array [
                 Object {
-@@ -121,10 +133,39 @@
+@@ -123,10 +135,39 @@
               ]
             }
           >
