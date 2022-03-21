@@ -2,7 +2,7 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { analytics } from 'libs/analytics'
-import { fireEvent, render } from 'tests/utils/web'
+import { fireEvent, render, act } from 'tests/utils/web'
 import GeolocationAnimation from 'ui/animations/geolocalisation.json'
 
 import { GenericAchievement } from './GenericAchievement'
@@ -18,7 +18,6 @@ describe('<GenericAchievementCard />', () => {
   const title = 'Title'
   const play = jest.fn()
   const pause = jest.fn()
-  beforeEach(jest.resetAllMocks)
 
   it('should render correctly', () => {
     const { getByText } = renderGenericAchievementCardComponent({
@@ -101,6 +100,7 @@ describe('<GenericAchievementCard />', () => {
   })
 
   it('should have a button available on active index', () => {
+    jest.resetAllMocks()
     jest.spyOn(global.console, 'error').mockImplementationOnce(() => null)
     expect(() =>
       render(
@@ -155,92 +155,94 @@ describe('<GenericAchievementCard />', () => {
     expect(queryByTestId('invisible-button-height')).toBeFalsy()
   })
 
-  // FIXME(kopax): web integration
-  it.skip('should pause animation when not on active index', async () => {
+  it('should pause animation when not on active index', () => {
     jest.spyOn(React, 'useRef').mockReturnValueOnce({
       current: {
         play,
         pause,
       },
     })
-    render(
-      <GenericAchievementCard
-        buttonText={buttonText}
-        animation={animation}
-        buttonCallback={buttonCallback}
-        pauseAnimationOnRenderAtFrame={pauseAnimationOnRenderAtFrame}
-        subTitle={subTitle}
-        text={text}
-        title={title}
-        index={0}
-        activeIndex={1}
-        lastIndex={1}
-      />
-    )
-    await waitForExpect(() => {
+    act(() => {
+      render(
+        <GenericAchievementCard
+          buttonText={buttonText}
+          animation={animation}
+          buttonCallback={buttonCallback}
+          pauseAnimationOnRenderAtFrame={pauseAnimationOnRenderAtFrame}
+          subTitle={subTitle}
+          text={text}
+          title={title}
+          index={0}
+          activeIndex={1}
+          lastIndex={1}
+        />
+      )
+    })
+    waitForExpect(() => {
       expect(play).not.toBeCalled()
       expect(pause).toBeCalledTimes(1)
     })
   })
 
-  // FIXME(Lucasbeneston): web integration
-  it.skip('should play animation when on active index', async () => {
+  it('should play animation when on active index', () => {
     jest.spyOn(React, 'useRef').mockReturnValueOnce({
       current: {
         play,
         pause,
       },
     })
-    render(
-      <GenericAchievementCard
-        buttonText={buttonText}
-        animation={animation}
-        buttonCallback={buttonCallback}
-        pauseAnimationOnRenderAtFrame={pauseAnimationOnRenderAtFrame}
-        subTitle={subTitle}
-        text={text}
-        title={title}
-        index={0}
-        activeIndex={0}
-        lastIndex={1}
-      />
-    )
-    await waitForExpect(() => {
+    act(() => {
+      render(
+        <GenericAchievementCard
+          buttonText={buttonText}
+          animation={animation}
+          buttonCallback={buttonCallback}
+          pauseAnimationOnRenderAtFrame={pauseAnimationOnRenderAtFrame}
+          subTitle={subTitle}
+          text={text}
+          title={title}
+          index={0}
+          activeIndex={0}
+          lastIndex={1}
+        />
+      )
+    })
+    waitForExpect(() => {
       expect(play).toBeCalledTimes(1)
       expect(play).toBeCalledWith(0, pauseAnimationOnRenderAtFrame)
       expect(pause).not.toBeCalled()
     })
   })
 
-  // FIXME(Lucasbeneston): web integration
-  it.skip('should not fade in button when not on active index', async () => {
+  it('should not fade in button when not on active index', async () => {
     jest.spyOn(React, 'useRef').mockReturnValueOnce({
       current: {
         play,
         pause,
       },
     })
-    render(
-      <GenericAchievementCard
-        buttonText={buttonText}
-        animation={animation}
-        buttonCallback={buttonCallback}
-        pauseAnimationOnRenderAtFrame={pauseAnimationOnRenderAtFrame}
-        subTitle={subTitle}
-        text={text}
-        title={title}
-        activeIndex={0}
-        index={1}
-        lastIndex={1}
-      />
-    )
+    act(() => {
+      render(
+        <GenericAchievementCard
+          buttonText={buttonText}
+          animation={animation}
+          buttonCallback={buttonCallback}
+          pauseAnimationOnRenderAtFrame={pauseAnimationOnRenderAtFrame}
+          subTitle={subTitle}
+          text={text}
+          title={title}
+          activeIndex={0}
+          index={1}
+          lastIndex={1}
+        />
+      )
+    })
     await waitForExpect(() => {
       expect(didFadeIn).not.toBe(true)
     })
   })
 
-  // FIXME(Lucasbeneston): web integration
-  it.skip('should fade in button when on active index', async () => {
+  it('should fade in button when on active index', async () => {
     const fadeIn = jest.fn()
     jest.spyOn(React, 'useRef').mockReturnValueOnce({
       current: {
@@ -272,8 +274,7 @@ describe('<GenericAchievementCard />', () => {
     })
   })
 
-  // FIXME(Lucasbeneston): web integration
-  it.skip('should have a button to skip single card', () => {
+  it('should have a button to skip single card', () => {
     jest.spyOn(React, 'useRef').mockReturnValueOnce({
       current: {
         play,

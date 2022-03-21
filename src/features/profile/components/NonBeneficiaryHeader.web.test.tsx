@@ -171,11 +171,8 @@ describe('<NonBeneficiaryHeader/>', () => {
     })
   })
 
-  // FIXME(Lucasbeneston): find how to suppress warnings:
-  //  1. Use PascalCase for React components, or lowercase for HTML elements.%s", "matchSubscriptionMessageIconToSvg"
-  //  2. If you meant to render a React component, start its name with an uppercase letter.%s", "matchSubscriptionMessageIconToSvg"
   describe('<SubscriptionMessageBadge/>', () => {
-    it.skip('should render the subscription message if hasIdentityCheckPendingis false and SubscriptionStep is null', () => {
+    it('should render the subscription message if hasIdentityCheckPendingis false and SubscriptionStep is null', () => {
       mockNextSubscriptionStep = {
         allowedIdentityCheckMethods: [IdentityCheckMethod.ubble],
         nextSubscriptionStep: null,

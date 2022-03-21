@@ -18,29 +18,28 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 const Kourou = { label: 'Kourou', info: 'Guyane', geolocation: { latitude: 2, longitude: 3 } }
 
 describe('Location section', () => {
+  const titleCountID = 'titleCount'
   const countString = '\xa0(1)'
 
   it('should not have count in title', () => {
-    expect(render(<Location />).queryByText(countString)).toBeNull()
+    expect(render(<Location />).queryByTestId(titleCountID)).toBeNull()
   })
 
-  // FIXME(kopax): Web Integration
-  it.skip('should have count in title when searching Around me [WEB INTEGRATION]', () => {
+  it('should have count in title when searching Around me [WEB INTEGRATION]', async () => {
     mockSearchState.locationFilter = {
       locationType: LocationType.AROUND_ME,
       aroundRadius: 20,
     }
-    expect(render(<Location />).queryByText(countString)).toBeTruthy()
+    expect(render(<Location />).getByTestId(titleCountID).textContent).toBe(countString)
   })
 
-  // FIXME(kopax): Web Integration
-  it.skip('should have count in title when searching Place [WEB INTEGRATION]', () => {
+  it('should have count in title when searching Place [WEB INTEGRATION]', () => {
     mockSearchState.locationFilter = {
       locationType: LocationType.PLACE,
       place: Kourou,
       aroundRadius: 20,
     }
-    expect(render(<Location />).queryByText(countString)).toBeTruthy()
+    expect(render(<Location />).getByTestId(titleCountID).textContent).toBe(countString)
   })
 
   it('should navigate to the offer when clicking on the hit', () => {
