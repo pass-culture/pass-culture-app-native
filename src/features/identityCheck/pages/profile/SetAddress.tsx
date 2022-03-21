@@ -117,6 +117,7 @@ export const SetAddress = () => {
             accessibilityLabel={t`Entrée pour l'adresse`}
             accessibilityDescribedBy={adressInputErrorId}
             onPressRightIcon={resetSearch}
+            returnKeyType="next"
           />
           <InputError
             visible={!isValidAddress && query.length > 0}

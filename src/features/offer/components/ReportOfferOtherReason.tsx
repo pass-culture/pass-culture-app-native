@@ -51,6 +51,7 @@ export const ReportOfferOtherReason: FunctionComponent<Props> = (props) => {
         onChangeText={setInputText}
         maxLength={200}
         autoFocus
+        returnKeyType="default"
       />
       <Spacer.Column numberOfSpaces={6} />
       <ButtonPrimary
