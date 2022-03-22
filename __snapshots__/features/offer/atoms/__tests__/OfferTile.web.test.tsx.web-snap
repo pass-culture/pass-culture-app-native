@@ -12,7 +12,7 @@ Object {
         <div
           aria-label="Offre Mensch ! Où sont les Hommes ? de la catégorie MUSIQUE, à 1,2km,  Dès le 12 mars 2020, prix 28 €. "
           class="css-view-1dbjc4n"
-          data-testid="offerTile"
+          data-testid="offre Mensch ! Où sont les Hommes ?"
           style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 100px; margin-top: 4px; user-select: none;"
           tabindex="0"
         >
@@ -95,7 +95,7 @@ Object {
       <div
         aria-label="Offre Mensch ! Où sont les Hommes ? de la catégorie MUSIQUE, à 1,2km,  Dès le 12 mars 2020, prix 28 €. "
         class="css-view-1dbjc4n"
-        data-testid="offerTile"
+        data-testid="offre Mensch ! Où sont les Hommes ?"
         style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 100px; margin-top: 4px; user-select: none;"
         tabindex="0"
       >

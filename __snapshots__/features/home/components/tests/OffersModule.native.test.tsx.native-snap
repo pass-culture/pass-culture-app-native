@@ -263,7 +263,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                   },
                 ]
               }
-              testID="offerTile"
+              testID="offre Mensch ! Où sont les Hommes ?"
             >
               <View
                 style={
@@ -469,7 +469,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                   },
                 ]
               }
-              testID="offerTile"
+              testID="offre I want something more"
             >
               <View
                 style={
@@ -675,7 +675,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                   },
                 ]
               }
-              testID="offerTile"
+              testID="offre Un lit sous une rivière"
             >
               <View
                 style={
@@ -898,7 +898,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
                   },
                 ]
               }
-              testID="offerTile"
+              testID="offre I want something more"
             >
               <View
                 style={

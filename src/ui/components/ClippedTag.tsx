@@ -19,7 +19,7 @@ export const ClippedTag: React.FC<Props> = ({ label, onPress, testId }) => {
       <VenueLabelContainer>
         <VenueLabel>{label}</VenueLabel>
       </VenueLabelContainer>
-      <StyledTouchableOpacity onPress={onPress}>
+      <StyledTouchableOpacity onPress={onPress} testID="retirer-lieu">
         <ClearIcon {...accessibilityAndTestId(testId)} />
       </StyledTouchableOpacity>
     </Container>
