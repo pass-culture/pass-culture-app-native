@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { navigateToHome } from 'features/navigation/helpers'
@@ -21,7 +22,9 @@ export const CulturalSurveyIntro = (): JSX.Element => {
         {t`L'objectif du questionnaire est de nous permettre de te suggérer les meilleures activités culturelles selon tes préférences, tes envies et ta localisation.`}
       </StyledBody>
       <Spacer.Flex flex={1} />
-      <ButtonPrimary onPress={navigateToHome} wording={t`Débuter le questionnaire`} />
+      <View>
+        <ButtonPrimary onPress={navigateToHome} wording={t`Débuter le questionnaire`} />
+      </View>
       <ButtonTertiaryBlackContainer>
         <ButtonTertiaryBlack wording={t`Plus tard`} onPress={navigateToHome} icon={ClockFilled} />
       </ButtonTertiaryBlackContainer>
