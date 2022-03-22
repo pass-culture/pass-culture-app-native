@@ -3,7 +3,10 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { extractApiErrorMessage } from 'api/apiHelpers'
 import { MaintenancePageType, SubscriptionStep } from 'api/gen'
+import { useUserProfileInfo } from 'features/home/api'
+import { getAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { StepButton } from 'features/identityCheck/atoms/StepButton'
 import { FastEduconnectConnectionRequestModal } from 'features/identityCheck/components/FastEduconnectConnectionRequestModal'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/QuitIdentityCheckModal'
@@ -16,6 +19,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { useModal } from 'ui/components/modals/useModal'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Background } from 'ui/svg/Background'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
@@ -29,6 +33,8 @@ export const IdentityCheckStepper = () => {
   const getStepState = useGetStepState()
   const context = useIdentityCheckContext()
   const { subscription } = useSetSubscriptionStepAndMethod()
+  const { showErrorSnackBar } = useSnackBarContext()
+  const { refetch } = useUserProfileInfo()
 
   const { visible, showModal, hideModal } = useModal(false)
   const {
@@ -59,6 +65,32 @@ export const IdentityCheckStepper = () => {
     if (context.step) analytics.logQuitIdentityCheck(context.step)
     showModal()
   }
+  // TODO (yorickeando): this bit was done to ensure that DMS orphans did not have to go through the identity
+  // check process twice if they submitted and validated through DMS before signing up on the app. In the future,
+  // we will prevent these users from even having to go through the Stepper process, so this extra navigation logic
+  // can be removed.
+  useEffect(() => {
+    if (subscription?.nextSubscriptionStep === null) {
+      refetch()
+        .then(({ data: userProfile }) => {
+          const credit = userProfile ? getAvailableCredit(userProfile) : null
+          if (credit?.amount !== undefined && !credit?.isExpired) {
+            if (credit.amount < 30000 && credit.amount > 0) {
+              navigate('UnderageAccountCreated')
+            } else if (credit.amount === 30000 || credit.amount === 0) {
+              navigate('AccountCreated')
+            }
+          }
+        })
+        .catch((error) => {
+          showErrorSnackBar({
+            message: extractApiErrorMessage(error),
+            timeout: SNACK_BAR_TIME_OUT,
+          })
+        })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [subscription])
 
   async function navigateToStep(step: StepConfig) {
     analytics.logIdentityCheckStep(step.name)
