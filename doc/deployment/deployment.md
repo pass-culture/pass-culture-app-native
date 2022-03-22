@@ -67,7 +67,7 @@ CircleCI will detect the tag `patch/vX.X.X` and launch the lanes `deploy-ios-sta
 
 #### Hard deploy (when MEP wanted, manual)
 
-- Know which version (and then tag) you want to deploy
+- Know which version (and then tag) you want to deploy. If you patched a version Staging, it could be `patch/v1.X.Y`
 
 - `yarn trigger:production:deploy <tag>`
 
