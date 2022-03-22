@@ -1,3 +1,10 @@
+import {
+  getAnalytics,
+  setAnalyticsCollectionEnabled,
+  setUserId,
+  logEvent,
+} from 'firebase/analytics'
+
 import { AgentType } from 'api/gen'
 import { prepareLogEventParams } from 'libs/analytics/utils'
 import { getFirebaseApp } from 'libs/firebase'
@@ -7,32 +14,32 @@ import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
 import { AnalyticsProvider } from './types'
 
 const firebaseApp = getFirebaseApp()
-const firebaseAnalytics = firebaseApp.analytics()
+const firebaseAnalytics = getAnalytics(firebaseApp)
 
 export const analyticsProvider: AnalyticsProvider = {
   enableCollection() {
-    firebaseAnalytics.setAnalyticsCollectionEnabled(true)
+    setAnalyticsCollectionEnabled(firebaseAnalytics, true)
   },
   disableCollection() {
-    firebaseAnalytics.setAnalyticsCollectionEnabled(false)
+    setAnalyticsCollectionEnabled(firebaseAnalytics, true)
   },
   setDefaultEventParameters(_params: Record<string, string> | undefined) {
-    // setDefaultEventParameters is not available on web :'(
+    // setDefaultEventParameters is not available on web
   },
   setUserId(userId) {
-    firebaseAnalytics.setUserId(userId.toString())
+    setUserId(firebaseAnalytics, userId.toString())
   },
   logScreenView(screenName) {
-    firebaseAnalytics.logEvent('page_view', { page_title: screenName })
+    logEvent(firebaseAnalytics, 'page_view', { page_title: screenName })
   },
   logLogin({ method }) {
-    firebaseAnalytics.logEvent('login', { method })
+    logEvent(firebaseAnalytics, 'login', { method })
   },
   logEvent(name, params) {
     const newParams = params ? prepareLogEventParams(params) : {}
     newParams['agentType'] = isDesktopDeviceDetectOnWeb
       ? AgentType.browser_computer
       : AgentType.browser_mobile
-    return firebaseAnalytics.logEvent(name as string, newParams)
+    return logEvent(firebaseAnalytics, name as string, newParams)
   },
 }

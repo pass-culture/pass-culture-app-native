@@ -1,9 +1,8 @@
-import firebase from 'firebase/app'
-import 'firebase/analytics'
+import { FirebaseOptions, getApps, getApp, initializeApp } from 'firebase/app'
 
 import { env } from 'libs/environment'
 
-const FIREBASE_CONFIG = {
+const FIREBASE_CONFIG: FirebaseOptions = {
   apiKey: env.FIREBASE_APIKEY,
   authDomain: env.FIREBASE_AUTHDOMAIN,
   projectId: env.FIREBASE_PROJECTID,
@@ -15,10 +14,10 @@ const FIREBASE_CONFIG = {
 export function getFirebaseApp() {
   let firebaseApp
   // Do not initialize app if it is already initialized
-  if (firebase.apps.length > 0) {
-    firebaseApp = firebase.app()
+  if (getApps().length > 0) {
+    firebaseApp = getApp()
   } else {
-    firebaseApp = firebase.initializeApp(FIREBASE_CONFIG)
+    firebaseApp = initializeApp(FIREBASE_CONFIG)
   }
   return firebaseApp
 }
