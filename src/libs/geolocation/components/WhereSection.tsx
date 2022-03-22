@@ -8,6 +8,7 @@ import styled from 'styled-components/native'
 
 import { Coordinates, OfferVenueResponse, VenueResponse } from 'api/gen'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
@@ -61,8 +62,11 @@ export const WhereSection: React.FC<Props> = ({
   const navigation = useNavigation<UseNavigationType>()
   const { latitude: lat, longitude: lng } = locationCoordinates
   const distanceToLocation = useDistance({ lat, lng })
+  const venueFullAddress = venue.address
+    ? formatFullAddress(venue.address, venue.postalCode, venue.city)
+    : undefined
   const { canOpenItinerary, openItinerary } = useOpenItinerary(
-    venue.address,
+    venueFullAddress,
     beforeNavigateToItinerary
   )
 
@@ -126,7 +130,7 @@ export const WhereSection: React.FC<Props> = ({
             <Spacer.Column numberOfSpaces={4} />
             <Separator />
             <Spacer.Column numberOfSpaces={6} />
-            <A href={venue.address ? getGoogleMapsItineraryUrl(venue.address) : undefined}>
+            <A href={venueFullAddress ? getGoogleMapsItineraryUrl(venueFullAddress) : undefined}>
               <SeeItineraryButton openItinerary={openItinerary} />
             </A>
           </React.Fragment>

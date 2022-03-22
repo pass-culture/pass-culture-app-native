@@ -245,7 +245,7 @@ Array [
     />
     <a
       className="sc-iCfMLu iaRsUK"
-      href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re"
+      href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
       tabIndex={-1}
       target="_blank"
     >
