@@ -537,6 +537,7 @@ jobs:
           name: Deploy IOS Code push for staging environment
           command: |
             export IOS_APPCENTER_API_TOKEN=$IOS_STAGING_APPCENTER_API_TOKEN
+            export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_STAGING
             ./scripts/deploy.sh -o ios -t soft -e staging
       - notify-soft-release:
           env: staging
@@ -612,6 +613,7 @@ jobs:
           name: Deploy IOS Code push for production environment
           command: |
             export IOS_APPCENTER_API_TOKEN=$IOS_PRODUCTION_APPCENTER_API_TOKEN
+            export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_PRODUCTION
             ./scripts/deploy.sh -o ios -t soft -e production
       - notify-soft-release:
           env: production
@@ -643,7 +645,7 @@ jobs:
           command: |
             BOT_MESSAGE="'*testing-web* : [App Native] deployment *"$CIRCLE_TAG"* has failed :collision:'"
             curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-testing','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
-          when: on_fail      
+          when: on_fail
 
   deploy-web-staging:
     executor: gcp
