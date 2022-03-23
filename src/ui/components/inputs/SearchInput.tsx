@@ -58,7 +58,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           onFocus={onFocus}
           onBlur={onBlur}
           autoCorrect={false}
-          returnKeyType="search"
+          returnKeyType={props.returnKeyType ?? 'search'}
           selectionColor={undefined}
           aria-describedby={accessibilityDescribedBy}
           {...accessibilityAndTestId(accessibilityLabel, undefined)}
