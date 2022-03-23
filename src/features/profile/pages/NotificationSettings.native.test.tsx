@@ -5,7 +5,7 @@ import React from 'react'
 import { Platform } from 'react-native'
 import * as RNP from 'react-native-permissions'
 import { NotificationsResponse, PermissionStatus } from 'react-native-permissions'
-import { ReactTestInstance } from 'react-test-renderer'
+import { act, ReactTestInstance } from 'react-test-renderer'
 import waitForExpect from 'wait-for-expect'
 
 import { UserProfileResponse } from 'api/gen'
@@ -15,14 +15,11 @@ import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { flushAllPromises, superFlushWithAct, act, fireEvent, render, cleanup } from 'tests/utils'
+import { superFlushWithAct, fireEvent, render, cleanup } from 'tests/utils'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 import { NotificationSettings } from './NotificationSettings'
-
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true })
 
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
@@ -43,23 +40,24 @@ describe('NotificationSettings', () => {
     cleanup()
   })
 
-  it('should display the both switches on ios', async () => {
-    Platform.OS = 'ios'
-    const { queryByText } = await renderNotificationSettings('granted', {} as UserProfileResponse)
-    await superFlushWithAct(10)
-    await waitForExpect(() => {
-      queryByText('Autoriser l’envoi d’e-mails')
-      queryByText('Autoriser les notifications marketing')
+  describe('Display correct switches', () => {
+    it('should display the both switches on ios', async () => {
+      Platform.OS = 'ios'
+      const { queryByText } = await renderNotificationSettings('granted', {} as UserProfileResponse)
+      await waitForExpect(() => {
+        queryByText('Autoriser l’envoi d’e-mails')
+        queryByText('Autoriser les notifications marketing')
+      })
     })
-  })
 
-  // TODO(kopax): see why it use an elevation 4px in a next ticket
-  it.skip('should only display the email switch on android', async () => {
-    Platform.OS = 'android'
-    const { queryByText } = await renderNotificationSettings('granted', {} as UserProfileResponse)
-    await superFlushWithAct(10)
-    await waitForExpect(() => {
-      queryByText('Autoriser l’envoi d’e-mails')
+    // eslint-disable-next-line local-rules/no-allow-console
+    allowConsole({ warn: true }) // We allow warning for android 'Expected style "elevation: 4px" to be unitless' due to shadow style
+    it('should only display the email switch on android', async () => {
+      Platform.OS = 'android'
+      const { queryByText } = await renderNotificationSettings('granted', {} as UserProfileResponse)
+      await waitForExpect(() => {
+        queryByText('Autoriser l’envoi d’e-mails')
+      })
     })
   })
 
@@ -72,7 +70,6 @@ describe('NotificationSettings', () => {
           marketingPush: true,
         },
       } as UserProfileResponse)
-      await superFlushWithAct(10)
       const pushSwitch = getByTestId("Interrupteur d'autorisation des notifications marketing")
       await waitForExpect(() =>
         expect(pushSwitch.parent?.props.accessibilityValue.text).toBe('true')
@@ -96,7 +93,6 @@ describe('NotificationSettings', () => {
           },
         } as UserProfileResponse)
         const pushSwitch = getByTestId("Interrupteur d'autorisation des notifications marketing")
-        await superFlushWithAct(10)
         await waitForExpect(() =>
           expect(pushSwitch.parent?.props.accessibilityValue.text).toBe('false')
         )
@@ -112,10 +108,13 @@ describe('NotificationSettings', () => {
           marketingPush: false,
         },
       } as UserProfileResponse)
-      await superFlushWithAct(10)
-      await waitForExpect(() => {
-        const toggleSwitch = getByTestId("Interrupteur d'autorisation des notifications marketing")
-        fireEvent.press(toggleSwitch)
+      await act(async () => {
+        await waitForExpect(() => {
+          const toggleSwitch = getByTestId(
+            "Interrupteur d'autorisation des notifications marketing"
+          )
+          fireEvent.press(toggleSwitch)
+        })
       })
       await superFlushWithAct(10)
       await waitForExpect(() => {
@@ -133,10 +132,13 @@ describe('NotificationSettings', () => {
           marketingPush: true,
         },
       } as UserProfileResponse)
-      await superFlushWithAct(10)
-      await waitForExpect(() => {
-        const toggleSwitch = getByTestId("Interrupteur d'autorisation des notifications marketing")
-        fireEvent.press(toggleSwitch)
+      await act(async () => {
+        await waitForExpect(() => {
+          const toggleSwitch = getByTestId(
+            "Interrupteur d'autorisation des notifications marketing"
+          )
+          fireEvent.press(toggleSwitch)
+        })
       })
       await superFlushWithAct(10)
       await waitForExpect(() => {
@@ -156,12 +158,13 @@ describe('NotificationSettings', () => {
             marketingPush: false, // the user push setting doesnt care
           },
         } as UserProfileResponse)
-        await superFlushWithAct(10)
-        await waitForExpect(() => {
-          const toggleSwitch = getByTestId(
-            "Interrupteur d'autorisation des notifications marketing"
-          )
-          fireEvent.press(toggleSwitch)
+        await act(async () => {
+          await waitForExpect(() => {
+            const toggleSwitch = getByTestId(
+              "Interrupteur d'autorisation des notifications marketing"
+            )
+            fireEvent.press(toggleSwitch)
+          })
         })
         await superFlushWithAct(10)
         await waitForExpect(() => {
@@ -183,7 +186,6 @@ describe('NotificationSettings', () => {
       let saveButton: ReactTestInstance | null = null
       saveButton = queryByTestId('Enregistrer')
 
-      await superFlushWithAct(10)
       await waitForExpect(() => {
         expect(saveButton).toBeFalsy()
       })
@@ -207,10 +209,11 @@ describe('NotificationSettings', () => {
         true
       )
 
-      await superFlushWithAct(10)
-      await waitForExpect(() => {
-        const toggleSwitch = getByTestId("Interrupteur d'autorisation d'envoi des e-mails")
-        fireEvent.press(toggleSwitch)
+      await act(async () => {
+        await waitForExpect(() => {
+          const toggleSwitch = getByTestId("Interrupteur d'autorisation d'envoi des e-mails")
+          fireEvent.press(toggleSwitch)
+        })
       })
 
       let saveButton: ReactTestInstance | null = null
@@ -220,9 +223,11 @@ describe('NotificationSettings', () => {
         expect(saveButton?.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
       })
 
-      saveButton && fireEvent.press(saveButton)
+      act(() => {
+        saveButton && fireEvent.press(saveButton)
+      })
 
-      await superFlushWithAct(10)
+      await superFlushWithAct()
       await waitForExpect(() => {
         saveButton = getByTestId('Enregistrer')
         expect(saveButton?.props.style.backgroundColor).toEqual(ColorsEnum.GREY_LIGHT)
@@ -248,10 +253,13 @@ describe('NotificationSettings', () => {
         true
       )
 
-      await superFlushWithAct(10)
-      await waitForExpect(() => {
-        const toggleSwitch = getByTestId("Interrupteur d'autorisation des notifications marketing")
-        fireEvent.press(toggleSwitch)
+      await act(async () => {
+        await waitForExpect(() => {
+          const toggleSwitch = getByTestId(
+            "Interrupteur d'autorisation des notifications marketing"
+          )
+          fireEvent.press(toggleSwitch)
+        })
       })
 
       await superFlushWithAct(20)
@@ -261,16 +269,15 @@ describe('NotificationSettings', () => {
         expect(saveButton?.props.style.backgroundColor).toEqual(ColorsEnum.PRIMARY)
       })
 
-      saveButton && fireEvent.press(saveButton)
+      act(() => {
+        saveButton && fireEvent.press(saveButton)
+      })
 
-      await superFlushWithAct(10)
-
+      await superFlushWithAct()
       await waitForExpect(() => {
         expect(getByTestId('Enregistrer').props.style.backgroundColor).toEqual(
           ColorsEnum.GREY_LIGHT
         )
-      })
-      await waitForExpect(async () => {
         expect(analytics.logNotificationToggle).toBeCalledWith(false, false)
       })
     })
@@ -307,10 +314,7 @@ async function renderNotificationSettings(
     )
   )
 
-  await act(async () => {
-    await flushAllPromises()
-  })
-
+  await superFlushWithAct()
   return wrapper
 }
 

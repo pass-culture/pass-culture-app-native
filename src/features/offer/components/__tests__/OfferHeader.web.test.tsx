@@ -101,10 +101,10 @@ describe('<OfferHeader />', () => {
     ).toBeTruthy()
   })
 
-  it.skip('should show a favorite filled icon when viewing a offer in favorite - logged in users', async () => {
+  it('should show a favorite filled icon when viewing a offer in favorite - logged in users', async () => {
     const favoriteOfferId = 146193
-    const { getByTestId } = await renderOfferHeader({ isLoggedIn: true, id: favoriteOfferId })
-    expect(getByTestId('icon-favorite-filled')).toBeTruthy()
+    const { findByTestId } = await renderOfferHeader({ isLoggedIn: true, id: favoriteOfferId })
+    await findByTestId('icon-favorite-filled')
   })
 
   it('should add favorite when adding an offer in favorite - logged in users', async () => {
@@ -115,9 +115,9 @@ describe('<OfferHeader />', () => {
 
     await act(async () => {
       fireEvent.click(getByTestId('icon-favorite'))
-      await waitForExpect(() => {
-        expect(getByTestId('icon-favorite-filled')).toBeTruthy()
-      })
+    })
+    await waitForExpect(() => {
+      expect(getByTestId('icon-favorite-filled')).toBeTruthy()
     })
     const mutateData = queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse
     expect(
@@ -126,25 +126,20 @@ describe('<OfferHeader />', () => {
       )?.offer.id
     ).toEqual(addFavoriteJsonResponseSnap.offer.id)
 
-    /* Flacky test after we encapsulate useQuery within useInfiniteQuery to fetch favorites results,
-     * if later a solution can solve this, uncomment
-     * Meanwhile, we had to mock useFavorites and cache is not getting updated 100% of times within this test
-     */
-
-    // expect(
-    //   (queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse).favorites?.find(
-    //     (f: FavoriteResponse) => f.id === 1000
-    //   )
-    // ).toEqual({
-    //   ...addFavoriteJsonResponseSnap,
-    //   offer: {
-    //     ...addFavoriteJsonResponseSnap.offer,
-    //     date: addFavoriteJsonResponseSnap.offer.date?.toISOString(),
-    //   },
-    // })
+    expect(
+      (queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse).favorites?.find(
+        (f: FavoriteResponse) => f.id === 1000
+      )
+    ).toEqual({
+      ...addFavoriteJsonResponseSnap,
+      offer: {
+        ...addFavoriteJsonResponseSnap.offer,
+        date: addFavoriteJsonResponseSnap.offer.date,
+      },
+    })
   })
 
-  it.skip('should add favorite and show error when adding an offer in favorite, and undo favorite add - logged in users', async () => {
+  it('should add favorite and show error when adding an offer in favorite, and undo favorite add - logged in users', async () => {
     const { queryByTestId, getByTestId } = await renderOfferHeader({
       isLoggedIn: true,
       hasAddFavoriteError: true,
@@ -188,7 +183,7 @@ describe('<OfferHeader />', () => {
     ).toBe(undefined)
   })
 
-  it.skip('should remove favorite when pressing filled favorite icon - logged in users', async () => {
+  it('should remove favorite when pressing filled favorite icon - logged in users', async () => {
     const favoriteOfferId = 146193
     const { getByTestId } = await renderOfferHeader({ isLoggedIn: true, id: favoriteOfferId })
 
@@ -209,7 +204,7 @@ describe('<OfferHeader />', () => {
     ).toBe(undefined)
   })
 
-  it.skip('should remove favorite and show error when pressing filled favorite icon, and restore favorite - logged in users', async () => {
+  it('should remove favorite and show error when pressing filled favorite icon, and restore favorite - logged in users', async () => {
     const favoriteOfferId = 146193
     const { queryByTestId, getByTestId } = await renderOfferHeader({
       isLoggedIn: true,
@@ -246,7 +241,7 @@ describe('<OfferHeader />', () => {
     ).toBe(favoriteOfferId)
   })
 
-  it.skip('should add favorite and show error when user as too many favorites - logged in users', async () => {
+  it('should add favorite and show error when user as too many favorites - logged in users', async () => {
     const { getByTestId } = await renderOfferHeader({
       isLoggedIn: true,
       id: addFavoriteJsonResponseSnap.offer.id,
@@ -363,5 +358,6 @@ async function renderOfferHeader(options: Options = defaultOptions) {
     )
   )
 
+  await superFlushWithAct()
   return { ...wrapper, animatedValue }
 }
