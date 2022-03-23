@@ -9,6 +9,10 @@ import { AnalyticsProvider } from './types'
 const firebaseApp = getFirebaseApp()
 const firebaseAnalytics = firebaseApp.analytics()
 
+const AGENT_TYPE = isDesktopDeviceDetectOnWeb
+  ? AgentType.browser_computer
+  : AgentType.browser_mobile
+
 export const analyticsProvider: AnalyticsProvider = {
   enableCollection() {
     firebaseAnalytics.setAnalyticsCollectionEnabled(true)
@@ -23,16 +27,14 @@ export const analyticsProvider: AnalyticsProvider = {
     firebaseAnalytics.setUserId(userId.toString())
   },
   logScreenView(screenName) {
-    firebaseAnalytics.logEvent('page_view', { page_title: screenName })
+    firebaseAnalytics.logEvent('page_view', { page_title: screenName, agentType: AGENT_TYPE })
   },
   logLogin({ method }) {
-    firebaseAnalytics.logEvent('login', { method })
+    firebaseAnalytics.logEvent('login', { method, agentType: AGENT_TYPE })
   },
   logEvent(name, params) {
     const newParams = params ? prepareLogEventParams(params) : {}
-    newParams['agentType'] = isDesktopDeviceDetectOnWeb
-      ? AgentType.browser_computer
-      : AgentType.browser_mobile
+    newParams['agentType'] = AGENT_TYPE
     return firebaseAnalytics.logEvent(name as string, newParams)
   },
 }
