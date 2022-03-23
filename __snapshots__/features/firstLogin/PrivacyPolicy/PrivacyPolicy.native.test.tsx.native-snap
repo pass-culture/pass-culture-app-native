@@ -263,6 +263,7 @@ exports[`<PrivacyPolicy /> should render privacy policy 1`] = `
         }
       >
         <RCTScrollView
+          contentContainerStyle={Object {}}
           onContentSizeChange={[Function]}
           scrollEnabled={true}
           testID="modalScrollView"

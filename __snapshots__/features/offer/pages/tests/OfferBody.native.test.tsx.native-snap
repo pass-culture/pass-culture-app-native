@@ -1240,6 +1240,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
             }
           >
             <RCTScrollView
+              contentContainerStyle={Object {}}
               onContentSizeChange={[Function]}
               scrollEnabled={true}
               testID="modalScrollView"

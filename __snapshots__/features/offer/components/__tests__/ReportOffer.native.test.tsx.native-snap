@@ -299,6 +299,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should displa
         }
       >
         <RCTScrollView
+          contentContainerStyle={Object {}}
           onContentSizeChange={[Function]}
           scrollEnabled={true}
           testID="modalScrollView"
@@ -628,6 +629,7 @@ exports[`ReportOffer General modal behavior Report offer snapshots should not di
         }
       >
         <RCTScrollView
+          contentContainerStyle={Object {}}
           onContentSizeChange={[Function]}
           scrollEnabled={true}
           testID="modalScrollView"
