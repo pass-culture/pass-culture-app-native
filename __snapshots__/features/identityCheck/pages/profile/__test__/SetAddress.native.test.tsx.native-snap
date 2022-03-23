@@ -271,7 +271,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                 onFocus={[Function]}
                 placeholder="Ex : 34 avenue de l'Opéra"
                 placeholderTextColor="#696A6F"
-                returnKeyType="search"
+                returnKeyType="next"
                 selectionColor="#696A6F"
                 style={
                   Array [
