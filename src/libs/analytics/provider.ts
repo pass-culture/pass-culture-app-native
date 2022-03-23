@@ -7,6 +7,8 @@ import { AnalyticsProvider } from './types'
 
 const firebaseAnalytics = firebaseAnalyticsModule()
 
+const AGENT_TYPE = AgentType.agent_mobile
+
 export const analyticsProvider: AnalyticsProvider = {
   enableCollection() {
     firebaseAnalytics.setAnalyticsCollectionEnabled(true)
@@ -20,15 +22,19 @@ export const analyticsProvider: AnalyticsProvider = {
   setUserId(userId) {
     firebaseAnalytics.setUserId(userId.toString())
   },
-  async logScreenView(screenName) {
-    await firebaseAnalytics.logScreenView({ screen_name: screenName, screen_class: screenName })
+  logScreenView(screenName) {
+    firebaseAnalytics.logEvent('screen_view', {
+      screen_name: screenName,
+      screen_class: screenName,
+      agentType: AGENT_TYPE,
+    })
   },
   logLogin({ method }) {
-    firebaseAnalytics.logLogin({ method })
+    firebaseAnalytics.logEvent('login', { method, agentType: AGENT_TYPE })
   },
   logEvent(name, params) {
     const newParams = params ? prepareLogEventParams(params) : {}
-    newParams['agentType'] = AgentType.agent_mobile
+    newParams['agentType'] = AGENT_TYPE
     return firebaseAnalytics.logEvent(name, newParams)
   },
 }
