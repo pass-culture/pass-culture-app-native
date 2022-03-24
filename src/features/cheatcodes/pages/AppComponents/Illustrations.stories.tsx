@@ -1,8 +1,4 @@
-import { ComponentStory } from '@storybook/react'
-import React from 'react'
-import { Text } from 'react-native'
-
-import { Illustration } from 'ui/storybook/Illustration'
+import { IconsContainer as Illustrations } from 'features/cheatcodes/pages/AppComponents/IconsContainer'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
@@ -25,7 +21,6 @@ import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { Star } from 'ui/svg/icons/Star'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
-import { IconInterface } from 'ui/svg/icons/types'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { UserError } from 'ui/svg/icons/UserError'
 import { UserFavorite } from 'ui/svg/icons/UserFavorite'
@@ -34,23 +29,10 @@ export default {
   title: 'ui/illustrations',
 }
 
-const Illustrations: ComponentStory<
-  React.FC<{
-    icon: Record<string, React.ComponentType<IconInterface>>
-    children?: never
-  }>
-> = ({ icon }) => (
-  <React.Fragment>
-    <Text>{'Illustration icons should have a standard size of 140'}</Text>
-    {Array.from(Object.entries(icon)).map(([name, icon]) => (
-      <Illustration key={name} name={name} component={icon} />
-    ))}
-  </React.Fragment>
-)
-
 export const Bicolors = Illustrations.bind({})
 Bicolors.args = {
-  icon: {
+  title: 'Illustration icons should have a standard size of 140',
+  icons: {
     BicolorIdCardWithMagnifyingGlass,
     BicolorPhonePending,
   },
@@ -58,7 +40,8 @@ Bicolors.args = {
 
 export const UniqueColors = Illustrations.bind({})
 UniqueColors.args = {
-  icon: {
+  title: 'Illustration icons should have a standard size of 140',
+  icons: {
     BrokenConnection,
     BirthdayCake,
     CalendarIllustration,
