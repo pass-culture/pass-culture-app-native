@@ -4,7 +4,7 @@ import {
   MAINTENANCE,
   Maintenance,
   maintenanceStatusListener,
-} from 'libs/firebase/firestore/maintenance'
+} from 'libs/firebaseOld/firestore/maintenance'
 
 export const useMaintenance = (): Maintenance => {
   const [maintenance, setMaintenance] = useState<Maintenance>({

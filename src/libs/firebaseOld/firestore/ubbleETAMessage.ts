@@ -1,8 +1,8 @@
 import { useQuery } from 'react-query'
 
 import { env } from 'libs/environment'
-import { firestoreRemoteStore } from 'libs/firebase/firestore/client'
-import { RemoteStoreCollections, RemoteStoreDocuments } from 'libs/firebase/firestore/types'
+import { firestoreRemoteStore } from 'libs/firebaseOld/firestore/client'
+import { RemoteStoreCollections, RemoteStoreDocuments } from 'libs/firebaseOld/firestore/types'
 import { QueryKeys } from 'libs/queryKeys'
 
 // To avoid firing requests firestore on every request

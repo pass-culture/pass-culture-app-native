@@ -1,6 +1,5 @@
-import dynamicLinks from '@react-native-firebase/dynamic-links'
-
 import { WEBAPP_V2_URL } from 'libs/environment'
+import dynamicLinks from 'libs/firebase/dynamic-links'
 import { BatchPush } from 'libs/react-native-batch'
 
 // Override of default `getInitialURL` of `linking` config required to make

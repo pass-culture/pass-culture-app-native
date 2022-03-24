@@ -1,13 +1,10 @@
-import firebaseAnalyticsModule from '@react-native-firebase/analytics'
-
-import { AgentType } from 'api/gen'
+import { AGENT_TYPE } from 'libs/analytics/constants'
 import { prepareLogEventParams } from 'libs/analytics/utils'
+import firebaseAnalyticsModule from 'libs/firebase/analytics'
 
 import { AnalyticsProvider } from './types'
 
 const firebaseAnalytics = firebaseAnalyticsModule()
-
-const AGENT_TYPE = AgentType.agent_mobile
 
 export const analyticsProvider: AnalyticsProvider = {
   enableCollection() {

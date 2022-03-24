@@ -1,17 +1,11 @@
-import { AgentType } from 'api/gen'
+import { AGENT_TYPE } from 'libs/analytics/constants'
 import { prepareLogEventParams } from 'libs/analytics/utils'
-import { getFirebaseApp } from 'libs/firebase/getFirebaseApp'
-// eslint-disable-next-line no-restricted-imports
-import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
+import { getFirebaseApp } from 'libs/firebaseOld/getFirebaseApp'
 
 import { AnalyticsProvider } from './types'
 
 const firebaseApp = getFirebaseApp()
 const firebaseAnalytics = firebaseApp.analytics()
-
-const AGENT_TYPE = isDesktopDeviceDetectOnWeb
-  ? AgentType.browser_computer
-  : AgentType.browser_mobile
 
 export const analyticsProvider: AnalyticsProvider = {
   enableCollection() {

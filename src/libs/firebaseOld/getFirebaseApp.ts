@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import firebase from 'firebase/app'
 
 import { FIREBASE_CONFIG } from './firebaseConfig'

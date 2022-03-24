@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-restricted-imports
 import 'firebase/analytics'
 
 import { env } from 'libs/environment'

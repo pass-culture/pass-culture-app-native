@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-import { minimalBuildNumberStatusListener } from 'libs/firebase/firestore/applicationVersions'
+import { minimalBuildNumberStatusListener } from 'libs/firebaseOld/firestore/applicationVersions'
 
 export const useMinimalBuildNumber = () => {
   const [minimalBuildNumber, setMinimalBuildNumber] = useState<number | null>(null)
