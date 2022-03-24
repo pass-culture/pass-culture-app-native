@@ -1,2 +1,4 @@
 // eslint-disable-next-line no-restricted-imports
-export { default } from '@react-native-firebase/app'
+import app from '@react-native-firebase/app'
+
+export const getFirebaseApp = () => app

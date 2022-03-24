@@ -1,6 +1,3 @@
-// eslint-disable-next-line no-restricted-imports
-import 'firebase/analytics'
-
 import { env } from 'libs/environment'
 
 export const FIREBASE_CONFIG = {

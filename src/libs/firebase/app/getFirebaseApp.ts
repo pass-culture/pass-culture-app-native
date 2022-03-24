@@ -1,7 +1,10 @@
 // eslint-disable-next-line no-restricted-imports
 import firebase from 'firebase/app'
+// eslint-disable-next-line no-restricted-imports
+import 'firebase/analytics'
 
-import { FIREBASE_CONFIG } from './firebaseConfig'
+// TODO separate concerns
+import { FIREBASE_CONFIG } from '../../firebaseOld/firebaseConfig'
 
 export function getFirebaseApp() {
   let firebaseApp

@@ -1,4 +1,8 @@
-import { AGENT_TYPE } from 'libs/analytics/constants'
+import {
+  AGENT_TYPE,
+  EVENT_PAGE_VIEW_NAME,
+  EVENT_PAGE_VIEW_PARAM_KEY,
+} from 'libs/analytics/constants'
 import { prepareLogEventParams } from 'libs/analytics/utils'
 import firebaseAnalyticsModule from 'libs/firebase/analytics'
 
@@ -14,14 +18,15 @@ export const analyticsProvider: AnalyticsProvider = {
     firebaseAnalytics.setAnalyticsCollectionEnabled(false)
   },
   setDefaultEventParameters(params: Record<string, string> | undefined) {
+    // only apply on native devices, mocked on the Web
     firebaseAnalytics.setDefaultEventParameters(params)
   },
   setUserId(userId) {
     firebaseAnalytics.setUserId(userId.toString())
   },
   logScreenView(screenName) {
-    firebaseAnalytics.logEvent('screen_view', {
-      screen_name: screenName,
+    firebaseAnalytics.logEvent(EVENT_PAGE_VIEW_NAME, {
+      [EVENT_PAGE_VIEW_PARAM_KEY]: screenName,
       screen_class: screenName,
       agentType: AGENT_TYPE,
     })
