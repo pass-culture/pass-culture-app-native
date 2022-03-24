@@ -23,11 +23,11 @@ const useInit = () => {
   const { campaignDate } = useUtmParams()
 
   useEffect(() => {
-    // If the user has clicked on marketing link 48h ago, we want to remove the marketing params
-    const ago48Hours = new Date()
-    ago48Hours.setDate(ago48Hours.getDate() - 2)
+    // If the user has clicked on marketing link 24h ago, we want to remove the marketing params
+    const ago24Hours = new Date()
+    ago24Hours.setDate(ago24Hours.getDate() - 1)
 
-    if (campaignDate && campaignDate < ago48Hours) {
+    if (campaignDate && campaignDate < ago24Hours) {
       analytics.setDefaultEventParameters(undefined)
     }
   }, [campaignDate])
