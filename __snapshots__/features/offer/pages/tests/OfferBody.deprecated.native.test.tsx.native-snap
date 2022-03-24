@@ -2011,6 +2011,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   }
                                 >
                                   <RCTScrollView
+                                    contentContainerStyle={Object {}}
                                     onContentSizeChange={[Function]}
                                     scrollEnabled={true}
                                     testID="modalScrollView"
@@ -4673,6 +4674,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   }
                                 >
                                   <RCTScrollView
+                                    contentContainerStyle={Object {}}
                                     onContentSizeChange={[Function]}
                                     scrollEnabled={true}
                                     testID="modalScrollView"

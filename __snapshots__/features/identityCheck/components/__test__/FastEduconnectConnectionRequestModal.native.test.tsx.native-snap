@@ -267,6 +267,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal not visible 1`] = 
         }
       >
         <RCTScrollView
+          contentContainerStyle={Object {}}
           onContentSizeChange={[Function]}
           scrollEnabled={true}
           testID="modalScrollView"
@@ -812,6 +813,7 @@ exports[`<IdentityCheckEnd/> should render correctly if modal visible 1`] = `
         }
       >
         <RCTScrollView
+          contentContainerStyle={Object {}}
           onContentSizeChange={[Function]}
           scrollEnabled={true}
           testID="modalScrollView"

@@ -703,6 +703,7 @@ Array [
           }
         >
           <RCTScrollView
+            contentContainerStyle={Object {}}
             onContentSizeChange={[Function]}
             scrollEnabled={true}
             testID="modalScrollView"

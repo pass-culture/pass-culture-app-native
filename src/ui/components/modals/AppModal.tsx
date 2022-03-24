@@ -1,10 +1,12 @@
 import React, { FunctionComponent, useRef, useState, useMemo, useCallback } from 'react'
-import { LayoutChangeEvent, ScrollView, useWindowDimensions } from 'react-native'
+import { LayoutChangeEvent, Platform, ScrollView, useWindowDimensions } from 'react-native'
 import { ReactNativeModal } from 'react-native-modal'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+// eslint-disable-next-line no-restricted-imports
+import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
 import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
 import { getSpacing } from 'ui/theme'
@@ -124,6 +126,7 @@ export const AppModal: FunctionComponent<Props> = ({
         <SpacerBetweenHeaderAndContent />
         <ScrollViewContainer paddingBottom={scrollViewPaddingBottom}>
           <ScrollView
+            contentContainerStyle={contentContainerStyle}
             ref={scrollViewRef}
             scrollEnabled={scrollEnabled}
             onContentSizeChange={updateScrollViewContentHeight}
@@ -135,6 +138,17 @@ export const AppModal: FunctionComponent<Props> = ({
     </StyledModal>
   )
 }
+
+const contentContainerStyle = Platform.select({
+  default: {},
+  web: isDesktopDeviceDetectOnWeb
+    ? {
+        // solve the outline focus issue due to scrollView, see PC-13996
+        paddingVertical: 5,
+        paddingHorizontal: 10,
+      }
+    : {},
+})
 
 const SPACE_BETWEEN_HEADER_AND_CONTENT = getSpacing(5)
 const SpacerBetweenHeaderAndContent = styled.View({
