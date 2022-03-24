@@ -11,6 +11,9 @@ import { TikTok } from 'ui/svg/icons/socialNetwork/TikTok'
 import { Twitter } from 'ui/svg/icons/socialNetwork/Twitter'
 import { Telegram } from 'ui/svg/icons/socialNetwork/Telegram'
 import { WhatsApp } from 'ui/svg/icons/socialNetwork/WhatsApp'
+import { Profile } from 'ui/svg/icons/Profile'
+import { IdCard } from 'ui/svg/icons/IdCard'
+import { Confirmation } from 'ui/svg/icons/Confirmation'
 
 export default {
   title: 'ui/icons',
@@ -43,7 +46,11 @@ SocialNetwork.args = {
   },
 }
 
-export const UniqueColors = Icons.bind({})
-UniqueColors.args = {
-  icon: {},
+export const IdentityCheck = Icons.bind({})
+IdentityCheck.args = {
+  icon: {
+    Profile,
+    IdCard,
+    Confirmation,
+  },
 }
