@@ -2320,15 +2320,23 @@ exports[`HomeBodyPlaceholder matches snapshot 1`] = `
     style={
       Array [
         Object {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
+          "flexDirection": "row",
+          "paddingBottom": 24,
         },
       ]
     }
     testID="HomeBodyPlaceholder-testID"
   >
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "width": 24,
+          },
+        ]
+      }
+    />
     <View
       borderRadius={8}
       height={304}

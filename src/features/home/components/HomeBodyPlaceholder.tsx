@@ -26,9 +26,10 @@ export const HomeBodyPlaceholder = () => (
     <Spacer.Column numberOfSpaces={6} />
     <OfferModulePlaceholder size={LENGTH_M} numberOfTiles={5} />
     <Spacer.Column numberOfSpaces={6} />
-    <CenterContainer testID="HomeBodyPlaceholder-testID">
+    <Container testID="HomeBodyPlaceholder-testID">
+      <Spacer.Row numberOfSpaces={6} />
       <BusinessModulePlaceholder />
-    </CenterContainer>
+    </Container>
     <Spacer.Column numberOfSpaces={6} />
     <OfferModulePlaceholder size={LENGTH_M} numberOfTiles={5} />
     <Spacer.Column numberOfSpaces={6} />
@@ -101,8 +102,3 @@ const BusinessModulePlaceholder = () => {
 }
 
 const Container = styled.View({ flexDirection: 'row', paddingBottom: getSpacing(6) })
-
-const CenterContainer = styled.View({
-  flex: 1,
-  alignItems: 'center',
-})
