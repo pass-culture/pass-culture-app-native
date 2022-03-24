@@ -1,6 +1,6 @@
 import { AgentType } from 'api/gen'
 import { prepareLogEventParams } from 'libs/analytics/utils'
-import { getFirebaseApp } from 'libs/firebase'
+import { getFirebaseApp } from 'libs/firebase/getFirebaseApp'
 // eslint-disable-next-line no-restricted-imports
 import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
 

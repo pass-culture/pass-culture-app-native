@@ -1,6 +1,6 @@
 import { env } from 'libs/environment'
-import { firestoreRemoteStore } from 'libs/firestore/client'
-import { RemoteStoreCollections, RemoteStoreDocuments } from 'libs/firestore/types'
+import { firestoreRemoteStore } from 'libs/firebase/firestore/client'
+import { RemoteStoreCollections, RemoteStoreDocuments } from 'libs/firebase/firestore/types'
 import { captureMonitoringError } from 'libs/monitoring'
 
 export const minimalBuildNumberStatusListener = (

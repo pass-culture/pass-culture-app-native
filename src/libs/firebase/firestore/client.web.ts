@@ -1,4 +1,4 @@
-import { getFirebaseApp } from 'libs/firebase'
+import { getFirebaseApp } from '../getFirebaseApp'
 import 'firebase/firestore'
 
 const firebaseApp = getFirebaseApp()
