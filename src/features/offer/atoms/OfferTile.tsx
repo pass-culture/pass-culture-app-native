@@ -111,7 +111,7 @@ export function OfferTile(props: OfferTileProps) {
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         isFocus={isFocus}
-        testID="offerTile"
+        testID={`offre ${name}`}
         accessibilityLabel={accessibilityLabel}>
         <Link
           to={{ screen: 'Offer', params: { id: offerId, from: analyticsFrom, moduleName } }}

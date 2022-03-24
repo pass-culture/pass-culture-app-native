@@ -835,7 +835,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="offerTile"
+                    testID="offre Titane - VF"
                   >
                     <View
                       style={
@@ -1062,7 +1062,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="offerTile"
+                    testID="offre Bac Nord - VF"
                   >
                     <View
                       style={
@@ -1289,7 +1289,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="offerTile"
+                    testID="offre Black Widow - VF"
                   >
                     <View
                       style={

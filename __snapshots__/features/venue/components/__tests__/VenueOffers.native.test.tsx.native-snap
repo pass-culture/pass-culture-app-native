@@ -273,7 +273,7 @@ Array [
                     },
                   ]
                 }
-                testID="offerTile"
+                testID="offre Titane - VF"
               >
                 <View
                   style={
@@ -500,7 +500,7 @@ Array [
                     },
                   ]
                 }
-                testID="offerTile"
+                testID="offre Bac Nord - VF"
               >
                 <View
                   style={
@@ -727,7 +727,7 @@ Array [
                     },
                   ]
                 }
-                testID="offerTile"
+                testID="offre Black Widow - VF"
               >
                 <View
                   style={

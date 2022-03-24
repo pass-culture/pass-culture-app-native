@@ -32,7 +32,7 @@ exports[`OfferTile component should render correctly 1`] = `
         },
       ]
     }
-    testID="offerTile"
+    testID="offre Mensch ! Où sont les Hommes ?"
   >
     <View
       style={
