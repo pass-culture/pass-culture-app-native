@@ -3,13 +3,6 @@ import React from 'react'
 import { Text } from 'react-native'
 
 import { Illustration } from 'ui/storybook/Illustration'
-import { Facebook } from 'ui/svg/icons/socialNetwork/Facebook'
-import { Instagram } from 'ui/svg/icons/socialNetwork/Instagram'
-import { Snapchat } from 'ui/svg/icons/socialNetwork/Snapchat'
-import { TikTok } from 'ui/svg/icons/socialNetwork/TikTok'
-import { Twitter } from 'ui/svg/icons/socialNetwork/Twitter'
-import { Telegram } from 'ui/svg/icons/socialNetwork/Telegram'
-import { WhatsApp } from 'ui/svg/icons/socialNetwork/WhatsApp'
 import { Again } from 'ui/svg/icons/Again'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
@@ -81,10 +74,18 @@ import { Quote } from 'ui/svg/icons/Quote'
 import { Share } from 'ui/svg/icons/Share'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { SMSFilled } from 'ui/svg/icons/SMSFilled'
+import { Facebook } from 'ui/svg/icons/socialNetwork/Facebook'
+import { Instagram } from 'ui/svg/icons/socialNetwork/Instagram'
+import { Snapchat } from 'ui/svg/icons/socialNetwork/Snapchat'
+import { Telegram } from 'ui/svg/icons/socialNetwork/Telegram'
+import { TikTok } from 'ui/svg/icons/socialNetwork/TikTok'
+import { Twitter } from 'ui/svg/icons/socialNetwork/Twitter'
+import { WhatsApp } from 'ui/svg/icons/socialNetwork/WhatsApp'
 import { Sun } from 'ui/svg/icons/Sun'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
 import { Warning } from 'ui/svg/icons/Warning'
+import { SMALLER_ICON_SIZE, STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 export default {
   title: 'ui/icons',
@@ -92,12 +93,13 @@ export default {
 
 const Icons: ComponentStory<
   React.FC<{
+    title: string
     icon: Record<string, React.ComponentType<IconInterface>>
     children?: never
   }>
-> = ({ icon }) => (
+> = ({ title, icon }) => (
   <React.Fragment>
-    <Text>{'Illustration icons should have a standard size of 140'}</Text>
+    {!!title && <Text>{title}</Text>}
     {Array.from(Object.entries(icon)).map(([name, icon]) => (
       <Illustration key={name} name={name} component={icon} />
     ))}
@@ -117,17 +119,9 @@ SocialNetwork.args = {
   },
 }
 
-export const IdentityCheck = Icons.bind({})
-IdentityCheck.args = {
-  icon: {
-    Profile,
-    IdCard,
-    Confirmation,
-  },
-}
-
 export const SecondaryAndBigger = Icons.bind({})
 SecondaryAndBigger.args = {
+  title: `Secondary and bigger Icons ( > 20x20 ) should have a standard size of ${STANDARD_ICON_SIZE}`,
   icon: {
     BicolorAroundMe,
     BicolorBookings,
@@ -150,6 +144,7 @@ SecondaryAndBigger.args = {
     Clock,
     Close,
     Confidentiality,
+    Confirmation,
     Duo,
     Email,
     Error,
@@ -163,6 +158,7 @@ SecondaryAndBigger.args = {
     HandicapMental,
     HandicapMotor,
     HandicapAudio,
+    IdCard,
     Idea,
     Info,
     LegalNotices,
@@ -177,6 +173,7 @@ SecondaryAndBigger.args = {
     OfferPhysical,
     Offers,
     OrderPrice,
+    Profile,
     ProfileDeletion,
     Quote,
     SignOut,
@@ -188,6 +185,7 @@ SecondaryAndBigger.args = {
 
 export const TertiaryAndSmaller = Icons.bind({})
 TertiaryAndSmaller.args = {
+  title: `Tertiary and smaller plain Icons ( <= 20x20 ) should have a standard size of ${SMALLER_ICON_SIZE}`,
   icon: {
     Again,
     ClockFilled,
