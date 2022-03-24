@@ -9,6 +9,7 @@ import { SIGNUP_NUMBER_OF_STEPS } from 'features/auth/api'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
 import { Icons } from 'features/cheatcodes/pages/AppComponents/Icons'
 import { Illustrations } from 'features/cheatcodes/pages/AppComponents/Illustrations'
+import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
@@ -439,6 +440,10 @@ export const AppComponents: FunctionComponent = () => {
             <TertiaryProgressBar />
           </View>
         </GreyView>
+        <Spacer.Column numberOfSpaces={4} />
+        <View>
+          <CulturalSurveyCheckbox />
+        </View>
         <Spacer.Column numberOfSpaces={4} />
         <View>
           <Text>Section Row </Text>
