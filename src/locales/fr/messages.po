@@ -3446,8 +3446,8 @@ msgid "{0, plural, one {Réservation terminée} other {Réservations terminées}
 msgstr "{0, plural, one {Réservation terminée} other {Réservations terminées}}"
 
 #: src/libs/parsers/getDisplayPrice.ts
-msgid "{0} {EURO_SYMBOL}"
-msgstr "{0} {EURO_SYMBOL}"
+msgid "{EURO_SYMBOL}"
+msgstr "{EURO_SYMBOL}"
 
 #: src/features/bookings/pages/EndedBookings.tsx
 msgid "{endedBookingsCount, plural, one {# réservation terminée} other {# réservations terminées}}"

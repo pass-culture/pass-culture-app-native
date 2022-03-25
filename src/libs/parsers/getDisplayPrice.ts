@@ -9,11 +9,12 @@ const EURO_SYMBOL = '€'
  * price in euros in the French format, ex: "5,50 €"
  * @param {number} priceInCents
  */
-export const formatToFrenchDecimal = (priceInCents: number) => {
+export function formatToFrenchDecimal(priceInCents: number) {
   const euros = priceInCents / CENTS_IN_EURO
   // we show 2 decimals if price is not round. Ex: 21,50 €
   const fixed = euros === Math.floor(euros) ? euros : euros.toFixed(2)
-  return t`${fixed.toString().replace('.', ',')}\u00a0${EURO_SYMBOL}`
+  const euro = t`${EURO_SYMBOL}`
+  return `${fixed.toString().replace('.', ',')}\u00a0${euro}`
 }
 
 export const formatPriceInEuroToDisplayPrice = (priceInEuro: number) =>
