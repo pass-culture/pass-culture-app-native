@@ -616,8 +616,8 @@ export const AppComponents: FunctionComponent = () => {
           <Text> - OfferImage small </Text>
         </AlignedText>
         <AlignedText>
-          <OfferImage categoryId={CategoryIdEnum.BEAUX_ARTS} imageUrl={imageUrl} />
-          <Text> - TODO(LucasBeneston): OfferImage large </Text>
+          <OfferImage categoryId={CategoryIdEnum.BEAUX_ARTS} imageUrl={imageUrl} size="tall" />
+          <Text> - OfferImage tall </Text>
         </AlignedText>
         <AlignedText>
           <Badge label={1} />
