@@ -400,8 +400,8 @@ jobs:
       - run:
           name: Notify failed deploy
           command: |
-            BOT_MESSAGE="'*testing* : [App Native] deployment *"$CIRCLE_TAG"* has failed :collision:'"
-            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-testing','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
+            BOT_MESSAGE="'*testing* : [App Native] soft deployment has failed :collision:'"
+            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-native','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
           when: on_fail
 
   deploy-android-testing-hard:
@@ -432,8 +432,8 @@ jobs:
       - run:
           name: Notify failed deploy
           command: |
-            BOT_MESSAGE="'*testing* : [App Native] deployment *"$CIRCLE_TAG"* has failed :collision:'"
-            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-testing','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
+            BOT_MESSAGE="'*testing* : [App Native] android hard deployment has failed :collision:'"
+            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-native','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
           when: on_fail
 
   deploy-ios-testing-hard:
@@ -462,8 +462,8 @@ jobs:
       - run:
           name: Notify failed deploy
           command: |
-            BOT_MESSAGE="'*testing* : [App Native] deployment *"$CIRCLE_TAG"* has failed :collision:'"
-            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-testing','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
+            BOT_MESSAGE="'*testing* : [App Native] ios hard deployment has failed :collision:'"
+            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-native','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
           when: on_fail
 
   deploy-ios-staging-hard:
@@ -644,8 +644,8 @@ jobs:
       - run:
           name: Notify failed deploy
           command: |
-            BOT_MESSAGE="'*testing-web* : [App Native] deployment *"$CIRCLE_TAG"* has failed :collision:'"
-            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-testing','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
+            BOT_MESSAGE="'*testing-web* : [App Native] deployment has failed :collision:'"
+            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-native','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
           when: on_fail
 
   deploy-web-staging:
