@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react'
 import { View, Text } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SearchGroupNameEnum, VenueTypeCodeKey } from 'api/gen/api'
+import { VenueTypeCodeKey } from 'api/gen/api'
 import { IconsContainer } from 'features/cheatcodes/pages/AppComponents/IconsContainer'
 import {
   SecondaryAndBiggerIcons,
@@ -11,9 +11,8 @@ import {
   TertiaryAndSmallerIcons,
   UnconventionalIcons,
 } from 'features/cheatcodes/pages/AppComponents/iconsExports'
-import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { mapVenueTypeToIcon, VenueTypeCode } from 'libs/parsers'
-import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
+import CategoryIcon from 'ui/svg/icons/categories/bicolor'
 import { Spacer } from 'ui/theme'
 import { SMALLER_ICON_SIZE, STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
@@ -44,33 +43,8 @@ const SocialNetwork = () => {
   return <IconsContainer icons={SocialNetworkIcons} title="Social network" />
 }
 
-// TODO(PC-14164): use BicolorIconsContainer
 const Category = () => {
-  const searchGroupLabelMapping = useSearchGroupLabelMapping()
-  return (
-    <React.Fragment>
-      <Text>{'Categories'}</Text>
-      {Object.entries(CATEGORY_CRITERIA).map(([searchGroup, { icon: BicolorIcon }]) => {
-        const StyledBicolorIcon1 = styled(BicolorIcon).attrs(({ theme }) => ({
-          color: theme.colors.primary,
-          color2: theme.colors.primary,
-          size: theme.icons.sizes.standard,
-        }))``
-
-        const StyledBicolorIcon2 = styled(StyledBicolorIcon1).attrs(({ theme }) => ({
-          color2: theme.colors.secondary,
-        }))``
-        return (
-          <AlignedText key={searchGroup}>
-            <StyledBicolorIcon1 />
-            <StyledBicolorIcon2 />
-            <Text> - {searchGroupLabelMapping[searchGroup as SearchGroupNameEnum]} </Text>
-          </AlignedText>
-        )
-      })}
-      <Text>{'\n'}</Text>
-    </React.Fragment>
-  )
+  return <IconsContainer isBicolor title="Categories" icons={CategoryIcon} />
 }
 
 // TODO(PC-14164): use IconsContainer
