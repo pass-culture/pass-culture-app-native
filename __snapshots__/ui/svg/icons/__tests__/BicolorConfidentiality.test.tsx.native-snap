@@ -41,7 +41,7 @@ exports[`BicolorConfidentiality should render component correctly 1`] = `
         }
         gradientTransform={null}
         gradientUnits={0}
-        name="testUuid"
+        name="gradienttestUuid"
         x1="16.056%"
         x2="83.944%"
         y1="0%"
@@ -54,7 +54,7 @@ exports[`BicolorConfidentiality should render component correctly 1`] = `
       fill={
         Array [
           1,
-          "testUuid",
+          "gradienttestUuid",
         ]
       }
       fillRule={0}

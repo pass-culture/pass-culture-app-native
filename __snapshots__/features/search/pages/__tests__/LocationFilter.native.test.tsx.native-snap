@@ -485,7 +485,6 @@ exports[`LocationFilter component should render correctly 1`] = `
             }
           >
             <Text
-              aria-describedby="testUuidV4"
               isSelected={false}
               numberOfLines={3}
               style={

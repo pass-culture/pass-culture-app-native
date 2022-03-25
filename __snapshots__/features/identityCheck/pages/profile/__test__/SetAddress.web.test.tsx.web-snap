@@ -107,7 +107,6 @@ Object {
                         style="width: 4px;"
                       />
                       <input
-                        aria-describedby="testUuidV4"
                         aria-label="Entrée pour l'adresse"
                         autocapitalize="sentences"
                         autocomplete="on"
@@ -293,7 +292,6 @@ Object {
                       style="width: 4px;"
                     />
                     <input
-                      aria-describedby="testUuidV4"
                       aria-label="Entrée pour l'adresse"
                       autocapitalize="sentences"
                       autocomplete="on"

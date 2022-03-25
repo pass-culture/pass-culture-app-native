@@ -29,10 +29,9 @@ Object {
                 class="sc-dlVxhl dvuzDi"
               >
                 <a
-                  class="css-reset-4rbku5 css-cursor-18t94o4 css-text-901oao"
+                  class="css-reset-4rbku5 css-text-901oao"
                   dir="auto"
                   href="/Home"
-                  role="link"
                   style="cursor: pointer;"
                   tabindex="-1"
                 >
@@ -83,10 +82,9 @@ Object {
                 class="sc-dlVxhl dvuzDi"
               >
                 <a
-                  class="css-reset-4rbku5 css-cursor-18t94o4 css-text-901oao"
+                  class="css-reset-4rbku5 css-text-901oao"
                   dir="auto"
                   href="/Search"
-                  role="link"
                   style="cursor: pointer;"
                   tabindex="-1"
                 >
@@ -122,10 +120,9 @@ Object {
                 class="sc-dlVxhl dvuzDi"
               >
                 <a
-                  class="css-reset-4rbku5 css-cursor-18t94o4 css-text-901oao"
+                  class="css-reset-4rbku5 css-text-901oao"
                   dir="auto"
                   href="/Bookings"
-                  role="link"
                   style="cursor: pointer;"
                   tabindex="-1"
                 >
@@ -161,10 +158,9 @@ Object {
                 class="sc-dlVxhl dvuzDi"
               >
                 <a
-                  class="css-reset-4rbku5 css-cursor-18t94o4 css-text-901oao"
+                  class="css-reset-4rbku5 css-text-901oao"
                   dir="auto"
                   href="/Favorites"
-                  role="link"
                   style="cursor: pointer;"
                   tabindex="-1"
                 >
@@ -200,10 +196,9 @@ Object {
                 class="sc-dlVxhl dvuzDi"
               >
                 <a
-                  class="css-reset-4rbku5 css-cursor-18t94o4 css-text-901oao"
+                  class="css-reset-4rbku5 css-text-901oao"
                   dir="auto"
                   href="/Profile"
-                  role="link"
                   style="cursor: pointer;"
                   tabindex="-1"
                 >
@@ -304,10 +299,9 @@ Object {
               class="sc-dlVxhl dvuzDi"
             >
               <a
-                class="css-reset-4rbku5 css-cursor-18t94o4 css-text-901oao"
+                class="css-reset-4rbku5 css-text-901oao"
                 dir="auto"
                 href="/Home"
-                role="link"
                 style="cursor: pointer;"
                 tabindex="-1"
               >
@@ -358,10 +352,9 @@ Object {
               class="sc-dlVxhl dvuzDi"
             >
               <a
-                class="css-reset-4rbku5 css-cursor-18t94o4 css-text-901oao"
+                class="css-reset-4rbku5 css-text-901oao"
                 dir="auto"
                 href="/Search"
-                role="link"
                 style="cursor: pointer;"
                 tabindex="-1"
               >
@@ -397,10 +390,9 @@ Object {
               class="sc-dlVxhl dvuzDi"
             >
               <a
-                class="css-reset-4rbku5 css-cursor-18t94o4 css-text-901oao"
+                class="css-reset-4rbku5 css-text-901oao"
                 dir="auto"
                 href="/Bookings"
-                role="link"
                 style="cursor: pointer;"
                 tabindex="-1"
               >
@@ -436,10 +428,9 @@ Object {
               class="sc-dlVxhl dvuzDi"
             >
               <a
-                class="css-reset-4rbku5 css-cursor-18t94o4 css-text-901oao"
+                class="css-reset-4rbku5 css-text-901oao"
                 dir="auto"
                 href="/Favorites"
-                role="link"
                 style="cursor: pointer;"
                 tabindex="-1"
               >
@@ -475,10 +466,9 @@ Object {
               class="sc-dlVxhl dvuzDi"
             >
               <a
-                class="css-reset-4rbku5 css-cursor-18t94o4 css-text-901oao"
+                class="css-reset-4rbku5 css-text-901oao"
                 dir="auto"
                 href="/Profile"
-                role="link"
                 style="cursor: pointer;"
                 tabindex="-1"
               >
