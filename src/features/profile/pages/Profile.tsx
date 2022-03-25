@@ -15,7 +15,6 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ProfileHeader } from 'features/profile/components/ProfileHeader'
 import { ProfileContainer } from 'features/profile/components/reusables'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch'
-import { SmartBanner } from 'features/smartBanner/SmartBanner'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import { env } from 'libs/environment'
@@ -119,7 +118,6 @@ export const Profile: React.FC = () => {
       onScroll={onScroll}
       scrollEventThrottle={400}
       testID="profile-scrollview">
-      <SmartBanner />
       <ProfileHeader user={user} />
       <ProfileContainer>
         <Spacer.Column numberOfSpaces={getSpacing(1)} />

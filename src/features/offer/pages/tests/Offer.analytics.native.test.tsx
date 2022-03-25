@@ -1,5 +1,5 @@
-import { AppState } from 'react-native'
 import { ReactTestInstance } from 'react-test-renderer'
+import waitForExpect from 'wait-for-expect'
 
 import { analytics } from 'libs/analytics'
 import { superFlushWithAct, act, fireEvent, cleanup } from 'tests/utils'
@@ -17,6 +17,20 @@ describe('<OfferBody /> - Analytics', () => {
       jest.advanceTimersByTime(300)
     })
   }
+
+  it('should trigger logOfferSeenDuration after unmount', async () => {
+    const offerPage = await renderOfferBodyPage()
+    await waitForExpect(async () => {
+      expect(analytics.logOfferSeenDuration).not.toHaveBeenCalled()
+    })
+
+    await act(async () => {
+      await offerPage.unmount()
+    })
+    await waitForExpect(() => {
+      expect(analytics.logOfferSeenDuration).toHaveBeenCalledTimes(1)
+    })
+  })
 
   it('should log ConsultAccessibilityModalities once when opening accessibility modalities', async () => {
     const { getByText } = await renderOfferBodyPage()
@@ -40,18 +54,6 @@ describe('<OfferBody /> - Analytics', () => {
     trigger(getByText('Modalités de retrait'))
     trigger(getByText('Modalités de retrait'))
     expect(analytics.logConsultWithdrawal).toHaveBeenCalledTimes(1)
-  })
-
-  // TODO(Lucasbeneston): unskip this test. Make sure the feature works, find when the test was broken and fix it
-  it.skip('should trigger logOfferSeenDuration', async () => {
-    const offerPage = await renderOfferBodyPage()
-    expect(analytics.logOfferSeenDuration).not.toHaveBeenCalled()
-    expect(AppState.addEventListener).toHaveBeenCalled()
-    await act(async () => {
-      await offerPage.unmount()
-    })
-    expect(analytics.logOfferSeenDuration).toHaveBeenCalledTimes(1)
-    expect(AppState.removeEventListener).toHaveBeenCalled()
   })
 })
 

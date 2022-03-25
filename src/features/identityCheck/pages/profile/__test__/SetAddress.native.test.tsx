@@ -1,11 +1,10 @@
 import { FeatureCollection, Point } from 'geojson'
 import { rest } from 'msw'
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
 import { initialIdentityCheckState as mockState } from 'features/identityCheck/context/reducer'
-import { IdentityCheckError } from 'features/identityCheck/errors'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
-import { eventMonitoring } from 'libs/monitoring'
 import { Properties } from 'libs/place'
 import { buildPlaceUrl } from 'libs/place/buildUrl'
 import * as fetchAddresses from 'libs/place/fetchAddresses'
@@ -45,9 +44,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
   SNACK_BAR_TIME_OUT: 5000,
 }))
-
-// eslint-disable-next-line local-rules/no-allow-console
-allowConsole({ error: true })
 
 describe('<SetAddress/>', () => {
   it('should render correctly', () => {
@@ -89,42 +85,12 @@ describe('<SetAddress/>', () => {
     fireEvent.press(getByText(mockedSuggestedPlaces.features[1].properties.label))
     fireEvent.press(getByText('Continuer'))
 
-    await waitFor(() => {
+    await waitForExpect(() => {
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
         type: 'SET_ADDRESS',
         payload: mockedSuggestedPlaces.features[1].properties.label,
       })
       expect(mockNavigateToNextScreen).toBeCalledTimes(1)
-    })
-  })
-
-  // TODO(unknown): make this test work
-  it.skip('should show the generic error message if the API call returns error', async () => {
-    mockAddressesApiCallError()
-    const mockedGetCitiesSpy = jest.spyOn(fetchAddresses, 'fetchAddresses')
-
-    const { getByPlaceholderText } = renderSetAddresse()
-
-    const input = getByPlaceholderText("Ex\u00a0: 34 avenue de l'Opéra")
-    fireEvent.changeText(input, QUERY_ADDRESS)
-
-    await waitFor(() => {
-      expect(mockedGetCitiesSpy).toHaveBeenNthCalledWith(1, {
-        query: QUERY_ADDRESS,
-        postalCode: QUERY_POSTAL_CODE,
-        limit: 10,
-        cityCode: QUERY_CITY_CODE,
-      })
-
-      expect(mockShowErrorSnackBar).toBeCalledWith({
-        message: `Nous avons eu un problème pour trouver l'adresse associée à ton code postal. Réessaie plus tard.`,
-        timeout: 5000,
-      })
-      expect(eventMonitoring.captureException).toBeCalledWith(
-        new IdentityCheckError(
-          'Failed to fetch data from API: https://api-adresse.data.gouv.fr/search'
-        )
-      )
     })
   })
 })
@@ -136,8 +102,4 @@ function renderSetAddresse() {
 
 function mockAddressesApiCall(response: FeatureCollection<Point, Properties>) {
   server.use(rest.get(url, (req, res, ctx) => res(ctx.status(200), ctx.json(response))))
-}
-
-function mockAddressesApiCallError() {
-  server.use(rest.get(url, (req, res, ctx) => res(ctx.status(400))))
 }

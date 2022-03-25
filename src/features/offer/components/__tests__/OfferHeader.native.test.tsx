@@ -52,6 +52,10 @@ jest.mock('features/favorites/pages/useFavorites', () =>
 )
 
 describe('<OfferHeader />', () => {
+  beforeAll(() => {
+    jest.useFakeTimers()
+  })
+
   afterEach(async () => {
     await cleanup()
   })
@@ -91,9 +95,10 @@ describe('<OfferHeader />', () => {
     const { animatedValue, getByTestId } = await renderOfferHeader({ isLoggedIn: true })
     expect(getByTestId('offerHeaderName').props['aria-hidden']).toBeTruthy()
     expect(getByTestId('offerHeaderName').props.style.opacity).toBe(0)
-    act(() =>
+    act(() => {
       Animated.timing(animatedValue, { duration: 100, toValue: 1, useNativeDriver: false }).start()
-    )
+      jest.advanceTimersByTime(100)
+    })
     await waitForExpect(() =>
       expect(getByTestId('offerHeaderName').props['aria-hidden']).toBeFalsy()
     )
@@ -151,7 +156,7 @@ describe('<OfferHeader />', () => {
     expect(getByTestId('icon-favorite-filled')).toBeTruthy()
   })
 
-  it.skip('should add favorite when adding an offer in favorite - logged in users', async () => {
+  it('should add favorite when adding an offer in favorite - logged in users', async () => {
     const { getByTestId } = await renderOfferHeader({
       isLoggedIn: true,
       id: addFavoriteJsonResponseSnap.offer.id,
@@ -159,9 +164,9 @@ describe('<OfferHeader />', () => {
 
     await act(async () => {
       fireEvent.press(getByTestId('icon-favorite'))
-      await waitForExpect(() => {
-        expect(getByTestId('icon-favorite-filled')).toBeTruthy()
-      })
+    })
+    await waitForExpect(() => {
+      expect(getByTestId('icon-favorite-filled')).toBeTruthy()
     })
     const mutateData = queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse
     expect(
@@ -170,25 +175,20 @@ describe('<OfferHeader />', () => {
       )?.offer.id
     ).toEqual(addFavoriteJsonResponseSnap.offer.id)
 
-    /* Flacky test after we encapsulate useQuery within useInfiniteQuery to fetch favorites results,
-     * if later a solution can solve this, uncomment
-     * Meanwhile, we had to mock useFavorites and cache is not getting updated 100% of times within this test
-     */
-
-    // expect(
-    //   (queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse).favorites?.find(
-    //     (f: FavoriteResponse) => f.id === 1000
-    //   )
-    // ).toEqual({
-    //   ...addFavoriteJsonResponseSnap,
-    //   offer: {
-    //     ...addFavoriteJsonResponseSnap.offer,
-    //     date: addFavoriteJsonResponseSnap.offer.date?.toISOString(),
-    //   },
-    // })
+    expect(
+      (queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse).favorites?.find(
+        (f: FavoriteResponse) => f.id === 1000
+      )
+    ).toEqual({
+      ...addFavoriteJsonResponseSnap,
+      offer: {
+        ...addFavoriteJsonResponseSnap.offer,
+        date: addFavoriteJsonResponseSnap.offer.date,
+      },
+    })
   })
 
-  it.skip('should add favorite and show error when adding an offer in favorite, and undo favorite add - logged in users', async () => {
+  it('should add favorite and show error when adding an offer in favorite, and undo favorite add - logged in users', async () => {
     const { queryByTestId, getByTestId } = await renderOfferHeader({
       isLoggedIn: true,
       hasAddFavoriteError: true,
@@ -233,7 +233,7 @@ describe('<OfferHeader />', () => {
     ).toBe(undefined)
   })
 
-  it.skip('should remove favorite when pressing filled favorite icon - logged in users', async () => {
+  it('should remove favorite when pressing filled favorite icon - logged in users', async () => {
     const favoriteOfferId = 146193
     const { getByTestId } = await renderOfferHeader({ isLoggedIn: true, id: favoriteOfferId })
 
@@ -254,7 +254,7 @@ describe('<OfferHeader />', () => {
     ).toBe(undefined)
   })
 
-  it.skip('should remove favorite and show error when pressing filled favorite icon, and restore favorite - logged in users', async () => {
+  it('should remove favorite and show error when pressing filled favorite icon, and restore favorite - logged in users', async () => {
     const favoriteOfferId = 146193
     const { queryByTestId, getByTestId } = await renderOfferHeader({
       isLoggedIn: true,

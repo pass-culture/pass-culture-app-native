@@ -142,9 +142,6 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
     })
 
     it('should redirect to Home with a snackbar message on error', async () => {
-      // TODO(PC-6360): ignore warning displayed by react-query's useMutation onError callback.
-      // Note : it appears next to impossible to hide this warning by acting on the console object alone.
-      // The only solution probably lies in mocking partially or completely react-query.
       // eslint-disable-next-line local-rules/independant-mocks
       jest.spyOn(datesLib, 'isTimestampExpired').mockReturnValue(false)
       server.use(
