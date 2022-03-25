@@ -1,7 +1,8 @@
 import * as React from 'react'
 import Svg, { Defs, LinearGradient, Stop, Path, G } from 'react-native-svg'
 import { useTheme } from 'styled-components/native'
-import { v1 as uuidv1 } from 'uuid'
+
+import { svgIdentifier } from 'ui/svg/utils'
 
 import { getSpacing } from '../theme'
 
@@ -15,7 +16,7 @@ const NotMemoizedRectangle: React.FC<Omit<IconInterface, 'color'> & { height?: n
   const {
     colors: { primary, secondary },
   } = useTheme()
-  const LINEAR_GRADIENT_ID = uuidv1()
+  const { id, fill } = svgIdentifier()
   return (
     <Svg
       width={size}
@@ -25,16 +26,13 @@ const NotMemoizedRectangle: React.FC<Omit<IconInterface, 'color'> & { height?: n
       testID={testID}
       aria-hidden>
       <Defs>
-        <LinearGradient id={LINEAR_GRADIENT_ID} x1="0%" x2="100%" y1="49.977%" y2="50.023%">
+        <LinearGradient id={id} x1="0%" x2="100%" y1="49.977%" y2="50.023%">
           <Stop offset="0%" stopColor={primary} />
           <Stop offset="100%" stopColor={secondary} />
         </LinearGradient>
       </Defs>
       <G fill="none">
-        <G
-          stroke={`url(#${LINEAR_GRADIENT_ID})`}
-          strokeWidth={getSpacing(2)}
-          transform="translate(0 -309)">
+        <G stroke={fill} strokeWidth={getSpacing(2)} transform="translate(0 -309)">
           <Path d="M4 313H371V314H4z" />
         </G>
       </G>

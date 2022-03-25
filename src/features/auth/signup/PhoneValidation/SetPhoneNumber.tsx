@@ -153,8 +153,10 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
                 placeholder={getPlaceholder(country.cca2)}
                 textContentType="telephoneNumber"
                 onSubmitEditing={requestSendPhoneValidationCode}
+                accessibilityDescribedBy={
+                  invalidPhoneNumberMessage ? phoneNumberInputErrorId : undefined
+                }
                 {...accessibilityAndTestId(t`Entrée pour le numéro de téléphone`)}
-                aria-describedby={phoneNumberInputErrorId}
               />
             </InputContainer>
             {invalidPhoneNumberMessage ? (

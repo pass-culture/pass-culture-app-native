@@ -1,6 +1,7 @@
 import React from 'react'
 import Svg, { Defs, LinearGradient, Stop, Path } from 'react-native-svg'
-import { v1 as uuidv1 } from 'uuid'
+
+import { svgIdentifier } from 'ui/svg/utils'
 
 import { RectangleIconInterface } from './icons/types'
 
@@ -9,7 +10,7 @@ const NotMemoizedBackgroundPlaceholder: React.FC<RectangleIconInterface> = ({
   width = 38,
   testID,
 }) => {
-  const LINEAR_GRADIENT_ID = uuidv1()
+  const { id, fill } = svgIdentifier()
   return (
     <Svg
       width={width}
@@ -19,12 +20,12 @@ const NotMemoizedBackgroundPlaceholder: React.FC<RectangleIconInterface> = ({
       preserveAspectRatio="none"
       aria-hidden>
       <Defs>
-        <LinearGradient id={LINEAR_GRADIENT_ID} x1="50%" x2="50%" y1="0%" y2="100%">
+        <LinearGradient id={id} x1="50%" x2="50%" y1="0%" y2="100%">
           <Stop offset="0%" stopColor="#ECF0F1" />
           <Stop offset="100%" stopColor="#C7C7CC" />
         </LinearGradient>
       </Defs>
-      <Path d="M0 0h375v317H0z" fill={`url(#${LINEAR_GRADIENT_ID})`} fillRule="evenodd" />
+      <Path d="M0 0h375v317H0z" fill={fill} fillRule="evenodd" />
     </Svg>
   )
 }

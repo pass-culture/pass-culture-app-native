@@ -46,7 +46,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
             </View>
             <View
               numberOfSpaces={6}
-@@ -521,18 +517,16 @@
+@@ -520,18 +516,16 @@
                       },
                     ]
                   }
@@ -66,7 +66,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -581,13 +575,11 @@
+@@ -580,13 +574,11 @@
               }
             >
               <View
@@ -80,7 +80,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -655,24 +647,22 @@
+@@ -654,24 +646,22 @@
               }
             />
             <View
@@ -107,7 +107,7 @@ exports[`<Login/> should enable login button when both text inputs are filled 1`
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
                   \\"minHeight\\": 40,
-@@ -691,11 +681,11 @@
+@@ -690,11 +680,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -176,7 +176,19 @@ exports[`<Login/> should show email error message WHEN signin has failed because
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -372,13 +368,73 @@
+@@ -342,10 +338,11 @@
+                  ]
+                }
+                testID=\\"styled-input-container\\"
+              >
+                <TextInput
++                 aria-describedby=\\"testUuidV4\\"
+                  autoCapitalize=\\"none\\"
+                  autoComplete=\\"email\\"
+                  editable={true}
+                  keyboardType=\\"email-address\\"
+                  maxLength={120}
+@@ -372,15 +369,75 @@
                         \\"paddingTop\\": 0,
                       },
                     ]
@@ -184,10 +196,10 @@ exports[`<Login/> should show email error message WHEN signin has failed because
                   textContentType=\\"emailAddress\\"
 -                 value=\\"\\"
 +                 value=\\"not_valid_email@gmail\\"
-+               />
-+             </View>
-+           </View>
-+           <View
+                />
+              </View>
+            </View>
+            <View
 +             numberOfSpaces={2}
 +             style={
 +               Array [
@@ -197,7 +209,7 @@ exports[`<Login/> should show email error message WHEN signin has failed because
 +               ]
 +             }
 +             testID=\\"input-error-top-spacer\\"
-            />
++           />
 +           <View
 +             style={
 +               Array [
@@ -218,7 +230,7 @@ exports[`<Login/> should show email error message WHEN signin has failed because
 +               <Text>
 +                 rule-icon-warn-SVG-Mock
 +               </Text>
-              </View>
++             </View>
 +             <View
 +               numberOfSpaces={1}
 +               style={
@@ -246,12 +258,14 @@ exports[`<Login/> should show email error message WHEN signin has failed because
 +             >
 +               L'e-mail renseigné est incorrect. Exemple de format attendu : edith.piaf@email.fr
 +             </Text>
-            </View>
-            <View
++           </View>
++           <View
               numberOfSpaces={6}
               style={
                 Array [
-@@ -521,18 +577,16 @@
+                  Object {
+                    \\"height\\": 24,
+@@ -520,18 +577,16 @@
                       },
                     ]
                   }
@@ -271,7 +285,7 @@ exports[`<Login/> should show email error message WHEN signin has failed because
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -581,13 +635,11 @@
+@@ -580,13 +635,11 @@
               }
             >
               <View
@@ -285,7 +299,7 @@ exports[`<Login/> should show email error message WHEN signin has failed because
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -655,13 +707,11 @@
+@@ -654,13 +707,11 @@
               }
             />
             <View
@@ -334,13 +348,9 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -230,13 +226,75 @@
-                    width={20}
-                  >
-                    <Text>
-                      rightIcon-SVG-Mock
+@@ -234,11 +230,73 @@
                     </Text>
-+                 </View>
+                  </View>
                 </View>
               </View>
             </View>
@@ -355,7 +365,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +             }
 +             testID=\\"input-error-top-spacer\\"
 +           />
-+           <View
+            <View
 +             centered={true}
 +             style={
 +               Array [
@@ -405,11 +415,13 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +             >
 +               Erreur réseau. Tu peux réessayer une fois la connexion réétablie
 +             </Text>
-            </View>
-            <View
++           </View>
++           <View
               numberOfSpaces={7}
               style={
                 Array [
+                  Object {
+                    \\"height\\": 28,
 @@ -311,18 +369,18 @@
                 }
               />
@@ -465,7 +477,19 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -521,18 +579,16 @@
+@@ -486,10 +544,11 @@
+                testID=\\"styled-input-container\\"
+              >
+                <TextInput
+                  accessibilityLabel=\\"Mot de passe\\"
+                  accessible={true}
++                 aria-describedby=\\"testUuidV4\\"
+                  editable={true}
+                  nativeID=\\"testUuidV4\\"
+                  onBlur={[Function onBlur]}
+                  onChangeText={[Function safeSetState]}
+                  onFocus={[Function onFocus]}
+@@ -520,18 +579,16 @@
                       },
                     ]
                   }
@@ -485,7 +509,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -581,13 +637,11 @@
+@@ -580,13 +637,11 @@
               }
             >
               <View
@@ -499,7 +523,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -655,24 +709,22 @@
+@@ -654,24 +709,22 @@
               }
             />
             <View
@@ -526,7 +550,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
                   \\"minHeight\\": 40,
-@@ -691,11 +743,11 @@
+@@ -690,11 +743,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -574,13 +598,9 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -230,13 +226,75 @@
-                    width={20}
-                  >
-                    <Text>
-                      rightIcon-SVG-Mock
+@@ -234,11 +230,73 @@
                     </Text>
-+                 </View>
+                  </View>
                 </View>
               </View>
             </View>
@@ -595,7 +615,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +             }
 +             testID=\\"input-error-top-spacer\\"
 +           />
-+           <View
+            <View
 +             centered={true}
 +             style={
 +               Array [
@@ -645,11 +665,13 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
 +             >
 +               E-mail ou mot de passe incorrect
 +             </Text>
-            </View>
-            <View
++           </View>
++           <View
               numberOfSpaces={7}
               style={
                 Array [
+                  Object {
+                    \\"height\\": 28,
 @@ -311,18 +369,18 @@
                 }
               />
@@ -705,7 +727,19 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -521,18 +579,16 @@
+@@ -486,10 +544,11 @@
+                testID=\\"styled-input-container\\"
+              >
+                <TextInput
+                  accessibilityLabel=\\"Mot de passe\\"
+                  accessible={true}
++                 aria-describedby=\\"testUuidV4\\"
+                  editable={true}
+                  nativeID=\\"testUuidV4\\"
+                  onBlur={[Function onBlur]}
+                  onChangeText={[Function safeSetState]}
+                  onFocus={[Function onFocus]}
+@@ -520,18 +579,16 @@
                       },
                     ]
                   }
@@ -725,7 +759,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -581,13 +637,11 @@
+@@ -580,13 +637,11 @@
               }
             >
               <View
@@ -739,7 +773,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -655,24 +709,22 @@
+@@ -654,24 +709,22 @@
               }
             />
             <View
@@ -766,7 +800,7 @@ exports[`<Login/> should show error message and error inputs WHEN signin has fai
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
                   \\"minHeight\\": 40,
-@@ -691,11 +743,11 @@
+@@ -690,11 +743,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={
@@ -814,13 +848,9 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -230,13 +226,75 @@
-                    width={20}
-                  >
-                    <Text>
-                      rightIcon-SVG-Mock
+@@ -234,11 +230,73 @@
                     </Text>
-+                 </View>
+                  </View>
                 </View>
               </View>
             </View>
@@ -835,7 +865,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 +             }
 +             testID=\\"input-error-top-spacer\\"
 +           />
-+           <View
+            <View
 +             centered={true}
 +             style={
 +               Array [
@@ -885,11 +915,13 @@ exports[`<Login/> should show specific error message when signin rate limit is e
 +             >
 +               Nombre de tentatives dépassé. Réessaye dans 1 minute
 +             </Text>
-            </View>
-            <View
++           </View>
++           <View
               numberOfSpaces={7}
               style={
                 Array [
+                  Object {
+                    \\"height\\": 28,
 @@ -311,18 +369,18 @@
                 }
               />
@@ -945,7 +977,19 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                       \\"borderWidth\\": 1,
                       \\"flexDirection\\": \\"row\\",
                       \\"height\\": 40,
-@@ -521,18 +579,16 @@
+@@ -486,10 +544,11 @@
+                testID=\\"styled-input-container\\"
+              >
+                <TextInput
+                  accessibilityLabel=\\"Mot de passe\\"
+                  accessible={true}
++                 aria-describedby=\\"testUuidV4\\"
+                  editable={true}
+                  nativeID=\\"testUuidV4\\"
+                  onBlur={[Function onBlur]}
+                  onChangeText={[Function safeSetState]}
+                  onFocus={[Function onFocus]}
+@@ -520,18 +579,16 @@
                       },
                     ]
                   }
@@ -965,7 +1009,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   onResponderMove={[Function onResponderMove]}
                   onResponderRelease={[Function onResponderRelease]}
                   onResponderTerminate={[Function onResponderTerminate]}
-@@ -581,13 +637,11 @@
+@@ -580,13 +637,11 @@
               }
             >
               <View
@@ -979,7 +1023,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                 onResponderMove={[Function onResponderMove]}
                 onResponderRelease={[Function onResponderRelease]}
                 onResponderTerminate={[Function onResponderTerminate]}
-@@ -655,24 +709,22 @@
+@@ -654,24 +709,22 @@
               }
             />
             <View
@@ -1006,7 +1050,7 @@ exports[`<Login/> should show specific error message when signin rate limit is e
                   \\"justifyContent\\": \\"center\\",
                   \\"maxWidth\\": 500,
                   \\"minHeight\\": 40,
-@@ -691,11 +743,11 @@
+@@ -690,11 +743,11 @@
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
                 style={

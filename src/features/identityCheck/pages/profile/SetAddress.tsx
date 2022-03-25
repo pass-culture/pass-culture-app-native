@@ -92,6 +92,8 @@ export const SetAddress = () => {
     ? t`Recherche et sélectionne ton adresse`
     : t`Entre ton adresse`
 
+  const hasError = !isValidAddress && query.length > 0
+
   const submitAddress = () => {
     if (!enabled) return
     dispatch({ type: 'SET_ADDRESS', payload: selectedAddress || query })
@@ -115,12 +117,12 @@ export const SetAddress = () => {
             placeholder={t`Ex\u00a0: 34 avenue de l'Opéra`}
             textContentType="addressState"
             accessibilityLabel={t`Entrée pour l'adresse`}
-            accessibilityDescribedBy={adressInputErrorId}
+            accessibilityDescribedBy={hasError ? adressInputErrorId : undefined}
             onPressRightIcon={resetSearch}
             returnKeyType="next"
           />
           <InputError
-            visible={!isValidAddress && query.length > 0}
+            visible={hasError}
             messageId={t`Ton adresse ne doit pas contenir de caractères spéciaux ou n'être composée que d'espaces.`}
             numberOfSpacesTop={2}
             relatedInputId={adressInputErrorId}

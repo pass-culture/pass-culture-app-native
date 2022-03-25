@@ -175,7 +175,7 @@ export const Profile: React.FC = () => {
                 title={t`Partager ma position`}
                 active={isGeolocSwitchActive}
                 accessibilityLabel={t`Interrupteur géolocalisation`}
-                accessibilityDescribedBy={locationActivationErrorId}
+                accessibilityDescribedBy={positionError ? locationActivationErrorId : undefined}
                 toggle={() => {
                   switchGeolocation()
                   debouncedLogLocationToggle(!isGeolocSwitchActive)

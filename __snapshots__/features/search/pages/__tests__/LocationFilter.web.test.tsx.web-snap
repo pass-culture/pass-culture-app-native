@@ -238,7 +238,6 @@ Object {
                       style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; padding-right: 8px; padding-left: 8px;"
                     >
                       <div
-                        aria-describedby="testUuidV4"
                         class="css-text-901oao css-textMultiLine-cens5h"
                         dir="auto"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
@@ -562,7 +561,6 @@ Object {
                     style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; padding-right: 8px; padding-left: 8px;"
                   >
                     <div
-                      aria-describedby="testUuidV4"
                       class="css-text-901oao css-textMultiLine-cens5h"
                       dir="auto"
                       style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"

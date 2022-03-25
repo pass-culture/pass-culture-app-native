@@ -105,7 +105,7 @@ export const ReinitializePassword = () => {
             placeholder={t`Confirmer le mot de passe`}
             onSubmitEditing={submitPassword}
             isRequiredField
-            accessibilityDescribedBy={passwordErrorId}
+            accessibilityDescribedBy={displayNotMatchingError ? passwordErrorId : undefined}
           />
           <Spacer.Column numberOfSpaces={2} />
           <InputError

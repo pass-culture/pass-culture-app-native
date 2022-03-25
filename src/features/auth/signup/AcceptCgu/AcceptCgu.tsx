@@ -138,7 +138,7 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
           onPress={onSubmit}
           isLoading={isDoingReCaptchaChallenge || isFetching}
           disabled={disabled}
-          accessibilityDescribedBy={checkCGUErrorId}
+          accessibilityDescribedBy={errorMessage ? checkCGUErrorId : undefined}
         />
         {!!errorMessage && (
           <InputError

@@ -171,7 +171,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           isError={hasEmailError || !!errorMessage}
           isRequiredField
           autoFocus
-          accessibilityDescribedBy={emailInputErrorId}
+          accessibilityDescribedBy={hasEmailError ? emailInputErrorId : undefined}
         />
         <InputError
           visible={hasEmailError}
@@ -189,7 +189,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           textContentType="password"
           onSubmitEditing={onSubmit}
           isRequiredField
-          accessibilityDescribedBy={passwordInputErrorId}
+          accessibilityDescribedBy={errorMessage ? passwordInputErrorId : undefined}
         />
         <Spacer.Column numberOfSpaces={7} />
         <ButtonContainer>

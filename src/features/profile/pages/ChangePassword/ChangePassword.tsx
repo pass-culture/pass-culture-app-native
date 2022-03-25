@@ -108,7 +108,7 @@ export function ChangePassword() {
             onChangeText={setCurrentPassword}
             placeholder={t`Ton mot de passe actuel`}
             isRequiredField
-            accessibilityDescribedBy={passwordInputErrorId}
+            accessibilityDescribedBy={hasError ? passwordInputErrorId : undefined}
           />
           <InputError
             visible={hasError}
@@ -138,7 +138,9 @@ export function ChangePassword() {
               setTimeout(() => scrollRef?.current?.scrollToEnd({ animated: true }), 60)
             }}
             isRequiredField
-            accessibilityDescribedBy={passwordConfirmationErrorId}
+            accessibilityDescribedBy={
+              displayNotMatchingError ? passwordConfirmationErrorId : undefined
+            }
           />
           <InputError
             visible={displayNotMatchingError}
