@@ -19,6 +19,7 @@ SocialNetwork.args = {
 
 export const Categories = Icons.bind({})
 Categories.args = {
+  isBicolor: true,
   icons: CategoryIcon,
 }
 
