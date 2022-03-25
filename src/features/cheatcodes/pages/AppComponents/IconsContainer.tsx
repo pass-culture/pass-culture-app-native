@@ -16,7 +16,7 @@ export const IconsContainer: ComponentStory<
 > = ({ title, icons, isBicolor = false }) => (
   <React.Fragment>
     {!!title && <Text>{title}</Text>}
-    {Array.from(Object.entries(icons)).map(([name, icon]) => {
+    {Object.entries(icons).map(([name, icon]) => {
       const IconComponent = styled(icon)({})
       const IconComponentBicolor = styled(icon).attrs(({ theme }) => ({
         color: theme.colors.primary,
@@ -25,7 +25,7 @@ export const IconsContainer: ComponentStory<
       return (
         <AlignedText key={name}>
           <IconComponent />
-          {isBicolor ? <IconComponentBicolor /> : null}
+          {!!isBicolor && <IconComponentBicolor />}
           <Text> - {name}</Text>
         </AlignedText>
       )

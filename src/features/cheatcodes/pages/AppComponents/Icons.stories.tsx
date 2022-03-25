@@ -4,6 +4,7 @@ import {
   SocialNetworkIcons,
   TertiaryAndSmallerIcons,
   UnconventionalIcons,
+  VenueTypesIcons,
 } from 'features/cheatcodes/pages/AppComponents/iconsExports'
 import CategoryIcon from 'ui/svg/icons/categories/bicolor'
 import { SMALLER_ICON_SIZE, STANDARD_ICON_SIZE } from 'ui/theme/constants'
@@ -21,6 +22,11 @@ export const Categories = Icons.bind({})
 Categories.args = {
   isBicolor: true,
   icons: CategoryIcon,
+}
+
+export const VenueTypes = Icons.bind({})
+VenueTypes.args = {
+  icons: VenueTypesIcons,
 }
 
 export const SecondaryAndBigger = Icons.bind({})

@@ -1,17 +1,14 @@
 /* eslint-disable react-native/no-raw-text */
 import React, { FunctionComponent } from 'react'
-import { View, Text } from 'react-native'
-import styled from 'styled-components/native'
 
-import { VenueTypeCodeKey } from 'api/gen/api'
 import { IconsContainer } from 'features/cheatcodes/pages/AppComponents/IconsContainer'
 import {
   SecondaryAndBiggerIcons,
   SocialNetworkIcons,
   TertiaryAndSmallerIcons,
   UnconventionalIcons,
+  VenueTypesIcons,
 } from 'features/cheatcodes/pages/AppComponents/iconsExports'
-import { mapVenueTypeToIcon, VenueTypeCode } from 'libs/parsers'
 import CategoryIcon from 'ui/svg/icons/categories/bicolor'
 import { Spacer } from 'ui/theme'
 import { SMALLER_ICON_SIZE, STANDARD_ICON_SIZE } from 'ui/theme/constants'
@@ -34,11 +31,6 @@ export const Icons: FunctionComponent = () => {
   )
 }
 
-const AlignedText = styled(View)({
-  flexDirection: 'row',
-  alignItems: 'center',
-})
-
 const SocialNetwork = () => {
   return <IconsContainer icons={SocialNetworkIcons} title="Social network" />
 }
@@ -46,29 +38,8 @@ const SocialNetwork = () => {
 const Category = () => {
   return <IconsContainer isBicolor title="Categories" icons={CategoryIcon} />
 }
-
-// TODO(PC-14164): use IconsContainer
 const VenueTypes = () => {
-  return (
-    <React.Fragment>
-      <Text>{'Venue Types'}</Text>
-      {Object.values(VenueTypeCodeKey).map((venueType) => {
-        if (venueType === VenueTypeCodeKey.ADMINISTRATIVE) return
-        const VenueTypeIcon = mapVenueTypeToIcon(venueType as VenueTypeCode)
-        const StyledIcon = styled(VenueTypeIcon).attrs(({ theme }) => ({
-          color: theme.colors.primary,
-          size: theme.icons.sizes.standard,
-        }))``
-        return (
-          <AlignedText key={venueType}>
-            <StyledIcon />
-            <Text> - {venueType} </Text>
-          </AlignedText>
-        )
-      })}
-      <Text>{'\n'}</Text>
-    </React.Fragment>
-  )
+  return <IconsContainer title="VenueTypes" icons={VenueTypesIcons} />
 }
 
 const TertiaryAndSmaller = () => {
