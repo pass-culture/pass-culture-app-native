@@ -1,14 +1,12 @@
-import { useWindowDimensions } from 'react-native'
+import { useDimensions } from '@react-native-community/hooks'
 
 // we are in a .web file
 // eslint-disable-next-line no-restricted-imports
 import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
 
-// is usefull to avoid detecting landscape mode while keyboard is open on portrait mode
-const landscapeModeMargin = 30
-
 export const useIsLandscapePosition = (): boolean => {
-  const { width, height } = useWindowDimensions()
+  const { width: screenWidth, height: screenHeight } = useDimensions().screen
+
   if (isDesktopDeviceDetectOnWeb) return false
-  return width > height + landscapeModeMargin
+  return screenWidth > screenHeight
 }
