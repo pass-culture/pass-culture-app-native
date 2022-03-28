@@ -20,7 +20,7 @@ import { useUtmParams } from 'libs/utm'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { Badge } from 'ui/components/Badge'
 import { Banner } from 'ui/components/Banner'
-import { ProgressBar } from 'ui/components/bars/ProgressBar'
+import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
@@ -660,27 +660,27 @@ const StyledScrollView = styled(ScrollView)(({ theme }) => ({
   backgroundColor: theme.colors.white,
 }))
 
-const PrimaryProgressBar = styled(ProgressBar).attrs(({ theme }) => ({
+const PrimaryProgressBar = styled(AnimatedProgressBar).attrs(({ theme }) => ({
   color: theme.colors.primary,
   icon: Email,
   progress: 0.5,
 }))``
-const PrimaryDarkProgressBar = styled(ProgressBar).attrs(({ theme }) => ({
+const PrimaryDarkProgressBar = styled(AnimatedProgressBar).attrs(({ theme }) => ({
   color: theme.colors.primaryDark,
   icon: Email,
   progress: 0.3,
 }))``
-const SecondaryProgressBar = styled(ProgressBar).attrs(({ theme }) => ({
+const SecondaryProgressBar = styled(AnimatedProgressBar).attrs(({ theme }) => ({
   color: theme.colors.secondary,
   icon: Email,
   progress: 1,
 }))``
-const TertiaryProgressBar = styled(ProgressBar).attrs(({ theme }) => ({
+const TertiaryProgressBar = styled(AnimatedProgressBar).attrs(({ theme }) => ({
   color: theme.colors.tertiary,
   icon: Email,
   progress: 1,
 }))``
-const ValidProgressBar = styled(ProgressBar).attrs(({ theme }) => ({
+const ValidProgressBar = styled(AnimatedProgressBar).attrs(({ theme }) => ({
   color: theme.colors.greenValid,
   icon: Email,
   progress: 0,

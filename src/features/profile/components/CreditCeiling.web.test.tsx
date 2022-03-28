@@ -42,7 +42,7 @@ describe('CreditCeiling', () => {
         isUserUnderageBeneficiary={false}
       />
     )
-    const progressBar = getByTestId('progress-bar')
+    const progressBar = getByTestId('animated-progress-bar')
     expect(progressBar.style.backgroundColor).toBe('rgb(105, 106, 111)')
   })
 })

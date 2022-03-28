@@ -25,7 +25,7 @@ describe('BeneficiaryCeilings', () => {
       <BeneficiaryCeilings domainsCredit={domains_credit_v1} isUserUnderageBeneficiary={false} />
     )
 
-    const progressBars = getAllByTestId('progress-bar')
+    const progressBars = getAllByTestId('animated-progress-bar')
     expect(progressBars.length).toBe(3)
 
     const ceilingQuestion = getByText(
@@ -39,7 +39,7 @@ describe('BeneficiaryCeilings', () => {
       <BeneficiaryCeilings domainsCredit={domains_credit_v2} isUserUnderageBeneficiary={false} />
     )
 
-    const progressBars = getAllByTestId('progress-bar')
+    const progressBars = getAllByTestId('animated-progress-bar')
     expect(progressBars.length).toBe(2)
 
     const ceilingQuestion = getByText('Pourquoi les biens numériques sont-ils limités ?')
@@ -54,7 +54,7 @@ describe('BeneficiaryCeilings', () => {
       />
     )
 
-    const progressBars = getAllByTestId('progress-bar')
+    const progressBars = getAllByTestId('animated-progress-bar')
     expect(progressBars.length).toBe(1)
 
     const ceilingQuestion = queryByText('Pourquoi les biens numériques sont-ils limités ?')

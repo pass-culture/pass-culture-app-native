@@ -255,7 +255,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
       >
         <div
           className="css-view-1dbjc4n"
-          data-testid="progress-bar"
+          data-testid="animated-progress-bar"
           style={
             Object {
               "WebkitBoxFlex": 1,

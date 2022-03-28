@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProgressBar should render properly 1`] = `
+exports[`AnimatedProgressBar should render properly 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
@@ -31,7 +31,7 @@ Object {
         >
           <div
             class="css-view-1dbjc4n"
-            data-testid="progress-bar"
+            data-testid="animated-progress-bar"
             style="background-color: rgb(235, 0, 85); flex-basis: 0px; flex-grow: 0.5; flex-shrink: 1; left: 0px; opacity: 1; position: relative;"
           />
         </div>
@@ -65,7 +65,7 @@ Object {
       >
         <div
           class="css-view-1dbjc4n"
-          data-testid="progress-bar"
+          data-testid="animated-progress-bar"
           style="background-color: rgb(235, 0, 85); flex-basis: 0px; flex-grow: 0.5; flex-shrink: 1; left: 0px; opacity: 1; position: relative;"
         />
       </div>

@@ -6,14 +6,16 @@ import { Email } from 'ui/svg/icons/Email'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
-import { ProgressBar } from './ProgressBar'
+import { AnimatedProgressBar } from './AnimatedProgressBar'
 
 export default {
-  title: 'ui/ProgressBar',
-  component: ProgressBar,
-} as ComponentMeta<typeof ProgressBar>
+  title: 'ui/AnimatedProgressBar',
+  component: AnimatedProgressBar,
+} as ComponentMeta<typeof AnimatedProgressBar>
 
-const Template: ComponentStory<typeof ProgressBar> = (props) => <ProgressBar {...props} />
+const Template: ComponentStory<typeof AnimatedProgressBar> = (props) => (
+  <AnimatedProgressBar {...props} />
+)
 
 export const Default = Template.bind({})
 Default.args = {

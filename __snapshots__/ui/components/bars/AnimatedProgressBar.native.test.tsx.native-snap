@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ProgressBar should render properly 1`] = `
+exports[`AnimatedProgressBar should render properly 1`] = `
 <View
   style={
     Array [
@@ -80,7 +80,7 @@ exports[`ProgressBar should render properly 1`] = `
           "position": "relative",
         }
       }
-      testID="progress-bar"
+      testID="animated-progress-bar"
     />
   </View>
 </View>

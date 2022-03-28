@@ -94,7 +94,7 @@ exports[`CreditCeiling should render properly 1`] = `
             "position": "relative",
           }
         }
-        testID="progress-bar"
+        testID="animated-progress-bar"
       />
     </View>
   </View>

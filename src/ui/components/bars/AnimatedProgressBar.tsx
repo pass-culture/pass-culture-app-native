@@ -16,7 +16,7 @@ interface ProgressBarProps {
   children?: never
 }
 
-const ProgressBarComponent: React.FC<ProgressBarProps> = ({
+const AnimatedProgressBarComponent: React.FC<ProgressBarProps> = ({
   color,
   progress,
   icon: Icon,
@@ -68,7 +68,7 @@ const ProgressBarComponent: React.FC<ProgressBarProps> = ({
           progress={progress}
           backgroundColor={color}
           barWidth={barWidth}
-          testID="progress-bar"
+          testID="animated-progress-bar"
           useNativeDriver={true}
           duration={1000}
           easing={'ease-in-out'}
@@ -78,7 +78,7 @@ const ProgressBarComponent: React.FC<ProgressBarProps> = ({
   )
 }
 
-export const ProgressBar = memo(ProgressBarComponent)
+export const AnimatedProgressBar = memo(AnimatedProgressBarComponent)
 
 const Container = styled.View({
   flexDirection: 'row',
