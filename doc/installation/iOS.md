@@ -26,11 +26,11 @@ In order to launch the app in your Apple device, you need to follow these steps:
 Download the iOS certificates to your computer:
 
 1. Create an Apple Developer passCulture account (https://developer.apple.com/).
-2. Connect to the Apple Developper account with Xcode.
+2. Connect to the Apple Developer account with Xcode.
 3. Get invited to the Apple Developer group by an Admin.
 4. Download the private key via fastlane:
    `bundle exec fastlane ios download_certificates --env testing`
-5. Add the URL of the private certificates git repository named "pass-culture-app-native-certificates".
+5. When required, use the git ssh URL of the private certificates repository `pass-culture-app-native-certificates`.
 6. Get the `match repo passphrase` on 1password in the "Tech" vault.
 
 (Only the first time) Set arbitrary Version and BuildVersion numbers of the App in Xcode at PassCulture > General > Identity > Build
@@ -48,7 +48,7 @@ Connect your device to the computer and run `yarn ios:testing --device` or use t
 
 - For Xcode Simulator
 
-Run `yarn ios:testing` or use the Xcode interface. More info [here][3].
+Run `yarn ios:testing` or use the Xcode interface. More info [here][3].
 This will also start the metro server. If not, run `yarn start` in another tab.
 
 [1]: ./setup.md
