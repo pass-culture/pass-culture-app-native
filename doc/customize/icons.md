@@ -135,6 +135,8 @@ Filled (tertiary and quaternary) pictograms should be imported with a default si
 
 ## Bicolor pictograms
 
+The offset value of the Stop component should always be specified (for valid HTML) and should be in percentage for uniformity.
+
 ```jsx
 import React from 'react'
 import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg'

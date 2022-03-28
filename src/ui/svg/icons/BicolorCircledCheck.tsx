@@ -31,8 +31,8 @@ const BicolorCircledCheckSvg: React.FC<BicolorIconInterface> = ({
           x2="60.4027%"
           y2="99.9135%"
           gradientUnits="userSpaceOnUse">
-          <Stop stopColor={color2} />
-          <Stop offset="1" stopColor={color} />
+          <Stop offset="0%" stopColor={color2} />
+          <Stop offset="100%" stopColor={color} />
         </LinearGradient>
       </Defs>
     </Svg>

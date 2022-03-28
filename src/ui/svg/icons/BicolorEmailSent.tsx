@@ -34,8 +34,8 @@ const BicolorEmailSentSvg: React.FC<BicolorIconInterface> = ({ size, color, colo
           y1="31.0569%"
           y2="94.2178%"
           gradientUnits="userSpaceOnUse">
-          <Stop stopColor={color2} />
-          <Stop offset="1" stopColor={color} />
+          <Stop offset="0%" stopColor={color2} />
+          <Stop offset="100%" stopColor={color} />
         </LinearGradient>
         <LinearGradient
           id={gradientId}
@@ -44,8 +44,8 @@ const BicolorEmailSentSvg: React.FC<BicolorIconInterface> = ({ size, color, colo
           y1="31.0569%"
           y2="94.2178%"
           gradientUnits="userSpaceOnUse">
-          <Stop stopColor={color2} />
-          <Stop offset="1" stopColor={color} />
+          <Stop offset="0%" stopColor={color2} />
+          <Stop offset="100%" stopColor={color} />
         </LinearGradient>
         <LinearGradient
           id={gradientId}
@@ -54,8 +54,8 @@ const BicolorEmailSentSvg: React.FC<BicolorIconInterface> = ({ size, color, colo
           y1="31.0569%"
           y2="94.2178%"
           gradientUnits="userSpaceOnUse">
-          <Stop stopColor={color2} />
-          <Stop offset="1" stopColor={color} />
+          <Stop offset="0%" stopColor={color2} />
+          <Stop offset="100%" stopColor={color} />
         </LinearGradient>
       </Defs>
     </Svg>

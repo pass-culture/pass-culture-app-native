@@ -30,8 +30,8 @@ const NotMemoizedBicolorArrowRight: React.FC<BicolorIconInterface> = (props) => 
           x2="16.2592"
           y2="-1.52288"
           gradientUnits="userSpaceOnUse">
-          <Stop stopColor={color} />
-          <Stop offset="1" stopColor={color2} />
+          <Stop offset="0%" stopColor={color} />
+          <Stop offset="100%" stopColor={color2} />
         </LinearGradient>
       </Defs>
     </Svg>
