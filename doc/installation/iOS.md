@@ -12,7 +12,7 @@ Now you can install Cocoapods with `bundle install`. This will install the gems.
 
 To install the pods, and create the Pods folder, run:
 
-- `bundle exec pod install` inside the folder `/ios`
+- `bundle exec pod install` inside the folder `ios`
 - you may be asked to run `bundle exec pod repo update`
 
 ### 🔥 Firebase setup
