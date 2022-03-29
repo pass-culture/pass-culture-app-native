@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import { ButtonHTMLAttributes, DetailedHTMLProps, RefAttributes } from 'react'
 import { TouchableOpacityProps } from 'react-native'
 import { InterpolationFunction, ThemedStyledProps } from 'styled-components'
@@ -34,12 +33,6 @@ type ScrollButtonForNotTouchDevicePropsStylesWeb = InterpolationFunction<
     DefaultTheme
   >
 >
-
-export const scrollButtonAccessibilityLabel = ({ horizontalAlign }: HorizontalAlignPropStyle) => {
-  return horizontalAlign === 'left'
-    ? t`Voir les propositions précédentes`
-    : t`Voir les propositions suivantes`
-}
 
 export const scrollButtonStyles: ScrollButtonForNotTouchDevicePropsStylesNative = ({
   theme,
