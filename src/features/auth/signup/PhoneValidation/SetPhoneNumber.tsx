@@ -207,7 +207,6 @@ const Paragraphe = styled.Text({
 const InputContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  justifyContent: 'center',
   width: '100%',
   maxWidth: getSpacing(90),
   marginHorizontal: theme.isMobileViewport ? undefined : 'auto',
