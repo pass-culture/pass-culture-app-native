@@ -14,18 +14,21 @@ interface RadioButtonProps {
 }
 
 export function RadioButton(props: RadioButtonProps) {
+  const selected = props.selectedValue === props.id
   return (
     <React.Fragment>
       <PressableContainer
         key={props.id}
         onPress={() => props.onSelect(props.id)}
+        accessibilityRole="radio"
+        accessibilityState={{ checked: selected }}
         testID={`radio-button-${props.id}`}>
         <Spacer.Flex flex={0.9}>
-          <Title match={props.selectedValue === props.id}>{props.title}</Title>
+          <Title match={selected}>{props.title}</Title>
           {!!props.description && <Subtitle>{props.description}</Subtitle>}
         </Spacer.Flex>
 
-        <Spacer.Flex flex={0.1}>{props.selectedValue === props.id && <Validate />}</Spacer.Flex>
+        <Spacer.Flex flex={0.1}>{!!selected && <Validate />}</Spacer.Flex>
       </PressableContainer>
     </React.Fragment>
   )

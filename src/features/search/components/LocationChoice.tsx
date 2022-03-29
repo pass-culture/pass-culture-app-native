@@ -29,7 +29,11 @@ export const LocationChoice: React.FC<Props> = (props) => {
   const selected = props.isSelected ?? isSelected
 
   return (
-    <Container onPress={onPress} testID={`locationChoice-${testID}`}>
+    <Container
+      onPress={onPress}
+      accessibilityRole="radio"
+      accessibilityState={{ checked: selected }}
+      testID={`locationChoice-${testID}`}>
       <FirstPart>
         <Spacer.Row numberOfSpaces={3} />
         <StyledIcon />

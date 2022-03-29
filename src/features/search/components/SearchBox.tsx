@@ -89,7 +89,7 @@ export const SearchBox: React.FC = () => {
         inputHeight="regular"
         LeftIcon={() => <LeftIcon onPressArrowBack={onPressArrowBack} />}
         onSubmitEditing={onSubmitQuery}
-        accessibilityLabel={t`Barre de recherche des offres`}
+        accessibilityLabel={t`Rechercher un artiste, titre, lieu...`}
         onPressRightIcon={resetSearch}
         accessibilityDescribedBy={accessibilityDescribedBy}
       />
