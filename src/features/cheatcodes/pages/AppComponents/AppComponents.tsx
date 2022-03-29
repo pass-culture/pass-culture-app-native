@@ -10,6 +10,7 @@ import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicke
 import { Icons } from 'features/cheatcodes/pages/AppComponents/Icons'
 import { Illustrations } from 'features/cheatcodes/pages/AppComponents/Illustrations'
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
+import { CulturalSurveyProgressBar } from 'features/culturalSurvey/components/CulturalSurveyProgressBar'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
@@ -439,6 +440,14 @@ export const AppComponents: FunctionComponent = () => {
             <PrimaryProgressBar />
             <TertiaryProgressBar />
           </View>
+        </GreyView>
+        <Spacer.Column numberOfSpaces={4} />
+        <GreyView>
+          <Text> Cultural Survey progress bars </Text>
+          <Spacer.Column numberOfSpaces={3} />
+          <CulturalSurveyProgressBar progress={0.2} />
+          <CulturalSurveyProgressBar progress={0.5} />
+          <CulturalSurveyProgressBar progress={1} />
         </GreyView>
         <Spacer.Column numberOfSpaces={4} />
         <View>
