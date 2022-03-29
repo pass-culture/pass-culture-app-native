@@ -45,7 +45,7 @@ export const SetBirthday: FunctionComponent<PreValidationSignupStepProps> = (pro
         <ButtonTertiary
           icon={InfoPlain}
           wording={t`Pour quelle raison\u00a0?`}
-          accessibilityLabel={t`Pourquoi me demande-t-on ma date de naissance\u00a0?`}
+          accessibilityLabel={t`Pour quelle raison me demande-t-on ma date de naissance\u00a0?`}
           onPress={onPressWhy}
         />
         <Spacer.Column numberOfSpaces={2} />

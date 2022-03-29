@@ -28,3 +28,7 @@ export interface RectangleIconInterface extends IconSharedProperties {
   width?: number | string
   height?: number | string
 }
+
+export interface AccessibleRectangleIconInterface extends RectangleIconInterface {
+  accessibilityLabel?: string
+}
