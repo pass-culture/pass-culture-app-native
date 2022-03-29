@@ -57,7 +57,7 @@ export const SetName = () => {
             placeholder={t`Ton prénom`}
             textContentType="username"
             isRequiredField
-            accessibilityDescribedBy={firstNameHasError ? firstNameInputErrorId : undefined}
+            accessibilityDescribedBy={firstNameInputErrorId}
             {...accessibilityAndTestId(t`Entrée pour le prénom`)}
           />
           <InputError
@@ -74,7 +74,7 @@ export const SetName = () => {
             placeholder={t`Ton nom`}
             textContentType="username"
             isRequiredField
-            accessibilityDescribedBy={lastNameHasError ? lastNameInputErrorId : undefined}
+            accessibilityDescribedBy={lastNameInputErrorId}
             {...accessibilityAndTestId(t`Entrée pour le nom`)}
           />
           <InputError

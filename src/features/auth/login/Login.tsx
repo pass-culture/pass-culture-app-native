@@ -154,15 +154,13 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         {...rightIconProps}
       />
       <Form.MaxWidth>
-        {!!errorMessage && (
-          <InputError
-            visible
-            messageId={errorMessage}
-            numberOfSpacesTop={5}
-            centered
-            relatedInputId={passwordInputErrorId}
-          />
-        )}
+        <InputError
+          visible={!!errorMessage}
+          messageId={errorMessage}
+          numberOfSpacesTop={5}
+          centered
+          relatedInputId={passwordInputErrorId}
+        />
         <Spacer.Column numberOfSpaces={7} />
         <EmailInput
           label={t`Adresse e-mail`}
@@ -171,7 +169,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           isError={hasEmailError || !!errorMessage}
           isRequiredField
           autoFocus
-          accessibilityDescribedBy={hasEmailError ? emailInputErrorId : undefined}
+          accessibilityDescribedBy={emailInputErrorId}
         />
         <InputError
           visible={hasEmailError}
@@ -189,7 +187,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
           textContentType="password"
           onSubmitEditing={onSubmit}
           isRequiredField
-          accessibilityDescribedBy={errorMessage ? passwordInputErrorId : undefined}
+          accessibilityDescribedBy={passwordInputErrorId}
         />
         <Spacer.Column numberOfSpaces={7} />
         <ButtonContainer>

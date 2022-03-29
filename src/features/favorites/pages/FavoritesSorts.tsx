@@ -94,9 +94,11 @@ export const FavoritesSorts: React.FC = () => {
                   <Spacer.Flex />
                   {!!isSelected && <ValidatePrimary />}
                 </LabelContainer>
-                {sortBy === 'AROUND_ME' && positionError ? (
-                  <InputError visible messageId={positionError.message} numberOfSpacesTop={1} />
-                ) : null}
+                <InputError
+                  visible={!!(sortBy === 'AROUND_ME' && positionError)}
+                  messageId={positionError?.message}
+                  numberOfSpacesTop={1}
+                />
               </Li>
             )
           })}

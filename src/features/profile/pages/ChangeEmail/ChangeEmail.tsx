@@ -129,16 +129,14 @@ export function ChangeEmail() {
               disabled={hasCurrentEmailChange}
               isRequiredField
               autoFocus
-              accessibilityDescribedBy={emailErrorMessage ? emailInputErrorId : undefined}
+              accessibilityDescribedBy={emailInputErrorId}
             />
-            {!!emailErrorMessage && (
-              <InputError
-                visible
-                messageId={emailErrorMessage}
-                numberOfSpacesTop={2}
-                relatedInputId={emailInputErrorId}
-              />
-            )}
+            <InputError
+              visible={!!emailErrorMessage}
+              messageId={emailErrorMessage}
+              numberOfSpacesTop={2}
+              relatedInputId={emailInputErrorId}
+            />
             <Spacer.Column numberOfSpaces={4} />
             <PasswordInput
               label={t`Mot de passe`}
@@ -148,16 +146,14 @@ export function ChangeEmail() {
               textContentType="password"
               disabled={hasCurrentEmailChange}
               isRequiredField
-              accessibilityDescribedBy={passwordErrorMessage ? passwordInputErrorId : undefined}
+              accessibilityDescribedBy={passwordInputErrorId}
             />
-            {!!passwordErrorMessage && (
-              <InputError
-                visible
-                messageId={passwordErrorMessage}
-                numberOfSpacesTop={2}
-                relatedInputId={passwordInputErrorId}
-              />
-            )}
+            <InputError
+              visible={!!passwordErrorMessage}
+              messageId={passwordErrorMessage}
+              numberOfSpacesTop={2}
+              relatedInputId={passwordInputErrorId}
+            />
 
             {isMobileViewport && isTouch ? (
               <Spacer.Flex flex={1} />

@@ -174,7 +174,7 @@ export const CalendarPicker: React.FC<Props> = ({
             theme={calendarTheme}
             markedDates={markedDates}
             onDayPress={handleDesktopDateChange}
-            aria-describedby={isMobileDateInvalid ? bookingDateChoiceErrorId : undefined}
+            aria-describedby={bookingDateChoiceErrorId}
             disableAllTouchEventsForDisabledDays
           />
         </CalendarPickerWrapperDesktop>
@@ -188,16 +188,14 @@ export const CalendarPicker: React.FC<Props> = ({
           onPress={onValidate}
           adjustsFontSizeToFit={true}
         />
+        <InputError
+          visible={isMobileDateInvalid}
+          messageId={t`Choisis une date dans le futur`}
+          numberOfSpacesTop={2}
+          relatedInputId={bookingDateChoiceErrorId}
+        />
         {isMobileDateInvalid ? (
-          <React.Fragment>
-            <InputError
-              visible
-              messageId={t`Choisis une date dans le futur`}
-              numberOfSpacesTop={2}
-              relatedInputId={bookingDateChoiceErrorId}
-            />
-            <Spacer.Column numberOfSpaces={1} />
-          </React.Fragment>
+          <Spacer.Column numberOfSpaces={1} />
         ) : (
           <Spacer.Column numberOfSpaces={7} />
         )}

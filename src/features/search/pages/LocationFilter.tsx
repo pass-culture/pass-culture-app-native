@@ -92,16 +92,14 @@ export const LocationFilter: React.FC = () => {
               testID="aroundMe"
               section={LocationType.AROUND_ME}
               onPress={onPressAroundMe}
-              accessibilityDescribedBy={positionError ? locationChoiceErrorId : undefined}
+              accessibilityDescribedBy={locationChoiceErrorId}
             />
-            {!!positionError && (
-              <InputError
-                visible
-                messageId={positionError.message}
-                numberOfSpacesTop={1}
-                relatedInputId={locationChoiceErrorId}
-              />
-            )}
+            <InputError
+              visible={!!positionError}
+              messageId={positionError?.message}
+              numberOfSpacesTop={1}
+              relatedInputId={locationChoiceErrorId}
+            />
             <Spacer.Column numberOfSpaces={6} />
           </Li>
           <Li>

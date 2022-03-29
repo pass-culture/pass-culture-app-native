@@ -138,16 +138,14 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
           onPress={onSubmit}
           isLoading={isDoingReCaptchaChallenge || isFetching}
           disabled={disabled}
-          accessibilityDescribedBy={errorMessage ? checkCGUErrorId : undefined}
+          accessibilityDescribedBy={checkCGUErrorId}
         />
-        {!!errorMessage && (
-          <InputError
-            visible
-            messageId={errorMessage}
-            numberOfSpacesTop={5}
-            relatedInputId={checkCGUErrorId}
-          />
-        )}
+        <InputError
+          visible={!!errorMessage}
+          messageId={errorMessage}
+          numberOfSpacesTop={5}
+          relatedInputId={checkCGUErrorId}
+        />
         <Spacer.Column numberOfSpaces={5} />
       </CardContent>
     </React.Fragment>

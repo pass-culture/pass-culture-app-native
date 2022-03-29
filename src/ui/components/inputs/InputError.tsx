@@ -7,7 +7,7 @@ import { ErrorMessage } from 'ui/web/errors/ErrorMessage'
 import { InputRule } from './rules/InputRule'
 
 interface Props {
-  messageId: string
+  messageId?: string | null
   visible: boolean
   numberOfSpacesTop: number
   centered?: boolean
@@ -15,17 +15,21 @@ interface Props {
 }
 
 export const InputError: FC<Props> = (props) => {
-  return props.visible ? (
+  return (
     <ErrorMessage relatedInputId={props.relatedInputId}>
-      <Spacer.Column testID="input-error-top-spacer" numberOfSpaces={props.numberOfSpacesTop} />
-      <InputRule
-        title={props.messageId}
-        isValid={false}
-        icon={Error}
-        testIdSuffix="warn"
-        iconSize={16}
-        centered={props.centered}
-      />
+      {props.visible && props.messageId ? (
+        <React.Fragment>
+          <Spacer.Column testID="input-error-top-spacer" numberOfSpaces={props.numberOfSpacesTop} />
+          <InputRule
+            title={props.messageId}
+            isValid={false}
+            icon={Error}
+            testIdSuffix="warn"
+            iconSize={16}
+            centered={props.centered}
+          />
+        </React.Fragment>
+      ) : null}
     </ErrorMessage>
-  ) : null
+  )
 }
