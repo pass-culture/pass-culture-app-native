@@ -93,7 +93,7 @@ describe('ConsentSettings', () => {
   it('should go back on press save', async () => {
     const { getByTestId, getByText } = await renderConsentSettings()
 
-    const toggleButton = getByTestId('Interrupteur données de navigation')
+    const toggleButton = getByTestId('Interrupteur')
     fireEvent.press(toggleButton)
 
     await waitFor(() => {
@@ -113,7 +113,7 @@ describe('ConsentSettings', () => {
   })
 })
 
-const TRACKING_SWITCH_TEST_ID = 'Interrupteur données de navigation'
+const TRACKING_SWITCH_TEST_ID = 'Interrupteur'
 const SAVE_BUTTON_TEST_ID = 'Enregistrer'
 
 async function renderConsentSettings() {
@@ -136,12 +136,12 @@ async function renderConsentSettings() {
 
   function expectTrackingSwitchEnabled() {
     const trackingSwitch = renderAPI.getByTestId(TRACKING_SWITCH_TEST_ID)
-    expect(trackingSwitch.parent?.props.accessibilityValue.text).toBe('true')
+    expect(trackingSwitch.parent?.props.accessibilityState.checked).toBeTruthy()
   }
 
   function expectTrackingSwitchDisabled() {
     const trackingSwitch = renderAPI.getByTestId(TRACKING_SWITCH_TEST_ID)
-    expect(trackingSwitch.parent?.props.accessibilityValue.text).toBe('false')
+    expect(trackingSwitch.parent?.props.accessibilityState.checked).toBeFalsy()
   }
 
   function pressSaveButton() {

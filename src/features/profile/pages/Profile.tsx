@@ -172,7 +172,6 @@ export const Profile: React.FC = () => {
                 iconSize={SECTION_ROW_ICON_SIZE}
                 title={t`Partager ma position`}
                 active={isGeolocSwitchActive}
-                accessibilityLabel={t`Interrupteur géolocalisation`}
                 accessibilityDescribedBy={positionError ? locationActivationErrorId : undefined}
                 toggle={() => {
                   switchGeolocation()

@@ -89,7 +89,6 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
         <SectionWithSwitch
           title={t`Autoriser l’utilisation de mes données de navigation`}
           active={isTrackingSwitchActive}
-          accessibilityLabel={t`Interrupteur données de navigation`}
           toggle={toggleTrackingSwitch}
         />
         <Spacer.Flex />

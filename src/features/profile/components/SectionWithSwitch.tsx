@@ -9,7 +9,6 @@ import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
-  accessibilityLabel: string
   accessibilityDescribedBy?: string
   title: string
   iconSize?: number
@@ -27,7 +26,6 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
     icon,
     iconSize,
     title,
-    accessibilityLabel,
     active = false,
     toggle = () => null,
     toggleLabel,
@@ -54,7 +52,6 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
           checkboxID={checkboxID}
           active={active}
           toggle={toggle}
-          accessibilityLabel={accessibilityLabel}
           disabled={disabled}
           accessibilityDescribedBy={accessibilityDescribedBy}
         />
