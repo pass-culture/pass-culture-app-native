@@ -18,7 +18,7 @@ import LottieView from 'libs/lottie'
 import { formatToFrenchDecimal } from 'libs/parsers'
 import { storage } from 'libs/storage'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
-import { ProgressBar } from 'ui/components/bars/ProgressBar'
+import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -76,7 +76,7 @@ export const RecreditBirthdayNotification = () => {
 
       <Spacer.Column numberOfSpaces={4} />
       <ProgressBarContainer>
-        <ProgressBar
+        <AnimatedProgressBar
           progress={1}
           color={uniqueColors.brand}
           icon={CategoryIcon.Spectacles}

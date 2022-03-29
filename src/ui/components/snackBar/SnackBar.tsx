@@ -12,7 +12,7 @@ import { AnimatableProperties, View as AnimatableView } from 'react-native-anima
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
-import { ProgressBar } from 'ui/components/snackBar/ProgressBar'
+import { SnackBarProgressBar } from 'ui/components/snackBar/SnackBarProgressBar'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Close as DefaultClose } from 'ui/svg/icons/Close'
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -98,7 +98,7 @@ const _SnackBar = (props: SnackBarProps) => {
     return (
       <AnimatableView easing="ease" duration={animationDuration} ref={progressBarContainerRef}>
         {isVisible && props.timeout ? (
-          <ProgressBar
+          <SnackBarProgressBar
             color={props.progressBarColor}
             timeout={props.timeout}
             refresher={props.refresher}

@@ -27,7 +27,7 @@ describe('BeneficiaryHeader', () => {
       />
     )
 
-    const progressBars = getAllByTestId('progress-bar')
+    const progressBars = getAllByTestId('animated-progress-bar')
     expect(progressBars.length).toBe(3)
   })
 
@@ -40,7 +40,7 @@ describe('BeneficiaryHeader', () => {
       />
     )
 
-    const progressBars = getAllByTestId('progress-bar')
+    const progressBars = getAllByTestId('animated-progress-bar')
     expect(progressBars.length).toBe(2)
   })
 })

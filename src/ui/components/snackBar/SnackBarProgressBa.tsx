@@ -4,13 +4,13 @@ import styled from 'styled-components/native'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
-import { ProgressBarProps } from './ProgressBar.types'
+import { SnackBarProgressBarProps } from './SnackBarProgressBar.types'
 
 const STEP = 1
 const MAX_NB_OF_STEPS = 100
 const NB_OF_STEPS = MAX_NB_OF_STEPS / STEP
 
-const NotMemoizedProgressBar = (props: ProgressBarProps) => {
+const NotMemoizedProgressBar = (props: SnackBarProgressBarProps) => {
   const [step, setStep] = useState(0)
 
   const intervalDuration = props.timeout / NB_OF_STEPS
@@ -33,7 +33,7 @@ const NotMemoizedProgressBar = (props: ProgressBarProps) => {
   return <StyledView color={props.color} width={step} duration={intervalDuration} />
 }
 
-export const ProgressBar = memo(NotMemoizedProgressBar)
+export const SnackBarProgressBar = memo(NotMemoizedProgressBar)
 
 const StyledView = styled.View<{
   width: number

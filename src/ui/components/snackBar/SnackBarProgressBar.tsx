@@ -6,9 +6,9 @@ import styled from 'styled-components/native'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
-import { ProgressBarProps } from './ProgressBar.types'
+import { SnackBarProgressBarProps } from './SnackBarProgressBar.types'
 
-const NotMemoizedProgressBar = (props: ProgressBarProps) => {
+const NotMemoizedProgressBar = (props: SnackBarProgressBarProps) => {
   const windowWidth = useWindowDimensions().width
 
   const progressBarCompletion = new Animated.Value(0)
@@ -37,7 +37,7 @@ const NotMemoizedProgressBar = (props: ProgressBarProps) => {
   )
 }
 
-export const ProgressBar = memo(NotMemoizedProgressBar)
+export const SnackBarProgressBar = memo(NotMemoizedProgressBar)
 
 const StyledAnimatedView = styled(Animated.View)<{
   backgroundColor: ColorsEnum

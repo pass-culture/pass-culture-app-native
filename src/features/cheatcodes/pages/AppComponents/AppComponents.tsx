@@ -10,6 +10,7 @@ import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicke
 import { Icons } from 'features/cheatcodes/pages/AppComponents/Icons'
 import { Illustrations } from 'features/cheatcodes/pages/AppComponents/Illustrations'
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
+import { CulturalSurveyProgressBar } from 'features/culturalSurvey/components/CulturalSurveyProgressBar'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
@@ -20,7 +21,7 @@ import { useUtmParams } from 'libs/utm'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { Badge } from 'ui/components/Badge'
 import { Banner } from 'ui/components/Banner'
-import { ProgressBar } from 'ui/components/bars/ProgressBar'
+import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
@@ -441,6 +442,14 @@ export const AppComponents: FunctionComponent = () => {
           </View>
         </GreyView>
         <Spacer.Column numberOfSpaces={4} />
+        <GreyView>
+          <Text> Cultural Survey progress bars </Text>
+          <Spacer.Column numberOfSpaces={3} />
+          <CulturalSurveyProgressBar progress={0.2} />
+          <CulturalSurveyProgressBar progress={0.5} />
+          <CulturalSurveyProgressBar progress={1} />
+        </GreyView>
+        <Spacer.Column numberOfSpaces={4} />
         <View>
           <CulturalSurveyCheckbox />
         </View>
@@ -660,27 +669,27 @@ const StyledScrollView = styled(ScrollView)(({ theme }) => ({
   backgroundColor: theme.colors.white,
 }))
 
-const PrimaryProgressBar = styled(ProgressBar).attrs(({ theme }) => ({
+const PrimaryProgressBar = styled(AnimatedProgressBar).attrs(({ theme }) => ({
   color: theme.colors.primary,
   icon: Email,
   progress: 0.5,
 }))``
-const PrimaryDarkProgressBar = styled(ProgressBar).attrs(({ theme }) => ({
+const PrimaryDarkProgressBar = styled(AnimatedProgressBar).attrs(({ theme }) => ({
   color: theme.colors.primaryDark,
   icon: Email,
   progress: 0.3,
 }))``
-const SecondaryProgressBar = styled(ProgressBar).attrs(({ theme }) => ({
+const SecondaryProgressBar = styled(AnimatedProgressBar).attrs(({ theme }) => ({
   color: theme.colors.secondary,
   icon: Email,
   progress: 1,
 }))``
-const TertiaryProgressBar = styled(ProgressBar).attrs(({ theme }) => ({
+const TertiaryProgressBar = styled(AnimatedProgressBar).attrs(({ theme }) => ({
   color: theme.colors.tertiary,
   icon: Email,
   progress: 1,
 }))``
-const ValidProgressBar = styled(ProgressBar).attrs(({ theme }) => ({
+const ValidProgressBar = styled(AnimatedProgressBar).attrs(({ theme }) => ({
   color: theme.colors.greenValid,
   icon: Email,
   progress: 0,

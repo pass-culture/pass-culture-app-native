@@ -13,7 +13,7 @@ import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
-import { ProgressBar } from '../../../ui/components/bars/ProgressBar'
+import { AnimatedProgressBar } from '../../../ui/components/bars/AnimatedProgressBar'
 
 type CreditCeilingProps = {
   amount: number
@@ -78,7 +78,7 @@ export function CreditCeiling(props: CreditCeilingProps) {
 
   return (
     <Container>
-      <ProgressBar progress={progress} color={color} icon={ceilingConfig.icon} />
+      <AnimatedProgressBar progress={progress} color={color} icon={ceilingConfig.icon} />
       <Amount color={color}>{amountLabel}</Amount>
       <View>
         <Label>{ceilingConfig.label}</Label>

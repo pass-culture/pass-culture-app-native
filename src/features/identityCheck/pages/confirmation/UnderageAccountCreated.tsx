@@ -13,7 +13,7 @@ import { navigateToHome } from 'features/navigation/helpers'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
-import { ProgressBar } from 'ui/components/bars/ProgressBar'
+import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
@@ -36,7 +36,7 @@ export function UnderageAccountCreated() {
 
       <Spacer.Column numberOfSpaces={4} />
       <ProgressBarContainer>
-        <ProgressBar
+        <AnimatedProgressBar
           progress={1}
           color={uniqueColors.brand}
           icon={CategoryIcon.Spectacles}

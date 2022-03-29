@@ -5,15 +5,19 @@ import { Close } from 'ui/svg/icons/Close'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
-import { ProgressBar } from './ProgressBar'
+import { AnimatedProgressBar } from './AnimatedProgressBar'
 
-describe('ProgressBar', () => {
+describe('AnimatedProgressBar', () => {
   it('should render properly', () => {
     const expectedProgress = 0.5
     const expectedBackgroundColor = ColorsEnum.PRIMARY
 
     const { toJSON } = render(
-      <ProgressBar color={expectedBackgroundColor} progress={expectedProgress} icon={Close} />
+      <AnimatedProgressBar
+        color={expectedBackgroundColor}
+        progress={expectedProgress}
+        icon={Close}
+      />
     )
 
     expect(toJSON()).toMatchSnapshot()
@@ -23,10 +27,14 @@ describe('ProgressBar', () => {
     const expectedBackgroundColor = ColorsEnum.PRIMARY
 
     const { getByText, getByTestId } = render(
-      <ProgressBar color={expectedBackgroundColor} progress={expectedProgress} icon={Close} />
+      <AnimatedProgressBar
+        color={expectedBackgroundColor}
+        progress={expectedProgress}
+        icon={Close}
+      />
     )
 
-    const progressBar = getByTestId('progress-bar')
+    const progressBar = getByTestId('animated-progress-bar')
     const style = progressBar.props.style
     expect(style.backgroundColor).toEqual(expectedBackgroundColor)
     expect(style.flexGrow).toEqual(expectedProgress)
@@ -40,7 +48,7 @@ describe('ProgressBar', () => {
     const expectedBackgroundColor = ColorsEnum.PRIMARY
 
     const { getByText, getByTestId } = render(
-      <ProgressBar
+      <AnimatedProgressBar
         color={expectedBackgroundColor}
         progress={expectedProgress}
         icon={Close}
@@ -48,7 +56,7 @@ describe('ProgressBar', () => {
       />
     )
 
-    const progressBar = getByTestId('progress-bar')
+    const progressBar = getByTestId('animated-progress-bar')
     const style = progressBar.props.style
     expect(style.backgroundColor).toEqual(expectedBackgroundColor)
     expect(style.flexGrow).toEqual(1)

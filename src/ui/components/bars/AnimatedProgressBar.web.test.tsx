@@ -5,15 +5,19 @@ import { Close } from 'ui/svg/icons/Close'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
-import { ProgressBar } from './ProgressBar'
+import { AnimatedProgressBar } from './AnimatedProgressBar'
 
-describe('ProgressBar', () => {
+describe('AnimatedProgressBar', () => {
   it('should render properly', () => {
     const expectedProgress = 0.5
     const expectedBackgroundColor = ColorsEnum.PRIMARY
 
     const renderAPI = render(
-      <ProgressBar color={expectedBackgroundColor} progress={expectedProgress} icon={Close} />
+      <AnimatedProgressBar
+        color={expectedBackgroundColor}
+        progress={expectedProgress}
+        icon={Close}
+      />
     )
 
     expect(renderAPI).toMatchSnapshot()
@@ -23,14 +27,14 @@ describe('ProgressBar', () => {
     const expectedBackgroundColor = 'rgb(235, 0, 85)'
 
     const { getByText, getByTestId } = render(
-      <ProgressBar
+      <AnimatedProgressBar
         color={expectedBackgroundColor as ColorsEnum}
         progress={expectedProgress}
         icon={Close}
       />
     )
 
-    const progressBar = getByTestId('progress-bar')
+    const progressBar = getByTestId('animated-progress-bar')
     const style = progressBar.style
 
     expect(style.backgroundColor).toEqual(expectedBackgroundColor)
@@ -45,7 +49,7 @@ describe('ProgressBar', () => {
     const expectedBackgroundColor = 'rgb(235, 0, 85)'
 
     const { getByText, getByTestId } = render(
-      <ProgressBar
+      <AnimatedProgressBar
         color={expectedBackgroundColor as ColorsEnum}
         progress={expectedProgress}
         icon={Close}
@@ -53,7 +57,7 @@ describe('ProgressBar', () => {
       />
     )
 
-    const progressBar = getByTestId('progress-bar')
+    const progressBar = getByTestId('animated-progress-bar')
     const style = progressBar.style
 
     expect(style.backgroundColor).toEqual(expectedBackgroundColor)
