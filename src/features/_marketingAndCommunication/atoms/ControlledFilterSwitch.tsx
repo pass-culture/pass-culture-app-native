@@ -14,7 +14,6 @@ export const ControlledFilterSwitch = (props: Props) => {
     <FilterSwitch
       {...props}
       active={active}
-      accessibilityLabel={props.name}
       toggle={() => {
         setActive((prevState) => {
           const newValue = !prevState

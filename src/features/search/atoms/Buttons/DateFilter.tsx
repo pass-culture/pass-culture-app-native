@@ -13,7 +13,10 @@ interface Props {
 
 export const DateFilter: React.FC<Props> = ({ text, onPress, isSelected }: Props) => {
   return (
-    <StyledTouchableOpacity onPress={onPress}>
+    <StyledTouchableOpacity
+      accessibilityRole="radio"
+      accessibilityState={{ checked: isSelected }}
+      onPress={onPress}>
       <ButtonText isSelected={isSelected}>{text}</ButtonText>
       {!!isSelected && <Validate />}
     </StyledTouchableOpacity>

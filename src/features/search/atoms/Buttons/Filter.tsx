@@ -25,9 +25,7 @@ export const Filter: React.FC = () => {
   }
 
   return (
-    <Container
-      onPress={onPress}
-      {...accessibilityAndTestId(t`Afficher les filtres`, 'FilterButton')}>
+    <Container onPress={onPress} {...accessibilityAndTestId(undefined, 'FilterButton')}>
       <StyledLinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}

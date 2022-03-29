@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { Section } from 'features/search/atoms/Sections'
@@ -35,9 +36,13 @@ export const Location: React.FC = () => {
     navigate('LocationFilter')
   }
 
+  const captionId = locationType === LocationType.AROUND_ME ? uuidv4() : undefined
   return (
     <Section title={SectionTitle.Location} count={+(locationType !== LocationType.EVERYWHERE)}>
-      <LocationContentContainer testID="changeLocation" onPress={onPressChangeLocation}>
+      <LocationContentContainer
+        testID="changeLocation"
+        onPress={onPressChangeLocation}
+        aria-describedby={captionId}>
         <StyledIcon />
         <Spacer.Row numberOfSpaces={2} />
         <Label numberOfLines={2}>{label}</Label>
@@ -47,7 +52,9 @@ export const Location: React.FC = () => {
       {locationType === LocationType.AROUND_ME ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={2} />
-          <Caption>{t`Seules les sorties et offres physiques seront affichées`}</Caption>
+          <Caption nativeID={captionId}>
+            {t`Seules les sorties et offres physiques seront affichées`}
+          </Caption>
         </React.Fragment>
       ) : null}
     </Section>

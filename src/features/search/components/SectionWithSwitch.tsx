@@ -7,28 +7,32 @@ import { InputLabel } from 'ui/components/InputLabel'
 
 interface Props {
   active?: boolean
-  accessibilityLabel: string
   title: string
   subtitle?: string
   toggle?: () => void
 }
 
 export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
-  const { title, accessibilityLabel, subtitle, active = false, toggle = () => null } = props
+  const { title, subtitle, active = false, toggle = () => null } = props
   const checkboxID = uuidv4()
+  const labelID = uuidv4()
+  const subtitleID = subtitle && uuidv4()
+
   return (
     <InlineSection
       title={
-        <InputLabel htmlFor={checkboxID}>
+        <InputLabel id={labelID} htmlFor={checkboxID}>
           <TitleWithCount title={title} count={+active} />
         </InputLabel>
       }
-      subtitle={subtitle}>
+      subtitle={subtitle}
+      subtitleID={subtitleID}>
       <FilterSwitch
         checkboxID={checkboxID}
         active={active}
         toggle={toggle}
-        accessibilityLabel={accessibilityLabel}
+        accessibilityLabelledBy={labelID}
+        accessibilityDescribedBy={subtitleID}
       />
     </InlineSection>
   )

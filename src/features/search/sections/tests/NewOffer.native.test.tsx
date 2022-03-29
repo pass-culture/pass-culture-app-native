@@ -15,16 +15,16 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
 }))
 
-const testID = 'Interrupteur filtre nouvelles offres'
+const testID = 'Interrupteur'
 
 describe('NewOffer component', () => {
   it('should be controlled by searchState.offerIsNew', () => {
     let { parent } = render(<NewOffer />).getByTestId(testID)
-    expect(parent?.props.accessibilityValue.text).toBe('false')
+    expect(parent?.props.accessibilityState.checked).toBeFalsy()
 
     mockSearchState = { ...initialSearchState, offerIsNew: true }
     parent = render(<NewOffer />).getByTestId(testID).parent
-    expect(parent?.props.accessibilityValue.text).toBe('true')
+    expect(parent?.props.accessibilityState.checked).toBeTruthy()
   })
 
   it('should dispatch TOGGLE_OFFER_NEW onPress', () => {
