@@ -10,13 +10,17 @@ Array [
       }
     }
   />,
-  <dt
-    className="sc-llYSUQ sc-iJKOTD hCGoL eEugXl"
+  <h2
+    className="sc-ieecCq"
   >
-    Où ?
-  </dt>,
+    <dt
+      className="sc-ezbkAF sc-bYoBSM kzvYaI cqykSW"
+    >
+      Où ?
+    </dt>
+  </h2>,
   <dd
-    className="sc-cxpSdN gueCwc"
+    className="sc-giYglK gYKHrB"
   >
     <div
       className="css-view-1dbjc4n"
@@ -315,7 +319,7 @@ exports[`WhereSection should render correctly 2`] = `
 - First value
 + Second value
 
-@@ -24,10 +24,165 @@
+@@ -28,10 +28,165 @@
         }
       />
       <div

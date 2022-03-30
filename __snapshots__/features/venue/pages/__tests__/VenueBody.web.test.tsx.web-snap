@@ -176,7 +176,7 @@ Object {
             style="height: 16px;"
           />
           <dl
-            class="sc-ikJyIC dZPHje"
+            class="sc-gWXbKe cLfsmh"
           >
             <div
               class="css-view-1dbjc4n"
@@ -187,7 +187,7 @@ Object {
                 style="align-items: center; flex-direction: row; justify-content: center; margin-top: 8px;"
               >
                 <dt
-                  class="sc-gsDKAQ sc-cCcXHH gFZcdC hjqfgG"
+                  class="sc-gsDKAQ sc-caiLqq gFZcdC jdWQRy"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -201,7 +201,7 @@ Object {
                   </div>
                 </dt>
                 <dd
-                  class="sc-bdvvtL sc-cidDSM kxtmOw cwFhwv"
+                  class="sc-bdvvtL sc-iUKqMP kxtmOw jkUUxg"
                 >
                   1 boulevard Poissonnière, 75000 Paris
                 </dd>
@@ -211,16 +211,20 @@ Object {
                 style="height: 8px;"
               />
               <dt
-                class="sc-gsDKAQ sc-hiCibw gFZcdC hxNsRw"
+                class="sc-gsDKAQ sc-cidDSM gFZcdC idykZC"
               >
                 Lieu
               </dt>
-              <dd
-                class="sc-bdvvtL sc-gWXbKe kxtmOw iDHCAM"
-                data-testid="venueTitle"
+              <h1
+                class="sc-hGPBjI"
               >
-                Le Petit Rintintin 1
-              </dd>
+                <dd
+                  class="sc-bdvvtL sc-jcFjpl kxtmOw eChpdN"
+                  data-testid="venueTitle"
+                >
+                  Le Petit Rintintin 1
+                </dd>
+              </h1>
               <div
                 class="css-view-1dbjc4n"
                 style="height: 16px;"
@@ -311,12 +315,12 @@ Object {
               />
             </div>
             <dt
-              class="sc-gsDKAQ sc-hiCibw gFZcdC hxNsRw"
+              class="sc-gsDKAQ sc-cidDSM gFZcdC idykZC"
             >
               Description
             </dt>
             <dd
-              class="sc-bdvvtL sc-jJoQJp kxtmOw jfCbnt"
+              class="sc-bdvvtL sc-cCcXHH kxtmOw isOJYG"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -395,8 +399,8 @@ Object {
                 class="css-view-1dbjc4n"
                 style="align-items: center; flex-direction: row; margin-right: 24px; margin-left: 24px;"
               >
-                <h4
-                  aria-level="4"
+                <h2
+                  aria-level="2"
                   class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
                   data-testid="playlistTitle"
                   dir="auto"
@@ -404,7 +408,7 @@ Object {
                   style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
                 >
                   Offres
-                </h4>
+                </h2>
                 <div
                   class="css-view-1dbjc4n"
                   style="width: 16px;"
@@ -748,11 +752,15 @@ Object {
                 class="css-view-1dbjc4n"
                 style="height: 24px;"
               />
-              <dt
-                class="sc-gsDKAQ sc-ezbkAF gFZcdC kgwpWj"
+              <h2
+                class="sc-dlVxhl"
               >
-                Où ?
-              </dt>
+                <dt
+                  class="sc-gsDKAQ sc-ikJyIC gFZcdC cIaLgl"
+                >
+                  Où ?
+                </dt>
+              </h2>
               <dd
                 class="sc-bdvvtL kxtmOw"
               >
@@ -801,7 +809,7 @@ Object {
                     style="align-items: flex-start;"
                   >
                     <button
-                      class="sc-eCImPb fgCJQY sc-giYglK etqCXF"
+                      class="sc-eCImPb fgCJQY sc-kLwhqv gyEfHx"
                       tabindex="0"
                       type="button"
                     >
@@ -838,8 +846,11 @@ Object {
             style="background-color: rgb(241, 241, 244); height: 8px;"
           />
           <div
-            aria-label="Ouvrir la section Modalités de retrait"
-            class="css-view-1dbjc4n"
+            aria-controls="testUuidV4"
+            aria-expanded="false"
+            class="css-cursor-18t94o4 css-view-1dbjc4n"
+            id="testUuidV4"
+            role="button"
             style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
             tabindex="0"
           >
@@ -875,8 +886,10 @@ Object {
             style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
           >
             <div
+              aria-labelledby="testUuidV4"
               class="css-view-1dbjc4n"
               data-testid="accordionBodyContainer"
+              id="testUuidV4"
               style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
             >
               <div
@@ -933,8 +946,11 @@ Object {
             style="background-color: rgb(241, 241, 244); height: 8px;"
           />
           <div
-            aria-label="Ouvrir la section Accessibilité"
-            class="css-view-1dbjc4n"
+            aria-controls="testUuidV4"
+            aria-expanded="false"
+            class="css-cursor-18t94o4 css-view-1dbjc4n"
+            id="testUuidV4"
+            role="button"
             style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
             tabindex="0"
           >
@@ -970,8 +986,10 @@ Object {
             style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
           >
             <div
+              aria-labelledby="testUuidV4"
               class="css-view-1dbjc4n"
               data-testid="accordionBodyContainer"
+              id="testUuidV4"
               style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
             >
               <div
@@ -979,10 +997,10 @@ Object {
                 style="flex-direction: row; justify-content: space-between;"
               >
                 <ul
-                  class="sc-bqiRlB sc-bYoBSM fZQgdx fePCKa"
+                  class="sc-bqiRlB sc-jJoQJp fZQgdx cgypse"
                 >
                   <li
-                    class="sc-kLwhqv jPYCMn"
+                    class="sc-hiCibw jmSfBy"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -1049,7 +1067,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-kLwhqv jPYCMn"
+                    class="sc-hiCibw jmSfBy"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -1116,7 +1134,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-kLwhqv jPYCMn"
+                    class="sc-hiCibw jmSfBy"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -1183,7 +1201,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-kLwhqv jPYCMn"
+                    class="sc-hiCibw jmSfBy"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -1258,8 +1276,11 @@ Object {
             style="background-color: rgb(241, 241, 244); height: 8px;"
           />
           <div
-            aria-label="Ouvrir la section Contact"
-            class="css-view-1dbjc4n"
+            aria-controls="testUuidV4"
+            aria-expanded="false"
+            class="css-cursor-18t94o4 css-view-1dbjc4n"
+            id="testUuidV4"
+            role="button"
             style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
             tabindex="0"
           >
@@ -1295,8 +1316,10 @@ Object {
             style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
           >
             <div
+              aria-labelledby="testUuidV4"
               class="css-view-1dbjc4n"
               data-testid="accordionBodyContainer"
+              id="testUuidV4"
               style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
             >
               <div
@@ -1506,7 +1529,7 @@ Object {
           style="height: 16px;"
         />
         <dl
-          class="sc-ikJyIC dZPHje"
+          class="sc-gWXbKe cLfsmh"
         >
           <div
             class="css-view-1dbjc4n"
@@ -1517,7 +1540,7 @@ Object {
               style="align-items: center; flex-direction: row; justify-content: center; margin-top: 8px;"
             >
               <dt
-                class="sc-gsDKAQ sc-cCcXHH gFZcdC hjqfgG"
+                class="sc-gsDKAQ sc-caiLqq gFZcdC jdWQRy"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -1531,7 +1554,7 @@ Object {
                 </div>
               </dt>
               <dd
-                class="sc-bdvvtL sc-cidDSM kxtmOw cwFhwv"
+                class="sc-bdvvtL sc-iUKqMP kxtmOw jkUUxg"
               >
                 1 boulevard Poissonnière, 75000 Paris
               </dd>
@@ -1541,16 +1564,20 @@ Object {
               style="height: 8px;"
             />
             <dt
-              class="sc-gsDKAQ sc-hiCibw gFZcdC hxNsRw"
+              class="sc-gsDKAQ sc-cidDSM gFZcdC idykZC"
             >
               Lieu
             </dt>
-            <dd
-              class="sc-bdvvtL sc-gWXbKe kxtmOw iDHCAM"
-              data-testid="venueTitle"
+            <h1
+              class="sc-hGPBjI"
             >
-              Le Petit Rintintin 1
-            </dd>
+              <dd
+                class="sc-bdvvtL sc-jcFjpl kxtmOw eChpdN"
+                data-testid="venueTitle"
+              >
+                Le Petit Rintintin 1
+              </dd>
+            </h1>
             <div
               class="css-view-1dbjc4n"
               style="height: 16px;"
@@ -1641,12 +1668,12 @@ Object {
             />
           </div>
           <dt
-            class="sc-gsDKAQ sc-hiCibw gFZcdC hxNsRw"
+            class="sc-gsDKAQ sc-cidDSM gFZcdC idykZC"
           >
             Description
           </dt>
           <dd
-            class="sc-bdvvtL sc-jJoQJp kxtmOw jfCbnt"
+            class="sc-bdvvtL sc-cCcXHH kxtmOw isOJYG"
           >
             <div
               class="css-view-1dbjc4n"
@@ -1725,8 +1752,8 @@ Object {
               class="css-view-1dbjc4n"
               style="align-items: center; flex-direction: row; margin-right: 24px; margin-left: 24px;"
             >
-              <h4
-                aria-level="4"
+              <h2
+                aria-level="2"
                 class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
                 data-testid="playlistTitle"
                 dir="auto"
@@ -1734,7 +1761,7 @@ Object {
                 style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
               >
                 Offres
-              </h4>
+              </h2>
               <div
                 class="css-view-1dbjc4n"
                 style="width: 16px;"
@@ -2078,11 +2105,15 @@ Object {
               class="css-view-1dbjc4n"
               style="height: 24px;"
             />
-            <dt
-              class="sc-gsDKAQ sc-ezbkAF gFZcdC kgwpWj"
+            <h2
+              class="sc-dlVxhl"
             >
-              Où ?
-            </dt>
+              <dt
+                class="sc-gsDKAQ sc-ikJyIC gFZcdC cIaLgl"
+              >
+                Où ?
+              </dt>
+            </h2>
             <dd
               class="sc-bdvvtL kxtmOw"
             >
@@ -2131,7 +2162,7 @@ Object {
                   style="align-items: flex-start;"
                 >
                   <button
-                    class="sc-eCImPb fgCJQY sc-giYglK etqCXF"
+                    class="sc-eCImPb fgCJQY sc-kLwhqv gyEfHx"
                     tabindex="0"
                     type="button"
                   >
@@ -2168,8 +2199,11 @@ Object {
           style="background-color: rgb(241, 241, 244); height: 8px;"
         />
         <div
-          aria-label="Ouvrir la section Modalités de retrait"
-          class="css-view-1dbjc4n"
+          aria-controls="testUuidV4"
+          aria-expanded="false"
+          class="css-cursor-18t94o4 css-view-1dbjc4n"
+          id="testUuidV4"
+          role="button"
           style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
           tabindex="0"
         >
@@ -2205,8 +2239,10 @@ Object {
           style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
         >
           <div
+            aria-labelledby="testUuidV4"
             class="css-view-1dbjc4n"
             data-testid="accordionBodyContainer"
+            id="testUuidV4"
             style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
           >
             <div
@@ -2263,8 +2299,11 @@ Object {
           style="background-color: rgb(241, 241, 244); height: 8px;"
         />
         <div
-          aria-label="Ouvrir la section Accessibilité"
-          class="css-view-1dbjc4n"
+          aria-controls="testUuidV4"
+          aria-expanded="false"
+          class="css-cursor-18t94o4 css-view-1dbjc4n"
+          id="testUuidV4"
+          role="button"
           style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
           tabindex="0"
         >
@@ -2300,8 +2339,10 @@ Object {
           style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
         >
           <div
+            aria-labelledby="testUuidV4"
             class="css-view-1dbjc4n"
             data-testid="accordionBodyContainer"
+            id="testUuidV4"
             style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
           >
             <div
@@ -2309,10 +2350,10 @@ Object {
               style="flex-direction: row; justify-content: space-between;"
             >
               <ul
-                class="sc-bqiRlB sc-bYoBSM fZQgdx fePCKa"
+                class="sc-bqiRlB sc-jJoQJp fZQgdx cgypse"
               >
                 <li
-                  class="sc-kLwhqv jPYCMn"
+                  class="sc-hiCibw jmSfBy"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -2379,7 +2420,7 @@ Object {
                   </div>
                 </li>
                 <li
-                  class="sc-kLwhqv jPYCMn"
+                  class="sc-hiCibw jmSfBy"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -2446,7 +2487,7 @@ Object {
                   </div>
                 </li>
                 <li
-                  class="sc-kLwhqv jPYCMn"
+                  class="sc-hiCibw jmSfBy"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -2513,7 +2554,7 @@ Object {
                   </div>
                 </li>
                 <li
-                  class="sc-kLwhqv jPYCMn"
+                  class="sc-hiCibw jmSfBy"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -2588,8 +2629,11 @@ Object {
           style="background-color: rgb(241, 241, 244); height: 8px;"
         />
         <div
-          aria-label="Ouvrir la section Contact"
-          class="css-view-1dbjc4n"
+          aria-controls="testUuidV4"
+          aria-expanded="false"
+          class="css-cursor-18t94o4 css-view-1dbjc4n"
+          id="testUuidV4"
+          role="button"
           style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
           tabindex="0"
         >
@@ -2625,8 +2669,10 @@ Object {
           style="height: 0px; overflow-x: hidden; overflow-y: hidden;"
         >
           <div
+            aria-labelledby="testUuidV4"
             class="css-view-1dbjc4n"
             data-testid="accordionBodyContainer"
+            id="testUuidV4"
             style="bottom: 0px; display: none; padding: 0px 24px 24px 24px; position: absolute; width: 100%;"
           >
             <div

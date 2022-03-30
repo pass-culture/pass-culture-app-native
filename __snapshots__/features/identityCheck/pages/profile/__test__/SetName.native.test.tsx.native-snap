@@ -312,6 +312,7 @@ exports[`<SetName/> should render correctly 1`] = `
                   testID="styled-input-container"
                 >
                   <TextInput
+                    aria-describedby="testUuidV4"
                     editable={true}
                     nativeID="testUuidV4"
                     onBlur={[Function]}
@@ -450,6 +451,7 @@ exports[`<SetName/> should render correctly 1`] = `
                   testID="styled-input-container"
                 >
                   <TextInput
+                    aria-describedby="testUuidV4"
                     editable={true}
                     nativeID="testUuidV4"
                     onBlur={[Function]}

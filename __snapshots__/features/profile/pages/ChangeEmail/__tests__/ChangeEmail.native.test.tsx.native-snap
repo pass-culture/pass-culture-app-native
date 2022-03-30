@@ -389,6 +389,7 @@ Array [
             testID="styled-input-container"
           >
             <TextInput
+              aria-describedby="testUuidV4"
               autoCapitalize="none"
               autoComplete="email"
               disabled={true}
@@ -526,6 +527,7 @@ Array [
             <TextInput
               accessibilityLabel="Mot de passe"
               accessible={true}
+              aria-describedby="testUuidV4"
               disabled={true}
               editable={false}
               nativeID="testUuidV4"
@@ -1025,6 +1027,7 @@ Array [
             testID="styled-input-container"
           >
             <TextInput
+              aria-describedby="testUuidV4"
               autoCapitalize="none"
               autoComplete="email"
               disabled={false}
@@ -1170,6 +1173,7 @@ Array [
             <TextInput
               accessibilityLabel="Mot de passe"
               accessible={true}
+              aria-describedby="testUuidV4"
               disabled={false}
               editable={true}
               nativeID="testUuidV4"

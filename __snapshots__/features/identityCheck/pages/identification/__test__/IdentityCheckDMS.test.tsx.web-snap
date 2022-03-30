@@ -330,7 +330,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                   target="_blank"
                 >
                   <button
-                    className="sc-bdvvtL hrpKOI sc-iwjdpV fFnKs"
+                    className="sc-bdvvtL hrpKOI sc-iJKOTD kXmnPp"
                     onClick={[Function]}
                     onDoubleClick={[Function]}
                     tabIndex={0}
@@ -449,7 +449,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                   target="_blank"
                 >
                   <button
-                    className="sc-bdvvtL hrpKOI sc-iwjdpV fFnKs"
+                    className="sc-bdvvtL hrpKOI sc-iJKOTD kXmnPp"
                     onClick={[Function]}
                     onDoubleClick={[Function]}
                     tabIndex={0}

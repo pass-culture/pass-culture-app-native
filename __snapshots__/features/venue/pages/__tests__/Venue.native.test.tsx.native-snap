@@ -2299,9 +2299,15 @@ exports[`<Venue /> should match snapshot 1`] = `
         }
       />
       <View
-        accessibilityLabel="Ouvrir la section Modalités de retrait"
+        accessibilityRole="button"
+        accessibilityState={
+          Object {
+            "expanded": false,
+          }
+        }
         accessible={true}
         focusable={true}
+        nativeID="testUuidV4"
         onClick={[Function]}
         onLayout={[Function]}
         onResponderGrant={[Function]}
@@ -2376,7 +2382,9 @@ exports[`<Venue /> should match snapshot 1`] = `
         testID="accordionBody"
       >
         <View
+          aria-labelledby="testUuidV4"
           hidden={true}
+          nativeID="testUuidV4"
           onLayout={[Function]}
           style={
             Array [
@@ -2457,9 +2465,15 @@ exports[`<Venue /> should match snapshot 1`] = `
         }
       />
       <View
-        accessibilityLabel="Ouvrir la section Accessibilité"
+        accessibilityRole="button"
+        accessibilityState={
+          Object {
+            "expanded": false,
+          }
+        }
         accessible={true}
         focusable={true}
+        nativeID="testUuidV4"
         onClick={[Function]}
         onLayout={[Function]}
         onResponderGrant={[Function]}
@@ -2534,7 +2548,9 @@ exports[`<Venue /> should match snapshot 1`] = `
         testID="accordionBody"
       >
         <View
+          aria-labelledby="testUuidV4"
           hidden={true}
+          nativeID="testUuidV4"
           onLayout={[Function]}
           style={
             Array [
@@ -3058,9 +3074,15 @@ exports[`<Venue /> should match snapshot 1`] = `
         }
       />
       <View
-        accessibilityLabel="Ouvrir la section Contact"
+        accessibilityRole="button"
+        accessibilityState={
+          Object {
+            "expanded": false,
+          }
+        }
         accessible={true}
         focusable={true}
+        nativeID="testUuidV4"
         onClick={[Function]}
         onLayout={[Function]}
         onResponderGrant={[Function]}
@@ -3135,7 +3157,9 @@ exports[`<Venue /> should match snapshot 1`] = `
         testID="accordionBody"
       >
         <View
+          aria-labelledby="testUuidV4"
           hidden={true}
+          nativeID="testUuidV4"
           onLayout={[Function]}
           style={
             Array [

@@ -225,9 +225,15 @@ Array [
             }
           />
           <View
-            accessibilityLabel="Fermer la section Pages"
+            accessibilityRole="button"
+            accessibilityState={
+              Object {
+                "expanded": true,
+              }
+            }
             accessible={true}
             focusable={true}
+            nativeID="testUuidV4"
             onClick={[Function]}
             onLayout={[Function]}
             onResponderGrant={[Function]}
@@ -302,7 +308,9 @@ Array [
             testID="accordionBody"
           >
             <View
+              aria-labelledby="testUuidV4"
               hidden={false}
+              nativeID="testUuidV4"
               onLayout={[Function]}
               style={
                 Array [
@@ -330,6 +338,12 @@ Array [
                 }
               />
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -426,6 +440,12 @@ Array [
                 }
               />
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -522,6 +542,12 @@ Array [
                 }
               />
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": true,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -627,6 +653,12 @@ Array [
                 }
               />
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -723,6 +755,12 @@ Array [
                 }
               />
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -819,6 +857,12 @@ Array [
                 }
               />
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -907,9 +951,15 @@ Array [
             </View>
           </View>
           <View
-            accessibilityLabel="Fermer la section Paramètres applicatifs (1)"
+            accessibilityRole="button"
+            accessibilityState={
+              Object {
+                "expanded": true,
+              }
+            }
             accessible={true}
             focusable={true}
+            nativeID="testUuidV4"
             onClick={[Function]}
             onLayout={[Function]}
             onResponderGrant={[Function]}
@@ -984,7 +1034,9 @@ Array [
             testID="accordionBody"
           >
             <View
+              aria-labelledby="testUuidV4"
               hidden={false}
+              nativeID="testUuidV4"
               onLayout={[Function]}
               style={
                 Array [
@@ -1127,9 +1179,15 @@ Array [
             </View>
           </View>
           <View
-            accessibilityLabel="Fermer la section Paramètres marketing"
+            accessibilityRole="button"
+            accessibilityState={
+              Object {
+                "expanded": true,
+              }
+            }
             accessible={true}
             focusable={true}
+            nativeID="testUuidV4"
             onClick={[Function]}
             onLayout={[Function]}
             onResponderGrant={[Function]}
@@ -1204,7 +1262,9 @@ Array [
             testID="accordionBody"
           >
             <View
+              aria-labelledby="testUuidV4"
               hidden={false}
+              nativeID="testUuidV4"
               onLayout={[Function]}
               style={
                 Array [
@@ -1716,9 +1776,15 @@ Array [
             </View>
           </View>
           <View
-            accessibilityLabel="Ouvrir la section Paramètres firebase dynamic link"
+            accessibilityRole="button"
+            accessibilityState={
+              Object {
+                "expanded": false,
+              }
+            }
             accessible={true}
             focusable={true}
+            nativeID="testUuidV4"
             onClick={[Function]}
             onLayout={[Function]}
             onResponderGrant={[Function]}
@@ -1793,7 +1859,9 @@ Array [
             testID="accordionBody"
           >
             <View
+              aria-labelledby="testUuidV4"
               hidden={true}
+              nativeID="testUuidV4"
               onLayout={[Function]}
               style={
                 Array [
@@ -2270,36 +2338,21 @@ Array [
             }
           >
             <View
-              accessibilityState={
-                Object {
-                  "disabled": false,
-                }
-              }
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              nativeID="animatedComponent"
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
+              checked={false}
               style={
-                Object {
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#696A6F",
-                  "borderRadius": 4,
-                  "borderStyle": "solid",
-                  "borderWidth": 2,
-                  "height": 24,
-                  "opacity": 1,
-                  "paddingLeft": 0,
-                  "paddingTop": 0,
-                  "userSelect": "auto",
-                  "width": 24,
-                }
+                Array [
+                  Object {
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#696A6F",
+                    "borderRadius": 4,
+                    "borderStyle": "solid",
+                    "borderWidth": 2,
+                    "height": 24,
+                    "paddingLeft": 0,
+                    "paddingTop": 0,
+                    "width": 24,
+                  },
+                ]
               }
               testID="checkbox"
             />

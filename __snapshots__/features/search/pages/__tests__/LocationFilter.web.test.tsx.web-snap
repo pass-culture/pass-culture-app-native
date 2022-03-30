@@ -142,8 +142,10 @@ Object {
             >
               <li>
                 <div
+                  aria-checked="false"
                   class="css-view-1dbjc4n"
                   data-testid="locationChoice-pickPlace"
+                  role="radio"
                   style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 16px; margin-left: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
@@ -206,8 +208,10 @@ Object {
               </li>
               <li>
                 <div
+                  aria-checked="false"
                   class="css-view-1dbjc4n"
                   data-testid="locationChoice-aroundMe"
+                  role="radio"
                   style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 16px; margin-left: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
@@ -238,6 +242,7 @@ Object {
                       style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; padding-right: 8px; padding-left: 8px;"
                     >
                       <div
+                        aria-describedby="testUuidV4"
                         class="css-text-901oao css-textMultiLine-cens5h"
                         dir="auto"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
@@ -257,14 +262,20 @@ Object {
                   </div>
                 </div>
                 <div
+                  id="testUuidV4"
+                  role="alert"
+                />
+                <div
                   class="css-view-1dbjc4n"
                   style="height: 24px;"
                 />
               </li>
               <li>
                 <div
+                  aria-checked="true"
                   class="css-view-1dbjc4n"
                   data-testid="locationChoice-everywhere"
+                  role="radio"
                   style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 16px; margin-left: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
@@ -465,8 +476,10 @@ Object {
           >
             <li>
               <div
+                aria-checked="false"
                 class="css-view-1dbjc4n"
                 data-testid="locationChoice-pickPlace"
+                role="radio"
                 style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 16px; margin-left: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 tabindex="0"
               >
@@ -529,8 +542,10 @@ Object {
             </li>
             <li>
               <div
+                aria-checked="false"
                 class="css-view-1dbjc4n"
                 data-testid="locationChoice-aroundMe"
+                role="radio"
                 style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 16px; margin-left: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 tabindex="0"
               >
@@ -561,6 +576,7 @@ Object {
                     style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; padding-right: 8px; padding-left: 8px;"
                   >
                     <div
+                      aria-describedby="testUuidV4"
                       class="css-text-901oao css-textMultiLine-cens5h"
                       dir="auto"
                       style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
@@ -580,14 +596,20 @@ Object {
                 </div>
               </div>
               <div
+                id="testUuidV4"
+                role="alert"
+              />
+              <div
                 class="css-view-1dbjc4n"
                 style="height: 24px;"
               />
             </li>
             <li>
               <div
+                aria-checked="true"
                 class="css-view-1dbjc4n"
                 data-testid="locationChoice-everywhere"
+                role="radio"
                 style="align-items: center; cursor: pointer; display: flex; flex-direction: row; margin-right: 16px; margin-left: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 tabindex="0"
               >

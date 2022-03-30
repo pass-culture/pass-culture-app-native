@@ -613,17 +613,11 @@ exports[`Profile component should render correctly 1`] = `
                           }
                         />
                         <View
-                          accessibilityLabel="Interrupteur géolocalisation"
                           accessibilityRole="switch"
                           accessibilityState={
                             Object {
                               "checked": true,
                               "disabled": false,
-                            }
-                          }
-                          accessibilityValue={
-                            Object {
-                              "text": "true",
                             }
                           }
                           accessible={true}
@@ -643,7 +637,7 @@ exports[`Profile component should render correctly 1`] = `
                               "userSelect": "auto",
                             }
                           }
-                          testID="Interrupteur géolocalisation"
+                          testID="Interrupteur"
                         >
                           <View
                             active={true}

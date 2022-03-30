@@ -375,6 +375,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           }
         />
         <Text
+          nativeID="testUuidV4"
           style={
             Array [
               Object {
@@ -692,9 +693,15 @@ exports[`SearchFilter component should render correctly 1`] = `
         }
       />
       <View
-        accessibilityLabel="Fermer la section Catégories"
+        accessibilityRole="button"
+        accessibilityState={
+          Object {
+            "expanded": true,
+          }
+        }
         accessible={true}
         focusable={true}
+        nativeID="testUuidV4"
         onClick={[Function]}
         onLayout={[Function]}
         onResponderGrant={[Function]}
@@ -783,7 +790,9 @@ exports[`SearchFilter component should render correctly 1`] = `
         testID="accordionBody"
       >
         <View
+          aria-labelledby="testUuidV4"
           hidden={false}
+          nativeID="testUuidV4"
           onLayout={[Function]}
           style={
             Array [
@@ -1788,9 +1797,15 @@ exports[`SearchFilter component should render correctly 1`] = `
         }
       />
       <View
-        accessibilityLabel="Fermer la section Type d'offre"
+        accessibilityRole="button"
+        accessibilityState={
+          Object {
+            "expanded": true,
+          }
+        }
         accessible={true}
         focusable={true}
+        nativeID="testUuidV4"
         onClick={[Function]}
         onLayout={[Function]}
         onResponderGrant={[Function]}
@@ -1879,7 +1894,9 @@ exports[`SearchFilter component should render correctly 1`] = `
         testID="accordionBody"
       >
         <View
+          aria-labelledby="testUuidV4"
           hidden={false}
+          nativeID="testUuidV4"
           onLayout={[Function]}
           style={
             Array [
@@ -2649,17 +2666,11 @@ exports[`SearchFilter component should render correctly 1`] = `
               }
             />
             <View
-              accessibilityLabel="Interrupteur filtre offres gratuites"
               accessibilityRole="switch"
               accessibilityState={
                 Object {
                   "checked": false,
                   "disabled": false,
-                }
-              }
-              accessibilityValue={
-                Object {
-                  "text": "false",
                 }
               }
               accessible={true}
@@ -2679,7 +2690,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="Interrupteur filtre offres gratuites"
+              testID="Interrupteur"
             >
               <View
                 active={false}
@@ -2821,17 +2832,11 @@ exports[`SearchFilter component should render correctly 1`] = `
               }
             />
             <View
-              accessibilityLabel="Interrupteur filtre offres duo"
               accessibilityRole="switch"
               accessibilityState={
                 Object {
                   "checked": false,
                   "disabled": false,
-                }
-              }
-              accessibilityValue={
-                Object {
-                  "text": "false",
                 }
               }
               accessible={true}
@@ -2851,7 +2856,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="Interrupteur filtre offres duo"
+              testID="Interrupteur"
             >
               <View
                 active={false}
@@ -2993,17 +2998,11 @@ exports[`SearchFilter component should render correctly 1`] = `
               }
             />
             <View
-              accessibilityLabel="Interrupteur filtre nouvelles offres"
               accessibilityRole="switch"
               accessibilityState={
                 Object {
                   "checked": false,
                   "disabled": false,
-                }
-              }
-              accessibilityValue={
-                Object {
-                  "text": "false",
                 }
               }
               accessible={true}
@@ -3023,7 +3022,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="Interrupteur filtre nouvelles offres"
+              testID="Interrupteur"
             >
               <View
                 active={false}
@@ -3165,17 +3164,11 @@ exports[`SearchFilter component should render correctly 1`] = `
               }
             />
             <View
-              accessibilityLabel="Interrupteur filtre dates"
               accessibilityRole="switch"
               accessibilityState={
                 Object {
                   "checked": false,
                   "disabled": false,
-                }
-              }
-              accessibilityValue={
-                Object {
-                  "text": "false",
                 }
               }
               accessible={true}
@@ -3195,7 +3188,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="Interrupteur filtre dates"
+              testID="Interrupteur"
             >
               <View
                 active={false}
@@ -3248,6 +3241,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           }
         />
         <Text
+          nativeID="testUuidV4"
           style={
             Array [
               Object {
@@ -3361,17 +3355,11 @@ exports[`SearchFilter component should render correctly 1`] = `
               }
             />
             <View
-              accessibilityLabel="Interrupteur filtre heures"
               accessibilityRole="switch"
               accessibilityState={
                 Object {
                   "checked": false,
                   "disabled": false,
-                }
-              }
-              accessibilityValue={
-                Object {
-                  "text": "false",
                 }
               }
               accessible={true}
@@ -3391,7 +3379,7 @@ exports[`SearchFilter component should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="Interrupteur filtre heures"
+              testID="Interrupteur"
             >
               <View
                 active={false}
@@ -3444,6 +3432,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           }
         />
         <Text
+          nativeID="testUuidV4"
           style={
             Array [
               Object {

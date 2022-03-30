@@ -5,7 +5,20 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -323,11 +323,11 @@
+@@ -258,11 +258,11 @@
+        <ul
+          className=\\"sc-gsDKAQ sc-dkPtRN bwGBFc ezyhIk\\"
+        >
+          <li>
+            <div
+-             aria-checked={false}
++             aria-checked={true}
+              className=\\"css-view-1dbjc4n\\"
+              data-testid=\\"NONE\\"
+              onClick={[Function onClick]}
+              onContextMenu={[Function onContextMenu]}
+              onKeyDown={[Function onKeyDown]}
+@@ -325,11 +325,11 @@
                 className=\\"css-text-901oao css-textMultiLine-cens5h\\"
                 dir=\\"auto\\"
                 style={
@@ -18,7 +31,7 @@ exports[`Categories component should match diff snapshot when new category is se
                     \\"lineHeight\\": \\"20px\\",
                   }
                 }
-@@ -349,10 +349,20 @@
+@@ -351,10 +351,20 @@
                     \\"msFlexPositive\\": 1,
                     \\"msFlexPreferredSize\\": \\"0px\\",
                   }
@@ -38,8 +51,21 @@ exports[`Categories component should match diff snapshot when new category is se
           </li>
           <li>
             <div
+              aria-checked={false}
+@@ -452,11 +462,11 @@
+              />
+            </div>
+          </li>
+          <li>
+            <div
+-             aria-checked={true}
++             aria-checked={false}
               className=\\"css-view-1dbjc4n\\"
-@@ -513,11 +523,11 @@
+              data-testid=\\"CINEMA\\"
+              onClick={[Function onClick]}
+              onContextMenu={[Function onContextMenu]}
+              onKeyDown={[Function onKeyDown]}
+@@ -519,11 +529,11 @@
                 className=\\"css-text-901oao css-textMultiLine-cens5h\\"
                 dir=\\"auto\\"
                 style={
@@ -52,7 +78,7 @@ exports[`Categories component should match diff snapshot when new category is se
                     \\"lineHeight\\": \\"20px\\",
                   }
                 }
-@@ -539,20 +549,10 @@
+@@ -545,20 +555,10 @@
                     \\"msFlexPositive\\": 1,
                     \\"msFlexPreferredSize\\": \\"0px\\",
                   }
@@ -72,7 +98,7 @@ exports[`Categories component should match diff snapshot when new category is se
           </li>
           <li>
             <div
-              className=\\"css-view-1dbjc4n\\""
+              aria-checked={false}"
 `;
 
 exports[`Categories component should render correctly 1`] = `
@@ -338,11 +364,13 @@ exports[`Categories component should render correctly 1`] = `
       >
         <li>
           <div
+            aria-checked={true}
             className="css-view-1dbjc4n"
             data-testid="NONE"
             onClick={[Function]}
             onContextMenu={[Function]}
             onKeyDown={[Function]}
+            role="radio"
             style={
               Object {
                 "MozTransitionProperty": "opacity",
@@ -443,11 +471,13 @@ exports[`Categories component should render correctly 1`] = `
         </li>
         <li>
           <div
+            aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="CARTE_JEUNES"
             onClick={[Function]}
             onContextMenu={[Function]}
             onKeyDown={[Function]}
+            role="radio"
             style={
               Object {
                 "MozTransitionProperty": "opacity",
@@ -538,11 +568,13 @@ exports[`Categories component should render correctly 1`] = `
         </li>
         <li>
           <div
+            aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="CINEMA"
             onClick={[Function]}
             onContextMenu={[Function]}
             onKeyDown={[Function]}
+            role="radio"
             style={
               Object {
                 "MozTransitionProperty": "opacity",
@@ -633,11 +665,13 @@ exports[`Categories component should render correctly 1`] = `
         </li>
         <li>
           <div
+            aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="VISITE"
             onClick={[Function]}
             onContextMenu={[Function]}
             onKeyDown={[Function]}
+            role="radio"
             style={
               Object {
                 "MozTransitionProperty": "opacity",
@@ -728,11 +762,13 @@ exports[`Categories component should render correctly 1`] = `
         </li>
         <li>
           <div
+            aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="MUSIQUE"
             onClick={[Function]}
             onContextMenu={[Function]}
             onKeyDown={[Function]}
+            role="radio"
             style={
               Object {
                 "MozTransitionProperty": "opacity",
@@ -823,11 +859,13 @@ exports[`Categories component should render correctly 1`] = `
         </li>
         <li>
           <div
+            aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="SPECTACLE"
             onClick={[Function]}
             onContextMenu={[Function]}
             onKeyDown={[Function]}
+            role="radio"
             style={
               Object {
                 "MozTransitionProperty": "opacity",
@@ -918,11 +956,13 @@ exports[`Categories component should render correctly 1`] = `
         </li>
         <li>
           <div
+            aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="COURS"
             onClick={[Function]}
             onContextMenu={[Function]}
             onKeyDown={[Function]}
+            role="radio"
             style={
               Object {
                 "MozTransitionProperty": "opacity",
@@ -1013,11 +1053,13 @@ exports[`Categories component should render correctly 1`] = `
         </li>
         <li>
           <div
+            aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="LIVRE"
             onClick={[Function]}
             onContextMenu={[Function]}
             onKeyDown={[Function]}
+            role="radio"
             style={
               Object {
                 "MozTransitionProperty": "opacity",
@@ -1108,11 +1150,13 @@ exports[`Categories component should render correctly 1`] = `
         </li>
         <li>
           <div
+            aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="FILM"
             onClick={[Function]}
             onContextMenu={[Function]}
             onKeyDown={[Function]}
+            role="radio"
             style={
               Object {
                 "MozTransitionProperty": "opacity",
@@ -1203,11 +1247,13 @@ exports[`Categories component should render correctly 1`] = `
         </li>
         <li>
           <div
+            aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="PRESSE"
             onClick={[Function]}
             onContextMenu={[Function]}
             onKeyDown={[Function]}
+            role="radio"
             style={
               Object {
                 "MozTransitionProperty": "opacity",
@@ -1298,11 +1344,13 @@ exports[`Categories component should render correctly 1`] = `
         </li>
         <li>
           <div
+            aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="JEU"
             onClick={[Function]}
             onContextMenu={[Function]}
             onKeyDown={[Function]}
+            role="radio"
             style={
               Object {
                 "MozTransitionProperty": "opacity",
@@ -1393,11 +1441,13 @@ exports[`Categories component should render correctly 1`] = `
         </li>
         <li>
           <div
+            aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="CONFERENCE"
             onClick={[Function]}
             onContextMenu={[Function]}
             onKeyDown={[Function]}
+            role="radio"
             style={
               Object {
                 "MozTransitionProperty": "opacity",
@@ -1488,11 +1538,13 @@ exports[`Categories component should render correctly 1`] = `
         </li>
         <li>
           <div
+            aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="INSTRUMENT"
             onClick={[Function]}
             onContextMenu={[Function]}
             onKeyDown={[Function]}
+            role="radio"
             style={
               Object {
                 "MozTransitionProperty": "opacity",
@@ -1583,11 +1635,13 @@ exports[`Categories component should render correctly 1`] = `
         </li>
         <li>
           <div
+            aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="MATERIEL"
             onClick={[Function]}
             onContextMenu={[Function]}
             onKeyDown={[Function]}
+            role="radio"
             style={
               Object {
                 "MozTransitionProperty": "opacity",

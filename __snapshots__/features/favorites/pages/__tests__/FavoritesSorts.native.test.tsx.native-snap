@@ -231,6 +231,12 @@ exports[`FavoritesSorts component should render correctly 1`] = `
       </View>
       <View
         accessibilityLabel="Trier par Ajouté récemment"
+        accessibilityRole="radio"
+        accessibilityState={
+          Object {
+            "checked": true,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -311,6 +317,12 @@ exports[`FavoritesSorts component should render correctly 1`] = `
       </View>
       <View
         accessibilityLabel="Trier par Prix croissant"
+        accessibilityRole="radio"
+        accessibilityState={
+          Object {
+            "checked": false,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -383,6 +395,12 @@ exports[`FavoritesSorts component should render correctly 1`] = `
       </View>
       <View
         accessibilityLabel="Trier par Proximité géographique"
+        accessibilityRole="radio"
+        accessibilityState={
+          Object {
+            "checked": false,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}

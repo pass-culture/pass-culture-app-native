@@ -921,9 +921,15 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             }
                           />
                           <View
-                            accessibilityLabel="Ouvrir la section Modalités de retrait"
+                            accessibilityRole="button"
+                            accessibilityState={
+                              Object {
+                                "expanded": false,
+                              }
+                            }
                             accessible={true}
                             focusable={true}
+                            nativeID="testUuidV4"
                             onClick={[Function]}
                             onLayout={[Function]}
                             onResponderGrant={[Function]}
@@ -994,7 +1000,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             testID="accordionBody"
                           >
                             <View
+                              aria-labelledby="testUuidV4"
                               hidden={true}
+                              nativeID="testUuidV4"
                               onLayout={[Function]}
                               style={
                                 Array [
@@ -1075,9 +1083,15 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             }
                           />
                           <View
-                            accessibilityLabel="Ouvrir la section Accessibilité"
+                            accessibilityRole="button"
+                            accessibilityState={
+                              Object {
+                                "expanded": false,
+                              }
+                            }
                             accessible={true}
                             focusable={true}
+                            nativeID="testUuidV4"
                             onClick={[Function]}
                             onLayout={[Function]}
                             onResponderGrant={[Function]}
@@ -1148,7 +1162,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             testID="accordionBody"
                           >
                             <View
+                              aria-labelledby="testUuidV4"
                               hidden={true}
+                              nativeID="testUuidV4"
                               onLayout={[Function]}
                               style={
                                 Array [
@@ -3584,9 +3600,15 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             }
                           />
                           <View
-                            accessibilityLabel="Ouvrir la section Modalités de retrait"
+                            accessibilityRole="button"
+                            accessibilityState={
+                              Object {
+                                "expanded": false,
+                              }
+                            }
                             accessible={true}
                             focusable={true}
+                            nativeID="testUuidV4"
                             onClick={[Function]}
                             onLayout={[Function]}
                             onResponderGrant={[Function]}
@@ -3657,7 +3679,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             testID="accordionBody"
                           >
                             <View
+                              aria-labelledby="testUuidV4"
                               hidden={true}
+                              nativeID="testUuidV4"
                               onLayout={[Function]}
                               style={
                                 Array [
@@ -3738,9 +3762,15 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             }
                           />
                           <View
-                            accessibilityLabel="Ouvrir la section Accessibilité"
+                            accessibilityRole="button"
+                            accessibilityState={
+                              Object {
+                                "expanded": false,
+                              }
+                            }
                             accessible={true}
                             focusable={true}
+                            nativeID="testUuidV4"
                             onClick={[Function]}
                             onLayout={[Function]}
                             onResponderGrant={[Function]}
@@ -3811,7 +3841,9 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             testID="accordionBody"
                           >
                             <View
+                              aria-labelledby="testUuidV4"
                               hidden={true}
+                              nativeID="testUuidV4"
                               onLayout={[Function]}
                               style={
                                 Array [
