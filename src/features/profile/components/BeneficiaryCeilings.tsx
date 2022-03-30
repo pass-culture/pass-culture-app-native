@@ -8,6 +8,7 @@ import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { DashedSeparator } from 'ui/components/DashedSeparator'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typography'
 
 import { accordionStyle, GreyContainer, Description } from './reusables'
 
@@ -97,7 +98,7 @@ const CeilingsDescription = (props: CeilingsDescriptionProps) => {
     </AccordionItem>
   )
 }
-const Title = styled(Typo.Title4)({
+const Title = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
   paddingHorizontal: getSpacing(4),
 })
 

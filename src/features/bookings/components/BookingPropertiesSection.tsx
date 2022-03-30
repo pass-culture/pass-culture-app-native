@@ -14,6 +14,7 @@ import { Duo } from 'ui/svg/icons/Duo'
 import { LocationBuilding as DefaultLocationBuilding } from 'ui/svg/icons/LocationBuilding'
 import { Profile as DefaultProfile } from 'ui/svg/icons/Profile'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typography'
 
 type BookingPropertiesSectionProps = {
   booking: Booking
@@ -39,7 +40,7 @@ export const BookingPropertiesSection: React.FC<BookingPropertiesSectionProps> =
 
   return (
     <View style={style}>
-      <Typo.Title4>{t`Ma réservation`}</Typo.Title4>
+      <Typo.Title4 {...getHeadingAttrs(2)}>{t`Ma réservation`}</Typo.Title4>
       <Spacer.Column numberOfSpaces={4.5} />
       {userFullName ? (
         <SectionRow

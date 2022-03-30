@@ -11,6 +11,7 @@ import { openUrl } from 'features/navigation/helpers'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typography'
 import { A } from 'ui/web/link/A'
 
 interface BookingDetailsTicketContentProps {
@@ -100,7 +101,7 @@ const DarkGreyCaption = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const Title = styled(Typo.Title3)({
+const Title = styled(Typo.Title3).attrs(getHeadingAttrs(1))({
   textAlign: 'center',
   maxWidth: '100%',
 })

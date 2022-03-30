@@ -57,11 +57,15 @@ const StyledTitle2 = styled(RNText)<{
   fontSize: fontSize ?? theme.typography.title2.fontSize,
 }))
 
-const Title3 = styled(RNText).attrs(() => getHeadingAttrs(3))(({ theme }) => ({
+const Title3 = styled(RNText).attrs<{ 'aria-level': number }>(({ 'aria-level': ariaLevel }) =>
+  getHeadingAttrs(ariaLevel ?? 3)
+)(({ theme }) => ({
   ...theme.typography.title3,
 }))
 
-const Title4 = styled(RNText).attrs(() => getHeadingAttrs(4))(({ theme }) => ({
+const Title4 = styled(RNText).attrs<{ 'aria-level': number }>(({ 'aria-level': ariaLevel }) =>
+  getHeadingAttrs(ariaLevel ?? 4)
+)(({ theme }) => ({
   ...theme.typography.title4,
 }))
 

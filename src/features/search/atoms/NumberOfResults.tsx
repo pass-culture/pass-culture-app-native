@@ -11,6 +11,7 @@ import { LocationFilter } from 'features/search/types'
 import { useGeolocation } from 'libs/geolocation'
 import { ClippedTag } from 'ui/components/ClippedTag'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { H2 } from 'ui/web/titles/H'
 
 interface Props {
   nbHits: number
@@ -52,12 +53,12 @@ export const NumberOfResults: React.FC<Props> = ({ nbHits }) => {
   return (
     <Container>
       {venueLabel ? (
-        <React.Fragment>
+        <H2>
           <Body>{resultsWithSuffix}</Body>
           <Spacer.Column numberOfSpaces={4} />
           <ClippedTag label={venueLabel} onPress={removeVenueId} testId="Enlever le lieu" />
           <Spacer.Column numberOfSpaces={2} />
-        </React.Fragment>
+        </H2>
       ) : (
         <Body aria-live="assertive">{numberOfResults}</Body>
       )}

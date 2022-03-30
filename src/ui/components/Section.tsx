@@ -2,6 +2,7 @@ import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typography'
 
 import { Separator } from './Separator'
 
@@ -24,6 +25,6 @@ const Container = styled.View({
   paddingTop: getSpacing(2),
 })
 
-const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
+const StyledCaption = styled(Typo.Caption).attrs(getHeadingAttrs(2))(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

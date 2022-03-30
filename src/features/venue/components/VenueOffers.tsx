@@ -22,6 +22,7 @@ import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinear
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
 import { MARGIN_DP, Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typography'
 import { Link } from 'ui/web/link/Link'
 
 interface Props {
@@ -116,7 +117,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
       <PassPlaylist
         testID="offersModuleList"
         title={t`Offres`}
-        TitleComponent={Typo.Title4}
+        TitleComponent={PlaylistTitle}
         data={hits}
         itemHeight={itemHeight}
         itemWidth={itemWidth}
@@ -139,6 +140,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
 const MarginContainer = styled.View({
   marginHorizontal: PixelRatio.roundToNearestPixel(MARGIN_DP),
 })
+const PlaylistTitle = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
 
 const styles = StyleSheet.create({
   link: {

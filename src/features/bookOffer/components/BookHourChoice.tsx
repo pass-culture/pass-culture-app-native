@@ -14,6 +14,7 @@ import { formatHour, formatToKeyDate } from 'features/bookOffer/services/utils'
 import { useCreditForOffer } from 'features/offer/services/useHasEnoughCredit'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Typo, Spacer, getSpacing } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typography'
 
 export const BookHourChoice: React.FC = () => {
   const { bookingState, dispatch } = useBooking()
@@ -72,7 +73,7 @@ export const BookHourChoice: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Typo.Title4 testID="HourStep">{t`Heure`}</Typo.Title4>
+      <Typo.Title4 {...getHeadingAttrs(2)} testID="HourStep">{t`Heure`}</Typo.Title4>
       <Spacer.Column numberOfSpaces={2} />
       {bookingState.step === Step.HOUR ? (
         <HourChoiceContainer>{filteredStocks}</HourChoiceContainer>

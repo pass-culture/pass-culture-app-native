@@ -18,6 +18,7 @@ import { HiddenText } from 'ui/components/HiddenText'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typography'
 
 const SMALL_VIEWPORT_MAX_HEIGHT = 500
 
@@ -143,7 +144,7 @@ const TitleIconContainer = styled.View({
   paddingHorizontal: getSpacing(2),
 })
 
-const Title = styled(Typo.Title3)({
+const Title = styled(Typo.Title3).attrs(getHeadingAttrs(2))({
   flexShrink: 1,
 })
 

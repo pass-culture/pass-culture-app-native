@@ -17,6 +17,7 @@ import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityL
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typography'
 import { Link } from 'ui/web/link/Link'
 interface Props {
   hit: SearchHit
@@ -107,7 +108,7 @@ const Column = styled.View({ flexDirection: 'column', flex: 1 })
 
 const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
-const Name = styled(Typo.ButtonText)``
+const Name = styled(Typo.ButtonText).attrs(getHeadingAttrs(3))``
 
 const Distance = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'right',
