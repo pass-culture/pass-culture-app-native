@@ -12,7 +12,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
   }
 >
   <View
-    accessibilityLabel="Pourquoi me demande-t-on ma date de naissance ?"
+    accessibilityLabel="Pour quelle raison me demande-t-on ma date de naissance ?"
     accessible={true}
     focusable={true}
     onClick={[Function]}
@@ -193,6 +193,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
   />
   <RNDatePicker
     androidVariant="nativeAndroid"
+    aria-describedby="testUuidV4"
     cancelText="Cancel"
     confirmText="Confirm"
     date={1164931200000}

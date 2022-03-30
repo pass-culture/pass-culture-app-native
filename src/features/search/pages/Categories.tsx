@@ -57,7 +57,11 @@ export const Categories: React.FC = () => {
 
             return (
               <Li key={searchGroup}>
-                <LabelContainer onPress={selectCategory(searchGroup)} testID={searchGroup}>
+                <LabelContainer
+                  onPress={selectCategory(searchGroup)}
+                  accessibilityRole="radio"
+                  accessibilityState={{ checked: isSelected }}
+                  testID={searchGroup}>
                   <Spacer.Row numberOfSpaces={4} />
                   <StyledIcon />
                   <Spacer.Row numberOfSpaces={4} />

@@ -3,7 +3,7 @@
 exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
 Array [
   <header
-    className="sc-kLwhqv hbvUeN"
+    className="sc-hiCibw lgCcuM"
   >
     <div
       className="css-view-1dbjc4n"
@@ -301,11 +301,14 @@ Array [
             }
           />
           <div
-            aria-label="Fermer la section Pages"
-            className="css-view-1dbjc4n"
+            aria-controls="testUuidV4"
+            aria-expanded={true}
+            className="css-cursor-18t94o4 css-view-1dbjc4n"
+            id="testUuidV4"
             onClick={[Function]}
             onContextMenu={[Function]}
             onKeyDown={[Function]}
+            role="button"
             style={
               Object {
                 "WebkitAlignItems": "center",
@@ -390,8 +393,10 @@ Array [
             }
           >
             <div
+              aria-labelledby="testUuidV4"
               className="css-view-1dbjc4n"
               data-testid="accordionBodyContainer"
+              id="testUuidV4"
               style={
                 Object {
                   "bottom": "0px",
@@ -414,11 +419,13 @@ Array [
                 }
               />
               <div
+                aria-checked={false}
                 className="css-view-1dbjc4n"
                 data-testid="radio-button-Offer"
                 onClick={[Function]}
                 onContextMenu={[Function]}
                 onKeyDown={[Function]}
+                role="radio"
                 style={
                   Object {
                     "MozTransitionProperty": "opacity",
@@ -528,11 +535,13 @@ Array [
                 }
               />
               <div
+                aria-checked={false}
                 className="css-view-1dbjc4n"
                 data-testid="radio-button-Venue"
                 onClick={[Function]}
                 onContextMenu={[Function]}
                 onKeyDown={[Function]}
+                role="radio"
                 style={
                   Object {
                     "MozTransitionProperty": "opacity",
@@ -642,11 +651,13 @@ Array [
                 }
               />
               <div
+                aria-checked={true}
                 className="css-view-1dbjc4n"
                 data-testid="radio-button-Home"
                 onClick={[Function]}
                 onContextMenu={[Function]}
                 onKeyDown={[Function]}
+                role="radio"
                 style={
                   Object {
                     "MozTransitionProperty": "opacity",
@@ -767,11 +778,13 @@ Array [
                 }
               />
               <div
+                aria-checked={false}
                 className="css-view-1dbjc4n"
                 data-testid="radio-button-Search"
                 onClick={[Function]}
                 onContextMenu={[Function]}
                 onKeyDown={[Function]}
+                role="radio"
                 style={
                   Object {
                     "MozTransitionProperty": "opacity",
@@ -881,11 +894,13 @@ Array [
                 }
               />
               <div
+                aria-checked={false}
                 className="css-view-1dbjc4n"
                 data-testid="radio-button-Profile"
                 onClick={[Function]}
                 onContextMenu={[Function]}
                 onKeyDown={[Function]}
+                role="radio"
                 style={
                   Object {
                     "MozTransitionProperty": "opacity",
@@ -995,11 +1010,13 @@ Array [
                 }
               />
               <div
+                aria-checked={false}
                 className="css-view-1dbjc4n"
                 data-testid="radio-button-SignupForm"
                 onClick={[Function]}
                 onContextMenu={[Function]}
                 onKeyDown={[Function]}
+                role="radio"
                 style={
                   Object {
                     "MozTransitionProperty": "opacity",
@@ -1103,11 +1120,14 @@ Array [
             </div>
           </div>
           <div
-            aria-label="Fermer la section Paramètres applicatifs (1)"
-            className="css-view-1dbjc4n"
+            aria-controls="testUuidV4"
+            aria-expanded={true}
+            className="css-cursor-18t94o4 css-view-1dbjc4n"
+            id="testUuidV4"
             onClick={[Function]}
             onContextMenu={[Function]}
             onKeyDown={[Function]}
+            role="button"
             style={
               Object {
                 "WebkitAlignItems": "center",
@@ -1192,8 +1212,10 @@ Array [
             }
           >
             <div
+              aria-labelledby="testUuidV4"
               className="css-view-1dbjc4n"
               data-testid="accordionBodyContainer"
+              id="testUuidV4"
               style={
                 Object {
                   "bottom": "0px",
@@ -1355,11 +1377,14 @@ Array [
             </div>
           </div>
           <div
-            aria-label="Fermer la section Paramètres marketing"
-            className="css-view-1dbjc4n"
+            aria-controls="testUuidV4"
+            aria-expanded={true}
+            className="css-cursor-18t94o4 css-view-1dbjc4n"
+            id="testUuidV4"
             onClick={[Function]}
             onContextMenu={[Function]}
             onKeyDown={[Function]}
+            role="button"
             style={
               Object {
                 "WebkitAlignItems": "center",
@@ -1444,8 +1469,10 @@ Array [
             }
           >
             <div
+              aria-labelledby="testUuidV4"
               className="css-view-1dbjc4n"
               data-testid="accordionBodyContainer"
+              id="testUuidV4"
               style={
                 Object {
                   "bottom": "0px",
@@ -2042,11 +2069,14 @@ Array [
             </div>
           </div>
           <div
-            aria-label="Ouvrir la section Paramètres firebase dynamic link"
-            className="css-view-1dbjc4n"
+            aria-controls="testUuidV4"
+            aria-expanded={false}
+            className="css-cursor-18t94o4 css-view-1dbjc4n"
+            id="testUuidV4"
             onClick={[Function]}
             onContextMenu={[Function]}
             onKeyDown={[Function]}
+            role="button"
             style={
               Object {
                 "WebkitAlignItems": "center",
@@ -2131,8 +2161,10 @@ Array [
             }
           >
             <div
+              aria-labelledby="testUuidV4"
               className="css-view-1dbjc4n"
               data-testid="accordionBodyContainer"
+              id="testUuidV4"
               style={
                 Object {
                   "bottom": "0px",
@@ -2715,16 +2747,8 @@ Array [
             <div
               className="css-view-1dbjc4n"
               data-testid="checkbox"
-              onClick={[Function]}
-              onContextMenu={[Function]}
-              onKeyDown={[Function]}
               style={
                 Object {
-                  "MozTransitionProperty": "opacity",
-                  "MozUserSelect": "auto",
-                  "WebkitTransitionDuration": "0s",
-                  "WebkitTransitionProperty": "opacity",
-                  "WebkitUserSelect": "auto",
                   "backgroundColor": "rgba(255,255,255,1.00)",
                   "borderBottomColor": "rgba(105,106,111,1.00)",
                   "borderBottomLeftRadius": "4px",
@@ -2742,20 +2766,12 @@ Array [
                   "borderTopRightRadius": "4px",
                   "borderTopStyle": "solid",
                   "borderTopWidth": "2px",
-                  "cursor": "pointer",
                   "height": "24px",
-                  "msTouchAction": "manipulation",
-                  "msUserSelect": "auto",
                   "paddingLeft": "0px",
                   "paddingTop": "0px",
-                  "touchAction": "manipulation",
-                  "transitionDuration": "0s",
-                  "transitionProperty": "opacity",
-                  "userSelect": "auto",
                   "width": "24px",
                 }
               }
-              tabIndex="0"
             />
             <div
               className="css-text-901oao"

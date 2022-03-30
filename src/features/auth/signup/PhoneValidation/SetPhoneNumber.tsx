@@ -153,22 +153,18 @@ export const SetPhoneNumber = memo(function SetPhoneNumberComponent() {
                 placeholder={getPlaceholder(country.cca2)}
                 textContentType="telephoneNumber"
                 onSubmitEditing={requestSendPhoneValidationCode}
-                accessibilityDescribedBy={
-                  invalidPhoneNumberMessage ? phoneNumberInputErrorId : undefined
-                }
+                accessibilityDescribedBy={phoneNumberInputErrorId}
                 {...accessibilityAndTestId(t`Entrée pour le numéro de téléphone`)}
               />
             </InputContainer>
+            <InputError
+              relatedInputId={phoneNumberInputErrorId}
+              visible={!!invalidPhoneNumberMessage}
+              messageId={invalidPhoneNumberMessage}
+              numberOfSpacesTop={3}
+            />
             {invalidPhoneNumberMessage ? (
-              <React.Fragment>
-                <InputError
-                  relatedInputId={phoneNumberInputErrorId}
-                  visible
-                  messageId={invalidPhoneNumberMessage}
-                  numberOfSpacesTop={3}
-                />
-                <Spacer.Column numberOfSpaces={5} />
-              </React.Fragment>
+              <Spacer.Column numberOfSpaces={5} />
             ) : (
               <Spacer.Column numberOfSpaces={8} />
             )}

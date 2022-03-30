@@ -6,6 +6,7 @@ import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typography'
 
 import { Step } from '../pages/reducer'
 
@@ -28,7 +29,7 @@ export const BookDateChoice: React.FC<Props> = ({ stocks, userRemainingCredit })
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={4} />
-      <Typo.Title4 testID="DateStep">{t`Date`}</Typo.Title4>
+      <Typo.Title4 {...getHeadingAttrs(2)} testID="DateStep">{t`Date`}</Typo.Title4>
       {bookingState.step === Step.DATE ? (
         <Calendar
           stocks={stocks}

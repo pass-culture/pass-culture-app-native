@@ -21,14 +21,12 @@ export function DatePickerSpinner(props: DatePickerProps) {
   return (
     <React.Fragment>
       <DateInputDisplay date={date} isError={!!props.errorMessage} />
-      {!!props.errorMessage && (
-        <InputError
-          visible
-          messageId={props.errorMessage}
-          numberOfSpacesTop={2}
-          relatedInputId={birthdateInputErrorId}
-        />
-      )}
+      <InputError
+        visible={!!props.errorMessage}
+        messageId={props.errorMessage}
+        numberOfSpacesTop={2}
+        relatedInputId={birthdateInputErrorId}
+      />
       <Spacer.Column numberOfSpaces={5} />
       <SpinnerDatePicker
         testID="date-picker-spinner-native"
@@ -39,7 +37,7 @@ export function DatePickerSpinner(props: DatePickerProps) {
         maximumDate={props.maximumDate}
         minimumDate={props.minimumDate}
         androidVariant="nativeAndroid"
-        aria-describedby={props.errorMessage ? birthdateInputErrorId : undefined}
+        aria-describedby={birthdateInputErrorId}
       />
     </React.Fragment>
   )

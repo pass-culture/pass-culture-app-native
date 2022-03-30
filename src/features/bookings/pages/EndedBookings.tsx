@@ -9,6 +9,7 @@ import { Booking } from 'features/bookings/components/types'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typography'
 const renderItem: ListRenderItem<Booking> = ({ item }) => <EndedBookingItem booking={item} />
 const keyExtractor: (item: Booking) => string = (item) => item.id.toString()
 
@@ -49,7 +50,7 @@ export const EndedBookings: React.FC = () => {
   )
 }
 
-const EndedBookingsCount = styled(Typo.Body)(({ theme }) => ({
+const EndedBookingsCount = styled(Typo.Body).attrs(getHeadingAttrs(2))(({ theme }) => ({
   color: theme.colors.greyDark,
   paddingBottom: getSpacing(5.5),
 }))

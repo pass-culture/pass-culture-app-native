@@ -16,27 +16,23 @@ const Template: ComponentStory<typeof FilterSwitch> = (props) => <FilterSwitch {
 export const Inactive = Template.bind({})
 Inactive.args = {
   active: false,
-  accessibilityLabel: 'Interrupteur inactif',
 }
 
 export const Active = Template.bind({})
 Active.args = {
   active: true,
-  accessibilityLabel: 'Interrupteur actif',
 }
 
 export const InactiveDisabled = Template.bind({})
 InactiveDisabled.args = {
   active: false,
   disabled: true,
-  accessibilityLabel: 'Interrupteur inactif désactivé',
 }
 
 export const ActiveDisabled = Template.bind({})
 ActiveDisabled.args = {
   active: true,
   disabled: true,
-  accessibilityLabel: 'Interrupteur actif désactivé',
 }
 
 export const SwitchWithLabel: ComponentStory<typeof FilterSwitch> = (props) => {

@@ -15,7 +15,7 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
 }))
 
-const testID = 'Interrupteur filtre nouvelles offres'
+const testID = 'Interrupteur'
 
 describe('NewOffer component', () => {
   it('should dispatch TOGGLE_OFFER_NEW onPress', () => {

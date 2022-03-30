@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import React, { useCallback, useState } from 'react'
-import { NativeSyntheticEvent, TextInputSubmitEditingEventData } from 'react-native'
+import { NativeSyntheticEvent, Text, TextInputSubmitEditingEventData } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -15,6 +15,7 @@ import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { MagnifyingGlass as DefaultMagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
+import { getHeadingAttrs } from 'ui/theme/typography'
 
 const LeftIcon: React.FC<{ onPressArrowBack: () => void }> = ({ onPressArrowBack }) => {
   const { searchState } = useSearch()
@@ -81,6 +82,7 @@ export const SearchBox: React.FC = () => {
 
   return (
     <React.Fragment>
+      <HiddenTitle>{t`Recherche une offre, un titre, un lieu... `}</HiddenTitle>
       <SearchInput
         value={query}
         onChangeText={setQuery}
@@ -89,7 +91,7 @@ export const SearchBox: React.FC = () => {
         inputHeight="regular"
         LeftIcon={() => <LeftIcon onPressArrowBack={onPressArrowBack} />}
         onSubmitEditing={onSubmitQuery}
-        accessibilityLabel={t`Barre de recherche des offres`}
+        accessibilityLabel={t`Rechercher un artiste, titre, lieu...`}
         onPressRightIcon={resetSearch}
         accessibilityDescribedBy={accessibilityDescribedBy}
       />
@@ -108,3 +110,9 @@ const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
 const MagnifyingGlass = styled(DefaultMagnifyingGlass).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
 }))``
+
+const HiddenTitle = styled(Text).attrs(getHeadingAttrs(1))({
+  width: '1px',
+  height: '1px',
+  overflow: 'hidden',
+})

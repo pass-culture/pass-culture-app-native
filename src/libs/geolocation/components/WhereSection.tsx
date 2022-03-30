@@ -24,6 +24,7 @@ import { A } from 'ui/web/link/A'
 import { Link } from 'ui/web/link/Link'
 import { Dd } from 'ui/web/list/Dd'
 import { Dt } from 'ui/web/list/Dt'
+import { H2 } from 'ui/web/titles/H'
 
 type Props = {
   beforeNavigateToItinerary?: () => Promise<void> | void
@@ -82,7 +83,9 @@ export const WhereSection: React.FC<Props> = ({
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
-      <SectionTitle>{t`Où\u00a0?`}</SectionTitle>
+      <H2>
+        <SectionTitle>{t`Où\u00a0?`}</SectionTitle>
+      </H2>
       <Dd>
         {showVenueBanner ? (
           <React.Fragment>

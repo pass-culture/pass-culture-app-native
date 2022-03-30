@@ -44,32 +44,32 @@ describe('Analytics - logUseFilter', () => {
 
   it('should log UseFilter once when changing free offer', () => {
     const { getByTestId } = render(<Section.FreeOffer />)
-    fireEvent.click(getByTestId('Interrupteur filtre offres gratuites'))
-    fireEvent.click(getByTestId('Interrupteur filtre offres gratuites'))
+    fireEvent.click(getByTestId('Interrupteur'))
+    fireEvent.click(getByTestId('Interrupteur'))
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Free)
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })
 
   it('should log UseFilter once when changing duo offer', () => {
     const { getByTestId } = render(<Section.DuoOffer />)
-    fireEvent.click(getByTestId('Interrupteur filtre offres duo'))
-    fireEvent.click(getByTestId('Interrupteur filtre offres duo'))
+    fireEvent.click(getByTestId('Interrupteur'))
+    fireEvent.click(getByTestId('Interrupteur'))
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Duo)
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })
 
   it('should log UseFilter once when changing new offer', () => {
     const { getByTestId } = render(<Section.NewOffer />)
-    fireEvent.click(getByTestId('Interrupteur filtre nouvelles offres'))
-    fireEvent.click(getByTestId('Interrupteur filtre nouvelles offres'))
+    fireEvent.click(getByTestId('Interrupteur'))
+    fireEvent.click(getByTestId('Interrupteur'))
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.New)
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })
 
   it('should log UseFilter once when changing date filter', () => {
     const { getByTestId } = render(<Section.Date />)
-    fireEvent.click(getByTestId('Interrupteur filtre dates'))
-    fireEvent.click(getByTestId('Interrupteur filtre dates'))
+    fireEvent.click(getByTestId('Interrupteur'))
+    fireEvent.click(getByTestId('Interrupteur'))
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Date)
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })
@@ -84,8 +84,8 @@ describe('Analytics - logUseFilter', () => {
   })
   it('should log UseFilter once when changing hour filter', () => {
     const { getByTestId } = render(<Section.Hour />)
-    fireEvent.click(getByTestId('Interrupteur filtre heures'))
-    fireEvent.click(getByTestId('Interrupteur filtre heures'))
+    fireEvent.click(getByTestId('Interrupteur'))
+    fireEvent.click(getByTestId('Interrupteur'))
     expect(analytics.logUseFilter).toHaveBeenCalledWith(SectionTitle.Hour)
     expect(analytics.logUseFilter).toHaveBeenCalledTimes(1)
   })

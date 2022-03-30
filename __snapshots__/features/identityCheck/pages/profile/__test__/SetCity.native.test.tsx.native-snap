@@ -262,6 +262,7 @@ exports[`<SetCity/> should render correctly 1`] = `
               <TextInput
                 accessibilityLabel="Entrée pour le code postal"
                 accessible={true}
+                aria-describedby="testUuidV4"
                 autoCorrect={false}
                 editable={true}
                 keyboardType="number-pad"

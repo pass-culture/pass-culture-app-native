@@ -18,6 +18,7 @@ import { HiddenText } from 'ui/components/HiddenText'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typography'
 
 const SMALL_VIEWPORT_MAX_HEIGHT = 500
 
@@ -40,21 +41,6 @@ export const SearchLandingPage: React.FC = () => {
   const searchCategoriesDescribedBy = uuidv4()
   const locationFilterDescribedBy = uuidv4()
 
-  const searchCategoriesAriaLabel = t({
-    id: 'search category label',
-    values: {
-      searchGroupLabel,
-    },
-    message: 'Je cherche dans la catégorie {searchGroupLabel}',
-  })
-  const locationFilterAriaLabel = t({
-    id: 'search location label',
-    values: {
-      locationLabel,
-    },
-    message: 'Je cherche {locationLabel}',
-  })
-
   return (
     <React.Fragment>
       <ScrollView contentContainerStyle={contentContainerStyle}>
@@ -62,8 +48,7 @@ export const SearchLandingPage: React.FC = () => {
 
         <TouchableOpacity
           onPress={() => navigate('SearchCategories')}
-          aria-describedby={searchCategoriesDescribedBy}
-          aria-label={searchCategoriesAriaLabel}>
+          aria-describedby={searchCategoriesDescribedBy}>
           <BicolorListItem title={searchGroupLabel} Icon={Icon} secondaryText={t`Je cherche`} />
         </TouchableOpacity>
         <HiddenText
@@ -75,8 +60,7 @@ export const SearchLandingPage: React.FC = () => {
 
         <TouchableOpacity
           onPress={() => navigate('LocationFilter')}
-          aria-describedby={locationFilterDescribedBy}
-          aria-label={locationFilterAriaLabel}>
+          aria-describedby={locationFilterDescribedBy}>
           <BicolorListItem title={locationLabel} Icon={LocationIcon} secondaryText={t`Où`} />
         </TouchableOpacity>
         <HiddenText
@@ -160,7 +144,7 @@ const TitleIconContainer = styled.View({
   paddingHorizontal: getSpacing(2),
 })
 
-const Title = styled(Typo.Title3)({
+const Title = styled(Typo.Title3).attrs(getHeadingAttrs(2))({
   flexShrink: 1,
 })
 

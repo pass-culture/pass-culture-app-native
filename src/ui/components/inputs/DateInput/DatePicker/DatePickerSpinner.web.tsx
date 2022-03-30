@@ -51,21 +51,19 @@ export function DatePickerSpinner(props: DatePickerProps) {
   return (
     <React.Fragment>
       <DateInputDisplay date={birthdate} isError={!!props.errorMessage} />
-      {!!props.errorMessage && (
-        <InputError
-          visible
-          messageId={props.errorMessage}
-          numberOfSpacesTop={2}
-          relatedInputId={birthdateInputErrorId}
-        />
-      )}
+      <InputError
+        visible={!!props.errorMessage}
+        messageId={props.errorMessage}
+        numberOfSpacesTop={2}
+        relatedInputId={birthdateInputErrorId}
+      />
       <Spacer.Column numberOfSpaces={2} />
       <SpinnerPickerWrapper testID="date-picker-spinner-touch">
         <Picker
           valueGroups={date}
           optionGroups={optionGroups}
           onChange={onDateChange}
-          aria-describedby={props.errorMessage ? birthdateInputErrorId : undefined}
+          aria-describedby={birthdateInputErrorId}
         />
       </SpinnerPickerWrapper>
     </React.Fragment>

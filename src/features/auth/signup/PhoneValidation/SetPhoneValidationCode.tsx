@@ -242,20 +242,18 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
                 maxLength={codeInputPlaceholder.length}
                 keyboardType="number-pad"
                 onSubmitEditing={validateCode}
-                aria-describedby={errorMessage ? validationCodeInputId : undefined}
+                aria-describedby={validationCodeInputId}
                 {...accessibilityAndTestId(t`Entrée du code de confirmation`)}
               />
             </CodeInputContainer>
+            <InputError
+              visible={!!errorMessage}
+              messageId={errorMessage}
+              numberOfSpacesTop={3}
+              relatedInputId={validationCodeInputId}
+            />
             {errorMessage ? (
-              <React.Fragment>
-                <InputError
-                  visible
-                  messageId={errorMessage}
-                  numberOfSpacesTop={3}
-                  relatedInputId={validationCodeInputId}
-                />
-                <Spacer.Column numberOfSpaces={5} />
-              </React.Fragment>
+              <Spacer.Column numberOfSpaces={5} />
             ) : (
               <Spacer.Column numberOfSpaces={8} />
             )}

@@ -1,16 +1,24 @@
 import * as React from 'react'
-import Svg, { Path, G } from 'react-native-svg'
+import { Path, G } from 'react-native-svg'
 import styled from 'styled-components/native'
 
-import { RectangleIconInterface } from './types'
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
-const CheckboxMarkSvg: React.FunctionComponent<RectangleIconInterface> = ({
+import { AccessibleRectangleIconInterface } from './types'
+
+const CheckboxMarkSvg: React.FunctionComponent<AccessibleRectangleIconInterface> = ({
   width,
   height,
   color,
+  accessibilityLabel,
   testID,
 }) => (
-  <Svg width={width} height={height} viewBox="0 0 17 11" testID={testID}>
+  <AccessibleSvg
+    width={width}
+    height={height}
+    viewBox="0 0 17 11"
+    accessibilityLabel={accessibilityLabel}
+    testID={testID}>
     <G fill="none" fillRule="evenodd">
       <G fill={color}>
         <G>
@@ -23,7 +31,7 @@ const CheckboxMarkSvg: React.FunctionComponent<RectangleIconInterface> = ({
         </G>
       </G>
     </G>
-  </Svg>
+  </AccessibleSvg>
 )
 
 export const CheckboxMark = styled(CheckboxMarkSvg).attrs(({ color, width, height, theme }) => ({

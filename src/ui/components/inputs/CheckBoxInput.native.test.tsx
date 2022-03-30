@@ -7,15 +7,15 @@ import { ColorsEnum } from 'ui/theme/colors'
 
 import { CheckboxInput } from './CheckboxInput'
 
-const NotCheckedCheckboxInput = <CheckboxInput isChecked={false} setIsChecked={doNothingFn} />
-const CheckedCheckboxInput = <CheckboxInput isChecked={true} setIsChecked={doNothingFn} />
+const NotCheckedCheckboxInput = <CheckboxInput isChecked={false} />
+const CheckedCheckboxInput = <CheckboxInput isChecked={true} />
 
 describe('<CheckboxInput />', () => {
   it('should render correctly when not checked', () => {
     const { getByTestId } = render(NotCheckedCheckboxInput)
 
     const renderedCheckbox = getByTestId('checkbox')
-    expect(renderedCheckbox.props.style.backgroundColor).toEqual(ColorsEnum.WHITE)
+    expect(renderedCheckbox.props.style[0].backgroundColor).toEqual(ColorsEnum.WHITE)
   })
 
   it('should render correctly when checked', () => {
@@ -25,7 +25,3 @@ describe('<CheckboxInput />', () => {
     expect(checkboxMark).toBeTruthy()
   })
 })
-
-function doNothingFn() {
-  /* do nothing */
-}

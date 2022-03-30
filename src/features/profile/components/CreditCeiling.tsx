@@ -93,7 +93,10 @@ const Container = styled.View({
   paddingHorizontal: getSpacing(1),
 })
 
-const Amount = styled(Typo.Title4)<{ color: ColorsEnum }>(({ color }) => ({ color }))
+const Amount = styled(Typo.Title4).attrs({
+  accessibilityRole: undefined,
+  'aria-level': undefined,
+})<{ color: ColorsEnum }>(({ color }) => ({ color }))
 
 const Label = styled.Text({
   fontSize: 12,

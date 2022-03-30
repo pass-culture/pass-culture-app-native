@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { Typo } from 'ui/theme/typography'
+import { getHeadingAttrs, Typo } from 'ui/theme/typography'
 
 import { monthNames } from './Calendar.utils'
 
@@ -10,5 +10,5 @@ type Props = {
 
 export const MonthHeader: React.FC<Props> = ({ date }) => {
   const month = `${monthNames[date.getMonth()]} ${date.getFullYear()}`
-  return <Typo.Body>{month}</Typo.Body>
+  return <Typo.Body {...getHeadingAttrs(3)}>{month}</Typo.Body>
 }

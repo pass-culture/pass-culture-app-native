@@ -17,8 +17,8 @@ Object {
           class="css-view-1dbjc4n"
           style="height: 16px;"
         />
-        <h4
-          aria-level="4"
+        <h2
+          aria-level="2"
           class="css-reset-4rbku5 css-text-901oao"
           data-testid="DateStep"
           dir="auto"
@@ -26,7 +26,7 @@ Object {
           style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
         >
           Date
-        </h4>
+        </h2>
         <div
           class="css-view-1dbjc4n"
           style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
@@ -56,8 +56,8 @@ Object {
           class="css-view-1dbjc4n"
           style="height: 24px;"
         />
-        <h4
-          aria-level="4"
+        <h2
+          aria-level="2"
           class="css-reset-4rbku5 css-text-901oao"
           data-testid="HourStep"
           dir="auto"
@@ -65,7 +65,7 @@ Object {
           style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
         >
           Heure
-        </h4>
+        </h2>
         <div
           class="css-view-1dbjc4n"
           style="height: 8px;"
@@ -93,8 +93,8 @@ Object {
           class="css-view-1dbjc4n"
           style="height: 24px;"
         />
-        <h4
-          aria-level="4"
+        <h2
+          aria-level="2"
           class="css-reset-4rbku5 css-text-901oao"
           data-testid="DuoStep"
           dir="auto"
@@ -102,7 +102,7 @@ Object {
           style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
         >
           Nombre de place
-        </h4>
+        </h2>
         <div
           class="css-view-1dbjc4n"
           style="height: 8px;"
@@ -274,8 +274,8 @@ Object {
         class="css-view-1dbjc4n"
         style="height: 16px;"
       />
-      <h4
-        aria-level="4"
+      <h2
+        aria-level="2"
         class="css-reset-4rbku5 css-text-901oao"
         data-testid="DateStep"
         dir="auto"
@@ -283,7 +283,7 @@ Object {
         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
       >
         Date
-      </h4>
+      </h2>
       <div
         class="css-view-1dbjc4n"
         style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
@@ -313,8 +313,8 @@ Object {
         class="css-view-1dbjc4n"
         style="height: 24px;"
       />
-      <h4
-        aria-level="4"
+      <h2
+        aria-level="2"
         class="css-reset-4rbku5 css-text-901oao"
         data-testid="HourStep"
         dir="auto"
@@ -322,7 +322,7 @@ Object {
         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
       >
         Heure
-      </h4>
+      </h2>
       <div
         class="css-view-1dbjc4n"
         style="height: 8px;"
@@ -350,8 +350,8 @@ Object {
         class="css-view-1dbjc4n"
         style="height: 24px;"
       />
-      <h4
-        aria-level="4"
+      <h2
+        aria-level="2"
         class="css-reset-4rbku5 css-text-901oao"
         data-testid="DuoStep"
         dir="auto"
@@ -359,7 +359,7 @@ Object {
         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
       >
         Nombre de place
-      </h4>
+      </h2>
       <div
         class="css-view-1dbjc4n"
         style="height: 8px;"

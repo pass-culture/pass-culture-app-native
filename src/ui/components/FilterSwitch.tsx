@@ -2,16 +2,15 @@ import React, { memo, useEffect, useRef } from 'react'
 import { Animated, Easing } from 'react-native'
 import styled, { DefaultTheme } from 'styled-components/native'
 
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getShadow, getSpacing, Spacer } from 'ui/theme'
 import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 
 interface Props {
   active: boolean
-  accessibilityLabel: string
   checkboxID?: string
   accessibilityDescribedBy?: string
+  accessibilityLabelledBy?: string
   disabled?: boolean
   toggle: () => void
 }
@@ -45,22 +44,16 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
       <TouchableOpacity
         onPress={toggle}
         disabled={disabled}
-        accessibilityValue={{ text: active.toString() }}
         accessibilityRole="switch"
         accessibilityState={{ checked: active }}
-        {...accessibilityAndTestId(props.accessibilityLabel)}
-        aria-describedby={props.accessibilityDescribedBy}>
+        aria-describedby={props.accessibilityDescribedBy}
+        aria-labelledby={props.accessibilityLabelledBy}
+        testID="Interrupteur">
         <StyledBackgroundColor active={active} disabled={disabled}>
           <StyledToggle style={{ marginLeft }} />
         </StyledBackgroundColor>
       </TouchableOpacity>
-      <HiddenCheckbox
-        id={checkboxID}
-        name={props.accessibilityLabel}
-        checked={active}
-        accessibilityLabel={props.accessibilityLabel}
-        onChange={toggle}
-      />
+      <HiddenCheckbox id={checkboxID} checked={active} onChange={toggle} />
     </FilterSwitchContainer>
   )
 }

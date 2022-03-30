@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import React, { MutableRefObject, useEffect, useRef, useState } from 'react'
 import {
   Platform,
@@ -13,6 +12,7 @@ import {
   LayoutChangeEvent,
 } from 'react-native'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { useFunctionOnce } from 'libs/hooks'
 import { getHeadingAttrs } from 'ui/theme/typography'
@@ -35,7 +35,6 @@ interface IAccordionItemProps {
 export const AccordionItem = ({
   scrollViewRef,
   title,
-  accessibilityTitle = '',
   children,
   defaultOpen = false,
   onOpenOnce,
@@ -96,17 +95,18 @@ export const AccordionItem = ({
     setBodyPositionY(event.nativeEvent.layout.y)
   }
 
-  const accessibilityLabel =
-    (open ? t`Fermer la section` : t`Ouvrir la section`) +
-    ` ${typeof title === 'string' ? title : accessibilityTitle}`
+  const accordionLabelId = uuidv4()
+  const accordionBodyId = uuidv4()
 
   return (
     <React.Fragment>
       <TouchableWithoutFeedback
+        accessibilityRole="button"
         onPress={toggleListItem}
         onLayout={getPositionOfAccordionItem}
-        accessibilityLabel={accessibilityLabel}>
-        <View style={[styles.titleContainer, titleStyle]}>
+        accessibilityState={{ expanded: open }}
+        aria-controls={accordionBodyId}>
+        <View nativeID={accordionLabelId} style={[styles.titleContainer, titleStyle]}>
           <Title>{title}</Title>
           <Animated.View style={{ transform: [{ rotateZ: arrowAngle }] }} testID="accordionArrow">
             <ArrowNext />
@@ -115,10 +115,12 @@ export const AccordionItem = ({
       </TouchableWithoutFeedback>
       <StyledAnimatedView style={{ height: bodyHeight }} testID="accordionBody">
         <StyledView
+          nativeID={accordionBodyId}
           style={bodyStyle}
           testID="accordionBodyContainer"
           onLayout={(event) => setBodySectionHeight(event.nativeEvent.layout.height)}
-          hidden={!showChildren}>
+          hidden={!showChildren}
+          aria-labelledby={accordionLabelId}>
           {children}
         </StyledView>
       </StyledAnimatedView>

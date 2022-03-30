@@ -2,14 +2,13 @@ import styled from 'styled-components'
 
 import {
   scrollButtonWebStyles,
-  scrollButtonAccessibilityLabel,
   ScrollButtonForNotTouchDeviceProps,
 } from 'ui/components/buttons/scrollButtonForNotTouchDeviceUtils'
 
 export const ScrollButtonForNotTouchDevice =
-  styled.button.attrs<ScrollButtonForNotTouchDeviceProps>(({ horizontalAlign, onPress }) => ({
-    tabIndex: '-1',
+  styled.button.attrs<ScrollButtonForNotTouchDeviceProps>(({ onPress }) => ({
     type: 'button',
     onClick: onPress,
-    ['aria-label']: scrollButtonAccessibilityLabel({ horizontalAlign }),
+    tabIndex: '-1',
+    ['aria-hidden']: true,
   }))<ScrollButtonForNotTouchDeviceProps>(scrollButtonWebStyles)

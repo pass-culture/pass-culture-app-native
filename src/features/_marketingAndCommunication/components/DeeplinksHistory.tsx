@@ -97,7 +97,7 @@ export const DeeplinksHistory = ({
       />
       <BottomContainer>
         <StyledCheckBox onPress={onToggleKeepHistory}>
-          <CheckboxInput isChecked={!!keepHistory} setIsChecked={onToggleKeepHistory} />
+          <CheckboxInput isChecked={!!keepHistory} />
           <CheckBoxText>{t`Conserver l'historique`}</CheckBoxText>
         </StyledCheckBox>
       </BottomContainer>

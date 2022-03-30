@@ -5,8 +5,8 @@ import { render } from 'tests/utils/web'
 
 import { CheckboxInput } from './CheckboxInput'
 
-const NotCheckedCheckboxInput = <CheckboxInput isChecked={false} setIsChecked={doNothingFn} />
-const CheckedCheckboxInput = <CheckboxInput isChecked={true} setIsChecked={doNothingFn} />
+const NotCheckedCheckboxInput = <CheckboxInput isChecked={false} />
+const CheckedCheckboxInput = <CheckboxInput isChecked={true} />
 
 describe('<CheckboxInput />', () => {
   it('should render correctly when not checked', () => {
@@ -23,7 +23,3 @@ describe('<CheckboxInput />', () => {
     expect(checkboxMark).toBeTruthy()
   })
 })
-
-function doNothingFn() {
-  /* do nothing */
-}

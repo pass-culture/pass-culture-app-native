@@ -85,6 +85,10 @@ msgstr "Accepter les conditions générales d'utilisation et la politique de con
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
+#: src/ui/components/ValidationMark.tsx
+msgid "Accessible"
+msgstr "Accessible"
+
 #: src/features/navigation/TabBar/routes.ts
 #: src/features/navigation/TabBar/routes.ts
 msgid "Accueil"
@@ -137,10 +141,6 @@ msgstr "Afficher le mot de passe"
 #: src/features/search/atoms/Buttons/ShowResults.tsx
 msgid "Afficher les 999+ résultats"
 msgstr "Afficher les 999+ résultats"
-
-#: src/features/search/atoms/Buttons/Filter.tsx
-msgid "Afficher les filtres"
-msgstr "Afficher les filtres"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "Aide financière 15 ans"
@@ -288,10 +288,6 @@ msgstr "Avant dernier jour pour retirer"
 #: src/features/search/pages/LocationPicker.tsx
 msgid "Barre de recherche des lieux"
 msgstr "Barre de recherche des lieux"
-
-#: src/features/search/components/SearchBox.tsx
-msgid "Barre de recherche des offres"
-msgstr "Barre de recherche des offres"
 
 #: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
 msgid "Besoin d'un lien ?"
@@ -1041,10 +1037,6 @@ msgstr "Fermer la modale et refuser la collecte des données"
 msgid "Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
 msgstr "Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
 
-#: src/ui/components/AccordionItem.tsx
-msgid "Fermer la section"
-msgstr "Fermer la section"
-
 #: src/features/search/components/CalendarPicker.tsx
 #: src/features/search/components/CalendarPicker.web.tsx
 msgid "Fermer le calendrier"
@@ -1220,42 +1212,6 @@ msgstr "Informations personnelles"
 #: src/features/profile/components/LoggedOutHeader.tsx
 msgid "Inscris-toi pour accéder à toutes les fonctionnalités de l’application"
 msgstr "Inscris-toi pour accéder à toutes les fonctionnalités de l’application"
-
-#: src/features/profile/pages/NotificationSettings.tsx
-msgid "Interrupteur d'autorisation d'envoi des e-mails"
-msgstr "Interrupteur d'autorisation d'envoi des e-mails"
-
-#: src/features/profile/pages/NotificationSettings.tsx
-msgid "Interrupteur d'autorisation des notifications marketing"
-msgstr "Interrupteur d'autorisation des notifications marketing"
-
-#: src/features/profile/pages/ConsentSettings.tsx
-msgid "Interrupteur données de navigation"
-msgstr "Interrupteur données de navigation"
-
-#: src/features/search/sections/Date.tsx
-msgid "Interrupteur filtre dates"
-msgstr "Interrupteur filtre dates"
-
-#: src/features/search/sections/Hour.tsx
-msgid "Interrupteur filtre heures"
-msgstr "Interrupteur filtre heures"
-
-#: src/features/search/sections/NewOffer.tsx
-msgid "Interrupteur filtre nouvelles offres"
-msgstr "Interrupteur filtre nouvelles offres"
-
-#: src/features/search/sections/DuoOffer.tsx
-msgid "Interrupteur filtre offres duo"
-msgstr "Interrupteur filtre offres duo"
-
-#: src/features/search/sections/FreeOffer.tsx
-msgid "Interrupteur filtre offres gratuites"
-msgstr "Interrupteur filtre offres gratuites"
-
-#: src/features/profile/pages/Profile.tsx
-msgid "Interrupteur géolocalisation"
-msgstr "Interrupteur géolocalisation"
 
 #: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
 msgid "J'ai compris"
@@ -1713,6 +1669,10 @@ msgstr "Nombre de place"
 msgid "Nombre de tentatives dépassé. Réessaye dans 1 minute"
 msgstr "Nombre de tentatives dépassé. Réessaye dans 1 minute"
 
+#: src/ui/components/ValidationMark.tsx
+msgid "Non accessible"
+msgstr "Non accessible"
+
 #: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
 msgid "Nos conseils :"
 msgstr "Nos conseils :"
@@ -1870,10 +1830,6 @@ msgstr "Ouvrir l'application de message"
 #: src/libs/country-picker/CountryPicker.tsx
 msgid "Ouvrir la modale de choix de l'indicatif téléphonique"
 msgstr "Ouvrir la modale de choix de l'indicatif téléphonique"
-
-#: src/ui/components/AccordionItem.tsx
-msgid "Ouvrir la section"
-msgstr "Ouvrir la section"
 
 #: src/libs/share/WebShareModal.web.tsx
 msgid "Ouvrir le gestionnaire mail"
@@ -2035,6 +1991,10 @@ msgid "Pour plus d'informations, nous t'invitons à consulter notre"
 msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
+msgid "Pour quelle raison me demande-t-on ma date de naissance ?"
+msgstr "Pour quelle raison me demande-t-on ma date de naissance ?"
+
+#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 msgid "Pour quelle raison ?"
 msgstr "Pour quelle raison ?"
 
@@ -2054,10 +2014,6 @@ msgstr "Pourquoi les biens numériques sont-ils limités ?"
 #: src/features/profile/components/BeneficiaryCeilings.tsx
 msgid "Pourquoi les biens physiques et numériques sont-ils limités ?"
 msgstr "Pourquoi les biens physiques et numériques sont-ils limités ?"
-
-#: src/features/auth/signup/SetBirthday/SetBirthday.tsx
-msgid "Pourquoi me demande-t-on ma date de naissance ?"
-msgstr "Pourquoi me demande-t-on ma date de naissance ?"
 
 #: src/features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal.tsx
 msgid "Pourquoi saisir ma date de naissance ?"
@@ -2179,6 +2135,10 @@ msgstr "Recherche par catégorie"
 msgid "Recherche par localisation"
 msgstr "Recherche par localisation"
 
+#: src/features/search/components/SearchBox.tsx
+msgid "Recherche une offre, un titre, un lieu..."
+msgstr "Recherche une offre, un titre, un lieu..."
+
 #: src/features/search/atoms/Buttons/Search.tsx
 msgid "Rechercher"
 msgstr "Rechercher"
@@ -2186,6 +2146,10 @@ msgstr "Rechercher"
 #: src/features/navigation/TabBar/routes.ts
 msgid "Rechercher des offres"
 msgstr "Rechercher des offres"
+
+#: src/features/search/components/SearchBox.tsx
+msgid "Rechercher un artiste, titre, lieu..."
+msgstr "Rechercher un artiste, titre, lieu..."
 
 #: src/features/home/components/NoContentError.tsx
 msgid "Rechercher une offre"
@@ -2515,6 +2479,10 @@ msgstr "Supprimer mon compte"
 #: src/features/identityCheck/pages/profile/Status.tsx
 msgid "Sélectionne ton statut"
 msgstr "Sélectionne ton statut"
+
+#: src/ui/svg/icons/Validate.tsx
+msgid "Sélectionné"
+msgstr "Sélectionné"
 
 #: src/features/identityCheck/errors/hooks/useNotEligibleEduConnectErrorData.ts
 msgid "S’il y a une erreur sur ta date de naissance, contacte ton établissement pour modifier ton profil ÉduConnect."
@@ -3071,14 +3039,6 @@ msgstr "Voir le détail de l’offre"
 msgid "Voir les disponibilités"
 msgstr "Voir les disponibilités"
 
-#: src/ui/components/buttons/scrollButtonForNotTouchDeviceUtils.ts
-msgid "Voir les propositions précédentes"
-msgstr "Voir les propositions précédentes"
-
-#: src/ui/components/buttons/scrollButtonForNotTouchDeviceUtils.ts
-msgid "Voir les propositions suivantes"
-msgstr "Voir les propositions suivantes"
-
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 #: src/features/offer/services/useCtaWordingAndAction.ts
 msgid "Voir ma réservation"
@@ -3386,14 +3346,6 @@ msgstr "réalisée"
 #: src/features/bookOffer/components/CancellationDetails.tsx
 msgid "réservation annulable jusqu'au"
 msgstr "Cette réservation peut être annulée jusqu’au {date}"
-
-#: src/features/search/components/SearchLandingPage.tsx
-msgid "search category label"
-msgstr "Je cherche dans la catégorie {searchGroupLabel}"
-
-#: src/features/search/components/SearchLandingPage.tsx
-msgid "search location label"
-msgstr "Je cherche {locationLabel}"
 
 #: src/features/offer/services/useShareOffer.ts
 msgid "share offer message"

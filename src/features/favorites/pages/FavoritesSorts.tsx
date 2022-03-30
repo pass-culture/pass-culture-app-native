@@ -14,6 +14,8 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Li } from 'ui/web/list/Li'
+import { VerticalUl } from 'ui/web/list/Ul'
 
 export type FavoriteSortBy = 'RECENTLY_ADDED' | 'ASCENDING_PRICE' | 'AROUND_ME'
 
@@ -74,27 +76,33 @@ export const FavoritesSorts: React.FC = () => {
           <Typo.Title4>{t`Trier par`}</Typo.Title4>
         </TitleContainer>
 
-        {SORT_OPTIONS_LIST.map(([sortBy, label]) => {
-          const isSelected = stagedSelectedSortBy === sortBy
-          return (
-            <React.Fragment key={sortBy}>
-              <LabelContainer
-                accessibilityLabel={t`Trier par` + ` ${label}`}
-                key={sortBy}
-                onPress={() => onSortBySelection(sortBy)}
-                testID={sortBy}>
-                <Spacer.Column numberOfSpaces={8} />
-                <Spacer.Row numberOfSpaces={6} />
-                <Label isSelected={isSelected}>{label}</Label>
-                <Spacer.Flex />
-                {!!isSelected && <ValidatePrimary />}
-              </LabelContainer>
-              {sortBy === 'AROUND_ME' && positionError ? (
-                <InputError visible messageId={positionError.message} numberOfSpacesTop={1} />
-              ) : null}
-            </React.Fragment>
-          )
-        })}
+        <VerticalUl>
+          {SORT_OPTIONS_LIST.map(([sortBy, label]) => {
+            const isSelected = stagedSelectedSortBy === sortBy
+            return (
+              <Li key={sortBy}>
+                <LabelContainer
+                  accessibilityRole="radio"
+                  accessibilityState={{ checked: isSelected }}
+                  accessibilityLabel={t`Trier par` + ` ${label}`}
+                  key={sortBy}
+                  onPress={() => onSortBySelection(sortBy)}
+                  testID={sortBy}>
+                  <Spacer.Column numberOfSpaces={8} />
+                  <Spacer.Row numberOfSpaces={6} />
+                  <Label isSelected={isSelected}>{label}</Label>
+                  <Spacer.Flex />
+                  {!!isSelected && <ValidatePrimary />}
+                </LabelContainer>
+                <InputError
+                  visible={!!(sortBy === 'AROUND_ME' && positionError)}
+                  messageId={positionError?.message}
+                  numberOfSpacesTop={1}
+                />
+              </Li>
+            )
+          })}
+        </VerticalUl>
       </ScrollView>
 
       <ButtonContainer>

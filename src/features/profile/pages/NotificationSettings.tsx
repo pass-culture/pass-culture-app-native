@@ -166,7 +166,6 @@ export function NotificationSettings() {
           <SectionWithSwitch
             title={t`Autoriser l’envoi d’e-mails`}
             active={allowEmails}
-            accessibilityLabel={t`Interrupteur d'autorisation d'envoi des e-mails`}
             toggle={toggleEmails}
             disabled={!isLoggedIn}
           />
@@ -181,7 +180,6 @@ export function NotificationSettings() {
             <SectionWithSwitch
               title={t`Autoriser les notifications marketing`}
               active={pushSwitchEnabled}
-              accessibilityLabel={t`Interrupteur d'autorisation des notifications marketing`}
               toggle={togglePush}
               disabled={!isLoggedIn}
             />

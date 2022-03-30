@@ -23,8 +23,7 @@ describe('AccordionItem', () => {
     const accordionBody = accordion.getByTestId('accordionBody')
     const accordionBodyContainer = accordion.getByTestId('accordionBodyContainer')
     expect(accordionBody.props.style).toEqual({ height: 0, overflow: 'hidden' })
-    expect(accordion.queryByLabelText(`Ouvrir la section ${accordionTitle}`)).toBeTruthy()
-    expect(accordion.queryByLabelText(`Fermer la section ${accordionTitle}`)).toBeFalsy()
+    expect(accordion.getByRole('button').props.accessibilityState.expanded).toBeFalsy()
 
     fireEvent(accordionBodyContainer, 'layout', { nativeEvent: { layout: { height: 30 } } })
 
@@ -34,8 +33,7 @@ describe('AccordionItem', () => {
     })
 
     expect(accordionBody.props.style).toEqual({ height: 30, overflow: 'hidden' })
-    expect(accordion.queryByLabelText(`Fermer la section ${accordionTitle}`)).toBeTruthy()
-    expect(accordion.queryByLabelText(`Ouvrir la section ${accordionTitle}`)).toBeFalsy()
+    expect(accordion.getByRole('button').props.accessibilityState.expanded).toBeTruthy()
   })
 
   it('correct arrow animation,', async () => {

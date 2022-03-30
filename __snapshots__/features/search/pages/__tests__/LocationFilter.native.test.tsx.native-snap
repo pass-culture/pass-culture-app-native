@@ -281,6 +281,12 @@ exports[`LocationFilter component should render correctly 1`] = `
         }
       />
       <View
+        accessibilityRole="radio"
+        accessibilityState={
+          Object {
+            "checked": false,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -408,6 +414,12 @@ exports[`LocationFilter component should render correctly 1`] = `
         }
       />
       <View
+        accessibilityRole="radio"
+        accessibilityState={
+          Object {
+            "checked": false,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -485,6 +497,7 @@ exports[`LocationFilter component should render correctly 1`] = `
             }
           >
             <Text
+              aria-describedby="testUuidV4"
               isSelected={false}
               numberOfLines={3}
               style={
@@ -536,6 +549,12 @@ exports[`LocationFilter component should render correctly 1`] = `
         }
       />
       <View
+        accessibilityRole="radio"
+        accessibilityState={
+          Object {
+            "checked": true,
+          }
+        }
         accessible={true}
         collapsable={false}
         focusable={true}

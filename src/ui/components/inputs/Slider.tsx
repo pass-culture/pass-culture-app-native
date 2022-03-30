@@ -84,11 +84,18 @@ export function Slider(props: Props) {
         rightCursor?.addEventListener('keydown', updateRightCursor)
 
         leftCursor?.setAttribute('role', 'slider')
-        rightCursor?.setAttribute('role', 'slider')
+        leftCursor?.setAttribute('aria-valuemin', `${min}`)
+        leftCursor?.setAttribute('aria-valuemax', `${values.length === 1 ? max : values[1]}`)
+        leftCursor?.setAttribute('aria-valuenow', `${values[0]}`)
         leftCursor?.setAttribute(
           'aria-valuetext',
           `${rightCursor ? minLabel : maxLabel} ${formatValues(values[0])}`
         )
+
+        rightCursor?.setAttribute('role', 'slider')
+        rightCursor?.setAttribute('aria-valuemin', `${values[0]}`)
+        rightCursor?.setAttribute('aria-valuemax', `${max}`)
+        rightCursor?.setAttribute('aria-valuenow', `${values[1]}`)
         rightCursor?.setAttribute('aria-valuetext', `${maxLabel} ${formatValues(values[1])}`)
       }
     }

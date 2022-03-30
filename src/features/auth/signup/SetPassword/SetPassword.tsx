@@ -32,7 +32,6 @@ export const SetPassword: FunctionComponent<PreValidationSignupStepProps> = (pro
         label={t`Mot de passe`}
         accessibilityDescribedBy={passwordDescribedBy}
         value={password}
-        autoFocus={true}
         onChangeText={setPassword}
         placeholder={t`Ton mot de passe`}
         onSubmitEditing={submitPassword}

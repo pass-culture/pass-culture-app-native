@@ -724,52 +724,28 @@ const FilterSwitchesSection = () => {
         type="clickable"
         title="Active and enabled"
         cta={
-          <FilterSwitch
-            active={switch1}
-            accessibilityLabel="Active and enabled"
-            disabled={false}
-            toggle={() => setSwitch1((p) => !p)}
-          />
+          <FilterSwitch active={switch1} disabled={false} toggle={() => setSwitch1((p) => !p)} />
         }
       />
       <Spacer.Column numberOfSpaces={1} />
       <SectionRow
         type="clickable"
         title="Active and disabled"
-        cta={
-          <FilterSwitch
-            active={true}
-            accessibilityLabel="Active and disabled"
-            disabled={true}
-            toggle={() => null}
-          />
-        }
+        cta={<FilterSwitch active={true} disabled={true} toggle={() => null} />}
       />
       <Spacer.Column numberOfSpaces={1} />
       <SectionRow
         type="clickable"
         title="Inactive and enabled"
         cta={
-          <FilterSwitch
-            active={switch2}
-            accessibilityLabel="Inactive and enabled"
-            disabled={false}
-            toggle={() => setSwitch2((p) => !p)}
-          />
+          <FilterSwitch active={switch2} disabled={false} toggle={() => setSwitch2((p) => !p)} />
         }
       />
       <Spacer.Column numberOfSpaces={1} />
       <SectionRow
         type="clickable"
         title="Inactive and disabled"
-        cta={
-          <FilterSwitch
-            active={false}
-            accessibilityLabel="Inactive and disabled"
-            disabled={true}
-            toggle={() => null}
-          />
-        }
+        cta={<FilterSwitch active={false} disabled={true} toggle={() => null} />}
       />
     </React.Fragment>
   )
@@ -781,13 +757,7 @@ const Label: React.FC<{ label: string }> = ({ label }) => {
 }
 const ExampleSwitch: React.FC = () => {
   const [active, setActive] = useState<boolean>(false)
-  return (
-    <FilterSwitch
-      active={active}
-      accessibilityLabel="Example Switch"
-      toggle={() => setActive((prevActive) => !prevActive)}
-    />
-  )
+  return <FilterSwitch active={active} toggle={() => setActive((prevActive) => !prevActive)} />
 }
 
 const SnackBars = () => {

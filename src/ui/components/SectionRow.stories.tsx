@@ -47,7 +47,7 @@ ClickableWithIcon.args = {
 }
 
 const ExampleSwitch: React.FC = () => {
-  return <FilterSwitch active accessibilityLabel="Switch" toggle={() => 'do nothing'} />
+  return <FilterSwitch active toggle={() => 'do nothing'} />
 }
 
 export const ClickableWithCTA = Template.bind({})

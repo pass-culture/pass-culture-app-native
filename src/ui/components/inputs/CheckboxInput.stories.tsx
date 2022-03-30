@@ -19,9 +19,3 @@ export const IsChecked = Template.bind({})
 IsChecked.args = {
   isChecked: true,
 }
-
-export const NotAccessible = Template.bind({})
-NotAccessible.args = {
-  isChecked: false,
-  accessible: false,
-}

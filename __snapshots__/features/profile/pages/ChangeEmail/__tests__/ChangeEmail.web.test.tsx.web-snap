@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <header
-        class="sc-cxpSdN iuBpmA"
+        class="sc-giYglK eMiGRJ"
       >
         <div
           class="css-view-1dbjc4n"
@@ -108,7 +108,7 @@ Object {
             style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           >
             <form
-              class="sc-fFeiMQ hvykVs"
+              class="sc-dJjYzT hsbQVX"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -142,6 +142,7 @@ Object {
                   style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
                 >
                   <input
+                    aria-describedby="testUuidV4"
                     autocapitalize="none"
                     autocomplete="email"
                     autocorrect="on"
@@ -158,6 +159,10 @@ Object {
                   />
                 </div>
               </div>
+              <div
+                id="testUuidV4"
+                role="alert"
+              />
               <div
                 class="css-view-1dbjc4n"
                 style="height: 16px;"
@@ -194,6 +199,7 @@ Object {
                   style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
                 >
                   <input
+                    aria-describedby="testUuidV4"
                     aria-label="Mot de passe"
                     autocapitalize="sentences"
                     autocomplete="on"
@@ -211,7 +217,7 @@ Object {
                   />
                   <button
                     aria-label="Afficher le mot de passe"
-                    class="sc-egiyK sc-llYSUQ ktBExF jZhjXh"
+                    class="sc-egiyK sc-ezbkAF ktBExF eVPdqe"
                     tabindex="0"
                     type="button"
                   >
@@ -228,6 +234,10 @@ Object {
                   </button>
                 </div>
               </div>
+              <div
+                id="testUuidV4"
+                role="alert"
+              />
               <div
                 class="css-view-1dbjc4n"
                 style="height: 40px;"
@@ -264,7 +274,7 @@ Object {
   </body>,
   "container": <div>
     <header
-      class="sc-cxpSdN iuBpmA"
+      class="sc-giYglK eMiGRJ"
     >
       <div
         class="css-view-1dbjc4n"
@@ -366,7 +376,7 @@ Object {
           style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         >
           <form
-            class="sc-fFeiMQ hvykVs"
+            class="sc-dJjYzT hsbQVX"
           >
             <div
               class="css-view-1dbjc4n"
@@ -400,6 +410,7 @@ Object {
                 style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
               >
                 <input
+                  aria-describedby="testUuidV4"
                   autocapitalize="none"
                   autocomplete="email"
                   autocorrect="on"
@@ -416,6 +427,10 @@ Object {
                 />
               </div>
             </div>
+            <div
+              id="testUuidV4"
+              role="alert"
+            />
             <div
               class="css-view-1dbjc4n"
               style="height: 16px;"
@@ -452,6 +467,7 @@ Object {
                 style="align-items: center; background-color: rgb(255, 255, 255); border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 22px; border-top-right-radius: 22px; border-bottom-right-radius: 22px; border-bottom-left-radius: 22px; border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; flex-direction: row; height: 40px; padding: 4px 16px 4px 16px; width: 100%;"
               >
                 <input
+                  aria-describedby="testUuidV4"
                   aria-label="Mot de passe"
                   autocapitalize="sentences"
                   autocomplete="on"
@@ -469,7 +485,7 @@ Object {
                 />
                 <button
                   aria-label="Afficher le mot de passe"
-                  class="sc-egiyK sc-llYSUQ ktBExF jZhjXh"
+                  class="sc-egiyK sc-ezbkAF ktBExF eVPdqe"
                   tabindex="0"
                   type="button"
                 >
@@ -486,6 +502,10 @@ Object {
                 </button>
               </div>
             </div>
+            <div
+              id="testUuidV4"
+              role="alert"
+            />
             <div
               class="css-view-1dbjc4n"
               style="height: 40px;"

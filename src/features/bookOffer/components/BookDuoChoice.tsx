@@ -6,6 +6,7 @@ import { useBooking } from 'features/bookOffer/pages/BookingOfferWrapper'
 import { Step } from 'features/bookOffer/pages/reducer'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typography'
 
 export const BookDuoChoice: React.FC = () => {
   const { bookingState, dispatch } = useBooking()
@@ -16,7 +17,7 @@ export const BookDuoChoice: React.FC = () => {
 
   return (
     <React.Fragment>
-      <Typo.Title4 testID="DuoStep">{t`Nombre de place`}</Typo.Title4>
+      <Typo.Title4 {...getHeadingAttrs(2)} testID="DuoStep">{t`Nombre de place`}</Typo.Title4>
       <Spacer.Column numberOfSpaces={2} />
       {bookingState.step === Step.DUO ? (
         <DuoChoiceSelector />

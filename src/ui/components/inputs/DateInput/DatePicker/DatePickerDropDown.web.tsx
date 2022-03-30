@@ -26,19 +26,16 @@ export function DatePickerDropDown(props: DatePickerProps) {
         onChange={setDate}
         minimumDate={props.minimumDate}
         defaultSelectedDate={props.defaultSelectedDate}
-        aria-describedby={props.errorMessage ? birthdateInputErrorId : undefined}
+        aria-describedby={birthdateInputErrorId}
         errorMessage={props.errorMessage}
       />
-      {props.errorMessage ? (
-        <InputError
-          visible
-          messageId={props.errorMessage}
-          numberOfSpacesTop={2}
-          relatedInputId={birthdateInputErrorId}
-        />
-      ) : (
-        <Spacer.Column numberOfSpaces={6} />
-      )}
+      <InputError
+        visible={!!props.errorMessage}
+        messageId={props.errorMessage}
+        numberOfSpacesTop={2}
+        relatedInputId={birthdateInputErrorId}
+      />
+      {!!props.errorMessage && <Spacer.Column numberOfSpaces={6} />}
       <Spacer.Column numberOfSpaces={4} />
     </React.Fragment>
   )

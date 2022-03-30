@@ -29,6 +29,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Dd } from 'ui/web/list/Dd'
 import { Dl } from 'ui/web/list/Dl'
 import { Dt } from 'ui/web/list/Dt'
+import { H1, H2 } from 'ui/web/titles/H'
 
 import { useOffer } from '../api/useOffer'
 import { OfferIconCaptions, OfferPartialDescription } from '../components'
@@ -100,13 +101,15 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
         <Spacer.Column numberOfSpaces={2} />
         <MarginContainer>
           <HiddenTitle>{t`Titre`}</HiddenTitle>
-          <OfferTitle
-            testID="offerTitle"
-            numberOfLines={3}
-            adjustsFontSizeToFit
-            allowFontScaling={false}>
-            {offer.name}
-          </OfferTitle>
+          <H1>
+            <OfferTitle
+              testID="offerTitle"
+              numberOfLines={3}
+              adjustsFontSizeToFit
+              allowFontScaling={false}>
+              {offer.name}
+            </OfferTitle>
+          </H1>
         </MarginContainer>
         <Spacer.Column numberOfSpaces={4} />
         <OfferIconCaptions
@@ -120,7 +123,9 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
         <Spacer.Column numberOfSpaces={4} />
 
         <SectionWithDivider visible={shouldDisplayWhenBlock} margin={true}>
-          <SectionTitle>{t`Quand\u00a0?`}</SectionTitle>
+          <H2>
+            <SectionTitle>{t`Quand\u00a0?`}</SectionTitle>
+          </H2>
           <SectionBody>{formattedDate}</SectionBody>
         </SectionWithDivider>
 

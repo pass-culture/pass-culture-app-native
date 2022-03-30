@@ -8,7 +8,7 @@ export const AccessibleSvg: React.FunctionComponent<SvgProps> = ({
 }) => (
   <Svg
     accessibilityLabel={accessibilityLabel}
-    accessibilityRole="image"
+    accessibilityRole={accessibilityLabel ? 'image' : undefined}
     aria-hidden={!accessibilityLabel}
     {...props}>
     {children}

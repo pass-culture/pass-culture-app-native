@@ -22,6 +22,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Dd } from 'ui/web/list/Dd'
 import { Dl } from 'ui/web/list/Dl'
 import { Dt } from 'ui/web/list/Dt'
+import { H1 } from 'ui/web/titles/H'
 
 import { useVenue } from '../api/useVenue'
 import { VenuePartialAccordionDescription } from '../components/VenuePartialAccordionDescription'
@@ -86,13 +87,15 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
           </VenueAddressContainer>
           <Spacer.Column numberOfSpaces={2} />
           <HiddenTitle>{t`Lieu`}</HiddenTitle>
-          <VenueTitle
-            testID="venueTitle"
-            numberOfLines={2}
-            adjustsFontSizeToFit
-            allowFontScaling={false}>
-            {publicName || name}
-          </VenueTitle>
+          <H1>
+            <VenueTitle
+              testID="venueTitle"
+              numberOfLines={2}
+              adjustsFontSizeToFit
+              allowFontScaling={false}>
+              {publicName || name}
+            </VenueTitle>
+          </H1>
           <Spacer.Column numberOfSpaces={4} />
         </MarginContainer>
 

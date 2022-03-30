@@ -17,16 +17,16 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
   }),
 }))
 
-const testID = 'Interrupteur filtre heures'
+const testID = 'Interrupteur'
 
 describe('Hour component', () => {
   it('should be controlled by searchState.timeRange', () => {
     let { parent } = render(<HourSection />).getByTestId(testID)
-    expect(parent?.props.accessibilityValue.text).toBe('false')
+    expect(parent?.props.accessibilityState.checked).toBeFalsy()
 
     mockSearchState = { ...initialSearchState, timeRange }
     parent = render(<HourSection />).getByTestId(testID).parent
-    expect(parent?.props.accessibilityValue.text).toBe('true')
+    expect(parent?.props.accessibilityState.checked).toBeTruthy()
   })
 
   it('should dispatch TOGGLE_HOUR onPress', () => {

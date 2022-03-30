@@ -145,16 +145,14 @@ export const ForgottenPassword: FunctionComponent = () => {
             email={email}
             onEmailChange={onEmailChange}
             autoFocus={true}
-            accessibilityDescribedBy={errorMessage ? emailErrorMessageId : undefined}
+            accessibilityDescribedBy={emailErrorMessageId}
           />
-          {!!errorMessage && (
-            <InputError
-              visible
-              messageId={errorMessage}
-              numberOfSpacesTop={2}
-              relatedInputId={emailErrorMessageId}
-            />
-          )}
+          <InputError
+            visible={!!errorMessage}
+            messageId={errorMessage}
+            numberOfSpacesTop={2}
+            relatedInputId={emailErrorMessageId}
+          />
           <Spacer.Column numberOfSpaces={6} />
           <ButtonPrimary
             wording={t`Valider`}
