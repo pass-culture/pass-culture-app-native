@@ -12,16 +12,22 @@ export const CulturalSurveyProgressBar = (props: CulturalSurveyProgressBarProps)
   const progressPercent = `${props.progress * 100}%`
 
   return (
-    <Container>
-      <ProgressBarContainer>
-        <StyledProgressBar progress={props.progress} />
-      </ProgressBarContainer>
-      <PercentageContainer>
-        <SurveyProgressPercentage>{progressPercent}</SurveyProgressPercentage>
-      </PercentageContainer>
-    </Container>
+    <VerticalContainer>
+      <Container>
+        <ProgressBarContainer>
+          <StyledProgressBar progress={props.progress} />
+        </ProgressBarContainer>
+        <PercentageContainer>
+          <SurveyProgressPercentage>{progressPercent}</SurveyProgressPercentage>
+        </PercentageContainer>
+      </Container>
+    </VerticalContainer>
   )
 }
+
+const VerticalContainer = styled.View({
+  flexGrow: 1,
+})
 
 const StyledProgressBar = styled(ProgressBar).attrs(({ theme }) => ({
   colors: [theme.colors.secondary, theme.colors.primary],
@@ -29,11 +35,11 @@ const StyledProgressBar = styled(ProgressBar).attrs(({ theme }) => ({
 
 const Container = styled.View({
   flexDirection: 'row',
+  justifyContent: 'flex-start',
   height: getSpacing(6),
 })
 
 const PercentageContainer = styled.View({
-  flex: 0.1,
   alignSelf: 'center',
 })
 
@@ -42,7 +48,7 @@ const SurveyProgressPercentage = styled(Typo.Caption)({
 })
 
 const ProgressBarContainer = styled.View({
-  flex: 0.9,
+  flex: 1,
   alignSelf: 'center',
   maxWidth: getSpacing(51),
 })

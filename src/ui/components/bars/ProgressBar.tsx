@@ -40,7 +40,6 @@ const Container = styled.View({
 
 const ProgressBarContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
-  marginLeft: getSpacing(2),
   flex: 1,
   border: 1,
   borderColor: theme.colors.greyMedium,
