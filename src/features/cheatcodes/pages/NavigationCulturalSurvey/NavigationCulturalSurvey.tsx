@@ -31,6 +31,7 @@ export function NavigationCulturalSurvey(): JSX.Element {
       />
       <StyledContainer>
         <LinkToComponent name="CulturalSurveyIntro" />
+        <LinkToComponent name="CulturalSurveyQuestions" />
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>

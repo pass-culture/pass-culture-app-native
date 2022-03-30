@@ -14,6 +14,7 @@ export type Referrals =
 export type CulturalSurveyRootStackParamList = {
   NavigationCulturalSurvey: undefined
   CulturalSurveyIntro: undefined
+  CulturalSurveyQuestions: undefined
 }
 
 export type IdentityCheckRootStackParamList = {
