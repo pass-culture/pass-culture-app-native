@@ -1,14 +1,12 @@
 import { t } from '@lingui/macro'
 import React, { useEffect, useRef, useState } from 'react'
 import { Animated, Easing, TouchableWithoutFeedback, Platform } from 'react-native'
-import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { useElementHeight } from 'ui/hooks/useElementHeight'
 import { ArrowDown as DefaultArrowDown } from 'ui/svg/icons/ArrowDown'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { Dd } from 'ui/web/list/Dd'
 
 interface Props {
   description?: string | undefined
@@ -95,7 +93,7 @@ export const VenuePartialAccordionDescription: React.FC<Props> = ({ description,
   )
 }
 
-const Container = webStyled(Dd)({
+const Container = styled.View({
   padding: getSpacing(6),
 })
 
