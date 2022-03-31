@@ -17,10 +17,11 @@ import { A } from 'ui/web/link/A'
 interface BookingDetailsTicketContentProps {
   booking: BookingReponse
   activationCodeFeatureEnabled?: boolean
+  proDisableEventsQrcode?: boolean
 }
 
 export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentProps) => {
-  const { booking, activationCodeFeatureEnabled } = props
+  const { booking, activationCodeFeatureEnabled, proDisableEventsQrcode } = props
   const offer = booking.stock.offer
   const { isEvent } = useSubcategory(offer.subcategoryId)
   const properties = getBookingProperties(booking, isEvent)
@@ -61,7 +62,7 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
             <TicketCode code={booking.token} />
             {properties.isDigital ? (
               accessOfferButton
-            ) : booking.qrCodeData ? (
+            ) : booking.qrCodeData && !proDisableEventsQrcode ? (
               <QrCodeView qrCodeData={booking.qrCodeData} />
             ) : null}
           </React.Fragment>
