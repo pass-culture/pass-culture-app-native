@@ -1627,6 +1627,11 @@ export interface SettingsResponse {
    * @memberof SettingsResponse
    */
   objectStorageUrl: string
+  /**
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
+   proDisableEventsQrcode: boolean
 }
 /**
  * @export
