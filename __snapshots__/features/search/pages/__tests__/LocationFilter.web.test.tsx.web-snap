@@ -174,7 +174,7 @@ Object {
                     />
                     <div
                       class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; padding-right: 8px; padding-left: 8px;"
+                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px; padding-right: 8px; padding-left: 8px;"
                     >
                       <div
                         class="css-text-901oao css-textMultiLine-cens5h"
@@ -239,7 +239,7 @@ Object {
                     />
                     <div
                       class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; padding-right: 8px; padding-left: 8px;"
+                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px; padding-right: 8px; padding-left: 8px;"
                     >
                       <div
                         aria-describedby="testUuidV4"
@@ -303,7 +303,7 @@ Object {
                     />
                     <div
                       class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; padding-right: 8px; padding-left: 8px;"
+                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px; padding-right: 8px; padding-left: 8px;"
                     >
                       <div
                         class="css-text-901oao css-textMultiLine-cens5h"
@@ -313,11 +313,6 @@ Object {
                         Partout
                       </div>
                     </div>
-                  </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="align-items: center; flex-direction: row; height: 100%;"
-                  >
                     <div
                       class="css-view-1dbjc4n"
                       data-testid="validateIcon"
@@ -330,6 +325,10 @@ Object {
                       </div>
                     </div>
                   </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="align-items: center; flex-direction: row; height: 100%;"
+                  />
                 </div>
               </li>
             </ul>
@@ -508,7 +507,7 @@ Object {
                   />
                   <div
                     class="css-view-1dbjc4n"
-                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; padding-right: 8px; padding-left: 8px;"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px; padding-right: 8px; padding-left: 8px;"
                   >
                     <div
                       class="css-text-901oao css-textMultiLine-cens5h"
@@ -573,7 +572,7 @@ Object {
                   />
                   <div
                     class="css-view-1dbjc4n"
-                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; padding-right: 8px; padding-left: 8px;"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px; padding-right: 8px; padding-left: 8px;"
                   >
                     <div
                       aria-describedby="testUuidV4"
@@ -637,7 +636,7 @@ Object {
                   />
                   <div
                     class="css-view-1dbjc4n"
-                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; padding-right: 8px; padding-left: 8px;"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px; padding-right: 8px; padding-left: 8px;"
                   >
                     <div
                       class="css-text-901oao css-textMultiLine-cens5h"
@@ -647,11 +646,6 @@ Object {
                       Partout
                     </div>
                   </div>
-                </div>
-                <div
-                  class="css-view-1dbjc4n"
-                  style="align-items: center; flex-direction: row; height: 100%;"
-                >
                   <div
                     class="css-view-1dbjc4n"
                     data-testid="validateIcon"
@@ -664,6 +658,10 @@ Object {
                     </div>
                   </div>
                 </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="align-items: center; flex-direction: row; height: 100%;"
+                />
               </div>
             </li>
           </ul>

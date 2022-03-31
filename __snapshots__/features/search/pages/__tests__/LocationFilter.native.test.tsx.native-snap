@@ -359,6 +359,7 @@ exports[`LocationFilter component should render correctly 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
+                  "marginRight": 0,
                   "paddingHorizontal": 8,
                 },
               ]
@@ -491,6 +492,7 @@ exports[`LocationFilter component should render correctly 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
+                  "marginRight": 0,
                   "paddingHorizontal": 8,
                 },
               ]
@@ -626,6 +628,7 @@ exports[`LocationFilter component should render correctly 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
+                  "marginRight": 0,
                   "paddingHorizontal": 8,
                 },
               ]
@@ -648,6 +651,15 @@ exports[`LocationFilter component should render correctly 1`] = `
               Partout
             </Text>
           </View>
+          <View
+            height={24}
+            testID="validateIcon"
+            width={24}
+          >
+            <Text>
+              validateIcon-SVG-Mock
+            </Text>
+          </View>
         </View>
         <View
           style={
@@ -659,17 +671,7 @@ exports[`LocationFilter component should render correctly 1`] = `
               },
             ]
           }
-        >
-          <View
-            height={24}
-            testID="validateIcon"
-            width={24}
-          >
-            <Text>
-              validateIcon-SVG-Mock
-            </Text>
-          </View>
-        </View>
+        />
       </View>
     </View>
   </RCTScrollView>
