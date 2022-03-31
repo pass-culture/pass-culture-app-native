@@ -85,7 +85,7 @@ describe('OfferDate component', () => {
     mockSearchState.date = { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate: Today }
     const { getByTestId, toJSON } = render(<OfferDate />)
 
-    fireEvent.press(getByTestId('pickedDate'))
+    fireEvent.press(getByTestId('dateFilter'))
 
     const withCalendar = toJSON()
     if (Array.isArray(withCalendar)) {
@@ -93,7 +93,7 @@ describe('OfferDate component', () => {
       expect(withCalendar.includes('NoCalendar')).toBeFalsy()
     }
 
-    fireEvent.press(getByTestId('pickedDate'))
+    fireEvent.press(getByTestId('dateFilter'))
 
     const withoutCalendar = toJSON()
     if (Array.isArray(withoutCalendar)) {
