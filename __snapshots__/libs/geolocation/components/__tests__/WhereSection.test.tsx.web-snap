@@ -11,158 +11,101 @@ Array [
     }
   />,
   <h2
-    className="sc-ieecCq"
+    aria-level={2}
+    className="css-reset-4rbku5 css-text-901oao"
+    dir="auto"
+    role="heading"
+    style={
+      Object {
+        "color": "rgba(22,22,23,1.00)",
+        "fontFamily": "Montserrat-Medium",
+        "fontSize": "18px",
+        "lineHeight": "22px",
+      }
+    }
   >
-    <dt
-      className="sc-ezbkAF sc-bYoBSM kzvYaI cqykSW"
-    >
-      Où ?
-    </dt>
+    Où ?
   </h2>,
-  <dd
-    className="sc-giYglK gYKHrB"
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "16px",
+      }
+    }
+  />,
+  <div
+    className="css-text-901oao"
+    dir="auto"
+    onClick={[Function]}
+    style={
+      Object {
+        "WebkitBoxDirection": "normal",
+        "WebkitBoxOrient": "vertical",
+        "WebkitFlexDirection": "column",
+        "display": "flex",
+        "flexDirection": "column",
+        "msFlexDirection": "column",
+      }
+    }
+    tabIndex="-1"
   >
     <div
+      aria-label="Lieu Le Petit Rintintin 1"
       className="css-view-1dbjc4n"
-      style={
-        Object {
-          "height": "16px",
-        }
-      }
-    />
-    <div
-      className="css-text-901oao"
-      dir="auto"
+      data-testid="VenueBannerComponent"
       onClick={[Function]}
+      onContextMenu={[Function]}
+      onKeyDown={[Function]}
       style={
         Object {
+          "MozTransitionProperty": "opacity",
+          "MozUserSelect": "auto",
+          "WebkitAlignItems": "center",
+          "WebkitBoxAlign": "center",
           "WebkitBoxDirection": "normal",
-          "WebkitBoxOrient": "vertical",
-          "WebkitFlexDirection": "column",
-          "display": "flex",
-          "flexDirection": "column",
-          "msFlexDirection": "column",
+          "WebkitBoxOrient": "horizontal",
+          "WebkitFlexDirection": "row",
+          "WebkitTransitionDuration": "0s",
+          "WebkitTransitionProperty": "opacity",
+          "WebkitUserSelect": "auto",
+          "alignItems": "center",
+          "cursor": "pointer",
+          "display": "inline-flex",
+          "flexDirection": "row",
+          "msFlexAlign": "center",
+          "msFlexDirection": "row",
+          "msTouchAction": "manipulation",
+          "msUserSelect": "auto",
+          "touchAction": "manipulation",
+          "transitionDuration": "0s",
+          "transitionProperty": "opacity",
+          "userSelect": "auto",
         }
       }
-      tabIndex="-1"
+      tabIndex="0"
     >
       <div
-        aria-label="Lieu Le Petit Rintintin 1"
         className="css-view-1dbjc4n"
-        data-testid="VenueBannerComponent"
-        onClick={[Function]}
-        onContextMenu={[Function]}
-        onKeyDown={[Function]}
         style={
           Object {
-            "MozTransitionProperty": "opacity",
-            "MozUserSelect": "auto",
-            "WebkitAlignItems": "center",
-            "WebkitBoxAlign": "center",
-            "WebkitBoxDirection": "normal",
-            "WebkitBoxOrient": "horizontal",
-            "WebkitFlexDirection": "row",
-            "WebkitTransitionDuration": "0s",
-            "WebkitTransitionProperty": "opacity",
-            "WebkitUserSelect": "auto",
-            "alignItems": "center",
-            "cursor": "pointer",
             "display": "inline-flex",
-            "flexDirection": "row",
-            "msFlexAlign": "center",
-            "msFlexDirection": "row",
-            "msTouchAction": "manipulation",
-            "msUserSelect": "auto",
-            "touchAction": "manipulation",
-            "transitionDuration": "0s",
-            "transitionProperty": "opacity",
-            "userSelect": "auto",
+            "width": "8px",
           }
         }
-        tabIndex="0"
+      />
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "display": "inline-flex",
+            "left": "-6px",
+          }
+        }
       >
         <div
           className="css-view-1dbjc4n"
-          style={
-            Object {
-              "display": "inline-flex",
-              "width": "8px",
-            }
-          }
-        />
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "display": "inline-flex",
-              "left": "-6px",
-            }
-          }
-        >
-          <div
-            className="css-view-1dbjc4n"
-            data-testid="BicolorLocationBuilding"
-            style={
-              Object {
-                "display": "inline-flex",
-              }
-            }
-          >
-            <span
-              className="css-text-901oao css-textHasAncestor-16my406"
-            >
-              BicolorLocationBuilding-SVG-Mock
-            </span>
-          </div>
-        </div>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "display": "inline-flex",
-              "width": "8px",
-            }
-          }
-        />
-        <span
-          className="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
-          style={
-            Object {
-              "WebkitFlexShrink": 1,
-              "WebkitLineClamp": 1,
-              "color": "rgba(22,22,23,1.00)",
-              "flexShrink": 1,
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": "15px",
-              "left": "-6px",
-              "lineHeight": "20px",
-              "msFlexNegative": 1,
-              "textTransform": "capitalize",
-            }
-          }
-        >
-          Le Petit Rintintin 1
-        </span>
-        <div
-          className="css-view-1dbjc4n"
-          style={
-            Object {
-              "WebkitBoxFlex": 1,
-              "WebkitFlexBasis": "0px",
-              "WebkitFlexGrow": 1,
-              "WebkitFlexShrink": 1,
-              "display": "inline-flex",
-              "flexBasis": "0px",
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "msFlexNegative": 1,
-              "msFlexPositive": 1,
-              "msFlexPreferredSize": "0px",
-            }
-          }
-        />
-        <div
-          className="css-view-1dbjc4n"
+          data-testid="BicolorLocationBuilding"
           style={
             Object {
               "display": "inline-flex",
@@ -172,137 +115,197 @@ Array [
           <span
             className="css-text-901oao css-textHasAncestor-16my406"
           >
-            undefined-SVG-Mock
+            BicolorLocationBuilding-SVG-Mock
           </span>
         </div>
       </div>
-    </div>
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "height": "16px",
-        }
-      }
-    />
-    <div
-      className="css-text-901oao"
-      dir="auto"
-      style={
-        Object {
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": "12px",
-          "lineHeight": "16px",
-        }
-      }
-    >
-      Adresse
-    </div>
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "height": "4px",
-        }
-      }
-    />
-    <div
-      className="css-text-901oao"
-      dir="auto"
-      style={
-        Object {
-          "color": "rgba(22,22,23,1.00)",
-          "fontFamily": "Montserrat-Regular",
-          "fontSize": "15px",
-          "lineHeight": "20px",
-          "textTransform": "capitalize",
-        }
-      }
-    >
-      PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS
-    </div>
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "height": "16px",
-        }
-      }
-    />
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "backgroundColor": "rgba(203,205,210,1.00)",
-          "height": "1px",
-        }
-      }
-    />
-    <div
-      className="css-view-1dbjc4n"
-      style={
-        Object {
-          "height": "24px",
-        }
-      }
-    />
-    <a
-      className="sc-iCfMLu iaRsUK"
-      href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
-      tabIndex={-1}
-      target="_blank"
-    >
       <div
         className="css-view-1dbjc4n"
         style={
           Object {
-            "WebkitAlignItems": "flex-start",
-            "WebkitBoxAlign": "start",
-            "alignItems": "flex-start",
-            "msFlexAlign": "start",
+            "display": "inline-flex",
+            "width": "8px",
+          }
+        }
+      />
+      <span
+        className="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+        style={
+          Object {
+            "WebkitFlexShrink": 1,
+            "WebkitLineClamp": 1,
+            "color": "rgba(22,22,23,1.00)",
+            "flexShrink": 1,
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": "15px",
+            "left": "-6px",
+            "lineHeight": "20px",
+            "msFlexNegative": 1,
+            "textTransform": "capitalize",
           }
         }
       >
-        <button
-          className="sc-bdvvtL djOqJM sc-gsDKAQ bzsCsN"
-          onClick={[Function]}
-          onDoubleClick={[Function]}
-          tabIndex={0}
-          type="button"
+        Le Petit Rintintin 1
+      </span>
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "WebkitBoxFlex": 1,
+            "WebkitFlexBasis": "0px",
+            "WebkitFlexGrow": 1,
+            "WebkitFlexShrink": 1,
+            "display": "inline-flex",
+            "flexBasis": "0px",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "msFlexNegative": 1,
+            "msFlexPositive": 1,
+            "msFlexPreferredSize": "0px",
+          }
+        }
+      />
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "display": "inline-flex",
+          }
+        }
+      >
+        <span
+          className="css-text-901oao css-textHasAncestor-16my406"
+        >
+          undefined-SVG-Mock
+        </span>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "16px",
+      }
+    }
+  />,
+  <div
+    className="css-text-901oao"
+    dir="auto"
+    style={
+      Object {
+        "color": "rgba(22,22,23,1.00)",
+        "fontFamily": "Montserrat-SemiBold",
+        "fontSize": "12px",
+        "lineHeight": "16px",
+      }
+    }
+  >
+    Adresse
+  </div>,
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "4px",
+      }
+    }
+  />,
+  <div
+    className="css-text-901oao"
+    dir="auto"
+    style={
+      Object {
+        "color": "rgba(22,22,23,1.00)",
+        "fontFamily": "Montserrat-Regular",
+        "fontSize": "15px",
+        "lineHeight": "20px",
+        "textTransform": "capitalize",
+      }
+    }
+  >
+    PATHE BEAUGRENELLE, 2 RUE LAMENNAIS, 75008 PARIS
+  </div>,
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "16px",
+      }
+    }
+  />,
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "backgroundColor": "rgba(203,205,210,1.00)",
+        "height": "1px",
+      }
+    }
+  />,
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "height": "24px",
+      }
+    }
+  />,
+  <a
+    className="sc-iCfMLu iaRsUK"
+    href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
+    tabIndex={-1}
+    target="_blank"
+  >
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "WebkitAlignItems": "flex-start",
+          "WebkitBoxAlign": "start",
+          "alignItems": "flex-start",
+          "msFlexAlign": "start",
+        }
+      }
+    >
+      <button
+        className="sc-bdvvtL djOqJM sc-gsDKAQ bzsCsN"
+        onClick={[Function]}
+        onDoubleClick={[Function]}
+        tabIndex={0}
+        type="button"
+      >
+        <div
+          className="css-view-1dbjc4n"
+          data-testid="button-icon"
         >
           <div
-            className="css-view-1dbjc4n"
-            data-testid="button-icon"
-          >
-            <div
-              className="css-text-901oao"
-              dir="auto"
-            >
-              button-icon-SVG-Mock
-            </div>
-          </div>
-          <div
-            className="css-text-901oao css-textMultiLine-cens5h"
+            className="css-text-901oao"
             dir="auto"
-            style={
-              Object {
-                "WebkitLineClamp": 1,
-                "color": "rgba(22,22,23,1.00)",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": "15px",
-                "lineHeight": "20px",
-                "marginLeft": "8px",
-                "maxWidth": "100%",
-              }
-            }
           >
-            Voir l'itinéraire
+            button-icon-SVG-Mock
           </div>
-        </button>
-      </div>
-    </a>
-  </dd>,
+        </div>
+        <div
+          className="css-text-901oao css-textMultiLine-cens5h"
+          dir="auto"
+          style={
+            Object {
+              "WebkitLineClamp": 1,
+              "color": "rgba(22,22,23,1.00)",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": "15px",
+              "lineHeight": "20px",
+              "marginLeft": "8px",
+              "maxWidth": "100%",
+            }
+          }
+        >
+          Voir l'itinéraire
+        </div>
+      </button>
+    </div>
+  </a>,
   <div
     className="css-view-1dbjc4n"
     style={
@@ -319,142 +322,81 @@ exports[`WhereSection should render correctly 2`] = `
 - First value
 + Second value
 
-@@ -28,10 +28,165 @@
-        }
-      />
-      <div
-        className=\\"css-text-901oao\\"
-        dir=\\"auto\\"
-+       onClick={[Function anonymous]}
+@@ -32,10 +32,165 @@
+      }
+    />,
+    <div
+      className=\\"css-text-901oao\\"
+      dir=\\"auto\\"
++     onClick={[Function anonymous]}
++     style={
++       Object {
++         \\"WebkitBoxDirection\\": \\"normal\\",
++         \\"WebkitBoxOrient\\": \\"vertical\\",
++         \\"WebkitFlexDirection\\": \\"column\\",
++         \\"display\\": \\"flex\\",
++         \\"flexDirection\\": \\"column\\",
++         \\"msFlexDirection\\": \\"column\\",
++       }
++     }
++     tabIndex=\\"-1\\"
++   >
++     <div
++       aria-label=\\"Lieu Le Petit Rintintin 1\\"
++       className=\\"css-view-1dbjc4n\\"
++       data-testid=\\"VenueBannerComponent\\"
++       onClick={[Function onClick]}
++       onContextMenu={[Function onContextMenu]}
++       onKeyDown={[Function onKeyDown]}
 +       style={
 +         Object {
++           \\"MozTransitionProperty\\": \\"opacity\\",
++           \\"MozUserSelect\\": \\"auto\\",
++           \\"WebkitAlignItems\\": \\"center\\",
++           \\"WebkitBoxAlign\\": \\"center\\",
 +           \\"WebkitBoxDirection\\": \\"normal\\",
-+           \\"WebkitBoxOrient\\": \\"vertical\\",
-+           \\"WebkitFlexDirection\\": \\"column\\",
-+           \\"display\\": \\"flex\\",
-+           \\"flexDirection\\": \\"column\\",
-+           \\"msFlexDirection\\": \\"column\\",
++           \\"WebkitBoxOrient\\": \\"horizontal\\",
++           \\"WebkitFlexDirection\\": \\"row\\",
++           \\"WebkitTransitionDuration\\": \\"0s\\",
++           \\"WebkitTransitionProperty\\": \\"opacity\\",
++           \\"WebkitUserSelect\\": \\"auto\\",
++           \\"alignItems\\": \\"center\\",
++           \\"cursor\\": \\"pointer\\",
++           \\"display\\": \\"inline-flex\\",
++           \\"flexDirection\\": \\"row\\",
++           \\"msFlexAlign\\": \\"center\\",
++           \\"msFlexDirection\\": \\"row\\",
++           \\"msTouchAction\\": \\"manipulation\\",
++           \\"msUserSelect\\": \\"auto\\",
++           \\"touchAction\\": \\"manipulation\\",
++           \\"transitionDuration\\": \\"0s\\",
++           \\"transitionProperty\\": \\"opacity\\",
++           \\"userSelect\\": \\"auto\\",
 +         }
 +       }
-+       tabIndex=\\"-1\\"
++       tabIndex=\\"0\\"
 +     >
 +       <div
-+         aria-label=\\"Lieu Le Petit Rintintin 1\\"
 +         className=\\"css-view-1dbjc4n\\"
-+         data-testid=\\"VenueBannerComponent\\"
-+         onClick={[Function onClick]}
-+         onContextMenu={[Function onContextMenu]}
-+         onKeyDown={[Function onKeyDown]}
 +         style={
 +           Object {
-+             \\"MozTransitionProperty\\": \\"opacity\\",
-+             \\"MozUserSelect\\": \\"auto\\",
-+             \\"WebkitAlignItems\\": \\"center\\",
-+             \\"WebkitBoxAlign\\": \\"center\\",
-+             \\"WebkitBoxDirection\\": \\"normal\\",
-+             \\"WebkitBoxOrient\\": \\"horizontal\\",
-+             \\"WebkitFlexDirection\\": \\"row\\",
-+             \\"WebkitTransitionDuration\\": \\"0s\\",
-+             \\"WebkitTransitionProperty\\": \\"opacity\\",
-+             \\"WebkitUserSelect\\": \\"auto\\",
-+             \\"alignItems\\": \\"center\\",
-+             \\"cursor\\": \\"pointer\\",
 +             \\"display\\": \\"inline-flex\\",
-+             \\"flexDirection\\": \\"row\\",
-+             \\"msFlexAlign\\": \\"center\\",
-+             \\"msFlexDirection\\": \\"row\\",
-+             \\"msTouchAction\\": \\"manipulation\\",
-+             \\"msUserSelect\\": \\"auto\\",
-+             \\"touchAction\\": \\"manipulation\\",
-+             \\"transitionDuration\\": \\"0s\\",
-+             \\"transitionProperty\\": \\"opacity\\",
-+             \\"userSelect\\": \\"auto\\",
++             \\"width\\": \\"8px\\",
 +           }
 +         }
-+         tabIndex=\\"0\\"
++       />
++       <div
++         className=\\"css-view-1dbjc4n\\"
++         style={
++           Object {
++             \\"display\\": \\"inline-flex\\",
++             \\"left\\": \\"-6px\\",
++           }
++         }
 +       >
 +         <div
 +           className=\\"css-view-1dbjc4n\\"
-+           style={
-+             Object {
-+               \\"display\\": \\"inline-flex\\",
-+               \\"width\\": \\"8px\\",
-+             }
-+           }
-+         />
-+         <div
-+           className=\\"css-view-1dbjc4n\\"
-+           style={
-+             Object {
-+               \\"display\\": \\"inline-flex\\",
-+               \\"left\\": \\"-6px\\",
-+             }
-+           }
-+         >
-+           <div
-+             className=\\"css-view-1dbjc4n\\"
-+             data-testid=\\"BicolorLocationBuilding\\"
-+             style={
-+               Object {
-+                 \\"display\\": \\"inline-flex\\",
-+               }
-+             }
-+           >
-+             <span
-+               className=\\"css-text-901oao css-textHasAncestor-16my406\\"
-+             >
-+               BicolorLocationBuilding-SVG-Mock
-+             </span>
-+           </div>
-+         </div>
-+         <div
-+           className=\\"css-view-1dbjc4n\\"
-+           style={
-+             Object {
-+               \\"display\\": \\"inline-flex\\",
-+               \\"width\\": \\"8px\\",
-+             }
-+           }
-+         />
-+         <span
-+           className=\\"css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h\\"
-+           style={
-+             Object {
-+               \\"WebkitFlexShrink\\": 1,
-+               \\"WebkitLineClamp\\": 1,
-+               \\"color\\": \\"rgba(22,22,23,1.00)\\",
-+               \\"flexShrink\\": 1,
-+               \\"fontFamily\\": \\"Montserrat-Bold\\",
-+               \\"fontSize\\": \\"15px\\",
-+               \\"left\\": \\"-6px\\",
-+               \\"lineHeight\\": \\"20px\\",
-+               \\"msFlexNegative\\": 1,
-+               \\"textTransform\\": \\"capitalize\\",
-+             }
-+           }
-+         >
-+           Le Petit Rintintin 1
-+         </span>
-+         <div
-+           className=\\"css-view-1dbjc4n\\"
-+           style={
-+             Object {
-+               \\"WebkitBoxFlex\\": 1,
-+               \\"WebkitFlexBasis\\": \\"0px\\",
-+               \\"WebkitFlexGrow\\": 1,
-+               \\"WebkitFlexShrink\\": 1,
-+               \\"display\\": \\"inline-flex\\",
-+               \\"flexBasis\\": \\"0px\\",
-+               \\"flexGrow\\": 1,
-+               \\"flexShrink\\": 1,
-+               \\"msFlexNegative\\": 1,
-+               \\"msFlexPositive\\": 1,
-+               \\"msFlexPreferredSize\\": \\"0px\\",
-+             }
-+           }
-+         />
-+         <div
-+           className=\\"css-view-1dbjc4n\\"
++           data-testid=\\"BicolorLocationBuilding\\"
 +           style={
 +             Object {
 +               \\"display\\": \\"inline-flex\\",
@@ -464,25 +406,86 @@ exports[`WhereSection should render correctly 2`] = `
 +           <span
 +             className=\\"css-text-901oao css-textHasAncestor-16my406\\"
 +           >
-+             undefined-SVG-Mock
++             BicolorLocationBuilding-SVG-Mock
 +           </span>
 +         </div>
 +       </div>
-+     </div>
-+     <div
-+       className=\\"css-view-1dbjc4n\\"
-+       style={
-+         Object {
-+           \\"height\\": \\"16px\\",
++       <div
++         className=\\"css-view-1dbjc4n\\"
++         style={
++           Object {
++             \\"display\\": \\"inline-flex\\",
++             \\"width\\": \\"8px\\",
++           }
 +         }
++       />
++       <span
++         className=\\"css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h\\"
++         style={
++           Object {
++             \\"WebkitFlexShrink\\": 1,
++             \\"WebkitLineClamp\\": 1,
++             \\"color\\": \\"rgba(22,22,23,1.00)\\",
++             \\"flexShrink\\": 1,
++             \\"fontFamily\\": \\"Montserrat-Bold\\",
++             \\"fontSize\\": \\"15px\\",
++             \\"left\\": \\"-6px\\",
++             \\"lineHeight\\": \\"20px\\",
++             \\"msFlexNegative\\": 1,
++             \\"textTransform\\": \\"capitalize\\",
++           }
++         }
++       >
++         Le Petit Rintintin 1
++       </span>
++       <div
++         className=\\"css-view-1dbjc4n\\"
++         style={
++           Object {
++             \\"WebkitBoxFlex\\": 1,
++             \\"WebkitFlexBasis\\": \\"0px\\",
++             \\"WebkitFlexGrow\\": 1,
++             \\"WebkitFlexShrink\\": 1,
++             \\"display\\": \\"inline-flex\\",
++             \\"flexBasis\\": \\"0px\\",
++             \\"flexGrow\\": 1,
++             \\"flexShrink\\": 1,
++             \\"msFlexNegative\\": 1,
++             \\"msFlexPositive\\": 1,
++             \\"msFlexPreferredSize\\": \\"0px\\",
++           }
++         }
++       />
++       <div
++         className=\\"css-view-1dbjc4n\\"
++         style={
++           Object {
++             \\"display\\": \\"inline-flex\\",
++           }
++         }
++       >
++         <span
++           className=\\"css-text-901oao css-textHasAncestor-16my406\\"
++         >
++           undefined-SVG-Mock
++         </span>
++       </div>
++     </div>
++   </div>,
++   <div
++     className=\\"css-view-1dbjc4n\\"
++     style={
++       Object {
++         \\"height\\": \\"16px\\",
 +       }
-+     />
-+     <div
-+       className=\\"css-text-901oao\\"
-+       dir=\\"auto\\"
-        style={
-          Object {
-            \\"color\\": \\"rgba(22,22,23,1.00)\\",
-            \\"fontFamily\\": \\"Montserrat-SemiBold\\",
-            \\"fontSize\\": \\"12px\\","
++     }
++   />,
++   <div
++     className=\\"css-text-901oao\\"
++     dir=\\"auto\\"
+      style={
+        Object {
+          \\"color\\": \\"rgba(22,22,23,1.00)\\",
+          \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+          \\"fontSize\\": \\"12px\\","
 `;

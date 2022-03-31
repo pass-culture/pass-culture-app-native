@@ -406,6 +406,10 @@ msgstr "Cette réservation n’est pas annulable"
 msgid "Cette semaine"
 msgstr "Cette semaine"
 
+#: src/ui/components/buttons/AppButton/AppButtonInner.tsx
+msgid "Chargement en cours"
+msgstr "Chargement en cours"
+
 #: src/ui/components/LoadingPage.tsx
 msgid "Chargement en cours..."
 msgstr "Chargement en cours..."
@@ -764,11 +768,6 @@ msgstr "Des nouveautés"
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "Des offres pour tous"
 msgstr "Des offres pour tous"
-
-#: src/features/offer/pages/OfferBody.tsx
-#: src/features/venue/pages/VenueBody.tsx
-msgid "Description"
-msgstr "Description"
 
 #: src/libs/parsers/venueType.ts
 msgid "Disquaire"
@@ -1442,7 +1441,6 @@ msgid "Lien de modification de l'email expiré"
 msgstr "Lien de modification de l'email expiré"
 
 #: src/features/navigation/RootNavigator/routes.ts
-#: src/features/venue/pages/VenueBody.tsx
 #: src/libs/geolocation/components/WhereSection.tsx
 #: src/libs/tileAccessibilityLabel.ts
 msgid "Lieu"
@@ -2508,10 +2506,6 @@ msgstr "Terminer"
 #: src/features/bookings/components/ArchiveBookingModal.tsx
 msgid "Terminer ma réservation"
 msgstr "Terminer ma réservation"
-
-#: src/features/offer/pages/OfferBody.tsx
-msgid "Titre"
-msgstr "Titre"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckDMS.tsx
 msgid "Titre de séjour, carte d'identité ou passeport."

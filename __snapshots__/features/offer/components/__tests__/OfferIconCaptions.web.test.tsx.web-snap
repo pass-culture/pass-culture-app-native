@@ -17,8 +17,9 @@ Object {
           class="css-view-1dbjc4n"
           style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         >
-          <dt
-            class="sc-giYglK sc-ezbkAF flIzxi kjhfIO"
+          <div
+            class="css-view-1dbjc4n"
+            style="padding: 4px 4px 4px 4px;"
           >
             <div
               class="css-view-1dbjc4n"
@@ -30,17 +31,19 @@ Object {
                 undefined-SVG-Mock
               </div>
             </div>
-          </dt>
+          </div>
           <div
             class="css-view-1dbjc4n"
             style="height: 8px;"
           />
-          <dd
-            class="sc-iJKOTD sc-bYoBSM dKa-dtZ jbDGzC"
+          <div
+            class="css-text-901oao"
             data-testid="caption-undefined"
+            dir="auto"
+            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
           >
             Abonnements concerts
-          </dd>
+          </div>
         </div>
         <div
           class="css-view-1dbjc4n"
@@ -50,8 +53,9 @@ Object {
           class="css-view-1dbjc4n"
           style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         >
-          <dt
-            class="sc-giYglK sc-ezbkAF flIzxi kjhfIO"
+          <div
+            class="css-view-1dbjc4n"
+            style="padding: 4px 4px 4px 4px;"
           >
             <div
               class="css-view-1dbjc4n"
@@ -64,17 +68,19 @@ Object {
                 iconPrice-SVG-Mock
               </div>
             </div>
-          </dt>
+          </div>
           <div
             class="css-view-1dbjc4n"
             style="height: 8px;"
           />
-          <dd
-            class="sc-iJKOTD sc-bYoBSM dKa-dtZ jbDGzC"
+          <div
+            class="css-text-901oao"
             data-testid="caption-iconPrice"
+            dir="auto"
+            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
           >
             28 €
-          </dd>
+          </div>
         </div>
         <div
           class="css-view-1dbjc4n"
@@ -96,8 +102,9 @@ Object {
         class="css-view-1dbjc4n"
         style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
       >
-        <dt
-          class="sc-giYglK sc-ezbkAF flIzxi kjhfIO"
+        <div
+          class="css-view-1dbjc4n"
+          style="padding: 4px 4px 4px 4px;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -109,17 +116,19 @@ Object {
               undefined-SVG-Mock
             </div>
           </div>
-        </dt>
+        </div>
         <div
           class="css-view-1dbjc4n"
           style="height: 8px;"
         />
-        <dd
-          class="sc-iJKOTD sc-bYoBSM dKa-dtZ jbDGzC"
+        <div
+          class="css-text-901oao"
           data-testid="caption-undefined"
+          dir="auto"
+          style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
         >
           Abonnements concerts
-        </dd>
+        </div>
       </div>
       <div
         class="css-view-1dbjc4n"
@@ -129,8 +138,9 @@ Object {
         class="css-view-1dbjc4n"
         style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
       >
-        <dt
-          class="sc-giYglK sc-ezbkAF flIzxi kjhfIO"
+        <div
+          class="css-view-1dbjc4n"
+          style="padding: 4px 4px 4px 4px;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -143,17 +153,19 @@ Object {
               iconPrice-SVG-Mock
             </div>
           </div>
-        </dt>
+        </div>
         <div
           class="css-view-1dbjc4n"
           style="height: 8px;"
         />
-        <dd
-          class="sc-iJKOTD sc-bYoBSM dKa-dtZ jbDGzC"
+        <div
+          class="css-text-901oao"
           data-testid="caption-iconPrice"
+          dir="auto"
+          style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
         >
           28 €
-        </dd>
+        </div>
       </div>
       <div
         class="css-view-1dbjc4n"
