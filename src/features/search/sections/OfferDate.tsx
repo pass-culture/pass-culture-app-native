@@ -10,7 +10,6 @@ import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
@@ -81,12 +80,13 @@ export function OfferDate({ setScrollEnabled }: Props) {
               text={t`Date précise`}
               isSelected={option === DATE_FILTER_OPTIONS.USER_PICK}
               onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.USER_PICK)}
+              description={
+                option === DATE_FILTER_OPTIONS.USER_PICK
+                  ? formatToCompleteFrenchDate(selectedDate)
+                  : undefined
+              }
+              testID="dateFilter"
             />
-            {option === DATE_FILTER_OPTIONS.USER_PICK && (
-              <TouchableOpacity testID="pickedDate" onPress={() => setShowTimePicker(true)}>
-                <StyledBody>{formatToCompleteFrenchDate(selectedDate)}</StyledBody>
-              </TouchableOpacity>
-            )}
           </Li>
         </VerticalUl>
       </Container>
@@ -102,7 +102,3 @@ export function OfferDate({ setScrollEnabled }: Props) {
 }
 
 const Container = styled.View({ marginHorizontal: getSpacing(6) })
-
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.black,
-}))

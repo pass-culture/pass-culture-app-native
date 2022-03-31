@@ -83,14 +83,14 @@ describe('OfferDate component', () => {
     mockSearchState.date = { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate: Today }
     const renderAPI = render(<OfferDate />)
 
-    fireEvent.click(renderAPI.getByTestId('pickedDate'))
+    fireEvent.click(renderAPI.getByTestId('dateFilter'))
 
     if (Array.isArray(renderAPI)) {
       expect(renderAPI.includes('CalendarPicker')).toBeTruthy()
       expect(renderAPI.includes('NoCalendar')).toBeFalsy()
     }
 
-    fireEvent.click(renderAPI.getByTestId('pickedDate'))
+    fireEvent.click(renderAPI.getByTestId('dateFilter'))
 
     if (Array.isArray(renderAPI)) {
       expect(renderAPI.includes('CalendarPicker')).toBeTruthy()

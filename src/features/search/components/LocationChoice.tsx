@@ -46,9 +46,9 @@ export const LocationChoice: React.FC<Props> = (props) => {
             {label}
           </ButtonText>
         </TextContainer>
+        {selected ? <Validate testID="validateIcon" /> : null}
       </FirstPart>
       <SecondPart>
-        {selected ? <Validate testID="validateIcon" /> : null}
         {arrowNext ? <ArrowNext /> : null}
         {!selected && !arrowNext ? <Spacer.Row numberOfSpaces={8} /> : null}
       </SecondPart>
@@ -69,10 +69,11 @@ const FirstPart = styled.View({
   flex: 1,
 })
 
-const TextContainer = styled.View({
-  flex: 1,
+const TextContainer = styled.View(({ theme }) => ({
+  flex: theme.isMobileViewport ? 1 : undefined,
   paddingHorizontal: getSpacing(2),
-})
+  marginRight: theme.isMobileViewport ? 0 : getSpacing(4),
+}))
 
 const SecondPart = styled.View({
   flexDirection: 'row',
