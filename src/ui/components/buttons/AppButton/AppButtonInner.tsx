@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import React, { Fragment } from 'react'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
@@ -15,7 +16,9 @@ export function AppButtonInner({
   return (
     <Fragment>
       {!!LoadingIndicator && isLoading ? (
-        <LoadingIndicator {...accessibilityAndTestId(undefined, 'button-isloading-icon')} />
+        <LoadingIndicator
+          {...accessibilityAndTestId(t`Chargement en cours`, 'button-isloading-icon')}
+        />
       ) : (
         <Fragment>
           {!!Icon && <Icon {...accessibilityAndTestId(undefined, 'button-icon')} />}

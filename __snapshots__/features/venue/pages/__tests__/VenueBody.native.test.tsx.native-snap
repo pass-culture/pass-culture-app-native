@@ -231,12 +231,23 @@ exports[`<VenueBody /> should render correctly 1`] = `
         ]
       }
     />
-    <View>
+    <View
+      style={
+        Array [
+          Object {
+            "marginHorizontal": 24,
+          },
+        ]
+      }
+    >
       <View
         style={
           Array [
             Object {
-              "marginHorizontal": 24,
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "marginTop": 8,
             },
           ]
         }
@@ -245,88 +256,201 @@ exports[`<VenueBody /> should render correctly 1`] = `
           style={
             Array [
               Object {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "marginTop": 8,
+                "marginRight": 4,
               },
             ]
           }
         >
           <View
-            className="sc-jrQzAO jbSaJY"
+            height={16}
+            width={16}
           >
-            <View
-              height={16}
-              width={16}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
+            <Text>
+              undefined-SVG-Mock
+            </Text>
           </View>
-          <Text
-            className="sc-kDTinF lbcaXF"
-            numberOfLines={1}
-          >
-            1 boulevard Poissonnière, 75000 Paris
-          </Text>
         </View>
-        <View
-          numberOfSpaces={2}
+        <Text
+          numberOfLines={1}
           style={
             Array [
               Object {
-                "height": 8,
+                "color": "#161617",
+                "flexShrink": 1,
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+                "textTransform": "capitalize",
               },
             ]
           }
-        />
-        <Text
-          className="sc-furwcr jstzul"
         >
-          Lieu
+          1 boulevard Poissonnière, 75000 Paris
         </Text>
-        <Text
-          adjustsFontSizeToFit={true}
-          allowFontScaling={false}
-          className="sc-pVTFL bNqDlM"
-          numberOfLines={2}
-          testID="venueTitle"
-        >
-          Le Petit Rintintin 1
-        </Text>
-        <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "height": 16,
-              },
-            ]
-          }
-        />
       </View>
+      <View
+        numberOfSpaces={2}
+        style={
+          Array [
+            Object {
+              "height": 8,
+            },
+          ]
+        }
+      />
+      <Text
+        adjustsFontSizeToFit={true}
+        allowFontScaling={false}
+        numberOfLines={2}
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 20,
+              "lineHeight": 24,
+              "textAlign": "center",
+            },
+          ]
+        }
+        testID="venueTitle"
+      >
+        Le Petit Rintintin 1
+      </Text>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "alignItems": "flex-start",
+            "flexDirection": "row",
+          },
+        ]
+      }
+    >
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "width": 24,
+            },
+          ]
+        }
+      />
       <View
         style={
           Array [
             Object {
-              "alignItems": "flex-start",
-              "flexDirection": "row",
+              "alignItems": "center",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             },
           ]
         }
       >
         <View
-          numberOfSpaces={6}
           style={
             Array [
               Object {
-                "width": 24,
+                "paddingBottom": 4,
+                "paddingLeft": 4,
+                "paddingRight": 4,
+                "paddingTop": 4,
+              },
+            ]
+          }
+        >
+          <View
+            fill="#696A6F"
+            height={32}
+            width={32}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+        </View>
+        <View
+          numberOfSpaces={1}
+          style={
+            Array [
+              Object {
+                "height": 4,
               },
             ]
           }
         />
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+                "textAlign": "center",
+              },
+            ]
+          }
+          testID="caption-undefined"
+        >
+          Autre type de lieu
+        </Text>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "alignSelf": "center",
+              "backgroundColor": "#CBCDD2",
+              "height": "92%",
+              "marginHorizontal": 8,
+              "width": 1,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="Activer la localisation"
+        accessibilityState={
+          Object {
+            "disabled": false,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        nativeID="animatedComponent"
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="iconLocation"
+      >
         <View
           style={
             Array [
@@ -340,7 +464,16 @@ exports[`<VenueBody /> should render correctly 1`] = `
           }
         >
           <View
-            className="sc-bdvvtL fuZyMx"
+            style={
+              Array [
+                Object {
+                  "paddingBottom": 4,
+                  "paddingLeft": 4,
+                  "paddingRight": 4,
+                  "paddingTop": 4,
+                },
+              ]
+            }
           >
             <View
               fill="#696A6F"
@@ -363,213 +496,190 @@ exports[`<VenueBody /> should render correctly 1`] = `
             }
           />
           <Text
-            className="sc-gsDKAQ hUUtnF"
+            disabled={true}
+            style={
+              Array [
+                Object {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                  "textAlign": "center",
+                },
+              ]
+            }
             testID="caption-undefined"
           >
-            Autre type de lieu
+            Géolocalisation désactivée
           </Text>
         </View>
-        <View
-          style={
-            Array [
-              Object {
-                "alignSelf": "center",
-                "backgroundColor": "#CBCDD2",
-                "height": "92%",
-                "marginHorizontal": 8,
-                "width": 1,
-              },
-            ]
-          }
-        />
-        <View
-          accessibilityLabel="Activer la localisation"
-          accessibilityState={
-            Object {
-              "disabled": false,
-            }
-          }
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          nativeID="animatedComponent"
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "opacity": 1,
-              "userSelect": "auto",
-            }
-          }
-          testID="iconLocation"
-        >
-          <View
-            style={
-              Array [
-                Object {
-                  "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                },
-              ]
-            }
-          >
-            <View
-              className="sc-bdvvtL fuZyMx"
-            >
-              <View
-                fill="#696A6F"
-                height={32}
-                width={32}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <View
-              numberOfSpaces={1}
-              style={
-                Array [
-                  Object {
-                    "height": 4,
-                  },
-                ]
-              }
-            />
-            <Text
-              className="sc-gsDKAQ frrBqT"
-              disabled={true}
-              testID="caption-undefined"
-            >
-              Géolocalisation désactivée
-            </Text>
-          </View>
-        </View>
-        <View
-          numberOfSpaces={6}
-          style={
-            Array [
-              Object {
-                "width": 24,
-              },
-            ]
-          }
-        />
       </View>
-      <Text
-        className="sc-furwcr jstzul"
-      >
-        Description
-      </Text>
-      <View
-        className="sc-iCfMLu kbXqcZ"
-      >
-        <View
-          collapsable={false}
-          nativeID="animatedComponent"
-          style={
-            Object {
-              "height": 0,
-              "overflow": "hidden",
-            }
-          }
-          testID="accordionBody"
-        >
-          <View
-            onLayout={[Function]}
-            style={
-              Array [
-                Object {
-                  "position": "absolute",
-                  "top": 0,
-                  "width": "100%",
-                },
-              ]
-            }
-            testID="descriptionContainer"
-          >
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "width": "100%",
-                  },
-                ]
-              }
-            >
-               
-              <Text
-                onPress={[Function]}
-                style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                    },
-                  ]
-                }
-              >
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    Array [
-                      Object {
-                        "width": 4,
-                      },
-                    ]
-                  }
-                />
-                <Text>
-                  <View
-                    height={16}
-                    testID="externalSiteIcon"
-                    width={16}
-                  >
-                    <Text>
-                      externalSiteIcon-SVG-Mock
-                    </Text>
-                  </View>
-                  
-                </Text>
-                 https://pass.culture.fr/
-              </Text>
-               lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,
-            </Text>
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "backgroundColor": "#F1F1F4",
-              "height": 8,
-            },
-          ]
-        }
-      />
       <View
         numberOfSpaces={6}
         style={
           Array [
             Object {
-              "height": 24,
+              "width": 24,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "paddingBottom": 24,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 24,
+          },
+        ]
+      }
+    >
+      <View
+        collapsable={false}
+        nativeID="animatedComponent"
+        style={
+          Object {
+            "height": 0,
+            "overflow": "hidden",
+          }
+        }
+        testID="accordionBody"
+      >
+        <View
+          onLayout={[Function]}
+          style={
+            Array [
+              Object {
+                "position": "absolute",
+                "top": 0,
+                "width": "100%",
+              },
+            ]
+          }
+          testID="descriptionContainer"
+        >
+          <Text
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Regular",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "width": "100%",
+                },
+              ]
+            }
+          >
+             
+            <Text
+              onPress={[Function]}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              <View
+                numberOfSpaces={1}
+                style={
+                  Array [
+                    Object {
+                      "width": 4,
+                    },
+                  ]
+                }
+              />
+              <Text>
+                <View
+                  height={16}
+                  testID="externalSiteIcon"
+                  width={16}
+                >
+                  <Text>
+                    externalSiteIcon-SVG-Mock
+                  </Text>
+                </View>
+                
+              </Text>
+               https://pass.culture.fr/
+            </Text>
+             lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,
+          </Text>
+        </View>
+      </View>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#F1F1F4",
+            "height": 8,
+          },
+        ]
+      }
+    />
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "paddingBottom": 24,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          Array [
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "marginHorizontal": 24,
+            },
+          ]
+        }
+      >
+        <Text
+          numberOfLines={2}
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 18,
+                "lineHeight": 22,
+              },
+            ]
+          }
+          testID="playlistTitle"
+        >
+          Offres
+        </Text>
+      </View>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
             },
           ]
         }
@@ -578,927 +688,985 @@ exports[`<VenueBody /> should render correctly 1`] = `
         style={
           Array [
             Object {
-              "paddingBottom": 24,
+              "position": "relative",
             },
           ]
         }
       >
-        <View
-          style={
+        <RCTScrollView
+          ItemSeparatorComponent={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "width: 16px;",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          ListFooterComponent={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "width: 24px;",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          ListHeaderComponent={
+            Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "inlineStyle": InlineStyle {
+                "rules": Array [
+                  "width: 24px;",
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          data={
             Array [
               Object {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "marginHorizontal": 24,
+                "_geoloc": Object {
+                  "lat": 47.8898,
+                  "lng": -2.83593,
+                },
+                "objectID": "223342",
+                "offer": Object {
+                  "dates": Array [
+                    1629312300,
+                    1629485100,
+                    1629657900,
+                  ],
+                  "isDigital": false,
+                  "isDuo": true,
+                  "name": "Titane - VF",
+                  "prices": Array [
+                    0,
+                    0,
+                    0,
+                  ],
+                  "subcategoryId": "CINE_PLEIN_AIR",
+                  "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                },
+              },
+              Object {
+                "_geoloc": Object {
+                  "lat": 47.8898,
+                  "lng": -2.83593,
+                },
+                "objectID": "223338",
+                "offer": Object {
+                  "dates": Array [
+                    1629312300,
+                    1629485100,
+                    1629657900,
+                  ],
+                  "isDigital": false,
+                  "isDuo": true,
+                  "name": "Bac Nord - VF",
+                  "prices": Array [
+                    0,
+                    0,
+                    0,
+                  ],
+                  "subcategoryId": "CINE_PLEIN_AIR",
+                  "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                },
+              },
+              Object {
+                "_geoloc": Object {
+                  "lat": 47.8898,
+                  "lng": -2.83593,
+                },
+                "objectID": "223339",
+                "offer": Object {
+                  "dates": Array [
+                    1629312300,
+                    1629485100,
+                    1629657900,
+                  ],
+                  "isDigital": false,
+                  "isDuo": true,
+                  "name": "Black Widow - VF",
+                  "prices": Array [
+                    0,
+                    0,
+                    0,
+                  ],
+                  "subcategoryId": "CINE_PLEIN_AIR",
+                  "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                },
+              },
+              Object {
+                "dataFooter": true,
               },
             ]
           }
+          getItem={[Function]}
+          getItemCount={[Function]}
+          getItemLayout={[Function]}
+          horizontal={true}
+          keyExtractor={[Function]}
+          onContentSizeChange={[Function]}
+          onEndReachedThreshold={0.2}
+          onLayout={[Function]}
+          onMomentumScrollBegin={[Function]}
+          onMomentumScrollEnd={[Function]}
+          onScroll={[Function]}
+          onScrollBeginDrag={[Function]}
+          onScrollEndDrag={[Function]}
+          removeClippedSubviews={false}
+          renderItem={[Function]}
+          scrollEnabled={true}
+          scrollEventThrottle={200}
+          showsHorizontalScrollIndicator={false}
+          stickyHeaderIndices={Array []}
+          testID="offersModuleList"
+          viewabilityConfigCallbackPairs={Array []}
         >
-          <Text
-            numberOfLines={2}
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 18,
-                  "lineHeight": 22,
-                },
-              ]
-            }
-            testID="playlistTitle"
-          >
-            Offres
-          </Text>
-        </View>
-        <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "height": 16,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            Array [
-              Object {
-                "position": "relative",
-              },
-            ]
-          }
-        >
-          <RCTScrollView
-            ItemSeparatorComponent={
-              Object {
-                "$$typeof": Symbol(react.forward_ref),
-                "attrs": Array [],
-                "inlineStyle": InlineStyle {
-                  "rules": Array [
-                    "width: 16px;",
-                  ],
-                },
-                "render": [Function],
-                "shouldForwardProp": undefined,
-                "styledComponentId": "StyledNativeComponent",
-                "target": [Function],
-                "withComponent": [Function],
+          <View>
+            <View
+              onLayout={[Function]}
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "width": 24,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                  },
+                  null,
+                ]
               }
-            }
-            ListFooterComponent={
-              Object {
-                "$$typeof": Symbol(react.forward_ref),
-                "attrs": Array [],
-                "inlineStyle": InlineStyle {
-                  "rules": Array [
-                    "width: 24px;",
-                  ],
-                },
-                "render": [Function],
-                "shouldForwardProp": undefined,
-                "styledComponentId": "StyledNativeComponent",
-                "target": [Function],
-                "withComponent": [Function],
-              }
-            }
-            ListHeaderComponent={
-              Object {
-                "$$typeof": Symbol(react.forward_ref),
-                "attrs": Array [],
-                "inlineStyle": InlineStyle {
-                  "rules": Array [
-                    "width: 24px;",
-                  ],
-                },
-                "render": [Function],
-                "shouldForwardProp": undefined,
-                "styledComponentId": "StyledNativeComponent",
-                "target": [Function],
-                "withComponent": [Function],
-              }
-            }
-            data={
-              Array [
-                Object {
-                  "_geoloc": Object {
-                    "lat": 47.8898,
-                    "lng": -2.83593,
-                  },
-                  "objectID": "223342",
-                  "offer": Object {
-                    "dates": Array [
-                      1629312300,
-                      1629485100,
-                      1629657900,
-                    ],
-                    "isDigital": false,
-                    "isDuo": true,
-                    "name": "Titane - VF",
-                    "prices": Array [
-                      0,
-                      0,
-                      0,
-                    ],
-                    "subcategoryId": "CINE_PLEIN_AIR",
-                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                  },
-                },
-                Object {
-                  "_geoloc": Object {
-                    "lat": 47.8898,
-                    "lng": -2.83593,
-                  },
-                  "objectID": "223338",
-                  "offer": Object {
-                    "dates": Array [
-                      1629312300,
-                      1629485100,
-                      1629657900,
-                    ],
-                    "isDigital": false,
-                    "isDuo": true,
-                    "name": "Bac Nord - VF",
-                    "prices": Array [
-                      0,
-                      0,
-                      0,
-                    ],
-                    "subcategoryId": "CINE_PLEIN_AIR",
-                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                  },
-                },
-                Object {
-                  "_geoloc": Object {
-                    "lat": 47.8898,
-                    "lng": -2.83593,
-                  },
-                  "objectID": "223339",
-                  "offer": Object {
-                    "dates": Array [
-                      1629312300,
-                      1629485100,
-                      1629657900,
-                    ],
-                    "isDigital": false,
-                    "isDuo": true,
-                    "name": "Black Widow - VF",
-                    "prices": Array [
-                      0,
-                      0,
-                      0,
-                    ],
-                    "subcategoryId": "CINE_PLEIN_AIR",
-                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
-                  },
-                },
-                Object {
-                  "dataFooter": true,
-                },
-              ]
-            }
-            getItem={[Function]}
-            getItemCount={[Function]}
-            getItemLayout={[Function]}
-            horizontal={true}
-            keyExtractor={[Function]}
-            onContentSizeChange={[Function]}
-            onEndReachedThreshold={0.2}
-            onLayout={[Function]}
-            onMomentumScrollBegin={[Function]}
-            onMomentumScrollEnd={[Function]}
-            onScroll={[Function]}
-            onScrollBeginDrag={[Function]}
-            onScrollEndDrag={[Function]}
-            removeClippedSubviews={false}
-            renderItem={[Function]}
-            scrollEnabled={true}
-            scrollEventThrottle={200}
-            showsHorizontalScrollIndicator={false}
-            stickyHeaderIndices={Array []}
-            testID="offersModuleList"
-            viewabilityConfigCallbackPairs={Array []}
-          >
-            <View>
-              <View
-                onLayout={[Function]}
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "width": 24,
-                      },
-                    ]
-                  }
-                />
-              </View>
+            >
               <View
                 style={
                   Array [
                     Object {
-                      "flexDirection": "row",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
-                    null,
                   ]
                 }
               >
                 <View
+                  accessibilityLabel="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
                   style={
                     Array [
                       Object {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    accessibilityLabel="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Array [
-                        Object {
-                          "borderRadius": 8,
-                          "height": 288,
-                          "marginTop": 4,
-                        },
-                      ]
-                    }
-                    testID="offre Titane - VF"
-                  >
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "overflow": "hidden",
-                          },
-                          Array [
-                            Object {
-                              "backgroundColor": "#F1F1F4",
-                            },
-                            Object {
-                              "borderTopLeftRadius": 8,
-                              "borderTopRightRadius": 8,
-                              "height": 264,
-                              "width": 192,
-                            },
-                          ],
-                        ]
-                      }
-                    >
-                      <FastImageView
-                        resizeMode="cover"
-                        source={
-                          Object {
-                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                          }
-                        }
-                        style={
-                          Object {
-                            "bottom": 0,
-                            "left": 0,
-                            "position": "absolute",
-                            "right": 0,
-                            "top": 0,
-                          }
-                        }
-                        testID="tileImage"
-                      />
-                    </View>
-                    <View
-                      height={24}
-                      style={
-                        Array [
-                          Object {
-                            "alignItems": "center",
-                            "backgroundColor": "#161617",
-                            "borderBottomLeftRadius": 8,
-                            "borderBottomRightRadius": 8,
-                            "flexDirection": "row",
-                            "height": 24,
-                            "width": 192,
-                          },
-                        ]
-                      }
-                      width={192}
-                    >
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "alignItems": "center",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "justifyContent": "center",
-                              "paddingHorizontal": 2,
-                            },
-                          ]
-                        }
-                      >
-                        <Text
-                          numberOfLines={1}
-                          style={
-                            Array [
-                              Object {
-                                "color": "#ffffff",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 16,
-                              },
-                            ]
-                          }
-                          testID="categoryImageCaption"
-                        >
-                          Cinéma
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                  <View
-                    imageWidth={192}
-                    style={
-                      Array [
-                        Object {
-                          "marginTop": 8,
-                          "maxWidth": 192,
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      numberOfLines={2}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                          },
-                        ]
-                      }
-                    >
-                      Titane - VF
-                    </Text>
-                    <Text
-                      numberOfLines={1}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#696A6F",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                          },
-                        ]
-                      }
-                    >
-                      Dès le 18 août 2021
-                    </Text>
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "color": "#696A6F",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                          },
-                        ]
-                      }
-                      testID="priceIsDuo"
-                    >
-                      Gratuit
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  highlighted={false}
-                  leadingItem={
-                    Object {
-                      "_geoloc": Object {
-                        "lat": 47.8898,
-                        "lng": -2.83593,
-                      },
-                      "objectID": "223342",
-                      "offer": Object {
-                        "dates": Array [
-                          1629312300,
-                          1629485100,
-                          1629657900,
-                        ],
-                        "isDigital": false,
-                        "isDuo": true,
-                        "name": "Titane - VF",
-                        "prices": Array [
-                          0,
-                          0,
-                          0,
-                        ],
-                        "subcategoryId": "CINE_PLEIN_AIR",
-                        "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                      },
-                    }
-                  }
-                  style={
-                    Array [
-                      Object {
-                        "width": 16,
-                      },
-                    ]
-                  }
-                />
-              </View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexDirection": "row",
-                    },
-                    null,
-                  ]
-                }
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Array [
-                        Object {
-                          "borderRadius": 8,
-                          "height": 288,
-                          "marginTop": 4,
-                        },
-                      ]
-                    }
-                    testID="offre Bac Nord - VF"
-                  >
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "overflow": "hidden",
-                          },
-                          Array [
-                            Object {
-                              "backgroundColor": "#F1F1F4",
-                            },
-                            Object {
-                              "borderTopLeftRadius": 8,
-                              "borderTopRightRadius": 8,
-                              "height": 264,
-                              "width": 192,
-                            },
-                          ],
-                        ]
-                      }
-                    >
-                      <FastImageView
-                        resizeMode="cover"
-                        source={
-                          Object {
-                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                          }
-                        }
-                        style={
-                          Object {
-                            "bottom": 0,
-                            "left": 0,
-                            "position": "absolute",
-                            "right": 0,
-                            "top": 0,
-                          }
-                        }
-                        testID="tileImage"
-                      />
-                    </View>
-                    <View
-                      height={24}
-                      style={
-                        Array [
-                          Object {
-                            "alignItems": "center",
-                            "backgroundColor": "#161617",
-                            "borderBottomLeftRadius": 8,
-                            "borderBottomRightRadius": 8,
-                            "flexDirection": "row",
-                            "height": 24,
-                            "width": 192,
-                          },
-                        ]
-                      }
-                      width={192}
-                    >
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "alignItems": "center",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "justifyContent": "center",
-                              "paddingHorizontal": 2,
-                            },
-                          ]
-                        }
-                      >
-                        <Text
-                          numberOfLines={1}
-                          style={
-                            Array [
-                              Object {
-                                "color": "#ffffff",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 16,
-                              },
-                            ]
-                          }
-                          testID="categoryImageCaption"
-                        >
-                          Cinéma
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                  <View
-                    imageWidth={192}
-                    style={
-                      Array [
-                        Object {
-                          "marginTop": 8,
-                          "maxWidth": 192,
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      numberOfLines={2}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                          },
-                        ]
-                      }
-                    >
-                      Bac Nord - VF
-                    </Text>
-                    <Text
-                      numberOfLines={1}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#696A6F",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                          },
-                        ]
-                      }
-                    >
-                      Dès le 18 août 2021
-                    </Text>
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "color": "#696A6F",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                          },
-                        ]
-                      }
-                      testID="priceIsDuo"
-                    >
-                      Gratuit
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  highlighted={false}
-                  leadingItem={
-                    Object {
-                      "_geoloc": Object {
-                        "lat": 47.8898,
-                        "lng": -2.83593,
-                      },
-                      "objectID": "223338",
-                      "offer": Object {
-                        "dates": Array [
-                          1629312300,
-                          1629485100,
-                          1629657900,
-                        ],
-                        "isDigital": false,
-                        "isDuo": true,
-                        "name": "Bac Nord - VF",
-                        "prices": Array [
-                          0,
-                          0,
-                          0,
-                        ],
-                        "subcategoryId": "CINE_PLEIN_AIR",
-                        "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                      },
-                    }
-                  }
-                  style={
-                    Array [
-                      Object {
-                        "width": 16,
-                      },
-                    ]
-                  }
-                />
-              </View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexDirection": "row",
-                    },
-                    null,
-                  ]
-                }
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    accessibilityLabel="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      Array [
-                        Object {
-                          "borderRadius": 8,
-                          "height": 288,
-                          "marginTop": 4,
-                        },
-                      ]
-                    }
-                    testID="offre Black Widow - VF"
-                  >
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "overflow": "hidden",
-                          },
-                          Array [
-                            Object {
-                              "backgroundColor": "#F1F1F4",
-                            },
-                            Object {
-                              "borderTopLeftRadius": 8,
-                              "borderTopRightRadius": 8,
-                              "height": 264,
-                              "width": 192,
-                            },
-                          ],
-                        ]
-                      }
-                    >
-                      <FastImageView
-                        resizeMode="cover"
-                        source={
-                          Object {
-                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
-                          }
-                        }
-                        style={
-                          Object {
-                            "bottom": 0,
-                            "left": 0,
-                            "position": "absolute",
-                            "right": 0,
-                            "top": 0,
-                          }
-                        }
-                        testID="tileImage"
-                      />
-                    </View>
-                    <View
-                      height={24}
-                      style={
-                        Array [
-                          Object {
-                            "alignItems": "center",
-                            "backgroundColor": "#161617",
-                            "borderBottomLeftRadius": 8,
-                            "borderBottomRightRadius": 8,
-                            "flexDirection": "row",
-                            "height": 24,
-                            "width": 192,
-                          },
-                        ]
-                      }
-                      width={192}
-                    >
-                      <View
-                        style={
-                          Array [
-                            Object {
-                              "alignItems": "center",
-                              "flexBasis": 0,
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "justifyContent": "center",
-                              "paddingHorizontal": 2,
-                            },
-                          ]
-                        }
-                      >
-                        <Text
-                          numberOfLines={1}
-                          style={
-                            Array [
-                              Object {
-                                "color": "#ffffff",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 12,
-                                "lineHeight": 16,
-                              },
-                            ]
-                          }
-                          testID="categoryImageCaption"
-                        >
-                          Cinéma
-                        </Text>
-                      </View>
-                    </View>
-                  </View>
-                  <View
-                    imageWidth={192}
-                    style={
-                      Array [
-                        Object {
-                          "marginTop": 8,
-                          "maxWidth": 192,
-                        },
-                      ]
-                    }
-                  >
-                    <Text
-                      numberOfLines={2}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                          },
-                        ]
-                      }
-                    >
-                      Black Widow - VF
-                    </Text>
-                    <Text
-                      numberOfLines={1}
-                      style={
-                        Array [
-                          Object {
-                            "color": "#696A6F",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                          },
-                        ]
-                      }
-                    >
-                      Dès le 18 août 2021
-                    </Text>
-                    <Text
-                      style={
-                        Array [
-                          Object {
-                            "color": "#696A6F",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 16,
-                          },
-                        ]
-                      }
-                      testID="priceIsDuo"
-                    >
-                      Gratuit
-                    </Text>
-                  </View>
-                </View>
-                <View
-                  highlighted={false}
-                  leadingItem={
-                    Object {
-                      "_geoloc": Object {
-                        "lat": 47.8898,
-                        "lng": -2.83593,
-                      },
-                      "objectID": "223339",
-                      "offer": Object {
-                        "dates": Array [
-                          1629312300,
-                          1629485100,
-                          1629657900,
-                        ],
-                        "isDigital": false,
-                        "isDuo": true,
-                        "name": "Black Widow - VF",
-                        "prices": Array [
-                          0,
-                          0,
-                          0,
-                        ],
-                        "subcategoryId": "CINE_PLEIN_AIR",
-                        "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
-                      },
-                    }
-                  }
-                  style={
-                    Array [
-                      Object {
-                        "width": 16,
-                      },
-                    ]
-                  }
-                />
-              </View>
-              <View
-                style={
-                  Array [
-                    Object {
-                      "flexDirection": "row",
-                    },
-                    null,
-                  ]
-                }
-              >
-                <View
-                  height={288}
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
+                        "borderRadius": 8,
                         "height": 288,
-                        "justifyContent": "center",
-                        "width": 192,
+                        "marginTop": 4,
                       },
                     ]
                   }
-                  width={192}
+                  testID="offre Titane - VF"
                 >
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "overflow": "hidden",
+                        },
+                        Array [
+                          Object {
+                            "backgroundColor": "#F1F1F4",
+                          },
+                          Object {
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "height": 264,
+                            "width": 192,
+                          },
+                        ],
+                      ]
+                    }
+                  >
+                    <FastImageView
+                      resizeMode="cover"
+                      source={
+                        Object {
+                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                        }
+                      }
+                      style={
+                        Object {
+                          "bottom": 0,
+                          "left": 0,
+                          "position": "absolute",
+                          "right": 0,
+                          "top": 0,
+                        }
+                      }
+                      testID="tileImage"
+                    />
+                  </View>
+                  <View
+                    height={24}
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "backgroundColor": "#161617",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "flexDirection": "row",
+                          "height": 24,
+                          "width": 192,
+                        },
+                      ]
+                    }
+                    width={192}
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "center",
+                            "paddingHorizontal": 2,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        numberOfLines={1}
+                        style={
+                          Array [
+                            Object {
+                              "color": "#ffffff",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            },
+                          ]
+                        }
+                        testID="categoryImageCaption"
+                      >
+                        Cinéma
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  imageWidth={192}
+                  style={
+                    Array [
+                      Object {
+                        "marginTop": 8,
+                        "maxWidth": 192,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    numberOfLines={2}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Titane - VF
+                  </Text>
+                  <Text
+                    numberOfLines={1}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Dès le 18 août 2021
+                  </Text>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                    testID="priceIsDuo"
+                  >
+                    Gratuit
+                  </Text>
+                </View>
+              </View>
+              <View
+                highlighted={false}
+                leadingItem={
+                  Object {
+                    "_geoloc": Object {
+                      "lat": 47.8898,
+                      "lng": -2.83593,
+                    },
+                    "objectID": "223342",
+                    "offer": Object {
+                      "dates": Array [
+                        1629312300,
+                        1629485100,
+                        1629657900,
+                      ],
+                      "isDigital": false,
+                      "isDuo": true,
+                      "name": "Titane - VF",
+                      "prices": Array [
+                        0,
+                        0,
+                        0,
+                      ],
+                      "subcategoryId": "CINE_PLEIN_AIR",
+                      "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                    },
+                  }
+                }
+                style={
+                  Array [
+                    Object {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                  },
+                  null,
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "borderRadius": 8,
+                        "height": 288,
+                        "marginTop": 4,
+                      },
+                    ]
+                  }
+                  testID="offre Bac Nord - VF"
+                >
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "overflow": "hidden",
+                        },
+                        Array [
+                          Object {
+                            "backgroundColor": "#F1F1F4",
+                          },
+                          Object {
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "height": 264,
+                            "width": 192,
+                          },
+                        ],
+                      ]
+                    }
+                  >
+                    <FastImageView
+                      resizeMode="cover"
+                      source={
+                        Object {
+                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                        }
+                      }
+                      style={
+                        Object {
+                          "bottom": 0,
+                          "left": 0,
+                          "position": "absolute",
+                          "right": 0,
+                          "top": 0,
+                        }
+                      }
+                      testID="tileImage"
+                    />
+                  </View>
+                  <View
+                    height={24}
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "backgroundColor": "#161617",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "flexDirection": "row",
+                          "height": 24,
+                          "width": 192,
+                        },
+                      ]
+                    }
+                    width={192}
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "center",
+                            "paddingHorizontal": 2,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        numberOfLines={1}
+                        style={
+                          Array [
+                            Object {
+                              "color": "#ffffff",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            },
+                          ]
+                        }
+                        testID="categoryImageCaption"
+                      >
+                        Cinéma
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  imageWidth={192}
+                  style={
+                    Array [
+                      Object {
+                        "marginTop": 8,
+                        "maxWidth": 192,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    numberOfLines={2}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Bac Nord - VF
+                  </Text>
+                  <Text
+                    numberOfLines={1}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Dès le 18 août 2021
+                  </Text>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                    testID="priceIsDuo"
+                  >
+                    Gratuit
+                  </Text>
+                </View>
+              </View>
+              <View
+                highlighted={false}
+                leadingItem={
+                  Object {
+                    "_geoloc": Object {
+                      "lat": 47.8898,
+                      "lng": -2.83593,
+                    },
+                    "objectID": "223338",
+                    "offer": Object {
+                      "dates": Array [
+                        1629312300,
+                        1629485100,
+                        1629657900,
+                      ],
+                      "isDigital": false,
+                      "isDuo": true,
+                      "name": "Bac Nord - VF",
+                      "prices": Array [
+                        0,
+                        0,
+                        0,
+                      ],
+                      "subcategoryId": "CINE_PLEIN_AIR",
+                      "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                    },
+                  }
+                }
+                style={
+                  Array [
+                    Object {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                  },
+                  null,
+                ]
+              }
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityLabel="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Array [
+                      Object {
+                        "borderRadius": 8,
+                        "height": 288,
+                        "marginTop": 4,
+                      },
+                    ]
+                  }
+                  testID="offre Black Widow - VF"
+                >
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "overflow": "hidden",
+                        },
+                        Array [
+                          Object {
+                            "backgroundColor": "#F1F1F4",
+                          },
+                          Object {
+                            "borderTopLeftRadius": 8,
+                            "borderTopRightRadius": 8,
+                            "height": 264,
+                            "width": 192,
+                          },
+                        ],
+                      ]
+                    }
+                  >
+                    <FastImageView
+                      resizeMode="cover"
+                      source={
+                        Object {
+                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                        }
+                      }
+                      style={
+                        Object {
+                          "bottom": 0,
+                          "left": 0,
+                          "position": "absolute",
+                          "right": 0,
+                          "top": 0,
+                        }
+                      }
+                      testID="tileImage"
+                    />
+                  </View>
+                  <View
+                    height={24}
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "backgroundColor": "#161617",
+                          "borderBottomLeftRadius": 8,
+                          "borderBottomRightRadius": 8,
+                          "flexDirection": "row",
+                          "height": 24,
+                          "width": 192,
+                        },
+                      ]
+                    }
+                    width={192}
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "alignItems": "center",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "justifyContent": "center",
+                            "paddingHorizontal": 2,
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        numberOfLines={1}
+                        style={
+                          Array [
+                            Object {
+                              "color": "#ffffff",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 16,
+                            },
+                          ]
+                        }
+                        testID="categoryImageCaption"
+                      >
+                        Cinéma
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  imageWidth={192}
+                  style={
+                    Array [
+                      Object {
+                        "marginTop": 8,
+                        "maxWidth": 192,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    numberOfLines={2}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Black Widow - VF
+                  </Text>
+                  <Text
+                    numberOfLines={1}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Dès le 18 août 2021
+                  </Text>
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                    testID="priceIsDuo"
+                  >
+                    Gratuit
+                  </Text>
+                </View>
+              </View>
+              <View
+                highlighted={false}
+                leadingItem={
+                  Object {
+                    "_geoloc": Object {
+                      "lat": 47.8898,
+                      "lng": -2.83593,
+                    },
+                    "objectID": "223339",
+                    "offer": Object {
+                      "dates": Array [
+                        1629312300,
+                        1629485100,
+                        1629657900,
+                      ],
+                      "isDigital": false,
+                      "isDuo": true,
+                      "name": "Black Widow - VF",
+                      "prices": Array [
+                        0,
+                        0,
+                        0,
+                      ],
+                      "subcategoryId": "CINE_PLEIN_AIR",
+                      "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                    },
+                  }
+                }
+                style={
+                  Array [
+                    Object {
+                      "width": 16,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <View
+              style={
+                Array [
+                  Object {
+                    "flexDirection": "row",
+                  },
+                  null,
+                ]
+              }
+            >
+              <View
+                height={288}
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "height": 288,
+                      "justifyContent": "center",
+                      "width": 192,
+                    },
+                  ]
+                }
+                width={192}
+              >
+                <View
+                  numberOfSpaces={2}
+                  style={
+                    Array [
+                      Object {
+                        "height": 8,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  nativeID="animatedComponent"
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "opacity": 1,
+                      "userSelect": "auto",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      numberOfSpaces={16}
+                      style={
+                        Array [
+                          Object {
+                            "width": 64,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      accessible={true}
+                      collapsable={false}
+                      focusable={true}
+                      nativeID="animatedComponent"
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        Object {
+                          "alignItems": "center",
+                          "aspectRatio": 1,
+                          "backgroundColor": "#ffffff",
+                          "borderColor": "#F1F1F4",
+                          "borderRadius": 32,
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "justifyContent": "center",
+                          "opacity": 1,
+                          "shadowColor": "#161617",
+                          "shadowOffset": Object {
+                            "height": 8,
+                            "width": 0,
+                          },
+                          "shadowOpacity": 0.15,
+                          "shadowRadius": 12,
+                          "userSelect": "auto",
+                          "width": 64,
+                        }
+                      }
+                    >
+                      <View
+                        height={32}
+                        testID="arrow-next"
+                        width={32}
+                      >
+                        <Text>
+                          arrow-next-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <View
+                      numberOfSpaces={16}
+                      style={
+                        Array [
+                          Object {
+                            "width": 64,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
                   <View
                     numberOfSpaces={2}
                     style={
@@ -1510,236 +1678,253 @@ exports[`<VenueBody /> should render correctly 1`] = `
                     }
                   />
                   <View
-                    accessible={true}
-                    collapsable={false}
-                    focusable={true}
-                    nativeID="animatedComponent"
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
                     style={
-                      Object {
-                        "alignItems": "center",
-                        "opacity": 1,
-                        "userSelect": "auto",
-                      }
+                      Array [
+                        Object {
+                          "flexDirection": "row",
+                        },
+                      ]
                     }
                   >
-                    <View
+                    <Text
                       style={
                         Array [
                           Object {
-                            "flexDirection": "row",
+                            "color": "#eb0055",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
                           },
                         ]
                       }
                     >
-                      <View
-                        numberOfSpaces={16}
-                        style={
-                          Array [
-                            Object {
-                              "width": 64,
-                            },
-                          ]
-                        }
-                      />
-                      <View
-                        accessible={true}
-                        collapsable={false}
-                        focusable={true}
-                        nativeID="animatedComponent"
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          Object {
-                            "alignItems": "center",
-                            "aspectRatio": 1,
-                            "backgroundColor": "#ffffff",
-                            "borderColor": "#F1F1F4",
-                            "borderRadius": 32,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
-                            "justifyContent": "center",
-                            "opacity": 1,
-                            "shadowColor": "#161617",
-                            "shadowOffset": Object {
-                              "height": 8,
-                              "width": 0,
-                            },
-                            "shadowOpacity": 0.15,
-                            "shadowRadius": 12,
-                            "userSelect": "auto",
-                            "width": 64,
-                          }
-                        }
-                      >
-                        <View
-                          height={32}
-                          testID="arrow-next"
-                          width={32}
-                        >
-                          <Text>
-                            arrow-next-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                      <View
-                        numberOfSpaces={16}
-                        style={
-                          Array [
-                            Object {
-                              "width": 64,
-                            },
-                          ]
-                        }
-                      />
-                    </View>
-                    <View
-                      numberOfSpaces={2}
-                      style={
-                        Array [
-                          Object {
-                            "height": 8,
-                          },
-                        ]
-                      }
-                    />
-                    <View
-                      style={
-                        Array [
-                          Object {
-                            "flexDirection": "row",
-                          },
-                        ]
-                      }
-                    >
-                      <Text
-                        style={
-                          Array [
-                            Object {
-                              "color": "#eb0055",
-                              "fontFamily": "Montserrat-Bold",
-                              "fontSize": 15,
-                              "lineHeight": 20,
-                            },
-                          ]
-                        }
-                      >
-                        En voir plus
-                      </Text>
-                    </View>
+                      En voir plus
+                    </Text>
                   </View>
                 </View>
               </View>
-              <View
-                onLayout={[Function]}
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "width": 24,
-                      },
-                    ]
-                  }
-                />
-              </View>
             </View>
-          </RCTScrollView>
-        </View>
+            <View
+              onLayout={[Function]}
+            >
+              <View
+                style={
+                  Array [
+                    Object {
+                      "width": 24,
+                    },
+                  ]
+                }
+              />
+            </View>
+          </View>
+        </RCTScrollView>
       </View>
+    </View>
+    <View
+      style={
+        Array [
+          Object {
+            "marginHorizontal": 24,
+          },
+        ]
+      }
+    >
       <View
-        style={
-          Array [
-            Object {
-              "marginHorizontal": 24,
-            },
-          ]
+        accessibilityLabel="Voir toutes les offres"
+        accessibilityState={
+          Object {
+            "disabled": false,
+          }
         }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        nativeID="animatedComponent"
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "borderRadius": 24,
+            "justifyContent": "center",
+            "opacity": 1,
+            "overflow": "hidden",
+            "userSelect": "auto",
+          }
+        }
+        testID="Voir toutes les offres"
       >
         <View
-          accessibilityLabel="Voir toutes les offres"
-          accessibilityState={
-            Object {
-              "disabled": false,
-            }
-          }
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          nativeID="animatedComponent"
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "alignItems": "center",
-              "borderRadius": 24,
-              "justifyContent": "center",
-              "opacity": 1,
-              "overflow": "hidden",
-              "userSelect": "auto",
-            }
-          }
-          testID="Voir toutes les offres"
+          height={48}
+          width="100%"
         >
-          <View
-            height={48}
-            width="100%"
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-          <View
+          <Text>
+            undefined-SVG-Mock
+          </Text>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+                "position": "absolute",
+              },
+            ]
+          }
+        >
+          <Text
+            adjustsFontSizeToFit={true}
+            isDisabled={false}
+            numberOfLines={1}
             style={
               Array [
                 Object {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                  "position": "absolute",
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "paddingBottom": 20,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 20,
                 },
               ]
             }
           >
-            <Text
-              adjustsFontSizeToFit={true}
-              isDisabled={false}
-              numberOfLines={1}
-              style={
-                Array [
-                  Object {
-                    "color": "#ffffff",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                    "paddingBottom": 20,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 20,
-                  },
-                ]
-              }
-            >
-              Voir toutes les offres
-            </Text>
-          </View>
+            Voir toutes les offres
+          </Text>
         </View>
       </View>
+    </View>
+    <View
+      numberOfSpaces={6}
+      style={
+        Array [
+          Object {
+            "height": 24,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "backgroundColor": "#F1F1F4",
+            "height": 8,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "marginHorizontal": 24,
+          },
+        ]
+      }
+    >
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 18,
+              "lineHeight": 22,
+            },
+          ]
+        }
+      >
+        Où ?
+      </Text>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 12,
+              "lineHeight": 16,
+            },
+          ]
+        }
+      >
+        Adresse
+      </Text>
+      <View
+        numberOfSpaces={1}
+        style={
+          Array [
+            Object {
+              "height": 4,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+              "textTransform": "capitalize",
+            },
+          ]
+        }
+      >
+        1 boulevard Poissonnière, 75000 Paris
+      </Text>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "backgroundColor": "#CBCDD2",
+              "height": 1,
+            },
+          ]
+        }
+      />
       <View
         numberOfSpaces={6}
         style={
@@ -1754,199 +1939,83 @@ exports[`<VenueBody /> should render correctly 1`] = `
         style={
           Array [
             Object {
-              "backgroundColor": "#F1F1F4",
-              "height": 8,
-            },
-          ]
-        }
-      />
-      <View
-        style={
-          Array [
-            Object {
-              "marginHorizontal": 24,
+              "alignItems": "flex-start",
             },
           ]
         }
       >
         <View
-          numberOfSpaces={6}
+          accessibilityLabel="Voir l'itinéraire"
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
-            Array [
-              Object {
-                "height": 24,
-              },
-            ]
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "borderRadius": 0,
+              "borderWidth": 0,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "marginTop": 0,
+              "maxWidth": 500,
+              "minHeight": 20,
+              "opacity": 1,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "userSelect": "auto",
+              "width": "auto",
+            }
           }
-        />
-        <Text
-          className="sc-eCImPb kKanVC"
+          testID="Voir l'itinéraire"
         >
-          Où ?
-        </Text>
-        <View>
           <View
-            numberOfSpaces={4}
-            style={
-              Array [
-                Object {
-                  "height": 16,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              Array [
-                Object {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 16,
-                },
-              ]
-            }
+            height={20}
+            testID="button-icon"
+            width={20}
           >
-            Adresse
-          </Text>
-          <View
-            numberOfSpaces={1}
-            style={
-              Array [
-                Object {
-                  "height": 4,
-                },
-              ]
-            }
-          />
+            <Text>
+              button-icon-SVG-Mock
+            </Text>
+          </View>
           <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
             style={
               Array [
                 Object {
                   "color": "#161617",
-                  "fontFamily": "Montserrat-Regular",
+                  "fontFamily": "Montserrat-Bold",
                   "fontSize": 15,
                   "lineHeight": 20,
-                  "textTransform": "capitalize",
+                  "marginLeft": 8,
+                  "maxWidth": "100%",
                 },
               ]
             }
           >
-            1 boulevard Poissonnière, 75000 Paris
+            Voir l'itinéraire
           </Text>
-          <View
-            numberOfSpaces={4}
-            style={
-              Array [
-                Object {
-                  "height": 16,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              Array [
-                Object {
-                  "backgroundColor": "#CBCDD2",
-                  "height": 1,
-                },
-              ]
-            }
-          />
-          <View
-            numberOfSpaces={6}
-            style={
-              Array [
-                Object {
-                  "height": 24,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              Array [
-                Object {
-                  "alignItems": "flex-start",
-                },
-              ]
-            }
-          >
-            <View
-              accessibilityLabel="Voir l'itinéraire"
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "borderRadius": 0,
-                  "borderWidth": 0,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "marginTop": 0,
-                  "maxWidth": 500,
-                  "minHeight": 20,
-                  "opacity": 1,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "userSelect": "auto",
-                  "width": "auto",
-                }
-              }
-              testID="Voir l'itinéraire"
-            >
-              <View
-                height={20}
-                testID="button-icon"
-                width={20}
-              >
-                <Text>
-                  button-icon-SVG-Mock
-                </Text>
-              </View>
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
-                      "marginLeft": 8,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
-              >
-                Voir l'itinéraire
-              </Text>
-            </View>
-          </View>
         </View>
-        <View
-          numberOfSpaces={6}
-          style={
-            Array [
-              Object {
-                "height": 24,
-              },
-            ]
-          }
-        />
       </View>
+      <View
+        numberOfSpaces={6}
+        style={
+          Array [
+            Object {
+              "height": 24,
+            },
+          ]
+        }
+      />
     </View>
     <View
       style={

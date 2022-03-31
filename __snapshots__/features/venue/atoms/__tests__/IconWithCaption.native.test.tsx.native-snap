@@ -14,7 +14,16 @@ exports[`IconWithCaption should render correctly 1`] = `
   }
 >
   <View
-    className="sc-bdvvtL fuZyMx"
+    style={
+      Array [
+        Object {
+          "paddingBottom": 4,
+          "paddingLeft": 4,
+          "paddingRight": 4,
+          "paddingTop": 4,
+        },
+      ]
+    }
   >
     <View
       fill="#696A6F"
@@ -38,7 +47,17 @@ exports[`IconWithCaption should render correctly 1`] = `
     }
   />
   <Text
-    className="sc-gsDKAQ hUUtnF"
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-SemiBold",
+          "fontSize": 12,
+          "lineHeight": 16,
+          "textAlign": "center",
+        },
+      ]
+    }
     testID="caption-Cinéma - Salle de projections"
   >
     Cinéma - Salle de projections
@@ -51,18 +70,21 @@ exports[`IconWithCaption should render different when isDisabled is true 1`] = `
 - First value
 + Second value
 
-@@ -32,11 +32,12 @@
+@@ -41,14 +41,15 @@
           },
         ]
       }
     />
     <Text
--     className=\\"sc-gsDKAQ hUUtnF\\"
-+     className=\\"sc-gsDKAQ frrBqT\\"
 +     disabled={true}
-      testID=\\"caption-undefined\\"
-    >
-      Cinéma - Salle de projections
-    </Text>
-  </View>"
+      style={
+        Array [
+          Object {
+-           \\"color\\": \\"#161617\\",
++           \\"color\\": \\"#696A6F\\",
+            \\"fontFamily\\": \\"Montserrat-SemiBold\\",
+            \\"fontSize\\": 12,
+            \\"lineHeight\\": 16,
+            \\"textAlign\\": \\"center\\",
+          },"
 `;

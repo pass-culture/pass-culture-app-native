@@ -46,7 +46,11 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
       />
       <StyledAnimatedView style={{ transform: [{ scale }] }} {...pastilleDimensions}>
         <Pastille color={thin ? colors.greyDark : undefined} {...pastilleDimensions} />
-        <PastilleContent {...pastilleDimensions} showTabBar={showTabBar}>
+        <PastilleContent
+          {...pastilleDimensions}
+          showTabBar={showTabBar}
+          accessibilityLabel={`${favoritesCount}`}
+          aria-live={showTabBar ? 'polite' : 'off'}>
           <Count {...pastilleDimensions}>{count}</Count>
           <Plus {...pastilleDimensions}>{plusSign}</Plus>
         </PastilleContent>

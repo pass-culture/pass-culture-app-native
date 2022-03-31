@@ -22,8 +22,16 @@ exports[`OfferCategory renders correctly 1`] = `
     }
   }
 >
-  <dt
-    className="sc-gsDKAQ sc-dkPtRN gFZcdC gDWpPc"
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "paddingBottom": "4px",
+        "paddingLeft": "4px",
+        "paddingRight": "4px",
+        "paddingTop": "4px",
+      }
+    }
   >
     <div
       className="css-view-1dbjc4n"
@@ -35,7 +43,7 @@ exports[`OfferCategory renders correctly 1`] = `
         undefined-SVG-Mock
       </div>
     </div>
-  </dt>
+  </div>
   <div
     className="css-view-1dbjc4n"
     style={
@@ -44,11 +52,21 @@ exports[`OfferCategory renders correctly 1`] = `
       }
     }
   />
-  <dd
-    className="sc-bdvvtL sc-hKwDye kxtmOw kOBXq"
+  <div
+    className="css-text-901oao"
     data-testid="caption-undefined"
+    dir="auto"
+    style={
+      Object {
+        "color": "rgba(22,22,23,1.00)",
+        "fontFamily": "Montserrat-SemiBold",
+        "fontSize": "12px",
+        "lineHeight": "16px",
+        "textAlign": "center",
+      }
+    }
   >
     Livre ou carte lecture
-  </dd>
+  </div>
 </div>
 `;

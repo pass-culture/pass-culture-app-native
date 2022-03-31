@@ -9,8 +9,9 @@ Object {
         class="css-view-1dbjc4n"
         style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
       >
-        <dt
-          class="sc-gsDKAQ sc-dkPtRN gFZcdC gDWpPc"
+        <div
+          class="css-view-1dbjc4n"
+          style="padding: 4px 4px 4px 4px;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -23,17 +24,19 @@ Object {
               Cinéma - Salle de projections-SVG-Mock
             </div>
           </div>
-        </dt>
+        </div>
         <div
           class="css-view-1dbjc4n"
           style="height: 4px;"
         />
-        <dd
-          class="sc-bdvvtL sc-hKwDye kxtmOw kOBXq"
+        <div
+          class="css-text-901oao"
           data-testid="caption-Cinéma - Salle de projections"
+          dir="auto"
+          style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
         >
           Cinéma - Salle de projections
-        </dd>
+        </div>
       </div>
     </div>
   </body>,
@@ -42,8 +45,9 @@ Object {
       class="css-view-1dbjc4n"
       style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
     >
-      <dt
-        class="sc-gsDKAQ sc-dkPtRN gFZcdC gDWpPc"
+      <div
+        class="css-view-1dbjc4n"
+        style="padding: 4px 4px 4px 4px;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -56,17 +60,19 @@ Object {
             Cinéma - Salle de projections-SVG-Mock
           </div>
         </div>
-      </dt>
+      </div>
       <div
         class="css-view-1dbjc4n"
         style="height: 4px;"
       />
-      <dd
-        class="sc-bdvvtL sc-hKwDye kxtmOw kOBXq"
+      <div
+        class="css-text-901oao"
         data-testid="caption-Cinéma - Salle de projections"
+        dir="auto"
+        style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
       >
         Cinéma - Salle de projections
-      </dd>
+      </div>
     </div>
   </div>,
   "debug": [Function],
@@ -128,19 +134,17 @@ exports[`IconWithCaption should render different when isDisabled is true 1`] = `
 - First value
 + Second value
 
-@@ -87,12 +87,13 @@
-        <div
-          class=\\"css-view-1dbjc4n\\"
-          style=\\"height: 4px;\\"
+@@ -96,11 +96,11 @@
         />
-        <dd
--         class=\\"sc-bdvvtL sc-hKwDye kxtmOw kOBXq\\"
-+         class=\\"sc-bdvvtL sc-hKwDye kxtmOw dOZTHw\\"
+        <div
+          class=\\"css-text-901oao\\"
           data-testid=\\"caption-undefined\\"
-+         disabled=\\"\\"
+          dir=\\"auto\\"
+-         style=\\"color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;\\"
++         style=\\"color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;\\"
         >
           Cinéma - Salle de projections
-        </dd>
+        </div>
       </div>
     </div>,"
 `;

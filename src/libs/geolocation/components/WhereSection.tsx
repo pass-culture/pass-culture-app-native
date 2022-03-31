@@ -3,7 +3,6 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { StyleSheet } from 'react-native'
 import { useQueryClient } from 'react-query'
-import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
 import { Coordinates, OfferVenueResponse, VenueResponse } from 'api/gen'
@@ -20,11 +19,9 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { Typo, getSpacing } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typography'
 import { A } from 'ui/web/link/A'
 import { Link } from 'ui/web/link/Link'
-import { Dd } from 'ui/web/list/Dd'
-import { Dt } from 'ui/web/list/Dt'
-import { H2 } from 'ui/web/titles/H'
 
 type Props = {
   beforeNavigateToItinerary?: () => Promise<void> | void
@@ -83,62 +80,56 @@ export const WhereSection: React.FC<Props> = ({
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
-      <H2>
-        <SectionTitle>{t`Où\u00a0?`}</SectionTitle>
-      </H2>
-      <Dd>
-        {showVenueBanner ? (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={4} />
-            <Link
-              to={{ screen: 'Venue', params: { id: venue.id } }}
-              style={styles.link}
-              accessible={false}>
-              <VenueNameContainer
-                onPress={navigateToVenuePage}
-                accessibilityLabel={t`Lieu` + ` ${venue.publicName || venue.name}`}
-                testID="VenueBannerComponent">
-                <Spacer.Row numberOfSpaces={2} />
-                <IconContainer>
-                  <LocationBuilding size={iconSize} />
-                </IconContainer>
-                <Spacer.Row numberOfSpaces={2} />
-                <StyledVenueName numberOfLines={1}>
-                  {venue.publicName || venue.name}
-                </StyledVenueName>
-                <Spacer.Flex />
-                <ArrowNext />
-              </VenueNameContainer>
-            </Link>
-          </React.Fragment>
-        ) : null}
-        {!!address && (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={4} />
-            <Typo.Caption>{t`Adresse`}</Typo.Caption>
-            <Spacer.Column numberOfSpaces={1} />
-            <StyledAddress>{address}</StyledAddress>
-          </React.Fragment>
-        )}
-        {!!distanceToLocation && (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={4} />
-            <Typo.Caption>{t`Distance`}</Typo.Caption>
-            <Spacer.Column numberOfSpaces={1} />
-            <Typo.Body>{distanceToLocation}</Typo.Body>
-          </React.Fragment>
-        )}
-        {!!canOpenItinerary && (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={4} />
-            <Separator />
-            <Spacer.Column numberOfSpaces={6} />
-            <A href={venueFullAddress ? getGoogleMapsItineraryUrl(venueFullAddress) : undefined}>
-              <SeeItineraryButton openItinerary={openItinerary} />
-            </A>
-          </React.Fragment>
-        )}
-      </Dd>
+      <Typo.Title4 {...getHeadingAttrs(2)}>{t`Où\u00a0?`}</Typo.Title4>
+      {showVenueBanner ? (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={4} />
+          <Link
+            to={{ screen: 'Venue', params: { id: venue.id } }}
+            style={styles.link}
+            accessible={false}>
+            <VenueNameContainer
+              onPress={navigateToVenuePage}
+              accessibilityLabel={t`Lieu` + ` ${venue.publicName || venue.name}`}
+              testID="VenueBannerComponent">
+              <Spacer.Row numberOfSpaces={2} />
+              <IconContainer>
+                <LocationBuilding size={iconSize} />
+              </IconContainer>
+              <Spacer.Row numberOfSpaces={2} />
+              <StyledVenueName numberOfLines={1}>{venue.publicName || venue.name}</StyledVenueName>
+              <Spacer.Flex />
+              <ArrowNext />
+            </VenueNameContainer>
+          </Link>
+        </React.Fragment>
+      ) : null}
+      {!!address && (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={4} />
+          <Typo.Caption>{t`Adresse`}</Typo.Caption>
+          <Spacer.Column numberOfSpaces={1} />
+          <StyledAddress>{address}</StyledAddress>
+        </React.Fragment>
+      )}
+      {!!distanceToLocation && (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={4} />
+          <Typo.Caption>{t`Distance`}</Typo.Caption>
+          <Spacer.Column numberOfSpaces={1} />
+          <Typo.Body>{distanceToLocation}</Typo.Body>
+        </React.Fragment>
+      )}
+      {!!canOpenItinerary && (
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={4} />
+          <Separator />
+          <Spacer.Column numberOfSpaces={6} />
+          <A href={venueFullAddress ? getGoogleMapsItineraryUrl(venueFullAddress) : undefined}>
+            <SeeItineraryButton openItinerary={openItinerary} />
+          </A>
+        </React.Fragment>
+      )}
       <Spacer.Column numberOfSpaces={6} />
     </React.Fragment>
   )
@@ -176,11 +167,6 @@ const IconContainer = styled.View({
 const Separator = styled.View(({ theme }) => ({
   height: 1,
   backgroundColor: theme.colors.greyMedium,
-}))
-
-const SectionTitle = webStyled(Dt)(({ theme }) => ({
-  ...theme.typography.title4,
-  color: theme.colors.black,
 }))
 
 const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({

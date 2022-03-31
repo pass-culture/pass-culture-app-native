@@ -104,7 +104,6 @@ export function ChangePassword() {
           <PasswordInput
             label={t`Mot de passe actuel`}
             value={currentPassword}
-            autoFocus={true}
             onChangeText={setCurrentPassword}
             placeholder={t`Ton mot de passe actuel`}
             isRequiredField
