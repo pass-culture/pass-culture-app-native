@@ -1,11 +1,23 @@
 import * as React from 'react'
-import Svg, { Path, G } from 'react-native-svg'
+import { Path, G } from 'react-native-svg'
 import styled from 'styled-components/native'
 
-import { IconInterface } from './types'
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
-const LogoSvg: React.FunctionComponent<IconInterface> = ({ size, color, testID }) => (
-  <Svg width={size} height={size} viewBox="0 0 32 32" testID={testID} aria-hidden>
+import { AccessibleIcon } from './types'
+
+const LogoSvg: React.FunctionComponent<AccessibleIcon> = ({
+  size,
+  color,
+  accessibilityLabel,
+  testID,
+}) => (
+  <AccessibleSvg
+    width={size}
+    height={size}
+    viewBox="0 0 32 32"
+    accessibilityLabel={accessibilityLabel}
+    testID={testID}>
     <G fill="none" fillRule="evenodd">
       <G fill={color}>
         <G>
@@ -18,7 +30,7 @@ const LogoSvg: React.FunctionComponent<IconInterface> = ({ size, color, testID }
         </G>
       </G>
     </G>
-  </Svg>
+  </AccessibleSvg>
 )
 
 export const Logo = styled(LogoSvg).attrs(({ color, size, theme }) => ({
