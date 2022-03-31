@@ -11,13 +11,14 @@ import { EyeSophisticated as DefaultEyeSophisticated } from 'ui/svg/icons/EyeSop
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
+import { getHeadingAttrs } from 'ui/theme/typography'
 
 type Props = Pick<
   ComponentProps<typeof Playlist>,
   'data' | 'itemWidth' | 'itemHeight' | 'testID' | 'keyExtractor' | 'renderItem' | 'onEndReached'
 > & {
   title: string
-  TitleComponent?: ComponentType<ComponentProps<typeof Typo.Title3>>
+  TitleComponent?: ComponentType<ComponentProps<typeof DefaultTitle>>
   onPressSeeMore?: () => void
   coverUrl?: string | null
   onDarkBackground?: boolean
@@ -26,7 +27,7 @@ type Props = Pick<
 }
 
 export const PassPlaylist = (props: Props) => {
-  const TitleComponent = props.TitleComponent || Typo.Title3
+  const TitleComponent = props.TitleComponent || DefaultTitle
 
   const { isTouch, colors } = useTheme()
 
@@ -135,3 +136,5 @@ const ButtonText = styled(Typo.ButtonText)<{ onDarkBackground?: boolean }>(
 const EyeSophisticated = styled(DefaultEyeSophisticated).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
 }))``
+
+const DefaultTitle = styled(Typo.Title3).attrs(getHeadingAttrs(2))``
