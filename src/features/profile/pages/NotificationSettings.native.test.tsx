@@ -35,6 +35,10 @@ jest.mock('@react-navigation/native', () => ({
 }))
 jest.mock('@react-navigation/stack', () => jest.requireActual('@react-navigation/stack'))
 
+// We allow console.error here because of act warning that we can't reproduce locally
+// We allow warning for android 'Expected style "elevation: 4px" to be unitless' due to shadow style
+// eslint-disable-next-line local-rules/no-allow-console
+allowConsole({ error: true, warn: true })
 describe('NotificationSettings', () => {
   afterEach(() => {
     cleanup()
@@ -50,8 +54,6 @@ describe('NotificationSettings', () => {
       })
     })
 
-    // eslint-disable-next-line local-rules/no-allow-console
-    allowConsole({ warn: true }) // We allow warning for android 'Expected style "elevation: 4px" to be unitless' due to shadow style
     it('should only display the email switch on android', async () => {
       Platform.OS = 'android'
       const { queryByText } = await renderNotificationSettings('granted', {} as UserProfileResponse)
