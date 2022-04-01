@@ -52,7 +52,6 @@ export const GenericInfoPageWhite: React.FC<Props> = (props) => {
     Icon &&
     styled(Icon).attrs(({ theme }) => ({
       size: theme.illustrations.sizes.fullPage,
-      color: theme.colors.white,
     }))({ width: '100%' })
 
   const StyledSubtitle = useMemo(() => {
@@ -83,7 +82,7 @@ export const GenericInfoPageWhite: React.FC<Props> = (props) => {
           <StyledIcon />
         )}
       </StyledLottieContainer>
-      <Spacer.Flex flex={1} />
+      <Spacer.Flex flex={0.5} />
       <StyledTitle>{props.title}</StyledTitle>
       {!!props.subtitle && <StyledSubtitle>{props.subtitle}</StyledSubtitle>}
       <Spacer.Flex flex={0.5} />

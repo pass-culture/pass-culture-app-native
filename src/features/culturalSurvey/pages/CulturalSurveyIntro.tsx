@@ -34,6 +34,8 @@ export const CulturalSurveyIntro = (): JSX.Element => {
 
 const StyledBicolorPhonePending = styled(BicolorPhonePending).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.fullPage,
+  color: theme.colors.primary,
+  color2: theme.colors.secondary,
 }))``
 
 const StyledBody = styled(Typo.Body)({
