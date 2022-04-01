@@ -234,8 +234,7 @@ exports[`TabBar renders correctly 1`] = `
       />
     </View>
     <View
-      accessibilityLabel="Mes favoris"
-      accessible={true}
+      accessible={false}
       collapsable={false}
       focusable={true}
       nativeID="animatedComponent"

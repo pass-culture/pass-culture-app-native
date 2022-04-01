@@ -1,6 +1,7 @@
 import { plural } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -11,7 +12,7 @@ import { LocationFilter } from 'features/search/types'
 import { useGeolocation } from 'libs/geolocation'
 import { ClippedTag } from 'ui/components/ClippedTag'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { H2 } from 'ui/web/titles/H'
+import { getHeadingAttrs } from 'ui/theme/typography'
 
 interface Props {
   nbHits: number
@@ -53,14 +54,16 @@ export const NumberOfResults: React.FC<Props> = ({ nbHits }) => {
   return (
     <Container>
       {venueLabel ? (
-        <H2>
+        <View {...getHeadingAttrs(2)}>
           <Body>{resultsWithSuffix}</Body>
           <Spacer.Column numberOfSpaces={4} />
           <ClippedTag label={venueLabel} onPress={removeVenueId} testId="Enlever le lieu" />
           <Spacer.Column numberOfSpaces={2} />
-        </H2>
+        </View>
       ) : (
-        <Body aria-live="assertive">{numberOfResults}</Body>
+        <Body {...getHeadingAttrs(2)} aria-live="assertive">
+          {numberOfResults}
+        </Body>
       )}
     </Container>
   )

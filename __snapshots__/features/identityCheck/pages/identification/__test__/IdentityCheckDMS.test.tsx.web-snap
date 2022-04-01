@@ -254,8 +254,8 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                   }
                 }
               >
-                <h1
-                  aria-level={1}
+                <h2
+                  aria-level={2}
                   className="css-reset-4rbku5 css-text-901oao"
                   dir="auto"
                   role="heading"
@@ -270,7 +270,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                   }
                 >
                   Créer un dossier sur le site des Démarches Simplifiées
-                </h1>
+                </h2>
               </div>
               <div
                 className="css-view-1dbjc4n"
@@ -330,7 +330,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                   target="_blank"
                 >
                   <button
-                    className="sc-bdvvtL hrpKOI sc-iJKOTD kXmnPp"
+                    className="sc-bdvvtL hrpKOI sc-iwjdpV fFnKs"
                     onClick={[Function]}
                     onDoubleClick={[Function]}
                     tabIndex={0}
@@ -449,7 +449,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                   target="_blank"
                 >
                   <button
-                    className="sc-bdvvtL hrpKOI sc-iJKOTD kXmnPp"
+                    className="sc-bdvvtL hrpKOI sc-iwjdpV fFnKs"
                     onClick={[Function]}
                     onDoubleClick={[Function]}
                     tabIndex={0}
