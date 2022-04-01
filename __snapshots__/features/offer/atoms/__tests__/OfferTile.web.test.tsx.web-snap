@@ -5,15 +5,16 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div
-        class="css-view-1dbjc4n"
-        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+      <h3
+        aria-level="3"
+        class="css-reset-4rbku5 css-view-1dbjc4n"
+        role="heading"
       >
         <div
           aria-label="Offre Mensch ! Où sont les Hommes ? de la catégorie MUSIQUE, à 1,2km,  Dès le 12 mars 2020, prix 28 €. "
           class="css-view-1dbjc4n"
           data-testid="offre Mensch ! Où sont les Hommes ?"
-          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 100px; margin-top: 4px; user-select: none;"
+          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 172px; user-select: none;"
           tabindex="0"
         >
           <div
@@ -24,79 +25,87 @@ Object {
           >
             <div
               class="css-view-1dbjc4n"
-              style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 100px;"
+              style="display: inline-flex; flex-direction: column-reverse;"
             >
               <div
                 class="css-view-1dbjc4n"
-                style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                style="display: inline-flex; margin-top: 8px; max-width: 100px;"
               >
                 <span
                   class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
-                  data-testid="categoryImageCaption"
-                  style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                 >
-                  MUSIQUE
+                  Mensch ! Où sont les Hommes ?
+                </span>
+                <span
+                  class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                >
+                  Dès le 12 mars 2020
+                </span>
+                <span
+                  class="css-text-901oao css-textHasAncestor-16my406"
+                  data-testid="priceIsDuo"
+                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                >
+                  28 €
                 </span>
               </div>
               <div
                 class="css-view-1dbjc4n"
-                style="background-color: rgb(255, 255, 255); display: inline-flex; height: 16px; width: 1px;"
-              />
-              <div
-                class="css-view-1dbjc4n"
-                style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                style="display: inline-flex;"
               >
-                <span
-                  class="css-text-901oao css-textHasAncestor-16my406"
-                  data-testid="distanceImageCaption"
-                  style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                <div
+                  class="css-view-1dbjc4n"
+                  style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 100px;"
                 >
-                  1,2km
-                </span>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                  >
+                    <span
+                      class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                      data-testid="categoryImageCaption"
+                      style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      MUSIQUE
+                    </span>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="background-color: rgb(255, 255, 255); display: inline-flex; height: 16px; width: 1px;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                  >
+                    <span
+                      class="css-text-901oao css-textHasAncestor-16my406"
+                      data-testid="distanceImageCaption"
+                      style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      1,2km
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="margin-top: 8px; max-width: 100px;"
-        >
-          <div
-            class="css-text-901oao css-textMultiLine-cens5h"
-            dir="auto"
-            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-          >
-            Mensch ! Où sont les Hommes ?
-          </div>
-          <div
-            class="css-text-901oao css-textMultiLine-cens5h"
-            dir="auto"
-            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-          >
-            Dès le 12 mars 2020
-          </div>
-          <div
-            class="css-text-901oao"
-            data-testid="priceIsDuo"
-            dir="auto"
-            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-          >
-            28 €
-          </div>
-        </div>
-      </div>
+      </h3>
     </div>
   </body>,
   "container": <div>
-    <div
-      class="css-view-1dbjc4n"
-      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+    <h3
+      aria-level="3"
+      class="css-reset-4rbku5 css-view-1dbjc4n"
+      role="heading"
     >
       <div
         aria-label="Offre Mensch ! Où sont les Hommes ? de la catégorie MUSIQUE, à 1,2km,  Dès le 12 mars 2020, prix 28 €. "
         class="css-view-1dbjc4n"
         data-testid="offre Mensch ! Où sont les Hommes ?"
-        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 100px; margin-top: 4px; user-select: none;"
+        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 172px; user-select: none;"
         tabindex="0"
       >
         <div
@@ -107,67 +116,74 @@ Object {
         >
           <div
             class="css-view-1dbjc4n"
-            style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 100px;"
+            style="display: inline-flex; flex-direction: column-reverse;"
           >
             <div
               class="css-view-1dbjc4n"
-              style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+              style="display: inline-flex; margin-top: 8px; max-width: 100px;"
             >
               <span
                 class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
-                data-testid="categoryImageCaption"
-                style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
               >
-                MUSIQUE
+                Mensch ! Où sont les Hommes ?
+              </span>
+              <span
+                class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              >
+                Dès le 12 mars 2020
+              </span>
+              <span
+                class="css-text-901oao css-textHasAncestor-16my406"
+                data-testid="priceIsDuo"
+                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              >
+                28 €
               </span>
             </div>
             <div
               class="css-view-1dbjc4n"
-              style="background-color: rgb(255, 255, 255); display: inline-flex; height: 16px; width: 1px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+              style="display: inline-flex;"
             >
-              <span
-                class="css-text-901oao css-textHasAncestor-16my406"
-                data-testid="distanceImageCaption"
-                style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 100px;"
               >
-                1,2km
-              </span>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                >
+                  <span
+                    class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                    data-testid="categoryImageCaption"
+                    style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                  >
+                    MUSIQUE
+                  </span>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="background-color: rgb(255, 255, 255); display: inline-flex; height: 16px; width: 1px;"
+                />
+                <div
+                  class="css-view-1dbjc4n"
+                  style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                >
+                  <span
+                    class="css-text-901oao css-textHasAncestor-16my406"
+                    data-testid="distanceImageCaption"
+                    style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                  >
+                    1,2km
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div
-        class="css-view-1dbjc4n"
-        style="margin-top: 8px; max-width: 100px;"
-      >
-        <div
-          class="css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
-          style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-        >
-          Mensch ! Où sont les Hommes ?
-        </div>
-        <div
-          class="css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
-          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-        >
-          Dès le 12 mars 2020
-        </div>
-        <div
-          class="css-text-901oao"
-          data-testid="priceIsDuo"
-          dir="auto"
-          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-        >
-          28 €
-        </div>
-      </div>
-    </div>
+    </h3>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
