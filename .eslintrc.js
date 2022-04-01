@@ -69,7 +69,18 @@ module.exports = {
       },
       { name: 'msw/lib/types', message: 'use msw instead' },
       { name: '@testing-library/react-native', message: 'Use test/utils instead' },
-    ],
+      { name: 'firebase/app', message: 'use libs/firebase/app instead' },
+      { name: 'firebase/firestore', message: 'use libs/firebase/firestore instead' },
+      { name: 'firebase/analytics', message: 'use libs/firebase/analytics instead' },
+      { name: "@react-native-firebase/analytics", message: 'use libs/firebase/analytics instead' },
+      { name: "@react-native-firebase/app", message: 'use libs/firebase/app instead' },
+      { name: "@react-native-firebase/dynamic-links", message: 'use libs/firebase-links instead' },
+      { name: "@react-native-firebase/firestore", message: 'use libs/firebase/firestore instead' },
+      { name: "@react-native-firebase/perf", message: 'use libs/firebase/perf instead' },
+      { name: "@react-native-firebase/remote-config", message: 'use libs/firebase-config instead' },
+
+
+],
     'no-restricted-properties': [
       2,
       {

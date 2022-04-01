@@ -6,7 +6,7 @@ import { LandscapePositionPage } from 'features/landscapePosition/LandscapePosit
 import { useIsLandscapePosition } from 'features/landscapePosition/useIsLandscapePosition'
 import { MaintenanceErrorPage } from 'features/maintenance/MaintenanceErrorPage'
 import { useMaintenance } from 'features/maintenance/useMaintenance'
-import { MAINTENANCE } from 'libs/firestore/maintenance'
+import { MAINTENANCE } from 'libs/firebaseImpl/firestore/maintenance'
 import { ScreenError } from 'libs/monitoring/errors'
 
 export const ScreenErrorProvider = ({ children }: { children?: JSX.Element | JSX.Element[] }) => {

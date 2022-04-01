@@ -1,13 +1,14 @@
-import firebaseAnalyticsModule from '@react-native-firebase/analytics'
-
-import { AgentType } from 'api/gen'
+import {
+  AGENT_TYPE,
+  EVENT_PAGE_VIEW_NAME,
+  EVENT_PAGE_VIEW_PARAM_KEY,
+} from 'libs/analytics/constants'
 import { prepareLogEventParams } from 'libs/analytics/utils'
+import firebaseAnalyticsModule from 'libs/firebase/analytics'
 
 import { AnalyticsProvider } from './types'
 
 const firebaseAnalytics = firebaseAnalyticsModule()
-
-const AGENT_TYPE = AgentType.agent_mobile
 
 export const analyticsProvider: AnalyticsProvider = {
   enableCollection() {
@@ -17,14 +18,15 @@ export const analyticsProvider: AnalyticsProvider = {
     firebaseAnalytics.setAnalyticsCollectionEnabled(false)
   },
   setDefaultEventParameters(params: Record<string, string> | undefined) {
+    // only apply on native devices, mocked on the Web
     firebaseAnalytics.setDefaultEventParameters(params)
   },
   setUserId(userId) {
     firebaseAnalytics.setUserId(userId.toString())
   },
   logScreenView(screenName) {
-    firebaseAnalytics.logEvent('screen_view', {
-      screen_name: screenName,
+    firebaseAnalytics.logEvent(EVENT_PAGE_VIEW_NAME, {
+      [EVENT_PAGE_VIEW_PARAM_KEY]: screenName,
       screen_class: screenName,
       agentType: AGENT_TYPE,
     })
