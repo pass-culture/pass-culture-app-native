@@ -7,6 +7,7 @@ import {
   VenueTypesIcons,
 } from 'features/cheatcodes/pages/AppComponents/iconsExports'
 import CategoryIcon from 'ui/svg/icons/categories/bicolor'
+import CulturalSurveyIcons from 'ui/svg/icons/culturalSurvey'
 import { SMALLER_ICON_SIZE, STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 export default {
@@ -45,4 +46,11 @@ export const Unconventional = Icons.bind({})
 Unconventional.args = {
   title: `Icônes à uniformiser (conversion en illustrations)`,
   icons: UnconventionalIcons,
+}
+
+export const CulturalSurvey = Icons.bind({})
+CulturalSurvey.args = {
+  title: `Icones pour QPI`,
+  icons: CulturalSurveyIcons,
+  isBicolor: true,
 }
