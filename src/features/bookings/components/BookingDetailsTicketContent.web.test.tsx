@@ -46,5 +46,42 @@ describe('BookingDetailsTicketContent', () => {
 
       expect(queryByTestId('qr-code')).toBeFalsy()
     })
+
+    it('should not display on site collect wording if type collect is not on site', () => {
+      const booking = bookingsSnap.ongoing_bookings[0]
+      booking.stock.offer.isDigital = false
+      const { queryByTestId } = render(
+        <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
+      )
+
+      expect(queryByTestId('collect-info')).toBeFalsy()
+    })
+
+    it('should display on site collect wording', () => {
+      const booking = bookingsSnap.ongoing_bookings[1]
+      booking.stock.offer.isDigital = false
+      const { getByTestId } = render(
+        <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
+      )
+      getByTestId('collect-info')
+    })
+
+    it('should display on site collect wording with delay', () => {
+      const booking = bookingsSnap.ongoing_bookings[2]
+      booking.stock.offer.isDigital = false
+      const { getByTestId } = render(
+        <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
+      )
+      getByTestId('collect-info-delay')
+    })
+
+    it('should display on site collect wording without delay', () => {
+      const booking = bookingsSnap.ongoing_bookings[1]
+      booking.stock.offer.isDigital = false
+      const { queryByTestId } = render(
+        <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
+      )
+      expect(queryByTestId('collect-info-delay')).toBeFalsy()
+    })
   })
 })

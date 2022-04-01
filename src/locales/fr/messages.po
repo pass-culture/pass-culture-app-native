@@ -3120,6 +3120,10 @@ msgstr "auteur"
 msgid "autour de toi"
 msgstr "autour de toi"
 
+#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+msgid "avant le début de l’événement"
+msgstr "avant le début de l’événement"
+
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
 msgid "birthday notification text"
 msgstr "Pour tes {age} ans, le Gouvernement vient d'ajouter {creditedAmount} à ton crédit. Tu disposes maintenant de :"
@@ -3321,6 +3325,10 @@ msgstr "{day} à {hour}"
 msgid "profile expiration date for underage"
 msgstr "{day}"
 
+#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+msgid "présente le code ci-dessus sur place"
+msgstr "présente le code ci-dessus sur place"
+
 #: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx
 msgid "quotidiennes"
 msgstr "quotidiennes"
@@ -3394,6 +3402,18 @@ msgstr "{0, plural, one {Réservation terminée} other {Réservations terminées
 #: src/libs/parsers/getDisplayPrice.ts
 msgid "{0} {EURO_SYMBOL}"
 msgstr "{0} {EURO_SYMBOL}"
+
+#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+msgid "{delayInHour} heure"
+msgstr "{delayInHour} heure"
+
+#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+msgid "{delayInHour} heures"
+msgstr "{delayInHour} heures"
+
+#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+msgid "{delayInMinutes} minutes"
+msgstr "{delayInMinutes} minutes"
 
 #: src/features/bookings/pages/EndedBookings.tsx
 msgid "{endedBookingsCount, plural, one {# réservation terminée} other {# réservations terminées}}"

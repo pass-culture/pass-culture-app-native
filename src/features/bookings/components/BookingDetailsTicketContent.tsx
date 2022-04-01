@@ -48,7 +48,7 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
     activationCodeFeatureEnabled && properties.hasActivationCode
 
   return (
-    <React.Fragment>
+    <TicketContainer>
       <Title>{offer.name}</Title>
       <Spacer.Column numberOfSpaces={2} />
       <TicketInnerContent>
@@ -62,14 +62,14 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
             <TicketCode code={booking.token} />
             {properties.isDigital ? (
               accessOfferButton
-            ) : booking.qrCodeData && !proDisableEventsQrcode ? (
-              <QrCodeView qrCodeData={booking.qrCodeData} />
-            ) : null}
+            ) : (
+              <TicketBody booking={booking} proDisableEventsQrcode={!!proDisableEventsQrcode} />
+            )}
           </React.Fragment>
         )}
       </TicketInnerContent>
       {!!shouldDisplayEAN && <Ean offer={offer} />}
-    </React.Fragment>
+    </TicketContainer>
   )
 }
 
@@ -87,6 +87,11 @@ type QrCodeViewProps = {
   qrCodeData: string
 }
 
+type TicketBodyProps = {
+  booking: BookingReponse
+  proDisableEventsQrcode: boolean
+}
+
 const StyledQRCode = styled(QRCode).attrs<{ value: QrCodeViewProps }>(({ theme, value }) => ({
   value,
   size: theme.ticket.qrCodeSize,
@@ -98,6 +103,45 @@ const QrCodeView = ({ qrCodeData }: QrCodeViewProps) => (
   </QrCodeContainer>
 )
 
+const formatCollectDelayString = (delay: number) => {
+  if (delay > 0 && delay <= 1800) {
+    const delayInMinutes = delay / 60
+    return t`${delayInMinutes} minutes`
+  }
+
+  const delayInHour = delay / 60 / 60
+  if (delay === 3600) {
+    return t`${delayInHour} heure`
+  }
+  return t`${delayInHour} heures`
+}
+
+const TicketBody = ({ booking, proDisableEventsQrcode }: TicketBodyProps) => {
+  const collectType = booking?.stock?.offer?.withdrawalType
+  const collectDelay = booking?.stock?.offer?.withdrawalDelay || 0
+
+  if (booking.qrCodeData && !proDisableEventsQrcode)
+    return <QrCodeView qrCodeData={booking.qrCodeData} />
+
+  if (collectType === 'on_site') {
+    const startMessage = t`présente le code ci-dessus sur place` + ' '
+    const delayMessage = collectDelay > 0 ? `${formatCollectDelayString(collectDelay)} ` : null
+    const endMessage = t`avant le début de l’événement`
+
+    return (
+      <TicketInfo testID="collect-info">
+        {startMessage}
+        {!!delayMessage && (
+          <TicketCollectDelay testID="collect-info-delay">{delayMessage}</TicketCollectDelay>
+        )}
+        {endMessage}
+      </TicketInfo>
+    )
+  }
+
+  return null
+}
+
 const DarkGreyCaption = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
@@ -107,11 +151,19 @@ const Title = styled(Typo.Title3).attrs(getHeadingAttrs(1))({
   maxWidth: '100%',
 })
 
-const TicketInnerContent = styled.View(({ theme }) => ({
-  justifyContent: 'center',
+const TicketInnerContent = styled.View({
+  paddingTop: getSpacing(6),
+})
+
+const TicketInfo = styled(Typo.Body).attrs(getHeadingAttrs(1))({
+  textAlign: 'center',
+  maxWidth: '100%',
   paddingHorizontal: getSpacing(5),
-  minHeight: theme.ticket.minHeight,
-  width: '100%',
+  paddingBottom: getSpacing(6),
+})
+
+const TicketCollectDelay = styled(Typo.Body)(({ theme }) => ({
+  fontFamily: theme.fontFamily.bold,
 }))
 
 const QrCodeContainer = styled.View({
@@ -125,6 +177,10 @@ const EANContainer = styled.View({
   alignItems: 'center',
   justifyContent: 'center',
 })
+
+const TicketContainer = styled.View(({ theme }) => ({
+  minHeight: theme.ticket.minHeight,
+}))
 
 const StyledA = webStyled(A)({
   display: 'flex',

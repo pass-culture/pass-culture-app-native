@@ -3,7 +3,6 @@ import styled from 'styled-components/native'
 
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typography'
 
 export const TicketCodeTitle = ({
   onPress,
@@ -17,8 +16,8 @@ export const TicketCodeTitle = ({
   </TouchableOpacity>
 )
 
-const StyledTitle = styled(Typo.Title4).attrs(getHeadingAttrs(2))(({ theme }) => ({
+const StyledTitle = styled(Typo.Title2)(({ theme }) => ({
   color: theme.colors.primary,
   textAlign: 'center',
-  padding: getSpacing(2.5),
+  paddingBottom: getSpacing(4),
 }))
