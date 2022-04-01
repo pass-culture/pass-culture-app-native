@@ -45,12 +45,12 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
     </View>
   </View>
   <View
-    flex={1}
+    flex={0.5}
     style={
       Array [
         Object {
           "flexBasis": 0,
-          "flexGrow": 1,
+          "flexGrow": 0.5,
           "flexShrink": 1,
         },
       ]
