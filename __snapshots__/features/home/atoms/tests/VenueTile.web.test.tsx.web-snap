@@ -5,133 +5,141 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div
-        class="css-view-1dbjc4n"
-        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+      <h3
+        aria-level="3"
+        class="css-reset-4rbku5 css-view-1dbjc4n"
+        role="heading"
       >
         <div
           aria-label="Lieu Le Petit Rintintin 1 du type Salle de projections, "
           class="css-view-1dbjc4n"
           data-testid="venueTile"
-          style="background-color: rgb(230, 230, 230); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 100px; margin-top: 4px; user-select: none; width: 100px;"
+          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 172px; user-select: none; width: 100px;"
           tabindex="0"
         >
           <div
             class="css-text-901oao"
             dir="auto"
-            style="display: flex; flex-direction: column;"
+            style="display: flex; flex-direction: column-reverse;"
             tabindex="-1"
-          />
-        </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="margin-top: 8px; max-width: 100px;"
-        >
-          <div
-            class="css-text-901oao css-textMultiLine-cens5h"
-            dir="auto"
-            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-          >
-            Le Petit Rintintin 1
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; flex-direction: row;"
           >
             <div
               class="css-view-1dbjc4n"
+              style="display: inline-flex; flex-direction: column-reverse;"
             >
               <div
-                class="css-text-901oao"
-                dir="auto"
+                class="css-view-1dbjc4n"
+                style="display: inline-flex; margin-top: 8px; max-width: 100px;"
               >
-                undefined-SVG-Mock
+                <span
+                  class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                >
+                  Le Petit Rintintin 1
+                </span>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="align-items: center; display: inline-flex; flex-direction: row;"
+                >
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="display: inline-flex;"
+                  >
+                    <span
+                      class="css-text-901oao css-textHasAncestor-16my406"
+                    >
+                      undefined-SVG-Mock
+                    </span>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="display: inline-flex; width: 4px;"
+                  />
+                  <span
+                    class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                    style="color: rgb(105, 106, 111); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                  >
+                    Salle de projections
+                  </span>
+                </div>
+                <span
+                  class="css-text-901oao css-textHasAncestor-16my406"
+                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                />
               </div>
             </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="width: 4px;"
-            />
-            <div
-              class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
-              style="color: rgb(105, 106, 111); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-            >
-              Salle de projections
-            </div>
           </div>
-          <div
-            class="css-text-901oao"
-            dir="auto"
-            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-          />
         </div>
-      </div>
+      </h3>
     </div>
   </body>,
   "container": <div>
-    <div
-      class="css-view-1dbjc4n"
-      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+    <h3
+      aria-level="3"
+      class="css-reset-4rbku5 css-view-1dbjc4n"
+      role="heading"
     >
       <div
         aria-label="Lieu Le Petit Rintintin 1 du type Salle de projections, "
         class="css-view-1dbjc4n"
         data-testid="venueTile"
-        style="background-color: rgb(230, 230, 230); border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 100px; margin-top: 4px; user-select: none; width: 100px;"
+        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 172px; user-select: none; width: 100px;"
         tabindex="0"
       >
         <div
           class="css-text-901oao"
           dir="auto"
-          style="display: flex; flex-direction: column;"
+          style="display: flex; flex-direction: column-reverse;"
           tabindex="-1"
-        />
-      </div>
-      <div
-        class="css-view-1dbjc4n"
-        style="margin-top: 8px; max-width: 100px;"
-      >
-        <div
-          class="css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
-          style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-        >
-          Le Petit Rintintin 1
-        </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="align-items: center; flex-direction: row;"
         >
           <div
             class="css-view-1dbjc4n"
+            style="display: inline-flex; flex-direction: column-reverse;"
           >
             <div
-              class="css-text-901oao"
-              dir="auto"
+              class="css-view-1dbjc4n"
+              style="display: inline-flex; margin-top: 8px; max-width: 100px;"
             >
-              undefined-SVG-Mock
+              <span
+                class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              >
+                Le Petit Rintintin 1
+              </span>
+              <div
+                class="css-view-1dbjc4n"
+                style="align-items: center; display: inline-flex; flex-direction: row;"
+              >
+                <div
+                  class="css-view-1dbjc4n"
+                  style="display: inline-flex;"
+                >
+                  <span
+                    class="css-text-901oao css-textHasAncestor-16my406"
+                  >
+                    undefined-SVG-Mock
+                  </span>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="display: inline-flex; width: 4px;"
+                />
+                <span
+                  class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                  style="color: rgb(105, 106, 111); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                >
+                  Salle de projections
+                </span>
+              </div>
+              <span
+                class="css-text-901oao css-textHasAncestor-16my406"
+                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+              />
             </div>
           </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="width: 4px;"
-          />
-          <div
-            class="css-text-901oao css-textMultiLine-cens5h"
-            dir="auto"
-            style="color: rgb(105, 106, 111); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-          >
-            Salle de projections
-          </div>
         </div>
-        <div
-          class="css-text-901oao"
-          dir="auto"
-          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-        />
       </div>
-    </div>
+    </h3>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

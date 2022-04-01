@@ -1,17 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`VenueTile component should render correctly 1`] = `
-<View
-  style={
-    Array [
-      Object {
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
-  }
->
+<View>
   <View
     accessibilityLabel="Lieu Le Petit Rintintin 1 du type Salle de projections, "
     accessible={true}
@@ -26,10 +16,9 @@ exports[`VenueTile component should render correctly 1`] = `
     style={
       Array [
         Object {
-          "backgroundColor": "#e6e6e6",
           "borderRadius": 8,
-          "height": 100,
-          "marginTop": 4,
+          "marginVertical": 4,
+          "maxHeight": 172,
           "width": 100,
         },
       ]
@@ -40,125 +29,135 @@ exports[`VenueTile component should render correctly 1`] = `
       style={
         Array [
           Object {
-            "overflow": "hidden",
-          },
-          Array [
-            Object {
-              "backgroundColor": "#F1F1F4",
-            },
-            Object {
-              "borderRadius": 8,
-              "height": 100,
-              "width": 100,
-            },
-          ],
-        ]
-      }
-    >
-      <FastImageView
-        resizeMode="cover"
-        source={
-          Object {
-            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
-          }
-        }
-        style={
-          Object {
-            "bottom": 0,
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          }
-        }
-        testID="tileImage"
-      />
-    </View>
-  </View>
-  <View
-    maxWidth={100}
-    style={
-      Array [
-        Object {
-          "marginTop": 8,
-          "maxWidth": 100,
-        },
-      ]
-    }
-  >
-    <Text
-      numberOfLines={2}
-      style={
-        Array [
-          Object {
-            "color": "#161617",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
-          },
-        ]
-      }
-    >
-      Le Petit Rintintin 1
-    </Text>
-    <View
-      style={
-        Array [
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
+            "flexDirection": "column-reverse",
           },
         ]
       }
     >
       <View
-        fill="#696A6F"
-        height={16}
-        width={16}
+        maxWidth={100}
+        style={
+          Array [
+            Object {
+              "marginTop": 8,
+              "maxWidth": 100,
+            },
+          ]
+        }
       >
-        <Text>
-          undefined-SVG-Mock
+        <Text
+          numberOfLines={2}
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+              },
+            ]
+          }
+        >
+          Le Petit Rintintin 1
         </Text>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <View
+            fill="#696A6F"
+            height={16}
+            width={16}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={1}
+            style={
+              Array [
+                Object {
+                  "width": 4,
+                },
+              ]
+            }
+          />
+          <Text
+            numberOfLines={1}
+            style={
+              Array [
+                Object {
+                  "color": "#696A6F",
+                  "flexShrink": 1,
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 16,
+                },
+              ]
+            }
+          >
+            Salle de projections
+          </Text>
+        </View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#696A6F",
+                "fontFamily": "Montserrat-SemiBold",
+                "fontSize": 12,
+                "lineHeight": 16,
+              },
+            ]
+          }
+        />
       </View>
       <View
-        numberOfSpaces={1}
         style={
           Array [
             Object {
-              "width": 4,
+              "overflow": "hidden",
             },
-          ]
-        }
-      />
-      <Text
-        numberOfLines={1}
-        style={
-          Array [
-            Object {
-              "color": "#696A6F",
-              "flexShrink": 1,
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 16,
-            },
+            Array [
+              Object {
+                "backgroundColor": "#F1F1F4",
+              },
+              Object {
+                "borderRadius": 8,
+                "height": 100,
+                "width": 100,
+              },
+            ],
           ]
         }
       >
-        Salle de projections
-      </Text>
+        <FastImageView
+          resizeMode="cover"
+          source={
+            Object {
+              "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA",
+            }
+          }
+          style={
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            }
+          }
+          testID="tileImage"
+        />
+      </View>
     </View>
-    <Text
-      style={
-        Array [
-          Object {
-            "color": "#696A6F",
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 16,
-          },
-        ]
-      }
-    />
   </View>
 </View>
 `;

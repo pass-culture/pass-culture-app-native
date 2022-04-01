@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
-import { StyleSheet } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -14,7 +14,9 @@ import { QueryKeys } from 'libs/queryKeys'
 import { VenueHit } from 'libs/search'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ImageTile } from 'ui/components/ImageTile'
+import { getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
+import { getHeadingAttrs } from 'ui/theme/typography'
 import { Link } from 'ui/web/link/Link'
 export interface VenueTileProps {
   venue: VenueHit
@@ -48,9 +50,9 @@ export const VenueTile = (props: VenueTileProps) => {
   }
 
   return (
-    <Container>
+    <View {...getHeadingAttrs(3)}>
       <TouchableHighlight
-        height={height}
+        height={height + MAX_VENUE_CAPTION_HEIGHT}
         width={width}
         onPress={handlePressVenue}
         onFocus={() => setIsFocus(true)}
@@ -62,37 +64,42 @@ export const VenueTile = (props: VenueTileProps) => {
           to={{ screen: 'Venue', params: { id: venue.id } }}
           style={styles.link}
           accessible={false}>
-          <ImageTile width={width} height={height} uri={venue.bannerUrl} />
+          <Container>
+            <VenueCaption
+              width={width}
+              name={venue.name}
+              venueType={venue.venueTypeCode || null}
+              distance={distance}
+            />
+            <ImageTile width={width} height={height} uri={venue.bannerUrl} />
+          </Container>
         </Link>
       </TouchableHighlight>
-      <VenueCaption
-        width={width}
-        name={venue.name}
-        venueType={venue.venueTypeCode || null}
-        distance={distance}
-      />
-    </Container>
+    </View>
   )
 }
 
-const Container = styled.View({ flex: 1 })
+const MAX_VENUE_CAPTION_HEIGHT = getSpacing(18)
 
-const TouchableHighlight = styled.TouchableHighlight<{
+const Container = styled.View({ flexDirection: 'column-reverse' })
+
+const TouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => ({
+  underlayColor: theme.colors.white,
+}))<{
   height: number
   width: number
   isFocus?: boolean
 }>(({ height, width, theme, isFocus }) => ({
-  height,
   width,
-  marginTop: theme.outline.width + theme.outline.offSet,
+  maxHeight: height,
+  marginVertical: theme.outline.width + theme.outline.offSet,
   borderRadius: theme.borderRadius.radius,
-  backgroundColor: theme.uniqueColors.greyDisabled,
   ...customFocusOutline(theme, undefined, isFocus),
 }))
 
 const styles = StyleSheet.create({
   link: {
-    flexDirection: 'column',
+    flexDirection: 'column-reverse',
     display: 'flex',
   },
 })
