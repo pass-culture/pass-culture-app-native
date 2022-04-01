@@ -224,8 +224,8 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                   }
                 }
               >
-                <h1
-                  aria-level={1}
+                <h2
+                  aria-level={2}
                   className="css-reset-4rbku5 css-text-901oao"
                   dir="auto"
                   role="heading"
@@ -240,7 +240,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                   }
                 >
                   Les informations que tu as renseignées sont-elles correctes ?
-                </h1>
+                </h2>
               </div>
               <div
                 className="css-view-1dbjc4n"

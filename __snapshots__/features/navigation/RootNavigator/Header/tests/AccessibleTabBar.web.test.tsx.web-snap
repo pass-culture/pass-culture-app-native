@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <nav
-        class="sc-iwjdpV iQOjCr"
+        class="sc-kfPuZi gmQQZa"
       >
         <div
           class="css-view-1dbjc4n"
@@ -21,10 +21,10 @@ Object {
               style="width: 16px;"
             />
             <ul
-              class="sc-kDTinF sc-cxpSdN dawiYh jybPpo"
+              class="sc-kDTinF sc-fKVqWL dawiYh fMzrSP"
             >
               <li
-                class="sc-llYSUQ gFcYma"
+                class="sc-bBHxTw iVhJOD"
               >
                 <div
                   class="css-text-901oao"
@@ -75,7 +75,7 @@ Object {
                 </div>
               </li>
               <li
-                class="sc-llYSUQ gFcYma"
+                class="sc-bBHxTw iVhJOD"
               >
                 <div
                   class="css-text-901oao"
@@ -111,7 +111,7 @@ Object {
                 </div>
               </li>
               <li
-                class="sc-llYSUQ gFcYma"
+                class="sc-bBHxTw iVhJOD"
               >
                 <div
                   class="css-text-901oao"
@@ -147,7 +147,7 @@ Object {
                 </div>
               </li>
               <li
-                class="sc-llYSUQ gFcYma"
+                class="sc-bBHxTw iVhJOD"
               >
                 <div
                   class="css-text-901oao"
@@ -155,7 +155,6 @@ Object {
                   tabindex="-1"
                 >
                   <div
-                    aria-label="Mes favoris"
                     class="css-view-1dbjc4n"
                     data-testid="Favorites tab"
                     style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
@@ -183,7 +182,7 @@ Object {
                 </div>
               </li>
               <li
-                class="sc-llYSUQ gFcYma"
+                class="sc-bBHxTw iVhJOD"
               >
                 <div
                   class="css-text-901oao"
@@ -234,7 +233,7 @@ Object {
   </body>,
   "container": <div>
     <nav
-      class="sc-iwjdpV iQOjCr"
+      class="sc-kfPuZi gmQQZa"
     >
       <div
         class="css-view-1dbjc4n"
@@ -249,10 +248,10 @@ Object {
             style="width: 16px;"
           />
           <ul
-            class="sc-kDTinF sc-cxpSdN dawiYh jybPpo"
+            class="sc-kDTinF sc-fKVqWL dawiYh fMzrSP"
           >
             <li
-              class="sc-llYSUQ gFcYma"
+              class="sc-bBHxTw iVhJOD"
             >
               <div
                 class="css-text-901oao"
@@ -303,7 +302,7 @@ Object {
               </div>
             </li>
             <li
-              class="sc-llYSUQ gFcYma"
+              class="sc-bBHxTw iVhJOD"
             >
               <div
                 class="css-text-901oao"
@@ -339,7 +338,7 @@ Object {
               </div>
             </li>
             <li
-              class="sc-llYSUQ gFcYma"
+              class="sc-bBHxTw iVhJOD"
             >
               <div
                 class="css-text-901oao"
@@ -375,7 +374,7 @@ Object {
               </div>
             </li>
             <li
-              class="sc-llYSUQ gFcYma"
+              class="sc-bBHxTw iVhJOD"
             >
               <div
                 class="css-text-901oao"
@@ -383,7 +382,6 @@ Object {
                 tabindex="-1"
               >
                 <div
-                  aria-label="Mes favoris"
                   class="css-view-1dbjc4n"
                   data-testid="Favorites tab"
                   style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
@@ -411,7 +409,7 @@ Object {
               </div>
             </li>
             <li
-              class="sc-llYSUQ gFcYma"
+              class="sc-bBHxTw iVhJOD"
             >
               <div
                 class="css-text-901oao"

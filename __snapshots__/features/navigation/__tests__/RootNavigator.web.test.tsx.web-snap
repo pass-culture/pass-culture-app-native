@@ -8,7 +8,7 @@ Object {
   >
     <div>
       <nav
-        class="sc-kfPuZi gmQQZa"
+        class="sc-dJjYzT gjGOkS"
       >
         <div
           class="css-view-1dbjc4n"
@@ -23,10 +23,10 @@ Object {
               style="width: 16px;"
             />
             <ul
-              class="sc-iqseJM sc-fKVqWL jShZCC fMzrSP"
+              class="sc-iqseJM sc-hGPBjI jShZCC bRjemw"
             >
               <li
-                class="sc-bBHxTw iVhJOD"
+                class="sc-dlVxhl dvuzDi"
               >
                 <a
                   class="css-reset-4rbku5 css-text-901oao"
@@ -79,7 +79,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-bBHxTw iVhJOD"
+                class="sc-dlVxhl dvuzDi"
               >
                 <a
                   class="css-reset-4rbku5 css-text-901oao"
@@ -117,7 +117,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-bBHxTw iVhJOD"
+                class="sc-dlVxhl dvuzDi"
               >
                 <a
                   class="css-reset-4rbku5 css-text-901oao"
@@ -155,7 +155,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-bBHxTw iVhJOD"
+                class="sc-dlVxhl dvuzDi"
               >
                 <a
                   class="css-reset-4rbku5 css-text-901oao"
@@ -165,7 +165,6 @@ Object {
                   tabindex="-1"
                 >
                   <div
-                    aria-label="Mes favoris"
                     class="css-view-1dbjc4n"
                     data-testid="Favorites tab"
                     style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
@@ -193,7 +192,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-bBHxTw iVhJOD"
+                class="sc-dlVxhl dvuzDi"
               >
                 <a
                   class="css-reset-4rbku5 css-text-901oao"
@@ -278,7 +277,7 @@ Object {
   </body>,
   "container": <div>
     <nav
-      class="sc-kfPuZi gmQQZa"
+      class="sc-dJjYzT gjGOkS"
     >
       <div
         class="css-view-1dbjc4n"
@@ -293,10 +292,10 @@ Object {
             style="width: 16px;"
           />
           <ul
-            class="sc-iqseJM sc-fKVqWL jShZCC fMzrSP"
+            class="sc-iqseJM sc-hGPBjI jShZCC bRjemw"
           >
             <li
-              class="sc-bBHxTw iVhJOD"
+              class="sc-dlVxhl dvuzDi"
             >
               <a
                 class="css-reset-4rbku5 css-text-901oao"
@@ -349,7 +348,7 @@ Object {
               </a>
             </li>
             <li
-              class="sc-bBHxTw iVhJOD"
+              class="sc-dlVxhl dvuzDi"
             >
               <a
                 class="css-reset-4rbku5 css-text-901oao"
@@ -387,7 +386,7 @@ Object {
               </a>
             </li>
             <li
-              class="sc-bBHxTw iVhJOD"
+              class="sc-dlVxhl dvuzDi"
             >
               <a
                 class="css-reset-4rbku5 css-text-901oao"
@@ -425,7 +424,7 @@ Object {
               </a>
             </li>
             <li
-              class="sc-bBHxTw iVhJOD"
+              class="sc-dlVxhl dvuzDi"
             >
               <a
                 class="css-reset-4rbku5 css-text-901oao"
@@ -435,7 +434,6 @@ Object {
                 tabindex="-1"
               >
                 <div
-                  aria-label="Mes favoris"
                   class="css-view-1dbjc4n"
                   data-testid="Favorites tab"
                   style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
@@ -463,7 +461,7 @@ Object {
               </a>
             </li>
             <li
-              class="sc-bBHxTw iVhJOD"
+              class="sc-dlVxhl dvuzDi"
             >
               <a
                 class="css-reset-4rbku5 css-text-901oao"

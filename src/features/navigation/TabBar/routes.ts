@@ -65,11 +65,11 @@ export function isTabScreen(screen: ScreenNames): screen is TabRouteName {
   return tabRouteNames.includes(screen)
 }
 
-export const menu: Record<TabRouteName, { displayName: string; accessibilityLabel: string }> = {
+export const menu: Record<TabRouteName, { displayName: string; accessibilityLabel?: string }> = {
   Home: { displayName: t`Accueil`, accessibilityLabel: t`Accueil` },
   Search: { displayName: t`Recherche`, accessibilityLabel: t`Rechercher des offres` },
   Bookings: { displayName: t`Réservations`, accessibilityLabel: t`Mes réservations` },
-  Favorites: { displayName: t`Favoris`, accessibilityLabel: t`Mes favoris` },
+  Favorites: { displayName: t`Favoris`, accessibilityLabel: undefined },
   Profile: { displayName: t`Profil`, accessibilityLabel: t`Mon profil` },
 }
 

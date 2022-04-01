@@ -67,21 +67,21 @@ Object {
                   style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
                 >
                   <form
-                    class="sc-dJjYzT hsbQVX"
+                    class="sc-fFeiMQ hvykVs"
                   >
                     <div
                       class="css-view-1dbjc4n"
                       style="align-items: center; width: 100%;"
                     >
-                      <h1
-                        aria-level="1"
+                      <h2
+                        aria-level="2"
                         class="css-reset-4rbku5 css-text-901oao"
                         dir="auto"
                         role="heading"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                       >
                         Quelle est ton adresse ?
-                      </h1>
+                      </h2>
                     </div>
                     <div
                       class="css-view-1dbjc4n"
@@ -257,21 +257,21 @@ Object {
                 style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
               >
                 <form
-                  class="sc-dJjYzT hsbQVX"
+                  class="sc-fFeiMQ hvykVs"
                 >
                   <div
                     class="css-view-1dbjc4n"
                     style="align-items: center; width: 100%;"
                   >
-                    <h1
-                      aria-level="1"
+                    <h2
+                      aria-level="2"
                       class="css-reset-4rbku5 css-text-901oao"
                       dir="auto"
                       role="heading"
                       style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                     >
                       Quelle est ton adresse ?
-                    </h1>
+                    </h2>
                   </div>
                   <div
                     class="css-view-1dbjc4n"
