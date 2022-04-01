@@ -15,6 +15,6 @@ const TitleContainer = styled.View({
   width: '100%',
 })
 
-const Title = styled(Typo.Title4).attrs(() => getHeadingAttrs(1))({
+const Title = styled(Typo.Title4).attrs(() => getHeadingAttrs(2))({
   textAlign: 'center',
 })

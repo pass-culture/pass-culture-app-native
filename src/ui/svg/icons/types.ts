@@ -24,6 +24,10 @@ export interface BicolorIconInterface extends IconInterface {
   thin?: boolean
 }
 
+export interface AccessibleBicolorIconInterface extends BicolorIconInterface {
+  accessibilityLabel?: string
+}
+
 export interface RectangleIconInterface extends IconSharedProperties {
   width?: number | string
   height?: number | string

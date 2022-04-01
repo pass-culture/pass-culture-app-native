@@ -1,4 +1,4 @@
-import { t } from '@lingui/macro'
+import { plural, t } from '@lingui/macro'
 import React, { useEffect, useRef } from 'react'
 import { Animated, Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
@@ -26,7 +26,16 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
   const scale = useScaleFavoritesAnimation(favoritesCount)
 
   if (!isLoggedIn || typeof favoritesCount === 'undefined') {
-    return <BicolorFavorite size={size} color={color} color2={color2} thin={thin} testID={testID} />
+    return (
+      <BicolorFavorite
+        size={size}
+        color={color}
+        color2={color2}
+        thin={thin}
+        accessibilityLabel={showTabBar ? t`Mes favoris` : undefined}
+        testID={testID}
+      />
+    )
   }
   const pastilleDimensions = {
     width: typeof size === 'number' ? size * 0.8 : 21,
@@ -35,6 +44,12 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
   const hasTooMany = favoritesCount >= COUNT_MAX
   const count = hasTooMany ? COUNT_MAX - 1 : favoritesCount || '0'
   const plusSign = hasTooMany ? t`+` : ''
+  const accessibilityLabel = showTabBar
+    ? plural(favoritesCount, {
+        one: '# favori',
+        other: '# favoris',
+      })
+    : `${favoritesCount}`
   return (
     <Container testID="bicolor-favorite-count">
       <BicolorFavoriteAuthed
@@ -49,8 +64,9 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
         <PastilleContent
           {...pastilleDimensions}
           showTabBar={showTabBar}
-          accessibilityLabel={`${favoritesCount}`}
-          aria-live={showTabBar ? 'polite' : 'off'}>
+          accessibilityLabel={accessibilityLabel}
+          aria-live="polite"
+          aria-relevant="text">
           <Count {...pastilleDimensions}>{count}</Count>
           <Plus {...pastilleDimensions}>{plusSign}</Plus>
         </PastilleContent>

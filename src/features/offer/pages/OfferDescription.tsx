@@ -9,6 +9,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator'
 import { highlightLinks, ParsedDescription } from 'libs/parsers/highlightLinks'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Helmet } from 'ui/web/global/Helmet'
 
 import { useOffer } from '../api/useOffer'
 
@@ -105,11 +106,13 @@ const renderExtraData = ({ item }: { item: Item }) => {
 export const OfferDescription = () => {
   const { params } = useRoute<UseRouteType<'OfferDescription'>>()
   const { data: offerResponse } = useOffer({ offerId: params.id })
-  const { description = '', extraData = {}, image } = offerResponse || {}
+  const { description = '', extraData = {}, image, name = '' } = offerResponse || {}
   const photoCredit = image?.credit
 
+  const helmetTitle = t`Détails de l'offre` + ` ${name} | pass Culture`
   return (
     <Container>
+      <Helmet title={helmetTitle} />
       <PageHeader title="Description" />
       <React.Fragment>
         <Spacer.TopScreen />

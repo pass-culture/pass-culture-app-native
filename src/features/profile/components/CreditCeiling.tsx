@@ -12,6 +12,7 @@ import { Offers } from 'ui/svg/icons/Offers'
 import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
+import { getHeadingAttrs } from 'ui/theme/typography'
 
 import { AnimatedProgressBar } from '../../../ui/components/bars/AnimatedProgressBar'
 
@@ -93,10 +94,9 @@ const Container = styled.View({
   paddingHorizontal: getSpacing(1),
 })
 
-const Amount = styled(Typo.Title4).attrs({
-  accessibilityRole: undefined,
-  'aria-level': undefined,
-})<{ color: ColorsEnum }>(({ color }) => ({ color }))
+const Amount = styled(Typo.Title4).attrs(getHeadingAttrs(undefined))<{ color: ColorsEnum }>(
+  ({ color }) => ({ color })
+)
 
 const Label = styled.Text({
   fontSize: 12,

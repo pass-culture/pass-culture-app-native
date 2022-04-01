@@ -11,10 +11,10 @@ interface CustomTextProps {
 }
 export type TextProps = CustomTextProps & RNTextProps
 
-export const getHeadingAttrs = (level: number) => ({
+export const getHeadingAttrs = (level?: number) => ({
   ...(Platform.OS === 'web'
     ? {
-        accessibilityRole: 'header' as AccessibilityRole,
+        accessibilityRole: level ? ('header' as AccessibilityRole) : undefined,
         'aria-level': level,
       }
     : {}),
