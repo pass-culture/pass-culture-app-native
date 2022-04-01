@@ -1,5 +1,5 @@
 import { ComponentStory } from '@storybook/react'
-import React from 'react'
+import React, { useMemo } from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -13,25 +13,34 @@ export const IconsContainer: ComponentStory<
     isBicolor?: boolean
     children?: never
   }>
-> = ({ title, icons, isBicolor = false }) => (
-  <React.Fragment>
-    {!!title && <Text>{title}</Text>}
-    {Object.entries(icons).map(([name, icon]) => {
-      const IconComponent = styled(icon)({})
-      const IconComponentBicolor = styled(icon).attrs(({ theme }) => ({
-        color: theme.colors.primary,
-        color2: theme.colors.secondary,
-      }))``
-      return (
-        <AlignedText key={name}>
-          <IconComponent />
-          {!!isBicolor && <IconComponentBicolor />}
-          <Text> - {name}</Text>
-        </AlignedText>
-      )
-    })}
-  </React.Fragment>
-)
+> = ({ title, icons, isBicolor = false }) => {
+  const sortedIcons = useMemo(() => {
+    return Object.entries(icons).sort(([iconName1], [iconName2]) => {
+      if (iconName1 < iconName2) return -1
+      else if (iconName1 > iconName2) return 1
+      else return 0
+    })
+  }, [icons])
+  return (
+    <React.Fragment>
+      {!!title && <Text>{title}</Text>}
+      {sortedIcons.map(([name, icon]) => {
+        const IconComponent = styled(icon)({})
+        const IconComponentBicolor = styled(icon).attrs(({ theme }) => ({
+          color: theme.colors.primary,
+          color2: theme.colors.secondary,
+        }))``
+        return (
+          <AlignedText key={name}>
+            <IconComponent />
+            {!!isBicolor && <IconComponentBicolor />}
+            <Text> - {name}</Text>
+          </AlignedText>
+        )
+      })}
+    </React.Fragment>
+  )
+}
 
 const AlignedText = styled.View({
   flexDirection: 'row',
