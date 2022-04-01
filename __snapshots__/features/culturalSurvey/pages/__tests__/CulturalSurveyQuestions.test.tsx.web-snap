@@ -1,0 +1,1776 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CulturalSurveysQuestions page should render the page with correct layout 1`] = `
+<div
+  className="css-view-1dbjc4n"
+  style={
+    Object {
+      "WebkitAlignSelf": "center",
+      "WebkitBoxDirection": "normal",
+      "WebkitBoxFlex": 1,
+      "WebkitBoxOrient": "vertical",
+      "WebkitFlexBasis": "0px",
+      "WebkitFlexDirection": "column",
+      "WebkitFlexGrow": 1,
+      "WebkitFlexShrink": 1,
+      "alignSelf": "center",
+      "display": "flex",
+      "flexBasis": "0px",
+      "flexDirection": "column",
+      "flexGrow": 1,
+      "flexShrink": 1,
+      "maxWidth": "500px",
+      "msFlexDirection": "column",
+      "msFlexItemAlign": "center",
+      "msFlexNegative": 1,
+      "msFlexPositive": 1,
+      "msFlexPreferredSize": "0px",
+      "msGridRowAlign": "center",
+    }
+  }
+>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "WebkitAlignItems": "center",
+        "WebkitBoxAlign": "center",
+        "WebkitBoxDirection": "normal",
+        "WebkitBoxOrient": "horizontal",
+        "WebkitBoxPack": "center",
+        "WebkitFlexDirection": "row",
+        "WebkitJustifyContent": "center",
+        "alignItems": "center",
+        "flexDirection": "row",
+        "height": "64px",
+        "justifyContent": "center",
+        "msFlexAlign": "center",
+        "msFlexDirection": "row",
+        "msFlexPack": "center",
+      }
+    }
+  >
+    <div
+      aria-label="Revenir en arrière"
+      className="css-view-1dbjc4n"
+      data-testid="Revenir en arrière"
+      onClick={[Function]}
+      onContextMenu={[Function]}
+      onKeyDown={[Function]}
+      style={
+        Object {
+          "MozTransitionProperty": "opacity",
+          "MozUserSelect": "auto",
+          "WebkitTransitionDuration": "0s",
+          "WebkitTransitionProperty": "opacity",
+          "WebkitUserSelect": "auto",
+          "cursor": "pointer",
+          "left": "12px",
+          "msTouchAction": "manipulation",
+          "msUserSelect": "auto",
+          "position": "absolute",
+          "touchAction": "manipulation",
+          "transitionDuration": "0s",
+          "transitionProperty": "opacity",
+          "userSelect": "auto",
+        }
+      }
+      tabIndex="0"
+    >
+      <div
+        className="css-view-1dbjc4n"
+        data-testid="icon-back"
+      >
+        <div
+          className="css-text-901oao"
+          dir="auto"
+        >
+          icon-back-SVG-Mock
+        </div>
+      </div>
+    </div>
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "WebkitBoxDirection": "normal",
+          "WebkitBoxFlex": 1,
+          "WebkitBoxOrient": "horizontal",
+          "WebkitBoxPack": "justify",
+          "WebkitFlexBasis": "0px",
+          "WebkitFlexDirection": "row",
+          "WebkitFlexGrow": 1,
+          "WebkitFlexShrink": 1,
+          "WebkitJustifyContent": "space-between",
+          "flexBasis": "0px",
+          "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "space-between",
+          "marginLeft": "44px",
+          "msFlexDirection": "row",
+          "msFlexNegative": 1,
+          "msFlexPack": "justify",
+          "msFlexPositive": 1,
+          "msFlexPreferredSize": "0px",
+        }
+      }
+    >
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "WebkitBoxFlex": 1,
+            "WebkitFlexBasis": "0px",
+            "WebkitFlexGrow": 1,
+            "WebkitFlexShrink": 1,
+            "flexBasis": "0px",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "marginRight": "20px",
+            "msFlexNegative": 1,
+            "msFlexPositive": 1,
+            "msFlexPreferredSize": "0px",
+          }
+        }
+      >
+        <div
+          className="css-view-1dbjc4n"
+          style={
+            Object {
+              "WebkitBoxFlex": 1,
+              "WebkitFlexGrow": 1,
+              "flexGrow": 1,
+              "msFlexPositive": 1,
+            }
+          }
+        >
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "WebkitBoxDirection": "normal",
+                "WebkitBoxOrient": "horizontal",
+                "WebkitBoxPack": "start",
+                "WebkitFlexDirection": "row",
+                "WebkitJustifyContent": "flex-start",
+                "flexDirection": "row",
+                "height": "24px",
+                "justifyContent": "flex-start",
+                "msFlexDirection": "row",
+                "msFlexPack": "start",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitAlignSelf": "center",
+                  "WebkitBoxFlex": 1,
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexGrow": 1,
+                  "WebkitFlexShrink": 1,
+                  "alignSelf": "center",
+                  "flexBasis": "0px",
+                  "flexGrow": 1,
+                  "flexShrink": 1,
+                  "maxWidth": "204px",
+                  "msFlexItemAlign": "center",
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 1,
+                  "msFlexPreferredSize": "0px",
+                  "msGridRowAlign": "center",
+                }
+              }
+            >
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitFlexDirection": "row",
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "height": "40px",
+                    "maxHeight": "40px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                  }
+                }
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitBoxDirection": "normal",
+                      "WebkitBoxFlex": 1,
+                      "WebkitBoxOrient": "horizontal",
+                      "WebkitFlexBasis": "0px",
+                      "WebkitFlexDirection": "row",
+                      "WebkitFlexGrow": 1,
+                      "WebkitFlexShrink": 1,
+                      "borderBottomColor": "rgba(203,205,210,1.00)",
+                      "borderBottomLeftRadius": "48px",
+                      "borderBottomRightRadius": "48px",
+                      "borderBottomStyle": "solid",
+                      "borderBottomWidth": "1px",
+                      "borderLeftColor": "rgba(203,205,210,1.00)",
+                      "borderLeftStyle": "solid",
+                      "borderLeftWidth": "1px",
+                      "borderRightColor": "rgba(203,205,210,1.00)",
+                      "borderRightStyle": "solid",
+                      "borderRightWidth": "1px",
+                      "borderTopColor": "rgba(203,205,210,1.00)",
+                      "borderTopLeftRadius": "48px",
+                      "borderTopRightRadius": "48px",
+                      "borderTopStyle": "solid",
+                      "borderTopWidth": "1px",
+                      "flexBasis": "0px",
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "height": "6px",
+                      "msFlexDirection": "row",
+                      "msFlexNegative": 1,
+                      "msFlexPositive": 1,
+                      "msFlexPreferredSize": "0px",
+                      "zIndex": 1,
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                    data-testid="progress-bar"
+                    style={
+                      Object {
+                        "WebkitBoxFlex": 0.5,
+                        "WebkitFlexBasis": "0px",
+                        "WebkitFlexGrow": 0.5,
+                        "WebkitFlexShrink": 1,
+                        "backgroundImage": "linear-gradient(90deg,#320096,#eb0055)",
+                        "borderBottomLeftRadius": "48px",
+                        "borderBottomRightRadius": "48px",
+                        "borderTopLeftRadius": "48px",
+                        "borderTopRightRadius": "48px",
+                        "flexBasis": "0px",
+                        "flexGrow": 0.5,
+                        "flexShrink": 1,
+                        "msFlexNegative": 1,
+                        "msFlexPositive": 0.5,
+                        "msFlexPreferredSize": "0px",
+                      }
+                    }
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "WebkitAlignSelf": "center",
+                  "alignSelf": "center",
+                  "msFlexItemAlign": "center",
+                  "msGridRowAlign": "center",
+                }
+              }
+            >
+              <div
+                className="css-text-901oao"
+                dir="auto"
+                style={
+                  Object {
+                    "color": "rgba(22,22,23,1.00)",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": "12px",
+                    "lineHeight": "16px",
+                    "marginLeft": "8px",
+                  }
+                }
+              >
+                50%
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h1
+        aria-level={1}
+        className="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
+        dir="auto"
+        role="heading"
+        style={
+          Object {
+            "WebkitBoxFlex": 1,
+            "WebkitFlexBasis": "0px",
+            "WebkitFlexGrow": 1,
+            "WebkitFlexShrink": 1,
+            "WebkitLineClamp": 1,
+            "color": "rgba(22,22,23,1.00)",
+            "flexBasis": "0px",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": "18px",
+            "lineHeight": "22px",
+            "marginRight": "24px",
+            "msFlexNegative": 1,
+            "msFlexPositive": 1,
+            "msFlexPreferredSize": "0px",
+            "textAlign": "right",
+          }
+        }
+      >
+        Tes sorties
+      </h1>
+    </div>
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    onScroll={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    onWheel={[Function]}
+    style={
+      Object {
+        "WebkitBoxDirection": "normal",
+        "WebkitBoxFlex": 1,
+        "WebkitBoxOrient": "vertical",
+        "WebkitFlexDirection": "column",
+        "WebkitFlexGrow": 1,
+        "WebkitFlexShrink": 1,
+        "WebkitOverflowScrolling": "touch",
+        "WebkitTransform": "translateZ(0px)",
+        "flexDirection": "column",
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "msFlexDirection": "column",
+        "msFlexNegative": 1,
+        "msFlexPositive": 1,
+        "overflowX": "hidden",
+        "overflowY": "auto",
+        "transform": "translateZ(0px)",
+      }
+    }
+  >
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "WebkitAlignSelf": "center",
+          "WebkitBoxDirection": "normal",
+          "WebkitBoxFlex": 1,
+          "WebkitBoxOrient": "vertical",
+          "WebkitFlexDirection": "column",
+          "WebkitFlexGrow": 1,
+          "alignSelf": "center",
+          "flexDirection": "column",
+          "flexGrow": 1,
+          "marginTop": "20px",
+          "msFlexDirection": "column",
+          "msFlexItemAlign": "center",
+          "msFlexPositive": 1,
+          "msGridRowAlign": "center",
+          "paddingBottom": "0px",
+          "paddingLeft": "20px",
+          "paddingRight": "20px",
+          "width": "100%",
+        }
+      }
+    >
+      <h3
+        aria-level={3}
+        className="css-reset-4rbku5 css-text-901oao"
+        dir="auto"
+        role="heading"
+        style={
+          Object {
+            "color": "rgba(22,22,23,1.00)",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": "20px",
+            "lineHeight": "24px",
+          }
+        }
+      >
+        Au cours de l'année précédente, tu as/es au moins une fois ...
+      </h3>
+      <div
+        className="css-view-1dbjc4n"
+        style={
+          Object {
+            "paddingBottom": "32px",
+            "paddingTop": "8px",
+          }
+        }
+      >
+        <div
+          className="css-text-901oao"
+          dir="auto"
+          style={
+            Object {
+              "color": "rgba(105,106,111,1.00)",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": "12px",
+              "lineHeight": "16px",
+            }
+          }
+        >
+          Tu peux sélectionner une ou plusieurs réponses.
+        </div>
+      </div>
+      <ul
+        className="sc-dkPtRN sc-hKwDye kHsZXE dWdAkX"
+      >
+        <li>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "paddingBottom": "12px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "backgroundImage": "linear-gradient(175deg,#CBCDD2,#CBCDD2)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                }
+              }
+            >
+              <div
+                className="css-view-1dbjc4n"
+                data-testid="CulturalSurveyAnswer"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onKeyDown={[Function]}
+                style={
+                  Object {
+                    "MozTransitionProperty": "opacity",
+                    "MozUserSelect": "auto",
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitBoxPack": "start",
+                    "WebkitFlexDirection": "row",
+                    "WebkitJustifyContent": "flex-start",
+                    "WebkitTransitionDuration": "0s",
+                    "WebkitTransitionProperty": "opacity",
+                    "WebkitUserSelect": "auto",
+                    "alignItems": "center",
+                    "backgroundColor": "rgba(255,255,255,1.00)",
+                    "borderBottomLeftRadius": "7px",
+                    "borderBottomRightRadius": "7px",
+                    "borderTopLeftRadius": "7px",
+                    "borderTopRightRadius": "7px",
+                    "cursor": "pointer",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "marginBottom": "1px",
+                    "marginLeft": "1px",
+                    "marginRight": "1px",
+                    "marginTop": "1px",
+                    "minHeight": "72px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "msFlexPack": "start",
+                    "msTouchAction": "manipulation",
+                    "msUserSelect": "auto",
+                    "touchAction": "manipulation",
+                    "transitionDuration": "0s",
+                    "transitionProperty": "opacity",
+                    "userSelect": "auto",
+                  }
+                }
+                tabIndex="0"
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignContent": "center",
+                      "alignContent": "center",
+                      "marginLeft": "16px",
+                      "msFlexLinePack": "center",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                  >
+                    <div
+                      className="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitFlexShrink": 1,
+                      "flexShrink": 1,
+                      "marginLeft": "16px",
+                      "marginRight": "40px",
+                      "msFlexNegative": 1,
+                    }
+                  }
+                >
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(22,22,23,1.00)",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "15px",
+                        "lineHeight": "20px",
+                      }
+                    }
+                  >
+                    Participé à un festival,
+                  </div>
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(105,106,111,1.00)",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": "12px",
+                        "lineHeight": "16px",
+                      }
+                    }
+                  >
+                    à une avant-première
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "paddingBottom": "12px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "backgroundImage": "linear-gradient(175deg,#CBCDD2,#CBCDD2)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                }
+              }
+            >
+              <div
+                className="css-view-1dbjc4n"
+                data-testid="CulturalSurveyAnswer"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onKeyDown={[Function]}
+                style={
+                  Object {
+                    "MozTransitionProperty": "opacity",
+                    "MozUserSelect": "auto",
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitBoxPack": "start",
+                    "WebkitFlexDirection": "row",
+                    "WebkitJustifyContent": "flex-start",
+                    "WebkitTransitionDuration": "0s",
+                    "WebkitTransitionProperty": "opacity",
+                    "WebkitUserSelect": "auto",
+                    "alignItems": "center",
+                    "backgroundColor": "rgba(255,255,255,1.00)",
+                    "borderBottomLeftRadius": "7px",
+                    "borderBottomRightRadius": "7px",
+                    "borderTopLeftRadius": "7px",
+                    "borderTopRightRadius": "7px",
+                    "cursor": "pointer",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "marginBottom": "1px",
+                    "marginLeft": "1px",
+                    "marginRight": "1px",
+                    "marginTop": "1px",
+                    "minHeight": "72px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "msFlexPack": "start",
+                    "msTouchAction": "manipulation",
+                    "msUserSelect": "auto",
+                    "touchAction": "manipulation",
+                    "transitionDuration": "0s",
+                    "transitionProperty": "opacity",
+                    "userSelect": "auto",
+                  }
+                }
+                tabIndex="0"
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignContent": "center",
+                      "alignContent": "center",
+                      "marginLeft": "16px",
+                      "msFlexLinePack": "center",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                  >
+                    <div
+                      className="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitFlexShrink": 1,
+                      "flexShrink": 1,
+                      "marginLeft": "16px",
+                      "marginRight": "40px",
+                      "msFlexNegative": 1,
+                    }
+                  }
+                >
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(22,22,23,1.00)",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "15px",
+                        "lineHeight": "20px",
+                      }
+                    }
+                  >
+                    Assisté à un spectacle
+                  </div>
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(105,106,111,1.00)",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": "12px",
+                        "lineHeight": "16px",
+                      }
+                    }
+                  >
+                    Pièce de théâtre, cirque, danse...
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "paddingBottom": "12px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "backgroundImage": "linear-gradient(175deg,#CBCDD2,#CBCDD2)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                }
+              }
+            >
+              <div
+                className="css-view-1dbjc4n"
+                data-testid="CulturalSurveyAnswer"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onKeyDown={[Function]}
+                style={
+                  Object {
+                    "MozTransitionProperty": "opacity",
+                    "MozUserSelect": "auto",
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitBoxPack": "start",
+                    "WebkitFlexDirection": "row",
+                    "WebkitJustifyContent": "flex-start",
+                    "WebkitTransitionDuration": "0s",
+                    "WebkitTransitionProperty": "opacity",
+                    "WebkitUserSelect": "auto",
+                    "alignItems": "center",
+                    "backgroundColor": "rgba(255,255,255,1.00)",
+                    "borderBottomLeftRadius": "7px",
+                    "borderBottomRightRadius": "7px",
+                    "borderTopLeftRadius": "7px",
+                    "borderTopRightRadius": "7px",
+                    "cursor": "pointer",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "marginBottom": "1px",
+                    "marginLeft": "1px",
+                    "marginRight": "1px",
+                    "marginTop": "1px",
+                    "minHeight": "72px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "msFlexPack": "start",
+                    "msTouchAction": "manipulation",
+                    "msUserSelect": "auto",
+                    "touchAction": "manipulation",
+                    "transitionDuration": "0s",
+                    "transitionProperty": "opacity",
+                    "userSelect": "auto",
+                  }
+                }
+                tabIndex="0"
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignContent": "center",
+                      "alignContent": "center",
+                      "marginLeft": "16px",
+                      "msFlexLinePack": "center",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                  >
+                    <div
+                      className="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitFlexShrink": 1,
+                      "flexShrink": 1,
+                      "marginLeft": "16px",
+                      "marginRight": "40px",
+                      "msFlexNegative": 1,
+                    }
+                  }
+                >
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(22,22,23,1.00)",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "15px",
+                        "lineHeight": "20px",
+                      }
+                    }
+                  >
+                    Allé à la bibliothèque
+                  </div>
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(105,106,111,1.00)",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": "12px",
+                        "lineHeight": "16px",
+                      }
+                    }
+                  >
+                    ou à la médiathèque
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "paddingBottom": "12px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "backgroundImage": "linear-gradient(175deg,#CBCDD2,#CBCDD2)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                }
+              }
+            >
+              <div
+                className="css-view-1dbjc4n"
+                data-testid="CulturalSurveyAnswer"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onKeyDown={[Function]}
+                style={
+                  Object {
+                    "MozTransitionProperty": "opacity",
+                    "MozUserSelect": "auto",
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitBoxPack": "start",
+                    "WebkitFlexDirection": "row",
+                    "WebkitJustifyContent": "flex-start",
+                    "WebkitTransitionDuration": "0s",
+                    "WebkitTransitionProperty": "opacity",
+                    "WebkitUserSelect": "auto",
+                    "alignItems": "center",
+                    "backgroundColor": "rgba(255,255,255,1.00)",
+                    "borderBottomLeftRadius": "7px",
+                    "borderBottomRightRadius": "7px",
+                    "borderTopLeftRadius": "7px",
+                    "borderTopRightRadius": "7px",
+                    "cursor": "pointer",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "marginBottom": "1px",
+                    "marginLeft": "1px",
+                    "marginRight": "1px",
+                    "marginTop": "1px",
+                    "minHeight": "72px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "msFlexPack": "start",
+                    "msTouchAction": "manipulation",
+                    "msUserSelect": "auto",
+                    "touchAction": "manipulation",
+                    "transitionDuration": "0s",
+                    "transitionProperty": "opacity",
+                    "userSelect": "auto",
+                  }
+                }
+                tabIndex="0"
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignContent": "center",
+                      "alignContent": "center",
+                      "marginLeft": "16px",
+                      "msFlexLinePack": "center",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                  >
+                    <div
+                      className="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitFlexShrink": 1,
+                      "flexShrink": 1,
+                      "marginLeft": "16px",
+                      "marginRight": "40px",
+                      "msFlexNegative": 1,
+                    }
+                  }
+                >
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(22,22,23,1.00)",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "15px",
+                        "lineHeight": "20px",
+                      }
+                    }
+                  >
+                    Participé à un jeu
+                  </div>
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(105,106,111,1.00)",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": "12px",
+                        "lineHeight": "16px",
+                      }
+                    }
+                  >
+                    escape game, jeu concours
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "paddingBottom": "12px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "backgroundImage": "linear-gradient(175deg,#CBCDD2,#CBCDD2)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                }
+              }
+            >
+              <div
+                className="css-view-1dbjc4n"
+                data-testid="CulturalSurveyAnswer"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onKeyDown={[Function]}
+                style={
+                  Object {
+                    "MozTransitionProperty": "opacity",
+                    "MozUserSelect": "auto",
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitBoxPack": "start",
+                    "WebkitFlexDirection": "row",
+                    "WebkitJustifyContent": "flex-start",
+                    "WebkitTransitionDuration": "0s",
+                    "WebkitTransitionProperty": "opacity",
+                    "WebkitUserSelect": "auto",
+                    "alignItems": "center",
+                    "backgroundColor": "rgba(255,255,255,1.00)",
+                    "borderBottomLeftRadius": "7px",
+                    "borderBottomRightRadius": "7px",
+                    "borderTopLeftRadius": "7px",
+                    "borderTopRightRadius": "7px",
+                    "cursor": "pointer",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "marginBottom": "1px",
+                    "marginLeft": "1px",
+                    "marginRight": "1px",
+                    "marginTop": "1px",
+                    "minHeight": "72px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "msFlexPack": "start",
+                    "msTouchAction": "manipulation",
+                    "msUserSelect": "auto",
+                    "touchAction": "manipulation",
+                    "transitionDuration": "0s",
+                    "transitionProperty": "opacity",
+                    "userSelect": "auto",
+                  }
+                }
+                tabIndex="0"
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignContent": "center",
+                      "alignContent": "center",
+                      "marginLeft": "16px",
+                      "msFlexLinePack": "center",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                  >
+                    <div
+                      className="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitFlexShrink": 1,
+                      "flexShrink": 1,
+                      "marginLeft": "16px",
+                      "marginRight": "40px",
+                      "msFlexNegative": 1,
+                    }
+                  }
+                >
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(22,22,23,1.00)",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "15px",
+                        "lineHeight": "20px",
+                      }
+                    }
+                  >
+                    Allé à un concert
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "paddingBottom": "12px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "backgroundImage": "linear-gradient(175deg,#CBCDD2,#CBCDD2)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                }
+              }
+            >
+              <div
+                className="css-view-1dbjc4n"
+                data-testid="CulturalSurveyAnswer"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onKeyDown={[Function]}
+                style={
+                  Object {
+                    "MozTransitionProperty": "opacity",
+                    "MozUserSelect": "auto",
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitBoxPack": "start",
+                    "WebkitFlexDirection": "row",
+                    "WebkitJustifyContent": "flex-start",
+                    "WebkitTransitionDuration": "0s",
+                    "WebkitTransitionProperty": "opacity",
+                    "WebkitUserSelect": "auto",
+                    "alignItems": "center",
+                    "backgroundColor": "rgba(255,255,255,1.00)",
+                    "borderBottomLeftRadius": "7px",
+                    "borderBottomRightRadius": "7px",
+                    "borderTopLeftRadius": "7px",
+                    "borderTopRightRadius": "7px",
+                    "cursor": "pointer",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "marginBottom": "1px",
+                    "marginLeft": "1px",
+                    "marginRight": "1px",
+                    "marginTop": "1px",
+                    "minHeight": "72px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "msFlexPack": "start",
+                    "msTouchAction": "manipulation",
+                    "msUserSelect": "auto",
+                    "touchAction": "manipulation",
+                    "transitionDuration": "0s",
+                    "transitionProperty": "opacity",
+                    "userSelect": "auto",
+                  }
+                }
+                tabIndex="0"
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignContent": "center",
+                      "alignContent": "center",
+                      "marginLeft": "16px",
+                      "msFlexLinePack": "center",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                  >
+                    <div
+                      className="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitFlexShrink": 1,
+                      "flexShrink": 1,
+                      "marginLeft": "16px",
+                      "marginRight": "40px",
+                      "msFlexNegative": 1,
+                    }
+                  }
+                >
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(22,22,23,1.00)",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "15px",
+                        "lineHeight": "20px",
+                      }
+                    }
+                  >
+                    Allé au cinéma
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "paddingBottom": "12px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "backgroundImage": "linear-gradient(175deg,#CBCDD2,#CBCDD2)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                }
+              }
+            >
+              <div
+                className="css-view-1dbjc4n"
+                data-testid="CulturalSurveyAnswer"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onKeyDown={[Function]}
+                style={
+                  Object {
+                    "MozTransitionProperty": "opacity",
+                    "MozUserSelect": "auto",
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitBoxPack": "start",
+                    "WebkitFlexDirection": "row",
+                    "WebkitJustifyContent": "flex-start",
+                    "WebkitTransitionDuration": "0s",
+                    "WebkitTransitionProperty": "opacity",
+                    "WebkitUserSelect": "auto",
+                    "alignItems": "center",
+                    "backgroundColor": "rgba(255,255,255,1.00)",
+                    "borderBottomLeftRadius": "7px",
+                    "borderBottomRightRadius": "7px",
+                    "borderTopLeftRadius": "7px",
+                    "borderTopRightRadius": "7px",
+                    "cursor": "pointer",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "marginBottom": "1px",
+                    "marginLeft": "1px",
+                    "marginRight": "1px",
+                    "marginTop": "1px",
+                    "minHeight": "72px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "msFlexPack": "start",
+                    "msTouchAction": "manipulation",
+                    "msUserSelect": "auto",
+                    "touchAction": "manipulation",
+                    "transitionDuration": "0s",
+                    "transitionProperty": "opacity",
+                    "userSelect": "auto",
+                  }
+                }
+                tabIndex="0"
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignContent": "center",
+                      "alignContent": "center",
+                      "marginLeft": "16px",
+                      "msFlexLinePack": "center",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                  >
+                    <div
+                      className="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitFlexShrink": 1,
+                      "flexShrink": 1,
+                      "marginLeft": "16px",
+                      "marginRight": "40px",
+                      "msFlexNegative": 1,
+                    }
+                  }
+                >
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(22,22,23,1.00)",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "15px",
+                        "lineHeight": "20px",
+                      }
+                    }
+                  >
+                    Visité un musée,
+                  </div>
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(105,106,111,1.00)",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": "12px",
+                        "lineHeight": "16px",
+                      }
+                    }
+                  >
+                    un monument, une exposition...
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "paddingBottom": "12px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "backgroundImage": "linear-gradient(175deg,#CBCDD2,#CBCDD2)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                }
+              }
+            >
+              <div
+                className="css-view-1dbjc4n"
+                data-testid="CulturalSurveyAnswer"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onKeyDown={[Function]}
+                style={
+                  Object {
+                    "MozTransitionProperty": "opacity",
+                    "MozUserSelect": "auto",
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitBoxPack": "start",
+                    "WebkitFlexDirection": "row",
+                    "WebkitJustifyContent": "flex-start",
+                    "WebkitTransitionDuration": "0s",
+                    "WebkitTransitionProperty": "opacity",
+                    "WebkitUserSelect": "auto",
+                    "alignItems": "center",
+                    "backgroundColor": "rgba(255,255,255,1.00)",
+                    "borderBottomLeftRadius": "7px",
+                    "borderBottomRightRadius": "7px",
+                    "borderTopLeftRadius": "7px",
+                    "borderTopRightRadius": "7px",
+                    "cursor": "pointer",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "marginBottom": "1px",
+                    "marginLeft": "1px",
+                    "marginRight": "1px",
+                    "marginTop": "1px",
+                    "minHeight": "72px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "msFlexPack": "start",
+                    "msTouchAction": "manipulation",
+                    "msUserSelect": "auto",
+                    "touchAction": "manipulation",
+                    "transitionDuration": "0s",
+                    "transitionProperty": "opacity",
+                    "userSelect": "auto",
+                  }
+                }
+                tabIndex="0"
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignContent": "center",
+                      "alignContent": "center",
+                      "marginLeft": "16px",
+                      "msFlexLinePack": "center",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                  >
+                    <div
+                      className="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitFlexShrink": 1,
+                      "flexShrink": 1,
+                      "marginLeft": "16px",
+                      "marginRight": "40px",
+                      "msFlexNegative": 1,
+                    }
+                  }
+                >
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(22,22,23,1.00)",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "15px",
+                        "lineHeight": "20px",
+                      }
+                    }
+                  >
+                    Participé à une conférence,
+                  </div>
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(105,106,111,1.00)",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": "12px",
+                        "lineHeight": "16px",
+                      }
+                    }
+                  >
+                    rencontre ou découverte des métiers de la culture
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "paddingBottom": "12px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "backgroundImage": "linear-gradient(175deg,#CBCDD2,#CBCDD2)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                }
+              }
+            >
+              <div
+                className="css-view-1dbjc4n"
+                data-testid="CulturalSurveyAnswer"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onKeyDown={[Function]}
+                style={
+                  Object {
+                    "MozTransitionProperty": "opacity",
+                    "MozUserSelect": "auto",
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitBoxPack": "start",
+                    "WebkitFlexDirection": "row",
+                    "WebkitJustifyContent": "flex-start",
+                    "WebkitTransitionDuration": "0s",
+                    "WebkitTransitionProperty": "opacity",
+                    "WebkitUserSelect": "auto",
+                    "alignItems": "center",
+                    "backgroundColor": "rgba(255,255,255,1.00)",
+                    "borderBottomLeftRadius": "7px",
+                    "borderBottomRightRadius": "7px",
+                    "borderTopLeftRadius": "7px",
+                    "borderTopRightRadius": "7px",
+                    "cursor": "pointer",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "marginBottom": "1px",
+                    "marginLeft": "1px",
+                    "marginRight": "1px",
+                    "marginTop": "1px",
+                    "minHeight": "72px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "msFlexPack": "start",
+                    "msTouchAction": "manipulation",
+                    "msUserSelect": "auto",
+                    "touchAction": "manipulation",
+                    "transitionDuration": "0s",
+                    "transitionProperty": "opacity",
+                    "userSelect": "auto",
+                  }
+                }
+                tabIndex="0"
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitAlignContent": "center",
+                      "alignContent": "center",
+                      "marginLeft": "16px",
+                      "msFlexLinePack": "center",
+                    }
+                  }
+                >
+                  <div
+                    className="css-view-1dbjc4n"
+                  >
+                    <div
+                      className="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitFlexShrink": 1,
+                      "flexShrink": 1,
+                      "marginLeft": "16px",
+                      "marginRight": "40px",
+                      "msFlexNegative": 1,
+                    }
+                  }
+                >
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(22,22,23,1.00)",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "15px",
+                        "lineHeight": "20px",
+                      }
+                    }
+                  >
+                    Pris un cours
+                  </div>
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(105,106,111,1.00)",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": "12px",
+                        "lineHeight": "16px",
+                      }
+                    }
+                  >
+                    danse, théâtre, musique, dessin
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li>
+          <div
+            className="css-view-1dbjc4n"
+            style={
+              Object {
+                "paddingBottom": "12px",
+              }
+            }
+          >
+            <div
+              className="css-view-1dbjc4n"
+              style={
+                Object {
+                  "backgroundImage": "linear-gradient(175deg,#CBCDD2,#CBCDD2)",
+                  "borderBottomLeftRadius": "8px",
+                  "borderBottomRightRadius": "8px",
+                  "borderTopLeftRadius": "8px",
+                  "borderTopRightRadius": "8px",
+                }
+              }
+            >
+              <div
+                className="css-view-1dbjc4n"
+                data-testid="CulturalSurveyAnswer"
+                onClick={[Function]}
+                onContextMenu={[Function]}
+                onKeyDown={[Function]}
+                style={
+                  Object {
+                    "MozTransitionProperty": "opacity",
+                    "MozUserSelect": "auto",
+                    "WebkitAlignItems": "center",
+                    "WebkitBoxAlign": "center",
+                    "WebkitBoxDirection": "normal",
+                    "WebkitBoxOrient": "horizontal",
+                    "WebkitBoxPack": "start",
+                    "WebkitFlexDirection": "row",
+                    "WebkitJustifyContent": "flex-start",
+                    "WebkitTransitionDuration": "0s",
+                    "WebkitTransitionProperty": "opacity",
+                    "WebkitUserSelect": "auto",
+                    "alignItems": "center",
+                    "backgroundColor": "rgba(255,255,255,1.00)",
+                    "borderBottomLeftRadius": "7px",
+                    "borderBottomRightRadius": "7px",
+                    "borderTopLeftRadius": "7px",
+                    "borderTopRightRadius": "7px",
+                    "cursor": "pointer",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "marginBottom": "1px",
+                    "marginLeft": "1px",
+                    "marginRight": "1px",
+                    "marginTop": "1px",
+                    "minHeight": "72px",
+                    "msFlexAlign": "center",
+                    "msFlexDirection": "row",
+                    "msFlexPack": "start",
+                    "msTouchAction": "manipulation",
+                    "msUserSelect": "auto",
+                    "touchAction": "manipulation",
+                    "transitionDuration": "0s",
+                    "transitionProperty": "opacity",
+                    "userSelect": "auto",
+                  }
+                }
+                tabIndex="0"
+              >
+                <div
+                  className="css-view-1dbjc4n"
+                  style={
+                    Object {
+                      "WebkitFlexShrink": 1,
+                      "flexShrink": 1,
+                      "marginLeft": "16px",
+                      "marginRight": "40px",
+                      "msFlexNegative": 1,
+                    }
+                  }
+                >
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                    style={
+                      Object {
+                        "color": "rgba(22,22,23,1.00)",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "15px",
+                        "lineHeight": "20px",
+                      }
+                    }
+                  >
+                    Aucune de ces sorties culturelles
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    className="css-view-1dbjc4n"
+    style={
+      Object {
+        "WebkitAlignItems": "center",
+        "WebkitBoxAlign": "center",
+        "alignItems": "center",
+        "bottom": "0px",
+        "left": "0px",
+        "marginLeft": "auto",
+        "marginRight": "auto",
+        "msFlexAlign": "center",
+        "paddingBottom": "20px",
+        "paddingLeft": "20px",
+        "paddingRight": "20px",
+        "paddingTop": "12px",
+        "position": "absolute",
+        "right": "0px",
+      }
+    }
+  >
+    <button
+      aria-label="Continuer vers l'étape suivante"
+      className="sc-bdvvtL hrpKOI sc-gsDKAQ cenQpD"
+      data-testid="Continuer vers l'étape suivante"
+      onClick={[Function]}
+      onDoubleClick={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <div
+        className="css-text-901oao css-textMultiLine-cens5h"
+        dir="auto"
+        style={
+          Object {
+            "WebkitLineClamp": 1,
+            "color": "rgba(255,255,255,1.00)",
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": "15px",
+            "lineHeight": "20px",
+            "marginLeft": "0px",
+            "maxWidth": "100%",
+          }
+        }
+      >
+        Continuer
+      </div>
+    </button>
+    <div
+      className="css-view-1dbjc4n"
+      style={
+        Object {
+          "height": "8px",
+        }
+      }
+    />
+  </div>
+</div>
+`;
