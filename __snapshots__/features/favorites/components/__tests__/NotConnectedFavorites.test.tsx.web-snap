@@ -194,7 +194,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       }
     >
       <button
-        className="sc-bdvvtL dzErPM sc-gsDKAQ khldlI"
+        className="sc-bdvvtL cuYvRh sc-dkPtRN gNpZyI"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}
@@ -227,7 +227,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         }
       />
       <button
-        className="sc-bdvvtL dzErPM sc-dkPtRN fwCeAR"
+        className="sc-bdvvtL cuYvRh sc-hKwDye gvtKtm"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}

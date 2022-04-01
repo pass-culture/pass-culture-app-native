@@ -94,7 +94,7 @@ Object {
                     style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                   >
                     <form
-                      class="sc-hKwDye iARjhg"
+                      class="sc-eCImPb jwZXIg"
                     >
                       <div
                         class="css-view-1dbjc4n"
@@ -105,7 +105,7 @@ Object {
                           style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                         >
                           <label
-                            class="sc-dkPtRN kNuMlB"
+                            class="sc-hKwDye dOTlhW"
                             for="testUuidV4"
                           >
                             Prénom
@@ -161,7 +161,7 @@ Object {
                           style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                         >
                           <label
-                            class="sc-dkPtRN kNuMlB"
+                            class="sc-hKwDye dOTlhW"
                             for="testUuidV4"
                           >
                             Nom
@@ -213,7 +213,7 @@ Object {
                 >
                   <button
                     aria-label="Continuer vers l'étape suivante"
-                    class="sc-bdvvtL hrpKOI sc-gsDKAQ lkBHtq"
+                    class="sc-bdvvtL dxXbal sc-dkPtRN cRlcLC"
                     data-testid="Continuer vers l'étape suivante"
                     disabled=""
                     type="button"
@@ -343,7 +343,7 @@ Object {
                   style="flex-direction: column; flex-grow: 1; padding-bottom: 0px; padding-right: 20px; padding-left: 20px;"
                 >
                   <form
-                    class="sc-hKwDye iARjhg"
+                    class="sc-eCImPb jwZXIg"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -354,7 +354,7 @@ Object {
                         style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                       >
                         <label
-                          class="sc-dkPtRN kNuMlB"
+                          class="sc-hKwDye dOTlhW"
                           for="testUuidV4"
                         >
                           Prénom
@@ -410,7 +410,7 @@ Object {
                         style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                       >
                         <label
-                          class="sc-dkPtRN kNuMlB"
+                          class="sc-hKwDye dOTlhW"
                           for="testUuidV4"
                         >
                           Nom
@@ -462,7 +462,7 @@ Object {
               >
                 <button
                   aria-label="Continuer vers l'étape suivante"
-                  class="sc-bdvvtL hrpKOI sc-gsDKAQ lkBHtq"
+                  class="sc-bdvvtL dxXbal sc-dkPtRN cRlcLC"
                   data-testid="Continuer vers l'étape suivante"
                   disabled=""
                   type="button"

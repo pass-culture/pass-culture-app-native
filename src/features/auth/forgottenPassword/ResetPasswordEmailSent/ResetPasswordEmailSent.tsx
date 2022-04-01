@@ -15,7 +15,6 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { padding, Spacer, Typo } from 'ui/theme'
-import { A } from 'ui/web/link/A'
 
 type Props = StackScreenProps<RootStackParamList, 'ResetPasswordEmailSent'>
 
@@ -43,13 +42,12 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
             </Typo.Body>
           </CenteredText>
           <Spacer.Column numberOfSpaces={5} />
-          <A href={env.FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED}>
-            <ButtonTertiary
-              wording={t`Consulter l'article d'aide`}
-              onPress={() => openUrl(env.FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED)}
-              icon={ExternalSite}
-            />
-          </A>
+          <ButtonTertiary
+            wording={t`Consulter l'article d'aide`}
+            externalHref={env.FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED}
+            onPress={() => openUrl(env.FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED)}
+            icon={ExternalSite}
+          />
         </Description>
         <Spacer.Column numberOfSpaces={3} />
         <OpenInboxButton />

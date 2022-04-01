@@ -21,7 +21,6 @@ import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Spacer, Typo } from 'ui/theme'
-import { A } from 'ui/web/link/A'
 
 type Props = StackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
 
@@ -77,13 +76,12 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
           <CenteredText>
             <Typo.Body>{t`Si tu rencontres des difficultés, tu peux consulter notre centre d'aide.`}</Typo.Body>
           </CenteredText>
-          <A href={supportUrl.forSignupConfirmationEmailNotReceived}>
-            <ButtonTertiary
-              wording={t`Consulter notre centre d'aide`}
-              onPress={onConsultHelpSupport}
-              icon={ExternalSite}
-            />
-          </A>
+          <ButtonTertiary
+            wording={t`Consulter notre centre d'aide`}
+            externalHref={supportUrl.forSignupConfirmationEmailNotReceived}
+            onPress={onConsultHelpSupport}
+            icon={ExternalSite}
+          />
         </Description>
         <Spacer.Column numberOfSpaces={3} />
         <OpenInboxButton />

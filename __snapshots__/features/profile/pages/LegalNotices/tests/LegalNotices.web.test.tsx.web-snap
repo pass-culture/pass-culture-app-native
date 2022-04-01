@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <header
-        class="sc-bBHxTw eXTNIJ"
+        class="sc-iwjdpV wMNhc"
       >
         <div
           class="css-view-1dbjc4n"
@@ -81,7 +81,7 @@ Object {
           style="height: 56px;"
         />
         <a
-          class="sc-jRQBWg cmDpap"
+          class="sc-jrQzAO gbtGqz"
           href="https://passculture.cgu"
           tabindex="-1"
           target="_blank"
@@ -133,7 +133,7 @@ Object {
           style="background-color: rgb(241, 241, 244); height: 1px; width: 100%;"
         />
         <a
-          class="sc-jRQBWg cmDpap"
+          class="sc-jrQzAO gbtGqz"
           href="https://passculture.data-privacy-chart"
           tabindex="-1"
           target="_blank"
@@ -230,7 +230,7 @@ Object {
   </body>,
   "container": <div>
     <header
-      class="sc-bBHxTw eXTNIJ"
+      class="sc-iwjdpV wMNhc"
     >
       <div
         class="css-view-1dbjc4n"
@@ -305,7 +305,7 @@ Object {
         style="height: 56px;"
       />
       <a
-        class="sc-jRQBWg cmDpap"
+        class="sc-jrQzAO gbtGqz"
         href="https://passculture.cgu"
         tabindex="-1"
         target="_blank"
@@ -357,7 +357,7 @@ Object {
         style="background-color: rgb(241, 241, 244); height: 1px; width: 100%;"
       />
       <a
-        class="sc-jRQBWg cmDpap"
+        class="sc-jrQzAO gbtGqz"
         href="https://passculture.data-privacy-chart"
         tabindex="-1"
         target="_blank"

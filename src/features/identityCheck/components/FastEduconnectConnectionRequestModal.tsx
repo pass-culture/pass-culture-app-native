@@ -19,7 +19,6 @@ import { Close } from 'ui/svg/icons/Close'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Typo, Spacer } from 'ui/theme'
-import { A } from 'ui/web/link/A'
 
 interface FastEduconnectConnectionRequestModalProps {
   visible: boolean
@@ -66,13 +65,12 @@ export const FastEduconnectConnectionRequestModal: React.FC<
         {t`Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n'as pas d'identifiants ÉduConnect rapproche toi de ton établissement. `}
       </MainContent>
 
-      <A href={env.FAQ_LINK_EDUCONNECT_URL}>
-        <ButtonQuaternaryBlack
-          onPress={() => openUrl(env.FAQ_LINK_EDUCONNECT_URL)}
-          icon={InfoPlain}
-          wording={t`C’est quoi ÉduConnect\u00a0?`}
-        />
-      </A>
+      <ButtonQuaternaryBlack
+        externalHref={env.FAQ_LINK_EDUCONNECT_URL}
+        onPress={() => openUrl(env.FAQ_LINK_EDUCONNECT_URL)}
+        icon={InfoPlain}
+        wording={t`C’est quoi ÉduConnect\u00a0?`}
+      />
 
       <Spacer.Column numberOfSpaces={4} />
 
