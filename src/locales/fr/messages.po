@@ -605,6 +605,7 @@ msgstr "Contacter le support"
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
 #: src/features/auth/signup/SetPassword/SetPassword.tsx
+#: src/features/culturalSurvey/pages/CulturalSurveyQuestions.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/FirstCard.tsx
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
@@ -629,6 +630,7 @@ msgid "Continuer vers l'étape"
 msgstr "Continuer vers l'étape"
 
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
+#: src/features/culturalSurvey/pages/CulturalSurveyQuestions.tsx
 #: src/features/identityCheck/pages/profile/SetAddress.tsx
 #: src/features/identityCheck/pages/profile/SetCity.tsx
 #: src/features/identityCheck/pages/profile/SetName.tsx
@@ -1460,7 +1462,7 @@ msgid "Localisation"
 msgstr "Localisation"
 
 #: src/features/maintenance/Maintenance.tsx
-#: src/libs/firestore/maintenance.ts
+#: src/libs/firebaseImpl/firestore/maintenance.ts
 msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 
@@ -2231,6 +2233,7 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 #: src/features/auth/signup/SignupForm.tsx
 #: src/features/bookings/components/BookingDetailsHeader.tsx
+#: src/features/culturalSurvey/components/layout/CulturalSurveyPageHeader.tsx
 #: src/features/identityCheck/atoms/layout/PageHeader.tsx
 #: src/features/offer/components/OfferHeader.tsx
 #: src/features/search/components/SearchBox.tsx
@@ -2815,6 +2818,10 @@ msgstr ""
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 msgid "Tu peux retrouver toutes les informations concernant ta réservation sur l’application"
 msgstr "Tu peux retrouver toutes les informations concernant ta réservation sur l’application"
+
+#: src/features/culturalSurvey/pages/CulturalSurveyQuestions.tsx
+msgid "Tu peux sélectionner une ou plusieurs réponses."
+msgstr "Tu peux sélectionner une ou plusieurs réponses."
 
 #: src/features/profile/components/ExBeneficiaryHeader.tsx
 msgid "Tu peux toujours réserver les offres gratuites exclusives au pass Culture."

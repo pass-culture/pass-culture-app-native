@@ -56,6 +56,7 @@ import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Check } from 'ui/svg/icons/Check'
 import { Close } from 'ui/svg/icons/Close'
+import CulturalSurveyIcons from 'ui/svg/icons/culturalSurvey'
 import { Email } from 'ui/svg/icons/Email'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { Rectangle } from 'ui/svg/Rectangle'
@@ -452,6 +453,8 @@ export const AppComponents: FunctionComponent = () => {
         <Spacer.Column numberOfSpaces={4} />
         <View>
           <CulturalSurveyCheckbox />
+          <Spacer.Column numberOfSpaces={1} />
+          <CulturalSurveyCheckbox icon={CulturalSurveyIcons.MuseumIcon} />
         </View>
         <Spacer.Column numberOfSpaces={4} />
         <View>

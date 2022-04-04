@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 
 import { NavigationCulturalSurvey } from 'features/cheatcodes/pages/NavigationCulturalSurvey/NavigationCulturalSurvey'
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
+import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalSurveyQuestions'
 import { withAsyncErrorBoundary } from 'features/errors'
 import {
   CulturalSurveyRootStackParamList,
@@ -14,13 +15,19 @@ export const culturalSurveyRoutes: GenericRoute<CulturalSurveyRootStackParamList
     name: 'NavigationCulturalSurvey',
     component: NavigationCulturalSurvey,
     hoc: withAsyncErrorBoundary,
-    path: 'cultural-survey',
+    path: 'questionnaire-pratiques-initiales',
   },
   {
     name: 'CulturalSurveyIntro',
     component: CulturalSurveyIntro,
-    path: 'cultural-survey-intro',
+    path: 'questionnaire-pratiques-initiales/introduction',
     options: { title: t`Prenons 1 minute` },
+    secure: true,
+  },
+  {
+    name: 'CulturalSurveyQuestions',
+    component: CulturalSurveyQuestions,
+    path: 'questionnaire-pratiques-initiales/questions',
     secure: true,
   },
 ]

@@ -1,25 +1,27 @@
-import React, { useState } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { Exposition } from 'ui/svg/icons/categories/bicolor/Exposition'
+import { IconInterface } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
 
 type CulturalSurveyCheckboxProps = {
   title?: string
-  subtitle?: string
+  subtitle?: string | null
+  icon?: FunctionComponent<IconInterface>
 }
 
 export const CulturalSurveyCheckbox = (props: CulturalSurveyCheckboxProps) => {
   const [selected, setIsSelected] = useState(false)
 
-  // TODO (PC-13439) yorickeando : this should be replaced with what comes from backend data
-  const BicolorMuseumIcon = styled(Exposition).attrs(({ theme }) => ({
-    color: selected ? theme.colors.secondary : theme.colors.greyDark,
-    color2: selected ? theme.colors.primary : theme.colors.greyDark,
-  }))``
+  const AnswerIcon = props.icon
+    ? styled(props.icon).attrs(({ theme }) => ({
+        color: selected ? theme.colors.secondary : theme.colors.greyDark,
+        color2: selected ? theme.colors.primary : theme.colors.greyDark,
+      }))``
+    : null
 
   const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
     colors: selected
@@ -31,24 +33,25 @@ export const CulturalSurveyCheckbox = (props: CulturalSurveyCheckboxProps) => {
 
   // TODO (PC-13439) yorickeando : delete this once the component is connected to the backend data
   const title = props.title ?? 'Visité un musée,'
-  const subtitle = props.subtitle ?? 'un monument, une exposition...'
 
   return (
     <StyledLinearGradient>
-      <QuestionContainer onPress={() => setIsSelected(!selected)} testID={'CulturalSurveyAnswer'}>
-        <ActivityIconContainer>
-          <BicolorMuseumIcon />
-        </ActivityIconContainer>
+      <AnswerContainer onPress={() => setIsSelected(!selected)} testID={'CulturalSurveyAnswer'}>
+        {!!AnswerIcon && (
+          <ActivityIconContainer>
+            <AnswerIcon />
+          </ActivityIconContainer>
+        )}
         <DescriptionContainer>
           <Typo.ButtonText>{title}</Typo.ButtonText>
-          <GreyCaption>{subtitle}</GreyCaption>
+          {!!props.subtitle && <GreyCaption>{props?.subtitle}</GreyCaption>}
         </DescriptionContainer>
         {!!selected && (
           <ValidateIconContainer>
             <RedValidate />
           </ValidateIconContainer>
         )}
-      </QuestionContainer>
+      </AnswerContainer>
     </StyledLinearGradient>
   )
 }
@@ -58,7 +61,7 @@ const RedValidate = styled(Validate).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
 }))``
 
-const QuestionContainer = styled(TouchableOpacity).attrs({
+const AnswerContainer = styled(TouchableOpacity).attrs({
   activeOpacity: 0.95,
 })(({ theme }) => ({
   flexDirection: 'row',
