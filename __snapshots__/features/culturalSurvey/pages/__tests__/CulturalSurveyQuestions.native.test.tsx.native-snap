@@ -641,7 +641,6 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
               }
             >
               <View
-                fill="#696A6F"
                 height={32}
                 width={32}
               >
