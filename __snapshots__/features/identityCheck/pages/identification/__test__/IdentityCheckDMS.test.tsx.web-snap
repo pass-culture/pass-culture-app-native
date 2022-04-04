@@ -324,13 +324,12 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 }
               >
                 <a
-                  className="sc-gsDKAQ hDLits sc-cxpSdN dxHdPs"
+                  className="sc-gsDKAQ hDLits sc-llYSUQ cUMHYY"
                   href="https://dmsfrenchcitizen"
                   onClick={[Function]}
                   onDoubleClick={[Function]}
                   tabIndex={0}
                   target="_blank"
-                  type="button"
                 >
                   <div
                     className="css-view-1dbjc4n"
@@ -438,13 +437,12 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                   </div>
                 </div>
                 <a
-                  className="sc-gsDKAQ hDLits sc-cxpSdN dxHdPs"
+                  className="sc-gsDKAQ hDLits sc-llYSUQ cUMHYY"
                   href="https://dmsforeigncitizen"
                   onClick={[Function]}
                   onDoubleClick={[Function]}
                   tabIndex={0}
                   target="_blank"
-                  type="button"
                 >
                   <div
                     className="css-view-1dbjc4n"

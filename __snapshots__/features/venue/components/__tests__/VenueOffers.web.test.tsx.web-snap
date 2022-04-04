@@ -354,29 +354,22 @@ Object {
         class="css-view-1dbjc4n"
         style="margin-right: 24px; margin-left: 24px;"
       >
-        <div
-          class="css-text-901oao"
-          dir="auto"
-          style="display: flex; flex-direction: column;"
-          tabindex="-1"
+        <a
+          class="sc-fFeiMQ eZxxVP"
         >
-          <button
-            class="sc-fotOHu RCpat"
-            type="button"
+          <div
+            class="css-view-1dbjc4n"
+            style="align-items: center; flex-direction: row; position: absolute;"
           >
             <div
-              class="css-view-1dbjc4n"
-              style="align-items: center; display: inline-flex; flex-direction: row; position: absolute;"
+              class="css-text-901oao css-textMultiLine-cens5h"
+              dir="auto"
+              style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 20px 20px 20px 20px;"
             >
-              <span
-                class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
-                style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 20px 20px 20px 20px;"
-              >
-                Voir toutes les offres
-              </span>
+              Voir toutes les offres
             </div>
-          </button>
-        </div>
+          </div>
+        </a>
       </div>
       <div
         class="css-view-1dbjc4n"
@@ -734,29 +727,22 @@ Object {
       class="css-view-1dbjc4n"
       style="margin-right: 24px; margin-left: 24px;"
     >
-      <div
-        class="css-text-901oao"
-        dir="auto"
-        style="display: flex; flex-direction: column;"
-        tabindex="-1"
+      <a
+        class="sc-fFeiMQ eZxxVP"
       >
-        <button
-          class="sc-fotOHu RCpat"
-          type="button"
+        <div
+          class="css-view-1dbjc4n"
+          style="align-items: center; flex-direction: row; position: absolute;"
         >
           <div
-            class="css-view-1dbjc4n"
-            style="align-items: center; display: inline-flex; flex-direction: row; position: absolute;"
+            class="css-text-901oao css-textMultiLine-cens5h"
+            dir="auto"
+            style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 20px 20px 20px 20px;"
           >
-            <span
-              class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
-              style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 20px 20px 20px 20px;"
-            >
-              Voir toutes les offres
-            </span>
+            Voir toutes les offres
           </div>
-        </button>
-      </div>
+        </div>
+      </a>
     </div>
     <div
       class="css-view-1dbjc4n"
