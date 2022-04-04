@@ -153,12 +153,12 @@ const Title = styled(Typo.Title3).attrs(getHeadingAttrs(1))({
 
 const TicketInnerContent = styled.View({
   paddingTop: getSpacing(6),
+  paddingHorizontal: getSpacing(5),
 })
 
-const TicketInfo = styled(Typo.Body).attrs(getHeadingAttrs(1))({
+const TicketInfo = styled(Typo.Body)({
   textAlign: 'center',
   maxWidth: '100%',
-  paddingHorizontal: getSpacing(5),
   paddingBottom: getSpacing(6),
 })
 
@@ -179,7 +179,9 @@ const EANContainer = styled.View({
 })
 
 const TicketContainer = styled.View(({ theme }) => ({
+  justifyContent: 'center',
   minHeight: theme.ticket.minHeight,
+  width: '100%',
 }))
 
 const StyledA = webStyled(A)({
