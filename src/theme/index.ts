@@ -369,7 +369,7 @@ export const theme: AppThemeType = {
   },
   ticket: {
     maxWidth: 300,
-    minHeight: 200,
+    minHeight: 192,
     qrCodeSize: 170,
     backgroundColor: ColorsEnum.WHITE,
     borderColor: ColorsEnum.GREY_LIGHT,
