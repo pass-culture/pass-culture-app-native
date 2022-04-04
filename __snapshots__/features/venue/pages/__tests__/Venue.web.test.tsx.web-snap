@@ -643,15 +643,16 @@ Object {
                       class="css-view-1dbjc4n"
                       style="flex-direction: row;"
                     >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                      <h3
+                        aria-level="3"
+                        class="css-reset-4rbku5 css-view-1dbjc4n"
+                        role="heading"
                       >
                         <div
                           aria-label="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                           class="css-view-1dbjc4n"
                           data-testid="offre Titane - VF"
-                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; margin-top: 4px; user-select: none;"
+                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; user-select: none;"
                           tabindex="0"
                         >
                           <div
@@ -662,51 +663,58 @@ Object {
                           >
                             <div
                               class="css-view-1dbjc4n"
-                              style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
+                              style="display: inline-flex; flex-direction: column-reverse;"
                             >
                               <div
                                 class="css-view-1dbjc4n"
-                                style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                                style="display: inline-flex; margin-top: 8px; max-width: 192px;"
                               >
                                 <span
                                   class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
-                                  data-testid="categoryImageCaption"
-                                  style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                  style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                                 >
-                                  Cinéma
+                                  Titane - VF
                                 </span>
+                                <span
+                                  class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                >
+                                  Dès le 18 août 2021
+                                </span>
+                                <span
+                                  class="css-text-901oao css-textHasAncestor-16my406"
+                                  data-testid="priceIsDuo"
+                                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                >
+                                  Gratuit
+                                </span>
+                              </div>
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="display: inline-flex;"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
+                                >
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                    style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                                  >
+                                    <span
+                                      class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                                      data-testid="categoryImageCaption"
+                                      style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                    >
+                                      Cinéma
+                                    </span>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="margin-top: 8px; max-width: 192px;"
-                        >
-                          <div
-                            class="css-text-901oao css-textMultiLine-cens5h"
-                            dir="auto"
-                            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                          >
-                            Titane - VF
-                          </div>
-                          <div
-                            class="css-text-901oao css-textMultiLine-cens5h"
-                            dir="auto"
-                            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                          >
-                            Dès le 18 août 2021
-                          </div>
-                          <div
-                            class="css-text-901oao"
-                            data-testid="priceIsDuo"
-                            dir="auto"
-                            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                          >
-                            Gratuit
-                          </div>
-                        </div>
-                      </div>
+                      </h3>
                       <div
                         class="css-view-1dbjc4n"
                         style="width: 16px;"
@@ -716,15 +724,16 @@ Object {
                       class="css-view-1dbjc4n"
                       style="flex-direction: row;"
                     >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                      <h3
+                        aria-level="3"
+                        class="css-reset-4rbku5 css-view-1dbjc4n"
+                        role="heading"
                       >
                         <div
                           aria-label="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                           class="css-view-1dbjc4n"
                           data-testid="offre Bac Nord - VF"
-                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; margin-top: 4px; user-select: none;"
+                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; user-select: none;"
                           tabindex="0"
                         >
                           <div
@@ -735,51 +744,58 @@ Object {
                           >
                             <div
                               class="css-view-1dbjc4n"
-                              style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
+                              style="display: inline-flex; flex-direction: column-reverse;"
                             >
                               <div
                                 class="css-view-1dbjc4n"
-                                style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                                style="display: inline-flex; margin-top: 8px; max-width: 192px;"
                               >
                                 <span
                                   class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
-                                  data-testid="categoryImageCaption"
-                                  style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                  style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                                 >
-                                  Cinéma
+                                  Bac Nord - VF
                                 </span>
+                                <span
+                                  class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                >
+                                  Dès le 18 août 2021
+                                </span>
+                                <span
+                                  class="css-text-901oao css-textHasAncestor-16my406"
+                                  data-testid="priceIsDuo"
+                                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                >
+                                  Gratuit
+                                </span>
+                              </div>
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="display: inline-flex;"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
+                                >
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                    style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                                  >
+                                    <span
+                                      class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                                      data-testid="categoryImageCaption"
+                                      style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                    >
+                                      Cinéma
+                                    </span>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="margin-top: 8px; max-width: 192px;"
-                        >
-                          <div
-                            class="css-text-901oao css-textMultiLine-cens5h"
-                            dir="auto"
-                            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                          >
-                            Bac Nord - VF
-                          </div>
-                          <div
-                            class="css-text-901oao css-textMultiLine-cens5h"
-                            dir="auto"
-                            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                          >
-                            Dès le 18 août 2021
-                          </div>
-                          <div
-                            class="css-text-901oao"
-                            data-testid="priceIsDuo"
-                            dir="auto"
-                            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                          >
-                            Gratuit
-                          </div>
-                        </div>
-                      </div>
+                      </h3>
                       <div
                         class="css-view-1dbjc4n"
                         style="width: 16px;"
@@ -789,15 +805,16 @@ Object {
                       class="css-view-1dbjc4n"
                       style="flex-direction: row;"
                     >
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                      <h3
+                        aria-level="3"
+                        class="css-reset-4rbku5 css-view-1dbjc4n"
+                        role="heading"
                       >
                         <div
                           aria-label="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                           class="css-view-1dbjc4n"
                           data-testid="offre Black Widow - VF"
-                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; margin-top: 4px; user-select: none;"
+                          style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; user-select: none;"
                           tabindex="0"
                         >
                           <div
@@ -808,51 +825,58 @@ Object {
                           >
                             <div
                               class="css-view-1dbjc4n"
-                              style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
+                              style="display: inline-flex; flex-direction: column-reverse;"
                             >
                               <div
                                 class="css-view-1dbjc4n"
-                                style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                                style="display: inline-flex; margin-top: 8px; max-width: 192px;"
                               >
                                 <span
                                   class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
-                                  data-testid="categoryImageCaption"
-                                  style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                  style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                                 >
-                                  Cinéma
+                                  Black Widow - VF
                                 </span>
+                                <span
+                                  class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                >
+                                  Dès le 18 août 2021
+                                </span>
+                                <span
+                                  class="css-text-901oao css-textHasAncestor-16my406"
+                                  data-testid="priceIsDuo"
+                                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                >
+                                  Gratuit
+                                </span>
+                              </div>
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="display: inline-flex;"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
+                                >
+                                  <div
+                                    class="css-view-1dbjc4n"
+                                    style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                                  >
+                                    <span
+                                      class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                                      data-testid="categoryImageCaption"
+                                      style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                    >
+                                      Cinéma
+                                    </span>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
-                        <div
-                          class="css-view-1dbjc4n"
-                          style="margin-top: 8px; max-width: 192px;"
-                        >
-                          <div
-                            class="css-text-901oao css-textMultiLine-cens5h"
-                            dir="auto"
-                            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                          >
-                            Black Widow - VF
-                          </div>
-                          <div
-                            class="css-text-901oao css-textMultiLine-cens5h"
-                            dir="auto"
-                            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                          >
-                            Dès le 18 août 2021
-                          </div>
-                          <div
-                            class="css-text-901oao"
-                            data-testid="priceIsDuo"
-                            dir="auto"
-                            style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                          >
-                            Gratuit
-                          </div>
-                        </div>
-                      </div>
+                      </h3>
                     </div>
                     <div
                       class="css-view-1dbjc4n"
@@ -2151,15 +2175,16 @@ Object {
                     class="css-view-1dbjc4n"
                     style="flex-direction: row;"
                   >
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    <h3
+                      aria-level="3"
+                      class="css-reset-4rbku5 css-view-1dbjc4n"
+                      role="heading"
                     >
                       <div
                         aria-label="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                         class="css-view-1dbjc4n"
                         data-testid="offre Titane - VF"
-                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; margin-top: 4px; user-select: none;"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; user-select: none;"
                         tabindex="0"
                       >
                         <div
@@ -2170,51 +2195,58 @@ Object {
                         >
                           <div
                             class="css-view-1dbjc4n"
-                            style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
+                            style="display: inline-flex; flex-direction: column-reverse;"
                           >
                             <div
                               class="css-view-1dbjc4n"
-                              style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                              style="display: inline-flex; margin-top: 8px; max-width: 192px;"
                             >
                               <span
                                 class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
-                                data-testid="categoryImageCaption"
-                                style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                               >
-                                Cinéma
+                                Titane - VF
                               </span>
+                              <span
+                                class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Dès le 18 août 2021
+                              </span>
+                              <span
+                                class="css-text-901oao css-textHasAncestor-16my406"
+                                data-testid="priceIsDuo"
+                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Gratuit
+                              </span>
+                            </div>
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="display: inline-flex;"
+                            >
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                                >
+                                  <span
+                                    class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                                    data-testid="categoryImageCaption"
+                                    style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                  >
+                                    Cinéma
+                                  </span>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="margin-top: 8px; max-width: 192px;"
-                      >
-                        <div
-                          class="css-text-901oao css-textMultiLine-cens5h"
-                          dir="auto"
-                          style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                        >
-                          Titane - VF
-                        </div>
-                        <div
-                          class="css-text-901oao css-textMultiLine-cens5h"
-                          dir="auto"
-                          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                        >
-                          Dès le 18 août 2021
-                        </div>
-                        <div
-                          class="css-text-901oao"
-                          data-testid="priceIsDuo"
-                          dir="auto"
-                          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                        >
-                          Gratuit
-                        </div>
-                      </div>
-                    </div>
+                    </h3>
                     <div
                       class="css-view-1dbjc4n"
                       style="width: 16px;"
@@ -2224,15 +2256,16 @@ Object {
                     class="css-view-1dbjc4n"
                     style="flex-direction: row;"
                   >
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    <h3
+                      aria-level="3"
+                      class="css-reset-4rbku5 css-view-1dbjc4n"
+                      role="heading"
                     >
                       <div
                         aria-label="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                         class="css-view-1dbjc4n"
                         data-testid="offre Bac Nord - VF"
-                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; margin-top: 4px; user-select: none;"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; user-select: none;"
                         tabindex="0"
                       >
                         <div
@@ -2243,51 +2276,58 @@ Object {
                         >
                           <div
                             class="css-view-1dbjc4n"
-                            style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
+                            style="display: inline-flex; flex-direction: column-reverse;"
                           >
                             <div
                               class="css-view-1dbjc4n"
-                              style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                              style="display: inline-flex; margin-top: 8px; max-width: 192px;"
                             >
                               <span
                                 class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
-                                data-testid="categoryImageCaption"
-                                style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                               >
-                                Cinéma
+                                Bac Nord - VF
                               </span>
+                              <span
+                                class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Dès le 18 août 2021
+                              </span>
+                              <span
+                                class="css-text-901oao css-textHasAncestor-16my406"
+                                data-testid="priceIsDuo"
+                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Gratuit
+                              </span>
+                            </div>
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="display: inline-flex;"
+                            >
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                                >
+                                  <span
+                                    class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                                    data-testid="categoryImageCaption"
+                                    style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                  >
+                                    Cinéma
+                                  </span>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="margin-top: 8px; max-width: 192px;"
-                      >
-                        <div
-                          class="css-text-901oao css-textMultiLine-cens5h"
-                          dir="auto"
-                          style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                        >
-                          Bac Nord - VF
-                        </div>
-                        <div
-                          class="css-text-901oao css-textMultiLine-cens5h"
-                          dir="auto"
-                          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                        >
-                          Dès le 18 août 2021
-                        </div>
-                        <div
-                          class="css-text-901oao"
-                          data-testid="priceIsDuo"
-                          dir="auto"
-                          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                        >
-                          Gratuit
-                        </div>
-                      </div>
-                    </div>
+                    </h3>
                     <div
                       class="css-view-1dbjc4n"
                       style="width: 16px;"
@@ -2297,15 +2337,16 @@ Object {
                     class="css-view-1dbjc4n"
                     style="flex-direction: row;"
                   >
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    <h3
+                      aria-level="3"
+                      class="css-reset-4rbku5 css-view-1dbjc4n"
+                      role="heading"
                     >
                       <div
                         aria-label="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                         class="css-view-1dbjc4n"
                         data-testid="offre Black Widow - VF"
-                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; height: 288px; margin-top: 4px; user-select: none;"
+                        style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; margin-top: 4px; margin-bottom: 4px; max-height: 360px; user-select: none;"
                         tabindex="0"
                       >
                         <div
@@ -2316,51 +2357,58 @@ Object {
                         >
                           <div
                             class="css-view-1dbjc4n"
-                            style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
+                            style="display: inline-flex; flex-direction: column-reverse;"
                           >
                             <div
                               class="css-view-1dbjc4n"
-                              style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                              style="display: inline-flex; margin-top: 8px; max-width: 192px;"
                             >
                               <span
                                 class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
-                                data-testid="categoryImageCaption"
-                                style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                               >
-                                Cinéma
+                                Black Widow - VF
                               </span>
+                              <span
+                                class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Dès le 18 août 2021
+                              </span>
+                              <span
+                                class="css-text-901oao css-textHasAncestor-16my406"
+                                data-testid="priceIsDuo"
+                                style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                              >
+                                Gratuit
+                              </span>
+                            </div>
+                            <div
+                              class="css-view-1dbjc4n"
+                              style="display: inline-flex;"
+                            >
+                              <div
+                                class="css-view-1dbjc4n"
+                                style="align-items: center; background-color: rgb(22, 22, 23); border-bottom-left-radius: 8px; border-bottom-right-radius: 8px; display: inline-flex; flex-direction: row; height: 24px; width: 192px;"
+                              >
+                                <div
+                                  class="css-view-1dbjc4n"
+                                  style="align-items: center; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; justify-content: center; padding-right: 2px; padding-left: 2px;"
+                                >
+                                  <span
+                                    class="css-text-901oao css-textHasAncestor-16my406 css-textMultiLine-cens5h"
+                                    data-testid="categoryImageCaption"
+                                    style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                                  >
+                                    Cinéma
+                                  </span>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div
-                        class="css-view-1dbjc4n"
-                        style="margin-top: 8px; max-width: 192px;"
-                      >
-                        <div
-                          class="css-text-901oao css-textMultiLine-cens5h"
-                          dir="auto"
-                          style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                        >
-                          Black Widow - VF
-                        </div>
-                        <div
-                          class="css-text-901oao css-textMultiLine-cens5h"
-                          dir="auto"
-                          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                        >
-                          Dès le 18 août 2021
-                        </div>
-                        <div
-                          class="css-text-901oao"
-                          data-testid="priceIsDuo"
-                          dir="auto"
-                          style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
-                        >
-                          Gratuit
-                        </div>
-                      </div>
-                    </div>
+                    </h3>
                   </div>
                   <div
                     class="css-view-1dbjc4n"
