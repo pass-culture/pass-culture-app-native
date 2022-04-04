@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { ReactNode, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -23,7 +23,6 @@ import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
 import { MARGIN_DP, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
-import { Link } from 'ui/web/link/Link'
 
 interface Props {
   venueId: number
@@ -87,24 +86,15 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
 
   const renderFooter: RenderFooterItem = useCallback(
     ({ width, height }) => (
-      <Link to={{ screen: 'Search', params }} accessible={false}>
-        <SeeMore width={width} height={height} onPress={onPressSeeMore as () => void} />
-      </Link>
+      <SeeMore
+        width={width}
+        height={height}
+        to={{ screen: 'Search', params }}
+        onPress={onPressSeeMore as () => void}
+      />
     ),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [onPressSeeMore]
-  )
-
-  const renderTitleSeeMore = useCallback(
-    ({ children }: { children: ReactNode }) => {
-      return (
-        <Link to={{ screen: 'Search', params }} accessible={false}>
-          {children}
-        </Link>
-      )
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [onPressSeeMore, params]
   )
 
   if (!venue || !venueOffers || venueOffers.hits.length === 0) {
@@ -123,7 +113,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
         itemWidth={itemWidth}
         onPressSeeMore={onPressSeeMore}
         renderItem={renderItem}
-        renderTitleSeeMore={renderTitleSeeMore}
+        titleSeeMoreLink={{ screen: 'Search', params }}
         renderFooter={renderFooter}
         keyExtractor={keyExtractor}
       />

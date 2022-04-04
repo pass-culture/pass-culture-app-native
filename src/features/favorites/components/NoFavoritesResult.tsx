@@ -23,6 +23,7 @@ export const NoFavoritesResult = () => {
       <Spacer.Column numberOfSpaces={6} />
       <ButtonContainer>
         <ButtonPrimary
+          to={{ screen: 'Search', params: { showResults: true, from: 'favorites' } }}
           wording={t`Explorer les offres`}
           onPress={onPressExploreOffers}
           buttonHeight="tall"

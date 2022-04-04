@@ -22,6 +22,7 @@ export function NoBookingsView() {
       <Spacer.Column numberOfSpaces={8} />
       <ButtonContainer>
         <ButtonPrimary
+          to={{ screen: 'Search', params: { showResults: true, from: 'bookings' } }}
           wording={t`Explorer les offres`}
           onPress={onPressExploreOffers}
           buttonHeight="tall"

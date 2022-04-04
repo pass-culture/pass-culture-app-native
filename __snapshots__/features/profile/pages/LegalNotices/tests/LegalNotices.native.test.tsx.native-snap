@@ -177,6 +177,7 @@ Array [
       }
     />
     <View
+      accessibilityRole="link"
       accessibilityState={
         Object {
           "disabled": false,
@@ -285,6 +286,7 @@ Array [
       }
     />
     <View
+      accessibilityRole="link"
       accessibilityState={
         Object {
           "disabled": false,
@@ -393,6 +395,7 @@ Array [
       }
     />
     <View
+      accessibilityRole="link"
       accessibilityState={
         Object {
           "disabled": false,

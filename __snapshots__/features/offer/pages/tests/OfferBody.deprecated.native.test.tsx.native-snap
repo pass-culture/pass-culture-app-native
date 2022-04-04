@@ -3494,6 +3494,7 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                             />
                             <View
                               accessibilityLabel="Lieu PATHE BEAUGRENELLE"
+                              accessibilityRole="link"
                               accessible={true}
                               focusable={true}
                               onClick={[Function]}

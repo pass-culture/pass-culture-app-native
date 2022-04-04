@@ -1,7 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { StyleSheet } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -15,13 +14,11 @@ import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerar
 import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { QueryKeys } from 'libs/queryKeys'
 import { Spacer } from 'ui/components/spacer/Spacer'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
-import { A } from 'ui/web/link/A'
-import { Link } from 'ui/web/link/Link'
+import { TouchableLink } from 'ui/web/link/TouchableLink'
 
 type Props = {
   beforeNavigateToItinerary?: () => Promise<void> | void
@@ -84,24 +81,21 @@ export const WhereSection: React.FC<Props> = ({
       {showVenueBanner ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
-          <Link
+
+          <VenueNameContainer
             to={{ screen: 'Venue', params: { id: venue.id } }}
-            style={styles.link}
-            accessible={false}>
-            <VenueNameContainer
-              onPress={navigateToVenuePage}
-              accessibilityLabel={t`Lieu` + ` ${venue.publicName || venue.name}`}
-              testID="VenueBannerComponent">
-              <Spacer.Row numberOfSpaces={2} />
-              <IconContainer>
-                <LocationBuilding size={iconSize} />
-              </IconContainer>
-              <Spacer.Row numberOfSpaces={2} />
-              <StyledVenueName numberOfLines={1}>{venue.publicName || venue.name}</StyledVenueName>
-              <Spacer.Flex />
-              <ArrowNext />
-            </VenueNameContainer>
-          </Link>
+            onPress={navigateToVenuePage}
+            accessibilityLabel={t`Lieu` + ` ${venue.publicName || venue.name}`}
+            testID="VenueBannerComponent">
+            <Spacer.Row numberOfSpaces={2} />
+            <IconContainer>
+              <LocationBuilding size={iconSize} />
+            </IconContainer>
+            <Spacer.Row numberOfSpaces={2} />
+            <StyledVenueName numberOfLines={1}>{venue.publicName || venue.name}</StyledVenueName>
+            <Spacer.Flex />
+            <ArrowNext />
+          </VenueNameContainer>
         </React.Fragment>
       ) : null}
       {!!address && (
@@ -125,9 +119,12 @@ export const WhereSection: React.FC<Props> = ({
           <Spacer.Column numberOfSpaces={4} />
           <Separator />
           <Spacer.Column numberOfSpaces={6} />
-          <A href={venueFullAddress ? getGoogleMapsItineraryUrl(venueFullAddress) : undefined}>
-            <SeeItineraryButton openItinerary={openItinerary} />
-          </A>
+          <SeeItineraryButton
+            externalHref={
+              venueFullAddress ? getGoogleMapsItineraryUrl(venueFullAddress) : undefined
+            }
+            openItinerary={openItinerary}
+          />
         </React.Fragment>
       )}
       <Spacer.Column numberOfSpaces={6} />
@@ -135,14 +132,7 @@ export const WhereSection: React.FC<Props> = ({
   )
 }
 
-const styles = StyleSheet.create({
-  link: {
-    flexDirection: 'column',
-    display: 'flex',
-  },
-})
-
-const VenueNameContainer = styled(TouchableOpacity)({
+const VenueNameContainer = styled(TouchableLink)({
   flexDirection: 'row',
   alignItems: 'center',
 })

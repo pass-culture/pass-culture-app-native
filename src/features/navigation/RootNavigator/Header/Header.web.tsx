@@ -6,11 +6,10 @@ import styled, { useTheme } from 'styled-components/native'
 import { navigateToHome } from 'features/navigation/helpers'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getShadow, getSpacing } from 'ui/theme'
-import { Link } from 'ui/web/link/Link'
+import { TouchableLink } from 'ui/web/link/TouchableLink'
 
 import { AccessibleTabBar } from './AccessibleTabBar'
 import { Nav } from './Nav'
@@ -86,17 +85,17 @@ export const Header = memo(function Header() {
   return (
     <HeaderContainer>
       <LeftContainer margin={margin} isVisible={!!isDesktopOffset} style={fadeAnim}>
-        <LogoContainer onPress={navigateToHome} aria-hidden={!isBrandVisible}>
-          {!!isBrandVisible && (
-            <Link to={{ screen: homeNavConfig[0], params: homeNavConfig[1] }} accessible={false}>
-              <LogoPassCulture
-                color={theme.uniqueColors.brand}
-                height={getSpacing(10)}
-                width="100%"
-              />
-            </Link>
-          )}
-        </LogoContainer>
+        {!!isBrandVisible && (
+          <LogoContainer
+            to={{ screen: homeNavConfig[0], params: homeNavConfig[1] }}
+            onPress={navigateToHome}>
+            <LogoPassCulture
+              color={theme.uniqueColors.brand}
+              height={getSpacing(10)}
+              width="100%"
+            />
+          </LogoContainer>
+        )}
         <FlexContainer />
       </LeftContainer>
       <CenterContainer isDesktop={theme.isDesktopViewport}>
@@ -194,7 +193,7 @@ const FlexContainer = styled.View<{ alignItems?: string }>(({ alignItems }) => (
   alignItems,
 }))
 
-const LogoContainer = styled(TouchableOpacity)({
+const LogoContainer = styled(TouchableLink)({
   flex: 1,
 })
 

@@ -83,6 +83,7 @@ export const appButtonWebStyles: ElementStylesWeb = ({
     display: 'flex',
     overflow: 'hidden',
     textDecoration: 'none',
+    boxSizing: 'border-box',
     ['&:disabled']: {
       cursor: 'initial',
       background: 'none',

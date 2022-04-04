@@ -34,6 +34,7 @@ exports[`ExclusivityModule component should render correctly 1`] = `
     }
   >
     <View
+      accessibilityRole="link"
       accessible={true}
       focusable={true}
       onClick={[Function]}

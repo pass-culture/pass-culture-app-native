@@ -7,7 +7,9 @@
  */
 import { NavigationAction } from '@react-navigation/core'
 import React from 'react'
-import { GestureResponderEvent, TextProps } from 'react-native'
+import { GestureResponderEvent, TextProps, TouchableOpacityProps } from 'react-native'
+
+import { AllNavParamList } from 'features/navigation/RootNavigator'
 
 export type To<
   ParamList extends ReactNavigation.RootParamList = ReactNavigation.RootParamList,
@@ -37,3 +39,9 @@ export type AProps = {
   className?: string
   accessible?: boolean
 }
+
+export type TouchableLinkProps = {
+  to?: To<AllNavParamList, keyof AllNavParamList>
+  externalHref?: string
+  highlight?: boolean
+} & TouchableOpacityProps

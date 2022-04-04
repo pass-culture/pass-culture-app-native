@@ -4,8 +4,11 @@ exports[`VenueTile component should render correctly 1`] = `
 <View>
   <View
     accessibilityLabel="Lieu Le Petit Rintintin 1 du type Salle de projections, "
+    accessibilityRole="link"
     accessible={true}
+    collapsable={false}
     focusable={true}
+    nativeID="animatedComponent"
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}
@@ -14,14 +17,14 @@ exports[`VenueTile component should render correctly 1`] = `
     onResponderTerminationRequest={[Function]}
     onStartShouldSetResponder={[Function]}
     style={
-      Array [
-        Object {
-          "borderRadius": 8,
-          "marginVertical": 4,
-          "maxHeight": 172,
-          "width": 100,
-        },
-      ]
+      Object {
+        "borderRadius": 8,
+        "marginVertical": 4,
+        "maxHeight": 172,
+        "opacity": 1,
+        "userSelect": "auto",
+        "width": 100,
+      }
     }
     testID="venueTile"
   >

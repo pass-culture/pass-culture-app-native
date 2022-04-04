@@ -46,6 +46,7 @@ exports[`TabBar renders correctly 1`] = `
     />
     <View
       accessibilityLabel="Accueil"
+      accessibilityRole="link"
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -121,6 +122,7 @@ exports[`TabBar renders correctly 1`] = `
     </View>
     <View
       accessibilityLabel="Rechercher des offres"
+      accessibilityRole="link"
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -178,6 +180,7 @@ exports[`TabBar renders correctly 1`] = `
     </View>
     <View
       accessibilityLabel="Mes réservations"
+      accessibilityRole="link"
       accessible={true}
       collapsable={false}
       focusable={true}
@@ -234,6 +237,7 @@ exports[`TabBar renders correctly 1`] = `
       />
     </View>
     <View
+      accessibilityRole="link"
       accessible={false}
       collapsable={false}
       focusable={true}
@@ -291,6 +295,7 @@ exports[`TabBar renders correctly 1`] = `
     </View>
     <View
       accessibilityLabel="Mon profil"
+      accessibilityRole="link"
       accessible={true}
       collapsable={false}
       focusable={true}

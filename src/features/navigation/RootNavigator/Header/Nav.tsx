@@ -8,7 +8,6 @@ import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigatio
 import { TabParamList } from 'features/navigation/TabBar/types'
 import { theme } from 'theme'
 import { Spacer, getShadow, getSpacing } from 'ui/theme'
-import { Link } from 'ui/web/link/Link'
 import { Li } from 'ui/web/list/Li'
 import { Ul } from 'ui/web/list/Ul'
 
@@ -34,14 +33,13 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
           <React.Fragment key={`key-tab-nav-${route.name}`}>
             {index > 0 && <Spacer.Row numberOfSpaces={1.5} />}
             <Li>
-              <Link to={{ screen: route.name, params: undefined }} accessible={false}>
-                <NavItem
-                  tabName={route.name}
-                  isSelected={route.isSelected}
-                  BicolorIcon={mapTabRouteToBicolorIcon(route.name)}
-                  onPress={() => onPress(route.name)}
-                />
-              </Link>
+              <NavItem
+                tabName={route.name}
+                isSelected={route.isSelected}
+                BicolorIcon={mapTabRouteToBicolorIcon(route.name)}
+                to={{ screen: route.name, params: undefined }}
+                onPress={() => onPress(route.name)}
+              />
             </Li>
           </React.Fragment>
         ))}

@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
+import { View } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -14,10 +15,10 @@ import { useCategoryId } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Check } from 'ui/svg/icons/Check'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { Link } from 'ui/web/link/Link'
+import { getHeadingAttrs } from 'ui/theme/typography'
+import { TouchableLink } from 'ui/web/link/TouchableLink'
 
 import { BookingItemTitle } from './BookingItemTitle'
 import { BookingItemProps } from './types'
@@ -56,10 +57,9 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
   }
 
   return (
-    <Link
-      to={{ screen: 'Offer', params: { id: stock.offer.id, from: 'endedbookings' } }}
-      accessible={false}>
-      <TouchableOpacity
+    <View {...getHeadingAttrs(3)}>
+      <TouchableLink
+        to={{ screen: 'Offer', params: { id: stock.offer.id, from: 'endedbookings' } }}
         onPress={handlePressOffer}
         accessibilityLabel={accessibilityLabel}
         testID="EndedBookingItem">
@@ -75,8 +75,8 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
             </EndedReasonAndDate>
           </AttributesView>
         </ItemContainer>
-      </TouchableOpacity>
-    </Link>
+      </TouchableLink>
+    </View>
   )
 }
 

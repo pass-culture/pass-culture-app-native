@@ -174,7 +174,7 @@ Pour des questions de performance et de sécurité merci d'actualiser la page po
       }
     >
       <button
-        className="sc-bdvvtL bGoqwJ sc-dkPtRN gNpZyI"
+        className="sc-bdvvtL krGSRA sc-dkPtRN gNpZyI"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}
