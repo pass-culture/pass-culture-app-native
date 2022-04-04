@@ -345,166 +345,177 @@ exports[`BookingDetails should render correctly 1`] = `
             }
             width={295}
           >
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 20,
-                    "lineHeight": 24,
-                    "maxWidth": "100%",
-                    "textAlign": "center",
-                  },
-                ]
-              }
-            >
-              Avez-vous déjà vu ?
-            </Text>
-            <View
-              numberOfSpaces={2}
-              style={
-                Array [
-                  Object {
-                    "height": 8,
-                  },
-                ]
-              }
-            />
             <View
               style={
                 Array [
                   Object {
                     "justifyContent": "center",
-                    "minHeight": 200,
-                    "paddingHorizontal": 20,
+                    "minHeight": 192,
                     "width": "100%",
                   },
                 ]
               }
             >
-              <View
-                accessibilityState={
-                  Object {
-                    "disabled": true,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={false}
-                nativeID="animatedComponent"
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
+              <Text
                 style={
-                  Object {
-                    "opacity": 1,
-                    "userSelect": "auto",
-                  }
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 20,
+                      "lineHeight": 24,
+                      "maxWidth": "100%",
+                      "textAlign": "center",
+                    },
+                  ]
                 }
               >
-                <Text
-                  style={
-                    Array [
-                      Object {
-                        "color": "#eb0055",
-                        "fontFamily": "Montserrat-Medium",
-                        "fontSize": 18,
-                        "lineHeight": 22,
-                        "paddingBottom": 10,
-                        "paddingLeft": 10,
-                        "paddingRight": 10,
-                        "paddingTop": 10,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  352UW4
-                </Text>
-              </View>
+                Avez-vous déjà vu ?
+              </Text>
               <View
-                accessibilityLabel="Accéder à l'offre"
-                accessibilityState={
-                  Object {
-                    "disabled": false,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                nativeID="animatedComponent"
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
+                numberOfSpaces={2}
                 style={
-                  Object {
-                    "alignItems": "center",
-                    "borderRadius": 24,
-                    "justifyContent": "center",
-                    "opacity": 1,
-                    "overflow": "hidden",
-                    "userSelect": "auto",
-                  }
+                  Array [
+                    Object {
+                      "height": 8,
+                    },
+                  ]
                 }
-                testID="Accéder à l'offre"
+              />
+              <View
+                style={
+                  Array [
+                    Object {
+                      "paddingHorizontal": 20,
+                      "paddingTop": 24,
+                    },
+                  ]
+                }
               >
                 <View
-                  height={48}
-                  width="100%"
+                  accessibilityState={
+                    Object {
+                      "disabled": true,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={false}
+                  nativeID="animatedComponent"
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "opacity": 1,
+                      "userSelect": "auto",
+                    }
+                  }
                 >
-                  <Text>
-                    undefined-SVG-Mock
+                  <Text
+                    fontSize={24}
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 24,
+                          "lineHeight": 28,
+                        },
+                        Object {
+                          "color": "#eb0055",
+                          "paddingBottom": 16,
+                          "textAlign": "center",
+                        },
+                      ]
+                    }
+                  >
+                    352UW4
                   </Text>
                 </View>
                 <View
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                        "position": "absolute",
-                      },
-                    ]
+                  accessibilityLabel="Accéder à l'offre"
+                  accessibilityState={
+                    Object {
+                      "disabled": false,
+                    }
                   }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  nativeID="animatedComponent"
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderRadius": 24,
+                      "justifyContent": "center",
+                      "opacity": 1,
+                      "overflow": "hidden",
+                      "userSelect": "auto",
+                    }
+                  }
+                  testID="Accéder à l'offre"
                 >
                   <View
-                    height={24}
-                    width={24}
+                    height={48}
+                    width="100%"
                   >
                     <Text>
                       undefined-SVG-Mock
                     </Text>
                   </View>
-                  <Text
-                    adjustsFontSizeToFit={true}
-                    isDisabled={false}
-                    numberOfLines={1}
+                  <View
                     style={
                       Array [
                         Object {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                          "paddingBottom": 20,
-                          "paddingLeft": 20,
-                          "paddingRight": 20,
-                          "paddingTop": 20,
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "position": "absolute",
                         },
                       ]
                     }
                   >
-                    Accéder à l'offre
-                  </Text>
+                    <View
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                    <Text
+                      adjustsFontSizeToFit={true}
+                      isDisabled={false}
+                      numberOfLines={1}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#ffffff",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                            "paddingBottom": 20,
+                            "paddingLeft": 20,
+                            "paddingRight": 20,
+                            "paddingTop": 20,
+                          },
+                        ]
+                      }
+                    >
+                      Accéder à l'offre
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
