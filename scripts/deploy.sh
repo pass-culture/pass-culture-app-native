@@ -57,7 +57,7 @@ check_environment(){
 
   # If we are not on master, we can still deploy if we have a valid tag
   # The CI jobs are based on a tag (not a branch)
-  HARD_DEPLOY_TESTING_TAG_REGEX="(testing_)?v[0-9]+(\.[0-9]+){2}"
+  HARD_DEPLOY_TESTING_TAG_REGEX="(testing\/)?v[0-9]+(\.[0-9]+){2}"
 
   if [[ "$APP_ENV" == "testing" && "$CURRENT_BRANCH" != "master" ]];
   then
