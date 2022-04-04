@@ -349,7 +349,9 @@ exports[`BookingDetails should render correctly 1`] = `
               style={
                 Array [
                   Object {
+                    "justifyContent": "center",
                     "minHeight": 192,
+                    "width": "100%",
                   },
                 ]
               }
@@ -386,7 +388,6 @@ exports[`BookingDetails should render correctly 1`] = `
                     Object {
                       "paddingHorizontal": 20,
                       "paddingTop": 24,
-                      "width": "100%",
                     },
                   ]
                 }
