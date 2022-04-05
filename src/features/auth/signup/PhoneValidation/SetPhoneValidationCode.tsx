@@ -42,7 +42,6 @@ import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
-import { A } from 'ui/web/link/A'
 
 const CODE_INPUT_LENGTH = 6
 const AGENT_TYPE = Platform.select({
@@ -285,15 +284,14 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
           <HelpRow>
             <Typo.Caption>{t`Si tu n’arrives pas à valider ton code tu peux`}</Typo.Caption>
             {appContentWidth <= 320 ? <Break /> : <Spacer.Row numberOfSpaces={1} />}
-            <A href={supportUrl.forPhoneNumberConfirmation}>
-              <ButtonQuaternary
-                wording={t`Contacter le support`}
-                accessibilityLabel={t`Ouvrir le gestionnaire mail pour contacter le support`}
-                icon={Email}
-                onPress={contactSupport.forPhoneNumberConfirmation}
-                inline
-              />
-            </A>
+            <ButtonQuaternary
+              wording={t`Contacter le support`}
+              accessibilityLabel={t`Ouvrir le gestionnaire mail pour contacter le support`}
+              icon={Email}
+              externalHref={supportUrl.forPhoneNumberConfirmation}
+              onPress={contactSupport.forPhoneNumberConfirmation}
+              inline
+            />
           </HelpRow>
         </ModalContent>
       </BottomContentPage>

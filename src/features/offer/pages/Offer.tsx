@@ -1,6 +1,5 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
-import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
@@ -16,7 +15,6 @@ import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
 import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
-import { A } from 'ui/web/link/A'
 
 import { OfferBody } from './OfferBody'
 
@@ -54,8 +52,6 @@ export const Offer: FunctionComponent = () => {
 
   if (!offerResponse) return <React.Fragment></React.Fragment>
 
-  const Link = isExternal ? StyledA : React.Fragment
-  const linkProps = isExternal ? { href: url } : {}
   return (
     <Container>
       <OfferWebHead offer={offerResponse} />
@@ -67,19 +63,18 @@ export const Offer: FunctionComponent = () => {
       <OfferBody offerId={offerId} onScroll={onScroll} />
       {!!wording && (
         <CallToActionContainer testID="CTA-button" style={{ paddingBottom: bottom }}>
-          <Link {...linkProps}>
-            <ButtonWithLinearGradient
-              wording={wording}
-              onPress={() => {
-                onPressCTA && onPressCTA()
-                if (showBookingModal) {
-                  showBookingOfferModal()
-                }
-              }}
-              isExternal={isExternal}
-              isDisabled={onPressCTA === undefined}
-            />
-          </Link>
+          <ButtonWithLinearGradient
+            wording={wording}
+            onPress={() => {
+              onPressCTA && onPressCTA()
+              if (showBookingModal) {
+                showBookingOfferModal()
+              }
+            }}
+            isExternal={isExternal}
+            isDisabled={onPressCTA === undefined}
+            externalHref={url}
+          />
         </CallToActionContainer>
       )}
 
@@ -100,9 +95,4 @@ const Container = styled.View(({ theme }) => ({
 const CallToActionContainer = styled.View({
   marginHorizontal: getSpacing(6),
   marginBottom: getSpacing(8),
-})
-
-const StyledA = webStyled(A)({
-  display: 'flex',
-  flexDirection: 'column',
 })

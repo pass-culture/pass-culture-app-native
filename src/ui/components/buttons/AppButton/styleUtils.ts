@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes, DetailedHTMLProps, RefAttributes } from 'react'
+import { ButtonHTMLAttributes, DetailedHTMLProps, HTMLAttributes, RefAttributes } from 'react'
 import { TouchableOpacityProps } from 'react-native'
 import { InterpolationFunction, ThemedStyledProps } from 'styled-components'
 import { DefaultTheme } from 'styled-components/native'
@@ -18,6 +18,13 @@ export type ButtonStylesWeb = InterpolationFunction<
   ThemedStyledProps<
     DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement> &
       TouchableOpacityButtonProps,
+    DefaultTheme
+  >
+>
+
+export type ElementStylesWeb = InterpolationFunction<
+  ThemedStyledProps<
+    DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement> & TouchableOpacityButtonProps,
     DefaultTheme
   >
 >
@@ -62,7 +69,7 @@ export const appButtonStyles: ButtonStyles = ({
   ...(numberOfLines ? { height: 'auto' } : {}),
 })
 
-export const appButtonWebStyles: ButtonStylesWeb = ({
+export const appButtonWebStyles: ElementStylesWeb = ({
   theme,
   focusOutlineColor,
   ...rest
@@ -75,6 +82,7 @@ export const appButtonWebStyles: ButtonStylesWeb = ({
     borderWidth: 0,
     display: 'flex',
     overflow: 'hidden',
+    textDecoration: 'none',
     ['&:disabled']: {
       cursor: 'initial',
       background: 'none',

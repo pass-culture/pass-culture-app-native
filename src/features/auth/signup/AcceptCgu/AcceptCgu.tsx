@@ -16,7 +16,6 @@ import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Email } from 'ui/svg/icons/Email'
 import { Spacer, Typo } from 'ui/theme'
-import { A } from 'ui/web/link/A'
 
 export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
   const { data: settings, isLoading: areSettingsLoading } = useAppSettings()
@@ -121,14 +120,13 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
             {t`Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux\u00a0:`}
           </Typo.Body>
         </Paragraphe>
-        <A href={supportUrl.forGenericQuestion}>
-          <ButtonTertiary
-            wording={t`Contacter le support`}
-            accessibilityLabel={t`Ouvrir le gestionnaire mail pour contacter le support`}
-            onPress={contactSupport.forGenericQuestion}
-            icon={Email}
-          />
-        </A>
+        <ButtonTertiary
+          wording={t`Contacter le support`}
+          accessibilityLabel={t`Ouvrir le gestionnaire mail pour contacter le support`}
+          externalHref={supportUrl.forGenericQuestion}
+          onPress={contactSupport.forGenericQuestion}
+          icon={Email}
+        />
         <Spacer.Column numberOfSpaces={6} />
         <ButtonPrimary
           wording={t`Accepter et s’inscrire`}

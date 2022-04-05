@@ -1,6 +1,7 @@
+import { useLinkProps } from '@react-navigation/native'
 import React, { SyntheticEvent, useCallback } from 'react'
 import styled from 'styled-components'
-import styledNative from 'styled-components/native'
+import styledNative, { DefaultTheme } from 'styled-components/native'
 
 import { ButtonWithLinearGradientProps } from 'ui/components/buttons/buttonWithLinearGradientTypes'
 import { ExternalSite as InitialExternalSite } from 'ui/svg/icons/ExternalSite'
@@ -15,10 +16,18 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
   type = 'button',
   name,
   className,
+  externalHref,
+  to,
 }) => {
+  const ButtonComponent = (to || externalHref ? Link : Button) as React.ElementType
+  const internalLinkProps = useLinkProps({ to: to ?? '' })
+  const externalLinkProps = { href: externalHref, accessibilityRole: 'link', target: '_blank' }
+  const linkProps = externalHref ? externalLinkProps : internalLinkProps
+  const buttonLinkProps = externalHref || to ? { ...linkProps, type: undefined } : {}
+
   const onClick = useCallback(
     (event: SyntheticEvent) => {
-      if (type === 'submit') {
+      if (type === 'submit' || to || externalHref) {
         event.preventDefault()
       }
       if (onPress) {
@@ -29,18 +38,24 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
     [onPress]
   )
   return (
-    <Button name={name} onClick={onClick} disabled={isDisabled} type={type} className={className}>
+    <ButtonComponent
+      name={name}
+      onClick={onClick}
+      disabled={isDisabled}
+      type={type}
+      className={className}
+      {...buttonLinkProps}>
       <LegendContainer>
         {!!isExternal && <ExternalSite />}
         <Title adjustsFontSizeToFit numberOfLines={1} isDisabled={isDisabled}>
           {wording}
         </Title>
       </LegendContainer>
-    </Button>
+    </ButtonComponent>
   )
 }
 
-const Button = styled.button(({ theme }) => ({
+const gradientButtonStyles = ({ theme }: { theme: DefaultTheme }) => ({
   overflow: 'hidden',
   cursor: 'pointer',
   height: theme.buttons.buttonHeights.tall,
@@ -52,6 +67,7 @@ const Button = styled.button(({ theme }) => ({
   justifyContent: 'center',
   alignItems: 'center',
   border: 0,
+  textDecoration: 'none',
   ['&:disabled']: {
     cursor: 'initial',
     background: 'none',
@@ -59,7 +75,10 @@ const Button = styled.button(({ theme }) => ({
     backgroundColor: theme.buttons.disabled.linearGradient.backgroundColor,
   },
   ...customFocusOutline(theme, theme.buttons.outlineColor),
-}))
+})
+
+const Button = styled.button(gradientButtonStyles)
+const Link = styled.a(gradientButtonStyles)
 
 const Title = styledNative(Typo.ButtonText)<{ isDisabled: boolean }>(({ isDisabled, theme }) => ({
   color: isDisabled

@@ -14,6 +14,7 @@ describe('<ButtonWithLinearGradient />', () => {
     const text = renderAPI.queryByText('Wording to display')
 
     expect(text?.closest('button')?.disabled).toBeFalsy()
+    expect(text?.closest('button')?.type).toBe('button')
     expect(text).toBeTruthy()
   })
 
@@ -25,5 +26,19 @@ describe('<ButtonWithLinearGradient />', () => {
 
     expect(text?.closest('button')?.disabled).toBeTruthy()
     expect(text).toBeTruthy()
+  })
+
+  it('should render anchor tag without type if component is an anchor', () => {
+    const href = 'https://example.link/'
+    const renderAPI = render(
+      <ButtonWithLinearGradient
+        wording="Wording to display"
+        externalHref={href}
+        onPress={onPress}
+      />
+    )
+    const text = renderAPI.queryByText('Wording to display')
+    expect(text?.closest('a')?.href).toBe(href)
+    expect(text?.closest('a')?.type).toBe('')
   })
 })

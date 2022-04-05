@@ -10,7 +10,6 @@ import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { Email } from 'ui/svg/icons/Email'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Typo } from 'ui/theme'
-import { A } from 'ui/web/link/A'
 
 export function PhoneValidationTooManyAttempts() {
   return (
@@ -18,14 +17,14 @@ export function PhoneValidationTooManyAttempts() {
       title={t`Trop de tentatives\u00a0!`}
       icon={UserBlocked}
       buttons={[
-        <A key={1} href={supportUrl.forPhoneNumberConfirmation}>
-          <ButtonTertiaryWhite
-            wording={t`Contacter le support`}
-            accessibilityLabel={t`Ouvrir le gestionnaire mail pour contacter le support`}
-            icon={Email}
-            onPress={contactSupport.forPhoneNumberConfirmation}
-          />
-        </A>,
+        <ButtonTertiaryWhite
+          key={1}
+          wording={t`Contacter le support`}
+          accessibilityLabel={t`Ouvrir le gestionnaire mail pour contacter le support`}
+          icon={Email}
+          externalHref={supportUrl.forPhoneNumberConfirmation}
+          onPress={contactSupport.forPhoneNumberConfirmation}
+        />,
         <ButtonPrimaryWhite key={2} wording={t`Retourner à l'accueil`} onPress={navigateToHome} />,
       ]}>
       <StyledBody>

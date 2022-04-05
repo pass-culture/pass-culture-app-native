@@ -1,3 +1,4 @@
+import { useLinkProps } from '@react-navigation/native'
 import React, { CSSProperties, memo, MouseEventHandler, useCallback } from 'react'
 import styled from 'styled-components'
 
@@ -38,25 +39,33 @@ const _AppButton = <T extends AppButtonProps>({
   className,
   name,
   focusOutlineColor,
+  to,
+  externalHref,
 }: OnlyBaseButtonProps<T>) => {
+  const ButtonComponent = (to || externalHref ? Link : Button) as React.ElementType
+  const internalLinkProps = useLinkProps({ to: to ?? '' })
+  const externalLinkProps = { href: externalHref, accessibilityRole: 'link', target: '_blank' }
+  const linkProps = externalHref ? externalLinkProps : internalLinkProps
+  const buttonLinkProps = externalHref || to ? { ...linkProps, type: undefined } : {}
+
   const pressHandler = disabled || isLoading ? undefined : (onPress as AppButtonEventWeb)
   const longPressHandler = disabled || isLoading ? undefined : (onLongPress as AppButtonEventWeb)
 
   const onClick: MouseEventHandler<HTMLButtonElement> = useCallback(
     (event) => {
-      if (type === 'submit' && pressHandler) {
+      if ((type === 'submit' || to || externalHref) && pressHandler) {
         event.preventDefault()
       }
       if (pressHandler) {
         pressHandler(event)
       }
     },
-    [type, pressHandler]
+    [type, to, externalHref, pressHandler]
   )
 
   const onDoubleClick: MouseEventHandler<HTMLButtonElement> = useCallback(
     (event) => {
-      if (type === 'submit' && pressHandler) {
+      if ((type === 'submit' || to || externalHref) && pressHandler) {
         event.preventDefault()
       }
       if (longPressHandler) {
@@ -64,14 +73,15 @@ const _AppButton = <T extends AppButtonProps>({
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [type, longPressHandler]
+    [type, to, externalHref, longPressHandler]
   )
+
   return (
-    <Button
+    <ButtonComponent
       {...accessibilityAndTestId(accessibilityLabel, testID)}
       name={name}
       onClick={onClick}
-      onDoubleClick={onDoubleClick}
+      onDoubleClick={to ? undefined : onDoubleClick}
       disabled={disabled}
       type={type}
       aria-describedby={accessibilityDescribedBy}
@@ -86,7 +96,8 @@ const _AppButton = <T extends AppButtonProps>({
       center={center}
       className={className}
       focusOutlineColor={focusOutlineColor}
-      tabIndex={disabled || isLoading ? undefined : 0}>
+      tabIndex={disabled || isLoading ? undefined : 0}
+      {...buttonLinkProps}>
       <AppButtonInner
         loadingIndicator={LoadingIndicator}
         isLoading={isLoading}
@@ -96,7 +107,7 @@ const _AppButton = <T extends AppButtonProps>({
         numberOfLines={numberOfLines}
         wording={wording}
       />
-    </Button>
+    </ButtonComponent>
   )
 }
 
@@ -108,3 +119,4 @@ _AppButton.defaultProps = {
 export const AppButton = memo(_AppButton)
 
 const Button = styled.button<TouchableOpacityButtonProps>(appButtonWebStyles)
+const Link = styled.a<TouchableOpacityButtonProps>(appButtonWebStyles)
