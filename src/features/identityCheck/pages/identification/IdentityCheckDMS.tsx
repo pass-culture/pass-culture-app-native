@@ -12,7 +12,6 @@ import { OrSeparator } from 'ui/components/OrSeparator'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { A } from 'ui/web/link/A'
 
 export const IdentityCheckDMS = () => {
   const theme = useTheme()
@@ -42,22 +41,20 @@ export const IdentityCheckDMS = () => {
           </StyledBody>
           {theme.isMobileViewport ? <Spacer.Flex /> : <Spacer.Column numberOfSpaces={5} />}
           <ButtonContainer>
-            <A href={env.DMS_FRENCH_CITIZEN_URL}>
-              <ButtonTertiaryBlack
-                wording={t`Je suis de nationalité française`}
-                onPress={openDMSFrenchCitizenURL}
-                icon={ExternalSiteFilled}
-              />
-            </A>
+            <ButtonTertiaryBlack
+              wording={t`Je suis de nationalité française`}
+              externalHref={env.DMS_FRENCH_CITIZEN_URL}
+              onPress={openDMSFrenchCitizenURL}
+              icon={ExternalSiteFilled}
+            />
             <Caption>{t`Carte d’identité ou passeport.`}</Caption>
             <OrSeparator />
-            <A href={env.DMS_FOREIGN_CITIZEN_URL}>
-              <ButtonTertiaryBlack
-                wording={t`Je suis de nationalité étrangère`}
-                onPress={openDMSForeignCitizenURL}
-                icon={ExternalSiteFilled}
-              />
-            </A>
+            <ButtonTertiaryBlack
+              wording={t`Je suis de nationalité étrangère`}
+              externalHref={env.DMS_FOREIGN_CITIZEN_URL}
+              onPress={openDMSForeignCitizenURL}
+              icon={ExternalSiteFilled}
+            />
             <Caption>{t`Titre de séjour, carte d'identité ou passeport.`}</Caption>
           </ButtonContainer>
           <Spacer.BottomScreen />

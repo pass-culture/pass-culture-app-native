@@ -196,7 +196,7 @@ exports[`<IdentityCheckPending/> should render correctly 1`] = `
       }
     >
       <button
-        className="sc-bdvvtL eooxkk sc-gsDKAQ khldlI"
+        className="sc-bdvvtL bGoqwJ sc-dkPtRN gNpZyI"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}

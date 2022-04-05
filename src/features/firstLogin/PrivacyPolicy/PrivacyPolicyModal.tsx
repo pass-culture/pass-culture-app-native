@@ -12,7 +12,6 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo, Spacer } from 'ui/theme'
-import { A } from 'ui/web/link/A'
 
 export interface Props {
   visible: boolean
@@ -48,13 +47,12 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
           {t`Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur "Autoriser", tu acceptes l'utilisation de ces services détaillés dans notre`}
         </Typo.Body>
       </Description>
-      <A href={env.COOKIES_POLICY_LINK}>
-        <ButtonQuaternary
-          wording={cookieButtonText}
-          onPress={openCookiesPolicyExternalUrl}
-          icon={ExternalSiteFilled}
-        />
-      </A>
+      <ButtonQuaternary
+        wording={cookieButtonText}
+        externalHref={env.COOKIES_POLICY_LINK}
+        onPress={openCookiesPolicyExternalUrl}
+        icon={ExternalSiteFilled}
+      />
       <SubDescription>
         <Caption>
           {t`Tu pourras modifier tes paramètres de confidentialité dans ton profil.`}

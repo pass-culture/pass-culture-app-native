@@ -6,7 +6,6 @@ import { handleCallToActionLink } from 'features/profile/utils'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo, Spacer } from 'ui/theme'
-import { A } from 'ui/web/link/A'
 interface ProfileBadgeProps {
   message: string
   popOverIcon?: FunctionComponent<IconInterface>
@@ -26,16 +25,15 @@ const renderCallToAction = (
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={4} />
-      <A href={isAppUrl(callToActionLink) ? undefined : callToActionLink}>
-        <ButtonQuaternaryBlack
-          icon={callToActionIcon || undefined}
-          testID="call-to-action-button"
-          onPress={() => handleCallToActionLink(callToActionLink)}
-          wording={callToActionMessage}
-          justifyContent="flex-start"
-          numberOfLines={2}
-        />
-      </A>
+      <ButtonQuaternaryBlack
+        icon={callToActionIcon || undefined}
+        testID="call-to-action-button"
+        externalHref={isAppUrl(callToActionLink) ? undefined : callToActionLink}
+        onPress={() => handleCallToActionLink(callToActionLink)}
+        wording={callToActionMessage}
+        justifyContent="flex-start"
+        numberOfLines={2}
+      />
     </React.Fragment>
   )
 }

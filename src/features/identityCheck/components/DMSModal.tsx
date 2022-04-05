@@ -10,7 +10,6 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
-import { A } from 'ui/web/link/A'
 
 interface Props {
   visible: boolean
@@ -41,24 +40,22 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
       {t`Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long\u00a0!`}
     </StyledBody>
     <Spacer.Column numberOfSpaces={8} />
-    <A href={env.DMS_FRENCH_CITIZEN_URL}>
-      <ButtonTertiaryBlack
-        wording={t`Je suis de nationalité française`}
-        onPress={openDMSFrenchCitizenURL}
-        icon={ExternalSiteFilled}
-        justifyContent="flex-start"
-      />
-    </A>
+    <ButtonTertiaryBlack
+      wording={t`Je suis de nationalité française`}
+      externalHref={env.DMS_FRENCH_CITIZEN_URL}
+      onPress={openDMSFrenchCitizenURL}
+      icon={ExternalSiteFilled}
+      justifyContent="flex-start"
+    />
     <StyledCaption>{t`Carte d’identité ou passeport.`}</StyledCaption>
     <Spacer.Column numberOfSpaces={8} />
-    <A href={env.DMS_FOREIGN_CITIZEN_URL}>
-      <ButtonTertiaryBlack
-        wording={t`Je suis de nationalité étrangère`}
-        onPress={openDMSForeignCitizenURL}
-        icon={ExternalSiteFilled}
-        justifyContent="flex-start"
-      />
-    </A>
+    <ButtonTertiaryBlack
+      wording={t`Je suis de nationalité étrangère`}
+      externalHref={env.DMS_FOREIGN_CITIZEN_URL}
+      onPress={openDMSForeignCitizenURL}
+      icon={ExternalSiteFilled}
+      justifyContent="flex-start"
+    />
     <StyledCaption>{t`Titre de séjour, carte d'identité, ou passeport.`}</StyledCaption>
     <Spacer.Column numberOfSpaces={4} />
   </AppModal>

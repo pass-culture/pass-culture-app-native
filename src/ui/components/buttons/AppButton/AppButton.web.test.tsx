@@ -68,4 +68,20 @@ describe('AppButton Component', () => {
       expect(renderAPI).toMatchSnapshot()
     })
   })
+  describe('* html tag and type attribute', () => {
+    it('should render button tag of type button by default', () => {
+      const { getByTestId } = render(<AppButton {...baseProps} testID="button" />)
+      const button = getByTestId('button')
+      expect(button.tagName.toLowerCase()).toBe('button')
+      expect(button.getAttribute('type')).toBe('button')
+    })
+    it('should render anchor tag without type if component is an anchor', () => {
+      const href = 'https://example.link/'
+      const { getByTestId } = render(<AppButton {...baseProps} testID="link" externalHref={href} />)
+      const link = getByTestId('link')
+      expect(link.tagName.toLowerCase()).toBe('a')
+      expect(link.getAttribute('href')).toBe(href)
+      expect(link.getAttribute('type')).toBeNull()
+    })
+  })
 })

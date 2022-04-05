@@ -252,7 +252,7 @@ Array [
     }
   />,
   <a
-    className="sc-iCfMLu iaRsUK"
+    className="sc-iqseJM jITACD"
     href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
     tabIndex={-1}
     target="_blank"
@@ -269,7 +269,7 @@ Array [
       }
     >
       <button
-        className="sc-bdvvtL djOqJM sc-gsDKAQ bzsCsN"
+        className="sc-bdvvtL cfDIwJ sc-dkPtRN fwCeAR"
         onClick={[Function]}
         onDoubleClick={[Function]}
         tabIndex={0}

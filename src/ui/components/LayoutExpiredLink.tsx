@@ -10,7 +10,6 @@ import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { SadFace } from 'ui/svg/icons/SadFace'
 import { Spacer, Typo } from 'ui/theme'
-import { A } from 'ui/web/link/A'
 
 type Props = {
   renderResendEmailButton?: () => React.ReactNode
@@ -53,13 +52,12 @@ export function LayoutExpiredLink({
       ) : null}
 
       {!!urlFAQ && (
-        <A href={urlFAQ}>
-          <ButtonTertiaryWhite
-            wording={t`Consulter l'article d'aide`}
-            onPress={() => openUrl(urlFAQ)}
-            icon={ExternalSite}
-          />
-        </A>
+        <ButtonTertiaryWhite
+          wording={t`Consulter l'article d'aide`}
+          externalHref={urlFAQ}
+          onPress={() => openUrl(urlFAQ)}
+          icon={ExternalSite}
+        />
       )}
 
       {!!contactSupport && (

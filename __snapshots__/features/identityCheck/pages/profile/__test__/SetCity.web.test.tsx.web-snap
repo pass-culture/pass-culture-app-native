@@ -67,7 +67,7 @@ Object {
                   style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
                 >
                   <form
-                    class="sc-fFeiMQ hvykVs"
+                    class="sc-ieecCq YlweM"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -147,7 +147,7 @@ Object {
                       style="box-sizing: content-box; flex-grow: 1; overflow-y: scroll;"
                     >
                       <ul
-                        class="sc-kDTinF sc-iqseJM dawiYh htkoNq"
+                        class="sc-iqseJM sc-crHmcD jShZCC jZOZGw"
                       />
                     </div>
                   </div>
@@ -158,7 +158,7 @@ Object {
                 >
                   <button
                     aria-label="Continuer vers l'étape suivante"
-                    class="sc-bdvvtL hrpKOI sc-hKwDye gqAQWB"
+                    class="sc-bdvvtL dxXbal sc-eCImPb cYRLFR"
                     data-testid="Continuer vers l'étape suivante"
                     disabled=""
                     type="button"
@@ -261,7 +261,7 @@ Object {
                 style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
               >
                 <form
-                  class="sc-fFeiMQ hvykVs"
+                  class="sc-ieecCq YlweM"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -341,7 +341,7 @@ Object {
                     style="box-sizing: content-box; flex-grow: 1; overflow-y: scroll;"
                   >
                     <ul
-                      class="sc-kDTinF sc-iqseJM dawiYh htkoNq"
+                      class="sc-iqseJM sc-crHmcD jShZCC jZOZGw"
                     />
                   </div>
                 </div>
@@ -352,7 +352,7 @@ Object {
               >
                 <button
                   aria-label="Continuer vers l'étape suivante"
-                  class="sc-bdvvtL hrpKOI sc-hKwDye gqAQWB"
+                  class="sc-bdvvtL dxXbal sc-eCImPb cYRLFR"
                   data-testid="Continuer vers l'étape suivante"
                   disabled=""
                   type="button"

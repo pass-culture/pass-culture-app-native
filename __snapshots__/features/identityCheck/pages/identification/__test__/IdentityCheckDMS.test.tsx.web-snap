@@ -324,47 +324,41 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 }
               >
                 <a
-                  className="sc-gKclnd bWYkKD"
+                  className="sc-gsDKAQ hDLits sc-llYSUQ cUMHYY"
                   href="https://dmsfrenchcitizen"
-                  tabIndex={-1}
+                  onClick={[Function]}
+                  onDoubleClick={[Function]}
+                  tabIndex={0}
                   target="_blank"
                 >
-                  <button
-                    className="sc-bdvvtL hrpKOI sc-iwjdpV fFnKs"
-                    onClick={[Function]}
-                    onDoubleClick={[Function]}
-                    tabIndex={0}
-                    type="button"
+                  <div
+                    className="css-view-1dbjc4n"
+                    data-testid="button-icon"
                   >
                     <div
-                      className="css-view-1dbjc4n"
-                      data-testid="button-icon"
-                    >
-                      <div
-                        className="css-text-901oao"
-                        dir="auto"
-                      >
-                        button-icon-SVG-Mock
-                      </div>
-                    </div>
-                    <div
-                      className="css-text-901oao css-textMultiLine-cens5h"
+                      className="css-text-901oao"
                       dir="auto"
-                      style={
-                        Object {
-                          "WebkitLineClamp": 1,
-                          "color": "rgba(22,22,23,1.00)",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": "15px",
-                          "lineHeight": "20px",
-                          "marginLeft": "8px",
-                          "maxWidth": "100%",
-                        }
-                      }
                     >
-                      Je suis de nationalité française
+                      button-icon-SVG-Mock
                     </div>
-                  </button>
+                  </div>
+                  <div
+                    className="css-text-901oao css-textMultiLine-cens5h"
+                    dir="auto"
+                    style={
+                      Object {
+                        "WebkitLineClamp": 1,
+                        "color": "rgba(22,22,23,1.00)",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "15px",
+                        "lineHeight": "20px",
+                        "marginLeft": "8px",
+                        "maxWidth": "100%",
+                      }
+                    }
+                  >
+                    Je suis de nationalité française
+                  </div>
                 </a>
                 <div
                   className="css-text-901oao"
@@ -443,47 +437,41 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                   </div>
                 </div>
                 <a
-                  className="sc-gKclnd bWYkKD"
+                  className="sc-gsDKAQ hDLits sc-llYSUQ cUMHYY"
                   href="https://dmsforeigncitizen"
-                  tabIndex={-1}
+                  onClick={[Function]}
+                  onDoubleClick={[Function]}
+                  tabIndex={0}
                   target="_blank"
                 >
-                  <button
-                    className="sc-bdvvtL hrpKOI sc-iwjdpV fFnKs"
-                    onClick={[Function]}
-                    onDoubleClick={[Function]}
-                    tabIndex={0}
-                    type="button"
+                  <div
+                    className="css-view-1dbjc4n"
+                    data-testid="button-icon"
                   >
                     <div
-                      className="css-view-1dbjc4n"
-                      data-testid="button-icon"
-                    >
-                      <div
-                        className="css-text-901oao"
-                        dir="auto"
-                      >
-                        button-icon-SVG-Mock
-                      </div>
-                    </div>
-                    <div
-                      className="css-text-901oao css-textMultiLine-cens5h"
+                      className="css-text-901oao"
                       dir="auto"
-                      style={
-                        Object {
-                          "WebkitLineClamp": 1,
-                          "color": "rgba(22,22,23,1.00)",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": "15px",
-                          "lineHeight": "20px",
-                          "marginLeft": "8px",
-                          "maxWidth": "100%",
-                        }
-                      }
                     >
-                      Je suis de nationalité étrangère
+                      button-icon-SVG-Mock
                     </div>
-                  </button>
+                  </div>
+                  <div
+                    className="css-text-901oao css-textMultiLine-cens5h"
+                    dir="auto"
+                    style={
+                      Object {
+                        "WebkitLineClamp": 1,
+                        "color": "rgba(22,22,23,1.00)",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": "15px",
+                        "lineHeight": "20px",
+                        "marginLeft": "8px",
+                        "maxWidth": "100%",
+                      }
+                    }
+                  >
+                    Je suis de nationalité étrangère
+                  </div>
                 </a>
                 <div
                   className="css-text-901oao"
