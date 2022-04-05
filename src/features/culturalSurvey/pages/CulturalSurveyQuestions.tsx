@@ -7,6 +7,7 @@ import { CulturalSurveyTypeCodeKey } from 'api/gen'
 import { mockCulturalSurveyQuestions } from 'features/culturalSurvey/__mocks__/culturalSurveyQuestions'
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
 import { CulturalSurveyPageHeader } from 'features/culturalSurvey/components/layout/CulturalSurveyPageHeader'
+import { mapQuestionIdToPageTitle } from 'features/culturalSurvey/helpers/utils'
 import { mapCulturalSurveyTypeToIcon } from 'libs/parsers/culturalSurveyType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import CulturalSurveyIcons from 'ui/svg/icons/culturalSurvey'
@@ -29,7 +30,7 @@ export const CulturalSurveyQuestions = (): JSX.Element => {
 
   return (
     <Container>
-      <CulturalSurveyPageHeader progress={0.5} title={'Tes sorties'} />
+      <CulturalSurveyPageHeader progress={0.5} title={mapQuestionIdToPageTitle(mockedData.id)} />
       <ChildrenScrollView bottomChildrenViewHeight={bottomChildrenViewHeight}>
         <Typo.Title3>{mockedData.title}</Typo.Title3>
         <CaptionContainer>
