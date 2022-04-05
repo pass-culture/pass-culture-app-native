@@ -3,8 +3,11 @@ import React, { useState } from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
+import { CulturalSurveyTypeCodeKey } from 'api/gen'
+import { mockCulturalSurveyQuestions } from 'features/culturalSurvey/__mocks__/culturalSurveyQuestions'
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
 import { CulturalSurveyPageHeader } from 'features/culturalSurvey/components/layout/CulturalSurveyPageHeader'
+import { mapCulturalSurveyTypeToIcon } from 'libs/parsers/culturalSurveyType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import CulturalSurveyIcons from 'ui/svg/icons/culturalSurvey'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -20,94 +23,7 @@ export const CulturalSurveyQuestions = (): JSX.Element => {
   }
 
   // TODO (yorickeando) PC-13347: replace mock data by backend response from adequate react query
-  // TODO (yorickeando) : quand PC-13341 sera mergé, supprimé la clé "icon" de
-  // la réponse du back et injecter mapCulturalSurveyIdToIcon(id) dans CulturalSurveyCheckbox
-  const mockedData = {
-    id: 'SORTIES',
-    title: "Au cours de l'année précédente, tu as/es au moins une fois ...",
-    answers: [
-      {
-        id: 'FESTIVAL',
-        // clé factice, pour le dev, voir TODO
-        icon: CulturalSurveyIcons.FestivalIcon,
-        title: 'Participé à un festival,',
-        subtitle: 'à une avant-première',
-        sub_question: 'FESTIVALS',
-      },
-      {
-        id: 'SPECTACLE',
-        // clé factice, pour le dev, voir TODO
-        icon: CulturalSurveyIcons.ShowIcon,
-        title: 'Assisté à un spectacle',
-        subtitle: 'Pièce de théâtre, cirque, danse...',
-        sub_question: 'SPECTACLES',
-      },
-      {
-        id: 'BIBLIOTHEQUE',
-        // clé factice, pour le dev, voir TODO
-        icon: CulturalSurveyIcons.BookstoreIcon,
-        title: 'Allé à la bibliothèque',
-        subtitle: 'ou à la médiathèque',
-        sub_question: null,
-      },
-      {
-        id: 'EVENEMENT_JEU',
-        // clé factice, pour le dev, voir TODO
-        icon: CulturalSurveyIcons.PuzzlePieceIcon,
-        title: 'Participé à un jeu',
-        subtitle: 'escape game, jeu concours',
-        sub_question: null,
-      },
-      {
-        id: 'CONCERT',
-        // clé factice, pour le dev, voir TODO
-        icon: CulturalSurveyIcons.MusicIcon,
-        title: 'Allé à un concert',
-        subtitle: null,
-        sub_question: null,
-      },
-      {
-        id: 'CINEMA',
-        // clé factice, pour le dev, voir TODO
-        icon: CulturalSurveyIcons.CinemaIcon,
-        title: 'Allé au cinéma',
-        subtitle: null,
-        sub_question: null,
-      },
-      {
-        id: 'MUSEE',
-        // clé factice, pour le dev, voir TODO
-        icon: CulturalSurveyIcons.MuseumIcon,
-        title: 'Visité un musée,',
-        subtitle: 'un monument, une exposition...',
-        sub_question: null,
-      },
-      {
-        id: 'CONFERENCE',
-        // clé factice, pour le dev, voir TODO
-        icon: CulturalSurveyIcons.ConferenceIcon,
-        title: 'Participé à une conférence,',
-        subtitle: 'rencontre ou découverte des métiers de la culture',
-        sub_question: null,
-      },
-      {
-        id: 'COURS',
-        // clé factice, pour le dev, voir TODO
-        icon: CulturalSurveyIcons.BrushIcon,
-        title: 'Pris un cours',
-        subtitle: 'danse, théâtre, musique, dessin',
-        sub_question: null,
-      },
-      {
-        id: 'SANS_SORTIES',
-        // clé factice, pour le dev, voir TODO
-        icon: undefined,
-        title: 'Aucune de ces sorties culturelles',
-        subtitle: null,
-        sub_question: null,
-      },
-    ],
-  }
+  const mockedData = mockCulturalSurveyQuestions.questions[0]
 
   const pageSubtitle = t`Tu peux sélectionner une ou plusieurs réponses.`
 
@@ -126,7 +42,9 @@ export const CulturalSurveyQuestions = (): JSX.Element => {
                 <CulturalSurveyCheckbox
                   title={answer.title}
                   subtitle={answer?.subtitle}
-                  icon={answer?.icon}
+                  // TODO yorickeando: once the api schema provides correct CulturalSurveyAnswerIdEnum
+                  // type adequately
+                  icon={mapCulturalSurveyTypeToIcon(answer?.id as CulturalSurveyTypeCodeKey)}
                 />
               </CheckboxContainer>
             </Li>
