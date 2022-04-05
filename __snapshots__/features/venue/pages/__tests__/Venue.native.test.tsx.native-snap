@@ -2132,6 +2132,7 @@ exports[`<Venue /> should match snapshot 1`] = `
             <Text
               adjustsFontSizeToFit={true}
               isDisabled={false}
+              isEmail={false}
               numberOfLines={1}
               style={
                 Array [
