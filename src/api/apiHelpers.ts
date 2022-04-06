@@ -73,7 +73,7 @@ export const safeFetch = async (
   // If the token is expired, we refresh it before calling the backend
   if (tokenContent && tokenContent.exp * 1000 <= new Date().getTime()) {
     try {
-      const newAccessToken = await refreshAccessToken(api)
+      const { result: newAccessToken } = await refreshAccessToken(api)
 
       runtimeOptions = {
         ...runtimeOptions,
@@ -93,12 +93,16 @@ export const safeFetch = async (
   return await fetch(url, runtimeOptions)
 }
 
+type Result = {
+  result: string
+}
+
 /**
  * Calls Api to refresh the access token using the in-keychain stored refresh token
  * - on success: Stores the new access token
  * - on error : clear storage propagates error
  */
-export const refreshAccessToken = async (api: DefaultApi): Promise<string | null> => {
+export const refreshAccessToken = async (api: DefaultApi): Promise<Result> => {
   const refreshToken = await getRefreshToken()
 
   // if not connected, we also redirect to the login page
@@ -114,7 +118,7 @@ export const refreshAccessToken = async (api: DefaultApi): Promise<string | null
 
     await storage.saveString('access_token', response.accessToken)
 
-    return await storage.readString('access_token')
+    return { result: response.accessToken }
   } catch {
     await clearRefreshToken()
     await storage.clear('access_token')

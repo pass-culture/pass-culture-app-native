@@ -18,8 +18,8 @@ export const eduConnectClient = {
     }
     if (tokenContent.exp * 1000 <= new Date().getTime()) {
       try {
-        const refreshedToken = await refreshAccessToken(api)
-        return refreshedToken
+        const { result: accessToken } = await refreshAccessToken(api)
+        return accessToken
       } catch (error) {
         eventMonitoring.captureException(error, {
           message: 'eduConnectClient failed to refreshAccessToken',
