@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <header
-        class="sc-cxpSdN iuBpmA"
+        class="sc-iwjdpV wMNhc"
       >
         <div
           class="css-view-1dbjc4n"
@@ -81,51 +81,44 @@ Object {
           style="height: 56px;"
         />
         <a
-          class="sc-jrQzAO gbtGqz"
+          class="css-reset-4rbku5 css-view-1dbjc4n"
           href="https://passculture.cgu"
-          tabindex="-1"
-          target="_blank"
+          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
         >
           <div
             class="css-view-1dbjc4n"
-            style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-            tabindex="0"
+            style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
           >
             <div
               class="css-view-1dbjc4n"
-              style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
             >
               <div
-                class="css-view-1dbjc4n"
+                class="css-text-901oao"
+                dir="auto"
               >
-                <div
-                  class="css-text-901oao"
-                  dir="auto"
-                >
-                  undefined-SVG-Mock
-                </div>
+                undefined-SVG-Mock
               </div>
-              <div
-                class="css-view-1dbjc4n"
-                style="width: 8px;"
-              />
-              <div
-                class="css-view-1dbjc4n"
-                style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; text-align: left;"
-              >
-                <div
-                  class="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
-                  style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-                >
-                  Conditions Générales d’Utilisation
-                </div>
-              </div>
-              <div
-                class="css-view-1dbjc4n"
-                style="align-items: flex-end;"
-              />
             </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="width: 8px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; text-align: left;"
+            >
+              <div
+                class="css-text-901oao css-textMultiLine-cens5h"
+                dir="auto"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+              >
+                Conditions Générales d’Utilisation
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: flex-end;"
+            />
           </div>
         </a>
         <div
@@ -133,51 +126,44 @@ Object {
           style="background-color: rgb(241, 241, 244); height: 1px; width: 100%;"
         />
         <a
-          class="sc-jrQzAO gbtGqz"
+          class="css-reset-4rbku5 css-view-1dbjc4n"
           href="https://passculture.data-privacy-chart"
-          tabindex="-1"
-          target="_blank"
+          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
         >
           <div
             class="css-view-1dbjc4n"
-            style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-            tabindex="0"
+            style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
           >
             <div
               class="css-view-1dbjc4n"
-              style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
             >
               <div
-                class="css-view-1dbjc4n"
+                class="css-text-901oao"
+                dir="auto"
               >
-                <div
-                  class="css-text-901oao"
-                  dir="auto"
-                >
-                  undefined-SVG-Mock
-                </div>
+                undefined-SVG-Mock
               </div>
-              <div
-                class="css-view-1dbjc4n"
-                style="width: 8px;"
-              />
-              <div
-                class="css-view-1dbjc4n"
-                style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; text-align: left;"
-              >
-                <div
-                  class="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
-                  style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-                >
-                  Charte de protection des données personnelles
-                </div>
-              </div>
-              <div
-                class="css-view-1dbjc4n"
-                style="align-items: flex-end;"
-              />
             </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="width: 8px;"
+            />
+            <div
+              class="css-view-1dbjc4n"
+              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; text-align: left;"
+            >
+              <div
+                class="css-text-901oao css-textMultiLine-cens5h"
+                dir="auto"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+              >
+                Charte de protection des données personnelles
+              </div>
+            </div>
+            <div
+              class="css-view-1dbjc4n"
+              style="align-items: flex-end;"
+            />
           </div>
         </a>
         <div
@@ -230,7 +216,7 @@ Object {
   </body>,
   "container": <div>
     <header
-      class="sc-cxpSdN iuBpmA"
+      class="sc-iwjdpV wMNhc"
     >
       <div
         class="css-view-1dbjc4n"
@@ -305,51 +291,44 @@ Object {
         style="height: 56px;"
       />
       <a
-        class="sc-jrQzAO gbtGqz"
+        class="css-reset-4rbku5 css-view-1dbjc4n"
         href="https://passculture.cgu"
-        tabindex="-1"
-        target="_blank"
+        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
       >
         <div
           class="css-view-1dbjc4n"
-          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-          tabindex="0"
+          style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
         >
           <div
             class="css-view-1dbjc4n"
-            style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
           >
             <div
-              class="css-view-1dbjc4n"
+              class="css-text-901oao"
+              dir="auto"
             >
-              <div
-                class="css-text-901oao"
-                dir="auto"
-              >
-                undefined-SVG-Mock
-              </div>
+              undefined-SVG-Mock
             </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="width: 8px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; text-align: left;"
-            >
-              <div
-                class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-              >
-                Conditions Générales d’Utilisation
-              </div>
-            </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="align-items: flex-end;"
-            />
           </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="width: 8px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; text-align: left;"
+          >
+            <div
+              class="css-text-901oao css-textMultiLine-cens5h"
+              dir="auto"
+              style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+            >
+              Conditions Générales d’Utilisation
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="align-items: flex-end;"
+          />
         </div>
       </a>
       <div
@@ -357,51 +336,44 @@ Object {
         style="background-color: rgb(241, 241, 244); height: 1px; width: 100%;"
       />
       <a
-        class="sc-jrQzAO gbtGqz"
+        class="css-reset-4rbku5 css-view-1dbjc4n"
         href="https://passculture.data-privacy-chart"
-        tabindex="-1"
-        target="_blank"
+        style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
       >
         <div
           class="css-view-1dbjc4n"
-          style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-          tabindex="0"
+          style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
         >
           <div
             class="css-view-1dbjc4n"
-            style="align-items: center; flex-direction: row; justify-content: space-between; padding-top: 16px; padding-bottom: 16px;"
           >
             <div
-              class="css-view-1dbjc4n"
+              class="css-text-901oao"
+              dir="auto"
             >
-              <div
-                class="css-text-901oao"
-                dir="auto"
-              >
-                undefined-SVG-Mock
-              </div>
+              undefined-SVG-Mock
             </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="width: 8px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; text-align: left;"
-            >
-              <div
-                class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
-              >
-                Charte de protection des données personnelles
-              </div>
-            </div>
-            <div
-              class="css-view-1dbjc4n"
-              style="align-items: flex-end;"
-            />
           </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="width: 8px;"
+          />
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; text-align: left;"
+          >
+            <div
+              class="css-text-901oao css-textMultiLine-cens5h"
+              dir="auto"
+              style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+            >
+              Charte de protection des données personnelles
+            </div>
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="align-items: flex-end;"
+          />
         </div>
       </a>
       <div

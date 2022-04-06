@@ -213,7 +213,7 @@ Object {
                 >
                   <button
                     aria-label="Continuer vers l'étape suivante"
-                    class="sc-bdvvtL dxXbal sc-dkPtRN cRlcLC"
+                    class="sc-bdvvtL hWVHSw sc-dkPtRN cRlcLC"
                     data-testid="Continuer vers l'étape suivante"
                     disabled=""
                     type="button"
@@ -462,7 +462,7 @@ Object {
               >
                 <button
                   aria-label="Continuer vers l'étape suivante"
-                  class="sc-bdvvtL dxXbal sc-dkPtRN cRlcLC"
+                  class="sc-bdvvtL hWVHSw sc-dkPtRN cRlcLC"
                   data-testid="Continuer vers l'étape suivante"
                   disabled=""
                   type="button"

@@ -3,10 +3,9 @@ import styled from 'styled-components/native'
 
 import { openUrl } from 'features/navigation/helpers'
 import { extractExternalLinkParts } from 'ui/components/buttons/externalLink/ExternalLink.service'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ExternalSite as DefaultExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Spacer, Typo } from 'ui/theme'
-import { A } from 'ui/web/link/A'
+import { TouchableLink } from 'ui/web/link/TouchableLink'
 
 interface Props {
   url: string
@@ -19,18 +18,16 @@ export const ExternalLink: React.FC<Props> = ({ url, text, primary, testID }) =>
   const [firstWord, remainingWords] = extractExternalLinkParts(text || url)
 
   return (
-    <A href={url}>
-      <StyledTouchableOpacity onPress={() => openUrl(url)} testID={testID}>
-        <ButtonText primary={primary}>
-          <Spacer.Row numberOfSpaces={1} />
-          <Text>
-            <ExternalSite primary={primary} testID="externalSiteIcon" />
-            {firstWord}
-          </Text>
-          {remainingWords}
-        </ButtonText>
-      </StyledTouchableOpacity>
-    </A>
+    <StyledTouchableOpacity externalHref={url} onPress={() => openUrl(url)} testID={testID}>
+      <ButtonText primary={primary}>
+        <Spacer.Row numberOfSpaces={1} />
+        <Text>
+          <ExternalSite primary={primary} testID="externalSiteIcon" />
+          {firstWord}
+        </Text>
+        {remainingWords}
+      </ButtonText>
+    </StyledTouchableOpacity>
   )
 }
 
@@ -38,7 +35,7 @@ const Text = styled.Text({
   whiteSpace: 'nowrap',
 })
 
-const StyledTouchableOpacity = styled(TouchableOpacity)({
+const StyledTouchableOpacity = styled(TouchableLink)({
   display: 'inline',
 })
 

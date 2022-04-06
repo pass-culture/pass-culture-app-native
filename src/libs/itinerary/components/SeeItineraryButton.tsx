@@ -6,6 +6,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 
 interface Props {
+  externalHref?: string
   openItinerary: () => void
 }
 
@@ -14,6 +15,7 @@ export function SeeItineraryButton(props: Props) {
     <Container>
       <ButtonTertiaryBlack
         inline
+        externalHref={props.externalHref}
         wording={t`Voir l'itinéraire`}
         onPress={props.openItinerary}
         icon={Icon}

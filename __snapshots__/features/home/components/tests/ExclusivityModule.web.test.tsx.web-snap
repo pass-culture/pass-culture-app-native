@@ -22,14 +22,7 @@ Object {
             data-testid="imageExclu"
             style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; max-height: 360px; user-select: none;"
             tabindex="0"
-          >
-            <div
-              class="css-text-901oao"
-              dir="auto"
-              style="display: flex; flex-direction: column;"
-              tabindex="-1"
-            />
-          </div>
+          />
         </div>
         <div
           class="css-view-1dbjc4n"
@@ -56,14 +49,7 @@ Object {
           data-testid="imageExclu"
           style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; max-height: 360px; user-select: none;"
           tabindex="0"
-        >
-          <div
-            class="css-text-901oao"
-            dir="auto"
-            style="display: flex; flex-direction: column;"
-            tabindex="-1"
-          />
-        </div>
+        />
       </div>
       <div
         class="css-view-1dbjc4n"

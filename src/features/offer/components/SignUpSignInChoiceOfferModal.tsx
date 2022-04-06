@@ -48,9 +48,17 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
         </Typo.Body>
       </Description>
 
-      <ButtonPrimary wording={t`S'inscrire`} onPress={goToSignUp} />
+      <ButtonPrimary
+        wording={t`S'inscrire`}
+        to={{ screen: 'SignupForm', params: undefined }}
+        onPress={goToSignUp}
+      />
       <Spacer.Column numberOfSpaces={3} />
-      <ButtonTertiary wording={t`Se connecter`} onPress={goToLogin} />
+      <ButtonTertiary
+        wording={t`Se connecter`}
+        to={{ screen: 'Login', params: undefined }}
+        onPress={goToLogin}
+      />
     </AppModal>
   )
 }

@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useMemo, useState } from 'react'
-import { PixelRatio, StyleSheet } from 'react-native'
+import { PixelRatio } from 'react-native'
 import FastImage from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
@@ -13,7 +13,7 @@ import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import { MARGIN_DP, LENGTH_XL, RATIO_EXCLU, Spacer, getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
-import { Link } from 'ui/web/link/Link'
+import { TouchableLink } from 'ui/web/link/TouchableLink'
 
 export const ExclusivityModule = ({
   alt,
@@ -43,19 +43,16 @@ export const ExclusivityModule = ({
     <Row>
       <Spacer.Row numberOfSpaces={6} />
       <ImageContainer>
-        <TouchableHighlight
+        <StyledTouchableLink
+          highlight
+          to={{ screen: 'Offer', params: { id, from: 'home' } }}
           onPress={handlePressExclu}
           onFocus={() => setIsFocus(true)}
           onBlur={() => setIsFocus(false)}
           isFocus={isFocus}
           testID="imageExclu">
-          <Link
-            to={{ screen: 'Offer', params: { id, from: 'home' } }}
-            style={styles.link}
-            accessible={false}>
-            <Image source={source} accessible={false} accessibilityLabel={alt} />
-          </Link>
-        </TouchableHighlight>
+          <Image source={source} accessible={false} accessibilityLabel={alt} />
+        </StyledTouchableLink>
       </ImageContainer>
       <Spacer.Row numberOfSpaces={6} />
     </Row>
@@ -72,13 +69,11 @@ const ImageContainer = styled.View({
   maxHeight: LENGTH_XL,
 })
 
-const TouchableHighlight = styled.TouchableHighlight<{ isFocus?: boolean }>(
-  ({ theme, isFocus }) => ({
-    borderRadius: theme.borderRadius.radius,
-    maxHeight: LENGTH_XL,
-    ...customFocusOutline(theme, undefined, isFocus),
-  })
-)
+const StyledTouchableLink = styled(TouchableLink)<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
+  borderRadius: theme.borderRadius.radius,
+  maxHeight: LENGTH_XL,
+  ...customFocusOutline(theme, undefined, isFocus),
+}))
 
 const Image = styled(FastImage)(({ theme }) => ({
   backgroundColor: theme.colors.primary,
@@ -86,10 +81,3 @@ const Image = styled(FastImage)(({ theme }) => ({
   maxHeight: LENGTH_XL,
   height: PixelRatio.roundToNearestPixel((theme.appContentWidth - 2 * MARGIN_DP) * RATIO_EXCLU),
 }))
-
-const styles = StyleSheet.create({
-  link: {
-    flexDirection: 'column',
-    display: 'flex',
-  },
-})

@@ -36,12 +36,14 @@ export const NotConnectedFavorites = () => {
         <ButtonContainer>
           <ButtonPrimaryWhite
             wording={t`S'inscrire`}
+            to={{ screen: 'SignupForm', params: undefined }}
             onPress={() => navigate('SignupForm')}
             buttonHeight="tall"
           />
           <Spacer.Column numberOfSpaces={4} />
           <ButtonTertiaryWhite
             wording={t`Se connecter`}
+            to={{ screen: 'Login', params: undefined }}
             onPress={() => navigate('Login')}
             buttonHeight="tall"
           />

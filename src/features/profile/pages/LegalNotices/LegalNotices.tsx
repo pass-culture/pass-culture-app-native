@@ -14,7 +14,6 @@ import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { getSpacing, Spacer } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
-import { A } from 'ui/web/link/A'
 
 export function LegalNotices() {
   const { data: user } = useUserProfileInfo()
@@ -25,23 +24,21 @@ export function LegalNotices() {
       <Container>
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={14} />
-        <A href={env.CGU_LINK}>
-          <Row
-            title={t`Conditions Générales d’Utilisation`}
-            type="clickable"
-            onPress={() => openUrl(env.CGU_LINK)}
-            icon={ExternalSite}
-          />
-        </A>
+        <Row
+          title={t`Conditions Générales d’Utilisation`}
+          type="clickable"
+          externalHref={env.CGU_LINK}
+          onPress={() => openUrl(env.CGU_LINK)}
+          icon={ExternalSite}
+        />
         <Separator />
-        <A href={env.DATA_PRIVACY_CHART_LINK}>
-          <Row
-            title={t`Charte de protection des données personnelles`}
-            type="clickable"
-            onPress={() => openUrl(env.DATA_PRIVACY_CHART_LINK)}
-            icon={ExternalSite}
-          />
-        </A>
+        <Row
+          title={t`Charte de protection des données personnelles`}
+          type="clickable"
+          externalHref={env.DATA_PRIVACY_CHART_LINK}
+          onPress={() => openUrl(env.DATA_PRIVACY_CHART_LINK)}
+          icon={ExternalSite}
+        />
         {!!user && (
           <React.Fragment>
             <Separator />

@@ -8,7 +8,7 @@ Object {
   >
     <div>
       <nav
-        class="sc-dlVxhl iFzWjr"
+        class="sc-hGPBjI KRFRT"
       >
         <div
           class="css-view-1dbjc4n"
@@ -23,210 +23,170 @@ Object {
               style="width: 16px;"
             />
             <ul
-              class="sc-crHmcD sc-kfPuZi gzFTzc guHHud"
+              class="sc-iqseJM sc-dlVxhl jShZCC oOosY"
             >
               <li
-                class="sc-fKVqWL fhGMTR"
+                class="sc-kfPuZi iIOobr"
               >
                 <a
-                  class="css-reset-4rbku5 css-text-901oao"
-                  dir="auto"
+                  aria-label="Accueil"
+                  class="css-reset-4rbku5 css-view-1dbjc4n"
+                  data-testid="Home tab"
                   href="/Home"
-                  style="cursor: pointer;"
-                  tabindex="-1"
+                  style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 >
                   <div
-                    aria-label="Accueil"
                     class="css-view-1dbjc4n"
-                    data-testid="Home tab"
-                    style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-                    tabindex="0"
+                    data-testid="Home tab selected"
                   >
                     <div
-                      class="css-view-1dbjc4n"
-                      data-testid="Home tab selected"
-                      style="display: inline-flex;"
+                      class="css-text-901oao"
+                      dir="auto"
                     >
-                      <span
-                        class="css-text-901oao css-textHasAncestor-16my406"
-                      >
-                        Home tab selected-SVG-Mock
-                      </span>
+                      Home tab selected-SVG-Mock
                     </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="display: inline-flex;"
-                    >
-                      <span
-                        class="css-text-901oao css-textHasAncestor-16my406"
-                      >
-                        undefined-SVG-Mock
-                      </span>
-                    </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="display: inline-flex; height: 4px;"
-                    />
                   </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="height: 4px;"
+                  />
                 </a>
               </li>
               <li
-                class="sc-fKVqWL fhGMTR"
+                class="sc-kfPuZi iIOobr"
               >
                 <a
-                  class="css-reset-4rbku5 css-text-901oao"
-                  dir="auto"
+                  aria-label="Rechercher des offres"
+                  class="css-reset-4rbku5 css-view-1dbjc4n"
+                  data-testid="Search tab"
                   href="/Search"
-                  style="cursor: pointer;"
-                  tabindex="-1"
+                  style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 >
                   <div
-                    aria-label="Rechercher des offres"
                     class="css-view-1dbjc4n"
-                    data-testid="Search tab"
-                    style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-                    tabindex="0"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
                   >
                     <div
-                      class="css-view-1dbjc4n"
-                      style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="display: inline-flex;"
+                      class="css-text-901oao"
+                      dir="auto"
                     >
-                      <span
-                        class="css-text-901oao css-textHasAncestor-16my406"
-                      >
-                        undefined-SVG-Mock
-                      </span>
+                      undefined-SVG-Mock
                     </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
                   </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  />
                 </a>
               </li>
               <li
-                class="sc-fKVqWL fhGMTR"
+                class="sc-kfPuZi iIOobr"
               >
                 <a
-                  class="css-reset-4rbku5 css-text-901oao"
-                  dir="auto"
+                  aria-label="Mes réservations"
+                  class="css-reset-4rbku5 css-view-1dbjc4n"
+                  data-testid="Bookings tab"
                   href="/Bookings"
-                  style="cursor: pointer;"
-                  tabindex="-1"
+                  style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 >
                   <div
-                    aria-label="Mes réservations"
                     class="css-view-1dbjc4n"
-                    data-testid="Bookings tab"
-                    style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-                    tabindex="0"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
                   >
                     <div
-                      class="css-view-1dbjc4n"
-                      style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="display: inline-flex;"
+                      class="css-text-901oao"
+                      dir="auto"
                     >
-                      <span
-                        class="css-text-901oao css-textHasAncestor-16my406"
-                      >
-                        undefined-SVG-Mock
-                      </span>
+                      undefined-SVG-Mock
                     </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
                   </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  />
                 </a>
               </li>
               <li
-                class="sc-fKVqWL fhGMTR"
+                class="sc-kfPuZi iIOobr"
               >
                 <a
-                  class="css-reset-4rbku5 css-text-901oao"
-                  dir="auto"
+                  class="css-reset-4rbku5 css-view-1dbjc4n"
+                  data-testid="Favorites tab"
                   href="/Favorites"
-                  style="cursor: pointer;"
-                  tabindex="-1"
+                  style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    data-testid="Favorites tab"
-                    style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-                    tabindex="0"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
                   >
                     <div
-                      class="css-view-1dbjc4n"
-                      style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="display: inline-flex;"
+                      class="css-text-901oao"
+                      dir="auto"
                     >
-                      <span
-                        class="css-text-901oao css-textHasAncestor-16my406"
-                      >
-                        undefined-SVG-Mock
-                      </span>
+                      undefined-SVG-Mock
                     </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
                   </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  />
                 </a>
               </li>
               <li
-                class="sc-fKVqWL fhGMTR"
+                class="sc-kfPuZi iIOobr"
               >
                 <a
-                  class="css-reset-4rbku5 css-text-901oao"
-                  dir="auto"
+                  aria-label="Mon profil"
+                  class="css-reset-4rbku5 css-view-1dbjc4n"
+                  data-testid="Profile tab"
                   href="/Profile"
-                  style="cursor: pointer;"
-                  tabindex="-1"
+                  style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 >
                   <div
-                    aria-label="Mon profil"
                     class="css-view-1dbjc4n"
-                    data-testid="Profile tab"
-                    style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-                    tabindex="0"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  />
+                  <div
+                    class="css-view-1dbjc4n"
                   >
                     <div
-                      class="css-view-1dbjc4n"
-                      style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="display: inline-flex;"
+                      class="css-text-901oao"
+                      dir="auto"
                     >
-                      <span
-                        class="css-text-901oao css-textHasAncestor-16my406"
-                      >
-                        undefined-SVG-Mock
-                      </span>
+                      undefined-SVG-Mock
                     </div>
-                    <div
-                      class="css-view-1dbjc4n"
-                      style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                    />
                   </div>
+                  <div
+                    class="css-view-1dbjc4n"
+                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  />
                 </a>
               </li>
             </ul>
@@ -277,7 +237,7 @@ Object {
   </body>,
   "container": <div>
     <nav
-      class="sc-dlVxhl iFzWjr"
+      class="sc-hGPBjI KRFRT"
     >
       <div
         class="css-view-1dbjc4n"
@@ -292,210 +252,170 @@ Object {
             style="width: 16px;"
           />
           <ul
-            class="sc-crHmcD sc-kfPuZi gzFTzc guHHud"
+            class="sc-iqseJM sc-dlVxhl jShZCC oOosY"
           >
             <li
-              class="sc-fKVqWL fhGMTR"
+              class="sc-kfPuZi iIOobr"
             >
               <a
-                class="css-reset-4rbku5 css-text-901oao"
-                dir="auto"
+                aria-label="Accueil"
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                data-testid="Home tab"
                 href="/Home"
-                style="cursor: pointer;"
-                tabindex="-1"
+                style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
               >
                 <div
-                  aria-label="Accueil"
                   class="css-view-1dbjc4n"
-                  data-testid="Home tab"
-                  style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-                  tabindex="0"
+                  data-testid="Home tab selected"
                 >
                   <div
-                    class="css-view-1dbjc4n"
-                    data-testid="Home tab selected"
-                    style="display: inline-flex;"
+                    class="css-text-901oao"
+                    dir="auto"
                   >
-                    <span
-                      class="css-text-901oao css-textHasAncestor-16my406"
-                    >
-                      Home tab selected-SVG-Mock
-                    </span>
+                    Home tab selected-SVG-Mock
                   </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                  />
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="display: inline-flex;"
-                  >
-                    <span
-                      class="css-text-901oao css-textHasAncestor-16my406"
-                    >
-                      undefined-SVG-Mock
-                    </span>
-                  </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                  />
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="display: inline-flex; height: 4px;"
-                  />
                 </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                />
+                <div
+                  class="css-view-1dbjc4n"
+                >
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
+                </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                />
+                <div
+                  class="css-view-1dbjc4n"
+                  style="height: 4px;"
+                />
               </a>
             </li>
             <li
-              class="sc-fKVqWL fhGMTR"
+              class="sc-kfPuZi iIOobr"
             >
               <a
-                class="css-reset-4rbku5 css-text-901oao"
-                dir="auto"
+                aria-label="Rechercher des offres"
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                data-testid="Search tab"
                 href="/Search"
-                style="cursor: pointer;"
-                tabindex="-1"
+                style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
               >
                 <div
-                  aria-label="Rechercher des offres"
                   class="css-view-1dbjc4n"
-                  data-testid="Search tab"
-                  style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-                  tabindex="0"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                />
+                <div
+                  class="css-view-1dbjc4n"
                 >
                   <div
-                    class="css-view-1dbjc4n"
-                    style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                  />
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="display: inline-flex;"
+                    class="css-text-901oao"
+                    dir="auto"
                   >
-                    <span
-                      class="css-text-901oao css-textHasAncestor-16my406"
-                    >
-                      undefined-SVG-Mock
-                    </span>
+                    undefined-SVG-Mock
                   </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                  />
                 </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                />
               </a>
             </li>
             <li
-              class="sc-fKVqWL fhGMTR"
+              class="sc-kfPuZi iIOobr"
             >
               <a
-                class="css-reset-4rbku5 css-text-901oao"
-                dir="auto"
+                aria-label="Mes réservations"
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                data-testid="Bookings tab"
                 href="/Bookings"
-                style="cursor: pointer;"
-                tabindex="-1"
+                style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
               >
                 <div
-                  aria-label="Mes réservations"
                   class="css-view-1dbjc4n"
-                  data-testid="Bookings tab"
-                  style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-                  tabindex="0"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                />
+                <div
+                  class="css-view-1dbjc4n"
                 >
                   <div
-                    class="css-view-1dbjc4n"
-                    style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                  />
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="display: inline-flex;"
+                    class="css-text-901oao"
+                    dir="auto"
                   >
-                    <span
-                      class="css-text-901oao css-textHasAncestor-16my406"
-                    >
-                      undefined-SVG-Mock
-                    </span>
+                    undefined-SVG-Mock
                   </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                  />
                 </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                />
               </a>
             </li>
             <li
-              class="sc-fKVqWL fhGMTR"
+              class="sc-kfPuZi iIOobr"
             >
               <a
-                class="css-reset-4rbku5 css-text-901oao"
-                dir="auto"
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                data-testid="Favorites tab"
                 href="/Favorites"
-                style="cursor: pointer;"
-                tabindex="-1"
+                style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
               >
                 <div
                   class="css-view-1dbjc4n"
-                  data-testid="Favorites tab"
-                  style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-                  tabindex="0"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                />
+                <div
+                  class="css-view-1dbjc4n"
                 >
                   <div
-                    class="css-view-1dbjc4n"
-                    style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                  />
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="display: inline-flex;"
+                    class="css-text-901oao"
+                    dir="auto"
                   >
-                    <span
-                      class="css-text-901oao css-textHasAncestor-16my406"
-                    >
-                      undefined-SVG-Mock
-                    </span>
+                    undefined-SVG-Mock
                   </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                  />
                 </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                />
               </a>
             </li>
             <li
-              class="sc-fKVqWL fhGMTR"
+              class="sc-kfPuZi iIOobr"
             >
               <a
-                class="css-reset-4rbku5 css-text-901oao"
-                dir="auto"
+                aria-label="Mon profil"
+                class="css-reset-4rbku5 css-view-1dbjc4n"
+                data-testid="Profile tab"
                 href="/Profile"
-                style="cursor: pointer;"
-                tabindex="-1"
+                style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
               >
                 <div
-                  aria-label="Mon profil"
                   class="css-view-1dbjc4n"
-                  data-testid="Profile tab"
-                  style="align-items: center; cursor: pointer; display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
-                  tabindex="0"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                />
+                <div
+                  class="css-view-1dbjc4n"
                 >
                   <div
-                    class="css-view-1dbjc4n"
-                    style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                  />
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="display: inline-flex;"
+                    class="css-text-901oao"
+                    dir="auto"
                   >
-                    <span
-                      class="css-text-901oao css-textHasAncestor-16my406"
-                    >
-                      undefined-SVG-Mock
-                    </span>
+                    undefined-SVG-Mock
                   </div>
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="display: inline-flex; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                  />
                 </div>
+                <div
+                  class="css-view-1dbjc4n"
+                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                />
               </a>
             </li>
           </ul>

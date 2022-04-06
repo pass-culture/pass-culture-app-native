@@ -1738,7 +1738,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
   >
     <button
       aria-label="Continuer vers l'étape suivante"
-      className="sc-bdvvtL dxXbal sc-dkPtRN efdTBP"
+      className="sc-bdvvtL hWVHSw sc-dkPtRN efdTBP"
       data-testid="Continuer vers l'étape suivante"
       onClick={[Function]}
       onDoubleClick={[Function]}

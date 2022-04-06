@@ -13,12 +13,12 @@ exports[`<Favorite /> component offer name should take full space if no geolocat
     <View
 -     accessibilityLabel=\\"Offre Un lit sous une rivière de la catégorie Musique,   Dès le 4 mars 2021, prix Dès 2,70 €. \\"
 +     accessibilityLabel=\\"Offre Un lit sous une rivière de la catégorie Musique, à 10 km,  Dès le 4 mars 2021, prix Dès 2,70 €. \\"
+      accessibilityRole=\\"link\\"
       accessible={true}
       collapsable={false}
       focusable={true}
       nativeID=\\"animatedComponent\\"
-      onClick={[Function onClick]}
-@@ -124,10 +124,22 @@
+@@ -125,10 +125,22 @@
                   \\"flexDirection\\": \\"row\\",
                 },
               ]
@@ -41,7 +41,7 @@ exports[`<Favorite /> component offer name should take full space if no geolocat
                 style={
                   Array [
                     Object {
-@@ -139,10 +151,39 @@
+@@ -140,10 +152,39 @@
                   ]
                 }
               >

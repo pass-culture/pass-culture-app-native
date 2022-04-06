@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { StyleSheet } from 'react-native'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
@@ -8,11 +8,11 @@ import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Clock as DefaultClock } from 'ui/svg/icons/Clock'
 import { Duo } from 'ui/svg/icons/Duo'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { Link } from 'ui/web/link/Link'
+import { getHeadingAttrs } from 'ui/theme/typography'
+import { TouchableLink } from 'ui/web/link/TouchableLink'
 
 import { getBookingProperties, getBookingLabels } from '../helpers'
 
@@ -36,11 +36,9 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
   })
 
   return (
-    <Link
-      to={{ screen: 'BookingDetails', params: { id: booking.id } }}
-      style={styles.link}
-      accessible={false}>
+    <View {...getHeadingAttrs(3)}>
       <Container
+        to={{ screen: 'BookingDetails', params: { id: booking.id } }}
         onPress={() => navigate('BookingDetails', { id: booking.id })}
         accessibilityLabel={accessibilityLabel}
         testID="OnGoingBookingItem">
@@ -60,11 +58,11 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
           )}
         </AttributesView>
       </Container>
-    </Link>
+    </View>
   )
 }
 
-const Container = styled(TouchableOpacity)({
+const Container = styled(TouchableLink)({
   paddingHorizontal: getSpacing(6),
   flexDirection: 'row',
 })
@@ -95,10 +93,3 @@ const Clock = styled(DefaultClock).attrs(({ theme }) => ({
   color: theme.colors.primary,
   size: theme.icons.sizes.extraSmall,
 }))``
-
-const styles = StyleSheet.create({
-  link: {
-    flexDirection: 'column',
-    display: 'flex',
-  },
-})

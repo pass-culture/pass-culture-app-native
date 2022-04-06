@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { ReactNode, useCallback } from 'react'
+import React, { useCallback } from 'react'
 
 import { useUserProfileInfo } from 'features/home/api'
 import { HomeOfferTile, SeeMore } from 'features/home/atoms'
@@ -16,7 +16,6 @@ import { SearchHit, useParseSearchParameters } from 'libs/search'
 import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcategories'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
-import { Link } from 'ui/web/link/Link'
 
 type OffersModuleProps = {
   search: SearchParametersFields[]
@@ -96,23 +95,15 @@ export const OffersModule = (props: OffersModuleProps) => {
   const renderFooter: RenderFooterItem = useCallback(
     ({ width, height }) => {
       return (
-        <Link to={{ screen: 'Search', params }} accessible={false}>
-          <SeeMore width={width} height={height} onPress={onPressSeeMore as () => void} />
-        </Link>
+        <SeeMore
+          to={{ screen: 'Search', params }}
+          width={width}
+          height={height}
+          onPress={onPressSeeMore as () => void}
+        />
       )
     },
     [onPressSeeMore, params]
-  )
-
-  const renderTitleSeeMore = useCallback(
-    ({ children }: { children: ReactNode }) => {
-      return (
-        <Link to={{ screen: 'Search', params }} accessible={false}>
-          {children}
-        </Link>
-      )
-    },
-    [params]
   )
 
   if (!shouldModuleBeDisplayed) return <React.Fragment />
@@ -126,7 +117,7 @@ export const OffersModule = (props: OffersModuleProps) => {
       itemWidth={itemWidth}
       coverUrl={cover}
       onPressSeeMore={onPressSeeMore}
-      renderTitleSeeMore={renderTitleSeeMore}
+      titleSeeMoreLink={{ screen: 'Search', params }}
       renderItem={renderItem}
       renderFooter={renderFooter}
       keyExtractor={keyExtractor}

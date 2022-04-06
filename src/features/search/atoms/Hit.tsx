@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import { StyleSheet } from 'react-native'
+import { View } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -15,10 +15,9 @@ import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
-import { Link } from 'ui/web/link/Link'
+import { TouchableLink } from 'ui/web/link/TouchableLink'
 interface Props {
   hit: SearchHit
   query: string
@@ -65,11 +64,12 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
   }
 
   return (
-    <Container onPress={handlePressOffer} accessibilityLabel={accessibilityLabel} testID="offerHit">
-      <Link
+    <View {...getHeadingAttrs(3)}>
+      <Container
         to={{ screen: 'Offer', params: { id: offerId, from: 'search' } }}
-        style={styles.link}
-        accessible={false}>
+        onPress={handlePressOffer}
+        accessibilityLabel={accessibilityLabel}
+        testID="offerHit">
         <OfferImage imageUrl={offer.thumbUrl} categoryId={categoryId} />
         <Spacer.Row numberOfSpaces={4} />
         <Column>
@@ -93,12 +93,12 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
           <Spacer.Column numberOfSpaces={1} />
           <Typo.Caption>{formattedPrice}</Typo.Caption>
         </Column>
-      </Link>
-    </Container>
+      </Container>
+    </View>
   )
 }
 
-const Container = styled(TouchableOpacity)({
+const Container = styled(TouchableLink)({
   marginHorizontal: getSpacing(6),
   flexDirection: 'row',
   alignItems: 'center',
@@ -108,7 +108,7 @@ const Column = styled.View({ flexDirection: 'column', flex: 1 })
 
 const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
-const Name = styled(Typo.ButtonText).attrs(getHeadingAttrs(3))``
+const Name = styled(Typo.ButtonText)``
 
 const Distance = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'right',
@@ -118,11 +118,3 @@ const Distance = styled(Typo.Body)(({ theme }) => ({
 const Body = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
-
-const styles = StyleSheet.create({
-  link: {
-    flex: 1,
-    flexDirection: 'row',
-    display: 'flex',
-  },
-})

@@ -3,9 +3,8 @@ import styled from 'styled-components/native'
 
 import { openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Typo, getSpacing, Spacer } from 'ui/theme'
-import { A } from 'ui/web/link/A'
+import { TouchableLink } from 'ui/web/link/TouchableLink'
 
 import { SocialNetwork, SocialNetworkIconsMap } from './socials/types'
 
@@ -23,21 +22,20 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
   }))``
 
   return (
-    <A href={link}>
-      <TouchableOpacity
-        onPress={() => {
-          analytics.logClickSocialNetwork(name)
-          openUrl(link, { shouldLogEvent: false, fallbackUrl: fallbackLink })
-        }}>
-        <Container>
-          <NetworkIconBox>
-            <StyledIcon />
-          </NetworkIconBox>
-          <Spacer.Column numberOfSpaces={1} />
-          <Typo.Caption numberOfLines={2}>{name}</Typo.Caption>
-        </Container>
-      </TouchableOpacity>
-    </A>
+    <TouchableLink
+      externalHref={link}
+      onPress={() => {
+        analytics.logClickSocialNetwork(name)
+        openUrl(link, { shouldLogEvent: false, fallbackUrl: fallbackLink })
+      }}>
+      <Container>
+        <NetworkIconBox>
+          <StyledIcon />
+        </NetworkIconBox>
+        <Spacer.Column numberOfSpaces={1} />
+        <Typo.Caption numberOfLines={2}>{name}</Typo.Caption>
+      </Container>
+    </TouchableLink>
   )
 }
 

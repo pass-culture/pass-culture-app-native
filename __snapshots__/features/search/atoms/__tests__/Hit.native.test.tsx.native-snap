@@ -5,76 +5,77 @@ exports[`Hit component offer name should take full space if no geolocation 1`] =
 - First value
 + Second value
 
-@@ -1,7 +1,7 @@
-  <View
--   accessibilityLabel=\\"Offre Mensch ! Où sont les Hommes ? de la catégorie Musique,   prix 0,28 €. \\"
-+   accessibilityLabel=\\"Offre Mensch ! Où sont les Hommes ? de la catégorie Musique, à 10 km,  prix 0,28 €. \\"
-    accessible={true}
-    collapsable={false}
-    focusable={true}
-    nativeID=\\"animatedComponent\\"
-    onClick={[Function onClick]}
-@@ -108,10 +108,22 @@
-              \\"flexDirection\\": \\"row\\",
-            },
-          ]
-        }
-      >
-+       <View
-+         flex={0.7}
-+         style={
-+           Array [
-+             Object {
-+               \\"flexBasis\\": 0,
-+               \\"flexGrow\\": 0.7,
-+               \\"flexShrink\\": 1,
-+             },
-+           ]
-+         }
-+       >
-          <Text
-            numberOfLines={2}
-            style={
-              Array [
-                Object {
-@@ -123,10 +135,39 @@
-              ]
-            }
-          >
-            Mensch ! Où sont les Hommes ?
-          </Text>
-+       </View>
-+       <View
-+         flex={0.3}
-+         style={
-+           Array [
-+             Object {
-+               \\"flexBasis\\": 0,
-+               \\"flexGrow\\": 0.3,
-+               \\"flexShrink\\": 1,
-+             },
-+           ]
-+         }
-+       >
-+         <Text
+@@ -1,8 +1,8 @@
+  <View>
+    <View
+-     accessibilityLabel=\\"Offre Mensch ! Où sont les Hommes ? de la catégorie Musique,   prix 0,28 €. \\"
++     accessibilityLabel=\\"Offre Mensch ! Où sont les Hommes ? de la catégorie Musique, à 10 km,  prix 0,28 €. \\"
+      accessibilityRole=\\"link\\"
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      nativeID=\\"animatedComponent\\"
+@@ -110,10 +110,22 @@
+                \\"flexDirection\\": \\"row\\",
+              },
+            ]
+          }
+        >
++         <View
++           flex={0.7}
 +           style={
 +             Array [
 +               Object {
-+                 \\"color\\": \\"#696A6F\\",
-+                 \\"fontFamily\\": \\"Montserrat-Regular\\",
-+                 \\"fontSize\\": 15,
-+                 \\"lineHeight\\": 20,
-+                 \\"textAlign\\": \\"right\\",
++                 \\"flexBasis\\": 0,
++                 \\"flexGrow\\": 0.7,
++                 \\"flexShrink\\": 1,
 +               },
 +             ]
 +           }
 +         >
-+           10 km
-+         </Text>
-+       </View>
-      </View>
-      <View
-        numberOfSpaces={1}
-        style={
-          Array ["
+            <Text
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+@@ -125,10 +137,39 @@
+                ]
+              }
+            >
+              Mensch ! Où sont les Hommes ?
+            </Text>
++         </View>
++         <View
++           flex={0.3}
++           style={
++             Array [
++               Object {
++                 \\"flexBasis\\": 0,
++                 \\"flexGrow\\": 0.3,
++                 \\"flexShrink\\": 1,
++               },
++             ]
++           }
++         >
++           <Text
++             style={
++               Array [
++                 Object {
++                   \\"color\\": \\"#696A6F\\",
++                   \\"fontFamily\\": \\"Montserrat-Regular\\",
++                   \\"fontSize\\": 15,
++                   \\"lineHeight\\": 20,
++                   \\"textAlign\\": \\"right\\",
++                 },
++               ]
++             }
++           >
++             10 km
++           </Text>
++         </View>
+        </View>
+        <View
+          numberOfSpaces={1}
+          style={
+            Array ["
 `;

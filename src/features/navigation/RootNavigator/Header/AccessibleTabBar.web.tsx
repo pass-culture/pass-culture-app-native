@@ -9,7 +9,6 @@ import { TabBarComponent } from 'features/navigation/TabBar/TabBarComponent'
 import { TabBarContainer } from 'features/navigation/TabBar/TabBarContainer'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { TabParamList, TabRouteName } from 'features/navigation/TabBar/types'
-import { Link } from 'ui/web/link/Link'
 import { Li } from 'ui/web/list/Li'
 import { Ul } from 'ui/web/list/Ul'
 
@@ -30,14 +29,13 @@ export const AccessibleTabBar = () => {
           {tabRoutes.map((route) => {
             return (
               <LinkContainer key={route.name}>
-                <Link to={{ screen: route.name, params: undefined }} accessible={false}>
-                  <TabBarComponent
-                    tabName={route.name}
-                    isSelected={route.isSelected}
-                    BicolorIcon={mapTabRouteToBicolorIcon(route.name as TabRouteName)}
-                    onPress={() => onPress(route.name)}
-                  />
-                </Link>
+                <TabBarComponent
+                  to={{ screen: route.name, params: undefined }}
+                  tabName={route.name}
+                  isSelected={route.isSelected}
+                  BicolorIcon={mapTabRouteToBicolorIcon(route.name as TabRouteName)}
+                  onPress={() => onPress(route.name)}
+                />
               </LinkContainer>
             )
           })}
