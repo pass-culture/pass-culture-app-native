@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import React, { useRef, useEffect, memo } from 'react'
 import { Animated } from 'react-native'
 import webStyled from 'styled-components'
@@ -17,7 +18,7 @@ import { Nav } from './Nav'
 const MINIMUM_BRAND_SIZE = 140
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
-export const Header = memo(function Header() {
+export const Header = memo(function Header({ mainId }: { mainId: string }) {
   const theme = useTheme()
 
   const fadeAnim = useRef({
@@ -84,6 +85,7 @@ export const Header = memo(function Header() {
   }
   return (
     <HeaderContainer>
+      <QuickAccess href={`#${mainId}`}>{t`Aller au contenu principal`}</QuickAccess>
       <LeftContainer margin={margin} isVisible={!!isDesktopOffset} style={fadeAnim}>
         {!!isBrandVisible && (
           <LogoContainer
@@ -203,3 +205,21 @@ const LogoMinistereContainer = styled.View<{ width?: number; height?: number }>(
     width,
   })
 )
+
+const QuickAccess = webStyled.a(({ theme }) => ({
+  ...theme.typography.buttonText,
+  backgroundColor: theme.colors.white,
+  zIndex: theme.zIndex.floatingButton,
+  textDecoration: 'none',
+  position: 'absolute',
+  display: 'flex',
+  textAlign: 'center',
+  alignItems: 'center',
+  width: '1px',
+  height: '1px',
+  overflow: 'hidden',
+  '&:focus': {
+    width: '100px',
+    height: theme.navTopHeight,
+  },
+}))

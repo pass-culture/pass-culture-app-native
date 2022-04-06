@@ -1,4 +1,5 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { PrivacyPolicy } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicy'
 import { NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
@@ -27,6 +28,7 @@ const RootStackNavigator = withWebWrapper(
 )
 
 export const RootNavigator: React.ComponentType = () => {
+  const mainId = uuidv4()
   const { isSplashScreenHidden } = useSplashScreenContext()
 
   const initialScreen = useInitialScreen()
@@ -36,8 +38,8 @@ export const RootNavigator: React.ComponentType = () => {
   }
   return (
     <TabNavigationStateProvider>
-      <Header />
-      <Main>
+      <Header mainId={mainId} />
+      <Main id={mainId}>
         <RootStackNavigator initialRouteName={initialScreen} />
       </Main>
       {/* The components below are those for which we do not want

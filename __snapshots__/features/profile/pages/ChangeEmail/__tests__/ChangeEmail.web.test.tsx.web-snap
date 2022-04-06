@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <header
-        class="sc-llYSUQ bwXIAE"
+        class="sc-iJKOTD iwSerl"
       >
         <div
           class="css-view-1dbjc4n"
@@ -217,7 +217,7 @@ Object {
                   />
                   <button
                     aria-label="Afficher le mot de passe"
-                    class="sc-egiyK sc-iJKOTD ktBExF ePkbTE"
+                    class="sc-egiyK sc-giYglK ktBExF gRTtPU"
                     tabindex="0"
                     type="button"
                   >
@@ -274,7 +274,7 @@ Object {
   </body>,
   "container": <div>
     <header
-      class="sc-llYSUQ bwXIAE"
+      class="sc-iJKOTD iwSerl"
     >
       <div
         class="css-view-1dbjc4n"
@@ -485,7 +485,7 @@ Object {
                 />
                 <button
                   aria-label="Afficher le mot de passe"
-                  class="sc-egiyK sc-iJKOTD ktBExF ePkbTE"
+                  class="sc-egiyK sc-giYglK ktBExF gRTtPU"
                   tabindex="0"
                   type="button"
                 >

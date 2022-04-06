@@ -203,6 +203,7 @@ Object {
       </nav>
       <main
         class="sc-gKclnd cXxSnW"
+        id="testUuidV4"
       >
         <div
           class="css-view-1dbjc4n"
@@ -432,6 +433,7 @@ Object {
     </nav>
     <main
       class="sc-gKclnd cXxSnW"
+      id="testUuidV4"
     >
       <div
         class="css-view-1dbjc4n"
