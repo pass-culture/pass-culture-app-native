@@ -12,7 +12,7 @@ import { TabParamList, TabRouteName } from 'features/navigation/TabBar/types'
 import { Li } from 'ui/web/list/Li'
 import { Ul } from 'ui/web/list/Ul'
 
-export const AccessibleTabBar = () => {
+export const AccessibleTabBar = ({ id }: { id: string }) => {
   const { tabRoutes } = useTabNavigationContext()
   const currentRoute = useCurrentRoute()
 
@@ -23,7 +23,7 @@ export const AccessibleTabBar = () => {
   }
 
   return (
-    <AccessibleTabBarContainer>
+    <AccessibleTabBarContainer id={id}>
       <TabBarContainer>
         <StyledUl>
           {tabRoutes.map((route) => {

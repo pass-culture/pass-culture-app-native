@@ -1,1 +1,1 @@
-export const AccessibleTabBar = () => null
+export const AccessibleTabBar = (_: { id: string }) => null

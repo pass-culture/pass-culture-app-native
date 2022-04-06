@@ -1,7 +1,10 @@
+import { t } from '@lingui/macro'
 import React from 'react'
+import { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { PrivacyPolicy } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicy'
+import { AccessibleTabBar } from 'features/navigation/RootNavigator/Header/AccessibleTabBar'
 import { NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
 import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
@@ -10,6 +13,7 @@ import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNaviga
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { Main } from 'ui/web/global/Main'
+import { QuickAccess } from 'ui/web/link/QuickAccess'
 
 import { Header } from './Header/Header'
 import { RootScreens } from './screens'
@@ -29,6 +33,8 @@ const RootStackNavigator = withWebWrapper(
 
 export const RootNavigator: React.ComponentType = () => {
   const mainId = uuidv4()
+  const tabBarId = uuidv4()
+  const { showTabBar } = useTheme()
   const { isSplashScreenHidden } = useSplashScreenContext()
 
   const initialScreen = useInitialScreen()
@@ -38,10 +44,15 @@ export const RootNavigator: React.ComponentType = () => {
   }
   return (
     <TabNavigationStateProvider>
-      <Header mainId={mainId} />
+      {showTabBar ? (
+        <QuickAccess href={`#${tabBarId}`} title={t`Accéder au menu de navigation`} />
+      ) : (
+        <Header mainId={mainId} />
+      )}
       <Main id={mainId}>
         <RootStackNavigator initialRouteName={initialScreen} />
       </Main>
+      {!!showTabBar && <AccessibleTabBar id={tabBarId} />}
       {/* The components below are those for which we do not want
       their rendering to happen while the splash is displayed. */}
       {!!isSplashScreenHidden && <PrivacyPolicy />}

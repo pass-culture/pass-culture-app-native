@@ -10,9 +10,9 @@ import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getShadow, getSpacing } from 'ui/theme'
+import { QuickAccess } from 'ui/web/link/QuickAccess'
 import { TouchableLink } from 'ui/web/link/TouchableLink'
 
-import { AccessibleTabBar } from './AccessibleTabBar'
 import { Nav } from './Nav'
 
 const MINIMUM_BRAND_SIZE = 140
@@ -80,12 +80,9 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isBrandVisible])
 
-  if (theme.showTabBar) {
-    return <AccessibleTabBar />
-  }
   return (
     <HeaderContainer>
-      <QuickAccess href={`#${mainId}`}>{t`Aller au contenu principal`}</QuickAccess>
+      <QuickAccess href={`#${mainId}`} title={t`Aller au contenu principal`} />
       <LeftContainer margin={margin} isVisible={!!isDesktopOffset} style={fadeAnim}>
         {!!isBrandVisible && (
           <LogoContainer
@@ -205,21 +202,3 @@ const LogoMinistereContainer = styled.View<{ width?: number; height?: number }>(
     width,
   })
 )
-
-const QuickAccess = webStyled.a(({ theme }) => ({
-  ...theme.typography.buttonText,
-  backgroundColor: theme.colors.white,
-  zIndex: theme.zIndex.floatingButton,
-  textDecoration: 'none',
-  position: 'absolute',
-  display: 'flex',
-  textAlign: 'center',
-  alignItems: 'center',
-  width: '1px',
-  height: '1px',
-  overflow: 'hidden',
-  '&:focus': {
-    width: '100px',
-    height: theme.navTopHeight,
-  },
-}))

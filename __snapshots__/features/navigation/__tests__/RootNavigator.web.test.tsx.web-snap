@@ -7,8 +7,48 @@ Object {
     tabindex="-1"
   >
     <div>
+      <a
+        class="sc-fKVqWL fETHhw"
+        href="#testUuidV4"
+      >
+        Accéder au menu de navigation
+      </a>
+      <main
+        class="sc-kfPuZi hlKpwE"
+        id="testUuidV4"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin: auto auto auto auto; width: 100%;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin: auto auto auto auto; max-width: 960px; width: 100%;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+            />
+          </div>
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%; z-index: -1;"
+          >
+            <div
+              class="css-view-1dbjc4n"
+            >
+              <div
+                class="css-text-901oao"
+                dir="auto"
+              >
+                undefined-SVG-Mock
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
       <nav
-        class="sc-hGPBjI KRFRT"
+        class="sc-dJjYzT gjGOkS"
+        id="testUuidV4"
       >
         <div
           class="css-view-1dbjc4n"
@@ -23,10 +63,10 @@ Object {
               style="width: 16px;"
             />
             <ul
-              class="sc-iqseJM sc-dlVxhl jShZCC oOosY"
+              class="sc-kDTinF sc-hGPBjI dawiYh bRjemw"
             >
               <li
-                class="sc-kfPuZi iIOobr"
+                class="sc-dlVxhl dvuzDi"
               >
                 <a
                   aria-label="Accueil"
@@ -71,7 +111,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-kfPuZi iIOobr"
+                class="sc-dlVxhl dvuzDi"
               >
                 <a
                   aria-label="Rechercher des offres"
@@ -101,7 +141,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-kfPuZi iIOobr"
+                class="sc-dlVxhl dvuzDi"
               >
                 <a
                   aria-label="Mes réservations"
@@ -131,7 +171,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-kfPuZi iIOobr"
+                class="sc-dlVxhl dvuzDi"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -160,7 +200,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-kfPuZi iIOobr"
+                class="sc-dlVxhl dvuzDi"
               >
                 <a
                   aria-label="Mon profil"
@@ -201,44 +241,51 @@ Object {
           />
         </div>
       </nav>
-      <main
-        class="sc-gKclnd cXxSnW"
-        id="testUuidV4"
-      >
-        <div
-          class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin: auto auto auto auto; width: 100%;"
-        >
-          <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin: auto auto auto auto; max-width: 960px; width: 100%;"
-          >
-            <div
-              class="css-view-1dbjc4n"
-            />
-          </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%; z-index: -1;"
-          >
-            <div
-              class="css-view-1dbjc4n"
-            >
-              <div
-                class="css-text-901oao"
-                dir="auto"
-              >
-                undefined-SVG-Mock
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
     </div>
   </body>,
   "container": <div>
+    <a
+      class="sc-fKVqWL fETHhw"
+      href="#testUuidV4"
+    >
+      Accéder au menu de navigation
+    </a>
+    <main
+      class="sc-kfPuZi hlKpwE"
+      id="testUuidV4"
+    >
+      <div
+        class="css-view-1dbjc4n"
+        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin: auto auto auto auto; width: 100%;"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin: auto auto auto auto; max-width: 960px; width: 100%;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+          />
+        </div>
+        <div
+          class="css-view-1dbjc4n"
+          style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%; z-index: -1;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+            >
+              undefined-SVG-Mock
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
     <nav
-      class="sc-hGPBjI KRFRT"
+      class="sc-dJjYzT gjGOkS"
+      id="testUuidV4"
     >
       <div
         class="css-view-1dbjc4n"
@@ -253,10 +300,10 @@ Object {
             style="width: 16px;"
           />
           <ul
-            class="sc-iqseJM sc-dlVxhl jShZCC oOosY"
+            class="sc-kDTinF sc-hGPBjI dawiYh bRjemw"
           >
             <li
-              class="sc-kfPuZi iIOobr"
+              class="sc-dlVxhl dvuzDi"
             >
               <a
                 aria-label="Accueil"
@@ -301,7 +348,7 @@ Object {
               </a>
             </li>
             <li
-              class="sc-kfPuZi iIOobr"
+              class="sc-dlVxhl dvuzDi"
             >
               <a
                 aria-label="Rechercher des offres"
@@ -331,7 +378,7 @@ Object {
               </a>
             </li>
             <li
-              class="sc-kfPuZi iIOobr"
+              class="sc-dlVxhl dvuzDi"
             >
               <a
                 aria-label="Mes réservations"
@@ -361,7 +408,7 @@ Object {
               </a>
             </li>
             <li
-              class="sc-kfPuZi iIOobr"
+              class="sc-dlVxhl dvuzDi"
             >
               <a
                 class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -390,7 +437,7 @@ Object {
               </a>
             </li>
             <li
-              class="sc-kfPuZi iIOobr"
+              class="sc-dlVxhl dvuzDi"
             >
               <a
                 aria-label="Mon profil"
@@ -431,39 +478,6 @@ Object {
         />
       </div>
     </nav>
-    <main
-      class="sc-gKclnd cXxSnW"
-      id="testUuidV4"
-    >
-      <div
-        class="css-view-1dbjc4n"
-        style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin: auto auto auto auto; width: 100%;"
-      >
-        <div
-          class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin: auto auto auto auto; max-width: 960px; width: 100%;"
-        >
-          <div
-            class="css-view-1dbjc4n"
-          />
-        </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="height: 100%; left: 0px; position: absolute; top: 0px; width: 100%; z-index: -1;"
-        >
-          <div
-            class="css-view-1dbjc4n"
-          >
-            <div
-              class="css-text-901oao"
-              dir="auto"
-            >
-              undefined-SVG-Mock
-            </div>
-          </div>
-        </div>
-      </div>
-    </main>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
