@@ -198,6 +198,7 @@ exports[`ProfileHeader should display the LoggedOutHeader if no user 1`] = `
       </Text>
       <View
         accessibilityLabel="Connecte-toi"
+        accessibilityRole="link"
         accessible={true}
         collapsable={false}
         focusable={true}

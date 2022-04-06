@@ -18,10 +18,9 @@ import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityL
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
-import { Link } from 'ui/web/link/Link'
+import { TouchableLink } from 'ui/web/link/TouchableLink'
 
 import { BookingButton } from './BookingButton'
 
@@ -124,6 +123,7 @@ export const Favorite: React.FC<Props> = (props) => {
 
   return (
     <Animated.View
+      {...getHeadingAttrs(3)}
       onLayout={onLayout}
       style={{
         opacity: animatedOpacity,
@@ -135,38 +135,35 @@ export const Favorite: React.FC<Props> = (props) => {
           : undefined,
       }}>
       <Container
+        to={{ screen: 'Offer', params: { id: offer.id, from: 'favorites' } }}
         onPress={handlePressOffer}
         accessibilityLabel={accessibilityLabel}
         testID="favorite">
-        <Link
-          to={{ screen: 'Offer', params: { id: offer.id, from: 'favorites' } }}
-          accessible={false}>
-          <Row>
-            <OfferImage imageUrl={offer.image?.url} categoryId={categoryId} />
-            <Spacer.Row numberOfSpaces={4} />
-            <Column>
-              <Row>
-                {distanceToOffer ? (
-                  <React.Fragment>
-                    <Spacer.Flex flex={0.7}>
-                      <Name numberOfLines={2}>{offer.name}</Name>
-                    </Spacer.Flex>
-                    <Spacer.Flex flex={0.3}>
-                      <Distance>{distanceToOffer}</Distance>
-                    </Spacer.Flex>
-                  </React.Fragment>
-                ) : (
-                  <Name numberOfLines={2}>{offer.name}</Name>
-                )}
-              </Row>
-              <Spacer.Column numberOfSpaces={1} />
-              <Body>{searchGroupLabel}</Body>
-              {!!formattedDate && <Body>{formattedDate}</Body>}
-              <Spacer.Column numberOfSpaces={1} />
-              <Typo.Caption>{displayPrice}</Typo.Caption>
-            </Column>
-          </Row>
-        </Link>
+        <Row>
+          <OfferImage imageUrl={offer.image?.url} categoryId={categoryId} />
+          <Spacer.Row numberOfSpaces={4} />
+          <Column>
+            <Row>
+              {distanceToOffer ? (
+                <React.Fragment>
+                  <Spacer.Flex flex={0.7}>
+                    <Name numberOfLines={2}>{offer.name}</Name>
+                  </Spacer.Flex>
+                  <Spacer.Flex flex={0.3}>
+                    <Distance>{distanceToOffer}</Distance>
+                  </Spacer.Flex>
+                </React.Fragment>
+              ) : (
+                <Name numberOfLines={2}>{offer.name}</Name>
+              )}
+            </Row>
+            <Spacer.Column numberOfSpaces={1} />
+            <Body>{searchGroupLabel}</Body>
+            {!!formattedDate && <Body>{formattedDate}</Body>}
+            <Spacer.Column numberOfSpaces={1} />
+            <Typo.Caption>{displayPrice}</Typo.Caption>
+          </Column>
+        </Row>
       </Container>
       <ButtonsRow>
         <ButtonContainer>
@@ -190,7 +187,7 @@ export const Favorite: React.FC<Props> = (props) => {
 
 const imageWidth = getSpacing(16)
 
-const Container = styled(TouchableOpacity)({
+const Container = styled(TouchableLink)({
   marginHorizontal: getSpacing(6),
 })
 
@@ -216,7 +213,7 @@ const ButtonsRow = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(6),
 }))
 
-const Name = styled(Typo.ButtonText).attrs(() => getHeadingAttrs(3))``
+const Name = styled(Typo.ButtonText)``
 
 const Distance = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'right',

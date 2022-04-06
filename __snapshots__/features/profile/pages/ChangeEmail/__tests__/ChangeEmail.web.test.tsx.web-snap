@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <header
-        class="sc-iJKOTD iwSerl"
+        class="sc-llYSUQ bwXIAE"
       >
         <div
           class="css-view-1dbjc4n"
@@ -108,7 +108,7 @@ Object {
             style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           >
             <form
-              class="sc-ieecCq YlweM"
+              class="sc-bkkeKt iTSBbs"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -217,7 +217,7 @@ Object {
                   />
                   <button
                     aria-label="Afficher le mot de passe"
-                    class="sc-bqiRlB sc-giYglK bwzKSK gRTtPU"
+                    class="sc-egiyK sc-iJKOTD ktBExF ePkbTE"
                     tabindex="0"
                     type="button"
                   >
@@ -248,7 +248,7 @@ Object {
               >
                 <button
                   aria-label="Enregistrer les modifications"
-                  class="sc-gsDKAQ hDLits sc-eCImPb cYRLFR"
+                  class="sc-gsDKAQ gFcuOJ sc-eCImPb cYRLFR"
                   data-testid="Enregistrer les modifications"
                   disabled=""
                   type="button"
@@ -274,7 +274,7 @@ Object {
   </body>,
   "container": <div>
     <header
-      class="sc-iJKOTD iwSerl"
+      class="sc-llYSUQ bwXIAE"
     >
       <div
         class="css-view-1dbjc4n"
@@ -376,7 +376,7 @@ Object {
           style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         >
           <form
-            class="sc-ieecCq YlweM"
+            class="sc-bkkeKt iTSBbs"
           >
             <div
               class="css-view-1dbjc4n"
@@ -485,7 +485,7 @@ Object {
                 />
                 <button
                   aria-label="Afficher le mot de passe"
-                  class="sc-bqiRlB sc-giYglK bwzKSK gRTtPU"
+                  class="sc-egiyK sc-iJKOTD ktBExF ePkbTE"
                   tabindex="0"
                   type="button"
                 >
@@ -516,7 +516,7 @@ Object {
             >
               <button
                 aria-label="Enregistrer les modifications"
-                class="sc-gsDKAQ hDLits sc-eCImPb cYRLFR"
+                class="sc-gsDKAQ gFcuOJ sc-eCImPb cYRLFR"
                 data-testid="Enregistrer les modifications"
                 disabled=""
                 type="button"

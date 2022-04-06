@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { NativeScrollEvent, ScrollView, StyleSheet } from 'react-native'
+import { NativeScrollEvent, ScrollView } from 'react-native'
 import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -36,8 +36,6 @@ import { SignOut } from 'ui/svg/icons/SignOut'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
-import { A } from 'ui/web/link/A'
-import { Link } from 'ui/web/link/Link'
 import { Li } from 'ui/web/list/Li'
 import { Ul, VerticalUl } from 'ui/web/list/Ul'
 
@@ -126,45 +124,33 @@ export const Profile: React.FC = () => {
             {!!isLoggedIn && (
               <React.Fragment>
                 <Li>
-                  <Link
+                  <Row
+                    title={t`Informations personnelles`}
+                    type="navigable"
                     to={{ screen: 'PersonalData', params: undefined }}
-                    style={styles.link}
-                    accessible={false}>
-                    <Row
-                      title={t`Informations personnelles`}
-                      type="navigable"
-                      onPress={() => navigate('PersonalData')}
-                      icon={ProfileIcon}
-                    />
-                  </Link>
+                    onPress={() => navigate('PersonalData')}
+                    icon={ProfileIcon}
+                  />
                 </Li>
                 <Li>
-                  <Link
+                  <Row
+                    title={t`Mot de passe`}
+                    type="navigable"
                     to={{ screen: 'ChangePassword', params: undefined }}
-                    style={styles.link}
-                    accessible={false}>
-                    <Row
-                      title={t`Mot de passe`}
-                      type="navigable"
-                      onPress={() => navigate('ChangePassword')}
-                      icon={Lock}
-                    />
-                  </Link>
+                    onPress={() => navigate('ChangePassword')}
+                    icon={Lock}
+                  />
                 </Li>
               </React.Fragment>
             )}
             <Li>
-              <Link
+              <Row
+                type="navigable"
+                title={t`Notifications`}
+                icon={Bell}
                 to={{ screen: 'NotificationSettings', params: undefined }}
-                style={styles.link}
-                accessible={false}>
-                <Row
-                  type="navigable"
-                  title={t`Notifications`}
-                  icon={Bell}
-                  onPress={() => navigate('NotificationSettings')}
-                />
-              </Link>
+                onPress={() => navigate('NotificationSettings')}
+              />
             </Li>
             <Li>
               <SectionWithSwitch
@@ -191,67 +177,53 @@ export const Profile: React.FC = () => {
         <Section title={t`Aides`}>
           <VerticalUl>
             <Li>
-              <Link
+              <Row
+                title={t`Comment ça marche\u00a0?`}
+                type="navigable"
                 to={{ screen: 'FirstTutorial', params: { shouldCloseAppOnBackAction: false } }}
-                style={styles.link}
-                accessible={false}>
-                <Row
-                  title={t`Comment ça marche\u00a0?`}
-                  type="navigable"
-                  onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
-                  icon={LifeBuoy}
-                />
-              </Link>
+                onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
+                icon={LifeBuoy}
+              />
             </Li>
             <Li>
-              <A href={env.FAQ_LINK}>
-                <Row
-                  title={t`Centre d'aide`}
-                  type="clickable"
-                  onPress={() => openUrl(env.FAQ_LINK)}
-                  icon={ExternalSite}
-                />
-              </A>
+              <Row
+                title={t`Centre d'aide`}
+                type="clickable"
+                externalHref={env.FAQ_LINK}
+                onPress={() => openUrl(env.FAQ_LINK)}
+                icon={ExternalSite}
+              />
             </Li>
           </VerticalUl>
         </Section>
         <Section title={t`Autres`}>
           <VerticalUl>
             <Li>
-              <A href={env.ACCESSIBILITY_LINK}>
-                <Row
-                  title={t`Accessibilité`}
-                  type="clickable"
-                  onPress={() => openUrl(env.ACCESSIBILITY_LINK)}
-                  icon={ExternalSite}
-                />
-              </A>
+              <Row
+                title={t`Accessibilité`}
+                type="clickable"
+                externalHref={env.ACCESSIBILITY_LINK}
+                onPress={() => openUrl(env.ACCESSIBILITY_LINK)}
+                icon={ExternalSite}
+              />
             </Li>
             <Li>
-              <Link
+              <Row
+                title={t`Mentions légales`}
+                type="navigable"
                 to={{ screen: 'LegalNotices', params: undefined }}
-                style={styles.link}
-                accessible={false}>
-                <Row
-                  title={t`Mentions légales`}
-                  type="navigable"
-                  onPress={() => navigate('LegalNotices')}
-                  icon={LegalNotices}
-                />
-              </Link>
+                onPress={() => navigate('LegalNotices')}
+                icon={LegalNotices}
+              />
             </Li>
             <Li>
-              <Link
+              <Row
+                title={t`Confidentialité`}
+                type="navigable"
                 to={{ screen: 'ConsentSettings', params: undefined }}
-                style={styles.link}
-                accessible={false}>
-                <Row
-                  title={t`Confidentialité`}
-                  type="navigable"
-                  onPress={() => navigate('ConsentSettings')}
-                  icon={Confidentiality}
-                />
-              </Link>
+                onPress={() => navigate('ConsentSettings')}
+                icon={Confidentiality}
+              />
             </Li>
           </VerticalUl>
         </Section>
@@ -335,11 +307,4 @@ const StyledUl = webStyled(Ul)({
 
 const SignOutRow = styled(SectionRow).attrs({ iconSize: SECTION_ROW_ICON_SIZE })({
   marginTop: getSpacing(4),
-})
-
-const styles = StyleSheet.create({
-  link: {
-    flexDirection: 'column',
-    display: 'flex',
-  },
 })

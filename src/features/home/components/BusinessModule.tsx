@@ -13,6 +13,7 @@ import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Idea } from 'ui/svg/icons/Idea'
 import { Typo, getSpacing, MARGIN_DP, LENGTH_XS, RATIO_BUSINESS, Spacer } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
+import { TouchableLink } from 'ui/web/link/TouchableLink'
 
 import { fillUrlEmail, shouldUrlBeFilled, showBusinessModule } from './BusinessModule.utils'
 
@@ -58,7 +59,10 @@ export const BusinessModule = ({ module }: { module: BusinessPane }) => {
   return (
     <Row>
       <Spacer.Row numberOfSpaces={6} />
-      <TouchableHighlight
+      <StyledTouchableLink
+        highlight
+        accessibilityRole={isDisabled ? 'link' : undefined}
+        externalHref={url && shouldUrlBeFilled(url) && user ? fillUrlEmail(url, user.email) : url}
         onPress={() => setShouldRedirect(true)}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
@@ -86,7 +90,7 @@ export const BusinessModule = ({ module }: { module: BusinessPane }) => {
             </Container>
           </ImageBackground>
         </ImageContainer>
-      </TouchableHighlight>
+      </StyledTouchableLink>
       <Spacer.Row numberOfSpaces={6} />
     </Row>
   )
@@ -97,12 +101,10 @@ const Row = styled.View({
   paddingBottom: getSpacing(6),
 })
 
-const TouchableHighlight = styled.TouchableHighlight<{ isFocus?: boolean }>(
-  ({ theme, isFocus }) => ({
-    borderRadius: theme.borderRadius.radius,
-    ...customFocusOutline(theme, undefined, isFocus),
-  })
-)
+const StyledTouchableLink = styled(TouchableLink)<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
+  borderRadius: theme.borderRadius.radius,
+  ...customFocusOutline(theme, undefined, isFocus),
+}))
 
 const ImageContainer = styled.View(({ theme }) => ({
   borderRadius: theme.borderRadius.radius,

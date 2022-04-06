@@ -67,7 +67,6 @@ const gradientButtonStyles = ({ theme }: { theme: DefaultTheme }) => ({
   justifyContent: 'center',
   alignItems: 'center',
   border: 0,
-  textDecoration: 'none',
   ['&:disabled']: {
     cursor: 'initial',
     background: 'none',
@@ -78,7 +77,11 @@ const gradientButtonStyles = ({ theme }: { theme: DefaultTheme }) => ({
 })
 
 const Button = styled.button(gradientButtonStyles)
-const Link = styled.a(gradientButtonStyles)
+const Link = styled.a(({ theme }) => ({
+  ...gradientButtonStyles({ theme }),
+  textDecoration: 'none',
+  boxSizing: 'border-box',
+}))
 
 const Title = styledNative(Typo.ButtonText)<{ isDisabled: boolean }>(({ isDisabled, theme }) => ({
   color: isDisabled

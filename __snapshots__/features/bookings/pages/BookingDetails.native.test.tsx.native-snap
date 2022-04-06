@@ -611,6 +611,7 @@ exports[`BookingDetails should render correctly 1`] = `
           />
           <View
             accessibilityLabel="Date: Le 15 mars 2021 à 20h00"
+            accessibilityRole="link"
             accessibilityState={
               Object {
                 "disabled": true,
@@ -618,7 +619,7 @@ exports[`BookingDetails should render correctly 1`] = `
             }
             accessible={true}
             collapsable={false}
-            focusable={false}
+            focusable={true}
             nativeID="animatedComponent"
             onClick={[Function]}
             onResponderGrant={[Function]}

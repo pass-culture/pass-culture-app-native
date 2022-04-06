@@ -36,7 +36,6 @@ import { Separator } from 'ui/components/Separator'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
 import { Helmet } from 'ui/web/global/Helmet'
-import { A } from 'ui/web/link/A'
 const getOfferRules = (
   properties: BookingProperties,
   activationCodeFeatureEnabled?: boolean
@@ -182,9 +181,10 @@ export function BookingDetails() {
               <Spacer.Column numberOfSpaces={4} />
               <Separator />
               <Spacer.Column numberOfSpaces={4} />
-              <A href={address ? getGoogleMapsItineraryUrl(address) : undefined}>
-                <SeeItineraryButton openItinerary={openItinerary} />
-              </A>
+              <SeeItineraryButton
+                externalHref={address ? getGoogleMapsItineraryUrl(address) : undefined}
+                openItinerary={openItinerary}
+              />
             </React.Fragment>
           )}
           {!!offer.withdrawalDetails && (

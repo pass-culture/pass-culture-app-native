@@ -38,6 +38,7 @@ Array [
   />,
   <View
     accessibilityLabel="Lieu Le Petit Rintintin 1"
+    accessibilityRole="link"
     accessible={true}
     collapsable={false}
     focusable={true}
@@ -306,7 +307,7 @@ exports[`WhereSection should render correctly 2`] = `
 - First value
 + Second value
 
-@@ -31,10 +31,120 @@
+@@ -31,10 +31,121 @@
             \\"height\\": 16,
           },
         ]
@@ -314,6 +315,7 @@ exports[`WhereSection should render correctly 2`] = `
     />,
 +   <View
 +     accessibilityLabel=\\"Lieu Le Petit Rintintin 1\\"
++     accessibilityRole=\\"link\\"
 +     accessible={true}
 +     collapsable={false}
 +     focusable={true}

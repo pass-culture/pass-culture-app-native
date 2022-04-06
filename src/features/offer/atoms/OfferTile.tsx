@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
-import { PixelRatio, StyleSheet, View } from 'react-native'
+import { PixelRatio, View } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -22,7 +22,7 @@ import { OfferCaption } from 'ui/components/OfferCaption'
 import { getSpacing, MARGIN_DP } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typography'
-import { Link } from 'ui/web/link/Link'
+import { TouchableLink } from 'ui/web/link/TouchableLink'
 
 export interface OfferTileProps {
   categoryId: CategoryIdEnum | null | undefined
@@ -106,44 +106,41 @@ export function OfferTile(props: OfferTileProps) {
 
   return (
     <View {...getHeadingAttrs(3)}>
-      <TouchableHighlight
+      <StyledTouchableLink
+        highlight
         height={height + MAX_OFFER_CAPTION_HEIGHT}
+        to={{ screen: 'Offer', params: { id: offerId, from: analyticsFrom, moduleName } }}
         onPress={handlePressOffer}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         isFocus={isFocus}
         testID={`offre ${name}`}
         accessibilityLabel={accessibilityLabel}>
-        <Link
-          to={{ screen: 'Offer', params: { id: offerId, from: analyticsFrom, moduleName } }}
-          style={styles.link}
-          accessible={false}>
-          <Container>
-            <OfferCaption
-              imageWidth={width}
-              name={name}
-              date={date}
-              isDuo={isDuo}
-              isBeneficiary={isBeneficiary}
-              price={price}
+        <Container>
+          <OfferCaption
+            imageWidth={width}
+            name={name}
+            date={date}
+            isDuo={isDuo}
+            isBeneficiary={isBeneficiary}
+            price={price}
+          />
+          <View>
+            <ImageTile
+              width={width}
+              height={height - IMAGE_CAPTION_HEIGHT}
+              uri={offer.thumbUrl}
+              onlyTopBorderRadius
             />
-            <View>
-              <ImageTile
-                width={width}
-                height={height - IMAGE_CAPTION_HEIGHT}
-                uri={offer.thumbUrl}
-                onlyTopBorderRadius
-              />
-              <ImageCaption
-                height={IMAGE_CAPTION_HEIGHT}
-                width={width}
-                categoryLabel={categoryLabel}
-                distance={distance}
-              />
-            </View>
-          </Container>
-        </Link>
-      </TouchableHighlight>
+            <ImageCaption
+              height={IMAGE_CAPTION_HEIGHT}
+              width={width}
+              categoryLabel={categoryLabel}
+              distance={distance}
+            />
+          </View>
+        </Container>
+      </StyledTouchableLink>
     </View>
   )
 }
@@ -153,7 +150,7 @@ const MAX_OFFER_CAPTION_HEIGHT = getSpacing(18)
 
 const Container = styled.View({ flexDirection: 'column-reverse' })
 
-const TouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => ({
+const StyledTouchableLink = styled(TouchableLink).attrs(({ theme }) => ({
   underlayColor: theme.colors.white,
 }))<{ height: number; isFocus?: boolean }>(({ height, theme, isFocus }) => ({
   marginVertical: theme.outline.width + theme.outline.offSet,
@@ -161,10 +158,3 @@ const TouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => ({
   maxHeight: height,
   ...customFocusOutline(theme, undefined, isFocus),
 }))
-
-const styles = StyleSheet.create({
-  link: {
-    flexDirection: 'column',
-    display: 'flex',
-  },
-})

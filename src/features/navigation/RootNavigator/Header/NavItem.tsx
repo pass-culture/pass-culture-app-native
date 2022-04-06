@@ -2,33 +2,37 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { menu } from 'features/navigation/TabBar/routes'
-import { TabRouteName } from 'features/navigation/TabBar/types'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { TabParamList, TabRouteName } from 'features/navigation/TabBar/types'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
+import { TouchableLink } from 'ui/web/link/TouchableLink'
+import { To } from 'ui/web/link/types'
 
 interface NavItemInterface {
   isSelected?: boolean
   BicolorIcon: React.FC<BicolorIconInterface>
+  to: To<TabParamList, keyof TabParamList>
   onPress: () => void
   tabName: TabRouteName
 }
 
 export const NavItem: React.FC<NavItemInterface> = ({
   BicolorIcon,
+  to,
   onPress,
   tabName,
   isSelected,
 }) => (
-  <StyledTouchableOpacity
+  <StyledTouchableLink
     isSelected={isSelected}
+    to={to}
     onPress={onPress}
     activeOpacity={1}
     testID={`${tabName} nav`}>
     <StyledIcon as={BicolorIcon} selected={isSelected} />
     <Title isSelected={isSelected}>{menu[tabName].displayName}</Title>
-  </StyledTouchableOpacity>
+  </StyledTouchableLink>
 )
 
 const StyledIcon = styled(BicolorLogo).attrs<{ selected?: boolean }>(({ theme, selected }) => ({
@@ -37,13 +41,14 @@ const StyledIcon = styled(BicolorLogo).attrs<{ selected?: boolean }>(({ theme, s
   thin: !selected,
 }))<{ selected?: boolean }>``
 
-const StyledTouchableOpacity = styled(TouchableOpacity)<{ isSelected?: boolean }>(
+const StyledTouchableLink = styled(TouchableLink)<{ isSelected?: boolean }>(
   ({ theme, isSelected }) => ({
     flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
     height: getSpacing(11),
     paddingHorizontal: getSpacing(4),
+    outlineOffset: 0,
     borderWidth: 1,
     borderColor: isSelected ? theme.uniqueColors.brand : theme.colors.transparent,
     borderRadius: theme.borderRadius.button * 2,

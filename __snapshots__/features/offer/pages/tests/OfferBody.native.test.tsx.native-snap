@@ -750,6 +750,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
       />
       <View
         accessibilityLabel="Lieu Cinéma de la fin"
+        accessibilityRole="link"
         accessible={true}
         focusable={true}
         onClick={[Function]}

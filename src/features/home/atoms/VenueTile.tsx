@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { View } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
@@ -17,7 +17,7 @@ import { ImageTile } from 'ui/components/ImageTile'
 import { getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typography'
-import { Link } from 'ui/web/link/Link'
+import { TouchableLink } from 'ui/web/link/TouchableLink'
 export interface VenueTileProps {
   venue: VenueHit
   width: number
@@ -51,30 +51,26 @@ export const VenueTile = (props: VenueTileProps) => {
 
   return (
     <View {...getHeadingAttrs(3)}>
-      <TouchableHighlight
+      <StyledTouchableLink
         height={height + MAX_VENUE_CAPTION_HEIGHT}
         width={width}
+        to={{ screen: 'Venue', params: { id: venue.id } }}
         onPress={handlePressVenue}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}
         isFocus={isFocus}
         accessibilityLabel={accessibilityLabel}
         testID="venueTile">
-        <Link
-          to={{ screen: 'Venue', params: { id: venue.id } }}
-          style={styles.link}
-          accessible={false}>
-          <Container>
-            <VenueCaption
-              width={width}
-              name={venue.name}
-              venueType={venue.venueTypeCode || null}
-              distance={distance}
-            />
-            <ImageTile width={width} height={height} uri={venue.bannerUrl} />
-          </Container>
-        </Link>
-      </TouchableHighlight>
+        <Container>
+          <VenueCaption
+            width={width}
+            name={venue.name}
+            venueType={venue.venueTypeCode || null}
+            distance={distance}
+          />
+          <ImageTile width={width} height={height} uri={venue.bannerUrl} />
+        </Container>
+      </StyledTouchableLink>
     </View>
   )
 }
@@ -83,7 +79,7 @@ const MAX_VENUE_CAPTION_HEIGHT = getSpacing(18)
 
 const Container = styled.View({ flexDirection: 'column-reverse' })
 
-const TouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => ({
+const StyledTouchableLink = styled(TouchableLink).attrs(({ theme }) => ({
   underlayColor: theme.colors.white,
 }))<{
   height: number
@@ -96,10 +92,3 @@ const TouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => ({
   borderRadius: theme.borderRadius.radius,
   ...customFocusOutline(theme, undefined, isFocus),
 }))
-
-const styles = StyleSheet.create({
-  link: {
-    flexDirection: 'column-reverse',
-    display: 'flex',
-  },
-})
