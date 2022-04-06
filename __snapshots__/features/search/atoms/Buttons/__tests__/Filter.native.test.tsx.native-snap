@@ -2,7 +2,7 @@
 
 exports[`Filter component should render correctly 1`] = `
 <View
-  accessible={true}
+  accessible={false}
   collapsable={false}
   focusable={true}
   nativeID="animatedComponent"

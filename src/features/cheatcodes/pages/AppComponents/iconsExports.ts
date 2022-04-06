@@ -69,6 +69,7 @@ import { Plus } from 'ui/svg/icons/Plus'
 import { Profile } from 'ui/svg/icons/Profile'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Quote } from 'ui/svg/icons/Quote'
+import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
 import { Share } from 'ui/svg/icons/Share'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { SMSFilled } from 'ui/svg/icons/SMSFilled'
@@ -188,6 +189,7 @@ export const SecondaryAndBiggerIcons = {
   Profile,
   ProfileDeletion,
   Quote,
+  ScrollToTop,
   SignOut,
   Share,
   Sun,

@@ -8,12 +8,14 @@ import styled from 'styled-components/native'
 import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
 import { Filter } from 'features/search/atoms/Buttons'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch'
+import { ScrollToTopButton } from 'features/search/components/ScrollToTopButton'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
 import { analytics } from 'libs/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { SearchHit } from 'libs/search'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
+import { useHeaderTransition as useOpacityTransition } from 'ui/components/headers/animationHelpers'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'ui/components/placeholders/Placeholders'
 import { More } from 'ui/svg/icons/More'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -41,6 +43,8 @@ export const SearchResults: React.FC = () => {
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
+
+  const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
@@ -157,10 +161,22 @@ export const SearchResults: React.FC = () => {
           onEndReached={autoScrollEnabled ? onEndReached : undefined}
           scrollEnabled={nbHits > 0}
           ListEmptyComponent={ListEmptyComponent}
+          onScroll={onScroll}
           keyboardShouldPersistTaps="handled"
           keyboardDismissMode="on-drag"
         />
       </Container>
+      {nbHits > 0 && (
+        <ScrollToTopContainer>
+          <ScrollToTopButton
+            transition={scrollButtonTransition}
+            onPress={() => {
+              flatListRef.current?.scrollToOffset({ offset: 0 })
+            }}
+          />
+          <Spacer.BottomScreen />
+        </ScrollToTopContainer>
+      )}
     </React.Fragment>
   )
 }
@@ -185,6 +201,10 @@ const FilterContainer = styled.View(({ theme }) => ({
   bottom: theme.tabBarHeight + getSpacing(6),
   zIndex: theme.zIndex.floatingButton,
 }))
+
+const ScrollToTopContainer = styled(FilterContainer)({
+  right: getSpacing(7),
+})
 
 const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => ({
   key: index.toString(),

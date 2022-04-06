@@ -220,6 +220,7 @@ exports[`Search component should render correctly 1`] = `
         onStartShouldSetResponder={[Function]}
         style={
           Object {
+            "alignItems": "center",
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -345,6 +346,7 @@ exports[`Search component should render correctly 1`] = `
         onStartShouldSetResponder={[Function]}
         style={
           Object {
+            "alignItems": "center",
             "opacity": 1,
             "userSelect": "auto",
           }
