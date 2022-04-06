@@ -8,7 +8,9 @@ export const setGenericPassword = jest.fn(async function () {
   return result
 })
 
-export const getGenericPassword = jest.fn(async function () {
+export const getGenericPassword = jest.fn(async function (): Promise<
+  Keychain.UserCredentials | false
+> {
   const credentials: Keychain.UserCredentials = {
     username: 'username',
     password: 'password',
