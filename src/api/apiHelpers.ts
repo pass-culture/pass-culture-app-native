@@ -2,7 +2,7 @@
 import { t } from '@lingui/macro'
 
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import { Headers, FailedToRefreshAccessTokenError, FailedToGetRefreshTokenError } from 'libs/fetch'
+import { Headers, FailedToRefreshAccessTokenError } from 'libs/fetch'
 import { decodeAccessToken } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
@@ -73,7 +73,11 @@ export const safeFetch = async (
   // If the token is expired, we refresh it before calling the backend
   if (tokenContent && tokenContent.exp * 1000 <= new Date().getTime()) {
     try {
-      const { result: newAccessToken } = await refreshAccessToken(api)
+      const { result: newAccessToken, error } = await refreshAccessToken(api)
+
+      if (error) {
+        return Promise.resolve(NeedsAuthenticationResponse)
+      }
 
       runtimeOptions = {
         ...runtimeOptions,
@@ -93,9 +97,10 @@ export const safeFetch = async (
   return await fetch(url, runtimeOptions)
 }
 
-type Result = {
-  result: string
-}
+const FAILED_TO_GET_REFRESH_TOKEN_ERROR = 'Erreur lors de la récupération du refresh token'
+type Result =
+  | { result: string; error?: never }
+  | { result?: never; error: typeof FAILED_TO_GET_REFRESH_TOKEN_ERROR }
 
 /**
  * Calls Api to refresh the access token using the in-keychain stored refresh token
@@ -107,7 +112,7 @@ export const refreshAccessToken = async (api: DefaultApi): Promise<Result> => {
 
   // if not connected, we also redirect to the login page
   if (refreshToken == null) {
-    throw new FailedToGetRefreshTokenError()
+    return { error: FAILED_TO_GET_REFRESH_TOKEN_ERROR }
   }
   try {
     const response = await api.postnativev1refreshAccessToken({

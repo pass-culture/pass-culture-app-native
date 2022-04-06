@@ -50,7 +50,9 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
         // refreshAccessToken calls the backend to get a new access token
         // and also saves it to the storage
         const { result } = await refreshAccessToken(api)
-        accessToken = result
+        if (result) {
+          accessToken = result
+        }
       }
 
       if (getAccessTokenStatus(accessToken) === 'valid') {
