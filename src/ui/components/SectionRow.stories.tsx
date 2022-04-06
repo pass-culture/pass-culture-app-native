@@ -8,7 +8,7 @@ import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
 
 export default {
-  title: 'ui/SectionRow',
+  title: 'ui/sections/SectionRow',
   component: SectionRow,
   argTypes: {
     icon: selectArgTypeFromObject({
