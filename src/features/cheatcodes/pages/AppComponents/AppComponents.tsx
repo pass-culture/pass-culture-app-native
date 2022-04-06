@@ -17,7 +17,6 @@ import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiary
 import { SubscriptionMessageBadge } from 'features/profile/components/SubscriptionMessageBadge'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
-import { useUtmParams } from 'libs/utm'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { Badge } from 'ui/components/Badge'
 import { Banner } from 'ui/components/Banner'
@@ -98,7 +97,6 @@ export const AppComponents: FunctionComponent = () => {
   const [currentStep, setCurrentStep] = useState(1)
   const [year, setYear] = useState(THIS_YEAR - 18)
   const [radioButtonChoice, setRadioButtonChoice] = useState('')
-  const { campaign, source, medium, campaignDate } = useUtmParams()
   const [popOverIconString, setPopOverIconString] = useState<string>()
   const [callToActionIconString, setCallToActionIconString] = useState<string>()
   const [callToActionTitle, setCallToActionTitle] = useState<string>()
@@ -566,24 +564,6 @@ export const AppComponents: FunctionComponent = () => {
             isUserUnderageBeneficiary={true}
           />
         </View>
-      </AccordionItem>
-
-      <Divider />
-
-      {/* UTM parameters */}
-      <AccordionItem title="UTM parameters">
-        <AlignedText>
-          <Text>traffic_campaign: {campaign}</Text>
-        </AlignedText>
-        <AlignedText>
-          <Text>traffic_medium: {medium}</Text>
-        </AlignedText>
-        <AlignedText>
-          <Text>traffic_source: {source}</Text>
-        </AlignedText>
-        <AlignedText>
-          <Text>campaign_date: {campaignDate?.toLocaleString()}</Text>
-        </AlignedText>
       </AccordionItem>
 
       <Divider />

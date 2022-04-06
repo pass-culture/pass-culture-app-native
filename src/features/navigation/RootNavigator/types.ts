@@ -130,6 +130,7 @@ export type RootStackParamList = {
   Venue: { id: number }
   LandscapePositionPage: undefined
   DeeplinksGenerator: undefined
+  UTMParameters: undefined
 } & IdentityCheckRootStackParamList &
   CulturalSurveyRootStackParamList
 

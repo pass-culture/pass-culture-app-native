@@ -319,6 +319,9 @@ export function Navigation(): JSX.Element {
           />
         </Row>
         <Row half>
+          <ButtonPrimary wording={'UTM parameters'} onPress={() => navigate('UTMParameters')} />
+        </Row>
+        <Row half>
           <ButtonPrimary
             wording={`Notification rechargement crédit`}
             onPress={() => navigate('RecreditBirthdayNotification')}
