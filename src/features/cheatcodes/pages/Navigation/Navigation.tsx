@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useState, createElement } from 'react'
-import { Alert } from 'react-native'
+import { Alert, Platform } from 'react-native'
 import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -11,6 +11,7 @@ import { ForceUpdate } from 'features/forceUpdate/ForceUpdate'
 import { NoContentError } from 'features/home/components/NoContentError'
 import { LandscapePositionPage } from 'features/landscapePosition/LandscapePositionPage'
 import { Maintenance } from 'features/maintenance/Maintenance'
+import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
@@ -65,7 +66,7 @@ export function Navigation(): JSX.Element {
         title="Navigation"
         leftIconAccessibilityLabel={`Revenir en arrière`}
         leftIcon={ArrowPrevious}
-        onLeftIconPress={goBack}
+        onLeftIconPress={Platform.OS === 'web' ? navigateToHome : goBack}
         rightIconAccessibilityLabel={undefined}
         rightIcon={undefined}
         onRightIconPress={undefined}

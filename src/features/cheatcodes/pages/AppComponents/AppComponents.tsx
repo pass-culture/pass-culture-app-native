@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-raw-text */
 import React, { FunctionComponent, useCallback, useState } from 'react'
-import { ScrollView, View, Text, Alert, Button } from 'react-native'
+import { ScrollView, View, Text, Alert, Button, Platform } from 'react-native'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
@@ -11,6 +11,7 @@ import { Icons } from 'features/cheatcodes/pages/AppComponents/Icons'
 import { Illustrations } from 'features/cheatcodes/pages/AppComponents/Illustrations'
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
 import { CulturalSurveyProgressBar } from 'features/culturalSurvey/components/CulturalSurveyProgressBar'
+import { navigateToHome } from 'features/navigation/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
@@ -114,7 +115,7 @@ export const AppComponents: FunctionComponent = () => {
         title="App components"
         leftIconAccessibilityLabel={'Revenir en arrière'}
         leftIcon={ArrowPrevious}
-        onLeftIconPress={goBack}
+        onLeftIconPress={Platform.OS === 'web' ? navigateToHome : goBack}
         rightIconAccessibilityLabel={undefined}
         rightIcon={undefined}
         onRightIconPress={undefined}
