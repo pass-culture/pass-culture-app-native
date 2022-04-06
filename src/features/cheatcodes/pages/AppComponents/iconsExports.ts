@@ -57,6 +57,7 @@ import { Lock } from 'ui/svg/icons/Lock'
 import { Logo } from 'ui/svg/icons/Logo'
 import { LogoPassCulture as PassCultureIcon } from 'ui/svg/icons/LogoPassCulture'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
+import { More } from 'ui/svg/icons/More'
 import { OfferDigital } from 'ui/svg/icons/OfferDigital'
 import { OfferEvent } from 'ui/svg/icons/OfferEvent'
 import { OfferPhysical } from 'ui/svg/icons/OfferPhysical'
@@ -178,6 +179,7 @@ export const SecondaryAndBiggerIcons = {
   Lock,
   Logo,
   MagnifyingGlass,
+  More,
   OfferDigital,
   OfferEvent,
   OfferPhysical,
