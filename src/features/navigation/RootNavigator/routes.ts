@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 
 import { DeeplinksGenerator } from 'features/_marketingAndCommunication/pages/DeeplinksGenerator'
+import { UTMParameters } from 'features/_marketingAndCommunication/pages/UTMParameters'
 import { ForgottenPassword } from 'features/auth/forgottenPassword/ForgottenPassword'
 import { ReinitializePassword } from 'features/auth/forgottenPassword/ReinitializePassword'
 import { ResetPasswordEmailSent } from 'features/auth/forgottenPassword/ResetPasswordEmailSent'
@@ -377,5 +378,13 @@ export const routes: Route[] = [
       path: 'liens/generateur',
     },
     options: { title: t`Générateur de lien` },
+  },
+  {
+    name: 'UTMParameters',
+    component: UTMParameters,
+    pathConfig: {
+      path: 'liens/utm',
+    },
+    options: { title: t`Paramètres UTM` },
   },
 ]

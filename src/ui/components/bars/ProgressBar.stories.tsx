@@ -7,7 +7,7 @@ import { ColorsEnum } from 'ui/theme/colors'
 import { ProgressBar } from './ProgressBar'
 
 export default {
-  title: 'ui/ProgressBar',
+  title: 'ui/progressBars/ProgressBar',
   component: ProgressBar,
 } as ComponentMeta<typeof ProgressBar>
 

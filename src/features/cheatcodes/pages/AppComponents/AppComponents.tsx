@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-raw-text */
 import React, { FunctionComponent, useCallback, useState } from 'react'
-import { ScrollView, View, Text, Alert, Button } from 'react-native'
+import { ScrollView, View, Text, Alert, Button, Platform } from 'react-native'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
@@ -11,13 +11,13 @@ import { Icons } from 'features/cheatcodes/pages/AppComponents/Icons'
 import { Illustrations } from 'features/cheatcodes/pages/AppComponents/Illustrations'
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
 import { CulturalSurveyProgressBar } from 'features/culturalSurvey/components/CulturalSurveyProgressBar'
+import { navigateToHome } from 'features/navigation/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings'
 import { NonBeneficiaryHeader } from 'features/profile/components/NonBeneficiaryHeader'
 import { SubscriptionMessageBadge } from 'features/profile/components/SubscriptionMessageBadge'
 import { SelectionLabel } from 'features/search/atoms/SelectionLabel'
 import { MAP_CATEGORY_ID_TO_ICON } from 'libs/parsers'
-import { useUtmParams } from 'libs/utm'
 import { AccordionItem } from 'ui/components/AccordionItem'
 import { Badge } from 'ui/components/Badge'
 import { Banner } from 'ui/components/Banner'
@@ -98,7 +98,6 @@ export const AppComponents: FunctionComponent = () => {
   const [currentStep, setCurrentStep] = useState(1)
   const [year, setYear] = useState(THIS_YEAR - 18)
   const [radioButtonChoice, setRadioButtonChoice] = useState('')
-  const { campaign, source, medium, campaignDate } = useUtmParams()
   const [popOverIconString, setPopOverIconString] = useState<string>()
   const [callToActionIconString, setCallToActionIconString] = useState<string>()
   const [callToActionTitle, setCallToActionTitle] = useState<string>()
@@ -116,7 +115,7 @@ export const AppComponents: FunctionComponent = () => {
         title="App components"
         leftIconAccessibilityLabel={'Revenir en arrière'}
         leftIcon={ArrowPrevious}
-        onLeftIconPress={goBack}
+        onLeftIconPress={Platform.OS === 'web' ? navigateToHome : goBack}
         rightIconAccessibilityLabel={undefined}
         rightIcon={undefined}
         onRightIconPress={undefined}
@@ -566,24 +565,6 @@ export const AppComponents: FunctionComponent = () => {
             isUserUnderageBeneficiary={true}
           />
         </View>
-      </AccordionItem>
-
-      <Divider />
-
-      {/* UTM parameters */}
-      <AccordionItem title="UTM parameters">
-        <AlignedText>
-          <Text>traffic_campaign: {campaign}</Text>
-        </AlignedText>
-        <AlignedText>
-          <Text>traffic_medium: {medium}</Text>
-        </AlignedText>
-        <AlignedText>
-          <Text>traffic_source: {source}</Text>
-        </AlignedText>
-        <AlignedText>
-          <Text>campaign_date: {campaignDate?.toLocaleString()}</Text>
-        </AlignedText>
       </AccordionItem>
 
       <Divider />

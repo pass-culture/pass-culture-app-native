@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
-import { Text } from 'react-native'
+import { Platform, Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
@@ -46,7 +46,7 @@ export const HomeHeader: FunctionComponent = function () {
       </HeaderBackgroundWrapper>
       {!!env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING && (
         <CheatCodeButtonContainer
-          onPress={() => navigation.navigate('CheatMenu')}
+          onPress={() => navigation.navigate(Platform.OS === 'web' ? 'Navigation' : 'CheatMenu')}
           style={{ top: getSpacing(3) + top }}>
           <Text>{t`CheatMenu`}</Text>
         </CheatCodeButtonContainer>

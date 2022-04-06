@@ -9,7 +9,7 @@ import { ColorsEnum } from 'ui/theme/colors'
 import { AnimatedProgressBar } from './AnimatedProgressBar'
 
 export default {
-  title: 'ui/AnimatedProgressBar',
+  title: 'ui/progressBars/AnimatedProgressBar',
   component: AnimatedProgressBar,
 } as ComponentMeta<typeof AnimatedProgressBar>
 
