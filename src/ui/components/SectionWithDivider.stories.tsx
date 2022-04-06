@@ -8,7 +8,7 @@ import { Typo } from 'ui/theme'
 import { SectionWithDivider } from './SectionWithDivider'
 
 export default {
-  title: 'ui/SectionWithDivider',
+  title: 'ui/sections/SectionWithDivider',
   component: SectionWithDivider,
 } as ComponentMeta<typeof SectionWithDivider>
 
