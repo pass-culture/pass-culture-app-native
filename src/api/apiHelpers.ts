@@ -3,7 +3,7 @@ import { t } from '@lingui/macro'
 
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { Headers, FailedToRefreshAccessTokenError } from 'libs/fetch'
-import { decodeAccessToken } from 'libs/jwt'
+import { getAccessTokenStatus } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { getUniqueId } from 'libs/react-native-device-info/getUniqueId'
@@ -64,14 +64,14 @@ export const safeFetch = async (
   // @ts-expect-error
   const authorizationHeader: string = options.headers?.['Authorization'] || ''
   const token = authorizationHeader.replace('Bearer ', '')
-  const tokenContent = decodeAccessToken(token)
+  const accessTokenStatus = getAccessTokenStatus(token)
 
-  if (!tokenContent) {
+  if (accessTokenStatus === 'unknown') {
     return Promise.resolve(NeedsAuthenticationResponse)
   }
 
   // If the token is expired, we refresh it before calling the backend
-  if (tokenContent && tokenContent.exp * 1000 <= new Date().getTime()) {
+  if (accessTokenStatus === 'expired') {
     try {
       const { result: newAccessToken, error } = await refreshAccessToken(api)
 
