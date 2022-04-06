@@ -1,9 +1,14 @@
 import { t } from '@lingui/macro'
-import React from 'react'
+import { useNavigation } from '@react-navigation/native'
+import React, { useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { mockCulturalSurveyQuestions } from 'features/culturalSurvey/__mocks__/culturalSurveyQuestions'
+import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
+import { createInitialQuestionsList } from 'features/culturalSurvey/useCulturalSurveySteps'
 import { navigateToHome } from 'features/navigation/helpers'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
@@ -12,6 +17,19 @@ import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const CulturalSurveyIntro = (): JSX.Element => {
+  const { navigate } = useNavigation<UseNavigationType>()
+
+  // TODO (yorickeando) PC-13347: replace mock by react-query response
+  const culturalSurveyData = mockCulturalSurveyQuestions
+
+  const { questionsToDisplay, dispatch } = useCulturalSurveyContext()
+
+  const initialQuestions = questionsToDisplay
+
+  useEffect(() => {
+    dispatch({ type: 'SET_QUESTIONS', payload: createInitialQuestionsList(culturalSurveyData) })
+  }, [culturalSurveyData, dispatch])
+
   return (
     <GenericInfoPageWhite
       icon={StyledBicolorPhonePending}
@@ -23,7 +41,14 @@ export const CulturalSurveyIntro = (): JSX.Element => {
       </StyledBody>
       <Spacer.Flex flex={1} />
       <View>
-        <ButtonPrimary onPress={navigateToHome} wording={t`Débuter le questionnaire`} />
+        <ButtonPrimary
+          onPress={() =>
+            navigate('CulturalSurveyQuestions', {
+              step: initialQuestions[0],
+            })
+          }
+          wording={t`Débuter le questionnaire`}
+        />
       </View>
       <ButtonTertiaryBlackContainer>
         <ButtonTertiaryBlack wording={t`Plus tard`} onPress={navigateToHome} icon={ClockFilled} />

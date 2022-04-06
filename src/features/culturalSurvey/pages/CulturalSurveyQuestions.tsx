@@ -1,4 +1,6 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
+import { StackScreenProps } from '@react-navigation/stack'
 import React, { useState } from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
@@ -8,43 +10,66 @@ import { mockCulturalSurveyQuestions } from 'features/culturalSurvey/__mocks__/c
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
 import { CulturalSurveyPageHeader } from 'features/culturalSurvey/components/layout/CulturalSurveyPageHeader'
 import { mapQuestionIdToPageTitle } from 'features/culturalSurvey/helpers/utils'
+import { useGetNextStep } from 'features/culturalSurvey/useGetNextStep'
+import { navigateToHome } from 'features/navigation/helpers'
+import {
+  CulturalSurveyRootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/RootNavigator/types'
 import { mapCulturalSurveyTypeToIcon } from 'libs/parsers/culturalSurveyType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import CulturalSurveyIcons from 'ui/svg/icons/culturalSurvey'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
 
-export const CulturalSurveyQuestions = (): JSX.Element => {
+type CulturalSurveyQuestionsProps = StackScreenProps<
+  CulturalSurveyRootStackParamList,
+  'CulturalSurveyQuestions'
+>
+
+export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps): JSX.Element => {
   const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
+  const { push } = useNavigation<UseNavigationType>()
 
   function onFixedBottomChildrenViewLayout(event: LayoutChangeEvent) {
     const { height } = event.nativeEvent.layout
     setBottomChildrenViewHeight(height)
   }
 
+  const { nextStep, isCurrentStepLastStep } = useGetNextStep(route.params?.step)
+
   // TODO (yorickeando) PC-13347: replace mock data by backend response from adequate react query
-  const mockedData = mockCulturalSurveyQuestions.questions[0]
+  const mockedData = mockCulturalSurveyQuestions.questions.find(
+    (question) => question.id === route.params?.step
+  )
+
+  const navigateToNextStep = () => {
+    if (isCurrentStepLastStep) {
+      navigateToHome()
+    } else {
+      push('CulturalSurveyQuestions', { step: nextStep })
+    }
+  }
 
   const pageSubtitle = t`Tu peux sélectionner une ou plusieurs réponses.`
 
   return (
     <Container>
-      <CulturalSurveyPageHeader progress={0.5} title={mapQuestionIdToPageTitle(mockedData.id)} />
+      <CulturalSurveyPageHeader progress={0.5} title={mapQuestionIdToPageTitle(mockedData?.id)} />
       <ChildrenScrollView bottomChildrenViewHeight={bottomChildrenViewHeight}>
-        <Typo.Title3>{mockedData.title}</Typo.Title3>
+        <Typo.Title3>{mockedData?.title}</Typo.Title3>
         <CaptionContainer>
           <GreyCaption>{pageSubtitle}</GreyCaption>
         </CaptionContainer>
         <VerticalUl>
-          {mockedData.answers.map((answer) => (
+          {mockedData?.answers.map((answer) => (
             <Li key={answer.id}>
               <CheckboxContainer>
                 <CulturalSurveyCheckbox
                   title={answer.title}
                   subtitle={answer?.subtitle}
-                  // TODO yorickeando: once the api schema provides correct CulturalSurveyAnswerIdEnum
-                  // type adequately
+                  // @ts-ignore TODO yorickeando: once the mapCulturalSurveyTypeToIcon helper
+                  // is correctly typed
                   icon={mapCulturalSurveyTypeToIcon(answer?.id as CulturalSurveyTypeCodeKey)}
                 />
               </CheckboxContainer>
@@ -55,7 +80,7 @@ export const CulturalSurveyQuestions = (): JSX.Element => {
       <FixedBottomChildrenView onLayout={onFixedBottomChildrenViewLayout}>
         <ButtonPrimary
           onPress={() => {
-            // do nothing yet
+            navigateToNextStep()
           }}
           wording={t`Continuer`}
           accessibilityLabel={t`Continuer vers l'étape suivante`}
