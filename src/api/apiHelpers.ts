@@ -124,7 +124,7 @@ export const refreshAccessToken = async (api: DefaultApi): Promise<string | null
 
 const extractResponseBody = async (response: Response): Promise<string> => {
   const contentType = response.headers.get('content-type')
-  if (contentType && contentType.indexOf('application/json') !== -1) {
+  if (contentType && contentType.includes('application/json')) {
     return await response.json()
   }
   return await response.text()
