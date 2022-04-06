@@ -37,12 +37,6 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
-jest.mock('jwt-decode', () => () => ({
-  // a date in far future to still get a valid token for api calls
-  exp: 3454545353,
-  user_claims: { user_id: 111 },
-}))
-
 jest.mock('features/auth/support.services')
 
 /* See the corresponding mocks in features/navigation/RootNavigator/__mocks__ */
