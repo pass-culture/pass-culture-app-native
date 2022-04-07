@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import styledNative, { DefaultTheme } from 'styled-components/native'
 
 import { ButtonWithLinearGradientProps } from 'ui/components/buttons/buttonWithLinearGradientTypes'
-import { Email as InitialEmail } from 'ui/svg/icons/Email'
 import { ExternalSite as InitialExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
@@ -14,7 +13,6 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
   onPress,
   isDisabled = false,
   isExternal = false,
-  isEmail = false,
   type = 'button',
   name,
   className,
@@ -48,13 +46,8 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
       className={className}
       {...buttonLinkProps}>
       <LegendContainer>
-        {!!isEmail && <Email />}
         {!!isExternal && <ExternalSite />}
-        <Title
-          adjustsFontSizeToFit
-          numberOfLines={1}
-          isDisabled={isDisabled}
-          padding={isEmail ? getSpacing(2) : getSpacing(5)}>
+        <Title adjustsFontSizeToFit numberOfLines={1} isDisabled={isDisabled}>
           {wording}
         </Title>
       </LegendContainer>
@@ -90,14 +83,12 @@ const Link = styled.a(({ theme }) => ({
   boxSizing: 'border-box',
 }))
 
-const Title = styledNative(Typo.ButtonText)<{ isDisabled: boolean; padding: number }>(
-  ({ isDisabled, padding, theme }) => ({
-    color: isDisabled
-      ? theme.buttons.disabled.linearGradient.textColor
-      : theme.buttons.linearGradient.textColor,
-    padding,
-  })
-)
+const Title = styledNative(Typo.ButtonText)<{ isDisabled: boolean }>(({ isDisabled, theme }) => ({
+  color: isDisabled
+    ? theme.buttons.disabled.linearGradient.textColor
+    : theme.buttons.linearGradient.textColor,
+  padding: getSpacing(5),
+}))
 
 const LegendContainer = styledNative.View({
   position: 'absolute',
@@ -106,11 +97,6 @@ const LegendContainer = styledNative.View({
 })
 
 const ExternalSite = styledNative(InitialExternalSite).attrs(({ theme }) => ({
-  size: theme.buttons.linearGradient.iconSize,
-  color: theme.buttons.linearGradient.iconColor,
-}))``
-
-const Email = styled(InitialEmail).attrs(({ theme }) => ({
   size: theme.buttons.linearGradient.iconSize,
   color: theme.buttons.linearGradient.iconColor,
 }))``

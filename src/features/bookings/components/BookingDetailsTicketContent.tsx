@@ -9,7 +9,7 @@ import styled from 'styled-components/native'
 import { CategoryIdEnum, BookingOfferResponse, BookingReponse } from 'api/gen'
 import { TicketCode } from 'features/bookings/atoms/TicketCode'
 import { OFFER_WITHDRAWAL_TYPE_OPTIONS } from 'features/bookings/components/types'
-import { getBookingProperties } from 'features/bookings/helpers'
+import { formatSecondsToString, getBookingProperties } from 'features/bookings/helpers'
 import { openUrl } from 'features/navigation/helpers'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
@@ -113,30 +113,6 @@ const QrCodeView = ({ qrCodeData }: QrCodeViewProps) => (
   </QrCodeContainer>
 )
 
-export const formatCollectDelayString = (delay: number) => {
-  if (delay > 0 && delay <= 1800) {
-    const delayInMinutes = delay / 60
-    return t`${delayInMinutes} minutes`
-  }
-
-  const delayInHour = delay / 60 / 60
-  if (delay === 3600) {
-    return t`${delayInHour} heure`
-  }
-
-  if (delay <= 172800) {
-    return t`${delayInHour} heures`
-  }
-
-  const delayInDay = delay / 60 / 60 / 24
-  if (delay <= 518400) {
-    return t`${delayInDay} jours`
-  }
-
-  const delayInWeek = delay / 60 / 60 / 24 / 7
-  return t`${delayInWeek} semaine`
-}
-
 const TicketEmailSent = ({ offerDate }: TicketEmailSentProps) => {
   const emailMessage = isSameDay(offerDate, new Date())
     ? t`C'est aujourd'hui\u00a0!` +
@@ -146,9 +122,11 @@ const TicketEmailSent = ({ offerDate }: TicketEmailSentProps) => {
 
   return (
     <TicketEmail testID="collect-info-email">
-      <TicketInfo>{emailMessage}</TicketInfo>
+      <TicketInfo testID="collect-info-email-msg">{emailMessage}</TicketInfo>
       {Platform.OS !== 'web' && (
-        <ButtonWithLinearGradient wording="Consulter mes e-mails" onPress={openInbox} isEmail />
+        <TicketBtnEmail testID="collect-info-email-btn">
+          <ButtonWithLinearGradient wording="Consulter mes e-mails" onPress={openInbox} isEmail />
+        </TicketBtnEmail>
       )}
     </TicketEmail>
   )
@@ -165,14 +143,14 @@ const TicketBody = ({ booking, proDisableEventsQrcode }: TicketBodyProps) => {
     collectType === OFFER_WITHDRAWAL_TYPE_OPTIONS.ON_SITE ||
     collectType === OFFER_WITHDRAWAL_TYPE_OPTIONS.BY_EMAIL
   ) {
-    const startOffer = booking.stock.beginningDatetime
+    const { beginningDatetime } = booking.stock
 
-    if (startOffer && collectType === OFFER_WITHDRAWAL_TYPE_OPTIONS.BY_EMAIL) {
+    if (beginningDatetime && collectType === OFFER_WITHDRAWAL_TYPE_OPTIONS.BY_EMAIL) {
       // Calculation approximate date send e-mail
       const nbDays = collectDelay / 60 / 60 / 24
-      const dateSendEmail = addDays(new Date(startOffer), -nbDays)
+      const dateSendEmail = addDays(new Date(beginningDatetime), -nbDays)
       const today = new Date()
-      const startOfferDate = new Date(startOffer)
+      const startOfferDate = new Date(beginningDatetime)
 
       if (isSameDay(startOfferDate, today) || today > dateSendEmail) {
         return <TicketEmailSent offerDate={startOfferDate} />
@@ -183,7 +161,7 @@ const TicketBody = ({ booking, proDisableEventsQrcode }: TicketBodyProps) => {
       (collectType === OFFER_WITHDRAWAL_TYPE_OPTIONS.ON_SITE
         ? t`présente le code ci-dessus sur place`
         : t`Tu vas recevoir ton billet par e-mail`) + ' '
-    const delayMessage = collectDelay > 0 ? `${formatCollectDelayString(collectDelay)} ` : null
+    const delayMessage = collectDelay > 0 ? `${formatSecondsToString(collectDelay)} ` : null
     const endMessage = t`avant le début de l’événement`
 
     return (
@@ -251,6 +229,10 @@ const TicketContainer = styled.View(({ theme }) => ({
 }))
 
 const TicketEmail = styled.View({
+  width: '100%',
+})
+
+const TicketBtnEmail = styled.View({
   width: '100%',
 })
 

@@ -22,11 +22,7 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
       <LegendContainer>
         {!!isExternal && <ExternalSite />}
         {!!isEmail && <Email />}
-        <Title
-          adjustsFontSizeToFit
-          numberOfLines={1}
-          isDisabled={isDisabled}
-          padding={isEmail ? getSpacing(2) : getSpacing(5)}>
+        <Title adjustsFontSizeToFit numberOfLines={1} isDisabled={isDisabled} isEmail={isEmail}>
           {wording}
         </Title>
       </LegendContainer>
@@ -46,12 +42,12 @@ const Container = styled(TouchableOpacity)(({ theme }) => ({
   overflow: 'hidden',
 }))
 
-const Title = styled(Typo.ButtonText)<{ isDisabled: boolean; padding: number }>(
-  ({ isDisabled, padding, theme }) => ({
+const Title = styled(Typo.ButtonText)<{ isDisabled: boolean; isEmail: boolean }>(
+  ({ isDisabled, isEmail, theme }) => ({
     color: isDisabled
       ? theme.buttons.disabled.linearGradient.textColor
       : theme.buttons.linearGradient.textColor,
-    padding,
+    padding: isEmail ? getSpacing(2) : getSpacing(5),
   })
 )
 

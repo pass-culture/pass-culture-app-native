@@ -4,6 +4,7 @@ import { SettingsResponse } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
 import { Booking } from 'features/bookings/components/types'
 import {
+  formatSecondsToString,
   getBookingLabelForActivationCode,
   getBookingLabels,
   getBookingProperties,
@@ -249,6 +250,35 @@ describe('getBookingProperties', () => {
         isPermanent: true,
         hasActivationCode: false,
       })
+    })
+  })
+})
+
+describe('formatSecondsToString', () => {
+  describe('should display collect wording', () => {
+    it.each([1, 60 * 30])('In minutes', (delay) => {
+      const message = formatSecondsToString(delay)
+      expect(message).toEqual(`${delay / 60} minutes`)
+    })
+
+    it('In hour', () => {
+      const message = formatSecondsToString(3600)
+      expect(message).toEqual('1 heure')
+    })
+
+    it.each([60 * 60 * 2, 60 * 60 * 48])('In hours', (delay) => {
+      const message = formatSecondsToString(delay)
+      expect(message).toEqual(`${delay / 60 / 60} heures`)
+    })
+
+    it.each([60 * 60 * 24 * 3, 60 * 60 * 24 * 6])('In days', (delay) => {
+      const message = formatSecondsToString(delay)
+      expect(message).toEqual(`${delay / 60 / 60 / 24} jours`)
+    })
+
+    it('In week', () => {
+      const message = formatSecondsToString(60 * 60 * 24 * 7)
+      expect(message).toEqual('1 semaine')
     })
   })
 })
