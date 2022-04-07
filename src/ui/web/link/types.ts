@@ -45,3 +45,8 @@ export type TouchableLinkProps = {
   externalHref?: string
   highlight?: boolean
 } & TouchableOpacityProps
+
+export type QuickAccessProps = {
+  href: string
+  title: string
+}

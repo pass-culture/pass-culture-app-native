@@ -62,7 +62,7 @@ function renderHeader({
       <WebThemeProvider theme={{ ...theme, showTabBar: false }}>
         <ThemeProvider theme={{ ...theme, showTabBar: false }}>
           <TabNavigationStateProvider>
-            <Header />
+            <Header mainId="" />
           </TabNavigationStateProvider>
         </ThemeProvider>
       </WebThemeProvider>

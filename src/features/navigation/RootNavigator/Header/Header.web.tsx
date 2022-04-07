@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import React, { useRef, useEffect, memo } from 'react'
 import { Animated } from 'react-native'
 import webStyled from 'styled-components'
@@ -9,15 +10,15 @@ import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getShadow, getSpacing } from 'ui/theme'
+import { QuickAccess } from 'ui/web/link/QuickAccess'
 import { TouchableLink } from 'ui/web/link/TouchableLink'
 
-import { AccessibleTabBar } from './AccessibleTabBar'
 import { Nav } from './Nav'
 
 const MINIMUM_BRAND_SIZE = 140
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
-export const Header = memo(function Header() {
+export const Header = memo(function Header({ mainId }: { mainId: string }) {
   const theme = useTheme()
 
   const fadeAnim = useRef({
@@ -79,11 +80,9 @@ export const Header = memo(function Header() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isBrandVisible])
 
-  if (theme.showTabBar) {
-    return <AccessibleTabBar />
-  }
   return (
     <HeaderContainer>
+      <QuickAccess href={`#${mainId}`} title={t`Aller au contenu principal`} />
       <LeftContainer margin={margin} isVisible={!!isDesktopOffset} style={fadeAnim}>
         {!!isBrandVisible && (
           <LogoContainer

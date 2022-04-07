@@ -1,1 +1,1 @@
-export const Header = () => null
+export const Header = (_: { mainId: string }) => null

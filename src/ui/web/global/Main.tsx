@@ -1,3 +1,5 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 
-export const Main = React.Fragment
+export const Main = ({ children }: { id: string; children: ReactNode }) => (
+  <React.Fragment>{children}</React.Fragment>
+)
