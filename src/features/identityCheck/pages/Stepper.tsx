@@ -122,6 +122,12 @@ export const IdentityCheckStepper = () => {
                 <StepButton
                   step={step}
                   state={getStepState(step.name)}
+                  to={
+                    step.name === IdentityCheckStep.IDENTIFICATION &&
+                    context.identification.method === null
+                      ? undefined
+                      : { screen: step.screens[0] }
+                  }
                   onPress={() => navigateToStep(step)}
                 />
               </Li>
