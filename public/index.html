@@ -16,8 +16,8 @@
     %META_NO_INDEX%
 
     <!-- Smart banner -->
-    <meta name="apple-itunes-app" content="app-id=%IOS_APP_STORE_ID%">
-    <meta name="google-play-app" content="app-id=%ANDROID_APP_ID%">
+    <meta name="apple-itunes-app" content="app-id=%IOS_APP_STORE_ID%" />
+    <meta name="google-play-app" content="app-id=%ANDROID_APP_ID%" />
     <link rel="android-touch-icon" href="%PUBLIC_URL%/images/app-icon-iphone.png" />
 
     <!-- Primary Meta Tags -->
@@ -32,15 +32,35 @@
     <meta property="og:description" content="%DESCRIPTION%" />
     <meta property="og:image" content="%PUBLIC_URL%/images/app-icon-512px.png" />
     <meta property="og:image:alt" content="%TITLE%" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="%AUTHOR%" />
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="%DESCRIPTION%" />
+    <meta name="twitter:card" content="app" />
     <meta name="twitter:url" content="%PUBLIC_URL%" />
     <meta name="twitter:title" content="%TITLE%" />
     <meta name="twitter:description" content="%DESCRIPTION%" />
     <meta name="twitter:image" content="%PUBLIC_URL%/images/app-icon-512px.png" />
     <meta name="twitter:image:alt" content="%TITLE%" />
     <meta name="twitter:site" content="%TWITTER_SITE%" />
+    <meta name="twitter:app:country" content="FR" />
+    <meta name="twitter:app:name:iphone" content="%AUTHOR%" />
+    <meta name="twitter:app:id:iphone" content="%IOS_APP_STORE_ID%" />
+    <meta name="twitter:app:url:iphone" content="passculture://%PUBLIC_URL%" />
+    <meta name="twitter:app:name:ipad" content="%AUTHOR%" />
+    <meta name="twitter:app:id:ipad" content="%IOS_APP_STORE_ID%" />
+    <meta name="twitter:app:url:ipad" content="passculture://%PUBLIC_URL%" />
+    <meta name="twitter:app:name:googleplay" content="%AUTHOR%" />
+    <meta name="twitter:app:id:googleplay" content="%ANDROID_APP_ID%" />
+    <meta name="twitter:app:url:googleplay" content="passculture://%PUBLIC_URL%" />
+
+    <!-- App Links -->
+    <meta property="al:ios:app_name" content="%AUTHOR%" />
+    <meta property="al:ios:app_store_id" content="%IOS_APP_STORE_ID%" />
+    <meta property="al:ios:url" content="passculture://%PUBLIC_URL%" />
+    <meta property="al:android:url" content="passculture://%PUBLIC_URL%">
+    <meta property="al:android:app_name" content="%AUTHOR%" />
+    <meta property="al:android:package" content="%ANDROID_APP_ID%" />
 
     <!-- iPhone -->
     <link rel="shortcut icon" href="%PUBLIC_URL%/images/app-icon-iphone.png" />
@@ -132,7 +152,7 @@
       @font-face {
         font-family: 'Montserrat-Regular';
         font-style: normal;
-        font-weight: 400; 
+        font-weight: 400;
         font-display: swap;
         src: url(https://fonts.gstatic.com/s/montserrat/v15/JTUSjIg1_i6t8kCHKm459Wlhyw.woff2)
           format('woff2');
