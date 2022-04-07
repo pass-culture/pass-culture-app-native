@@ -101,5 +101,46 @@ describe('[api] helpers', () => {
       expect(response).toEqual(NeedsAuthenticationResponse)
       expect(mockFetch).not.toHaveBeenCalled()
     })
+
+    it('retries to regenerate the access token when the access token is expired and the first try to regenerate fails', async () => {
+      const apiUrl = '/native/v1/me'
+      mockGetAccessTokenStatus.mockReturnValueOnce('expired')
+      const password = 'refreshToken'
+      mockKeychain.mockResolvedValueOnce(password).mockResolvedValueOnce(password)
+      const expectedResponse = respondWith('some api response')
+      mockFetch
+        .mockRejectedValueOnce('some error')
+        .mockResolvedValueOnce(respondWith({ accessToken }))
+        .mockResolvedValueOnce(expectedResponse)
+
+      const response = await safeFetch(apiUrl, optionsWithAccessToken, api)
+
+      expect(mockFetch).nthCalledWith(1, '/native/v1/refresh_access_token', {
+        headers: {
+          Authorization: `Bearer ${password}`,
+          'app-version': '1.10.5',
+          'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+        },
+        credentials: 'omit',
+        method: 'POST',
+      })
+      expect(mockFetch).nthCalledWith(2, '/native/v1/refresh_access_token', {
+        headers: {
+          Authorization: `Bearer ${password}`,
+          'app-version': '1.10.5',
+          'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+        },
+        credentials: 'omit',
+        method: 'POST',
+      })
+      expect(mockFetch).nthCalledWith(3, apiUrl, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          'app-version': '1.10.5',
+          'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+        },
+      })
+      expect(response).toEqual(await expectedResponse)
+    })
   })
 })
