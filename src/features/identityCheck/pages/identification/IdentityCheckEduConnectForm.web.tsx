@@ -9,11 +9,12 @@ import { EduConnectErrorBoundary } from 'features/identityCheck/errors/eduConnec
 import { useEduConnectLogin } from 'features/identityCheck/utils/useEduConnectLogin'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
+import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Info } from 'ui/svg/icons/Info'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const IdentityCheckEduConnectForm = () => {
-  const { error, openEduConnect } = useEduConnectLogin()
+  const { error, loginUrl, openEduConnect } = useEduConnectLogin()
 
   if (error) {
     throw error
@@ -49,7 +50,12 @@ export const IdentityCheckEduConnectForm = () => {
           </React.Fragment>
         }
         fixedBottomChildren={
-          <ButtonPrimary wording={t`Ouvrir un onglet ÉduConnect`} onPress={openEduConnect} />
+          <ButtonPrimary
+            wording={t`Ouvrir un onglet ÉduConnect`}
+            externalHref={loginUrl}
+            onPress={openEduConnect}
+            icon={ExternalSite}
+          />
         }
       />
       <ErrorTrigger error={error} />
