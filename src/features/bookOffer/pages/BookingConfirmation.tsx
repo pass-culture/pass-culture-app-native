@@ -4,7 +4,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { useShowReview } from 'libs/hooks/useShowReview'
@@ -12,6 +12,7 @@ import { formatToFrenchDecimal } from 'libs/parsers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { TicketBooked } from 'ui/svg/icons/TicketBooked'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -55,7 +56,12 @@ export function BookingConfirmation() {
           wording={t`Voir ma réservation`}
           onPress={displayBookingDetails}
         />,
-        <ButtonTertiaryWhite key={2} wording={t`Retourner à l'accueil`} onPress={navigateToHome} />,
+        <TouchableLink
+          key={2}
+          as={ButtonTertiaryWhite}
+          wording={t`Retourner à l'accueil`}
+          navigateTo={navigateToHomeConfig}
+        />,
       ]}>
       <StyledBody>
         {t({

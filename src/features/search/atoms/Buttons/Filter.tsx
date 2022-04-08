@@ -1,20 +1,16 @@
 import { plural, t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useFilterCount } from 'features/search/utils/useFilterCount'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import { styledButton } from 'ui/components/buttons/styledButton'
-import { Touchable } from 'ui/components/touchable/Touchable'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Filter as FilterIconDefault } from 'ui/svg/icons/Filter'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const Filter: React.FC = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
   const { searchState } = useSearch()
   const { dispatch } = useStagedSearch()
   const filterCount = useFilterCount(searchState)
@@ -26,11 +22,13 @@ export const Filter: React.FC = () => {
 
   const onPress = () => {
     dispatch({ type: 'SET_STATE', payload: searchState })
-    navigate('SearchFilter')
   }
 
   return (
-    <Container onPress={onPress} {...accessibilityAndTestId(undefined, 'FilterButton')}>
+    <Container
+      navigateTo={{ screen: 'SearchFilter' }}
+      onPress={onPress}
+      {...accessibilityAndTestId(undefined, 'FilterButton')}>
       <StyledLinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
@@ -57,7 +55,7 @@ const FilterIcon = styled(FilterIconDefault).attrs(({ theme }) => ({
   color: theme.colors.white,
 }))``
 
-const Container = styledButton(Touchable)({ overflow: 'hidden' })
+const Container = styled(TouchableLink)({ overflow: 'hidden' })
 
 const StyledLinearGradient = styled(LinearGradient)(({ theme }) => ({
   backgroundColor: theme.colors.primary,

@@ -1,21 +1,19 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
-import { navigateToHome } from 'features/navigation/helpers'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
 import { Typo } from 'ui/theme'
 
 export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   const timer = useRef<number>()
-  const { navigate } = useNavigation<UseNavigationType>()
 
   useEffect(
     () => () => {
@@ -27,8 +25,6 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   )
 
   async function onPress() {
-    navigate('EndedBookings')
-
     // TODO(kopax): check if this can be removed. https://github.com/tannerlinsley/react-query/releases/tag/v3.32.3
     // if we reset too fast, it will rerun the failed query, this as no effect on the UI but that's not desired.
     const beforeResetDelayInMs = 300
@@ -44,11 +40,19 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
         title={t`Réservation introuvable\u00a0!`}
         icon={NoBookings}
         buttons={[
-          <ButtonPrimaryWhite key={1} wording={t`Mes réservations terminées`} onPress={onPress} />,
-          <ButtonTertiaryWhite
+          <TouchableLink
+            key={1}
+            as={ButtonPrimaryWhite}
+            wording={t`Mes réservations terminées`}
+            navigateTo={{ screen: 'EndedBookings' }}
+            onPress={onPress}
+            navigateBeforeOnPress
+          />,
+          <TouchableLink
             key={2}
+            as={ButtonTertiaryWhite}
             wording={t`Retourner à l'accueil`}
-            onPress={navigateToHome}
+            navigateTo={navigateToHomeConfig}
           />,
         ]}>
         <StyledBody>{t`Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N'hésite pas à retrouver la liste de tes réservations terminées et annulées pour t'en assurer.`}</StyledBody>

@@ -1,20 +1,18 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { Typo } from 'ui/theme'
 
 export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   const timer = useRef<number>()
-  const { navigate } = useNavigation<UseNavigationType>()
 
   useEffect(
     () => () => {
@@ -26,8 +24,6 @@ export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   )
 
   async function onPress() {
-    navigate(...homeNavConfig)
-
     // if we reset too fast, it will rerun the failed query, this as no effect on the UI but that's not desired.
     const beforeResetDelayInMs = 300
     timer.current = globalThis.setTimeout(resetErrorBoundary, beforeResetDelayInMs)
@@ -42,7 +38,14 @@ export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
         title={t`Offre introuvable\u00a0!`}
         icon={NoOffer}
         buttons={[
-          <ButtonPrimaryWhite key={1} wording={t`Retourner à l'accueil`} onPress={onPress} />,
+          <TouchableLink
+            key={1}
+            as={ButtonPrimaryWhite}
+            wording={t`Retourner à l'accueil`}
+            navigateTo={navigateToHomeConfig}
+            onPress={onPress}
+            navigateBeforeOnPress
+          />,
         ]}>
         <StyledBody>{t`Il est possible que cette offre soit désactivée ou n'existe pas.`}</StyledBody>
       </GenericInfoPage>

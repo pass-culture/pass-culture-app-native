@@ -172,12 +172,10 @@ exports[`<NotYetUnderageEligibility /> should render properly 1`] = `
         }
       }
     >
-      <button
-        className="sc-bdvvtL krGSRA sc-dkPtRN gNpZyI"
+      <a
+        className="sc-gsDKAQ BjQFx sc-dkPtRN gNpZyI"
         onClick={[Function]}
-        onDoubleClick={[Function]}
         tabIndex={0}
-        type="button"
       >
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
@@ -196,7 +194,7 @@ exports[`<NotYetUnderageEligibility /> should render properly 1`] = `
         >
           Retourner à l'accueil
         </div>
-      </button>
+      </a>
     </div>
     <div
       className="css-view-1dbjc4n"

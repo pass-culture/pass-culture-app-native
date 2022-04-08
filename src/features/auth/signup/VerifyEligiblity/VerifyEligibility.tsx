@@ -3,10 +3,11 @@ import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Typo } from 'ui/theme'
@@ -29,11 +30,12 @@ export const VerifyEligibility: FunctionComponent = () => {
           wording={t`Vérifier mon identité`}
           onPress={navigateToNextBeneficiaryValidationStep}
         />,
-        <ButtonTertiaryWhite
+        <TouchableLink
           key={2}
+          as={ButtonTertiaryWhite}
           icon={PlainArrowPrevious}
           wording={t`Retourner à l'accueil`}
-          onPress={navigateToHome}
+          navigateTo={navigateToHomeConfig}
         />,
       ]}>
       <StyledBody>

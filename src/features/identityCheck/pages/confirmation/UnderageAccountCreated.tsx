@@ -9,13 +9,14 @@ import {
   Text,
   ButtonContainer,
 } from 'features/auth/signup/underageSignup/notificationPagesStyles'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { formatPriceInEuroToDisplayPrice } from 'libs/parsers'
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import CategoryIcon from 'ui/svg/icons/categories/bicolor'
 import { Spacer } from 'ui/theme'
@@ -48,7 +49,11 @@ export function UnderageAccountCreated() {
       <Text>{text}</Text>
       <Spacer.Column numberOfSpaces={5} />
       <ButtonContainer>
-        <ButtonPrimary wording={t`Je découvre les offres`} onPress={navigateToHome} />
+        <TouchableLink
+          as={ButtonPrimary}
+          wording={t`Je découvre les offres`}
+          navigateTo={navigateToHomeConfig}
+        />
       </ButtonContainer>
     </GenericInfoPageWhite>
   )

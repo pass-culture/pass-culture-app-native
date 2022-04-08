@@ -1,22 +1,15 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { styledButton } from 'ui/components/buttons/styledButton'
-import { Touchable } from 'ui/components/touchable/Touchable'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Sort as SortIconDefault } from 'ui/svg/icons/Sort'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const Sort: React.FC = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
-  function onPress() {
-    navigate('FavoritesSorts')
-  }
   return (
-    <Container onPress={onPress} testID="SortButton">
+    <Container navigateTo={{ screen: 'FavoritesSorts' }} testID="SortButton">
       <StyledLinearGradient
         start={{ x: 0, y: 0 }}
         end={{ x: 1, y: 0 }}
@@ -34,7 +27,9 @@ const SortIcon = styled(SortIconDefault).attrs(({ theme }) => ({
   color: theme.colors.white,
 }))``
 
-const Container = styledButton(Touchable)({ overflow: 'hidden' })
+const Container = styled(TouchableLink)({
+  overflow: 'hidden',
+})
 
 const StyledLinearGradient = styled(LinearGradient)(({ theme }) => ({
   backgroundColor: theme.colors.primary,
