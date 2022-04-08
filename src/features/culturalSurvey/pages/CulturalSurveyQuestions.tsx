@@ -83,6 +83,7 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
             navigateToNextStep()
           }}
           wording={t`Continuer`}
+          testID={'next-cultural-survey-question'}
           accessibilityLabel={t`Continuer vers l'étape suivante`}
         />
         <Spacer.BottomScreen />

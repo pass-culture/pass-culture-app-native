@@ -48,10 +48,16 @@ export const CulturalSurveyIntro = (): JSX.Element => {
             })
           }
           wording={t`Débuter le questionnaire`}
+          testID={'start-cultural-survey'}
         />
       </View>
       <ButtonTertiaryBlackContainer>
-        <ButtonTertiaryBlack wording={t`Plus tard`} onPress={navigateToHome} icon={ClockFilled} />
+        <ButtonTertiaryBlack
+          wording={t`Plus tard`}
+          onPress={navigateToHome}
+          icon={ClockFilled}
+          testID={'answer-survey-later'}
+        />
       </ButtonTertiaryBlackContainer>
     </GenericInfoPageWhite>
   )
