@@ -7,8 +7,8 @@ import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum, BookingOfferResponse, BookingReponse } from 'api/gen'
+import { WithdrawalTypeEnum } from 'api/gen'
 import { TicketCode } from 'features/bookings/atoms/TicketCode'
-import { OFFER_WITHDRAWAL_TYPE_OPTIONS } from 'features/bookings/components/types'
 import { formatSecondsToString, getBookingProperties } from 'features/bookings/helpers'
 import { openUrl } from 'features/navigation/helpers'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
@@ -63,9 +63,7 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
           </React.Fragment>
         ) : (
           <React.Fragment>
-            {collectType !== OFFER_WITHDRAWAL_TYPE_OPTIONS.BY_EMAIL && (
-              <TicketCode code={booking.token} />
-            )}
+            {collectType !== WithdrawalTypeEnum.by_email && <TicketCode code={booking.token} />}
             {properties.isDigital ? (
               accessOfferButton
             ) : (
@@ -139,13 +137,10 @@ const TicketBody = ({ booking, proDisableEventsQrcode }: TicketBodyProps) => {
   if (booking.qrCodeData && !proDisableEventsQrcode)
     return <QrCodeView qrCodeData={booking.qrCodeData} />
 
-  if (
-    collectType === OFFER_WITHDRAWAL_TYPE_OPTIONS.ON_SITE ||
-    collectType === OFFER_WITHDRAWAL_TYPE_OPTIONS.BY_EMAIL
-  ) {
+  if (collectType === WithdrawalTypeEnum.on_site || collectType === WithdrawalTypeEnum.by_email) {
     const { beginningDatetime } = booking.stock
 
-    if (beginningDatetime && collectType === OFFER_WITHDRAWAL_TYPE_OPTIONS.BY_EMAIL) {
+    if (beginningDatetime && collectType === WithdrawalTypeEnum.by_email) {
       // Calculation approximate date send e-mail
       const nbDays = collectDelay / 60 / 60 / 24
       const dateSendEmail = addDays(new Date(beginningDatetime), -nbDays)
@@ -158,7 +153,7 @@ const TicketBody = ({ booking, proDisableEventsQrcode }: TicketBodyProps) => {
     }
 
     const startMessage =
-      (collectType === OFFER_WITHDRAWAL_TYPE_OPTIONS.ON_SITE
+      (collectType === WithdrawalTypeEnum.on_site
         ? t`présente le code ci-dessus sur place`
         : t`Tu vas recevoir ton billet par e-mail`) + ' '
     const delayMessage = collectDelay > 0 ? `${formatSecondsToString(collectDelay)} ` : null
@@ -166,7 +161,7 @@ const TicketBody = ({ booking, proDisableEventsQrcode }: TicketBodyProps) => {
 
     return (
       <React.Fragment>
-        {collectType === OFFER_WITHDRAWAL_TYPE_OPTIONS.BY_EMAIL && (
+        {collectType === WithdrawalTypeEnum.by_email && (
           <BicolorEmailSentContainer>
             <BicolorEmailSent />
           </BicolorEmailSentContainer>
