@@ -15,7 +15,10 @@ interface Props {
 export const AddressOption = ({ optionKey, label, onPressOption, selected }: Props) => {
   return (
     <Container>
-      <StyledTouchableOpacity onPress={() => onPressOption(optionKey)}>
+      <StyledTouchableOpacity
+        accessibilityRole="radio"
+        accessibilityState={{ checked: selected }}
+        onPress={() => onPressOption(optionKey)}>
         <TextContainer>
           <StyledBody selected={selected}>{label}</StyledBody>
           <IconContainer>{!!selected && <Validate />}</IconContainer>

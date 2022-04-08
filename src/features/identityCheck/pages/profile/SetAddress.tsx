@@ -133,7 +133,7 @@ export const SetAddress = () => {
       scrollChildren={
         <React.Fragment>
           {!!isLoading && <Spinner />}
-          <AdressesContainer>
+          <AdressesContainer accessibilityRole="radiogroup">
             {addresses.map((address, index) => (
               <AddressOption
                 label={address}

@@ -120,7 +120,7 @@ export const SetCity = () => {
       scrollChildren={
         <React.Fragment>
           {!!isLoading && <Spinner />}
-          <CitiesContainer>
+          <CitiesContainer accessibilityRole="radiogroup">
             <VerticalUl>
               {cities.map((city, index) => (
                 <Li key={city.name}>

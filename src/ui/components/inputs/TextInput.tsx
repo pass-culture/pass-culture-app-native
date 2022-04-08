@@ -59,6 +59,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
           ref={forwardedRef}
           onFocus={onFocus}
           onBlur={onBlur}
+          aria-required={isRequiredField}
           aria-describedby={customProps.accessibilityDescribedBy}
         />
       </InputContainer>
