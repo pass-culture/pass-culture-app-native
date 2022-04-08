@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { getSpacing } from 'ui/theme'
 import { QuickAccessProps } from 'ui/web/link/types'
 
 export const QuickAccess = ({ href, title }: QuickAccessProps) => (
@@ -9,18 +10,29 @@ export const QuickAccess = ({ href, title }: QuickAccessProps) => (
 
 const StyledA = styled.a(({ theme }) => ({
   ...theme.typography.buttonText,
+  color: theme.uniqueColors.brand,
   backgroundColor: theme.colors.white,
   zIndex: theme.zIndex.floatingButton,
   textDecoration: 'none',
   position: 'absolute',
   display: 'flex',
-  textAlign: 'center',
   alignItems: 'center',
+  alignSelf: 'center',
+  clipPath: 'inset(50%)',
   width: '1px',
   height: '1px',
   overflow: 'hidden',
   '&:focus': {
-    width: '100px',
-    height: theme.navTopHeight,
+    clipPath: 'none',
+    width: 'auto',
+    height: getSpacing(11),
+    margin: getSpacing(2),
+    paddingLeft: getSpacing(4),
+    paddingRight: getSpacing(4),
+    outlineOffset: 0,
+    borderWidth: 1,
+    borderStyle: 'solid',
+    borderColor: theme.uniqueColors.brand,
+    borderRadius: theme.borderRadius.button * 2,
   },
 }))

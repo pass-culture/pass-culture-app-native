@@ -9,9 +9,14 @@ export const Touchable: React.FC<TouchableProps> = ({
   onPress,
   accessibilityLabel,
   testID,
+  ...props
 }) => {
   return (
-    <TouchableOpacity onPress={onPress} testID={testID} accessibilityLabel={accessibilityLabel}>
+    <TouchableOpacity
+      onPress={onPress}
+      testID={testID}
+      accessibilityLabel={accessibilityLabel}
+      {...props}>
       {children}
     </TouchableOpacity>
   )

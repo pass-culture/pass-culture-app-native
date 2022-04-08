@@ -1,18 +1,23 @@
 import { plural, t } from '@lingui/macro'
 import { useIsFocused } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
-import React, { useCallback, useEffect, useMemo, useRef } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FlatList, ActivityIndicator } from 'react-native'
 import styled from 'styled-components/native'
 
 import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
 import { Filter } from 'features/search/atoms/Buttons'
+import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch'
+import { ScrollToTopButton } from 'features/search/components/ScrollToTopButton'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchResults } from 'features/search/pages/useSearchResults'
 import { analytics } from 'libs/analytics'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { SearchHit } from 'libs/search'
+import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
+import { useHeaderTransition as useOpacityTransition } from 'ui/components/headers/animationHelpers'
 import { HitPlaceholder, NumberOfResultsPlaceholder } from 'ui/components/placeholders/Placeholders'
+import { More } from 'ui/svg/icons/More'
 import { getSpacing, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
@@ -21,6 +26,7 @@ const keyExtractor = (item: SearchHit) => item.objectID
 const ANIMATION_DURATION = 700
 
 export const SearchResults: React.FC = () => {
+  const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const flatListRef = useRef<FlatList<SearchHit> | null>(null)
   const {
     hasNextPage,
@@ -37,6 +43,8 @@ export const SearchResults: React.FC = () => {
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
+
+  const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
@@ -73,9 +81,11 @@ export const SearchResults: React.FC = () => {
     [nbHits, searchState.locationFilter.locationType]
   )
   const ListEmptyComponent = useMemo(() => <NoSearchResult />, [])
+
   const ListFooterComponent = useMemo(
-    () =>
-      isFetchingNextPage && hits.length < nbHits ? (
+    () => {
+      const showMoreButton = !autoScrollEnabled && hits.length < nbHits
+      return isFetchingNextPage && hits.length < nbHits ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <ActivityIndicator />
@@ -83,10 +93,31 @@ export const SearchResults: React.FC = () => {
           <Footer />
         </React.Fragment>
       ) : (
-        <Footer />
-      ),
+        <React.Fragment>
+          {!!showMoreButton && <Separator />}
+          <Footer>
+            {!!showMoreButton && (
+              <ButtonSecondary
+                mediumWidth
+                icon={More}
+                wording={t`Afficher plus de résultats`}
+                onPress={() => {
+                  const button = (
+                    flatListRef.current?.getNativeScrollRef() as unknown as HTMLElement
+                  ).children[0].lastChild as HTMLElement
+                  const offerLink = button?.previousSibling?.firstChild?.firstChild as HTMLElement
+                  offerLink.focus()
+                  offerLink.blur()
+                  onEndReached()
+                }}
+              />
+            )}
+          </Footer>
+        </React.Fragment>
+      )
+    },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [isFetchingNextPage, hits.length]
+    [isFetchingNextPage, hits.length, autoScrollEnabled]
   )
 
   if (showSkeleton) return <SearchResultsPlaceHolder />
@@ -103,6 +134,11 @@ export const SearchResults: React.FC = () => {
   return (
     <React.Fragment>
       {isFocused ? <Helmet title={helmetTitle} /> : null}
+      <AutoScrollSwitch
+        title={t`Activer le scroll automatique`}
+        active={autoScrollEnabled}
+        toggle={() => setAutoScrollEnabled((autoScroll) => !autoScroll)}
+      />
       {nbHits > 0 && (
         <FilterContainer>
           <Filter />
@@ -122,20 +158,36 @@ export const SearchResults: React.FC = () => {
           renderItem={renderItem}
           refreshing={isRefreshing}
           onRefresh={refetch}
-          onEndReached={onEndReached}
+          onEndReached={autoScrollEnabled ? onEndReached : undefined}
           scrollEnabled={nbHits > 0}
           ListEmptyComponent={ListEmptyComponent}
+          onScroll={onScroll}
           keyboardShouldPersistTaps="handled"
           keyboardDismissMode="on-drag"
         />
       </Container>
+      {nbHits > 0 && (
+        <ScrollToTopContainer>
+          <ScrollToTopButton
+            transition={scrollButtonTransition}
+            onPress={() => {
+              flatListRef.current?.scrollToOffset({ offset: 0 })
+            }}
+          />
+          <Spacer.BottomScreen />
+        </ScrollToTopContainer>
+      )}
     </React.Fragment>
   )
 }
 
 const contentContainerStyle = { flexGrow: 1 }
 const Container = styled.View({ flex: 1 })
-const Footer = styled.View(({ theme }) => ({ height: theme.tabBarHeight + getSpacing(52) }))
+const Footer = styled.View(({ theme }) => ({
+  height: theme.tabBarHeight + getSpacing(52),
+  paddingTop: getSpacing(2),
+  alignItems: 'center',
+}))
 const Separator = styled.View(({ theme }) => ({
   height: 2,
   backgroundColor: theme.colors.greyLight,
@@ -149,6 +201,10 @@ const FilterContainer = styled.View(({ theme }) => ({
   bottom: theme.tabBarHeight + getSpacing(6),
   zIndex: theme.zIndex.floatingButton,
 }))
+
+const ScrollToTopContainer = styled(FilterContainer)({
+  right: getSpacing(7),
+})
 
 const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => ({
   key: index.toString(),
