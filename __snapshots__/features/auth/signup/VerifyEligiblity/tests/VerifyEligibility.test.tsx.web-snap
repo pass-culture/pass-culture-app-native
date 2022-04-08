@@ -207,12 +207,10 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
           }
         }
       />
-      <button
-        className="sc-bdvvtL krGSRA sc-hKwDye gvtKtm"
+      <a
+        className="sc-gsDKAQ BjQFx sc-hKwDye gvtKtm"
         onClick={[Function]}
-        onDoubleClick={[Function]}
         tabIndex={0}
-        type="button"
       >
         <div
           className="css-view-1dbjc4n"
@@ -242,7 +240,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         >
           Retourner à l'accueil
         </div>
-      </button>
+      </a>
     </div>
     <div
       className="css-view-1dbjc4n"
