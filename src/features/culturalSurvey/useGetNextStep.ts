@@ -7,7 +7,11 @@ export const useGetNextStep = (currentStep: CulturalSurveyQuestionEnum) => {
   const nextStepIndex = questionsToDisplay.indexOf(currentStep) + 1
 
   const isCurrentStepLastStep = nextStepIndex === questionsToDisplay.length
-  const nextStep = questionsToDisplay[nextStepIndex]
+  let nextStep = currentStep
+
+  if (!isCurrentStepLastStep) {
+    nextStep = questionsToDisplay[nextStepIndex]
+  }
 
   return { isCurrentStepLastStep, nextStep }
 }
