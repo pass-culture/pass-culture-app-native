@@ -5,7 +5,7 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -258,11 +258,11 @@
+@@ -260,11 +260,11 @@
         <ul
           className=\\"sc-gsDKAQ sc-dkPtRN bwGBFc ezyhIk\\"
         >
@@ -15,10 +15,10 @@ exports[`Categories component should match diff snapshot when new category is se
 +             aria-checked={true}
               className=\\"css-view-1dbjc4n\\"
               data-testid=\\"NONE\\"
+              onBlur={[Function onStyledBlur]}
               onClick={[Function onClick]}
               onContextMenu={[Function onContextMenu]}
-              onKeyDown={[Function onKeyDown]}
-@@ -325,11 +325,11 @@
+@@ -329,11 +329,11 @@
                 className=\\"css-text-901oao css-textMultiLine-cens5h\\"
                 dir=\\"auto\\"
                 style={
@@ -31,7 +31,7 @@ exports[`Categories component should match diff snapshot when new category is se
                     \\"lineHeight\\": \\"20px\\",
                   }
                 }
-@@ -351,10 +351,20 @@
+@@ -355,10 +355,20 @@
                     \\"msFlexPositive\\": 1,
                     \\"msFlexPreferredSize\\": \\"0px\\",
                   }
@@ -52,7 +52,7 @@ exports[`Categories component should match diff snapshot when new category is se
           <li>
             <div
               aria-checked={false}
-@@ -452,11 +462,11 @@
+@@ -458,11 +468,11 @@
               />
             </div>
           </li>
@@ -62,10 +62,10 @@ exports[`Categories component should match diff snapshot when new category is se
 +             aria-checked={false}
               className=\\"css-view-1dbjc4n\\"
               data-testid=\\"CINEMA\\"
+              onBlur={[Function onStyledBlur]}
               onClick={[Function onClick]}
               onContextMenu={[Function onContextMenu]}
-              onKeyDown={[Function onKeyDown]}
-@@ -519,11 +529,11 @@
+@@ -527,11 +537,11 @@
                 className=\\"css-text-901oao css-textMultiLine-cens5h\\"
                 dir=\\"auto\\"
                 style={
@@ -78,7 +78,7 @@ exports[`Categories component should match diff snapshot when new category is se
                     \\"lineHeight\\": \\"20px\\",
                   }
                 }
-@@ -545,20 +555,10 @@
+@@ -553,20 +563,10 @@
                     \\"msFlexPositive\\": 1,
                     \\"msFlexPreferredSize\\": \\"0px\\",
                   }
@@ -207,8 +207,10 @@ exports[`Categories component should render correctly 1`] = `
             aria-label="Revenir en arrière"
             className="css-view-1dbjc4n"
             data-testid="Revenir en arrière"
+            onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             style={
               Object {
@@ -367,8 +369,10 @@ exports[`Categories component should render correctly 1`] = `
             aria-checked={true}
             className="css-view-1dbjc4n"
             data-testid="NONE"
+            onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             role="radio"
             style={
@@ -474,8 +478,10 @@ exports[`Categories component should render correctly 1`] = `
             aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="CARTE_JEUNES"
+            onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             role="radio"
             style={
@@ -571,8 +577,10 @@ exports[`Categories component should render correctly 1`] = `
             aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="CINEMA"
+            onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             role="radio"
             style={
@@ -668,8 +676,10 @@ exports[`Categories component should render correctly 1`] = `
             aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="VISITE"
+            onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             role="radio"
             style={
@@ -765,8 +775,10 @@ exports[`Categories component should render correctly 1`] = `
             aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="MUSIQUE"
+            onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             role="radio"
             style={
@@ -862,8 +874,10 @@ exports[`Categories component should render correctly 1`] = `
             aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="SPECTACLE"
+            onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             role="radio"
             style={
@@ -959,8 +973,10 @@ exports[`Categories component should render correctly 1`] = `
             aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="COURS"
+            onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             role="radio"
             style={
@@ -1056,8 +1072,10 @@ exports[`Categories component should render correctly 1`] = `
             aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="LIVRE"
+            onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             role="radio"
             style={
@@ -1153,8 +1171,10 @@ exports[`Categories component should render correctly 1`] = `
             aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="FILM"
+            onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             role="radio"
             style={
@@ -1250,8 +1270,10 @@ exports[`Categories component should render correctly 1`] = `
             aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="PRESSE"
+            onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             role="radio"
             style={
@@ -1347,8 +1369,10 @@ exports[`Categories component should render correctly 1`] = `
             aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="JEU"
+            onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             role="radio"
             style={
@@ -1444,8 +1468,10 @@ exports[`Categories component should render correctly 1`] = `
             aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="CONFERENCE"
+            onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             role="radio"
             style={
@@ -1541,8 +1567,10 @@ exports[`Categories component should render correctly 1`] = `
             aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="INSTRUMENT"
+            onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             role="radio"
             style={
@@ -1638,8 +1666,10 @@ exports[`Categories component should render correctly 1`] = `
             aria-checked={false}
             className="css-view-1dbjc4n"
             data-testid="MATERIEL"
+            onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             role="radio"
             style={

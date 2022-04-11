@@ -48,7 +48,6 @@ const StyledTouchableLink = styled(TouchableLink)<{ isSelected?: boolean }>(
     alignSelf: 'center',
     height: getSpacing(11),
     paddingHorizontal: getSpacing(4),
-    outlineOffset: 0,
     borderWidth: 1,
     borderColor: isSelected ? theme.uniqueColors.brand : theme.colors.transparent,
     borderRadius: theme.borderRadius.button * 2,

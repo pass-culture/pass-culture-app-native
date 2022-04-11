@@ -84,8 +84,10 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
       aria-label="Revenir en arrière"
       className="css-view-1dbjc4n"
       data-testid="Revenir en arrière"
+      onBlur={[Function]}
       onClick={[Function]}
       onContextMenu={[Function]}
+      onFocus={[Function]}
       onKeyDown={[Function]}
       style={
         Object {

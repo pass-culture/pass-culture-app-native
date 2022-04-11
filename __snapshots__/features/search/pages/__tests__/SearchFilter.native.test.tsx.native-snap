@@ -700,8 +700,9 @@ exports[`SearchFilter component should render correctly 1`] = `
           }
         }
         accessible={true}
+        collapsable={false}
         focusable={true}
-        nativeID="testUuidV4"
+        nativeID="animatedComponent"
         onClick={[Function]}
         onLayout={[Function]}
         onResponderGrant={[Function]}
@@ -711,39 +712,35 @@ exports[`SearchFilter component should render correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "paddingHorizontal": 24,
-              "paddingVertical": 20,
-            },
-            undefined,
-          ]
+          Object {
+            "opacity": 1,
+            "userSelect": "auto",
+          }
         }
       >
-        <Text
+        <View
+          nativeID="testUuidV4"
           style={
             Array [
               Object {
-                "color": "#161617",
-                "flexBasis": 0,
-                "flexGrow": 0.9,
-                "flexShrink": 1,
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 18,
-                "lineHeight": 22,
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "paddingHorizontal": 24,
+                "paddingVertical": 20,
               },
+              undefined,
             ]
           }
         >
           <Text
-            accessibilityRole="none"
             style={
               Array [
                 Object {
                   "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 18,
                   "lineHeight": 22,
@@ -751,30 +748,44 @@ exports[`SearchFilter component should render correctly 1`] = `
               ]
             }
           >
-            Catégories
-          </Text>
-        </Text>
-        <View
-          collapsable={false}
-          nativeID="animatedComponent"
-          style={
-            Object {
-              "transform": Array [
-                Object {
-                  "rotateZ": "4.71238898038469rad",
-                },
-              ],
-            }
-          }
-          testID="accordionArrow"
-        >
-          <View
-            height={20}
-            width={20}
-          >
-            <Text>
-              undefined-SVG-Mock
+            <Text
+              accessibilityRole="none"
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 18,
+                    "lineHeight": 22,
+                  },
+                ]
+              }
+            >
+              Catégories
             </Text>
+          </Text>
+          <View
+            collapsable={false}
+            nativeID="animatedComponent"
+            style={
+              Object {
+                "transform": Array [
+                  Object {
+                    "rotateZ": "4.71238898038469rad",
+                  },
+                ],
+              }
+            }
+            testID="accordionArrow"
+          >
+            <View
+              height={20}
+              width={20}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
           </View>
         </View>
       </View>
@@ -1804,8 +1815,9 @@ exports[`SearchFilter component should render correctly 1`] = `
           }
         }
         accessible={true}
+        collapsable={false}
         focusable={true}
-        nativeID="testUuidV4"
+        nativeID="animatedComponent"
         onClick={[Function]}
         onLayout={[Function]}
         onResponderGrant={[Function]}
@@ -1815,39 +1827,35 @@ exports[`SearchFilter component should render correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "paddingHorizontal": 24,
-              "paddingVertical": 20,
-            },
-            undefined,
-          ]
+          Object {
+            "opacity": 1,
+            "userSelect": "auto",
+          }
         }
       >
-        <Text
+        <View
+          nativeID="testUuidV4"
           style={
             Array [
               Object {
-                "color": "#161617",
-                "flexBasis": 0,
-                "flexGrow": 0.9,
-                "flexShrink": 1,
-                "fontFamily": "Montserrat-Medium",
-                "fontSize": 18,
-                "lineHeight": 22,
+                "alignItems": "center",
+                "flexDirection": "row",
+                "justifyContent": "space-between",
+                "paddingHorizontal": 24,
+                "paddingVertical": 20,
               },
+              undefined,
             ]
           }
         >
           <Text
-            accessibilityRole="none"
             style={
               Array [
                 Object {
                   "color": "#161617",
+                  "flexBasis": 0,
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 18,
                   "lineHeight": 22,
@@ -1855,30 +1863,44 @@ exports[`SearchFilter component should render correctly 1`] = `
               ]
             }
           >
-            Type d'offre
-          </Text>
-        </Text>
-        <View
-          collapsable={false}
-          nativeID="animatedComponent"
-          style={
-            Object {
-              "transform": Array [
-                Object {
-                  "rotateZ": "4.71238898038469rad",
-                },
-              ],
-            }
-          }
-          testID="accordionArrow"
-        >
-          <View
-            height={20}
-            width={20}
-          >
-            <Text>
-              undefined-SVG-Mock
+            <Text
+              accessibilityRole="none"
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 18,
+                    "lineHeight": 22,
+                  },
+                ]
+              }
+            >
+              Type d'offre
             </Text>
+          </Text>
+          <View
+            collapsable={false}
+            nativeID="animatedComponent"
+            style={
+              Object {
+                "transform": Array [
+                  Object {
+                    "rotateZ": "4.71238898038469rad",
+                  },
+                ],
+              }
+            }
+            testID="accordionArrow"
+          >
+            <View
+              height={20}
+              width={20}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
           </View>
         </View>
       </View>

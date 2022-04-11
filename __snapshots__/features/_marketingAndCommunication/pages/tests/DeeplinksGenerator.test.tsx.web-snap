@@ -89,8 +89,10 @@ Array [
             aria-label="Revenir en arrière"
             className="css-view-1dbjc4n"
             data-testid="Revenir en arrière"
+            onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             style={
               Object {
@@ -304,79 +306,101 @@ Array [
             aria-controls="testUuidV4"
             aria-expanded={true}
             className="css-cursor-18t94o4 css-view-1dbjc4n"
-            id="testUuidV4"
+            onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             role="button"
             style={
               Object {
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitBoxPack": "justify",
-                "WebkitFlexDirection": "row",
-                "WebkitJustifyContent": "space-between",
-                "alignItems": "center",
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "auto",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "auto",
                 "cursor": "pointer",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "msFlexAlign": "center",
-                "msFlexDirection": "row",
-                "msFlexPack": "justify",
-                "paddingBottom": "20px",
-                "paddingLeft": "24px",
-                "paddingRight": "24px",
-                "paddingTop": "20px",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "auto",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "auto",
               }
             }
             tabIndex="0"
           >
-            <h2
-              aria-level={2}
-              className="css-reset-4rbku5 css-text-901oao"
-              dir="auto"
-              role="heading"
-              style={
-                Object {
-                  "WebkitBoxFlex": 0.9,
-                  "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 0.9,
-                  "WebkitFlexShrink": 1,
-                  "color": "rgba(22,22,23,1.00)",
-                  "flexBasis": "0px",
-                  "flexGrow": 0.9,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": "18px",
-                  "lineHeight": "22px",
-                  "msFlexNegative": 1,
-                  "msFlexPositive": 0.9,
-                  "msFlexPreferredSize": "0px",
-                }
-              }
-            >
-              Pages
-            </h2>
             <div
               className="css-view-1dbjc4n"
-              data-testid="accordionArrow"
+              id="testUuidV4"
               style={
                 Object {
-                  "WebkitTransform": "rotateZ(4.71238898038469rad)",
-                  "transform": "rotateZ(4.71238898038469rad)",
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitBoxPack": "justify",
+                  "WebkitFlexDirection": "row",
+                  "WebkitJustifyContent": "space-between",
+                  "alignItems": "center",
+                  "cursor": "pointer",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexPack": "justify",
+                  "paddingBottom": "20px",
+                  "paddingLeft": "24px",
+                  "paddingRight": "24px",
+                  "paddingTop": "20px",
                 }
               }
             >
+              <h2
+                aria-level={2}
+                className="css-reset-4rbku5 css-text-901oao"
+                dir="auto"
+                role="heading"
+                style={
+                  Object {
+                    "WebkitBoxFlex": 0.9,
+                    "WebkitFlexBasis": "0px",
+                    "WebkitFlexGrow": 0.9,
+                    "WebkitFlexShrink": 1,
+                    "color": "rgba(22,22,23,1.00)",
+                    "flexBasis": "0px",
+                    "flexGrow": 0.9,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": "18px",
+                    "lineHeight": "22px",
+                    "msFlexNegative": 1,
+                    "msFlexPositive": 0.9,
+                    "msFlexPreferredSize": "0px",
+                  }
+                }
+              >
+                Pages
+              </h2>
               <div
                 className="css-view-1dbjc4n"
+                data-testid="accordionArrow"
+                style={
+                  Object {
+                    "WebkitTransform": "rotateZ(4.71238898038469rad)",
+                    "transform": "rotateZ(4.71238898038469rad)",
+                  }
+                }
               >
                 <div
-                  className="css-text-901oao"
-                  dir="auto"
+                  className="css-view-1dbjc4n"
                 >
-                  undefined-SVG-Mock
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
                 </div>
               </div>
             </div>
@@ -422,8 +446,10 @@ Array [
                 aria-checked={false}
                 className="css-view-1dbjc4n"
                 data-testid="radio-button-Offer"
+                onBlur={[Function]}
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="radio"
                 style={
@@ -538,8 +564,10 @@ Array [
                 aria-checked={false}
                 className="css-view-1dbjc4n"
                 data-testid="radio-button-Venue"
+                onBlur={[Function]}
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="radio"
                 style={
@@ -654,8 +682,10 @@ Array [
                 aria-checked={true}
                 className="css-view-1dbjc4n"
                 data-testid="radio-button-Home"
+                onBlur={[Function]}
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="radio"
                 style={
@@ -781,8 +811,10 @@ Array [
                 aria-checked={false}
                 className="css-view-1dbjc4n"
                 data-testid="radio-button-Search"
+                onBlur={[Function]}
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="radio"
                 style={
@@ -897,8 +929,10 @@ Array [
                 aria-checked={false}
                 className="css-view-1dbjc4n"
                 data-testid="radio-button-Profile"
+                onBlur={[Function]}
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="radio"
                 style={
@@ -1013,8 +1047,10 @@ Array [
                 aria-checked={false}
                 className="css-view-1dbjc4n"
                 data-testid="radio-button-SignupForm"
+                onBlur={[Function]}
                 onClick={[Function]}
                 onContextMenu={[Function]}
+                onFocus={[Function]}
                 onKeyDown={[Function]}
                 role="radio"
                 style={
@@ -1123,79 +1159,101 @@ Array [
             aria-controls="testUuidV4"
             aria-expanded={true}
             className="css-cursor-18t94o4 css-view-1dbjc4n"
-            id="testUuidV4"
+            onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             role="button"
             style={
               Object {
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitBoxPack": "justify",
-                "WebkitFlexDirection": "row",
-                "WebkitJustifyContent": "space-between",
-                "alignItems": "center",
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "auto",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "auto",
                 "cursor": "pointer",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "msFlexAlign": "center",
-                "msFlexDirection": "row",
-                "msFlexPack": "justify",
-                "paddingBottom": "20px",
-                "paddingLeft": "24px",
-                "paddingRight": "24px",
-                "paddingTop": "20px",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "auto",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "auto",
               }
             }
             tabIndex="0"
           >
-            <h2
-              aria-level={2}
-              className="css-reset-4rbku5 css-text-901oao"
-              dir="auto"
-              role="heading"
-              style={
-                Object {
-                  "WebkitBoxFlex": 0.9,
-                  "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 0.9,
-                  "WebkitFlexShrink": 1,
-                  "color": "rgba(22,22,23,1.00)",
-                  "flexBasis": "0px",
-                  "flexGrow": 0.9,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": "18px",
-                  "lineHeight": "22px",
-                  "msFlexNegative": 1,
-                  "msFlexPositive": 0.9,
-                  "msFlexPreferredSize": "0px",
-                }
-              }
-            >
-              Paramètres applicatifs (1)
-            </h2>
             <div
               className="css-view-1dbjc4n"
-              data-testid="accordionArrow"
+              id="testUuidV4"
               style={
                 Object {
-                  "WebkitTransform": "rotateZ(4.71238898038469rad)",
-                  "transform": "rotateZ(4.71238898038469rad)",
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitBoxPack": "justify",
+                  "WebkitFlexDirection": "row",
+                  "WebkitJustifyContent": "space-between",
+                  "alignItems": "center",
+                  "cursor": "pointer",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexPack": "justify",
+                  "paddingBottom": "20px",
+                  "paddingLeft": "24px",
+                  "paddingRight": "24px",
+                  "paddingTop": "20px",
                 }
               }
             >
+              <h2
+                aria-level={2}
+                className="css-reset-4rbku5 css-text-901oao"
+                dir="auto"
+                role="heading"
+                style={
+                  Object {
+                    "WebkitBoxFlex": 0.9,
+                    "WebkitFlexBasis": "0px",
+                    "WebkitFlexGrow": 0.9,
+                    "WebkitFlexShrink": 1,
+                    "color": "rgba(22,22,23,1.00)",
+                    "flexBasis": "0px",
+                    "flexGrow": 0.9,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": "18px",
+                    "lineHeight": "22px",
+                    "msFlexNegative": 1,
+                    "msFlexPositive": 0.9,
+                    "msFlexPreferredSize": "0px",
+                  }
+                }
+              >
+                Paramètres applicatifs (1)
+              </h2>
               <div
                 className="css-view-1dbjc4n"
+                data-testid="accordionArrow"
+                style={
+                  Object {
+                    "WebkitTransform": "rotateZ(4.71238898038469rad)",
+                    "transform": "rotateZ(4.71238898038469rad)",
+                  }
+                }
               >
                 <div
-                  className="css-text-901oao"
-                  dir="auto"
+                  className="css-view-1dbjc4n"
                 >
-                  undefined-SVG-Mock
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
                 </div>
               </div>
             </div>
@@ -1381,79 +1439,101 @@ Array [
             aria-controls="testUuidV4"
             aria-expanded={true}
             className="css-cursor-18t94o4 css-view-1dbjc4n"
-            id="testUuidV4"
+            onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             role="button"
             style={
               Object {
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitBoxPack": "justify",
-                "WebkitFlexDirection": "row",
-                "WebkitJustifyContent": "space-between",
-                "alignItems": "center",
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "auto",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "auto",
                 "cursor": "pointer",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "msFlexAlign": "center",
-                "msFlexDirection": "row",
-                "msFlexPack": "justify",
-                "paddingBottom": "20px",
-                "paddingLeft": "24px",
-                "paddingRight": "24px",
-                "paddingTop": "20px",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "auto",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "auto",
               }
             }
             tabIndex="0"
           >
-            <h2
-              aria-level={2}
-              className="css-reset-4rbku5 css-text-901oao"
-              dir="auto"
-              role="heading"
-              style={
-                Object {
-                  "WebkitBoxFlex": 0.9,
-                  "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 0.9,
-                  "WebkitFlexShrink": 1,
-                  "color": "rgba(22,22,23,1.00)",
-                  "flexBasis": "0px",
-                  "flexGrow": 0.9,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": "18px",
-                  "lineHeight": "22px",
-                  "msFlexNegative": 1,
-                  "msFlexPositive": 0.9,
-                  "msFlexPreferredSize": "0px",
-                }
-              }
-            >
-              Paramètres marketing
-            </h2>
             <div
               className="css-view-1dbjc4n"
-              data-testid="accordionArrow"
+              id="testUuidV4"
               style={
                 Object {
-                  "WebkitTransform": "rotateZ(4.71238898038469rad)",
-                  "transform": "rotateZ(4.71238898038469rad)",
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitBoxPack": "justify",
+                  "WebkitFlexDirection": "row",
+                  "WebkitJustifyContent": "space-between",
+                  "alignItems": "center",
+                  "cursor": "pointer",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexPack": "justify",
+                  "paddingBottom": "20px",
+                  "paddingLeft": "24px",
+                  "paddingRight": "24px",
+                  "paddingTop": "20px",
                 }
               }
             >
+              <h2
+                aria-level={2}
+                className="css-reset-4rbku5 css-text-901oao"
+                dir="auto"
+                role="heading"
+                style={
+                  Object {
+                    "WebkitBoxFlex": 0.9,
+                    "WebkitFlexBasis": "0px",
+                    "WebkitFlexGrow": 0.9,
+                    "WebkitFlexShrink": 1,
+                    "color": "rgba(22,22,23,1.00)",
+                    "flexBasis": "0px",
+                    "flexGrow": 0.9,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": "18px",
+                    "lineHeight": "22px",
+                    "msFlexNegative": 1,
+                    "msFlexPositive": 0.9,
+                    "msFlexPreferredSize": "0px",
+                  }
+                }
+              >
+                Paramètres marketing
+              </h2>
               <div
                 className="css-view-1dbjc4n"
+                data-testid="accordionArrow"
+                style={
+                  Object {
+                    "WebkitTransform": "rotateZ(4.71238898038469rad)",
+                    "transform": "rotateZ(4.71238898038469rad)",
+                  }
+                }
               >
                 <div
-                  className="css-text-901oao"
-                  dir="auto"
+                  className="css-view-1dbjc4n"
                 >
-                  undefined-SVG-Mock
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
                 </div>
               </div>
             </div>
@@ -2077,79 +2157,101 @@ Array [
             aria-controls="testUuidV4"
             aria-expanded={false}
             className="css-cursor-18t94o4 css-view-1dbjc4n"
-            id="testUuidV4"
+            onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             role="button"
             style={
               Object {
-                "WebkitAlignItems": "center",
-                "WebkitBoxAlign": "center",
-                "WebkitBoxDirection": "normal",
-                "WebkitBoxOrient": "horizontal",
-                "WebkitBoxPack": "justify",
-                "WebkitFlexDirection": "row",
-                "WebkitJustifyContent": "space-between",
-                "alignItems": "center",
+                "MozTransitionProperty": "opacity",
+                "MozUserSelect": "auto",
+                "WebkitTransitionDuration": "0s",
+                "WebkitTransitionProperty": "opacity",
+                "WebkitUserSelect": "auto",
                 "cursor": "pointer",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "msFlexAlign": "center",
-                "msFlexDirection": "row",
-                "msFlexPack": "justify",
-                "paddingBottom": "20px",
-                "paddingLeft": "24px",
-                "paddingRight": "24px",
-                "paddingTop": "20px",
+                "msTouchAction": "manipulation",
+                "msUserSelect": "auto",
+                "touchAction": "manipulation",
+                "transitionDuration": "0s",
+                "transitionProperty": "opacity",
+                "userSelect": "auto",
               }
             }
             tabIndex="0"
           >
-            <h2
-              aria-level={2}
-              className="css-reset-4rbku5 css-text-901oao"
-              dir="auto"
-              role="heading"
-              style={
-                Object {
-                  "WebkitBoxFlex": 0.9,
-                  "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 0.9,
-                  "WebkitFlexShrink": 1,
-                  "color": "rgba(22,22,23,1.00)",
-                  "flexBasis": "0px",
-                  "flexGrow": 0.9,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": "18px",
-                  "lineHeight": "22px",
-                  "msFlexNegative": 1,
-                  "msFlexPositive": 0.9,
-                  "msFlexPreferredSize": "0px",
-                }
-              }
-            >
-              Paramètres firebase dynamic link
-            </h2>
             <div
               className="css-view-1dbjc4n"
-              data-testid="accordionArrow"
+              id="testUuidV4"
               style={
                 Object {
-                  "WebkitTransform": "rotateZ(1.5707963267948966rad)",
-                  "transform": "rotateZ(1.5707963267948966rad)",
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitBoxPack": "justify",
+                  "WebkitFlexDirection": "row",
+                  "WebkitJustifyContent": "space-between",
+                  "alignItems": "center",
+                  "cursor": "pointer",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexPack": "justify",
+                  "paddingBottom": "20px",
+                  "paddingLeft": "24px",
+                  "paddingRight": "24px",
+                  "paddingTop": "20px",
                 }
               }
             >
+              <h2
+                aria-level={2}
+                className="css-reset-4rbku5 css-text-901oao"
+                dir="auto"
+                role="heading"
+                style={
+                  Object {
+                    "WebkitBoxFlex": 0.9,
+                    "WebkitFlexBasis": "0px",
+                    "WebkitFlexGrow": 0.9,
+                    "WebkitFlexShrink": 1,
+                    "color": "rgba(22,22,23,1.00)",
+                    "flexBasis": "0px",
+                    "flexGrow": 0.9,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": "18px",
+                    "lineHeight": "22px",
+                    "msFlexNegative": 1,
+                    "msFlexPositive": 0.9,
+                    "msFlexPreferredSize": "0px",
+                  }
+                }
+              >
+                Paramètres firebase dynamic link
+              </h2>
               <div
                 className="css-view-1dbjc4n"
+                data-testid="accordionArrow"
+                style={
+                  Object {
+                    "WebkitTransform": "rotateZ(1.5707963267948966rad)",
+                    "transform": "rotateZ(1.5707963267948966rad)",
+                  }
+                }
               >
                 <div
-                  className="css-text-901oao"
-                  dir="auto"
+                  className="css-view-1dbjc4n"
                 >
-                  undefined-SVG-Mock
+                  <div
+                    className="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
                 </div>
               </div>
             </div>
@@ -2718,8 +2820,10 @@ Array [
         >
           <div
             className="css-view-1dbjc4n"
+            onBlur={[Function]}
             onClick={[Function]}
             onContextMenu={[Function]}
+            onFocus={[Function]}
             onKeyDown={[Function]}
             style={
               Object {

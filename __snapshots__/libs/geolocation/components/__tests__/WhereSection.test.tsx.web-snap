@@ -38,8 +38,10 @@ Array [
     aria-label="Lieu Le Petit Rintintin 1"
     className="css-view-1dbjc4n"
     data-testid="VenueBannerComponent"
+    onBlur={[Function]}
     onClick={[Function]}
     onContextMenu={[Function]}
+    onFocus={[Function]}
     onKeyDown={[Function]}
     style={
       Object {
@@ -287,7 +289,7 @@ exports[`WhereSection should render correctly 2`] = `
 - First value
 + Second value
 
-@@ -30,10 +30,136 @@
+@@ -30,10 +30,138 @@
           \\"height\\": \\"16px\\",
         }
       }
@@ -296,8 +298,10 @@ exports[`WhereSection should render correctly 2`] = `
 +     aria-label=\\"Lieu Le Petit Rintintin 1\\"
 +     className=\\"css-view-1dbjc4n\\"
 +     data-testid=\\"VenueBannerComponent\\"
++     onBlur={[Function onStyledBlur]}
 +     onClick={[Function onClick]}
 +     onContextMenu={[Function onContextMenu]}
++     onFocus={[Function onStyledFocus]}
 +     onKeyDown={[Function onKeyDown]}
 +     style={
 +       Object {

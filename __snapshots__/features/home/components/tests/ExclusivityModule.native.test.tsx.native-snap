@@ -46,6 +46,7 @@ exports[`ExclusivityModule component should render correctly 1`] = `
       onStartShouldSetResponder={[Function]}
       style={
         Array [
+          Object {},
           Object {
             "borderRadius": 8,
             "maxHeight": 360,

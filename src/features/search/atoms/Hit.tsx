@@ -102,6 +102,7 @@ const Container = styled(TouchableLink)({
   marginHorizontal: getSpacing(6),
   flexDirection: 'row',
   alignItems: 'center',
+  outlineOffset: 0,
 })
 
 const Column = styled.View({ flexDirection: 'column', flex: 1 })

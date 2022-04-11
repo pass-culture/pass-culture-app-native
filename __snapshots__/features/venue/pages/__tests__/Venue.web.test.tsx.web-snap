@@ -989,33 +989,38 @@ Object {
               aria-controls="testUuidV4"
               aria-expanded="false"
               class="css-cursor-18t94o4 css-view-1dbjc4n"
-              id="testUuidV4"
               role="button"
-              style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
+              style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
               tabindex="0"
             >
-              <h2
-                aria-level="2"
-                class="css-reset-4rbku5 css-text-901oao"
-                dir="auto"
-                role="heading"
-                style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
-              >
-                Modalités de retrait
-              </h2>
               <div
                 class="css-view-1dbjc4n"
-                data-testid="accordionArrow"
-                style="transform: rotateZ(1.5707963267948966rad);"
+                id="testUuidV4"
+                style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
               >
+                <h2
+                  aria-level="2"
+                  class="css-reset-4rbku5 css-text-901oao"
+                  dir="auto"
+                  role="heading"
+                  style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                >
+                  Modalités de retrait
+                </h2>
                 <div
                   class="css-view-1dbjc4n"
+                  data-testid="accordionArrow"
+                  style="transform: rotateZ(1.5707963267948966rad);"
                 >
                   <div
-                    class="css-text-901oao"
-                    dir="auto"
+                    class="css-view-1dbjc4n"
                   >
-                    undefined-SVG-Mock
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1082,33 +1087,38 @@ Object {
               aria-controls="testUuidV4"
               aria-expanded="false"
               class="css-cursor-18t94o4 css-view-1dbjc4n"
-              id="testUuidV4"
               role="button"
-              style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
+              style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
               tabindex="0"
             >
-              <h2
-                aria-level="2"
-                class="css-reset-4rbku5 css-text-901oao"
-                dir="auto"
-                role="heading"
-                style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
-              >
-                Accessibilité
-              </h2>
               <div
                 class="css-view-1dbjc4n"
-                data-testid="accordionArrow"
-                style="transform: rotateZ(1.5707963267948966rad);"
+                id="testUuidV4"
+                style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
               >
+                <h2
+                  aria-level="2"
+                  class="css-reset-4rbku5 css-text-901oao"
+                  dir="auto"
+                  role="heading"
+                  style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                >
+                  Accessibilité
+                </h2>
                 <div
                   class="css-view-1dbjc4n"
+                  data-testid="accordionArrow"
+                  style="transform: rotateZ(1.5707963267948966rad);"
                 >
                   <div
-                    class="css-text-901oao"
-                    dir="auto"
+                    class="css-view-1dbjc4n"
                   >
-                    undefined-SVG-Mock
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
                   </div>
                 </div>
               </div>
@@ -1412,33 +1422,38 @@ Object {
               aria-controls="testUuidV4"
               aria-expanded="false"
               class="css-cursor-18t94o4 css-view-1dbjc4n"
-              id="testUuidV4"
               role="button"
-              style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
+              style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
               tabindex="0"
             >
-              <h2
-                aria-level="2"
-                class="css-reset-4rbku5 css-text-901oao"
-                dir="auto"
-                role="heading"
-                style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
-              >
-                Contact
-              </h2>
               <div
                 class="css-view-1dbjc4n"
-                data-testid="accordionArrow"
-                style="transform: rotateZ(1.5707963267948966rad);"
+                id="testUuidV4"
+                style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
               >
+                <h2
+                  aria-level="2"
+                  class="css-reset-4rbku5 css-text-901oao"
+                  dir="auto"
+                  role="heading"
+                  style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+                >
+                  Contact
+                </h2>
                 <div
                   class="css-view-1dbjc4n"
+                  data-testid="accordionArrow"
+                  style="transform: rotateZ(1.5707963267948966rad);"
                 >
                   <div
-                    class="css-text-901oao"
-                    dir="auto"
+                    class="css-view-1dbjc4n"
                   >
-                    undefined-SVG-Mock
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
                   </div>
                 </div>
               </div>
@@ -2477,33 +2492,38 @@ Object {
             aria-controls="testUuidV4"
             aria-expanded="false"
             class="css-cursor-18t94o4 css-view-1dbjc4n"
-            id="testUuidV4"
             role="button"
-            style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
+            style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
             tabindex="0"
           >
-            <h2
-              aria-level="2"
-              class="css-reset-4rbku5 css-text-901oao"
-              dir="auto"
-              role="heading"
-              style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
-            >
-              Modalités de retrait
-            </h2>
             <div
               class="css-view-1dbjc4n"
-              data-testid="accordionArrow"
-              style="transform: rotateZ(1.5707963267948966rad);"
+              id="testUuidV4"
+              style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
             >
+              <h2
+                aria-level="2"
+                class="css-reset-4rbku5 css-text-901oao"
+                dir="auto"
+                role="heading"
+                style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+              >
+                Modalités de retrait
+              </h2>
               <div
                 class="css-view-1dbjc4n"
+                data-testid="accordionArrow"
+                style="transform: rotateZ(1.5707963267948966rad);"
               >
                 <div
-                  class="css-text-901oao"
-                  dir="auto"
+                  class="css-view-1dbjc4n"
                 >
-                  undefined-SVG-Mock
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
                 </div>
               </div>
             </div>
@@ -2570,33 +2590,38 @@ Object {
             aria-controls="testUuidV4"
             aria-expanded="false"
             class="css-cursor-18t94o4 css-view-1dbjc4n"
-            id="testUuidV4"
             role="button"
-            style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
+            style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
             tabindex="0"
           >
-            <h2
-              aria-level="2"
-              class="css-reset-4rbku5 css-text-901oao"
-              dir="auto"
-              role="heading"
-              style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
-            >
-              Accessibilité
-            </h2>
             <div
               class="css-view-1dbjc4n"
-              data-testid="accordionArrow"
-              style="transform: rotateZ(1.5707963267948966rad);"
+              id="testUuidV4"
+              style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
             >
+              <h2
+                aria-level="2"
+                class="css-reset-4rbku5 css-text-901oao"
+                dir="auto"
+                role="heading"
+                style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+              >
+                Accessibilité
+              </h2>
               <div
                 class="css-view-1dbjc4n"
+                data-testid="accordionArrow"
+                style="transform: rotateZ(1.5707963267948966rad);"
               >
                 <div
-                  class="css-text-901oao"
-                  dir="auto"
+                  class="css-view-1dbjc4n"
                 >
-                  undefined-SVG-Mock
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
                 </div>
               </div>
             </div>
@@ -2900,33 +2925,38 @@ Object {
             aria-controls="testUuidV4"
             aria-expanded="false"
             class="css-cursor-18t94o4 css-view-1dbjc4n"
-            id="testUuidV4"
             role="button"
-            style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
+            style="cursor: pointer; transition-duration: 0s; transition-property: opacity; user-select: auto;"
             tabindex="0"
           >
-            <h2
-              aria-level="2"
-              class="css-reset-4rbku5 css-text-901oao"
-              dir="auto"
-              role="heading"
-              style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
-            >
-              Contact
-            </h2>
             <div
               class="css-view-1dbjc4n"
-              data-testid="accordionArrow"
-              style="transform: rotateZ(1.5707963267948966rad);"
+              id="testUuidV4"
+              style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; padding: 20px 24px 20px 24px;"
             >
+              <h2
+                aria-level="2"
+                class="css-reset-4rbku5 css-text-901oao"
+                dir="auto"
+                role="heading"
+                style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
+              >
+                Contact
+              </h2>
               <div
                 class="css-view-1dbjc4n"
+                data-testid="accordionArrow"
+                style="transform: rotateZ(1.5707963267948966rad);"
               >
                 <div
-                  class="css-text-901oao"
-                  dir="auto"
+                  class="css-view-1dbjc4n"
                 >
-                  undefined-SVG-Mock
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                  >
+                    undefined-SVG-Mock
+                  </div>
                 </div>
               </div>
             </div>

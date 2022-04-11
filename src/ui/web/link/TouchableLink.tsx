@@ -1,8 +1,10 @@
 import { useLinkProps } from '@react-navigation/native'
-import React, { createRef, ElementType, memo, useEffect } from 'react'
-import { GestureResponderEvent, TouchableHighlight, Platform } from 'react-native'
+import React, { createRef, ElementType, memo, useEffect, useState } from 'react'
+import { GestureResponderEvent, NativeSyntheticEvent, Platform, TargetedEvent } from 'react-native'
+import styled from 'styled-components/native'
 
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
 import { TouchableLinkProps } from 'ui/web/link/types'
 
 function _TouchableLink({
@@ -12,10 +14,15 @@ function _TouchableLink({
   children,
   highlight = false,
   disabled,
+  onFocus,
+  onBlur,
   ...rest
 }: TouchableLinkProps) {
-  const TouchableComponent = (highlight ? TouchableHighlight : TouchableOpacity) as ElementType
+  const TouchableComponent = (
+    highlight ? StyledTouchableHighlight : StyledTouchableOpacity
+  ) as ElementType
   const linkRef = createRef<HTMLAnchorElement>()
+  const [isFocus, setIsFocus] = useState(false)
 
   const internalLinkProps = useLinkProps({ to: to ?? '' })
   const externalLinkProps = externalHref ? { href: externalHref, target: '_blank' } : {}
@@ -28,6 +35,16 @@ function _TouchableLink({
   function onClick(event: GestureResponderEvent) {
     Platform.OS === 'web' && event?.preventDefault()
     onPress && onPress(event)
+  }
+
+  function onLinkFocus(e: NativeSyntheticEvent<TargetedEvent>) {
+    setIsFocus(true)
+    onFocus && onFocus(e)
+  }
+
+  function onLinkBlur(e: NativeSyntheticEvent<TargetedEvent>) {
+    setIsFocus(false)
+    onBlur && onBlur(e)
   }
 
   // useEffect ci-dessous pour le hack en VanillaJS
@@ -48,6 +65,9 @@ function _TouchableLink({
       {...touchableOpacityProps}
       {...rest}
       disabled={disabled}
+      isFocus={isFocus}
+      onFocus={onLinkFocus}
+      onBlur={onLinkBlur}
       onPress={disabled ? undefined : onClick}>
       {children}
     </TouchableComponent>
@@ -56,3 +76,11 @@ function _TouchableLink({
 
 // memo is used to avoid useless rendering while props remain unchanged
 export const TouchableLink = memo(_TouchableLink)
+
+const StyledTouchableOpacity = styled(TouchableOpacity)<{ isFocus?: boolean }>(
+  ({ theme, isFocus }) => touchableFocusOutline(theme, isFocus)
+)
+
+const StyledTouchableHighlight = styled.TouchableHighlight<{ isFocus?: boolean }>(
+  ({ theme, isFocus }) => touchableFocusOutline(theme, isFocus)
+)
