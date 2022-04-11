@@ -11,6 +11,7 @@ function _TouchableLink({
   externalHref,
   children,
   highlight = false,
+  disabled,
   ...rest
 }: TouchableLinkProps) {
   const TouchableComponent = (highlight ? TouchableHighlight : TouchableOpacity) as ElementType
@@ -20,7 +21,7 @@ function _TouchableLink({
   const externalLinkProps = externalHref ? { href: externalHref, target: '_blank' } : {}
   const linkProps = to ? internalLinkProps : externalLinkProps
   const touchableOpacityProps =
-    Platform.OS === 'web'
+    Platform.OS === 'web' && !disabled
       ? { ...linkProps, accessibilityRole: undefined }
       : { accessibilityRole: 'link' }
 
@@ -43,7 +44,11 @@ function _TouchableLink({
   }, [])
 
   return (
-    <TouchableComponent {...touchableOpacityProps} {...rest} onPress={onClick}>
+    <TouchableComponent
+      {...touchableOpacityProps}
+      {...rest}
+      disabled={disabled}
+      onPress={disabled ? undefined : onClick}>
       {children}
     </TouchableComponent>
   )

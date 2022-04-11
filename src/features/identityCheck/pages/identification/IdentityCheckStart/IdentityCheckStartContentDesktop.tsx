@@ -51,7 +51,7 @@ export function IdentityCheckStartContentDesktop({
         <ButtonTertiaryBlack
           wording={t`Identification par le site Démarches-Simplifiées`}
           onPress={showDMSModal}
-          icon={ExternalSiteFilled}
+          icon={ExternalFilledIcon}
         />
         <StyledCaption>{t`Environ 10 jours`}</StyledCaption>
       </DMSInformationContainer>
@@ -76,6 +76,8 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
 const StyledCaption = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
+
+const ExternalFilledIcon = styled(ExternalSiteFilled).attrs({ accessibilityLabel: '' })``
 
 const ContentDesktopContainer = styled.View({ marginHorizontal: getSpacing(2) })
 

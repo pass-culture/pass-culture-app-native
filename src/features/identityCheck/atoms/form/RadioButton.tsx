@@ -12,7 +12,11 @@ interface Props {
 }
 
 export const RadioButton = ({ name, description, selected, onPress }: Props) => (
-  <Label selected={selected} onPress={() => onPress(name)}>
+  <Label
+    accessibilityRole="radio"
+    accessibilityState={{ checked: selected }}
+    selected={selected}
+    onPress={() => onPress(name)}>
     <TextContainer>
       <ButtonText selected={selected}>{name}</ButtonText>
       {description ? <Caption>{description}</Caption> : null}

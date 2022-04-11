@@ -133,7 +133,7 @@ export const SetAddress = () => {
       scrollChildren={
         <React.Fragment>
           {!!isLoading && <Spinner />}
-          <AdressesContainer>
+          <AdressesContainer accessibilityRole="radiogroup">
             {addresses.map((address, index) => (
               <AddressOption
                 label={address}
@@ -149,6 +149,7 @@ export const SetAddress = () => {
       }
       fixedBottomChildren={
         <ButtonPrimary
+          type="submit"
           onPress={submitAddress}
           wording={t`Continuer`}
           accessibilityLabel={t`Continuer vers l'étape suivante`}

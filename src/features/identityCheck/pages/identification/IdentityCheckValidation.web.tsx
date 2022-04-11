@@ -13,6 +13,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typography'
 
 export function IdentityCheckValidation() {
   const { params } = useRoute<UseRouteType<'IdentityCheckValidation'>>()
@@ -61,19 +62,20 @@ export function IdentityCheckValidation() {
           <Spacer.Column numberOfSpaces={6} />
           <Body>{t`Ton prénom`}</Body>
           <Spacer.Column numberOfSpaces={2} />
-          <Typo.Title3 testID="validation-first-name">{identification.firstName}</Typo.Title3>
+          <TextToValidate testID="validation-first-name">{identification.firstName}</TextToValidate>
           <Spacer.Column numberOfSpaces={5} />
           <Body>{t`Ton nom de famille`}</Body>
           <Spacer.Column numberOfSpaces={2} />
-          <Typo.Title3 testID="validation-name">{identification.lastName}</Typo.Title3>
+          <TextToValidate testID="validation-name">{identification.lastName}</TextToValidate>
           <Spacer.Column numberOfSpaces={5} />
           <Body>{t`Ta date de naissance`}</Body>
           <Spacer.Column numberOfSpaces={2} />
-          <Typo.Title3 testID="validation-birth-date">{birthDate}</Typo.Title3>
+          <TextToValidate testID="validation-birth-date">{birthDate}</TextToValidate>
         </BodyContainer>
       }
       fixedBottomChildren={
         <ButtonPrimary
+          type="submit"
           wording={t`Valider mes informations`}
           onPress={navigateToNextEduConnectStep}
         />
@@ -89,3 +91,5 @@ const BodyContainer = styled.View({
 const Body = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
+
+const TextToValidate = styled(Typo.Title3).attrs(getHeadingAttrs(undefined))``

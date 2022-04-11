@@ -120,7 +120,7 @@ export const SetCity = () => {
       scrollChildren={
         <React.Fragment>
           {!!isLoading && <Spinner />}
-          <CitiesContainer>
+          <CitiesContainer accessibilityRole="radiogroup">
             <VerticalUl>
               {cities.map((city, index) => (
                 <Li key={city.name}>
@@ -143,6 +143,7 @@ export const SetCity = () => {
       }
       fixedBottomChildren={
         <ButtonPrimary
+          type="submit"
           onPress={submitCity}
           wording={t`Continuer`}
           accessibilityLabel={t`Continuer vers l'étape suivante`}

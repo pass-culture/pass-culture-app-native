@@ -1,29 +1,34 @@
+import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { StepConfig } from 'features/identityCheck/types'
+import { AllNavParamList } from 'features/navigation/RootNavigator'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
+import { TouchableLink } from 'ui/web/link/TouchableLink'
+import { To } from 'ui/web/link/types'
 
 export type StepButtonState = 'completed' | 'current' | 'disabled'
 
 interface Props {
   step: StepConfig
   state: StepButtonState
+  to?: To<AllNavParamList, keyof AllNavParamList>
   onPress?: () => void
 }
 
-export const StepButton = ({ step, state, onPress }: Props) => {
+export const StepButton = ({ step, state, to, onPress }: Props) => {
   const { icon: Icon, label } = step
 
   return (
-    <StyledTouchableOpacity
+    <StyledTouchableLink
+      to={to}
       onPress={onPress}
       disabled={state !== 'current'}
       state={state}
-      {...accessibilityAndTestId(label)}>
+      {...accessibilityAndTestId(undefined, label)}>
       <IconContainer>
         <Icon />
       </IconContainer>
@@ -31,14 +36,17 @@ export const StepButton = ({ step, state, onPress }: Props) => {
       <CompletionContainer>
         <Validate
           isCompleted={state === 'completed'}
-          {...accessibilityAndTestId(state === 'completed' ? 'StepCompleted' : 'StepNotCompleted')}
+          {...accessibilityAndTestId(
+            state === 'completed' ? t`Complété` : '',
+            state === 'completed' ? 'StepCompleted' : 'StepNotCompleted'
+          )}
         />
       </CompletionContainer>
-    </StyledTouchableOpacity>
+    </StyledTouchableLink>
   )
 }
 
-const StyledTouchableOpacity = styled(TouchableOpacity)<{
+const StyledTouchableLink = styled(TouchableLink)<{
   disabled: boolean
   state: StepButtonState
 }>(({ state, theme }) => ({

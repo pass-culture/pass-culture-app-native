@@ -144,6 +144,7 @@ Object {
                   >
                     <div
                       class="css-view-1dbjc4n"
+                      role="radiogroup"
                       style="box-sizing: content-box; flex-grow: 1; overflow-y: scroll;"
                     >
                       <ul
@@ -161,7 +162,7 @@ Object {
                     class="sc-bdvvtL hWVHSw sc-eCImPb cYRLFR"
                     data-testid="Continuer vers l'étape suivante"
                     disabled=""
-                    type="button"
+                    type="submit"
                   >
                     <div
                       class="css-text-901oao css-textMultiLine-cens5h"
@@ -338,6 +339,7 @@ Object {
                 >
                   <div
                     class="css-view-1dbjc4n"
+                    role="radiogroup"
                     style="box-sizing: content-box; flex-grow: 1; overflow-y: scroll;"
                   >
                     <ul
@@ -355,7 +357,7 @@ Object {
                   class="sc-bdvvtL hWVHSw sc-eCImPb cYRLFR"
                   data-testid="Continuer vers l'étape suivante"
                   disabled=""
-                  type="button"
+                  type="submit"
                 >
                   <div
                     class="css-text-901oao css-textMultiLine-cens5h"

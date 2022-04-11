@@ -12,6 +12,7 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
+import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Spacer, Typo } from 'ui/theme'
 
 export const IdentityCheckEduConnect = () => {
@@ -19,7 +20,7 @@ export const IdentityCheckEduConnect = () => {
   const { dispatch } = useIdentityCheckContext()
   const { goBack } = useGoBack(...homeNavConfig)
 
-  const { error, openEduConnect } = useEduConnectLogin()
+  const { error, loginUrl, openEduConnect } = useEduConnectLogin()
 
   const onGoBack = () => {
     dispatch({ type: 'SET_METHOD', payload: null })
@@ -62,7 +63,12 @@ export const IdentityCheckEduConnect = () => {
         </Container>
       }
       fixedBottomChildren={
-        <ButtonPrimary wording={`Connexion avec ÉduConnect`} onPress={onSubmit} />
+        <ButtonPrimary
+          wording={`Connexion avec ÉduConnect`}
+          externalHref={loginUrl}
+          onPress={onSubmit}
+          icon={ExternalSite}
+        />
       }
     />
   )

@@ -330,6 +330,7 @@ exports[`<SetCity/> should render correctly 1`] = `
           >
             <View>
               <View
+                accessibilityRole="radiogroup"
                 style={
                   Array [
                     Object {

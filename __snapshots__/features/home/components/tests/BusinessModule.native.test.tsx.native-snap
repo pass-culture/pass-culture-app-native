@@ -29,7 +29,7 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
       }
     }
     accessible={true}
-    focusable={true}
+    focusable={false}
     onClick={[Function]}
     onResponderGrant={[Function]}
     onResponderMove={[Function]}

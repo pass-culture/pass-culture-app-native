@@ -129,6 +129,7 @@ Object {
                         >
                           <input
                             aria-describedby="testUuidV4"
+                            aria-required="true"
                             autocapitalize="sentences"
                             autocomplete="on"
                             autocorrect="on"
@@ -185,6 +186,7 @@ Object {
                         >
                           <input
                             aria-describedby="testUuidV4"
+                            aria-required="true"
                             autocapitalize="sentences"
                             autocomplete="on"
                             autocorrect="on"
@@ -216,7 +218,7 @@ Object {
                     class="sc-bdvvtL hWVHSw sc-dkPtRN cRlcLC"
                     data-testid="Continuer vers l'étape suivante"
                     disabled=""
-                    type="button"
+                    type="submit"
                   >
                     <div
                       class="css-text-901oao css-textMultiLine-cens5h"
@@ -378,6 +380,7 @@ Object {
                       >
                         <input
                           aria-describedby="testUuidV4"
+                          aria-required="true"
                           autocapitalize="sentences"
                           autocomplete="on"
                           autocorrect="on"
@@ -434,6 +437,7 @@ Object {
                       >
                         <input
                           aria-describedby="testUuidV4"
+                          aria-required="true"
                           autocapitalize="sentences"
                           autocomplete="on"
                           autocorrect="on"
@@ -465,7 +469,7 @@ Object {
                   class="sc-bdvvtL hWVHSw sc-dkPtRN cRlcLC"
                   data-testid="Continuer vers l'étape suivante"
                   disabled=""
-                  type="button"
+                  type="submit"
                 >
                   <div
                     class="css-text-901oao css-textMultiLine-cens5h"

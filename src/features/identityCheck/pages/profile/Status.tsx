@@ -78,6 +78,7 @@ export const Status = () => {
       }
       fixedBottomChildren={
         <ButtonPrimary
+          type="submit"
           onPress={submitStatus}
           wording={!selectedStatus ? t`Choisis ton statut` : t`Continuer`}
           accessibilityLabel={

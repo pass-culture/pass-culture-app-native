@@ -1110,6 +1110,7 @@ Array [
                   testID="styled-input-container"
                 >
                   <TextInput
+                    aria-required={false}
                     editable={true}
                     nativeID="testUuidV4"
                     onBlur={[Function]}
@@ -1338,6 +1339,7 @@ Array [
                   testID="styled-input-container"
                 >
                   <TextInput
+                    aria-required={false}
                     editable={true}
                     nativeID="testUuidV4"
                     onBlur={[Function]}
@@ -1461,6 +1463,7 @@ Array [
                   testID="styled-input-container"
                 >
                   <TextInput
+                    aria-required={false}
                     editable={true}
                     nativeID="testUuidV4"
                     onBlur={[Function]}
@@ -1584,6 +1587,7 @@ Array [
                   testID="styled-input-container"
                 >
                   <TextInput
+                    aria-required={false}
                     editable={true}
                     nativeID="testUuidV4"
                     onBlur={[Function]}
@@ -1707,6 +1711,7 @@ Array [
                   testID="styled-input-container"
                 >
                   <TextInput
+                    aria-required={false}
                     editable={true}
                     nativeID="testUuidV4"
                     onBlur={[Function]}
@@ -1935,6 +1940,7 @@ Array [
                   testID="styled-input-container"
                 >
                   <TextInput
+                    aria-required={false}
                     editable={true}
                     nativeID="testUuidV4"
                     onBlur={[Function]}

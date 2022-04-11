@@ -390,6 +390,7 @@ Array [
           >
             <TextInput
               aria-describedby="testUuidV4"
+              aria-required={true}
               autoCapitalize="none"
               autoComplete="email"
               disabled={true}
@@ -1033,6 +1034,7 @@ Array [
           >
             <TextInput
               aria-describedby="testUuidV4"
+              aria-required={true}
               autoCapitalize="none"
               autoComplete="email"
               disabled={false}
