@@ -215,6 +215,12 @@ exports[`<Status/> should render correctly 1`] = `
           >
             <View>
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -271,6 +277,12 @@ exports[`<Status/> should render correctly 1`] = `
                 </View>
               </View>
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -327,6 +339,12 @@ exports[`<Status/> should render correctly 1`] = `
                 </View>
               </View>
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -383,6 +401,12 @@ exports[`<Status/> should render correctly 1`] = `
                 </View>
               </View>
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -439,6 +463,12 @@ exports[`<Status/> should render correctly 1`] = `
                 </View>
               </View>
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -495,6 +525,12 @@ exports[`<Status/> should render correctly 1`] = `
                 </View>
               </View>
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -551,6 +587,12 @@ exports[`<Status/> should render correctly 1`] = `
                 </View>
               </View>
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -621,6 +663,12 @@ exports[`<Status/> should render correctly 1`] = `
                 </View>
               </View>
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -691,6 +739,12 @@ exports[`<Status/> should render correctly 1`] = `
                 </View>
               </View>
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}

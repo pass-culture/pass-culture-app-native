@@ -143,6 +143,7 @@ Object {
                 >
                   <input
                     aria-describedby="testUuidV4"
+                    aria-required="true"
                     autocapitalize="none"
                     autocomplete="email"
                     autocorrect="on"
@@ -411,6 +412,7 @@ Object {
               >
                 <input
                   aria-describedby="testUuidV4"
+                  aria-required="true"
                   autocapitalize="none"
                   autocomplete="email"
                   autocorrect="on"

@@ -320,6 +320,15 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
               }
               testID="Connexion avec ÉduConnect"
             >
+              <View
+                height={24}
+                testID="button-icon"
+                width={24}
+              >
+                <Text>
+                  button-icon-SVG-Mock
+                </Text>
+              </View>
               <Text
                 adjustsFontSizeToFit={false}
                 numberOfLines={1}
@@ -330,7 +339,7 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 15,
                       "lineHeight": 20,
-                      "marginLeft": 0,
+                      "marginLeft": 8,
                       "maxWidth": "100%",
                     },
                   ]

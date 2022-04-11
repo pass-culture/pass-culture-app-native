@@ -11,38 +11,23 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
   visible={true}
 >
   <View
-    accessibilityState={
-      Object {
-        "disabled": true,
-      }
-    }
-    accessible={true}
-    collapsable={false}
-    focusable={false}
-    nativeID="animatedComponent"
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
+    maxHeight={1254}
     style={
-      Object {
-        "alignItems": "center",
-        "alignSelf": "center",
-        "bottom": 0,
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-        "height": "100%",
-        "maxHeight": "100%",
-        "maxWidth": 960,
-        "opacity": 1,
-        "position": "absolute",
-        "userSelect": "auto",
-        "width": "100%",
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "bottom": 0,
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "height": "100%",
+          "maxHeight": "100%",
+          "maxWidth": 960,
+          "position": "absolute",
+          "width": "100%",
+        },
+      ]
     }
   >
     <View

@@ -329,6 +329,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
           >
             <View>
               <View
+                accessibilityRole="radiogroup"
                 style={
                   Array [
                     Object {

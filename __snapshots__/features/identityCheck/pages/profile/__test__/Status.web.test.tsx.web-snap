@@ -101,7 +101,9 @@ Object {
                       >
                         <li>
                           <div
+                            aria-checked="false"
                             class="css-view-1dbjc4n"
+                            role="radio"
                             style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                             tabindex="0"
                           >
@@ -121,7 +123,9 @@ Object {
                         </li>
                         <li>
                           <div
+                            aria-checked="false"
                             class="css-view-1dbjc4n"
+                            role="radio"
                             style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                             tabindex="0"
                           >
@@ -141,7 +145,9 @@ Object {
                         </li>
                         <li>
                           <div
+                            aria-checked="false"
                             class="css-view-1dbjc4n"
+                            role="radio"
                             style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                             tabindex="0"
                           >
@@ -161,7 +167,9 @@ Object {
                         </li>
                         <li>
                           <div
+                            aria-checked="false"
                             class="css-view-1dbjc4n"
+                            role="radio"
                             style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                             tabindex="0"
                           >
@@ -181,7 +189,9 @@ Object {
                         </li>
                         <li>
                           <div
+                            aria-checked="false"
                             class="css-view-1dbjc4n"
+                            role="radio"
                             style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                             tabindex="0"
                           >
@@ -201,7 +211,9 @@ Object {
                         </li>
                         <li>
                           <div
+                            aria-checked="false"
                             class="css-view-1dbjc4n"
+                            role="radio"
                             style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                             tabindex="0"
                           >
@@ -221,7 +233,9 @@ Object {
                         </li>
                         <li>
                           <div
+                            aria-checked="false"
                             class="css-view-1dbjc4n"
+                            role="radio"
                             style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                             tabindex="0"
                           >
@@ -248,7 +262,9 @@ Object {
                         </li>
                         <li>
                           <div
+                            aria-checked="false"
                             class="css-view-1dbjc4n"
+                            role="radio"
                             style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                             tabindex="0"
                           >
@@ -275,7 +291,9 @@ Object {
                         </li>
                         <li>
                           <div
+                            aria-checked="false"
                             class="css-view-1dbjc4n"
+                            role="radio"
                             style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                             tabindex="0"
                           >
@@ -313,7 +331,7 @@ Object {
                     class="sc-bdvvtL hWVHSw sc-dkPtRN cRlcLC"
                     data-testid="Choisis ton statut"
                     disabled=""
-                    type="button"
+                    type="submit"
                   >
                     <div
                       class="css-text-901oao css-textMultiLine-cens5h"
@@ -447,7 +465,9 @@ Object {
                     >
                       <li>
                         <div
+                          aria-checked="false"
                           class="css-view-1dbjc4n"
+                          role="radio"
                           style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                           tabindex="0"
                         >
@@ -467,7 +487,9 @@ Object {
                       </li>
                       <li>
                         <div
+                          aria-checked="false"
                           class="css-view-1dbjc4n"
+                          role="radio"
                           style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                           tabindex="0"
                         >
@@ -487,7 +509,9 @@ Object {
                       </li>
                       <li>
                         <div
+                          aria-checked="false"
                           class="css-view-1dbjc4n"
+                          role="radio"
                           style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                           tabindex="0"
                         >
@@ -507,7 +531,9 @@ Object {
                       </li>
                       <li>
                         <div
+                          aria-checked="false"
                           class="css-view-1dbjc4n"
+                          role="radio"
                           style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                           tabindex="0"
                         >
@@ -527,7 +553,9 @@ Object {
                       </li>
                       <li>
                         <div
+                          aria-checked="false"
                           class="css-view-1dbjc4n"
+                          role="radio"
                           style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                           tabindex="0"
                         >
@@ -547,7 +575,9 @@ Object {
                       </li>
                       <li>
                         <div
+                          aria-checked="false"
                           class="css-view-1dbjc4n"
+                          role="radio"
                           style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                           tabindex="0"
                         >
@@ -567,7 +597,9 @@ Object {
                       </li>
                       <li>
                         <div
+                          aria-checked="false"
                           class="css-view-1dbjc4n"
+                          role="radio"
                           style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                           tabindex="0"
                         >
@@ -594,7 +626,9 @@ Object {
                       </li>
                       <li>
                         <div
+                          aria-checked="false"
                           class="css-view-1dbjc4n"
+                          role="radio"
                           style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                           tabindex="0"
                         >
@@ -621,7 +655,9 @@ Object {
                       </li>
                       <li>
                         <div
+                          aria-checked="false"
                           class="css-view-1dbjc4n"
+                          role="radio"
                           style="align-items: center; border-top-color: rgba(203,205,210,1.00); border-right-color: rgba(203,205,210,1.00); border-bottom-color: rgba(203,205,210,1.00); border-left-color: rgba(203,205,210,1.00); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; cursor: pointer; flex-direction: row; height: 48px; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto; width: 100%;"
                           tabindex="0"
                         >
@@ -659,7 +695,7 @@ Object {
                   class="sc-bdvvtL hWVHSw sc-dkPtRN cRlcLC"
                   data-testid="Choisis ton statut"
                   disabled=""
-                  type="button"
+                  type="submit"
                 >
                   <div
                     class="css-text-901oao css-textMultiLine-cens5h"

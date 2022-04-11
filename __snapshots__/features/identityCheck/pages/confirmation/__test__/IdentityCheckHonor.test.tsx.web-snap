@@ -375,7 +375,7 @@ exports[`<IdentityCheckHonor/> should render correctly 1`] = `
                   onClick={[Function]}
                   onDoubleClick={[Function]}
                   tabIndex={0}
-                  type="button"
+                  type="submit"
                 >
                   <div
                     className="css-text-901oao css-textMultiLine-cens5h"

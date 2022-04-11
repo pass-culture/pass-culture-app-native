@@ -313,6 +313,7 @@ exports[`<SetName/> should render correctly 1`] = `
                 >
                   <TextInput
                     aria-describedby="testUuidV4"
+                    aria-required={true}
                     editable={true}
                     nativeID="testUuidV4"
                     onBlur={[Function]}
@@ -452,6 +453,7 @@ exports[`<SetName/> should render correctly 1`] = `
                 >
                   <TextInput
                     aria-describedby="testUuidV4"
+                    aria-required={true}
                     editable={true}
                     nativeID="testUuidV4"
                     onBlur={[Function]}

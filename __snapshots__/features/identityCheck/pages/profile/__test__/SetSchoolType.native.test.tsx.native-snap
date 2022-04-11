@@ -215,6 +215,12 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
           >
             <View>
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -271,6 +277,12 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                 </View>
               </View>
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -325,6 +337,12 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                 </View>
               </View>
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -379,6 +397,12 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                 </View>
               </View>
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -433,6 +457,12 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                 </View>
               </View>
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -487,6 +517,12 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                 </View>
               </View>
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -557,6 +593,12 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                 </View>
               </View>
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -944,6 +986,12 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
           >
             <View>
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -1000,6 +1048,12 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                 </View>
               </View>
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}
@@ -1056,6 +1110,12 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                 </View>
               </View>
               <View
+                accessibilityRole="radio"
+                accessibilityState={
+                  Object {
+                    "checked": false,
+                  }
+                }
                 accessible={true}
                 collapsable={false}
                 focusable={true}

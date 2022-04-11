@@ -1297,6 +1297,7 @@ Array [
                   }
                 >
                   <input
+                    aria-required={false}
                     autoCapitalize="sentences"
                     autoComplete="on"
                     autoCorrect="on"
@@ -1554,6 +1555,7 @@ Array [
                   }
                 >
                   <input
+                    aria-required={false}
                     autoCapitalize="sentences"
                     autoComplete="on"
                     autoCorrect="on"
@@ -1699,6 +1701,7 @@ Array [
                   }
                 >
                   <input
+                    aria-required={false}
                     autoCapitalize="sentences"
                     autoComplete="on"
                     autoCorrect="on"
@@ -1844,6 +1847,7 @@ Array [
                   }
                 >
                   <input
+                    aria-required={false}
                     autoCapitalize="sentences"
                     autoComplete="on"
                     autoCorrect="on"
@@ -1989,6 +1993,7 @@ Array [
                   }
                 >
                   <input
+                    aria-required={false}
                     autoCapitalize="sentences"
                     autoComplete="on"
                     autoCorrect="on"
@@ -2246,6 +2251,7 @@ Array [
                   }
                 >
                   <input
+                    aria-required={false}
                     autoCapitalize="sentences"
                     autoComplete="on"
                     autoCorrect="on"
