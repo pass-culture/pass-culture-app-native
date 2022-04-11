@@ -11,8 +11,7 @@ import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { InputError } from 'ui/components/inputs/InputError'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { Validate } from 'ui/svg/icons/Validate'
+import { RadioButton } from 'ui/components/RadioButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
@@ -80,18 +79,15 @@ export const FavoritesSorts: React.FC = () => {
             const isSelected = stagedSelectedSortBy === sortBy
             return (
               <Li key={sortBy}>
-                <StyledTouchableOpacity
-                  accessibilityRole="radio"
-                  accessibilityState={{ checked: isSelected }}
-                  accessibilityLabel={t`Trier par` + ` ${label}`}
+                <RadioButton
                   key={sortBy}
-                  onPress={() => onSortBySelection(sortBy)}
-                  testID={sortBy}>
-                  <LabelContainer>
-                    <Label isSelected={isSelected}>{label}</Label>
-                  </LabelContainer>
-                  {!!isSelected && <ValidateIconPrimary />}
-                </StyledTouchableOpacity>
+                  label={label}
+                  isSelected={isSelected}
+                  onSelect={() => onSortBySelection(sortBy)}
+                  accessibilityLabel={t`Trier par` + ` ${label}`}
+                  marginVertical={getSpacing(3)}
+                  testID={sortBy}
+                />
                 <InputError
                   visible={!!(sortBy === 'AROUND_ME' && positionError)}
                   messageId={positionError?.message}
@@ -125,29 +121,6 @@ const TitleContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
 })
-
-const StyledTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
-  minHeight: theme.icons.sizes.small,
-  marginVertical: getSpacing(3),
-  flexDirection: 'row',
-  alignItems: 'center',
-  justifyContent: theme.isMobileViewport ? 'space-between' : undefined,
-}))
-
-const LabelContainer = styled.View(({ theme }) => ({
-  marginRight: theme.isMobileViewport ? 0 : getSpacing(6),
-}))
-
-const Label = styled(Typo.ButtonText).attrs({
-  numberOfLines: 2,
-})<{ isSelected: boolean }>(({ isSelected, theme }) => ({
-  color: isSelected ? theme.colors.primary : theme.colors.black,
-}))
-
-const ValidateIconPrimary = styled(Validate).attrs(({ theme }) => ({
-  color: theme.colors.primary,
-  size: theme.icons.sizes.small,
-}))``
 
 const ButtonContainer = styled.View({
   padding: getSpacing(5),

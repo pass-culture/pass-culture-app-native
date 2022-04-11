@@ -3,13 +3,13 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { DateFilter } from 'features/search/atoms/Buttons'
 import { CalendarPicker } from 'features/search/components'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { SectionTitle } from 'features/search/sections/titles'
 import { useLogFilterOnce } from 'features/search/utils/useLogFilterOnce'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
+import { RadioButton } from 'ui/components/RadioButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
@@ -52,34 +52,34 @@ export function OfferDate({ setScrollEnabled }: Props) {
         <Spacer.Column numberOfSpaces={4} />
         <VerticalUl>
           <Li>
-            <DateFilter
-              text={t`Aujourd'hui`}
+            <RadioButton
+              label={t`Aujourd'hui`}
               isSelected={option === DATE_FILTER_OPTIONS.TODAY}
-              onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.TODAY)}
+              onSelect={selectDateFilterOption(DATE_FILTER_OPTIONS.TODAY)}
             />
             <Spacer.Column numberOfSpaces={4} />
           </Li>
           <Li>
-            <DateFilter
-              text={t`Cette semaine`}
+            <RadioButton
+              label={t`Cette semaine`}
               isSelected={option === DATE_FILTER_OPTIONS.CURRENT_WEEK}
-              onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.CURRENT_WEEK)}
+              onSelect={selectDateFilterOption(DATE_FILTER_OPTIONS.CURRENT_WEEK)}
             />
             <Spacer.Column numberOfSpaces={4} />
           </Li>
           <Li>
-            <DateFilter
-              text={t`Ce week-end`}
+            <RadioButton
+              label={t`Ce week-end`}
               isSelected={option === DATE_FILTER_OPTIONS.CURRENT_WEEK_END}
-              onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.CURRENT_WEEK_END)}
+              onSelect={selectDateFilterOption(DATE_FILTER_OPTIONS.CURRENT_WEEK_END)}
             />
             <Spacer.Column numberOfSpaces={4} />
           </Li>
           <Li>
-            <DateFilter
-              text={t`Date précise`}
+            <RadioButton
+              label={t`Date précise`}
               isSelected={option === DATE_FILTER_OPTIONS.USER_PICK}
-              onPress={selectDateFilterOption(DATE_FILTER_OPTIONS.USER_PICK)}
+              onSelect={selectDateFilterOption(DATE_FILTER_OPTIONS.USER_PICK)}
               description={
                 option === DATE_FILTER_OPTIONS.USER_PICK
                   ? formatToCompleteFrenchDate(selectedDate)

@@ -1,4 +1,3 @@
-export * from './DateFilter'
 export * from './Filter'
 export * from './ReinitializeFilters'
 export * from './Search'

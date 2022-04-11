@@ -1,55 +1,73 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React, { useState } from 'react'
 
+import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
+import { JeuxVideo } from 'ui/svg/icons/categories/bicolor/JeuxVideo'
+import { EditPen } from 'ui/svg/icons/EditPen'
+import { Email } from 'ui/svg/icons/Email'
+
 import { RadioButton } from './RadioButton'
 
 export default {
   title: 'ui/inputs/RadioButton',
   component: RadioButton,
+  argTypes: {
+    icon: selectArgTypeFromObject({
+      Email,
+      EditPen,
+      JeuxVideo,
+    }),
+  },
 } as ComponentMeta<typeof RadioButton>
 
 const Template: ComponentStory<typeof RadioButton> = (args) => <RadioButton {...args} />
 
 export const Default = Template.bind({})
 Default.args = {
-  id: '1',
-  title: 'item 1',
+  label: 'label 1',
 }
 
 export const WithDescription = Template.bind({})
 WithDescription.args = {
-  id: '1',
-  title: 'item 1',
-  description: 'description item 1',
+  label: 'label 1',
+  description: 'description label 1',
 }
 
 export const WithSelectedValue = Template.bind({})
 WithSelectedValue.args = {
-  id: '1',
-  title: 'item 1',
-  selectedValue: '1',
+  label: 'label 1',
+  isSelected: true,
 }
 
 export const WithSelectedValueAndDescription = Template.bind({})
 WithSelectedValueAndDescription.args = {
-  id: '1',
-  title: 'item 1',
-  selectedValue: '1',
+  label: 'label 1',
   description: 'description item 1',
 }
 
+export const WithIcon = Template.bind({})
+WithIcon.args = {
+  label: 'label 1',
+  description: 'description item 1',
+  icon: JeuxVideo,
+}
+
+const items = [{ label: 'label 1' }, { label: 'label 2' }, { label: 'label 3' }]
 const ListTemplate = () => {
   const [selectedValue, setSelectedRadioButton] = useState('')
-  const items = [
-    { id: '1', title: 'item 1', onSelect: setSelectedRadioButton, selectedValue },
-    { id: '2', title: 'item 2', onSelect: setSelectedRadioButton, selectedValue },
-    { id: '3', title: 'item 3', onSelect: setSelectedRadioButton, selectedValue },
-  ]
   return (
     <React.Fragment>
-      {items.map((item) => (
-        <RadioButton key={item.id} {...item} />
-      ))}
+      {items.map((item) => {
+        const isSelected = selectedValue === item.label
+        return (
+          <RadioButton
+            key={item.label}
+            onSelect={() => setSelectedRadioButton(item.label)}
+            isSelected={isSelected}
+            {...item}
+          />
+        )
+      })}
     </React.Fragment>
   )
 }

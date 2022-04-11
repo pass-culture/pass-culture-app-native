@@ -1,65 +1,95 @@
-import React from 'react'
-import styled from 'styled-components/native'
-import { useTheme } from 'styled-components/native'
+import React, { FunctionComponent } from 'react'
+import { View } from 'react-native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
+import { IconInterface } from 'ui/svg/icons/types'
+import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface RadioButtonProps {
-  id: string
-  title: string
+  key?: string
+  label: string
   description?: string
   onSelect: (value: string) => void
-  selectedValue: string
+  isSelected: boolean
+  icon?: FunctionComponent<IconInterface>
+  accessibilityLabel?: string
+  testID?: string
+  marginVertical?: number
 }
 
 export function RadioButton(props: RadioButtonProps) {
   const { isMobileViewport } = useTheme()
-  const TitleContainer = isMobileViewport ? TitleContainerFlex : TitleContainerWithMarginRight
+  const LabelContainer = isMobileViewport ? LabelContainerFlex : LabelContainerWithMarginRight
+  const StyledIcon =
+    !!props.icon &&
+    styled(props.icon).attrs(({ theme }) => ({
+      color: theme.colors.primary,
+      color2: props.isSelected ? theme.colors.primary : theme.colors.secondary,
+      size: theme.icons.sizes.small,
+    }))``
 
-  const selected = props.selectedValue === props.id
   return (
-    <PressableContainer
-      key={props.id}
-      onPress={() => props.onSelect(props.id)}
+    <StyledTouchableOpacity
+      key={props.key}
       accessibilityRole="radio"
-      accessibilityState={{ checked: selected }}
-      testID={`radio-button-${props.id}`}>
-      <TitleContainer>
-        <Title isSelected={selected}>{props.title}</Title>
-        {!!props.description && <Subtitle>{props.description}</Subtitle>}
-      </TitleContainer>
-      <Spacer.Flex flex={0.1}>{!!selected && <Validate />}</Spacer.Flex>
-    </PressableContainer>
+      accessibilityState={{ checked: props.isSelected }}
+      accessibilityLabel={props.accessibilityLabel}
+      onPress={() => props.onSelect(props.label)}
+      marginVertical={props.marginVertical ?? 0}
+      testID={props.testID}>
+      <LabelContainer>
+        {!!StyledIcon && (
+          <React.Fragment>
+            <StyledIcon />
+            <Spacer.Row numberOfSpaces={4} />
+          </React.Fragment>
+        )}
+        <View>
+          <Label isSelected={props.isSelected}>{props.label}</Label>
+          {!!props.description && <Subtitle>{props.description}</Subtitle>}
+        </View>
+      </LabelContainer>
+      <Spacer.Flex flex={0.1}>{!!props.isSelected && <ValidateIconPrimary />}</Spacer.Flex>
+    </StyledTouchableOpacity>
   )
 }
 
-const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
-  color: theme.colors.primary,
-  size: theme.icons.sizes.small,
-}))``
-
-const PressableContainer = styled(TouchableOpacity)(({ theme }) => ({
-  minHeight: theme.icons.sizes.small,
-  flexDirection: 'row',
-  width: '100%',
-  alignItems: 'center',
-  justifyContent: theme.isMobileViewport ? 'space-between' : undefined,
-}))
-
-const TitleContainerFlex = styled(Spacer.Flex).attrs({
+const LabelContainerFlex = styled(Spacer.Flex).attrs({
   flex: 0.9,
-})``
-
-const TitleContainerWithMarginRight = styled.View({
-  marginRight: getSpacing(6),
+})({
+  flexDirection: 'row',
+  alignItems: 'center',
 })
 
-const Title = styled(Typo.ButtonText)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
-  color: isSelected ? theme.colors.primary : theme.colors.black,
+const LabelContainerWithMarginRight = styled.View(({ theme }) => ({
+  flexDirection: 'row',
+  alignItems: 'center',
+  marginRight: theme.isMobileViewport ? 0 : getSpacing(6),
 }))
 
 const Subtitle = styled(Typo.Caption)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
+
+const StyledTouchableOpacity = styled(TouchableOpacity)<{ marginVertical: number }>(
+  ({ theme, marginVertical }) => ({
+    minHeight: theme.icons.sizes.small,
+    marginVertical: marginVertical,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: theme.isMobileViewport ? 'space-between' : undefined,
+  })
+)
+
+const Label = styled(Typo.ButtonText).attrs({
+  numberOfLines: 2,
+})<{ isSelected: boolean }>(({ isSelected, theme }) => ({
+  color: isSelected ? theme.colors.primary : theme.colors.black,
+}))
+
+const ValidateIconPrimary = styled(Validate).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  size: theme.icons.sizes.small,
+}))``

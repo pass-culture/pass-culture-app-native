@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import { useState } from 'react'
 import { useQueryClient } from 'react-query'
+import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { useReasonsForReporting } from 'features/offer/services/useReasonsForReporting'
@@ -11,7 +12,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { RadioButton } from 'ui/components/RadioButton'
 import { SectionRow } from 'ui/components/SectionRow'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 
 interface Props {
@@ -19,6 +20,8 @@ interface Props {
   onPressOtherReason: () => void
   offerId: number
 }
+
+const marginVertical = getSpacing(3)
 
 export const ReportOfferReason: FunctionComponent<Props> = (props) => {
   const { data } = useReasonsForReporting()
@@ -54,28 +57,26 @@ export const ReportOfferReason: FunctionComponent<Props> = (props) => {
 
   return (
     <Form.MaxWidth>
-      <Spacer.Column numberOfSpaces={3} />
-      {reasonsForReporting.map((reason) =>
-        reason.id !== 'OTHER' ? (
-          <React.Fragment key={reason.id}>
-            <RadioButton
-              id={reason.id}
-              title={reason.title}
-              description={reason.description}
-              onSelect={setSelectedReason}
-              selectedValue={selectedReason}
-            />
-            <Spacer.Column numberOfSpaces={6} />
-          </React.Fragment>
+      {reasonsForReporting.map((reason) => {
+        const isSelected = selectedReason === reason.id
+        return reason.id !== 'OTHER' ? (
+          <RadioButton
+            key={reason.id}
+            label={reason.title}
+            description={reason.description}
+            isSelected={isSelected}
+            onSelect={() => setSelectedReason(reason.id)}
+            marginVertical={marginVertical}
+          />
         ) : (
-          <SectionRow
+          <StyledSectionRow
             title={reason.title}
             type={'navigable'}
             onPress={props.onPressOtherReason}
             key="other"
           />
         )
-      )}
+      })}
       <Spacer.Column numberOfSpaces={10.5} />
       <ButtonPrimary
         wording={t`Signaler l'offre`}
@@ -86,3 +87,7 @@ export const ReportOfferReason: FunctionComponent<Props> = (props) => {
     </Form.MaxWidth>
   )
 }
+
+const StyledSectionRow = styled(SectionRow)({
+  marginVertical,
+})

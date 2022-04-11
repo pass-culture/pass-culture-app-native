@@ -54,6 +54,7 @@ import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { JeuxVideo } from 'ui/svg/icons/categories/bicolor/JeuxVideo'
 import { Check } from 'ui/svg/icons/Check'
 import { Close } from 'ui/svg/icons/Close'
 import CulturalSurveyIcons from 'ui/svg/icons/culturalSurvey'
@@ -61,6 +62,7 @@ import { Email } from 'ui/svg/icons/Email'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+
 function onButtonPress() {
   Alert.alert('you pressed it')
 }
@@ -83,6 +85,13 @@ const domains_credit_v2 = {
 const domains_credit_underage = {
   all: { initial: 3000, remaining: 1000 },
 }
+
+const radioButtonItems = [
+  { label: 'Default' },
+  { label: 'With description', description: 'This is a description' },
+  { label: 'With icon', icon: JeuxVideo },
+  { label: 'With icon and description', icon: Email, description: 'This is a description' },
+]
 
 export const AppComponents: FunctionComponent = () => {
   const {
@@ -412,14 +421,20 @@ export const AppComponents: FunctionComponent = () => {
       <Divider />
 
       <AccordionItem title="Radio button">
-        <RadioButton
-          id="1"
-          title="item 1"
-          description="description 1"
-          onSelect={setRadioButtonChoice}
-          selectedValue={radioButtonChoice}
-        />
-        <Typo.Caption>{`Selected : ${radioButtonChoice}`}</Typo.Caption>
+        {radioButtonItems.map((item) => {
+          const isSelected = radioButtonChoice === item.label
+          return (
+            <View key={item.label}>
+              <RadioButton
+                key={item.label}
+                onSelect={() => setRadioButtonChoice(item.label)}
+                isSelected={isSelected}
+                {...item}
+              />
+              <Spacer.Column numberOfSpaces={3} />
+            </View>
+          )
+        })}
       </AccordionItem>
 
       <Divider />

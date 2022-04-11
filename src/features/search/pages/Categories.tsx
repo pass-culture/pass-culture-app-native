@@ -10,9 +10,8 @@ import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { Validate } from 'ui/svg/icons/Validate'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { RadioButton } from 'ui/components/RadioButton'
+import { getSpacing, Spacer } from 'ui/theme'
 import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
 const DEBOUNCED_CALLBACK = 200
@@ -49,26 +48,17 @@ export const Categories: React.FC = () => {
           {Object.entries(CATEGORY_CRITERIA).map(([category, { icon: Icon }]) => {
             const searchGroup = category as SearchGroupNameEnum
             const isSelected = isCategorySelected(searchGroup)
-            const StyledIcon = styled(Icon).attrs(({ theme }) => ({
-              color: theme.colors.primary,
-              color2: isSelected ? theme.colors.primary : theme.colors.secondary,
-              size: theme.icons.sizes.small,
-            }))``
-
             return (
               <Li key={searchGroup}>
-                <StyledTouchableOpacity
-                  onPress={selectCategory(searchGroup)}
-                  accessibilityRole="radio"
-                  accessibilityState={{ checked: isSelected }}
-                  testID={searchGroup}>
-                  <LabelContainer>
-                    <StyledIcon />
-                    <Spacer.Row numberOfSpaces={4} />
-                    <Label isSelected={isSelected}>{searchGroupLabelMapping[searchGroup]}</Label>
-                  </LabelContainer>
-                  {!!isSelected && <ValidateIconPrimary />}
-                </StyledTouchableOpacity>
+                <RadioButton
+                  key={searchGroup}
+                  label={searchGroupLabelMapping[searchGroup]}
+                  isSelected={isSelected}
+                  onSelect={selectCategory(searchGroup)}
+                  testID={searchGroup}
+                  marginVertical={getSpacing(3)}
+                  icon={Icon}
+                />
               </Li>
             )
           })}
@@ -85,30 +75,5 @@ const Container = styled.View(({ theme }) => ({
 
 const StyledScrollView = styled(ScrollView)({
   flexGrow: 1,
-  marginLeft: getSpacing(4),
-  marginRight: getSpacing(6),
+  paddingHorizontal: getSpacing(4),
 })
-
-const StyledTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  marginBottom: getSpacing(6),
-  justifyContent: theme.isMobileViewport ? 'space-between' : undefined,
-}))
-
-const LabelContainer = styled.View(({ theme }) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  marginRight: theme.isMobileViewport ? 0 : getSpacing(6),
-}))
-
-const Label = styled(Typo.ButtonText).attrs({
-  numberOfLines: 2,
-})<{ isSelected: boolean }>(({ isSelected, theme }) => ({
-  color: isSelected ? theme.colors.primary : theme.colors.black,
-}))
-
-const ValidateIconPrimary = styled(Validate).attrs(({ theme }) => ({
-  color: theme.colors.primary,
-  size: theme.icons.sizes.small,
-}))``
