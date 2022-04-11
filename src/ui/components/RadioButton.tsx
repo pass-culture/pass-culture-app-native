@@ -20,21 +20,18 @@ export function RadioButton(props: RadioButtonProps) {
 
   const selected = props.selectedValue === props.id
   return (
-    <React.Fragment>
-      <PressableContainer
-        key={props.id}
-        onPress={() => props.onSelect(props.id)}
-        accessibilityRole="radio"
-        accessibilityState={{ checked: selected }}
-        testID={`radio-button-${props.id}`}>
-        <TitleContainer>
-          <Title match={selected}>{props.title}</Title>
-          {!!props.description && <Subtitle>{props.description}</Subtitle>}
-        </TitleContainer>
-
-        <Spacer.Flex flex={0.1}>{!!selected && <Validate />}</Spacer.Flex>
-      </PressableContainer>
-    </React.Fragment>
+    <PressableContainer
+      key={props.id}
+      onPress={() => props.onSelect(props.id)}
+      accessibilityRole="radio"
+      accessibilityState={{ checked: selected }}
+      testID={`radio-button-${props.id}`}>
+      <TitleContainer>
+        <Title isSelected={selected}>{props.title}</Title>
+        {!!props.description && <Subtitle>{props.description}</Subtitle>}
+      </TitleContainer>
+      <Spacer.Flex flex={0.1}>{!!selected && <Validate />}</Spacer.Flex>
+    </PressableContainer>
   )
 }
 
@@ -44,6 +41,7 @@ const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
 }))``
 
 const PressableContainer = styled(TouchableOpacity)(({ theme }) => ({
+  minHeight: theme.icons.sizes.small,
   flexDirection: 'row',
   width: '100%',
   alignItems: 'center',
@@ -55,11 +53,11 @@ const TitleContainerFlex = styled(Spacer.Flex).attrs({
 })``
 
 const TitleContainerWithMarginRight = styled.View({
-  marginRight: getSpacing(5),
+  marginRight: getSpacing(6),
 })
 
-const Title = styled(Typo.ButtonText)<{ match: boolean }>(({ match, theme }) => ({
-  color: match ? theme.colors.primary : theme.colors.black,
+const Title = styled(Typo.ButtonText)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
+  color: isSelected ? theme.colors.primary : theme.colors.black,
 }))
 
 const Subtitle = styled(Typo.Caption)(({ theme }) => ({

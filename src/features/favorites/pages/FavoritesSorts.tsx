@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { useState } from 'react'
-import { ScrollView, ViewStyle } from 'react-native'
+import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
@@ -66,13 +66,12 @@ export const FavoritesSorts: React.FC = () => {
   return (
     <Container>
       <PageHeader title={t`Trier`} />
-      <ScrollView contentContainerStyle={contentContainerStyle}>
+      <StyledScrollView>
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={16} />
 
         <TitleContainer>
           <Spacer.Column numberOfSpaces={12} />
-          <Spacer.Row numberOfSpaces={6} />
           <Typo.Title4>{t`Trier par`}</Typo.Title4>
         </TitleContainer>
 
@@ -81,19 +80,18 @@ export const FavoritesSorts: React.FC = () => {
             const isSelected = stagedSelectedSortBy === sortBy
             return (
               <Li key={sortBy}>
-                <LabelContainer
+                <StyledTouchableOpacity
                   accessibilityRole="radio"
                   accessibilityState={{ checked: isSelected }}
                   accessibilityLabel={t`Trier par` + ` ${label}`}
                   key={sortBy}
                   onPress={() => onSortBySelection(sortBy)}
                   testID={sortBy}>
-                  <Spacer.Column numberOfSpaces={8} />
-                  <Spacer.Row numberOfSpaces={6} />
-                  <Label isSelected={isSelected}>{label}</Label>
-                  <Spacer.Flex />
-                  {!!isSelected && <ValidatePrimary />}
-                </LabelContainer>
+                  <LabelContainer>
+                    <Label isSelected={isSelected}>{label}</Label>
+                  </LabelContainer>
+                  {!!isSelected && <ValidateIconPrimary />}
+                </StyledTouchableOpacity>
                 <InputError
                   visible={!!(sortBy === 'AROUND_ME' && positionError)}
                   messageId={positionError?.message}
@@ -103,7 +101,7 @@ export const FavoritesSorts: React.FC = () => {
             )
           })}
         </VerticalUl>
-      </ScrollView>
+      </StyledScrollView>
 
       <ButtonContainer>
         <ButtonPrimary wording={t`Valider`} onPress={onValidation} center />
@@ -112,39 +110,44 @@ export const FavoritesSorts: React.FC = () => {
   )
 }
 
+const Container = styled.View(({ theme }) => ({
+  flex: 1,
+  backgroundColor: theme.colors.white,
+}))
+
+const StyledScrollView = styled(ScrollView)({
+  flexGrow: 1,
+  paddingLeft: getSpacing(8),
+  paddingRight: getSpacing(5),
+})
+
+const TitleContainer = styled.View({
+  flexDirection: 'row',
+  alignItems: 'center',
+})
+
+const StyledTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
+  minHeight: theme.icons.sizes.small,
+  marginVertical: getSpacing(3),
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: theme.isMobileViewport ? 'space-between' : undefined,
+}))
+
+const LabelContainer = styled.View(({ theme }) => ({
+  marginRight: theme.isMobileViewport ? 0 : getSpacing(6),
+}))
+
 const Label = styled(Typo.ButtonText).attrs({
   numberOfLines: 2,
 })<{ isSelected: boolean }>(({ isSelected, theme }) => ({
   color: isSelected ? theme.colors.primary : theme.colors.black,
 }))
 
-const ValidatePrimary = styled(Validate).attrs(({ theme }) => ({
+const ValidateIconPrimary = styled(Validate).attrs(({ theme }) => ({
   color: theme.colors.primary,
   size: theme.icons.sizes.small,
 }))``
-
-const Container = styled.View(({ theme }) => ({
-  flex: 1,
-  backgroundColor: theme.colors.white,
-}))
-
-const contentContainerStyle: ViewStyle = {
-  flexGrow: 1,
-  paddingLeft: getSpacing(2),
-  paddingRight: getSpacing(3),
-}
-
-const LabelContainer = styled(TouchableOpacity)({
-  flexDirection: 'row',
-  alignItems: 'center',
-  marginBottom: getSpacing(4),
-})
-
-const TitleContainer = styled.View({
-  flexDirection: 'row',
-  alignItems: 'center',
-  marginBottom: getSpacing(4),
-})
 
 const ButtonContainer = styled.View({
   padding: getSpacing(5),
