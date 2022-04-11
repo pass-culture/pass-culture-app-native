@@ -3,7 +3,6 @@ import { Modal, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { theme } from 'theme'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 
 interface Props {
   visible: boolean
@@ -28,13 +27,11 @@ export const AppFullPageModal: FunctionComponent<Props> = ({
       visible={visible}
       testID={`modal-${testIdSuffix}`}
       onRequestClose={onRequestClose}>
-      <Container activeOpacity={1} maxHeight={maxHeight} disabled={true}>
-        {children}
-      </Container>
+      <Container maxHeight={maxHeight}>{children}</Container>
     </Modal>
   ) : null
 }
-const Container = styled(TouchableOpacity)<{ maxHeight: number }>(({ maxHeight, theme }) => ({
+const Container = styled.View<{ maxHeight: number }>(({ maxHeight, theme }) => ({
   flex: 1,
   position: 'absolute',
   bottom: 0,

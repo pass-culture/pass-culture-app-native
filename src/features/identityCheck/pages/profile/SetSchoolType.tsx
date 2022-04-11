@@ -76,6 +76,7 @@ export const SetSchoolType = () => {
       }
       fixedBottomChildren={
         <ButtonPrimary
+          type="submit"
           onPress={onPressContinue}
           wording={!selectedSchoolTypeId ? t`Choisis ton statut` : t`Continuer`}
           accessibilityLabel={

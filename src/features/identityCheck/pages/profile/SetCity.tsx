@@ -143,6 +143,7 @@ export const SetCity = () => {
       }
       fixedBottomChildren={
         <ButtonPrimary
+          type="submit"
           onPress={submitCity}
           wording={t`Continuer`}
           accessibilityLabel={t`Continuer vers l'étape suivante`}

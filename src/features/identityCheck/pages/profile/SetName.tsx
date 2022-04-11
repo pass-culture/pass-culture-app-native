@@ -87,6 +87,7 @@ export const SetName = () => {
       }
       fixedBottomChildren={
         <ButtonPrimary
+          type="submit"
           wording={t`Continuer`}
           accessibilityLabel={t`Continuer vers l'étape suivante`}
           onPress={submitName}

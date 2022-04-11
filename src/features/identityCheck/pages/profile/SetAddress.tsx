@@ -149,6 +149,7 @@ export const SetAddress = () => {
       }
       fixedBottomChildren={
         <ButtonPrimary
+          type="submit"
           onPress={submitAddress}
           wording={t`Continuer`}
           accessibilityLabel={t`Continuer vers l'étape suivante`}

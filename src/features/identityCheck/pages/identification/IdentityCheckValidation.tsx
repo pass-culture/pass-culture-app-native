@@ -47,6 +47,7 @@ export function IdentityCheckValidation() {
       }
       fixedBottomChildren={
         <ButtonPrimary
+          type="submit"
           wording={t`Valider mes informations`}
           onPress={navigateToNextEduConnectStep}
         />
