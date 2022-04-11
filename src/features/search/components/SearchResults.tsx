@@ -135,7 +135,7 @@ export const SearchResults: React.FC = () => {
     <React.Fragment>
       {isFocused ? <Helmet title={helmetTitle} /> : null}
       <AutoScrollSwitch
-        title={t`Activer le scroll automatique`}
+        title={t`Activer le chargement automatique des résultats`}
         active={autoScrollEnabled}
         toggle={() => setAutoScrollEnabled((autoScroll) => !autoScroll)}
       />
