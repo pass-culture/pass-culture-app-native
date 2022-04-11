@@ -1,10 +1,16 @@
 import { t } from '@lingui/macro'
 import React, { useCallback } from 'react'
 
+import { WithdrawalTypeEnum } from 'api/gen'
 import { TicketCodeTitle } from 'features/bookings/atoms/TicketCodeTitle'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-export function TicketCode({ code }: { code: string }) {
+type TicketCodeProps = {
+  code: string
+  collectType?: WithdrawalTypeEnum
+}
+
+export function TicketCode({ code, collectType }: TicketCodeProps) {
   const { showSuccessSnackBar } = useSnackBarContext()
 
   const copyToClipboard = useCallback(() => {
@@ -16,5 +22,9 @@ export function TicketCode({ code }: { code: string }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [code])
 
-  return <TicketCodeTitle onPress={copyToClipboard}>{code}</TicketCodeTitle>
+  if (collectType === undefined || collectType === WithdrawalTypeEnum.on_site) {
+    return <TicketCodeTitle onPress={copyToClipboard}>{code}</TicketCodeTitle>
+  }
+
+  return null
 }
