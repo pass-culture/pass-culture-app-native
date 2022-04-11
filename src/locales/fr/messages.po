@@ -94,6 +94,10 @@ msgstr "Accessible"
 msgid "Accueil"
 msgstr "Accueil"
 
+#: src/features/navigation/RootNavigator/RootNavigator.tsx
+msgid "Accéder au menu de navigation"
+msgstr "Accéder au menu de navigation"
+
 #: src/features/bookings/components/BookingDetailsTicketContent.tsx
 #: src/features/offer/services/useCtaWordingAndAction.ts
 msgid "Accéder à l'offre"
@@ -115,6 +119,10 @@ msgstr "Activer la géolocalisation"
 #: src/features/venue/components/VenueIconCaptions.tsx
 msgid "Activer la localisation"
 msgstr "Activer la localisation"
+
+#: src/features/search/components/SearchResults.tsx
+msgid "Activer le chargement automatique des résultats"
+msgstr "Activer le chargement automatique des résultats"
 
 #: src/features/forceUpdate/ForceUpdate.tsx
 msgid "Actualiser la page"
@@ -141,6 +149,10 @@ msgstr "Afficher le mot de passe"
 #: src/features/search/atoms/Buttons/ShowResults.tsx
 msgid "Afficher les 999+ résultats"
 msgstr "Afficher les 999+ résultats"
+
+#: src/features/search/components/SearchResults.tsx
+msgid "Afficher plus de résultats"
+msgstr "Afficher plus de résultats"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/SecondCard.tsx
 msgid "Aide financière 15 ans"
@@ -169,6 +181,10 @@ msgstr "Aides"
 #: src/features/favorites/pages/FavoritesSorts.tsx
 msgid "Ajouté récemment"
 msgstr "Ajouté récemment"
+
+#: src/features/navigation/RootNavigator/Header/Header.web.tsx
+msgid "Aller au contenu principal"
+msgstr "Aller au contenu principal"
 
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Anniversaire 18 ans"
@@ -487,6 +503,10 @@ msgstr "Comment t'appelles-tu ?"
 #: src/features/profile/pages/Profile.tsx
 msgid "Comment ça marche ?"
 msgstr "Comment ça marche ?"
+
+#: src/features/identityCheck/atoms/StepButton.tsx
+msgid "Complété"
+msgstr "Complété"
 
 #: src/features/cheatcodes/pages/CheatMenu/CheatMenu.tsx
 msgid "Composants"
@@ -2252,6 +2272,10 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 msgid "Revenir en arrière"
 msgstr "Revenir en arrière"
 
+#: src/features/search/components/ScrollToTopButton.tsx
+msgid "Revenir en haut"
+msgstr "Revenir en haut"
+
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 msgid "Revenir sur l'écran d'envoi de SMS"
 msgstr "Revenir sur l'écran d'envoi de SMS"
@@ -2781,6 +2805,10 @@ msgstr "Tu ne peux pas choisir une date dans le futur"
 #: src/features/bookings/components/BookingDetailsCancelButton.tsx
 msgid "Tu ne peux plus annuler ta réservation : elle devait être annulée avant le {formattedConfirmationDate}"
 msgstr "Tu ne peux plus annuler ta réservation : elle devait être annulée avant le {formattedConfirmationDate}"
+
+#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+msgid "Tu n’as pas besoin de billet ! Rends toi directement sur place le jour de l’événement."
+msgstr "Tu n’as pas besoin de billet ! Rends toi directement sur place le jour de l’événement."
 
 #: src/features/bookings/components/NoBookingsView.tsx
 msgid ""

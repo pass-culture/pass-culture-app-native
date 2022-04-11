@@ -386,7 +386,7 @@ exports[`BookingDetails should render correctly 1`] = `
                 style={
                   Array [
                     Object {
-                      "paddingHorizontal": 20,
+                      "paddingHorizontal": 8,
                       "paddingTop": 24,
                     },
                   ]
