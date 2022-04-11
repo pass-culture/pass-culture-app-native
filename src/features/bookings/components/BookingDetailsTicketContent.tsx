@@ -13,6 +13,7 @@ import { formatSecondsToString, getBookingProperties } from 'features/bookings/h
 import { openUrl } from 'features/navigation/helpers'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
+import { BicolorCircledCheck as InitialBicolorCircledCheck } from 'ui/svg/icons/BicolorCircledCheck'
 import { BicolorEmailSent as InitialBicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
@@ -49,7 +50,7 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
   const isDigitalAndActivationCodeEnabled =
     activationCodeFeatureEnabled && properties.hasActivationCode
 
-  const collectType = booking?.stock?.offer?.withdrawalType || ''
+  const collectType = booking?.stock?.offer?.withdrawalType || undefined
 
   return (
     <TicketContainer>
@@ -58,12 +59,14 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
       <TicketInnerContent>
         {isDigitalAndActivationCodeEnabled ? (
           <React.Fragment>
-            {!!booking.activationCode && <TicketCode code={booking.activationCode?.code} />}
+            {!!booking.activationCode && (
+              <TicketCode collectType={collectType} code={booking.activationCode?.code} />
+            )}
             {accessOfferButton}
           </React.Fragment>
         ) : (
           <React.Fragment>
-            {collectType !== WithdrawalTypeEnum.by_email && <TicketCode code={booking.token} />}
+            <TicketCode collectType={collectType} code={booking.token} />
             {properties.isDigital ? (
               accessOfferButton
             ) : (
@@ -119,14 +122,27 @@ const TicketEmailSent = ({ offerDate }: TicketEmailSentProps) => {
     : t`Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams`
 
   return (
-    <TicketEmail testID="collect-info-email">
+    <Ticket testID="collect-info-email">
       <TicketInfo testID="collect-info-email-msg">{emailMessage}</TicketInfo>
       {Platform.OS !== 'web' && (
         <TicketBtnEmail testID="collect-info-email-btn">
           <ButtonWithLinearGradient wording="Consulter mes e-mails" onPress={openInbox} isEmail />
         </TicketBtnEmail>
       )}
-    </TicketEmail>
+    </Ticket>
+  )
+}
+
+const NoTicket = () => {
+  const message = t`Tu n’as pas besoin de billet\u00a0! Rends toi directement sur place le jour de l’événement.`
+
+  return (
+    <Ticket testID="collect-info-no-ticket">
+      <IconContainer>
+        <BicolorCircledCheck />
+      </IconContainer>
+      <TicketInfo>{message}</TicketInfo>
+    </Ticket>
   )
 }
 
@@ -136,6 +152,10 @@ const TicketBody = ({ booking, proDisableEventsQrcode }: TicketBodyProps) => {
 
   if (booking.qrCodeData && !proDisableEventsQrcode)
     return <QrCodeView qrCodeData={booking.qrCodeData} />
+
+  if (collectType === WithdrawalTypeEnum.no_ticket) {
+    return <NoTicket />
+  }
 
   if (collectType === WithdrawalTypeEnum.on_site || collectType === WithdrawalTypeEnum.by_email) {
     const { beginningDatetime } = booking.stock
@@ -162,9 +182,9 @@ const TicketBody = ({ booking, proDisableEventsQrcode }: TicketBodyProps) => {
     return (
       <React.Fragment>
         {collectType === WithdrawalTypeEnum.by_email && (
-          <BicolorEmailSentContainer>
+          <IconContainer>
             <BicolorEmailSent />
-          </BicolorEmailSentContainer>
+          </IconContainer>
         )}
 
         <TicketInfo testID="collect-info">
@@ -192,7 +212,7 @@ const Title = styled(Typo.Title3).attrs(getHeadingAttrs(1))({
 
 const TicketInnerContent = styled.View({
   paddingTop: getSpacing(6),
-  paddingHorizontal: getSpacing(5),
+  paddingHorizontal: getSpacing(2),
 })
 
 const TicketInfo = styled(Typo.Body)({
@@ -223,7 +243,7 @@ const TicketContainer = styled.View(({ theme }) => ({
   width: '100%',
 }))
 
-const TicketEmail = styled.View({
+const Ticket = styled.View({
   width: '100%',
 })
 
@@ -231,13 +251,19 @@ const TicketBtnEmail = styled.View({
   width: '100%',
 })
 
-const BicolorEmailSentContainer = styled.View({
+const IconContainer = styled.View({
   alignItems: 'center',
   width: '100%',
   marginBottom: getSpacing(6),
 })
 
 const BicolorEmailSent = styled(InitialBicolorEmailSent).attrs(({ theme }) => ({
+  size: theme.illustrations.sizes.medium,
+  color: theme.colors.primary,
+  color2: theme.colors.secondary,
+}))``
+
+const BicolorCircledCheck = styled(InitialBicolorCircledCheck).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.medium,
   color: theme.colors.primary,
   color2: theme.colors.secondary,

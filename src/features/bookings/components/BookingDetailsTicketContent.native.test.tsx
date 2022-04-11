@@ -184,6 +184,25 @@ describe('BookingDetailsTicketContent', () => {
 
         expect(queryByTestId('collect-info-email-msg')?.children[0]).toContain(`aujourd'hui`)
       })
+
+      it('should display no ticket collect wording and circled check icon', () => {
+        const booking = {
+          ...initialBooking,
+          stock: {
+            ...initialBooking.stock,
+            offer: {
+              ...initialBooking.stock.offer,
+              withdrawalType: WithdrawalTypeEnum.no_ticket,
+              withdrawalDelay: 0,
+            },
+          },
+        }
+
+        const { getByTestId } = render(
+          <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
+        )
+        getByTestId('collect-info-no-ticket')
+      })
     })
   })
 })
