@@ -4,13 +4,13 @@ import { appTouchableOpacityWebStyles } from 'ui/components/buttons/AppButton/st
 
 import { TouchableProps } from './types'
 
-// REMOBE testID
+// REMOVE testID
 export const Touchable = styled.button.attrs<TouchableProps>(
   ({ onPress, type, testID, accessibilityLabel, ...rest }) => ({
     tabIndex: '0',
     type: type || 'button',
     onClick: onPress,
-    testID,
+    'data-testid': testID,
     'aria-label': accessibilityLabel,
     ...rest,
   })

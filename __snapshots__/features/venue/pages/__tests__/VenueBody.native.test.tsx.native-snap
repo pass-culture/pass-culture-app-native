@@ -423,7 +423,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
         }
       />
       <View
-        accessibilityLabel="Activer la localisation"
+        accessibilityLabel="Géolocalisation désactivée"
         accessibilityState={
           Object {
             "disabled": false,
@@ -443,6 +443,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
         style={
           Object {
             "flexBasis": 0,
+            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
             "opacity": 1,

@@ -763,7 +763,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           }
         />
         <View
-          accessibilityLabel="Activer la localisation"
+          accessibilityLabel="Géolocalisation désactivée"
           accessibilityState={
             Object {
               "disabled": false,
@@ -783,6 +783,7 @@ exports[`<Venue /> should match snapshot 1`] = `
           style={
             Object {
               "flexBasis": 0,
+              "flexDirection": "row",
               "flexGrow": 1,
               "flexShrink": 1,
               "opacity": 1,

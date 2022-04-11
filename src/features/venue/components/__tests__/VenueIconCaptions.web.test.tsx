@@ -31,7 +31,7 @@ jest.mock('libs/geolocation/GeolocationWrapper', () => ({
 describe('<VenueIconCaptions />', () => {
   it('should change accessibilityLabel when geolocation is active or not', async () => {
     mockDistance = '10 km'
-    const { queryByLabelText, rerender } = render(
+    const { queryByLabelText, queryByText, rerender } = render(
       <VenueIconCaptions
         label={typeLabel}
         type={VenueTypeCodeKey.MOVIE}
@@ -49,7 +49,7 @@ describe('<VenueIconCaptions />', () => {
         locationCoordinates={locationCoordinates}
       />
     )
-    expect(queryByLabelText('Activer la localisation')).toBeTruthy()
+    expect(queryByText('Géolocalisation désactivée')).toBeTruthy()
     expect(queryByLabelText('Distance depuis la localisation')).toBeFalsy()
   })
 

@@ -431,12 +431,12 @@ Object {
                 class="css-view-1dbjc4n"
                 style="align-self: center; background-color: rgb(203, 205, 210); height: 92%; margin-right: 8px; margin-left: 8px; width: 1px;"
               />
-              <div
-                aria-label="Activer la localisation"
-                class="css-view-1dbjc4n"
+              <button
+                aria-label="Géolocalisation désactivée"
+                class="sc-bqiRlB sc-ezbkAF bwzKSK UoSQg"
                 data-testid="iconLocation"
-                style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 tabindex="0"
+                type="button"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -470,7 +470,7 @@ Object {
                     Géolocalisation désactivée
                   </div>
                 </div>
-              </div>
+              </button>
               <div
                 class="css-view-1dbjc4n"
                 style="width: 24px;"
@@ -1934,12 +1934,12 @@ Object {
               class="css-view-1dbjc4n"
               style="align-self: center; background-color: rgb(203, 205, 210); height: 92%; margin-right: 8px; margin-left: 8px; width: 1px;"
             />
-            <div
-              aria-label="Activer la localisation"
-              class="css-view-1dbjc4n"
+            <button
+              aria-label="Géolocalisation désactivée"
+              class="sc-bqiRlB sc-ezbkAF bwzKSK UoSQg"
               data-testid="iconLocation"
-              style="cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; transition-duration: 0s; transition-property: opacity; user-select: auto;"
               tabindex="0"
+              type="button"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -1973,7 +1973,7 @@ Object {
                   Géolocalisation désactivée
                 </div>
               </div>
-            </div>
+            </button>
             <div
               class="css-view-1dbjc4n"
               style="width: 24px;"
