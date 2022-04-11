@@ -58,15 +58,15 @@ export const ReportOfferReason: FunctionComponent<Props> = (props) => {
   return (
     <Form.MaxWidth>
       {reasonsForReporting.map((reason) => {
-        const isSelected = selectedReason === reason.id
         return reason.id !== 'OTHER' ? (
           <RadioButton
             key={reason.id}
             label={reason.title}
             description={reason.description}
-            isSelected={isSelected}
+            isSelected={selectedReason === reason.id}
             onSelect={() => setSelectedReason(reason.id)}
             marginVertical={marginVertical}
+            testID={`radio-button-${reason.id}`}
           />
         ) : (
           <StyledSectionRow

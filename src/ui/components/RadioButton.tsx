@@ -8,7 +8,6 @@ import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface RadioButtonProps {
-  key?: string
   label: string
   description?: string
   onSelect: (value: string) => void
@@ -32,7 +31,6 @@ export function RadioButton(props: RadioButtonProps) {
 
   return (
     <StyledTouchableOpacity
-      key={props.key}
       accessibilityRole="radio"
       accessibilityState={{ checked: props.isSelected }}
       accessibilityLabel={props.accessibilityLabel}

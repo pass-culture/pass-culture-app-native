@@ -76,13 +76,11 @@ export const FavoritesSorts: React.FC = () => {
 
         <VerticalUl>
           {SORT_OPTIONS_LIST.map(([sortBy, label]) => {
-            const isSelected = stagedSelectedSortBy === sortBy
             return (
               <Li key={sortBy}>
                 <RadioButton
-                  key={sortBy}
                   label={label}
-                  isSelected={isSelected}
+                  isSelected={stagedSelectedSortBy === sortBy}
                   onSelect={() => onSortBySelection(sortBy)}
                   accessibilityLabel={t`Trier par` + ` ${label}`}
                   marginVertical={getSpacing(3)}

@@ -422,13 +422,11 @@ export const AppComponents: FunctionComponent = () => {
 
       <AccordionItem title="Radio button">
         {radioButtonItems.map((item) => {
-          const isSelected = radioButtonChoice === item.label
           return (
             <View key={item.label}>
               <RadioButton
-                key={item.label}
                 onSelect={() => setRadioButtonChoice(item.label)}
-                isSelected={isSelected}
+                isSelected={radioButtonChoice === item.label}
                 {...item}
               />
               <Spacer.Column numberOfSpaces={3} />

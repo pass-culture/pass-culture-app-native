@@ -47,13 +47,11 @@ export const Categories: React.FC = () => {
         <VerticalUl>
           {Object.entries(CATEGORY_CRITERIA).map(([category, { icon: Icon }]) => {
             const searchGroup = category as SearchGroupNameEnum
-            const isSelected = isCategorySelected(searchGroup)
             return (
               <Li key={searchGroup}>
                 <RadioButton
-                  key={searchGroup}
                   label={searchGroupLabelMapping[searchGroup]}
-                  isSelected={isSelected}
+                  isSelected={isCategorySelected(searchGroup)}
                   onSelect={selectCategory(searchGroup)}
                   testID={searchGroup}
                   marginVertical={getSpacing(3)}
