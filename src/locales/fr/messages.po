@@ -315,6 +315,10 @@ msgstr "Bienvenue !"
 msgid "Bonne nouvelle !"
 msgstr "Bonne nouvelle !"
 
+#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+msgid "C'est aujourd'hui !"
+msgstr "C'est aujourd'hui !"
+
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "C'est pour bientôt"
 msgstr "C'est pour bientôt"
@@ -840,6 +844,7 @@ msgid "Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle ét
 msgstr "Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N'hésite pas à retrouver la liste de tes réservations terminées et annulées pour t'en assurer."
 
 #: src/features/navigation/RootNavigator/routes.ts
+#: src/features/offer/pages/OfferDescription.tsx
 msgid "Détails de l'offre"
 msgstr "Détails de l'offre"
 
@@ -1504,8 +1509,8 @@ msgstr "Maximum :"
 msgid "Mentions légales"
 msgstr "Mentions légales"
 
+#: src/features/favorites/atoms/BicolorFavoriteCount.tsx
 #: src/features/favorites/pages/Favorites.tsx
-#: src/features/navigation/TabBar/routes.ts
 #: src/features/navigation/TabBar/routes.ts
 msgid "Mes favoris"
 msgstr "Mes favoris"
@@ -1882,6 +1887,10 @@ msgstr "Page introuvable !"
 #: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
 msgid "Pages"
 msgstr "Pages"
+
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "Paramètres UTM"
+msgstr "Paramètres UTM"
 
 #: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
 msgid "Paramètres applicatifs"
@@ -2538,6 +2547,10 @@ msgstr "Ton adresse ne doit pas contenir de caractères spéciaux ou n'être com
 msgid "Ton adresse | Profil"
 msgstr "Ton adresse | Profil"
 
+#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+msgid "Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams"
+msgstr "Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams"
+
 #: src/features/bookings/atoms/TicketCode.web.tsx
 msgid "Ton code a été copié dans le presse-papier !"
 msgstr "Ton code a été copié dans le presse-papier !"
@@ -2721,6 +2734,10 @@ msgstr "Tu as dépassé le nombre d’essais autorisés. L’accès à ton créd
 msgid "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures !"
 msgstr "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer dans 12 heures !"
 
+#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+msgid "Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams."
+msgstr "Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams."
+
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
 msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget."
 msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget."
@@ -2846,6 +2863,10 @@ msgstr "Tu recevras un e-mail lorsque ta demande sera validée."
 #: src/features/identityCheck/pages/confirmation/BeneficiaryRequestSent.tsx
 msgid "Tu recevras une réponse par e-mail sous 5 jours ouvrés."
 msgstr "Tu recevras une réponse par e-mail sous 5 jours ouvrés."
+
+#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+msgid "Tu vas recevoir ton billet par e-mail"
+msgstr "Tu vas recevoir ton billet par e-mail"
 
 #: src/features/bookOffer/services/useModalContent.tsx
 msgid "Tu y es presque"
@@ -3410,21 +3431,33 @@ msgstr "{0, plural, one {Réservation terminée} other {Réservations terminées
 msgid "{0} {EURO_SYMBOL}"
 msgstr "{0} {EURO_SYMBOL}"
 
-#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+#: src/features/bookings/helpers.ts
+msgid "{delayInDay} jours"
+msgstr "{delayInDay} jours"
+
+#: src/features/bookings/helpers.ts
 msgid "{delayInHour} heure"
 msgstr "{delayInHour} heure"
 
-#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+#: src/features/bookings/helpers.ts
 msgid "{delayInHour} heures"
 msgstr "{delayInHour} heures"
 
-#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+#: src/features/bookings/helpers.ts
 msgid "{delayInMinutes} minutes"
 msgstr "{delayInMinutes} minutes"
+
+#: src/features/bookings/helpers.ts
+msgid "{delayInWeek} semaine"
+msgstr "{delayInWeek} semaine"
 
 #: src/features/bookings/pages/EndedBookings.tsx
 msgid "{endedBookingsCount, plural, one {# réservation terminée} other {# réservations terminées}}"
 msgstr "{endedBookingsCount, plural, one {# réservation terminée} other {# réservations terminées}}"
+
+#: src/features/favorites/atoms/BicolorFavoriteCount.tsx
+msgid "{favoritesCount, plural, one {# favori} other {# favoris}}"
+msgstr "{favoritesCount, plural, one {# favori} other {# favoris}}"
 
 #: src/features/identityCheck/pages/confirmation/UnderageAccountCreated.tsx
 msgid "{maxPrice} € viennent d'être crédités sur ton compte pass Culture"

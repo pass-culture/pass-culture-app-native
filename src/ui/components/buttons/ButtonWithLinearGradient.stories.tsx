@@ -47,6 +47,19 @@ ExternalLink.parameters = {
   },
 }
 
+export const EmailConsultation = Template.bind({})
+EmailConsultation.args = {
+  wording: 'Consulter mes e-mails',
+  isEmail: true,
+}
+EmailConsultation.parameters = {
+  docs: {
+    source: {
+      code: '<ButtonWithLinearGradient wording="Consulter mes e-mails" isEmail />',
+    },
+  },
+}
+
 export const Disabled = Template.bind({})
 Disabled.args = {
   wording: 'Confirmer',

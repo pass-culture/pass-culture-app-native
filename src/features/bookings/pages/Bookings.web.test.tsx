@@ -24,7 +24,7 @@ describe('Bookings', () => {
   it('should display the right number of ongoing bookings', async () => {
     const { queryByText } = renderBookings(bookingsSnap)
 
-    expect(queryByText('3 réservations en cours')).toBeTruthy()
+    expect(queryByText('2 réservations en cours')).toBeTruthy()
   })
 
   it('should display the empty bookings dedicated view', async () => {
