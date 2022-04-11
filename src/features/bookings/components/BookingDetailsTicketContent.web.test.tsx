@@ -1,8 +1,8 @@
 import { addDays, formatISO } from 'date-fns'
 import React from 'react'
 
+import { WithdrawalTypeEnum } from 'api/gen'
 import { BookingDetailsTicketContent } from 'features/bookings/components/BookingDetailsTicketContent'
-import { OFFER_WITHDRAWAL_TYPE_OPTIONS } from 'features/bookings/components/types'
 import { render } from 'tests/utils/web'
 
 import { bookingsSnap } from '../api/bookingsSnap'
@@ -51,7 +51,7 @@ describe('BookingDetailsTicketContent', () => {
           offer: {
             ...initialBooking.stock.offer,
             isDigital: false,
-            withdrawalType: OFFER_WITHDRAWAL_TYPE_OPTIONS.BY_EMAIL,
+            withdrawalType: WithdrawalTypeEnum.by_email,
             withdrawalDelay: 60 * 60 * 24 * 2,
           },
         },
@@ -73,7 +73,7 @@ describe('BookingDetailsTicketContent', () => {
           beginningDatetime: formatISO(new Date()).slice(0, -1),
           offer: {
             ...initialBooking.stock.offer,
-            withdrawalType: OFFER_WITHDRAWAL_TYPE_OPTIONS.BY_EMAIL,
+            withdrawalType: WithdrawalTypeEnum.by_email,
             withdrawalDelay: 0,
           },
         },

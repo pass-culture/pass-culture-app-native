@@ -424,7 +424,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
         </div>
       </div>
       <ul
-        className="sc-hKwDye sc-eCImPb kCJrBT idZrMD"
+        className="sc-kDTinF sc-iqseJM dawiYh htkoNq"
       >
         <li>
           <div
@@ -1738,7 +1738,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
   >
     <button
       aria-label="Continuer vers l'étape suivante"
-      className="sc-bdvvtL hWVHSw sc-dkPtRN efdTBP"
+      className="sc-bdvvtL hWVHSw sc-eCImPb bxfGfU"
       data-testid="Continuer vers l'étape suivante"
       onClick={[Function]}
       onDoubleClick={[Function]}
