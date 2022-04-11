@@ -249,7 +249,6 @@ exports[`SearchFilter component should render correctly 1`] = `
           }
         >
           <Text
-            accessibilityRole="none"
             style={
               Array [
                 Object {
@@ -263,6 +262,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           >
             Localisation
             <Text
+              aria-live="off"
               style={
                 Array [
                   Object {
@@ -739,7 +739,6 @@ exports[`SearchFilter component should render correctly 1`] = `
           }
         >
           <Text
-            accessibilityRole="none"
             style={
               Array [
                 Object {
@@ -1843,7 +1842,6 @@ exports[`SearchFilter component should render correctly 1`] = `
           }
         >
           <Text
-            accessibilityRole="none"
             style={
               Array [
                 Object {
@@ -2202,7 +2200,6 @@ exports[`SearchFilter component should render correctly 1`] = `
           }
         >
           <Text
-            accessibilityRole="none"
             style={
               Array [
                 Object {
@@ -2629,7 +2626,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               }
             >
               <Text
-                accessibilityRole="none"
                 style={
                   Array [
                     Object {
@@ -2795,7 +2791,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               }
             >
               <Text
-                accessibilityRole="none"
                 style={
                   Array [
                     Object {
@@ -2961,7 +2956,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               }
             >
               <Text
-                accessibilityRole="none"
                 style={
                   Array [
                     Object {
@@ -3127,7 +3121,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               }
             >
               <Text
-                accessibilityRole="none"
                 style={
                   Array [
                     Object {
@@ -3318,7 +3311,6 @@ exports[`SearchFilter component should render correctly 1`] = `
               }
             >
               <Text
-                accessibilityRole="none"
                 style={
                   Array [
                     Object {
