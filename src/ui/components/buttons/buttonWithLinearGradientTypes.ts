@@ -6,6 +6,7 @@ export interface ButtonWithLinearGradientProps {
   wording: string
   onPress: (() => void) | (() => Promise<void>) | undefined
   isDisabled?: boolean
+  isEmail?: boolean
   isExternal?: boolean
   type?: 'button' | 'reset' | 'submit'
   className?: string

@@ -56,6 +56,7 @@ exports[`<ButtonWithLinearGradient /> should render disabled 1`] = `
     <Text
       adjustsFontSizeToFit={true}
       isDisabled={true}
+      isEmail={false}
       numberOfLines={1}
       style={
         Array [
@@ -131,6 +132,7 @@ exports[`<ButtonWithLinearGradient /> should render not disabled 1`] = `
     <Text
       adjustsFontSizeToFit={true}
       isDisabled={false}
+      isEmail={false}
       numberOfLines={1}
       style={
         Array [

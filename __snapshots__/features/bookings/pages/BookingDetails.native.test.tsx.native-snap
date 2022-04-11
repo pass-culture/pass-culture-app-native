@@ -497,6 +497,7 @@ exports[`BookingDetails should render correctly 1`] = `
                     <Text
                       adjustsFontSizeToFit={true}
                       isDisabled={false}
+                      isEmail={false}
                       numberOfLines={1}
                       style={
                         Array [

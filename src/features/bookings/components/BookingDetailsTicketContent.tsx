@@ -1,14 +1,19 @@
 import { t } from '@lingui/macro'
+import { addDays, isSameDay } from 'date-fns'
 import * as React from 'react'
+import { Platform } from 'react-native'
+import { openInbox } from 'react-native-email-link'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum, BookingOfferResponse, BookingReponse } from 'api/gen'
 import { TicketCode } from 'features/bookings/atoms/TicketCode'
-import { getBookingProperties } from 'features/bookings/helpers'
+import { OFFER_WITHDRAWAL_TYPE_OPTIONS } from 'features/bookings/components/types'
+import { formatSecondsToString, getBookingProperties } from 'features/bookings/helpers'
 import { openUrl } from 'features/navigation/helpers'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
+import { BicolorEmailSent as InitialBicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
 
@@ -44,6 +49,8 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
   const isDigitalAndActivationCodeEnabled =
     activationCodeFeatureEnabled && properties.hasActivationCode
 
+  const collectType = booking?.stock?.offer?.withdrawalType || ''
+
   return (
     <TicketContainer>
       <Title>{offer.name}</Title>
@@ -56,7 +63,9 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <TicketCode code={booking.token} />
+            {collectType !== OFFER_WITHDRAWAL_TYPE_OPTIONS.BY_EMAIL && (
+              <TicketCode code={booking.token} />
+            )}
             {properties.isDigital ? (
               accessOfferButton
             ) : (
@@ -89,6 +98,10 @@ type TicketBodyProps = {
   proDisableEventsQrcode: boolean
 }
 
+type TicketEmailSentProps = {
+  offerDate: Date
+}
+
 const StyledQRCode = styled(QRCode).attrs<{ value: QrCodeViewProps }>(({ theme, value }) => ({
   value,
   size: theme.ticket.qrCodeSize,
@@ -100,17 +113,23 @@ const QrCodeView = ({ qrCodeData }: QrCodeViewProps) => (
   </QrCodeContainer>
 )
 
-const formatCollectDelayString = (delay: number) => {
-  if (delay > 0 && delay <= 1800) {
-    const delayInMinutes = delay / 60
-    return t`${delayInMinutes} minutes`
-  }
+const TicketEmailSent = ({ offerDate }: TicketEmailSentProps) => {
+  const emailMessage = isSameDay(offerDate, new Date())
+    ? t`C'est aujourd'hui\u00a0!` +
+      '\n' +
+      t`Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams.`
+    : t`Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams`
 
-  const delayInHour = delay / 60 / 60
-  if (delay === 3600) {
-    return t`${delayInHour} heure`
-  }
-  return t`${delayInHour} heures`
+  return (
+    <TicketEmail testID="collect-info-email">
+      <TicketInfo testID="collect-info-email-msg">{emailMessage}</TicketInfo>
+      {Platform.OS !== 'web' && (
+        <TicketBtnEmail testID="collect-info-email-btn">
+          <ButtonWithLinearGradient wording="Consulter mes e-mails" onPress={openInbox} isEmail />
+        </TicketBtnEmail>
+      )}
+    </TicketEmail>
+  )
 }
 
 const TicketBody = ({ booking, proDisableEventsQrcode }: TicketBodyProps) => {
@@ -120,19 +139,47 @@ const TicketBody = ({ booking, proDisableEventsQrcode }: TicketBodyProps) => {
   if (booking.qrCodeData && !proDisableEventsQrcode)
     return <QrCodeView qrCodeData={booking.qrCodeData} />
 
-  if (collectType === 'on_site') {
-    const startMessage = t`présente le code ci-dessus sur place` + ' '
-    const delayMessage = collectDelay > 0 ? `${formatCollectDelayString(collectDelay)} ` : null
+  if (
+    collectType === OFFER_WITHDRAWAL_TYPE_OPTIONS.ON_SITE ||
+    collectType === OFFER_WITHDRAWAL_TYPE_OPTIONS.BY_EMAIL
+  ) {
+    const { beginningDatetime } = booking.stock
+
+    if (beginningDatetime && collectType === OFFER_WITHDRAWAL_TYPE_OPTIONS.BY_EMAIL) {
+      // Calculation approximate date send e-mail
+      const nbDays = collectDelay / 60 / 60 / 24
+      const dateSendEmail = addDays(new Date(beginningDatetime), -nbDays)
+      const today = new Date()
+      const startOfferDate = new Date(beginningDatetime)
+
+      if (isSameDay(startOfferDate, today) || today > dateSendEmail) {
+        return <TicketEmailSent offerDate={startOfferDate} />
+      }
+    }
+
+    const startMessage =
+      (collectType === OFFER_WITHDRAWAL_TYPE_OPTIONS.ON_SITE
+        ? t`présente le code ci-dessus sur place`
+        : t`Tu vas recevoir ton billet par e-mail`) + ' '
+    const delayMessage = collectDelay > 0 ? `${formatSecondsToString(collectDelay)} ` : null
     const endMessage = t`avant le début de l’événement`
 
     return (
-      <TicketInfo testID="collect-info">
-        {startMessage}
-        {!!delayMessage && (
-          <TicketCollectDelay testID="collect-info-delay">{delayMessage}</TicketCollectDelay>
+      <React.Fragment>
+        {collectType === OFFER_WITHDRAWAL_TYPE_OPTIONS.BY_EMAIL && (
+          <BicolorEmailSentContainer>
+            <BicolorEmailSent />
+          </BicolorEmailSentContainer>
         )}
-        {endMessage}
-      </TicketInfo>
+
+        <TicketInfo testID="collect-info">
+          {startMessage}
+          {!!delayMessage && (
+            <TicketCollectDelay testID="collect-info-delay">{delayMessage}</TicketCollectDelay>
+          )}
+          {endMessage}
+        </TicketInfo>
+      </React.Fragment>
     )
   }
 
@@ -180,3 +227,23 @@ const TicketContainer = styled.View(({ theme }) => ({
   minHeight: theme.ticket.minHeight,
   width: '100%',
 }))
+
+const TicketEmail = styled.View({
+  width: '100%',
+})
+
+const TicketBtnEmail = styled.View({
+  width: '100%',
+})
+
+const BicolorEmailSentContainer = styled.View({
+  alignItems: 'center',
+  width: '100%',
+  marginBottom: getSpacing(6),
+})
+
+const BicolorEmailSent = styled(InitialBicolorEmailSent).attrs(({ theme }) => ({
+  size: theme.illustrations.sizes.medium,
+  color: theme.colors.primary,
+  color2: theme.colors.secondary,
+}))``
