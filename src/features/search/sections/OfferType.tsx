@@ -38,6 +38,7 @@ export const OfferType: React.FC = () => {
         <TitleWithCount
           title={SectionTitle.OfferType}
           count={+offerTypes['isDigital'] + +offerTypes['isEvent'] + +offerTypes['isThing']}
+          ariaLive="polite"
         />
       }
       accessibilityTitle={SectionTitle.OfferType}>

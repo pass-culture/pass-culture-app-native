@@ -28,7 +28,13 @@ export const Category: React.FC = () => {
   return (
     <AccordionItem
       defaultOpen={true}
-      title={<TitleWithCount title={SectionTitle.Category} count={offerCategories.length} />}
+      title={
+        <TitleWithCount
+          title={SectionTitle.Category}
+          count={offerCategories.length}
+          ariaLive="polite"
+        />
+      }
       accessibilityTitle={SectionTitle.Category}>
       <BodyContainer>
         <StyledUl>
