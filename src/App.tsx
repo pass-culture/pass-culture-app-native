@@ -13,6 +13,7 @@ import 'intl'
 import 'intl/locale-data/jsonp/en'
 
 import { AuthWrapper } from 'features/auth/AuthContext'
+import { CulturalSurveyContextProvider } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
 import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
 import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
@@ -72,13 +73,15 @@ const App: FunctionComponent = function () {
                       <I18nProvider i18n={i18n}>
                         <SnackBarProvider>
                           <NetInfoWrapper>
-                            <IdentityCheckContextProvider>
-                              <SplashScreenProvider>
-                                <ScreenErrorProvider>
-                                  <AppNavigationContainer />
-                                </ScreenErrorProvider>
-                              </SplashScreenProvider>
-                            </IdentityCheckContextProvider>
+                            <CulturalSurveyContextProvider>
+                              <IdentityCheckContextProvider>
+                                <SplashScreenProvider>
+                                  <ScreenErrorProvider>
+                                    <AppNavigationContainer />
+                                  </ScreenErrorProvider>
+                                </SplashScreenProvider>
+                              </IdentityCheckContextProvider>
+                            </CulturalSurveyContextProvider>
                           </NetInfoWrapper>
                         </SnackBarProvider>
                       </I18nProvider>

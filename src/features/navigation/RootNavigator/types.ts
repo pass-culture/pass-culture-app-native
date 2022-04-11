@@ -3,6 +3,8 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import { ComponentType } from 'react'
 import type { CountryCode } from 'react-native-country-picker-modal'
 
+import { CulturalSurveyQuestionEnum } from 'api/gen/api'
+
 import { TabParamList, TabRouteName } from '../TabBar/types'
 
 export type Referrals =
@@ -14,7 +16,7 @@ export type Referrals =
 export type CulturalSurveyRootStackParamList = {
   NavigationCulturalSurvey: undefined
   CulturalSurveyIntro: undefined
-  CulturalSurveyQuestions: undefined
+  CulturalSurveyQuestions: { step: CulturalSurveyQuestionEnum }
 }
 
 export type IdentityCheckRootStackParamList = {

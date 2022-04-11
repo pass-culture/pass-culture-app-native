@@ -10,7 +10,7 @@ import { getSpacing, Typo } from 'ui/theme'
 type CulturalSurveyCheckboxProps = {
   title?: string
   subtitle?: string | null
-  icon?: FunctionComponent<IconInterface>
+  icon?: FunctionComponent<IconInterface> | null
 }
 
 export const CulturalSurveyCheckbox = (props: CulturalSurveyCheckboxProps) => {

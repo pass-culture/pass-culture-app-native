@@ -1,4 +1,9 @@
-import { BookingCancellationReasons, BookingsResponse, SubcategoryIdEnum } from 'api/gen'
+import {
+  BookingCancellationReasons,
+  BookingsResponse,
+  SubcategoryIdEnum,
+  WithdrawalTypeEnum,
+} from 'api/gen'
 
 export const bookingsSnap: BookingsResponse = {
   ended_bookings: [
@@ -106,6 +111,7 @@ export const bookingsSnap: BookingsResponse = {
             },
           },
           withdrawalDetails: null,
+          withdrawalType: WithdrawalTypeEnum.on_site,
         },
       },
     },

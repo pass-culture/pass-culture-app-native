@@ -6,13 +6,13 @@ import { IconInterface } from 'ui/svg/icons/types'
 export const MAP_CULTURAL_SURVEY_ANSWER_ID_TO_ICON: {
   [k in CulturalSurveyTypeCodeKey]: React.FC<IconInterface> | null
 } = {
-  [CulturalSurveyTypeCodeKey.BIBLIOTHEQUE]: CulturalSurveyIcons.MuseumIcon,
+  [CulturalSurveyTypeCodeKey.BIBLIOTHEQUE]: CulturalSurveyIcons.BookstoreIcon,
   [CulturalSurveyTypeCodeKey.MUSEE]: CulturalSurveyIcons.MuseumIcon,
   [CulturalSurveyTypeCodeKey.CINEMA]: CulturalSurveyIcons.CinemaIcon,
   [CulturalSurveyTypeCodeKey.CONCERT]: CulturalSurveyIcons.MusicIcon,
   [CulturalSurveyTypeCodeKey.COURS]: CulturalSurveyIcons.BrushIcon,
   [CulturalSurveyTypeCodeKey.CONFERENCE]: CulturalSurveyIcons.ConferenceIcon,
-  [CulturalSurveyTypeCodeKey.EVENEMENT_JEU]: CulturalSurveyIcons.VideoGameIcon,
+  [CulturalSurveyTypeCodeKey.EVENEMENT_JEU]: CulturalSurveyIcons.PuzzlePieceIcon,
   [CulturalSurveyTypeCodeKey.FILM_DOMICILE]: CulturalSurveyIcons.VideoIcon,
   [CulturalSurveyTypeCodeKey.MATERIEL_ART_CREATIF]: CulturalSurveyIcons.PencilTipIcon,
   [CulturalSurveyTypeCodeKey.PODCAST]: CulturalSurveyIcons.MicrophoneIcon,
@@ -31,7 +31,7 @@ export const MAP_CULTURAL_SURVEY_ANSWER_ID_TO_ICON: {
   [CulturalSurveyTypeCodeKey.SPECTACLE_AUTRE]: CulturalSurveyIcons.ShowIcon,
   [CulturalSurveyTypeCodeKey.SPECTACLE_CIRQUE]: CulturalSurveyIcons.ShowIcon,
   [CulturalSurveyTypeCodeKey.SPECTACLE_DANSE]: CulturalSurveyIcons.DanceFeetIcon,
-  [CulturalSurveyTypeCodeKey.SPECTACLE_HUMOUR]: CulturalSurveyIcons.FestivalIcon,
+  [CulturalSurveyTypeCodeKey.SPECTACLE_HUMOUR]: CulturalSurveyIcons.PerformingArtsIcon,
   [CulturalSurveyTypeCodeKey.SPECTACLE_OPERA]: CulturalSurveyIcons.OperaIcon,
   [CulturalSurveyTypeCodeKey.SPECTACLE_RUE]: CulturalSurveyIcons.ReversedHatIcon,
   [CulturalSurveyTypeCodeKey.SPECTACLE_THEATRE]: CulturalSurveyIcons.TheaterIcon,
