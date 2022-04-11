@@ -46,7 +46,7 @@ export const SomeAdviceBeforeIdentityCheckModal: FunctionComponent<Props> = ({
   </AppModal>
 )
 
-const Description = styled.Text({ textAlign: 'center' })
+const Description = styled(Typo.Body)({ textAlign: 'center' })
 
 interface InstructionProps {
   title: string

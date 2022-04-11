@@ -53,7 +53,7 @@ Object {
           <div
             class="css-text-901oao"
             dir="auto"
-            style="font-family: Montserrat-Medium; font-size: 12px;"
+            style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
           >
             en offres physiques (livres...)
           </div>
@@ -110,7 +110,7 @@ Object {
         <div
           class="css-text-901oao"
           dir="auto"
-          style="font-family: Montserrat-Medium; font-size: 12px;"
+          style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
         >
           en offres physiques (livres...)
         </div>

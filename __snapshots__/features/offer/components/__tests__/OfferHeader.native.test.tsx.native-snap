@@ -713,6 +713,10 @@ Array [
                 style={
                   Array [
                     Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
                       "paddingBottom": 30,
                       "textAlign": "center",
                     },

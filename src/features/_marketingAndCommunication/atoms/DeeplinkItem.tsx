@@ -7,7 +7,7 @@ import { openUrl } from 'features/navigation/helpers'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Share as DefaultShare } from 'ui/svg/icons/Share'
-import { getSpacing, getSpacingString, Spacer } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { TouchableLink } from 'ui/web/link/TouchableLink'
 
 interface Props {
@@ -50,7 +50,7 @@ export const DeeplinkItem = ({ deeplink, before }: Props) => {
           <TouchableLink
             externalHref={deeplink.universalLink}
             onPress={() => openUrl(deeplink.universalLink, { shouldLogEvent: false })}>
-            <Title>{deeplink.universalLink}</Title>
+            <Typo.Caption>{deeplink.universalLink}</Typo.Caption>
           </TouchableLink>
         </Spacer.Flex>
 
@@ -71,7 +71,7 @@ export const DeeplinkItem = ({ deeplink, before }: Props) => {
           <TouchableLink
             externalHref={deeplink.firebaseLink}
             onPress={() => openUrl(deeplink.firebaseLink, { shouldLogEvent: false })}>
-            <Title>{deeplink.firebaseLink}</Title>
+            <Typo.Caption>{deeplink.firebaseLink}</Typo.Caption>
           </TouchableLink>
         </Spacer.Flex>
 
@@ -96,14 +96,6 @@ DeeplinkItem.defaultProps = {
 }
 
 const iconContainerStyle = { margin: 'auto' }
-
-const Title = styled.Text(({ theme }) => ({
-  fontFamily: theme.fontFamily.regular,
-  fontSize: getSpacing(3),
-  lineHeight: getSpacingString(4.5),
-  color: theme.colors.black,
-  flexDirection: 'row',
-}))
 
 const Container = styled.View({
   flexDirection: 'row',

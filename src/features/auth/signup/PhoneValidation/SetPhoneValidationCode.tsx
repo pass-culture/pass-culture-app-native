@@ -14,6 +14,7 @@ import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
 import { UserProfilingFraudRequest } from 'api/gen'
 import { useSendPhoneValidationMutation, useValidatePhoneNumberMutation } from 'features/auth/api'
 import { QuitSignupModal } from 'features/auth/components/QuitSignupModal'
+import { Paragraphe } from 'features/auth/components/signupComponents'
 import { useAppSettings } from 'features/auth/settings'
 import { SignupStep } from 'features/auth/signup/enums'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
@@ -337,12 +338,6 @@ const Break = styled.View({
 const ModalContent = styled.View({
   width: '100%',
   alignItems: 'center',
-})
-
-const Paragraphe = styled.Text({
-  flexWrap: 'wrap',
-  flexShrink: 1,
-  textAlign: 'center',
 })
 
 const HelpRow = styled.View(({ theme }) => ({

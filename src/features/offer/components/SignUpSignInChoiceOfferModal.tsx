@@ -63,7 +63,7 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
   )
 }
 
-const Description = styled.Text({
+const Description = styled(Typo.Body)({
   textAlign: 'center',
   paddingBottom: 30,
 })
