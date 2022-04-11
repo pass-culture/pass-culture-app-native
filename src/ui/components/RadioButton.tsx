@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components/native'
+import { useTheme } from 'styled-components/native'
 
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface RadioButtonProps {
   id: string
@@ -14,6 +15,9 @@ interface RadioButtonProps {
 }
 
 export function RadioButton(props: RadioButtonProps) {
+  const { isMobileViewport } = useTheme()
+  const TitleContainer = isMobileViewport ? TitleContainerFlex : TitleContainerWithMarginRight
+
   const selected = props.selectedValue === props.id
   return (
     <React.Fragment>
@@ -23,10 +27,10 @@ export function RadioButton(props: RadioButtonProps) {
         accessibilityRole="radio"
         accessibilityState={{ checked: selected }}
         testID={`radio-button-${props.id}`}>
-        <Spacer.Flex flex={0.9}>
+        <TitleContainer>
           <Title match={selected}>{props.title}</Title>
           {!!props.description && <Subtitle>{props.description}</Subtitle>}
-        </Spacer.Flex>
+        </TitleContainer>
 
         <Spacer.Flex flex={0.1}>{!!selected && <Validate />}</Spacer.Flex>
       </PressableContainer>
@@ -39,11 +43,19 @@ const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
 
-const PressableContainer = styled(TouchableOpacity)({
+const PressableContainer = styled(TouchableOpacity)(({ theme }) => ({
   flexDirection: 'row',
   width: '100%',
   alignItems: 'center',
-  justifyContent: 'space-between',
+  justifyContent: theme.isMobileViewport ? 'space-between' : undefined,
+}))
+
+const TitleContainerFlex = styled(Spacer.Flex).attrs({
+  flex: 0.9,
+})``
+
+const TitleContainerWithMarginRight = styled.View({
+  marginRight: getSpacing(5),
 })
 
 const Title = styled(Typo.ButtonText)<{ match: boolean }>(({ match, theme }) => ({
