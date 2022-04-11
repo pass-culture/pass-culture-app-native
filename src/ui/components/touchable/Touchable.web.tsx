@@ -1,17 +1,22 @@
+import React from 'react'
 import styled from 'styled-components'
 
 import { appTouchableOpacityWebStyles } from 'ui/components/buttons/AppButton/styleUtils'
 
 import { TouchableProps } from './types'
 
-// REMOVE testID
-export const Touchable = styled.button.attrs<TouchableProps>(
-  ({ onPress, type, testID, accessibilityLabel, ...rest }) => ({
+const StyledTouchable = styled.button.attrs<TouchableProps>(
+  ({ onClick, type, testID, accessibilityLabel, ...rest }) => ({
     tabIndex: '0',
     type: type || 'button',
-    onClick: onPress,
+    onClick,
     'data-testid': testID,
     'aria-label': accessibilityLabel,
     ...rest,
   })
 )(appTouchableOpacityWebStyles)
+
+export const Touchable: React.FC<TouchableProps> = ({ onPress, ...rest }) => (
+  // @ts-ignore bug with typescript
+  <StyledTouchable onClick={onPress} {...rest} />
+)
