@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { useState, useEffect, ComponentProps } from 'react'
-import { ViewStyle, LogBox } from 'react-native'
+import { ListRenderItem, LogBox, Platform, View } from 'react-native'
 import ReactNativeCountryPicker, {
   Country,
   CountryList,
@@ -10,12 +10,16 @@ import ReactNativeCountryPicker, {
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowDown as DefaultArrowDown } from 'ui/svg/icons/ArrowDown'
 import { Close } from 'ui/svg/icons/Close'
+import { Validate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typography'
 
 import { ALLOWED_COUNTRY_CODES, FLAG_TYPE } from './constants'
 
@@ -24,15 +28,10 @@ type ReactNativeCountryListProps = ComponentProps<typeof CountryList>
 
 const translation: ReactNativeCountryPickerProps['translation'] = 'fra'
 
-// @ts-expect-error: missing flatlist props data and renderItem, but that does not affect the behaviour
-const countryListFlatListProps: ReactNativeCountryListProps['flatListProps'] = {
-  style: { height: 350 },
-}
-
 interface Props {
   initialCountry: Country
   onSelect: (country: Country) => void
-  style?: ViewStyle
+  width?: string
 }
 
 async function getAllowedCountries() {
@@ -44,7 +43,9 @@ export const CountryPicker: React.FC<Props> = (props) => {
 
   const [countries, setCountries] = useState<Country[]>([])
   const [country, setCountry] = useState<Country>(props.initialCountry)
-  const callingCode = `+${country.callingCode[0]}`
+
+  const formatCallingCode = (callingCode: string) => `+${callingCode}`
+  const callingCode = formatCallingCode(country.callingCode[0])
 
   useEffect(() => {
     getAllowedCountries().then(setCountries)
@@ -60,16 +61,47 @@ export const CountryPicker: React.FC<Props> = (props) => {
     hideModal()
   }
 
+  const renderItem: ListRenderItem<Country> = ({ item }: { item: Country }) => {
+    const itemTitle = `${item.name} (${formatCallingCode(item.callingCode[0])})`
+    const selected = item.cca2 === country.cca2
+    return (
+      <View {...getHeadingAttrs(2)}>
+        <TouchableOpacity
+          accessibilityRole="radio"
+          accessibilityState={{ checked: selected }}
+          key={item.cca2}
+          testID={`country-selector-${item.cca2}`}
+          onPress={() => onSelect(item)}>
+          <CountryContainer>
+            <Flag countryCode={item.cca2} withEmoji flagSize={30} />
+            <Typo.Body>{itemTitle}</Typo.Body>
+            {!!selected && (
+              <IconContainer>
+                <ValidateIcon />
+              </IconContainer>
+            )}
+          </CountryContainer>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+
+  const countryListFlatListProps: ReactNativeCountryListProps['flatListProps'] = {
+    style: { height: 350 },
+    renderItem,
+    data: countries,
+  }
+
   return (
     <React.Fragment>
-      <StyledTouchableOpacity
+      <StyledTouchable
         onPress={showModal}
-        style={props.style}
+        buttonWidth={props.width}
         {...accessibilityAndTestId(t`Ouvrir la modale de choix de l'indicatif téléphonique`)}>
         <Flag countryCode={country.cca2} flagSize={25} />
         <CallingCodeText>{callingCode}</CallingCodeText>
         <ArrowDown />
-      </StyledTouchableOpacity>
+      </StyledTouchable>
       <AppModal
         title={t`Choix de l'indicatif téléphonique`}
         visible={visible}
@@ -83,7 +115,6 @@ export const CountryPicker: React.FC<Props> = (props) => {
         <CountryList
           data={countries}
           onSelect={onSelect}
-          withCallingCode={true}
           flatListProps={countryListFlatListProps}
         />
       </AppModal>
@@ -91,10 +122,40 @@ export const CountryPicker: React.FC<Props> = (props) => {
   )
 }
 
-const StyledTouchableOpacity = styled(TouchableOpacity)({
+const CountryContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
+  paddingVertical: getSpacing(2),
+  paddingHorizontal: getSpacing(1),
 })
+
+const IconContainer = styled.View({
+  flex: 1,
+  alignItems: 'flex-end',
+  paddingHorizontal: getSpacing(2),
+})
+
+const ValidateIcon = styled(Validate).attrs(({ theme }) => ({
+  color: theme.colors.primary,
+  size: theme.icons.sizes.small,
+}))``
+
+const focusStyle =
+  Platform.OS === 'web'
+    ? {
+        '&:focus': { outline: 'none' },
+        '&:focus-visible': { outline: 'auto' },
+      }
+    : {}
+const StyledTouchable = styledButton(Touchable)<{ buttonWidth?: string; isFocus?: boolean }>(
+  ({ buttonWidth }) => ({
+    width: buttonWidth,
+    flexDirection: 'row',
+    alignItems: 'center',
+    flexShrink: 0,
+    ...focusStyle,
+  })
+)
 
 const CallingCodeText = styled(Typo.ButtonText)({
   marginLeft: -getSpacing(1), // To compensate for the Flag component right margin

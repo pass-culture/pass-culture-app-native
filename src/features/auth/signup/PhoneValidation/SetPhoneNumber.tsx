@@ -217,9 +217,9 @@ const PICKER_WIDTH_MOBILE = 35 // in %
 const INPUT_WIDTH_DESKTOP = 100 - PICKER_WIDTH_DESKTOP // in %
 const INPUT_WIDTH_MOBILE = 100 - PICKER_WIDTH_MOBILE // in %
 
-const StyledCountryPicker = styled(CountryPicker)(({ theme }) => ({
+const StyledCountryPicker = styled(CountryPicker).attrs(({ theme }) => ({
   width: theme.isDesktopViewport ? `${PICKER_WIDTH_DESKTOP}%` : `${PICKER_WIDTH_MOBILE}%`,
-}))
+}))``
 
 const StyledTextInput = styled(TextInput).attrs((props) => {
   const { theme } = props
