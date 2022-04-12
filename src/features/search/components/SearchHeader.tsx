@@ -1,6 +1,5 @@
 import React from 'react'
-import styled from 'styled-components/native'
-import { useTheme } from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
 import { getSpacing, Spacer } from 'ui/theme'
