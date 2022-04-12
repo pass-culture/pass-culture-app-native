@@ -324,7 +324,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                 }
               >
                 <a
-                  className="sc-gsDKAQ gFcuOJ sc-giYglK etqCXF"
+                  className="sc-gsDKAQ gFcuOJ sc-ezbkAF fZQzH"
                   href="https://dmsfrenchcitizen"
                   onClick={[Function]}
                   onDoubleClick={[Function]}
@@ -437,7 +437,7 @@ exports[`<IdentityCheckDMS /> should render correctly 1`] = `
                   </div>
                 </div>
                 <a
-                  className="sc-gsDKAQ gFcuOJ sc-giYglK etqCXF"
+                  className="sc-gsDKAQ gFcuOJ sc-ezbkAF fZQzH"
                   href="https://dmsforeigncitizen"
                   onClick={[Function]}
                   onDoubleClick={[Function]}

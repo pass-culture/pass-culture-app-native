@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <nav
-        class="sc-cxpSdN fGgkAn"
+        class="sc-llYSUQ ccqIdn"
         id="tabBarID"
       >
         <div
@@ -22,10 +22,10 @@ Object {
               style="width: 16px;"
             />
             <ul
-              class="sc-kDTinF sc-llYSUQ dawiYh bBNdHY"
+              class="sc-kDTinF sc-iJKOTD dawiYh JswSF"
             >
               <li
-                class="sc-iJKOTD laBwND"
+                class="sc-giYglK dgFuXv"
               >
                 <div
                   aria-label="Accueil"
@@ -70,7 +70,7 @@ Object {
                 </div>
               </li>
               <li
-                class="sc-iJKOTD laBwND"
+                class="sc-giYglK dgFuXv"
               >
                 <div
                   aria-label="Rechercher des offres"
@@ -100,7 +100,7 @@ Object {
                 </div>
               </li>
               <li
-                class="sc-iJKOTD laBwND"
+                class="sc-giYglK dgFuXv"
               >
                 <div
                   aria-label="Mes réservations"
@@ -130,7 +130,7 @@ Object {
                 </div>
               </li>
               <li
-                class="sc-iJKOTD laBwND"
+                class="sc-giYglK dgFuXv"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -159,7 +159,7 @@ Object {
                 </div>
               </li>
               <li
-                class="sc-iJKOTD laBwND"
+                class="sc-giYglK dgFuXv"
               >
                 <div
                   aria-label="Mon profil"
@@ -204,7 +204,7 @@ Object {
   </body>,
   "container": <div>
     <nav
-      class="sc-cxpSdN fGgkAn"
+      class="sc-llYSUQ ccqIdn"
       id="tabBarID"
     >
       <div
@@ -220,10 +220,10 @@ Object {
             style="width: 16px;"
           />
           <ul
-            class="sc-kDTinF sc-llYSUQ dawiYh bBNdHY"
+            class="sc-kDTinF sc-iJKOTD dawiYh JswSF"
           >
             <li
-              class="sc-iJKOTD laBwND"
+              class="sc-giYglK dgFuXv"
             >
               <div
                 aria-label="Accueil"
@@ -268,7 +268,7 @@ Object {
               </div>
             </li>
             <li
-              class="sc-iJKOTD laBwND"
+              class="sc-giYglK dgFuXv"
             >
               <div
                 aria-label="Rechercher des offres"
@@ -298,7 +298,7 @@ Object {
               </div>
             </li>
             <li
-              class="sc-iJKOTD laBwND"
+              class="sc-giYglK dgFuXv"
             >
               <div
                 aria-label="Mes réservations"
@@ -328,7 +328,7 @@ Object {
               </div>
             </li>
             <li
-              class="sc-iJKOTD laBwND"
+              class="sc-giYglK dgFuXv"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -357,7 +357,7 @@ Object {
               </div>
             </li>
             <li
-              class="sc-iJKOTD laBwND"
+              class="sc-giYglK dgFuXv"
             >
               <div
                 aria-label="Mon profil"
