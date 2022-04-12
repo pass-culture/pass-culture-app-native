@@ -5,7 +5,8 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { styledButton } from 'ui/components/buttons/styledButton'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { Sort as SortIconDefault } from 'ui/svg/icons/Sort'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -33,9 +34,7 @@ const SortIcon = styled(SortIconDefault).attrs(({ theme }) => ({
   color: theme.colors.white,
 }))``
 
-const Container = styled(TouchableOpacity)({
-  overflow: 'hidden',
-})
+const Container = styledButton(Touchable)({ overflow: 'hidden' })
 
 const StyledLinearGradient = styled(LinearGradient)(({ theme }) => ({
   backgroundColor: theme.colors.primary,
