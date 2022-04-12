@@ -11,7 +11,7 @@ const { href } = new URL(API_BASE_URL)
 export async function apiClient(type: EntityKeys, id: number) {
   const entityValue = ENTITY_MAP[type]
   if (!entityValue) {
-    throw Error(`Unknown entity: ${type}`)
+    throw new Error(`Unknown entity: ${type}`)
   }
 
   const url = `${href}${API_BASE_PATH_NATIVE_V1}/${entityValue.NAME}/${id}`
@@ -24,5 +24,5 @@ export async function apiClient(type: EntityKeys, id: number) {
   if (response.ok && response.status === 200) {
     return response.json()
   }
-  throw Error(`Wrong status code: ${response.status}`)
+  throw new Error(`Wrong status code: ${response.status}`)
 }

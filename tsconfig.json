@@ -29,6 +29,7 @@
   "exclude": [
     "build/**",
     "node_modules/**",
+    "server/**",
     "src/types",
     "babel.config.js",
     "metro.config.js",

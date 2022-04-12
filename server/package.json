@@ -21,13 +21,16 @@
     "node": ">=16.0.0"
   },
   "scripts": {
-    "dev": "ENV=testing node-dev index.ts",
-    "start": "ENV=${ENV:-testing} ts-node .",
+    "dev": "ENV=testing node-dev src/index.ts",
+    "start": "ENV=${ENV:-testing} ts-node src/index.ts",
     "start:development": "ENV=development yarn start",
     "start:testing": "ENV=testing yarn start",
     "start:staging": "ENV=staging yarn start",
     "start:integration": "ENV=integration yarn start",
-    "start:production": "ENV=production yarn start"
+    "start:production": "ENV=production yarn start",
+    "test": "yarn test:types; yarn test:unit",
+    "test:unit": "TZ=UTC JEST=true jest --forceExit",
+    "test:types": "tsc --noEmit"
   },
   "dependencies": {
     "@swc/core": "^1.2.163",
@@ -40,7 +43,15 @@
     "typescript": "^4.3.5"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.9",
+    "@babel/preset-env": "^7.16.11",
+    "@babel/preset-typescript": "^7.16.7",
+    "@types/jest": "^27.4.1",
+    "babel-jest": "^27.5.1",
+    "jest": "^27.5.1",
+    "msw": "^0.39.2",
     "node-dev": "^7.4.2",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "ts-jest": "^27.1.4"
   }
 }
