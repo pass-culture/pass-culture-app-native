@@ -2344,6 +2344,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
           }
         >
           <View
+            accessibilityLabel="Handicap visuel : Accessible"
+            accessibilityRole="image"
             rightSpacingValue={12}
             style={
               Array [
@@ -2464,6 +2466,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
             </View>
           </View>
           <View
+            accessibilityLabel="Handicap psychique ou cognitif : Non accessible"
+            accessibilityRole="image"
             rightSpacingValue={12}
             style={
               Array [
@@ -2585,6 +2589,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
             </View>
           </View>
           <View
+            accessibilityLabel="Handicap moteur : Non accessible"
+            accessibilityRole="image"
             rightSpacingValue={12}
             style={
               Array [
@@ -2706,6 +2712,8 @@ exports[`<VenueBody /> should render correctly 1`] = `
             </View>
           </View>
           <View
+            accessibilityLabel="Handicap auditif : Non accessible"
+            accessibilityRole="image"
             rightSpacingValue={0}
             style={
               Array [

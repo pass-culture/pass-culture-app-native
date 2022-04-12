@@ -124,6 +124,7 @@ exports[`Filter component should render correctly 1`] = `
       }
     >
       <Text
+        accessibilityLabel="1 filtre sélectionné"
         style={
           Array [
             Object {

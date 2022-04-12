@@ -95,15 +95,15 @@ Object {
                 class="css-view-1dbjc4n"
                 style="height: 48px;"
               />
-              <h4
-                aria-level="4"
+              <h2
+                aria-level="2"
                 class="css-reset-4rbku5 css-text-901oao"
                 dir="auto"
                 role="heading"
                 style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
               >
                 Trier par
-              </h4>
+              </h2>
             </div>
             <ul
               class="sc-eCImPb sc-jRQBWg GcfzH laaqIM"
@@ -342,15 +342,15 @@ Object {
               class="css-view-1dbjc4n"
               style="height: 48px;"
             />
-            <h4
-              aria-level="4"
+            <h2
+              aria-level="2"
               class="css-reset-4rbku5 css-text-901oao"
               dir="auto"
               role="heading"
               style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
             >
               Trier par
-            </h4>
+            </h2>
           </div>
           <ul
             class="sc-eCImPb sc-jRQBWg GcfzH laaqIM"

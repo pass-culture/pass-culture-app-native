@@ -49,6 +49,7 @@ Object {
             style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; flex-direction: row; justify-content: center; width: 24px;"
           >
             <div
+              aria-label="1 filtre sélectionné"
               class="css-text-901oao"
               dir="auto"
               style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
@@ -109,6 +110,7 @@ Object {
           style="align-items: center; background-color: rgb(255, 255, 255); border-top-left-radius: 24px; border-top-right-radius: 24px; border-bottom-right-radius: 24px; border-bottom-left-radius: 24px; flex-direction: row; justify-content: center; width: 24px;"
         >
           <div
+            aria-label="1 filtre sélectionné"
             class="css-text-901oao"
             dir="auto"
             style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"

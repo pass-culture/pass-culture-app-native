@@ -250,6 +250,7 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
       }
     >
       <Text
+        accessibilityLabel="Nom de l'offre : Je ne sais pas ce que je dis"
         adjustsFontSizeToFit={true}
         allowFontScaling={false}
         numberOfLines={3}

@@ -433,7 +433,7 @@ Object {
               />
               <button
                 aria-label="Géolocalisation désactivée"
-                class="sc-bqiRlB bwzKSK sc-bYoBSM dQrQtB sc-bYoBSM dQrQtB"
+                class="sc-iCfMLu exddjM sc-kLwhqv eiwiaa sc-kLwhqv eiwiaa"
                 data-testid="iconLocation"
                 tabindex="0"
                 type="button"
@@ -871,7 +871,7 @@ Object {
               style="margin-right: 24px; margin-left: 24px;"
             >
               <a
-                class="sc-fFeiMQ hFCUne"
+                class="sc-bkkeKt hWiQaG"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -1140,14 +1140,16 @@ Object {
                   style="flex-direction: row; justify-content: space-between;"
                 >
                   <ul
-                    class="sc-iqseJM sc-kLwhqv jShZCC fcwiXt"
+                    class="sc-egiyK sc-ikJyIC fXDcKC iGXYCt"
                   >
                     <li
-                      class="sc-ikJyIC hXNHhL"
+                      class="sc-jJoQJp eazuZI"
                     >
                       <div
+                        aria-label="Handicap visuel : Accessible"
                         class="css-view-1dbjc4n"
                         data-testid="accessibilityAtomContainer"
+                        role="img"
                         style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                       >
                         <div
@@ -1210,11 +1212,13 @@ Object {
                       </div>
                     </li>
                     <li
-                      class="sc-ikJyIC hXNHhL"
+                      class="sc-jJoQJp eazuZI"
                     >
                       <div
+                        aria-label="Handicap psychique ou cognitif : Non accessible"
                         class="css-view-1dbjc4n"
                         data-testid="accessibilityAtomContainer"
+                        role="img"
                         style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                       >
                         <div
@@ -1277,11 +1281,13 @@ Object {
                       </div>
                     </li>
                     <li
-                      class="sc-ikJyIC hXNHhL"
+                      class="sc-jJoQJp eazuZI"
                     >
                       <div
+                        aria-label="Handicap moteur : Non accessible"
                         class="css-view-1dbjc4n"
                         data-testid="accessibilityAtomContainer"
+                        role="img"
                         style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                       >
                         <div
@@ -1344,11 +1350,13 @@ Object {
                       </div>
                     </li>
                     <li
-                      class="sc-ikJyIC hXNHhL"
+                      class="sc-jJoQJp eazuZI"
                     >
                       <div
+                        aria-label="Handicap auditif : Non accessible"
                         class="css-view-1dbjc4n"
                         data-testid="accessibilityAtomContainer"
+                        role="img"
                         style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px;"
                       >
                         <div
@@ -1936,7 +1944,7 @@ Object {
             />
             <button
               aria-label="Géolocalisation désactivée"
-              class="sc-bqiRlB bwzKSK sc-bYoBSM dQrQtB sc-bYoBSM dQrQtB"
+              class="sc-iCfMLu exddjM sc-kLwhqv eiwiaa sc-kLwhqv eiwiaa"
               data-testid="iconLocation"
               tabindex="0"
               type="button"
@@ -2374,7 +2382,7 @@ Object {
             style="margin-right: 24px; margin-left: 24px;"
           >
             <a
-              class="sc-fFeiMQ hFCUne"
+              class="sc-bkkeKt hWiQaG"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -2643,14 +2651,16 @@ Object {
                 style="flex-direction: row; justify-content: space-between;"
               >
                 <ul
-                  class="sc-iqseJM sc-kLwhqv jShZCC fcwiXt"
+                  class="sc-egiyK sc-ikJyIC fXDcKC iGXYCt"
                 >
                   <li
-                    class="sc-ikJyIC hXNHhL"
+                    class="sc-jJoQJp eazuZI"
                   >
                     <div
+                      aria-label="Handicap visuel : Accessible"
                       class="css-view-1dbjc4n"
                       data-testid="accessibilityAtomContainer"
+                      role="img"
                       style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                     >
                       <div
@@ -2713,11 +2723,13 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-ikJyIC hXNHhL"
+                    class="sc-jJoQJp eazuZI"
                   >
                     <div
+                      aria-label="Handicap psychique ou cognitif : Non accessible"
                       class="css-view-1dbjc4n"
                       data-testid="accessibilityAtomContainer"
+                      role="img"
                       style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                     >
                       <div
@@ -2780,11 +2792,13 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-ikJyIC hXNHhL"
+                    class="sc-jJoQJp eazuZI"
                   >
                     <div
+                      aria-label="Handicap moteur : Non accessible"
                       class="css-view-1dbjc4n"
                       data-testid="accessibilityAtomContainer"
+                      role="img"
                       style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                     >
                       <div
@@ -2847,11 +2861,13 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-ikJyIC hXNHhL"
+                    class="sc-jJoQJp eazuZI"
                   >
                     <div
+                      aria-label="Handicap auditif : Non accessible"
                       class="css-view-1dbjc4n"
                       data-testid="accessibilityAtomContainer"
+                      role="img"
                       style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px;"
                     >
                       <div
