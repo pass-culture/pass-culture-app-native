@@ -371,40 +371,45 @@ Array [
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
+                    "marginVertical": 0,
+                    "minHeight": 24,
                     "opacity": 1,
                     "userSelect": "auto",
-                    "width": "100%",
                   }
                 }
-                testID="radio-button-Offer"
               >
                 <View
                   flex={0.9}
                   style={
                     Array [
                       Object {
+                        "alignItems": "center",
                         "flexBasis": 0,
+                        "flexDirection": "row",
                         "flexGrow": 0.9,
                         "flexShrink": 1,
                       },
                     ]
                   }
                 >
-                  <Text
-                    match={false}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    Offer
-                  </Text>
+                  <View>
+                    <Text
+                      isSelected={false}
+                      numberOfLines={2}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      Offer
+                    </Text>
+                  </View>
                 </View>
                 <View
                   flex={0.1}
@@ -473,40 +478,45 @@ Array [
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
+                    "marginVertical": 0,
+                    "minHeight": 24,
                     "opacity": 1,
                     "userSelect": "auto",
-                    "width": "100%",
                   }
                 }
-                testID="radio-button-Venue"
               >
                 <View
                   flex={0.9}
                   style={
                     Array [
                       Object {
+                        "alignItems": "center",
                         "flexBasis": 0,
+                        "flexDirection": "row",
                         "flexGrow": 0.9,
                         "flexShrink": 1,
                       },
                     ]
                   }
                 >
-                  <Text
-                    match={false}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    Venue
-                  </Text>
+                  <View>
+                    <Text
+                      isSelected={false}
+                      numberOfLines={2}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      Venue
+                    </Text>
+                  </View>
                 </View>
                 <View
                   flex={0.1}
@@ -575,40 +585,45 @@ Array [
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
+                    "marginVertical": 0,
+                    "minHeight": 24,
                     "opacity": 1,
                     "userSelect": "auto",
-                    "width": "100%",
                   }
                 }
-                testID="radio-button-Home"
               >
                 <View
                   flex={0.9}
                   style={
                     Array [
                       Object {
+                        "alignItems": "center",
                         "flexBasis": 0,
+                        "flexDirection": "row",
                         "flexGrow": 0.9,
                         "flexShrink": 1,
                       },
                     ]
                   }
                 >
-                  <Text
-                    match={true}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#eb0055",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    Home
-                  </Text>
+                  <View>
+                    <Text
+                      isSelected={true}
+                      numberOfLines={2}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#eb0055",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      Home
+                    </Text>
+                  </View>
                 </View>
                 <View
                   flex={0.1}
@@ -686,40 +701,45 @@ Array [
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
+                    "marginVertical": 0,
+                    "minHeight": 24,
                     "opacity": 1,
                     "userSelect": "auto",
-                    "width": "100%",
                   }
                 }
-                testID="radio-button-Search"
               >
                 <View
                   flex={0.9}
                   style={
                     Array [
                       Object {
+                        "alignItems": "center",
                         "flexBasis": 0,
+                        "flexDirection": "row",
                         "flexGrow": 0.9,
                         "flexShrink": 1,
                       },
                     ]
                   }
                 >
-                  <Text
-                    match={false}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    Search
-                  </Text>
+                  <View>
+                    <Text
+                      isSelected={false}
+                      numberOfLines={2}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      Search
+                    </Text>
+                  </View>
                 </View>
                 <View
                   flex={0.1}
@@ -788,40 +808,45 @@ Array [
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
+                    "marginVertical": 0,
+                    "minHeight": 24,
                     "opacity": 1,
                     "userSelect": "auto",
-                    "width": "100%",
                   }
                 }
-                testID="radio-button-Profile"
               >
                 <View
                   flex={0.9}
                   style={
                     Array [
                       Object {
+                        "alignItems": "center",
                         "flexBasis": 0,
+                        "flexDirection": "row",
                         "flexGrow": 0.9,
                         "flexShrink": 1,
                       },
                     ]
                   }
                 >
-                  <Text
-                    match={false}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    Profile
-                  </Text>
+                  <View>
+                    <Text
+                      isSelected={false}
+                      numberOfLines={2}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      Profile
+                    </Text>
+                  </View>
                 </View>
                 <View
                   flex={0.1}
@@ -890,40 +915,45 @@ Array [
                     "alignItems": "center",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
+                    "marginVertical": 0,
+                    "minHeight": 24,
                     "opacity": 1,
                     "userSelect": "auto",
-                    "width": "100%",
                   }
                 }
-                testID="radio-button-SignupForm"
               >
                 <View
                   flex={0.9}
                   style={
                     Array [
                       Object {
+                        "alignItems": "center",
                         "flexBasis": 0,
+                        "flexDirection": "row",
                         "flexGrow": 0.9,
                         "flexShrink": 1,
                       },
                     ]
                   }
                 >
-                  <Text
-                    match={false}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  >
-                    SignupForm
-                  </Text>
+                  <View>
+                    <Text
+                      isSelected={false}
+                      numberOfLines={2}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      SignupForm
+                    </Text>
+                  </View>
                 </View>
                 <View
                   flex={0.1}

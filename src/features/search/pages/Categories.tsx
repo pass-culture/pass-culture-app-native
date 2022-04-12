@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useRef } from 'react'
-import { ScrollView, ViewStyle } from 'react-native'
+import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnum } from 'api/gen'
@@ -10,9 +10,8 @@ import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { PageHeader } from 'ui/components/headers/PageHeader'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { RadioButton } from 'ui/components/radioButtons/RadioButton'
+import { getSpacing, Spacer } from 'ui/theme'
 import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
 const DEBOUNCED_CALLBACK = 200
@@ -42,62 +41,37 @@ export const Categories: React.FC = () => {
   return (
     <Container>
       <PageHeader title={t`Catégories`} />
-      <ScrollView contentContainerStyle={contentContainerStyle}>
+      <StyledScrollView>
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={16} />
         <VerticalUl>
           {Object.entries(CATEGORY_CRITERIA).map(([category, { icon: Icon }]) => {
             const searchGroup = category as SearchGroupNameEnum
-            const isSelected = isCategorySelected(searchGroup)
-            const StyledIcon = styled(Icon).attrs(({ theme }) => ({
-              color: theme.colors.primary,
-              color2: isSelected ? theme.colors.primary : theme.colors.secondary,
-              size: theme.icons.sizes.small,
-            }))``
-
             return (
               <Li key={searchGroup}>
-                <LabelContainer
-                  onPress={selectCategory(searchGroup)}
-                  accessibilityRole="radio"
-                  accessibilityState={{ checked: isSelected }}
-                  testID={searchGroup}>
-                  <Spacer.Row numberOfSpaces={4} />
-                  <StyledIcon />
-                  <Spacer.Row numberOfSpaces={4} />
-                  <ButtonText numberOfLines={2} isSelected={isSelected}>
-                    {searchGroupLabelMapping[searchGroup]}
-                  </ButtonText>
-                  <Spacer.Flex />
-                  {!!isSelected && <Validate />}
-                </LabelContainer>
+                <RadioButton
+                  label={searchGroupLabelMapping[searchGroup]}
+                  isSelected={isCategorySelected(searchGroup)}
+                  onSelect={selectCategory(searchGroup)}
+                  testID={searchGroup}
+                  marginVertical={getSpacing(3)}
+                  icon={Icon}
+                />
               </Li>
             )
           })}
         </VerticalUl>
-      </ScrollView>
+      </StyledScrollView>
     </Container>
   )
 }
-
-const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
-  color: theme.colors.primary,
-  size: theme.icons.sizes.small,
-}))``
 
 const Container = styled.View(({ theme }) => ({
   flex: 1,
   backgroundColor: theme.colors.white,
 }))
 
-const contentContainerStyle: ViewStyle = { flexGrow: 1, marginRight: getSpacing(6) }
-
-const LabelContainer = styled(TouchableOpacity)({
-  flexDirection: 'row',
-  alignItems: 'center',
-  marginBottom: getSpacing(6),
+const StyledScrollView = styled(ScrollView)({
+  flexGrow: 1,
+  paddingHorizontal: getSpacing(4),
 })
-
-const ButtonText = styled(Typo.ButtonText)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
-  color: isSelected ? theme.colors.primary : theme.colors.black,
-}))

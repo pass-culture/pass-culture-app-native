@@ -49,9 +49,9 @@ const TextContainer = styled.View({
   flexDirection: 'row',
 })
 
-const StyledBody = styled(Typo.Body)<{ selected: boolean }>(({ selected }) => ({
+const StyledBody = styled(Typo.Body)<{ selected: boolean }>(({ theme, selected }) => ({
   fontWeight: selected ? 'bold' : 'normal',
-  flex: 1,
+  flex: theme.isMobileViewport ? 1 : undefined,
 }))
 
 const IconContainer = styled.View(({ theme }) => ({
@@ -59,5 +59,5 @@ const IconContainer = styled.View(({ theme }) => ({
   height: theme.icons.sizes.small,
   alignItems: 'center',
   justifyContent: 'center',
-  marginLeft: getSpacing(2),
+  marginLeft: getSpacing(theme.isMobileViewport ? 2 : 6),
 }))

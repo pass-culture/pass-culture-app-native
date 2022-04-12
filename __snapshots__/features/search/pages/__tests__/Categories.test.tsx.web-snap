@@ -5,7 +5,7 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -260,11 +260,11 @@
+@@ -253,11 +253,11 @@
         <ul
           className=\\"sc-gsDKAQ sc-dkPtRN bwGBFc ezyhIk\\"
         >
@@ -18,33 +18,36 @@ exports[`Categories component should match diff snapshot when new category is se
               onBlur={[Function onStyledBlur]}
               onClick={[Function onClick]}
               onContextMenu={[Function onContextMenu]}
-@@ -329,11 +329,11 @@
-                className=\\"css-text-901oao css-textMultiLine-cens5h\\"
-                dir=\\"auto\\"
-                style={
-                  Object {
-                    \\"WebkitLineClamp\\": 2,
--                   \\"color\\": \\"rgba(22,22,23,1.00)\\",
-+                   \\"color\\": \\"rgba(235,0,85,1.00)\\",
-                    \\"fontFamily\\": \\"Montserrat-Bold\\",
-                    \\"fontSize\\": \\"15px\\",
-                    \\"lineHeight\\": \\"20px\\",
-                  }
-                }
-@@ -355,10 +355,20 @@
-                    \\"msFlexPositive\\": 1,
+@@ -349,11 +349,11 @@
+                    className=\\"css-text-901oao css-textMultiLine-cens5h\\"
+                    dir=\\"auto\\"
+                    style={
+                      Object {
+                        \\"WebkitLineClamp\\": 2,
+-                       \\"color\\": \\"rgba(22,22,23,1.00)\\",
++                       \\"color\\": \\"rgba(235,0,85,1.00)\\",
+                        \\"fontFamily\\": \\"Montserrat-Bold\\",
+                        \\"fontSize\\": \\"15px\\",
+                        \\"lineHeight\\": \\"20px\\",
+                      }
+                    }
+@@ -376,11 +376,22 @@
+                    \\"msFlexNegative\\": 1,
+                    \\"msFlexPositive\\": 0.1,
                     \\"msFlexPreferredSize\\": \\"0px\\",
                   }
                 }
-              />
-+             <div
-+               className=\\"css-view-1dbjc4n\\"
+-             />
 +             >
 +               <div
-+                 className=\\"css-text-901oao\\"
-+                 dir=\\"auto\\"
++                 className=\\"css-view-1dbjc4n\\"
 +               >
-+                 undefined-SVG-Mock
++                 <div
++                   className=\\"css-text-901oao\\"
++                   dir=\\"auto\\"
++                 >
++                   undefined-SVG-Mock
++                 </div>
 +               </div>
 +             </div>
             </div>
@@ -52,7 +55,7 @@ exports[`Categories component should match diff snapshot when new category is se
           <li>
             <div
               aria-checked={false}
-@@ -458,11 +468,11 @@
+@@ -509,11 +520,11 @@
               />
             </div>
           </li>
@@ -65,35 +68,38 @@ exports[`Categories component should match diff snapshot when new category is se
               onBlur={[Function onStyledBlur]}
               onClick={[Function onClick]}
               onContextMenu={[Function onContextMenu]}
-@@ -527,11 +537,11 @@
-                className=\\"css-text-901oao css-textMultiLine-cens5h\\"
-                dir=\\"auto\\"
-                style={
-                  Object {
-                    \\"WebkitLineClamp\\": 2,
--                   \\"color\\": \\"rgba(235,0,85,1.00)\\",
-+                   \\"color\\": \\"rgba(22,22,23,1.00)\\",
-                    \\"fontFamily\\": \\"Montserrat-Bold\\",
-                    \\"fontSize\\": \\"15px\\",
-                    \\"lineHeight\\": \\"20px\\",
-                  }
-                }
-@@ -553,20 +563,10 @@
-                    \\"msFlexPositive\\": 1,
+@@ -605,11 +616,11 @@
+                    className=\\"css-text-901oao css-textMultiLine-cens5h\\"
+                    dir=\\"auto\\"
+                    style={
+                      Object {
+                        \\"WebkitLineClamp\\": 2,
+-                       \\"color\\": \\"rgba(235,0,85,1.00)\\",
++                       \\"color\\": \\"rgba(22,22,23,1.00)\\",
+                        \\"fontFamily\\": \\"Montserrat-Bold\\",
+                        \\"fontSize\\": \\"15px\\",
+                        \\"lineHeight\\": \\"20px\\",
+                      }
+                    }
+@@ -632,22 +643,11 @@
+                    \\"msFlexNegative\\": 1,
+                    \\"msFlexPositive\\": 0.1,
                     \\"msFlexPreferredSize\\": \\"0px\\",
                   }
                 }
-              />
--             <div
--               className=\\"css-view-1dbjc4n\\"
 -             >
 -               <div
--                 className=\\"css-text-901oao\\"
--                 dir=\\"auto\\"
+-                 className=\\"css-view-1dbjc4n\\"
 -               >
--                 undefined-SVG-Mock
+-                 <div
+-                   className=\\"css-text-901oao\\"
+-                   dir=\\"auto\\"
+-                 >
+-                   undefined-SVG-Mock
+-                 </div>
 -               </div>
 -             </div>
++             />
             </div>
           </li>
           <li>
@@ -329,21 +335,14 @@ exports[`Categories component should render correctly 1`] = `
         "msFlexPositive": 1,
         "overflowX": "hidden",
         "overflowY": "auto",
+        "paddingLeft": "16px",
+        "paddingRight": "16px",
         "transform": "translateZ(0px)",
       }
     }
   >
     <div
       className="css-view-1dbjc4n"
-      style={
-        Object {
-          "WebkitBoxFlex": 1,
-          "WebkitFlexGrow": 1,
-          "flexGrow": 1,
-          "marginRight": "24px",
-          "msFlexPositive": 1,
-        }
-      }
     >
       <div
         className="css-view-1dbjc4n"
@@ -383,16 +382,22 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
                 "WebkitBoxOrient": "horizontal",
+                "WebkitBoxPack": "justify",
                 "WebkitFlexDirection": "row",
+                "WebkitJustifyContent": "space-between",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
                 "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
-                "marginBottom": "24px",
+                "justifyContent": "space-between",
+                "marginBottom": "12px",
+                "marginTop": "12px",
+                "minHeight": "24px",
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
+                "msFlexPack": "justify",
                 "msTouchAction": "manipulation",
                 "msUserSelect": "auto",
                 "touchAction": "manipulation",
@@ -407,68 +412,92 @@ exports[`Categories component should render correctly 1`] = `
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxFlex": 0.9,
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexDirection": "row",
+                  "WebkitFlexGrow": 0.9,
+                  "WebkitFlexShrink": 1,
+                  "alignItems": "center",
+                  "flexBasis": "0px",
+                  "flexDirection": "row",
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.9,
+                  "msFlexPreferredSize": "0px",
                 }
               }
-            />
-            <div
-              className="css-view-1dbjc4n"
             >
               <div
-                className="css-text-901oao"
-                dir="auto"
+                className="css-view-1dbjc4n"
               >
-                undefined-SVG-Mock
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "width": "16px",
+                  }
+                }
+              />
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao css-textMultiLine-cens5h"
+                  dir="auto"
+                  style={
+                    Object {
+                      "WebkitLineClamp": 2,
+                      "color": "rgba(235,0,85,1.00)",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": "15px",
+                      "lineHeight": "20px",
+                    }
+                  }
+                >
+                  Toutes les catégories
+                </div>
               </div>
             </div>
             <div
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
-                }
-              }
-            />
-            <div
-              className="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
-              style={
-                Object {
-                  "WebkitLineClamp": 2,
-                  "color": "rgba(235,0,85,1.00)",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": "15px",
-                  "lineHeight": "20px",
-                }
-              }
-            >
-              Toutes les catégories
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxFlex": 1,
+                  "WebkitBoxFlex": 0.1,
                   "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 1,
+                  "WebkitFlexGrow": 0.1,
                   "WebkitFlexShrink": 1,
                   "flexBasis": "0px",
-                  "flexGrow": 1,
+                  "flexGrow": 0.1,
                   "flexShrink": 1,
                   "msFlexNegative": 1,
-                  "msFlexPositive": 1,
+                  "msFlexPositive": 0.1,
                   "msFlexPreferredSize": "0px",
                 }
               }
-            />
-            <div
-              className="css-view-1dbjc4n"
             >
               <div
-                className="css-text-901oao"
-                dir="auto"
+                className="css-view-1dbjc4n"
               >
-                undefined-SVG-Mock
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
               </div>
             </div>
           </div>
@@ -492,16 +521,22 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
                 "WebkitBoxOrient": "horizontal",
+                "WebkitBoxPack": "justify",
                 "WebkitFlexDirection": "row",
+                "WebkitJustifyContent": "space-between",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
                 "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
-                "marginBottom": "24px",
+                "justifyContent": "space-between",
+                "marginBottom": "12px",
+                "marginTop": "12px",
+                "minHeight": "24px",
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
+                "msFlexPack": "justify",
                 "msTouchAction": "manipulation",
                 "msUserSelect": "auto",
                 "touchAction": "manipulation",
@@ -516,56 +551,79 @@ exports[`Categories component should render correctly 1`] = `
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxFlex": 0.9,
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexDirection": "row",
+                  "WebkitFlexGrow": 0.9,
+                  "WebkitFlexShrink": 1,
+                  "alignItems": "center",
+                  "flexBasis": "0px",
+                  "flexDirection": "row",
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.9,
+                  "msFlexPreferredSize": "0px",
                 }
               }
-            />
-            <div
-              className="css-view-1dbjc4n"
             >
               <div
-                className="css-text-901oao"
-                dir="auto"
+                className="css-view-1dbjc4n"
               >
-                undefined-SVG-Mock
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "width": "16px",
+                  }
+                }
+              />
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao css-textMultiLine-cens5h"
+                  dir="auto"
+                  style={
+                    Object {
+                      "WebkitLineClamp": 2,
+                      "color": "rgba(22,22,23,1.00)",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": "15px",
+                      "lineHeight": "20px",
+                    }
+                  }
+                >
+                  Carte jeunes
+                </div>
               </div>
             </div>
             <div
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
-                }
-              }
-            />
-            <div
-              className="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
-              style={
-                Object {
-                  "WebkitLineClamp": 2,
-                  "color": "rgba(22,22,23,1.00)",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": "15px",
-                  "lineHeight": "20px",
-                }
-              }
-            >
-              Carte jeunes
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxFlex": 1,
+                  "WebkitBoxFlex": 0.1,
                   "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 1,
+                  "WebkitFlexGrow": 0.1,
                   "WebkitFlexShrink": 1,
                   "flexBasis": "0px",
-                  "flexGrow": 1,
+                  "flexGrow": 0.1,
                   "flexShrink": 1,
                   "msFlexNegative": 1,
-                  "msFlexPositive": 1,
+                  "msFlexPositive": 0.1,
                   "msFlexPreferredSize": "0px",
                 }
               }
@@ -591,16 +649,22 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
                 "WebkitBoxOrient": "horizontal",
+                "WebkitBoxPack": "justify",
                 "WebkitFlexDirection": "row",
+                "WebkitJustifyContent": "space-between",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
                 "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
-                "marginBottom": "24px",
+                "justifyContent": "space-between",
+                "marginBottom": "12px",
+                "marginTop": "12px",
+                "minHeight": "24px",
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
+                "msFlexPack": "justify",
                 "msTouchAction": "manipulation",
                 "msUserSelect": "auto",
                 "touchAction": "manipulation",
@@ -615,56 +679,79 @@ exports[`Categories component should render correctly 1`] = `
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxFlex": 0.9,
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexDirection": "row",
+                  "WebkitFlexGrow": 0.9,
+                  "WebkitFlexShrink": 1,
+                  "alignItems": "center",
+                  "flexBasis": "0px",
+                  "flexDirection": "row",
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.9,
+                  "msFlexPreferredSize": "0px",
                 }
               }
-            />
-            <div
-              className="css-view-1dbjc4n"
             >
               <div
-                className="css-text-901oao"
-                dir="auto"
+                className="css-view-1dbjc4n"
               >
-                undefined-SVG-Mock
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "width": "16px",
+                  }
+                }
+              />
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao css-textMultiLine-cens5h"
+                  dir="auto"
+                  style={
+                    Object {
+                      "WebkitLineClamp": 2,
+                      "color": "rgba(22,22,23,1.00)",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": "15px",
+                      "lineHeight": "20px",
+                    }
+                  }
+                >
+                  Cinéma
+                </div>
               </div>
             </div>
             <div
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
-                }
-              }
-            />
-            <div
-              className="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
-              style={
-                Object {
-                  "WebkitLineClamp": 2,
-                  "color": "rgba(22,22,23,1.00)",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": "15px",
-                  "lineHeight": "20px",
-                }
-              }
-            >
-              Cinéma
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxFlex": 1,
+                  "WebkitBoxFlex": 0.1,
                   "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 1,
+                  "WebkitFlexGrow": 0.1,
                   "WebkitFlexShrink": 1,
                   "flexBasis": "0px",
-                  "flexGrow": 1,
+                  "flexGrow": 0.1,
                   "flexShrink": 1,
                   "msFlexNegative": 1,
-                  "msFlexPositive": 1,
+                  "msFlexPositive": 0.1,
                   "msFlexPreferredSize": "0px",
                 }
               }
@@ -690,16 +777,22 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
                 "WebkitBoxOrient": "horizontal",
+                "WebkitBoxPack": "justify",
                 "WebkitFlexDirection": "row",
+                "WebkitJustifyContent": "space-between",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
                 "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
-                "marginBottom": "24px",
+                "justifyContent": "space-between",
+                "marginBottom": "12px",
+                "marginTop": "12px",
+                "minHeight": "24px",
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
+                "msFlexPack": "justify",
                 "msTouchAction": "manipulation",
                 "msUserSelect": "auto",
                 "touchAction": "manipulation",
@@ -714,56 +807,79 @@ exports[`Categories component should render correctly 1`] = `
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxFlex": 0.9,
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexDirection": "row",
+                  "WebkitFlexGrow": 0.9,
+                  "WebkitFlexShrink": 1,
+                  "alignItems": "center",
+                  "flexBasis": "0px",
+                  "flexDirection": "row",
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.9,
+                  "msFlexPreferredSize": "0px",
                 }
               }
-            />
-            <div
-              className="css-view-1dbjc4n"
             >
               <div
-                className="css-text-901oao"
-                dir="auto"
+                className="css-view-1dbjc4n"
               >
-                undefined-SVG-Mock
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "width": "16px",
+                  }
+                }
+              />
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao css-textMultiLine-cens5h"
+                  dir="auto"
+                  style={
+                    Object {
+                      "WebkitLineClamp": 2,
+                      "color": "rgba(22,22,23,1.00)",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": "15px",
+                      "lineHeight": "20px",
+                    }
+                  }
+                >
+                  Visites, expositions
+                </div>
               </div>
             </div>
             <div
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
-                }
-              }
-            />
-            <div
-              className="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
-              style={
-                Object {
-                  "WebkitLineClamp": 2,
-                  "color": "rgba(22,22,23,1.00)",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": "15px",
-                  "lineHeight": "20px",
-                }
-              }
-            >
-              Visites, expositions
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxFlex": 1,
+                  "WebkitBoxFlex": 0.1,
                   "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 1,
+                  "WebkitFlexGrow": 0.1,
                   "WebkitFlexShrink": 1,
                   "flexBasis": "0px",
-                  "flexGrow": 1,
+                  "flexGrow": 0.1,
                   "flexShrink": 1,
                   "msFlexNegative": 1,
-                  "msFlexPositive": 1,
+                  "msFlexPositive": 0.1,
                   "msFlexPreferredSize": "0px",
                 }
               }
@@ -789,16 +905,22 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
                 "WebkitBoxOrient": "horizontal",
+                "WebkitBoxPack": "justify",
                 "WebkitFlexDirection": "row",
+                "WebkitJustifyContent": "space-between",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
                 "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
-                "marginBottom": "24px",
+                "justifyContent": "space-between",
+                "marginBottom": "12px",
+                "marginTop": "12px",
+                "minHeight": "24px",
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
+                "msFlexPack": "justify",
                 "msTouchAction": "manipulation",
                 "msUserSelect": "auto",
                 "touchAction": "manipulation",
@@ -813,56 +935,79 @@ exports[`Categories component should render correctly 1`] = `
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxFlex": 0.9,
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexDirection": "row",
+                  "WebkitFlexGrow": 0.9,
+                  "WebkitFlexShrink": 1,
+                  "alignItems": "center",
+                  "flexBasis": "0px",
+                  "flexDirection": "row",
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.9,
+                  "msFlexPreferredSize": "0px",
                 }
               }
-            />
-            <div
-              className="css-view-1dbjc4n"
             >
               <div
-                className="css-text-901oao"
-                dir="auto"
+                className="css-view-1dbjc4n"
               >
-                undefined-SVG-Mock
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "width": "16px",
+                  }
+                }
+              />
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao css-textMultiLine-cens5h"
+                  dir="auto"
+                  style={
+                    Object {
+                      "WebkitLineClamp": 2,
+                      "color": "rgba(22,22,23,1.00)",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": "15px",
+                      "lineHeight": "20px",
+                    }
+                  }
+                >
+                  Musique
+                </div>
               </div>
             </div>
             <div
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
-                }
-              }
-            />
-            <div
-              className="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
-              style={
-                Object {
-                  "WebkitLineClamp": 2,
-                  "color": "rgba(22,22,23,1.00)",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": "15px",
-                  "lineHeight": "20px",
-                }
-              }
-            >
-              Musique
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxFlex": 1,
+                  "WebkitBoxFlex": 0.1,
                   "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 1,
+                  "WebkitFlexGrow": 0.1,
                   "WebkitFlexShrink": 1,
                   "flexBasis": "0px",
-                  "flexGrow": 1,
+                  "flexGrow": 0.1,
                   "flexShrink": 1,
                   "msFlexNegative": 1,
-                  "msFlexPositive": 1,
+                  "msFlexPositive": 0.1,
                   "msFlexPreferredSize": "0px",
                 }
               }
@@ -888,16 +1033,22 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
                 "WebkitBoxOrient": "horizontal",
+                "WebkitBoxPack": "justify",
                 "WebkitFlexDirection": "row",
+                "WebkitJustifyContent": "space-between",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
                 "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
-                "marginBottom": "24px",
+                "justifyContent": "space-between",
+                "marginBottom": "12px",
+                "marginTop": "12px",
+                "minHeight": "24px",
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
+                "msFlexPack": "justify",
                 "msTouchAction": "manipulation",
                 "msUserSelect": "auto",
                 "touchAction": "manipulation",
@@ -912,56 +1063,79 @@ exports[`Categories component should render correctly 1`] = `
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxFlex": 0.9,
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexDirection": "row",
+                  "WebkitFlexGrow": 0.9,
+                  "WebkitFlexShrink": 1,
+                  "alignItems": "center",
+                  "flexBasis": "0px",
+                  "flexDirection": "row",
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.9,
+                  "msFlexPreferredSize": "0px",
                 }
               }
-            />
-            <div
-              className="css-view-1dbjc4n"
             >
               <div
-                className="css-text-901oao"
-                dir="auto"
+                className="css-view-1dbjc4n"
               >
-                undefined-SVG-Mock
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "width": "16px",
+                  }
+                }
+              />
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao css-textMultiLine-cens5h"
+                  dir="auto"
+                  style={
+                    Object {
+                      "WebkitLineClamp": 2,
+                      "color": "rgba(22,22,23,1.00)",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": "15px",
+                      "lineHeight": "20px",
+                    }
+                  }
+                >
+                  Spectacles
+                </div>
               </div>
             </div>
             <div
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
-                }
-              }
-            />
-            <div
-              className="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
-              style={
-                Object {
-                  "WebkitLineClamp": 2,
-                  "color": "rgba(22,22,23,1.00)",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": "15px",
-                  "lineHeight": "20px",
-                }
-              }
-            >
-              Spectacles
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxFlex": 1,
+                  "WebkitBoxFlex": 0.1,
                   "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 1,
+                  "WebkitFlexGrow": 0.1,
                   "WebkitFlexShrink": 1,
                   "flexBasis": "0px",
-                  "flexGrow": 1,
+                  "flexGrow": 0.1,
                   "flexShrink": 1,
                   "msFlexNegative": 1,
-                  "msFlexPositive": 1,
+                  "msFlexPositive": 0.1,
                   "msFlexPreferredSize": "0px",
                 }
               }
@@ -987,16 +1161,22 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
                 "WebkitBoxOrient": "horizontal",
+                "WebkitBoxPack": "justify",
                 "WebkitFlexDirection": "row",
+                "WebkitJustifyContent": "space-between",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
                 "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
-                "marginBottom": "24px",
+                "justifyContent": "space-between",
+                "marginBottom": "12px",
+                "marginTop": "12px",
+                "minHeight": "24px",
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
+                "msFlexPack": "justify",
                 "msTouchAction": "manipulation",
                 "msUserSelect": "auto",
                 "touchAction": "manipulation",
@@ -1011,56 +1191,79 @@ exports[`Categories component should render correctly 1`] = `
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxFlex": 0.9,
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexDirection": "row",
+                  "WebkitFlexGrow": 0.9,
+                  "WebkitFlexShrink": 1,
+                  "alignItems": "center",
+                  "flexBasis": "0px",
+                  "flexDirection": "row",
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.9,
+                  "msFlexPreferredSize": "0px",
                 }
               }
-            />
-            <div
-              className="css-view-1dbjc4n"
             >
               <div
-                className="css-text-901oao"
-                dir="auto"
+                className="css-view-1dbjc4n"
               >
-                undefined-SVG-Mock
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "width": "16px",
+                  }
+                }
+              />
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao css-textMultiLine-cens5h"
+                  dir="auto"
+                  style={
+                    Object {
+                      "WebkitLineClamp": 2,
+                      "color": "rgba(22,22,23,1.00)",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": "15px",
+                      "lineHeight": "20px",
+                    }
+                  }
+                >
+                  Cours, ateliers
+                </div>
               </div>
             </div>
             <div
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
-                }
-              }
-            />
-            <div
-              className="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
-              style={
-                Object {
-                  "WebkitLineClamp": 2,
-                  "color": "rgba(22,22,23,1.00)",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": "15px",
-                  "lineHeight": "20px",
-                }
-              }
-            >
-              Cours, ateliers
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxFlex": 1,
+                  "WebkitBoxFlex": 0.1,
                   "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 1,
+                  "WebkitFlexGrow": 0.1,
                   "WebkitFlexShrink": 1,
                   "flexBasis": "0px",
-                  "flexGrow": 1,
+                  "flexGrow": 0.1,
                   "flexShrink": 1,
                   "msFlexNegative": 1,
-                  "msFlexPositive": 1,
+                  "msFlexPositive": 0.1,
                   "msFlexPreferredSize": "0px",
                 }
               }
@@ -1086,16 +1289,22 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
                 "WebkitBoxOrient": "horizontal",
+                "WebkitBoxPack": "justify",
                 "WebkitFlexDirection": "row",
+                "WebkitJustifyContent": "space-between",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
                 "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
-                "marginBottom": "24px",
+                "justifyContent": "space-between",
+                "marginBottom": "12px",
+                "marginTop": "12px",
+                "minHeight": "24px",
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
+                "msFlexPack": "justify",
                 "msTouchAction": "manipulation",
                 "msUserSelect": "auto",
                 "touchAction": "manipulation",
@@ -1110,56 +1319,79 @@ exports[`Categories component should render correctly 1`] = `
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxFlex": 0.9,
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexDirection": "row",
+                  "WebkitFlexGrow": 0.9,
+                  "WebkitFlexShrink": 1,
+                  "alignItems": "center",
+                  "flexBasis": "0px",
+                  "flexDirection": "row",
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.9,
+                  "msFlexPreferredSize": "0px",
                 }
               }
-            />
-            <div
-              className="css-view-1dbjc4n"
             >
               <div
-                className="css-text-901oao"
-                dir="auto"
+                className="css-view-1dbjc4n"
               >
-                undefined-SVG-Mock
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "width": "16px",
+                  }
+                }
+              />
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao css-textMultiLine-cens5h"
+                  dir="auto"
+                  style={
+                    Object {
+                      "WebkitLineClamp": 2,
+                      "color": "rgba(22,22,23,1.00)",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": "15px",
+                      "lineHeight": "20px",
+                    }
+                  }
+                >
+                  Livre
+                </div>
               </div>
             </div>
             <div
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
-                }
-              }
-            />
-            <div
-              className="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
-              style={
-                Object {
-                  "WebkitLineClamp": 2,
-                  "color": "rgba(22,22,23,1.00)",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": "15px",
-                  "lineHeight": "20px",
-                }
-              }
-            >
-              Livre
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxFlex": 1,
+                  "WebkitBoxFlex": 0.1,
                   "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 1,
+                  "WebkitFlexGrow": 0.1,
                   "WebkitFlexShrink": 1,
                   "flexBasis": "0px",
-                  "flexGrow": 1,
+                  "flexGrow": 0.1,
                   "flexShrink": 1,
                   "msFlexNegative": 1,
-                  "msFlexPositive": 1,
+                  "msFlexPositive": 0.1,
                   "msFlexPreferredSize": "0px",
                 }
               }
@@ -1185,16 +1417,22 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
                 "WebkitBoxOrient": "horizontal",
+                "WebkitBoxPack": "justify",
                 "WebkitFlexDirection": "row",
+                "WebkitJustifyContent": "space-between",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
                 "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
-                "marginBottom": "24px",
+                "justifyContent": "space-between",
+                "marginBottom": "12px",
+                "marginTop": "12px",
+                "minHeight": "24px",
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
+                "msFlexPack": "justify",
                 "msTouchAction": "manipulation",
                 "msUserSelect": "auto",
                 "touchAction": "manipulation",
@@ -1209,56 +1447,79 @@ exports[`Categories component should render correctly 1`] = `
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxFlex": 0.9,
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexDirection": "row",
+                  "WebkitFlexGrow": 0.9,
+                  "WebkitFlexShrink": 1,
+                  "alignItems": "center",
+                  "flexBasis": "0px",
+                  "flexDirection": "row",
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.9,
+                  "msFlexPreferredSize": "0px",
                 }
               }
-            />
-            <div
-              className="css-view-1dbjc4n"
             >
               <div
-                className="css-text-901oao"
-                dir="auto"
+                className="css-view-1dbjc4n"
               >
-                undefined-SVG-Mock
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "width": "16px",
+                  }
+                }
+              />
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao css-textMultiLine-cens5h"
+                  dir="auto"
+                  style={
+                    Object {
+                      "WebkitLineClamp": 2,
+                      "color": "rgba(22,22,23,1.00)",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": "15px",
+                      "lineHeight": "20px",
+                    }
+                  }
+                >
+                  Films, séries
+                </div>
               </div>
             </div>
             <div
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
-                }
-              }
-            />
-            <div
-              className="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
-              style={
-                Object {
-                  "WebkitLineClamp": 2,
-                  "color": "rgba(22,22,23,1.00)",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": "15px",
-                  "lineHeight": "20px",
-                }
-              }
-            >
-              Films, séries
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxFlex": 1,
+                  "WebkitBoxFlex": 0.1,
                   "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 1,
+                  "WebkitFlexGrow": 0.1,
                   "WebkitFlexShrink": 1,
                   "flexBasis": "0px",
-                  "flexGrow": 1,
+                  "flexGrow": 0.1,
                   "flexShrink": 1,
                   "msFlexNegative": 1,
-                  "msFlexPositive": 1,
+                  "msFlexPositive": 0.1,
                   "msFlexPreferredSize": "0px",
                 }
               }
@@ -1284,16 +1545,22 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
                 "WebkitBoxOrient": "horizontal",
+                "WebkitBoxPack": "justify",
                 "WebkitFlexDirection": "row",
+                "WebkitJustifyContent": "space-between",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
                 "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
-                "marginBottom": "24px",
+                "justifyContent": "space-between",
+                "marginBottom": "12px",
+                "marginTop": "12px",
+                "minHeight": "24px",
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
+                "msFlexPack": "justify",
                 "msTouchAction": "manipulation",
                 "msUserSelect": "auto",
                 "touchAction": "manipulation",
@@ -1308,56 +1575,79 @@ exports[`Categories component should render correctly 1`] = `
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxFlex": 0.9,
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexDirection": "row",
+                  "WebkitFlexGrow": 0.9,
+                  "WebkitFlexShrink": 1,
+                  "alignItems": "center",
+                  "flexBasis": "0px",
+                  "flexDirection": "row",
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.9,
+                  "msFlexPreferredSize": "0px",
                 }
               }
-            />
-            <div
-              className="css-view-1dbjc4n"
             >
               <div
-                className="css-text-901oao"
-                dir="auto"
+                className="css-view-1dbjc4n"
               >
-                undefined-SVG-Mock
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "width": "16px",
+                  }
+                }
+              />
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao css-textMultiLine-cens5h"
+                  dir="auto"
+                  style={
+                    Object {
+                      "WebkitLineClamp": 2,
+                      "color": "rgba(22,22,23,1.00)",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": "15px",
+                      "lineHeight": "20px",
+                    }
+                  }
+                >
+                  Presse, médias
+                </div>
               </div>
             </div>
             <div
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
-                }
-              }
-            />
-            <div
-              className="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
-              style={
-                Object {
-                  "WebkitLineClamp": 2,
-                  "color": "rgba(22,22,23,1.00)",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": "15px",
-                  "lineHeight": "20px",
-                }
-              }
-            >
-              Presse, médias
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxFlex": 1,
+                  "WebkitBoxFlex": 0.1,
                   "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 1,
+                  "WebkitFlexGrow": 0.1,
                   "WebkitFlexShrink": 1,
                   "flexBasis": "0px",
-                  "flexGrow": 1,
+                  "flexGrow": 0.1,
                   "flexShrink": 1,
                   "msFlexNegative": 1,
-                  "msFlexPositive": 1,
+                  "msFlexPositive": 0.1,
                   "msFlexPreferredSize": "0px",
                 }
               }
@@ -1383,16 +1673,22 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
                 "WebkitBoxOrient": "horizontal",
+                "WebkitBoxPack": "justify",
                 "WebkitFlexDirection": "row",
+                "WebkitJustifyContent": "space-between",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
                 "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
-                "marginBottom": "24px",
+                "justifyContent": "space-between",
+                "marginBottom": "12px",
+                "marginTop": "12px",
+                "minHeight": "24px",
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
+                "msFlexPack": "justify",
                 "msTouchAction": "manipulation",
                 "msUserSelect": "auto",
                 "touchAction": "manipulation",
@@ -1407,56 +1703,79 @@ exports[`Categories component should render correctly 1`] = `
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxFlex": 0.9,
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexDirection": "row",
+                  "WebkitFlexGrow": 0.9,
+                  "WebkitFlexShrink": 1,
+                  "alignItems": "center",
+                  "flexBasis": "0px",
+                  "flexDirection": "row",
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.9,
+                  "msFlexPreferredSize": "0px",
                 }
               }
-            />
-            <div
-              className="css-view-1dbjc4n"
             >
               <div
-                className="css-text-901oao"
-                dir="auto"
+                className="css-view-1dbjc4n"
               >
-                undefined-SVG-Mock
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "width": "16px",
+                  }
+                }
+              />
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao css-textMultiLine-cens5h"
+                  dir="auto"
+                  style={
+                    Object {
+                      "WebkitLineClamp": 2,
+                      "color": "rgba(22,22,23,1.00)",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": "15px",
+                      "lineHeight": "20px",
+                    }
+                  }
+                >
+                  Jeux
+                </div>
               </div>
             </div>
             <div
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
-                }
-              }
-            />
-            <div
-              className="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
-              style={
-                Object {
-                  "WebkitLineClamp": 2,
-                  "color": "rgba(22,22,23,1.00)",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": "15px",
-                  "lineHeight": "20px",
-                }
-              }
-            >
-              Jeux
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxFlex": 1,
+                  "WebkitBoxFlex": 0.1,
                   "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 1,
+                  "WebkitFlexGrow": 0.1,
                   "WebkitFlexShrink": 1,
                   "flexBasis": "0px",
-                  "flexGrow": 1,
+                  "flexGrow": 0.1,
                   "flexShrink": 1,
                   "msFlexNegative": 1,
-                  "msFlexPositive": 1,
+                  "msFlexPositive": 0.1,
                   "msFlexPreferredSize": "0px",
                 }
               }
@@ -1482,16 +1801,22 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
                 "WebkitBoxOrient": "horizontal",
+                "WebkitBoxPack": "justify",
                 "WebkitFlexDirection": "row",
+                "WebkitJustifyContent": "space-between",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
                 "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
-                "marginBottom": "24px",
+                "justifyContent": "space-between",
+                "marginBottom": "12px",
+                "marginTop": "12px",
+                "minHeight": "24px",
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
+                "msFlexPack": "justify",
                 "msTouchAction": "manipulation",
                 "msUserSelect": "auto",
                 "touchAction": "manipulation",
@@ -1506,56 +1831,79 @@ exports[`Categories component should render correctly 1`] = `
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxFlex": 0.9,
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexDirection": "row",
+                  "WebkitFlexGrow": 0.9,
+                  "WebkitFlexShrink": 1,
+                  "alignItems": "center",
+                  "flexBasis": "0px",
+                  "flexDirection": "row",
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.9,
+                  "msFlexPreferredSize": "0px",
                 }
               }
-            />
-            <div
-              className="css-view-1dbjc4n"
             >
               <div
-                className="css-text-901oao"
-                dir="auto"
+                className="css-view-1dbjc4n"
               >
-                undefined-SVG-Mock
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "width": "16px",
+                  }
+                }
+              />
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao css-textMultiLine-cens5h"
+                  dir="auto"
+                  style={
+                    Object {
+                      "WebkitLineClamp": 2,
+                      "color": "rgba(22,22,23,1.00)",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": "15px",
+                      "lineHeight": "20px",
+                    }
+                  }
+                >
+                  Conférences, rencontres
+                </div>
               </div>
             </div>
             <div
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
-                }
-              }
-            />
-            <div
-              className="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
-              style={
-                Object {
-                  "WebkitLineClamp": 2,
-                  "color": "rgba(22,22,23,1.00)",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": "15px",
-                  "lineHeight": "20px",
-                }
-              }
-            >
-              Conférences, rencontres
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxFlex": 1,
+                  "WebkitBoxFlex": 0.1,
                   "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 1,
+                  "WebkitFlexGrow": 0.1,
                   "WebkitFlexShrink": 1,
                   "flexBasis": "0px",
-                  "flexGrow": 1,
+                  "flexGrow": 0.1,
                   "flexShrink": 1,
                   "msFlexNegative": 1,
-                  "msFlexPositive": 1,
+                  "msFlexPositive": 0.1,
                   "msFlexPreferredSize": "0px",
                 }
               }
@@ -1581,16 +1929,22 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
                 "WebkitBoxOrient": "horizontal",
+                "WebkitBoxPack": "justify",
                 "WebkitFlexDirection": "row",
+                "WebkitJustifyContent": "space-between",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
                 "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
-                "marginBottom": "24px",
+                "justifyContent": "space-between",
+                "marginBottom": "12px",
+                "marginTop": "12px",
+                "minHeight": "24px",
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
+                "msFlexPack": "justify",
                 "msTouchAction": "manipulation",
                 "msUserSelect": "auto",
                 "touchAction": "manipulation",
@@ -1605,56 +1959,79 @@ exports[`Categories component should render correctly 1`] = `
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxFlex": 0.9,
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexDirection": "row",
+                  "WebkitFlexGrow": 0.9,
+                  "WebkitFlexShrink": 1,
+                  "alignItems": "center",
+                  "flexBasis": "0px",
+                  "flexDirection": "row",
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.9,
+                  "msFlexPreferredSize": "0px",
                 }
               }
-            />
-            <div
-              className="css-view-1dbjc4n"
             >
               <div
-                className="css-text-901oao"
-                dir="auto"
+                className="css-view-1dbjc4n"
               >
-                undefined-SVG-Mock
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "width": "16px",
+                  }
+                }
+              />
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao css-textMultiLine-cens5h"
+                  dir="auto"
+                  style={
+                    Object {
+                      "WebkitLineClamp": 2,
+                      "color": "rgba(22,22,23,1.00)",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": "15px",
+                      "lineHeight": "20px",
+                    }
+                  }
+                >
+                  Instruments de musique
+                </div>
               </div>
             </div>
             <div
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
-                }
-              }
-            />
-            <div
-              className="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
-              style={
-                Object {
-                  "WebkitLineClamp": 2,
-                  "color": "rgba(22,22,23,1.00)",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": "15px",
-                  "lineHeight": "20px",
-                }
-              }
-            >
-              Instruments de musique
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxFlex": 1,
+                  "WebkitBoxFlex": 0.1,
                   "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 1,
+                  "WebkitFlexGrow": 0.1,
                   "WebkitFlexShrink": 1,
                   "flexBasis": "0px",
-                  "flexGrow": 1,
+                  "flexGrow": 0.1,
                   "flexShrink": 1,
                   "msFlexNegative": 1,
-                  "msFlexPositive": 1,
+                  "msFlexPositive": 0.1,
                   "msFlexPreferredSize": "0px",
                 }
               }
@@ -1680,16 +2057,22 @@ exports[`Categories component should render correctly 1`] = `
                 "WebkitBoxAlign": "center",
                 "WebkitBoxDirection": "normal",
                 "WebkitBoxOrient": "horizontal",
+                "WebkitBoxPack": "justify",
                 "WebkitFlexDirection": "row",
+                "WebkitJustifyContent": "space-between",
                 "WebkitTransitionDuration": "0s",
                 "WebkitTransitionProperty": "opacity",
                 "WebkitUserSelect": "auto",
                 "alignItems": "center",
                 "cursor": "pointer",
                 "flexDirection": "row",
-                "marginBottom": "24px",
+                "justifyContent": "space-between",
+                "marginBottom": "12px",
+                "marginTop": "12px",
+                "minHeight": "24px",
                 "msFlexAlign": "center",
                 "msFlexDirection": "row",
+                "msFlexPack": "justify",
                 "msTouchAction": "manipulation",
                 "msUserSelect": "auto",
                 "touchAction": "manipulation",
@@ -1704,56 +2087,79 @@ exports[`Categories component should render correctly 1`] = `
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
+                  "WebkitAlignItems": "center",
+                  "WebkitBoxAlign": "center",
+                  "WebkitBoxDirection": "normal",
+                  "WebkitBoxFlex": 0.9,
+                  "WebkitBoxOrient": "horizontal",
+                  "WebkitFlexBasis": "0px",
+                  "WebkitFlexDirection": "row",
+                  "WebkitFlexGrow": 0.9,
+                  "WebkitFlexShrink": 1,
+                  "alignItems": "center",
+                  "flexBasis": "0px",
+                  "flexDirection": "row",
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                  "msFlexAlign": "center",
+                  "msFlexDirection": "row",
+                  "msFlexNegative": 1,
+                  "msFlexPositive": 0.9,
+                  "msFlexPreferredSize": "0px",
                 }
               }
-            />
-            <div
-              className="css-view-1dbjc4n"
             >
               <div
-                className="css-text-901oao"
-                dir="auto"
+                className="css-view-1dbjc4n"
               >
-                undefined-SVG-Mock
+                <div
+                  className="css-text-901oao"
+                  dir="auto"
+                >
+                  undefined-SVG-Mock
+                </div>
+              </div>
+              <div
+                className="css-view-1dbjc4n"
+                style={
+                  Object {
+                    "width": "16px",
+                  }
+                }
+              />
+              <div
+                className="css-view-1dbjc4n"
+              >
+                <div
+                  className="css-text-901oao css-textMultiLine-cens5h"
+                  dir="auto"
+                  style={
+                    Object {
+                      "WebkitLineClamp": 2,
+                      "color": "rgba(22,22,23,1.00)",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": "15px",
+                      "lineHeight": "20px",
+                    }
+                  }
+                >
+                  Beaux-Arts
+                </div>
               </div>
             </div>
             <div
               className="css-view-1dbjc4n"
               style={
                 Object {
-                  "width": "16px",
-                }
-              }
-            />
-            <div
-              className="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
-              style={
-                Object {
-                  "WebkitLineClamp": 2,
-                  "color": "rgba(22,22,23,1.00)",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": "15px",
-                  "lineHeight": "20px",
-                }
-              }
-            >
-              Beaux-Arts
-            </div>
-            <div
-              className="css-view-1dbjc4n"
-              style={
-                Object {
-                  "WebkitBoxFlex": 1,
+                  "WebkitBoxFlex": 0.1,
                   "WebkitFlexBasis": "0px",
-                  "WebkitFlexGrow": 1,
+                  "WebkitFlexGrow": 0.1,
                   "WebkitFlexShrink": 1,
                   "flexBasis": "0px",
-                  "flexGrow": 1,
+                  "flexGrow": 0.1,
                   "flexShrink": 1,
                   "msFlexNegative": 1,
-                  "msFlexPositive": 1,
+                  "msFlexPositive": 0.1,
                   "msFlexPreferredSize": "0px",
                 }
               }

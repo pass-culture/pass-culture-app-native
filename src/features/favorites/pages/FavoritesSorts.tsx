@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { useState } from 'react'
-import { ScrollView, ViewStyle } from 'react-native'
+import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
@@ -11,8 +11,7 @@ import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { InputError } from 'ui/components/inputs/InputError'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { Validate } from 'ui/svg/icons/Validate'
+import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
@@ -66,34 +65,27 @@ export const FavoritesSorts: React.FC = () => {
   return (
     <Container>
       <PageHeader title={t`Trier`} />
-      <ScrollView contentContainerStyle={contentContainerStyle}>
+      <StyledScrollView>
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={16} />
 
         <TitleContainer>
           <Spacer.Column numberOfSpaces={12} />
-          <Spacer.Row numberOfSpaces={6} />
           <Typo.Title4>{t`Trier par`}</Typo.Title4>
         </TitleContainer>
 
         <VerticalUl>
           {SORT_OPTIONS_LIST.map(([sortBy, label]) => {
-            const isSelected = stagedSelectedSortBy === sortBy
             return (
               <Li key={sortBy}>
-                <LabelContainer
-                  accessibilityRole="radio"
-                  accessibilityState={{ checked: isSelected }}
+                <RadioButton
+                  label={label}
+                  isSelected={stagedSelectedSortBy === sortBy}
+                  onSelect={() => onSortBySelection(sortBy)}
                   accessibilityLabel={t`Trier par` + ` ${label}`}
-                  key={sortBy}
-                  onPress={() => onSortBySelection(sortBy)}
-                  testID={sortBy}>
-                  <Spacer.Column numberOfSpaces={8} />
-                  <Spacer.Row numberOfSpaces={6} />
-                  <Label isSelected={isSelected}>{label}</Label>
-                  <Spacer.Flex />
-                  {!!isSelected && <ValidatePrimary />}
-                </LabelContainer>
+                  marginVertical={getSpacing(3)}
+                  testID={sortBy}
+                />
                 <InputError
                   visible={!!(sortBy === 'AROUND_ME' && positionError)}
                   messageId={positionError?.message}
@@ -103,7 +95,7 @@ export const FavoritesSorts: React.FC = () => {
             )
           })}
         </VerticalUl>
-      </ScrollView>
+      </StyledScrollView>
 
       <ButtonContainer>
         <ButtonPrimary wording={t`Valider`} onPress={onValidation} center />
@@ -112,38 +104,20 @@ export const FavoritesSorts: React.FC = () => {
   )
 }
 
-const Label = styled(Typo.ButtonText).attrs({
-  numberOfLines: 2,
-})<{ isSelected: boolean }>(({ isSelected, theme }) => ({
-  color: isSelected ? theme.colors.primary : theme.colors.black,
-}))
-
-const ValidatePrimary = styled(Validate).attrs(({ theme }) => ({
-  color: theme.colors.primary,
-  size: theme.icons.sizes.small,
-}))``
-
 const Container = styled.View(({ theme }) => ({
   flex: 1,
   backgroundColor: theme.colors.white,
 }))
 
-const contentContainerStyle: ViewStyle = {
+const StyledScrollView = styled(ScrollView)({
   flexGrow: 1,
-  paddingLeft: getSpacing(2),
-  paddingRight: getSpacing(3),
-}
-
-const LabelContainer = styled(TouchableOpacity)({
-  flexDirection: 'row',
-  alignItems: 'center',
-  marginBottom: getSpacing(4),
+  paddingLeft: getSpacing(8),
+  paddingRight: getSpacing(5),
 })
 
 const TitleContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
-  marginBottom: getSpacing(4),
 })
 
 const ButtonContainer = styled.View({

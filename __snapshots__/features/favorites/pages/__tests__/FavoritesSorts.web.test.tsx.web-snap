@@ -74,11 +74,10 @@ Object {
         </header>
         <div
           class="css-view-1dbjc4n"
-          style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
+          style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; padding-left: 32px; padding-right: 20px; transform: translateZ(0px);"
         >
           <div
             class="css-view-1dbjc4n"
-            style="flex-grow: 1; padding-left: 8px; padding-right: 12px;"
           >
             <div
               class="css-view-1dbjc4n"
@@ -90,15 +89,11 @@ Object {
             />
             <div
               class="css-view-1dbjc4n"
-              style="align-items: center; flex-direction: row; margin-bottom: 16px;"
+              style="align-items: center; flex-direction: row;"
             >
               <div
                 class="css-view-1dbjc4n"
                 style="height: 48px;"
-              />
-              <div
-                class="css-view-1dbjc4n"
-                style="width: 24px;"
               />
               <h4
                 aria-level="4"
@@ -120,36 +115,38 @@ Object {
                   class="css-view-1dbjc4n"
                   data-testid="RECENTLY_ADDED"
                   role="radio"
-                  style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                  style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; margin-top: 12px; margin-bottom: 12px; min-height: 24px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    style="height: 32px;"
-                  />
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="width: 24px;"
-                  />
-                  <div
-                    class="css-text-901oao css-textMultiLine-cens5h"
-                    dir="auto"
-                    style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                    style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 0.9; flex-shrink: 1;"
                   >
-                    Ajouté récemment
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-text-901oao css-textMultiLine-cens5h"
+                        dir="auto"
+                        style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                      >
+                        Ajouté récemment
+                      </div>
+                    </div>
                   </div>
                   <div
                     class="css-view-1dbjc4n"
-                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                  />
-                  <div
-                    class="css-view-1dbjc4n"
+                    style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
                   >
                     <div
-                      class="css-text-901oao"
-                      dir="auto"
+                      class="css-view-1dbjc4n"
                     >
-                      undefined-SVG-Mock
+                      <div
+                        class="css-text-901oao"
+                        dir="auto"
+                      >
+                        undefined-SVG-Mock
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -165,27 +162,28 @@ Object {
                   class="css-view-1dbjc4n"
                   data-testid="ASCENDING_PRICE"
                   role="radio"
-                  style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                  style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; margin-top: 12px; margin-bottom: 12px; min-height: 24px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    style="height: 32px;"
-                  />
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="width: 24px;"
-                  />
-                  <div
-                    class="css-text-901oao css-textMultiLine-cens5h"
-                    dir="auto"
-                    style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                    style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 0.9; flex-shrink: 1;"
                   >
-                    Prix croissant
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-text-901oao css-textMultiLine-cens5h"
+                        dir="auto"
+                        style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                      >
+                        Prix croissant
+                      </div>
+                    </div>
                   </div>
                   <div
                     class="css-view-1dbjc4n"
-                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
                   />
                 </div>
                 <div
@@ -200,27 +198,28 @@ Object {
                   class="css-view-1dbjc4n"
                   data-testid="AROUND_ME"
                   role="radio"
-                  style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                  style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; margin-top: 12px; margin-bottom: 12px; min-height: 24px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                   tabindex="0"
                 >
                   <div
                     class="css-view-1dbjc4n"
-                    style="height: 32px;"
-                  />
-                  <div
-                    class="css-view-1dbjc4n"
-                    style="width: 24px;"
-                  />
-                  <div
-                    class="css-text-901oao css-textMultiLine-cens5h"
-                    dir="auto"
-                    style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                    style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 0.9; flex-shrink: 1;"
                   >
-                    Proximité géographique
+                    <div
+                      class="css-view-1dbjc4n"
+                    >
+                      <div
+                        class="css-text-901oao css-textMultiLine-cens5h"
+                        dir="auto"
+                        style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                      >
+                        Proximité géographique
+                      </div>
+                    </div>
                   </div>
                   <div
                     class="css-view-1dbjc4n"
-                    style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                    style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
                   />
                 </div>
                 <div
@@ -322,11 +321,10 @@ Object {
       </header>
       <div
         class="css-view-1dbjc4n"
-        style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
+        style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; padding-left: 32px; padding-right: 20px; transform: translateZ(0px);"
       >
         <div
           class="css-view-1dbjc4n"
-          style="flex-grow: 1; padding-left: 8px; padding-right: 12px;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -338,15 +336,11 @@ Object {
           />
           <div
             class="css-view-1dbjc4n"
-            style="align-items: center; flex-direction: row; margin-bottom: 16px;"
+            style="align-items: center; flex-direction: row;"
           >
             <div
               class="css-view-1dbjc4n"
               style="height: 48px;"
-            />
-            <div
-              class="css-view-1dbjc4n"
-              style="width: 24px;"
             />
             <h4
               aria-level="4"
@@ -368,36 +362,38 @@ Object {
                 class="css-view-1dbjc4n"
                 data-testid="RECENTLY_ADDED"
                 role="radio"
-                style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; margin-top: 12px; margin-bottom: 12px; min-height: 24px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 tabindex="0"
               >
                 <div
                   class="css-view-1dbjc4n"
-                  style="height: 32px;"
-                />
-                <div
-                  class="css-view-1dbjc4n"
-                  style="width: 24px;"
-                />
-                <div
-                  class="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
-                  style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                  style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 0.9; flex-shrink: 1;"
                 >
-                  Ajouté récemment
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-text-901oao css-textMultiLine-cens5h"
+                      dir="auto"
+                      style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                    >
+                      Ajouté récemment
+                    </div>
+                  </div>
                 </div>
                 <div
                   class="css-view-1dbjc4n"
-                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-                />
-                <div
-                  class="css-view-1dbjc4n"
+                  style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
                 >
                   <div
-                    class="css-text-901oao"
-                    dir="auto"
+                    class="css-view-1dbjc4n"
                   >
-                    undefined-SVG-Mock
+                    <div
+                      class="css-text-901oao"
+                      dir="auto"
+                    >
+                      undefined-SVG-Mock
+                    </div>
                   </div>
                 </div>
               </div>
@@ -413,27 +409,28 @@ Object {
                 class="css-view-1dbjc4n"
                 data-testid="ASCENDING_PRICE"
                 role="radio"
-                style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; margin-top: 12px; margin-bottom: 12px; min-height: 24px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 tabindex="0"
               >
                 <div
                   class="css-view-1dbjc4n"
-                  style="height: 32px;"
-                />
-                <div
-                  class="css-view-1dbjc4n"
-                  style="width: 24px;"
-                />
-                <div
-                  class="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
-                  style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                  style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 0.9; flex-shrink: 1;"
                 >
-                  Prix croissant
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-text-901oao css-textMultiLine-cens5h"
+                      dir="auto"
+                      style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                    >
+                      Prix croissant
+                    </div>
+                  </div>
                 </div>
                 <div
                   class="css-view-1dbjc4n"
-                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
                 />
               </div>
               <div
@@ -448,27 +445,28 @@ Object {
                 class="css-view-1dbjc4n"
                 data-testid="AROUND_ME"
                 role="radio"
-                style="align-items: center; cursor: pointer; flex-direction: row; margin-bottom: 16px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+                style="align-items: center; cursor: pointer; flex-direction: row; justify-content: space-between; margin-top: 12px; margin-bottom: 12px; min-height: 24px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 tabindex="0"
               >
                 <div
                   class="css-view-1dbjc4n"
-                  style="height: 32px;"
-                />
-                <div
-                  class="css-view-1dbjc4n"
-                  style="width: 24px;"
-                />
-                <div
-                  class="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
-                  style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                  style="align-items: center; flex-basis: 0px; flex-direction: row; flex-grow: 0.9; flex-shrink: 1;"
                 >
-                  Proximité géographique
+                  <div
+                    class="css-view-1dbjc4n"
+                  >
+                    <div
+                      class="css-text-901oao css-textMultiLine-cens5h"
+                      dir="auto"
+                      style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
+                    >
+                      Proximité géographique
+                    </div>
+                  </div>
                 </div>
                 <div
                   class="css-view-1dbjc4n"
-                  style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+                  style="flex-basis: 0px; flex-grow: 0.1; flex-shrink: 1;"
                 />
               </div>
               <div

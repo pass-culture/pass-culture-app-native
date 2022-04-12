@@ -44,7 +44,8 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
-import { RadioButton } from 'ui/components/RadioButton'
+import { RadioButton } from 'ui/components/radioButtons/RadioButton'
+import { RadioButtonWithBorder } from 'ui/components/radioButtons/RadioButtonWithBorder'
 import { SectionRow } from 'ui/components/SectionRow'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { SlantTag } from 'ui/components/SlantTag'
@@ -54,6 +55,7 @@ import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { JeuxVideo } from 'ui/svg/icons/categories/bicolor/JeuxVideo'
 import { Check } from 'ui/svg/icons/Check'
 import { Close } from 'ui/svg/icons/Close'
 import CulturalSurveyIcons from 'ui/svg/icons/culturalSurvey'
@@ -61,6 +63,7 @@ import { Email } from 'ui/svg/icons/Email'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+
 function onButtonPress() {
   Alert.alert('you pressed it')
 }
@@ -83,6 +86,19 @@ const domains_credit_v2 = {
 const domains_credit_underage = {
   all: { initial: 3000, remaining: 1000 },
 }
+
+const radioButtonItems = [
+  { label: 'Default' },
+  { label: 'With description', description: 'This is a description' },
+  { label: 'With icon', icon: JeuxVideo },
+  { label: 'With icon and description', icon: Email, description: 'This is a description' },
+]
+
+const radioButtonWithBorderItems = [
+  { label: 'Default 2' },
+  { label: 'With description 2', description: 'This is a description 2' },
+  { label: 'Default 3' },
+]
 
 export const AppComponents: FunctionComponent = () => {
   const {
@@ -411,15 +427,42 @@ export const AppComponents: FunctionComponent = () => {
 
       <Divider />
 
-      <AccordionItem title="Radio button">
-        <RadioButton
-          id="1"
-          title="item 1"
-          description="description 1"
-          onSelect={setRadioButtonChoice}
-          selectedValue={radioButtonChoice}
-        />
-        <Typo.Caption>{`Selected : ${radioButtonChoice}`}</Typo.Caption>
+      <AccordionItem title="Radio buttons">
+        <StyledTitle4>RadioButton</StyledTitle4>
+        <Spacer.Column numberOfSpaces={1} />
+        <React.Fragment>
+          {radioButtonItems.map((item) => {
+            return (
+              <View key={item.label}>
+                <RadioButton
+                  onSelect={() => setRadioButtonChoice(item.label)}
+                  isSelected={radioButtonChoice === item.label}
+                  {...item}
+                />
+                <Spacer.Column numberOfSpaces={3} />
+              </View>
+            )
+          })}
+        </React.Fragment>
+
+        <Spacer.Column numberOfSpaces={3} />
+
+        <StyledTitle4>RadioButtonWithBorder</StyledTitle4>
+        <Spacer.Column numberOfSpaces={1} />
+        <React.Fragment>
+          {radioButtonWithBorderItems.map((item) => {
+            return (
+              <View key={item.label}>
+                <RadioButtonWithBorder
+                  onPress={() => setRadioButtonChoice(item.label)}
+                  selected={radioButtonChoice === item.label}
+                  {...item}
+                />
+                <Spacer.Column numberOfSpaces={3} />
+              </View>
+            )
+          })}
+        </React.Fragment>
       </AccordionItem>
 
       <Divider />

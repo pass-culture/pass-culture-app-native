@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 
 import { ActivityIdEnum, SchoolTypesIdEnum } from 'api/gen'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
-import { RadioButton } from 'features/identityCheck/atoms/form/RadioButton'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import {
@@ -13,6 +12,7 @@ import {
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { useProfileOptions } from 'features/identityCheck/utils/useProfileOptions'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { RadioButtonWithBorder } from 'ui/components/radioButtons/RadioButtonWithBorder'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
@@ -62,9 +62,9 @@ export const SetSchoolType = () => {
                 )
                 return (
                   <Li key={schoolTypeId}>
-                    <RadioButton
+                    <RadioButtonWithBorder
                       selected={schoolTypeId === selectedSchoolTypeId}
-                      name={label as string}
+                      label={label as string}
                       description={description}
                       onPress={() => setSelectedSchoolTypeId(schoolTypeId)}
                     />

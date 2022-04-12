@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react'
 
 import { ActivityIdEnum } from 'api/gen'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
-import { RadioButton } from 'features/identityCheck/atoms/form/RadioButton'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { activityHasSchoolTypes } from 'features/identityCheck/pages/profile/utils'
@@ -11,6 +10,7 @@ import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCh
 import { useProfileOptions } from 'features/identityCheck/utils/useProfileOptions'
 import { useIsUserUnderage } from 'features/profile/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { RadioButtonWithBorder } from 'ui/components/radioButtons/RadioButtonWithBorder'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
@@ -65,10 +65,10 @@ export const Status = () => {
             {filteredActivities &&
               filteredActivities.map((activity) => (
                 <Li key={activity.label}>
-                  <RadioButton
+                  <RadioButtonWithBorder
                     selected={activity.id === selectedStatus}
                     description={activity.description}
-                    name={activity.label}
+                    label={activity.label}
                     onPress={() => setSelectedStatus(activity.id)}
                   />
                 </Li>

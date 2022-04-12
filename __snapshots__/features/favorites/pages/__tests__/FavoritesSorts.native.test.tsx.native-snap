@@ -153,12 +153,14 @@ exports[`FavoritesSorts component should render correctly 1`] = `
     />
   </View>
   <RCTScrollView
-    contentContainerStyle={
-      Object {
-        "flexGrow": 1,
-        "paddingLeft": 8,
-        "paddingRight": 12,
-      }
+    style={
+      Array [
+        Object {
+          "flexGrow": 1,
+          "paddingLeft": 32,
+          "paddingRight": 20,
+        },
+      ]
     }
   >
     <View>
@@ -189,7 +191,6 @@ exports[`FavoritesSorts component should render correctly 1`] = `
             Object {
               "alignItems": "center",
               "flexDirection": "row",
-              "marginBottom": 16,
             },
           ]
         }
@@ -200,16 +201,6 @@ exports[`FavoritesSorts component should render correctly 1`] = `
             Array [
               Object {
                 "height": 48,
-              },
-            ]
-          }
-        />
-        <View
-          numberOfSpaces={6}
-          style={
-            Array [
-              Object {
-                "width": 24,
               },
             ]
           }
@@ -252,7 +243,9 @@ exports[`FavoritesSorts component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 16,
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -260,59 +253,58 @@ exports[`FavoritesSorts component should render correctly 1`] = `
         testID="RECENTLY_ADDED"
       >
         <View
-          numberOfSpaces={8}
+          flex={0.9}
           style={
             Array [
               Object {
-                "height": 32,
-              },
-            ]
-          }
-        />
-        <View
-          numberOfSpaces={6}
-          style={
-            Array [
-              Object {
-                "width": 24,
-              },
-            ]
-          }
-        />
-        <Text
-          isSelected={true}
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#eb0055",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Ajouté récemment
-        </Text>
-        <View
-          style={
-            Array [
-              Object {
+                "alignItems": "center",
                 "flexBasis": 0,
-                "flexGrow": 1,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
                 "flexShrink": 1,
               },
             ]
           }
-        />
-        <View
-          height={24}
-          width={24}
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View>
+            <Text
+              isSelected={true}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#eb0055",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Ajouté récemment
+            </Text>
+          </View>
+        </View>
+        <View
+          flex={0.1}
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 0.1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
         </View>
       </View>
       <View
@@ -338,7 +330,9 @@ exports[`FavoritesSorts component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 16,
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -346,47 +340,45 @@ exports[`FavoritesSorts component should render correctly 1`] = `
         testID="ASCENDING_PRICE"
       >
         <View
-          numberOfSpaces={8}
+          flex={0.9}
           style={
             Array [
               Object {
-                "height": 32,
-              },
-            ]
-          }
-        />
-        <View
-          numberOfSpaces={6}
-          style={
-            Array [
-              Object {
-                "width": 24,
-              },
-            ]
-          }
-        />
-        <Text
-          isSelected={false}
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
+                "flexShrink": 1,
               },
             ]
           }
         >
-          Prix croissant
-        </Text>
+          <View>
+            <Text
+              isSelected={false}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Prix croissant
+            </Text>
+          </View>
+        </View>
         <View
+          flex={0.1}
           style={
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 1,
+                "flexGrow": 0.1,
                 "flexShrink": 1,
               },
             ]
@@ -416,7 +408,9 @@ exports[`FavoritesSorts component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 16,
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -424,47 +418,45 @@ exports[`FavoritesSorts component should render correctly 1`] = `
         testID="AROUND_ME"
       >
         <View
-          numberOfSpaces={8}
+          flex={0.9}
           style={
             Array [
               Object {
-                "height": 32,
-              },
-            ]
-          }
-        />
-        <View
-          numberOfSpaces={6}
-          style={
-            Array [
-              Object {
-                "width": 24,
-              },
-            ]
-          }
-        />
-        <Text
-          isSelected={false}
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
+                "flexShrink": 1,
               },
             ]
           }
         >
-          Proximité géographique
-        </Text>
+          <View>
+            <Text
+              isSelected={false}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Proximité géographique
+            </Text>
+          </View>
+        </View>
         <View
+          flex={0.1}
           style={
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 1,
+                "flexGrow": 0.1,
                 "flexShrink": 1,
               },
             ]

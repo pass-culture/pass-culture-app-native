@@ -5,7 +5,7 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -181,11 +181,11 @@
+@@ -183,11 +183,11 @@
         />
         <View
           accessibilityRole=\\"radio\\"
@@ -18,45 +18,48 @@ exports[`Categories component should match diff snapshot when new category is se
           accessible={true}
           collapsable={false}
           focusable={true}
-@@ -235,16 +235,16 @@
-                },
-              ]
-            }
-          />
-          <Text
--           isSelected={false}
-+           isSelected={true}
-            numberOfLines={2}
-            style={
-              Array [
-                Object {
--                 \\"color\\": \\"#161617\\",
-+                 \\"color\\": \\"#eb0055\\",
-                  \\"fontFamily\\": \\"Montserrat-Bold\\",
-                  \\"fontSize\\": 15,
-                  \\"lineHeight\\": 20,
-                },
-              ]
-@@ -261,10 +261,18 @@
+@@ -244,16 +244,16 @@
+                ]
+              }
+            />
+            <View>
+              <Text
+-               isSelected={false}
++               isSelected={true}
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+-                     \\"color\\": \\"#161617\\",
++                     \\"color\\": \\"#eb0055\\",
+                      \\"fontFamily\\": \\"Montserrat-Bold\\",
+                      \\"fontSize\\": 15,
+                      \\"lineHeight\\": 20,
+                    },
+                  ]
+@@ -272,11 +272,20 @@
+                  \\"flexGrow\\": 0.1,
                   \\"flexShrink\\": 1,
                 },
               ]
             }
-          />
-+         <View
-+           height={24}
-+           width={24}
+-         />
 +         >
-+           <Text>
-+             undefined-SVG-Mock
-+           </Text>
++           <View
++             height={24}
++             width={24}
++           >
++             <Text>
++               undefined-SVG-Mock
++             </Text>
++           </View>
 +         </View>
         </View>
         <View
           accessibilityRole=\\"radio\\"
           accessibilityState={
             Object {
-@@ -351,11 +359,11 @@
+@@ -373,11 +382,11 @@
         </View>
         <View
           accessibilityRole=\\"radio\\"
@@ -69,39 +72,42 @@ exports[`Categories component should match diff snapshot when new category is se
           accessible={true}
           collapsable={false}
           focusable={true}
-@@ -405,16 +413,16 @@
-                },
-              ]
-            }
-          />
-          <Text
--           isSelected={true}
-+           isSelected={false}
-            numberOfLines={2}
-            style={
-              Array [
-                Object {
--                 \\"color\\": \\"#eb0055\\",
-+                 \\"color\\": \\"#161617\\",
-                  \\"fontFamily\\": \\"Montserrat-Bold\\",
-                  \\"fontSize\\": 15,
-                  \\"lineHeight\\": 20,
-                },
-              ]
-@@ -431,18 +439,10 @@
+@@ -434,16 +443,16 @@
+                ]
+              }
+            />
+            <View>
+              <Text
+-               isSelected={true}
++               isSelected={false}
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+-                     \\"color\\": \\"#eb0055\\",
++                     \\"color\\": \\"#161617\\",
+                      \\"fontFamily\\": \\"Montserrat-Bold\\",
+                      \\"fontSize\\": 15,
+                      \\"lineHeight\\": 20,
+                    },
+                  ]
+@@ -462,20 +471,11 @@
+                  \\"flexGrow\\": 0.1,
                   \\"flexShrink\\": 1,
                 },
               ]
             }
-          />
--         <View
--           height={24}
--           width={24}
 -         >
--           <Text>
--             undefined-SVG-Mock
--           </Text>
+-           <View
+-             height={24}
+-             width={24}
+-           >
+-             <Text>
+-               undefined-SVG-Mock
+-             </Text>
+-           </View>
 -         </View>
++         />
         </View>
         <View
           accessibilityRole=\\"radio\\"
@@ -262,11 +268,13 @@ exports[`Categories component should render correctly 1`] = `
     />
   </View>
   <RCTScrollView
-    contentContainerStyle={
-      Object {
-        "flexGrow": 1,
-        "marginRight": 24,
-      }
+    style={
+      Array [
+        Object {
+          "flexGrow": 1,
+          "paddingHorizontal": 16,
+        },
+      ]
     }
   >
     <View>
@@ -313,7 +321,9 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 24,
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -321,67 +331,76 @@ exports[`Categories component should render correctly 1`] = `
         testID="NONE"
       >
         <View
-          numberOfSpaces={4}
+          flex={0.9}
           style={
             Array [
               Object {
-                "width": 16,
-              },
-            ]
-          }
-        />
-        <View
-          height={24}
-          width={24}
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
-        <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "width": 16,
-              },
-            ]
-          }
-        />
-        <Text
-          isSelected={true}
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#eb0055",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Toutes les catégories
-        </Text>
-        <View
-          style={
-            Array [
-              Object {
+                "alignItems": "center",
                 "flexBasis": 0,
-                "flexGrow": 1,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
                 "flexShrink": 1,
               },
             ]
           }
-        />
-        <View
-          height={24}
-          width={24}
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View>
+            <Text
+              isSelected={true}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#eb0055",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Toutes les catégories
+            </Text>
+          </View>
+        </View>
+        <View
+          flex={0.1}
+          style={
+            Array [
+              Object {
+                "flexBasis": 0,
+                "flexGrow": 0.1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
         </View>
       </View>
       <View
@@ -406,7 +425,9 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 24,
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -414,55 +435,63 @@ exports[`Categories component should render correctly 1`] = `
         testID="CARTE_JEUNES"
       >
         <View
-          numberOfSpaces={4}
+          flex={0.9}
           style={
             Array [
               Object {
-                "width": 16,
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
+                "flexShrink": 1,
               },
             ]
           }
-        />
-        <View
-          height={24}
-          width={24}
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View>
+            <Text
+              isSelected={false}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Carte jeunes
+            </Text>
+          </View>
         </View>
         <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "width": 16,
-              },
-            ]
-          }
-        />
-        <Text
-          isSelected={false}
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Carte jeunes
-        </Text>
-        <View
+          flex={0.1}
           style={
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 1,
+                "flexGrow": 0.1,
                 "flexShrink": 1,
               },
             ]
@@ -491,7 +520,9 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 24,
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -499,55 +530,63 @@ exports[`Categories component should render correctly 1`] = `
         testID="CINEMA"
       >
         <View
-          numberOfSpaces={4}
+          flex={0.9}
           style={
             Array [
               Object {
-                "width": 16,
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
+                "flexShrink": 1,
               },
             ]
           }
-        />
-        <View
-          height={24}
-          width={24}
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View>
+            <Text
+              isSelected={false}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Cinéma
+            </Text>
+          </View>
         </View>
         <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "width": 16,
-              },
-            ]
-          }
-        />
-        <Text
-          isSelected={false}
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Cinéma
-        </Text>
-        <View
+          flex={0.1}
           style={
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 1,
+                "flexGrow": 0.1,
                 "flexShrink": 1,
               },
             ]
@@ -576,7 +615,9 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 24,
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -584,55 +625,63 @@ exports[`Categories component should render correctly 1`] = `
         testID="VISITE"
       >
         <View
-          numberOfSpaces={4}
+          flex={0.9}
           style={
             Array [
               Object {
-                "width": 16,
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
+                "flexShrink": 1,
               },
             ]
           }
-        />
-        <View
-          height={24}
-          width={24}
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View>
+            <Text
+              isSelected={false}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Visites, expositions
+            </Text>
+          </View>
         </View>
         <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "width": 16,
-              },
-            ]
-          }
-        />
-        <Text
-          isSelected={false}
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Visites, expositions
-        </Text>
-        <View
+          flex={0.1}
           style={
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 1,
+                "flexGrow": 0.1,
                 "flexShrink": 1,
               },
             ]
@@ -661,7 +710,9 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 24,
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -669,55 +720,63 @@ exports[`Categories component should render correctly 1`] = `
         testID="MUSIQUE"
       >
         <View
-          numberOfSpaces={4}
+          flex={0.9}
           style={
             Array [
               Object {
-                "width": 16,
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
+                "flexShrink": 1,
               },
             ]
           }
-        />
-        <View
-          height={24}
-          width={24}
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View>
+            <Text
+              isSelected={false}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Musique
+            </Text>
+          </View>
         </View>
         <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "width": 16,
-              },
-            ]
-          }
-        />
-        <Text
-          isSelected={false}
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Musique
-        </Text>
-        <View
+          flex={0.1}
           style={
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 1,
+                "flexGrow": 0.1,
                 "flexShrink": 1,
               },
             ]
@@ -746,7 +805,9 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 24,
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -754,55 +815,63 @@ exports[`Categories component should render correctly 1`] = `
         testID="SPECTACLE"
       >
         <View
-          numberOfSpaces={4}
+          flex={0.9}
           style={
             Array [
               Object {
-                "width": 16,
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
+                "flexShrink": 1,
               },
             ]
           }
-        />
-        <View
-          height={24}
-          width={24}
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View>
+            <Text
+              isSelected={false}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Spectacles
+            </Text>
+          </View>
         </View>
         <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "width": 16,
-              },
-            ]
-          }
-        />
-        <Text
-          isSelected={false}
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Spectacles
-        </Text>
-        <View
+          flex={0.1}
           style={
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 1,
+                "flexGrow": 0.1,
                 "flexShrink": 1,
               },
             ]
@@ -831,7 +900,9 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 24,
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -839,55 +910,63 @@ exports[`Categories component should render correctly 1`] = `
         testID="COURS"
       >
         <View
-          numberOfSpaces={4}
+          flex={0.9}
           style={
             Array [
               Object {
-                "width": 16,
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
+                "flexShrink": 1,
               },
             ]
           }
-        />
-        <View
-          height={24}
-          width={24}
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View>
+            <Text
+              isSelected={false}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Cours, ateliers
+            </Text>
+          </View>
         </View>
         <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "width": 16,
-              },
-            ]
-          }
-        />
-        <Text
-          isSelected={false}
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Cours, ateliers
-        </Text>
-        <View
+          flex={0.1}
           style={
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 1,
+                "flexGrow": 0.1,
                 "flexShrink": 1,
               },
             ]
@@ -916,7 +995,9 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 24,
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -924,55 +1005,63 @@ exports[`Categories component should render correctly 1`] = `
         testID="LIVRE"
       >
         <View
-          numberOfSpaces={4}
+          flex={0.9}
           style={
             Array [
               Object {
-                "width": 16,
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
+                "flexShrink": 1,
               },
             ]
           }
-        />
-        <View
-          height={24}
-          width={24}
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View>
+            <Text
+              isSelected={false}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Livre
+            </Text>
+          </View>
         </View>
         <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "width": 16,
-              },
-            ]
-          }
-        />
-        <Text
-          isSelected={false}
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Livre
-        </Text>
-        <View
+          flex={0.1}
           style={
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 1,
+                "flexGrow": 0.1,
                 "flexShrink": 1,
               },
             ]
@@ -1001,7 +1090,9 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 24,
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -1009,55 +1100,63 @@ exports[`Categories component should render correctly 1`] = `
         testID="FILM"
       >
         <View
-          numberOfSpaces={4}
+          flex={0.9}
           style={
             Array [
               Object {
-                "width": 16,
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
+                "flexShrink": 1,
               },
             ]
           }
-        />
-        <View
-          height={24}
-          width={24}
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View>
+            <Text
+              isSelected={false}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Films, séries
+            </Text>
+          </View>
         </View>
         <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "width": 16,
-              },
-            ]
-          }
-        />
-        <Text
-          isSelected={false}
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Films, séries
-        </Text>
-        <View
+          flex={0.1}
           style={
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 1,
+                "flexGrow": 0.1,
                 "flexShrink": 1,
               },
             ]
@@ -1086,7 +1185,9 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 24,
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -1094,55 +1195,63 @@ exports[`Categories component should render correctly 1`] = `
         testID="PRESSE"
       >
         <View
-          numberOfSpaces={4}
+          flex={0.9}
           style={
             Array [
               Object {
-                "width": 16,
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
+                "flexShrink": 1,
               },
             ]
           }
-        />
-        <View
-          height={24}
-          width={24}
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View>
+            <Text
+              isSelected={false}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Presse, médias
+            </Text>
+          </View>
         </View>
         <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "width": 16,
-              },
-            ]
-          }
-        />
-        <Text
-          isSelected={false}
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Presse, médias
-        </Text>
-        <View
+          flex={0.1}
           style={
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 1,
+                "flexGrow": 0.1,
                 "flexShrink": 1,
               },
             ]
@@ -1171,7 +1280,9 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 24,
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -1179,55 +1290,63 @@ exports[`Categories component should render correctly 1`] = `
         testID="JEU"
       >
         <View
-          numberOfSpaces={4}
+          flex={0.9}
           style={
             Array [
               Object {
-                "width": 16,
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
+                "flexShrink": 1,
               },
             ]
           }
-        />
-        <View
-          height={24}
-          width={24}
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View>
+            <Text
+              isSelected={false}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Jeux
+            </Text>
+          </View>
         </View>
         <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "width": 16,
-              },
-            ]
-          }
-        />
-        <Text
-          isSelected={false}
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Jeux
-        </Text>
-        <View
+          flex={0.1}
           style={
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 1,
+                "flexGrow": 0.1,
                 "flexShrink": 1,
               },
             ]
@@ -1256,7 +1375,9 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 24,
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -1264,55 +1385,63 @@ exports[`Categories component should render correctly 1`] = `
         testID="CONFERENCE"
       >
         <View
-          numberOfSpaces={4}
+          flex={0.9}
           style={
             Array [
               Object {
-                "width": 16,
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
+                "flexShrink": 1,
               },
             ]
           }
-        />
-        <View
-          height={24}
-          width={24}
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View>
+            <Text
+              isSelected={false}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Conférences, rencontres
+            </Text>
+          </View>
         </View>
         <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "width": 16,
-              },
-            ]
-          }
-        />
-        <Text
-          isSelected={false}
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Conférences, rencontres
-        </Text>
-        <View
+          flex={0.1}
           style={
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 1,
+                "flexGrow": 0.1,
                 "flexShrink": 1,
               },
             ]
@@ -1341,7 +1470,9 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 24,
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -1349,55 +1480,63 @@ exports[`Categories component should render correctly 1`] = `
         testID="INSTRUMENT"
       >
         <View
-          numberOfSpaces={4}
+          flex={0.9}
           style={
             Array [
               Object {
-                "width": 16,
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
+                "flexShrink": 1,
               },
             ]
           }
-        />
-        <View
-          height={24}
-          width={24}
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View>
+            <Text
+              isSelected={false}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Instruments de musique
+            </Text>
+          </View>
         </View>
         <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "width": 16,
-              },
-            ]
-          }
-        />
-        <Text
-          isSelected={false}
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Instruments de musique
-        </Text>
-        <View
+          flex={0.1}
           style={
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 1,
+                "flexGrow": 0.1,
                 "flexShrink": 1,
               },
             ]
@@ -1426,7 +1565,9 @@ exports[`Categories component should render correctly 1`] = `
           Object {
             "alignItems": "center",
             "flexDirection": "row",
-            "marginBottom": 24,
+            "justifyContent": "space-between",
+            "marginVertical": 12,
+            "minHeight": 24,
             "opacity": 1,
             "userSelect": "auto",
           }
@@ -1434,55 +1575,63 @@ exports[`Categories component should render correctly 1`] = `
         testID="MATERIEL"
       >
         <View
-          numberOfSpaces={4}
+          flex={0.9}
           style={
             Array [
               Object {
-                "width": 16,
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 0.9,
+                "flexShrink": 1,
               },
             ]
           }
-        />
-        <View
-          height={24}
-          width={24}
         >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={4}
+            style={
+              Array [
+                Object {
+                  "width": 16,
+                },
+              ]
+            }
+          />
+          <View>
+            <Text
+              isSelected={false}
+              numberOfLines={2}
+              style={
+                Array [
+                  Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 15,
+                    "lineHeight": 20,
+                  },
+                ]
+              }
+            >
+              Beaux-Arts
+            </Text>
+          </View>
         </View>
         <View
-          numberOfSpaces={4}
-          style={
-            Array [
-              Object {
-                "width": 16,
-              },
-            ]
-          }
-        />
-        <Text
-          isSelected={false}
-          numberOfLines={2}
-          style={
-            Array [
-              Object {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
-              },
-            ]
-          }
-        >
-          Beaux-Arts
-        </Text>
-        <View
+          flex={0.1}
           style={
             Array [
               Object {
                 "flexBasis": 0,
-                "flexGrow": 1,
+                "flexGrow": 0.1,
                 "flexShrink": 1,
               },
             ]

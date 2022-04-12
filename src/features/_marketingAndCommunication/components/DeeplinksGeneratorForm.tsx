@@ -28,7 +28,7 @@ import { AccordionItem } from 'ui/components/AccordionItem'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Slider } from 'ui/components/inputs/Slider'
 import { TextInput } from 'ui/components/inputs/TextInput'
-import { RadioButton } from 'ui/components/RadioButton'
+import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
@@ -56,13 +56,12 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
       <React.Fragment key={screenName}>
         <Spacer.Column numberOfSpaces={2} />
         <RadioButton
-          id={screenName}
-          title={screenName}
+          label={screenName}
+          isSelected={selectedScreen === screenName}
           onSelect={() => {
             setSelectedScreen(screenName)
             setScreenParams({})
           }}
-          selectedValue={selectedScreen}
         />
         <Spacer.Column numberOfSpaces={2} />
         <Separator />

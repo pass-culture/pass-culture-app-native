@@ -7,18 +7,18 @@ import { getSpacing, Typo } from 'ui/theme'
 interface Props {
   selected: boolean
   description?: string | null
-  name: string
+  label: string
   onPress: (name: string) => void
 }
 
-export const RadioButton = ({ name, description, selected, onPress }: Props) => (
+export const RadioButtonWithBorder = ({ label, description, selected, onPress }: Props) => (
   <Label
     accessibilityRole="radio"
     accessibilityState={{ checked: selected }}
     selected={selected}
-    onPress={() => onPress(name)}>
+    onPress={() => onPress(label)}>
     <TextContainer>
-      <ButtonText selected={selected}>{name}</ButtonText>
+      <ButtonText selected={selected}>{label}</ButtonText>
       {description ? <Caption>{description}</Caption> : null}
     </TextContainer>
     {selected ? (
