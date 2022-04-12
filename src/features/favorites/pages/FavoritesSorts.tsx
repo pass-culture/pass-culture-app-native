@@ -13,6 +13,7 @@ import { PageHeader } from 'ui/components/headers/PageHeader'
 import { InputError } from 'ui/components/inputs/InputError'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typography'
 import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
 
@@ -71,7 +72,7 @@ export const FavoritesSorts: React.FC = () => {
 
         <TitleContainer>
           <Spacer.Column numberOfSpaces={12} />
-          <Typo.Title4>{t`Trier par`}</Typo.Title4>
+          <Typo.Title4 {...getHeadingAttrs(2)}>{t`Trier par`}</Typo.Title4>
         </TitleContainer>
 
         <VerticalUl>
