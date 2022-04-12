@@ -5,7 +5,7 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -260,11 +260,11 @@
+@@ -253,11 +253,11 @@
         <ul
           className=\\"sc-gsDKAQ sc-dkPtRN bwGBFc ezyhIk\\"
         >
@@ -18,21 +18,22 @@ exports[`Categories component should match diff snapshot when new category is se
               onBlur={[Function onStyledBlur]}
               onClick={[Function onClick]}
               onContextMenu={[Function onContextMenu]}
-@@ -329,11 +329,11 @@
-                className=\\"css-text-901oao css-textMultiLine-cens5h\\"
-                dir=\\"auto\\"
-                style={
-                  Object {
-                    \\"WebkitLineClamp\\": 2,
--                   \\"color\\": \\"rgba(22,22,23,1.00)\\",
-+                   \\"color\\": \\"rgba(235,0,85,1.00)\\",
-                    \\"fontFamily\\": \\"Montserrat-Bold\\",
-                    \\"fontSize\\": \\"15px\\",
-                    \\"lineHeight\\": \\"20px\\",
-                  }
-                }
-@@ -355,10 +355,20 @@
-                    \\"msFlexPositive\\": 1,
+@@ -349,11 +349,11 @@
+                    className=\\"css-text-901oao css-textMultiLine-cens5h\\"
+                    dir=\\"auto\\"
+                    style={
+                      Object {
+                        \\"WebkitLineClamp\\": 2,
+-                       \\"color\\": \\"rgba(22,22,23,1.00)\\",
++                       \\"color\\": \\"rgba(235,0,85,1.00)\\",
+                        \\"fontFamily\\": \\"Montserrat-Bold\\",
+                        \\"fontSize\\": \\"15px\\",
+                        \\"lineHeight\\": \\"20px\\",
+                      }
+                    }
+@@ -376,11 +376,22 @@
+                    \\"msFlexNegative\\": 1,
+                    \\"msFlexPositive\\": 0.1,
                     \\"msFlexPreferredSize\\": \\"0px\\",
                   }
                 }
@@ -54,7 +55,7 @@ exports[`Categories component should match diff snapshot when new category is se
           <li>
             <div
               aria-checked={false}
-@@ -458,11 +468,11 @@
+@@ -509,11 +520,11 @@
               />
             </div>
           </li>
@@ -67,21 +68,22 @@ exports[`Categories component should match diff snapshot when new category is se
               onBlur={[Function onStyledBlur]}
               onClick={[Function onClick]}
               onContextMenu={[Function onContextMenu]}
-@@ -527,11 +537,11 @@
-                className=\\"css-text-901oao css-textMultiLine-cens5h\\"
-                dir=\\"auto\\"
-                style={
-                  Object {
-                    \\"WebkitLineClamp\\": 2,
--                   \\"color\\": \\"rgba(235,0,85,1.00)\\",
-+                   \\"color\\": \\"rgba(22,22,23,1.00)\\",
-                    \\"fontFamily\\": \\"Montserrat-Bold\\",
-                    \\"fontSize\\": \\"15px\\",
-                    \\"lineHeight\\": \\"20px\\",
-                  }
-                }
-@@ -553,20 +563,10 @@
-                    \\"msFlexPositive\\": 1,
+@@ -605,11 +616,11 @@
+                    className=\\"css-text-901oao css-textMultiLine-cens5h\\"
+                    dir=\\"auto\\"
+                    style={
+                      Object {
+                        \\"WebkitLineClamp\\": 2,
+-                       \\"color\\": \\"rgba(235,0,85,1.00)\\",
++                       \\"color\\": \\"rgba(22,22,23,1.00)\\",
+                        \\"fontFamily\\": \\"Montserrat-Bold\\",
+                        \\"fontSize\\": \\"15px\\",
+                        \\"lineHeight\\": \\"20px\\",
+                      }
+                    }
+@@ -632,22 +643,11 @@
+                    \\"msFlexNegative\\": 1,
+                    \\"msFlexPositive\\": 0.1,
                     \\"msFlexPreferredSize\\": \\"0px\\",
                   }
                 }

@@ -445,7 +445,6 @@ Array [
               <div
                 aria-checked={false}
                 className="css-view-1dbjc4n"
-                data-testid="radio-button-Offer"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -579,7 +578,6 @@ Array [
               <div
                 aria-checked={false}
                 className="css-view-1dbjc4n"
-                data-testid="radio-button-Venue"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -713,7 +711,6 @@ Array [
               <div
                 aria-checked={true}
                 className="css-view-1dbjc4n"
-                data-testid="radio-button-Home"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -858,7 +855,6 @@ Array [
               <div
                 aria-checked={false}
                 className="css-view-1dbjc4n"
-                data-testid="radio-button-Search"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -992,7 +988,6 @@ Array [
               <div
                 aria-checked={false}
                 className="css-view-1dbjc4n"
-                data-testid="radio-button-Profile"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onContextMenu={[Function]}
@@ -1126,7 +1121,6 @@ Array [
               <div
                 aria-checked={false}
                 className="css-view-1dbjc4n"
-                data-testid="radio-button-SignupForm"
                 onBlur={[Function]}
                 onClick={[Function]}
                 onContextMenu={[Function]}
