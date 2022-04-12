@@ -15,7 +15,7 @@ exports[`Hit component offer name should take full space if no geolocation 1`] =
       collapsable={false}
       focusable={true}
       nativeID=\\"animatedComponent\\"
-@@ -110,10 +110,22 @@
+@@ -111,10 +111,22 @@
                 \\"flexDirection\\": \\"row\\",
               },
             ]
@@ -38,7 +38,7 @@ exports[`Hit component offer name should take full space if no geolocation 1`] =
               style={
                 Array [
                   Object {
-@@ -125,10 +137,39 @@
+@@ -126,10 +138,39 @@
                 ]
               }
             >

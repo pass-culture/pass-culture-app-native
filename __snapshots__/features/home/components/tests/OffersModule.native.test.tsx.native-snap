@@ -247,6 +247,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
               onStartShouldSetResponder={[Function]}
               style={
                 Array [
+                  Object {},
                   Object {
                     "borderRadius": 8,
                     "marginVertical": 4,
@@ -456,6 +457,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
               onStartShouldSetResponder={[Function]}
               style={
                 Array [
+                  Object {},
                   Object {
                     "borderRadius": 8,
                     "marginVertical": 4,
@@ -665,6 +667,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
               onStartShouldSetResponder={[Function]}
               style={
                 Array [
+                  Object {},
                   Object {
                     "borderRadius": 8,
                     "marginVertical": 4,
@@ -891,6 +894,7 @@ exports[`OffersModule component should render correctly - with black title 1`] =
               onStartShouldSetResponder={[Function]}
               style={
                 Array [
+                  Object {},
                   Object {
                     "borderRadius": 8,
                     "marginVertical": 4,

@@ -1,7 +1,6 @@
 import React, { MutableRefObject, useEffect, useRef, useState } from 'react'
 import {
   Platform,
-  TouchableWithoutFeedback,
   Animated,
   Easing,
   StyleProp,
@@ -15,6 +14,8 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useFunctionOnce } from 'libs/hooks'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typography'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -100,7 +101,7 @@ export const AccordionItem = ({
 
   return (
     <React.Fragment>
-      <TouchableWithoutFeedback
+      <StyledTouchableOpacity
         accessibilityRole="button"
         onPress={toggleListItem}
         onLayout={getPositionOfAccordionItem}
@@ -112,7 +113,7 @@ export const AccordionItem = ({
             <ArrowNext />
           </Animated.View>
         </View>
-      </TouchableWithoutFeedback>
+      </StyledTouchableOpacity>
       <StyledAnimatedView style={{ height: bodyHeight }} testID="accordionBody">
         <StyledView
           nativeID={accordionBodyId}
@@ -148,6 +149,10 @@ const StyledView = styled.View<{ hidden: boolean }>(({ hidden }) => ({
   paddingHorizontal: getSpacing(6),
   paddingTop: 0,
 }))
+
+const StyledTouchableOpacity = styled(TouchableOpacity).attrs({ activeOpacity: 1 })<{
+  isFocus?: boolean
+}>(({ theme, isFocus }) => touchableFocusOutline(theme, isFocus))
 
 const Title = styled(Typo.Title4).attrs(() => getHeadingAttrs(2))({
   flex: '0.9',
