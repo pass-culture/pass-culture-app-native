@@ -365,6 +365,7 @@ exports[`BookingDetails should render correctly 1`] = `
                       "fontSize": 20,
                       "lineHeight": 24,
                       "maxWidth": "100%",
+                      "paddingHorizontal": 8,
                       "textAlign": "center",
                     },
                   ]
