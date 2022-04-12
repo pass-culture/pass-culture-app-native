@@ -7,7 +7,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 interface IconWithCaptionProps {
   Icon: React.FC<AccessibleIcon>
   caption: string
-  accessibilityLabel: string
+  accessibilityLabel: string | undefined
   testID?: string
   isDisabled?: boolean | false
 }

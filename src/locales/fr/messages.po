@@ -116,9 +116,9 @@ msgstr "Active la géolocalisation pour découvrir toutes les offres existantes 
 msgid "Activer la géolocalisation"
 msgstr "Activer la géolocalisation"
 
-#: src/features/venue/components/VenueIconCaptions.tsx
-msgid "Activer la localisation"
-msgstr "Activer la localisation"
+#: src/features/search/components/SearchResults.tsx
+msgid "Activer le chargement automatique des résultats"
+msgstr "Activer le chargement automatique des résultats"
 
 #: src/features/search/components/SearchResults.tsx
 msgid "Activer le chargement automatique des résultats"
@@ -808,10 +808,6 @@ msgstr "Distance"
 msgid "Distance depuis la localisation"
 msgstr "Distance depuis la localisation"
 
-#: src/features/venue/components/VenueIconCaptions.tsx
-msgid "Distance indisponible"
-msgstr "Distance indisponible"
-
 #: src/features/profile/components/SubscriptionMessageBadge.tsx
 msgid "Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !"
 msgstr "Dossier déposé, nous avons bien reçu ton dossier et sommes en train de l’analyser !"
@@ -1109,6 +1105,11 @@ msgstr "Générateur de lien"
 #: src/features/_marketingAndCommunication/components/DeeplinksGeneratorForm.tsx
 msgid "Générer le lien"
 msgstr "Générer le lien"
+
+#: src/features/venue/components/VenueIconCaptions.tsx
+#: src/features/venue/components/VenueIconCaptions.tsx
+msgid "Géolocalisation désactivée"
+msgstr "Géolocalisation désactivée"
 
 #: src/ui/components/accessibility/AccessibilityAtom.service.ts
 msgid "Handicap auditif"

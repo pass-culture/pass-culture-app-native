@@ -8,7 +8,8 @@ import { VenueType } from 'features/venue/atoms/VenueType'
 import { GeolocPermissionState, useGeolocation } from 'libs/geolocation'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { VenueTypeCode } from 'libs/parsers'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { styledButton } from 'ui/components/buttons/styledButton'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { PointerLocationNotFilled } from 'ui/svg/icons/PointerLocationNotFilled'
 import { PointerLocationNotFilledDisabled } from 'ui/svg/icons/PointerLocationNotFilledDisabled'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -38,7 +39,7 @@ export const VenueIconCaptions: React.FC<Props> = ({ type, label, locationCoordi
         disabled={!!distanceToLocation}
         testID="iconLocation"
         accessibilityLabel={
-          distanceToLocation ? t`Distance depuis la localisation` : t`Activer la localisation`
+          distanceToLocation ? t`Distance depuis la localisation` : t`Géolocalisation désactivée`
         }>
         {distanceToLocation ? (
           <IconWithCaption
@@ -50,8 +51,8 @@ export const VenueIconCaptions: React.FC<Props> = ({ type, label, locationCoordi
         ) : (
           <IconWithCaption
             Icon={PointerLocationNotFilledDisabled}
-            caption={'Géolocalisation désactivée'}
-            accessibilityLabel={t`Distance indisponible`}
+            caption={t`Géolocalisation désactivée`}
+            accessibilityLabel={undefined}
             isDisabled={true}
           />
         )}
@@ -71,6 +72,7 @@ const Separator = styled.View(({ theme }) => ({
   alignSelf: 'center',
 }))
 
-const ActiveGeolocationButton = styled(TouchableOpacity)({
+const ActiveGeolocationButton = styledButton(Touchable)({
   flex: 1,
+  flexDirection: 'row',
 })

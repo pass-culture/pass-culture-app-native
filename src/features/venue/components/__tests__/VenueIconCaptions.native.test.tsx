@@ -49,7 +49,7 @@ describe('<VenueIconCaptions />', () => {
         locationCoordinates={locationCoordinates}
       />
     )
-    expect(queryByLabelText('Activer la localisation')).toBeTruthy()
+    expect(queryByLabelText('Géolocalisation désactivée')).toBeTruthy()
     expect(queryByLabelText('Distance depuis la localisation')).toBeFalsy()
   })
 
