@@ -9,7 +9,7 @@ import { Email } from 'ui/svg/icons/Email'
 import { RadioButton } from './RadioButton'
 
 export default {
-  title: 'ui/inputs/RadioButton',
+  title: 'ui/inputs/radioButtons/RadioButton',
   component: RadioButton,
   argTypes: {
     icon: selectArgTypeFromObject({

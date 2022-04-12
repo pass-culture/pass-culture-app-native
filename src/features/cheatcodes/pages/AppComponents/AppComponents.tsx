@@ -44,7 +44,8 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
-import { RadioButton } from 'ui/components/RadioButton'
+import { RadioButton } from 'ui/components/radioButtons/RadioButton'
+import { RadioButtonWithBorder } from 'ui/components/radioButtons/RadioButtonWithBorder'
 import { SectionRow } from 'ui/components/SectionRow'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { SlantTag } from 'ui/components/SlantTag'
@@ -91,6 +92,12 @@ const radioButtonItems = [
   { label: 'With description', description: 'This is a description' },
   { label: 'With icon', icon: JeuxVideo },
   { label: 'With icon and description', icon: Email, description: 'This is a description' },
+]
+
+const radioButtonWithBorderItems = [
+  { label: 'Default 2' },
+  { label: 'With description 2', description: 'This is a description 2' },
+  { label: 'Default 3' },
 ]
 
 export const AppComponents: FunctionComponent = () => {
@@ -420,19 +427,42 @@ export const AppComponents: FunctionComponent = () => {
 
       <Divider />
 
-      <AccordionItem title="Radio button">
-        {radioButtonItems.map((item) => {
-          return (
-            <View key={item.label}>
-              <RadioButton
-                onSelect={() => setRadioButtonChoice(item.label)}
-                isSelected={radioButtonChoice === item.label}
-                {...item}
-              />
-              <Spacer.Column numberOfSpaces={3} />
-            </View>
-          )
-        })}
+      <AccordionItem title="Radio buttons">
+        <StyledTitle4>RadioButton</StyledTitle4>
+        <Spacer.Column numberOfSpaces={1} />
+        <React.Fragment>
+          {radioButtonItems.map((item) => {
+            return (
+              <View key={item.label}>
+                <RadioButton
+                  onSelect={() => setRadioButtonChoice(item.label)}
+                  isSelected={radioButtonChoice === item.label}
+                  {...item}
+                />
+                <Spacer.Column numberOfSpaces={3} />
+              </View>
+            )
+          })}
+        </React.Fragment>
+
+        <Spacer.Column numberOfSpaces={3} />
+
+        <StyledTitle4>RadioButtonWithBorder</StyledTitle4>
+        <Spacer.Column numberOfSpaces={1} />
+        <React.Fragment>
+          {radioButtonWithBorderItems.map((item) => {
+            return (
+              <View key={item.label}>
+                <RadioButtonWithBorder
+                  onPress={() => setRadioButtonChoice(item.label)}
+                  selected={radioButtonChoice === item.label}
+                  {...item}
+                />
+                <Spacer.Column numberOfSpaces={3} />
+              </View>
+            )
+          })}
+        </React.Fragment>
       </AccordionItem>
 
       <Divider />
