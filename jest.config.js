@@ -39,6 +39,7 @@ module.exports = {
     '\\.native-snap$',
     '\\.web-snap$',
     '<rootDir>/node_modules/',
+    '<rootDir>/server/'
   ],
   cacheDirectory: '.jest/cache',
   clearMocks: true,

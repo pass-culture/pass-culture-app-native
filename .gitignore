@@ -108,3 +108,6 @@ sourcemaps/*
 
 # forgot in work dir after npm pack
 *.tgz
+
+# typescript
+tsconfig.tsbuildinfo

@@ -13,7 +13,7 @@ export async function replaceHtmlMetas(
   entityId: number
 ) {
   const entity = await apiClient(type, entityId)
-  const subPath = endpoint[0] === '/' ? endpoint.slice(1) : endpoint
+  const subPath = endpoint.slice(1)
   const METAS_CONFIG = ENTITY_METAS_CONFIG_MAP[type]
   const metaConfig = {
     title: {
