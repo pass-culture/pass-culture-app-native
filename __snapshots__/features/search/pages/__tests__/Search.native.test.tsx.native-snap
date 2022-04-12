@@ -48,6 +48,8 @@ exports[`Search component should render correctly 1`] = `
     }
   />
   <View
+    marginBottom={24}
+    marginTop={8}
     style={
       Array [
         Object {
@@ -74,6 +76,7 @@ exports[`Search component should render correctly 1`] = `
       Recherche une offre, un titre, un lieu...
     </Text>
     <View
+      focusOutlineColor="#ffffff"
       height="regular"
       isDisabled={false}
       isError={false}

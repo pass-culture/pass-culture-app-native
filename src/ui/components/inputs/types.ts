@@ -1,6 +1,9 @@
 import { RefAttributes } from 'react'
 import { TextInput as RNTextInput, ViewStyle } from 'react-native'
 
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
+
 type CustomTextInputProps = {
   isError?: boolean
   label?: string
@@ -8,6 +11,7 @@ type CustomTextInputProps = {
   containerStyle?: ViewStyle
   isRequiredField?: boolean
   accessibilityDescribedBy?: string
+  focusOutlineColor?: ColorsEnum
 }
 
 type CustomSearchInputProps = {
@@ -17,6 +21,7 @@ type CustomSearchInputProps = {
   accessibilityLabel?: string
   accessibilityDescribedBy?: string
   onPressRightIcon?: () => void
+  focusOutlineColor?: ColorsEnum
 }
 
 export type RNTextInputProps = Pick<
@@ -64,25 +69,19 @@ export function getCustomTextInputProps(props: TextInputProps): CustomTextInputP
     containerStyle: props.containerStyle,
     isRequiredField: props.isRequiredField,
     accessibilityDescribedBy: props.accessibilityDescribedBy,
+    focusOutlineColor: props.focusOutlineColor,
   }
 }
 
 export function getCustomSearchInputProps(props: SearchInputProps): CustomSearchInputProps {
-  const {
-    inputHeight,
-    LeftIcon,
-    label,
-    accessibilityLabel,
-    accessibilityDescribedBy,
-    onPressRightIcon,
-  } = props
   return {
-    inputHeight,
-    LeftIcon,
-    label,
-    accessibilityLabel,
-    accessibilityDescribedBy,
-    onPressRightIcon,
+    inputHeight: props.inputHeight,
+    LeftIcon: props.LeftIcon,
+    label: props.label,
+    accessibilityLabel: props.accessibilityLabel,
+    accessibilityDescribedBy: props.accessibilityDescribedBy,
+    onPressRightIcon: props.onPressRightIcon,
+    focusOutlineColor: props.focusOutlineColor,
   }
 }
 
