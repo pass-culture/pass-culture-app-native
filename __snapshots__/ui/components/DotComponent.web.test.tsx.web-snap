@@ -5,11 +5,43 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
+      <button
+        aria-hidden="false"
+        class="sc-bdvvtL cJVdrh"
+        data-testid="button"
+        tabindex="0"
+        type="button"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="align-self: center; margin-left: 4px; margin-right: 4px;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            data-testid="dot-icon"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+            >
+              dot-icon-SVG-Mock
+            </div>
+          </div>
+        </div>
+      </button>
+    </div>
+  </body>,
+  "container": <div>
+    <button
+      aria-hidden="false"
+      class="sc-bdvvtL cJVdrh"
+      data-testid="button"
+      tabindex="0"
+      type="button"
+    >
       <div
         class="css-view-1dbjc4n"
-        data-testid="button"
         style="align-self: center; margin-left: 4px; margin-right: 4px;"
-        tabindex="0"
       >
         <div
           class="css-view-1dbjc4n"
@@ -23,27 +55,7 @@ Object {
           </div>
         </div>
       </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="css-view-1dbjc4n"
-      data-testid="button"
-      style="align-self: center; margin-left: 4px; margin-right: 4px;"
-      tabindex="0"
-    >
-      <div
-        class="css-view-1dbjc4n"
-        data-testid="dot-icon"
-      >
-        <div
-          class="css-text-901oao"
-          dir="auto"
-        >
-          dot-icon-SVG-Mock
-        </div>
-      </div>
-    </div>
+    </button>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
@@ -104,11 +116,43 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
+      <button
+        aria-hidden="false"
+        class="sc-bdvvtL cJVdrh"
+        data-testid="button"
+        tabindex="0"
+        type="button"
+      >
+        <div
+          class="css-view-1dbjc4n"
+          style="align-self: center; margin-left: 4px; margin-right: 4px;"
+        >
+          <div
+            class="css-view-1dbjc4n"
+            data-testid="dot-icon"
+          >
+            <div
+              class="css-text-901oao"
+              dir="auto"
+            >
+              dot-icon-SVG-Mock
+            </div>
+          </div>
+        </div>
+      </button>
+    </div>
+  </body>,
+  "container": <div>
+    <button
+      aria-hidden="false"
+      class="sc-bdvvtL cJVdrh"
+      data-testid="button"
+      tabindex="0"
+      type="button"
+    >
       <div
         class="css-view-1dbjc4n"
-        data-testid="button"
         style="align-self: center; margin-left: 4px; margin-right: 4px;"
-        tabindex="0"
       >
         <div
           class="css-view-1dbjc4n"
@@ -122,27 +166,7 @@ Object {
           </div>
         </div>
       </div>
-    </div>
-  </body>,
-  "container": <div>
-    <div
-      class="css-view-1dbjc4n"
-      data-testid="button"
-      style="align-self: center; margin-left: 4px; margin-right: 4px;"
-      tabindex="0"
-    >
-      <div
-        class="css-view-1dbjc4n"
-        data-testid="dot-icon"
-      >
-        <div
-          class="css-text-901oao"
-          dir="auto"
-        >
-          dot-icon-SVG-Mock
-        </div>
-      </div>
-    </div>
+    </button>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

@@ -433,7 +433,7 @@ Object {
               />
               <button
                 aria-label="Géolocalisation désactivée"
-                class="sc-iCfMLu exddjM sc-kLwhqv eiwiaa sc-kLwhqv eiwiaa"
+                class="sc-iCfMLu ivCkkT sc-kLwhqv eiwiaa sc-kLwhqv eiwiaa"
                 data-testid="iconLocation"
                 tabindex="0"
                 type="button"
@@ -1944,7 +1944,7 @@ Object {
             />
             <button
               aria-label="Géolocalisation désactivée"
-              class="sc-iCfMLu exddjM sc-kLwhqv eiwiaa sc-kLwhqv eiwiaa"
+              class="sc-iCfMLu ivCkkT sc-kLwhqv eiwiaa sc-kLwhqv eiwiaa"
               data-testid="iconLocation"
               tabindex="0"
               type="button"

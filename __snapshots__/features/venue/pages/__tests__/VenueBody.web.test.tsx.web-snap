@@ -271,7 +271,7 @@ Object {
             />
             <button
               aria-label="Géolocalisation désactivée"
-              class="sc-hKwDye XbALA sc-eCImPb lccSAN sc-eCImPb lccSAN"
+              class="sc-hKwDye lgPtFf sc-eCImPb lccSAN sc-eCImPb lccSAN"
               data-testid="iconLocation"
               tabindex="0"
               type="button"
@@ -1618,7 +1618,7 @@ Object {
           />
           <button
             aria-label="Géolocalisation désactivée"
-            class="sc-hKwDye XbALA sc-eCImPb lccSAN sc-eCImPb lccSAN"
+            class="sc-hKwDye lgPtFf sc-eCImPb lccSAN sc-eCImPb lccSAN"
             data-testid="iconLocation"
             tabindex="0"
             type="button"

@@ -190,6 +190,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
               }
             >
               <View
+                aria-hidden={false}
                 style={
                   Array [
                     Object {
@@ -214,6 +215,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                   }
                 />
                 <View
+                  aria-hidden={true}
                   style={
                     Array [
                       Object {
@@ -406,6 +408,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
               }
             >
               <View
+                aria-hidden={true}
                 style={
                   Array [
                     Object {
@@ -430,6 +433,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                   }
                 />
                 <View
+                  aria-hidden={true}
                   style={
                     Array [
                       Object {
@@ -985,6 +989,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
               }
             >
               <View
+                aria-hidden={true}
                 style={
                   Array [
                     Object {
@@ -1009,6 +1014,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                   }
                 />
                 <View
+                  aria-hidden={true}
                   style={
                     Array [
                       Object {
@@ -1157,6 +1163,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
               }
             >
               <View
+                aria-hidden={true}
                 style={
                   Array [
                     Object {
@@ -1181,6 +1188,7 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                   }
                 />
                 <View
+                  aria-hidden={true}
                   style={
                     Array [
                       Object {
@@ -1529,7 +1537,9 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                       }
                     }
                     accessible={true}
+                    collapsable={false}
                     focusable={false}
+                    nativeID="animatedComponent"
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1538,26 +1548,35 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      Array [
-                        Object {
-                          "alignSelf": "center",
-                          "marginLeft": 4,
-                          "marginRight": 4,
-                        },
-                      ]
+                      Object {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
                     }
                     testID="button"
                   >
                     <View
-                      borderColor="#eb0055"
-                      fillColor="#eb0055"
-                      height={12}
-                      testID="dot-icon"
-                      width={12}
+                      style={
+                        Array [
+                          Object {
+                            "alignSelf": "center",
+                            "marginLeft": 4,
+                            "marginRight": 4,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        dot-icon-SVG-Mock
-                      </Text>
+                      <View
+                        borderColor="#eb0055"
+                        fillColor="#eb0055"
+                        height={12}
+                        testID="dot-icon"
+                        width={12}
+                      >
+                        <Text>
+                          dot-icon-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                   </View>
                   <View
@@ -1567,7 +1586,9 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                       }
                     }
                     accessible={true}
+                    collapsable={false}
                     focusable={false}
+                    nativeID="animatedComponent"
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1576,26 +1597,35 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      Array [
-                        Object {
-                          "alignSelf": "center",
-                          "marginLeft": 4,
-                          "marginRight": 4,
-                        },
-                      ]
+                      Object {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
                     }
                     testID="button"
                   >
                     <View
-                      borderColor="#696A6F"
-                      fillColor="transparent"
-                      height={8}
-                      testID="dot-icon"
-                      width={8}
+                      style={
+                        Array [
+                          Object {
+                            "alignSelf": "center",
+                            "marginLeft": 4,
+                            "marginRight": 4,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        dot-icon-SVG-Mock
-                      </Text>
+                      <View
+                        borderColor="#696A6F"
+                        fillColor="transparent"
+                        height={8}
+                        testID="dot-icon"
+                        width={8}
+                      >
+                        <Text>
+                          dot-icon-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                   </View>
                   <View
@@ -1605,7 +1635,9 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                       }
                     }
                     accessible={true}
+                    collapsable={false}
                     focusable={false}
+                    nativeID="animatedComponent"
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1614,26 +1646,35 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      Array [
-                        Object {
-                          "alignSelf": "center",
-                          "marginLeft": 4,
-                          "marginRight": 4,
-                        },
-                      ]
+                      Object {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
                     }
                     testID="button"
                   >
                     <View
-                      borderColor="#696A6F"
-                      fillColor="transparent"
-                      height={8}
-                      testID="dot-icon"
-                      width={8}
+                      style={
+                        Array [
+                          Object {
+                            "alignSelf": "center",
+                            "marginLeft": 4,
+                            "marginRight": 4,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        dot-icon-SVG-Mock
-                      </Text>
+                      <View
+                        borderColor="#696A6F"
+                        fillColor="transparent"
+                        height={8}
+                        testID="dot-icon"
+                        width={8}
+                      >
+                        <Text>
+                          dot-icon-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                   </View>
                   <View
@@ -1643,7 +1684,9 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                       }
                     }
                     accessible={true}
+                    collapsable={false}
                     focusable={false}
+                    nativeID="animatedComponent"
                     onClick={[Function]}
                     onResponderGrant={[Function]}
                     onResponderMove={[Function]}
@@ -1652,26 +1695,35 @@ exports[`FirstTutorial page should render first tutorial 1`] = `
                     onResponderTerminationRequest={[Function]}
                     onStartShouldSetResponder={[Function]}
                     style={
-                      Array [
-                        Object {
-                          "alignSelf": "center",
-                          "marginLeft": 4,
-                          "marginRight": 4,
-                        },
-                      ]
+                      Object {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
                     }
                     testID="button"
                   >
                     <View
-                      borderColor="#696A6F"
-                      fillColor="transparent"
-                      height={8}
-                      testID="dot-icon"
-                      width={8}
+                      style={
+                        Array [
+                          Object {
+                            "alignSelf": "center",
+                            "marginLeft": 4,
+                            "marginRight": 4,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        dot-icon-SVG-Mock
-                      </Text>
+                      <View
+                        borderColor="#696A6F"
+                        fillColor="transparent"
+                        height={8}
+                        testID="dot-icon"
+                        width={8}
+                      >
+                        <Text>
+                          dot-icon-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
                   </View>
                 </View>
