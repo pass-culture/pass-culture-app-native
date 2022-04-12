@@ -141,7 +141,7 @@ const NoTicket = () => {
       <IconContainer>
         <BicolorCircledCheck />
       </IconContainer>
-      <TicketInfo>{message}</TicketInfo>
+      <NoTicketInfo>{message}</NoTicketInfo>
     </Ticket>
   )
 }
@@ -208,6 +208,7 @@ const DarkGreyCaption = styled(Typo.Caption)(({ theme }) => ({
 const Title = styled(Typo.Title3).attrs(getHeadingAttrs(1))({
   textAlign: 'center',
   maxWidth: '100%',
+  paddingHorizontal: getSpacing(2),
 })
 
 const TicketInnerContent = styled.View({
@@ -219,6 +220,11 @@ const TicketInfo = styled(Typo.Body)({
   textAlign: 'center',
   maxWidth: '100%',
   paddingBottom: getSpacing(6),
+})
+
+const NoTicketInfo = styled(Typo.Body)({
+  textAlign: 'center',
+  maxWidth: '100%',
 })
 
 const TicketCollectDelay = styled(Typo.Body)(({ theme }) => ({
@@ -254,7 +260,8 @@ const TicketBtnEmail = styled.View({
 const IconContainer = styled.View({
   alignItems: 'center',
   width: '100%',
-  marginBottom: getSpacing(6),
+  marginTop: -getSpacing(4),
+  marginBottom: getSpacing(3),
 })
 
 const BicolorEmailSent = styled(InitialBicolorEmailSent).attrs(({ theme }) => ({
