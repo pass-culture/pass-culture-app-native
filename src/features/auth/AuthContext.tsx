@@ -92,6 +92,7 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 })
 
+let i = 0
 export function useLoginRoutine() {
   const { setIsLoggedIn } = useAuthContext()
   const resetContexts = useResetContexts()
@@ -102,10 +103,15 @@ export function useLoginRoutine() {
    * @param {LoginRoutineMethod} method The process that triggered the login routine
    */
   const loginRoutine = async (response: SigninResponse, method: LoginRoutineMethod) => {
+    console.log(++i, 'login', response)
     connectUserToBatchAndFirebase(response.accessToken)
+    console.log(++i, 'connectUserToBatchAndFirebase', response)
     await saveRefreshToken(response.refreshToken)
+    console.log(++i, 'saveRefreshToken', response)
     await storage.saveString('access_token', response.accessToken)
+    console.log(++i, 'storage.saveString', response)
     analytics.logLogin({ method })
+    console.log(++i, 'analytics.logLogin', response)
     setIsLoggedIn(true)
     resetContexts()
   }
