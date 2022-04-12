@@ -4,7 +4,6 @@ import styled from 'styled-components'
 import styledNative, { DefaultTheme } from 'styled-components/native'
 
 import { ButtonWithLinearGradientProps } from 'ui/components/buttons/buttonWithLinearGradientTypes'
-import { ExternalSite as InitialExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
@@ -12,18 +11,26 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
   wording,
   onPress,
   isDisabled = false,
-  isExternal = false,
   type = 'button',
   name,
   className,
   externalHref,
   to,
+  icon,
+  testID,
 }) => {
   const ButtonComponent = (to || externalHref ? Link : Button) as React.ElementType
   const internalLinkProps = useLinkProps({ to: to ?? '' })
   const externalLinkProps = { href: externalHref, accessibilityRole: 'link', target: '_blank' }
   const linkProps = externalHref ? externalLinkProps : internalLinkProps
   const buttonLinkProps = externalHref || to ? { ...linkProps, type: undefined } : {}
+
+  const Icon = icon
+    ? styledNative(icon).attrs(({ theme }) => ({
+        size: theme.buttons.linearGradient.iconSize,
+        color: theme.buttons.linearGradient.iconColor,
+      }))``
+    : undefined
 
   const onClick = useCallback(
     (event: SyntheticEvent) => {
@@ -44,9 +51,10 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
       disabled={isDisabled}
       type={type}
       className={className}
+      testID={testID}
       {...buttonLinkProps}>
       <LegendContainer>
-        {!!isExternal && <ExternalSite />}
+        {!!Icon && <Icon />}
         <Title adjustsFontSizeToFit numberOfLines={1} isDisabled={isDisabled}>
           {wording}
         </Title>
@@ -87,7 +95,7 @@ const Title = styledNative(Typo.ButtonText)<{ isDisabled: boolean }>(({ isDisabl
   color: isDisabled
     ? theme.buttons.disabled.linearGradient.textColor
     : theme.buttons.linearGradient.textColor,
-  padding: getSpacing(5),
+  padding: getSpacing(2),
 }))
 
 const LegendContainer = styledNative.View({
@@ -95,8 +103,3 @@ const LegendContainer = styledNative.View({
   alignItems: 'center',
   flexDirection: 'row',
 })
-
-const ExternalSite = styledNative(InitialExternalSite).attrs(({ theme }) => ({
-  size: theme.buttons.linearGradient.iconSize,
-  color: theme.buttons.linearGradient.iconColor,
-}))``

@@ -1,8 +1,6 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
-import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
 
 import { ButtonWithLinearGradient } from './ButtonWithLinearGradient'
@@ -10,12 +8,6 @@ import { ButtonWithLinearGradient } from './ButtonWithLinearGradient'
 export default {
   title: 'ui/buttons/ButtonWithLinearGradient',
   component: ButtonWithLinearGradient,
-  argTypes: {
-    icon: selectArgTypeFromObject({
-      Email,
-      EditPen,
-    }),
-  },
 } as ComponentMeta<typeof ButtonWithLinearGradient>
 
 const Template: ComponentStory<typeof ButtonWithLinearGradient> = (props) => (
@@ -34,28 +26,15 @@ Default.parameters = {
   },
 }
 
-export const ExternalLink = Template.bind({})
-ExternalLink.args = {
-  wording: 'Ouvrir le lien',
-  isExternal: true,
-}
-ExternalLink.parameters = {
-  docs: {
-    source: {
-      code: '<ButtonWithLinearGradient wording="Ouvrir le lien" isExternal />',
-    },
-  },
-}
-
-export const EmailConsultation = Template.bind({})
-EmailConsultation.args = {
+export const WithIcon = Template.bind({})
+WithIcon.args = {
   wording: 'Consulter mes e-mails',
-  isEmail: true,
+  icon: Email,
 }
-EmailConsultation.parameters = {
+WithIcon.parameters = {
   docs: {
     source: {
-      code: '<ButtonWithLinearGradient wording="Consulter mes e-mails" isEmail />',
+      code: '<ButtonWithLinearGradient wording="Consulter mes e-mails" icon={Email} />',
     },
   },
 }
