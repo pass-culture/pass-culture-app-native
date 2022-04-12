@@ -1,9 +1,9 @@
 import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
-import { TouchableWithoutFeedback } from 'react-native'
 import { SwiperProps } from 'react-native-web-swiper'
 import styled, { DefaultTheme } from 'styled-components/native'
 
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { Dot } from 'ui/svg/icons/Dot'
 import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
@@ -39,6 +39,7 @@ export const DotComponent: FunctionComponent<DotComponentProps> = (props) => {
   const Dot = getStyledDot(props.index, props.activeIndex)
   const step = props.index + 1
   const totalSteps = props.numberOfSteps
+  const clickable = !!props.onPress
 
   let status = t`à faire`
   if (props.isActive) {
@@ -48,15 +49,20 @@ export const DotComponent: FunctionComponent<DotComponentProps> = (props) => {
   }
 
   return (
-    <TouchableWithoutFeedback onPress={props.onPress} disabled={!props.onPress} testID="button">
+    <Touchable
+      activeOpacity={1}
+      onPress={props.onPress}
+      testID="button"
+      disabled={!clickable}
+      aria-hidden={!clickable}>
       <DotContainer>
         <Dot
-          aria-label={t`Étape ${step} sur ${totalSteps} ${status}`}
+          accessibilityLabel={clickable ? t`Étape ${step} sur ${totalSteps} ${status}` : undefined}
           size={props.isActive ? CURRENT_STEP_SIZE : DEFAULT_SIZE}
           testID="dot-icon"
         />
       </DotContainer>
-    </TouchableWithoutFeedback>
+    </Touchable>
   )
 }
 
