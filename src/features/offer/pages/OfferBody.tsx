@@ -99,7 +99,8 @@ export const OfferBody: FunctionComponent<Props> = ({ offerId, onScroll }) => {
           testID="offerTitle"
           numberOfLines={3}
           adjustsFontSizeToFit
-          allowFontScaling={false}>
+          allowFontScaling={false}
+          accessibilityLabel={t`Nom de l'offre\u00a0: ${offer.name}`}>
           {offer.name}
         </OfferTitle>
       </MarginContainer>
