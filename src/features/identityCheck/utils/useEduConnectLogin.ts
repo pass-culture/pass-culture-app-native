@@ -8,7 +8,7 @@ export function useEduConnectLogin() {
   const [loginUrl, setLoginUrl] = useState<string>()
   const [error, setError] = useState<EduConnectError | null>(null)
 
-  const getLoginUrl = async () => {
+  const getLoginUrl = useCallback(async () => {
     try {
       const accessToken = await eduConnectClient.getAccessToken()
 
@@ -31,14 +31,13 @@ export function useEduConnectLogin() {
     } catch (err) {
       setError(new EduConnectError(EduConnectErrorMessageEnum.GenericError))
     }
-  }
+  }, [])
 
   useEffect(() => {
     getLoginUrl().catch(() =>
       setError(new EduConnectError(EduConnectErrorMessageEnum.GenericError))
     )
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [eduConnectClient])
+  }, [getLoginUrl])
 
   const openEduConnect = useCallback(async () => {
     try {
@@ -47,8 +46,7 @@ export function useEduConnectLogin() {
     } catch (err) {
       setError(new EduConnectError(EduConnectErrorMessageEnum.GenericError))
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [eduConnectClient, loginUrl])
+  }, [getLoginUrl, loginUrl])
 
   return { openEduConnect, loginUrl, error }
 }
