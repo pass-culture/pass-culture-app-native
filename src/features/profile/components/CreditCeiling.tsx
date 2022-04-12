@@ -82,7 +82,7 @@ export function CreditCeiling(props: CreditCeilingProps) {
       <AnimatedProgressBar progress={progress} color={color} icon={ceilingConfig.icon} />
       <Amount color={color}>{amountLabel}</Amount>
       <View>
-        <Label>{ceilingConfig.label}</Label>
+        <Typo.Caption>{ceilingConfig.label}</Typo.Caption>
       </View>
     </Container>
   )
@@ -97,8 +97,3 @@ const Container = styled.View({
 const Amount = styled(Typo.Title4).attrs(getHeadingAttrs(undefined))<{ color: ColorsEnum }>(
   ({ color }) => ({ color })
 )
-
-const Label = styled.Text({
-  fontSize: 12,
-  fontFamily: 'Montserrat-Medium',
-})

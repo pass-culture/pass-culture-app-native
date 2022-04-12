@@ -120,7 +120,7 @@ const ItemContainer = styled(TouchableOpacity)({
   alignItems: 'center',
 })
 
-const Text = styled.Text({ flex: 1 })
+const Text = styled.Text(({ theme }) => ({ color: theme.colors.black, flex: 1 }))
 
 const Separator = styled.View(({ theme }) => ({
   height: 2,
@@ -128,7 +128,7 @@ const Separator = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(6),
 }))
 
-const DescriptionErrorTextContainer = styled.Text({
+const DescriptionErrorTextContainer = styled(Typo.Body)({
   marginTop: getSpacing(6.5),
   textAlign: 'center',
 })

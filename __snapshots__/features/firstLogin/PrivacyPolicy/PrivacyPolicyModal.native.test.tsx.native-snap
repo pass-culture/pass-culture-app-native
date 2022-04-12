@@ -273,6 +273,10 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
               style={
                 Array [
                   Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Regular",
+                    "fontSize": 15,
+                    "lineHeight": 20,
                     "textAlign": "center",
                   },
                 ]
@@ -358,6 +362,10 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
               style={
                 Array [
                   Object {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 16,
                     "paddingHorizontal": "10%",
                     "paddingVertical": 20,
                     "textAlign": "center",

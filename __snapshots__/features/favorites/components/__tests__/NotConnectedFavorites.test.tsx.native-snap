@@ -121,6 +121,10 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         style={
           Array [
             Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
               "textAlign": "center",
             },
           ]

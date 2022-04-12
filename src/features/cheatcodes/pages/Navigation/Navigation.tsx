@@ -23,7 +23,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { padding, Spacer } from 'ui/theme'
+import { padding, Spacer, Typo } from 'ui/theme'
 
 const MAX_ASYNC_TEST_REQ_COUNT = 3
 const EIFFEL_TOWER_COORDINATES = { lat: 48.8584, lng: 2.2945 }
@@ -378,8 +378,7 @@ const Row = styled.View<{ half?: boolean }>(({ half = false }) => ({
   ...padding(2, 0.5),
 }))
 
-const CenteredText = styled.Text({
+const CenteredText = styled(Typo.Caption)({
   width: '100%',
   textAlign: 'center',
-  fontSize: 13,
 })

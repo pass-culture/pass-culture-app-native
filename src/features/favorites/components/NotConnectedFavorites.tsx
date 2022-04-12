@@ -85,7 +85,7 @@ const ButtonContainer = styled.View({ flex: 1, maxWidth: getSpacing(44) })
 
 const TextContainer = styled.View({ maxWidth: getSpacing(88) })
 
-const CenteredText = styled.Text({
+const CenteredText = styled(Typo.Body)({
   textAlign: 'center',
 })
 

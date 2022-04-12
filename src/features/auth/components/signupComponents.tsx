@@ -1,13 +1,13 @@
 import styled from 'styled-components/native'
 
-import { padding } from 'ui/theme'
+import { padding, Typo } from 'ui/theme'
 
 export const CardContent = styled.View({
   width: '100%',
   alignItems: 'center',
 })
 
-export const Paragraphe = styled.Text({
+export const Paragraphe = styled(Typo.Body)({
   flexWrap: 'wrap',
   flexShrink: 1,
   textAlign: 'center',
@@ -24,6 +24,6 @@ export const Description = styled.View({
   alignItems: 'center',
 })
 
-export const CenteredText = styled.Text({
+export const CenteredText = styled(Typo.Body)({
   textAlign: 'center',
 })

@@ -70,7 +70,7 @@ const IconContainer = styled.View({
   textAlign: 'left',
 })
 
-const TitleContainer = styled.Text({
+const TitleContainer = styled(Typo.ButtonText)({
   marginRight: 5,
 })
 

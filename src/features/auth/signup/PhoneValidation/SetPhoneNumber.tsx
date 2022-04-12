@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { ApiError, extractApiErrorMessage } from 'api/apiHelpers'
 import { useSendPhoneValidationMutation } from 'features/auth/api'
 import { QuitSignupModal } from 'features/auth/components/QuitSignupModal'
+import { Paragraphe } from 'features/auth/components/signupComponents'
 import { useAppSettings } from 'features/auth/settings'
 import { SignupStep } from 'features/auth/signup/enums'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
@@ -193,12 +194,6 @@ const ModalContent = styled.View(({ theme }) => ({
   width: '100%',
   maxWidth: theme.contentPage.maxWidth,
 }))
-
-const Paragraphe = styled.Text({
-  flexWrap: 'wrap',
-  flexShrink: 1,
-  textAlign: 'center',
-})
 
 const InputContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',

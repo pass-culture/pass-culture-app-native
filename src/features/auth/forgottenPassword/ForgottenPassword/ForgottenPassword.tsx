@@ -178,7 +178,7 @@ const ModalContent = styled.View({
   width: '100%',
 })
 
-const CenteredText = styled.Text(({ theme }) => ({
+const CenteredText = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
   maxWidth: theme.contentPage.maxWidth,
 }))

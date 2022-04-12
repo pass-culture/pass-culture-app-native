@@ -66,6 +66,6 @@ const Description = styled.View({
   alignItems: 'center',
 })
 
-const CenteredText = styled.Text({
+const CenteredText = styled(Typo.Body)({
   textAlign: 'center',
 })

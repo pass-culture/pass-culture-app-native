@@ -126,10 +126,9 @@ const Container = styled.View({
   padding: getSpacing(2),
 })
 
-const TitleContainer = styled.Text(({ theme }) => ({
-  ...theme.typography.title4,
+const TitleContainer = styled(Typo.Title4)({
   textAlign: 'center',
-}))
+})
 
 const Separator = styled.View(({ theme }) => ({
   height: 2,

@@ -74,7 +74,7 @@ const DescriptionErrorText = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const DescriptionErrorTextContainer = styled.Text({
+const DescriptionErrorTextContainer = styled(Typo.Body)({
   marginTop: getSpacing(6.5),
   textAlign: 'center',
 })

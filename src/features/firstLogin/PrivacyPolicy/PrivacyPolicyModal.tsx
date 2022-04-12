@@ -87,11 +87,11 @@ const CallToActionsContainer = styled.View(({ theme }) => ({
   width: '100%',
 }))
 
-const Description = styled.Text({
+const Description = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const SubDescription = styled.Text({
+const SubDescription = styled(Typo.Caption)({
   textAlign: 'center',
   paddingVertical: 20,
   paddingHorizontal: '10%',

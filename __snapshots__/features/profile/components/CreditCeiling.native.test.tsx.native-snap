@@ -118,8 +118,10 @@ exports[`CreditCeiling should render properly 1`] = `
       style={
         Array [
           Object {
-            "fontFamily": "Montserrat-Medium",
+            "color": "#161617",
+            "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
+            "lineHeight": 16,
           },
         ]
       }
