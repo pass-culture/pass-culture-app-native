@@ -83,7 +83,7 @@ export const SearchBox: React.FC = () => {
   return (
     <React.Fragment>
       <HiddenTitle>{t`Recherche une offre, un titre, un lieu... `}</HiddenTitle>
-      <SearchInput
+      <StyledSearchInput
         value={query}
         onChangeText={setQuery}
         placeholder={t`Titre, artiste, lieu...`}
@@ -102,6 +102,10 @@ export const SearchBox: React.FC = () => {
     </React.Fragment>
   )
 }
+
+const StyledSearchInput = styled(SearchInput).attrs(({ theme }) => ({
+  focusOutlineColor: theme.colors.white,
+}))``
 
 const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,

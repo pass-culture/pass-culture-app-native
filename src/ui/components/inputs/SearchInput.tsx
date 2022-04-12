@@ -22,8 +22,14 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
   const [isFocus, setIsFocus] = useState<boolean>(false)
   const nativeProps = getRNTextInputProps(props)
   const customProps = getCustomSearchInputProps(props)
-  const { LeftIcon, label, accessibilityLabel, accessibilityDescribedBy, onPressRightIcon } =
-    customProps
+  const {
+    LeftIcon,
+    label,
+    accessibilityLabel,
+    accessibilityDescribedBy,
+    onPressRightIcon,
+    focusOutlineColor,
+  } = customProps
   const { value = '' } = nativeProps
   const searchInputID = uuidv4()
 
@@ -43,7 +49,10 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}
-      <InputContainer inputHeight={props.inputHeight} isFocus={isFocus}>
+      <InputContainer
+        inputHeight={props.inputHeight}
+        isFocus={isFocus}
+        focusOutlineColor={focusOutlineColor}>
         <Spacer.Row numberOfSpaces={1} />
         {!!LeftIcon && (
           <React.Fragment>
