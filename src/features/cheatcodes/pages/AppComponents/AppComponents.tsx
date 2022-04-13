@@ -60,6 +60,7 @@ import { Check } from 'ui/svg/icons/Check'
 import { Close } from 'ui/svg/icons/Close'
 import CulturalSurveyIcons from 'ui/svg/icons/culturalSurvey'
 import { Email } from 'ui/svg/icons/Email'
+import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -229,7 +230,7 @@ export const AppComponents: FunctionComponent = () => {
         <ButtonWithLinearGradient
           wording="CallToAction external"
           onPress={onButtonPress}
-          isExternal
+          icon={ExternalSite}
         />
         <Spacer.Column numberOfSpaces={1} />
         <ButtonWithLinearGradient

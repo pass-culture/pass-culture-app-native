@@ -498,7 +498,6 @@ exports[`BookingDetails should render correctly 1`] = `
                     <Text
                       adjustsFontSizeToFit={true}
                       isDisabled={false}
-                      isEmail={false}
                       numberOfLines={1}
                       style={
                         Array [
@@ -507,10 +506,10 @@ exports[`BookingDetails should render correctly 1`] = `
                             "fontFamily": "Montserrat-Bold",
                             "fontSize": 15,
                             "lineHeight": 20,
-                            "paddingBottom": 20,
-                            "paddingLeft": 20,
-                            "paddingRight": 20,
-                            "paddingTop": 20,
+                            "paddingBottom": 8,
+                            "paddingLeft": 8,
+                            "paddingRight": 8,
+                            "paddingTop": 8,
                           },
                         ]
                       }

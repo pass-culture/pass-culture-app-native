@@ -15,6 +15,8 @@ import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
 import { BicolorCircledCheck as InitialBicolorCircledCheck } from 'ui/svg/icons/BicolorCircledCheck'
 import { BicolorEmailSent as InitialBicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
+import { Email } from 'ui/svg/icons/Email'
+import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
 
@@ -41,7 +43,7 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
   const accessOfferButton = (
     <ButtonWithLinearGradient
       wording={t`Accéder à l'offre`}
-      isExternal
+      icon={ExternalSite}
       externalHref={offer.url || undefined}
       onPress={accessExternalOffer}
     />
@@ -125,9 +127,12 @@ const TicketEmailSent = ({ offerDate }: TicketEmailSentProps) => {
     <Ticket testID="collect-info-email">
       <TicketInfo testID="collect-info-email-msg">{emailMessage}</TicketInfo>
       {Platform.OS !== 'web' && (
-        <TicketBtnEmail testID="collect-info-email-btn">
-          <ButtonWithLinearGradient wording="Consulter mes e-mails" onPress={openInbox} isEmail />
-        </TicketBtnEmail>
+        <ButtonWithLinearGradient
+          wording="Consulter mes e-mails"
+          onPress={openInbox}
+          testID="collect-info-email-btn"
+          icon={Email}
+        />
       )}
     </Ticket>
   )
@@ -250,10 +255,6 @@ const TicketContainer = styled.View(({ theme }) => ({
 }))
 
 const Ticket = styled.View({
-  width: '100%',
-})
-
-const TicketBtnEmail = styled.View({
   width: '100%',
 })
 

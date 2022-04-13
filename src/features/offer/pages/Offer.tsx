@@ -13,6 +13,7 @@ import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
 import { useHeaderTransition } from 'ui/components/headers/animationHelpers'
 import { useModal } from 'ui/components/modals/useModal'
+import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -71,7 +72,7 @@ export const Offer: FunctionComponent = () => {
                 showBookingOfferModal()
               }
             }}
-            isExternal={isExternal}
+            icon={isExternal ? ExternalSite : undefined}
             isDisabled={onPressCTA === undefined}
             externalHref={url}
           />

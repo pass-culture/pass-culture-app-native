@@ -4,8 +4,6 @@ import styled from 'styled-components/native'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { ButtonWithLinearGradientProps } from 'ui/components/buttons/buttonWithLinearGradientTypes'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { Email as InitialEmail } from 'ui/svg/icons/Email'
-import { ExternalSite as InitialExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Rectangle as InitialRectangle } from 'ui/svg/Rectangle'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -13,16 +11,22 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
   wording,
   onPress,
   isDisabled = false,
-  isExternal = false,
-  isEmail = false,
+  icon,
+  testID,
 }) => {
+  const Icon = icon
+    ? styled(icon).attrs(({ theme }) => ({
+        size: theme.buttons.linearGradient.iconSize,
+        color: theme.buttons.linearGradient.iconColor,
+      }))``
+    : undefined
+
   return (
-    <Container onPress={onPress} disabled={isDisabled} {...accessibilityAndTestId(wording)}>
+    <Container onPress={onPress} disabled={isDisabled} {...accessibilityAndTestId(wording, testID)}>
       {isDisabled ? <DisabledRectangle /> : <Rectangle />}
       <LegendContainer>
-        {!!isExternal && <ExternalSite />}
-        {!!isEmail && <Email />}
-        <Title adjustsFontSizeToFit numberOfLines={1} isDisabled={isDisabled} isEmail={isEmail}>
+        {!!Icon && <Icon />}
+        <Title adjustsFontSizeToFit numberOfLines={1} isDisabled={isDisabled}>
           {wording}
         </Title>
       </LegendContainer>
@@ -42,14 +46,12 @@ const Container = styled(TouchableOpacity)(({ theme }) => ({
   overflow: 'hidden',
 }))
 
-const Title = styled(Typo.ButtonText)<{ isDisabled: boolean; isEmail: boolean }>(
-  ({ isDisabled, isEmail, theme }) => ({
-    color: isDisabled
-      ? theme.buttons.disabled.linearGradient.textColor
-      : theme.buttons.linearGradient.textColor,
-    padding: isEmail ? getSpacing(2) : getSpacing(5),
-  })
-)
+const Title = styled(Typo.ButtonText)<{ isDisabled: boolean }>(({ isDisabled, theme }) => ({
+  color: isDisabled
+    ? theme.buttons.disabled.linearGradient.textColor
+    : theme.buttons.linearGradient.textColor,
+  padding: getSpacing(2),
+}))
 
 const LegendContainer = styled.View({
   position: 'absolute',
@@ -62,13 +64,3 @@ const DisabledRectangle = styled.View(({ theme }) => ({
   height: getSpacing(12),
   backgroundColor: theme.buttons.disabled.linearGradient.backgroundColor,
 }))
-
-const ExternalSite = styled(InitialExternalSite).attrs(({ theme }) => ({
-  size: theme.buttons.linearGradient.iconSize,
-  color: theme.buttons.linearGradient.iconColor,
-}))``
-
-const Email = styled(InitialEmail).attrs(({ theme }) => ({
-  size: theme.buttons.linearGradient.iconSize,
-  color: theme.buttons.linearGradient.iconColor,
-}))``
