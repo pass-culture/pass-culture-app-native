@@ -716,16 +716,27 @@ workflows:
     jobs:
       - checkout-and-install-deps:
           filters:
-            tags:
-              only: /.*/
+            branches:
+              only: PC-14406
+      #            tags:
+#              only: /.*/
       - test-lint-and-types:
+          filters:
+            branches:
+              ignore: PC-14406
           requires:
             - checkout-and-install-deps
       - test-native:
+          filters:
+            branches:
+              ignore: PC-14406
           requires:
             - checkout-and-install-deps
           context: SonarCloud
       - test-web:
+          filters:
+            branches:
+              ignore: PC-14406
           requires:
             - checkout-and-install-deps
       - deploy-soft-testing:
@@ -782,14 +793,16 @@ workflows:
             - deploy-android-testing-hard
       - deploy-android-staging-hard:
           filters:
-            tags:
-              only: /^(patch\/)?v.*/
             branches:
-              ignore: /.*/
+              only: PC-14406
+#            tags:
+#              only: /^(patch\/)?v.*/
+#            branches:
+#              ignore: /.*/
           requires:
             - checkout-and-install-deps
-            - test-lint-and-types
-            - test-native
+#            - test-lint-and-types
+#            - test-native
       - deploy-ios-staging-hard:
           filters:
             tags:
