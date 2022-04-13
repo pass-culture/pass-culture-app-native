@@ -7,9 +7,9 @@ exports[`TabBar renders correctly 1`] = `
       Object {
         "alignItems": "center",
         "backgroundColor": "#fffffff8",
-        "borderColor": "#F1F1F4",
-        "borderStyle": "solid",
-        "borderWidth": 1,
+        "borderTopColor": "#F1F1F4",
+        "borderTopStyle": "solid",
+        "borderTopWidth": 1,
         "bottom": 0,
         "position": "absolute",
         "shadowColor": "#161617",
@@ -45,7 +45,6 @@ exports[`TabBar renders correctly 1`] = `
       }
     />
     <View
-      accessibilityLabel="Accueil"
       accessibilityRole="link"
       accessible={true}
       collapsable={false}
@@ -92,13 +91,29 @@ exports[`TabBar renders correctly 1`] = `
         }
       />
       <View
-        height={32}
-        width={32}
+        height={28}
+        width={28}
       >
         <Text>
           undefined-SVG-Mock
         </Text>
       </View>
+      <Text
+        selected={true}
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 10,
+              "lineHeight": 16,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Accueil
+      </Text>
       <View
         style={
           Array [
@@ -121,7 +136,6 @@ exports[`TabBar renders correctly 1`] = `
       />
     </View>
     <View
-      accessibilityLabel="Rechercher des offres"
       accessibilityRole="link"
       accessible={true}
       collapsable={false}
@@ -159,13 +173,29 @@ exports[`TabBar renders correctly 1`] = `
         }
       />
       <View
-        height={32}
-        width={32}
+        height={28}
+        width={28}
       >
         <Text>
           undefined-SVG-Mock
         </Text>
       </View>
+      <Text
+        selected={false}
+        style={
+          Array [
+            Object {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 10,
+              "lineHeight": 16,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Recherche
+      </Text>
       <View
         style={
           Array [
@@ -179,7 +209,6 @@ exports[`TabBar renders correctly 1`] = `
       />
     </View>
     <View
-      accessibilityLabel="Mes réservations"
       accessibilityRole="link"
       accessible={true}
       collapsable={false}
@@ -217,13 +246,29 @@ exports[`TabBar renders correctly 1`] = `
         }
       />
       <View
-        height={32}
-        width={32}
+        height={28}
+        width={28}
       >
         <Text>
           undefined-SVG-Mock
         </Text>
       </View>
+      <Text
+        selected={false}
+        style={
+          Array [
+            Object {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 10,
+              "lineHeight": 16,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Réservations
+      </Text>
       <View
         style={
           Array [
@@ -238,7 +283,7 @@ exports[`TabBar renders correctly 1`] = `
     </View>
     <View
       accessibilityRole="link"
-      accessible={false}
+      accessible={true}
       collapsable={false}
       focusable={true}
       nativeID="animatedComponent"
@@ -274,13 +319,29 @@ exports[`TabBar renders correctly 1`] = `
         }
       />
       <View
-        height={32}
-        width={32}
+        height={28}
+        width={28}
       >
         <Text>
           undefined-SVG-Mock
         </Text>
       </View>
+      <Text
+        selected={false}
+        style={
+          Array [
+            Object {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 10,
+              "lineHeight": 16,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Favoris
+      </Text>
       <View
         style={
           Array [
@@ -294,7 +355,6 @@ exports[`TabBar renders correctly 1`] = `
       />
     </View>
     <View
-      accessibilityLabel="Mon profil"
       accessibilityRole="link"
       accessible={true}
       collapsable={false}
@@ -332,13 +392,29 @@ exports[`TabBar renders correctly 1`] = `
         }
       />
       <View
-        height={32}
-        width={32}
+        height={28}
+        width={28}
       >
         <Text>
           undefined-SVG-Mock
         </Text>
       </View>
+      <Text
+        selected={false}
+        style={
+          Array [
+            Object {
+              "color": "#696A6F",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 10,
+              "lineHeight": 16,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Profil
+      </Text>
       <View
         style={
           Array [

@@ -52,7 +52,7 @@ Object {
       >
         <div
           class="css-view-1dbjc4n"
-          style="align-items: center; background-color: rgba(255, 255, 255, 0.97); border-top-color: rgba(241,241,244,1.00); border-right-color: rgba(241,241,244,1.00); border-bottom-color: rgba(241,241,244,1.00); border-left-color: rgba(241,241,244,1.00); border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; bottom: 0px; box-shadow: 0px 1px 4px rgba(22,22,23,0.20); position: absolute; width: 100%;"
+          style="align-items: center; background-color: rgba(255, 255, 255, 0.97); border-top-color: rgba(241,241,244,1.00); border-top-style: solid; border-top-width: 1px; bottom: 0px; box-shadow: 0px 1px 4px rgba(22,22,23,0.20); position: absolute; width: 100%;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -69,7 +69,6 @@ Object {
                 class="sc-iwjdpV CbhWy"
               >
                 <a
-                  aria-label="Accueil"
                   class="css-reset-4rbku5 css-view-1dbjc4n"
                   data-testid="Home tab"
                   href="/Home"
@@ -101,6 +100,13 @@ Object {
                     </div>
                   </div>
                   <div
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
+                  >
+                    Accueil
+                  </div>
+                  <div
                     class="css-view-1dbjc4n"
                     style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                   />
@@ -114,7 +120,6 @@ Object {
                 class="sc-iwjdpV CbhWy"
               >
                 <a
-                  aria-label="Rechercher des offres"
                   class="css-reset-4rbku5 css-view-1dbjc4n"
                   data-testid="Search tab"
                   href="/Search"
@@ -135,6 +140,13 @@ Object {
                     </div>
                   </div>
                   <div
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
+                  >
+                    Recherche
+                  </div>
+                  <div
                     class="css-view-1dbjc4n"
                     style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                   />
@@ -144,7 +156,6 @@ Object {
                 class="sc-iwjdpV CbhWy"
               >
                 <a
-                  aria-label="Mes réservations"
                   class="css-reset-4rbku5 css-view-1dbjc4n"
                   data-testid="Bookings tab"
                   href="/Bookings"
@@ -163,6 +174,13 @@ Object {
                     >
                       undefined-SVG-Mock
                     </div>
+                  </div>
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
+                  >
+                    Réservations
                   </div>
                   <div
                     class="css-view-1dbjc4n"
@@ -194,6 +212,13 @@ Object {
                     </div>
                   </div>
                   <div
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
+                  >
+                    Favoris
+                  </div>
+                  <div
                     class="css-view-1dbjc4n"
                     style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                   />
@@ -203,7 +228,6 @@ Object {
                 class="sc-iwjdpV CbhWy"
               >
                 <a
-                  aria-label="Mon profil"
                   class="css-reset-4rbku5 css-view-1dbjc4n"
                   data-testid="Profile tab"
                   href="/Profile"
@@ -222,6 +246,13 @@ Object {
                     >
                       undefined-SVG-Mock
                     </div>
+                  </div>
+                  <div
+                    class="css-text-901oao"
+                    dir="auto"
+                    style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
+                  >
+                    Profil
                   </div>
                   <div
                     class="css-view-1dbjc4n"
@@ -289,7 +320,7 @@ Object {
     >
       <div
         class="css-view-1dbjc4n"
-        style="align-items: center; background-color: rgba(255, 255, 255, 0.97); border-top-color: rgba(241,241,244,1.00); border-right-color: rgba(241,241,244,1.00); border-bottom-color: rgba(241,241,244,1.00); border-left-color: rgba(241,241,244,1.00); border-top-style: solid; border-right-style: solid; border-bottom-style: solid; border-left-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px; bottom: 0px; box-shadow: 0px 1px 4px rgba(22,22,23,0.20); position: absolute; width: 100%;"
+        style="align-items: center; background-color: rgba(255, 255, 255, 0.97); border-top-color: rgba(241,241,244,1.00); border-top-style: solid; border-top-width: 1px; bottom: 0px; box-shadow: 0px 1px 4px rgba(22,22,23,0.20); position: absolute; width: 100%;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -306,7 +337,6 @@ Object {
               class="sc-iwjdpV CbhWy"
             >
               <a
-                aria-label="Accueil"
                 class="css-reset-4rbku5 css-view-1dbjc4n"
                 data-testid="Home tab"
                 href="/Home"
@@ -338,6 +368,13 @@ Object {
                   </div>
                 </div>
                 <div
+                  class="css-text-901oao"
+                  dir="auto"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
+                >
+                  Accueil
+                </div>
+                <div
                   class="css-view-1dbjc4n"
                   style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                 />
@@ -351,7 +388,6 @@ Object {
               class="sc-iwjdpV CbhWy"
             >
               <a
-                aria-label="Rechercher des offres"
                 class="css-reset-4rbku5 css-view-1dbjc4n"
                 data-testid="Search tab"
                 href="/Search"
@@ -372,6 +408,13 @@ Object {
                   </div>
                 </div>
                 <div
+                  class="css-text-901oao"
+                  dir="auto"
+                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
+                >
+                  Recherche
+                </div>
+                <div
                   class="css-view-1dbjc4n"
                   style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                 />
@@ -381,7 +424,6 @@ Object {
               class="sc-iwjdpV CbhWy"
             >
               <a
-                aria-label="Mes réservations"
                 class="css-reset-4rbku5 css-view-1dbjc4n"
                 data-testid="Bookings tab"
                 href="/Bookings"
@@ -400,6 +442,13 @@ Object {
                   >
                     undefined-SVG-Mock
                   </div>
+                </div>
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
+                >
+                  Réservations
                 </div>
                 <div
                   class="css-view-1dbjc4n"
@@ -431,6 +480,13 @@ Object {
                   </div>
                 </div>
                 <div
+                  class="css-text-901oao"
+                  dir="auto"
+                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
+                >
+                  Favoris
+                </div>
+                <div
                   class="css-view-1dbjc4n"
                   style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
                 />
@@ -440,7 +496,6 @@ Object {
               class="sc-iwjdpV CbhWy"
             >
               <a
-                aria-label="Mon profil"
                 class="css-reset-4rbku5 css-view-1dbjc4n"
                 data-testid="Profile tab"
                 href="/Profile"
@@ -459,6 +514,13 @@ Object {
                   >
                     undefined-SVG-Mock
                   </div>
+                </div>
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
+                >
+                  Profil
                 </div>
                 <div
                   class="css-view-1dbjc4n"

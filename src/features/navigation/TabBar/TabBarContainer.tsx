@@ -30,8 +30,9 @@ const SafeAreaPlaceholder = styled.View<{ safeHeight: number }>(({ safeHeight })
 
 const MainContainer = styled.View(({ theme }) => ({
   alignItems: 'center',
-  border: getSpacing(1 / 4),
-  borderColor: theme.colors.greyLight,
+  borderTopStyle: 'solid',
+  borderTopWidth: getSpacing(1 / 4),
+  borderTopColor: theme.colors.greyLight,
   backgroundColor: theme.uniqueColors.tabBar,
   width: '100%',
   position: 'absolute',
