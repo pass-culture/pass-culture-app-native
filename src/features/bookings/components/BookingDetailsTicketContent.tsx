@@ -121,7 +121,7 @@ const TicketEmailSent = ({ offerDate }: TicketEmailSentProps) => {
     ? t`C'est aujourd'hui\u00a0!` +
       '\n' +
       t`Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams.`
-    : t`Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams`
+    : t`Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams.`
 
   return (
     <Ticket testID="collect-info-email">
@@ -179,10 +179,10 @@ const TicketBody = ({ booking, proDisableEventsQrcode }: TicketBodyProps) => {
 
     const startMessage =
       (collectType === WithdrawalTypeEnum.on_site
-        ? t`présente le code ci-dessus sur place`
+        ? t`Présente le code ci-dessus sur place`
         : t`Tu vas recevoir ton billet par e-mail`) + ' '
     const delayMessage = collectDelay > 0 ? `${formatSecondsToString(collectDelay)} ` : null
-    const endMessage = t`avant le début de l’événement`
+    const endMessage = t`avant le début de l’événement.`
 
     return (
       <React.Fragment>
