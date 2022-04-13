@@ -24,9 +24,7 @@ export function ModuleBanner(props: ModuleBannerProps) {
           <Container>
             <IconContainer>{props.leftIcon}</IconContainer>
             <TextContainer>
-              <ButtonText testID="module-title">
-                <TitleContainer>{props.title}</TitleContainer>
-              </ButtonText>
+              <ButtonText testID="module-title">{props.title}</ButtonText>
               <Body>{props.subTitle}</Body>
             </TextContainer>
             <IconContainer>{props.rightIcon || <ArrowNextIcon />}</IconContainer>
@@ -70,12 +68,9 @@ const IconContainer = styled.View({
   textAlign: 'left',
 })
 
-const TitleContainer = styled(Typo.ButtonText)({
-  marginRight: 5,
-})
-
 const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
   color: theme.colors.white,
+  marginRight: getSpacing(1),
 }))
 
 const Body = styled(Typo.Body)(({ theme }) => ({
