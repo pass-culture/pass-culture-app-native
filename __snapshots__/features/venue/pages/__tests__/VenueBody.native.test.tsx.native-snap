@@ -299,6 +299,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
         }
       />
       <Text
+        accessibilityLabel="Nom du lieu : Le Petit Rintintin 1"
         adjustsFontSizeToFit={true}
         allowFontScaling={false}
         numberOfLines={2}
