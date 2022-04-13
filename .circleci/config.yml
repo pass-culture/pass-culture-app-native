@@ -793,16 +793,14 @@ workflows:
             - deploy-android-testing-hard
       - deploy-android-staging-hard:
           filters:
+            tags:
+              only: /^(patch\/)?v.*/
             branches:
-              only: PC-14406
-#            tags:
-#              only: /^(patch\/)?v.*/
-#            branches:
-#              ignore: /.*/
+              ignore: /.*/
           requires:
             - checkout-and-install-deps
-#            - test-lint-and-types
-#            - test-native
+            - test-lint-and-types
+            - test-native
       - deploy-ios-staging-hard:
           filters:
             tags:
@@ -824,10 +822,12 @@ workflows:
             - deploy-android-staging-hard
       - deploy-soft-staging:
           filters:
-            tags:
-              only: /^hotfix-staging.*/
             branches:
-              ignore: /.*/
+              only: PC-14406
+#            tags:
+#              only: /^hotfix-staging.*/
+#            branches:
+#              ignore: /.*/
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
