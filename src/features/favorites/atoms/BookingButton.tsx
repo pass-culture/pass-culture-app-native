@@ -34,7 +34,11 @@ export const BookingButton: React.FC<Props> = (props) => {
       return null
     }
     return (
-      <BookExternallyButton url={props.offer.externalTicketOfficeUrl} offerId={props.offer.id} />
+      <BookExternallyButton
+        url={props.offer.externalTicketOfficeUrl}
+        offerId={props.offer.id}
+        offerName={props.offer.name}
+      />
     )
   }
 
@@ -47,10 +51,19 @@ export const BookingButton: React.FC<Props> = (props) => {
       return null
     }
     if (isFreeOffer) {
-      return <BookInAppButton onPress={() => props.onInAppBooking(props.offer)} />
+      return (
+        <BookInAppButton
+          offerName={props.offer.name}
+          onPress={() => props.onInAppBooking(props.offer)}
+        />
+      )
     }
     return (
-      <BookExternallyButton url={props.offer.externalTicketOfficeUrl} offerId={props.offer.id} />
+      <BookExternallyButton
+        url={props.offer.externalTicketOfficeUrl}
+        offerId={props.offer.id}
+        offerName={props.offer.name}
+      />
     )
   }
 
@@ -67,13 +80,18 @@ export const BookingButton: React.FC<Props> = (props) => {
   if (!isFreeOffer && !doesUserHaveEnoughCredit) {
     return <ButtonPrimary wording={t`Crédit insuffisant`} buttonHeight="tall" disabled />
   }
-  return <BookInAppButton onPress={() => props.onInAppBooking(props.offer)} />
+  return (
+    <BookInAppButton
+      offerName={props.offer.name}
+      onPress={() => props.onInAppBooking(props.offer)}
+    />
+  )
 }
 
-const BookInAppButton = ({ onPress }: { onPress: () => void }) => (
+const BookInAppButton = ({ offerName, onPress }: { offerName: string; onPress: () => void }) => (
   <ButtonPrimary
     wording={t`Réserver`}
-    accessibilityLabel={t`Réserver l'offre`}
+    accessibilityLabel={t`Réserver l'offre ${offerName}`}
     onPress={onPress}
     buttonHeight="tall"
   />
@@ -82,14 +100,16 @@ const BookInAppButton = ({ onPress }: { onPress: () => void }) => (
 const BookExternallyButton = ({
   url,
   offerId,
+  offerName,
 }: {
   url: FavoriteOfferResponse['externalTicketOfficeUrl']
   offerId: FavoriteOfferResponse['id']
+  offerName: FavoriteOfferResponse['name']
 }) =>
   url ? (
     <ButtonPrimary
       wording={t`Réserver`}
-      accessibilityLabel={t`Réserver l'offre`}
+      accessibilityLabel={t`Réserver l'offre ${offerName}`}
       externalHref={url}
       onPress={() => url && openUrl(url, { analyticsData: { offerId } })}
       icon={ExternalSite}
