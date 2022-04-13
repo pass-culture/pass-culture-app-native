@@ -4,7 +4,8 @@ import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { styledButton } from 'ui/components/buttons/styledButton'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
 
@@ -47,10 +48,8 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
     <Container onLayout={onLayout} testID="modalHeader">
       <LeftHeaderActionContainer>
         {!!LeftIcon && (
-          <HeaderAction
-            onPress={onLeftIconPress}
-            {...accessibilityAndTestId(leftIconAccessibilityLabel)}>
-            <LeftIcon testID="leftIcon" />
+          <HeaderAction onPress={onLeftIconPress} testID={leftIconAccessibilityLabel}>
+            <LeftIcon {...accessibilityAndTestId(leftIconAccessibilityLabel, 'leftIcon')} />
           </HeaderAction>
         )}
       </LeftHeaderActionContainer>
@@ -61,10 +60,8 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
       </TitleContainer>
       <RightHeaderActionContainer>
         {!!RightIcon && (
-          <HeaderAction
-            onPress={onRightIconPress}
-            {...accessibilityAndTestId(rightIconAccessibilityLabel)}>
-            <RightIcon testID="rightIcon" />
+          <HeaderAction onPress={onRightIconPress} testID={rightIconAccessibilityLabel}>
+            <RightIcon {...accessibilityAndTestId(rightIconAccessibilityLabel, 'rightIcon')} />
           </HeaderAction>
         )}
       </RightHeaderActionContainer>
@@ -101,7 +98,7 @@ const RightHeaderActionContainer = styled.View({
   justifyContent: 'flex-end',
 })
 
-const HeaderAction = styled(TouchableOpacity)({
+const HeaderAction = styledButton(Touchable)({
   padding: getSpacing(1),
 })
 

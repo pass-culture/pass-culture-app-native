@@ -1,12 +1,20 @@
 import * as React from 'react'
-import Svg, { G, Path } from 'react-native-svg'
+import { G, Path } from 'react-native-svg'
 import styled from 'styled-components/native'
 
-import { IconInterface } from './types'
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
-function ThumbUpSvg({ size, color, testID }: IconInterface) {
+import { AccessibleIcon } from './types'
+
+function ThumbUpSvg({ size, color, accessibilityLabel, testID }: AccessibleIcon) {
   return (
-    <Svg width={size} height={size} fill={color} viewBox="0 0 76 76" testID={testID}>
+    <AccessibleSvg
+      width={size}
+      height={size}
+      fill={color}
+      viewBox="0 0 76 76"
+      accessibilityLabel={accessibilityLabel}
+      testID={testID}>
       <G fill="none" fillRule="evenodd">
         <G fill="#FFF">
           <G>
@@ -17,7 +25,7 @@ function ThumbUpSvg({ size, color, testID }: IconInterface) {
           </G>
         </G>
       </G>
-    </Svg>
+    </AccessibleSvg>
   )
 }
 

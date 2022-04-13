@@ -67,7 +67,7 @@ Object {
                   style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
                 >
                   <form
-                    class="sc-hGPBjI jFWyXC"
+                    class="sc-dlVxhl kBHsVa"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -88,7 +88,7 @@ Object {
                       style="height: 20px;"
                     />
                     <label
-                      class="sc-iqseJM cBlriz"
+                      class="sc-crHmcD cfjgl"
                       for="testUuidV4"
                     >
                       Entre ton adresse
@@ -258,7 +258,7 @@ Object {
                 style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
               >
                 <form
-                  class="sc-hGPBjI jFWyXC"
+                  class="sc-dlVxhl kBHsVa"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -279,7 +279,7 @@ Object {
                     style="height: 20px;"
                   />
                   <label
-                    class="sc-iqseJM cBlriz"
+                    class="sc-crHmcD cfjgl"
                     for="testUuidV4"
                   >
                     Entre ton adresse

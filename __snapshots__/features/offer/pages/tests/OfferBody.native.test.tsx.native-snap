@@ -1302,7 +1302,6 @@ exports[`<OfferBody /> should open the report modal upon clicking on 'signaler l
               }
             >
               <View
-                accessibilityLabel="Fermer la modale"
                 accessible={true}
                 focusable={true}
                 onClick={[Function]}

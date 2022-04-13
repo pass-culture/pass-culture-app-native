@@ -594,7 +594,6 @@ Array [
                             }
                           >
                             <View
-                              accessibilityLabel="Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
                               accessible={true}
                               collapsable={false}
                               focusable={true}
@@ -1192,7 +1191,6 @@ Array [
             }
           >
             <View
-              accessibilityLabel="Fermer la modale de conseils pour avoir un document lisible"
               accessible={true}
               collapsable={false}
               focusable={true}

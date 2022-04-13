@@ -42,7 +42,7 @@ export const AppInformationModal: FunctionComponent<Props> = ({
           onRequestClose={onCloseIconPress}>
           <ClicAwayArea onPress={onCloseIconPress} />
           <FlexSpacer />
-          <Container aria-describedby={modalId} disabled>
+          <Container aria-describedby={modalId}>
             <ModalHeader
               title={title}
               boldTitle
@@ -74,7 +74,7 @@ const ClicAwayArea = styled(TouchableOpacity)(({ theme }) => ({
   backgroundColor: theme.uniqueColors.greyOverlay,
 }))
 
-const Container = styled(TouchableOpacity)(({ theme }) => ({
+const Container = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.white,
   alignItems: 'center',
   alignSelf: 'center',

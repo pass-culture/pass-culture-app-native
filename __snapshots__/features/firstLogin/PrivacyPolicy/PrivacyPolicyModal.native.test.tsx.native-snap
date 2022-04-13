@@ -203,7 +203,6 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
           }
         >
           <View
-            accessibilityLabel="Fermer la modale et refuser la collecte des données"
             accessible={true}
             collapsable={false}
             focusable={true}

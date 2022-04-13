@@ -135,12 +135,11 @@ Object {
                       class="css-view-1dbjc4n"
                       style="align-items: flex-start; flex-basis: 0px; flex-direction: row; flex-grow: 0.1; flex-shrink: 1; justify-content: flex-end;"
                     >
-                      <div
-                        aria-label="Fermer la modale"
-                        class="css-view-1dbjc4n"
+                      <button
+                        class="sc-eCImPb eivvKD sc-jRQBWg hQOyeA sc-jRQBWg hQOyeA"
                         data-testid="Fermer la modale"
-                        style="cursor: pointer; padding: 4px 4px 4px 4px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                         tabindex="0"
+                        type="button"
                       >
                         <div
                           class="css-view-1dbjc4n"
@@ -153,7 +152,7 @@ Object {
                             rightIcon-SVG-Mock
                           </div>
                         </div>
-                      </div>
+                      </button>
                     </div>
                   </div>
                   <div
