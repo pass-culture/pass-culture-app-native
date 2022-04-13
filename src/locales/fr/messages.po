@@ -2120,6 +2120,10 @@ msgstr "Prénom"
 msgid "Prénom et nom"
 msgstr "Prénom et nom"
 
+#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+msgid "Présente le code ci-dessus sur place"
+msgstr "Présente le code ci-dessus sur place"
+
 #: src/features/offer/pages/OfferBody.tsx
 msgid "Quand ?"
 msgstr "Quand ?"
@@ -2573,8 +2577,8 @@ msgid "Ton adresse | Profil"
 msgstr "Ton adresse | Profil"
 
 #: src/features/bookings/components/BookingDetailsTicketContent.tsx
-msgid "Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams"
-msgstr "Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams"
+msgid "Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams."
+msgstr "Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams."
 
 #: src/features/bookings/atoms/TicketCode.web.tsx
 msgid "Ton code a été copié dans le presse-papier !"
@@ -3178,8 +3182,8 @@ msgid "autour de toi"
 msgstr "autour de toi"
 
 #: src/features/bookings/components/BookingDetailsTicketContent.tsx
-msgid "avant le début de l’événement"
-msgstr "avant le début de l’événement"
+msgid "avant le début de l’événement."
+msgstr "avant le début de l’événement."
 
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
 msgid "birthday notification text"
@@ -3381,10 +3385,6 @@ msgstr "{day} à {hour}"
 #: src/features/profile/components/ProfileHeader.tsx
 msgid "profile expiration date for underage"
 msgstr "{day}"
-
-#: src/features/bookings/components/BookingDetailsTicketContent.tsx
-msgid "présente le code ci-dessus sur place"
-msgstr "présente le code ci-dessus sur place"
 
 #: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx
 msgid "quotidiennes"
