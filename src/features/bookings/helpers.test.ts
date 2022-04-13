@@ -255,7 +255,7 @@ describe('getBookingProperties', () => {
 })
 
 describe('formatSecondsToString', () => {
-  describe('should display collect wording', () => {
+  describe('should display withdrawal wording', () => {
     it.each([1, 60 * 30])('In minutes', (delay) => {
       const message = formatSecondsToString(delay)
       expect(message).toEqual(`${delay / 60} minutes`)

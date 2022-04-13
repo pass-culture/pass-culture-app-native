@@ -7,10 +7,10 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 
 type TicketCodeProps = {
   code: string
-  collectType?: WithdrawalTypeEnum
+  withdrawalType?: WithdrawalTypeEnum
 }
 
-export function TicketCode({ code, collectType }: TicketCodeProps) {
+export function TicketCode({ code, withdrawalType }: TicketCodeProps) {
   const { showSuccessSnackBar } = useSnackBarContext()
 
   const copyToClipboard = useCallback(() => {
@@ -22,7 +22,7 @@ export function TicketCode({ code, collectType }: TicketCodeProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [code])
 
-  if (collectType === undefined || collectType === WithdrawalTypeEnum.on_site) {
+  if (withdrawalType === undefined || withdrawalType === WithdrawalTypeEnum.on_site) {
     return <TicketCodeTitle onPress={copyToClipboard}>{code}</TicketCodeTitle>
   }
 

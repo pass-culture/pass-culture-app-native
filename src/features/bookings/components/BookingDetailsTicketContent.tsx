@@ -60,7 +60,7 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
   const isDigitalAndActivationCodeEnabled =
     activationCodeFeatureEnabled && properties.hasActivationCode
 
-  const collectType = booking?.stock?.offer?.withdrawalType || undefined
+  const withdrawalType = booking?.stock?.offer?.withdrawalType || undefined
 
   return (
     <TicketContainer>
@@ -70,13 +70,13 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
         {isDigitalAndActivationCodeEnabled ? (
           <React.Fragment>
             {!!booking.activationCode && (
-              <TicketCode collectType={collectType} code={booking.activationCode?.code} />
+              <TicketCode withdrawalType={withdrawalType} code={booking.activationCode?.code} />
             )}
             {accessOfferButton}
           </React.Fragment>
         ) : (
           <React.Fragment>
-            <TicketCode collectType={collectType} code={booking.token} />
+            <TicketCode withdrawalType={withdrawalType} code={booking.token} />
             {properties.isDigital ? (
               accessOfferButton
             ) : (
@@ -132,13 +132,13 @@ const TicketEmailSent = ({ offerDate }: TicketEmailSentProps) => {
     : t`Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams.`
 
   return (
-    <Ticket testID="collect-info-email">
-      <TicketInfo testID="collect-info-email-msg">{emailMessage}</TicketInfo>
+    <Ticket testID="withdrawal-info-email">
+      <TicketInfo testID="withdrawal-info-email-msg">{emailMessage}</TicketInfo>
       {Platform.OS !== 'web' && (
         <ButtonWithLinearGradient
           wording="Consulter mes e-mails"
           onPress={openInbox}
-          testID="collect-info-email-btn"
+          testID="withdrawal-info-email-btn"
           icon={Email}
         />
       )}
@@ -150,7 +150,7 @@ const NoTicket = () => {
   const message = t`Tu n’as pas besoin de billet\u00a0! Rends toi directement sur place le jour de l’événement.`
 
   return (
-    <Ticket testID="collect-info-no-ticket">
+    <Ticket testID="withdrawal-info-no-ticket">
       <IconContainer>
         <BicolorCircledCheck />
       </IconContainer>
@@ -160,8 +160,8 @@ const NoTicket = () => {
 }
 
 const TicketBody = ({ booking, proDisableEventsQrcode }: TicketBodyProps) => {
-  const collectType = booking?.stock?.offer?.withdrawalType
-  const collectDelay = booking?.stock?.offer?.withdrawalDelay || 0
+  const withdrawalType = booking?.stock?.offer?.withdrawalType
+  const withdrawalDelay = booking?.stock?.offer?.withdrawalDelay || 0
   const subcategoryOffer = booking?.stock?.offer?.subcategoryId
   const subcategoryShouldHaveQrCode = !notQrCodeSubcategories.includes(subcategoryOffer)
 
@@ -171,16 +171,19 @@ const TicketBody = ({ booking, proDisableEventsQrcode }: TicketBodyProps) => {
   )
     return <QrCodeView qrCodeData={booking.qrCodeData} />
 
-  if (collectType === WithdrawalTypeEnum.no_ticket) {
+  if (withdrawalType === WithdrawalTypeEnum.no_ticket) {
     return <NoTicket />
   }
 
-  if (collectType === WithdrawalTypeEnum.on_site || collectType === WithdrawalTypeEnum.by_email) {
+  if (
+    withdrawalType === WithdrawalTypeEnum.on_site ||
+    withdrawalType === WithdrawalTypeEnum.by_email
+  ) {
     const { beginningDatetime } = booking.stock
 
-    if (beginningDatetime && collectType === WithdrawalTypeEnum.by_email) {
+    if (beginningDatetime && withdrawalType === WithdrawalTypeEnum.by_email) {
       // Calculation approximate date send e-mail
-      const nbDays = collectDelay / 60 / 60 / 24
+      const nbDays = withdrawalDelay / 60 / 60 / 24
       const dateSendEmail = addDays(new Date(beginningDatetime), -nbDays)
       const today = new Date()
       const startOfferDate = new Date(beginningDatetime)
@@ -191,24 +194,24 @@ const TicketBody = ({ booking, proDisableEventsQrcode }: TicketBodyProps) => {
     }
 
     const startMessage =
-      (collectType === WithdrawalTypeEnum.on_site
+      (withdrawalType === WithdrawalTypeEnum.on_site
         ? t`Présente le code ci-dessus sur place`
         : t`Tu vas recevoir ton billet par e-mail`) + ' '
-    const delayMessage = collectDelay > 0 ? `${formatSecondsToString(collectDelay)} ` : null
+    const delayMessage = withdrawalDelay > 0 ? `${formatSecondsToString(withdrawalDelay)} ` : null
     const endMessage = t`avant le début de l’événement.`
 
     return (
       <React.Fragment>
-        {collectType === WithdrawalTypeEnum.by_email && (
+        {withdrawalType === WithdrawalTypeEnum.by_email && (
           <IconContainer>
             <BicolorEmailSent />
           </IconContainer>
         )}
 
-        <TicketInfo testID="collect-info">
+        <TicketInfo testID="withdrawal-info">
           {startMessage}
           {!!delayMessage && (
-            <TicketCollectDelay testID="collect-info-delay">{delayMessage}</TicketCollectDelay>
+            <TicketCollectDelay testID="withdrawal-info-delay">{delayMessage}</TicketCollectDelay>
           )}
           {endMessage}
         </TicketInfo>
