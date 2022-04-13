@@ -8,13 +8,13 @@ Object {
   >
     <div>
       <a
-        class="sc-iwjdpV fWoTuq"
+        class="sc-cxpSdN hyhpRO"
         href="#testUuidV4"
       >
         Accéder au menu de navigation
       </a>
       <main
-        class="sc-bBHxTw bbaIqU"
+        class="sc-iwjdpV ejJkpF"
         id="testUuidV4"
       >
         <div
@@ -47,7 +47,7 @@ Object {
         </div>
       </main>
       <nav
-        class="sc-dlVxhl iFzWjr"
+        class="sc-kfPuZi gmQQZa"
         id="testUuidV4"
       >
         <div
@@ -63,10 +63,10 @@ Object {
               style="width: 16px;"
             />
             <ul
-              class="sc-kDTinF sc-kfPuZi dawiYh guHHud"
+              class="sc-crHmcD sc-fKVqWL gzFTzc fMzrSP"
             >
               <li
-                class="sc-fKVqWL fhGMTR"
+                class="sc-bBHxTw iVhJOD"
               >
                 <a
                   aria-label="Accueil"
@@ -111,7 +111,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-fKVqWL fhGMTR"
+                class="sc-bBHxTw iVhJOD"
               >
                 <a
                   aria-label="Rechercher des offres"
@@ -141,7 +141,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-fKVqWL fhGMTR"
+                class="sc-bBHxTw iVhJOD"
               >
                 <a
                   aria-label="Mes réservations"
@@ -171,7 +171,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-fKVqWL fhGMTR"
+                class="sc-bBHxTw iVhJOD"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -200,7 +200,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-fKVqWL fhGMTR"
+                class="sc-bBHxTw iVhJOD"
               >
                 <a
                   aria-label="Mon profil"
@@ -245,13 +245,13 @@ Object {
   </body>,
   "container": <div>
     <a
-      class="sc-iwjdpV fWoTuq"
+      class="sc-cxpSdN hyhpRO"
       href="#testUuidV4"
     >
       Accéder au menu de navigation
     </a>
     <main
-      class="sc-bBHxTw bbaIqU"
+      class="sc-iwjdpV ejJkpF"
       id="testUuidV4"
     >
       <div
@@ -284,7 +284,7 @@ Object {
       </div>
     </main>
     <nav
-      class="sc-dlVxhl iFzWjr"
+      class="sc-kfPuZi gmQQZa"
       id="testUuidV4"
     >
       <div
@@ -300,10 +300,10 @@ Object {
             style="width: 16px;"
           />
           <ul
-            class="sc-kDTinF sc-kfPuZi dawiYh guHHud"
+            class="sc-crHmcD sc-fKVqWL gzFTzc fMzrSP"
           >
             <li
-              class="sc-fKVqWL fhGMTR"
+              class="sc-bBHxTw iVhJOD"
             >
               <a
                 aria-label="Accueil"
@@ -348,7 +348,7 @@ Object {
               </a>
             </li>
             <li
-              class="sc-fKVqWL fhGMTR"
+              class="sc-bBHxTw iVhJOD"
             >
               <a
                 aria-label="Rechercher des offres"
@@ -378,7 +378,7 @@ Object {
               </a>
             </li>
             <li
-              class="sc-fKVqWL fhGMTR"
+              class="sc-bBHxTw iVhJOD"
             >
               <a
                 aria-label="Mes réservations"
@@ -408,7 +408,7 @@ Object {
               </a>
             </li>
             <li
-              class="sc-fKVqWL fhGMTR"
+              class="sc-bBHxTw iVhJOD"
             >
               <a
                 class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -437,7 +437,7 @@ Object {
               </a>
             </li>
             <li
-              class="sc-fKVqWL fhGMTR"
+              class="sc-bBHxTw iVhJOD"
             >
               <a
                 aria-label="Mon profil"

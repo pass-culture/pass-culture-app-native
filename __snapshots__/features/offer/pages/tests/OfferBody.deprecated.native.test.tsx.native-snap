@@ -563,6 +563,7 @@ exports[`<OfferBody /> should match snapshot for digital offer 1`] = `
                             }
                           >
                             <Text
+                              accessibilityLabel="Nom de l'offre : Sous les étoiles de Paris - VF"
                               adjustsFontSizeToFit={true}
                               allowFontScaling={false}
                               numberOfLines={3}
@@ -1302,6 +1303,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 }
                               >
                                 <View
+                                  accessibilityLabel="Handicap visuel : Non accessible"
+                                  accessibilityRole="image"
                                   rightSpacingValue={12}
                                   style={
                                     Array [
@@ -1423,6 +1426,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   </View>
                                 </View>
                                 <View
+                                  accessibilityLabel="Handicap psychique ou cognitif : Accessible"
+                                  accessibilityRole="image"
                                   rightSpacingValue={12}
                                   style={
                                     Array [
@@ -1543,6 +1548,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   </View>
                                 </View>
                                 <View
+                                  accessibilityLabel="Handicap moteur : Non accessible"
+                                  accessibilityRole="image"
                                   rightSpacingValue={12}
                                   style={
                                     Array [
@@ -1664,6 +1671,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   </View>
                                 </View>
                                 <View
+                                  accessibilityLabel="Handicap auditif : Accessible"
+                                  accessibilityRole="image"
                                   rightSpacingValue={0}
                                   style={
                                     Array [
@@ -2944,6 +2953,7 @@ exports[`<OfferBody /> should match snapshot for physical offer 1`] = `
                             }
                           >
                             <Text
+                              accessibilityLabel="Nom de l'offre : Sous les étoiles de Paris - VF"
                               adjustsFontSizeToFit={true}
                               allowFontScaling={false}
                               numberOfLines={3}
@@ -4118,6 +4128,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                 }
                               >
                                 <View
+                                  accessibilityLabel="Handicap visuel : Non accessible"
+                                  accessibilityRole="image"
                                   rightSpacingValue={12}
                                   style={
                                     Array [
@@ -4239,6 +4251,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   </View>
                                 </View>
                                 <View
+                                  accessibilityLabel="Handicap psychique ou cognitif : Accessible"
+                                  accessibilityRole="image"
                                   rightSpacingValue={12}
                                   style={
                                     Array [
@@ -4359,6 +4373,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   </View>
                                 </View>
                                 <View
+                                  accessibilityLabel="Handicap moteur : Non accessible"
+                                  accessibilityRole="image"
                                   rightSpacingValue={12}
                                   style={
                                     Array [
@@ -4480,6 +4496,8 @@ Tous les détails du film sur AlloCiné: https://www.allocine.fr/film/fichefilm_
                                   </View>
                                 </View>
                                 <View
+                                  accessibilityLabel="Handicap auditif : Accessible"
+                                  accessibilityRole="image"
                                   rightSpacingValue={0}
                                   style={
                                     Array [

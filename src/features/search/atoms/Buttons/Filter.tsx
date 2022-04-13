@@ -1,4 +1,4 @@
-import { t } from '@lingui/macro'
+import { plural, t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
@@ -19,6 +19,11 @@ export const Filter: React.FC = () => {
   const { dispatch } = useStagedSearch()
   const filterCount = useFilterCount(searchState)
 
+  const filterCountLabel = plural(filterCount, {
+    one: '# filtre sélectionné',
+    other: '# filtres sélectionnés',
+  })
+
   const onPress = () => {
     dispatch({ type: 'SET_STATE', payload: searchState })
     navigate('SearchFilter')
@@ -38,7 +43,7 @@ export const Filter: React.FC = () => {
           <React.Fragment>
             <Spacer.Row numberOfSpaces={1} />
             <WhiteBackgroundContainer>
-              <FilterCountText>{filterCount}</FilterCountText>
+              <FilterCountText accessibilityLabel={filterCountLabel}>{filterCount}</FilterCountText>
             </WhiteBackgroundContainer>
             <Spacer.Row numberOfSpaces={1} />
           </React.Fragment>

@@ -709,7 +709,7 @@ Object {
             style="margin-right: 24px; margin-left: 24px;"
           >
             <a
-              class="sc-fFeiMQ hFCUne"
+              class="sc-bkkeKt hWiQaG"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -789,7 +789,7 @@ Object {
               style="align-items: flex-start;"
             >
               <a
-                class="sc-gsDKAQ jJvgoT sc-bYoBSM gncaJq"
+                class="sc-gsDKAQ jJvgoT sc-kLwhqv gyEfHx"
                 href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
                 tabindex="0"
                 target="_blank"
@@ -978,14 +978,16 @@ Object {
                 style="flex-direction: row; justify-content: space-between;"
               >
                 <ul
-                  class="sc-crHmcD sc-kLwhqv gzFTzc fcwiXt"
+                  class="sc-egiyK sc-ikJyIC fXDcKC iGXYCt"
                 >
                   <li
-                    class="sc-ikJyIC hXNHhL"
+                    class="sc-jJoQJp eazuZI"
                   >
                     <div
+                      aria-label="Handicap visuel : Accessible"
                       class="css-view-1dbjc4n"
                       data-testid="accessibilityAtomContainer"
+                      role="img"
                       style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                     >
                       <div
@@ -1048,11 +1050,13 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-ikJyIC hXNHhL"
+                    class="sc-jJoQJp eazuZI"
                   >
                     <div
+                      aria-label="Handicap psychique ou cognitif : Non accessible"
                       class="css-view-1dbjc4n"
                       data-testid="accessibilityAtomContainer"
+                      role="img"
                       style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                     >
                       <div
@@ -1115,11 +1119,13 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-ikJyIC hXNHhL"
+                    class="sc-jJoQJp eazuZI"
                   >
                     <div
+                      aria-label="Handicap moteur : Non accessible"
                       class="css-view-1dbjc4n"
                       data-testid="accessibilityAtomContainer"
+                      role="img"
                       style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                     >
                       <div
@@ -1182,11 +1188,13 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-ikJyIC hXNHhL"
+                    class="sc-jJoQJp eazuZI"
                   >
                     <div
+                      aria-label="Handicap auditif : Non accessible"
                       class="css-view-1dbjc4n"
                       data-testid="accessibilityAtomContainer"
+                      role="img"
                       style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px;"
                     >
                       <div
@@ -2048,7 +2056,7 @@ Object {
           style="margin-right: 24px; margin-left: 24px;"
         >
           <a
-            class="sc-fFeiMQ hFCUne"
+            class="sc-bkkeKt hWiQaG"
           >
             <div
               class="css-view-1dbjc4n"
@@ -2128,7 +2136,7 @@ Object {
             style="align-items: flex-start;"
           >
             <a
-              class="sc-gsDKAQ jJvgoT sc-bYoBSM gncaJq"
+              class="sc-gsDKAQ jJvgoT sc-kLwhqv gyEfHx"
               href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
               tabindex="0"
               target="_blank"
@@ -2317,14 +2325,16 @@ Object {
               style="flex-direction: row; justify-content: space-between;"
             >
               <ul
-                class="sc-crHmcD sc-kLwhqv gzFTzc fcwiXt"
+                class="sc-egiyK sc-ikJyIC fXDcKC iGXYCt"
               >
                 <li
-                  class="sc-ikJyIC hXNHhL"
+                  class="sc-jJoQJp eazuZI"
                 >
                   <div
+                    aria-label="Handicap visuel : Accessible"
                     class="css-view-1dbjc4n"
                     data-testid="accessibilityAtomContainer"
+                    role="img"
                     style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                   >
                     <div
@@ -2387,11 +2397,13 @@ Object {
                   </div>
                 </li>
                 <li
-                  class="sc-ikJyIC hXNHhL"
+                  class="sc-jJoQJp eazuZI"
                 >
                   <div
+                    aria-label="Handicap psychique ou cognitif : Non accessible"
                     class="css-view-1dbjc4n"
                     data-testid="accessibilityAtomContainer"
+                    role="img"
                     style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                   >
                     <div
@@ -2454,11 +2466,13 @@ Object {
                   </div>
                 </li>
                 <li
-                  class="sc-ikJyIC hXNHhL"
+                  class="sc-jJoQJp eazuZI"
                 >
                   <div
+                    aria-label="Handicap moteur : Non accessible"
                     class="css-view-1dbjc4n"
                     data-testid="accessibilityAtomContainer"
+                    role="img"
                     style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 12px;"
                   >
                     <div
@@ -2521,11 +2535,13 @@ Object {
                   </div>
                 </li>
                 <li
-                  class="sc-ikJyIC hXNHhL"
+                  class="sc-jJoQJp eazuZI"
                 >
                   <div
+                    aria-label="Handicap auditif : Non accessible"
                     class="css-view-1dbjc4n"
                     data-testid="accessibilityAtomContainer"
+                    role="img"
                     style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-right: 0px;"
                   >
                     <div

@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -21,8 +22,13 @@ export const AccessibilityAtom: React.FC<Props> = ({
     size: theme.icons.sizes.standard,
   }))``
 
+  const isAccessibleLabel = isAccessible ? t`Accessible` : t`Non accessible`
   return (
-    <Container rightSpacingValue={rightSpacingValue} testID="accessibilityAtomContainer">
+    <Container
+      accessibilityRole="image"
+      rightSpacingValue={rightSpacingValue}
+      testID="accessibilityAtomContainer"
+      accessibilityLabel={`${wording} : ${isAccessibleLabel}`}>
       <Frame testID="accessibilityFrame">
         <Spacer.Flex />
         <StyledIcon />

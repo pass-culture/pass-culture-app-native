@@ -1,12 +1,20 @@
 import * as React from 'react'
-import Svg, { Path, G } from 'react-native-svg'
+import { Path, G } from 'react-native-svg'
 import styled from 'styled-components/native'
 
-import { IconInterface } from './types'
+import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
-function SortSvg({ size, color, testID }: IconInterface) {
+import { AccessibleIcon } from './types'
+
+function SortSvg({ size, color, accessibilityLabel, testID }: AccessibleIcon) {
   return (
-    <Svg width={size} height={size} fill={color} viewBox="0 0 32 32" testID={testID}>
+    <AccessibleSvg
+      width={size}
+      height={size}
+      fill={color}
+      viewBox="0 0 32 32"
+      accessibilityLabel={accessibilityLabel}
+      testID={testID}>
       <G fill="none" fillRule="evenodd">
         <G fill="#FFF">
           <Path
@@ -15,7 +23,7 @@ function SortSvg({ size, color, testID }: IconInterface) {
           />
         </G>
       </G>
-    </Svg>
+    </AccessibleSvg>
   )
 }
 

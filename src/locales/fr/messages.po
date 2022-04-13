@@ -85,7 +85,7 @@ msgstr "Accepter les conditions générales d'utilisation et la politique de con
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
-#: src/ui/components/ValidationMark.tsx
+#: src/ui/components/accessibility/AccessibilityAtom.tsx
 msgid "Accessible"
 msgstr "Accessible"
 
@@ -115,10 +115,6 @@ msgstr "Active la géolocalisation pour découvrir toutes les offres existantes 
 #: src/libs/geolocation/components/GeolocationActivationModal.tsx
 msgid "Activer la géolocalisation"
 msgstr "Activer la géolocalisation"
-
-#: src/features/search/components/SearchResults.tsx
-msgid "Activer le chargement automatique des résultats"
-msgstr "Activer le chargement automatique des résultats"
 
 #: src/features/search/components/SearchResults.tsx
 msgid "Activer le chargement automatique des résultats"
@@ -1687,6 +1683,10 @@ msgstr "Ne pas archiver"
 msgid "Nom"
 msgstr "Nom"
 
+#: src/features/offer/pages/OfferBody.tsx
+msgid "Nom de l'offre : {0}"
+msgstr "Nom de l'offre : {0}"
+
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 msgid "Nombre de place"
 msgstr "Nombre de place"
@@ -1695,7 +1695,7 @@ msgstr "Nombre de place"
 msgid "Nombre de tentatives dépassé. Réessaye dans 1 minute"
 msgstr "Nombre de tentatives dépassé. Réessaye dans 1 minute"
 
-#: src/ui/components/ValidationMark.tsx
+#: src/ui/components/accessibility/AccessibilityAtom.tsx
 msgid "Non accessible"
 msgstr "Non accessible"
 
@@ -2504,8 +2504,8 @@ msgid "Supprimer"
 msgstr "Supprimer"
 
 #: src/features/favorites/atoms/Favorite.tsx
-msgid "Supprimer l'offre de mes favoris"
-msgstr "Supprimer l'offre de mes favoris"
+msgid "Supprimer l'offre {0} de mes favoris"
+msgstr "Supprimer l'offre {0} de mes favoris"
 
 #: src/features/profile/pages/ConfirmDeleteProfile.tsx
 msgid "Supprimer mon compte"
@@ -3460,6 +3460,10 @@ msgstr "{0, plural, one {Réservation terminée} other {Réservations terminées
 msgid "{0} {EURO_SYMBOL}"
 msgstr "{0} {EURO_SYMBOL}"
 
+#: src/features/search/atoms/TitleWithCount.tsx
+msgid "{count, plural, one {# sélectionné} other {# sélectionnés}}"
+msgstr "{count, plural, one {# sélectionné} other {# sélectionnés}}"
+
 #: src/features/bookings/helpers.ts
 msgid "{delayInDay} jours"
 msgstr "{delayInDay} jours"
@@ -3487,6 +3491,10 @@ msgstr "{endedBookingsCount, plural, one {# réservation terminée} other {# ré
 #: src/features/favorites/atoms/BicolorFavoriteCount.tsx
 msgid "{favoritesCount, plural, one {# favori} other {# favoris}}"
 msgstr "{favoritesCount, plural, one {# favori} other {# favoris}}"
+
+#: src/features/search/atoms/Buttons/Filter.tsx
+msgid "{filterCount, plural, one {# filtre sélectionné} other {# filtres sélectionnés}}"
+msgstr "{filterCount, plural, one {# filtre sélectionné} other {# filtres sélectionnés}}"
 
 #: src/features/identityCheck/pages/confirmation/UnderageAccountCreated.tsx
 msgid "{maxPrice} € viennent d'être crédités sur ton compte pass Culture"
