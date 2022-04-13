@@ -82,6 +82,7 @@ export const VenueBody: FunctionComponent<Props> = ({ venueId, onScroll }) => {
         </VenueAddressContainer>
         <Spacer.Column numberOfSpaces={2} />
         <VenueTitle
+          accessibilityLabel={t`Nom du lieu\u00a0: ${publicName || name}`}
           testID="venueTitle"
           numberOfLines={2}
           adjustsFontSizeToFit

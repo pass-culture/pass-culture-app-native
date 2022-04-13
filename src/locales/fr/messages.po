@@ -1687,6 +1687,10 @@ msgstr "Nom"
 msgid "Nom de l'offre : {0}"
 msgstr "Nom de l'offre : {0}"
 
+#: src/features/venue/pages/VenueBody.tsx
+msgid "Nom du lieu : {0}"
+msgstr "Nom du lieu : {0}"
+
 #: src/features/bookOffer/components/BookDuoChoice.tsx
 msgid "Nombre de place"
 msgstr "Nombre de place"

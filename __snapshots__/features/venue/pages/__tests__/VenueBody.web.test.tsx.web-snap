@@ -211,6 +211,7 @@ Object {
               style="height: 8px;"
             />
             <h1
+              aria-label="Nom du lieu : Le Petit Rintintin 1"
               aria-level="1"
               class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
               data-testid="venueTitle"
@@ -1558,6 +1559,7 @@ Object {
             style="height: 8px;"
           />
           <h1
+            aria-label="Nom du lieu : Le Petit Rintintin 1"
             aria-level="1"
             class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
             data-testid="venueTitle"
