@@ -31,6 +31,7 @@ export type ElementStylesWeb = InterpolationFunction<
 
 type ButtonStylesArgs = {
   theme: DefaultTheme
+  activeOpacity?: number
 } & TouchableOpacityButtonProps
 
 export const appButtonStyles: ButtonStyles = ({
@@ -92,7 +93,10 @@ export const appButtonWebStyles: ElementStylesWeb = ({
   }
 }
 
-export const appTouchableOpacityWebStyles: ButtonStylesWeb = ({ theme }: ButtonStylesArgs) => {
+export const appTouchableOpacityWebStyles: ButtonStylesWeb = ({
+  theme,
+  activeOpacity,
+}: ButtonStylesArgs) => {
   return {
     flexDirection: 'column',
     cursor: 'pointer',
@@ -101,11 +105,14 @@ export const appTouchableOpacityWebStyles: ButtonStylesWeb = ({ theme }: ButtonS
     backgroundColor: 'transparent',
     padding: 0,
     ['&:active']: {
-      opacity: theme.activeOpacity,
+      opacity: activeOpacity ?? theme.activeOpacity,
       outline: 'none',
     },
     ['&:focus']: {
       outline: 'auto',
+    },
+    ['&:disabled']: {
+      cursor: 'initial',
     },
   }
 }

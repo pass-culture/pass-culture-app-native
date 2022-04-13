@@ -5,12 +5,12 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div
+      <button
         aria-label="Next"
-        class="css-view-1dbjc4n"
+        class="sc-bdvvtL bmzymd sc-gsDKAQ dxQUjY sc-gsDKAQ dxQUjY"
         data-testid="controlButton"
-        style="cursor: pointer; margin-right: 70%; transition-duration: 0s; transition-property: opacity; user-select: auto;"
         tabindex="0"
+        type="next"
       >
         <div
           class="css-view-1dbjc4n"
@@ -23,16 +23,16 @@ Object {
             arrowNext-SVG-Mock
           </div>
         </div>
-      </div>
+      </button>
     </div>
   </body>,
   "container": <div>
-    <div
+    <button
       aria-label="Next"
-      class="css-view-1dbjc4n"
+      class="sc-bdvvtL bmzymd sc-gsDKAQ dxQUjY sc-gsDKAQ dxQUjY"
       data-testid="controlButton"
-      style="cursor: pointer; margin-right: 70%; transition-duration: 0s; transition-property: opacity; user-select: auto;"
       tabindex="0"
+      type="next"
     >
       <div
         class="css-view-1dbjc4n"
@@ -45,7 +45,7 @@ Object {
           arrowNext-SVG-Mock
         </div>
       </div>
-    </div>
+    </button>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
@@ -106,12 +106,12 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div
+      <button
         aria-label="Previous"
-        class="css-view-1dbjc4n"
+        class="sc-bdvvtL bmzymd sc-gsDKAQ iKDrz sc-gsDKAQ iKDrz"
         data-testid="controlButton"
-        style="cursor: pointer; margin-left: 70%; transition-duration: 0s; transition-property: opacity; user-select: auto;"
         tabindex="0"
+        type="prev"
       >
         <div
           class="css-view-1dbjc4n"
@@ -124,16 +124,16 @@ Object {
             arrowPrevious-SVG-Mock
           </div>
         </div>
-      </div>
+      </button>
     </div>
   </body>,
   "container": <div>
-    <div
+    <button
       aria-label="Previous"
-      class="css-view-1dbjc4n"
+      class="sc-bdvvtL bmzymd sc-gsDKAQ iKDrz sc-gsDKAQ iKDrz"
       data-testid="controlButton"
-      style="cursor: pointer; margin-left: 70%; transition-duration: 0s; transition-property: opacity; user-select: auto;"
       tabindex="0"
+      type="prev"
     >
       <div
         class="css-view-1dbjc4n"
@@ -146,7 +146,7 @@ Object {
           arrowPrevious-SVG-Mock
         </div>
       </div>
-    </div>
+    </button>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],
@@ -207,12 +207,12 @@ Object {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
-      <div
+      <button
         aria-label="Previous"
-        class="css-view-1dbjc4n"
+        class="sc-bdvvtL bmzymd sc-gsDKAQ iKDrz sc-gsDKAQ iKDrz"
         data-testid="controlButton"
-        style="cursor: pointer; margin-left: 70%; transition-duration: 0s; transition-property: opacity; user-select: auto;"
         tabindex="0"
+        type="prev"
       >
         <div
           class="css-view-1dbjc4n"
@@ -225,16 +225,16 @@ Object {
             arrowPrevious-SVG-Mock
           </div>
         </div>
-      </div>
+      </button>
     </div>
   </body>,
   "container": <div>
-    <div
+    <button
       aria-label="Previous"
-      class="css-view-1dbjc4n"
+      class="sc-bdvvtL bmzymd sc-gsDKAQ iKDrz sc-gsDKAQ iKDrz"
       data-testid="controlButton"
-      style="cursor: pointer; margin-left: 70%; transition-duration: 0s; transition-property: opacity; user-select: auto;"
       tabindex="0"
+      type="prev"
     >
       <div
         class="css-view-1dbjc4n"
@@ -247,7 +247,7 @@ Object {
           arrowPrevious-SVG-Mock
         </div>
       </div>
-    </div>
+    </button>
   </div>,
   "debug": [Function],
   "findAllByAltText": [Function],

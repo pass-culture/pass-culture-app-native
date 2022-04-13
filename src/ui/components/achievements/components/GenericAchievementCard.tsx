@@ -106,9 +106,9 @@ Those props are provided by the GenericAchievementCard and must be passed down t
   }, [props.name, props.index, props.activeIndex])
 
   return (
-    <GenericCardContainer>
+    <GenericCardContainer aria-hidden={props.activeIndex !== props.index}>
       <Spacer.Flex flex={grid({ sm: 1, default: 2 }, 'height')} />
-      <StyledLottieContainer>
+      <StyledLottieContainer aria-hidden>
         <StyledLottieView
           style={lottieStyle}
           key={props.activeIndex}

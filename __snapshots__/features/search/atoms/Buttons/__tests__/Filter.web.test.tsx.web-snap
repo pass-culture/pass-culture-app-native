@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <button
-        class="sc-hKwDye XbALA sc-eCImPb fhKDUs sc-eCImPb fhKDUs"
+        class="sc-hKwDye lgPtFf sc-eCImPb fhKDUs sc-eCImPb fhKDUs"
         data-testid="FilterButton"
         tabindex="0"
         type="button"
@@ -67,7 +67,7 @@ Object {
   </body>,
   "container": <div>
     <button
-      class="sc-hKwDye XbALA sc-eCImPb fhKDUs sc-eCImPb fhKDUs"
+      class="sc-hKwDye lgPtFf sc-eCImPb fhKDUs sc-eCImPb fhKDUs"
       data-testid="FilterButton"
       tabindex="0"
       type="button"

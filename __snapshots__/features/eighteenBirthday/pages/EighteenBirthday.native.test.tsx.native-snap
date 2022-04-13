@@ -118,6 +118,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
               }
             >
               <View
+                aria-hidden={false}
                 style={
                   Array [
                     Object {
@@ -142,6 +143,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
                   }
                 />
                 <View
+                  aria-hidden={true}
                   style={
                     Array [
                       Object {

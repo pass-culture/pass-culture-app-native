@@ -8,7 +8,9 @@ exports[`<DotComponent /> renders dot active color 1`] = `
     }
   }
   accessible={true}
+  collapsable={false}
   focusable={true}
+  nativeID="animatedComponent"
   onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
@@ -17,26 +19,35 @@ exports[`<DotComponent /> renders dot active color 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "marginLeft": 4,
-        "marginRight": 4,
-      },
-    ]
+    Object {
+      "opacity": 1,
+      "userSelect": "auto",
+    }
   }
   testID="button"
 >
   <View
-    borderColor="#eb0055"
-    fillColor="#eb0055"
-    height={12}
-    testID="dot-icon"
-    width={12}
+    style={
+      Array [
+        Object {
+          "alignSelf": "center",
+          "marginLeft": 4,
+          "marginRight": 4,
+        },
+      ]
+    }
   >
-    <Text>
-      dot-icon-SVG-Mock
-    </Text>
+    <View
+      borderColor="#eb0055"
+      fillColor="#eb0055"
+      height={12}
+      testID="dot-icon"
+      width={12}
+    >
+      <Text>
+        dot-icon-SVG-Mock
+      </Text>
+    </View>
   </View>
 </View>
 `;
@@ -49,7 +60,9 @@ exports[`<DotComponent /> should render correctly 1`] = `
     }
   }
   accessible={true}
+  collapsable={false}
   focusable={true}
+  nativeID="animatedComponent"
   onClick={[Function]}
   onResponderGrant={[Function]}
   onResponderMove={[Function]}
@@ -58,26 +71,35 @@ exports[`<DotComponent /> should render correctly 1`] = `
   onResponderTerminationRequest={[Function]}
   onStartShouldSetResponder={[Function]}
   style={
-    Array [
-      Object {
-        "alignSelf": "center",
-        "marginLeft": 4,
-        "marginRight": 4,
-      },
-    ]
+    Object {
+      "opacity": 1,
+      "userSelect": "auto",
+    }
   }
   testID="button"
 >
   <View
-    borderColor="#696A6F"
-    fillColor="transparent"
-    height={8}
-    testID="dot-icon"
-    width={8}
+    style={
+      Array [
+        Object {
+          "alignSelf": "center",
+          "marginLeft": 4,
+          "marginRight": 4,
+        },
+      ]
+    }
   >
-    <Text>
-      dot-icon-SVG-Mock
-    </Text>
+    <View
+      borderColor="#696A6F"
+      fillColor="transparent"
+      height={8}
+      testID="dot-icon"
+      width={8}
+    >
+      <Text>
+        dot-icon-SVG-Mock
+      </Text>
+    </View>
   </View>
 </View>
 `;
