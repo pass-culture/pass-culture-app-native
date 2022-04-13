@@ -103,15 +103,17 @@ export function useLoginRoutine() {
    * @param {LoginRoutineMethod} method The process that triggered the login routine
    */
   const loginRoutine = async (response: SigninResponse, method: LoginRoutineMethod) => {
-    console.log(++i, 'login', response)
+    eventMonitoring.captureMessage(`${++i} login ${JSON.stringify(response)}`)
     connectUserToBatchAndFirebase(response.accessToken)
-    console.log(++i, 'connectUserToBatchAndFirebase', response)
+    eventMonitoring.captureMessage(
+      `${++i} connectUserToBatchAndFirebase ${JSON.stringify(response)}`
+    )
     await saveRefreshToken(response.refreshToken)
-    console.log(++i, 'saveRefreshToken', response)
+    eventMonitoring.captureMessage(`${++i} saveRefreshToken ${JSON.stringify(response)}`)
     await storage.saveString('access_token', response.accessToken)
-    console.log(++i, 'storage.saveString', response)
+    eventMonitoring.captureMessage(`${++i} storage.saveString ${JSON.stringify(response)}`)
     analytics.logLogin({ method })
-    console.log(++i, 'analytics.logLogin', response)
+    eventMonitoring.captureMessage(`${++i} analytics.logLogin ${JSON.stringify(response)}`)
     setIsLoggedIn(true)
     resetContexts()
   }
