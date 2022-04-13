@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useRef } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
@@ -24,6 +24,8 @@ type Props = {
   title: string
   subtitle?: string
   activeIndex?: number
+  mobileBottomFlex?: number
+  fullWidth?: true
 } & (PropsWithAnimation | PropsWithIcon)
 
 const SMALL_HEIGHT = 576
@@ -41,7 +43,7 @@ export const GenericInfoPageWhite: React.FC<Props> = (props) => {
   const { icon: Icon } = props as PropsWithIcon
   const titleComponent = props.titleComponent ?? Typo.Title1
   const subtitleComponent = props.subtitleComponent ?? Typo.Title4
-
+  const theme = useTheme()
   const StyledTitle = useMemo(() => {
     return styled(titleComponent)({
       textAlign: 'center',
@@ -67,7 +69,7 @@ export const GenericInfoPageWhite: React.FC<Props> = (props) => {
   }, [animationRef, animation])
 
   return (
-    <Container>
+    <Container fullWidth={props.fullWidth as boolean}>
       <Spacer.Flex flex={grid({ sm: 1, default: 2 }, 'height')} />
       <StyledLottieContainer>
         {animation ? (
@@ -87,17 +89,24 @@ export const GenericInfoPageWhite: React.FC<Props> = (props) => {
       {!!props.subtitle && <StyledSubtitle>{props.subtitle}</StyledSubtitle>}
       <Spacer.Flex flex={0.5} />
       {props.children}
-      <Spacer.Flex flex={grid({ default: 1.5, sm: 2 }, 'height')} />
+      <Spacer.Flex
+        flex={
+          !theme.isDesktopViewport && props.mobileBottomFlex
+            ? props.mobileBottomFlex
+            : grid({ default: 1.5, sm: 2 }, 'height')
+        }
+      />
     </Container>
   )
 }
 
-const Container = styled.View(({ theme }) => ({
+const Container = styled.View<{ fullWidth: boolean }>(({ fullWidth, theme }) => ({
   alignSelf: 'center',
   flex: 1,
   paddingHorizontal: getSpacing(5),
   maxWidth: theme.contentPage.maxWidth,
   overflow: 'scroll',
+  width: fullWidth ? '100%' : undefined,
 }))
 
 const StyledLottieContainer = styled.View({
