@@ -1586,7 +1586,6 @@ exports[`<AppModal /> with left icon render 1`] = `
           }
         >
           <View
-            accessibilityLabel="Revenir à l'étape précédente"
             accessible={true}
             collapsable={false}
             focusable={true}
@@ -2638,7 +2637,6 @@ exports[`<AppModal /> with right icon render 1`] = `
           }
         >
           <View
-            accessibilityLabel="Fermer la modale et annuler"
             accessible={true}
             collapsable={false}
             focusable={true}

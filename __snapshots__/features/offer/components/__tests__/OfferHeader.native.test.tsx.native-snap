@@ -645,7 +645,6 @@ Array [
             }
           >
             <View
-              accessibilityLabel="Fermer la modale"
               accessible={true}
               focusable={true}
               onClick={[Function]}

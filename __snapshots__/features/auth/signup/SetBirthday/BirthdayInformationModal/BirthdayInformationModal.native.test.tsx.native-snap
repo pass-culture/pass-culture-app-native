@@ -49,36 +49,21 @@ exports[`<BirthdayInformationModal /> should render properly 1`] = `
     }
   />
   <View
-    accessibilityState={
-      Object {
-        "disabled": true,
-      }
-    }
-    accessible={true}
-    collapsable={false}
-    focusable={false}
-    nativeID="animatedComponent"
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
+    aria-describedby="testUuidV4"
     style={
-      Object {
-        "alignItems": "center",
-        "alignSelf": "center",
-        "backgroundColor": "#ffffff",
-        "borderRadius": 16,
-        "opacity": 1,
-        "paddingBottom": 20,
-        "paddingLeft": 20,
-        "paddingRight": 20,
-        "paddingTop": 20,
-        "userSelect": "auto",
-        "width": 928,
-      }
+      Array [
+        Object {
+          "alignItems": "center",
+          "alignSelf": "center",
+          "backgroundColor": "#ffffff",
+          "borderRadius": 16,
+          "paddingBottom": 20,
+          "paddingLeft": 20,
+          "paddingRight": 20,
+          "paddingTop": 20,
+          "width": 928,
+        },
+      ]
     }
   >
     <View
@@ -156,7 +141,6 @@ exports[`<BirthdayInformationModal /> should render properly 1`] = `
         }
       >
         <View
-          accessibilityLabel="Fermer la modale"
           accessible={true}
           collapsable={false}
           focusable={true}

@@ -203,7 +203,6 @@ exports[`<DMSModal/> should render correctly 1`] = `
           }
         >
           <View
-            accessibilityLabel="Fermer la modale pour transmettre un document sur le site Démarches Simplifiée"
             accessible={true}
             collapsable={false}
             focusable={true}

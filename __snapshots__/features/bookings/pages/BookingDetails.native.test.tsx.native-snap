@@ -1124,7 +1124,6 @@ exports[`BookingDetails should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="Ne pas annuler"
               accessible={true}
               collapsable={false}
               focusable={true}
@@ -1562,7 +1561,6 @@ exports[`BookingDetails should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="Ne pas archiver"
               accessible={true}
               collapsable={false}
               focusable={true}

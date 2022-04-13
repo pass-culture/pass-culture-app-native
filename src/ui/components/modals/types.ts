@@ -1,10 +1,10 @@
 import { FunctionComponent } from 'react'
 
-import { IconInterface } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
 type DefinedLeftIconProps = {
   leftIconAccessibilityLabel: string
-  leftIcon: FunctionComponent<IconInterface>
+  leftIcon: FunctionComponent<AccessibleIcon>
   onLeftIconPress: () => void
 }
 type UndefinedLeftIconProps = {
@@ -14,7 +14,7 @@ type UndefinedLeftIconProps = {
 }
 type DefinedRightIconProps = {
   rightIconAccessibilityLabel: string
-  rightIcon: FunctionComponent<IconInterface>
+  rightIcon: FunctionComponent<AccessibleIcon>
   onRightIconPress: () => void
 }
 type UndefinedRightIconProps = {
