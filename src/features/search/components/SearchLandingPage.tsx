@@ -94,11 +94,11 @@ const SearchButtonContainer = styled.View<{ isSmallWebViewportHeight?: boolean }
       ? {
           flex: 1,
           justifyContent: 'flex-end',
-          marginBottom: theme.tabBarHeight + getSpacing(6),
+          marginBottom: theme.tabBar.height + getSpacing(6),
         }
       : {
           position: 'absolute',
-          bottom: theme.tabBarHeight + getSpacing(6),
+          bottom: theme.tabBar.height + getSpacing(6),
         }),
   })
 )

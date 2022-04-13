@@ -58,6 +58,6 @@ const BicolorSelectorPlaceholder = styled.View({ height: SELECTOR_HEIGHT })
 
 const TabComponentContainer = styled(TouchableLink)(({ theme }) => ({
   alignItems: 'center',
-  height: theme.tabBarHeight,
+  height: theme.tabBar.height,
   flex: 1,
 }))

@@ -9,17 +9,23 @@ export function useComputedTheme<A extends DefaultThemeNative>(theme: A) {
   const tabletMinWidth = theme.breakpoints.md
   const desktopMinWidth = theme.breakpoints.lg
   const minScreenHeight = theme.minScreenHeight
+  const tabBarLabelMinScreenWidth = theme.tabBar.labelMinScreenWidth
 
   const isMobileViewport = useMediaQuery({ maxWidth: tabletMinWidth })
   const isTabletViewport = useMediaQuery({ minWidth: tabletMinWidth, maxWidth: desktopMinWidth })
   const isDesktopViewport = useMediaQuery({ minWidth: desktopMinWidth })
   const isSmallScreen = useMediaQuery({ maxHeight: minScreenHeight })
+  const showLabels = useMediaQuery({ minWidth: tabBarLabelMinScreenWidth })
   const showTabBar = theme.isTouch || !!isMobileViewport
   const appContentWidth = Math.min(desktopMinWidth, windowWidth)
 
   return useMemo<A>(
     () => ({
       ...theme,
+      tabBar: {
+        ...theme.tabBar,
+        showLabels,
+      },
       isMobileViewport,
       isTabletViewport,
       isDesktopViewport,
@@ -33,6 +39,7 @@ export function useComputedTheme<A extends DefaultThemeNative>(theme: A) {
       isTabletViewport,
       isDesktopViewport,
       isSmallScreen,
+      showLabels,
       showTabBar,
       appContentWidth,
     ]

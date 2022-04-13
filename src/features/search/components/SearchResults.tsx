@@ -184,7 +184,7 @@ export const SearchResults: React.FC = () => {
 const contentContainerStyle = { flexGrow: 1 }
 const Container = styled.View({ flex: 1 })
 const Footer = styled.View(({ theme }) => ({
-  height: theme.tabBarHeight + getSpacing(52),
+  height: theme.tabBar.height + getSpacing(52),
   paddingTop: getSpacing(2),
   alignItems: 'center',
 }))
@@ -198,7 +198,7 @@ const Separator = styled.View(({ theme }) => ({
 const FilterContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
   position: 'absolute',
-  bottom: theme.tabBarHeight + getSpacing(6),
+  bottom: theme.tabBar.height + getSpacing(6),
   zIndex: theme.zIndex.floatingButton,
 }))
 
