@@ -2373,8 +2373,8 @@ msgstr "Réserver"
 
 #: src/features/favorites/atoms/BookingButton.tsx
 #: src/features/favorites/atoms/BookingButton.tsx
-msgid "Réserver l'offre"
-msgstr "Réserver l'offre"
+msgid "Réserver l'offre {offerName}"
+msgstr "Réserver l'offre {offerName}"
 
 #: src/features/favorites/components/NotConnectedFavorites.tsx
 #: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx
