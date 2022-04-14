@@ -22,6 +22,7 @@ import { AccordionItem } from 'ui/components/AccordionItem'
 import { Badge } from 'ui/components/Badge'
 import { Banner } from 'ui/components/Banner'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
+import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
@@ -61,6 +62,7 @@ import { Close } from 'ui/svg/icons/Close'
 import CulturalSurveyIcons from 'ui/svg/icons/culturalSurvey'
 import { Email } from 'ui/svg/icons/Email'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { Rectangle } from 'ui/svg/Rectangle'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -100,6 +102,9 @@ const radioButtonWithBorderItems = [
   { label: 'With description 2', description: 'This is a description 2' },
   { label: 'Default 3' },
 ]
+
+const startText = 'Lorem ipsum '
+const endText = ' sit amet adipisicing elit.'
 
 export const AppComponents: FunctionComponent = () => {
   const {
@@ -238,6 +243,36 @@ export const AppComponents: FunctionComponent = () => {
           onPress={onButtonPress}
           isDisabled
         />
+        {/* Buttons: ButtonInsideText */}
+        <Typo.Title4>Button - ButtonInsideText</Typo.Title4>
+        <Spacer.Column numberOfSpaces={1} />
+        <Typo.Body>
+          {startText}
+          <ButtonInsideText wording="default" />
+          {endText}
+        </Typo.Body>
+        <Spacer.Column numberOfSpaces={2} />
+        <Typo.Body>
+          {startText}
+          <ButtonInsideText wording="default with icon" icon={ExternalSiteFilled} />
+          {endText}
+        </Typo.Body>
+        <Spacer.Column numberOfSpaces={2} />
+        <Typo.Caption>
+          {startText}
+          <ButtonInsideText wording="caption" typography="Caption" />
+          {endText}
+        </Typo.Caption>
+        <Spacer.Column numberOfSpaces={2} />
+        <Typo.Caption>
+          {startText}
+          <ButtonInsideText
+            wording="caption with icon"
+            typography="Caption"
+            icon={ExternalSiteFilled}
+          />
+          {endText}
+        </Typo.Caption>
       </AccordionItem>
 
       <Divider />

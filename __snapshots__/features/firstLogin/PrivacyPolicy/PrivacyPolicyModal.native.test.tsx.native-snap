@@ -318,10 +318,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                   onStartShouldSetResponder={[Function]}
                   style={
                     Object {
-                      "marginBottom": -1.5,
-                      "marginLeft": -1.5,
-                      "marginRight": -1.5,
-                      "marginTop": -1.5,
+                      "marginVertical": -1.5,
                       "opacity": 1,
                       "userSelect": "auto",
                     }
@@ -346,7 +343,6 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                         "withComponent": [Function],
                       }
                     }
-                    iconSize={20}
                     style={
                       Array [
                         Object {
@@ -354,6 +350,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                         },
                       ]
                     }
+                    typography="ButtonText"
                   >
                     <View
                       style={
@@ -386,7 +383,6 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                       />
                     </View>
                     <Text
-                      color="#eb0055"
                       style={
                         Array [
                           Object {

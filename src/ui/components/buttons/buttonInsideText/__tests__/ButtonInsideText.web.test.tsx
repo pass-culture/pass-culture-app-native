@@ -47,4 +47,18 @@ describe('ButtonInsideText Component', () => {
       expect(link.getAttribute('href')).toBe(href)
     })
   })
+  describe('* color property', () => {
+    it('should display primary color when not provided', () => {
+      const { getByText } = render(<ButtonInsideText wording={wording} />)
+      const button = getByText(wording)
+      expect(button).toHaveStyle({ color: theme.colors.primary })
+    })
+    it('should display custom color when color provided', () => {
+      const { getByText } = render(
+        <ButtonInsideText wording={wording} color={theme.colors.greenValid} />
+      )
+      const button = getByText(wording)
+      expect(button).toHaveStyle({ color: theme.colors.greenValid })
+    })
+  })
 })

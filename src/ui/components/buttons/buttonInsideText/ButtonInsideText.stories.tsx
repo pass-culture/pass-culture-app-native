@@ -52,25 +52,29 @@ const RandomText = () => {
     <React.Fragment>
       <Typo.Body>
         {startText}
-        <ButtonInsideText wording="default button" />
+        <ButtonInsideText wording="default" />
         {endText}
       </Typo.Body>
       <Spacer.Column numberOfSpaces={2} />
       <Typo.Body>
         {startText}
-        <ButtonInsideText wording="default button with icon" icon={ExternalSiteFilled} />
+        <ButtonInsideText wording="default with icon" icon={ExternalSiteFilled} />
         {endText}
       </Typo.Body>
       <Spacer.Column numberOfSpaces={2} />
       <Typo.Caption>
         {startText}
-        <ButtonInsideText wording="caption button" typography="Caption" />
+        <ButtonInsideText wording="caption" typography="Caption" />
         {endText}
       </Typo.Caption>
       <Spacer.Column numberOfSpaces={2} />
       <Typo.Caption>
         {startText}
-        <ButtonInsideText wording="caption button" typography="Caption" icon={ExternalSiteFilled} />
+        <ButtonInsideText
+          wording="caption with icon"
+          typography="Caption"
+          icon={ExternalSiteFilled}
+        />
         {endText}
       </Typo.Caption>
     </React.Fragment>

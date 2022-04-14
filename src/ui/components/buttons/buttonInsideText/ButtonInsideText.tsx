@@ -25,5 +25,5 @@ export function ButtonInsideText({
 }
 
 const StyledTouchableOpacity = styled(TouchableOpacity)({
-  margin: -getSpacing(1 / 3), // Hack for reset default TouchableOpacity margin horizontal
+  marginVertical: -getSpacing(1 / 3), // Hack for reset default TouchableOpacity margin vertical
 })

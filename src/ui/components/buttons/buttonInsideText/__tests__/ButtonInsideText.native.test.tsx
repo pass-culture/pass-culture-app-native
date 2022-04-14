@@ -33,4 +33,18 @@ describe('ButtonInsideText Component', () => {
       expect(buttonFontFamily).toBe(theme.typography.caption.fontFamily)
     })
   })
+  describe('* color property', () => {
+    it('should display primary color when not provided', () => {
+      const { getByText } = render(<ButtonInsideText wording={wording} />)
+      const buttonColor = getByText(wording).props.style[0].color
+      expect(buttonColor).toBe(theme.colors.primary)
+    })
+    it('should display custom color when color provided', () => {
+      const { getByText } = render(
+        <ButtonInsideText wording={wording} color={theme.colors.greenValid} />
+      )
+      const buttonColor = getByText(wording).props.style[0].color
+      expect(buttonColor).toBe(theme.colors.greenValid)
+    })
+  })
 })

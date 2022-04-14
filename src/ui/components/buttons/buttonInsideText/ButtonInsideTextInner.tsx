@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Spacer } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
@@ -20,22 +19,22 @@ export function ButtonInsideTextInner({
   icon: Icon,
   color,
 }: Props) {
-  const { icons, colors } = useTheme()
-  const iconSize = typography === 'Caption' ? icons.sizes.extraSmall : icons.sizes.smaller
-  const selectedColor = color ?? colors.primary
+  const StyledIcon =
+    Icon &&
+    styled(Icon).attrs(({ theme }) => ({
+      size: typography === 'Caption' ? theme.icons.sizes.extraSmall : theme.icons.sizes.smaller,
+      color: color ?? theme.colors.primary,
+    }))``
+
   return (
-    <Container icon={Icon} iconSize={iconSize}>
-      {!!Icon && (
+    <Container icon={Icon} typography={typography}>
+      {!!StyledIcon && (
         <IconContainer>
-          <Icon
-            {...accessibilityAndTestId(undefined, 'button-icon')}
-            color={selectedColor}
-            size={iconSize}
-          />
+          <StyledIcon testID="button-icon" />
           <Spacer.Row numberOfSpaces={1} />
         </IconContainer>
       )}
-      <StyledText typography={typography} color={selectedColor}>
+      <StyledText typography={typography} color={color}>
         {wording}
       </StyledText>
     </Container>
@@ -44,10 +43,14 @@ export function ButtonInsideTextInner({
 
 const Container = styled.View<{
   icon?: FunctionComponent<IconInterface>
-  iconSize: number
-}>(({ icon, iconSize }) => ({
-  paddingLeft: icon ? iconSize * 1.25 : undefined, // Hack for add space between icon and label
-}))
+  typography?: string
+}>(({ theme, icon, typography }) => {
+  const iconSize =
+    typography === 'Caption' ? theme.icons.sizes.extraSmall : theme.icons.sizes.smaller
+  return {
+    paddingLeft: icon ? iconSize * 1.25 : undefined, // Hack for add space between icon and label
+  }
+})
 
 const IconContainer = styled.View({
   position: 'absolute',
@@ -61,5 +64,5 @@ const StyledText = styled.Text<{
 }>(({ theme, typography, color }) => ({
   ...(typography === 'Caption' ? theme.typography.caption : theme.typography.buttonText),
   fontWeight: 'bold',
-  color,
+  color: color ?? theme.colors.primary,
 }))
