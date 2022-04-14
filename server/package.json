@@ -18,7 +18,7 @@
     "url": "https://github.com/pass-culture/pass-culture-app-native.git"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": "16"
   },
   "scripts": {
     "dev": "ENV=testing node-dev src/index.ts",

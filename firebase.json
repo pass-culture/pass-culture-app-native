@@ -1,0 +1,6 @@
+{
+  "functions": {
+    "predeploy": "export GCLOUD_PROJECT=\"pass-culture-webapp\"; yarn start:testing",
+    "source": "server"
+  }
+}
