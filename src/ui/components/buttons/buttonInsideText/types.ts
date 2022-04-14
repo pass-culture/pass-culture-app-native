@@ -9,11 +9,12 @@ import { To } from 'ui/web/link/types'
 
 export type ButtonInsideTexteProps = {
   wording: string
-  type?: 'ButtonText' | 'Caption'
+  typography?: 'ButtonText' | 'Caption'
   icon?: FunctionComponent<IconInterface>
   color?: ColorsEnum
   onLongPress?: AppButtonEventWeb | AppButtonEventNative
   onPress?: AppButtonEventWeb | AppButtonEventNative
   to?: To<AllNavParamList, keyof AllNavParamList>
   externalHref?: string
+  type?: 'button' | 'submit' | 'reset'
 }

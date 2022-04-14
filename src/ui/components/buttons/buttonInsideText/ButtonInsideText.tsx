@@ -9,7 +9,7 @@ import { getSpacing } from 'ui/theme'
 
 export function ButtonInsideText({
   wording,
-  type = 'ButtonText',
+  typography = 'ButtonText',
   onPress,
   onLongPress,
   icon: Icon,
@@ -19,7 +19,7 @@ export function ButtonInsideText({
     <StyledTouchableOpacity
       onPress={onPress as AppButtonEventNative}
       onLongPress={onLongPress as AppButtonEventNative}>
-      <ButtonInsideTextInner wording={wording} icon={Icon} color={color} type={type} />
+      <ButtonInsideTextInner wording={wording} icon={Icon} color={color} typography={typography} />
     </StyledTouchableOpacity>
   )
 }

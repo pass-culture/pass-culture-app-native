@@ -398,7 +398,7 @@ exports[`<PrivacyPolicy /> should render privacy policy 1`] = `
                           },
                         ]
                       }
-                      type="ButtonText"
+                      typography="ButtonText"
                     >
                       Politique des cookies
                     </Text>

@@ -8,13 +8,13 @@ Object {
   >
     <div>
       <a
-        class="sc-llYSUQ hSKAOO"
+        class="sc-iJKOTD kJmyar"
         href="#testUuidV4"
       >
         Accéder au menu de navigation
       </a>
       <main
-        class="sc-cxpSdN iFIiWV"
+        class="sc-llYSUQ dHRNRN"
         id="testUuidV4"
       >
         <div
@@ -47,7 +47,7 @@ Object {
         </div>
       </main>
       <nav
-        class="sc-fKVqWL celeKM"
+        class="sc-bBHxTw ghmUDW"
         id="testUuidV4"
       >
         <div
@@ -63,10 +63,10 @@ Object {
               style="width: 16px;"
             />
             <ul
-              class="sc-egiyK sc-bBHxTw fXDcKC fHYOUt"
+              class="sc-bqiRlB sc-iwjdpV fZQgdx dQnYRY"
             >
               <li
-                class="sc-iwjdpV CbhWy"
+                class="sc-cxpSdN jxZzlG"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -117,7 +117,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-iwjdpV CbhWy"
+                class="sc-cxpSdN jxZzlG"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -153,7 +153,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-iwjdpV CbhWy"
+                class="sc-cxpSdN jxZzlG"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -189,7 +189,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-iwjdpV CbhWy"
+                class="sc-cxpSdN jxZzlG"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -225,7 +225,7 @@ Object {
                 </a>
               </li>
               <li
-                class="sc-iwjdpV CbhWy"
+                class="sc-cxpSdN jxZzlG"
               >
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -276,13 +276,13 @@ Object {
   </body>,
   "container": <div>
     <a
-      class="sc-llYSUQ hSKAOO"
+      class="sc-iJKOTD kJmyar"
       href="#testUuidV4"
     >
       Accéder au menu de navigation
     </a>
     <main
-      class="sc-cxpSdN iFIiWV"
+      class="sc-llYSUQ dHRNRN"
       id="testUuidV4"
     >
       <div
@@ -315,7 +315,7 @@ Object {
       </div>
     </main>
     <nav
-      class="sc-fKVqWL celeKM"
+      class="sc-bBHxTw ghmUDW"
       id="testUuidV4"
     >
       <div
@@ -331,10 +331,10 @@ Object {
             style="width: 16px;"
           />
           <ul
-            class="sc-egiyK sc-bBHxTw fXDcKC fHYOUt"
+            class="sc-bqiRlB sc-iwjdpV fZQgdx dQnYRY"
           >
             <li
-              class="sc-iwjdpV CbhWy"
+              class="sc-cxpSdN jxZzlG"
             >
               <a
                 class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -385,7 +385,7 @@ Object {
               </a>
             </li>
             <li
-              class="sc-iwjdpV CbhWy"
+              class="sc-cxpSdN jxZzlG"
             >
               <a
                 class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -421,7 +421,7 @@ Object {
               </a>
             </li>
             <li
-              class="sc-iwjdpV CbhWy"
+              class="sc-cxpSdN jxZzlG"
             >
               <a
                 class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -457,7 +457,7 @@ Object {
               </a>
             </li>
             <li
-              class="sc-iwjdpV CbhWy"
+              class="sc-cxpSdN jxZzlG"
             >
               <a
                 class="css-reset-4rbku5 css-view-1dbjc4n"
@@ -493,7 +493,7 @@ Object {
               </a>
             </li>
             <li
-              class="sc-iwjdpV CbhWy"
+              class="sc-cxpSdN jxZzlG"
             >
               <a
                 class="css-reset-4rbku5 css-view-1dbjc4n"

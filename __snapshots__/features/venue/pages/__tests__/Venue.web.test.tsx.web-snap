@@ -434,7 +434,7 @@ Object {
               />
               <button
                 aria-label="Géolocalisation désactivée"
-                class="sc-eCImPb eivvKD sc-ikJyIC hpLCXW sc-ikJyIC hpLCXW"
+                class="sc-eCImPb eivvKD sc-jJoQJp eRwNdp sc-jJoQJp eRwNdp"
                 data-testid="iconLocation"
                 tabindex="0"
                 type="button"
@@ -1141,10 +1141,10 @@ Object {
                   style="flex-direction: row; justify-content: space-between;"
                 >
                   <ul
-                    class="sc-bqiRlB sc-jJoQJp fZQgdx cgypse"
+                    class="sc-bqiRlB sc-hiCibw fZQgdx ietfbc"
                   >
                     <li
-                      class="sc-hiCibw jmSfBy"
+                      class="sc-gWXbKe UoJFI"
                     >
                       <div
                         aria-label="Handicap visuel : Accessible"
@@ -1213,7 +1213,7 @@ Object {
                       </div>
                     </li>
                     <li
-                      class="sc-hiCibw jmSfBy"
+                      class="sc-gWXbKe UoJFI"
                     >
                       <div
                         aria-label="Handicap psychique ou cognitif : Non accessible"
@@ -1282,7 +1282,7 @@ Object {
                       </div>
                     </li>
                     <li
-                      class="sc-hiCibw jmSfBy"
+                      class="sc-gWXbKe UoJFI"
                     >
                       <div
                         aria-label="Handicap moteur : Non accessible"
@@ -1351,7 +1351,7 @@ Object {
                       </div>
                     </li>
                     <li
-                      class="sc-hiCibw jmSfBy"
+                      class="sc-gWXbKe UoJFI"
                     >
                       <div
                         aria-label="Handicap auditif : Non accessible"
@@ -1946,7 +1946,7 @@ Object {
             />
             <button
               aria-label="Géolocalisation désactivée"
-              class="sc-eCImPb eivvKD sc-ikJyIC hpLCXW sc-ikJyIC hpLCXW"
+              class="sc-eCImPb eivvKD sc-jJoQJp eRwNdp sc-jJoQJp eRwNdp"
               data-testid="iconLocation"
               tabindex="0"
               type="button"
@@ -2653,10 +2653,10 @@ Object {
                 style="flex-direction: row; justify-content: space-between;"
               >
                 <ul
-                  class="sc-bqiRlB sc-jJoQJp fZQgdx cgypse"
+                  class="sc-bqiRlB sc-hiCibw fZQgdx ietfbc"
                 >
                   <li
-                    class="sc-hiCibw jmSfBy"
+                    class="sc-gWXbKe UoJFI"
                   >
                     <div
                       aria-label="Handicap visuel : Accessible"
@@ -2725,7 +2725,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-hiCibw jmSfBy"
+                    class="sc-gWXbKe UoJFI"
                   >
                     <div
                       aria-label="Handicap psychique ou cognitif : Non accessible"
@@ -2794,7 +2794,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-hiCibw jmSfBy"
+                    class="sc-gWXbKe UoJFI"
                   >
                     <div
                       aria-label="Handicap moteur : Non accessible"
@@ -2863,7 +2863,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-hiCibw jmSfBy"
+                    class="sc-gWXbKe UoJFI"
                   >
                     <div
                       aria-label="Handicap auditif : Non accessible"

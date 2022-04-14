@@ -77,7 +77,7 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
               externalHref={env.COOKIES_POLICY_LINK}
               onPress={openCookiesPolicyExternalUrl}
               icon={ExternalSiteFilled}
-              type="Caption"
+              typography="Caption"
             />
           </StyledCaption>
         </MoreInformationContainer>

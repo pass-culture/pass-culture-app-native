@@ -398,7 +398,7 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                           },
                         ]
                       }
-                      type="ButtonText"
+                      typography="ButtonText"
                     >
                       Politique des cookies
                     </Text>
