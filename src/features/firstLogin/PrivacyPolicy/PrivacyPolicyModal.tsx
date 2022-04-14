@@ -7,7 +7,6 @@ import { openUrl } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-// import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
@@ -44,19 +43,15 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
       <Description>
         <Typo.Body>
           {t`Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur "Autoriser", tu acceptes l'utilisation de ces services détaillés dans notre`}
+          <Spacer.Row numberOfSpaces={1} />
+          <ButtonInsideText
+            wording={t`Politique des cookies`}
+            externalHref={env.COOKIES_POLICY_LINK}
+            onPress={openCookiesPolicyExternalUrl}
+            icon={ExternalSiteFilled}
+          />
         </Typo.Body>
       </Description>
-      <ButtonInsideText
-        wording={t`Politique des cookies`}
-        onPress={openCookiesPolicyExternalUrl}
-        icon={ExternalSiteFilled}
-      />
-      {/* <ButtonQuaternary
-        wording={cookieButtonText}
-        externalHref={env.COOKIES_POLICY_LINK}
-        onPress={openCookiesPolicyExternalUrl}
-        icon={ExternalSiteFilled}
-      /> */}
       <SubDescription>
         <Caption>
           {t`Tu pourras modifier tes paramètres de confidentialité dans ton profil.`}

@@ -74,18 +74,12 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
             <Spacer.Row numberOfSpaces={1} />
             <ButtonInsideText
               wording={t`Politique des cookies`}
+              externalHref={env.COOKIES_POLICY_LINK}
               onPress={openCookiesPolicyExternalUrl}
               icon={ExternalSiteFilled}
               type="Caption"
             />
           </StyledCaption>
-          {/* <ButtonQuaternary
-            wording={cookieButtonText}
-            icon={ExternalSiteFilled}
-            externalHref={env.COOKIES_POLICY_LINK}
-            onPress={openCookiesPolicyExternalUrl}
-            inline
-          /> */}
         </MoreInformationContainer>
         <Spacer.Column numberOfSpaces={4} />
         <Separator />
