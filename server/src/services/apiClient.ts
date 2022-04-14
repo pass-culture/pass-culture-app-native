@@ -21,8 +21,10 @@ export async function apiClient(type: EntityKeys, id: number) {
       'cache-control': PROXY_CACHE_CONTROL,
     }),
   })
+
   if (response.status === 200) {
     return response.json()
   }
+
   throw new Error(`Wrong status code: ${response.status}`)
 }

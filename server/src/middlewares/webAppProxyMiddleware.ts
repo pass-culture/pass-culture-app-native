@@ -1,5 +1,6 @@
 import { IncomingMessage } from 'http'
 
+import { logger } from 'firebase-functions'
 import { createProxyMiddleware, responseInterceptor } from 'http-proxy-middleware'
 
 import { env } from '../libs/environment/env'
@@ -51,7 +52,7 @@ export async function metasResponseInterceptor(
     // FIXME: when replaceHtmlMetas can really throw error, restore coverage for following lines and add a throw error unit test
     /* istanbul ignore next */
     // eslint-disable-next-line no-console
-    console.log(`Replacing HTML metas failed: ${(error as Error).message}`)
+    logger.info(`Replacing HTML metas failed: ${(error as Error).message}`)
     /* istanbul ignore next */
     return html
   }
