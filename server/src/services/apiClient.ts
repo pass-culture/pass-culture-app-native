@@ -4,7 +4,7 @@ import { env } from '../libs/environment/env'
 
 import { ENTITY_MAP, EntityKeys } from './entities/types'
 
-const { API_BASE_URL, API_BASE_PATH_NATIVE_V1 } = env
+const { API_BASE_URL, API_BASE_PATH_NATIVE_V1, PROXY_CACHE_CONTROL } = env
 
 const { href } = new URL(API_BASE_URL)
 
@@ -18,10 +18,10 @@ export async function apiClient(type: EntityKeys, id: number) {
 
   const response = await fetch(url, {
     headers: new Headers({
-      'cache-control': 'public,max-age=3600',
+      'cache-control': PROXY_CACHE_CONTROL,
     }),
   })
-  if (response.ok && response.status === 200) {
+  if (response.status === 200) {
     return response.json()
   }
   throw new Error(`Wrong status code: ${response.status}`)

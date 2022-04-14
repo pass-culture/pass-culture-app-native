@@ -36,29 +36,38 @@ describe('webAppProxyMiddleware', () => {
         req
       )
 
-      expect(imagePngResponseBuffer).toEqual(unmodifiedResponseBuffer)
+      expect(unmodifiedResponseBuffer).toEqual(imagePngResponseBuffer)
     })
 
-    it.each([
-      ['true', OFFER.API_MODEL_NAME, 'offre', `${OFFER_RESPONSE_SNAP.id}`],
-      ['true', VENUE.API_MODEL_NAME, 'lieu', `${VENUE_RESPONSE_SNAP.id}`],
-      ['true', VENUE.API_MODEL_NAME, 'lieu', `${VENUE_RESPONSE_ALTERNATIVE_SNAP.id}`],
-      ...Object.entries(ENTITY_MAP).map(([key, { API_MODEL_NAME }]) => [
-        'false',
-        API_MODEL_NAME,
-        key,
-        '',
-      ]),
+    it.only.each([
+      [OFFER.API_MODEL_NAME, 'offre', `${OFFER_RESPONSE_SNAP.id}`],
+      [VENUE.API_MODEL_NAME, 'lieu', `${VENUE_RESPONSE_SNAP.id}`],
+      [VENUE.API_MODEL_NAME, 'lieu', `${VENUE_RESPONSE_ALTERNATIVE_SNAP.id}`],
     ])(
-      `should edit html=%s when req.url on %s use valid id: /%s/%s`,
-      async (isEditedHtml: string, entity: string, endpoint: string, id: string) => {
+      `should edit html when req.url on %s use valid id: /%s/%s`,
+      async (entity: string, endpoint: string, id: string) => {
         const url = `${env.APP_PUBLIC_URL}/${endpoint}${id ? `/${id}` : ''}`
         const finalResponseBuffer = await metasResponseInterceptor(responseBuffer, proxyRes, {
           ...req,
           url,
         } as IncomingMessage)
 
-        expect(responseBuffer.toString('utf8') !== finalResponseBuffer).toBe(Boolean(isEditedHtml))
+        expect(finalResponseBuffer).not.toEqual(responseBuffer.toString('utf8'))
+      }
+    )
+
+    it.each(
+      Object.entries(ENTITY_MAP).map(([key, { API_MODEL_NAME }]) => [API_MODEL_NAME, key, ''])
+    )(
+      `should not edit html when req.url on %s use valid id: /%s/%s`,
+      async (entity: string, endpoint: string, id: string) => {
+        const url = `${env.APP_PUBLIC_URL}/${endpoint}${id ? `/${id}` : ''}`
+        const finalResponseBuffer = await metasResponseInterceptor(responseBuffer, proxyRes, {
+          ...req,
+          url,
+        } as IncomingMessage)
+
+        expect(finalResponseBuffer).toEqual(responseBuffer.toString('utf8'))
       }
     )
   })

@@ -15,7 +15,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/pass-culture/nodejs-docs-samples.git"
+    "url": "https://github.com/pass-culture/pass-culture-app-native.git"
   },
   "engines": {
     "node": ">=16.0.0"
@@ -28,7 +28,7 @@
     "start:staging": "ENV=staging yarn start",
     "start:integration": "ENV=integration yarn start",
     "start:production": "ENV=production yarn start",
-    "test": "yarn test:types; yarn test:unit",
+    "test": "yarn test:types && yarn test:unit",
     "test:unit": "TZ=UTC JEST=true jest --forceExit",
     "test:types": "tsc --noEmit"
   },
