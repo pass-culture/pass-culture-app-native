@@ -65,13 +65,13 @@ export function ButtonInsideText({
 }
 
 const webStyle = {
-  display: 'inline-block',
   border: 'none',
   cursor: 'pointer',
   outline: 'none',
   textDecoration: 'none',
   boxSizing: 'border-box',
   backgroundColor: 'transparent',
+  width: 'fit-content',
   margin: 0,
   padding: 0,
 } as CSSObject
