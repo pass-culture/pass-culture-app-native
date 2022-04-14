@@ -29,7 +29,16 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
   const scale = useScaleFavoritesAnimation(favoritesCount)
 
   if (!isLoggedIn || typeof favoritesCount === 'undefined') {
-    return <BicolorFavorite size={size} color={color} color2={color2} thin={thin} testID={testID} />
+    return (
+      <BicolorFavorite
+        size={size}
+        color={color}
+        color2={color2}
+        thin={thin}
+        accessibilityLabel={showTabBar && !showLabels ? t`Mes favoris` : undefined}
+        testID={testID}
+      />
+    )
   }
 
   const widthFactor = showTabBar ? 0.95 : 0.8

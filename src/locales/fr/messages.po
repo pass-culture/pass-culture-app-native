@@ -1526,6 +1526,7 @@ msgstr "Maximum :"
 msgid "Mentions légales"
 msgstr "Mentions légales"
 
+#: src/features/favorites/atoms/BicolorFavoriteCount.tsx
 #: src/features/favorites/pages/Favorites.tsx
 #: src/features/navigation/TabBar/routes.ts
 msgid "Mes favoris"
