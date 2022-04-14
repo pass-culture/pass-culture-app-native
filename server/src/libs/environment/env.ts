@@ -10,4 +10,3 @@ dotEnvConfig({
 })
 
 export const env = parseBooleanVariables(process.env) as unknown as Environment
-

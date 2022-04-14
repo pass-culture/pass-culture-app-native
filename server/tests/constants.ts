@@ -117,7 +117,7 @@ export const VENUE_RESPONSE_SNAP = {
   address: '1 boulevard Poissonnière',
   postalCode: '75000',
   bannerMeta: {
-    image_credit: 'https://image.png'
+    image_credit: 'https://image.png',
   },
   description:
     ' https://pass.culture.fr/ lorem ipsum consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, labore nesciunt numquam. Id itaque in sed sapiente blanditiis necessitatibus. consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus, consectetur adipisicing elit. Debitis officiis maiores quia unde, hic quisquam odit ea quo ipsam possimus,',

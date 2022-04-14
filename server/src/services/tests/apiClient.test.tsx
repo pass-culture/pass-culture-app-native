@@ -1,5 +1,5 @@
-import { apiClient } from '../apiClient'
 import { OFFER_RESPONSE_SNAP, VENUE_RESPONSE_SNAP } from '../../../tests/constants'
+import { apiClient } from '../apiClient'
 import { EntityKeys } from '../entities/types'
 
 describe('apiClient', () => {
@@ -15,10 +15,14 @@ describe('apiClient', () => {
 
   it('should throw error with wrong entity type', async () => {
     const wrongEntityType = 'settings' as EntityKeys
-    await expect(async () => await apiClient(wrongEntityType, 0)).rejects.toThrowError(new Error(`Unknown entity: ${wrongEntityType}`))
+    await expect(async () => await apiClient(wrongEntityType, 0)).rejects.toThrowError(
+      new Error(`Unknown entity: ${wrongEntityType}`)
+    )
   })
 
-  it( `should throw error when status code is 404 instead of 200`, async () => {
-    await expect(async () => await apiClient('offre', 0)).rejects.toThrowError(new Error(`Wrong status code: 404`))
+  it(`should throw error when status code is 404 instead of 200`, async () => {
+    await expect(async () => await apiClient('offre', 0)).rejects.toThrowError(
+      new Error(`Wrong status code: 404`)
+    )
   })
 })

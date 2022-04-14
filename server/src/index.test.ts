@@ -1,11 +1,13 @@
 import { Server } from 'http'
 import { AddressInfo } from 'net'
+
 import { server as mswServer } from '../tests/server'
+
 import { env } from './libs/environment/__mocks__/env'
 
 describe('express server', () => {
   let server: Server
-  let initialEnv: string
+  let initialEnv: string | undefined
 
   beforeAll(async () => {
     initialEnv = process.env.ENV
