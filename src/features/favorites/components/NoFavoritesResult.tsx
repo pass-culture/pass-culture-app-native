@@ -47,7 +47,7 @@ const Container = styled.View(({ theme }) => ({
   flex: 1,
   justifyContent: 'center',
   alignItems: 'center',
-  marginBottom: theme.tabBarHeight,
+  marginBottom: theme.tabBar.height,
   padding: getSpacing(4),
 }))
 

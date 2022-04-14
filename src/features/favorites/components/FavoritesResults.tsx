@@ -56,7 +56,7 @@ const ANIMATION_DURATION = 700
 const StyledFlatList = styled(FlatList).attrs(({ theme }) => ({
   contentContainerStyle: {
     flexGrow: 1,
-    paddingBottom: theme.tabBarHeight + getSpacing(4),
+    paddingBottom: theme.tabBar.height + getSpacing(4),
   },
 }))``
 
@@ -161,7 +161,7 @@ const Separator = styled.View(({ theme }) => ({
 const SortContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
   position: 'absolute',
-  bottom: theme.tabBarHeight + getSpacing(6),
+  bottom: theme.tabBar.height + getSpacing(6),
   zIndex: theme.zIndex.floatingButton,
 }))
 

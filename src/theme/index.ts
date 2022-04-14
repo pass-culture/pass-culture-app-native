@@ -36,7 +36,6 @@ export interface AppThemeType {
   minScreenHeight: number
   appBarHeight: number
   navTopHeight: number
-  tabBarHeight: number
   inputs: {
     height: {
       small: number
@@ -64,6 +63,13 @@ export interface AppThemeType {
     color: ColorsEnum
     style: string
     offSet: number
+  }
+  tabBar: {
+    height: number
+    iconSize: number
+    fontSize: number
+    labelMinScreenWidth: number
+    showLabels: boolean
   }
   ticket: {
     maxWidth: number
@@ -341,7 +347,6 @@ export const theme: AppThemeType = {
   minScreenHeight: getSpacing(133),
   appBarHeight: getSpacing(16),
   navTopHeight: getSpacing(20),
-  tabBarHeight: TAB_BAR_COMP_HEIGHT,
   inputs: {
     height: {
       small: getSpacing(10),
@@ -366,6 +371,13 @@ export const theme: AppThemeType = {
     color: ColorsEnum.PRIMARY,
     style: 'solid',
     offSet: getSpacing(0.5),
+  },
+  tabBar: {
+    height: TAB_BAR_COMP_HEIGHT,
+    iconSize: getSpacing(7),
+    fontSize: getSpacing(2.5),
+    labelMinScreenWidth: 375,
+    showLabels: true, // default value, the actual value is computed dynamically in ThemeProvider.tsx
   },
   ticket: {
     maxWidth: 300,

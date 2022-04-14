@@ -1,4 +1,4 @@
-import { plural, t } from '@lingui/macro'
+import { t, plural } from '@lingui/macro'
 import React, { useEffect, useRef } from 'react'
 import { Animated, Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
@@ -20,36 +20,34 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
   thin = false,
   testID,
 }) => {
-  const { colors, showTabBar } = useTheme()
+  const {
+    showTabBar,
+    tabBar: { showLabels },
+  } = useTheme()
   const { isLoggedIn } = useAuthContext()
   const { data: favoritesCount } = useFavoritesCount()
   const scale = useScaleFavoritesAnimation(favoritesCount)
 
   if (!isLoggedIn || typeof favoritesCount === 'undefined') {
-    return (
-      <BicolorFavorite
-        size={size}
-        color={color}
-        color2={color2}
-        thin={thin}
-        accessibilityLabel={showTabBar ? t`Mes favoris` : undefined}
-        testID={testID}
-      />
-    )
+    return <BicolorFavorite size={size} color={color} color2={color2} thin={thin} testID={testID} />
   }
+
+  const widthFactor = showTabBar ? 0.95 : 0.8
+  const heightFactor = showTabBar ? 0.55 : 0.5
   const pastilleDimensions = {
-    width: typeof size === 'number' ? size * 0.8 : 21,
-    height: typeof size === 'number' ? size * 0.5 : 15,
+    width: typeof size === 'number' ? size * widthFactor : 21,
+    height: typeof size === 'number' ? size * heightFactor : 15,
   }
   const hasTooMany = favoritesCount >= COUNT_MAX
   const count = hasTooMany ? COUNT_MAX - 1 : favoritesCount || '0'
   const plusSign = hasTooMany ? t`+` : ''
-  const accessibilityLabel = showTabBar
-    ? plural(favoritesCount, {
-        one: '# favori',
-        other: '# favoris',
-      })
-    : `${favoritesCount}`
+  const accessibilityLabel =
+    showTabBar && !showLabels
+      ? plural(favoritesCount, {
+          one: '# favori',
+          other: '# favoris',
+        })
+      : `${favoritesCount}`
   return (
     <Container testID="bicolor-favorite-count">
       <BicolorFavoriteAuthed
@@ -60,7 +58,7 @@ export const BicolorFavoriteCount: React.FC<BicolorIconInterface> = ({
         testID={testID}
       />
       <StyledAnimatedView style={{ transform: [{ scale }] }} {...pastilleDimensions}>
-        <Pastille color={thin ? colors.greyDark : undefined} {...pastilleDimensions} />
+        <StyledPastille thin={thin} {...pastilleDimensions} />
         <PastilleContent
           {...pastilleDimensions}
           showTabBar={showTabBar}
@@ -79,17 +77,24 @@ const Container = styled.View({ position: 'relative' })
 
 const StyledAnimatedView = styled(Animated.View)<{ height: number; width: number }>((props) => ({
   position: 'absolute',
-  right: Platform.select<string | number>({ web: '-45%', default: -getSpacing(4) }),
+  right: Platform.select<string | number>({
+    web: props.theme.showTabBar ? -getSpacing(4.25) : -getSpacing(2.5),
+    default: -getSpacing(4.5),
+  }),
   top: '10%',
   height: props.height,
   width: props.width,
 }))
 
+const StyledPastille = styled(Pastille).attrs<{ thin?: boolean }>(({ theme, thin }) => ({
+  color: thin ? theme.colors.greyDark : undefined,
+}))<{ thin?: boolean }>``
+
 const PastilleContent = styled.View<{ height: number; width: number; showTabBar: boolean }>(
   (props) => ({
     position: 'absolute',
     bottom: Platform.select<string | undefined>({
-      web: props.showTabBar ? '5%' : '20%',
+      web: props.showTabBar ? '3%' : '20%',
       default: '-8%',
     }),
     flexDirection: 'row',
@@ -102,13 +107,13 @@ const PastilleContent = styled.View<{ height: number; width: number; showTabBar:
 )
 
 const Plus = styled(Typo.Caption)<{ height: number }>(({ height, theme }) => ({
-  fontSize: 8,
+  fontSize: theme.showTabBar ? theme.tabBar.fontSize : 8,
   height: Platform.select<number>({ web: height, default: height + getSpacing(1) }),
   color: theme.colors.white,
 }))
 
 const Count = styled(Typo.Caption)<{ height: number }>(({ height, theme }) => ({
-  fontSize: 9,
+  fontSize: theme.showTabBar ? theme.tabBar.fontSize : 9,
   height: Platform.select<number>({ web: height, default: height + getSpacing(1) }),
   color: theme.colors.white,
 }))
