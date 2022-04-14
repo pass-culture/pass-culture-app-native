@@ -6,7 +6,7 @@ import { openInbox } from 'react-native-email-link'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
-import { CategoryIdEnum, BookingOfferResponse, BookingReponse } from 'api/gen'
+import { CategoryIdEnum, BookingOfferResponse, BookingReponse, SubcategoryIdEnum } from 'api/gen'
 import { WithdrawalTypeEnum } from 'api/gen'
 import { TicketCode } from 'features/bookings/atoms/TicketCode'
 import { formatSecondsToString, getBookingProperties } from 'features/bookings/helpers'
@@ -23,6 +23,14 @@ interface BookingDetailsTicketContentProps {
   activationCodeFeatureEnabled?: boolean
   proDisableEventsQrcode?: boolean
 }
+
+export const notQrCodeSubcategories = [
+  SubcategoryIdEnum.FESTIVAL_MUSIQUE,
+  SubcategoryIdEnum.CONCERT,
+  SubcategoryIdEnum.EVENEMENT_MUSIQUE,
+  SubcategoryIdEnum.FESTIVAL_SPECTACLE,
+  SubcategoryIdEnum.SPECTACLE_REPRESENTATION,
+]
 
 export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentProps) => {
   const { booking, activationCodeFeatureEnabled, proDisableEventsQrcode } = props
@@ -149,8 +157,13 @@ const NoTicket = () => {
 const TicketBody = ({ booking, proDisableEventsQrcode }: TicketBodyProps) => {
   const collectType = booking?.stock?.offer?.withdrawalType
   const collectDelay = booking?.stock?.offer?.withdrawalDelay || 0
+  const subcategoryOffer = booking?.stock?.offer?.subcategoryId
+  const subcategoryShouldHaveQrCode = !notQrCodeSubcategories.includes(subcategoryOffer)
 
-  if (booking.qrCodeData && !proDisableEventsQrcode)
+  if (
+    booking.qrCodeData &&
+    (!proDisableEventsQrcode || (proDisableEventsQrcode && subcategoryShouldHaveQrCode))
+  )
     return <QrCodeView qrCodeData={booking.qrCodeData} />
 
   if (collectType === WithdrawalTypeEnum.no_ticket) {

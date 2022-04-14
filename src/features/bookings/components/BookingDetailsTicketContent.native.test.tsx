@@ -1,7 +1,7 @@
 import { addDays, formatISO } from 'date-fns'
 import React from 'react'
 
-import { WithdrawalTypeEnum } from 'api/gen'
+import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
 import { BookingDetailsTicketContent } from 'features/bookings/components/BookingDetailsTicketContent'
 import { render } from 'tests/utils'
 
@@ -47,9 +47,27 @@ describe('BookingDetailsTicketContent', () => {
       getByTestId('qr-code')
     })
 
-    it('should not display the QR code when proDisableEventsQrcode is true', () => {
-      const { queryByTestId } = render(
+    it('should display the QR code when proDisableEventsQrcode is true and event subcategory is not in notQrCodeSubcategories', () => {
+      const { getByTestId } = render(
         <BookingDetailsTicketContent booking={initialBooking} proDisableEventsQrcode={true} />
+      )
+      getByTestId('qr-code')
+    })
+
+    it('should not display the QR code when proDisableEventsQrcode is true and event subcategory is in notQrCodeSubcategories', () => {
+      const booking = {
+        ...initialBooking,
+        stock: {
+          ...initialBooking.stock,
+          offer: {
+            ...initialBooking.stock.offer,
+            subcategoryId: SubcategoryIdEnum.FESTIVAL_MUSIQUE,
+          },
+        },
+      }
+
+      const { queryByTestId } = render(
+        <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
       )
 
       expect(queryByTestId('qr-code')).toBeFalsy()
@@ -71,6 +89,7 @@ describe('BookingDetailsTicketContent', () => {
             ...initialBooking.stock,
             offer: {
               ...initialBooking.stock.offer,
+              subcategoryId: SubcategoryIdEnum.FESTIVAL_MUSIQUE,
               withdrawalType: WithdrawalTypeEnum.on_site,
               withdrawalDelay: 60 * 60 * 2,
             },
@@ -90,6 +109,7 @@ describe('BookingDetailsTicketContent', () => {
             ...initialBooking.stock,
             offer: {
               ...initialBooking.stock.offer,
+              subcategoryId: SubcategoryIdEnum.FESTIVAL_MUSIQUE,
               withdrawalType: WithdrawalTypeEnum.on_site,
               withdrawalDelay: 0,
             },
@@ -110,6 +130,7 @@ describe('BookingDetailsTicketContent', () => {
             beginningDatetime: formatISO(addDays(new Date(), 3)).slice(0, -1),
             offer: {
               ...initialBooking.stock.offer,
+              subcategoryId: SubcategoryIdEnum.FESTIVAL_MUSIQUE,
               withdrawalType: WithdrawalTypeEnum.by_email,
               withdrawalDelay: 60 * 60 * 24 * 2,
             },
@@ -130,6 +151,7 @@ describe('BookingDetailsTicketContent', () => {
             beginningDatetime: formatISO(addDays(new Date(), 2)).slice(0, -1),
             offer: {
               ...initialBooking.stock.offer,
+              subcategoryId: SubcategoryIdEnum.FESTIVAL_MUSIQUE,
               withdrawalType: WithdrawalTypeEnum.by_email,
               withdrawalDelay: 60 * 60 * 24 * 2,
             },
@@ -151,6 +173,7 @@ describe('BookingDetailsTicketContent', () => {
             beginningDatetime: formatISO(addDays(new Date(), 3)).slice(0, -1),
             offer: {
               ...initialBooking.stock.offer,
+              subcategoryId: SubcategoryIdEnum.FESTIVAL_MUSIQUE,
               withdrawalType: WithdrawalTypeEnum.by_email,
               withdrawalDelay: 0,
             },
@@ -172,6 +195,7 @@ describe('BookingDetailsTicketContent', () => {
             beginningDatetime: formatISO(new Date()).slice(0, -1),
             offer: {
               ...initialBooking.stock.offer,
+              subcategoryId: SubcategoryIdEnum.FESTIVAL_MUSIQUE,
               withdrawalType: WithdrawalTypeEnum.by_email,
               withdrawalDelay: 0,
             },
@@ -192,6 +216,7 @@ describe('BookingDetailsTicketContent', () => {
             ...initialBooking.stock,
             offer: {
               ...initialBooking.stock.offer,
+              subcategoryId: SubcategoryIdEnum.FESTIVAL_MUSIQUE,
               withdrawalType: WithdrawalTypeEnum.no_ticket,
               withdrawalDelay: 0,
             },
