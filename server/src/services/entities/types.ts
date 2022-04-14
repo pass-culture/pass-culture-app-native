@@ -14,7 +14,7 @@ export const ENTITY_METAS_CONFIG_MAP = {
 export type EntityKeys = keyof typeof ENTITY_MAP
 
 export type EntityType = {
-  NAME: string
+  API_MODEL_NAME: string
   METAS_CONFIG: {
     title: (entity: Record<string, unknown>) => string
     description: (entity: Record<string, unknown>) => string

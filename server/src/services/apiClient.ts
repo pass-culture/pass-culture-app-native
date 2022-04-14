@@ -14,7 +14,7 @@ export async function apiClient(type: EntityKeys, id: number) {
     throw new Error(`Unknown entity: ${type}`)
   }
 
-  const url = `${href}${API_BASE_PATH_NATIVE_V1}/${entityValue.NAME}/${id}`
+  const url = `${href}${API_BASE_PATH_NATIVE_V1}/${entityValue.API_MODEL_NAME}/${id}`
 
   const response = await fetch(url, {
     headers: new Headers({

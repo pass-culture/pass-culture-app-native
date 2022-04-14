@@ -40,10 +40,15 @@ describe('webAppProxyMiddleware', () => {
     })
 
     it.each([
-      ['true', OFFER.NAME, 'offre', `${OFFER_RESPONSE_SNAP.id}`],
-      ['true', VENUE.NAME, 'lieu', `${VENUE_RESPONSE_SNAP.id}`],
-      ['true', VENUE.NAME, 'lieu', `${VENUE_RESPONSE_ALTERNATIVE_SNAP.id}`],
-      ...Object.entries(ENTITY_MAP).map(([key, { NAME }]) => ['false', NAME, key, '']),
+      ['true', OFFER.API_MODEL_NAME, 'offre', `${OFFER_RESPONSE_SNAP.id}`],
+      ['true', VENUE.API_MODEL_NAME, 'lieu', `${VENUE_RESPONSE_SNAP.id}`],
+      ['true', VENUE.API_MODEL_NAME, 'lieu', `${VENUE_RESPONSE_ALTERNATIVE_SNAP.id}`],
+      ...Object.entries(ENTITY_MAP).map(([key, { API_MODEL_NAME }]) => [
+        'false',
+        API_MODEL_NAME,
+        key,
+        '',
+      ]),
     ])(
       `should edit html=%s when req.url on %s use valid id: /%s/%s`,
       async (isEditedHtml: string, entity: string, endpoint: string, id: string) => {
