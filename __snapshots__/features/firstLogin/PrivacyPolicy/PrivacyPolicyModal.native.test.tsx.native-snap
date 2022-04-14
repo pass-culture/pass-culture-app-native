@@ -294,69 +294,118 @@ exports[`<PrivacyPolicyModal /> should render correctly 1`] = `
                 }
               >
                 Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur "Autoriser", tu acceptes l'utilisation de ces services détaillés dans notre
+                <View
+                  numberOfSpaces={1}
+                  style={
+                    Array [
+                      Object {
+                        "width": 4,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  nativeID="animatedComponent"
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "marginBottom": -1.5,
+                      "marginLeft": -1.5,
+                      "marginRight": -1.5,
+                      "marginTop": -1.5,
+                      "opacity": 1,
+                      "userSelect": "auto",
+                    }
+                  }
+                >
+                  <View
+                    icon={
+                      Object {
+                        "$$typeof": Symbol(react.forward_ref),
+                        "attrs": Array [
+                          [Function],
+                        ],
+                        "inlineStyle": InlineStyle {
+                          "rules": Array [
+                            "",
+                          ],
+                        },
+                        "render": [Function],
+                        "shouldForwardProp": undefined,
+                        "styledComponentId": "StyledNativeComponent",
+                        "target": [Function],
+                        "withComponent": [Function],
+                      }
+                    }
+                    iconSize={20}
+                    style={
+                      Array [
+                        Object {
+                          "paddingLeft": 25,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        Array [
+                          Object {
+                            "left": 0,
+                            "position": "absolute",
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        height={20}
+                        testID="button-icon"
+                        width={20}
+                      >
+                        <Text>
+                          button-icon-SVG-Mock
+                        </Text>
+                      </View>
+                      <View
+                        numberOfSpaces={1}
+                        style={
+                          Array [
+                            Object {
+                              "width": 4,
+                            },
+                          ]
+                        }
+                      />
+                    </View>
+                    <Text
+                      color="#eb0055"
+                      style={
+                        Array [
+                          Object {
+                            "color": "#eb0055",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "fontWeight": "bold",
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                      type="ButtonText"
+                    >
+                      Politique des cookies
+                    </Text>
+                  </View>
+                </View>
               </Text>
             </Text>
-            <View
-              accessibilityLabel="Politique des cookies"
-              accessible={true}
-              collapsable={false}
-              focusable={true}
-              nativeID="animatedComponent"
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                Object {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "opacity": 1,
-                  "paddingBottom": 2,
-                  "paddingLeft": 2,
-                  "paddingRight": 2,
-                  "paddingTop": 2,
-                  "userSelect": "auto",
-                  "width": "100%",
-                }
-              }
-              testID="Politique des cookies"
-            >
-              <View
-                height={16}
-                testID="button-icon"
-                width={16}
-              >
-                <Text>
-                  button-icon-SVG-Mock
-                </Text>
-              </View>
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  Array [
-                    Object {
-                      "color": "#eb0055",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 12,
-                      "lineHeight": 20,
-                      "marginLeft": 4,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
-              >
-                Politique des cookies
-              </Text>
-            </View>
             <Text
               style={
                 Array [
