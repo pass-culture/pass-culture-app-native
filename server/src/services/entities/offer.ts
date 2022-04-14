@@ -5,7 +5,7 @@ import { EntityType, TwitterCard } from './types'
 const { DEEPLINK_PROTOCOL } = env
 
 export const OFFER: EntityType = {
-  NAME: 'offer',
+  API_MODEL_NAME: 'offer',
   METAS_CONFIG: {
     title(entity: Record<string, unknown>) {
       return entity.name as string

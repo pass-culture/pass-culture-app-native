@@ -12,10 +12,9 @@ const mockVenueResponse = VENUE_RESPONSE_SNAP
 
 jest.mock('../../services/apiClient', () => ({
   apiClient: async (type: EntityKeys) => {
-    const selectedType = mockEntityMap[type as EntityKeys]
-    if (selectedType.NAME === mockOfferMetasConfig.NAME) {
+    if (mockEntityMap[type].API_MODEL_NAME === mockOfferMetasConfig.API_MODEL_NAME) {
       return mockOfferResponse
-    } else if (selectedType.NAME === mockVenuMetasConfig.NAME) {
+    } else if (mockEntityMap[type].API_MODEL_NAME === mockVenuMetasConfig.API_MODEL_NAME) {
       return mockVenueResponse
     }
     throw new Error(`Unknown entity: ${type}`)

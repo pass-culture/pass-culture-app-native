@@ -3,7 +3,7 @@ export const TEST_HTML = `<!doctype html>
   <head>
     <meta charset="utf-8">
     <title>pass Culture</title>
-        <meta name="title" content="pass Culture"/>
+    <meta name="title" content="pass Culture"/>
     <meta name="description"
           content="Dispositif porté par le ministère de la Culture, a pour but de faciliter l'accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l'application pass Culture."/>
     <meta name="author" content="pass Culture"/>

@@ -3,7 +3,7 @@
   "description": "Web server proxy for pass-culture-app-native",
   "version": "0.0.1",
   "private": true,
-  "license": "MIT",
+  "license": "UNLICENSED",
   "author": {
     "email": "support@passculture.app",
     "url": "https://pass.culture.fr",
