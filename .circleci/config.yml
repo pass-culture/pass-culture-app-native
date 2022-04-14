@@ -59,6 +59,22 @@ commands:
           paths:
             - node_modules
 
+  install_node_modules_proxy:
+    description: Install proxy Node Dependencies
+    steps:
+      - restore_cache:
+          name: Restore Node Modules
+          keys:
+            - node-modules-proxy-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+      - run:
+          name: Install Dependencies
+          command: yarn install --immutable --cwd server
+      - save_cache:
+          name: Save Node Modules
+          key: node-modules-proxy-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+          paths:
+            - node_modules
+
   unit_test_native:
     description: Unit Tests Native
     steps:
@@ -314,6 +330,27 @@ jobs:
     steps:
       - checkout
       - install_node_modules
+
+  checkout-and-install-proxy-deps:
+    executor: node
+    working_directory: ~/pass-culture/server
+    steps:
+      - checkout
+      - install_node_modules_proxy
+
+  test-proxy:
+    executor: node
+    working_directory: ~/pass-culture/server
+    steps:
+      - checkout
+      - install_node_modules_proxy
+#      - run:
+#          name: Typescript Type Check
+#          command: yarn test:types
+      - run:
+          name: Unit tests
+          command: |
+            yarn --cwd server test:unit
 
   test-lint-and-types:
     executor: node
@@ -718,6 +755,13 @@ workflows:
           filters:
             tags:
               only: /.*/
+      - checkout-and-install-proxy-deps:
+          filters:
+            tags:
+              only: /.*/
+      - test-proxy:
+          requires:
+            - checkout-and-install-proxy-deps
       - test-lint-and-types:
           requires:
             - checkout-and-install-deps
