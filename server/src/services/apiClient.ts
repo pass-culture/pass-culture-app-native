@@ -1,4 +1,5 @@
 import fetch, { Headers } from 'cross-fetch'
+import { logger } from 'firebase-functions'
 
 import { env } from '../libs/environment/env'
 
@@ -6,6 +7,7 @@ import { ENTITY_MAP, EntityKeys } from './entities/types'
 
 const { API_BASE_URL, API_BASE_PATH_NATIVE_V1, PROXY_CACHE_CONTROL } = env
 
+logger.info(JSON.stringify(env, null, 2))
 const { href } = new URL(API_BASE_URL)
 
 export async function apiClient(type: EntityKeys, id: number) {

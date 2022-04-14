@@ -111,3 +111,6 @@ sourcemaps/*
 
 # typescript
 tsconfig.tsbuildinfo
+
+# firebase
+firebase-debug.log
