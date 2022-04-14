@@ -10,6 +10,8 @@ const { APP_PROXY_URL } = env
 
 const { href } = new URL(APP_PROXY_URL)
 
+const ENTITY_PATH_REGEXP = new RegExp(`/(${Object.keys(ENTITY_MAP).join('|')})/(\\d+)`)
+
 const options = {
   target: href,
   changeOrigin: true,
@@ -28,14 +30,13 @@ export async function metasResponseInterceptor(
   }
 
   const html = responseBuffer.toString('utf8')
-  const entityEndpoints = Object.keys(ENTITY_MAP)
-  const re = new RegExp(`/(${entityEndpoints.join('|')})/(\\d+)`)
+
   let match
 
   /* istanbul ignore next */
   // error with istanbul thinking there is a else path
-  if (typeof req.url === 'string') {
-    match = re.exec(req.url)
+  if (req.url) {
+    match = ENTITY_PATH_REGEXP.exec(req.url)
   }
 
   const [endpoint, entityKey, id] = match || []
