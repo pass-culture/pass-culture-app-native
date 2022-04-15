@@ -1,4 +1,3 @@
-import { useLinkProps } from '@react-navigation/native'
 import React, { CSSProperties, memo, MouseEventHandler, useCallback } from 'react'
 import styled from 'styled-components'
 
@@ -39,33 +38,31 @@ const _AppButton = <T extends AppButtonProps>({
   className,
   name,
   focusOutlineColor,
-  to,
-  externalHref,
+  accessibilityRole,
+  href,
+  target,
 }: OnlyBaseButtonProps<T>) => {
-  const ButtonComponent = (to || externalHref ? Link : Button) as React.ElementType
-  const internalLinkProps = useLinkProps({ to: to ?? '' })
-  const externalLinkProps = { href: externalHref, accessibilityRole: 'link', target: '_blank' }
-  const linkProps = externalHref ? externalLinkProps : internalLinkProps
-  const buttonLinkProps = externalHref || to ? { ...linkProps, type: undefined } : {}
+  const ButtonComponent = (href ? Link : Button) as React.ElementType
+  const buttonLinkProps = { accessibilityRole, href, target }
 
   const pressHandler = disabled || isLoading ? undefined : (onPress as AppButtonEventWeb)
   const longPressHandler = disabled || isLoading ? undefined : (onLongPress as AppButtonEventWeb)
 
   const onClick: MouseEventHandler<HTMLButtonElement> = useCallback(
     (event) => {
-      if ((type === 'submit' || to || externalHref) && pressHandler) {
+      if (type === 'submit' && pressHandler) {
         event.preventDefault()
       }
       if (pressHandler) {
         pressHandler(event)
       }
     },
-    [type, to, externalHref, pressHandler]
+    [type, pressHandler]
   )
 
   const onDoubleClick: MouseEventHandler<HTMLButtonElement> = useCallback(
     (event) => {
-      if ((type === 'submit' || to || externalHref) && pressHandler) {
+      if (type === 'submit' && pressHandler) {
         event.preventDefault()
       }
       if (longPressHandler) {
@@ -73,7 +70,7 @@ const _AppButton = <T extends AppButtonProps>({
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [type, to, externalHref, longPressHandler]
+    [type, longPressHandler]
   )
 
   return (
@@ -81,9 +78,9 @@ const _AppButton = <T extends AppButtonProps>({
       {...accessibilityAndTestId(accessibilityLabel, testID)}
       name={name}
       onClick={onClick}
-      onDoubleClick={to ? undefined : onDoubleClick}
+      onDoubleClick={onDoubleClick}
       disabled={disabled}
-      type={type}
+      type={href ? undefined : type}
       aria-describedby={accessibilityDescribedBy}
       mediumWidth={mediumWidth}
       fullWidth={fullWidth}

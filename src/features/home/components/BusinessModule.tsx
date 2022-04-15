@@ -9,11 +9,11 @@ import { BusinessPane } from 'features/home/contentful'
 import { openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { Idea } from 'ui/svg/icons/Idea'
 import { Typo, getSpacing, MARGIN_DP, LENGTH_XS, RATIO_BUSINESS, Spacer } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
-import { TouchableLink } from 'ui/web/link/TouchableLink'
 
 import { fillUrlEmail, shouldUrlBeFilled, showBusinessModule } from './BusinessModule.utils'
 
@@ -61,8 +61,7 @@ export const BusinessModule = ({ module }: { module: BusinessPane }) => {
       <Spacer.Row numberOfSpaces={6} />
       <StyledTouchableLink
         highlight
-        accessibilityRole={isDisabled ? 'link' : undefined}
-        externalHref={url && shouldUrlBeFilled(url) && user ? fillUrlEmail(url, user.email) : url}
+        accessibilityRole={url ? 'link' : undefined}
         onPress={() => setShouldRedirect(true)}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}

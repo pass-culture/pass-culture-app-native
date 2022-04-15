@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { PixelRatio, View } from 'react-native'
 import { useQueryClient } from 'react-query'
@@ -12,17 +11,17 @@ import {
   OfferVenueResponse,
   SubcategoryIdEnum,
 } from 'api/gen'
-import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator'
+import { Referrals } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { QueryKeys } from 'libs/queryKeys'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ImageCaption } from 'ui/components/ImageCaption'
 import { ImageTile } from 'ui/components/ImageTile'
 import { OfferCaption } from 'ui/components/OfferCaption'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { getSpacing, MARGIN_DP } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typography'
-import { TouchableLink } from 'ui/web/link/TouchableLink'
 
 export interface OfferTileProps {
   categoryId: CategoryIdEnum | null | undefined
@@ -89,7 +88,6 @@ export function OfferTile(props: OfferTileProps) {
   } = props
 
   const [isFocus, setIsFocus] = useState(false)
-  const navigation = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
   const { offerId, name, distance, date, price, isDuo } = offer
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
@@ -101,7 +99,6 @@ export function OfferTile(props: OfferTileProps) {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
     queryClient.setQueryData([QueryKeys.OFFER, offerId], mergeOfferData(offer))
     analytics.logConsultOffer({ offerId, from: analyticsFrom, moduleName, venueId })
-    navigation.navigate('Offer', { id: offerId, from: analyticsFrom, moduleName })
   }
 
   return (
@@ -109,7 +106,7 @@ export function OfferTile(props: OfferTileProps) {
       <StyledTouchableLink
         highlight
         height={height + MAX_OFFER_CAPTION_HEIGHT}
-        to={{ screen: 'Offer', params: { id: offerId, from: analyticsFrom, moduleName } }}
+        navigateTo={{ screen: 'Offer', params: { id: offerId, from: analyticsFrom, moduleName } }}
         onPress={handlePressOffer}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}

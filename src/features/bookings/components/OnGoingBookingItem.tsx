@@ -1,18 +1,16 @@
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Clock as DefaultClock } from 'ui/svg/icons/Clock'
 import { Duo } from 'ui/svg/icons/Duo'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
-import { TouchableLink } from 'ui/web/link/TouchableLink'
 
 import { getBookingProperties, getBookingLabels } from '../helpers'
 
@@ -20,7 +18,6 @@ import { BookingItemTitle } from './BookingItemTitle'
 import { BookingItemProps } from './types'
 
 export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
-  const { navigate } = useNavigation<UseNavigationType>()
   const { data: settings = null } = useAppSettings()
   const { isEvent } = useSubcategory(booking.stock.offer.subcategoryId)
   const categoryId = useCategoryId(booking.stock.offer.subcategoryId)
@@ -38,8 +35,7 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
   return (
     <View {...getHeadingAttrs(3)}>
       <Container
-        to={{ screen: 'BookingDetails', params: { id: booking.id } }}
-        onPress={() => navigate('BookingDetails', { id: booking.id })}
+        navigateTo={{ screen: 'BookingDetails', params: { id: booking.id } }}
         accessibilityLabel={accessibilityLabel}
         testID="OnGoingBookingItem">
         <OfferImage imageUrl={stock.offer.image?.url} categoryId={categoryId} size="tall" />

@@ -8,7 +8,7 @@ import {
   Description,
   EmailSentModalContent,
 } from 'features/auth/components/signupComponents'
-import { contactSupport, supportUrl } from 'features/auth/support.services'
+import { contactSupport } from 'features/auth/support.services'
 import { navigateToHome, usePreviousRoute } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
@@ -17,6 +17,7 @@ import { analytics } from 'libs/analytics'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
@@ -33,11 +34,6 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
 
   function onClose() {
     navigateToHome()
-  }
-
-  function onConsultHelpSupport() {
-    analytics.logHelpCenterContactSignupConfirmationEmailSent()
-    contactSupport.forSignupConfirmationEmailNotReceived()
   }
 
   const leftIconProps = disableGoBack
@@ -76,10 +72,11 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ route })
           <CenteredText>
             <Typo.Body>{t`Si tu rencontres des difficultés, tu peux consulter notre centre d'aide.`}</Typo.Body>
           </CenteredText>
-          <ButtonTertiary
+          <TouchableLink
+            as={ButtonTertiary}
             wording={t`Consulter notre centre d'aide`}
-            externalHref={supportUrl.forSignupConfirmationEmailNotReceived}
-            onPress={onConsultHelpSupport}
+            externalNav={contactSupport.forSignupConfirmationEmailNotReceived}
+            onPress={() => analytics.logHelpCenterContactSignupConfirmationEmailSent()}
             icon={ExternalSite}
           />
         </Description>

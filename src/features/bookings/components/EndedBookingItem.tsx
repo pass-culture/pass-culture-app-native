@@ -1,12 +1,10 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { View } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { BookingCancellationReasons } from 'api/gen'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { mergeOfferData } from 'features/offer/atoms/OfferTile'
 import { analytics } from 'libs/analytics'
 import { formatToSlashedFrenchDate } from 'libs/dates'
@@ -15,16 +13,15 @@ import { useCategoryId } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { InputRule } from 'ui/components/inputs/rules/InputRule'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Check } from 'ui/svg/icons/Check'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
-import { TouchableLink } from 'ui/web/link/TouchableLink'
 
 import { BookingItemTitle } from './BookingItemTitle'
 import { BookingItemProps } from './types'
 
 export const EndedBookingItem = ({ booking }: BookingItemProps) => {
-  const { navigate } = useNavigation<UseNavigationType>()
   const { cancellationDate, cancellationReason, dateUsed, stock } = booking
   const categoryId = useCategoryId(stock.offer.subcategoryId)
   const queryClient = useQueryClient()
@@ -53,13 +50,16 @@ export const EndedBookingItem = ({ booking }: BookingItemProps) => {
       })
     )
     analytics.logConsultOffer({ offerId: offer.id, from: 'endedbookings' })
-    navigate('Offer', { id: stock.offer.id, from: 'endedbookings' })
   }
 
   return (
     <View {...getHeadingAttrs(3)}>
       <TouchableLink
-        to={{ screen: 'Offer', params: { id: stock.offer.id, from: 'endedbookings' } }}
+        navigateTo={
+          stock.offer.id
+            ? { screen: 'Offer', params: { id: stock.offer.id, from: 'endedbookings' } }
+            : undefined
+        }
         onPress={handlePressOffer}
         accessibilityLabel={accessibilityLabel}
         testID="EndedBookingItem">

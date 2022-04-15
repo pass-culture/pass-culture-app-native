@@ -21,18 +21,6 @@ enum BackupSolution {
 export const useItinerary = (): UseItineraryResult => {
   const [availableApps, setAvailableApps] = useState<AppEnum[] | undefined>(undefined)
   const { showInfoSnackBar } = useSnackBarContext()
-  const getApps = async () => {
-    try {
-      const appsAvailability = await LN.getAvailableApps()
-      const appsKeys = Object.keys(appsAvailability)
-      const apps = appsKeys.filter(
-        (appKey): appKey is AppEnum => appEnumTypeGuard(appKey) && appsAvailability[appKey]
-      )
-      setAvailableApps(apps)
-    } catch {
-      setAvailableApps([])
-    }
-  }
 
   const navigateToWithApp = async (
     address: string,
@@ -82,7 +70,23 @@ export const useItinerary = (): UseItineraryResult => {
   }
 
   useEffect(() => {
-    getApps()
+    let isMounted = true
+
+    LN.getAvailableApps()
+      .then((appsAvailability) => {
+        const appsKeys = Object.keys(appsAvailability)
+        const apps = appsKeys.filter(
+          (appKey): appKey is AppEnum => appEnumTypeGuard(appKey) && appsAvailability[appKey]
+        )
+        if (isMounted) setAvailableApps(apps)
+      })
+      .catch(() => {
+        setAvailableApps([])
+      })
+
+    return () => {
+      isMounted = false
+    }
   }, [])
 
   return { navigateTo }

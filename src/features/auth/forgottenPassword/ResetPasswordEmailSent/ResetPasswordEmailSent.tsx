@@ -4,13 +4,14 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { OpenInboxButton } from 'features/auth/components/OpenInboxButton'
-import { navigateToHome, openUrl } from 'features/navigation/helpers'
+import { navigateToHome } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
@@ -42,10 +43,10 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
             </Typo.Body>
           </CenteredText>
           <Spacer.Column numberOfSpaces={5} />
-          <ButtonTertiary
+          <TouchableLink
+            as={ButtonTertiary}
             wording={t`Consulter l'article d'aide`}
-            externalHref={env.FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED}
-            onPress={() => openUrl(env.FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED)}
+            externalNav={{ url: env.FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED }}
             icon={ExternalSite}
           />
         </Description>

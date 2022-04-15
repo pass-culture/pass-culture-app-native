@@ -1,12 +1,11 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Close } from 'ui/svg/icons/Close'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -19,18 +18,6 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
   visible,
   dismissModal,
 }) => {
-  const { navigate } = useNavigation<UseNavigationType>()
-
-  function goToSignUp() {
-    dismissModal()
-    navigate('SignupForm')
-  }
-
-  function goToLogin() {
-    dismissModal()
-    navigate('Login')
-  }
-
   return (
     <AppModal
       visible={visible}
@@ -48,16 +35,18 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
         </Typo.Body>
       </Description>
 
-      <ButtonPrimary
+      <TouchableLink
+        as={ButtonPrimary}
         wording={t`S'inscrire`}
-        to={{ screen: 'SignupForm', params: undefined }}
-        onPress={goToSignUp}
+        navigateTo={{ screen: 'SignupForm' }}
+        onPress={() => dismissModal()}
       />
       <Spacer.Column numberOfSpaces={3} />
-      <ButtonTertiary
+      <TouchableLink
+        as={ButtonTertiary}
         wording={t`Se connecter`}
-        to={{ screen: 'Login', params: undefined }}
-        onPress={goToLogin}
+        navigateTo={{ screen: 'Login' }}
+        onPress={() => dismissModal()}
       />
     </AppModal>
   )

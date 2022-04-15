@@ -1,15 +1,22 @@
-import {
-  contactSupport as actualContactSupport,
-  supportUrl as actualSupportUrl,
-} from '../support.services'
+import { contactSupport as actualContactSupport } from '../support.services'
 
-export const supportUrl: typeof actualSupportUrl = {
-  forGenericQuestion: '',
-  forSignupConfirmationEmailNotReceived: '',
-  forPhoneNumberConfirmation: '',
-}
 export const contactSupport: typeof actualContactSupport = {
-  forGenericQuestion: jest.fn(),
-  forSignupConfirmationEmailNotReceived: jest.fn(),
-  forPhoneNumberConfirmation: jest.fn(),
+  forGenericQuestion: {
+    url: '',
+    params: { shouldLogEvent: false },
+    onSuccess: jest.fn(),
+    onError: jest.fn(),
+  },
+  forSignupConfirmationEmailNotReceived: {
+    url: '',
+    params: { shouldLogEvent: false },
+    onSuccess: jest.fn(),
+    onError: jest.fn(),
+  },
+  forPhoneNumberConfirmation: {
+    url: '',
+    params: { shouldLogEvent: false },
+    onSuccess: jest.fn(),
+    onError: jest.fn(),
+  },
 }

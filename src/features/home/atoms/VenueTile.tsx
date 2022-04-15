@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { useState } from 'react'
 import { View } from 'react-native'
 import { useQueryClient } from 'react-query'
@@ -6,7 +5,6 @@ import styled from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
 import { VenueCaption } from 'features/home/atoms/VenueCaption'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { GeoCoordinates } from 'libs/geolocation'
 import { formatDistance } from 'libs/parsers'
@@ -14,10 +12,10 @@ import { QueryKeys } from 'libs/queryKeys'
 import { VenueHit } from 'libs/search'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { ImageTile } from 'ui/components/ImageTile'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typography'
-import { TouchableLink } from 'ui/web/link/TouchableLink'
 export interface VenueTileProps {
   venue: VenueHit
   width: number
@@ -36,7 +34,6 @@ const mergeVenueData =
 export const VenueTile = (props: VenueTileProps) => {
   const [isFocus, setIsFocus] = useState(false)
   const { venue, width, height, userPosition } = props
-  const navigation = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
 
   const distance = formatDistance({ lat: venue.latitude, lng: venue.longitude }, userPosition)
@@ -46,7 +43,6 @@ export const VenueTile = (props: VenueTileProps) => {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
     queryClient.setQueryData([QueryKeys.VENUE, venue.id], mergeVenueData(venue))
     analytics.logConsultVenue({ venueId: venue.id, from: 'home' })
-    navigation.navigate('Venue', { id: venue.id })
   }
 
   return (
@@ -54,7 +50,7 @@ export const VenueTile = (props: VenueTileProps) => {
       <StyledTouchableLink
         height={height + MAX_VENUE_CAPTION_HEIGHT}
         width={width}
-        to={{ screen: 'Venue', params: { id: venue.id } }}
+        navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
         onPress={handlePressVenue}
         onFocus={() => setIsFocus(true)}
         onBlur={() => setIsFocus(false)}

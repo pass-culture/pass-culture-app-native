@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { useFocusEffect, useNavigation } from '@react-navigation/native'
+import { useFocusEffect } from '@react-navigation/native'
 import debounce from 'lodash.debounce'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { NativeScrollEvent, ScrollView } from 'react-native'
@@ -10,8 +10,6 @@ import { v4 as uuidv4 } from 'uuid'
 import { useAuthContext, useLogoutRoutine } from 'features/auth/AuthContext'
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
 import { useUserProfileInfo } from 'features/home/api'
-import { openUrl } from 'features/navigation/helpers'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ProfileHeader } from 'features/profile/components/ProfileHeader'
 import { ProfileContainer } from 'features/profile/components/reusables'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch'
@@ -45,7 +43,6 @@ const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 
 export const Profile: React.FC = () => {
   const { dispatch: favoritesDispatch } = useFavoritesState()
-  const { navigate } = useNavigation<UseNavigationType>()
   const { data: user } = useUserProfileInfo()
   const { isLoggedIn } = useAuthContext()
   const signOut = useLogoutRoutine()
@@ -127,8 +124,7 @@ export const Profile: React.FC = () => {
                   <Row
                     title={t`Informations personnelles`}
                     type="navigable"
-                    to={{ screen: 'PersonalData', params: undefined }}
-                    onPress={() => navigate('PersonalData')}
+                    navigateTo={{ screen: 'PersonalData' }}
                     icon={ProfileIcon}
                   />
                 </Li>
@@ -136,8 +132,7 @@ export const Profile: React.FC = () => {
                   <Row
                     title={t`Mot de passe`}
                     type="navigable"
-                    to={{ screen: 'ChangePassword', params: undefined }}
-                    onPress={() => navigate('ChangePassword')}
+                    navigateTo={{ screen: 'ChangePassword' }}
                     icon={Lock}
                   />
                 </Li>
@@ -148,8 +143,7 @@ export const Profile: React.FC = () => {
                 type="navigable"
                 title={t`Notifications`}
                 icon={Bell}
-                to={{ screen: 'NotificationSettings', params: undefined }}
-                onPress={() => navigate('NotificationSettings')}
+                navigateTo={{ screen: 'NotificationSettings' }}
               />
             </Li>
             <Li>
@@ -180,8 +174,10 @@ export const Profile: React.FC = () => {
               <Row
                 title={t`Comment ça marche\u00a0?`}
                 type="navigable"
-                to={{ screen: 'FirstTutorial', params: { shouldCloseAppOnBackAction: false } }}
-                onPress={() => navigate('FirstTutorial', { shouldCloseAppOnBackAction: false })}
+                navigateTo={{
+                  screen: 'FirstTutorial',
+                  params: { shouldCloseAppOnBackAction: false },
+                }}
                 icon={LifeBuoy}
               />
             </Li>
@@ -189,8 +185,7 @@ export const Profile: React.FC = () => {
               <Row
                 title={t`Centre d'aide`}
                 type="clickable"
-                externalHref={env.FAQ_LINK}
-                onPress={() => openUrl(env.FAQ_LINK)}
+                externalNav={{ url: env.FAQ_LINK }}
                 icon={ExternalSite}
               />
             </Li>
@@ -202,8 +197,7 @@ export const Profile: React.FC = () => {
               <Row
                 title={t`Accessibilité`}
                 type="clickable"
-                externalHref={env.ACCESSIBILITY_LINK}
-                onPress={() => openUrl(env.ACCESSIBILITY_LINK)}
+                externalNav={{ url: env.ACCESSIBILITY_LINK }}
                 icon={ExternalSite}
               />
             </Li>
@@ -211,8 +205,7 @@ export const Profile: React.FC = () => {
               <Row
                 title={t`Mentions légales`}
                 type="navigable"
-                to={{ screen: 'LegalNotices', params: undefined }}
-                onPress={() => navigate('LegalNotices')}
+                navigateTo={{ screen: 'LegalNotices' }}
                 icon={LegalNotices}
               />
             </Li>
@@ -220,8 +213,7 @@ export const Profile: React.FC = () => {
               <Row
                 title={t`Confidentialité`}
                 type="navigable"
-                to={{ screen: 'ConsentSettings', params: undefined }}
-                onPress={() => navigate('ConsentSettings')}
+                navigateTo={{ screen: 'ConsentSettings' }}
                 icon={Confidentiality}
               />
             </Li>

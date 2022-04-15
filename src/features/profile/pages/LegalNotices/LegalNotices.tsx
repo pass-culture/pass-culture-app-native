@@ -1,11 +1,8 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
-import { openUrl } from 'features/navigation/helpers'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { env } from 'libs/environment'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SectionRow } from 'ui/components/SectionRow'
@@ -17,7 +14,6 @@ import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 export function LegalNotices() {
   const { data: user } = useUserProfileInfo()
-  const { navigate } = useNavigation<UseNavigationType>()
   return (
     <React.Fragment>
       <PageHeader title={t`Mentions légales`} />
@@ -27,16 +23,14 @@ export function LegalNotices() {
         <Row
           title={t`Conditions Générales d’Utilisation`}
           type="clickable"
-          externalHref={env.CGU_LINK}
-          onPress={() => openUrl(env.CGU_LINK)}
+          externalNav={{ url: env.CGU_LINK }}
           icon={ExternalSite}
         />
         <Separator />
         <Row
           title={t`Charte de protection des données personnelles`}
           type="clickable"
-          externalHref={env.DATA_PRIVACY_CHART_LINK}
-          onPress={() => openUrl(env.DATA_PRIVACY_CHART_LINK)}
+          externalNav={{ url: env.DATA_PRIVACY_CHART_LINK }}
           icon={ExternalSite}
         />
         {!!user && (
@@ -45,7 +39,7 @@ export function LegalNotices() {
             <Row
               title={t`Suppression du compte`}
               type="clickable"
-              onPress={() => navigate('ConfirmDeleteProfile')}
+              navigateTo={{ screen: 'ConfirmDeleteProfile' }}
               icon={ProfileDeletion}
             />
           </React.Fragment>

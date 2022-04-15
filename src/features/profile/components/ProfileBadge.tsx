@@ -1,9 +1,10 @@
 import React, { FunctionComponent } from 'react'
+import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
-import { isAppUrl } from 'features/navigation/helpers'
-import { handleCallToActionLink } from 'features/profile/utils'
+import { shouldOpenInbox } from 'features/profile/utils'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo, Spacer } from 'ui/theme'
 interface ProfileBadgeProps {
@@ -25,11 +26,14 @@ const renderCallToAction = (
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={4} />
-      <ButtonQuaternaryBlack
+      <TouchableLink
+        as={ButtonQuaternaryBlack}
         icon={callToActionIcon || undefined}
         testID="call-to-action-button"
-        externalHref={isAppUrl(callToActionLink) ? undefined : callToActionLink}
-        onPress={() => handleCallToActionLink(callToActionLink)}
+        externalNav={shouldOpenInbox(callToActionLink) ? undefined : { url: callToActionLink }}
+        onPress={() => {
+          shouldOpenInbox(callToActionLink) && openInbox()
+        }}
         wording={callToActionMessage}
         justifyContent="flex-start"
         numberOfLines={2}

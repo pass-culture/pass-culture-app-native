@@ -1,40 +1,78 @@
-import { useLinkProps } from '@react-navigation/native'
-import React, { createRef, ElementType, memo, useEffect, useState } from 'react'
+import { useLinkProps, useNavigation } from '@react-navigation/native'
+import React, {
+  ComponentProps,
+  createRef,
+  ElementType,
+  ReactElement,
+  useEffect,
+  useState,
+} from 'react'
 import { GestureResponderEvent, NativeSyntheticEvent, Platform, TargetedEvent } from 'react-native'
 import styled from 'styled-components/native'
 
+import { openUrl } from 'features/navigation/helpers'
+import { navigateFromRef } from 'features/navigation/navigationRef'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { useItinerary } from 'libs/itinerary/useItinerary'
+import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
-import { TouchableLinkProps } from 'ui/web/link/types'
 
-function _TouchableLink({
+export function TouchableLink<T extends ElementType = ElementType>({
   onPress,
-  to,
-  externalHref,
+  navigateTo,
+  externalNav,
+  navigateBeforeOnPress,
   children,
   highlight = false,
   disabled,
   onFocus,
   onBlur,
+  as: Tag,
   ...rest
-}: TouchableLinkProps) {
+}: TouchableLinkProps<T> & ComponentProps<T>): ReactElement {
   const TouchableComponent = (
     highlight ? StyledTouchableHighlight : StyledTouchableOpacity
   ) as ElementType
+  const TouchableLinkComponent = Tag ? Tag : TouchableComponent
   const linkRef = createRef<HTMLAnchorElement>()
   const [isFocus, setIsFocus] = useState(false)
+  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigateTo: navigateToItinerary } = useItinerary()
 
-  const internalLinkProps = useLinkProps({ to: to ?? '' })
-  const externalLinkProps = externalHref ? { href: externalHref, target: '_blank' } : {}
-  const linkProps = to ? internalLinkProps : externalLinkProps
+  const internalLinkProps = useLinkProps({ to: navigateTo ?? '' })
+  const externalLinkProps = externalNav ? { href: externalNav.url, target: '_blank' } : {}
+  const linkProps = navigateTo ? internalLinkProps : externalLinkProps
   const touchableOpacityProps =
     Platform.OS === 'web' && !disabled
       ? { ...linkProps, accessibilityRole: undefined }
       : { accessibilityRole: 'link' }
 
+  const handleNavigation = () => {
+    if (navigateTo) {
+      const { screen, params, fromRef } = navigateTo
+      ;(fromRef ? navigateFromRef : navigate)(screen, params)
+    } else if (externalNav) {
+      const { url, params, address, onSuccess, onError } = externalNav
+      if (address) {
+        navigateToItinerary(address)
+      } else {
+        openUrl(url, params).then(onSuccess).catch(onError)
+      }
+    }
+  }
+
   function onClick(event: GestureResponderEvent) {
     Platform.OS === 'web' && event?.preventDefault()
-    onPress && onPress(event)
+    if (navigateBeforeOnPress) {
+      handleNavigation()
+    }
+    if (onPress) {
+      onPress(event)
+    }
+    if (!navigateBeforeOnPress) {
+      handleNavigation()
+    }
   }
 
   function onLinkFocus(e: NativeSyntheticEvent<TargetedEvent>) {
@@ -61,7 +99,7 @@ function _TouchableLink({
   }, [])
 
   return (
-    <TouchableComponent
+    <TouchableLinkComponent
       {...touchableOpacityProps}
       {...rest}
       disabled={disabled}
@@ -70,12 +108,9 @@ function _TouchableLink({
       onBlur={onLinkBlur}
       onPress={disabled ? undefined : onClick}>
       {children}
-    </TouchableComponent>
+    </TouchableLinkComponent>
   )
 }
-
-// memo is used to avoid useless rendering while props remain unchanged
-export const TouchableLink = memo(_TouchableLink)
 
 const StyledTouchableOpacity = styled(TouchableOpacity)<{ isFocus?: boolean }>(
   ({ theme, isFocus }) => touchableFocusOutline(theme, isFocus)

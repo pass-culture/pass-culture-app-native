@@ -7,6 +7,6 @@ export const matchSubscriptionMessageIconToSvg = jest
   .fn()
   .mockReturnValue('matchSubscriptionMessageIconToSvg')
 
-export const handleCallToActionLink = jest.fn()
+export const shouldOpenInbox = jest.fn()
 
 export const computeCredit = jest.fn().mockReturnValue(3)

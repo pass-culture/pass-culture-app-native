@@ -2,9 +2,10 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { navigateToHome, openUrl } from 'features/navigation/helpers'
+import { navigateToHome } from 'features/navigation/helpers'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
@@ -52,10 +53,10 @@ export function LayoutExpiredLink({
       ) : null}
 
       {!!urlFAQ && (
-        <ButtonTertiaryWhite
+        <TouchableLink
+          as={ButtonTertiaryWhite}
           wording={t`Consulter l'article d'aide`}
-          externalHref={urlFAQ}
-          onPress={() => openUrl(urlFAQ)}
+          externalNav={{ url: urlFAQ }}
           icon={ExternalSite}
         />
       )}

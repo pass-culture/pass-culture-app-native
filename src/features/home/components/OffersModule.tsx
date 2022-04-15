@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 
 import { useUserProfileInfo } from 'features/home/api'
@@ -6,7 +5,6 @@ import { HomeOfferTile, SeeMore } from 'features/home/atoms'
 import { SearchParametersFields, DisplayParametersFields } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { useOfferModule } from 'features/home/pages/useOfferModule'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
@@ -31,7 +29,6 @@ export const OffersModule = (props: OffersModuleProps) => {
   const { cover, display, search, index, moduleId } = props
   const data = useOfferModule({ search, moduleId })
   const { position } = useGeolocation()
-  const { navigate } = useNavigation<UseNavigationType>()
   const parseSearchParameters = useParseSearchParameters()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
@@ -40,8 +37,11 @@ export const OffersModule = (props: OffersModuleProps) => {
   const { hits = [], nbHits = 0 } = data || {}
 
   const [parameters] = search
+  // When we navigate to the search page, we want to show 20 results per page,
+  // not what is configured in contentful
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  const params = { ...parseSearchParameters(parameters), hitsPerPage: 20 }
+  const searchParams = { ...parseSearchParameters(parameters), hitsPerPage: 20 }
+  const searchTabConfig = getTabNavConfig('Search', searchParams)
   const moduleName = display.title || parameters.title
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>
     analytics.logAllTilesSeen(moduleName, hits.length)
@@ -55,10 +55,6 @@ export const OffersModule = (props: OffersModuleProps) => {
   const onPressSeeMore = showSeeMore
     ? () => {
         analytics.logClickSeeMore(moduleName)
-        // When we navigate to the search page, we want to show 20 results per page,
-        // not what is configured in contentful
-        const searchParams = { ...parseSearchParameters(parameters), hitsPerPage: 20 }
-        navigate(...getTabNavConfig('Search', searchParams))
       }
     : undefined
 
@@ -96,14 +92,16 @@ export const OffersModule = (props: OffersModuleProps) => {
     ({ width, height }) => {
       return (
         <SeeMore
-          to={{ screen: 'Search', params }}
+          navigateTo={
+            showSeeMore ? { screen: searchTabConfig[0], params: searchTabConfig[1] } : undefined
+          }
           width={width}
           height={height}
           onPress={onPressSeeMore as () => void}
         />
       )
     },
-    [onPressSeeMore, params]
+    [onPressSeeMore, showSeeMore, searchTabConfig]
   )
 
   if (!shouldModuleBeDisplayed) return <React.Fragment />
@@ -117,7 +115,7 @@ export const OffersModule = (props: OffersModuleProps) => {
       itemWidth={itemWidth}
       coverUrl={cover}
       onPressSeeMore={onPressSeeMore}
-      titleSeeMoreLink={{ screen: 'Search', params }}
+      titleSeeMoreLink={{ screen: searchTabConfig[0], params: searchTabConfig[1] }}
       renderItem={renderItem}
       renderFooter={renderFooter}
       keyExtractor={keyExtractor}

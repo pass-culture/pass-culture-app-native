@@ -1,4 +1,3 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useMemo, useState } from 'react'
 import { PixelRatio } from 'react-native'
 import FastImage from 'react-native-fast-image'
@@ -7,13 +6,12 @@ import styled from 'styled-components/native'
 import { shouldDisplayExcluOffer } from 'features/home/components/ExclusivityModule.utils'
 import { ExclusivityPane } from 'features/home/contentful'
 import { useExcluOffer } from 'features/home/pages/useExcluOffer'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { useMaxPrice } from 'features/search/utils/useMaxPrice'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { MARGIN_DP, LENGTH_XL, RATIO_EXCLU, Spacer, getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
-import { TouchableLink } from 'ui/web/link/TouchableLink'
 
 export const ExclusivityModule = ({
   alt,
@@ -22,14 +20,12 @@ export const ExclusivityModule = ({
   display,
 }: Omit<ExclusivityPane, 'moduleId'>) => {
   const [isFocus, setIsFocus] = useState(false)
-  const { navigate } = useNavigation<UseNavigationType>()
   const { data: offer } = useExcluOffer(id)
   const { position } = useGeolocation()
   const maxPrice = useMaxPrice()
 
   const handlePressExclu = useCallback(() => {
     if (typeof id !== 'number') return
-    navigate('Offer', { id, from: 'home' })
     analytics.logClickExclusivityBlock(id)
     analytics.logConsultOffer({ offerId: id, from: 'exclusivity' })
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -45,7 +41,10 @@ export const ExclusivityModule = ({
       <ImageContainer>
         <StyledTouchableLink
           highlight
-          to={{ screen: 'Offer', params: { id, from: 'home' } }}
+          navigateBeforeOnPress
+          navigateTo={
+            typeof id === 'number' ? { screen: 'Offer', params: { id, from: 'home' } } : undefined
+          }
           onPress={handlePressExclu}
           onFocus={() => setIsFocus(true)}
           onBlur={() => setIsFocus(false)}

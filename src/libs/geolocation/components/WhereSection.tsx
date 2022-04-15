@@ -1,24 +1,21 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { Coordinates, OfferVenueResponse, VenueResponse } from 'api/gen'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
-import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { QueryKeys } from 'libs/queryKeys'
 import { Spacer } from 'ui/components/spacer/Spacer'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
-import { TouchableLink } from 'ui/web/link/TouchableLink'
 
 type Props = {
   beforeNavigateToItinerary?: () => Promise<void> | void
@@ -54,24 +51,18 @@ export const WhereSection: React.FC<Props> = ({
   locationCoordinates,
 }) => {
   const queryClient = useQueryClient()
-  const navigation = useNavigation<UseNavigationType>()
   const { latitude: lat, longitude: lng } = locationCoordinates
   const distanceToLocation = useDistance({ lat, lng })
   const venueFullAddress = venue.address
     ? formatFullAddress(venue.address, venue.postalCode, venue.city)
     : undefined
-  const { canOpenItinerary, openItinerary } = useOpenItinerary(
-    venueFullAddress,
-    beforeNavigateToItinerary
-  )
 
   if (distanceToLocation === undefined && venue.address === null) return null
 
-  const navigateToVenuePage = () => {
+  const onVenuePress = () => {
     // We pre-populate the query-cache with the data from the search result for a smooth transition
     queryClient.setQueryData([QueryKeys.VENUE, venue.id], mergeVenueData(venue))
     analytics.logConsultVenue({ venueId: venue.id, from: 'offer' })
-    navigation.navigate('Venue', { id: venue.id })
   }
 
   return (
@@ -83,8 +74,8 @@ export const WhereSection: React.FC<Props> = ({
           <Spacer.Column numberOfSpaces={4} />
 
           <VenueNameContainer
-            to={{ screen: 'Venue', params: { id: venue.id } }}
-            onPress={navigateToVenuePage}
+            navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
+            onPress={onVenuePress}
             accessibilityLabel={t`Lieu` + ` ${venue.publicName || venue.name}`}
             testID="VenueBannerComponent">
             <Spacer.Row numberOfSpaces={2} />
@@ -114,16 +105,18 @@ export const WhereSection: React.FC<Props> = ({
           <Typo.Body>{distanceToLocation}</Typo.Body>
         </React.Fragment>
       )}
-      {!!canOpenItinerary && (
+      {!!venueFullAddress && (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
           <Separator />
           <Spacer.Column numberOfSpaces={6} />
           <SeeItineraryButton
-            externalHref={
-              venueFullAddress ? getGoogleMapsItineraryUrl(venueFullAddress) : undefined
+            externalNav={
+              venueFullAddress
+                ? { url: getGoogleMapsItineraryUrl(venueFullAddress), address: venueFullAddress }
+                : undefined
             }
-            openItinerary={openItinerary}
+            onPress={venueFullAddress ? beforeNavigateToItinerary : undefined}
           />
         </React.Fragment>
       )}

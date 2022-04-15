@@ -2,11 +2,12 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { contactSupport, supportUrl } from 'features/auth/support.services'
+import { contactSupport } from 'features/auth/support.services'
 import { navigateToHome } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Email } from 'ui/svg/icons/Email'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Typo } from 'ui/theme'
@@ -17,13 +18,13 @@ export function PhoneValidationTooManyAttempts() {
       title={t`Trop de tentatives\u00a0!`}
       icon={UserBlocked}
       buttons={[
-        <ButtonTertiaryWhite
+        <TouchableLink
+          as={ButtonTertiaryWhite}
           key={1}
           wording={t`Contacter le support`}
           accessibilityLabel={t`Ouvrir le gestionnaire mail pour contacter le support`}
           icon={Email}
-          externalHref={supportUrl.forPhoneNumberConfirmation}
-          onPress={contactSupport.forPhoneNumberConfirmation}
+          externalNav={contactSupport.forPhoneNumberConfirmation}
         />,
         <ButtonPrimaryWhite key={2} wording={t`Retourner à l'accueil`} onPress={navigateToHome} />,
       ]}>

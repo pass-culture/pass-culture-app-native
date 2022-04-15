@@ -1,11 +1,15 @@
 import { ComponentType, CSSProperties, FunctionComponent, MouseEventHandler } from 'react'
-import { GestureResponderEvent, StyleProp, TextProps, ViewStyle } from 'react-native'
+import {
+  AccessibilityRole,
+  GestureResponderEvent,
+  StyleProp,
+  TextProps,
+  ViewStyle,
+} from 'react-native'
 
-import { AllNavParamList } from 'features/navigation/RootNavigator'
 import { IconInterface } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
-import { To } from 'ui/web/link/types'
 
 export interface TouchableOpacityButtonProps {
   buttonHeight: 'small' | 'tall'
@@ -55,8 +59,9 @@ export interface BaseButtonProps {
   type?: 'button' | 'submit' | 'reset'
   name?: string
   focusOutlineColor?: ColorsEnum
-  to?: To<AllNavParamList, keyof AllNavParamList>
-  externalHref?: string
+  accessibilityRole?: AccessibilityRole
+  href?: string
+  target?: string
 }
 
 export interface AppButtonProps extends BaseButtonProps {

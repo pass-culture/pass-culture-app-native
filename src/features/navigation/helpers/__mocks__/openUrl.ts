@@ -1,1 +1,1 @@
-export const openUrl = jest.fn(() => undefined)
+export const openUrl = jest.fn(() => Promise.resolve())

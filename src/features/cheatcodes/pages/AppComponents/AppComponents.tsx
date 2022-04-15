@@ -541,7 +541,7 @@ export const AppComponents: FunctionComponent = () => {
             type="navigable"
             title="navigable"
             icon={Email}
-            onPress={() => Alert.alert('gooo !!!')}
+            navigateTo={{ screen: 'CheatCodes' }}
           />
           <SectionRow type="clickable" title="with CTA" icon={Email} cta={<ExampleSwitch />} />
           <SectionRow

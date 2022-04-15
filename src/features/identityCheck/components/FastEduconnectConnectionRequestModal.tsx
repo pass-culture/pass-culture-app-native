@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 
 import { IdentityCheckMethod } from 'api/gen'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
-import { openUrl } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
@@ -15,6 +14,7 @@ import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBla
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { OrSeparator } from 'ui/components/OrSeparator'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Close } from 'ui/svg/icons/Close'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
@@ -65,9 +65,9 @@ export const FastEduconnectConnectionRequestModal: React.FC<
         {t`Tu peux vérifier ton identité en moins de 2 minutes en utilisant ton compte ÉduConnect. Si tu n'as pas d'identifiants ÉduConnect rapproche toi de ton établissement. `}
       </MainContent>
 
-      <ButtonQuaternaryBlack
-        externalHref={env.FAQ_LINK_EDUCONNECT_URL}
-        onPress={() => openUrl(env.FAQ_LINK_EDUCONNECT_URL)}
+      <TouchableLink
+        as={ButtonQuaternaryBlack}
+        externalNav={{ url: env.FAQ_LINK_EDUCONNECT_URL }}
         icon={InfoPlain}
         wording={t`C’est quoi ÉduConnect\u00a0?`}
       />

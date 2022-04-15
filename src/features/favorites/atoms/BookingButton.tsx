@@ -2,10 +2,10 @@ import { t } from '@lingui/macro'
 import React from 'react'
 
 import { FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
-import { openUrl } from 'features/navigation/helpers'
 import { hasEnoughCredit } from 'features/offer/services/useHasEnoughCredit'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 
 interface Props {
@@ -107,11 +107,11 @@ const BookExternallyButton = ({
   offerName: FavoriteOfferResponse['name']
 }) =>
   url ? (
-    <ButtonPrimary
+    <TouchableLink
+      as={ButtonPrimary}
       wording={t`Réserver`}
       accessibilityLabel={t`Réserver l'offre ${offerName}`}
-      externalHref={url}
-      onPress={() => url && openUrl(url, { analyticsData: { offerId } })}
+      externalNav={{ url, params: { analyticsData: { offerId } } }}
       icon={ExternalSite}
       buttonHeight="tall"
     />

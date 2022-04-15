@@ -20,7 +20,7 @@ export const IdentityCheckEduConnect = () => {
   const { dispatch } = useIdentityCheckContext()
   const { goBack } = useGoBack(...homeNavConfig)
 
-  const { error, loginUrl, openEduConnect } = useEduConnectLogin()
+  const { error, openEduConnect } = useEduConnectLogin()
 
   const onGoBack = () => {
     dispatch({ type: 'SET_METHOD', payload: null })
@@ -65,7 +65,6 @@ export const IdentityCheckEduConnect = () => {
       fixedBottomChildren={
         <ButtonPrimary
           wording={`Connexion avec ÉduConnect`}
-          externalHref={loginUrl}
           onPress={onSubmit}
           icon={ExternalSite}
         />

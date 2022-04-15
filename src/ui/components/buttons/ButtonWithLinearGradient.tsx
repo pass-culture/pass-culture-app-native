@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { ButtonWithLinearGradientProps } from 'ui/components/buttons/buttonWithLinearGradientTypes'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Rectangle as InitialRectangle } from 'ui/svg/Rectangle'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -39,7 +39,7 @@ const Rectangle = styled(InitialRectangle).attrs({
   size: '100%',
 })``
 
-const Container = styled(TouchableOpacity)(({ theme }) => ({
+const Container = styled(TouchableLink)(({ theme }) => ({
   justifyContent: 'center',
   alignItems: 'center',
   borderRadius: theme.borderRadius.button,

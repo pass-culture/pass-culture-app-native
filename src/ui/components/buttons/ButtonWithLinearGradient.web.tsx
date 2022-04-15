@@ -1,4 +1,3 @@
-import { useLinkProps } from '@react-navigation/native'
 import React, { SyntheticEvent, useCallback } from 'react'
 import styled from 'styled-components'
 import styledNative, { DefaultTheme } from 'styled-components/native'
@@ -14,16 +13,14 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
   type = 'button',
   name,
   className,
-  externalHref,
-  to,
   icon,
+  accessibilityRole,
+  href,
+  target,
   testID,
 }) => {
-  const ButtonComponent = (to || externalHref ? Link : Button) as React.ElementType
-  const internalLinkProps = useLinkProps({ to: to ?? '' })
-  const externalLinkProps = { href: externalHref, accessibilityRole: 'link', target: '_blank' }
-  const linkProps = externalHref ? externalLinkProps : internalLinkProps
-  const buttonLinkProps = externalHref || to ? { ...linkProps, type: undefined } : {}
+  const ButtonComponent = (href ? Link : Button) as React.ElementType
+  const buttonLinkProps = { accessibilityRole, href, target }
 
   const Icon = icon
     ? styledNative(icon).attrs(({ theme }) => ({
@@ -34,7 +31,7 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
 
   const onClick = useCallback(
     (event: SyntheticEvent) => {
-      if (type === 'submit' || to || externalHref) {
+      if (type === 'submit') {
         event.preventDefault()
       }
       if (onPress) {
@@ -49,7 +46,7 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
       name={name}
       onClick={onClick}
       disabled={isDisabled}
-      type={type}
+      type={href ? undefined : type}
       className={className}
       testID={testID}
       {...buttonLinkProps}>

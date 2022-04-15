@@ -4,11 +4,11 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { OrSeparator } from 'ui/components/OrSeparator'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -16,14 +16,12 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 export const IdentityCheckDMS = () => {
   const theme = useTheme()
 
-  const openDMSFrenchCitizenURL = () => {
+  const onDMSFrenchCitizenPress = () => {
     analytics.logOpenDMSFrenchCitizenURL()
-    openUrl(env.DMS_FRENCH_CITIZEN_URL)
   }
 
-  const openDMSForeignCitizenURL = () => {
+  const onDMSForeignCitizenPress = () => {
     analytics.logOpenDMSForeignCitizenURL()
-    openUrl(env.DMS_FOREIGN_CITIZEN_URL)
   }
 
   return (
@@ -41,18 +39,20 @@ export const IdentityCheckDMS = () => {
           </StyledBody>
           {theme.isMobileViewport ? <Spacer.Flex /> : <Spacer.Column numberOfSpaces={5} />}
           <ButtonContainer>
-            <ButtonTertiaryBlack
+            <TouchableLink
+              as={ButtonTertiaryBlack}
               wording={t`Je suis de nationalité française`}
-              externalHref={env.DMS_FRENCH_CITIZEN_URL}
-              onPress={openDMSFrenchCitizenURL}
+              externalNav={{ url: env.DMS_FRENCH_CITIZEN_URL }}
+              onPress={onDMSFrenchCitizenPress}
               icon={ExternalSiteFilled}
             />
             <Caption>{t`Carte d’identité ou passeport.`}</Caption>
             <OrSeparator />
-            <ButtonTertiaryBlack
+            <TouchableLink
+              as={ButtonTertiaryBlack}
               wording={t`Je suis de nationalité étrangère`}
-              externalHref={env.DMS_FOREIGN_CITIZEN_URL}
-              onPress={openDMSForeignCitizenURL}
+              externalNav={{ url: env.DMS_FOREIGN_CITIZEN_URL }}
+              onPress={onDMSForeignCitizenPress}
               icon={ExternalSiteFilled}
             />
             <Caption>{t`Titre de séjour, carte d'identité ou passeport.`}</Caption>
