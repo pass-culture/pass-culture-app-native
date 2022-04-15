@@ -754,7 +754,7 @@ workflows:
       - deploy-android-testing-hard:
           filters:
             tags:
-              only: /^(testing\/)?v.*/
+              only: /^testing\/v.*/
             branches:
               ignore: /.*/
           requires:
@@ -764,7 +764,7 @@ workflows:
       - deploy-ios-testing-hard:
           filters:
             tags:
-              only: /^(testing\/)?v.*/
+              only: /^testing\/v.*/
             branches:
               ignore: /.*/
           requires:
@@ -774,7 +774,7 @@ workflows:
       - notify-hard-testing-release:
           filters:
             tags:
-              only: /^(testing\/)?v.*/
+              only: /^testing\/v.*/
             branches:
               ignore: /.*/
           requires:
