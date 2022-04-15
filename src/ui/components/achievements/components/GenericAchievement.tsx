@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import { EventArg, useFocusEffect, useNavigation } from '@react-navigation/native'
 import React, { Children, cloneElement, FunctionComponent, ReactElement, useMemo } from 'react'
+import { Platform, View } from 'react-native'
 import Swiper, { SwiperControlsProps } from 'react-native-web-swiper'
 import styled from 'styled-components/native'
 
@@ -39,6 +40,7 @@ export type Props = {
 export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
   const navigation = useNavigation<UseNavigationType>()
   const swiperRef = React.useRef<Swiper>(null)
+  const skipButtonRef = React.useRef<View>(null)
 
   const cards = useMemo(() => Children.toArray(props.children), [props.children])
   const lastIndex = cards.length - 1
@@ -84,10 +86,8 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
       <Spacer.TopScreen />
       <ScreenUsableArea>
         {!!lastIndex && (
-          <SkipButton>
-            <HorizontalPaddingContainer>
-              <ButtonTertiaryGreyDark wording={t`Tout passer`} onPress={skip} />
-            </HorizontalPaddingContainer>
+          <SkipButton ref={skipButtonRef}>
+            <ButtonTertiaryGreyDark wording={t`Tout passer`} onPress={skip} />
           </SkipButton>
         )}
         <SwiperContainer>
@@ -96,7 +96,17 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
             controlsProps={lastIndex ? controlProps : undefined}
             controlsEnabled={!!lastIndex}
             gesturesEnabled={() => !!lastIndex}
-            slideWrapperStyle={slideWrapperStyle}>
+            slideWrapperStyle={slideWrapperStyle}
+            onIndexChanged={() => {
+              if (
+                Platform.OS === 'web' &&
+                document.activeElement?.getAttribute('type') === 'next'
+              ) {
+                const skipButton = (skipButtonRef.current as unknown as HTMLElement)
+                  .firstChild as HTMLElement
+                skipButton.focus()
+              }
+            }}>
             {cards.map((card, index: number) =>
               cloneElement(card as ReactElement<AchievementCardKeyProps>, {
                 key: index,
@@ -153,10 +163,6 @@ export function onRemoveScreenAction({
   }
 }
 
-const HorizontalPaddingContainer = styled.View({
-  paddingHorizontal: getSpacing(5),
-})
-
 const slideWrapperStyle = {
   flex: 1,
   width: '100%',
@@ -179,8 +185,9 @@ const ScreenUsableArea = styled.View(({ theme }) => ({
   maxHeight: getSpacing(225),
 }))
 
-const SkipButton = styled.View({
+const SkipButton = styled(View)({
   alignSelf: 'flex-end',
+  paddingHorizontal: getSpacing(5),
 })
 
 const SwiperContainer = styled.View({
