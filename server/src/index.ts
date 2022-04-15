@@ -1,6 +1,5 @@
-import { logger } from 'firebase-functions'
-
 import { app } from './app'
+import { logger } from './utils/logging'
 
 const PORT = Number(process.env.PORT) || 8080
 

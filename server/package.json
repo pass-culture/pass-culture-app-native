@@ -4,6 +4,8 @@
   "version": "0.0.1",
   "private": true,
   "license": "UNLICENSED",
+  "main": "build/src/index.js",
+  "esnext": "src/index.ts",
   "author": {
     "email": "support@passculture.app",
     "url": "https://pass.culture.fr",
@@ -21,6 +23,7 @@
     "node": "16"
   },
   "scripts": {
+    "build": "tsc --build",
     "dev": "ENV=testing node-dev src/index.ts",
     "start": "ENV=${ENV:-testing} ts-node src/index.ts",
     "start:development": "ENV=development yarn start",

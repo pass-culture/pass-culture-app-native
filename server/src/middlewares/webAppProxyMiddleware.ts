@@ -1,10 +1,10 @@
 import { IncomingMessage } from 'http'
 
-import { logger } from 'firebase-functions'
 import { createProxyMiddleware, responseInterceptor } from 'http-proxy-middleware'
 
 import { env } from '../libs/environment/env'
 import { ENTITY_MAP, EntityKeys } from '../services/entities/types'
+import { logger } from '../utils/logging'
 import { replaceHtmlMetas } from '../utils/metas'
 
 const { APP_PROXY_URL } = env
