@@ -9,6 +9,7 @@ export const mockDefaultSettings: SettingsResponse = {
   displayDmsRedirection: true,
   autoActivateDigitalBookings: true,
   enableIdCheckRetention: false,
+  enableNativeCulturalSurvey: false,
   enableNativeIdCheckVerboseDebugging: false,
   idCheckAddressAutocompletion: true,
   objectStorageUrl: 'https://localhost-storage',

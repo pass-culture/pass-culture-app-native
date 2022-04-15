@@ -31,6 +31,16 @@ jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => (
 
 const mockUsePreviousRoute = usePreviousRoute as jest.Mock
 
+const mockSettings = {
+  enableNativeCulturalSurvey: false,
+}
+
+jest.mock('features/auth/settings', () => ({
+  useAppSettings: jest.fn(() => ({
+    data: mockSettings,
+  })),
+}))
+
 describe('<Login/>', () => {
   beforeEach(() => {
     simulateSignin200()
@@ -85,6 +95,27 @@ describe('<Login/>', () => {
     await waitForExpect(() => {
       expect(navigate).toBeCalledTimes(1)
       expect(navigate).toBeCalledWith('CulturalSurvey')
+    })
+  })
+
+  it('should redirect to NATIVE Cultural Survey WHEN signin is successful, user needs to fill cultural survey when feature flag is activated', async () => {
+    mockSettings.enableNativeCulturalSurvey = true
+    mockMeApiCall({
+      needsToFillCulturalSurvey: true,
+      showEligibleCard: false,
+    } as UserProfileResponse)
+    const renderAPI = renderLogin()
+    const emailInput = renderAPI.getByPlaceholderText('tonadresse@email.com')
+    const passwordInput = renderAPI.getByPlaceholderText('Ton mot de passe')
+    fireEvent.changeText(emailInput, 'email@gmail.com')
+    fireEvent.changeText(passwordInput, 'mypassword')
+
+    fireEvent.press(renderAPI.getByText('Se connecter'))
+    await act(flushAllPromises)
+
+    await waitForExpect(() => {
+      expect(navigate).toBeCalledTimes(1)
+      expect(navigate).toBeCalledWith('CulturalSurveyIntro')
     })
   })
 

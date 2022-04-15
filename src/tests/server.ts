@@ -126,6 +126,7 @@ function requestSettingsSuccess(
     isRecaptchaEnabled: true,
     autoActivateDigitalBookings: false,
     enableNativeIdCheckVerboseDebugging: false,
+    enableNativeCulturalSurvey: false,
     enablePhoneValidation: false,
     enableUnderageGeneralisation: false,
     enableIdCheckRetention: false,

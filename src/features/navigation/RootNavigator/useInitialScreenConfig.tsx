@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 
 import { api } from 'api/api'
 import { useAuthContext } from 'features/auth/AuthContext'
+import { useCulturalSurveyRoute } from 'features/culturalSurvey/helpers/utils'
 import { shouldShowCulturalSurvey } from 'features/firstLogin/helpers'
 import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
@@ -13,11 +14,12 @@ import { RootScreenNames } from './types'
 
 export function useInitialScreen(): RootScreenNames | undefined {
   const { isLoggedIn } = useAuthContext()
+  const culturalSurveyRoute = useCulturalSurveyRoute()
 
   const [initialScreen, setInitialScreen] = useSafeState<RootScreenNames | undefined>(undefined)
 
   useEffect(() => {
-    getInitialScreen({ isLoggedIn })
+    getInitialScreen({ isLoggedIn, culturalSurveyRoute })
       .then((screen) => {
         setInitialScreen(screen)
         triggerInitialScreenNameAnalytics(screen)
@@ -31,7 +33,13 @@ export function useInitialScreen(): RootScreenNames | undefined {
   return initialScreen
 }
 
-async function getInitialScreen({ isLoggedIn }: { isLoggedIn: boolean }): Promise<RootScreenNames> {
+async function getInitialScreen({
+  isLoggedIn,
+  culturalSurveyRoute,
+}: {
+  isLoggedIn: boolean
+  culturalSurveyRoute: 'CulturalSurveyIntro' | 'CulturalSurvey'
+}): Promise<RootScreenNames> {
   if (isLoggedIn) {
     try {
       const user = await api.getnativev1me()
@@ -45,7 +53,7 @@ async function getInitialScreen({ isLoggedIn }: { isLoggedIn: boolean }): Promis
         return 'EighteenBirthday'
       }
       if (shouldShowCulturalSurvey(user)) {
-        return 'CulturalSurvey'
+        return culturalSurveyRoute
       }
     } catch {
       // If we cannot get user's information, we just go to the homepage
