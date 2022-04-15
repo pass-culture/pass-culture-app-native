@@ -41,7 +41,7 @@ describe('BookingDetailsTicketContent', () => {
       },
     }
 
-    it('should not display button for email consultation if by email collect and delay is specified and email normally received', () => {
+    it('should not display button for email consultation if by email withdrawal and delay is specified and email normally received', () => {
       const booking = {
         ...initialBooking,
         confirmationDate: formatISO(new Date()).slice(0, -1),
@@ -61,10 +61,10 @@ describe('BookingDetailsTicketContent', () => {
         <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
       )
 
-      expect(queryByTestId('collect-info-email-btn')).toBeFalsy()
+      expect(queryByTestId('withdrawal-info-email-btn')).toBeFalsy()
     })
 
-    it('should not display button for email consultation if by email collect and the event is today', () => {
+    it('should not display button for email consultation if by email withdrawal and the event is today', () => {
       const booking = {
         ...initialBooking,
         confirmationDate: formatISO(addDays(new Date(), -2)).slice(0, -1),
@@ -83,7 +83,7 @@ describe('BookingDetailsTicketContent', () => {
         <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
       )
 
-      expect(queryByTestId('collect-info-email-btn')).toBeFalsy()
+      expect(queryByTestId('withdrawal-info-email-btn')).toBeFalsy()
     })
   })
 })

@@ -73,16 +73,16 @@ describe('BookingDetailsTicketContent', () => {
       expect(queryByTestId('qr-code')).toBeFalsy()
     })
 
-    it('should not display on site collect wording if type collect is not on site', () => {
+    it('should not display on site withdrawal wording if type withdrawal is not on site', () => {
       const { queryByTestId } = render(
         <BookingDetailsTicketContent booking={initialBooking} proDisableEventsQrcode={true} />
       )
 
-      expect(queryByTestId('collect-info')).toBeFalsy()
+      expect(queryByTestId('withdrawal-info')).toBeFalsy()
     })
 
-    describe('should display collect wording', () => {
-      it('should display on site collect delay when delay is specified', () => {
+    describe('should display withdrawal wording', () => {
+      it('should display on site withdrawal delay when delay is specified', () => {
         const booking = {
           ...initialBooking,
           stock: {
@@ -99,10 +99,10 @@ describe('BookingDetailsTicketContent', () => {
         const { getByTestId } = render(
           <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
         )
-        getByTestId('collect-info-delay')
+        getByTestId('withdrawal-info-delay')
       })
 
-      it('should not display on site collect delay when delay is not specified', () => {
+      it('should not display on site withdrawal delay when delay is not specified', () => {
         const booking = {
           ...initialBooking,
           stock: {
@@ -118,10 +118,10 @@ describe('BookingDetailsTicketContent', () => {
         const { queryByTestId } = render(
           <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
         )
-        expect(queryByTestId('collect-info-delay')).toBeFalsy()
+        expect(queryByTestId('withdrawal-info-delay')).toBeFalsy()
       })
 
-      it('should display by email collect delay when delay is specified and email is not received yet', () => {
+      it('should display by email withdrawal delay when delay is specified and email is not received yet', () => {
         const booking = {
           ...initialBooking,
           confirmationDate: formatISO(new Date()).slice(0, -1),
@@ -139,10 +139,10 @@ describe('BookingDetailsTicketContent', () => {
         const { getByTestId } = render(
           <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
         )
-        getByTestId('collect-info-delay')
+        getByTestId('withdrawal-info-delay')
       })
 
-      it('should display by email collect delay when delay is specified and email is normally received', () => {
+      it('should display by email withdrawal delay when delay is specified and email is normally received', () => {
         const booking = {
           ...initialBooking,
           confirmationDate: formatISO(new Date()).slice(0, -1),
@@ -161,10 +161,10 @@ describe('BookingDetailsTicketContent', () => {
         const { getByTestId } = render(
           <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
         )
-        getByTestId('collect-info-email')
+        getByTestId('withdrawal-info-email')
       })
 
-      it('should not display by email collect delay when delay is not specified and email is not received yet', () => {
+      it('should not display by email withdrawal delay when delay is not specified and email is not received yet', () => {
         const booking = {
           ...initialBooking,
           confirmationDate: formatISO(new Date()).slice(0, -1),
@@ -183,7 +183,7 @@ describe('BookingDetailsTicketContent', () => {
         const { queryByTestId } = render(
           <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
         )
-        expect(queryByTestId('collect-info-delay')).toBeFalsy()
+        expect(queryByTestId('withdrawal-info-delay')).toBeFalsy()
       })
 
       it('should display information like what the event is today', () => {
@@ -206,10 +206,10 @@ describe('BookingDetailsTicketContent', () => {
           <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
         )
 
-        expect(queryByTestId('collect-info-email-msg')?.children[0]).toContain(`aujourd'hui`)
+        expect(queryByTestId('withdrawal-info-email-msg')?.children[0]).toContain(`aujourd'hui`)
       })
 
-      it('should display no ticket collect wording and circled check icon', () => {
+      it('should display no ticket withdrawal wording and circled check icon', () => {
         const booking = {
           ...initialBooking,
           stock: {
@@ -226,7 +226,7 @@ describe('BookingDetailsTicketContent', () => {
         const { getByTestId } = render(
           <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
         )
-        getByTestId('collect-info-no-ticket')
+        getByTestId('withdrawal-info-no-ticket')
       })
     })
   })
