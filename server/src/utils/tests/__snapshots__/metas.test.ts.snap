@@ -6,7 +6,7 @@ exports[`metas utils should replace meta for offer 1`] = `
   <head>
     <meta charset=\\"utf-8\\">
     <title>pass Culture</title>
-        <meta name=\\"title\\" content=\\"Sous les étoiles de Paris - VF\\" />
+    <meta name=\\"title\\" content=\\"Sous les étoiles de Paris - VF\\" />
     <meta name=\\"description\\"
           content=\\"Dispositif porté par le ministère de la Culture, a pour but de faciliter l'accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l'application pass Culture.\\"/>
     <meta name=\\"author\\" content=\\"pass Culture\\"/>
@@ -56,7 +56,7 @@ exports[`metas utils should replace meta for venue 1`] = `
   <head>
     <meta charset=\\"utf-8\\">
     <title>pass Culture</title>
-        <meta name=\\"title\\" content=\\"Le Petit Rintintin 1\\" />
+    <meta name=\\"title\\" content=\\"Le Petit Rintintin 1\\" />
     <meta name=\\"description\\"
           content=\\"Dispositif porté par le ministère de la Culture, a pour but de faciliter l'accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l'application pass Culture.\\"/>
     <meta name=\\"author\\" content=\\"pass Culture\\"/>

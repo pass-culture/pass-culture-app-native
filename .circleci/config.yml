@@ -49,13 +49,13 @@ commands:
       - restore_cache:
           name: Restore Node Modules
           keys:
-            - node-modules-v9-{{ checksum "yarn.lock" }}-{{ arch }}
+            - node-modules-v10-{{ checksum "yarn.lock" }}-{{ arch }}
       - run:
           name: Install Dependencies
           command: yarn install --immutable
       - save_cache:
           name: Save Node Modules
-          key: node-modules-v9-{{ checksum "yarn.lock" }}-{{ arch }}
+          key: node-modules-v10-{{ checksum "yarn.lock" }}-{{ arch }}
           paths:
             - node_modules
 
@@ -353,9 +353,12 @@ jobs:
     steps:
       - checkout
       - install_node_modules_proxy
-#      - run:
-#          name: Typescript Type Check
-#          command: yarn test:types
+      - run:
+          name: Linter
+          command: yarn --cwd server test:lint
+      - run:
+          name: Typescript Type Check
+          command: yarn --cwd server test:types
       - run:
           name: Unit tests
           command: |

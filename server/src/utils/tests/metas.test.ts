@@ -1,20 +1,16 @@
 import { OFFER_RESPONSE_SNAP, TEST_HTML, VENUE_RESPONSE_SNAP } from '../../../tests/constants'
-import { OFFER } from '../../services/entities/offer'
 import { ENTITY_MAP, EntityKeys } from '../../services/entities/types'
-import { VENUE } from '../../services/entities/venue'
 import { replaceHtmlMetas } from '../metas'
 
-const mockOfferMetasConfig = OFFER
-const mockVenuMetasConfig = VENUE
 const mockEntityMap = ENTITY_MAP
 const mockOfferResponse = OFFER_RESPONSE_SNAP
 const mockVenueResponse = VENUE_RESPONSE_SNAP
 
 jest.mock('../../services/apiClient', () => ({
   apiClient: async (type: EntityKeys) => {
-    if (mockEntityMap[type].API_MODEL_NAME === mockOfferMetasConfig.API_MODEL_NAME) {
+    if (mockEntityMap[type].API_MODEL_NAME === 'offer') {
       return mockOfferResponse
-    } else if (mockEntityMap[type].API_MODEL_NAME === mockVenuMetasConfig.API_MODEL_NAME) {
+    } else if (mockEntityMap[type].API_MODEL_NAME === 'venue') {
       return mockVenueResponse
     }
     throw new Error(`Unknown entity: ${type}`)

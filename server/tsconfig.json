@@ -20,7 +20,9 @@
     ]
   },
   "exclude": [
-    "node_modules"
+    "build/**",
+    "node_modules/**",
+    "babel.config.js"
   ],
   "ts-node": {
     "swc": true

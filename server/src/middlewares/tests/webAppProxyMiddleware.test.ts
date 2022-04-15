@@ -7,9 +7,7 @@ import {
   VENUE_RESPONSE_ALTERNATIVE_SNAP,
 } from '../../../tests/constants'
 import { env } from '../../libs/environment/env'
-import { OFFER } from '../../services/entities/offer'
 import { ENTITY_MAP } from '../../services/entities/types'
-import { VENUE } from '../../services/entities/venue'
 import { metasResponseInterceptor } from '../webAppProxyMiddleware'
 
 describe('webAppProxyMiddleware', () => {
@@ -39,10 +37,10 @@ describe('webAppProxyMiddleware', () => {
       expect(unmodifiedResponseBuffer).toEqual(imagePngResponseBuffer)
     })
 
-    it.only.each([
-      [OFFER.API_MODEL_NAME, 'offre', `${OFFER_RESPONSE_SNAP.id}`],
-      [VENUE.API_MODEL_NAME, 'lieu', `${VENUE_RESPONSE_SNAP.id}`],
-      [VENUE.API_MODEL_NAME, 'lieu', `${VENUE_RESPONSE_ALTERNATIVE_SNAP.id}`],
+    it.each([
+      ['offer', 'offre', `${OFFER_RESPONSE_SNAP.id}`],
+      ['venue', 'lieu', `${VENUE_RESPONSE_SNAP.id}`],
+      ['venue', 'lieu', `${VENUE_RESPONSE_ALTERNATIVE_SNAP.id}`],
     ])(
       `should edit html when req.url on %s use valid id: /%s/%s`,
       async (entity: string, endpoint: string, id: string) => {
