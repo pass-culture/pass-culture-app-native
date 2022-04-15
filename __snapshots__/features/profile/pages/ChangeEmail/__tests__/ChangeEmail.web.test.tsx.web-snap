@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <header
-        class="sc-ikJyIC fMMUXF"
+        class="sc-jJoQJp fXbXpW"
       >
         <div
           class="css-view-1dbjc4n"
@@ -108,7 +108,7 @@ Object {
             style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           >
             <form
-              class="sc-dlVxhl kBHsVa"
+              class="sc-fKVqWL clyjXB"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -218,7 +218,7 @@ Object {
                   />
                   <button
                     aria-label="Afficher le mot de passe"
-                    class="sc-jRQBWg fCUEFQ sc-jJoQJp emvDdv sc-jJoQJp emvDdv"
+                    class="sc-jRQBWg fCUEFQ sc-hiCibw VfUYt sc-hiCibw VfUYt"
                     data-testid="toggle-password-visibility"
                     tabindex="0"
                     type="button"
@@ -276,7 +276,7 @@ Object {
   </body>,
   "container": <div>
     <header
-      class="sc-ikJyIC fMMUXF"
+      class="sc-jJoQJp fXbXpW"
     >
       <div
         class="css-view-1dbjc4n"
@@ -378,7 +378,7 @@ Object {
           style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         >
           <form
-            class="sc-dlVxhl kBHsVa"
+            class="sc-fKVqWL clyjXB"
           >
             <div
               class="css-view-1dbjc4n"
@@ -488,7 +488,7 @@ Object {
                 />
                 <button
                   aria-label="Afficher le mot de passe"
-                  class="sc-jRQBWg fCUEFQ sc-jJoQJp emvDdv sc-jJoQJp emvDdv"
+                  class="sc-jRQBWg fCUEFQ sc-hiCibw VfUYt sc-hiCibw VfUYt"
                   data-testid="toggle-password-visibility"
                   tabindex="0"
                   type="button"

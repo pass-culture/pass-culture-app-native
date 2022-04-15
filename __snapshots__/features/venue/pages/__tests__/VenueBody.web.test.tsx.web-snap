@@ -790,7 +790,7 @@ Object {
               style="align-items: flex-start;"
             >
               <a
-                class="sc-gsDKAQ jJvgoT sc-ikJyIC bSBRIN"
+                class="sc-gsDKAQ jJvgoT sc-jJoQJp bkQoIy"
                 href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
                 tabindex="0"
                 target="_blank"
@@ -979,10 +979,10 @@ Object {
                 style="flex-direction: row; justify-content: space-between;"
               >
                 <ul
-                  class="sc-bqiRlB sc-jJoQJp fZQgdx cgypse"
+                  class="sc-bqiRlB sc-hiCibw fZQgdx ietfbc"
                 >
                   <li
-                    class="sc-hiCibw jmSfBy"
+                    class="sc-gWXbKe UoJFI"
                   >
                     <div
                       aria-label="Handicap visuel : Accessible"
@@ -1051,7 +1051,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-hiCibw jmSfBy"
+                    class="sc-gWXbKe UoJFI"
                   >
                     <div
                       aria-label="Handicap psychique ou cognitif : Non accessible"
@@ -1120,7 +1120,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-hiCibw jmSfBy"
+                    class="sc-gWXbKe UoJFI"
                   >
                     <div
                       aria-label="Handicap moteur : Non accessible"
@@ -1189,7 +1189,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-hiCibw jmSfBy"
+                    class="sc-gWXbKe UoJFI"
                   >
                     <div
                       aria-label="Handicap auditif : Non accessible"
@@ -2138,7 +2138,7 @@ Object {
             style="align-items: flex-start;"
           >
             <a
-              class="sc-gsDKAQ jJvgoT sc-ikJyIC bSBRIN"
+              class="sc-gsDKAQ jJvgoT sc-jJoQJp bkQoIy"
               href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
               tabindex="0"
               target="_blank"
@@ -2327,10 +2327,10 @@ Object {
               style="flex-direction: row; justify-content: space-between;"
             >
               <ul
-                class="sc-bqiRlB sc-jJoQJp fZQgdx cgypse"
+                class="sc-bqiRlB sc-hiCibw fZQgdx ietfbc"
               >
                 <li
-                  class="sc-hiCibw jmSfBy"
+                  class="sc-gWXbKe UoJFI"
                 >
                   <div
                     aria-label="Handicap visuel : Accessible"
@@ -2399,7 +2399,7 @@ Object {
                   </div>
                 </li>
                 <li
-                  class="sc-hiCibw jmSfBy"
+                  class="sc-gWXbKe UoJFI"
                 >
                   <div
                     aria-label="Handicap psychique ou cognitif : Non accessible"
@@ -2468,7 +2468,7 @@ Object {
                   </div>
                 </li>
                 <li
-                  class="sc-hiCibw jmSfBy"
+                  class="sc-gWXbKe UoJFI"
                 >
                   <div
                     aria-label="Handicap moteur : Non accessible"
@@ -2537,7 +2537,7 @@ Object {
                   </div>
                 </li>
                 <li
-                  class="sc-hiCibw jmSfBy"
+                  class="sc-gWXbKe UoJFI"
                 >
                   <div
                     aria-label="Handicap auditif : Non accessible"

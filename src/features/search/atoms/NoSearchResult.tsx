@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
@@ -42,9 +42,8 @@ export const NoSearchResult: React.FC = () => {
         <DescriptionErrorText>
           {t`Modifie ta recherche ou découvre toutes les offres` + ' '}
         </DescriptionErrorText>
-        <TouchableOpacity onPress={handlePressAroundMe}>
-          <AroundMeText>{t`autour de toi`}</AroundMeText>
-        </TouchableOpacity>
+        <Spacer.Row numberOfSpaces={1} />
+        <ButtonInsideText wording={t`autour de toi`} onPress={handlePressAroundMe} />
       </DescriptionErrorTextContainer>
       <Spacer.Flex />
     </Container>
@@ -78,7 +77,3 @@ const DescriptionErrorTextContainer = styled(Typo.Body)({
   marginTop: getSpacing(6.5),
   textAlign: 'center',
 })
-
-const AroundMeText = styled(Typo.ButtonText)(({ theme }) => ({
-  color: theme.colors.primary,
-}))

@@ -10,8 +10,8 @@ import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { storage } from 'libs/storage'
+import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -20,7 +20,6 @@ import { Spacer, Typo } from 'ui/theme'
 import { ProfileContainer } from '../components/reusables'
 
 type Props = StackScreenProps<RootStackParamList, 'ConsentSettings'>
-const cookieButtonText = 'Politique des cookies'
 
 export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
   const { goBack } = useNavigation()
@@ -72,15 +71,15 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
         <MoreInformationContainer>
           <StyledCaption>
             {t`Pour plus d'informations, nous t'invitons à consulter notre`}
+            <Spacer.Row numberOfSpaces={1} />
+            <ButtonInsideText
+              wording={t`Politique des cookies`}
+              externalHref={env.COOKIES_POLICY_LINK}
+              onPress={openCookiesPolicyExternalUrl}
+              icon={ExternalSiteFilled}
+              typography="Caption"
+            />
           </StyledCaption>
-          <Spacer.Row numberOfSpaces={1} />
-          <ButtonQuaternary
-            wording={cookieButtonText}
-            icon={ExternalSiteFilled}
-            externalHref={env.COOKIES_POLICY_LINK}
-            onPress={openCookiesPolicyExternalUrl}
-            inline
-          />
         </MoreInformationContainer>
         <Spacer.Column numberOfSpaces={4} />
         <Separator />
