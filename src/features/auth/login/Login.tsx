@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
 import { useSignIn, SignInResponseFailure } from 'features/auth/api'
+import { useCulturalSurveyRoute } from 'features/culturalSurvey/helpers/utils'
 import { shouldShowCulturalSurvey } from 'features/firstLogin/helpers'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
@@ -52,6 +53,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const shouldDisableLoginButton = isValueEmpty(email) || isValueEmpty(password) || isLoading
   const emailInputErrorId = uuidv4()
   const passwordInputErrorId = uuidv4()
+  const culturalSurveyRoute = useCulturalSurveyRoute()
 
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -93,7 +95,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       } else if (!hasSeenEligibleCard && user.showEligibleCard) {
         navigate('EighteenBirthday')
       } else if (shouldShowCulturalSurvey(user)) {
-        navigate('CulturalSurvey')
+        navigate(culturalSurveyRoute)
       } else {
         navigateToHome()
       }

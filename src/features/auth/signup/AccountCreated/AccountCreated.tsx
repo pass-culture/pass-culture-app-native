@@ -3,6 +3,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
+import { useCulturalSurveyRoute } from 'features/culturalSurvey/helpers/utils'
 import { shouldShowCulturalSurvey } from 'features/firstLogin/helpers'
 import { useUserProfileInfo } from 'features/home/api'
 import { navigateToHome } from 'features/navigation/helpers'
@@ -16,12 +17,13 @@ import { Typo } from 'ui/theme'
 export function AccountCreated() {
   const { data: user } = useUserProfileInfo()
   const { navigate } = useNavigation<UseNavigationType>()
+  const culturalSurveyRoute = useCulturalSurveyRoute()
 
   const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
 
   function onPress() {
     if (shouldNavigateToCulturalSurvey) {
-      navigate('CulturalSurvey')
+      navigate(culturalSurveyRoute)
     } else {
       navigateToHome()
     }

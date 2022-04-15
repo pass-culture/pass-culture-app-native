@@ -14,6 +14,16 @@ const mockedUseUserProfileInfo = mocked(useUserProfileInfo)
 jest.mock('features/home/api')
 jest.mock('features/navigation/helpers')
 
+const mockSettings = {
+  enableNativeCulturalSurvey: false,
+}
+
+jest.mock('features/auth/settings', () => ({
+  useAppSettings: jest.fn(() => ({
+    data: mockSettings,
+  })),
+}))
+
 beforeEach(() => {
   mockedUseUserProfileInfo.mockReturnValue({
     data: { needsToFillCulturalSurvey: true },
@@ -34,6 +44,17 @@ describe('<AccountCreated />', () => {
     expect(navigateToHome).not.toBeCalledTimes(1)
     expect(navigate).toBeCalledTimes(1)
     expect(navigate).toBeCalledWith('CulturalSurvey')
+  })
+
+  it('should redirect to native cultural survey page WHEN "On y va !" button is clicked when native feature flag is activated', async () => {
+    mockSettings.enableNativeCulturalSurvey = true
+    const renderAPI = render(<AccountCreated />)
+
+    fireEvent.press(await renderAPI.findByText('On y va\u00a0!'))
+
+    expect(navigateToHome).not.toBeCalledTimes(1)
+    expect(navigate).toBeCalledTimes(1)
+    expect(navigate).toBeCalledWith('CulturalSurveyIntro')
   })
 
   it('should redirect to home page WHEN "On y va !" button is clicked and user needs not to fill cultural survey', async () => {
