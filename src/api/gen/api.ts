@@ -1725,6 +1725,11 @@
     * @type {boolean}
     * @memberof SettingsResponse
     */
+   enableNativeCulturalSurvey: boolean
+   /**
+    * @type {boolean}
+    * @memberof SettingsResponse
+    */
    enableNativeEacIndividual: boolean
    /**
     * @type {boolean}
