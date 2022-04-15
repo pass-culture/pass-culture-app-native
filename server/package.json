@@ -34,7 +34,8 @@
     "test": "yarn test:lint && yarn test:types && yarn test:unit",
     "test:lint": "eslint . --ext .js,.ts --cache",
     "test:types": "tsc --noEmit",
-    "test:unit": "TZ=UTC JEST=true jest --forceExit"
+    "test:unit": "TZ=UTC JEST=true jest --forceExit",
+    "test:unit:ci": "TZ=UTC yarn test:unit --maxWorkers=2 --logHeapUsage --forceExit --coverage"
   },
   "dependencies": {
     "@swc/core": "^1.2.163",

@@ -75,6 +75,20 @@ commands:
           paths:
             - node_modules
 
+  unit_test_proxy:
+    description: Unit Tests Proxy
+    steps:
+      - restore_cache:
+          name: Restore Tests cache
+          keys:
+            - jest-cache-proxy-{{ checksum "yarn.lock" }}-{{ arch }}
+      - run: yarn --cwd server test:unit:ci
+      - save_cache:
+          name: Save Tests cache
+          key: jest-cache-proxy-{{ checksum "yarn.lock" }}-{{ arch }}
+          paths:
+            - .jest
+
   unit_test_native:
     description: Unit Tests Native
     steps:
@@ -285,10 +299,14 @@ commands:
   sonarcloud-scanner:
     description: Detect bugs and vulnerabilities
     parameters:
+      directory:
+        default: .
+        description: change directory to run sonar-scanner from a sub directory
+        type: string
       cache_version:
-        default: 1
+        default: '1'
         description: increment this value if the cache is corrupted and you want to start with a clean cache
-        type: integer
+        type: string
       sonar_token_variable_name:
         default: SONAR_TOKEN
         description: the name of the environment variable where the SonarCloud API token is stored
@@ -310,6 +328,7 @@ commands:
             export SONAR_USER_HOME=$SCANNER_DIRECTORY/.sonar
             OS="linux"
             echo $SONAR_USER_HOME
+            cd <<parameters.directory>>
 
             if [[ ! -x "$SCANNER_DIRECTORY/sonar-scanner-$VERSION-$OS/bin/sonar-scanner" ]]; then
               curl -Ol https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$VERSION-$OS.zip
@@ -359,10 +378,10 @@ jobs:
       - run:
           name: Typescript Type Check
           command: yarn --cwd server test:types
-      - run:
-          name: Unit tests
-          command: |
-            yarn --cwd server test:unit
+      - unit_test_proxy
+      - sonarcloud-scanner:
+          directory: server
+          cache_version: proxy-1
 
   test-lint-and-types:
     executor: node
@@ -774,6 +793,7 @@ workflows:
       - test-proxy:
           requires:
             - checkout-and-install-proxy-deps
+          context: SonarCloud
       - test-lint-and-types:
           requires:
             - checkout-and-install-deps
