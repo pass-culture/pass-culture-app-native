@@ -136,7 +136,6 @@ function requestSettingsSuccess(
     isWebappV2Enabled: false,
     enableNativeEacIndividual: false,
     accountCreationMinimumAge: 15,
-    proDisableEventsQrcode: false,
   }
 ) {
   return rest.get<SettingsResponse>(env.API_BASE_URL + '/native/v1/settings', (req, res, ctx) => {

@@ -23,7 +23,6 @@ import { getHeadingAttrs } from 'ui/theme/typography'
 interface BookingDetailsTicketContentProps {
   booking: BookingReponse
   activationCodeFeatureEnabled?: boolean
-  proDisableEventsQrcode?: boolean
 }
 
 export const notQrCodeSubcategories = [
@@ -35,7 +34,7 @@ export const notQrCodeSubcategories = [
 ]
 
 export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentProps) => {
-  const { booking, activationCodeFeatureEnabled, proDisableEventsQrcode } = props
+  const { booking, activationCodeFeatureEnabled } = props
   const offer = booking.stock.offer
   const { isEvent } = useSubcategory(offer.subcategoryId)
   const properties = getBookingProperties(booking, isEvent)
@@ -77,11 +76,7 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
         ) : (
           <React.Fragment>
             <TicketCode withdrawalType={withdrawalType} code={booking.token} />
-            {properties.isDigital ? (
-              accessOfferButton
-            ) : (
-              <TicketBody booking={booking} proDisableEventsQrcode={!!proDisableEventsQrcode} />
-            )}
+            {properties.isDigital ? accessOfferButton : <TicketBody booking={booking} />}
           </React.Fragment>
         )}
       </TicketInnerContent>
@@ -106,7 +101,6 @@ type QrCodeViewProps = {
 
 type TicketBodyProps = {
   booking: BookingReponse
-  proDisableEventsQrcode: boolean
 }
 
 type TicketEmailSentProps = {
@@ -159,16 +153,13 @@ const NoTicket = () => {
   )
 }
 
-const TicketBody = ({ booking, proDisableEventsQrcode }: TicketBodyProps) => {
+const TicketBody = ({ booking }: TicketBodyProps) => {
   const withdrawalType = booking?.stock?.offer?.withdrawalType
   const withdrawalDelay = booking?.stock?.offer?.withdrawalDelay || 0
   const subcategoryOffer = booking?.stock?.offer?.subcategoryId
   const subcategoryShouldHaveQrCode = !notQrCodeSubcategories.includes(subcategoryOffer)
 
-  if (
-    booking.qrCodeData &&
-    (!proDisableEventsQrcode || (proDisableEventsQrcode && subcategoryShouldHaveQrCode))
-  )
+  if (booking.qrCodeData && subcategoryShouldHaveQrCode)
     return <QrCodeView qrCodeData={booking.qrCodeData} />
 
   if (withdrawalType === WithdrawalTypeEnum.no_ticket) {

@@ -29,7 +29,7 @@ describe('BookingDetailsTicketContent', () => {
     })
   })
 
-  describe('proDisableEventsQrcode & QR code display', () => {
+  describe('QR code display', () => {
     const initialBooking = {
       ...bookingsSnap.ongoing_bookings[0],
       stock: {
@@ -40,21 +40,13 @@ describe('BookingDetailsTicketContent', () => {
         },
       },
     }
-    it('should display the QR code when proDisableEventsQrcode is false', () => {
-      const { getByTestId } = render(
-        <BookingDetailsTicketContent booking={initialBooking} proDisableEventsQrcode={false} />
-      )
+
+    it('should display the QR code when event subcategory is not in notQrCodeSubcategories', () => {
+      const { getByTestId } = render(<BookingDetailsTicketContent booking={initialBooking} />)
       getByTestId('qr-code')
     })
 
-    it('should display the QR code when proDisableEventsQrcode is true and event subcategory is not in notQrCodeSubcategories', () => {
-      const { getByTestId } = render(
-        <BookingDetailsTicketContent booking={initialBooking} proDisableEventsQrcode={true} />
-      )
-      getByTestId('qr-code')
-    })
-
-    it('should not display the QR code when proDisableEventsQrcode is true and event subcategory is in notQrCodeSubcategories', () => {
+    it('should not display the QR code when event subcategory is in notQrCodeSubcategories', () => {
       const booking = {
         ...initialBooking,
         stock: {
@@ -66,17 +58,13 @@ describe('BookingDetailsTicketContent', () => {
         },
       }
 
-      const { queryByTestId } = render(
-        <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
-      )
+      const { queryByTestId } = render(<BookingDetailsTicketContent booking={booking} />)
 
       expect(queryByTestId('qr-code')).toBeFalsy()
     })
 
-    it('should not display on site withdrawal wording if type withdrawal is not on site', () => {
-      const { queryByTestId } = render(
-        <BookingDetailsTicketContent booking={initialBooking} proDisableEventsQrcode={true} />
-      )
+    it('should not display on site withdrawal wording if withdrawal type is not on site', () => {
+      const { queryByTestId } = render(<BookingDetailsTicketContent booking={initialBooking} />)
 
       expect(queryByTestId('withdrawal-info')).toBeFalsy()
     })
@@ -96,9 +84,7 @@ describe('BookingDetailsTicketContent', () => {
           },
         }
 
-        const { getByTestId } = render(
-          <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
-        )
+        const { getByTestId } = render(<BookingDetailsTicketContent booking={booking} />)
         getByTestId('withdrawal-info-delay')
       })
 
@@ -115,9 +101,7 @@ describe('BookingDetailsTicketContent', () => {
             },
           },
         }
-        const { queryByTestId } = render(
-          <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
-        )
+        const { queryByTestId } = render(<BookingDetailsTicketContent booking={booking} />)
         expect(queryByTestId('withdrawal-info-delay')).toBeFalsy()
       })
 
@@ -136,9 +120,7 @@ describe('BookingDetailsTicketContent', () => {
             },
           },
         }
-        const { getByTestId } = render(
-          <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
-        )
+        const { getByTestId } = render(<BookingDetailsTicketContent booking={booking} />)
         getByTestId('withdrawal-info-delay')
       })
 
@@ -158,9 +140,7 @@ describe('BookingDetailsTicketContent', () => {
           },
         }
 
-        const { getByTestId } = render(
-          <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
-        )
+        const { getByTestId } = render(<BookingDetailsTicketContent booking={booking} />)
         getByTestId('withdrawal-info-email')
       })
 
@@ -180,9 +160,7 @@ describe('BookingDetailsTicketContent', () => {
           },
         }
 
-        const { queryByTestId } = render(
-          <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
-        )
+        const { queryByTestId } = render(<BookingDetailsTicketContent booking={booking} />)
         expect(queryByTestId('withdrawal-info-delay')).toBeFalsy()
       })
 
@@ -202,9 +180,7 @@ describe('BookingDetailsTicketContent', () => {
           },
         }
 
-        const { queryByTestId } = render(
-          <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
-        )
+        const { queryByTestId } = render(<BookingDetailsTicketContent booking={booking} />)
 
         expect(queryByTestId('withdrawal-info-email-msg')?.children[0]).toContain(`aujourd'hui`)
       })
@@ -223,9 +199,7 @@ describe('BookingDetailsTicketContent', () => {
           },
         }
 
-        const { getByTestId } = render(
-          <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
-        )
+        const { getByTestId } = render(<BookingDetailsTicketContent booking={booking} />)
         getByTestId('withdrawal-info-no-ticket')
       })
     })
