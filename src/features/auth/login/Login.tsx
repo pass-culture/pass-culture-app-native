@@ -7,8 +7,10 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { api } from 'api/api'
 import { useSignIn, SignInResponseFailure } from 'features/auth/api'
-import { useCulturalSurveyRoute } from 'features/culturalSurvey/helpers/utils'
-import { shouldShowCulturalSurvey } from 'features/firstLogin/helpers'
+import {
+  shouldShowCulturalSurvey,
+  useCulturalSurveyRoute,
+} from 'features/culturalSurvey/helpers/utils'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'

@@ -1,4 +1,4 @@
-import { CulturalSurveyQuestionEnum } from 'api/gen/api'
+import { CulturalSurveyQuestionEnum, UserProfileResponse } from 'api/gen/api'
 import { useAppSettings } from 'features/auth/settings'
 
 export const mapQuestionIdToPageTitle = (id: CulturalSurveyQuestionEnum | undefined) => {
@@ -24,4 +24,9 @@ export function useCulturalSurveyRoute() {
     return 'CulturalSurveyIntro'
   }
   return 'CulturalSurvey'
+}
+
+export function shouldShowCulturalSurvey(user?: UserProfileResponse) {
+  if (!user) return false
+  return user.needsToFillCulturalSurvey
 }
