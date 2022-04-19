@@ -1,12 +1,10 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { mockCulturalSurveyQuestions } from 'features/culturalSurvey/__mocks__/culturalSurveyQuestions'
 import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
-import { createInitialQuestionsList } from 'features/culturalSurvey/useCulturalSurveySteps'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -18,17 +16,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const CulturalSurveyIntro = (): JSX.Element => {
   const { navigate } = useNavigation<UseNavigationType>()
-
-  // TODO (yorickeando) PC-13347: replace mock by react-query response
-  const culturalSurveyData = mockCulturalSurveyQuestions
-
-  const { questionsToDisplay, dispatch } = useCulturalSurveyContext()
-
-  const initialQuestions = questionsToDisplay
-
-  useEffect(() => {
-    dispatch({ type: 'SET_QUESTIONS', payload: createInitialQuestionsList(culturalSurveyData) })
-  }, [culturalSurveyData, dispatch])
+  const { questionsToDisplay: initialQuestions } = useCulturalSurveyContext()
 
   return (
     <GenericInfoPageWhite
