@@ -6,7 +6,7 @@ import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
-  children?: ReactNode | undefined
+  children?: ReactNode
 }
 
 export const CustomKeyboardAvoidingView = (props: Props) => {

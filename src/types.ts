@@ -30,10 +30,10 @@ declare global {
             ui: { show: (type: string) => void }
           }) => void),
       options?: {
-        apiKey: string | undefined
-        subdomain?: string | undefined
-        authKey: string | undefined
-        vapidPublicKey: string | undefined
+        apiKey?: string
+        subdomain?: string
+        authKey?: string
+        vapidPublicKey?: string
         ui: {
           native?: unknown
           alert?: unknown

@@ -94,6 +94,6 @@ const Container = styled.View({
   paddingHorizontal: getSpacing(1),
 })
 
-const Amount = styled(Typo.Title4).attrs(getHeadingAttrs(undefined))<{ color: ColorsEnum }>(
-  ({ color }) => ({ color })
-)
+const Amount = styled(Typo.Title4).attrs(getHeadingAttrs())<{ color: ColorsEnum }>(({ color }) => ({
+  color,
+}))

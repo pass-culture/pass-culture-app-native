@@ -23,7 +23,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
   const { tabRoutes } = useTabNavigationContext()
 
   const onPress = (name: keyof TabParamList) => {
-    navigateFromRef(...getTabNavConfig(name, undefined))
+    navigateFromRef(...getTabNavConfig(name))
   }
 
   return (

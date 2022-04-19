@@ -9,7 +9,7 @@ import { ArrowDown as DefaultArrowDown } from 'ui/svg/icons/ArrowDown'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
-  description?: string | undefined
+  description?: string
   credit?: string | null
 }
 
