@@ -41,12 +41,12 @@ describe('BookingDetailsTicketContent', () => {
       },
     }
 
-    it('should display the QR code when event subcategory is not in notQrCodeSubcategories', () => {
+    it('should display the QR code when event subcategory is not in subcategories list without QR code display', () => {
       const { getByTestId } = render(<BookingDetailsTicketContent booking={initialBooking} />)
       getByTestId('qr-code')
     })
 
-    it('should not display the QR code when event subcategory is in notQrCodeSubcategories', () => {
+    it('should not display the QR code when event subcategory is in subcategories list without QR code display', () => {
       const booking = {
         ...initialBooking,
         stock: {
