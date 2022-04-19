@@ -13,7 +13,7 @@ describe('express server', () => {
     initialEnv = process.env.ENV
     process.env.ENV = 'testing'
     const { server: newServer } = await import('./index')
-    server = newServer
+    server = newServer as Server
   })
 
   afterAll((done) => {

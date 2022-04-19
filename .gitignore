@@ -114,3 +114,6 @@ tsconfig.tsbuildinfo
 
 # firebase
 firebase-debug.log
+
+# server
+/server/.env

@@ -1,6 +1,5 @@
 {
   "functions": {
-	  "predeploy": "ENV=testing",
     "source": "server"
   }
 }

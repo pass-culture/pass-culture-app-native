@@ -24,18 +24,19 @@
   },
   "scripts": {
     "build": "tsc --build",
-    "dev": "ENV=testing node-dev src/index.ts",
-    "start": "ENV=${ENV:-testing} ts-node src/index.ts",
-    "start:development": "ENV=development yarn start",
-    "start:testing": "ENV=testing yarn start",
-    "start:staging": "ENV=staging yarn start",
-    "start:integration": "ENV=integration yarn start",
-    "start:production": "ENV=production yarn start",
+    "predeploy": "yarn build",
+    "deploy": "firebase deploy --only functions",
+    "deploy:testing": "cat .env.testing > .env && yarn deploy",
+    "deploy:staging": "cat .env.staging > .env && yarn deploy",
+    "deploy:integration": "cat .env.integration > .env && yarn deploy",
+    "deploy:production": "cat .env.production > .env && yarn deploy",
+    "start": "ENV=testing node-dev src/index.ts",
     "test": "yarn test:lint && yarn test:types && yarn test:unit",
     "test:lint": "eslint . --ext .js,.ts --cache",
     "test:types": "tsc --noEmit",
     "test:unit": "TZ=UTC JEST=true jest --forceExit",
-    "test:unit:ci": "TZ=UTC yarn test:unit --maxWorkers=2 --logHeapUsage --forceExit --coverage"
+    "test:unit:ci": "TZ=UTC yarn test:unit --maxWorkers=2 --logHeapUsage --forceExit --coverage",
+    "watch": "tsc --watch"
   },
   "dependencies": {
     "@swc/core": "^1.2.163",
@@ -54,7 +55,7 @@
     "eslint-plugin-typescript-sort-keys": "^1.8.0",
     "express": "^4.17.3",
     "firebase-admin": "^10.0.2",
-    "firebase-functions": "^3.20.0",
+    "firebase-functions": "3.20.1",
     "http-proxy-middleware": "^2.0.4",
     "ts-node": "^10.7.0",
     "typescript": "^4.3.5"

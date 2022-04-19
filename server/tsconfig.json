@@ -3,17 +3,18 @@
     "composite": true,
     "rootDir": ".",
     "declaration": true,
+    "declarationMap": true,
     "noImplicitAny": true,
     "esModuleInterop": true,
     "module": "commonjs",
     "noEmitOnError": true,
-    "removeComments": false,
+    "removeComments": true,
     "sourceMap": true,
     "target": "es5",
     "outDir": "build",
     "types": [
       "jest",
-      "node",
+      "node"
     ],
     "lib": [
       "es6"
@@ -21,6 +22,8 @@
   },
   "exclude": [
     "build/**",
+    "**/src/**/tests/**",
+    "**/src/**/specs/**",
     "node_modules/**",
     "babel.config.js"
   ],

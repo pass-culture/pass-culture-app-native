@@ -1,6 +1,8 @@
 import { Environment } from '../types'
 
 export const env: Environment = {
+  __DEV__: true,
+  REGION: 'europe-west1',
   ENV: 'test',
   APP_PUBLIC_URL: 'http://localhost:8080',
   APP_PROXY_URL: 'https://app-proxy.testing.passculture.team',
