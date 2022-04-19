@@ -1,4 +1,8 @@
-import { CulturalSurveyQuestionEnum, UserProfileResponse } from 'api/gen/api'
+import {
+  CulturalSurveyQuestionEnum,
+  CulturalSurveyQuestionsResponse,
+  UserProfileResponse,
+} from 'api/gen/api'
 import { useAppSettings } from 'features/auth/settings'
 
 export const mapQuestionIdToPageTitle = (id: CulturalSurveyQuestionEnum | undefined) => {
@@ -29,4 +33,25 @@ export function useCulturalSurveyRoute() {
 export function shouldShowCulturalSurvey(user?: UserProfileResponse) {
   if (!user) return false
   return user.needsToFillCulturalSurvey
+}
+
+export const createInitialQuestionsList = (
+  culturalSurveyQuestions?: CulturalSurveyQuestionsResponse
+) => {
+  const subQuestions = [] as CulturalSurveyQuestionEnum[]
+  const initialQuestionsList = [] as CulturalSurveyQuestionEnum[]
+
+  if (!culturalSurveyQuestions) return initialQuestionsList
+
+  culturalSurveyQuestions.questions.forEach((question) => {
+    if (!subQuestions.includes(question.id)) {
+      initialQuestionsList.push(question.id)
+    }
+    question.answers.forEach((answer) => {
+      if (answer.sub_question && !subQuestions.includes(answer.sub_question)) {
+        subQuestions.push(answer.sub_question)
+      }
+    })
+  })
+  return initialQuestionsList
 }
