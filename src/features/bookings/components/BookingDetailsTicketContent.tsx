@@ -23,7 +23,6 @@ import { getHeadingAttrs } from 'ui/theme/typography'
 interface BookingDetailsTicketContentProps {
   booking: BookingReponse
   activationCodeFeatureEnabled?: boolean
-  proDisableEventsQrcode?: boolean
 }
 
 export const notQrCodeSubcategories = [
@@ -35,7 +34,7 @@ export const notQrCodeSubcategories = [
 ]
 
 export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentProps) => {
-  const { booking, activationCodeFeatureEnabled, proDisableEventsQrcode } = props
+  const { booking, activationCodeFeatureEnabled } = props
   const offer = booking.stock.offer
   const { isEvent } = useSubcategory(offer.subcategoryId)
   const properties = getBookingProperties(booking, isEvent)
@@ -77,11 +76,7 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
         ) : (
           <React.Fragment>
             <TicketCode withdrawalType={withdrawalType} code={booking.token} />
-            {properties.isDigital ? (
-              accessOfferButton
-            ) : (
-              <TicketBody booking={booking} proDisableEventsQrcode={!!proDisableEventsQrcode} />
-            )}
+            {properties.isDigital ? accessOfferButton : <TicketBody booking={booking} />}
           </React.Fragment>
         )}
       </TicketInnerContent>
@@ -106,7 +101,6 @@ type QrCodeViewProps = {
 
 type TicketBodyProps = {
   booking: BookingReponse
-  proDisableEventsQrcode: boolean
 }
 
 type TicketEmailSentProps = {
@@ -159,66 +153,74 @@ const NoTicket = () => {
   )
 }
 
-const TicketBody = ({ booking, proDisableEventsQrcode }: TicketBodyProps) => {
+const TicketBody = ({ booking }: TicketBodyProps) => {
   const withdrawalType = booking?.stock?.offer?.withdrawalType
   const withdrawalDelay = booking?.stock?.offer?.withdrawalDelay || 0
   const subcategoryOffer = booking?.stock?.offer?.subcategoryId
   const subcategoryShouldHaveQrCode = !notQrCodeSubcategories.includes(subcategoryOffer)
 
-  if (
-    booking.qrCodeData &&
-    (!proDisableEventsQrcode || (proDisableEventsQrcode && subcategoryShouldHaveQrCode))
-  )
+  if (booking.qrCodeData && subcategoryShouldHaveQrCode)
     return <QrCodeView qrCodeData={booking.qrCodeData} />
+
+  if (!withdrawalType) {
+    return null
+  }
 
   if (withdrawalType === WithdrawalTypeEnum.no_ticket) {
     return <NoTicket />
   }
+  const { beginningDatetime } = booking.stock
 
-  if (
-    withdrawalType === WithdrawalTypeEnum.on_site ||
-    withdrawalType === WithdrawalTypeEnum.by_email
-  ) {
-    const { beginningDatetime } = booking.stock
+  if (beginningDatetime && withdrawalType === WithdrawalTypeEnum.by_email) {
+    // Calculation approximate date send e-mail
+    const nbDays = withdrawalDelay / 60 / 60 / 24
+    const dateSendEmail = addDays(new Date(beginningDatetime), -nbDays)
+    const today = new Date()
+    const startOfferDate = new Date(beginningDatetime)
 
-    if (beginningDatetime && withdrawalType === WithdrawalTypeEnum.by_email) {
-      // Calculation approximate date send e-mail
-      const nbDays = withdrawalDelay / 60 / 60 / 24
-      const dateSendEmail = addDays(new Date(beginningDatetime), -nbDays)
-      const today = new Date()
-      const startOfferDate = new Date(beginningDatetime)
-
-      if (isSameDay(startOfferDate, today) || today > dateSendEmail) {
-        return <TicketEmailSent offerDate={startOfferDate} />
-      }
+    if (isSameDay(startOfferDate, today) || today > dateSendEmail) {
+      return <TicketEmailSent offerDate={startOfferDate} />
     }
-
-    const startMessage =
-      (withdrawalType === WithdrawalTypeEnum.on_site
-        ? t`Présente le code ci-dessus sur place`
-        : t`Tu vas recevoir ton billet par e-mail`) + ' '
-    const delayMessage = withdrawalDelay > 0 ? `${formatSecondsToString(withdrawalDelay)} ` : null
-    const endMessage = t`avant le début de l’événement.`
-
-    return (
-      <React.Fragment>
-        {withdrawalType === WithdrawalTypeEnum.by_email && (
-          <IconContainer>
-            <BicolorEmailSent />
-          </IconContainer>
-        )}
-
-        <TicketInfo testID="withdrawal-info">
-          {startMessage}
-          {!!delayMessage && (
-            <TicketCollectDelay testID="withdrawal-info-delay">{delayMessage}</TicketCollectDelay>
-          )}
-          {endMessage}
-        </TicketInfo>
-      </React.Fragment>
-    )
   }
 
+  const startMessage = getStartMessage(withdrawalType)
+  const delayMessage = getDelayMessage(withdrawalDelay)
+  const endMessage = t`avant le début de l’événement.`
+
+  return (
+    <React.Fragment>
+      {withdrawalType === WithdrawalTypeEnum.by_email && (
+        <IconContainer>
+          <BicolorEmailSent />
+        </IconContainer>
+      )}
+
+      <TicketInfo testID="withdrawal-info">
+        {startMessage}
+        {!!delayMessage && (
+          <TicketWithdrawalDelay testID="withdrawal-info-delay">
+            {delayMessage}
+          </TicketWithdrawalDelay>
+        )}
+        {endMessage}
+      </TicketInfo>
+    </React.Fragment>
+  )
+}
+
+const getStartMessage = (withdrawalType: WithdrawalTypeEnum): string | null => {
+  switch (withdrawalType) {
+    case WithdrawalTypeEnum.on_site:
+      return t`Présente le code ci-dessus sur place`
+    case WithdrawalTypeEnum.by_email:
+      return t`Tu vas recevoir ton billet par e-mail` + ' '
+    case WithdrawalTypeEnum.no_ticket:
+      return null
+  }
+}
+
+const getDelayMessage = (withdrawalDelay: number): string | null => {
+  if (withdrawalDelay > 0) return formatSecondsToString(withdrawalDelay)
   return null
 }
 
@@ -248,7 +250,7 @@ const NoTicketInfo = styled(Typo.Body)({
   maxWidth: '100%',
 })
 
-const TicketCollectDelay = styled(Typo.Body)(({ theme }) => ({
+const TicketWithdrawalDelay = styled(Typo.Body)(({ theme }) => ({
   fontFamily: theme.fontFamily.bold,
 }))
 

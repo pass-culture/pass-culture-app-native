@@ -29,7 +29,7 @@ describe('BookingDetailsTicketContent', () => {
     })
   })
 
-  describe('proDisableEventsQrcode & QR code display', () => {
+  describe('QR code display', () => {
     const initialBooking = {
       ...bookingsSnap.ongoing_bookings[0],
       stock: {
@@ -57,9 +57,7 @@ describe('BookingDetailsTicketContent', () => {
         },
       }
 
-      const { queryByTestId } = render(
-        <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
-      )
+      const { queryByTestId } = render(<BookingDetailsTicketContent booking={booking} />)
 
       expect(queryByTestId('withdrawal-info-email-btn')).toBeFalsy()
     })
@@ -79,9 +77,7 @@ describe('BookingDetailsTicketContent', () => {
         },
       }
 
-      const { queryByTestId } = render(
-        <BookingDetailsTicketContent booking={booking} proDisableEventsQrcode={true} />
-      )
+      const { queryByTestId } = render(<BookingDetailsTicketContent booking={booking} />)
 
       expect(queryByTestId('withdrawal-info-email-btn')).toBeFalsy()
     })

@@ -120,7 +120,6 @@ export function BookingDetails() {
   const shouldDisplayItineraryButton =
     canOpenItinerary && (properties.isEvent || (properties.isPhysical && !properties.isDigital))
   const activationCodeFeatureEnabled = appSettings?.autoActivateDigitalBookings
-  const proDisableEventsQrcode = appSettings?.proDisableEventsQrcode
 
   const offerRules = getOfferRules(properties, activationCodeFeatureEnabled)
 
@@ -166,7 +165,6 @@ export function BookingDetails() {
             <BookingDetailsTicketContent
               booking={booking}
               activationCodeFeatureEnabled={activationCodeFeatureEnabled}
-              proDisableEventsQrcode={proDisableEventsQrcode}
             />
           </ThreeShapesTicket>
         </HeroHeader>
