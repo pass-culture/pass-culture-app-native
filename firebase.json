@@ -1,5 +1,36 @@
 {
   "functions": {
     "source": "server"
+  },
+  "hosting": {
+    "public": "build",
+    "ignore": [
+      "firebase.json",
+      "babel.config.js",
+      "coverage",
+      "jest",
+      "jest.config.ts",
+      "sonar-project.properties",
+      "src",
+      "tests",
+      "tsconfig.json",
+      "tsconfig.tsbuildinfo",
+      "yarn.lock",
+      "**/.*",
+      "**/node_modules/**"
+    ]
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

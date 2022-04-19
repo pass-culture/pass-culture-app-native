@@ -1,3 +1,5 @@
+// FIXME: for some reason, this is scanned by root project and cause a linting error
+// eslint-disable-next-line import/no-unresolved
 import { region } from 'firebase-functions'
 
 import { app } from './app'
@@ -14,10 +16,8 @@ if (env.__DEV__) {
     process.env.NODE_ENV !== 'test' && logger.info(`[${process.env.ENV}] Listening on port ${PORT}`)
   })
 } else {
-  /* istanbul ignore next */
-  const { https } = region(env.REGION)
   // TODO: see if unit test of next line is possible using https://www.npmjs.com/package/firebase-functions-test
-  appServer = https.onRequest(app)
+  appServer = region(env.REGION).https.onRequest(app)
 }
 
 export const server = appServer

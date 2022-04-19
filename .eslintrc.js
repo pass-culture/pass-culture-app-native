@@ -192,7 +192,7 @@ module.exports = {
     jest: true,
     serviceworker: true,
   },
-  ignorePatterns: ['build', '.*.js', '*.config.js', 'node_modules', 'coverage'],
+  ignorePatterns: ['build', '.*.js', '*.config.js', 'node_modules', 'coverage', 'server'],
   // TypeScript files overrides
   overrides: [
     {

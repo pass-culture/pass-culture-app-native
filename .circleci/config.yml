@@ -361,14 +361,14 @@ jobs:
 
   checkout-and-install-proxy-deps:
     executor: node
-    working_directory: ~/pass-culture/server
+    working_directory: ~/pass-culture
     steps:
       - checkout
       - install_node_modules_proxy
 
   test-proxy:
     executor: node
-    working_directory: ~/pass-culture/server
+    working_directory: ~/pass-culture
     steps:
       - checkout
       - install_node_modules_proxy

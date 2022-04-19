@@ -6,8 +6,8 @@ export default async (): Promise<Config.InitialOptions> => {
       global: {
         branches: 96,
         functions: 100,
-        lines: 100,
-        statements: 100,
+        lines: 98,
+        statements: 98,
       },
     },
     setupFiles: ['<rootDir>/jest/jest.setup.ts'],

@@ -117,3 +117,4 @@ firebase-debug.log
 
 # server
 /server/.env
+/.firebase
