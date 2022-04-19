@@ -1,7 +1,6 @@
 import { t } from '@lingui/macro'
 import React, { useEffect, useRef, useState } from 'react'
-import { LayoutChangeEvent, ScrollView } from 'react-native'
-import { useWindowDimensions } from 'react-native'
+import { LayoutChangeEvent, ScrollView, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'

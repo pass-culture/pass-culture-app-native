@@ -1,5 +1,4 @@
-import React from 'react'
-import { ComponentType } from 'react'
+import React, { ComponentType } from 'react'
 
 import { withAsyncErrorBoundary } from 'features/errors'
 import { TabRoute } from 'features/navigation/TabBar/types'

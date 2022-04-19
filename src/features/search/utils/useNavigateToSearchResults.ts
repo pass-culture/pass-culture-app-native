@@ -1,8 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import { useCallback } from 'react'
 
-import { Referrals } from 'features/navigation/RootNavigator'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useSearch } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'

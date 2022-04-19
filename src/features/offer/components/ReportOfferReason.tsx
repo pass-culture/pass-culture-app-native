@@ -1,6 +1,5 @@
 import { t } from '@lingui/macro'
-import React, { FunctionComponent } from 'react'
-import { useState } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 

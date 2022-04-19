@@ -6,8 +6,13 @@ import { openInbox } from 'react-native-email-link'
 import QRCode from 'react-native-qrcode-svg'
 import styled from 'styled-components/native'
 
-import { CategoryIdEnum, BookingOfferResponse, BookingReponse, SubcategoryIdEnum } from 'api/gen'
-import { WithdrawalTypeEnum } from 'api/gen'
+import {
+  CategoryIdEnum,
+  BookingOfferResponse,
+  BookingReponse,
+  SubcategoryIdEnum,
+  WithdrawalTypeEnum,
+} from 'api/gen'
 import { TicketCode } from 'features/bookings/atoms/TicketCode'
 import { formatSecondsToString, getBookingProperties } from 'features/bookings/helpers'
 import { openUrl } from 'features/navigation/helpers'

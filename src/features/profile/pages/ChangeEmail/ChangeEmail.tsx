@@ -1,7 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect, useState } from 'react'
-import { useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useMutation } from 'react-query'

@@ -1,6 +1,5 @@
 import React, { useEffect, memo } from 'react'
-import { useWindowDimensions } from 'react-native'
-import { Animated } from 'react-native'
+import { Animated, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 // eslint-disable-next-line no-restricted-imports
