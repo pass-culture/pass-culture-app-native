@@ -176,7 +176,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                         Object {
                           "borderRadius": 48,
                           "flexBasis": 0,
-                          "flexGrow": 0.5,
+                          "flexGrow": 0,
                           "flexShrink": 1,
                         },
                       ]
@@ -209,7 +209,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
                   ]
                 }
               >
-                50%
+                0%
               </Text>
             </View>
           </View>

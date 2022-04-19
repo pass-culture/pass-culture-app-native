@@ -10,6 +10,7 @@ import { mockCulturalSurveyQuestions } from 'features/culturalSurvey/__mocks__/c
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
 import { CulturalSurveyPageHeader } from 'features/culturalSurvey/components/layout/CulturalSurveyPageHeader'
 import { mapQuestionIdToPageTitle } from 'features/culturalSurvey/helpers/utils'
+import { useCulturalSurveyProgress } from 'features/culturalSurvey/useCulturalSurveyProgress'
 import { useGetNextStep } from 'features/culturalSurvey/useGetNextStep'
 import { navigateToHome } from 'features/navigation/helpers'
 import {
@@ -36,11 +37,11 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
     setBottomChildrenViewHeight(height)
   }
 
-  const { nextStep, isCurrentStepLastStep } = useGetNextStep(route.params?.step)
+  const { nextStep, isCurrentStepLastStep } = useGetNextStep(route.params.step)
 
   // TODO (yorickeando) PC-13347: replace mock data by backend response from adequate react query
   const mockedData = mockCulturalSurveyQuestions.questions.find(
-    (question) => question.id === route.params?.step
+    (question) => question.id === route.params.step
   )
 
   const navigateToNextStep = () => {
@@ -52,10 +53,14 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
   }
 
   const pageSubtitle = t`Tu peux sélectionner une ou plusieurs réponses.`
+  const culturalSurveyProgress = useCulturalSurveyProgress(route.params.step)
 
   return (
     <Container>
-      <CulturalSurveyPageHeader progress={0.5} title={mapQuestionIdToPageTitle(mockedData?.id)} />
+      <CulturalSurveyPageHeader
+        progress={culturalSurveyProgress}
+        title={mapQuestionIdToPageTitle(mockedData?.id)}
+      />
       <ChildrenScrollView bottomChildrenViewHeight={bottomChildrenViewHeight}>
         <Typo.Title3>{mockedData?.title}</Typo.Title3>
         <CaptionContainer>

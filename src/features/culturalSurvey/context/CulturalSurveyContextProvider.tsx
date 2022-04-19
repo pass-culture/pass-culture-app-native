@@ -6,7 +6,7 @@ import {
 } from 'features/culturalSurvey/context/reducer'
 import { Action, CulturalSurveyState } from 'features/culturalSurvey/context/types'
 
-interface ICulturalSurveyContext extends CulturalSurveyState {
+export interface ICulturalSurveyContext extends CulturalSurveyState {
   dispatch: React.Dispatch<Action>
 }
 
