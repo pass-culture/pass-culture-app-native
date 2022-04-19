@@ -27,7 +27,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   const { data: user } = useUserProfileInfo()
   const isExBeneficiary = user && isUserExBeneficiary(user)
 
-  if (properties.hasActivationCode == true && props.activationCodeFeatureEnabled) {
+  if (properties.hasActivationCode && props.activationCodeFeatureEnabled) {
     return (
       <ButtonSecondary
         testID={'Terminer'}

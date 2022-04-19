@@ -18,7 +18,7 @@ import { SearchHit, useParseSearchParameters } from 'libs/search'
 const isSearchState = (parameter: unknown): parameter is SearchState =>
   typeof parameter === 'object' && parameter !== null
 
-interface useOfferModuleProps {
+interface UseOfferModuleProps {
   search: SearchParametersFields[]
   moduleId: string
 }
@@ -26,7 +26,7 @@ interface useOfferModuleProps {
 export const useOfferModule = ({
   search,
   moduleId,
-}: useOfferModuleProps): { hits: SearchHit[]; nbHits: number } | undefined => {
+}: UseOfferModuleProps): { hits: SearchHit[]; nbHits: number } | undefined => {
   const { position } = useGeolocation()
   const transformHits = useTransformAlgoliaHits()
   const parseSearchParameters = useParseSearchParameters()
