@@ -196,7 +196,7 @@ commands:
       - run:
           name: Notify deployed version
           command: |
-            BOT_MESSAGE="'*production* : [App Native] Version *"$CIRCLE_TAG"* has been successfully deployed :muscle:'"
+            BOT_MESSAGE="'*production* : [App Native] Version *"$CIRCLE_TAG"* has been successfully deployed for internal tests before store submission :muscle:'"
             curl -X POST -H 'Content-type: application/json' --data "{'text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
 
   authenticate_gcp:
