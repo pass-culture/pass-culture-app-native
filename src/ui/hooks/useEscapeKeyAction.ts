@@ -5,4 +5,4 @@ import { GestureResponderEvent } from 'react-native'
  * @param callback
  */
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const useEscapeKeyAction = (callback?: (e: GestureResponderEvent) => void) => undefined
+export const useEscapeKeyAction = (_callback?: (e: GestureResponderEvent) => void) => undefined

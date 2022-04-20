@@ -234,7 +234,7 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
             <Spacer.Column numberOfSpaces={6} />
             <CodeInputContainer>
               <CodeInput
-                onChangeText={(text, rawText) => {
+                onChangeText={(_text, rawText) => {
                   onChangeValue(rawText ?? '')
                 }}
                 placeholder={codeInputPlaceholder}

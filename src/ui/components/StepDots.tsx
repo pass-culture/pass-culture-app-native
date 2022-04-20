@@ -12,7 +12,7 @@ export const StepDots: FunctionComponent<Props> = (props) => {
   const currentStepIndex = props.currentStep - 1
   return (
     <StepsContainer>
-      {[...Array(props.numberOfSteps)].map((val, index) => {
+      {[...Array(props.numberOfSteps)].map((_val, index) => {
         return (
           <DotComponent
             key={index}
