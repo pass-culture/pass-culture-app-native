@@ -4,7 +4,6 @@ import styled, { DefaultTheme } from 'styled-components/native'
 
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { getShadow, getSpacing, Spacer } from 'ui/theme'
-import { HiddenCheckbox } from 'ui/web/inputs/HiddenCheckbox'
 
 interface Props {
   active: boolean
@@ -20,7 +19,7 @@ const TOGGLE_PATH_START = 2
 const TOGGLE_PATH_END = TOGGLE_WIDTH - TOGGLE_PATH_START
 
 const FilterSwitch: React.FC<Props> = (props: Props) => {
-  const { toggle, active = false, disabled = false, checkboxID } = props
+  const { toggle, active = false, disabled = false } = props
   const animatedValue = useRef(new Animated.Value(active ? 1 : 0)).current
 
   const marginLeft = animatedValue.interpolate({
@@ -53,7 +52,6 @@ const FilterSwitch: React.FC<Props> = (props: Props) => {
           <StyledToggle style={{ marginLeft }} />
         </StyledBackgroundColor>
       </TouchableOpacity>
-      <HiddenCheckbox id={checkboxID} checked={active} onChange={toggle} />
     </FilterSwitchContainer>
   )
 }

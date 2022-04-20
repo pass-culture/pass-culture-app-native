@@ -12,14 +12,8 @@ import CodePush from 'react-native-code-push'
 import 'intl'
 import 'intl/locale-data/jsonp/en'
 
-import { AuthWrapper } from 'features/auth/AuthContext'
-import { CulturalSurveyContextProvider } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
-import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
-import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
-import { IdentityCheckContextProvider } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
-import { SearchWrapper } from 'features/search/pages/SearchWrapper'
 import { analytics } from 'libs/analytics'
 import { campaignTracker } from 'libs/campaign'
 import { AutoImmediate, NextRestart } from 'libs/codepush/options'
@@ -64,29 +58,17 @@ const App: FunctionComponent = function () {
       <SafeAreaProvider>
         <ReactQueryClientProvider>
           <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-            <AuthWrapper>
-              <GeolocationWrapper>
-                <FavoritesWrapper>
-                  <SearchWrapper>
-                    <I18nProvider i18n={i18n}>
-                      <SnackBarProvider>
-                        <NetInfoWrapper>
-                          <CulturalSurveyContextProvider>
-                            <IdentityCheckContextProvider>
-                              <SplashScreenProvider>
-                                <ScreenErrorProvider>
-                                  <AppNavigationContainer />
-                                </ScreenErrorProvider>
-                              </SplashScreenProvider>
-                            </IdentityCheckContextProvider>
-                          </CulturalSurveyContextProvider>
-                        </NetInfoWrapper>
-                      </SnackBarProvider>
-                    </I18nProvider>
-                  </SearchWrapper>
-                </FavoritesWrapper>
-              </GeolocationWrapper>
-            </AuthWrapper>
+            <GeolocationWrapper>
+              <I18nProvider i18n={i18n}>
+                <SnackBarProvider>
+                  <NetInfoWrapper>
+                    <SplashScreenProvider>
+                      <AppNavigationContainer />
+                    </SplashScreenProvider>
+                  </NetInfoWrapper>
+                </SnackBarProvider>
+              </I18nProvider>
+            </GeolocationWrapper>
           </ErrorBoundary>
         </ReactQueryClientProvider>
       </SafeAreaProvider>
