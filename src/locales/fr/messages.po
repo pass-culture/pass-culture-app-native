@@ -831,6 +831,10 @@ msgstr "Déconnexion"
 msgid "Découvrir"
 msgstr "Découvrir"
 
+#: src/features/culturalSurvey/pages/CulturalSurveyThanks.tsx
+msgid "Découvrir le catalogue"
+msgstr "Découvrir le catalogue"
+
 #: src/features/firstTutorial/pages/FirstTutorial/components/FourthCard.tsx
 msgid "Découvrir ton pass Culture"
 msgstr "Découvrir ton pass Culture"
@@ -2852,6 +2856,14 @@ msgstr "Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attent
 msgid "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
 msgstr "Tu peux aussi découvrir les autres activités culturelles sur l'application mais leur réservation s'effectuera sur les sites de nos partenaires !"
 
+#: src/features/culturalSurvey/pages/CulturalSurveyThanks.tsx
+msgid ""
+"Tu peux dès maintenant découvrir \n"
+"l’étendue du catalogue pass Culture."
+msgstr ""
+"Tu peux dès maintenant découvrir \n"
+"l’étendue du catalogue pass Culture."
+
 #: src/features/profile/components/BeneficiaryCeilings.tsx
 msgid "Tu peux encore dépenser :"
 msgstr "Tu peux encore dépenser :"
@@ -2927,6 +2939,10 @@ msgstr "Télécharger la dernière version"
 #: src/ui/components/contact/ContactBlock.tsx
 msgid "Téléphone"
 msgstr "Téléphone"
+
+#: src/features/culturalSurvey/pages/CulturalSurveyThanks.tsx
+msgid "Un grand merci"
+msgstr "Un grand merci"
 
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
@@ -3372,6 +3388,10 @@ msgstr "pour"
 #: src/features/culturalSurvey/pages/CulturalSurveyIntro.tsx
 msgid "pour parler de tes pratiques culturelles !"
 msgstr "pour parler de tes pratiques culturelles !"
+
+#: src/features/culturalSurvey/pages/CulturalSurveyThanks.tsx
+msgid "pour tes réponses !"
+msgstr "pour tes réponses !"
 
 #: src/libs/tileAccessibilityLabel.ts
 msgid "prix"

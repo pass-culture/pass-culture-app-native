@@ -17,6 +17,7 @@ export type CulturalSurveyRootStackParamList = {
   NavigationCulturalSurvey: undefined
   CulturalSurveyIntro: undefined
   CulturalSurveyQuestions: { step: CulturalSurveyQuestionEnum }
+  CulturalSurveyThanks: undefined
 }
 
 export type IdentityCheckRootStackParamList = {
