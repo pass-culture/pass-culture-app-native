@@ -7,11 +7,9 @@ import { PrivacyPolicy } from 'features/firstLogin/PrivacyPolicy/PrivacyPolicy'
 import { AccessibleTabBar } from 'features/navigation/RootNavigator/Header/AccessibleTabBar'
 import { NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { RootScreenNames } from 'features/navigation/RootNavigator/types'
-import { useInitialScreen } from 'features/navigation/RootNavigator/useInitialScreenConfig'
 import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { useSplashScreenContext } from 'libs/splashscreen'
-import { LoadingPage } from 'ui/components/LoadingPage'
 import { Main } from 'ui/web/global/Main'
 import { QuickAccess } from 'ui/web/link/QuickAccess'
 
@@ -37,11 +35,8 @@ export const RootNavigator: React.ComponentType = () => {
   const { showTabBar } = useTheme()
   const { isSplashScreenHidden } = useSplashScreenContext()
 
-  const initialScreen = useInitialScreen()
+  const initialScreen = 'FirstTutorial'
 
-  if (!initialScreen) {
-    return <LoadingPage />
-  }
   return (
     <TabNavigationStateProvider>
       {showTabBar ? (

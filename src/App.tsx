@@ -20,7 +20,6 @@ import { FavoritesWrapper } from 'features/favorites/pages/FavoritesWrapper'
 import { IdentityCheckContextProvider } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/pages/SearchWrapper'
-import { ABTestingProvider } from 'libs/ABTesting'
 import { analytics } from 'libs/analytics'
 import { campaignTracker } from 'libs/campaign'
 import { AutoImmediate, NextRestart } from 'libs/codepush/options'
@@ -57,43 +56,41 @@ const App: FunctionComponent = function () {
   }, [])
 
   useEffect(() => {
-    eventMonitoring.init({ enabled: !__DEV__ })
+    eventMonitoring.init({ enabled: true })
   }, [])
 
   return (
-    <ABTestingProvider>
-      <ThemeProvider theme={theme}>
-        <SafeAreaProvider>
-          <ReactQueryClientProvider>
-            <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-              <AuthWrapper>
-                <GeolocationWrapper>
-                  <FavoritesWrapper>
-                    <SearchWrapper>
-                      <I18nProvider i18n={i18n}>
-                        <SnackBarProvider>
-                          <NetInfoWrapper>
-                            <CulturalSurveyContextProvider>
-                              <IdentityCheckContextProvider>
-                                <SplashScreenProvider>
-                                  <ScreenErrorProvider>
-                                    <AppNavigationContainer />
-                                  </ScreenErrorProvider>
-                                </SplashScreenProvider>
-                              </IdentityCheckContextProvider>
-                            </CulturalSurveyContextProvider>
-                          </NetInfoWrapper>
-                        </SnackBarProvider>
-                      </I18nProvider>
-                    </SearchWrapper>
-                  </FavoritesWrapper>
-                </GeolocationWrapper>
-              </AuthWrapper>
-            </ErrorBoundary>
-          </ReactQueryClientProvider>
-        </SafeAreaProvider>
-      </ThemeProvider>
-    </ABTestingProvider>
+    <ThemeProvider theme={theme}>
+      <SafeAreaProvider>
+        <ReactQueryClientProvider>
+          <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+            <AuthWrapper>
+              <GeolocationWrapper>
+                <FavoritesWrapper>
+                  <SearchWrapper>
+                    <I18nProvider i18n={i18n}>
+                      <SnackBarProvider>
+                        <NetInfoWrapper>
+                          <CulturalSurveyContextProvider>
+                            <IdentityCheckContextProvider>
+                              <SplashScreenProvider>
+                                <ScreenErrorProvider>
+                                  <AppNavigationContainer />
+                                </ScreenErrorProvider>
+                              </SplashScreenProvider>
+                            </IdentityCheckContextProvider>
+                          </CulturalSurveyContextProvider>
+                        </NetInfoWrapper>
+                      </SnackBarProvider>
+                    </I18nProvider>
+                  </SearchWrapper>
+                </FavoritesWrapper>
+              </GeolocationWrapper>
+            </AuthWrapper>
+          </ErrorBoundary>
+        </ReactQueryClientProvider>
+      </SafeAreaProvider>
+    </ThemeProvider>
   )
 }
 
