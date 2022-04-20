@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
@@ -26,12 +26,10 @@ export const DuoChoice: React.FC<Props> = ({
   testID,
 }) => {
   const disabled = !hasEnoughCredit
-  const theme = useTheme()
-  const textColor = getTextColor(theme, selected, disabled)
 
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
     size: theme.icons.sizes.small,
-    color: textColor,
+    color: getTextColor(theme, selected, disabled),
   }))``
 
   return (

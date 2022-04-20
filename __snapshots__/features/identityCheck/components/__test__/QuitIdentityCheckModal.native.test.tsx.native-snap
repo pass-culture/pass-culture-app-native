@@ -11,7 +11,6 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
   visible={true}
 >
   <View
-    maxHeight={1254}
     style={
       Array [
         Object {
@@ -29,6 +28,7 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
         },
       ]
     }
+    windowHeight={1334}
   >
     <View
       height="100%"
