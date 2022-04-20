@@ -1,8 +1,7 @@
 import React, { FunctionComponent, useRef, useState, useMemo, useCallback } from 'react'
 import { LayoutChangeEvent, Platform, ScrollView, useWindowDimensions } from 'react-native'
 import { ReactNativeModal } from 'react-native-modal'
-import { useTheme } from 'styled-components'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 // eslint-disable-next-line no-restricted-imports

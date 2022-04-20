@@ -1,8 +1,6 @@
 import * as consoleFailTestModule from 'console-fail-test'
 import { toMatchDiffSnapshot } from 'snapshot-diff'
 
-import { server } from 'tests/server'
-
 import { queryCache } from './reactQueryProviderHOC'
 import { flushAllPromises } from './utils'
 
@@ -28,7 +26,6 @@ global.allowConsole({
 })
 
 global.beforeAll(() => {
-  server.listen()
   consoleFailTestModule.cft({
     testFramework: 'jest',
     spyLibrary: 'jest',
@@ -37,8 +34,6 @@ global.beforeAll(() => {
 })
 
 global.afterAll(() => {
-  server.resetHandlers()
-  server.close()
   allowConsoleRuntimeConfig = Object.assign({}, allowConsoleDefaultConfig)
 })
 
@@ -53,20 +48,4 @@ global.GeolocationPositionError = {
   PERMISSION_DENIED: 1,
   POSITION_UNAVAILABLE: 2,
   TIMEOUT: 3,
-}
-const geolocation = {
-  getCurrentPosition: jest.fn((success) =>
-    Promise.resolve(success({ coords: { latitude: 48.85, longitude: 2.29 } }))
-  ),
-}
-const permissions = {
-  query: jest.fn(async () => ({ state: 'granted' })),
-}
-const share = jest.fn()
-if (!global.navigator) {
-  global.navigator = { geolocation, permissions, share }
-} else {
-  global.navigator.geolocation = geolocation
-  global.navigator.permissions = permissions
-  global.navigator.share = share
 }
