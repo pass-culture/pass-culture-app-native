@@ -15,7 +15,7 @@ function FestivalSvg({
   testID,
 }: AccessibleIcon): JSX.Element {
   const {
-    colors: { secondary, black },
+    colors: { primary, secondary },
   } = useTheme()
   const { id: gradientId, fill: gradientFill } = svgIdentifier()
   return (
@@ -28,7 +28,7 @@ function FestivalSvg({
       accessibilityLabel={accessibilityLabel}>
       <Defs>
         <LinearGradient id={gradientId} x1="28.841%" x2="71.159%" y1="0%" y2="100%">
-          <Stop offset="0%" stopColor={color ?? black} />
+          <Stop offset="0%" stopColor={color ?? primary} />
           <Stop offset="100%" stopColor={color2 ?? color ?? secondary} />
         </LinearGradient>
       </Defs>

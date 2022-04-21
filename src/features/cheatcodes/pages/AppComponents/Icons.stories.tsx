@@ -27,6 +27,7 @@ Categories.args = {
 
 export const VenueTypes = Icons.bind({})
 VenueTypes.args = {
+  isBicolor: true,
   icons: VenueTypesIcons,
 }
 
