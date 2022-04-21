@@ -4,6 +4,7 @@ export enum QueryKeys {
   HOME_VENUES_MODULE = 'homeVenuesModule',
   BOOKINGS = 'bookings',
   CITIES = 'cities',
+  CULTURAL_SURVEY_QUESTIONS = 'culturalSurveyQuestions',
   EMAIL_CHANGE_EXPIRATION_TIMESTAMP = 'emailChangeExpirationTimestamp',
   ERROR_ASYNC = 'errorAsync',
   FAVORITES = 'favorites',

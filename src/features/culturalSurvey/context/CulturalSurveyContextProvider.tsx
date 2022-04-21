@@ -1,10 +1,12 @@
-import React, { useContext, useMemo, useReducer } from 'react'
+import React, { useContext, useEffect, useMemo, useReducer } from 'react'
 
 import {
   culturalSurveyReducer,
   initialCulturalSurveyState,
 } from 'features/culturalSurvey/context/reducer'
 import { Action, CulturalSurveyState } from 'features/culturalSurvey/context/types'
+import { createInitialQuestionsList } from 'features/culturalSurvey/helpers/utils'
+import { useCulturalSurveyQuestions } from 'features/culturalSurvey/useCulturalSurveyQuestions'
 
 export interface ICulturalSurveyContext extends CulturalSurveyState {
   dispatch: React.Dispatch<Action>
@@ -21,11 +23,20 @@ export const CulturalSurveyContextProvider = ({
     culturalSurveyReducer,
     initialCulturalSurveyState
   )
+  const { data: culturalSurveyQuestionsData } = useCulturalSurveyQuestions()
+
+  useEffect(() => {
+    dispatch({
+      type: 'SET_QUESTIONS',
+      payload: createInitialQuestionsList(culturalSurveyQuestionsData),
+    })
+  }, [culturalSurveyQuestionsData, dispatch])
 
   const value = useMemo(
     () => ({ ...culturalSurveyState, dispatch }),
     [culturalSurveyState, dispatch]
   )
+
   return <CulturalSurveyContext.Provider value={value}>{children}</CulturalSurveyContext.Provider>
 }
 

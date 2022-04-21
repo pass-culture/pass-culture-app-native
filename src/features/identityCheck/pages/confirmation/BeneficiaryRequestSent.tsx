@@ -4,8 +4,10 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
-import { useCulturalSurveyRoute } from 'features/culturalSurvey/helpers/utils'
-import { shouldShowCulturalSurvey } from 'features/firstLogin/helpers'
+import {
+  shouldShowCulturalSurvey,
+  useCulturalSurveyRoute,
+} from 'features/culturalSurvey/helpers/utils'
 import { useUserProfileInfo } from 'features/home/api'
 import { navigateToHome } from 'features/navigation/helpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator'

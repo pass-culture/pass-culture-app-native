@@ -2,8 +2,10 @@ import { useEffect } from 'react'
 
 import { api } from 'api/api'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useCulturalSurveyRoute } from 'features/culturalSurvey/helpers/utils'
-import { shouldShowCulturalSurvey } from 'features/firstLogin/helpers'
+import {
+  shouldShowCulturalSurvey,
+  useCulturalSurveyRoute,
+} from 'features/culturalSurvey/helpers/utils'
 import { analytics } from 'libs/analytics'
 import { useSafeState } from 'libs/hooks'
 import { storage } from 'libs/storage'
@@ -28,7 +30,7 @@ export function useInitialScreen(): RootScreenNames | undefined {
         setInitialScreen('TabNavigator')
       })
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isLoggedIn])
+  }, [isLoggedIn, culturalSurveyRoute])
 
   return initialScreen
 }
