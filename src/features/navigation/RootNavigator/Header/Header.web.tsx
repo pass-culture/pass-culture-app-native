@@ -17,7 +17,6 @@ import { Nav } from './Nav'
 
 const MINIMUM_BRAND_SIZE = 140
 
-/* eslint-disable @typescript-eslint/no-unused-vars */
 export const Header = memo(function Header({ mainId }: { mainId: string }) {
   const theme = useTheme()
 
