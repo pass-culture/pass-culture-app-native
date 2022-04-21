@@ -1,9 +1,9 @@
-import { mockCulturalSurveyQuestions } from 'features/culturalSurvey/fixtures/culturalSurveyQuestions'
+import { mockedCulturalSurveyQuestions } from 'features/culturalSurvey/fixtures/mockedCulturalSurveyQuestions'
 import { createInitialQuestionsList } from 'features/culturalSurvey/helpers/utils'
 
 describe('createInitialQuestionsList', () => {
   it('should return list of questions id', () => {
-    const ids = createInitialQuestionsList(mockCulturalSurveyQuestions)
+    const ids = createInitialQuestionsList(mockedCulturalSurveyQuestions)
     expect(ids).toEqual(['SORTIES', 'ACTIVITES'])
   })
 
