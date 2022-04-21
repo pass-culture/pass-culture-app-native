@@ -53,7 +53,7 @@ describe('<PrivacyPolicyModal />', () => {
   it('should open cookies policies on click on "Politique des cookies"', async () => {
     const { getByText } = renderPrivacyModal({ onRefusal, onApproval, visible })
     fireEvent.press(getByText('Politique des cookies'))
-    expect(mockedOpenUrl).toBeCalledWith(env.COOKIES_POLICY_LINK)
+    expect(mockedOpenUrl).toBeCalledWith(env.COOKIES_POLICY_LINK, undefined)
     await superFlushWithAct(1)
   })
 

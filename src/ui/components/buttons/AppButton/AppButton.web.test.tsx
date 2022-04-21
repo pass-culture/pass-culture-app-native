@@ -77,7 +77,7 @@ describe('AppButton Component', () => {
     })
     it('should render anchor tag without type if component is an anchor', () => {
       const href = 'https://example.link/'
-      const { getByTestId } = render(<AppButton {...baseProps} testID="link" externalHref={href} />)
+      const { getByTestId } = render(<AppButton {...baseProps} testID="link" href={href} />)
       const link = getByTestId('link')
       expect(link.tagName.toLowerCase()).toBe('a')
       expect(link.getAttribute('href')).toBe(href)

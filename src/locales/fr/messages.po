@@ -2015,6 +2015,11 @@ msgstr "Plus tard"
 msgid "Politique de confidentialité."
 msgstr "Politique de confidentialité."
 
+#: src/features/firstLogin/PrivacyPolicy/PrivacyPolicyModal.tsx
+#: src/features/profile/pages/ConsentSettings.tsx
+msgid "Politique des cookies"
+msgstr "Politique des cookies"
+
 #: src/libs/tileAccessibilityLabel.ts
 msgid "Possibilité de réserver 2 places."
 msgstr "Possibilité de réserver 2 places."

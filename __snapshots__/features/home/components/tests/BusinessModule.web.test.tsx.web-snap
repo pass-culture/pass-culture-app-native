@@ -16,7 +16,6 @@ Object {
         <div
           aria-disabled="true"
           class="css-view-1dbjc4n"
-          role="link"
           style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; user-select: none;"
           tabindex="-1"
         >
@@ -106,7 +105,6 @@ Object {
       <div
         aria-disabled="true"
         class="css-view-1dbjc4n"
-        role="link"
         style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; user-select: none;"
         tabindex="-1"
       >
@@ -250,10 +248,11 @@ Object {
           class="css-view-1dbjc4n"
           style="width: 24px;"
         />
-        <a
-          class="css-reset-4rbku5 css-view-1dbjc4n"
-          href="url"
+        <div
+          class="css-cursor-18t94o4 css-view-1dbjc4n"
+          role="link"
           style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; user-select: none;"
+          tabindex="0"
         >
           <div
             class="css-view-1dbjc4n"
@@ -336,7 +335,7 @@ Object {
               </div>
             </div>
           </div>
-        </a>
+        </div>
         <div
           class="css-view-1dbjc4n"
           style="width: 24px;"
@@ -353,10 +352,11 @@ Object {
         class="css-view-1dbjc4n"
         style="width: 24px;"
       />
-      <a
-        class="css-reset-4rbku5 css-view-1dbjc4n"
-        href="url"
+      <div
+        class="css-cursor-18t94o4 css-view-1dbjc4n"
+        role="link"
         style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; user-select: none;"
+        tabindex="0"
       >
         <div
           class="css-view-1dbjc4n"
@@ -439,7 +439,7 @@ Object {
             </div>
           </div>
         </div>
-      </a>
+      </div>
       <div
         class="css-view-1dbjc4n"
         style="width: 24px;"
@@ -513,10 +513,11 @@ Object {
           class="css-view-1dbjc4n"
           style="width: 24px;"
         />
-        <a
-          class="css-reset-4rbku5 css-view-1dbjc4n"
-          href="url"
+        <div
+          class="css-cursor-18t94o4 css-view-1dbjc4n"
+          role="link"
           style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; user-select: none;"
+          tabindex="0"
         >
           <div
             class="css-view-1dbjc4n"
@@ -621,7 +622,7 @@ Object {
               </div>
             </div>
           </div>
-        </a>
+        </div>
         <div
           class="css-view-1dbjc4n"
           style="width: 24px;"
@@ -638,10 +639,11 @@ Object {
         class="css-view-1dbjc4n"
         style="width: 24px;"
       />
-      <a
-        class="css-reset-4rbku5 css-view-1dbjc4n"
-        href="url"
+      <div
+        class="css-cursor-18t94o4 css-view-1dbjc4n"
+        role="link"
         style="border-top-left-radius: 8px; border-top-right-radius: 8px; border-bottom-right-radius: 8px; border-bottom-left-radius: 8px; cursor: pointer; user-select: none;"
+        tabindex="0"
       >
         <div
           class="css-view-1dbjc4n"
@@ -746,7 +748,7 @@ Object {
             </div>
           </div>
         </div>
-      </a>
+      </div>
       <div
         class="css-view-1dbjc4n"
         style="width: 24px;"

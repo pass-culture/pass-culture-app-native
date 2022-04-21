@@ -41,7 +41,7 @@ describe('ButtonInsideText Component', () => {
     })
     it('should render anchor tag without type if component is an anchor', () => {
       const href = 'https://example.link/'
-      const { getByTestId } = render(<ButtonInsideText wording={wording} externalHref={href} />)
+      const { getByTestId } = render(<ButtonInsideText wording={wording} href={href} />)
       const link = getByTestId('button-inside-text')
       expect(link.tagName.toLowerCase()).toBe('a')
       expect(link.getAttribute('href')).toBe(href)

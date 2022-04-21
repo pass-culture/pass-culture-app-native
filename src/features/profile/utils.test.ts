@@ -1,8 +1,6 @@
-import { openInbox } from 'react-native-email-link'
-
 import { UserProfileResponse } from 'api/gen'
 import { getAvailableCredit } from 'features/home/services/useAvailableCredit'
-import { openUrl, isAppUrl } from 'features/navigation/helpers'
+import { isAppUrl } from 'features/navigation/helpers'
 import { beneficiaryUser, nonBeneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
 import { Clock } from 'ui/svg/icons/Clock'
 import { Info } from 'ui/svg/icons/Info'
@@ -11,7 +9,7 @@ import {
   computeCredit,
   matchSubscriptionMessageIconToSvg,
   isUserExBeneficiary,
-  handleCallToActionLink,
+  shouldOpenInbox,
 } from './utils'
 
 jest.mock('react-native-email-link')
@@ -84,26 +82,20 @@ describe('profile utils', () => {
       }
     )
   })
-  describe('handleCallToActionLink', () => {
-    it("should call openInbox and not call openUrl if url is appUrl and contains 'openInbox' string ", () => {
+  describe('shouldOpenInbox', () => {
+    it("should return true if url is appUrl and contains 'openInbox' string ", () => {
       const link = 'prefix' + 'openInbox'
-      handleCallToActionLink(link)
-      expect(openInbox).toHaveBeenCalledWith()
-      expect(openUrl).not.toHaveBeenCalled()
+      expect(shouldOpenInbox(link)).toBeTruthy()
     })
-    it('should not call openInbox and call openUrl if url is appUrl and does not contain openInbox', () => {
+    it('should return false if url is appUrl and does not contain openInbox', () => {
       const link = 'prefix' + 'whatever'
-      handleCallToActionLink(link)
-      expect(openInbox).not.toHaveBeenCalled()
-      expect(openUrl).toHaveBeenCalledWith('prefixwhatever')
+      expect(shouldOpenInbox(link)).toBeFalsy()
     })
-    it('should call openUrl if url is not appUrl and contains openInbox', () => {
+    it('should return false if url is not appUrl and contains openInbox', () => {
       const isAppUrlMock = isAppUrl as jest.Mock
       isAppUrlMock.mockReturnValueOnce(false)
       const link = 'https://whateveropenInbox.com'
-      handleCallToActionLink(link)
-      expect(openInbox).not.toHaveBeenCalled()
-      expect(openUrl).toHaveBeenCalledWith('https://whateveropenInbox.com')
+      expect(shouldOpenInbox(link)).toBeFalsy()
     })
   })
 })

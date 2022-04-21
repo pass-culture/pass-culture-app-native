@@ -1747,6 +1747,7 @@ exports[`<VenueBody /> should render correctly 1`] = `
     >
       <View
         accessibilityLabel="Voir toutes les offres"
+        accessibilityRole="link"
         accessibilityState={
           Object {
             "disabled": false,
@@ -1962,7 +1963,9 @@ exports[`<VenueBody /> should render correctly 1`] = `
         <View
           accessibilityLabel="Voir l'itinéraire"
           accessible={true}
+          collapsable={false}
           focusable={true}
+          nativeID="animatedComponent"
           onClick={[Function]}
           onResponderGrant={[Function]}
           onResponderMove={[Function]}

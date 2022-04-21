@@ -6,6 +6,7 @@ import waitForExpect from 'wait-for-expect'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { AuthContext } from 'features/auth/AuthContext'
 import { contactSupport } from 'features/auth/support.services'
+import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -15,6 +16,7 @@ import { AcceptCgu } from './AcceptCgu'
 
 jest.mock('features/auth/settings')
 jest.mock('libs/monitoring')
+const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 function simulateNoNetwork() {
   jest.spyOn(netInfoModule, 'useNetInfo').mockReturnValue({
@@ -40,7 +42,10 @@ describe('<AcceptCgu/>', () => {
     await superFlushWithAct()
 
     await waitForExpect(() => {
-      expect(contactSupport.forGenericQuestion).toBeCalledTimes(1)
+      expect(openUrl).toBeCalledWith(
+        contactSupport.forGenericQuestion.url,
+        contactSupport.forGenericQuestion.params
+      )
     })
   })
 

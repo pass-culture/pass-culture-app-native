@@ -71,7 +71,7 @@ Object {
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
                   data-testid="Home tab"
-                  href="/Home"
+                  href="/TabNavigator/Home"
                   style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 >
                   <div
@@ -122,7 +122,7 @@ Object {
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
                   data-testid="Search tab"
-                  href="/Search"
+                  href="/TabNavigator/Search"
                   style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 >
                   <div
@@ -158,7 +158,7 @@ Object {
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
                   data-testid="Bookings tab"
-                  href="/Bookings"
+                  href="/TabNavigator/Bookings"
                   style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 >
                   <div
@@ -194,7 +194,7 @@ Object {
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
                   data-testid="Favorites tab"
-                  href="/Favorites"
+                  href="/TabNavigator/Favorites"
                   style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 >
                   <div
@@ -230,7 +230,7 @@ Object {
                 <a
                   class="css-reset-4rbku5 css-view-1dbjc4n"
                   data-testid="Profile tab"
-                  href="/Profile"
+                  href="/TabNavigator/Profile"
                   style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
                 >
                   <div
@@ -339,7 +339,7 @@ Object {
               <a
                 class="css-reset-4rbku5 css-view-1dbjc4n"
                 data-testid="Home tab"
-                href="/Home"
+                href="/TabNavigator/Home"
                 style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
               >
                 <div
@@ -390,7 +390,7 @@ Object {
               <a
                 class="css-reset-4rbku5 css-view-1dbjc4n"
                 data-testid="Search tab"
-                href="/Search"
+                href="/TabNavigator/Search"
                 style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
               >
                 <div
@@ -426,7 +426,7 @@ Object {
               <a
                 class="css-reset-4rbku5 css-view-1dbjc4n"
                 data-testid="Bookings tab"
-                href="/Bookings"
+                href="/TabNavigator/Bookings"
                 style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
               >
                 <div
@@ -462,7 +462,7 @@ Object {
               <a
                 class="css-reset-4rbku5 css-view-1dbjc4n"
                 data-testid="Favorites tab"
-                href="/Favorites"
+                href="/TabNavigator/Favorites"
                 style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
               >
                 <div
@@ -498,7 +498,7 @@ Object {
               <a
                 class="css-reset-4rbku5 css-view-1dbjc4n"
                 data-testid="Profile tab"
-                href="/Profile"
+                href="/TabNavigator/Profile"
                 style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
               >
                 <div

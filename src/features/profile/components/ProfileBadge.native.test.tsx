@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { ProfileBadge } from 'features/profile/components/ProfileBadge'
-import { handleCallToActionLink } from 'features/profile/utils'
+import { shouldOpenInbox } from 'features/profile/utils'
 import { render, fireEvent } from 'tests/utils'
 import { Clock } from 'ui/svg/icons/Clock'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
@@ -52,7 +52,7 @@ describe('ProfileBadge', () => {
     )
     expect(myComponent).toMatchSnapshot()
   })
-  it('should call handleCallToActionLink with url onPress', () => {
+  it('should call shouldOpenInbox with url onPress', () => {
     const { getByTestId } = render(
       <ProfileBadge
         message={'Tu as déposé ton dossier. Bravo'}
@@ -64,6 +64,6 @@ describe('ProfileBadge', () => {
     )
     const CTAButton = getByTestId('call-to-action-button')
     fireEvent.press(CTAButton)
-    expect(handleCallToActionLink).toHaveBeenCalledWith('https://google.com')
+    expect(shouldOpenInbox).toHaveBeenCalledWith('https://google.com')
   })
 })

@@ -9,7 +9,7 @@ import {
   UserProfileResponse,
 } from 'api/gen'
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
-import { render } from 'tests/utils'
+import { render, superFlushWithAct } from 'tests/utils'
 
 let mockNextSubscriptionStep: NextSubscriptionStepResponse = {
   allowedIdentityCheckMethods: [IdentityCheckMethod.ubble, IdentityCheckMethod.educonnect],
@@ -69,6 +69,7 @@ describe('Stepper navigation', () => {
       hasIdentityCheckPending: false,
     }
     render(<IdentityCheckStepper />)
+    await superFlushWithAct()
     await waitForExpect(() => {
       expect(navigate).toHaveBeenCalledWith('UnderageAccountCreated')
     })
@@ -84,6 +85,7 @@ describe('Stepper navigation', () => {
       domainsCredit: { all: { initial: 30000, remaining: 30000 } },
     }
     render(<IdentityCheckStepper />)
+    await superFlushWithAct()
     await waitForExpect(() => {
       expect(navigate).toHaveBeenCalledWith('AccountCreated')
     })
@@ -100,6 +102,7 @@ describe('Stepper navigation', () => {
       domainsCredit: {},
     }
     render(<IdentityCheckStepper />)
+    await superFlushWithAct()
     await waitForExpect(() => {
       expect(navigate).not.toHaveBeenCalled()
     })

@@ -5,7 +5,7 @@ import waitForExpect from 'wait-for-expect'
 
 import { contactSupport } from 'features/auth/support.services'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
-import { usePreviousRoute, navigateToHome } from 'features/navigation/helpers'
+import { usePreviousRoute, navigateToHome, openUrl } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils/web'
@@ -14,6 +14,7 @@ import { SignupConfirmationEmailSent } from '../../SignupConfirmationEmailSent/S
 
 const mockUsePreviousRoute = usePreviousRoute as jest.MockedFunction<typeof usePreviousRoute>
 jest.mock('features/navigation/helpers')
+const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
 
 describe('<SignupConfirmationEmailSent />', () => {
   beforeEach(() => {
@@ -62,7 +63,10 @@ describe('<SignupConfirmationEmailSent />', () => {
 
     await waitForExpect(() => {
       expect(analytics.logHelpCenterContactSignupConfirmationEmailSent).toBeCalledTimes(1)
-      expect(contactSupport.forSignupConfirmationEmailNotReceived).toBeCalledTimes(1)
+      expect(mockedOpenUrl).toBeCalledWith(
+        contactSupport.forSignupConfirmationEmailNotReceived.url,
+        contactSupport.forSignupConfirmationEmailNotReceived.params
+      )
     })
   })
 })
