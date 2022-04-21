@@ -6,11 +6,11 @@ import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CulturalSurveyTypeCodeKey } from 'api/gen'
-import { mockCulturalSurveyQuestions } from 'features/culturalSurvey/__mocks__/culturalSurveyQuestions'
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
 import { CulturalSurveyPageHeader } from 'features/culturalSurvey/components/layout/CulturalSurveyPageHeader'
 import { mapQuestionIdToPageTitle } from 'features/culturalSurvey/helpers/utils'
 import { useCulturalSurveyProgress } from 'features/culturalSurvey/useCulturalSurveyProgress'
+import { useCulturalSurveyQuestions } from 'features/culturalSurvey/useCulturalSurveyQuestions'
 import { useGetNextStep } from 'features/culturalSurvey/useGetNextStep'
 import { navigateToHome } from 'features/navigation/helpers'
 import {
@@ -31,16 +31,18 @@ type CulturalSurveyQuestionsProps = StackScreenProps<
 export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps): JSX.Element => {
   const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
   const { push } = useNavigation<UseNavigationType>()
+  const { data: culturalSurveyQuestionsData } = useCulturalSurveyQuestions()
+  const { nextStep, isCurrentStepLastStep } = useGetNextStep(route.params.step)
+  const culturalSurveyProgress = useCulturalSurveyProgress(route.params.step)
 
   function onFixedBottomChildrenViewLayout(event: LayoutChangeEvent) {
     const { height } = event.nativeEvent.layout
     setBottomChildrenViewHeight(height)
   }
 
-  const { nextStep, isCurrentStepLastStep } = useGetNextStep(route.params.step)
+  if (!culturalSurveyQuestionsData) return <React.Fragment />
 
-  // TODO (yorickeando) PC-13347: replace mock data by backend response from adequate react query
-  const mockedData = mockCulturalSurveyQuestions.questions.find(
+  const culturalSurveyQuestion = culturalSurveyQuestionsData.questions.find(
     (question) => question.id === route.params.step
   )
 
@@ -53,21 +55,20 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
   }
 
   const pageSubtitle = t`Tu peux sélectionner une ou plusieurs réponses.`
-  const culturalSurveyProgress = useCulturalSurveyProgress(route.params.step)
 
   return (
     <Container>
       <CulturalSurveyPageHeader
         progress={culturalSurveyProgress}
-        title={mapQuestionIdToPageTitle(mockedData?.id)}
+        title={mapQuestionIdToPageTitle(culturalSurveyQuestion?.id)}
       />
       <ChildrenScrollView bottomChildrenViewHeight={bottomChildrenViewHeight}>
-        <Typo.Title3>{mockedData?.title}</Typo.Title3>
+        <Typo.Title3>{culturalSurveyQuestion?.title}</Typo.Title3>
         <CaptionContainer>
           <GreyCaption>{pageSubtitle}</GreyCaption>
         </CaptionContainer>
         <VerticalUl>
-          {mockedData?.answers.map((answer) => (
+          {culturalSurveyQuestion?.answers.map((answer) => (
             <Li key={answer.id}>
               <CheckboxContainer>
                 <CulturalSurveyCheckbox
