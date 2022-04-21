@@ -4,16 +4,15 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { SeeMore } from 'features/home/atoms'
 import { Cover } from 'features/home/atoms/Cover'
-import { AllNavParamList } from 'features/navigation/RootNavigator'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { Playlist, RenderFooterItem, RenderHeaderItem } from 'ui/components/Playlist'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { EyeSophisticated as DefaultEyeSophisticated } from 'ui/svg/icons/EyeSophisticated'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { getHeadingAttrs } from 'ui/theme/typography'
-import { TouchableLink } from 'ui/web/link/TouchableLink'
-import { To } from 'ui/web/link/types'
 
 type Props = Pick<
   ComponentProps<typeof Playlist>,
@@ -25,7 +24,7 @@ type Props = Pick<
   coverUrl?: string | null
   onDarkBackground?: boolean
   renderFooter?: RenderFooterItem
-  titleSeeMoreLink?: To<AllNavParamList, keyof AllNavParamList>
+  titleSeeMoreLink?: TouchableLinkProps['navigateTo']
 }
 
 export const PassPlaylist = (props: Props) => {
@@ -64,7 +63,7 @@ export const PassPlaylist = (props: Props) => {
         <TitleSeparator color={titleSeparatorColor} />
         <Spacer.Row numberOfSpaces={3} />
         <StyledTouchableLink
-          to={props.titleSeeMoreLink}
+          navigateTo={props.titleSeeMoreLink}
           onPress={props.onPressSeeMore}
           {...accessibilityAndTestId(t`Voir plus d’offres de la sélection` + ' ' + props.title)}>
           <EyeSophisticated color={seeMoreColor} />

@@ -1,10 +1,8 @@
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { View } from 'react-native'
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { mergeOfferData } from 'features/offer/atoms/OfferTile'
 import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
@@ -15,9 +13,9 @@ import { useSubcategory } from 'libs/subcategories'
 import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
-import { TouchableLink } from 'ui/web/link/TouchableLink'
 interface Props {
   hit: SearchHit
   query: string
@@ -26,7 +24,6 @@ interface Props {
 export const Hit: React.FC<Props> = ({ hit, query }) => {
   const { offer, objectID, _geoloc } = hit
   const { subcategoryId, dates, prices } = offer
-  const navigation = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
   const distanceToOffer = useDistance(_geoloc)
   const { categoryId, searchGroupName } = useSubcategory(subcategoryId)
@@ -60,13 +57,14 @@ export const Hit: React.FC<Props> = ({ hit, query }) => {
       })
     )
     analytics.logConsultOffer({ offerId, from: 'search', query: query })
-    navigation.navigate('Offer', { id: offerId, from: 'search' })
   }
 
   return (
     <View {...getHeadingAttrs(3)}>
       <Container
-        to={{ screen: 'Offer', params: { id: offerId, from: 'search' } }}
+        navigateTo={
+          offerId ? { screen: 'Offer', params: { id: offerId, from: 'search' } } : undefined
+        }
         onPress={handlePressOffer}
         accessibilityLabel={accessibilityLabel}
         testID="offerHit">

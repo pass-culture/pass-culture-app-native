@@ -97,8 +97,6 @@ export const IdentityCheckStepper = () => {
 
     if (step.name === IdentityCheckStep.IDENTIFICATION && context.identification.method === null) {
       showEduConnectModal()
-    } else {
-      navigate(step.screens[0])
     }
   }
 
@@ -122,7 +120,7 @@ export const IdentityCheckStepper = () => {
                 <StepButton
                   step={step}
                   state={getStepState(step.name)}
-                  to={
+                  navigateTo={
                     step.name === IdentityCheckStep.IDENTIFICATION &&
                     context.identification.method === null
                       ? undefined

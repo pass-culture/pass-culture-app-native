@@ -1,4 +1,3 @@
-import { useLinkProps } from '@react-navigation/native'
 import React, { MouseEventHandler, useCallback } from 'react'
 import styled, { CSSObject } from 'styled-components'
 
@@ -16,47 +15,46 @@ export function ButtonInsideText({
   onLongPress,
   icon: Icon,
   color,
-  to,
-  externalHref,
+  accessibilityRole,
+  href,
+  target,
   type = 'button',
 }: ButtonInsideTexteProps) {
-  const ButtonComponent = (to || externalHref ? Link : Button) as React.ElementType
-  const internalLinkProps = useLinkProps({ to: to ?? '' })
-  const externalLinkProps = { href: externalHref, accessibilityRole: 'link', target: '_blank' }
-  const linkProps = externalHref ? externalLinkProps : internalLinkProps
-  const buttonLinkProps = externalHref || to ? { ...linkProps, type: undefined } : {}
+  const ButtonComponent = (href ? Link : Button) as React.ElementType
+  const buttonLinkProps = { accessibilityRole, href, target }
 
   const pressHandler = onPress as AppButtonEventWeb
   const longPressHandler = onLongPress as AppButtonEventWeb
 
   const onClick: MouseEventHandler<HTMLButtonElement> = useCallback(
     (event) => {
-      if ((type === 'submit' || to || externalHref) && pressHandler) {
+      if (type === 'submit' && pressHandler) {
         event.preventDefault()
       }
       if (pressHandler) {
         pressHandler(event)
       }
     },
-    [type, to, externalHref, pressHandler]
+    [type, pressHandler]
   )
 
   const onDoubleClick: MouseEventHandler<HTMLButtonElement> = useCallback(
     (event) => {
-      if ((type === 'submit' || to || externalHref) && longPressHandler) {
+      if (type === 'submit' && longPressHandler) {
         event.preventDefault()
       }
       if (longPressHandler) {
         longPressHandler(event)
       }
     },
-    [type, to, externalHref, longPressHandler]
+    [type, longPressHandler]
   )
 
   return (
     <ButtonComponent
       onClick={onClick}
       onDoubleClick={onDoubleClick}
+      type={href ? undefined : type}
       data-testid="button-inside-text"
       {...buttonLinkProps}>
       <ButtonInsideTextInner wording={wording} icon={Icon} color={color} typography={typography} />

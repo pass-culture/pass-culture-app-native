@@ -108,7 +108,7 @@ describe('Profile component', () => {
       const row = getByText('Informations personnelles')
       fireEvent.press(row)
 
-      expect(mockNavigate).toBeCalledWith('PersonalData')
+      expect(mockNavigate).toBeCalledWith('PersonalData', undefined)
     })
 
     it('should navigate when the password row is clicked', async () => {
@@ -117,7 +117,7 @@ describe('Profile component', () => {
       const row = getByText('Mot de passe')
       fireEvent.press(row)
 
-      expect(mockNavigate).toBeCalledWith('ChangePassword')
+      expect(mockNavigate).toBeCalledWith('ChangePassword', undefined)
     })
 
     describe('geolocation switch', () => {
@@ -174,7 +174,7 @@ describe('Profile component', () => {
       const row = getByText('Notifications')
       fireEvent.press(row)
 
-      expect(mockNavigate).toBeCalledWith('NotificationSettings')
+      expect(mockNavigate).toBeCalledWith('NotificationSettings', undefined)
     })
   })
 
@@ -195,7 +195,7 @@ describe('Profile component', () => {
       const row = getByText(`Centre d'aide`)
       fireEvent.press(row)
 
-      expect(openUrl).toBeCalledWith(env.FAQ_LINK)
+      expect(openUrl).toBeCalledWith(env.FAQ_LINK, undefined)
     })
   })
 
@@ -207,7 +207,7 @@ describe('Profile component', () => {
       const row = getByText('Accessibilité')
       fireEvent.press(row)
 
-      expect(openUrl).toBeCalledWith(env.ACCESSIBILITY_LINK)
+      expect(openUrl).toBeCalledWith(env.ACCESSIBILITY_LINK, undefined)
     })
 
     it('should navigate when the legal notices row is clicked', async () => {
@@ -216,7 +216,7 @@ describe('Profile component', () => {
       const row = getByText('Mentions légales')
       fireEvent.press(row)
 
-      expect(mockNavigate).toBeCalledWith('LegalNotices')
+      expect(mockNavigate).toBeCalledWith('LegalNotices', undefined)
     })
 
     it('should navigate when the confidentiality row is clicked', async () => {
@@ -225,7 +225,7 @@ describe('Profile component', () => {
       const row = getByText('Confidentialité')
       fireEvent.press(row)
 
-      expect(mockNavigate).toBeCalledWith('ConsentSettings')
+      expect(mockNavigate).toBeCalledWith('ConsentSettings', undefined)
     })
   })
 

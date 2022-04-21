@@ -1,12 +1,14 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { PhoneValidationTooManyAttempts } from 'features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts'
 import { contactSupport } from 'features/auth/support.services'
-import { navigateToHome } from 'features/navigation/helpers'
+import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { fireEvent, render } from 'tests/utils/web'
 
-jest.mock('features/navigation/helpers')
+const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 describe('Contact support button', () => {
   it('should open mail app when clicking on contact support button', async () => {
@@ -16,7 +18,10 @@ describe('Contact support button', () => {
     fireEvent.click(contactSupportButton)
 
     await waitForExpect(() => {
-      expect(contactSupport.forPhoneNumberConfirmation).toHaveBeenCalled()
+      expect(openUrl).toBeCalledWith(
+        contactSupport.forPhoneNumberConfirmation.url,
+        contactSupport.forPhoneNumberConfirmation.params
+      )
     })
   })
 })
@@ -27,6 +32,6 @@ describe('Navigate to home button', () => {
 
     fireEvent.click(getByText("Retourner à l'accueil"))
 
-    expect(navigateToHome).toBeCalled()
+    expect(navigate).toBeCalledWith(...homeNavConfig)
   })
 })

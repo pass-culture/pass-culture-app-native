@@ -1,18 +1,15 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Background } from 'ui/svg/Background'
 import { UserFavorite } from 'ui/svg/icons/UserFavorite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const NotConnectedFavorites = () => {
-  const { navigate } = useNavigation<UseNavigationType>()
-
   return (
     <Container>
       <Background />
@@ -34,17 +31,17 @@ export const NotConnectedFavorites = () => {
 
       <Row>
         <ButtonContainer>
-          <ButtonPrimaryWhite
+          <TouchableLink
+            as={ButtonPrimaryWhite}
             wording={t`S'inscrire`}
-            to={{ screen: 'SignupForm', params: undefined }}
-            onPress={() => navigate('SignupForm')}
+            navigateTo={{ screen: 'SignupForm' }}
             buttonHeight="tall"
           />
           <Spacer.Column numberOfSpaces={4} />
-          <ButtonTertiaryWhite
+          <TouchableLink
+            as={ButtonTertiaryWhite}
             wording={t`Se connecter`}
-            to={{ screen: 'Login', params: undefined }}
-            onPress={() => navigate('Login')}
+            navigateTo={{ screen: 'Login' }}
             buttonHeight="tall"
           />
         </ButtonContainer>

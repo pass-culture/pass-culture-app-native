@@ -2,11 +2,11 @@ import { t } from '@lingui/macro'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
@@ -16,14 +16,12 @@ interface Props {
   hideModal: () => void
 }
 
-const openDMSFrenchCitizenURL = () => {
+const onDMSFrenchCitizenPress = () => {
   analytics.logOpenDMSFrenchCitizenURL()
-  openUrl(env.DMS_FRENCH_CITIZEN_URL)
 }
 
-const openDMSForeignCitizenURL = () => {
+const onDMSForeignCitizenPress = () => {
   analytics.logOpenDMSForeignCitizenURL()
-  openUrl(env.DMS_FOREIGN_CITIZEN_URL)
 }
 
 export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
@@ -40,19 +38,21 @@ export const DMSModal: FunctionComponent<Props> = ({ visible, hideModal }) => (
       {t`Tu peux aussi compléter ton dossier sur Démarches simplifiées. Attention le traitement sera plus long\u00a0!`}
     </StyledBody>
     <Spacer.Column numberOfSpaces={8} />
-    <ButtonTertiaryBlack
+    <TouchableLink
+      as={ButtonTertiaryBlack}
       wording={t`Je suis de nationalité française`}
-      externalHref={env.DMS_FRENCH_CITIZEN_URL}
-      onPress={openDMSFrenchCitizenURL}
+      externalNav={{ url: env.DMS_FRENCH_CITIZEN_URL }}
+      onPress={onDMSFrenchCitizenPress}
       icon={ExternalSiteFilled}
       justifyContent="flex-start"
     />
     <StyledCaption>{t`Carte d’identité ou passeport.`}</StyledCaption>
     <Spacer.Column numberOfSpaces={8} />
-    <ButtonTertiaryBlack
+    <TouchableLink
+      as={ButtonTertiaryBlack}
       wording={t`Je suis de nationalité étrangère`}
-      externalHref={env.DMS_FOREIGN_CITIZEN_URL}
-      onPress={openDMSForeignCitizenURL}
+      externalNav={{ url: env.DMS_FOREIGN_CITIZEN_URL }}
+      onPress={onDMSForeignCitizenPress}
       icon={ExternalSiteFilled}
       justifyContent="flex-start"
     />

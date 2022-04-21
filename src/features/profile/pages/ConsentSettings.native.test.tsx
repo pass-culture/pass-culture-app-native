@@ -109,7 +109,7 @@ describe('ConsentSettings', () => {
     fireEvent.press(getByText('Politique des cookies'))
 
     await superFlushWithAct(1)
-    expect(mockedOpenUrl).toBeCalledWith(env.COOKIES_POLICY_LINK)
+    expect(mockedOpenUrl).toBeCalledWith(env.COOKIES_POLICY_LINK, undefined)
   })
 })
 

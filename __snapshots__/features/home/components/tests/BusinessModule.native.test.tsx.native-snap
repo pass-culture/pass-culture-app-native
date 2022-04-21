@@ -22,7 +22,6 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
     }
   />
   <View
-    accessibilityRole="link"
     accessibilityState={
       Object {
         "disabled": true,
@@ -214,6 +213,7 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
     }
   />
   <View
+    accessibilityRole="link"
     accessibilityState={
       Object {
         "disabled": false,
@@ -426,6 +426,7 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
     }
   />
   <View
+    accessibilityRole="link"
     accessibilityState={
       Object {
         "disabled": false,

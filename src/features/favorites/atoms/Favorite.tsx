@@ -1,5 +1,4 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React, { useMemo, useRef, useState } from 'react'
 import { Animated, LayoutChangeEvent } from 'react-native'
 import { useQueryClient } from 'react-query'
@@ -7,7 +6,6 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { FavoriteOfferResponse, FavoriteResponse, UserProfileResponse } from 'api/gen'
 import { useRemoveFavorite } from 'features/favorites/pages/useFavorites'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { mergeOfferData } from 'features/offer/atoms/OfferTile'
 import { analytics } from 'libs/analytics'
 import { useDistance } from 'libs/geolocation/hooks/useDistance'
@@ -18,9 +16,9 @@ import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityL
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
-import { TouchableLink } from 'ui/web/link/TouchableLink'
 
 import { BookingButton } from './BookingButton'
 
@@ -36,7 +34,6 @@ export const Favorite: React.FC<Props> = (props) => {
   const [height, setHeight] = useState<number | undefined>(undefined)
   const animatedOpacity = useRef(new Animated.Value(1)).current
   const animatedCollapse = useRef(new Animated.Value(1)).current
-  const { navigate } = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
   const distanceToOffer = useDistance({
     lat: offer.coordinates?.latitude,
@@ -92,7 +89,6 @@ export const Favorite: React.FC<Props> = (props) => {
       })
     )
     analytics.logConsultOffer({ offerId: offer.id, from: 'favorites' })
-    navigate('Offer', { id: offer.id, from: 'favorites' })
   }
 
   function onRemove() {
@@ -135,7 +131,9 @@ export const Favorite: React.FC<Props> = (props) => {
           : undefined,
       }}>
       <Container
-        to={{ screen: 'Offer', params: { id: offer.id, from: 'favorites' } }}
+        navigateTo={
+          offer.id ? { screen: 'Offer', params: { id: offer.id, from: 'favorites' } } : undefined
+        }
         onPress={handlePressOffer}
         accessibilityLabel={accessibilityLabel}
         testID="favorite">

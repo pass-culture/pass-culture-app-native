@@ -25,8 +25,9 @@ module.exports = {
 
           'react-native-linear-gradient': 'react-native-web-linear-gradient',
           'react-native-fast-image': path.join(paths.appSrc, 'libs/react-native-web-fast-image'),
+          'react-native-email-link': path.join(paths.appSrc, 'libs/react-native-email-link'),
         },
-        modulesToTranspile: ['@ptomasroos/react-native-multi-slider'],
+        modulesToTranspile: ['@ptomasroos/react-native-multi-slider', '@pass-culture/react-native-profiling'],
       },
     },
   ],

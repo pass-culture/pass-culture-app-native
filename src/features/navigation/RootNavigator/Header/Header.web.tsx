@@ -4,14 +4,13 @@ import { Animated } from 'react-native'
 import webStyled from 'styled-components'
 import styled, { useTheme } from 'styled-components/native'
 
-import { navigateToHome } from 'features/navigation/helpers'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
 import { getShadow, getSpacing } from 'ui/theme'
 import { QuickAccess } from 'ui/web/link/QuickAccess'
-import { TouchableLink } from 'ui/web/link/TouchableLink'
 
 import { Nav } from './Nav'
 
@@ -85,8 +84,7 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
       <LeftContainer margin={margin} isVisible={!!isDesktopOffset} style={fadeAnim}>
         {!!isBrandVisible && (
           <LogoContainer
-            to={{ screen: homeNavConfig[0], params: homeNavConfig[1] }}
-            onPress={navigateToHome}>
+            navigateTo={{ screen: homeNavConfig[0], params: homeNavConfig[1], fromRef: true }}>
             <LogoPassCulture
               color={theme.uniqueColors.brand}
               height={getSpacing(10)}

@@ -18,7 +18,7 @@ import { Paragraphe } from 'features/auth/components/signupComponents'
 import { useAppSettings } from 'features/auth/settings'
 import { SignupStep } from 'features/auth/signup/enums'
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
-import { contactSupport, supportUrl } from 'features/auth/support.services'
+import { contactSupport } from 'features/auth/support.services'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
@@ -38,6 +38,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 import { Email } from 'ui/svg/icons/Email'
@@ -285,12 +286,12 @@ export const SetPhoneValidationCode = memo(function SetPhoneValidationCodeCompon
           <HelpRow>
             <Typo.Caption>{t`Si tu n’arrives pas à valider ton code tu peux`}</Typo.Caption>
             {appContentWidth <= 320 ? <Break /> : <Spacer.Row numberOfSpaces={1} />}
-            <ButtonQuaternary
+            <TouchableLink
+              as={ButtonQuaternary}
               wording={t`Contacter le support`}
               accessibilityLabel={t`Ouvrir le gestionnaire mail pour contacter le support`}
               icon={Email}
-              externalHref={supportUrl.forPhoneNumberConfirmation}
-              onPress={contactSupport.forPhoneNumberConfirmation}
+              externalNav={contactSupport.forPhoneNumberConfirmation}
               inline
             />
           </HelpRow>

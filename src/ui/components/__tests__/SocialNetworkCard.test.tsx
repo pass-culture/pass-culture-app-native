@@ -8,7 +8,9 @@ import { SocialNetworkCard } from '../SocialNetworkCard'
 
 describe('SocialNetworkCard', () => {
   it('should openUrl onClick and track analytics', () => {
-    const openUrl = jest.spyOn(NavigationHelpers, 'openUrl').mockImplementation(jest.fn())
+    const openUrl = jest
+      .spyOn(NavigationHelpers, 'openUrl')
+      .mockImplementation(jest.fn(() => Promise.resolve()))
     const { getByText } = render(<SocialNetworkCard network="twitter" />)
     const button = getByText('Twitter')
     fireEvent.press(button)

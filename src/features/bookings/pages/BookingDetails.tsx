@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { Platform, ScrollView, useWindowDimensions } from 'react-native'
 import { useQueryClient } from 'react-query'
@@ -16,13 +16,13 @@ import { CancelBookingModal } from 'features/bookings/components/CancelBookingMo
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
 import { BookingProperties, getBookingProperties } from 'features/bookings/helpers'
 import { BookingNotFound } from 'features/bookings/pages/BookingNotFound'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator'
+import { UseRouteType } from 'features/navigation/RootNavigator'
 import { mergeOfferData } from 'features/offer/atoms/OfferTile'
+import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
-import useOpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { eventMonitoring, ScreenError } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'
 import { useSubcategoriesMapping } from 'libs/subcategories'
@@ -33,6 +33,7 @@ import { blurImageHeight, heroMarginTop } from 'ui/components/hero/useHeroDimens
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
 import { Helmet } from 'ui/web/global/Helmet'
@@ -55,7 +56,6 @@ const scrollIndicatorInsets = { right: 1 }
 export function BookingDetails() {
   const windowHeight = useWindowDimensions().height - blurImageHeight
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
-  const { navigate } = useNavigation<UseNavigationType>()
   const {
     status,
     data: booking,
@@ -77,10 +77,7 @@ export function BookingDetails() {
 
   const { venue, id: offerId } = booking?.stock.offer || {}
   const { address, postalCode, city } = venue || {}
-  const { canOpenItinerary, openItinerary } = useOpenItinerary(
-    `${address} ${postalCode} ${city}`,
-    async () => void (offerId && analytics.logConsultItinerary({ offerId, from: 'bookingdetails' }))
-  )
+  const venueFullAddress = address ? formatFullAddress(address, postalCode, city) : undefined
 
   const logConsultWholeBooking = useFunctionOnce(
     () => offerId && analytics.logBookingDetailsScrolledToBottom(offerId)
@@ -118,7 +115,7 @@ export function BookingDetails() {
   const { offer } = booking.stock
   const properties = getBookingProperties(booking, mapping[offer.subcategoryId].isEvent)
   const shouldDisplayItineraryButton =
-    canOpenItinerary && (properties.isEvent || (properties.isPhysical && !properties.isDigital))
+    !!venueFullAddress && (properties.isEvent || (properties.isPhysical && !properties.isDigital))
   const activationCodeFeatureEnabled = appSettings?.autoActivateDigitalBookings
 
   const offerRules = getOfferRules(properties, activationCodeFeatureEnabled)
@@ -128,7 +125,7 @@ export function BookingDetails() {
     analytics.logCancelBooking(offer.id)
   }
 
-  const navigateToOffer = () => {
+  const onNavigateToOfferPress = () => {
     queryClient.setQueryData(
       [QueryKeys.OFFER, offer.id],
       mergeOfferData({
@@ -140,7 +137,6 @@ export function BookingDetails() {
       })
     )
     analytics.logConsultOffer({ offerId: offer.id, from: 'bookings' })
-    navigate('Offer', { id: offer.id, from: 'bookingdetails' })
   }
 
   const helmetTitle = `${t`Ma réservation pour`} ${booking.stock.offer.name} | pass Culture`
@@ -180,8 +176,19 @@ export function BookingDetails() {
               <Separator />
               <Spacer.Column numberOfSpaces={4} />
               <SeeItineraryButton
-                externalHref={address ? getGoogleMapsItineraryUrl(address) : undefined}
-                openItinerary={openItinerary}
+                externalNav={
+                  venueFullAddress
+                    ? {
+                        url: getGoogleMapsItineraryUrl(venueFullAddress),
+                        address: venueFullAddress,
+                      }
+                    : undefined
+                }
+                onPress={() =>
+                  !!venueFullAddress &&
+                  offerId &&
+                  analytics.logConsultItinerary({ offerId, from: 'bookingdetails' })
+                }
               />
             </React.Fragment>
           )}
@@ -194,11 +201,12 @@ export function BookingDetails() {
             </React.Fragment>
           )}
           <Spacer.Column numberOfSpaces={8} />
-          <ButtonPrimary
+          <TouchableLink
+            as={ButtonPrimary}
             testID="Voir le détail de l’offre"
             wording={t`Voir le détail de l’offre`}
-            onPress={navigateToOffer}
-            to={{ screen: 'Offer', params: { id: offer.id, from: 'bookingdetails' } }}
+            navigateTo={{ screen: 'Offer', params: { id: offer.id, from: 'bookingdetails' } }}
+            onPress={onNavigateToOfferPress}
             fullWidth
           />
           <Spacer.Column numberOfSpaces={4} />

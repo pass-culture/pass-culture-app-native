@@ -11,6 +11,7 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 const alertMock = jest.spyOn(Alert, 'alert')
 
 jest.mock('libs/itinerary/openGoogleMapsItinerary')
+jest.mock('libs/itinerary/useItinerary', () => jest.requireActual('libs/itinerary/useItinerary'))
 
 const mockShowInfoSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({

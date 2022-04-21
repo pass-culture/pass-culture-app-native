@@ -871,8 +871,9 @@ Object {
               class="css-view-1dbjc4n"
               style="margin-right: 24px; margin-left: 24px;"
             >
-              <a
-                class="sc-ieecCq iOvjLm"
+              <button
+                class="sc-dJjYzT izAAoh"
+                type="button"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -886,7 +887,7 @@ Object {
                     Voir toutes les offres
                   </div>
                 </div>
-              </a>
+              </button>
             </div>
             <div
               class="css-view-1dbjc4n"
@@ -1141,7 +1142,7 @@ Object {
                   style="flex-direction: row; justify-content: space-between;"
                 >
                   <ul
-                    class="sc-bqiRlB sc-hiCibw fZQgdx ietfbc"
+                    class="sc-hBUSln sc-hiCibw cjntIJ ietfbc"
                   >
                     <li
                       class="sc-gWXbKe UoJFI"
@@ -2383,8 +2384,9 @@ Object {
             class="css-view-1dbjc4n"
             style="margin-right: 24px; margin-left: 24px;"
           >
-            <a
-              class="sc-ieecCq iOvjLm"
+            <button
+              class="sc-dJjYzT izAAoh"
+              type="button"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -2398,7 +2400,7 @@ Object {
                   Voir toutes les offres
                 </div>
               </div>
-            </a>
+            </button>
           </div>
           <div
             class="css-view-1dbjc4n"
@@ -2653,7 +2655,7 @@ Object {
                 style="flex-direction: row; justify-content: space-between;"
               >
                 <ul
-                  class="sc-bqiRlB sc-hiCibw fZQgdx ietfbc"
+                  class="sc-hBUSln sc-hiCibw cjntIJ ietfbc"
                 >
                   <li
                     class="sc-gWXbKe UoJFI"

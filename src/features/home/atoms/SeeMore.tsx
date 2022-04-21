@@ -2,24 +2,23 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { AllNavParamList } from 'features/navigation/RootNavigator'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { getSpacing, Spacer, Typo, getShadow } from 'ui/theme'
-import { TouchableLink } from 'ui/web/link/TouchableLink'
-import { To } from 'ui/web/link/types'
 
 interface SeeMoreProps {
   height: number
   width: number
-  to?: To<AllNavParamList, keyof AllNavParamList>
+  navigateTo?: TouchableLinkProps['navigateTo']
   onPress: () => void
 }
 
-export const SeeMore: React.FC<SeeMoreProps> = ({ height, width, to, onPress }) => (
+export const SeeMore: React.FC<SeeMoreProps> = ({ height, width, navigateTo, onPress }) => (
   <Container height={height} width={width}>
     <Spacer.Column numberOfSpaces={2} />
-    <ClickableArea activeOpacity={1} to={to} onPress={onPress}>
+    <ClickableArea activeOpacity={1} navigateTo={navigateTo} onPress={onPress}>
       <Row>
         <Spacer.Row numberOfSpaces={16} />
         <RoundContainer onPress={onPress}>

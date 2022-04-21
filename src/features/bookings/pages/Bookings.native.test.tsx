@@ -47,7 +47,7 @@ describe('Bookings', () => {
     const cta = getByText('Réservation terminée')
     fireEvent.press(cta)
     await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('EndedBookings')
+      expect(navigate).toBeCalledWith('EndedBookings', undefined)
     })
   })
 })

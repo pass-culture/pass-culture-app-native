@@ -2,12 +2,11 @@ import React, { FunctionComponent } from 'react'
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { AllNavParamList } from 'features/navigation/RootNavigator'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { IconInterface } from 'ui/svg/icons/types'
 import { Typo, Spacer } from 'ui/theme'
-import { TouchableLink } from 'ui/web/link/TouchableLink'
-import { To } from 'ui/web/link/types'
 
 type SectionRowProps = {
   title: string
@@ -18,12 +17,12 @@ type SectionRowProps = {
   icon?: FunctionComponent<IconInterface>
   style?: StyleProp<ViewStyle>
   numberOfLines?: number
-  to?: To<AllNavParamList, keyof AllNavParamList>
-  externalHref?: string
+  navigateTo?: TouchableLinkProps['navigateTo']
+  externalNav?: TouchableLinkProps['externalNav']
 } & (
   | {
       type: 'navigable'
-      onPress: () => void
+      onPress?: () => void
     }
   | {
       type: 'clickable'
@@ -48,12 +47,12 @@ export function SectionRow(props: SectionRowProps) {
   }))``
   return (
     <TouchableLink
-      activeOpacity={props.onPress ? activeOpacity : 1}
+      activeOpacity={props.onPress || props.navigateTo || props.externalNav ? activeOpacity : 1}
       onPress={props.onPress}
-      disabled={!props.onPress}
-      accessibilityLabel={props.accessibilityLabel}
-      to={props.to}
-      externalHref={props.externalHref}>
+      navigateTo={props.navigateTo}
+      externalNav={props.externalNav}
+      disabled={!props.onPress && !props.navigateTo && !props.externalNav}
+      accessibilityLabel={props.accessibilityLabel}>
       <View style={[styles.container, props.style]}>
         {!!Icon && (
           <React.Fragment>

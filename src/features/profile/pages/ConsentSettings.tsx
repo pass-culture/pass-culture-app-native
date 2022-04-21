@@ -4,7 +4,6 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { openUrl } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch'
 import { analytics } from 'libs/analytics'
@@ -14,6 +13,7 @@ import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonI
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -54,10 +54,6 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
     goBack()
   }
 
-  async function openCookiesPolicyExternalUrl() {
-    await openUrl(env.COOKIES_POLICY_LINK)
-  }
-
   return (
     <Container>
       <PageHeader title={t`Paramètres de confidentialité`} onGoBack={route.params?.onGoBack} />
@@ -72,10 +68,10 @@ export const ConsentSettings: FunctionComponent<Props> = ({ route }) => {
           <StyledCaption>
             {t`Pour plus d'informations, nous t'invitons à consulter notre`}
             <Spacer.Row numberOfSpaces={1} />
-            <ButtonInsideText
+            <TouchableLink
+              as={ButtonInsideText}
               wording={t`Politique des cookies`}
-              externalHref={env.COOKIES_POLICY_LINK}
-              onPress={openCookiesPolicyExternalUrl}
+              externalNav={{ url: env.COOKIES_POLICY_LINK }}
               icon={ExternalSiteFilled}
               typography="Caption"
             />

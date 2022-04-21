@@ -337,8 +337,9 @@ Object {
         class="css-view-1dbjc4n"
         style="margin-right: 24px; margin-left: 24px;"
       >
-        <a
-          class="sc-bkkeKt hWiQaG"
+        <button
+          class="sc-fFeiMQ cNJSWC"
+          type="button"
         >
           <div
             class="css-view-1dbjc4n"
@@ -352,7 +353,7 @@ Object {
               Voir toutes les offres
             </div>
           </div>
-        </a>
+        </button>
       </div>
       <div
         class="css-view-1dbjc4n"
@@ -693,8 +694,9 @@ Object {
       class="css-view-1dbjc4n"
       style="margin-right: 24px; margin-left: 24px;"
     >
-      <a
-        class="sc-bkkeKt hWiQaG"
+      <button
+        class="sc-fFeiMQ cNJSWC"
+        type="button"
       >
         <div
           class="css-view-1dbjc4n"
@@ -708,7 +710,7 @@ Object {
             Voir toutes les offres
           </div>
         </div>
-      </a>
+      </button>
     </div>
     <div
       class="css-view-1dbjc4n"

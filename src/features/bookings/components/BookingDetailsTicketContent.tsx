@@ -15,9 +15,9 @@ import {
 } from 'api/gen'
 import { TicketCode } from 'features/bookings/atoms/TicketCode'
 import { formatSecondsToString, getBookingProperties } from 'features/bookings/helpers'
-import { openUrl } from 'features/navigation/helpers'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { BicolorCircledCheck as InitialBicolorCircledCheck } from 'ui/svg/icons/BicolorCircledCheck'
 import { BicolorEmailSent as InitialBicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
 import { Email } from 'ui/svg/icons/Email'
@@ -44,20 +44,17 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
   const { isEvent } = useSubcategory(offer.subcategoryId)
   const properties = getBookingProperties(booking, isEvent)
 
-  const accessExternalOffer = () => {
-    if (offer.url) {
-      openUrl(offer.url, { analyticsData: { offerId: offer.id } })
-    }
-  }
   const categoryId = useCategoryId(offer.subcategoryId)
   const shouldDisplayEAN = offer.extraData?.isbn && categoryId === CategoryIdEnum.LIVRE
 
   const accessOfferButton = (
-    <ButtonWithLinearGradient
+    <TouchableLink
+      as={ButtonWithLinearGradient}
       wording={t`Accéder à l'offre`}
       icon={ExternalSite}
-      externalHref={offer.url || undefined}
-      onPress={accessExternalOffer}
+      externalNav={
+        offer.url ? { url: offer.url, params: { analyticsData: { offerId: offer.id } } } : undefined
+      }
     />
   )
 

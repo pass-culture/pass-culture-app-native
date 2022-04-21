@@ -2,32 +2,29 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { menu } from 'features/navigation/TabBar/routes'
-import { TabParamList, TabRouteName } from 'features/navigation/TabBar/types'
+import { TabRouteName } from 'features/navigation/TabBar/types'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
-import { TouchableLink } from 'ui/web/link/TouchableLink'
-import { To } from 'ui/web/link/types'
 
 interface NavItemInterface {
   isSelected?: boolean
   BicolorIcon: React.FC<BicolorIconInterface>
-  to: To<TabParamList, keyof TabParamList>
-  onPress: () => void
+  navigateTo: TouchableLinkProps['navigateTo']
   tabName: TabRouteName
 }
 
 export const NavItem: React.FC<NavItemInterface> = ({
   BicolorIcon,
-  to,
-  onPress,
+  navigateTo,
   tabName,
   isSelected,
 }) => (
   <StyledTouchableLink
     isSelected={isSelected}
-    to={to}
-    onPress={onPress}
+    navigateTo={navigateTo}
     activeOpacity={1}
     testID={`${tabName} nav`}>
     <StyledIcon as={BicolorIcon} selected={isSelected} />

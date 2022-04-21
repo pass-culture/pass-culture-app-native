@@ -3,12 +3,12 @@ import noop from 'lodash/noop'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { openUrl } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { AppModal } from 'ui/components/modals/AppModal'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Close } from 'ui/svg/icons/Close'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo, Spacer } from 'ui/theme'
@@ -26,9 +26,6 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
   onRefusal,
   disableBackdropTap = true,
 }) => {
-  async function openCookiesPolicyExternalUrl() {
-    await openUrl(env.COOKIES_POLICY_LINK)
-  }
   return (
     <AppModal
       visible={visible}
@@ -44,10 +41,10 @@ export const PrivacyPolicyModal: FunctionComponent<Props> = ({
         <Typo.Body>
           {t`Nous utilisons des outils pour réaliser des statistiques de navigation et offrir une experience plus sûre. En cliquant sur "Autoriser", tu acceptes l'utilisation de ces services détaillés dans notre`}
           <Spacer.Row numberOfSpaces={1} />
-          <ButtonInsideText
+          <TouchableLink
+            as={ButtonInsideText}
             wording={t`Politique des cookies`}
-            externalHref={env.COOKIES_POLICY_LINK}
-            onPress={openCookiesPolicyExternalUrl}
+            externalNav={{ url: env.COOKIES_POLICY_LINK }}
             icon={ExternalSiteFilled}
           />
         </Typo.Body>

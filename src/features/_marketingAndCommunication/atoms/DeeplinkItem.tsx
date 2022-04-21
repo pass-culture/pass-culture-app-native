@@ -3,12 +3,11 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { GeneratedDeeplink } from 'features/_marketingAndCommunication/components/DeeplinksGeneratorForm'
-import { openUrl } from 'features/navigation/helpers'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Share as DefaultShare } from 'ui/svg/icons/Share'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { TouchableLink } from 'ui/web/link/TouchableLink'
 
 interface Props {
   deeplink: GeneratedDeeplink
@@ -48,8 +47,7 @@ export const DeeplinkItem = ({ deeplink, before }: Props) => {
       <Container>
         <Spacer.Flex flex={0.85}>
           <TouchableLink
-            externalHref={deeplink.universalLink}
-            onPress={() => openUrl(deeplink.universalLink, { shouldLogEvent: false })}>
+            externalNav={{ url: deeplink.universalLink, params: { shouldLogEvent: false } }}>
             <Typo.Caption>{deeplink.universalLink}</Typo.Caption>
           </TouchableLink>
         </Spacer.Flex>
@@ -69,8 +67,7 @@ export const DeeplinkItem = ({ deeplink, before }: Props) => {
       <Container>
         <Spacer.Flex flex={0.85}>
           <TouchableLink
-            externalHref={deeplink.firebaseLink}
-            onPress={() => openUrl(deeplink.firebaseLink, { shouldLogEvent: false })}>
+            externalNav={{ url: deeplink.firebaseLink, params: { shouldLogEvent: false } }}>
             <Typo.Caption>{deeplink.firebaseLink}</Typo.Caption>
           </TouchableLink>
         </Spacer.Flex>

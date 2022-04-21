@@ -2,13 +2,16 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useNavigateToSearchResults } from 'features/search/utils/useNavigateToSearchResults'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useLogBeforeNavToSearchResults } from 'features/search/utils/useLogBeforeNavToSearchResults'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { EmptyFavorites } from 'ui/svg/icons/EmptyFavorites'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const NoFavoritesResult = () => {
-  const onPressExploreOffers = useNavigateToSearchResults({ from: 'favorites' })
+  const onPressExploreOffers = useLogBeforeNavToSearchResults({ from: 'favorites' })
+  const searchNavConfig = getTabNavConfig('Search', { showResults: true })
 
   return (
     <Container>
@@ -22,8 +25,9 @@ export const NoFavoritesResult = () => {
       </Explanation>
       <Spacer.Column numberOfSpaces={6} />
       <ButtonContainer>
-        <ButtonPrimary
-          to={{ screen: 'Search', params: { showResults: true, from: 'favorites' } }}
+        <TouchableLink
+          as={ButtonPrimary}
+          navigateTo={{ screen: searchNavConfig[0], params: searchNavConfig[1] }}
           wording={t`Explorer les offres`}
           onPress={onPressExploreOffers}
           buttonHeight="tall"

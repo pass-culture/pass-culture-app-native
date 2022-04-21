@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { CardContent, Paragraphe } from 'features/auth/components/signupComponents'
 import { useAppSettings } from 'features/auth/settings'
 import { PreValidationSignupStepProps } from 'features/auth/signup/types'
-import { contactSupport, supportUrl } from 'features/auth/support.services'
+import { contactSupport } from 'features/auth/support.services'
 import { env } from 'libs/environment'
 import { captureMonitoringError } from 'libs/monitoring'
 import { useNetwork } from 'libs/network/useNetwork'
@@ -14,6 +14,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiary } from 'ui/components/buttons/ButtonTertiary'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import { InputError } from 'ui/components/inputs/InputError'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Email } from 'ui/svg/icons/Email'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -120,11 +121,11 @@ export const AcceptCgu: FC<PreValidationSignupStepProps> = (props) => {
             {t`Pour en savoir plus sur la gestion de tes données personnelles et exercer tes droits tu peux\u00a0:`}
           </Typo.Body>
         </Paragraphe>
-        <ButtonTertiary
+        <TouchableLink
+          as={ButtonTertiary}
           wording={t`Contacter le support`}
           accessibilityLabel={t`Ouvrir le gestionnaire mail pour contacter le support`}
-          externalHref={supportUrl.forGenericQuestion}
-          onPress={contactSupport.forGenericQuestion}
+          externalNav={contactSupport.forGenericQuestion}
           icon={Email}
         />
         <Spacer.Column numberOfSpaces={6} />

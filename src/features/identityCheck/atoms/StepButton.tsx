@@ -3,28 +3,27 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { StepConfig } from 'features/identityCheck/types'
-import { AllNavParamList } from 'features/navigation/RootNavigator'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
 import { getSpacing, Typo } from 'ui/theme'
-import { TouchableLink } from 'ui/web/link/TouchableLink'
-import { To } from 'ui/web/link/types'
 
 export type StepButtonState = 'completed' | 'current' | 'disabled'
 
 interface Props {
   step: StepConfig
   state: StepButtonState
-  to?: To<AllNavParamList, keyof AllNavParamList>
+  navigateTo?: TouchableLinkProps['navigateTo']
   onPress?: () => void
 }
 
-export const StepButton = ({ step, state, to, onPress }: Props) => {
+export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
   const { icon: Icon, label } = step
 
   return (
     <StyledTouchableLink
-      to={to}
+      navigateTo={navigateTo}
       onPress={onPress}
       disabled={state !== 'current'}
       state={state}

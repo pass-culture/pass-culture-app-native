@@ -14,12 +14,12 @@ describe('NotConnectedFavorites component', () => {
   it('should navigate to SignupForm on button click', () => {
     const renderAPI = render(<NotConnectedFavorites />)
     fireEvent.press(renderAPI.getByText(`S'inscrire`))
-    expect(navigate).toBeCalledWith('SignupForm')
+    expect(navigate).toBeCalledWith('SignupForm', undefined)
   })
 
   it('should navigate to Login on button click', () => {
     const renderAPI = render(<NotConnectedFavorites />)
     fireEvent.press(renderAPI.getByText(`Se connecter`))
-    expect(navigate).toBeCalledWith('Login')
+    expect(navigate).toBeCalledWith('Login', undefined)
   })
 })

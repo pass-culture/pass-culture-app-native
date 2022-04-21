@@ -197,10 +197,12 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         }
       }
     >
-      <a
-        className="sc-gsDKAQ lbVuJV sc-dkPtRN gNpZyI"
+      <button
+        className="sc-bdvvtL jCWNxc sc-dkPtRN gNpZyI"
         onClick={[Function]}
+        onDoubleClick={[Function]}
         tabIndex={0}
+        type="button"
       >
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
@@ -219,7 +221,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         >
           S'inscrire
         </div>
-      </a>
+      </button>
       <div
         className="css-view-1dbjc4n"
         style={
@@ -228,10 +230,12 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
           }
         }
       />
-      <a
-        className="sc-gsDKAQ lbVuJV sc-hKwDye gvtKtm"
+      <button
+        className="sc-bdvvtL jCWNxc sc-hKwDye gvtKtm"
         onClick={[Function]}
+        onDoubleClick={[Function]}
         tabIndex={0}
+        type="button"
       >
         <div
           className="css-text-901oao css-textMultiLine-cens5h"
@@ -250,7 +254,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         >
           Se connecter
         </div>
-      </a>
+      </button>
     </div>
   </div>
   <div

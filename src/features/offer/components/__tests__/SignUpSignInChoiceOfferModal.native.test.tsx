@@ -25,7 +25,7 @@ describe('SignUpSignInChoiceOfferModal', () => {
     const button = getByText('Se connecter')
     fireEvent.press(button)
 
-    expect(navigate).toBeCalledWith('Login')
+    expect(navigate).toBeCalledWith('Login', undefined)
   })
 
   it('go to signup on click button', () => {
@@ -36,6 +36,6 @@ describe('SignUpSignInChoiceOfferModal', () => {
     const button = getByText(`S'inscrire`)
     fireEvent.press(button)
 
-    expect(navigate).toBeCalledWith('SignupForm')
+    expect(navigate).toBeCalledWith('SignupForm', undefined)
   })
 })

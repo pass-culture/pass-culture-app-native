@@ -1,5 +1,4 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
@@ -7,7 +6,6 @@ import styled from 'styled-components/native'
 import { SeeMore } from 'features/home/atoms'
 import { Layout } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
@@ -21,6 +19,7 @@ import { useCategoryIdMapping, useCategoryHomeLabelMapping } from 'libs/subcateg
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { MARGIN_DP, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
 
@@ -37,8 +36,9 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
   const { data: venue } = useVenue(venueId)
   const { data: venueOffers } = useVenueOffers(venueId)
   const { position } = useGeolocation()
-  const { navigate } = useNavigation<UseNavigationType>()
   const params = useVenueSearchParameters(venueId)
+  const searchTabNavConfig = getTabNavConfig('Search', params)
+  const searchNavConfig = { screen: searchTabNavConfig[0], params: searchTabNavConfig[1] }
   const { hits = [], nbHits = 0 } = venueOffers || {}
 
   const mapping = useCategoryIdMapping()
@@ -70,17 +70,11 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
 
   const seeAllOffers = useCallback(() => {
     analytics.logVenueSeeAllOffersClicked(venueId)
-    navigate(...getTabNavConfig('Search', params))
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params])
+  }, [])
 
   const showSeeMore = nbHits > hits.length
-  const onPressSeeMore = showSeeMore
-    ? () => {
-        analytics.logVenueSeeMoreClicked(venueId)
-        navigate(...getTabNavConfig('Search', params))
-      }
-    : undefined
+  const onPressSeeMore = showSeeMore ? () => analytics.logVenueSeeMoreClicked(venueId) : undefined
 
   const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(layout)
 
@@ -89,7 +83,7 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
       <SeeMore
         width={width}
         height={height}
-        to={{ screen: 'Search', params }}
+        navigateTo={showSeeMore ? searchNavConfig : undefined}
         onPress={onPressSeeMore as () => void}
       />
     ),
@@ -113,15 +107,16 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
         itemWidth={itemWidth}
         onPressSeeMore={onPressSeeMore}
         renderItem={renderItem}
-        titleSeeMoreLink={{ screen: 'Search', params }}
+        titleSeeMoreLink={showSeeMore ? searchNavConfig : undefined}
         renderFooter={renderFooter}
         keyExtractor={keyExtractor}
       />
       <MarginContainer>
-        <ButtonWithLinearGradient
+        <TouchableLink
+          as={ButtonWithLinearGradient}
           wording={VENUE_OFFERS_CTA_WORDING}
           onPress={seeAllOffers}
-          to={{ screen: 'Search', params }}
+          navigateTo={searchNavConfig}
         />
       </MarginContainer>
       <Spacer.Column numberOfSpaces={6} />

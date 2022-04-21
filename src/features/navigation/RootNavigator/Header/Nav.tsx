@@ -1,11 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { navigateFromRef } from 'features/navigation/navigationRef'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { mapTabRouteToBicolorIcon } from 'features/navigation/TabBar/mapTabRouteToBicolorIcon'
 import { useTabNavigationContext } from 'features/navigation/TabBar/TabNavigationStateContext'
-import { TabParamList } from 'features/navigation/TabBar/types'
 import { theme } from 'theme'
 import { Spacer, getShadow, getSpacing } from 'ui/theme'
 import { Li } from 'ui/web/list/Li'
@@ -22,10 +20,6 @@ type Props = {
 export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
   const { tabRoutes } = useTabNavigationContext()
 
-  const onPress = (name: keyof TabParamList) => {
-    navigateFromRef(...getTabNavConfig(name))
-  }
-
   return (
     <NavItemsContainer maxWidth={maxWidth} height={height} noShadow={noShadow}>
       <Ul>
@@ -36,8 +30,11 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
               tabName={route.name}
               isSelected={route.isSelected}
               BicolorIcon={mapTabRouteToBicolorIcon(route.name)}
-              to={{ screen: route.name, params: undefined }}
-              onPress={() => onPress(route.name)}
+              navigateTo={{
+                screen: getTabNavConfig(route.name)[0],
+                params: getTabNavConfig(route.name)[1],
+                fromRef: true,
+              }}
             />
           </StyledLi>
         ))}

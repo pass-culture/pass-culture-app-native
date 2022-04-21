@@ -25,15 +25,15 @@ jest.mock('features/home/api', () => ({
 describe('getCtaWordingAndAction', () => {
   describe('Non Beneficiary', () => {
     it.each`
-      isEvent  | url                      | bookedOffers                 | expected                      | disabled | isExternal   | showBookingModal
-      ${true}  | ${undefined}             | ${{}}                        | ${undefined}                  | ${true}  | ${undefined} | ${undefined}
-      ${true}  | ${'https://url-externe'} | ${{}}                        | ${'Accéder à la billetterie'} | ${false} | ${true}      | ${false}
-      ${false} | ${undefined}             | ${{}}                        | ${undefined}                  | ${true}  | ${undefined} | ${undefined}
-      ${false} | ${'https://url-externe'} | ${{}}                        | ${"Accéder à l'offre"}        | ${false} | ${true}      | ${false}
-      ${false} | ${undefined}             | ${{ [baseOffer.id]: 31652 }} | ${'Voir ma réservation'}      | ${false} | ${false}     | ${false}
+      isEvent  | url                      | bookedOffers                 | expected                      | disabled | showBookingModal
+      ${true}  | ${undefined}             | ${{}}                        | ${undefined}                  | ${true}  | ${undefined}
+      ${true}  | ${'https://url-externe'} | ${{}}                        | ${'Accéder à la billetterie'} | ${false} | ${false}
+      ${false} | ${undefined}             | ${{}}                        | ${undefined}                  | ${true}  | ${undefined}
+      ${false} | ${'https://url-externe'} | ${{}}                        | ${"Accéder à l'offre"}        | ${false} | ${false}
+      ${false} | ${undefined}             | ${{ [baseOffer.id]: 31652 }} | ${'Voir ma réservation'}      | ${false} | ${false}
     `(
       'CTA(disabled=$disabled) = "$expected" for isEvent=$isEvent and url=$url',
-      ({ disabled, expected, isEvent, url, bookedOffers, isExternal, showBookingModal }) => {
+      ({ disabled, expected, isEvent, url, bookedOffers, showBookingModal }) => {
         const offer = buildOffer({ externalTicketOfficeUrl: url })
         const subcategory = buildSubcategory({ isEvent })
 
@@ -46,10 +46,12 @@ describe('getCtaWordingAndAction', () => {
           bookedOffers,
           isUnderageBeneficiary: false,
         })
-        const { wording, onPress } = result || {}
+        const { wording, onPress, navigateTo, externalNav } = result || {}
         expect(wording).toEqual(expected)
-        expect(onPress === undefined).toBe(disabled)
-        expect(result?.isExternal).toEqual(isExternal)
+        expect(onPress === undefined && navigateTo === undefined && externalNav === undefined).toBe(
+          disabled
+        )
+        expect(result?.externalNav?.url).toEqual(url)
         expect(result?.showBookingModal).toEqual(showBookingModal)
       }
     )
@@ -58,15 +60,15 @@ describe('getCtaWordingAndAction', () => {
   // same as non beneficiary use cases, beneficiary users should not be able to book educational offers
   describe('educational offer', () => {
     it.each`
-      isEvent  | url                      | bookedOffers                 | expected                      | disabled | isExternal   | showBookingModal
-      ${true}  | ${undefined}             | ${{}}                        | ${undefined}                  | ${true}  | ${undefined} | ${undefined}
-      ${true}  | ${'https://url-externe'} | ${{}}                        | ${'Accéder à la billetterie'} | ${false} | ${true}      | ${false}
-      ${false} | ${undefined}             | ${{}}                        | ${undefined}                  | ${true}  | ${undefined} | ${undefined}
-      ${false} | ${'https://url-externe'} | ${{}}                        | ${"Accéder à l'offre"}        | ${false} | ${true}      | ${false}
-      ${false} | ${undefined}             | ${{ [baseOffer.id]: 31652 }} | ${'Voir ma réservation'}      | ${false} | ${false}     | ${false}
+      isEvent  | url                      | bookedOffers                 | expected                      | disabled | showBookingModal
+      ${true}  | ${undefined}             | ${{}}                        | ${undefined}                  | ${true}  | ${undefined}
+      ${true}  | ${'https://url-externe'} | ${{}}                        | ${'Accéder à la billetterie'} | ${false} | ${false}
+      ${false} | ${undefined}             | ${{}}                        | ${undefined}                  | ${true}  | ${undefined}
+      ${false} | ${'https://url-externe'} | ${{}}                        | ${"Accéder à l'offre"}        | ${false} | ${false}
+      ${false} | ${undefined}             | ${{ [baseOffer.id]: 31652 }} | ${'Voir ma réservation'}      | ${false} | ${false}
     `(
       'CTA(disabled=$disabled) = "$expected" for isEvent=$isEvent and url=$url',
-      ({ disabled, expected, isEvent, url, bookedOffers, isExternal, showBookingModal }) => {
+      ({ disabled, expected, isEvent, url, bookedOffers, showBookingModal }) => {
         const offer = buildOffer({ externalTicketOfficeUrl: url, isEducational: true })
         const subcategory = buildSubcategory({ isEvent })
 
@@ -79,10 +81,12 @@ describe('getCtaWordingAndAction', () => {
           bookedOffers,
           isUnderageBeneficiary: false,
         })
-        const { wording, onPress } = result || {}
+        const { wording, onPress, navigateTo, externalNav } = result || {}
         expect(wording).toEqual(expected)
-        expect(onPress === undefined).toBe(disabled)
-        expect(result?.isExternal).toEqual(isExternal)
+        expect(onPress === undefined && navigateTo === undefined && externalNav === undefined).toBe(
+          disabled
+        )
+        expect(result?.externalNav?.url).toEqual(url)
         expect(result?.showBookingModal).toEqual(showBookingModal)
       }
     )
@@ -106,27 +110,38 @@ describe('getCtaWordingAndAction', () => {
       }) || { wording: '' }
 
     it('CTA="Offre épuisée" if offer is sold out', () => {
-      const { wording, onPress } = getCta({ isSoldOut: true })
+      const { wording, onPress, navigateTo, externalNav } = getCta({ isSoldOut: true })
       expect(wording).toEqual('Offre épuisée')
       expect(onPress === undefined).toBeTruthy()
+      expect(navigateTo === undefined).toBeTruthy()
+      expect(externalNav === undefined).toBeTruthy()
     })
 
     it('CTA="Offre expirée" if offer is expired and sold out', () => {
-      const { wording, onPress } = getCta({ isExpired: true, isSoldOut: true })
+      const { wording, onPress, navigateTo, externalNav } = getCta({
+        isExpired: true,
+        isSoldOut: true,
+      })
       expect(wording).toEqual('Offre expirée')
       expect(onPress === undefined).toBeTruthy()
+      expect(navigateTo === undefined).toBeTruthy()
+      expect(externalNav === undefined).toBeTruthy()
     })
 
     it('CTA="Offre expirée" if offer is expired', () => {
-      const { wording, onPress } = getCta({ isExpired: true })
+      const { wording, onPress, navigateTo, externalNav } = getCta({ isExpired: true })
       expect(wording).toEqual('Offre expirée')
       expect(onPress === undefined).toBeTruthy()
+      expect(navigateTo === undefined).toBeTruthy()
+      expect(externalNav === undefined).toBeTruthy()
     })
 
     it('CTA="Offre expirée" if offer is expired', () => {
-      const { wording, onPress } = getCta({ isReleased: false })
+      const { wording, onPress, navigateTo, externalNav } = getCta({ isReleased: false })
       expect(wording).toEqual('Offre expirée')
       expect(onPress === undefined).toBeTruthy()
+      expect(navigateTo === undefined).toBeTruthy()
+      expect(externalNav === undefined).toBeTruthy()
     })
 
     // offer price is 5
@@ -143,13 +158,15 @@ describe('getCtaWordingAndAction', () => {
         isEvent,
         showBookingModal: mustShowBookingModal,
       }) => {
-        const { wording, onPress, showBookingModal } = getCta(
+        const { wording, onPress, navigateTo, externalNav, showBookingModal } = getCta(
           { isDigital: true },
           { hasEnoughCredit, isUnderageBeneficiary: false },
           { isEvent }
         )
         expect(wording).toEqual(expected)
-        expect(onPress === undefined).toBe(disabled)
+        expect(onPress === undefined && navigateTo === undefined && externalNav === undefined).toBe(
+          disabled
+        )
         expect(showBookingModal).toEqual(mustShowBookingModal)
       }
     )
@@ -172,14 +189,16 @@ describe('getCtaWordingAndAction', () => {
         isUnderageBeneficiary,
         showBookingModal: mustShowBookingModal,
       }) => {
-        const { wording, onPress, showBookingModal } = getCta(
+        const { wording, onPress, navigateTo, externalNav, showBookingModal } = getCta(
           { isDigital },
           { hasEnoughCredit, isUnderageBeneficiary },
           { isEvent: false }
         )
         expect(wording).toEqual(expected)
         expect(showBookingModal).toEqual(mustShowBookingModal)
-        expect(onPress === undefined).toBe(disabled)
+        expect(onPress === undefined && navigateTo === undefined && externalNav === undefined).toBe(
+          disabled
+        )
       }
     )
 
@@ -199,9 +218,15 @@ describe('getCtaWordingAndAction', () => {
         isEvent,
         showBookingModal: mustShowBookingModal,
       }) => {
-        const { wording, onPress, showBookingModal } = getCta({}, { hasEnoughCredit }, { isEvent })
+        const { wording, onPress, navigateTo, externalNav, showBookingModal } = getCta(
+          {},
+          { hasEnoughCredit },
+          { isEvent }
+        )
         expect(wording).toEqual(expected)
-        expect(onPress === undefined).toBe(disabled)
+        expect(onPress === undefined && navigateTo === undefined && externalNav === undefined).toBe(
+          disabled
+        )
         expect(showBookingModal).toEqual(mustShowBookingModal)
       }
     )
@@ -214,13 +239,15 @@ describe('getCtaWordingAndAction', () => {
     `(
       'check if Credit is enough for digital offers | creditThing=$creditThing => $expected',
       ({ disabled, expected, hasEnoughCredit, showBookingModal: mustShowBookingModal }) => {
-        const { wording, onPress, showBookingModal } = getCta(
+        const { wording, onPress, navigateTo, externalNav, showBookingModal } = getCta(
           { isDigital: true },
           { hasEnoughCredit, isUnderageBeneficiary: false },
           { isEvent: false }
         )
         expect(wording).toEqual(expected)
-        expect(onPress === undefined).toBe(disabled)
+        expect(onPress === undefined && navigateTo === undefined && externalNav === undefined).toBe(
+          disabled
+        )
         expect(showBookingModal).toBe(mustShowBookingModal)
       }
     )
@@ -248,7 +275,7 @@ describe('getCtaWordingAndAction', () => {
           showBookingModal: mustShowBookingModal,
         }) => {
           mockedUser.roles = [UserRole.UNDERAGE_BENEFICIARY]
-          const { wording, onPress, showBookingModal } = getCta(
+          const { wording, onPress, navigateTo, externalNav, showBookingModal } = getCta(
             {
               isDigital,
               isForbiddenToUnderage,
@@ -269,7 +296,9 @@ describe('getCtaWordingAndAction', () => {
           )
           expect(wording).toEqual(expected)
           expect(showBookingModal).toEqual(mustShowBookingModal)
-          expect(onPress === undefined).toBe(disabled)
+          expect(
+            onPress === undefined && navigateTo === undefined && externalNav === undefined
+          ).toBe(disabled)
         }
       )
     })

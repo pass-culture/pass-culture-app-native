@@ -31,11 +31,7 @@ describe('<ButtonWithLinearGradient />', () => {
   it('should render anchor tag without type if component is an anchor', () => {
     const href = 'https://example.link/'
     const renderAPI = render(
-      <ButtonWithLinearGradient
-        wording="Wording to display"
-        externalHref={href}
-        onPress={onPress}
-      />
+      <ButtonWithLinearGradient wording="Wording to display" href={href} onPress={onPress} />
     )
     const text = renderAPI.queryByText('Wording to display')
     expect(text?.closest('a')?.href).toBe(href)

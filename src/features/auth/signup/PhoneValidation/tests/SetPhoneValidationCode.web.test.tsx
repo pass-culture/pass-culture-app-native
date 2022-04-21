@@ -14,6 +14,7 @@ import {
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { contactSupport } from 'features/auth/support.services'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
+import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { EmptyResponse } from 'libs/fetch'
 import {
@@ -55,6 +56,7 @@ const useMutationCallbacks: { onError: (error: unknown) => void; onSuccess: () =
   onSuccess: () => {},
   onError: () => {},
 }
+const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 describe('SetPhoneValidationCode', () => {
   beforeEach(() => {
@@ -105,7 +107,10 @@ describe('SetPhoneValidationCode', () => {
       fireEvent.click(contactSupportButton)
 
       await waitForExpect(() => {
-        expect(contactSupport.forPhoneNumberConfirmation).toHaveBeenCalled()
+        expect(openUrl).toBeCalledWith(
+          contactSupport.forPhoneNumberConfirmation.url,
+          contactSupport.forPhoneNumberConfirmation.params
+        )
       })
     })
   })

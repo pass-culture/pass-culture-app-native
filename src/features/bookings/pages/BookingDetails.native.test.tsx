@@ -247,8 +247,8 @@ describe('BookingDetails', () => {
         .mockReturnValue(dataProvider)
 
       const booking = bookingsSnap.ongoing_bookings[0]
-      const { getByText } = renderBookingDetails(booking)
-      getByText("Voir l'itinéraire")
+      const { queryByText } = renderBookingDetails(booking)
+      queryByText("Voir l'itinéraire")
 
       openItinerary.mockRestore()
       getBookingProperties.mockRestore()

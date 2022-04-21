@@ -14,7 +14,7 @@ import { Info } from 'ui/svg/icons/Info'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const IdentityCheckEduConnectForm = () => {
-  const { error, loginUrl, openEduConnect } = useEduConnectLogin()
+  const { error, openEduConnect } = useEduConnectLogin()
 
   if (error) {
     throw error
@@ -52,7 +52,6 @@ export const IdentityCheckEduConnectForm = () => {
         fixedBottomChildren={
           <ButtonPrimary
             wording={t`Ouvrir un onglet ÉduConnect`}
-            externalHref={loginUrl}
             onPress={openEduConnect}
             icon={ExternalSite}
           />

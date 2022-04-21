@@ -40,7 +40,7 @@ describe('LegalNotices', () => {
     const row = getByText('Conditions Générales d’Utilisation')
     fireEvent.press(row)
 
-    expect(openUrl).toBeCalledWith(env.CGU_LINK)
+    expect(openUrl).toBeCalledWith(env.CGU_LINK, undefined)
   })
   it('should navigate when the data-privacy-chart row is clicked', async () => {
     const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
@@ -49,7 +49,7 @@ describe('LegalNotices', () => {
     const row = getByText('Charte de protection des données personnelles')
     fireEvent.press(row)
 
-    expect(openUrl).toBeCalledWith(env.DATA_PRIVACY_CHART_LINK)
+    expect(openUrl).toBeCalledWith(env.DATA_PRIVACY_CHART_LINK, undefined)
   })
   it('should redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
     const { getByText } = await renderProfile()
@@ -57,6 +57,6 @@ describe('LegalNotices', () => {
     const row = getByText('Suppression du compte')
     fireEvent.press(row)
 
-    expect(navigate).toBeCalledWith('ConfirmDeleteProfile')
+    expect(navigate).toBeCalledWith('ConfirmDeleteProfile', undefined)
   })
 })

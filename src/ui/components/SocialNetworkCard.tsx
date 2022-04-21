@@ -1,10 +1,9 @@
 import React, { memo } from 'react'
 import styled from 'styled-components/native'
 
-import { openUrl } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Typo, getSpacing, Spacer } from 'ui/theme'
-import { TouchableLink } from 'ui/web/link/TouchableLink'
 
 import { SocialNetwork, SocialNetworkIconsMap } from './socials/types'
 
@@ -23,10 +22,9 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
 
   return (
     <TouchableLink
-      externalHref={link}
+      externalNav={{ url: link, params: { shouldLogEvent: false, fallbackUrl: fallbackLink } }}
       onPress={() => {
         analytics.logClickSocialNetwork(name)
-        openUrl(link, { shouldLogEvent: false, fallbackUrl: fallbackLink })
       }}>
       <Container>
         <NetworkIconBox>

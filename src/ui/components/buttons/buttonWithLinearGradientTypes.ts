@@ -1,19 +1,19 @@
 import { FunctionComponent } from 'react'
+import { AccessibilityRole } from 'react-native'
 
-import { AllNavParamList } from 'features/navigation/RootNavigator'
 import { IconInterface } from 'ui/svg/icons/types'
-import { To } from 'ui/web/link/types'
 
 export interface ButtonWithLinearGradientProps {
   children?: never
   wording: string
-  onPress: (() => void) | (() => Promise<void>) | undefined
+  onPress?: (() => void) | (() => Promise<void>)
   isDisabled?: boolean
   type?: 'button' | 'reset' | 'submit'
   className?: string
   name?: string
-  to?: To<AllNavParamList, keyof AllNavParamList>
-  externalHref?: string
   icon?: FunctionComponent<IconInterface>
+  accessibilityRole?: AccessibilityRole
+  href?: string
+  target?: string
   testID?: string
 }

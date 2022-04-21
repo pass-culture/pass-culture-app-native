@@ -14,6 +14,7 @@ import {
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { contactSupport } from 'features/auth/support.services'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
+import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { EmptyResponse } from 'libs/fetch'
 import {
@@ -66,6 +67,8 @@ const navigationProps = {
   },
 } as StackScreenProps<RootStackParamList, 'SetPhoneValidationCode'>
 
+const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
+
 const formattedPhoneNumber = formatPhoneNumber(
   navigationProps.route.params.phoneNumber,
   navigationProps.route.params.countryCode as CountryCode
@@ -107,7 +110,10 @@ describe('SetPhoneValidationCode', () => {
       fireEvent.press(contactSupportButton)
 
       await waitForExpect(() => {
-        expect(contactSupport.forPhoneNumberConfirmation).toHaveBeenCalled()
+        expect(openUrl).toHaveBeenCalledWith(
+          contactSupport.forPhoneNumberConfirmation.url,
+          contactSupport.forPhoneNumberConfirmation.params
+        )
       })
     })
   })

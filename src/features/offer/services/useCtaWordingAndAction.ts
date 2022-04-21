@@ -3,11 +3,11 @@ import { t } from '@lingui/macro'
 import { OfferResponse, FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { useUserProfileInfo } from 'features/home/api'
-import { openUrl, navigateToBooking } from 'features/navigation/helpers'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { Subcategory } from 'libs/subcategories/types'
+import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 
 import { useOffer } from '../api/useOffer'
 
@@ -29,9 +29,9 @@ interface Props {
 }
 interface ICTAWordingAndAction {
   showBookingModal?: boolean
-  isExternal?: boolean
-  url?: string
   wording?: string
+  navigateTo?: TouchableLinkProps['navigateTo']
+  externalNav?: TouchableLinkProps['externalNav']
   onPress?: () => void
 }
 
@@ -51,9 +51,12 @@ export const getCtaWordingAndAction = ({
   if (isAlreadyBookedOffer) {
     return {
       showBookingModal: false,
-      isExternal: false,
       wording: t`Voir ma réservation`,
-      onPress: () => navigateToBooking(bookedOffers[offer.id]),
+      navigateTo: {
+        screen: 'BookingDetails',
+        params: { id: bookedOffers[offer.id] },
+        fromRef: true,
+      },
     }
   }
 
@@ -65,10 +68,8 @@ export const getCtaWordingAndAction = ({
 
     return {
       showBookingModal: false,
-      isExternal: true,
-      url: externalTicketOfficeUrl,
       wording: subcategory.isEvent ? t`Accéder à la billetterie` : t`Accéder à l'offre`,
-      onPress: () => openUrl(externalTicketOfficeUrl),
+      externalNav: { url: externalTicketOfficeUrl },
     }
   }
 
@@ -86,7 +87,6 @@ export const getCtaWordingAndAction = ({
 
     return {
       showBookingModal: true,
-      isExternal: false,
       wording: t`Réserver`,
       onPress: () => {
         analytics.logClickBookOffer(offer.id)
@@ -99,7 +99,6 @@ export const getCtaWordingAndAction = ({
 
     return {
       showBookingModal: true,
-      isExternal: false,
       wording: t`Voir les disponibilités`,
       onPress: () => {
         analytics.logConsultAvailableDates(offer.id)
