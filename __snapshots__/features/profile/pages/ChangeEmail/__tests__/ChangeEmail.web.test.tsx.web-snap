@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <header
-        class="sc-jJoQJp fXbXpW"
+        class="sc-kLwhqv hbvUeN"
       >
         <div
           class="css-view-1dbjc4n"
@@ -108,7 +108,7 @@ Object {
             style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           >
             <form
-              class="sc-fKVqWL clyjXB"
+              class="sc-dlVxhl kBHsVa"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -119,7 +119,7 @@ Object {
                   style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                 >
                   <label
-                    class="sc-crHmcD cfjgl"
+                    class="sc-iqseJM cBlriz"
                     for="testUuidV4"
                   >
                     Nouvel e-mail
@@ -177,7 +177,7 @@ Object {
                   style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                 >
                   <label
-                    class="sc-crHmcD cfjgl"
+                    class="sc-iqseJM cBlriz"
                     for="testUuidV4"
                   >
                     Mot de passe
@@ -218,7 +218,7 @@ Object {
                   />
                   <button
                     aria-label="Afficher le mot de passe"
-                    class="sc-jRQBWg fCUEFQ sc-hiCibw VfUYt sc-hiCibw VfUYt"
+                    class="sc-jRQBWg fCUEFQ sc-ikJyIC jrcqVs sc-ikJyIC jrcqVs"
                     data-testid="toggle-password-visibility"
                     tabindex="0"
                     type="button"
@@ -276,7 +276,7 @@ Object {
   </body>,
   "container": <div>
     <header
-      class="sc-jJoQJp fXbXpW"
+      class="sc-kLwhqv hbvUeN"
     >
       <div
         class="css-view-1dbjc4n"
@@ -378,7 +378,7 @@ Object {
           style="align-items: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         >
           <form
-            class="sc-fKVqWL clyjXB"
+            class="sc-dlVxhl kBHsVa"
           >
             <div
               class="css-view-1dbjc4n"
@@ -389,7 +389,7 @@ Object {
                 style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
               >
                 <label
-                  class="sc-crHmcD cfjgl"
+                  class="sc-iqseJM cBlriz"
                   for="testUuidV4"
                 >
                   Nouvel e-mail
@@ -447,7 +447,7 @@ Object {
                 style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
               >
                 <label
-                  class="sc-crHmcD cfjgl"
+                  class="sc-iqseJM cBlriz"
                   for="testUuidV4"
                 >
                   Mot de passe
@@ -488,7 +488,7 @@ Object {
                 />
                 <button
                   aria-label="Afficher le mot de passe"
-                  class="sc-jRQBWg fCUEFQ sc-hiCibw VfUYt sc-hiCibw VfUYt"
+                  class="sc-jRQBWg fCUEFQ sc-ikJyIC jrcqVs sc-ikJyIC jrcqVs"
                   data-testid="toggle-password-visibility"
                   tabindex="0"
                   type="button"

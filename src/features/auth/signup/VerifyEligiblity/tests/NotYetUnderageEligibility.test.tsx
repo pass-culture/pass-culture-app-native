@@ -1,13 +1,15 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateFromRef } from 'features/navigation/navigationRef'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { render, fireEvent } from 'tests/utils'
 
 import { NotYetUnderageEligibility } from '../NotYetUnderageEligibility'
 
 jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/navigationRef')
 
 const navigationProps = {
   route: { params: { eligibilityStartDatetime: '2019-12-01T00:00:00Z' } },
@@ -27,6 +29,6 @@ describe('<NotYetUnderageEligibility />', () => {
     const button = await findByText("Retourner à l'accueil")
     fireEvent.press(button)
 
-    expect(navigateToHome).toBeCalled()
+    expect(navigateFromRef).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
   })
 })

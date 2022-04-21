@@ -4,7 +4,8 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateFromRef } from 'features/navigation/navigationRef'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
@@ -15,6 +16,7 @@ import { render, fireEvent } from 'tests/utils/web'
 import { SignupConfirmationExpiredLink } from '../../SignupConfirmationExpiredLink/SignupConfirmationExpiredLink'
 
 jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/navigationRef')
 
 const navigationProps = { route: { params: { email: 'test@email.com' } } }
 
@@ -40,7 +42,10 @@ describe('<SignupConfirmationExpiredLink/>', () => {
     fireEvent.click(button)
 
     await waitForExpect(() => {
-      expect(navigateToHome).toBeCalledTimes(1)
+      expect(navigateFromRef).toBeCalledWith(
+        navigateToHomeConfig.screen,
+        navigateToHomeConfig.params
+      )
     })
   })
 

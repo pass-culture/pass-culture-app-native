@@ -2,10 +2,12 @@ import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
 import { IdentityCheckPending } from 'features/identityCheck/pages/identification/IdentityCheckPending'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateFromRef } from 'features/navigation/navigationRef'
 import { fireEvent, render } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/navigationRef')
 
 describe('<IdentityCheckPending/>', () => {
   it('should render correctly', () => {
@@ -17,7 +19,10 @@ describe('<IdentityCheckPending/>', () => {
     const { getByText } = render(<IdentityCheckPending />)
     fireEvent.press(getByText(`Retourner à l'accueil`))
     await waitForExpect(() => {
-      expect(navigateToHome).toBeCalledTimes(1)
+      expect(navigateFromRef).toBeCalledWith(
+        navigateToHomeConfig.screen,
+        navigateToHomeConfig.params
+      )
     })
   })
 })

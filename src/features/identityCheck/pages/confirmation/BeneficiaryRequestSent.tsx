@@ -1,5 +1,4 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -9,28 +8,19 @@ import {
   useCulturalSurveyRoute,
 } from 'features/culturalSurvey/helpers/utils'
 import { useUserProfileInfo } from 'features/home/api'
-import { navigateToHome } from 'features/navigation/helpers'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { Typo } from 'ui/theme'
 
 export function BeneficiaryRequestSent() {
-  const { navigate } = useNavigation<UseNavigationType>()
   const { data: user } = useUserProfileInfo()
   const { data: settings } = useAppSettings()
   const culturalSurveyRoute = useCulturalSurveyRoute()
 
   const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
-
-  function onPress() {
-    if (shouldNavigateToCulturalSurvey) {
-      navigate(culturalSurveyRoute)
-    } else {
-      navigateToHome()
-    }
-  }
 
   const body = settings?.enableIdCheckRetention
     ? t`Tu recevras une réponse par e-mail sous 5 jours ouvrés.`
@@ -49,7 +39,16 @@ export function BeneficiaryRequestSent() {
     <GenericInfoPage
       title={t`Demande envoyée\u00a0!`}
       icon={RequestSent}
-      buttons={[<ButtonPrimaryWhite key={1} wording={t`On y va\u00a0!`} onPress={onPress} />]}>
+      buttons={[
+        <TouchableLink
+          key={1}
+          as={ButtonPrimaryWhite}
+          wording={t`On y va\u00a0!`}
+          navigateTo={
+            shouldNavigateToCulturalSurvey ? { screen: culturalSurveyRoute } : navigateToHomeConfig
+          }
+        />,
+      ]}>
       <StyledBody>{t`Nous étudions ton dossier...`}</StyledBody>
       <StyledBody>{message}</StyledBody>
     </GenericInfoPage>

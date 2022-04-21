@@ -333,10 +333,12 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
       }
     }
   >
-    <a
-      className="sc-gsDKAQ gFcuOJ sc-eCImPb bxfGfU"
+    <button
+      className="sc-bdvvtL hWVHSw sc-eCImPb bxfGfU"
       onClick={[Function]}
+      onDoubleClick={[Function]}
       tabIndex={0}
+      type="button"
     >
       <div
         className="css-text-901oao css-textMultiLine-cens5h"
@@ -355,7 +357,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
       >
         Je découvre les offres
       </div>
-    </a>
+    </button>
   </div>
   <div
     className="css-view-1dbjc4n"

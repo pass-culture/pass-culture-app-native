@@ -3,12 +3,14 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateFromRef } from 'features/navigation/navigationRef'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { analytics } from 'libs/analytics'
 import { fireEvent, render } from 'tests/utils'
 
 jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/navigationRef')
 
 jest.mock('features/auth/AuthContext')
 const mockUseAuthContext = useAuthContext as jest.MockedFunction<typeof useAuthContext>
@@ -39,7 +41,10 @@ describe('<ChangeEmailExpiredLink />', () => {
     fireEvent.press(getByText(`Retourner à l'accueil`))
 
     await waitForExpect(() => {
-      expect(navigateToHome).toBeCalledTimes(1)
+      expect(navigateFromRef).toBeCalledWith(
+        navigateToHomeConfig.screen,
+        navigateToHomeConfig.params
+      )
     })
   })
 

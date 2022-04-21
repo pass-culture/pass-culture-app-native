@@ -7,7 +7,8 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { SettingsResponse, UserProfileResponse } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
 import { useUserProfileInfo } from 'features/home/api'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateFromRef } from 'features/navigation/navigationRef'
 import { render, fireEvent } from 'tests/utils'
 
 import { BeneficiaryRequestSent } from '../BeneficiaryRequestSent'
@@ -16,6 +17,7 @@ const mockedUseAppSettings = mocked(useAppSettings, true)
 const mockedUseUserProfileInfo = mocked(useUserProfileInfo)
 jest.mock('features/home/api')
 jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/navigationRef')
 jest.mock('features/auth/settings')
 
 describe('<BeneficiaryRequestSent />', () => {
@@ -35,9 +37,9 @@ describe('<BeneficiaryRequestSent />', () => {
 
     fireEvent.press(getByText('On y va\u00a0!'))
 
-    expect(navigateToHome).not.toBeCalled()
+    expect(navigateFromRef).not.toBeCalled()
     expect(navigate).toBeCalledTimes(1)
-    expect(navigate).toBeCalledWith('CulturalSurvey')
+    expect(navigate).toBeCalledWith('CulturalSurvey', undefined)
   })
 
   it('should redirect to native cultural survey page WHEN "On y va !" is clicked and feature flag is activated', () => {
@@ -49,9 +51,9 @@ describe('<BeneficiaryRequestSent />', () => {
 
     fireEvent.press(getByText('On y va\u00a0!'))
 
-    expect(navigateToHome).not.toBeCalled()
+    expect(navigateFromRef).not.toBeCalled()
     expect(navigate).toBeCalledTimes(1)
-    expect(navigate).toBeCalledWith('CulturalSurvey')
+    expect(navigate).toBeCalledWith('CulturalSurvey', undefined)
   })
 
   it('should redirect to home page WHEN "On y va !" button is clicked and user does not need to fill cultural survey', () => {
@@ -62,8 +64,8 @@ describe('<BeneficiaryRequestSent />', () => {
 
     fireEvent.press(getByText('On y va\u00a0!'))
 
-    expect(navigateToHome).toBeCalledTimes(1)
-    expect(navigate).not.toBeCalledWith('CulturalSurvey')
+    expect(navigateFromRef).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
+    expect(navigate).not.toBeCalledWith('CulturalSurvey', undefined)
   })
 
   it('should show specific body message when retention is on and cultural survey is off', () => {
