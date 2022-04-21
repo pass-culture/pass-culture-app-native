@@ -6,7 +6,7 @@ import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { svgIdentifier } from 'ui/svg/utils'
 
-const ConferenceSvg: React.FunctionComponent<AccessibleIcon> = ({
+const MicroSvg: React.FunctionComponent<AccessibleIcon> = ({
   size,
   color,
   color2,
@@ -41,7 +41,7 @@ const ConferenceSvg: React.FunctionComponent<AccessibleIcon> = ({
   )
 }
 
-export const Conference = styled(ConferenceSvg).attrs(({ color, size, theme }) => ({
+export const Micro = styled(MicroSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.colors.primary,
   size: size ?? theme.icons.sizes.standard,
 }))``

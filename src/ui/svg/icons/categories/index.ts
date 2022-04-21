@@ -2,9 +2,9 @@ import { All } from '../bicolor/All'
 import { ArtsMaterial } from '../bicolor/ArtsMaterial'
 import { Book } from '../bicolor/Book'
 import { Brush } from '../bicolor/Brush'
-import { CarteJeunes } from '../bicolor/CarteJeunes'
+import { Card } from '../bicolor/Card'
 import { Cinema } from '../bicolor/Cinema'
-import { Conference } from '../bicolor/Conference'
+import { Micro } from '../bicolor/Micro'
 import { Museum } from '../bicolor/Museum'
 import { Music } from '../bicolor/Music'
 import { Piano } from '../bicolor/Piano'
@@ -17,9 +17,9 @@ export default {
   All,
   ArtsMaterial,
   Brush,
-  CarteJeunes,
+  Card,
   Cinema,
-  Conference,
+  Micro,
   Museum,
   Piano,
   VideoGame,

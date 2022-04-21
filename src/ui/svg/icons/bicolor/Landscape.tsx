@@ -6,7 +6,7 @@ import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
 import { AccessibleIcon } from '../types'
 
-function VisualArtSvg({ size, color, accessibilityLabel, testID }: AccessibleIcon): JSX.Element {
+function LandscapeSvg({ size, color, accessibilityLabel, testID }: AccessibleIcon): JSX.Element {
   return (
     <AccessibleSvg
       width={size}
@@ -24,7 +24,7 @@ function VisualArtSvg({ size, color, accessibilityLabel, testID }: AccessibleIco
   )
 }
 
-export const VisualArtIcon = styled(VisualArtSvg).attrs(({ color, size, theme }) => ({
+export const Landscape = styled(LandscapeSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.colors.black,
   size: size ?? theme.icons.sizes.standard,
 }))``

@@ -6,12 +6,7 @@ import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
 import { AccessibleIcon } from '../types'
 
-function PatrimonyTourismSvg({
-  size,
-  color,
-  accessibilityLabel,
-  testID,
-}: AccessibleIcon): JSX.Element {
+function CastleSvg({ size, color, accessibilityLabel, testID }: AccessibleIcon): JSX.Element {
   return (
     <AccessibleSvg
       width={size}
@@ -29,7 +24,7 @@ function PatrimonyTourismSvg({
   )
 }
 
-export const PatrimonyTourismIcon = styled(PatrimonyTourismSvg).attrs(({ color, size, theme }) => ({
+export const Castle = styled(CastleSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.colors.black,
   size: size ?? theme.icons.sizes.standard,
 }))``

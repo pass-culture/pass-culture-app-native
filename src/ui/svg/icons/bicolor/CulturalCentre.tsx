@@ -29,7 +29,7 @@ function CulturalCentreSvg({
   )
 }
 
-export const CulturalCentreIcon = styled(CulturalCentreSvg).attrs(({ color, size, theme }) => ({
+export const CulturalCentre = styled(CulturalCentreSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.colors.black,
   size: size ?? theme.icons.sizes.standard,
 }))``

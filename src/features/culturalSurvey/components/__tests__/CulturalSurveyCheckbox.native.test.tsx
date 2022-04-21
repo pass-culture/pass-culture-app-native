@@ -8,7 +8,7 @@ describe('CulturalSurveyCheckbox', () => {
   it('should render correctly', () => {
     const CulturalSurveyCheckboxComponent = render(
       <CulturalSurveyCheckbox
-        icon={CulturalSurveyIcons.MuseumIcon}
+        icon={CulturalSurveyIcons.Museum}
         subtitle={'un monument, une exposition...'}
       />
     )
@@ -17,7 +17,7 @@ describe('CulturalSurveyCheckbox', () => {
   it('should render correctly when pressed', () => {
     const CulturalSurveyCheckboxComponent = render(
       <CulturalSurveyCheckbox
-        icon={CulturalSurveyIcons.MuseumIcon}
+        icon={CulturalSurveyIcons.Museum}
         subtitle={'un monument, une exposition...'}
       />
     )

@@ -2,9 +2,8 @@ import React from 'react'
 import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg'
 import styled, { useTheme } from 'styled-components/native'
 
+import { IconInterface } from 'ui/svg/icons/types'
 import { svgIdentifier } from 'ui/svg/utils'
-
-import { IconInterface } from './types'
 
 const VideoSvg: React.FunctionComponent<IconInterface> = ({ size, color, color2, testID }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()

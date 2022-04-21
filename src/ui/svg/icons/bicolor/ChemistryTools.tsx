@@ -6,7 +6,7 @@ import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
 import { AccessibleIcon } from '../types'
 
-function ScientificCultureSvg({
+function ChemistryToolsSvg({
   size,
   color,
   accessibilityLabel,
@@ -25,9 +25,7 @@ function ScientificCultureSvg({
   )
 }
 
-export const ScientificCultureIcon = styled(ScientificCultureSvg).attrs(
-  ({ color, size, theme }) => ({
-    color: color ?? theme.colors.black,
-    size: size ?? theme.icons.sizes.standard,
-  })
-)``
+export const ChemistryTools = styled(ChemistryToolsSvg).attrs(({ color, size, theme }) => ({
+  color: color ?? theme.colors.black,
+  size: size ?? theme.icons.sizes.standard,
+}))``

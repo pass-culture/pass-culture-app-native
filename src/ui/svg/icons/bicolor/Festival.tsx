@@ -42,7 +42,7 @@ function FestivalSvg({
   )
 }
 
-export const FestivalIcon = styled(FestivalSvg).attrs(({ color, size, theme }) => ({
+export const Festival = styled(FestivalSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.colors.black,
   size: size ?? theme.icons.sizes.standard,
 }))``

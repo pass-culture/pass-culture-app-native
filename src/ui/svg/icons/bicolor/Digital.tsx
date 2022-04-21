@@ -20,7 +20,7 @@ function DigitalSvg({ size, color, accessibilityLabel, testID }: AccessibleIcon)
   )
 }
 
-export const DigitalIcon = styled(DigitalSvg).attrs(({ color, size, theme }) => ({
+export const Digital = styled(DigitalSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.colors.black,
   size: size ?? theme.icons.sizes.standard,
 }))``

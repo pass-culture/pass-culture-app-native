@@ -6,7 +6,7 @@ import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { svgIdentifier } from 'ui/svg/utils'
 
-const CarteJeunesSvg: React.FunctionComponent<AccessibleIcon> = ({
+const CardSvg: React.FunctionComponent<AccessibleIcon> = ({
   size,
   color,
   color2,
@@ -41,7 +41,7 @@ const CarteJeunesSvg: React.FunctionComponent<AccessibleIcon> = ({
   )
 }
 
-export const CarteJeunes = styled(CarteJeunesSvg).attrs(({ color, size, theme }) => ({
+export const Card = styled(CardSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.colors.primary,
   size: size ?? theme.icons.sizes.standard,
 }))``

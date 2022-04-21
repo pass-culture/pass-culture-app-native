@@ -42,7 +42,7 @@ function PerformingArtsSvg({
   )
 }
 
-export const PerformingArtsIcon = styled(PerformingArtsSvg).attrs(({ color, size, theme }) => ({
+export const PerformingArts = styled(PerformingArtsSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.colors.black,
   size: size ?? theme.icons.sizes.standard,
 }))``

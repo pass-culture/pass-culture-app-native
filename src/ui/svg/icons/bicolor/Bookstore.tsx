@@ -39,7 +39,7 @@ function BookstoreSvg({
   )
 }
 
-export const BookstoreIcon = styled(BookstoreSvg).attrs(({ color, size, theme }) => ({
+export const Bookstore = styled(BookstoreSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.colors.black,
   size: size ?? theme.icons.sizes.standard,
 }))``

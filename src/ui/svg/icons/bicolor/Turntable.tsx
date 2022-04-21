@@ -6,7 +6,7 @@ import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 
 import { AccessibleIcon } from '../types'
 
-function RecordStoreSvg({ size, color, accessibilityLabel, testID }: AccessibleIcon): JSX.Element {
+function TurntableSvg({ size, color, accessibilityLabel, testID }: AccessibleIcon): JSX.Element {
   return (
     <AccessibleSvg
       width={size}
@@ -20,7 +20,7 @@ function RecordStoreSvg({ size, color, accessibilityLabel, testID }: AccessibleI
   )
 }
 
-export const RecordStoreIcon = styled(RecordStoreSvg).attrs(({ color, size, theme }) => ({
+export const Turntable = styled(TurntableSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.colors.black,
   size: size ?? theme.icons.sizes.standard,
 }))``

@@ -30,7 +30,7 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     facetFilter: SearchGroupNameEnum.NONE,
   },
   [SearchGroupNameEnum.CARTE_JEUNES]: {
-    icon: CategoryIcon.CarteJeunes,
+    icon: CategoryIcon.Card,
     facetFilter: SearchGroupNameEnum.CARTE_JEUNES,
   },
   [SearchGroupNameEnum.CINEMA]: {
@@ -70,7 +70,7 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     facetFilter: SearchGroupNameEnum.JEU,
   },
   [SearchGroupNameEnum.CONFERENCE]: {
-    icon: CategoryIcon.Conference,
+    icon: CategoryIcon.Micro,
     facetFilter: SearchGroupNameEnum.CONFERENCE,
   },
   [SearchGroupNameEnum.INSTRUMENT]: {
