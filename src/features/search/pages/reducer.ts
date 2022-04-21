@@ -1,6 +1,5 @@
 import { SearchGroupNameEnum } from 'api/gen'
-import { LocationType } from 'features/search/enums'
-import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { DATE_FILTER_OPTIONS, LocationType } from 'features/search/enums'
 import {
   MAX_PRICE,
   MAX_RADIUS,

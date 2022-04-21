@@ -140,9 +140,9 @@ export function onRemoveScreenAction({
     {
       action: Readonly<{
         type: string
-        payload?: Record<string, any> | undefined // eslint-disable-line @typescript-eslint/no-explicit-any
-        source?: string | undefined
-        target?: string | undefined
+        payload?: Record<string, any> // eslint-disable-line @typescript-eslint/no-explicit-any
+        source?: string
+        target?: string
       }>
     }
   >

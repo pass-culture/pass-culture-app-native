@@ -19,7 +19,7 @@ export const AccessibleTabBar = ({ id }: { id: string }) => {
   if (currentRoute && currentRoute.name !== 'TabNavigator') return null
 
   const onPress = (name: keyof TabParamList) => {
-    navigateFromRef(...getTabNavConfig(name, undefined))
+    navigateFromRef(...getTabNavConfig(name))
   }
 
   return (

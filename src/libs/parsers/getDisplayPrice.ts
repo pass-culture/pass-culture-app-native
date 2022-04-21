@@ -42,8 +42,8 @@ export const getFavoriteDisplayPrice = ({
   startPrice,
   price,
 }: {
-  startPrice?: number | undefined | null
-  price?: number | undefined | null
+  startPrice?: number | null
+  price?: number | null
 }): string => {
   if (price === 0) return t`Gratuit`
   if (price && price > 0) return formatToFrenchDecimal(price)

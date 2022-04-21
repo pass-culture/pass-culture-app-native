@@ -1,7 +1,6 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect, useState } from 'react'
-import { useRef } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import { Platform, ScrollView, StyleProp, ViewStyle } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { useMutation } from 'react-query'
@@ -74,17 +73,14 @@ export function ChangeEmail() {
 
   const onEmailChangeError = (errorCode?: string) => {
     errorCode && analytics.logErrorSavingNewEmail(errorCode)
-
-    switch (errorCode) {
-      case CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD:
-        setPasswordErrorMessage(t`Mot de passe incorrect`)
-        break
-      default:
-        showErrorSnackBar({
-          message: t`Une erreur s’est produite pendant la modification de ton e-mail.
-          Réessaie plus tard.`,
-          timeout: SNACK_BAR_TIME_OUT,
-        })
+    if (errorCode === CHANGE_EMAIL_ERROR_CODE.INVALID_PASSWORD) {
+      setPasswordErrorMessage(t`Mot de passe incorrect`)
+    } else {
+      showErrorSnackBar({
+        message: t`Une erreur s’est produite pendant la modification de ton e-mail.
+        Réessaie plus tard.`,
+        timeout: SNACK_BAR_TIME_OUT,
+      })
     }
   }
 

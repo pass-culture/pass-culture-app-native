@@ -26,7 +26,7 @@ import { EmptyResponse } from 'libs/fetch'
 export const server = setupServer(
   rest.post<SigninRequest, SigninResponse>(
     env.API_BASE_URL + '/native/v1/signin',
-    (req, res, ctx) => {
+    (_req, res, ctx) => {
       return res(
         ctx.status(200),
         ctx.json({ accessToken: 'access_token', refreshToken: 'refresh_token' })
@@ -37,17 +37,17 @@ export const server = setupServer(
   requestSettingsSuccess(),
   rest.post<ResetPasswordRequest, EmptyResponse>(
     env.API_BASE_URL + '/native/v1/reset_password',
-    (req, res, ctx) => {
+    (_req, res, ctx) => {
       return res(ctx.status(204))
     }
   ),
   rest.post<ResetPasswordRequest, EmptyResponse>(
     env.API_BASE_URL + '/native/v1/resend_email_validation',
-    (req, res, ctx) => {
+    (_req, res, ctx) => {
       return res(ctx.status(204))
     }
   ),
-  rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (req, res, ctx) =>
+  rest.get<UserProfileResponse>(env.API_BASE_URL + '/native/v1/me', (_req, res, ctx) =>
     res(
       ctx.status(200),
       ctx.json({
@@ -59,19 +59,19 @@ export const server = setupServer(
   ),
   rest.get<OfferResponse>(
     env.API_BASE_URL + '/native/v1/offer/' + offerResponseSnap.id,
-    (req, res, ctx) => res(ctx.status(200), ctx.json(offerResponseSnap))
+    (_req, res, ctx) => res(ctx.status(200), ctx.json(offerResponseSnap))
   ),
   rest.get<VenueResponse>(
     env.API_BASE_URL + '/native/v1/venue/' + venueResponseSnap.id,
-    (req, res, ctx) => res(ctx.status(200), ctx.json(venueResponseSnap))
+    (_req, res, ctx) => res(ctx.status(200), ctx.json(venueResponseSnap))
   ),
   rest.post<CulturalSurveyRequest, EmptyResponse>(
     env.API_BASE_URL + '/native/v1/me/cultural_survey',
-    (req, res, ctx) => {
+    (_req, res, ctx) => {
       return res(ctx.status(200), ctx.json({}))
     }
   ),
-  rest.get<BookingsResponse>(env.API_BASE_URL + '/native/v1/bookings', (req, res, ctx) => {
+  rest.get<BookingsResponse>(env.API_BASE_URL + '/native/v1/bookings', (_req, res, ctx) => {
     return res(ctx.status(200), ctx.json(bookingsSnap))
   }),
   rest.post<SendPhoneValidationRequest, EmptyResponse>(
@@ -106,7 +106,7 @@ export const server = setupServer(
 export function requestPasswordResetSuccess() {
   return rest.post<RequestPasswordResetRequest, EmptyResponse>(
     env.API_BASE_URL + '/native/v1/request_password_reset',
-    (req, res, ctx) => {
+    (_req, res, ctx) => {
       return res(ctx.status(204))
     }
   )
@@ -115,7 +115,7 @@ export function requestPasswordResetSuccess() {
 export function requestPasswordResetFail() {
   return rest.post<RequestPasswordResetRequest, EmptyResponse>(
     env.API_BASE_URL + '/native/v1/request_password_reset',
-    (req, res, ctx) => {
+    (_req, res, ctx) => {
       return res(ctx.status(400), ctx.json({}))
     }
   )
@@ -138,7 +138,7 @@ function requestSettingsSuccess(
     accountCreationMinimumAge: 15,
   }
 ) {
-  return rest.get<SettingsResponse>(env.API_BASE_URL + '/native/v1/settings', (req, res, ctx) => {
+  return rest.get<SettingsResponse>(env.API_BASE_URL + '/native/v1/settings', (_req, res, ctx) => {
     return res(ctx.status(200), ctx.json(settingsResponse))
   })
 }

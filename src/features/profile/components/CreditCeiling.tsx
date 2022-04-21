@@ -95,5 +95,7 @@ const Container = styled.View({
 })
 
 const Amount = styled(Typo.Title4).attrs(getHeadingAttrs(undefined))<{ color: ColorsEnum }>(
-  ({ color }) => ({ color })
+  ({ color }) => ({
+    color,
+  })
 )

@@ -53,8 +53,7 @@ export function Link<ParamList extends ReactNavigation.RootParamList>({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const onPress = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent> | GestureResponderEvent) => {
+  const onPress = (_e: React.MouseEvent<HTMLAnchorElement, MouseEvent> | GestureResponderEvent) => {
     // useful only for a11y, we do not want to navigate here
   }
 

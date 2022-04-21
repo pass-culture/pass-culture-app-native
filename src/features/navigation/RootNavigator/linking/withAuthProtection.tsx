@@ -1,5 +1,4 @@
-import React from 'react'
-import { ComponentType } from 'react'
+import React, { ComponentType } from 'react'
 
 import { useAuthContext } from 'features/auth/AuthContext'
 import { Login } from 'features/auth/login/Login'
