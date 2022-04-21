@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import Svg, { Path } from 'react-native-svg'
-import { useTheme } from 'styled-components'
+import { useTheme } from 'styled-components/native'
 import styled from 'styled-components/native'
 
 // eslint-disable-next-line no-restricted-imports
