@@ -2,7 +2,7 @@ import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { BatchUser } from '__mocks__/libs/react-native-batch'
 import { SigninRequest, SigninResponse, UserProfileResponse } from 'api/gen'
 import { usePreviousRoute, navigateToHome } from 'features/navigation/helpers'
@@ -49,9 +49,6 @@ describe('<Login/>', () => {
       showEligibleCard: false,
     } as UserProfileResponse)
     mockUsePreviousRoute.mockReturnValue(null)
-    useRoute.mockImplementation(() => ({
-      params: {},
-    }))
   })
 
   afterEach(async () => {
