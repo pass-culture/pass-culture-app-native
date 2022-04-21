@@ -17,6 +17,7 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
 import { useSafeState } from 'libs/hooks'
+import { eventMonitoring } from 'libs/monitoring'
 import { storage } from 'libs/storage'
 import { BottomContentPage } from 'ui/components/BottomContentPage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -45,6 +46,7 @@ type Props = {
   doNotNavigateOnSigninSuccess?: boolean
 }
 
+let i = 0
 export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const [email, setEmail] = useSafeState(INITIAL_IDENTIFIER)
   const [password, setPassword] = useSafeState(INITIAL_PASSWORD)
@@ -70,15 +72,27 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   }
 
   async function handleSignin() {
+    eventMonitoring.captureMessage(`${++i} handleSignin/start`)
     setIsLoading(true)
     setErrorMessage(null)
+    eventMonitoring.captureMessage(`${++i} handleSignin/isEmailValid, ${isEmailValid(email)}`)
     if (!isEmailValid(email)) {
       setHasEmailError(true)
     } else {
+      eventMonitoring.captureMessage(
+        `${++i} handleSignin/signIn, ${JSON.stringify({ identifier: email, password })}`
+      )
       const signinResponse = await signIn({ identifier: email, password })
+      eventMonitoring.captureMessage(
+        `${++i} handleSignin/signinResponse, ${JSON.stringify(signinResponse)}`
+      )
       if (signinResponse.isSuccess) {
+        eventMonitoring.captureMessage(`${++i} handleSignin/handleSigninSuccess`)
         handleSigninSuccess()
       } else {
+        eventMonitoring.captureMessage(
+          `${++i} handleSignin/handleSigninFailure, ${JSON.stringify(signinResponse)}`
+        )
         handleSigninFailure(signinResponse)
       }
     }
@@ -86,22 +100,45 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
 
   async function handleSigninSuccess() {
     try {
+      eventMonitoring.captureMessage(
+        `${++i} handleSignin/handleSigninSuccess/props.doNotNavigateOnSigninSuccess, ${JSON.stringify(
+          props.doNotNavigateOnSigninSuccess
+        )}`
+      )
       if (props.doNotNavigateOnSigninSuccess) {
         return
       }
+      eventMonitoring.captureMessage(`${++i} handleSignin/handleSigninSuccess/getnativev1me`)
       const user = await api.getnativev1me()
+      eventMonitoring.captureMessage(
+        `${++i} handleSignin/handleSigninSuccess/getnativev1me/user ${JSON.stringify(user)}`
+      )
       const hasSeenEligibleCard = !!(await storage.readObject('has_seen_eligible_card'))
-
+      eventMonitoring.captureMessage(
+        `${++i} handleSignin/handleSigninSuccess/hasSeenEligibleCard ${JSON.stringify(
+          hasSeenEligibleCard
+        )}`
+      )
       if (user?.recreditAmountToShow) {
+        eventMonitoring.captureMessage(
+          `${++i} handleSignin/handleSigninSuccess/RecreditBirthdayNotification`
+        )
         navigate('RecreditBirthdayNotification')
       } else if (!hasSeenEligibleCard && user.showEligibleCard) {
+        eventMonitoring.captureMessage(`${++i} handleSignin/handleSigninSuccess/EighteenBirthday`)
         navigate('EighteenBirthday')
       } else if (shouldShowCulturalSurvey(user)) {
+        eventMonitoring.captureMessage(`${++i} handleSignin/handleSigninSuccess/CulturalSurvey`)
         navigate(culturalSurveyRoute)
       } else {
+        eventMonitoring.captureMessage(`${++i} handleSignin/handleSigninSuccess/navigateToHome`)
         navigateToHome()
       }
-    } catch {
+    } catch (error) {
+      eventMonitoring.captureMessage(
+        `${++i} handleSignin/handleSigninSuccess/catchError ${error.message}`
+      )
+      eventMonitoring.captureException(error)
       setErrorMessage(t`Il y a eu un problème. Tu peux réessayer plus tard`)
     }
   }
