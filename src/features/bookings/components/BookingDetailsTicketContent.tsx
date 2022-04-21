@@ -216,7 +216,7 @@ const TicketBody = ({ booking }: TicketBodyProps) => {
 const getStartMessage = (withdrawalType: WithdrawalTypeEnum): string | null => {
   switch (withdrawalType) {
     case WithdrawalTypeEnum.on_site:
-      return t`Présente le code ci-dessus sur place`
+      return t`Présente le code ci-dessus sur place` + ' '
     case WithdrawalTypeEnum.by_email:
       return t`Tu vas recevoir ton billet par e-mail` + ' '
     case WithdrawalTypeEnum.no_ticket:
