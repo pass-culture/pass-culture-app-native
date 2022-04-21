@@ -66,14 +66,12 @@ function simulateBackend(options: Options = defaultOptions) {
 }
 
 describe('useFavorites hook', () => {
-  afterEach(jest.resetAllMocks)
-
   it('should retrieve favorite data when logged in', async () => {
     simulateBackend()
-    mockUseAuthContext.mockImplementationOnce(() => ({
+    mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
-    }))
+    })
     const { result, waitFor } = renderHook(useFavorites, {
       wrapper: (props) =>
         // eslint-disable-next-line local-rules/no-react-query-provider-hoc
@@ -94,10 +92,10 @@ describe('useFavorites hook', () => {
   })
 
   it('should return null when not logged in', async () => {
-    mockUseAuthContext.mockImplementationOnce(() => ({
+    mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: false,
       setIsLoggedIn: jest.fn(),
-    }))
+    })
 
     const { result } = renderHook(useFavorites, {
       wrapper: (props) =>
@@ -114,18 +112,16 @@ describe('useFavorites hook', () => {
 })
 
 describe('useAddFavorite hook', () => {
-  afterEach(jest.resetAllMocks)
-
   it('should add favorite', async () => {
     simulateBackend({
       id: offerId,
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
     })
-    mockUseAuthContext.mockImplementationOnce(() => ({
+    mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
-    }))
+    })
     const onSuccess = jest.fn()
     const onError = jest.fn()
     const { result } = renderHook(() => useAddFavorite({ onSuccess, onError }), {
@@ -160,10 +156,10 @@ describe('useAddFavorite hook', () => {
       hasAddFavoriteError: true,
       hasRemoveFavoriteError: false,
     })
-    mockUseAuthContext.mockImplementationOnce(() => ({
+    mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
-    }))
+    })
     const onSuccess = jest.fn()
     const onError = jest.fn()
     const { result } = renderHook(() => useAddFavorite({ onSuccess, onError }), {
@@ -188,8 +184,6 @@ describe('useAddFavorite hook', () => {
 })
 
 describe('useRemoveFavorite hook', () => {
-  afterEach(jest.resetAllMocks)
-
   it('should remove favorite', async () => {
     const favorite = paginatedFavoritesResponseSnap.favorites[0]
     const favoriteId = favorite.id
@@ -198,10 +192,10 @@ describe('useRemoveFavorite hook', () => {
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
     })
-    mockUseAuthContext.mockImplementationOnce(() => ({
+    mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
-    }))
+    })
     const onError = jest.fn()
     const { result } = renderHook(() => useRemoveFavorite({ onError }), {
       wrapper: (props) =>
@@ -230,10 +224,10 @@ describe('useRemoveFavorite hook', () => {
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: true,
     })
-    mockUseAuthContext.mockImplementationOnce(() => ({
+    mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
-    }))
+    })
     const onError = jest.fn()
     const { result } = renderHook(() => useRemoveFavorite({ onError }), {
       wrapper: (props) =>
@@ -256,8 +250,6 @@ describe('useRemoveFavorite hook', () => {
 })
 
 describe('useFavorite hook', () => {
-  afterEach(jest.resetAllMocks)
-
   it('should get favorite from offer id', async () => {
     const favorite = paginatedFavoritesResponseSnap.favorites[0]
     simulateBackend({
@@ -265,8 +257,7 @@ describe('useFavorite hook', () => {
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
     })
-    // eslint-disable-next-line local-rules/independant-mocks
-    mockUseAuthContext.mockReturnValue({
+    mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
     })
@@ -299,8 +290,7 @@ describe('useFavorite hook', () => {
       hasAddFavoriteError: false,
       hasRemoveFavoriteError: false,
     })
-    // eslint-disable-next-line local-rules/independant-mocks
-    mockUseAuthContext.mockReturnValue({
+    mockUseAuthContext.mockReturnValueOnce({
       isLoggedIn: true,
       setIsLoggedIn: jest.fn(),
     })
