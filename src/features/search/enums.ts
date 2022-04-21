@@ -1,6 +1,6 @@
 import { SearchGroupNameEnum, VenueTypeCodeKey } from 'api/gen'
 import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers'
-import CategoryIcon from 'ui/svg/icons/categories/bicolor'
+import CategoryIcon from 'ui/svg/icons/categories'
 import { BicolorIconInterface } from 'ui/svg/icons/types'
 
 export enum DATE_FILTER_OPTIONS {
@@ -38,23 +38,23 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     facetFilter: SearchGroupNameEnum.CINEMA,
   },
   [SearchGroupNameEnum.VISITE]: {
-    icon: CategoryIcon.Exposition,
+    icon: CategoryIcon.Museum,
     facetFilter: SearchGroupNameEnum.VISITE,
   },
   [SearchGroupNameEnum.MUSIQUE]: {
-    icon: CategoryIcon.Musique,
+    icon: CategoryIcon.Music,
     facetFilter: SearchGroupNameEnum.MUSIQUE,
   },
   [SearchGroupNameEnum.SPECTACLE]: {
-    icon: CategoryIcon.Spectacles,
+    icon: CategoryIcon.Show,
     facetFilter: SearchGroupNameEnum.SPECTACLE,
   },
   [SearchGroupNameEnum.COURS]: {
-    icon: CategoryIcon.Atelier,
+    icon: CategoryIcon.Brush,
     facetFilter: SearchGroupNameEnum.COURS,
   },
   [SearchGroupNameEnum.LIVRE]: {
-    icon: CategoryIcon.Livres,
+    icon: CategoryIcon.Book,
     facetFilter: SearchGroupNameEnum.LIVRE,
   },
   [SearchGroupNameEnum.FILM]: {
@@ -62,11 +62,11 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     facetFilter: SearchGroupNameEnum.FILM,
   },
   [SearchGroupNameEnum.PRESSE]: {
-    icon: CategoryIcon.Presse,
+    icon: CategoryIcon.Press,
     facetFilter: SearchGroupNameEnum.PRESSE,
   },
   [SearchGroupNameEnum.JEU]: {
-    icon: CategoryIcon.JeuxVideo,
+    icon: CategoryIcon.VideoGame,
     facetFilter: SearchGroupNameEnum.JEU,
   },
   [SearchGroupNameEnum.CONFERENCE]: {
@@ -74,7 +74,7 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     facetFilter: SearchGroupNameEnum.CONFERENCE,
   },
   [SearchGroupNameEnum.INSTRUMENT]: {
-    icon: CategoryIcon.Instrument,
+    icon: CategoryIcon.Piano,
     facetFilter: SearchGroupNameEnum.INSTRUMENT,
   },
   [SearchGroupNameEnum.MATERIEL]: {

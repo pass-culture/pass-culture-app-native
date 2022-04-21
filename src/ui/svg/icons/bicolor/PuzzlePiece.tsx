@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { svgIdentifier } from 'ui/svg/utils'
 
-import { IconInterface } from './types'
+import { IconInterface } from '../types'
 
 const PuzzlePieceSvg: React.FunctionComponent<IconInterface> = ({
   size,

@@ -17,7 +17,7 @@ import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
-import CategoryIcon from 'ui/svg/icons/categories/bicolor'
+import CategoryIcon from 'ui/svg/icons/categories'
 import { Spacer } from 'ui/theme'
 
 export function UnderageAccountCreated() {
@@ -39,7 +39,7 @@ export function UnderageAccountCreated() {
         <AnimatedProgressBar
           progress={1}
           color={uniqueColors.brand}
-          icon={CategoryIcon.Spectacles}
+          icon={CategoryIcon.Show}
           isAnimated
         />
         <Amount color={uniqueColors.brand}>{formatPriceInEuroToDisplayPrice(maxPrice)}</Amount>

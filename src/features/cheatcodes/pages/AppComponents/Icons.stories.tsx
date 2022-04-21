@@ -6,7 +6,7 @@ import {
   UnconventionalIcons,
   VenueTypesIcons,
 } from 'features/cheatcodes/pages/AppComponents/iconsExports'
-import CategoryIcon from 'ui/svg/icons/categories/bicolor'
+import CategoryIcon from 'ui/svg/icons/categories'
 import CulturalSurveyIcons from 'ui/svg/icons/culturalSurvey'
 import { SMALLER_ICON_SIZE, STANDARD_ICON_SIZE } from 'ui/theme/constants'
 

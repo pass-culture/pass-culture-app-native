@@ -1,5 +1,5 @@
 import { CategoryIdEnum } from 'api/gen'
-import CategoryIcon from 'ui/svg/icons/categories/bicolor'
+import CategoryIcon from 'ui/svg/icons/categories'
 import { IconInterface } from 'ui/svg/icons/types'
 
 export const MAP_CATEGORY_ID_TO_ICON: {
@@ -7,17 +7,17 @@ export const MAP_CATEGORY_ID_TO_ICON: {
 } = {
   [CategoryIdEnum.CARTE_JEUNES]: CategoryIcon.CarteJeunes,
   [CategoryIdEnum.CINEMA]: CategoryIcon.Cinema,
-  [CategoryIdEnum.MUSEE]: CategoryIcon.Exposition,
-  [CategoryIdEnum.MUSIQUE_LIVE]: CategoryIcon.Musique,
-  [CategoryIdEnum.MUSIQUE_ENREGISTREE]: CategoryIcon.Musique,
-  [CategoryIdEnum.SPECTACLE]: CategoryIcon.Spectacles,
-  [CategoryIdEnum.PRATIQUE_ART]: CategoryIcon.Atelier,
-  [CategoryIdEnum.LIVRE]: CategoryIcon.Livres,
+  [CategoryIdEnum.MUSEE]: CategoryIcon.Museum,
+  [CategoryIdEnum.MUSIQUE_LIVE]: CategoryIcon.Music,
+  [CategoryIdEnum.MUSIQUE_ENREGISTREE]: CategoryIcon.Music,
+  [CategoryIdEnum.SPECTACLE]: CategoryIcon.Show,
+  [CategoryIdEnum.PRATIQUE_ART]: CategoryIcon.Brush,
+  [CategoryIdEnum.LIVRE]: CategoryIcon.Book,
   [CategoryIdEnum.FILM]: CategoryIcon.Streaming,
-  [CategoryIdEnum.MEDIA]: CategoryIcon.Presse,
-  [CategoryIdEnum.JEU]: CategoryIcon.JeuxVideo,
+  [CategoryIdEnum.MEDIA]: CategoryIcon.Press,
+  [CategoryIdEnum.JEU]: CategoryIcon.VideoGame,
   [CategoryIdEnum.CONFERENCE]: CategoryIcon.Conference,
-  [CategoryIdEnum.INSTRUMENT]: CategoryIcon.Instrument,
+  [CategoryIdEnum.INSTRUMENT]: CategoryIcon.Piano,
   [CategoryIdEnum.BEAUX_ARTS]: CategoryIcon.ArtsMaterial,
   [CategoryIdEnum.TECHNIQUE]: CategoryIcon.ArtsMaterial,
 }

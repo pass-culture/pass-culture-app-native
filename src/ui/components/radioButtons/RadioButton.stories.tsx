@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React, { useState } from 'react'
 
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
-import { JeuxVideo } from 'ui/svg/icons/categories/bicolor/JeuxVideo'
+import { VideoGame } from 'ui/svg/icons/bicolor/VideoGame'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
 
@@ -15,7 +15,7 @@ export default {
     icon: selectArgTypeFromObject({
       Email,
       EditPen,
-      JeuxVideo,
+      VideoGame,
     }),
   },
 } as ComponentMeta<typeof RadioButton>
@@ -49,7 +49,7 @@ export const WithIcon = Template.bind({})
 WithIcon.args = {
   label: 'label 1',
   description: 'description item 1',
-  icon: JeuxVideo,
+  icon: VideoGame,
 }
 
 const items = [{ label: 'label 1' }, { label: 'label 2' }, { label: 'label 3' }]

@@ -6,7 +6,7 @@ import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { svgIdentifier } from 'ui/svg/utils'
 
-const AtelierSvg: React.FunctionComponent<AccessibleIcon> = ({
+const BrushSvg: React.FunctionComponent<AccessibleIcon> = ({
   size,
   color,
   color2,
@@ -41,7 +41,7 @@ const AtelierSvg: React.FunctionComponent<AccessibleIcon> = ({
   )
 }
 
-export const Atelier = styled(AtelierSvg).attrs(({ color, size, theme }) => ({
+export const Brush = styled(BrushSvg).attrs(({ color, size, theme }) => ({
   color: color ?? theme.colors.primary,
   size: size ?? theme.icons.sizes.standard,
 }))``

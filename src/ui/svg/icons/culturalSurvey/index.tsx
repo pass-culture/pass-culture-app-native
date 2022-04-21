@@ -1,46 +1,46 @@
-import { Atelier as BrushIcon } from 'ui/svg/icons/categories/bicolor/Atelier'
-import { Cinema as CinemaIcon } from 'ui/svg/icons/categories/bicolor/Cinema'
-import { Conference as ConferenceIcon } from 'ui/svg/icons/categories/bicolor/Conference'
-import { Exposition as MuseumIcon } from 'ui/svg/icons/categories/bicolor/Exposition'
-import { Instrument as PianoIcon } from 'ui/svg/icons/categories/bicolor/Instrument'
-import { JeuxVideo as VideoGameIcon } from 'ui/svg/icons/categories/bicolor/JeuxVideo'
-import { Livres as BookIcon } from 'ui/svg/icons/categories/bicolor/Livres'
-import { Musique as MusicIcon } from 'ui/svg/icons/categories/bicolor/Musique'
-import { Presse as PressIcon } from 'ui/svg/icons/categories/bicolor/Presse'
-import { Spectacles as ShowIcon } from 'ui/svg/icons/categories/bicolor/Spectacles'
-import { Streaming as StreamingIcon } from 'ui/svg/icons/categories/bicolor/Streaming'
-import { DanceFeet as DanceFeetIcon } from 'ui/svg/icons/DanceFeet'
-import { Microphone as MicrophoneIcon } from 'ui/svg/icons/Microphone'
-import { Opera as OperaIcon } from 'ui/svg/icons/Opera'
-import { PencilTip as PencilTipIcon } from 'ui/svg/icons/PencilTip'
-import { PuzzlePiece as PuzzlePieceIcon } from 'ui/svg/icons/PuzzlePiece'
-import { ReversedHat as ReversedHatIcon } from 'ui/svg/icons/ReversedHat'
-import { Theater as TheaterIcon } from 'ui/svg/icons/Theater'
+import { Book } from 'ui/svg/icons/bicolor/Book'
+import { Brush } from 'ui/svg/icons/bicolor/Brush'
+import { Cinema } from 'ui/svg/icons/bicolor/Cinema'
+import { Conference } from 'ui/svg/icons/bicolor/Conference'
+import { DanceFeet } from 'ui/svg/icons/bicolor/DanceFeet'
+import { Microphone } from 'ui/svg/icons/bicolor/Microphone'
+import { Museum } from 'ui/svg/icons/bicolor/Museum'
+import { Music } from 'ui/svg/icons/bicolor/Music'
+import { Opera } from 'ui/svg/icons/bicolor/Opera'
+import { Piano } from 'ui/svg/icons/bicolor/Piano'
+import { Press } from 'ui/svg/icons/bicolor/Press'
+import { PuzzlePiece } from 'ui/svg/icons/bicolor/PuzzlePiece'
+import { ReversedHat } from 'ui/svg/icons/bicolor/ReversedHat'
+import { Show } from 'ui/svg/icons/bicolor/Show'
+import { Streaming } from 'ui/svg/icons/bicolor/Streaming'
+import { Theater } from 'ui/svg/icons/bicolor/Theater'
+import { VideoGame } from 'ui/svg/icons/bicolor/VideoGame'
+import { PencilTip } from 'ui/svg/icons/PencilTip'
 import { BookstoreIcon } from 'ui/svg/icons/venueTypes/BookstoreIcon'
 import { FestivalIcon } from 'ui/svg/icons/venueTypes/FestivalIcon'
 import { PerformingArtsIcon } from 'ui/svg/icons/venueTypes/PerformingArtsIcon'
-import { Video as VideoIcon } from 'ui/svg/icons/Video'
+import { Video } from 'ui/svg/icons/Video'
 
 export default {
-  BrushIcon,
-  ConferenceIcon,
-  MuseumIcon,
-  VideoGameIcon,
-  MusicIcon,
-  PressIcon,
-  ShowIcon,
-  StreamingIcon,
-  DanceFeetIcon,
-  MicrophoneIcon,
-  OperaIcon,
-  PencilTipIcon,
-  PuzzlePieceIcon,
-  ReversedHatIcon,
-  TheaterIcon,
-  VideoIcon,
-  CinemaIcon,
-  BookIcon,
-  PianoIcon,
+  Brush,
+  Conference,
+  Museum,
+  VideoGame,
+  Music,
+  Press,
+  Show,
+  Streaming,
+  DanceFeet,
+  Microphone,
+  Opera,
+  PencilTip,
+  PuzzlePiece,
+  ReversedHat,
+  Theater,
+  Video,
+  Cinema,
+  Book,
+  Piano,
   FestivalIcon,
   PerformingArtsIcon,
   BookstoreIcon,

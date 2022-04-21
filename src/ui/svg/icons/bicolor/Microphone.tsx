@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { svgIdentifier } from 'ui/svg/utils'
 
-import { IconInterface } from './types'
+import { IconInterface } from '../types'
 
 const MicrophoneSvg: React.FunctionComponent<IconInterface> = ({ size, color, color2, testID }) => {
   const { id: gradientId, fill: gradientFill } = svgIdentifier()

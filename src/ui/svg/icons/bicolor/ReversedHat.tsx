@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { svgIdentifier } from 'ui/svg/utils'
 
-import { IconInterface } from './types'
+import { IconInterface } from '../types'
 
 const ReversedHatSvg: React.FunctionComponent<IconInterface> = ({
   size,

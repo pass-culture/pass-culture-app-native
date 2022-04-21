@@ -23,7 +23,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer } from 'ui/components/spacer/Spacer'
-import CategoryIcon from 'ui/svg/icons/categories/bicolor'
+import CategoryIcon from 'ui/svg/icons/categories'
 
 export const RecreditBirthdayNotification = () => {
   const { data: user } = useUserProfileInfo()
@@ -79,7 +79,7 @@ export const RecreditBirthdayNotification = () => {
         <AnimatedProgressBar
           progress={1}
           color={uniqueColors.brand}
-          icon={CategoryIcon.Spectacles}
+          icon={CategoryIcon.Show}
           isAnimated
         />
         <Amount color={uniqueColors.brand}>{remainingCredit}</Amount>
