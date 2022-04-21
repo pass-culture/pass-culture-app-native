@@ -8,7 +8,8 @@ import {
   TertiaryAndSmallerIcons,
   UnconventionalIcons,
 } from 'features/cheatcodes/pages/AppComponents/iconsExports'
-import CategoryIcon from 'ui/svg/icons/categories'
+import CategoryIcons from 'ui/svg/icons/categories'
+import CulturalSurveyIcons from 'ui/svg/icons/culturalSurvey'
 import VenueTypesIcons from 'ui/svg/icons/venueTypes'
 import { Spacer } from 'ui/theme'
 import { SMALLER_ICON_SIZE, STANDARD_ICON_SIZE } from 'ui/theme/constants'
@@ -21,6 +22,8 @@ export const Icons: FunctionComponent = () => {
       <Category />
       <Spacer.Column numberOfSpaces={4} />
       <VenueTypes />
+      <Spacer.Column numberOfSpaces={4} />
+      <CulturalSurvey />
       <Spacer.Column numberOfSpaces={4} />
       <SecondaryAndBigger />
       <Spacer.Column numberOfSpaces={4} />
@@ -36,10 +39,15 @@ const SocialNetwork = () => {
 }
 
 const Category = () => {
-  return <IconsContainer isBicolor title="Categories" icons={CategoryIcon} />
+  return <IconsContainer isBicolor title="Categories" icons={CategoryIcons} />
 }
+
 const VenueTypes = () => {
-  return <IconsContainer title="VenueTypes" icons={VenueTypesIcons} />
+  return <IconsContainer isBicolor title="VenueTypes" icons={VenueTypesIcons} />
+}
+
+const CulturalSurvey = () => {
+  return <IconsContainer isBicolor title="Cultural survey" icons={CulturalSurveyIcons} />
 }
 
 const TertiaryAndSmaller = () => {
