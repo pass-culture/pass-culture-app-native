@@ -100,7 +100,7 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
             onIndexChanged={() => {
               if (
                 Platform.OS === 'web' &&
-                document.activeElement?.getAttribute('type') === 'next'
+                ['next', 'prev'].includes(document.activeElement?.getAttribute('type') || '')
               ) {
                 const skipButton = (skipButtonRef.current as unknown as HTMLElement)
                   .firstChild as HTMLElement
