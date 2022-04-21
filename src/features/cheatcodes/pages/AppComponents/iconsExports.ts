@@ -82,48 +82,7 @@ import { Twitter } from 'ui/svg/icons/socialNetwork/Twitter'
 import { WhatsApp } from 'ui/svg/icons/socialNetwork/WhatsApp'
 import { Sun } from 'ui/svg/icons/Sun'
 import { Validate } from 'ui/svg/icons/Validate'
-import {
-  ArtisticCourseIcon,
-  BookstoreIcon,
-  ConcertHallIcon,
-  CreativeArtsStoreIcon,
-  CulturalCentreIcon,
-  DigitalIcon,
-  Festival,
-  GamesIcon,
-  LibraryIcon,
-  MovieIcon,
-  MuseumIcon,
-  MusicalInstrumentStoreIcon,
-  OtherIcon,
-  PatrimonyTourismIcon,
-  PerformingArts,
-  RecordStoreIcon,
-  ScientificCultureIcon,
-  VisualArtIcon,
-} from 'ui/svg/icons/venueTypes'
 import { Warning } from 'ui/svg/icons/Warning'
-
-export const VenueTypesIcons = {
-  ArtisticCourseIcon,
-  BookstoreIcon,
-  ConcertHallIcon,
-  CreativeArtsStoreIcon,
-  CulturalCentreIcon,
-  DigitalIcon,
-  Festival,
-  GamesIcon,
-  LibraryIcon,
-  MovieIcon,
-  MuseumIcon,
-  MusicalInstrumentStoreIcon,
-  OtherIcon,
-  PatrimonyTourismIcon,
-  PerformingArts,
-  RecordStoreIcon,
-  ScientificCultureIcon,
-  VisualArtIcon,
-}
 
 export const SocialNetworkIcons = {
   Facebook,

@@ -4,10 +4,10 @@ import {
   SocialNetworkIcons,
   TertiaryAndSmallerIcons,
   UnconventionalIcons,
-  VenueTypesIcons,
 } from 'features/cheatcodes/pages/AppComponents/iconsExports'
 import CategoryIcon from 'ui/svg/icons/categories'
 import CulturalSurveyIcons from 'ui/svg/icons/culturalSurvey'
+import VenueTypesIcons from 'ui/svg/icons/venueTypes'
 import { SMALLER_ICON_SIZE, STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 export default {

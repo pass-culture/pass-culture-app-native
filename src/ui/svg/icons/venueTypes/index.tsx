@@ -1,18 +1,39 @@
-export { Brush as ArtisticCourseIcon } from '../bicolor/Brush'
-export { Bookstore as BookstoreIcon } from '../bicolor/Bookstore'
-export { Micro as ConcertHallIcon } from '../bicolor/Micro'
-export { Brush as CreativeArtsStoreIcon } from '../bicolor/Brush'
-export { CulturalCentre as CulturalCentreIcon } from '../bicolor/CulturalCentre'
-export { Digital as DigitalIcon } from '../bicolor/Digital'
-export { Festival } from '../bicolor/Festival'
-export { VideoGame as GamesIcon } from '../bicolor/VideoGame'
-export { Book as LibraryIcon } from '../bicolor/Book'
-export { Cinema as MovieIcon } from '../bicolor/Cinema'
-export { Museum as MuseumIcon } from '../bicolor/Museum'
-export { Piano as MusicalInstrumentStoreIcon } from '../bicolor/Piano'
-export { All as OtherIcon } from '../bicolor/All'
-export { Castle as PatrimonyTourismIcon } from '../bicolor/Castle'
-export { PerformingArts } from '../bicolor/PerformingArts'
-export { Turntable as RecordStoreIcon } from '../bicolor/Turntable'
-export { ChemistryTools as ScientificCultureIcon } from '../bicolor/ChemistryTools'
-export { Landscape as VisualArtIcon } from '../bicolor/Landscape'
+import { All as Other } from '../bicolor/All'
+import { Book as Library } from '../bicolor/Book'
+import { Bookstore } from '../bicolor/Bookstore'
+import { Brush as CreativeArtsStore } from '../bicolor/Brush'
+import { Brush as ArtisticCourse } from '../bicolor/Brush'
+import { Castle as PatrimonyTourism } from '../bicolor/Castle'
+import { ChemistryTools as ScientificCulture } from '../bicolor/ChemistryTools'
+import { Cinema as Movie } from '../bicolor/Cinema'
+import { CulturalCentre as CulturalCentre } from '../bicolor/CulturalCentre'
+import { Digital } from '../bicolor/Digital'
+import { Festival } from '../bicolor/Festival'
+import { Landscape as VisualArt } from '../bicolor/Landscape'
+import { Micro as ConcertHall } from '../bicolor/Micro'
+import { Museum } from '../bicolor/Museum'
+import { PerformingArts } from '../bicolor/PerformingArts'
+import { Piano as MusicalInstrumentStore } from '../bicolor/Piano'
+import { Turntable as RecordStore } from '../bicolor/Turntable'
+import { VideoGame as Games } from '../bicolor/VideoGame'
+
+export default {
+  ArtisticCourse,
+  Bookstore,
+  ConcertHall,
+  CreativeArtsStore,
+  CulturalCentre,
+  Digital,
+  Festival,
+  Games,
+  Library,
+  Movie,
+  Museum,
+  MusicalInstrumentStore,
+  Other,
+  PatrimonyTourism,
+  PerformingArts,
+  RecordStore,
+  ScientificCulture,
+  VisualArt,
+}

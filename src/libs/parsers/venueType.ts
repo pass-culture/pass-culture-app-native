@@ -2,26 +2,7 @@ import { t } from '@lingui/macro'
 
 import { VenueTypeCodeKey } from 'api/gen'
 import { IconInterface } from 'ui/svg/icons/types'
-import {
-  ArtisticCourseIcon,
-  BookstoreIcon,
-  ConcertHallIcon,
-  CreativeArtsStoreIcon,
-  CulturalCentreIcon,
-  DigitalIcon,
-  Festival,
-  GamesIcon,
-  LibraryIcon,
-  MovieIcon,
-  MuseumIcon,
-  MusicalInstrumentStoreIcon,
-  OtherIcon,
-  PatrimonyTourismIcon,
-  PerformingArts,
-  RecordStoreIcon,
-  ScientificCultureIcon,
-  VisualArtIcon,
-} from 'ui/svg/icons/venueTypes'
+import VenueTypesIcons from 'ui/svg/icons/venueTypes'
 
 export type VenueTypeCode = Exclude<VenueTypeCodeKey, VenueTypeCodeKey.ADMINISTRATIVE>
 
@@ -87,27 +68,27 @@ export const parseTypeHomeLabel = (types: VenueTypeCode | null | undefined): str
 export const MAP_TYPE_TO_ICON: {
   [k in VenueTypeCode]: React.FC<IconInterface>
 } = {
-  [VenueTypeCodeKey.ARTISTIC_COURSE]: ArtisticCourseIcon,
-  [VenueTypeCodeKey.BOOKSTORE]: BookstoreIcon,
-  [VenueTypeCodeKey.CONCERT_HALL]: ConcertHallIcon,
-  [VenueTypeCodeKey.CREATIVE_ARTS_STORE]: CreativeArtsStoreIcon,
-  [VenueTypeCodeKey.CULTURAL_CENTRE]: CulturalCentreIcon,
-  [VenueTypeCodeKey.DIGITAL]: DigitalIcon,
-  [VenueTypeCodeKey.FESTIVAL]: Festival,
-  [VenueTypeCodeKey.GAMES]: GamesIcon,
-  [VenueTypeCodeKey.LIBRARY]: LibraryIcon,
-  [VenueTypeCodeKey.MUSEUM]: MuseumIcon,
-  [VenueTypeCodeKey.MUSICAL_INSTRUMENT_STORE]: MusicalInstrumentStoreIcon,
-  [VenueTypeCodeKey.MOVIE]: MovieIcon,
-  [VenueTypeCodeKey.OTHER]: OtherIcon,
-  [VenueTypeCodeKey.PATRIMONY_TOURISM]: PatrimonyTourismIcon,
-  [VenueTypeCodeKey.PERFORMING_ARTS]: PerformingArts,
-  [VenueTypeCodeKey.RECORD_STORE]: RecordStoreIcon,
-  [VenueTypeCodeKey.SCIENTIFIC_CULTURE]: ScientificCultureIcon,
-  [VenueTypeCodeKey.VISUAL_ARTS]: VisualArtIcon,
+  [VenueTypeCodeKey.ARTISTIC_COURSE]: VenueTypesIcons.ArtisticCourse,
+  [VenueTypeCodeKey.BOOKSTORE]: VenueTypesIcons.Bookstore,
+  [VenueTypeCodeKey.CONCERT_HALL]: VenueTypesIcons.ConcertHall,
+  [VenueTypeCodeKey.CREATIVE_ARTS_STORE]: VenueTypesIcons.CreativeArtsStore,
+  [VenueTypeCodeKey.CULTURAL_CENTRE]: VenueTypesIcons.CulturalCentre,
+  [VenueTypeCodeKey.DIGITAL]: VenueTypesIcons.Digital,
+  [VenueTypeCodeKey.FESTIVAL]: VenueTypesIcons.Festival,
+  [VenueTypeCodeKey.GAMES]: VenueTypesIcons.Games,
+  [VenueTypeCodeKey.LIBRARY]: VenueTypesIcons.Library,
+  [VenueTypeCodeKey.MUSEUM]: VenueTypesIcons.Museum,
+  [VenueTypeCodeKey.MUSICAL_INSTRUMENT_STORE]: VenueTypesIcons.MusicalInstrumentStore,
+  [VenueTypeCodeKey.MOVIE]: VenueTypesIcons.Movie,
+  [VenueTypeCodeKey.OTHER]: VenueTypesIcons.Other,
+  [VenueTypeCodeKey.PATRIMONY_TOURISM]: VenueTypesIcons.PatrimonyTourism,
+  [VenueTypeCodeKey.PERFORMING_ARTS]: VenueTypesIcons.PerformingArts,
+  [VenueTypeCodeKey.RECORD_STORE]: VenueTypesIcons.RecordStore,
+  [VenueTypeCodeKey.SCIENTIFIC_CULTURE]: VenueTypesIcons.ScientificCulture,
+  [VenueTypeCodeKey.VISUAL_ARTS]: VenueTypesIcons.VisualArt,
 }
 
 export const mapVenueTypeToIcon = (types: VenueTypeCode | null): React.FC<IconInterface> => {
   if (types && types in MAP_TYPE_TO_ICON) return MAP_TYPE_TO_ICON[types]
-  return OtherIcon
+  return VenueTypesIcons.Other
 }

@@ -50,7 +50,7 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     facetFilter: SearchGroupNameEnum.SPECTACLE,
   },
   [SearchGroupNameEnum.COURS]: {
-    icon: CategoryIcon.Brush,
+    icon: CategoryIcon.Workshop,
     facetFilter: SearchGroupNameEnum.COURS,
   },
   [SearchGroupNameEnum.LIVRE]: {
@@ -70,11 +70,11 @@ export const CATEGORY_CRITERIA: CategoryCriteria = {
     facetFilter: SearchGroupNameEnum.JEU,
   },
   [SearchGroupNameEnum.CONFERENCE]: {
-    icon: CategoryIcon.Micro,
+    icon: CategoryIcon.Conference,
     facetFilter: SearchGroupNameEnum.CONFERENCE,
   },
   [SearchGroupNameEnum.INSTRUMENT]: {
-    icon: CategoryIcon.Piano,
+    icon: CategoryIcon.Instrument,
     facetFilter: SearchGroupNameEnum.INSTRUMENT,
   },
   [SearchGroupNameEnum.MATERIEL]: {
