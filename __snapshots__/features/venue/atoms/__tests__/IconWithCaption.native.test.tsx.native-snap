@@ -26,7 +26,6 @@ exports[`IconWithCaption should render correctly 1`] = `
     }
   >
     <View
-      fill="#696A6F"
       height={32}
       testID="Cinéma - Salle de projections"
       width={32}
@@ -70,7 +69,7 @@ exports[`IconWithCaption should render different when isDisabled is true 1`] = `
 - First value
 + Second value
 
-@@ -41,14 +41,15 @@
+@@ -40,14 +40,15 @@
           },
         ]
       }

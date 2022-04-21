@@ -208,7 +208,6 @@ exports[`<VenueBody /> should render correctly 1`] = `
             }
           >
             <View
-              fill="#ffffff"
               height={96}
               testID="categoryIcon"
               width={96}
@@ -374,7 +373,6 @@ exports[`<VenueBody /> should render correctly 1`] = `
           }
         >
           <View
-            fill="#696A6F"
             height={32}
             width={32}
           >

@@ -548,7 +548,6 @@ exports[`<Venue /> should match snapshot 1`] = `
               }
             >
               <View
-                fill="#ffffff"
                 height={96}
                 testID="categoryIcon"
                 width={96}
@@ -714,7 +713,6 @@ exports[`<Venue /> should match snapshot 1`] = `
             }
           >
             <View
-              fill="#696A6F"
               height={32}
               width={32}
             >
