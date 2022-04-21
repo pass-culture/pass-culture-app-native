@@ -42,6 +42,6 @@ const PianoSvg: React.FunctionComponent<AccessibleIcon> = ({
 }
 
 export const Piano = styled(PianoSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.primary,
+  color: color ?? theme.colors.black,
   size: size ?? theme.icons.sizes.standard,
 }))``

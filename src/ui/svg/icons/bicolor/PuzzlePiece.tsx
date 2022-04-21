@@ -35,6 +35,6 @@ const PuzzlePieceSvg: React.FunctionComponent<IconInterface> = ({
 }
 
 export const PuzzlePiece = styled(PuzzlePieceSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.primary,
+  color: color ?? theme.colors.black,
   size: size ?? theme.icons.sizes.standard,
 }))``

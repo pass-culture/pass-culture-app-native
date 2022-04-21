@@ -42,6 +42,6 @@ const ArtsMaterialSvg: React.FunctionComponent<AccessibleIcon> = ({
 }
 
 export const ArtsMaterial = styled(ArtsMaterialSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.primary,
+  color: color ?? theme.colors.black,
   size: size ?? theme.icons.sizes.standard,
 }))``

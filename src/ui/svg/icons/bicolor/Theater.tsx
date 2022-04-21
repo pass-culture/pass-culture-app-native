@@ -30,6 +30,6 @@ const TheaterSvg: React.FunctionComponent<IconInterface> = ({ size, color, color
 }
 
 export const Theater = styled(TheaterSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.primary,
+  color: color ?? theme.colors.black,
   size: size ?? theme.icons.sizes.standard,
 }))``

@@ -42,6 +42,6 @@ const MuseumSvg: React.FunctionComponent<AccessibleIcon> = ({
 }
 
 export const Museum = styled(MuseumSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.primary,
+  color: color ?? theme.colors.black,
   size: size ?? theme.icons.sizes.standard,
 }))``

@@ -42,6 +42,6 @@ const BrushSvg: React.FunctionComponent<AccessibleIcon> = ({
 }
 
 export const Brush = styled(BrushSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.primary,
+  color: color ?? theme.colors.black,
   size: size ?? theme.icons.sizes.standard,
 }))``

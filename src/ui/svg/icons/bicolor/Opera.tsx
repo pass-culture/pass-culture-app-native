@@ -30,6 +30,6 @@ const OperaSvg: React.FunctionComponent<IconInterface> = ({ size, color, color2,
 }
 
 export const Opera = styled(OperaSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.primary,
+  color: color ?? theme.colors.black,
   size: size ?? theme.icons.sizes.standard,
 }))``

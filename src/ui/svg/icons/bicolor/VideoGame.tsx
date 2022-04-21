@@ -42,6 +42,6 @@ const VideoGameSvg: React.FunctionComponent<AccessibleIcon> = ({
 }
 
 export const VideoGame = styled(VideoGameSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.primary,
+  color: color ?? theme.colors.black,
   size: size ?? theme.icons.sizes.standard,
 }))``

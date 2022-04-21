@@ -35,6 +35,6 @@ const ReversedHatSvg: React.FunctionComponent<IconInterface> = ({
 }
 
 export const ReversedHat = styled(ReversedHatSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.primary,
+  color: color ?? theme.colors.black,
   size: size ?? theme.icons.sizes.standard,
 }))``

@@ -29,6 +29,6 @@ const PencilTipSvg: React.FunctionComponent<IconInterface> = ({ size, color, col
 }
 
 export const PencilTip = styled(PencilTipSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.primary,
+  color: color ?? theme.colors.black,
   size: size ?? theme.icons.sizes.standard,
 }))``

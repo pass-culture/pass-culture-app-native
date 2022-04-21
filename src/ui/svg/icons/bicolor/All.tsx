@@ -30,6 +30,6 @@ const AllSvg: React.FunctionComponent<IconInterface> = ({ size, color, color2, t
 }
 
 export const All = styled(AllSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.primary,
+  color: color ?? theme.colors.black,
   size: size ?? theme.icons.sizes.standard,
 }))``

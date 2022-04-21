@@ -42,6 +42,6 @@ const StreamingSvg: React.FunctionComponent<AccessibleIcon> = ({
 }
 
 export const Streaming = styled(StreamingSvg).attrs(({ color, size, theme }) => ({
-  color: color ?? theme.colors.primary,
+  color: color ?? theme.colors.black,
   size: size ?? theme.icons.sizes.standard,
 }))``
