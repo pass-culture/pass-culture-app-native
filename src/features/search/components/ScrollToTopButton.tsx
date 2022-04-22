@@ -5,7 +5,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import { styledButton } from 'ui/components/buttons/styledButton.web'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ScrollToTop } from 'ui/svg/icons/ScrollToTop'
 import { getSpacing } from 'ui/theme'
