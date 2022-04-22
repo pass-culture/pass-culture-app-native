@@ -1,20 +1,19 @@
 import { PathConfigMap } from '@react-navigation/native'
 import { ComponentType } from 'react'
 
-import { AllNavParamList } from 'features/navigation/RootNavigator'
-import { TabRoute } from 'features/navigation/TabBar/types'
+import { RootStackParamList } from 'features/navigation/RootNavigator'
 
 import { Route } from '../types'
 
 import { getScreenComponent } from './getScreenComponent'
 
-type AnyScreen = keyof AllNavParamList
+type AnyScreen = keyof RootStackParamList
 
 export function getScreensAndConfig(
-  routes: Route[] | TabRoute[],
+  routes: Route[],
   ScreenComponent: ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
 ) {
-  const screensConfig: PathConfigMap<AllNavParamList> = {}
+  const screensConfig: PathConfigMap<RootStackParamList> = {}
   const Screens: JSX.Element[] = []
   routes.forEach((route) => {
     const { name, path, deeplinkPaths, pathConfig } = route
@@ -27,7 +26,7 @@ export function getScreensAndConfig(
     if (path) {
       screensConfig[name] = { path }
       Screens.push(getScreenComponent(name, route, ScreenComponent))
-      deeplinkPaths?.forEach((p, idx) => {
+      deeplinkPaths?.forEach((p: string, idx: number) => {
         const deeplinkName = getPrivateScreenName(`${name}${idx + 1}`) as AnyScreen
         screensConfig[deeplinkName] = { path: p }
         Screens.push(getScreenComponent(deeplinkName, route, ScreenComponent))
@@ -36,7 +35,7 @@ export function getScreensAndConfig(
       const { deeplinkPaths, ...restOfPathConfig } = pathConfig
       screensConfig[name] = restOfPathConfig
       Screens.push(getScreenComponent(name, route, ScreenComponent))
-      deeplinkPaths?.forEach((p, idx) => {
+      deeplinkPaths?.forEach((p: string, idx: number) => {
         const deeplinkName = getPrivateScreenName(`${name}${idx + 1}`) as AnyScreen
         screensConfig[deeplinkName] = { ...restOfPathConfig, path: p }
         Screens.push(getScreenComponent(deeplinkName, route, ScreenComponent))

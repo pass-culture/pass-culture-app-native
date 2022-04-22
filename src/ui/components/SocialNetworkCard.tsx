@@ -1,10 +1,8 @@
 import React, { memo } from 'react'
+import { TouchableOpacity } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
-import { openUrl } from 'features/navigation/helpers'
-import { analytics } from 'libs/analytics'
 import { Typo, getSpacing, Spacer } from 'ui/theme'
-import { TouchableLink } from 'ui/web/link/TouchableLink'
 
 import { SocialNetwork, SocialNetworkIconsMap } from './socials/types'
 
@@ -14,7 +12,7 @@ interface SocialNetworkCardProps {
 
 function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
   const { network } = props
-  const { icon: Icon, link, fallbackLink } = SocialNetworkIconsMap[network]
+  const { icon: Icon } = SocialNetworkIconsMap[network]
   const name = network[0].toUpperCase() + network.slice(1)
 
   const StyledIcon = styled(Icon).attrs(({ theme }) => ({
@@ -22,12 +20,7 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
   }))``
 
   return (
-    <TouchableLink
-      externalHref={link}
-      onPress={() => {
-        analytics.logClickSocialNetwork(name)
-        openUrl(link, { shouldLogEvent: false, fallbackUrl: fallbackLink })
-      }}>
+    <TouchableOpacity onPress={() => null}>
       <Container>
         <NetworkIconBox>
           <StyledIcon />
@@ -35,7 +28,7 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
         <Spacer.Column numberOfSpaces={1} />
         <Typo.Caption numberOfLines={2}>{name}</Typo.Caption>
       </Container>
-    </TouchableLink>
+    </TouchableOpacity>
   )
 }
 

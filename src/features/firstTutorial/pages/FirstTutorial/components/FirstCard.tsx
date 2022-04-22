@@ -6,7 +6,6 @@ import {
   AchievementCardKeyProps,
   GenericAchievementCard,
 } from 'ui/components/achievements/components/GenericAchievementCard'
-import { Helmet } from 'ui/web/global/Helmet'
 
 export function FirstCard(props: AchievementCardKeyProps) {
   function onButtonPress() {
@@ -15,14 +14,7 @@ export function FirstCard(props: AchievementCardKeyProps) {
 
   const currentStep = (props.activeIndex || 0) + 1
   const totalSteps = (props.lastIndex || 3) + 1
-  const helmetTitle =
-    t({
-      values: {
-        currentStep,
-        totalSteps,
-      },
-      message: 'Étape {currentStep} sur {totalSteps} | Tutorial "Comment ça marche"',
-    }) + ' | pass Culture'
+
   const buttonAccessibilityLabel = t({
     values: {
       nextStep: currentStep + 1,
@@ -33,7 +25,6 @@ export function FirstCard(props: AchievementCardKeyProps) {
 
   return (
     <React.Fragment>
-      <Helmet title={helmetTitle} />
       <GenericAchievementCard
         animation={TutorialPassLogo}
         buttonCallback={onButtonPress}

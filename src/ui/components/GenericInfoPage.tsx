@@ -2,7 +2,6 @@ import React, { ReactNode, useMemo, FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
-import { Helmet } from 'libs/react-helmet/Helmet'
 import { AnimationObject } from 'ui/animations/type'
 import { Background } from 'ui/svg/Background'
 import { IconInterface } from 'ui/svg/icons/types'
@@ -11,7 +10,6 @@ import { getHeadingAttrs } from 'ui/theme/typography'
 
 type Props = {
   header?: ReactNode
-  noIndex?: boolean
   flex?: boolean
   animation?: AnimationObject
   icon?: FunctionComponent<IconInterface>
@@ -24,7 +22,6 @@ const ANIMATION_SIZE = getSpacing(45)
 export const GenericInfoPage: FunctionComponent<Props> = ({
   children,
   header,
-  noIndex = true,
   animation,
   icon: Icon,
   title,
@@ -42,11 +39,6 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
 
   return (
     <Wrapper>
-      {!!noIndex && (
-        <Helmet>
-          <meta name="robots" content="noindex" />
-        </Helmet>
-      )}
       <Background />
       {header}
       <Content>

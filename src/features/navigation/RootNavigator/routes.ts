@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 
-import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 import { Navigation } from 'features/cheatcodes/pages/Navigation'
+import { FirstTutorial } from 'features/firstTutorial/pages/FirstTutorial/FirstTutorial'
 
 import { Route } from './types'
 

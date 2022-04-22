@@ -7,7 +7,6 @@ import { v4 as uuidv4 } from 'uuid'
 // eslint-disable-next-line no-restricted-imports
 import { isDesktopDeviceDetectOnWeb } from 'libs/react-device-detect'
 import { useKeyboardEvents } from 'ui/components/keyboard/useKeyboardEvents'
-import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
 import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -97,8 +96,6 @@ export const AppModal: FunctionComponent<Props> = ({
   )
 
   const modalId = uuidv4()
-
-  useEscapeKeyAction(visible ? onRightIconPress : undefined)
 
   return (
     <StyledModal

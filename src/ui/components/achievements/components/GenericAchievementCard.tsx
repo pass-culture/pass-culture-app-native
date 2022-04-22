@@ -5,7 +5,6 @@ import * as Animatable from 'react-native-animatable'
 import Swiper from 'react-native-web-swiper'
 import styled, { useTheme } from 'styled-components/native'
 
-import { analytics } from 'libs/analytics'
 import LottieView from 'libs/lottie'
 import { MonitoringError } from 'libs/monitoring'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
@@ -98,12 +97,6 @@ Those props are provided by the GenericAchievementCard and must be passed down t
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [animatedButtonRef])
-
-  useEffect(() => {
-    if (props.name && props.index !== undefined && props.activeIndex === props.index) {
-      analytics.logScreenView(props.name)
-    }
-  }, [props.name, props.index, props.activeIndex])
 
   return (
     <GenericCardContainer aria-hidden={props.activeIndex !== props.index}>

@@ -6,8 +6,6 @@ import Swiper, { SwiperControlsProps } from 'react-native-web-swiper'
 import styled from 'styled-components/native'
 
 import { ScreenNames, UseNavigationType } from 'features/navigation/RootNavigator'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { analytics } from 'libs/analytics'
 import { ButtonTertiaryGreyDark } from 'ui/components/buttons/ButtonTertiaryGreyDark'
 import { DotComponent } from 'ui/components/DotComponent'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -38,7 +36,7 @@ export type Props = {
 }
 
 export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
-  const navigation = useNavigation<UseNavigationType>()
+  const { addListener, navigate } = useNavigation<UseNavigationType>()
   const swiperRef = React.useRef<Swiper>(null)
   const skipButtonRef = React.useRef<View>(null)
 
@@ -50,7 +48,7 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
   // would leak to other components / screens.
   useFocusEffect(() => {
     // For overriding iOS and Android go back and pop screen behaviour
-    const unsubscribeFromNavigationListener = navigation.addListener('beforeRemove', (event) => {
+    const unsubscribeFromNavigationListener = addListener('beforeRemove', (event) => {
       onRemoveScreenAction({
         swiperRefValue: swiperRef?.current,
         onFirstCardBackAction: props.onFirstCardBackAction,
@@ -64,11 +62,7 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
     if (props.skip) {
       props.skip()
     }
-    if (swiperRef?.current) {
-      const index = swiperRef.current.getActiveIndex()
-      analytics.logHasSkippedTutorial(`${props.screenName}${index + 1}`)
-    }
-    navigation.reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
+    navigate('Navigation')
   }
 
   const controlProps: SwiperControlsProps = {

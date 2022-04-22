@@ -13,7 +13,6 @@ import {
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { useFunctionOnce } from 'libs/hooks'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
 import { getHeadingAttrs } from 'ui/theme/typography'
@@ -28,7 +27,6 @@ interface IAccordionItemProps {
   accessibilityTitle?: string
   children: JSX.Element | JSX.Element[]
   defaultOpen?: boolean
-  onOpenOnce?: () => void
   titleStyle?: StyleProp<ViewStyle>
   bodyStyle?: StyleProp<ViewStyle>
 }
@@ -38,7 +36,6 @@ export const AccordionItem = ({
   title,
   children,
   defaultOpen = false,
-  onOpenOnce,
   titleStyle,
   bodyStyle,
 }: IAccordionItemProps) => {
@@ -48,7 +45,7 @@ export const AccordionItem = ({
   const [bodyPositionY, setBodyPositionY] = useState<number>(0)
   const [bodySectionHeight, setBodySectionHeight] = useState<number>(0)
   const animatedController = useRef(new Animated.Value(defaultOpen ? 1 : 0)).current
-  const openOnce = useFunctionOnce(onOpenOnce)
+
   const onOpen = () => {
     if (!!scrollViewRef && scrollViewRef !== null && scrollViewRef.current !== null) {
       scrollViewRef.current.scrollTo({
@@ -87,7 +84,6 @@ export const AccordionItem = ({
   useEffect(() => {
     if (open) {
       onOpen()
-      onOpenOnce && openOnce()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [open])

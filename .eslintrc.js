@@ -1,14 +1,15 @@
 module.exports = {
-  plugins: ['react-native', 'react-hooks', 'typescript-sort-keys', 'eslint-plugin-local-rules'],
+  plugins: ['react-native', 'react-hooks', 'typescript-sort-keys', 'eslint-plugin-local-rules', 'import'],
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   extends: [
     'eslint:recommended',
+    'plugin:import/recommended',
     'plugin:react/recommended', // Uses the recommended rules from @eslint-plugin-react
     'plugin:react-native/all', // Enables all rules from react-native
     'plugin:@typescript-eslint/recommended', // Uses the recommended rules from @typescript-eslint/eslint-plugin
     'plugin:prettier/recommended', // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
     'plugin:import/errors',
-    'plugin:react-hooks/recommended',
+    'plugin:react-hooks/recommended'
   ],
   parserOptions: {
     ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
@@ -20,6 +21,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   rules: {
+    'import/no-unused-modules': ['error'],
     'local-rules/no-allow-console': ['error'],
     'local-rules/independant-mocks': ['error'],
     'local-rules/no-string-check-before-component': ['error'],

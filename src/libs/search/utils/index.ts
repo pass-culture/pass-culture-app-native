@@ -1,1 +1,0 @@
-export { getCategoriesFacetFilters } from './getCategoriesFacetFilters'

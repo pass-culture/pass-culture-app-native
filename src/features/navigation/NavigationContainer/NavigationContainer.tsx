@@ -17,7 +17,6 @@ import { ColorsEnum } from 'ui/theme/colors'
 
 import { author } from '../../../../package.json'
 import { navigationRef } from '../navigationRef'
-import { onNavigationStateChange } from '../services'
 
 const NAV_THEME_CONFIG = { colors: { background: ColorsEnum.WHITE } } as Theme
 const SECONDARY_TITLE = author?.name || 'pass Culture'
@@ -66,8 +65,6 @@ export const AppNavigationContainer = () => {
     <NavigationContainer
       linking={linking}
       initialState={initialNavigationState}
-      // @ts-expect-error the typing of onNavigationStateChange() is good enough
-      onStateChange={onNavigationStateChange}
       fallback={<LoadingPage />}
       ref={navigationRef}
       documentTitle={DOCUMENT_TITLE_OPTIONS}

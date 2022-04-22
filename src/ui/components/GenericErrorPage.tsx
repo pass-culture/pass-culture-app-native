@@ -1,7 +1,6 @@
 import React, { ReactNode, FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { Helmet } from 'libs/react-helmet/Helmet'
 import { Background } from 'ui/svg/Background'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -9,7 +8,6 @@ import { getHeadingAttrs } from 'ui/theme/typography'
 
 type Props = {
   header?: ReactNode
-  noIndex?: boolean
   icon?: FunctionComponent<IconInterface>
   title: string
   buttons?: Array<ReactNode>
@@ -18,7 +16,6 @@ type Props = {
 export const GenericErrorPage: FunctionComponent<Props> = ({
   children,
   header,
-  noIndex = true,
   icon,
   title,
   buttons,
@@ -34,11 +31,6 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
 
   return (
     <Container>
-      {!!noIndex && (
-        <Helmet>
-          <meta name="robots" content="noindex" />
-        </Helmet>
-      )}
       <Background />
       {header}
       <Content>

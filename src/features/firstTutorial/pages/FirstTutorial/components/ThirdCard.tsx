@@ -1,8 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
 
-import { analytics } from 'libs/analytics'
-import { useGeolocation } from 'libs/geolocation'
 import GeolocationAnimation from 'ui/animations/geolocalisation.json'
 import {
   AchievementCardKeyProps,
@@ -10,23 +8,10 @@ import {
 } from 'ui/components/achievements/components/GenericAchievementCard'
 
 export function ThirdCard(props: AchievementCardKeyProps) {
-  const { requestGeolocPermission } = useGeolocation()
-
-  async function onGeolocationButtonPress() {
-    await requestGeolocPermission({
-      onSubmit: () => {
-        props.swiperRef?.current?.goToNext()
-      },
-      onAcceptance: () => {
-        analytics.logHasActivateGeolocFromTutorial()
-      },
-    })
-  }
-
   return (
     <GenericAchievementCard
       animation={GeolocationAnimation}
-      buttonCallback={onGeolocationButtonPress}
+      buttonCallback={props.swiperRef?.current?.goToNext}
       buttonText={t`Activer la géolocalisation`}
       pauseAnimationOnRenderAtFrame={62}
       subTitle={t`à portée de main\u00a0!`}

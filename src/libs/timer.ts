@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { currentTimestamp } from 'libs/dates'
-
 export const TIMER_NOT_INITIALIZED = -1
 
 export function useTimer(
@@ -13,14 +11,14 @@ export function useTimer(
   const timerIdRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
-    // set the timer only if the starttime is known
+    // set the timer only if the start time is known
     if (typeof startTime !== 'number' || startTime <= 0) {
       return () => void 0
     }
 
     // launch timer
     timerIdRef.current = global.setInterval(() => {
-      const newElapsedTime = currentTimestamp() - (startTime ?? 0)
+      const newElapsedTime = new Date().getTime() - (startTime ?? 0)
 
       // stop timer conditionally
       if (shouldStop(newElapsedTime)) {

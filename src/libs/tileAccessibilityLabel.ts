@@ -1,18 +1,13 @@
 import { t } from '@lingui/macro'
 
-import { BookingProperties } from 'features/bookings/helpers'
-import { OfferTileProps } from 'features/offer/atoms/OfferTile'
-import { parseTypeHomeLabel } from 'libs/parsers/venueType'
-import { VenueHit } from 'libs/search'
-
 type Offer = Pick<
-  OfferTileProps,
+  Record<string, unknown>,
   'name' | 'categoryLabel' | 'price' | 'date' | 'distance' | 'isDuo'
 >
-type Venue = Pick<VenueHit, 'name' | 'venueTypeCode'> & { distance?: string }
+type Venue = Pick<Record<string, unknown>, 'name' | 'venueTypeCode'> & { distance?: string }
 type Booking = {
   name: string
-  properties?: BookingProperties
+  properties?: Record<string, unknown>
   date?: string
   dateUsed?: string
   cancellationDate?: string
@@ -29,7 +24,7 @@ function getOfferAccessibilityLabel(offer: Offer) {
   const nameLabel = name ? ` ${name}` : ''
   const categoryLabel = category ? t`de la catégorie` + ` ${category},` : ''
   const distanceLabel = distance ? t`à` + ` ${distance},` : ''
-  const datePrefix = date?.match(/^\d/) ? t`le` : ''
+  const datePrefix = t`le`
   const dateLabel = date ? datePrefix + ` ${date},` : ''
   const priceLabel = price === t`Gratuit` ? price : t`prix` + ` ${price}`
   const duoLabel = isDuo ? t`Possibilité de réserver 2 places.` : ''
@@ -40,9 +35,9 @@ function getOfferAccessibilityLabel(offer: Offer) {
 }
 
 function getVenueAccessibilityLabel(venue: Venue) {
-  const { name, venueTypeCode, distance } = venue
+  const { name, distance } = venue
   const nameLabel = name ? ` ${name}` : ''
-  const venueTypeLabel = parseTypeHomeLabel(venueTypeCode)
+  const venueTypeLabel = 'venue type'
   const typeLabel = t`du type` + ` ${venueTypeLabel},`
   const distanceLabel = distance ? t`à` + ` ${distance}` : ''
   return t`Lieu` + `${nameLabel} ${typeLabel} ${distanceLabel}`

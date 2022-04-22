@@ -6,7 +6,7 @@ export function getNestedNavigationFromState(
   state: NavigationResultState | NavigationState
 ): RootNavigateParams {
   if (!state || !state.routes) {
-    return ['PageNotFound', undefined]
+    return ['FirstTutorial', undefined]
   }
   const { routes, index } = state
   const currentRouteIndex = index ?? routes.length - 1

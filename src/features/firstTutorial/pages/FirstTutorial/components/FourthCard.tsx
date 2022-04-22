@@ -3,7 +3,6 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { storage } from 'libs/storage'
 import StarAnimation from 'ui/animations/tutorial_star.json'
 import {
@@ -12,7 +11,7 @@ import {
 } from 'ui/components/achievements/components/GenericAchievementCard'
 
 export function FourthCard(props: AchievementCardKeyProps) {
-  const { reset } = useNavigation<UseNavigationType>()
+  const { navigate } = useNavigation<UseNavigationType>()
 
   const { activeIndex, index } = props
   const isActiveCard = index !== undefined && activeIndex === index
@@ -23,7 +22,7 @@ export function FourthCard(props: AchievementCardKeyProps) {
   }, [isActiveCard])
 
   function onButtonPress() {
-    reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
+    navigate('Navigation')
   }
 
   return (
