@@ -1,6 +1,11 @@
+// eslint-disable-next-line no-restricted-imports
+import { getAnalytics } from 'firebase/analytics'
+
 import { getFirebaseApp } from 'libs/firebase/app'
 
-const firebaseAnalytics = getFirebaseApp().analytics()
+const firebaseApp = getFirebaseApp()
+// @ts-ignore TODO(LucasBeneston): native
+const firebaseAnalytics = getAnalytics(firebaseApp)
 
 export default () => ({
   // @ts-ignore Not existing on the web

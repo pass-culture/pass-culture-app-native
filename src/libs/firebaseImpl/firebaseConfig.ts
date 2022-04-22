@@ -1,6 +1,9 @@
+// eslint-disable-next-line no-restricted-imports
+import { FirebaseOptions } from 'firebase/app'
+
 import { env } from 'libs/environment'
 
-export const FIREBASE_CONFIG = {
+export const FIREBASE_CONFIG: FirebaseOptions = {
   apiKey: env.FIREBASE_APIKEY,
   authDomain: env.FIREBASE_AUTHDOMAIN,
   projectId: env.FIREBASE_PROJECTID,
