@@ -13,7 +13,6 @@ module.exports = {
     '^ui(.*)$': '<rootDir>/src/ui$1',
     '^__mocks__(.*)$': '<rootDir>/__mocks__$1',
   },
-  snapshotResolver: '<rootDir>/jest/custom-snapshot-resolver-native.js',
   setupFiles: ['<rootDir>/jest/jest.setup.ts', 'react-native-gesture-handler/jestSetup.js'],
   setupFilesAfterEnv: ['./src/tests/setupTests.js'],
   transform: {
