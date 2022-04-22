@@ -38,7 +38,6 @@ exports[`VenueCaption component should render correctly 1`] = `
     }
   >
     <View
-      fill="#696A6F"
       height={16}
       width={16}
     >

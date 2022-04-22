@@ -26,7 +26,6 @@ exports[`VenueType should render correctly 1`] = `
     }
   >
     <View
-      fill="#696A6F"
       height={32}
       width={32}
     >

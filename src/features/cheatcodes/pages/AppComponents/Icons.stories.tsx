@@ -4,10 +4,10 @@ import {
   SocialNetworkIcons,
   TertiaryAndSmallerIcons,
   UnconventionalIcons,
-  VenueTypesIcons,
 } from 'features/cheatcodes/pages/AppComponents/iconsExports'
-import CategoryIcon from 'ui/svg/icons/categories/bicolor'
-import CulturalSurveyIcons from 'ui/svg/icons/culturalSurvey'
+import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
+import { culturalSurveyIcons } from 'ui/svg/icons/bicolor/exports/culturalSurveyIcons'
+import { venueTypesIcons } from 'ui/svg/icons/bicolor/exports/venueTypesIcons'
 import { SMALLER_ICON_SIZE, STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
 export default {
@@ -22,12 +22,13 @@ SocialNetwork.args = {
 export const Categories = Icons.bind({})
 Categories.args = {
   isBicolor: true,
-  icons: CategoryIcon,
+  icons: categoriesIcons,
 }
 
 export const VenueTypes = Icons.bind({})
 VenueTypes.args = {
-  icons: VenueTypesIcons,
+  isBicolor: true,
+  icons: venueTypesIcons,
 }
 
 export const SecondaryAndBigger = Icons.bind({})
@@ -51,6 +52,6 @@ Unconventional.args = {
 export const CulturalSurvey = Icons.bind({})
 CulturalSurvey.args = {
   title: `Icones pour QPI`,
-  icons: CulturalSurveyIcons,
+  icons: culturalSurveyIcons,
   isBicolor: true,
 }
