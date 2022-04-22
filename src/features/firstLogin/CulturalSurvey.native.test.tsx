@@ -3,7 +3,8 @@ import { UseQueryResult } from 'react-query'
 import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { UserProfileResponse } from 'api/gen'
+import { SettingsResponse, UserProfileResponse } from 'api/gen'
+import { useAppSettings } from 'features/auth/settings'
 import { useUserProfileInfo } from 'features/home/api'
 import { useCurrentRoute, navigateToHome } from 'features/navigation/helpers'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
@@ -36,6 +37,9 @@ function mockUseCurrentRoute(name: string) {
   mockedUseCurrentRoute.mockReturnValue({ name, key: 'key' })
 }
 
+jest.mock('features/auth/settings')
+const mockedUseAppSettings = useAppSettings as jest.MockedFunction<typeof useAppSettings>
+
 const DEFAULT_USER = {
   id: 1234,
   needsToFillCulturalSurvey: true,
@@ -49,6 +53,14 @@ describe('<CulturalSurvey />', () => {
   it('should render correctly', async () => {
     const renderAPI = await renderCulturalSurveyWithNavigation()
     expect(renderAPI).toMatchSnapshot()
+  })
+
+  it('should redirect to native cultural survey if FF is active', async () => {
+    mockedUseAppSettings.mockReturnValueOnce({
+      data: { enableNativeCulturalSurvey: true },
+    } as UseQueryResult<SettingsResponse, unknown>)
+    await renderCulturalSurveyWithNavigation()
+    expect(navigate).toHaveBeenCalledWith('CulturalSurveyIntro')
   })
 
   it('should not display webview when another screen is displayed', async () => {
