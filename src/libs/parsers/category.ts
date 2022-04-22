@@ -1,28 +1,28 @@
 import { CategoryIdEnum } from 'api/gen'
-import CategoryIcon from 'ui/svg/icons/categories'
+import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { IconInterface } from 'ui/svg/icons/types'
 
 export const MAP_CATEGORY_ID_TO_ICON: {
   [k in CategoryIdEnum]: React.FC<IconInterface>
 } = {
-  [CategoryIdEnum.CARTE_JEUNES]: CategoryIcon.Card,
-  [CategoryIdEnum.CINEMA]: CategoryIcon.Cinema,
-  [CategoryIdEnum.MUSEE]: CategoryIcon.Museum,
-  [CategoryIdEnum.MUSIQUE_LIVE]: CategoryIcon.Music,
-  [CategoryIdEnum.MUSIQUE_ENREGISTREE]: CategoryIcon.Music,
-  [CategoryIdEnum.SPECTACLE]: CategoryIcon.Show,
-  [CategoryIdEnum.PRATIQUE_ART]: CategoryIcon.Workshop,
-  [CategoryIdEnum.LIVRE]: CategoryIcon.Book,
-  [CategoryIdEnum.FILM]: CategoryIcon.Streaming,
-  [CategoryIdEnum.MEDIA]: CategoryIcon.Press,
-  [CategoryIdEnum.JEU]: CategoryIcon.VideoGame,
-  [CategoryIdEnum.CONFERENCE]: CategoryIcon.Conference,
-  [CategoryIdEnum.INSTRUMENT]: CategoryIcon.Instrument,
-  [CategoryIdEnum.BEAUX_ARTS]: CategoryIcon.ArtsMaterial,
-  [CategoryIdEnum.TECHNIQUE]: CategoryIcon.ArtsMaterial,
+  [CategoryIdEnum.CARTE_JEUNES]: categoriesIcons.Card,
+  [CategoryIdEnum.CINEMA]: categoriesIcons.Cinema,
+  [CategoryIdEnum.MUSEE]: categoriesIcons.Museum,
+  [CategoryIdEnum.MUSIQUE_LIVE]: categoriesIcons.Music,
+  [CategoryIdEnum.MUSIQUE_ENREGISTREE]: categoriesIcons.Music,
+  [CategoryIdEnum.SPECTACLE]: categoriesIcons.Show,
+  [CategoryIdEnum.PRATIQUE_ART]: categoriesIcons.Workshop,
+  [CategoryIdEnum.LIVRE]: categoriesIcons.Book,
+  [CategoryIdEnum.FILM]: categoriesIcons.Streaming,
+  [CategoryIdEnum.MEDIA]: categoriesIcons.Press,
+  [CategoryIdEnum.JEU]: categoriesIcons.VideoGame,
+  [CategoryIdEnum.CONFERENCE]: categoriesIcons.Conference,
+  [CategoryIdEnum.INSTRUMENT]: categoriesIcons.Instrument,
+  [CategoryIdEnum.BEAUX_ARTS]: categoriesIcons.ArtsMaterial,
+  [CategoryIdEnum.TECHNIQUE]: categoriesIcons.ArtsMaterial,
 }
 
 export const mapCategoryToIcon = (id: CategoryIdEnum | null): React.FC<IconInterface> => {
   if (id && id in MAP_CATEGORY_ID_TO_ICON) return MAP_CATEGORY_ID_TO_ICON[id]
-  return CategoryIcon.ArtsMaterial
+  return categoriesIcons.ArtsMaterial
 }

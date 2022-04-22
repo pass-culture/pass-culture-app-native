@@ -56,10 +56,10 @@ import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BackgroundPlaceholder } from 'ui/svg/BackgroundPlaceholder'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { culturalSurveyIcons } from 'ui/svg/icons/bicolor/exports/culturalSurveyIcons'
 import { VideoGame } from 'ui/svg/icons/bicolor/VideoGame'
 import { Check } from 'ui/svg/icons/Check'
 import { Close } from 'ui/svg/icons/Close'
-import CulturalSurveyIcons from 'ui/svg/icons/culturalSurvey'
 import { Email } from 'ui/svg/icons/Email'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -532,7 +532,7 @@ export const AppComponents: FunctionComponent = () => {
         <View>
           <CulturalSurveyCheckbox />
           <Spacer.Column numberOfSpaces={1} />
-          <CulturalSurveyCheckbox icon={CulturalSurveyIcons.Museum} />
+          <CulturalSurveyCheckbox icon={culturalSurveyIcons.Museum} />
         </View>
         <Spacer.Column numberOfSpaces={4} />
         <View>

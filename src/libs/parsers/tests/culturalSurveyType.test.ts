@@ -1,10 +1,10 @@
 import { CulturalSurveyAnswerEnum } from 'api/gen'
 import { mapCulturalSurveyTypeToIcon } from 'libs/parsers/culturalSurveyType'
-import CulturalSurveyIcons from 'ui/svg/icons/culturalSurvey'
+import { culturalSurveyIcons } from 'ui/svg/icons/bicolor/exports/culturalSurveyIcons'
 
 describe('culturalSurveyType', () => {
   it('should have default icon as Festival', () => {
     const result = mapCulturalSurveyTypeToIcon('__unknown_key__' as CulturalSurveyAnswerEnum)
-    expect(result).toBe(CulturalSurveyIcons.Festival)
+    expect(result).toBe(culturalSurveyIcons.Festival)
   })
 })

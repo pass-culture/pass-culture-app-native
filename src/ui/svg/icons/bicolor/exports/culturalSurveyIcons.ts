@@ -21,7 +21,7 @@ import { Theater } from 'ui/svg/icons/bicolor/Theater'
 import { Video } from 'ui/svg/icons/bicolor/Video'
 import { VideoGame } from 'ui/svg/icons/bicolor/VideoGame'
 
-export default {
+export const culturalSurveyIcons = {
   Brush,
   Micro,
   Museum,

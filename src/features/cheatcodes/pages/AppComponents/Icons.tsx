@@ -8,9 +8,9 @@ import {
   TertiaryAndSmallerIcons,
   UnconventionalIcons,
 } from 'features/cheatcodes/pages/AppComponents/iconsExports'
-import CategoryIcons from 'ui/svg/icons/categories'
-import CulturalSurveyIcons from 'ui/svg/icons/culturalSurvey'
-import VenueTypesIcons from 'ui/svg/icons/venueTypes'
+import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
+import { culturalSurveyIcons } from 'ui/svg/icons/bicolor/exports/culturalSurveyIcons'
+import { venueTypesIcons } from 'ui/svg/icons/bicolor/exports/venueTypesIcons'
 import { Spacer } from 'ui/theme'
 import { SMALLER_ICON_SIZE, STANDARD_ICON_SIZE } from 'ui/theme/constants'
 
@@ -39,15 +39,15 @@ const SocialNetwork = () => {
 }
 
 const Category = () => {
-  return <IconsContainer isBicolor title="Categories" icons={CategoryIcons} />
+  return <IconsContainer isBicolor title="Categories" icons={categoriesIcons} />
 }
 
 const VenueTypes = () => {
-  return <IconsContainer isBicolor title="VenueTypes" icons={VenueTypesIcons} />
+  return <IconsContainer isBicolor title="VenueTypes" icons={venueTypesIcons} />
 }
 
 const CulturalSurvey = () => {
-  return <IconsContainer isBicolor title="Cultural survey" icons={CulturalSurveyIcons} />
+  return <IconsContainer isBicolor title="Cultural survey" icons={culturalSurveyIcons} />
 }
 
 const TertiaryAndSmaller = () => {
