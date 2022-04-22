@@ -321,6 +321,59 @@ msgstr "Bien que l'ensemble du catalogue soit vérifié par nos soins, il n'est 
 msgid "Bienvenue !"
 msgstr "Bienvenue !"
 
+#: src/features/bookings/helpers.test.ts
+#: src/features/bookings/helpers.test.ts
+#: src/features/bookings/helpers.ts
+msgid "Billet à retirer sur place"
+msgstr "Billet à retirer sur place"
+
+#: src/features/bookings/helpers.test.ts
+#: src/features/bookings/helpers.test.ts
+#: src/features/bookings/helpers.test.ts
+#: src/features/bookings/helpers.ts
+msgid "Billet à retirer sur place aujourd'hui"
+msgstr "Billet à retirer sur place aujourd'hui"
+
+#: src/features/bookings/helpers.test.ts
+#: src/features/bookings/helpers.ts
+msgid "Billet à retirer sur place d'ici demain"
+msgstr "Billet à retirer sur place d'ici demain"
+
+#: src/features/bookings/helpers.test.ts
+#: src/features/bookings/helpers.test.ts
+#: src/features/bookings/helpers.ts
+msgid "Billet à retirer sur place dans 2 jours"
+msgstr "Billet à retirer sur place dans 2 jours"
+
+#: src/features/bookings/helpers.test.ts
+#: src/features/bookings/helpers.ts
+msgid "Billet à retirer sur place dans 3 jours"
+msgstr "Billet à retirer sur place dans 3 jours"
+
+#: src/features/bookings/helpers.test.ts
+#: src/features/bookings/helpers.ts
+#: src/features/bookings/helpers.ts
+msgid "Billet à retirer sur place demain"
+msgstr "Billet à retirer sur place demain"
+
+#: src/features/bookings/helpers.test.ts
+#: src/features/bookings/helpers.ts
+msgid "Billet à retirer sur place dès"
+msgstr "Billet à retirer sur place dès"
+
+#: src/features/bookings/helpers.test.ts
+#: src/features/bookings/helpers.test.ts
+#: src/features/bookings/helpers.test.ts
+#: src/features/bookings/helpers.ts
+msgid "Billet à retirer sur place dès aujourd'hui"
+msgstr "Billet à retirer sur place dès aujourd'hui"
+
+#: src/features/bookings/helpers.test.ts
+#: src/features/bookings/helpers.test.ts
+#: src/features/bookings/helpers.ts
+msgid "Billet à retirer sur place dès demain"
+msgstr "Billet à retirer sur place dès demain"
+
 #: src/features/eighteenBirthday/pages/components/EighteenBirthdayCard.tsx
 #: src/features/identityCheck/pages/confirmation/UnderageAccountCreated.tsx
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
