@@ -3,17 +3,19 @@ import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Typo } from 'ui/theme'
 
 export const VerifyEligibility: FunctionComponent = () => {
   const [error, setError] = useState<Error | undefined>()
-  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation(setError)
+  const { nextBeneficiaryValidationStepNavConfig, beforeNavigateToNextSubscriptionStep } =
+    useBeneficiaryValidationNavigation(setError)
 
   if (error) {
     throw error
@@ -24,16 +26,19 @@ export const VerifyEligibility: FunctionComponent = () => {
       title={t`Vérifie ton identité`}
       icon={HappyFace}
       buttons={[
-        <ButtonPrimaryWhite
+        <TouchableLink
           key={1}
+          as={ButtonPrimaryWhite}
           wording={t`Vérifier mon identité`}
-          onPress={navigateToNextBeneficiaryValidationStep}
+          navigateTo={nextBeneficiaryValidationStepNavConfig}
+          onPress={beforeNavigateToNextSubscriptionStep}
         />,
-        <ButtonTertiaryWhite
+        <TouchableLink
           key={2}
+          as={ButtonTertiaryWhite}
           icon={PlainArrowPrevious}
           wording={t`Retourner à l'accueil`}
-          onPress={navigateToHome}
+          navigateTo={navigateToHomeConfig}
         />,
       ]}>
       <StyledBody>

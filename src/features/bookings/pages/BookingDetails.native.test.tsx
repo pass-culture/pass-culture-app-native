@@ -6,8 +6,9 @@ import { BookingReponse, SubcategoryIdEnum } from 'api/gen'
 import * as Queries from 'features/bookings/api/queries'
 import * as Helpers from 'features/bookings/helpers'
 import { withAsyncErrorBoundary } from 'features/errors'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { openUrl } from 'features/navigation/helpers/openUrl'
+import { navigateFromRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/analytics'
 import * as OpenItinerary from 'libs/itinerary/useOpenItinerary'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -37,11 +38,9 @@ jest.mock('features/auth/settings', () => ({
   })),
 }))
 
+jest.mock('features/navigation/navigationRef')
 jest.mock('features/navigation/helpers/openUrl')
 const mockedOpenUrl = openUrl as jest.MockedFunction<typeof openUrl>
-
-jest.mock('features/navigation/helpers/navigateToHome')
-const mockedNavigateToHome = navigateToHome as jest.MockedFunction<typeof navigateToHome>
 
 // eslint-disable-next-line local-rules/no-allow-console
 allowConsole({ error: true }) // we allow it just for 1 test which is error throwing when no booking is found 404
@@ -219,10 +218,13 @@ describe('BookingDetails', () => {
       expect(renderAPI.queryByText(`Retourner à l'accueil`)).toBeTruthy()
 
       fireEvent.press(renderAPI.getByText('Mes réservations terminées'))
-      expect(navigate).toBeCalledWith('EndedBookings')
+      expect(navigate).toBeCalledWith('EndedBookings', undefined)
 
       fireEvent.press(renderAPI.getByText(`Retourner à l'accueil`))
-      expect(mockedNavigateToHome).toBeCalled()
+      expect(navigateFromRef).toBeCalledWith(
+        navigateToHomeConfig.screen,
+        navigateToHomeConfig.params
+      )
     })
 
     it('should not render ScreenError BookingNotFound when booking is not found and no data exists', () => {

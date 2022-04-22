@@ -12,6 +12,6 @@ describe('Sort component', () => {
   it('should navigate to Sort page on pressing', () => {
     const { getByTestId } = render(<Sort />)
     fireEvent.click(getByTestId('SortButton'))
-    expect(navigate).toHaveBeenCalledWith('FavoritesSorts')
+    expect(navigate).toHaveBeenCalledWith('FavoritesSorts', undefined)
   })
 })

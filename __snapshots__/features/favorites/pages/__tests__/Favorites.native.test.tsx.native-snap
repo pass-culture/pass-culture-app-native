@@ -64,6 +64,7 @@ exports[`Favorites component should render correctly 1`] = `
     }
   >
     <View
+      accessibilityRole="link"
       accessible={true}
       collapsable={false}
       focusable={true}

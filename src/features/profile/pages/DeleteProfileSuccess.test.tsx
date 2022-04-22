@@ -1,12 +1,14 @@
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { navigateFromRef } from 'features/navigation/navigationRef'
 import { fireEvent, render } from 'tests/utils'
 
 import { DeleteProfileSuccess } from './DeleteProfileSuccess'
 
 jest.mock('features/navigation/helpers')
+jest.mock('features/navigation/navigationRef')
 
 describe('DeleteProfileSuccess component', () => {
   it('should render delete profile success', () => {
@@ -18,7 +20,10 @@ describe('DeleteProfileSuccess component', () => {
     const renderAPI = render(<DeleteProfileSuccess />)
     fireEvent.press(renderAPI.getByText(`Retourner à l'accueil`))
     await waitForExpect(() => {
-      expect(navigateToHome).toBeCalledTimes(1)
+      expect(navigateFromRef).toBeCalledWith(
+        navigateToHomeConfig.screen,
+        navigateToHomeConfig.params
+      )
     })
   })
 })

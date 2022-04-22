@@ -4,13 +4,14 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { DMSModal } from 'features/identityCheck/components/DMSModal'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { useModal } from 'ui/components/modals/useModal'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
@@ -38,10 +39,11 @@ export function IdentityCheckUnavailable() {
             icon={ExternalSite}
           />
         ),
-        <ButtonTertiaryWhite
+        <TouchableLink
           key={2}
+          as={ButtonTertiaryWhite}
           wording={t`Retourner à l'accueil`}
-          onPress={navigateToHome}
+          navigateTo={navigateToHomeConfig}
           icon={PlainArrowPrevious}
         />,
       ].filter(Boolean)}>

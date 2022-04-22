@@ -56,7 +56,7 @@ describe('<IdentityCheckEnd/>', () => {
       payload: IdentityCheckMethod.educonnect,
       type: 'SET_METHOD',
     })
-    expect(navigate).toHaveBeenNthCalledWith(1, 'IdentityCheckEduConnect')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'IdentityCheckEduConnect', undefined)
   })
 
   it('should redirect to identity check Ubble or DMS when cliking on "Identification manuelle" button', () => {
@@ -69,6 +69,6 @@ describe('<IdentityCheckEnd/>', () => {
       payload: IdentityCheckMethod.ubble,
       type: 'SET_METHOD',
     })
-    expect(navigate).toHaveBeenNthCalledWith(1, 'IdentityCheckStart')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'IdentityCheckStart', undefined)
   })
 })

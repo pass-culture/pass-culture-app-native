@@ -2,9 +2,10 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { IdCardError } from 'ui/svg/icons/IdCardError'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -14,7 +15,12 @@ export function IdentityCheckPending() {
       title={t`Oups\u00a0!`}
       icon={IdCardError}
       buttons={[
-        <ButtonPrimaryWhite key={1} wording={t`Retourner à l'accueil`} onPress={navigateToHome} />,
+        <TouchableLink
+          key={1}
+          as={ButtonPrimaryWhite}
+          wording={t`Retourner à l'accueil`}
+          navigateTo={navigateToHomeConfig}
+        />,
       ]}>
       <StyledBody>{t`Il y a déjà une demande de crédit pass Culture en cours sur ton compte.`}</StyledBody>
       <Spacer.Column numberOfSpaces={5} />

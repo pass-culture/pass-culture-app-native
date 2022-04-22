@@ -1,5 +1,4 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
@@ -8,28 +7,19 @@ import {
   useCulturalSurveyRoute,
 } from 'features/culturalSurvey/helpers/utils'
 import { useUserProfileInfo } from 'features/home/api'
-import { navigateToHome } from 'features/navigation/helpers'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Typo } from 'ui/theme'
 
 export function AccountCreated() {
   const { data: user } = useUserProfileInfo()
-  const { navigate } = useNavigation<UseNavigationType>()
   const culturalSurveyRoute = useCulturalSurveyRoute()
 
   const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
-
-  function onPress() {
-    if (shouldNavigateToCulturalSurvey) {
-      navigate(culturalSurveyRoute)
-    } else {
-      navigateToHome()
-    }
-  }
 
   useEffect(() => {
     if (user?.id)
@@ -40,7 +30,16 @@ export function AccountCreated() {
     <GenericInfoPage
       title={t`Ton compte a été activé\u00a0!`}
       animation={IlluminatedSmileyAnimation}
-      buttons={[<ButtonPrimaryWhite key={1} wording={t`On y va\u00a0!`} onPress={onPress} />]}>
+      buttons={[
+        <TouchableLink
+          key={1}
+          as={ButtonPrimaryWhite}
+          wording={t`On y va\u00a0!`}
+          navigateTo={
+            shouldNavigateToCulturalSurvey ? { screen: culturalSurveyRoute } : navigateToHomeConfig
+          }
+        />,
+      ]}>
       {!!shouldNavigateToCulturalSurvey && (
         <StyledBody>
           {t`Aide-nous à en savoir plus sur tes pratiques culturelles\u00a0! Ta sélection n'aura pas d'impact sur les offres proposées.`}

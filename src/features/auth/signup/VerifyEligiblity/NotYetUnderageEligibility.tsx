@@ -3,11 +3,12 @@ import { StackScreenProps } from '@react-navigation/stack/lib/typescript/src/typ
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { formatToReadableFrenchDate } from 'libs/dates'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { CalendarIllustration } from 'ui/svg/icons/CalendarIllustration'
 import { Typo } from 'ui/theme'
 
@@ -19,7 +20,12 @@ export const NotYetUnderageEligibility: FunctionComponent<Props> = (props) => {
       title={t`C'est pour bientôt\u00a0!`}
       icon={CalendarIllustration}
       buttons={[
-        <ButtonPrimaryWhite key={1} wording={t`Retourner à l'accueil`} onPress={navigateToHome} />,
+        <TouchableLink
+          key={1}
+          as={ButtonPrimaryWhite}
+          wording={t`Retourner à l'accueil`}
+          navigateTo={navigateToHomeConfig}
+        />,
       ]}>
       <StyledBody>
         {t({

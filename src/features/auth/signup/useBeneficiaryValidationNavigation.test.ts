@@ -1,3 +1,4 @@
+/* eslint-disable local-rules/no-react-query-provider-hoc */
 import { renderHook } from '@testing-library/react-hooks'
 import { rest } from 'msw'
 import waitForExpect from 'wait-for-expect'
@@ -14,6 +15,7 @@ import { UserProfiling } from 'features/auth/signup/UserProfiling'
 import { navigateToHome } from 'features/navigation/helpers'
 import { env } from 'libs/environment'
 import { UserProfilingError } from 'libs/monitoring/errors'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
 
 jest.mock('features/navigation/helpers')
@@ -25,7 +27,10 @@ const allowedIdentityCheckMethods = [IdentityCheckMethod.ubble]
 
 describe('useBeneficiaryValidationNavigation', () => {
   it('should navigate to home if nextStep is null', async () => {
-    const { result } = renderHook(useBeneficiaryValidationNavigation)
+    const { result, waitFor } = renderHook(useBeneficiaryValidationNavigation, {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+    await waitFor(() => result.current.nextBeneficiaryValidationStepNavConfig !== undefined)
     result.current.navigateToNextBeneficiaryValidationStep()
 
     await waitForExpect(() => {
@@ -39,11 +44,14 @@ describe('useBeneficiaryValidationNavigation', () => {
       nextSubscriptionStep: SubscriptionStep['phone-validation'],
       hasIdentityCheckPending: false,
     })
-    const { result } = renderHook(useBeneficiaryValidationNavigation)
+    const { result, waitFor } = renderHook(useBeneficiaryValidationNavigation, {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+    await waitFor(() => result.current.nextBeneficiaryValidationStepNavConfig !== undefined)
     result.current.navigateToNextBeneficiaryValidationStep()
 
     await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('SetPhoneNumber')
+      expect(navigate).toBeCalledWith('SetPhoneNumber', undefined)
     })
   })
 
@@ -53,11 +61,14 @@ describe('useBeneficiaryValidationNavigation', () => {
       nextSubscriptionStep: SubscriptionStep['identity-check'],
       hasIdentityCheckPending: false,
     })
-    const { result } = renderHook(useBeneficiaryValidationNavigation)
+    const { result, waitFor } = renderHook(useBeneficiaryValidationNavigation, {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+    await waitFor(() => result.current.nextBeneficiaryValidationStepNavConfig !== undefined)
     result.current.navigateToNextBeneficiaryValidationStep()
 
     await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('IdentityCheckStepper')
+      expect(navigate).toBeCalledWith('IdentityCheckStepper', undefined)
     })
   })
 
@@ -69,7 +80,9 @@ describe('useBeneficiaryValidationNavigation', () => {
     })
 
     const setError = jest.fn()
-    const { result } = renderHook(() => useBeneficiaryValidationNavigation(setError))
+    const { result } = renderHook(() => useBeneficiaryValidationNavigation(setError), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
     result.current.navigateToNextBeneficiaryValidationStep()
 
     await waitForExpect(() => {
@@ -85,11 +98,14 @@ describe('useBeneficiaryValidationNavigation', () => {
       nextSubscriptionStep: SubscriptionStep['profile-completion'],
       hasIdentityCheckPending: false,
     })
-    const { result } = renderHook(useBeneficiaryValidationNavigation)
+    const { result, waitFor } = renderHook(useBeneficiaryValidationNavigation, {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+    await waitFor(() => result.current.nextBeneficiaryValidationStepNavConfig !== undefined)
     result.current.navigateToNextBeneficiaryValidationStep()
 
     await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('IdentityCheckStepper')
+      expect(navigate).toBeCalledWith('IdentityCheckStepper', undefined)
     })
   })
 
@@ -99,11 +115,14 @@ describe('useBeneficiaryValidationNavigation', () => {
       nextSubscriptionStep: SubscriptionStep['honor-statement'],
       hasIdentityCheckPending: false,
     })
-    const { result } = renderHook(useBeneficiaryValidationNavigation)
+    const { result, waitFor } = renderHook(useBeneficiaryValidationNavigation, {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+    await waitFor(() => result.current.nextBeneficiaryValidationStepNavConfig !== undefined)
     result.current.navigateToNextBeneficiaryValidationStep()
 
     await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('IdentityCheckStepper')
+      expect(navigate).toBeCalledWith('IdentityCheckStepper', undefined)
     })
   })
 
@@ -115,7 +134,10 @@ describe('useBeneficiaryValidationNavigation', () => {
       hasIdentityCheckPending: false,
     })
 
-    const { result } = renderHook(useBeneficiaryValidationNavigation)
+    const { result, waitFor } = renderHook(useBeneficiaryValidationNavigation, {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+    await waitFor(() => result.current.nextBeneficiaryValidationStepNavConfig !== undefined)
     result.current.navigateToNextBeneficiaryValidationStep()
 
     await waitForExpect(() => {
@@ -131,7 +153,10 @@ it('should navigate to IdentityCheckUnavailable if nextStep is Maintenance and m
     hasIdentityCheckPending: false,
   })
 
-  const { result } = renderHook(useBeneficiaryValidationNavigation)
+  const { result, waitFor } = renderHook(useBeneficiaryValidationNavigation, {
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })
+  await waitFor(() => result.current.nextBeneficiaryValidationStepNavConfig !== undefined)
   result.current.navigateToNextBeneficiaryValidationStep()
 
   await waitForExpect(() => {

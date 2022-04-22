@@ -3,13 +3,14 @@ import React, { useEffect, useRef, useState } from 'react'
 import { TextProps, TextStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { analytics } from 'libs/analytics'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
+import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Typo } from 'ui/theme'
 
@@ -41,7 +42,6 @@ export const NotEligibleEduConnect = ({
   )
 
   const onAbandon = () => {
-    navigateToHome()
     analytics.logBackToHomeFromEduconnectError({ fromError: message })
     // if we reset too fast, it will rerun the failed query, this as no effect on the UI but that's not desired.
     const beforeResetDelayInMs = 300
@@ -57,17 +57,22 @@ export const NotEligibleEduConnect = ({
       title={title}
       icon={Icon}
       buttons={[
-        <ButtonPrimaryWhite
+        <TouchableLink
           key={1}
+          as={ButtonPrimaryWhite}
           wording={primaryButtonText ?? "Retourner à l'accueil"}
-          onPress={onPrimaryButtonPress ?? onAbandon}
+          navigateTo={onPrimaryButtonPress ? undefined : navigateToHomeConfig}
+          onPress={onPrimaryButtonPress}
         />,
         !!tertiaryButtonVisible && (
-          <ButtonTertiaryWhite
+          <TouchableLink
             key={2}
+            as={ButtonTertiaryWhite}
             icon={PlainArrowPrevious}
             wording={t`Retourner à l'accueil`}
+            navigateTo={navigateToHomeConfig}
             onPress={onAbandon}
+            navigateBeforeOnPress
           />
         ),
       ].filter(Boolean)}>

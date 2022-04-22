@@ -39,7 +39,7 @@ const UserAgeNotValid: NotEligibleEduConnectErrorData = {
 }
 
 const getInvalidInformation = (
-  onPrimaryButtonPress: () => Promise<void>
+  onPrimaryButtonPress: () => void
 ): NotEligibleEduConnectErrorData => ({
   Icon: UserError,
   title: t`Oh non\u00a0!`,

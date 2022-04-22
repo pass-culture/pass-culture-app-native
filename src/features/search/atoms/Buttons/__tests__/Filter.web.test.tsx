@@ -28,6 +28,6 @@ describe('Filter component', () => {
   it('should navigate to Filter page on pressing', () => {
     const { getByTestId } = render(<Filter />)
     fireEvent.click(getByTestId('FilterButton'))
-    expect(navigate).toHaveBeenCalledWith('SearchFilter')
+    expect(navigate).toHaveBeenCalledWith('SearchFilter', undefined)
   })
 })

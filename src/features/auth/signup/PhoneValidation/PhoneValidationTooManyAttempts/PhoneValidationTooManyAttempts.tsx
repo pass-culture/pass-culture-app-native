@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/support.services'
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
@@ -26,7 +26,12 @@ export function PhoneValidationTooManyAttempts() {
           icon={Email}
           externalNav={contactSupport.forPhoneNumberConfirmation}
         />,
-        <ButtonPrimaryWhite key={2} wording={t`Retourner à l'accueil`} onPress={navigateToHome} />,
+        <TouchableLink
+          key={2}
+          as={ButtonPrimaryWhite}
+          wording={t`Retourner à l'accueil`}
+          navigateTo={navigateToHomeConfig}
+        />,
       ]}>
       <StyledBody>
         {t`Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué. Pour le récupérer tu peux contacter le support.`}

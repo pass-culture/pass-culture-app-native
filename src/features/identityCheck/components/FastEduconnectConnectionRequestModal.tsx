@@ -1,11 +1,9 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { IdentityCheckMethod } from 'api/gen'
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { useUbbleETAMessage } from 'libs/firebaseImpl/firestore/ubbleETAMessage'
@@ -29,7 +27,6 @@ export const FastEduconnectConnectionRequestModal: React.FC<
   FastEduconnectConnectionRequestModalProps
 > = ({ visible, hideModal }) => {
   const { dispatch } = useIdentityCheckContext()
-  const { navigate } = useNavigation<UseNavigationType>()
   const { data: ubbleETAMessage } = useUbbleETAMessage()
 
   const onModalRightIconPress = () => {
@@ -41,14 +38,12 @@ export const FastEduconnectConnectionRequestModal: React.FC<
     analytics.logChooseEduConnectMethod()
     hideModal()
     dispatch({ type: 'SET_METHOD', payload: IdentityCheckMethod.educonnect })
-    navigate('IdentityCheckEduConnect')
   }
 
   const onPressManualIdentification = () => {
     analytics.logChooseUbbleMethod()
     hideModal()
     dispatch({ type: 'SET_METHOD', payload: IdentityCheckMethod.ubble })
-    navigate('IdentityCheckStart')
   }
 
   return (
@@ -74,13 +69,20 @@ export const FastEduconnectConnectionRequestModal: React.FC<
 
       <Spacer.Column numberOfSpaces={4} />
 
-      <ButtonPrimary wording={t`Identification avec ÉduConnect`} onPress={onPressEduConnect} />
+      <TouchableLink
+        as={ButtonPrimary}
+        wording={t`Identification avec ÉduConnect`}
+        navigateTo={{ screen: 'IdentityCheckEduConnect' }}
+        onPress={onPressEduConnect}
+      />
 
       <OrSeparator />
 
-      <ButtonTertiaryBlack
+      <TouchableLink
+        as={ButtonTertiaryBlack}
         icon={EditPen}
         wording={t`Identification manuelle`}
+        navigateTo={{ screen: 'IdentityCheckStart' }}
         onPress={onPressManualIdentification}
       />
       <DurationInfoText>{ubbleETAMessage}</DurationInfoText>

@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { navigateToHome } from 'features/navigation/helpers'
+import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
@@ -31,10 +31,11 @@ export function LayoutExpiredLink({
       icon={SadFace}
       buttons={[
         renderResendEmailButton && renderResendEmailButton(),
-        <ButtonTertiaryWhite
+        <TouchableLink
           key={1}
+          as={ButtonTertiaryWhite}
           wording={t`Retourner à l'accueil`}
-          onPress={navigateToHome}
+          navigateTo={navigateToHomeConfig}
           icon={PlainArrowPrevious}
         />,
       ].filter(Boolean)}>
