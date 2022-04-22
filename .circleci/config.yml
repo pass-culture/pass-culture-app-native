@@ -17,13 +17,6 @@ executors:
     macos:
       xcode: '13.2.1'
 
-  gcp:
-    docker:
-      - image: europe-west1-docker.pkg.dev/passculture-infra-prod/pass-culture-tools/node-gcp:16
-        auth:
-          username: _json_key # default username when using a JSON key file to authenticate
-          password: $GCP_INFRA_KEY
-
 ###################
 #  COMMANDS
 ###################
@@ -117,11 +110,14 @@ commands:
           name: Setup sentry credentials
           command: |
             echo "[defaults]" >> ~/.sentryclirc
-            echo "url=https://sentry.internal-passculture.app/" >> ~/.sentryclirc
+            echo "url=https://sentry.ehp.internal-passculture.app/" >> ~/.sentryclirc
             echo "org=sentry" >> ~/.sentryclirc
-            echo "project=application-native" >> ~/.sentryclirc
+            echo "project=pass-culture-app-native-minimalist" >> ~/.sentryclirc
             echo "" >> ~/.sentryclirc
             echo "[auth]" >> ~/.sentryclirc
+
+            # token dka ehp test
+            SENTRY_AUTH_TOKEN=8b0617eb4cbf4dff87cfb87f3d58663d9d2e52d647e24e71a4f37e66b2cb9ec9
             echo "token=$SENTRY_AUTH_TOKEN" >> ~/.sentryclirc
 
 ###################
@@ -180,12 +176,6 @@ jobs:
             export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
             export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_TESTING
             ./scripts/deploy.sh -o ios -t soft -e testing
-      - run:
-          name: Notify failed deploy
-          command: |
-            BOT_MESSAGE="'*testing* : [App Native] soft deployment has failed :collision:'"
-            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-native','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
-          when: on_fail
 
   deploy-android-testing-hard:
     executor: android
@@ -212,12 +202,7 @@ jobs:
           command: |
             export ANDROID_APPCENTER_API_TOKEN=$ANDROID_TESTING_APPCENTER_API_TOKEN
             ./scripts/deploy.sh -o android -t hard -e testing
-      - run:
-          name: Notify failed deploy
-          command: |
-            BOT_MESSAGE="'*testing* : [App Native] android hard deployment has failed :collision:'"
-            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-native','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
-          when: on_fail
+
 
   deploy-ios-testing-hard:
     executor: ios
@@ -242,12 +227,6 @@ jobs:
           command: |
             export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
             ./scripts/deploy.sh -o ios -t hard -e testing
-      - run:
-          name: Notify failed deploy
-          command: |
-            BOT_MESSAGE="'*testing* : [App Native] ios hard deployment has failed :collision:'"
-            curl -X POST -H 'Content-type: application/json' --data "{'channel':'alertes-deploiement-native','text': $BOT_MESSAGE}" $SLACK_OPS_BOT_URL
-          when: on_fail
 
 ###################
 #  WORKFLOWS

@@ -15,7 +15,7 @@ type EventMonitoring = {
     captureContext?: CaptureContext | Record<string, unknown> | Severity
   ) => void
   configureScope: (callback: (scope: SentryModule.Scope) => void) => void
-  init: ({ enabled }: { enabled: boolean }) => void
+  init: () => void
   setUser: (user: User | Record<string, unknown> | null) => void
 }
 
@@ -25,8 +25,7 @@ export const eventMonitoring: EventMonitoring = {
   captureEvent: SentryModule.captureEvent,
   configureScope: SentryModule.configureScope,
   setUser: SentryModule.setUser,
-  async init({ enabled } = { enabled: true }) {
-    if (!enabled) return
+  async init() {
     const config = await getSentryConfig()
     SentryModule.init(config)
   },

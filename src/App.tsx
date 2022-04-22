@@ -25,7 +25,7 @@ const App: FunctionComponent = function () {
   }, [])
 
   useEffect(() => {
-    eventMonitoring.init({ enabled: true })
+    eventMonitoring.init()
   }, [])
 
   return (
