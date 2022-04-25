@@ -5,6 +5,7 @@ import { TextStyle } from 'react-native'
 
 import { useBeneficiaryValidationNavigation } from 'features/auth/signup/useBeneficiaryValidationNavigation'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { IconInterface } from 'ui/svg/icons/types'
 import { UserError } from 'ui/svg/icons/UserError'
@@ -25,6 +26,7 @@ type NotEligibleEduConnectErrorData = {
   primaryButtonText?: string
   tertiaryButtonVisible?: boolean
   onPrimaryButtonPress?: () => void
+  navigateTo?: TouchableLinkProps['navigateTo']
 }
 
 const UserAgeNotValid: NotEligibleEduConnectErrorData = {
@@ -39,7 +41,8 @@ const UserAgeNotValid: NotEligibleEduConnectErrorData = {
 }
 
 const getInvalidInformation = (
-  onPrimaryButtonPress: () => void
+  onPrimaryButtonPress: () => void,
+  navigateTo: TouchableLinkProps['navigateTo']
 ): NotEligibleEduConnectErrorData => ({
   Icon: UserError,
   title: t`Oh non\u00a0!`,
@@ -51,10 +54,12 @@ const getInvalidInformation = (
   primaryButtonText: t`Vérifier mon identité`,
   tertiaryButtonVisible: true,
   onPrimaryButtonPress,
+  navigateTo,
 })
 
 const getUserTypeNotStudent = (
-  onPrimaryButtonPress: () => void
+  onPrimaryButtonPress: () => void,
+  navigateTo: TouchableLinkProps['navigateTo']
 ): NotEligibleEduConnectErrorData => ({
   Icon: UserError,
   title: t`Qui est-ce\u00a0?`,
@@ -66,6 +71,7 @@ const getUserTypeNotStudent = (
   primaryButtonText: t`Réessayer de m'identifier`,
   tertiaryButtonVisible: true,
   onPrimaryButtonPress,
+  navigateTo,
 })
 
 const GenericError: NotEligibleEduConnectErrorData = {
@@ -80,20 +86,26 @@ export function useNotEligibleEduConnectErrorData(
   message: EduConnectErrorMessageEnum | string,
   setError: (error: Error | undefined) => void
 ) {
-  const { navigateToNextBeneficiaryValidationStep } = useBeneficiaryValidationNavigation(setError)
-  const { goBack, navigate } = useNavigation<UseNavigationType>()
+  const { nextBeneficiaryValidationStepNavConfig, beforeNavigateToNextSubscriptionStep } =
+    useBeneficiaryValidationNavigation(setError)
+  const { goBack } = useNavigation<UseNavigationType>()
   switch (message) {
     case EduConnectErrorMessageEnum.UserAgeNotValid18YearsOld:
-      return getInvalidInformation(navigateToNextBeneficiaryValidationStep)
+      return getInvalidInformation(
+        beforeNavigateToNextSubscriptionStep,
+        nextBeneficiaryValidationStepNavConfig
+      )
 
     case EduConnectErrorMessageEnum.UserAgeNotValid:
       return UserAgeNotValid
 
     case EduConnectErrorMessageEnum.UserTypeNotStudent:
-      return getUserTypeNotStudent(() => {
-        goBack()
-        navigate('IdentityCheckEduConnectForm')
-      })
+      return getUserTypeNotStudent(
+        () => {
+          goBack()
+        },
+        { screen: 'IdentityCheckEduConnectForm' }
+      )
 
     default:
       return GenericError
