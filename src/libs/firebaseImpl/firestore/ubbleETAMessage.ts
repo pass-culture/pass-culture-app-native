@@ -1,3 +1,5 @@
+// eslint-disable-next-line no-restricted-imports
+import { collection, doc, getDoc } from 'firebase/firestore'
 import { useQuery } from 'react-query'
 
 import { env } from 'libs/environment'
@@ -9,19 +11,21 @@ import { QueryKeys } from 'libs/queryKeys'
 const STALE_TIME_FIRESTORE_UBBLE_ETA_MESSAGE = 5 * 60 * 1000
 const defaultUbbleETAMessage = 'Environ 3 heures'
 
-export const getUbbleETAMessage = () =>
-  firestoreRemoteStore
-    .collection(RemoteStoreCollections.UBBLE)
-    .doc(env.ENV)
-    .get()
-    .then((collection) => collection.data())
-    .then((data) =>
-      data &&
-      typeof data[RemoteStoreDocuments.UBBLE_ETA_MESSAGE] === 'string' &&
-      !!data[RemoteStoreDocuments.UBBLE_ETA_MESSAGE]
-        ? data[RemoteStoreDocuments.UBBLE_ETA_MESSAGE]
-        : defaultUbbleETAMessage
-    )
+export const getUbbleETAMessage = async () => {
+  const docRef = doc(collection(firestoreRemoteStore, RemoteStoreCollections.UBBLE), env.ENV)
+  const docSnapshot = await getDoc(docRef)
+
+  if (docSnapshot.exists()) {
+    const data = docSnapshot.data()
+    const ubbleETAMessage = data[RemoteStoreDocuments.UBBLE_ETA_MESSAGE]
+
+    return typeof ubbleETAMessage === 'string' && !!ubbleETAMessage
+      ? ubbleETAMessage
+      : defaultUbbleETAMessage
+  } else {
+    return defaultUbbleETAMessage
+  }
+}
 
 export const useUbbleETAMessage = () => {
   return useQuery<string>(QueryKeys.FIRESTORE_UBBLE_ETA_MESSAGE, () => getUbbleETAMessage(), {

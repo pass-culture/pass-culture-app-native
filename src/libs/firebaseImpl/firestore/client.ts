@@ -1,4 +1,7 @@
 // eslint-disable-next-line no-restricted-imports
 import { getFirestore } from 'firebase/firestore'
 
-export const firestoreRemoteStore = getFirestore()
+import { getFirebaseApp } from 'libs/firebase/app'
+
+// @ts-ignore TODO(LucasBeneston): native
+export const firestoreRemoteStore = getFirestore(getFirebaseApp())
