@@ -4,6 +4,7 @@ import { getAnalytics } from 'firebase/analytics'
 import { getFirebaseApp } from 'libs/firebase/app'
 
 const firebaseApp = getFirebaseApp()
+// @ts-ignore TODO(LucasBeneston): native
 const firebaseAnalytics = getAnalytics(firebaseApp)
 
 export default () => ({
