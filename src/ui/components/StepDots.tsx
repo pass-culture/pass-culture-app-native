@@ -28,4 +28,8 @@ export const StepDots: FunctionComponent<Props> = (props) => {
   )
 }
 
-const StepsContainer = styled.View({ display: 'flex', flexDirection: 'row' })
+const StepsContainer = styled.View({
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+})
