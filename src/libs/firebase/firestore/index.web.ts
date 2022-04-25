@@ -3,5 +3,5 @@ import { getFirestore } from 'firebase/firestore'
 
 import { getFirebaseApp } from 'libs/firebase/app'
 
-// @ts-ignore TODO(LucasBeneston): native
+// @ts-ignore TODO(LucasBeneston): Fix typing after update @react-native-firebase/app
 export default () => getFirestore(getFirebaseApp())

@@ -4,7 +4,7 @@ import { getAnalytics } from 'firebase/analytics'
 import { getFirebaseApp } from 'libs/firebase/app'
 
 const firebaseApp = getFirebaseApp()
-// @ts-ignore TODO(LucasBeneston): native
+// @ts-ignore TODO(LucasBeneston): Fix typing after update @react-native-firebase/app
 const firebaseAnalytics = getAnalytics(firebaseApp)
 
 export default () => ({
