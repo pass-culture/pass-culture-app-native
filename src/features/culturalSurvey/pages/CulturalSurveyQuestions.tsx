@@ -16,8 +16,8 @@ import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/Cultu
 import { CulturalSurveyPageHeader } from 'features/culturalSurvey/components/layout/CulturalSurveyPageHeader'
 import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { mapQuestionIdToPageTitle } from 'features/culturalSurvey/helpers/utils'
+import { useCulturalSurveyQuestions } from 'features/culturalSurvey/useCulturalSurvey'
 import { useCulturalSurveyProgress } from 'features/culturalSurvey/useCulturalSurveyProgress'
-import { useCulturalSurveyQuestions } from 'features/culturalSurvey/useCulturalSurveyQuestions'
 import { useGetNextStep } from 'features/culturalSurvey/useGetNextStep'
 import { navigateToHome } from 'features/navigation/helpers'
 import {

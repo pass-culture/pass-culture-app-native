@@ -16,7 +16,7 @@ import { render, fireEvent } from 'tests/utils/web'
 
 jest.mock('features/navigation/helpers')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
-jest.mock('features/culturalSurvey/useCulturalSurveyQuestions', () => ({
+jest.mock('features/culturalSurvey/useCulturalSurvey', () => ({
   useCulturalSurveyQuestions: () => ({
     data: mockedCulturalSurveyQuestions,
   }),

@@ -15,7 +15,7 @@ import { CulturalSurveyRootStackParamList } from 'features/navigation/RootNaviga
 import { render, fireEvent } from 'tests/utils'
 jest.mock('features/navigation/helpers')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
-jest.mock('features/culturalSurvey/useCulturalSurveyQuestions', () => ({
+jest.mock('features/culturalSurvey/useCulturalSurvey', () => ({
   useCulturalSurveyQuestions: () => ({
     data: mockedCulturalSurveyQuestions,
   }),
