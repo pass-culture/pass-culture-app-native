@@ -79,6 +79,8 @@ src/locales/*/messages.ts
 
 # Deploy
 android/keystores/*
+!android/keystores/testing.keystore
+!android/keystores/testing.keystore.properties
 fastlane/playStoreServiceAccount.json
 .env.*.secret
 .env.secret
