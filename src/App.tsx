@@ -9,7 +9,7 @@ import 'intl'
 import 'intl/locale-data/jsonp/en'
 
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
-import { AutoImmediate, NextRestart } from 'libs/codepush/options'
+import { NextRestart } from 'libs/codepush/options'
 import { env } from 'libs/environment'
 import { activate } from 'libs/i18n'
 import { eventMonitoring } from 'libs/monitoring'
@@ -43,7 +43,7 @@ const App: FunctionComponent = function () {
   )
 }
 
-const config = env.ENV !== 'production' ? AutoImmediate : NextRestart
+const config = env.ENV !== 'production' ? NextRestart : NextRestart
 const AppWithCodepush = __DEV__ ? App : CodePush(config)(App)
 
 export { AppWithCodepush as App }

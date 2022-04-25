@@ -9,7 +9,6 @@ export const env: Environment = {
   AMPLITUDE_API_KEY: 'amplitudeApiKey',
   ANDROID_APP_ID: 'app.android',
   API_BASE_URL: 'https://localhost',
-  APPS_FLYER_DEV_KEY: 'appsFlyerDevKey',
   BATCH_API_KEY_WEB: 'BATCH_API_KEY_WEB',
   BATCH_AUTH_KEY: 'BATCH_AUTH_KEY',
   BATCH_SUBDOMAIN: 'BATCH_SUBDOMAIN',

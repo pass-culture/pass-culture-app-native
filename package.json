@@ -14,6 +14,8 @@
     "node": ">=16.13"
   },
   "scripts": {
+    "apk:build": "rm -rf android/app/build && ./android/gradlew -p android assembleApptesting",
+    "apk:install": "adb install android/app/build/outputs/apk/apptesting/release/app-apptesting-release.apk",
     "android": "react-native run-android --variant=developmentDebug",
     "android:testing": "react-native run-android --variant=apptestingDebug",
     "ios:testing": "react-native run-ios --scheme PassCulture-Testing",

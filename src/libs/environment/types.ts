@@ -7,7 +7,6 @@ export interface Environment {
   AMPLITUDE_API_KEY?: string
   ANDROID_APP_ID: string
   API_BASE_URL: string
-  APPS_FLYER_DEV_KEY: string
   BATCH_API_KEY_WEB: string
   BATCH_AUTH_KEY: string
   BATCH_SUBDOMAIN: string
