@@ -7,6 +7,7 @@ import { SeeMore } from 'features/home/atoms'
 import { Layout } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { useVenueSearchParameters } from 'features/venue/api/useVenueSearchParameters'
@@ -44,6 +45,19 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
 
+  const { dispatch } = useStagedSearch()
+  const saveVenueFilter = useCallback(() => {
+    venue &&
+      dispatch({
+        type: 'SET_LOCATION_VENUE',
+        payload: {
+          label: venue.name,
+          info: venue.city || '',
+          venueId: venue.id,
+        },
+      })
+  }, [dispatch, venue])
+
   const renderItem: CustomListRenderItem<SearchHit> = useCallback(
     ({ item, width, height }) => {
       const timestampsInMillis = item.offer.dates?.map((timestampInSec) => timestampInSec * 1000)
@@ -70,8 +84,9 @@ export const VenueOffers: React.FC<Props> = ({ venueId, layout = 'one-item-mediu
 
   const seeAllOffers = useCallback(() => {
     analytics.logVenueSeeAllOffersClicked(venueId)
+    saveVenueFilter()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [saveVenueFilter])
 
   const showSeeMore = nbHits > hits.length
   const onPressSeeMore = showSeeMore ? () => analytics.logVenueSeeMoreClicked(venueId) : undefined
