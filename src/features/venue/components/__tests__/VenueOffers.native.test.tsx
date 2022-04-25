@@ -96,9 +96,15 @@ describe('<VenueOffers />', () => {
     expect(analytics.logVenueSeeMoreClicked).toHaveBeenNthCalledWith(1, venueId)
   })
 
-  it(`should log analytics event VenueSeeAllOffersClicked when clicking "Voir toutes les offres" button`, () => {
+  it(`should log analytics event VenueSeeAllOffersClicked when clicking "Voir toutes les offres" button and set the venue search filter`, () => {
+    const dispatchedVenue = { info: 'Paris', label: 'Le Petit Rintintin 1', venueId: 5543 }
+
     const { getByText } = render(<VenueOffers venueId={venueId} />)
     fireEvent.press(getByText('Voir toutes les offres'))
+    expect(mockStagedDispatch).toHaveBeenCalledWith({
+      payload: dispatchedVenue,
+      type: 'SET_LOCATION_VENUE',
+    })
     expect(analytics.logVenueSeeAllOffersClicked).toHaveBeenNthCalledWith(1, venueId)
   })
 })
