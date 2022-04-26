@@ -2561,10 +2561,6 @@ msgstr "Suivre pass Culture"
 msgid "Suppression de compte"
 msgstr "Suppression de compte"
 
-#: src/features/profile/pages/LegalNotices/LegalNotices.tsx
-msgid "Suppression du compte"
-msgstr "Suppression du compte"
-
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Suppression profil confirmée"
 msgstr "Suppression profil confirmée"
@@ -2578,6 +2574,7 @@ msgid "Supprimer l'offre {0} de mes favoris"
 msgstr "Supprimer l'offre {0} de mes favoris"
 
 #: src/features/profile/pages/ConfirmDeleteProfile.tsx
+#: src/features/profile/pages/PersonalData.tsx
 msgid "Supprimer mon compte"
 msgstr "Supprimer mon compte"
 

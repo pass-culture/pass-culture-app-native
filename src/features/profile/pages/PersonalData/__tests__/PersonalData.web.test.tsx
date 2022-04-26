@@ -2,12 +2,13 @@ import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { render } from 'tests/utils/web'
+import { fireEvent, render } from 'tests/utils/web'
 
 import { PersonalData } from '../PersonalData'
 
@@ -40,6 +41,7 @@ describe('PersonalData', () => {
       expect(getByText('+33685974563')).toBeTruthy()
       expect(getByText('Mot de passe')).toBeTruthy()
       expect(getByText('*'.repeat(12))).toBeTruthy()
+      expect(getByText('Supprimer mon compte')).toBeTruthy()
     })
   })
 
@@ -52,9 +54,22 @@ describe('PersonalData', () => {
     await waitForExpect(() => {
       expect(queryByText('Adresse e-mail')).toBeTruthy()
       expect(queryByText('Mot de passe')).toBeTruthy()
+      expect(queryByText('Supprimer mon compte')).toBeTruthy()
       expect(queryByText('Prénom et nom')).toBeNull()
       expect(queryByText('Numéro de téléphone')).toBeNull()
     })
+  })
+
+  it('should redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
+    const { getByText } = await renderPersonalData({
+      isBeneficiary: false,
+      ...mockedIdentity,
+    } as UserProfileResponse)
+
+    const row = getByText('Supprimer mon compte')
+    fireEvent.click(row)
+
+    expect(navigate).toBeCalledWith('ConfirmDeleteProfile', undefined)
   })
 })
 
