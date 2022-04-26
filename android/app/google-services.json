@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "388311676707",
+    "project_id": "passculture-minimal",
+    "storage_bucket": "passculture-minimal.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:388311676707:android:6faf7383e025aba2483e96",
+        "android_client_info": {
+          "package_name": "app.passculture.testing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "388311676707-jc79aj7c6m2lre5sevd0dgvdkf6n7kiq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDQkJYMaM_nTP_2NudhCcKrDT4-4uu_-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "388311676707-jc79aj7c6m2lre5sevd0dgvdkf6n7kiq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

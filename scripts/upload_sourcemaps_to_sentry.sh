@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 
-set -e
+#set -e
 
 SOURCEMAPS_DIR="sourcemaps"
 
 create_sourcemaps(){
   APP_OS="$1"
   SOURCEMAPS_NAME="$2"
+
+  echo "Creating sources maps... "
+  mkdir -p "${SOURCEMAPS_DIR}"
 
   if [[ "$(uname -s)" = "Linux" ]]; then
     HERMES_BIN="linux64-bin"

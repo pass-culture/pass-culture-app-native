@@ -82,6 +82,8 @@ android/keystores/*
 !android/keystores/testing.keystore
 !android/keystores/testing.keystore.properties
 fastlane/playStoreServiceAccount.json
+android/app/google-services.json.original
+!android/app/google-services.json
 .env.*.secret
 .env.secret
 
@@ -93,7 +95,7 @@ vendor/
 .env.development
 
 # Google service
-google-services.json
+#google-services.json
 ios/GoogleService-Info.plist
 
 # Multi simulators script
