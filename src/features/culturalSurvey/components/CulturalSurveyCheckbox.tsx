@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
@@ -11,10 +11,12 @@ type CulturalSurveyCheckboxProps = {
   title?: string
   subtitle?: string | null
   icon?: FunctionComponent<IconInterface> | null
+  onPress: () => void
+  selected: boolean
 }
 
 export const CulturalSurveyCheckbox = (props: CulturalSurveyCheckboxProps) => {
-  const [selected, setIsSelected] = useState(false)
+  const [selected, setIsSelected] = useState(props.selected)
 
   const AnswerIcon = props.icon
     ? styled(props.icon).attrs(({ theme }) => ({
@@ -34,9 +36,18 @@ export const CulturalSurveyCheckbox = (props: CulturalSurveyCheckboxProps) => {
   // TODO (PC-13439) yorickeando : delete this once the component is connected to the backend data
   const title = props.title ?? 'Visité un musée,'
 
+  const onPress = () => {
+    setIsSelected(!selected)
+    props.onPress()
+  }
+
+  useEffect(() => {
+    setIsSelected(props.selected)
+  }, [props.selected])
+
   return (
     <StyledLinearGradient>
-      <AnswerContainer onPress={() => setIsSelected(!selected)} testID={'CulturalSurveyAnswer'}>
+      <AnswerContainer onPress={onPress} testID={'CulturalSurveyAnswer'}>
         {!!AnswerIcon && (
           <ActivityIconContainer>
             <AnswerIcon />

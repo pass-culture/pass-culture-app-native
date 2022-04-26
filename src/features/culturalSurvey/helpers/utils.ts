@@ -41,7 +41,7 @@ export const createInitialQuestionsList = (
   const subQuestions = [] as CulturalSurveyQuestionEnum[]
   const initialQuestionsList = [] as CulturalSurveyQuestionEnum[]
 
-  if (!culturalSurveyQuestions) return initialQuestionsList
+  if (!culturalSurveyQuestions?.questions) return initialQuestionsList
 
   culturalSurveyQuestions.questions.forEach((question) => {
     if (!subQuestions.includes(question.id)) {

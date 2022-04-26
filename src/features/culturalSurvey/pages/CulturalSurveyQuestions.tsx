@@ -5,9 +5,16 @@ import React, { useState } from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CulturalSurveyTypeCodeKey } from 'api/gen'
+import {
+  CulturalSurveyAnswer,
+  CulturalSurveyAnswerEnum,
+  CulturalSurveyQuestion,
+  CulturalSurveyQuestionEnum,
+  CulturalSurveyTypeCodeKey,
+} from 'api/gen'
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
 import { CulturalSurveyPageHeader } from 'features/culturalSurvey/components/layout/CulturalSurveyPageHeader'
+import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { mapQuestionIdToPageTitle } from 'features/culturalSurvey/helpers/utils'
 import { useCulturalSurveyProgress } from 'features/culturalSurvey/useCulturalSurveyProgress'
 import { useCulturalSurveyQuestions } from 'features/culturalSurvey/useCulturalSurveyQuestions'
@@ -17,6 +24,8 @@ import {
   CulturalSurveyRootStackParamList,
   UseNavigationType,
 } from 'features/navigation/RootNavigator/types'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { mapCulturalSurveyTypeToIcon } from 'libs/parsers/culturalSurveyType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -40,11 +49,18 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
     setBottomChildrenViewHeight(height)
   }
 
-  if (!culturalSurveyQuestionsData) return <React.Fragment />
+  const step = route.params.step
+  const { goBack } = useGoBack(...homeNavConfig)
+  const { answers, dispatch, questionsToDisplay } = useCulturalSurveyContext()
+  const currentAnswers = answers[step] as CulturalSurveyAnswerEnum[]
+
+  if (!culturalSurveyQuestionsData?.questions) {
+    throw new Error('should have questions to show')
+  }
 
   const culturalSurveyQuestion = culturalSurveyQuestionsData.questions.find(
     (question) => question.id === route.params.step
-  )
+  ) as CulturalSurveyQuestion
 
   const navigateToNextStep = () => {
     if (isCurrentStepLastStep) {
@@ -54,13 +70,79 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
     }
   }
 
+  const isAnswerAlreadySelected = (answer: CulturalSurveyAnswer) => {
+    return !!currentAnswers?.find((answerId) => answerId === answer.id)
+  }
+
+  const addSubQuestionToQuestionsToDisplay = (subQuestionId: CulturalSurveyQuestionEnum) => {
+    let updatedQuestionsToDisplay = [...questionsToDisplay]
+    updatedQuestionsToDisplay = updatedQuestionsToDisplay.filter(
+      (questionId) => questionId != subQuestionId
+    )
+    return updatedQuestionsToDisplay
+  }
+
+  const removeSubQuestionsToDisplay = (subQuestionId: CulturalSurveyQuestionEnum) => {
+    const updatedQuestionsToDisplay = [...questionsToDisplay]
+    updatedQuestionsToDisplay.splice(1, 0, subQuestionId)
+    return updatedQuestionsToDisplay
+  }
+
+  const updateQuestionsToDisplay = (
+    subQuestionId: CulturalSurveyQuestionEnum,
+    isAnswerSelected: boolean
+  ) => {
+    const updatedQuestionsToDisplay = isAnswerSelected
+      ? addSubQuestionToQuestionsToDisplay(subQuestionId)
+      : removeSubQuestionsToDisplay(subQuestionId)
+
+    dispatch({
+      type: 'SET_QUESTIONS',
+      payload: updatedQuestionsToDisplay,
+    })
+  }
+  const updateAnswers = (answer: CulturalSurveyAnswer, isAnswerSelected: boolean) => {
+    const updatedAnswers = isAnswerSelected
+      ? currentAnswers.filter((answerId) => answerId !== answer.id)
+      : [...currentAnswers, answer.id]
+
+    dispatch({
+      type: 'SET_ANSWERS',
+      payload: {
+        questionId: step,
+        answers: updatedAnswers,
+      },
+    })
+  }
+
+  const handleToggleAnswer = (answer: CulturalSurveyAnswer) => () => {
+    const isAnswerSelected = isAnswerAlreadySelected(answer)
+
+    updateAnswers(answer, isAnswerSelected)
+    if (answer.sub_question) {
+      updateQuestionsToDisplay(answer.sub_question, isAnswerSelected)
+    }
+  }
+
   const pageSubtitle = t`Tu peux sélectionner une ou plusieurs réponses.`
+
+  const onGoBack = () => {
+    goBack()
+    dispatch({
+      type: 'SET_ANSWERS',
+      payload: {
+        questionId: step,
+        answers: [],
+      },
+    })
+  }
 
   return (
     <Container>
       <CulturalSurveyPageHeader
         progress={culturalSurveyProgress}
         title={mapQuestionIdToPageTitle(culturalSurveyQuestion?.id)}
+        onGoBack={onGoBack}
       />
       <ChildrenScrollView bottomChildrenViewHeight={bottomChildrenViewHeight}>
         <Typo.Title3>{culturalSurveyQuestion?.title}</Typo.Title3>
@@ -72,6 +154,8 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
             <Li key={answer.id}>
               <CheckboxContainer>
                 <CulturalSurveyCheckbox
+                  selected={isAnswerAlreadySelected(answer)}
+                  onPress={handleToggleAnswer(answer)}
                   title={answer.title}
                   subtitle={answer?.subtitle}
                   // @ts-ignore TODO yorickeando: once the mapCulturalSurveyTypeToIcon helper

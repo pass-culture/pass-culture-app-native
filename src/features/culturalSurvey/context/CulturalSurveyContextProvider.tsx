@@ -19,17 +19,28 @@ export const CulturalSurveyContextProvider = ({
 }: {
   children: JSX.Element | JSX.Element[]
 }) => {
+  const { data: culturalSurveyQuestionsData } = useCulturalSurveyQuestions()
+
   const [culturalSurveyState, dispatch] = useReducer(
     culturalSurveyReducer,
     initialCulturalSurveyState
   )
-  const { data: culturalSurveyQuestionsData } = useCulturalSurveyQuestions()
 
   useEffect(() => {
-    dispatch({
-      type: 'SET_QUESTIONS',
-      payload: createInitialQuestionsList(culturalSurveyQuestionsData),
-    })
+    if (culturalSurveyQuestionsData?.questions) {
+      const questions = createInitialQuestionsList(culturalSurveyQuestionsData)
+      const answers = culturalSurveyQuestionsData.questions.reduce(
+        (result, question) => ({
+          ...result,
+          [question.id]: [],
+        }),
+        {} as CulturalSurveyState['answers']
+      )
+      dispatch({
+        type: 'INIT_QUESTION_KEYS',
+        payload: { questions, answers },
+      })
+    }
   }, [culturalSurveyQuestionsData, dispatch])
 
   const value = useMemo(
