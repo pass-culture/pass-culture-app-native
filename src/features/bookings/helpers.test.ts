@@ -348,64 +348,28 @@ describe('getEventOnSiteWithdrawLabel', () => {
 
   describe('without withdrawal delay informed', () => {
     it('should return "Billet à retirer sur place" if event in 3 days', () => {
-      const booking = {
-        ...bookingEventIn3Days,
-        stock: {
-          ...bookingEventIn3Days.stock,
-          offer: {
-            ...bookingEventIn3Days.stock.offer,
-            withdrawalDelay: 0,
-          },
-        },
-      }
+      const booking = getBookingWithWithdrawalDelay(bookingEventIn3Days, 0)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
       expect(message).toEqual(t`Billet à retirer sur place`)
     })
 
     it('should return "Billet à retirer sur place" if event in 2 days', () => {
-      const booking = {
-        ...bookingEventIn2Days,
-        stock: {
-          ...bookingEventIn2Days.stock,
-          offer: {
-            ...bookingEventIn2Days.stock.offer,
-            withdrawalDelay: 0,
-          },
-        },
-      }
+      const booking = getBookingWithWithdrawalDelay(bookingEventIn2Days, 0)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
       expect(message).toEqual(t`Billet à retirer sur place`)
     })
 
     it(`should return "Billet à retirer sur place d'ici demain" if event is tomorrow`, () => {
-      const booking = {
-        ...bookingTomorrowEvent,
-        stock: {
-          ...bookingTomorrowEvent.stock,
-          offer: {
-            ...bookingTomorrowEvent.stock.offer,
-            withdrawalDelay: 0,
-          },
-        },
-      }
+      const booking = getBookingWithWithdrawalDelay(bookingTomorrowEvent, 0)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
       expect(message).toEqual(t`Billet à retirer sur place d'ici demain`)
     })
 
     it(`should return "Billet à retirer sur place aujourd'hui" if event is today`, () => {
-      const booking = {
-        ...bookingTodayEvent,
-        stock: {
-          ...bookingTodayEvent.stock,
-          offer: {
-            ...bookingTodayEvent.stock.offer,
-            withdrawalDelay: 0,
-          },
-        },
-      }
+      const booking = getBookingWithWithdrawalDelay(bookingTodayEvent, 0)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
       expect(message).toEqual(t`Billet à retirer sur place aujourd'hui`)
@@ -414,64 +378,28 @@ describe('getEventOnSiteWithdrawLabel', () => {
 
   describe('with withdrawal delay less than 24 hours', () => {
     it('should return "Billet à retirer sur place dans 3 jours" if event in 3 days', () => {
-      const booking = {
-        ...bookingEventIn3Days,
-        stock: {
-          ...bookingEventIn3Days.stock,
-          offer: {
-            ...bookingEventIn3Days.stock.offer,
-            withdrawalDelay: 60 * 60 * 2,
-          },
-        },
-      }
+      const booking = getBookingWithWithdrawalDelay(bookingEventIn3Days, 60 * 60 * 2)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
       expect(message).toEqual(t`Billet à retirer sur place dans 3 jours`)
     })
 
     it('should return "Billet à retirer sur place dans 2 jours" if event in 2 days', () => {
-      const booking = {
-        ...bookingEventIn2Days,
-        stock: {
-          ...bookingEventIn2Days.stock,
-          offer: {
-            ...bookingEventIn2Days.stock.offer,
-            withdrawalDelay: 60 * 60 * 2,
-          },
-        },
-      }
+      const booking = getBookingWithWithdrawalDelay(bookingEventIn2Days, 60 * 60 * 2)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
       expect(message).toEqual(t`Billet à retirer sur place dans 2 jours`)
     })
 
     it(`should return "Billet à retirer sur place demain" if event is tomorrow`, () => {
-      const booking = {
-        ...bookingTomorrowEvent,
-        stock: {
-          ...bookingTomorrowEvent.stock,
-          offer: {
-            ...bookingTomorrowEvent.stock.offer,
-            withdrawalDelay: 60 * 60 * 2,
-          },
-        },
-      }
+      const booking = getBookingWithWithdrawalDelay(bookingTomorrowEvent, 60 * 60 * 2)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
       expect(message).toEqual(t`Billet à retirer sur place demain`)
     })
 
     it(`should return "Billet à retirer sur place dès 18h30" if event is today`, () => {
-      const booking = {
-        ...bookingTodayEvent,
-        stock: {
-          ...bookingTodayEvent.stock,
-          offer: {
-            ...bookingTodayEvent.stock.offer,
-            withdrawalDelay: 60 * 60 * 2,
-          },
-        },
-      }
+      const booking = getBookingWithWithdrawalDelay(bookingTodayEvent, 60 * 60 * 2)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
       expect(message).toEqual(t`Billet à retirer sur place dès` + ' 18h30')
@@ -480,64 +408,28 @@ describe('getEventOnSiteWithdrawLabel', () => {
 
   describe('with 24 hours withdrawal delay', () => {
     it('should return "Billet à retirer sur place dans 2 jours" if event in 3 days', () => {
-      const booking = {
-        ...bookingEventIn3Days,
-        stock: {
-          ...bookingEventIn3Days.stock,
-          offer: {
-            ...bookingEventIn3Days.stock.offer,
-            withdrawalDelay: 60 * 60 * 24,
-          },
-        },
-      }
+      const booking = getBookingWithWithdrawalDelay(bookingEventIn3Days, 60 * 60 * 24)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
       expect(message).toEqual(t`Billet à retirer sur place dans 2 jours`)
     })
 
     it('should return "Billet à retirer sur place dès demain" if event in 2 days', () => {
-      const booking = {
-        ...bookingEventIn2Days,
-        stock: {
-          ...bookingEventIn2Days.stock,
-          offer: {
-            ...bookingEventIn2Days.stock.offer,
-            withdrawalDelay: 60 * 60 * 24,
-          },
-        },
-      }
+      const booking = getBookingWithWithdrawalDelay(bookingEventIn2Days, 60 * 60 * 24)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
       expect(message).toEqual(t`Billet à retirer sur place dès demain`)
     })
 
     it(`should return "Billet à retirer sur place dès aujourd'hui" if event is tomorrow`, () => {
-      const booking = {
-        ...bookingTomorrowEvent,
-        stock: {
-          ...bookingTomorrowEvent.stock,
-          offer: {
-            ...bookingTomorrowEvent.stock.offer,
-            withdrawalDelay: 60 * 60 * 24,
-          },
-        },
-      }
+      const booking = getBookingWithWithdrawalDelay(bookingTomorrowEvent, 60 * 60 * 24)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
       expect(message).toEqual(t`Billet à retirer sur place dès aujourd'hui`)
     })
 
     it(`should return "Billet à retirer sur place aujourd'hui" if event is today`, () => {
-      const booking = {
-        ...bookingTodayEvent,
-        stock: {
-          ...bookingTodayEvent.stock,
-          offer: {
-            ...bookingTodayEvent.stock.offer,
-            withdrawalDelay: 60 * 60 * 24,
-          },
-        },
-      }
+      const booking = getBookingWithWithdrawalDelay(bookingTodayEvent, 60 * 60 * 24)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
       expect(message).toEqual(t`Billet à retirer sur place aujourd'hui`)
@@ -546,64 +438,28 @@ describe('getEventOnSiteWithdrawLabel', () => {
 
   describe('with 48 hours withdrawal delay', () => {
     it('should return "Billet à retirer sur place dès demain" if event in 3 days', () => {
-      const booking = {
-        ...bookingEventIn3Days,
-        stock: {
-          ...bookingEventIn3Days.stock,
-          offer: {
-            ...bookingEventIn3Days.stock.offer,
-            withdrawalDelay: 60 * 60 * 48,
-          },
-        },
-      }
+      const booking = getBookingWithWithdrawalDelay(bookingEventIn3Days, 60 * 60 * 48)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
       expect(message).toEqual(t`Billet à retirer sur place dès demain`)
     })
 
     it(`should return "Billet à retirer sur place dès aujourd'hui" if event in 2 days`, () => {
-      const booking = {
-        ...bookingEventIn2Days,
-        stock: {
-          ...bookingEventIn2Days.stock,
-          offer: {
-            ...bookingEventIn2Days.stock.offer,
-            withdrawalDelay: 60 * 60 * 48,
-          },
-        },
-      }
+      const booking = getBookingWithWithdrawalDelay(bookingEventIn2Days, 60 * 60 * 48)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
       expect(message).toEqual(t`Billet à retirer sur place dès aujourd'hui`)
     })
 
     it(`should return "Billet à retirer sur place dès aujourd'hui" if event is tomorrow`, () => {
-      const booking = {
-        ...bookingTomorrowEvent,
-        stock: {
-          ...bookingTomorrowEvent.stock,
-          offer: {
-            ...bookingTomorrowEvent.stock.offer,
-            withdrawalDelay: 60 * 60 * 48,
-          },
-        },
-      }
+      const booking = getBookingWithWithdrawalDelay(bookingTomorrowEvent, 60 * 60 * 48)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
       expect(message).toEqual(t`Billet à retirer sur place dès aujourd'hui`)
     })
 
     it(`should return "Billet à retirer sur place aujourd'hui" if event is today`, () => {
-      const booking = {
-        ...bookingTodayEvent,
-        stock: {
-          ...bookingTodayEvent.stock,
-          offer: {
-            ...bookingTodayEvent.stock.offer,
-            withdrawalDelay: 60 * 60 * 48,
-          },
-        },
-      }
+      const booking = getBookingWithWithdrawalDelay(bookingTodayEvent, 60 * 60 * 48)
 
       const message = getEventOnSiteWithdrawLabel(booking.stock)
       expect(message).toEqual(t`Billet à retirer sur place aujourd'hui`)
@@ -629,19 +485,23 @@ describe('getEventOnSiteWithdrawLabel', () => {
 
   it('should return an empty string if the event has started', () => {
     mockdate.set(new Date('2022-04-22T20:30:01'))
-    const booking = {
-      ...bookingTodayEvent,
-      stock: {
-        ...bookingTodayEvent.stock,
-        offer: {
-          ...bookingTodayEvent.stock.offer,
-          withdrawalDelay: 60 * 60 * 48,
-        },
-      },
-    }
+    const booking = getBookingWithWithdrawalDelay(bookingTodayEvent, 60 * 60 * 48)
 
     const message = getEventOnSiteWithdrawLabel(booking.stock)
     mockdate.reset()
     expect(message).toEqual('')
   })
 })
+
+function getBookingWithWithdrawalDelay(booking: Booking, withdrawalDelay: number) {
+  return {
+    ...booking,
+    stock: {
+      ...booking.stock,
+      offer: {
+        ...booking.stock.offer,
+        withdrawalDelay,
+      },
+    },
+  }
+}

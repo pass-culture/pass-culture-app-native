@@ -27,9 +27,10 @@ export type GetEventOnSiteWithdrawLabelProperties = {
   eventDateMinus3Days: Date
   eventDateMinus2Days: Date
   eventDateMinus1Day: Date
-  oneDayInSeconds: number
-  twoDaysInSeconds: number
 }
+
+const ONE_DAY_IN_SECONDS = 60 * 60 * 24
+const TWO_DAYS_IN_SECONDS = 60 * 60 * 48
 
 export function getBookingProperties(booking: Booking, isEvent: boolean): BookingProperties {
   if (!booking) {
@@ -96,13 +97,13 @@ export function getEventOnSiteWithdrawLabel(stock: BookingStockResponse): string
 
   if (properties.withdrawalDelay === 0) return getWithoutWithdrawaDelayLabel(properties)
 
-  if (properties.withdrawalDelay < properties.oneDayInSeconds)
+  if (properties.withdrawalDelay < ONE_DAY_IN_SECONDS)
     return getWithLessOneDayWithdrawaDelayLabel(properties)
 
-  if (properties.withdrawalDelay === properties.oneDayInSeconds)
+  if (properties.withdrawalDelay === ONE_DAY_IN_SECONDS)
     return getWithOneDayWithdrawaDelayLabel(properties)
 
-  if (properties.withdrawalDelay === properties.twoDaysInSeconds)
+  if (properties.withdrawalDelay === TWO_DAYS_IN_SECONDS)
     return getWithTwoDaysWithdrawaDelayLabel(properties)
 
   return ''
@@ -121,8 +122,6 @@ function initGetEventOnSiteWithdrawLabelProperties(
     eventDateMinus3Days: addDays(eventDate, -3),
     eventDateMinus2Days: addDays(eventDate, -2),
     eventDateMinus1Day: addDays(eventDate, -1),
-    oneDayInSeconds: 60 * 60 * 24,
-    twoDaysInSeconds: 60 * 60 * 48,
   }
 }
 
