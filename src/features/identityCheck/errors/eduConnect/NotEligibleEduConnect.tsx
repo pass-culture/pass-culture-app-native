@@ -30,6 +30,7 @@ export const NotEligibleEduConnect = ({
     primaryButtonText,
     tertiaryButtonVisible = false,
     onPrimaryButtonPress,
+    navigateTo,
   } = useNotEligibleEduConnectErrorData(message, setError)
 
   useEffect(
@@ -61,7 +62,7 @@ export const NotEligibleEduConnect = ({
           key={1}
           as={ButtonPrimaryWhite}
           wording={primaryButtonText ?? "Retourner à l'accueil"}
-          navigateTo={onPrimaryButtonPress ? undefined : navigateToHomeConfig}
+          navigateTo={navigateTo ?? navigateToHomeConfig}
           onPress={onPrimaryButtonPress}
         />,
         !!tertiaryButtonVisible && (
