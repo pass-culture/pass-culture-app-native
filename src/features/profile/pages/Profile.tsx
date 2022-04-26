@@ -28,7 +28,6 @@ import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
-import { Lock } from 'ui/svg/icons/Lock'
 import { Profile as ProfileIcon } from 'ui/svg/icons/Profile'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
@@ -119,24 +118,14 @@ export const Profile: React.FC = () => {
         <Section title={isLoggedIn ? t`Paramètres du compte` : t`Paramètres de l'application`}>
           <VerticalUl>
             {!!isLoggedIn && (
-              <React.Fragment>
-                <Li>
-                  <Row
-                    title={t`Informations personnelles`}
-                    type="navigable"
-                    navigateTo={{ screen: 'PersonalData' }}
-                    icon={ProfileIcon}
-                  />
-                </Li>
-                <Li>
-                  <Row
-                    title={t`Mot de passe`}
-                    type="navigable"
-                    navigateTo={{ screen: 'ChangePassword' }}
-                    icon={Lock}
-                  />
-                </Li>
-              </React.Fragment>
+              <Li>
+                <Row
+                  title={t`Informations personnelles`}
+                  type="navigable"
+                  navigateTo={{ screen: 'PersonalData' }}
+                  icon={ProfileIcon}
+                />
+              </Li>
             )}
             <Li>
               <Row

@@ -1590,6 +1590,7 @@ msgid "Modifie ta recherche ou découvre toutes les offres"
 msgstr "Modifie ta recherche ou découvre toutes les offres"
 
 #: src/features/profile/pages/PersonalData.tsx
+#: src/features/profile/pages/PersonalData.tsx
 msgid "Modifier"
 msgstr "Modifier"
 
@@ -1626,7 +1627,7 @@ msgstr "Mon profil"
 #: src/features/auth/signup/SignupForm.tsx
 #: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
 #: src/features/profile/pages/ChangePassword/ChangePassword.tsx
-#: src/features/profile/pages/Profile.tsx
+#: src/features/profile/pages/PersonalData.tsx
 #: src/ui/components/inputs/PasswordInput.tsx
 msgid "Mot de passe"
 msgstr "Mot de passe"
