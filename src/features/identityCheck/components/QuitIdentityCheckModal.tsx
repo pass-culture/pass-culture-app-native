@@ -9,7 +9,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { AppFullPageModal } from 'ui/components/modals/AppFullPageModal'
-import { ErrorIllustration } from 'ui/svg/icons/ErrorIllustration'
+import { BicolorError } from 'ui/svg/icons/BicolorError'
 import { Typo } from 'ui/theme'
 
 interface Props {
@@ -70,3 +70,8 @@ const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))
+
+const ErrorIllustration = styled(BicolorError).attrs(({ theme }) => ({
+  color: theme.colors.white,
+  color2: theme.colors.white,
+}))``
