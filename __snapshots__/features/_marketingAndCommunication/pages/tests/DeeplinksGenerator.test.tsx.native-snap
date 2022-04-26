@@ -1579,7 +1579,7 @@ Array [
                     ]
                   }
                 >
-                  Source de la campagne : transac, newsletter (pour les emails), batch, insta, facebook, tiktok, partner (pour les partenariats).
+                  Source de la campagne : transac, newsletter (pour les emails), batch, insta, facebook, tiktok.
                 </Text>
               </View>
               <View
@@ -1703,7 +1703,7 @@ Array [
                     ]
                   }
                 >
-                  Canal de la campagne : email, push, smo (social media organic), smp (social media paid), sea (pour les campagnes d’adword...), press.
+                  Canal de la campagne : email, push, smo (social media organic), smp (social media paid), sea (pour les campagnes d’adword...), press, partner (partenaires, influenceurs...).
                 </Text>
               </View>
               <View

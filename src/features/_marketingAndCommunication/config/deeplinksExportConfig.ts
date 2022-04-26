@@ -134,11 +134,11 @@ export const MARKETING_CONFIG: MarketingConfig = {
   },
   utm_source: {
     type: 'string',
-    description: `Source de la campagne : transac, newsletter (pour les emails), batch, insta, facebook, tiktok, partner (pour les partenariats).`,
+    description: `Source de la campagne : transac, newsletter (pour les emails), batch, insta, facebook, tiktok.`,
   },
   utm_medium: {
     type: 'string',
-    description: `Canal de la campagne : email, push, smo (social media organic), smp (social media paid), sea (pour les campagnes d’adword...), press.`,
+    description: `Canal de la campagne : email, push, smo (social media organic), smp (social media paid), sea (pour les campagnes d’adword...), press, partner (partenaires, influenceurs...).`,
   },
   utm_content: {
     type: 'string',
