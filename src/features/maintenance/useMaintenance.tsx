@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 
-import { MAINTENANCE, Maintenance, maintenanceStatusListener } from 'libs/firestore/maintenance'
+import { maintenanceStatusListener } from 'libs/firestore/maintenance'
+import { MAINTENANCE, Maintenance } from 'libs/firestore/types'
 
 export const useMaintenance = (): Maintenance => {
   const [maintenance, setMaintenance] = useState<Maintenance>({

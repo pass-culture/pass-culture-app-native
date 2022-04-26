@@ -2,32 +2,15 @@ import { t } from '@lingui/macro'
 
 import { env } from 'libs/environment'
 import { firestoreRemoteStore } from 'libs/firestore/client'
-import { RemoteStoreCollections, RemoteStoreDocuments } from 'libs/firestore/types'
+import {
+  Maintenance,
+  MAINTENANCE,
+  OnMaintenanceChange,
+  RemoteStoreCollections,
+  RemoteStoreDocuments,
+  Unsubscribe,
+} from 'libs/firestore/types'
 import { captureMonitoringError } from 'libs/monitoring'
-
-export enum MAINTENANCE {
-  UNKNOWN = 'UNKNOWN',
-  OFF = 'OFF',
-  ON = 'ON',
-}
-
-export type Maintenance =
-  | {
-      status: MAINTENANCE.UNKNOWN
-      message: undefined
-    }
-  | {
-      status: MAINTENANCE.OFF
-      message: undefined
-    }
-  | {
-      status: MAINTENANCE.ON
-      message: string
-    }
-
-type OnMaintenanceChange = (maintenance: Maintenance) => void
-
-type Unsubscribe = () => void
 
 export const maintenanceStatusListener = (onMaintenanceChange: OnMaintenanceChange): Unsubscribe =>
   firestoreRemoteStore
