@@ -1,7 +1,6 @@
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment'
@@ -50,13 +49,5 @@ describe('LegalNotices', () => {
     fireEvent.press(row)
 
     expect(openUrl).toBeCalledWith(env.DATA_PRIVACY_CHART_LINK, undefined)
-  })
-  it('should redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
-    const { getByText } = await renderProfile()
-
-    const row = getByText('Suppression du compte')
-    fireEvent.press(row)
-
-    expect(navigate).toBeCalledWith('ConfirmDeleteProfile', undefined)
   })
 })

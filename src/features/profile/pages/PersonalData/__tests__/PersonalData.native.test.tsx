@@ -50,6 +50,7 @@ describe('PersonalData', () => {
       expect(getByText('+33685974563')).toBeTruthy()
       expect(getByText('Mot de passe')).toBeTruthy()
       expect(getByText('*'.repeat(12))).toBeTruthy()
+      expect(getByText('Supprimer mon compte')).toBeTruthy()
     })
   })
 
@@ -62,6 +63,7 @@ describe('PersonalData', () => {
     await waitForExpect(() => {
       expect(queryByText('Adresse e-mail')).toBeTruthy()
       expect(queryByText('Mot de passe')).toBeTruthy()
+      expect(queryByText('Supprimer mon compte')).toBeTruthy()
       expect(queryByText('Prénom et nom')).toBeNull()
       expect(queryByText('Numéro de téléphone')).toBeNull()
     })
@@ -94,6 +96,18 @@ describe('PersonalData', () => {
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith('ChangePassword', undefined)
     })
+  })
+
+  it('should redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
+    const { getByText } = await renderPersonalData({
+      isBeneficiary: false,
+      ...mockedIdentity,
+    } as UserProfileResponse)
+
+    const row = getByText('Supprimer mon compte')
+    fireEvent.press(row)
+
+    expect(navigate).toBeCalledWith('ConfirmDeleteProfile', undefined)
   })
 })
 

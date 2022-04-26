@@ -7,8 +7,11 @@ import { ProfileContainer } from 'features/profile/components/reusables'
 import { EditButton } from 'features/profile/pages/PersonalData/EditButton'
 import { analytics } from 'libs/analytics'
 import { PageHeader } from 'ui/components/headers/PageHeader'
+import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
+import { Trash } from 'ui/svg/icons/Trash'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 export function PersonalData() {
   const { data: user } = useUserProfileInfo()
@@ -72,6 +75,12 @@ export function PersonalData() {
           </EditContainer>
         </Row>
         <Separator />
+        <StyledSectionRow
+          title={t`Supprimer mon compte`}
+          type="navigable"
+          navigateTo={{ screen: 'ConfirmDeleteProfile' }}
+          icon={Trash}
+        />
       </Container>
     </React.Fragment>
   )
@@ -84,6 +93,10 @@ const Container = styled(ProfileContainer)({
 
 const Row = styled.View({
   paddingVertical: getSpacing(4),
+})
+
+const StyledSectionRow = styled(SectionRow).attrs({ iconSize: SECTION_ROW_ICON_SIZE })({
+  paddingVertical: getSpacing(6),
 })
 
 const EditContainer = styled.View({
