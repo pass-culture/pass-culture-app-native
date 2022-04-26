@@ -29,7 +29,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
     }
   />
   <View
-    setHeight={true}
+    hasHeight={true}
     style={
       Array [
         Object {

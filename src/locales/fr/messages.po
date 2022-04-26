@@ -56,7 +56,6 @@ msgid "18 ans"
 msgstr "18 ans"
 
 #: src/features/identityCheck/pages/Stepper.tsx
-#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
 msgid "Abandonner"
 msgstr "Abandonner"
 
@@ -446,10 +445,6 @@ msgstr "Ce plafond a été mis en place pour favoriser la diversification des pr
 msgid "Ce week-end"
 msgstr "Ce week-end"
 
-#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
-msgid "Cela entraînera l'annulation de l'ensemble de tes réservations en cours, ainsi que la suppression définitive de ton crédit pass Culture si tu en bénéficies."
-msgstr "Cela entraînera l'annulation de l'ensemble de tes réservations en cours, ainsi que la suppression définitive de ton crédit pass Culture si tu en bénéficies."
-
 #: src/libs/parsers/venueType.ts
 #: src/libs/parsers/venueType.ts
 msgid "Centre culturel"
@@ -657,6 +652,10 @@ msgstr "Conserver l'historique"
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Consulter l'article d'aide"
 msgstr "Consulter l'article d'aide"
+
+#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
+msgid "Consulter l’article d’aide"
+msgstr "Consulter l’article d’aide"
 
 #: src/features/auth/components/OpenInboxButton.tsx
 msgid "Consulter mes e-mails"
@@ -1058,10 +1057,6 @@ msgstr "Erreur"
 #: src/features/auth/login/Login.tsx
 msgid "Erreur réseau. Tu peux réessayer une fois la connexion réétablie"
 msgstr "Erreur réseau. Tu peux réessayer une fois la connexion réétablie"
-
-#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
-msgid "Es-tu sûr de vouloir supprimer ton compte ?"
-msgstr "Es-tu sûr de vouloir supprimer ton compte ?"
 
 #: src/features/bookings/components/NoBookingsView.tsx
 #: src/features/favorites/components/NoFavoritesResult.tsx
@@ -1486,6 +1481,14 @@ msgstr "Le {day}"
 msgid "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
 msgstr "Les conditions générales d'utilisation de l'App Store iOS ne permettent pas de réserver cette offre sur l'application."
 
+#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
+msgid "Les conséquences :"
+msgstr "Les conséquences :"
+
+#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
+msgid "Les données qu’on conserve :"
+msgstr "Les données qu’on conserve :"
+
 #: src/features/identityCheck/pages/identification/IdentityCheckValidation.tsx
 #: src/features/identityCheck/pages/identification/IdentityCheckValidation.web.tsx
 msgid "Les informations extraites sont-elles correctes ?"
@@ -1798,6 +1801,10 @@ msgstr "Nous avons eu un problème pour trouver la ville associée à ton code p
 msgid "Nous devons vérifier tes informations : l'email peut prendre quelques minutes pour arriver."
 msgstr "Nous devons vérifier tes informations : l'email peut prendre quelques minutes pour arriver."
 
+#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
+msgid "Nous gardons toutes les informations personnelles que tu nous as transmises lors de la vérification de ton identité."
+msgstr "Nous gardons toutes les informations personnelles que tu nous as transmises lors de la vérification de ton identité."
+
 #: src/features/navigation/helpers/openUrl.ts
 msgid "Nous n'arrivons pas à ouvrir ce lien : {url}"
 msgstr "Nous n'arrivons pas à ouvrir ce lien : {url}"
@@ -1945,6 +1952,10 @@ msgstr "Où"
 #: src/libs/geolocation/components/WhereSection.tsx
 msgid "Où ?"
 msgstr "Où ?"
+
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "POC A/B Testing"
+msgstr "POC A/B Testing"
 
 #: src/features/navigation/TabBar/routes.ts
 msgid "Page d'accueil"
@@ -2348,6 +2359,7 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 #: src/features/culturalSurvey/components/layout/CulturalSurveyPageHeader.tsx
 #: src/features/identityCheck/atoms/layout/PageHeader.tsx
 #: src/features/offer/components/OfferHeader.tsx
+#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
 #: src/features/search/components/SearchBox.tsx
 #: src/features/venue/components/VenueHeader.tsx
 #: src/ui/components/headers/PageHeader.tsx
@@ -3099,7 +3111,7 @@ msgstr "Une fois ce délai écoulé, ton compte pass Culture sera définitivemen
 
 #: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
 msgid "Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture."
-msgstr "Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture.
+msgstr "Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture."
 
 #: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
 msgid "Une fois cette date passée, ton compte pass Culture sera définitivement supprimé."
@@ -3183,6 +3195,10 @@ msgstr "Veux-tu abandonner l'inscription ?"
 #: src/features/identityCheck/components/QuitIdentityCheckModal.tsx
 msgid "Veux-tu abandonner la vérification d'identité ?"
 msgstr "Veux-tu abandonner la vérification d'identité ?"
+
+#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
+msgid "Veux-tu vraiment supprimer ton compte ?"
+msgstr "Veux-tu vraiment supprimer ton compte ?"
 
 #: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
 #: src/features/navigation/RootNavigator/identityCheckRoutes.ts
@@ -3538,6 +3554,10 @@ msgstr "Retrouve \"{name}\" chez \"{locationName}\" sur le pass Culture"
 msgid "share venue message"
 msgstr "Retrouve \"{name}\" sur le pass Culture"
 
+#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
+msgid "si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau"
+msgstr "si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau"
+
 #: src/features/offer/pages/OfferDescription.tsx
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "spécialité"
@@ -3547,9 +3567,17 @@ msgstr "spécialité"
 msgid "starting from date"
 msgstr "Dès le {date}"
 
+#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
+msgid "tes réservations seront annulées et supprimées"
+msgstr "tes réservations seront annulées et supprimées"
+
 #: src/ui/components/inputs/EmailInput.tsx
 msgid "tonadresse@email.com"
 msgstr "tonadresse@email.com"
+
+#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
+msgid "tu n’auras plus accès au catalogue"
+msgstr "tu n’auras plus accès au catalogue"
 
 #: src/features/offer/pages/OfferDescription.tsx
 msgid "type"

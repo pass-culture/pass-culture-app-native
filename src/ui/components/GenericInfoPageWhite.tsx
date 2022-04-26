@@ -78,7 +78,7 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
       {props.header}
       <ContentContainer fullWidth={props.fullWidth as boolean}>
         <Spacer.Flex flex={grid({ sm: 1, default: 2 }, 'height')} />
-        <StyledLottieContainer setHeight={separateIconFromTitle}>
+        <StyledLottieContainer hasHeight={separateIconFromTitle}>
           {animation ? (
             <StyledLottieView
               style={lottieStyle}
@@ -117,11 +117,11 @@ const ContentContainer = styled.View<{ fullWidth: boolean }>(({ fullWidth, theme
   width: fullWidth ? '100%' : undefined,
 }))
 
-const StyledLottieContainer = styled.View<{ setHeight?: boolean }>(({ setHeight }) => ({
+const StyledLottieContainer = styled.View<{ hasHeight?: boolean }>(({ hasHeight }) => ({
   flexGrow: 1,
   alignItems: 'center',
   justifyContent: 'center',
-  height: setHeight ? '30%' : undefined,
+  height: hasHeight ? '30%' : undefined,
 }))
 
 const StyledLottieView = styled(LottieView)({
