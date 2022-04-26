@@ -1,27 +1,21 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { useUserProfileInfo } from 'features/home/api'
-import { UseNavigationType } from 'features/navigation/RootNavigator'
+import { ProfileContainer } from 'features/profile/components/reusables'
+import { EditButton } from 'features/profile/pages/PersonalData/EditButton'
 import { analytics } from 'libs/analytics'
-import { ButtonQuaternary } from 'ui/components/buttons/ButtonQuaternary'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
-import { EditPen } from 'ui/svg/icons/EditPen'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
-import { ProfileContainer } from '../components/reusables'
-
 export function PersonalData() {
-  const { navigate } = useNavigation<UseNavigationType>()
   const { data: user } = useUserProfileInfo()
 
   const fullname = String(user?.firstName + ' ' + user?.lastName).trim()
 
   const onEmailChange = () => {
-    navigate('ChangeEmail')
     analytics.logModifyMail()
   }
 
@@ -34,7 +28,7 @@ export function PersonalData() {
         {!!user?.isBeneficiary && (
           <React.Fragment>
             <Row>
-              <Typo.Caption>{t`Prénom et nom`}</Typo.Caption>
+              <RowTitle>{t`Prénom et nom`}</RowTitle>
               <Spacer.Column numberOfSpaces={2} />
               <Typo.Body>{fullname}</Typo.Body>
             </Row>
@@ -42,24 +36,42 @@ export function PersonalData() {
           </React.Fragment>
         )}
         <Row>
-          <Typo.Caption>{t`Adresse e-mail`}</Typo.Caption>
+          <RowTitle>{t`Adresse e-mail`}</RowTitle>
           <Spacer.Column numberOfSpaces={2} />
-          <EmailContainer>
-            <EmailText>{user?.email}</EmailText>
-            <ButtonQuaternary wording={t`Modifier`} icon={EditPen} inline onPress={onEmailChange} />
-          </EmailContainer>
+          <EditContainer>
+            <EditText>{user?.email}</EditText>
+            <EditButton
+              navigateTo={{ screen: 'ChangeEmail' }}
+              onPress={onEmailChange}
+              wording={t`Modifier`}
+              testID="Modifier e-mail"
+            />
+          </EditContainer>
         </Row>
         <Separator />
         {!!user?.isBeneficiary && (
           <React.Fragment>
             <Row>
-              <Typo.Caption>{t`Numéro de téléphone`}</Typo.Caption>
+              <RowTitle>{t`Numéro de téléphone`}</RowTitle>
               <Spacer.Column numberOfSpaces={2} />
               <Typo.Body>{user?.phoneNumber}</Typo.Body>
             </Row>
             <Separator />
           </React.Fragment>
         )}
+        <Row>
+          <RowTitle>{t`Mot de passe`}</RowTitle>
+          <Spacer.Column numberOfSpaces={2} />
+          <EditContainer>
+            <EditText>{'*'.repeat(12)}</EditText>
+            <EditButton
+              navigateTo={{ screen: 'ChangePassword' }}
+              wording={t`Modifier`}
+              testID="Modifier mot de passe"
+            />
+          </EditContainer>
+        </Row>
+        <Separator />
       </Container>
     </React.Fragment>
   )
@@ -74,12 +86,16 @@ const Row = styled.View({
   paddingVertical: getSpacing(4),
 })
 
-const EmailContainer = styled.View({
+const EditContainer = styled.View({
   flexDirection: 'row',
   justifyContent: 'space-between',
 })
 
-const EmailText = styled(Typo.Body)({
+const RowTitle = styled(Typo.Caption)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
+
+const EditText = styled(Typo.Body)({
   flexShrink: 1,
   marginRight: getSpacing(2),
 })

@@ -111,15 +111,6 @@ describe('Profile component', () => {
       expect(mockNavigate).toBeCalledWith('PersonalData', undefined)
     })
 
-    it('should navigate when the password row is clicked', async () => {
-      const { getByText } = await renderProfile()
-
-      const row = getByText('Mot de passe')
-      fireEvent.press(row)
-
-      expect(mockNavigate).toBeCalledWith('ChangePassword', undefined)
-    })
-
     describe('geolocation switch', () => {
       it('should display switch ON if geoloc permission is granted', async () => {
         mockPermissionState = GeolocPermissionState.GRANTED

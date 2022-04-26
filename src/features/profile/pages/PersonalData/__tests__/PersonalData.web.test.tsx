@@ -2,16 +2,14 @@ import { rest } from 'msw'
 import React from 'react'
 import waitForExpect from 'wait-for-expect'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { analytics } from 'libs/analytics'
 import { env } from 'libs/environment'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { superFlushWithAct, render, fireEvent } from 'tests/utils'
+import { render } from 'tests/utils/web'
 
-import { PersonalData } from './PersonalData'
+import { PersonalData } from '../PersonalData'
 
 const mockedUseAuthContext = useAuthContext as jest.Mock
 
@@ -27,14 +25,6 @@ const mockedIdentity: Partial<UserProfileResponse> = {
 }
 
 describe('PersonalData', () => {
-  it('should render personal data success', async () => {
-    const renderedPersonalData = await renderPersonalData({
-      isBeneficiary: true,
-      ...mockedIdentity,
-    } as UserProfileResponse)
-    expect(renderedPersonalData.toJSON()).toMatchSnapshot()
-  })
-
   it('should render for beneficiary profile', async () => {
     const { getByText } = await renderPersonalData({
       isBeneficiary: true,
@@ -48,6 +38,8 @@ describe('PersonalData', () => {
       expect(getByText('rosa.bonheur@gmail.com')).toBeTruthy()
       expect(getByText('Numéro de téléphone')).toBeTruthy()
       expect(getByText('+33685974563')).toBeTruthy()
+      expect(getByText('Mot de passe')).toBeTruthy()
+      expect(getByText('*'.repeat(12))).toBeTruthy()
     })
   })
 
@@ -59,23 +51,9 @@ describe('PersonalData', () => {
 
     await waitForExpect(() => {
       expect(queryByText('Adresse e-mail')).toBeTruthy()
+      expect(queryByText('Mot de passe')).toBeTruthy()
       expect(queryByText('Prénom et nom')).toBeNull()
       expect(queryByText('Numéro de téléphone')).toBeNull()
-    })
-  })
-
-  it('should redirect to ChangeEmail when clicking on modify button', async () => {
-    const { getByText } = await renderPersonalData({
-      isBeneficiary: false,
-      ...mockedIdentity,
-    } as UserProfileResponse)
-
-    const modifyButton = getByText('Modifier')
-    fireEvent.press(modifyButton)
-
-    await waitForExpect(() => {
-      expect(navigate).toBeCalledWith('ChangeEmail')
-      expect(analytics.logModifyMail).toBeCalled()
     })
   })
 })
@@ -88,7 +66,7 @@ async function renderPersonalData(response: UserProfileResponse) {
   mockMeApiCall(response)
   // eslint-disable-next-line local-rules/no-react-query-provider-hoc
   const wrapper = render(reactQueryProviderHOC(<PersonalData />))
-  await superFlushWithAct()
+
   return wrapper
 }
 
