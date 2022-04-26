@@ -1,0 +1,1 @@
+export { getFirebaseApp } from './firebase'

@@ -1,13 +1,16 @@
-// eslint-disable-next-line no-restricted-imports
 import firebase from 'firebase/app'
-
-// eslint-disable-next-line no-restricted-imports
 import 'firebase/analytics'
-// eslint-disable-next-line no-restricted-imports
-import 'firebase/firestore'
 
-// TODO separate concerns
-import { FIREBASE_CONFIG } from '../../firebaseImpl/firebaseConfig'
+import { env } from 'libs/environment'
+
+const FIREBASE_CONFIG = {
+  apiKey: env.FIREBASE_APIKEY,
+  authDomain: env.FIREBASE_AUTHDOMAIN,
+  projectId: env.FIREBASE_PROJECTID,
+  storageBucket: env.FIREBASE_STORAGEBUCKET,
+  messagingSenderId: env.FIREBASE_MESSAGINGSENDERID,
+  appId: env.FIREBASE_APPID,
+}
 
 export function getFirebaseApp() {
   let firebaseApp

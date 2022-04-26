@@ -3,9 +3,7 @@ export const firebaseAnalytics = {
   setAnalyticsCollectionEnabled: jest.fn(),
   setUserId: jest.fn(),
 }
-
 const docSnapshopt = { get: jest.fn() }
-
 export const firebaseFirestore = {
   collection: jest.fn().mockReturnValue({
     doc: jest.fn().mockReturnValue({

@@ -1,6 +1,6 @@
+import firestore from '@react-native-firebase/firestore'
 import { renderHook } from '@testing-library/react-hooks'
 
-import firestore from 'libs/firebase/firestore'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { getUbbleETAMessage, useUbbleETAMessage } from '../ubbleETAMessage'
