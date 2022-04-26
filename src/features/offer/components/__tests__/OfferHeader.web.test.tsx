@@ -17,7 +17,7 @@ import { env } from 'libs/environment'
 import { EmptyResponse } from 'libs/fetch'
 import { reactQueryProviderHOC, queryCache } from 'tests/reactQueryProviderHOC'
 import { server } from 'tests/server'
-import { superFlushWithAct, act, cleanup, fireEvent, render } from 'tests/utils/web'
+import { superFlushWithAct, act, cleanup, fireEvent, render, waitFor } from 'tests/utils/web'
 import {
   showSuccessSnackBar,
   showErrorSnackBar,
@@ -167,11 +167,11 @@ describe('<OfferHeader />', () => {
 
     expect(queryByTestId('icon-favorite-filled')).toBeTruthy()
 
-    await superFlushWithAct(20)
-
-    expect(showErrorSnackBar).toBeCalledWith({
-      message: `L'offre n'a pas été ajoutée à tes favoris`,
-      timeout: SNACK_BAR_TIME_OUT,
+    await waitFor(() => {
+      expect(showErrorSnackBar).toBeCalledWith({
+        message: `L'offre n'a pas été ajoutée à tes favoris`,
+        timeout: SNACK_BAR_TIME_OUT,
+      })
     })
 
     await superFlushWithAct(20)
@@ -228,11 +228,11 @@ describe('<OfferHeader />', () => {
       mutateData.favorites?.find((f: FavoriteResponse) => f.offer.id === favoriteOfferId)?.offer.id
     ).toBe(undefined)
 
-    await superFlushWithAct()
-
-    expect(showErrorSnackBar).toBeCalledWith({
-      message: `L'offre n'a pas été retirée de tes favoris`,
-      timeout: SNACK_BAR_TIME_OUT,
+    await waitFor(() => {
+      expect(showErrorSnackBar).toBeCalledWith({
+        message: `L'offre n'a pas été retirée de tes favoris`,
+        timeout: SNACK_BAR_TIME_OUT,
+      })
     })
 
     const dataAfter = queryCache.find('favorites')?.state?.data as PaginatedFavoritesResponse
@@ -250,11 +250,11 @@ describe('<OfferHeader />', () => {
 
     fireEvent.click(getByTestId('icon-favorite'))
 
-    await superFlushWithAct()
-
-    expect(showErrorSnackBar).toBeCalledWith({
-      message: `Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.`,
-      timeout: SNACK_BAR_TIME_OUT,
+    await waitFor(() => {
+      expect(showErrorSnackBar).toBeCalledWith({
+        message: `Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.`,
+        timeout: SNACK_BAR_TIME_OUT,
+      })
     })
   })
 
