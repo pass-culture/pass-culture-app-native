@@ -1,10 +1,10 @@
 // eslint-disable-next-line no-restricted-imports
-import firebase from 'firebase/app'
+import firebase from 'firebase/compat/app'
 
 // eslint-disable-next-line no-restricted-imports
-import 'firebase/analytics'
+import 'firebase/compat/analytics'
 // eslint-disable-next-line no-restricted-imports
-import 'firebase/firestore'
+import 'firebase/compat/firestore'
 
 // TODO separate concerns
 import { FIREBASE_CONFIG } from '../../firebaseImpl/firebaseConfig'

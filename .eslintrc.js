@@ -48,7 +48,11 @@ module.exports = {
       { name: 'lottie-react-native', message: 'use libs/lottie instead' },
       { name: 'react-content-loader', message: 'use react-content-loader/native instead' },
       { name: 'react-device-detect', message: 'use libs/react-device-detect instead' },
-      { name: 'react-native', importNames: ["TouchableOpacity"], message: 'use ui/components/TouchableOpacity instead' },
+      {
+        name: 'react-native',
+        importNames: ['TouchableOpacity'],
+        message: 'use ui/components/TouchableOpacity instead',
+      },
       { name: '@bam.tech/react-native-batch', message: 'user libs/react-native-batch instead' },
       {
         name: 'libs/react-device-detect',
@@ -69,18 +73,16 @@ module.exports = {
       },
       { name: 'msw/lib/types', message: 'use msw instead' },
       { name: '@testing-library/react-native', message: 'Use test/utils instead' },
-      { name: 'firebase/app', message: 'use libs/firebase/app instead' },
-      { name: 'firebase/firestore', message: 'use libs/firebase/firestore instead' },
-      { name: 'firebase/analytics', message: 'use libs/firebase/analytics instead' },
-      { name: "@react-native-firebase/analytics", message: 'use libs/firebase/analytics instead' },
-      { name: "@react-native-firebase/app", message: 'use libs/firebase/app instead' },
-      { name: "@react-native-firebase/dynamic-links", message: 'use libs/firebase-links instead' },
-      { name: "@react-native-firebase/firestore", message: 'use libs/firebase/firestore instead' },
-      { name: "@react-native-firebase/perf", message: 'use libs/firebase/perf instead' },
-      { name: "@react-native-firebase/remote-config", message: 'use libs/firebase-config instead' },
-
-
-],
+      { name: 'firebase/compat/app', message: 'use libs/firebase/app instead' },
+      { name: 'firebase/compat/firestore', message: 'use libs/firebase/firestore instead' },
+      { name: 'firebase/compat/analytics', message: 'use libs/firebase/analytics instead' },
+      { name: '@react-native-firebase/analytics', message: 'use libs/firebase/analytics instead' },
+      { name: '@react-native-firebase/app', message: 'use libs/firebase/app instead' },
+      { name: '@react-native-firebase/dynamic-links', message: 'use libs/firebase-links instead' },
+      { name: '@react-native-firebase/firestore', message: 'use libs/firebase/firestore instead' },
+      { name: '@react-native-firebase/perf', message: 'use libs/firebase/perf instead' },
+      { name: '@react-native-firebase/remote-config', message: 'use libs/firebase-config instead' },
+    ],
     'no-restricted-properties': [
       2,
       {
