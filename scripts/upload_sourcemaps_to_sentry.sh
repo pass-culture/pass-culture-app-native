@@ -8,6 +8,9 @@ create_sourcemaps(){
   APP_OS="$1"
   SOURCEMAPS_NAME="$2"
 
+  echo "Creating sources maps... "
+  mkdir -p "${SOURCEMAPS_DIR}"
+
   if [[ "$(uname -s)" = "Linux" ]]; then
     HERMES_BIN="linux64-bin"
   else
@@ -48,10 +51,6 @@ upload_sourcemaps(){
   fi
   echo "VERSION: $VERSION"
   echo "BUILD: $BUILD"
-
-  echo "Creating sources maps... "
-  mkdir -p "${SOURCEMAPS_DIR}"
-
 
   if [[ "${APP_OS}" = "android" ]]; then
     SOURCEMAPS_NAME="index.android.bundle"
