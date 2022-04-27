@@ -26,21 +26,9 @@ jest.mock('react-native/Libraries/Linking/Linking', () => ({
   removeEventListener: jest.fn(),
 }))
 
-jest.mock('react-native-device-info', () => ({
-  getVersion: jest.fn().mockReturnValue('1.0'),
-  getApplicationName: jest.fn().mockReturnValue('pass Culture App Native'),
-  getUniqueId: jest.fn().mockReturnValue('ad7b7b5a169641e27cadbdb35adad9c4ca23099a'),
-}))
-
 jest.mock('react-native-safe-area-context', () => ({
   ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
-}))
-
-jest.mock('jwt-decode', () => () => ({
-  // a date in far future to still get a valid token for api calls
-  exp: 3454545353,
-  user_claims: { user_id: 111 },
 }))
 
 jest.mock('features/auth/support.services')
@@ -87,6 +75,10 @@ jest.mock('libs/environment/env')
 /* See the corresponding mock in libs/amplitude/__mocks__ */
 jest.mock('libs/amplitude/amplitude')
 
+jest.mock('libs/react-native-device-info/getUniqueId')
+
+jest.mock('libs/keychain')
+
 jest.mock('features/search/pages/SearchWrapper')
 
 jest.mock('features/favorites/pages/FavoritesWrapper')
@@ -95,7 +87,6 @@ jest.mock('features/navigation/useGoBack', () =>
 )
 
 jest.mock('../package.json')
-jest.mock('api/apiHelpers')
 
 // Mock files sourced from /public folder (see corresponding /__mock__ folders)
 jest.mock('ui/components/ModuleBanner/backgroundImageSource')
