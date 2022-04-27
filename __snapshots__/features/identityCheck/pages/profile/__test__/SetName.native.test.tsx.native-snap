@@ -203,7 +203,6 @@ exports[`<SetName/> should render correctly 1`] = `
                 "paddingHorizontal": 20,
               }
             }
-            keyboardDismissMode="on-drag"
             keyboardShouldPersistTaps="handled"
             onContentSizeChange={[Function]}
             onLayout={[Function]}
