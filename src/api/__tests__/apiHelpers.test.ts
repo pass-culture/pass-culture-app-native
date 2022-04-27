@@ -1,6 +1,5 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
-import { FailedToRefreshAccessTokenError } from 'libs/fetch'
 import * as jwt from 'libs/jwt'
 import * as Keychain from 'libs/keychain'
 
@@ -191,24 +190,22 @@ describe('[api] helpers', () => {
       mockGetRefreshToken.mockResolvedValueOnce(password)
       mockFetch.mockResolvedValueOnce(respondWith({ error: 'server error' }, 500))
 
-      try {
-        await refreshAccessToken(api, 0)
-      } catch {
-        // tested in his own test
-      }
+      await refreshAccessToken(api, 0)
 
       expect(AsyncStorage.removeItem).toHaveBeenCalledWith('access_token')
       expect(mockClearRefreshToken).toHaveBeenCalled()
     })
 
-    it('should reject with an exception when there is an unexpected behavior', async () => {
+    it('should return UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN when there is an unexpected behavior', async () => {
       const password = 'refreshToken'
       mockGetRefreshToken.mockResolvedValueOnce(password)
       mockFetch.mockResolvedValueOnce(respondWith({ error: 'server error' }, 500))
 
-      const resultPromise = refreshAccessToken(api, 0)
+      const result = await refreshAccessToken(api, 0)
 
-      await expect(resultPromise).rejects.toEqual(new FailedToRefreshAccessTokenError())
+      expect(result).toStrictEqual({
+        error: "Une erreur inconnue est survenue lors de la regénération de l'access token",
+      })
     })
 
     it('should retry to refresh access token when the first call fails', async () => {

@@ -2,7 +2,7 @@
 import { t } from '@lingui/macro'
 
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import { Headers, FailedToRefreshAccessTokenError } from 'libs/fetch'
+import { Headers } from 'libs/fetch'
 import { getAccessTokenStatus } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
@@ -98,9 +98,16 @@ export const safeFetch = async (
 }
 
 const FAILED_TO_GET_REFRESH_TOKEN_ERROR = 'Erreur lors de la récupération du refresh token'
+const UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN =
+  "Une erreur inconnue est survenue lors de la regénération de l'access token"
 type Result =
   | { result: string; error?: never }
-  | { result?: never; error: typeof FAILED_TO_GET_REFRESH_TOKEN_ERROR }
+  | {
+      result?: never
+      error:
+        | typeof FAILED_TO_GET_REFRESH_TOKEN_ERROR
+        | typeof UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN
+    }
 
 /**
  * Calls Api to refresh the access token using the in-keychain stored refresh token
@@ -131,11 +138,12 @@ export const refreshAccessToken = async (
   } catch {
     if (remainingRetries !== 0) {
       return refreshAccessToken(api, remainingRetries - 1)
-    } else {
-      await clearRefreshToken()
-      await storage.clear('access_token')
-      throw new FailedToRefreshAccessTokenError()
     }
+
+    await clearRefreshToken()
+    await storage.clear('access_token')
+
+    return { error: UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN }
   }
 }
 
