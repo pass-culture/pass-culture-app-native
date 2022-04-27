@@ -107,7 +107,10 @@ type Result =
  * - on success: Stores the new access token
  * - on error : clear storage propagates error
  */
-export const refreshAccessToken = async (api: DefaultApi): Promise<Result> => {
+export const refreshAccessToken = async (
+  api: DefaultApi,
+  remainingRetries = 1
+): Promise<Result> => {
   const refreshToken = await getRefreshToken()
 
   // if not connected, we also redirect to the login page
@@ -125,9 +128,13 @@ export const refreshAccessToken = async (api: DefaultApi): Promise<Result> => {
 
     return { result: response.accessToken }
   } catch {
-    await clearRefreshToken()
-    await storage.clear('access_token')
-    throw new FailedToRefreshAccessTokenError()
+    if (remainingRetries !== 0) {
+      return refreshAccessToken(api, remainingRetries - 1)
+    } else {
+      await clearRefreshToken()
+      await storage.clear('access_token')
+      throw new FailedToRefreshAccessTokenError()
+    }
   }
 }
 
