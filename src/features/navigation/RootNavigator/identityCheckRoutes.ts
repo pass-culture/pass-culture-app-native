@@ -20,7 +20,7 @@ import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { SetSchoolType } from 'features/identityCheck/pages/profile/SetSchoolType'
-import { Status } from 'features/identityCheck/pages/profile/Status'
+import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import { IdentityCheckStepper } from 'features/identityCheck/pages/Stepper'
 import {
   GenericRoute,
@@ -68,7 +68,7 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
   },
   {
     name: 'IdentityCheckStatus',
-    component: Status,
+    component: SetStatus,
     path: 'verification-identite/profil/statut',
     options: { title: t`Ton status | Profil` },
     secure: true,
