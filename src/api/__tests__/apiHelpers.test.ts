@@ -150,6 +150,14 @@ describe('[api] helpers', () => {
   })
 
   describe('refreshAccessToken', () => {
+    it('should remove access token when there is no refresh token', async () => {
+      mockGetRefreshToken.mockResolvedValueOnce(null)
+
+      await refreshAccessToken(api, 0)
+
+      expect(AsyncStorage.removeItem).toHaveBeenCalledWith('access_token')
+    })
+
     it('should return FAILED_TO_GET_REFRESH_TOKEN_ERROR when there is no refresh token', async () => {
       mockGetRefreshToken.mockResolvedValueOnce(null)
 

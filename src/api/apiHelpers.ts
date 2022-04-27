@@ -115,6 +115,7 @@ export const refreshAccessToken = async (
 
   // if not connected, we also redirect to the login page
   if (refreshToken == null) {
+    await storage.clear('access_token')
     return { error: FAILED_TO_GET_REFRESH_TOKEN_ERROR }
   }
   try {
