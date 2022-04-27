@@ -11,7 +11,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
         "flexShrink": 1,
         "maxWidth": 500,
         "overflow": "scroll",
-        "paddingHorizontal": 20,
+        "paddingHorizontal": 24,
       },
     ]
   }
@@ -29,6 +29,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
     }
   />
   <View
+    setHeight={true}
     style={
       Array [
         Object {

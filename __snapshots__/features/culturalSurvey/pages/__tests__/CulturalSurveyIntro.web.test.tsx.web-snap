@@ -7,7 +7,7 @@ Object {
     <div>
       <div
         class="css-view-1dbjc4n"
-        style="align-self: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; overflow-x: scroll; overflow-y: scroll; padding-right: 20px; padding-left: 20px;"
+        style="align-self: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; overflow-x: scroll; overflow-y: scroll; padding-right: 24px; padding-left: 24px;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -123,7 +123,7 @@ Object {
   "container": <div>
     <div
       class="css-view-1dbjc4n"
-      style="align-self: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; overflow-x: scroll; overflow-y: scroll; padding-right: 20px; padding-left: 20px;"
+      style="align-self: center; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; max-width: 500px; overflow-x: scroll; overflow-y: scroll; padding-right: 24px; padding-left: 24px;"
     >
       <div
         class="css-view-1dbjc4n"

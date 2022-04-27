@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from 'react'
+import React, { ReactNode, useEffect, useMemo, useRef } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
@@ -19,6 +19,7 @@ type PropsWithIcon = {
 }
 
 type Props = {
+  header?: ReactNode
   titleComponent?: React.FC<TextProps>
   subtitleComponent?: React.FC<TextProps>
   title: string
@@ -26,11 +27,15 @@ type Props = {
   activeIndex?: number
   mobileBottomFlex?: number
   fullWidth?: true
+  separateIconFromTitle?: boolean
 } & (PropsWithAnimation | PropsWithIcon)
 
 const SMALL_HEIGHT = 576
 
-export const GenericInfoPageWhite: React.FC<Props> = (props) => {
+export const GenericInfoPageWhite: React.FC<Props> = ({
+  separateIconFromTitle = true,
+  ...props
+}) => {
   const animationRef = useRef<LottieView>(null)
   const grid = useGrid()
   const isSmallHeight = useMediaQuery({ maxHeight: SMALL_HEIGHT })
@@ -69,52 +74,55 @@ export const GenericInfoPageWhite: React.FC<Props> = (props) => {
   }, [animationRef, animation])
 
   return (
-    <Container fullWidth={props.fullWidth as boolean}>
-      <Spacer.Flex flex={grid({ sm: 1, default: 2 }, 'height')} />
-      <StyledLottieContainer>
-        {animation ? (
-          <StyledLottieView
-            style={lottieStyle}
-            key={props?.activeIndex}
-            ref={animationRef}
-            source={animation}
-            loop={false}
-          />
-        ) : (
-          <StyledIcon />
-        )}
-      </StyledLottieContainer>
-      <Spacer.Flex flex={0.5} />
-      <StyledTitle>{props.title}</StyledTitle>
-      {!!props.subtitle && <StyledSubtitle>{props.subtitle}</StyledSubtitle>}
-      <Spacer.Flex flex={0.5} />
-      {props.children}
-      <Spacer.Flex
-        flex={
-          !theme.isDesktopViewport && props.mobileBottomFlex
-            ? props.mobileBottomFlex
-            : grid({ default: 1.5, sm: 2 }, 'height')
-        }
-      />
-    </Container>
+    <React.Fragment>
+      {props.header}
+      <ContentContainer fullWidth={props.fullWidth as boolean}>
+        <Spacer.Flex flex={grid({ sm: 1, default: 2 }, 'height')} />
+        <StyledLottieContainer setHeight={separateIconFromTitle}>
+          {animation ? (
+            <StyledLottieView
+              style={lottieStyle}
+              key={props?.activeIndex}
+              ref={animationRef}
+              source={animation}
+              loop={false}
+            />
+          ) : (
+            <StyledIcon />
+          )}
+        </StyledLottieContainer>
+        {!!separateIconFromTitle && <Spacer.Flex flex={0.5} />}
+        <StyledTitle>{props.title}</StyledTitle>
+        {!!props.subtitle && <StyledSubtitle>{props.subtitle}</StyledSubtitle>}
+        <Spacer.Flex flex={0.5} />
+        {props.children}
+        <Spacer.Flex
+          flex={
+            !theme.isDesktopViewport && props.mobileBottomFlex
+              ? props.mobileBottomFlex
+              : grid({ default: 1.5, sm: 2 }, 'height')
+          }
+        />
+      </ContentContainer>
+    </React.Fragment>
   )
 }
 
-const Container = styled.View<{ fullWidth: boolean }>(({ fullWidth, theme }) => ({
+const ContentContainer = styled.View<{ fullWidth: boolean }>(({ fullWidth, theme }) => ({
   alignSelf: 'center',
   flex: 1,
-  paddingHorizontal: getSpacing(5),
+  paddingHorizontal: getSpacing(6),
   maxWidth: theme.contentPage.maxWidth,
   overflow: 'scroll',
   width: fullWidth ? '100%' : undefined,
 }))
 
-const StyledLottieContainer = styled.View({
+const StyledLottieContainer = styled.View<{ setHeight?: boolean }>(({ setHeight }) => ({
   flexGrow: 1,
   alignItems: 'center',
   justifyContent: 'center',
-  height: '30%',
-})
+  height: setHeight ? '30%' : undefined,
+}))
 
 const StyledLottieView = styled(LottieView)({
   width: '100%',
