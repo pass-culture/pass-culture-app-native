@@ -70,6 +70,7 @@ export type IdentityCheckRootStackParamList = {
 export type RootStackParamList = {
   SignupForm: { preventCancellation?: boolean } | undefined
   Maintenance: undefined
+  ABTestingPOC: undefined
   AccountCreated: undefined
   AfterChangeEmailValidationBuffer: {
     token: string

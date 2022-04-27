@@ -101,6 +101,9 @@ export function Navigation(): JSX.Element {
           />
         </Row>
         <Row half>
+          <ButtonPrimary wording={'POC A/B testing'} onPress={() => navigate('ABTestingPOC')} />
+        </Row>
+        <Row half>
           <ButtonPrimary wording={'Login'} onPress={() => navigate('Login')} />
         </Row>
         <Row half>
