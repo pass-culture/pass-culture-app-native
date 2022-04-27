@@ -56,7 +56,7 @@ msgid "18 ans"
 msgstr "18 ans"
 
 #: src/features/identityCheck/pages/Stepper.tsx
-#: src/features/profile/pages/ConfirmDeleteProfile.tsx
+#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
 msgid "Abandonner"
 msgstr "Abandonner"
 
@@ -446,7 +446,7 @@ msgstr "Ce plafond a été mis en place pour favoriser la diversification des pr
 msgid "Ce week-end"
 msgstr "Ce week-end"
 
-#: src/features/profile/pages/ConfirmDeleteProfile.tsx
+#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
 msgid "Cela entraînera l'annulation de l'ensemble de tes réservations en cours, ainsi que la suppression définitive de ton crédit pass Culture si tu en bénéficies."
 msgstr "Cela entraînera l'annulation de l'ensemble de tes réservations en cours, ainsi que la suppression définitive de ton crédit pass Culture si tu en bénéficies."
 
@@ -573,7 +573,7 @@ msgstr "Compte 15-17 créé !"
 msgid "Compte créé !"
 msgstr "Compte créé !"
 
-#: src/features/profile/pages/DeleteProfileSuccess.tsx
+#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccess.tsx
 msgid "Compte désactivé"
 msgstr "Compte désactivé"
 
@@ -1058,7 +1058,7 @@ msgstr "Erreur"
 msgid "Erreur réseau. Tu peux réessayer une fois la connexion réétablie"
 msgstr "Erreur réseau. Tu peux réessayer une fois la connexion réétablie"
 
-#: src/features/profile/pages/ConfirmDeleteProfile.tsx
+#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
 msgid "Es-tu sûr de vouloir supprimer ton compte ?"
 msgstr "Es-tu sûr de vouloir supprimer ton compte ?"
 
@@ -2307,7 +2307,8 @@ msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos b
 #: src/features/identityCheck/pages/identification/IdentityCheckUnavailable.tsx
 #: src/features/navigation/PageNotFound.tsx
 #: src/features/offer/pages/OfferNotFound.tsx
-#: src/features/profile/pages/DeleteProfileSuccess.tsx
+#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccess.tsx
+#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
 #: src/features/venue/pages/VenueNotFound.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Retourner à l'accueil"
@@ -2368,6 +2369,10 @@ msgstr "Revenir à l'accueil"
 #: src/ui/components/achievements/components/GenericAchievement.tsx
 msgid "Revenir à l'étape précédente"
 msgstr "Revenir à l'étape précédente"
+
+#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
+msgid "Réactiver mon compte"
+msgstr "Réactiver mon compte"
 
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 #: src/features/errors/pages/AsyncErrorBoundary.tsx
@@ -2581,7 +2586,7 @@ msgstr "Supprimer"
 msgid "Supprimer l'offre {0} de mes favoris"
 msgstr "Supprimer l'offre {0} de mes favoris"
 
-#: src/features/profile/pages/ConfirmDeleteProfile.tsx
+#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
 #: src/features/profile/pages/PersonalData/PersonalData.tsx
 msgid "Supprimer mon compte"
 msgstr "Supprimer mon compte"
@@ -2662,6 +2667,10 @@ msgstr "Ton code postal | Profil"
 #: src/features/auth/signup/AccountCreated/AccountCreated.tsx
 msgid "Ton compte a été activé !"
 msgstr "Ton compte a été activé !"
+
+#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
+msgid "Ton compte a été désactivé"
+msgstr "Ton compte a été désactivé"
 
 #: src/features/favorites/components/NotConnectedFavorites.tsx
 #: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx
@@ -2814,9 +2823,13 @@ msgstr "Trop de tentatives !"
 msgid "Tu as 18 ans..."
 msgstr "Tu as 18 ans..."
 
-#: src/features/profile/pages/DeleteProfileSuccess.tsx
+#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccess.tsx
 msgid "Tu as 30 jours pour te rétracter par e-mail à : support@passculture.app"
 msgstr "Tu as 30 jours pour te rétracter par e-mail à : support@passculture.app"
+
+#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
+msgid "Tu as 60 jours pour changer d’avis. Tu pourras facilement réactiver ton compte en te connectant."
+msgstr "Tu as 60 jours pour changer d’avis. Tu pourras facilement réactiver ton compte en te connectant."
 
 #: src/features/offer/pages/OfferBody.tsx
 msgid "Tu as déjà signalé cette offre"
@@ -3056,7 +3069,7 @@ msgstr ""
 msgid "Une erreur s’est produite pendant le chargement de nos recommandations."
 msgstr "Une erreur s’est produite pendant le chargement de nos recommandations."
 
-#: src/features/profile/pages/ConfirmDeleteProfile.tsx
+#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
 msgid "Une erreur s’est produite pendant le chargement."
 msgstr "Une erreur s’est produite pendant le chargement."
 
@@ -3064,9 +3077,13 @@ msgstr "Une erreur s’est produite pendant le chargement."
 msgid "Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu."
 msgstr "Une erreur s’est produite, veuillez passer par une autre application de géolocalisation pour trouver l’itinéraire vers ce lieu."
 
-#: src/features/profile/pages/DeleteProfileSuccess.tsx
+#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccess.tsx
 msgid "Une fois ce délai écoulé, ton compte pass Culture sera définitivement supprimé."
 msgstr "Une fois ce délai écoulé, ton compte pass Culture sera définitivement supprimé."
+
+#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
+msgid "Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture."
+msgstr "Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture."
 
 #: src/features/search/sections/titles.ts
 msgid "Uniquement les nouveautés"
@@ -3653,3 +3670,7 @@ msgstr "à portée de main !"
 #: src/features/bookOffer/atoms/HourChoice.tsx
 msgid "épuisé"
 msgstr "épuisé"
+
+#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
+msgid "😢 On est super triste de te voir partir."
+msgstr "😢 On est super triste de te voir partir."

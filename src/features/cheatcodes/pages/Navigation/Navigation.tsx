@@ -194,6 +194,12 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <ButtonPrimary
+            wording={'Delete Profile Success'}
+            onPress={() => navigate('DeleteProfileSuccess')}
+          />
+        </Row>
+        <Row half>
+          <ButtonPrimary
             wording={'Erreur rendering'}
             onPress={() => {
               // eslint-disable-next-line @typescript-eslint/ban-ts-comment
