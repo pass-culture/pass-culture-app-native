@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks'
 
-import firestore from 'libs/firebase/firestore'
+import firestore from 'libs/firebase/shims/firestore'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 
 import { getUbbleETAMessage, useUbbleETAMessage } from '../ubbleETAMessage'

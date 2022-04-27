@@ -1,4 +1,4 @@
-import firebaseRemoteConfig from 'libs/firebase/remote-config'
+import firebaseRemoteConfig from 'libs/firebase/shims/remote-config'
 
 import { DEFAULT_REMOTE_CONFIG } from './ABTesting.constants'
 import { CustomRemoteConfig, GenericRemoteConfig } from './ABTesting.types'
