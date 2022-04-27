@@ -2,6 +2,8 @@ import * as jwtDecode from 'jwt-decode'
 
 import { getAccessTokenStatus } from 'libs/jwt'
 
+jest.unmock('libs/jwt')
+
 describe('getAccessTokenStatus', () => {
   const mockJwtDecode = jest.spyOn(jwtDecode, 'default')
   const fakeAccessToken = 'this is a fake access token, because we mock result of jwt-decode'

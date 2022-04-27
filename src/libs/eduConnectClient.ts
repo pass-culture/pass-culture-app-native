@@ -1,7 +1,7 @@
 import { api } from 'api/api'
 import { refreshAccessToken } from 'api/apiHelpers'
 import { env } from 'libs/environment'
-import { decodeAccessToken } from 'libs/jwt'
+import { getAccessTokenStatus } from 'libs/jwt'
 import { eventMonitoring } from 'libs/monitoring'
 import { storage } from 'libs/storage'
 
@@ -11,12 +11,12 @@ export const eduConnectClient = {
   },
   async getAccessToken() {
     const accessToken = await storage.readString('access_token')
-    const tokenContent = decodeAccessToken(accessToken ?? '')
-    if (!tokenContent) {
+    const accessTokenStatus = getAccessTokenStatus(accessToken)
+    if (accessTokenStatus === 'unknown') {
       eventMonitoring.captureMessage('eduConnectClient failed to decodeAccessToken')
       return Promise.reject(new Error())
     }
-    if (tokenContent.exp * 1000 <= new Date().getTime()) {
+    if (accessTokenStatus === 'expired') {
       try {
         const { result: accessToken, error } = await refreshAccessToken(api)
 

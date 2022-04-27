@@ -86,6 +86,8 @@ jest.mock('features/navigation/useGoBack', () =>
   jest.requireActual('features/navigation/__mocks__/useGoBack.ts')
 )
 
+jest.mock('libs/jwt')
+
 jest.mock('../package.json')
 
 // Mock files sourced from /public folder (see corresponding /__mock__ folders)
