@@ -5,7 +5,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { fireEvent, render } from 'tests/utils'
 
-import { DeleteProfileSuccess } from './DeleteProfileSuccess'
+import { DeleteProfileSuccess } from '../DeleteProfileSuccess'
 
 jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')
