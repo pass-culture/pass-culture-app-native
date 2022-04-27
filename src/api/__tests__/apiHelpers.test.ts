@@ -219,5 +219,26 @@ describe('[api] helpers', () => {
 
       expect(result).toEqual({ result: accessToken })
     })
+
+    it('should remove tokens when refresh token is expired', async () => {
+      const password = 'refreshToken'
+      mockGetRefreshToken.mockResolvedValueOnce(password)
+      mockFetch.mockResolvedValueOnce(respondWith({ error: 'refresh token is expired' }, 401))
+
+      await refreshAccessToken(api, 0)
+
+      expect(AsyncStorage.removeItem).toHaveBeenCalledWith('access_token')
+      expect(mockClearRefreshToken).toHaveBeenCalled()
+    })
+
+    it('should return REFRESH_TOKEN_IS_EXPIRED_ERROR when refresh token is expired', async () => {
+      const password = 'refreshToken'
+      mockGetRefreshToken.mockResolvedValueOnce(password)
+      mockFetch.mockResolvedValueOnce(respondWith({ error: 'refresh token is expired' }, 401))
+
+      const result = await refreshAccessToken(api, 0)
+
+      expect(result).toEqual({ error: 'Le refresh token est expiré' })
+    })
   })
 })

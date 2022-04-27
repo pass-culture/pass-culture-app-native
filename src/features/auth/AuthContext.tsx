@@ -49,7 +49,14 @@ export const AuthWrapper = memo(function AuthWrapper({ children }: { children: J
       if (getAccessTokenStatus(accessToken) === 'expired') {
         // refreshAccessToken calls the backend to get a new access token
         // and also saves it to the storage
-        const { result } = await refreshAccessToken(api)
+        const { result, error } = await refreshAccessToken(api)
+
+        if (error) {
+          eventMonitoring.captureException(new Error(`AuthWrapper ${error}`))
+          setIsLoggedIn(false)
+          return
+        }
+
         if (result) {
           accessToken = result
         }
