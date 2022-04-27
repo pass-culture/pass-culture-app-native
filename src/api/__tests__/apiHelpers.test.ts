@@ -1,16 +1,20 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
+import { FailedToRefreshAccessTokenError } from 'libs/fetch'
 import * as jwt from 'libs/jwt'
 import * as Keychain from 'libs/keychain'
 
-import { NeedsAuthenticationResponse, safeFetch } from '../apiHelpers'
+import { NeedsAuthenticationResponse, refreshAccessToken, safeFetch } from '../apiHelpers'
 import { DefaultApi } from '../gen'
 
 const api = new DefaultApi({})
 
-const respondWith = async (body: unknown): Promise<Response> => {
+const respondWith = async (body: unknown, status = 200): Promise<Response> => {
   return new Response(JSON.stringify(body), {
     headers: {
       'content-type': 'application/json',
     },
+    status,
   })
 }
 
@@ -25,6 +29,7 @@ describe('[api] helpers', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
   const mockGetAccessTokenStatus = jest.spyOn(jwt, 'getAccessTokenStatus')
   const mockGetRefreshToken = jest.spyOn(Keychain, 'getRefreshToken')
+  const mockClearRefreshToken = jest.spyOn(Keychain, 'clearRefreshToken')
 
   describe('[method] safeFetch', () => {
     it('should call fetch with populated header', async () => {
@@ -141,6 +146,73 @@ describe('[api] helpers', () => {
         },
       })
       expect(response).toEqual(await expectedResponse)
+    })
+  })
+
+  describe('refreshAccessToken', () => {
+    it('should return FAILED_TO_GET_REFRESH_TOKEN_ERROR when there is no refresh token', async () => {
+      mockGetRefreshToken.mockResolvedValueOnce(null)
+
+      const result = await refreshAccessToken(api, 0)
+
+      expect(result).toEqual({ error: 'Erreur lors de la récupération du refresh token' })
+    })
+
+    it('should store the new access token when everything is ok', async () => {
+      const password = 'refreshToken'
+      mockGetRefreshToken.mockResolvedValueOnce(password)
+      mockFetch.mockResolvedValueOnce(respondWith({ accessToken }))
+
+      await refreshAccessToken(api, 0)
+
+      expect(AsyncStorage.setItem).toHaveBeenCalledWith('access_token', accessToken)
+    })
+
+    it('should return the new access token when everything is ok', async () => {
+      const password = 'refreshToken'
+      mockGetRefreshToken.mockResolvedValueOnce(password)
+      mockFetch.mockResolvedValueOnce(respondWith({ accessToken }))
+
+      const result = await refreshAccessToken(api, 0)
+
+      expect(result).toEqual({ result: accessToken })
+    })
+
+    it('should remove tokens when there is an unexpected behavior', async () => {
+      const password = 'refreshToken'
+      mockGetRefreshToken.mockResolvedValueOnce(password)
+      mockFetch.mockResolvedValueOnce(respondWith({ error: 'server error' }, 500))
+
+      try {
+        await refreshAccessToken(api, 0)
+      } catch {
+        // tested in his own test
+      }
+
+      expect(AsyncStorage.removeItem).toHaveBeenCalledWith('access_token')
+      expect(mockClearRefreshToken).toHaveBeenCalled()
+    })
+
+    it('should reject with an exception when there is an unexpected behavior', async () => {
+      const password = 'refreshToken'
+      mockGetRefreshToken.mockResolvedValueOnce(password)
+      mockFetch.mockResolvedValueOnce(respondWith({ error: 'server error' }, 500))
+
+      const resultPromise = refreshAccessToken(api, 0)
+
+      await expect(resultPromise).rejects.toEqual(new FailedToRefreshAccessTokenError())
+    })
+
+    it('should retry to refresh access token when the first call fails', async () => {
+      const password = 'refreshToken'
+      mockGetRefreshToken.mockResolvedValueOnce(password)
+      mockFetch
+        .mockResolvedValueOnce(respondWith({ error: 'server error' }, 500))
+        .mockResolvedValueOnce(respondWith({ accessToken }))
+
+      const result = await refreshAccessToken(api, 1)
+
+      expect(result).toEqual({ result: accessToken })
     })
   })
 })
