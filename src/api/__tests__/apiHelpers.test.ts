@@ -24,7 +24,7 @@ const optionsWithAccessToken = {
 describe('[api] helpers', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
   const mockGetAccessTokenStatus = jest.spyOn(jwt, 'getAccessTokenStatus')
-  const mockKeychain = jest.spyOn(Keychain, 'getRefreshToken')
+  const mockGetRefreshToken = jest.spyOn(Keychain, 'getRefreshToken')
 
   describe('[method] safeFetch', () => {
     it('should call fetch with populated header', async () => {
@@ -94,7 +94,7 @@ describe('[api] helpers', () => {
 
     it('needs authentication response when there is no refresh token', async () => {
       mockGetAccessTokenStatus.mockReturnValueOnce('expired')
-      mockKeychain.mockResolvedValueOnce(null)
+      mockGetRefreshToken.mockResolvedValueOnce(null)
 
       const response = await safeFetch('/native/v1/me', optionsWithAccessToken, api)
 
@@ -106,7 +106,7 @@ describe('[api] helpers', () => {
       const apiUrl = '/native/v1/me'
       mockGetAccessTokenStatus.mockReturnValueOnce('expired')
       const password = 'refreshToken'
-      mockKeychain.mockResolvedValueOnce(password).mockResolvedValueOnce(password)
+      mockGetRefreshToken.mockResolvedValueOnce(password).mockResolvedValueOnce(password)
       const expectedResponse = respondWith('some api response')
       mockFetch
         .mockRejectedValueOnce('some error')
