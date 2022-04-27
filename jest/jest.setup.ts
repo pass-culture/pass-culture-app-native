@@ -58,7 +58,7 @@ jest.mock('libs/subcategories/useCategoryId')
 jest.mock('libs/subcategories/useSubcategory')
 
 /* See the corresponding mock in libs/firebase/app/__mocks__ */
-jest.mock('libs/firebase/app/index.web')
+jest.mock('libs/firebase/shims/app/index.web')
 
 /* See the corresponding mocks in libs/campaign/__mocks__ */
 jest.mock('libs/campaign')

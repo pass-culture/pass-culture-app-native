@@ -7,5 +7,4 @@ export const FIREBASE_CONFIG = {
   storageBucket: env.FIREBASE_STORAGEBUCKET,
   messagingSenderId: env.FIREBASE_MESSAGINGSENDERID,
   appId: env.FIREBASE_APPID,
-  // measurementId: '', // Not existing in native see what is that
 }

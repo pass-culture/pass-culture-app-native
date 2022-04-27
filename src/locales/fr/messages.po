@@ -134,7 +134,7 @@ msgstr "Adresse"
 #: src/features/auth/login/Login.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
 #: src/features/auth/signup/SignupForm.tsx
-#: src/features/profile/pages/PersonalData.tsx
+#: src/features/profile/pages/PersonalData/PersonalData.tsx
 msgid "Adresse e-mail"
 msgstr "Adresse e-mail"
 
@@ -229,8 +229,8 @@ msgstr "Au nom de"
 msgid "Aucun lieu ne correspond à ta recherche"
 msgstr "Aucun lieu ne correspond à ta recherche"
 
-#: src/libs/keychain.ts
-#: src/libs/keychain.web.ts
+#: src/libs/keychain/keychain.ts
+#: src/libs/keychain/keychain.web.ts
 msgid "Aucun refresh token à sauvegarder"
 msgstr "Aucun refresh token à sauvegarder"
 
@@ -331,6 +331,8 @@ msgstr "Billet à retirer sur place"
 #: src/features/bookings/helpers.test.ts
 #: src/features/bookings/helpers.test.ts
 #: src/features/bookings/helpers.ts
+#: src/features/bookings/helpers.ts
+#: src/features/bookings/helpers.ts
 msgid "Billet à retirer sur place aujourd'hui"
 msgstr "Billet à retirer sur place aujourd'hui"
 
@@ -342,6 +344,7 @@ msgstr "Billet à retirer sur place d'ici demain"
 #: src/features/bookings/helpers.test.ts
 #: src/features/bookings/helpers.test.ts
 #: src/features/bookings/helpers.ts
+#: src/features/bookings/helpers.ts
 msgid "Billet à retirer sur place dans 2 jours"
 msgstr "Billet à retirer sur place dans 2 jours"
 
@@ -351,7 +354,6 @@ msgid "Billet à retirer sur place dans 3 jours"
 msgstr "Billet à retirer sur place dans 3 jours"
 
 #: src/features/bookings/helpers.test.ts
-#: src/features/bookings/helpers.ts
 #: src/features/bookings/helpers.ts
 msgid "Billet à retirer sur place demain"
 msgstr "Billet à retirer sur place demain"
@@ -365,11 +367,13 @@ msgstr "Billet à retirer sur place dès"
 #: src/features/bookings/helpers.test.ts
 #: src/features/bookings/helpers.test.ts
 #: src/features/bookings/helpers.ts
+#: src/features/bookings/helpers.ts
 msgid "Billet à retirer sur place dès aujourd'hui"
 msgstr "Billet à retirer sur place dès aujourd'hui"
 
 #: src/features/bookings/helpers.test.ts
 #: src/features/bookings/helpers.test.ts
+#: src/features/bookings/helpers.ts
 #: src/features/bookings/helpers.ts
 msgid "Billet à retirer sur place dès demain"
 msgstr "Billet à retirer sur place dès demain"
@@ -1284,7 +1288,7 @@ msgstr "Indique un lieu pour découvrir toutes les offres de ce lieu puis clique
 msgid "Information"
 msgstr "Information"
 
-#: src/features/profile/pages/PersonalData.tsx
+#: src/features/profile/pages/PersonalData/PersonalData.tsx
 #: src/features/profile/pages/Profile.tsx
 msgid "Informations personnelles"
 msgstr "Informations personnelles"
@@ -1344,12 +1348,12 @@ msgstr "Jeux / Jeux vidéos"
 msgid "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisées du pass Culture."
 msgstr "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisées du pass Culture."
 
-#: src/libs/keychain.ts
-#: src/libs/keychain.ts
-#: src/libs/keychain.ts
-#: src/libs/keychain.web.ts
-#: src/libs/keychain.web.ts
-#: src/libs/keychain.web.ts
+#: src/libs/keychain/keychain.ts
+#: src/libs/keychain/keychain.ts
+#: src/libs/keychain/keychain.ts
+#: src/libs/keychain/keychain.web.ts
+#: src/libs/keychain/keychain.web.ts
+#: src/libs/keychain/keychain.web.ts
 msgid "Keychain non accessible"
 msgstr "Keychain non accessible"
 
@@ -1541,7 +1545,7 @@ msgid "Localisation"
 msgstr "Localisation"
 
 #: src/features/maintenance/Maintenance.tsx
-#: src/libs/firebaseImpl/firestore/maintenance.ts
+#: src/libs/firebase/firestore/maintenance.ts
 msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 
@@ -1642,8 +1646,8 @@ msgstr "Modification du mot de passe"
 msgid "Modifie ta recherche ou découvre toutes les offres"
 msgstr "Modifie ta recherche ou découvre toutes les offres"
 
-#: src/features/profile/pages/PersonalData.tsx
-#: src/features/profile/pages/PersonalData.tsx
+#: src/features/profile/pages/PersonalData/PersonalData.tsx
+#: src/features/profile/pages/PersonalData/PersonalData.tsx
 msgid "Modifier"
 msgstr "Modifier"
 
@@ -1680,7 +1684,7 @@ msgstr "Mon profil"
 #: src/features/auth/signup/SignupForm.tsx
 #: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
 #: src/features/profile/pages/ChangePassword/ChangePassword.tsx
-#: src/features/profile/pages/PersonalData.tsx
+#: src/features/profile/pages/PersonalData/PersonalData.tsx
 #: src/ui/components/inputs/PasswordInput.tsx
 msgid "Mot de passe"
 msgstr "Mot de passe"
@@ -1824,7 +1828,7 @@ msgstr "Nouvel e-mail"
 msgid "Nouvelle fenêtre"
 msgstr "Nouvelle fenêtre"
 
-#: src/features/profile/pages/PersonalData.tsx
+#: src/features/profile/pages/PersonalData/PersonalData.tsx
 msgid "Numéro de téléphone"
 msgstr "Numéro de téléphone"
 
@@ -2182,7 +2186,7 @@ msgstr "Proximité géographique"
 msgid "Prénom"
 msgstr "Prénom"
 
-#: src/features/profile/pages/PersonalData.tsx
+#: src/features/profile/pages/PersonalData/PersonalData.tsx
 msgid "Prénom et nom"
 msgstr "Prénom et nom"
 
@@ -2574,7 +2578,7 @@ msgid "Supprimer l'offre {0} de mes favoris"
 msgstr "Supprimer l'offre {0} de mes favoris"
 
 #: src/features/profile/pages/ConfirmDeleteProfile.tsx
-#: src/features/profile/pages/PersonalData.tsx
+#: src/features/profile/pages/PersonalData/PersonalData.tsx
 msgid "Supprimer mon compte"
 msgstr "Supprimer mon compte"
 

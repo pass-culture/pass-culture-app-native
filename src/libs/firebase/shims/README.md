@@ -1,9 +1,12 @@
 Since react-native-firebase is not yet having the modular firebase implementation (See https://github.com/invertase/react-native-firebase/discussions/6220#discussioncomment-2646606),
+
+TODO(PC-14769): udpate firebase and react-native-firebase to modular
+
 We use this directory has an universal JS interface for firebase Web & Native.
 
 Firebase import should only be imported through those, we have added an eslint rule not to be able to import without adding to this interface.
 
-`libs/firebaseImpl` is for business custom implementation that use `libs/firebase`.
+`libs/firebase/shims` is for business custom implementation that use `libs/firebase`.
 
 DO NOT add any business logic in this file.
 
