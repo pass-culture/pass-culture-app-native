@@ -573,6 +573,7 @@ msgstr "Compte 15-17 créé !"
 msgid "Compte créé !"
 msgstr "Compte créé !"
 
+#: src/features/navigation/RootNavigator/routes.ts
 #: src/features/profile/pages/DeleteProfile/DeleteProfileSuccess.tsx
 msgid "Compte désactivé"
 msgstr "Compte désactivé"
@@ -2098,6 +2099,10 @@ msgstr "Pour quelle raison me demande-t-on ma date de naissance ?"
 msgid "Pour quelle raison ?"
 msgstr "Pour quelle raison ?"
 
+#: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
+msgid "Pour réactiver ton compte nous allons te demander de réinitialiser ton mot de passe."
+msgstr "Pour réactiver ton compte nous allons te demander de réinitialiser ton mot de passe."
+
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 msgid "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
 msgstr "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
@@ -2300,6 +2305,7 @@ msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos b
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
 #: src/features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility.tsx
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
+#: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 #: src/features/bookings/pages/BookingNotFound.tsx
 #: src/features/identityCheck/errors/eduConnect/NotEligibleEduConnect.tsx
@@ -2337,6 +2343,7 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 #: src/features/auth/signup/SignupForm.tsx
+#: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
 #: src/features/bookings/components/BookingDetailsHeader.tsx
 #: src/features/culturalSurvey/components/layout/CulturalSurveyPageHeader.tsx
 #: src/features/identityCheck/atoms/layout/PageHeader.tsx
@@ -2370,6 +2377,7 @@ msgstr "Revenir à l'accueil"
 msgid "Revenir à l'étape précédente"
 msgstr "Revenir à l'étape précédente"
 
+#: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
 #: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
 msgid "Réactiver mon compte"
 msgstr "Réactiver mon compte"
@@ -2672,6 +2680,10 @@ msgstr "Ton compte a été activé !"
 msgid "Ton compte a été désactivé"
 msgstr "Ton compte a été désactivé"
 
+#: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
+msgid "Ton compte est désactivé"
+msgstr "Ton compte est désactivé"
+
 #: src/features/favorites/components/NotConnectedFavorites.tsx
 #: src/features/offer/components/SignUpSignInChoiceOfferModal.tsx
 msgid "Ton compte te permettra de retrouver tous tes favoris en un clin d'oeil !"
@@ -2850,6 +2862,10 @@ msgstr "Tu as dépassé le nombre d’essais autorisés. Tu pourras réessayer d
 #: src/features/bookings/components/BookingDetailsTicketContent.tsx
 msgid "Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams."
 msgstr "Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams."
+
+#: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
+msgid "Tu as jusqu'au xxxx pour réactiver ton compte."
+msgstr "Tu as jusqu'au xxxx pour réactiver ton compte."
 
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
 msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget."
@@ -3083,7 +3099,11 @@ msgstr "Une fois ce délai écoulé, ton compte pass Culture sera définitivemen
 
 #: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
 msgid "Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture."
-msgstr "Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture."
+msgstr "Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture.
+
+#: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
+msgid "Une fois cette date passée, ton compte pass Culture sera définitivement supprimé."
+msgstr "Une fois cette date passée, ton compte pass Culture sera définitivement supprimé."
 
 #: src/features/search/sections/titles.ts
 msgid "Uniquement les nouveautés"

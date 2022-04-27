@@ -18,6 +18,7 @@ import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfir
 import { SignupForm } from 'features/auth/signup/SignupForm'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligiblity'
 import { NotYetUnderageEligibility } from 'features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility'
+import { SuspendedAccount } from 'features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
@@ -189,6 +190,12 @@ export const routes: Route[] = [
     component: LegalNotices,
     path: 'notices-legales',
     options: { title: t`Mentions légales` },
+  },
+  {
+    name: 'SuspendedAccount',
+    component: SuspendedAccount,
+    path: 'compte-desactive',
+    options: { title: t`Compte désactivé` },
   },
   {
     name: 'ConfirmDeleteProfile',

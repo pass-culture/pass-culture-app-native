@@ -115,6 +115,7 @@ export type RootStackParamList = {
   SearchFilter: undefined
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
+  SuspendedAccount: undefined
   TabNavigator: {
     screen: TabRouteName
     params: TabParamList[TabRouteName]
