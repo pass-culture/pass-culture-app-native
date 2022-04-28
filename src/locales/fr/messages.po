@@ -502,8 +502,8 @@ msgstr "Choisir un lieu"
 
 #: src/features/identityCheck/pages/profile/SetSchoolType.tsx
 #: src/features/identityCheck/pages/profile/SetSchoolType.tsx
-#: src/features/identityCheck/pages/profile/Status.tsx
-#: src/features/identityCheck/pages/profile/Status.tsx
+#: src/features/identityCheck/pages/profile/SetStatus.tsx
+#: src/features/identityCheck/pages/profile/SetStatus.tsx
 msgid "Choisis ton statut"
 msgstr "Choisis ton statut"
 
@@ -685,7 +685,7 @@ msgstr "Contacter le support"
 #: src/features/identityCheck/pages/profile/SetCity.tsx
 #: src/features/identityCheck/pages/profile/SetName.tsx
 #: src/features/identityCheck/pages/profile/SetSchoolType.tsx
-#: src/features/identityCheck/pages/profile/Status.tsx
+#: src/features/identityCheck/pages/profile/SetStatus.tsx
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
 msgid "Continuer"
 msgstr "Continuer"
@@ -708,7 +708,7 @@ msgstr "Continuer vers l'étape"
 #: src/features/identityCheck/pages/profile/SetCity.tsx
 #: src/features/identityCheck/pages/profile/SetName.tsx
 #: src/features/identityCheck/pages/profile/SetSchoolType.tsx
-#: src/features/identityCheck/pages/profile/Status.tsx
+#: src/features/identityCheck/pages/profile/SetStatus.tsx
 #: src/ui/components/achievements/components/GenericAchievement.tsx
 msgid "Continuer vers l'étape suivante"
 msgstr "Continuer vers l'étape suivante"
@@ -2154,7 +2154,7 @@ msgstr "Problème technique ;("
 #: src/features/identityCheck/pages/profile/SetCity.tsx
 #: src/features/identityCheck/pages/profile/SetName.tsx
 #: src/features/identityCheck/pages/profile/SetSchoolType.tsx
-#: src/features/identityCheck/pages/profile/Status.tsx
+#: src/features/identityCheck/pages/profile/SetStatus.tsx
 #: src/features/identityCheck/useIdentityCheckSteps.tsx
 #: src/features/navigation/TabBar/routes.ts
 #: src/features/profile/components/LoggedOutHeader.tsx
@@ -2468,6 +2468,10 @@ msgstr "Saisis ta nouvelle adresse e-mail et ton mot de passe. Tu vas recevoir u
 msgid "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 msgstr "Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de passe !"
 
+#: src/features/identityCheck/pages/profile/SetName.tsx
+msgid "Saisis ton nom et ton prénom tels qu'ils sont affichés sur ta carte d'identité."
+msgstr "Saisis ton nom et ton prénom tels qu'ils sont affichés sur ta carte d'identité."
+
 #: src/libs/parsers/venueType.ts
 msgid "Salle de concerts"
 msgstr "Salle de concerts"
@@ -2578,7 +2582,7 @@ msgstr "Supprimer l'offre {0} de mes favoris"
 msgid "Supprimer mon compte"
 msgstr "Supprimer mon compte"
 
-#: src/features/identityCheck/pages/profile/Status.tsx
+#: src/features/identityCheck/pages/profile/SetStatus.tsx
 msgid "Sélectionne ton statut"
 msgstr "Sélectionne ton statut"
 

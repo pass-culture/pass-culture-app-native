@@ -203,7 +203,6 @@ exports[`<SetName/> should render correctly 1`] = `
                 "paddingHorizontal": 20,
               }
             }
-            keyboardDismissMode="on-drag"
             keyboardShouldPersistTaps="handled"
             onContentSizeChange={[Function]}
             onLayout={[Function]}
@@ -214,6 +213,85 @@ exports[`<SetName/> should render correctly 1`] = `
             }
           >
             <View>
+              <View
+                style={
+                  Array [
+                    Object {
+                      "alignItems": "center",
+                      "backgroundColor": "#F1F1F4",
+                      "borderRadius": 4,
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "paddingLeft": 12,
+                      "paddingRight": 20,
+                      "paddingVertical": 16,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  numberOfSpaces={3}
+                  style={
+                    Array [
+                      Object {
+                        "width": 12,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    Array [
+                      Object {
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      Array [
+                        Object {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 16,
+                        },
+                      ]
+                    }
+                  >
+                    Saisis ton nom et ton prénom tels qu'ils sont affichés sur ta carte d'identité.
+                  </Text>
+                </View>
+              </View>
+              <View
+                numberOfSpaces={4}
+                style={
+                  Array [
+                    Object {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
               <View
                 style={
                   Array [

@@ -17,7 +17,7 @@ import { Form } from 'ui/web/form/Form'
 import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
 
-export const Status = () => {
+export const SetStatus = () => {
   const { activities } = useProfileOptions()
   const { dispatch, profile } = useIdentityCheckContext()
   const isUserUnderage = useIsUserUnderage()

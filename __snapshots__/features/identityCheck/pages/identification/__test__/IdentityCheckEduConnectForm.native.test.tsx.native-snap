@@ -156,7 +156,6 @@ exports[`<IdentityCheckEduConnectForm /> should render IdentityCheckEduConnectFo
                 "paddingHorizontal": 20,
               }
             }
-            keyboardDismissMode="on-drag"
             keyboardShouldPersistTaps="handled"
             onContentSizeChange={[Function]}
             onLayout={[Function]}

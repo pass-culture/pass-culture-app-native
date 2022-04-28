@@ -203,7 +203,6 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                 "paddingHorizontal": 20,
               }
             }
-            keyboardDismissMode="on-drag"
             keyboardShouldPersistTaps="handled"
             onContentSizeChange={[Function]}
             onLayout={[Function]}
@@ -974,7 +973,6 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                 "paddingHorizontal": 20,
               }
             }
-            keyboardDismissMode="on-drag"
             keyboardShouldPersistTaps="handled"
             onContentSizeChange={[Function]}
             onLayout={[Function]}

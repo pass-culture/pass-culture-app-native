@@ -68,7 +68,6 @@ const FixedTopChildrenView = styled.View({
 type ChildrenScrollViewProps = { bottomChildrenViewHeight: number }
 const ChildrenScrollView = styled.ScrollView.attrs<ChildrenScrollViewProps>((props) => ({
   keyboardShouldPersistTaps: 'handled',
-  keyboardDismissMode: 'on-drag',
   contentContainerStyle: {
     flexGrow: 1,
     flexDirection: 'column',

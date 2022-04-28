@@ -7,6 +7,7 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { useIdentityCheckContext } from 'features/identityCheck/context/IdentityCheckContextProvider'
 import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCheckNavigation'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { Banner } from 'ui/components/Banner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InputError } from 'ui/components/inputs/InputError'
 import { isNameValid } from 'ui/components/inputs/nameCheck'
@@ -49,6 +50,10 @@ export const SetName = () => {
       }
       scrollChildren={
         <Form.MaxWidth>
+          <Banner
+            title={t`Saisis ton nom et ton prénom tels qu'ils sont affichés sur ta carte d'identité.`}
+          />
+          <Spacer.Column numberOfSpaces={4} />
           <TextInput
             label={t`Prénom`}
             value={firstName}
