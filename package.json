@@ -65,7 +65,7 @@
     "translations:compile": "lingui compile",
     "trigger:production:deploy:ios": "./scripts/deploy.sh -o ios -t hard -e production",
     "trigger:production:deploy": "./scripts/deploy_new_production_version.sh",
-    "trigger:staging:deploy": "./scripts/deploy_new_version.sh v minor",
+    "trigger:staging:deploy": "./scripts/release_staging_minor.sh && ./scripts/deploy_new_version.sh testing/v minor",
     "trigger:staging:deploy:patch": "./scripts/deploy_new_version.sh patch/v patch",
     "trigger:testing:deploy": "./scripts/deploy_new_version.sh testing/v patch",
     "generate:api:client": "SWAGGER_CODEGEN_CLI_VERSION=3.0.30 ./scripts/generate_api_client.sh",
