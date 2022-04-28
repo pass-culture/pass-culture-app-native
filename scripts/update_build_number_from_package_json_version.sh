@@ -22,7 +22,7 @@ update_build_number_from_package_json_version(){
   #   1.136.27 => 10 000 000 + 136 000 + 027 => 10136027
   #   1.137.1  => 10 000 000 + 137 000 + 001 => 10137001
 
-  VERSION=`yarn --silent json -f package.json version`
+  source ./scripts/get_version.sh
   SEMVER=( ${VERSION//./ } )
   MAJOR=${SEMVER[0]}
   MINOR=${SEMVER[1]}

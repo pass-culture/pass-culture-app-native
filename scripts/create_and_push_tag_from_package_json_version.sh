@@ -5,7 +5,7 @@ set -e
 
 create_and_push_tag_from_package_json_version(){
   TAG_PREFIX="$1"
-  VERSION=`yarn --silent json -f package.json version`
+  source ./scripts/get_version.sh
   git tag --annotate "${TAG_PREFIX}${VERSION}" --message "v${VERSION}"
   git push origin "${TAG_PREFIX}${VERSION}"
 }

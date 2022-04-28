@@ -5,7 +5,7 @@ set -e
 update_app_version(){
   yarn version --"$2" --no-git-tag-version
 
-  VERSION=`yarn --silent json -f package.json version`
+  source ./scripts/get_version.sh
   ./scripts/update_build_number_from_package_json_version.sh
   git add package.json
 
