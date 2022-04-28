@@ -16,7 +16,7 @@ jest.mock('features/identityCheck/context/IdentityCheckContextProvider', () => (
     ...mockState,
   })),
 }))
-jest.mock('libs/firebaseImpl/firestore/ubbleETAMessage', () => ({
+jest.mock('libs/firebase/firestore/ubbleETAMessage', () => ({
   useUbbleETAMessage: jest.fn(() => ({ data: 'Environ 3 heures' })),
 }))
 

@@ -1,4 +1,4 @@
-import firestore, { FirebaseFirestoreTypes } from 'libs/firebase/firestore'
+import firestore, { FirebaseFirestoreTypes } from 'libs/firebase/shims/firestore'
 
 import { maintenanceStatusListener } from '../maintenance'
 

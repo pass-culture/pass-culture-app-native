@@ -4,7 +4,7 @@ import {
   EVENT_PAGE_VIEW_PARAM_KEY,
 } from 'libs/analytics/constants'
 import { prepareLogEventParams } from 'libs/analytics/utils'
-import firebaseAnalyticsModule from 'libs/firebase/analytics'
+import firebaseAnalyticsModule from 'libs/firebase/shims/analytics'
 
 import { AnalyticsProvider } from './types'
 

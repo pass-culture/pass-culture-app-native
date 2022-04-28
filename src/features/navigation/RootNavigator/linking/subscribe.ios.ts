@@ -1,6 +1,6 @@
 import { Linking } from 'react-native'
 
-import dynamicLinks, { FirebaseDynamicLinksTypes } from 'libs/firebase/dynamic-links'
+import dynamicLinks, { FirebaseDynamicLinksTypes } from 'libs/firebase/shims/dynamic-links'
 
 // Override of default `subscribe` of `linking` config required to make
 // firebase dynamic links work on iOS :
