@@ -42,13 +42,13 @@ commands:
       - restore_cache:
           name: Restore Node Modules
           keys:
-            - node-modules-v9-{{ checksum "yarn.lock" }}-{{ arch }}
+            - node-modules-minimal-v1-{{ checksum "yarn.lock" }}-{{ arch }}
       - run:
           name: Install Dependencies
           command: yarn install --immutable
       - save_cache:
           name: Save Node Modules
-          key: node-modules-v9-{{ checksum "yarn.lock" }}-{{ arch }}
+          key: node-modules-minimal-v1-{{ checksum "yarn.lock" }}-{{ arch }}
           paths:
             - node_modules
 
@@ -71,14 +71,14 @@ commands:
     steps:
       - restore_cache:
           name: Restore Gem dependencies
-          key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+          key: bundle-minimal-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
       - run:
           name: Install Gem dependencies
           command: |
             bundle install --path=vendor/bundle
       - save_cache:
           name: Save Gem dependencies
-          key: bundle-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
+          key: bundle-minimal-v1-{{ checksum "Gemfile.lock" }}-{{ arch }}
           paths:
             - .bundle/
             - vendor/bundle
@@ -91,7 +91,7 @@ commands:
   setup_android_google_services_config:
     description: Setup android Google services config
     steps:
-      - run: echo $ANDROID_GOOGLE_SERVICES_JSON > android/app/google-services.json
+      - run: echo nothing to do
 
   install_cocoapods:
     description: Install cocoapods
@@ -101,7 +101,7 @@ commands:
   decode_match_secrets:
     description: Decode match secrets
     steps:
-      - run: export MATCH_PASSWORD=$MATCH_PASSWORD_CERTIFICATES
+      - run: export MATCH_PASSWORD=TBD
 
   setup_sentry:
     description: Setup sentry credentials
@@ -167,13 +167,13 @@ jobs:
       - run:
           name: Deploy Android App for testing environment
           command: |
-            export ANDROID_APPCENTER_API_TOKEN=$ANDROID_TESTING_APPCENTER_API_TOKEN
+            export ANDROID_APPCENTER_API_TOKEN=d0e3f9a0c4e0539b6bced275fa87d29e28f04372
             export CODEPUSH_KEY_ANDROID=$CODEPUSH_KEY_ANDROID_TESTING
             ./scripts/deploy.sh -o android -t soft -e testing
       - run:
           name: Deploy IOS App for testing environment
           command: |
-            export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
+            export IOS_APPCENTER_API_TOKEN=TBD
             export CODEPUSH_KEY_IOS=$CODEPUSH_KEY_IOS_TESTING
             ./scripts/deploy.sh -o ios -t soft -e testing
 
@@ -190,17 +190,18 @@ jobs:
       - run:
           name: Setup android keystore for testing environment
           command: |
-            mkdir -p android/keystores
-            echo $ANDROID_KEYSTORE_TESTING | base64 -di > android/keystores/testing.keystore
-            echo "keyAlias=passculture" >> android/keystores/testing.keystore.properties
-            echo "storeFile=testing.keystore" >> android/keystores/testing.keystore.properties
-            echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_TESTING" >> android/keystores/testing.keystore.properties
-            echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_TESTING" >>  android/keystores/testing.keystore.properties
+            echo "keystore already present"
+#            mkdir -p android/keystores
+#            echo $ANDROID_KEYSTORE_TESTING | base64 -di > android/keystores/testing.keystore
+#            echo "keyAlias=passculture" >> android/keystores/testing.keystore.properties
+#            echo "storeFile=testing.keystore" >> android/keystores/testing.keystore.properties
+#            echo "storePassword=$ANDROID_KEYSTORE_STORE_PASSWORD_TESTING" >> android/keystores/testing.keystore.properties
+#            echo "keyPassword=$ANDROID_KEYSTORE_KEY_PASSWORD_TESTING" >>  android/keystores/testing.keystore.properties
       - setup_android_google_services_config
       - run:
           name: Deploy Android App for testing environment
           command: |
-            export ANDROID_APPCENTER_API_TOKEN=$ANDROID_TESTING_APPCENTER_API_TOKEN
+            export ANDROID_APPCENTER_API_TOKEN=d0e3f9a0c4e0539b6bced275fa87d29e28f04372
             ./scripts/deploy.sh -o android -t hard -e testing
 
 
@@ -220,12 +221,12 @@ jobs:
       - setup_sentry
       - run:
           name: Setup iOS Google services config
-          command: echo $IOS_GOOGLE_SERVICES_PLIST_TESTING > ios/GoogleService-Info.plist
+          command: echo TBD > ios/GoogleService-Info.plist
       - run:
           name: Deploy IOS App for testing environment
           no_output_timeout: 30m
           command: |
-            export IOS_APPCENTER_API_TOKEN=$IOS_TESTING_APPCENTER_API_TOKEN
+            export IOS_APPCENTER_API_TOKEN=e1e52a2eda16b50ceba213c80363e1fa9c0ea702
             ./scripts/deploy.sh -o ios -t hard -e testing
 
 ###################
@@ -250,27 +251,23 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - PC-14133
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
             - test-native
       - deploy-android-testing-hard:
           filters:
-            tags:
-              only: /^(testing\/)?v.*/
             branches:
-              ignore: /.*/
+              only: PC-14133
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
             - test-native
       - deploy-ios-testing-hard:
           filters:
-            tags:
-              only: /^(testing\/)?v.*/
             branches:
-              ignore: /.*/
+              only: PC-14133
           requires:
             - checkout-and-install-deps
             - test-lint-and-types
