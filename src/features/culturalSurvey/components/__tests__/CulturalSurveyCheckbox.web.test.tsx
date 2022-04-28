@@ -10,6 +10,8 @@ describe('CulturalSurveyCheckbox', () => {
       <CulturalSurveyCheckbox
         icon={culturalSurveyIcons.Museum}
         subtitle={'un monument, une exposition...'}
+        selected={false}
+        onPress={jest.fn()}
       />
     )
     expect(CulturalSurveyCheckboxComponent).toMatchSnapshot()
@@ -19,6 +21,8 @@ describe('CulturalSurveyCheckbox', () => {
       <CulturalSurveyCheckbox
         icon={culturalSurveyIcons.Museum}
         subtitle={'un monument, une exposition...'}
+        selected={false}
+        onPress={jest.fn()}
       />
     )
     const Button = CulturalSurveyCheckboxComponent.getByTestId('CulturalSurveyAnswer')
