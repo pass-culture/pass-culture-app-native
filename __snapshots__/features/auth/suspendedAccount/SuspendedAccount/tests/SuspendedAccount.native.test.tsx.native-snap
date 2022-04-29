@@ -232,7 +232,7 @@ exports[`<SuspendedAccount /> should match snapshot 1`] = `
         ]
       }
     >
-      Pour réactiver ton compte nous allons te demander de réinitialiser ton mot de passe.
+      Pour réactiver ton compte, nous allons te demander de réinitialiser ton mot de passe.
     </Text>
     <View
       numberOfSpaces={30}

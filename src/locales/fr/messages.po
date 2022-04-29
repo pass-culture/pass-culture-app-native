@@ -1946,6 +1946,10 @@ msgstr "Où"
 msgid "Où ?"
 msgstr "Où ?"
 
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "POC A/B Testing"
+msgstr "POC A/B Testing"
+
 #: src/features/navigation/TabBar/routes.ts
 msgid "Page d'accueil"
 msgstr "Page d'accueil"
@@ -2100,8 +2104,8 @@ msgid "Pour quelle raison ?"
 msgstr "Pour quelle raison ?"
 
 #: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
-msgid "Pour réactiver ton compte nous allons te demander de réinitialiser ton mot de passe."
-msgstr "Pour réactiver ton compte nous allons te demander de réinitialiser ton mot de passe."
+msgid "Pour réactiver ton compte, nous allons te demander de réinitialiser ton mot de passe."
+msgstr "Pour réactiver ton compte, nous allons te demander de réinitialiser ton mot de passe."
 
 #: src/features/auth/signup/PhoneValidation/SetPhoneNumber.tsx
 msgid "Pour sécuriser l'accès à ton pass nous avons besoin de valider ton numéro."
@@ -3099,7 +3103,7 @@ msgstr "Une fois ce délai écoulé, ton compte pass Culture sera définitivemen
 
 #: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
 msgid "Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture."
-msgstr "Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture.
+msgstr "Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture."
 
 #: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
 msgid "Une fois cette date passée, ton compte pass Culture sera définitivement supprimé."
