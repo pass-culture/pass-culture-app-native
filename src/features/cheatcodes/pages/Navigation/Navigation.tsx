@@ -382,6 +382,12 @@ export function Navigation(): JSX.Element {
             }
           />
         </Row>
+        <Row half>
+          <ButtonPrimary
+            wording={'Ticket swipper'}
+            onPress={() => navigate('SwipperTicketPageTest')}
+          />
+        </Row>
       </StyledContainer>
       <Spacer.BottomScreen />
     </ScrollView>

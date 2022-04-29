@@ -21,6 +21,7 @@ import { NotYetUnderageEligibility } from 'features/auth/signup/VerifyEligiblity
 import { AccountReactivationSuccess } from 'features/auth/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess'
 import { FraudulentAccount } from 'features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount'
 import { SuspendedAccount } from 'features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount'
+import { SwipperTicketPageTest } from 'features/bookings/components/SwipperTicketPageTest'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
@@ -401,6 +402,12 @@ export const routes: Route[] = [
       parse: screenParamsParser['Venue'],
     },
     options: { title: t`Lieu` },
+  },
+  {
+    name: 'SwipperTicketPageTest',
+    component: SwipperTicketPageTest,
+    path: 'test-swipper-ticket-page-test',
+    options: { title: t`SwipperTicketPageTest` },
   },
   // Internals
   {
