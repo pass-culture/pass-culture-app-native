@@ -10,7 +10,7 @@ import { fireEvent, render, useMutationFactory } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
-import { ConfirmDeleteProfile } from './ConfirmDeleteProfile'
+import { ConfirmDeleteProfile } from '../ConfirmDeleteProfile'
 
 const mockedUseMutation = mocked(useMutation)
 

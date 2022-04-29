@@ -2,7 +2,9 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { useAppSettings } from 'features/auth/settings'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { DeleteProfileSuccessV2 } from 'features/profile/pages/DeleteProfile/DeleteProfileSuccessV2'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
@@ -10,7 +12,10 @@ import { ProfileDeletionIllustration } from 'ui/svg/icons/ProfileDeletionIllustr
 import { Spacer, Typo } from 'ui/theme'
 
 export function DeleteProfileSuccess() {
-  return (
+  const { data: settings } = useAppSettings()
+  return settings?.allowAccountReactivation ? (
+    <DeleteProfileSuccessV2 />
+  ) : (
     <GenericInfoPage
       title={t`Compte désactivé`}
       icon={ProfileDeletionIllustration}

@@ -1705,6 +1705,11 @@
     * @type {boolean}
     * @memberof SettingsResponse
     */
+   allowAccountReactivation: boolean
+   /**
+    * @type {boolean}
+    * @memberof SettingsResponse
+    */
    autoActivateDigitalBookings: boolean
    /**
     * @type {DepositAmountsByAge}
