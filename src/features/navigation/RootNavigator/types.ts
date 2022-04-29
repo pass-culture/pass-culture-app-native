@@ -138,6 +138,7 @@ export type RootStackParamList = {
   LandscapePositionPage: undefined
   DeeplinksGenerator: undefined
   UTMParameters: undefined
+  SwipperTicketPageTest: undefined
 } & IdentityCheckRootStackParamList &
   CulturalSurveyRootStackParamList
 
