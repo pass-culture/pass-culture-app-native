@@ -50,19 +50,19 @@ const _AppButton = <T extends AppButtonProps>({
 
   const onClick: MouseEventHandler<HTMLButtonElement> = useCallback(
     (event) => {
-      if (type === 'submit' && pressHandler) {
+      if ((type === 'submit' || href) && pressHandler) {
         event.preventDefault()
       }
       if (pressHandler) {
         pressHandler(event)
       }
     },
-    [type, pressHandler]
+    [type, href, pressHandler]
   )
 
   const onDoubleClick: MouseEventHandler<HTMLButtonElement> = useCallback(
     (event) => {
-      if (type === 'submit' && pressHandler) {
+      if ((type === 'submit' || href) && pressHandler) {
         event.preventDefault()
       }
       if (longPressHandler) {
@@ -70,7 +70,7 @@ const _AppButton = <T extends AppButtonProps>({
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [type, longPressHandler]
+    [type, href, longPressHandler]
   )
 
   return (

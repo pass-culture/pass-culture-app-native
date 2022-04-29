@@ -40,14 +40,14 @@ export function ButtonInsideText({
 
   const onDoubleClick: MouseEventHandler<HTMLButtonElement> = useCallback(
     (event) => {
-      if (type === 'submit' && longPressHandler) {
+      if ((type === 'submit' || href) && longPressHandler) {
         event.preventDefault()
       }
       if (longPressHandler) {
         longPressHandler(event)
       }
     },
-    [type, longPressHandler]
+    [type, href, longPressHandler]
   )
 
   return (
