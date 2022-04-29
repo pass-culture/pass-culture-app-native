@@ -55,6 +55,7 @@ import { LocationFilter } from 'features/search/pages/LocationFilter'
 import { LocationPicker } from 'features/search/pages/LocationPicker'
 import { SearchFilter } from 'features/search/pages/SearchFilter'
 import { Venue } from 'features/venue'
+import { ABTestingPOC } from 'libs/ABTesting/ABTestingPOC'
 
 import { Route } from './types'
 
@@ -386,5 +387,13 @@ export const routes: Route[] = [
       path: 'liens/utm',
     },
     options: { title: t`Paramètres UTM` },
+  },
+  {
+    name: 'ABTestingPOC',
+    component: ABTestingPOC,
+    pathConfig: {
+      path: 'ab-testing-poc',
+    },
+    options: { title: t`POC A/B Testing` },
   },
 ]
