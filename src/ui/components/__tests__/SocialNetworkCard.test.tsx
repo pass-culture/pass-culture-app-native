@@ -7,13 +7,14 @@ import { fireEvent, render } from 'tests/utils'
 import { SocialNetworkCard } from '../SocialNetworkCard'
 
 describe('SocialNetworkCard', () => {
-  it('should openUrl onClick and track analytics', () => {
+  it('should openUrl onClick and track analytics', async () => {
     const openUrl = jest
       .spyOn(NavigationHelpers, 'openUrl')
       .mockImplementation(jest.fn(() => Promise.resolve()))
     const { getByText } = render(<SocialNetworkCard network="twitter" />)
     const button = getByText('Twitter')
     fireEvent.press(button)
+    await new Promise((res) => setTimeout(res, 700))
     expect(analytics.logClickSocialNetwork).toBeCalledWith('Twitter')
     expect(openUrl).toBeCalled()
   })

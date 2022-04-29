@@ -20,4 +20,5 @@ export type TouchableLinkProps<T = ElementType> = {
   navigateBeforeOnPress?: boolean
   highlight?: boolean
   as?: T
+  useDebounce?: boolean
 } & TouchableOpacityProps

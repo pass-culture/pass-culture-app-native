@@ -1,4 +1,5 @@
 import { useLinkProps, useNavigation } from '@react-navigation/native'
+import { debounce } from 'lodash'
 import React, {
   ComponentProps,
   createRef,
@@ -29,6 +30,7 @@ export function TouchableLink<T extends ElementType = ElementType>({
   onFocus,
   onBlur,
   as: Tag,
+  useDebounce,
   ...rest
 }: TouchableLinkProps<T> & ComponentProps<T>): ReactElement {
   const TouchableComponent = (
@@ -98,6 +100,8 @@ export function TouchableLink<T extends ElementType = ElementType>({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const callOnClick = useDebounce ? debounce(onClick, 300) : onClick
+
   return (
     <TouchableLinkComponent
       {...touchableOpacityProps}
@@ -106,7 +110,7 @@ export function TouchableLink<T extends ElementType = ElementType>({
       isFocus={isFocus}
       onFocus={onLinkFocus}
       onBlur={onLinkBlur}
-      onPress={disabled ? undefined : onClick}>
+      onPress={disabled ? undefined : callOnClick}>
       {children}
     </TouchableLinkComponent>
   )
