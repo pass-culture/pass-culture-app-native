@@ -31,15 +31,14 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
 
   const onClick = useCallback(
     (event: SyntheticEvent) => {
-      if (type === 'submit') {
+      if (type === 'submit' || href) {
         event.preventDefault()
       }
       if (onPress) {
         onPress()
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [onPress]
+    [type, href, onPress]
   )
   return (
     <ButtonComponent
