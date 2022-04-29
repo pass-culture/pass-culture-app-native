@@ -61,7 +61,7 @@ export const SuspendedAccount = () => {
       </StyledBody>
       <Spacer.Column numberOfSpaces={5} />
       <StyledBody>
-        {t`Pour réactiver ton compte nous allons te demander de réinitialiser ton mot de passe.`}
+        {t`Pour réactiver ton compte, nous allons te demander de réinitialiser ton mot de passe.`}
       </StyledBody>
     </GenericInfoPage>
   ) : (

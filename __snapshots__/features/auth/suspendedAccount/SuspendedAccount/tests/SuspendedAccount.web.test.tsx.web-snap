@@ -103,7 +103,7 @@ Object {
             dir="auto"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
           >
-            Pour réactiver ton compte nous allons te demander de réinitialiser ton mot de passe.
+            Pour réactiver ton compte, nous allons te demander de réinitialiser ton mot de passe.
           </div>
           <div
             class="css-view-1dbjc4n"
@@ -258,7 +258,7 @@ Object {
           dir="auto"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
         >
-          Pour réactiver ton compte nous allons te demander de réinitialiser ton mot de passe.
+          Pour réactiver ton compte, nous allons te demander de réinitialiser ton mot de passe.
         </div>
         <div
           class="css-view-1dbjc4n"
