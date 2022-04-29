@@ -10,7 +10,7 @@ export const ABTestingPOC: React.FC = () => {
   useFocusEffect(
     useCallback(() => {
       navigate(...homeNavConfig)
-    }, [])
+    }, [navigate])
   )
   return <LoadingPage />
 }
