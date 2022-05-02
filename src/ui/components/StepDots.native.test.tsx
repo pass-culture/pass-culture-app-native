@@ -69,6 +69,19 @@ describe('<StepDots />', () => {
       expect(thirdDot.props.width).toEqual(12)
     })
   })
+
+  describe('three steps with first and second with neutral color', () => {
+    it('should render first and second steps properly', () => {
+      const { getAllByTestId } = render(
+        <StepDots numberOfSteps={3} currentStep={3} withNeutralPreviousStepsColor />
+      )
+      const firstAndSecondDots = getAllByTestId('dot-icon').slice(0, 1)
+      firstAndSecondDots.forEach((dot: ReactTestInstance) => {
+        expect(dot.props.borderColor).toEqual(ColorsEnum.GREY_DARK)
+        expect(dot.props.width).toEqual(8)
+      })
+    })
+  })
 })
 
 function renderThreeStepsFirstIsCurrent() {

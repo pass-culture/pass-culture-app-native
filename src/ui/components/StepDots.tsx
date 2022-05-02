@@ -6,6 +6,7 @@ import { DotComponent } from './DotComponent'
 interface Props {
   numberOfSteps: number
   currentStep: number
+  withNeutralPreviousStepsColor?: boolean
 }
 
 export const StepDots: FunctionComponent<Props> = (props) => {
@@ -21,6 +22,7 @@ export const StepDots: FunctionComponent<Props> = (props) => {
             numberOfSteps={props.numberOfSteps}
             isActive={index === currentStepIndex}
             onPress={undefined}
+            withNeutralPreviousStepsColor={props.withNeutralPreviousStepsColor}
           />
         )
       })}

@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import React, { useState } from 'react'
 import {
   Animated,
@@ -39,7 +40,7 @@ export function SwipperTickets({ tickets }: Props) {
     <Container>
       <Animated.FlatList
         data={tickets}
-        keyExtractor={(index) => index.toString()}
+        keyExtractor={(_, index) => index.toString()}
         horizontal
         pagingEnabled
         bounces={false}
@@ -50,9 +51,9 @@ export function SwipperTickets({ tickets }: Props) {
         ItemSeparatorComponent={Separator}
         contentContainerStyle={{ paddingHorizontal: ITEM_SPACING }}
         onScroll={onScroll}
-        renderItem={({ item, index }) => {
+        renderItem={({ item }) => {
           return (
-            <TicketsContainer key={index} width={ITEM_SIZE}>
+            <TicketsContainer key={item.title} width={ITEM_SIZE}>
               <ThreeShapesTicket>
                 <Typo.ButtonText>{item.title}</Typo.ButtonText>
               </ThreeShapesTicket>
@@ -64,8 +65,8 @@ export function SwipperTickets({ tickets }: Props) {
       <SwipperTicketsControls
         numberOfSteps={tickets.length}
         currentStep={currentIndex}
-        prevTitle="prev"
-        nextTitle="next"
+        prevTitle={t`Revenir au ticket précédent`}
+        nextTitle={t`Voir le ticket suivant`}
         onPressPrev={() => 'Press prev'}
         onPressNext={() => 'Press next'}
       />
