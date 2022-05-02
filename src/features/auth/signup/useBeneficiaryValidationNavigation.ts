@@ -29,8 +29,8 @@ export const useNextSubscriptionStep = (setError: (error: Error) => void) =>
 
 export const useBeneficiaryValidationNavigation = (setError: (error: Error) => void) => {
   const navigateToNextStep = useNavigateToNextSubscriptionStep(setError)
-  const { data: nextSubscriptionStep } = useNextSubscriptionStep(setError)
-  const nextStepNavConfig = nextSubscriptionStep
+  const { data: nextSubscriptionStep, refetch } = useNextSubscriptionStep(setError)
+  let nextStepNavConfig = nextSubscriptionStep
     ? getNavConfigForNextSubscriptionStep(nextSubscriptionStep)
     : undefined
 
@@ -38,9 +38,11 @@ export const useBeneficiaryValidationNavigation = (setError: (error: Error) => v
     beforeNavigateToNextSubscriptionStep(setError, nextStepNavConfig)
   }
 
-  const navigateToNextBeneficiaryValidationStep = useCallback(() => {
-    return navigateToNextStep(nextStepNavConfig)
+  const navigateToNextBeneficiaryValidationStep = useCallback(async () => {
+    const { data } = await refetch()
     // eslint-disable-next-line react-hooks/exhaustive-deps
+    nextStepNavConfig = data && getNavConfigForNextSubscriptionStep(data)
+    return navigateToNextStep(nextStepNavConfig)
   }, [navigateToNextStep])
 
   return {
