@@ -1,5 +1,5 @@
 import { useLinkProps, useNavigation } from '@react-navigation/native'
-import { debounce } from 'lodash'
+import debounce from 'lodash.debounce'
 import React, {
   ComponentProps,
   createRef,
@@ -19,6 +19,8 @@ import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { touchableFocusOutline } from 'ui/theme/customFocusOutline/touchableFocusOutline'
 
+const ON_PRESS_DEBOUNCE_DELAY = 300
+
 export function TouchableLink<T extends ElementType = ElementType>({
   onPress,
   navigateTo,
@@ -30,7 +32,7 @@ export function TouchableLink<T extends ElementType = ElementType>({
   onFocus,
   onBlur,
   as: Tag,
-  useDebounce,
+  isOnPressDebounced,
   ...rest
 }: TouchableLinkProps<T> & ComponentProps<T>): ReactElement {
   const TouchableComponent = (
@@ -100,7 +102,7 @@ export function TouchableLink<T extends ElementType = ElementType>({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const callOnClick = useDebounce ? debounce(onClick, 300) : onClick
+  const callOnClick = isOnPressDebounced ? debounce(onClick, ON_PRESS_DEBOUNCE_DELAY) : onClick
 
   return (
     <TouchableLinkComponent

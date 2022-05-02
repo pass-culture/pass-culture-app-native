@@ -1,4 +1,5 @@
 import React from 'react'
+import waitForExpect from 'wait-for-expect'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics'
@@ -14,8 +15,9 @@ describe('SocialNetworkCard', () => {
     const { getByText } = render(<SocialNetworkCard network="twitter" />)
     const button = getByText('Twitter')
     fireEvent.press(button)
-    await new Promise((res) => setTimeout(res, 700))
-    expect(analytics.logClickSocialNetwork).toBeCalledWith('Twitter')
-    expect(openUrl).toBeCalled()
+    await waitForExpect(() => {
+      expect(analytics.logClickSocialNetwork).toBeCalledWith('Twitter'),
+        expect(openUrl).toBeCalled()
+    })
   })
 })

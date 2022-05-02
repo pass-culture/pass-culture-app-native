@@ -1,4 +1,3 @@
-import { debounce } from 'lodash'
 import React, { memo } from 'react'
 import styled from 'styled-components/native'
 
@@ -21,16 +20,13 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
     size: theme.icons.sizes.small,
   }))``
 
-  const onPress = () => {
-    analytics.logClickSocialNetwork(name)
-  }
-  const debounceOnPress = debounce(onPress, 300)
-
   return (
     <TouchableLink
       externalNav={{ url: link, params: { shouldLogEvent: false, fallbackUrl: fallbackLink } }}
-      onPress={debounceOnPress}
-      useDebounce>
+      onPress={() => {
+        analytics.logClickSocialNetwork(name)
+      }}
+      isOnPressDebounced>
       <Container>
         <NetworkIconBox>
           <StyledIcon />
