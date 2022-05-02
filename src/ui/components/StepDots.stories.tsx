@@ -27,3 +27,10 @@ WithLastCurrentStep.args = {
   numberOfSteps: 4,
   currentStep: 4,
 }
+
+export const WithNeutralPreviousStepsColor = Template.bind({})
+WithNeutralPreviousStepsColor.args = {
+  numberOfSteps: 4,
+  currentStep: 3,
+  withNeutralPreviousStepsColor: true,
+}

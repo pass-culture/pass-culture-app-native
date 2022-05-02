@@ -33,7 +33,11 @@ export function SwipperTicketsControls({
         <ControlComponentSpacing />
       )}
       <Spacer.Row numberOfSpaces={2} />
-      <StepDots numberOfSteps={numberOfSteps} currentStep={currentStep} />
+      <StepDots
+        numberOfSteps={numberOfSteps}
+        currentStep={currentStep}
+        withNeutralPreviousStepsColor
+      />
       <Spacer.Row numberOfSpaces={2} />
       {showNextButton ? (
         <ControlComponent type="next" title={nextTitle} onPress={onPressNext} />
