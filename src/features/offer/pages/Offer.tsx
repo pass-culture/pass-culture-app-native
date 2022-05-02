@@ -78,6 +78,7 @@ export const Offer: FunctionComponent = () => {
             }}
             icon={externalNav ? ExternalSite : undefined}
             isDisabled={onPressCTA === undefined && !navigateTo && !externalNav}
+            isOnPressDebounced
           />
         </CallToActionContainer>
       )}
