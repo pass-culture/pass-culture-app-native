@@ -7,8 +7,8 @@ import {
 } from 'react-native'
 import styled from 'styled-components/native'
 
+import { SwipperTicketsControls } from 'features/bookings/components/SwipperTicketsControls'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
-import { StepDots } from 'ui/components/StepDots'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type TicketsProps = {
@@ -22,11 +22,10 @@ type Props = {
 const SEPARATOR_VALUE = 4
 
 export function SwipperTickets({ tickets }: Props) {
-  const { width: windowWidth } = useWindowDimensions()
+  const windowWidth = useWindowDimensions().width
   const ITEM_SIZE = windowWidth * 0.75
   const ITEM_SPACING = (windowWidth - ITEM_SIZE) / 2
 
-  //   const scrollX = React.useRef(new Animated.Value(0)).current
   const [currentIndex, setCurrentIndex] = useState(1)
 
   const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -62,7 +61,14 @@ export function SwipperTickets({ tickets }: Props) {
         }}
       />
       <Spacer.Column numberOfSpaces={5} />
-      <StepDots numberOfSteps={tickets.length} currentStep={currentIndex} />
+      <SwipperTicketsControls
+        numberOfSteps={tickets.length}
+        currentStep={currentIndex}
+        prevTitle="prev"
+        nextTitle="next"
+        onPressPrev={() => 'Press prev'}
+        onPressNext={() => 'Press next'}
+      />
     </Container>
   )
 }

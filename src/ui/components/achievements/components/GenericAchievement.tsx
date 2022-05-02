@@ -12,7 +12,7 @@ import { ButtonTertiaryGreyDark } from 'ui/components/buttons/ButtonTertiaryGrey
 import { DotComponent } from 'ui/components/DotComponent'
 import { getSpacing, Spacer } from 'ui/theme'
 
-import { ControlComponent } from './ControlComponent'
+import { ControlComponent, ControlComponentProps } from './ControlComponent'
 import { AchievementCardKeyProps } from './GenericAchievementCard'
 
 // While it may look like a duplication of the type in DotComponent.tsx,
@@ -75,8 +75,8 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
     DotComponent: function DotComponent(props: DotComponentPropsForSwiper) {
       return <DotComponentForSwiper {...props} numberOfSteps={cards.length} />
     },
-    PrevComponent: ControlComponent,
-    NextComponent: ControlComponent,
+    PrevComponent: (props: ControlComponentProps) => <ControlComponent {...props} withMargin />,
+    NextComponent: (props: ControlComponentProps) => <ControlComponent {...props} withMargin />,
     prevTitle: t`Revenir à l'étape précédente`,
     nextTitle: t`Continuer vers l'étape suivante`,
   }
