@@ -1904,6 +1904,10 @@ msgstr "Offres"
 msgid "Oh non !"
 msgstr "Oh non !"
 
+#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
+msgid "On est super triste de te voir partir."
+msgstr "On est super triste de te voir partir."
+
 #: src/features/auth/signup/AccountCreated/AccountCreated.tsx
 #: src/features/identityCheck/pages/confirmation/BeneficiaryRequestSent.tsx
 msgid "On y va !"
@@ -3718,7 +3722,3 @@ msgstr "à portée de main !"
 #: src/features/bookOffer/atoms/HourChoice.tsx
 msgid "épuisé"
 msgstr "épuisé"
-
-#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
-msgid "😢 On est super triste de te voir partir."
-msgstr "😢 On est super triste de te voir partir."

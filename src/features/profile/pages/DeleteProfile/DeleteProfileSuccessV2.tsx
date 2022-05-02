@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
+import { Emoji } from 'ui/components/Emoji'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { Again } from 'ui/svg/icons/Again'
@@ -25,7 +26,10 @@ export function DeleteProfileSuccessV2() {
         />,
         <ButtonTertiaryWhite key={2} wording={t`Réactiver mon compte`} icon={Again} />,
       ]}>
-      <StyledBody>{t`😢 On est super triste de te voir partir.`}</StyledBody>
+      <StyledBody>
+        <Emoji.CryingFace withSpaceAfter />
+        {t`On est super triste de te voir partir.`}
+      </StyledBody>
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>{t`Tu as 60 jours pour changer d’avis. Tu pourras facilement réactiver ton compte en te connectant.`}</StyledBody>
       <Spacer.Column numberOfSpaces={4} />
