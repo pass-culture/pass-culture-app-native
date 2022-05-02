@@ -22,8 +22,8 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
       "msGridRowAlign": "center",
       "overflowX": "scroll",
       "overflowY": "scroll",
-      "paddingLeft": "20px",
-      "paddingRight": "20px",
+      "paddingLeft": "24px",
+      "paddingRight": "24px",
     }
   }
 >

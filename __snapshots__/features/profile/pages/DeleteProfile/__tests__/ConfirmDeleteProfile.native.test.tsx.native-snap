@@ -1,0 +1,476 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ConfirmDeleteProfile component should render confirm delete profile 1`] = `
+Array [
+  <View
+    accessible={true}
+    collapsable={false}
+    focusable={true}
+    nativeID="animatedComponent"
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
+    style={
+      Object {
+        "left": 24,
+        "opacity": 1,
+        "position": "absolute",
+        "top": 30,
+        "userSelect": "auto",
+        "zIndex": 1,
+      }
+    }
+    testID="Revenir en arrière"
+  >
+    <View
+      height={24}
+      width={24}
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+  </View>,
+  <View
+    style={
+      Array [
+        Object {
+          "alignSelf": "center",
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "maxWidth": 500,
+          "overflow": "scroll",
+          "paddingHorizontal": 24,
+        },
+      ]
+    }
+  >
+    <View
+      flex={2}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 2,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
+      hasHeight={false}
+      style={
+        Array [
+          Object {
+            "alignItems": "center",
+            "flexGrow": 1,
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <View
+        height={156}
+        width={200}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <Text
+      fontSize={24}
+      style={
+        Array [
+          Object {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 24,
+            "lineHeight": 28,
+          },
+          Object {
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Veux-tu vraiment supprimer ton compte ?
+    </Text>
+    <View
+      flex={0.5}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 0.5,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        Array [
+          Object {
+            "marginTop": 8,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Les conséquences :
+      </Text>
+      <View
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+              "marginLeft": 12,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "height": 20,
+                "justifyContent": "center",
+                "marginRight": 12,
+              },
+            ]
+          }
+        >
+          <View
+            borderColor="#161617"
+            fillColor="#161617"
+            height={3}
+            width={3}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+        </View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          tes réservations seront annulées et supprimées
+        </Text>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+              "marginLeft": 12,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "height": 20,
+                "justifyContent": "center",
+                "marginRight": 12,
+              },
+            ]
+          }
+        >
+          <View
+            borderColor="#161617"
+            fillColor="#161617"
+            height={3}
+            width={3}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+        </View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau
+        </Text>
+      </View>
+      <View
+        style={
+          Array [
+            Object {
+              "flexDirection": "row",
+              "marginLeft": 12,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            Array [
+              Object {
+                "height": 20,
+                "justifyContent": "center",
+                "marginRight": 12,
+              },
+            ]
+          }
+        >
+          <View
+            borderColor="#161617"
+            fillColor="#161617"
+            height={3}
+            width={3}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+        </View>
+        <Text
+          style={
+            Array [
+              Object {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Regular",
+                "fontSize": 15,
+                "lineHeight": 20,
+              },
+            ]
+          }
+        >
+          tu n’auras plus accès au catalogue
+        </Text>
+      </View>
+      <View
+        numberOfSpaces={5}
+        style={
+          Array [
+            Object {
+              "height": 20,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Les données qu’on conserve :
+      </Text>
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Regular",
+              "fontSize": 15,
+              "lineHeight": 20,
+            },
+          ]
+        }
+      >
+        Nous gardons toutes les informations personnelles que tu nous as transmises lors de la vérification de ton identité.
+      </Text>
+      <View
+        numberOfSpaces={14}
+        style={
+          Array [
+            Object {
+              "height": 56,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "marginTop": 12,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityLabel="Supprimer mon compte"
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          nativeID="animatedComponent"
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "#eb0055",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "maxWidth": 500,
+              "minHeight": 40,
+              "opacity": 1,
+              "paddingBottom": 2,
+              "paddingLeft": 2,
+              "paddingRight": 2,
+              "paddingTop": 2,
+              "userSelect": "auto",
+              "width": "100%",
+            }
+          }
+          testID="Supprimer mon compte"
+        >
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              Array [
+                Object {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 0,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Supprimer mon compte
+          </Text>
+        </View>
+        <View
+          numberOfSpaces={4}
+          style={
+            Array [
+              Object {
+                "height": 16,
+              },
+            ]
+          }
+        />
+        <View
+          accessibilityLabel="Consulter l’article d’aide"
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          nativeID="animatedComponent"
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "backgroundColor": "transparent",
+              "borderRadius": 24,
+              "flexDirection": "row",
+              "justifyContent": "center",
+              "maxWidth": 500,
+              "minHeight": 40,
+              "opacity": 1,
+              "paddingBottom": 2,
+              "paddingLeft": 2,
+              "paddingRight": 2,
+              "paddingTop": 2,
+              "userSelect": "auto",
+              "width": "100%",
+            }
+          }
+          testID="Consulter l’article d’aide"
+        >
+          <View
+            height={20}
+            testID="button-icon"
+            width={20}
+          >
+            <Text>
+              button-icon-SVG-Mock
+            </Text>
+          </View>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 15,
+                  "lineHeight": 20,
+                  "marginLeft": 8,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Consulter l’article d’aide
+          </Text>
+        </View>
+      </View>
+    </View>
+    <View
+      flex={1.5}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 1.5,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+  </View>,
+]
+`;

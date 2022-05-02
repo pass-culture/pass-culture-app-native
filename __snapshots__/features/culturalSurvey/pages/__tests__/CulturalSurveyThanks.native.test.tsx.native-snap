@@ -12,7 +12,7 @@ exports[`CulturalSurveyThanksPage page should render the page with correct layou
         "flexShrink": 1,
         "maxWidth": 500,
         "overflow": "scroll",
-        "paddingHorizontal": 20,
+        "paddingHorizontal": 24,
         "width": "100%",
       },
     ]
@@ -31,6 +31,7 @@ exports[`CulturalSurveyThanksPage page should render the page with correct layou
     }
   />
   <View
+    hasHeight={true}
     style={
       Array [
         Object {

@@ -5,8 +5,10 @@ import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { mockGoBack } from 'features/navigation/__mocks__/useGoBack'
+import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { env } from 'libs/environment/env'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, useMutationFactory } from 'tests/utils'
+import { fireEvent, render, useMutationFactory } from 'tests/utils/web'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -29,11 +31,13 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
+const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
+
 describe('ConfirmDeleteProfile component', () => {
   it('should render confirm delete profile', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const renderAPI = render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
-    expect(renderAPI.toJSON()).toMatchSnapshot()
+    expect(renderAPI).toMatchSnapshot()
   })
 
   it('should redirect to DeleteProfileSuccess when clicking on "Supprimer mon compte" button', async () => {
@@ -44,7 +48,7 @@ describe('ConfirmDeleteProfile component', () => {
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const renderAPI = render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
-    fireEvent.press(renderAPI.getByText('Supprimer mon compte'))
+    fireEvent.click(renderAPI.getByText('Supprimer mon compte'))
     useMutationCallbacks.onSuccess()
 
     await waitForExpect(() => {
@@ -62,7 +66,7 @@ describe('ConfirmDeleteProfile component', () => {
     mockedUseMutation.mockImplementationOnce(useMutationFactory(useMutationCallbacks))
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const renderAPI = render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
-    fireEvent.press(renderAPI.getByText('Supprimer mon compte'))
+    fireEvent.click(renderAPI.getByText('Supprimer mon compte'))
     useMutationCallbacks.onError({ error: undefined })
 
     await waitForExpect(() => {
@@ -73,10 +77,17 @@ describe('ConfirmDeleteProfile component', () => {
     })
   })
 
-  it('should redirect to LegalNotices when clicking on "Abandonner" button', () => {
+  it('should redirect to FAQ when clicking on FAQ link', () => {
     // eslint-disable-next-line local-rules/no-react-query-provider-hoc
     const renderAPI = render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
-    fireEvent.press(renderAPI.getByText('Abandonner'))
+    fireEvent.click(renderAPI.getByText('Consulter l’article d’aide'))
+    expect(openUrl).toBeCalledWith(env.FAQ_LINK_DELETE_ACCOUNT, undefined)
+  })
+
+  it('should go back when clicking on go back button', () => {
+    // eslint-disable-next-line local-rules/no-react-query-provider-hoc
+    const renderAPI = render(reactQueryProviderHOC(<ConfirmDeleteProfile />))
+    fireEvent.click(renderAPI.getByTestId('Revenir en arrière'))
     expect(mockGoBack).toBeCalledTimes(1)
   })
 })
