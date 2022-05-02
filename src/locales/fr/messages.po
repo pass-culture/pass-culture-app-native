@@ -530,10 +530,13 @@ msgstr "Clique ici pour accéder à la liste des catégories afin d'affiner les 
 msgid "Clique ici pour affiner ta recherche en fonction d'un lieu ou de ta géolocalisation puis lance la recherche à l'aide du bouton \"Rechercher\""
 msgstr "Clique ici pour affiner ta recherche en fonction d'un lieu ou de ta géolocalisation puis lance la recherche à l'aide du bouton \"Rechercher\""
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 msgid "Clique sur le lien reçu à l'adresse :"
 msgstr "Clique sur le lien reçu à l'adresse :"
+
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
+msgid "Clique sur le lien reçu à l’adresse :"
+msgstr "Clique sur le lien reçu à l’adresse :"
 
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien."
@@ -931,8 +934,8 @@ msgid "E-mail"
 msgstr "E-mail"
 
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
-msgid "E-mail envoyé !"
-msgstr "E-mail envoyé !"
+msgid "E-mail de réinitialisation de mot de passe envoyé !"
+msgstr "E-mail de réinitialisation de mot de passe envoyé !"
 
 #: src/features/profile/pages/ChangeEmail/ChangeEmail.tsx
 msgid "E-mail envoyé ! Tu as 24h pour activer ta nouvelle adresse. Si tu ne le trouves pas, pense à vérifier tes spams."
@@ -1361,10 +1364,6 @@ msgstr "L'absence des services Google Play bloquent possiblement la géolocalisa
 msgid "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 msgstr "L'application pass Culture utilise des traceurs susceptibles de réaliser des statistiques sur ta navigation. Ceci permet d'améliorer la qualité et la sureté de ton expérience. Pour ces besoins, les analyses réalisées sont strictement anonymes et ne comportent aucune donnée personnelle."
 
-#: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
-msgid "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
-msgstr "L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !"
-
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/login/Login.tsx
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
@@ -1552,6 +1551,14 @@ msgstr "Localisation"
 #: src/libs/firebase/firestore/maintenance.ts
 msgid "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
 msgstr "L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement !"
+
+#: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
+msgid ""
+"L’e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !\n"
+"Si l’e-mail n’arrive pas, tu peux :"
+msgstr ""
+"L’e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams !\n"
+"Si l’e-mail n’arrive pas, tu peux :"
 
 #: src/features/bookings/components/BookingPropertiesSection.tsx
 msgid "Ma réservation"

@@ -1,6 +1,7 @@
 import { t } from '@lingui/macro'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { OpenInboxButton } from 'features/auth/components/OpenInboxButton'
@@ -24,7 +25,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
   return (
     <BottomContentPage>
       <ModalHeader
-        title={t`E-mail envoyé\u00a0!`}
+        title={t`E-mail de réinitialisation de mot de passe envoyé\u00a0!`}
         leftIconAccessibilityLabel={t`Revenir en arrière`}
         leftIcon={ArrowPrevious}
         onLeftIconPress={goBack}
@@ -34,12 +35,12 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
       />
       <ModalContent>
         <Description>
-          <Typo.Body>{t`Clique sur le lien reçu à l'adresse\u00a0:`}</Typo.Body>
+          <Typo.Body>{t`Clique sur le lien reçu à l’adresse\u00a0:`}</Typo.Body>
           <Typo.Body>{route.params.email}</Typo.Body>
           <Spacer.Column numberOfSpaces={5} />
           <CenteredText>
             <Typo.Body>
-              {t`L'e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams\u00a0!`}
+              {t`L’e-mail peut prendre quelques minutes à arriver. Pense à vérifier tes spams\u00a0!\n Si l’e-mail n’arrive pas, tu peux\u00a0: `}
             </Typo.Body>
           </CenteredText>
           <Spacer.Column numberOfSpaces={5} />
@@ -50,7 +51,7 @@ export const ResetPasswordEmailSent: FunctionComponent<Props> = ({ route }) => {
             icon={ExternalSite}
           />
         </Description>
-        <Spacer.Column numberOfSpaces={3} />
+        {Platform.OS !== 'web' && <Spacer.Column numberOfSpaces={5} />}
         <OpenInboxButton />
       </ModalContent>
     </BottomContentPage>
