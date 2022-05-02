@@ -50,6 +50,9 @@ export interface AppThemeType {
   isSmallScreen: boolean
   showTabBar: boolean // computed dynamically in ThemeProvider.tsx
   activeOpacity: number
+  controlComponent: {
+    size: number
+  }
   forms: { maxWidth: number }
   fontFamily: {
     medium: string
@@ -366,6 +369,9 @@ export const theme: AppThemeType = {
     semiBold: 'Montserrat-SemiBold',
   },
   forms: { maxWidth: DESKTOP_CONTENT_MAX_WIDTH },
+  controlComponent: {
+    size: iconSizes.small,
+  },
   outline: {
     width: getSpacing(0.5),
     color: ColorsEnum.PRIMARY,

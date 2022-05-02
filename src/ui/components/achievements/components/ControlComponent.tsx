@@ -10,17 +10,28 @@ export type ControlComponentProps = {
   onPress: () => void
   title: string
   type: 'prev' | 'next'
+  withMargin?: boolean
 }
 
-const StyledTouchable = styledButton(Touchable)<{ type: string }>(({ type }) => ({
-  [type === 'prev' ? 'marginLeft' : 'marginRight']: '70%',
-}))
+const StyledTouchable = styledButton(Touchable)<{ type: string; withMargin: boolean }>(
+  ({ type, withMargin }) => ({
+    ...(withMargin
+      ? { ...(type === 'prev' ? { marginLeft: '70%' } : { marginRight: '70%' }) }
+      : { margin: 0 }),
+  })
+)
 
-export const ControlComponent = ({ onPress, title, type }: ControlComponentProps) => {
+export const ControlComponent = ({
+  onPress,
+  title,
+  type,
+  withMargin = false,
+}: ControlComponentProps) => {
   return (
     <StyledTouchable
       accessibilityLabel={title}
       onPress={onPress}
+      withMargin={withMargin}
       type={type}
       testID="controlButton">
       {type === 'prev' ? (
@@ -33,9 +44,9 @@ export const ControlComponent = ({ onPress, title, type }: ControlComponentProps
 }
 
 const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
+  size: theme.controlComponent.size,
 }))``
 
 const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
+  size: theme.controlComponent.size,
 }))``
