@@ -25,7 +25,8 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
       externalNav={{ url: link, params: { shouldLogEvent: false, fallbackUrl: fallbackLink } }}
       onPress={() => {
         analytics.logClickSocialNetwork(name)
-      }}>
+      }}
+      isOnPressDebounced>
       <Container>
         <NetworkIconBox>
           <StyledIcon />
