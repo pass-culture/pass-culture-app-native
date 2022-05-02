@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import {
-  Animated,
+  FlatList,
   NativeScrollEvent,
   NativeSyntheticEvent,
   useWindowDimensions,
@@ -21,13 +21,40 @@ type Props = {
 }
 
 const SEPARATOR_VALUE = 4
+const INTERVAL = getSpacing(SEPARATOR_VALUE)
 
 export function SwipperTickets({ tickets }: Props) {
+  const flatListRef = useRef<FlatList>(null)
+
   const windowWidth = useWindowDimensions().width
   const ITEM_SIZE = windowWidth * 0.75
   const ITEM_SPACING = (windowWidth - ITEM_SIZE) / 2
 
   const [currentIndex, setCurrentIndex] = useState(1)
+
+  const currentIndexTotalItemSize = ITEM_SIZE * currentIndex
+  const currentIndexTotalInterval = INTERVAL * currentIndex
+  const moveToNextTicket = () => {
+    const nextItemPosition = currentIndexTotalItemSize + currentIndexTotalInterval
+    if (flatListRef.current)
+      return flatListRef.current.scrollToOffset({
+        offset: nextItemPosition,
+        animated: true,
+      })
+  }
+  const moveToPrevTicket = () => {
+    const prevItemPosition =
+      currentIndexTotalItemSize +
+      currentIndexTotalInterval -
+      ITEM_SPACING +
+      INTERVAL -
+      ITEM_SIZE * 2
+    if (flatListRef.current)
+      return flatListRef.current.scrollToOffset({
+        offset: prevItemPosition,
+        animated: true,
+      })
+  }
 
   const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const xPos = event.nativeEvent.contentOffset.x
@@ -38,14 +65,15 @@ export function SwipperTickets({ tickets }: Props) {
 
   return (
     <Container>
-      <Animated.FlatList
+      <FlatList
+        ref={flatListRef}
         data={tickets}
-        keyExtractor={(_, index) => index.toString()}
+        keyExtractor={(index) => index.title.toString()}
         horizontal
         pagingEnabled
         bounces={false}
         showsHorizontalScrollIndicator={false}
-        snapToInterval={ITEM_SIZE + getSpacing(SEPARATOR_VALUE)}
+        snapToInterval={ITEM_SIZE + INTERVAL}
         decelerationRate="fast"
         style={{ flexGrow: 0 }}
         ItemSeparatorComponent={Separator}
@@ -55,7 +83,8 @@ export function SwipperTickets({ tickets }: Props) {
           return (
             <TicketsContainer key={item.title} width={ITEM_SIZE}>
               <ThreeShapesTicket>
-                <Typo.ButtonText>{item.title}</Typo.ButtonText>
+                {/* TODO(LucasBeneston): Replace with BookingDetailsTicketContent */}
+                <StyledButtonText>{item.title}</StyledButtonText>
               </ThreeShapesTicket>
             </TicketsContainer>
           )
@@ -67,8 +96,8 @@ export function SwipperTickets({ tickets }: Props) {
         currentStep={currentIndex}
         prevTitle={t`Revenir au ticket précédent`}
         nextTitle={t`Voir le ticket suivant`}
-        onPressPrev={() => 'Press prev'}
-        onPressNext={() => 'Press next'}
+        onPressPrev={moveToPrevTicket}
+        onPressNext={moveToNextTicket}
       />
     </Container>
   )
@@ -78,10 +107,14 @@ const Container = styled.View({
   alignItems: 'center',
 })
 
-const TicketsContainer = styled(Animated.View)<{ width: number }>(({ width }) => ({
+const TicketsContainer = styled.View<{ width: number }>(({ width }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   width,
 }))
 
 const Separator = () => <Spacer.Row numberOfSpaces={SEPARATOR_VALUE} />
+
+const StyledButtonText = styled(Typo.ButtonText)(({ theme }) => ({
+  minHeight: theme.ticket.minHeight,
+}))

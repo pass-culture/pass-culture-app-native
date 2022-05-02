@@ -3,7 +3,13 @@ import styled from 'styled-components/native'
 
 import { SwipperTickets } from 'features/bookings/components/SwipperTickets'
 
-const tickets = [{ title: 'Ticket 1' }, { title: 'Ticket 2' }, { title: 'Ticket 3' }]
+const tickets = [
+  { title: 'Ticket 1' },
+  { title: 'Ticket 2' },
+  { title: 'Ticket 3' },
+  { title: 'Ticket 4' },
+  { title: 'Ticket 5' },
+]
 
 export function SwipperTicketPageTest() {
   return (
