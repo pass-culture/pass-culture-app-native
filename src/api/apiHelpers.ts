@@ -2,7 +2,7 @@
 import { t } from '@lingui/macro'
 
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import { Headers, FailedToRefreshAccessTokenError } from 'libs/fetch'
+import { Headers } from 'libs/fetch'
 import { getAccessTokenStatus } from 'libs/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain'
 import { eventMonitoring } from 'libs/monitoring'
@@ -76,6 +76,7 @@ export const safeFetch = async (
       const { result: newAccessToken, error } = await refreshAccessToken(api)
 
       if (error) {
+        eventMonitoring.captureException(new Error(`safeFetch ${error}`))
         return Promise.resolve(NeedsAuthenticationResponse)
       }
 
@@ -90,6 +91,7 @@ export const safeFetch = async (
       // Here we are supposed to be logged-in (calling an authenticated endpoint)
       // But the access token is expired and cannot be refreshed.
       // In this case, we cleared the access token and we need to login again
+      eventMonitoring.captureException(new Error(`safeFetch ${error}`))
       return Promise.resolve(NeedsAuthenticationResponse)
     }
   }
@@ -98,9 +100,18 @@ export const safeFetch = async (
 }
 
 const FAILED_TO_GET_REFRESH_TOKEN_ERROR = 'Erreur lors de la récupération du refresh token'
+const REFRESH_TOKEN_IS_EXPIRED_ERROR = 'Le refresh token est expiré'
+const UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN =
+  "Une erreur inconnue est survenue lors de la regénération de l'access token"
 type Result =
   | { result: string; error?: never }
-  | { result?: never; error: typeof FAILED_TO_GET_REFRESH_TOKEN_ERROR }
+  | {
+      result?: never
+      error:
+        | typeof FAILED_TO_GET_REFRESH_TOKEN_ERROR
+        | typeof REFRESH_TOKEN_IS_EXPIRED_ERROR
+        | typeof UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN
+    }
 
 /**
  * Calls Api to refresh the access token using the in-keychain stored refresh token
@@ -113,8 +124,8 @@ export const refreshAccessToken = async (
 ): Promise<Result> => {
   const refreshToken = await getRefreshToken()
 
-  // if not connected, we also redirect to the login page
   if (refreshToken == null) {
+    await storage.clear('access_token')
     return { error: FAILED_TO_GET_REFRESH_TOKEN_ERROR }
   }
   try {
@@ -127,14 +138,19 @@ export const refreshAccessToken = async (
     await storage.saveString('access_token', response.accessToken)
 
     return { result: response.accessToken }
-  } catch {
+  } catch (error) {
     if (remainingRetries !== 0) {
       return refreshAccessToken(api, remainingRetries - 1)
-    } else {
-      await clearRefreshToken()
-      await storage.clear('access_token')
-      throw new FailedToRefreshAccessTokenError()
     }
+
+    await clearRefreshToken()
+    await storage.clear('access_token')
+
+    if (error instanceof ApiError && error.statusCode === 401) {
+      return { error: REFRESH_TOKEN_IS_EXPIRED_ERROR }
+    }
+
+    return { error: UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN }
   }
 }
 

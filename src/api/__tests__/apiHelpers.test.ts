@@ -1,16 +1,19 @@
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 import * as jwt from 'libs/jwt'
 import * as Keychain from 'libs/keychain'
 
-import { NeedsAuthenticationResponse, safeFetch } from '../apiHelpers'
+import { NeedsAuthenticationResponse, refreshAccessToken, safeFetch } from '../apiHelpers'
 import { DefaultApi } from '../gen'
 
 const api = new DefaultApi({})
 
-const respondWith = async (body: unknown): Promise<Response> => {
+const respondWith = async (body: unknown, status = 200): Promise<Response> => {
   return new Response(JSON.stringify(body), {
     headers: {
       'content-type': 'application/json',
     },
+    status,
   })
 }
 
@@ -24,7 +27,8 @@ const optionsWithAccessToken = {
 describe('[api] helpers', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
   const mockGetAccessTokenStatus = jest.spyOn(jwt, 'getAccessTokenStatus')
-  const mockKeychain = jest.spyOn(Keychain, 'getRefreshToken')
+  const mockGetRefreshToken = jest.spyOn(Keychain, 'getRefreshToken')
+  const mockClearRefreshToken = jest.spyOn(Keychain, 'clearRefreshToken')
 
   describe('[method] safeFetch', () => {
     it('should call fetch with populated header', async () => {
@@ -94,7 +98,7 @@ describe('[api] helpers', () => {
 
     it('needs authentication response when there is no refresh token', async () => {
       mockGetAccessTokenStatus.mockReturnValueOnce('expired')
-      mockKeychain.mockResolvedValueOnce(null)
+      mockGetRefreshToken.mockResolvedValueOnce(null)
 
       const response = await safeFetch('/native/v1/me', optionsWithAccessToken, api)
 
@@ -106,7 +110,7 @@ describe('[api] helpers', () => {
       const apiUrl = '/native/v1/me'
       mockGetAccessTokenStatus.mockReturnValueOnce('expired')
       const password = 'refreshToken'
-      mockKeychain.mockResolvedValueOnce(password).mockResolvedValueOnce(password)
+      mockGetRefreshToken.mockResolvedValueOnce(password).mockResolvedValueOnce(password)
       const expectedResponse = respondWith('some api response')
       mockFetch
         .mockRejectedValueOnce('some error')
@@ -141,6 +145,100 @@ describe('[api] helpers', () => {
         },
       })
       expect(response).toEqual(await expectedResponse)
+    })
+  })
+
+  describe('refreshAccessToken', () => {
+    it('should remove access token when there is no refresh token', async () => {
+      mockGetRefreshToken.mockResolvedValueOnce(null)
+
+      await refreshAccessToken(api, 0)
+
+      expect(AsyncStorage.removeItem).toHaveBeenCalledWith('access_token')
+    })
+
+    it('should return FAILED_TO_GET_REFRESH_TOKEN_ERROR when there is no refresh token', async () => {
+      mockGetRefreshToken.mockResolvedValueOnce(null)
+
+      const result = await refreshAccessToken(api, 0)
+
+      expect(result).toEqual({ error: 'Erreur lors de la récupération du refresh token' })
+    })
+
+    it('should store the new access token when everything is ok', async () => {
+      const password = 'refreshToken'
+      mockGetRefreshToken.mockResolvedValueOnce(password)
+      mockFetch.mockResolvedValueOnce(respondWith({ accessToken }))
+
+      await refreshAccessToken(api, 0)
+
+      expect(AsyncStorage.setItem).toHaveBeenCalledWith('access_token', accessToken)
+    })
+
+    it('should return the new access token when everything is ok', async () => {
+      const password = 'refreshToken'
+      mockGetRefreshToken.mockResolvedValueOnce(password)
+      mockFetch.mockResolvedValueOnce(respondWith({ accessToken }))
+
+      const result = await refreshAccessToken(api, 0)
+
+      expect(result).toEqual({ result: accessToken })
+    })
+
+    it('should remove tokens when there is an unexpected behavior', async () => {
+      const password = 'refreshToken'
+      mockGetRefreshToken.mockResolvedValueOnce(password)
+      mockFetch.mockResolvedValueOnce(respondWith({ error: 'server error' }, 500))
+
+      await refreshAccessToken(api, 0)
+
+      expect(AsyncStorage.removeItem).toHaveBeenCalledWith('access_token')
+      expect(mockClearRefreshToken).toHaveBeenCalled()
+    })
+
+    it('should return UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN when there is an unexpected behavior', async () => {
+      const password = 'refreshToken'
+      mockGetRefreshToken.mockResolvedValueOnce(password)
+      mockFetch.mockResolvedValueOnce(respondWith({ error: 'server error' }, 500))
+
+      const result = await refreshAccessToken(api, 0)
+
+      expect(result).toStrictEqual({
+        error: "Une erreur inconnue est survenue lors de la regénération de l'access token",
+      })
+    })
+
+    it('should retry to refresh access token when the first call fails', async () => {
+      const password = 'refreshToken'
+      mockGetRefreshToken.mockResolvedValueOnce(password)
+      mockFetch
+        .mockResolvedValueOnce(respondWith({ error: 'server error' }, 500))
+        .mockResolvedValueOnce(respondWith({ accessToken }))
+
+      const result = await refreshAccessToken(api, 1)
+
+      expect(result).toEqual({ result: accessToken })
+    })
+
+    it('should remove tokens when refresh token is expired', async () => {
+      const password = 'refreshToken'
+      mockGetRefreshToken.mockResolvedValueOnce(password)
+      mockFetch.mockResolvedValueOnce(respondWith({ error: 'refresh token is expired' }, 401))
+
+      await refreshAccessToken(api, 0)
+
+      expect(AsyncStorage.removeItem).toHaveBeenCalledWith('access_token')
+      expect(mockClearRefreshToken).toHaveBeenCalled()
+    })
+
+    it('should return REFRESH_TOKEN_IS_EXPIRED_ERROR when refresh token is expired', async () => {
+      const password = 'refreshToken'
+      mockGetRefreshToken.mockResolvedValueOnce(password)
+      mockFetch.mockResolvedValueOnce(respondWith({ error: 'refresh token is expired' }, 401))
+
+      const result = await refreshAccessToken(api, 0)
+
+      expect(result).toEqual({ error: 'Le refresh token est expiré' })
     })
   })
 })

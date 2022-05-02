@@ -50,9 +50,3 @@ class NotAuthenticatedError extends Error {
     super(`Erreur d'authentification`)
   }
 }
-
-export class FailedToRefreshAccessTokenError extends Error {
-  constructor() {
-    super(`Erreur lors de la régénération du token d'accès`)
-  }
-}

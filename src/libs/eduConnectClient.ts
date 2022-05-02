@@ -17,23 +17,14 @@ export const eduConnectClient = {
       return Promise.reject(new Error())
     }
     if (accessTokenStatus === 'expired') {
-      try {
-        const { result: accessToken, error } = await refreshAccessToken(api)
+      const { result, error } = await refreshAccessToken(api)
 
-        if (error) {
-          eventMonitoring.captureException(error, {
-            message: 'eduConnectClient failed to get refreshAccessToken',
-          })
-          return Promise.reject(new Error('eduConnectClient failed to get refreshAccessToken'))
-        }
-
-        return accessToken
-      } catch (error) {
-        eventMonitoring.captureException(error, {
-          message: 'eduConnectClient failed to refreshAccessToken',
-        })
-        return Promise.reject(new Error('eduConnectClient failed to refreshAccessToken'))
+      if (error) {
+        eventMonitoring.captureException(new Error(`eduConnectClient ${error}`))
+        return Promise.reject(new Error(`eduConnectClient ${error}`))
       }
+
+      return result
     }
     return accessToken
   },
