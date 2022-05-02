@@ -2,28 +2,30 @@ import { t } from '@lingui/macro'
 import React, { useState, useRef } from 'react'
 import {
   FlatList,
+  ListRenderItem,
   NativeScrollEvent,
   NativeSyntheticEvent,
   useWindowDimensions,
 } from 'react-native'
 import styled from 'styled-components/native'
 
+import { BookingReponse } from 'api/gen'
+import { BookingDetailsTicketContent } from 'features/bookings/components/BookingDetailsTicketContent'
 import { SwipperTicketsControls } from 'features/bookings/components/SwipperTicketsControls'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
-
-type TicketsProps = {
-  title?: string
-}
+import { getSpacing, Spacer } from 'ui/theme'
 
 type Props = {
-  tickets: TicketsProps[]
+  booking: BookingReponse[]
+  activationCodeFeatureEnabled?: boolean
 }
 
 const SEPARATOR_VALUE = 4
 const INTERVAL = getSpacing(SEPARATOR_VALUE)
 
-export function SwipperTickets({ tickets }: Props) {
+const keyExtractor = (index: BookingReponse) => index.id.toString()
+
+export function SwipperTickets({ booking, activationCodeFeatureEnabled }: Props) {
   const flatListRef = useRef<FlatList>(null)
 
   const windowWidth = useWindowDimensions().width
@@ -32,23 +34,33 @@ export function SwipperTickets({ tickets }: Props) {
 
   const [currentIndex, setCurrentIndex] = useState(1)
 
+  const renderItem: ListRenderItem<BookingReponse> = ({ item }) => {
+    return (
+      <TicketsContainer key={item.id} width={ITEM_SIZE}>
+        <ThreeShapesTicket>
+          <BookingDetailsTicketContent
+            booking={item}
+            activationCodeFeatureEnabled={activationCodeFeatureEnabled}
+          />
+        </ThreeShapesTicket>
+      </TicketsContainer>
+    )
+  }
+
   const currentIndexTotalItemSize = ITEM_SIZE * currentIndex
   const currentIndexTotalInterval = INTERVAL * currentIndex
+
+  const nextItemPosition = currentIndexTotalItemSize + currentIndexTotalInterval
   const moveToNextTicket = () => {
-    const nextItemPosition = currentIndexTotalItemSize + currentIndexTotalInterval
     if (flatListRef.current)
       return flatListRef.current.scrollToOffset({
         offset: nextItemPosition,
         animated: true,
       })
   }
+
+  const prevItemPosition = nextItemPosition - ITEM_SPACING + INTERVAL - ITEM_SIZE * 2
   const moveToPrevTicket = () => {
-    const prevItemPosition =
-      currentIndexTotalItemSize +
-      currentIndexTotalInterval -
-      ITEM_SPACING +
-      INTERVAL -
-      ITEM_SIZE * 2
     if (flatListRef.current)
       return flatListRef.current.scrollToOffset({
         offset: prevItemPosition,
@@ -67,8 +79,8 @@ export function SwipperTickets({ tickets }: Props) {
     <Container>
       <FlatList
         ref={flatListRef}
-        data={tickets}
-        keyExtractor={(index) => index.title.toString()}
+        data={booking}
+        keyExtractor={keyExtractor}
         horizontal
         pagingEnabled
         bounces={false}
@@ -79,20 +91,11 @@ export function SwipperTickets({ tickets }: Props) {
         ItemSeparatorComponent={Separator}
         contentContainerStyle={{ paddingHorizontal: ITEM_SPACING }}
         onScroll={onScroll}
-        renderItem={({ item }) => {
-          return (
-            <TicketsContainer key={item.title} width={ITEM_SIZE}>
-              <ThreeShapesTicket>
-                {/* TODO(LucasBeneston): Replace with BookingDetailsTicketContent */}
-                <StyledButtonText>{item.title}</StyledButtonText>
-              </ThreeShapesTicket>
-            </TicketsContainer>
-          )
-        }}
+        renderItem={renderItem}
       />
       <Spacer.Column numberOfSpaces={5} />
       <SwipperTicketsControls
-        numberOfSteps={tickets.length}
+        numberOfSteps={booking.length}
         currentStep={currentIndex}
         prevTitle={t`Revenir au ticket précédent`}
         nextTitle={t`Voir le ticket suivant`}
@@ -114,7 +117,3 @@ const TicketsContainer = styled.View<{ width: number }>(({ width }) => ({
 }))
 
 const Separator = () => <Spacer.Row numberOfSpaces={SEPARATOR_VALUE} />
-
-const StyledButtonText = styled(Typo.ButtonText)(({ theme }) => ({
-  minHeight: theme.ticket.minHeight,
-}))
