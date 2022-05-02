@@ -1,7 +1,7 @@
 import { t } from '@lingui/macro'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -52,11 +52,14 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
   const step = route.params.step
   const { goBack } = useGoBack(...homeNavConfig)
   const { answers, dispatch, questionsToDisplay } = useCulturalSurveyContext()
-  const currentAnswers = answers[step] as CulturalSurveyAnswerEnum[]
+  const [currentAnswers, setCurrentAnswers] = useState<CulturalSurveyAnswerEnum[]>([])
 
-  if (!culturalSurveyQuestionsData?.questions) {
-    throw new Error('should have questions to show')
-  }
+  useEffect(() => {
+    const currentQuestionAnswers = answers.find((answer) => answer.questionId === step)?.answerIds
+    if (currentQuestionAnswers) {
+      setCurrentAnswers(currentQuestionAnswers)
+    }
+  }, [step, answers])
 
   const culturalSurveyQuestion = culturalSurveyQuestionsData.questions.find(
     (question) => question.id === route.params.step

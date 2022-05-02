@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useMemo, useReducer } from 'react'
 
+import { CulturalSurveyAnswerEnum } from 'api/gen'
 import {
   culturalSurveyReducer,
   initialCulturalSurveyState,
@@ -29,13 +30,10 @@ export const CulturalSurveyContextProvider = ({
   useEffect(() => {
     if (culturalSurveyQuestionsData?.questions) {
       const questions = createInitialQuestionsList(culturalSurveyQuestionsData)
-      const answers = culturalSurveyQuestionsData.questions.reduce(
-        (result, question) => ({
-          ...result,
-          [question.id]: [],
-        }),
-        {} as CulturalSurveyState['answers']
-      )
+      const answers = culturalSurveyQuestionsData.questions.map((question) => ({
+        questionId: question.id,
+        answerIds: [] as CulturalSurveyAnswerEnum[],
+      }))
       dispatch({
         type: 'INIT_QUESTION_KEYS',
         payload: { questions, answers },
