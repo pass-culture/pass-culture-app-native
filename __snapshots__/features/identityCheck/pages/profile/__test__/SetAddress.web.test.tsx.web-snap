@@ -67,7 +67,7 @@ Object {
                   style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
                 >
                   <form
-                    class="sc-dlVxhl kBHsVa"
+                    class="sc-fKVqWL clyjXB"
                   >
                     <div
                       class="css-view-1dbjc4n"
@@ -88,7 +88,7 @@ Object {
                       style="height: 20px;"
                     />
                     <label
-                      class="sc-iqseJM cBlriz"
+                      class="sc-egiyK hHZVhD"
                       for="testUuidV4"
                     >
                       Entre ton adresse
@@ -155,7 +155,7 @@ Object {
                 >
                   <button
                     aria-label="Continuer vers l'étape suivante"
-                    class="sc-bdvvtL hWVHSw sc-eCImPb cYRLFR"
+                    class="sc-bdvvtL hWVHSw sc-gKclnd jeEaJc"
                     data-testid="Continuer vers l'étape suivante"
                     disabled=""
                     type="submit"
@@ -258,7 +258,7 @@ Object {
                 style="padding-right: 20px; padding-left: 20px; padding-top: 20px;"
               >
                 <form
-                  class="sc-dlVxhl kBHsVa"
+                  class="sc-fKVqWL clyjXB"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -279,7 +279,7 @@ Object {
                     style="height: 20px;"
                   />
                   <label
-                    class="sc-iqseJM cBlriz"
+                    class="sc-egiyK hHZVhD"
                     for="testUuidV4"
                   >
                     Entre ton adresse
@@ -346,7 +346,7 @@ Object {
               >
                 <button
                   aria-label="Continuer vers l'étape suivante"
-                  class="sc-bdvvtL hWVHSw sc-eCImPb cYRLFR"
+                  class="sc-bdvvtL hWVHSw sc-gKclnd jeEaJc"
                   data-testid="Continuer vers l'étape suivante"
                   disabled=""
                   type="submit"

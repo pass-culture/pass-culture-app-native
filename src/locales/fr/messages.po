@@ -2377,15 +2377,15 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 #: src/features/auth/signup/SignupForm.tsx
-#: src/features/auth/suspendedAccount/SuspendedAccount/FraudulentAccount.tsx
-#: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
 #: src/features/bookings/components/BookingDetailsHeader.tsx
 #: src/features/culturalSurvey/components/layout/CulturalSurveyPageHeader.tsx
 #: src/features/identityCheck/atoms/layout/PageHeader.tsx
 #: src/features/offer/components/OfferHeader.tsx
-#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
 #: src/features/search/components/SearchBox.tsx
 #: src/features/venue/components/VenueHeader.tsx
+#: src/ui/components/GenericErrorPage.tsx
+#: src/ui/components/GenericInfoPage.tsx
+#: src/ui/components/GenericInfoPageWhite.tsx
 #: src/ui/components/headers/PageHeader.tsx
 #: src/ui/components/modals/ModalHeader.tsx
 msgid "Revenir en arrière"

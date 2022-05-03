@@ -24,11 +24,11 @@ Object {
             </div>
           </div>
         </div>
-        <div
-          class="css-view-1dbjc4n"
-          data-testid="backArrow"
-          style="cursor: pointer; left: 24px; position: absolute; top: 30px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+        <button
+          class="sc-hKwDye lgPtFf sc-eCImPb clWlnA sc-eCImPb clWlnA"
+          data-testid="Revenir en arrière"
           tabindex="0"
+          type="button"
         >
           <div
             class="css-view-1dbjc4n"
@@ -40,7 +40,7 @@ Object {
               undefined-SVG-Mock
             </div>
           </div>
-        </div>
+        </button>
         <div
           class="css-view-1dbjc4n"
           style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; padding-right: 16px; padding-left: 16px;"
@@ -141,11 +141,11 @@ Object {
           </div>
         </div>
       </div>
-      <div
-        class="css-view-1dbjc4n"
-        data-testid="backArrow"
-        style="cursor: pointer; left: 24px; position: absolute; top: 30px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
+      <button
+        class="sc-hKwDye lgPtFf sc-eCImPb clWlnA sc-eCImPb clWlnA"
+        data-testid="Revenir en arrière"
         tabindex="0"
+        type="button"
       >
         <div
           class="css-view-1dbjc4n"
@@ -157,7 +157,7 @@ Object {
             undefined-SVG-Mock
           </div>
         </div>
-      </div>
+      </button>
       <div
         class="css-view-1dbjc4n"
         style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; padding-right: 16px; padding-left: 16px;"

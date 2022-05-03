@@ -59,9 +59,10 @@ exports[`AsyncErrorBoundary component should render 1`] = `
         "position": "absolute",
         "top": 30,
         "userSelect": "auto",
+        "zIndex": 1,
       }
     }
-    testID="backArrow"
+    testID="Revenir en arrière"
   >
     <View
       height={24}

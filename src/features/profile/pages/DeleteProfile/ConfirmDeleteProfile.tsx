@@ -7,29 +7,22 @@ import { useAccountSuspend } from 'features/auth/api'
 import { useLogoutRoutine } from 'features/auth/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { env } from 'libs/environment'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
 import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { Touchable } from 'ui/components/touchable/Touchable'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
 import { Dot } from 'ui/svg/icons/Dot'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
 
 export function ConfirmDeleteProfile() {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { goBack, canGoBack } = useGoBack(...getTabNavConfig('Profile'))
-  const { top } = useCustomSafeInsets()
 
   const signOut = useLogoutRoutine()
   const { showErrorSnackBar } = useSnackBarContext()
@@ -53,13 +46,8 @@ export function ConfirmDeleteProfile() {
 
   return (
     <GenericInfoPageWhite
-      header={
-        !!canGoBack() && (
-          <HeaderContainer onPress={goBack} top={top + getSpacing(3.5)} testID="Revenir en arrière">
-            <StyledArrowPrevious />
-          </HeaderContainer>
-        )
-      }
+      headerGoBack
+      goBackParams={getTabNavConfig('Profile')}
       separateIconFromTitle={false}
       icon={BicolorError}
       titleComponent={TitleComponent}
@@ -100,18 +88,6 @@ export function ConfirmDeleteProfile() {
 }
 
 const TitleComponent = styled(Typo.Title2).attrs(getHeadingAttrs(1))``
-
-const StyledArrowPrevious = styled(ArrowPrevious).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-  accessibilityLabel: t`Revenir en arrière`,
-}))``
-
-const HeaderContainer = styledButton(Touchable)<{ top: number }>(({ theme, top }) => ({
-  position: 'absolute',
-  top,
-  left: getSpacing(6),
-  zIndex: theme.zIndex.floatingButton,
-}))
 
 const Content = styled.View({
   marginTop: getSpacing(2),

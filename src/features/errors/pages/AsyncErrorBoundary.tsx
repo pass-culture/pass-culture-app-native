@@ -1,32 +1,26 @@
 import { t } from '@lingui/macro'
-import React, { useEffect, ReactNode } from 'react'
+import React, { useEffect } from 'react'
 import { FallbackProps } from 'react-error-boundary'
 import { useQueryErrorResetBoundary } from 'react-query'
 import styled from 'styled-components/native'
 
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { AsyncError, MonitoringError, eventMonitoring } from 'libs/monitoring'
 import { ScreenError } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { GenericErrorPage } from 'ui/components/GenericErrorPage'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { BrokenConnection } from 'ui/svg/BrokenConnection'
-import { ArrowPrevious as ArrowPreviousDefault } from 'ui/svg/icons/ArrowPrevious'
-import { getSpacing, Typo } from 'ui/theme'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
+import { Typo } from 'ui/theme'
 
 interface AsyncFallbackProps extends FallbackProps {
   resetErrorBoundary: (...args: Array<unknown>) => void
   error: AsyncError | ScreenError | Error
-  header?: ReactNode
+  headerGoBack?: boolean
 }
 
 export const AsyncErrorBoundaryWithoutNavigation = ({
   resetErrorBoundary,
   error,
-  header,
 }: AsyncFallbackProps) => {
   const { reset } = useQueryErrorResetBoundary()
 
@@ -63,7 +57,7 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
       <GenericErrorPage
         title={t`Oups\u00a0!`}
         icon={BrokenConnection}
-        header={header}
+        headerGoBack
         buttons={[
           <ButtonPrimaryWhite
             key={1}
@@ -79,33 +73,8 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
 }
 
 export const AsyncErrorBoundary = (props: AsyncFallbackProps) => {
-  const { goBack, canGoBack } = useGoBack(...homeNavConfig)
-  const { top } = useCustomSafeInsets()
-
-  return (
-    <AsyncErrorBoundaryWithoutNavigation
-      {...props}
-      header={
-        !!canGoBack() && (
-          <HeaderContainer onPress={goBack} top={top + getSpacing(3.5)} testID="backArrow">
-            <ArrowPrevious />
-          </HeaderContainer>
-        )
-      }
-    />
-  )
+  return <AsyncErrorBoundaryWithoutNavigation {...props} />
 }
-
-const ArrowPrevious = styled(ArrowPreviousDefault).attrs(({ theme }) => ({
-  color: theme.colors.white,
-  size: theme.icons.sizes.small,
-}))``
-
-const HeaderContainer = styled(TouchableOpacity)<{ top: number }>(({ top }) => ({
-  position: 'absolute',
-  top,
-  left: getSpacing(6),
-}))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,

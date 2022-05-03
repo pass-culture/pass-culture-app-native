@@ -25,7 +25,7 @@ Object {
           </div>
         </div>
         <button
-          class="sc-eCImPb eivvKD sc-jRQBWg guzjoD sc-jRQBWg guzjoD"
+          class="sc-hKwDye lgPtFf sc-eCImPb clWlnA sc-eCImPb clWlnA"
           data-testid="Revenir en arrière"
           tabindex="0"
           type="button"
@@ -127,7 +127,7 @@ Object {
               style="height: 16px;"
             />
             <button
-              class="sc-bdvvtL krGSRA sc-hKwDye gvtKtm"
+              class="sc-bdvvtL krGSRA sc-jRQBWg CQePl"
               tabindex="0"
               type="button"
             >
@@ -180,7 +180,7 @@ Object {
         </div>
       </div>
       <button
-        class="sc-eCImPb eivvKD sc-jRQBWg guzjoD sc-jRQBWg guzjoD"
+        class="sc-hKwDye lgPtFf sc-eCImPb clWlnA sc-eCImPb clWlnA"
         data-testid="Revenir en arrière"
         tabindex="0"
         type="button"
@@ -282,7 +282,7 @@ Object {
             style="height: 16px;"
           />
           <button
-            class="sc-bdvvtL krGSRA sc-hKwDye gvtKtm"
+            class="sc-bdvvtL krGSRA sc-jRQBWg CQePl"
             tabindex="0"
             type="button"
           >

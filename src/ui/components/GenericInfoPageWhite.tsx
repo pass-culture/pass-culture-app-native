@@ -1,14 +1,22 @@
-import React, { ReactNode, useEffect, useMemo, useRef } from 'react'
+import { t } from '@lingui/macro'
+import React, { useEffect, useMemo, useRef } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { RootNavigateParams } from 'features/navigation/RootNavigator'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import LottieView from 'libs/lottie'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { AnimationObject } from 'ui/animations/type'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { Spacer } from 'ui/components/spacer/Spacer'
+import { Touchable } from 'ui/components/touchable/Touchable'
+import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { IconInterface } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
 import { useGrid } from 'ui/theme/grid'
 import { TextProps } from 'ui/theme/typography'
+import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type PropsWithAnimation = {
   animation: AnimationObject
@@ -19,7 +27,8 @@ type PropsWithIcon = {
 }
 
 type Props = {
-  header?: ReactNode
+  headerGoBack?: boolean
+  goBackParams?: RootNavigateParams
   titleComponent?: React.FC<TextProps>
   subtitleComponent?: React.FC<TextProps>
   title: string
@@ -36,6 +45,7 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
   separateIconFromTitle = true,
   ...props
 }) => {
+  const { canGoBack, goBack } = useGoBack(...(props.goBackParams ?? homeNavConfig))
   const animationRef = useRef<LottieView>(null)
   const grid = useGrid()
   const isSmallHeight = useMediaQuery({ maxHeight: SMALL_HEIGHT })
@@ -49,6 +59,7 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
   const titleComponent = props.titleComponent ?? Typo.Title1
   const subtitleComponent = props.subtitleComponent ?? Typo.Title4
   const theme = useTheme()
+  const { top } = useCustomSafeInsets()
   const StyledTitle = useMemo(() => {
     return styled(titleComponent)({
       textAlign: 'center',
@@ -75,7 +86,11 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
 
   return (
     <React.Fragment>
-      {props.header}
+      {props.headerGoBack && canGoBack() ? (
+        <HeaderContainer onPress={goBack} top={top + getSpacing(3.5)} testID="Revenir en arrière">
+          <StyledArrowPrevious />
+        </HeaderContainer>
+      ) : null}
       <ContentContainer fullWidth={props.fullWidth as boolean}>
         <Spacer.Flex flex={grid({ sm: 1, default: 2 }, 'height')} />
         <StyledLottieContainer hasHeight={separateIconFromTitle}>
@@ -128,3 +143,15 @@ const StyledLottieView = styled(LottieView)({
   width: '100%',
   height: '100%',
 })
+
+const StyledArrowPrevious = styled(ArrowPrevious).attrs(({ theme }) => ({
+  size: theme.icons.sizes.small,
+  accessibilityLabel: t`Revenir en arrière`,
+}))``
+
+const HeaderContainer = styledButton(Touchable)<{ top: number }>(({ theme, top }) => ({
+  position: 'absolute',
+  top,
+  left: getSpacing(6),
+  zIndex: theme.zIndex.floatingButton,
+}))
