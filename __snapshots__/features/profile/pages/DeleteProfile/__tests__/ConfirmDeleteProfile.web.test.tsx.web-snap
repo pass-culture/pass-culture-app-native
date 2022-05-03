@@ -79,7 +79,7 @@ Object {
               >
                 <div
                   class="css-view-1dbjc4n"
-                  style="height: 20px; justify-content: center; margin-right: 12px;"
+                  style="height: 20px; justify-content: center;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -95,7 +95,7 @@ Object {
                 <div
                   class="css-text-901oao"
                   dir="auto"
-                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
                 >
                   tes réservations seront annulées et supprimées
                 </div>
@@ -108,7 +108,7 @@ Object {
               >
                 <div
                   class="css-view-1dbjc4n"
-                  style="height: 20px; justify-content: center; margin-right: 12px;"
+                  style="height: 20px; justify-content: center;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -124,7 +124,7 @@ Object {
                 <div
                   class="css-text-901oao"
                   dir="auto"
-                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
                 >
                   si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau
                 </div>
@@ -137,7 +137,7 @@ Object {
               >
                 <div
                   class="css-view-1dbjc4n"
-                  style="height: 20px; justify-content: center; margin-right: 12px;"
+                  style="height: 20px; justify-content: center;"
                 >
                   <div
                     class="css-view-1dbjc4n"
@@ -153,7 +153,7 @@ Object {
                 <div
                   class="css-text-901oao"
                   dir="auto"
-                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                  style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
                 >
                   tu n’auras plus accès au catalogue
                 </div>
@@ -312,7 +312,7 @@ Object {
             >
               <div
                 class="css-view-1dbjc4n"
-                style="height: 20px; justify-content: center; margin-right: 12px;"
+                style="height: 20px; justify-content: center;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -328,7 +328,7 @@ Object {
               <div
                 class="css-text-901oao"
                 dir="auto"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
               >
                 tes réservations seront annulées et supprimées
               </div>
@@ -341,7 +341,7 @@ Object {
             >
               <div
                 class="css-view-1dbjc4n"
-                style="height: 20px; justify-content: center; margin-right: 12px;"
+                style="height: 20px; justify-content: center;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -357,7 +357,7 @@ Object {
               <div
                 class="css-text-901oao"
                 dir="auto"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
               >
                 si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau
               </div>
@@ -370,7 +370,7 @@ Object {
             >
               <div
                 class="css-view-1dbjc4n"
-                style="height: 20px; justify-content: center; margin-right: 12px;"
+                style="height: 20px; justify-content: center;"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -386,7 +386,7 @@ Object {
               <div
                 class="css-text-901oao"
                 dir="auto"
-                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
               >
                 tu n’auras plus accès au catalogue
               </div>

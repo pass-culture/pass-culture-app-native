@@ -133,8 +133,11 @@ const Bullet = styled(Dot).attrs({
 const BulletContainer = styled.View(({ theme }) => ({
   height: theme.typography.body.lineHeight,
   justifyContent: 'center',
-  marginRight: getSpacing(3),
 }))
+
+const ListText = styled(Typo.Body)({
+  marginLeft: getSpacing(3),
+})
 
 const ListItem = ({ text }: { text: string }) => {
   return (
@@ -143,7 +146,7 @@ const ListItem = ({ text }: { text: string }) => {
         <BulletContainer>
           <Bullet />
         </BulletContainer>
-        <Typo.Body>{text}</Typo.Body>
+        <ListText>{text}</ListText>
       </ItemContainer>
     </Li>
   )
