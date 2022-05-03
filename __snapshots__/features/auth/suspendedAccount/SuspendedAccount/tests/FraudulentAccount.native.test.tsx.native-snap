@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AsyncErrorBoundary component should render 1`] = `
+exports[`<FraudulentAccount /> should match snapshot 1`] = `
 <View
   style={
     Array [
@@ -84,6 +84,7 @@ exports[`AsyncErrorBoundary component should render 1`] = `
           "flexShrink": 1,
           "justifyContent": "center",
           "maxWidth": 360,
+          "overflow": "scroll",
           "paddingHorizontal": 16,
         },
       ]
@@ -156,7 +157,7 @@ exports[`AsyncErrorBoundary component should render 1`] = `
         ]
       }
     >
-      Oups !
+      Ton compte a été suspendu
     </Text>
     <View
       numberOfSpaces={5}
@@ -181,14 +182,51 @@ exports[`AsyncErrorBoundary component should render 1`] = `
         ]
       }
     >
-      Une erreur s'est produite pendant le chargement.
+      En raison d’une activité suspiscieuse, notre équipe anti fraude a suspendu ton compte.
     </Text>
     <View
-      numberOfSpaces={10}
+      numberOfSpaces={5}
       style={
         Array [
           Object {
-            "height": 40,
+            "height": 20,
+          },
+        ]
+      }
+    />
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Regular",
+            "fontSize": 15,
+            "lineHeight": 20,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Si tu souhaites revoir cette décision, tu peux contacter le support.
+    </Text>
+    <View
+      numberOfSpaces={30}
+      style={
+        Array [
+          Object {
+            "height": 120,
+          },
+        ]
+      }
+    />
+    <View
+      flex={0.5}
+      style={
+        Array [
+          Object {
+            "flexBasis": 0,
+            "flexGrow": 0.5,
+            "flexShrink": 1,
           },
         ]
       }
@@ -201,12 +239,14 @@ exports[`AsyncErrorBoundary component should render 1`] = `
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
+            "justifyContent": "flex-end",
+            "marginBottom": 32,
           },
         ]
       }
     >
       <View
-        accessibilityLabel="Réessayer"
+        accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -226,7 +266,7 @@ exports[`AsyncErrorBoundary component should render 1`] = `
             "flexDirection": "row",
             "justifyContent": "center",
             "maxWidth": 500,
-            "minHeight": 48,
+            "minHeight": 40,
             "opacity": 1,
             "paddingBottom": 2,
             "paddingLeft": 2,
@@ -236,8 +276,17 @@ exports[`AsyncErrorBoundary component should render 1`] = `
             "width": "100%",
           }
         }
-        testID="Réessayer"
+        testID="Contacter le support"
       >
+        <View
+          height={24}
+          testID="button-icon"
+          width={24}
+        >
+          <Text>
+            button-icon-SVG-Mock
+          </Text>
+        </View>
         <Text
           adjustsFontSizeToFit={false}
           numberOfLines={1}
@@ -248,37 +297,87 @@ exports[`AsyncErrorBoundary component should render 1`] = `
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 15,
                 "lineHeight": 20,
-                "marginLeft": 0,
+                "marginLeft": 8,
                 "maxWidth": "100%",
               },
             ]
           }
         >
-          Réessayer
+          Contacter le support
+        </Text>
+      </View>
+      <View
+        numberOfSpaces={4}
+        style={
+          Array [
+            Object {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="Retourner à l'accueil"
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        nativeID="animatedComponent"
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 2,
+            "paddingRight": 2,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
+        }
+        testID="Retourner à l'accueil"
+      >
+        <View
+          height={20}
+          testID="button-icon"
+          width={20}
+        >
+          <Text>
+            button-icon-SVG-Mock
+          </Text>
+        </View>
+        <Text
+          adjustsFontSizeToFit={false}
+          numberOfLines={1}
+          style={
+            Array [
+              Object {
+                "color": "#ffffff",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 15,
+                "lineHeight": 20,
+                "marginLeft": 8,
+                "maxWidth": "100%",
+              },
+            ]
+          }
+        >
+          Retourner à l'accueil
         </Text>
       </View>
     </View>
-    <View
-      numberOfSpaces={10}
-      style={
-        Array [
-          Object {
-            "height": 40,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        Array [
-          Object {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
     <View
       customHeight={8}
       enable={true}

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AsyncErrorBoundary component should render 1`] = `
+exports[`<FraudulentAccount /> should match snapshot 1`] = `
 Object {
   "asFragment": [Function],
   "baseElement": <body>
@@ -43,15 +43,11 @@ Object {
         </button>
         <div
           class="css-view-1dbjc4n"
-          style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; padding-right: 16px; padding-left: 16px;"
+          style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; overflow-x: scroll; overflow-y: scroll; padding-right: 16px; padding-left: 16px;"
         >
           <div
             class="css-view-1dbjc4n"
             style="height: 16px;"
-          />
-          <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
           />
           <div
             class="css-view-1dbjc4n"
@@ -74,7 +70,7 @@ Object {
             role="heading"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; text-align: center;"
           >
-            Oups !
+            Ton compte a été suspendu
           </h1>
           <div
             class="css-view-1dbjc4n"
@@ -85,34 +81,80 @@ Object {
             dir="auto"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
           >
-            Une erreur s'est produite pendant le chargement.
+            En raison d’une activité suspiscieuse, notre équipe anti fraude a suspendu ton compte.
           </div>
           <div
             class="css-view-1dbjc4n"
-            style="height: 40px;"
+            style="height: 20px;"
           />
           <div
+            class="css-text-901oao"
+            dir="auto"
+            style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
+          >
+            Si tu souhaites revoir cette décision, tu peux contacter le support.
+          </div>
+          <div
             class="css-view-1dbjc4n"
-            style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+            style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
           >
             <button
-              class="sc-bdvvtL jCWNxc sc-dkPtRN gNpZyI"
+              aria-label="Ouvrir le gestionnaire mail pour contacter le support"
+              class="sc-bdvvtL krGSRA sc-dkPtRN gNpZyI"
+              data-testid="Ouvrir le gestionnaire mail pour contacter le support"
+              href=""
+              tabindex="0"
+              target="_blank"
+              type="button"
+            >
+              <div
+                class="css-view-1dbjc4n"
+                data-testid="button-icon"
+              >
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                >
+                  button-icon-SVG-Mock
+                </div>
+              </div>
+              <div
+                class="css-text-901oao css-textMultiLine-cens5h"
+                dir="auto"
+                style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
+              >
+                Contacter le support
+              </div>
+            </button>
+            <div
+              class="css-view-1dbjc4n"
+              style="height: 16px;"
+            />
+            <button
+              class="sc-bdvvtL krGSRA sc-jRQBWg CQePl"
               tabindex="0"
               type="button"
             >
               <div
+                class="css-view-1dbjc4n"
+                data-testid="button-icon"
+              >
+                <div
+                  class="css-text-901oao"
+                  dir="auto"
+                >
+                  button-icon-SVG-Mock
+                </div>
+              </div>
+              <div
                 class="css-text-901oao css-textMultiLine-cens5h"
                 dir="auto"
-                style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
+                style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
               >
-                Réessayer
+                Retourner à l'accueil
               </div>
             </button>
           </div>
-          <div
-            class="css-view-1dbjc4n"
-            style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-          />
           <div
             class="css-view-1dbjc4n"
             style="height: 8px;"
@@ -160,15 +202,11 @@ Object {
       </button>
       <div
         class="css-view-1dbjc4n"
-        style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; padding-right: 16px; padding-left: 16px;"
+        style="align-items: center; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; justify-content: center; max-width: 360px; overflow-x: scroll; overflow-y: scroll; padding-right: 16px; padding-left: 16px;"
       >
         <div
           class="css-view-1dbjc4n"
           style="height: 16px;"
-        />
-        <div
-          class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
         />
         <div
           class="css-view-1dbjc4n"
@@ -191,7 +229,7 @@ Object {
           role="heading"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; text-align: center;"
         >
-          Oups !
+          Ton compte a été suspendu
         </h1>
         <div
           class="css-view-1dbjc4n"
@@ -202,34 +240,80 @@ Object {
           dir="auto"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
         >
-          Une erreur s'est produite pendant le chargement.
+          En raison d’une activité suspiscieuse, notre équipe anti fraude a suspendu ton compte.
         </div>
         <div
           class="css-view-1dbjc4n"
-          style="height: 40px;"
+          style="height: 20px;"
         />
         <div
+          class="css-text-901oao"
+          dir="auto"
+          style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
+        >
+          Si tu souhaites revoir cette décision, tu peux contacter le support.
+        </div>
+        <div
           class="css-view-1dbjc4n"
-          style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
+          style="align-self: stretch; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; margin-top: 32px; max-height: 96px;"
         >
           <button
-            class="sc-bdvvtL jCWNxc sc-dkPtRN gNpZyI"
+            aria-label="Ouvrir le gestionnaire mail pour contacter le support"
+            class="sc-bdvvtL krGSRA sc-dkPtRN gNpZyI"
+            data-testid="Ouvrir le gestionnaire mail pour contacter le support"
+            href=""
+            tabindex="0"
+            target="_blank"
+            type="button"
+          >
+            <div
+              class="css-view-1dbjc4n"
+              data-testid="button-icon"
+            >
+              <div
+                class="css-text-901oao"
+                dir="auto"
+              >
+                button-icon-SVG-Mock
+              </div>
+            </div>
+            <div
+              class="css-text-901oao css-textMultiLine-cens5h"
+              dir="auto"
+              style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
+            >
+              Contacter le support
+            </div>
+          </button>
+          <div
+            class="css-view-1dbjc4n"
+            style="height: 16px;"
+          />
+          <button
+            class="sc-bdvvtL krGSRA sc-jRQBWg CQePl"
             tabindex="0"
             type="button"
           >
             <div
+              class="css-view-1dbjc4n"
+              data-testid="button-icon"
+            >
+              <div
+                class="css-text-901oao"
+                dir="auto"
+              >
+                button-icon-SVG-Mock
+              </div>
+            </div>
+            <div
               class="css-text-901oao css-textMultiLine-cens5h"
               dir="auto"
-              style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
+              style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
             >
-              Réessayer
+              Retourner à l'accueil
             </div>
           </button>
         </div>
-        <div
-          class="css-view-1dbjc4n"
-          style="flex-basis: 0px; flex-grow: 1; flex-shrink: 1;"
-        />
         <div
           class="css-view-1dbjc4n"
           style="height: 8px;"

@@ -4,17 +4,19 @@ import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
+import { contactSupport } from 'features/auth/support.services'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
 import { PageNotFound } from 'features/navigation/PageNotFound'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { GenericInfoPage } from 'ui/components/GenericInfoPage'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
+import { Email } from 'ui/svg/icons/Email'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { ProfileDeletionIllustration } from 'ui/svg/icons/ProfileDeletionIllustration'
+import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Spacer, Typo } from 'ui/theme'
 
-export const SuspendedAccount = () => {
+export const FraudulentAccount = () => {
   const { data: settings } = useAppSettings()
 
   useFocusEffect(
@@ -28,10 +30,17 @@ export const SuspendedAccount = () => {
   return settings?.allowAccountReactivation ? (
     <GenericInfoPage
       headerGoBack
-      title={t`Ton compte est désactivé`}
-      icon={ProfileDeletionIllustration}
+      title={t`Ton compte a été suspendu`}
+      icon={UserBlocked}
       buttons={[
-        <ButtonPrimaryWhite key={1} wording={t`Réactiver mon compte`} />,
+        <TouchableLink
+          key={1}
+          as={ButtonPrimaryWhite}
+          wording={t`Contacter le support`}
+          accessibilityLabel={t`Ouvrir le gestionnaire mail pour contacter le support`}
+          externalNav={contactSupport.forGenericQuestion}
+          icon={Email}
+        />,
         <TouchableLink
           key={2}
           as={ButtonTertiaryWhite}
@@ -40,14 +49,10 @@ export const SuspendedAccount = () => {
           icon={PlainArrowPrevious}
         />,
       ]}>
-      <StyledBody>{t`Tu as jusqu'au xxxx pour réactiver ton compte.`}</StyledBody>
+      <StyledBody>{t`En raison d’une activité suspiscieuse, notre équipe anti fraude a suspendu ton compte.`}</StyledBody>
       <Spacer.Column numberOfSpaces={5} />
       <StyledBody>
-        {t`Une fois cette date passée, ton compte pass Culture sera définitivement supprimé.`}
-      </StyledBody>
-      <Spacer.Column numberOfSpaces={5} />
-      <StyledBody>
-        {t`Pour réactiver ton compte, nous allons te demander de réinitialiser ton mot de passe.`}
+        {t`Si tu souhaites revoir cette décision, tu peux contacter le support.`}
       </StyledBody>
     </GenericInfoPage>
   ) : (

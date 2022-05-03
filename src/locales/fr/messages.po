@@ -576,6 +576,10 @@ msgstr "Compte créé !"
 msgid "Compte désactivé"
 msgstr "Compte désactivé"
 
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "Compte suspendu"
+msgstr "Compte suspendu"
+
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "Conditions Générales d'Utilisation"
 msgstr "Conditions Générales d'Utilisation"
@@ -675,6 +679,7 @@ msgstr "Contact"
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
+#: src/features/auth/suspendedAccount/SuspendedAccount/FraudulentAccount.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Contacter le support"
 msgstr "Contacter le support"
@@ -976,6 +981,10 @@ msgstr "En attendant, tu peux découvrir l'application !"
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
+
+#: src/features/auth/suspendedAccount/SuspendedAccount/FraudulentAccount.tsx
+msgid "En raison d’une activité suspiscieuse, notre équipe anti fraude a suspendu ton compte."
+msgstr "En raison d’une activité suspiscieuse, notre équipe anti fraude a suspendu ton compte."
 
 #: src/features/bookOffer/components/BookingDetails.tsx
 msgid "En raison d’une erreur technique, l’offre n’a pas pu être réservée"
@@ -1949,6 +1958,7 @@ msgstr "Ouvrir le gestionnaire mail"
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
+#: src/features/auth/suspendedAccount/SuspendedAccount/FraudulentAccount.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Ouvrir le gestionnaire mail pour contacter le support"
 msgstr "Ouvrir le gestionnaire mail pour contacter le support"
@@ -2328,6 +2338,7 @@ msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos b
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
 #: src/features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility.tsx
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
+#: src/features/auth/suspendedAccount/SuspendedAccount/FraudulentAccount.tsx
 #: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 #: src/features/bookings/pages/BookingNotFound.tsx
@@ -2366,14 +2377,15 @@ msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favo
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
 #: src/features/auth/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSent.tsx
 #: src/features/auth/signup/SignupForm.tsx
-#: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
 #: src/features/bookings/components/BookingDetailsHeader.tsx
 #: src/features/culturalSurvey/components/layout/CulturalSurveyPageHeader.tsx
 #: src/features/identityCheck/atoms/layout/PageHeader.tsx
 #: src/features/offer/components/OfferHeader.tsx
-#: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
 #: src/features/search/components/SearchBox.tsx
 #: src/features/venue/components/VenueHeader.tsx
+#: src/ui/components/GenericErrorPage.tsx
+#: src/ui/components/GenericInfoPage.tsx
+#: src/ui/components/GenericInfoPageWhite.tsx
 #: src/ui/components/headers/PageHeader.tsx
 #: src/ui/components/modals/ModalHeader.tsx
 msgid "Revenir en arrière"
@@ -2565,6 +2577,10 @@ msgstr "Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, 
 msgid "Si tu rencontres des difficultés, tu peux consulter notre centre d'aide."
 msgstr "Si tu rencontres des difficultés, tu peux consulter notre centre d'aide."
 
+#: src/features/auth/suspendedAccount/SuspendedAccount/FraudulentAccount.tsx
+msgid "Si tu souhaites revoir cette décision, tu peux contacter le support."
+msgstr "Si tu souhaites revoir cette décision, tu peux contacter le support."
+
 #: src/features/offer/components/ReportOfferDescription.tsx
 #: src/features/offer/components/ReportOfferOtherReason.tsx
 #: src/features/offer/components/ReportOfferReason.tsx
@@ -2703,6 +2719,10 @@ msgstr "Ton compte a été activé !"
 #: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
 msgid "Ton compte a été désactivé"
 msgstr "Ton compte a été désactivé"
+
+#: src/features/auth/suspendedAccount/SuspendedAccount/FraudulentAccount.tsx
+msgid "Ton compte a été suspendu"
+msgstr "Ton compte a été suspendu"
 
 #: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
 msgid "Ton compte est désactivé"

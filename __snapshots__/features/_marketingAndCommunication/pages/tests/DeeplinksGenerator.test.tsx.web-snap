@@ -3,7 +3,7 @@
 exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
 Array [
   <header
-    className="sc-cidDSM htSmny"
+    className="sc-caiLqq gjrVWF"
   >
     <div
       className="css-view-1dbjc4n"
@@ -2571,7 +2571,7 @@ Array [
           Seulement les "ids" disposent de validation !
         </div>
         <button
-          className="sc-jRQBWg cuWqud sc-pVTFL etvsXM"
+          className="sc-jRQBWg cuWqud sc-kDTinF dspNQG"
           disabled={false}
           onClick={[Function]}
           onDoubleClick={[Function]}

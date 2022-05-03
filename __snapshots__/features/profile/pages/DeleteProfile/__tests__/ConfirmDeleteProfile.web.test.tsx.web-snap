@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <button
-        class="sc-jRQBWg fCUEFQ sc-kLwhqv cshLTn sc-kLwhqv cshLTn"
+        class="sc-hKwDye lgPtFf sc-jJoQJp kmIoZE sc-jJoQJp kmIoZE"
         data-testid="Revenir en arrière"
         tabindex="0"
         type="button"
@@ -70,7 +70,7 @@ Object {
             Les conséquences :
           </div>
           <ul
-            class="sc-crHmcD sc-egiyK gzFTzc ouYqm"
+            class="sc-bqiRlB sc-ksdxgE fZQgdx lnbgIR"
           >
             <li>
               <div
@@ -187,7 +187,7 @@ Object {
             style="margin-top: 12px;"
           >
             <button
-              class="sc-bdvvtL hWVHSw sc-eCImPb bxfGfU"
+              class="sc-bdvvtL hWVHSw sc-gKclnd jTmzXN"
               tabindex="0"
               type="button"
             >
@@ -204,7 +204,7 @@ Object {
               style="height: 16px;"
             />
             <a
-              class="sc-gsDKAQ gFcuOJ sc-bYoBSM gncaJq"
+              class="sc-gsDKAQ gFcuOJ sc-ikJyIC bSBRIN"
               href="https://passculture-delete-account.faq"
               tabindex="0"
               target="_blank"
@@ -239,7 +239,7 @@ Object {
   </body>,
   "container": <div>
     <button
-      class="sc-jRQBWg fCUEFQ sc-kLwhqv cshLTn sc-kLwhqv cshLTn"
+      class="sc-hKwDye lgPtFf sc-jJoQJp kmIoZE sc-jJoQJp kmIoZE"
       data-testid="Revenir en arrière"
       tabindex="0"
       type="button"
@@ -303,7 +303,7 @@ Object {
           Les conséquences :
         </div>
         <ul
-          class="sc-crHmcD sc-egiyK gzFTzc ouYqm"
+          class="sc-bqiRlB sc-ksdxgE fZQgdx lnbgIR"
         >
           <li>
             <div
@@ -420,7 +420,7 @@ Object {
           style="margin-top: 12px;"
         >
           <button
-            class="sc-bdvvtL hWVHSw sc-eCImPb bxfGfU"
+            class="sc-bdvvtL hWVHSw sc-gKclnd jTmzXN"
             tabindex="0"
             type="button"
           >
@@ -437,7 +437,7 @@ Object {
             style="height: 16px;"
           />
           <a
-            class="sc-gsDKAQ gFcuOJ sc-bYoBSM gncaJq"
+            class="sc-gsDKAQ gFcuOJ sc-ikJyIC bSBRIN"
             href="https://passculture-delete-account.faq"
             tabindex="0"
             target="_blank"

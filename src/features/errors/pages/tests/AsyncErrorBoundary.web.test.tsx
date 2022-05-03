@@ -21,8 +21,8 @@ describe('AsyncErrorBoundary component', () => {
     const { getByTestId, queryByTestId } = render(
       <AsyncErrorBoundary error={new Error('error')} resetErrorBoundary={jest.fn()} />
     )
-    expect(queryByTestId('backArrow')).toBeTruthy()
-    fireEvent.click(getByTestId('backArrow'))
+    expect(queryByTestId('Revenir en arrière')).toBeTruthy()
+    fireEvent.click(getByTestId('Revenir en arrière'))
     expect(mockGoBack).toHaveBeenCalled()
   })
 
