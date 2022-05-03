@@ -11,7 +11,7 @@ import styled from 'styled-components/native'
 
 import { BookingReponse } from 'api/gen'
 import { BookingDetailsTicketContent } from 'features/bookings/components/BookingDetailsTicketContent'
-import { SwipperTicketsControls } from 'features/bookings/components/SwipperTicketsControls'
+import { SwiperTicketsControls } from 'features/bookings/components/SwiperTickets/SwiperTicketsControls'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -25,7 +25,7 @@ const INTERVAL = getSpacing(SEPARATOR_VALUE)
 
 const keyExtractor = (index: BookingReponse) => index.id.toString()
 
-export function SwipperTickets({ booking, activationCodeFeatureEnabled }: Props) {
+export function SwiperTickets({ booking, activationCodeFeatureEnabled }: Props) {
   const flatListRef = useRef<FlatList>(null)
 
   const windowWidth = useWindowDimensions().width
@@ -47,10 +47,10 @@ export function SwipperTickets({ booking, activationCodeFeatureEnabled }: Props)
     )
   }
 
-  const ITEM_SIZE_WITH_INTERVAL = (ITEM_SIZE + INTERVAL) * currentIndex
+  const TOTAL_ITEM_SIZE_WITH_INTERVAL = (ITEM_SIZE + INTERVAL) * currentIndex
 
-  const nextItemPosition = ITEM_SIZE_WITH_INTERVAL
-  const prevItemPosition = ITEM_SIZE_WITH_INTERVAL - ITEM_SPACING + INTERVAL - ITEM_SIZE * 2
+  const nextItemPosition = TOTAL_ITEM_SIZE_WITH_INTERVAL
+  const prevItemPosition = TOTAL_ITEM_SIZE_WITH_INTERVAL - ITEM_SPACING + INTERVAL - ITEM_SIZE * 2
   const moveTo = (direction: 'prev' | 'next') => {
     if (flatListRef.current) {
       if (direction === 'prev') {
@@ -93,7 +93,7 @@ export function SwipperTickets({ booking, activationCodeFeatureEnabled }: Props)
         renderItem={renderItem}
       />
       <Spacer.Column numberOfSpaces={5} />
-      <SwipperTicketsControls
+      <SwiperTicketsControls
         numberOfSteps={booking.length}
         currentStep={currentIndex}
         prevTitle={t`Revenir au ticket précédent`}

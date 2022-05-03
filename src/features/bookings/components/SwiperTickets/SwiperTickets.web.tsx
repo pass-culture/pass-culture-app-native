@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { BookingReponse } from 'api/gen'
 import { BookingDetailsTicketContent } from 'features/bookings/components/BookingDetailsTicketContent'
-import { SwipperTicketsControls } from 'features/bookings/components/SwipperTicketsControls'
+import { SwiperTicketsControls } from 'features/bookings/components/SwiperTickets/SwiperTicketsControls'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
 import { getSpacing } from 'ui/theme'
 
@@ -15,9 +15,7 @@ type Props = {
 
 const MARGIN_HORIZONTAL = getSpacing(2)
 
-export function SwipperTickets({ booking, activationCodeFeatureEnabled }: Props) {
-  // TODO :
-  // ?. Déteccter si web touch > Afficher le composant native ?
+export function SwiperTickets({ booking, activationCodeFeatureEnabled }: Props) {
   const { ticket, appContentWidth } = useTheme()
   const [currentIndex, setCurrentIndex] = useState(1)
 
@@ -34,13 +32,13 @@ export function SwipperTickets({ booking, activationCodeFeatureEnabled }: Props)
   const moveTo = (direction: 'next' | 'prev') => {
     if (direction === 'prev') {
       if (currentIndex > 0) {
-        setCurrentIndex((state) => (state -= 1))
-        setTranslateValue((state) => (state += TICKET_WIDTH))
+        setCurrentIndex(currentIndex - 1)
+        setTranslateValue(translateValue + TICKET_WIDTH)
       }
     } else {
       if (currentIndex !== NUMBER_OF_TICKETS && currentIndex > 0) {
-        setCurrentIndex((state) => (state += 1))
-        setTranslateValue((state) => (state -= TICKET_WIDTH))
+        setCurrentIndex(currentIndex + 1)
+        setTranslateValue(translateValue - TICKET_WIDTH)
       }
     }
   }
@@ -64,7 +62,7 @@ export function SwipperTickets({ booking, activationCodeFeatureEnabled }: Props)
       </Container>
       {!!showControls && (
         <SwipperTicketsControlsContainer>
-          <SwipperTicketsControls
+          <SwiperTicketsControls
             numberOfSteps={NUMBER_OF_TICKETS}
             currentStep={currentIndex}
             prevTitle={t`Revenir au ticket précédent`}

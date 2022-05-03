@@ -7,7 +7,7 @@ Object {
     <div>
       <button
         aria-label="Next"
-        class="sc-bdvvtL bmzymd sc-gsDKAQ dxQUjY sc-gsDKAQ dxQUjY"
+        class="sc-bdvvtL bmzymd sc-gsDKAQ gbwVij sc-gsDKAQ gbwVij"
         data-testid="controlButton"
         tabindex="0"
         type="next"
@@ -29,7 +29,7 @@ Object {
   "container": <div>
     <button
       aria-label="Next"
-      class="sc-bdvvtL bmzymd sc-gsDKAQ dxQUjY sc-gsDKAQ dxQUjY"
+      class="sc-bdvvtL bmzymd sc-gsDKAQ gbwVij sc-gsDKAQ gbwVij"
       data-testid="controlButton"
       tabindex="0"
       type="next"
@@ -108,7 +108,7 @@ Object {
     <div>
       <button
         aria-label="Previous"
-        class="sc-bdvvtL bmzymd sc-gsDKAQ iKDrz sc-gsDKAQ iKDrz"
+        class="sc-bdvvtL bmzymd sc-gsDKAQ gbwVij sc-gsDKAQ gbwVij"
         data-testid="controlButton"
         tabindex="0"
         type="prev"
@@ -130,7 +130,7 @@ Object {
   "container": <div>
     <button
       aria-label="Previous"
-      class="sc-bdvvtL bmzymd sc-gsDKAQ iKDrz sc-gsDKAQ iKDrz"
+      class="sc-bdvvtL bmzymd sc-gsDKAQ gbwVij sc-gsDKAQ gbwVij"
       data-testid="controlButton"
       tabindex="0"
       type="prev"
@@ -209,7 +209,7 @@ Object {
     <div>
       <button
         aria-label="Previous"
-        class="sc-bdvvtL bmzymd sc-gsDKAQ iKDrz sc-gsDKAQ iKDrz"
+        class="sc-bdvvtL bmzymd sc-gsDKAQ gbwVij sc-gsDKAQ gbwVij"
         data-testid="controlButton"
         tabindex="0"
         type="prev"
@@ -231,7 +231,7 @@ Object {
   "container": <div>
     <button
       aria-label="Previous"
-      class="sc-bdvvtL bmzymd sc-gsDKAQ iKDrz sc-gsDKAQ iKDrz"
+      class="sc-bdvvtL bmzymd sc-gsDKAQ gbwVij sc-gsDKAQ gbwVij"
       data-testid="controlButton"
       tabindex="0"
       type="prev"

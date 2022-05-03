@@ -2,20 +2,20 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
-import { SwipperTickets } from 'features/bookings/components/SwipperTickets'
+import { SwiperTickets } from 'features/bookings/components/SwiperTickets/SwiperTickets'
 
 const activationCodeFeatureEnabled = true
 const booking = [
   bookingsSnap.ongoing_bookings[1],
   bookingsSnap.ongoing_bookings[1],
-  // bookingsSnap.ongoing_bookings[1],
-  // bookingsSnap.ongoing_bookings[1],
+  bookingsSnap.ongoing_bookings[1],
+  bookingsSnap.ongoing_bookings[1],
 ]
 
 export function SwipperTicketPageTest() {
   return (
     <Container>
-      <SwipperTickets
+      <SwiperTickets
         booking={booking}
         activationCodeFeatureEnabled={activationCodeFeatureEnabled}
       />
