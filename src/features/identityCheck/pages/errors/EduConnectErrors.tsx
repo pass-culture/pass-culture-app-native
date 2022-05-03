@@ -18,6 +18,6 @@ export const EduConnectErrors = withEduConnectErrorBoundary(() => {
   } else if (params?.code === 'UserTypeNotStudent') {
     throw new EduConnectError(EduConnectErrorMessageEnum.UserTypeNotStudent)
   } else {
-    throw new Error(EduConnectErrorMessageEnum.GenericError)
+    throw new Error(EduConnectErrorMessageEnum.UnknownErrorCode)
   }
 })

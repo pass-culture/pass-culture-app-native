@@ -14,6 +14,7 @@ export enum EduConnectErrorMessageEnum {
   UserAgeNotValid18YearsOld = 'UserAgeNotValid18YearsOld',
   UserAgeNotValid = 'UserAgeNotValid',
   UserTypeNotStudent = 'UserTypeNotStudent',
+  UnknownErrorCode = 'UnknownErrorCode',
   GenericError = 'GenericError',
 }
 
