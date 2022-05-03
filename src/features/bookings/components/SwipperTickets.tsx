@@ -47,25 +47,24 @@ export function SwipperTickets({ booking, activationCodeFeatureEnabled }: Props)
     )
   }
 
-  const currentIndexTotalItemSize = ITEM_SIZE * currentIndex
-  const currentIndexTotalInterval = INTERVAL * currentIndex
+  const ITEM_SIZE_WITH_INTERVAL = (ITEM_SIZE + INTERVAL) * currentIndex
 
-  const nextItemPosition = currentIndexTotalItemSize + currentIndexTotalInterval
-  const moveToNextTicket = () => {
-    if (flatListRef.current)
-      return flatListRef.current.scrollToOffset({
-        offset: nextItemPosition,
-        animated: true,
-      })
-  }
-
-  const prevItemPosition = nextItemPosition - ITEM_SPACING + INTERVAL - ITEM_SIZE * 2
-  const moveToPrevTicket = () => {
-    if (flatListRef.current)
-      return flatListRef.current.scrollToOffset({
-        offset: prevItemPosition,
-        animated: true,
-      })
+  const nextItemPosition = ITEM_SIZE_WITH_INTERVAL
+  const prevItemPosition = ITEM_SIZE_WITH_INTERVAL - ITEM_SPACING + INTERVAL - ITEM_SIZE * 2
+  const moveTo = (direction: 'prev' | 'next') => {
+    if (flatListRef.current) {
+      if (direction === 'prev') {
+        flatListRef.current.scrollToOffset({
+          offset: prevItemPosition,
+          animated: true,
+        })
+      } else {
+        flatListRef.current.scrollToOffset({
+          offset: nextItemPosition,
+          animated: true,
+        })
+      }
+    }
   }
 
   const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
@@ -99,8 +98,8 @@ export function SwipperTickets({ booking, activationCodeFeatureEnabled }: Props)
         currentStep={currentIndex}
         prevTitle={t`Revenir au ticket précédent`}
         nextTitle={t`Voir le ticket suivant`}
-        onPressPrev={moveToPrevTicket}
-        onPressNext={moveToNextTicket}
+        onPressPrev={() => moveTo('prev')}
+        onPressNext={() => moveTo('next')}
       />
     </Container>
   )

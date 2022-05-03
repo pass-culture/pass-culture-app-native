@@ -8,8 +8,8 @@ const activationCodeFeatureEnabled = true
 const booking = [
   bookingsSnap.ongoing_bookings[1],
   bookingsSnap.ongoing_bookings[1],
-  bookingsSnap.ongoing_bookings[1],
-  bookingsSnap.ongoing_bookings[1],
+  // bookingsSnap.ongoing_bookings[1],
+  // bookingsSnap.ongoing_bookings[1],
 ]
 
 export function SwipperTicketPageTest() {
