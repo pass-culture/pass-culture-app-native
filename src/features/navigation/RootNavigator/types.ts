@@ -72,6 +72,7 @@ export type RootStackParamList = {
   Maintenance: undefined
   ABTestingPOC: undefined
   AccountCreated: undefined
+  AccountReactivationSuccess: undefined
   AfterChangeEmailValidationBuffer: {
     token: string
     expiration_timestamp: number
