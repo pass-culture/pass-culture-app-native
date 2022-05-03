@@ -91,8 +91,9 @@ export type RootStackParamList = {
   CulturalSurvey: undefined
   DeleteProfileSuccess: undefined
   EndedBookings: undefined
-  ForgottenPassword: undefined
   FavoritesSorts: undefined
+  ForgottenPassword: undefined
+  FraudulentAccount: undefined
   Login?: {
     preventCancellation?: boolean
   }

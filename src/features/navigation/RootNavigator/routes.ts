@@ -18,6 +18,7 @@ import { SignupConfirmationExpiredLink } from 'features/auth/signup/SignupConfir
 import { SignupForm } from 'features/auth/signup/SignupForm'
 import { VerifyEligibility } from 'features/auth/signup/VerifyEligiblity'
 import { NotYetUnderageEligibility } from 'features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility'
+import { FraudulentAccount } from 'features/auth/suspendedAccount/SuspendedAccount/FraudulentAccount'
 import { SuspendedAccount } from 'features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings'
@@ -197,6 +198,12 @@ export const routes: Route[] = [
     component: SuspendedAccount,
     path: 'compte-desactive',
     options: { title: t`Compte désactivé` },
+  },
+  {
+    name: 'FraudulentAccount',
+    component: FraudulentAccount,
+    path: 'compte-suspendu',
+    options: { title: t`Compte suspendu` },
   },
   {
     name: 'ConfirmDeleteProfile',

@@ -191,6 +191,12 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <ButtonPrimary
+            wording={'Fraudulent Account'}
+            onPress={() => navigate('FraudulentAccount')}
+          />
+        </Row>
+        <Row half>
+          <ButtonPrimary
             wording={'Suspended Account'}
             onPress={() => navigate('SuspendedAccount')}
           />
