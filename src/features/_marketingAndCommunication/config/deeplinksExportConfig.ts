@@ -82,7 +82,7 @@ export const SCREENS_CONFIG: {
       description: `Type d'offre`,
     },
     tags: {
-      type: 'string',
+      type: 'stringArray',
       required: false,
       description: `Tags`,
     },
