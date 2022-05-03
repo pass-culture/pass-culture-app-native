@@ -679,7 +679,7 @@ msgstr "Contact"
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
-#: src/features/auth/suspendedAccount/SuspendedAccount/FraudulentAccount.tsx
+#: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Contacter le support"
 msgstr "Contacter le support"
@@ -982,7 +982,7 @@ msgstr "En attendant, tu peux découvrir l'application !"
 msgid "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 msgstr "En cliquant sur “Accepter et s’inscrire”, tu acceptes nos"
 
-#: src/features/auth/suspendedAccount/SuspendedAccount/FraudulentAccount.tsx
+#: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
 msgid "En raison d’une activité suspiscieuse, notre équipe anti fraude a suspendu ton compte."
 msgstr "En raison d’une activité suspiscieuse, notre équipe anti fraude a suspendu ton compte."
 
@@ -1958,7 +1958,7 @@ msgstr "Ouvrir le gestionnaire mail"
 #: src/features/auth/signup/AcceptCgu/AcceptCgu.tsx
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManyAttempts/PhoneValidationTooManyAttempts.tsx
 #: src/features/auth/signup/PhoneValidation/SetPhoneValidationCode.tsx
-#: src/features/auth/suspendedAccount/SuspendedAccount/FraudulentAccount.tsx
+#: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
 #: src/ui/components/LayoutExpiredLink.tsx
 msgid "Ouvrir le gestionnaire mail pour contacter le support"
 msgstr "Ouvrir le gestionnaire mail pour contacter le support"
@@ -2338,7 +2338,7 @@ msgstr "Reste informé des actualités du pass Culture et ne rate aucun de nos b
 #: src/features/auth/signup/PhoneValidation/PhoneValidationTooManySMSSent/PhoneValidationTooManySMSSent.tsx
 #: src/features/auth/signup/VerifyEligiblity/NotYetUnderageEligibility.tsx
 #: src/features/auth/signup/VerifyEligiblity/VerifyEligibility.tsx
-#: src/features/auth/suspendedAccount/SuspendedAccount/FraudulentAccount.tsx
+#: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
 #: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
 #: src/features/bookOffer/pages/BookingConfirmation.tsx
 #: src/features/bookings/pages/BookingNotFound.tsx
@@ -2577,7 +2577,7 @@ msgstr "Si tu n’es pas en mesure de prendre en photo ta pièce d’identité, 
 msgid "Si tu rencontres des difficultés, tu peux consulter notre centre d'aide."
 msgstr "Si tu rencontres des difficultés, tu peux consulter notre centre d'aide."
 
-#: src/features/auth/suspendedAccount/SuspendedAccount/FraudulentAccount.tsx
+#: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
 msgid "Si tu souhaites revoir cette décision, tu peux contacter le support."
 msgstr "Si tu souhaites revoir cette décision, tu peux contacter le support."
 
@@ -2720,7 +2720,7 @@ msgstr "Ton compte a été activé !"
 msgid "Ton compte a été désactivé"
 msgstr "Ton compte a été désactivé"
 
-#: src/features/auth/suspendedAccount/SuspendedAccount/FraudulentAccount.tsx
+#: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
 msgid "Ton compte a été suspendu"
 msgstr "Ton compte a été suspendu"
 
