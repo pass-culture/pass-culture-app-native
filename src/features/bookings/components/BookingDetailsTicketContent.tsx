@@ -17,6 +17,7 @@ import { getHeadingAttrs } from 'ui/theme/typography'
 type Props = {
   booking: BookingReponse
   activationCodeFeatureEnabled?: boolean
+  externalBookingsInfos?: TicketDouble
 }
 
 export const BookingDetailsTicketContent: FunctionComponent<Props> = ({

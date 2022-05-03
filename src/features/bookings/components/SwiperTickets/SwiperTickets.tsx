@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, ReactElement } from 'react'
 import {
   FlatList,
   ListRenderItem,
@@ -9,48 +9,48 @@ import {
 } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BookingReponse } from 'api/gen'
-import { BookingDetailsTicketContent } from 'features/bookings/components/BookingDetailsTicketContent'
-import { SwipperTicketsControls } from 'features/bookings/components/SwipperTicketsControls'
-import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
+import { BookingReponseBis } from 'features/bookings/api/bookingsSnapDouble'
+import { BookingDetailsTicketContentProps } from 'features/bookings/components/BookingDetailsTicketContent'
+import { getMultipleTickets } from 'features/bookings/components/SwiperTickets/getMultipleTickets'
+import { SwiperTicketsControls } from 'features/bookings/components/SwiperTickets/SwiperTicketsControls'
 import { getSpacing, Spacer } from 'ui/theme'
 
 type Props = {
-  booking: BookingReponse[]
+  booking: BookingReponseBis
   activationCodeFeatureEnabled?: boolean
 }
 
 const SEPARATOR_VALUE = 4
 const INTERVAL = getSpacing(SEPARATOR_VALUE)
 
-const keyExtractor = (index: BookingReponse) => index.id.toString()
+// TODO(LucasBeneston): resolve this
+// const keyExtractor = (index: BookingReponseBis) => index.id
 
-export function SwipperTickets({ booking, activationCodeFeatureEnabled }: Props) {
+export function SwiperTickets({ booking, activationCodeFeatureEnabled }: Props) {
   const flatListRef = useRef<FlatList>(null)
-
+  const { tickets } = getMultipleTickets({ booking, activationCodeFeatureEnabled })
   const windowWidth = useWindowDimensions().width
+
+  const NUMBER_OF_TICKETS = booking.externalBookingsInfos?.length ?? 0
   const ITEM_SIZE = windowWidth * 0.75
   const ITEM_SPACING = (windowWidth - ITEM_SIZE) / 2
 
   const [currentIndex, setCurrentIndex] = useState(1)
 
-  const renderItem: ListRenderItem<BookingReponse> = ({ item }) => {
-    return (
-      <TicketsContainer key={item.id} width={ITEM_SIZE}>
-        <ThreeShapesTicket>
-          <BookingDetailsTicketContent
-            booking={item}
-            activationCodeFeatureEnabled={activationCodeFeatureEnabled}
-          />
-        </ThreeShapesTicket>
-      </TicketsContainer>
-    )
-  }
+  const renderItem: ListRenderItem<ReactElement<BookingDetailsTicketContentProps>> = ({
+    item: ticket,
+  }) => (
+    <TicketsContainer key={ticket.key} width={ITEM_SIZE}>
+      {ticket}
+    </TicketsContainer>
+  )
 
-  const ITEM_SIZE_WITH_INTERVAL = (ITEM_SIZE + INTERVAL) * currentIndex
+  const TOTAL_ITEM_SIZE_WITH_INTERVAL = (ITEM_SIZE + INTERVAL) * currentIndex
 
-  const nextItemPosition = ITEM_SIZE_WITH_INTERVAL
-  const prevItemPosition = ITEM_SIZE_WITH_INTERVAL - ITEM_SPACING + INTERVAL - ITEM_SIZE * 2
+  const showControls = NUMBER_OF_TICKETS > 1
+
+  const nextItemPosition = TOTAL_ITEM_SIZE_WITH_INTERVAL
+  const prevItemPosition = TOTAL_ITEM_SIZE_WITH_INTERVAL - ITEM_SPACING + INTERVAL - ITEM_SIZE * 2
   const moveTo = (direction: 'prev' | 'next') => {
     if (flatListRef.current) {
       if (direction === 'prev') {
@@ -78,10 +78,9 @@ export function SwipperTickets({ booking, activationCodeFeatureEnabled }: Props)
     <Container>
       <FlatList
         ref={flatListRef}
-        data={booking}
-        keyExtractor={keyExtractor}
+        data={tickets[0]}
+        // keyExtractor={keyExtractor}
         horizontal
-        pagingEnabled
         bounces={false}
         showsHorizontalScrollIndicator={false}
         snapToInterval={ITEM_SIZE + INTERVAL}
@@ -92,15 +91,16 @@ export function SwipperTickets({ booking, activationCodeFeatureEnabled }: Props)
         onScroll={onScroll}
         renderItem={renderItem}
       />
-      <Spacer.Column numberOfSpaces={5} />
-      <SwipperTicketsControls
-        numberOfSteps={booking.length}
-        currentStep={currentIndex}
-        prevTitle={t`Revenir au ticket précédent`}
-        nextTitle={t`Voir le ticket suivant`}
-        onPressPrev={() => moveTo('prev')}
-        onPressNext={() => moveTo('next')}
-      />
+      {!!showControls && (
+        <SwiperTicketsControls
+          numberOfSteps={NUMBER_OF_TICKETS}
+          currentStep={currentIndex}
+          prevTitle={t`Revenir au ticket précédent`}
+          nextTitle={t`Voir le ticket suivant`}
+          onPressPrev={() => moveTo('prev')}
+          onPressNext={() => moveTo('next')}
+        />
+      )}
     </Container>
   )
 }

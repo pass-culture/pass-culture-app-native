@@ -55,6 +55,13 @@ describe('<DotComponent />', () => {
     expect(borderColor).toBe(ColorsEnum.GREEN_VALID)
     expect(fillColor).toBe(ColorsEnum.GREEN_VALID)
   })
+
+  it('should get neutral color when before active index if withNeutralPreviousStepsColor is true', () => {
+    const withNeutralPreviousStepsColor = true
+    const { borderColor, fillColor } = getDotColors(theme, 1, 2, withNeutralPreviousStepsColor)
+    expect(borderColor).toBe(ColorsEnum.GREY_DARK)
+    expect(fillColor).toBe(ColorsEnum.TRANSPARENT)
+  })
 })
 
 function renderDotComponent(

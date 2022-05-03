@@ -37,12 +37,17 @@ export type Props = {
   skip?: () => void
 }
 
-export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
+export const GenericAchievement: FunctionComponent<Props> = ({
+  screenName,
+  children,
+  onFirstCardBackAction,
+  skip,
+}: Props) => {
   const navigation = useNavigation<UseNavigationType>()
   const swiperRef = React.useRef<Swiper>(null)
   const skipButtonRef = React.useRef<View>(null)
 
-  const cards = useMemo(() => Children.toArray(props.children), [props.children])
+  const cards = useMemo(() => Children.toArray(children), [children])
   const lastIndex = cards.length - 1
 
   // We use useFocusEffect(...) because we want to remove the BackHandler listener on blur
@@ -53,20 +58,20 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
     const unsubscribeFromNavigationListener = navigation.addListener('beforeRemove', (event) => {
       onRemoveScreenAction({
         swiperRefValue: swiperRef?.current,
-        onFirstCardBackAction: props.onFirstCardBackAction,
+        onFirstCardBackAction: onFirstCardBackAction,
         event,
       })
     })
     return unsubscribeFromNavigationListener
   })
 
-  async function skip() {
-    if (props.skip) {
-      props.skip()
+  async function skipGenericAchievement() {
+    if (skip) {
+      skip()
     }
     if (swiperRef?.current) {
       const index = swiperRef.current.getActiveIndex()
-      analytics.logHasSkippedTutorial(`${props.screenName}${index + 1}`)
+      analytics.logHasSkippedTutorial(`${screenName}${index + 1}`)
     }
     navigation.reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
   }
@@ -87,7 +92,7 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
       <ScreenUsableArea>
         {!!lastIndex && (
           <SkipButton ref={skipButtonRef}>
-            <ButtonTertiaryGreyDark wording={t`Tout passer`} onPress={skip} />
+            <ButtonTertiaryGreyDark wording={t`Tout passer`} onPress={skipGenericAchievement} />
           </SkipButton>
         )}
         <SwiperContainer>
@@ -113,9 +118,9 @@ export const GenericAchievement: FunctionComponent<Props> = (props: Props) => {
                 swiperRef,
                 name:
                   (card as ReactElement<AchievementCardKeyProps>).props.name ||
-                  `${props.screenName}${index + 1}`,
+                  `${screenName}${index + 1}`,
                 lastIndex,
-                skip,
+                skip: skipGenericAchievement,
               })
             )}
           </Swiper>

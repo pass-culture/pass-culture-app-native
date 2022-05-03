@@ -2,26 +2,21 @@ import { t } from '@lingui/macro'
 import React, { useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { BookingReponse } from 'api/gen'
-import { BookingDetailsTicketContent } from 'features/bookings/components/BookingDetailsTicketContent'
-import { SwipperTicketsControls } from 'features/bookings/components/SwipperTicketsControls'
-import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
+import {
+  getMultipleTickets,
+  TicketsProps,
+} from 'features/bookings/components/SwiperTickets/getMultipleTickets'
+import { SwiperTicketsControls } from 'features/bookings/components/SwiperTickets/SwiperTicketsControls'
 import { getSpacing } from 'ui/theme'
-
-type Props = {
-  booking: BookingReponse[]
-  activationCodeFeatureEnabled?: boolean
-}
 
 const MARGIN_HORIZONTAL = getSpacing(2)
 
-export function SwipperTickets({ booking, activationCodeFeatureEnabled }: Props) {
-  // TODO :
-  // ?. Déteccter si web touch > Afficher le composant native ?
+export function SwiperTickets({ booking, activationCodeFeatureEnabled }: TicketsProps) {
   const { ticket, appContentWidth } = useTheme()
+  const { tickets } = getMultipleTickets({ booking, activationCodeFeatureEnabled })
   const [currentIndex, setCurrentIndex] = useState(1)
 
-  const NUMBER_OF_TICKETS = booking.length
+  const NUMBER_OF_TICKETS = booking.externalBookingsInfos?.length ?? 0
   const TICKET_WIDTH = ticket.maxWidth + MARGIN_HORIZONTAL * 2
   const TOTAL_TICKETS_WIDTH = TICKET_WIDTH * NUMBER_OF_TICKETS
 
@@ -34,13 +29,13 @@ export function SwipperTickets({ booking, activationCodeFeatureEnabled }: Props)
   const moveTo = (direction: 'next' | 'prev') => {
     if (direction === 'prev') {
       if (currentIndex > 0) {
-        setCurrentIndex((state) => (state -= 1))
-        setTranslateValue((state) => (state += TICKET_WIDTH))
+        setCurrentIndex(currentIndex - 1)
+        setTranslateValue(translateValue + TICKET_WIDTH)
       }
     } else {
       if (currentIndex !== NUMBER_OF_TICKETS && currentIndex > 0) {
-        setCurrentIndex((state) => (state += 1))
-        setTranslateValue((state) => (state -= TICKET_WIDTH))
+        setCurrentIndex(currentIndex + 1)
+        setTranslateValue(translateValue - TICKET_WIDTH)
       }
     }
   }
@@ -48,31 +43,24 @@ export function SwipperTickets({ booking, activationCodeFeatureEnabled }: Props)
   return (
     <React.Fragment>
       <Container>
-        {booking.map((item) => (
+        {tickets[0].map((ticket) => (
           <TicketsContainer
-            key={item.id}
+            key={ticket.key}
             showControls={showControls}
             translateValue={translateValue}>
-            <ThreeShapesTicket>
-              <BookingDetailsTicketContent
-                booking={item}
-                activationCodeFeatureEnabled={activationCodeFeatureEnabled}
-              />
-            </ThreeShapesTicket>
+            {ticket}
           </TicketsContainer>
         ))}
       </Container>
       {!!showControls && (
-        <SwipperTicketsControlsContainer>
-          <SwipperTicketsControls
-            numberOfSteps={NUMBER_OF_TICKETS}
-            currentStep={currentIndex}
-            prevTitle={t`Revenir au ticket précédent`}
-            nextTitle={t`Voir le ticket suivant`}
-            onPressPrev={() => moveTo('prev')}
-            onPressNext={() => moveTo('next')}
-          />
-        </SwipperTicketsControlsContainer>
+        <SwiperTicketsControls
+          numberOfSteps={NUMBER_OF_TICKETS}
+          currentStep={currentIndex}
+          prevTitle={t`Revenir au ticket précédent`}
+          nextTitle={t`Voir le ticket suivant`}
+          onPressPrev={() => moveTo('prev')}
+          onPressNext={() => moveTo('next')}
+        />
       )}
     </React.Fragment>
   )
@@ -92,7 +80,3 @@ const TicketsContainer = styled.View<{ showControls: boolean; translateValue: nu
     }
   }
 )
-
-const SwipperTicketsControlsContainer = styled.View({
-  marginVertical: getSpacing(5),
-})
