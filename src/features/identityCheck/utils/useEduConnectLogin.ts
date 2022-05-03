@@ -12,7 +12,7 @@ export function useEduConnectLogin() {
     try {
       const accessToken = await eduConnectClient.getAccessToken()
 
-      const { status, headers } = await fetch(`${eduConnectClient.getLoginUrl()}?redirect=false`, {
+      const response = await fetch(`${eduConnectClient.getLoginUrl()}?redirect=false`, {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
@@ -20,8 +20,8 @@ export function useEduConnectLogin() {
         credentials: 'include',
       })
 
-      if (status === 204) {
-        const finalURL = headers.get('educonnect-redirect')
+      if (response.ok) {
+        const finalURL = response.headers.get('educonnect-redirect')
         if (finalURL) {
           setLoginUrl(finalURL)
           return
