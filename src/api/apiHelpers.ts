@@ -175,8 +175,11 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
 
   // We are not suppose to have side-effects in this function but this is a special case
   // where the access token is corrupted and we need to recreate it by logging-in again
-  if (response.status === 401 && response.statusText === 'NeedsAuthenticationResponse') {
-    eventMonitoring.captureException(new Error('NeedsAuthenticationResponse'))
+  if (
+    response.status === NeedsAuthenticationResponse.status &&
+    response.statusText === NeedsAuthenticationResponse.statusText
+  ) {
+    eventMonitoring.captureException(new Error(NeedsAuthenticationResponse.statusText))
     navigateToLogin()
     return {}
   }
