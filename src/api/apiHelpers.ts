@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { t } from '@lingui/macro'
+import { v4 as uuidv4 } from 'uuid'
 
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { Headers } from 'libs/fetch'
@@ -54,6 +55,7 @@ export const safeFetch = async (
       ...options.headers,
       'device-id': await getUniqueId(),
       'app-version': Package.version,
+      'request-id': uuidv4(),
     },
   }
 
