@@ -29,9 +29,7 @@ export const IdentityCheckEduConnect = () => {
 
   const onSubmit = () => {
     navigateToNextScreen()
-    openEduConnect().catch((err) => {
-      throw err
-    })
+    openEduConnect()
   }
 
   useEnterKeyAction(onSubmit)

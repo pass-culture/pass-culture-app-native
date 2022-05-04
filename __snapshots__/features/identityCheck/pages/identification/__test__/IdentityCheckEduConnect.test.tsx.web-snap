@@ -370,7 +370,7 @@ exports[`<IdentityCheckEduConnect /> should render correctly 1`] = `
             }
           >
             <button
-              className="sc-bdvvtL hWVHSw sc-gKclnd jTmzXN"
+              className="sc-bdvvtL hWVHSw sc-dkPtRN efdTBP"
               onClick={[Function]}
               onDoubleClick={[Function]}
               tabIndex={0}

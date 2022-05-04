@@ -57,7 +57,7 @@ export const IdentityCheckEduConnectForm = () => {
       } else if (event.url.includes('UserTypeNotStudent')) {
         setError(new EduConnectError(EduConnectErrorMessageEnum.UserTypeNotStudent))
       } else {
-        setError(new Error(`UnspecifiedError URL error ${event.url}`))
+        setError(new Error(EduConnectErrorMessageEnum.UnknownErrorCode))
       }
       return
     }
