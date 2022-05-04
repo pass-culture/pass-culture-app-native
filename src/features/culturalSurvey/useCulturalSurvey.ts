@@ -1,7 +1,7 @@
-import { useQuery } from 'react-query'
+import { useMutation, useQuery } from 'react-query'
 
 import { api } from 'api/api'
-import { CulturalSurveyQuestionsResponse } from 'api/gen'
+import { CulturalSurveyAnswersRequest, CulturalSurveyQuestionsResponse } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
 import { shouldShowCulturalSurvey } from 'features/culturalSurvey/helpers/utils'
 import { useUserProfileInfo } from 'features/home/api'
@@ -22,6 +22,23 @@ export function useCulturalSurveyQuestions() {
     {
       staleTime: STALE_TIME_CULTURAL_SURVEY_QUESTIONS,
       enabled: shouldRequestCulturalSurveyQuestions,
+    }
+  )
+}
+
+interface Props {
+  onSuccess: () => void
+  onError: (error: unknown) => void
+}
+
+export const useCulturalSurveyAnswersMutation = ({ onSuccess, onError }: Props) => {
+  return useMutation(
+    (answers: CulturalSurveyAnswersRequest) => {
+      return api.postnativev1culturalSurveyanswers(answers)
+    },
+    {
+      onSuccess,
+      onError,
     }
   )
 }
