@@ -5,18 +5,21 @@ import React, { useEffect, useState } from 'react'
 import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
+import { extractApiErrorMessage } from 'api/apiHelpers'
 import {
   CulturalSurveyAnswer,
   CulturalSurveyAnswerEnum,
   CulturalSurveyQuestion,
   CulturalSurveyQuestionEnum,
-  CulturalSurveyTypeCodeKey,
 } from 'api/gen'
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
 import { CulturalSurveyPageHeader } from 'features/culturalSurvey/components/layout/CulturalSurveyPageHeader'
 import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { mapQuestionIdToPageTitle } from 'features/culturalSurvey/helpers/utils'
-import { useCulturalSurveyQuestions } from 'features/culturalSurvey/useCulturalSurvey'
+import {
+  useCulturalSurveyQuestions,
+  useCulturalSurveyAnswersMutation,
+} from 'features/culturalSurvey/useCulturalSurvey'
 import { useCulturalSurveyProgress } from 'features/culturalSurvey/useCulturalSurveyProgress'
 import { useGetNextStep } from 'features/culturalSurvey/useGetNextStep'
 import { navigateToHome } from 'features/navigation/helpers'
@@ -28,6 +31,7 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { mapCulturalSurveyTypeToIcon } from 'libs/parsers/culturalSurveyType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { Li } from 'ui/web/list/Li'
 import { VerticalUl } from 'ui/web/list/Ul'
@@ -39,10 +43,11 @@ type CulturalSurveyQuestionsProps = StackScreenProps<
 
 export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps): JSX.Element => {
   const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
-  const { push } = useNavigation<UseNavigationType>()
+  const { push, navigate } = useNavigation<UseNavigationType>()
   const { data: culturalSurveyQuestionsData } = useCulturalSurveyQuestions()
   const { nextStep, isCurrentStepLastStep } = useGetNextStep(route.params.step)
   const culturalSurveyProgress = useCulturalSurveyProgress(route.params.step)
+  const { showErrorSnackBar } = useSnackBarContext()
 
   function onFixedBottomChildrenViewLayout(event: LayoutChangeEvent) {
     const { height } = event.nativeEvent.layout
@@ -61,13 +66,32 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
     }
   }, [step, answers])
 
+  if (!culturalSurveyQuestionsData?.questions) {
+    throw new Error('should have questions to show')
+  }
+  const onSuccess = () => {
+    navigate('CulturalSurveyThanks')
+  }
+
+  const onError = (error: unknown) => {
+    navigateToHome()
+    showErrorSnackBar({ message: extractApiErrorMessage(error), timeout: SNACK_BAR_TIME_OUT })
+  }
+
+  const { mutate: postCulturalSurveyAnswers } = useCulturalSurveyAnswersMutation({
+    onSuccess,
+    onError,
+  })
+
+  if (!culturalSurveyQuestionsData) return <React.Fragment />
+
   const culturalSurveyQuestion = culturalSurveyQuestionsData.questions.find(
     (question) => question.id === route.params.step
   ) as CulturalSurveyQuestion
 
   const navigateToNextStep = () => {
     if (isCurrentStepLastStep) {
-      navigateToHome()
+      postCulturalSurveyAnswers({ answers })
     } else {
       push('CulturalSurveyQuestions', { step: nextStep })
     }
@@ -161,9 +185,7 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
                   onPress={handleToggleAnswer(answer)}
                   title={answer.title}
                   subtitle={answer?.subtitle}
-                  // @ts-ignore TODO yorickeando: once the mapCulturalSurveyTypeToIcon helper
-                  // is correctly typed
-                  icon={mapCulturalSurveyTypeToIcon(answer?.id as CulturalSurveyTypeCodeKey)}
+                  icon={mapCulturalSurveyTypeToIcon(answer?.id)}
                 />
               </CheckboxContainer>
             </Li>
