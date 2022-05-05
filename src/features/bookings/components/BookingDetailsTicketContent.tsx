@@ -13,7 +13,11 @@ import {
   SubcategoryIdEnum,
   WithdrawalTypeEnum,
 } from 'api/gen'
-import { TicketDouble } from 'features/bookings/api/bookingsSnapDouble'
+import {
+  BookingReponseBis,
+  TicketDouble,
+  TicketDoubleWithCurrentSeatIndex,
+} from 'features/bookings/api/bookingsSnapWithExternalBookingInformations'
 import { TicketCode } from 'features/bookings/atoms/TicketCode'
 import { formatSecondsToString, getBookingProperties } from 'features/bookings/helpers'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
@@ -29,7 +33,7 @@ import { getHeadingAttrs } from 'ui/theme/typography'
 export interface BookingDetailsTicketContentProps {
   booking: BookingReponse
   activationCodeFeatureEnabled?: boolean
-  externalBookingsInfos?: TicketDouble
+  externalBookingsInfos?: TicketDouble | TicketDoubleWithCurrentSeatIndex
 }
 
 export const notQrCodeSubcategories = [
@@ -42,6 +46,7 @@ export const notQrCodeSubcategories = [
 
 export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentProps) => {
   const { booking, activationCodeFeatureEnabled, externalBookingsInfos } = props
+
   const offer = booking.stock.offer
   const { isEvent } = useSubcategory(offer.subcategoryId)
   const properties = getBookingProperties(booking, isEvent)
@@ -69,7 +74,6 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
     <TicketContainer>
       <Title>{offer.name}</Title>
       <Spacer.Column numberOfSpaces={2} />
-      {!!externalBookingsInfos && <Seat>{externalBookingsInfos.seat}</Seat>}
       <TicketInnerContent>
         {isDigitalAndActivationCodeEnabled ? (
           <React.Fragment>
@@ -81,7 +85,11 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
         ) : (
           <React.Fragment>
             <TicketCode withdrawalType={withdrawalType} code={booking.token} />
-            {properties.isDigital ? accessOfferButton : <TicketBody booking={booking} />}
+            {properties.isDigital ? (
+              accessOfferButton
+            ) : (
+              <TicketBody booking={booking} externalBookingsInfos={externalBookingsInfos} />
+            )}
           </React.Fragment>
         )}
       </TicketInnerContent>
@@ -105,7 +113,8 @@ type QrCodeViewProps = {
 }
 
 type TicketBodyProps = {
-  booking: BookingReponse
+  booking: BookingReponseBis
+  externalBookingsInfos?: TicketDoubleWithCurrentSeatIndex
 }
 
 type TicketEmailSentProps = {
@@ -158,11 +167,27 @@ const NoTicket = () => {
   )
 }
 
-const TicketBody = ({ booking }: TicketBodyProps) => {
+const TicketBody = ({ booking, externalBookingsInfos }: TicketBodyProps) => {
   const withdrawalType = booking?.stock?.offer?.withdrawalType
   const withdrawalDelay = booking?.stock?.offer?.withdrawalDelay || 0
   const subcategoryOffer = booking?.stock?.offer?.subcategoryId
   const subcategoryShouldHaveQrCode = !notQrCodeSubcategories.includes(subcategoryOffer)
+
+  if (externalBookingsInfos) {
+    const currentSeatIndex = externalBookingsInfos.seatIndex
+    return (
+      <React.Fragment>
+        {!!externalBookingsInfos.seat && (
+          <SeatContainer>
+            <Typo.Caption>{t`Place\u00a0${currentSeatIndex}\u00a0:`}</Typo.Caption>
+            <Spacer.Row numberOfSpaces={1} />
+            <Typo.Body>{t`Siège ${externalBookingsInfos.seat.toUpperCase()}`}</Typo.Body>
+          </SeatContainer>
+        )}
+        <QrCodeView qrCodeData={externalBookingsInfos.barcode} />
+      </React.Fragment>
+    )
+  }
 
   if (booking.qrCodeData && subcategoryShouldHaveQrCode)
     return <QrCodeView qrCodeData={booking.qrCodeData} />
@@ -239,10 +264,11 @@ const Title = styled(Typo.Title3).attrs(getHeadingAttrs(1))({
   paddingHorizontal: getSpacing(2),
 })
 
-const Seat = styled(Typo.Body).attrs(getHeadingAttrs(1))({
+const SeatContainer = styled(Typo.Body).attrs(getHeadingAttrs(1))({
   textAlign: 'center',
   maxWidth: '100%',
   paddingHorizontal: getSpacing(2),
+  marginBottom: getSpacing(3),
 })
 
 const TicketInnerContent = styled.View({

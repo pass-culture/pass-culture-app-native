@@ -49,7 +49,7 @@ export function SwiperTicketsControls({
 }
 
 const DotsContainer = styled.View({
-  marginVertical: getSpacing(5),
+  marginTop: getSpacing(5),
   flexDirection: 'row',
 })
 

@@ -68,6 +68,7 @@ export function SwiperTickets({ booking, activationCodeFeatureEnabled }: Tickets
 
 const Container = styled.View({
   flexDirection: 'row',
+  alignItems: 'flex-end',
 })
 
 const TicketsContainer = styled.View<{ showControls: boolean; translateValue: number }>(
