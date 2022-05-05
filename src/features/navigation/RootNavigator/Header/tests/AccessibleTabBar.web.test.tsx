@@ -34,6 +34,15 @@ describe('AccessibleTabBar', () => {
     const renderAPI = renderTabBar()
     expect(renderAPI.queryAllByTestId(/selected/)).toHaveLength(1)
   })
+
+  it('should identify only one tab as current page', () => {
+    const renderAPI = renderTabBar()
+    const tabs = renderAPI.getAllByTestId(/tab/)
+    const currentPageList = tabs
+      .map((tab) => tab.getAttribute('aria-current'))
+      .filter((attr) => !!attr)
+    expect(currentPageList).toHaveLength(1)
+  })
 })
 
 function renderTabBar() {

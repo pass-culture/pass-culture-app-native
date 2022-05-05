@@ -21,7 +21,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
   const { tabRoutes } = useTabNavigationContext()
 
   return (
-    <NavItemsContainer maxWidth={maxWidth} height={height} noShadow={noShadow}>
+    <NavItemsContainer maxWidth={maxWidth} navHeight={height} noShadow={noShadow}>
       <Ul>
         {tabRoutes.map((route, index) => (
           <StyledLi key={`key-tab-nav-${route.name}`}>
@@ -45,14 +45,14 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
 
 const NavItemsContainer = styled.nav<{
   maxWidth?: number
-  height?: number
+  navHeight?: number
   noShadow?: boolean
-}>(({ maxWidth, height, noShadow }) => ({
+}>(({ maxWidth, navHeight, noShadow }) => ({
   display: 'flex',
   flexDirection: 'row',
   alignItems: 'center',
   justifyContent: 'center',
-  height: height ?? theme.appBarHeight,
+  height: navHeight ?? theme.appBarHeight,
   width: '100%',
   maxWidth,
   position: 'absolute',

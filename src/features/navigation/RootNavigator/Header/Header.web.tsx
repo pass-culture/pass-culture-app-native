@@ -142,7 +142,8 @@ const HeaderContainer = webStyled.header(({ theme }) => {
     maxHeight: theme.navTopHeight,
     justifyContent: 'space-between',
     flexDirection: 'row',
-    zIndex: 1,
+    backgroundColor: theme.colors.white,
+    zIndex: theme.zIndex.header,
     ...getShadow({
       shadowOffset: {
         width: 0,

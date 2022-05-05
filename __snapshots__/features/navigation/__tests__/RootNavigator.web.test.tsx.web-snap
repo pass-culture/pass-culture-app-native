@@ -69,6 +69,7 @@ Object {
                 class="sc-cxpSdN jxZzlG"
               >
                 <a
+                  aria-current="page"
                   class="css-reset-4rbku5 css-view-1dbjc4n"
                   data-testid="Home tab"
                   href="/TabNavigator/Home"
@@ -337,6 +338,7 @@ Object {
               class="sc-cxpSdN jxZzlG"
             >
               <a
+                aria-current="page"
                 class="css-reset-4rbku5 css-view-1dbjc4n"
                 data-testid="Home tab"
                 href="/TabNavigator/Home"
