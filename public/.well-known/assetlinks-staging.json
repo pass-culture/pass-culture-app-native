@@ -12,8 +12,8 @@
       "delegate_permission/common.handle_all_urls"
     ],
     "target": {
-      "namespace": "PassCulture S",
-      "package_name": "com.passculture",
+      "namespace": "android_app",
+      "package_name": "app.passculture.staging",
       "sha256_cert_fingerprints": [
         "DD:63:BD:54:53:52:DD:68:6D:DF:0A:FC:74:EE:B0:EB:82:29:31:69:C4:55:01:81:79:CF:CE:BF:77:A0:3A:AE"
       ]
