@@ -1,19 +1,28 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
+import * as NavigationRef from 'features/navigation/navigationRef'
 import * as jwt from 'libs/jwt'
 import * as Keychain from 'libs/keychain'
+import { eventMonitoring } from 'libs/monitoring'
 
-import { NeedsAuthenticationResponse, refreshAccessToken, safeFetch } from '../apiHelpers'
+import {
+  ApiError,
+  handleGeneratedApiResponse,
+  NeedsAuthenticationResponse,
+  refreshAccessToken,
+  safeFetch,
+} from '../apiHelpers'
 import { DefaultApi } from '../gen'
 
 const api = new DefaultApi({})
 
-const respondWith = async (body: unknown, status = 200): Promise<Response> => {
+const respondWith = async (body: unknown, status = 200, statusText?: string): Promise<Response> => {
   return new Response(JSON.stringify(body), {
     headers: {
       'content-type': 'application/json',
     },
     status,
+    statusText,
   })
 }
 
@@ -245,6 +254,67 @@ describe('[api] helpers', () => {
       const result = await refreshAccessToken(api, 0)
 
       expect(result).toEqual({ error: 'Le refresh token est expiré' })
+    })
+  })
+
+  describe('handleGeneratedApiResponse', () => {
+    const navigateFromRef = jest.spyOn(NavigationRef, 'navigateFromRef')
+
+    it('should return body when status is ok', async () => {
+      const response = await respondWith('apiResponse')
+
+      const result = await handleGeneratedApiResponse(response)
+      expect(result).toEqual('apiResponse')
+    })
+
+    it('should return body when status is ok given a plain text response', async () => {
+      const response = new Response('apiResponse', { headers: { 'content-type': 'text/plain' } })
+
+      const result = await handleGeneratedApiResponse(response)
+      expect(result).toEqual('apiResponse')
+    })
+
+    it('should return empty object when status is 204 (no content)', async () => {
+      const response = await respondWith('', 204)
+
+      const result = await handleGeneratedApiResponse(response)
+      expect(result).toEqual({})
+    })
+
+    it.each([
+      400, // Bad Request
+      401, // Unauthorized
+      403, // Forbidden
+      404, // Not Found
+      500, // Internal Server Error
+      503, // Service Unavailable
+    ])('should throw error if status is not ok', async (statusCode) => {
+      const response = await respondWith('apiResponse', statusCode)
+
+      const getResult = async () => {
+        return await handleGeneratedApiResponse(response)
+      }
+      const error = new ApiError(
+        statusCode,
+        'apiResponse',
+        `Échec de la requête ${response.url}, code: ${response.status}`
+      )
+      await expect(getResult).rejects.toThrow(error)
+    })
+
+    it('should navigate to login when access token is invalid', async () => {
+      const response = await respondWith(
+        '',
+        NeedsAuthenticationResponse.status,
+        NeedsAuthenticationResponse.statusText
+      )
+
+      const result = await handleGeneratedApiResponse(response)
+
+      const error = new Error(NeedsAuthenticationResponse.statusText)
+      expect(eventMonitoring.captureException).toBeCalledWith(error)
+      expect(navigateFromRef).toBeCalledWith('Login')
+      expect(result).toEqual({})
     })
   })
 })
