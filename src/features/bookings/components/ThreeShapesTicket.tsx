@@ -8,6 +8,7 @@ import { getShadow, getSpacing } from 'ui/theme'
 
 type Props = PropsWithChildren<{
   width?: number
+  testID?: string
 }>
 
 const isWeb = Platform.OS === 'web'
@@ -17,7 +18,7 @@ export function ThreeShapesTicket(props: Props) {
   const width = props.width || defaultWidth
   const contentWidth = isWeb ? width : width - 5
   return (
-    <Container testID="three-shapes-ticket">
+    <Container testID={props.testID ?? 'three-shapes-ticket'}>
       <TicketHeader width={width} />
       <TicketContent width={contentWidth}>{props.children}</TicketContent>
       <TicketFooter width={width} />

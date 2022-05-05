@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { BookingReponseBis } from 'features/bookings/api/bookingsSnapDouble'
+import { BookingReponseBis } from 'features/bookings/api/bookingsSnapWithExternalBookingInformations'
 import { TicketWithContent } from 'features/bookings/components/SwiperTickets/TicketWithContent'
 
 export type TicketsProps = {
@@ -9,19 +9,27 @@ export type TicketsProps = {
 }
 
 export function getMultipleTickets({ booking, activationCodeFeatureEnabled }: TicketsProps) {
-  return {
-    tickets: [booking].map((ticket) => {
-      if (ticket.externalBookingsInfos) {
-        return ticket.externalBookingsInfos.map((infos, index) => (
+  let currentSeatIndex = 0
+  const ticketsMapping = [booking].map((ticket) => {
+    if (ticket.externalBookingsInfos) {
+      const totalSeatsIndex = ticket.externalBookingsInfos
+        .map((item) => item.seat)
+        .filter((seat) => seat).length
+      return ticket.externalBookingsInfos.map((infos, index) => {
+        const seatIndex = infos.seat ? `${(currentSeatIndex += 1)}/${totalSeatsIndex}` : null
+        const externalBookingInfosWithCurrentSeatIndex = { ...infos, seatIndex }
+        return (
           <TicketWithContent
             key={index}
             booking={ticket}
             activationCodeFeatureEnabled={activationCodeFeatureEnabled}
-            externalBookingsInfos={infos}
+            externalBookingsInfos={externalBookingInfosWithCurrentSeatIndex}
           />
-        ))
-      }
-      return []
-    }),
-  }
+        )
+      })
+    }
+    return []
+  })
+
+  return { tickets: ticketsMapping[0] }
 }

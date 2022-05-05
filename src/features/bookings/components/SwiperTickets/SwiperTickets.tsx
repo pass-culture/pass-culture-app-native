@@ -9,24 +9,21 @@ import {
 } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BookingReponseBis } from 'features/bookings/api/bookingsSnapDouble'
 import { BookingDetailsTicketContentProps } from 'features/bookings/components/BookingDetailsTicketContent'
-import { getMultipleTickets } from 'features/bookings/components/SwiperTickets/getMultipleTickets'
+import {
+  getMultipleTickets,
+  TicketsProps,
+} from 'features/bookings/components/SwiperTickets/getMultipleTickets'
 import { SwiperTicketsControls } from 'features/bookings/components/SwiperTickets/SwiperTicketsControls'
 import { getSpacing, Spacer } from 'ui/theme'
-
-type Props = {
-  booking: BookingReponseBis
-  activationCodeFeatureEnabled?: boolean
-}
 
 const SEPARATOR_VALUE = 4
 const INTERVAL = getSpacing(SEPARATOR_VALUE)
 
-// TODO(LucasBeneston): resolve this
-// const keyExtractor = (index: BookingReponseBis) => index.id
+const keyExtractor = (item: ReactElement<TicketsProps>, index: number) =>
+  `${item.props.booking.stock.offer.name}-${index}`
 
-export function SwiperTickets({ booking, activationCodeFeatureEnabled }: Props) {
+export function SwiperTickets({ booking, activationCodeFeatureEnabled }: TicketsProps) {
   const flatListRef = useRef<FlatList>(null)
   const { tickets } = getMultipleTickets({ booking, activationCodeFeatureEnabled })
   const windowWidth = useWindowDimensions().width
@@ -75,17 +72,16 @@ export function SwiperTickets({ booking, activationCodeFeatureEnabled }: Props) 
   }
 
   return (
-    <Container>
+    <Container testID="swiper-ticket">
       <FlatList
         ref={flatListRef}
-        data={tickets[0]}
-        // keyExtractor={keyExtractor}
+        data={tickets}
+        keyExtractor={keyExtractor}
         horizontal
         bounces={false}
         showsHorizontalScrollIndicator={false}
         snapToInterval={ITEM_SIZE + INTERVAL}
         decelerationRate="fast"
-        style={{ flexGrow: 0 }}
         ItemSeparatorComponent={Separator}
         contentContainerStyle={{ paddingHorizontal: ITEM_SPACING }}
         onScroll={onScroll}
@@ -111,7 +107,7 @@ const Container = styled.View({
 
 const TicketsContainer = styled.View<{ width: number }>(({ width }) => ({
   alignItems: 'center',
-  justifyContent: 'center',
+  justifyContent: 'flex-end',
   width,
 }))
 

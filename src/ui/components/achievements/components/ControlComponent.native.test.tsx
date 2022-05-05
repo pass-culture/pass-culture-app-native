@@ -44,7 +44,7 @@ describe('<ControlComponent />', () => {
       title: 'Previous',
       type: 'prev',
     })
-    fireEvent.press(getByTestId('controlButton'))
+    fireEvent.press(getByTestId('control-button-prev'))
     expect(onPress).toHaveBeenCalled()
   })
 
@@ -55,7 +55,7 @@ describe('<ControlComponent />', () => {
       type: 'prev',
       withMargin: true,
     })
-    const controlButton = getByTestId('controlButton')
+    const controlButton = getByTestId('control-button-prev')
     expect(controlButton.props.style.marginLeft).toEqual('70%')
   })
 
@@ -66,7 +66,7 @@ describe('<ControlComponent />', () => {
       type: 'next',
       withMargin: true,
     })
-    const controlButton = getByTestId('controlButton')
+    const controlButton = getByTestId('control-button-next')
     expect(controlButton.props.style.marginRight).toEqual('70%')
   })
 })

@@ -33,7 +33,7 @@ export const ControlComponent = ({
       onPress={onPress}
       withMargin={withMargin}
       type={type}
-      testID="controlButton">
+      testID={`control-button-${type}`}>
       {type === 'prev' ? (
         <ArrowPrevious testID="arrowPrevious" />
       ) : (

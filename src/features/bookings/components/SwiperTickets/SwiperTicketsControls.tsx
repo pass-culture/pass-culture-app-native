@@ -26,11 +26,11 @@ export function SwiperTicketsControls({
   const showNextButton = currentStep !== numberOfSteps
 
   return (
-    <DotsContainer>
+    <DotsContainer testID="swiper-tickets-controls">
       {showPrevButton ? (
         <ControlComponent type="prev" title={prevTitle} onPress={onPressPrev} />
       ) : (
-        <ControlComponentSpacing />
+        <ControlComponentSpacing testID="control-component-spacing-prev" />
       )}
       <Spacer.Row numberOfSpaces={2} />
       <StepDots
@@ -42,14 +42,14 @@ export function SwiperTicketsControls({
       {showNextButton ? (
         <ControlComponent type="next" title={nextTitle} onPress={onPressNext} />
       ) : (
-        <ControlComponentSpacing />
+        <ControlComponentSpacing testID="control-component-spacing-next" />
       )}
     </DotsContainer>
   )
 }
 
 const DotsContainer = styled.View({
-  marginVertical: getSpacing(5),
+  marginTop: getSpacing(5),
   flexDirection: 'row',
 })
 

@@ -1,0 +1,173 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TicketWithContent/> should render properly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignItems": "center",
+        "flexDirection": "column",
+        "justifyContent": "center",
+        "shadowColor": "#161617",
+        "shadowOffset": Object {
+          "height": 2,
+          "width": 0,
+        },
+        "shadowOpacity": 0.1,
+        "shadowRadius": 3,
+      },
+    ]
+  }
+  testID="three-shapes-ticket"
+>
+  <View
+    height={48.54368932038835}
+    width={300}
+  >
+    <Text>
+      undefined-SVG-Mock
+    </Text>
+  </View>
+  <View
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "#ffffff",
+          "maxWidth": "100%",
+          "paddingBottom": 8,
+          "paddingLeft": 8,
+          "paddingRight": 8,
+          "paddingTop": 8,
+          "width": 295,
+        },
+      ]
+    }
+    width={295}
+  >
+    <View
+      style={
+        Array [
+          Object {
+            "justifyContent": "center",
+            "minHeight": 192,
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          Array [
+            Object {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 20,
+              "lineHeight": 24,
+              "maxWidth": "100%",
+              "paddingHorizontal": 8,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Avez-vous déjà vu ?
+      </Text>
+      <View
+        numberOfSpaces={2}
+        style={
+          Array [
+            Object {
+              "height": 8,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          Array [
+            Object {
+              "paddingHorizontal": 8,
+              "paddingTop": 24,
+            },
+          ]
+        }
+      >
+        <View
+          accessibilityState={
+            Object {
+              "disabled": true,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={false}
+          nativeID="animatedComponent"
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "opacity": 1,
+              "userSelect": "auto",
+            }
+          }
+        >
+          <Text
+            fontSize={24}
+            style={
+              Array [
+                Object {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 24,
+                  "lineHeight": 28,
+                },
+                Object {
+                  "color": "#eb0055",
+                  "paddingBottom": 16,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            352UW4
+          </Text>
+        </View>
+        <View
+          style={
+            Array [
+              Object {
+                "alignItems": "center",
+                "marginBottom": 12,
+              },
+            ]
+          }
+          testID="qr-code"
+        >
+          <View
+            height={170}
+            width={170}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+  <View
+    height={48.54368932038835}
+    width={300}
+  >
+    <Text>
+      undefined-SVG-Mock
+    </Text>
+  </View>
+</View>
+`;
