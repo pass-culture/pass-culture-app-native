@@ -15,7 +15,11 @@ import {
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
 import { CulturalSurveyPageHeader } from 'features/culturalSurvey/components/layout/CulturalSurveyPageHeader'
 import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
-import { mapQuestionIdToPageTitle } from 'features/culturalSurvey/helpers/utils'
+import {
+  addSubQuestionToQuestionsToDisplay,
+  mapQuestionIdToPageTitle,
+  removeSubQuestionsToDisplay,
+} from 'features/culturalSurvey/helpers/utils'
 import {
   useCulturalSurveyQuestions,
   useCulturalSurveyAnswersMutation,
@@ -101,27 +105,13 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
     return !!currentAnswers?.find((answerId) => answerId === answer.id)
   }
 
-  const addSubQuestionToQuestionsToDisplay = (subQuestionId: CulturalSurveyQuestionEnum) => {
-    let updatedQuestionsToDisplay = [...questionsToDisplay]
-    updatedQuestionsToDisplay = updatedQuestionsToDisplay.filter(
-      (questionId) => questionId != subQuestionId
-    )
-    return updatedQuestionsToDisplay
-  }
-
-  const removeSubQuestionsToDisplay = (subQuestionId: CulturalSurveyQuestionEnum) => {
-    const updatedQuestionsToDisplay = [...questionsToDisplay]
-    updatedQuestionsToDisplay.splice(1, 0, subQuestionId)
-    return updatedQuestionsToDisplay
-  }
-
   const updateQuestionsToDisplay = (
     subQuestionId: CulturalSurveyQuestionEnum,
     isAnswerSelected: boolean
   ) => {
     const updatedQuestionsToDisplay = isAnswerSelected
-      ? addSubQuestionToQuestionsToDisplay(subQuestionId)
-      : removeSubQuestionsToDisplay(subQuestionId)
+      ? addSubQuestionToQuestionsToDisplay(subQuestionId, questionsToDisplay)
+      : removeSubQuestionsToDisplay(subQuestionId, questionsToDisplay)
 
     dispatch({
       type: 'SET_QUESTIONS',
