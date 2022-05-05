@@ -33,9 +33,6 @@ export const CulturalSurveyCheckbox = (props: CulturalSurveyCheckboxProps) => {
     angle: 175,
   }))({ borderRadius: getSpacing(2) })
 
-  // TODO (PC-13439) yorickeando : delete this once the component is connected to the backend data
-  const title = props.title ?? 'Visité un musée,'
-
   const onPress = () => {
     setIsSelected(!selected)
     props.onPress()
@@ -54,7 +51,7 @@ export const CulturalSurveyCheckbox = (props: CulturalSurveyCheckboxProps) => {
           </ActivityIconContainer>
         )}
         <DescriptionContainer>
-          <Typo.ButtonText>{title}</Typo.ButtonText>
+          <Typo.ButtonText>{props?.title}</Typo.ButtonText>
           {!!props.subtitle && <GreyCaption>{props?.subtitle}</GreyCaption>}
         </DescriptionContainer>
         {!!selected && (

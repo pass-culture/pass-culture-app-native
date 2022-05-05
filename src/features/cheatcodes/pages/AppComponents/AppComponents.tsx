@@ -530,10 +530,16 @@ export const AppComponents: FunctionComponent = () => {
         </GreyView>
         <Spacer.Column numberOfSpaces={4} />
         <View>
-          <CulturalSurveyCheckbox selected={false} onPress={() => null} />
+          <CulturalSurveyCheckbox
+            selected={false}
+            onPress={() => null}
+            title={'Aucune de ces activités'}
+          />
           <Spacer.Column numberOfSpaces={1} />
           <CulturalSurveyCheckbox
             selected={true}
+            title={'Visité un musée,'}
+            subtitle={'une canne à pêche'}
             onPress={() => null}
             icon={culturalSurveyIcons.Museum}
           />

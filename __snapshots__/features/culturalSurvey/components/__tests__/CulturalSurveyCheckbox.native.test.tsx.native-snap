@@ -102,9 +102,7 @@ exports[`CulturalSurveyCheckbox should render correctly 1`] = `
             },
           ]
         }
-      >
-        Visité un musée,
-      </Text>
+      />
       <Text
         style={
           Array [
@@ -226,9 +224,7 @@ exports[`CulturalSurveyCheckbox should render correctly when pressed 1`] = `
             },
           ]
         }
-      >
-        Visité un musée,
-      </Text>
+      />
       <Text
         style={
           Array [
