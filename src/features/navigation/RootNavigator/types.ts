@@ -16,7 +16,7 @@ export type Referrals =
 export type CulturalSurveyRootStackParamList = {
   NavigationCulturalSurvey: undefined
   CulturalSurveyIntro: undefined
-  CulturalSurveyQuestions: { step: CulturalSurveyQuestionEnum }
+  CulturalSurveyQuestions: { question: CulturalSurveyQuestionEnum }
   CulturalSurveyThanks: undefined
 }
 

@@ -25,7 +25,7 @@ import {
   useCulturalSurveyAnswersMutation,
 } from 'features/culturalSurvey/useCulturalSurvey'
 import { useCulturalSurveyProgress } from 'features/culturalSurvey/useCulturalSurveyProgress'
-import { useGetNextStep } from 'features/culturalSurvey/useGetNextStep'
+import { useGetNextQuestion } from 'features/culturalSurvey/useGetNextQuestion'
 import { navigateToHome } from 'features/navigation/helpers'
 import {
   CulturalSurveyRootStackParamList,
@@ -49,8 +49,8 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
   const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
   const { push, navigate } = useNavigation<UseNavigationType>()
   const { data: culturalSurveyQuestionsData } = useCulturalSurveyQuestions()
-  const { nextStep, isCurrentStepLastStep } = useGetNextStep(route.params.step)
-  const culturalSurveyProgress = useCulturalSurveyProgress(route.params.step)
+  const { nextQuestion, isCurrentQuestionLastQuestion } = useGetNextQuestion(route.params.question)
+  const culturalSurveyProgress = useCulturalSurveyProgress(route.params.question)
   const { showErrorSnackBar } = useSnackBarContext()
 
   function onFixedBottomChildrenViewLayout(event: LayoutChangeEvent) {
@@ -58,17 +58,19 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
     setBottomChildrenViewHeight(height)
   }
 
-  const step = route.params.step
+  const currentQuestion = route.params.question
   const { goBack } = useGoBack(...homeNavConfig)
   const { answers, dispatch, questionsToDisplay } = useCulturalSurveyContext()
   const [currentAnswers, setCurrentAnswers] = useState<CulturalSurveyAnswerEnum[]>([])
 
   useEffect(() => {
-    const currentQuestionAnswers = answers.find((answer) => answer.questionId === step)?.answerIds
+    const currentQuestionAnswers = answers.find(
+      (answer) => answer.questionId === currentQuestion
+    )?.answerIds
     if (currentQuestionAnswers) {
       setCurrentAnswers(currentQuestionAnswers)
     }
-  }, [step, answers])
+  }, [currentQuestion, answers])
 
   if (!culturalSurveyQuestionsData?.questions) {
     throw new Error('should have questions to show')
@@ -90,14 +92,14 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
   if (!culturalSurveyQuestionsData) return <React.Fragment />
 
   const culturalSurveyQuestion = culturalSurveyQuestionsData.questions.find(
-    (question) => question.id === route.params.step
+    (question) => question.id === route.params.question
   ) as CulturalSurveyQuestion
 
-  const navigateToNextStep = () => {
-    if (isCurrentStepLastStep) {
+  const navigateToNextQuestion = () => {
+    if (isCurrentQuestionLastQuestion) {
       postCulturalSurveyAnswers({ answers })
     } else {
-      push('CulturalSurveyQuestions', { step: nextStep })
+      push('CulturalSurveyQuestions', { question: nextQuestion })
     }
   }
 
@@ -126,7 +128,7 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
     dispatch({
       type: 'SET_ANSWERS',
       payload: {
-        questionId: step,
+        questionId: currentQuestion,
         answers: updatedAnswers,
       },
     })
@@ -148,7 +150,7 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
     dispatch({
       type: 'SET_ANSWERS',
       payload: {
-        questionId: step,
+        questionId: currentQuestion,
         answers: [],
       },
     })
@@ -185,7 +187,7 @@ export const CulturalSurveyQuestions = ({ route }: CulturalSurveyQuestionsProps)
       <FixedBottomChildrenView onLayout={onFixedBottomChildrenViewLayout}>
         <ButtonPrimary
           onPress={() => {
-            navigateToNextStep()
+            navigateToNextQuestion()
           }}
           wording={t`Continuer`}
           testID={'next-cultural-survey-question'}
