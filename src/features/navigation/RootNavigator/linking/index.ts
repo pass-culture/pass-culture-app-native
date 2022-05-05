@@ -2,7 +2,7 @@ import { LinkingOptions } from '@react-navigation/native'
 
 import { RootStackParamList } from 'features/navigation/RootNavigator'
 import { rootScreensConfig } from 'features/navigation/RootNavigator/screens'
-import { WEBAPP_V2_URL, EMAIL_PROVIDER_CUSTOM_URL } from 'libs/environment'
+import { WEBAPP_V2_URL } from 'libs/environment'
 import { RequireField } from 'libs/typesUtils/typeHelpers'
 
 import { getInitialURL } from './getInitialUrl'
@@ -20,7 +20,6 @@ export const linking: RequireField<
     // must NOT be empty
     WEBAPP_V2_URL,
     PASS_CULTURE_PREFIX_URL,
-    EMAIL_PROVIDER_CUSTOM_URL,
   ],
   getInitialURL: getInitialURL,
   subscribe: subscribe,
