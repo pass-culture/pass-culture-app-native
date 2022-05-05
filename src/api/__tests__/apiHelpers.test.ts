@@ -40,6 +40,7 @@ describe('[api] helpers', () => {
           Authorization: `Bearer ${accessToken}`,
           'app-version': '1.10.5',
           'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          'request-id': 'testUuidV4',
         },
       })
       expect(response).toEqual(await respondWith('apiResponse'))
@@ -53,6 +54,7 @@ describe('[api] helpers', () => {
           Authorization: `Bearer ${accessToken}`,
           'app-version': '1.10.5',
           'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          'request-id': 'testUuidV4',
         },
       })
       expect(response).toEqual(await respondWith('apiResponse'))
@@ -82,6 +84,7 @@ describe('[api] helpers', () => {
           Authorization: `Bearer ${accessToken}`,
           'app-version': '1.10.5',
           'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          'request-id': 'testUuidV4',
         },
       })
       expect(response).toEqual(await expectedResponse)
@@ -124,6 +127,7 @@ describe('[api] helpers', () => {
           Authorization: `Bearer ${password}`,
           'app-version': '1.10.5',
           'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          'request-id': 'testUuidV4',
         },
         credentials: 'omit',
         method: 'POST',
@@ -133,6 +137,7 @@ describe('[api] helpers', () => {
           Authorization: `Bearer ${password}`,
           'app-version': '1.10.5',
           'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          'request-id': 'testUuidV4',
         },
         credentials: 'omit',
         method: 'POST',
@@ -142,6 +147,7 @@ describe('[api] helpers', () => {
           Authorization: `Bearer ${accessToken}`,
           'app-version': '1.10.5',
           'device-id': 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
+          'request-id': 'testUuidV4',
         },
       })
       expect(response).toEqual(await expectedResponse)
