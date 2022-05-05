@@ -28,7 +28,6 @@ export const env: Environment = {
   DSM_URL: 'https://www.demarches-simplifiees.fr/commencer/inscription-pass-culture',
   DMS_FRENCH_CITIZEN_URL: 'https://dmsfrenchcitizen',
   DMS_FOREIGN_CITIZEN_URL: 'https://dmsforeigncitizen',
-  EMAIL_PROVIDER_CUSTOM_DOMAIN: 'r.email.passculture.app',
   ENABLE_WHY_DID_YOU_RENDER: false,
   ENV: 'testing',
   FAQ_LINK: 'https://passculture.faq',
