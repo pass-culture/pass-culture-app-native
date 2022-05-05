@@ -1,9 +1,13 @@
-import { CulturalSurveyQuestionEnum, CulturalSurveyAnswerEnum } from 'api/gen'
+import {
+  CulturalSurveyQuestionEnum,
+  CulturalSurveyAnswerEnum,
+  CulturalSurveyUserAnswer,
+} from 'api/gen'
 
 export interface CulturalSurveyState {
   currentStep: CulturalSurveyQuestionEnum | null
   questionsToDisplay: CulturalSurveyQuestionEnum[]
-  answers: Partial<{ [key in CulturalSurveyQuestionEnum]: CulturalSurveyAnswerEnum[] }>
+  answers: CulturalSurveyUserAnswer[]
 }
 
 export type Action =

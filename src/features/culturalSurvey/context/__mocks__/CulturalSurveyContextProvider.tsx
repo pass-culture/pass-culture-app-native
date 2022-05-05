@@ -10,10 +10,10 @@ const questionsToDisplay = [
 export const useCulturalSurveyContext = jest.fn().mockReturnValue({
   dispatch,
   questionsToDisplay,
-  answers: {
-    [CulturalSurveyQuestionEnum.SORTIES]: [],
-    [CulturalSurveyQuestionEnum.FESTIVALS]: [],
-    [CulturalSurveyQuestionEnum.SPECTACLES]: [],
-    [CulturalSurveyQuestionEnum.ACTIVITES]: [],
-  },
+  answers: [
+    { questionId: CulturalSurveyQuestionEnum.SORTIES, answerIds: [] },
+    { questionId: CulturalSurveyQuestionEnum.FESTIVALS, answerIds: [] },
+    { questionId: CulturalSurveyQuestionEnum.SPECTACLES, answerIds: [] },
+    { questionId: CulturalSurveyQuestionEnum.ACTIVITES, answerIds: [] },
+  ],
 })

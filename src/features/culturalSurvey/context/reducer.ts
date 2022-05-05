@@ -3,7 +3,7 @@ import { Action, CulturalSurveyState } from 'features/culturalSurvey/context/typ
 export const initialCulturalSurveyState: CulturalSurveyState = {
   currentStep: null,
   questionsToDisplay: [],
-  answers: {},
+  answers: [],
 }
 
 export const culturalSurveyReducer: React.Reducer<CulturalSurveyState, Action> = (
@@ -21,14 +21,20 @@ export const culturalSurveyReducer: React.Reducer<CulturalSurveyState, Action> =
       return { ...state, questionsToDisplay: action.payload }
     case 'SET_STEP':
       return { ...state, currentStep: action.payload }
-    case 'SET_ANSWERS':
+    case 'SET_ANSWERS': {
+      const index = state.answers.findIndex(
+        (answer) => answer.questionId === action.payload.questionId
+      )
+      const answers = [...state.answers]
+      answers[index] = {
+        questionId: action.payload.questionId,
+        answerIds: action.payload.answers,
+      }
       return {
         ...state,
-        answers: {
-          ...state.answers,
-          [action.payload.questionId]: action.payload.answers,
-        },
+        answers: answers,
       }
+    }
     default:
       return { ...state }
   }

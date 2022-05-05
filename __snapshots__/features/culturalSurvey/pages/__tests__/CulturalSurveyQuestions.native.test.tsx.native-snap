@@ -31,9 +31,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
     <View
       accessibilityLabel="Revenir en arrière"
       accessible={true}
-      collapsable={false}
       focusable={true}
-      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}
@@ -1572,9 +1570,7 @@ exports[`CulturalSurveysQuestions page should render the page with correct layou
     <View
       accessibilityLabel="Continuer vers l'étape suivante"
       accessible={true}
-      collapsable={false}
       focusable={true}
-      nativeID="animatedComponent"
       onClick={[Function]}
       onResponderGrant={[Function]}
       onResponderMove={[Function]}

@@ -1,26 +1,24 @@
 import { StackScreenProps } from '@react-navigation/stack/lib/typescript/src/types'
 import React from 'react'
+import { mocked } from 'ts-jest/utils'
 
-import { push } from '__mocks__/@react-navigation/native'
+import { push, navigate } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyQuestionEnum } from 'api/gen'
 import {
   useCulturalSurveyContext,
   dispatch,
 } from 'features/culturalSurvey/context/__mocks__/CulturalSurveyContextProvider'
 import * as CulturalSurveyContextProviderModule from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
-import { mockedCulturalSurveyQuestions } from 'features/culturalSurvey/fixtures/mockedCulturalSurveyQuestions'
 import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalSurveyQuestions'
+import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/useCulturalSurvey'
 import { navigateToHome } from 'features/navigation/helpers'
 import { CulturalSurveyRootStackParamList } from 'features/navigation/RootNavigator'
 import { render, fireEvent } from 'tests/utils/web'
 
 jest.mock('features/navigation/helpers')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
-jest.mock('features/culturalSurvey/useCulturalSurveyQuestions', () => ({
-  useCulturalSurveyQuestions: () => ({
-    data: mockedCulturalSurveyQuestions,
-  }),
-}))
+jest.mock('features/culturalSurvey/useCulturalSurvey')
+const mockedUseCulturalSurveyAnswersMutation = mocked(useCulturalSurveyAnswersMutation)
 
 const navigationProps = {
   route: {
@@ -57,12 +55,31 @@ describe('CulturalSurveysQuestions page', () => {
       step: CulturalSurveyQuestionEnum.ACTIVITES,
     })
   })
-  // TODO : test will change to 'should navigate to OUTRO' after page implementation
-  it('should navigate to home if on lastStep', () => {
+  it('should navigate to CulturalSurveyThanks if on lastStep and API call is successful', async () => {
     mockUseGetNextStepReturnValue = {
       isCurrentStepLastStep: true,
       nextStep: CulturalSurveyQuestionEnum.SPECTACLES,
     }
+    const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
+    const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
+    fireEvent.click(NextQuestionButton)
+    expect(navigate).toHaveBeenCalledWith('CulturalSurveyThanks')
+  })
+
+  it('should navigate to home if on lastStep and API call is unsuccessful', async () => {
+    mockUseGetNextStepReturnValue = {
+      isCurrentStepLastStep: true,
+      nextStep: CulturalSurveyQuestionEnum.SPECTACLES,
+    }
+    // TODO: yorickeando: understand why mutate is called twice in test and remove double implementation
+    // @ts-ignore ignore useMutationType
+    mockedUseCulturalSurveyAnswersMutation.mockImplementationOnce(({ onError }) => {
+      return { mutate: onError }
+    })
+    // @ts-ignore useMutationType
+    mockedUseCulturalSurveyAnswersMutation.mockImplementationOnce(({ onError }) => {
+      return { mutate: onError }
+    })
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
     const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
     fireEvent.click(NextQuestionButton)
