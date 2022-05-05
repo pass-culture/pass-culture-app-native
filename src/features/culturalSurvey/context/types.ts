@@ -5,7 +5,6 @@ import {
 } from 'api/gen'
 
 export interface CulturalSurveyState {
-  currentStep: CulturalSurveyQuestionEnum | null
   questionsToDisplay: CulturalSurveyQuestionEnum[]
   answers: CulturalSurveyUserAnswer[]
 }
@@ -18,7 +17,6 @@ export type Action =
         answers: CulturalSurveyState['answers']
       }
     }
-  | { type: 'SET_STEP'; payload: CulturalSurveyQuestionEnum | null }
   | { type: 'SET_QUESTIONS'; payload: CulturalSurveyQuestionEnum[] }
   | {
       type: 'SET_ANSWERS'
