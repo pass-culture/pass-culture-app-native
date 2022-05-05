@@ -203,6 +203,12 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <ButtonPrimary
+            wording={'Account Reactivation Success'}
+            onPress={() => navigate('AccountReactivationSuccess')}
+          />
+        </Row>
+        <Row half>
+          <ButtonPrimary
             wording={'Confirm delete profile'}
             onPress={() => navigate('ConfirmDeleteProfile')}
           />

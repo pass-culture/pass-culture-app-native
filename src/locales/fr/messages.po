@@ -577,6 +577,10 @@ msgid "Compte désactivé"
 msgstr "Compte désactivé"
 
 #: src/features/navigation/RootNavigator/routes.ts
+msgid "Compte réactivé"
+msgstr "Compte réactivé"
+
+#: src/features/navigation/RootNavigator/routes.ts
 msgid "Compte suspendu"
 msgstr "Compte suspendu"
 
@@ -896,6 +900,7 @@ msgstr "Déconnexion"
 msgid "Découvrir"
 msgstr "Découvrir"
 
+#: src/features/auth/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess.tsx
 #: src/features/culturalSurvey/pages/CulturalSurveyThanks.tsx
 msgid "Découvrir le catalogue"
 msgstr "Découvrir le catalogue"
@@ -1921,6 +1926,14 @@ msgstr "Offres"
 msgid "Oh non !"
 msgstr "Oh non !"
 
+#: src/features/auth/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess.tsx
+msgid ""
+"On est ravi de te revoir !\n"
+"Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture."
+msgstr ""
+"On est ravi de te revoir !\n"
+"Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture."
+
 #: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
 msgid "On est super triste de te voir partir."
 msgstr "On est super triste de te voir partir."
@@ -2719,6 +2732,10 @@ msgstr "Ton compte a été activé !"
 #: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
 msgid "Ton compte a été désactivé"
 msgstr "Ton compte a été désactivé"
+
+#: src/features/auth/suspendedAccount/AccountReactivationSuccess/AccountReactivationSuccess.tsx
+msgid "Ton compte a été réactivé"
+msgstr "Ton compte a été réactivé"
 
 #: src/features/auth/suspendedAccount/FraudulentAccount/FraudulentAccount.tsx
 msgid "Ton compte a été suspendu"
