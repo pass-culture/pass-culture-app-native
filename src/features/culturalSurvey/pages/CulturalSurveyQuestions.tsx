@@ -212,6 +212,7 @@ const Container = styled.View(({ theme }) => ({
   display: 'flex',
   alignSelf: 'center',
   maxWidth: theme.forms.maxWidth,
+  width: '100%',
   flexDirection: 'column',
 }))
 
@@ -227,7 +228,7 @@ const ChildrenScrollView = styled.ScrollView.attrs<ChildrenScrollViewProps>(
       marginTop: getSpacing(5),
       paddingBottom: bottomChildrenViewHeight,
       width: '100%',
-      paddingHorizontal: getSpacing(5),
+      paddingHorizontal: getSpacing(6),
     },
   })
 )<ChildrenScrollViewProps>({})
@@ -255,5 +256,5 @@ const FixedBottomChildrenView = styled.View({
   marginLeft: 'auto',
   marginRight: 'auto',
   paddingTop: getSpacing(3),
-  paddingHorizontal: getSpacing(5),
+  paddingHorizontal: getSpacing(6),
 })
