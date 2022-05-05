@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { SwiperTickets } from 'features/bookings/components/SwiperTickets/SwiperTickets'
 import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
+import { SwiperTickets } from 'features/bookings/components/SwiperTickets/SwiperTickets'
 import { render } from 'tests/utils'
 
 const booking = [
@@ -11,7 +11,8 @@ const booking = [
   bookingsSnap.ongoing_bookings[1],
 ]
 
-// TODO(LucasBeneston): remove this => eslint-disable-next-line local-rules/no-allow-console
+// TODO(LucasBeneston): remove this
+// eslint-disable-next-line local-rules/no-allow-console
 allowConsole({ error: true })
 
 describe('<SwiperTickets/>', () => {

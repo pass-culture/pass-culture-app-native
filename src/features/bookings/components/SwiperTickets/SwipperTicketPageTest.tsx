@@ -1,24 +1,35 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
+import { bookingsSnapDouble } from 'features/bookings/api/bookingsSnapDouble'
 import { SwiperTickets } from 'features/bookings/components/SwiperTickets/SwiperTickets'
+import { TicketWithContent } from 'features/bookings/components/SwiperTickets/TicketWithContent'
 
 const activationCodeFeatureEnabled = true
-const booking = [
-  bookingsSnap.ongoing_bookings[1],
-  bookingsSnap.ongoing_bookings[1],
-  bookingsSnap.ongoing_bookings[1],
-  bookingsSnap.ongoing_bookings[1],
-]
+const booking = bookingsSnapDouble.ongoing_bookings[0]
 
 export function SwipperTicketPageTest() {
   return (
     <Container>
-      <SwiperTickets
-        booking={booking}
-        activationCodeFeatureEnabled={activationCodeFeatureEnabled}
-      />
+      {booking.externalBookingsInfos ? (
+        booking.externalBookingsInfos.length === 1 ? (
+          <TicketWithContent
+            booking={booking}
+            activationCodeFeatureEnabled={activationCodeFeatureEnabled}
+            externalBookingsInfos={booking.externalBookingsInfos[0]}
+          />
+        ) : (
+          <SwiperTickets
+            booking={booking}
+            activationCodeFeatureEnabled={activationCodeFeatureEnabled}
+          />
+        )
+      ) : (
+        <TicketWithContent
+          booking={booking}
+          activationCodeFeatureEnabled={activationCodeFeatureEnabled}
+        />
+      )}
     </Container>
   )
 }

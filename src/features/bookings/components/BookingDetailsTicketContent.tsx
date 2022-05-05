@@ -13,6 +13,7 @@ import {
   SubcategoryIdEnum,
   WithdrawalTypeEnum,
 } from 'api/gen'
+import { TicketDouble } from 'features/bookings/api/bookingsSnapDouble'
 import { TicketCode } from 'features/bookings/atoms/TicketCode'
 import { formatSecondsToString, getBookingProperties } from 'features/bookings/helpers'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
@@ -25,9 +26,10 @@ import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
 
-interface BookingDetailsTicketContentProps {
+export interface BookingDetailsTicketContentProps {
   booking: BookingReponse
   activationCodeFeatureEnabled?: boolean
+  externalBookingsInfos?: TicketDouble
 }
 
 export const notQrCodeSubcategories = [
@@ -39,7 +41,7 @@ export const notQrCodeSubcategories = [
 ]
 
 export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentProps) => {
-  const { booking, activationCodeFeatureEnabled } = props
+  const { booking, activationCodeFeatureEnabled, externalBookingsInfos } = props
   const offer = booking.stock.offer
   const { isEvent } = useSubcategory(offer.subcategoryId)
   const properties = getBookingProperties(booking, isEvent)
@@ -67,6 +69,7 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
     <TicketContainer>
       <Title>{offer.name}</Title>
       <Spacer.Column numberOfSpaces={2} />
+      {!!externalBookingsInfos && <Seat>{externalBookingsInfos.seat}</Seat>}
       <TicketInnerContent>
         {isDigitalAndActivationCodeEnabled ? (
           <React.Fragment>
@@ -231,6 +234,12 @@ const DarkGreyCaption = styled(Typo.Caption)(({ theme }) => ({
 }))
 
 const Title = styled(Typo.Title3).attrs(getHeadingAttrs(1))({
+  textAlign: 'center',
+  maxWidth: '100%',
+  paddingHorizontal: getSpacing(2),
+})
+
+const Seat = styled(Typo.Body).attrs(getHeadingAttrs(1))({
   textAlign: 'center',
   maxWidth: '100%',
   paddingHorizontal: getSpacing(2),

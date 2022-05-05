@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { ControlComponent } from 'ui/components/achievements/components/ControlComponent'
 import { StepDots } from 'ui/components/StepDots'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 type Props = {
   numberOfSteps: number
@@ -49,6 +49,7 @@ export function SwiperTicketsControls({
 }
 
 const DotsContainer = styled.View({
+  marginVertical: getSpacing(5),
   flexDirection: 'row',
 })
 
