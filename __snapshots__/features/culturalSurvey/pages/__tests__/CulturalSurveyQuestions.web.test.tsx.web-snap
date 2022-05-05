@@ -7,7 +7,7 @@ Object {
     <div>
       <div
         class="css-view-1dbjc4n"
-        style="align-self: center; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; max-width: 500px;"
+        style="align-self: center; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -100,7 +100,7 @@ Object {
         >
           <div
             class="css-view-1dbjc4n"
-            style="align-self: center; flex-direction: column; flex-grow: 1; margin-top: 20px; padding-bottom: 0px; padding-right: 20px; padding-left: 20px; width: 100%;"
+            style="align-self: center; flex-direction: column; flex-grow: 1; margin-top: 20px; padding-bottom: 0px; padding-right: 24px; padding-left: 24px; width: 100%;"
           >
             <h3
               aria-level="3"
@@ -625,7 +625,7 @@ Object {
         </div>
         <div
           class="css-view-1dbjc4n"
-          style="align-items: center; bottom: 0px; left: 0px; margin-left: auto; margin-right: auto; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
+          style="align-items: center; bottom: 0px; left: 0px; margin-left: auto; margin-right: auto; padding: 12px 24px 20px 24px; position: absolute; right: 0px;"
         >
           <button
             aria-label="Continuer vers l'étape suivante"
@@ -653,7 +653,7 @@ Object {
   "container": <div>
     <div
       class="css-view-1dbjc4n"
-      style="align-self: center; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; max-width: 500px;"
+      style="align-self: center; display: flex; flex-basis: 0px; flex-direction: column; flex-grow: 1; flex-shrink: 1; max-width: 500px; width: 100%;"
     >
       <div
         class="css-view-1dbjc4n"
@@ -746,7 +746,7 @@ Object {
       >
         <div
           class="css-view-1dbjc4n"
-          style="align-self: center; flex-direction: column; flex-grow: 1; margin-top: 20px; padding-bottom: 0px; padding-right: 20px; padding-left: 20px; width: 100%;"
+          style="align-self: center; flex-direction: column; flex-grow: 1; margin-top: 20px; padding-bottom: 0px; padding-right: 24px; padding-left: 24px; width: 100%;"
         >
           <h3
             aria-level="3"
@@ -1271,7 +1271,7 @@ Object {
       </div>
       <div
         class="css-view-1dbjc4n"
-        style="align-items: center; bottom: 0px; left: 0px; margin-left: auto; margin-right: auto; padding: 12px 20px 20px 20px; position: absolute; right: 0px;"
+        style="align-items: center; bottom: 0px; left: 0px; margin-left: auto; margin-right: auto; padding: 12px 24px 20px 24px; position: absolute; right: 0px;"
       >
         <button
           aria-label="Continuer vers l'étape suivante"
