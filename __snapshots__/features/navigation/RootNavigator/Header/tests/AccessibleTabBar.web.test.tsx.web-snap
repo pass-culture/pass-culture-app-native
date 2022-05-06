@@ -28,6 +28,7 @@ Object {
                 class="sc-kLwhqv jrQiEP"
               >
                 <div
+                  aria-current="page"
                   class="css-view-1dbjc4n"
                   data-testid="Home tab"
                   style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"
@@ -257,6 +258,7 @@ Object {
               class="sc-kLwhqv jrQiEP"
             >
               <div
+                aria-current="page"
                 class="css-view-1dbjc4n"
                 data-testid="Home tab"
                 style="align-items: center; cursor: pointer; flex-basis: 0px; flex-grow: 1; flex-shrink: 1; height: 64px; transition-duration: 0s; transition-property: opacity; user-select: auto;"

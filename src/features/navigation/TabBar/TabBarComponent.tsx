@@ -33,7 +33,8 @@ export const TabBarComponent: React.FC<Props> = ({
     onPress={onPress}
     activeOpacity={1}
     accessibilityLabel={menu[tabName].accessibilityLabel}
-    testID={`${tabName} tab`}>
+    testID={`${tabName} tab`}
+    aria-current={isSelected ? 'page' : undefined}>
     {!!isSelected && (
       <BicolorSelector
         width={SELECTOR_WIDTH}

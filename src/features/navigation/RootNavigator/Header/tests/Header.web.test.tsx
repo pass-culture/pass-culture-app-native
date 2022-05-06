@@ -44,6 +44,15 @@ describe('Header', () => {
     expect(queryByText('Favoris')).toBeTruthy()
     expect(queryByText('Profil')).toBeTruthy()
   })
+
+  it('should identify one tab as current page', () => {
+    const { getByTestId } = renderHeader({ isLoggedIn: true, isBeneficiary: true })
+    expect(getByTestId('Home nav')?.getAttribute('aria-current')).toEqual('page')
+    expect(getByTestId('Search nav')?.getAttribute('aria-current')).toBeNull()
+    expect(getByTestId('Bookings nav')?.getAttribute('aria-current')).toBeNull()
+    expect(getByTestId('Favorites nav')?.getAttribute('aria-current')).toBeNull()
+    expect(getByTestId('Profile nav')?.getAttribute('aria-current')).toBeNull()
+  })
 })
 
 function renderHeader({
