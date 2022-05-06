@@ -18,7 +18,7 @@ export type EntityType = {
   METAS_CONFIG: {
     title: (entity: Record<string, unknown>) => string
     description: (entity: Record<string, unknown>) => string
-    ['og:url']: (entity: Record<string, unknown>, href: string, subPath: string) => string
+    ['og:url']: (href: string, subPath: string) => string
     ['og:title']: (entity: Record<string, unknown>) => string
     ['og:description']: (entity: Record<string, unknown>) => string
     ['og:image']: (entity: Record<string, unknown>) => string

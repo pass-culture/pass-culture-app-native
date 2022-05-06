@@ -13,7 +13,7 @@ export const OFFER: EntityType = {
     description(entity: Record<string, unknown>) {
       return entity.description as string
     },
-    ['og:url'](entity: Record<string, unknown>, href: string, subPath: string) {
+    ['og:url'](href: string, subPath: string) {
       return `${href}${subPath}`
     },
     ['og:title'](entity: Record<string, unknown>) {

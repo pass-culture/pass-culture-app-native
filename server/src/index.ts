@@ -20,6 +20,9 @@ if (env.__DEV__) {
   appServer = region(env.REGION).https.onRequest(app)
 }
 
-const functionName = process.env.NODE_ENV === 'test' ? 'server' : `server${env.ENV[0].toUpperCase()}${env.ENV.slice(1)}`
+const functionName =
+  process.env.NODE_ENV === 'test'
+    ? 'server'
+    : `server${env.ENV[0].toUpperCase()}${env.ENV.slice(1)}`
 
 module.exports[functionName] = appServer

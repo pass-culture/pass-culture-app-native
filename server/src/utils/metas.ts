@@ -25,7 +25,7 @@ export async function replaceHtmlMetas(
       regEx: /<meta\s(name)="(description)"\scontent="([^"]*)"\s*\/?>/g,
     },
     ['og:url']: {
-      data: METAS_CONFIG['og:url'](entity, href, subPath),
+      data: METAS_CONFIG['og:url'](href, subPath),
       regEx: /<meta\s(property)="(og:url)"\scontent="([^"]*)"\s*\/?>/g,
     },
     ['og:title']: {

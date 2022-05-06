@@ -1,7 +1,6 @@
 {
   "name": "@pass-culture/web-server",
   "description": "Web server proxy for pass-culture-app-native",
-  "version": "0.0.1",
   "private": true,
   "license": "UNLICENSED",
   "main": "build/src/index.js",
