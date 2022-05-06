@@ -13,11 +13,13 @@ if (env.__DEV__) {
   appServer = app.listen(PORT, () => {
     // eslint-disable-next-line no-console
     /* istanbul ignore next */
-    process.env.NODE_ENV !== 'test' && logger.info(`[${process.env.ENV}] Listening on port ${PORT}`)
+    process.env.NODE_ENV !== 'test' && logger.info(`[${env.ENV}] Listening on port ${PORT}`)
   })
 } else {
   // TODO: see if unit test of next line is possible using https://www.npmjs.com/package/firebase-functions-test
   appServer = region(env.REGION).https.onRequest(app)
 }
 
-export const server = appServer
+const functionName = process.env.NODE_ENV === 'test' ? 'server' : `server${env.ENV[0].toUpperCase()}${env.ENV.slice(1)}`
+
+module.exports[functionName] = appServer
