@@ -1,4 +1,4 @@
-import { IncomingMessage } from 'http'
+import { IncomingMessage, ServerResponse } from 'http'
 
 import {
   OFFER_RESPONSE_SNAP,
@@ -18,6 +18,7 @@ describe('webAppProxyMiddleware', () => {
     },
   } as IncomingMessage
   const req = {} as IncomingMessage
+  const res = {} as ServerResponse
 
   describe('metasResponseInterceptor', () => {
     it('should return unmodified response buffer when content-type is NOT text/html', async () => {
@@ -31,7 +32,8 @@ describe('webAppProxyMiddleware', () => {
       const unmodifiedResponseBuffer = await metasResponseInterceptor(
         imagePngResponseBuffer,
         notTextHtmlProxyRes,
-        req
+        req,
+        res
       )
 
       expect(unmodifiedResponseBuffer).toEqual(imagePngResponseBuffer)
@@ -48,7 +50,7 @@ describe('webAppProxyMiddleware', () => {
         const finalResponseBuffer = await metasResponseInterceptor(responseBuffer, proxyRes, {
           ...req,
           url,
-        } as IncomingMessage)
+        } as IncomingMessage, res)
 
         expect(finalResponseBuffer).not.toEqual(responseBuffer.toString('utf8'))
       }
@@ -63,7 +65,7 @@ describe('webAppProxyMiddleware', () => {
         const finalResponseBuffer = await metasResponseInterceptor(responseBuffer, proxyRes, {
           ...req,
           url,
-        } as IncomingMessage)
+        } as IncomingMessage, res)
 
         expect(finalResponseBuffer).toEqual(responseBuffer.toString('utf8'))
       }
