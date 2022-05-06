@@ -72,19 +72,16 @@ export function SwiperTickets({ booking, activationCodeFeatureEnabled }: Tickets
   }
 
   return (
-    <Container>
+    <Container testID="swiper-ticket">
       <FlatList
         ref={flatListRef}
-        data={tickets[0]}
+        data={tickets}
         keyExtractor={keyExtractor}
         horizontal
         bounces={false}
         showsHorizontalScrollIndicator={false}
         snapToInterval={ITEM_SIZE + INTERVAL}
         decelerationRate="fast"
-        // TODO(LucasBeneston): remove this eslint disabled
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{ flexGrow: 0 }}
         ItemSeparatorComponent={Separator}
         contentContainerStyle={{ paddingHorizontal: ITEM_SPACING }}
         onScroll={onScroll}

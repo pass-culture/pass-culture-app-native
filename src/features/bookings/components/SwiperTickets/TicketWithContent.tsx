@@ -10,9 +10,10 @@ export function TicketWithContent({
   booking,
   activationCodeFeatureEnabled,
   externalBookingsInfos,
+  testID,
 }: BookingDetailsTicketContentProps) {
   return (
-    <ThreeShapesTicket>
+    <ThreeShapesTicket testID={testID}>
       <BookingDetailsTicketContent
         booking={booking}
         activationCodeFeatureEnabled={activationCodeFeatureEnabled}

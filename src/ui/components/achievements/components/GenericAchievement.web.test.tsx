@@ -124,7 +124,7 @@ describe('<GenericAchievement />', () => {
       ],
     })
     expect(analytics.logScreenView).toHaveBeenCalledWith(cardCustomName)
-    const next = getByTestId('controlButton')
+    const next = getByTestId('control-button-next')
     fireEvent.click(next)
     await waitForExpect(() => {
       expect(analytics.logScreenView).toHaveBeenCalledWith('FirstTutorial2')

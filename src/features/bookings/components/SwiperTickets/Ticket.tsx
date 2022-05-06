@@ -5,12 +5,13 @@ import { SwiperTickets } from 'features/bookings/components/SwiperTickets/Swiper
 import { TicketWithContent } from 'features/bookings/components/SwiperTickets/TicketWithContent'
 
 export function Ticket({ booking, activationCodeFeatureEnabled }: TicketsProps) {
-  return booking.externalBookingsInfos ? (
-    booking.externalBookingsInfos.length === 1 ? (
+  const ticketsWithExternalBookingsInfos =
+    booking.externalBookingsInfos?.length === 1 ? (
       <TicketWithContent
         booking={booking}
         activationCodeFeatureEnabled={activationCodeFeatureEnabled}
         externalBookingsInfos={booking.externalBookingsInfos[0]}
+        testID="single-ticket-with-one-external-bookings-information"
       />
     ) : (
       <SwiperTickets
@@ -18,10 +19,14 @@ export function Ticket({ booking, activationCodeFeatureEnabled }: TicketsProps) 
         activationCodeFeatureEnabled={activationCodeFeatureEnabled}
       />
     )
+
+  return booking.externalBookingsInfos ? (
+    ticketsWithExternalBookingsInfos
   ) : (
     <TicketWithContent
       booking={booking}
       activationCodeFeatureEnabled={activationCodeFeatureEnabled}
+      testID="single-ticket-without-external-bookings-information"
     />
   )
 }

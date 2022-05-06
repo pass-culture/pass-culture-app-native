@@ -12,15 +12,15 @@ import { getSpacing } from 'ui/theme'
 const MARGIN_HORIZONTAL = getSpacing(2)
 
 export function SwiperTickets({ booking, activationCodeFeatureEnabled }: TicketsProps) {
-  const { ticket, appContentWidth } = useTheme()
+  const theme = useTheme()
   const { tickets } = getMultipleTickets({ booking, activationCodeFeatureEnabled })
   const [currentIndex, setCurrentIndex] = useState(1)
 
   const NUMBER_OF_TICKETS = booking.externalBookingsInfos?.length ?? 0
-  const TICKET_WIDTH = ticket.maxWidth + MARGIN_HORIZONTAL * 2
+  const TICKET_WIDTH = theme.ticket.maxWidth + MARGIN_HORIZONTAL * 2
   const TOTAL_TICKETS_WIDTH = TICKET_WIDTH * NUMBER_OF_TICKETS
 
-  const APP_CONTENT_WIDTH_WITH_MARGIN = appContentWidth * 0.9
+  const APP_CONTENT_WIDTH_WITH_MARGIN = theme.appContentWidth * 0.9
   const showControls = APP_CONTENT_WIDTH_WITH_MARGIN < TOTAL_TICKETS_WIDTH && NUMBER_OF_TICKETS > 1
 
   const DEFAULT_TRANSLATION_VALUE = (TOTAL_TICKETS_WIDTH - TICKET_WIDTH) / 2
@@ -41,17 +41,14 @@ export function SwiperTickets({ booking, activationCodeFeatureEnabled }: Tickets
   }
 
   return (
-    <React.Fragment>
-      <Container>
-        {tickets[0].map((ticket) => (
-          <TicketsContainer
-            key={ticket.key}
-            showControls={showControls}
-            translateValue={translateValue}>
+    <Container>
+      <TicketsContainer>
+        {tickets.map((ticket) => (
+          <Ticket key={ticket.key} showControls={showControls} translateValue={translateValue}>
             {ticket}
-          </TicketsContainer>
+          </Ticket>
         ))}
-      </Container>
+      </TicketsContainer>
       {!!showControls && (
         <SwiperTicketsControls
           numberOfSteps={NUMBER_OF_TICKETS}
@@ -62,16 +59,20 @@ export function SwiperTickets({ booking, activationCodeFeatureEnabled }: Tickets
           onPressNext={() => moveTo('next')}
         />
       )}
-    </React.Fragment>
+    </Container>
   )
 }
 
 const Container = styled.View({
+  alignItems: 'center',
+})
+
+const TicketsContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'flex-end',
 })
 
-const TicketsContainer = styled.View<{ showControls: boolean; translateValue: number }>(
+const Ticket = styled.View<{ showControls: boolean; translateValue: number }>(
   ({ showControls, translateValue }) => {
     const length = showControls ? translateValue : 0
     return {

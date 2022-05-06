@@ -34,6 +34,7 @@ export interface BookingDetailsTicketContentProps {
   booking: BookingReponse
   activationCodeFeatureEnabled?: boolean
   externalBookingsInfos?: TicketDouble | TicketDoubleWithCurrentSeatIndex
+  testID?: string
 }
 
 export const notQrCodeSubcategories = [
@@ -70,6 +71,16 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
 
   const withdrawalType = booking?.stock?.offer?.withdrawalType || undefined
 
+  const ticketActivationCode = !!booking.activationCode && (
+    <TicketCode withdrawalType={withdrawalType} code={booking.activationCode?.code} />
+  )
+
+  const ticketBodyOrAccessOfferButton = properties.isDigital ? (
+    accessOfferButton
+  ) : (
+    <TicketBody booking={booking} externalBookingsInfos={externalBookingsInfos} />
+  )
+
   return (
     <TicketContainer>
       <Title>{offer.name}</Title>
@@ -77,19 +88,13 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
       <TicketInnerContent>
         {isDigitalAndActivationCodeEnabled ? (
           <React.Fragment>
-            {!!booking.activationCode && (
-              <TicketCode withdrawalType={withdrawalType} code={booking.activationCode?.code} />
-            )}
+            {ticketActivationCode}
             {accessOfferButton}
           </React.Fragment>
         ) : (
           <React.Fragment>
             <TicketCode withdrawalType={withdrawalType} code={booking.token} />
-            {properties.isDigital ? (
-              accessOfferButton
-            ) : (
-              <TicketBody booking={booking} externalBookingsInfos={externalBookingsInfos} />
-            )}
+            {ticketBodyOrAccessOfferButton}
           </React.Fragment>
         )}
       </TicketInnerContent>
