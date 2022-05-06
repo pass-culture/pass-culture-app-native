@@ -32,7 +32,7 @@ export const CulturalSurveyIntro = (): JSX.Element => {
         <ButtonPrimary
           onPress={() =>
             navigate('CulturalSurveyQuestions', {
-              step: initialQuestions[0],
+              question: initialQuestions[0],
             })
           }
           wording={t`Débuter le questionnaire`}

@@ -24,18 +24,18 @@ const mockedUseCulturalSurveyAnswersMutation = mocked(useCulturalSurveyAnswersMu
 const navigationProps = {
   route: {
     params: {
-      step: CulturalSurveyQuestionEnum.SORTIES,
+      question: CulturalSurveyQuestionEnum.SORTIES,
     },
   },
   navigation: {},
 } as StackScreenProps<CulturalSurveyRootStackParamList, 'CulturalSurveyQuestions'>
 
-let mockUseGetNextStepReturnValue = {
-  isCurrentStepLastStep: false,
-  nextStep: CulturalSurveyQuestionEnum.ACTIVITES,
+let mockUseGetNextQuestionReturnValue = {
+  isCurrentQuestionLastQuestion: false,
+  nextQuestion: CulturalSurveyQuestionEnum.ACTIVITES,
 }
-jest.mock('features/culturalSurvey/useGetNextStep', () => ({
-  useGetNextStep: jest.fn(() => mockUseGetNextStepReturnValue),
+jest.mock('features/culturalSurvey/useGetNextQuestion', () => ({
+  useGetNextQuestion: jest.fn(() => mockUseGetNextQuestionReturnValue),
 }))
 
 jest.mock('features/culturalSurvey/useCulturalSurvey')
@@ -55,14 +55,14 @@ describe('CulturalSurveysQuestions page', () => {
     const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
     fireEvent.press(NextQuestionButton)
     expect(push).toHaveBeenCalledWith('CulturalSurveyQuestions', {
-      step: CulturalSurveyQuestionEnum.ACTIVITES,
+      question: CulturalSurveyQuestionEnum.ACTIVITES,
     })
   })
 
-  it('should navigate to CulturalSurveyThanks if on lastStep and API call is successful', async () => {
-    mockUseGetNextStepReturnValue = {
-      isCurrentStepLastStep: true,
-      nextStep: CulturalSurveyQuestionEnum.SPECTACLES,
+  it('should navigate to CulturalSurveyThanks if on lastQuestion and API call is successful', async () => {
+    mockUseGetNextQuestionReturnValue = {
+      isCurrentQuestionLastQuestion: true,
+      nextQuestion: CulturalSurveyQuestionEnum.SPECTACLES,
     }
     const QuestionsPage = render(<CulturalSurveyQuestions {...navigationProps} />)
     const NextQuestionButton = QuestionsPage.getByTestId('next-cultural-survey-question')
@@ -70,10 +70,10 @@ describe('CulturalSurveysQuestions page', () => {
     expect(navigate).toHaveBeenCalledWith('CulturalSurveyThanks')
   })
 
-  it('should navigate to home if on lastStep and API call is unsuccessful', async () => {
-    mockUseGetNextStepReturnValue = {
-      isCurrentStepLastStep: true,
-      nextStep: CulturalSurveyQuestionEnum.SPECTACLES,
+  it('should navigate to home if on lastQuestion and API call is unsuccessful', async () => {
+    mockUseGetNextQuestionReturnValue = {
+      isCurrentQuestionLastQuestion: true,
+      nextQuestion: CulturalSurveyQuestionEnum.SPECTACLES,
     }
     // TODO: yorickeando: understand why mutate is called twice in test and remove double implementation
     // @ts-ignore ignore useMutationType
@@ -98,7 +98,7 @@ describe('CulturalSurveysQuestions page', () => {
     expect(dispatch).toHaveBeenCalledWith({
       type: 'SET_ANSWERS',
       payload: {
-        questionId: navigationProps.route.params.step,
+        questionId: navigationProps.route.params.question,
         answers: [],
       },
     })
@@ -121,7 +121,7 @@ describe('CulturalSurveysQuestions page', () => {
     const navigationProps = {
       route: {
         params: {
-          step: CulturalSurveyQuestionEnum.ACTIVITES,
+          question: CulturalSurveyQuestionEnum.ACTIVITES,
         },
       },
       navigation: {},

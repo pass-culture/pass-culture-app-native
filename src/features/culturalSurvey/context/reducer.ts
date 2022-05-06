@@ -1,7 +1,6 @@
 import { Action, CulturalSurveyState } from 'features/culturalSurvey/context/types'
 
 export const initialCulturalSurveyState: CulturalSurveyState = {
-  currentStep: null,
   questionsToDisplay: [],
   answers: [],
 }
@@ -19,8 +18,6 @@ export const culturalSurveyReducer: React.Reducer<CulturalSurveyState, Action> =
       }
     case 'SET_QUESTIONS':
       return { ...state, questionsToDisplay: action.payload }
-    case 'SET_STEP':
-      return { ...state, currentStep: action.payload }
     case 'SET_ANSWERS': {
       const index = state.answers.findIndex(
         (answer) => answer.questionId === action.payload.questionId

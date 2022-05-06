@@ -6,7 +6,7 @@ import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurve
 import { navigateToHome } from 'features/navigation/helpers'
 import { render, fireEvent } from 'tests/utils/web'
 
-jest.mock('features/culturalSurvey/useGetNextStep')
+jest.mock('features/culturalSurvey/useGetNextQuestion')
 jest.mock('features/navigation/helpers')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')
 describe('CulturalSurveyIntro page', () => {
@@ -21,7 +21,7 @@ describe('CulturalSurveyIntro page', () => {
     const StartButton = CulturalSurveyIntroPage.getByTestId('start-cultural-survey')
     fireEvent.click(StartButton)
     expect(navigate).toHaveBeenCalledWith('CulturalSurveyQuestions', {
-      step: CulturalSurveyQuestionEnum.SORTIES,
+      question: CulturalSurveyQuestionEnum.SORTIES,
     })
   })
 
