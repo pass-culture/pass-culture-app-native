@@ -24,7 +24,7 @@ export const ABTestingProvider = memo(function ABTestingProvider(props: { childr
         }
       })
       .catch(() => {
-        // We do nothing if this call fails as we don't even use remote config
+        console.error('Failed to retrieve firebase remote config')
       })
   }, [])
 

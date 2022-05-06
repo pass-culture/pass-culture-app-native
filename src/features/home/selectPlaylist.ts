@@ -30,7 +30,7 @@ export const useSelectPlaylist = (entryId?: string) => {
       // If no playlist is tagged, we show the last published homepage.
       const firstEntry = entries[0]
 
-      // If we are coming from a deeplink, we suppose the entryId exists
+      // If we are coming from a deeplink or firebase remote config we suppose the entryId exists
       if (entryId) return entries.find(({ sys }) => sys.id === entryId) || firstEntry
 
       const scoredEntries = entries
