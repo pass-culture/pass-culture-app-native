@@ -112,7 +112,7 @@ exports[`<IdentityCheckEnd/> should render correctly 1`] = `
     <h1
       aria-level={1}
       className="css-reset-4rbku5 css-text-901oao"
-      dir="auto"
+      dir="ltr"
       role="heading"
       style={
         Object {

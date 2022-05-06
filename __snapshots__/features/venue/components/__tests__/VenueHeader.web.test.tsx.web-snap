@@ -91,6 +91,7 @@ Object {
           >
             <span
               class="css-text-901oao css-textHasAncestor-16my406"
+              dir="ltr"
               style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
             >
               Le Petit Rintintin 1
@@ -252,6 +253,7 @@ Object {
         >
           <span
             class="css-text-901oao css-textHasAncestor-16my406"
+            dir="ltr"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
           >
             Le Petit Rintintin 1

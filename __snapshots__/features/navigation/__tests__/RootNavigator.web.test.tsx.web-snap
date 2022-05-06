@@ -102,7 +102,7 @@ Object {
                   </div>
                   <div
                     class="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                     style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
                   >
                     Accueil
@@ -142,7 +142,7 @@ Object {
                   </div>
                   <div
                     class="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                     style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
                   >
                     Recherche
@@ -178,7 +178,7 @@ Object {
                   </div>
                   <div
                     class="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                     style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
                   >
                     Réservations
@@ -214,7 +214,7 @@ Object {
                   </div>
                   <div
                     class="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                     style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
                   >
                     Favoris
@@ -250,7 +250,7 @@ Object {
                   </div>
                   <div
                     class="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                     style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
                   >
                     Profil
@@ -371,7 +371,7 @@ Object {
                 </div>
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
                 >
                   Accueil
@@ -411,7 +411,7 @@ Object {
                 </div>
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
                 >
                   Recherche
@@ -447,7 +447,7 @@ Object {
                 </div>
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
                 >
                   Réservations
@@ -483,7 +483,7 @@ Object {
                 </div>
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
                 >
                   Favoris
@@ -519,7 +519,7 @@ Object {
                 </div>
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 10px; line-height: 16px; text-align: center;"
                 >
                   Profil

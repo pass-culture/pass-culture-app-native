@@ -66,7 +66,7 @@ Object {
           <h1
             aria-level="1"
             class="css-reset-4rbku5 css-text-901oao"
-            dir="auto"
+            dir="ltr"
             role="heading"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; text-align: center;"
           >
@@ -78,7 +78,7 @@ Object {
           />
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
           >
             Tu as jusqu'au xxxx pour réactiver ton compte.
@@ -89,7 +89,7 @@ Object {
           />
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
           >
             Une fois cette date passée, ton compte pass Culture sera définitivement supprimé.
@@ -100,7 +100,7 @@ Object {
           />
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
           >
             Pour réactiver ton compte, nous allons te demander de réinitialiser ton mot de passe.
@@ -116,7 +116,7 @@ Object {
             >
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
               >
                 Réactiver mon compte
@@ -144,7 +144,7 @@ Object {
               </div>
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
               >
                 Retourner à l'accueil
@@ -221,7 +221,7 @@ Object {
         <h1
           aria-level="1"
           class="css-reset-4rbku5 css-text-901oao"
-          dir="auto"
+          dir="ltr"
           role="heading"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; text-align: center;"
         >
@@ -233,7 +233,7 @@ Object {
         />
         <div
           class="css-text-901oao"
-          dir="auto"
+          dir="ltr"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
         >
           Tu as jusqu'au xxxx pour réactiver ton compte.
@@ -244,7 +244,7 @@ Object {
         />
         <div
           class="css-text-901oao"
-          dir="auto"
+          dir="ltr"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
         >
           Une fois cette date passée, ton compte pass Culture sera définitivement supprimé.
@@ -255,7 +255,7 @@ Object {
         />
         <div
           class="css-text-901oao"
-          dir="auto"
+          dir="ltr"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
         >
           Pour réactiver ton compte, nous allons te demander de réinitialiser ton mot de passe.
@@ -271,7 +271,7 @@ Object {
           >
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
             >
               Réactiver mon compte
@@ -299,7 +299,7 @@ Object {
             </div>
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
             >
               Retourner à l'accueil

@@ -32,7 +32,7 @@ Object {
             </div>
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
             >
               Pour quelle raison ?
@@ -1435,7 +1435,7 @@ Object {
           >
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
             >
               Continuer
@@ -1477,7 +1477,7 @@ Object {
           </div>
           <div
             class="css-text-901oao css-textMultiLine-cens5h"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
           >
             Pour quelle raison ?
@@ -2880,7 +2880,7 @@ Object {
         >
           <div
             class="css-text-901oao css-textMultiLine-cens5h"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
           >
             Continuer
@@ -2979,7 +2979,7 @@ Object {
             </div>
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
             >
               Pour quelle raison ?
@@ -3015,7 +3015,7 @@ Object {
             >
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
                 id="testUuidV4"
                 style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
               >
@@ -3989,7 +3989,7 @@ Object {
           >
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
             >
               Continuer
@@ -4031,7 +4031,7 @@ Object {
           </div>
           <div
             class="css-text-901oao css-textMultiLine-cens5h"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
           >
             Pour quelle raison ?
@@ -4067,7 +4067,7 @@ Object {
           >
             <div
               class="css-text-901oao"
-              dir="auto"
+              dir="ltr"
               id="testUuidV4"
               style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
             >
@@ -5041,7 +5041,7 @@ Object {
         >
           <div
             class="css-text-901oao css-textMultiLine-cens5h"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
           >
             Continuer

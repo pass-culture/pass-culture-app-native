@@ -42,7 +42,7 @@ Object {
         </div>
         <div
           class="css-text-901oao"
-          dir="auto"
+          dir="ltr"
           style="color: rgb(50, 0, 150); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
         >
           155 €
@@ -52,7 +52,7 @@ Object {
         >
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
           >
             en offres physiques (livres...)
@@ -99,7 +99,7 @@ Object {
       </div>
       <div
         class="css-text-901oao"
-        dir="auto"
+        dir="ltr"
         style="color: rgb(50, 0, 150); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
       >
         155 €
@@ -109,7 +109,7 @@ Object {
       >
         <div
           class="css-text-901oao"
-          dir="auto"
+          dir="ltr"
           style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
         >
           en offres physiques (livres...)

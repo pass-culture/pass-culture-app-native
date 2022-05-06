@@ -74,7 +74,7 @@ Object {
                   >
                     <div
                       class="css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                       style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; margin-left: 8px;"
                     >
                       0%
@@ -86,7 +86,7 @@ Object {
             <h1
               aria-level="1"
               class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
+              dir="ltr"
               role="heading"
               style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; margin-right: 24px; text-align: right;"
             >
@@ -105,7 +105,7 @@ Object {
             <h3
               aria-level="3"
               class="css-reset-4rbku5 css-text-901oao"
-              dir="auto"
+              dir="ltr"
               role="heading"
               style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px;"
             >
@@ -117,7 +117,7 @@ Object {
             >
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
               >
                 Tu peux sélectionner une ou plusieurs réponses.
@@ -162,14 +162,14 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                         >
                           Participé à un festival,
                         </div>
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           à une avant-première
@@ -215,14 +215,14 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                         >
                           Assisté à un spectacle
                         </div>
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           Pièce de théâtre, cirque, danse...
@@ -268,14 +268,14 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                         >
                           Allé à la bibliothèque
                         </div>
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           ou à la médiathèque
@@ -321,14 +321,14 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                         >
                           Participé à un jeu
                         </div>
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           escape game, jeu concours
@@ -374,7 +374,7 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                         >
                           Allé à un concert
@@ -420,7 +420,7 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                         >
                           Allé au cinéma
@@ -466,14 +466,14 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                         >
                           Visité un musée,
                         </div>
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           un monument, une exposition...
@@ -519,14 +519,14 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                         >
                           Participé à une conférence,
                         </div>
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           rencontre ou découverte des métiers de la culture
@@ -572,14 +572,14 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                         >
                           Pris un cours
                         </div>
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           danse, théâtre, musique, dessin
@@ -610,7 +610,7 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                         >
                           Aucune de ces sorties culturelles
@@ -636,7 +636,7 @@ Object {
           >
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
             >
               Continuer
@@ -720,7 +720,7 @@ Object {
                 >
                   <div
                     class="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                     style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; margin-left: 8px;"
                   >
                     0%
@@ -732,7 +732,7 @@ Object {
           <h1
             aria-level="1"
             class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-            dir="auto"
+            dir="ltr"
             role="heading"
             style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; margin-right: 24px; text-align: right;"
           >
@@ -751,7 +751,7 @@ Object {
           <h3
             aria-level="3"
             class="css-reset-4rbku5 css-text-901oao"
-            dir="auto"
+            dir="ltr"
             role="heading"
             style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px;"
           >
@@ -763,7 +763,7 @@ Object {
           >
             <div
               class="css-text-901oao"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
             >
               Tu peux sélectionner une ou plusieurs réponses.
@@ -808,14 +808,14 @@ Object {
                     >
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                       >
                         Participé à un festival,
                       </div>
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
                         à une avant-première
@@ -861,14 +861,14 @@ Object {
                     >
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                       >
                         Assisté à un spectacle
                       </div>
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
                         Pièce de théâtre, cirque, danse...
@@ -914,14 +914,14 @@ Object {
                     >
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                       >
                         Allé à la bibliothèque
                       </div>
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
                         ou à la médiathèque
@@ -967,14 +967,14 @@ Object {
                     >
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                       >
                         Participé à un jeu
                       </div>
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
                         escape game, jeu concours
@@ -1020,7 +1020,7 @@ Object {
                     >
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                       >
                         Allé à un concert
@@ -1066,7 +1066,7 @@ Object {
                     >
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                       >
                         Allé au cinéma
@@ -1112,14 +1112,14 @@ Object {
                     >
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                       >
                         Visité un musée,
                       </div>
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
                         un monument, une exposition...
@@ -1165,14 +1165,14 @@ Object {
                     >
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                       >
                         Participé à une conférence,
                       </div>
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
                         rencontre ou découverte des métiers de la culture
@@ -1218,14 +1218,14 @@ Object {
                     >
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                       >
                         Pris un cours
                       </div>
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
                         danse, théâtre, musique, dessin
@@ -1256,7 +1256,7 @@ Object {
                     >
                       <div
                         class="css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                       >
                         Aucune de ces sorties culturelles
@@ -1282,7 +1282,7 @@ Object {
         >
           <div
             class="css-text-901oao css-textMultiLine-cens5h"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
           >
             Continuer

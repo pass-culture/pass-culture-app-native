@@ -49,7 +49,7 @@ Object {
           <h1
             aria-level="1"
             class="css-reset-4rbku5 css-text-901oao"
-            dir="auto"
+            dir="ltr"
             role="heading"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; text-align: center;"
           >
@@ -61,14 +61,14 @@ Object {
           />
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
           >
             Le lien est expiré !
           </div>
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
           >
             Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception.
@@ -90,7 +90,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             >
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
               >
                 Faire une nouvelle demande
@@ -118,7 +118,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
               </div>
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
               >
                 Retourner à l'accueil
@@ -178,7 +178,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
         <h1
           aria-level="1"
           class="css-reset-4rbku5 css-text-901oao"
-          dir="auto"
+          dir="ltr"
           role="heading"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; text-align: center;"
         >
@@ -190,14 +190,14 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
         />
         <div
           class="css-text-901oao"
-          dir="auto"
+          dir="ltr"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
         >
           Le lien est expiré !
         </div>
         <div
           class="css-text-901oao"
-          dir="auto"
+          dir="ltr"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
         >
           Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception.
@@ -219,7 +219,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
           >
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
             >
               Faire une nouvelle demande
@@ -247,7 +247,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             </div>
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
             >
               Retourner à l'accueil
@@ -364,7 +364,7 @@ Object {
           <h1
             aria-level="1"
             class="css-reset-4rbku5 css-text-901oao"
-            dir="auto"
+            dir="ltr"
             role="heading"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; text-align: center;"
           >
@@ -376,14 +376,14 @@ Object {
           />
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
           >
             Le lien est expiré !
           </div>
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
           >
             Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception.
@@ -405,7 +405,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             >
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
               >
                 Se connecter
@@ -433,7 +433,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
               </div>
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
               >
                 Retourner à l'accueil
@@ -493,7 +493,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
         <h1
           aria-level="1"
           class="css-reset-4rbku5 css-text-901oao"
-          dir="auto"
+          dir="ltr"
           role="heading"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; text-align: center;"
         >
@@ -505,14 +505,14 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
         />
         <div
           class="css-text-901oao"
-          dir="auto"
+          dir="ltr"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
         >
           Le lien est expiré !
         </div>
         <div
           class="css-text-901oao"
-          dir="auto"
+          dir="ltr"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
         >
           Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception.
@@ -534,7 +534,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
           >
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
             >
               Se connecter
@@ -562,7 +562,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             </div>
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
             >
               Retourner à l'accueil

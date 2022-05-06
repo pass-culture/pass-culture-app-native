@@ -60,7 +60,7 @@ Object {
                       <h1
                         aria-level="1"
                         class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
+                        dir="ltr"
                         role="heading"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                       >
@@ -226,7 +226,7 @@ Object {
                       <h1
                         aria-level="1"
                         class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
+                        dir="ltr"
                         role="heading"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                       >
@@ -452,7 +452,7 @@ Object {
                       <h1
                         aria-level="1"
                         class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
+                        dir="ltr"
                         role="heading"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                       >
@@ -618,7 +618,7 @@ Object {
                       <h1
                         aria-level="1"
                         class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
+                        dir="ltr"
                         role="heading"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                       >
@@ -784,7 +784,7 @@ Object {
                       <h1
                         aria-level="1"
                         class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
+                        dir="ltr"
                         role="heading"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                       >
@@ -969,7 +969,7 @@ Object {
                       <h1
                         aria-level="1"
                         class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
+                        dir="ltr"
                         role="heading"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                       >
@@ -1135,7 +1135,7 @@ Object {
                       <h1
                         aria-level="1"
                         class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
+                        dir="ltr"
                         role="heading"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                       >
@@ -1301,7 +1301,7 @@ Object {
                       <h1
                         aria-level="1"
                         class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
+                        dir="ltr"
                         role="heading"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                       >
@@ -1466,7 +1466,7 @@ Object {
                       <h1
                         aria-level="1"
                         class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
+                        dir="ltr"
                         id="testUuidV4"
                         role="heading"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
@@ -1633,7 +1633,7 @@ Object {
                       <h1
                         aria-level="1"
                         class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
+                        dir="ltr"
                         role="heading"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                       >
@@ -1818,7 +1818,7 @@ Object {
                       <h1
                         aria-level="1"
                         class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
+                        dir="ltr"
                         role="heading"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                       >
@@ -1984,7 +1984,7 @@ Object {
                       <h1
                         aria-level="1"
                         class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
+                        dir="ltr"
                         role="heading"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                       >
@@ -2150,7 +2150,7 @@ Object {
                       <h1
                         aria-level="1"
                         class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
+                        dir="ltr"
                         role="heading"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                       >
@@ -2316,7 +2316,7 @@ Object {
                       <h1
                         aria-level="1"
                         class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
+                        dir="ltr"
                         role="heading"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                       >
@@ -2475,7 +2475,7 @@ Object {
                       <h1
                         aria-level="1"
                         class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
+                        dir="ltr"
                         role="heading"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                       />

@@ -95,6 +95,7 @@ Object {
             >
               <span
                 class="css-text-901oao css-textHasAncestor-16my406"
+                dir="ltr"
                 style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
               >
                 Le Petit Rintintin 1
@@ -362,7 +363,7 @@ Object {
                 </div>
                 <div
                   class="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(22, 22, 23); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-transform: capitalize;"
                 >
                   1 boulevard Poissonnière, 75000 Paris
@@ -377,7 +378,7 @@ Object {
                 aria-level="1"
                 class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
                 data-testid="venueTitle"
-                dir="auto"
+                dir="ltr"
                 role="heading"
                 style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px; text-align: center;"
               >
@@ -422,7 +423,7 @@ Object {
                 <div
                   class="css-text-901oao"
                   data-testid="caption-undefined"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
                 >
                   Autre type de lieu
@@ -465,7 +466,7 @@ Object {
                   <div
                     class="css-text-901oao"
                     data-testid="caption-undefined"
-                    dir="auto"
+                    dir="ltr"
                     style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
                   >
                     Géolocalisation désactivée
@@ -493,7 +494,7 @@ Object {
                 >
                   <div
                     class="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                     style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; width: 100%;"
                   >
                      
@@ -504,6 +505,7 @@ Object {
                     >
                       <span
                         class="css-text-901oao css-textHasAncestor-16my406"
+                        dir="ltr"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                       >
                         <div
@@ -555,7 +557,7 @@ Object {
                   aria-level="2"
                   class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
                   data-testid="playlistTitle"
-                  dir="auto"
+                  dir="ltr"
                   role="heading"
                   style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
                 >
@@ -596,7 +598,7 @@ Object {
                   />
                   <div
                     class="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                     style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                   >
                     En voir plus
@@ -635,6 +637,7 @@ Object {
                       <h3
                         aria-level="3"
                         class="css-reset-4rbku5 css-view-1dbjc4n"
+                        dir="ltr"
                         role="heading"
                       >
                         <div
@@ -654,14 +657,14 @@ Object {
                             >
                               <div
                                 class="css-text-901oao css-textMultiLine-cens5h"
-                                dir="auto"
+                                dir="ltr"
                                 style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                               >
                                 Titane - VF
                               </div>
                               <div
                                 class="css-text-901oao css-textMultiLine-cens5h"
-                                dir="auto"
+                                dir="ltr"
                                 style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                               >
                                 Dès le 18 août 2021
@@ -669,7 +672,7 @@ Object {
                               <div
                                 class="css-text-901oao"
                                 data-testid="priceIsDuo"
-                                dir="auto"
+                                dir="ltr"
                                 style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                               >
                                 Gratuit
@@ -689,7 +692,7 @@ Object {
                                   <div
                                     class="css-text-901oao css-textMultiLine-cens5h"
                                     data-testid="categoryImageCaption"
-                                    dir="auto"
+                                    dir="ltr"
                                     style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                                   >
                                     Cinéma
@@ -712,6 +715,7 @@ Object {
                       <h3
                         aria-level="3"
                         class="css-reset-4rbku5 css-view-1dbjc4n"
+                        dir="ltr"
                         role="heading"
                       >
                         <div
@@ -731,14 +735,14 @@ Object {
                             >
                               <div
                                 class="css-text-901oao css-textMultiLine-cens5h"
-                                dir="auto"
+                                dir="ltr"
                                 style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                               >
                                 Bac Nord - VF
                               </div>
                               <div
                                 class="css-text-901oao css-textMultiLine-cens5h"
-                                dir="auto"
+                                dir="ltr"
                                 style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                               >
                                 Dès le 18 août 2021
@@ -746,7 +750,7 @@ Object {
                               <div
                                 class="css-text-901oao"
                                 data-testid="priceIsDuo"
-                                dir="auto"
+                                dir="ltr"
                                 style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                               >
                                 Gratuit
@@ -766,7 +770,7 @@ Object {
                                   <div
                                     class="css-text-901oao css-textMultiLine-cens5h"
                                     data-testid="categoryImageCaption"
-                                    dir="auto"
+                                    dir="ltr"
                                     style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                                   >
                                     Cinéma
@@ -789,6 +793,7 @@ Object {
                       <h3
                         aria-level="3"
                         class="css-reset-4rbku5 css-view-1dbjc4n"
+                        dir="ltr"
                         role="heading"
                       >
                         <div
@@ -808,14 +813,14 @@ Object {
                             >
                               <div
                                 class="css-text-901oao css-textMultiLine-cens5h"
-                                dir="auto"
+                                dir="ltr"
                                 style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                               >
                                 Black Widow - VF
                               </div>
                               <div
                                 class="css-text-901oao css-textMultiLine-cens5h"
-                                dir="auto"
+                                dir="ltr"
                                 style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                               >
                                 Dès le 18 août 2021
@@ -823,7 +828,7 @@ Object {
                               <div
                                 class="css-text-901oao"
                                 data-testid="priceIsDuo"
-                                dir="auto"
+                                dir="ltr"
                                 style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                               >
                                 Gratuit
@@ -843,7 +848,7 @@ Object {
                                   <div
                                     class="css-text-901oao css-textMultiLine-cens5h"
                                     data-testid="categoryImageCaption"
-                                    dir="auto"
+                                    dir="ltr"
                                     style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                                   >
                                     Cinéma
@@ -881,7 +886,7 @@ Object {
                 >
                   <div
                     class="css-text-901oao css-textMultiLine-cens5h"
-                    dir="auto"
+                    dir="ltr"
                     style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 8px 8px 8px 8px;"
                   >
                     Voir toutes les offres
@@ -908,7 +913,7 @@ Object {
               <h2
                 aria-level="2"
                 class="css-reset-4rbku5 css-text-901oao"
-                dir="auto"
+                dir="ltr"
                 role="heading"
                 style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
               >
@@ -920,7 +925,7 @@ Object {
               />
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
               >
                 Adresse
@@ -931,7 +936,7 @@ Object {
               />
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-transform: capitalize;"
               >
                 1 boulevard Poissonnière, 75000 Paris
@@ -971,7 +976,7 @@ Object {
                   </div>
                   <div
                     class="css-text-901oao css-textMultiLine-cens5h"
-                    dir="auto"
+                    dir="ltr"
                     style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
                   >
                     Voir l'itinéraire
@@ -1003,7 +1008,7 @@ Object {
                 <h2
                   aria-level="2"
                   class="css-reset-4rbku5 css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   role="heading"
                   style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
                 >
@@ -1041,7 +1046,7 @@ Object {
               >
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                 >
                   How to withdraw, 
@@ -1052,6 +1057,7 @@ Object {
                   >
                     <span
                       class="css-text-901oao css-textHasAncestor-16my406"
+                      dir="ltr"
                       style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                     >
                       <div
@@ -1101,7 +1107,7 @@ Object {
                 <h2
                   aria-level="2"
                   class="css-reset-4rbku5 css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   role="heading"
                   style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
                 >
@@ -1205,7 +1211,7 @@ Object {
                         >
                           <div
                             class="css-text-901oao"
-                            dir="auto"
+                            dir="ltr"
                             style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                           >
                             Handicap visuel
@@ -1274,7 +1280,7 @@ Object {
                         >
                           <div
                             class="css-text-901oao"
-                            dir="auto"
+                            dir="ltr"
                             style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                           >
                             Handicap psychique ou cognitif
@@ -1343,7 +1349,7 @@ Object {
                         >
                           <div
                             class="css-text-901oao"
-                            dir="auto"
+                            dir="ltr"
                             style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                           >
                             Handicap moteur
@@ -1412,7 +1418,7 @@ Object {
                         >
                           <div
                             class="css-text-901oao"
-                            dir="auto"
+                            dir="ltr"
                             style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                           >
                             Handicap auditif
@@ -1444,7 +1450,7 @@ Object {
                 <h2
                   aria-level="2"
                   class="css-reset-4rbku5 css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   role="heading"
                   style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
                 >
@@ -1482,21 +1488,21 @@ Object {
               >
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                 >
                   contact@venue.com
                 </div>
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                 >
                   +33102030405
                 </div>
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                 >
                   https://my@website.com
@@ -1608,6 +1614,7 @@ Object {
           >
             <span
               class="css-text-901oao css-textHasAncestor-16my406"
+              dir="ltr"
               style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
             >
               Le Petit Rintintin 1
@@ -1875,7 +1882,7 @@ Object {
               </div>
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(22, 22, 23); flex-shrink: 1; font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-transform: capitalize;"
               >
                 1 boulevard Poissonnière, 75000 Paris
@@ -1890,7 +1897,7 @@ Object {
               aria-level="1"
               class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
               data-testid="venueTitle"
-              dir="auto"
+              dir="ltr"
               role="heading"
               style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px; text-align: center;"
             >
@@ -1935,7 +1942,7 @@ Object {
               <div
                 class="css-text-901oao"
                 data-testid="caption-undefined"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
               >
                 Autre type de lieu
@@ -1978,7 +1985,7 @@ Object {
                 <div
                   class="css-text-901oao"
                   data-testid="caption-undefined"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
                 >
                   Géolocalisation désactivée
@@ -2006,7 +2013,7 @@ Object {
               >
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; width: 100%;"
                 >
                    
@@ -2017,6 +2024,7 @@ Object {
                   >
                     <span
                       class="css-text-901oao css-textHasAncestor-16my406"
+                      dir="ltr"
                       style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                     >
                       <div
@@ -2068,7 +2076,7 @@ Object {
                 aria-level="2"
                 class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
                 data-testid="playlistTitle"
-                dir="auto"
+                dir="ltr"
                 role="heading"
                 style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
               >
@@ -2109,7 +2117,7 @@ Object {
                 />
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                 >
                   En voir plus
@@ -2148,6 +2156,7 @@ Object {
                     <h3
                       aria-level="3"
                       class="css-reset-4rbku5 css-view-1dbjc4n"
+                      dir="ltr"
                       role="heading"
                     >
                       <div
@@ -2167,14 +2176,14 @@ Object {
                           >
                             <div
                               class="css-text-901oao css-textMultiLine-cens5h"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                             >
                               Titane - VF
                             </div>
                             <div
                               class="css-text-901oao css-textMultiLine-cens5h"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                             >
                               Dès le 18 août 2021
@@ -2182,7 +2191,7 @@ Object {
                             <div
                               class="css-text-901oao"
                               data-testid="priceIsDuo"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                             >
                               Gratuit
@@ -2202,7 +2211,7 @@ Object {
                                 <div
                                   class="css-text-901oao css-textMultiLine-cens5h"
                                   data-testid="categoryImageCaption"
-                                  dir="auto"
+                                  dir="ltr"
                                   style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                                 >
                                   Cinéma
@@ -2225,6 +2234,7 @@ Object {
                     <h3
                       aria-level="3"
                       class="css-reset-4rbku5 css-view-1dbjc4n"
+                      dir="ltr"
                       role="heading"
                     >
                       <div
@@ -2244,14 +2254,14 @@ Object {
                           >
                             <div
                               class="css-text-901oao css-textMultiLine-cens5h"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                             >
                               Bac Nord - VF
                             </div>
                             <div
                               class="css-text-901oao css-textMultiLine-cens5h"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                             >
                               Dès le 18 août 2021
@@ -2259,7 +2269,7 @@ Object {
                             <div
                               class="css-text-901oao"
                               data-testid="priceIsDuo"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                             >
                               Gratuit
@@ -2279,7 +2289,7 @@ Object {
                                 <div
                                   class="css-text-901oao css-textMultiLine-cens5h"
                                   data-testid="categoryImageCaption"
-                                  dir="auto"
+                                  dir="ltr"
                                   style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                                 >
                                   Cinéma
@@ -2302,6 +2312,7 @@ Object {
                     <h3
                       aria-level="3"
                       class="css-reset-4rbku5 css-view-1dbjc4n"
+                      dir="ltr"
                       role="heading"
                     >
                       <div
@@ -2321,14 +2332,14 @@ Object {
                           >
                             <div
                               class="css-text-901oao css-textMultiLine-cens5h"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                             >
                               Black Widow - VF
                             </div>
                             <div
                               class="css-text-901oao css-textMultiLine-cens5h"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                             >
                               Dès le 18 août 2021
@@ -2336,7 +2347,7 @@ Object {
                             <div
                               class="css-text-901oao"
                               data-testid="priceIsDuo"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                             >
                               Gratuit
@@ -2356,7 +2367,7 @@ Object {
                                 <div
                                   class="css-text-901oao css-textMultiLine-cens5h"
                                   data-testid="categoryImageCaption"
-                                  dir="auto"
+                                  dir="ltr"
                                   style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                                 >
                                   Cinéma
@@ -2394,7 +2405,7 @@ Object {
               >
                 <div
                   class="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 8px 8px 8px 8px;"
                 >
                   Voir toutes les offres
@@ -2421,7 +2432,7 @@ Object {
             <h2
               aria-level="2"
               class="css-reset-4rbku5 css-text-901oao"
-              dir="auto"
+              dir="ltr"
               role="heading"
               style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
             >
@@ -2433,7 +2444,7 @@ Object {
             />
             <div
               class="css-text-901oao"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
             >
               Adresse
@@ -2444,7 +2455,7 @@ Object {
             />
             <div
               class="css-text-901oao"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-transform: capitalize;"
             >
               1 boulevard Poissonnière, 75000 Paris
@@ -2484,7 +2495,7 @@ Object {
                 </div>
                 <div
                   class="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
                 >
                   Voir l'itinéraire
@@ -2516,7 +2527,7 @@ Object {
               <h2
                 aria-level="2"
                 class="css-reset-4rbku5 css-text-901oao"
-                dir="auto"
+                dir="ltr"
                 role="heading"
                 style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
               >
@@ -2554,7 +2565,7 @@ Object {
             >
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
               >
                 How to withdraw, 
@@ -2565,6 +2576,7 @@ Object {
                 >
                   <span
                     class="css-text-901oao css-textHasAncestor-16my406"
+                    dir="ltr"
                     style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                   >
                     <div
@@ -2614,7 +2626,7 @@ Object {
               <h2
                 aria-level="2"
                 class="css-reset-4rbku5 css-text-901oao"
-                dir="auto"
+                dir="ltr"
                 role="heading"
                 style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
               >
@@ -2718,7 +2730,7 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                         >
                           Handicap visuel
@@ -2787,7 +2799,7 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                         >
                           Handicap psychique ou cognitif
@@ -2856,7 +2868,7 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                         >
                           Handicap moteur
@@ -2925,7 +2937,7 @@ Object {
                       >
                         <div
                           class="css-text-901oao"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; padding-right: 1px; padding-left: 1px; text-align: center;"
                         >
                           Handicap auditif
@@ -2957,7 +2969,7 @@ Object {
               <h2
                 aria-level="2"
                 class="css-reset-4rbku5 css-text-901oao"
-                dir="auto"
+                dir="ltr"
                 role="heading"
                 style="color: rgb(22, 22, 23); flex-basis: 0px; flex-grow: 0.9; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
               >
@@ -2995,21 +3007,21 @@ Object {
             >
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
               >
                 contact@venue.com
               </div>
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
               >
                 +33102030405
               </div>
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
               >
                 https://my@website.com

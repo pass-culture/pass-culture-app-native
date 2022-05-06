@@ -128,7 +128,7 @@ Array [
         <h1
           aria-level={1}
           className="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
+          dir="ltr"
           role="heading"
           style={
             Object {
@@ -280,7 +280,7 @@ Array [
           <h4
             aria-level={4}
             className="css-reset-4rbku5 css-text-901oao"
-            dir="auto"
+            dir="ltr"
             role="heading"
             style={
               Object {
@@ -359,7 +359,7 @@ Array [
               <h2
                 aria-level={2}
                 className="css-reset-4rbku5 css-text-901oao"
-                dir="auto"
+                dir="ltr"
                 role="heading"
                 style={
                   Object {
@@ -516,7 +516,7 @@ Array [
                   >
                     <div
                       className="css-text-901oao css-textMultiLine-cens5h"
-                      dir="auto"
+                      dir="ltr"
                       style={
                         Object {
                           "WebkitLineClamp": 2,
@@ -649,7 +649,7 @@ Array [
                   >
                     <div
                       className="css-text-901oao css-textMultiLine-cens5h"
-                      dir="auto"
+                      dir="ltr"
                       style={
                         Object {
                           "WebkitLineClamp": 2,
@@ -782,7 +782,7 @@ Array [
                   >
                     <div
                       className="css-text-901oao css-textMultiLine-cens5h"
-                      dir="auto"
+                      dir="ltr"
                       style={
                         Object {
                           "WebkitLineClamp": 2,
@@ -926,7 +926,7 @@ Array [
                   >
                     <div
                       className="css-text-901oao css-textMultiLine-cens5h"
-                      dir="auto"
+                      dir="ltr"
                       style={
                         Object {
                           "WebkitLineClamp": 2,
@@ -1059,7 +1059,7 @@ Array [
                   >
                     <div
                       className="css-text-901oao css-textMultiLine-cens5h"
-                      dir="auto"
+                      dir="ltr"
                       style={
                         Object {
                           "WebkitLineClamp": 2,
@@ -1192,7 +1192,7 @@ Array [
                   >
                     <div
                       className="css-text-901oao css-textMultiLine-cens5h"
-                      dir="auto"
+                      dir="ltr"
                       style={
                         Object {
                           "WebkitLineClamp": 2,
@@ -1302,7 +1302,7 @@ Array [
               <h2
                 aria-level={2}
                 className="css-reset-4rbku5 css-text-901oao"
-                dir="auto"
+                dir="ltr"
                 role="heading"
                 style={
                   Object {
@@ -1500,7 +1500,7 @@ Array [
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   style={
                     Object {
                       "color": "rgba(203,205,210,1.00)",
@@ -1582,7 +1582,7 @@ Array [
               <h2
                 aria-level={2}
                 className="css-reset-4rbku5 css-text-901oao"
-                dir="auto"
+                dir="ltr"
                 role="heading"
                 style={
                   Object {
@@ -1780,7 +1780,7 @@ Array [
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   style={
                     Object {
                       "color": "rgba(203,205,210,1.00)",
@@ -1926,7 +1926,7 @@ Array [
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   style={
                     Object {
                       "color": "rgba(203,205,210,1.00)",
@@ -2072,7 +2072,7 @@ Array [
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   style={
                     Object {
                       "color": "rgba(203,205,210,1.00)",
@@ -2218,7 +2218,7 @@ Array [
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   style={
                     Object {
                       "color": "rgba(203,205,210,1.00)",
@@ -2300,7 +2300,7 @@ Array [
               <h2
                 aria-level={2}
                 className="css-reset-4rbku5 css-text-901oao"
-                dir="auto"
+                dir="ltr"
                 role="heading"
                 style={
                   Object {
@@ -2498,7 +2498,7 @@ Array [
               >
                 <div
                   className="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   style={
                     Object {
                       "color": "rgba(203,205,210,1.00)",
@@ -2542,7 +2542,7 @@ Array [
       >
         <div
           className="css-text-901oao"
-          dir="auto"
+          dir="ltr"
           style={
             Object {
               "color": "rgba(182,0,37,1.00)",
@@ -2580,7 +2580,7 @@ Array [
         >
           <div
             className="css-text-901oao css-textMultiLine-cens5h"
-            dir="auto"
+            dir="ltr"
             style={
               Object {
                 "WebkitLineClamp": 1,
@@ -2663,7 +2663,7 @@ Array [
           <h4
             aria-level={4}
             className="css-reset-4rbku5 css-text-901oao"
-            dir="auto"
+            dir="ltr"
             role="heading"
             style={
               Object {
@@ -2771,7 +2771,7 @@ Array [
                 >
                   <div
                     className="css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                     style={
                       Object {
                         "color": "rgba(22,22,23,1.00)",
@@ -2822,7 +2822,7 @@ Array [
         <h4
           aria-level={4}
           className="css-reset-4rbku5 css-text-901oao"
-          dir="auto"
+          dir="ltr"
           role="heading"
           style={
             Object {
@@ -2977,7 +2977,7 @@ Array [
             />
             <div
               className="css-text-901oao"
-              dir="auto"
+              dir="ltr"
               style={
                 Object {
                   "WebkitAlignSelf": "center",

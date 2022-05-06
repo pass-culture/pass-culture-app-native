@@ -12,7 +12,7 @@ exports[`VenueCaption component should render correctly 1`] = `
 >
   <div
     className="css-text-901oao css-textMultiLine-cens5h"
-    dir="auto"
+    dir="ltr"
     style={
       Object {
         "WebkitLineClamp": 2,
@@ -61,7 +61,7 @@ exports[`VenueCaption component should render correctly 1`] = `
     />
     <div
       className="css-text-901oao css-textMultiLine-cens5h"
-      dir="auto"
+      dir="ltr"
       style={
         Object {
           "WebkitFlexShrink": 1,
@@ -80,7 +80,7 @@ exports[`VenueCaption component should render correctly 1`] = `
   </div>
   <div
     className="css-text-901oao"
-    dir="auto"
+    dir="ltr"
     style={
       Object {
         "color": "rgba(105,106,111,1.00)",

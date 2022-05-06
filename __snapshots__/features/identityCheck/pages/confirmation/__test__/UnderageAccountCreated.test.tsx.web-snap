@@ -94,7 +94,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
   <h1
     aria-level={1}
     className="css-reset-4rbku5 css-text-901oao"
-    dir="auto"
+    dir="ltr"
     role="heading"
     style={
       Object {
@@ -127,7 +127,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
   />
   <div
     className="css-text-901oao"
-    dir="auto"
+    dir="ltr"
     style={
       Object {
         "color": "rgba(22,22,23,1.00)",
@@ -277,7 +277,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
     </div>
     <div
       className="css-text-901oao"
-      dir="auto"
+      dir="ltr"
       style={
         Object {
           "color": "rgba(22,22,23,1.00)",
@@ -301,7 +301,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
   />
   <div
     className="css-text-901oao"
-    dir="auto"
+    dir="ltr"
     style={
       Object {
         "color": "rgba(22,22,23,1.00)",
@@ -342,7 +342,7 @@ exports[`<UnderageAccountCreated/> should render correctly 1`] = `
     >
       <div
         className="css-text-901oao css-textMultiLine-cens5h"
-        dir="auto"
+        dir="ltr"
         style={
           Object {
             "WebkitLineClamp": 1,

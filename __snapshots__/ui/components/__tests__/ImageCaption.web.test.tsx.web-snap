@@ -16,7 +16,7 @@ Object {
           <div
             class="css-text-901oao css-textMultiLine-cens5h"
             data-testid="categoryImageCaption"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
           >
             Musique
@@ -33,7 +33,7 @@ Object {
           <div
             class="css-text-901oao"
             data-testid="distanceImageCaption"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
           >
             1,2km
@@ -54,7 +54,7 @@ Object {
         <div
           class="css-text-901oao css-textMultiLine-cens5h"
           data-testid="categoryImageCaption"
-          dir="auto"
+          dir="ltr"
           style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
         >
           Musique
@@ -71,7 +71,7 @@ Object {
         <div
           class="css-text-901oao"
           data-testid="distanceImageCaption"
-          dir="auto"
+          dir="ltr"
           style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
         >
           1,2km
