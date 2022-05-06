@@ -1,4 +1,4 @@
-import { IncomingMessage } from 'http'
+import { IncomingMessage, ServerResponse } from 'http'
 
 import { createProxyMiddleware, responseInterceptor } from 'http-proxy-middleware'
 
@@ -24,11 +24,15 @@ const options = {
 export async function metasResponseInterceptor(
   responseBuffer: Buffer,
   proxyRes: IncomingMessage,
-  req: IncomingMessage
+  req: IncomingMessage,
+  res: ServerResponse
 ) {
   if (proxyRes.headers['content-type'] !== 'text/html') {
     return responseBuffer
   }
+
+  // TODO: remove me when PC-14035 is resolved : (404 GCP cloud storage issue, see with OPs)
+  res.statusCode = 200
 
   const html = responseBuffer.toString('utf8')
 
