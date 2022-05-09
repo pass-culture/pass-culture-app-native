@@ -13,11 +13,11 @@ exports[`Search component should render correctly 1`] = `
   }
 >
   <View
-    height={96}
+    height={112}
     style={
       Array [
         Object {
-          "height": 96,
+          "height": 112,
           "left": 0,
           "overflow": "hidden",
           "position": "absolute",
@@ -48,49 +48,18 @@ exports[`Search component should render correctly 1`] = `
     }
   />
   <View
-    height={32}
-    marginBottom={24}
-    marginTop={24}
+    height={48}
     style={
       Array [
         Object {
           "alignSelf": "center",
-          "height": 32,
-          "marginBottom": 24,
-          "marginTop": 24,
-          "position": "relative",
+          "height": 48,
+          "marginVertical": 24,
           "width": "90%",
-          "zIndex": 1,
         },
       ]
     }
-    testID="searchBoxReworkContainer"
   >
-    <Text
-      htmlFor="testUuidV4"
-      style={
-        Array [
-          Object {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 18,
-            "lineHeight": 22,
-          },
-        ]
-      }
-    >
-      Recherche une offre
-    </Text>
-    <View
-      numberOfSpaces={2}
-      style={
-        Array [
-          Object {
-            "height": 8,
-          },
-        ]
-      }
-    />
     <Text
       style={
         Array [

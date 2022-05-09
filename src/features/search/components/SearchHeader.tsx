@@ -15,34 +15,24 @@ import { SearchBox } from './SearchBox'
 export const SearchHeader: React.FC = () => {
   const { top } = useCustomSafeInsets()
   const { data: appSettings } = useAppSettings()
-  const marginTop = getSpacing(6)
-  const marginBottom = getSpacing(6)
   const searchInputID = uuidv4()
-
-  const appEnableSearchHomepageRework =
-    appSettings?.appEnableSearchHomepageRework !== undefined
-      ? appSettings?.appEnableSearchHomepageRework
-      : true
+  const appEnableSearchHomepageRework = appSettings?.appEnableSearchHomepageRework ?? false
   const inputHeight = appEnableSearchHomepageRework ? getSpacing(8) : getSpacing(12)
 
   return (
     <React.Fragment>
-      <HeaderBackgroundWrapper height={top + inputHeight + marginTop + marginBottom}>
+      <HeaderBackgroundWrapper height={top + inputHeight + getSpacing(12)}>
         <HeaderBackground />
       </HeaderBackgroundWrapper>
       <Spacer.TopScreen />
       {appEnableSearchHomepageRework ? (
-        <SearchBoxReworkContainer
-          marginTop={marginTop}
-          marginBottom={marginBottom}
-          height={inputHeight}
-          testID="searchBoxReworkContainer">
+        <SearchBoxReworkContainer height={inputHeight} testID="searchBoxReworkContainer">
           <StyledInputLabel htmlFor={searchInputID}>{t`Recherche une offre`}</StyledInputLabel>
           <Spacer.Column numberOfSpaces={2} />
           <SearchBox searchInputID={searchInputID} />
         </SearchBoxReworkContainer>
       ) : (
-        <SearchBoxContainer marginTop={marginTop} marginBottom={marginBottom} height={inputHeight}>
+        <SearchBoxContainer height={inputHeight}>
           <SearchBox searchInputID={searchInputID} />
         </SearchBoxContainer>
       )}
@@ -50,15 +40,12 @@ export const SearchHeader: React.FC = () => {
   )
 }
 
-const SearchBoxContainer = styled.View<{ marginTop: number; marginBottom: number; height: number }>(
-  ({ marginTop, marginBottom, height }) => ({
-    alignSelf: 'center',
-    height,
-    marginTop,
-    marginBottom,
-    width: '90%',
-  })
-)
+const SearchBoxContainer = styled.View<{ height: number }>(({ height }) => ({
+  alignSelf: 'center',
+  height,
+  marginVertical: getSpacing(6),
+  width: '90%',
+}))
 
 const SearchBoxReworkContainer = styled(SearchBoxContainer)({
   position: 'relative',
