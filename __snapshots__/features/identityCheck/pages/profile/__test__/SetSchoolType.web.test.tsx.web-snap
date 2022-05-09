@@ -20,7 +20,7 @@ Object {
           <h1
             aria-level="1"
             class="css-reset-4rbku5 css-text-901oao"
-            dir="auto"
+            dir="ltr"
             role="heading"
             style="color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
           >
@@ -73,7 +73,7 @@ Object {
                     <h2
                       aria-level="2"
                       class="css-reset-4rbku5 css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                       role="heading"
                       style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                     >
@@ -113,7 +113,7 @@ Object {
                             >
                               <div
                                 class="css-text-901oao"
-                                dir="auto"
+                                dir="ltr"
                                 style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                               >
                                 Lycée agricole
@@ -135,7 +135,7 @@ Object {
                             >
                               <div
                                 class="css-text-901oao"
-                                dir="auto"
+                                dir="ltr"
                                 style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                               />
                             </div>
@@ -155,7 +155,7 @@ Object {
                             >
                               <div
                                 class="css-text-901oao"
-                                dir="auto"
+                                dir="ltr"
                                 style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                               />
                             </div>
@@ -175,7 +175,7 @@ Object {
                             >
                               <div
                                 class="css-text-901oao"
-                                dir="auto"
+                                dir="ltr"
                                 style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                               />
                             </div>
@@ -195,7 +195,7 @@ Object {
                             >
                               <div
                                 class="css-text-901oao"
-                                dir="auto"
+                                dir="ltr"
                                 style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                               />
                             </div>
@@ -215,14 +215,14 @@ Object {
                             >
                               <div
                                 class="css-text-901oao"
-                                dir="auto"
+                                dir="ltr"
                                 style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                               >
                                 Accompagnement spécialisé
                               </div>
                               <div
                                 class="css-text-901oao"
-                                dir="auto"
+                                dir="ltr"
                                 style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                               >
                                 À domicile, CNED, institut de santé, etc.
@@ -244,7 +244,7 @@ Object {
                             >
                               <div
                                 class="css-text-901oao"
-                                dir="auto"
+                                dir="ltr"
                                 style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                               >
                                 Centre de formation d'apprentis
@@ -269,7 +269,7 @@ Object {
                   >
                     <div
                       class="css-text-901oao css-textMultiLine-cens5h"
-                      dir="auto"
+                      dir="ltr"
                       style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
                     >
                       Choisis ton statut
@@ -318,7 +318,7 @@ Object {
         <h1
           aria-level="1"
           class="css-reset-4rbku5 css-text-901oao"
-          dir="auto"
+          dir="ltr"
           role="heading"
           style="color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
         >
@@ -371,7 +371,7 @@ Object {
                   <h2
                     aria-level="2"
                     class="css-reset-4rbku5 css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                     role="heading"
                     style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                   >
@@ -411,7 +411,7 @@ Object {
                           >
                             <div
                               class="css-text-901oao"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                             >
                               Lycée agricole
@@ -433,7 +433,7 @@ Object {
                           >
                             <div
                               class="css-text-901oao"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                             />
                           </div>
@@ -453,7 +453,7 @@ Object {
                           >
                             <div
                               class="css-text-901oao"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                             />
                           </div>
@@ -473,7 +473,7 @@ Object {
                           >
                             <div
                               class="css-text-901oao"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                             />
                           </div>
@@ -493,7 +493,7 @@ Object {
                           >
                             <div
                               class="css-text-901oao"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                             />
                           </div>
@@ -513,14 +513,14 @@ Object {
                           >
                             <div
                               class="css-text-901oao"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                             >
                               Accompagnement spécialisé
                             </div>
                             <div
                               class="css-text-901oao"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                             >
                               À domicile, CNED, institut de santé, etc.
@@ -542,7 +542,7 @@ Object {
                           >
                             <div
                               class="css-text-901oao"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                             >
                               Centre de formation d'apprentis
@@ -567,7 +567,7 @@ Object {
                 >
                   <div
                     class="css-text-901oao css-textMultiLine-cens5h"
-                    dir="auto"
+                    dir="ltr"
                     style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
                   >
                     Choisis ton statut
@@ -673,7 +673,7 @@ Object {
           <h1
             aria-level="1"
             class="css-reset-4rbku5 css-text-901oao"
-            dir="auto"
+            dir="ltr"
             role="heading"
             style="color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
           >
@@ -726,7 +726,7 @@ Object {
                     <h2
                       aria-level="2"
                       class="css-reset-4rbku5 css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                       role="heading"
                       style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                     >
@@ -766,7 +766,7 @@ Object {
                             >
                               <div
                                 class="css-text-901oao"
-                                dir="auto"
+                                dir="ltr"
                                 style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                               >
                                 Collège privé
@@ -788,7 +788,7 @@ Object {
                             >
                               <div
                                 class="css-text-901oao"
-                                dir="auto"
+                                dir="ltr"
                                 style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                               >
                                 Collège public
@@ -810,14 +810,14 @@ Object {
                             >
                               <div
                                 class="css-text-901oao"
-                                dir="auto"
+                                dir="ltr"
                                 style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                               >
                                 Accompagnement spécialisé
                               </div>
                               <div
                                 class="css-text-901oao"
-                                dir="auto"
+                                dir="ltr"
                                 style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                               >
                                 À domicile, CNED, institut de santé, etc.
@@ -842,7 +842,7 @@ Object {
                   >
                     <div
                       class="css-text-901oao css-textMultiLine-cens5h"
-                      dir="auto"
+                      dir="ltr"
                       style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
                     >
                       Choisis ton statut
@@ -891,7 +891,7 @@ Object {
         <h1
           aria-level="1"
           class="css-reset-4rbku5 css-text-901oao"
-          dir="auto"
+          dir="ltr"
           role="heading"
           style="color: rgb(255, 255, 255); flex-basis: 0px; flex-grow: 1; flex-shrink: 1; font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
         >
@@ -944,7 +944,7 @@ Object {
                   <h2
                     aria-level="2"
                     class="css-reset-4rbku5 css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                     role="heading"
                     style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px; text-align: center;"
                   >
@@ -984,7 +984,7 @@ Object {
                           >
                             <div
                               class="css-text-901oao"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                             >
                               Collège privé
@@ -1006,7 +1006,7 @@ Object {
                           >
                             <div
                               class="css-text-901oao"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                             >
                               Collège public
@@ -1028,14 +1028,14 @@ Object {
                           >
                             <div
                               class="css-text-901oao"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                             >
                               Accompagnement spécialisé
                             </div>
                             <div
                               class="css-text-901oao"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                             >
                               À domicile, CNED, institut de santé, etc.
@@ -1060,7 +1060,7 @@ Object {
                 >
                   <div
                     class="css-text-901oao css-textMultiLine-cens5h"
-                    dir="auto"
+                    dir="ltr"
                     style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
                   >
                     Choisis ton statut

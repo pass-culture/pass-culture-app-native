@@ -21,7 +21,7 @@ Object {
             aria-level="2"
             class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
             data-testid="playlistTitle"
-            dir="auto"
+            dir="ltr"
             role="heading"
             style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
           >
@@ -62,7 +62,7 @@ Object {
             />
             <div
               class="css-text-901oao"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
             >
               En voir plus
@@ -101,6 +101,7 @@ Object {
                 <h3
                   aria-level="3"
                   class="css-reset-4rbku5 css-view-1dbjc4n"
+                  dir="ltr"
                   role="heading"
                 >
                   <div
@@ -120,14 +121,14 @@ Object {
                       >
                         <div
                           class="css-text-901oao css-textMultiLine-cens5h"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           Titane - VF
                         </div>
                         <div
                           class="css-text-901oao css-textMultiLine-cens5h"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           Dès le 18 août 2021
@@ -135,7 +136,7 @@ Object {
                         <div
                           class="css-text-901oao"
                           data-testid="priceIsDuo"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           Gratuit
@@ -155,7 +156,7 @@ Object {
                             <div
                               class="css-text-901oao css-textMultiLine-cens5h"
                               data-testid="categoryImageCaption"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                             >
                               Cinéma
@@ -178,6 +179,7 @@ Object {
                 <h3
                   aria-level="3"
                   class="css-reset-4rbku5 css-view-1dbjc4n"
+                  dir="ltr"
                   role="heading"
                 >
                   <div
@@ -197,14 +199,14 @@ Object {
                       >
                         <div
                           class="css-text-901oao css-textMultiLine-cens5h"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           Bac Nord - VF
                         </div>
                         <div
                           class="css-text-901oao css-textMultiLine-cens5h"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           Dès le 18 août 2021
@@ -212,7 +214,7 @@ Object {
                         <div
                           class="css-text-901oao"
                           data-testid="priceIsDuo"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           Gratuit
@@ -232,7 +234,7 @@ Object {
                             <div
                               class="css-text-901oao css-textMultiLine-cens5h"
                               data-testid="categoryImageCaption"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                             >
                               Cinéma
@@ -255,6 +257,7 @@ Object {
                 <h3
                   aria-level="3"
                   class="css-reset-4rbku5 css-view-1dbjc4n"
+                  dir="ltr"
                   role="heading"
                 >
                   <div
@@ -274,14 +277,14 @@ Object {
                       >
                         <div
                           class="css-text-901oao css-textMultiLine-cens5h"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           Black Widow - VF
                         </div>
                         <div
                           class="css-text-901oao css-textMultiLine-cens5h"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           Dès le 18 août 2021
@@ -289,7 +292,7 @@ Object {
                         <div
                           class="css-text-901oao"
                           data-testid="priceIsDuo"
-                          dir="auto"
+                          dir="ltr"
                           style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                         >
                           Gratuit
@@ -309,7 +312,7 @@ Object {
                             <div
                               class="css-text-901oao css-textMultiLine-cens5h"
                               data-testid="categoryImageCaption"
-                              dir="auto"
+                              dir="ltr"
                               style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                             >
                               Cinéma
@@ -347,7 +350,7 @@ Object {
           >
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 8px 8px 8px 8px;"
             >
               Voir toutes les offres
@@ -378,7 +381,7 @@ Object {
           aria-level="2"
           class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
           data-testid="playlistTitle"
-          dir="auto"
+          dir="ltr"
           role="heading"
           style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
         >
@@ -419,7 +422,7 @@ Object {
           />
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
           >
             En voir plus
@@ -458,6 +461,7 @@ Object {
               <h3
                 aria-level="3"
                 class="css-reset-4rbku5 css-view-1dbjc4n"
+                dir="ltr"
                 role="heading"
               >
                 <div
@@ -477,14 +481,14 @@ Object {
                     >
                       <div
                         class="css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
                         Titane - VF
                       </div>
                       <div
                         class="css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
                         Dès le 18 août 2021
@@ -492,7 +496,7 @@ Object {
                       <div
                         class="css-text-901oao"
                         data-testid="priceIsDuo"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
                         Gratuit
@@ -512,7 +516,7 @@ Object {
                           <div
                             class="css-text-901oao css-textMultiLine-cens5h"
                             data-testid="categoryImageCaption"
-                            dir="auto"
+                            dir="ltr"
                             style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                           >
                             Cinéma
@@ -535,6 +539,7 @@ Object {
               <h3
                 aria-level="3"
                 class="css-reset-4rbku5 css-view-1dbjc4n"
+                dir="ltr"
                 role="heading"
               >
                 <div
@@ -554,14 +559,14 @@ Object {
                     >
                       <div
                         class="css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
                         Bac Nord - VF
                       </div>
                       <div
                         class="css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
                         Dès le 18 août 2021
@@ -569,7 +574,7 @@ Object {
                       <div
                         class="css-text-901oao"
                         data-testid="priceIsDuo"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
                         Gratuit
@@ -589,7 +594,7 @@ Object {
                           <div
                             class="css-text-901oao css-textMultiLine-cens5h"
                             data-testid="categoryImageCaption"
-                            dir="auto"
+                            dir="ltr"
                             style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                           >
                             Cinéma
@@ -612,6 +617,7 @@ Object {
               <h3
                 aria-level="3"
                 class="css-reset-4rbku5 css-view-1dbjc4n"
+                dir="ltr"
                 role="heading"
               >
                 <div
@@ -631,14 +637,14 @@ Object {
                     >
                       <div
                         class="css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
                         Black Widow - VF
                       </div>
                       <div
                         class="css-text-901oao css-textMultiLine-cens5h"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
                         Dès le 18 août 2021
@@ -646,7 +652,7 @@ Object {
                       <div
                         class="css-text-901oao"
                         data-testid="priceIsDuo"
-                        dir="auto"
+                        dir="ltr"
                         style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
                         Gratuit
@@ -666,7 +672,7 @@ Object {
                           <div
                             class="css-text-901oao css-textMultiLine-cens5h"
                             data-testid="categoryImageCaption"
-                            dir="auto"
+                            dir="ltr"
                             style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                           >
                             Cinéma
@@ -704,7 +710,7 @@ Object {
         >
           <div
             class="css-text-901oao css-textMultiLine-cens5h"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; padding: 8px 8px 8px 8px;"
           >
             Voir toutes les offres

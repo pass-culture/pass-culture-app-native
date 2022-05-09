@@ -77,7 +77,7 @@ exports[`<SectionWithSwitch/> should display different if isDesktopViewport or w
 +   >
 +     <div
 +       className=\\"css-text-901oao\\"
-+       dir=\\"auto\\"
++       dir=\\"ltr\\"
 +       style={
 +         Object {
 +           \\"color\\": \\"rgba(105,106,111,1.00)\\",

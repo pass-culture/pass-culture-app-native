@@ -16,11 +16,19 @@ export const getHeadingAttrs = (level?: number) => ({
     ? {
         accessibilityRole: level ? ('header' as AccessibilityRole) : undefined,
         'aria-level': level,
+        ...getTextAttrs(),
       }
     : {}),
 })
 
-const Hero = styled(RNText)(({ theme }) => ({
+const getTextAttrs = (dir?: string) =>
+  Platform.OS === 'web'
+    ? {
+        dir: dir ?? 'ltr',
+      }
+    : {}
+
+const Hero = styled(RNText).attrs(getTextAttrs())(({ theme }) => ({
   ...theme.typography.hero,
 }))
 
@@ -69,18 +77,20 @@ const Title4 = styled(RNText).attrs<{ 'aria-level': number }>(({ 'aria-level': a
   ...theme.typography.title4,
 }))
 
-const ButtonText = styled(RNText)<{ shrink?: boolean }>(({ shrink, theme }) => ({
-  fontFamily: theme.typography.buttonText.fontFamily,
-  fontSize: theme.typography.buttonText.fontSize,
-  color: theme.typography.buttonText.color,
-  ...(!shrink ? { lineHeight: theme.typography.buttonText.lineHeight } : { flexShrink: 1 }),
-}))
+const ButtonText = styled(RNText).attrs(getTextAttrs())<{ shrink?: boolean }>(
+  ({ shrink, theme }) => ({
+    fontFamily: theme.typography.buttonText.fontFamily,
+    fontSize: theme.typography.buttonText.fontSize,
+    color: theme.typography.buttonText.color,
+    ...(!shrink ? { lineHeight: theme.typography.buttonText.lineHeight } : { flexShrink: 1 }),
+  })
+)
 
-const Body = styled(RNText)(({ theme }) => ({
+const Body = styled(RNText).attrs(getTextAttrs())(({ theme }) => ({
   ...theme.typography.body,
 }))
 
-const Caption = styled(RNText)(({ theme }) => ({
+const Caption = styled(RNText).attrs(getTextAttrs())(({ theme }) => ({
   ...theme.typography.caption,
 }))
 

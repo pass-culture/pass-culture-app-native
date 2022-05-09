@@ -13,7 +13,7 @@ Array [
   <h2
     aria-level={2}
     className="css-reset-4rbku5 css-text-901oao"
-    dir="auto"
+    dir="ltr"
     role="heading"
     style={
       Object {
@@ -108,7 +108,7 @@ Array [
     />
     <div
       className="css-text-901oao css-textMultiLine-cens5h"
-      dir="auto"
+      dir="ltr"
       style={
         Object {
           "WebkitFlexShrink": 1,
@@ -164,7 +164,7 @@ Array [
   />,
   <div
     className="css-text-901oao"
-    dir="auto"
+    dir="ltr"
     style={
       Object {
         "color": "rgba(22,22,23,1.00)",
@@ -186,7 +186,7 @@ Array [
   />,
   <div
     className="css-text-901oao"
-    dir="auto"
+    dir="ltr"
     style={
       Object {
         "color": "rgba(22,22,23,1.00)",
@@ -256,7 +256,7 @@ Array [
       </div>
       <div
         className="css-text-901oao css-textMultiLine-cens5h"
-        dir="auto"
+        dir="ltr"
         style={
           Object {
             "WebkitLineClamp": 1,
@@ -368,7 +368,7 @@ exports[`WhereSection should render correctly 2`] = `
 +     />
 +     <div
 +       className=\\"css-text-901oao css-textMultiLine-cens5h\\"
-+       dir=\\"auto\\"
++       dir=\\"ltr\\"
 +       style={
 +         Object {
 +           \\"WebkitFlexShrink\\": 1,
@@ -424,7 +424,7 @@ exports[`WhereSection should render correctly 2`] = `
 +   />,
 +   <div
       className=\\"css-text-901oao\\"
-      dir=\\"auto\\"
+      dir=\\"ltr\\"
       style={
         Object {
           \\"color\\": \\"rgba(22,22,23,1.00)\\","

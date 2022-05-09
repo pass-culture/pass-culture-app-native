@@ -58,7 +58,7 @@ Object {
           >
             <div
               class="css-text-901oao"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
             >
               En voir plus
@@ -122,7 +122,7 @@ Object {
         >
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
           >
             En voir plus

@@ -8,6 +8,7 @@ Object {
       <h3
         aria-level="3"
         class="css-reset-4rbku5 css-view-1dbjc4n"
+        dir="ltr"
         role="heading"
       >
         <div
@@ -27,14 +28,14 @@ Object {
             >
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
               >
                 Mensch ! Où sont les Hommes ?
               </div>
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
               >
                 Dès le 12 mars 2020
@@ -42,7 +43,7 @@ Object {
               <div
                 class="css-text-901oao"
                 data-testid="priceIsDuo"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
               >
                 28 €
@@ -62,7 +63,7 @@ Object {
                   <div
                     class="css-text-901oao css-textMultiLine-cens5h"
                     data-testid="categoryImageCaption"
-                    dir="auto"
+                    dir="ltr"
                     style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                   >
                     MUSIQUE
@@ -79,7 +80,7 @@ Object {
                   <div
                     class="css-text-901oao"
                     data-testid="distanceImageCaption"
-                    dir="auto"
+                    dir="ltr"
                     style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                   >
                     1,2km
@@ -96,6 +97,7 @@ Object {
     <h3
       aria-level="3"
       class="css-reset-4rbku5 css-view-1dbjc4n"
+      dir="ltr"
       role="heading"
     >
       <div
@@ -115,14 +117,14 @@ Object {
           >
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
             >
               Mensch ! Où sont les Hommes ?
             </div>
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
             >
               Dès le 12 mars 2020
@@ -130,7 +132,7 @@ Object {
             <div
               class="css-text-901oao"
               data-testid="priceIsDuo"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
             >
               28 €
@@ -150,7 +152,7 @@ Object {
                 <div
                   class="css-text-901oao css-textMultiLine-cens5h"
                   data-testid="categoryImageCaption"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                 >
                   MUSIQUE
@@ -167,7 +169,7 @@ Object {
                 <div
                   class="css-text-901oao"
                   data-testid="distanceImageCaption"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                 >
                   1,2km

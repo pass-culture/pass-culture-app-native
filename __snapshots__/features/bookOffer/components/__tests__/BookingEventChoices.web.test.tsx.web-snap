@@ -21,7 +21,7 @@ Object {
           aria-level="2"
           class="css-reset-4rbku5 css-text-901oao"
           data-testid="DateStep"
-          dir="auto"
+          dir="ltr"
           role="heading"
           style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
         >
@@ -38,7 +38,7 @@ Object {
           />
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
           >
             Samedi 2 janvier 2021
@@ -60,7 +60,7 @@ Object {
           aria-level="2"
           class="css-reset-4rbku5 css-text-901oao"
           data-testid="HourStep"
-          dir="auto"
+          dir="ltr"
           role="heading"
           style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
         >
@@ -77,7 +77,7 @@ Object {
         >
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
           />
         </div>
@@ -97,7 +97,7 @@ Object {
           aria-level="2"
           class="css-reset-4rbku5 css-text-901oao"
           data-testid="DuoStep"
-          dir="auto"
+          dir="ltr"
           role="heading"
           style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
         >
@@ -154,7 +154,7 @@ Object {
                 </div>
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                 >
                   Solo
@@ -162,7 +162,7 @@ Object {
                 <div
                   class="css-text-901oao"
                   data-testid="DuoChoice1-price"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
                 >
                   crédit insuffisant
@@ -220,7 +220,7 @@ Object {
                 </div>
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                 >
                   Duo
@@ -228,7 +228,7 @@ Object {
                 <div
                   class="css-text-901oao"
                   data-testid="DuoChoice2-price"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
                 >
                   crédit insuffisant
@@ -252,7 +252,7 @@ Object {
         >
           <div
             class="css-text-901oao css-textMultiLine-cens5h"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
           >
             Valider ces options
@@ -278,7 +278,7 @@ Object {
         aria-level="2"
         class="css-reset-4rbku5 css-text-901oao"
         data-testid="DateStep"
-        dir="auto"
+        dir="ltr"
         role="heading"
         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
       >
@@ -295,7 +295,7 @@ Object {
         />
         <div
           class="css-text-901oao"
-          dir="auto"
+          dir="ltr"
           style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
         >
           Samedi 2 janvier 2021
@@ -317,7 +317,7 @@ Object {
         aria-level="2"
         class="css-reset-4rbku5 css-text-901oao"
         data-testid="HourStep"
-        dir="auto"
+        dir="ltr"
         role="heading"
         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
       >
@@ -334,7 +334,7 @@ Object {
       >
         <div
           class="css-text-901oao"
-          dir="auto"
+          dir="ltr"
           style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
         />
       </div>
@@ -354,7 +354,7 @@ Object {
         aria-level="2"
         class="css-reset-4rbku5 css-text-901oao"
         data-testid="DuoStep"
-        dir="auto"
+        dir="ltr"
         role="heading"
         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 18px; line-height: 22px;"
       >
@@ -411,7 +411,7 @@ Object {
               </div>
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
               >
                 Solo
@@ -419,7 +419,7 @@ Object {
               <div
                 class="css-text-901oao"
                 data-testid="DuoChoice1-price"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(255, 255, 255); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
               >
                 crédit insuffisant
@@ -477,7 +477,7 @@ Object {
               </div>
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(105, 106, 111); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
               >
                 Duo
@@ -485,7 +485,7 @@ Object {
               <div
                 class="css-text-901oao"
                 data-testid="DuoChoice2-price"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px; text-align: center;"
               >
                 crédit insuffisant
@@ -509,7 +509,7 @@ Object {
       >
         <div
           class="css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
+          dir="ltr"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
         >
           Valider ces options

@@ -69,14 +69,14 @@ Object {
                   <div
                     class="css-text-901oao"
                     data-testid="firstLine"
-                    dir="auto"
+                    dir="ltr"
                     style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                   >
                     firstLine
                   </div>
                   <div
                     class="css-text-901oao css-textMultiLine-cens5h"
-                    dir="auto"
+                    dir="ltr"
                     style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                   >
                     secondLine
@@ -158,14 +158,14 @@ Object {
                 <div
                   class="css-text-901oao"
                   data-testid="firstLine"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                 >
                   firstLine
                 </div>
                 <div
                   class="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                 >
                   secondLine
@@ -304,14 +304,14 @@ Object {
                   <div
                     class="css-text-901oao"
                     data-testid="firstLine"
-                    dir="auto"
+                    dir="ltr"
                     style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                   >
                     firstLine
                   </div>
                   <div
                     class="css-text-901oao css-textMultiLine-cens5h"
-                    dir="auto"
+                    dir="ltr"
                     style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                   >
                     secondLine
@@ -408,14 +408,14 @@ Object {
                 <div
                   class="css-text-901oao"
                   data-testid="firstLine"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                 >
                   firstLine
                 </div>
                 <div
                   class="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                 >
                   secondLine
@@ -591,14 +591,14 @@ Object {
                   <div
                     class="css-text-901oao"
                     data-testid="firstLine"
-                    dir="auto"
+                    dir="ltr"
                     style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                   >
                     firstLine
                   </div>
                   <div
                     class="css-text-901oao css-textMultiLine-cens5h"
-                    dir="auto"
+                    dir="ltr"
                     style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                   >
                     secondLine
@@ -717,14 +717,14 @@ Object {
                 <div
                   class="css-text-901oao"
                   data-testid="firstLine"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
                 >
                   firstLine
                 </div>
                 <div
                   class="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                 >
                   secondLine

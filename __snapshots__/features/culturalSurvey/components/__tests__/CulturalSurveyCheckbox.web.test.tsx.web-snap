@@ -36,12 +36,12 @@ Object {
           >
             <div
               class="css-text-901oao"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
             />
             <div
               class="css-text-901oao"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
             >
               un monument, une exposition...
@@ -83,12 +83,12 @@ Object {
         >
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
           />
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
           >
             un monument, une exposition...
@@ -187,12 +187,12 @@ Object {
           >
             <div
               class="css-text-901oao"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
             />
             <div
               class="css-text-901oao"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
             >
               un monument, une exposition...
@@ -249,12 +249,12 @@ Object {
         >
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
           />
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
           >
             un monument, une exposition...

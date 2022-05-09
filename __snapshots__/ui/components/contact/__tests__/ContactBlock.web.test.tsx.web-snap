@@ -7,21 +7,21 @@ Object {
     <div>
       <div
         class="css-text-901oao"
-        dir="auto"
+        dir="ltr"
         style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
       >
         contact@venue.com
       </div>
       <div
         class="css-text-901oao"
-        dir="auto"
+        dir="ltr"
         style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
       >
         +33102030405
       </div>
       <div
         class="css-text-901oao"
-        dir="auto"
+        dir="ltr"
         style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
       >
         https://my@website.com
@@ -31,21 +31,21 @@ Object {
   "container": <div>
     <div
       class="css-text-901oao"
-      dir="auto"
+      dir="ltr"
       style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
     >
       contact@venue.com
     </div>
     <div
       class="css-text-901oao"
-      dir="auto"
+      dir="ltr"
       style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
     >
       +33102030405
     </div>
     <div
       class="css-text-901oao"
-      dir="auto"
+      dir="ltr"
       style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
     >
       https://my@website.com

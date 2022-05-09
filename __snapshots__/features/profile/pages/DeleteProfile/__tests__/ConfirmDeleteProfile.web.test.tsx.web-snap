@@ -48,7 +48,7 @@ Object {
         <h1
           aria-level="1"
           class="css-reset-4rbku5 css-text-901oao"
-          dir="auto"
+          dir="ltr"
           role="heading"
           style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; text-align: center;"
         >
@@ -64,7 +64,7 @@ Object {
         >
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
           >
             Les conséquences :
@@ -94,7 +94,7 @@ Object {
                 </div>
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
                 >
                   tes réservations seront annulées et supprimées
@@ -123,7 +123,7 @@ Object {
                 </div>
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
                 >
                   si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau
@@ -152,7 +152,7 @@ Object {
                 </div>
                 <div
                   class="css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
                 >
                   tu n’auras plus accès au catalogue
@@ -166,14 +166,14 @@ Object {
           />
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
           >
             Les données qu’on conserve :
           </div>
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
           >
             Nous gardons toutes les informations personnelles que tu nous as transmises lors de la vérification de ton identité.
@@ -193,7 +193,7 @@ Object {
             >
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
               >
                 Supprimer mon compte
@@ -222,7 +222,7 @@ Object {
               </div>
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
               >
                 Consulter l’article d’aide
@@ -281,7 +281,7 @@ Object {
       <h1
         aria-level="1"
         class="css-reset-4rbku5 css-text-901oao"
-        dir="auto"
+        dir="ltr"
         role="heading"
         style="color: rgb(22, 22, 23); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; text-align: center;"
       >
@@ -297,7 +297,7 @@ Object {
       >
         <div
           class="css-text-901oao"
-          dir="auto"
+          dir="ltr"
           style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
         >
           Les conséquences :
@@ -327,7 +327,7 @@ Object {
               </div>
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
               >
                 tes réservations seront annulées et supprimées
@@ -356,7 +356,7 @@ Object {
               </div>
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
               >
                 si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau
@@ -385,7 +385,7 @@ Object {
               </div>
               <div
                 class="css-text-901oao"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-left: 12px;"
               >
                 tu n’auras plus accès au catalogue
@@ -399,14 +399,14 @@ Object {
         />
         <div
           class="css-text-901oao"
-          dir="auto"
+          dir="ltr"
           style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px;"
         >
           Les données qu’on conserve :
         </div>
         <div
           class="css-text-901oao"
-          dir="auto"
+          dir="ltr"
           style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
         >
           Nous gardons toutes les informations personnelles que tu nous as transmises lors de la vérification de ton identité.
@@ -426,7 +426,7 @@ Object {
           >
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 0px; max-width: 100%;"
             >
               Supprimer mon compte
@@ -455,7 +455,7 @@ Object {
             </div>
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
             >
               Consulter l’article d’aide

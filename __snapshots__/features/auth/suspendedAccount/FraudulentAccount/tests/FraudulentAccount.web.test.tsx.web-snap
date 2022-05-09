@@ -66,7 +66,7 @@ Object {
           <h1
             aria-level="1"
             class="css-reset-4rbku5 css-text-901oao"
-            dir="auto"
+            dir="ltr"
             role="heading"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; text-align: center;"
           >
@@ -78,7 +78,7 @@ Object {
           />
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
           >
             En raison d’une activité suspiscieuse, notre équipe anti fraude a suspendu ton compte.
@@ -89,7 +89,7 @@ Object {
           />
           <div
             class="css-text-901oao"
-            dir="auto"
+            dir="ltr"
             style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
           >
             Si tu souhaites revoir cette décision, tu peux contacter le support.
@@ -120,7 +120,7 @@ Object {
               </div>
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
               >
                 Contacter le support
@@ -148,7 +148,7 @@ Object {
               </div>
               <div
                 class="css-text-901oao css-textMultiLine-cens5h"
-                dir="auto"
+                dir="ltr"
                 style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
               >
                 Retourner à l'accueil
@@ -225,7 +225,7 @@ Object {
         <h1
           aria-level="1"
           class="css-reset-4rbku5 css-text-901oao"
-          dir="auto"
+          dir="ltr"
           role="heading"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; text-align: center;"
         >
@@ -237,7 +237,7 @@ Object {
         />
         <div
           class="css-text-901oao"
-          dir="auto"
+          dir="ltr"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
         >
           En raison d’une activité suspiscieuse, notre équipe anti fraude a suspendu ton compte.
@@ -248,7 +248,7 @@ Object {
         />
         <div
           class="css-text-901oao"
-          dir="auto"
+          dir="ltr"
           style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
         >
           Si tu souhaites revoir cette décision, tu peux contacter le support.
@@ -279,7 +279,7 @@ Object {
             </div>
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(235, 0, 85); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
             >
               Contacter le support
@@ -307,7 +307,7 @@ Object {
             </div>
             <div
               class="css-text-901oao css-textMultiLine-cens5h"
-              dir="auto"
+              dir="ltr"
               style="color: rgb(255, 255, 255); font-family: Montserrat-Bold; font-size: 15px; line-height: 20px; margin-left: 8px; max-width: 100%;"
             >
               Retourner à l'accueil

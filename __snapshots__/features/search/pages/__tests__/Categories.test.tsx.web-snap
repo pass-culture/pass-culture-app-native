@@ -20,7 +20,7 @@ exports[`Categories component should match diff snapshot when new category is se
               onContextMenu={[Function onContextMenu]}
 @@ -349,11 +349,11 @@
                     className=\\"css-text-901oao css-textMultiLine-cens5h\\"
-                    dir=\\"auto\\"
+                    dir=\\"ltr\\"
                     style={
                       Object {
                         \\"WebkitLineClamp\\": 2,
@@ -70,7 +70,7 @@ exports[`Categories component should match diff snapshot when new category is se
               onContextMenu={[Function onContextMenu]}
 @@ -605,11 +616,11 @@
                     className=\\"css-text-901oao css-textMultiLine-cens5h\\"
-                    dir=\\"auto\\"
+                    dir=\\"ltr\\"
                     style={
                       Object {
                         \\"WebkitLineClamp\\": 2,
@@ -252,7 +252,7 @@ exports[`Categories component should render correctly 1`] = `
         <h1
           aria-level={1}
           className="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-          dir="auto"
+          dir="ltr"
           role="heading"
           style={
             Object {
@@ -457,7 +457,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
+                  dir="ltr"
                   style={
                     Object {
                       "WebkitLineClamp": 2,
@@ -596,7 +596,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
+                  dir="ltr"
                   style={
                     Object {
                       "WebkitLineClamp": 2,
@@ -724,7 +724,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
+                  dir="ltr"
                   style={
                     Object {
                       "WebkitLineClamp": 2,
@@ -852,7 +852,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
+                  dir="ltr"
                   style={
                     Object {
                       "WebkitLineClamp": 2,
@@ -980,7 +980,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
+                  dir="ltr"
                   style={
                     Object {
                       "WebkitLineClamp": 2,
@@ -1108,7 +1108,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
+                  dir="ltr"
                   style={
                     Object {
                       "WebkitLineClamp": 2,
@@ -1236,7 +1236,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
+                  dir="ltr"
                   style={
                     Object {
                       "WebkitLineClamp": 2,
@@ -1364,7 +1364,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
+                  dir="ltr"
                   style={
                     Object {
                       "WebkitLineClamp": 2,
@@ -1492,7 +1492,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
+                  dir="ltr"
                   style={
                     Object {
                       "WebkitLineClamp": 2,
@@ -1620,7 +1620,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
+                  dir="ltr"
                   style={
                     Object {
                       "WebkitLineClamp": 2,
@@ -1748,7 +1748,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
+                  dir="ltr"
                   style={
                     Object {
                       "WebkitLineClamp": 2,
@@ -1876,7 +1876,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
+                  dir="ltr"
                   style={
                     Object {
                       "WebkitLineClamp": 2,
@@ -2004,7 +2004,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
+                  dir="ltr"
                   style={
                     Object {
                       "WebkitLineClamp": 2,
@@ -2132,7 +2132,7 @@ exports[`Categories component should render correctly 1`] = `
               >
                 <div
                   className="css-text-901oao css-textMultiLine-cens5h"
-                  dir="auto"
+                  dir="ltr"
                   style={
                     Object {
                       "WebkitLineClamp": 2,

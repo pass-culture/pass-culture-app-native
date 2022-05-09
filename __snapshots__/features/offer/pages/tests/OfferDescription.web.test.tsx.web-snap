@@ -107,7 +107,7 @@ Object {
                                     <h1
                                       aria-level="1"
                                       class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-                                      dir="auto"
+                                      dir="ltr"
                                       role="heading"
                                       style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
                                     >
@@ -335,7 +335,7 @@ Object {
                                   <h1
                                     aria-level="1"
                                     class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
-                                    dir="auto"
+                                    dir="ltr"
                                     role="heading"
                                     style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
                                   >
