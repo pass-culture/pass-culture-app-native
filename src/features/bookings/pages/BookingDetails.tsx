@@ -10,11 +10,10 @@ import { useOngoingOrEndedBooking } from 'features/bookings/api/queries'
 import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
 import { BookingDetailsHeader } from 'features/bookings/components/BookingDetailsHeader'
-import { BookingDetailsTicketContent } from 'features/bookings/components/BookingDetailsTicketContent'
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
-import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
-import { getBookingProperties, getOfferRules } from 'features/bookings/helpers'
+import { Ticket } from 'features/bookings/components/SwiperTickets/Ticket'
+import { BookingProperties, getBookingProperties } from 'features/bookings/helpers'
 import { BookingNotFound } from 'features/bookings/pages/BookingNotFound'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { mergeOfferData } from 'features/offer/atoms/OfferTile'
@@ -142,16 +141,9 @@ export function BookingDetails() {
         }}
         testID="BookingDetailsScrollView"
         bounces={false}>
-        <HeroHeader type="offer" imageHeight={blurImageHeight} imageUrl={offer.image?.url}>
-          <Spacer.Column numberOfSpaces={heroMarginTop} />
-          <ThreeShapesTicket>
-            <BookingDetailsTicketContent
-              booking={booking}
-              activationCodeFeatureEnabled={activationCodeFeatureEnabled}
-            />
-          </ThreeShapesTicket>
-        </HeroHeader>
-
+        <HeroHeader type="offer" imageHeight={blurImageHeight} imageUrl={offer.image?.url} />
+        <Spacer.Column numberOfSpaces={heroMarginTop} />
+        <Ticket booking={booking} activationCodeFeatureEnabled={activationCodeFeatureEnabled} />
         <ViewWithPadding>
           <Spacer.Column numberOfSpaces={4} />
           <OfferRules>{offerRules}</OfferRules>

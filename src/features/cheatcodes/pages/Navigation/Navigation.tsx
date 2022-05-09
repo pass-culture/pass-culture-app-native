@@ -384,7 +384,7 @@ export function Navigation(): JSX.Element {
         </Row>
         <Row half>
           <ButtonPrimary
-            wording={'Ticket swipper'}
+            wording={'Ticket swiper'}
             onPress={() => navigate('SwipperTicketPageTest')}
           />
         </Row>

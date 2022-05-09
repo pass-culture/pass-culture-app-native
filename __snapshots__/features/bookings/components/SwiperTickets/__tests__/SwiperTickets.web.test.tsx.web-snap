@@ -11,7 +11,7 @@ Object {
       >
         <div
           class="css-view-1dbjc4n"
-          style="align-items: flex-end; flex-direction: row;"
+          style="align-items: flex-end; flex-direction: row; padding-top: 8px; padding-bottom: 8px;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -43,7 +43,7 @@ Object {
                   <h1
                     aria-level="1"
                     class="css-reset-4rbku5 css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                     role="heading"
                     style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px; max-width: 100%; padding-right: 8px; padding-left: 8px; text-align: center;"
                   >
@@ -65,7 +65,7 @@ Object {
                       <h2
                         aria-level="2"
                         class="css-reset-4rbku5 css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                         role="heading"
                         style="color: rgb(235, 0, 85); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; padding-bottom: 16px; text-align: center;"
                       >
@@ -75,12 +75,13 @@ Object {
                     <h1
                       aria-level="1"
                       class="css-reset-4rbku5 css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                       role="heading"
                       style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-bottom: 12px; max-width: 100%; padding-right: 8px; padding-left: 8px; text-align: center;"
                     >
                       <span
                         class="css-text-901oao css-textHasAncestor-16my406"
+                        dir="ltr"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
                         Place 1/2 :
@@ -91,9 +92,10 @@ Object {
                       />
                       <span
                         class="css-text-901oao css-textHasAncestor-16my406"
+                        dir="ltr"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                       >
-                        Siège A12
+                        Siège A12
                       </span>
                     </h1>
                     <div
@@ -157,7 +159,7 @@ Object {
                   <h1
                     aria-level="1"
                     class="css-reset-4rbku5 css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                     role="heading"
                     style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px; max-width: 100%; padding-right: 8px; padding-left: 8px; text-align: center;"
                   >
@@ -179,7 +181,7 @@ Object {
                       <h2
                         aria-level="2"
                         class="css-reset-4rbku5 css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                         role="heading"
                         style="color: rgb(235, 0, 85); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; padding-bottom: 16px; text-align: center;"
                       >
@@ -247,7 +249,7 @@ Object {
                   <h1
                     aria-level="1"
                     class="css-reset-4rbku5 css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                     role="heading"
                     style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px; max-width: 100%; padding-right: 8px; padding-left: 8px; text-align: center;"
                   >
@@ -269,7 +271,7 @@ Object {
                       <h2
                         aria-level="2"
                         class="css-reset-4rbku5 css-text-901oao"
-                        dir="auto"
+                        dir="ltr"
                         role="heading"
                         style="color: rgb(235, 0, 85); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; padding-bottom: 16px; text-align: center;"
                       >
@@ -279,12 +281,13 @@ Object {
                     <h1
                       aria-level="1"
                       class="css-reset-4rbku5 css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                       role="heading"
                       style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-bottom: 12px; max-width: 100%; padding-right: 8px; padding-left: 8px; text-align: center;"
                     >
                       <span
                         class="css-text-901oao css-textHasAncestor-16my406"
+                        dir="ltr"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                       >
                         Place 2/2 :
@@ -295,9 +298,10 @@ Object {
                       />
                       <span
                         class="css-text-901oao css-textHasAncestor-16my406"
+                        dir="ltr"
                         style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                       >
-                        Siège A14
+                        Siège A14
                       </span>
                     </h1>
                     <div
@@ -335,7 +339,7 @@ Object {
         <div
           class="css-view-1dbjc4n"
           data-testid="swiper-tickets-controls"
-          style="flex-direction: row; margin-top: 20px;"
+          style="flex-direction: row; margin-top: 12px;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -352,7 +356,7 @@ Object {
           >
             <button
               aria-hidden="true"
-              class="sc-iCfMLu edvVML"
+              class="sc-jRQBWg fKFGMw"
               data-testid="button"
               disabled=""
               tabindex="0"
@@ -377,7 +381,7 @@ Object {
             </button>
             <button
               aria-hidden="true"
-              class="sc-iCfMLu edvVML"
+              class="sc-jRQBWg fKFGMw"
               data-testid="button"
               disabled=""
               tabindex="0"
@@ -402,7 +406,7 @@ Object {
             </button>
             <button
               aria-hidden="true"
-              class="sc-iCfMLu edvVML"
+              class="sc-jRQBWg fKFGMw"
               data-testid="button"
               disabled=""
               tabindex="0"
@@ -432,7 +436,7 @@ Object {
           />
           <button
             aria-label="Voir le ticket suivant"
-            class="sc-iCfMLu ivCkkT sc-bYoBSM eIldRo sc-bYoBSM eIldRo"
+            class="sc-jRQBWg fCUEFQ sc-ikJyIC GWkqj sc-ikJyIC GWkqj"
             data-testid="control-button-next"
             tabindex="0"
             type="next"
@@ -460,7 +464,7 @@ Object {
     >
       <div
         class="css-view-1dbjc4n"
-        style="align-items: flex-end; flex-direction: row;"
+        style="align-items: flex-end; flex-direction: row; padding-top: 8px; padding-bottom: 8px;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -492,7 +496,7 @@ Object {
                 <h1
                   aria-level="1"
                   class="css-reset-4rbku5 css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   role="heading"
                   style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px; max-width: 100%; padding-right: 8px; padding-left: 8px; text-align: center;"
                 >
@@ -514,7 +518,7 @@ Object {
                     <h2
                       aria-level="2"
                       class="css-reset-4rbku5 css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                       role="heading"
                       style="color: rgb(235, 0, 85); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; padding-bottom: 16px; text-align: center;"
                     >
@@ -524,12 +528,13 @@ Object {
                   <h1
                     aria-level="1"
                     class="css-reset-4rbku5 css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                     role="heading"
                     style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-bottom: 12px; max-width: 100%; padding-right: 8px; padding-left: 8px; text-align: center;"
                   >
                     <span
                       class="css-text-901oao css-textHasAncestor-16my406"
+                      dir="ltr"
                       style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                     >
                       Place 1/2 :
@@ -540,9 +545,10 @@ Object {
                     />
                     <span
                       class="css-text-901oao css-textHasAncestor-16my406"
+                      dir="ltr"
                       style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                     >
-                      Siège A12
+                      Siège A12
                     </span>
                   </h1>
                   <div
@@ -606,7 +612,7 @@ Object {
                 <h1
                   aria-level="1"
                   class="css-reset-4rbku5 css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   role="heading"
                   style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px; max-width: 100%; padding-right: 8px; padding-left: 8px; text-align: center;"
                 >
@@ -628,7 +634,7 @@ Object {
                     <h2
                       aria-level="2"
                       class="css-reset-4rbku5 css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                       role="heading"
                       style="color: rgb(235, 0, 85); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; padding-bottom: 16px; text-align: center;"
                     >
@@ -696,7 +702,7 @@ Object {
                 <h1
                   aria-level="1"
                   class="css-reset-4rbku5 css-text-901oao"
-                  dir="auto"
+                  dir="ltr"
                   role="heading"
                   style="color: rgb(22, 22, 23); font-family: Montserrat-Bold; font-size: 20px; line-height: 24px; max-width: 100%; padding-right: 8px; padding-left: 8px; text-align: center;"
                 >
@@ -718,7 +724,7 @@ Object {
                     <h2
                       aria-level="2"
                       class="css-reset-4rbku5 css-text-901oao"
-                      dir="auto"
+                      dir="ltr"
                       role="heading"
                       style="color: rgb(235, 0, 85); font-family: Montserrat-Medium; font-size: 22px; line-height: 28px; padding-bottom: 16px; text-align: center;"
                     >
@@ -728,12 +734,13 @@ Object {
                   <h1
                     aria-level="1"
                     class="css-reset-4rbku5 css-text-901oao"
-                    dir="auto"
+                    dir="ltr"
                     role="heading"
                     style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; margin-bottom: 12px; max-width: 100%; padding-right: 8px; padding-left: 8px; text-align: center;"
                   >
                     <span
                       class="css-text-901oao css-textHasAncestor-16my406"
+                      dir="ltr"
                       style="color: rgb(22, 22, 23); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
                     >
                       Place 2/2 :
@@ -744,9 +751,10 @@ Object {
                     />
                     <span
                       class="css-text-901oao css-textHasAncestor-16my406"
+                      dir="ltr"
                       style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
                     >
-                      Siège A14
+                      Siège A14
                     </span>
                   </h1>
                   <div
@@ -784,7 +792,7 @@ Object {
       <div
         class="css-view-1dbjc4n"
         data-testid="swiper-tickets-controls"
-        style="flex-direction: row; margin-top: 20px;"
+        style="flex-direction: row; margin-top: 12px;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -801,7 +809,7 @@ Object {
         >
           <button
             aria-hidden="true"
-            class="sc-iCfMLu edvVML"
+            class="sc-jRQBWg fKFGMw"
             data-testid="button"
             disabled=""
             tabindex="0"
@@ -826,7 +834,7 @@ Object {
           </button>
           <button
             aria-hidden="true"
-            class="sc-iCfMLu edvVML"
+            class="sc-jRQBWg fKFGMw"
             data-testid="button"
             disabled=""
             tabindex="0"
@@ -851,7 +859,7 @@ Object {
           </button>
           <button
             aria-hidden="true"
-            class="sc-iCfMLu edvVML"
+            class="sc-jRQBWg fKFGMw"
             data-testid="button"
             disabled=""
             tabindex="0"
@@ -881,7 +889,7 @@ Object {
         />
         <button
           aria-label="Voir le ticket suivant"
-          class="sc-iCfMLu ivCkkT sc-bYoBSM eIldRo sc-bYoBSM eIldRo"
+          class="sc-jRQBWg fCUEFQ sc-ikJyIC GWkqj sc-ikJyIC GWkqj"
           data-testid="control-button-next"
           tabindex="0"
           type="next"

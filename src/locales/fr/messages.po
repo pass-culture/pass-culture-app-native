@@ -412,7 +412,8 @@ msgstr "Catégorie de l'offre"
 msgid "Catégories"
 msgstr "Catégories"
 
-#: src/features/bookings/helpers.ts
+#: src/features/bookings/components/SwiperTickets/SwipperTicketPageTest.tsx
+#: src/features/bookings/pages/BookingDetails.tsx
 msgid "Ce code est ta preuve d’achat, il te permet d’accéder à ton offre ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Ce code est ta preuve d’achat, il te permet d’accéder à ton offre ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
@@ -420,7 +421,8 @@ msgstr "Ce code est ta preuve d’achat, il te permet d’accéder à ton offre�
 msgid "Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001)."
 msgstr "Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001)."
 
-#: src/features/bookings/helpers.ts
+#: src/features/bookings/components/SwiperTickets/SwipperTicketPageTest.tsx
+#: src/features/bookings/pages/BookingDetails.tsx
 msgid "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
@@ -1564,6 +1566,7 @@ msgstr ""
 msgid "Ma réservation"
 msgstr "Ma réservation"
 
+#: src/features/bookings/components/SwiperTickets/SwipperTicketPageTest.tsx
 #: src/features/bookings/pages/BookingDetails.tsx
 msgid "Ma réservation pour"
 msgstr "Ma réservation pour"
@@ -1640,6 +1643,7 @@ msgstr "Minimum :"
 msgid "Mise à jour de l'application"
 msgstr "Mise à jour de l'application"
 
+#: src/features/bookings/components/SwiperTickets/SwipperTicketPageTest.tsx
 #: src/features/bookings/pages/BookingDetails.tsx
 #: src/features/offer/pages/OfferBody.tsx
 #: src/features/venue/pages/VenueBody.tsx
@@ -2393,6 +2397,11 @@ msgstr "Retrouve toutes les offres autour de chez toi en activant les données d
 msgid "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !"
 msgstr "Retrouve toutes tes offres en un clin d'oeil en les ajoutant à tes favoris !"
 
+#: src/features/bookings/components/SwiperTickets/SwiperTickets.tsx
+#: src/features/bookings/components/SwiperTickets/SwiperTickets.web.tsx
+msgid "Revenir au ticket précédent"
+msgstr "Revenir au ticket précédent"
+
 #: src/features/auth/forgottenPassword/ForgottenPassword/ForgottenPassword.tsx
 #: src/features/auth/forgottenPassword/ResetPasswordEmailSent/ResetPasswordEmailSent.tsx
 #: src/features/auth/login/Login.tsx
@@ -2660,6 +2669,10 @@ msgstr "Supprimer l'offre {0} de mes favoris"
 #: src/features/profile/pages/PersonalData/PersonalData.tsx
 msgid "Supprimer mon compte"
 msgstr "Supprimer mon compte"
+
+#: src/features/navigation/RootNavigator/routes.ts
+msgid "SwipperTicketPageTest"
+msgstr "SwipperTicketPageTest"
 
 #: src/features/identityCheck/pages/profile/SetStatus.tsx
 msgid "Sélectionne ton statut"
@@ -3272,9 +3285,15 @@ msgstr "Voir la suite de la description"
 msgid "Voir le détail de l'offre"
 msgstr "Voir le détail de l'offre"
 
+#: src/features/bookings/components/SwiperTickets/SwipperTicketPageTest.tsx
 #: src/features/bookings/pages/BookingDetails.tsx
 msgid "Voir le détail de l’offre"
 msgstr "Voir le détail de l’offre"
+
+#: src/features/bookings/components/SwiperTickets/SwiperTickets.tsx
+#: src/features/bookings/components/SwiperTickets/SwiperTickets.web.tsx
+msgid "Voir le ticket suivant"
+msgstr "Voir le ticket suivant"
 
 #: src/features/offer/services/useCtaWordingAndAction.ts
 msgid "Voir les disponibilités"
@@ -3608,6 +3627,14 @@ msgstr "Retrouve \"{name}\" sur le pass Culture"
 #: src/features/profile/pages/DeleteProfile/ConfirmDeleteProfile.tsx
 msgid "si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau"
 msgstr "si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau"
+
+#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+msgid "siège"
+msgstr "Siège {seat}"
+
+#: src/features/bookings/components/BookingDetailsTicketContent.tsx
+msgid "siège avec nombre de sièges"
+msgstr "Place {seat} :"
 
 #: src/features/offer/pages/OfferDescription.tsx
 #: src/features/offer/pages/OfferDescription.tsx
