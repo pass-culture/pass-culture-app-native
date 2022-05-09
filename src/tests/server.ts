@@ -140,6 +140,7 @@ function requestSettingsSuccess(
     enableNativeEacIndividual: false,
     accountCreationMinimumAge: 15,
     allowAccountReactivation: false,
+    appEnableSearchHomepageRework: false,
   }
 ) {
   return rest.get<SettingsResponse>(env.API_BASE_URL + '/native/v1/settings', (_req, res, ctx) => {

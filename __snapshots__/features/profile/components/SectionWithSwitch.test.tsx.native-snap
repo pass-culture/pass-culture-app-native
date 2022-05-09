@@ -44,10 +44,10 @@ exports[`<SectionWithSwitch/> should display different if isDesktopViewport or w
 +     toggleLabel={true}
     >
       <Text
+        htmlFor=\\"testUuidV4\\"
         style={
           Array [
-            Object {
-@@ -56,10 +59,24 @@
+@@ -57,10 +60,24 @@
             \\"flexDirection\\": \\"row\\",
           },
         ]

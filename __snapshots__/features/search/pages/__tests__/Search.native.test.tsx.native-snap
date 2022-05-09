@@ -48,20 +48,49 @@ exports[`Search component should render correctly 1`] = `
     }
   />
   <View
+    height={32}
     marginBottom={24}
-    marginTop={8}
+    marginTop={24}
     style={
       Array [
         Object {
           "alignSelf": "center",
-          "height": 48,
+          "height": 32,
           "marginBottom": 24,
-          "marginTop": 8,
+          "marginTop": 24,
+          "position": "relative",
           "width": "90%",
+          "zIndex": 1,
         },
       ]
     }
+    testID="searchBoxReworkContainer"
   >
+    <Text
+      htmlFor="testUuidV4"
+      style={
+        Array [
+          Object {
+            "color": "#ffffff",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 18,
+            "lineHeight": 22,
+          },
+        ]
+      }
+    >
+      Recherche une offre
+    </Text>
+    <View
+      numberOfSpaces={2}
+      style={
+        Array [
+          Object {
+            "height": 8,
+          },
+        ]
+      }
+    />
     <Text
       style={
         Array [
@@ -76,7 +105,7 @@ exports[`Search component should render correctly 1`] = `
       Recherche une offre, un titre, un lieu...
     </Text>
     <View
-      focusOutlineColor="#ffffff"
+      focusOutlineColor="#161617"
       height="regular"
       isDisabled={false}
       isError={false}
@@ -104,6 +133,9 @@ exports[`Search component should render correctly 1`] = `
             "shadowOpacity": 0.15,
             "shadowRadius": 6,
             "width": "100%",
+          },
+          Object {
+            "outlineOffset": 0,
           },
         ]
       }
@@ -148,7 +180,7 @@ exports[`Search component should render correctly 1`] = `
         onChangeText={[Function]}
         onFocus={[Function]}
         onSubmitEditing={[Function]}
-        placeholder="Titre, artiste, lieu..."
+        placeholder="Offre, artiste..."
         placeholderTextColor="#696A6F"
         returnKeyType="search"
         selectionColor="#696A6F"

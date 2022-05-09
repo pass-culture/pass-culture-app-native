@@ -31,7 +31,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
     focusOutlineColor,
   } = customProps
   const { value = '' } = nativeProps
-  const searchInputID = uuidv4()
+  const searchInputID = props.searchInputID ?? uuidv4()
 
   function onFocus() {
     setIsFocus(true)
@@ -49,7 +49,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}
-      <InputContainer
+      <StyledInputContainer
         inputHeight={props.inputHeight}
         isFocus={isFocus}
         focusOutlineColor={focusOutlineColor}>
@@ -80,7 +80,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
             <Invalidate />
           </RightIconContainer>
         )}
-      </InputContainer>
+      </StyledInputContainer>
     </React.Fragment>
   )
 }
@@ -100,3 +100,7 @@ const Invalidate = styled(DefaultInvalidate).attrs(({ theme }) => ({
 const BaseTextInput = styled(DefaultBaseTextInput).attrs(({ theme }) => ({
   selectionColor: theme.colors.greyDark,
 }))``
+
+const StyledInputContainer = styled(InputContainer)({
+  outlineOffset: 0,
+})

@@ -1917,6 +1917,10 @@ msgstr "Offre à deux"
 msgid "Offre épuisée"
 msgstr "Offre épuisée"
 
+#: src/features/search/components/SearchBox.tsx
+msgid "Offre, artiste..."
+msgstr "Offre, artiste..."
+
 #: src/features/venue/components/VenueOffers.tsx
 msgid "Offres"
 msgstr "Offres"
@@ -2289,6 +2293,10 @@ msgstr "Recherche par catégorie"
 #: src/features/navigation/RootNavigator/routes.ts
 msgid "Recherche par localisation"
 msgstr "Recherche par localisation"
+
+#: src/features/search/components/SearchHeader.tsx
+msgid "Recherche une offre"
+msgstr "Recherche une offre"
 
 #: src/features/search/components/SearchBox.tsx
 msgid "Recherche une offre, un titre, un lieu..."
@@ -2692,10 +2700,6 @@ msgstr "Titre de séjour, carte d'identité ou passeport."
 #: src/features/identityCheck/components/DMSModal.tsx
 msgid "Titre de séjour, carte d'identité, ou passeport."
 msgstr "Titre de séjour, carte d'identité, ou passeport."
-
-#: src/features/search/components/SearchBox.tsx
-msgid "Titre, artiste, lieu..."
-msgstr "Titre, artiste, lieu..."
 
 #: src/features/profile/pages/AfterChangeEmailValidationBuffer/AfterChangeEmailValidationBuffer.tsx
 msgid "Ton adresse e-mail a été modifiée. Tu peux te reconnecter avec ta nouvelle adresse e-mail."
