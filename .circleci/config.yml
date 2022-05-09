@@ -774,6 +774,17 @@ jobs:
       - invalidate-cache:
           url_map_name: production-decliweb-url-map
 
+  deploy-proxy-testing:
+    executor: node
+    working_directory: ~/pass-culture
+    steps:
+      - checkout
+      - install_node_modules_proxy
+      - run:
+          name: Deploy
+          command: yarn --cwd server deploy:testing
+
+
 ###################
 #  WORKFLOWS
 ###################
@@ -1001,3 +1012,11 @@ workflows:
             - checkout-and-install-deps
             - test-lint-and-types
             - test-web
+      - deploy-proxy-testing:
+          filters:
+            tags:
+              only:
+                - master
+          context:
+            - GCP
+            - GCP_APP_NATIVE_PROD
