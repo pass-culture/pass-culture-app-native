@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { InputLabel } from 'ui/components/InputLabel'
+import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { CheckboxInput } from 'ui/components/inputs/CheckboxInput'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
 import { EmailInput } from 'ui/components/inputs/EmailInput'

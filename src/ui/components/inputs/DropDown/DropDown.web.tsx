@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { v4 as uuidv4 } from 'uuid'
 
-import { InputLabel } from 'ui/components/InputLabel.web'
+import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { ContainerWithMaxWidth } from 'ui/components/inputs/ContainerWithMaxWidth'
 import { ArrowDown } from 'ui/svg/icons/ArrowDown'
 import { getSpacingString, Spacer } from 'ui/theme'
