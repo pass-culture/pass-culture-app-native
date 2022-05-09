@@ -11,7 +11,7 @@ Object {
       >
         <div
           class="css-view-1dbjc4n"
-          style="align-items: flex-end; flex-direction: row;"
+          style="align-items: flex-end; flex-direction: row; padding-top: 8px; padding-bottom: 8px;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -335,7 +335,7 @@ Object {
         <div
           class="css-view-1dbjc4n"
           data-testid="swiper-tickets-controls"
-          style="flex-direction: row; margin-top: 20px;"
+          style="flex-direction: row; margin-top: 12px;"
         >
           <div
             class="css-view-1dbjc4n"
@@ -460,7 +460,7 @@ Object {
     >
       <div
         class="css-view-1dbjc4n"
-        style="align-items: flex-end; flex-direction: row;"
+        style="align-items: flex-end; flex-direction: row; padding-top: 8px; padding-bottom: 8px;"
       >
         <div
           class="css-view-1dbjc4n"
@@ -784,7 +784,7 @@ Object {
       <div
         class="css-view-1dbjc4n"
         data-testid="swiper-tickets-controls"
-        style="flex-direction: row; margin-top: 20px;"
+        style="flex-direction: row; margin-top: 12px;"
       >
         <div
           class="css-view-1dbjc4n"

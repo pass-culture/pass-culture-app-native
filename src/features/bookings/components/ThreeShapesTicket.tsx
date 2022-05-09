@@ -12,6 +12,7 @@ type Props = PropsWithChildren<{
 }>
 
 const isWeb = Platform.OS === 'web'
+const isAndroid = Platform.OS === 'android'
 export function ThreeShapesTicket(props: Props) {
   const { appContentWidth, ticket } = useTheme()
   const defaultWidth = Math.min(ticket.maxWidth, appContentWidth - getSpacing(15))
@@ -49,7 +50,7 @@ const Container = styled.View(({ theme }) => {
 
 const TicketContent = styled.View<{ width: number }>(({ theme, width }) => {
   let borders = {}
-  if (isWeb) {
+  if (isWeb || isAndroid) {
     borders = {
       borderLeftWidth: 2,
       borderRightWidth: 2,

@@ -70,6 +70,7 @@ const Container = styled.View({
 const TicketsContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'flex-end',
+  paddingVertical: getSpacing(2),
 })
 
 const Ticket = styled.View<{ showControls: boolean; translateValue: number }>(

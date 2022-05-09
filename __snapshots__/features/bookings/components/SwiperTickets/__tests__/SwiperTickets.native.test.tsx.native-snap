@@ -16,7 +16,7 @@ exports[`<SwiperTickets/> should render properly 1`] = `
     bounces={false}
     contentContainerStyle={
       Object {
-        "paddingHorizontal": 93.75,
+        "paddingHorizontal": 91.875,
       }
     }
     data={
@@ -222,7 +222,7 @@ exports[`<SwiperTickets/> should render properly 1`] = `
     renderItem={[Function]}
     scrollEventThrottle={50}
     showsHorizontalScrollIndicator={false}
-    snapToInterval={578.5}
+    snapToInterval={582.25}
     stickyHeaderIndices={Array []}
     viewabilityConfigCallbackPairs={Array []}
   >
@@ -244,11 +244,12 @@ exports[`<SwiperTickets/> should render properly 1`] = `
               Object {
                 "alignItems": "center",
                 "justifyContent": "flex-end",
-                "width": 562.5,
+                "paddingVertical": 8,
+                "width": 566.25,
               },
             ]
           }
-          width={562.5}
+          width={566.25}
         >
           <View
             style={
@@ -503,11 +504,12 @@ exports[`<SwiperTickets/> should render properly 1`] = `
               Object {
                 "alignItems": "center",
                 "justifyContent": "flex-end",
-                "width": 562.5,
+                "paddingVertical": 8,
+                "width": 566.25,
               },
             ]
           }
-          width={562.5}
+          width={566.25}
         >
           <View
             style={
@@ -707,11 +709,12 @@ exports[`<SwiperTickets/> should render properly 1`] = `
               Object {
                 "alignItems": "center",
                 "justifyContent": "flex-end",
-                "width": 562.5,
+                "paddingVertical": 8,
+                "width": 566.25,
               },
             ]
           }
-          width={562.5}
+          width={566.25}
         >
           <View
             style={
@@ -946,7 +949,7 @@ exports[`<SwiperTickets/> should render properly 1`] = `
       Array [
         Object {
           "flexDirection": "row",
-          "marginTop": 20,
+          "marginTop": 12,
         },
       ]
     }
