@@ -21,6 +21,7 @@ export const abTesting = {
     const parameters = firebaseRemoteConfig().getAll()
     return {
       test_param: parameters.test_param.asString() as CustomRemoteConfig['test_param'],
+      homeEntryId: parameters.homeEntryId.asString() as CustomRemoteConfig['homeEntryId'],
     }
   },
 }

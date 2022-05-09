@@ -18,6 +18,7 @@ import { RecommendationPane, ProcessedModule } from 'features/home/contentful/mo
 import { useShowSkeleton } from 'features/home/pages/useShowSkeleton'
 import { isOfferModuleTypeguard, isVenuesModuleTypeguard } from 'features/home/typeguards'
 import { UseRouteType } from 'features/navigation/RootNavigator'
+import { useABTestingContext } from 'libs/ABTesting'
 import { analytics, isCloseToBottom } from 'libs/analytics'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { Spacer } from 'ui/theme'
@@ -62,7 +63,8 @@ const renderModule = ({ item, index }: { item: ProcessedModule; index: number })
 
 export const Home: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Home'>>()
-  const modules = useHomepageModules(params?.entryId) || []
+  const { homeEntryId } = useABTestingContext()
+  const modules = useHomepageModules(params?.entryId ?? homeEntryId) || []
   const logHasSeenAllModules = useFunctionOnce(() => analytics.logAllModulesSeen(modules.length))
   const showSkeleton = useShowSkeleton()
 

@@ -5,8 +5,8 @@ import firebase from 'firebase/compat/app'
 
 import { FIREBASE_CONFIG } from 'libs/firebase/firebaseConfig'
 
-const initializeApp = (): void => {
-  firebase.initializeApp(FIREBASE_CONFIG)
+const initializeApp = () => {
+  return firebase.initializeApp(FIREBASE_CONFIG)
 }
 
 export default initializeApp
