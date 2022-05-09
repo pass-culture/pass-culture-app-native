@@ -36,6 +36,7 @@ export interface BookingWithExternalBookingInformationsReponse {
   ongoing_bookings: Array<BookingReponseBis>
 }
 
+// TODO(LucasBeneston): remove this file when use a real offer with 2 tickets for PO review
 export const bookingsWithExternalBookingInformationsSnap: BookingWithExternalBookingInformationsReponse =
   {
     ended_bookings: [

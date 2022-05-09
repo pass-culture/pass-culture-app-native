@@ -440,7 +440,7 @@ exports[`<SwiperTickets/> should render properly 1`] = `
                         ]
                       }
                     >
-                      Siège A12
+                      Siège A12
                     </Text>
                   </Text>
                   <View
@@ -905,7 +905,7 @@ exports[`<SwiperTickets/> should render properly 1`] = `
                         ]
                       }
                     >
-                      Siège A14
+                      Siège A14
                     </Text>
                   </Text>
                   <View

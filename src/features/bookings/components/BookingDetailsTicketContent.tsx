@@ -179,14 +179,23 @@ const TicketBody = ({ booking, externalBookingsInfos }: TicketBodyProps) => {
   const subcategoryShouldHaveQrCode = !notQrCodeSubcategories.includes(subcategoryOffer)
 
   if (externalBookingsInfos) {
-    const currentSeatIndex = externalBookingsInfos.seatIndex
+    const currentSeatWithIndex = t({
+      id: 'siège avec nombre de sièges',
+      values: { seat: externalBookingsInfos.seatIndex },
+      message: 'Place\u00a0{seat}\u00a0:',
+    })
+    const seat = t({
+      id: 'siège',
+      values: { seat: externalBookingsInfos?.seat?.toUpperCase() },
+      message: 'Siège\u00a0{seat}',
+    })
     return (
       <React.Fragment>
         {!!externalBookingsInfos.seat && (
           <SeatContainer>
-            <Typo.Caption>{t`Place\u00a0${currentSeatIndex}\u00a0:`}</Typo.Caption>
+            <Typo.Caption>{currentSeatWithIndex}</Typo.Caption>
             <Spacer.Row numberOfSpaces={1} />
-            <Typo.Body>{t`Siège ${externalBookingsInfos.seat.toUpperCase()}`}</Typo.Body>
+            <Typo.Body>{seat}</Typo.Body>
           </SeatContainer>
         )}
         <QrCodeView qrCodeData={externalBookingsInfos.barcode} />
