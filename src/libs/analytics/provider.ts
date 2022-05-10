@@ -1,3 +1,5 @@
+import { Platform } from 'react-native'
+
 import {
   AGENT_TYPE,
   EVENT_PAGE_VIEW_NAME,
@@ -18,8 +20,10 @@ export const analyticsProvider: AnalyticsProvider = {
     firebaseAnalytics.setAnalyticsCollectionEnabled(false)
   },
   setDefaultEventParameters(params: Record<string, string> | undefined) {
-    // only apply on native devices, mocked on the Web
-    firebaseAnalytics.setDefaultEventParameters(params)
+    // only apply on native devices, does not exist on the Web
+    if (Platform.OS !== 'web') {
+      firebaseAnalytics.setDefaultEventParameters(params)
+    }
   },
   setUserId(userId) {
     firebaseAnalytics.setUserId(userId.toString())
