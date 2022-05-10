@@ -1,7 +1,12 @@
 import { t } from '@lingui/macro'
 import { isSameDay, addDays, addHours, format } from 'date-fns'
 
-import { BookingStockResponse, SettingsResponse, WithdrawalTypeEnum } from 'api/gen'
+import {
+  BookingStockResponse,
+  ExternalBookingResponse,
+  SettingsResponse,
+  WithdrawalTypeEnum,
+} from 'api/gen'
 import {
   formatToCompleteFrenchDate,
   formatToCompleteFrenchDateTime,
@@ -263,15 +268,10 @@ export function getBookingLabelForActivationCode(booking: Booking) {
   return t`À activer`
 }
 
-type TicketDouble = {
-  seat: string | null
-  barcode: string
-}
-
 export function getOfferRules(
   properties: BookingProperties,
   activationCodeFeatureEnabled?: boolean,
-  externalBookingsInfos?: TicketDouble[]
+  externalBookingsInfos?: ExternalBookingResponse[]
 ): string {
   const { hasActivationCode, isDigital, isPhysical, isEvent } = properties
   if (hasActivationCode && activationCodeFeatureEnabled)
@@ -279,11 +279,16 @@ export function getOfferRules(
   if (isDigital)
     return t`Ce code à 6 caractères est ta preuve d’achat\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
   if (externalBookingsInfos) {
-    const offerRulesExternalBooking =
+    const soloOrDuoText =
       externalBookingsInfos.length === 1
         ? { firstPart: 'ce QR code', secondPart: 'le revendre ou le céder' }
         : { firstPart: 'ces QR codes', secondPart: 'les revendre ou les céder' }
-    return t`Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ${offerRulesExternalBooking.firstPart}. N’oublie pas que tu n’as pas le droit de ${offerRulesExternalBooking.secondPart}.`
+    return t({
+      id: 'external booking duo',
+      values: { firstPart: soloOrDuoText.firstPart, secondPart: soloOrDuoText.secondPart },
+      message:
+        'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et {firstPart}. N’oublie pas que tu n’as pas le droit de {secondPart}.',
+    })
   }
   if (isPhysical || isEvent)
     return t`Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
