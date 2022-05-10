@@ -318,6 +318,7 @@ exports[`<SetName/> should render correctly 1`] = `
                   }
                 >
                   <Text
+                    htmlFor="testUuidV4"
                     style={
                       Array [
                         Object {
@@ -458,6 +459,7 @@ exports[`<SetName/> should render correctly 1`] = `
                   }
                 >
                   <Text
+                    htmlFor="testUuidV4"
                     style={
                       Array [
                         Object {

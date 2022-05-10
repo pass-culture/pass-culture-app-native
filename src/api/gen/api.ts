@@ -1710,6 +1710,11 @@ export interface SettingsResponse {
    * @type {boolean}
    * @memberof SettingsResponse
    */
+  appEnableSearchHomepageRework: boolean
+  /**
+   * @type {boolean}
+   * @memberof SettingsResponse
+   */
   autoActivateDigitalBookings: boolean
   /**
    * @type {DepositAmountsByAge}
@@ -2212,6 +2217,7 @@ export enum UserRole {
   'BENEFICIARY' = 'BENEFICIARY',
   'PRO' = 'PRO',
   'UNDERAGE_BENEFICIARY' = 'UNDERAGE_BENEFICIARY',
+  'TEST' = 'TEST',
 }
 /**
  * @export

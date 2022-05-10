@@ -13,11 +13,11 @@ exports[`Search component should render correctly 1`] = `
   }
 >
   <View
-    height={96}
+    height={112}
     style={
       Array [
         Object {
-          "height": 96,
+          "height": 112,
           "left": 0,
           "overflow": "hidden",
           "position": "absolute",
@@ -48,15 +48,13 @@ exports[`Search component should render correctly 1`] = `
     }
   />
   <View
-    marginBottom={24}
-    marginTop={8}
+    height={48}
     style={
       Array [
         Object {
           "alignSelf": "center",
           "height": 48,
-          "marginBottom": 24,
-          "marginTop": 8,
+          "marginVertical": 24,
           "width": "90%",
         },
       ]
@@ -76,7 +74,7 @@ exports[`Search component should render correctly 1`] = `
       Recherche une offre, un titre, un lieu...
     </Text>
     <View
-      focusOutlineColor="#ffffff"
+      focusOutlineColor="#161617"
       height="regular"
       isDisabled={false}
       isError={false}
@@ -104,6 +102,9 @@ exports[`Search component should render correctly 1`] = `
             "shadowOpacity": 0.15,
             "shadowRadius": 6,
             "width": "100%",
+          },
+          Object {
+            "outlineOffset": 0,
           },
         ]
       }
@@ -148,7 +149,7 @@ exports[`Search component should render correctly 1`] = `
         onChangeText={[Function]}
         onFocus={[Function]}
         onSubmitEditing={[Function]}
-        placeholder="Titre, artiste, lieu..."
+        placeholder="Offre, artiste..."
         placeholderTextColor="#696A6F"
         returnKeyType="search"
         selectionColor="#696A6F"

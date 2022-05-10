@@ -193,6 +193,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
               }
             />
             <Text
+              htmlFor="testUuidV4"
               style={
                 Array [
                   Object {
@@ -244,6 +245,9 @@ exports[`<SetAddress/> should render correctly 1`] = `
                     "shadowOpacity": 0.15,
                     "shadowRadius": 6,
                     "width": "100%",
+                  },
+                  Object {
+                    "outlineOffset": 0,
                   },
                 ]
               }

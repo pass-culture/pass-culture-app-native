@@ -2636,6 +2636,8 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <Text
+              htmlFor="testUuidV4"
+              id="testUuidV4"
               style={
                 Array [
                   Object {
@@ -2801,6 +2803,8 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <Text
+              htmlFor="testUuidV4"
+              id="testUuidV4"
               style={
                 Array [
                   Object {
@@ -2966,6 +2970,8 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <Text
+              htmlFor="testUuidV4"
+              id="testUuidV4"
               style={
                 Array [
                   Object {
@@ -3131,6 +3137,8 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <Text
+              htmlFor="testUuidV4"
+              id="testUuidV4"
               style={
                 Array [
                   Object {
@@ -3321,6 +3329,8 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <Text
+              htmlFor="testUuidV4"
+              id="testUuidV4"
               style={
                 Array [
                   Object {

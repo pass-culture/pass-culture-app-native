@@ -3,7 +3,7 @@ import { TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { InputLabel } from 'ui/components/InputLabel'
+import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { ContainerWithMaxWidth } from 'ui/components/inputs/ContainerWithMaxWidth'
 import { InputContainer } from 'ui/components/inputs/InputContainer'
 import { Spacer } from 'ui/theme'

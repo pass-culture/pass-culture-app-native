@@ -6,7 +6,7 @@ Object {
   "baseElement": <body>
     <div>
       <nav
-        class="sc-bYoBSM beAZGF"
+        class="sc-kLwhqv gMIamO"
         id="tabBarID"
       >
         <div
@@ -22,10 +22,10 @@ Object {
               style="width: 16px;"
             />
             <ul
-              class="sc-bqiRlB sc-kLwhqv fZQgdx fcwiXt"
+              class="sc-bqiRlB sc-ikJyIC fZQgdx iGXYCt"
             >
               <li
-                class="sc-ikJyIC duZljH"
+                class="sc-jJoQJp dCTevw"
               >
                 <div
                   aria-current="page"
@@ -77,7 +77,7 @@ Object {
                 </div>
               </li>
               <li
-                class="sc-ikJyIC duZljH"
+                class="sc-jJoQJp dCTevw"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -113,7 +113,7 @@ Object {
                 </div>
               </li>
               <li
-                class="sc-ikJyIC duZljH"
+                class="sc-jJoQJp dCTevw"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -149,7 +149,7 @@ Object {
                 </div>
               </li>
               <li
-                class="sc-ikJyIC duZljH"
+                class="sc-jJoQJp dCTevw"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -185,7 +185,7 @@ Object {
                 </div>
               </li>
               <li
-                class="sc-ikJyIC duZljH"
+                class="sc-jJoQJp dCTevw"
               >
                 <div
                   class="css-view-1dbjc4n"
@@ -236,7 +236,7 @@ Object {
   </body>,
   "container": <div>
     <nav
-      class="sc-bYoBSM beAZGF"
+      class="sc-kLwhqv gMIamO"
       id="tabBarID"
     >
       <div
@@ -252,10 +252,10 @@ Object {
             style="width: 16px;"
           />
           <ul
-            class="sc-bqiRlB sc-kLwhqv fZQgdx fcwiXt"
+            class="sc-bqiRlB sc-ikJyIC fZQgdx iGXYCt"
           >
             <li
-              class="sc-ikJyIC duZljH"
+              class="sc-jJoQJp dCTevw"
             >
               <div
                 aria-current="page"
@@ -307,7 +307,7 @@ Object {
               </div>
             </li>
             <li
-              class="sc-ikJyIC duZljH"
+              class="sc-jJoQJp dCTevw"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -343,7 +343,7 @@ Object {
               </div>
             </li>
             <li
-              class="sc-ikJyIC duZljH"
+              class="sc-jJoQJp dCTevw"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -379,7 +379,7 @@ Object {
               </div>
             </li>
             <li
-              class="sc-ikJyIC duZljH"
+              class="sc-jJoQJp dCTevw"
             >
               <div
                 class="css-view-1dbjc4n"
@@ -415,7 +415,7 @@ Object {
               </div>
             </li>
             <li
-              class="sc-ikJyIC duZljH"
+              class="sc-jJoQJp dCTevw"
             >
               <div
                 class="css-view-1dbjc4n"

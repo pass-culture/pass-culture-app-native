@@ -22,6 +22,7 @@ type CustomSearchInputProps = {
   accessibilityDescribedBy?: string
   onPressRightIcon?: () => void
   focusOutlineColor?: ColorsEnum
+  searchInputID?: string
 }
 
 export type RNTextInputProps = Pick<

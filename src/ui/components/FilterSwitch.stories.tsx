@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
-import { InputLabel } from 'ui/components/InputLabel'
+import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 
 import FilterSwitch from './FilterSwitch'
 

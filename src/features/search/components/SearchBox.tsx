@@ -30,7 +30,11 @@ const LeftIcon: React.FC<{ onPressArrowBack: () => void }> = ({ onPressArrowBack
   return <MagnifyingGlass />
 }
 
-export const SearchBox: React.FC = () => {
+type SearchBoxProps = {
+  searchInputID: string
+}
+
+export const SearchBox: React.FC<SearchBoxProps> = ({ searchInputID }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState, dispatch } = useSearch()
   const { searchState: stagedSearchState, dispatch: stagedDispatch } = useStagedSearch()
@@ -84,9 +88,10 @@ export const SearchBox: React.FC = () => {
     <React.Fragment>
       <HiddenTitle>{t`Recherche une offre, un titre, un lieu... `}</HiddenTitle>
       <StyledSearchInput
+        searchInputID={searchInputID}
         value={query}
         onChangeText={setQuery}
-        placeholder={t`Titre, artiste, lieu...`}
+        placeholder={t`Offre, artiste...`}
         autoFocus={false}
         inputHeight="regular"
         LeftIcon={() => <LeftIcon onPressArrowBack={onPressArrowBack} />}
@@ -104,8 +109,10 @@ export const SearchBox: React.FC = () => {
 }
 
 const StyledSearchInput = styled(SearchInput).attrs(({ theme }) => ({
-  focusOutlineColor: theme.colors.white,
-}))``
+  focusOutlineColor: theme.colors.black,
+}))({
+  outlineOffset: 0,
+})
 
 const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,

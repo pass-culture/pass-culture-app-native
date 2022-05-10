@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { InlineSection, TitleWithCount } from 'features/search/atoms'
 import FilterSwitch from 'ui/components/FilterSwitch'
-import { InputLabel } from 'ui/components/InputLabel'
+import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 
 interface Props {
   active?: boolean

@@ -1,4 +1,5 @@
 import React from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnum } from 'api/gen'
@@ -32,9 +33,10 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 jest.mock('libs/analytics')
 
 describe('SearchBox component', () => {
+  const searchInputID = uuidv4()
   it('should call mockStagedDispatch() when typing', () => {
-    const { getByPlaceholderText } = render(<SearchBox />)
-    const searchInput = getByPlaceholderText('Titre, artiste, lieu...')
+    const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
+    const searchInput = getByPlaceholderText('Offre, artiste...')
     expect(mockStagedDispatch).toBeCalledWith({ type: 'SET_QUERY', payload: '' })
     fireEvent.changeText(searchInput, 'Ma')
     expect(mockStagedDispatch).toBeCalledWith({ type: 'SET_QUERY', payload: 'Ma' })
@@ -43,8 +45,8 @@ describe('SearchBox component', () => {
   })
 
   it('should call logSearchQuery on submit', () => {
-    const { getByPlaceholderText } = render(<SearchBox />)
-    const searchInput = getByPlaceholderText('Titre, artiste, lieu...')
+    const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
+    const searchInput = getByPlaceholderText('Offre, artiste...')
 
     fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
 

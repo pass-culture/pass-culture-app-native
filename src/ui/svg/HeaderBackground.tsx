@@ -19,7 +19,7 @@ const NotMemoizedHeaderBackground: React.FC<Props> = (props) => {
   const { id: id4, fill: fill4 } = svgIdentifier()
   return (
     <Svg
-      preserveAspectRatio="none"
+      preserveAspectRatio="xMidYMin slice"
       height={height}
       width={width}
       viewBox={`0 0 375 352`}
