@@ -11,6 +11,7 @@ import {
   getBookingLabels,
   getBookingProperties,
   getEventOnSiteWithdrawLabel,
+  getOfferRules,
 } from 'features/bookings/helpers'
 
 describe('getBookingLabelForActivationCode', () => {
@@ -505,3 +506,69 @@ function getBookingWithWithdrawalDelay(booking: Booking, withdrawalDelay: number
     },
   }
 }
+
+describe('getOfferRules', () => {
+  it('should return the correct message if hasActivationCode && activationCodeFeatureEnabled', () => {
+    const properties = {
+      hasActivationCode: true,
+      isDigital: false,
+      isPhysical: false,
+      isEvent: false,
+    }
+    const activationCodeFeatureEnabled = true
+    const offerRules = getOfferRules(properties, activationCodeFeatureEnabled)
+    expect(offerRules).toEqual(
+      'Ce code est ta preuve d’achat, il te permet d’accéder à ton offre\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
+    )
+  })
+
+  it('should return the correct message if isDigital', () => {
+    const properties = {
+      hasActivationCode: false,
+      isDigital: true,
+      isPhysical: false,
+      isEvent: false,
+    }
+    const offerRules = getOfferRules(properties)
+    expect(offerRules).toEqual(
+      'Ce code à 6 caractères est ta preuve d’achat\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
+    )
+  })
+
+  it('should return the correct message if isPhysical', () => {
+    const properties = {
+      hasActivationCode: false,
+      isDigital: false,
+      isPhysical: true,
+      isEvent: false,
+    }
+    const offerRules = getOfferRules(properties)
+    expect(offerRules).toEqual(
+      'Tu dois présenter ta carte d’identité et ton code à 6 caractères pour profiter de ta réservation\u00a0! N’oublie pas que tu n’as pas le droit de la revendre ou la céder.'
+    )
+  })
+
+  it('should return the correct message if isEvent', () => {
+    const properties = {
+      hasActivationCode: false,
+      isDigital: false,
+      isPhysical: false,
+      isEvent: true,
+    }
+    const offerRules = getOfferRules(properties)
+    expect(offerRules).toEqual(
+      'Tu dois présenter ta carte d’identité et ton code à 6 caractères pour profiter de ta réservation\u00a0! N’oublie pas que tu n’as pas le droit de la revendre ou la céder.'
+    )
+  })
+
+  it('should return an empty string if isEvent, isPhysical, isDigital and hasActivationCode are false', () => {
+    const properties = {
+      hasActivationCode: false,
+      isDigital: false,
+      isPhysical: false,
+      isEvent: false,
+    }
+    const offerRules = getOfferRules(properties)
+    expect(offerRules).toEqual('')
+  })
+})

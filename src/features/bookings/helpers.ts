@@ -263,6 +263,20 @@ export function getBookingLabelForActivationCode(booking: Booking) {
   return t`À activer`
 }
 
+export function getOfferRules(
+  properties: BookingProperties,
+  activationCodeFeatureEnabled?: boolean
+): string {
+  const { hasActivationCode, isDigital, isPhysical, isEvent } = properties
+  if (hasActivationCode && activationCodeFeatureEnabled)
+    return t`Ce code est ta preuve d’achat, il te permet d’accéder à ton offre\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
+  if (isDigital)
+    return t`Ce code à 6 caractères est ta preuve d’achat\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
+  if (isPhysical || isEvent)
+    return t`Tu dois présenter ta carte d’identité et ton code à 6 caractères pour profiter de ta réservation\u00a0! N’oublie pas que tu n’as pas le droit de la revendre ou la céder.`
+  return ''
+}
+
 export function formatSecondsToString(delay: number) {
   if (delay <= 60 * 30) {
     const delayInMinutes = delay / 60
