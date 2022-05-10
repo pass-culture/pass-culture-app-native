@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react'
 
 import { useUserProfileInfo } from 'features/home/api'
 import { HomeOfferTile } from 'features/home/atoms'
-import { DisplayParametersFields } from 'features/home/contentful'
+import { DisplayParametersFields, RecommendationParametersFields } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
 import { useHomeRecommendedHits } from 'features/home/pages/useHomeRecommendedHits'
 import { analytics } from 'libs/analytics'
@@ -17,12 +17,13 @@ import { CustomListRenderItem } from 'ui/components/Playlist'
 type RecommendationModuleProps = {
   display: DisplayParametersFields
   index: number
+  parameters?: RecommendationParametersFields
 }
 
 const keyExtractor = (item: SearchHit) => item.objectID
 
 export const RecommendationModule = (props: RecommendationModuleProps) => {
-  const { display, index } = props
+  const { display, index, parameters } = props
   const { position } = useGeolocation()
   const { data: profile } = useUserProfileInfo()
   const mapping = useCategoryIdMapping()

@@ -56,7 +56,9 @@ const renderModule = ({ item, index }: { item: ProcessedModule; index: number })
     return <VenuesModule moduleId={item.moduleId} display={item.display} search={item.search} />
 
   if (item instanceof RecommendationPane)
-    return <RecommendationModule index={index} display={item.display} />
+    return (
+      <RecommendationModule index={index} display={item.display} parameters={item.parameters} />
+    )
 
   if (item instanceof ExclusivityPane)
     return (

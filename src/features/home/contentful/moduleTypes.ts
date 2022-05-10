@@ -3,6 +3,7 @@ import {
   DisplayParametersFields,
   SearchParametersFields,
   VenuesSearchParametersFields,
+  RecommendationParametersFields,
 } from './contentful'
 
 export class Offers {
@@ -90,8 +91,17 @@ export class ExclusivityPane {
 
 export class RecommendationPane {
   display: DisplayParametersFields
-  constructor({ display }: { display: DisplayParametersFields }) {
+  parameters?: RecommendationParametersFields
+
+  constructor({
+    display,
+    parameters,
+  }: {
+    display: DisplayParametersFields
+    parameters?: RecommendationParametersFields
+  }) {
     this.display = display
+    this.parameters = parameters
   }
 }
 
