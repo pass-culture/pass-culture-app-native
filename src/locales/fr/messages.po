@@ -3451,10 +3451,6 @@ msgstr "Profite de {deposit}"
 msgid "et si tu as..."
 msgstr "et si tu as..."
 
-#: src/features/bookings/helpers.ts
-msgid "external booking duo"
-msgstr "Pour profiter de ta réservation, tu dois présenter ta carte d’identité et {firstPart}. N’oublie pas que tu n’as pas le droit de {secondPart}."
-
 #: src/features/auth/signup/SetBirthday/BirthdayInformationModal/BirthdayInformationModal.tsx
 msgid "financialHelpMessage"
 msgstr "Entre 15 et 18 ans, tu es éligible à une aide financière progressive allant de {deposit15} à {deposit18} offerte par le Gouvernement."
@@ -3709,6 +3705,10 @@ msgstr "{nbHits, plural, one {# résultat} other {# résultats}}"
 #: src/features/search/atoms/Buttons/ShowResults.tsx
 msgid "{nbHits, plural, one {Afficher # résultat} other {Afficher les # résultats}}"
 msgstr "{nbHits, plural, one {Afficher # résultat} other {Afficher les # résultats}}"
+
+#: src/features/bookings/helpers.ts
+msgid "{numberOfExternalBookings, plural, one {Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce QR code. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.} other {Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ces QR codes. N’oublie pas que tu n’as pas le droit de les revendre ou les céder.}}"
+msgstr "{numberOfExternalBookings, plural, one {Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce QR code. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.} other {Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ces QR codes. N’oublie pas que tu n’as pas le droit de les revendre ou les céder.}}"
 
 #: src/features/bookings/components/OnGoingBookingsList.tsx
 msgid "{onGoingBookingsCount, plural, one {# réservation en cours} other {# réservations en cours}}"

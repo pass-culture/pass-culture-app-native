@@ -105,7 +105,7 @@ export function BookingDetails() {
     !!venueFullAddress && (properties.isEvent || (properties.isPhysical && !properties.isDigital))
   const activationCodeFeatureEnabled = appSettings?.autoActivateDigitalBookings
 
-  const offerRules = getOfferRules(properties, activationCodeFeatureEnabled)
+  const offerRules = getOfferRules(properties, booking, activationCodeFeatureEnabled)
 
   const cancelBooking = () => {
     showCancelModal()

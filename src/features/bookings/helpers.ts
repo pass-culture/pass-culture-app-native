@@ -1,12 +1,7 @@
-import { t } from '@lingui/macro'
+import { plural, t } from '@lingui/macro'
 import { isSameDay, addDays, addHours, format } from 'date-fns'
 
-import {
-  BookingStockResponse,
-  ExternalBookingResponse,
-  SettingsResponse,
-  WithdrawalTypeEnum,
-} from 'api/gen'
+import { BookingStockResponse, SettingsResponse, WithdrawalTypeEnum } from 'api/gen'
 import {
   formatToCompleteFrenchDate,
   formatToCompleteFrenchDateTime,
@@ -270,24 +265,23 @@ export function getBookingLabelForActivationCode(booking: Booking) {
 
 export function getOfferRules(
   properties: BookingProperties,
-  activationCodeFeatureEnabled?: boolean,
-  externalBookingsInfos?: ExternalBookingResponse[]
+  booking?: Booking,
+  activationCodeFeatureEnabled?: boolean
 ): string {
   const { hasActivationCode, isDigital, isPhysical, isEvent } = properties
+  const numberOfExternalBookings = booking?.externalBookings
+    ? booking.externalBookings.length
+    : undefined
+
   if (hasActivationCode && activationCodeFeatureEnabled)
     return t`Ce code est ta preuve d’achat, il te permet d’accéder à ton offre\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
   if (isDigital)
     return t`Ce code à 6 caractères est ta preuve d’achat\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
-  if (externalBookingsInfos) {
-    const soloOrDuoText =
-      externalBookingsInfos.length === 1
-        ? { firstPart: 'ce QR code', secondPart: 'le revendre ou le céder' }
-        : { firstPart: 'ces QR codes', secondPart: 'les revendre ou les céder' }
-    return t({
-      id: 'external booking duo',
-      values: { firstPart: soloOrDuoText.firstPart, secondPart: soloOrDuoText.secondPart },
-      message:
-        'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et {firstPart}. N’oublie pas que tu n’as pas le droit de {secondPart}.',
+  if (numberOfExternalBookings) {
+    return plural(numberOfExternalBookings, {
+      one: 'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce QR code. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.',
+      other:
+        'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ces QR codes. N’oublie pas que tu n’as pas le droit de les revendre ou les céder.',
     })
   }
   if (isPhysical || isEvent)
