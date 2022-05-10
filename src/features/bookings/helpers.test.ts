@@ -544,7 +544,7 @@ describe('getOfferRules', () => {
     }
     const offerRules = getOfferRules(properties)
     expect(offerRules).toEqual(
-      'Tu dois présenter ta carte d’identité et ton code à 6 caractères pour profiter de ta réservation\u00a0! N’oublie pas que tu n’as pas le droit de la revendre ou la céder.'
+      'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
     )
   })
 
@@ -557,7 +557,38 @@ describe('getOfferRules', () => {
     }
     const offerRules = getOfferRules(properties)
     expect(offerRules).toEqual(
-      'Tu dois présenter ta carte d’identité et ton code à 6 caractères pour profiter de ta réservation\u00a0! N’oublie pas que tu n’as pas le droit de la revendre ou la céder.'
+      'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
+    )
+  })
+
+  it('should return the correct message if externalBookingsInfos.length === 1', () => {
+    const properties = {
+      hasActivationCode: false,
+      isDigital: false,
+      isPhysical: true,
+      isEvent: false,
+    }
+    const externalBookingsInfos = [{ barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' }]
+    const offerRules = getOfferRules(properties, undefined, externalBookingsInfos)
+    expect(offerRules).toEqual(
+      'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce QR code. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
+    )
+  })
+
+  it('should return the correct message if externalBookingsInfos.length === 2', () => {
+    const properties = {
+      hasActivationCode: false,
+      isDigital: false,
+      isPhysical: false,
+      isEvent: true,
+    }
+    const externalBookingsInfos = [
+      { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' },
+      { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A13' },
+    ]
+    const offerRules = getOfferRules(properties, undefined, externalBookingsInfos)
+    expect(offerRules).toEqual(
+      'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ces QR codes. N’oublie pas que tu n’as pas le droit de les revendre ou les céder.'
     )
   })
 

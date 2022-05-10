@@ -146,7 +146,7 @@ describe('BookingDetails', () => {
       const { getByText } = renderBookingDetails(booking)
 
       getByText(
-        'Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
+        'Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.'
       )
     })
   })
