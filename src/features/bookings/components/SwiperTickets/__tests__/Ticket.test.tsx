@@ -1,51 +1,56 @@
 import React from 'react'
 
-import { bookingsWithExternalBookingInformationsSnap } from 'features/bookings/api/bookingsSnapWithExternalBookingInformations'
+import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
 import { Ticket } from 'features/bookings/components/SwiperTickets/Ticket'
 import { render } from 'tests/utils'
 
-const booking = {
-  ...bookingsWithExternalBookingInformationsSnap.ongoing_bookings[0],
-}
+const booking = bookingsSnap.ongoing_bookings[1]
 
 describe('<Ticket/>', () => {
-  it('should display TicketWithContent with externalBookingsInfos if externalBookingsInfos.lenght === 1', () => {
-    booking.externalBookingsInfos = [{ barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' }]
+  it('should display ticket without external bookings information if there are no external bookings', () => {
+    booking.externalBookings = null
     const { queryByTestId } = render(<Ticket booking={booking} />)
-    queryByTestId('single-ticket-with-one-external-bookings-information')
+    expect(queryByTestId('ticket-without-external-bookings-information')).toBeFalsy()
+    expect(queryByTestId('ticket-with-external-bookings-information')).toBeFalsy()
   })
 
-  it('should display SwiperTickets if externalBookingsInfos.lenght > 1', () => {
-    booking.externalBookingsInfos = [
+  it('should display ticket without external bookings information if there are no external bookings', () => {
+    booking.externalBookings = []
+    const { queryByTestId } = render(<Ticket booking={booking} />)
+    queryByTestId('ticket-without-external-bookings-information')
+  })
+
+  it('should display one ticket with external bookings information if there are one external booking', () => {
+    booking.externalBookings = [{ barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' }]
+    const { queryByTestId } = render(<Ticket booking={booking} />)
+    queryByTestId('ticket-with-external-bookings-information')
+  })
+
+  // TODO(LucasBeneston): fix this test for web
+  it.skip('should display as many tickets as the number of tickets', () => {
+    booking.externalBookings = [
       { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' },
       { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A13' },
+      { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A14' },
     ]
-    const { queryByTestId } = render(<Ticket booking={booking} />)
-    queryByTestId('swiper-ticket')
+    const { queryAllByTestId } = render(<Ticket booking={booking} />)
+    expect(queryAllByTestId('ticket-with-external-bookings-information').length).toEqual(3)
   })
 
-  it('should display TicketWithContent without externalBookingsInfos if externalBookingsInfos is undefined', () => {
-    booking.externalBookingsInfos = undefined
-    const { queryByTestId } = render(<Ticket booking={booking} />)
-    queryByTestId('single-ticket-without-external-bookings-information')
-  })
-
-  describe('activationCodeFeatureEnabled & token', () => {
-    it('should display the booking token when activationCodeFeatureEnabled is false', () => {
-      booking.activationCode = { code: 'someCode' }
-      const { getByText, queryByText } = render(
-        <Ticket booking={booking} activationCodeFeatureEnabled={false} />
-      )
-      getByText(booking.token)
-      expect(queryByText(booking.activationCode.code)).toBeFalsy()
+  describe('Swiper ticket controls', () => {
+    it('should not show if number of ticket is equal to one', () => {
+      booking.externalBookings = [{ barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' }]
+      const { queryByTestId } = render(<Ticket booking={booking} />)
+      expect(queryByTestId('swiper-tickets-controls')).toBeFalsy()
     })
-    it('should display the booking activation code when activationCodeFeatureEnabled is true', () => {
-      booking.activationCode = { code: 'someCode' }
-      const { getByText, queryByText } = render(
-        <Ticket booking={booking} activationCodeFeatureEnabled={true} />
-      )
-      getByText(booking.activationCode.code)
-      expect(queryByText(booking.token)).toBeFalsy()
+
+    it('should show if number of ticket is greater than one', () => {
+      booking.externalBookings = [
+        { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' },
+        { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A13' },
+      ]
+      const { queryByTestId } = render(<Ticket booking={booking} />)
+      queryByTestId('swiper-tickets-controls')
     })
   })
 })

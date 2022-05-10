@@ -9,7 +9,7 @@ import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicke
 export function TicketWithContent({
   booking,
   activationCodeFeatureEnabled,
-  externalBookingsInfos,
+  externalBookings,
   testID,
 }: BookingDetailsTicketContentProps) {
   return (
@@ -17,7 +17,7 @@ export function TicketWithContent({
       <BookingDetailsTicketContent
         booking={booking}
         activationCodeFeatureEnabled={activationCodeFeatureEnabled}
-        externalBookingsInfos={externalBookingsInfos}
+        externalBookings={externalBookings}
       />
     </ThreeShapesTicket>
   )

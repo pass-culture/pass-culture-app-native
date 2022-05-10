@@ -6,6 +6,7 @@ import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
 import { useAppSettings } from 'features/auth/settings'
+// import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
 import { useOngoingOrEndedBooking } from 'features/bookings/api/queries'
 import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
@@ -13,7 +14,7 @@ import { BookingDetailsHeader } from 'features/bookings/components/BookingDetail
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
 import { Ticket } from 'features/bookings/components/SwiperTickets/Ticket'
-import { BookingProperties, getBookingProperties } from 'features/bookings/helpers'
+import { getBookingProperties, getOfferRules } from 'features/bookings/helpers'
 import { BookingNotFound } from 'features/bookings/pages/BookingNotFound'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { mergeOfferData } from 'features/offer/atoms/OfferTile'
@@ -50,6 +51,9 @@ export function BookingDetails() {
     error,
     dataUpdatedAt,
   } = useOngoingOrEndedBooking(params.id)
+
+  // const booking = bookingsSnap.ongoing_bookings[1]
+
   const queryClient = useQueryClient()
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
   const {

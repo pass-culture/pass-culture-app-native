@@ -1,35 +1,43 @@
 import React from 'react'
 
-import { BookingReponseBis } from 'features/bookings/api/bookingsSnapWithExternalBookingInformations'
+import { BookingReponse } from 'api/gen'
 import { TicketWithContent } from 'features/bookings/components/SwiperTickets/TicketWithContent'
 
 export type TicketsProps = {
-  booking: BookingReponseBis
+  booking: BookingReponse
   activationCodeFeatureEnabled?: boolean
 }
 
 export function getMultipleTickets({ booking, activationCodeFeatureEnabled }: TicketsProps) {
-  let currentSeatIndex = 0
-  const ticketsMapping = [booking].map((ticket) => {
-    if (ticket.externalBookingsInfos) {
-      const totalSeatsIndex = ticket.externalBookingsInfos
-        .map((item) => item.seat)
-        .filter((seat) => seat).length
-      return ticket.externalBookingsInfos.map((infos, index) => {
-        const seatIndex = infos.seat ? `${(currentSeatIndex += 1)}/${totalSeatsIndex}` : null
-        const externalBookingInfosWithCurrentSeatIndex = { ...infos, seatIndex }
+  if (booking.externalBookings) {
+    if (booking.externalBookings.length === 0)
+      return {
+        tickets: [
+          <TicketWithContent
+            key={booking.id}
+            booking={booking}
+            activationCodeFeatureEnabled={activationCodeFeatureEnabled}
+            testID="ticket-without-external-bookings-information"
+          />,
+        ],
+      }
+
+    const totalSeatsIndex = booking.externalBookings.length
+    return {
+      tickets: booking.externalBookings.map((infos, index) => {
+        const seatIndex = totalSeatsIndex > 1 ? `${index + 1}/${totalSeatsIndex}` : undefined
         return (
           <TicketWithContent
             key={index}
-            booking={ticket}
+            booking={booking}
             activationCodeFeatureEnabled={activationCodeFeatureEnabled}
-            externalBookingsInfos={externalBookingInfosWithCurrentSeatIndex}
+            externalBookings={{ ...infos, seatIndex }}
+            testID="ticket-with-external-bookings-information"
           />
         )
-      })
+      }),
     }
-    return []
-  })
+  }
 
-  return { tickets: ticketsMapping[0] }
+  return { tickets: [] }
 }

@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { bookingsWithExternalBookingInformationsSnap } from 'features/bookings/api/bookingsSnapWithExternalBookingInformations'
+import { bookingsSnap } from 'features/bookings/api/bookingsSnap'
 import { TicketWithContent } from 'features/bookings/components/SwiperTickets/TicketWithContent'
 import { render } from 'tests/utils'
 
-const booking = bookingsWithExternalBookingInformationsSnap.ongoing_bookings[0]
+const booking = bookingsSnap.ongoing_bookings[1]
 
 describe('<TicketWithContent/>', () => {
   it('should render properly', () => {

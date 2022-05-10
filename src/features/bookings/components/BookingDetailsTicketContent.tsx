@@ -17,7 +17,7 @@ import { getHeadingAttrs } from 'ui/theme/typography'
 type Props = {
   booking: BookingReponse
   activationCodeFeatureEnabled?: boolean
-  externalBookingsInfos?: TicketDouble | TicketDoubleWithCurrentSeatIndex
+  externalBookings?: ExternalBookingResponse | ExternalBookingResponseWithCurrentSeatIndex
   testID?: string
 }
 
@@ -64,6 +64,7 @@ export const BookingDetailsTicketContent: FunctionComponent<Props> = ({
       beginningDatetime={beginningDatetime || undefined}
       subcategoryId={offerSubcategory}
       qrCodeData={booking.qrCodeData || undefined}
+      externalBookings={externalBookings}
     />
   )
 

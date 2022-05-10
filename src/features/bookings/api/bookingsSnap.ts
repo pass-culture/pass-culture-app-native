@@ -77,6 +77,7 @@ export const bookingsSnap: BookingsResponse = {
           withdrawalDetails: null,
         },
       },
+      externalBookings: [],
     },
     {
       id: 124,
@@ -99,7 +100,7 @@ export const bookingsSnap: BookingsResponse = {
             isbn: '123456789',
           },
           isPermanent: false,
-          isDigital: true,
+          isDigital: false,
           subcategoryId: SubcategoryIdEnum.EVENEMENT_PATRIMOINE,
           venue: {
             id: 2185,
@@ -114,6 +115,11 @@ export const bookingsSnap: BookingsResponse = {
           withdrawalType: WithdrawalTypeEnum.on_site,
         },
       },
+      externalBookings: [
+        { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' },
+        { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: null },
+        { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A14' },
+      ],
     },
   ],
 }
