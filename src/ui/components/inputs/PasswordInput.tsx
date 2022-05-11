@@ -70,6 +70,7 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
           secureTextEntry={shouldHidePassword}
           ref={forwardedRef}
           aria-describedby={customProps.accessibilityDescribedBy}
+          autoCapitalize="none"
           {...accessibilityAndTestId(t`Mot de passe`)}
         />
         <IconTouchableOpacity

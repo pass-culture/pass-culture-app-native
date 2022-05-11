@@ -204,7 +204,7 @@ Object {
                   <input
                     aria-describedby="testUuidV4"
                     aria-label="Mot de passe"
-                    autocapitalize="sentences"
+                    autocapitalize="none"
                     autocomplete="on"
                     autocorrect="on"
                     class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
@@ -476,7 +476,7 @@ Object {
                 <input
                   aria-describedby="testUuidV4"
                   aria-label="Mot de passe"
-                  autocapitalize="sentences"
+                  autocapitalize="none"
                   autocomplete="on"
                   autocorrect="on"
                   class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
