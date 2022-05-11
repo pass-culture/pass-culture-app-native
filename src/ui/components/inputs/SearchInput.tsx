@@ -35,6 +35,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
 
   function onFocus() {
     setIsFocus(true)
+    if (props?.onFocusSearchInput) props.onFocusSearchInput()
   }
 
   function onBlur() {

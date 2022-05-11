@@ -1,16 +1,15 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import waitForExpect from 'wait-for-expect'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnum } from 'api/gen'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { LocationType } from 'features/search/enums'
 import { initialSearchState } from 'features/search/pages/reducer'
 import { SearchState } from 'features/search/types'
-import { analytics } from 'libs/analytics'
 import { SuggestedVenue } from 'libs/venue'
 import { mockedSuggestedVenues } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { fireEvent, render } from 'tests/utils'
+import { fireEvent, render, superFlushWithAct } from 'tests/utils/web'
 
 import { SearchBox } from '../SearchBox'
 
@@ -44,31 +43,31 @@ jest.mock('features/auth/settings', () => ({
 
 describe('SearchBox component', () => {
   const searchInputID = uuidv4()
-  it('should call mockStagedDispatch() when typing', () => {
+
+  it('should redirect to new search page if search enable rework feature flag is activated and click on search input', async () => {
+    mockSettings.appEnableSearchHomepageRework = true
     const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
     const searchInput = getByPlaceholderText('Offre, artiste...')
-    expect(mockStagedDispatch).toBeCalledWith({ type: 'SET_QUERY', payload: '' })
-    fireEvent.changeText(searchInput, 'Ma')
-    expect(mockStagedDispatch).toBeCalledWith({ type: 'SET_QUERY', payload: 'Ma' })
-    fireEvent.changeText(searchInput, 'Mama')
-    expect(mockStagedDispatch).toBeCalledWith({ type: 'SET_QUERY', payload: 'Mama' })
+
+    fireEvent.focus(searchInput)
+    await superFlushWithAct()
+
+    await waitForExpect(() => {
+      expect(navigate).toBeCalledTimes(1)
+    })
+    expect(navigate).toBeCalledWith('SearchDetails')
   })
 
-  it('should call logSearchQuery on submit', () => {
+  it('should not redirect to new search page if search enable rework feature flag is not activated and click on search input', async () => {
+    mockSettings.appEnableSearchHomepageRework = false
     const { getByPlaceholderText } = render(<SearchBox searchInputID={searchInputID} />)
     const searchInput = getByPlaceholderText('Offre, artiste...')
 
-    fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: 'jazzaza' } })
+    fireEvent.focus(searchInput)
+    await superFlushWithAct()
 
-    expect(analytics.logSearchQuery).toBeCalledWith('jazzaza')
-    expect(navigate).toBeCalledWith(
-      ...getTabNavConfig('Search', {
-        query: 'jazzaza',
-        showResults: true,
-        offerCategories: mockStagedSearchState.offerCategories,
-        locationFilter: mockStagedSearchState.locationFilter,
-        priceRange: mockStagedSearchState.priceRange,
-      })
-    )
+    await waitForExpect(() => {
+      expect(navigate).not.toBeCalled()
+    })
   })
 })

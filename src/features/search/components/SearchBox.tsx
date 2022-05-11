@@ -5,6 +5,7 @@ import { NativeSyntheticEvent, Text, TextInputSubmitEditingEventData } from 'rea
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useAppSettings } from 'features/auth/settings'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useSearch, useStagedSearch } from 'features/search/pages/SearchWrapper'
@@ -40,6 +41,8 @@ export const SearchBox: React.FC<SearchBoxProps> = ({ searchInputID }) => {
   const { searchState: stagedSearchState, dispatch: stagedDispatch } = useStagedSearch()
   const [query, _setQuery] = useState<string>('')
   const accessibilityDescribedBy = uuidv4()
+  const { data: appSettings } = useAppSettings()
+  const appEnableSearchHomepageRework = appSettings?.appEnableSearchHomepageRework ?? false
 
   function setQuery(value: string) {
     stagedDispatch({ type: 'SET_QUERY', payload: value })
@@ -99,6 +102,9 @@ export const SearchBox: React.FC<SearchBoxProps> = ({ searchInputID }) => {
         accessibilityLabel={t`Rechercher un artiste, titre, lieu...`}
         onPressRightIcon={resetSearch}
         accessibilityDescribedBy={accessibilityDescribedBy}
+        onFocusSearchInput={() => {
+          if (appEnableSearchHomepageRework) navigate('SearchDetails')
+        }}
       />
       <HiddenText nativeID={accessibilityDescribedBy}>
         {t`Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche

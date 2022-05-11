@@ -53,6 +53,7 @@ import { LegalNotices } from 'features/profile/pages/LegalNotices'
 import { NotificationSettings } from 'features/profile/pages/NotificationSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
 import { RecreditBirthdayNotification } from 'features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification'
+import { SearchDetails } from 'features/search/components/SearchDetails'
 import { Categories as SearchCategories } from 'features/search/pages/Categories'
 import { LocationFilter } from 'features/search/pages/LocationFilter'
 import { LocationPicker } from 'features/search/pages/LocationPicker'
@@ -315,6 +316,12 @@ export const routes: Route[] = [
     component: SearchFilter,
     path: 'recherche/filtres',
     options: { title: t`Filtres de recherche` },
+  },
+  {
+    name: 'SearchDetails',
+    component: SearchDetails,
+    path: 'recherche/details',
+    options: { title: t`Détails de la recherche` },
   },
   {
     name: 'SignupForm',
