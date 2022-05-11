@@ -1,3 +1,7 @@
 import styled from 'styled-components'
 
-export const InputLabel = styled.label(({ theme }) => ({ ...theme.typography?.body }))
+import { getTextAttrs } from 'ui/theme/typography'
+
+export const InputLabel = styled.label.attrs(getTextAttrs())(({ theme }) => ({
+  ...theme.typography?.body,
+}))

@@ -4,6 +4,7 @@ import { Platform, TextInput as RNTextInput } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getSpacing } from 'ui/theme'
+import { getTextAttrs } from 'ui/theme/typography'
 
 import { RNTextInputProps } from './types'
 
@@ -69,6 +70,7 @@ export const BaseTextInput = forwardRef<RNTextInput, RNTextInputProps>(function 
 
 const StyledTextInput = styled(RNTextInput).attrs(({ theme }) => ({
   placeholderTextColor: theme.colors.greyDark,
+  ...getTextAttrs(),
 }))(({ theme }) => ({
   flex: 1,
   padding: 0,

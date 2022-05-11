@@ -57,6 +57,7 @@ Object {
               >
                 <label
                   class="sc-egiyK hHZVhD"
+                  dir="ltr"
                   for="testUuidV4"
                 >
                   Jour
@@ -362,6 +363,7 @@ Object {
               >
                 <label
                   class="sc-egiyK hHZVhD"
+                  dir="ltr"
                   for="testUuidV4"
                 >
                   Mois
@@ -515,6 +517,7 @@ Object {
               >
                 <label
                   class="sc-egiyK hHZVhD"
+                  dir="ltr"
                   for="testUuidV4"
                 >
                   Année
@@ -1502,6 +1505,7 @@ Object {
             >
               <label
                 class="sc-egiyK hHZVhD"
+                dir="ltr"
                 for="testUuidV4"
               >
                 Jour
@@ -1807,6 +1811,7 @@ Object {
             >
               <label
                 class="sc-egiyK hHZVhD"
+                dir="ltr"
                 for="testUuidV4"
               >
                 Mois
@@ -1960,6 +1965,7 @@ Object {
             >
               <label
                 class="sc-egiyK hHZVhD"
+                dir="ltr"
                 for="testUuidV4"
               >
                 Année
@@ -2999,6 +3005,7 @@ Object {
             >
               <label
                 class="sc-egiyK hHZVhD"
+                dir="ltr"
                 for="testUuidV4"
               >
                 Date de naissance
@@ -4051,6 +4058,7 @@ Object {
           >
             <label
               class="sc-egiyK hHZVhD"
+              dir="ltr"
               for="testUuidV4"
             >
               Date de naissance

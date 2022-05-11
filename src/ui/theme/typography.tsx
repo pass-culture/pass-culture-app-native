@@ -21,7 +21,7 @@ export const getHeadingAttrs = (level?: number) => ({
     : {}),
 })
 
-const getTextAttrs = (dir?: string) =>
+export const getTextAttrs = (dir?: string) =>
   Platform.OS === 'web'
     ? {
         dir: dir ?? 'ltr',

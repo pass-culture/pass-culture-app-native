@@ -89,6 +89,7 @@ Object {
                     />
                     <label
                       class="sc-egiyK hHZVhD"
+                      dir="ltr"
                       for="testUuidV4"
                     >
                       Indique ton code postal et choisis ta ville
@@ -114,7 +115,7 @@ Object {
                         autocorrect="off"
                         class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
                         data-testid="Entrée pour le code postal"
-                        dir="auto"
+                        dir="ltr"
                         enterkeyhint="search"
                         id="testUuidV4"
                         inputmode="numeric"
@@ -284,6 +285,7 @@ Object {
                   />
                   <label
                     class="sc-egiyK hHZVhD"
+                    dir="ltr"
                     for="testUuidV4"
                   >
                     Indique ton code postal et choisis ta ville
@@ -309,7 +311,7 @@ Object {
                       autocorrect="off"
                       class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
                       data-testid="Entrée pour le code postal"
-                      dir="auto"
+                      dir="ltr"
                       enterkeyhint="search"
                       id="testUuidV4"
                       inputmode="numeric"

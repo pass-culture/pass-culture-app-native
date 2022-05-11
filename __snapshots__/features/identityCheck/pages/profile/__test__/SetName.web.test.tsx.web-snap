@@ -146,6 +146,7 @@ Object {
                         >
                           <label
                             class="sc-hKwDye dOTlhW"
+                            dir="ltr"
                             for="testUuidV4"
                           >
                             Prénom
@@ -174,7 +175,7 @@ Object {
                             autocomplete="on"
                             autocorrect="on"
                             class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
-                            dir="auto"
+                            dir="ltr"
                             enterkeyhint="next"
                             id="testUuidV4"
                             placeholder="Ton prénom"
@@ -203,6 +204,7 @@ Object {
                         >
                           <label
                             class="sc-hKwDye dOTlhW"
+                            dir="ltr"
                             for="testUuidV4"
                           >
                             Nom
@@ -231,7 +233,7 @@ Object {
                             autocomplete="on"
                             autocorrect="on"
                             class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
-                            dir="auto"
+                            dir="ltr"
                             enterkeyhint="next"
                             id="testUuidV4"
                             placeholder="Ton nom"
@@ -437,6 +439,7 @@ Object {
                       >
                         <label
                           class="sc-hKwDye dOTlhW"
+                          dir="ltr"
                           for="testUuidV4"
                         >
                           Prénom
@@ -465,7 +468,7 @@ Object {
                           autocomplete="on"
                           autocorrect="on"
                           class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
-                          dir="auto"
+                          dir="ltr"
                           enterkeyhint="next"
                           id="testUuidV4"
                           placeholder="Ton prénom"
@@ -494,6 +497,7 @@ Object {
                       >
                         <label
                           class="sc-hKwDye dOTlhW"
+                          dir="ltr"
                           for="testUuidV4"
                         >
                           Nom
@@ -522,7 +526,7 @@ Object {
                           autocomplete="on"
                           autocorrect="on"
                           class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
-                          dir="auto"
+                          dir="ltr"
                           enterkeyhint="next"
                           id="testUuidV4"
                           placeholder="Ton nom"
