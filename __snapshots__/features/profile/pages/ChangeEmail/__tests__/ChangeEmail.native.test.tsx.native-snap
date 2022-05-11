@@ -531,6 +531,7 @@ Array [
               accessibilityLabel="Mot de passe"
               accessible={true}
               aria-describedby="testUuidV4"
+              autoCapitalize="none"
               disabled={true}
               editable={false}
               nativeID="testUuidV4"
@@ -1185,6 +1186,7 @@ Array [
               accessibilityLabel="Mot de passe"
               accessible={true}
               aria-describedby="testUuidV4"
+              autoCapitalize="none"
               disabled={false}
               editable={true}
               nativeID="testUuidV4"
