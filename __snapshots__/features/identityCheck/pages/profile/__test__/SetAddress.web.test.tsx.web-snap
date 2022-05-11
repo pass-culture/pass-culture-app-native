@@ -89,6 +89,7 @@ Object {
                     />
                     <label
                       class="sc-egiyK hHZVhD"
+                      dir="ltr"
                       for="testUuidV4"
                     >
                       Entre ton adresse
@@ -114,7 +115,7 @@ Object {
                         autocorrect="off"
                         class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
                         data-testid="Entrée pour l'adresse"
-                        dir="auto"
+                        dir="ltr"
                         enterkeyhint="next"
                         id="testUuidV4"
                         placeholder="Ex : 34 avenue de l'Opéra"
@@ -280,6 +281,7 @@ Object {
                   />
                   <label
                     class="sc-egiyK hHZVhD"
+                    dir="ltr"
                     for="testUuidV4"
                   >
                     Entre ton adresse
@@ -305,7 +307,7 @@ Object {
                       autocorrect="off"
                       class="css-textinput-11aywtz r-placeholderTextColor-1ml10ie"
                       data-testid="Entrée pour l'adresse"
-                      dir="auto"
+                      dir="ltr"
                       enterkeyhint="next"
                       id="testUuidV4"
                       placeholder="Ex : 34 avenue de l'Opéra"
