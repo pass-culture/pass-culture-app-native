@@ -44,7 +44,7 @@ export const CountryPicker: React.FC<Props> = (props) => {
   const [countries, setCountries] = useState<Country[]>([])
   const [country, setCountry] = useState<Country>(props.initialCountry)
 
-  const formatCallingCode = (callingCode: string) => `+${callingCode}`
+  const formatCallingCode = (code: string) => `+${code}`
   const callingCode = formatCallingCode(country.callingCode[0])
 
   useEffect(() => {

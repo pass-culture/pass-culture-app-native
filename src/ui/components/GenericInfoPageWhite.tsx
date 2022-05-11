@@ -58,7 +58,7 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
   const { icon: Icon } = props as PropsWithIcon
   const titleComponent = props.titleComponent ?? Typo.Title1
   const subtitleComponent = props.subtitleComponent ?? Typo.Title4
-  const theme = useTheme()
+  const { isDesktopViewport } = useTheme()
   const { top } = useCustomSafeInsets()
   const StyledTitle = useMemo(() => {
     return styled(titleComponent)({
@@ -113,7 +113,7 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
         {props.children}
         <Spacer.Flex
           flex={
-            !theme.isDesktopViewport && props.mobileBottomFlex
+            !isDesktopViewport && props.mobileBottomFlex
               ? props.mobileBottomFlex
               : grid({ default: 1.5, sm: 2 }, 'height')
           }

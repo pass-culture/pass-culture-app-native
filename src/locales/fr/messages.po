@@ -228,11 +228,6 @@ msgstr "Au nom de"
 msgid "Aucun lieu ne correspond à ta recherche"
 msgstr "Aucun lieu ne correspond à ta recherche"
 
-#: src/libs/keychain/keychain.ts
-#: src/libs/keychain/keychain.web.ts
-msgid "Aucun refresh token à sauvegarder"
-msgstr "Aucun refresh token à sauvegarder"
-
 #: src/features/search/atoms/Buttons/ShowResults.tsx
 msgid "Aucun résultat"
 msgstr "Aucun résultat"
@@ -240,11 +235,6 @@ msgstr "Aucun résultat"
 #: src/libs/network/NetInfoWrapper.tsx
 msgid "Aucune connexion internet. Réessaie plus tard"
 msgstr "Aucune connexion internet. Réessaie plus tard"
-
-#: src/libs/storage.ts
-#: src/libs/storage.ts
-msgid "Aucune valeur à sauvegarder"
-msgstr "Aucune valeur à sauvegarder"
 
 #: src/features/bookings/helpers.ts
 #: src/features/search/sections/OfferDate.tsx
@@ -1360,15 +1350,6 @@ msgstr "Jeux / Jeux vidéos"
 #: src/features/auth/signup/SetEmail/SetEmail.tsx
 msgid "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisées du pass Culture."
 msgstr "J’accepte de recevoir les newsletters, bons plans et recommandations personnalisées du pass Culture."
-
-#: src/libs/keychain/keychain.ts
-#: src/libs/keychain/keychain.ts
-#: src/libs/keychain/keychain.ts
-#: src/libs/keychain/keychain.web.ts
-#: src/libs/keychain/keychain.web.ts
-#: src/libs/keychain/keychain.web.ts
-msgid "Keychain non accessible"
-msgstr "Keychain non accessible"
 
 #: src/libs/geolocation/enums.ts
 msgid "L'absence des services Google Play bloquent possiblement la géolocalisation"
