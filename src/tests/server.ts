@@ -141,6 +141,7 @@ function requestSettingsSuccess(
     accountCreationMinimumAge: 15,
     allowAccountReactivation: false,
     appEnableSearchHomepageRework: false,
+    accountReactivationLimit: 60,
   }
 ) {
   return rest.get<SettingsResponse>(env.API_BASE_URL + '/native/v1/settings', (_req, res, ctx) => {

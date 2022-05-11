@@ -1702,6 +1702,11 @@ export interface SettingsResponse {
    */
   accountCreationMinimumAge: number
   /**
+   * @type {number}
+   * @memberof SettingsResponse
+   */
+  accountReactivationLimit: number
+  /**
    * @type {boolean}
    * @memberof SettingsResponse
    */
