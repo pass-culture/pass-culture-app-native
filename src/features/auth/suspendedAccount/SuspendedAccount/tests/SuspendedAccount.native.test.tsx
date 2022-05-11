@@ -12,6 +12,10 @@ const mockSettings = {
   allowAccountReactivation: true,
 }
 
+let mockSuspensionDate: { date: string } | undefined = { date: '2022-05-11T10:29:25.332786Z' }
+jest.mock('features/auth/suspendedAccount/SuspendedAccount/useAccountSuspensionDate', () => ({
+  useAccountSuspensionDate: jest.fn(() => ({ data: mockSuspensionDate })),
+}))
 jest.mock('features/navigation/helpers')
 jest.mock('features/auth/settings', () => ({
   useAppSettings: jest.fn(() => ({
@@ -43,6 +47,15 @@ describe('<SuspendedAccount />', () => {
 
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
+    })
+  })
+
+  it('should redirect to home if account is not suspended', async () => {
+    mockSuspensionDate = undefined
+    render(<SuspendedAccount />)
+
+    await waitForExpect(() => {
+      expect(navigateToHome).toHaveBeenCalledTimes(1)
     })
   })
 

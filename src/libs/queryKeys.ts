@@ -1,5 +1,6 @@
 export enum QueryKeys {
   ADDRESSES = 'addresses',
+  ACCOUNT_SUSPENSION_DATE = 'accountSuspensionDate',
   HOME_MODULE = 'homeModule',
   HOME_VENUES_MODULE = 'homeVenuesModule',
   BOOKINGS = 'bookings',

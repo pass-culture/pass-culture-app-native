@@ -2509,6 +2509,24 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary get_account_suspension_date <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1accountsuspensionDate(options: any = {}): Promise<FetchArgs> {
+      const pathname = `/native/v1/account/suspension_date`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary get_bookings <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3439,6 +3457,17 @@ export const DefaultApiFp = function(api: DefaultApi, configuration?: Configurat
     },
     /**
      * 
+     * @summary get_account_suspension_date <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getnativev1accountsuspensionDate(basePath: string, options?: any): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(configuration).getnativev1accountsuspensionDate(options)
+      const response = await safeFetch(basePath + localVarFetchArgs.url, localVarFetchArgs.options, api)
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     * 
      * @summary get_bookings <GET>
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -3958,6 +3987,16 @@ export class DefaultApi extends BaseAPI {
     */
   public async deletenativev1mefavoritesfavoriteId(favorite_id: number, options?: any) {
     return DefaultApiFp(this, this.configuration).deletenativev1mefavoritesfavoriteId(this.basePath, favorite_id, options)
+  }
+  /**
+    * 
+    * @summary get_account_suspension_date <GET>
+    * @param {*} [options] Override http request option.
+    * @throws {RequiredError}
+    * @memberof DefaultApi
+    */
+  public async getnativev1accountsuspensionDate(options?: any) {
+    return DefaultApiFp(this, this.configuration).getnativev1accountsuspensionDate(this.basePath, options)
   }
   /**
     * 

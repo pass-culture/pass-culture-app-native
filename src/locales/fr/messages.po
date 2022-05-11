@@ -2925,8 +2925,8 @@ msgid "Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams."
 msgstr "Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams."
 
 #: src/features/auth/suspendedAccount/SuspendedAccount/SuspendedAccount.tsx
-msgid "Tu as jusqu'au xxxx pour réactiver ton compte."
-msgstr "Tu as jusqu'au xxxx pour réactiver ton compte."
+msgid "Tu as jusqu'au {formattedDate} pour réactiver ton compte."
+msgstr "Tu as jusqu'au {formattedDate} pour réactiver ton compte."
 
 #: src/features/recreditBirthdayNotification/pages/components/RecreditBirthdayNotification.tsx
 msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget."
