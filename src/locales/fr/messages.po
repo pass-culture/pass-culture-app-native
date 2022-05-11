@@ -2904,10 +2904,6 @@ msgstr "Tu as 18 ans..."
 msgid "Tu as 30 jours pour te rétracter par e-mail à : support@passculture.app"
 msgstr "Tu as 30 jours pour te rétracter par e-mail à : support@passculture.app"
 
-#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
-msgid "Tu as 60 jours pour changer d’avis. Tu pourras facilement réactiver ton compte en te connectant."
-msgstr "Tu as 60 jours pour changer d’avis. Tu pourras facilement réactiver ton compte en te connectant."
-
 #: src/features/offer/pages/OfferBody.tsx
 msgid "Tu as déjà signalé cette offre"
 msgstr "Tu as déjà signalé cette offre"
@@ -2939,6 +2935,10 @@ msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget."
 #: src/features/identityCheck/pages/confirmation/UnderageAccountCreated.tsx
 msgid "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
 msgstr "Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget. Découvre dès maintenant les offres culturelles autour de chez toi !"
+
+#: src/features/profile/pages/DeleteProfile/DeleteProfileSuccessV2.tsx
+msgid "Tu as {reactivationLimit} jours pour changer d’avis. Tu pourras facilement réactiver ton compte en te connectant."
+msgstr "Tu as {reactivationLimit} jours pour changer d’avis. Tu pourras facilement réactiver ton compte en te connectant."
 
 #: src/features/auth/signup/SetBirthday/utils/useDatePickerErrorHandler.tsx
 msgid "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"

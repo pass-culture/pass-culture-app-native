@@ -2,6 +2,7 @@ import { t } from '@lingui/macro'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { useAppSettings } from 'features/auth/settings'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
@@ -13,6 +14,8 @@ import { ProfileDeletionIllustration } from 'ui/svg/icons/ProfileDeletionIllustr
 import { Spacer, Typo } from 'ui/theme'
 
 export function DeleteProfileSuccessV2() {
+  const { data: settings } = useAppSettings()
+  const reactivationLimit = settings?.accountReactivationLimit
   return (
     <GenericInfoPage
       title={t`Ton compte a été désactivé`}
@@ -31,7 +34,7 @@ export function DeleteProfileSuccessV2() {
         {t`On est super triste de te voir partir.`}
       </StyledBody>
       <Spacer.Column numberOfSpaces={4} />
-      <StyledBody>{t`Tu as 60 jours pour changer d’avis. Tu pourras facilement réactiver ton compte en te connectant.`}</StyledBody>
+      <StyledBody>{t`Tu as ${reactivationLimit} jours pour changer d’avis. Tu pourras facilement réactiver ton compte en te connectant.`}</StyledBody>
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>{t`Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture.`}</StyledBody>
     </GenericInfoPage>
