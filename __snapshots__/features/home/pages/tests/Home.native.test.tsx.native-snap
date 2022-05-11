@@ -24,7 +24,11 @@ exports[`Home component should render correctly without login modal 1`] = `
     }
   >
     <RCTScrollView
-      ListFooterComponent={<TabBarSpacer />}
+      ListFooterComponent={
+        <FooterComponent
+          isLoading={false}
+        />
+      }
       ListHeaderComponent={[Function]}
       bounces={false}
       data={Array []}
@@ -33,6 +37,7 @@ exports[`Home component should render correctly without login modal 1`] = `
       initialNumToRender={5}
       keyExtractor={[Function]}
       onContentSizeChange={[Function]}
+      onEndReached={[Function]}
       onEndReachedThreshold={0.5}
       onLayout={[Function]}
       onMomentumScrollBegin={[Function]}
