@@ -15,3 +15,34 @@
 
 # Node.js dependencies:
 node_modules/
+
+# Project directories:
+/src/
+/tests/
+/jest/
+/coverage/
+
+# Project build directories & files:
+/build/jest
+/build/tests
+*.d.ts
+*.d.ts.map
+*.js.map
+*.tsbuildinfo
+*.config.js
+__mocks__
+
+# Project root files:
+/.env.integration
+/.env.production
+/.env.staging
+/.env.testing
+/.eslintcache
+/.eslintignore
+/.eslintrc.js
+/babel.config.js
+/jest.config.ts
+/sonar-project.properties
+/tsconfig.json
+
+

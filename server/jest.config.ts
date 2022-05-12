@@ -4,10 +4,10 @@ export default async (): Promise<Config.InitialOptions> => {
   return {
     coverageThreshold: {
       global: {
-        branches: 66,
-        functions: 95,
-        lines: 92,
-        statements: 92,
+        branches: 100,
+        functions: 97,
+        lines: 100,
+        statements: 100,
       },
     },
     setupFiles: ['<rootDir>/jest/jest.setup.ts'],

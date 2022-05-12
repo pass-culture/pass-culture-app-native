@@ -12,7 +12,6 @@ describe('express server', () => {
   beforeAll(async () => {
     initialEnv = process.env.ENV
     process.env.ENV = 'testing'
-    // @ts-ignore we use dynamic named exports
     const { server: newServer } = await import('./index')
     server = newServer as Server
   })
