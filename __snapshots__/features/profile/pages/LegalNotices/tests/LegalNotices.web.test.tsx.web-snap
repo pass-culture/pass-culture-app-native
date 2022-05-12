@@ -7,6 +7,7 @@ Object {
     <div>
       <header
         class="sc-jJoQJp fXbXpW"
+        role="banner"
       >
         <div
           class="css-view-1dbjc4n"
@@ -172,6 +173,7 @@ Object {
   "container": <div>
     <header
       class="sc-jJoQJp fXbXpW"
+      role="banner"
     >
       <div
         class="css-view-1dbjc4n"

@@ -36,7 +36,7 @@ export const StepButton = ({ step, state, navigateTo, onPress }: Props) => {
         <Validate
           isCompleted={state === 'completed'}
           {...accessibilityAndTestId(
-            state === 'completed' ? t`Complété` : '',
+            state === 'completed' ? t`Complété` : t`Non complété`,
             state === 'completed' ? 'StepCompleted' : 'StepNotCompleted'
           )}
         />

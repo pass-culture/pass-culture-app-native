@@ -63,6 +63,7 @@ Object {
                             >
                               <header
                                 class="sc-hiCibw lgCcuM"
+                                role="banner"
                               >
                                 <div
                                   class="css-view-1dbjc4n"
@@ -291,6 +292,7 @@ Object {
                           >
                             <header
                               class="sc-hiCibw lgCcuM"
+                              role="banner"
                             >
                               <div
                                 class="css-view-1dbjc4n"

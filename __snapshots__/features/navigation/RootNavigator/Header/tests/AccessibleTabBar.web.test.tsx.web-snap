@@ -8,6 +8,7 @@ Object {
       <nav
         class="sc-kLwhqv gMIamO"
         id="tabBarID"
+        role="navigation"
       >
         <div
           class="css-view-1dbjc4n"
@@ -238,6 +239,7 @@ Object {
     <nav
       class="sc-kLwhqv gMIamO"
       id="tabBarID"
+      role="navigation"
     >
       <div
         class="css-view-1dbjc4n"

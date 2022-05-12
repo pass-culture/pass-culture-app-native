@@ -84,6 +84,7 @@ msgstr "Accepter les conditions générales d'utilisation et la politique de con
 msgid "Accessibilité"
 msgstr "Accessibilité"
 
+#: src/ui/components/ValidationMark.tsx
 #: src/ui/components/accessibility/AccessibilityAtom.tsx
 msgid "Accessible"
 msgstr "Accessible"
@@ -1786,9 +1787,14 @@ msgstr "Nombre de place"
 msgid "Nombre de tentatives dépassé. Réessaye dans 1 minute"
 msgstr "Nombre de tentatives dépassé. Réessaye dans 1 minute"
 
+#: src/ui/components/ValidationMark.tsx
 #: src/ui/components/accessibility/AccessibilityAtom.tsx
 msgid "Non accessible"
 msgstr "Non accessible"
+
+#: src/features/identityCheck/atoms/StepButton.tsx
+msgid "Non complété"
+msgstr "Non complété"
 
 #: src/features/identityCheck/components/SomeAdviceBeforeIdentityCheckModal.tsx
 msgid "Nos conseils :"

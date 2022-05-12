@@ -11,6 +11,7 @@ Object {
       >
         <header
           class="sc-hKwDye uAnLW"
+          role="banner"
         >
           <div
             class="css-view-1dbjc4n"
@@ -258,6 +259,7 @@ Object {
     >
       <header
         class="sc-hKwDye uAnLW"
+        role="banner"
       >
         <div
           class="css-view-1dbjc4n"

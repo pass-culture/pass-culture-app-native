@@ -16,6 +16,7 @@ Object {
       <main
         class="sc-giYglK bpqpkY"
         id="testUuidV4"
+        role="main"
       >
         <div
           class="css-view-1dbjc4n"
@@ -48,10 +49,12 @@ Object {
       </main>
       <footer
         class="sc-iJKOTD"
+        role="contentinfo"
       >
         <nav
           class="sc-iwjdpV iQOjCr"
           id="testUuidV4"
+          role="navigation"
         >
           <div
             class="css-view-1dbjc4n"
@@ -289,6 +292,7 @@ Object {
     <main
       class="sc-giYglK bpqpkY"
       id="testUuidV4"
+      role="main"
     >
       <div
         class="css-view-1dbjc4n"
@@ -321,10 +325,12 @@ Object {
     </main>
     <footer
       class="sc-iJKOTD"
+      role="contentinfo"
     >
       <nav
         class="sc-iwjdpV iQOjCr"
         id="testUuidV4"
+        role="navigation"
       >
         <div
           class="css-view-1dbjc4n"
