@@ -776,12 +776,14 @@ jobs:
       - invalidate-cache:
           url_map_name: production-decliweb-url-map
 
-  deploy-proxy-testing:
+  deploy-web-server:
     executor: node
     working_directory: ~/pass-culture
     steps:
       - checkout
       - install_node_modules_proxy
+      - authenticate_gcp:
+          gcp_key_name: GCP_APP_NATIVE_KEY
       - run:
           name: Deploy
           command: yarn --cwd server deploy:testing
@@ -1014,11 +1016,11 @@ workflows:
             - checkout-and-install-deps
             - test-lint-and-types
             - test-web
-      - deploy-proxy-testing:
+      - deploy-web-server:
           filters:
             tags:
               only:
-                - master
+                - PC-10585
           context:
             - GCP
             - GCP_APP_NATIVE_PROD
