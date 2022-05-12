@@ -14,7 +14,7 @@ import { BookingDetailsTicketContent } from 'features/bookings/components/Bookin
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
-import { BookingProperties, getBookingProperties } from 'features/bookings/helpers'
+import { getBookingProperties, getOfferRules } from 'features/bookings/helpers'
 import { BookingNotFound } from 'features/bookings/pages/BookingNotFound'
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { mergeOfferData } from 'features/offer/atoms/OfferTile'
@@ -37,19 +37,6 @@ import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
 import { Helmet } from 'ui/web/global/Helmet'
-const getOfferRules = (
-  properties: BookingProperties,
-  activationCodeFeatureEnabled?: boolean
-): string => {
-  const { hasActivationCode, isDigital, isPhysical, isEvent } = properties
-  if (hasActivationCode && activationCodeFeatureEnabled)
-    return t`Ce code est ta preuve d’achat, il te permet d’accéder à ton offre\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
-  if (isDigital)
-    return t`Ce code à 6 caractères est ta preuve d’achat\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
-  if (isPhysical || isEvent)
-    return t`Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation\u00a0! N’oublie pas que tu n’as pas le droit de le revendre ou le céder.`
-  return ''
-}
 
 const scrollIndicatorInsets = { right: 1 }
 
@@ -118,7 +105,7 @@ export function BookingDetails() {
     !!venueFullAddress && (properties.isEvent || (properties.isPhysical && !properties.isDigital))
   const activationCodeFeatureEnabled = appSettings?.autoActivateDigitalBookings
 
-  const offerRules = getOfferRules(properties, activationCodeFeatureEnabled)
+  const offerRules = getOfferRules(properties, booking, activationCodeFeatureEnabled)
 
   const cancelBooking = () => {
     showCancelModal()

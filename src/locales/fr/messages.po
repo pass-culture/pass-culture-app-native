@@ -412,7 +412,7 @@ msgstr "Catégorie de l'offre"
 msgid "Catégories"
 msgstr "Catégories"
 
-#: src/features/bookings/pages/BookingDetails.tsx
+#: src/features/bookings/helpers.ts
 msgid "Ce code est ta preuve d’achat, il te permet d’accéder à ton offre ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Ce code est ta preuve d’achat, il te permet d’accéder à ton offre ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
@@ -420,7 +420,7 @@ msgstr "Ce code est ta preuve d’achat, il te permet d’accéder à ton offre�
 msgid "Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001)."
 msgstr "Ce code postal est introuvable. Réessaye un autre code postal ou renseigne un arrondissement (ex: 75001)."
 
-#: src/features/bookings/pages/BookingDetails.tsx
+#: src/features/bookings/helpers.ts
 msgid "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 msgstr "Ce code à 6 caractères est ta preuve d’achat ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
 
@@ -2128,6 +2128,10 @@ msgstr "Pour en savoir plus sur la gestion de tes données personnelles et exerc
 msgid "Pour plus d'informations, nous t'invitons à consulter notre"
 msgstr "Pour plus d'informations, nous t'invitons à consulter notre"
 
+#: src/features/bookings/helpers.ts
+msgid "Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
+msgstr "Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce code à 6 caractères. N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
+
 #: src/features/auth/signup/SetBirthday/SetBirthday.tsx
 msgid "Pour quelle raison me demande-t-on ma date de naissance ?"
 msgstr "Pour quelle raison me demande-t-on ma date de naissance ?"
@@ -2931,10 +2935,6 @@ msgstr "Tu as {reactivationLimit} jours pour changer d’avis. Tu pourras facile
 msgid "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
 msgstr "Tu dois avoir au moins {youngestAge} ans pour t’inscrire au pass Culture"
 
-#: src/features/bookings/pages/BookingDetails.tsx
-msgid "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
-msgstr "Tu dois présenter ta carte d’identité et ce code de 6 caractères pour profiter de ta réservation ! N’oublie pas que tu n’as pas le droit de le revendre ou le céder."
-
 #: src/features/profile/pages/NotificationSettings.tsx
 msgid "Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture"
 msgstr "Tu dois être connecté pour activer les notifications et rester informé des actualités du pass Culture"
@@ -3705,6 +3705,10 @@ msgstr "{nbHits, plural, one {# résultat} other {# résultats}}"
 #: src/features/search/atoms/Buttons/ShowResults.tsx
 msgid "{nbHits, plural, one {Afficher # résultat} other {Afficher les # résultats}}"
 msgstr "{nbHits, plural, one {Afficher # résultat} other {Afficher les # résultats}}"
+
+#: src/features/bookings/helpers.ts
+msgid "{numberOfExternalBookings, plural, one {Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce QR code. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.} other {Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ces QR codes. N’oublie pas que tu n’as pas le droit de les revendre ou les céder.}}"
+msgstr "{numberOfExternalBookings, plural, one {Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ce QR code. N’oublie pas que tu n’as pas le droit de le revendre ou le céder.} other {Pour profiter de ta réservation, tu dois présenter ta carte d’identité et ces QR codes. N’oublie pas que tu n’as pas le droit de les revendre ou les céder.}}"
 
 #: src/features/bookings/components/OnGoingBookingsList.tsx
 msgid "{onGoingBookingsCount, plural, one {# réservation en cours} other {# réservations en cours}}"
