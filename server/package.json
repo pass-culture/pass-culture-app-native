@@ -24,7 +24,7 @@
   "scripts": {
     "build": "tsc --build",
     "predeploy": "yarn build",
-    "deploy": "gcloud beta app deploy --quiet --project passculture-metier-ehp",
+    "deploy": "gcloud beta app deploy --quiet",
     "deploy:testing": "cat .env.testing > .env && sed -i 's/web-server/web-server-testing/g' app.yaml && yarn deploy",
     "deploy:staging": "cat .env.staging > .env  && sed -i 's/web-server/web-server-staging/g' app.yaml && yarn deploy",
     "deploy:integration": "cat .env.integration > .env && sed -i 's/web-server/web-server-testing/g' app.yaml && yarn deploy",

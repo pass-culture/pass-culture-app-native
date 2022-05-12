@@ -776,8 +776,8 @@ jobs:
       - invalidate-cache:
           url_map_name: production-decliweb-url-map
 
-  deploy-web-server:
-    executor: node
+  deploy-web-server-testing:
+    executor: gcp
     working_directory: ~/pass-culture
     steps:
       - checkout
@@ -1016,11 +1016,13 @@ workflows:
             - checkout-and-install-deps
             - test-lint-and-types
             - test-web
-      - deploy-web-server:
+      - deploy-web-server-testing:
           filters:
             tags:
               only:
-                - PC-10585
+                - master
+          requires:
+            - test-proxy
           context:
             - GCP
-            - GCP_APP_NATIVE_PROD
+            - GCP_APP_NATIVE_EHP
