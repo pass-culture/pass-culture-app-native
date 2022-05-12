@@ -108,6 +108,7 @@ exports[`LocationFilter component should render correctly 1`] = `
         </View>
       </View>
       <Text
+        nativeID="testUuidV4"
         numberOfLines={1}
         style={
           Array [
@@ -164,6 +165,8 @@ exports[`LocationFilter component should render correctly 1`] = `
     }
   />
   <RCTScrollView
+    accessibilityRole="radiogroup"
+    aria-labelledby="testUuidV4"
     contentContainerStyle={
       Object {
         "flexGrow": 1,

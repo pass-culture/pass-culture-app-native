@@ -5,7 +5,7 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -183,11 +183,11 @@
+@@ -186,11 +186,11 @@
         />
         <View
           accessibilityRole=\\"radio\\"
@@ -18,7 +18,7 @@ exports[`Categories component should match diff snapshot when new category is se
           accessible={true}
           collapsable={false}
           focusable={true}
-@@ -244,16 +244,16 @@
+@@ -247,16 +247,16 @@
                 ]
               }
             />
@@ -37,7 +37,7 @@ exports[`Categories component should match diff snapshot when new category is se
                       \\"lineHeight\\": 20,
                     },
                   ]
-@@ -272,11 +272,20 @@
+@@ -275,11 +275,20 @@
                   \\"flexGrow\\": 0.1,
                   \\"flexShrink\\": 1,
                 },
@@ -59,7 +59,7 @@ exports[`Categories component should match diff snapshot when new category is se
           accessibilityRole=\\"radio\\"
           accessibilityState={
             Object {
-@@ -373,11 +382,11 @@
+@@ -376,11 +385,11 @@
         </View>
         <View
           accessibilityRole=\\"radio\\"
@@ -72,7 +72,7 @@ exports[`Categories component should match diff snapshot when new category is se
           accessible={true}
           collapsable={false}
           focusable={true}
-@@ -434,16 +443,16 @@
+@@ -437,16 +446,16 @@
                 ]
               }
             />
@@ -91,7 +91,7 @@ exports[`Categories component should match diff snapshot when new category is se
                       \\"lineHeight\\": 20,
                     },
                   ]
-@@ -462,20 +471,11 @@
+@@ -465,20 +474,11 @@
                   \\"flexGrow\\": 0.1,
                   \\"flexShrink\\": 1,
                 },
@@ -223,6 +223,7 @@ exports[`Categories component should render correctly 1`] = `
         </View>
       </View>
       <Text
+        nativeID="testUuidV4"
         numberOfLines={1}
         style={
           Array [
@@ -268,6 +269,8 @@ exports[`Categories component should render correctly 1`] = `
     />
   </View>
   <RCTScrollView
+    accessibilityRole="radiogroup"
+    aria-labelledby="testUuidV4"
     style={
       Array [
         Object {

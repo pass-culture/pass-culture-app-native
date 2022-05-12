@@ -4,9 +4,9 @@ import styled from 'styled-components/native'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
 
-export const CenteredTitle = ({ title }: { title: string }) => (
+export const CenteredTitle = ({ title, titleID }: { title: string; titleID?: string }) => (
   <TitleContainer>
-    <Title>{title}</Title>
+    <Title nativeID={titleID}>{title}</Title>
   </TitleContainer>
 )
 

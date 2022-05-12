@@ -206,6 +206,7 @@ exports[`FavoritesSorts component should render correctly 1`] = `
           }
         />
         <Text
+          nativeID="testUuidV4"
           style={
             Array [
               Object {
@@ -221,247 +222,252 @@ exports[`FavoritesSorts component should render correctly 1`] = `
         </Text>
       </View>
       <View
-        accessibilityLabel="Trier par Ajouté récemment"
-        accessibilityRole="radio"
-        accessibilityState={
-          Object {
-            "checked": true,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "marginVertical": 12,
-            "minHeight": 24,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
-        }
-        testID="RECENTLY_ADDED"
+        accessibilityRole="radiogroup"
+        aria-labelledby="testUuidV4"
       >
         <View
-          flex={0.9}
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 0.9,
-                "flexShrink": 1,
-              },
-            ]
+          accessibilityLabel="Trier par Ajouté récemment"
+          accessibilityRole="radio"
+          accessibilityState={
+            Object {
+              "checked": true,
+            }
           }
-        >
-          <View>
-            <Text
-              isSelected={true}
-              numberOfLines={2}
-              style={
-                Array [
-                  Object {
-                    "color": "#eb0055",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              Ajouté récemment
-            </Text>
-          </View>
-        </View>
-        <View
-          flex={0.1}
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          nativeID="animatedComponent"
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 0.1,
-                "flexShrink": 1,
-              },
-            ]
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginVertical": 12,
+              "minHeight": 24,
+              "opacity": 1,
+              "userSelect": "auto",
+            }
           }
+          testID="RECENTLY_ADDED"
         >
           <View
-            height={24}
-            width={24}
+            flex={0.9}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                },
+              ]
+            }
           >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
+            <View>
+              <Text
+                isSelected={true}
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#eb0055",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Ajouté récemment
+              </Text>
+            </View>
           </View>
-        </View>
-      </View>
-      <View
-        accessibilityLabel="Trier par Prix croissant"
-        accessibilityRole="radio"
-        accessibilityState={
-          Object {
-            "checked": false,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "marginVertical": 12,
-            "minHeight": 24,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
-        }
-        testID="ASCENDING_PRICE"
-      >
-        <View
-          flex={0.9}
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 0.9,
-                "flexShrink": 1,
-              },
-            ]
-          }
-        >
-          <View>
-            <Text
-              isSelected={false}
-              numberOfLines={2}
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
+          <View
+            flex={0.1}
+            style={
+              Array [
+                Object {
+                  "flexBasis": 0,
+                  "flexGrow": 0.1,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+          >
+            <View
+              height={24}
+              width={24}
             >
-              Prix croissant
-            </Text>
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
           </View>
         </View>
         <View
-          flex={0.1}
+          accessibilityLabel="Trier par Prix croissant"
+          accessibilityRole="radio"
+          accessibilityState={
+            Object {
+              "checked": false,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          nativeID="animatedComponent"
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 0.1,
-                "flexShrink": 1,
-              },
-            ]
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginVertical": 12,
+              "minHeight": 24,
+              "opacity": 1,
+              "userSelect": "auto",
+            }
           }
-        />
-      </View>
-      <View
-        accessibilityLabel="Trier par Proximité géographique"
-        accessibilityRole="radio"
-        accessibilityState={
-          Object {
-            "checked": false,
-          }
-        }
-        accessible={true}
-        collapsable={false}
-        focusable={true}
-        nativeID="animatedComponent"
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          Object {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "marginVertical": 12,
-            "minHeight": 24,
-            "opacity": 1,
-            "userSelect": "auto",
-          }
-        }
-        testID="AROUND_ME"
-      >
-        <View
-          flex={0.9}
-          style={
-            Array [
-              Object {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 0.9,
-                "flexShrink": 1,
-              },
-            ]
-          }
+          testID="ASCENDING_PRICE"
         >
-          <View>
-            <Text
-              isSelected={false}
-              numberOfLines={2}
-              style={
-                Array [
-                  Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 15,
-                    "lineHeight": 20,
-                  },
-                ]
-              }
-            >
-              Proximité géographique
-            </Text>
+          <View
+            flex={0.9}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+          >
+            <View>
+              <Text
+                isSelected={false}
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Prix croissant
+              </Text>
+            </View>
           </View>
+          <View
+            flex={0.1}
+            style={
+              Array [
+                Object {
+                  "flexBasis": 0,
+                  "flexGrow": 0.1,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+          />
         </View>
         <View
-          flex={0.1}
-          style={
-            Array [
-              Object {
-                "flexBasis": 0,
-                "flexGrow": 0.1,
-                "flexShrink": 1,
-              },
-            ]
+          accessibilityLabel="Trier par Proximité géographique"
+          accessibilityRole="radio"
+          accessibilityState={
+            Object {
+              "checked": false,
+            }
           }
-        />
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          nativeID="animatedComponent"
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            Object {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "marginVertical": 12,
+              "minHeight": 24,
+              "opacity": 1,
+              "userSelect": "auto",
+            }
+          }
+          testID="AROUND_ME"
+        >
+          <View
+            flex={0.9}
+            style={
+              Array [
+                Object {
+                  "alignItems": "center",
+                  "flexBasis": 0,
+                  "flexDirection": "row",
+                  "flexGrow": 0.9,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+          >
+            <View>
+              <Text
+                isSelected={false}
+                numberOfLines={2}
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Proximité géographique
+              </Text>
+            </View>
+          </View>
+          <View
+            flex={0.1}
+            style={
+              Array [
+                Object {
+                  "flexBasis": 0,
+                  "flexGrow": 0.1,
+                  "flexShrink": 1,
+                },
+              ]
+            }
+          />
+        </View>
       </View>
     </View>
   </RCTScrollView>

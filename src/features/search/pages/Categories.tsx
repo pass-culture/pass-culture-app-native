@@ -4,6 +4,7 @@ import debounce from 'lodash.debounce'
 import React, { useRef } from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnum } from 'api/gen'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
@@ -37,11 +38,11 @@ export const Categories: React.FC = () => {
   const { goBack } = useNavigation()
   const { isCategorySelected, selectCategory } = useSelectCategory(goBack)
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
-
+  const titleID = uuidv4()
   return (
     <Container>
-      <PageHeader title={t`Catégories`} />
-      <StyledScrollView>
+      <PageHeader titleID={titleID} title={t`Catégories`} />
+      <StyledScrollView accessibilityRole="radiogroup" aria-labelledby={titleID}>
         <Spacer.TopScreen />
         <Spacer.Column numberOfSpaces={16} />
         <VerticalUl>

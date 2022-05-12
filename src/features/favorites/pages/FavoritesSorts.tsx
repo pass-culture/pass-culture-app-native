@@ -1,7 +1,8 @@
 import { t } from '@lingui/macro'
 import React, { useState } from 'react'
-import { ScrollView } from 'react-native'
+import { ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { useFavoritesState } from 'features/favorites/pages/FavoritesWrapper'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
@@ -37,6 +38,7 @@ export const FavoritesSorts: React.FC = () => {
   } = useGeolocation()
   const { sortBy: selectedSortBy, dispatch } = useFavoritesState()
   const [stagedSelectedSortBy, setStagedSelectedSortBy] = useState(selectedSortBy)
+  const titleID = uuidv4()
 
   async function onSortBySelection(sortBy: FavoriteSortBy) {
     function updateSortBySelection() {
@@ -72,30 +74,32 @@ export const FavoritesSorts: React.FC = () => {
 
         <TitleContainer>
           <Spacer.Column numberOfSpaces={12} />
-          <Typo.Title4 {...getHeadingAttrs(2)}>{t`Trier par`}</Typo.Title4>
+          <Typo.Title4 nativeID={titleID} {...getHeadingAttrs(2)}>{t`Trier par`}</Typo.Title4>
         </TitleContainer>
 
-        <VerticalUl>
-          {SORT_OPTIONS_LIST.map(([sortBy, label]) => {
-            return (
-              <Li key={sortBy}>
-                <RadioButton
-                  label={label}
-                  isSelected={stagedSelectedSortBy === sortBy}
-                  onSelect={() => onSortBySelection(sortBy)}
-                  accessibilityLabel={t`Trier par` + ` ${label}`}
-                  marginVertical={getSpacing(3)}
-                  testID={sortBy}
-                />
-                <InputError
-                  visible={!!(sortBy === 'AROUND_ME' && positionError)}
-                  messageId={positionError?.message}
-                  numberOfSpacesTop={1}
-                />
-              </Li>
-            )
-          })}
-        </VerticalUl>
+        <View accessibilityRole="radiogroup" aria-labelledby={titleID}>
+          <VerticalUl>
+            {SORT_OPTIONS_LIST.map(([sortBy, label]) => {
+              return (
+                <Li key={sortBy}>
+                  <RadioButton
+                    label={label}
+                    isSelected={stagedSelectedSortBy === sortBy}
+                    onSelect={() => onSortBySelection(sortBy)}
+                    accessibilityLabel={t`Trier par` + ` ${label}`}
+                    marginVertical={getSpacing(3)}
+                    testID={sortBy}
+                  />
+                  <InputError
+                    visible={!!(sortBy === 'AROUND_ME' && positionError)}
+                    messageId={positionError?.message}
+                    numberOfSpacesTop={1}
+                  />
+                </Li>
+              )
+            })}
+          </VerticalUl>
+        </View>
       </StyledScrollView>
 
       <ButtonContainer>

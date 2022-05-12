@@ -57,6 +57,7 @@ Object {
                 aria-level="1"
                 class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
                 dir="ltr"
+                id="testUuidV4"
                 role="heading"
                 style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
               >
@@ -78,7 +79,9 @@ Object {
           style="height: 16px;"
         />
         <div
+          aria-labelledby="testUuidV4"
           class="css-view-1dbjc4n"
+          role="radiogroup"
           style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
         >
           <div
@@ -391,6 +394,7 @@ Object {
               aria-level="1"
               class="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
               dir="ltr"
+              id="testUuidV4"
               role="heading"
               style="color: rgb(255, 255, 255); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px; text-align: center;"
             >
@@ -412,7 +416,9 @@ Object {
         style="height: 16px;"
       />
       <div
+        aria-labelledby="testUuidV4"
         class="css-view-1dbjc4n"
+        role="radiogroup"
         style="flex-direction: column; flex-grow: 1; flex-shrink: 1; overflow-x: hidden; overflow-y: auto; transform: translateZ(0px);"
       >
         <div

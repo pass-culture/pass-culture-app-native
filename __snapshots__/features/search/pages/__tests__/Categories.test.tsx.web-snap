@@ -5,7 +5,7 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -254,11 +254,11 @@
+@@ -257,11 +257,11 @@
         <ul
           className=\\"sc-gsDKAQ sc-dkPtRN bwGBFc ezyhIk\\"
         >
@@ -18,7 +18,7 @@ exports[`Categories component should match diff snapshot when new category is se
               onBlur={[Function onStyledBlur]}
               onClick={[Function onClick]}
               onContextMenu={[Function onContextMenu]}
-@@ -350,11 +350,11 @@
+@@ -353,11 +353,11 @@
                     className=\\"css-text-901oao css-textMultiLine-cens5h\\"
                     dir=\\"ltr\\"
                     style={
@@ -31,7 +31,7 @@ exports[`Categories component should match diff snapshot when new category is se
                         \\"lineHeight\\": \\"20px\\",
                       }
                     }
-@@ -377,11 +377,22 @@
+@@ -380,11 +380,22 @@
                     \\"msFlexNegative\\": 1,
                     \\"msFlexPositive\\": 0.1,
                     \\"msFlexPreferredSize\\": \\"0px\\",
@@ -55,7 +55,7 @@ exports[`Categories component should match diff snapshot when new category is se
           <li>
             <div
               aria-checked={false}
-@@ -510,11 +521,11 @@
+@@ -513,11 +524,11 @@
               />
             </div>
           </li>
@@ -68,7 +68,7 @@ exports[`Categories component should match diff snapshot when new category is se
               onBlur={[Function onStyledBlur]}
               onClick={[Function onClick]}
               onContextMenu={[Function onContextMenu]}
-@@ -606,11 +617,11 @@
+@@ -609,11 +620,11 @@
                     className=\\"css-text-901oao css-textMultiLine-cens5h\\"
                     dir=\\"ltr\\"
                     style={
@@ -81,7 +81,7 @@ exports[`Categories component should match diff snapshot when new category is se
                         \\"lineHeight\\": \\"20px\\",
                       }
                     }
-@@ -633,22 +644,11 @@
+@@ -636,22 +647,11 @@
                     \\"msFlexNegative\\": 1,
                     \\"msFlexPositive\\": 0.1,
                     \\"msFlexPreferredSize\\": \\"0px\\",
@@ -254,6 +254,7 @@ exports[`Categories component should render correctly 1`] = `
           aria-level={1}
           className="css-reset-4rbku5 css-text-901oao css-textMultiLine-cens5h"
           dir="ltr"
+          id="testUuidV4"
           role="heading"
           style={
             Object {
@@ -312,12 +313,14 @@ exports[`Categories component should render correctly 1`] = `
     </div>
   </header>
   <div
+    aria-labelledby="testUuidV4"
     className="css-view-1dbjc4n"
     onScroll={[Function]}
     onTouchEnd={[Function]}
     onTouchMove={[Function]}
     onTouchStart={[Function]}
     onWheel={[Function]}
+    role="radiogroup"
     style={
       Object {
         "WebkitBoxDirection": "normal",

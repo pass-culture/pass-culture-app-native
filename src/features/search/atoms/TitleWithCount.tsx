@@ -11,14 +11,15 @@ export const TitleWithCount: React.FC<{
   title: string
   count: number
   ariaLive?: 'polite' | 'off'
-}> = ({ count = 0, title, ariaLive = 'off' }) => {
+  titleID?: string
+}> = ({ count = 0, title, titleID, ariaLive = 'off' }) => {
   const countString = `${NON_BREAKING_SPACE}(${count})`
   const countLabel = plural(count, {
     one: '# sélectionné',
     other: '# sélectionnés',
   })
   return (
-    <Title>
+    <Title nativeID={titleID}>
       {title}
       {count > 0 && (
         <RedTitle

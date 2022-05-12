@@ -1,5 +1,7 @@
 import { t } from '@lingui/macro'
 import React, { useState, useEffect } from 'react'
+import { View } from 'react-native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { ActivityIdEnum } from 'api/gen'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
@@ -11,7 +13,6 @@ import { useProfileOptions } from 'features/identityCheck/utils/useProfileOption
 import { useIsUserUnderage } from 'features/profile/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { RadioButtonWithBorder } from 'ui/components/radioButtons/RadioButtonWithBorder'
-import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 import { Li } from 'ui/web/list/Li'
@@ -25,6 +26,7 @@ export const SetStatus = () => {
     profile.status || null
   )
   const { navigateToNextScreen } = useIdentityCheckNavigation()
+  const titleID = uuidv4()
 
   // TODO(PC-12410): déléguer la responsabilité au back de faire cette filtration, remplacer filteredActivities par activities
   const filteredActivities = isUserUnderage
@@ -48,32 +50,32 @@ export const SetStatus = () => {
     navigateToNextScreen()
   }
 
-  useEnterKeyAction(selectedStatus ? submitStatus : undefined)
-
   return (
     <PageWithHeader
       title={t`Profil`}
       fixedTopChildren={
         <React.Fragment>
-          <CenteredTitle title={t`Sélectionne ton statut`} />
+          <CenteredTitle titleID={titleID} title={t`Sélectionne ton statut`} />
           <Spacer.Column numberOfSpaces={5} />
         </React.Fragment>
       }
       scrollChildren={
         <Form.MaxWidth>
-          <VerticalUl>
-            {filteredActivities &&
-              filteredActivities.map((activity) => (
-                <Li key={activity.label}>
-                  <RadioButtonWithBorder
-                    selected={activity.id === selectedStatus}
-                    description={activity.description}
-                    label={activity.label}
-                    onPress={() => setSelectedStatus(activity.id)}
-                  />
-                </Li>
-              ))}
-          </VerticalUl>
+          <View accessibilityRole="radiogroup" aria-labelledby={titleID}>
+            <VerticalUl>
+              {filteredActivities &&
+                filteredActivities.map((activity) => (
+                  <Li key={activity.label}>
+                    <RadioButtonWithBorder
+                      selected={activity.id === selectedStatus}
+                      description={activity.description}
+                      label={activity.label}
+                      onPress={() => setSelectedStatus(activity.id)}
+                    />
+                  </Li>
+                ))}
+            </VerticalUl>
+          </View>
         </Form.MaxWidth>
       }
       fixedBottomChildren={
