@@ -4,6 +4,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
 Array [
   <header
     className="sc-iAKWXU hrlCSb"
+    role="banner"
   >
     <div
       className="css-view-1dbjc4n"

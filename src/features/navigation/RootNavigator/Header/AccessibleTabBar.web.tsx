@@ -40,7 +40,7 @@ export const AccessibleTabBar = ({ id }: { id: string }) => {
   )
 }
 
-const AccessibleTabBarContainer = styled.nav(({ theme }) => ({
+const AccessibleTabBarContainer = styled.nav.attrs({ role: 'navigation' })(({ theme }) => ({
   zIndex: theme.zIndex.tabBar,
 }))
 

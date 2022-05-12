@@ -5,7 +5,7 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -253,11 +253,11 @@
+@@ -254,11 +254,11 @@
         <ul
           className=\\"sc-gsDKAQ sc-dkPtRN bwGBFc ezyhIk\\"
         >
@@ -18,7 +18,7 @@ exports[`Categories component should match diff snapshot when new category is se
               onBlur={[Function onStyledBlur]}
               onClick={[Function onClick]}
               onContextMenu={[Function onContextMenu]}
-@@ -349,11 +349,11 @@
+@@ -350,11 +350,11 @@
                     className=\\"css-text-901oao css-textMultiLine-cens5h\\"
                     dir=\\"ltr\\"
                     style={
@@ -31,7 +31,7 @@ exports[`Categories component should match diff snapshot when new category is se
                         \\"lineHeight\\": \\"20px\\",
                       }
                     }
-@@ -376,11 +376,22 @@
+@@ -377,11 +377,22 @@
                     \\"msFlexNegative\\": 1,
                     \\"msFlexPositive\\": 0.1,
                     \\"msFlexPreferredSize\\": \\"0px\\",
@@ -55,7 +55,7 @@ exports[`Categories component should match diff snapshot when new category is se
           <li>
             <div
               aria-checked={false}
-@@ -509,11 +520,11 @@
+@@ -510,11 +521,11 @@
               />
             </div>
           </li>
@@ -68,7 +68,7 @@ exports[`Categories component should match diff snapshot when new category is se
               onBlur={[Function onStyledBlur]}
               onClick={[Function onClick]}
               onContextMenu={[Function onContextMenu]}
-@@ -605,11 +616,11 @@
+@@ -606,11 +617,11 @@
                     className=\\"css-text-901oao css-textMultiLine-cens5h\\"
                     dir=\\"ltr\\"
                     style={
@@ -81,7 +81,7 @@ exports[`Categories component should match diff snapshot when new category is se
                         \\"lineHeight\\": \\"20px\\",
                       }
                     }
-@@ -632,22 +643,11 @@
+@@ -633,22 +644,11 @@
                     \\"msFlexNegative\\": 1,
                     \\"msFlexPositive\\": 0.1,
                     \\"msFlexPreferredSize\\": \\"0px\\",
@@ -128,6 +128,7 @@ exports[`Categories component should render correctly 1`] = `
 >
   <header
     className="sc-bdvvtL dEiHBQ"
+    role="banner"
   >
     <div
       className="css-view-1dbjc4n"

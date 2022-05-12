@@ -135,7 +135,7 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
   )
 })
 
-const HeaderContainer = webStyled.header(({ theme }) => {
+const HeaderContainer = webStyled.header.attrs({ role: 'banner' })(({ theme }) => {
   return {
     display: 'flex',
     flexGrow: 1,

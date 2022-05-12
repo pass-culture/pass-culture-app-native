@@ -43,7 +43,7 @@ export const Nav: React.FC<Props> = ({ maxWidth, height, noShadow }) => {
   )
 }
 
-const NavItemsContainer = styled.nav<{
+const NavItemsContainer = styled.nav.attrs({ role: 'navigation' })<{
   maxWidth?: number
   navHeight?: number
   noShadow?: boolean
