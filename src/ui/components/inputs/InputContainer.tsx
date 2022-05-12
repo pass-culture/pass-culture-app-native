@@ -56,12 +56,19 @@ const StyledView = styled(View)<{
     })
   }
 
-  const heightValue =
-    height === 'small'
-      ? theme.inputs.height.small
-      : height === 'regular'
-      ? theme.inputs.height.regular
-      : theme.inputs.height.tall
+  const getHeightValue = () => {
+    if (height === 'small') {
+      return theme.inputs.height.small
+    }
+    return height === 'regular' ? theme.inputs.height.regular : theme.inputs.height.tall
+  }
+
+  const getBorderColor = () => {
+    if (isDisabled) {
+      return undefined
+    }
+    return isError ? theme.colors.error : theme.colors.greyMedium
+  }
 
   const focusRules =
     Platform.OS === 'web' && focusOutlineColor
@@ -69,12 +76,12 @@ const StyledView = styled(View)<{
       : { borderColor: theme.colors.primary }
 
   return {
-    height: heightValue,
+    height: getHeightValue(),
     width: '100%',
     flexDirection: 'row',
     borderStyle: 'solid',
     borderWidth: '1px',
-    borderColor: isDisabled ? undefined : isError ? theme.colors.error : theme.colors.greyMedium,
+    borderColor: getBorderColor(),
     backgroundColor: isDisabled ? theme.colors.greyLight : theme.colors.white,
     ...(isFocus && focusRules),
     ...(height === 'tall'

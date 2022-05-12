@@ -49,6 +49,15 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
       color: theme.colors.white,
     }))({ width: '100%' })
 
+  const getButtonSpaces = () => {
+    if (buttons) {
+      return buttons.length === 1
+        ? spacingMatrix.bottomWithOneButton
+        : spacingMatrix.bottomWithMoreThanOneButton
+    }
+    return spacingMatrix.bottom
+  }
+
   return (
     <Wrapper>
       {!!noIndex && (
@@ -88,15 +97,7 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
         {children}
         {!!isTouch && (
           <React.Fragment>
-            <Spacer.Column
-              numberOfSpaces={
-                buttons
-                  ? buttons.length === 1
-                    ? spacingMatrix.bottomWithOneButton
-                    : spacingMatrix.bottomWithMoreThanOneButton
-                  : spacingMatrix.bottom
-              }
-            />
+            <Spacer.Column numberOfSpaces={getButtonSpaces()} />
             <Spacer.Flex flex={0.5} />
           </React.Fragment>
         )}

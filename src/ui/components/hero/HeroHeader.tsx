@@ -31,6 +31,8 @@ export const HeroHeader: React.FC<Props> = (props) => {
       </BackgroundContainer>
     )
 
+  const blurImageRadius = Platform.OS === 'android' ? 5 : 20
+  const blurImageTransform = Platform.OS === 'web' ? { transform: 'scale(1.1)' } : {}
   return (
     <Container minHeight={props.minHeight}>
       <HeroContainer>
@@ -38,11 +40,11 @@ export const HeroHeader: React.FC<Props> = (props) => {
           <BlurImage
             height={props.imageHeight}
             width={appContentWidth}
-            blurRadius={Platform.OS === 'android' ? 5 : 20}
+            blurRadius={blurImageRadius}
             resizeMode="cover"
             source={{ uri: props.imageUrl }}
             // @ts-ignore TODO(kopax): remove when https://github.com/necolas/react-native-web/issues/2139 is fixed
-            {...(Platform.OS === 'web' ? { transform: 'scale(1.1)' } : {})}
+            {...blurImageTransform}
           />
         ) : (
           backgroundImage

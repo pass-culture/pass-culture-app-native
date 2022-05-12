@@ -37,11 +37,10 @@ export function Slider(props: Props) {
   const { formatValues = (s: number) => s } = props
 
   const getRelativeStepFromKey = (key: string) => {
-    return ['ArrowUp', 'ArrowRight'].includes(key)
-      ? step
-      : ['ArrowDown', 'ArrowLeft'].includes(key)
-      ? -step
-      : null
+    if (['ArrowUp', 'ArrowRight'].includes(key)) {
+      return step
+    }
+    return ['ArrowDown', 'ArrowLeft'].includes(key) ? -step : null
   }
 
   const updateCursor = (e: Event, cursor: string) => {

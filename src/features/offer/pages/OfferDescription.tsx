@@ -60,7 +60,8 @@ export const formatValue = (key: ExtraDataKeys, value: string | number): string 
   if (key === 'durationMinutes') {
     const hours = Math.floor(+value / 60)
     const minutes = +value - 60 * hours
-    return hours ? `${hours}h${minutes > 0 ? minutes : ''}` : `${minutes}m`
+    const displayedMinutes = minutes > 0 ? minutes : ''
+    return hours ? `${hours}h${displayedMinutes}` : `${minutes}m`
   }
   return value.toString()
 }
