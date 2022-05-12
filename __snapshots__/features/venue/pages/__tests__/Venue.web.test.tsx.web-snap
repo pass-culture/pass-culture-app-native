@@ -435,7 +435,7 @@ Object {
               />
               <button
                 aria-label="Géolocalisation désactivée"
-                class="sc-eCImPb eivvKD sc-gWXbKe yWhhF sc-gWXbKe yWhhF"
+                class="sc-bdvvtL bmzymd sc-cidDSM fzzLBF sc-cidDSM fzzLBF"
                 data-testid="iconLocation"
                 tabindex="0"
                 type="button"
@@ -877,7 +877,7 @@ Object {
               style="margin-right: 24px; margin-left: 24px;"
             >
               <button
-                class="sc-hGPBjI erGtYA"
+                class="sc-kfPuZi kCqwnZ"
                 type="button"
               >
                 <div
@@ -958,7 +958,7 @@ Object {
                 style="align-items: flex-start;"
               >
                 <a
-                  class="sc-gsDKAQ jJvgoT sc-hKwDye gvtKtm"
+                  class="sc-hKwDye ksRHhg sc-jRQBWg CQePl"
                   href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
                   tabindex="0"
                   target="_blank"
@@ -1148,10 +1148,10 @@ Object {
                   style="flex-direction: row; justify-content: space-between;"
                 >
                   <ul
-                    class="sc-fotOHu sc-cCcXHH fHUdDM jwxopx"
+                    class="sc-iCfMLu sc-jcFjpl iQwHgL iLzjWr"
                   >
                     <li
-                      class="sc-cidDSM gERRtc"
+                      class="sc-caiLqq jBFBin"
                     >
                       <div
                         aria-label="Handicap visuel : Accessible"
@@ -1220,7 +1220,7 @@ Object {
                       </div>
                     </li>
                     <li
-                      class="sc-cidDSM gERRtc"
+                      class="sc-caiLqq jBFBin"
                     >
                       <div
                         aria-label="Handicap psychique ou cognitif : Non accessible"
@@ -1289,7 +1289,7 @@ Object {
                       </div>
                     </li>
                     <li
-                      class="sc-cidDSM gERRtc"
+                      class="sc-caiLqq jBFBin"
                     >
                       <div
                         aria-label="Handicap moteur : Non accessible"
@@ -1358,7 +1358,7 @@ Object {
                       </div>
                     </li>
                     <li
-                      class="sc-cidDSM gERRtc"
+                      class="sc-caiLqq jBFBin"
                     >
                       <div
                         aria-label="Handicap auditif : Non accessible"
@@ -1954,7 +1954,7 @@ Object {
             />
             <button
               aria-label="Géolocalisation désactivée"
-              class="sc-eCImPb eivvKD sc-gWXbKe yWhhF sc-gWXbKe yWhhF"
+              class="sc-bdvvtL bmzymd sc-cidDSM fzzLBF sc-cidDSM fzzLBF"
               data-testid="iconLocation"
               tabindex="0"
               type="button"
@@ -2396,7 +2396,7 @@ Object {
             style="margin-right: 24px; margin-left: 24px;"
           >
             <button
-              class="sc-hGPBjI erGtYA"
+              class="sc-kfPuZi kCqwnZ"
               type="button"
             >
               <div
@@ -2477,7 +2477,7 @@ Object {
               style="align-items: flex-start;"
             >
               <a
-                class="sc-gsDKAQ jJvgoT sc-hKwDye gvtKtm"
+                class="sc-hKwDye ksRHhg sc-jRQBWg CQePl"
                 href="https://www.google.com/maps/dir/?api=1&destination=1%20boulevard%20Poissonni%C3%A8re%2C%2075000%20Paris"
                 tabindex="0"
                 target="_blank"
@@ -2667,10 +2667,10 @@ Object {
                 style="flex-direction: row; justify-content: space-between;"
               >
                 <ul
-                  class="sc-fotOHu sc-cCcXHH fHUdDM jwxopx"
+                  class="sc-iCfMLu sc-jcFjpl iQwHgL iLzjWr"
                 >
                   <li
-                    class="sc-cidDSM gERRtc"
+                    class="sc-caiLqq jBFBin"
                   >
                     <div
                       aria-label="Handicap visuel : Accessible"
@@ -2739,7 +2739,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-cidDSM gERRtc"
+                    class="sc-caiLqq jBFBin"
                   >
                     <div
                       aria-label="Handicap psychique ou cognitif : Non accessible"
@@ -2808,7 +2808,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-cidDSM gERRtc"
+                    class="sc-caiLqq jBFBin"
                   >
                     <div
                       aria-label="Handicap moteur : Non accessible"
@@ -2877,7 +2877,7 @@ Object {
                     </div>
                   </li>
                   <li
-                    class="sc-cidDSM gERRtc"
+                    class="sc-caiLqq jBFBin"
                   >
                     <div
                       aria-label="Handicap auditif : Non accessible"

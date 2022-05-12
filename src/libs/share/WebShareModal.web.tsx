@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import webStyled from 'styled-components'
 import styled from 'styled-components/native'
 
 // We are in a .web file, with a specific behavior depending on the device
@@ -24,6 +25,8 @@ import { Telegram } from 'ui/svg/icons/socialNetwork/Telegram'
 import { Twitter } from 'ui/svg/icons/socialNetwork/Twitter'
 import { WhatsApp } from 'ui/svg/icons/socialNetwork/WhatsApp'
 import { getSpacingString, Spacer } from 'ui/theme'
+import { Li } from 'ui/web/list/Li'
+import { Ul } from 'ui/web/list/Ul'
 
 import { WebShareModalProps } from './types'
 
@@ -137,7 +140,9 @@ export const WebShareModal = ({
         <Spacer.Column numberOfSpaces={6} />
         <SocialButtonsContainer>
           {socialButtonProps.map((props) => (
-            <SocialButton key={props.label} {...props} />
+            <Li key={props.label}>
+              <SocialButton {...props} />
+            </Li>
           ))}
         </SocialButtonsContainer>
         <Spacer.Column numberOfSpaces={8} />
@@ -163,7 +168,7 @@ const NonSocialButtonsItem = styled.View({
   justifyContent: 'center',
 })
 
-const SocialButtonsContainer = styled.View({
+const SocialButtonsContainer = webStyled(Ul)({
   display: 'grid',
   gridTemplateColumns: 'repeat(auto-fill, minmax(100px,1fr))',
   gap: `${getSpacingString(6)} 0px`,
