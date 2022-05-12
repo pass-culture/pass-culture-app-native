@@ -107,7 +107,9 @@ export function useLoginRoutine() {
     await saveRefreshToken(response.refreshToken)
     await storage.saveString('access_token', response.accessToken)
     analytics.logLogin({ method })
-    eventMonitoring.captureMessage(`${++i} loginRoutine/analytics.logLogin ${JSON.stringify(response)}`)
+    eventMonitoring.captureMessage(
+      `${++i} loginRoutine/analytics.logLogin ${JSON.stringify(response)}`
+    )
     setIsLoggedIn(true)
     eventMonitoring.captureMessage(`${++i} loginRoutine/setIsLoggedIn`)
     resetContexts()

@@ -136,6 +136,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
       }
     } catch (error) {
       eventMonitoring.captureMessage(
+        // @ts-ignore 12345
         `${++i} handleSignin/handleSigninSuccess/catchError ${error.message}`
       )
       eventMonitoring.captureException(error)
