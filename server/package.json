@@ -24,7 +24,7 @@
   "scripts": {
     "build": "tsc --build",
     "predeploy": "yarn build",
-    "deploy": "firebase deploy --only functions",
+    "deploy": "gcloud beta app deploy --quiet --project passculture-metier-ehp",
     "deploy:testing": "cat .env.testing > .env && yarn deploy",
     "deploy:staging": "cat .env.staging > .env && yarn deploy",
     "deploy:integration": "cat .env.integration > .env && yarn deploy",
@@ -41,8 +41,6 @@
     "cross-fetch": "^3.1.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.3",
-    "firebase-admin": "^10.0.2",
-    "firebase-functions": "3.20.1",
     "http-proxy-middleware": "^2.0.4"
   },
   "devDependencies": {
