@@ -247,7 +247,7 @@ commands:
       - run:
           name: Authenticate to GCP
           command: |
-            echo ${<< parameters.gcp-key-name >>} | gcloud auth activate-service-account --key-file=-
+            echo ${<< parameters.gcp_key_name >>} | gcloud auth activate-service-account --key-file=-
             gcloud --quiet config set project ${GCP_PROJECT}
 
   copy_assetlinks:
