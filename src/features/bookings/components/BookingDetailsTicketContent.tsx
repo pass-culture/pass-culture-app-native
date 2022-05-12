@@ -63,6 +63,7 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
 
   const withdrawalType = booking?.stock?.offer?.withdrawalType || undefined
 
+  const ticketContent = properties.isDigital ? accessOfferButton : <TicketBody booking={booking} />
   return (
     <TicketContainer>
       <Title>{offer.name}</Title>
@@ -78,7 +79,7 @@ export const BookingDetailsTicketContent = (props: BookingDetailsTicketContentPr
         ) : (
           <React.Fragment>
             <TicketCode withdrawalType={withdrawalType} code={booking.token} />
-            {properties.isDigital ? accessOfferButton : <TicketBody booking={booking} />}
+            {ticketContent}
           </React.Fragment>
         )}
       </TicketInnerContent>

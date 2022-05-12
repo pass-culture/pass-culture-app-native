@@ -15,6 +15,8 @@ export const BookDuoChoice: React.FC = () => {
     dispatch({ type: 'CHANGE_STEP', payload: Step.DUO })
   }
 
+  const buttonTitle = bookingState.quantity && bookingState.quantity === 1 ? t`Solo` : t`Duo`
+
   return (
     <React.Fragment>
       <Typo.Title4 {...getHeadingAttrs(2)} testID="DuoStep">{t`Nombre de place`}</Typo.Title4>
@@ -23,9 +25,7 @@ export const BookDuoChoice: React.FC = () => {
         <DuoChoiceSelector />
       ) : (
         <TouchableOpacity onPress={updateBookingStepToDuo}>
-          <Typo.ButtonText>
-            {bookingState.quantity && bookingState.quantity === 1 ? t`Solo` : t`Duo`}
-          </Typo.ButtonText>
+          <Typo.ButtonText>{buttonTitle}</Typo.ButtonText>
         </TouchableOpacity>
       )}
     </React.Fragment>

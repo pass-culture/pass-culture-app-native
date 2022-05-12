@@ -71,6 +71,9 @@ export const BookHourChoice: React.FC = () => {
     [stocks, selectedDate, bookingState.stockId, bookingState.quantity, offerCredit]
   )
 
+  const buttonTitle =
+    bookingStock && bookingStock.beginningDatetime ? formatHour(bookingStock.beginningDatetime) : ''
+
   return (
     <React.Fragment>
       <Typo.Title4 {...getHeadingAttrs(2)} testID="HourStep">{t`Heure`}</Typo.Title4>
@@ -79,11 +82,7 @@ export const BookHourChoice: React.FC = () => {
         <HourChoiceContainer>{filteredStocks}</HourChoiceContainer>
       ) : (
         <TouchableOpacity onPress={changeHour}>
-          <Typo.ButtonText>
-            {bookingStock && bookingStock.beginningDatetime
-              ? formatHour(bookingStock.beginningDatetime)
-              : ''}
-          </Typo.ButtonText>
+          <Typo.ButtonText>{buttonTitle}</Typo.ButtonText>
         </TouchableOpacity>
       )}
     </React.Fragment>

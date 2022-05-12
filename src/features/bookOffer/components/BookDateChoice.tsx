@@ -26,6 +26,8 @@ export const BookDateChoice: React.FC<Props> = ({ stocks, userRemainingCredit })
     dispatch({ type: 'RESET_STOCK' })
   }
 
+  const buttonTitle = bookingState.date ? formatToCompleteFrenchDate(bookingState.date) : ''
+
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={4} />
@@ -39,9 +41,7 @@ export const BookDateChoice: React.FC<Props> = ({ stocks, userRemainingCredit })
       ) : (
         <TouchableOpacity onPress={showCalendar}>
           <Spacer.Column numberOfSpaces={2} />
-          <Typo.ButtonText>
-            {bookingState.date ? formatToCompleteFrenchDate(bookingState.date) : ''}
-          </Typo.ButtonText>
+          <Typo.ButtonText>{buttonTitle}</Typo.ButtonText>
         </TouchableOpacity>
       )}
     </React.Fragment>
