@@ -167,6 +167,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
               }
             >
               <Text
+                nativeID="testUuidV4"
                 style={
                   Array [
                     Object {
@@ -214,443 +215,448 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
           >
             <View>
               <View
-                accessibilityRole="radio"
-                accessibilityState={
-                  Object {
-                    "checked": false,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                nativeID="animatedComponent"
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "borderColor": "#CBCDD2",
-                    "borderRadius": 24,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "height": 48,
-                    "marginBottom": 16,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
-                }
+                accessibilityRole="radiogroup"
+                aria-labelledby="testUuidV4"
               >
                 <View
+                  accessibilityRole="radio"
+                  accessibilityState={
+                    Object {
+                      "checked": false,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  nativeID="animatedComponent"
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
                   style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
+                    Object {
+                      "alignItems": "center",
+                      "borderColor": "#CBCDD2",
+                      "borderRadius": 24,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "height": 48,
+                      "marginBottom": 16,
+                      "opacity": 1,
+                      "userSelect": "auto",
+                      "width": "100%",
+                    }
                   }
                 >
-                  <Text
-                    selected={false}
+                  <View
                     style={
                       Array [
                         Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
                         },
                       ]
                     }
                   >
-                    Lycée agricole
-                  </Text>
+                    <Text
+                      selected={false}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      Lycée agricole
+                    </Text>
+                  </View>
                 </View>
-              </View>
-              <View
-                accessibilityRole="radio"
-                accessibilityState={
-                  Object {
-                    "checked": false,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                nativeID="animatedComponent"
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "borderColor": "#CBCDD2",
-                    "borderRadius": 24,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "height": 48,
-                    "marginBottom": 16,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
-                }
-              >
                 <View
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    selected={false}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
+                  accessibilityRole="radio"
+                  accessibilityState={
+                    Object {
+                      "checked": false,
                     }
-                  />
-                </View>
-              </View>
-              <View
-                accessibilityRole="radio"
-                accessibilityState={
-                  Object {
-                    "checked": false,
                   }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                nativeID="animatedComponent"
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "borderColor": "#CBCDD2",
-                    "borderRadius": 24,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "height": 48,
-                    "marginBottom": 16,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
-                }
-              >
-                <View
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  nativeID="animatedComponent"
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
                   style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    selected={false}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
+                    Object {
+                      "alignItems": "center",
+                      "borderColor": "#CBCDD2",
+                      "borderRadius": 24,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "height": 48,
+                      "marginBottom": 16,
+                      "opacity": 1,
+                      "userSelect": "auto",
+                      "width": "100%",
                     }
-                  />
-                </View>
-              </View>
-              <View
-                accessibilityRole="radio"
-                accessibilityState={
-                  Object {
-                    "checked": false,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                nativeID="animatedComponent"
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "borderColor": "#CBCDD2",
-                    "borderRadius": 24,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "height": 48,
-                    "marginBottom": 16,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
-                }
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
                   }
                 >
-                  <Text
-                    selected={false}
+                  <View
                     style={
                       Array [
                         Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  />
-                </View>
-              </View>
-              <View
-                accessibilityRole="radio"
-                accessibilityState={
-                  Object {
-                    "checked": false,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                nativeID="animatedComponent"
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "borderColor": "#CBCDD2",
-                    "borderRadius": 24,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "height": 48,
-                    "marginBottom": 16,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
-                }
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    selected={false}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
-                        },
-                      ]
-                    }
-                  />
-                </View>
-              </View>
-              <View
-                accessibilityRole="radio"
-                accessibilityState={
-                  Object {
-                    "checked": false,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                nativeID="animatedComponent"
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "borderColor": "#CBCDD2",
-                    "borderRadius": 24,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "height": 48,
-                    "marginBottom": 16,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
-                }
-              >
-                <View
-                  style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    selected={false}
-                    style={
-                      Array [
-                        Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
                         },
                       ]
                     }
                   >
-                    Accompagnement spécialisé
-                  </Text>
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#696A6F",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                  >
-                    À domicile, CNED, institut de santé, etc.
-                  </Text>
+                    <Text
+                      selected={false}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
                 </View>
-              </View>
-              <View
-                accessibilityRole="radio"
-                accessibilityState={
-                  Object {
-                    "checked": false,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                nativeID="animatedComponent"
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "borderColor": "#CBCDD2",
-                    "borderRadius": 24,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "height": 48,
-                    "marginBottom": 16,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
-                }
-              >
                 <View
+                  accessibilityRole="radio"
+                  accessibilityState={
+                    Object {
+                      "checked": false,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  nativeID="animatedComponent"
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
                   style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
+                    Object {
+                      "alignItems": "center",
+                      "borderColor": "#CBCDD2",
+                      "borderRadius": 24,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "height": 48,
+                      "marginBottom": 16,
+                      "opacity": 1,
+                      "userSelect": "auto",
+                      "width": "100%",
+                    }
                   }
                 >
-                  <Text
-                    selected={false}
+                  <View
                     style={
                       Array [
                         Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
                         },
                       ]
                     }
                   >
-                    Centre de formation d'apprentis
-                  </Text>
+                    <Text
+                      selected={false}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                </View>
+                <View
+                  accessibilityRole="radio"
+                  accessibilityState={
+                    Object {
+                      "checked": false,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  nativeID="animatedComponent"
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderColor": "#CBCDD2",
+                      "borderRadius": 24,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "height": 48,
+                      "marginBottom": 16,
+                      "opacity": 1,
+                      "userSelect": "auto",
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      selected={false}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                </View>
+                <View
+                  accessibilityRole="radio"
+                  accessibilityState={
+                    Object {
+                      "checked": false,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  nativeID="animatedComponent"
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderColor": "#CBCDD2",
+                      "borderRadius": 24,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "height": 48,
+                      "marginBottom": 16,
+                      "opacity": 1,
+                      "userSelect": "auto",
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      selected={false}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                </View>
+                <View
+                  accessibilityRole="radio"
+                  accessibilityState={
+                    Object {
+                      "checked": false,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  nativeID="animatedComponent"
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderColor": "#CBCDD2",
+                      "borderRadius": 24,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "height": 48,
+                      "marginBottom": 16,
+                      "opacity": 1,
+                      "userSelect": "auto",
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      selected={false}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      Accompagnement spécialisé
+                    </Text>
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "color": "#696A6F",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                    >
+                      À domicile, CNED, institut de santé, etc.
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  accessibilityRole="radio"
+                  accessibilityState={
+                    Object {
+                      "checked": false,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  nativeID="animatedComponent"
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    Object {
+                      "alignItems": "center",
+                      "borderColor": "#CBCDD2",
+                      "borderRadius": 24,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "height": 48,
+                      "marginBottom": 16,
+                      "opacity": 1,
+                      "userSelect": "auto",
+                      "width": "100%",
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      Array [
+                        Object {
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      selected={false}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      Centre de formation d'apprentis
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>
@@ -937,6 +943,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
               }
             >
               <Text
+                nativeID="testUuidV4"
                 style={
                   Array [
                     Object {
@@ -984,203 +991,208 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
           >
             <View>
               <View
-                accessibilityRole="radio"
-                accessibilityState={
-                  Object {
-                    "checked": false,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                nativeID="animatedComponent"
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "borderColor": "#CBCDD2",
-                    "borderRadius": 24,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "height": 48,
-                    "marginBottom": 16,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
-                }
+                accessibilityRole="radiogroup"
+                aria-labelledby="testUuidV4"
               >
                 <View
+                  accessibilityRole="radio"
+                  accessibilityState={
+                    Object {
+                      "checked": false,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  nativeID="animatedComponent"
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
                   style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
+                    Object {
+                      "alignItems": "center",
+                      "borderColor": "#CBCDD2",
+                      "borderRadius": 24,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "height": 48,
+                      "marginBottom": 16,
+                      "opacity": 1,
+                      "userSelect": "auto",
+                      "width": "100%",
+                    }
                   }
                 >
-                  <Text
-                    selected={false}
+                  <View
                     style={
                       Array [
                         Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
                         },
                       ]
                     }
                   >
-                    Collège privé
-                  </Text>
+                    <Text
+                      selected={false}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      Collège privé
+                    </Text>
+                  </View>
                 </View>
-              </View>
-              <View
-                accessibilityRole="radio"
-                accessibilityState={
-                  Object {
-                    "checked": false,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                nativeID="animatedComponent"
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "borderColor": "#CBCDD2",
-                    "borderRadius": 24,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "height": 48,
-                    "marginBottom": 16,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
-                }
-              >
                 <View
+                  accessibilityRole="radio"
+                  accessibilityState={
+                    Object {
+                      "checked": false,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  nativeID="animatedComponent"
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
                   style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
+                    Object {
+                      "alignItems": "center",
+                      "borderColor": "#CBCDD2",
+                      "borderRadius": 24,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "height": 48,
+                      "marginBottom": 16,
+                      "opacity": 1,
+                      "userSelect": "auto",
+                      "width": "100%",
+                    }
                   }
                 >
-                  <Text
-                    selected={false}
+                  <View
                     style={
                       Array [
                         Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
                         },
                       ]
                     }
                   >
-                    Collège public
-                  </Text>
+                    <Text
+                      selected={false}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      Collège public
+                    </Text>
+                  </View>
                 </View>
-              </View>
-              <View
-                accessibilityRole="radio"
-                accessibilityState={
-                  Object {
-                    "checked": false,
-                  }
-                }
-                accessible={true}
-                collapsable={false}
-                focusable={true}
-                nativeID="animatedComponent"
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  Object {
-                    "alignItems": "center",
-                    "borderColor": "#CBCDD2",
-                    "borderRadius": 24,
-                    "borderWidth": 1,
-                    "flexDirection": "row",
-                    "height": 48,
-                    "marginBottom": 16,
-                    "opacity": 1,
-                    "userSelect": "auto",
-                    "width": "100%",
-                  }
-                }
-              >
                 <View
+                  accessibilityRole="radio"
+                  accessibilityState={
+                    Object {
+                      "checked": false,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  nativeID="animatedComponent"
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
                   style={
-                    Array [
-                      Object {
-                        "alignItems": "center",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                      },
-                    ]
+                    Object {
+                      "alignItems": "center",
+                      "borderColor": "#CBCDD2",
+                      "borderRadius": 24,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "height": 48,
+                      "marginBottom": 16,
+                      "opacity": 1,
+                      "userSelect": "auto",
+                      "width": "100%",
+                    }
                   }
                 >
-                  <Text
-                    selected={false}
+                  <View
                     style={
                       Array [
                         Object {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "alignItems": "center",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
                         },
                       ]
                     }
                   >
-                    Accompagnement spécialisé
-                  </Text>
-                  <Text
-                    style={
-                      Array [
-                        Object {
-                          "color": "#696A6F",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                        },
-                      ]
-                    }
-                  >
-                    À domicile, CNED, institut de santé, etc.
-                  </Text>
+                    <Text
+                      selected={false}
+                      style={
+                        Array [
+                          Object {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 15,
+                            "lineHeight": 20,
+                          },
+                        ]
+                      }
+                    >
+                      Accompagnement spécialisé
+                    </Text>
+                    <Text
+                      style={
+                        Array [
+                          Object {
+                            "color": "#696A6F",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                          },
+                        ]
+                      }
+                    >
+                      À domicile, CNED, institut de santé, etc.
+                    </Text>
+                  </View>
                 </View>
               </View>
             </View>

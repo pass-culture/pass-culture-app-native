@@ -1,7 +1,8 @@
 import { t } from '@lingui/macro'
 import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import { Platform } from 'react-native'
+import { Platform, View } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { CalendarPicker } from 'features/search/components'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
@@ -23,6 +24,7 @@ export function OfferDate({ setScrollEnabled }: Props) {
   const [showTimePicker, setShowTimePicker] = useState<boolean>(false)
   const logUseFilter = useLogFilterOnce(SectionTitle.OfferDate)
   const { isTouch } = useTheme()
+  const titleID = uuidv4()
 
   useEffect(() => {
     if (setScrollEnabled && isTouch && Platform.OS === 'web') {
@@ -48,47 +50,49 @@ export function OfferDate({ setScrollEnabled }: Props) {
   return (
     <React.Fragment>
       <Container testID="offerDateContainer">
-        <Typo.Title4>{SectionTitle.OfferDate}</Typo.Title4>
+        <Typo.Title4 nativeID={titleID}>{SectionTitle.OfferDate}</Typo.Title4>
         <Spacer.Column numberOfSpaces={4} />
-        <VerticalUl>
-          <Li>
-            <RadioButton
-              label={t`Aujourd'hui`}
-              isSelected={option === DATE_FILTER_OPTIONS.TODAY}
-              onSelect={selectDateFilterOption(DATE_FILTER_OPTIONS.TODAY)}
-            />
-            <Spacer.Column numberOfSpaces={4} />
-          </Li>
-          <Li>
-            <RadioButton
-              label={t`Cette semaine`}
-              isSelected={option === DATE_FILTER_OPTIONS.CURRENT_WEEK}
-              onSelect={selectDateFilterOption(DATE_FILTER_OPTIONS.CURRENT_WEEK)}
-            />
-            <Spacer.Column numberOfSpaces={4} />
-          </Li>
-          <Li>
-            <RadioButton
-              label={t`Ce week-end`}
-              isSelected={option === DATE_FILTER_OPTIONS.CURRENT_WEEK_END}
-              onSelect={selectDateFilterOption(DATE_FILTER_OPTIONS.CURRENT_WEEK_END)}
-            />
-            <Spacer.Column numberOfSpaces={4} />
-          </Li>
-          <Li>
-            <RadioButton
-              label={t`Date précise`}
-              isSelected={option === DATE_FILTER_OPTIONS.USER_PICK}
-              onSelect={selectDateFilterOption(DATE_FILTER_OPTIONS.USER_PICK)}
-              description={
-                option === DATE_FILTER_OPTIONS.USER_PICK
-                  ? formatToCompleteFrenchDate(selectedDate)
-                  : undefined
-              }
-              testID="dateFilter"
-            />
-          </Li>
-        </VerticalUl>
+        <View accessibilityRole="radiogroup" aria-labelledby={titleID}>
+          <VerticalUl>
+            <Li>
+              <RadioButton
+                label={t`Aujourd'hui`}
+                isSelected={option === DATE_FILTER_OPTIONS.TODAY}
+                onSelect={selectDateFilterOption(DATE_FILTER_OPTIONS.TODAY)}
+              />
+              <Spacer.Column numberOfSpaces={4} />
+            </Li>
+            <Li>
+              <RadioButton
+                label={t`Cette semaine`}
+                isSelected={option === DATE_FILTER_OPTIONS.CURRENT_WEEK}
+                onSelect={selectDateFilterOption(DATE_FILTER_OPTIONS.CURRENT_WEEK)}
+              />
+              <Spacer.Column numberOfSpaces={4} />
+            </Li>
+            <Li>
+              <RadioButton
+                label={t`Ce week-end`}
+                isSelected={option === DATE_FILTER_OPTIONS.CURRENT_WEEK_END}
+                onSelect={selectDateFilterOption(DATE_FILTER_OPTIONS.CURRENT_WEEK_END)}
+              />
+              <Spacer.Column numberOfSpaces={4} />
+            </Li>
+            <Li>
+              <RadioButton
+                label={t`Date précise`}
+                isSelected={option === DATE_FILTER_OPTIONS.USER_PICK}
+                onSelect={selectDateFilterOption(DATE_FILTER_OPTIONS.USER_PICK)}
+                description={
+                  option === DATE_FILTER_OPTIONS.USER_PICK
+                    ? formatToCompleteFrenchDate(selectedDate)
+                    : undefined
+                }
+                testID="dateFilter"
+              />
+            </Li>
+          </VerticalUl>
+        </View>
       </Container>
 
       <CalendarPicker

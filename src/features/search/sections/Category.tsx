@@ -1,6 +1,8 @@
 import React from 'react'
+import { AccessibilityRole, Platform, View } from 'react-native'
 import webStyled from 'styled-components'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnum } from 'api/gen'
 import { SelectionLabel, TitleWithCount } from 'features/search/atoms'
@@ -19,6 +21,7 @@ export const Category: React.FC = () => {
   const { offerCategories } = searchState
   const logUseFilter = useLogFilterOnce(SectionTitle.Category)
   const searchGroupLabelMapping = useSearchGroupLabelMapping()
+  const titleID = uuidv4()
 
   const onPress = (facetFilter: SearchGroupNameEnum) => () => {
     dispatch({ type: 'TOGGLE_CATEGORY', payload: facetFilter })
@@ -30,13 +33,14 @@ export const Category: React.FC = () => {
       defaultOpen={true}
       title={
         <TitleWithCount
+          titleID={titleID}
           title={SectionTitle.Category}
           count={offerCategories.length}
           ariaLive="polite"
         />
       }
       accessibilityTitle={SectionTitle.Category}>
-      <BodyContainer>
+      <BodyContainer aria-labelledby={titleID}>
         <StyledUl>
           {Object.entries(availableCategories).map(([category, { facetFilter }]) => (
             <Li key={category}>
@@ -53,7 +57,9 @@ export const Category: React.FC = () => {
   )
 }
 
-const BodyContainer = styled.View({
+const BodyContainer = styled(View).attrs({
+  accessibilityRole: Platform.OS === 'web' ? ('group' as AccessibilityRole) : undefined,
+})({
   flexWrap: 'wrap',
   flexDirection: 'row',
   marginBottom: getSpacing(-3),

@@ -63,12 +63,16 @@ export const LocationFilter: React.FC = () => {
     debouncedGoBack()
   }
   const locationChoiceErrorId = uuidv4()
+  const titleID = uuidv4()
 
   return (
     <Container>
-      <PageHeader title={t`Localisation`} />
+      <PageHeader titleID={titleID} title={t`Localisation`} />
       <Spacer.TopScreen />
-      <ScrollView contentContainerStyle={contentContainerStyle}>
+      <ScrollView
+        contentContainerStyle={contentContainerStyle}
+        accessibilityRole="radiogroup"
+        aria-labelledby={titleID}>
         <Spacer.Column numberOfSpaces={14} />
         <Spacer.Column numberOfSpaces={6} />
         <BannerContainer>

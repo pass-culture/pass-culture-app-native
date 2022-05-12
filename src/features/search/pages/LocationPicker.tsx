@@ -18,6 +18,7 @@ export const LocationPicker: React.FC = () => {
   const [debouncedValue, setDebouncedValue] = useState<string>(value)
   const debouncedSetValue = useRef(debounce(setDebouncedValue, SEARCH_DEBOUNCE_MS)).current
   const accessibilityDescribedBy = uuidv4()
+  const titleID = uuidv4()
 
   const resetSearch = () => {
     setValue('')
@@ -31,7 +32,7 @@ export const LocationPicker: React.FC = () => {
 
   return (
     <Container>
-      <PageHeader title={t`Choisir un lieu`} />
+      <PageHeader titleID={titleID} title={t`Choisir un lieu`} />
       <Spacer.TopScreen />
       <Spacer.Column numberOfSpaces={18} />
       <StyledInput>
@@ -51,7 +52,7 @@ export const LocationPicker: React.FC = () => {
           accessibilityDescribedBy
         }>{t`Indique un lieu pour découvrir toutes les offres de ce lieu puis clique sur le lieu pour valider ton choix`}</HiddenText>
       <Spacer.Column numberOfSpaces={4} />
-      <SuggestedPlaces query={debouncedValue} />
+      <SuggestedPlaces query={debouncedValue} accessibilityLabelledBy={titleID} />
     </Container>
   )
 }

@@ -38,7 +38,7 @@ const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hi
   const Icon = isVenue(hit) ? () => <LocationBuilding /> : () => <BicolorLocationPointer />
 
   return (
-    <ItemContainer onPress={onPress} testID={keyExtractor(hit)}>
+    <ItemContainer accessibilityRole="radio" onPress={onPress} testID={keyExtractor(hit)}>
       <Icon />
       <Spacer.Row numberOfSpaces={4} />
       <Text numberOfLines={2}>
@@ -50,7 +50,10 @@ const Hit: React.FC<{ hit: SuggestedPlaceOrVenue; onPress: () => void }> = ({ hi
   )
 }
 
-export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
+export const SuggestedPlaces: React.FC<{ query: string; accessibilityLabelledBy?: string }> = ({
+  query,
+  accessibilityLabelledBy,
+}) => {
   const { data: places = [], isLoading: isLoadingPlaces } = usePlaces({ query })
   const { data: venues = [], isLoading: isLoadingVenues } = useVenues(query)
   const { dispatch } = useStagedSearch()
@@ -83,6 +86,7 @@ export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
         show={filteredPlaces.length > 0 && !isLoading}
       />
       <FlatList
+        accessibilityRole="radiogroup"
         data={filteredPlaces}
         keyExtractor={keyExtractor}
         renderItem={({ item }) => <Hit hit={item} onPress={onPickPlace(item)} />}
@@ -90,6 +94,7 @@ export const SuggestedPlaces: React.FC<{ query: string }> = ({ query }) => {
         ItemSeparatorComponent={Separator}
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
+        aria-labelledby={accessibilityLabelledBy}
       />
     </React.Fragment>
   )

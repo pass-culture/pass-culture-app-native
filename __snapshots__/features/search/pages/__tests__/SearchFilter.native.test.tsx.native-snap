@@ -749,6 +749,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <Text
+              nativeID="testUuidV4"
               style={
                 Array [
                   Object {
@@ -820,6 +821,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           testID="accordionBodyContainer"
         >
           <View
+            aria-labelledby="testUuidV4"
             style={
               Array [
                 Object {
@@ -1863,6 +1865,7 @@ exports[`SearchFilter component should render correctly 1`] = `
             }
           >
             <Text
+              nativeID="testUuidV4"
               style={
                 Array [
                   Object {
@@ -1934,6 +1937,7 @@ exports[`SearchFilter component should render correctly 1`] = `
           testID="accordionBodyContainer"
         >
           <View
+            aria-labelledby="testUuidV4"
             style={
               Array [
                 Object {

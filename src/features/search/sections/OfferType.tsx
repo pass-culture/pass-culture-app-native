@@ -1,7 +1,9 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import { AccessibilityRole, Platform, View } from 'react-native'
 import webStyled from 'styled-components'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { SelectionLabel, TitleWithCount } from 'features/search/atoms'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
@@ -25,6 +27,7 @@ export const OfferType: React.FC = () => {
   const logUseFilter = useLogFilterOnce(SectionTitle.OfferType)
   const { searchState, dispatch } = useStagedSearch()
   const { offerTypes } = searchState
+  const titleID = uuidv4()
 
   const onPress = (offerType: OfferType) => () => {
     dispatch({ type: 'OFFER_TYPE', payload: offerType })
@@ -36,13 +39,14 @@ export const OfferType: React.FC = () => {
       defaultOpen={true}
       title={
         <TitleWithCount
+          titleID={titleID}
           title={SectionTitle.OfferType}
           count={+offerTypes['isDigital'] + +offerTypes['isEvent'] + +offerTypes['isThing']}
           ariaLive="polite"
         />
       }
       accessibilityTitle={SectionTitle.OfferType}>
-      <BodyContainer>
+      <BodyContainer aria-labelledby={titleID}>
         <StyledUl>
           {OFFER_TYPES.map(([offerType, label]) => (
             <Li key={label}>
@@ -59,7 +63,9 @@ export const OfferType: React.FC = () => {
   )
 }
 
-const BodyContainer = styled.View({
+const BodyContainer = styled(View).attrs({
+  accessibilityRole: Platform.OS === 'web' ? ('group' as AccessibilityRole) : undefined,
+})({
   flexWrap: 'wrap',
   flexDirection: 'row',
   marginBottom: getSpacing(-3),

@@ -15,6 +15,7 @@ import { Header } from 'ui/web/global/Header'
 
 interface Props {
   title: string
+  titleID?: string
   RightComponent?: React.FC
   onGoBack?: () => void
 }
@@ -35,7 +36,7 @@ const HeaderIconBack: React.FC<HeaderIconProps> = ({ onGoBack }) => {
 }
 
 export const PageHeader: React.FC<Props> = (props) => {
-  const { title, RightComponent } = props
+  const { title, titleID, RightComponent } = props
   const { onLayout } = useElementWidth()
 
   return (
@@ -49,7 +50,7 @@ export const PageHeader: React.FC<Props> = (props) => {
             <HeaderIconBack onGoBack={props.onGoBack} />
           </ButtonContainer>
 
-          <Title>{title}</Title>
+          <Title nativeID={titleID}>{title}</Title>
 
           <ButtonContainer positionInHeader="right">
             {!!RightComponent && (

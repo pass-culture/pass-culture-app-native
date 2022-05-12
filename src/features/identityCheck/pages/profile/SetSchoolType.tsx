@@ -1,5 +1,7 @@
 import { t } from '@lingui/macro'
 import React, { useState } from 'react'
+import { View } from 'react-native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { ActivityIdEnum, SchoolTypesIdEnum } from 'api/gen'
 import { CenteredTitle } from 'features/identityCheck/atoms/CenteredTitle'
@@ -13,7 +15,6 @@ import { useIdentityCheckNavigation } from 'features/identityCheck/useIdentityCh
 import { useProfileOptions } from 'features/identityCheck/utils/useProfileOptions'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { RadioButtonWithBorder } from 'ui/components/radioButtons/RadioButtonWithBorder'
-import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { Spacer } from 'ui/theme'
 import { Form } from 'ui/web/form/Form'
 import { Li } from 'ui/web/list/Li'
@@ -40,38 +41,40 @@ export const SetSchoolType = () => {
 
   const hasData = !!activitySchoolTypes && !!schoolTypes
 
-  useEnterKeyAction(selectedSchoolTypeId ? onPressContinue : undefined)
+  const titleID = uuidv4()
 
   return (
     <PageWithHeader
       title={t`Profil`}
       fixedTopChildren={
         <React.Fragment>
-          <CenteredTitle title={t`Dans quel type d'établissement\u00a0?`} />
+          <CenteredTitle titleID={titleID} title={t`Dans quel type d'établissement\u00a0?`} />
           <Spacer.Column numberOfSpaces={5} />
         </React.Fragment>
       }
       scrollChildren={
         <Form.MaxWidth>
-          <VerticalUl>
-            {hasData &&
-              activitySchoolTypes.map((schoolTypeId) => {
-                const { label, description } = mapSchoolTypeIdToLabelAndDescription(
-                  schoolTypeId,
-                  schoolTypes
-                )
-                return (
-                  <Li key={schoolTypeId}>
-                    <RadioButtonWithBorder
-                      selected={schoolTypeId === selectedSchoolTypeId}
-                      label={label as string}
-                      description={description}
-                      onPress={() => setSelectedSchoolTypeId(schoolTypeId)}
-                    />
-                  </Li>
-                )
-              })}
-          </VerticalUl>
+          <View accessibilityRole="radiogroup" aria-labelledby={titleID}>
+            <VerticalUl>
+              {hasData &&
+                activitySchoolTypes.map((schoolTypeId) => {
+                  const { label, description } = mapSchoolTypeIdToLabelAndDescription(
+                    schoolTypeId,
+                    schoolTypes
+                  )
+                  return (
+                    <Li key={schoolTypeId}>
+                      <RadioButtonWithBorder
+                        selected={schoolTypeId === selectedSchoolTypeId}
+                        label={label as string}
+                        description={description}
+                        onPress={() => setSelectedSchoolTypeId(schoolTypeId)}
+                      />
+                    </Li>
+                  )
+                })}
+            </VerticalUl>
+          </View>
         </Form.MaxWidth>
       }
       fixedBottomChildren={
