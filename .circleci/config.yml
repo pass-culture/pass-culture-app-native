@@ -244,9 +244,11 @@ commands:
       gcp_key_name:
         type: env_var_name
     steps:
-      - run: echo ${<< parameters.gcp_key_name >>} > ${HOME}/gcp-key.json
-      - run: gcloud auth activate-service-account --key-file ${HOME}/gcp-key.json
-      - run: gcloud --quiet config set project ${GCP_PROJECT}
+      - run:
+          name: Authenticate to GCP
+          command: |
+            echo ${<< parameters.gcp-key-name >>} | gcloud auth activate-service-account --key-file=-
+            gcloud --quiet config set project ${GCP_PROJECT}
 
   copy_assetlinks:
     description: Copy assetlinks-<< parameters.env >>.json to assetlinks.json
