@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GenericInfoPageWhite /> should render correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "alignSelf": "center",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+        "maxWidth": 500,
+        "overflow": "scroll",
+        "paddingHorizontal": 24,
+      },
+    ]
+  }
+>
+  <View
+    flex={2}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 2,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <View
+    hasHeight={true}
+    style={
+      Array [
+        Object {
+          "alignItems": "center",
+          "flexGrow": 1,
+          "height": "30%",
+          "justifyContent": "center",
+        },
+      ]
+    }
+  >
+    <View
+      fill="none"
+      height={156}
+      width={200}
+    >
+      <Text>
+        undefined-SVG-Mock
+      </Text>
+    </View>
+  </View>
+  <View
+    flex={0.5}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 0.5,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <Text
+    fontSize={28}
+    style={
+      Array [
+        Object {
+          "color": "#161617",
+          "fontFamily": "Montserrat-Black",
+          "fontSize": 28,
+          "lineHeight": 36,
+        },
+        Object {
+          "textAlign": "center",
+        },
+      ]
+    }
+  >
+    GenericInfoPageWhite
+  </Text>
+  <View
+    flex={0.5}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 0.5,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+  <View
+    flex={1.5}
+    style={
+      Array [
+        Object {
+          "flexBasis": 0,
+          "flexGrow": 1.5,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  />
+</View>
+`;

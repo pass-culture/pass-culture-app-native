@@ -35,7 +35,7 @@ export const fetchMultipleVenues = async (
 
   try {
     const allResults = await client.multipleQueries<AlgoliaVenue>(queries)
-    const hits = flatten(allResults.results.map(({ hits }) => hits))
+    const hits = flatten(allResults.results.map(({ hits: hit }) => hit))
     return hits.map(buildVenueHit).filter(isVenueHitTypeguard)
   } catch (error) {
     captureAlgoliaError(error)

@@ -4,7 +4,7 @@ import { SwiperProps } from 'react-native-web-swiper'
 import styled, { DefaultTheme } from 'styled-components/native'
 
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { Dot } from 'ui/svg/icons/Dot'
+import { Dot as DotIcon } from 'ui/svg/icons/Dot'
 import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
@@ -21,7 +21,7 @@ export function getDotColors(
 }
 
 function getStyledDot(stepIndex: number, currentStepIndex: number) {
-  return styled(Dot).attrs(({ theme }) => getDotColors(theme, stepIndex, currentStepIndex))``
+  return styled(DotIcon).attrs(({ theme }) => getDotColors(theme, stepIndex, currentStepIndex))``
 }
 
 const CURRENT_STEP_SIZE = 12

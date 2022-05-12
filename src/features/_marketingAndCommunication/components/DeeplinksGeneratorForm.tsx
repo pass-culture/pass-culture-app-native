@@ -288,10 +288,12 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
         </AccordionItem>
         {paramsCount > 0 && (
           <AccordionItem title={t`Paramètres applicatifs` + ` (${paramsCount})`} defaultOpen>
-            {Object.entries(SCREENS_CONFIG).map(([page, config]) => (
+            {Object.entries(SCREENS_CONFIG).map(([page, screenConfig]) => (
               <React.Fragment key={page}>
                 {page === selectedScreen
-                  ? Object.entries(config).map(([name, config]) => renderScreenParam(name, config))
+                  ? Object.entries(screenConfig).map(([name, config]) =>
+                      renderScreenParam(name, config)
+                    )
                   : null}
               </React.Fragment>
             ))}

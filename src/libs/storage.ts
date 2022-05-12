@@ -1,4 +1,3 @@
-import { t } from '@lingui/macro'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { Alert } from 'react-native'
 
@@ -47,7 +46,7 @@ async function readMultiString(storageKeys: StorageKey[]): Promise<[string, stri
 
 async function saveString(storageKey: StorageKey, value: string): Promise<void> {
   if (!value) {
-    throw Error(t`Aucune valeur à sauvegarder`)
+    throw Error('Aucune valeur à sauvegarder')
   }
   try {
     await AsyncStorage.setItem(storageKey, value)
@@ -58,7 +57,7 @@ async function saveString(storageKey: StorageKey, value: string): Promise<void> 
 
 async function saveMultiString(keyValuePairs: Array<[StorageKey, string]>): Promise<void> {
   if (!keyValuePairs.length) {
-    throw Error(t`Aucune valeur à sauvegarder`)
+    throw Error('Aucune valeur à sauvegarder')
   }
   try {
     await AsyncStorage.multiSet(keyValuePairs)

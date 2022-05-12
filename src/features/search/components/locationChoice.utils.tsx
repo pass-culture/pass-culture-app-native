@@ -30,8 +30,8 @@ export const useLocationChoice = (
 
   // the rest is for what's displayed on the section Venue+Place
   if (searchState.locationFilter.locationType === LocationType.VENUE) {
-    const label = searchState.locationFilter.venue.label
-    return { Icon: LocationBuilding, label, isSelected: true }
+    const venueLabel = searchState.locationFilter.venue.label
+    return { Icon: LocationBuilding, label: venueLabel, isSelected: true }
   }
 
   const label =

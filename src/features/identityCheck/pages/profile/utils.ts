@@ -9,7 +9,7 @@ export const mapSchoolTypeIdToLabelAndDescription = (
   schoolTypeId: SchoolTypesIdEnum,
   schoolTypes: SchoolTypeResponseModel[]
 ) => {
-  const schoolType = schoolTypes?.find((schoolType) => schoolType.id === schoolTypeId)
+  const schoolType = schoolTypes?.find((type) => type.id === schoolTypeId)
   return { label: schoolType?.label, description: schoolType?.description }
 }
 

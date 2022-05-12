@@ -11,26 +11,26 @@ import { getSpacing } from './spacing'
 --> WEB : padding: 5 10 15 20 | MOBILE : ...padding(5, 10, 15, 20)
 */
 export function padding(top: number, right?: number, bottom?: number, left?: number) {
-  const padding = {
+  const paddings = {
     paddingTop: top,
     paddingRight: top,
     paddingBottom: top,
     paddingLeft: top,
   }
   if (right) {
-    padding.paddingRight = right
-    padding.paddingLeft = right
+    paddings.paddingRight = right
+    paddings.paddingLeft = right
   }
   if (bottom) {
-    padding.paddingBottom = bottom
+    paddings.paddingBottom = bottom
   }
   if (left) {
-    padding.paddingLeft = left
+    paddings.paddingLeft = left
   }
   return {
-    paddingTop: getSpacing(padding.paddingTop),
-    paddingRight: getSpacing(padding.paddingRight),
-    paddingBottom: getSpacing(padding.paddingBottom),
-    paddingLeft: getSpacing(padding.paddingLeft),
+    paddingTop: getSpacing(paddings.paddingTop),
+    paddingRight: getSpacing(paddings.paddingRight),
+    paddingBottom: getSpacing(paddings.paddingBottom),
+    paddingLeft: getSpacing(paddings.paddingLeft),
   }
 }
