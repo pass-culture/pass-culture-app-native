@@ -199,6 +199,7 @@ export const routes: Route[] = [
     component: SuspendedAccount,
     path: 'compte-desactive',
     options: { title: t`Compte désactivé` },
+    secure: true,
   },
   {
     name: 'FraudulentAccount',

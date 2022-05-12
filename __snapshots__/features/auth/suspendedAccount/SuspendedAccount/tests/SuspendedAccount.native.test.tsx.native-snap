@@ -182,7 +182,7 @@ exports[`<SuspendedAccount /> should match snapshot 1`] = `
         ]
       }
     >
-      Tu as jusqu'au xxxx pour réactiver ton compte.
+      Tu as jusqu'au 10 juillet 2022 à 10h29 pour réactiver ton compte.
     </Text>
     <View
       numberOfSpaces={5}
