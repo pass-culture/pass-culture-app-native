@@ -20,6 +20,8 @@ create_sourcemaps(){
   npx react-native bundle \
     --platform "${APP_OS}" \
     --dev false \
+    --minify false \
+    --reset-cache \
     --entry-file index.js \
     --bundle-output "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}" \
     --sourcemap-output "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.packager.map"
@@ -35,6 +37,11 @@ create_sourcemaps(){
     "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.packager.map" \
     "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.hbc.map" \
     -o "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.map"
+
+  echo "Move: ${SOURCEMAPS_DIR}/${BUNDLE_FILE_NAME} -> ${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.original"
+  mv "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}" "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.original"
+  echo "Move: ${SOURCEMAPS_DIR}/${BUNDLE_FILE_NAME}.hbc -> ${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}"
+  mv "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.hbc" "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}"
 }
 
 upload_sourcemaps(){
@@ -79,7 +86,7 @@ upload_sourcemaps(){
     upload-sourcemaps \
     --dist "${DIST}" \
     --strip-prefix "${PWD}" \
-    --rewrite "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}" "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.map"
+    "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}" "${SOURCEMAPS_DIR}/${SOURCEMAPS_NAME}.map"
 
   echo "✅ Successfully uploaded sources maps"
 }
