@@ -18,6 +18,7 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type Props = {
   headerGoBack?: boolean
+  onGoBackPress?: () => void
   noIndex?: boolean
   flex?: boolean
   animation?: AnimationObject
@@ -31,6 +32,7 @@ const ANIMATION_SIZE = getSpacing(45)
 export const GenericInfoPage: FunctionComponent<Props> = ({
   children,
   headerGoBack,
+  onGoBackPress,
   noIndex = true,
   animation,
   icon: Icon,
@@ -67,7 +69,13 @@ export const GenericInfoPage: FunctionComponent<Props> = ({
       )}
       <Background />
       {headerGoBack && canGoBack() ? (
-        <HeaderContainer onPress={goBack} top={top + getSpacing(3.5)} testID="Revenir en arrière">
+        <HeaderContainer
+          onPress={() => {
+            goBack()
+            onGoBackPress && onGoBackPress()
+          }}
+          top={top + getSpacing(3.5)}
+          testID="Revenir en arrière">
           <StyledArrowPrevious />
         </HeaderContainer>
       ) : null}

@@ -3,6 +3,7 @@ import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { useLogoutRoutine } from 'features/auth/AuthContext'
 import { useAppSettings } from 'features/auth/settings'
 import { useAccountSuspensionDate } from 'features/auth/suspendedAccount/SuspendedAccount/useAccountSuspensionDate'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
@@ -24,6 +25,7 @@ const addDaysToDate = (date: Date, days: number) => {
 export const SuspendedAccount = () => {
   const { data: settings } = useAppSettings()
   const { data: accountSuspensionDate } = useAccountSuspensionDate()
+  const signOut = useLogoutRoutine()
 
   useFocusEffect(
     useCallback(() => {
@@ -45,16 +47,24 @@ export const SuspendedAccount = () => {
   return settings?.allowAccountReactivation ? (
     <GenericInfoPage
       headerGoBack
+      onGoBackPress={signOut}
       title={t`Ton compte est désactivé`}
       icon={ProfileDeletionIllustration}
       buttons={[
-        <ButtonPrimaryWhite key={1} wording={t`Réactiver mon compte`} />,
+        <TouchableLink
+          key={1}
+          as={ButtonPrimaryWhite}
+          wording={t`Réactiver mon compte`}
+          navigateTo={{ screen: 'AccountReactivationSuccess' }}
+        />,
         <TouchableLink
           key={2}
           as={ButtonTertiaryWhite}
           wording={t`Retourner à l'accueil`}
           navigateTo={navigateToHomeConfig}
+          onPress={signOut}
           icon={PlainArrowPrevious}
+          navigateBeforeOnPress
         />,
       ]}>
       <StyledBody>{t`Tu as jusqu'au ${formattedDate} pour réactiver ton compte.`}</StyledBody>

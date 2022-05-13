@@ -23,6 +23,11 @@ jest.mock('features/auth/settings', () => ({
   })),
 }))
 
+const mockSignOut = jest.fn()
+jest.mock('features/auth/AuthContext', () => ({
+  useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
+}))
+
 describe('<SuspendedAccount />', () => {
   it('should match snapshot', () => {
     expect(render(<SuspendedAccount />)).toMatchSnapshot()
@@ -35,7 +40,8 @@ describe('<SuspendedAccount />', () => {
     fireEvent.click(leftIconButton)
 
     await waitForExpect(() => {
-      expect(mockGoBack).toHaveBeenCalledTimes(1)
+      expect(mockGoBack).toBeCalledTimes(1)
+      expect(mockSignOut).toBeCalledTimes(1)
     })
   })
 
@@ -47,6 +53,7 @@ describe('<SuspendedAccount />', () => {
 
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
+      expect(mockSignOut).toBeCalledTimes(1)
     })
   })
 

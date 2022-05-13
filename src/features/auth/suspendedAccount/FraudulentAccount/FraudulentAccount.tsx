@@ -3,6 +3,7 @@ import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { useLogoutRoutine } from 'features/auth/AuthContext'
 import { useAppSettings } from 'features/auth/settings'
 import { contactSupport } from 'features/auth/support.services'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers'
@@ -18,6 +19,7 @@ import { Spacer, Typo } from 'ui/theme'
 
 export const FraudulentAccount = () => {
   const { data: settings } = useAppSettings()
+  const signOut = useLogoutRoutine()
 
   useFocusEffect(
     useCallback(() => {
@@ -30,6 +32,7 @@ export const FraudulentAccount = () => {
   return settings?.allowAccountReactivation ? (
     <GenericInfoPage
       headerGoBack
+      onGoBackPress={signOut}
       title={t`Ton compte a été suspendu`}
       icon={UserBlocked}
       buttons={[
@@ -46,7 +49,9 @@ export const FraudulentAccount = () => {
           as={ButtonTertiaryWhite}
           wording={t`Retourner à l'accueil`}
           navigateTo={navigateToHomeConfig}
+          onPress={signOut}
           icon={PlainArrowPrevious}
+          navigateBeforeOnPress
         />,
       ]}>
       <StyledBody>{t`En raison d’une activité suspiscieuse, notre équipe anti fraude a suspendu ton compte.`}</StyledBody>
