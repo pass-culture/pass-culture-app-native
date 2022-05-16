@@ -29,4 +29,17 @@ describe('SearchDetails component', () => {
     })
     expect(navigate).toBeCalledWith('TabNavigator', { params: undefined, screen: 'Search' })
   })
+
+  it('should reset input when user click on input icon', async () => {
+    mockSettings.appEnableSearchHomepageRework = true
+    const { getByTestId } = render(<SearchDetails />)
+
+    const searchInput = getByTestId('searchInput')
+    await fireEvent.changeText(searchInput, 'Test')
+
+    const resetIcon = getByTestId('resetSearchInput')
+    await fireEvent.press(resetIcon)
+
+    expect(searchInput.props.value).toBe('')
+  })
 })
