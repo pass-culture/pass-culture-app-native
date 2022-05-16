@@ -6,8 +6,7 @@ import { navigateToHome } from 'features/navigation/helpers'
 import QpiThanks from 'ui/animations/qpi_thanks.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GenericInfoPageWhite } from 'ui/components/GenericInfoPageWhite'
-import { getSpacing, Spacer } from 'ui/theme'
-import { Typo } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
 
 export const CulturalSurveyThanks: React.FC = () => {
