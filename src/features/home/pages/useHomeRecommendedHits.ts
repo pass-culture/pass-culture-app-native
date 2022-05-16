@@ -43,7 +43,7 @@ export const useHomeRecommendedHits = (
     })
   }, [getRecommendedIds, parameters])
 
-  return useRecommendedHits(recommendedIds || [])
+  return useAlgoliaRecommendedHits(recommendedIds || [])
 }
 
 export const getRecommendationEndpoint = (
@@ -85,7 +85,7 @@ export const useHomeRecommendedIdsMutation = (recommendationUrl: string) => {
   )
 }
 
-const useRecommendedHits = (ids: string[]): SearchHit[] | undefined => {
+const useAlgoliaRecommendedHits = (ids: string[]): SearchHit[] | undefined => {
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformAlgoliaHits()
 
