@@ -29,7 +29,7 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
 
-  const hits = useHomeRecommendedHits(profile?.id, position)
+  const hits = useHomeRecommendedHits(profile?.id, position, parameters)
   const nbHits = hits?.length || 0
   const shouldModuleBeDisplayed = nbHits > display.minOffers
 
