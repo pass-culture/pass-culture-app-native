@@ -5,6 +5,7 @@ import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FlatList, ActivityIndicator } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useAppSettings } from 'features/auth/settings'
 import { Hit, NoSearchResult, NumberOfResults } from 'features/search/atoms'
 import { Filter } from 'features/search/atoms/Buttons'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch'
@@ -45,6 +46,8 @@ export const SearchResults: React.FC = () => {
   const isFocused = useIsFocused()
 
   const { headerTransition: scrollButtonTransition, onScroll } = useOpacityTransition()
+  const { data: appSettings } = useAppSettings()
+  const appEnableSearchHomepageRework = appSettings?.appEnableSearchHomepageRework ?? false
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(
@@ -134,6 +137,7 @@ export const SearchResults: React.FC = () => {
   return (
     <React.Fragment>
       {isFocused ? <Helmet title={helmetTitle} /> : null}
+      {appEnableSearchHomepageRework ? <Spacer.Column numberOfSpaces={5} /> : null}
       <AutoScrollSwitch
         title={t`Activer le chargement automatique des résultats`}
         active={autoScrollEnabled}
