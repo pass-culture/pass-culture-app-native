@@ -2,11 +2,11 @@ import React, { forwardRef, useState } from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { InputLabel } from 'ui/components/InputLabel/InputLabel'
+import { FlexInputLabel } from 'ui/components/InputLabel/FlexInputLabel'
 import { ContainerWithMaxWidth } from 'ui/components/inputs/ContainerWithMaxWidth'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
-import { Spacer } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
 import { InputContainer } from './InputContainer'
@@ -41,10 +41,12 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, Props> = (
     <ContainerWithMaxWidth>
       {!!customProps.label && (
         <React.Fragment>
-          <LabelContainer>
-            <InputLabel htmlFor={textInputID}>{customProps.label}</InputLabel>
-            {!!isRequiredField && <RequiredLabel />}
-          </LabelContainer>
+          <FlexInputLabel htmlFor={textInputID}>
+            <LabelContainer>
+              <Typo.Body>{customProps.label}</Typo.Body>
+              {!!isRequiredField && <RequiredLabel />}
+            </LabelContainer>
+          </FlexInputLabel>
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}

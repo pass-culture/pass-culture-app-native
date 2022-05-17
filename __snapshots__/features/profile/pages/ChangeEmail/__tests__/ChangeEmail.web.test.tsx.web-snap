@@ -115,25 +115,31 @@ Object {
                 class="css-view-1dbjc4n"
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
-                <div
-                  class="css-view-1dbjc4n"
-                  style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
+                <label
+                  class="sc-egiyK sc-cCcXHH hHZVhD hmPVTb"
+                  dir="ltr"
+                  for="testUuidV4"
                 >
-                  <label
-                    class="sc-egiyK hHZVhD"
-                    dir="ltr"
-                    for="testUuidV4"
-                  >
-                    Nouvel e-mail
-                  </label>
                   <div
-                    class="css-text-901oao"
-                    dir="ltr"
-                    style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    class="css-view-1dbjc4n"
+                    style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                   >
-                    Obligatoire
+                    <div
+                      class="css-text-901oao"
+                      dir="ltr"
+                      style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                    >
+                      Nouvel e-mail
+                    </div>
+                    <div
+                      class="css-text-901oao"
+                      dir="ltr"
+                      style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Obligatoire
+                    </div>
                   </div>
-                </div>
+                </label>
                 <div
                   class="css-view-1dbjc4n"
                   style="height: 8px;"
@@ -174,25 +180,31 @@ Object {
                 class="css-view-1dbjc4n"
                 style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
               >
-                <div
-                  class="css-view-1dbjc4n"
-                  style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
+                <label
+                  class="sc-egiyK sc-cCcXHH hHZVhD hmPVTb"
+                  dir="ltr"
+                  for="testUuidV4"
                 >
-                  <label
-                    class="sc-egiyK hHZVhD"
-                    dir="ltr"
-                    for="testUuidV4"
-                  >
-                    Mot de passe
-                  </label>
                   <div
-                    class="css-text-901oao"
-                    dir="ltr"
-                    style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    class="css-view-1dbjc4n"
+                    style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                   >
-                    Obligatoire
+                    <div
+                      class="css-text-901oao"
+                      dir="ltr"
+                      style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                    >
+                      Mot de passe
+                    </div>
+                    <div
+                      class="css-text-901oao"
+                      dir="ltr"
+                      style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                    >
+                      Obligatoire
+                    </div>
                   </div>
-                </div>
+                </label>
                 <div
                   class="css-view-1dbjc4n"
                   style="height: 8px;"
@@ -221,7 +233,7 @@ Object {
                   />
                   <button
                     aria-label="Afficher le mot de passe"
-                    class="sc-eCImPb eivvKD sc-cCcXHH bbeubk sc-cCcXHH bbeubk"
+                    class="sc-eCImPb eivvKD sc-cidDSM dWLnEj sc-cidDSM dWLnEj"
                     data-testid="toggle-password-visibility"
                     tabindex="0"
                     type="button"
@@ -388,25 +400,31 @@ Object {
               class="css-view-1dbjc4n"
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
-              <div
-                class="css-view-1dbjc4n"
-                style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
+              <label
+                class="sc-egiyK sc-cCcXHH hHZVhD hmPVTb"
+                dir="ltr"
+                for="testUuidV4"
               >
-                <label
-                  class="sc-egiyK hHZVhD"
-                  dir="ltr"
-                  for="testUuidV4"
-                >
-                  Nouvel e-mail
-                </label>
                 <div
-                  class="css-text-901oao"
-                  dir="ltr"
-                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                  class="css-view-1dbjc4n"
+                  style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                 >
-                  Obligatoire
+                  <div
+                    class="css-text-901oao"
+                    dir="ltr"
+                    style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                  >
+                    Nouvel e-mail
+                  </div>
+                  <div
+                    class="css-text-901oao"
+                    dir="ltr"
+                    style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                  >
+                    Obligatoire
+                  </div>
                 </div>
-              </div>
+              </label>
               <div
                 class="css-view-1dbjc4n"
                 style="height: 8px;"
@@ -447,25 +465,31 @@ Object {
               class="css-view-1dbjc4n"
               style="align-items: flex-start; display: flex; flex-direction: column; max-width: 500px; width: 100%;"
             >
-              <div
-                class="css-view-1dbjc4n"
-                style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
+              <label
+                class="sc-egiyK sc-cCcXHH hHZVhD hmPVTb"
+                dir="ltr"
+                for="testUuidV4"
               >
-                <label
-                  class="sc-egiyK hHZVhD"
-                  dir="ltr"
-                  for="testUuidV4"
-                >
-                  Mot de passe
-                </label>
                 <div
-                  class="css-text-901oao"
-                  dir="ltr"
-                  style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                  class="css-view-1dbjc4n"
+                  style="align-items: flex-end; flex-direction: row; justify-content: space-between; width: 100%;"
                 >
-                  Obligatoire
+                  <div
+                    class="css-text-901oao"
+                    dir="ltr"
+                    style="color: rgb(22, 22, 23); font-family: Montserrat-Regular; font-size: 15px; line-height: 20px;"
+                  >
+                    Mot de passe
+                  </div>
+                  <div
+                    class="css-text-901oao"
+                    dir="ltr"
+                    style="color: rgb(105, 106, 111); font-family: Montserrat-SemiBold; font-size: 12px; line-height: 16px;"
+                  >
+                    Obligatoire
+                  </div>
                 </div>
-              </div>
+              </label>
               <div
                 class="css-view-1dbjc4n"
                 style="height: 8px;"
@@ -494,7 +518,7 @@ Object {
                 />
                 <button
                   aria-label="Afficher le mot de passe"
-                  class="sc-eCImPb eivvKD sc-cCcXHH bbeubk sc-cCcXHH bbeubk"
+                  class="sc-eCImPb eivvKD sc-cidDSM dWLnEj sc-cidDSM dWLnEj"
                   data-testid="toggle-password-visibility"
                   tabindex="0"
                   type="button"

@@ -10,14 +10,14 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { styledButton } from 'ui/components/buttons/styledButton'
-import { InputLabel } from 'ui/components/InputLabel/InputLabel'
+import { FlexInputLabel } from 'ui/components/InputLabel/FlexInputLabel'
 import { ContainerWithMaxWidth } from 'ui/components/inputs/ContainerWithMaxWidth'
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Eye as DefaultEye } from 'ui/svg/icons/Eye'
 import { EyeSlash as DefaultEyeSlash } from 'ui/svg/icons/EyeSlash'
-import { Spacer } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
 import { InputContainer } from './InputContainer'
@@ -51,10 +51,12 @@ const WithRefPasswordInput: React.ForwardRefRenderFunction<RNTextInput, TextInpu
     <ContainerWithMaxWidth>
       {!!customProps.label && (
         <React.Fragment>
-          <LabelContainer>
-            <InputLabel htmlFor={passwordInputID}>{customProps.label}</InputLabel>
-            {!!customProps.isRequiredField && <RequiredLabel />}
-          </LabelContainer>
+          <FlexInputLabel htmlFor={passwordInputID}>
+            <LabelContainer>
+              <Typo.Body>{customProps.label}</Typo.Body>
+              {!!customProps.isRequiredField && <RequiredLabel />}
+            </LabelContainer>
+          </FlexInputLabel>
           <Spacer.Column numberOfSpaces={2} />
         </React.Fragment>
       )}
