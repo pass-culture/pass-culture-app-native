@@ -32,6 +32,16 @@ jest.mock('features/search/pages/SearchWrapper', () => ({
 }))
 jest.mock('libs/analytics')
 
+const mockSettings = {
+  appEnableSearchHomepageRework: false,
+}
+
+jest.mock('features/auth/settings', () => ({
+  useAppSettings: jest.fn(() => ({
+    data: mockSettings,
+  })),
+}))
+
 describe('SearchBox component', () => {
   const searchInputID = uuidv4()
   it('should call mockStagedDispatch() when typing', () => {

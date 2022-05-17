@@ -35,6 +35,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
 
   function onFocus() {
     setIsFocus(true)
+    if (props?.onFocusSearchInput) props.onFocusSearchInput()
   }
 
   function onBlur() {
@@ -70,13 +71,14 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           returnKeyType={props.returnKeyType ?? 'search'}
           selectionColor={undefined}
           aria-describedby={accessibilityDescribedBy}
-          {...accessibilityAndTestId(accessibilityLabel)}
+          {...accessibilityAndTestId(accessibilityLabel, label ? undefined : 'searchInput')}
         />
         {value.length > 0 && (
           <RightIconContainer
             onPress={onPressRightIcon}
             {...accessibilityAndTestId(t`Réinitialiser la recherche`)}
-            type="reset">
+            type="reset"
+            testID="resetSearchInput">
             <Invalidate />
           </RightIconContainer>
         )}

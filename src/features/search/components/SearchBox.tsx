@@ -32,9 +32,10 @@ const LeftIcon: React.FC<{ onPressArrowBack: () => void }> = ({ onPressArrowBack
 
 type SearchBoxProps = {
   searchInputID: string
+  onFocusSearchInput?: () => void
 }
 
-export const SearchBox: React.FC<SearchBoxProps> = ({ searchInputID }) => {
+export const SearchBox: React.FC<SearchBoxProps> = ({ searchInputID, onFocusSearchInput }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { searchState, dispatch } = useSearch()
   const { searchState: stagedSearchState, dispatch: stagedDispatch } = useStagedSearch()
@@ -99,6 +100,7 @@ export const SearchBox: React.FC<SearchBoxProps> = ({ searchInputID }) => {
         accessibilityLabel={t`Rechercher un artiste, titre, lieu...`}
         onPressRightIcon={resetSearch}
         accessibilityDescribedBy={accessibilityDescribedBy}
+        onFocusSearchInput={onFocusSearchInput}
       />
       <HiddenText nativeID={accessibilityDescribedBy}>
         {t`Indique le nom d'une offre ou d'un lieu puis lance la recherche à l'aide de la touche

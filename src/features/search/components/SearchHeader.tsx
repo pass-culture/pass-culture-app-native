@@ -1,9 +1,10 @@
 import { t } from '@lingui/macro'
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
-import { v4 as uuidv4 } from 'uuid'
 
 import { useAppSettings } from 'features/auth/settings'
+import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
@@ -12,10 +13,14 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { SearchBox } from './SearchBox'
 
-export const SearchHeader: React.FC = () => {
+type SearchHeaderProps = {
+  searchInputID: string
+}
+
+export const SearchHeader: React.FC<SearchHeaderProps> = ({ searchInputID }) => {
   const { top } = useCustomSafeInsets()
   const { data: appSettings } = useAppSettings()
-  const searchInputID = uuidv4()
+  const { navigate } = useNavigation<UseNavigationType>()
   const appEnableSearchHomepageRework = appSettings?.appEnableSearchHomepageRework ?? false
   const inputHeight = appEnableSearchHomepageRework ? getSpacing(8) : getSpacing(12)
 
@@ -29,7 +34,12 @@ export const SearchHeader: React.FC = () => {
         <SearchBoxReworkContainer height={inputHeight} testID="searchBoxReworkContainer">
           <StyledInputLabel htmlFor={searchInputID}>{t`Recherche une offre`}</StyledInputLabel>
           <Spacer.Column numberOfSpaces={2} />
-          <SearchBox searchInputID={searchInputID} />
+          <SearchBox
+            searchInputID={searchInputID}
+            onFocusSearchInput={() => {
+              if (appEnableSearchHomepageRework) navigate('SearchDetails')
+            }}
+          />
         </SearchBoxReworkContainer>
       ) : (
         <SearchBoxContainer height={inputHeight}>

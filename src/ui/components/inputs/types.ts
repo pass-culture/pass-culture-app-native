@@ -23,6 +23,7 @@ type CustomSearchInputProps = {
   onPressRightIcon?: () => void
   focusOutlineColor?: ColorsEnum
   searchInputID?: string
+  onFocusSearchInput?: () => void
 }
 
 export type RNTextInputProps = Pick<
