@@ -24,6 +24,7 @@ export type IdentityCheckRootStackParamList = {
   NavigationIdentityCheck: undefined
   // Stepper
   IdentityCheckStepper: undefined
+  IdentityCheckStepperV2: undefined
   // Profile
   SetName: undefined
   IdentityCheckCity: undefined

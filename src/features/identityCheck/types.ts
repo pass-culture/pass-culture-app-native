@@ -2,6 +2,7 @@ import { IdentityCheckRootStackParamList } from 'features/navigation/RootNavigat
 import { IconInterface } from 'ui/svg/icons/types'
 
 export enum IdentityCheckStep {
+  PHONE_VALIDATION = 'PHONE_VALIDATION',
   PROFILE = 'profile',
   IDENTIFICATION = 'identification',
   CONFIRMATION = 'confirmation',

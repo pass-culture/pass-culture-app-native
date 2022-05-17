@@ -44,6 +44,13 @@ export const identityCheckRoutes: GenericRoute<IdentityCheckRootStackParamList>[
     options: { title: t`Vérification d'identité` },
     secure: true,
   },
+  {
+    name: 'IdentityCheckStepperV2',
+    component: IdentityCheckStepper,
+    path: 'verification-identite-v2',
+    options: { title: t`Vérification d'identité` },
+    secure: true,
+  },
   // Profile
   {
     name: 'SetName',
