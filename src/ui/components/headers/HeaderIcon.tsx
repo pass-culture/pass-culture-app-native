@@ -16,7 +16,7 @@ import { ColorsEnum } from 'ui/theme/colors'
 
 interface HeaderIconProps {
   iconName: 'back' | 'share' | 'favorite' | 'favorite-filled'
-  initialColor?: ColorsEnum | undefined
+  initialColor?: ColorsEnum
   onPress: () => void
   scaleAnimatedValue?: Animated.Value
   animationState: {

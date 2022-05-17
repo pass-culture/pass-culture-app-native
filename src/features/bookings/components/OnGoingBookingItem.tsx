@@ -50,19 +50,19 @@ export const OnGoingBookingItem = ({ booking }: BookingItemProps) => {
           {!!withdrawLabel && (
             <React.Fragment>
               {stock.offer.withdrawalType === WithdrawalTypeEnum.on_site ? (
-                <OnSiteWithdrawalContainer testID="on-site-withdrawal-container">
+                <WithdrawContainer testID="on-site-withdrawal-container">
                   <OfferEvent />
                   <Spacer.Row numberOfSpaces={1} />
                   <OnSiteWithdrawalCaption numberOfLines={2}>
                     {withdrawLabel}
                   </OnSiteWithdrawalCaption>
-                </OnSiteWithdrawalContainer>
+                </WithdrawContainer>
               ) : (
-                <WithDrawContainer testID="withdraw-container">
+                <WithdrawContainer testID="withdraw-container">
                   <Clock />
                   <Spacer.Row numberOfSpaces={1} />
                   <WithdrawCaption numberOfLines={2}>{withdrawLabel}</WithdrawCaption>
-                </WithDrawContainer>
+                </WithdrawContainer>
               )}
             </React.Fragment>
           )}
@@ -83,14 +83,7 @@ const AttributesView = styled.View({
   paddingRight: getSpacing(1),
 })
 
-const WithDrawContainer = styled.View(({ theme }) => ({
-  flex: 1,
-  flexDirection: 'row',
-  alignItems: 'center',
-  color: theme.colors.primary,
-}))
-
-const OnSiteWithdrawalContainer = styled.View(({ theme }) => ({
+const WithdrawContainer = styled.View(({ theme }) => ({
   flex: 1,
   flexDirection: 'row',
   alignItems: 'center',
@@ -106,9 +99,8 @@ const WithdrawCaption = styled(Typo.Caption)({
   marginRight: getSpacing(4),
 })
 
-const OnSiteWithdrawalCaption = styled(Typo.Caption)(({ theme }) => ({
+const OnSiteWithdrawalCaption = styled(WithdrawCaption)(({ theme }) => ({
   color: theme.colors.primary,
-  marginRight: getSpacing(4),
 }))
 
 const Clock = styled(DefaultClock).attrs(({ theme }) => ({
