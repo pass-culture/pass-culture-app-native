@@ -21,6 +21,7 @@ import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Background } from 'ui/svg/Background'
+import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
 import { Li } from 'ui/web/list/Li'
@@ -29,6 +30,7 @@ import { VerticalUl } from 'ui/web/list/Ul'
 export const IdentityCheckStepper = () => {
   const theme = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
+
   const steps = useIdentityCheckSteps()
   const getStepState = useGetStepState()
   const context = useIdentityCheckContext()
@@ -69,6 +71,7 @@ export const IdentityCheckStepper = () => {
   // check process twice if they submitted and validated through DMS before signing up on the app. In the future,
   // we will prevent these users from even having to go through the Stepper process, so this extra navigation logic
   // can be removed.
+
   useEffect(() => {
     if (subscription?.nextSubscriptionStep === null) {
       refetch()
@@ -111,7 +114,12 @@ export const IdentityCheckStepper = () => {
           <Title>{t`C’est très rapide\u00a0!`}</Title>
           <Spacer.Column numberOfSpaces={2} />
 
-          <StyledBody>{t`Voici les 3 étapes que tu vas devoir suivre.`}</StyledBody>
+          <StyledBody>
+            {t({
+              id: 'Voici les {steps} étapes que tu vas devoir suivre.',
+              values: { steps: steps.length },
+            })}
+          </StyledBody>
           {theme.isDesktopViewport ? <Spacer.Column numberOfSpaces={2} /> : <Spacer.Flex />}
 
           <VerticalUl>
@@ -138,7 +146,11 @@ export const IdentityCheckStepper = () => {
             <Spacer.Flex flex={2} />
           )}
 
-          <ButtonTertiaryWhite wording={t`Abandonner`} onPress={showQuitIdentityCheckModal} />
+          <ButtonTertiaryWhite
+            icon={Invalidate}
+            wording={t`Abandonner`}
+            onPress={showQuitIdentityCheckModal}
+          />
         </Container>
       </CenteredContainer>
       <QuitIdentityCheckModal
