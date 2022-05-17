@@ -6,7 +6,7 @@ import { analytics } from 'libs/analytics'
 import { cleanup, fireEvent, render } from 'tests/utils'
 
 jest.mock('react-query')
-jest.mock('features/home/api')
+jest.mock('features/profile/api')
 jest.mock('features/home/services/useAvailableCredit')
 jest.mock('features/offer/api/useOffer')
 jest.mock('features/offer/pages/useTrackOfferSeenDuration')

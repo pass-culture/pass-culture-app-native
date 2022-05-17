@@ -9,7 +9,7 @@ import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 
 import { parseSearchParameters } from '../parseSearchParameters'
 
-jest.mock('features/home/api')
+jest.mock('features/profile/api')
 
 const defaultSearchParameters = {
   ...initialSearchState,

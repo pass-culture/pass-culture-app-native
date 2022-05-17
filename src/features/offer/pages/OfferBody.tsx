@@ -4,10 +4,10 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ReportedOffer } from 'api/gen'
-import { useUserProfileInfo } from 'features/home/api'
 import { LocationCaption } from 'features/offer/atoms/LocationCaption'
 import { ReportOfferModal } from 'features/offer/components/ReportOfferModal'
 import { useReportedOffers } from 'features/offer/services/useReportedOffers'
+import { useUserProfileInfo } from 'features/profile/api'
 import { isUserBeneficiary, isUserExBeneficiary } from 'features/profile/utils'
 import {
   formatFullAddress,

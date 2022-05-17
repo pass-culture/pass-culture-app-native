@@ -10,7 +10,7 @@ import { bookingsSnap } from '../api/bookingsSnap'
 
 import { Booking } from './types'
 
-jest.mock('features/home/api')
+jest.mock('features/profile/api')
 jest.mock('features/home/services/useAvailableCredit')
 jest.mock('features/profile/utils')
 

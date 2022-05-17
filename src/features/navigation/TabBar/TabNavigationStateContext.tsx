@@ -1,8 +1,8 @@
 import React, { createContext, useContext, memo, useState, useMemo } from 'react'
 
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useUserProfileInfo } from 'features/home/api'
 import { isPrivateScreen } from 'features/navigation/RootNavigator/linking/getScreensConfig'
+import { useUserProfileInfo } from 'features/profile/api'
 
 import { getShouldDisplayTab } from './helpers'
 import { TabNavigationStateType, TabStateRoute } from './types'

@@ -1,10 +1,10 @@
 import React, { useCallback, useEffect } from 'react'
 
-import { useUserProfileInfo } from 'features/home/api'
 import { useHomeRecommendedHits } from 'features/home/api/useHomeRecommendedHits'
 import { HomeOfferTile } from 'features/home/atoms'
 import { DisplayParametersFields, RecommendationParametersFields } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
+import { useUserProfileInfo } from 'features/profile/api'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'

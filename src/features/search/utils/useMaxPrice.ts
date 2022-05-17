@@ -1,4 +1,4 @@
-import { useUserProfileInfo } from 'features/home/api'
+import { useUserProfileInfo } from 'features/profile/api'
 import { isUserExBeneficiary } from 'features/profile/utils'
 import { MAX_PRICE } from 'features/search/pages/reducer.helpers'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'

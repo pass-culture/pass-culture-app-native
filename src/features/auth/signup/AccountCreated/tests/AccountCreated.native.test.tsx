@@ -4,15 +4,15 @@ import { mocked } from 'ts-jest/utils'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { UserProfileResponse } from 'api/gen'
-import { useUserProfileInfo } from 'features/home/api'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
 import { navigateFromRef } from 'features/navigation/navigationRef'
+import { useUserProfileInfo } from 'features/profile/api'
 import { render, fireEvent } from 'tests/utils'
 
 import { AccountCreated } from '../AccountCreated'
 
 const mockedUseUserProfileInfo = mocked(useUserProfileInfo)
-jest.mock('features/home/api')
+jest.mock('features/profile/api')
 jest.mock('features/navigation/helpers')
 jest.mock('features/navigation/navigationRef')
 

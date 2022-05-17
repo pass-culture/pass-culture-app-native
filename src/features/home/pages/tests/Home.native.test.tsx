@@ -15,8 +15,11 @@ jest.mock('features/home/api/useShowSkeleton', () => ({
 useRoute.mockImplementation(() => ({ params: { entryId: 'specific_entry_id' } }))
 
 let mockUserProfileInfo: Partial<UserProfileResponse> | undefined = undefined
-jest.mock('features/home/api', () => ({
+jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: mockUserProfileInfo })),
+}))
+
+jest.mock('features/home/api', () => ({
   useHomepageModules: () => [],
 }))
 

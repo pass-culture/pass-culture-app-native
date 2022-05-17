@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useUserProfileInfo } from 'features/home/api'
+import { useUserProfileInfo } from 'features/profile/api'
 import { LocationType } from 'features/search/enums'
 import { SectionTitle } from 'features/search/sections/titles'
 import { SuggestedPlace } from 'libs/place'
@@ -29,7 +29,7 @@ const Kourou: SuggestedPlace = {
   geolocation: { longitude: -52.669736, latitude: 5.16186 },
 }
 
-jest.mock('features/home/api', () => ({
+jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: { isBeneficiary: true } })),
 }))
 

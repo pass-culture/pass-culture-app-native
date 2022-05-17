@@ -6,8 +6,8 @@ import {
   shouldShowCulturalSurvey,
   useCulturalSurveyRoute,
 } from 'features/culturalSurvey/helpers/utils'
-import { useUserProfileInfo } from 'features/home/api'
 import { navigateToHomeConfig } from 'features/navigation/helpers'
+import { useUserProfileInfo } from 'features/profile/api'
 import { campaignTracker, CampaignEvents } from 'libs/campaign'
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'

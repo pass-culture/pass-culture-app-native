@@ -16,7 +16,7 @@ const mockedUser = {
   isBeneficiary: true,
   roles: [UserRole.BENEFICIARY],
 }
-jest.mock('features/home/api', () => ({
+jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(() => ({
     data: mockedUser,
   })),

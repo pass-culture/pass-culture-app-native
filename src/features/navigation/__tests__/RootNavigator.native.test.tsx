@@ -13,7 +13,7 @@ import { RootNavigator } from '../RootNavigator'
 jest.mock('features/forceUpdate/useMustUpdateApp')
 const mockedUseMustUpdateApp = mocked(useMustUpdateApp)
 jest.mock('@react-navigation/native', () => jest.requireActual('@react-navigation/native'))
-jest.mock('features/home/api') // for useUserProfileInfo()
+jest.mock('features/profile/api') // for useUserProfileInfo()
 jest.mock('features/auth/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))

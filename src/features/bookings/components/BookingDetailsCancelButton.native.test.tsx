@@ -15,7 +15,7 @@ import { Booking } from './types'
 
 mockdate.set(new Date('2020-12-01T00:00:00Z'))
 
-jest.mock('features/home/api')
+jest.mock('features/profile/api')
 jest.mock('features/home/services/useAvailableCredit')
 jest.mock('features/profile/utils')
 const mockedisUserExBeneficiary = mocked(isUserExBeneficiary, true)

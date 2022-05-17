@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { LayoutChangeEvent, ScrollView, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useUserProfileInfo } from 'features/home/api'
+import { useUserProfileInfo } from 'features/profile/api'
 import { ShowResults, ReinitializeFilters } from 'features/search/atoms/Buttons'
 import { useStagedSearch } from 'features/search/pages/SearchWrapper'
 import Section from 'features/search/sections'

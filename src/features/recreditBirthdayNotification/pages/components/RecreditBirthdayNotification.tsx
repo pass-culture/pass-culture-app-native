@@ -9,10 +9,9 @@ import {
   Text,
   ButtonContainer,
 } from 'features/auth/signup/underageSignup/notificationPagesStyles'
-import { useUserProfileInfo } from 'features/home/api'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
 import { navigateToHome } from 'features/navigation/helpers'
-import { useResetRecreditAmountToShow } from 'features/profile/api'
+import { useUserProfileInfo, useResetRecreditAmountToShow } from 'features/profile/api'
 import { analytics } from 'libs/analytics'
 import LottieView from 'libs/lottie'
 import { formatToFrenchDecimal } from 'libs/parsers'

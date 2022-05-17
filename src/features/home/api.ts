@@ -2,9 +2,6 @@ import resolveResponse from 'contentful-resolve-response'
 import { useMemo, useEffect } from 'react'
 import { useQuery } from 'react-query'
 
-import { api } from 'api/api'
-import { UserProfileResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/AuthContext'
 import { NoContentError } from 'features/home/components/NoContentError'
 import {
   EntryCollection,
@@ -52,16 +49,4 @@ export function useHomepageModules(paramsEntryId?: string) {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   return useMemo(() => (entry ? processHomepageEntry(entry) : []), [entryId])
-}
-
-const STALE_TIME_USER_PROFILE = 5 * 60 * 1000
-
-export function useUserProfileInfo(options = {}) {
-  const { isLoggedIn } = useAuthContext()
-
-  return useQuery<UserProfileResponse>(QueryKeys.USER_PROFILE, () => api.getnativev1me(), {
-    enabled: isLoggedIn,
-    staleTime: STALE_TIME_USER_PROFILE,
-    ...options,
-  })
 }

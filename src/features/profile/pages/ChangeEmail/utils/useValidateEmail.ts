@@ -1,6 +1,6 @@
 import { t } from '@lingui/macro'
 
-import { useUserProfileInfo } from 'features/home/api'
+import { useUserProfileInfo } from 'features/profile/api'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
 
 export const useIsCurrentUserEmail = (email: string): boolean => {

@@ -3,7 +3,7 @@ import * as React from 'react'
 import styled from 'styled-components/native'
 
 import { getBookingProperties } from 'features/bookings/helpers'
-import { useUserProfileInfo } from 'features/home/api'
+import { useUserProfileInfo } from 'features/profile/api'
 import { isUserExBeneficiary } from 'features/profile/utils'
 import { formatToCompleteFrenchDate } from 'libs/parsers'
 import { useSubcategory } from 'libs/subcategories'

@@ -6,7 +6,7 @@ const currentUserEmail = 'current@gmail.com'
 const newUserEmail = 'new@gmail.com'
 const invalidNewUserEmail = 'new@invaild'
 
-jest.mock('features/home/api', () => ({
+jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: { email: currentUserEmail } })),
 }))
 

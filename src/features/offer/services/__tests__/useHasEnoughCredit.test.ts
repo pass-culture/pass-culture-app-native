@@ -16,7 +16,7 @@ jest.mock('features/offer/api/useOffer', () => ({
 }))
 
 let mockedUser: Partial<UserProfileResponse> | undefined = undefined
-jest.mock('features/home/api', () => ({
+jest.mock('features/profile/api', () => ({
   useUserProfileInfo: () => ({
     data: mockedUser,
   }),

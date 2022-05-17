@@ -20,7 +20,7 @@ import { Booking } from '../components/types'
 import { BookingDetails as BookingDetailsDefault } from './BookingDetails'
 
 const BookingDetails = withAsyncErrorBoundary(BookingDetailsDefault)
-jest.mock('features/home/api', () => ({
+jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: undefined })),
 }))
 

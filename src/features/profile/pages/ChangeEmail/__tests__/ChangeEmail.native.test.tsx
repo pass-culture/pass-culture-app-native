@@ -13,7 +13,7 @@ import { ColorsEnum } from 'ui/theme/colors'
 
 import { ChangeEmail } from '../ChangeEmail'
 
-jest.mock('features/home/api')
+jest.mock('features/profile/api')
 jest.mock('react-query')
 const mockedUseMutation = mocked(useMutation)
 const mockUseMutationSuccess = () => {

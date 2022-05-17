@@ -4,8 +4,8 @@ import { ThemeProvider as WebThemeProvider } from 'styled-components'
 import { ThemeProvider } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useUserProfileInfo } from 'features/home/api'
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
+import { useUserProfileInfo } from 'features/profile/api'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { theme } from 'theme'
 
@@ -15,7 +15,7 @@ const mockedUseAuthContext = useAuthContext as jest.Mock
 jest.mock('features/auth/AuthContext', () => ({ useAuthContext: jest.fn() }))
 
 const mockedUseUserProfileInfo = useUserProfileInfo as jest.Mock
-jest.mock('features/home/api', () => ({ useUserProfileInfo: jest.fn() }))
+jest.mock('features/profile/api', () => ({ useUserProfileInfo: jest.fn() }))
 
 describe('Header', () => {
   it('should render Header without Bookings item for non-beneficiary and logged out users', () => {

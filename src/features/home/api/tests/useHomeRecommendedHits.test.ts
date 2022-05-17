@@ -16,7 +16,7 @@ import {
 } from '../useHomeRecommendedHits'
 
 const mockUserId = 30
-jest.mock('features/home/api', () => ({
+jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(() => ({ data: { id: mockUserId } })),
 }))
 jest.mock('features/auth/settings')

@@ -2,7 +2,7 @@ import { t } from '@lingui/macro'
 
 import { OfferResponse, FavoriteOfferResponse, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/AuthContext'
-import { useUserProfileInfo } from 'features/home/api'
+import { useUserProfileInfo } from 'features/profile/api'
 import { isUserUnderageBeneficiary } from 'features/profile/utils'
 import { analytics } from 'libs/analytics'
 import { useSubcategoriesMapping } from 'libs/subcategories'

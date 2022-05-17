@@ -5,9 +5,9 @@ import waitForExpect from 'wait-for-expect'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SettingsResponse, UserProfileResponse } from 'api/gen'
 import { useAppSettings } from 'features/auth/settings'
-import { useUserProfileInfo } from 'features/home/api'
 import { useCurrentRoute, navigateToHome } from 'features/navigation/helpers'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { useUserProfileInfo } from 'features/profile/api'
 import { superFlushWithAct, act, render } from 'tests/utils'
 
 import { CulturalSurvey } from './CulturalSurvey'
@@ -17,7 +17,7 @@ jest.mock('react-query')
 const mockedUseUserProfileInfo = useUserProfileInfo as jest.MockedFunction<
   typeof useUserProfileInfo
 >
-jest.mock('features/home/api')
+jest.mock('features/profile/api')
 function mockUserProfileInfo({
   user,
   isLoading,

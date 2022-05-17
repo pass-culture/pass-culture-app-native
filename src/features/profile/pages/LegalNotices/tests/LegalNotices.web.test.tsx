@@ -8,7 +8,7 @@ import { flushAllPromises, render, act, fireEvent } from 'tests/utils/web'
 
 import { LegalNotices } from '../LegalNotices'
 
-jest.mock('features/home/api', () => ({
+jest.mock('features/profile/api', () => ({
   useUserProfileInfo: jest.fn(
     () =>
       ({

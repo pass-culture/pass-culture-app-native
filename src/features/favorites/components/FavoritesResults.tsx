@@ -16,8 +16,8 @@ import {
   sortByDistanceAroundMe,
   sortByIdDesc,
 } from 'features/favorites/pages/utils/sorts'
-import { useUserProfileInfo } from 'features/home/api'
 import { useAvailableCredit } from 'features/home/services/useAvailableCredit'
+import { useUserProfileInfo } from 'features/profile/api'
 import { useGeolocation, GeoCoordinates } from 'libs/geolocation'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import {
