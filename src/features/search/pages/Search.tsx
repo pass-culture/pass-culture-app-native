@@ -1,6 +1,7 @@
 import { useRoute } from '@react-navigation/native'
 import React, { useEffect, useRef, useState } from 'react'
 import styled from 'styled-components/native'
+import { v4 as uuidv4 } from 'uuid'
 
 import { UseRouteType } from 'features/navigation/RootNavigator'
 import { SearchHeader, SearchLandingPage, SearchResults } from 'features/search/components'
@@ -45,6 +46,7 @@ export function Search() {
   const { params } = useRoute<UseRouteType<'Search'>>()
   const { dispatch } = useSearch()
   const showResults = useShowResults()
+  const searchInputID = uuidv4()
 
   useEffect(() => {
     if (params) {
@@ -57,7 +59,7 @@ export function Search() {
   return (
     <Container>
       <Form.Flex>
-        <SearchHeader />
+        <SearchHeader searchInputID={searchInputID} />
         {showResults ? <SearchResults /> : <SearchLandingPage />}
       </Form.Flex>
     </Container>

@@ -17,18 +17,18 @@ import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export const SearchDetails: React.FC = () => {
   const { top } = useCustomSafeInsets()
-  const [query, _setQuery] = useState<string>('')
+  const [query, setQuery] = useState<string>('')
   const { navigate } = useNavigation<UseNavigationType>()
   const refSearchInput = useRef<TextInput | null>(null)
 
   const resetSearchInput = () => {
-    _setQuery('')
+    setQuery('')
     refSearchInput.current?.focus()
   }
 
   return (
     <React.Fragment>
-      <HeaderBackgroundWrapper style={{ maxHeight: top }}>
+      <HeaderBackgroundWrapper maxHeight={top}>
         <HeaderBackground />
       </HeaderBackgroundWrapper>
       <SearchInputContainer>
@@ -40,7 +40,7 @@ export const SearchDetails: React.FC = () => {
         <StyledSearchInputContainer>
           <StyledSearchInput
             value={query}
-            onChangeText={_setQuery}
+            onChangeText={setQuery}
             placeholder={t`Offre, artiste...`}
             autoFocus={true}
             inputHeight="regular"
@@ -102,7 +102,8 @@ const ArrowPrevious = styled(DefaultArrowPrevious).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
 }))``
 
-const HeaderBackgroundWrapper = styled.View({
+const HeaderBackgroundWrapper = styled.View<{ maxHeight: number }>(({ maxHeight }) => ({
   overflow: 'hidden',
   position: 'relative',
-})
+  maxHeight,
+}))
