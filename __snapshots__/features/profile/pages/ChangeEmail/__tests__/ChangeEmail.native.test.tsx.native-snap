@@ -312,47 +312,48 @@ Array [
             ]
           }
         >
-          <View
-            style={
-              Array [
-                Object {
-                  "alignItems": "flex-end",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "width": "100%",
-                },
-              ]
-            }
-          >
-            <Text
-              htmlFor="testUuidV4"
+          <View>
+            <View
               style={
                 Array [
                   Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "alignItems": "flex-end",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "width": "100%",
                   },
                 ]
               }
             >
-              Nouvel e-mail
-            </Text>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                  },
-                ]
-              }
-            >
-              Obligatoire
-            </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Nouvel e-mail
+              </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                Obligatoire
+              </Text>
+            </View>
           </View>
           <View
             numberOfSpaces={2}
@@ -450,47 +451,48 @@ Array [
             ]
           }
         >
-          <View
-            style={
-              Array [
-                Object {
-                  "alignItems": "flex-end",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "width": "100%",
-                },
-              ]
-            }
-          >
-            <Text
-              htmlFor="testUuidV4"
+          <View>
+            <View
               style={
                 Array [
                   Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "alignItems": "flex-end",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "width": "100%",
                   },
                 ]
               }
             >
-              Mot de passe
-            </Text>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                  },
-                ]
-              }
-            >
-              Obligatoire
-            </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Mot de passe
+              </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                Obligatoire
+              </Text>
+            </View>
           </View>
           <View
             numberOfSpaces={2}
@@ -951,47 +953,48 @@ Array [
             ]
           }
         >
-          <View
-            style={
-              Array [
-                Object {
-                  "alignItems": "flex-end",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "width": "100%",
-                },
-              ]
-            }
-          >
-            <Text
-              htmlFor="testUuidV4"
+          <View>
+            <View
               style={
                 Array [
                   Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "alignItems": "flex-end",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "width": "100%",
                   },
                 ]
               }
             >
-              Nouvel e-mail
-            </Text>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                  },
-                ]
-              }
-            >
-              Obligatoire
-            </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Nouvel e-mail
+              </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                Obligatoire
+              </Text>
+            </View>
           </View>
           <View
             numberOfSpaces={2}
@@ -1097,47 +1100,48 @@ Array [
             ]
           }
         >
-          <View
-            style={
-              Array [
-                Object {
-                  "alignItems": "flex-end",
-                  "flexDirection": "row",
-                  "justifyContent": "space-between",
-                  "width": "100%",
-                },
-              ]
-            }
-          >
-            <Text
-              htmlFor="testUuidV4"
+          <View>
+            <View
               style={
                 Array [
                   Object {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Regular",
-                    "fontSize": 15,
-                    "lineHeight": 20,
+                    "alignItems": "flex-end",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                    "width": "100%",
                   },
                 ]
               }
             >
-              Mot de passe
-            </Text>
-            <Text
-              style={
-                Array [
-                  Object {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 16,
-                  },
-                ]
-              }
-            >
-              Obligatoire
-            </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Regular",
+                      "fontSize": 15,
+                      "lineHeight": 20,
+                    },
+                  ]
+                }
+              >
+                Mot de passe
+              </Text>
+              <Text
+                style={
+                  Array [
+                    Object {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 16,
+                    },
+                  ]
+                }
+              >
+                Obligatoire
+              </Text>
+            </View>
           </View>
           <View
             numberOfSpaces={2}
