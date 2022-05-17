@@ -156,7 +156,7 @@ Object {
                 >
                   <button
                     aria-label="Continuer vers l'étape suivante"
-                    class="sc-bdvvtL hWVHSw sc-gKclnd jeEaJc"
+                    class="sc-bdvvtL hWVHSw sc-jRQBWg dQpKzy"
                     data-testid="Continuer vers l'étape suivante"
                     disabled=""
                     type="submit"
@@ -348,7 +348,7 @@ Object {
               >
                 <button
                   aria-label="Continuer vers l'étape suivante"
-                  class="sc-bdvvtL hWVHSw sc-gKclnd jeEaJc"
+                  class="sc-bdvvtL hWVHSw sc-jRQBWg dQpKzy"
                   data-testid="Continuer vers l'étape suivante"
                   disabled=""
                   type="submit"

@@ -2572,7 +2572,7 @@ Array [
           Seulement les "ids" disposent de validation !
         </div>
         <button
-          className="sc-jRQBWg cuWqud sc-kDTinF dspNQG"
+          className="sc-jRQBWg cuWqud sc-jrQzAO iuFRFd"
           disabled={false}
           onClick={[Function]}
           onDoubleClick={[Function]}
