@@ -37,7 +37,7 @@ const nativeEventEnd = {
 
 const mockHits = mockedAlgoliaResponse.hits.map(transformHit('fakeUrlPrefix')) as SearchHit[]
 let mockNbHits = mockedAlgoliaResponse.nbHits
-jest.mock('features/home/pages/useOfferModule', () => ({
+jest.mock('features/home/api/useOfferModule', () => ({
   useOfferModule: jest.fn(() => ({ hits: mockHits, nbHits: mockNbHits })),
 }))
 jest.mock('react-query')

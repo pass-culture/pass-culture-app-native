@@ -7,7 +7,7 @@ import { render } from 'tests/utils'
 import { VenuesModule } from '../VenuesModule'
 
 jest.mock('react-query')
-jest.mock('features/home/pages/useVenueModule', () => ({
+jest.mock('features/home/api/useVenueModule', () => ({
   useVenueModule: jest.fn().mockReturnValue(mockVenues.hits),
 }))
 

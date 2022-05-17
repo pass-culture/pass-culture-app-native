@@ -8,7 +8,7 @@ import { flushAllPromises, render } from 'tests/utils'
 
 import { Home } from '../Home'
 
-jest.mock('features/home/pages/useShowSkeleton', () => ({
+jest.mock('features/home/api/useShowSkeleton', () => ({
   useShowSkeleton: jest.fn(() => false),
 }))
 

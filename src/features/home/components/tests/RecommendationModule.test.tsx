@@ -14,7 +14,7 @@ const displayParameters: DisplayParametersFields = {
 
 jest.mock('react-query')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
-jest.mock('features/home/pages/useHomeRecommendedHits', () => ({
+jest.mock('features/home/api/useHomeRecommendedHits', () => ({
   useHomeRecommendedHits: jest.fn(() => mockedAlgoliaResponse.hits),
 }))
 

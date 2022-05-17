@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react'
 
 import { useUserProfileInfo } from 'features/home/api'
+import { useOfferModule } from 'features/home/api/useOfferModule'
 import { HomeOfferTile, SeeMore } from 'features/home/atoms'
 import { SearchParametersFields, DisplayParametersFields } from 'features/home/contentful'
 import { getPlaylistItemDimensionsFromLayout } from 'features/home/contentful/dimensions'
-import { useOfferModule } from 'features/home/pages/useOfferModule'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics'
 import { useGeolocation } from 'libs/geolocation'

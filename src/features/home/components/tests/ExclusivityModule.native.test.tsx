@@ -23,7 +23,7 @@ const mockPosition = {
   longitude: mockOffer.venue.coordinates.latitude || 0 + 0.0001,
 }
 jest.mock('libs/geolocation', () => ({ useGeolocation: () => ({ position: mockPosition }) }))
-jest.mock('features/home/pages/useExcluOffer', () => ({
+jest.mock('features/home/api/useExcluOffer', () => ({
   useExcluOffer: () => ({ data: mockOffer }),
 }))
 
