@@ -14,6 +14,12 @@ const mockSettings = {
 }
 
 jest.mock('features/navigation/helpers')
+
+const mockSignOut = jest.fn()
+jest.mock('features/auth/AuthContext', () => ({
+  useLogoutRoutine: jest.fn(() => mockSignOut.mockResolvedValueOnce(jest.fn())),
+}))
+
 jest.mock('features/auth/settings', () => ({
   useAppSettings: jest.fn(() => ({
     data: mockSettings,
@@ -33,7 +39,8 @@ describe('<FraudulentAccount />', () => {
     fireEvent.click(leftIconButton)
 
     await waitForExpect(() => {
-      expect(mockGoBack).toHaveBeenCalledTimes(1)
+      expect(mockGoBack).toBeCalledTimes(1)
+      expect(mockSignOut).toBeCalledTimes(1)
     })
   })
 
@@ -59,6 +66,7 @@ describe('<FraudulentAccount />', () => {
 
     await waitForExpect(() => {
       expect(navigate).toBeCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
+      expect(mockSignOut).toBeCalledTimes(1)
     })
   })
 

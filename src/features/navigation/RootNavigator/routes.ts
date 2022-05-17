@@ -206,6 +206,7 @@ export const routes: Route[] = [
     component: FraudulentAccount,
     path: 'compte-suspendu',
     options: { title: t`Compte suspendu` },
+    secure: true,
   },
   {
     name: 'AccountReactivationSuccess',
