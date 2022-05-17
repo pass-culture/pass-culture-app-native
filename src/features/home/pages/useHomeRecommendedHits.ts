@@ -30,18 +30,18 @@ interface RecommendedIdsRequest {
 export const useHomeRecommendedHits = (
   userId: number | undefined,
   position: GeoCoordinates | null,
-  parameters?: RecommendationParametersFields
+  recommendationParameters?: RecommendationParametersFields
 ): SearchHit[] | undefined => {
   const recommendationEndpoint = getRecommendationEndpoint(userId, position) as string
   const [recommendedIds, setRecommendedIds] = useState<string[]>()
   const { mutate: getRecommendedIds } = useHomeRecommendedIdsMutation(recommendationEndpoint)
 
   useEffect(() => {
-    const recommendationParameters = getRecommendationParameters(parameters)
-    getRecommendedIds(recommendationParameters, {
+    const requestParameters = getRecommendationParameters(recommendationParameters)
+    getRecommendedIds(requestParameters, {
       onSuccess: (response) => setRecommendedIds(response.playlist_recommended_offers),
     })
-  }, [getRecommendedIds, parameters])
+  }, [getRecommendedIds, recommendationParameters])
 
   return useAlgoliaRecommendedHits(recommendedIds || [])
 }

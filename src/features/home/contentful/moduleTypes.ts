@@ -90,18 +90,18 @@ export class ExclusivityPane {
 }
 
 export class RecommendationPane {
-  display: DisplayParametersFields
-  parameters?: RecommendationParametersFields
+  displayParameters: DisplayParametersFields
+  recommendationParameters?: RecommendationParametersFields
 
   constructor({
-    display,
-    parameters,
+    displayParameters,
+    recommendationParameters,
   }: {
-    display: DisplayParametersFields
-    parameters?: RecommendationParametersFields
+    displayParameters: DisplayParametersFields
+    recommendationParameters?: RecommendationParametersFields
   }) {
-    this.display = display
-    this.parameters = parameters
+    this.displayParameters = displayParameters
+    this.recommendationParameters = recommendationParameters
   }
 }
 

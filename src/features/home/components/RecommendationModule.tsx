@@ -15,32 +15,32 @@ import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 
 type RecommendationModuleProps = {
-  display: DisplayParametersFields
+  displayParameters: DisplayParametersFields
   index: number
-  parameters?: RecommendationParametersFields
+  recommendationParameters?: RecommendationParametersFields
 }
 
 const keyExtractor = (item: SearchHit) => item.objectID
 
 export const RecommendationModule = (props: RecommendationModuleProps) => {
-  const { display, index, parameters } = props
+  const { displayParameters, index, recommendationParameters } = props
   const { position } = useGeolocation()
   const { data: profile } = useUserProfileInfo()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
 
-  const hits = useHomeRecommendedHits(profile?.id, position, parameters)
+  const hits = useHomeRecommendedHits(profile?.id, position, recommendationParameters)
   const nbHits = hits?.length || 0
-  const shouldModuleBeDisplayed = nbHits > display.minOffers
+  const shouldModuleBeDisplayed = nbHits > displayParameters.minOffers
 
-  const moduleName = display.title
+  const moduleName = displayParameters.title
   const logHasSeenAllTilesOnce = useFunctionOnce(() =>
     analytics.logAllTilesSeen(moduleName, nbHits)
   )
 
   useEffect(() => {
     if (nbHits > 0 && shouldModuleBeDisplayed) {
-      analytics.logRecommendationModuleSeen(display.title, nbHits)
+      analytics.logRecommendationModuleSeen(displayParameters.title, nbHits)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nbHits])
@@ -71,13 +71,13 @@ export const RecommendationModule = (props: RecommendationModuleProps) => {
     [position, profile?.isBeneficiary]
   )
 
-  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(display.layout)
+  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(displayParameters.layout)
 
   if (!shouldModuleBeDisplayed) return <React.Fragment />
   return (
     <PassPlaylist
       testID="recommendationModuleList"
-      title={display.title}
+      title={displayParameters.title}
       onDarkBackground={index === 0}
       data={hits || []}
       itemHeight={itemHeight}

@@ -49,9 +49,9 @@ const buildAlgoliaModule = (
 }
 
 const buildRecommendation = (fields: RecommendationFields): RecommendationPane => {
-  const { fields: display } = fields.displayParameters
-  const parameters = fields.recommendationParameters?.fields
-  return new RecommendationPane({ display, parameters })
+  const displayParameters = fields.displayParameters.fields
+  const recommendationParameters = fields.recommendationParameters?.fields
+  return new RecommendationPane({ displayParameters, recommendationParameters })
 }
 
 const buildExclusivity = (
