@@ -1,5 +1,6 @@
 import { t } from '@lingui/macro'
 import React from 'react'
+import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -13,10 +14,13 @@ interface Props extends Omit<IconInterface, 'testID'> {
 }
 
 export const ValidationMark: React.FC<Props> = ({ isValid, size, validtestID, invalidTestID }) => {
+  const {
+    colors: { white },
+  } = useTheme()
   return isValid ? (
     <ValidateGreenValid size={size} testID={validtestID} />
   ) : (
-    <InvalidateGreyDark size={size} testID={invalidTestID} />
+    <InvalidateGreyDark size={size} testID={invalidTestID} backgroundColor={white} />
   )
 }
 

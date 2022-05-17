@@ -13,6 +13,7 @@ export interface IconInterface extends IconSharedProperties {
   size?: number | string
   opacity?: number
   color2?: ColorsEnum | UniqueColors
+  backgroundColor?: ColorsEnum | UniqueColors
 }
 
 export interface AccessibleIcon extends IconInterface {
