@@ -67,7 +67,7 @@ const StyledView = styled(View)<{
     if (isDisabled) {
       return undefined
     }
-    return isError ? theme.colors.error : theme.colors.greyMedium
+    return isError ? theme.colors.error : theme.colors.greyDark
   }
 
   const focusRules =

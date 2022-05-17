@@ -110,7 +110,7 @@ const StyledSelect = styled.select<SelectProps>`
     border-bottom-left-radius: ${borderRadiusLeft};
     border-top-right-radius: ${borderRadiusRight};
     border-bottom-right-radius: ${borderRadiusRight};
-    border: solid 1px ${isError ? theme.colors.error : theme.colors.greyMedium};
+    border: solid 1px ${isError ? theme.colors.error : theme.colors.greyDark};
     cursor: pointer;
     background-color: ${theme.colors.white};
     appearance: none;
