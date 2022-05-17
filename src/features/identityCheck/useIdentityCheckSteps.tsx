@@ -7,14 +7,15 @@ import { IdentityCheckStep, StepConfig } from 'features/identityCheck/types'
 import { Confirmation } from 'ui/svg/icons/Confirmation'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Profile } from 'ui/svg/icons/Profile'
+import { Smartphone } from 'ui/svg/icons/Smartphone'
 import { IconInterface } from 'ui/svg/icons/types'
 
 // hook as it can be dynamic depending on subscription step
-export const useIdentityCheckSteps = (): StepConfig[] => {
+export const useIdentityCheckSteps = (stepsIncludePhoneValidation?: boolean): StepConfig[] => {
   const { profile, identification } = useIdentityCheckContext()
   const hasSchoolTypes = profile.hasSchoolTypes
 
-  return [
+  const stepsV1: StepConfig[] = [
     {
       name: IdentityCheckStep.PROFILE,
       icon: ProfileIcon,
@@ -45,8 +46,21 @@ export const useIdentityCheckSteps = (): StepConfig[] => {
       screens: ['IdentityCheckHonor', 'BeneficiaryRequestSent'],
     },
   ]
+  if (stepsIncludePhoneValidation) {
+    return [
+      {
+        name: IdentityCheckStep.PHONE_VALIDATION,
+        icon: SmartphoneIcon,
+        label: t`Numéro de téléphone`,
+        screens: [],
+      },
+      ...stepsV1,
+    ]
+  }
+  return stepsV1
 }
 
+const SmartphoneIcon: React.FC<IconInterface> = () => <Smartphone opacity={0.5} />
 const ProfileIcon: React.FC<IconInterface> = () => <Profile opacity={0.5} />
 const IdCardIcon: React.FC<IconInterface> = () => <IdCard opacity={0.5} />
 const ConfirmationIcon: React.FC<IconInterface> = () => <Confirmation opacity={0.5} />

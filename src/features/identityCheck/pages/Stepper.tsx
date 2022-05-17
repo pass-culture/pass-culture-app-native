@@ -1,5 +1,5 @@
 import { t } from '@lingui/macro'
-import { useNavigation } from '@react-navigation/native'
+import { useNavigation, useNavigationState } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -17,10 +17,12 @@ import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/useSetCu
 import { useGetStepState } from 'features/identityCheck/utils/useGetStepState'
 import { UseNavigationType } from 'features/navigation/RootNavigator'
 import { analytics } from 'libs/analytics'
+import { env } from 'libs/environment'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Background } from 'ui/svg/Background'
+import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typography'
 import { Li } from 'ui/web/list/Li'
@@ -29,7 +31,14 @@ import { VerticalUl } from 'ui/web/list/Ul'
 export const IdentityCheckStepper = () => {
   const theme = useTheme()
   const { navigate } = useNavigation<UseNavigationType>()
-  const steps = useIdentityCheckSteps()
+  const routeName = useNavigationState((state) => state.routes[0]?.name)
+
+  /**
+   * TODO: use useNextSubscriptionStep
+   */
+  const stepsIncludePhoneValidation =
+    routeName === 'IdentityCheckStepperV2' ? env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING : false
+  const steps = useIdentityCheckSteps(stepsIncludePhoneValidation)
   const getStepState = useGetStepState()
   const context = useIdentityCheckContext()
   const { subscription } = useSetSubscriptionStepAndMethod()
@@ -138,7 +147,11 @@ export const IdentityCheckStepper = () => {
             <Spacer.Flex flex={2} />
           )}
 
-          <ButtonTertiaryWhite wording={t`Abandonner`} onPress={showQuitIdentityCheckModal} />
+          <ButtonTertiaryWhite
+            icon={Invalidate}
+            wording={t`Abandonner`}
+            onPress={showQuitIdentityCheckModal}
+          />
         </Container>
       </CenteredContainer>
       <QuitIdentityCheckModal
