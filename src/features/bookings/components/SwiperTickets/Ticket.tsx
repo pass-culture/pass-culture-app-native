@@ -1,13 +1,7 @@
 import { t } from '@lingui/macro'
 import React, { useState, useRef, ReactElement } from 'react'
-import {
-  FlatList,
-  ListRenderItem,
-  NativeScrollEvent,
-  NativeSyntheticEvent,
-  useWindowDimensions,
-} from 'react-native'
-import styled from 'styled-components/native'
+import { FlatList, ListRenderItem, NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { BookingDetailsTicketContentProps } from 'features/bookings/components/BookingDetailsTicketContent'
 import {
@@ -27,26 +21,27 @@ const keyExtractor = (item: ReactElement<TicketsProps>, index: number) =>
 export function Ticket({ booking, activationCodeFeatureEnabled }: TicketsProps) {
   const flatListRef = useRef<FlatList>(null)
   const { tickets } = getMultipleTickets({ booking, activationCodeFeatureEnabled })
-  const windowWidth = useWindowDimensions().width
+  const { appContentWidth } = useTheme()
 
-  const NUMBER_OF_TICKETS_WITH_EXTERNAL_BOOKING = booking.externalBookings?.length ?? 0
-  const ITEM_SIZE = windowWidth * TICKET_SIZE_RATIO
-  const ITEM_SPACING = (windowWidth - ITEM_SIZE) / 2
+  const NUMBER_OF_TICKETS = booking.externalBookings?.length ?? 0
+  const TICKET_WIDTH = appContentWidth * TICKET_SIZE_RATIO
+  const TICKET_SPACING = (appContentWidth - TICKET_WIDTH) / 2
 
   const [currentIndex, setCurrentIndex] = useState(1)
 
   const renderItem: ListRenderItem<ReactElement<BookingDetailsTicketContentProps>> = ({
     item: ticket,
   }) => (
-    <TicketsContainer key={ticket.key} width={ITEM_SIZE}>
+    <TicketsContainer key={ticket.key} width={TICKET_WIDTH}>
       {ticket}
     </TicketsContainer>
   )
 
-  const TOTAL_ITEM_SIZE_WITH_INTERVAL = (ITEM_SIZE + INTERVAL) * currentIndex
+  const TOTAL_ITEM_SIZE_WITH_INTERVAL = (TICKET_WIDTH + INTERVAL) * currentIndex
 
   const nextItemPosition = TOTAL_ITEM_SIZE_WITH_INTERVAL
-  const prevItemPosition = TOTAL_ITEM_SIZE_WITH_INTERVAL - ITEM_SPACING + INTERVAL - ITEM_SIZE * 2
+  const prevItemPosition =
+    TOTAL_ITEM_SIZE_WITH_INTERVAL - TICKET_SPACING + INTERVAL - TICKET_WIDTH * 2
   const moveTo = (direction: 'prev' | 'next') => {
     if (flatListRef.current) {
       if (direction === 'prev') {
@@ -65,15 +60,15 @@ export function Ticket({ booking, activationCodeFeatureEnabled }: TicketsProps) 
 
   const onScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const xPos = event.nativeEvent.contentOffset.x
-    const xPosWithSpacing = xPos + ITEM_SPACING
-    const index = Math.floor(xPosWithSpacing / ITEM_SIZE) + 1
+    const xPosWithSpacing = xPos + TICKET_SPACING
+    const index = Math.floor(xPosWithSpacing / TICKET_WIDTH) + 1
     setCurrentIndex(index)
   }
 
-  const showControls = NUMBER_OF_TICKETS_WITH_EXTERNAL_BOOKING > 1
+  const showControls = NUMBER_OF_TICKETS > 1
 
   return (
-    <Container>
+    <React.Fragment>
       <FlatList
         ref={flatListRef}
         data={tickets}
@@ -81,28 +76,30 @@ export function Ticket({ booking, activationCodeFeatureEnabled }: TicketsProps) 
         horizontal
         bounces={false}
         showsHorizontalScrollIndicator={false}
-        snapToInterval={ITEM_SIZE + INTERVAL}
+        snapToInterval={TICKET_WIDTH + INTERVAL}
         decelerationRate="fast"
         ItemSeparatorComponent={Separator}
-        contentContainerStyle={{ paddingHorizontal: ITEM_SPACING }}
+        contentContainerStyle={{ paddingHorizontal: TICKET_SPACING }}
         onScroll={onScroll}
         renderItem={renderItem}
       />
       {!!showControls && (
-        <SwiperTicketsControls
-          numberOfSteps={NUMBER_OF_TICKETS_WITH_EXTERNAL_BOOKING}
-          currentStep={currentIndex}
-          prevTitle={t`Revenir au ticket précédent`}
-          nextTitle={t`Voir le ticket suivant`}
-          onPressPrev={() => moveTo('prev')}
-          onPressNext={() => moveTo('next')}
-        />
+        <SwiperTicketsControlsContainer>
+          <SwiperTicketsControls
+            numberOfSteps={NUMBER_OF_TICKETS}
+            currentStep={currentIndex}
+            prevTitle={t`Revenir au ticket précédent`}
+            nextTitle={t`Voir le ticket suivant`}
+            onPressPrev={() => moveTo('prev')}
+            onPressNext={() => moveTo('next')}
+          />
+        </SwiperTicketsControlsContainer>
       )}
-    </Container>
+    </React.Fragment>
   )
 }
 
-const Container = styled.View({
+const SwiperTicketsControlsContainer = styled.View({
   alignItems: 'center',
 })
 

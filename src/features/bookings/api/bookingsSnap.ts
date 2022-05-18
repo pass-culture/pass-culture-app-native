@@ -117,7 +117,7 @@ export const bookingsSnap: BookingsResponse = {
       },
       externalBookings: [
         { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' },
-        { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: null },
+        // { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: null },
         { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A14' },
       ],
     },
