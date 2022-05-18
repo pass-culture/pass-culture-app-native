@@ -24,7 +24,10 @@ export const BusinessModule = ({ module }: { module: BusinessPane }) => {
   const { appContentWidth } = useTheme()
   const { isLoggedIn } = useAuthContext()
   const imageWidth = appContentWidth - 2 * MARGIN_DP
-  const imageHeight = PixelRatio.roundToNearestPixel(imageWidth * RATIO_BUSINESS)
+  const imageHeight = Math.min(
+    PixelRatio.roundToNearestPixel(imageWidth * RATIO_BUSINESS),
+    LENGTH_XS
+  )
 
   const [shouldRedirect, setShouldRedirect] = useState(false)
 
@@ -121,7 +124,6 @@ const ImageBackground = styled.ImageBackground<{ width: number; height: number }
   height: props.height,
   width: props.width,
   justifyContent: 'center',
-  maxHeight: LENGTH_XS,
   backgroundColor: props.theme.colors.primary,
 }))
 

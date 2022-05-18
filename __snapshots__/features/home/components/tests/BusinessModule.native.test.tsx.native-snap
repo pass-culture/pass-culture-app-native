@@ -62,16 +62,15 @@ exports[`BusinessModule component should disable click when no URL 1`] = `
           Array [
             Object {
               "backgroundColor": "#eb0055",
-              "height": 304,
+              "height": 144,
               "justifyContent": "center",
-              "maxHeight": 144,
               "width": 912,
             },
           ]
         }
       >
         <Image
-          height={304}
+          height={144}
           source={
             Object {
               "uri": "https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg",
@@ -254,16 +253,15 @@ exports[`BusinessModule component should render correctly - with leftIcon = Idea
           Array [
             Object {
               "backgroundColor": "#eb0055",
-              "height": 304,
+              "height": 144,
               "justifyContent": "center",
-              "maxHeight": 144,
               "width": 912,
             },
           ]
         }
       >
         <Image
-          height={304}
+          height={144}
           source={
             Object {
               "uri": "https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg",
@@ -467,16 +465,15 @@ exports[`BusinessModule component should render correctly - with leftIcon provid
           Array [
             Object {
               "backgroundColor": "#eb0055",
-              "height": 304,
+              "height": 144,
               "justifyContent": "center",
-              "maxHeight": 144,
               "width": 912,
             },
           ]
         }
       >
         <Image
-          height={304}
+          height={144}
           source={
             Object {
               "uri": "https://fr.web.img6.acsta.net/medias/nmedia/18/96/46/01/20468669.jpg",
