@@ -1,4 +1,5 @@
 import { t } from '@lingui/macro'
+import { isSameDay } from 'date-fns'
 
 import { WithdrawalTypeEnum } from 'api/gen'
 import { formatSecondsToString } from 'features/bookings/helpers'
@@ -18,3 +19,10 @@ export const getDelayMessage = (withdrawalDelay: number): string | null => {
   if (withdrawalDelay > 0) return `${formatSecondsToString(withdrawalDelay)} `
   return null
 }
+
+export const getEmailMessage = (offerDate: Date): string =>
+  isSameDay(offerDate, new Date())
+    ? t`C'est aujourd'hui\u00a0!` +
+      '\n' +
+      t`Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams.`
+    : t`Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams.`

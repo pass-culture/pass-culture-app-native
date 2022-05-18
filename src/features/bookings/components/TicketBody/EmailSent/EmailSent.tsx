@@ -1,10 +1,9 @@
-import { t } from '@lingui/macro'
-import { isSameDay } from 'date-fns'
 import React, { FunctionComponent } from 'react'
 import { Platform } from 'react-native'
 import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
+import { getEmailMessage } from 'features/bookings/components/TicketBody/ticketBodyMessages'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/ButtonWithLinearGradient'
 import { Email } from 'ui/svg/icons/Email'
 import { getSpacing, Typo } from 'ui/theme'
@@ -14,12 +13,7 @@ type Props = {
 }
 
 export const EmailSent: FunctionComponent<Props> = ({ offerDate }) => {
-  const emailMessage = isSameDay(offerDate, new Date())
-    ? t`C'est aujourd'hui\u00a0!` +
-      '\n' +
-      t`Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams.`
-    : t`Ton billet t'a été envoyé par e-mail. Pense à vérifier tes spams.`
-
+  const emailMessage = getEmailMessage(offerDate)
   return (
     <TicketContainer testID="withdrawal-info-email">
       <WithDrawalContainer testID="withdrawal-info-email-msg">{emailMessage}</WithDrawalContainer>

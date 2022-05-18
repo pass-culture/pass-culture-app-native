@@ -6,7 +6,7 @@ import { WithdrawalTypeEnum } from 'api/gen'
 import {
   getDelayMessage,
   getStartMessage,
-} from 'features/bookings/components/TicketBody/DefaultBody/defaultBodyMessages'
+} from 'features/bookings/components/TicketBody/ticketBodyMessages'
 import { BicolorEmailSent as InitialBicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
 import { getSpacing, Typo } from 'ui/theme'
 
