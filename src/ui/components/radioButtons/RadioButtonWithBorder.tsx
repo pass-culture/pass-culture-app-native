@@ -37,7 +37,7 @@ const Validate = styled(DefaultValidate).attrs(({ theme }) => ({
 const Label = styled(TouchableOpacity)<{ selected: boolean }>(({ theme, selected }) => ({
   flexDirection: 'row',
   alignItems: 'center',
-  borderColor: selected ? theme.colors.primary : theme.colors.greyMedium,
+  borderColor: selected ? theme.colors.primary : theme.colors.greyDark,
   borderRadius: theme.borderRadius.button,
   borderWidth: 1,
   marginBottom: getSpacing(4),

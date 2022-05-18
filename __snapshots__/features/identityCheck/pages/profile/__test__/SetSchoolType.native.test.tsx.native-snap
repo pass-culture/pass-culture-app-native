@@ -239,7 +239,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderColor": "#CBCDD2",
+                      "borderColor": "#696A6F",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",
@@ -301,7 +301,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderColor": "#CBCDD2",
+                      "borderColor": "#696A6F",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",
@@ -361,7 +361,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderColor": "#CBCDD2",
+                      "borderColor": "#696A6F",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",
@@ -421,7 +421,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderColor": "#CBCDD2",
+                      "borderColor": "#696A6F",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",
@@ -481,7 +481,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderColor": "#CBCDD2",
+                      "borderColor": "#696A6F",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",
@@ -541,7 +541,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderColor": "#CBCDD2",
+                      "borderColor": "#696A6F",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",
@@ -617,7 +617,7 @@ exports[`<SetSchoolType /> shoud render a list of high school types if profile.s
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderColor": "#CBCDD2",
+                      "borderColor": "#696A6F",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",
@@ -1015,7 +1015,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderColor": "#CBCDD2",
+                      "borderColor": "#696A6F",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",
@@ -1077,7 +1077,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderColor": "#CBCDD2",
+                      "borderColor": "#696A6F",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",
@@ -1139,7 +1139,7 @@ exports[`<SetSchoolType /> shoud render a list of middle school types if profile
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderColor": "#CBCDD2",
+                      "borderColor": "#696A6F",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",

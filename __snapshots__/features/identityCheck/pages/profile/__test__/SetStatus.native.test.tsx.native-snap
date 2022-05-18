@@ -239,7 +239,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderColor": "#CBCDD2",
+                      "borderColor": "#696A6F",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",
@@ -301,7 +301,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderColor": "#CBCDD2",
+                      "borderColor": "#696A6F",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",
@@ -363,7 +363,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderColor": "#CBCDD2",
+                      "borderColor": "#696A6F",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",
@@ -425,7 +425,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderColor": "#CBCDD2",
+                      "borderColor": "#696A6F",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",
@@ -487,7 +487,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderColor": "#CBCDD2",
+                      "borderColor": "#696A6F",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",
@@ -549,7 +549,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderColor": "#CBCDD2",
+                      "borderColor": "#696A6F",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",
@@ -611,7 +611,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderColor": "#CBCDD2",
+                      "borderColor": "#696A6F",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",
@@ -687,7 +687,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderColor": "#CBCDD2",
+                      "borderColor": "#696A6F",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",
@@ -763,7 +763,7 @@ exports[`<SetStatus/> should render correctly 1`] = `
                   style={
                     Object {
                       "alignItems": "center",
-                      "borderColor": "#CBCDD2",
+                      "borderColor": "#696A6F",
                       "borderRadius": 24,
                       "borderWidth": 1,
                       "flexDirection": "row",

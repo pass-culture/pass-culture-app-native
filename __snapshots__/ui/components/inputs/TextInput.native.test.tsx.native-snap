@@ -24,7 +24,7 @@ exports[`<TextInput /> should render correctly when NOT focused 1`] = `
         Object {
           "alignItems": "center",
           "backgroundColor": "#ffffff",
-          "borderColor": "#CBCDD2",
+          "borderColor": "#696A6F",
           "borderRadius": 22,
           "borderStyle": "solid",
           "borderWidth": 1,
@@ -97,7 +97,7 @@ exports[`<TextInput /> should render correctly when focused 1`] = `
           Object {
             \\"alignItems\\": \\"center\\",
             \\"backgroundColor\\": \\"#ffffff\\",
--           \\"borderColor\\": \\"#CBCDD2\\",
+-           \\"borderColor\\": \\"#696A6F\\",
 +           \\"borderColor\\": \\"#eb0055\\",
             \\"borderRadius\\": 22,
             \\"borderStyle\\": \\"solid\\",
@@ -125,7 +125,7 @@ exports[`<TextInput /> should render correctly when in error 1`] = `
           Object {
             \\"alignItems\\": \\"center\\",
             \\"backgroundColor\\": \\"#ffffff\\",
--           \\"borderColor\\": \\"#CBCDD2\\",
+-           \\"borderColor\\": \\"#696A6F\\",
 +           \\"borderColor\\": \\"#b60025\\",
             \\"borderRadius\\": 22,
             \\"borderStyle\\": \\"solid\\",
