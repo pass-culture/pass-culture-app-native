@@ -1609,7 +1609,6 @@ exports[`Profile component should render correctly 1`] = `
                   />
                   <View
                     accessibilityLabel="Déconnexion"
-                    accessibilityRole="link"
                     accessibilityState={
                       Object {
                         "disabled": false,

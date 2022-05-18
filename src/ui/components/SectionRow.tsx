@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { StyleProp, StyleSheet, View, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
 import { TouchableLinkProps } from 'ui/components/touchableLink/types'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
@@ -42,11 +43,13 @@ export function SectionRow(props: SectionRowProps) {
     <Typo.ButtonText numberOfLines={numberOfLines}>{props.title}</Typo.ButtonText>
   )
 
+  const TouchableComponent = props.navigateTo || props.externalNav ? TouchableLink : Touchable
+
   const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
     size: props.ctaIconSize || theme.icons.sizes.smaller,
   }))``
   return (
-    <TouchableLink
+    <TouchableComponent
       activeOpacity={props.onPress || props.navigateTo || props.externalNav ? activeOpacity : 1}
       onPress={props.onPress}
       navigateTo={props.navigateTo}
@@ -69,7 +72,7 @@ export function SectionRow(props: SectionRowProps) {
           )}
         </CTAContainer>
       </View>
-    </TouchableLink>
+    </TouchableComponent>
   )
 }
 

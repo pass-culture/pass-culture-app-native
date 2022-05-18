@@ -1,3 +1,4 @@
+import { t } from '@lingui/macro'
 import React, {
   FunctionComponent,
   useRef,
@@ -13,7 +14,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { SnackBarProgressBar } from 'ui/components/snackBar/SnackBarProgressBar'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close as DefaultClose } from 'ui/svg/icons/Close'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -123,9 +124,12 @@ const _SnackBar = (props: SnackBarProps) => {
               {props.message}
             </Text>
           </Spacer.Flex>
-          <TouchableOpacity testID="snackbar-close" onPress={onClose}>
-            <Close color={props.color} />
-          </TouchableOpacity>
+          <Touchable testID="snackbar-close" onPress={onClose}>
+            <Close
+              color={props.color}
+              accessibilityLabel={t`Supprimer le message\u00a0: ${props.message}`}
+            />
+          </Touchable>
         </SnackBarContainer>
         {renderProgressBar()}
       </ColoredAnimatableView>

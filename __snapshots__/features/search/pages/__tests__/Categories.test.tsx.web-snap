@@ -5,9 +5,9 @@ exports[`Categories component should match diff snapshot when new category is se
 - First value
 + Second value
 
-@@ -257,11 +257,11 @@
+@@ -238,11 +238,11 @@
         <ul
-          className=\\"sc-gsDKAQ sc-dkPtRN bwGBFc ezyhIk\\"
+          className=\\"sc-dkPtRN sc-hKwDye kHsZXE dWdAkX\\"
         >
           <li>
             <div
@@ -18,7 +18,7 @@ exports[`Categories component should match diff snapshot when new category is se
               onBlur={[Function onStyledBlur]}
               onClick={[Function onClick]}
               onContextMenu={[Function onContextMenu]}
-@@ -353,11 +353,11 @@
+@@ -334,11 +334,11 @@
                     className=\\"css-text-901oao css-textMultiLine-cens5h\\"
                     dir=\\"ltr\\"
                     style={
@@ -31,7 +31,7 @@ exports[`Categories component should match diff snapshot when new category is se
                         \\"lineHeight\\": \\"20px\\",
                       }
                     }
-@@ -380,11 +380,22 @@
+@@ -361,11 +361,22 @@
                     \\"msFlexNegative\\": 1,
                     \\"msFlexPositive\\": 0.1,
                     \\"msFlexPreferredSize\\": \\"0px\\",
@@ -55,7 +55,7 @@ exports[`Categories component should match diff snapshot when new category is se
           <li>
             <div
               aria-checked={false}
-@@ -513,11 +524,11 @@
+@@ -494,11 +505,11 @@
               />
             </div>
           </li>
@@ -68,7 +68,7 @@ exports[`Categories component should match diff snapshot when new category is se
               onBlur={[Function onStyledBlur]}
               onClick={[Function onClick]}
               onContextMenu={[Function onContextMenu]}
-@@ -609,11 +620,11 @@
+@@ -590,11 +601,11 @@
                     className=\\"css-text-901oao css-textMultiLine-cens5h\\"
                     dir=\\"ltr\\"
                     style={
@@ -81,7 +81,7 @@ exports[`Categories component should match diff snapshot when new category is se
                         \\"lineHeight\\": \\"20px\\",
                       }
                     }
-@@ -636,22 +647,11 @@
+@@ -617,22 +628,11 @@
                     \\"msFlexNegative\\": 1,
                     \\"msFlexPositive\\": 0.1,
                     \\"msFlexPreferredSize\\": \\"0px\\",
@@ -127,7 +127,7 @@ exports[`Categories component should render correctly 1`] = `
   }
 >
   <header
-    className="sc-bdvvtL dEiHBQ"
+    className="sc-gsDKAQ hFLWOJ"
     role="banner"
   >
     <div
@@ -210,32 +210,13 @@ exports[`Categories component should render correctly 1`] = `
             }
           }
         >
-          <div
+          <button
             aria-label="Revenir en arrière"
-            className="css-view-1dbjc4n"
+            className="sc-bdvvtL bmzymd"
             data-testid="Revenir en arrière"
-            onBlur={[Function]}
-            onClick={[Function]}
-            onContextMenu={[Function]}
-            onFocus={[Function]}
-            onKeyDown={[Function]}
-            style={
-              Object {
-                "MozTransitionProperty": "opacity",
-                "MozUserSelect": "auto",
-                "WebkitTransitionDuration": "0s",
-                "WebkitTransitionProperty": "opacity",
-                "WebkitUserSelect": "auto",
-                "cursor": "pointer",
-                "msTouchAction": "manipulation",
-                "msUserSelect": "auto",
-                "touchAction": "manipulation",
-                "transitionDuration": "0s",
-                "transitionProperty": "opacity",
-                "userSelect": "auto",
-              }
-            }
+            onClick={[MockFunction]}
             tabIndex="0"
+            type="button"
           >
             <div
               className="css-view-1dbjc4n"
@@ -248,7 +229,7 @@ exports[`Categories component should render correctly 1`] = `
                 icon-back-SVG-Mock
               </div>
             </div>
-          </div>
+          </button>
         </div>
         <h1
           aria-level={1}
@@ -365,7 +346,7 @@ exports[`Categories component should render correctly 1`] = `
         }
       />
       <ul
-        className="sc-gsDKAQ sc-dkPtRN bwGBFc ezyhIk"
+        className="sc-dkPtRN sc-hKwDye kHsZXE dWdAkX"
       >
         <li>
           <div
